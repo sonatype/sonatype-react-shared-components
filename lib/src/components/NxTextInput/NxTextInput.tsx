@@ -67,7 +67,7 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
         onKeyPress: inputOnKeyPress
       });
 
-      const invalidTextElementWithTooltip = (
+      return (
         <NxTooltip open={isInvalid}
                    title={firstValidationError}
                    className="nx-tooltip--validation-error"
@@ -75,8 +75,6 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
           { textElement }
         </NxTooltip>
       );
-
-      return isInvalid ? invalidTextElementWithTooltip : textElement;
     }
 );
 
