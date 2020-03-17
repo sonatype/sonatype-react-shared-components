@@ -76,7 +76,7 @@ dockerizedBuildPipeline(
   },
   deploy: {
     withDockerImage(env.DOCKER_IMAGE_ID, {
-      sh 'npm publish lib/dist'
+      sh 'npm publish --access public lib/dist'
     })
   },
   postDeploy: {
