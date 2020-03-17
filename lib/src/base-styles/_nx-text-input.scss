@@ -1,0 +1,40 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-variables';
+
+.nx-text-input {
+  border: $nx-border-dark;
+  border-left-width: 4px;
+  border-radius: 0;
+  box-shadow: none;
+  height: $nx-form-element-height;
+  padding: 0 8px;
+  width: $nx-form-element-width-normal;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    background: $nx-off-white;
+    border-color: $nx-grey-3;
+    border-left: 4px double $nx-grey-3;
+  }
+}
+
+.nx-text-input--long {
+  width: $nx-form-element-width-wide;
+}
+
+textarea.nx-text-input {
+  min-height: 64px;
+  padding: 8px;
+}
+
+::-ms-clear {
+  display: none;
+}

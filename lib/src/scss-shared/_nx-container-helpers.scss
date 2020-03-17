@@ -1,0 +1,31 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@mixin container-vertical() {
+  > :first-child {
+    margin-top: 0
+  }
+
+  > :last-child {
+    margin-bottom: 0
+  }
+}
+
+@mixin container-horizontal() {
+  > :first-child {
+    margin-left: 0
+  }
+
+  > :last-child {
+    margin-right: 0
+  }
+}
+
+@mixin vertically-scrollable($max-height) {
+  height: auto;
+  max-height: $max-height;
+  overflow-x: hidden;
+}

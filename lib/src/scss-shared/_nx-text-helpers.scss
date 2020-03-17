@@ -1,0 +1,42 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import 'nx-variables';
+
+@mixin nx-font-family() {
+  font-family: Proxima Nova, Helvetica Neue, Helvetica, sans-serif;
+}
+
+@mixin regular() {
+  @include nx-font-family;
+  font-weight: normal;
+}
+
+@mixin bold() {
+  @include nx-font-family;
+  font-weight: bold;
+}
+
+@mixin semi-bold() {
+  @include nx-font-family;
+  font-weight: 600;
+}
+
+@mixin truncate-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+%nx-code {
+  background-color: $nx-grey-1;
+  border: $nx-border;
+  border-radius: 4px;
+  color: $nx-invalid-color;
+  font-size: 12px;
+  padding: 2px 4px;
+  white-space: nowrap;
+}

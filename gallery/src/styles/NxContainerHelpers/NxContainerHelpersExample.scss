@@ -1,0 +1,29 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
+
+.gallery-container-example {
+  @include container-vertical;
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.gallery-container-example__child {
+  border: 1px solid #ccc;
+  margin: 12px 0;
+  padding: 3px;
+}
+
+.gallery-container-example__child--container-horizontal {
+  @include container-horizontal;
+}
+
+.gallery-container-example__inline-child {
+  background-color: #79acfb;
+  display: inline-block;
+  margin-left: 5px;
+}

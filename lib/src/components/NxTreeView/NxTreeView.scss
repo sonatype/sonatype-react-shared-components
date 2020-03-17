@@ -1,0 +1,148 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-text-helpers';
+@import '../../scss-shared/nx-container-helpers';
+
+/*
+  #Tree view
+*/
+.nx-tree-view {
+  @include semi-bold();
+
+  box-sizing: border-box;
+  color: $nx-text-color-light;
+  max-width: 330px;
+}
+
+.nx-tree-view--expanded {
+  .nx-tree-view__twisty-icon {
+    transform: rotate(90deg);
+  }
+}
+
+.nx-tree-view--collapsed {
+  .nx-tree-view__children{
+    max-height: 0;
+  }
+}
+
+.nx-tree-view--disabled {
+  .nx-tree-view__trigger {
+    cursor: default;
+  }
+
+  .nx-tree-view__text, .nx-tree-view__child {
+    color: $nx-grey-4;
+  }
+
+  .nx-tree-view__twisty-icon {
+    border-left-color: $nx-grey-4;
+  }
+}
+
+.nx-tree-view--empty {
+  .nx-tree-view__trigger, .nx-tree-view__twisty {
+    cursor: default;
+  }
+
+  .nx-tree-view__twisty-icon {
+    border: none;
+  }
+}
+
+.nx-tree-view__trigger {
+  @include container-horizontal;
+  align-items: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  height: 30px;
+  line-height: 32px;
+
+  &:hover, &:focus {
+    color: $nx-text-color-light;
+    text-decoration: none;
+  }
+}
+
+.nx-tree-view__twisty {
+  display: block;
+  flex-shrink: 0;
+  height: 17px;
+  margin-right: 5px;
+  width: 16px;
+}
+
+.nx-tree-view__twisty-icon {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid $nx-slate;
+  display: block;
+  margin: 3px 0 0 4px;
+  transform:rotate(0deg);
+  transition: all 300ms ease;
+  width: 0;
+
+  &.nx-tree-view--empty {
+    border-top: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+  }
+}
+
+.nx-tree-view__text {
+  @include container-horizontal;
+  @include truncate-ellipsis;
+
+  align-items: center;
+  color: $nx-text-color-light;
+  display: flex;
+  flex-grow: 1;
+
+  .nx-icon {
+    flex-shrink: 0;
+  }
+
+  span {
+    @include truncate-ellipsis;
+    flex-grow: 1;
+  }
+
+  .nx-counter {
+    flex-shrink: 0;
+  }
+}
+
+.nx-tree-view__children {
+  overflow: hidden;
+
+  > .nx-tree-view__child:last-child {
+    margin-bottom: 12px;
+  }
+}
+
+.nx-tree-view__child {
+  box-sizing: border-box;
+  height: 30px;
+  line-height: 30px;
+  overflow: hidden;
+  margin-right: 8px;
+  margin-left: 45px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  a {
+    color: $nx-text-color-light;
+    text-decoration: none;
+
+    &:hover {
+      color: $nx-text-color;
+    }
+  }
+}

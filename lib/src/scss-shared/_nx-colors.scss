@@ -1,0 +1,114 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+// Sonatype brand colors
+$nx-sonatype-blue: #336699;
+$nx-sonatype-orange: #f89100;
+
+/*
+  #Base colors
+*/
+// Tints based on HSL lightness value
+$nx-color-blue-41: #3A4D95;
+$nx-color-blue-42: #2B66AB;
+$nx-color-blue-44: #00A1E2;
+$nx-color-blue-96: #f2f3f8;
+
+// Shades of Grey
+$nx-black: #000; // darkest
+$nx-off-black: #070707;
+$nx-slate: #575757;
+$nx-grey-5: #838383;
+$nx-grey-4: #cacaca;
+$nx-grey-3: #dedede;
+$nx-grey-2: #eaeaea;
+$nx-grey-1: #f5f5f5;
+$nx-off-white: #fefefe;
+$nx-white: #fff; // lightest
+
+$nx-dark-blue: #006bbf;
+$nx-light-blue: #97cbee;
+
+$nx-dark-purple: #885195;
+$nx-light-purple: #dbc6df;
+$nx-medium-purple: #b087ba;
+
+$nx-dark-green: #099843;
+$nx-light-green: #b6e9ab;
+
+$nx-dark-red: #bc012f;
+$nx-light-red: #edb1af;
+
+$nx-orange: #f4861d;
+$nx-yellow: #f5c648;
+
+$nx-invalid-color: #c70000;
+$nx-valid-color: #84c900;
+
+// Was alert-fg & alert-bg
+$nx-warn-color: #9d6800;
+$nx-warn-color-bg: #fcf8e3;
+
+$nx-fail-color: #831d1d;
+$nx-fail-color-bg: #fce2e2;
+
+$nx-fail-color-active: #5c0000;
+$nx-fail-color-disabled: #dd9595;
+$nx-fail-color-hover: #5d0000;
+
+/*
+  #Applied Variables
+*/
+
+// Structural
+$nx-site-background-color: $nx-grey-1;
+$nx-page-background-color: $nx-grey-1;
+$nx-sidebar-background-color: $nx-grey-1;
+$nx-content-background-color: $nx-grey-1;
+
+//  Text
+$nx-text-color: $nx-off-black;
+$nx-text-color-light: $nx-slate;
+$nx-text-color-disabled: $nx-grey-4;
+$nx-text-color-error: $nx-fail-color;
+
+$nx-link-color: $nx-color-blue-44;
+$nx-link-color-active: #0046b1;
+$nx-link-color-hover: $nx-color-blue-42;
+$nx-link-color-disabled: #97cbee;
+
+$nx-background-color-interactive: #2476c3;
+$nx-background-color-interactive-active: #0046b1;
+$nx-background-color-interactive-disabled: #97cbee;
+
+//  Borders
+$nx-border-darker: 1px solid $nx-slate;
+$nx-border-dark: 1px solid $nx-grey-4;
+$nx-border: 1px solid $nx-grey-3; // default
+$nx-border-light: 1px solid $nx-grey-2;
+$nx-border-lighter: 1px solid $nx-grey-1;
+$nx-border-error: 1px solid $nx-fail-color;
+
+// Border rows are used by lists and tables
+$nx-border-row: 1px solid $nx-grey-1;
+$nx-border-row-hover: 1px solid $nx-grey-4;
+$nx-border-row-disabled: 1px solid $nx-grey-1;
+$nx-border-row-dark: 1px solid $nx-grey-5;
+
+// Threat colors
+$nx-threat-color-unspecified: #d9dade;
+$nx-threat-color-none: $nx-light-blue;
+$nx-threat-color-low: $nx-dark-blue;
+$nx-threat-color-moderate: $nx-yellow;
+$nx-threat-color-severe: $nx-orange;
+$nx-threat-color-critical: $nx-dark-red;
+
+// Threat colors - light variant
+$nx-threat-color-none-light: #d9ecfb;
+$nx-threat-color-low-light: #92cbff;
+$nx-threat-color-moderate-light: #fdecaf;
+$nx-threat-color-severe-light: #ffd6a2;
+$nx-threat-color-critical-light: #ff9493;

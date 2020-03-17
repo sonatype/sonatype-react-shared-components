@@ -1,0 +1,35 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+/**
+ * This is the "entrypoint" for files in this directory.  These files represent styles that should be included by
+ * any consumer of the react-shared-components lib
+ */
+
+// NOTE normalize was used to prove out adding a third-party stylesheet.  It has since been recognized that we
+// cannot include a reset stylesheet in our base styles without making this library unusable in pre-existing
+// applications.  Therefore the dep on normalize has been removed, but the import is still here, commented out,
+// as an example of the syntax
+//@import '~normalize.css';
+
+@import 'nx-globals';
+@import 'nx-typography';
+
+@import 'nx-page-header';
+@import 'nx-page-layout';
+@import 'nx-page';
+@import 'nx-tile';
+@import 'nx-alert';
+@import 'nx-btn';
+@import 'nx-btn-bar';
+@import 'nx-lists';
+@import 'nx-text-input';
+@import 'nx-tables';
+@import 'nx-grid';
+@import 'nx-icon';
+@import 'nx-counter';
+@import 'nx-threat-number';
+@import 'nx-forms';

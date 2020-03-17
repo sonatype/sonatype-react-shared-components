@@ -1,0 +1,200 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-variables';
+@import '../scss-shared/nx-text-helpers';
+
+$nx-tile-header-height: 24px; // Minimum height
+$nx-tile-header-height-actions: 43px; // Height with sub-title and/or right actions
+$nx-tile-background-color: $nx-white;
+
+/*
+  #Name-spaced Tile System
+*/
+
+// Base Tiles
+
+.nx-tile {
+  @include container-vertical;
+
+  background-color: $nx-tile-background-color;
+  border: $nx-border-light;
+  margin: $nx-spacing-xs 0 $nx-spacing-md 0;
+  padding: $nx-spacing-md;
+
+  // Sometimes we want tiles that consist of alert messages
+  &.nx-alert {
+    .nx-tile-header + .nx-tile-content {
+      padding-top: 0;
+    }
+
+    > .nx-tile-content {
+      padding-top: 12px;
+    }
+  }
+
+  &.nx-alert--warning {
+    background-color: $nx-warn-color-bg;
+    border: 1px solid $nx-warn-color;
+    color: $nx-warn-color;
+  }
+
+  &.nx-alert--error {
+    background-color: $nx-fail-color-bg;
+    border-color: $nx-fail-color;
+    color: $nx-text-color-error;
+  }
+
+  &.nx-alert--info {
+    background-color: $nx-off-white;
+    border-color: $nx-dark-blue;
+    color: $nx-text-color;
+
+    .fa {
+      font-size: 23px;
+    }
+  }
+}
+
+// Special tile for containing grids
+.nx-tile--grid-tile {
+  .nx-tile-header {
+    margin-bottom: 0;
+  }
+
+  .nx-tile-footer {
+    margin-top: 0;
+  }
+}
+
+// Tile for scrolling content
+.nx-tile-scroll-container {
+  margin: 0 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 8px;
+  position: relative; //required for scrollspy
+  width: calc(100% - 16px);
+  z-index: $nx-tile-scroll-container-z-index;
+
+  .nx-tile {
+    margin: 0 0 8px 0;
+  }
+}
+
+// used when a <form> is the first element in an nx-tile
+.nx-tile--form-tile {
+  .nx-tile-header {
+    margin-bottom: 6px;
+  }
+}
+
+// Tile headers
+
+.nx-tile-header {
+  min-height: $nx-tile-header-height;
+  margin: 8px 0 15px 0;
+  overflow: hidden;
+}
+
+.nx-tile-header__title {
+  display: inline-block;
+
+  h1, h2 {
+    display: inline-block;
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  h1 {
+    font-size: 26px;
+    padding: 0;
+
+    .nx-tile-header__description {
+      @include regular();
+
+      font-weight: normal;
+    }
+  }
+}
+
+.nx-tile-header__icon {
+  display: block;
+  float: left;
+  font-size: 30px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.nx-tile-header__title--no-actions {
+  height: $nx-tile-header-height;
+}
+
+.nx-tile-header__subtitle {
+  line-height: 16px;
+  margin: 0;
+  padding: 0 0 2px 0;
+  max-width: $nx-paragraph-width-maximum;
+}
+
+.nx-tile-header--hrule {
+  border: 0 solid $nx-grey-4;
+  border-bottom-width: 1px;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+
+.nx-tile__actions {
+  @include container-horizontal;
+
+  float: right;
+
+  + .nx-tile-header {
+    // the nx-tile__actions get in the way of the container mixin's first-child selector
+    margin-top: 0;
+  }
+}
+
+.nx-tile-content {
+  @include container-vertical;
+
+  clear: both;
+}
+
+// On pages with tiles with multiple sections these are lighter weight titles
+.nx-tile__section-header {
+  @include semi-bold();
+
+  border-bottom: $nx-border-dark;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.nx-tile__section-header--simple {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.nx-tile-footer {
+  @include container-horizontal;
+
+  border: 0 solid $nx-grey-4;
+  border-top-width: 1px;
+  margin-top: 20px;
+  padding: 12px 4px 0 4px;
+}
+
+// A tile at the top of the page, usually contains a nav bar with scrolling buttons
+.nx-tile--top-tile {
+  box-shadow: 0px 5px 6px 0px $nx-grey-1;
+  margin-bottom: 0;
+  position: relative;
+  z-index: $nx-tile-scroll-container-z-index + 1;
+}

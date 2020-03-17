@@ -1,0 +1,149 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "globals": {
+    "module": true
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "camelcase": [
+      "error",
+      {
+        "properties": "never"
+      }
+    ],
+    "curly": [
+      "error",
+      "all"
+    ],
+    "eqeqeq": ["error", "always", {"null": "ignore"}],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": ["error", { "accessibility": "no-public" }],
+    "@typescript-eslint/indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1,
+        "MemberExpression": 2,
+        "ObjectExpression": 1,
+        "VariableDeclarator": 2,
+        "FunctionDeclaration": {"parameters": "first"},
+        "FunctionExpression": {"parameters": "first"},
+        "CallExpression": {"arguments": 2},
+        "flatTernaryExpressions": true,
+
+        // handled by jsx-indent and jsx-indent-props
+        "ignoredNodes": [
+          'JSXElement',
+          'JSXElement > *',
+          'JSXAttribute',
+          'JSXIdentifier',
+          'JSXNamespacedName',
+          'JSXMemberExpression',
+          'JSXSpreadAttribute',
+          'JSXExpressionContainer',
+          'JSXOpeningElement',
+          'JSXClosingElement',
+          'JSXText',
+          'JSXEmptyExpression',
+          'JSXSpreadChild'
+        ]
+      }
+    ],
+    "no-caller": "error",
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "max-len": [ "error", { "code": 120 } ],
+    "no-undef": "error",
+    "no-unused-vars": "error",
+    "strict": "error",
+    "no-mixed-spaces-and-tabs": "error",
+    "no-multiple-empty-lines": ["error", { "max": 1}],
+    "no-multi-spaces": "error",
+    "no-nested-ternary": "off",
+    "padded-blocks": "off",
+    "key-spacing": "error",
+    "space-unary-ops": [
+      "error",
+      {
+        "words": false,
+        "nonwords": false
+      }
+    ],
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "semi-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "no-spaced-func": "error",
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "ignore",
+        "named": "never"
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "no-trailing-spaces": "error",
+    "eol-last": "error",
+    "semi": "off",
+    "@typescript-eslint/semi": [
+      "error",
+      "always"
+    ],
+    "space-infix-ops": "error",
+    "keyword-spacing": [
+      "error",
+      {}
+    ],
+    "space-before-blocks": [
+      "error",
+      "always"
+    ],
+    "vars-on-top": "off",
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-debugger": 'error',
+    "array-bracket-spacing": ["error", "never"],
+    "object-property-newline": ["error", { "allowMultiplePropertiesPerLine": true }],
+    "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-indent-props": ["error", 'first'],
+    "react/jsx-first-prop-new-line": ["error", 'never'],
+    "react/jsx-max-props-per-line": ["error", { maximum: 1, when: 'multiline' }],
+    "react/jsx-closing-tag-location": ["error"],
+    "react/no-unescaped-entities": "off",
+    "react/jsx-no-target-blank": "off",
+    "react/jsx-fragments": ["error", "syntax"],
+    "react/display-name": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

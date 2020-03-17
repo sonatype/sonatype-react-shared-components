@@ -1,0 +1,74 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-container-helpers';
+@import '../scss-shared/nx-text-helpers';
+
+.nx-body {
+  @include regular();
+
+  font-size: $nx-font-size-s;
+  line-height: 18px;
+}
+
+.nx-h1 {
+  @include bold();
+  @include container-horizontal;
+
+  font-size: $nx-font-size-heading-level-1;
+  line-height: 28px;
+  margin-bottom: $nx-spacing-l;
+}
+
+.nx-h2 {
+  @include bold();
+  @include container-horizontal;
+
+  font-size: $nx-font-size-heading-level-2;
+  line-height: 24px;
+  margin-bottom: $nx-spacing-md;
+}
+
+.nx-h3 {
+  @include bold();
+  @include container-horizontal;
+
+  font-size: $nx-font-size-heading-level-3;
+  line-height: 21px;
+  margin-bottom: $nx-spacing-xs;
+}
+
+.nx-h4 {
+  @include semi-bold();
+  @include container-horizontal;
+
+  font-size: $nx-font-size-heading-level-4;
+  line-height: 16px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.nx-p {
+  font-size: $nx-font-size-s;
+  line-height: 16px;
+  margin-bottom: $nx-spacing-md;
+}
+
+.nx-label {
+  @include semi-bold();
+
+  cursor: default;
+  font-size: 16px;
+}
+
+// Form typography
+.nx-text-input, .nx-textarea {
+  @include regular();
+
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 0;
+}

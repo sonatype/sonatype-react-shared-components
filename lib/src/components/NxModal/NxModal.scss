@@ -1,0 +1,81 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-container-helpers';
+
+$nx-modal-top-spacing: 48px;
+$nx-modal-bottom-spacing: 8px;
+$nx-modal-width: 560px;
+$nx-modal-width-wide: 900px;
+$nx-modal-content-max-height: calc(100vh - #{$nx-modal-top-spacing} - #{$nx-modal-bottom-spacing} - 215px);
+
+.nx-modal {
+  align-self: flex-start;
+  background-color: $nx-off-white;
+  border: $nx-border-darker;
+  box-shadow: -8px 8px 12px $nx-slate;
+  margin-top: $nx-modal-top-spacing;
+  width: $nx-modal-width;
+}
+
+.nx-modal--wide {
+  width: $nx-modal-width-wide;
+}
+
+.nx-modal-header {
+  @include container-vertical;
+  border-bottom: $nx-border-dark;
+  padding: 12px 8px;
+}
+
+.nx-modal-footer {
+  @include container-vertical;
+  background-color: $nx-grey-1;
+  border-top: $nx-border-dark;
+  padding: 12px 8px;
+
+  &.nx-error {
+    background-color: $nx-fail-color-bg;
+    border: $nx-border-error;
+    color: $nx-text-color-error;
+    margin-right: -1px;
+    margin-bottom: -1px;
+    margin-left: -1px;
+
+    > .nx-alert--error {
+      border: none;
+    }
+  }
+}
+
+.nx-modal-backdrop {
+  background-color: transparentize($nx-off-black, 0.4);
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $nx-modal-backdrop-z-index;
+}
+
+.nx-modal-content {
+  @include container-vertical;
+  @include vertically-scrollable($nx-modal-content-max-height);
+  padding: 20px 8px 18px 8px;
+
+  > .nx-alert {
+    &:first-child {
+      margin-top: -12px;
+    }
+
+    &:last-child {
+      margin-bottom: -10px;
+    }
+  }
+}

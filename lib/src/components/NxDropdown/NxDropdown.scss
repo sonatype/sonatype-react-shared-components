@@ -1,0 +1,125 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-text-helpers';
+@import '../../scss-shared/nx-container-helpers';
+
+.nx-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.nx-dropdown__toggle {
+  margin: 0;
+  outline: none;
+}
+
+.nx-dropdown-menu {
+  @include container-vertical();
+
+  background: $nx-off-white;
+  border: $nx-border-dark;
+  border-radius: 4px;
+  box-shadow: -4px 4px 10px 0 $nx-slate;
+  color: $nx-text-color-light;
+  display: block;
+  margin: 6px 0 0 0;
+  max-width: 300px;
+  min-width: 160px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 100%;
+}
+
+.nx-dropdown-link, .nx-dropdown-button {
+  @include truncate-ellipsis();
+
+  cursor: pointer;
+  display: block;
+  height: 32px;
+  line-height: 32px;
+  text-decoration: none;
+}
+
+.nx-dropdown-button {
+  @include nx-font-family();
+
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 0;
+  box-sizing: border-box;
+  color: $nx-text-color-light;
+  font-size: 14px;
+  outline: none;
+  padding: 0 10px 0 0;
+  text-align: left;
+  width: 100%;
+
+  &:hover, &:focus {
+    background-color: $nx-grey-1;
+  }
+
+  &.disabled {
+    &, &:hover, &:focus {
+      background-color: transparent;
+      color: $nx-grey-3;
+      cursor: default;
+      text-decoration: none;
+    }
+  }
+}
+
+.nx-dropdown--navigation {
+  .nx-dropdown-menu {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .nx-dropdown-title {
+    @include semi-bold();
+
+    border-bottom: $nx-border-dark;
+    color: $nx-text-color-light;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+    padding: 12px 8px 16px 8px;
+    text-transform: uppercase;
+  }
+
+  .nx-dropdown-button {
+    border-bottom: $nx-border-lighter;
+    padding: 0 10px 0 12px;
+
+    &:first-of-type {
+      border-top: $nx-border-lighter;
+    }
+  }
+}
+
+.nx-dropdown-link {
+  color: $nx-link-color;
+
+  &:hover, &:focus {
+    color: $nx-link-color-hover;
+    text-decoration: underline;
+  }
+
+  &.disabled {
+    &, &:hover, &:focus {
+      color: $nx-link-color-disabled;
+      cursor: default;
+      text-decoration: none;
+    }
+  }
+}
+
+.nx-dropdown--divider {
+  background-color: $nx-grey-3;
+  height: 1px;
+  margin: 9px 1px;
+}

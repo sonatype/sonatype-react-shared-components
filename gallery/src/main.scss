@@ -1,0 +1,117 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '~@sonatype/react-shared-components/scss-shared/nx-variables';
+@import '~@sonatype/react-shared-components/scss-shared/nx-text-helpers';
+@import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
+@import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
+
+.nx-title__brand a {
+  text-decoration: none;
+}
+
+.gallery-nav, .gallery-nav-links {
+  @include container-vertical;
+}
+
+.gallery-nav-category {
+  @include semi-bold();
+
+  color: $nx-text-color-light;
+  font-size: 16px;
+  margin-top: 16px;
+  margin-bottom: 12px;
+}
+
+.gallery-nav-link {
+  margin-bottom: 4px;
+  margin-left: 0;
+}
+
+.gallery-link {
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 4px;
+  text-decoration: none;
+  color: $nx-text-color-light;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.active {
+    @include semi-bold;
+
+    color: $nx-text-color;
+    cursor: default;
+    text-decoration: none;
+  }
+}
+
+.gallery-props-table {
+  border-collapse: collapse;
+
+  text-align: left;
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+
+  th {
+    background: $nx-grey-1;
+  }
+}
+
+.gallery-description {
+  h1 {
+    @include bold();
+
+    font-size: 26px;
+    line-height: 28px;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    @include bold();
+
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+
+  h3 {
+    @include bold();
+
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 8px;
+  }
+
+  h4 {
+    @include semi-bold();
+
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+}
+
+.gallery-example-section {
+  margin: 15px 0;
+}
+
+.gallery-counter-example-container {
+  margin: 8px 0;
+  width: 400px;
+}
+
+.gallery-submit-mask-area {
+  height: 100px;
+
+  position: relative;
+}

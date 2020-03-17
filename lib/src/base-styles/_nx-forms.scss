@@ -1,0 +1,124 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-variables';
+@import '../scss-shared/nx-text-helpers';
+@import '../scss-shared/nx-container-helpers';
+@import 'nx-text-input';
+
+$nx-form-element-height: 32px;
+$nx-form-element-width-normal: 219px;
+$nx-form-element-width-wide: 395px;
+
+// Basic form layout
+
+.nx-form {
+  @include container-vertical;
+  border-top: $nx-border-dark;
+  margin: 0;
+  padding-top: 20px;
+  position: relative; // to make a containing block for validation popovers
+}
+
+.nx-form--simple {
+  border-top: none;
+  padding: 0;
+}
+
+// for a form that is the entirety of a modal
+.nx-form--modal-form {
+  padding-top: 0;
+}
+
+.nx-form-group {
+  margin-bottom: 20px;
+}
+
+.nx-form-row {
+  @include container-horizontal;
+  margin-bottom: 24px;
+
+  .nx-form-group, .nx-fieldset {
+    display: inline-block;
+    margin-right: 24px;
+    margin-bottom: 0;
+    vertical-align: bottom; // fixes issue where certain form types display lower
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .nx-label {
+    margin-bottom: 0;
+  }
+}
+
+.nx-btn-bar--forms {
+  border-top: $nx-border-dark;
+  padding-top: 8px;
+}
+
+// labels
+
+.nx-label {
+  @include semi-bold();
+
+  color: $nx-text-color;
+  display: block;
+  font-size: 16px;
+  margin-bottom: 7px;
+
+  .disabled {
+    color: $nx-grey-4;
+  }
+
+  .nx-text-input, .nx-textarea {
+    display: block;
+    margin-top: 7px; // gives proper 8px spacing between label text and field
+  }
+}
+
+.nx-label--optional {
+  .nx-label__text::after {
+    @include regular();
+
+    color: $nx-text-color-light;
+    content: " - optional";
+    font-style: italic;
+  }
+}
+
+.nx-sub-label {
+  @include container-horizontal;
+  @include regular();
+
+  color: $nx-text-color;
+  display: block;
+  font-size: 14px;
+}
+
+// Defining labels for groups of radio buttons or checkboxes is tricky - each individual radio has a <label>
+// element, so it is inappropriate to use a <label> for the group as a whole.  Instead, a <fieldset> and <legend> can
+// be used, but you'll still typically want the <legend> styled the way a <label> on a text field would be using
+// .nx-label.
+.nx-fieldset {
+  border: 0;
+  margin: 0 0 20px 0;
+  padding: 0;
+
+  .nx-label {
+    margin-bottom: 0;
+  }
+
+  .nx-radio, .nx-checkbox {
+    @include container-vertical;
+
+    display: block;
+    margin: 8px 0 0 24px;
+  }
+}
+

@@ -1,0 +1,11 @@
+{
+  "extends": ["../lib/.eslintrc"],
+  "globals": {
+    "require": true,
+    "document": true
+  },
+  "rules": {
+    "@typescript-eslint/no-var-requires": "off",
+    "react/prop-types": "off"
+  }
+}

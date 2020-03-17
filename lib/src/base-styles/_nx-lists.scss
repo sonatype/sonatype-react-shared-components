@@ -1,0 +1,216 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-variables';
+@import '../scss-shared/nx-text-helpers';
+
+.nx-list {
+  @include container-vertical;
+  margin: $nx-spacing-sm 0 $nx-spacing-md 0;
+
+  > ul, > ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.nx-list__title {
+  color: $nx-text-color;
+  line-height: 14px;
+  margin: 0 0 10px 0;
+}
+
+.nx-list__item {
+  @include semi-bold();
+  @include truncate-ellipsis();
+
+  border-top: 1px solid transparent;
+  border-bottom: $nx-border-row;
+  box-sizing: border-box;
+  color: $nx-text-color;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  padding: $nx-spacing-md $nx-spacing-xs $nx-spacing-md $nx-spacing-xs;
+
+  // we use first of type because we only want to modify the first list item,
+  // not alerts, errors, or empty states
+  &:first-of-type {
+    border-top: $nx-border;
+  }
+
+  &.nx-error {
+    border: $nx-border-error;
+    color: $nx-text-color-error;
+  }
+
+  > .fa, > .svg-inline--fa {
+    margin-right: $nx-spacing-md;
+  }
+}
+
+.nx-list--bulleted {
+  .nx-list__item {
+    @include regular();
+
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    list-style: disc outside;
+    margin-left: 36px;
+    overflow: visible;
+    padding: 6px 10px 6px 0;
+    white-space: normal;
+  }
+}
+
+.nx-list__item--empty {
+  @include regular();
+
+  border-top: $nx-border; // assume it's always the first item
+  border-bottom: $nx-border-row;
+  color: $nx-text-color-light;
+  font-size: 14px;
+  text-align: center;
+}
+
+.nx-list__item--disabled {
+  color: $nx-text-color-disabled;
+  cursor: default;
+}
+
+.nx-list__item--expanding {
+  height: auto;
+}
+
+.nx-list__item--with-modifier-icon {
+  line-height: 30px;
+}
+
+.nx-list__actions {
+  float: right;
+}
+
+.nx-list__subtext {
+  @include regular();
+
+  display: block;
+  line-height: 14px;
+  margin: 0;
+  padding-top: 4px;
+  white-space: normal;
+  width: $nx-paragraph-width-maximum;
+
+  &.nx-truncate-ellipsis {
+    white-space: nowrap;
+  }
+}
+
+.nx-list--unstyled {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Action or Clickable Lists
+ */
+.nx-list--clickable {
+  .nx-list__title {
+    color: $nx-text-color;
+  }
+
+  .nx-list__item {
+    @include semi-bold();
+
+    color: $nx-text-color-light;
+
+    &:not(.nx-list__item--empty):not(.nx-disabled):not([disabled]) {
+      &:hover, &:focus {
+        background-color: $nx-color-blue-96;
+        border-top: $nx-border-row-hover;
+        border-bottom: $nx-border-row-hover;
+        color: $nx-text-color;
+        cursor: pointer;
+        outline-style: none; // removes :focus outline
+
+        .fa-chevron-right {
+          color: $nx-color-blue-41;
+        }
+      }
+
+      &:active {
+        background-color: $nx-grey-1;
+        border-top: $nx-border-row-hover;
+        border-bottom: $nx-border-row-hover;
+      }
+    }
+
+    &.nx-list__item--empty {
+      @include regular();
+
+      border-top: $nx-border; // assume it's always the first item
+      color: $nx-text-color-light;
+    }
+
+    &.nx-error {
+      color: $nx-text-color-error;
+
+      &:not(.nx-disabled):not([disabled]) {
+        border: $nx-border-error;
+        
+        &:hover, &:focus, &:active {
+          background-color: $nx-fail-color-bg;
+          border: $nx-border-error;
+          color: $nx-text-color-error;
+          cursor: default;
+        }
+      }
+    }
+
+    .nx-list__subtext {
+      pointer-events: none; // Fix for IE11 :active state display
+    }
+
+    &.nx-list__item--disabled {
+      color: $nx-text-color-disabled;
+      cursor: default;
+
+      &:hover {
+        border-top: 1px solid transparent;
+        border-bottom: $nx-border-row;
+      }
+    }
+  }
+
+  .fa-chevron-right {
+    margin-right: 3px;
+    margin-top: 1px;
+  }
+}
+
+/*
+ * Definition Lists
+ *
+ * Typically use <dl>
+ */
+
+.nx-list--definition-list {
+  box-sizing: border-box;
+
+  .nx-list__item {
+    @include regular();
+
+    display: inline-block;
+    width: 75%;
+  }
+
+  .nx-list__item--label {
+    @include semi-bold();
+
+    width: 25%;
+  }
+}

@@ -1,0 +1,75 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-container-helpers';
+
+$nx-filter-input-height: 20px;
+
+.nx-filter-input {
+  @include container-horizontal;
+
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.nx-filter-input__add-on {
+  border: $nx-border;
+  border-right: none;
+  display: inline-block;
+  height: $nx-filter-input-height;
+  padding: 4px 4px 4px 2px;
+  vertical-align: top;
+  width: 20px;
+
+  .nx-icon {
+    color: $nx-text-color-light;
+    height: 10px;
+    margin-top: 5px;
+    margin-left: 5px;
+
+    &.fa-times {
+      cursor: pointer;
+
+      height: 14px;
+      margin-top: 4px;
+      margin-left: 6px;
+    }
+  }
+}
+
+.nx-filter-input--disabled {
+  .nx-filter-input__add-on {
+    background-color: $nx-off-white;
+
+    .nx-icon {
+      color: $nx-text-color-disabled;
+    }
+  }
+
+  .nx-filter-text-input {
+    background-color: $nx-off-white;
+    border-color: $nx-grey-3;
+
+    &::placeholder {
+      color: $nx-text-color-disabled;
+    }
+  }
+}
+
+.nx-filter-text-input {
+  border: $nx-border;
+  border-left: 0;
+  font-size: 14px;
+  height: $nx-filter-input-height;
+  margin-left: 0;
+  padding: 4px 6px;
+
+  &:focus {
+    outline: none;
+  }
+}

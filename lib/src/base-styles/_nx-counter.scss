@@ -1,0 +1,28 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-variables';
+
+.nx-counter {
+  @include semi-bold();
+
+  background-color: $nx-grey-3;
+  border: $nx-border-dark;
+  border-radius: 8px;
+  color: $nx-text-color-light;
+  display: inline-block;
+  font-size: 11px;
+  line-height: 1.4; // vertically centres text in pill
+  margin-left: 8px;
+  padding: 1px 4px;
+  text-align: center;
+  min-width: 8px;
+
+  &.nx-counter--active {
+    background-color: $nx-grey-1;
+    border-color: $nx-grey-3;
+  }
+}

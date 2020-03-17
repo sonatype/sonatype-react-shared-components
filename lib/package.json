@@ -1,0 +1,92 @@
+{
+  "name": "@sonatype/react-shared-components",
+  "version": "0.39.0",
+  "description": "Sonatype shared UI components and utilities written in React",
+  "main": "index.js",
+  "publishConfig": {
+    "registry": "https://repository.sonatype.org/content/repositories/npm-hosted/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sonatype/react-shared-components.git"
+  },
+  "scripts": {
+    "build": "npm-run-all -p lint compile-ts compile-scss copy-scss copy-package-json copy-assets",
+    "watch": "npm-run-all -p compile-ts-watch compile-scss-watch copy-scss-watch copy-package-json-watch copy-assets-watch",
+    "lint": "eslint --ignore-pattern __tests__ --ignore-pattern __mocks__ --ignore-pattern __testutils__ 'src/**/*.{js,ts}{,x}'",
+    "lint-tests": "eslint -c .eslintrc-tests 'src/**/{__tests__,__mocks__,__testutils__}/**/*.{js,ts}{,x}'",
+    "compile-ts": "tsc --project tsconfig.build.json",
+    "compile-scss": "webpack-cli --config=webpack.config.styles.js",
+    "copy-scss": "cpx \"src/**/*.scss\" dist",
+    "copy-assets": "cpx \"src/assets/**/*\" dist/assets",
+    "copy-package-json": "cpx package.json dist",
+    "compile-ts-watch": "tsc -w --project tsconfig.build.json",
+    "compile-scss-watch": "webpack-cli --watch --config=webpack.config.styles.js",
+    "copy-scss-watch": "cpx -w \"src/**/*.scss\" dist",
+    "copy-assets-watch": "cpx -w \"src/assets/**/*\" dist/assets",
+    "copy-package-json-watch": "cpx -w package.json dist",
+    "test": "npm-run-all lint-tests jest",
+    "jest": "jest",
+    "test-watch": "jest --watch",
+    "test-watch-debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watchAll",
+    "clean": "rimraf dist junit.xml",
+    "version": "versync -b sync -a"
+  },
+  "author": "Sonatype, Inc.",
+  "license": "EPL-2.0",
+  "devDependencies": {
+    "@types/enzyme": "=3.9.1",
+    "@types/enzyme-adapter-react-16": "=1.0.5",
+    "@types/jest": "=24.0.11",
+    "@types/react": "16.9.16",
+    "@types/react-dom": "16.9.1",
+    "@typescript-eslint/eslint-plugin": "1.11.0",
+    "@typescript-eslint/parser": "1.11.0",
+    "cpx": "=1.5.0",
+    "css-loader": "=2.1.1",
+    "enzyme": "=3.9.0",
+    "enzyme-adapter-react-16": "=1.12.1",
+    "eslint": "5.16.0",
+    "eslint-plugin-react": "7.14.2",
+    "file-loader": "3.0.1",
+    "ignore-emit-webpack-plugin": "1.0.2",
+    "jest": "=24.7.1",
+    "jest-enzyme": "=7.0.2",
+    "jest-junit": "7.0.0",
+    "mini-css-extract-plugin": "=0.6.0",
+    "node-sass": "=4.11.0",
+    "npm-run-all": "=4.1.5",
+    "react": "16.10.1",
+    "react-dom": "16.10.1",
+    "resolve-url-loader": "3.1.0",
+    "rimraf": "=2.6.3",
+    "sass-loader": "7.1.0",
+    "ts-jest": "=24.0.2",
+    "ts-loader": "5.3.3",
+    "typescript": "3.5.2",
+    "versync": "4.1.0",
+    "webpack": "=4.30.0",
+    "webpack-cli": "=3.3.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "1.2.17",
+    "@fortawesome/free-solid-svg-icons": "=5.8.1",
+    "@fortawesome/react-fontawesome": "=0.1.4",
+    "@material-ui/core": "4.5.0",
+    "@types/classnames": "=2.2.7",
+    "@types/prop-types": "15.7.1",
+    "@types/ramda": "0.26.8",
+    "classnames": "=2.2.6",
+    "fuse.js": "3.4.5",
+    "prop-types": "15.7.2",
+    "ramda": "0.26.1",
+    "react-commonmark": "3.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1"
+  },
+  "versionedSources": [
+    "../gallery/package.json"
+  ]
+}

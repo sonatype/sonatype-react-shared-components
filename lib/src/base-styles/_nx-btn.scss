@@ -1,0 +1,118 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-variables';
+@import '../scss-shared/nx-text-helpers';
+
+.nx-btn {
+  @include semi-bold();
+  @include container-horizontal;
+
+  background-color: $nx-grey-1;
+  border: $nx-border-dark;
+  border-radius: 4px;
+  color: $nx-text-color-light;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  height: 32px;
+  line-height: 16px;
+  margin: 0 8px;
+  padding: 0 12px;
+  text-align: center;
+  vertical-align: middle;
+  min-width: 100px;
+
+  + .nx-btn {
+    // buttons should be 8px from adjacent items, except other buttons which they should only be 4px from
+    margin-left: -4px;
+  }
+
+  &:hover, &:focus, &:active {
+    border-color: $nx-slate;
+    color: $nx-text-color;
+  }
+
+  &:active {
+    background-color: $nx-grey-2;
+  }
+
+  &.disabled, &[disabled] {
+    background-color: $nx-grey-1;
+    border-color: $nx-grey-2;
+    color: $nx-grey-4;
+    cursor: default;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.nx-btn--primary {
+  background-color: $nx-background-color-interactive;
+  border-color: transparent;
+  border-width: 2px;
+  color: $nx-off-white;
+  padding: 0 11px;
+
+  &:hover, &:focus, &:active {
+    border-color: $nx-background-color-interactive-active;
+    color: $nx-off-white;
+  }
+
+  &:active {
+    background: $nx-background-color-interactive-active;
+    border-color: $nx-background-color-interactive-active;
+  }
+
+  &.disabled, &[disabled] {
+    background-color: $nx-background-color-interactive-disabled;
+    border-color: transparent;
+    color: $nx-off-white;
+  }
+}
+
+.nx-btn--tertiary {
+  background-color: transparent;
+  border-color: transparent;
+
+  &:hover, &:focus {
+    border-color: $nx-grey-4;
+  }
+
+  &:active {
+    background-color: transparent;
+    border-color: $nx-slate;
+  }
+
+  &.disabled, &[disabled] {
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+
+.nx-btn--error {
+  background-color: $nx-fail-color;
+  border-color: $nx-fail-color;
+  color: $nx-off-white;
+
+  &:hover, &:focus, &:active {
+    background-color: $nx-fail-color;
+    border-color: $nx-fail-color-active;
+    color: $nx-off-white;
+  }
+
+  &:active {
+    background-color: $nx-fail-color-active;
+  }
+}
+
+.nx-btn--icon-only {
+  padding: 0;
+  width: 32px;
+  min-width: 0;
+}

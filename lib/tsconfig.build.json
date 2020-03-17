@@ -1,0 +1,16 @@
+{
+  /* These are the "build" options.  That is, they do exclude test files */
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "src/**/__tests__/",
+    "src/**/setupTests.ts",
+    "src/__mocks__/",
+    "src/__testutils__/",
+    "dist/",
+
+    // Ignore styles entry point for main build; it is only used for the webpack build defined in
+    // webpack.config.styles.js
+    "src/react-shared-components-css.ts"
+  ]
+}

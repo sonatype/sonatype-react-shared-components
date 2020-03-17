@@ -1,0 +1,119 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-variables';
+@import '../scss-shared/nx-flexbox-helpers';
+@import '../scss-shared/nx-container-helpers';
+
+.nx-grid-row {
+  display: flex;
+}
+
+.nx-grid-col {
+  flex: 1 0;
+
+  border-left: $nx-border-light;
+  box-sizing: border-box;
+  margin: 8px 0;
+  overflow-x: hidden;
+  padding: 0 12px;
+
+  // necessary for IE11
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  &:first-child {
+    border: none;
+    padding-left: 0;
+  }
+  
+  &:last-child {
+    padding-right: 0;
+  }
+  
+  .nx-grid-col {
+    margin: 0;
+  }
+}
+
+.nx-grid-col--25 {
+  @include nx-grid-col-width(25%);
+}
+
+.nx-grid-col--50 {
+  @include nx-grid-col-width(50%);
+}
+
+.nx-grid-col--75 {
+  @include nx-grid-col-width(75%);
+}
+
+.nx-grid-col--33 {
+  @include nx-grid-col-width(33%);
+}
+
+.nx-grid-col--67 {
+  @include nx-grid-col-width(67%);
+}
+
+.nx-grid-h-keyline {
+  border: none;
+  border-top: $nx-border-light;
+  margin: 0;
+}
+
+.nx-grid-h-keyline--white {
+  border-color: $nx-off-white;
+}
+
+.nx-grid-col--noborder {
+  border-left-color: $nx-off-white;
+}
+
+.nx-grid-col {
+  .nx-grid-h-keyline {
+    margin: 12px 0 4px 0;
+  }
+}
+
+// Grid headers
+.nx-grid-header {
+  margin: 0 0 18px 0;
+}
+
+.nx-grid-header__title {
+  @extend .nx-truncate-ellipsis;
+  @include container-horizontal;
+
+  line-height: 100%;
+  margin: 0; // zeros out any <h#> margin
+}
+
+h1.nx-grid-header__title {
+  font-size: 26px;
+}
+
+h2.nx-grid-header__title {
+  padding-top: 2px;
+}
+
+.nx-grid-header__icon {
+  display: inline-block;
+  margin: 0 8px 0 0;
+}
+
+.nx-grid-header__subtitle {
+  line-height: 16px;
+  max-width: $nx-paragraph-width-maximum;
+  padding-top: 2px;
+}
+
+.nx-grid-header__hrule {
+  border: 0 solid $nx-grey-4;
+  border-bottom-width: 1px;
+  margin: 0;
+  padding-top: 9px;
+}

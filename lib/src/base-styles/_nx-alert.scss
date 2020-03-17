@@ -1,0 +1,45 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-variables';
+@import '../scss-shared/nx-container-helpers';
+/*
+  #Alerts
+*/
+.nx-alert {
+  @include container-horizontal;
+  @include container-vertical;
+
+  background-color: $nx-off-white;
+  border: $nx-border-darker;
+  color: $nx-text-color-light;
+  margin: 8px 0;
+  padding: 9px 8px 8px 8px;
+}
+
+.nx-alert--warning {
+  background-color: $nx-warn-color-bg;
+  border-color: $nx-warn-color;
+  color: $nx-warn-color;
+}
+
+.nx-alert--error {
+  background-color: $nx-fail-color-bg;
+  border-color: $nx-fail-color;
+  color: $nx-text-color-error;
+}
+
+.nx-alert--info {
+  background-color: $nx-off-white;
+  border-color: $nx-dark-blue;
+  color: $nx-text-color;
+
+  .svg-inline--fa {
+    color: $nx-dark-blue;
+    font-size: 16px;
+    vertical-align: -0.2em;
+  }
+}

@@ -1,0 +1,145 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-variables';
+
+.nx-policy-threat-slider {
+  display: inline-block;
+
+  font-size: 13px;
+
+  // the .MuiSlider-thumb elements actually stick out of the sides of the .MuiSlider-root at their min and max
+  // positions.  This padding ensures that they don't stick out of the overall box for this component
+  padding: 0 9px;
+
+  .MuiSlider-root {
+    display: inline-block;
+    height: 6px;
+    padding: 9px 0;
+    width: 180px;
+  }
+
+  .MuiSlider-markActive {
+    background-color: currentColor;
+  }
+
+  .MuiSlider-rail, .MuiSlider-track {
+    display: none;
+  }
+
+  .MuiSlider-thumb {
+    align-items: stretch;
+    border-radius: 4px;
+
+    color: $nx-off-white;
+
+    height: 17px;
+    width: 18px;
+
+    margin-left: -9px;
+
+    &.MuiSlider-active, &:hover {
+      box-shadow: none;
+    }
+  }
+
+  .nx-policy-threat-slider__value-label--none {
+    .MuiSlider-thumb {
+      background-color: $nx-threat-color-none;
+    }
+  }
+
+  .nx-policy-threat-slider__value-label--low {
+    .MuiSlider-thumb {
+      background-color: $nx-threat-color-low;
+    }
+  }
+
+  .nx-policy-threat-slider__value-label--moderate {
+    .MuiSlider-thumb {
+      background-color: $nx-threat-color-moderate;
+    }
+  }
+
+  .nx-policy-threat-slider__value-label--severe {
+    .MuiSlider-thumb {
+      background-color: $nx-threat-color-severe;
+    }
+  }
+
+  .nx-policy-threat-slider__value-label--critical {
+    .MuiSlider-thumb {
+      background-color: $nx-threat-color-critical;
+    }
+  }
+
+  .MuiSlider-mark {
+    height: 6px;
+
+    // threat level 0
+    border-radius: 4px 0 0 4px;
+    color: $nx-threat-color-none-light;
+
+    // the first mark only goes from 0 - 0.5, so is only 5% wide.
+    // The rest (except the last) each go from (n - 0.5) to (n + 0.5), so are 10% wide with a -5% left margin.
+    // The last one doesn't go beyond the end so is also only 5% wide
+    width: 5%;
+
+    // ~ is the sibling selector (not to be confused with the adjacent sibling selector, +). Used here to count
+    // which mark you are at. The marks are the elements that denote each step along the slider, and with this styling,
+    // together constitute the background bar of the slider.  Different parts of the bar (i.e. different marks)
+    // need to be different colors
+    ~ .MuiSlider-mark {
+      border-radius: 0;
+      margin-left: -5%;
+      width: 10%;
+
+      // threat level 1
+      color: $nx-threat-color-low-light;
+
+      ~ .MuiSlider-mark {
+        // threat level 2
+        color: $nx-threat-color-moderate-light;
+
+        ~ .MuiSlider-mark {
+          // threat level 3
+
+          ~ .MuiSlider-mark {
+            // threat level 4
+            color: $nx-threat-color-severe-light;
+
+            ~ .MuiSlider-mark {
+              // threat level 5
+
+              ~ .MuiSlider-mark {
+                // threat level 6
+
+                ~ .MuiSlider-mark {
+                  // threat level 7
+
+                  ~ .MuiSlider-mark {
+                    // threat level 8
+                    color: $nx-threat-color-critical-light;
+
+                    ~ .MuiSlider-mark {
+                      // threat level 9
+
+                      ~ .MuiSlider-mark {
+                        // threat level 10
+                        border-radius: 0 4px 4px 0;
+                        width: 5%;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

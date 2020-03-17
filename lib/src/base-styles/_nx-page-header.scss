@@ -1,0 +1,89 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-variables';
+@import '../scss-shared/nx-text-helpers';
+@import '../scss-shared/nx-container-helpers';
+
+/*
+  #Main Header
+*/
+
+.nx-header {
+  background-color: $nx-off-black;
+  flex-shrink: 0; // needed for IE11
+  height: $nx-main-header-height;
+  width: 100%;
+}
+
+.nx-header__inner {
+  @include container-horizontal;
+
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  max-width: $nx-page-width-max;
+}
+
+.nx-title {
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
+  box-sizing: border-box;
+  color: #fff;
+  display: -ms-grid;
+  display: grid;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  -ms-grid-rows: 22px 2px auto;
+  grid-template-rows: 22px auto;
+  -ms-grid-columns: 36px 2px auto;
+  grid-template-columns: 36px auto;
+  grid-template-areas:
+    "logo title"
+    "logo version";
+  height: 40px;
+  padding-right: 12px;
+  text-decoration: none;
+  min-width: $nx-sidebar-width;
+}
+
+.nx-app-logo {
+  -ms-grid-row-align: center;
+  align-self: center;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+  grid-area: logo;
+  height: 36px;
+  width: 36px;
+}
+
+.nx-title__brand {
+  @include semi-bold();
+
+  -ms-grid-row-align: end;
+  align-self: end;
+  font-size: 18px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: title;
+  -ms-grid-column-align: left;
+  justify-self: left;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.nx-title__version {
+  align-self: start;
+  -ms-grid-row-align: start;
+  font-size: 12px;
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: version;
+  -ms-grid-column-align: left;
+  justify-self: left;
+  line-height: 12px;
+}

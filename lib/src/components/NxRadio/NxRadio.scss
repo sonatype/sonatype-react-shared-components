@@ -1,0 +1,67 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-text-helpers';
+@import '../../scss-shared/nx-container-helpers';
+
+.nx-radio {
+  $circle-width: 16px;
+  $label-margin: 8px;
+  $line-height: 20px;
+
+  @include container-horizontal;
+  @include regular();
+
+  display: inline-block;
+  font-size: 14px;
+  line-height: $line-height;
+  position: relative;
+  white-space: nowrap;
+
+  &:hover:not(.nx-radio--disabled) {
+    cursor: pointer;
+  }
+
+  .nx-radio__circle {
+    color: $nx-text-color-light;
+    cursor: pointer;
+    height: $line-height;
+    margin-right: $label-margin;
+    width: $circle-width;
+    vertical-align: top;
+
+    &:last-child {
+      // due to specificity issues the `container-horizontal` mixin on nx-radio isn't successfully setting this
+      margin-right: 0;
+    }
+  }
+
+  .nx-radio__outer-circle {
+    stroke: currentColor;
+  }
+
+  .nx-radio__inner-circle {
+    fill: currentColor;
+  }
+
+  &.nx-radio--disabled {
+    color: $nx-grey-4;
+
+    .nx-radio__circle {
+      color: $nx-grey-4;
+      cursor: default;
+    }
+  }
+
+  input.nx-radio__input {
+    display: none;
+  }
+}
+
+.nx-radio__content {
+  @include container-horizontal;
+}

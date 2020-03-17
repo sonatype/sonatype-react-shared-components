@@ -1,0 +1,70 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-variables';
+@import '../scss-shared/nx-container-helpers';
+
+/*
+  #Layout
+*/
+.nx-html, .nx-body {
+  box-sizing: border-box;
+  height: 100%;
+
+  // prevents scrollbar flicker as tooltips appear in IE11
+  overflow-y: hidden;
+}
+
+.nx-body {
+  background-color: $nx-site-background-color;
+  color: $nx-text-color;
+  margin: 0;
+  padding: 0;
+}
+
+.nx-body-container {
+  @include container-vertical;
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: $nx-page-width-min;
+}
+
+.nx-root-container {
+  @include container-horizontal;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-grow: 1;
+  max-width: $nx-page-width-max;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.nx-page-sidebar {
+  @include container-vertical;
+
+  background-color: $nx-sidebar-background-color;
+  box-sizing: border-box;
+  flex-basis: $nx-sidebar-width;
+  overflow-x: hidden;
+  padding: $nx-spacing-xl $nx-spacing-sm $nx-spacing-xs $nx-spacing-sm;
+  position: relative;
+  white-space: normal;
+}
+
+.nx-page-main {
+  @include container-vertical;
+
+  box-sizing: border-box;
+  flex: 1 0 $nx-content-width;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: $nx-spacing-xl $nx-spacing-md $nx-spacing-md $nx-spacing-md;
+  white-space: normal;
+}
