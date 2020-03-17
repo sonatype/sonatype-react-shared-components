@@ -41,7 +41,7 @@ export default function NxTooltipPage() {
               <td className="nx-cell">title</td>
               <td className="nx-cell">React Node (e.g. VDOM or string)</td>
               <td className="nx-cell">Yes</td>
-              <td className="nx-cell">The tooltip content</td>
+              <td className="nx-cell">The tooltip content. Defaults to empty string</td>
             </tr>
             <tr className="nx-table-row">
               <td className="nx-cell">placement</td>

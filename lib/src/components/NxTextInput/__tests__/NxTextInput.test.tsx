@@ -16,28 +16,22 @@ describe('NxTextInput', function() {
       },
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxTextInput, minimalProps);
 
-  it('renders a text input by default', function() {
-    expect(getShallowComponent()).toMatchSelector('input');
-    expect(getShallowComponent()).toHaveProp('type', 'text');
-    expect(getShallowComponent().find(NxTooltip)).not.toExist();
-  });
-
-  it('renders a text input wrapped in a NxTooltip if there are validation errors', function() {
-    expect(getShallowComponent({ validationErrors: 'foo' })).toMatchSelector(NxTooltip);
+  it('renders a text input wrapped in a NxTooltip by default', function() {
+    expect(getShallowComponent()).toMatchSelector(NxTooltip);
     expect(getShallowComponent().find('input')).toExist();
     expect(getShallowComponent().find('input')).toHaveProp('type', 'text');
   });
 
-  it('renders a password input if type is "password"', function() {
-    expect(getShallowComponent({ type: 'password' })).toMatchSelector('input');
-    expect(getShallowComponent({ type: 'password' })).toHaveProp('type', 'password');
-    expect(getShallowComponent().find(NxTooltip)).not.toExist();
+  it('renders a password input wrapped in a tooltip if type is "password"', function() {
+    expect(getShallowComponent({ type: 'password' })).toMatchSelector(NxTooltip);
+    expect(getShallowComponent({ type: 'password' }).find('input')).toExist();
+    expect(getShallowComponent({ type: 'password' }).find('input')).toHaveProp('type', 'password');
   });
 
   it('renders a textarea if type is "textarea"', function() {
-    expect(getShallowComponent({ type: 'textarea' })).toMatchSelector('textarea');
-    expect(getShallowComponent({ type: 'textarea' })).toHaveProp('type', undefined);
-    expect(getShallowComponent().find(NxTooltip)).not.toExist();
+    expect(getShallowComponent({ type: 'textarea' })).toMatchSelector(NxTooltip);
+    expect(getShallowComponent({ type: 'textarea' }).find('textarea')).toMatchSelector('textarea');
+    expect(getShallowComponent({ type: 'textarea' }).find('textarea')).toHaveProp('type', undefined);
   });
 
   it('sets the value as specified', function() {
@@ -61,7 +55,13 @@ describe('NxTextInput', function() {
   });
 
   it('sets the nx-tooltip--validation-error class on the tooltip', function() {
-    expect(getShallowComponent({ validationErrors: 'foo' })).toHaveClassName('nx-tooltip--validation-error');
+    expect(getShallowComponent()).toHaveClassName('nx-tooltip--validation-error');
+  });
+
+  it('sets the tooltips `open` prop to false if there are no validation errors', function() {
+    expect(getShallowComponent()).toHaveProp('open', false);
+    expect(getShallowComponent({ validationErrors: null })).toHaveProp('open', false);
+    expect(getShallowComponent({ validationErrors: [] })).toHaveProp('open', false);
   });
 
   it('sets the tooltips `open` prop to true and sets the title to the first validation error if it exists', function() {
