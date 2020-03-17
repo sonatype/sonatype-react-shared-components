@@ -12,6 +12,9 @@ This repo builds an npm package exposing the shared components for use in other 
 this repo contains a "gallery" application which demonstrates the appropriate usage of the components as well
 as Sonatype's standard CSS styles.
 
+This library is not intended for direct public usage. It is intended for usage internally within Sonatype products, and
+has been made open-source so that it may be used within Sonatype's other open-source products.
+
 ## Goals
 * Use technologies that lend themselves to clear, stable, self-documenting APIs
   * Example: TypeScript
