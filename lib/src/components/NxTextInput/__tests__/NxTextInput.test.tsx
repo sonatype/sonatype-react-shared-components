@@ -58,10 +58,13 @@ describe('NxTextInput', function() {
     expect(getShallowComponent()).toHaveClassName('nx-tooltip--validation-error');
   });
 
-  it('sets the tooltips `open` prop to false if there are no validation errors', function() {
+  it('sets the tooltips `open` prop to false and title to null if there are no validation errors', function() {
     expect(getShallowComponent()).toHaveProp('open', false);
     expect(getShallowComponent({ validationErrors: null })).toHaveProp('open', false);
+    expect(getShallowComponent({ validationErrors: null })).toHaveProp('title', null);
+
     expect(getShallowComponent({ validationErrors: [] })).toHaveProp('open', false);
+    expect(getShallowComponent({ validationErrors: [] })).toHaveProp('title', null);
   });
 
   it('sets the tooltips `open` prop to true and sets the title to the first validation error if it exists', function() {
