@@ -30,7 +30,7 @@ describe('NxTooltip', function() {
     expect(component).toHaveProp('onClose', onClose);
   });
 
-  it('replaces most null props with undefined, and title with empty string', function() {
+  it('replaces null title with empty string, and all other null props with undefined', function() {
     const component = getNxTooltip({
       title: null,
       className: null,
