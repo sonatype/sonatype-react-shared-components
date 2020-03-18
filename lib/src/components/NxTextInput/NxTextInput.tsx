@@ -60,21 +60,19 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
         }
       }
 
-      const textElement = React.createElement(element, {
-        ...newProps,
-        ref,
-        type: typeAttr,
-        onChange: inputOnChange,
-        className: internalClassName,
-        onKeyPress: inputOnKeyPress
-      });
-
       return (
         <NxTooltip open={isInvalid}
                    title={firstValidationError}
                    className="nx-tooltip--validation-error"
                    placement="top-end">
-          { textElement }
+          {React.createElement(element, {
+            ...newProps,
+            ref,
+            type: typeAttr,
+            onChange: inputOnChange,
+            className: internalClassName,
+            onKeyPress: inputOnKeyPress
+          })}
         </NxTooltip>
       );
     }
