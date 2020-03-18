@@ -59,7 +59,8 @@ const NxTextInputPage = () =>
             <td>string[]</td>
             <td>No</td>
             <td>
-              Zero or more validation error messages.  If empty or not defined, the field is considered to be valid
+              Zero or more validation error messages.  If empty or not defined, the field is considered to be valid.
+              If the field is invalid, it will receive error styling and a tooltip displaying the first error message.
             </td>
           </tr>
           <tr>
