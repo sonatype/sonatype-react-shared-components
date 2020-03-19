@@ -53,13 +53,10 @@ dockerizedBuildPipeline(
       yarn install
       npm run test
       npm run build
-      cd dist
-      npm pack
-      cd ../..
+      cd ..
 
       cd gallery
       yarn install
-
       npm run build
       cd ..
     '''
