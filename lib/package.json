@@ -3,12 +3,10 @@
   "version": "0.40.0",
   "description": "Sonatype shared UI components and utilities written in React",
   "main": "index.js",
-  "publishConfig": {
-    "registry": "https://repository.sonatype.org/content/repositories/npm-hosted/"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sonatype/react-shared-components.git"
+    "url": "https://github.com/sonatype/sonatype-react-shared-components.git",
+    "directory": "lib"
   },
   "scripts": {
     "build": "npm-run-all -p lint compile-ts compile-scss copy-scss copy-package-json copy-assets",

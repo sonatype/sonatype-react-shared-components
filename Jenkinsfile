@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@Library(['private-pipeline-library', 'jenkins-shared']) _
+@Library(['private-pipeline-library', 'jenkins-shared@CDI-292_support_named_config_withDocker']) _
 
 dockerizedBuildPipeline(
   prepare: {
@@ -53,13 +53,10 @@ dockerizedBuildPipeline(
       yarn install
       npm run test
       npm run build
-      cd dist
-      npm pack
-      cd ../..
+      cd ..
 
       cd gallery
       yarn install
-
       npm run build
       cd ..
     '''
@@ -75,9 +72,11 @@ dockerizedBuildPipeline(
     }
   },
   deploy: {
-    withDockerImage(env.DOCKER_IMAGE_ID, {
-      sh 'npm publish lib/dist'
-    })
+    withCredentials([string(credentialsId: 'uxui-npm-auth-token', variable: 'NPM_TOKEN')]) {
+      withDockerImage(env.DOCKER_IMAGE_ID, 'npmjs-npmrc') {
+        sh 'npm publish --access public lib/dist'
+      }
+    }
   },
   postDeploy: {
     sshagent(credentials: [sonatypeZionCredentialsId()]) {
