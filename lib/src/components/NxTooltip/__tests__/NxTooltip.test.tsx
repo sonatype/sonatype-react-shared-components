@@ -30,12 +30,20 @@ describe('NxTooltip', function() {
     expect(component).toHaveProp('onClose', onClose);
   });
 
-  it('replaces null props with undefined', function() {
-    const component = getNxTooltip({ className: null, open: null, onOpen: null, onClose: null, placement: null });
+  it('replaces null title with empty string, and all other null props with undefined', function() {
+    const component = getNxTooltip({
+      title: null,
+      className: null,
+      open: null,
+      onOpen: null,
+      onClose: null,
+      placement: null
+    });
 
     expect(component).toHaveProp('open', undefined);
     expect(component).toHaveProp('onOpen', undefined);
     expect(component).toHaveProp('onClose', undefined);
+    expect(component).toHaveProp('title', '');
   });
 
   it('passes "nx-tooltip" as the `tooltip` property on the `classes` prop of the Tooltip', function() {

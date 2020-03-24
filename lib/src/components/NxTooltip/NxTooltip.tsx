@@ -36,7 +36,7 @@ function fixOptional(props: Props): TooltipProps {
     onClose: props.onClose || undefined,
     open: props.open === null ? undefined : props.open,
     placement: convertPlacement(props.placement),
-    title: props.title || undefined
+    title: props.title || ''
   };
 }
 

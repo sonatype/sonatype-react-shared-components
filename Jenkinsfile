@@ -17,7 +17,7 @@ dockerizedBuildPipeline(
     // In this repo, all PRs must bump the version number so that master builds can be automatically released.
     // This shell script enforces that
     sh '''
-      # function that returns whether its first parameter is a versions string that is less than or equal to 
+      # function that returns whether its first parameter is a versions string that is less than or equal to
       # the second parameter
       # From https://stackoverflow.com/a/4024263
       verlte() {
@@ -53,7 +53,9 @@ dockerizedBuildPipeline(
       yarn install
       npm run test
       npm run build
-      cd ..
+      cd dist
+      npm pack
+      cd ../..
 
       cd gallery
       yarn install
@@ -74,7 +76,7 @@ dockerizedBuildPipeline(
   deploy: {
     withCredentials([string(credentialsId: 'uxui-npm-auth-token', variable: 'NPM_TOKEN')]) {
       withDockerImage(env.DOCKER_IMAGE_ID, 'npmjs-npmrc') {
-        sh 'npm publish --access public lib/dist'
+        sh 'npm publish --access public lib/dist/sonatype-react-shared-components-$VERSION.tgz'
       }
     }
   },

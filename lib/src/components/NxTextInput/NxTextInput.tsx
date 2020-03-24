@@ -33,8 +33,10 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
        * `trimmedValue` is a hidden property in `props`
        * We need to remove it so react doesn't complain when we pass the object
        * with the props to the `createElement` method below.
+       * `title` is removed to prevent errors when `NxTextInput`, which itself uses` NxTooltip`, is wrapped
+       * in another `NxTooltip`
        */
-      const newProps = omit(['trimmedValue'], attrs);
+      const newProps = omit(['trimmedValue', 'title'], attrs);
       const isTextArea = type === 'textarea',
           element = isTextArea ? 'textarea' : 'input',
           typeAttr = isTextArea ? undefined : (type || 'text'),
@@ -58,25 +60,21 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
         }
       }
 
-      const textElement = React.createElement(element, {
-        ...newProps,
-        ref,
-        type: typeAttr,
-        onChange: inputOnChange,
-        className: internalClassName,
-        onKeyPress: inputOnKeyPress
-      });
-
-      const invalidTextElementWithTooltip = (
+      return (
         <NxTooltip open={isInvalid}
                    title={firstValidationError}
                    className="nx-tooltip--validation-error"
                    placement="top-end">
-          { textElement }
+          {React.createElement(element, {
+            ...newProps,
+            ref,
+            type: typeAttr,
+            onChange: inputOnChange,
+            className: internalClassName,
+            onKeyPress: inputOnKeyPress
+          })}
         </NxTooltip>
       );
-
-      return isInvalid ? invalidTextElementWithTooltip : textElement;
     }
 );
 
