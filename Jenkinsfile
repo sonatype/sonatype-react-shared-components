@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@Library(['private-pipeline-library', 'jenkins-shared@CDI-292_support_named_config_withDocker']) _
+@Library(['private-pipeline-library', 'jenkins-shared']) _
 
 dockerizedBuildPipeline(
   prepare: {
