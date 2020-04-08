@@ -35,6 +35,7 @@ import NxThreatNumberPage from './styles/NxThreatNumber/NxThreatNumberPage';
 import NxFormLayoutPage from './styles/NxFormLayout/NxFormLayoutPage';
 import NxSubmitMaskPage from './components/NxSubmitMask/NxSubmitMaskPage';
 import NxStatefulSubmitMaskPage from './components/NxStatefulSubmitMask/NxStatefulSubmitMaskPage';
+import NxTableComponentPage from './components/NxTable/NxTablePage';
 import NxTreeViewPage from './components/NxTreeView/NxTreeViewPage';
 import NxTreeViewRadioSelectPage from './components/NxTreeViewRadioSelect/NxTreeViewRadioSelectPage';
 import NxStatefulTreeViewRadioSelectPage
@@ -86,6 +87,7 @@ const pageConfig: PageConfig = {
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
     NxSubmitMask: NxSubmitMaskPage,
+    NxTablePage: NxTableComponentPage,
     NxTreeView: NxTreeViewPage,
     NxTooltip: NxTooltipPage,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
