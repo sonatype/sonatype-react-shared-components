@@ -9,16 +9,16 @@
 
 $nx-filter-input-height: 20px;
 
-.nx-filter-input, .nx-filter-input * {
-  box-sizing: content-box;
-}
-
 .nx-filter-input {
   @include container-horizontal;
 
   display: inline-block;
   vertical-align: middle;
   white-space: nowrap;
+  
+  &, & * {
+    box-sizing: content-box;
+  }
 }
 
 .nx-filter-input__add-on {
