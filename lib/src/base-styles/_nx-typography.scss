@@ -28,6 +28,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/open-sans-v17-latin-italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
 .nx-body {
   @include regular();
 
