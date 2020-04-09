@@ -13,11 +13,9 @@ export {Props} from './types';
 import './NxTable.scss';
 
 const NxTable = function NxTableElement(props: Props) {
-  const {className, children, ...attrs} = props;
+  const {className, ...attrs} = props;
   return (
-    <table className={classnames('nx-table', className)} {...attrs}>
-      {children}
-    </table>
+    <table className={classnames('nx-table', className)} {...attrs} />
   );
 };
 

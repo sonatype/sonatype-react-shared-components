@@ -10,12 +10,10 @@ import {Props} from './types';
 export {Props} from './types';
 
 const NxTableBody = function NxTableBody(props: Props) {
-  const {className, children, ...attrs} = props;
+  const {className, ...attrs} = props;
 
   return (
-    <tbody className={className} {...attrs}>
-      {children}
-    </tbody>
+    <tbody className={className} {...attrs} />
   );
 };
 
