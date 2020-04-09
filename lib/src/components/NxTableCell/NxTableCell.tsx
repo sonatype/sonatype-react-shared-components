@@ -15,13 +15,17 @@ export {Props} from './types';
 
 const NxTableCell = function NxTableCell(props: Props) {
   const {
-    isHeader = false,
-    isEmpty = false,
-    isError = false,
-    isNumeric = false,
-    isSortable = false,
-    hasIcon = false,
-    sortDir, className, children, ...attrs} = props;
+      isHeader = false,
+      isEmpty = false,
+      isError = false,
+      isNumeric = false,
+      isSortable = false,
+      hasIcon = false,
+      sortDir, 
+      className, 
+      children, 
+      ...attrs
+  } = props;
 
   const classes = classnames('nx-cell', className, {
     'nx-cell--header': isHeader,
