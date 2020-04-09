@@ -17,7 +17,7 @@ $nx-filter-input-height: 20px;
   white-space: nowrap;
   
   & > * {
-    box-sizing: content-box;
+    box-sizing: content-box !important;
   }
 }
 
