@@ -44,11 +44,13 @@ const NxTableCell = function NxTableCell(props: Props) {
     }
   }
 
+  const Tag = isHeader? 'th' : 'td';
+
   return (
-    <td className={classes} {...attrs}>
+    <Tag className={classes} {...attrs}>
       {children}
       {sortIcon}
-    </td>
+    </Tag>
   );
 };
 
