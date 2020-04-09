@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+// Reveal problems with box-sizing set to border-box, see https://issues.sonatype.org/browse/RSC-84
 .nx-filter-input-examples * {
   box-sizing: border-box;
 }
