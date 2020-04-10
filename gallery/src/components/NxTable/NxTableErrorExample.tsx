@@ -8,7 +8,6 @@ import React from 'react';
 
 import {
   NxTable,
-  NxTableBody,
   NxTableCell,
   NxTableHead,
   NxTableRow,
@@ -28,11 +27,11 @@ const NxTableLoadingExample = () => {
           <NxTableCell>Header 5</NxTableCell>
         </NxTableRow>
       </NxTableHead>
-      <NxTableBody>
+      <tbody>
         <NxTableRow>
           <NxTableCell isError colSpan={5}><NxFontAwesomeIcon icon={faExclamationTriangle} /> Failed to load list message</NxTableCell>
         </NxTableRow>
-      </NxTableBody>
+      </tbody>
     </NxTable>
   );
 };

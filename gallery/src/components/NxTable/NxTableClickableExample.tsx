@@ -8,7 +8,6 @@ import React from 'react';
 
 import {
   NxTable,
-  NxTableBody,
   NxTableCell,
   NxTableHead,
   NxTableRow,
@@ -35,7 +34,7 @@ const NxTableClickableExample = () => {
           <NxTableCell hasIcon />
         </NxTableRow>
       </NxTableHead>
-      <NxTableBody>
+      <tbody>
         {rows.map(row => 
           <NxTableRow key={row.name} isClickable onClick={() => alert(`Clicked ${row.name}`)}>
             <NxTableCell>{row.name}</NxTableCell>
@@ -43,7 +42,7 @@ const NxTableClickableExample = () => {
             <NxTableCell hasIcon><NxFontAwesomeIcon icon={faChevronRight}/></NxTableCell>
           </NxTableRow>
           )}
-      </NxTableBody>
+      </tbody>
     </NxTable>
   );
 };

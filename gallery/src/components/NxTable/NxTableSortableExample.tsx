@@ -8,7 +8,6 @@ import React, {useState} from 'react';
 
 import {
   NxTable,
-  NxTableBody,
   NxTableCell,
   NxTableHead,
   NxTableRow
@@ -44,13 +43,13 @@ const NxTableSortableExample = () => {
           <NxTableCell isSortable sortDir={sortDir} onClick={sort}>Name</NxTableCell>
         </NxTableRow>
       </NxTableHead>
-      <NxTableBody>
+      <tbody>
         {rows.map(row => 
           <NxTableRow key={row}>
             <NxTableCell>{row}</NxTableCell>
           </NxTableRow>
           )}
-      </NxTableBody>
+      </tbody>
     </NxTable>
   );
 };
