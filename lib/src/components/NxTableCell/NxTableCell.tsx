@@ -11,7 +11,7 @@ import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { Props } from './types';
-export {Props} from './types';
+export { Props } from './types';
 
 const NxTableCell = function NxTableCell(props: Props) {
   const {
