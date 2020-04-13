@@ -29,7 +29,10 @@ const NxTableLoadingExample = () => {
       </NxTableHead>
       <tbody>
         <NxTableRow>
-          <NxTableCell isError colSpan={5}><NxFontAwesomeIcon icon={faExclamationTriangle} /> Failed to load list message</NxTableCell>
+          <NxTableCell isError colSpan={5}>
+            <NxFontAwesomeIcon icon={faExclamationTriangle} />
+            Failed to load list message
+          </NxTableCell>
         </NxTableRow>
       </tbody>
     </NxTable>

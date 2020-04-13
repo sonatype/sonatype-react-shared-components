@@ -44,7 +44,7 @@ const NxTableSortableExample = () => {
         </NxTableRow>
       </NxTableHead>
       <tbody>
-        {rows.map(row => 
+        {rows.map(row =>
           <NxTableRow key={row}>
             <NxTableCell>{row}</NxTableCell>
           </NxTableRow>
