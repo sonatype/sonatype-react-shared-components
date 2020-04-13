@@ -12,6 +12,8 @@ import CodeExample from '../../CodeExample';
 import NxFilterInputFullExample from './NxFilterInputFullExample';
 import NxFilterInputDisabledExample from './NxFilterInputDisabledExample';
 
+import './NxFilterInputPage.scss';
+
 const nxFilterInputFullExampleCode = require('!!raw-loader!./NxFilterInputFullExample').default,
     nxFilterInputDisabledExampleCode = require('!!raw-loader!./NxFilterInputDisabledExample').default;
 
@@ -75,12 +77,12 @@ const NxFilterInputPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="NxFilterInput Example">
+    <GalleryTile title="NxFilterInput Example" className="nx-filter-input-examples">
       <NxFilterInputFullExample />
       <CodeExample content={nxFilterInputFullExampleCode}/>
     </GalleryTile>
 
-    <GalleryTile title="NxFilterInput Disabled Example">
+    <GalleryTile title="NxFilterInput Disabled Example" className="nx-filter-input-examples">
       <NxFilterInputDisabledExample />
       <CodeExample content={nxFilterInputDisabledExampleCode}/>
     </GalleryTile>

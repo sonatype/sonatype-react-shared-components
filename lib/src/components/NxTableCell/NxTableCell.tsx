@@ -15,16 +15,16 @@ export {Props} from './types';
 
 const NxTableCell = function NxTableCell(props: Props) {
   const {
-      isHeader = false,
-      isEmpty = false,
-      isError = false,
-      isNumeric = false,
-      isSortable = false,
-      hasIcon = false,
-      sortDir, 
-      className, 
-      children, 
-      ...attrs
+    isHeader = false,
+    isEmpty = false,
+    isError = false,
+    isNumeric = false,
+    isSortable = false,
+    hasIcon = false,
+    sortDir,
+    className,
+    children,
+    ...attrs
   } = props;
 
   const classes = classnames('nx-cell', className, {
@@ -48,7 +48,7 @@ const NxTableCell = function NxTableCell(props: Props) {
     }
   }
 
-  const Tag = isHeader? 'th' : 'td';
+  const Tag = isHeader ? 'th' : 'td';
 
   return (
     <Tag className={classes} {...attrs}>
