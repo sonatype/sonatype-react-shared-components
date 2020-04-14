@@ -24,7 +24,7 @@ import NxThreatBarPage from './components/NxThreatBar/NxThreatBarPage';
 import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
-import NxTablePage from './styles/NxTable/NxTablePage';
+import NxTableStylePage from './styles/NxTable/NxTablePage';
 import NxAlertComponentsPage from './components/NxAlert/NxAlertPage';
 import NxContainerHelpersPage from './styles/NxContainerHelpers/NxContainerHelpersPage';
 import NxGridPage from './styles/NxGrid/NxGridPage';
@@ -35,7 +35,7 @@ import NxThreatNumberPage from './styles/NxThreatNumber/NxThreatNumberPage';
 import NxFormLayoutPage from './styles/NxFormLayout/NxFormLayoutPage';
 import NxSubmitMaskPage from './components/NxSubmitMask/NxSubmitMaskPage';
 import NxStatefulSubmitMaskPage from './components/NxStatefulSubmitMask/NxStatefulSubmitMaskPage';
-import NxTableComponentPage from './components/NxTable/NxTablePage';
+import NxTablePage from './components/NxTable/NxTablePage';
 import NxTreeViewPage from './components/NxTreeView/NxTreeViewPage';
 import NxTreeViewRadioSelectPage from './components/NxTreeViewRadioSelect/NxTreeViewRadioSelectPage';
 import NxStatefulTreeViewRadioSelectPage
@@ -59,7 +59,7 @@ const pageConfig: PageConfig = {
     'nx-list': NxListPage,
     'nx-text-input': NxTextInputStylesPage,
     'nx-alert': NxAlertPage,
-    'nx-table': NxTablePage,
+    'nx-table': NxTableStylePage,
     'nx-grid': NxGridPage,
     'nx-counter': NxCounterPage,
     'nx-icon': NxIconPage,
@@ -87,7 +87,7 @@ const pageConfig: PageConfig = {
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
     NxSubmitMask: NxSubmitMaskPage,
-    NxTablePage: NxTableComponentPage,
+    NxTable: NxTablePage,
     NxTreeView: NxTreeViewPage,
     NxTooltip: NxTooltipPage,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
