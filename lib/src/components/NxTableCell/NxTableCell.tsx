@@ -38,13 +38,13 @@ const NxTableCell = function NxTableCell(props: Props) {
   let sortIcon = null;
   if (isSortable) {
     if (sortDir === 'asc') {
-      sortIcon = <NxFontAwesomeIcon icon={faSortUp} fixedWidth/>;
+      sortIcon = faSortUp;
     }
     else if (sortDir === 'desc') {
-      sortIcon = <NxFontAwesomeIcon icon={faSortDown} fixedWidth/>;
+      sortIcon = faSortDown;
     }
     else {
-      sortIcon = <NxFontAwesomeIcon icon={faSort} fixedWidth/>;
+      sortIcon = faSort;
     }
   }
 
@@ -53,7 +53,7 @@ const NxTableCell = function NxTableCell(props: Props) {
   return (
     <Tag className={classes} {...attrs}>
       {children}
-      {sortIcon}
+      {sortIcon ? <NxFontAwesomeIcon icon={sortIcon} fixedWidth/> : null}
     </Tag>
   );
 };
