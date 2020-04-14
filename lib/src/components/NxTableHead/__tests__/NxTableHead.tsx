@@ -10,13 +10,11 @@ import NxTableHead from '../NxTableHead';
 import NxTableRow from '../../NxTableRow/NxTableRow';
 
 describe('NxTableHead', function () {
-  it('sets the correct class names', function() {
-    expect(shallow(<NxTableHead className="test" />)).toMatchSelector('thead.test');
+  it('sets the isHeader property on children', function () {
+    expect(shallow(<NxTableHead><NxTableRow /></NxTableHead>).contains(<NxTableRow isHeader />)).toBe(true);
   });
 
-  it('sets the isHeader property on children', function () {
-    const component = shallow(<NxTableHead><NxTableRow /></NxTableHead>);
-
-    expect(component.contains(<NxTableRow isHeader />)).toBe(true);
+  it('passes additional props through', function () {
+    expect(shallow(<NxTableHead className="test" />)).toMatchSelector('thead.test');
   });
 });

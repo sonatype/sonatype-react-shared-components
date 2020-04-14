@@ -12,10 +12,10 @@ import { Props } from './types';
 export {Props} from './types';
 
 const NxTableHead = function NxTableHead(props: Props) {
-  const {className, children, ...attrs} = props;
+  const {children, ...attrs} = props;
 
   return (
-    <thead className={className} {...attrs}>
+    <thead {...attrs}>
       {addPropsToChildren(children, {isHeader: true})}
     </thead>
   );

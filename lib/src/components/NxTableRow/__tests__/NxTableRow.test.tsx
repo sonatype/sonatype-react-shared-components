@@ -14,9 +14,19 @@ describe('NxTableRow', function () {
     expect(shallow(<NxTableRow className="test" />)).toMatchSelector('tr.test');
   });
 
-  it('sets the isHeader property on children', function () {
-    const component = shallow(<NxTableRow isHeader><NxTableCell /></NxTableRow>);
+  it('sets the header class', function() {
+    expect(shallow(<NxTableRow isHeader />)).toMatchSelector('tr.nx-table-row--header');
+  });
 
-    expect(component.contains(<NxTableCell isHeader />)).toBe(true);
+  it('sets the clickable class', function () {
+    expect(shallow(<NxTableRow isClickable />)).toMatchSelector('tr.nx-clickable');
+  });
+
+  it('passes through arbitrary props', function() {
+    expect(shallow(<NxTableRow id="test" />)).toMatchSelector('#test');
+  });
+
+  it('sets the isHeader property on children', function () {
+    expect(shallow(<NxTableRow isHeader><NxTableCell /></NxTableRow>).contains(<NxTableCell isHeader />)).toBe(true);
   });
 });
