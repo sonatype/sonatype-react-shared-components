@@ -7,8 +7,11 @@
 import {WeakValidationMap} from 'react';
 import * as PropTypes from 'prop-types';
 
-export type Props = React.HTMLAttributes<HTMLDivElement>;
+export type Props = React.HTMLAttributes<HTMLDivElement> & {
+  closeModalHandler: () => void;
+};
 
 export const propTypes: WeakValidationMap<Props> = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  closeModalHandler: PropTypes.func.isRequired
 };
