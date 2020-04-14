@@ -35,25 +35,18 @@ const NxTableCell = function NxTableCell(props: Props) {
     'nx-cell--icon': hasIcon
   });
 
-  let sortIcon = null;
-  if (isSortable) {
-    if (sortDir === 'asc') {
-      sortIcon = faSortUp;
-    }
-    else if (sortDir === 'desc') {
-      sortIcon = faSortDown;
-    }
-    else {
-      sortIcon = faSort;
-    }
-  }
+  const sortIcons = {
+    'asc': faSortUp,
+    'desc': faSortDown
+  };
+  const sortIcon = sortDir ? sortIcons[sortDir] : faSort;
 
   const Tag = isHeader ? 'th' : 'td';
 
   return (
     <Tag className={classes} {...attrs}>
       {children}
-      {sortIcon ? <NxFontAwesomeIcon icon={sortIcon} fixedWidth/> : null}
+      {isSortable ? <NxFontAwesomeIcon icon={sortIcon} fixedWidth/> : null}
     </Tag>
   );
 };
