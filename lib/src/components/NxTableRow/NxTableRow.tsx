@@ -9,7 +9,7 @@ import classnames from 'classnames';
 
 import {addPropsToChildren} from '../../util/childUtil';
 
-import {Props} from './types';
+import {Props, propTypes} from './types';
 export {Props} from './types';
 
 const NxTableRow = function NxTableRow(props: Props) {
@@ -25,5 +25,7 @@ const NxTableRow = function NxTableRow(props: Props) {
     </tr>
   );
 };
+
+NxTableRow.propTypes = propTypes;
 
 export default NxTableRow;

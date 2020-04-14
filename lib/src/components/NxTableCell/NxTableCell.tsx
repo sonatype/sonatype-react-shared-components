@@ -10,7 +10,7 @@ import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-import { Props } from './types';
+import { Props, propTypes } from './types';
 export { Props } from './types';
 
 const NxTableCell = function NxTableCell(props: Props) {
@@ -57,5 +57,7 @@ const NxTableCell = function NxTableCell(props: Props) {
     </Tag>
   );
 };
+
+NxTableCell.propTypes = propTypes;
 
 export default NxTableCell;
