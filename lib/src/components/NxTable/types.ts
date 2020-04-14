@@ -6,5 +6,4 @@
  */
 import {TableHTMLAttributes} from 'react';
 
-// Final Props are the HTMLProps & our re-definitions
 export type Props = TableHTMLAttributes<HTMLTableElement>;
