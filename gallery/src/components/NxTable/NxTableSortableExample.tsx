@@ -22,9 +22,7 @@ const NxTableSortableExample = () => {
   function sort() {
     if (sortDir === null) {
       setSortDir('asc');
-      setRows(rows.slice().sort((a, b) => {
-        return a > b ? 1 : -1;
-      }));
+      setRows(rows.slice().sort((a, b) => a - b));
     }
     else if (sortDir === 'asc') {
       setSortDir('desc');
