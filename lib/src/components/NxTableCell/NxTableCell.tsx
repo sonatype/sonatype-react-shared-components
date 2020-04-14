@@ -46,7 +46,7 @@ const NxTableCell = function NxTableCell(props: Props) {
   return (
     <Tag className={classes} {...attrs}>
       {children}
-      {isSortable ? <NxFontAwesomeIcon icon={sortIcon} fixedWidth/> : null}
+      {isSortable && <NxFontAwesomeIcon icon={sortIcon} fixedWidth/>}
     </Tag>
   );
 };
