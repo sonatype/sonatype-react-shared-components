@@ -88,7 +88,7 @@
   @extend .nx-truncate-ellipsis;
   @include container-horizontal;
 
-  line-height: 100%;
+  line-height: 120%;
   margin: 0; // zeros out any <h#> margin
 }
 
