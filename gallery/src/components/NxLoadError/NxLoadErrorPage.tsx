@@ -20,36 +20,36 @@ const NxLoadErrorPage = () =>
     <GalleryDescriptionTile>
       <p>Error message with optional Retry button</p>
       <p>Props:</p>
-      <table className="gallery-props-table">
+      <table className="nx-table nx-table--gallery-props">
         <thead>
-          <tr>
-            <th>Prop</th>
-            <th>Type</th>
-            <th>Required</th>
-            <th>Details</th>
+          <tr className="nx-table-row">
+            <th className="nx-cell nx-cell--header">Prop</th>
+            <th className="nx-cell nx-cell--header">Type</th>
+            <th className="nx-cell nx-cell--header">Required</th>
+            <th className="nx-cell nx-cell--header">Details</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>error</td>
-            <td>string</td>
-            <td>No</td>
-            <td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">error</td>
+            <td className="nx-cell">string</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
               A message that represents an error that occurred.  If null or undefined, NxLoadError will not render
               anything
             </td>
           </tr>
-          <tr>
-            <td>titleMessage</td>
-            <td>string</td>
-            <td>No</td>
-            <td>A message to display before the error output. Defaults to 'An error occurred loading data.'</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">titleMessage</td>
+            <td className="nx-cell">string</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">A message to display before the error output. Defaults to 'An error occurred loading data.'</td>
           </tr>
-          <tr>
-            <td>retryHandler</td>
-            <td>Function</td>
-            <td>No</td>
-            <td>If this is defined, a Retry button will be rendered which executes this function when clicked</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">retryHandler</td>
+            <td className="nx-cell">Function</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">If this is defined, a Retry button will be rendered which executes this function when clicked</td>
           </tr>
         </tbody>
       </table>
