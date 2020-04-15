@@ -13,18 +13,18 @@ const NxListPage = () =>
   <>
     <GalleryDescriptionTile>
       <p>Lists take many forms:</p>
-      <ul>
-        <li>Simple data lists</li>
-        <li>Lists with clickable list items</li>
-        <li>Lists with bullets</li>
-        <li>Definition Lists</li>
-        <li>Lists with actions</li>
-        <li>Lists with items that have multiple lines of text</li>
+      <ul className="nx-list nx-list--bulleted">
+        <li className="nx-list__item">Simple data lists</li>
+        <li className="nx-list__item">Lists with clickable list items</li>
+        <li className="nx-list__item">Lists with bullets</li>
+        <li className="nx-list__item">Definition Lists</li>
+        <li className="nx-list__item">Lists with actions</li>
+        <li className="nx-list__item">Lists with items that have multiple lines of text</li>
       </ul>
       <p>Lists can also have modified states depending on their content:</p>
-      <ul>
-        <li>Lists with no data</li>
-        <li>Error states</li>
+      <ul className="nx-list nx-list--bulleted">
+        <li className="nx-list__item">Lists with no data</li>
+        <li className="nx-list__item">Error states</li>
       </ul>
       <p>
         The basic layout is a container <code className="nx-code">&lt;div&gt;</code> wrapping a

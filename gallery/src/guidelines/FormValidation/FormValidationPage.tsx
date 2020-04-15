@@ -19,22 +19,22 @@ const FormValidationPage = () =>
         This page demonstrates the typical overall approach to communicating form validation matters to the user.
         There are several things to note here:
       </p>
-      <ul>
-        <li>
+      <ul className="nx-list nx-list--bulleted">
+        <li className="nx-list__item">
           Fields are not marked invalid while they are pristine. This is handled by
           the <code className="nx-code">NxTextInput</code> state helpers.
         </li>
-        <li>
+        <li className="nx-list__item">
           Optional text fields are declared to the user using
           the <code className="nx-code">nx-label--optional</code> class which adds the <q>- optional</q> text.
           All fields not marked optional are required. This does not apply to checkbox groups where selecting
           nothing is generally just as valid as any other selection.
         </li>
-        <li>
+        <li className="nx-list__item">
           Until all required fields have values, and all values pass validation, the Submit button is disabled
           and provides a tooltip on hover explaining why.
         </li>
-        <li>
+        <li className="nx-list__item">
           Non-pristine fields which are invalid get a red border and a red tooltip displaying the validation error.
           This tooltip is visible until the field becomes valid, as opposed to being hover-triggered. This behavior
           is implemented by <code className="nx-code">NxTextInput</code>
