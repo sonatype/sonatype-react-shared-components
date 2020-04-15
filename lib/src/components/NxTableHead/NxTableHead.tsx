@@ -8,7 +8,7 @@ import React from 'react';
 
 import {addPropsToChildren} from '../../util/childUtil';
 
-import {Props} from './types';
+import {Props, propTypes} from './types';
 export {Props} from './types';
 
 const NxTableHead = function NxTableHead(props: Props) {
@@ -20,5 +20,7 @@ const NxTableHead = function NxTableHead(props: Props) {
     </thead>
   );
 };
+
+NxTableHead.propTypes = propTypes
 
 export default NxTableHead;

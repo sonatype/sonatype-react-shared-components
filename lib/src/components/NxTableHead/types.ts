@@ -5,6 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import {HTMLAttributes} from 'react';
+import PropTypes from 'prop-types';
 
 // Final Props are the HTMLProps & our re-definitions
 export type Props = HTMLAttributes<HTMLTableSectionElement>;
+
+export const propTypes: PropTypes.ValidationMap<Props> = {
+  children: PropTypes.node
+};

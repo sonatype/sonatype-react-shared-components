@@ -25,5 +25,6 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   isNumeric: PropTypes.bool,
   isSortable: PropTypes.bool,
   hasIcon: PropTypes.bool,
-  sortDir: PropTypes.oneOf(['asc', 'desc', null])
+  sortDir: PropTypes.oneOf(['asc', 'desc', null]),
+  children: PropTypes.node
 };

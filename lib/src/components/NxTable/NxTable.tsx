@@ -12,7 +12,7 @@ import NxTableHead from '../NxTableHead/NxTableHead';
 import NxTableBody from '../NxTableBody/NxTableBody';
 import NxTableRow from '../NxTableRow/NxTableRow';
 
-import {Props} from './types';
+import {Props, propTypes} from './types';
 export {Props} from './types';
 
 const NxTable = function NxTableElement(props: Props) {
@@ -32,5 +32,7 @@ const NxTable = function NxTableElement(props: Props) {
     </table>
   );
 };
+
+NxTable.propTypes = propTypes;
 
 export default NxTable;

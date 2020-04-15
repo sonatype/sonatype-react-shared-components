@@ -17,5 +17,6 @@ export type Props = HTMLAttributes<HTMLTableSectionElement> & {
 export const propTypes: PropTypes.ValidationMap<Props> = {
   isLoading: PropTypes.bool,
   error: PropTypes.string,
-  columns: PropTypes.number
+  columns: PropTypes.number,
+  children: PropTypes.node
 };

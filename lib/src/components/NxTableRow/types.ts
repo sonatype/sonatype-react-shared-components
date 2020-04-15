@@ -15,5 +15,6 @@ export type Props = HTMLAttributes<HTMLTableRowElement> & {
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   isHeader: PropTypes.bool,
-  isClickable: PropTypes.bool
+  isClickable: PropTypes.bool,
+  children: PropTypes.node
 };
