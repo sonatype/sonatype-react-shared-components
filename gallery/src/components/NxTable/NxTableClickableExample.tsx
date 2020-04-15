@@ -8,6 +8,7 @@ import React from 'react';
 
 import {
   NxTable,
+  NxTableBody,
   NxTableCell,
   NxTableHead,
   NxTableRow,
@@ -17,12 +18,9 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const NxTableClickableExample = () => {
   const rows = [
-    {
-      name: 'Name 1'
-    },
-    {
-      name: 'Name 2'
-    }
+    { name: 'Name 1' },
+    { name: 'Name 2' },
+    { name: 'Name 3' }
   ];
 
   return (
@@ -34,15 +32,15 @@ const NxTableClickableExample = () => {
           <NxTableCell hasIcon />
         </NxTableRow>
       </NxTableHead>
-      <tbody>
+      <NxTableBody>
         {rows.map(row =>
           <NxTableRow key={row.name} isClickable onClick={() => alert(`Clicked ${row.name}`)}>
             <NxTableCell>{row.name}</NxTableCell>
-            <NxTableCell>Content 2</NxTableCell>
+            <NxTableCell>Content</NxTableCell>
             <NxTableCell hasIcon><NxFontAwesomeIcon icon={faChevronRight}/></NxTableCell>
           </NxTableRow>
         )}
-      </tbody>
+      </NxTableBody>
     </NxTable>
   );
 };

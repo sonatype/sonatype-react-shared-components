@@ -8,10 +8,10 @@ import React from 'react';
 
 import {
   NxTable,
+  NxTableBody,
   NxTableCell,
   NxTableHead,
-  NxTableRow,
-  NxLoadingSpinner
+  NxTableRow
 } from '@sonatype/react-shared-components';
 
 const NxTableLoadingExample = () => {
@@ -26,11 +26,9 @@ const NxTableLoadingExample = () => {
           <NxTableCell>Header 5</NxTableCell>
         </NxTableRow>
       </NxTableHead>
-      <tbody>
-        <NxTableRow>
-          <NxTableCell isEmpty colSpan={5}><NxLoadingSpinner /></NxTableCell>
-        </NxTableRow>
-      </tbody>
+      <NxTableBody isLoading>
+
+      </NxTableBody>
     </NxTable>
   );
 };

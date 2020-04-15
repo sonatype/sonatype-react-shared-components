@@ -43,6 +43,7 @@ export { default as NxStatefulSubmitMask }
   from './components/NxSubmitMask/stateful/NxStatefulSubmitMask';
 
 export { default as NxTable } from './components/NxTable/NxTable';
+export { default as NxTableBody } from './components/NxTableBody/NxTableBody';
 export { default as NxTableCell } from './components/NxTableCell/NxTableCell';
 export { default as NxTableHead } from './components/NxTableHead/NxTableHead';
 export { default as NxTableRow } from './components/NxTableRow/NxTableRow';

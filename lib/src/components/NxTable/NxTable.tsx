@@ -7,15 +7,29 @@
 import React from 'react';
 import classnames from 'classnames';
 
+import {only} from '../../util/childUtil';
+import NxTableHead from '../NxTableHead/NxTableHead';
+import NxTableBody from '../NxTableBody/NxTableBody';
+import NxTableRow from '../NxTableRow/NxTableRow';
+
 import {Props} from './types';
 export {Props} from './types';
 
-import './NxTable.scss';
-
 const NxTable = function NxTableElement(props: Props) {
-  const {className, ...attrs} = props;
+  const {className, children, ...attrs} = props;
+
+  const thead = only(children, NxTableHead);
+  const trow = thead && only(thead.props.children, NxTableRow);
+  let tbody = only(children, NxTableBody);
+  if (trow && tbody) {
+    tbody = React.cloneElement(tbody, { columns: React.Children.count(trow.props.children)});
+  }
+
   return (
-    <table className={classnames('nx-table', className)} {...attrs} />
+    <table className={classnames('nx-table', className)} {...attrs}>
+      {thead}
+      {tbody}
+    </table>
   );
 };
 

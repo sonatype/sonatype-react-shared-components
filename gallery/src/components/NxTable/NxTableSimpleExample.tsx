@@ -8,6 +8,7 @@ import React from 'react';
 
 import {
   NxTable,
+  NxTableBody,
   NxTableCell,
   NxTableHead,
   NxTableRow
@@ -25,7 +26,7 @@ const NxTableSimpleExample = () => {
           <NxTableCell>Header 5</NxTableCell>
         </NxTableRow>
       </NxTableHead>
-      <tbody>
+      <NxTableBody>
         <NxTableRow>
           <NxTableCell>Content 1</NxTableCell>
           <NxTableCell>Content 2</NxTableCell>
@@ -40,7 +41,7 @@ const NxTableSimpleExample = () => {
           <NxTableCell isNumeric>4</NxTableCell>
           <NxTableCell>Content 5</NxTableCell>
         </NxTableRow>
-      </tbody>
+      </NxTableBody>
     </NxTable>
   );
 };

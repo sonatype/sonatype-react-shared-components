@@ -40,18 +40,18 @@ describe('NxTableCell', function () {
   it('shows the sortable icon when the cell isSortable but has no sort direction', function () {
     const component = getShallowComponent({ isSortable: true });
 
-    expect(component.contains(<NxFontAwesomeIcon icon={faSort} fixedWidth />)).toBe(true);
+    expect(component).toContainReact(<NxFontAwesomeIcon icon={faSort} fixedWidth />);
   });
 
   it('shows the sort ascending icon when the cell isSortable and has a sort direction "asc"', function () {
     const component = getShallowComponent({ isSortable: true, sortDir: 'asc' });
 
-    expect(component.contains(<NxFontAwesomeIcon icon={faSortUp} fixedWidth />)).toBe(true);
+    expect(component).toContainReact(<NxFontAwesomeIcon icon={faSortUp} fixedWidth />);
   });
 
   it('shows the sort descending icon when the cell isSortable and has a sort direction "desc"', function () {
     const component = getShallowComponent({ isSortable: true, sortDir: 'desc' });
 
-    expect(component.contains(<NxFontAwesomeIcon icon={faSortDown} fixedWidth />)).toBe(true);
+    expect(component).toContainReact(<NxFontAwesomeIcon icon={faSortDown} fixedWidth />);
   });
 });

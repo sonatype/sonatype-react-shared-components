@@ -27,6 +27,6 @@ describe('NxTableRow', function () {
   });
 
   it('sets the isHeader property on children', function () {
-    expect(shallow(<NxTableRow isHeader><NxTableCell /></NxTableRow>).contains(<NxTableCell isHeader />)).toBe(true);
+    expect(shallow(<NxTableRow isHeader><NxTableCell /></NxTableRow>)).toContainReact(<NxTableCell isHeader />);
   });
 });

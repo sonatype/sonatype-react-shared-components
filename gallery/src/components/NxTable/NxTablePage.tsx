@@ -27,6 +27,7 @@ export default function NxTablePage() {
       <GalleryDescriptionTile>
         <p>
           NxTable is the top-level component to use when displaying tables of data.
+          // TODO: FLUSH OUT THIS DESCRIPTION
         </p>
       </GalleryDescriptionTile>
       <GalleryTile title="Simple Example">

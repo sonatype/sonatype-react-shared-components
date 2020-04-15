@@ -8,6 +8,7 @@ import React, {useState} from 'react';
 
 import {
   NxTable,
+  NxTableBody,
   NxTableCell,
   NxTableHead,
   NxTableRow
@@ -22,7 +23,7 @@ const NxTableSortableExample = () => {
   function sort() {
     if (sortDir === null) {
       setSortDir('asc');
-      setRows(rows.slice().sort((a, b) => a - b));
+      setRows(rows.slice().sort((a, b) => a > b ? 1 : -1));
     }
     else if (sortDir === 'asc') {
       setSortDir('desc');
@@ -41,13 +42,13 @@ const NxTableSortableExample = () => {
           <NxTableCell isSortable sortDir={sortDir} onClick={sort}>Name</NxTableCell>
         </NxTableRow>
       </NxTableHead>
-      <tbody>
+      <NxTableBody>
         {rows.map(row =>
           <NxTableRow key={row}>
             <NxTableCell>{row}</NxTableCell>
           </NxTableRow>
         )}
-      </tbody>
+      </NxTableBody>
     </NxTable>
   );
 };

@@ -8,12 +8,11 @@ import React from 'react';
 
 import {
   NxTable,
+  NxTableBody,
   NxTableCell,
   NxTableHead,
-  NxTableRow,
-  NxFontAwesomeIcon
+  NxTableRow
 } from '@sonatype/react-shared-components';
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 const NxTableLoadingExample = () => {
   return (
@@ -27,14 +26,9 @@ const NxTableLoadingExample = () => {
           <NxTableCell>Header 5</NxTableCell>
         </NxTableRow>
       </NxTableHead>
-      <tbody>
-        <NxTableRow>
-          <NxTableCell isError colSpan={5}>
-            <NxFontAwesomeIcon icon={faExclamationTriangle} />
-            Failed to load list message
-          </NxTableCell>
-        </NxTableRow>
-      </tbody>
+      <NxTableBody error="Failed to load list message">
+
+      </NxTableBody>
     </NxTable>
   );
 };

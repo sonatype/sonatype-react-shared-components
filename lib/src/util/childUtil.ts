@@ -15,3 +15,13 @@ export function addPropsToChildren(children: ReactNode, props: object) {
     return child;
   });
 }
+
+export function only(children: ReactNode, type: React.FC): React.ReactElement | null {
+  let matchingChildren: React.ReactElement[] = [];
+  React.Children.forEach(children, child => {
+    if (React.isValidElement(child) && child.type === type) {
+      matchingChildren.push(child);
+    }
+  });
+  return matchingChildren.length ? matchingChildren[0] : null;
+}

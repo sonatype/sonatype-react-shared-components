@@ -5,10 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import PropTypes from 'prop-types';
-import {TdHTMLAttributes} from 'react';
+import {TdHTMLAttributes, ThHTMLAttributes} from 'react';
 
 // Final Props are the HTMLProps & our re-definitions
-export type Props = TdHTMLAttributes<HTMLTableCellElement> & {
+export type Props = (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<HTMLTableHeaderCellElement>) & {
   isHeader?: boolean | null;
   isEmpty?: boolean | null;
   isError?: boolean | null;
@@ -26,4 +26,4 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   isSortable: PropTypes.bool,
   hasIcon: PropTypes.bool,
   sortDir: PropTypes.oneOf(['asc', 'desc', null])
-}
+};

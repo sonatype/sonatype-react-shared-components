@@ -11,7 +11,7 @@ import NxTableRow from '../../NxTableRow/NxTableRow';
 
 describe('NxTableHead', function () {
   it('sets the isHeader property on children', function () {
-    expect(shallow(<NxTableHead><NxTableRow /></NxTableHead>).contains(<NxTableRow isHeader />)).toBe(true);
+    expect(shallow(<NxTableHead><NxTableRow /></NxTableHead>)).toContainReact(<NxTableRow isHeader />);
   });
 
   it('passes additional props through', function () {
