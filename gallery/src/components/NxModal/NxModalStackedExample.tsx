@@ -9,15 +9,29 @@ import React, {useState} from 'react';
 import {NxModal, NxFontAwesomeIcon} from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
+/* eslint-disable */
 export default function NxModalStackedExample() {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
+  const [modalStack] = useState([]);
+
+  const closeHandler1 = () => {
+    console.log('Close modal1');
+    setShowModal(false);
+  };
+
+  const closeHandler2 = () => {
+    console.log('Close modal2');
+    setShowModal2(false);
+  };
 
   return (
     <>
       <button onClick={() => setShowModal(true)} className="nx-btn">Open modal with stacked example</button>
       {showModal &&
-        <NxModal id="nx-modal-stacked-example">
+        <NxModal id="nx-modal-stacked-example"
+                 closeHandler={closeHandler1}
+                 modalStack={modalStack}>
           <header className="nx-modal-header">
             <h2 className="nx-h2">
               <NxFontAwesomeIcon icon={faAngry} />
@@ -43,7 +57,9 @@ export default function NxModalStackedExample() {
         </NxModal>
       }
       {showModal2 &&
-        <NxModal id="nx-modal-stacked-example2">
+        <NxModal id="nx-modal-stacked-example2"
+                 closeHandler={closeHandler2}
+                 modalStack={modalStack}>
           <header className="nx-modal-header">
             <h2 className="nx-h2">
               <NxFontAwesomeIcon icon={faAngry} />
