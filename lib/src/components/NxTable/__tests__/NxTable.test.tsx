@@ -7,11 +7,44 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import NxTable from '../NxTable';
+import NxTableHead from '../../NxTableHead/NxTableHead';
+import NxTableRow from '../../NxTableRow/NxTableRow';
+import NxTableCell from '../../NxTableCell/NxTableCell';
+import NxTableBody from '../../NxTableBody/NxTableBody';
 
 describe('NxTable', function() {
   it('renders a table with the expected class names', function() {
     const component = shallow(<NxTable className="test" />);
 
     expect(component).toMatchSelector('table.nx-table.test');
+  });
+
+  it('computes the columns in NxTableHead and passes them to NxTableBody', function() {
+    const component = shallow(
+      <NxTable>
+        <NxTableHead>
+          <NxTableRow>
+            <NxTableCell />
+          </NxTableRow>
+        </NxTableHead>
+        <NxTableBody />
+      </NxTable>
+    );
+
+    expect(component.findWhere(child => child.type() === NxTableBody).prop('columns')).toBe(1);
+  });
+
+  it('does not pass columns to NxTableBody', function () {
+    const component = shallow(
+      <NxTable>
+        <NxTableBody />
+      </NxTable>
+    );
+
+    expect(component.findWhere(child => child.type() === NxTableBody).prop('columns')).toBe(undefined);
+  });
+
+  it('renders the NxTableHead', function() {
+    expect(shallow(<NxTable><NxTableHead /></NxTable>)).toContainReact(<NxTableHead />);
   });
 });
