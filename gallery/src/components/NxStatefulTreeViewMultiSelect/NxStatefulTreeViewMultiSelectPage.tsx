@@ -77,7 +77,7 @@ const NxStatefulTreeViewMultiSelectPage = () =>
                 <li className="nx-list__item">
                   <code className="nx-code">Set</code> of ids of the currently selected options
                 </li>
-                <li className="nx-list__item"> className="nx-list__item"
+                <li className="nx-list__item">
                   <code className="nx-code">id</code> of the toggled option
                   or <code className="nx-code">undefined</code> if all/none option was toggled
                 </li>
