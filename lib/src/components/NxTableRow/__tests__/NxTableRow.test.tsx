@@ -31,6 +31,6 @@ describe('NxTableRow', function () {
   });
 
   it('does not set the isHeader property on children', function () {
-    expect(shallow(<NxTableRow><NxTableCell /></NxTableRow>)).toContainReact(<NxTableCell />);
+    expect(shallow(<NxTableRow><NxTableCell /></NxTableRow>)).toContainReact(<NxTableCell isHeader={false} />);
   });
 });

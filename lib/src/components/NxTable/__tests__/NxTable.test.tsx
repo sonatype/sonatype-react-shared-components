@@ -31,7 +31,7 @@ describe('NxTable', function() {
       </NxTable>
     );
 
-    expect(component.findWhere(child => child.type() === NxTableBody).prop('columns')).toBe(1);
+    expect(component.findWhere(child => child.type() === NxTableBody)).toHaveProp('columns', 1);
   });
 
   it('does not pass columns to NxTableBody', function () {
@@ -41,7 +41,7 @@ describe('NxTable', function() {
       </NxTable>
     );
 
-    expect(component.findWhere(child => child.type() === NxTableBody).prop('columns')).toBe(undefined);
+    expect(component.findWhere(child => child.type() === NxTableBody)).not.toHaveProp('columns');
   });
 
   it('renders the NxTableHead', function() {
