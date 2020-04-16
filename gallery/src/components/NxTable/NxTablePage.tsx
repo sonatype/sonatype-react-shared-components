@@ -37,7 +37,19 @@ export default function NxTablePage() {
 
         <p>
           The top-level component to use when displaying tables of data.
-          It can have <code>&lt;NxTableHead&gt;</code> and <code>&lt;NxTableBody&gt;</code> components as children.
+          It can have <code className="nx-code">&lt;NxTableHead&gt;</code> and
+          <code className="nx-code">&lt;NxTableBody&gt;</code> components as children.
+        </p>
+
+        <hr />
+
+        <h5>NxTableHead</h5>
+
+        <p>
+          Equivalent to the <code className="nx-code">&lt;thead&gt;</code> element.
+          The <code className="nx-code">&lt;NxTableRow&gt;</code> component is the only valid child.
+          Descendant <code className="nx-code">&lt;NxTableCell&gt;</code> components will have the
+          <code className="nx-code">&lt;isHeader&gt;</code> prop set.
         </p>
 
         <hr />
@@ -45,8 +57,8 @@ export default function NxTablePage() {
         <h5>NxTableBody</h5>
 
         <p>
-          Equivalent to the <code>&lt;tbody&gt;</code> element.
-          It should have <code>&lt;NxTableRow&gt;</code> for children.
+          Equivalent to the <code className="nx-code">&lt;tbody&gt;</code> element.
+          It should have <code className="nx-code">&lt;NxTableRow&gt;</code> for children.
         </p>
 
         <NxTable>
@@ -76,8 +88,9 @@ export default function NxTablePage() {
               <NxTableCell>number</NxTableCell>
               <NxTableCell>false</NxTableCell>
               <NxTableCell>
-                Automatically set by <code>&lt;NxTable&gt;</code> to set the <code>colSpan</code> attribute
-                on the loading spinner and error message <code>&lt;NxTableCell&gt;</code>
+                Automatically set by <code className="nx-code">&lt;NxTable&gt;</code> to set the
+                <code className="nx-code">colSpan</code> attribute on the loading spinner and error message
+                <code className="nx-code">&lt;NxTableCell&gt;</code>
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
@@ -88,9 +101,10 @@ export default function NxTablePage() {
         <h5>NxTableRow</h5>
 
         <p>
-          Equivalent to the <code>&lt;tr&gt;</code> element.
-          It automatically assigns <code>isHeader</code> on the children if that prop is set on this row.
-          It should have <code>&lt;NxTableCell&gt;</code> for children.
+          Equivalent to the <code className="nx-code">&lt;tr&gt;</code> element.
+          It automatically assigns <code className="nx-code">isHeader</code> on the children
+          if that prop is set on this row.
+          It should have <code className="nx-code">&lt;NxTableCell&gt;</code> for children.
         </p>
 
         <hr />
@@ -98,7 +112,8 @@ export default function NxTablePage() {
         <h5>NxTableCell</h5>
 
         <p>
-          Equivalent to the <code>&lt;th&gt;</code> or <code>&lt;td&gt;</code> element.
+          Equivalent to the <code className="nx-code">&lt;th&gt;</code> or
+          <code className="nx-code">&lt;td&gt;</code> element.
         </p>
 
         <NxTable>
@@ -150,8 +165,8 @@ export default function NxTablePage() {
               <NxTableCell>
                 Used to indicate the sorting direction applied.
                 A null value indicates the column is not yet sorted.
-                This should only be used for <code>&lt;NxTableCell&gt;</code> components
-                in the <code>&lt;NxTableHead&gt;</code>
+                This should only be used for <code className="nx-code">&lt;NxTableCell&gt;</code> components
+                in the <code className="nx-code">&lt;NxTableHead&gt;</code>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
@@ -159,7 +174,7 @@ export default function NxTablePage() {
               <NxTableCell>boolean</NxTableCell>
               <NxTableCell>false</NxTableCell>
               <NxTableCell>
-                Used to indicate a column that contains a <code>&lt;NxFontAwesomeIcon&gt;</code>
+                Used to indicate a column that contains a <code className="nx-code">&lt;NxFontAwesomeIcon&gt;</code>
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
