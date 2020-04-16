@@ -12,21 +12,25 @@ import {CloseHandler, Props, propTypes} from './types';
 import './NxModal.scss';
 
 const currentModalCloseHandlers: CloseHandler[] = [];
-document.body.addEventListener('keydown', function(evt) {
-  if (evt.key === 'Escape' && currentModalCloseHandlers.length) {
-    currentModalCloseHandlers[0]();
-  }
-});
 
 const NxModal: FunctionComponent<Props> = ({className, onClose, ...attrs}) => {
   const modalClasses = classnames('nx-modal', className);
 
+  const modalCloseListener = ({ key }: { key: string}) => {
+    if (key === 'Escape' && currentModalCloseHandlers.length
+        && onClose === currentModalCloseHandlers[currentModalCloseHandlers.length - 1]) {
+      onClose();
+    }
+  };
+
   useEffect(function() {
-    currentModalCloseHandlers.unshift(onClose);
+    document.body.addEventListener('keydown', modalCloseListener);
+    currentModalCloseHandlers.push(onClose);
 
     return function() {
       const idx = currentModalCloseHandlers.indexOf(onClose);
       currentModalCloseHandlers.splice(idx, 1);
+      document.body.removeEventListener('keydown', modalCloseListener);
     };
   }, []);
 
