@@ -16,7 +16,12 @@ export function addPropsToChildren(children: ReactNode, props: object) {
   });
 }
 
-export function only(children: ReactNode, type: React.FC): React.ReactElement | null {
+/**
+ * @param children to search
+ * @param type the component type to find
+ * @returns the first child that matches the type (or null if none are found).
+ */
+export function only(children: ReactNode, type: React.ComponentType): React.ReactElement | null {
   let matchingChildren: React.ReactElement[] = [];
   React.Children.forEach(children, child => {
     if (React.isValidElement(child) && child.type === type) {
