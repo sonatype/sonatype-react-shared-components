@@ -21,6 +21,6 @@ const NxTableHead = function NxTableHead(props: Props) {
   );
 };
 
-NxTableHead.propTypes = propTypes
+NxTableHead.propTypes = propTypes;
 
 export default NxTableHead;
