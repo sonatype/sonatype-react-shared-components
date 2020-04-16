@@ -75,7 +75,10 @@ export default function NxTablePage() {
               <NxTableCell>columns</NxTableCell>
               <NxTableCell>number</NxTableCell>
               <NxTableCell>false</NxTableCell>
-              <NxTableCell>Automatically set by <code>&lt;NxTable&gt;</code> to set the <code>colSpan</code> attribute on the loading spinner and error message <code>&lt;NxTableCell&gt;</code></NxTableCell>
+              <NxTableCell>
+                Automatically set by <code>&lt;NxTable&gt;</code> to set the <code>colSpan</code> attribute
+                on the loading spinner and error message <code>&lt;NxTableCell&gt;</code>
+              </NxTableCell>
             </NxTableRow>
           </NxTableBody>
         </NxTable>
@@ -118,7 +121,9 @@ export default function NxTablePage() {
               <NxTableCell>isEmpty</NxTableCell>
               <NxTableCell>boolean</NxTableCell>
               <NxTableCell>false</NxTableCell>
-              <NxTableCell>Used to indicate a table without contents, automatically applied when rendering the loading spinner</NxTableCell>
+              <NxTableCell>
+                Used to indicate a table without contents, automatically applied when rendering the loading spinner
+              </NxTableCell>
             </NxTableRow>
             <NxTableRow>
               <NxTableCell>isError</NxTableCell>
@@ -145,14 +150,17 @@ export default function NxTablePage() {
               <NxTableCell>
                 Used to indicate the sorting direction applied.
                 A null value indicates the column is not yet sorted.
-                This should only be used for <code>&lt;NxTableCell&gt;</code> components in the <code>&lt;NxTableHead&gt;</code>
+                This should only be used for <code>&lt;NxTableCell&gt;</code> components
+                in the <code>&lt;NxTableHead&gt;</code>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
               <NxTableCell>hasIcon</NxTableCell>
               <NxTableCell>boolean</NxTableCell>
               <NxTableCell>false</NxTableCell>
-              <NxTableCell>Used to indicate a column that contains a <code>&lt;NxFontAwesomeIcon&gt;</code></NxTableCell>
+              <NxTableCell>
+                Used to indicate a column that contains a <code>&lt;NxFontAwesomeIcon&gt;</code>
+              </NxTableCell>
             </NxTableRow>
           </NxTableBody>
         </NxTable>
