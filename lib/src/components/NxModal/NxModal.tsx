@@ -7,32 +7,33 @@
 import React, {FunctionComponent, useEffect} from 'react';
 import classnames from 'classnames';
 
-import {Props, propTypes} from './types';
+import {CloseHandler, Props, propTypes} from './types';
 
 import './NxModal.scss';
 
-const NxModal: FunctionComponent<Props> = ({className, closeModalHandler, ...attrs}) => {
+const currentModalCloseHandlers: CloseHandler[] = [];
+document.body.addEventListener('keydown', function(evt) {
+  if (evt.key === 'Escape' && currentModalCloseHandlers.length) {
+    currentModalCloseHandlers[0]();
+  }
+});
 
-  const hotKeyHandler = ({ key }: { key: string}) => {
-    if (key === 'Escape') {
-      closeModalHandler();
-    }
-  };
-
-  useEffect(() => {
-    document.body.addEventListener('keydown', hotKeyHandler);
-    return () => {
-      document.body.removeEventListener('keydown', hotKeyHandler);
-    };
-  }, []); // Only run on component mounting/un-mounting
-
+const NxModal: FunctionComponent<Props> = ({className, onClose, ...attrs}) => {
   const modalClasses = classnames('nx-modal', className);
+
+  useEffect(function() {
+    currentModalCloseHandlers.unshift(onClose);
+
+    return function() {
+      const idx = currentModalCloseHandlers.indexOf(onClose);
+      currentModalCloseHandlers.splice(idx, 1);
+    };
+  }, []);
+
   return (
-    <>
-      <div className="nx-modal-backdrop">
-        <div className={modalClasses} {...attrs}/>
-      </div>
-    </>
+    <div className="nx-modal-backdrop">
+      <div className={modalClasses} {...attrs} />
+    </div>
   );
 };
 

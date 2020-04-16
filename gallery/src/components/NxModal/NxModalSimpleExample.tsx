@@ -11,12 +11,13 @@ import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
 export default function NxModalSimpleExample() {
   const [showModal, setShowModal] = useState(false);
+  const modalCloseHandler = () => setShowModal(false);
 
   return (
     <>
       <button onClick={() => setShowModal(true)} className="nx-btn">Open Modal</button>
       { showModal &&
-        <NxModal id="nx-modal-simple-example">
+        <NxModal id="nx-modal-simple-example" onClose={modalCloseHandler}>
           <header className="nx-modal-header">
             <h2 className="nx-h2">
               <NxFontAwesomeIcon icon={faAngry} />
@@ -28,7 +29,7 @@ export default function NxModalSimpleExample() {
           </div>
           <footer className="nx-modal-footer">
             <div className="nx-btn-bar">
-              <button type="button" onClick={() => setShowModal(false)} className="nx-btn">Close</button>
+              <button type="button" onClick={modalCloseHandler} className="nx-btn">Close</button>
             </div>
           </footer>
         </NxModal>
