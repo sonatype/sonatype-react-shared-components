@@ -6,11 +6,15 @@
  */
 import React from 'react';
 import NxModal, { Props } from '../NxModal';
-import {shallow} from 'enzyme';
+import {mount, ReactWrapper, shallow} from 'enzyme';
+import {CloseHandler} from '../types';
+import {act} from 'react-dom/test-utils';
 
 describe('NxModal', function() {
+  const dummyCloseHandler: CloseHandler = () => {};
   const minimalProps: Props = {
-    children: 'A message to show in a modal'
+    children: 'A message to show in a modal',
+    onClose: dummyCloseHandler
   };
 
   it('renders divs with nx-modal and nx-modal-backdrop', function () {
@@ -33,7 +37,7 @@ describe('NxModal', function() {
 
   it('merges any passed in className to the nx-modal div', function() {
     const nxModal = shallow(
-      <NxModal className="test"/>
+      <NxModal className="test" onClose={dummyCloseHandler}/>
     );
     const nxModalDiv = nxModal.find('.nx-modal');
     expect(nxModalDiv.hasClass('test')).toEqual(true);
@@ -41,9 +45,37 @@ describe('NxModal', function() {
 
   it('includes any passed in attributes to the nx-modal div', function() {
     const nxModal = shallow(
-      <NxModal id="modal-id" data-foo="bar"/>
+      <NxModal id="modal-id" data-foo="bar" onClose={dummyCloseHandler}/>
     );
     expect(nxModal.find('.nx-modal').prop('id')).toEqual('modal-id');
     expect(nxModal.find('.nx-modal').prop('data-foo')).toEqual('bar');
+  });
+
+  it('executes onClose method when pressing ESC key', function() {
+    let container: HTMLDivElement = document.createElement('div');
+    document.body.appendChild(container);
+
+    const mockCallBack = jest.fn();
+    const nxModal = (
+      <div>
+        <NxModal id="modal-id" onClose={mockCallBack}/>
+      </div>
+    );
+
+    let element: ReactWrapper;
+    act(() => {
+      element = mount(nxModal, {attachTo: container});
+      //const domMountedModal = element.find(NxModal);
+
+      //domMountedModal.getDOMNode().dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+      document.body.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+
+      //element.simulate('keyPress', {key: 'Escape'});
+    });
+    element!.update();
+    expect(mockCallBack).toHaveBeenCalled();
+
+    // after
+    document.body.removeChild(container);
   });
 });
