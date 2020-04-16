@@ -43,13 +43,17 @@ const NxLoadErrorPage = () =>
             <td className="nx-cell">titleMessage</td>
             <td className="nx-cell">string</td>
             <td className="nx-cell">No</td>
-            <td className="nx-cell">A message to display before the error output. Defaults to 'An error occurred loading data.'</td>
+            <td className="nx-cell">
+              A message to display before the error output. Defaults to 'An error occurred loading data.'
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">retryHandler</td>
             <td className="nx-cell">Function</td>
             <td className="nx-cell">No</td>
-            <td className="nx-cell">If this is defined, a Retry button will be rendered which executes this function when clicked</td>
+            <td className="nx-cell">
+              If this is defined, a Retry button will be rendered which executes this function when clicked
+            </td>
           </tr>
         </tbody>
       </table>

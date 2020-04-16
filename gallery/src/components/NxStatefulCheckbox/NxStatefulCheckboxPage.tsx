@@ -39,7 +39,9 @@ const NxStatefulCheckboxPage = () =>
             <td className="nx-cell">defaultChecked</td>
             <td className="nx-cell">boolean</td>
             <td className="nx-cell">Yes</td>
-            <td className="nx-cell">Whether the stateful checkbox should initially be rendered as checked (true) or unchecked (false)</td>
+            <td className="nx-cell">
+              Whether the stateful checkbox should initially be rendered as checked (true) or unchecked (false)
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>

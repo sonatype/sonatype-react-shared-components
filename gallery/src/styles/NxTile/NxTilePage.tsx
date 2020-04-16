@@ -45,12 +45,16 @@ const NxTilePage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile-header__title</code></td>
             <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile-header</code></td>
-            <td className="nx-cell">Used for the main title inside an <code className="nx-code">.nx-tile-header</code>.</td>
+            <td className="nx-cell">
+              Used for the main title inside an <code className="nx-code">.nx-tile-header</code>.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile-header__subtitle</code></td>
             <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile-header</code></td>
-            <td className="nx-cell">Used for the subtitle inside an <code className="nx-code">.nx-tile-header</code>.</td>
+            <td className="nx-cell">
+              Used for the subtitle inside an <code className="nx-code">.nx-tile-header</code>.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile-header--hrule</code></td>
@@ -70,17 +74,23 @@ const NxTilePage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-alert</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell">Class for providing alert colorings to <code className="nx-code">.nx-tile</code>.</td>
+            <td className="nx-cell">
+              Class for providing alert colorings to <code className="nx-code">.nx-tile</code>.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-alert--info</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell">Class for providing alert colorings to <code className="nx-code">.nx-tile</code>.</td>
+            <td className="nx-cell">
+              Class for providing alert colorings to <code className="nx-code">.nx-tile</code>.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-alert--error</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell">Class for providing alert colorings to <code className="nx-code">.nx-tile</code>.</td>
+            <td className="nx-cell">
+              Class for providing alert colorings to <code className="nx-code">.nx-tile</code>.
+            </td>
           </tr>
         </tbody>
       </table>

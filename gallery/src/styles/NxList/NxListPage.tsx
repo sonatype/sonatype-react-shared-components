@@ -66,7 +66,9 @@ const NxListPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-list--definition-list</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-list</code></td>
-            <td className="nx-cell">Definition lists have two elements: a label and the data associated with that label.</td>
+            <td className="nx-cell">
+              Definition lists have two elements: a label and the data associated with that label.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-list__item--with-modifier-icon</code></td>
@@ -89,7 +91,9 @@ const NxListPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-error</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-list__item</code></td>
-            <td className="nx-cell">Not strictly speaking a modifier, this is added to a list item when the list is in an error state.</td>
+            <td className="nx-cell">
+              Not strictly speaking a modifier, this is added to a list item when the list is in an error state.
+            </td>
           </tr>
         </tbody>
       </table>

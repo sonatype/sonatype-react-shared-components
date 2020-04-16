@@ -46,7 +46,9 @@ const NxLoadWrapperPage = () =>
             <td className="nx-cell">loading</td>
             <td className="nx-cell">boolean</td>
             <td className="nx-cell">No</td>
-            <td className="nx-cell">If true, and error is unset, a loading spinner will be rendered via NxLoadingSpinner</td>
+            <td className="nx-cell">
+              If true, and error is unset, a loading spinner will be rendered via NxLoadingSpinner
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">children</td>

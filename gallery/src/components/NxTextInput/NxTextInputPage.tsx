@@ -52,7 +52,9 @@ const NxTextInputPage = () =>
             <td className="nx-cell">isPristine</td>
             <td className="nx-cell">boolean</td>
             <td className="nx-cell">Yes</td>
-            <td className="nx-cell">Should be set to true when the user has not yet adjusted the value of the input</td>
+            <td className="nx-cell">
+              Should be set to true when the user has not yet adjusted the value of the input
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">validationErrors</td>
@@ -67,7 +69,9 @@ const NxTextInputPage = () =>
             <td className="nx-cell">onChange</td>
             <td className="nx-cell">Function ((string) => void)</td>
             <td className="nx-cell">No</td>
-            <td className="nx-cell">A callback for when the user changes the value of the text box (e.g. by typing a letter)</td>
+            <td className="nx-cell">
+              A callback for when the user changes the value of the text box (e.g. by typing a letter)
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onKeyPress</td>
@@ -98,8 +102,8 @@ const NxTextInputPage = () =>
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              NxTextInput supports any html attribute that's normally supported by either HTML Inputs or HTML Textareas.
-              The only notable exceptions are:
+              NxTextInput supports any html attribute that's normally supported by either HTML Inputs or HTML
+              Textareas. The only notable exceptions are:
               <ul className="nx-list nx-list--bulleted">
                 <li className="nx-list__item">
                   <code className="nx-code">defaultValue</code> which is left out because it creates what's commonly

@@ -45,7 +45,9 @@ const NxTextInputStylesPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-text-input--long</code></td>
             <td className="nx-cell">Any <code className="nx-code">.nx-text-input</code> element</td>
-            <td className="nx-cell">Use this class to make the text input particularly wide (395px vs the default 219px)</td>
+            <td className="nx-cell">
+              Use this class to make the text input particularly wide (395px vs the default 219px)
+            </td>
           </tr>
         </tbody>
       </table>

@@ -45,7 +45,9 @@ const Home = () =>
               A description of the component and its parameters, as well as an example of how to use the component.
               See also the <code className="nx-code">GalleryDescriptionTile</code> component
             </li>
-            <li className="nx-list__item">Code that demonstrates the component (import the example component and invoke it)</li>
+            <li className="nx-list__item">
+              Code that demonstrates the component (import the example component and invoke it)
+            </li>
             <li className="nx-list__item">
               Code snippet of the example component (use the <code className="nx-code">CodeExample</code> component)
             </li>
@@ -68,10 +70,12 @@ const Home = () =>
         <li className="nx-list__item">
           Import the description page you created earlier
         </li>
-        <li className="nx-list__item">Place the entry in the proper category (creating a new category if necessary)</li>
         <li className="nx-list__item">
-          It is important to note that the key that you use for your entry will be used
-          by <code className="nx-code">react-router</code> to auto-populate the left-hand navigation, page title and URL
+          Place the entry in the proper category (creating a new category if necessary)
+        </li>
+        <li className="nx-list__item">
+          It is important to note that the key that you use for your entry will be used by
+          <code className="nx-code">react-router</code> to auto-populate the left-hand navigation, page title and URL
         </li>
       </ul>
     </GalleryTile>
