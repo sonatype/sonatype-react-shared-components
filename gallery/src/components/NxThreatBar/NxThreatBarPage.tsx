@@ -36,59 +36,59 @@ const NxThreatBarPage = () =>
         are passed, <code className="nx-code">threatLevelCategory</code> takes precedence. If neither are passed,
         the <code className="nx-code">unspecified</code> category is used
       </p>
-      <table className="gallery-props-table">
+      <table className="nx-table nx-table--gallery-props">
         <thead>
-          <tr>
-            <th>Prop</th>
-            <th>Type</th>
-            <th>Required</th>
-            <th>Details</th>
+          <tr className="nx-table-row">
+            <th className="nx-cell nx-cell--header">Prop</th>
+            <th className="nx-cell nx-cell--header">Type</th>
+            <th className="nx-cell nx-cell--header">Required</th>
+            <th className="nx-cell nx-cell--header">Details</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>threatLevelCategory</td>
-            <td>One of 'unspecified', 'none', 'low', 'moderate', 'severe', or 'critical'</td>
-            <td>No</td>
-            <td>A Threat Level Category to base the bar color off of</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">threatLevelCategory</td>
+            <td className="nx-cell">One of 'unspecified', 'none', 'low', 'moderate', 'severe', or 'critical'</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">A Threat Level Category to base the bar color off of</td>
           </tr>
-          <tr>
-            <td>policyThreatLevel</td>
-            <td>number (0 - 10 inclusive)</td>
-            <td>No</td>
-            <td>A Policy Threat Level Number to base the bar color off of</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">policyThreatLevel</td>
+            <td className="nx-cell">number (0 - 10 inclusive)</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">A Policy Threat Level Number to base the bar color off of</td>
           </tr>
         </tbody>
       </table>
 
       <p>The following table shows the mapping between threat level number and threat level category</p>
-      <table className="gallery-props-table">
+      <table className="nx-table nx-table--gallery-props">
         <thead>
-          <tr>
-            <th>Threat Level Number</th>
-            <th>Threat Level Category</th>
+          <tr className="nx-table-row">
+            <th className="nx-cell nx-cell--header">Threat Level Number</th>
+            <th className="nx-cell nx-cell--header">Threat Level Category</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>0</td>
-            <td>none</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">0</td>
+            <td className="nx-cell">none</td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>low</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">1</td>
+            <td className="nx-cell">low</td>
           </tr>
-          <tr>
-            <td>2 - 3</td>
-            <td>moderate</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">2 - 3</td>
+            <td className="nx-cell">moderate</td>
           </tr>
-          <tr>
-            <td>4 - 7</td>
-            <td>severe</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">4 - 7</td>
+            <td className="nx-cell">severe</td>
           </tr>
-          <tr>
-            <td>8 - 10</td>
-            <td>critical</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">8 - 10</td>
+            <td className="nx-cell">critical</td>
           </tr>
         </tbody>
       </table>

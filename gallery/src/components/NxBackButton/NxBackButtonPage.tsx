@@ -22,33 +22,33 @@ const NxBackButtonPage = () =>
     <GalleryDescriptionTile>
       <p>A standard UI element for navigating back to a previous page</p>
       <p>Props:</p>
-      <table className="gallery-props-table">
+      <table className="nx-table nx-table--gallery-props">
         <thead>
-          <tr>
-            <th>Prop</th>
-            <th>Type</th>
-            <th>Required</th>
-            <th>Details</th>
+          <tr className="nx-table-row">
+            <th className="nx-cell nx-cell--header">Prop</th>
+            <th className="nx-cell nx-cell--header">Type</th>
+            <th className="nx-cell nx-cell--header">Required</th>
+            <th className="nx-cell nx-cell--header">Details</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>targetPageTitle</td>
-            <td>string</td>
-            <td>No</td>
-            <td>The name of the page to navigate to</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">targetPageTitle</td>
+            <td className="nx-cell">string</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">The name of the page to navigate to</td>
           </tr>
-          <tr>
-            <td>text</td>
-            <td>string</td>
-            <td>No</td>
-            <td>Optional custom text to override the back button's default text logic</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">text</td>
+            <td className="nx-cell">string</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">Optional custom text to override the back button's default text logic</td>
           </tr>
-          <tr>
-            <td>href</td>
-            <td>URL</td>
-            <td>Yes</td>
-            <td>The URL to navigate to when the back button is clicked</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">href</td>
+            <td className="nx-cell">URL</td>
+            <td className="nx-cell">Yes</td>
+            <td className="nx-cell">The URL to navigate to when the back button is clicked</td>
           </tr>
         </tbody>
       </table>

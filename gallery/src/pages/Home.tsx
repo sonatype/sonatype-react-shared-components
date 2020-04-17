@@ -29,29 +29,31 @@ const Home = () =>
   <>
     <GalleryTile title="How to add a new component to the Gallery" >
       <h3>Create a page describing the component</h3>
-      <ul>
-        <li>
+      <ul className="nx-list nx-list--bulleted">
+        <li className="nx-list__item">
           For each component or style that you want to add to the Gallery, create a subdirectory
           underneath <code className="nx-code">src/components</code> or <code className="nx-code">src/styles</code>
           with the name of the component or style
         </li>
-        <li>
+        <li className="nx-list__item">
           Under the subdirectory, create 2 Typescript files to describe the behavior of your component or style. One
           file will be <code className="nx-code">[ComponentName]Example.tsx</code>, which has a working example of the
           component with how different parameters are handled. The second file will
           be <code className="nx-code">[ComponentName]Page.tsx</code>, which should contain 3 things:
-          <ul>
-            <li>
+          <ul className="nx-list nx-list--bulleted">
+            <li className="nx-list__item">
               A description of the component and its parameters, as well as an example of how to use the component.
               See also the <code className="nx-code">GalleryDescriptionTile</code> component
             </li>
-            <li>Code that demonstrates the component (import the example component and invoke it)</li>
-            <li>
+            <li className="nx-list__item">
+              Code that demonstrates the component (import the example component and invoke it)
+            </li>
+            <li className="nx-list__item">
               Code snippet of the example component (use the <code className="nx-code">CodeExample</code> component)
             </li>
           </ul>
         </li>
-        <li>
+        <li className="nx-list__item">
           See also <code className="nx-code">NxCheckboxPage.tsx</code>
           and <code className="nx-code">NxCheckboxExample.tsx</code> as an example of how to create a
           component example.
@@ -64,14 +66,16 @@ const Home = () =>
         the <code className="nx-code">pageConfig.ts</code> file
       </p>
       <CodeExample content={pageConfigExample}/>
-      <ul>
-        <li>
+      <ul className="nx-list nx-list--bulleted">
+        <li className="nx-list__item">
           Import the description page you created earlier
         </li>
-        <li>Place the entry in the proper category (creating a new category if necessary)</li>
-        <li>
-          It is important to note that the key that you use for your entry will be used
-          by <code className="nx-code">react-router</code> to auto-populate the left-hand navigation, page title and URL
+        <li className="nx-list__item">
+          Place the entry in the proper category (creating a new category if necessary)
+        </li>
+        <li className="nx-list__item">
+          It is important to note that the key that you use for your entry will be used by
+          <code className="nx-code">react-router</code> to auto-populate the left-hand navigation, page title and URL
         </li>
       </ul>
     </GalleryTile>
