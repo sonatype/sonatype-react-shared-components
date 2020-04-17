@@ -22,30 +22,32 @@ const NxTextInputStylesPage = () =>
         the <a href="#pages/NxTextInput">NxTextInput React Component</a>.
       </p>
       <p>Classes:</p>
-      <table className="gallery-props-table">
+      <table className="nx-table nx-table--gallery-props">
         <thead>
-          <tr>
-            <th>Class</th>
-            <th>Location</th>
-            <th>Details</th>
+          <tr className="nx-table-row">
+            <th className="nx-cell nx-cell--header">Class</th>
+            <th className="nx-cell nx-cell--header">Location</th>
+            <th className="nx-cell nx-cell--header">Details</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><code className="nx-code">.nx-text-input</code></td>
-            <td>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-text-input</code></td>
+            <td className="nx-cell">
               Any text-oriented <code className="nx-code">{'<input>'}</code> type or
               <code className="nx-code">{'<textarea>'}</code>
             </td>
-            <td>
+            <td className="nx-cell">
               Gives the input typical Sonatype input styling with 1px grey borders on the top, right, and bottom,
               and a 3px grey border on the left
             </td>
           </tr>
-          <tr>
-            <td><code className="nx-code">.nx-text-input--long</code></td>
-            <td>Any <code className="nx-code">.nx-text-input</code> element</td>
-            <td>Use this class to make the text input particularly wide (395px vs the default 219px)</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-text-input--long</code></td>
+            <td className="nx-cell">Any <code className="nx-code">.nx-text-input</code> element</td>
+            <td className="nx-cell">
+              Use this class to make the text input particularly wide (395px vs the default 219px)
+            </td>
           </tr>
         </tbody>
       </table>

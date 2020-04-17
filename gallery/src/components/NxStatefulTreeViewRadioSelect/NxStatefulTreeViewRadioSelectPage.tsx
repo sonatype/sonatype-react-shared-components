@@ -73,8 +73,8 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">
               Called whenever selection change occurs; it will receive one argument:
-              <ul>
-                <li>
+              <ul className="nx-list nx-list--bulleted">
+                <li className="nx-list__item">
                   <code className="nx-code">id</code> of the toggled option
                 </li>
               </ul>
