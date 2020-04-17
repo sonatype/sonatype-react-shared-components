@@ -24,24 +24,24 @@ const NxCounterPage = () =>
         Some basic positioning CSS examples have been provided. To right justify the counter within its container use
         <code className="nx-code">nx-pull-right</code>.
       </p>
-      <table className="gallery-props-table">
+      <table className="nx-table nx-table--gallery-props">
         <thead>
-          <tr>
-            <th>Class</th>
-            <th>Location</th>
-            <th>Details</th>
+          <tr className="nx-table-row">
+            <th className="nx-cell nx-cell--header">Class</th>
+            <th className="nx-cell nx-cell--header">Location</th>
+            <th className="nx-cell nx-cell--header">Details</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><code className="nx-code">.nx-counter</code></td>
-            <td>Top level</td>
-            <td>Basic counter styling. Supports # of # and text string.</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-counter</code></td>
+            <td className="nx-cell">Top level</td>
+            <td className="nx-cell">Basic counter styling. Supports # of # and text string.</td>
           </tr>
-          <tr>
-            <td><code className="nx-code">.nx-counter--active</code></td>
-            <td>Modifier of <code className="nx-code">.nx-counter</code></td>
-            <td>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-counter--active</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-counter</code></td>
+            <td className="nx-cell">
               An active state, used in lists or tree-views when the parent also has an active state.
             </td>
           </tr>

@@ -13,18 +13,18 @@ const NxListPage = () =>
   <>
     <GalleryDescriptionTile>
       <p>Lists take many forms:</p>
-      <ul>
-        <li>Simple data lists</li>
-        <li>Lists with clickable list items</li>
-        <li>Lists with bullets</li>
-        <li>Definition Lists</li>
-        <li>Lists with actions</li>
-        <li>Lists with items that have multiple lines of text</li>
+      <ul className="nx-list nx-list--bulleted">
+        <li className="nx-list__item">Simple data lists</li>
+        <li className="nx-list__item">Lists with clickable list items</li>
+        <li className="nx-list__item">Lists with bullets</li>
+        <li className="nx-list__item">Definition Lists</li>
+        <li className="nx-list__item">Lists with actions</li>
+        <li className="nx-list__item">Lists with items that have multiple lines of text</li>
       </ul>
       <p>Lists can also have modified states depending on their content:</p>
-      <ul>
-        <li>Lists with no data</li>
-        <li>Error states</li>
+      <ul className="nx-list nx-list--bulleted">
+        <li className="nx-list__item">Lists with no data</li>
+        <li className="nx-list__item">Error states</li>
       </ul>
       <p>
         The basic layout is a container <code className="nx-code">&lt;div&gt;</code> wrapping a
@@ -36,60 +36,64 @@ const NxListPage = () =>
         when clicked an event occurs - usually navigation. Clickable lists have hover and disabled states. They share
         error and empty states with default lists.
       </p>
-      <table className="gallery-props-table">
+      <table className="nx-table nx-table--gallery-props">
         <thead>
-          <tr>
-            <th>Class</th>
-            <th>Location</th>
-            <th>Details</th>
+          <tr className="nx-table-row">
+            <th className="nx-cell nx-cell--header">Class</th>
+            <th className="nx-cell nx-cell--header">Location</th>
+            <th className="nx-cell nx-cell--header">Details</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><code className="nx-code">.nx-list</code></td>
-            <td>Top-Level</td>
-            <td>The parent list class. It has no bullets.</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list</code></td>
+            <td className="nx-cell">Top-Level</td>
+            <td className="nx-cell">The parent list class. It has no bullets.</td>
           </tr>
-          <tr>
-            <td><code className="nx-code">.nx-list--clickable</code></td>
-            <td>Modifier of <code className="nx-code">.nx-list</code></td>
-            <td>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list--clickable</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list</code></td>
+            <td className="nx-cell">
               This modifier causes list items to respond to hover events. There is normally a chevron icon on the
               right to make it clear to the user that clicking will navigate away from the page.
             </td>
           </tr>
-          <tr>
-            <td><code className="nx-code">.nx-list--bulleted</code></td>
-            <td>Modifier of <code className="nx-code">.nx-list</code></td>
-            <td>If you need a list with bullets.</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list--bulleted</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list</code></td>
+            <td className="nx-cell">If you need a list with bullets.</td>
           </tr>
-          <tr>
-            <td><code className="nx-code">.nx-list--definition-list</code></td>
-            <td>Modifier of <code className="nx-code">.nx-list</code></td>
-            <td>Definition lists have two elements: a label and the data associated with that label.</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list--definition-list</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list</code></td>
+            <td className="nx-cell">
+              Definition lists have two elements: a label and the data associated with that label.
+            </td>
           </tr>
-          <tr>
-            <td><code className="nx-code">.nx-list__item--with-modifier-icon</code></td>
-            <td>Modifier of <code className="nx-code">.nx-list__item</code></td>
-            <td>Use this when you want to have a button on the far right.</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list__item--with-modifier-icon</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list__item</code></td>
+            <td className="nx-cell">Use this when you want to have a button on the far right.</td>
           </tr>
-          <tr>
-            <td><code className="nx-code">.nx-list__subtext</code></td>
-            <td>Element</td>
-            <td>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list__subtext</code></td>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">
               When you want a separate line below the main list item use a <code className="nx-code">&lt;p&gt;</code>
               with <code className="nx-code">.nx-list__subtext</code>
             </td>
           </tr>
-          <tr>
-            <td><code className="nx-code">.nx-list__item--empty</code></td>
-            <td>Modifier of <code className="nx-code">.nx-list__item</code></td>
-            <td>Used when there are no list items returned.</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list__item--empty</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list__item</code></td>
+            <td className="nx-cell">Used when there are no list items returned.</td>
           </tr>
-          <tr>
-            <td><code className="nx-code">.nx-error</code></td>
-            <td>Modifier of <code className="nx-code">.nx-list__item</code></td>
-            <td>Not strictly speaking a modifier, this is added to a list item when the list is in an error state.</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-error</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list__item</code></td>
+            <td className="nx-cell">
+              Not strictly speaking a modifier, this is added to a list item when the list is in an error state.
+            </td>
           </tr>
         </tbody>
       </table>
