@@ -26,44 +26,44 @@ const NxStatefulTextInputPage = () =>
     <GalleryDescriptionTile>
       <p>Standard text input with pristine state tracking and pluggable validation handling</p>
       <p>Props:</p>
-      <table className="gallery-props-table">
+      <table className="nx-table nx-table--gallery-props">
         <thead>
-          <tr>
-            <th>Prop</th>
-            <th>Type</th>
-            <th>Required</th>
-            <th>Details</th>
+          <tr className="nx-table-row">
+            <th className="nx-cell nx-cell--header">Prop</th>
+            <th className="nx-cell nx-cell--header">Type</th>
+            <th className="nx-cell nx-cell--header">Required</th>
+            <th className="nx-cell nx-cell--header">Details</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>type</td>
-            <td>"textarea" | "text" | "password"</td>
-            <td>No</td>
-            <td>What type of text input to render.  Defaults to "text"</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">type</td>
+            <td className="nx-cell">"textarea" | "text" | "password"</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">What type of text input to render.  Defaults to "text"</td>
           </tr>
-          <tr>
-            <td>defaultValue</td>
-            <td>string</td>
-            <td>Yes</td>
-            <td>The initial value rendered in the text input</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">defaultValue</td>
+            <td className="nx-cell">string</td>
+            <td className="nx-cell">Yes</td>
+            <td className="nx-cell">The initial value rendered in the text input</td>
           </tr>
-          <tr>
-            <td>validator</td>
-            <td>Function ((string) => string | string[] | null)</td>
-            <td>No</td>
-            <td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">validator</td>
+            <td className="nx-cell">Function ((string) => string | string[] | null)</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
               A function that validates user-inputted changes to the text field value. Accepts the new value
               as a string and returns zero or more validation error messages
             </td>
           </tr>
-          <tr>
-            <td>Input HTML Attributes | Textarea HTML Attributes</td>
-            <td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">Input HTML Attributes | Textarea HTML Attributes</td>
+            <td className="nx-cell">
               <code className="nx-code">NxTextInput</code> props
             </td>
-            <td>No</td>
-            <td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
               Any attribute supported by <code className="nx-code">NxTextInput</code>
             </td>
           </tr>

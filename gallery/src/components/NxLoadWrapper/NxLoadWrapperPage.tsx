@@ -24,41 +24,43 @@ const NxLoadWrapperPage = () =>
     <GalleryDescriptionTile>
       <p>A component that will display either a loading spinner, an error message, or the specified child VDOM</p>
       <p>Props:</p>
-      <table className="gallery-props-table">
+      <table className="nx-table nx-table--gallery-props">
         <thead>
-          <tr>
-            <th>Prop</th>
-            <th>Type</th>
-            <th>Required</th>
-            <th>Details</th>
+          <tr className="nx-table-row">
+            <th className="nx-cell nx-cell--header">Prop</th>
+            <th className="nx-cell nx-cell--header">Type</th>
+            <th className="nx-cell nx-cell--header">Required</th>
+            <th className="nx-cell nx-cell--header">Details</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>error</td>
-            <td>string</td>
-            <td>No</td>
-            <td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">error</td>
+            <td className="nx-cell">string</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
               A message that represents an error that occurred.  If defined, will be rendered via NxLoadError
             </td>
           </tr>
-          <tr>
-            <td>loading</td>
-            <td>boolean</td>
-            <td>No</td>
-            <td>If true, and error is unset, a loading spinner will be rendered via NxLoadingSpinner</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">loading</td>
+            <td className="nx-cell">boolean</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              If true, and error is unset, a loading spinner will be rendered via NxLoadingSpinner
+            </td>
           </tr>
-          <tr>
-            <td>children</td>
-            <td>VDOM</td>
-            <td>Yes</td>
-            <td>VDOM to render if loading is false and error is not set</td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">children</td>
+            <td className="nx-cell">VDOM</td>
+            <td className="nx-cell">Yes</td>
+            <td className="nx-cell">VDOM to render if loading is false and error is not set</td>
           </tr>
-          <tr>
-            <td>retryHandler</td>
-            <td>Function</td>
-            <td>No</td>
-            <td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">retryHandler</td>
+            <td className="nx-cell">Function</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
               If this is defined, a Retry button will be rendered in the NxLoadError which executes this function
               when clicked
             </td>

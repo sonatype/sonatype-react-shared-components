@@ -25,21 +25,21 @@ const NxAlertPage = () =>
       <p>Generic alert.</p>
       <p>Handy for DIY alert variations</p>
       <p>Accepts any prop that is valid on a div as well as the following:</p>
-      <table className="gallery-props-table">
+      <table className="nx-table nx-table--gallery-props">
         <thead>
-          <tr>
-            <th>Prop</th>
-            <th>Type</th>
-            <th>Required</th>
-            <th>Details</th>
+          <tr className="nx-table-row">
+            <th className="nx-cell nx-cell--header">Prop</th>
+            <th className="nx-cell nx-cell--header">Type</th>
+            <th className="nx-cell nx-cell--header">Required</th>
+            <th className="nx-cell nx-cell--header">Details</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>icon</td>
-            <td>FontAwesome's Icons</td>
-            <td>Yes</td>
-            <td>
+          <tr className="nx-table-row">
+            <td className="nx-cell">icon</td>
+            <td className="nx-cell">FontAwesome's Icons</td>
+            <td className="nx-cell">Yes</td>
+            <td className="nx-cell">
               A FontAwesome icon to use in the alert message
             </td>
           </tr>
