@@ -13,10 +13,10 @@ import NxTableCell from '../../NxTableCell/NxTableCell';
 import NxTableBody from '../../NxTableBody/NxTableBody';
 
 describe('NxTable', function() {
-  it('renders a table with the expected class names', function() {
-    const component = shallow(<NxTable className="test" />);
+  it('renders a table with the expected class names and id', function() {
+    const component = shallow(<NxTable id="test" className="test" />);
 
-    expect(component).toMatchSelector('table.nx-table.test');
+    expect(component).toMatchSelector('table.nx-table.test#test');
   });
 
   it('computes the columns in NxTableHead and passes them to NxTableBody', function() {
