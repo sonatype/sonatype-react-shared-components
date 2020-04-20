@@ -5,10 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import NxModal, { Props } from '../NxModal';
 import {mount, shallow} from 'enzyme';
-import {CloseHandler} from '../types';
 import {act} from 'react-dom/test-utils';
+
+import NxModal, {Props} from '../NxModal';
+import {CloseHandler} from '../types';
 
 describe('NxModal', function() {
   const dummyCloseHandler: CloseHandler = () => {};
@@ -51,25 +52,36 @@ describe('NxModal', function() {
     expect(nxModal.find('.nx-modal').prop('data-foo')).toEqual('bar');
   });
 
-  it('executes onClose method when pressing ESC key', function() {
-    let container: HTMLDivElement = document.createElement('div');
-    document.body.appendChild(container);
+  describe('NxModal event listener support', () => {
+    let container: HTMLDivElement | null;
 
-    const mockCallBack = jest.fn();
-    const nxModal = (
-      <div>
-        <NxModal id="modal-id" onClose={mockCallBack}/>
-      </div>
-    );
+    it('executes onClose method when pressing ESC key', function () {
+      const mockCallBack = jest.fn();
+      const nxModal = (
+        <div>
+          <NxModal id="modal-id" onClose={mockCallBack}/>
+        </div>
+      );
 
-    act(() => {
-      mount(nxModal, {attachTo: container});
+      act(() => {
+        mount(nxModal, {attachTo: container});
+      });
+
+      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+      expect(mockCallBack).toHaveBeenCalled();
     });
 
-    document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-    expect(mockCallBack).toHaveBeenCalled();
+    beforeEach(function () {
+      // Rendering container for the component in test.
+      container = document.createElement('div');
+      document.body.appendChild(container);
+    });
 
-    // after
-    document.body.removeChild(container);
+    afterEach(function () {
+      if (container) {
+        document.body.removeChild(container);
+        container = null;
+      }
+    });
   });
 });
