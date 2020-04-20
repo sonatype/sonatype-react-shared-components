@@ -41,7 +41,7 @@ describe('NxTable', function() {
       </NxTable>
     );
 
-    expect(component.findWhere(child => child.type() === NxTableBody)).not.toHaveProp('columns');
+    expect(component.find(NxTableBody)).not.toHaveProp('columns');
   });
 
   it('renders the NxTableHead', function() {
