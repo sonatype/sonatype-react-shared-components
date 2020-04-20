@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import NxModal, { Props } from '../NxModal';
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 import {CloseHandler} from '../types';
 import {act} from 'react-dom/test-utils';
 
@@ -62,17 +62,11 @@ describe('NxModal', function() {
       </div>
     );
 
-    let element: ReactWrapper;
     act(() => {
-      element = mount(nxModal, {attachTo: container});
-      //const domMountedModal = element.find(NxModal);
-
-      //domMountedModal.getDOMNode().dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      document.body.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-
-      //element.simulate('keyPress', {key: 'Escape'});
+      mount(nxModal, {attachTo: container});
     });
-    element!.update();
+
+    document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
     expect(mockCallBack).toHaveBeenCalled();
 
     // after
