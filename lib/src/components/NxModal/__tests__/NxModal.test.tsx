@@ -9,10 +9,9 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import {act} from 'react-dom/test-utils';
 
 import NxModal, {Props} from '../NxModal';
-import {CloseHandler} from '../types';
 
 describe('NxModal', function() {
-  const dummyCloseHandler: CloseHandler = () => {};
+  const dummyCloseHandler = jest.fn();
   const minimalProps: Props = {
     children: 'A message to show in a modal',
     onClose: dummyCloseHandler
