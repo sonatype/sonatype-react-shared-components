@@ -76,18 +76,9 @@ describe('NxModal', function() {
       }
     });
 
-    function createNxModal(id: string, firstMockCallBack: jest.Mock<any, any>) {
-      const nxModal = (
-        <div>
-          <NxModal id={id} onClose={firstMockCallBack}/>
-        </div>
-      );
-      return nxModal;
-    }
-
     it('executes onClose method when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const nxModal = createNxModal('first-modal-id', mockCallBack);
+      const nxModal = <NxModal id='first-modal-id' onClose={mockCallBack}/>;
 
       act(() => {
         mount(nxModal, {attachTo: containerMainModal});
@@ -100,8 +91,8 @@ describe('NxModal', function() {
     it('executes onClose method for each modal that has been opened, preserving order call', function () {
       const firstMockCallBack = jest.fn();
       const secondMockCallBack = jest.fn();
-      const firstNxModal = createNxModal('first-modal-id', firstMockCallBack);
-      const secondNxModal = createNxModal('second-modal-id', secondMockCallBack);
+      const firstNxModal = <NxModal id='first-modal-id' onClose={firstMockCallBack}/>;
+      const secondNxModal = <NxModal id='second-modal-id' onClose={secondMockCallBack}/>;
 
       let secondModalWrapper: ReactWrapper | null = null;
       act(() => {
