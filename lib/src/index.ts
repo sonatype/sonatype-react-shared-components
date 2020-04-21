@@ -30,6 +30,7 @@ export { default as NxFontAwesomeIcon, Props as NxFontAwesomeIconProps }
 
 export {
   default as NxVulnerabilityDetails,
+  vulnerabilityDetailsPropType,
   Props as NxVulnerabilityDetailsProps
 } from './components/NxVulnerabilityDetails/NxVulnerabilityDetails';
 
