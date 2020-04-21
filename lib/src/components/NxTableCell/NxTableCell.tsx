@@ -13,6 +13,8 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
+import './NxTableCell.scss';
+
 const NxTableCell = function NxTableCell(props: Props) {
   const {
     isHeader = false,
@@ -35,18 +37,31 @@ const NxTableCell = function NxTableCell(props: Props) {
     'nx-cell--icon': hasIcon
   });
 
-  const sortIcons = {
-    'asc': faSortUp,
-    'desc': faSortDown
-  };
-  const sortIcon = sortDir ? sortIcons[sortDir] : faSort;
+  let maskedSort;
+  if (sortDir === 'asc') {
+    maskedSort = <>
+      <NxFontAwesomeIcon icon={faSortDown} />
+      <NxFontAwesomeIcon icon={faSortUp} />
+    </>;
+  }
+  else if (sortDir === 'desc') {
+    maskedSort = <>
+      <NxFontAwesomeIcon icon={faSortUp} />
+      <NxFontAwesomeIcon icon={faSortDown} />
+    </>;
+  }
+  else {
+    maskedSort = <NxFontAwesomeIcon icon={faSort} />;
+  }
 
   const Tag = isHeader ? 'th' : 'td';
 
   return (
     <Tag className={classes} {...attrs}>
       {children}
-      {isSortable && <NxFontAwesomeIcon icon={sortIcon} fixedWidth/>}
+      <span className="fa-layers fa-fw">
+        {isSortable && maskedSort}
+      </span>
     </Tag>
   );
 };
