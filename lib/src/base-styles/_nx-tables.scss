@@ -132,3 +132,13 @@
   max-width: 32px;
   min-width: 14px;
 }
+
+.nx-cell__sort-icons {
+  :first-child path {
+    color: $nx-grey-2;
+  }
+
+  :nth-child(2) path {
+    color: $nx-dark-green;
+  }
+}

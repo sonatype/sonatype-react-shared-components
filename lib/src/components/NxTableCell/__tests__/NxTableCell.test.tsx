@@ -5,10 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import NxTableCell from '../NxTableCell';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+
+import NxTableCell from '../NxTableCell';
 
 describe('NxTableCell', function () {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxTableCell, {});
@@ -40,18 +41,22 @@ describe('NxTableCell', function () {
   it('shows the sortable icon when the cell isSortable but has no sort direction', function () {
     const component = getShallowComponent({ isSortable: true });
 
-    expect(component).toContainReact(<NxFontAwesomeIcon icon={faSort} fixedWidth />);
+    expect(component.find('.nx-cell__sort-icons.fa-layers.fa-fw')).toContainReact(<NxFontAwesomeIcon icon={faSort}/>);
   });
 
   it('shows the sort ascending icon when the cell isSortable and has a sort direction "asc"', function () {
     const component = getShallowComponent({ isSortable: true, sortDir: 'asc' });
 
-    expect(component).toContainReact(<NxFontAwesomeIcon icon={faSortUp} fixedWidth />);
+    expect(component).toContainMatchingElement('.nx-cell__sort-icons');
+    expect(component.find('NxFontAwesomeIcon').first()).toHaveProp('icon', faSortDown);
+    expect(component.find('NxFontAwesomeIcon').last()).toHaveProp('icon', faSortUp);
   });
 
   it('shows the sort descending icon when the cell isSortable and has a sort direction "desc"', function () {
     const component = getShallowComponent({ isSortable: true, sortDir: 'desc' });
 
-    expect(component).toContainReact(<NxFontAwesomeIcon icon={faSortDown} fixedWidth />);
+    expect(component).toContainMatchingElement('.nx-cell__sort-icons');
+    expect(component.find('NxFontAwesomeIcon').first()).toHaveProp('icon', faSortUp);
+    expect(component.find('NxFontAwesomeIcon').last()).toHaveProp('icon', faSortDown);
   });
 });
