@@ -56,13 +56,39 @@ describe('NxModal', function() {
     let containerMainModal: HTMLDivElement | null;
     let containerSecondaryModal: HTMLDivElement | null;
 
-    it('executes onClose method when pressing ESC key', function () {
-      const mockCallBack = jest.fn();
+    beforeEach(function () {
+      // Rendering containerMainModal for the component in test.
+      containerMainModal = document.createElement('div');
+      containerSecondaryModal = document.createElement('div');
+
+      document.body.appendChild(containerMainModal);
+      document.body.appendChild(containerSecondaryModal);
+    });
+
+    afterEach(function () {
+      if (containerMainModal) {
+        document.body.removeChild(containerMainModal);
+        containerMainModal = null;
+      }
+
+      if (containerSecondaryModal) {
+        document.body.removeChild(containerSecondaryModal);
+        containerSecondaryModal = null;
+      }
+    });
+
+    function createNxModal(id: string, firstMockCallBack: jest.Mock<any, any>) {
       const nxModal = (
         <div>
-          <NxModal id="modal-id" onClose={mockCallBack}/>
+          <NxModal id={id} onClose={firstMockCallBack}/>
         </div>
       );
+      return nxModal;
+    }
+
+    it('executes onClose method when pressing ESC key', function () {
+      const mockCallBack = jest.fn();
+      const nxModal = createNxModal('first-modal-id', mockCallBack);
 
       act(() => {
         mount(nxModal, {attachTo: containerMainModal});
@@ -72,25 +98,18 @@ describe('NxModal', function() {
       expect(mockCallBack).toHaveBeenCalledTimes(1);
     });
 
-    it('executes onClose method for each modal that has been opened, preserving order call', function() {
+    it('executes onClose method for each modal that has been opened, preserving order call', function () {
       const firstMockCallBack = jest.fn();
       const secondMockCallBack = jest.fn();
-      const firstNxModal = (
-        <div>
-          <NxModal id="first-modal-id" onClose={firstMockCallBack}/>
-        </div>
-      );
-      const secondNxModal = (
-        <div>
-          <NxModal id="second-modal-id" onClose={secondMockCallBack}/>
-        </div>
-      );
+      const firstNxModal = createNxModal('first-modal-id', firstMockCallBack);
+      const secondNxModal = createNxModal('second-modal-id', secondMockCallBack);
 
       let secondModalWrapper: ReactWrapper | null = null;
       act(() => {
         mount(firstNxModal, {attachTo: containerMainModal});
         secondModalWrapper = mount(secondNxModal, {attachTo: containerSecondaryModal});
       });
+
       // "Close" the second modal
       document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
       expect(secondMockCallBack).toHaveBeenCalledTimes(1);
@@ -114,27 +133,6 @@ describe('NxModal', function() {
       document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
       expect(secondMockCallBack).toHaveBeenCalledTimes(2);
       expect(firstMockCallBack).toHaveBeenCalledTimes(1);
-    });
-
-    beforeEach(function () {
-      // Rendering containerMainModal for the component in test.
-      containerMainModal = document.createElement('div');
-      containerSecondaryModal = document.createElement('div');
-
-      document.body.appendChild(containerMainModal);
-      document.body.appendChild(containerSecondaryModal);
-    });
-
-    afterEach(function () {
-      if (containerMainModal) {
-        document.body.removeChild(containerMainModal);
-        containerMainModal = null;
-      }
-
-      if (containerSecondaryModal) {
-        document.body.removeChild(containerSecondaryModal);
-        containerSecondaryModal = null;
-      }
     });
   });
 });
