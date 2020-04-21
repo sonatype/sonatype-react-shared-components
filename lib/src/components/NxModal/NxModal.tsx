@@ -23,16 +23,17 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, ...attrs}) => {
     }
   };
 
+  const removeCloseHandlerListener = () => {
+    const idx = currentModalCloseHandlers.indexOf(onClose);
+    currentModalCloseHandlers.splice(idx, 1);
+    document.removeEventListener('keydown', modalCloseListener);
+  };
+
   useEffect(function() {
     document.addEventListener('keydown', modalCloseListener);
-
     currentModalCloseHandlers.push(onClose);
 
-    return function() {
-      const idx = currentModalCloseHandlers.indexOf(onClose);
-      currentModalCloseHandlers.splice(idx, 1);
-      document.removeEventListener('keydown', modalCloseListener);
-    };
+    return removeCloseHandlerListener;
   }, []);
 
   return (
