@@ -37,16 +37,20 @@ const NxTableCell = function NxTableCell(props: Props) {
 
   let maskedSort;
   if (sortDir === 'asc') {
-    maskedSort = <>
-      <NxFontAwesomeIcon icon={faSortDown} />
-      <NxFontAwesomeIcon icon={faSortUp} />
-    </>;
+    maskedSort = (
+      <>
+        <NxFontAwesomeIcon icon={faSortDown} />
+        <NxFontAwesomeIcon icon={faSortUp} />
+      </>
+    );
   }
   else if (sortDir === 'desc') {
-    maskedSort = <>
-      <NxFontAwesomeIcon icon={faSortUp} />
-      <NxFontAwesomeIcon icon={faSortDown} />
-    </>;
+    maskedSort = (
+      <>
+        <NxFontAwesomeIcon icon={faSortUp} />
+        <NxFontAwesomeIcon icon={faSortDown} />
+      </>
+    );
   }
   else {
     maskedSort = <NxFontAwesomeIcon icon={faSort} />;
