@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import {mount, shallow} from 'enzyme';
+import {mount, ReactWrapper, shallow} from 'enzyme';
 import {act} from 'react-dom/test-utils';
 
 import NxModal, {Props} from '../NxModal';
@@ -53,7 +53,8 @@ describe('NxModal', function() {
   });
 
   describe('NxModal event listener support', () => {
-    let container: HTMLDivElement | null;
+    let containerMainModal: HTMLDivElement | null;
+    let containerSecondaryModal: HTMLDivElement | null;
 
     it('executes onClose method when pressing ESC key', function () {
       const mockCallBack = jest.fn();
@@ -64,23 +65,75 @@ describe('NxModal', function() {
       );
 
       act(() => {
-        mount(nxModal, {attachTo: container});
+        mount(nxModal, {attachTo: containerMainModal});
       });
 
       document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      expect(mockCallBack).toHaveBeenNthCalledWith(1);
+      expect(mockCallBack).toHaveBeenCalledTimes(1);
+    });
+
+    it('executes onClose method for each modal that has been opened, preserving order call', function() {
+      const firstMockCallBack = jest.fn();
+      const secondMockCallBack = jest.fn();
+      const firstNxModal = (
+        <div>
+          <NxModal id="first-modal-id" onClose={firstMockCallBack}/>
+        </div>
+      );
+      const secondNxModal = (
+        <div>
+          <NxModal id="second-modal-id" onClose={secondMockCallBack}/>
+        </div>
+      );
+
+      let secondModalWrapper: ReactWrapper | null = null;
+      act(() => {
+        mount(firstNxModal, {attachTo: containerMainModal});
+        secondModalWrapper = mount(secondNxModal, {attachTo: containerSecondaryModal});
+      });
+      // "Close" the second modal
+      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+      expect(secondMockCallBack).toHaveBeenCalledTimes(1);
+      expect(firstMockCallBack).not.toHaveBeenCalled();
+
+      // Unmount and remount the modal to ensure listener order is preserved if new modals are opened
+      act(() => {
+        secondModalWrapper!.unmount();
+        secondModalWrapper = mount(secondNxModal, {attachTo: containerSecondaryModal});
+      });
+      // "Close" the second modal again
+      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+      expect(secondMockCallBack).toHaveBeenCalledTimes(2);
+      expect(firstMockCallBack).not.toHaveBeenCalled();
+
+      // Unmount second modal to remove it's listener from available listeners to execute
+      act(() => {
+        secondModalWrapper!.unmount();
+      });
+      // "Close" the first modal
+      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+      expect(secondMockCallBack).toHaveBeenCalledTimes(2);
+      expect(firstMockCallBack).toHaveBeenCalledTimes(1);
     });
 
     beforeEach(function () {
-      // Rendering container for the component in test.
-      container = document.createElement('div');
-      document.body.appendChild(container);
+      // Rendering containerMainModal for the component in test.
+      containerMainModal = document.createElement('div');
+      containerSecondaryModal = document.createElement('div');
+
+      document.body.appendChild(containerMainModal);
+      document.body.appendChild(containerSecondaryModal);
     });
 
     afterEach(function () {
-      if (container) {
-        document.body.removeChild(container);
-        container = null;
+      if (containerMainModal) {
+        document.body.removeChild(containerMainModal);
+        containerMainModal = null;
+      }
+
+      if (containerSecondaryModal) {
+        document.body.removeChild(containerSecondaryModal);
+        containerSecondaryModal = null;
       }
     });
   });
