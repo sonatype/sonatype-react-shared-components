@@ -68,7 +68,7 @@ describe('NxModal', function() {
       });
 
       document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      expect(mockCallBack).toHaveBeenCalled();
+      expect(mockCallBack).toHaveBeenNthCalledWith(1);
     });
 
     beforeEach(function () {
