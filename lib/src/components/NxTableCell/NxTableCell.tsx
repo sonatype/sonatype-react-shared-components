@@ -32,7 +32,8 @@ const NxTableCell = function NxTableCell(props: Props) {
     'nx-cell--empty': isEmpty,
     'nx-error': isError,
     'nx-cell--num': isNumeric,
-    'nx-cell--icon': hasIcon
+    'nx-cell--icon': hasIcon,
+    'nx-cell--sortable': isSortable
   });
 
   let maskedSort;

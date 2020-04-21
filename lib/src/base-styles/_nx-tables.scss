@@ -133,6 +133,11 @@
   min-width: 14px;
 }
 
+.nx-cell--sortable {
+  user-select: none;
+  -ms-user-select: none;
+}
+
 .nx-cell__sort-icons {
   :first-child path {
     color: $nx-grey-4;
