@@ -34,7 +34,7 @@ describe('NxTable', function() {
     expect(component.find(NxTableBody)).toHaveProp('columns', 1);
   });
 
-  it('does not pass columns to NxTableBody', function () {
+  it('does not pass columns to NxTableBody when there is no NxTableHead', function () {
     const component = shallow(
       <NxTable>
         <NxTableBody />
