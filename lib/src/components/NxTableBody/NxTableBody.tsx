@@ -45,7 +45,7 @@ const NxTableBody = function NxTableBody(props: Props) {
   return (
     <tbody {...attrs}>
       {isLoading && loadingSpinnerRow}
-      {error && !isLoading && errorRow}
+      {!!error && !isLoading && errorRow}
       {!isLoading && !error && children}
     </tbody>
   );
