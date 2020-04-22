@@ -17,20 +17,24 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, ...attrs}) => {
   const modalClasses = classnames('nx-modal', className);
 
   const modalCloseListener = ({ key }: KeyboardEvent) => {
-    if (key === 'Escape' && currentModalCloseHandlers.length
-        && onClose === currentModalCloseHandlers[currentModalCloseHandlers.length - 1]) {
-      onClose();
+    if (key === 'Escape' && currentModalCloseHandlers.length) {
+      currentModalCloseHandlers[currentModalCloseHandlers.length - 1]();
     }
   };
 
   const removeCloseHandlerListener = () => {
     const idx = currentModalCloseHandlers.indexOf(onClose);
     currentModalCloseHandlers.splice(idx, 1);
-    document.removeEventListener('keydown', modalCloseListener);
+
+    if (!currentModalCloseHandlers.length) {
+      document.removeEventListener('keydown', modalCloseListener);
+    }
   };
 
   useEffect(function() {
-    document.addEventListener('keydown', modalCloseListener);
+    if (!currentModalCloseHandlers.length) {
+      document.addEventListener('keydown', modalCloseListener);
+    }
     currentModalCloseHandlers.push(onClose);
 
     return removeCloseHandlerListener;
