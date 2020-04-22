@@ -31,7 +31,7 @@ describe('NxTable', function() {
       </NxTable>
     );
 
-    expect(component.findWhere(child => child.type() === NxTableBody)).toHaveProp('columns', 1);
+    expect(component.find(NxTableBody)).toHaveProp('columns', 1);
   });
 
   it('does not pass columns to NxTableBody', function () {
