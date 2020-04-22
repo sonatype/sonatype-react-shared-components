@@ -62,9 +62,7 @@ const NxTableCell = function NxTableCell(props: Props) {
   return (
     <Tag className={classes} {...attrs}>
       {children}
-      <span className="nx-cell__sort-icons fa-layers fa-fw">
-        {isSortable && maskedSort}
-      </span>
+      {isSortable && <span className="nx-cell__sort-icons fa-layers fa-fw">{maskedSort}</span>}
     </Tag>
   );
 };
