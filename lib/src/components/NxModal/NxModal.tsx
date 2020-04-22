@@ -16,7 +16,7 @@ const currentModalCloseHandlers: CloseHandler[] = [];
 const NxModal: FunctionComponent<Props> = ({className, onClose, ...attrs}) => {
   const modalClasses = classnames('nx-modal', className);
 
-  const modalCloseListener = ({ key }: { key: string}) => {
+  const modalCloseListener = ({ key }: KeyboardEvent) => {
     if (key === 'Escape' && currentModalCloseHandlers.length
         && onClose === currentModalCloseHandlers[currentModalCloseHandlers.length - 1]) {
       onClose();
