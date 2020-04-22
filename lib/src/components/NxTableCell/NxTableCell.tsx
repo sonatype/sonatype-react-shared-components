@@ -8,6 +8,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
 
+import {ensureElement} from '../../util/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { Props, propTypes } from './types';
@@ -61,7 +62,7 @@ const NxTableCell = function NxTableCell(props: Props) {
 
   return (
     <Tag className={classes} {...attrs}>
-      {children}
+      {ensureElement(children)}
       {isSortable && <span className="nx-cell__sort-icons fa-layers fa-fw">{maskedSort}</span>}
     </Tag>
   );
