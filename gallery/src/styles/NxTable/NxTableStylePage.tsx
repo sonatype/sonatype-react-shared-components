@@ -9,7 +9,7 @@ import React from 'react';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxTableExamples from './NxTableExamples';
 
-const NxTablePage = () =>
+const NxTableStylePage = () =>
   <>
     <GalleryDescriptionTile>
       <p>This is the styling and layout for a basic table. There are few variations demonstrated here:</p>
@@ -106,4 +106,4 @@ const NxTablePage = () =>
     <NxTableExamples />
   </>;
 
-export default NxTablePage;
+export default NxTableStylePage;

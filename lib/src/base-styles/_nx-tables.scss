@@ -132,3 +132,18 @@
   max-width: 32px;
   min-width: 14px;
 }
+
+.nx-cell--sortable {
+  user-select: none;
+  -ms-user-select: none;
+}
+
+.nx-cell__sort-icons {
+  :first-child path {
+    color: $nx-grey-4;
+  }
+
+  :nth-child(2) path {
+    color: $nx-slate;
+  }
+}
