@@ -95,8 +95,9 @@ describe('NxModal', function() {
       const secondNxModal = <NxModal id="second-modal-id" onClose={secondMockCallBack}/>;
 
       let secondModalWrapper: ReactWrapper | null = null;
+      let firstModalWrapper: ReactWrapper | null = null;
       act(() => {
-        mount(firstNxModal, {attachTo: containerMainModal});
+        firstModalWrapper = mount(firstNxModal, {attachTo: containerMainModal});
         secondModalWrapper = mount(secondNxModal, {attachTo: containerSecondaryModal});
       });
 
@@ -115,11 +116,20 @@ describe('NxModal', function() {
       expect(secondMockCallBack).toHaveBeenCalledTimes(2);
       expect(firstMockCallBack).not.toHaveBeenCalled();
 
-      // Unmount second modal to remove it's listener from available listeners to execute
+      // Unmount the second modal to remove it's listener from available listeners to execute
       act(() => {
         secondModalWrapper!.unmount();
       });
       // "Close" the first modal
+      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+      expect(secondMockCallBack).toHaveBeenCalledTimes(2);
+      expect(firstMockCallBack).toHaveBeenCalledTimes(1);
+
+      // Unmount the first modal to remove it's listener from available listeners to execute
+      act(() => {
+        firstModalWrapper!.unmount();
+      });
+      // Ensure there are no more calls to the registered close handlers with new keypresses
       document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
       expect(secondMockCallBack).toHaveBeenCalledTimes(2);
       expect(firstMockCallBack).toHaveBeenCalledTimes(1);
