@@ -88,6 +88,21 @@ describe('NxModal', function() {
       expect(mockCallBack).toHaveBeenCalledTimes(1);
     });
 
+    it('executes onClose method ONLY when pressing ESC key', function () {
+      const mockCallBack = jest.fn();
+      const nxModal = <NxModal id="first-modal-id" onClose={mockCallBack}/>;
+
+      act(() => {
+        mount(nxModal, {attachTo: containerMainModal});
+      });
+
+      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Tab'}));
+      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
+      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'q'}));
+      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Q'}));
+      expect(mockCallBack).not.toHaveBeenCalled();
+    });
+
     it('executes onClose method for each modal that has been opened, preserving order call', function () {
       const firstMockCallBack = jest.fn();
       const secondMockCallBack = jest.fn();
@@ -134,5 +149,6 @@ describe('NxModal', function() {
       expect(secondMockCallBack).toHaveBeenCalledTimes(2);
       expect(firstMockCallBack).toHaveBeenCalledTimes(1);
     });
+
   });
 });
