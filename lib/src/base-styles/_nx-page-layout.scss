@@ -35,7 +35,7 @@
   min-width: $nx-page-width-min;
 }
 
-.nx-root-container {
+.nx-page-content-container {
   @include container-horizontal;
 
   box-sizing: border-box;
