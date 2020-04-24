@@ -8,6 +8,13 @@
 @import '../scss-shared/nx-text-helpers';
 @import '../scss-shared/nx-container-helpers';
 
+$main-header-background: $nx-sonatype-blue;
+$main-header-color: $nx-off-white;
+$main-header-highlight: $nx-sonatype-orange;
+$main-header-height: 72px;
+$main-header-branding-height: 52px;
+$main-header-product-grid-rows: $main-header-branding-height / 2;
+
 /*
   #Main Header
 */
@@ -15,7 +22,7 @@
 .nx-header {
   background-color: $nx-off-black;
   flex-shrink: 0; // needed for IE11
-  height: $nx-main-header-height;
+  height: $main-header-height;
   width: 100%;
 }
 
@@ -23,50 +30,52 @@
   @include container-horizontal;
 
   display: flex;
+  height: $main-header-height;
   margin: 0 auto;
   width: 100%;
   max-width: $nx-page-width-max;
 }
 
-.nx-title {
-  border-right: 1px solid transparent;
-  border-left: 1px solid transparent;
+.nx-product {
   box-sizing: border-box;
-  color: #fff;
+  color: $nx-off-white;
   display: -ms-grid;
   display: grid;
   grid-column-gap: 2px;
   grid-row-gap: 2px;
-  -ms-grid-rows: 22px 2px auto;
-  grid-template-rows: 22px auto;
-  -ms-grid-columns: 36px 2px auto;
-  grid-template-columns: 36px auto;
+  -ms-grid-rows: $main-header-product-grid-rows 2px auto;
+  grid-template-rows: $main-header-product-grid-rows auto;
+  -ms-grid-columns: $main-header-branding-height 2px auto;
+  grid-template-columns: $main-header-branding-height auto;
   grid-template-areas:
     "logo title"
     "logo version";
-  height: 40px;
+  height: $main-header-branding-height;
+  margin-top: 10px;
   padding-right: 12px;
   text-decoration: none;
   min-width: $nx-sidebar-width;
 }
 
-.nx-app-logo {
+.nx-product__logo {
   -ms-grid-row-align: center;
   align-self: center;
+  box-sizing: border-box;
   -ms-grid-row: 1;
   -ms-grid-row-span: 3;
   -ms-grid-column: 1;
   grid-area: logo;
-  height: 36px;
-  width: 36px;
+  height: $main-header-branding-height;
+  width: $main-header-branding-height;
 }
 
-.nx-title__brand {
+.nx-product__name {
   @include semi-bold();
 
   -ms-grid-row-align: end;
   align-self: end;
-  font-size: 18px;
+  font-size: 23px;
+  text-transform: lowercase;
   -ms-grid-row: 1;
   -ms-grid-column: 3;
   grid-area: title;
@@ -76,14 +85,17 @@
   white-space: nowrap;
 }
 
-.nx-title__version {
+.nx-product__version {
+  @include bold();
+
   align-self: start;
   -ms-grid-row-align: start;
-  font-size: 12px;
+  font-size: 11px;
   -ms-grid-row: 3;
   -ms-grid-column: 3;
   grid-area: version;
   -ms-grid-column-align: left;
   justify-self: left;
-  line-height: 12px;
+  line-height: 11px;
+  padding-top: $nx-spacing-xxs;
 }
