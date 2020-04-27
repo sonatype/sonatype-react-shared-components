@@ -10,12 +10,13 @@ import {NxModal, NxWarningAlert} from '@sonatype/react-shared-components';
 
 export default function NxModalAlertExample() {
   const [showModal, setShowModal] = useState(false);
+  const modalCloseHandler = () => setShowModal(false);
 
   return (
     <>
       <button onClick={() => setShowModal(true)} className="nx-btn">Open Modal</button>
       { showModal &&
-        <NxModal id="nx-modal-alert-example">
+        <NxModal id="nx-modal-alert-example" onClose={modalCloseHandler}>
           <header className="nx-modal-header">
             <h2 className="nx-h2">
               <span>Example NxModal with NxAlert</span>
@@ -30,7 +31,7 @@ export default function NxModalAlertExample() {
           </div>
           <footer className="nx-modal-footer">
             <div className="nx-btn-bar">
-              <button type="button" onClick={() => setShowModal(false)} className="nx-btn">Close</button>
+              <button type="button" onClick={modalCloseHandler} className="nx-btn">Close</button>
             </div>
           </footer>
         </NxModal>

@@ -4,22 +4,46 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useEffect} from 'react';
 import classnames from 'classnames';
 
-import {Props, propTypes} from './types';
+import {CloseHandler, Props, propTypes} from './types';
 
 import './NxModal.scss';
 
-const NxModal: FunctionComponent<Props> = ({className, ...attrs}) => {
+const currentModalCloseHandlers: CloseHandler[] = [];
 
+const NxModal: FunctionComponent<Props> = ({className, onClose, ...attrs}) => {
   const modalClasses = classnames('nx-modal', className);
+
+  const modalCloseListener = ({ key }: KeyboardEvent) => {
+    if (key === 'Escape' && currentModalCloseHandlers.length) {
+      currentModalCloseHandlers[currentModalCloseHandlers.length - 1]();
+    }
+  };
+
+  const removeCloseHandlerListener = () => {
+    const idx = currentModalCloseHandlers.indexOf(onClose);
+    currentModalCloseHandlers.splice(idx, 1);
+
+    if (!currentModalCloseHandlers.length) {
+      document.removeEventListener('keydown', modalCloseListener);
+    }
+  };
+
+  useEffect(function() {
+    if (!currentModalCloseHandlers.length) {
+      document.addEventListener('keydown', modalCloseListener);
+    }
+    currentModalCloseHandlers.push(onClose);
+
+    return removeCloseHandlerListener;
+  }, []);
+
   return (
-    <>
-      <div className="nx-modal-backdrop">
-        <div className={modalClasses} {...attrs} />
-      </div>
-    </>
+    <div className="nx-modal-backdrop">
+      <div className={modalClasses} {...attrs} />
+    </div>
   );
 };
 
