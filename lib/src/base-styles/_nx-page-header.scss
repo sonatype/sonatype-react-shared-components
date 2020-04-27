@@ -37,6 +37,7 @@ $main-header-product-version-row-height: 1fr;
 }
 
 .nx-product {
+  align-self: center;
   box-sizing: border-box;
   color: $nx-off-white;
   display: -ms-grid;
@@ -50,7 +51,6 @@ $main-header-product-version-row-height: 1fr;
     "logo title"
     "logo version";
   height: $main-header-product-height;
-  margin-top: 10px;
   text-decoration: none;
   min-width: $nx-sidebar-width;
 }
