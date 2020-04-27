@@ -82,13 +82,49 @@ export default function NxModalPage() {
           </tbody>
         </table>
         <h3>Props</h3>
-        <p>
-          <code className="nx-code">NxModal</code> has no required properties or attributes; instead it accepts any HTML
-          attributes that are allowed on <code className="nx-code">div</code> elements. Additionally,
-          any <code className="nx-code">className</code> attributes passed in on
-          the <code className="nx-code">NxModal</code> element will be added to
-          the <code className="nx-code">nx-modal</code> class on the modal div.
-        </p>
+        <table className="nx-table nx-table--gallery-props">
+          <thead>
+            <tr className="nx-table-row">
+              <th className="nx-cell nx-cell--header">Prop</th>
+              <th className="nx-cell nx-cell--header">Type</th>
+              <th className="nx-cell nx-cell--header">Required</th>
+              <th className="nx-cell nx-cell--header">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="nx-table-row">
+              <td className="nx-cell">className</td>
+              <td className="nx-cell">string</td>
+              <td className="nx-cell">No</td>
+              <td className="nx-cell">
+                Any <code className="nx-code">className</code> attributes passed in on
+                the <code className="nx-code">NxModal</code> element will be added to
+                the <code className="nx-code">nx-modal</code> class on the modal div.
+              </td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell">onClose</td>
+              <td className="nx-cell">Function (() => void)</td>
+              <td className="nx-cell">Yes</td>
+              <td className="nx-cell">
+                The function to be called to close the modal when pressing
+                the <code className="nx-code">Escape</code> key.
+              </td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell">Div HTML Attributes</td>
+              <td className="nx-cell">
+                <a target="_blank"
+                   rel="noopener"
+                   href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
+                  HTML Attributes
+                </a>
+              </td>
+              <td className="nx-cell">No</td>
+              <td className="nx-cell">NxModal supports any html attribute that's normally supported by Div elements</td>
+            </tr>
+          </tbody>
+        </table>
       </GalleryDescriptionTile>
 
       <GalleryTile title="Simple NxModal Example">
