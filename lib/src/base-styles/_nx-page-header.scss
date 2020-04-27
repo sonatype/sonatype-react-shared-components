@@ -12,8 +12,8 @@ $main-header-background: $nx-sonatype-blue;
 $main-header-color: $nx-off-white;
 $main-header-height: 72px;
 $main-header-product-height: 52px;
-$main-header-product-title-row-height: $main-header-product-height * .66;
-$main-header-product-version-row-height: $main-header-product-height * .33;
+$main-header-product-title-row-height: 2fr;
+$main-header-product-version-row-height: 1fr;
 
 /*
   #Main Header
