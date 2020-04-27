@@ -64,8 +64,8 @@ $main-header-product-version-row-height: 1fr;
   align-self: center;
   box-sizing: border-box;
   grid-area: logo;
-  height: $main-header-product-height;
-  width: $main-header-product-height;
+  height: 100%;
+  width: 100%;
 }
 
 .nx-product__name {
