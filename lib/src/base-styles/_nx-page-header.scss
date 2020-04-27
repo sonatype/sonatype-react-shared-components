@@ -80,7 +80,7 @@ $main-header-product-version-row-height: 1fr;
   grid-area: title;
   -ms-grid-column-align: left;
   justify-self: left;
-  line-height: 100%;
+  line-height: normal;
   text-transform: lowercase;
   white-space: nowrap;
 }
