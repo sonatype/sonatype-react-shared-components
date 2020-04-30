@@ -88,6 +88,19 @@ describe('NxModal', function() {
       expect(mockCallBack).toHaveBeenCalledTimes(1);
     });
 
+    it('executes onClose method when pressing ESC key on IE11', function () {
+      const mockCallBack = jest.fn();
+      const nxModal = <NxModal id="first-modal-id" onClose={mockCallBack}/>;
+
+      act(() => {
+        mount(nxModal, {attachTo: containerMainModal});
+      });
+
+      const ieEscapeKey = 'Esc';
+      document.dispatchEvent(new KeyboardEvent('keydown', {key: ieEscapeKey}));
+      expect(mockCallBack).toHaveBeenCalledTimes(1);
+    });
+
     it('executes onClose method ONLY when pressing ESC key', function () {
       const mockCallBack = jest.fn();
       const nxModal = <NxModal id="first-modal-id" onClose={mockCallBack}/>;
