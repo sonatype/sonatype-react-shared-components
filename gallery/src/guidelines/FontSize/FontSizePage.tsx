@@ -147,7 +147,7 @@ const FontSizePage = () =>
           {' '}<code className="nx-code">line-height</code> property. Extra space resulting from a
           high <code className="nx-code">line-height</code> value is distributed equally above and below the content
           box, putting the content boxes in the middle of each line box. Note however that the visible glyphs are
-          not necessarily in the middle of their content box.
+          not necessarily in the middle of their content box. This extra space is known as the <q>leading</q>.
         </p>
 
         <p>
@@ -242,6 +242,11 @@ const FontSizePage = () =>
           Due to the off-center nature of the baseline, vertical-alignment of elements of different font sizes is
           extremely, unavoidably counterintuitive. See the examples in the vertical alignment section
           of <a href={firstReferenceUrl}>[1]</a>
+        </li>
+        <li>
+          It is possible to specify a <code className="nx-code">line-height</code> smaller than an element's content
+          height, in which case the leading with be negative and text node content areas will have a height exceeding
+          that of their line box. In this scenario, text nodes in adjacent line boxes will overlap one another.
         </li>
       </ul>
     </section>
