@@ -12,12 +12,14 @@ import {faAngry} from '@fortawesome/free-solid-svg-icons';
 export default function NxModalStackedExample() {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
+  const modal1CloseHandler = () => setShowModal(false);
+  const modal2CloseHandler = () => setShowModal2(false);
 
   return (
     <>
       <button onClick={() => setShowModal(true)} className="nx-btn">Open modal with stacked example</button>
       {showModal &&
-        <NxModal id="nx-modal-stacked-example">
+        <NxModal id="nx-modal-stacked-example" onClose={modal1CloseHandler}>
           <header className="nx-modal-header">
             <h2 className="nx-h2">
               <NxFontAwesomeIcon icon={faAngry} />
@@ -37,13 +39,13 @@ export default function NxModalStackedExample() {
               <button onClick={() => setShowModal2(true)} className="nx-btn nx-btn--primary">
                 Open second modal
               </button>
-              <button type="button" onClick={() => setShowModal(false)} className="nx-btn">Close</button>
+              <button type="button" onClick={modal1CloseHandler} className="nx-btn">Close</button>
             </div>
           </footer>
         </NxModal>
       }
       {showModal2 &&
-        <NxModal id="nx-modal-stacked-example2">
+        <NxModal id="nx-modal-stacked-example2" onClose={modal2CloseHandler}>
           <header className="nx-modal-header">
             <h2 className="nx-h2">
               <NxFontAwesomeIcon icon={faAngry} />
@@ -55,7 +57,7 @@ export default function NxModalStackedExample() {
           </div>
           <footer className="nx-modal-footer">
             <div className="nx-btn-bar">
-              <button type="button" onClick={() => setShowModal2(false)} className="nx-btn nx-btn--primary">
+              <button type="button" onClick={modal2CloseHandler} className="nx-btn nx-btn--primary">
                 Close
               </button>
             </div>

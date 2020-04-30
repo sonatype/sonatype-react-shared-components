@@ -13,6 +13,7 @@ const vulnerabilityDetailsJson = require('../../resources/vulnerabilities/vulner
 
 export default function NxModalExtraWideExample() {
   const [showModal, setShowModal] = useState(false);
+  const modalCloseHandler = () => setShowModal(false);
 
   return (
     <>
@@ -20,7 +21,7 @@ export default function NxModalExtraWideExample() {
         Open modal with vulnerability details component
       </button>
       {showModal &&
-      <NxModal id="nx-modal-with-vuln" className="nx-modal--wide">
+      <NxModal id="nx-modal-with-vuln" className="nx-modal--wide" onClose={modalCloseHandler}>
         <header className="nx-modal-header">
           <h3 className="nx-h3">Vulnerability Information</h3>
         </header>
@@ -29,7 +30,7 @@ export default function NxModalExtraWideExample() {
         </div>
         <footer className="nx-modal-footer">
           <div className="nx-btn-bar">
-            <button type="button" onClick={() => setShowModal(false)} className="nx-btn">Close</button>
+            <button type="button" onClick={modalCloseHandler} className="nx-btn">Close</button>
           </div>
         </footer>
       </NxModal>

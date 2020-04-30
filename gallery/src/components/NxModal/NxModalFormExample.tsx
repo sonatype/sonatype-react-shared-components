@@ -11,12 +11,13 @@ import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
 export default function NxModalFormExample() {
   const [showModal, setShowModal] = useState(false);
+  const modalCloseHandler = () => setShowModal(false);
 
   return (
     <>
       <button onClick={() => setShowModal(true)} className="nx-btn">Open Modal with Form</button>
       {showModal &&
-        <NxModal id="nx-modal-form-example">
+        <NxModal id="nx-modal-form-example" onClose={modalCloseHandler}>
           <form className="nx-form nx-form--simple">
             <header className="nx-modal-header">
               <h2 className="nx-h2">
@@ -44,11 +45,11 @@ export default function NxModalFormExample() {
             </div>
             <footer className="nx-modal-footer">
               <div className="nx-btn-bar">
-                <button type="button" onClick={() => setShowModal(false)} className="nx-btn nx-btn--primary">
+                <button type="button" onClick={modalCloseHandler} className="nx-btn nx-btn--primary">
                   Primary
                 </button>
-                <button type="button" onClick={() => setShowModal(false)} className="nx-btn">Default</button>
-                <button type="button" onClick={() => setShowModal(false)} className="nx-btn nx-btn--tertiary">
+                <button type="button" onClick={modalCloseHandler} className="nx-btn">Default</button>
+                <button type="button" onClick={modalCloseHandler} className="nx-btn nx-btn--tertiary">
                   Tertiary
                 </button>
               </div>

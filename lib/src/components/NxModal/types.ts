@@ -4,11 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {WeakValidationMap} from 'react';
+import {HTMLAttributes, WeakValidationMap} from 'react';
 import * as PropTypes from 'prop-types';
 
-export type Props = React.HTMLAttributes<HTMLDivElement>;
+export type CloseHandler = () => void;
+
+export type Props = HTMLAttributes<HTMLDivElement> & {
+  onClose: CloseHandler;
+};
 
 export const propTypes: WeakValidationMap<Props> = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  onClose: PropTypes.func.isRequired
 };
