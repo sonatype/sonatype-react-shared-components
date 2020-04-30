@@ -72,7 +72,7 @@ const pageConfig: PageConfig = {
   },
   'Guidelines': {
     'Form Validation Guidelines': FormValidationPage,
-    'font-size, line-height, and vertical alignment': FontSizePage
+    'font-size and line-height': FontSizePage
   },
   'React Components': {
     NxButton: NxButtonPage,

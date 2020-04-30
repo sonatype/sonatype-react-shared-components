@@ -18,5 +18,4 @@ const BlockLayoutExample = () =>
     </div>
   </>;
 
-
 export default BlockLayoutExample;

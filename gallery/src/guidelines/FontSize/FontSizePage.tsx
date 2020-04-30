@@ -11,10 +11,15 @@ import CodeExample from '../../CodeExample';
 import FontLayoutExample from './FontLayoutExample';
 import BlockLayoutExample from './BlockLayoutExample';
 
+const openSansEmSquareImg = require('./opensans-emsquare.png');
+const openSansLineSpacingImg = require('./opensans-line-spacing.png');
+
 const FontLayoutExampleCode = require('!!raw-loader!./FontLayoutExample').default;
 const FontLayoutExampleStyles = require('!!raw-loader!./FontLayoutExample.scss').default;
 const BlockLayoutExampleCode = require('!!raw-loader!./BlockLayoutExample').default;
 const BlockLayoutExampleStyles = require('!!raw-loader!./BlockLayoutExample.scss').default;
+
+const firstReferenceUrl = 'https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align';
 
 const FontSizePage = () =>
   <GalleryDescriptionTile>
@@ -73,7 +78,7 @@ const FontSizePage = () =>
           OpenSans has an Em-square of 2048, broken down into an ascent of 1638 and a descent of 410, as seen in
           FontForge below
         </p>
-        <img src="opensans-emsquare.png"/>
+        <img src={openSansEmSquareImg}/>
 
         <p>
           Theoretically, the em-square can be thought of as roughly the extent of the visible area of the font's
@@ -85,9 +90,11 @@ const FontSizePage = () =>
           Ascent value.
         </p>
         <p>
-          Despite the nuances described above, we now get to the first connection with familiar CSS concepts:
-          {' '}<strong>the actual rendered size of the em-square box is what the CSS{' '}
-          <code className="nx-code">font-size</code> property specifies.</strong>
+          Despite the nuances described above, we now get to the first connection with familiar CSS concepts:{' '}
+          <strong>
+            the actual rendered size of the em-square box is what the CSS <code className="nx-code">font-size</code>
+            {' '}property specifies.
+          </strong>
         </p>
       </section>
 
@@ -105,7 +112,7 @@ const FontSizePage = () =>
           are each used by different operating systems in different circumstances. Luckily for us however, OpenSans
           uses a consistent set of values: 2189 for the ascender and 600 for the descender, as pictured below:
         </p>
-        <img src="opensans-line-spacing.png"/>
+        <img src={openSansLineSpacingImg}/>
 
         <p>
           As you can see these values are larger than those that defined the em-square, and they are once again
@@ -204,6 +211,60 @@ const FontSizePage = () =>
         <CodeExample content={BlockLayoutExampleCode}/>
         <CodeExample language="scss" content={BlockLayoutExampleStyles}/>
       </section>
+    </section>
+
+    <section>
+      <h3>Additional Nuances</h3>
+      <p>Here is an incomplete list of additional nuances to consider when dealing with inline formatting</p>
+      <ul>
+        <li>
+          Inline elements do not respond to CSS width, height, margin-top, or margin-bottom properties.  Their
+          size and vertical spacing only follows the <code className="nx-code">font-size</code>,
+          {' '}<code className="nx-code">line-height</code>, and font metrics as described above.
+        </li>
+        <li>inline-block elements <em>are</em> sizable using the CSS width and height properties</li>
+        <li>
+          inline-block elements use the bottom of the element as their baseline, even if they only contain text
+        </li>
+        <li>
+          Things get more complicated when a line box includes inline elements of multiple heights. In this
+          scenario, the elements are sized individually,
+          including <code className="nx-code">line-height</code> spacing, lined up according to
+          the <code className="nx-code">vertical-align</code> property (by default, so their so their baselines
+          are aligned), and then the line box goes from the highest top to the lowest bottom.
+        </li>
+        <li>
+          Parent elements contribute a zero-width <q>strut</q> character to the line spacing.  In other words,
+          if an inline element is in a line box with along with a parent element that has a larger line height,
+          the parent's line height (and baseline) will come into play even if the parent has no text of its own
+        </li>
+        <li>
+          Due to the off-center nature of the baseline, vertical-alignment of elements of different font sizes is
+          extremely counterintuitive. See the examples in the vertical alignment section
+          of <a href={firstReferenceUrl}>[1]</a>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>References, further reading</h3>
+      <p>
+        The first reference here is particularly valuable, and is where the bulk of the knowledge on this page come
+        from.
+      </p>
+      <ol>
+        <li>
+          <a id="font-size-ref-1" href={firstReferenceUrl}>
+            Deep dive CSS: font metrics, line-height and vertical-align
+          </a>
+        </li>
+        <li>
+          <a href="https://glyphsapp.com/tutorials/vertical-metrics">Vertical Metrics - Glyphs</a>
+        </li>
+        <li>
+          <a href="https://www.w3.org/TR/CSS2/visudet.html#inline-box-height">Line Height Calculatons: CSS 2.1 Spec</a>
+        </li>
+      </ol>
     </section>
   </GalleryDescriptionTile>;
 
