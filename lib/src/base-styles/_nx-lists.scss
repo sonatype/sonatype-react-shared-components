@@ -10,8 +10,9 @@
 .nx-list {
   @include container-vertical;
   margin: $nx-spacing-sm 0 $nx-spacing-md 0;
+  padding: 0;
 
-  &, > ul, > ol {
+  ul, ol {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -64,6 +65,22 @@
     overflow: visible;
     padding: 6px 10px 6px 0;
     white-space: normal;
+  }
+
+  .nx-list__item {
+    list-style-type: disc;
+
+    ul {
+      margin-top: $nx-spacing-sm;
+    }
+
+    .nx-list__item {
+      list-style-type: circle;
+
+      .nx-list__item {
+        list-style-type: square;
+      }
+    }
   }
 }
 
