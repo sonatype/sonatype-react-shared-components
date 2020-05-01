@@ -6,11 +6,12 @@
  */
 import React from 'react';
 
-import './FontLayoutExample.scss';
+import './FallbackFontExample.scss';
 
-const FontLayoutExample = () =>
+const FallbackFontExample = () =>
   <div>
-    <span className="gallery-font-layout-example gallery-highlight-background-example">QwertyJ</span>
+    <span className="gallery-highlight-background-example">🙂</span>
+    <span className="gallery-highlight-background-example gallery-system-default-font-face-example">🙂</span>
   </div>;
 
-export default FontLayoutExample;
+export default FallbackFontExample

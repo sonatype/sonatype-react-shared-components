@@ -10,11 +10,11 @@ import './BlockLayoutExample.scss';
 
 const BlockLayoutExample = () =>
   <>
-    <div className="gallery-block-layout-example with-background">
+    <div className="gallery-block-layout-example gallery-highlight-background-example">
       <span>Foo</span>
     </div>
     <div className="gallery-block-layout-example">
-      <span className="with-background">Foo</span>
+      <span className="gallery-highlight-background-example">Foo</span>
     </div>
   </>;
 

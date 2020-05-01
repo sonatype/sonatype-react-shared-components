@@ -10,6 +10,7 @@ import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import CodeExample from '../../CodeExample';
 import FontLayoutExample from './FontLayoutExample';
 import BlockLayoutExample from './BlockLayoutExample';
+import FallbackFontExample from './FallbackFontExample';
 
 const openSansEmSquareImg = require('./opensans-emsquare.png');
 const openSansLineSpacingImg = require('./opensans-line-spacing.png');
@@ -18,6 +19,8 @@ const FontLayoutExampleCode = require('!!raw-loader!./FontLayoutExample').defaul
 const FontLayoutExampleStyles = require('!!raw-loader!./FontLayoutExample.scss').default;
 const BlockLayoutExampleCode = require('!!raw-loader!./BlockLayoutExample').default;
 const BlockLayoutExampleStyles = require('!!raw-loader!./BlockLayoutExample.scss').default;
+const FallbackFontExampleCode = require('!!raw-loader!./FallbackFontExample').default;
+const FallbackFontExampleStyles = require('!!raw-loader!./FallbackFontExample.scss').default;
 
 const firstReferenceUrl = 'https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align';
 
@@ -249,6 +252,26 @@ const FontSizePage = () =>
           It is possible to specify a <code className="nx-code">line-height</code> smaller than an element's content
           height, in which case the leading with be negative and text node content areas will have a height exceeding
           that of their line box. In this scenario, text nodes in adjacent line boxes will overlap one another.
+        </li>
+        <li>
+          It is possible for a single text node to contain glyphs from multiple font faces, and even for it to contain
+          no glyphs from the font face specified in CSS. This can happen when the preferred font face has glyphs for
+          some (or none), but not all, of the code points requested, and a different font face is used as the fallback.
+          Different fonts, of course, have different metrics, which means different heights. Experimentally, in this
+          case the browser appears to take the metrics of the declared font, even if that font is not
+          contributing <em>any</em> of the glpyhs in the text node in question. As an example, observe
+          the <code className="nx-code">span</code>s containing the following emojis. The first inherits the page styles
+          setting OpenSans as the font family.  Despite not actually having any glyphs from OpenSans, it still has a
+          content height derived from OpenSans metrics - that is, a content height that is roughly 1.36 times the font
+          size. The second <code className="nx-code">span</code> however is styled with the
+          generic <code className="nx-code">sans-serif</code> font family. You will likely observe that this
+          second <code className="nx-code">span</code> has a different height
+          - one which will depend on the default sans-serif font installed on your operating system. even though the
+          emoji does not come from the OpenSans font:
+
+          <FallbackFontExample />
+          <CodeExample content={FallbackFontExampleCode}/>
+          <CodeExample language="scss" content={FallbackFontExampleStyles}/>
         </li>
       </ul>
     </section>
