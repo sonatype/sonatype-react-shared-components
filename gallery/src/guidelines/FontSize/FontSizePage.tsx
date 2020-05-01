@@ -266,8 +266,7 @@ const FontSizePage = () =>
           size. The second <code className="nx-code">span</code> however is styled with the
           generic <code className="nx-code">sans-serif</code> font family. You will likely observe that this
           second <code className="nx-code">span</code> has a different height
-          - one which will depend on the default sans-serif font installed on your operating system, even though the
-          emoji does not come from the OpenSans font:
+          - one which will depend on the default sans-serif font installed on your operating system:
 
           <FallbackFontExample />
           <CodeExample content={FallbackFontExampleCode}/>
