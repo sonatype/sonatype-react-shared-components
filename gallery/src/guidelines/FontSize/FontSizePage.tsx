@@ -11,6 +11,7 @@ import CodeExample from '../../CodeExample';
 import FontLayoutExample from './FontLayoutExample';
 import BlockLayoutExample from './BlockLayoutExample';
 import FallbackFontExample from './FallbackFontExample';
+import BadLineHeightExample from './BadLineHeightExample';
 
 const openSansEmSquareImg = require('./opensans-emsquare.png');
 const openSansLineSpacingImg = require('./opensans-line-spacing.png');
@@ -21,6 +22,8 @@ const BlockLayoutExampleCode = require('!!raw-loader!./BlockLayoutExample').defa
 const BlockLayoutExampleStyles = require('!!raw-loader!./BlockLayoutExample.scss').default;
 const FallbackFontExampleCode = require('!!raw-loader!./FallbackFontExample').default;
 const FallbackFontExampleStyles = require('!!raw-loader!./FallbackFontExample.scss').default;
+const BadLineHeightExampleCode = require('!!raw-loader!./BadLineHeightExample').default;
+const BadLineHeightExampleStyles = require('!!raw-loader!./BadLineHeightExample.scss').default;
 
 const firstReferenceUrl = 'https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align';
 
@@ -249,9 +252,21 @@ const FontSizePage = () =>
           of <a href={firstReferenceUrl}>[1]</a>
         </li>
         <li>
-          It is possible to specify a <code className="nx-code">line-height</code> smaller than an element's content
-          height, in which case the leading with be negative and text node content areas will have a height exceeding
-          that of their line box. In this scenario, text nodes in adjacent line boxes will overlap one another.
+          <p>
+            It is possible to specify a <code className="nx-code">line-height</code> smaller than an element's content
+            height, in which case the leading with be negative and text node content areas will have a height exceeding
+            that of their line box. In this scenario, text nodes in adjacent line boxes will overlap one another.
+          </p>
+          <p>
+            This is one reason why a global, absolute line-height is a poor choice - this line height will need to be
+            adjusted explicitly for any element which has a larger font size in order to prevent visible crowding and
+            overlap. The example below demonstrates what might happen with a large-font header in an app with a 18px
+            "global" line-height and no element-specific line-height adjustments:
+          </p>
+
+          <BadLineHeightExample />
+          <CodeExample content={BadLineHeightExampleCode}/>
+          <CodeExample language="scss" content={BadLineHeightExampleStyles}/>
         </li>
         <li>
           It is possible for a single text node to contain glyphs from multiple font faces, and even for it to contain
