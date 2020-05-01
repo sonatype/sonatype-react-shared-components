@@ -169,7 +169,7 @@ const FontSizePage = () =>
           difference. The unitless values compute a line-height relative to the actual font-size at which the text is
           displayed. In contrast, the percentage values compute a line-height relative to the
           font-size of the element on which the line-height is specified, which could be an ancestor with a
-          different font size than the text is actually being displayed at. Prefer the unitless approach.
+          different font size than the text is actually being displayed at. <strong>Prefer the unitless approach.</strong>
         </p>
 
         <h5>Automatic <code className="nx-code">line-height</code></h5>
