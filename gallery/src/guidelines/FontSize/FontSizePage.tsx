@@ -169,7 +169,8 @@ const FontSizePage = () =>
           difference. The unitless values compute a line-height relative to the actual font-size at which the text is
           displayed. In contrast, the percentage values compute a line-height relative to the
           font-size of the element on which the line-height is specified, which could be an ancestor with a
-          different font size than the text is actually being displayed at. <strong>Prefer the unitless approach.</strong>
+          different font size than the text is actually being displayed
+          at. <strong>Prefer the unitless approach.</strong>
         </p>
 
         <h5>Automatic <code className="nx-code">line-height</code></h5>
@@ -178,13 +179,13 @@ const FontSizePage = () =>
           {' '}<code className="nx-code">normal</code>. The CSS spec is vague about what this means but in
           practice it takes into account the font metrics described above plus one more: the Line Gap.
           The Line Gap is another value built into the font which tells renderers how much extra space to put
-          between lines in addtion to the line spacing ascender and descender values. Conveniently for us, in
+          between lines in addition to the line spacing ascender and descender values. Conveniently for us, in
           OpenSans the line gap is zero, as can be seen in the FontForge images above. This means that in our case the
           default CSS <code className="nx-code">line-height</code> works out to the ratio between the em-square and the
           content-box, which once again is about 1.36. This also means that when
           using <code className="nx-code">line-height: normal</code> with OpenSans, the content boxes of adjacent
           lines of text will touch without overlapping. This is not necessarily the case with other fonts, where
-          there may be either an overlap or a gap
+          there may be a gap.
         </p>
 
         <p>
@@ -220,7 +221,8 @@ const FontSizePage = () =>
         <li>
           Inline elements do not respond to CSS width, height, margin-top, or margin-bottom properties. Their
           size and vertical spacing only follows the <code className="nx-code">font-size</code>,
-          {' '}<code className="nx-code">line-height</code>, and font metrics as described above.
+          {' '}<code className="nx-code">line-height</code>, and font metrics as described above, as well as padding
+          and borders.
         </li>
         <li>inline-block elements <em>are</em> sizable using the CSS width and height properties</li>
         <li>
