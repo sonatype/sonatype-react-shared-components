@@ -254,7 +254,7 @@ const FontSizePage = () =>
         <li>
           <p>
             It is possible to specify a <code className="nx-code">line-height</code> smaller than an element's content
-            height, in which case the leading with be negative and text node content areas will have a height exceeding
+            height, in which case the leading will be negative and text node content areas will have a height exceeding
             that of their line box. In this scenario, text nodes in adjacent line boxes will overlap one another.
           </p>
           <p>
