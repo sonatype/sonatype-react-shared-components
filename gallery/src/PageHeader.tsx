@@ -12,8 +12,8 @@ const sonatypeLogo = require('@sonatype/react-shared-components/assets/img/SON_h
 
 function PageHeader() {
   return (
-    <header className="nx-header">
-      <div className="nx-header__inner">
+    <header className="nx-page-header">
+      <div className="nx-page-header__inner">
         <a href="#" className="nx-product">
           <img src={sonatypeLogo} className="nx-product__logo"/>
           <div className="nx-product__name">
