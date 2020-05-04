@@ -14,4 +14,4 @@ const FallbackFontExample = () =>
     <span className="gallery-highlight-background-example gallery-system-default-font-face-example">🙂</span>
   </div>;
 
-export default FallbackFontExample
+export default FallbackFontExample;
