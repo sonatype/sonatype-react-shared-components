@@ -25,7 +25,7 @@
   padding: 0;
 }
 
-.nx-body-container {
+.nx-page {
   @include container-vertical;
 
   align-items: center;
@@ -35,7 +35,7 @@
   min-width: $nx-page-width-min;
 }
 
-.nx-root-container {
+.nx-page-content {
   @include container-horizontal;
 
   box-sizing: border-box;
