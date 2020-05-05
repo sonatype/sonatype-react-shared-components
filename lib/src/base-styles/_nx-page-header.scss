@@ -19,14 +19,14 @@ $main-header-product-version-row-height: 1fr;
   #Main Header
 */
 
-.nx-header {
+.nx-page-header {
   background-color: $nx-off-black;
   flex-shrink: 0; // needed for IE11
   height: $main-header-height;
   width: 100%;
 }
 
-.nx-header__inner {
+.nx-page-header__inner {
   @include container-horizontal;
 
   display: flex;
