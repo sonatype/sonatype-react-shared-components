@@ -11,13 +11,13 @@ const NxListWithBullets = () =>
     <h4 className="nx-list__title">
       List title
     </h4>
-    <ul>
+    <ul className="nx-list nx-list--bulleted">
       <li className="nx-list__item">
         item 1
       </li>
       <li className="nx-list__item">
         Item 2
-        <ul>
+        <ul className="nx-list nx-list--bulleted">
           <li className="nx-list__item">
             item 1
           </li>
@@ -26,7 +26,7 @@ const NxListWithBullets = () =>
           </li>
           <li className="nx-list__item">
             item 3
-            <ul>
+            <ul className="nx-list nx-list--bulleted">
               <li className="nx-list__item">
                 item 1
               </li>
