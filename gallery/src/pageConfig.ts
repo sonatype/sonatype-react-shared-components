@@ -79,33 +79,31 @@ const pageConfig: PageConfig = {
     NxBackButton: NxBackButtonPage,
     NxButton: NxButtonPage,
     NxCheckbox: NxCheckboxPage,
+    NxStatefulCheckbox: NxStatefulCheckboxPage,
     NxDropdown: NxDropdownPage,
+    NxStatefulDropdown: NxStatefulDropdownPage,
     NxFilterInput: NxFilterInputPage,
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
     NxLoadError: NxLoadErrorPage,
-    NxLoadingSpinner: NxLoadingSpinnerPage,
     NxLoadWrapper: NxLoadWrapperPage,
+    NxLoadingSpinner: NxLoadingSpinnerPage,
     NxModal: NxModalPage,
     NxPolicyThreatSlider: NxPolicyThreatSliderPage,
     NxRadio: NxRadioPage,
     NxSubmitMask: NxSubmitMaskPage,
+    NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
     NxTable: NxTablePage,
     NxTextInput: NxTextInputPage,
+    NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatBar: NxThreatBarPage,
     NxTooltip: NxTooltipPage,
     NxTreeView: NxTreeViewPage,
     NxTreeViewMultiSelect: NxTreeViewMultiSelect,
+    NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
+    NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
-  'Stateful React Components': {
-    NxStatefulCheckbox: NxStatefulCheckboxPage,
-    NxStatefulDropdown: NxStatefulDropdownPage,
-    NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
-    NxStatefulTextInput: NxStatefulTextInputPage,
-    NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
-    NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage
-  }
 };
 
 export default pageConfig;
