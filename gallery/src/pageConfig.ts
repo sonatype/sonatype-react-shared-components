@@ -53,21 +53,23 @@ import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCh
 
 const pageConfig: PageConfig = {
   'Styles - HTML Elements': {
-    'nx-page-title': NxPageTitlePage,
-    'nx-tile': NxTilePage,
-    'nx-btn': NxBtnPage,
-    'nx-list': NxListPage,
-    'nx-text-input': NxTextInputStylesPage,
     'nx-alert': NxAlertPage,
-    'nx-table': NxTableStylePage,
-    'nx-grid': NxGridPage,
+    'nx-btn': NxBtnPage,
     'nx-counter': NxCounterPage,
+    'nx-grid': NxGridPage,
     'nx-icon': NxIconPage,
+    'nx-list': NxListPage,
+    'nx-page-title': NxPageTitlePage,
+    'nx-table': NxTableStylePage,
+    'nx-text-input': NxTextInputStylesPage,
     'nx-threat-number': NxThreatNumberPage,
-    'Form Layout Styles': NxFormLayoutPage
+    'nx-tile': NxTilePage
   },
   'Styles - Mixins': {
     'nx-container-helpers': NxContainerHelpersPage
+  },
+  'Layout Examples': {
+    'Form Layout Styles': NxFormLayoutPage
   },
   'Guidelines': {
     'Form Validation Guidelines': FormValidationPage
