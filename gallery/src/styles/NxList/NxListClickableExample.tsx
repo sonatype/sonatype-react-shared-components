@@ -22,14 +22,20 @@ const NxListClickableExample = () =>
         truncated at the right end edge. youtube weathered network network systemic systema claymore mine voodoo
         god garage monofilament realism order-flow corporation car footage vinyl.
       </li>
-      <li className="nx-list__item">
-        <NxFontAwesomeIcon icon={faChevronRight} className="nx-pull-right" />action 2
+      <li className="nx-list__item selected">
+        <NxFontAwesomeIcon icon={faChevronRight} className="nx-pull-right" />action 3
         <p className="nx-list__subtext">
-          This is a second line. It includes text that might relate to the top line or might not.
+          This is a third line. It is selected
+        </p>
+      </li>
+      <li className="nx-list__item">
+        <NxFontAwesomeIcon icon={faChevronRight} className="nx-pull-right" />action 4
+        <p className="nx-list__subtext">
+          This is a fourth line. It includes text that might relate to the top line or might not.
         </p>
       </li>
       <li className="nx-list__item nx-list__item--disabled nx-disabled">
-        <NxFontAwesomeIcon icon={faChevronRight} className="nx-pull-right" />disabled
+        <NxFontAwesomeIcon icon={faChevronRight} className="nx-pull-right" />This list item is disabled
       </li>
     </ul>
   </div>;
