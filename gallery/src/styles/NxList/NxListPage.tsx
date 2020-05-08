@@ -78,9 +78,11 @@ const NxListPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.selected</code></td>
             <td className="nx-cell">Utility class that goes along
-              with <code className="nx-code">.nx-list__item</code></td>
+              with <code className="nx-code">.nx-list__item</code>
+            </td>
             <td className="nx-cell">Use the <code className="nx-code">selected</code> class
-              alongside <code className="nx-code">.nx-list__item</code> when a clickable list item is selected</td>
+              alongside <code className="nx-code">.nx-list__item</code> when a clickable list item is selected
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-list__subtext</code></td>
