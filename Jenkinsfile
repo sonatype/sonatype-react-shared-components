@@ -92,6 +92,9 @@ dockerizedBuildPipeline(
   testResults: ['lib/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
+    build job:'publish-gallery-to-s3', propagate: false, wait: false, parameters: [
+      run(name: 'Producer', runId: "${currentBuild.fullProjectName}${currentBuild.displayName}")
+    ]
   },
   onFailure: {
     githubStatusUpdate('failure')
