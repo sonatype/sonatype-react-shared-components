@@ -144,6 +144,12 @@
 
     color: $nx-text-color-light;
 
+    &.selected {
+      background-color: $nx-grey-3;
+      color: $nx-text-color;
+      pointer-events: none;
+    }
+
     &:not(.nx-list__item--empty):not(.nx-disabled):not([disabled]) {
       &:hover, &:focus {
         background-color: $nx-color-blue-96;
