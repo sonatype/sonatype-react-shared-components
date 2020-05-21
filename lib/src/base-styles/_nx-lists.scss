@@ -10,10 +10,14 @@
 .nx-list {
   @include container-vertical;
   margin: $nx-spacing-sm 0 $nx-spacing-md 0;
+  padding: 0;
 
   &, > ul, > ol {
     list-style: none;
-    margin: 0;
+  }
+
+  > ul, > ol {
+    margin-top: $nx-spacing-sm;
     padding: 0;
   }
 }
@@ -27,6 +31,7 @@
 .nx-list__item {
   @include semi-bold();
   @include truncate-ellipsis();
+  @include container-vertical;
 
   border-top: 1px solid transparent;
   border-bottom: $nx-border-row;
@@ -57,13 +62,24 @@
   .nx-list__item {
     @include regular();
 
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
+    border: none;
     list-style: disc outside;
-    margin-left: 36px;
+    margin: $nx-spacing-sm 10px $nx-spacing-sm 36px;
     overflow: visible;
-    padding: 6px 10px 6px 0;
+    padding: 0;
     white-space: normal;
+  }
+
+  .nx-list__item {
+    list-style-type: disc;
+
+    .nx-list__item {
+      list-style-type: circle;
+
+      .nx-list__item {
+        list-style-type: square;
+      }
+    }
   }
 }
 
