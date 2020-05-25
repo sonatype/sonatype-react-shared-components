@@ -47,7 +47,7 @@
   @include container-horizontal;
 
   font-size: $nx-font-size-heading-level-1;
-  line-height: 35px;
+  line-height: 1.35;
   margin-bottom: $nx-spacing-l;
 }
 
@@ -56,7 +56,7 @@
   @include container-horizontal;
 
   font-size: $nx-font-size-heading-level-2;
-  line-height: 24px;
+  line-height: 1.20;
   margin-bottom: $nx-spacing-md;
 }
 
@@ -65,7 +65,7 @@
   @include container-horizontal;
 
   font-size: $nx-font-size-heading-level-3;
-  line-height: 21px;
+  line-height: 1.17;
   margin-bottom: $nx-spacing-xs;
 }
 
@@ -74,14 +74,13 @@
   @include container-horizontal;
 
   font-size: $nx-font-size-heading-level-4;
-  line-height: 16px;
+  line-height: 1.17;
   margin-bottom: 8px;
   text-transform: uppercase;
 }
 
 .nx-p {
   font-size: $nx-font-size-s;
-  line-height: 16px;
   margin-bottom: $nx-spacing-md;
 }
 
