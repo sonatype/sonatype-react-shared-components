@@ -9,10 +9,6 @@
 @import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 @import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
 
-.nx-title__brand a {
-  text-decoration: none;
-}
-
 .gallery-nav, .gallery-nav-links {
   @include container-vertical;
 }
