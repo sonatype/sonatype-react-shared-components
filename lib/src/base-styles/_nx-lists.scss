@@ -63,6 +63,7 @@
     @include regular();
 
     border: none;
+    line-height: 1.5;
     list-style: disc outside;
     margin: $nx-spacing-sm 10px $nx-spacing-sm 36px;
     overflow: visible;
