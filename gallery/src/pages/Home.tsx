@@ -79,19 +79,5 @@ const Home = () =>
         </li>
       </ul>
     </GalleryTile>
-    <GalleryTile title="A note on typography">
-      <p>
-        While the <code className="nx-code">font-family</code> declaration
-        in <code className="nx-code">_nx-text-helpers.scss</code> declaration calls for Proxima Nova, it is not
-        included in the bundle because it is a proprietary font. If you are using the React Shared Components in a
-        Sonatype product please make sure you use <code className="nx-code">@font-face</code> in your project's
-        (S)CSS to correctly load the Proxima Nova fonts (see example below).
-      </p>
-      <p>
-        In all other cases the font will fall back
-        to <code className="nx-code">Helvetica Neue, Helvetica, sans-serif</code>.
-      </p>
-      <CodeExample language="scss" content={fontFaceExampleCode} />
-    </GalleryTile>
   </>;
 export default Home;
