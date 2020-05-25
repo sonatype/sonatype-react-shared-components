@@ -8,8 +8,7 @@ import React from 'react';
 import {GalleryTile} from '../gallery-components/GalleryTiles';
 import CodeExample from '../CodeExample';
 
-const fontFaceExampleCode = require('!!raw-loader!../resources/FontFaceExample.scss').default,
-    pageConfigExample = `import Foo from './pages/Foo';
+const pageConfigExample = `import Foo from './pages/Foo';
 import Bar from './pages/Bar';
 import Baz from './pages/Baz';
 import NxCheckboxPage from './components/NxCheckboxPage';
