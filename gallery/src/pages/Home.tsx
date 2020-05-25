@@ -28,7 +28,7 @@ const pageConfig: PageConfig = {
 const Home = () =>
   <>
     <GalleryTile title="How to add a new component to the Gallery" >
-      <h3>Create a page describing the component</h3>
+      <h3 className="nx-h3">Create a page describing the component</h3>
       <ul className="nx-list nx-list--bulleted">
         <li className="nx-list__item">
           For each component or style that you want to add to the Gallery, create a subdirectory
@@ -59,8 +59,8 @@ const Home = () =>
           component example.
         </li>
       </ul>
-      <h3>Add the new page to Gallery navigation</h3>
-      <p>
+      <h3 className="nx-h3">Add the new page to Gallery navigation</h3>
+      <p className="nx-p">
         After you've created the description page, in order to add the component to the Gallery Navigation, you
         will need to add it to the <code className="nx-code">pageConfig</code> object inside of
         the <code className="nx-code">pageConfig.ts</code> file
