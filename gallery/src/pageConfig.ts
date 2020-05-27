@@ -50,6 +50,7 @@ import NxDropdownPage from './components/NxDropdown/NxDropdownPage';
 import FormValidationPage from './guidelines/FormValidation/FormValidationPage';
 import NxStatefulDropdownPage from './components/NxStatefulDropdown/NxStatefulDropdownPage';
 import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCheckboxPage';
+import ContributingPage from './pages/Contributing';
 
 const pageConfig: PageConfig = {
   'Styles - HTML Elements': {
@@ -72,7 +73,8 @@ const pageConfig: PageConfig = {
     'Form Layout Styles': NxFormLayoutPage
   },
   'Guidelines': {
-    'Form Validation Guidelines': FormValidationPage
+    'Form Validation Guidelines': FormValidationPage,
+    'Contributing to the Gallery': ContributingPage
   },
   'React Components': {
     NxAlert: NxAlertComponentsPage,
