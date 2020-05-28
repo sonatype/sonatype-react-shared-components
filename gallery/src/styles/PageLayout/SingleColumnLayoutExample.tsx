@@ -6,8 +6,14 @@
  */
 import React from 'react';
 
-const NxTwoColumnLayoutExample = () =>
-  <div className="demo">
-  </div>;
+const NxSingleColumnLayoutExample = () =>
+<div className="nx-page">
+  <div className="nx-page-header">
+  </div>
+  <div className="nx-page-content">
+    <div className="nx-page-content-main">
+    </div>
+  </div>
+</div>;
 
-export default NxTwoColumnLayoutExample;
+export default NxSingleColumnLayoutExample;

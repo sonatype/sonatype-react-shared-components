@@ -48,7 +48,7 @@ import NxFilterInputPage from './components/NxFilterInput/NxFilterInputPage';
 import NxPolicyThreatSliderPage from './components/NxPolicyThreatSlider/NxPolicyThreatSliderPage';
 import NxDropdownPage from './components/NxDropdown/NxDropdownPage';
 import FormValidationPage from './guidelines/FormValidation/FormValidationPage';
-import PageLayoutPage from './guidelines/PageLayout/PageLayoutPage';
+import PageLayoutPage from './styles/PageLayout/PageLayoutPage';
 import NxStatefulDropdownPage from './components/NxStatefulDropdown/NxStatefulDropdownPage';
 import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCheckboxPage';
 
@@ -70,11 +70,11 @@ const pageConfig: PageConfig = {
     'nx-container-helpers': NxContainerHelpersPage
   },
   'Layout Examples': {
-    'Form Layout Styles': NxFormLayoutPage
+    'Form Layout Styles': NxFormLayoutPage,
+    'Page Layout Guidelines': PageLayoutPage
   },
   'Guidelines': {
-    'Form Validation Guidelines': FormValidationPage,
-    'Page Layout Guidelines': PageLayoutPage
+    'Form Validation Guidelines': FormValidationPage
   },
   'React Components': {
     NxAlert: NxAlertComponentsPage,
