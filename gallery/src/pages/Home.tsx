@@ -47,7 +47,7 @@ const Home = () =>
       <a rel="noreferrer" target="_blank" href="https://www.npmjs.com/package/@sonatype/react-shared-components">
         npmjs.com
       </a>
-      {' '} under the name <code className="nx-code">@sonatype/react-shared-components</code>. It packaged as
+      {' '} under the name <code className="nx-code">@sonatype/react-shared-components</code>. It is packaged as
       ECMAScript modules, and is intended to be consumed by project using webpack or a similar module bundler.
     </p>
     <h3 className="nx-h3">Component Architecture Philosophy</h3>
