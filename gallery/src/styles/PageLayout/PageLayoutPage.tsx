@@ -44,15 +44,26 @@ const PageLayoutGuidelinesPage = () =>
         <img src="../resources/page-layout-mocks/page-layout-2col.png" className="gallery-example-image"/>
       </p>
       <p>The basic HTML for this layout would look like this:</p>
-      <pre>
+      <pre className="nx-code nx-code--pre-block">
       {`
       <div className="nx-page">
-        <div className="nx-page-header"></div>
-        <div className="nx-page-content">
-          <aside className="nx-page-content-sidebar"></aside>
-          <main className="nx-page-content-main"></main>
+
+        <div className="nx-page-header">
         </div>
-        <div className="nx-page-footer"></div>
+
+        <div className="nx-page-content">
+
+          <aside className="nx-page-content-sidebar">
+          </aside>
+
+          <main className="nx-page-content-main">
+          </main>
+
+        </div>
+
+        <div className="nx-page-footer">
+        </div>
+
       </div>
       `}
       </pre>
@@ -65,15 +76,20 @@ const PageLayoutGuidelinesPage = () =>
         <img src="../resources/page-layout-mocks/page-layout-1col.png" className="gallery-example-image"/>
       </p>
       <p>The basic HTML for this layout would look like this:</p>
-      <pre>
+      <pre className="nx-code nx-code--pre-block">
       {`
       <div className="nx-page">
+
         <div className="nx-page-header"></div>
+
         <div className="nx-page-content">
-          <aside className="nx-page-content-sidebar"></aside>
+
           <main className="nx-page-content-main"></main>
+
         </div>
+
         <div className="nx-page-footer"></div>
+
       </div>
       `}
       </pre>
