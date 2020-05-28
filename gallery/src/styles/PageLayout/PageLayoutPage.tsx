@@ -11,7 +11,7 @@ import CodeExample from '../../CodeExample';
 
 const SingleColumnLayoutExampleCode = require('!!raw-loader!./SingleColumnLayoutExample').default,
     TwoColumnLayoutExampleCode = require('!!raw-loader!./TwoColumnLayoutExample.html').default,
-    ReactRootLayoutExampleCode = require('!!raw-loader!./ReactRootLayoutExample').default;
+    ReactRootLayoutExampleCode = require('!!raw-loader!./ReactRootLayoutExample.html').default;
 
 const PageLayoutGuidelinesPage = () =>
   <>
@@ -56,17 +56,12 @@ const PageLayoutGuidelinesPage = () =>
       <CodeExample content={SingleColumnLayoutExampleCode}/>
       <h3 className="nx-h3">React Root Element</h3>
       <p>
-        I think it might also be worth discussing where the react root might lie in these upper-level elements.  In the 
-        gallery itself, it's on .nx-page.  That elements, which also has an id of ui, is what we pass to ReactDOM.
-        render in main.tsx
+        Typically React Root is specified in the upper-level page elements. In the gallery itself, it's applied to
+        <code className="nx-code">.nx-page</code> in <code className="nx-code">main.tsx</code>. That element, which
+        also has an <code className="nx-code">id</code> of <code className="nx-code">ui</code>, is what we pass to
+        ReactDOM. We recommend that other apps use the same pattern.
       </p>
-      <p>The basic HTML for this layout would look like this:</p>
       <CodeExample content={ReactRootLayoutExampleCode}/>
-      <p>
-        I think recommending that other apps use that same pattern would be wise.  Then maybe it would make sense to 
-        have a pure HTML example demonstrating the body and .nx-page, and then react component examples demonstrating 
-        the lower elements (edited)
-      </p>
     </GalleryDescriptionTile>
   </>;
 
