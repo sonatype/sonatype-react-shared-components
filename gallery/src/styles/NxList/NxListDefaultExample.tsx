@@ -7,13 +7,28 @@
 import React from 'react';
 
 const NxDefaultList = () =>
-  <div className="nx-list">
-    <h4 className="nx-list__title">
-      List title
-    </h4>
-    <ul>
+  <>
+    <div className="nx-list">
+      <h4 className="nx-list__title">
+        List title
+      </h4>
+      <ul>
+        <li className="nx-list__item">
+          item 1
+        </li>
+        <li className="nx-list__item">
+          Item 2
+        </li>
+        <li className="nx-list__item">
+          item 3 - this list item should be truncated at the right end edge. youtube weathered network network systemic
+          systema claymore mine voodoo god garage monofilament realism order-flow corporation car footage vinyl.
+        </li>
+      </ul>
+    </div>
+
+    <ul className="nx-list">
       <li className="nx-list__item">
-        item 1
+        Item 1 - nx-list can also be applied directly to a &lt;ul&gt; or &lt;ol&gt;.
       </li>
       <li className="nx-list__item">
         Item 2
@@ -23,6 +38,6 @@ const NxDefaultList = () =>
         systema claymore mine voodoo god garage monofilament realism order-flow corporation car footage vinyl.
       </li>
     </ul>
-  </div>;
+  </>;
 
 export default NxDefaultList;

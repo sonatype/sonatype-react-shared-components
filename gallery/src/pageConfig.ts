@@ -54,57 +54,57 @@ import FontSizePage from './guidelines/FontSize/FontSizePage';
 
 const pageConfig: PageConfig = {
   'Styles - HTML Elements': {
-    'nx-page-title': NxPageTitlePage,
-    'nx-tile': NxTilePage,
-    'nx-btn': NxBtnPage,
-    'nx-list': NxListPage,
-    'nx-text-input': NxTextInputStylesPage,
     'nx-alert': NxAlertPage,
-    'nx-table': NxTableStylePage,
-    'nx-grid': NxGridPage,
+    'nx-btn': NxBtnPage,
     'nx-counter': NxCounterPage,
+    'nx-grid': NxGridPage,
     'nx-icon': NxIconPage,
+    'nx-list': NxListPage,
+    'nx-page-title': NxPageTitlePage,
+    'nx-table': NxTableStylePage,
+    'nx-text-input': NxTextInputStylesPage,
     'nx-threat-number': NxThreatNumberPage,
-    'Form Layout Styles': NxFormLayoutPage
+    'nx-tile': NxTilePage
   },
   'Styles - Mixins': {
     'nx-container-helpers': NxContainerHelpersPage
+  },
+  'Layout Examples': {
+    'Form Layout Styles': NxFormLayoutPage
   },
   'Guidelines': {
     'Form Validation Guidelines': FormValidationPage,
     'font-size and line-height': FontSizePage
   },
   'React Components': {
+    NxAlert: NxAlertComponentsPage,
+    NxBackButton: NxBackButtonPage,
     NxButton: NxButtonPage,
     NxCheckbox: NxCheckboxPage,
-    NxRadio: NxRadioPage,
-    NxTextInput: NxTextInputPage,
-    NxBackButton: NxBackButtonPage,
-    NxLoadingSpinner: NxLoadingSpinnerPage,
+    NxStatefulCheckbox: NxStatefulCheckboxPage,
+    NxDropdown: NxDropdownPage,
+    NxStatefulDropdown: NxStatefulDropdownPage,
+    NxFilterInput: NxFilterInputPage,
+    NxFontAwesomeIcon: NxFontAwesomeIconPage,
     NxLoadError: NxLoadErrorPage,
     NxLoadWrapper: NxLoadWrapperPage,
+    NxLoadingSpinner: NxLoadingSpinnerPage,
     NxModal: NxModalPage,
-    NxAlert: NxAlertComponentsPage,
-    NxThreatBar: NxThreatBarPage,
-    NxFontAwesomeIcon: NxFontAwesomeIconPage,
-    NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
-    NxSubmitMask: NxSubmitMaskPage,
-    NxTable: NxTablePage,
-    NxTreeView: NxTreeViewPage,
-    NxTooltip: NxTooltipPage,
-    NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
-    NxTreeViewMultiSelect: NxTreeViewMultiSelect,
     NxPolicyThreatSlider: NxPolicyThreatSliderPage,
-    NxFilterInput: NxFilterInputPage,
-    NxDropdown: NxDropdownPage
-  },
-  'Stateful React Components': {
-    NxStatefulCheckbox: NxStatefulCheckboxPage,
-    NxStatefulTextInput: NxStatefulTextInputPage,
+    NxRadio: NxRadioPage,
+    NxSubmitMask: NxSubmitMaskPage,
     NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
-    NxStatefulDropdown: NxStatefulDropdownPage,
+    NxTable: NxTablePage,
+    NxTextInput: NxTextInputPage,
+    NxStatefulTextInput: NxStatefulTextInputPage,
+    NxThreatBar: NxThreatBarPage,
+    NxTooltip: NxTooltipPage,
+    NxTreeView: NxTreeViewPage,
+    NxTreeViewMultiSelect: NxTreeViewMultiSelect,
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
-    NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage
+    NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
+    NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
+    NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   }
 };
 

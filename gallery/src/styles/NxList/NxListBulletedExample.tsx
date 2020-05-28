@@ -16,10 +16,35 @@ const NxListWithBullets = () =>
         item 1
       </li>
       <li className="nx-list__item">
-        Item 2
+        <span>Item 2</span>
+        <ul className="nx-list nx-list--bulleted">
+          <li className="nx-list__item">
+            item 1
+          </li>
+          <li className="nx-list__item">
+            Item 2
+          </li>
+          <li className="nx-list__item">
+            <span>item 3</span>
+            <ul className="nx-list nx-list--bulleted">
+              <li className="nx-list__item">
+                item 1
+              </li>
+              <li className="nx-list__item">
+                Item 2
+              </li>
+              <li className="nx-list__item">
+                item 3
+              </li>
+            </ul>
+          </li>
+          <li className="nx-list__item">
+            Item 4
+          </li>
+        </ul>
       </li>
       <li className="nx-list__item">
-        item 3
+        Item 3
       </li>
     </ul>
   </div>;
