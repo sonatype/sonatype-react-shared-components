@@ -7,12 +7,11 @@
 import React from 'react';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-// import CodeExample from '../../CodeExample';
-// import NxTwoColumnLayoutExample from './TwoColumnLayoutExample';
-// import NxSingleColumnLayoutExample from './SingleColumnLayoutExample';
+import CodeExample from '../../CodeExample';
 
-// const nxSingleColumnLayoutExample = require('!!raw-loader!./SingleColumnLayoutExample').default,
-//     nxTwoColumnLayoutExample = require('!!raw-loader!./TwoColumnLayoutExample').default;
+const SingleColumnLayoutExampleCode = require('!!raw-loader!./SingleColumnLayoutExample').default,
+    TwoColumnLayoutExampleCode = require('!!raw-loader!./TwoColumnLayoutExample.html').default,
+    ReactRootLayoutExampleCode = require('!!raw-loader!./ReactRootLayoutExample').default;
 
 const PageLayoutGuidelinesPage = () =>
   <>
@@ -32,7 +31,7 @@ const PageLayoutGuidelinesPage = () =>
       <p>
         Our single and double column layouts are essentially the same except that the single column layout omits the
         sidebar element. When the sidebar element is not present the
-        {' '}<code className="nx-code">nx-page-main-content</code> block will expand to fill the available space.
+        {' '}<code className="nx-code">nx-page-content-main</code> block will expand to fill the available space.
       </p>
       <h2 className="nx-h2">Page layout illustrations</h2>
       <h3 className="nx-h3">Standard two column layout</h3>
@@ -44,29 +43,7 @@ const PageLayoutGuidelinesPage = () =>
         <img src="../resources/page-layout-mocks/page-layout-2col.png" className="gallery-example-image"/>
       </p>
       <p>The basic HTML for this layout would look like this:</p>
-      <pre className="nx-code nx-code--pre-block">
-      {`
-      <div className="nx-page">
-
-        <div className="nx-page-header">
-        </div>
-
-        <div className="nx-page-content">
-
-          <aside className="nx-page-content-sidebar">
-          </aside>
-
-          <main className="nx-page-content-main">
-          </main>
-
-        </div>
-
-        <div className="nx-page-footer">
-        </div>
-
-      </div>
-      `}
-      </pre>
+      <CodeExample content={TwoColumnLayoutExampleCode} />
       <h3 className="nx-h3">Standard single column layout</h3>
       <p>
         Note that the sidebar element is no longer defined, <code className="nx-code">nx-page-main-content</code> will
@@ -76,23 +53,20 @@ const PageLayoutGuidelinesPage = () =>
         <img src="../resources/page-layout-mocks/page-layout-1col.png" className="gallery-example-image"/>
       </p>
       <p>The basic HTML for this layout would look like this:</p>
-      <pre className="nx-code nx-code--pre-block">
-      {`
-      <div className="nx-page">
-
-        <div className="nx-page-header"></div>
-
-        <div className="nx-page-content">
-
-          <main className="nx-page-content-main"></main>
-
-        </div>
-
-        <div className="nx-page-footer"></div>
-
-      </div>
-      `}
-      </pre>
+      <CodeExample content={SingleColumnLayoutExampleCode}/>
+      <h3 className="nx-h3">React Root Element</h3>
+      <p>
+        I think it might also be worth discussing where the react root might lie in these upper-level elements.  In the 
+        gallery itself, it's on .nx-page.  That elements, which also has an id of ui, is what we pass to ReactDOM.
+        render in main.tsx
+      </p>
+      <p>The basic HTML for this layout would look like this:</p>
+      <CodeExample content={ReactRootLayoutExampleCode}/>
+      <p>
+        I think recommending that other apps use that same pattern would be wise.  Then maybe it would make sense to 
+        have a pure HTML example demonstrating the body and .nx-page, and then react component examples demonstrating 
+        the lower elements (edited)
+      </p>
     </GalleryDescriptionTile>
   </>;
 
