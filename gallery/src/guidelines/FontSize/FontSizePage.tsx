@@ -29,13 +29,13 @@ const firstReferenceUrl = 'https://iamvdo.me/en/blog/css-font-metrics-line-heigh
 
 const FontSizePage = () =>
   <GalleryDescriptionTile>
-    <p>
+    <p className="nx-p">
       The layout details of inline elements - rendered height, line box height, vertical alignments, etc, is
       one of the more poorly understood areas of CSS and HTML rendering. This page seeks to lay out some
       of these less-well-known details in the context of the specific styles (e.g. font faces) used within
       the React Shared Components.
     </p>
-    <p>
+    <p className="nx-p">
       At the time of writing, RSC uses the OpenSans font. This font will be used as the example for this guide,
       with screenshots showing its configuration as observed using the font editing program FontForge. Several
       FontForge screenshots are displayed here. If you'd like to see this information in FontForge yourself, it is
@@ -43,18 +43,18 @@ const FontSizePage = () =>
     </p>
 
     <section>
-      <h3>Vocabulary</h3>
-      <dl>
-        <dt>Glyph</dt>
-        <dd>The visible shape of a character</dd>
-        <dt>Baseline</dt>
-        <dd>
+      <h3 className="nx-h3">Vocabulary</h3>
+      <dl className="nx-list nx-list--definition-list">
+        <dt className="nx-list__item nx-list__item--label">Glyph</dt>
+        <dd className="nx-list__item">The visible shape of a character</dd>
+        <dt className="nx-list__item nx-list__item--label">Baseline</dt>
+        <dd className="nx-list__item">
           When writing or printing characters, the baseline is the <q>bottom</q> of standard characters. For instance,
           when writing by hand on ruled paper, the rule line on which you are writing is the baseline. By default,
           the characters in a sequence of text all have their baselines aligned.
         </dd>
-        <dt>Descender</dt>
-        <dd>
+        <dt className="nx-list__item nx-list__item--label">Descender</dt>
+        <dd className="nx-list__item">
           Many glyphs, such as <q>q</q>, contain parts that drop below the baseline. Fonts and line layouts
           must take this into account
         </dd>
@@ -62,8 +62,8 @@ const FontSizePage = () =>
     </section>
 
     <section>
-      <h3>Boxes</h3>
-      <p>
+      <h3 className="nx-h3">Boxes</h3>
+      <p className="nx-p">
         There are a number of boxes which get sized and positioned as the layout of inline text is determined.
         Some of these are familiar to any HTML/CSS developer, but others are lower level concepts that get into
         the realm of the fonts themselves. This guide will start at the lowest relevant level and work its way
@@ -71,8 +71,8 @@ const FontSizePage = () =>
       </p>
 
       <section>
-        <h4>Font Em-Square</h4>
-        <p>
+        <h4 className="nx-h4">Font Em-Square</h4>
+        <p className="nx-p">
           Font glyphs are defined in a unitless coordinate space known as the em-square. The font defines
           this coordinate space using two values: the Ascent and the Descent. The Ascent gives the extent of the box
           above the baseline, and the Descent gives the extent of the box below. The sum of these values is the
@@ -80,13 +80,13 @@ const FontSizePage = () =>
           or 2048. Again, these are unitless, abstract values we are talking about; so far this has nothing to do
           with the rendered size on the page.
         </p>
-        <p>
+        <p className="nx-p">
           OpenSans has an Em-square of 2048, broken down into an ascent of 1638 and a descent of 410, as seen in
           FontForge below
         </p>
         <img src={openSansEmSquareImg}/>
 
-        <p>
+        <p className="nx-p">
           Theoretically, the em-square can be thought of as roughly the extent of the visible area of the font's
           glyphs. This isn't strictly true, as the font writer is perfectly allowed to draw outside the lines,
           and in particular things like accent marks may fall outside of it. Additionally there is no guarantee
@@ -95,7 +95,7 @@ const FontSizePage = () =>
           capital <q>X</q> to be specific. In OpenSans, this number is 1462, which you might note is smaller than
           the em-square's Ascent value.
         </p>
-        <p>
+        <p className="nx-p">
           Despite the nuances described above, we now get to the first connection with familiar CSS concepts:{' '}
           <strong>
             the actual rendered size of the em-square box is what the CSS <code className="nx-code">font-size</code>
@@ -105,14 +105,14 @@ const FontSizePage = () =>
       </section>
 
       <section>
-        <h4>Text Node Content Area</h4>
-        <p>
+        <h4 className="nx-h4">Text Node Content Area</h4>
+        <p className="nx-p">
           As we've established, <code className="nx-code">font-size</code> sets the height of the em-square, a box
           that is at a lower level than the HTML/CSS model. So what about HTML nodes and elements, what sets their
           height? Let's start with text nodes, and by extension, simple inline elements that only contain text
           nodes.
         </p>
-        <p>
+        <p className="nx-p">
           In addition to the em-square ascent and descent values described above, fonts also have another set of
           ascent and descent values which describe line spacing. Actually, it's several sets of values which
           are each used by different operating systems in different circumstances. Luckily for us however, OpenSans
@@ -120,7 +120,7 @@ const FontSizePage = () =>
         </p>
         <img src={openSansLineSpacingImg}/>
 
-        <p>
+        <p className="nx-p">
           As you can see these values are larger than those that defined the em-square, and they are once again
           unitless. So what do they do? They help define the line spacing: glyphs outside of the box defined
           by these values will be cut off, and more notably for web developers, they define the CSS content-height of
@@ -135,7 +135,7 @@ const FontSizePage = () =>
         <CodeExample content={FontLayoutExampleCode}/>
         <CodeExample language="scss" content={FontLayoutExampleStyles}/>
 
-        <p>
+        <p className="nx-p">
           Notice in this example that nothing you can visibly measure is actually 100px tall even though that is the
           font size. The glyphs aren't, because they aren't guaranteed to perfectly fill out the em-square. The
           background isn't, because it is based on the line spacing characteristics described above - and indeed
@@ -144,8 +144,8 @@ const FontSizePage = () =>
       </section>
 
       <section>
-        <h4>Line Boxes</h4>
-        <p>
+        <h4 className="nx-h4">Line Boxes</h4>
+        <p className="nx-p">
           In HTML/CSS, inline elements are contained within block elements, in which the inline elements get laid
           out into a series of line boxes. The line boxes are a layout detail and not a manipulatable part of
           the DOM. Each one consists of (parts of) one or more inline elements and bare text nodes, and a given
@@ -156,20 +156,20 @@ const FontSizePage = () =>
           not necessarily in the middle of their content box. This extra space is known as the <q>leading</q>.
         </p>
 
-        <p>
+        <p className="nx-p">
           <code className="nx-code">line-height</code> can be set in a number of ways, some of which are more
           problematic than others:
         </p>
 
-        <h5>Absolute <code className="nx-code">line-height</code> values</h5>
-        <p>
+        <h5 className="nx-h5">Absolute <code className="nx-code">line-height</code> values</h5>
+        <p className="nx-p">
           <code className="nx-code">line-height</code> can be set using absolute units such
           as <code className="nx-code">px</code>. This allows simple, fine-grained control, but is inflexible,
           especially when applied as a page-wide style.
         </p>
 
-        <h5>Proportional <code className="nx-code">line-height</code> values</h5>
-        <p>
+        <h5 className="nx-h5">Proportional <code className="nx-code">line-height</code> values</h5>
+        <p className="nx-p">
           <code className="nx-code">line-height</code> can be also be set using proportional values such as
           percentages and unitless values. Both of these are relative to the font-size, but there is an important
           difference. The unitless values compute a line-height relative to the actual font-size at which the text is
@@ -179,8 +179,8 @@ const FontSizePage = () =>
           at. <strong>Prefer the unitless approach.</strong>
         </p>
 
-        <h5>Automatic <code className="nx-code">line-height</code></h5>
-        <p>
+        <h5 className="nx-h5">Automatic <code className="nx-code">line-height</code></h5>
+        <p className="nx-p">
           The default value for <code className="nx-code">line-height</code> is
           {' '}<code className="nx-code">normal</code>. The CSS spec is vague about what this means but in
           practice it takes into account the font metrics described above plus one more: the Line Gap.
@@ -194,7 +194,7 @@ const FontSizePage = () =>
           there may be a gap.
         </p>
 
-        <p>
+        <p className="nx-p">
           When setting an explicit <code className="nx-code">line-height</code>, even a proportional one, it should
           be noted that the ideal/default value varies from one font to another based on the font metrics
           described above. The only <code className="nx-code">line-height</code> setting that is really
@@ -203,8 +203,8 @@ const FontSizePage = () =>
       </section>
 
       <section>
-        <h4>Block Elements</h4>
-        <p>
+        <h4 className="nx-h4">Block Elements</h4>
+        <p className="nx-p">
           Block Elements are more firmly within the realm of CSS itself and more directly controlled by CSS
           properties such as <code className="nx-code">height</code> and <code className="nx-code">width</code>,
           which won't be discussed here. A block elements can form a container for line boxes, the block's width
@@ -221,43 +221,45 @@ const FontSizePage = () =>
     </section>
 
     <section>
-      <h3>Additional Nuances</h3>
-      <p>Here is an incomplete list of additional nuances to consider when dealing with inline formatting</p>
-      <ul>
-        <li>
+      <h3 className="nx-h3">Additional Nuances</h3>
+      <p className="nx-p">Here is an incomplete list of additional nuances to consider when dealing with inline formatting</p>
+      <ul className="nx-list nx-list--bulleted">
+        <li className="nx-list__item">
           Inline elements do not respond to CSS width, height, margin-top, or margin-bottom properties. Their
           size and vertical spacing only follows the <code className="nx-code">font-size</code>,
           {' '}<code className="nx-code">line-height</code>, and font metrics as described above, as well as padding
           and borders.
         </li>
-        <li>inline-block elements <em>are</em> sizable using the CSS width and height properties</li>
-        <li>
+        <li className="nx-list__item">
+          inline-block elements <em>are</em> sizable using the CSS width and height properties
+        </li>
+        <li className="nx-list__item">
           inline-block elements use the bottom of the element as their baseline, even if they only contain text
         </li>
-        <li>
+        <li className="nx-list__item">
           Things get more complicated when a line box includes inline elements of multiple heights. In this
           scenario, the elements are sized individually,
           including <code className="nx-code">line-height</code> spacing, lined up according to
-          the <code className="nx-code">vertical-align</code> property (by default, so their so their baselines
+          the <code className="nx-code">vertical-align</code> property (by default: so their baselines
           are aligned), and then the line box goes from the highest top to the lowest bottom.
         </li>
-        <li>
+        <li className="nx-list__item">
           Parent elements contribute a zero-width <q>strut</q> character to the line spacing. In other words,
           if an inline element is in a line box along with a parent element that has a larger line height,
           the parent's line height (and baseline) will come into play even if the parent has no text of its own
         </li>
-        <li>
+        <li className="nx-list__item">
           Due to the off-center nature of the baseline, vertical-alignment of elements of different font sizes is
           extremely, unavoidably counterintuitive. See the examples in the vertical alignment section
           of <a href={firstReferenceUrl}>[1]</a>
         </li>
-        <li>
-          <p>
+        <li className="nx-list__item">
+          <p className="nx-p">
             It is possible to specify a <code className="nx-code">line-height</code> smaller than an element's content
             height, in which case the leading will be negative and text node content areas will have a height exceeding
             that of their line box. In this scenario, text nodes in adjacent line boxes will overlap one another.
           </p>
-          <p>
+          <p className="nx-p">
             This is one reason why a global, absolute line-height is a poor choice - this line height will need to be
             adjusted explicitly for any element which has a larger font size in order to prevent visible crowding and
             overlap. The example below demonstrates what might happen with a large-font header in an app with a 18px
@@ -268,7 +270,7 @@ const FontSizePage = () =>
           <CodeExample content={BadLineHeightExampleCode}/>
           <CodeExample language="scss" content={BadLineHeightExampleStyles}/>
         </li>
-        <li>
+        <li className="nx-list__item">
           It is possible for a single text node to contain glyphs from multiple font faces, and even for it to contain
           no glyphs from the font face specified in CSS. This can happen when the preferred font face has glyphs for
           some (or none), but not all, of the code points requested, and a different font face is used as the fallback.
@@ -291,8 +293,8 @@ const FontSizePage = () =>
     </section>
 
     <section>
-      <h3>References, further reading</h3>
-      <p>
+      <h3 className="nx-h3">References, further reading</h3>
+      <p className="nx-p">
         The first reference here is particularly valuable, and is where the bulk of the knowledge on this page come
         from.
       </p>
