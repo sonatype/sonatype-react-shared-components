@@ -8,8 +8,7 @@ import React from 'react';
 import {GalleryTile} from '../gallery-components/GalleryTiles';
 import CodeExample from '../CodeExample';
 
-const fontFaceExampleCode = require('!!raw-loader!../resources/FontFaceExample.scss').default,
-    pageConfigExample = `import Foo from './pages/Foo';
+const pageConfigExample = `import Foo from './pages/Foo';
 import Bar from './pages/Bar';
 import Baz from './pages/Baz';
 import NxCheckboxPage from './components/NxCheckboxPage';
@@ -28,7 +27,7 @@ const pageConfig: PageConfig = {
 const Home = () =>
   <>
     <GalleryTile title="How to add a new component to the Gallery" >
-      <h3>Create a page describing the component</h3>
+      <h3 className="nx-h3">Create a page describing the component</h3>
       <ul className="nx-list nx-list--bulleted">
         <li className="nx-list__item">
           For each component or style that you want to add to the Gallery, create a subdirectory
@@ -59,8 +58,8 @@ const Home = () =>
           component example.
         </li>
       </ul>
-      <h3>Add the new page to Gallery navigation</h3>
-      <p>
+      <h3 className="nx-h3">Add the new page to Gallery navigation</h3>
+      <p className="nx-p">
         After you've created the description page, in order to add the component to the Gallery Navigation, you
         will need to add it to the <code className="nx-code">pageConfig</code> object inside of
         the <code className="nx-code">pageConfig.ts</code> file
@@ -78,20 +77,6 @@ const Home = () =>
           <code className="nx-code">react-router</code> to auto-populate the left-hand navigation, page title and URL
         </li>
       </ul>
-    </GalleryTile>
-    <GalleryTile title="A note on typography">
-      <p>
-        While the <code className="nx-code">font-family</code> declaration
-        in <code className="nx-code">_nx-text-helpers.scss</code> declaration calls for Proxima Nova, it is not
-        included in the bundle because it is a proprietary font. If you are using the React Shared Components in a
-        Sonatype product please make sure you use <code className="nx-code">@font-face</code> in your project's
-        (S)CSS to correctly load the Proxima Nova fonts (see example below).
-      </p>
-      <p>
-        In all other cases the font will fall back
-        to <code className="nx-code">Helvetica Neue, Helvetica, sans-serif</code>.
-      </p>
-      <CodeExample language="scss" content={fontFaceExampleCode} />
     </GalleryTile>
   </>;
 export default Home;

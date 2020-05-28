@@ -63,6 +63,7 @@
     @include regular();
 
     border: none;
+    line-height: $nx-line-height;
     list-style: disc outside;
     margin: $nx-spacing-sm 10px $nx-spacing-sm 36px;
     overflow: visible;
@@ -223,11 +224,16 @@
 .nx-list--definition-list {
   box-sizing: border-box;
 
+  display: flex;
+  flex-wrap: wrap;
+
   .nx-list__item {
     @include regular();
 
     display: inline-block;
     width: 75%;
+
+    white-space: normal;
   }
 
   .nx-list__item--label {
