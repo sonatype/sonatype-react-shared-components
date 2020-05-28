@@ -276,7 +276,7 @@ const FontSizePage = () =>
           some (or none), but not all, of the code points requested, and a different font face is used as the fallback.
           Different fonts, of course, have different metrics, which means different heights. Experimentally, in this
           case the browser appears to take the metrics of the declared font, even if that font is not
-          contributing <em>any</em> of the glpyhs in the text node in question. As an example, observe
+          contributing <em>any</em> of the glyphs in the text node in question. As an example, observe
           the <code className="nx-code">span</code>s containing the following emojis. The first inherits the page styles
           setting OpenSans as the font family.  Despite not actually having any glyphs from OpenSans, it still has a
           content height derived from OpenSans metrics - that is, a content height that is roughly 1.36 times the font
