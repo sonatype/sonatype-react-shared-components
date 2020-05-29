@@ -222,7 +222,9 @@ const FontSizePage = () =>
 
     <section>
       <h3 className="nx-h3">Additional Nuances</h3>
-      <p className="nx-p">Here is an incomplete list of additional nuances to consider when dealing with inline formatting</p>
+      <p className="nx-p">
+        Here is an incomplete list of additional nuances to consider when dealing with inline formatting
+      </p>
       <ul className="nx-list nx-list--bulleted">
         <li className="nx-list__item">
           Inline elements do not respond to CSS width, height, margin-top, or margin-bottom properties. Their
