@@ -51,6 +51,7 @@ import FormValidationPage from './guidelines/FormValidation/FormValidationPage';
 import PageLayoutPage from './styles/PageLayout/PageLayoutPage';
 import NxStatefulDropdownPage from './components/NxStatefulDropdown/NxStatefulDropdownPage';
 import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCheckboxPage';
+import FontSizePage from './guidelines/FontSize/FontSizePage';
 
 const pageConfig: PageConfig = {
   'Styles - HTML Elements': {
@@ -74,7 +75,8 @@ const pageConfig: PageConfig = {
     'Page Layout': PageLayoutPage
   },
   'Guidelines': {
-    'Form Validation Guidelines': FormValidationPage
+    'Form Validation Guidelines': FormValidationPage,
+    'font-size and line-height': FontSizePage
   },
   'React Components': {
     NxAlert: NxAlertComponentsPage,

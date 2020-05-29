@@ -62,10 +62,15 @@
   position: relative;
 }
 
+.gallery-highlight-background-example {
+  background-color: transparentize(#79acfb, 0.5);
+}
+
 .gallery-example-image {
   max-width: 100%;
 }
 
-.nx-code.nx-code--pre-block {
-  white-space: pre;
+
 }
+  white-space: pre;
+.nx-code.nx-code--pre-block {
