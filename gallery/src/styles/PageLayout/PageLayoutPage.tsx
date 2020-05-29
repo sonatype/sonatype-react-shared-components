@@ -21,7 +21,7 @@ const PageLayoutGuidelinesPage = () =>
         <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">
           flexbox
         </a>
-        to handle our layouts.
+        {' '}to handle our layouts.
       </p>
       <p>
         One challenge of flexbox layouts is that the order and nesting of the tags that make up the layouts
