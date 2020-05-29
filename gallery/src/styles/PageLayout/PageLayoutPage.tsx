@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import RawHtmlExample from '../../CodeExample';
 
 const SingleColumnLayoutExampleCode = require('!!raw-loader!./SingleColumnLayoutExample.html').default,
     TwoColumnLayoutExampleCode = require('!!raw-loader!./TwoColumnLayoutExample.html').default,
@@ -43,7 +43,7 @@ const PageLayoutGuidelinesPage = () =>
         <img src="../resources/page-layout-mocks/page-layout-2col.png" className="gallery-example-image"/>
       </p>
       <p>The basic HTML for this layout would look like this:</p>
-      <CodeExample content={TwoColumnLayoutExampleCode} />
+      <RawHtmlExample content={TwoColumnLayoutExampleCode} />
       <h3 className="nx-h3">Standard single column layout</h3>
       <p>
         Note that the sidebar element is no longer defined, <code className="nx-code">nx-page-main-content</code> will
@@ -53,7 +53,7 @@ const PageLayoutGuidelinesPage = () =>
         <img src="../resources/page-layout-mocks/page-layout-1col.png" className="gallery-example-image"/>
       </p>
       <p>The basic HTML for this layout would look like this:</p>
-      <CodeExample content={SingleColumnLayoutExampleCode}/>
+      <RawHtmlExample content={SingleColumnLayoutExampleCode}/>
       <h3 className="nx-h3">React Root Element</h3>
       <p>
         Typically React Root is specified in the upper-level page elements. In the gallery itself, it's applied to
@@ -61,7 +61,7 @@ const PageLayoutGuidelinesPage = () =>
         also has an <code className="nx-code">id</code> of <code className="nx-code">ui</code>, is what we pass to
         ReactDOM. We recommend that other apps use the same pattern.
       </p>
-      <CodeExample content={ReactRootLayoutExampleCode}/>
+      <RawHtmlExample content={ReactRootLayoutExampleCode}/>
     </GalleryDescriptionTile>
   </>;
 
