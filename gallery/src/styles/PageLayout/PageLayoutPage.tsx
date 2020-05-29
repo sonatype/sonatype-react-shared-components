@@ -9,7 +9,7 @@ import React from 'react';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import CodeExample from '../../CodeExample';
 
-const SingleColumnLayoutExampleCode = require('!!raw-loader!./SingleColumnLayoutExample').default,
+const SingleColumnLayoutExampleCode = require('!!raw-loader!./SingleColumnLayoutExample.html').default,
     TwoColumnLayoutExampleCode = require('!!raw-loader!./TwoColumnLayoutExample.html').default,
     ReactRootLayoutExampleCode = require('!!raw-loader!./ReactRootLayoutExample.html').default;
 
@@ -17,8 +17,8 @@ const PageLayoutGuidelinesPage = () =>
   <>
     <GalleryDescriptionTile>
       <p>
-        HTML and SCSS are provided for both single and two column page layouts. We use
-        {' '}<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">
+        HTML and SCSS are provided for both single and two column page layouts. We use{' '}
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">
         flexbox</a> to handle our layouts.
       </p>
       <p>
