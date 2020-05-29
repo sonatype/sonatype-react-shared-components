@@ -21,6 +21,7 @@ $main-header-product-version-row-height: 1fr;
 
 .nx-page-header {
   background-color: $main-header-background;
+  border-bottom: 1px solid $nx-header-border;
   flex-shrink: 0; // needed for IE11
   height: $main-header-height;
   width: 100%;
