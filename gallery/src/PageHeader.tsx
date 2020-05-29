@@ -16,12 +16,10 @@ function PageHeader() {
       <div className="nx-page-header__inner">
         <a href="#" className="nx-product">
           <img src={sonatypeLogo} className="nx-product__logo"/>
-          <div className="nx-product__name">
-            Sonatype Component Library
-          </div>
-          <div className="nx-product__version">
-            Version: {packageJson.version}
-          </div>
+          <div className="nx-product__sonatype-wordmark">sonatype</div>
+          <div className="nx-product__vertical-divider">|</div>
+          <div className="nx-product__name">react shared component library</div>
+          <div className="nx-product__version">Version: {packageJson.version}</div>
         </a>
       </div>
     </header>

@@ -8,8 +8,8 @@
 @import '../scss-shared/nx-text-helpers';
 @import '../scss-shared/nx-container-helpers';
 
-$main-header-background: $nx-sonatype-blue;
-$main-header-color: $nx-off-white;
+$main-header-background: $nx-off-white;
+$main-header-color: $nx-off-black;
 $main-header-height: 72px;
 $main-header-product-height: 52px;
 $main-header-product-title-row-height: 2fr;
@@ -20,7 +20,7 @@ $main-header-product-version-row-height: 1fr;
 */
 
 .nx-page-header {
-  background-color: $nx-off-black;
+  background-color: $main-header-background;
   flex-shrink: 0; // needed for IE11
   height: $main-header-height;
   width: 100%;
@@ -39,61 +39,44 @@ $main-header-product-version-row-height: 1fr;
 .nx-product {
   align-self: center;
   box-sizing: border-box;
-  color: $nx-off-white;
-  display: -ms-grid;
-  display: grid;
-  grid-column-gap: $nx-spacing-xxs;
-  -ms-grid-rows: $main-header-product-title-row-height $main-header-product-version-row-height;
-  grid-template-rows: $main-header-product-title-row-height $main-header-product-version-row-height;
-  -ms-grid-columns: $main-header-product-height $nx-spacing-xxs auto;
-  grid-template-columns: $main-header-product-height auto;
-  grid-template-areas:
-    "logo title"
-    "logo version";
+  color: $main-header-color;
+  display: flex;
   height: $main-header-product-height;
   text-decoration: none;
   min-width: $nx-sidebar-width;
 }
 
 .nx-product__logo {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 1;
-  -ms-grid-row-align: center;
   align-self: center;
   box-sizing: border-box;
-  grid-area: logo;
-  height: 100%;
-  width: 100%;
+  height: 20px;
+  margin-top: $nx-spacing-xxs;
+  width: 20px;
+}
+
+.nx-product__sonatype-wordmark {
+  @include semi-bold();
+  align-self: center;
+  font-size: 22px;
+  margin-left: $nx-spacing-xxs;
+}
+
+.nx-product__vertical-divider {
+  align-self: center;
+  font-size: 21px;
+  margin-left: $nx-spacing-sm;
 }
 
 .nx-product__name {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
-  @include semi-bold();
-
-  -ms-grid-row-align: center;
-
   align-self: center;
-  font-size: 23px;
-  grid-area: title;
-  -ms-grid-column-align: left;
-  justify-self: left;
-  line-height: normal;
-  text-transform: lowercase;
+  font-size: 26px;
+  margin-left: $nx-spacing-sm;
   white-space: nowrap;
 }
 
 .nx-product__version {
-  -ms-grid-row: 2;
-  -ms-grid-column: 3;
-  @include bold();
-
-  -ms-grid-row-align: start;
-  align-self: start;
+  align-self: center;
   font-size: 11px;
-  grid-area: version;
-  -ms-grid-column-align: left;
-  justify-self: left;
-  line-height: 1.1;
+  margin-top: 10px; // move version down to match product name baseline
+  margin-left: $nx-spacing-sm;
 }
