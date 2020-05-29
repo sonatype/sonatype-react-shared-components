@@ -51,6 +51,7 @@ import FormValidationPage from './guidelines/FormValidation/FormValidationPage';
 import NxStatefulDropdownPage from './components/NxStatefulDropdown/NxStatefulDropdownPage';
 import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCheckboxPage';
 import ContributingPage from './pages/Contributing';
+import FontSizePage from './guidelines/FontSize/FontSizePage';
 
 const pageConfig: PageConfig = {
   'Styles - HTML Elements': {
@@ -74,7 +75,8 @@ const pageConfig: PageConfig = {
   },
   'Guidelines': {
     'Form Validation Guidelines': FormValidationPage,
-    'Contributing to the Gallery': ContributingPage
+    'Contributing to the Gallery': ContributingPage,
+    'font-size and line-height': FontSizePage
   },
   'React Components': {
     NxAlert: NxAlertComponentsPage,
