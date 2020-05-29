@@ -21,11 +21,10 @@ const PageLayoutPage = () =>
         <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">
           flexbox
         </a>
-        to handle our layouts.
+        {' '}to handle our layouts.
       </p>
-      <p className="nx-p">
-        One challenge of flexbox layouts is that the order and nesting of the tags that make up the layouts
-        must be nested consistently or the layout will break. This often makes flexbox layouts challenging with
+      <p>
+        One challenge of flexbox layouts is that direct parent-child relationships between elements are crucial, and adding intermediate ancestors can easily break the layout. This often makes flexbox layouts challenging with
         frameworks which insert <code className="nx-code">&lt;div&gt;</code>'s into the DOM structure (like Angular)
         which can effect the order and/or nesting of the blocks. If your layout isn't working the way you expect this
         is the first thing you should check.
