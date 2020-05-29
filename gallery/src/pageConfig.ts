@@ -71,7 +71,7 @@ const pageConfig: PageConfig = {
   },
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
-    'Page Layout Guidelines': PageLayoutPage
+    'Page Layout': PageLayoutPage
   },
   'Guidelines': {
     'Form Validation Guidelines': FormValidationPage
