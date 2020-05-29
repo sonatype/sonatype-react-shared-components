@@ -8,16 +8,12 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
 import CodeExample from '../../CodeExample';
+import RawHtmlExample from '../../RawHtmlExample';
 
-import NxAlertInfoExample from './NxAlertInfoExample';
-import NxAlertWarningExample from './NxAlertWarningExample';
-import NxAlertErrorExample from './NxAlertErrorExample';
-import NxAlertErrorRetryExample from './NxAlertErrorRetryExample';
-
-const nxAlertInfoCode = require('!!raw-loader!./NxAlertInfoExample').default,
-    nxAlertWarningCode = require('!!raw-loader!./NxAlertWarningExample').default,
-    nxAlertErrorCode = require('!!raw-loader!./NxAlertErrorExample').default,
-    nxAlertErrorRetryCode = require('!!raw-loader!./NxAlertErrorRetryExample').default;
+const nxAlertInfoCode = require('./NxAlertInfoExample.html').default,
+    nxAlertWarningCode = require('./NxAlertWarningExample.html').default,
+    nxAlertErrorCode = require('./NxAlertErrorExample.html').default,
+    nxAlertErrorRetryCode = require('./NxAlertErrorRetryExample.html').default;
 
 const NxAlertPage = () =>
   <>
@@ -26,22 +22,22 @@ const NxAlertPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryTile title="Information alert">
-      <NxAlertInfoExample/>
+      <RawHtmlExample html={nxAlertInfoCode}/>
       <CodeExample content={nxAlertInfoCode}/>
     </GalleryTile>
 
     <GalleryTile title="Warning alert">
-      <NxAlertWarningExample/>
+      <RawHtmlExample html={nxAlertWarningCode}/>
       <CodeExample content={nxAlertWarningCode}/>
     </GalleryTile>
 
     <GalleryTile title="Error alert">
-      <NxAlertErrorExample/>
+      <RawHtmlExample html={nxAlertErrorCode}/>
       <CodeExample content={nxAlertErrorCode}/>
     </GalleryTile>
 
     <GalleryTile title="Error alert with retry button">
-      <NxAlertErrorRetryExample/>
+      <RawHtmlExample html={nxAlertErrorRetryCode}/>
       <CodeExample content={nxAlertErrorRetryCode} />
     </GalleryTile>
   </>;
