@@ -8,10 +8,12 @@ import React from 'react';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import RawHtmlExample from '../../CodeExample';
+const pageLayoutTwoColumnImg = require('./page-layout-2col.png');
+const pageLayoutSingleColumnImg = require('./page-layout-1col.png');
 
-const SingleColumnLayoutExampleCode = require('!!raw-loader!./SingleColumnLayoutExample.html').default,
-    TwoColumnLayoutExampleCode = require('!!raw-loader!./TwoColumnLayoutExample.html').default,
-    ReactRootLayoutExampleCode = require('!!raw-loader!./ReactRootLayoutExample.html').default;
+const singleColumnLayoutExampleCode = require('!!raw-loader!./SingleColumnLayoutExample.html').default;
+const twoColumnLayoutExampleCode = require('!!raw-loader!./TwoColumnLayoutExample.html').default;
+const reactRootLayoutExampleCode = require('!!raw-loader!./ReactRootLayoutExample.html').default;
 
 const PageLayoutPage = () =>
   <>
@@ -41,17 +43,17 @@ const PageLayoutPage = () =>
         Our standard two column layout consists of a page header area, a page sidebar, main content area, and a page
         footer. Many of our apps do not use a page footer and this can be safely omitted.
       </p>
-      <img src="../resources/page-layout-mocks/page-layout-2col.png" className="gallery-example-image"/>
+      <img src={pageLayoutTwoColumnImg}/>
       <p className="nx-p">The HTML for this layout would look like this:</p>
-      <RawHtmlExample content={TwoColumnLayoutExampleCode} />
+      <RawHtmlExample content={twoColumnLayoutExampleCode} />
       <h3 className="nx-h3">Standard single column layout</h3>
       <p className="nx-p">
         Note that the sidebar element is no longer defined, <code className="nx-code">nx-page-main-content</code> will
         expand to the left to occupy the available space.
       </p>
-      <img src="../resources/page-layout-mocks/page-layout-1col.png" className="gallery-example-image"/>
+      <img src={pageLayoutSingleColumnImg}/>
       <p className="nx-p">The HTML for this layout would look like this:</p>
-      <RawHtmlExample content={SingleColumnLayoutExampleCode}/>
+      <RawHtmlExample content={singleColumnLayoutExampleCode}/>
       <h3 className="nx-h3">React Root Element</h3>
       <p className="nx-p">
         Typically React Root is specified in the upper-level page elements. In the gallery itself, it's applied to
@@ -59,7 +61,7 @@ const PageLayoutPage = () =>
         also has an <code className="nx-code">id</code> of <code className="nx-code">ui</code>, is what we pass to
         ReactDOM. We recommend that other apps use the same pattern.
       </p>
-      <RawHtmlExample content={ReactRootLayoutExampleCode}/>
+      <RawHtmlExample content={reactRootLayoutExampleCode}/>
     </GalleryDescriptionTile>
   </>;
 
