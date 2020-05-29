@@ -56,7 +56,12 @@ const PageLayoutPage = () =>
       <RawHtmlExample content={singleColumnLayoutExampleCode}/>
       <h3 className="nx-h3">React Root Element</h3>
       <p className="nx-p">
-        Typically in a React app, some high level element in the page which is a descendant of the <code className="nx-code">{'<body>'}</code> is used as the attachment point for the root React <code className="nx-code">ReactDOM.render</code> call. In the gallery itself, the <code className="nx-code">.nx-page</code> element, which also has an <code className="nx-code">id</code> of <code className="nx-code">ui</code>, is used as this attachment point.  We recommend that other apps use the same pattern.
+        Typically in a React app, some high level element in the page which is a descendant of the
+        <code className="nx-code">{'<body>'}</code> is used as the attachment point for the root React
+        <code className="nx-code">ReactDOM.render</code> call. In the gallery itself, the
+        <code className="nx-code">.nx-page</code> element, which also has an <code className="nx-code">id</code> of
+        <code className="nx-code">ui</code>, is used as this attachment point.  We recommend that other apps use the
+        same pattern.
       </p>
       <RawHtmlExample content={reactRootLayoutExampleCode}/>
     </GalleryDescriptionTile>
