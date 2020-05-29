@@ -69,6 +69,9 @@ module.exports = function(env = { production: false }) {
         options: {
           name: 'fonts/[name].[ext]'
         }
+      }, {
+        test: /\.html$/,
+        loader: 'raw-loader',
       }]
     },
     plugins: [
