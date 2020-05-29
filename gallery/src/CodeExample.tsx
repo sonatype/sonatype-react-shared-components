@@ -19,9 +19,22 @@ const propTypes: PropTypes.ValidationMap<Props> = {
   language: PropTypes.string
 };
 
+// Quick and dirty removal of any comment appearing at the beginning of the content, as it is assumed to be
+// a license which is not helpful to the example display. Both HTML-syntax and C-syntax comments are removed
+const removeLicense = (content: string) =>
+  content
+      .replace(/^<!--(.|\n)*-->\s*\n?/, '')
+      .replace(/^\/\*(.|\n)*\*\/\s*\n?/, '');
+
 const CodeExample: FunctionComponent<Props> =
   function CodeExample({ content, language }): ReactElement<Props> {
-    return <SyntaxHighlighter language={language || 'tsx'} style={atomDark}>{content}</SyntaxHighlighter>;
+    const licenseStrippedContent = removeLicense(content);
+
+    return (
+      <SyntaxHighlighter language={language || 'tsx'} style={atomDark}>
+        {licenseStrippedContent}
+      </SyntaxHighlighter>
+    );
   };
 
 CodeExample.propTypes = propTypes;
