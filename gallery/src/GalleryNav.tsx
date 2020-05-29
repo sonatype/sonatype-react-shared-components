@@ -4,8 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { Fragment, ReactNode } from 'react';
+import React, { useState, Fragment, ReactNode } from 'react';
 import { toPairs, keys, map, pipe } from 'ramda';
+import { NxTreeView, NxTreeViewChild } from '@sonatype/react-shared-components';
 
 import pageConfig from './pageConfig';
 import {NavLink} from 'react-router-dom';
@@ -14,17 +15,21 @@ import { PageMapping } from './pageConfigTypes';
 const renderLinks: ((categoryEntries: PageMapping) => ReactNode) = pipe(
     keys,
     map((pageName: string) =>
-      <dd key={pageName} className="gallery-nav-link">
+      <NxTreeViewChild key={pageName} className="gallery-nav-link">
         <NavLink to={`/pages/${pageName}`} className="gallery-link">{pageName}</NavLink>
-      </dd>
+      </NxTreeViewChild>
     )
 );
-
+const [toggleCheck, setToggleCheck] = useState(false),
+      onToggleCollapse = () => setToggleCheck(!toggleCheck);
 const categories = map(
     ([categoryName, categoryEntries]: [string, PageMapping]) =>
       <Fragment key={categoryName}>
-        <dt className="gallery-nav-category">{categoryName}</dt>
-        {renderLinks(categoryEntries)}
+        <NxTreeView onToggleCollapse={onToggleCollapse}
+                isOpen={toggleCheck}
+                triggerContent={categoryName}>
+          {renderLinks(categoryEntries)}
+        </NxTreeView>
       </Fragment>,
     toPairs(pageConfig)
 );
@@ -32,9 +37,7 @@ const categories = map(
 function GalleryNav() {
   return (
     <nav className="gallery-nav">
-      <dl className="gallery-nav-links">
-        {categories}
-      </dl>
+      {categories}
     </nav>
   );
 }
