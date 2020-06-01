@@ -25,7 +25,7 @@ const PageLayoutPage = () =>
         </a>
         {' '}to handle our layouts.
       </p>
-      <p>
+      <p className="nx-p">
         One challenge of flexbox layouts is that direct parent-child relationships between elements are crucial, and
         adding intermediate ancestors can easily break the layout. This often makes flexbox layouts challenging with
         frameworks which insert <code className="nx-code">&lt;div&gt;</code>'s into the DOM structure (like Angular)
