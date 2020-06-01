@@ -15,7 +15,9 @@ function PageHeader() {
     <header className="nx-page-header">
       <div className="nx-page-header__inner">
         <a href="#" className="nx-product">
-          <img src={sonatypeLogo} className="nx-product__wordmark" alt="Sonatype"/>
+          <div className="nx-product__branding">
+            <img src={sonatypeLogo} className="nx-product__wordmark" alt="Sonatype"/>
+          </div>
           <div className="nx-product__vertical-divider">|</div>
           <div className="nx-product__name">react shared component library</div>
           <div className="nx-product__version">Version: {packageJson.version}</div>
