@@ -18,6 +18,14 @@
   line-height: 20px;
   overflow: hidden;
   white-space: nowrap;
+
+  &:focus {
+    outline: none;
+
+    .nx-checkbox__box {
+      border-color: $nx-color-blue-44;
+    }
+  }
 }
 
 .nx-checkbox__input {
