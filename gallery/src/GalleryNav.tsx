@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState, ReactNode } from 'react';
-import { toPairs, keys, map, pipe } from 'ramda';
+import { addIndex, toPairs, keys, map, pipe } from 'ramda';
 import { NxTreeView, NxTreeViewChild } from '@sonatype/react-shared-components';
 
 import pageConfig from './pageConfig';
@@ -22,12 +22,13 @@ const renderLinks: ((categoryEntries: PageMapping) => ReactNode) = pipe(
 );
 
 interface GalleryNavTreeViewProps {
+  defaultOpen: boolean;
   categoryName: string;
   categoryEntries: PageMapping;
 };
 
-function GalleryNavTreeView({ categoryName, categoryEntries }: GalleryNavTreeViewProps) {
-  const [toggleCheck, setToggleCheck] = useState(false),
+function GalleryNavTreeView({ categoryName, categoryEntries, defaultOpen }: GalleryNavTreeViewProps) {
+  const [toggleCheck, setToggleCheck] = useState(defaultOpen),
       onToggleCollapse = () => setToggleCheck(!toggleCheck);
 
   return (
@@ -39,10 +40,11 @@ function GalleryNavTreeView({ categoryName, categoryEntries }: GalleryNavTreeVie
   );
 }
 
+// create a GalleryNavTreeView for each entry in the pageConfig. Only the first one is expanded by default
 const categories = pipe<PageConfig, [string, PageMapping][], ReactNode[]>(
     toPairs,
-    map(([categoryName, categoryEntries]) =>
-      <GalleryNavTreeView key={categoryName} { ...({ categoryName, categoryEntries }) }/>)
+    addIndex<[string, PageMapping], ReactNode>(map)(([categoryName, categoryEntries], idx) =>
+      <GalleryNavTreeView key={categoryName} defaultOpen={!idx} { ...({ categoryName, categoryEntries }) }/>)
 )(pageConfig);
 
 function GalleryNav() {
