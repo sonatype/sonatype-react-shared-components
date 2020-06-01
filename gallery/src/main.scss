@@ -18,16 +18,19 @@
   @include container-vertical;
 }
 
-.gallery-nav-category {
-  @include semi-bold();
+.gallery-nav {
+  .nx-tree-view__trigger {
+    .nx-tree-view__text {
+      @include semi-bold();
 
-  color: $nx-text-color-light;
-  font-size: 16px;
-  margin-top: $nx-spacing-md;
-  margin-bottom: 12px;
+      color: #393939;
+      font-size: 16px;
+    }
+  }
 }
 
 .nx-tree-view__child.gallery-nav-link {
+  font-size: 16px;
   height: 32px;
   line-height: 32px;
   margin-right: 0;
