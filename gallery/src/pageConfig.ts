@@ -85,13 +85,6 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
-  'Styles - Mixins': {
-    'nx-container-helpers': NxContainerHelpersPage
-  },
-  'Layout Examples': {
-    'Form Layout Styles': NxFormLayoutPage,
-    'Page Layout': PageLayoutPage
-  },
   'Guidelines': {
     'Form Validation Guidelines': FormValidationPage,
     'Contributing to the Gallery': ContributingPage,
@@ -109,6 +102,13 @@ const pageConfig: PageConfig = {
     'nx-text-input': NxTextInputStylesPage,
     'nx-threat-number': NxThreatNumberPage,
     'nx-tile': NxTilePage
+  },
+  'Styles - Mixins': {
+    'nx-container-helpers': NxContainerHelpersPage
+  },
+  'Layout Examples': {
+    'Form Layout Styles': NxFormLayoutPage,
+    'Page Layout': PageLayoutPage
   }
 };
 

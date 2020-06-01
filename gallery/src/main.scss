@@ -9,6 +9,11 @@
 @import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 @import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
 
+.nx-page-sidebar.gallery-page-sidebar {
+  padding-right: $nx-spacing-md;
+  padding-left: $nx-spacing-md;
+}
+
 .gallery-nav, .gallery-nav-links {
   @include container-vertical;
 }
@@ -18,13 +23,14 @@
 
   color: $nx-text-color-light;
   font-size: 16px;
-  margin-top: 16px;
+  margin-top: $nx-spacing-md;
   margin-bottom: 12px;
 }
 
 .nx-tree-view__child.gallery-nav-link {
   height: 32px;
   line-height: 32px;
+  margin-right: 0;
   margin-bottom: 4px;
   margin-left: 0;
 }
@@ -48,10 +54,15 @@
   &.active {
     @include bold;
 
-    background: #d1d6f0;
-    color: $nx-text-color;
+    background-color: #1a2eac;
+    color: #fff;
     cursor: default;
     text-decoration: none;
+
+    &:hover {
+      background-color: #1a2eac;
+      color: #fff;
+    }
   }
 }
 
