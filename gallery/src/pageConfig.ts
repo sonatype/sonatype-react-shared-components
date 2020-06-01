@@ -55,7 +55,6 @@ import ContributingPage from './pages/Contributing';
 import FontSizePage from './guidelines/FontSize/FontSizePage';
 
 const pageConfig: PageConfig = {
-    'Page Layout': PageLayoutPage
   'React Components': {
     NxAlert: NxAlertComponentsPage,
     NxBackButton: NxBackButtonPage,
@@ -90,7 +89,8 @@ const pageConfig: PageConfig = {
     'nx-container-helpers': NxContainerHelpersPage
   },
   'Layout Examples': {
-    'Form Layout Styles': NxFormLayoutPage
+    'Form Layout Styles': NxFormLayoutPage,
+    'Page Layout': PageLayoutPage
   },
   'Guidelines': {
     'Form Validation Guidelines': FormValidationPage,
