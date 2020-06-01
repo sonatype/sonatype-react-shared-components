@@ -22,25 +22,33 @@
   margin-bottom: 12px;
 }
 
-.gallery-nav-link {
+.nx-tree-view__child.gallery-nav-link {
+  height: 32px;
+  line-height: 32px;
   margin-bottom: 4px;
   margin-left: 0;
 }
 
 .gallery-link {
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: $nx-text-color-light;
   display: inline-block;
   font-size: 14px;
+  height: 32px;
   margin-bottom: 4px;
+  padding-left: 45px;
   text-decoration: none;
-  color: $nx-text-color-light;
+  width: 100%;
 
   &:hover {
-    text-decoration: underline;
+    background-color: #e2e6f4;
   }
 
   &.active {
     @include semi-bold;
 
+    background: #d1d6f0;
     color: $nx-text-color;
     cursor: default;
     text-decoration: none;
