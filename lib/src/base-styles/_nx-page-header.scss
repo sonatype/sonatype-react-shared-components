@@ -47,19 +47,8 @@ $main-header-product-version-row-height: 1fr;
   min-width: $nx-sidebar-width;
 }
 
-.nx-product__logo {
-  align-self: center;
-  box-sizing: border-box;
-  height: 20px;
-  margin-top: $nx-spacing-xxs;
-  width: 20px;
-}
-
 .nx-product__sonatype-wordmark {
-  @include semi-bold();
   align-self: center;
-  font-size: 22px;
-  margin-left: $nx-spacing-xxs;
 }
 
 .nx-product__vertical-divider {
