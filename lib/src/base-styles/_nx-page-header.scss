@@ -47,18 +47,25 @@ $main-header-product-version-row-height: 1fr;
   min-width: $nx-sidebar-width;
 }
 
-.nx-product__sonatype-wordmark {
+.nx-product__branding {
   align-self: center;
+}
+
+.nx-product__wordmark {
+  height: 21px;
+  margin-top: 13px; // fix vertical centering
 }
 
 .nx-product__vertical-divider {
   align-self: center;
+  color: #000;
   font-size: 21px;
   margin-left: $nx-spacing-sm;
 }
 
 .nx-product__name {
   align-self: center;
+  color: #474747;
   font-size: 26px;
   margin-left: $nx-spacing-sm;
   white-space: nowrap;
@@ -66,6 +73,7 @@ $main-header-product-version-row-height: 1fr;
 
 .nx-product__version {
   align-self: center;
+  color: #545454;
   font-size: 11px;
   margin-top: 10px; // move version down to match product name baseline
   margin-left: $nx-spacing-sm;
