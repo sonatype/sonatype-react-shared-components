@@ -19,9 +19,7 @@
   overflow: hidden;
   white-space: nowrap;
 
-  &:focus {
-    outline: none;
-
+  &:focus-within {
     .nx-checkbox__box {
       border-color: $nx-color-blue-44;
     }
@@ -29,7 +27,10 @@
 }
 
 .nx-checkbox__input {
-  display: none;
+  margin: 0;
+
+  height: 0;
+  width: 0;
 }
 
 .nx-checkbox__box {

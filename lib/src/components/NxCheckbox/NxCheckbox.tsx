@@ -32,7 +32,7 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
       });
 
       return (
-        <label { ...otherProps } ref={ref} className={labelClasses} tabIndex={0}>
+        <label { ...otherProps } ref={ref} className={labelClasses}>
           <input type="checkbox"
                  id={checkboxId || undefined}
                  className="nx-checkbox__input"
