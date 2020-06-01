@@ -46,7 +46,7 @@
   }
 
   &.active {
-    @include semi-bold;
+    @include bold;
 
     background: #d1d6f0;
     color: $nx-text-color;
