@@ -31,9 +31,11 @@ const CodeExample: FunctionComponent<Props> =
     const licenseStrippedContent = removeLicense(content);
 
     return (
-      <SyntaxHighlighter language={language || 'tsx'} style={atomDark}>
-        {licenseStrippedContent}
-      </SyntaxHighlighter>
+      <div className="rsc-code-box">
+        <SyntaxHighlighter language={language || 'tsx'} style={atomDark}>
+          {licenseStrippedContent}
+        </SyntaxHighlighter>
+      </div>
     );
   };
 
