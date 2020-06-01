@@ -23,6 +23,13 @@
     .nx-checkbox__box {
       border-color: $nx-color-blue-44;
     }
+
+    .nx-checkbox__input:focus {
+      // cancel IE11-specific focus style
+      margin: 0;
+      outline: none;
+      height: 0;
+    }
   }
 }
 
@@ -31,6 +38,13 @@
 
   height: 0;
   width: 0;
+
+  // less-nice IE11 focus style because IE11 doesn't support :focus-within
+  &:focus {
+    margin-right: $nx-spacing-xxs;
+    outline: 1px solid $nx-color-blue-44;
+    height: 16px;
+  }
 }
 
 .nx-checkbox__box {
