@@ -3,13 +3,13 @@
     position: absolute;
     opacity: 0;
 
-    :focus {
+    &:focus {
       // less-nice IE11 focus style because IE11 doesn't support :focus-within
       margin-right: $nx-spacing-xxs;
       outline: 1px solid $nx-color-blue-44;
       opacity: 1;
       position: static;
-      height: 16px;
+      height: 100%;
       width: 0;
     }
   }
