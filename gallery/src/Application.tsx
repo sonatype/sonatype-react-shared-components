@@ -46,7 +46,7 @@ function Application() {
     <Router>
       <PageHeader />
       <div className="nx-page-content">
-        <aside className="nx-page-sidebar gallery-page-sidebar" id="gallery-sidebar">
+        <aside className="nx-page-sidebar" id="gallery-sidebar">
           <GalleryNav />
         </aside>
         <Switch>

@@ -9,11 +9,6 @@
 @import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 @import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
 
-.nx-page-sidebar.gallery-page-sidebar {
-  padding-right: $nx-spacing-md;
-  padding-left: $nx-spacing-md;
-}
-
 .gallery-nav, .gallery-nav-links {
   @include container-vertical;
 }
