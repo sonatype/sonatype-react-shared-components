@@ -58,6 +58,7 @@ module.exports = function(env = { production: false }) {
         }
       }, {
         include: /\.png$/,
+        exclude: libImgDir,
         loader: 'file-loader',
         options: {
           name: 'img/[name].[ext]'
