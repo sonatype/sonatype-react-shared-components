@@ -14,14 +14,16 @@ function PageHeader() {
   return (
     <header className="nx-page-header">
       <div className="nx-page-header__inner">
-        <a href="#" className="nx-product">
+        <div className="nx-product">
           <div className="nx-product__branding">
-            <img src={sonatypeLogo} className="nx-product__wordmark" alt="Sonatype"/>
+            <a href="#" className="gallery-link-home">
+              <img src={sonatypeLogo} className="nx-product__wordmark" alt="Sonatype"/>
+            </a>
           </div>
           <div className="nx-product__vertical-divider">|</div>
           <div className="nx-product__name">react shared component library</div>
           <div className="nx-product__version">Version: {packageJson.version}</div>
-        </a>
+        </div>
       </div>
     </header>
   );
