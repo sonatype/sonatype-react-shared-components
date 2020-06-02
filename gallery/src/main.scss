@@ -9,11 +9,11 @@
 @import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 @import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
 
-.nx-body.rsc-body {
+.nx-body.gallery-body {
   background-color: #fff;
 }
 
-.nx-page.rsc-page {
+.nx-page.gallery-page {
   .nx-page-title {
     padding-left: $nx-spacing-md;
   }
@@ -23,7 +23,7 @@
   }
 }
 
-.nx-tile.rsc-tile--gallery-tile {
+.nx-tile.gallery-tile {
   border-color: #fff;
 
   &:nth-child(2) {
@@ -78,7 +78,7 @@
   width: 400px;
 }
 
-.rsc-code-box {
+.gallery-code-box {
   border: solid 1px #a1a8c3;
   border-radius: 6px;
   box-sizing: border-box;
