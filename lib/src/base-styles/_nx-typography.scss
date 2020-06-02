@@ -52,7 +52,7 @@
 }
 
 .nx-h2 {
-  @include bold();
+  @include regular();
   @include container-horizontal;
 
   font-size: $nx-font-size-heading-level-2;
