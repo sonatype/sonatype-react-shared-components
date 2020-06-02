@@ -58,19 +58,20 @@ $main-header-product-version-row-height: 1fr;
   margin-top: 13px; // fix vertical centering
 }
 
-.nx-product__vertical-divider {
-  color: #000;
-  display: inline-block;
-  font-size: 21px;
-  margin-left: $nx-spacing-sm;
-}
-
 .nx-product__name {
   color: #474747;
   display: inline-block;
   font-size: 26px;
   margin-left: $nx-spacing-sm;
   white-space: nowrap;
+
+  &::before {
+    color: #000;
+    content: "|";
+    display: inline-block;
+    font-size: 21px;
+    margin-right: $nx-spacing-sm;
+  }
 }
 
 .nx-product__version {

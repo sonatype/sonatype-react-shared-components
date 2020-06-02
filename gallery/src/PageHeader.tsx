@@ -20,7 +20,6 @@ function PageHeader() {
               <img src={sonatypeLogo} className="nx-product__wordmark" alt="Sonatype"/>
             </a>
           </div>
-          <div className="nx-product__vertical-divider">|</div>
           <div className="nx-product__name">react shared component library</div>
           <div className="nx-product__version">Version: {packageJson.version}</div>
         </div>
