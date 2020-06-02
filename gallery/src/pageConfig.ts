@@ -48,36 +48,13 @@ import NxFilterInputPage from './components/NxFilterInput/NxFilterInputPage';
 import NxPolicyThreatSliderPage from './components/NxPolicyThreatSlider/NxPolicyThreatSliderPage';
 import NxDropdownPage from './components/NxDropdown/NxDropdownPage';
 import FormValidationPage from './guidelines/FormValidation/FormValidationPage';
+import PageLayoutPage from './styles/PageLayout/PageLayoutPage';
 import NxStatefulDropdownPage from './components/NxStatefulDropdown/NxStatefulDropdownPage';
 import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCheckboxPage';
 import ContributingPage from './pages/Contributing';
 import FontSizePage from './guidelines/FontSize/FontSizePage';
 
 const pageConfig: PageConfig = {
-  'Styles - HTML Elements': {
-    'nx-alert': NxAlertPage,
-    'nx-btn': NxBtnPage,
-    'nx-counter': NxCounterPage,
-    'nx-grid': NxGridPage,
-    'nx-icon': NxIconPage,
-    'nx-list': NxListPage,
-    'nx-page-title': NxPageTitlePage,
-    'nx-table': NxTableStylePage,
-    'nx-text-input': NxTextInputStylesPage,
-    'nx-threat-number': NxThreatNumberPage,
-    'nx-tile': NxTilePage
-  },
-  'Styles - Mixins': {
-    'nx-container-helpers': NxContainerHelpersPage
-  },
-  'Layout Examples': {
-    'Form Layout Styles': NxFormLayoutPage
-  },
-  'Guidelines': {
-    'Form Validation Guidelines': FormValidationPage,
-    'Contributing to the Gallery': ContributingPage,
-    'font-size and line-height': FontSizePage
-  },
   'React Components': {
     NxAlert: NxAlertComponentsPage,
     NxBackButton: NxBackButtonPage,
@@ -107,6 +84,31 @@ const pageConfig: PageConfig = {
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage
+  },
+  'Guidelines': {
+    'Form Validation Guidelines': FormValidationPage,
+    'Contributing to the Gallery': ContributingPage,
+    'font-size and line-height': FontSizePage
+  },
+  'Styles - HTML Elements': {
+    'nx-alert': NxAlertPage,
+    'nx-btn': NxBtnPage,
+    'nx-counter': NxCounterPage,
+    'nx-grid': NxGridPage,
+    'nx-icon': NxIconPage,
+    'nx-list': NxListPage,
+    'nx-page-title': NxPageTitlePage,
+    'nx-table': NxTableStylePage,
+    'nx-text-input': NxTextInputStylesPage,
+    'nx-threat-number': NxThreatNumberPage,
+    'nx-tile': NxTilePage
+  },
+  'Styles - Mixins': {
+    'nx-container-helpers': NxContainerHelpersPage
+  },
+  'Layout Examples': {
+    'Form Layout Styles': NxFormLayoutPage,
+    'Page Layout': PageLayoutPage
   }
 };
 
