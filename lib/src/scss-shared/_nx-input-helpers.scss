@@ -1,4 +1,6 @@
 @mixin focusable-toggle-input($focus-border-selector) {
+  position: relative;
+
   input {
     position: absolute;
     opacity: 0;
