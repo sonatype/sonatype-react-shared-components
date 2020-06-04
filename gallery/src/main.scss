@@ -9,10 +9,6 @@
 @import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 @import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
 
-.nx-body.gallery-body {
-  background-color: #fff;
-}
-
 .nx-page.gallery-page {
   .nx-page-title {
     padding-left: $nx-spacing-md;
@@ -20,14 +16,6 @@
   .nx-page-main {
     padding-left: $nx-spacing-xl;
     padding-right: $nx-spacing-xl;
-  }
-}
-
-.nx-tile.gallery-tile {
-  border-color: #fff;
-
-  &:nth-child(2) {
-    border-bottom: solid 1px #e0e4f2;
   }
 }
 
