@@ -38,7 +38,8 @@
 .nx-body {
   @include regular();
 
-  font-size: $nx-font-size-s;
+  color: $nx-text-color;
+  font-size: $nx-font-size;
   line-height: $nx-line-height;
 }
 
@@ -46,6 +47,7 @@
   @include bold();
   @include container-horizontal;
 
+  color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-1;
   line-height: 1.35;
   margin-bottom: $nx-spacing-l;
@@ -55,6 +57,7 @@
   @include bold();
   @include container-horizontal;
 
+  color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-2;
   line-height: 1.20;
   margin-bottom: $nx-spacing-md;
@@ -64,6 +67,7 @@
   @include bold();
   @include container-horizontal;
 
+  color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-3;
   line-height: 1.17;
   margin-bottom: $nx-spacing-xs;
@@ -73,6 +77,7 @@
   @include semi-bold();
   @include container-horizontal;
 
+  color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-4;
   line-height: 1.17;
   margin-bottom: 8px;
