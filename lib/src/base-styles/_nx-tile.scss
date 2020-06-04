@@ -104,6 +104,7 @@ $nx-tile-background-color: $nx-white;
 }
 
 .nx-tile-header__title {
+  @extend .nx-truncate-ellipsis;
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row-start: 1;
