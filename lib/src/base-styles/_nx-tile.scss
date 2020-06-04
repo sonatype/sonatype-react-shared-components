@@ -97,7 +97,7 @@ $nx-tile-background-color: $nx-white;
 .nx-tile-header {
   align-items: center;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr auto;
   min-height: $nx-tile-header-height;
   margin: 8px 0 15px 0;
   overflow: hidden;
