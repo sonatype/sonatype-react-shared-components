@@ -1,0 +1,45 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+import React from 'react';
+import {GalleryTile} from '../gallery-components/GalleryTiles';
+
+const Home = () =>
+  <GalleryTile title="How to style your app when using RSC">
+    <p className="nx-p">
+      If you have styling needs that aren't covered by the styles included in React Shared Components (RSC),
+      then you're going to have to create your own styles.
+    </p>
+    <h2 className="h2">Page specific stylesheets</h2>
+    <p className="nx-p">
+      Take a look at <code className="nx-code">frontend/src/main/scss/app-styles.scss</code>. This file
+      contains custom styles for the app and imports external (page specific) stylesheets. Why have page
+      specific stylesheets? By grouping our styles together by use and (ideally) locating the SCSS
+      next to the HTML that it modifies we decrease clutter/noise in our main stylesheet, keep our styles focused
+      to what they modify, and also help maintain a clear separation between code, layout, and styling.
+    </p>
+    <h2 className="h2">B.E.M.</h2>
+    <p className="nx-p">
+      You might have noticed lots of dashes and underscores in our class names. That's because we use BEM naming
+      by default. BEM stands for "Block", "Element", and "Modifier".
+      <a href="https://www.toptal.com/css/introduction-to-bem-methodology">Learn more about BEM</a>. We use a
+      slightly modified version of BEM in the RSC, we have added name-spaces and utility classes.
+    </p>
+    <h2 className="h2">Namespaces</h2>
+    <p className="nx-p">
+      Because the RSC styles are used by multiple apps we wanted to clearly distinguish between RSC styles and
+      custom app styles. To that end we use a namespace prefix in our class names. In RSC that prefix
+      is <code className="nx-code">.nx-</code>. In this app we use <code className="nx-code">.sab-</code>,
+      as our prefix in order to differentiate between classes in RSC and classes in our custom app. When you
+      create your custom app you should create a simple unique prefix for your custom styles. IQ for example
+      uses: <code className="nx-code">.iq-</code>.
+    </p>
+    <h2 className="h2">Utility classes</h2>
+    <p className="nx-p">
+    </p>
+  </GalleryTile>;
+
+export default Home;
