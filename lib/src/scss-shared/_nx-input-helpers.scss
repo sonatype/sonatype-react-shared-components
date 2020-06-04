@@ -1,0 +1,35 @@
+@mixin focusable-toggle-input($focus-border-selector) {
+  position: relative;
+
+  input {
+    position: absolute;
+    z-index: -1;
+
+    &:focus {
+      // less-nice IE11 focus style because IE11 doesn't support :focus-within
+      margin-right: $nx-spacing-xxs;
+      outline: 1px solid $nx-color-blue-44;
+      opacity: 1;
+      position: static;
+      height: 100%;
+      width: 0;
+    }
+  }
+
+  &:focus-within {
+    #{$focus-border-selector} {
+      // the non-IE focus style
+      border-color: $nx-color-blue-44;
+      stroke: $nx-color-blue-44;
+    }
+
+    input:focus {
+      // cancel IE11-specific focus style
+      margin: 0;
+      opacity: 0;
+      outline: none;
+      position: absolute;
+      height: initial;
+    }
+  }
+}

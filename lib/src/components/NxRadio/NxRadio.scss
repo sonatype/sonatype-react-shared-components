@@ -7,6 +7,7 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
+@import '../../scss-shared/nx-input-helpers';
 
 .nx-radio {
   $circle-width: 16px;
@@ -15,6 +16,7 @@
 
   @include container-horizontal;
   @include regular();
+  @include focusable-toggle-input(".nx-radio__outer-circle");
 
   display: inline-block;
   font-size: 14px;
@@ -55,10 +57,6 @@
       color: $nx-grey-4;
       cursor: default;
     }
-  }
-
-  input.nx-radio__input {
-    display: none;
   }
 }
 
