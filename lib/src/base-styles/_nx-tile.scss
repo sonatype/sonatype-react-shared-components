@@ -97,7 +97,9 @@ $nx-tile-background-color: $nx-white;
 .nx-tile-header {
   align-items: center;
   display: grid;
+  display: -ms-grid;
   grid-template-columns: 1fr auto;
+  -ms-grid-columns: 1fr auto;
   min-height: $nx-tile-header-height;
   margin: 8px 0 15px 0;
   overflow: hidden;
@@ -109,6 +111,8 @@ $nx-tile-background-color: $nx-white;
   grid-column-end: 1;
   grid-row-start: 1;
   grid-row-end: 1;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
 
   h1, h2 {
     @extend .nx-truncate-ellipsis;
@@ -142,9 +146,12 @@ $nx-tile-background-color: $nx-white;
 
 .nx-tile-header__subtitle {
   grid-column-start: 1;
-  grid-column-end: 1;
+  grid-column-end: 2;
   grid-row-start: 2;
   grid-row-end: 2;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
 
   color: $nx-heading-color;
   max-width: $nx-paragraph-width-maximum;
@@ -163,6 +170,8 @@ $nx-tile-background-color: $nx-white;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 1;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
   text-align: right;
 
   + .nx-tile-header {
