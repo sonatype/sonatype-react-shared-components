@@ -23,7 +23,7 @@
   padding: $nx-spacing-xs $nx-spacing-md $nx-spacing-xs $nx-spacing-md;
 
   .nx-icon {
-    // height needs to match text line-box height
+    // height needs to match text line-box height to align icon with first line of text
     height: $nx-font-size-s * $nx-line-height;
     margin-right: $nx-spacing-md;
   }
