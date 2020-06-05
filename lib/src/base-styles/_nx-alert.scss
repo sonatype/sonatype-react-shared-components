@@ -13,11 +13,20 @@
   @include container-horizontal;
   @include container-vertical;
 
+  align-items: top;
   background-color: $nx-off-white;
   border: $nx-border-darker;
+  border-radius: 6px; //TODO use variable once it's available
   color: $nx-text-color-light;
+  display: flex;
   margin: 8px 0;
-  padding: 9px 8px 8px 8px;
+  padding: $nx-spacing-xs $nx-spacing-md $nx-spacing-xs $nx-spacing-md;
+
+  .nx-icon {
+    // height needs to match text line-box height
+    height: $nx-font-size-s * $nx-line-height;
+    margin-right: $nx-spacing-md;
+  }
 }
 
 .nx-alert--warning {
@@ -33,12 +42,12 @@
 }
 
 .nx-alert--info {
-  background-color: $nx-off-white;
-  border-color: $nx-dark-blue;
-  color: $nx-text-color;
+  background-color: #f1f7ff;
+  border-color: #045dd1;
+  color: #474747;
 
   .svg-inline--fa {
-    color: $nx-dark-blue;
+    color: #045dd1;
     font-size: 16px;
     vertical-align: -0.2em;
   }
