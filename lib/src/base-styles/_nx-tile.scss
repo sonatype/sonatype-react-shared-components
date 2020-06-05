@@ -118,18 +118,6 @@ $nx-tile-background-color: $nx-white;
     @extend .nx-truncate-ellipsis;
     margin: 0;
   }
-
-  h1 {
-    font-size: 26px;
-    padding: 0;
-
-    .nx-tile-header__description {
-      @include regular();
-
-      color: $nx-heading-color;
-      font-weight: normal;
-    }
-  }
 }
 
 .nx-tile-header__icon {
