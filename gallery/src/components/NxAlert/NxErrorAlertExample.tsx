@@ -10,7 +10,7 @@ import { NxErrorAlert } from '@sonatype/react-shared-components';
 
 function NxErrorAlertExample() {
   return (
-    <NxErrorAlert>This is an example <code className="nx-code">error</code> message.</NxErrorAlert>
+    <NxErrorAlert>This is an example <strong>error</strong> message.</NxErrorAlert>
   );
 }
 
