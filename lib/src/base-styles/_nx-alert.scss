@@ -32,21 +32,26 @@
 .nx-alert--warning {
   background-color: $nx-warn-color-bg;
   border-color: $nx-warn-color;
-  color: $nx-warn-color;
+
+  .nx-icon {
+    color: $nx-warn-color;
+  }
 }
 
 .nx-alert--error {
   background-color: $nx-fail-color-bg;
   border-color: $nx-fail-color;
-  color: $nx-text-color-error;
+
+  .nx-icon {
+    color: $nx-text-color-error;
+  }
 }
 
 .nx-alert--info {
   background-color: #f1f7ff;
   border-color: #045dd1;
-  color: #474747;
 
-  .svg-inline--fa {
+  .nx-icon {
     color: #045dd1;
     font-size: 16px;
   }
