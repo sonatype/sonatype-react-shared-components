@@ -6,7 +6,7 @@
  */
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
-import { faExclamationTriangle, faInfoCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faExclamationTriangle, faInfoCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { ensureElement } from '../../util/reactUtil';
@@ -16,8 +16,7 @@ export { Props, propTypes, NxAlertProps, nxAlertPropTypes } from './types';
 
 /**
  * Base component that renders a standardized alert.
- * @param children VDOM nodes.  Note that top-level text nodes are not recommended here as they will interfere
- * with the margin override styles of the alert
+ * @param children VDOM nodes to be included after the icon.
  * @param className CSS class names to apply to the rendered component.
  * @param icon FontAwesome icon data to render
  */
@@ -40,8 +39,7 @@ export default NxAlert;
 
 /**
  * Component that renders a standardized error alert.
- * @param children VDOM nodes.  Note that top-level text nodes are not recommended here as they will interfere
- * with the margin override styles of the alert
+ * @param children VDOM nodes to be included after the icon.
  */
 export const NxErrorAlert = forwardRef<HTMLDivElement, Props>(
     function NxErrorAlert(props, ref) {
@@ -55,8 +53,7 @@ NxErrorAlert.propTypes = propTypes;
 
 /**
  * Component that renders a standardized information alert.
- * @param children VDOM nodes.  Note that top-level text nodes are not recommended here as they will interfere
- * with the margin override styles of the alert
+ * @param children VDOM nodes to be included after the icon.
  */
 export const NxInfoAlert = forwardRef<HTMLDivElement, Props>(
     function NxInfoAlert(props, ref) {
@@ -69,14 +66,27 @@ NxInfoAlert.propTypes = propTypes;
 
 /**
  * Component that renders a standardized warning alert.
- * @param children VDOM nodes.  Note that top-level text nodes are not recommended here as they will interfere
- * with the margin override styles of the alert
+ * @param children VDOM nodes to be included after the icon.
  */
 export const NxWarningAlert = forwardRef<HTMLDivElement, Props>(
     function NxWarningAlert(props, ref) {
       const classes = classnames('nx-alert--warning', props.className);
 
       return <NxAlert { ...props } ref={ref} className={classes} icon={faExclamationTriangle} />;
+    }
+);
+
+NxWarningAlert.propTypes = propTypes;
+
+/**
+ * Component that renders a standardized success alert.
+ * @param children VDOM nodes to be included after the icon.
+ */
+export const NxSuccessAlert = forwardRef<HTMLDivElement, Props>(
+    function NxSuccessAlert(props, ref) {
+      const classes = classnames('nx-alert--success', props.className);
+
+      return <NxAlert { ...props } ref={ref} className={classes} icon={faCheckCircle} />;
     }
 );
 

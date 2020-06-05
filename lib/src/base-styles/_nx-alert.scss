@@ -56,3 +56,12 @@
     font-size: 16px;
   }
 }
+
+.nx-alert--success {
+  background-color: #fafffc;
+  border-color: #007623;
+
+  .nx-icon {
+    color: #007623;
+  }
+}
