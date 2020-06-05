@@ -10,7 +10,7 @@ import { NxInfoAlert } from '@sonatype/react-shared-components';
 
 function NxInfoAlertExample() {
   return (
-    <NxInfoAlert>This is an example <code>information</code> message.</NxInfoAlert>
+    <NxInfoAlert>This is an example <code className="nx-code">information</code> message.</NxInfoAlert>
   );
 }
 
