@@ -145,6 +145,8 @@ $nx-tile-background-color: $nx-white;
 }
 
 .nx-tile-header__subtitle {
+  @include semi-bold();
+
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 2;
