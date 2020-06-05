@@ -68,3 +68,23 @@
   padding: $nx-spacing-xl $nx-spacing-md $nx-spacing-md $nx-spacing-md;
   white-space: normal;
 }
+
+.nx-page--page-scrolling {
+  display: block;
+  overflow-y: auto;
+
+  .nx-page-header {
+    position: fixed;
+    z-index: 1;
+  }
+
+  .nx-page-content {
+    margin: $main-header-height auto 0 auto;
+  }
+
+  .nx-page-main {
+    flex: 1 0 $nx-content-width;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
