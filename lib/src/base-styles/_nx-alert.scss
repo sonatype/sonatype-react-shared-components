@@ -13,7 +13,6 @@
   @include container-horizontal;
   @include container-vertical;
 
-  align-items: top;
   background-color: $nx-off-white;
   border: $nx-border-darker;
   border-radius: 6px; //TODO use variable once it's available
