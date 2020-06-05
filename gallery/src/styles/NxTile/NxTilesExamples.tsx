@@ -12,17 +12,11 @@ import NxSimpleTileExample from './NxSimpleTileExample';
 import NxTileWithActionsExample from './NxTileWithActionsExample';
 import NxTileWithSubtitleExample from './NxTileWithSubtitleExample';
 import NxTileWithHorizontalRuleExample from './NxTileWithHorizontalRuleExample';
-import NxTileAlertExample from './NxTileAlertWarningExample';
-import NxTileAlertInfoExample from './NxTileAlertInfoExample';
-import NxTileAlertErrorExample from './NxTileAlertErrorExample';
 
 const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample').default,
     NxTileWithActionsCode = require('!!raw-loader!./NxTileWithActionsExample').default,
     NxTileWithSubtitleCode = require('!!raw-loader!./NxTileWithSubtitleExample').default,
-    NxTileWithHorizontalRuleCode = require('!!raw-loader!./NxTileWithHorizontalRuleExample').default,
-    NxTileAlertWarningCode = require('!!raw-loader!./NxTileAlertWarningExample').default,
-    NxTileAlertInfoCode = require('!!raw-loader!./NxTileAlertInfoExample').default,
-    NxTileAlertErrorCode = require('!!raw-loader!./NxTileAlertErrorExample').default;
+    NxTileWithHorizontalRuleCode = require('!!raw-loader!./NxTileWithHorizontalRuleExample').default;
 
 const NxTilesExamples = () =>
   <>
@@ -44,21 +38,6 @@ const NxTilesExamples = () =>
     <GalleryTile title="NX Tile with Horizontal Rule Example">
       <NxTileWithHorizontalRuleExample />
       <CodeExample content={NxTileWithHorizontalRuleCode}/>
-    </GalleryTile>
-
-    <GalleryTile title="NX Tile Alert Warning Example">
-      <NxTileAlertExample />
-      <CodeExample content={NxTileAlertWarningCode}/>
-    </GalleryTile>
-
-    <GalleryTile title="NX Tile Alert Info Example">
-      <NxTileAlertInfoExample />
-      <CodeExample content={NxTileAlertInfoCode}/>
-    </GalleryTile>
-
-    <GalleryTile title="NX Tile Alert Error Example">
-      <NxTileAlertErrorExample />
-      <CodeExample content={NxTileAlertErrorCode}/>
     </GalleryTile>
   </>;
 

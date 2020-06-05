@@ -24,39 +24,6 @@ $nx-tile-background-color: $nx-white;
   border-radius: $nx-border-radius;
   margin: $nx-spacing-xs 0 $nx-spacing-md 0;
   padding: $nx-spacing-l;
-
-  // Sometimes we want tiles that consist of alert messages
-  &.nx-alert {
-    .nx-tile-header + .nx-tile-content {
-      padding-top: 0;
-    }
-
-    > .nx-tile-content {
-      padding-top: 12px;
-    }
-  }
-
-  &.nx-alert--warning {
-    background-color: $nx-warn-color-bg;
-    border: 1px solid $nx-warn-color;
-    color: $nx-warn-color;
-  }
-
-  &.nx-alert--error {
-    background-color: $nx-fail-color-bg;
-    border-color: $nx-fail-color;
-    color: $nx-text-color-error;
-  }
-
-  &.nx-alert--info {
-    background-color: $nx-off-white;
-    border-color: $nx-dark-blue;
-    color: $nx-text-color;
-
-    .fa {
-      font-size: 23px;
-    }
-  }
 }
 
 // Special tile for containing grids
