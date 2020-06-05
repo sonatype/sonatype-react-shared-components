@@ -128,10 +128,6 @@ $nx-tile-background-color: $nx-white;
   vertical-align: middle;
 }
 
-.nx-tile-header__title--no-actions {
-  height: $nx-tile-header-height;
-}
-
 .nx-tile-header__subtitle {
   @include semi-bold();
 
