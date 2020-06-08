@@ -41,7 +41,7 @@ const FormValidationPage = () =>
       </ul>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Example" codeExamples={FormValidationCode}>
+    <GalleryExampleTile title="General Example" codeExamples={FormValidationCode}>
       <FormValidationExample />
     </GalleryExampleTile>
   </>;

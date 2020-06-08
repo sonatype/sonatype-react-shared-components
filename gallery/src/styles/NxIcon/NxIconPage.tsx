@@ -26,7 +26,7 @@ const NxIconPage = () =>
         the <code className="nx-code">viewBox</code>, while for IE, both the width and the height are necessary.
       </p>
     </GalleryDescriptionTile>
-    <GalleryExampleTile title="Simple Example" codeExamples={nxIconExampleCode}>
+    <GalleryExampleTile title="General Example" codeExamples={nxIconExampleCode}>
       <NxIconExample />
     </GalleryExampleTile>
   </>;

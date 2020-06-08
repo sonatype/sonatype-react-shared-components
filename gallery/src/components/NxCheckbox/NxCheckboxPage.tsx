@@ -77,7 +77,7 @@ const NxCheckboxPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Basic Checkboxes" codeExamples={exampleCode}>
+    <GalleryExampleTile title="General Example" codeExamples={exampleCode}>
       <NxCheckboxExample />
     </GalleryExampleTile>
 

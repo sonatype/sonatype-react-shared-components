@@ -91,7 +91,7 @@ const NxStatefulDropdownPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Example" codeExamples={nxStatefulDropdownExampleCode}>
+    <GalleryExampleTile title="General Example" codeExamples={nxStatefulDropdownExampleCode}>
       <NxStatefulDropdownExample />
     </GalleryExampleTile>
   </>;

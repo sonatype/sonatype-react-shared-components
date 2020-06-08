@@ -160,7 +160,7 @@ const NxStatefulTreeViewRadioSelectPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Basic Example" codeExamples={nxStatefulTreeViewRadioSelectExampleCode}>
+    <GalleryExampleTile title="General Example" codeExamples={nxStatefulTreeViewRadioSelectExampleCode}>
       <NxStatefulTreeViewRadioSelectExample />
     </GalleryExampleTile>
 

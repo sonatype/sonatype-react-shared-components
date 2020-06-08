@@ -75,7 +75,7 @@ const NxContainerHelpersPage = () => {
         </ul>
       </GalleryDescriptionTile>
 
-      <GalleryExampleTile title="Demonstration" codeExamples={codeExamples}>
+      <GalleryExampleTile title="General Example" codeExamples={codeExamples}>
         <NxContainerHelpersExample />
       </GalleryExampleTile>
     </>

@@ -74,7 +74,7 @@ const NxStatefulCheckboxPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Example" codeExamples={exampleCode}>
+    <GalleryExampleTile title="General Example" codeExamples={exampleCode}>
       <NxStatefulCheckboxExample />
     </GalleryExampleTile>
   </>;

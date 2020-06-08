@@ -164,7 +164,7 @@ const NxStatefulTreeViewMultiSelectPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Simple Example" codeExamples={nxStatefulTreeViewMultiSelectExampleCode}>
+    <GalleryExampleTile title="General Example" codeExamples={nxStatefulTreeViewMultiSelectExampleCode}>
       <NxStatefulTreeViewMultiSelectExample />
     </GalleryExampleTile>
 

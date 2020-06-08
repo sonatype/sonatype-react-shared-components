@@ -83,7 +83,7 @@ export default function NxTooltipPage() {
           </tbody>
         </table>
       </GalleryDescriptionTile>
-      <GalleryExampleTile title="Example" codeExamples={codeExamples}>
+      <GalleryExampleTile title="General Example" codeExamples={codeExamples}>
         <NxTooltipExample/>
       </GalleryExampleTile>
     </>

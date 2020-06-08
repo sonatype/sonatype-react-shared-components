@@ -52,7 +52,7 @@ const NxTextInputStylesPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Styles" codeExamples={sourceCode}>
+    <GalleryExampleTile title="General Example" codeExamples={sourceCode}>
       <NxTextInputStylesExample />
     </GalleryExampleTile>
   </>;
