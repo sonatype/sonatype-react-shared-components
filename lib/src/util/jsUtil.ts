@@ -11,3 +11,13 @@ import { curry, lensPath, set } from 'ramda';
  * Set nested property using path
  */
 export const pathSet = curry((path, value, target) => set(lensPath(path), value, target));
+
+/**
+ * If an array is passed in, returns an equivalent array.
+ * If a value that is not an array is passed in, returns an array containing only that value
+ */
+export function ensureArray<T>(items: T | T[]): T[] {
+  const typedEmptyArray: T[] = [];
+
+  return typedEmptyArray.concat(items);
+}
