@@ -49,7 +49,10 @@ export default function NxPolicyThreatSliderPage() {
         </table>
       </GalleryDescriptionTile>
 
-      <GalleryExampleTile title="General Example" codeExamples={NxPolicyThreatSliderCode}>
+      <GalleryExampleTile title="General Example"
+                          codeExamples={NxPolicyThreatSliderCode}
+                          description="This example shows an NxPolicyThreatSlider communicating its selected values
+                              to the calling code.">
         <NxPolicyThreatSliderExample/>
       </GalleryExampleTile>
     </>

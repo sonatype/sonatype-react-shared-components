@@ -101,7 +101,13 @@ const NxRadioPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="General Example" codeExamples={exampleCode}>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={exampleCode}
+                        description="This example shows a series of radios in a typical vertical layout with
+                          different label content. Note that one of the radios is disabled. Another has no label
+                          at all but is adjacent to other content, demonstrating its lack of inherent margin.
+                          These radios together operate as a single form control: only one value within the group
+                          can be selected at a time.">
       <NxRadioExample />
     </GalleryExampleTile>
 

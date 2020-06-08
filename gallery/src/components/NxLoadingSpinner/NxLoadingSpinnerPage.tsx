@@ -18,7 +18,9 @@ const NxLoadingSpinnerPage = () =>
       <p>Loading Spinner with caption</p>
       <p>Props: none</p>
     </GalleryDescriptionTile>
-    <GalleryExampleTile title="General Example" codeExamples={sourceCode}>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={sourceCode}
+                        description="The loading spinner. Not props are necessary - it is a simple, static element.">
       <NxLoadingSpinnerExample />
     </GalleryExampleTile>
   </>;

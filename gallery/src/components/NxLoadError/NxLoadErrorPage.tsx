@@ -58,7 +58,10 @@ const NxLoadErrorPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="General Example" codeExamples={simpleSourceCode}>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={simpleSourceCode}
+                        description="This example demonstrates a basic NxLoadError which renders the error message in
+                            an alert box.">
       <NxLoadErrorSimpleExample />
     </GalleryExampleTile>
 

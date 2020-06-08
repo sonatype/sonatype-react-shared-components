@@ -26,7 +26,10 @@ const NxIconPage = () =>
         the <code className="nx-code">viewBox</code>, while for IE, both the width and the height are necessary.
       </p>
     </GalleryDescriptionTile>
-    <GalleryExampleTile title="General Example" codeExamples={nxIconExampleCode}>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={nxIconExampleCode}
+                        description="This example demonstrates the usage of the nx-icon class on SVG icons, providing
+                            them with standard margins.">
       <NxIconExample />
     </GalleryExampleTile>
   </>;

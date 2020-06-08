@@ -91,7 +91,10 @@ const NxStatefulDropdownPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="General Example" codeExamples={nxStatefulDropdownExampleCode}>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={nxStatefulDropdownExampleCode}
+                        description="This example demonstrates a simple NxStatefulDropdown, showing that it tracks
+                            its own open/closed state with no need for support from the surrounding code.">
       <NxStatefulDropdownExample />
     </GalleryExampleTile>
   </>;

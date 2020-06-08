@@ -41,7 +41,10 @@ const FormValidationPage = () =>
       </ul>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="General Example" codeExamples={FormValidationCode}>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={FormValidationCode}
+                        description="This example shows how typical form validation logic should be set up. It includes
+                            validation of individual elements and management of the submit button.">
       <FormValidationExample />
     </GalleryExampleTile>
   </>;

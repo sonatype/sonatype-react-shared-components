@@ -23,7 +23,7 @@ interface GalleryTileProps extends PropsWithRequiredChildren {
 type StringOrCodeExampleProps = string | CodeExampleProps;
 
 interface GalleryExampleTileProps extends GalleryTileProps {
-  description?: string;
+  description: string;
   codeExamples: StringOrCodeExampleProps | StringOrCodeExampleProps[];
 }
 
@@ -62,7 +62,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
 
     return (
       <GalleryTile title={title} className={className}>
-        { description && <p className="nx-p">{description}</p> }
+        <p className="nx-p">{description}</p>
 
         <h4 className="nx-h4">Example:</h4>
         <div>{children}</div>
