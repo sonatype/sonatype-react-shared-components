@@ -37,6 +37,7 @@
 
 .nx-page-content {
   @include container-horizontal;
+
   box-sizing: border-box;
   display: flex;
   flex-grow: 1;
