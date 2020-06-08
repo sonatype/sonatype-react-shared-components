@@ -6,12 +6,12 @@
  */
 import React from 'react';
 
-import { NxInfoAlert } from '@sonatype/react-shared-components';
+import { NxSuccessAlert } from '@sonatype/react-shared-components';
 
-function NxInfoAlertExample() {
+function NxSuccessExample() {
   return (
-    <NxInfoAlert>This is an example <strong>information</strong> message.</NxInfoAlert>
+    <NxSuccessAlert>This is a success message.</NxSuccessAlert>
   );
 }
 
-export default NxInfoAlertExample;
+export default NxSuccessExample;

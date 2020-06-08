@@ -11,8 +11,9 @@ import { NxAlert } from '@sonatype/react-shared-components';
 function NxAlertExample() {
   return (
     <NxAlert icon={faEye} id="this-id-ends-up-on-the-div" className="nx-alert--modifier">
-      This is an example <code>alert</code> message.
+      This is an example alert message.
       It is expected that users create their own modifier classes to alter the styles of this component.
+      This alert has long text content in order to demonstrate text wrapping.
     </NxAlert>
   );
 }
