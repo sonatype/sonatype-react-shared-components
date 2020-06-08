@@ -90,4 +90,4 @@ export const NxSuccessAlert = forwardRef<HTMLDivElement, Props>(
     }
 );
 
-NxWarningAlert.propTypes = propTypes;
+NxSuccessAlert.propTypes = propTypes;
