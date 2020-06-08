@@ -12,10 +12,12 @@ import NxAlertExample from './NxAlertExample';
 import NxErrorAlertExample from './NxErrorAlertExample';
 import NxWarningAlertExample from './NxWarningAlertExample';
 import NxInfoAlertExample from './NxInfoAlertExample';
+import NxSuccessAlertExample from './NxSuccessAlertExample';
 import CodeExample from '../../CodeExample';
 
 const nxErrorAlertExampleCode = require('!!raw-loader!./NxErrorAlertExample').default,
     nxInfoAlertExampleCode = require('!!raw-loader!./NxInfoAlertExample').default,
+    nxSuccessAlertExampleCode = require('!!raw-loader!./NxSuccessAlertExample').default,
     nxWarningAlertExampleCode = require('!!raw-loader!./NxWarningAlertExample').default,
     nxAlertExampleCode = require('!!raw-loader!./NxAlertExample').default;
 
@@ -56,6 +58,11 @@ const NxAlertPage = () =>
       <p>Standard sonatype alerts.</p>
       <p>They come in three variations: Error, Info, and Warning.</p>
       <p>Accepts any prop that is valid on a div</p>
+    </GalleryTile>
+
+    <GalleryTile title="Success Alert Example">
+      <NxSuccessAlertExample />
+      <CodeExample content={nxSuccessAlertExampleCode} />
     </GalleryTile>
 
     <GalleryTile title="Error Alert Example">

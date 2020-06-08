@@ -18,6 +18,7 @@ export { default as NxTextInput, Props as NxTextInputProps } from './components/
 export {
   default as NxAlert,
   NxWarningAlert,
+  NxSuccessAlert,
   NxInfoAlert,
   NxErrorAlert,
   NxAlertProps,
