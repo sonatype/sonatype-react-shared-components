@@ -9,7 +9,7 @@ import * as PropTypes from 'prop-types';
 import SyntaxHighlighter from 'react-syntax-highlighter/prism';
 import { atomDark } from 'react-syntax-highlighter/dist/styles/prism';
 
-interface Props {
+export interface Props {
   content: string;
   language?: string | null;
 };

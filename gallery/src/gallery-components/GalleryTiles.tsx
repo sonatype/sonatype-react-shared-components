@@ -6,6 +6,9 @@
  */
 import React, { FunctionComponent, ReactNode } from 'react';
 import classnames from 'classnames';
+import { ensureArray } from '@sonatype/react-shared-components/util/jsUtil';
+
+import CodeExample, { Props as CodeExampleProps } from '../CodeExample';
 
 interface PropsWithRequiredChildren {
   children: ReactNode;
@@ -17,6 +20,13 @@ interface GalleryTileProps extends PropsWithRequiredChildren {
   className?: string;
 }
 
+type StringOrCodeExampleProps = string | CodeExampleProps;
+
+interface GalleryExampleTileProps extends GalleryTileProps {
+  description?: string;
+  codeExamples: StringOrCodeExampleProps | StringOrCodeExampleProps[];
+}
+
 // Component for a simple nx-tile with a specified title and contents
 export const GalleryTile: FunctionComponent<GalleryTileProps> =
   function GalleryTile({ title, className, children }) {
@@ -26,7 +36,7 @@ export const GalleryTile: FunctionComponent<GalleryTileProps> =
       <div className="nx-tile">
         <div className="nx-tile-header">
           <div className="nx-tile-header__title">
-            <h2 className="nx-h2">{title}</h2>
+            <h3 className="nx-h2">{title}</h3>
           </div>
         </div>
         <div className={galleryTileClasses}>
@@ -36,13 +46,29 @@ export const GalleryTile: FunctionComponent<GalleryTileProps> =
     );
   };
 
-// GalleryTile and GalleryExample components are just GalleryTiles with specified titles
+// GalleryDescriptionTile is just a GalleryTile with a specified title
 export const GalleryDescriptionTile: FunctionComponent<PropsWithRequiredChildren> =
   function GalleryDescriptionTile(props: PropsWithRequiredChildren) {
     return <GalleryTile { ...props } title="Description" className="gallery-description" />;
   };
 
-export const GalleryExampleTile: FunctionComponent<PropsWithRequiredChildren> =
-  function GalleryExampleTile(props: PropsWithRequiredChildren) {
-    return <GalleryTile { ...props } title="Example" />;
+export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
+  function GalleryExampleTile({ children, className, title, description, codeExamples }: GalleryExampleTileProps) {
+    const codeExampleElements = ensureArray(codeExamples)
+        .map((example, idx) => {
+          const props = typeof example === 'string' ? { content: example } : example;
+          return <CodeExample key={idx} { ...props } />
+        });
+
+    return (
+      <GalleryTile title={title} className={className}>
+        <p className="nx-p">{description}</p>
+
+        <h4 className="nx-h4">Example:</h4>
+        <div>{children}</div>
+
+        <h4 className="nx-h4">Code Snippet:</h4>
+        {codeExampleElements}
+      </GalleryTile>
+    );
   };
