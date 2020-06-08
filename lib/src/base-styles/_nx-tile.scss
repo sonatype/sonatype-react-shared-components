@@ -68,7 +68,7 @@ $nx-tile-background-color: $nx-white;
   grid-template-columns: 1fr auto;
   -ms-grid-columns: 1fr auto;
   min-height: $nx-tile-header-height;
-  margin: 8px 0 15px 0;
+  margin-bottom: $nx-spacing-md;
   overflow: hidden;
 }
 
@@ -113,7 +113,7 @@ $nx-tile-background-color: $nx-white;
 
 .nx-tile-header--hrule {
   border-bottom: solid 1px #b7bfdb;
-  margin-bottom: 20px;
+  margin-bottom: $nx-spacing-l;
   padding-bottom: $nx-spacing-md;
 }
 
@@ -146,8 +146,8 @@ $nx-tile-background-color: $nx-white;
 
   border-bottom: $nx-border-dark;
   font-size: 14px;
-  margin-bottom: 20px;
-  padding-bottom: 8px;
+  margin-bottom: $nx-spacing-l;
+  padding-bottom: $nx-spacing-md;
   text-transform: uppercase;
 }
 
