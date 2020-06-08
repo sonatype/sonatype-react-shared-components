@@ -7,33 +7,38 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
 
 import NxFontAwesomeIconExample from './NxFontAwesomeIconExample';
 
 const nxFontAwesomeIconExampleCode = require('!!raw-loader!./NxFontAwesomeIconExample').default,
     nxFontAwesomeIconExampleScssCode = require('!!raw-loader!./NxFontAwesomeIconExample.scss').default;
 
-const NxFontAwesomeIconPage = () =>
-  <>
-    <GalleryDescriptionTile>
-      <p>
-        <code className="nx-code">NxFontAwesomeIcon</code> is a wrapper around
-        the <code className="nx-code">FontAwesomeIcon</code> component. It passes through its props
-        to <code className="nx-code">FontAwesomeIcon</code> and adds the <code className="nx-code">.nx-icon</code> CSS
-        class.
-      </p>
-      <p>
-        See the <code className="nx-code">FontAwesomeIcon</code>{' '}
-        <a href="https://github.com/FortAwesome/react-fontawesome#features" target="_blank">documentation</a>
-        {' '}for details on available props
-      </p>
-    </GalleryDescriptionTile>
-    <GalleryExampleTile>
-      <NxFontAwesomeIconExample />
-      <CodeExample content={nxFontAwesomeIconExampleCode} />
-      <CodeExample content={nxFontAwesomeIconExampleScssCode} />
-    </GalleryExampleTile>
-  </>;
+const NxFontAwesomeIconPage = () => {
+  const codeExamples = [
+    nxFontAwesomeIconExampleCode,
+    { content: nxFontAwesomeIconExampleScssCode, language: 'scss' }
+  ];
+
+  return (
+    <>
+      <GalleryDescriptionTile>
+        <p>
+          <code className="nx-code">NxFontAwesomeIcon</code> is a wrapper around
+          the <code className="nx-code">FontAwesomeIcon</code> component. It passes through its props
+          to <code className="nx-code">FontAwesomeIcon</code> and adds the <code className="nx-code">.nx-icon</code> CSS
+          class.
+        </p>
+        <p>
+          See the <code className="nx-code">FontAwesomeIcon</code>{' '}
+          <a href="https://github.com/FortAwesome/react-fontawesome#features" target="_blank">documentation</a>
+          {' '}for details on available props
+        </p>
+      </GalleryDescriptionTile>
+      <GalleryExampleTile title="Demonstration" codeExamples={codeExamples}>
+        <NxFontAwesomeIconExample />
+      </GalleryExampleTile>
+    </>
+  );
+};
 
 export default NxFontAwesomeIconPage;

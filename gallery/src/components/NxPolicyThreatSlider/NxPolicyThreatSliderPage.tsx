@@ -7,7 +7,6 @@
 import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
 
 import NxPolicyThreatSliderExample from './NxPolicyThreatSliderExample';
 
@@ -50,9 +49,8 @@ export default function NxPolicyThreatSliderPage() {
         </table>
       </GalleryDescriptionTile>
 
-      <GalleryExampleTile>
+      <GalleryExampleTile title="Example" codeExamples={NxPolicyThreatSliderCode}>
         <NxPolicyThreatSliderExample/>
-        <CodeExample content={NxPolicyThreatSliderCode}/>
       </GalleryExampleTile>
     </>
   );

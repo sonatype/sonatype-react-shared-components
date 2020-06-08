@@ -9,7 +9,6 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxStatefulDropdownExample from './NxStatefulDropdownExample';
-import CodeExample from '../../CodeExample';
 
 const nxStatefulDropdownExampleCode = require('!!raw-loader!./NxStatefulDropdownExample').default;
 
@@ -92,9 +91,8 @@ const NxStatefulDropdownPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
+    <GalleryExampleTile title="Example" codeExamples={nxStatefulDropdownExampleCode}>
       <NxStatefulDropdownExample />
-      <CodeExample content={nxStatefulDropdownExampleCode} />
     </GalleryExampleTile>
   </>;
 

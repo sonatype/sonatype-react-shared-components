@@ -9,7 +9,6 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTextInputStylesExample from './NxTextInputStylesExample';
-import CodeExample from '../../CodeExample';
 
 const sourceCode = require('!!raw-loader!./NxTextInputStylesExample').default;
 
@@ -53,9 +52,8 @@ const NxTextInputStylesPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
+    <GalleryExampleTile title="Styles" codeExamples={sourceCode}>
       <NxTextInputStylesExample />
-      <CodeExample content={sourceCode} />
     </GalleryExampleTile>
   </>;
 

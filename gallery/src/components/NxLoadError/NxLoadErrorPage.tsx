@@ -10,7 +10,6 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxLoadErrorSimpleExample from './NxLoadErrorSimpleExample';
 import NxLoadErrorRetryExample from './NxLoadErrorRetryExample';
-import CodeExample from '../../CodeExample';
 
 const simpleSourceCode = require('!!raw-loader!./NxLoadErrorSimpleExample').default;
 const retrySourceCode = require('!!raw-loader!./NxLoadErrorRetryExample').default;
@@ -59,15 +58,15 @@ const NxLoadErrorPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
+    <GalleryExampleTile title="Error Display" codeExamples={simpleSourceCode}>
       <NxLoadErrorSimpleExample />
-      <CodeExample content={simpleSourceCode} />
     </GalleryExampleTile>
-    <GalleryExampleTile>
-      In this example, the error is cleared on retry.
-      Note that the NxLoadError component disappears when that happens
+
+    <GalleryExampleTile title="Retry Button"
+                        codeExamples={retrySourceCode}
+                        description="In this example, the error is cleared on retry. Note that the NxLoadError
+                            component disappears when that happens">
       <NxLoadErrorRetryExample />
-      <CodeExample content={retrySourceCode} />
     </GalleryExampleTile>
   </>;
 

@@ -101,9 +101,8 @@ const NxRadioPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
+    <GalleryExampleTile title="Simple Radio" codeExamples={exampleCode}>
       <NxRadioExample />
-      <CodeExample content={exampleCode} />
     </GalleryExampleTile>
 
     <GalleryTile title="Inline Radio">

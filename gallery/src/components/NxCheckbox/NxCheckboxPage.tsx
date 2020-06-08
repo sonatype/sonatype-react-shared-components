@@ -77,17 +77,16 @@ const NxCheckboxPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
+    <GalleryExampleTile title="Basic Checkboxes" codeExamples={exampleCode}>
       <NxCheckboxExample />
-      <CodeExample content={exampleCode} />
     </GalleryExampleTile>
 
-    <GalleryTile title='Inline Checkbox'>
+    <GalleryTile title="Inline Checkbox">
       <NxCheckboxInlineExample />
       <CodeExample content={inlineExampleCode} />
     </GalleryTile>
 
-    <GalleryTile title='Checkbox label should not wrap'>
+    <GalleryTile title="Checkbox label should not wrap">
       <NxCheckboxNowrapExample />
       <CodeExample content={nowrapExampleCode} />
     </GalleryTile>

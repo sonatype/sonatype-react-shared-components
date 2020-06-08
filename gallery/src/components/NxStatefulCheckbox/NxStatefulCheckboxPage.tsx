@@ -9,7 +9,6 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxStatefulCheckboxExample from './NxStatefulCheckboxExample';
-import CodeExample from '../../CodeExample';
 
 const exampleCode = require('!!raw-loader!./NxStatefulCheckboxExample').default;
 
@@ -75,9 +74,8 @@ const NxStatefulCheckboxPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
+    <GalleryExampleTile title="Example" codeExamples={exampleCode}>
       <NxStatefulCheckboxExample />
-      <CodeExample content={exampleCode} />
     </GalleryExampleTile>
   </>;
 
