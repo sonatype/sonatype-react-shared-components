@@ -62,7 +62,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
 
     return (
       <GalleryTile title={title} className={className}>
-        <p className="nx-p">{description}</p>
+        { description && <p className="nx-p">{description}</p> }
 
         <h4 className="nx-h4">Example:</h4>
         <div>{children}</div>
