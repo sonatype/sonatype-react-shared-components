@@ -5,16 +5,15 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import {faSync} from '@fortawesome/free-solid-svg-icons';
+import {faExclamationTriangle, faEdit, faSave} from '@fortawesome/free-solid-svg-icons';
 
 import { NxButton, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
-const NxButtonIconExample = () =>
+const NxButtonIconOnlyExample = () =>
   <div className="nx-btn-bar">
-    <NxButton>
-      <NxFontAwesomeIcon icon={faSync}/>
-      <span>Icons in buttons</span>
-    </NxButton>
+    <NxButton iconOnly><NxFontAwesomeIcon icon={faExclamationTriangle}/></NxButton>
+    <NxButton iconOnly><NxFontAwesomeIcon icon={faEdit}/></NxButton>
+    <NxButton iconOnly><NxFontAwesomeIcon icon={faSave}/></NxButton>
   </div>;
 
-export default NxButtonIconExample;
+export default NxButtonIconOnlyExample;
