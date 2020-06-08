@@ -9,16 +9,6 @@
 @import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 @import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
 
-.nx-page.gallery-page {
-  .nx-page-title {
-    padding-left: $nx-spacing-md;
-  }
-  .nx-page-main {
-    padding-left: $nx-spacing-xl;
-    padding-right: $nx-spacing-xl;
-  }
-}
-
 .gallery-nav, .gallery-nav-links {
   @include container-vertical;
 }
