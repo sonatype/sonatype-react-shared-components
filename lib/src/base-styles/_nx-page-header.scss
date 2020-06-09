@@ -4,9 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/nx-variables';
-@import '../scss-shared/nx-text-helpers';
-@import '../scss-shared/nx-container-helpers';
 
 $main-header-background: $nx-off-white;
 $main-header-color: $nx-off-black;
@@ -59,7 +56,7 @@ $main-header-product-version-row-height: 1fr;
 }
 
 .nx-product__name {
-  color: #474747;
+  color: $nx-text-color;
   display: inline-block;
   font-size: 26px;
   margin-left: $nx-spacing-sm;

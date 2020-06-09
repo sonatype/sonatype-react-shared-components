@@ -66,7 +66,7 @@ dockerizedBuildPipeline(
   vulnerabilityScan: {
     if (env.BRANCH_NAME == 'master') {
       nexusPolicyEvaluation(
-        iqStage: 'build',
+        iqStage: 'release',
         iqApplication: 'react-shared-components',
         iqScanPatterns: [[scanPattern: 'gallery/webpack-modules']],
         failBuildOnNetworkError: true

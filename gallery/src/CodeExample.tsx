@@ -23,8 +23,8 @@ const propTypes: PropTypes.ValidationMap<Props> = {
 // a license which is not helpful to the example display. Both HTML-syntax and C-syntax comments are removed
 const removeLicense = (content: string) =>
   content
-      .replace(/^<!--(.|\n)*-->\s*\n?/, '')
-      .replace(/^\/\*(.|\n)*\*\/\s*\n?/, '');
+      .replace(/^<!--(.|\n)*?-->\s*\n?/, '')
+      .replace(/^\/\*(.|\n)*?\*\/\s*\n?/, '');
 
 const CodeExample: FunctionComponent<Props> =
   function CodeExample({ content, language }): ReactElement<Props> {
