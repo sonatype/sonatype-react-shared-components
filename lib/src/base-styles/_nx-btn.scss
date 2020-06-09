@@ -86,23 +86,23 @@
 
 .nx-btn--error {
   background-color: #cd0028;
-  border: solid 1px #cd0028;
+  border-color: #cd0028;
   color: $nx-off-white;
 
   &:hover, &:focus, &:active {
     background-color: #a80222;
-    border: solid 1px #a80222;
+    border-color: #a80222;
     color: $nx-off-white;
   }
 
   &:focus {
     background-color: #cd0028;
-    border: solid 1px #43cbf5;
+    border-color: #43cbf5;
   }
 
   &:active {
     background-color: #fc496c;
-    border: solid 1px #fc496c;
+    border-color: #fc496c;
   }
 
   &.disabled, &[disabled] {
