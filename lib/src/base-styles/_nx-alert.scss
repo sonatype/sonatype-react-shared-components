@@ -28,20 +28,20 @@
 }
 
 .nx-alert--warning {
-  background-color: $nx-warn-color-bg;
-  border-color: $nx-warn-color;
+  background-color: #fff6ec;
+  border-color: #ff8100;
 
   .nx-icon {
-    color: $nx-warn-color;
+    color: #ff8100;
   }
 }
 
 .nx-alert--error {
-  background-color: $nx-fail-color-bg;
-  border-color: $nx-fail-color;
+  background-color: #fff6f8;
+  border-color: #cd0028;
 
   .nx-icon {
-    color: $nx-text-color-error;
+    color: #cd0028;
   }
 }
 
