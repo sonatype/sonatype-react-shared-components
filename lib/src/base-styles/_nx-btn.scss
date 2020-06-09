@@ -6,17 +6,20 @@
  */
 
 %nx-btn--disabled {
-  &, &:hover, &:focus {
-    background-color: #e9e9e9;
-    border-color: #949494;
-    color: #949494;
-    cursor: default;
+  &.disabled, &[disabled] {
+    &, &:hover, &:focus {
+      background-color: #e9e9e9;
+      border-color: #949494;
+      color: #949494;
+      cursor: default;
+    }
   }
 }
 
 .nx-btn {
   @include semi-bold();
   @include container-horizontal;
+  @extend %nx-btn--disabled;
 
   background-color: $nx-white;
   border: 1px solid #045dd1;
@@ -41,13 +44,11 @@
   &:active {
     background-color: #e8f2ff;
   }
-
-  &.disabled, &[disabled] {
-    @extend %nx-btn--disabled
-  }
 }
 
 .nx-btn--primary {
+  @extend %nx-btn--disabled;
+
   background-color: #045dd1;
   border-color: #045dd1;
   color: $nx-white;
@@ -59,13 +60,11 @@
   &:active {
     background-color:  #2783fb;
   }
-
-  &.disabled, &[disabled] {
-    @extend %nx-btn--disabled
-  }
 }
 
 .nx-btn--tertiary {
+  @extend %nx-btn--disabled;
+
   border-color: #d1d6f0;
   color: #2c2c2c;
 
@@ -78,13 +77,11 @@
     background-color: #f1f3fa;
     border-color: #2c2c2c;
   }
-
-  &.disabled, &[disabled] {
-    @extend %nx-btn--disabled
-  }
 }
 
 .nx-btn--error {
+  @extend %nx-btn--disabled;
+
   background-color: #cd0028;
   border-color: #cd0028;
   color: $nx-off-white;
@@ -103,10 +100,6 @@
   &:active {
     background-color: #fc496c;
     border-color: #fc496c;
-  }
-
-  &.disabled, &[disabled] {
-    @extend %nx-btn--disabled
   }
 
   .nx-icon {
