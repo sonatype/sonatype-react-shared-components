@@ -22,7 +22,7 @@
 
   .nx-icon {
     // height needs to match text line-box height to align icon with first line of text
-    height: $nx-font-size-s * $nx-line-height;
+    height: $nx-font-size * $nx-line-height;
     margin-right: $nx-spacing-md;
   }
 }
@@ -51,7 +51,6 @@
 
   .nx-icon {
     color: #045dd1;
-    font-size: 16px;
   }
 }
 
