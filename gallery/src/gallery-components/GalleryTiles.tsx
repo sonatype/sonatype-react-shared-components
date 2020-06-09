@@ -23,7 +23,7 @@ export const GalleryTile: FunctionComponent<GalleryTileProps> =
     const galleryTileClasses = classnames('nx-tile-content', className);
 
     return (
-      <div className="nx-tile gallery-tile">
+      <div className="nx-tile">
         <div className="nx-tile-header">
           <div className="nx-tile-header__title">
             <h2 className="nx-h2">{title}</h2>
