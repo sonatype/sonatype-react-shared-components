@@ -125,11 +125,6 @@ $nx-tile-background-color: $nx-white;
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   text-align: right;
-
-  + .nx-tile-header {
-    // the nx-tile__actions get in the way of the container mixin's first-child selector
-    margin-top: 0;
-  }
 }
 
 .nx-tile-content {
