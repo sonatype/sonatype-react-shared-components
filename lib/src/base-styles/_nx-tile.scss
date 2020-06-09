@@ -135,19 +135,16 @@ $nx-tile-background-color: $nx-white;
 
 // On pages with tiles with multiple sections these are lighter weight titles
 .nx-tile__section-header {
-  @include semi-bold();
-
-  border-bottom: $nx-border-dark;
-  font-size: 14px;
-  margin-bottom: $nx-spacing-l;
-  padding-bottom: $nx-spacing-md;
-  text-transform: uppercase;
+  border-top: $nx-border-dark;
+  margin-top: $nx-spacing-l;
+  margin-bottom: $nx-spacing-md;
+  padding-top: $nx-spacing-l;
 }
 
 .nx-tile__section-header--simple {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
+  border: none;
+  margin-bottom: $nx-spacing-l;
+  padding-top: 0;
 }
 
 .nx-tile-footer {

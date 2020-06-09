@@ -12,10 +12,12 @@ import NxSimpleTileExample from './NxSimpleTileExample';
 import NxTileWithActionsExample from './NxTileWithActionsExample';
 import NxTileWithSubtitleExample from './NxTileWithSubtitleExample';
 import NxTileWithHorizontalRuleExample from './NxTileWithHorizontalRuleExample';
+import NxTileSubsectionExample from './NxTileSubsectionExample';
 
 const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample').default,
     NxTileWithActionsCode = require('!!raw-loader!./NxTileWithActionsExample').default,
     NxTileWithSubtitleCode = require('!!raw-loader!./NxTileWithSubtitleExample').default,
+    NxTileSubsectionCode = require('!!raw-loader!./NxTileSubsectionExample').default,
     NxTileWithHorizontalRuleCode = require('!!raw-loader!./NxTileWithHorizontalRuleExample').default;
 
 const NxTilesExamples = () =>
@@ -38,6 +40,11 @@ const NxTilesExamples = () =>
     <GalleryTile title="NX Tile with Horizontal Rule Example">
       <NxTileWithHorizontalRuleExample />
       <CodeExample content={NxTileWithHorizontalRuleCode}/>
+    </GalleryTile>
+
+    <GalleryTile title="NX Tile with a Subsection Header Example">
+      <NxTileSubsectionExample />
+      <CodeExample content={NxTileSubsectionCode}/>
     </GalleryTile>
   </>;
 
