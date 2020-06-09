@@ -4,8 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/nx-container-helpers';
-@import '../scss-shared/nx-text-helpers';
 
 @font-face {
   font-family: "Open Sans";
@@ -49,17 +47,15 @@
 
   color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-1;
-  line-height: 1.35;
   margin-bottom: $nx-spacing-l;
 }
 
 .nx-h2 {
-  @include bold();
+  @include semi-bold();
   @include container-horizontal;
 
   color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-2;
-  line-height: 1.20;
   margin-bottom: $nx-spacing-md;
 }
 
@@ -69,7 +65,6 @@
 
   color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-3;
-  line-height: 1.17;
   margin-bottom: $nx-spacing-xs;
 }
 
@@ -79,8 +74,7 @@
 
   color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-4;
-  line-height: 1.17;
-  margin-bottom: 8px;
+  margin-bottom: $nx-spacing-xs;
   text-transform: uppercase;
 }
 

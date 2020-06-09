@@ -44,5 +44,5 @@ export const GalleryDescriptionTile: FunctionComponent<PropsWithRequiredChildren
 
 export const GalleryExampleTile: FunctionComponent<PropsWithRequiredChildren> =
   function GalleryExampleTile(props: PropsWithRequiredChildren) {
-    return <GalleryTile { ...props } title="Example" />;
+    return <GalleryTile { ...props } title="Example" className="gallery-example"/>;
   };
