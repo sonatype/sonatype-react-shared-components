@@ -80,7 +80,7 @@ $nx-tile-background-color: $nx-white;
   -ms-grid-column: 1;
 
   h1, h2 {
-    @extend .nx-truncate-ellipsis;
+    @include truncate-ellipsis;
     margin: 0;
   }
 }
