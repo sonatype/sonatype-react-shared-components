@@ -114,6 +114,11 @@
   &.disabled, &[disabled] {
     @extend %nx-btn--disabled
   }
+
+  .nx-icon {
+    color: $nx-white;
+    height: 16px;
+  }
 }
 
 .nx-btn--icon-only {
