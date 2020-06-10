@@ -11,7 +11,7 @@ import {
   faBiohazard,
   faCrow,
   faInfoCircle,
-  faTimesCircle
+  faExclamationCircle
 } from '@fortawesome/free-solid-svg-icons';
 import NxAlert, {
   NxErrorAlert,
@@ -93,7 +93,7 @@ describe('NxAlert', function() {
       it('renders the appropriate error icon', function() {
         const nxErrorAlert = getNxErrorAlert();
         expect(nxErrorAlert).toMatchSelector(NxAlert);
-        expect(nxErrorAlert).toHaveProp('icon', faTimesCircle);
+        expect(nxErrorAlert).toHaveProp('icon', faExclamationCircle);
       });
 
       it('renders the children passed into it', function() {
