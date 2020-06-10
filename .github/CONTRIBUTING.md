@@ -16,10 +16,7 @@ Looking to dive in? FANTASTIC! Reach out to one of our experts and we can help. 
 ## For Non-Sonatypers
 
 * Come hang out with us at our [gitter channel](https://gitter.im/sonatype/nexus-developers).
-* Fill out a CLA for us, so we can sort out all the legal parts of contributing. You can get all the information for
-this [here](https://help.sonatype.com/display/NXRM3/Bundle+Development#BundleDevelopment-ContributingBundles). You may go, this is for your book, is it
-applicable for this repo? Yes, absolutely. Follow the CLA process and email in your form. We are working on a way to
-make this simpler, as well.
+* Sign the [Sonatype CLA](https://sonatypecla.herokuapp.com/sign-cla)
 
 ## Are you submitting a pull request?
 
