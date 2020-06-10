@@ -75,8 +75,8 @@ dockerizedBuildPipeline(
   },
   deploy: {
     withCredentials([string(credentialsId: 'uxui-npm-auth-token', variable: 'NPM_TOKEN')]) {
-      sshagent(credentials: [sonatypeZionCredentialsId()]) {
-        withDockerImage(env.DOCKER_IMAGE_ID, 'npmjs-npmrc') {
+      withDockerImage(env.DOCKER_IMAGE_ID, 'npmjs-npmrc') {
+        sshagent(credentials: [sonatypeZionCredentialsId()]) {
           sh '''
             # The latest-published branch tracks the last commit that was published to npm
             git fetch origin latest-published
