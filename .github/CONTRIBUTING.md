@@ -16,7 +16,7 @@
 
 ## Are you new and looking to dive in?
 
-FANTASTIC! Reach out to one of our experts and we can help guide you toward the right direction. 
+FANTASTIC! Reach out to one of our experts and we can help. 
 
 * For non-Sonatypers, come hang out with us at our [gitter channel](https://gitter.im/sonatype/nexus-developers).
 * For Sonatypers, hit us up on our Slack channel #react-components.
