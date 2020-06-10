@@ -85,7 +85,7 @@ dockerizedBuildPipeline(
       sh '''
         tag="v$VERSION"
         git tag "$tag" && git push origin "$tag"
-        git push origin HEAD:latest-release
+        git push origin HEAD:refs/heads/latest-published
       '''
     }
   },
