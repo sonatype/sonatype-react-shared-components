@@ -12,16 +12,15 @@
 */
 .nx-html, .nx-body {
   box-sizing: border-box;
-  height: 100%;
-
-  // prevents scrollbar flicker as tooltips appear in IE11
-  overflow-y: hidden;
 }
 
 .nx-body {
   background-color: $nx-site-background-color;
   color: $nx-text-color;
+  height: 100%;
   margin: 0;
+  // prevents scrollbar flicker as tooltips appear in IE11
+  overflow-y: hidden;
   padding: 0;
 }
 
@@ -69,12 +68,16 @@
   white-space: normal;
 }
 
-.nx-page--page-scrolling {
-  display: block;
-  overflow-y: auto;
+.nx-body--page-scrolling {
+  overflow: auto;
+
+  .nx-page {
+    display: block;
+  }
 
   .nx-page-header {
     position: fixed;
+    top: 0;
     z-index: 1;
   }
 
@@ -84,7 +87,5 @@
 
   .nx-page-main {
     flex: 1 0 $nx-content-width;
-    overflow-x: hidden;
-    overflow-y: auto;
   }
 }
