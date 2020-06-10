@@ -12,3 +12,4 @@ RUN apt-get update && \
     apt-get install jq -y
 
 RUN mkdir -p /home/jenkins/.npm
+RUN chown -R jenkins /home/jenkins/
