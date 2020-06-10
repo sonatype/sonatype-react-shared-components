@@ -8,7 +8,7 @@ import { LiHTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
 export type Props = LiHTMLAttributes<HTMLLIElement> & {
-  active: boolean | null;
+  active?: boolean | null | undefined;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {

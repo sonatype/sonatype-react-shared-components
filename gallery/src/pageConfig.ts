@@ -37,6 +37,7 @@ import NxSubmitMaskPage from './components/NxSubmitMask/NxSubmitMaskPage';
 import NxStatefulSubmitMaskPage from './components/NxStatefulSubmitMask/NxStatefulSubmitMaskPage';
 import NxTablePage from './components/NxTable/NxTablePage';
 import NxTabsPage from './components/NxTabs/NxTabsPage';
+import NxStatefulTabsPage from './components/NxStatefulTabs/NxStatefulTabsPage';
 import NxTreeViewPage from './components/NxTreeView/NxTreeViewPage';
 import NxTreeViewRadioSelectPage from './components/NxTreeViewRadioSelect/NxTreeViewRadioSelectPage';
 import NxStatefulTreeViewRadioSelectPage
@@ -76,6 +77,7 @@ const pageConfig: PageConfig = {
     NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
     NxTable: NxTablePage,
     NxTabs: NxTabsPage,
+    NxStatefulTabs: NxStatefulTabsPage,
     NxTextInput: NxTextInputPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatBar: NxThreatBarPage,

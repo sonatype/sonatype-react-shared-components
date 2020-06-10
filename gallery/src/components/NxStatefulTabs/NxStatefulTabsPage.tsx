@@ -17,42 +17,23 @@ import {
   NxTableRow
 } from '@sonatype/react-shared-components';
 
-import NxTabsSimpleExample from './NxTabsSimpleExample';
+import NxTabsSimpleExample from './NxStatefulTabsSimpleExample';
 
-const tabsSimpleExampleCode = require('!!raw-loader!./NxTabsSimpleExample').default;
+const tabsSimpleExampleCode = require('!!raw-loader!./NxStatefulTabsSimpleExample').default;
 
 export default function NxTablePage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <h5>NxTabs</h5>
+        <h5>NxStatefulTabs</h5>
 
         <p>
           The top-level container for tabbed navigation.
-          It can have <code className="nx-code">&lt;NxTabList&gt;</code> and
-          <code className="nx-code">&lt;NxTab&gt;</code> components as children.
+          The first child element must be a <code className="nx-code">&lt;NxTabList&gt;</code>.
+          All other children must be <code className="nx-code">&lt;NxTab&gt;</code> components.
+          There must be at least one <code className="nx-code">&lt;NxTab&gt;</code> for each
+          <code className="nx-code">&lt;NxTabLabel&gt;</code>.
         </p>
-
-        <hr />
-
-        <h5>NxTabs</h5>
-
-        <p>The parent container for the tabs.</p>
-
-        <hr />
-
-        <h5>NxTabList</h5>
-
-        <p>
-          The parent container for <code className="nx-code">&lt;NxTabLabel&gt;</code> components.
-          These are the components the user would click on to switch tabs.
-        </p>
-
-        <hr />
-
-        <h5>NxTabLabel</h5>
-
-        <p>The component the user clicks on to switch tabs.</p>
 
         <NxTable>
           <NxTableHead>
