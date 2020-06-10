@@ -75,8 +75,21 @@ dockerizedBuildPipeline(
   },
   deploy: {
     withCredentials([string(credentialsId: 'uxui-npm-auth-token', variable: 'NPM_TOKEN')]) {
-      withDockerImage(env.DOCKER_IMAGE_ID, 'npmjs-npmrc') {
-        sh 'npm publish --access public lib/dist/sonatype-react-shared-components-$VERSION.tgz'
+      sshagent(credentials: [sonatypeZionCredentialsId()]) {
+        withDockerImage(env.DOCKER_IMAGE_ID, 'npmjs-npmrc') {
+          sh '''
+            # The latest-published branch tracks the last commit that was published to npm
+            git fetch origin latest-published
+
+            # Only publish to npm if there were changes to the lib
+            if ! git diff -s --exit-code origin/latest-published... -- lib/; then
+              npm publish --access public lib/dist/sonatype-react-shared-components-$VERSION.tgz
+              git push origin HEAD:refs/heads/latest-published
+            else
+              echo 'Skipping npm publish: no changes in lib since last publish'
+            fi
+          '''
+        }
       }
     }
   },
