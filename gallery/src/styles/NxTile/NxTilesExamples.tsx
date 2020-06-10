@@ -12,19 +12,13 @@ import NxSimpleTileExample from './NxSimpleTileExample';
 import NxTileWithActionsExample from './NxTileWithActionsExample';
 import NxTileWithSubtitleExample from './NxTileWithSubtitleExample';
 import NxTileWithHorizontalRuleExample from './NxTileWithHorizontalRuleExample';
-import NxTileHeadlineExample from './NxTileHeadlineExample';
-import NxTileAlertExample from './NxTileAlertWarningExample';
-import NxTileAlertInfoExample from './NxTileAlertInfoExample';
-import NxTileAlertErrorExample from './NxTileAlertErrorExample';
+import NxTileSubsectionExample from './NxTileSubsectionExample';
 
 const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample').default,
     NxTileWithActionsCode = require('!!raw-loader!./NxTileWithActionsExample').default,
     NxTileWithSubtitleCode = require('!!raw-loader!./NxTileWithSubtitleExample').default,
-    NxTileWithHorizontalRuleCode = require('!!raw-loader!./NxTileWithHorizontalRuleExample').default,
-    NxTileHeadlineCode = require('!!raw-loader!./NxTileHeadlineExample').default,
-    NxTileAlertWarningCode = require('!!raw-loader!./NxTileAlertWarningExample').default,
-    NxTileAlertInfoCode = require('!!raw-loader!./NxTileAlertInfoExample').default,
-    NxTileAlertErrorCode = require('!!raw-loader!./NxTileAlertErrorExample').default;
+    NxTileSubsectionCode = require('!!raw-loader!./NxTileSubsectionExample').default,
+    NxTileWithHorizontalRuleCode = require('!!raw-loader!./NxTileWithHorizontalRuleExample').default;
 
 const NxTilesExamples = () =>
   <>
@@ -48,24 +42,9 @@ const NxTilesExamples = () =>
       <CodeExample content={NxTileWithHorizontalRuleCode}/>
     </GalleryTile>
 
-    <GalleryTile title="NX Tile with Headline Example">
-      <NxTileHeadlineExample />
-      <CodeExample content={NxTileHeadlineCode}/>
-    </GalleryTile>
-
-    <GalleryTile title="NX Tile Alert Warning Example">
-      <NxTileAlertExample />
-      <CodeExample content={NxTileAlertWarningCode}/>
-    </GalleryTile>
-
-    <GalleryTile title="NX Tile Alert Info Example">
-      <NxTileAlertInfoExample />
-      <CodeExample content={NxTileAlertInfoCode}/>
-    </GalleryTile>
-
-    <GalleryTile title="NX Tile Alert Error Example">
-      <NxTileAlertErrorExample />
-      <CodeExample content={NxTileAlertErrorCode}/>
+    <GalleryTile title="NX Tile with a Subsection Header Example">
+      <NxTileSubsectionExample />
+      <CodeExample content={NxTileSubsectionCode}/>
     </GalleryTile>
   </>;
 

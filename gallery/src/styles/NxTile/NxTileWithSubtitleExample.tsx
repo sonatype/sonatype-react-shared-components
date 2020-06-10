@@ -10,7 +10,10 @@ const NxTileWithSubtitleExample = () =>
   <div className="nx-tile">
     <div className="nx-tile-header">
       <div className="nx-tile-header__title"><h2 className="nx-h2">NX Tile with Subtitle</h2></div>
-      <div className="nx-tile-header__subtitle">The Subtitle</div>
+      <div className="nx-tile-header__subtitle">
+        The Subtitle - which wraps - sentient Chiba footage apophenia papier-mache Tokyo pre-skyscraper drone carbon
+        bomb range-rover
+      </div>
     </div>
     <div className="nx-tile-content">
       Math-savant boy soul-delay saturation point fetishism marketing tower plastic
