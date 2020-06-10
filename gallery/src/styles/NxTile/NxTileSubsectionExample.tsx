@@ -23,12 +23,6 @@ const NxTileSubsectionExample = () =>
         dead convenience store nodal point monofilament tube receding. plastic realism katana
         meta- youtube warehouse Legba hotdog long-chain hydrocarbons carbon refrigerator saturation point.
       </p>
-      <h3 className="nx-h3 nx-tile__section-header nx-tile__section-header--simple">Subsection -- simple</h3>
-      <p className="nx-p">
-        semiotics numinous long-chain hydrocarbons. Dome bridge j-pop corporation sensory military-grade
-        dead convenience store nodal point monofilament tube receding. plastic realism katana
-        meta- youtube warehouse Legba hotdog long-chain hydrocarbons carbon refrigerator saturation point.
-      </p>
     </div>
     <div className="nx-tile-footer">
       <button className="nx-btn nx-btn--primary">Footer Button</button>
