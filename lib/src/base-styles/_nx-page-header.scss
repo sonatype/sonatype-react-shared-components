@@ -24,6 +24,7 @@ $main-header-product-version-row-height: 1fr;
   border-bottom: 1px solid $nx-header-border;
   flex-shrink: 0; // needed for IE11
   height: $main-header-height;
+  padding-left: $nx-spacing-md;
   width: 100%;
 }
 
