@@ -1,0 +1,29 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+ /*
+  #Tabs
+*/
+.nx-tabs {
+  .nx-tab-list {
+    border-bottom: $nx-border-row-dark;
+    padding-left: 0;
+
+    .nx-tab-label {
+      display: inline-block;
+      list-style: none;
+      margin-bottom: -1px;
+      padding: 9px 15px;
+    }
+
+    .nx-tab-label--active {
+      border: solid $nx-background-color-interactive;
+      border-width: 0 0 4px 0;
+      font-weight: bold;
+    }
+  }
+}
