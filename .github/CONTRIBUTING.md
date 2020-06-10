@@ -9,12 +9,17 @@
 
 # How to be a contributor to this project
 
-## Are you new and looking to dive in?
+## Talk to a human first
 
-FANTASTIC! Reach out to one of our experts and we can help. 
+Looking to dive in? FANTASTIC! Reach out to one of our experts and we can help. Hit us up on our Slack channel #react-components.
 
-* For Sonatypers, hit us up on our Slack channel #react-components.
-* For non-Sonatypers, come hang out with us at our [gitter channel](https://gitter.im/sonatype/nexus-developers).
+## For Non-Sonatypers
+
+* Come hang out with us at our [gitter channel](https://gitter.im/sonatype/nexus-developers).
+* Fill out a CLA for us, so we can sort out all the legal parts of contributing. You can get all the information for
+this [here](https://help.sonatype.com/display/NXRM3/Bundle+Development#BundleDevelopment-ContributingBundles). You may go, this is for your book, is it
+applicable for this repo? Yes, absolutely. Follow the CLA process and email in your form. We are working on a way to
+make this simpler, as well.
 
 ## Are you submitting a pull request?
 
@@ -22,10 +27,6 @@ FANTASTIC! Reach out to one of our experts and we can help.
 much shaming throughout the land. If you use an editor besides Eclipse or IntelliJ, adapt the codestyle and submit a PR
 there :)
 * Add the @sonatype/shared-components-group as a reviewer to the PR
-* For non-Sonatypers, fill out a CLA for us, so we can sort out all the legal parts of contributing. You can get all the information for
-this [here](https://help.sonatype.com/display/NXRM3/Bundle+Development#BundleDevelopment-ContributingBundles). You may go, this is for your book, is it
-applicable for this repo? Yes, absolutely. Follow the CLA process and email in your form. We are working on a way to
-make this simpler, as well.
 * Make sure to fill out an issue (Jira RSC project) for your PR, so that we have traceability as to what you are trying to fix,
 versus how you fixed it.
 * Try to fix one thing per pull request! Many people work on this code, so the more focused your changes are, the less
