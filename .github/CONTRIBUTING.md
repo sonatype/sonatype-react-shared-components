@@ -13,8 +13,8 @@
 
 FANTASTIC! Reach out to one of our experts and we can help. 
 
-* For non-Sonatypers, come hang out with us at our [gitter channel](https://gitter.im/sonatype/nexus-developers).
 * For Sonatypers, hit us up on our Slack channel #react-components.
+* For non-Sonatypers, come hang out with us at our [gitter channel](https://gitter.im/sonatype/nexus-developers).
 
 ## Are you submitting a pull request?
 
