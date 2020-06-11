@@ -11,7 +11,13 @@
 
 ## Talk to a human first
 
-Looking to dive in? FANTASTIC! Reach out to one of our experts and we can help get you started in the right direction. Hit us up on our Slack channel #react-components.
+### For Sonatypers
+
+Looking to dive in? FANTASTIC! Reach out to one of our experts and we can help get you started in the right direction.
+
+* Hit us up on our Slack channel #react-components.
+* Please fill out an issue (Jira RSC project) for your PR so that we have traceability as to what you are trying to fix,
+  versus how you fixed it.
 
 ### For Non-Sonatypers
 
@@ -21,13 +27,11 @@ Looking to dive in? FANTASTIC! Reach out to one of our experts and we can help g
 ## Submitting a PR
 
 * Add the @sonatype/shared-components-group as a reviewer to the PR
-* Make sure to fill out an issue (Jira RSC project) for your PR, so that we have traceability as to what you are trying to fix,
-versus how you fixed it.
 * Try to fix one thing per pull request! Many people work on this code, so the more focused your changes are, the less
-of a headache other people will have when they merge their work in.
+  of a headache other people will have when they merge their work in.
 * Ensure your Pull Request passes tests either locally or via Jenkins (it will run automatically on your PR)
 * If you're stuck, ask our [gitter channel](https://gitter.im/sonatype/nexus-developers)! There are a number of
-experienced programmers who are happy to help with learning and troubleshooting.
+  experienced programmers who are happy to help with learning and troubleshooting.
 
 ### PR commenting protocol
 
