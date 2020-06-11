@@ -28,12 +28,20 @@ const removeLicense = (content: string) =>
 
 const CodeExample: FunctionComponent<Props> =
   function CodeExample({ content, language }): ReactElement<Props> {
-    const licenseStrippedContent = removeLicense(content);
+    const licenseStrippedContent = removeLicense(content),
+        headerLanguagePart = language ? ` (${language.toUpperCase()})` : '';
 
     return (
-      <SyntaxHighlighter language={language || 'tsx'} style={atomDark}>
-        {licenseStrippedContent}
-      </SyntaxHighlighter>
+      <>
+        <h3 className="nx-h3">
+          Code Snippet
+          {headerLanguagePart}
+          :
+        </h3>
+        <SyntaxHighlighter language={language || 'tsx'} style={atomDark}>
+          {licenseStrippedContent}
+        </SyntaxHighlighter>
+      </>
     );
   };
 
