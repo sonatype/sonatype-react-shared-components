@@ -10,10 +10,12 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxLoadErrorSimpleExample from './NxLoadErrorSimpleExample';
 import NxLoadErrorRetryExample from './NxLoadErrorRetryExample';
+import NxLoadErrorRetryLongMessageExample from './NxLoadErrorRetryLongMessageExample';
 import CodeExample from '../../CodeExample';
 
 const simpleSourceCode = require('!!raw-loader!./NxLoadErrorSimpleExample').default;
 const retrySourceCode = require('!!raw-loader!./NxLoadErrorRetryExample').default;
+const retryLongMessageSourceCode = require('!!raw-loader!./NxLoadErrorRetryExample').default;
 
 const NxLoadErrorPage = () =>
   <>
@@ -65,9 +67,15 @@ const NxLoadErrorPage = () =>
     </GalleryExampleTile>
     <GalleryExampleTile>
       In this example, the error is cleared on retry.
-      Note that the NxLoadError component disappears when that happens
+      Note that the NxLoadError component disappears when that happens.
       <NxLoadErrorRetryExample />
       <CodeExample content={retrySourceCode} />
+    </GalleryExampleTile>
+    <GalleryExampleTile>
+      This example demonstrates that when the text is long, the Retry button falls underneath of it but still on
+      the right-hand side of the alert.
+      <NxLoadErrorRetryLongMessageExample />
+      <CodeExample content={retryLongMessageSourceCode} />
     </GalleryExampleTile>
   </>;
 
