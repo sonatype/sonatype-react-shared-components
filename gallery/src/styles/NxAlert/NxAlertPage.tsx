@@ -12,8 +12,7 @@ import RawHtmlExample from '../../RawHtmlExample';
 
 const nxAlertInfoCode = require('./NxAlertInfoExample.html').default,
     nxAlertWarningCode = require('./NxAlertWarningExample.html').default,
-    nxAlertErrorCode = require('./NxAlertErrorExample.html').default,
-    nxAlertErrorRetryCode = require('./NxAlertErrorRetryExample.html').default;
+    nxAlertErrorCode = require('./NxAlertErrorExample.html').default;
 
 const NxAlertPage = () =>
   <>
@@ -34,11 +33,6 @@ const NxAlertPage = () =>
     <GalleryTile title="Error alert">
       <RawHtmlExample html={nxAlertErrorCode}/>
       <CodeExample content={nxAlertErrorCode}/>
-    </GalleryTile>
-
-    <GalleryTile title="Error alert with retry button">
-      <RawHtmlExample html={nxAlertErrorRetryCode}/>
-      <CodeExample content={nxAlertErrorRetryCode} />
     </GalleryTile>
   </>;
 
