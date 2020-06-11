@@ -6,7 +6,8 @@
  */
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
-import { faCheckCircle, faExclamationTriangle, faInfoCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faExclamationTriangle, faExclamationCircle, faInfoCircle }
+  from '@fortawesome/free-solid-svg-icons';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { ensureElement } from '../../util/reactUtil';
@@ -45,7 +46,7 @@ export const NxErrorAlert = forwardRef<HTMLDivElement, Props>(
     function NxErrorAlert(props, ref) {
       const classes = classnames('nx-alert--error', props.className);
 
-      return <NxAlert { ...props } ref={ref} className={classes} icon={faTimesCircle} />;
+      return <NxAlert { ...props } ref={ref} className={classes} icon={faExclamationCircle} />;
     }
 );
 
