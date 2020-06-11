@@ -1,7 +1,8 @@
+@import '../../scss-shared/nx-variables';
+
 .nx-load-error__message {
-  // TODO no magic numbers
   margin-bottom: $nx-spacing-sm;
-  max-width: calc(100% - 32px);
+  max-width: calc(100% - #{$nx-spacing-xl});
 }
 
 .nx-load-error__retry {
