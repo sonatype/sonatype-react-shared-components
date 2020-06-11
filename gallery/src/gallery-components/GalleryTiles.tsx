@@ -64,7 +64,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
       <GalleryTile title={title} className={className}>
         <p className="nx-p">{description}</p>
 
-        <h3 className="nx-h3">Example:</h3>
+        <h3 className="nx-h3 nx-tile__section-header">Example:</h3>
         <div>{children}</div>
 
         {codeExampleElements}
