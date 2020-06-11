@@ -20,6 +20,8 @@ $nx-paragraph-width-maximum: 562px;
 
 $nx-scrollbar-width: 15px;
 
+$nx-border-radius: 6px;
+
 //  #Margin/Padding widths
 $nx-spacing-xxs: 4px;
 $nx-spacing-xs: 8px;
@@ -33,10 +35,12 @@ $nx-spacing-xxl: 64px;
   #Typography
 */
 // Font size
+$nx-font-size: 16px;
 $nx-font-size-s: 14px;
-$nx-font-size-heading-level-1: 26px;
-$nx-font-size-heading-level-2: 20px;
-$nx-font-size-heading-level-3: 18px;
+$nx-font-size-xs: 12px;
+$nx-font-size-heading-level-1: 32px;
+$nx-font-size-heading-level-2: 22px;
+$nx-font-size-heading-level-3: 16px;
 $nx-font-size-heading-level-4: 14px;
 
 // Line-height
