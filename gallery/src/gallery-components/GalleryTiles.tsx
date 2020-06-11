@@ -36,7 +36,7 @@ export const GalleryTile: FunctionComponent<GalleryTileProps> =
       <div className="nx-tile">
         <div className="nx-tile-header">
           <div className="nx-tile-header__title">
-            <h3 className="nx-h2">{title}</h3>
+            <h2 className="nx-h2">{title}</h2>
           </div>
         </div>
         <div className={galleryTileClasses}>
@@ -65,10 +65,10 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
       <GalleryTile title={title} className={tileClasses}>
         <p className="nx-p">{description}</p>
 
-        <h4 className="nx-h4">Example:</h4>
+        <h3 className="nx-h3">Example:</h3>
         <div>{children}</div>
 
-        <h4 className="nx-h4">Code Snippet:</h4>
+        <h3 className="nx-h3">Code Snippet:</h3>
         {codeExampleElements}
       </GalleryTile>
     );
