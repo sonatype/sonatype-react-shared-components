@@ -1,5 +1,6 @@
 .nx-load-error__message {
   // TODO no magic numbers
+  margin-bottom: $nx-spacing-sm;
   max-width: calc(100% - 32px);
 }
 
