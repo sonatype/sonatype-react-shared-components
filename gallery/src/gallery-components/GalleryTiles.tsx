@@ -54,14 +54,15 @@ export const GalleryDescriptionTile: FunctionComponent<PropsWithRequiredChildren
 
 export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
   function GalleryExampleTile({ children, className, title, description, codeExamples }: GalleryExampleTileProps) {
-    const codeExampleElements = ensureArray(codeExamples)
-        .map((example, idx) => {
-          const props = typeof example === 'string' ? { content: example } : example;
-          return <CodeExample key={idx} { ...props } />;
-        });
+    const tileClasses = classnames('gallery-example', className),
+        codeExampleElements = ensureArray(codeExamples)
+            .map((example, idx) => {
+              const props = typeof example === 'string' ? { content: example } : example;
+              return <CodeExample key={idx} { ...props } />;
+            });
 
     return (
-      <GalleryTile title={title} className={className}>
+      <GalleryTile title={title} className={tileClasses}>
         <p className="nx-p">{description}</p>
 
         <h3 className="nx-h3 nx-tile__section-header">Example:</h3>

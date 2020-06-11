@@ -32,7 +32,7 @@ const CodeExample: FunctionComponent<Props> =
         headerLanguagePart = language ? ` (${language.toUpperCase()})` : '';
 
     return (
-      <section className="gallery-example">
+      <>
         <h3 className="nx-h3 nx-tile__section-header">
           Code Snippet
           {headerLanguagePart}
@@ -41,7 +41,7 @@ const CodeExample: FunctionComponent<Props> =
         <SyntaxHighlighter language={language || 'tsx'} style={atomDark}>
           {licenseStrippedContent}
         </SyntaxHighlighter>
-      </section>
+      </>
     );
   };
 
