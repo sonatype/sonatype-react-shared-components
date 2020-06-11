@@ -1,0 +1,8 @@
+.nx-load-error__message {
+  // TODO no magic numbers
+  max-width: calc(100% - 32px);
+}
+
+.nx-load-error__retry {
+  margin-left: auto;
+}
