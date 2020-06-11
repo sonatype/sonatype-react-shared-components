@@ -20,9 +20,6 @@ Looking to dive in? FANTASTIC! Reach out to one of our experts and we can help. 
 
 ## Are you submitting a pull request?
 
-* Use [our codestyle](https://github.com/sonatype/codestyle). If we get a PR that doesn't match it, there will be
-much shaming throughout the land. If you use an editor besides Eclipse or IntelliJ, adapt the codestyle and submit a PR
-there :)
 * Add the @sonatype/shared-components-group as a reviewer to the PR
 * Make sure to fill out an issue (Jira RSC project) for your PR, so that we have traceability as to what you are trying to fix,
 versus how you fixed it.
