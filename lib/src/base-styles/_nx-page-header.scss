@@ -20,7 +20,6 @@ $main-header-product-version-row-height: 1fr;
   border-bottom: 1px solid $nx-header-border;
   flex-shrink: 0; // needed for IE11
   height: $nx-main-header-height;
-  padding-left: $nx-spacing-md;
   width: 100%;
 }
 
@@ -29,6 +28,7 @@ $main-header-product-version-row-height: 1fr;
 
   height: $nx-main-header-height;
   margin: 0 auto;
+  padding-left: $nx-spacing-md;
   width: 100%;
   max-width: $nx-page-width-max;
 }
