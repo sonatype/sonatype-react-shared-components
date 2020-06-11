@@ -66,8 +66,12 @@
   white-space: normal;
 }
 
-.nx-body--page-scrolling {
-  overflow: auto;
+.nx-html--page-scrolling {
+  height: auto;
+
+  > .nx-body {
+    overflow: auto;
+  }
 
   .nx-page {
     display: block;
@@ -85,5 +89,12 @@
 
   .nx-page-main {
     flex: 1 0 $nx-content-width;
+  }
+}
+
+.nx-html--section-scrolling {
+  &, & > .nx-body {
+    height: 100%;
+    overflow: hidden;
   }
 }
