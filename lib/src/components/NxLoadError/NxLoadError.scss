@@ -8,5 +8,14 @@
 }
 
 .nx-alert--load-error {
+  align-items: first baseline;
   flex-wrap: wrap;
+
+  > .nx-icon {
+    // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
+    // no effect here so we use relative positioning instead
+    bottom: -0.125em;
+    height: 1em;
+    position: relative;
+  }
 }
