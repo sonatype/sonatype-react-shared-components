@@ -16,7 +16,7 @@ const NxTab = function NxTabElement(props: Props) {
     'nx-tab--active': active
   });
 
-  return <li role="tab" aria-selected={active ? "true" : "false"} className={classNames} {...attrs} />;
+  return <li role="tab" aria-selected={active ? 'true' : 'false'} className={classNames} {...attrs} />;
 };
 
 NxTab.propTypes = propTypes;
