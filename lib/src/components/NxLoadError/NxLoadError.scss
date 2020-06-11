@@ -2,7 +2,10 @@
 
 .nx-load-error__message {
   margin-bottom: $nx-spacing-sm;
-  max-width: calc(100% - #{$nx-spacing-xl});
+  margin-right: $nx-spacing-sm;
+
+  // max-width is the full width minus the icon width, icon margin, and the right margin on this element
+  max-width: calc(100% - #{$nx-spacing-md + $nx-spacing-md + $nx-spacing-sm});
 }
 
 .nx-load-error__retry {
