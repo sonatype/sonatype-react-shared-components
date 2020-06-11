@@ -6,6 +6,7 @@
 
   // max-width is the full width minus the icon width, icon margin, and the right margin on this element
   max-width: calc(100% - #{$nx-spacing-md + $nx-spacing-md + $nx-spacing-sm});
+  word-break: break-word;
 }
 
 .nx-load-error__retry {
