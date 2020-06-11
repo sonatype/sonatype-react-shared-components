@@ -9,14 +9,6 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
 import CodeExample from '../../CodeExample';
 
-import {
-  NxTable,
-  NxTableBody,
-  NxTableCell,
-  NxTableHead,
-  NxTableRow
-} from '@sonatype/react-shared-components';
-
 import NxTabsSimpleExample from './NxStatefulTabsSimpleExample';
 
 const tabsSimpleExampleCode = require('!!raw-loader!./NxStatefulTabsSimpleExample').default;
@@ -29,37 +21,22 @@ export default function NxTablePage() {
 
         <p>
           The top-level container for tabbed navigation.
-          The first child element must be a <code className="nx-code">&lt;NxTabList&gt;</code>.
-          All other children must be <code className="nx-code">&lt;NxTab&gt;</code> components.
-          There must be at least one <code className="nx-code">&lt;NxTab&gt;</code> for each
-          <code className="nx-code">&lt;NxTabLabel&gt;</code>.
+          The first child element must be a <code className="nx-code">&lt;NxTabList&gt;</code> component
+          containing <code className="nx-code">&lt;NxStatefulTab&gt;</code> components.
+          All other children must be <code className="nx-code">&lt;NxTabPanel&gt;</code> components.
+          There must be at least one <code className="nx-code">&lt;NxTabPanel&gt;</code> for each
+          {' '}<code className="nx-code">&lt;NxTabLabel&gt;</code> and they must include a
+          {' '}<code className="nx-code">labelledBy</code> attribute which matches the corresponding id for the related
+          {' '}<code className="nx-code">&lt;NxStatefulTab&gt;</code>.
         </p>
-
-        <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Prop</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Details</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>active</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>Used to mark the current tab as active</NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
-        </NxTable>
 
         <hr />
 
-        <h5>NxTab</h5>
+        <h5>NxStatefulTab</h5>
 
         <p>
-          Container component for the tab contents.
+          Replaces the <code className="nx-code">&lt;NxTab&gt;</code> to remove the requirement for
+          the <code className="nx-code">active</code> attribute.
         </p>
       </GalleryDescriptionTile>
       <GalleryTile title="Simple Example">

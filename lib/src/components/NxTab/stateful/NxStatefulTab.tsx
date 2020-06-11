@@ -5,17 +5,18 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import classnames from 'classnames';
+
+import NxTab from '../NxTab';
 
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
-const NxTabs = function NxTabsElement(props: Props) {
-  const {className, ...attrs} = props;
+const NxStatefulTab = function NxStatefulTabElement(props: Props) {
+  const { active, ...attrs } = props;
 
-  return <div className={classnames('nx-tabs', className)} {...attrs} />;
+  return <><NxTab active={active || false} {...attrs} /></>;
 };
 
-NxTabs.propTypes = propTypes;
+NxStatefulTab.propTypes = propTypes;
 
-export default NxTabs;
+export default NxStatefulTab;

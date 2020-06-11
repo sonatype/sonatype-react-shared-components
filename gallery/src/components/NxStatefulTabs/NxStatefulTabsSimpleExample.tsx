@@ -9,25 +9,25 @@ import React from 'react';
 import {
   NxStatefulTabs,
   NxTabList,
-  NxTabLabel,
-  NxTab
+  NxStatefulTab,
+  NxTabPanel
 } from '@sonatype/react-shared-components';
 
-const NxTableSimpleExample = () => {
+const NxStatefulTabsSimpleExample = () => {
   return (
     <NxStatefulTabs>
       <NxTabList>
-        <NxTabLabel>Tab 1</NxTabLabel>
-        <NxTabLabel>Tab 2</NxTabLabel>
-        <NxTabLabel>Tab 3</NxTabLabel>
-        <NxTabLabel>Tab 4</NxTabLabel>
+        <NxStatefulTab id="tab-1">Tab 1</NxStatefulTab>
+        <NxStatefulTab id="tab-2">Tab 2</NxStatefulTab>
+        <NxStatefulTab id="tab-3">Tab 3</NxStatefulTab>
+        <NxStatefulTab id="tab-4" onClick={() => alert('click')}>Tab 4</NxStatefulTab>
       </NxTabList>
-      <NxTab>Tab 1</NxTab>
-      <NxTab>Tab 2</NxTab>
-      <NxTab>Tab 3</NxTab>
-      <NxTab>Tab 4</NxTab>
+      <NxTabPanel labelledBy="tab-1">Tab 1</NxTabPanel>
+      <NxTabPanel labelledBy="tab-2">Tab 2</NxTabPanel>
+      <NxTabPanel labelledBy="tab-3">Tab 3</NxTabPanel>
+      <NxTabPanel labelledBy="tab-4">Tab 4</NxTabPanel>
     </NxStatefulTabs>
   );
 };
 
-export default NxTableSimpleExample;
+export default NxStatefulTabsSimpleExample;

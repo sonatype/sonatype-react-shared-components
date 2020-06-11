@@ -30,7 +30,7 @@ export default function NxTablePage() {
         <p>
           The top-level container for tabbed navigation.
           It can have <code className="nx-code">&lt;NxTabList&gt;</code> and
-          <code className="nx-code">&lt;NxTab&gt;</code> components as children.
+          {' '}<code className="nx-code">&lt;NxTabPanel&gt;</code> components as children.
         </p>
 
         <hr />
@@ -44,13 +44,13 @@ export default function NxTablePage() {
         <h5>NxTabList</h5>
 
         <p>
-          The parent container for <code className="nx-code">&lt;NxTabLabel&gt;</code> components.
+          The parent container for <code className="nx-code">&lt;NxTab&gt;</code> components.
           These are the components the user would click on to switch tabs.
         </p>
 
         <hr />
 
-        <h5>NxTabLabel</h5>
+        <h5>NxTab</h5>
 
         <p>The component the user clicks on to switch tabs.</p>
 
@@ -75,11 +75,32 @@ export default function NxTablePage() {
 
         <hr />
 
-        <h5>NxTab</h5>
+        <h5>NxTabPanel</h5>
 
         <p>
           Container component for the tab contents.
         </p>
+
+        <NxTable>
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Prop</NxTableCell>
+              <NxTableCell>Type</NxTableCell>
+              <NxTableCell>Required</NxTableCell>
+              <NxTableCell>Details</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody>
+            <NxTableRow>
+              <NxTableCell>labelledBy</NxTableCell>
+              <NxTableCell>string</NxTableCell>
+              <NxTableCell>true</NxTableCell>
+              <NxTableCell>
+                The id of the related <code className="nx-code">&lt;NxTab&gt;</code>.
+              </NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
       </GalleryDescriptionTile>
       <GalleryTile title="Simple Example">
         <NxTabsSimpleExample />

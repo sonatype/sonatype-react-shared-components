@@ -10,15 +10,19 @@ import classnames from 'classnames';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
-const NxTabLabel = function NxTabLabelElement(props: Props) {
-  const {active, className, ...attrs} = props;
-  const classNames = classnames('nx-tab-label', className, {
-    'nx-tab-label--active': active
-  });
+const NxTabPanel = function NxTabPanelElement(props: Props) {
+  const {labelledBy, className, ...attrs} = props;
 
-  return <li className={classNames} {...attrs} />;
+  return (
+    <div role="tabpanel"
+         aria-expanded="true"
+         aria-labelledby={labelledBy}
+         className={classnames('nx-tab', className)}
+         {...attrs}
+    />
+  );
 };
 
-NxTabLabel.propTypes = propTypes;
+NxTabPanel.propTypes = propTypes;
 
-export default NxTabLabel;
+export default NxTabPanel;

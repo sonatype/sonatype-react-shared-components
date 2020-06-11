@@ -9,11 +9,11 @@ import PropTypes from 'prop-types';
 
 export type Props = LiHTMLAttributes<HTMLLIElement> & {
   id: string;
-  active: boolean | 'true' | 'false';
+  active?: boolean | null | undefined;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   id: PropTypes.string.isRequired,
-  active: PropTypes.bool.isRequired,
   children: PropTypes.node
+  // the active prop will be set dynamically by NxStatefulTabs so we don't want to validate it here
 };
