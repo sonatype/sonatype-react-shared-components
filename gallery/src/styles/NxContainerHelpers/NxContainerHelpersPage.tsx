@@ -45,8 +45,8 @@ const NxContainerHelpersPage = () => {
           </li>
         </ul>
         <p>
-          The mixins facilitate point #2 above. The <code className="nx-code">container-vertical</code> mixin removes top
-          margin from the first child and bottom margin from the last child, while the
+          The mixins facilitate point #2 above. The <code className="nx-code">container-vertical</code> mixin removes
+          top margin from the first child and bottom margin from the last child, while the{' '}
           <code className="nx-code">container-horizontal</code> mixin removes the left margin from the first child and
           right margin from the last child.
         </p>
