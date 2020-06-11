@@ -12,11 +12,11 @@ export { Props } from './types';
 
 const NxTab = function NxTabElement(props: Props) {
   const {active, className, ...attrs} = props;
-  const classNames = classnames('nx-tab-label', className, {
-    'nx-tab-label--active': active === true || active === 'true'
+  const classNames = classnames('nx-tab', className, {
+    'nx-tab--active': active
   });
 
-  return <li role="tab" aria-selected={active} className={classNames} {...attrs} />;
+  return <li role="tab" aria-selected={active ? "true" : "false"} className={classNames} {...attrs} />;
 };
 
 NxTab.propTypes = propTypes;

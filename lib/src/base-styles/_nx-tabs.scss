@@ -13,14 +13,14 @@
     border-bottom: $nx-border-row-dark;
     padding-left: 0;
 
-    .nx-tab-label {
+    .nx-tab {
       display: inline-block;
       list-style: none;
       margin-bottom: -1px;
       padding: 9px 15px;
     }
 
-    .nx-tab-label--active {
+    .nx-tab--active {
       border: solid $nx-background-color-interactive;
       border-width: 0 0 4px 0;
       font-weight: bold;

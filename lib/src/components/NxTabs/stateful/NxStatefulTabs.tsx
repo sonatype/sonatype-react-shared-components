@@ -22,17 +22,16 @@ import { Props, propTypes } from '../types';
 const NxStatefulTabs = function NxStatefulTabsElement(props: Props) {
   const { children, ...attrs } = props;
   const [originalTabList, ...tabPanels] = Children.toArray(children);
-  const [activeTabId, setActiveTabId] = useState<string | null>(null);
 
   if (!isValidElement(originalTabList)) {
-    throw 'tab list was not a valid ReactElement';
+    return null;
+  }
+  else if (originalTabList.props.children.length === 0) {
+    return null;
   }
 
-  const firstTab = originalTabList.props.children[0];
-  if (activeTabId == null && isValidElement(firstTab)) {
-    const props = firstTab.props as NxTabProps;
-    setActiveTabId(props.id);
-  }
+  const firstTabId = (Children.toArray(originalTabList.props.children)[0].props as NxTabProps).id;
+  const [activeTabId, setActiveTabId] = useState(firstTabId);
 
   const tabList = cloneElement(originalTabList, {
     children: Children.map(originalTabList.props.children, (child) => cloneElement(child, {

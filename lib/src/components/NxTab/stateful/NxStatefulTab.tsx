@@ -14,7 +14,7 @@ export { Props } from './types';
 const NxStatefulTab = function NxStatefulTabElement(props: Props) {
   const { active, ...attrs } = props;
 
-  return <><NxTab active={active || false} {...attrs} /></>;
+  return <NxTab active={active || false} {...attrs} />;
 };
 
 NxStatefulTab.propTypes = propTypes;

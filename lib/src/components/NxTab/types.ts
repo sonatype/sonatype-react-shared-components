@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 export type Props = LiHTMLAttributes<HTMLLIElement> & {
   id: string;
-  active: boolean | 'true' | 'false';
+  active: boolean;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
