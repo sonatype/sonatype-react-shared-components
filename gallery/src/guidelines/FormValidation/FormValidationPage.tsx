@@ -7,7 +7,6 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
 import FormValidationExample from './FormValidationExample';
 
 const FormValidationCode = require('!!raw-loader!./FormValidationExample').default;
@@ -42,9 +41,11 @@ const FormValidationPage = () =>
       </ul>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={FormValidationCode}
+                        description="This example shows how typical form validation logic should be set up. It includes
+                            validation of individual elements and management of the submit button.">
       <FormValidationExample />
-      <CodeExample content={FormValidationCode} />
     </GalleryExampleTile>
   </>;
 
