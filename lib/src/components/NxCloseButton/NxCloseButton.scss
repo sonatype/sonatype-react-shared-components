@@ -1,0 +1,18 @@
+@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-colors';
+@import '../../scss-shared/nx-container-helpers';
+
+.nx-close-btn {
+  @include container-horizontal;
+
+  margin: $nx-spacing-xxs;
+  background: none;
+  border: none;
+  color: $nx-text-color-light;
+  padding: 0;
+
+  .nx-icon {
+    height: $nx-spacing-md;
+    width: $nx-spacing-md;
+  }
+}
