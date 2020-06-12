@@ -20,10 +20,14 @@ const NxScrollablePage = () =>
         container. It has a default max-height of 400px so in most instances you're going to want to create a modifier
         class (e.g. <code className="nx-code">.nx-scrollable--my-box</code>) to adjust the height to suit your needs.
       </p>
+      <p>
+        Frequently <code className="nx-code">.nx-scrollable</code> is applied to blocks like
+        <code className="nx-code">.nx-tile-content</code> or <code className="nx-code">.nx-modal-content</code>.
+      </p>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="General Example"
                         codeExamples={nxScrollableExampleCode}
-                        description="">
+                        description="In this instance the max-height has been left at its default value of 400px.">
       <NxScrollableExample />
     </GalleryExampleTile>
   </>;
