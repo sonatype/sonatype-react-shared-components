@@ -10,6 +10,8 @@
 */
 .nx-html, .nx-body {
   box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
 }
 
 .nx-body {
@@ -68,6 +70,7 @@
 
 .nx-html--page-scrolling {
   height: auto;
+  overflow: auto;
 
   > .nx-body {
     overflow: auto;
@@ -81,12 +84,5 @@
 
   .nx-page-content {
     margin: $nx-main-header-height auto 0 auto;
-  }
-}
-
-.nx-html--section-scrolling {
-  &, & > .nx-body {
-    height: 100%;
-    overflow: hidden;
   }
 }
