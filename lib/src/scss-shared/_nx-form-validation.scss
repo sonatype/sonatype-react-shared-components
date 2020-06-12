@@ -7,18 +7,14 @@
 @import 'nx-variables';
 
 @mixin valid() {
-  border-left-color: $nx-valid-color;
-  border-left-style: solid;
+  border-color: $nx-valid-color;
 }
 
 @mixin invalid() {
   border-color: $nx-invalid-color;
-  border-left-style: solid;
 }
 
 @mixin pristine() {
-  border-color: $nx-grey-4;
-  border-left-color: $nx-valid-color;
-  border-left-style: double;
+  border-color: #d1d6f0;
   color: $nx-text-color-light;
 }

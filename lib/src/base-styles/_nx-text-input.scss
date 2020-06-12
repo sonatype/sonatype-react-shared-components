@@ -6,22 +6,25 @@
  */
 
 .nx-text-input {
-  border: $nx-border-dark;
-  border-left-width: 4px;
-  border-radius: 0;
-  box-shadow: none;
+  border: 1px solid #d1d6f0;
+  border-radius: $nx-border-radius;
+  color: $nx-text-color-light;
   height: $nx-form-element-height;
   padding: 0 8px;
   width: $nx-form-element-width-normal;
 
+  &:hover {
+    border-color: #2c2c2c;
+  }
+
   &:focus {
+    border-color: #43cbf5;
     outline: none;
   }
 
   &:disabled {
-    background: $nx-off-white;
-    border-color: $nx-grey-3;
-    border-left: 4px double $nx-grey-3;
+    background-color: #e9e9e9;
+    border: solid 1px #949494;
   }
 }
 
@@ -30,8 +33,8 @@
 }
 
 textarea.nx-text-input {
-  min-height: 64px;
-  padding: 8px;
+  min-height: 164px;
+  padding: $nx-spacing-md $nx-spacing-xs;
 }
 
 ::-ms-clear {
