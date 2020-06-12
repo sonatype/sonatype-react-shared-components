@@ -5,14 +5,33 @@
 .nx-close-btn {
   @include container-horizontal;
 
-  margin: $nx-spacing-xxs;
+  box-sizing: border-box;
   background: none;
-  border: none;
-  color: $nx-text-color-light;
+  border: 1px solid transparent;
+  border-radius: $nx-border-radius;
+  color: $nx-text-color;
+  cursor: pointer;
+  height: $nx-spacing-xl;
+  width: $nx-spacing-xl;
+  margin: 0 $nx-spacing-xxs;
   padding: 0;
 
   .nx-icon {
     height: $nx-spacing-md;
     width: $nx-spacing-md;
+  }
+
+  &:hover {
+    border-color: $nx-text-color;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #43cbf5;
+  }
+
+  &:active {
+    border-color: $nx-text-color;
+    background-color: $nx-white;
   }
 }
