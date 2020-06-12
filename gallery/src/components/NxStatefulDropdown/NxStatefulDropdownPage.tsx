@@ -9,7 +9,6 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxStatefulDropdownExample from './NxStatefulDropdownExample';
-import CodeExample from '../../CodeExample';
 
 const nxStatefulDropdownExampleCode = require('!!raw-loader!./NxStatefulDropdownExample').default;
 
@@ -92,9 +91,11 @@ const NxStatefulDropdownPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={nxStatefulDropdownExampleCode}
+                        description="This example demonstrates a simple NxStatefulDropdown, showing that it tracks
+                            its own open/closed state with no need for support from the surrounding code.">
       <NxStatefulDropdownExample />
-      <CodeExample content={nxStatefulDropdownExampleCode} />
     </GalleryExampleTile>
   </>;
 

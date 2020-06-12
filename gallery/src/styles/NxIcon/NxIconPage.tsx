@@ -7,7 +7,6 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
 
 import NxIconExample from './NxIconExample';
 
@@ -27,9 +26,11 @@ const NxIconPage = () =>
         the <code className="nx-code">viewBox</code>, while for IE, both the width and the height are necessary.
       </p>
     </GalleryDescriptionTile>
-    <GalleryExampleTile>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={nxIconExampleCode}
+                        description="This example demonstrates the usage of the nx-icon class on SVG icons, providing
+                            them with standard margins.">
       <NxIconExample />
-      <CodeExample content={nxIconExampleCode} />
     </GalleryExampleTile>
   </>;
 
