@@ -8,17 +8,18 @@ import React, { ButtonHTMLAttributes, forwardRef } from 'react';
 import classnames from 'classnames';
 
 import Close from '../../icons/Close';
+import NxButton from '../NxButton/NxButton';
 
 import './NxCloseButton.scss';
 
 const NxCloseButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLButtonElement>>(
     function NxCloseButton({ className, ...otherProps }, ref) {
-      const btnClasses = classnames('nx-close-btn', className);
+      const btnClasses = classnames('nx-btn--close', className);
 
       return (
-        <button ref={ref} className={btnClasses} { ...otherProps }>
+        <NxButton ref={ref} className={btnClasses} iconOnly={true} variant="tertiary" { ...otherProps }>
           <Close/>
-        </button>
+        </NxButton>
       );
     }
 );

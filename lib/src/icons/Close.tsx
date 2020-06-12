@@ -6,8 +6,10 @@
  */
 import React from 'react';
 
+import './Close.scss';
+
 const Close = () =>
-  <svg viewBox="0 0 16 16" className="nx-icon">
+  <svg viewBox="0 0 16 16" className="nx-icon nx-icon--close">
     <path fill="currentColor"
           transform="rotate(45, 8, 8)"
           d="M8.3137085,0.313708499 C8.86599325,0.313708499 9.3137085,0.761423749 9.3137085,1.3137085
