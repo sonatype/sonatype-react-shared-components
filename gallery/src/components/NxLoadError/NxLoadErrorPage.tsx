@@ -10,10 +10,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxLoadErrorSimpleExample from './NxLoadErrorSimpleExample';
 import NxLoadErrorRetryExample from './NxLoadErrorRetryExample';
-import CodeExample from '../../CodeExample';
+import NxLoadErrorRetryLongMessageExample from './NxLoadErrorRetryLongMessageExample';
 
 const simpleSourceCode = require('!!raw-loader!./NxLoadErrorSimpleExample').default;
 const retrySourceCode = require('!!raw-loader!./NxLoadErrorRetryExample').default;
+const retryLongMessageSourceCode = require('!!raw-loader!./NxLoadErrorRetryExample').default;
 
 const NxLoadErrorPage = () =>
   <>
@@ -59,15 +60,25 @@ const NxLoadErrorPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={simpleSourceCode}
+                        description="This example demonstrates a basic NxLoadError which renders the error message in
+                            an alert box.">
       <NxLoadErrorSimpleExample />
-      <CodeExample content={simpleSourceCode} />
     </GalleryExampleTile>
-    <GalleryExampleTile>
-      In this example, the error is cleared on retry.
-      Note that the NxLoadError component disappears when that happens
+
+    <GalleryExampleTile title="Retry Button"
+                        codeExamples={retrySourceCode}
+                        description="In this example, the error is cleared on retry. Note that the NxLoadError
+                            component disappears when that happens.">
       <NxLoadErrorRetryExample />
-      <CodeExample content={retrySourceCode} />
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Retry Button with Long Text"
+                        codeExamples={retryLongMessageSourceCode}
+                        description="This example demonstrates that when the text is long, the Retry button falls
+                            underneath of it but still on the right-hand side of the alert.">
+      <NxLoadErrorRetryLongMessageExample />
     </GalleryExampleTile>
   </>;
 

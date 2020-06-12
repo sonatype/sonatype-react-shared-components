@@ -9,7 +9,7 @@ import * as PropTypes from 'prop-types';
 import SyntaxHighlighter from 'react-syntax-highlighter/prism';
 import { atomDark } from 'react-syntax-highlighter/dist/styles/prism';
 
-interface Props {
+export interface Props {
   content: string;
   language?: string | null;
 };
@@ -28,12 +28,20 @@ const removeLicense = (content: string) =>
 
 const CodeExample: FunctionComponent<Props> =
   function CodeExample({ content, language }): ReactElement<Props> {
-    const licenseStrippedContent = removeLicense(content);
+    const licenseStrippedContent = removeLicense(content),
+        headerLanguagePart = language ? ` (${language.toUpperCase()})` : '';
 
     return (
-      <SyntaxHighlighter language={language || 'tsx'} style={atomDark}>
-        {licenseStrippedContent}
-      </SyntaxHighlighter>
+      <section className="gallery-example-code">
+        <h3 className="nx-h3 nx-tile__section-header">
+          Code Snippet
+          {headerLanguagePart}
+          :
+        </h3>
+        <SyntaxHighlighter language={language || 'tsx'} style={atomDark}>
+          {licenseStrippedContent}
+        </SyntaxHighlighter>
+      </section>
     );
   };
 
