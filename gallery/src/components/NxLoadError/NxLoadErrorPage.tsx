@@ -73,11 +73,12 @@ const NxLoadErrorPage = () =>
                             component disappears when that happens">
       <NxLoadErrorRetryExample />
     </GalleryExampleTile>
-    <GalleryExampleTile>
-      This example demonstrates that when the text is long, the Retry button falls underneath of it but still on
-      the right-hand side of the alert.
+
+    <GalleryExampleTile title="Retry Button with Long Text"
+                        codeExamples={retryLongMessageSourceCode}
+                        description="This example demonstrates that when the text is long, the Retry button falls
+                            underneath of it but still on the right-hand side of the alert.">
       <NxLoadErrorRetryLongMessageExample />
-      <CodeExample content={retryLongMessageSourceCode} />
     </GalleryExampleTile>
   </>;
 
