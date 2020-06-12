@@ -6,6 +6,7 @@
  */
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxLoadError, { Props } from '../NxLoadError';
+import NxButton from '../../NxButton/NxButton';
 import { NxErrorAlert } from '../../NxAlert/NxAlert';
 
 describe('NxLoadError', function() {
@@ -46,10 +47,10 @@ describe('NxLoadError', function() {
   });
 
   it('renders a retry button if there is an error and retryHandler is set', function() {
-    expect(getShallowComponent({ error: 'Error!' })).not.toContainMatchingElement('button');
+    expect(getShallowComponent({ error: 'Error!' })).not.toContainMatchingElement(NxButton);
 
-    expect(getShallowComponent({ error: 'Error!', retryHandler: () => {} })).toContainMatchingElement('button');
-    expect(getShallowComponent({ error: 'Error!', retryHandler: () => {} }).find('button')).toIncludeText('Retry');
+    expect(getShallowComponent({ error: 'Error!', retryHandler: () => {} })).toContainMatchingElement(NxButton);
+    expect(getShallowComponent({ error: 'Error!', retryHandler: () => {} }).find(NxButton)).toIncludeText('Retry');
   });
 
   it('calls the retryHandler when the retry button is clicked', function() {
@@ -59,7 +60,7 @@ describe('NxLoadError', function() {
 
     expect(retryHandler).not.toHaveBeenCalled();
 
-    component.find('button').simulate('click');
+    component.find(NxButton).simulate('click');
 
     expect(retryHandler).toHaveBeenCalled();
   });
