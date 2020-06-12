@@ -32,7 +32,7 @@ const CodeExample: FunctionComponent<Props> =
         headerLanguagePart = language ? ` (${language.toUpperCase()})` : '';
 
     return (
-      <section>
+      <section className="gallery-example-code">
         <h3 className="nx-h3 nx-tile__section-header">
           Code Snippet
           {headerLanguagePart}
