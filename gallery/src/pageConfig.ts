@@ -53,6 +53,7 @@ import NxStatefulDropdownPage from './components/NxStatefulDropdown/NxStatefulDr
 import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCheckboxPage';
 import ContributingPage from './pages/Contributing';
 import FontSizePage from './guidelines/FontSize/FontSizePage';
+import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -98,6 +99,7 @@ const pageConfig: PageConfig = {
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
     'nx-page-title': NxPageTitlePage,
+    'nx-scrollable': NxScrollablePage,
     'nx-table': NxTableStylePage,
     'nx-text-input': NxTextInputStylesPage,
     'nx-threat-number': NxThreatNumberPage,

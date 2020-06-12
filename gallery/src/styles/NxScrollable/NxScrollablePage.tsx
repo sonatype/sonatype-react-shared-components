@@ -1,0 +1,31 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+import React from 'react';
+
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+
+import NxScrollableExample from './NxScrollableExample';
+
+const nxScrollableExampleCode = require('!!raw-loader!./NxScrollableExample').default;
+
+const NxScrollablePage = () =>
+  <>
+    <GalleryDescriptionTile>
+      <p>
+        <code className="nx-code">.nx-scrollable</code> is a class that turns any block level element into a scrolling
+        container. It has a default max-height of 400px so in most instances you're going to want to create a modifier
+        class (e.g. <code className="nx-code">.nx-scrollable--my-box</code>) to adjust the height to suit your needs.
+      </p>
+    </GalleryDescriptionTile>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={nxScrollableExampleCode}
+                        description="">
+      <NxScrollableExample />
+    </GalleryExampleTile>
+  </>;
+
+export default NxScrollablePage;
