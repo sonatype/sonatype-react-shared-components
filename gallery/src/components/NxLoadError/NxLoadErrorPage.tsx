@@ -70,7 +70,7 @@ const NxLoadErrorPage = () =>
     <GalleryExampleTile title="Retry Button"
                         codeExamples={retrySourceCode}
                         description="In this example, the error is cleared on retry. Note that the NxLoadError
-                            component disappears when that happens">
+                            component disappears when that happens.">
       <NxLoadErrorRetryExample />
     </GalleryExampleTile>
 
