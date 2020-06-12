@@ -9,7 +9,6 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTextInputStylesExample from './NxTextInputStylesExample';
-import CodeExample from '../../CodeExample';
 
 const sourceCode = require('!!raw-loader!./NxTextInputStylesExample').default;
 
@@ -53,9 +52,14 @@ const NxTextInputStylesPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={sourceCode}
+                        description="This example demonstrates the fundamental look of various elements styled with
+                            nx-text-input. Note that these styles are not typically used alone, and so elements looking
+                            exactly like these will not typically be seen. Rather, these styles would typically be
+                            used in conjunction with the validation styles provided by the NxTextInput react component,
+                            which add border colors and other signifiers.">
       <NxTextInputStylesExample />
-      <CodeExample content={sourceCode} />
     </GalleryExampleTile>
   </>;
 

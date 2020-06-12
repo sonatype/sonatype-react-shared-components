@@ -8,7 +8,6 @@ import React from 'react';
 import { NxInfoAlert } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
 
 import NxTooltipExample from './NxTooltipExample';
 
@@ -16,6 +15,8 @@ const tooltipsExampleCode = require('!!raw-loader!./NxTooltipExample').default,
     tooltipsExampleStyles = require('!!raw-loader!./NxTooltipExample.scss').default;
 
 export default function NxTooltipPage() {
+  const codeExamples = [tooltipsExampleCode, { content: tooltipsExampleStyles, language: 'scss' }];
+
   return (
     <>
       <GalleryDescriptionTile>
@@ -82,10 +83,11 @@ export default function NxTooltipPage() {
           </tbody>
         </table>
       </GalleryDescriptionTile>
-      <GalleryExampleTile>
+      <GalleryExampleTile title="General Example"
+                          codeExamples={codeExamples}
+                          description="This example demonstrates a series of components with tooltips using various
+                              configuration options.">
         <NxTooltipExample/>
-        <CodeExample content={tooltipsExampleCode}/>
-        <CodeExample language="scss" content={tooltipsExampleStyles}/>
       </GalleryExampleTile>
     </>
   );
