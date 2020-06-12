@@ -25,6 +25,7 @@ const PageLayoutPage = () =>
         </a>
         {' '}to handle our layouts.
       </p>
+      <h2 className="nx-h2">Flexbox</h2>
       <p className="nx-p">
         One challenge of flexbox layouts is that direct parent-child relationships between elements are crucial, and
         adding intermediate ancestors can easily break the layout. This often makes flexbox layouts challenging with
@@ -36,6 +37,18 @@ const PageLayoutPage = () =>
         Our single and double column layouts are essentially the same except that the single column layout omits the
         sidebar element. When the sidebar element is not present the
         {' '}<code className="nx-code">nx-page-content-main</code> block will expand to fill the available space.
+      </p>
+      <h2 className="nx-h2">Scrolling</h2>
+      <p className="nx-p">
+        The default RSC page layout uses what we call "section scrolling". With section scrolling the header remains
+        fixed, while the sidebar and main content areas are able to scroll independently depending on their oveflow
+        state.
+      </p>
+      <p className="nx-p">
+        Including the <code className="nx-code">.nx-page--page-scrolling</code> modifier to
+        {' '}<code className="nx-code">&lt;div className="nx-page"&gt;</code> will change this to "page scrolling" where
+        the sidebar and main content areas scroll together if either has content which overflows and causes scrollbars
+        to appear. The header and footer (if used) remain fixed.
       </p>
       <h2 className="nx-h2">Page layout illustrations</h2>
       <h3 className="nx-h3">Standard two column layout</h3>

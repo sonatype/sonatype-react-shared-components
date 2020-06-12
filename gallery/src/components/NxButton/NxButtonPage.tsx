@@ -14,12 +14,14 @@ import NxButtonPrimaryExample from './NxButtonPrimaryExample';
 import NxButtonTertiaryExample from './NxButtonTertiaryExample';
 import NxButtonErrorExample from './NxButtonErrorExample';
 import NxButtonIconExample from './NxButtonIconExample';
+import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
 
 const NxButtonDefaultCode = require('!!raw-loader!./NxButtonDefaultExample').default,
     nxButtonPrimaryCode = require('!!raw-loader!./NxButtonPrimaryExample').default,
     nxButtonTertiaryCode = require('!!raw-loader!./NxButtonTertiaryExample').default,
     nxButtonErrorCode = require('!!raw-loader!./NxButtonErrorExample').default,
-    nxButtonIconCode = require('!!raw-loader!./NxButtonIconExample').default;
+    nxButtonIconCode = require('!!raw-loader!./NxButtonIconExample').default,
+    nxButtonIconOnlyCode = require('!!raw-loader!./NxButtonIconOnlyExample').default;
 
 export default function NxButtonPage() {
   return (
@@ -53,9 +55,14 @@ export default function NxButtonPage() {
         <CodeExample content={nxButtonErrorCode}/>
       </GalleryTile>
 
-      <GalleryTile title="Buttons with Icons">
+      <GalleryTile title="Using icons in buttons">
         <NxButtonIconExample/>
         <CodeExample content={nxButtonIconCode}/>
+      </GalleryTile>
+
+      <GalleryTile title="Icon only buttons">
+        <NxButtonIconOnlyExample/>
+        <CodeExample content={nxButtonIconOnlyCode}/>
       </GalleryTile>
     </>
   );

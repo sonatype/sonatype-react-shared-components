@@ -9,7 +9,6 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxLoadingSpinnerExample from './NxLoadingSpinnerExample';
-import CodeExample from '../../CodeExample';
 
 const sourceCode = require('!!raw-loader!./NxLoadingSpinnerExample').default;
 
@@ -19,9 +18,10 @@ const NxLoadingSpinnerPage = () =>
       <p>Loading Spinner with caption</p>
       <p>Props: none</p>
     </GalleryDescriptionTile>
-    <GalleryExampleTile>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={sourceCode}
+                        description="The loading spinner. Not props are necessary - it is a simple, static element.">
       <NxLoadingSpinnerExample />
-      <CodeExample content={sourceCode} />
     </GalleryExampleTile>
   </>;
 

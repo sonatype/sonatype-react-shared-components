@@ -9,7 +9,7 @@
 /*
   #Page elements
 */
-$nx-main-header-height: 40px;
+$nx-main-header-height: 72px;
 
 $nx-page-width-max: 1366px;
 $nx-page-width-min: 1024px;
@@ -19,6 +19,8 @@ $nx-sidebar-width: 100% - $nx-content-width;
 $nx-paragraph-width-maximum: 562px;
 
 $nx-scrollbar-width: 15px;
+
+$nx-border-radius: 6px;
 
 //  #Margin/Padding widths
 $nx-spacing-xxs: 4px;

@@ -65,15 +65,15 @@ $nx-fail-color-hover: #5d0000;
 
 // Structural
 $nx-site-background-color: #f4f5f9;
-$nx-page-background-color: $nx-grey-1;
-$nx-sidebar-background-color: #f1f3fa;
-$nx-content-background-color: $nx-grey-1;
+$nx-page-background-color: $nx-site-background-color;
+$nx-sidebar-background-color: $nx-site-background-color;
+$nx-content-background-color: $nx-site-background-color;
 $nx-header-border: #f1f3fa;
 
 //  Text
 $nx-heading-color: #2C2C2C;
-$nx-text-color: #474747;
-$nx-text-color-light: $nx-slate;
+$nx-text-color: #2c2c2c;
+$nx-text-color-light: #474747;
 $nx-text-color-disabled: $nx-grey-4;
 $nx-text-color-error: $nx-fail-color;
 

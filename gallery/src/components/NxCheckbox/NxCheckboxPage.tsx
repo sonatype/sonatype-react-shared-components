@@ -77,17 +77,20 @@ const NxCheckboxPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={exampleCode}
+                        description="This example shows a series of checkboxes in a typical vertical layout with
+                          different label content. Note that one of the checkboxes is disabled. Another has no label
+                          at all but is adjacent to other content, demonstrating its lack of inherent margin.">
       <NxCheckboxExample />
-      <CodeExample content={exampleCode} />
     </GalleryExampleTile>
 
-    <GalleryTile title='Inline Checkbox'>
+    <GalleryTile title="Inline Checkbox">
       <NxCheckboxInlineExample />
       <CodeExample content={inlineExampleCode} />
     </GalleryTile>
 
-    <GalleryTile title='Checkbox label should not wrap'>
+    <GalleryTile title="Checkbox label should not wrap">
       <NxCheckboxNowrapExample />
       <CodeExample content={nowrapExampleCode} />
     </GalleryTile>
