@@ -15,16 +15,18 @@ const nxScrollableExampleCode = require('!!raw-loader!./NxScrollableExample').de
 const NxScrollablePage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         <code className="nx-code">.nx-scrollable</code> is a class that turns any block level element into a scrolling
         container. It has a default max-height of 400px so in most instances you're going to want to create a modifier
         class (e.g. <code className="nx-code">.nx-scrollable--my-box</code>) to adjust the height to suit your needs.
       </p>
-      <p>
+      <p className="nx-p">
         Generally <code className="nx-code">.nx-scrollable</code> is applied to blocks like
         {' '}<code className="nx-code">.nx-tile-content</code> or <code className="nx-code">.nx-modal-content</code>.
-        {' '}<code className="nx-code">.nx-scrollable</code> should <strong>not</strong> be used to replicate page or
-        browser scrolling, but instead it should refer to the <a href="#Pages/Page Layout/">page layout templates</a>.
+      </p>
+      <p className="nx-p">
+        <code className="nx-code">.nx-scrollable</code> should <strong>not</strong> be used to replicate page or browser
+        scrolling, refer instead to the <a href="#Pages/Page Layout/">page layout templates</a>.
       </p>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="General Example"
