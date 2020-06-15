@@ -7,7 +7,6 @@
 
 $main-header-background: $nx-off-white;
 $main-header-color: $nx-off-black;
-$main-header-height: 72px;
 $main-header-product-height: 52px;
 $main-header-product-title-row-height: 2fr;
 $main-header-product-version-row-height: 1fr;
@@ -20,15 +19,16 @@ $main-header-product-version-row-height: 1fr;
   background-color: $main-header-background;
   border-bottom: 1px solid $nx-header-border;
   flex-shrink: 0; // needed for IE11
-  height: $main-header-height;
+  height: $nx-main-header-height;
   width: 100%;
 }
 
 .nx-page-header__inner {
   @include container-horizontal;
 
-  height: $main-header-height;
+  height: $nx-main-header-height;
   margin: 0 auto;
+  padding-left: $nx-spacing-md;
   width: 100%;
   max-width: $nx-page-width-max;
 }
@@ -38,7 +38,7 @@ $main-header-product-version-row-height: 1fr;
   box-sizing: border-box;
   color: $main-header-color;
   display: flex;
-  height: $main-header-height - 6px; // aids vertical alignment of contents
+  height: $nx-main-header-height - 6px; // aids vertical alignment of contents
   text-decoration: none;
   min-width: $nx-sidebar-width;
 }
