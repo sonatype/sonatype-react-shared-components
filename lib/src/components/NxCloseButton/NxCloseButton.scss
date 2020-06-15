@@ -4,9 +4,10 @@
 
 .nx-btn--close {
   border-color: transparent;
+  font-size: $nx-font-size;
 
   .nx-icon {
-    height: $nx-spacing-md;
-    width: $nx-spacing-md;
+    height: 1em;
+    width: 1em;
   }
 }
