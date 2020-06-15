@@ -11,10 +11,10 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { Props, propTypes } from './types';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxButton from '../NxButton/NxButton';
-import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
 import { ensureElement } from '../../util/reactUtil';
-
+// import CaratUp from '../../icons/Carat-Up';
+import CaratDown from '../../icons/Carat-Down';
 import './NxDropdown.scss';
 
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
@@ -43,7 +43,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
               className={buttonClasses}
               onClick={!disabled && onToggleCollapse || undefined}>
       { labelContent }
-      <NxFontAwesomeIcon icon={faCaretDown}/>
+      <CaratDown/>
     </NxButton>
   );
 

@@ -8,14 +8,31 @@
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
 
+$nx-dropdown-width: 250px;
+
 .nx-dropdown {
   display: inline-block;
   position: relative;
+  width: $nx-dropdown-width;
 }
 
 .nx-dropdown__toggle {
+  display: flex;
   margin: 0;
   outline: none;
+  text-align: left;
+  padding-right: $nx-spacing-md;
+  padding-left: $nx-spacing-md;
+  width: $nx-dropdown-width;
+
+  span {
+    flex-grow: 1;
+  }
+
+  .nx-icon {
+    align-self: center;
+    width: 12px;
+  }
 }
 
 .nx-dropdown-menu {
@@ -30,11 +47,10 @@
   color: $nx-text-color-light;
   display: block;
   margin: 6px 0 0 0;
-  max-width: 300px;
-  min-width: 160px;
   padding: $nx-spacing-xs $nx-spacing-md;
   position: absolute;
   top: 100%;
+  width: $nx-dropdown-width;
 }
 
 .nx-dropdown-link, .nx-dropdown-button {
