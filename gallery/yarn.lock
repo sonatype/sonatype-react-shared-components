@@ -8338,13 +8338,6 @@ wcwidth@>=1.0.1:
   dependencies:
     defaults "^1.0.3"
 
-wdio-chromedriver-service@^6.0.3:
-  version "6.0.3"
-  resolved "https://repo.sonatype.com/repository/npm-all/wdio-chromedriver-service/-/wdio-chromedriver-service-6.0.3.tgz#ac1ff82f772dce9b77500e9df5384c73786d8b5a"
-  integrity sha512-1KZUQH1/b5iD/3B/VJ3EOy8fArNA7cuIop9GPFxxRAmkA33qeCrx+5TbZ6hQl6+GUZtRQoqGeUUZ5y0W0afQLw==
-  dependencies:
-    fs-extra "^9.0.0"
-
 webdriver@6.1.17:
   version "6.1.17"
   resolved "https://repo.sonatype.com/repository/npm-all/webdriver/-/webdriver-6.1.17.tgz#669249677625d5e29caf90a2e3dab6ed2240eb9c"
@@ -8357,7 +8350,7 @@ webdriver@6.1.17:
     got "^11.0.2"
     lodash.merge "^4.6.1"
 
-webdriverio@6.1.17:
+webdriverio@6.1.17, webdriverio@^6.1.17:
   version "6.1.17"
   resolved "https://repo.sonatype.com/repository/npm-all/webdriverio/-/webdriverio-6.1.17.tgz#83ae162299511c2ff06334d64a045d0014c1a8ce"
   integrity sha512-mkV7FRjloyFI45BzZUGU8kAfrJCZluif7iC2Xsq9dx8qMyG/k7jUaE+IyDYP0i39hwswSAzGqDj1iGIifkK17Q==

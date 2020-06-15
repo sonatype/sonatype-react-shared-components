@@ -10,7 +10,7 @@
     "lint": "eslint 'src/**/*.{js,ts}{,x}'",
     "webpack": "webpack --env.production",
     "webpack-dev-server": "webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "wdio run wdio.conf.js",
     "clean": "rimraf dist webpack-modules"
   },
   "repository": {
@@ -48,7 +48,7 @@
     "sass-loader": "=7.1.0",
     "ts-loader": "=5.3.3",
     "typescript": "3.5.2",
-    "wdio-chromedriver-service": "^6.0.3",
+    "webdriverio": "^6.1.17",
     "webpack": "=4.29.6",
     "webpack-cli": "=3.3.0",
     "webpack-dev-server": "=3.3.1"

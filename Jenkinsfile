@@ -6,9 +6,14 @@
  */
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
+def seleniumDockerImage = 'selenium/standalone-chrome'
+def seleniumDockerVersion = '3.141.59-20200409'
+
 dockerizedBuildPipeline(
   prepare: {
     githubStatusUpdate('pending')
+
+    sh "docker run --name selenium-chrome -d -p 4444:4444 $seleniumDockerImage:$seleniumDockerVersion"
   },
   setVersion: {
     env['VERSION'] = sh(returnStdout: true, script: 'jq -r -e .version lib/package.json').trim()
@@ -100,5 +105,11 @@ dockerizedBuildPipeline(
   },
   onFailure: {
     githubStatusUpdate('failure')
+  },
+  cleanup: {
+    sh """
+      docker rm -f selenium-chrome
+      docker rmi $seleniumDockerImage:$seleniumDockerVersion
+    """
   }
 )
