@@ -23,14 +23,16 @@
 
   background: $nx-off-white;
   border: $nx-border-dark;
-  border-radius: 4px;
-  box-shadow: -4px 4px 10px 0 $nx-slate;
+  border-radius: $nx-border-radius;
+  box-shadow: 0 2px 12px 0 rgba(74, 77, 113, 0.2),
+              0 1px 2px 0 rgba(91, 95, 141, 0.2),
+              0 1px 1px 0 rgba(124, 128, 179, 0.2);
   color: $nx-text-color-light;
   display: block;
   margin: 6px 0 0 0;
   max-width: 300px;
   min-width: 160px;
-  padding: 8px 12px;
+  padding: $nx-spacing-xs $nx-spacing-md;
   position: absolute;
   top: 100%;
 }
@@ -58,7 +60,11 @@
   width: 100%;
 
   &:hover, &:focus {
-    background-color: $nx-grey-1;
+    background-color: #f1f3fa;
+  }
+
+  &:active {
+    background-color: #d3e6ff;
   }
 
   &.disabled {
