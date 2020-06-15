@@ -22,8 +22,8 @@ const NxScrollablePage = () =>
       </p>
       <p>
         Generally <code className="nx-code">.nx-scrollable</code> is applied to blocks like
-        <code className="nx-code">.nx-tile-content</code> or <code className="nx-code">.nx-modal-content</code>.
-        <code className="nx-code">.nx-scrollable</code> should <strong>not</strong> be used to replicate page or
+        {' '}<code className="nx-code">.nx-tile-content</code> or <code className="nx-code">.nx-modal-content</code>.
+        {' '}<code className="nx-code">.nx-scrollable</code> should <strong>not</strong> be used to replicate page or
         browser scrolling, but instead it should refer to the <a href="#Pages/Page Layout/">page layout templates</a>.
       </p>
     </GalleryDescriptionTile>
