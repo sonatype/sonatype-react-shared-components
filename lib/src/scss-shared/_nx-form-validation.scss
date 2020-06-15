@@ -8,6 +8,12 @@
 
 @mixin valid() {
   border-color: $nx-valid-color;
+
+  &::after {
+    content: url("../assets/img/Validation.png");
+    height: 16px;
+    width: 16px;
+  }
 }
 
 @mixin invalid() {
