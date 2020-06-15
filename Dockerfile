@@ -5,11 +5,12 @@
 # distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
 #
 
-FROM docker-all.repo.sonatype.com/cdi/node-10:2
+FROM node:10
 
 RUN apt-get update && \
     apt-get autoremove -y && apt-get clean -y && \
     apt-get install jq -y
 
+RUN useradd -u 1002 -g 100 jenkins
 RUN mkdir -p /home/jenkins/.npm
 RUN chown -R jenkins /home/jenkins/
