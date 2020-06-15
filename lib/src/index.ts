@@ -109,3 +109,5 @@ export {
   default as NxStatefulTextInput,
   Props as NxStatefulTextInputProps
 } from './components/NxTextInput/stateful/NxStatefulTextInput';
+
+export { default as NxCloseButton } from './components/NxCloseButton/NxCloseButton';

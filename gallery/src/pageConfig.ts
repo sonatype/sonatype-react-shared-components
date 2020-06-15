@@ -53,6 +53,7 @@ import NxStatefulDropdownPage from './components/NxStatefulDropdown/NxStatefulDr
 import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCheckboxPage';
 import ContributingPage from './pages/Contributing';
 import FontSizePage from './guidelines/FontSize/FontSizePage';
+import NxCloseButtonPage from './components/NxCloseButton/NxCloseButtonPage';
 import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
 
 const pageConfig: PageConfig = {
@@ -62,6 +63,7 @@ const pageConfig: PageConfig = {
     NxButton: NxButtonPage,
     NxCheckbox: NxCheckboxPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
+    NxCloseButton: NxCloseButtonPage,
     NxDropdown: NxDropdownPage,
     NxStatefulDropdown: NxStatefulDropdownPage,
     NxFilterInput: NxFilterInputPage,
