@@ -6,7 +6,6 @@
  */
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 import { Props, propTypes } from './types';
 import NxTooltip from '../NxTooltip/NxTooltip';
