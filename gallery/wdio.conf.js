@@ -16,7 +16,7 @@ exports.config = {
     //
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
-    hostname: 'localhost',
+    hostname: process.env.SELENIUM_SERVER_IP || 'localhost',
     port: 4444,
     path: '/wd/hub',
     //
