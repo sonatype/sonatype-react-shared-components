@@ -8,6 +8,8 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfigFn = require('./webpack.config.js');
 
+const host = process.env.TEST_IP || 'localhost';
+
 exports.config = {
     //
     // ====================
@@ -16,7 +18,7 @@ exports.config = {
     //
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
-    hostname: process.env.SELENIUM_SERVER_IP || 'localhost',
+    hostname: host,
     port: 4444,
     path: '/wd/hub',
     //
@@ -91,7 +93,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://192.168.0.4:4043/',
+    baseUrl: `http://${host}:4043/`,
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

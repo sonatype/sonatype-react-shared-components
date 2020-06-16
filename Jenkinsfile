@@ -68,7 +68,7 @@ dockerizedBuildPipeline(
       yarn install
 
       # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
-      SELENIUM_SERVER_IP=$JENKINS_AGENT_IP npm run test
+      TEST_IP=$JENKINS_AGENT_IP npm run test
       npm run build
       cd ..
     '''
