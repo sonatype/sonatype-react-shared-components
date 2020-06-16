@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import './Carat-Down.scss';
+import './CaratDown.scss';
 
 const CaratDown = () =>
   <svg viewBox="0 0 12 8" className="nx-icon nx-icon--carat-down">
