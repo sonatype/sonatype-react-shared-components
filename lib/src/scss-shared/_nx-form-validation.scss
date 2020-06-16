@@ -10,11 +10,6 @@
   .nx-text-input__input:not(:disabled) {
     border-color: $nx-valid-color;
   }
-
-  &::after {
-    content: url("../assets/img/Validation.png");
-    margin-left: $nx-spacing-xs;
-  }
 }
 
 @mixin invalid() {

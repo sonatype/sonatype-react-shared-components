@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { omit } from 'ramda';
 
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
-import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import './NxTextInput.scss';
 import { Props, propTypes } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
@@ -71,10 +71,14 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
             className: "nx-text-input__input",
             onKeyPress: inputOnKeyPress
           })}
-          { isInvalid && <span className="nx-text-input__validation-message">
-              <NxFontAwesomeIcon icon={faExclamationCircle}/>
-              <span className="nx-text-input__validation-message-text">{firstValidationError}</span>
-            </span> }
+          <span className="nx-text-input__valid-message">
+            {/* TODO right icon */}
+            <NxFontAwesomeIcon icon={faExclamationCircle}/>
+          </span>
+          <span className="nx-text-input__invalid-message">
+            <NxFontAwesomeIcon icon={faExclamationCircle}/>
+            <span className="nx-text-input__invalid-message-text">{firstValidationError}</span>
+          </span>
         </div>
       );
     }
