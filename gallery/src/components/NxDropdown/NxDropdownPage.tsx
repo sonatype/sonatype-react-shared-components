@@ -9,14 +9,12 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryTile} from '../../gallery-components/GalleryTiles';
 
 import NxDropdownNavigationExample from './NxDropdownNavigationExample';
-import NxDropdownButtonVariantExample from './NxDropdownButtonVariantExample';
 import NxDropdownDisabledExample from './NxDropdownDisabledExample';
 import NxDropdownCustomLabelExample from './NxDropdownCustomLabelExample';
 import NxDropdownLinksExample from './NxDropdownLinksExample';
 import CodeExample from '../../CodeExample';
 
 const nxDropdownNavigationExampleCode = require('!!raw-loader!./NxDropdownNavigationExample').default,
-    nxDropdownButtonVariantExampleCode = require('!!raw-loader!./NxDropdownButtonVariantExample').default,
     nxDropdownDisabledExampleCode = require('!!raw-loader!./NxDropdownDisabledExample').default,
     nxDropdownCustomLabelExampleCode = require('!!raw-loader!./NxDropdownCustomLabelExample').default,
     nxDropdownLinksExampleCode = require('!!raw-loader!./NxDropdownLinksExample').default;
@@ -129,11 +127,6 @@ const NxDropdownPage = () =>
     <GalleryTile title="Navigation Example">
       <NxDropdownNavigationExample />
       <CodeExample content={nxDropdownNavigationExampleCode} />
-    </GalleryTile>
-
-    <GalleryTile title="Button Variant Example">
-      <NxDropdownButtonVariantExample />
-      <CodeExample content={nxDropdownButtonVariantExampleCode} />
     </GalleryTile>
 
     <GalleryTile title="Disabled Example">
