@@ -33,6 +33,12 @@ $nx-dropdown-width: 250px;
     align-self: center;
     color: #000000;
   }
+
+  &.disabled {
+    .nx-icon {
+      color: #949494;
+    }
+  }
 }
 
 .nx-dropdown-menu {
