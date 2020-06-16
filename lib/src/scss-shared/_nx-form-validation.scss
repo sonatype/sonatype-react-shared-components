@@ -7,7 +7,9 @@
 @import 'nx-variables';
 
 @mixin valid() {
-  border-color: $nx-valid-color;
+  .nx-text-input__input:not(:disabled) {
+    border-color: $nx-valid-color;
+  }
 
   &::after {
     content: url("../assets/img/Validation.png");
@@ -16,16 +18,14 @@
 }
 
 @mixin invalid() {
-  border-color: $nx-invalid-color;
-}
-
-.nx-text-input__validation-message {
-  color: #cd0028;
-  display: block;
-  font-size: $nx-font-size-xs;
+  .nx-text-input__input:not(:disabled) {
+    border-color: $nx-invalid-color;
+  }
 }
 
 @mixin pristine() {
-  border-color: #d1d6f0;
-  color: $nx-text-color-light;
+  .nx-text-input__input:not(:disabled) {
+    border-color: #d1d6f0;
+    color: $nx-text-color-light;
+  }
 }

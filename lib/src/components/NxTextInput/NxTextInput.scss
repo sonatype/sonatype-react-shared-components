@@ -6,9 +6,10 @@
  */
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/_nx-form-validation.scss';
+@import '../../scss-shared/_nx-container-helpers.scss';
 
-.nx-text-input:not(:disabled) {
-  &.nx-text-input--valid {
+.nx-text-input {
+  &.nx-text-input--valid:not(.nx-text-input--pristine) {
     @include valid();
   }
 
