@@ -4,12 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@Library(['private-pipeline-library', 'jenkins-shared']) _
+@Library(['private-pipeline-library', 'jenkins-shared@docker-args']) _
 
 def seleniumDockerImage = 'selenium/standalone-chrome'
 def seleniumDockerVersion = '3.141.59-20200409'
 
 dockerizedBuildPipeline(
+  // expose gallery port on host so selenium container can hit it
+  dockerArgs: '-p 4043:4043',
   prepare: {
     githubStatusUpdate('pending')
 
