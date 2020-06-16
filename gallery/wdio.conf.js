@@ -1,3 +1,7 @@
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const webpackConfigFn = require('./webpack.config.js');
+
 exports.config = {
     //
     // ====================
@@ -138,8 +142,29 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config) {
+      const webpackConfig = webpackConfigFn(),
+          server = new WebpackDevServer(webpack(webpackConfig), webpackConfig.devServer);
+
+      // save the server so we can shut it down in onComplete
+      config.webpackServer = server;
+
+      console.log('Starting WebpackDevServer');
+
+      return new Promise(function(resolve, reject) {
+        server.listen(webpackConfig.devServer.port, webpackConfig.devServer.host, function(err) {
+          if (err) {
+            reject(err);
+          }
+          else {
+            console.log('WebpackDevServer started successfully on ' +
+                `http://${webpackConfig.devServer.host}:${webpackConfig.devServer.port}`);
+
+            resolve();
+          }
+        });
+      });
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -245,8 +270,21 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: function(exitCode, config) {
+      return new Promise(function(resolve, reject) {
+        console.time('WebpackDevServer Shut Down');
+        config.webpackServer.close(function(err) {
+          if (err) {
+            reject(err);
+          }
+          else {
+            console.timeEnd('WebpackDevServer Shut Down');
+
+            resolve();
+          }
+        });
+      });
+    },
     /**
     * Gets executed when a refresh happens.
     * @param {String} oldSessionId session ID of the old session
