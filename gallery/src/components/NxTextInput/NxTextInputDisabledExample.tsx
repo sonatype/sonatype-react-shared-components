@@ -10,6 +10,6 @@ import { NxTextInput } from '@sonatype/react-shared-components';
 
 export default function NxTextInputDisabledExample() {
   return (
-    <NxTextInput placeholder="Disabled input" value="" isPristine={true} disabled/>
+    <NxTextInput placeholder="Disabled input" value="" isPristine={false} disabled/>
   );
 };

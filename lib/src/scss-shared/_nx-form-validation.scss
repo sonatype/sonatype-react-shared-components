@@ -11,13 +11,18 @@
 
   &::after {
     content: url("../assets/img/Validation.png");
-    height: 16px;
-    width: 16px;
+    margin-left: $nx-spacing-xs;
   }
 }
 
 @mixin invalid() {
   border-color: $nx-invalid-color;
+}
+
+.nx-text-input__validation-message {
+  color: #cd0028;
+  display: block;
+  font-size: $nx-font-size-xs;
 }
 
 @mixin pristine() {
