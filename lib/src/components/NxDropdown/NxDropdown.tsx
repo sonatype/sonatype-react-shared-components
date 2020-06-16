@@ -12,8 +12,8 @@ import NxTooltip from '../NxTooltip/NxTooltip';
 import NxButton from '../NxButton/NxButton';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
 import { ensureElement } from '../../util/reactUtil';
-// import CaratUp from '../../icons/Carat-Up';
-import CaratDown from '../../icons/Carat-Down';
+// import CaratUp from '../../icons/CaratUp';
+import CaratDown from '../../icons/CaratDown';
 import './NxDropdown.scss';
 
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
