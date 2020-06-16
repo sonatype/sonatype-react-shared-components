@@ -25,7 +25,7 @@ $nx-dropdown-width: 250px;
   padding-left: $nx-spacing-md;
   width: $nx-dropdown-width;
 
-  span {
+  .nx-dropdown__toggle-label {
     flex-grow: 1;
   }
 

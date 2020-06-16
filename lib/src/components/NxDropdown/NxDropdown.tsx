@@ -11,7 +11,6 @@ import { Props, propTypes } from './types';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxButton from '../NxButton/NxButton';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
-import { ensureElement } from '../../util/reactUtil';
 // import CaratUp from '../../icons/CaratUp';
 import CaratDown from '../../icons/CaratDown';
 import './NxDropdown.scss';
@@ -33,15 +32,13 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
 
   const classes = classnames('nx-dropdown', className);
 
-  const labelContent = ensureElement(label);
-
   const toggleTooltipProps = toggleTooltip && wrapTooltipProps(toggleTooltip);
 
   const toggle = (
     <NxButton variant={variant || 'tertiary'}
               className={buttonClasses}
               onClick={!disabled && onToggleCollapse || undefined}>
-      { labelContent }
+      <span className="nx-dropdown__toggle-label">{ label }</span>
       <CaratDown/>
     </NxButton>
   );
