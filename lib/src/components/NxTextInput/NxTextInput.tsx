@@ -10,7 +10,6 @@ import { omit } from 'ramda';
 
 import './NxTextInput.scss';
 import { Props, propTypes } from './types';
-import NxTooltip from '../NxTooltip/NxTooltip';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 export { Props, propTypes, inputTypes } from './types';
 
@@ -61,19 +60,17 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
       }
 
       return (
-        <NxTooltip open={isInvalid}
-                   title={firstValidationError}
-                   className="nx-tooltip--validation-error"
-                   placement="top-end">
+        <div className={internalClassName}>
           {React.createElement(element, {
             ...newProps,
             ref,
             type: typeAttr,
             onChange: inputOnChange,
-            className: internalClassName,
+            className: "nx-text-input__input",
             onKeyPress: inputOnKeyPress
           })}
-        </NxTooltip>
+          { isInvalid && <span className="nx-text-input__validation-message">{firstValidationError}</span> }
+        </div>
       );
     }
 );
