@@ -11,7 +11,7 @@ import { Props, propTypes } from './types';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxButton from '../NxButton/NxButton';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
-// import CaratUp from '../../icons/CaratUp';
+import CaratUp from '../../icons/CaratUp';
 import CaratDown from '../../icons/CaratDown';
 import './NxDropdown.scss';
 
@@ -39,7 +39,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
               className={buttonClasses}
               onClick={!disabled && onToggleCollapse || undefined}>
       <span className="nx-dropdown__toggle-label">{ label }</span>
-      <CaratDown/>
+      { isOpen ? <CaratUp/> : <CaratDown/> }
     </NxButton>
   );
 
