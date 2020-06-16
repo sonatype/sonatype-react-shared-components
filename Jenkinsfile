@@ -64,6 +64,7 @@ dockerizedBuildPipeline(
 
       cd gallery
       yarn install
+      npm run test
       npm run build
       cd ..
     '''
