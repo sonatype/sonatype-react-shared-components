@@ -18,7 +18,6 @@ function NxDropdownNavigationExample() {
                 className="nx-dropdown--navigation"
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
-      <h4 className="nx-dropdown-title">Menu Title</h4>
       <a onClick={onClick} className="nx-dropdown-button">
         Nav Link1
       </a>
