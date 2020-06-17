@@ -16,18 +16,6 @@ describe('NxTextInput', function() {
       },
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxTextInput, minimalProps);
 
-  it('renders a text input wrapped in a NxTooltip by default', function() {
-    expect(getShallowComponent()).toMatchSelector(NxTooltip);
-    expect(getShallowComponent().find('input')).toExist();
-    expect(getShallowComponent().find('input')).toHaveProp('type', 'text');
-  });
-
-  it('renders a password input wrapped in a tooltip if type is "password"', function() {
-    expect(getShallowComponent({ type: 'password' })).toMatchSelector(NxTooltip);
-    expect(getShallowComponent({ type: 'password' }).find('input')).toExist();
-    expect(getShallowComponent({ type: 'password' }).find('input')).toHaveProp('type', 'password');
-  });
-
   it('renders a textarea if type is "textarea"', function() {
     expect(getShallowComponent({ type: 'textarea' })).toMatchSelector(NxTooltip);
     expect(getShallowComponent({ type: 'textarea' }).find('textarea')).toMatchSelector('textarea');
@@ -52,27 +40,6 @@ describe('NxTextInput', function() {
   it('sets the nx-text-input--pristine className iff isPristine is true', function() {
     expect(getShallowComponent().find('input')).not.toHaveClassName('nx-text-input--pristine');
     expect(getShallowComponent({ isPristine: true }).find('input')).toHaveClassName('nx-text-input--pristine');
-  });
-
-  it('sets the nx-tooltip--validation-error class on the tooltip', function() {
-    expect(getShallowComponent()).toHaveClassName('nx-tooltip--validation-error');
-  });
-
-  it('sets the tooltips `open` prop to false and title to null if there are no validation errors', function() {
-    expect(getShallowComponent()).toHaveProp('open', false);
-    expect(getShallowComponent({ validationErrors: null })).toHaveProp('open', false);
-    expect(getShallowComponent({ validationErrors: null })).toHaveProp('title', null);
-
-    expect(getShallowComponent({ validationErrors: [] })).toHaveProp('open', false);
-    expect(getShallowComponent({ validationErrors: [] })).toHaveProp('title', null);
-  });
-
-  it('sets the tooltips `open` prop to true and sets the title to the first validation error if it exists', function() {
-    expect(getShallowComponent({ validationErrors: 'foo' })).toHaveProp('open', true);
-    expect(getShallowComponent({ validationErrors: 'foo' })).toHaveProp('title', 'foo');
-
-    expect(getShallowComponent({ validationErrors: ['foo', 'bar'] })).toHaveProp('open', true);
-    expect(getShallowComponent({ validationErrors: ['foo', 'bar'] })).toHaveProp('title', 'foo');
   });
 
   it('sets the nx-text-input--invalid className if there are validationErrors', function() {
