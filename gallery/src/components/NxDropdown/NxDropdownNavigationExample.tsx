@@ -37,7 +37,7 @@ function NxDropdownNavigationExample() {
         Nav Link6
       </a>
       <a className="disabled nx-dropdown-button">
-        Nav Link Disabled
+        Nav Link7 Disabled
       </a>
     </NxDropdown>
   );
