@@ -30,8 +30,13 @@ const TooltipConfigPropsPage = () =>
 
     <GalleryExampleTile title="Example with NxDropdown"
                         codeExamples={tooltipConfigPropsDropdownExampleCode}
-                        description="A basic NxDropdown demonstrating usage of its toggleTooltip prop, which
-                            is of type TooltipConfigProps">
+                        description={
+                          <>
+                            A basic <code className="nx-code">NxDropdown</code> demonstrating usage of its
+                            {' '}<code className="nx-code">toggleTooltip</code> prop, which is of type
+                            {' '}<code className="nx-code">TooltipConfigProps</code>.
+                          </>
+                        }>
       <TooltipConfigPropsDropdownExample/>
     </GalleryExampleTile>
   </>;
