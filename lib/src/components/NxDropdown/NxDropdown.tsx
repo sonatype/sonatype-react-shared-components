@@ -39,7 +39,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
               className={buttonClasses}
               onClick={!disabled && onToggleCollapse || undefined}>
       <span className="nx-dropdown__toggle-label">{ label }</span>
-      { isOpen ? <NxFontAwesomeIcon icon={faCaretUp}/> : <NxFontAwesomeIcon icon={faCaretDown}/> }
+      <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown}/>
     </NxButton>
   );
 
