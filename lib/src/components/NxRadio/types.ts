@@ -7,7 +7,7 @@
 import { LabelHTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
-import { requiredNullableString } from '../../util/customPropTypes';
+import { requiredNullableString } from '../../internalUtil/customPropTypes';
 
 export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   name: string;

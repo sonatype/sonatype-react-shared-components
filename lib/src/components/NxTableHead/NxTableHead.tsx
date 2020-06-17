@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import {addPropsToChildren} from '../../util/childUtil';
+import {addPropsToChildren} from '../../internalUtil/childUtil';
 
 import {Props, propTypes} from './types';
 export {Props} from './types';

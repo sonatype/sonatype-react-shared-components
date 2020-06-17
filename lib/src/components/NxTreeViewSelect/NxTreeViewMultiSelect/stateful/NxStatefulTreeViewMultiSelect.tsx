@@ -9,7 +9,7 @@ import React, {FunctionComponent, useState} from 'react';
 import NxTreeViewMultiSelect from '../NxTreeViewMultiSelect';
 import { Props, propTypes } from './types';
 export { Props, Option } from './types';
-import useFuzzyFilter from '../../../../util/useFuzzyFilter';
+import useFuzzyFilter from '../../../../internalUtil/useFuzzyFilter';
 
 const NxStatefulTreeViewMultiSelect: FunctionComponent<Props> = function NxStatefulTreeViewMultiSelect(props) {
   const {options} = props,

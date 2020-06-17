@@ -11,7 +11,7 @@ import classnames from 'classnames';
 import { omit } from 'ramda';
 
 import { categoryByPolicyThreatLevel } from '../../util/threatLevels';
-import { pathSet } from '../../util/jsUtil';
+import { pathSet } from '../../internalUtil/jsUtil';
 
 import { Props, PolicyThreatLevelRange, propTypes } from './types';
 export { Props, PolicyThreatLevelRange, propTypes } from './types';

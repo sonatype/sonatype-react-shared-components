@@ -8,7 +8,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
 
-import {ensureElement} from '../../util/reactUtil';
+import {ensureElement} from '../../internalUtil/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { Props, propTypes } from './types';

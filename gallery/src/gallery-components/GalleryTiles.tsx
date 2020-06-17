@@ -6,7 +6,7 @@
  */
 import React, { FunctionComponent, ReactNode } from 'react';
 import classnames from 'classnames';
-import { ensureArray } from '@sonatype/react-shared-components/util/jsUtil';
+import { ensureArray } from '../util/jsUtil';
 
 import CodeExample, { Props as CodeExampleProps } from '../CodeExample';
 

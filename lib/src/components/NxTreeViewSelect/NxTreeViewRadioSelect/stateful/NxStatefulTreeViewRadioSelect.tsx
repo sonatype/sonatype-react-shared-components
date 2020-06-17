@@ -9,7 +9,7 @@ import React, {FunctionComponent, useState} from 'react';
 import NxTreeViewRadioSelect from '../NxTreeViewRadioSelect';
 import { Props, propTypes } from './types';
 export { Props, Option } from './types';
-import useFuzzyFilter from '../../../../util/useFuzzyFilter';
+import useFuzzyFilter from '../../../../internalUtil/useFuzzyFilter';
 
 const NxStatefulTreeViewRadioSelect: FunctionComponent<Props> = function NxStatefulTreeViewRadioSelect(props) {
   const {options} = props,

@@ -7,7 +7,7 @@
 import {ReactNode} from 'react';
 import * as PropTypes from 'prop-types';
 
-import { requiredNullableString } from '../../util/customPropTypes';
+import { requiredNullableString } from '../../internalUtil/customPropTypes';
 
 export interface Option {
   id: string | null;

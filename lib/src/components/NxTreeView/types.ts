@@ -7,7 +7,7 @@
 import {ReactNode} from 'react';
 import * as PropTypes from 'prop-types';
 
-import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
+import { TooltipConfigProps, tooltipPropTypesShape } from '../../internalUtil/tooltipUtils';
 
 export interface Props {
   onToggleCollapse?: (() => void) | null;
