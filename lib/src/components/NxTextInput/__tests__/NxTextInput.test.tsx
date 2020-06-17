@@ -21,10 +21,10 @@ describe('NxTextInput', function() {
   });
 
   it('sets the value as specified', function() {
-    expect(getShallowComponent({ value: 'foo' })).toHaveProp('value', 'foo');
+    expect(getShallowComponent({ value: 'foo' }).find('textarea')).toHaveProp('value', 'foo');
   });
 
-  it('passes through specified classNames to the input', function() {
+  it('accepts custom classes', function() {
     expect(getShallowComponent({ className: 'foo bar' })).toHaveClassName('foo');
     expect(getShallowComponent({ className: 'foo bar' })).toHaveClassName('bar');
   });
