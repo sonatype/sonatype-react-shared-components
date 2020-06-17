@@ -5,8 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 .nx-icon {
-  color: currentColor;
-  margin: 0 8px;
+  margin: 0 $nx-spacing-xs;
 
   + .nx-icon {
     margin-left: 0;
