@@ -11,9 +11,9 @@ import { Props, propTypes } from './types';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxButton from '../NxButton/NxButton';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
-import CaratUp from '../../icons/CaratUp';
-import CaratDown from '../../icons/CaratDown';
 import './NxDropdown.scss';
+import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   const {
@@ -39,7 +39,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
               className={buttonClasses}
               onClick={!disabled && onToggleCollapse || undefined}>
       <span className="nx-dropdown__toggle-label">{ label }</span>
-      { isOpen ? <CaratUp/> : <CaratDown/> }
+      { isOpen ? <NxFontAwesomeIcon icon={faCaretUp}/> : <NxFontAwesomeIcon icon={faCaretDown}/> }
     </NxButton>
   );
 
