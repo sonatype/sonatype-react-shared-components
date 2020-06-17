@@ -5,16 +5,25 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import 'nx-variables';
+@import 'nx-container-helpers';
 
 @mixin valid() {
   .nx-text-input__input:not(:disabled) {
     border-color: $nx-valid-color;
+  }
+
+  .nx-text-input__valid-message {
+    display: inline-block;
   }
 }
 
 @mixin invalid() {
   .nx-text-input__input:not(:disabled) {
     border-color: $nx-invalid-color;
+  }
+
+  .nx-text-input__invalid-message {
+    display: block;
   }
 }
 

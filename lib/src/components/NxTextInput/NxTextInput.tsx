@@ -14,6 +14,7 @@ import './NxTextInput.scss';
 import { Props, propTypes } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 export { Props, propTypes, inputTypes } from './types';
+import ValidationCheck from '../../icons/validationcheck';
 
 /**
  * Standard text input with validation styling
@@ -72,11 +73,10 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
             onKeyPress: inputOnKeyPress
           })}
           <span className="nx-text-input__valid-message">
-            {/* TODO right icon */}
-            <NxFontAwesomeIcon icon={faExclamationCircle}/>
+            <ValidationCheck/>
           </span>
           <span className="nx-text-input__invalid-message">
-            <NxFontAwesomeIcon icon={faExclamationCircle}/>
+            <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon--invalid"/>
             <span className="nx-text-input__invalid-message-text">{firstValidationError}</span>
           </span>
         </div>
