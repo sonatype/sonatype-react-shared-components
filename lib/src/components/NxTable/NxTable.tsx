@@ -7,7 +7,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import {only} from '../../internalUtil/childUtil';
+import {only} from '../../util/childUtil';
 import NxTableHead from '../NxTableHead/NxTableHead';
 import NxTableBody from '../NxTableBody/NxTableBody';
 import NxTableRow from '../NxTableRow/NxTableRow';

@@ -8,7 +8,7 @@ import {ReactNode, HTMLAttributes} from 'react';
 import * as PropTypes from 'prop-types';
 
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../../NxButton/types';
-import { TooltipConfigProps, tooltipPropTypesShape } from '../../../internalUtil/tooltipUtils';
+import { TooltipConfigProps, tooltipPropTypesShape } from '../../../util/tooltipUtils';
 
 export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
   label: ReactNode | string;

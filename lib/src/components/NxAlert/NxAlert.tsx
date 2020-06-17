@@ -10,7 +10,7 @@ import { faCheckCircle, faExclamationTriangle, faExclamationCircle, faInfoCircle
   from '@fortawesome/free-solid-svg-icons';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { ensureElement } from '../../internalUtil/reactUtil';
+import { ensureElement } from '../../util/reactUtil';
 
 import { Props, propTypes, NxAlertProps, nxAlertPropTypes} from './types';
 export { Props, propTypes, NxAlertProps, nxAlertPropTypes } from './types';

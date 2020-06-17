@@ -12,8 +12,8 @@ import { Props, propTypes } from './types';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { wrapTooltipProps } from '../../internalUtil/tooltipUtils';
-import { ensureElement } from '../../internalUtil/reactUtil';
+import { wrapTooltipProps } from '../../util/tooltipUtils';
+import { ensureElement } from '../../util/reactUtil';
 
 import './NxDropdown.scss';
 

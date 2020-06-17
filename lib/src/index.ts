@@ -79,7 +79,7 @@ export {
   Props as NxDropdownProps
 } from './components/NxDropdown/NxDropdown';
 
-export { TooltipConfigProps } from './internalUtil/tooltipUtils';
+export { TooltipConfigProps } from './util/tooltipUtils';
 
 export { default as NxStatefulDropdown }
   from './components/NxDropdown/stateful/NxStatefulDropdown';

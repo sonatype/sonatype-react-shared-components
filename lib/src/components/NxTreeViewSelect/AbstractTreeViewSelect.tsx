@@ -11,8 +11,8 @@ import { Option } from './commonTypes';
 import NxTreeView, {NxTreeViewChild} from '../NxTreeView/NxTreeView';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
-import { TooltipConfigProps } from '../../internalUtil/tooltipUtils';
-import { ensureElement } from '../../internalUtil/reactUtil';
+import { TooltipConfigProps } from '../../util/tooltipUtils';
+import { ensureElement } from '../../util/reactUtil';
 
 import { CommonProps } from './commonTypes';
 
