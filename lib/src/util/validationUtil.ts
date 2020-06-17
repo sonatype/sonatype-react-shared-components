@@ -6,6 +6,8 @@
  */
 import { ValidationErrors } from '../components/NxTextInput/types';
 
+export { ValidationErrors };
+
 /**
  * @return whether this ValidationErrors object contains an error
  */
