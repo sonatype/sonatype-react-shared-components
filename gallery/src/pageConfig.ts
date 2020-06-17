@@ -57,6 +57,7 @@ import NxCloseButtonPage from './components/NxCloseButton/NxCloseButtonPage';
 import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
 import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
 import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
+import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -118,7 +119,8 @@ const pageConfig: PageConfig = {
   },
   'JavaScript & TypeScript Utilities': {
     'TooltipConfigProps': TooltipConfigPropsPage,
-    'Policy Threat Level Utils': PolicyThreatLevelUtilsPage
+    'Policy Threat Level Utils': PolicyThreatLevelUtilsPage,
+    'Validation Utils': ValidationUtilsPage
   }
 };
 
