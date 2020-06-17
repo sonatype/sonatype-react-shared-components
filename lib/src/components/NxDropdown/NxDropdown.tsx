@@ -28,7 +28,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
     ...attrs
   } = props;
 
-  const buttonClasses = classnames('nx-dropdown__toggle', { 'disabled': disabled });
+  const buttonClasses = classnames('nx-dropdown__toggle', { disabled, open: isOpen });
 
   const classes = classnames('nx-dropdown', className);
 
