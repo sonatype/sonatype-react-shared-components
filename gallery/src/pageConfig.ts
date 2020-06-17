@@ -56,6 +56,7 @@ import FontSizePage from './guidelines/FontSize/FontSizePage';
 import NxCloseButtonPage from './components/NxCloseButton/NxCloseButtonPage';
 import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
 import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
+import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -116,7 +117,8 @@ const pageConfig: PageConfig = {
     'Page Layout': PageLayoutPage
   },
   'JavaScript & TypeScript Utilities': {
-    'TooltipConfigProps': TooltipConfigPropsPage
+    'TooltipConfigProps': TooltipConfigPropsPage,
+    'Policy Threat Level Utils': PolicyThreatLevelUtilsPage
   }
 };
 
