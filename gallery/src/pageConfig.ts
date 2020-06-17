@@ -55,7 +55,7 @@ import ContributingPage from './pages/Contributing';
 import FontSizePage from './guidelines/FontSize/FontSizePage';
 import NxCloseButtonPage from './components/NxCloseButton/NxCloseButtonPage';
 import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
-import JavaScriptUtilitiesPage from './pages/JavaScriptUtilitiesPage';
+import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -115,8 +115,8 @@ const pageConfig: PageConfig = {
     'Form Layout Styles': NxFormLayoutPage,
     'Page Layout': PageLayoutPage
   },
-  'Other Utilities': {
-    'JavaScript Utilities': JavaScriptUtilitiesPage
+  'JavaScript & TypeScript Utilities': {
+    'TooltipConfigProps': TooltipConfigPropsPage
   }
 };
 
