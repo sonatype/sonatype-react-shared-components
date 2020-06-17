@@ -24,3 +24,28 @@
     color: $nx-text-color-light;
   }
 }
+
+.nx-text-input__valid-message, .nx-text-input__invalid-message {
+  display: none;
+}
+
+.nx-icon--validation-check {
+  color: #007623;
+  height: 1em;
+  width: 1em;
+}
+
+.nx-text-input__invalid-message {
+  @include container-horizontal;
+  margin-top: $nx-spacing-xs;
+}
+
+.nx-text-input__invalid-message-text {
+  color: #cd0028;
+  font-size: $nx-font-size-xs;
+}
+
+.nx-icon--invalid {
+  color: #cd0028;
+  height: 1em;
+}

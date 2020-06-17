@@ -42,18 +42,3 @@ textarea.nx-text-input__input {
 ::-ms-clear {
   display: none;
 }
-
-.nx-text-input__validation-message {
-  @include container-horizontal;
-  color: #cd0028;
-  display: block;
-  margin-top: $nx-spacing-xs;
-
-  .nx-icon {
-    font-size: $nx-font-size;
-  }
-
-  .nx-text-input__validation-message-text {
-    font-size: $nx-font-size-xs;
-  }
-}
