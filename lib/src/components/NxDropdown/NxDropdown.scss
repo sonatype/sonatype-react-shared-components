@@ -54,6 +54,7 @@ $nx-dropdown-width: 250px;
   display: block;
   max-height: 328px;
   margin: $nx-spacing-xxs 0 0 0;
+  overflow-y: auto;
   padding: $nx-spacing-xxs 0;
   position: absolute;
   top: 100%;
