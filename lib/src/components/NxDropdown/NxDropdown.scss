@@ -39,6 +39,10 @@ $nx-dropdown-width: 250px;
       color: #949494;
     }
   }
+
+  &.open {
+    border-color: #045dd1;
+  }
 }
 
 .nx-dropdown-menu {
