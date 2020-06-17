@@ -54,9 +54,10 @@ $nx-dropdown-width: 250px;
   box-shadow: 0 2px 12px 0 rgba(74, 77, 113, 0.2),
               0 1px 2px 0 rgba(91, 95, 141, 0.2),
               0 1px 1px 0 rgba(124, 128, 179, 0.2);
+  box-sizing: border-box;
   color: $nx-text-color-light;
   display: block;
-  max-height: 316px;
+  max-height: 328px;
   margin: $nx-spacing-xxs 0 0 0;
   overflow-y: auto;
   padding: $nx-spacing-xxs 0;
