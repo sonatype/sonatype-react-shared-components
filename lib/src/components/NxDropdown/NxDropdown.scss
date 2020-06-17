@@ -77,7 +77,6 @@ $nx-dropdown-width: 250px;
   border-radius: 0;
   box-sizing: border-box;
   color: $nx-text-color-light;
-  font-size: 14px;
   outline: none;
   text-align: left;
   width: 100%;
@@ -111,19 +110,10 @@ $nx-dropdown-width: 250px;
 
     border-bottom: $nx-border-dark;
     color: $nx-text-color-light;
-    font-size: 14px;
     line-height: 16px;
     margin: 0;
     padding: 12px 8px 16px 8px;
     text-transform: uppercase;
-  }
-
-  .nx-dropdown-button {
-    padding: 0 10px 0 12px;
-
-    &:first-of-type {
-      border-top: $nx-border-lighter;
-    }
   }
 }
 
