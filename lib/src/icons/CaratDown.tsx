@@ -6,14 +6,13 @@
  */
 import React from 'react';
 
+import CaratPath from './CaratPath';
+
 import './CaratDown.scss';
 
 const CaratDown = () =>
   <svg viewBox="0 0 12 8" className="nx-icon nx-icon--carat-down">
-    <path fill="currentColor"
-          d="M1.00928531,0 L10.9907147,0 C11.8882046,0 12.3369495,1.2403472 11.7036739,1.96348399 L6.71295924,7.66237653
-          C6.31873472,8.11254116 5.68126528,8.11254116 5.29123464,7.66237653 L0.296326069,1.96348399
-          C-0.336949492,1.2403472 0.111795442,0 1.00928531,0 Z"/>
+    <CaratPath/>
   </svg>;
 
 export default CaratDown;
