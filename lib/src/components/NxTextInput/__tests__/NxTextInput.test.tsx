@@ -7,7 +7,6 @@
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
 import NxTextInput, { Props } from '../NxTextInput';
-import NxTooltip from '../../NxTooltip/NxTooltip';
 
 describe('NxTextInput', function() {
   const minimalProps = {
@@ -17,44 +16,42 @@ describe('NxTextInput', function() {
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxTextInput, minimalProps);
 
   it('renders a textarea if type is "textarea"', function() {
-    expect(getShallowComponent({ type: 'textarea' })).toMatchSelector(NxTooltip);
     expect(getShallowComponent({ type: 'textarea' }).find('textarea')).toMatchSelector('textarea');
     expect(getShallowComponent({ type: 'textarea' }).find('textarea')).toHaveProp('type', undefined);
   });
 
   it('sets the value as specified', function() {
-    expect(getShallowComponent({ value: 'foo' }).find('input')).toHaveProp('value', 'foo');
+    expect(getShallowComponent({ value: 'foo' })).toHaveProp('value', 'foo');
   });
 
   it('passes through specified classNames to the input', function() {
-    expect(getShallowComponent({ className: 'foo bar' }).find('input')).toHaveClassName('foo');
-    expect(getShallowComponent({ className: 'foo bar' }).find('input')).toHaveClassName('bar');
+    expect(getShallowComponent({ className: 'foo bar' })).toHaveClassName('foo');
+    expect(getShallowComponent({ className: 'foo bar' })).toHaveClassName('bar');
   });
 
   it('sets the nx-text-input className', function() {
-    expect(getShallowComponent().find('input')).toHaveClassName('nx-text-input');
-    expect(getShallowComponent({ className: 'foo bar' }).find('input')).toHaveClassName('nx-text-input');
-    expect(getShallowComponent({ type: 'textarea' }).find('textarea')).toHaveClassName('nx-text-input');
+    expect(getShallowComponent().find('input')).toHaveClassName('nx-text-input__input');
+    expect(getShallowComponent({ className: 'foo bar' }).find('input')).toHaveClassName('nx-text-input__input');
+    expect(getShallowComponent({ type: 'textarea' }).find('textarea')).toHaveClassName('nx-text-input__input');
   });
 
   it('sets the nx-text-input--pristine className iff isPristine is true', function() {
-    expect(getShallowComponent().find('input')).not.toHaveClassName('nx-text-input--pristine');
-    expect(getShallowComponent({ isPristine: true }).find('input')).toHaveClassName('nx-text-input--pristine');
+    expect(getShallowComponent()).not.toHaveClassName('nx-text-input--pristine');
+    expect(getShallowComponent({ isPristine: true })).toHaveClassName('nx-text-input--pristine');
   });
 
   it('sets the nx-text-input--invalid className if there are validationErrors', function() {
-    expect(getShallowComponent().find('input')).not.toHaveClassName('nx-text-input--invalid');
-    expect(getShallowComponent({ validationErrors: null }).find('input')).not.toHaveClassName('nx-text-input--invalid');
-    expect(getShallowComponent({ validationErrors: [] }).find('input')).not.toHaveClassName('nx-text-input--invalid');
-    expect(getShallowComponent({ validationErrors: ['baaad'] }).find('input'))
-        .toHaveClassName('nx-text-input--invalid');
+    expect(getShallowComponent()).not.toHaveClassName('nx-text-input--invalid');
+    expect(getShallowComponent({ validationErrors: null })).not.toHaveClassName('nx-text-input--invalid');
+    expect(getShallowComponent({ validationErrors: [] })).not.toHaveClassName('nx-text-input--invalid');
+    expect(getShallowComponent({ validationErrors: ['baaad'] })).toHaveClassName('nx-text-input--invalid');
   });
 
   it('sets the nx-text-input--valid className if there are not validationErrors', function() {
-    expect(getShallowComponent().find('input')).toHaveClassName('nx-text-input--valid');
-    expect(getShallowComponent({ validationErrors: null }).find('input')).toHaveClassName('nx-text-input--valid');
-    expect(getShallowComponent({ validationErrors: [] }).find('input')).toHaveClassName('nx-text-input--valid');
-    expect(getShallowComponent({ validationErrors: ['baaad'] }).find('input'))
+    expect(getShallowComponent()).toHaveClassName('nx-text-input--valid');
+    expect(getShallowComponent({ validationErrors: null })).toHaveClassName('nx-text-input--valid');
+    expect(getShallowComponent({ validationErrors: [] })).toHaveClassName('nx-text-input--valid');
+    expect(getShallowComponent({ validationErrors: ['baaad'] }))
         .not.toHaveClassName('nx-text-input--valid');
   });
 
