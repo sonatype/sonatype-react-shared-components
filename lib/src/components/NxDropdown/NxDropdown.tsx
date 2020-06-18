@@ -15,7 +15,6 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
 import './NxDropdown.scss';
 
-
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   const {
     variant,
