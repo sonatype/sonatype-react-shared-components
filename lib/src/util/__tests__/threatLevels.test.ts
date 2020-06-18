@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { categoryByPolicyThreatLevel } from '../threatLevels';
+import { ThreatLevelNumber, categoryByPolicyThreatLevel } from '../threatLevels';
 
 describe('threatLevels utilities', function() {
   describe('categoryByPolicyThreatLevel', function() {
@@ -23,8 +23,8 @@ describe('threatLevels utilities', function() {
     });
 
     it('returns undefined for other invalid indexes', function() {
-      expect(categoryByPolicyThreatLevel[-1]).toBe(undefined);
-      expect(categoryByPolicyThreatLevel[11]).toBe(undefined);
+      expect(categoryByPolicyThreatLevel[-1 as ThreatLevelNumber]).toBe(undefined);
+      expect(categoryByPolicyThreatLevel[11 as ThreatLevelNumber]).toBe(undefined);
     });
   });
 });

@@ -8,10 +8,9 @@ import React, { FormEvent, useState } from 'react';
 import { none } from 'ramda';
 import classnames from 'classnames';
 
-import { NxButton, NxCheckbox, NxTextInput, NxTooltip } from '@sonatype/react-shared-components';
+import { NxButton, NxCheckbox, NxTextInput, NxTooltip, hasValidationErrors } from '@sonatype/react-shared-components';
 import { StateProps, Validator } from '@sonatype/react-shared-components/components/NxTextInput/types';
 import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
-import { hasValidationErrors } from '@sonatype/react-shared-components/util/validationUtil';
 
 type StatePropsSetter = (state: StateProps) => void;
 
