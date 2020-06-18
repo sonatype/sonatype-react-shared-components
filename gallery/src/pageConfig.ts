@@ -55,6 +55,9 @@ import ContributingPage from './pages/Contributing';
 import FontSizePage from './guidelines/FontSize/FontSizePage';
 import NxCloseButtonPage from './components/NxCloseButton/NxCloseButtonPage';
 import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
+import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
+import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
+import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -113,6 +116,11 @@ const pageConfig: PageConfig = {
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
     'Page Layout': PageLayoutPage
+  },
+  'JavaScript & TypeScript Utilities': {
+    'TooltipConfigProps': TooltipConfigPropsPage,
+    'Policy Threat Level Utils': PolicyThreatLevelUtilsPage,
+    'Validation Utils': ValidationUtilsPage
   }
 };
 
