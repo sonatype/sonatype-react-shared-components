@@ -24,4 +24,8 @@
 
 .nx-text-input__input {
   line-height: $nx-line-height;
+
+  &::placeholder {
+    color: #949494;
+  }
 }
