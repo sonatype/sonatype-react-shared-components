@@ -27,7 +27,6 @@
   }
 
   > .nx-text-input__invalid-message {
-    visibility: visible;
   }
 
   .nx-text-input__validation-icon {
@@ -56,7 +55,6 @@
   color: #cd0028;
   font-size: $nx-font-size-xs;
   margin-top: $nx-spacing-xs;
-  visibility: hidden;
 }
 
 .nx-icon--invalid {

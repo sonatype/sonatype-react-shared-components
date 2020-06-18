@@ -81,7 +81,7 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
             </span>
           </div>
           <div className="nx-text-input__invalid-message">
-            <span className="nx-text-input__invalid-message-text">{firstValidationError || '&nbsp;'}</span>
+            <span className="nx-text-input__invalid-message-text">{firstValidationError}</span>
           </div>
         </div>
       );
