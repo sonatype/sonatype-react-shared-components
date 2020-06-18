@@ -7,7 +7,7 @@
 import React from 'react';
 import {GalleryTile} from '../gallery-components/GalleryTiles';
 
-const Home = () =>
+const StylingRSCPage = () =>
   <GalleryTile title="How to style your app when using RSC">
     <p className="nx-p">
       If you have styling needs that aren't covered by the styles included in React Shared Components (RSC),
@@ -65,4 +65,4 @@ const Home = () =>
     </p>
   </GalleryTile>;
 
-export default Home;
+export default StylingRSCPage;
