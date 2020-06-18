@@ -8,6 +8,7 @@ import React, { forwardRef, FormEvent, KeyboardEvent } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
+
 import './NxTextInput.scss';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
