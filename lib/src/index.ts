@@ -111,3 +111,6 @@ export {
 } from './components/NxTextInput/stateful/NxStatefulTextInput';
 
 export { default as NxCloseButton } from './components/NxCloseButton/NxCloseButton';
+
+export * from './util/threatLevels';
+export * from './util/validationUtil';
