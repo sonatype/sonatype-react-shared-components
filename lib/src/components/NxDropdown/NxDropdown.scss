@@ -26,7 +26,9 @@ $nx-dropdown-width: 250px;
   width: $nx-dropdown-width;
 
   .nx-dropdown__toggle-label {
+    @include truncate-ellipsis();
     flex-grow: 1;
+    max-width: $nx-dropdown-width;
   }
 
   .nx-icon {
