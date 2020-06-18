@@ -27,7 +27,7 @@
   }
 
   + .nx-text-input__invalid-message {
-    display: block;
+    visibility: visible;
   }
 
   .nx-text-input__validation-icon {
@@ -47,31 +47,28 @@
 }
 
 .nx-text-input__validation-icon {
-  @include container-horizontal;
-
   &, .nx-icon {
     display: none;
   }
 }
 
 .nx-text-input__invalid-message {
-  display: none;
-}
-
-.nx-text-input__invalid-message {
   color: #cd0028;
   font-size: $nx-font-size-xs;
   margin-top: $nx-spacing-xs;
+  visibility: hidden;
 }
 
 .nx-icon--invalid {
   color: #cd0028;
   height: 1em;
+  margin-left: 0;
   margin-right: $nx-spacing-md;
 }
 
 .nx-icon--valid {
   color: #007623;;
   height: 1em;
+  margin-left: 0;
   margin-right: $nx-spacing-md;
 }
