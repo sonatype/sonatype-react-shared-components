@@ -8,7 +8,7 @@
 @import 'nx-container-helpers';
 
 @mixin valid() {
-  .nx-text-input__input:not(:disabled) {
+  .nx-text-input__box:not(:disabled) {
     border-color: $nx-valid-color;
   }
 
@@ -22,7 +22,7 @@
 }
 
 @mixin invalid() {
-  .nx-text-input__input:not(:disabled) {
+  .nx-text-input__box:not(:disabled) {
     border-color: $nx-invalid-color;
   }
 
@@ -40,7 +40,7 @@
 }
 
 @mixin pristine() {
-  .nx-text-input__input:not(:disabled) {
+  .nx-text-input__box:not(:disabled) {
     border-color: #d1d6f0;
     color: $nx-text-color-light;
   }
