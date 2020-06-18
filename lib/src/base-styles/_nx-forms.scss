@@ -75,7 +75,7 @@ $nx-form-element-width-wide: 395px;
 
   .nx-text-input, .nx-textarea {
     display: block;
-    margin-top: 7px; // gives proper 8px spacing between label text and field
+    margin-top: $nx-spacing-xs;
   }
 }
 
