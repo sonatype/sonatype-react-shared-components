@@ -14,7 +14,7 @@ import './NxTextInput.scss';
 import { Props, propTypes } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 export { Props, propTypes, inputTypes } from './types';
-import ValidationCheck from '../../icons/validationcheck';
+import ValidationCheck from '../../icons/ValidationCheck';
 
 /**
  * Standard text input with validation styling

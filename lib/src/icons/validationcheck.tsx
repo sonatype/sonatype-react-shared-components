@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import './validationcheck.scss';
+import './ValidationCheck.scss';
 
 const ValidationCheck = () =>
   <svg viewBox="0 0 16 16" className="nx-icon nx-icon--validation-check">
