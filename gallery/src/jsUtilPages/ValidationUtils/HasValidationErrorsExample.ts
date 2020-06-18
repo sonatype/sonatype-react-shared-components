@@ -6,7 +6,6 @@
  */
 import { hasValidationErrors } from '@sonatype/react-shared-components';
 
-hasValidationErrors(undefined); // false
 hasValidationErrors(null); // false
 hasValidationErrors('too long'); // true
 hasValidationErrors([]); // false

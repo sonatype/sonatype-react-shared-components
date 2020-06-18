@@ -58,11 +58,46 @@ const NxTextInputPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">validationErrors</td>
-            <td className="nx-cell">string[]</td>
+            <td className="nx-cell">string | string[] | null | undefined</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Zero or more validation error messages.  If empty or not defined, the field is considered to be valid.
-              If the field is invalid, it will receive error styling and a tooltip displaying the first error message.
+              <p className="nx-p">
+                Optional validation messages. The visual styles of <code className="nx-code">NxTextInputs</code> operate
+                in one of two modes: validatable or non-validatable. Validatable inputs display red error styles and
+                a validation error message when the entered content fails validation, in conjunction with green styles
+                when a component passes validation. Non-validatable are those that do not undergo validation,
+                do not use those styles, and instead only bear a simple darker grey border once they have been
+                touched by the user.
+              </p>
+              <p className="nx-p">
+                For non-validatable inputs, this <code className="nx-code">validationErrors</code> prop should be
+                omitted or left undefined. For validatable inputs, it can hold several types of values:
+                if <code className="nx-code">null</code>, it represents successful validation. If it is a string, that
+                string is taken to be a validation error message. Its presence indicates that validation failed, and
+                its content explains why. Further, multiple strings may be specified in an array. If this array is
+                non-empty, once again it is taken that validation failed, and the messages in the array give the reasons
+                why. If the array is empty however, that is once again a scenario where there is no failure message
+                and thus means that validation was successful
+              </p>
+              <p className="nx-p">
+                In summary, this prop can have the following kinds of values with the following meanings:
+              </p>
+              <dl className="nx-list nx-list--definition-list">
+                <dt className="nx-list__item nx-list__item--label">undefined</dt>
+                <dd className="nx-list__item">The input is non-validatable</dd>
+                <dt className="nx-list__item nx-list__item--label">null</dt>
+                <dd className="nx-list__item">The input is validatable and <em>valid</em></dd>
+                <dt className="nx-list__item nx-list__item--label">empty array</dt>
+                <dd className="nx-list__item">The input is validatable and <em>valid</em></dd>
+                <dt className="nx-list__item nx-list__item--label">string</dt>
+                <dd className="nx-list__item">
+                  The input is validatable and <em>invalid</em> for the specified reason
+                </dd>
+                <dt className="nx-list__item nx-list__item--label">non-empty array</dt>
+                <dd className="nx-list__item">
+                  The input is validatable and <em>invalid</em> for the specified reasons
+                </dd>
+              </dl>
             </td>
           </tr>
           <tr className="nx-table-row">

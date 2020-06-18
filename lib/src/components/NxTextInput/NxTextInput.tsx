@@ -41,15 +41,25 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
       const newProps = omit(['trimmedValue', 'title'], attrs);
       const isTextArea = type === 'textarea',
           element = isTextArea ? 'textarea' : 'input',
-          typeAttr = isTextArea ? undefined : (type || 'text'),
-          isInvalid = hasValidationErrors(validationErrors),
-          firstValidationError = getFirstValidationError(validationErrors),
-          internalClassName = classnames('nx-text-input', className, {
-            'pristine': isPristine,
-            'invalid': isInvalid,
-            'valid': !isInvalid,
-            'disabled': disabled
-          });
+          typeAttr = isTextArea ? undefined : (type || 'text');
+
+      let isInvalid = false,
+          firstValidationError = null,
+          validatable = false;
+
+      if (validationErrors !== undefined) {
+        // due to TS type guards, within this block validationErrors doesn't have undefined in its type
+        isInvalid = hasValidationErrors(validationErrors);
+        firstValidationError = getFirstValidationError(validationErrors);
+        validatable = true;
+      }
+
+      const internalClassName = classnames('nx-text-input', className, {
+        pristine: isPristine,
+        invalid: validatable && isInvalid,
+        valid: validatable && !isInvalid,
+        disabled: disabled
+      });
 
       function inputOnChange(e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
         if (onChange) {
