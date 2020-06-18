@@ -6,7 +6,7 @@
  */
 import React, { FunctionComponent, ReactNode } from 'react';
 import classnames from 'classnames';
-import { ensureArray } from '@sonatype/react-shared-components/util/jsUtil';
+import { ensureArray } from '../util/jsUtil';
 
 import CodeExample, { Props as CodeExampleProps } from '../CodeExample';
 
@@ -14,16 +14,19 @@ interface PropsWithRequiredChildren {
   children: ReactNode;
 }
 
-// Props for GalleryTile
-interface GalleryTileProps extends PropsWithRequiredChildren {
+interface GalleryBaseProps {
   title: string;
   className?: string;
 }
 
+// Props for GalleryTile
+type GalleryTileProps = PropsWithRequiredChildren & GalleryBaseProps;
+
 type StringOrCodeExampleProps = string | CodeExampleProps;
 
-interface GalleryExampleTileProps extends GalleryTileProps {
-  description: string;
+interface GalleryExampleTileProps extends GalleryBaseProps {
+  children?: ReactNode;
+  description: ReactNode;
   codeExamples: StringOrCodeExampleProps | StringOrCodeExampleProps[];
 }
 
@@ -65,8 +68,12 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
       <GalleryTile title={title} className={tileClasses}>
         <p className="nx-p">{description}</p>
 
-        <h3 className="nx-h3 nx-tile__section-header">Example:</h3>
-        <div>{children}</div>
+        { children &&
+          <>
+            <h3 className="nx-h3 nx-tile__section-header">Example:</h3>
+            <div>{children}</div>
+          </>
+        }
 
         {codeExampleElements}
       </GalleryTile>

@@ -10,7 +10,7 @@ import { ValueLabelProps } from '@material-ui/core/Slider';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 
-import { categoryByPolicyThreatLevel } from '../../util/threatLevels';
+import { categoryByPolicyThreatLevel, ThreatLevelNumber } from '../../util/threatLevels';
 import { pathSet } from '../../util/jsUtil';
 
 import { Props, PolicyThreatLevelRange, propTypes } from './types';
@@ -30,7 +30,8 @@ function NxPolicyThreatSliderValueLabelDisplay({ value, children, className, ...
 
       // the thumb element isn't initially constructed with any children. Add the value as its child
       thumbWithLabel = pathSet(['props', 'children'], value, thumb),
-      threatCategory = categoryByPolicyThreatLevel[value],
+      limitedValue = Math.min(10, Math.max(0, Math.round(value))) as ThreatLevelNumber,
+      threatCategory = categoryByPolicyThreatLevel[limitedValue],
       nxBaseClass = 'nx-policy-threat-slider__value-label',
       classes = classnames(nxBaseClass, `${nxBaseClass}--${threatCategory}`, className);
 

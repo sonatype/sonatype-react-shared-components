@@ -14,7 +14,7 @@ function NxDropdownNavigationExample() {
       onClick = () => { alert('click'); };
 
   return (
-    <NxDropdown label="Navigation"
+    <NxDropdown label="Scrolling"
                 className="nx-dropdown--navigation"
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
@@ -38,6 +38,24 @@ function NxDropdownNavigationExample() {
       </a>
       <a className="disabled nx-dropdown-button">
         Nav Link7 Disabled
+      </a>
+      <a onClick={onClick} className="nx-dropdown-button">
+        Nav Link8
+      </a>
+      <a onClick={onClick} className="nx-dropdown-button">
+        Nav Link9
+      </a>
+      <a onClick={onClick} className="nx-dropdown-button">
+        Nav Link10
+      </a>
+      <a onClick={onClick} className="nx-dropdown-button">
+        Nav Link11
+      </a>
+      <a onClick={onClick} className="nx-dropdown-button">
+        Nav Link12
+      </a>
+      <a onClick={onClick} className="nx-dropdown-button">
+        Nav Link13
       </a>
     </NxDropdown>
   );
