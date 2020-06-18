@@ -66,7 +66,7 @@ dockerizedBuildPipeline(
   vulnerabilityScan: {
     if (env.BRANCH_NAME == 'master') {
       nexusPolicyEvaluation(
-        iqStage: 'build',
+        iqStage: 'release',
         iqApplication: 'react-shared-components',
         iqScanPatterns: [[scanPattern: 'gallery/webpack-modules']],
         failBuildOnNetworkError: true
@@ -92,9 +92,11 @@ dockerizedBuildPipeline(
   testResults: ['lib/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
-    build job:'/uxui/publish-gallery-to-s3', propagate: false, wait: false, parameters: [
-      run(name: 'Producer', runId: "${currentBuild.fullProjectName}${currentBuild.displayName}")
-    ]
+    if (env.BRANCH_NAME == 'master') {
+      build job:'/uxui/publish-gallery-to-s3', propagate: false, wait: false, parameters: [
+        run(name: 'Producer', runId: "${currentBuild.fullProjectName}${currentBuild.displayName}")
+      ]
+    }
   },
   onFailure: {
     githubStatusUpdate('failure')

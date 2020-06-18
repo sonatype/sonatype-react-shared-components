@@ -53,6 +53,11 @@ import NxStatefulDropdownPage from './components/NxStatefulDropdown/NxStatefulDr
 import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCheckboxPage';
 import ContributingPage from './pages/Contributing';
 import FontSizePage from './guidelines/FontSize/FontSizePage';
+import NxCloseButtonPage from './components/NxCloseButton/NxCloseButtonPage';
+import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
+import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
+import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
+import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -61,6 +66,7 @@ const pageConfig: PageConfig = {
     NxButton: NxButtonPage,
     NxCheckbox: NxCheckboxPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
+    NxCloseButton: NxCloseButtonPage,
     NxDropdown: NxDropdownPage,
     NxStatefulDropdown: NxStatefulDropdownPage,
     NxFilterInput: NxFilterInputPage,
@@ -98,6 +104,7 @@ const pageConfig: PageConfig = {
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
     'nx-page-title': NxPageTitlePage,
+    'nx-scrollable': NxScrollablePage,
     'nx-table': NxTableStylePage,
     'nx-text-input': NxTextInputStylesPage,
     'nx-threat-number': NxThreatNumberPage,
@@ -109,6 +116,11 @@ const pageConfig: PageConfig = {
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
     'Page Layout': PageLayoutPage
+  },
+  'JavaScript & TypeScript Utilities': {
+    'TooltipConfigProps': TooltipConfigPropsPage,
+    'Policy Threat Level Utils': PolicyThreatLevelUtilsPage,
+    'Validation Utils': ValidationUtilsPage
   }
 };
 

@@ -9,28 +9,6 @@
 @import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 @import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
 
-.nx-body.gallery-body {
-  background-color: #fff;
-}
-
-.nx-page.gallery-page {
-  .nx-page-title {
-    padding-left: $nx-spacing-md;
-  }
-  .nx-page-main {
-    padding-left: $nx-spacing-xl;
-    padding-right: $nx-spacing-xl;
-  }
-}
-
-.nx-tile.gallery-tile {
-  border-color: #fff;
-
-  &:nth-child(2) {
-    border-bottom: solid 1px #e0e4f2;
-  }
-}
-
 .gallery-nav, .gallery-nav-links {
   @include container-vertical;
 }
@@ -47,7 +25,6 @@
 }
 
 .nx-tree-view__child.gallery-nav-link {
-  font-size: 16px;
   height: 32px;
   line-height: 32px;
   margin-right: 0;
@@ -59,7 +36,6 @@
   border-radius: 6px;
   box-sizing: border-box;
   display: inline-block;
-  font-size: 14px;
   height: 32px;
   margin-bottom: 4px;
   padding-left: 45px;
@@ -94,11 +70,10 @@
   width: 400px;
 }
 
-.gallery-code-box {
-  border: solid 1px #a1a8c3;
-  border-radius: 6px;
-  box-sizing: border-box;
-  padding: $nx-spacing-xxs $nx-spacing-xs;
+.gallery-example {
+  pre {
+    font-size: $nx-font-size-s;
+  }
 }
 
 .gallery-submit-mask-area {

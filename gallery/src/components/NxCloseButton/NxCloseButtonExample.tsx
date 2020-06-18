@@ -5,12 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxCloseButton } from '@sonatype/react-shared-components';
 
-const NxTileHeadlineExample = () =>
-  <div className="nx-tile">
-    <div className="nx-tile-header">
-      <div className="nx-tile-header__title"><h1 className="nx-h1">NX Tile Headline</h1></div>
-    </div>
-  </div>;
+export default function NxCloseButtonExample() {
+  const onClick = () => alert('Clicked');
 
-export default NxTileHeadlineExample;
+  return <NxCloseButton id="button-id" className="my-custom-class" onClick={onClick} />;
+}

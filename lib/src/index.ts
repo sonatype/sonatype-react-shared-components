@@ -18,6 +18,7 @@ export { default as NxTextInput, Props as NxTextInputProps } from './components/
 export {
   default as NxAlert,
   NxWarningAlert,
+  NxSuccessAlert,
   NxInfoAlert,
   NxErrorAlert,
   NxAlertProps,
@@ -108,3 +109,8 @@ export {
   default as NxStatefulTextInput,
   Props as NxStatefulTextInputProps
 } from './components/NxTextInput/stateful/NxStatefulTextInput';
+
+export { default as NxCloseButton } from './components/NxCloseButton/NxCloseButton';
+
+export * from './util/threatLevels';
+export * from './util/validationUtil';

@@ -9,7 +9,7 @@ import * as PropTypes from 'prop-types';
 import SyntaxHighlighter from 'react-syntax-highlighter/prism';
 import { atomDark } from 'react-syntax-highlighter/dist/styles/prism';
 
-interface Props {
+export interface Props {
   content: string;
   language?: string | null;
 };
@@ -23,22 +23,25 @@ const propTypes: PropTypes.ValidationMap<Props> = {
 // a license which is not helpful to the example display. Both HTML-syntax and C-syntax comments are removed
 const removeLicense = (content: string) =>
   content
-      .replace(/^<!--(.|\n)*-->\s*\n?/, '')
-      .replace(/^\/\*(.|\n)*\*\/\s*\n?/, '');
+      .replace(/^<!--(.|\n)*?-->\s*\n?/, '')
+      .replace(/^\/\*(.|\n)*?\*\/\s*\n?/, '');
 
 const CodeExample: FunctionComponent<Props> =
   function CodeExample({ content, language }): ReactElement<Props> {
-    const licenseStrippedContent = removeLicense(content);
+    const licenseStrippedContent = removeLicense(content),
+        headerLanguagePart = language ? ` (${language.toUpperCase()})` : '';
 
     return (
-      <>
-        <h4 className="nx-h4">Code snippet:</h4>
-        <div className="gallery-code-box">
-          <SyntaxHighlighter language={language || 'tsx'} style={atomDark}>
-            {licenseStrippedContent}
-          </SyntaxHighlighter>
-        </div>
-      </>
+      <section className="gallery-example-code">
+        <h3 className="nx-h3 nx-tile__section-header">
+          Code Snippet
+          {headerLanguagePart}
+          :
+        </h3>
+        <SyntaxHighlighter language={language || 'tsx'} style={atomDark}>
+          {licenseStrippedContent}
+        </SyntaxHighlighter>
+      </section>
     );
   };
 

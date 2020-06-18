@@ -93,31 +93,26 @@ const NxTreeViewPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryTile title="NxTreeView Basic Example">
-      <h4 className="nx-h4">Example:</h4>
       <NxTreeViewExample />
       <CodeExample content={nxTreeViewCode}/>
     </GalleryTile>
 
     <GalleryTile title="NxTreeView Example with trigger tooltip">
-      <h4 className="nx-h4">Example:</h4>
       <NxTreeViewTooltipExample />
       <CodeExample content={nxTreeViewTooltipCode}/>
     </GalleryTile>
 
     <GalleryTile title="NxTreeView Example with Extras">
-      <h4 className="nx-h4">Example:</h4>
       <NxTreeViewExtras />
       <CodeExample content={nxTreeViewExtrasCode}/>
     </GalleryTile>
 
     <GalleryTile title="NxTreeView Empty Example">
-      <h4 className="nx-h4">Example:</h4>
       <NxTreeViewEmpty />
       <CodeExample content={nxTreeViewEmptyCode}/>
     </GalleryTile>
 
     <GalleryTile title="NxTreeView Disabled Example">
-      <h4 className="nx-h4">Example:</h4>
       <NxTreeViewDisabled />
       <CodeExample content={nxTreeViewDisabledCode}/>
     </GalleryTile>
