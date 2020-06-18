@@ -6,15 +6,13 @@
  */
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
 
 import { Props, propTypes } from './types';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
-import { ensureElement } from '../../util/reactUtil';
-
 import './NxDropdown.scss';
 
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
@@ -30,11 +28,9 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
     ...attrs
   } = props;
 
-  const buttonClasses = classnames('nx-dropdown__toggle', { 'disabled': disabled });
+  const buttonClasses = classnames('nx-dropdown__toggle', { disabled, open: isOpen });
 
   const classes = classnames('nx-dropdown', className);
-
-  const labelContent = ensureElement(label);
 
   const toggleTooltipProps = toggleTooltip && wrapTooltipProps(toggleTooltip);
 
@@ -42,8 +38,8 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
     <NxButton variant={variant || 'tertiary'}
               className={buttonClasses}
               onClick={!disabled && onToggleCollapse || undefined}>
-      { labelContent }
-      <NxFontAwesomeIcon icon={faCaretDown}/>
+      <span className="nx-dropdown__toggle-label">{ label }</span>
+      <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown}/>
     </NxButton>
   );
 

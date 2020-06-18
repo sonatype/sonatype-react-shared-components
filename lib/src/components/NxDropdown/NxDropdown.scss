@@ -8,14 +8,41 @@
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
 
+$nx-dropdown-width: 250px;
+
 .nx-dropdown {
   display: inline-block;
   position: relative;
+  width: $nx-dropdown-width;
 }
 
 .nx-dropdown__toggle {
+  display: flex;
   margin: 0;
   outline: none;
+  text-align: left;
+  padding-right: $nx-spacing-md;
+  padding-left: $nx-spacing-md;
+  width: $nx-dropdown-width;
+
+  .nx-dropdown__toggle-label {
+    flex-grow: 1;
+  }
+
+  .nx-icon {
+    align-self: center;
+    color: #000000;
+  }
+
+  &.disabled {
+    .nx-icon {
+      color: #949494;
+    }
+  }
+
+  &.open {
+    border-color: #045dd1;
+  }
 }
 
 .nx-dropdown-menu {
@@ -23,42 +50,49 @@
 
   background: $nx-off-white;
   border: $nx-border-dark;
-  border-radius: 4px;
-  box-shadow: -4px 4px 10px 0 $nx-slate;
+  border-radius: $nx-border-radius;
+  box-shadow: 0 2px 12px 0 rgba(74, 77, 113, 0.2),
+              0 1px 2px 0 rgba(91, 95, 141, 0.2),
+              0 1px 1px 0 rgba(124, 128, 179, 0.2);
+  box-sizing: border-box;
   color: $nx-text-color-light;
   display: block;
-  margin: 6px 0 0 0;
-  max-width: 300px;
-  min-width: 160px;
-  padding: 8px 12px;
+  max-height: 328px;
+  margin: $nx-spacing-xxs 0 0 0;
+  overflow-y: auto;
+  padding: $nx-spacing-xxs 0;
   position: absolute;
   top: 100%;
+  width: $nx-dropdown-width;
 }
 
 .nx-dropdown-link, .nx-dropdown-button {
+  @include container-horizontal;
   @include truncate-ellipsis();
 
   cursor: pointer;
   display: block;
   height: 32px;
   line-height: 32px;
+  padding: 0 $nx-spacing-md;
   text-decoration: none;
 }
 
 .nx-dropdown-button {
   background-color: transparent;
-  border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
   color: $nx-text-color-light;
-  font-size: 14px;
   outline: none;
-  padding: 0 10px 0 0;
   text-align: left;
   width: 100%;
 
   &:hover, &:focus {
-    background-color: $nx-grey-1;
+    background-color: #f1f3fa;
+  }
+
+  &:active {
+    background-color: #d3e6ff;
   }
 
   &.disabled {
@@ -82,20 +116,10 @@
 
     border-bottom: $nx-border-dark;
     color: $nx-text-color-light;
-    font-size: 14px;
     line-height: 16px;
     margin: 0;
     padding: 12px 8px 16px 8px;
     text-transform: uppercase;
-  }
-
-  .nx-dropdown-button {
-    border-bottom: $nx-border-lighter;
-    padding: 0 10px 0 12px;
-
-    &:first-of-type {
-      border-top: $nx-border-lighter;
-    }
   }
 }
 
