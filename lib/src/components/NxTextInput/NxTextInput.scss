@@ -21,3 +21,7 @@
     @include pristine();
   }
 }
+
+.nx-text-input__input {
+  line-height: $nx-line-height;
+}

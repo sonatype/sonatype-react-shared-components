@@ -91,6 +91,6 @@
 }
 
 // Form typography
-.nx-text-input, .nx-textarea {
+.nx-text-input__input {
   @include regular();
 }
