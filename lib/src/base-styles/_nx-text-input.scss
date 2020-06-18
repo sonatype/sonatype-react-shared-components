@@ -14,6 +14,20 @@
   border: 1px solid #d1d6f0;
   border-radius: $nx-border-radius;
   display: flex;
+  padding: $nx-spacing-xs $nx-spacing-md;
+
+  &:hover {
+    border-color: #2c2c2c;
+  }
+
+  &:focus {
+    border-color: #43cbf5;
+  }
+
+  &:disabled {
+    background-color: #e9e9e9;
+    border-color: #949494;
+  }
 }
 
 .nx-text-input__input {
@@ -23,20 +37,9 @@
   flex-grow: 1;
   font-size: $nx-font-size;
   line-height: $nx-line-height;
-  padding: $nx-spacing-xs $nx-spacing-md;
-
-  &:hover {
-    border-color: #2c2c2c;
-  }
 
   &:focus {
-    border-color: #43cbf5;
     outline: none;
-  }
-
-  &:disabled {
-    background-color: #e9e9e9;
-    border-color: #949494;
   }
 
   &::placeholder {
