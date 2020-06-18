@@ -38,12 +38,6 @@
   display: none;
 }
 
-.nx-icon--validation-check {
-  color: #007623;
-  height: 1em;
-  width: 1em;
-}
-
 .nx-text-input__invalid-message {
   @include container-horizontal;
   margin-top: $nx-spacing-xs;
