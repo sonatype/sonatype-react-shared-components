@@ -11,3 +11,7 @@ const alsoNoError: ValidationErrors = [];
 const oneError: ValidationErrors = 'too long';
 const anotherOneError: ValidationErrors = ['too short'];
 const multipleErrors: ValidationErrors = ['invalid date format', 'too long'];
+
+// just to avoid unused variable errors...
+/* eslint-disable no-console */
+console.log(noError, alsoNoError, oneError, anotherOneError, multipleErrors);

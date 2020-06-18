@@ -14,7 +14,7 @@ interface PropsWithRequiredChildren {
   children: ReactNode;
 }
 
-type GalleryBaseProps = {
+interface GalleryBaseProps {
   title: string;
   className?: string;
 }
