@@ -72,9 +72,7 @@ $nx-dropdown-width: 250px;
 
   cursor: pointer;
   display: block;
-  height: 32px;
-  line-height: 32px;
-  padding: 0 $nx-spacing-md;
+  padding: $nx-spacing-xxs $nx-spacing-md;
   text-decoration: none;
 }
 
