@@ -13,7 +13,7 @@ dockerizedBuildPipeline(
   prepare: {
     githubStatusUpdate('pending')
 
-    sh "docker run --name selenium-chrome -d -p 4444:4444 $seleniumDockerImage:$seleniumDockerVersion"
+    sh "docker run --name selenium-chrome -d -p 4444:4444 ${seleniumDockerImage}:${seleniumDockerVersion}"
   },
   setVersion: {
     env['VERSION'] = sh(returnStdout: true, script: 'jq -r -e .version lib/package.json').trim()
@@ -112,7 +112,7 @@ dockerizedBuildPipeline(
   cleanup: {
     sh """
       docker rm -f selenium-chrome
-      docker rmi $seleniumDockerImage:$seleniumDockerVersion
+      docker rmi ${seleniumDockerImage}:${seleniumDockerVersion}
     """
   }
 )
