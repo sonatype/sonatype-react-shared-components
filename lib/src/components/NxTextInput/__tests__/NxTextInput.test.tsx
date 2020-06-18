@@ -15,6 +15,16 @@ describe('NxTextInput', function() {
       },
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxTextInput, minimalProps);
 
+  it('renders a text input', function() {
+    expect(getShallowComponent().find('input')).toExist();
+    expect(getShallowComponent().find('input')).toHaveProp('type', 'text');
+  });
+
+  it('renders a password input if type is "password"', function() {
+    expect(getShallowComponent({ type: 'password' }).find('input')).toExist();
+    expect(getShallowComponent({ type: 'password' }).find('input')).toHaveProp('type', 'password');
+  });
+
   it('renders a textarea if type is "textarea"', function() {
     expect(getShallowComponent({ type: 'textarea' }).find('textarea')).toMatchSelector('textarea');
     expect(getShallowComponent({ type: 'textarea' }).find('textarea')).toHaveProp('type', undefined);
