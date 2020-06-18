@@ -23,6 +23,7 @@
 }
 
 .nx-text-input__input {
+  border-color: transparent;
   line-height: $nx-line-height;
 
   &::placeholder {

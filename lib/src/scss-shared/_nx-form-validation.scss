@@ -12,8 +12,12 @@
     border-color: $nx-valid-color;
   }
 
-  .nx-text-input__valid-message {
+  .nx-text-input__validation-icon {
     display: inline-block;
+
+    .nx-icon--valid {
+      display: block;
+    }
   }
 }
 
@@ -26,8 +30,12 @@
     display: block;
   }
 
-  .nx-text-input__invalid-icon {
+  .nx-text-input__validation-icon {
     display: inline-block;
+
+    .nx-icon--invalid {
+      display: block;
+    }
   }
 }
 
@@ -38,12 +46,19 @@
   }
 }
 
-.nx-text-input__valid-message, .nx-text-input__invalid-message, .nx-text-input__invalid-icon {
+.nx-text-input__validation-icon {
+  @include container-horizontal;
+
+  &, .nx-icon {
+    display: none;
+  }
+}
+
+.nx-text-input__invalid-message {
   display: none;
 }
 
 .nx-text-input__invalid-message {
-  @include container-horizontal;
   color: #cd0028;
   font-size: $nx-font-size-xs;
   margin-top: $nx-spacing-xs;
@@ -52,9 +67,11 @@
 .nx-icon--invalid {
   color: #cd0028;
   height: 1em;
+  margin-right: $nx-spacing-md;
 }
 
 .nx-icon--valid {
   color: #007623;;
   height: 1em;
+  margin-right: $nx-spacing-md;
 }

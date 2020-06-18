@@ -72,10 +72,8 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
               className: "nx-text-input__input",
               onKeyPress: inputOnKeyPress
             })}
-            <span className="nx-text-input__valid-message">
+            <span className="nx-text-input__validation-icon">
               <NxFontAwesomeIcon icon={faCheck} className="nx-icon--valid"/>
-            </span>
-            <span className="nx-text-input__invalid-icon">
               <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon--invalid"/>
             </span>
           </div>

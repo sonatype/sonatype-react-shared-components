@@ -5,13 +5,24 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-.nx-text-input__input {
+.nx-text-input__wrapper {
+  width: $nx-form-element-width-normal;
+}
+
+.nx-text-input {
+  align-items: center;
   border: 1px solid #d1d6f0;
   border-radius: $nx-border-radius;
+  display: flex;
+}
+
+.nx-text-input__input {
+  background-color: transparent;
+  border: none;
   color: $nx-text-color-light;
+  flex-grow: 1;
   font-size: $nx-font-size;
   padding: $nx-spacing-xs $nx-spacing-md;
-  width: $nx-form-element-width-normal;
 
   &:hover {
     border-color: #2c2c2c;
