@@ -69,10 +69,13 @@ $nx-dropdown-width: 250px;
 .nx-dropdown-link, .nx-dropdown-button {
   @include container-horizontal;
   @include truncate-ellipsis();
+  @include regular();
 
   border: none;
   cursor: pointer;
   display: block;
+  font-size: $nx-font-size;
+  line-height: $nx-line-height;
   padding: $nx-spacing-xxs $nx-spacing-md;
   text-decoration: none;
   max-width: $nx-dropdown-width;

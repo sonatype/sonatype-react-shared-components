@@ -98,10 +98,3 @@
   line-height: 18px;
   margin-bottom: 0;
 }
-
-button {
-  @include regular();
-
-  font-size: $nx-font-size;
-  line-height: $nx-line-height;
-}
