@@ -6,14 +6,15 @@
  */
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
+import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
 
 import { Props, propTypes } from './types';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxButton from '../NxButton/NxButton';
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
 import './NxDropdown.scss';
-import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
-import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+
 
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   const {
