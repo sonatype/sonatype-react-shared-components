@@ -70,10 +70,12 @@ $nx-dropdown-width: 250px;
   @include container-horizontal;
   @include truncate-ellipsis();
 
+  border: none;
   cursor: pointer;
   display: block;
   padding: $nx-spacing-xxs $nx-spacing-md;
   text-decoration: none;
+  max-width: $nx-dropdown-width;
 }
 
 .nx-dropdown-button {
