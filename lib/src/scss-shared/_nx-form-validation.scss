@@ -22,8 +22,12 @@
     border-color: $nx-invalid-color;
   }
 
-  .nx-text-input__invalid-message {
+  + .nx-text-input__invalid-message {
     display: block;
+  }
+
+  .nx-text-input__invalid-icon {
+    display: inline-block;
   }
 }
 
@@ -34,21 +38,23 @@
   }
 }
 
-.nx-text-input__valid-message, .nx-text-input__invalid-message {
+.nx-text-input__valid-message, .nx-text-input__invalid-message, .nx-text-input__invalid-icon {
   display: none;
 }
 
 .nx-text-input__invalid-message {
   @include container-horizontal;
-  margin-top: $nx-spacing-xs;
-}
-
-.nx-text-input__invalid-message-text {
   color: #cd0028;
   font-size: $nx-font-size-xs;
+  margin-top: $nx-spacing-xs;
 }
 
 .nx-icon--invalid {
   color: #cd0028;
+  height: 1em;
+}
+
+.nx-icon--valid {
+  color: #007623;;
   height: 1em;
 }

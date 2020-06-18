@@ -7,14 +7,13 @@
 import React, { forwardRef, FormEvent, KeyboardEvent } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
-
-import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
-import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
 import './NxTextInput.scss';
+
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 export { Props, propTypes, inputTypes } from './types';
-import ValidationCheck from '../../icons/ValidationCheck';
 
 /**
  * Standard text input with validation styling
@@ -63,20 +62,24 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
       }
 
       return (
-        <div className={internalClassName}>
-          {React.createElement(element, {
-            ...newProps,
-            ref,
-            type: typeAttr,
-            onChange: inputOnChange,
-            className: "nx-text-input__input",
-            onKeyPress: inputOnKeyPress
-          })}
-          <span className="nx-text-input__valid-message">
-            <ValidationCheck/>
-          </span>
+        <div className="nx-text-input__wrapper">
+          <div className={internalClassName}>
+            {React.createElement(element, {
+              ...newProps,
+              ref,
+              type: typeAttr,
+              onChange: inputOnChange,
+              className: "nx-text-input__input",
+              onKeyPress: inputOnKeyPress
+            })}
+            <span className="nx-text-input__valid-message">
+              <NxFontAwesomeIcon icon={faCheck} className="nx-icon--valid"/>
+            </span>
+            <span className="nx-text-input__invalid-icon">
+              <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon--invalid"/>
+            </span>
+          </div>
           <span className="nx-text-input__invalid-message">
-            <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon--invalid"/>
             <span className="nx-text-input__invalid-message-text">{firstValidationError}</span>
           </span>
         </div>
