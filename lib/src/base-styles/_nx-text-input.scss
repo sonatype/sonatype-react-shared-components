@@ -5,11 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-.nx-text-input__wrapper {
+.nx-text-input {
   width: $nx-form-element-width-normal;
 }
 
-.nx-text-input {
+.nx-text-input__box {
   align-items: center;
   border: 1px solid #d1d6f0;
   border-radius: $nx-border-radius;

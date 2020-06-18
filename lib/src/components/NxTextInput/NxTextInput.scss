@@ -9,15 +9,15 @@
 @import '../../scss-shared/_nx-container-helpers.scss';
 
 .nx-text-input {
-  &.nx-text-input--valid:not(.nx-text-input--pristine) {
+  &.valid:not(.pristine) {
     @include valid();
   }
 
-  &.nx-text-input--invalid {
+  &.invalid {
     @include invalid();
   }
 
-  &.nx-text-input--pristine {
+  &.pristine {
     @include pristine();
   }
 }
