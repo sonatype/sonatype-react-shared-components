@@ -6,6 +6,11 @@
  */
 import { ValidationErrors } from '../components/NxTextInput/types';
 
+export { ValidationErrors };
+
+/**
+ * @return whether this ValidationErrors object contains an error
+ */
 export const hasValidationErrors = (validationErrors: ValidationErrors | undefined) => {
   if (validationErrors == null) {
     return false;
@@ -18,6 +23,9 @@ export const hasValidationErrors = (validationErrors: ValidationErrors | undefin
   }
 };
 
+/**
+ * @return The first error string contained within this ValidationErrors object, or null if there isn't one
+ */
 export function getFirstValidationError(validationErrors: ValidationErrors | undefined): string | null {
   if (validationErrors == null) {
     return null;
