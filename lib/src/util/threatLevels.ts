@@ -26,7 +26,7 @@ export type ThreatLevelCategory = (typeof allThreatLevelCategories)[number];
 export type ThreatLevelNumber = (typeof allThreatLevelNumbers)[number];
 
 type ThreatLevelCategoryLookup = {
-    readonly [idx in ThreatLevelNumber]: ThreatLevelCategory;
+  readonly [idx in ThreatLevelNumber]: ThreatLevelCategory;
 };
 
 /**
