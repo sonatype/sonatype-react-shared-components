@@ -13,7 +13,7 @@
   }
 
   &.pristine, &.invalid, &.valid {
-    &:focus {
+    &:focus-within {
       .nx-text-input__box {
         border-color: #43cbf5;
       }
@@ -36,7 +36,7 @@
 
 .nx-text-input__box {
   align-items: center;
-  border: 1px solid #d1d6f0;
+  border: 1px solid #2c2c2c;
   border-radius: $nx-border-radius;
   display: flex;
   padding: $nx-spacing-xs $nx-spacing-md;
@@ -70,6 +70,7 @@
 
 textarea.nx-text-input__input {
   min-height: 220px;
+  padding: 0;
   max-width: 700px;
 }
 
