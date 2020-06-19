@@ -10,7 +10,7 @@
     "lint": "eslint 'src/**/*.{js,ts}{,x}'",
     "webpack": "webpack --env.production",
     "webpack-dev-server": "webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "wdio run wdio.conf.js",
     "clean": "rimraf dist webpack-modules"
   },
   "repository": {
@@ -28,6 +28,12 @@
     "@types/react-syntax-highlighter": "10.1.0",
     "@typescript-eslint/eslint-plugin": "1.11.0",
     "@typescript-eslint/parser": "1.11.0",
+    "@wdio/cli": "6.1.17",
+    "@wdio/local-runner": "6.1.17",
+    "@wdio/mocha-framework": "6.1.17",
+    "@wdio/spec-reporter": "6.1.14",
+    "@wdio/sync": "6.1.14",
+    "chromedriver": "83.0.0",
     "copy-modules-webpack-plugin": "2.1.0",
     "cpx": "1.5.0",
     "css-loader": "=2.1.1",
@@ -42,6 +48,7 @@
     "sass-loader": "=7.1.0",
     "ts-loader": "=5.3.3",
     "typescript": "3.5.2",
+    "webdriverio": "6.1.17",
     "webpack": "=4.29.6",
     "webpack-cli": "=3.3.0",
     "webpack-dev-server": "=3.3.1"

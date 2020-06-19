@@ -6,9 +6,14 @@
  */
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
+def seleniumDockerImage = 'selenium/standalone-chrome'
+def seleniumDockerVersion = '3.141.59-20200409'
+
 dockerizedBuildPipeline(
   prepare: {
     githubStatusUpdate('pending')
+
+    sh "docker run --name selenium-chrome -d -p 4444:4444 ${seleniumDockerImage}:${seleniumDockerVersion}"
   },
   setVersion: {
     env['VERSION'] = sh(returnStdout: true, script: 'jq -r -e .version lib/package.json').trim()
@@ -59,6 +64,9 @@ dockerizedBuildPipeline(
 
       cd gallery
       yarn install
+
+      # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
+      TEST_IP=$JENKINS_AGENT_IP npm run test
       npm run build
       cd ..
     '''
@@ -100,5 +108,11 @@ dockerizedBuildPipeline(
   },
   onFailure: {
     githubStatusUpdate('failure')
+  },
+  cleanup: {
+    sh """
+      docker rm -f selenium-chrome
+      docker rmi ${seleniumDockerImage}:${seleniumDockerVersion}
+    """
   }
 )
