@@ -59,7 +59,8 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
             pristine: isPristine,
             invalid: validatable && isInvalid,
             valid: validatable && !isInvalid,
-            disabled: disabled
+            disabled: disabled,
+            'nx-text-input--textarea': isTextArea
           });
 
       function inputOnChange(e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
