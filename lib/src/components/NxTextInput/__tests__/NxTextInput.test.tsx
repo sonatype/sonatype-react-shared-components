@@ -27,8 +27,18 @@ describe('NxTextInput', function() {
     expect(getShallowComponent()).toContainMatchingElement('.nx-text-input__box .nx-icon--invalid');
   });
 
-  it('contains the validation message', function() {
+  it('contains the first validation message', function() {
+    const validationErrorProps = { validatable: true, validationErrors: 'foo' },
+        multiErrorValidationProps = { validatable: true, validationErrors: ['asdf', 'foo'] };
+
     expect(getShallowComponent()).toContainMatchingElement('.nx-text-input__invalid-message');
+    expect(getShallowComponent().find('.nx-text-input__invalid-message')).toHaveText('');
+
+    expect(getShallowComponent(validationErrorProps).find('.nx-text-input__invalid-message'))
+        .toHaveText('foo');
+
+    expect(getShallowComponent(multiErrorValidationProps).find('.nx-text-input__invalid-message'))
+        .toHaveText('asdf');
   });
 
   it('renders a text input by default', function() {
