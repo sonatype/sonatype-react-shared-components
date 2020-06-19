@@ -39,6 +39,7 @@ export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   type?: NxTextInputType | null;
   onChange?: ((newVal: string) => void) | null;
   onKeyPress?: ((keyCode: string) => void) | null;
+  validatable?: boolean | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -47,5 +48,6 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   isPristine: PropTypes.bool.isRequired,
   validationErrors: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string.isRequired), PropTypes.string]),
   onChange: PropTypes.func,
-  onKeyPress: PropTypes.func
+  onKeyPress: PropTypes.func,
+  validatable: PropTypes.bool
 };

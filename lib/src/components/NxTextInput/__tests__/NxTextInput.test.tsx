@@ -50,19 +50,44 @@ describe('NxTextInput', function() {
     expect(getShallowComponent({ isPristine: true })).toHaveClassName('nx-text-input--pristine');
   });
 
-  it('sets the nx-text-input--invalid className if there are validationErrors', function() {
-    expect(getShallowComponent()).not.toHaveClassName('nx-text-input--invalid');
-    expect(getShallowComponent({ validationErrors: null })).not.toHaveClassName('nx-text-input--invalid');
-    expect(getShallowComponent({ validationErrors: [] })).not.toHaveClassName('nx-text-input--invalid');
-    expect(getShallowComponent({ validationErrors: ['baaad'] })).toHaveClassName('nx-text-input--invalid');
+  describe('when validatable is true', function() {
+    const validatable = { validatable: true };
+
+    it('sets the invalid className if there are validationErrors', function() {
+      expect(getShallowComponent({ ...validatable, validationErrors: null })).not.toHaveClassName('invalid');
+      expect(getShallowComponent({ ...validatable, validationErrors: [] })).not.toHaveClassName('invalid');
+      expect(getShallowComponent({ ...validatable, validationErrors: ['baaad'] })).toHaveClassName('invalid');
+    });
+
+    it('sets the valid className if there are not validationErrors', function() {
+      expect(getShallowComponent({ ...validatable, validationErrors: null })).toHaveClassName('valid');
+      expect(getShallowComponent({ ...validatable, validationErrors: [] })).toHaveClassName('valid');
+      expect(getShallowComponent({ ...validatable, validationErrors: ['baaad'] })).not.toHaveClassName('valid');
+    });
   });
 
-  it('sets the nx-text-input--valid className if there are not validationErrors', function() {
-    expect(getShallowComponent()).toHaveClassName('nx-text-input--valid');
-    expect(getShallowComponent({ validationErrors: null })).toHaveClassName('nx-text-input--valid');
-    expect(getShallowComponent({ validationErrors: [] })).toHaveClassName('nx-text-input--valid');
-    expect(getShallowComponent({ validationErrors: ['baaad'] }))
-        .not.toHaveClassName('nx-text-input--valid');
+  describe('when validatable is not true', function() {
+    const validatable = { validatable: false };
+
+    it('never sets the invalid className', function() {
+      expect(getShallowComponent({ validationErrors: null })).not.toHaveClassName('invalid');
+      expect(getShallowComponent({ validationErrors: [] })).not.toHaveClassName('invalid');
+      expect(getShallowComponent({ validationErrors: ['baaad'] })).not.toHaveClassName('invalid');
+
+      expect(getShallowComponent({ ...validatable, validationErrors: null })).not.toHaveClassName('invalid');
+      expect(getShallowComponent({ ...validatable, validationErrors: [] })).not.toHaveClassName('invalid');
+      expect(getShallowComponent({ ...validatable, validationErrors: ['baaad'] })).not.toHaveClassName('invalid');
+    });
+
+    it('never sets the valid className', function() {
+      expect(getShallowComponent({ validationErrors: null })).not.toHaveClassName('valid');
+      expect(getShallowComponent({ validationErrors: [] })).not.toHaveClassName('valid');
+      expect(getShallowComponent({ validationErrors: ['baaad'] })).not.toHaveClassName('valid');
+
+      expect(getShallowComponent({ ...validatable, validationErrors: null })).not.toHaveClassName('valid');
+      expect(getShallowComponent({ ...validatable, validationErrors: [] })).not.toHaveClassName('valid');
+      expect(getShallowComponent({ ...validatable, validationErrors: ['baaad'] })).not.toHaveClassName('valid');
+    });
   });
 
   it('passes through html props to the input element', function() {

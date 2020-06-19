@@ -30,7 +30,18 @@ export { Props, propTypes, inputTypes } from './types';
  */
 const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
     function NxTextInput(props, ref) {
-      const { type, isPristine, validationErrors, onChange, className, onKeyPress, disabled, ...attrs } = props;
+      const {
+        type,
+        isPristine,
+        validatable,
+        validationErrors,
+        onChange,
+        className,
+        onKeyPress,
+        disabled,
+        ...attrs
+      } = props;
+
       /**
        * `trimmedValue` is a hidden property in `props`
        * We need to remove it so react doesn't complain when we pass the object
@@ -42,13 +53,13 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
       const isTextArea = type === 'textarea',
           element = isTextArea ? 'textarea' : 'input',
           typeAttr = isTextArea ? undefined : (type || 'text'),
-          isInvalid = hasValidationErrors(validationErrors),
-          firstValidationError = getFirstValidationError(validationErrors),
+          isInvalid = validatable && hasValidationErrors(validationErrors),
+          firstValidationError = validatable && getFirstValidationError(validationErrors),
           internalClassName = classnames('nx-text-input', className, {
-            'pristine': isPristine,
-            'invalid': isInvalid,
-            'valid': !isInvalid,
-            'disabled': disabled
+            pristine: isPristine,
+            invalid: validatable && isInvalid,
+            valid: validatable && !isInvalid,
+            disabled: disabled
           });
 
       function inputOnChange(e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) {

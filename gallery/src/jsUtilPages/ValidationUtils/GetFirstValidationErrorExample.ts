@@ -6,7 +6,6 @@
  */
 import { getFirstValidationError } from '@sonatype/react-shared-components';
 
-getFirstValidationError(undefined); // null
 getFirstValidationError(null); // null
 getFirstValidationError('too long'); // 'too long'
 getFirstValidationError([]); // null

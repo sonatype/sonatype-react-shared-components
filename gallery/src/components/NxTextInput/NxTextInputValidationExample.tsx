@@ -21,6 +21,6 @@ export default function NxTextInputValidationExample() {
   }
 
   return (
-    <NxTextInput { ...state } onChange={onChange} />
+    <NxTextInput { ...state } onChange={onChange} validatable={true} />
   );
 };
