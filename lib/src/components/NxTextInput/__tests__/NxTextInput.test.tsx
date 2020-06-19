@@ -55,6 +55,10 @@ describe('NxTextInput', function() {
     expect(getShallowComponent({ type: 'textarea' }).find('textarea')).toHaveProp('type', undefined);
   });
 
+  it('adds the nx-text-input--textarea class if type is "textarea"', function() {
+    expect(getShallowComponent({ type: 'textarea' })).toHaveClassName('nx-text-input--textarea');
+  });
+
   it('uses faCheck for the valid icon', function() {
     expect(getShallowComponent().find('.nx-icon--valid')).toHaveProp('icon', faCheck);
   });
