@@ -51,18 +51,24 @@ describe('NxTextInput', function() {
   });
 
   it('sets the nx-text-input--invalid className if there are validationErrors', function() {
-    expect(getShallowComponent()).not.toHaveClassName('nx-text-input--invalid');
     expect(getShallowComponent({ validationErrors: null })).not.toHaveClassName('nx-text-input--invalid');
     expect(getShallowComponent({ validationErrors: [] })).not.toHaveClassName('nx-text-input--invalid');
     expect(getShallowComponent({ validationErrors: ['baaad'] })).toHaveClassName('nx-text-input--invalid');
   });
 
   it('sets the nx-text-input--valid className if there are not validationErrors', function() {
-    expect(getShallowComponent()).toHaveClassName('nx-text-input--valid');
     expect(getShallowComponent({ validationErrors: null })).toHaveClassName('nx-text-input--valid');
     expect(getShallowComponent({ validationErrors: [] })).toHaveClassName('nx-text-input--valid');
     expect(getShallowComponent({ validationErrors: ['baaad'] }))
         .not.toHaveClassName('nx-text-input--valid');
+  });
+
+  it('does not set valid nor invalid className if validationErrors is undefined', function() {
+    expect(getShallowComponent()).not.toHaveClassName('valid');
+    expect(getShallowComponent()).not.toHaveClassName('invalid');
+
+    expect(getShallowComponent({ validationErrors: undefined })).not.toHaveClassName('valid');
+    expect(getShallowComponent({ validationErrors: undefined })).not.toHaveClassName('invalid');
   });
 
   it('passes through html props to the input element', function() {
