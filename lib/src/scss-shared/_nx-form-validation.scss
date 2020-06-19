@@ -40,6 +40,10 @@
     border-color: #d1d6f0;
     color: $nx-text-color-light;
   }
+
+  .nx-text-input__validation-icon {
+    display: none;
+  }
 }
 
 .nx-text-input__validation-icon {

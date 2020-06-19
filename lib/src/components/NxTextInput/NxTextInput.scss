@@ -7,15 +7,15 @@
 @import '../../scss-shared/_nx-form-validation.scss';
 
 .nx-text-input {
-  &.valid:not(.pristine) {
-    @include valid();
-  }
-
   &.invalid {
     @include invalid();
   }
 
-  &.pristine {
+  &.pristine, &.pristine.valid {
     @include pristine();
+  }
+
+  &.valid {
+    @include valid();
   }
 }

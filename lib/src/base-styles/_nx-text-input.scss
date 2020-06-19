@@ -12,7 +12,7 @@
     outline: 0;
   }
 
-  &.pristine, &.invalid, &.valid {
+  &.pristine, &.pristine.valid {
     &:focus-within {
       .nx-text-input__box {
         border-color: #43cbf5;
@@ -22,6 +22,48 @@
     &:hover {
       .nx-text-input__box {
         border-color: #2c2c2c;
+      }
+    }
+
+    &.disabled {
+      .nx-text-input__box {
+        background-color: #e9e9e9;
+        border-color: #949494;
+      }
+    }
+  }
+
+  &.invalid {
+    &:focus-within {
+      .nx-text-input__box {
+        border-color: #cd0028;
+      }
+    }
+
+    &:hover {
+      .nx-text-input__box {
+        border-color: #cd0028;
+      }
+    }
+
+    &.disabled {
+      .nx-text-input__box {
+        background-color: #e9e9e9;
+        border-color: #949494;
+      }
+    }
+  }
+
+  &.valid {
+    &:focus-within {
+      .nx-text-input__box {
+        border-color: #007623;
+      }
+    }
+
+    &:hover {
+      .nx-text-input__box {
+        border-color: #007623;
       }
     }
 
