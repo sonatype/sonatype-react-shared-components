@@ -143,9 +143,10 @@ const NxTextInputPage = () =>
       </table>
       <h3>State Helpers</h3>
       <p>
-        '@sonatype/react-shared-components/components/NxTextInput/stateHelpers.ts' includes the following recommended
-        state helper functions, which each return an object containining the "stateful" parts of the NxTextInput props
-        (<code className="nx-code">value</code>, <code className="nx-code">isPristine</code>, and
+        <code className="nx-code">@sonatype/react-shared-components/components/NxTextInput/stateHelpers.ts</code>{' '}
+        includes the following recommended state helper functions, which each return an object containining the
+        "stateful" parts of the NxTextInput props{' '}
+        (<code className="nx-code">value</code>, <code className="nx-code">isPristine</code>, and{' '}
         <code className="nx-code">validationErrors</code>) as well as <code className="nx-code">trimmedValue</code>,
         which holds a whitespace-trimmed copy of the <code className="nx-code">value</code>:
       </p>
