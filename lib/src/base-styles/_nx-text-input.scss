@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@import '../scss-shared/nx-container-helpers';
 
 .nx-text-input {
   display: inline-block;
@@ -91,11 +92,23 @@
 }
 
 .nx-text-input__box {
+  @include container-horizontal;
+
   align-items: center;
   border: 1px solid #2c2c2c;
   border-radius: $nx-border-radius;
   display: flex;
   padding: $nx-spacing-xs $nx-spacing-md;
+
+  .nx-icon {
+    margin-right: 0;
+
+    + .nx-icon {
+      // normally .nx-icon + .nx-icon removes the left margin so that it doesn't double up between icons.
+      // In this case thoug the first icon isn't visible so we don't want that
+      margin-left: $nx-spacing-xs;
+    }
+  }
 }
 
 .nx-text-input__input {
@@ -125,6 +138,10 @@
 }
 
 .nx-text-input--textarea {
+  .nx-text-input__box {
+    align-items: flex-end;
+  }
+
   width: auto;
   min-width: 300px;
   max-width: 700px;

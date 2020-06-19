@@ -12,6 +12,7 @@ import NxTextInputSimpleExample from './NxTextInputSimpleExample';
 import NxTextInputValidationExample from './NxTextInputValidationExample';
 import NxTextInputPasswordExample from './NxTextInputPasswordExample';
 import NxTextInputTextAreaExample from './NxTextInputTextAreaExample';
+import NxTextInputTextAreaValidationExample from './NxTextInputTextAreaValidationExample';
 import NxTextInputDisabledExample from './NxTextInputDisabledExample';
 import CodeExample from '../../CodeExample';
 
@@ -19,6 +20,7 @@ const simpleSourceCode = require('!!raw-loader!./NxTextInputSimpleExample').defa
 const validationSourceCode = require('!!raw-loader!./NxTextInputValidationExample').default;
 const passwordSourceCode = require('!!raw-loader!./NxTextInputPasswordExample').default;
 const textAreaSourceCode = require('!!raw-loader!./NxTextInputTextAreaExample').default;
+const textAreaValidationSourceCode = require('!!raw-loader!./NxTextInputTextAreaValidationExample').default;
 const disabledSourceCode = require('!!raw-loader!./NxTextInputDisabledExample').default;
 
 const NxTextInputPage = () =>
@@ -201,6 +203,10 @@ const NxTextInputPage = () =>
     <GalleryTile title="TextArea input example">
       <NxTextInputTextAreaExample />
       <CodeExample content={textAreaSourceCode} />
+    </GalleryTile>
+    <GalleryTile title="TextArea input example with validation">
+      <NxTextInputTextAreaValidationExample />
+      <CodeExample content={textAreaValidationSourceCode} />
     </GalleryTile>
     <GalleryTile title="Disabled example">
       <p className="nx-p">
