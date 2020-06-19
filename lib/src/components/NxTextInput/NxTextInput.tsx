@@ -86,10 +86,8 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
               className: "nx-text-input__input",
               onKeyPress: inputOnKeyPress
             })}
-            <span className="nx-text-input__validation-icon">
-              <NxFontAwesomeIcon icon={faCheck} className="nx-icon--valid"/>
-              <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon--invalid"/>
-            </span>
+            <NxFontAwesomeIcon icon={faCheck} className="nx-icon nx-icon--valid"/>
+            <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon nx-icon--invalid"/>
           </div>
           <div className="nx-text-input__invalid-message">
             <span className="nx-text-input__invalid-message-text">{firstValidationError}</span>

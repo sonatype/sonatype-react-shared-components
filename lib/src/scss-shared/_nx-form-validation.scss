@@ -12,12 +12,8 @@
     border-color: $nx-valid-color;
   }
 
-  .nx-text-input__validation-icon {
+  .nx-icon--valid {
     display: inline-block;
-
-    .nx-icon--valid {
-      display: block;
-    }
   }
 }
 
@@ -26,12 +22,8 @@
     border-color: $nx-invalid-color;
   }
 
-  .nx-text-input__validation-icon {
+  .nx-icon--invalid {
     display: inline-block;
-
-    .nx-icon--invalid {
-      display: block;
-    }
   }
 }
 
@@ -41,15 +33,13 @@
     color: $nx-text-color-light;
   }
 
-  .nx-text-input__validation-icon {
+  .nx-icon--invalid, .nx-icon--valid {
     display: none;
   }
 }
 
-.nx-text-input__validation-icon {
-  &, .nx-icon {
-    display: none;
-  }
+.nx-icon--invalid, .nx-icon--valid {
+  display: none;
 }
 
 .nx-text-input__invalid-message {
