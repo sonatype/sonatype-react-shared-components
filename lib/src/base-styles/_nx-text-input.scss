@@ -7,6 +7,31 @@
 
 .nx-text-input {
   width: $nx-form-element-width-normal;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.pristine, &.invalid, &.valid {
+    &:focus {
+      .nx-text-input__box {
+        border-color: #43cbf5;
+      }
+    }
+
+    &:hover {
+      .nx-text-input__box {
+        border-color: #2c2c2c;
+      }
+    }
+
+    &.disabled {
+      .nx-text-input__box {
+        background-color: #e9e9e9;
+        border-color: #949494;
+      }
+    }
+  }
 }
 
 .nx-text-input__box {
@@ -15,19 +40,6 @@
   border-radius: $nx-border-radius;
   display: flex;
   padding: $nx-spacing-xs $nx-spacing-md;
-
-  &:hover {
-    border-color: #2c2c2c;
-  }
-
-  &:focus {
-    border-color: #43cbf5;
-  }
-
-  &:disabled {
-    background-color: #e9e9e9;
-    border-color: #949494;
-  }
 }
 
 .nx-text-input__input {
@@ -58,7 +70,6 @@
 
 textarea.nx-text-input__input {
   min-height: 220px;
-  padding: $nx-spacing-xs $nx-spacing-md;
   max-width: 700px;
 }
 
