@@ -6,6 +6,8 @@
  */
 
 .nx-text-input {
+  display: inline-block;
+
   width: $nx-form-element-width-normal;
 
   &:focus {
@@ -110,10 +112,15 @@
   width: $nx-form-element-width-wide;
 }
 
+.nx-text-input--textarea {
+  width: auto;
+  min-width: 300px;
+  max-width: 700px;
+}
+
 textarea.nx-text-input__input {
   min-height: 220px;
   padding: 0;
-  max-width: 700px;
 }
 
 ::-ms-clear {
