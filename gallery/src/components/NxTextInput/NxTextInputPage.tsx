@@ -203,6 +203,9 @@ const NxTextInputPage = () =>
       <CodeExample content={textAreaSourceCode} />
     </GalleryTile>
     <GalleryTile title="Disabled example">
+      <p className="nx-p">
+        Disabled inputs do not show validation styles:
+      </p>
       <NxTextInputDisabledExample />
       <CodeExample content={disabledSourceCode} />
     </GalleryTile>
