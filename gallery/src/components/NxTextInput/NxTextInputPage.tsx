@@ -57,12 +57,28 @@ const NxTextInputPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">validationErrors</td>
-            <td className="nx-cell">string[]</td>
+            <td className="nx-cell">validatable</td>
+            <td className="nx-cell">boolean</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Zero or more validation error messages.  If empty or not defined, the field is considered to be valid.
-              If the field is invalid, it will receive error styling and a tooltip displaying the first error message.
+              If true, this NxTextInput is subject to validation, the result of which should be passed in via
+              the <code className="nx-code">validationErrors</code> prop, resulting in validation CSS classes being
+              applied (see below). If false, the NxTextInput is not considered to be subject to validation, the
+              <code className="nx-code">validationErrors</code> prop is ignored, and validation-related CSS classes
+              are never applied.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">validationErrors</td>
+            <td className="nx-cell">string | string[]</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              Validation failure messages for components where <code className="nx-code">validatable</code> is
+              true. Any strings contained by this prop's value are taken to be error messages describing a validation
+              failure. These trigger the invalid styling on the component and the first such error message is
+              displayed within the component. If this prop's value does not contain any strings (i.e. if it is null,
+              undefined, or an empty array), the component value is taken to be valid, and corresponding styles
+              are added. For non-validatable components, this prop is ignored.
             </td>
           </tr>
           <tr className="nx-table-row">
