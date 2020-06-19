@@ -101,7 +101,7 @@
   }
 }
 
-.nx-text-input__invalid-message-text:empty::before {
+.nx-text-input__invalid-message:empty::before {
   // zero-width space; forces span to take up normal height even when empty
   content: '\200b';
 }
