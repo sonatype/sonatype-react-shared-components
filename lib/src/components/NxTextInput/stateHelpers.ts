@@ -36,6 +36,6 @@ export const userInput = curryN(2, function userInput(validator: Validator, newV
     isPristine: false,
     value: newValue,
     trimmedValue,
-    validationErrors: validator ? validator(trimmedValue) : undefined
+    validationErrors: validator && validator(trimmedValue)
   };
 });

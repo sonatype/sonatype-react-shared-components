@@ -30,7 +30,18 @@ export { Props, propTypes, inputTypes } from './types';
  */
 const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
     function NxTextInput(props, ref) {
-      const { type, isPristine, validationErrors, onChange, className, onKeyPress, disabled, ...attrs } = props;
+      const {
+        type,
+        isPristine,
+        validatable,
+        validationErrors,
+        onChange,
+        className,
+        onKeyPress,
+        disabled,
+        ...attrs
+      } = props;
+
       /**
        * `trimmedValue` is a hidden property in `props`
        * We need to remove it so react doesn't complain when we pass the object
@@ -41,25 +52,15 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
       const newProps = omit(['trimmedValue', 'title'], attrs);
       const isTextArea = type === 'textarea',
           element = isTextArea ? 'textarea' : 'input',
-          typeAttr = isTextArea ? undefined : (type || 'text');
-
-      let isInvalid = false,
-          firstValidationError = null,
-          validatable = false;
-
-      if (validationErrors !== undefined) {
-        // due to TS type guards, within this block validationErrors doesn't have undefined in its type
-        isInvalid = hasValidationErrors(validationErrors);
-        firstValidationError = getFirstValidationError(validationErrors);
-        validatable = true;
-      }
-
-      const internalClassName = classnames('nx-text-input', className, {
-        pristine: isPristine,
-        invalid: validatable && isInvalid,
-        valid: validatable && !isInvalid,
-        disabled: disabled
-      });
+          typeAttr = isTextArea ? undefined : (type || 'text'),
+          isInvalid = validatable && hasValidationErrors(validationErrors),
+          firstValidationError = validatable && getFirstValidationError(validationErrors),
+          internalClassName = classnames('nx-text-input', className, {
+            pristine: isPristine,
+            invalid: validatable && isInvalid,
+            valid: validatable && !isInvalid,
+            disabled: disabled
+          });
 
       function inputOnChange(e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
         if (onChange) {

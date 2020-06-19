@@ -8,7 +8,8 @@ import { hasValidationErrors, getFirstValidationError } from '../validationUtil'
 
 describe('validationUtil', function() {
   describe('hasValidationErrors', function() {
-    it('returns false for null', function() {
+    it('returns false for undefined or null', function() {
+      expect(hasValidationErrors(undefined)).toBe(false);
       expect(hasValidationErrors(null)).toBe(false);
     });
 
@@ -27,7 +28,8 @@ describe('validationUtil', function() {
   });
 
   describe('getFirstValidationError', function() {
-    it('returns null for null input', function() {
+    it('returns null for undefined or null input', function() {
+      expect(getFirstValidationError(undefined)).toBe(null);
       expect(getFirstValidationError(null)).toBe(null);
     });
 
