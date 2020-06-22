@@ -11,56 +11,42 @@
   @include container-horizontal;
 
   display: inline-block;
-  vertical-align: middle;
   white-space: nowrap;
 
-  .nx-filter-text-input {
-    border-left: 0;
-    box-sizing: content-box;
-    margin-left: 0;
+  &:focus {
+    outline: 0;
   }
 
-  .nx-filter-input__add-on {
-    border: $nx-border;
-    border-right: none;
-    box-sizing: content-box;
-    display: inline-block;
-    padding: 4px 4px 4px 2px;
-    vertical-align: top;
-    width: 20px;
+  &:focus-within {
+    .nx-text-input__box {
+      border-color: #43cbf5;
+    }
+  }
 
-    .nx-icon {
-      color: $nx-text-color-light;
-      height: 10px;
-      margin-top: 5px;
-      margin-left: 5px;
+  &:hover {
+    .nx-text-input__box {
+      border-color: #2c2c2c;
+    }
+  }
 
-      &.fa-times {
-        cursor: pointer;
+  &.nx-filter-input--disabled {
+    .nx-text-input__box {
+      background-color: #e9e9e9;
+      border-color: #949494;
 
-        height: 14px;
-        margin-top: 4px;
-        margin-left: 6px;
+      .nx-icon--filter-icons {
+        color: #949494;
       }
     }
   }
 
-  .nx-filter-input--disabled {
-    .nx-filter-input__add-on {
-      background-color: $nx-off-white;
+  .nx-icon--filter-icons {
+    color: $nx-text-color-light;
+    height: 1em;
+    margin-right: 8px;
 
-      .nx-icon {
-        color: $nx-text-color-disabled;
-      }
-    }
-
-    .nx-filter-text-input {
-      background-color: $nx-off-white;
-      border-color: $nx-grey-3;
-
-      &::placeholder {
-        color: $nx-text-color-disabled;
-      }
+    &.fa-times {
+      cursor: pointer;
     }
   }
 }

@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import { faFilter, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import './NxFilterInput.scss';
+
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
 export { Props } from './types';
@@ -29,18 +30,17 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
 
       return (
         <div {...otherProps} className={classes} ref={ref}>
-          <span className="nx-filter-input__add-on"
-                onClick={value && onClear || undefined}>
-            <NxFontAwesomeIcon icon={icon} />
-          </span>
-          <input type="text"
-                 autoComplete="off"
-                 id={inputId || undefined}
-                 value={value}
-                 onChange={inputOnChange}
-                 placeholder={placeholder || undefined}
-                 className="nx-text-input nx-filter-text-input"
-                 disabled={disabled || undefined} />
+          <div className="nx-text-input__box">
+            <NxFontAwesomeIcon icon={icon} onClick={value && onClear || undefined} className="nx-icon--filter-icons" />
+            <input type="text"
+                  autoComplete="off"
+                  id={inputId || undefined}
+                  value={value}
+                  onChange={inputOnChange}
+                  placeholder={placeholder || undefined}
+                  className="nx-text-input__input nx-filter-text-input"
+                  disabled={disabled || undefined} />
+          </div>
         </div>
       );
     }
