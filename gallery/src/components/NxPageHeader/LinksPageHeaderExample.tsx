@@ -22,6 +22,6 @@ const LinksPageHeaderExample = () => {
   }];
 
   return <NxPageHeader links={links} />;
-}
+};
 
 export default LinksPageHeaderExample;

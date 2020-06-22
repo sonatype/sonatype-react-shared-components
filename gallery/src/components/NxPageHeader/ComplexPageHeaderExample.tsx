@@ -29,6 +29,6 @@ const ComplexPageHeaderExample = () => {
       <NxButton onClick={onButtonClick}>Click Me</NxButton>
     </NxPageHeader>
   );
-}
+};
 
 export default ComplexPageHeaderExample;
