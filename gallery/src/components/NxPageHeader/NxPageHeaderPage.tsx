@@ -87,7 +87,9 @@ const NxPageHeaderPage = () =>
       <p className="nx-p">
         Note that in each of the following examples, the headers have been tweaked to display in the normal page
         flow for the sake of demonstration. Normally, they would display at the top of the viewport using CSS
-        fixed positioning.
+        fixed positioning. It is the responsibility of calling code to ensure the that content included in the
+        header fits in a single row at all supported resolutions. Behavior of this component when content exceeds
+        the space allowed is unspecified.
       </p>
     </GalleryDescriptionTile>
 

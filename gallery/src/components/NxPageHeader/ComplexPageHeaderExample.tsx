@@ -13,9 +13,6 @@ const ComplexPageHeaderExample = () => {
     name: 'NxButton',
     href: '#/pages/NxButton'
   }, {
-    name: 'NxTextInput',
-    href: '#/pages/NxTextInput'
-  }, {
     name: 'NxPageHeader',
     href: '#/pages/NxPageHeader',
     current: true
