@@ -43,10 +43,8 @@ $main-header-product-version-row-height: 1fr;
   min-width: $nx-sidebar-width;
 }
 
-.nx-product__branding {
-  a.gallery-link-home {
-    display: block;
-  }
+.nx-product__home-link {
+  display: block;
 }
 
 .nx-product__wordmark {
@@ -60,6 +58,7 @@ $main-header-product-version-row-height: 1fr;
   display: inline-block;
   font-size: 26px;
   margin-left: $nx-spacing-sm;
+  text-transform: lowercase;
   white-space: nowrap;
 
   &::before {
