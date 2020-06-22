@@ -8,7 +8,7 @@ import React from 'react';
 
 import { NxButton, NxPageHeader } from '@sonatype/react-shared-components';
 
-const LinksPageHeaderExample = () => {
+const ExtraContentPageHeaderExample = () => {
   function onButtonClick() {
     alert('Click');
   }
@@ -20,4 +20,4 @@ const LinksPageHeaderExample = () => {
   );
 }
 
-export default LinksPageHeaderExample;
+export default ExtraContentPageHeaderExample;

@@ -8,13 +8,13 @@ import React from 'react';
 
 import { NxButton, NxPageHeader } from '@sonatype/react-shared-components';
 
-const LinksPageHeaderExample = () => {
+const ComplexPageHeaderExample = () => {
   const links = [{
     name: 'NxButton',
     href: '#/pages/NxButton'
   }, {
     name: 'NxTextInput',
-    href: '#/page/NxTextInput'
+    href: '#/pages/NxTextInput'
   }, {
     name: 'NxPageHeader',
     href: '#/pages/NxPageHeader'
@@ -33,4 +33,4 @@ const LinksPageHeaderExample = () => {
   );
 }
 
-export default LinksPageHeaderExample;
+export default ComplexPageHeaderExample;

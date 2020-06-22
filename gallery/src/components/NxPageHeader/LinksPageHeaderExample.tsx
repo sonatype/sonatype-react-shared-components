@@ -14,7 +14,7 @@ const LinksPageHeaderExample = () => {
     href: '#/pages/NxButton'
   }, {
     name: 'NxTextInput',
-    href: '#/page/NxTextInput'
+    href: '#/pages/NxTextInput'
   }, {
     name: 'NxPageHeader',
     href: '#/pages/NxPageHeader'
