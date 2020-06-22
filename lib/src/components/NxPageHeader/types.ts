@@ -12,13 +12,14 @@ interface ProductInfo {
   version? : string | null;
 }
 
-interface HeaderLink {
+export interface HeaderLinkProps {
   name: string;
   href: string;
+  active?: boolean | null;
 }
 
 export interface Props {
-  links?: HeaderLink[] | null
+  links?: HeaderLinkProps[] | null
   homeLink?: string | null;
   productInfo?: ProductInfo | null;
   children?: ReactNode | null;
@@ -27,7 +28,8 @@ export interface Props {
 export const propTypes: ValidationMap<Props> = {
   links: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired
+    href: PropTypes.string.isRequired,
+    active: PropTypes.bool
   }).isRequired),
   homeLink: PropTypes.string,
   productInfo: PropTypes.shape({

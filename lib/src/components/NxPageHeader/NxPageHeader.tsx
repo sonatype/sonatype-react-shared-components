@@ -5,18 +5,25 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import classnames from 'classnames';
 
-import { Props, propTypes } from './types';
+import { HeaderLinkProps, Props, propTypes } from './types';
 
 export { Props };
 
 const logoImg = require('../../assets/img/sonatype-logo-with-hexagon.png');
 
+function HeaderLink({ name, href, active }: HeaderLinkProps) {
+  const classes = classnames('nx-page-header__link', {
+    'nx-page-header__link--active': active
+  });
+
+  return <a className={classes} href={href}>{name}</a>;
+}
+
 export default function NxPageHeader({ links, homeLink, productInfo, children }: Props) {
   const logoEl = <img src={logoImg} className="nx-product__wordmark" alt="Sonatype" />,
-      linkEls = links && links.map(
-        ({ name, href }) => <a className="nx-page-header__link" key={name} href={href}>{name}</a>
-      );
+      linkEls = links && links.map(link => <HeaderLink key={link.name} { ...link } />);
 
   return (
     <header className="nx-page-header">
