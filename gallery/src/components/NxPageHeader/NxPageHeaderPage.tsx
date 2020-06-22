@@ -98,44 +98,76 @@ const NxPageHeaderPage = () =>
 
     <GalleryExampleTile title="Simple Header"
                         codeExamples={simplePageHeaderExampleCode}
-                        description="A minimal instance of NxPageHeader which includes no product name, no version, no
-                            links, and no additional content.">
+                        description={
+                          <>
+                            A minimal instance of <code className="nx-code">NxPageHeader</code> which includes no
+                            product name, no version, no links, and no additional content.
+                          </>
+                        }>
       <SimplePageHeaderExample/>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Product Name"
                         codeExamples={productNamePageHeaderExampleCode}
-                        description="An instance of NxPageHeader which includes a product name.">
+                        description={
+                          <>
+                            An instance of <code className="nx-code">NxPageHeader</code> which includes a product name.
+                          </>
+                        }>
       <ProductNamePageHeaderExample/>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Product Name and Version"
                         codeExamples={productNameAndVersionPageHeaderExampleCode}
-                        description="An instance of NxPageHeader which includes a product name and version.">
+                        description={
+                          <>
+                            An instance of <code className="nx-code">NxPageHeader</code> which includes a product name
+                            and version.
+                          </>
+                        }>
       <ProductNameAndVersionPageHeaderExample/>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Home Link"
                         codeExamples={homeLinkPageHeaderExampleCode}
-                        description="An instance of NxPageHeader which includes a home link for the logo.">
+                        description={
+                          <>
+                            An instance of <code className="nx-code">NxPageHeader</code> which includes a home link
+                            for the logo.
+                          </>
+                        }>
       <HomeLinkPageHeaderExample/>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Links"
                         codeExamples={linksPageHeaderExampleCode}
-                        description="An instance of NxPageHeader which includes links.">
+                        description={
+                          <>
+                            An instance of <code className="nx-code">NxPageHeader</code> which includes links.
+                          </>
+                        }>
       <LinksPageHeaderExample/>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Extra Content"
                         codeExamples={extraContentPageHeaderExampleCode}
-                        description="An instance of NxPageHeader which extra content on the right-hand side.">
+                        description={
+                          <>
+                            An instance of <code className="nx-code">NxPageHeader</code> with extra content on the
+                            right-hand side.
+                          </>
+                        }>
       <ExtraContentPageHeaderExample/>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Complex Page Header"
                         codeExamples={complexPageHeaderExampleCode}
-                        description="An instance of NxPageHeader which includes all features at once.">
+                        description={
+                          <>
+                            An instance of <code className="nx-code">NxPageHeader</code> which includes all features
+                            at once.
+                          </>
+                        }>
       <ComplexPageHeaderExample/>
     </GalleryExampleTile>
   </>;
