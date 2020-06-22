@@ -38,6 +38,7 @@ $main-header-product-version-row-height: 1fr;
 
 .nx-page-header__links {
   @include container-horizontal;
+  margin: 0 $nx-spacing-xxl;
 }
 
 .nx-page-header__link {
@@ -100,7 +101,6 @@ $main-header-product-version-row-height: 1fr;
   display: flex;
   height: $nx-main-header-height - 6px; // aids vertical alignment of contents
   margin-bottom: 6px;
-  margin-right: $nx-spacing-xxl;
   text-decoration: none;
 }
 
