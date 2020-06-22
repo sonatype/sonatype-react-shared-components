@@ -57,12 +57,11 @@ $main-header-product-version-row-height: 1fr;
   }
 
   // Each link includes the text twice: one instance is visible, and changes
-  // font-weight in response to hover. This font-weight change changes the width of that text.
-  // To prevent shifting of adjacent elements, that visible text is removed from the layout computation
-  // and instead another copy of the text is added which is invisible and which always has normal font-weight.
-  // This copy of the text is what gives the element its width.
-  // Note that for the sake of making the bottom border look nice, on the "current" link the sizing text _is_
-  // semi-bold
+  // font-weight in response to hover. When the font-weight changes, so does the width of the text.
+  // To prevent shifting of adjacent elements, that visible text is removed from the layout computation, using
+  // absolute positioning, and instead another copy of the text is added which is invisible and which has a
+  // font-weight which does not vary on hover (i.e. normal font-weight unless it is "current"). This second copy
+  // of the text is what gives the element its width.
   .nx-page-header__link-sizing-text {
     display: block;
     font-weight: normal;
