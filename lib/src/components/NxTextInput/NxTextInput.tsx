@@ -7,10 +7,12 @@
 import React, { forwardRef, FormEvent, KeyboardEvent } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
+import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import './NxTextInput.scss';
+
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
-import NxTooltip from '../NxTooltip/NxTooltip';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 export { Props, propTypes, inputTypes } from './types';
 
@@ -28,7 +30,18 @@ export { Props, propTypes, inputTypes } from './types';
  */
 const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
     function NxTextInput(props, ref) {
-      const { type, isPristine, validationErrors, onChange, className, onKeyPress, ...attrs } = props;
+      const {
+        type,
+        isPristine,
+        validatable,
+        validationErrors,
+        onChange,
+        className,
+        onKeyPress,
+        disabled,
+        ...attrs
+      } = props;
+
       /**
        * `trimmedValue` is a hidden property in `props`
        * We need to remove it so react doesn't complain when we pass the object
@@ -40,12 +53,14 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
       const isTextArea = type === 'textarea',
           element = isTextArea ? 'textarea' : 'input',
           typeAttr = isTextArea ? undefined : (type || 'text'),
-          isInvalid = hasValidationErrors(validationErrors),
-          firstValidationError = getFirstValidationError(validationErrors),
+          isInvalid = validatable && hasValidationErrors(validationErrors),
+          firstValidationError = validatable && getFirstValidationError(validationErrors),
           internalClassName = classnames('nx-text-input', className, {
-            'nx-text-input--pristine': isPristine,
-            'nx-text-input--invalid': isInvalid,
-            'nx-text-input--valid': !isInvalid
+            pristine: isPristine,
+            invalid: validatable && isInvalid,
+            valid: validatable && !isInvalid,
+            disabled: disabled,
+            'nx-text-input--textarea': isTextArea
           });
 
       function inputOnChange(e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -61,19 +76,24 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
       }
 
       return (
-        <NxTooltip open={isInvalid}
-                   title={firstValidationError}
-                   className="nx-tooltip--validation-error"
-                   placement="top-end">
-          {React.createElement(element, {
-            ...newProps,
-            ref,
-            type: typeAttr,
-            onChange: inputOnChange,
-            className: internalClassName,
-            onKeyPress: inputOnKeyPress
-          })}
-        </NxTooltip>
+        <div className={internalClassName}>
+          <div className="nx-text-input__box">
+            {React.createElement(element, {
+              ...newProps,
+              disabled,
+              ref,
+              type: typeAttr,
+              onChange: inputOnChange,
+              className: 'nx-text-input__input',
+              onKeyPress: inputOnKeyPress
+            })}
+            <NxFontAwesomeIcon icon={faCheck} className="nx-icon nx-icon--valid"/>
+            <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon nx-icon--invalid"/>
+          </div>
+          <div className="nx-text-input__invalid-message">
+            {firstValidationError}
+          </div>
+        </div>
       );
     }
 );

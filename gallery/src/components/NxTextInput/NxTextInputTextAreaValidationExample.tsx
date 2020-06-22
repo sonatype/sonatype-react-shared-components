@@ -13,7 +13,7 @@ function validator(val: string) {
   return val.length ? null : 'Must be non-empty';
 }
 
-export default function NxTextInputValidationExample() {
+export default function NxTextInputTextAreaValidationExample() {
   const [state, setState] = useState(initialState(''));
 
   function onChange(val: string) {
@@ -21,6 +21,6 @@ export default function NxTextInputValidationExample() {
   }
 
   return (
-    <NxTextInput { ...state } onChange={onChange} validatable={true} />
+    <NxTextInput type="textarea" validatable={true} { ...state } onChange={onChange} placeholder="placeholder"/>
   );
 };

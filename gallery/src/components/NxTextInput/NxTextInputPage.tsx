@@ -12,6 +12,7 @@ import NxTextInputSimpleExample from './NxTextInputSimpleExample';
 import NxTextInputValidationExample from './NxTextInputValidationExample';
 import NxTextInputPasswordExample from './NxTextInputPasswordExample';
 import NxTextInputTextAreaExample from './NxTextInputTextAreaExample';
+import NxTextInputTextAreaValidationExample from './NxTextInputTextAreaValidationExample';
 import NxTextInputDisabledExample from './NxTextInputDisabledExample';
 import CodeExample from '../../CodeExample';
 
@@ -19,6 +20,7 @@ const simpleSourceCode = require('!!raw-loader!./NxTextInputSimpleExample').defa
 const validationSourceCode = require('!!raw-loader!./NxTextInputValidationExample').default;
 const passwordSourceCode = require('!!raw-loader!./NxTextInputPasswordExample').default;
 const textAreaSourceCode = require('!!raw-loader!./NxTextInputTextAreaExample').default;
+const textAreaValidationSourceCode = require('!!raw-loader!./NxTextInputTextAreaValidationExample').default;
 const disabledSourceCode = require('!!raw-loader!./NxTextInputDisabledExample').default;
 
 const NxTextInputPage = () =>
@@ -57,12 +59,28 @@ const NxTextInputPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">validationErrors</td>
-            <td className="nx-cell">string[]</td>
+            <td className="nx-cell">validatable</td>
+            <td className="nx-cell">boolean</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Zero or more validation error messages.  If empty or not defined, the field is considered to be valid.
-              If the field is invalid, it will receive error styling and a tooltip displaying the first error message.
+              If true, this NxTextInput is subject to validation, the result of which should be passed in via
+              the <code className="nx-code">validationErrors</code> prop, resulting in validation CSS classes being
+              applied (see below). If false, the NxTextInput is not considered to be subject to validation, the
+              <code className="nx-code">validationErrors</code> prop is ignored, and validation-related CSS classes
+              are never applied.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">validationErrors</td>
+            <td className="nx-cell">string | string[]</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              Validation failure messages for components where <code className="nx-code">validatable</code> is
+              true. Any strings contained by this prop's value are taken to be error messages describing a validation
+              failure. These trigger the invalid styling on the component and the first such error message is
+              displayed within the component. If this prop's value does not contain any strings (i.e. if it is null,
+              undefined, or an empty array), the component value is taken to be valid, and corresponding styles
+              are added. For non-validatable components, this prop is ignored.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -125,9 +143,10 @@ const NxTextInputPage = () =>
       </table>
       <h3>State Helpers</h3>
       <p>
-        '@sonatype/react-shared-components/components/NxTextInput/stateHelpers.ts' includes the following recommended
-        state helper functions, which each return an object containining the "stateful" parts of the NxTextInput props
-        (<code className="nx-code">value</code>, <code className="nx-code">isPristine</code>, and
+        <code className="nx-code">@sonatype/react-shared-components/components/NxTextInput/stateHelpers.ts</code>{' '}
+        includes the following recommended state helper functions, which each return an object containining the
+        "stateful" parts of the NxTextInput props{' '}
+        (<code className="nx-code">value</code>, <code className="nx-code">isPristine</code>, and{' '}
         <code className="nx-code">validationErrors</code>) as well as <code className="nx-code">trimmedValue</code>,
         which holds a whitespace-trimmed copy of the <code className="nx-code">value</code>:
       </p>
@@ -186,7 +205,14 @@ const NxTextInputPage = () =>
       <NxTextInputTextAreaExample />
       <CodeExample content={textAreaSourceCode} />
     </GalleryTile>
+    <GalleryTile title="TextArea input example with validation">
+      <NxTextInputTextAreaValidationExample />
+      <CodeExample content={textAreaValidationSourceCode} />
+    </GalleryTile>
     <GalleryTile title="Disabled example">
+      <p className="nx-p">
+        Disabled inputs do not show validation styles:
+      </p>
       <NxTextInputDisabledExample />
       <CodeExample content={disabledSourceCode} />
     </GalleryTile>

@@ -56,7 +56,9 @@ export default function FormValidationExample() {
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">Text input 1</span>
-          <NxTextInput { ...textInput1State } onChange={setTextInput(setTextInput1State, nonEmptyValidator)}/>
+          <NxTextInput { ...textInput1State }
+                       validatable={true}
+                       onChange={setTextInput(setTextInput1State, nonEmptyValidator)}/>
         </label>
       </div>
       <div className="nx-form-group">
@@ -68,7 +70,9 @@ export default function FormValidationExample() {
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">Text input 3</span>
-          <NxTextInput { ...textInput3State } onChange={setTextInput(setTextInput3State, nonEmptyValidator)}/>
+          <NxTextInput { ...textInput3State }
+                       validatable={true}
+                       onChange={setTextInput(setTextInput3State, nonEmptyValidator)}/>
         </label>
       </div>
 
