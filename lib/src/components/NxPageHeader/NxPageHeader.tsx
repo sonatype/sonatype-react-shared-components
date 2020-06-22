@@ -18,7 +18,13 @@ function HeaderLink({ name, href, current }: HeaderLinkProps) {
     'nx-page-header__link--current': current
   });
 
-  return <a className={classes} href={href}>{name}</a>;
+  return (
+    <a className={classes} href={href}>
+      {/* See the comment in the CSS for why the name is here twice */}
+      <span className="nx-page-header__link-visible-text">{name}</span>
+      <span className="nx-page-header__link-sizing-text">{name}</span>
+    </a>
+  );
 }
 
 export default function NxPageHeader({ links, homeLink, productInfo, children }: Props) {

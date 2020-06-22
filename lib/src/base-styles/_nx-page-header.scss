@@ -26,11 +26,69 @@ $main-header-product-version-row-height: 1fr;
 .nx-page-header__inner {
   @include container-horizontal;
 
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
   height: $nx-main-header-height;
   margin: 0 auto;
-  padding-left: $nx-spacing-md;
+  padding: 0 $nx-spacing-l;
   width: 100%;
   max-width: $nx-page-width-max;
+}
+
+.nx-page-header__links {
+  @include container-horizontal;
+}
+
+.nx-page-header__link {
+  border-bottom: 2px solid transparent;
+
+  color: #515151;
+  display: inline-block;
+  font-size: $nx-font-size-s;
+  margin-right: $nx-spacing-l;
+  padding-bottom: $nx-spacing-xxs;
+  position: relative;
+  text-decoration: none;
+
+  &:hover {
+    font-weight: 600;
+  }
+
+  // Each link includes the text twice: one instance is visible, and changes
+  // font-weight in response to hover. This font-weight change changes the width of that text.
+  // To prevent shifting of adjacent elements, that visible text is removed from the layout computation
+  // and instead another copy of the text is added which is invisible and which always has normal font-weight.
+  // This copy of the text is what gives the element its width
+  .nx-page-header__link-sizing-text {
+    display: block;
+    font-weight: normal;
+    visibility: hidden;
+  }
+
+  .nx-page-header__link-visible-text {
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  &.nx-page-header__link--current {
+    &, .nx-page-header__link-sizing-text {
+      font-weight: 600;
+    }
+  }
+
+  &:active, &.nx-page-header__link--current {
+    border-bottom-color: #0000cc;
+  }
+}
+
+.nx-page-header__extra-content {
+  @include container-horizontal;
+
+  margin-left: auto;
 }
 
 .nx-product {
@@ -39,8 +97,9 @@ $main-header-product-version-row-height: 1fr;
   color: $main-header-color;
   display: flex;
   height: $nx-main-header-height - 6px; // aids vertical alignment of contents
+  margin-bottom: 6px;
+  margin-right: $nx-spacing-xxl;
   text-decoration: none;
-  min-width: $nx-sidebar-width;
 }
 
 .nx-product__home-link {
