@@ -400,7 +400,7 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@wdio/cli@^6.1.17":
+"@wdio/cli@6.1.17":
   version "6.1.17"
   resolved "https://repo.sonatype.com/repository/npm-all/@wdio/cli/-/cli-6.1.17.tgz#a4932ad0e3990fe2ae08a7f6fa0e8aecc402abf0"
   integrity sha512-jEOaNNs3Rd/xUkdzgG/VREqu0CAoimUEVlT2UcN9Ab0p9zTcT6FPqZ7tfKtCyQ1wNczSFZ8VOA0qtwrPlOQibw==
@@ -432,7 +432,7 @@
     deepmerge "^4.0.0"
     glob "^7.1.2"
 
-"@wdio/local-runner@^6.1.17":
+"@wdio/local-runner@6.1.17":
   version "6.1.17"
   resolved "https://repo.sonatype.com/repository/npm-all/@wdio/local-runner/-/local-runner-6.1.17.tgz#4be68e14702a14dba9c53d5bf05345944d129510"
   integrity sha512-8BnQuv5c31AaTh8BNYTKTMvPK086GLMIak4NAgVUOsiBvRzjuymo7g3HDg6Qjj5UB8zYfZvhDvZq2PXgYKNWgw==
@@ -453,7 +453,7 @@
     loglevel-plugin-prefix "^0.8.4"
     strip-ansi "^6.0.0"
 
-"@wdio/mocha-framework@^6.1.17":
+"@wdio/mocha-framework@6.1.17":
   version "6.1.17"
   resolved "https://repo.sonatype.com/repository/npm-all/@wdio/mocha-framework/-/mocha-framework-6.1.17.tgz#4a29821f08873a059fa84d818773074af346ac87"
   integrity sha512-ldrGcDezHuSy3PK7kQlEszt1bs5humCjMx3fsUq6pyO0A1BUnIYckQ8WDhL/JFZzAX+gX60J7D7jO5o+bI+HRA==
@@ -495,7 +495,7 @@
     webdriver "6.1.17"
     webdriverio "6.1.17"
 
-"@wdio/spec-reporter@^6.1.14":
+"@wdio/spec-reporter@6.1.14":
   version "6.1.14"
   resolved "https://repo.sonatype.com/repository/npm-all/@wdio/spec-reporter/-/spec-reporter-6.1.14.tgz#b396e6ece3a651ee1f2743050d899d523d6ea5fa"
   integrity sha512-QaSBgnzllzLp9LR7/5DTkmrI8BqcznUma8ZxwUNmhvskv/oKzrmNyeCsGoiExFmCk81A9FgZiZPXey7CuaTkdw==
@@ -505,7 +505,7 @@
     easy-table "^1.1.1"
     pretty-ms "^7.0.0"
 
-"@wdio/sync@^6.1.14":
+"@wdio/sync@6.1.14":
   version "6.1.14"
   resolved "https://repo.sonatype.com/repository/npm-all/@wdio/sync/-/sync-6.1.14.tgz#8c60564cc05aff455a11f360e817e309d4d154b6"
   integrity sha512-94K0kQdrOU0aMlJ2Xsd4tWr4tPpmCFp612Ml5+ecQh4C4XD07ocfsvGs+mwI7cfF1sO6g/Hoc+XTY2D+/8En3w==
@@ -1616,7 +1616,7 @@ chrome-trace-event@^1.0.0:
   dependencies:
     tslib "^1.9.0"
 
-chromedriver@^83.0.0:
+chromedriver@83.0.0:
   version "83.0.0"
   resolved "https://repo.sonatype.com/repository/npm-all/chromedriver/-/chromedriver-83.0.0.tgz#75d7d838e58014658c3990089464166fef951926"
   integrity sha512-AePp9ykma+z4aKPRqlbzvVlc22VsQ6+rgF+0aL3B5onHOncK18dWSkLrSSJMczP/mXILN9ohGsvpuTwoRSj6OQ==
@@ -8350,7 +8350,7 @@ webdriver@6.1.17:
     got "^11.0.2"
     lodash.merge "^4.6.1"
 
-webdriverio@6.1.17, webdriverio@^6.1.17:
+webdriverio@6.1.17:
   version "6.1.17"
   resolved "https://repo.sonatype.com/repository/npm-all/webdriverio/-/webdriverio-6.1.17.tgz#83ae162299511c2ff06334d64a045d0014c1a8ce"
   integrity sha512-mkV7FRjloyFI45BzZUGU8kAfrJCZluif7iC2Xsq9dx8qMyG/k7jUaE+IyDYP0i39hwswSAzGqDj1iGIifkK17Q==
