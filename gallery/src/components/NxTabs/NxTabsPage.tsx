@@ -21,7 +21,7 @@ import NxTabsSimpleExample from './NxTabsSimpleExample';
 
 const tabsSimpleExampleCode = require('!!raw-loader!./NxTabsSimpleExample').default;
 
-export default function NxTablePage() {
+export default function NxTabsPage() {
   return (
     <>
       <GalleryDescriptionTile>
