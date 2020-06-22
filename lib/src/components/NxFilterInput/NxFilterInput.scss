@@ -7,8 +7,6 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
 
-$nx-filter-input-height: 20px;
-
 .nx-filter-input {
   @include container-horizontal;
 
@@ -17,28 +15,19 @@ $nx-filter-input-height: 20px;
   white-space: nowrap;
 
   .nx-filter-text-input {
-    border: $nx-border;
     border-left: 0;
-    font-size: 14px;
-    height: $nx-filter-input-height;
-    margin-left: 0;
-    padding: 4px 6px;
     box-sizing: content-box;
-
-    &:focus {
-      outline: none;
-    }
+    margin-left: 0;
   }
 
   .nx-filter-input__add-on {
     border: $nx-border;
     border-right: none;
+    box-sizing: content-box;
     display: inline-block;
-    height: $nx-filter-input-height;
     padding: 4px 4px 4px 2px;
     vertical-align: top;
     width: 20px;
-    box-sizing: content-box;
 
     .nx-icon {
       color: $nx-text-color-light;
