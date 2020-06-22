@@ -41,17 +41,3 @@
 .nx-icon--invalid, .nx-icon--valid {
   display: none;
 }
-
-.nx-text-input__invalid-message {
-  color: #cd0028;
-  font-size: $nx-font-size-xs;
-  margin-top: $nx-spacing-xs;
-}
-
-.nx-icon--invalid {
-  color: #cd0028;
-}
-
-.nx-icon--valid {
-  color: #007623;
-}
