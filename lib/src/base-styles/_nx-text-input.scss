@@ -78,7 +78,7 @@
 
     + .nx-icon {
       // normally .nx-icon + .nx-icon removes the left margin so that it doesn't double up between icons.
-      // In this case thoug the first icon isn't visible so we don't want that
+      // In this case though the first icon isn't visible so we don't want that
       margin-left: $nx-spacing-xs;
     }
   }
