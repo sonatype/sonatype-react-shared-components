@@ -7,6 +7,18 @@
 @import '../../scss-shared/_nx-form-validation.scss';
 
 .nx-text-input {
+  .nx-icon--invalid, .nx-icon--valid {
+    display: none;
+  }
+
+  .nx-icon--invalid {
+    color: #cd0028;
+  }
+
+  .nx-icon--valid {
+    color: #007623;
+  }
+
   &.invalid {
     @include invalid();
   }
@@ -17,14 +29,6 @@
 
   &.valid {
     @include valid();
-  }
-
-  .nx-icon--invalid {
-    color: #cd0028;
-  }
-  
-  .nx-icon--valid {
-    color: #007623;
   }
 }
 
