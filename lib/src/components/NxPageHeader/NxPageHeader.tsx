@@ -27,6 +27,9 @@ function HeaderLink({ name, href, current }: HeaderLinkProps) {
   );
 }
 
+// visible for testing
+export { HeaderLinkProps, HeaderLink };
+
 export default function NxPageHeader({ links, homeLink, productInfo, children }: Props) {
   const logoEl = <img src={logoImg} className="nx-product__wordmark" alt="⬡ Sonatype"/>,
       linkEls = links && links.map(link => <HeaderLink key={link.name} { ...link } />);
