@@ -19,7 +19,7 @@ export interface HeaderLinkProps {
 }
 
 export interface Props {
-  links?: HeaderLinkProps[] | null
+  links?: HeaderLinkProps[] | null;
   homeLink?: string | null;
   productInfo?: ProductInfo | null;
   children?: ReactNode | null;
