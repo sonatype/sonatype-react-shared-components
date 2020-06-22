@@ -18,18 +18,18 @@
   &.valid {
     @include valid();
   }
+
+  .nx-icon--invalid {
+    color: #cd0028;
+  }
+  
+  .nx-icon--valid {
+    color: #007623;
+  }
 }
 
 .nx-text-input__invalid-message {
   color: #cd0028;
   font-size: $nx-font-size-xs;
   margin-top: $nx-spacing-xs;
-}
-
-.nx-icon--invalid {
-  color: #cd0028;
-}
-
-.nx-icon--valid {
-  color: #007623;
 }
