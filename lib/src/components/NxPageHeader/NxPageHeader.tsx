@@ -13,9 +13,9 @@ export { Props };
 
 const logoImg = require('../../assets/img/sonatype-logo-with-hexagon.png');
 
-function HeaderLink({ name, href, active }: HeaderLinkProps) {
+function HeaderLink({ name, href, current }: HeaderLinkProps) {
   const classes = classnames('nx-page-header__link', {
-    'nx-page-header__link--active': active
+    'nx-page-header__link--current': current
   });
 
   return <a className={classes} href={href}>{name}</a>;

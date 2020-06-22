@@ -17,7 +17,8 @@ const LinksPageHeaderExample = () => {
     href: '#/pages/NxTextInput'
   }, {
     name: 'NxPageHeader',
-    href: '#/pages/NxPageHeader'
+    href: '#/pages/NxPageHeader',
+    current: true
   }];
 
   return <NxPageHeader links={links} />;

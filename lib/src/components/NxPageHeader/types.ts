@@ -15,7 +15,7 @@ interface ProductInfo {
 export interface HeaderLinkProps {
   name: string;
   href: string;
-  active?: boolean | null;
+  current?: boolean | null;
 }
 
 export interface Props {
@@ -29,7 +29,7 @@ export const propTypes: ValidationMap<Props> = {
   links: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired,
-    active: PropTypes.bool
+    current: PropTypes.bool
   }).isRequired),
   homeLink: PropTypes.string,
   productInfo: PropTypes.shape({
