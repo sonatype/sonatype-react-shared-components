@@ -18,7 +18,7 @@ import NxLoadWrapperPage from './components/NxLoadWrapper/NxLoadWrapperPage';
 import NxModalPage from './components/NxModal/NxModalPage';
 import NxPageTitlePage from './styles/NxPageTitle/NxPageTitlePage';
 import NxTilePage from './styles/NxTile/NxTilePage';
-import NxTextInputStylesPage from './styles/NxTextInputStyles/NxTextInputStylesPage';
+//import NxTextInputStylesPage from './styles/NxTextInputStyles/NxTextInputStylesPage';
 import NxBtnPage from './styles/NxBtn/NxBtnPage';
 import NxThreatBarPage from './components/NxThreatBar/NxThreatBarPage';
 import NxRadioPage from './components/NxRadio/NxRadioPage';
@@ -106,7 +106,7 @@ const pageConfig: PageConfig = {
     'nx-page-title': NxPageTitlePage,
     'nx-scrollable': NxScrollablePage,
     'nx-table': NxTableStylePage,
-    'nx-text-input': NxTextInputStylesPage,
+    //'nx-text-input': NxTextInputStylesPage,
     'nx-threat-number': NxThreatNumberPage,
     'nx-tile': NxTilePage
   },
