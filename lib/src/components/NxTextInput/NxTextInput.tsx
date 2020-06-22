@@ -84,7 +84,7 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
               ref,
               type: typeAttr,
               onChange: inputOnChange,
-              className: "nx-text-input__input",
+              className: 'nx-text-input__input',
               onKeyPress: inputOnKeyPress
             })}
             <NxFontAwesomeIcon icon={faCheck} className="nx-icon nx-icon--valid"/>
