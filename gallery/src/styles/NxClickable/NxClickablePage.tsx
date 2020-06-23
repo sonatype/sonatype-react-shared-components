@@ -30,7 +30,7 @@ const NxClickablePage = () => {
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
                           codeExamples={codeExamples}
-                          description="The table below has a clickable and a non-clickable row. Hover over the rows to 
+                          description="The table below has a clickable and a non-clickable row. Hover over the rows to
                               see the change.">
         <NxClickableExample />
       </GalleryExampleTile>

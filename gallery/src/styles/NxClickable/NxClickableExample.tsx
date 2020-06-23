@@ -33,6 +33,6 @@ const NxClickableExample = () =>
         <td className="nx-cell">Content 4</td>
       </tr>
     </tbody>
-  </table>
+  </table>;
 
 export default NxClickableExample;
