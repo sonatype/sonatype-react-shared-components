@@ -5,10 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 import NxFilterInput, { Props } from '../NxFilterInput';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 describe('NxFilterInput', function() {
   const minimalProps = { value: '' },
@@ -17,14 +15,6 @@ describe('NxFilterInput', function() {
   it('renders component with minimal props', function() {
     const component = shallowComponent();
     expect(component).toHaveClassName('nx-filter-input');
-  });
-
-  describe('when value prop is an empty string', function() {
-    it('renders the filter icon in the add-on', function() {
-      const icon = shallowComponent().find(NxFontAwesomeIcon);
-      expect(icon).toExist();
-      expect(icon).toHaveProp('icon', faFilter);
-    });
   });
 
   it('calls onChange whenever a change occurs in the input', function() {
