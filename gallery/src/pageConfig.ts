@@ -58,6 +58,7 @@ import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
 import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
 import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
 import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPage';
+import NxClickablePage from './styles/NxClickable/NxClickablePage';
 import NxPageHeaderPage from './components/NxPageHeader/NxPageHeaderPage';
 import NxTruncatePage from './styles/NxTruncateEllipsis/NxTruncatePage';
 
@@ -114,8 +115,9 @@ const pageConfig: PageConfig = {
     'nx-threat-number': NxThreatNumberPage,
     'nx-tile': NxTilePage
   },
-  'Styles - Mixins': {
+  'Styles - Mixins & Helpers': {
     'nx-container-helpers': NxContainerHelpersPage,
+    'nx-clickable': NxClickablePage,
     'nx-truncate-ellipsis': NxTruncatePage
   },
   'Layout Examples': {
