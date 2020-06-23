@@ -13,10 +13,6 @@
   display: inline-block;
   white-space: nowrap;
 
-  &:focus {
-    outline: 0;
-  }
-
   &:focus-within {
     .nx-text-input__box {
       border-color: #43cbf5;
