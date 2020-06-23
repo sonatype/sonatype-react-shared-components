@@ -16,7 +16,7 @@ export { Props } from './types';
 
 const NxFilterInput = forwardRef<HTMLDivElement, Props>(
     function NxFilterInput(props, ref) {
-      const { value, placeholder, onChange, onClear, className, inputId, disabled, ...otherProps } = props,
+      const { value, placeholder, onChange, className, inputId, disabled, ...otherProps } = props,
           classes = classnames('nx-filter-input', className, {
             'nx-filter-input--disabled': disabled
           });
