@@ -58,6 +58,7 @@ import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
 import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
 import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
 import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPage';
+import NxPageHeaderPage from './components/NxPageHeader/NxPageHeaderPage';
 import NxCodePage from './styles/NxCode/NxCodePage';
 
 const pageConfig: PageConfig = {
@@ -76,6 +77,7 @@ const pageConfig: PageConfig = {
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,
     NxModal: NxModalPage,
+    NxPageHeader: NxPageHeaderPage,
     NxPolicyThreatSlider: NxPolicyThreatSliderPage,
     NxRadio: NxRadioPage,
     NxSubmitMask: NxSubmitMaskPage,

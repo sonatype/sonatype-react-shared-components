@@ -6,7 +6,8 @@
     "plugin:react/recommended"
   ],
   "globals": {
-    "module": true
+    "module": true,
+    "require": true
   },
   "env": {
     "browser": true,
@@ -25,6 +26,7 @@
     ],
     "eqeqeq": ["error", "always", {"null": "ignore"}],
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/explicit-member-accessibility": ["error", { "accessibility": "no-public" }],
     "@typescript-eslint/indent": [
       "error",
