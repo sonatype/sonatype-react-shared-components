@@ -18,6 +18,6 @@ const NxTruncateExample = () =>
       This is a very long sentence which is going to truncate with an ellipsis when it hits the end of the bounding box
       because this style is amazing.
     </div>
-  </div>
+  </div>;
 
 export default NxTruncateExample;
