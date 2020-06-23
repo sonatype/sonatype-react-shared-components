@@ -7,8 +7,11 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfigFn = require('./webpack.config.js');
+const { BatchInfo, By, ClassicRunner, Configuration, Eyes, Target } = require('@applitools/eyes-webdriverio');
 
 const host = process.env.TEST_IP || 'localhost';
+
+let eyes;
 
 exports.config = {
     //
@@ -199,8 +202,40 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function (capabilities, specs) {
+      eyes = new Eyes(new ClassicRunner());
+
+      const batchId = process.env.APPLITOOLS_BATCH_ID, // set by applitools jenkins plugin
+          eyesConf = new Configuration();
+
+      let branchName = process.env.GIT_LOCAL_BRANCH;
+
+      if (batchId) {
+        const batchInfo = new BatchInfo(branchName);
+        batchInfo.setId(batchId);
+        eyesConf.setBatch(batchInfo);
+      }
+      else {
+        eyesConf.setBatch(new BatchInfo("local"));
+      }
+
+      if (branchName) {
+        eyes.setBranchName(branchName);
+      }
+
+      eyesConf.setAppName('React Shared Components');
+      eyes.setConfiguration(eyesConf);
+
+      browser.addCommand('eyesSnapshot', function(title) {
+        return eyes.check(title, Target.window());
+      });
+
+      browser.addCommand('eyesRegionSnapshot', function(title, region) {
+        return eyes.check(title, region);
+      });
+
+      return Promise.resolve();
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -217,8 +252,9 @@ exports.config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+    beforeTest: async function (test, context) {
+      await eyes.open(browser, undefined, `${test.parent} ${test.title}`);
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
@@ -260,8 +296,10 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    // after: function (result, capabilities, specs) {
-    // },
+    after: async function (result, capabilities, specs) {
+      await eyes.closeAsync();
+      await eyes.abortIfNotClosed();
+    },
     /**
      * Gets executed right after terminating the webdriver session.
      * @param {Object} config wdio configuration object
