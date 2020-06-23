@@ -19,11 +19,7 @@ function HeaderLink({ name, href, current }: HeaderLinkProps) {
   });
 
   return (
-    <a className={classes} href={href}>
-      {/* See the comment in the CSS for why the name is here twice */}
-      <span className="nx-page-header__link-visible-text">{name}</span>
-      <span className="nx-page-header__link-sizing-text">{name}</span>
-    </a>
+    <a className={classes} href={href} data-text={name}>{name}</a>
   );
 }
 

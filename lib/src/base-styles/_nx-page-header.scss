@@ -50,30 +50,11 @@ $main-header-product-version-row-height: 1fr;
   margin-right: $nx-spacing-l;
   padding-bottom: $nx-spacing-xxs;
   position: relative;
+  text-align: center;
   text-decoration: none;
 
   &:hover {
     font-weight: 600;
-  }
-
-  // Each link includes the text twice: one instance is visible, and changes
-  // font-weight in response to hover. When the font-weight changes, so does the width of the text.
-  // To prevent shifting of adjacent elements, that visible text is removed from the layout computation, using
-  // absolute positioning, and instead another copy of the text is added which is invisible and which has a
-  // font-weight which does not vary on hover (i.e. normal font-weight unless it is "current"). This second copy
-  // of the text is what gives the element its width.
-  .nx-page-header__link-sizing-text {
-    display: block;
-    font-weight: normal;
-    visibility: hidden;
-  }
-
-  .nx-page-header__link-visible-text {
-    justify-content: center;
-    display: flex;
-    position: absolute;
-    left: 0;
-    right: 0;
   }
 
   &.nx-page-header__link--current {
@@ -84,6 +65,15 @@ $main-header-product-version-row-height: 1fr;
 
   &:active, &.nx-page-header__link--current {
     border-bottom-color: #0000cc;
+  }
+
+  &::before {
+    display: block;
+    content: attr(data-text);
+    font-weight: 600;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
   }
 }
 
