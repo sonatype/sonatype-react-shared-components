@@ -58,6 +58,7 @@ import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
 import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
 import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
 import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPage';
+import NxTruncatePage from './styles/NxTruncateEllipsis/NxTruncatePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -89,7 +90,8 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
-    NxVulnerabilityDetails: NxVulnerabilityDetailsPage
+    NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
+    NxTruncateEllipsis: NxTruncatePage
   },
   'Guidelines': {
     'Form Validation Guidelines': FormValidationPage,
@@ -111,7 +113,8 @@ const pageConfig: PageConfig = {
     'nx-tile': NxTilePage
   },
   'Styles - Mixins': {
-    'nx-container-helpers': NxContainerHelpersPage
+    'nx-container-helpers': NxContainerHelpersPage,
+    'nx-truncate-ellipsis': NxTruncatePage
   },
   'Layout Examples': {
     //'Form Layout Styles': NxFormLayoutPage,
