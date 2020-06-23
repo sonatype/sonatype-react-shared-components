@@ -6,7 +6,7 @@
  */
 import React, { forwardRef, FormEvent } from 'react';
 import classnames from 'classnames';
-import { faFilter, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 import './NxFilterInput.scss';
 
@@ -19,8 +19,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
       const { value, placeholder, onChange, onClear, className, inputId, disabled, ...otherProps } = props,
           classes = classnames('nx-filter-input', className, {
             'nx-filter-input--disabled': disabled
-          }),
-          icon = value ? faTimes : faFilter;
+          });
 
       function inputOnChange(e: FormEvent<HTMLInputElement>) {
         if (onChange) {
@@ -31,9 +30,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
       return (
         <div {...otherProps} className={classes} ref={ref}>
           <div className="nx-text-input__box">
-            <span className="nx-filter-input__add-on" onClick={value && onClear || undefined}>
-              <NxFontAwesomeIcon icon={icon} className="nx-icon--filter-icons" />
-            </span>
+            <NxFontAwesomeIcon icon={faFilter} className="nx-icon--filter-icons" />
             <input type="text"
                    autoComplete="off"
                    id={inputId || undefined}
