@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components-gallery",
-  "version": "0.50.0",
+  "version": "0.50.2",
   "description": "Gallery application to demonstrate usage and look of Sonatype shared UI components",
   "main": "src/main.ts",
   "scripts": {
