@@ -21,14 +21,27 @@ function NxStatefulDropdownExample() {
 
   return (
     <NxStatefulDropdown label={labelElement}>
-      <div className="nx-list nx-list--clickable">
-        <h4 className="nx-list__title">Filters</h4>
-        <ul>
-          <li className="nx-list__item" onClick={onClick}>Faux Filter 1</li>
-          <li className="nx-list__item" onClick={onClick}>Cool Filter</li>
-          <li className="nx-list__item" onClick={onClick}>Unused Filter</li>
-        </ul>
-      </div>
+      <a onClick={onClick} className="nx-dropdown-button">
+        Nav Link1
+      </a>
+      <a onClick={onClick} className="nx-dropdown-button">
+        Nav Link2
+      </a>
+      <a onClick={onClick} className="nx-dropdown-button">
+        Nav Link3
+      </a>
+      <button onClick={onClick} className="nx-dropdown-button">
+        Nav Link4 - this link should trigger truncation
+      </button>
+      <button onClick={onClick} className="nx-dropdown-button">
+        Nav Link5
+      </button>
+      <button onClick={onClick} className="nx-dropdown-button">
+        Nav Link6
+      </button>
+      <button className="disabled nx-dropdown-button">
+        Nav Link7 Disabled
+      </button>
     </NxStatefulDropdown>
   );
 }
