@@ -67,6 +67,7 @@ $main-header-product-version-row-height: 1fr;
     border-bottom-color: #0000cc;
   }
 
+  // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
   &::before {
     display: block;
     content: attr(data-text);
