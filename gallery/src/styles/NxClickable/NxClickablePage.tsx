@@ -13,10 +13,6 @@ import NxClickableExample from './NxClickableExample';
 const nxClickableExampleCode = require('!!raw-loader!./NxClickableExample').default;
 
 const NxClickablePage = () => {
-  const codeExamples = [
-    nxClickableExampleCode
-  ];
-
   return (
     <>
       <GalleryDescriptionTile>
@@ -29,7 +25,7 @@ const NxClickablePage = () => {
         </p>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
-                          codeExamples={codeExamples}
+                          codeExamples={nxClickableExampleCode}
                           description="The table below has a clickable and a non-clickable row. Hover over the rows to
                               see the change.">
         <NxClickableExample />
