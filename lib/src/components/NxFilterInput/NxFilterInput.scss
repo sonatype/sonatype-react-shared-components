@@ -7,71 +7,32 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
 
-$nx-filter-input-height: 20px;
-
 .nx-filter-input {
   @include container-horizontal;
 
   display: inline-block;
-  vertical-align: middle;
   white-space: nowrap;
 
-  .nx-filter-text-input {
-    border: $nx-border;
-    border-left: 0;
-    font-size: 14px;
-    height: $nx-filter-input-height;
+  &:focus-within {
+    .nx-text-input__box {
+      border-color: #43cbf5;
+    }
+  }
+
+  &.nx-filter-input--disabled {
+    .nx-text-input__box {
+      background-color: #e9e9e9;
+      border-color: #949494;
+
+      .nx-icon--filter-icons {
+        color: #949494;
+      }
+    }
+  }
+
+  .nx-icon--filter-icons {
+    color: $nx-text-color-light;
     margin-left: 0;
-    padding: 4px 6px;
-    box-sizing: content-box;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  .nx-filter-input__add-on {
-    border: $nx-border;
-    border-right: none;
-    display: inline-block;
-    height: $nx-filter-input-height;
-    padding: 4px 4px 4px 2px;
-    vertical-align: top;
-    width: 20px;
-    box-sizing: content-box;
-
-    .nx-icon {
-      color: $nx-text-color-light;
-      height: 10px;
-      margin-top: 5px;
-      margin-left: 5px;
-
-      &.fa-times {
-        cursor: pointer;
-
-        height: 14px;
-        margin-top: 4px;
-        margin-left: 6px;
-      }
-    }
-  }
-
-  .nx-filter-input--disabled {
-    .nx-filter-input__add-on {
-      background-color: $nx-off-white;
-
-      .nx-icon {
-        color: $nx-text-color-disabled;
-      }
-    }
-
-    .nx-filter-text-input {
-      background-color: $nx-off-white;
-      border-color: $nx-grey-3;
-
-      &::placeholder {
-        color: $nx-text-color-disabled;
-      }
-    }
+    margin-right: 8px;
   }
 }

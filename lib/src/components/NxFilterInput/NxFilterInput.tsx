@@ -6,20 +6,20 @@
  */
 import React, { forwardRef, FormEvent } from 'react';
 import classnames from 'classnames';
-import { faFilter, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 import './NxFilterInput.scss';
+
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
 const NxFilterInput = forwardRef<HTMLDivElement, Props>(
     function NxFilterInput(props, ref) {
-      const { value, placeholder, onChange, onClear, className, inputId, disabled, ...otherProps } = props,
+      const { value, placeholder, onChange, className, inputId, disabled, ...otherProps } = props,
           classes = classnames('nx-filter-input', className, {
             'nx-filter-input--disabled': disabled
-          }),
-          icon = value ? faTimes : faFilter;
+          });
 
       function inputOnChange(e: FormEvent<HTMLInputElement>) {
         if (onChange) {
@@ -29,18 +29,17 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
 
       return (
         <div {...otherProps} className={classes} ref={ref}>
-          <span className="nx-filter-input__add-on"
-                onClick={value && onClear || undefined}>
-            <NxFontAwesomeIcon icon={icon} />
-          </span>
-          <input type="text"
-                 autoComplete="off"
-                 id={inputId || undefined}
-                 value={value}
-                 onChange={inputOnChange}
-                 placeholder={placeholder || undefined}
-                 className="nx-filter-text-input"
-                 disabled={disabled || undefined} />
+          <div className="nx-text-input__box">
+            <NxFontAwesomeIcon icon={faFilter} className="nx-icon--filter-icons" />
+            <input type="text"
+                   autoComplete="off"
+                   id={inputId || undefined}
+                   value={value}
+                   onChange={inputOnChange}
+                   placeholder={placeholder || undefined}
+                   className="nx-text-input__input nx-filter-text-input"
+                   disabled={disabled || undefined} />
+          </div>
         </div>
       );
     }
