@@ -121,10 +121,9 @@ describe('NxPageHeader', function() {
       expect(getShallowComponent()).toHaveProp('href', '#foo');
     });
 
-    it('includes the name prop value twice, in .nx-page-header__link-visible-text and ' +
-        '.nx-page-header__link-visible-text', function() {
-      expect(getShallowComponent().find('.nx-page-header__link-visible-text')).toHaveText('foo');
-      expect(getShallowComponent().find('.nx-page-header__link-sizing-text')).toHaveText('foo');
+    it('includes the name prop value as its content and as its data-text attr', function() {
+      expect(getShallowComponent()).toHaveText('foo');
+      expect(getShallowComponent()).toHaveProp('data-text', 'foo');
     });
   });
 });
