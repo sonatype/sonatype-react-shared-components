@@ -69,7 +69,7 @@ describe('NxFilterInput', function() {
 
   it('passes unknown props to the div element', function() {
     const props = { className: 'extra-class', id: 'some-id' },
-        componentDiv = shallowComponent(props).find('div.nx-filter-input');
+        componentDiv = shallowComponent(props);
 
     expect(componentDiv).toHaveClassName('extra-class');
     expect(componentDiv).toHaveProp('id', 'some-id');
