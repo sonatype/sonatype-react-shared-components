@@ -27,7 +27,8 @@ $nx-dropdown-width: 250px;
 
   .nx-dropdown__toggle-label {
     @include container-horizontal;
-    @include truncate-ellipsis();
+    @include nx-truncate-ellipsis();
+
     flex-grow: 1;
   }
 
@@ -70,7 +71,7 @@ $nx-dropdown-width: 250px;
 
 .nx-dropdown-link, .nx-dropdown-button {
   @include container-horizontal;
-  @include truncate-ellipsis();
+  @include nx-truncate-ellipsis();
   @include regular();
 
   border: none;
