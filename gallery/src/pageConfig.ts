@@ -59,6 +59,7 @@ import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConf
 import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
 import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPage';
 import NxClickablePage from './styles/NxClickable/NxClickablePage';
+import NxPageHeaderPage from './components/NxPageHeader/NxPageHeaderPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -76,6 +77,7 @@ const pageConfig: PageConfig = {
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,
     NxModal: NxModalPage,
+    NxPageHeader: NxPageHeaderPage,
     NxPolicyThreatSlider: NxPolicyThreatSliderPage,
     NxRadio: NxRadioPage,
     NxSubmitMask: NxSubmitMaskPage,
