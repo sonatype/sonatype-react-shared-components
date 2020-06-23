@@ -42,11 +42,12 @@
 
   .nx-icon--filter-icons {
     color: $nx-text-color-light;
-    height: 1em;
+    margin-left: 0;
     margin-right: 8px;
 
     &.fa-times {
       cursor: pointer;
+      width: 1em;
     }
   }
 }
