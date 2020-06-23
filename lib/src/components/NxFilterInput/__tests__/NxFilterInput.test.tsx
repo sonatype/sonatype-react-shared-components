@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import { faFilter, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 import NxFilterInput, { Props } from '../NxFilterInput';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -19,43 +19,11 @@ describe('NxFilterInput', function() {
     expect(component).toHaveClassName('nx-filter-input');
   });
 
-  describe('when value prop is truthy', function() {
-    it('renders the clear icon in the add-on', function() {
-      const icon = shallowComponent({ value: 'test value' }).find(NxFontAwesomeIcon);
-      expect(icon).toExist();
-      expect(icon).toHaveProp('icon', faTimes);
-    });
-
-    it('calls onClear if the icon is clicked', function() {
-      const onClear = jest.fn(),
-          iconWrapper = shallowComponent({
-            value: 'test value',
-            onClear
-          }).find('.nx-filter-input__add-on');
-
-      expect(iconWrapper).toExist();
-      iconWrapper.simulate('click');
-      expect(onClear).toHaveBeenCalled();
-    });
-  });
-
   describe('when value prop is an empty string', function() {
     it('renders the filter icon in the add-on', function() {
       const icon = shallowComponent().find(NxFontAwesomeIcon);
       expect(icon).toExist();
       expect(icon).toHaveProp('icon', faFilter);
-    });
-
-    it('does not call onClear if the icon is clicked', function() {
-      const onClear = jest.fn(),
-          iconWrapper = shallowComponent({
-            value: '',
-            onClear
-          }).find('.nx-filter-input__add-on');
-
-      expect(iconWrapper).toExist();
-      iconWrapper.simulate('click');
-      expect(onClear).not.toHaveBeenCalled();
     });
   });
 
