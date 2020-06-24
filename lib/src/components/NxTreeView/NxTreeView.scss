@@ -98,7 +98,7 @@
 
 .nx-tree-view__text {
   @include container-horizontal;
-  @include truncate-ellipsis;
+  @include nx-truncate-ellipsis;
 
   align-items: center;
   color: $nx-text-color-light;
@@ -110,7 +110,7 @@
   }
 
   span {
-    @include truncate-ellipsis;
+    @include nx-truncate-ellipsis;
     flex-grow: 1;
   }
 

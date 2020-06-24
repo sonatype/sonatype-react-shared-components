@@ -26,11 +26,62 @@ $main-header-product-version-row-height: 1fr;
 .nx-page-header__inner {
   @include container-horizontal;
 
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
   height: $nx-main-header-height;
   margin: 0 auto;
-  padding-left: $nx-spacing-md;
+  padding: 0 $nx-spacing-l;
   width: 100%;
   max-width: $nx-page-width-max;
+}
+
+.nx-page-header__links {
+  @include container-horizontal;
+  margin: 0 $nx-spacing-xxl;
+}
+
+.nx-page-header__link {
+  border-bottom: 2px solid transparent;
+
+  color: #515151;
+  display: inline-block;
+  font-size: $nx-font-size-s;
+  margin-right: $nx-spacing-l;
+  padding-bottom: $nx-spacing-xxs;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    font-weight: 600;
+  }
+
+  &.nx-page-header__link--current {
+    &, .nx-page-header__link-sizing-text {
+      font-weight: 600;
+    }
+  }
+
+  &:active, &.nx-page-header__link--current {
+    border-bottom-color: #0000cc;
+  }
+
+  // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
+  &::before {
+    display: block;
+    content: attr(data-text);
+    font-weight: 600;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
+.nx-page-header__extra-content {
+  @include container-horizontal;
+
+  margin-left: auto;
 }
 
 .nx-product {
@@ -39,14 +90,12 @@ $main-header-product-version-row-height: 1fr;
   color: $main-header-color;
   display: flex;
   height: $nx-main-header-height - 6px; // aids vertical alignment of contents
+  margin-bottom: 6px;
   text-decoration: none;
-  min-width: $nx-sidebar-width;
 }
 
-.nx-product__branding {
-  a.gallery-link-home {
-    display: block;
-  }
+.nx-product__home-link {
+  display: block;
 }
 
 .nx-product__wordmark {
@@ -60,6 +109,7 @@ $main-header-product-version-row-height: 1fr;
   display: inline-block;
   font-size: 26px;
   margin-left: $nx-spacing-sm;
+  text-transform: lowercase;
   white-space: nowrap;
 
   &::before {

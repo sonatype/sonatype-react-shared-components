@@ -90,10 +90,6 @@
 }
 
 // Form typography
-.nx-text-input, .nx-textarea {
+.nx-text-input__input {
   @include regular();
-
-  font-size: 14px;
-  line-height: 18px;
-  margin-bottom: 0;
 }
