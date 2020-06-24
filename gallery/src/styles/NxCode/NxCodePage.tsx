@@ -13,15 +13,11 @@ import NxCodeExample from './NxCodeExample';
 const nxCodeExampleCode = require('!!raw-loader!./NxCodeExample').default;
 
 const NxCodePage = () => {
-  const codeExamples = [
-    nxCodeExampleCode
-  ];
-
   return (
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          Using the &lt;code&gt; HTML tag and the <code className="nx-code">.nx-code</code> className you apply a
+          Using the &lt;code&gt; HTML tag with the <code className="nx-code">.nx-code</code> className applies a
           monospace font and other styling to make your code snippets stand out.
         </p>
         <p className="nx-p">
@@ -29,7 +25,7 @@ const NxCodePage = () => {
         </p>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="Styling code snippets"
-                          codeExamples={codeExamples}
+                          codeExamples={nxCodeExampleCode}
                           description="">
         <NxCodeExample />
       </GalleryExampleTile>
