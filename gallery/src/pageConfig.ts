@@ -61,6 +61,7 @@ import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPa
 import NxClickablePage from './styles/NxClickable/NxClickablePage';
 import NxPageHeaderPage from './components/NxPageHeader/NxPageHeaderPage';
 import NxTruncatePage from './styles/NxTruncateEllipsis/NxTruncatePage';
+import NxCodePage from './styles/NxCode/NxCodePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -104,6 +105,7 @@ const pageConfig: PageConfig = {
   'Styles - HTML Elements': {
     'nx-alert': NxAlertPage,
     'nx-btn': NxBtnPage,
+    'nx-code': NxCodePage,
     'nx-counter': NxCounterPage,
     'nx-grid': NxGridPage,
     'nx-icon': NxIconPage,
@@ -116,8 +118,8 @@ const pageConfig: PageConfig = {
     'nx-tile': NxTilePage
   },
   'Styles - Mixins & Helpers': {
-    'nx-container-helpers': NxContainerHelpersPage,
     'nx-clickable': NxClickablePage,
+    'nx-container-helpers': NxContainerHelpersPage,
     'nx-truncate-ellipsis': NxTruncatePage
   },
   'Layout Examples': {
