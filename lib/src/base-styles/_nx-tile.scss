@@ -71,7 +71,7 @@ $nx-tile-background-color: $nx-white;
 }
 
 .nx-tile-header__title {
-  @include truncate-ellipsis;
+  @include nx-truncate-ellipsis;
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row-start: 1;
@@ -80,7 +80,7 @@ $nx-tile-background-color: $nx-white;
   -ms-grid-column: 1;
 
   h1, h2 {
-    @include truncate-ellipsis;
+    @include nx-truncate-ellipsis;
     margin: 0;
   }
 }
