@@ -66,7 +66,8 @@ dockerizedBuildPipeline(
         cd gallery
         yarn install
 
-        echo "Git branch: ${GIT_LOCAL_BRANCH}"
+        echo "Git branch: ${GIT_BRANCH}"
+        echo "Git local branch: ${GIT_LOCAL_BRANCH}"
 
         # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
         TEST_IP=$JENKINS_AGENT_IP npm run test
