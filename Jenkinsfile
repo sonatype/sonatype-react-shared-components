@@ -53,23 +53,25 @@ dockerizedBuildPipeline(
       fi
     '''
 
-    sh '''
-      cd lib
-      yarn install
-      npm run test
-      npm run build
-      cd dist
-      npm pack
-      cd ../..
+    withCredentials([string(credentialsId: 'APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
+      sh '''
+        cd lib
+        yarn install
+        npm run test
+        npm run build
+        cd dist
+        npm pack
+        cd ../..
 
-      cd gallery
-      yarn install
+        cd gallery
+        yarn install
 
-      # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
-      TEST_IP=$JENKINS_AGENT_IP npm run test
-      npm run build
-      cd ..
-    '''
+        # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
+        TEST_IP=$JENKINS_AGENT_IP npm run test
+        npm run build
+        cd ..
+      '''
+    }
   },
   vulnerabilityScan: {
     if (env.BRANCH_NAME == 'master') {

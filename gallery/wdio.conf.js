@@ -205,7 +205,7 @@ exports.config = {
     before: function (capabilities, specs) {
       eyes = new Eyes(new ClassicRunner());
 
-      const batchId = process.env.APPLITOOLS_BATCH_ID, // set by applitools jenkins plugin
+      const batchId = process.env.GIT_COMMIT,
           eyesConf = new Configuration();
 
       let branchName = process.env.GIT_LOCAL_BRANCH;
@@ -223,6 +223,7 @@ exports.config = {
         eyes.setBranchName(branchName);
       }
 
+      // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
       eyesConf.setAppName('React Shared Components');
       eyes.setConfiguration(eyesConf);
 
