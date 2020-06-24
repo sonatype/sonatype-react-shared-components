@@ -120,7 +120,7 @@ const pageConfig: PageConfig = {
     'nx-clickable': NxClickablePage,
     'nx-code': NxCodePage,
     'nx-container-helpers': NxContainerHelpersPage,
-    'nx-truncate-ellipsis': NxTruncatePage,
+    'nx-truncate-ellipsis': NxTruncatePage
   },
   'Layout Examples': {
     //'Form Layout Styles': NxFormLayoutPage,
