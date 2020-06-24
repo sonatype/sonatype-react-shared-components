@@ -57,7 +57,7 @@ const StylingRSCPage = () =>
       </li>
     </ul>
     <p className="nx-p">
-      These are commonly refered to as "utility classes". Uutility classes usually describe a change in a components'
+      These are commonly refered to as "utility classes". Utility classes usually describe a change in a components'
       visual state. These classes are common across all components that might need them, especially in the case of the
       validation utility classes.
     </p>
