@@ -34,7 +34,7 @@ const StylingRSCPage = () =>
       custom app styles. To that end we use a namespace prefix in our class names. In RSC that prefix
       is <code className="nx-code">.nx-</code>. In IQ thet use <code className="nx-code">.iq-</code>,
       as a prefix in order to differentiate between classes in IQ and classes from RSC. When you
-      create custom SCSS in your app you should create a simple unique prefix for your app.
+      create custom CSS in your app you should create a simple unique prefix for your app.
     </p>
     <h2 className="h2">Utility classes</h2>
     <p className="nx-p">
