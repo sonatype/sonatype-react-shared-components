@@ -5,11 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import './NxCodeExample.scss';
 
 const NxCodeExample = () =>
   <>
     <p className="nx-p"><code className="nx-code">&lt;HTML&gt;</code></p>
     <p className="nx-p"><code className="nx-code">.scss-class</code></p>
-  </>
+  </>;
+
 export default NxCodeExample;
