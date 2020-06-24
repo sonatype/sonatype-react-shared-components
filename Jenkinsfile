@@ -10,6 +10,9 @@ def seleniumDockerImage = 'selenium/standalone-chrome'
 def seleniumDockerVersion = '3.141.59-20200409'
 
 dockerizedBuildPipeline(
+  // expose gallery port on host so selenium container can hit it
+  dockerArgs: '-p 4043:4043',
+
   prepare: {
     githubStatusUpdate('pending')
 
