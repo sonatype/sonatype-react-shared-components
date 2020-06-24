@@ -26,6 +26,8 @@ const NxTileSubsectionExample = () =>
           dead convenience store nodal point monofilament tube receding. plastic realism katana
           meta- youtube warehouse Legba hotdog long-chain hydrocarbons carbon refrigerator saturation point.
         </p>
+      </section>
+      <section className="nx-tile-subsection">
         <header>
           <h3 className="nx-h3 nx-h3--tile-subsection">Subsection</h3>
         </header>
@@ -34,6 +36,8 @@ const NxTileSubsectionExample = () =>
           dead convenience store nodal point monofilament tube receding. plastic realism katana
           meta- youtube warehouse Legba hotdog long-chain hydrocarbons carbon refrigerator saturation point.
         </p>
+      </section>
+      <section className="nx-tile-subsection">
         <header>
           <h3 className="nx-h3 nx-h3--tile-subsection">Subsection</h3>
         </header>
