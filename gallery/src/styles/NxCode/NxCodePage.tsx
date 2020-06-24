@@ -26,7 +26,7 @@ const NxCodePage = () => {
       </GalleryDescriptionTile>
       <GalleryExampleTile title="Styling code snippets"
                           codeExamples={nxCodeExampleCode}
-                          description="">
+                          description="A couple of simple inline examples.">
         <NxCodeExample />
       </GalleryExampleTile>
     </>
