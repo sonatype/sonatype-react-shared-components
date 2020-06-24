@@ -228,7 +228,7 @@ exports.config = {
         console.log('NOT setting branchName');
       }
 
-      // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
+      eyesConf.setApiKey(process.env.APPLITOOLS_API_KEY);
       eyesConf.setAppName('React Shared Components');
       eyes.setConfiguration(eyesConf);
 
