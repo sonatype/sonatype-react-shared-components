@@ -17,7 +17,7 @@ const NxCodePage = () => {
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          Using the <code className="nx-code">&lt;code&gt;</code> HTML tag with the 
+          Using the <code className="nx-code">&lt;code&gt;</code> HTML tag with the
           <code className="nx-code">.nx-code</code> className applies a monospace font and other styling to make your
           code snippets stand out.
         </p>
