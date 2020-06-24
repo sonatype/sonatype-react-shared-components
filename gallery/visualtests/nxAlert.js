@@ -15,7 +15,7 @@ describe('NxAlert', function() {
     it('looks right', async function() {
       const targetElement = By.className('nx-alert--modifier');
 
-      await browser.scroll(targetElement);
+      await $(tagetElement).scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
     });
   });
@@ -24,7 +24,7 @@ describe('NxAlert', function() {
     it('looks right', async function() {
       const targetElement = By.className('nx-alert--success');
 
-      await browser.scroll(targetElement);
+      await $(tagetElement).scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
     });
   });
@@ -33,7 +33,7 @@ describe('NxAlert', function() {
     it('looks right', async function() {
       const targetElement = By.className('nx-alert--error');
 
-      await browser.scroll(targetElement);
+      await $(tagetElement).scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
     });
   });
@@ -42,7 +42,7 @@ describe('NxAlert', function() {
     it('looks right', async function() {
       const targetElement = By.className('nx-alert--info');
 
-      await browser.scroll(targetElement);
+      await $(tagetElement).scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
     });
   });
@@ -51,7 +51,7 @@ describe('NxAlert', function() {
     it('looks right', async function() {
       const targetElement = By.className('nx-alert--warning');
 
-      await browser.scroll(targetElement);
+      await $(tagetElement).scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
     });
   });
