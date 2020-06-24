@@ -28,9 +28,8 @@ const NxIconPage = () =>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="General Example"
                         codeExamples={nxIconExampleCode}
-                        description="This example demonstrates the usage of the nx-icon class on SVG icons, providing
-                            them with standard margins.">
-      <NxIconExample />
+                        liveExample={NxIconExample}>
+      This example demonstrates the usage of the nx-icon class on SVG icons, providing them with standard margins.
     </GalleryExampleTile>
   </>;
 

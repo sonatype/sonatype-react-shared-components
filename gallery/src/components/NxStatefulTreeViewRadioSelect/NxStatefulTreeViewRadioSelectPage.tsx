@@ -162,10 +162,10 @@ const NxStatefulTreeViewRadioSelectPage = () =>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={nxStatefulTreeViewRadioSelectExampleCode}
-                        description="This example demonstrates basic usage of NxStatefulTreeViewRadioSelect. Note that
-                            the component tracks the collapse/expand state and filter text internally, and the calling
-                            code only needs to track which items are selected.">
-      <NxStatefulTreeViewRadioSelectExample />
+                        liveExample={NxStatefulTreeViewRadioSelectExample}>
+      This example demonstrates basic usage of NxStatefulTreeViewRadioSelect. Note that
+      the component tracks the collapse/expand state and filter text internally, and the calling
+      code only needs to track which items are selected.
     </GalleryExampleTile>
 
     <GalleryTile title="Disabled Example With Tooltip">

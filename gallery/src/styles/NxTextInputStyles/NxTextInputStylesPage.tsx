@@ -54,12 +54,12 @@ const NxTextInputStylesPage = () =>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={sourceCode}
-                        description="This example demonstrates the fundamental look of various elements styled with
-                            nx-text-input. Note that these styles are not typically used alone, and so elements looking
-                            exactly like these will not typically be seen. Rather, these styles would typically be
-                            used in conjunction with the validation styles provided by the NxTextInput react component,
-                            which add border colors and other signifiers.">
-      <NxTextInputStylesExample />
+                        liveExample={NxTextInputStylesExample}>
+      This example demonstrates the fundamental look of various elements styled with
+      nx-text-input. Note that these styles are not typically used alone, and so elements looking
+      exactly like these will not typically be seen. Rather, these styles would typically be
+      used in conjunction with the validation styles provided by the NxTextInput react component,
+      which add border colors and other signifiers.
     </GalleryExampleTile>
   </>;
 

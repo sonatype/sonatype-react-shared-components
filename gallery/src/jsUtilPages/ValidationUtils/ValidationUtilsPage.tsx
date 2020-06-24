@@ -26,35 +26,27 @@ const ValidationUtilsPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="ValidationErrors"
-                        codeExamples={validationErrorsExampleCode}
-                        description={
-                          <>
-                            The <code className="nx-code">ValidationErrors</code> data type is essentially zero or more
-                            validation error message strings. More precisely, it is a union type which can be either
-                            a single string, an array of strings, or null. If it is null or an empty array, the
-                            intended semantics are that no error is represented and the validation was successful.
-                          </>
-                        }/>
+                        codeExamples={validationErrorsExampleCode}>
+      The <code className="nx-code">ValidationErrors</code> data type is essentially zero or more
+      validation error message strings. More precisely, it is a union type which can be either
+      a single string, an array of strings, or null. If it is null or an empty array, the
+      intended semantics are that no error is represented and the validation was successful.
+    </GalleryExampleTile>
 
     <GalleryExampleTile title="hasValidationErrors"
-                        codeExamples={hasValidationErrorsExampleCode}
-                        description={
-                          <>
-                            <code className="nx-code">hasValidationErrors</code> is a function which returns whether
-                            the specified <code className="nx-code">ValidationErrors</code> represents an error.
-                          </>
-                        }/>
+                        codeExamples={hasValidationErrorsExampleCode}>
+      <code className="nx-code">hasValidationErrors</code> is a function which returns whether
+      the specified <code className="nx-code">ValidationErrors</code> represents an error.
+    </GalleryExampleTile>
+
 
     <GalleryExampleTile title="getFirstValidationError"
-                        codeExamples={getFirstValidationErrorExampleCode}
-                        description={
-                          <>
-                            <code className="nx-code">getFirstValidationError</code> returns the first message from
-                            the given <code className="nx-code">ValidationErrors</code> or null if none are present.
-                            This is the logic that <code className="nx-code">NxTextInput</code> follows internally to
-                            select which validation error message to display.
-                          </>
-                        }/>
+                        codeExamples={getFirstValidationErrorExampleCode}>
+      <code className="nx-code">getFirstValidationError</code> returns the first message from
+      the given <code className="nx-code">ValidationErrors</code> or null if none are present.
+      This is the logic that <code className="nx-code">NxTextInput</code> follows internally to
+      select which validation error message to display.
+    </GalleryExampleTile>
   </>;
 
 export default ValidationUtilsPage;

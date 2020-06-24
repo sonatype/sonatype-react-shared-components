@@ -31,8 +31,8 @@ const NxTruncatePage = () => {
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
                           codeExamples={codeExamples}
-                          description="In this example a border and some padding have been added for clarity.">
-        <NxTruncateExample />
+                          liveExample={NxTruncateExample}>
+        In this example a border and some padding have been added for clarity.
       </GalleryExampleTile>
     </>
   );

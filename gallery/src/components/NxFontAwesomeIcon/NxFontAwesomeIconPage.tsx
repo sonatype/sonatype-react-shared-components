@@ -36,9 +36,9 @@ const NxFontAwesomeIconPage = () => {
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
                           codeExamples={codeExamples}
-                          description="This example shows a button containing a series of icons inline with some text.
-                              The buttons showcase various FontAwesome options that are supported.">
-        <NxFontAwesomeIconExample />
+                          liveExample={NxFontAwesomeIconExample}>
+        This example shows a button containing a series of icons inline with some text.
+        The buttons showcase various FontAwesome options that are supported.
       </GalleryExampleTile>
     </>
   );
