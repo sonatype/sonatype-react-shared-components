@@ -216,8 +216,7 @@ exports.config = {
       if (batchId) {
         const batchInfo = new BatchInfo(branchName);
         batchInfo.setId(batchId);
-        //eyesConf.setBatch(batchInfo);
-        console.log('NOT setting batch');
+        eyesConf.setBatch(batchInfo);
       }
       else {
         eyesConf.setBatch(new BatchInfo("local"));
