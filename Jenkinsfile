@@ -53,7 +53,7 @@ dockerizedBuildPipeline(
       fi
     '''
 
-    withCredentials([string(credentialsId: 'APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
+    withCredentials([string(credentialsId: 'REACT_SHARED_COMPONENTS_APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
       sh '''
         cd lib
         yarn install
