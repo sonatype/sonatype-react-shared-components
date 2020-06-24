@@ -8,8 +8,10 @@ import React from 'react';
 
 const NxCodeExample = () =>
   <>
-    <p className="nx-p"><code className="nx-code">&lt;HTML&gt;</code></p>
-    <p className="nx-p"><code className="nx-code">.scss-class</code></p>
+    <p className="nx-p">
+      When you wrap HTML tags <code className="nx-code">&lt;HTML&gt;</code> remember to escape &lt;&gt;.
+    </p>
+    <p className="nx-p">Note that <code className="nx-code">.nx-code</code> always appears inline.</p>
   </>;
 
 export default NxCodeExample;
