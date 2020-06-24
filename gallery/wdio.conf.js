@@ -208,7 +208,7 @@ exports.config = {
       const batchId = process.env.GIT_COMMIT,
           eyesConf = new Configuration();
 
-      let branchName = process.env.GIT_LOCAL_BRANCH;
+      let branchName = process.env.GIT_BRANCH;
 
       console.log('batchId', batchId);
       console.log('branchName', branchName);
