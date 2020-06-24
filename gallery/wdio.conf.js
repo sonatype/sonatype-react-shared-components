@@ -72,7 +72,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'warn',
     //
     // Set specific log levels per logger
     // loggers:
@@ -210,6 +210,9 @@ exports.config = {
 
       let branchName = process.env.GIT_LOCAL_BRANCH;
 
+      console.log('batchId', batchId);
+      console.log('branchName', branchName);
+
       if (batchId) {
         const batchInfo = new BatchInfo(branchName);
         batchInfo.setId(batchId);
@@ -226,6 +229,8 @@ exports.config = {
       // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
       eyesConf.setAppName('React Shared Components');
       eyes.setConfiguration(eyesConf);
+
+      console.log('Configuration: ', eyesConf);
 
       browser.addCommand('eyesSnapshot', function(title) {
         return eyes.check(title, Target.window());
