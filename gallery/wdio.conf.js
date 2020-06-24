@@ -224,7 +224,8 @@ exports.config = {
       }
 
       if (branchName) {
-        eyes.setBranchName(branchName);
+        //eyes.setBranchName(branchName);
+        console.log('NOT setting branchName');
       }
 
       // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
