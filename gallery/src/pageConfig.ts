@@ -117,10 +117,10 @@ const pageConfig: PageConfig = {
     'nx-tile': NxTilePage
   },
   'Styles - Mixins & Helpers': {
-    'nx-container-helpers': NxContainerHelpersPage,
     'nx-clickable': NxClickablePage,
+    'nx-code': NxCodePage,
+    'nx-container-helpers': NxContainerHelpersPage,
     'nx-truncate-ellipsis': NxTruncatePage,
-    'nx-code': NxCodePage
   },
   'Layout Examples': {
     //'Form Layout Styles': NxFormLayoutPage,
