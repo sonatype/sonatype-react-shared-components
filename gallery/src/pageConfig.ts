@@ -105,6 +105,7 @@ const pageConfig: PageConfig = {
   'Styles - HTML Elements': {
     'nx-alert': NxAlertPage,
     'nx-btn': NxBtnPage,
+    'nx-code': NxCodePage,
     'nx-counter': NxCounterPage,
     'nx-grid': NxGridPage,
     'nx-icon': NxIconPage,
@@ -118,7 +119,6 @@ const pageConfig: PageConfig = {
   },
   'Styles - Mixins & Helpers': {
     'nx-clickable': NxClickablePage,
-    'nx-code': NxCodePage,
     'nx-container-helpers': NxContainerHelpersPage,
     'nx-truncate-ellipsis': NxTruncatePage
   },
