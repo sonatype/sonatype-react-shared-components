@@ -18,11 +18,9 @@ const StylingRSCPage = () =>
         <h3 className="h3 nx-h3--tile-subsection">Page &amp; component specific stylesheets</h3>
       </header>
       <p className="nx-p">
-        Take a look at <code className="nx-code">/gallery/src/main.scss</code>. This file
-        contains custom styles for the Gallery and imports external stylesheets. Why have page and component
-        specific stylesheets? By grouping our styles together by use and (ideally) locating the SCSS
-        next to the HTML that it modifies we decrease clutter/noise in our main stylesheet, keep our styles focused
-        to what they modify, and also help maintain a clear separation between code, layout, and styling.
+        Why have page and component specific stylesheets? By grouping our styles together by use and (ideally) locating
+        the SCSS next to the HTML that it modifies we decrease clutter/noise in our main stylesheet, keep our styles
+        focused on what they modify, and also help maintain a clear separation between code, layout, and styling.
       </p>
       <h4 className="nx-h4">Modifying component styles</h4>
       <p className="nx-p">
@@ -30,9 +28,9 @@ const StylingRSCPage = () =>
         project because your changes are likely to be overwritten the next time you update the RSC in your project.
         Instead you should create either a single file to contain modifications to the RSC styles or keep them within a
         page specific stylesheet if the changes are localised to a page. For example in IQ they have a SCSS file named
-        {' '}<code className="nx-code">_nx-overrides.scss</code> in which all global modifications to RSC styles are stored.
-        If you are starting a brand new project you probably won't need to do this but for existing projects where RSC
-        styles will be mixing with legacy styles it can be invaluable.
+        {' '}<code className="nx-code">_nx-overrides.scss</code> in which all global modifications to RSC styles are
+        stored. If you are starting a brand new project you probably won't need to do this but for existing projects
+        where RSC styles will be mixing with legacy styles it can be invaluable.
       </p>
     </section>
     <section className="nx-tile-subsection">
