@@ -14,7 +14,7 @@ const FormValidationCode = require('!!raw-loader!./FormValidationExample').defau
 const FormValidationPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         This page demonstrates the typical overall approach to communicating form validation matters to the user.
         There are several things to note here:
       </p>

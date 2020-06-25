@@ -16,11 +16,11 @@ const nxCounterCode = require('!!raw-loader!./NxCounterExample').default;
 const NxCounterPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         Basic style for small indicator token which typically displays a single #, a '# of #' string, or a short text
         string.
       </p>
-      <p>
+      <p className="nx-p">
         Some basic positioning CSS examples have been provided. To right justify the counter within its container use
         <code className="nx-code">nx-pull-right</code>.
       </p>

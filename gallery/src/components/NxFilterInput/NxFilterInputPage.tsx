@@ -20,7 +20,7 @@ const nxFilterInputFullExampleCode = require('!!raw-loader!./NxFilterInputFullEx
 const NxFilterInputPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         An input to be used for filtering purposes
       </p>
 

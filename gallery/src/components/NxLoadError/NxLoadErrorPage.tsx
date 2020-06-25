@@ -19,8 +19,8 @@ const retryLongMessageSourceCode = require('!!raw-loader!./NxLoadErrorRetryExamp
 const NxLoadErrorPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Error message with optional Retry button</p>
-      <p>Props:</p>
+      <p className="nx-p">Error message with optional Retry button</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">

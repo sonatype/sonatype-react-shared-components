@@ -26,11 +26,11 @@ const nxThreatBarByCategoryListCode =
 const NxThreatBarPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         <code className="nx-code">NxThreatBar</code> is used at the left edge of a table cell or list item
         to indicate via color the threat level of the information to follow.
       </p>
-      <p>
+      <p className="nx-p">
         There are two scales to choose from: threat level by category, and policy threat
         level by number. When using this component, it is expected that just one of the props will be passed. If both
         are passed, <code className="nx-code">threatLevelCategory</code> takes precedence. If neither are passed,
@@ -61,7 +61,7 @@ const NxThreatBarPage = () =>
         </tbody>
       </table>
 
-      <p>The following table shows the mapping between threat level number and threat level category</p>
+      <p className="nx-p">The following table shows the mapping between threat level number and threat level category</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">

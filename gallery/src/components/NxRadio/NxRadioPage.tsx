@@ -20,9 +20,9 @@ const nowrapExampleCode = require('!!raw-loader!./NxRadioNowrapExample').default
 const NxRadioPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Custom Radio input.</p>
-      <p>Child VDOM will be used as a label following the radio button itself.</p>
-      <p>Props:</p>
+      <p className="nx-p">Custom Radio input.</p>
+      <p className="nx-p">Child VDOM will be used as a label following the radio button itself.</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">

@@ -15,9 +15,9 @@ const exampleCode = require('!!raw-loader!./NxStatefulCheckboxExample').default;
 const NxStatefulCheckboxPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Custom stateful checkbox input.</p>
-      <p>Child VDOM will be used as a label following the stateful checkbox button itself.</p>
-      <p>Props:</p>
+      <p className="nx-p">Custom stateful checkbox input.</p>
+      <p className="nx-p">Child VDOM will be used as a label following the stateful checkbox button itself.</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
