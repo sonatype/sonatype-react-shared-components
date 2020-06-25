@@ -30,7 +30,7 @@ const StylingRSCPage = () =>
         project because your changes are likely to be overwritten the next time you update the RSC in your project.
         Instead you should create either a single file to contain modifications to the RSC styles or keep them within a
         page specific stylesheet if the changes are localised to a page. For example in IQ they have a SCSS file named
-        <code className="nx-code">_nx-overrides.scss</code> in which all global modifications to RSC styles are stored.
+        {' '}<code className="nx-code">_nx-overrides.scss</code> in which all global modifications to RSC styles are stored.
         If you are starting a brand new project you probably won't need to do this but for existing projects where RSC
         styles will be mixing with legacy styles it can be invaluable.
       </p>
