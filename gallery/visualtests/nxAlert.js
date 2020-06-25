@@ -22,7 +22,7 @@ describe('NxAlert', function() {
 
   describe('NxSuccessAlert', function() {
     it('looks right', async function() {
-      const targetElement = await browser.$('.nx-alert--modifier');
+      const targetElement = await browser.$('.nx-alert--success');
 
       await targetElement.scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
@@ -31,7 +31,7 @@ describe('NxAlert', function() {
 
   describe('NxErrorAlert', function() {
     it('looks right', async function() {
-      const targetElement = await browser.$('.nx-alert--modifier');
+      const targetElement = await browser.$('.nx-alert--error');
 
       await targetElement.scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
@@ -40,7 +40,7 @@ describe('NxAlert', function() {
 
   describe('NxInfoAlert', function() {
     it('looks right', async function() {
-      const targetElement = await browser.$('.nx-alert--modifier');
+      const targetElement = await browser.$('.nx-alert--info');
 
       await targetElement.scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
@@ -49,7 +49,7 @@ describe('NxAlert', function() {
 
   describe('NxWarningAlert', function() {
     it('looks right', async function() {
-      const targetElement = await browser.$('.nx-alert--modifier');
+      const targetElement = await browser.$('.nx-alert--warning');
 
       await targetElement.scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
