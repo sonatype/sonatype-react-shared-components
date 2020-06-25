@@ -25,7 +25,7 @@ const StylingRSCPage = () =>
         to what they modify, and also help maintain a clear separation between code, layout, and styling.
       </p>
       <h4 className="nx-h4">Modifying component styles</h4>
-      <p>
+      <p className="nx-p">
         It is not recommended that you directly modify any of the component styles in the RSC as a part of your
         project because your changes are likely to be overwritten the next time you update the RSC in your project.
         Instead you should create either a single file to contain modifications to the RSC styles or keep them within a
