@@ -13,13 +13,14 @@ describe('NxAlert', function() {
 
   describe('Custom NxAlert', function() {
     it('looks right', async function() {
-      const targetElement = By.className('nx-alert--modifier');
+      const targetElement = browser.$('.nx-alert--modifier');
 
-      await browser.$(targetElement).scrollIntoView();
+      await targetElement.scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
     });
   });
 
+  /*
   describe('NxSuccessAlert', function() {
     it('looks right', async function() {
       const targetElement = By.className('nx-alert--success');
@@ -55,4 +56,5 @@ describe('NxAlert', function() {
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
     });
   });
+  */
 });
