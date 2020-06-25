@@ -14,8 +14,8 @@ const NxPageTitleExample = () =>
       <NxFontAwesomeIcon icon={faAtom} className="nx-page-title__page-icon" />
       <h1 className="nx-h1">Page Title</h1>
       <div className="nx-page-title__description">
-        <p>This is a page description.</p>
-        <p>
+        <p className="nx-p">This is a page description.</p>
+        <p className="nx-p">
           jeans sign papier-mache assassin San Francisco rifle physical 3D-printed denim tanto courier concrete dolphin
           rebar free-market. tank-traps papier-mache dead free-market tanto drone concrete dolphin sunglasses weathered
           dead jeans office vehicle nodal point. motion film meta- monofilament knife vinyl post- bridge jeans city

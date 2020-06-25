@@ -25,7 +25,7 @@ export default function NxModalSimpleExample() {
             </h2>
           </header>
           <div className="nx-modal-content">
-            <p>This is some content inside a modal.</p>
+            <p className="nx-p">This is some content inside a modal.</p>
           </div>
           <footer className="nx-modal-footer">
             <div className="nx-btn-bar">

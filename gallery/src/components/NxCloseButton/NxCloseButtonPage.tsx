@@ -22,10 +22,10 @@ const NxCloseButtonPage = () =>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={nxCloseButtonExampleCode}
-                        description="This example demonstrates the display of an NxCloseButton with a simple
-                            click handler wired up. Note that additional button attributes are accepted as props and
-                            applied to the underlying &lt;button&gt;">
-      <NxCloseButtonExample/>
+                        liveExample={NxCloseButtonExample}>
+      This example demonstrates the display of an NxCloseButton with a simple
+      click handler wired up. Note that additional button attributes are accepted as props and
+      applied to the underlying &lt;button&gt;
     </GalleryExampleTile>
   </>;
 

@@ -45,36 +45,27 @@ const PolicyThreatLevelUtilsPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="ThreatLevelCategory & allThreatLevelCategories"
-                        codeExamples={threatLevelCategoryExampleCode}
-                        description={
-                          <>
-                            <code className="nx-code">ThreatLevelCategory</code> is a TypeScript type consisting of
-                            only the valid Threat Level Category strings.
-                            {' '}<code className="nx-code">allThreatLevelCategories</code> is a read-only array
-                            containing those same values
-                          </>
-                        }/>
+                        codeExamples={threatLevelCategoryExampleCode}>
+      <code className="nx-code">ThreatLevelCategory</code> is a TypeScript type consisting of
+      only the valid Threat Level Category strings.
+      {' '}<code className="nx-code">allThreatLevelCategories</code> is a read-only array
+      containing those same values
+    </GalleryExampleTile>
 
     <GalleryExampleTile title="ThreatLevelNumber & allThreatLevelNumbers"
-                        codeExamples={threatLevelNumberExampleCode}
-                        description={
-                          <>
-                            <code className="nx-code">ThreatLevelNumber</code> is a TypeScript type consisting of
-                            only the valid Threat Level Numbers – i.e. the integers 0 through 10.
-                            {' '}<code className="nx-code">allThreatLevelNumbers</code> is a read-only array
-                            containing those same values
-                          </>
-                        }/>
+                        codeExamples={threatLevelNumberExampleCode}>
+      <code className="nx-code">ThreatLevelNumber</code> is a TypeScript type consisting of
+      only the valid Threat Level Numbers – i.e. the integers 0 through 10.
+      {' '}<code className="nx-code">allThreatLevelNumbers</code> is a read-only array
+      containing those same values
+    </GalleryExampleTile>
 
     <GalleryExampleTile title="categoryByPolicyThreatLevel"
-                        codeExamples={categoryByPolicyThreatLevelExampleCode}
-                        description={
-                          <>
-                            <code className="nx-code">categoryByPolicyThreatLevel</code> is a read-only array that,
-                            when indexed into using a <code className="nx-code">ThreatLevelNumber</code>, gives the
-                            {' '}<code className="nx-code">ThreatLevelCategory</code> to which that number belongs
-                          </>
-                        }/>
+                        codeExamples={categoryByPolicyThreatLevelExampleCode}>
+      <code className="nx-code">categoryByPolicyThreatLevel</code> is a read-only array that,
+      when indexed into using a <code className="nx-code">ThreatLevelNumber</code>, gives the
+      {' '}<code className="nx-code">ThreatLevelCategory</code> to which that number belongs
+    </GalleryExampleTile>
   </>;
 
 export default PolicyThreatLevelUtilsPage;

@@ -26,7 +26,7 @@ export default function NxModalPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p>
+        <p className="nx-p">
           <code className="nx-code">NxModal</code> is the preferred way to handle modals. Invoking
           an <code className="nx-code">NxModal</code> will create 2 separate <code className="nx-code">div</code>
           elements. One div will have the <code className="nx-code">nx-modal</code> class, along with any classes passed
@@ -74,9 +74,7 @@ export default function NxModalPage() {
               <td className="nx-cell"><code className="nx-code">.nx-modal--wide</code></td>
               <td className="nx-cell">The <code className="nx-code">NxModal</code> component</td>
               <td className="nx-cell">
-                <p>
-                  Applies an extra-wide style, for modals with large contents.
-                </p>
+                Applies an extra-wide style, for modals with large contents.
               </td>
             </tr>
           </tbody>
@@ -136,7 +134,7 @@ export default function NxModalPage() {
         <CodeExample content={NxModalAlertSourceCode}/>
       </GalleryTile>
       <GalleryTile title="NxModal with stacked modal example">
-        <p>
+        <p className="nx-p">
           <code>NxModal</code> also supports stacked or nested modals. A second modal can be generated from inside of
           an <code>NxModal</code>.
         </p>
@@ -144,7 +142,7 @@ export default function NxModalPage() {
         <CodeExample content={NxModalStackedSourceCode}/>
       </GalleryTile>
       <GalleryTile title="NxModal Example with form">
-        <p>
+        <p className="nx-p">
           <code>NxModal</code> also supports inclusion and styling of form elements
         </p>
         <NxModalFormExample/>
