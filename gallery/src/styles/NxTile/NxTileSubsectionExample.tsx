@@ -18,7 +18,7 @@ const NxTileSubsectionExample = () =>
         car computer advert BASE jump skyscraper man apophenia bridge beef noodles city futurity corporation.
       </p>
       <section className="nx-tile-subsection">
-        <header>
+        <header className="nx-tile-subsection__header">
           <h3 className="nx-h3">Subsection</h3>
         </header>
         <p className="nx-p">
@@ -28,7 +28,7 @@ const NxTileSubsectionExample = () =>
         </p>
       </section>
       <section className="nx-tile-subsection">
-        <header>
+        <header className="nx-tile-subsection__header">
           <h3 className="nx-h3">Subsection</h3>
         </header>
         <p className="nx-p">
@@ -38,7 +38,7 @@ const NxTileSubsectionExample = () =>
         </p>
       </section>
       <section className="nx-tile-subsection">
-        <header>
+        <header className="nx-tile-subsection__header">
           <h3 className="nx-h3">Subsection</h3>
         </header>
         <p className="nx-p">

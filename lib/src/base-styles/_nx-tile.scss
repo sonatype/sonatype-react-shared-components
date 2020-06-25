@@ -146,8 +146,10 @@ $nx-tile-background-color: $nx-white;
     padding-top: $nx-spacing-l;
   }
 
-  header {
+  .nx-tile-subsection__header {
     @include container-vertical;
+
+    margin-bottom: $nx-spacing-md;
   }
 }
 
