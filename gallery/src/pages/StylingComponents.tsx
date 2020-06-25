@@ -88,7 +88,7 @@ const StylingRSCPage = () =>
         visual state. These classes are common across all components that might need them, especially in the case of the
         validation utility classes.
       </p>
-      <p>
+      <p className="nx-p">
         If you have questions about how to use RSC's styles in your app, or how to create customs style for your app
         #react-components on Slack is a good place to ask.
       </p>
