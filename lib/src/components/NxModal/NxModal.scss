@@ -36,7 +36,7 @@ $nx-modal-content-max-height: calc(100vh - #{$nx-modal-top-spacing} - #{$nx-moda
   @include container-vertical;
   background-color: #fff;
   border-top: 1px solid #e9e9e9;
-  padding: $nx-spacing-l $nx-spacing-xl $nx-spacing-l $nx-spacing-l;
+  padding: $nx-spacing-l $nx-spacing-l $nx-spacing-xl $nx-spacing-l;
 
   .nx-alert {
     margin-bottom: $nx-spacing-xl;
