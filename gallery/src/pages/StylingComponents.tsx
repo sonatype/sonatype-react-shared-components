@@ -24,7 +24,7 @@ const StylingRSCPage = () =>
         next to the HTML that it modifies we decrease clutter/noise in our main stylesheet, keep our styles focused
         to what they modify, and also help maintain a clear separation between code, layout, and styling.
       </p>
-      <h4 className="h4">Modifying component styles</h4>
+      <h4 className="nx-h4">Modifying component styles</h4>
       <p>
         It is not recommended that you directly modify any of the component styles in the RSC as a part of your
         project because your changes are likely to be overwritten the next time you update the RSC in your project.
