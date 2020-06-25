@@ -66,21 +66,23 @@ const StylingRSCPage = () =>
         You may notice as you work with the various RSC that some components have CSS classes that don't follow
         normal BEM naming conventions. Classes like:
       </p>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list-item">
-          <code className="nx-code">open</code> &amp; <code className="nx-code">closed</code>
-        </li>
-        <li className="nx-list-item">
-          <code className="nx-code">disabled</code>
-        </li>
-        <li className="nx-list-item">
-          <code className="nx-code">pristine</code>, <code className="nx-code">valid</code>,
-          {' '}<code className="nx-code">invalid</code>
-        </li>
-        <li className="nx-list-item">
-          <code className="nx-code">selected</code> &amp; <code className="nx-code">unselected</code>
-        </li>
-      </ul>
+      <div className="nx-list nx-list--bulleted">
+        <ul>
+          <li className="nx-list__item">
+            <code className="nx-code">open</code> &amp; <code className="nx-code">closed</code>
+          </li>
+          <li className="nx-list__item">
+            <code className="nx-code">disabled</code>
+          </li>
+          <li className="nx-list__item">
+            <code className="nx-code">pristine</code>, <code className="nx-code">valid</code>,
+            {' '}<code className="nx-code">invalid</code>
+          </li>
+          <li className="nx-list__item">
+            <code className="nx-code">selected</code> &amp; <code className="nx-code">unselected</code>
+          </li>
+        </ul>
+      </div>
       <p className="nx-p">
         These are commonly refered to as "utility classes". Utility classes usually describe a change in a components'
         visual state. These classes are common across all components that might need them, especially in the case of the
