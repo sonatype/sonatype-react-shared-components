@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
+import { GalleryDescriptionTile, GalleryTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxBackButtonSimpleExample from './NxBackButtonSimpleExample';
 import NxBackButtonTitleExample from './NxBackButtonTitleExample';
@@ -54,18 +54,23 @@ const NxBackButtonPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Back button with no title or text specified">
-      <NxBackButtonSimpleExample />
-      <CodeExample content={simpleSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Back button with targetPageTitle specified">
-      <NxBackButtonTitleExample />
-      <CodeExample content={titleSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Back button with custom text specified">
-      <NxBackButtonTextExample />
-      <CodeExample content={textSourceCode} />
-    </GalleryTile>
+    <GalleryExampleTile id="nx-back-button-simple-example"
+                        liveExample={NxBackButtonSimpleExample}
+                        codeExamples={simpleSourceCode}>
+      Back button with no title or text specified
+    </GalleryExampleTile>
+
+    <GalleryExampleTile id="nx-back-button-title-example"
+                        liveExample={NxBackButtonTitleExample}
+                        codeExamples={titleSourceCode}>
+      Back button with targetPageTitle specified
+    </GalleryExampleTile>
+
+    <GalleryExampleTile id="nx-back-button-text-example"
+                        liveExample={NxBackButtonTextExample}
+                        codeExamples={textSourceCode}>
+      Back button with custom text specified
+    </GalleryExampleTile>
   </>;
 
 export default NxBackButtonPage;
