@@ -18,7 +18,7 @@ const nxTreeViewRadioSelectExampleCode = require('!!raw-loader!./NxTreeViewRadio
 const NxTreeViewRadioSelectPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         A tree view radio group component.
       </p>
 
@@ -37,13 +37,13 @@ const NxTreeViewRadioSelectPage = () =>
             <td className="nx-cell">Array of {'{id:string, name:string}'}</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">
-              <p>
+              <p className="nx-p">
                 An array of objects that corresponds to the possible options of the component (the checkboxes).
                 These objects need to at least have an <code className="nx-code">id: string</code> property and a{' '}
                 <code className="nx-code">name: string</code> property. If an empty array is passed in, the component
                 will be disabled.
               </p>
-              <p>
+              <p className="nx-p">
                 <code className="nx-code">id</code> will be the value provided to the{' '}
                 <code className="nx-code">onChange</code> callback, and{' '}
                 <code className="nx-code">name</code> will be used to render the option.

@@ -20,8 +20,8 @@ const textSourceCode = require('!!raw-loader!./NxBackButtonTextExample').default
 const NxBackButtonPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>A standard UI element for navigating back to a previous page</p>
-      <p>Props:</p>
+      <p className="nx-p">A standard UI element for navigating back to a previous page</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">

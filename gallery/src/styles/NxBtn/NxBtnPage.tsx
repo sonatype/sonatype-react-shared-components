@@ -24,8 +24,8 @@ const nxBtnPrimaryCode = require('!!raw-loader!./NxBtnPrimaryExample').default,
 const NxBtnPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p><code className="nx-code">.nx-btn</code> is the standard class for all buttons.</p>
-      <p>
+      <p className="nx-p"><code className="nx-code">.nx-btn</code> is the standard class for all buttons.</p>
+      <p className="nx-p">
         When a button is not contained in a <code className="nx-code">footer</code>, then an enclosing
         <code className="nx-code">.nx-btn-bar</code> is generally required to ensure that the buttons are spaced
         appropriately from other content.

@@ -15,11 +15,11 @@ const nxPageTitleCode = require('!!raw-loader!./NxPageTitleExample').default;
 const NxPageTitlePage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         nx-page-title is used at the top of a page, it always has a title, and can also have an icon
         and descriptive text.
       </p>
-      <p>
+      <p className="nx-p">
         Note: <code className="nx-code">.nx-page-title</code> replaces
         <code className="nx-code">.nx-tile--top-tile</code> and <code className="nx-code">.nx-tile--title-only</code>.
       </p>

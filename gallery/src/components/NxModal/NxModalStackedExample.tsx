@@ -27,10 +27,10 @@ export default function NxModalStackedExample() {
             </h2>
           </header>
           <div className="nx-modal-content">
-            <p>
+            <p className="nx-p">
               This is some content inside a modal.
             </p>
-            <p>
+            <p className="nx-p">
               This is some more content inside a modal.
             </p>
           </div>
@@ -53,7 +53,7 @@ export default function NxModalStackedExample() {
             </h2>
           </header>
           <div className="nx-modal-content">
-            <p>This is the second modal.</p>
+            <p className="nx-p">This is the second modal.</p>
           </div>
           <footer className="nx-modal-footer">
             <div className="nx-btn-bar">

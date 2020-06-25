@@ -31,8 +31,8 @@ const NxScrollablePage = () =>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="General Example"
                         codeExamples={nxScrollableExampleCode}
-                        description="In this instance the max-height has been left at its default value of 400px.">
-      <NxScrollableExample />
+                        liveExample={NxScrollableExample}>
+      In this instance the max-height has been left at its default value of 400px.
     </GalleryExampleTile>
   </>;
 

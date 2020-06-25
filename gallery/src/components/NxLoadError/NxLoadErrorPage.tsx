@@ -19,8 +19,8 @@ const retryLongMessageSourceCode = require('!!raw-loader!./NxLoadErrorRetryExamp
 const NxLoadErrorPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Error message with optional Retry button</p>
-      <p>Props:</p>
+      <p className="nx-p">Error message with optional Retry button</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -62,23 +62,23 @@ const NxLoadErrorPage = () =>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={simpleSourceCode}
-                        description="This example demonstrates a basic NxLoadError which renders the error message in
-                            an alert box.">
-      <NxLoadErrorSimpleExample />
+                        liveExample={NxLoadErrorSimpleExample}>
+      This example demonstrates a basic NxLoadError which renders the error message in
+      an alert box.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Retry Button"
                         codeExamples={retrySourceCode}
-                        description="In this example, the error is cleared on retry. Note that the NxLoadError
-                            component disappears when that happens.">
-      <NxLoadErrorRetryExample />
+                        liveExample={NxLoadErrorRetryExample}>
+      In this example, the error is cleared on retry. Note that the NxLoadError
+      component disappears when that happens.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Retry Button with Long Text"
                         codeExamples={retryLongMessageSourceCode}
-                        description="This example demonstrates that when the text is long, the Retry button falls
-                            underneath of it but still on the right-hand side of the alert.">
-      <NxLoadErrorRetryLongMessageExample />
+                        liveExample={NxLoadErrorRetryLongMessageExample}>
+      This example demonstrates that when the text is long, the Retry button falls
+      underneath of it but still on the right-hand side of the alert.
     </GalleryExampleTile>
   </>;
 

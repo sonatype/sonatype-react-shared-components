@@ -20,7 +20,7 @@ export default function NxTooltipPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p>
+        <p className="nx-p">
           A tooltip component that can wrap other components in order to apply a tooltip to them. The wrapped component
           must be able to receive a ref which it must forward to its top-most native DOM element.
         </p>
@@ -85,9 +85,9 @@ export default function NxTooltipPage() {
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
                           codeExamples={codeExamples}
-                          description="This example demonstrates a series of components with tooltips using various
-                              configuration options.">
-        <NxTooltipExample/>
+                          liveExample={NxTooltipExample}>
+        This example demonstrates a series of components with tooltips using various
+        configuration options.
       </GalleryExampleTile>
     </>
   );

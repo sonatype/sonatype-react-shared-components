@@ -12,15 +12,15 @@ import NxGridExamples from './NxGridExamples';
 const NxGridPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         Described below are some basic grid patterns. These patterns rely on Flexbox to form simple grid patterns.
         CSS Grid was examined but the lack of IE11 support forced us to pass it up.
       </p>
-      <p>
+      <p className="nx-p">
         Grids consist of rows and cells. There are optional title containers, as well as a keylines that can be used
         for styling and spacing.
       </p>
-      <p>
+      <p className="nx-p">
         When you are creating a custom column with a specific width you should use the provided
         <code className="nx-code">.nx-grid-col-width</code> mixin. The only required parameter is the width and unit.
         For example: <code className="nx-code">@include nx-grid-col-width(200px);</code> will generate
@@ -29,7 +29,7 @@ const NxGridPage = () =>
         flex: 0 0 200px;<br/>
         max-width: 200px;
       </pre>
-      <p>The <code className="nx-code">max-width</code> attribute is required by IE11.</p>
+      <p className="nx-p">The <code className="nx-code">max-width</code> attribute is required by IE11.</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row nx-table-row--header">
