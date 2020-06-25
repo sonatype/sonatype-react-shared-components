@@ -136,17 +136,18 @@ $nx-tile-background-color: $nx-white;
 
 // On pages with tiles with multiple sections these are lighter weight titles
 .nx-tile-subsection {
-  .nx-h3--tile-subsection {
-    margin-top: $nx-spacing-xl;
-    margin-bottom: $nx-spacing-md;
-  }
+  @include container-vertical;
+  margin-top: $nx-spacing-xl;
+  margin-bottom: $nx-spacing-md;
 
   &:first-of-type {
-    .nx-h3--tile-subsection {
-      border-top: 1px solid #b7bfdb;
-      margin-top: $nx-spacing-l;
-      padding-top: $nx-spacing-l;
-    }
+    border-top: 1px solid #b7bfdb;
+    margin-top: $nx-spacing-l;
+    padding-top: $nx-spacing-l;
+  }
+
+  header {
+    @include container-vertical;
   }
 }
 
