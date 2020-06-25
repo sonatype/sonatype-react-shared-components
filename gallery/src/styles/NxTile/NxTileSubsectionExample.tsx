@@ -19,7 +19,7 @@ const NxTileSubsectionExample = () =>
       </p>
       <section className="nx-tile-subsection">
         <header>
-          <h3 className="nx-h3 nx-h3--tile-subsection">Subsection</h3>
+          <h3 className="nx-h3">Subsection</h3>
         </header>
         <p className="nx-p">
           semiotics numinous long-chain hydrocarbons. Dome bridge j-pop corporation sensory military-grade
@@ -29,7 +29,7 @@ const NxTileSubsectionExample = () =>
       </section>
       <section className="nx-tile-subsection">
         <header>
-          <h3 className="nx-h3 nx-h3--tile-subsection">Subsection</h3>
+          <h3 className="nx-h3">Subsection</h3>
         </header>
         <p className="nx-p">
           semiotics numinous long-chain hydrocarbons. Dome bridge j-pop corporation sensory military-grade
@@ -39,7 +39,7 @@ const NxTileSubsectionExample = () =>
       </section>
       <section className="nx-tile-subsection">
         <header>
-          <h3 className="nx-h3 nx-h3--tile-subsection">Subsection</h3>
+          <h3 className="nx-h3">Subsection</h3>
         </header>
         <p className="nx-p">
           semiotics numinous long-chain hydrocarbons. Dome bridge j-pop corporation sensory military-grade
