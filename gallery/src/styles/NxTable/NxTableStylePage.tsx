@@ -12,7 +12,9 @@ import NxTableExamples from './NxTableExamples';
 const NxTableStylePage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">This is the styling and layout for a basic table. There are few variations demonstrated here:</p>
+      <p className="nx-p">
+        This is the styling and layout for a basic table. There are few variations demonstrated here:
+      </p>
       <ul className="nx-list nx-list--bulleted">
         <li className="nx-list-item">Basic table layout</li>
         <li className="nx-list-item">Tables with clickable rows</li>

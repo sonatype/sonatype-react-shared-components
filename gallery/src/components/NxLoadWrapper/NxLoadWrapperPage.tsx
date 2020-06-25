@@ -22,7 +22,9 @@ const errorRetrySourceCode = require('!!raw-loader!./NxLoadWrapperErrorRetryExam
 const NxLoadWrapperPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">A component that will display either a loading spinner, an error message, or the specified child VDOM</p>
+      <p className="nx-p">
+        A component that will display either a loading spinner, an error message, or the specified child VDOM
+      </p>
       <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>

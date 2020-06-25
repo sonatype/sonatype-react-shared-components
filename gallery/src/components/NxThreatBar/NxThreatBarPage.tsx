@@ -61,7 +61,9 @@ const NxThreatBarPage = () =>
         </tbody>
       </table>
 
-      <p className="nx-p">The following table shows the mapping between threat level number and threat level category</p>
+      <p className="nx-p">
+        The following table shows the mapping between threat level number and threat level category.
+      </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
