@@ -17,7 +17,7 @@ const nxAlertInfoCode = require('./NxAlertInfoExample.html').default,
 const NxAlertPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Standard name spaced alert styles.</p>
+      <p className="nx-p">Standard name spaced alert styles.</p>
     </GalleryDescriptionTile>
 
     <GalleryTile title="Information alert">

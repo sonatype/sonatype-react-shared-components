@@ -24,9 +24,9 @@ const nxErrorAlertExampleCode = require('!!raw-loader!./NxErrorAlertExample').de
 const NxAlertPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Generic alert.</p>
-      <p>Handy for DIY alert variations</p>
-      <p>Accepts any prop that is valid on a div as well as the following:</p>
+      <p className="nx-p">Generic alert.</p>
+      <p className="nx-p">Handy for DIY alert variations</p>
+      <p className="nx-p">Accepts any prop that is valid on a div as well as the following:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -55,9 +55,9 @@ const NxAlertPage = () =>
     </GalleryTile>
 
     <GalleryTile title="NxErrorAlert, NxInfoAlert, NxWarningAlert">
-      <p>Standard sonatype alerts.</p>
-      <p>They come in three variations: Error, Info, and Warning.</p>
-      <p>Accepts any prop that is valid on a div</p>
+      <p className="nx-p">Standard sonatype alerts.</p>
+      <p className="nx-p">They come in three variations: Error, Info, and Warning.</p>
+      <p className="nx-p">Accepts any prop that is valid on a div</p>
     </GalleryTile>
 
     <GalleryTile title="Success Alert Example">

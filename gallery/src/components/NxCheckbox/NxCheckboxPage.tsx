@@ -20,9 +20,9 @@ const nowrapExampleCode = require('!!raw-loader!./NxCheckboxNowrapExample').defa
 const NxCheckboxPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Custom checkbox input.</p>
-      <p>Child VDOM will be used as a label following the checkbox button itself.</p>
-      <p>Props:</p>
+      <p className="nx-p">Custom checkbox input.</p>
+      <p className="nx-p">Child VDOM will be used as a label following the checkbox button itself.</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -79,10 +79,10 @@ const NxCheckboxPage = () =>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={exampleCode}
-                        description="This example shows a series of checkboxes in a typical vertical layout with
-                          different label content. Note that one of the checkboxes is disabled. Another has no label
-                          at all but is adjacent to other content, demonstrating its lack of inherent margin.">
-      <NxCheckboxExample />
+                        liveExample={NxCheckboxExample}>
+      This example shows a series of checkboxes in a typical vertical layout with
+      different label content. Note that one of the checkboxes is disabled. Another has no label
+      at all but is adjacent to other content, demonstrating its lack of inherent margin.
     </GalleryExampleTile>
 
     <GalleryTile title="Inline Checkbox">

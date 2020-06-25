@@ -18,12 +18,12 @@ const NxFormLayoutCode = require('!!raw-loader!./NxFormLayoutExample').default,
 const NxFormLayoutPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         This page demonstrates the HTML and SCSS required for displaying form and form elements in an application.
         Note that all standard HTML elements in a form have corresponding SCSS classes. It's important that these
         classes are used correctly as they reset browser default form styles.
       </p>
-      <p>
+      <p className="nx-p">
         This page does not demonstrate validation which is a part of the form element components which can be found
         in the menu to the left.
       </p>

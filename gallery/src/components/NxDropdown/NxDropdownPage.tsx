@@ -24,8 +24,8 @@ const nxDropdownNavigationExampleCode = require('!!raw-loader!./NxDropdownNaviga
 const NxDropdownPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Dropdown component.</p>
-      <p>Props:</p>
+      <p className="nx-p">Dropdown component.</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -53,10 +53,8 @@ const NxDropdownPage = () =>
             <td className="nx-cell">"primary" | "secondary" | "tertiary"</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              <p>
-                What type of button to render for the dropdown.
-                Defaults to <code className="nx-code">"tertiary"</code>
-              </p>
+              What type of button to render for the dropdown.
+              Defaults to <code className="nx-code">"tertiary"</code>
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -70,10 +68,8 @@ const NxDropdownPage = () =>
             <td className="nx-cell">boolean</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              <p>
-                Controls if the component should be rendered as disabled.
-                Defaults to <code className="nx-code">false</code>
-              </p>
+              Controls if the component should be rendered as disabled.
+              Defaults to <code className="nx-code">false</code>
             </td>
           </tr>
           <tr className="nx-table-row">

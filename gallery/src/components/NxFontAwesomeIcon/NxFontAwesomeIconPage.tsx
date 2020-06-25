@@ -22,13 +22,13 @@ const NxFontAwesomeIconPage = () => {
   return (
     <>
       <GalleryDescriptionTile>
-        <p>
+        <p className="nx-p">
           <code className="nx-code">NxFontAwesomeIcon</code> is a wrapper around
           the <code className="nx-code">FontAwesomeIcon</code> component. It passes through its props
           to <code className="nx-code">FontAwesomeIcon</code> and adds the <code className="nx-code">.nx-icon</code> CSS
           class.
         </p>
-        <p>
+        <p className="nx-p">
           See the <code className="nx-code">FontAwesomeIcon</code>{' '}
           <a href="https://github.com/FortAwesome/react-fontawesome#features" target="_blank">documentation</a>
           {' '}for details on available props
@@ -36,9 +36,9 @@ const NxFontAwesomeIconPage = () => {
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
                           codeExamples={codeExamples}
-                          description="This example shows a button containing a series of icons inline with some text.
-                              The buttons showcase various FontAwesome options that are supported.">
-        <NxFontAwesomeIconExample />
+                          liveExample={NxFontAwesomeIconExample}>
+        This example shows a button containing a series of icons inline with some text.
+        The buttons showcase various FontAwesome options that are supported.
       </GalleryExampleTile>
     </>
   );

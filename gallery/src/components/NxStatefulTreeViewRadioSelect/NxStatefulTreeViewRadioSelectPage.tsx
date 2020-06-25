@@ -19,7 +19,7 @@ const nxStatefulTreeViewRadioSelectExampleCode = require('!!raw-loader!./NxState
 const NxStatefulTreeViewRadioSelectPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         Stateful Radio select component using tree view with radios. It handles tree view toggling and filter state.
       </p>
 
@@ -38,13 +38,13 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <td className="nx-cell">Array of {'{id:String, name:String}'}</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">
-              <p>
+              <p className="nx-p">
                 An array of objects that corresponds to the possible options of the component (the radios).
                 These objects need to at least have an <code className="nx-code">id: string | null</code> property{' '}
                 and a <code className="nx-code">name: string</code> property. If an empty array is passed in,{' '}
                 the component will be disabled.
               </p>
-              <p>
+              <p className="nx-p">
                 <code className="nx-code">id</code> will be the value provided to the{' '}
                 <code className="nx-code">onChange</code> callback, and{' '}
                 <code className="nx-code">name</code> will be used to render the option.
@@ -162,10 +162,10 @@ const NxStatefulTreeViewRadioSelectPage = () =>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={nxStatefulTreeViewRadioSelectExampleCode}
-                        description="This example demonstrates basic usage of NxStatefulTreeViewRadioSelect. Note that
-                            the component tracks the collapse/expand state and filter text internally, and the calling
-                            code only needs to track which items are selected.">
-      <NxStatefulTreeViewRadioSelectExample />
+                        liveExample={NxStatefulTreeViewRadioSelectExample}>
+      This example demonstrates basic usage of NxStatefulTreeViewRadioSelect. Note that
+      the component tracks the collapse/expand state and filter text internally, and the calling
+      code only needs to track which items are selected.
     </GalleryExampleTile>
 
     <GalleryTile title="Disabled Example With Tooltip">

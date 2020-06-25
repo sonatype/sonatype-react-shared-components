@@ -35,7 +35,7 @@ export default function NxTablePage() {
       <GalleryDescriptionTile>
         <h5>NxTable</h5>
 
-        <p>
+        <p className="nx-p">
           The top-level component to use when displaying tables of data.
           It can have <code className="nx-code">&lt;NxTableHead&gt;</code> and
           <code className="nx-code">&lt;NxTableBody&gt;</code> components as children.
@@ -45,7 +45,7 @@ export default function NxTablePage() {
 
         <h5>NxTableHead</h5>
 
-        <p>
+        <p className="nx-p">
           Equivalent to the <code className="nx-code">&lt;thead&gt;</code> element.
           The <code className="nx-code">&lt;NxTableRow&gt;</code> component is the only valid child.
           Descendant <code className="nx-code">&lt;NxTableCell&gt;</code> components will have the
@@ -56,7 +56,7 @@ export default function NxTablePage() {
 
         <h5>NxTableBody</h5>
 
-        <p>
+        <p className="nx-p">
           Equivalent to the <code className="nx-code">&lt;tbody&gt;</code> element.
           It should have <code className="nx-code">&lt;NxTableRow&gt;</code> for children.
         </p>
@@ -100,7 +100,7 @@ export default function NxTablePage() {
 
         <h5>NxTableRow</h5>
 
-        <p>
+        <p className="nx-p">
           Equivalent to the <code className="nx-code">&lt;tr&gt;</code> element.
           It automatically assigns <code className="nx-code">isHeader</code> on the children
           if that prop is set on this row.
@@ -111,7 +111,7 @@ export default function NxTablePage() {
 
         <h5>NxTableCell</h5>
 
-        <p>
+        <p className="nx-p">
           Equivalent to the <code className="nx-code">&lt;th&gt;</code> or
           <code className="nx-code">&lt;td&gt;</code> element.
         </p>

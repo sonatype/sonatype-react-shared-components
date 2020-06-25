@@ -14,7 +14,7 @@ function NxCheckboxNowrapExample() {
 
   return (
     <>
-      <p>Subscribed: {isSubscribed.toString()}</p>
+      <p className="nx-p">Subscribed: {isSubscribed.toString()}</p>
 
       <div style={{width: '40px', border: '1px solid red'}}>
         Some text

@@ -15,13 +15,13 @@ const sourceCode = require('!!raw-loader!./NxLoadingSpinnerExample').default;
 const NxLoadingSpinnerPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Loading Spinner with caption</p>
-      <p>Props: none</p>
+      <p className="nx-p">Loading Spinner with caption</p>
+      <p className="nx-p">Props: none</p>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="General Example"
                         codeExamples={sourceCode}
-                        description="The loading spinner. Not props are necessary - it is a simple, static element.">
-      <NxLoadingSpinnerExample />
+                        liveExample={NxLoadingSpinnerExample}>
+      The loading spinner. Not props are necessary - it is a simple, static element.
     </GalleryExampleTile>
   </>;
 
