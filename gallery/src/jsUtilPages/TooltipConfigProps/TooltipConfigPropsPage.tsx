@@ -29,15 +29,11 @@ const TooltipConfigPropsPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Example with NxDropdown"
-                        codeExamples={tooltipConfigPropsDropdownExampleCode}
-                        description={
-                          <>
-                            A basic <code className="nx-code">NxDropdown</code> demonstrating usage of its
-                            {' '}<code className="nx-code">toggleTooltip</code> prop, which is of type
-                            {' '}<code className="nx-code">TooltipConfigProps</code>.
-                          </>
-                        }>
-      <TooltipConfigPropsDropdownExample/>
+                        liveExample={TooltipConfigPropsDropdownExample}
+                        codeExamples={tooltipConfigPropsDropdownExampleCode}>
+      A basic <code className="nx-code">NxDropdown</code> demonstrating usage of its
+      {' '}<code className="nx-code">toggleTooltip</code> prop, which is of type
+      {' '}<code className="nx-code">TooltipConfigProps</code>.
     </GalleryExampleTile>
   </>;
 

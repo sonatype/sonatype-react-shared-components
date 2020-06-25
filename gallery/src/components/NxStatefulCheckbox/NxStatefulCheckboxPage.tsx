@@ -76,10 +76,10 @@ const NxStatefulCheckboxPage = () =>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={exampleCode}
-                        description="This example shows the usage of an NxStatefulCheckbox which tracks its own state,
-                            along with a callback for initiating a side-effect - in this case, the opening of an alert
-                            dialog.">
-      <NxStatefulCheckboxExample />
+                        liveExample={NxStatefulCheckboxExample}>
+      This example shows the usage of an NxStatefulCheckbox which tracks its own state,
+      along with a callback for initiating a side-effect - in this case, the opening of an alert
+      dialog.
     </GalleryExampleTile>
   </>;
 
