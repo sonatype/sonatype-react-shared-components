@@ -85,9 +85,9 @@ export default function NxTooltipPage() {
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
                           codeExamples={codeExamples}
-                          description="This example demonstrates a series of components with tooltips using various
-                              configuration options.">
-        <NxTooltipExample/>
+                          liveExample={NxTooltipExample}>
+        This example demonstrates a series of components with tooltips using various
+        configuration options.
       </GalleryExampleTile>
     </>
   );

@@ -166,10 +166,10 @@ const NxStatefulTreeViewMultiSelectPage = () =>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={nxStatefulTreeViewMultiSelectExampleCode}
-                        description="This example demonstrates basic usage of NxStatefulTreeViewMultiSelect. Note that
-                            the component tracks the collapse/expand state and filter text internally, and the calling
-                            code only needs to track which items are selected.">
-      <NxStatefulTreeViewMultiSelectExample />
+                        liveExample={NxStatefulTreeViewMultiSelectExample}>
+      This example demonstrates basic usage of NxStatefulTreeViewMultiSelect. Note that
+      the component tracks the collapse/expand state and filter text internally, and the calling
+      code only needs to track which items are selected.
     </GalleryExampleTile>
 
     <GalleryTile title="Disabled Example With Tooltip">

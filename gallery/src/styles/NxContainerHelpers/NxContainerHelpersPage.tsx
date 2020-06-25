@@ -77,12 +77,12 @@ const NxContainerHelpersPage = () => {
 
       <GalleryExampleTile title="General Example"
                           codeExamples={codeExamples}
-                          description="This example consists of a few HTML elements along with some styling which
-                              demonstrates the usage of the nx-container-helpers SCSS mixins. The outermost box is a
-                              vertical container. The second child box is a horizontal container. Note the vertical
-                              margin collapsing and the cancelling of the interior margins which would otherwise
-                              interfere with the padding from the container.">
-        <NxContainerHelpersExample />
+                          liveExample={NxContainerHelpersExample}>
+        This example consists of a few HTML elements along with some styling which
+        demonstrates the usage of the nx-container-helpers SCSS mixins. The outermost box is a
+        vertical container. The second child box is a horizontal container. Note the vertical
+        margin collapsing and the cancelling of the interior margins which would otherwise
+        interfere with the padding from the container.
       </GalleryExampleTile>
     </>
   );
