@@ -24,13 +24,12 @@ const StylingRSCPage = () =>
       </p>
       <h4 className="nx-h4">Modifying component styles</h4>
       <p className="nx-p">
-        It is not recommended that you directly modify any of the component styles in the RSC as a part of your
-        project because your changes are likely to be overwritten the next time you update the RSC in your project.
-        Instead you should create either a single file to contain modifications to the RSC styles or keep them within a
-        page specific stylesheet if the changes are localised to a page. For example in IQ they have a SCSS file named
-        {' '}<code className="nx-code">_nx-overrides.scss</code> in which all global modifications to RSC styles are
-        stored. If you are starting a brand new project you probably won't need to do this but for existing projects
-        where RSC styles will be mixing with legacy styles it can be invaluable.
+        If you need to modify any of the stock RSC styles for use within your project you should create either a single
+        file to contain your modifications or keep them within a page specific stylesheet if the changes are localised
+        to a page. For example in IQ has an SCSS file named <code className="nx-code">_nx-overrides.scss</code> in
+        which all IQ specific modifications to RSC styles are stored. If you are starting a brand new project you
+        probably won't need to do this but for existing projects where RSC styles will be mixing with legacy styles it
+        can be invaluable.
       </p>
     </section>
     <section className="nx-tile-subsection">
