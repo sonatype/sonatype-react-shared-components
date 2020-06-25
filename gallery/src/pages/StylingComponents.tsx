@@ -43,7 +43,7 @@ const StylingRSCPage = () =>
         You might have noticed lots of dashes and underscores in our class names. That's because we use BEM naming
         by default. BEM stands for "Block", "Element", and "Modifier".{' '}
         <a href="https://www.toptal.com/css/introduction-to-bem-methodology" target="_blank">Learn more about BEM</a>.
-        We use a slightly modified version of BEM in the RSC; we have added name-spaces and utility classes.
+        We use a slightly modified version of BEM in the RSC; we have added namespaces and utility classes.
       </p>
     </section>
     <section className="nx-tile-subsection">
