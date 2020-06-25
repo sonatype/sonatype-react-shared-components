@@ -39,7 +39,6 @@ const ValidationUtilsPage = () =>
       the specified <code className="nx-code">ValidationErrors</code> represents an error.
     </GalleryExampleTile>
 
-
     <GalleryExampleTile title="getFirstValidationError"
                         codeExamples={getFirstValidationErrorExampleCode}>
       <code className="nx-code">getFirstValidationError</code> returns the first message from

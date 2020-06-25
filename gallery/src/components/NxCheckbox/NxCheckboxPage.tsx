@@ -79,7 +79,7 @@ const NxCheckboxPage = () =>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={exampleCode}
-                          liveExample={NxCheckboxExample}>
+                        liveExample={NxCheckboxExample}>
       This example shows a series of checkboxes in a typical vertical layout with
       different label content. Note that one of the checkboxes is disabled. Another has no label
       at all but is adjacent to other content, demonstrating its lack of inherent margin.

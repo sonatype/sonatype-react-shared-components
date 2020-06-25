@@ -62,21 +62,21 @@ const NxLoadErrorPage = () =>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={simpleSourceCode}
-                          liveExample={NxLoadErrorSimpleExample}>
+                        liveExample={NxLoadErrorSimpleExample}>
       This example demonstrates a basic NxLoadError which renders the error message in
       an alert box.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Retry Button"
                         codeExamples={retrySourceCode}
-                          liveExample={NxLoadErrorRetryExample}>
+                        liveExample={NxLoadErrorRetryExample}>
       In this example, the error is cleared on retry. Note that the NxLoadError
       component disappears when that happens.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Retry Button with Long Text"
                         codeExamples={retryLongMessageSourceCode}
-                          liveExample={NxLoadErrorRetryLongMessageExample}>
+                        liveExample={NxLoadErrorRetryLongMessageExample}>
       This example demonstrates that when the text is long, the Retry button falls
       underneath of it but still on the right-hand side of the alert.
     </GalleryExampleTile>
