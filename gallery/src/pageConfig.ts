@@ -100,9 +100,9 @@ const pageConfig: PageConfig = {
   },
   'Guidelines': {
     'Contributing to the Gallery': ContributingPage,
-    'Styling Components': StylingComponentsPage,
+    'font-size and line-height': FontSizePage,
     'Form Validation Guidelines': FormValidationPage,
-    'font-size and line-height': FontSizePage
+    'Styling Components': StylingComponentsPage
   },
   'Styles - HTML Elements': {
     'nx-alert': NxAlertPage,
