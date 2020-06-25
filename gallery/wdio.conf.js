@@ -210,9 +210,6 @@ exports.config = {
 
       let branchName = process.env.GIT_BRANCH;
 
-      console.log('batchId', batchId);
-      console.log('branchName', branchName);
-
       if (batchId) {
         const batchInfo = new BatchInfo(branchName);
         batchInfo.setId(batchId);
@@ -229,8 +226,6 @@ exports.config = {
       // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
       eyesConf.setAppName('React Shared Components');
       eyes.setConfiguration(eyesConf);
-
-      console.log('Configuration: ', eyesConf);
 
       browser.addCommand('eyesSnapshot', function(title) {
         return eyes.check(title, Target.window());
@@ -276,9 +271,10 @@ exports.config = {
     /**
      * Function to be executed after a test (in Mocha/Jasmine).
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
-
+    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+      await eyes.closeAsync();
+      await eyes.abortIfNotClosed();
+    },
 
     /**
      * Hook that gets executed after the suite has ended
@@ -302,10 +298,8 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    after: async function (result, capabilities, specs) {
-      await eyes.closeAsync();
-      await eyes.abortIfNotClosed();
-    },
+    // after: async function (result, capabilities, specs) {
+    // },
     /**
      * Gets executed right after terminating the webdriver session.
      * @param {Object} config wdio configuration object

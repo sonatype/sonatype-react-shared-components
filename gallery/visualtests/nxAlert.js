@@ -13,48 +13,46 @@ describe('NxAlert', function() {
 
   describe('Custom NxAlert', function() {
     it('looks right', async function() {
-      const targetElement = browser.$('.nx-alert--modifier');
+      const targetElement = await browser.$('.nx-alert--modifier');
 
       await targetElement.scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
     });
   });
 
-  /*
   describe('NxSuccessAlert', function() {
     it('looks right', async function() {
-      const targetElement = By.className('nx-alert--success');
+      const targetElement = await browser.$('.nx-alert--modifier');
 
-      await browser.$(targetElement).scrollIntoView();
+      await targetElement.scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
     });
   });
 
   describe('NxErrorAlert', function() {
     it('looks right', async function() {
-      const targetElement = By.className('nx-alert--error');
+      const targetElement = await browser.$('.nx-alert--modifier');
 
-      await browser.$(targetElement).scrollIntoView();
+      await targetElement.scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
     });
   });
 
   describe('NxInfoAlert', function() {
     it('looks right', async function() {
-      const targetElement = By.className('nx-alert--info');
+      const targetElement = await browser.$('.nx-alert--modifier');
 
-      await browser.$(targetElement).scrollIntoView();
+      await targetElement.scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
     });
   });
 
   describe('NxWarningAlert', function() {
     it('looks right', async function() {
-      const targetElement = By.className('nx-alert--warning');
+      const targetElement = await browser.$('.nx-alert--modifier');
 
-      await browser.$(targetElement).scrollIntoView();
+      await targetElement.scrollIntoView();
       await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
     });
   });
-  */
 });
