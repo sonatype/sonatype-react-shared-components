@@ -25,7 +25,7 @@
   font-weight: 600;
 }
 
-@mixin truncate-ellipsis {
+@mixin nx-truncate-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -36,6 +36,7 @@
   border: $nx-border;
   border-radius: 4px;
   color: $nx-invalid-color;
+  font-family: monospace;
   font-size: $nx-font-size-s;
   padding: 2px 4px;
   white-space: nowrap;

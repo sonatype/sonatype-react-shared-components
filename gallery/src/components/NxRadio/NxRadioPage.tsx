@@ -20,9 +20,9 @@ const nowrapExampleCode = require('!!raw-loader!./NxRadioNowrapExample').default
 const NxRadioPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Custom Radio input.</p>
-      <p>Child VDOM will be used as a label following the radio button itself.</p>
-      <p>Props:</p>
+      <p className="nx-p">Custom Radio input.</p>
+      <p className="nx-p">Child VDOM will be used as a label following the radio button itself.</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -103,12 +103,12 @@ const NxRadioPage = () =>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={exampleCode}
-                        description="This example shows a series of radios in a typical vertical layout with
-                          different label content. Note that one of the radios is disabled. Another has no label
-                          at all but is adjacent to other content, demonstrating its lack of inherent margin.
-                          These radios together operate as a single form control: only one value within the group
-                          can be selected at a time.">
-      <NxRadioExample />
+                        liveExample={NxRadioExample}>
+      This example shows a series of radios in a typical vertical layout with
+      different label content. Note that one of the radios is disabled. Another has no label
+      at all but is adjacent to other content, demonstrating its lack of inherent margin.
+      These radios together operate as a single form control: only one value within the group
+      can be selected at a time.
     </GalleryExampleTile>
 
     <GalleryTile title="Inline Radio">

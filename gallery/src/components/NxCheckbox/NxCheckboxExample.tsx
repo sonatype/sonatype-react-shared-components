@@ -16,7 +16,7 @@ function NxCheckboxExample() {
 
   return (
     <>
-      <p>Subscribed: {isSubscribed.toString()}</p>
+      <p className="nx-p">Subscribed: {isSubscribed.toString()}</p>
       <div>
         <NxCheckbox checkboxId="subscribe-check" onChange={onChange} isChecked={isSubscribed}>
           Subscribe

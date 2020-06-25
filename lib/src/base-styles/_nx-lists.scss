@@ -28,7 +28,7 @@
 
 .nx-list__item {
   @include semi-bold();
-  @include truncate-ellipsis();
+  @include nx-truncate-ellipsis();
   @include container-vertical;
 
   border-top: 1px solid transparent;

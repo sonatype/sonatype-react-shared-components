@@ -26,8 +26,8 @@ const disabledSourceCode = require('!!raw-loader!./NxTextInputDisabledExample').
 const NxTextInputPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Standard text input with validation styling</p>
-      <p>Props:</p>
+      <p className="nx-p">Standard text input with validation styling</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -96,9 +96,11 @@ const NxTextInputPage = () =>
             <td className="nx-cell">Function ((string) => void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              A callback for when the user presses a key that doesn't necessarily change the input value
-              (e.g. by hitting enter)
-              <p>
+              <p className="nx-p">
+                A callback for when the user presses a key that doesn't necessarily change the input value
+                (e.g. by hitting enter)
+              </p>
+              <p className="nx-p">
                 The value given to the callback will be that of the key name, as described in the spec
                 for{' '}
                 <a target="_blank"
@@ -142,7 +144,7 @@ const NxTextInputPage = () =>
         </tbody>
       </table>
       <h3>State Helpers</h3>
-      <p>
+      <p className="nx-p">
         <code className="nx-code">@sonatype/react-shared-components/components/NxTextInput/stateHelpers.ts</code>{' '}
         includes the following recommended state helper functions, which each return an object containining the
         "stateful" parts of the NxTextInput props{' '}
@@ -171,7 +173,7 @@ const NxTextInputPage = () =>
             <td className="nx-cell">userInput</td>
             <td className="nx-cell">(validator, newValue: string)</td>
             <td className="nx-cell">
-              <p>
+              <p className="nx-p">
                 Meant to be used to handle user changes to the text input value. The first argument is an optional
                 validator function that receives the new input value (trimmed) as a string and returns zero or more
                 validation error messages. The next argument is the new (raw, untrimmed) value of the text box after
@@ -179,7 +181,7 @@ const NxTextInputPage = () =>
                 <code className="nx-code">value</code>, and with <code className="nx-code">validationErrors</code> as
                 computed by the validator function.
               </p>
-              <p>
+              <p className="nx-p">
                 This function is curried, so that it can be partially applied over the
                 <code className="nx-code">validator</code>.
               </p>

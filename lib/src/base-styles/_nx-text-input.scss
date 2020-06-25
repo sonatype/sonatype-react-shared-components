@@ -12,11 +12,7 @@
 
   width: $nx-form-element-width-normal;
 
-  &:focus {
-    outline: 0;
-  }
-
-  &.pristine, &.pristine.valid {
+  &, &.pristine, &.pristine.valid {
     &:focus-within {
       .nx-text-input__box {
         border-color: #43cbf5;
@@ -91,6 +87,7 @@
   flex-grow: 1;
   font-size: $nx-font-size;
   line-height: $nx-line-height;
+  padding: 0;
 
   &:focus {
     outline: none;

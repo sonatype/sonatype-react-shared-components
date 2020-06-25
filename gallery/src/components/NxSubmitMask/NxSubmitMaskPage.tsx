@@ -24,12 +24,12 @@ const NxSubmitMaskCode = require('!!raw-loader!./NxSubmitMaskExample').default,
 const NxSubmitMaskPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         NxSubmitMask creates a mask that is meant to cover a form or similar element while submission of that form
         is in progress, in order to indicate to the user that the submission is in-progress, and, typically, when it
         has completed.
       </p>
-      <p>
+      <p className="nx-p">
         Handling the brief display of the "success" part of the mask is left up to the caller, as it is often
         intertwined with other business logic (for example closing a modal) and may be best managed in redux or similar.
         A constant, <code className="nx-code">SUBMIT_MASK_SUCCESS_VISIBLE_TIME_MS</code>, is exported in order to

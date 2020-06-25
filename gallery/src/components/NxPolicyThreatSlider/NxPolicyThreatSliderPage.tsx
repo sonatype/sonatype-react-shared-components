@@ -16,7 +16,7 @@ export default function NxPolicyThreatSliderPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p>A slider for selecting a range of policy threats (e.g. values between 0 and 10)</p>
+        <p className="nx-p">A slider for selecting a range of policy threats (e.g. values between 0 and 10)</p>
         <table className="nx-table nx-table--gallery-props">
           <thead>
             <tr className="nx-table-row">
@@ -51,9 +51,9 @@ export default function NxPolicyThreatSliderPage() {
 
       <GalleryExampleTile title="General Example"
                           codeExamples={NxPolicyThreatSliderCode}
-                          description="This example shows an NxPolicyThreatSlider communicating its selected values
-                              to the calling code.">
-        <NxPolicyThreatSliderExample/>
+                          liveExample={NxPolicyThreatSliderExample}>
+        This example shows an NxPolicyThreatSlider communicating its selected values
+        to the calling code.
       </GalleryExampleTile>
     </>
   );

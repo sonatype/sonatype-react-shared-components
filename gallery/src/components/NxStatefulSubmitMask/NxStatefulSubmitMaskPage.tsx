@@ -20,11 +20,11 @@ const NxStatefulSubmitMaskCode = require('!!raw-loader!./NxStatefulSubmitMaskExa
 const NxStatefulSubmitMaskPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         This is a wrapper around <code className="nx-code">NxSubmitMask</code> which manages the display and then
         hiding of the success phase of the mask.
       </p>
-      <p>
+      <p className="nx-p">
         The externally visible "success" state, specified by setting the <code className="nx-code">success</code> prop
         to true, encompasses two interally-managed states: the actual, visible success state, and then the automatic
         removal of the mask after the success state has been visible for a brief time.  Since this component manages
@@ -80,7 +80,7 @@ const NxStatefulSubmitMaskPage = () =>
           </tr>
         </tbody>
       </table>
-      <p>
+      <p className="nx-p">
         The examples on this page each start in a non-success state for five seconds before being updated to the
         success state
       </p>

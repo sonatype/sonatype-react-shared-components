@@ -12,12 +12,12 @@ import NxTilesExamples from './NxTilesExamples';
 const NxTilePage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>The base building block of our pages.</p>
-      <p>
+      <p className="nx-p">The base building block of our pages.</p>
+      <p className="nx-p">
         There are three default classes that can be used within an <code className="nx-code">.nx-tile</code>.
         It can also be paired with <code className="nx-code">.nx-alert</code> to create tiles with alert coloring.
       </p>
-      <p>They're all showcased in the table below:</p>
+      <p className="nx-p">They're all showcased in the table below:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
