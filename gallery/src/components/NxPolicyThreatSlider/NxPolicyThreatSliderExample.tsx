@@ -14,7 +14,7 @@ export default () => {
   return (
     <>
       <NxPolicyThreatSlider onChange={setState} value={state} />
-      <p>Selected range: [{state[0]}, {state[1]}]</p>
+      <p className="nx-p">Selected range: [{state[0]}, {state[1]}]</p>
     </>
   );
 };

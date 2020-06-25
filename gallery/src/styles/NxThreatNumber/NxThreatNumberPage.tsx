@@ -18,11 +18,11 @@ const nxThreatNumberTableExampleCode = require('!!raw-loader!./NxThreatNumberTab
 const NxThreatNumberPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         When an IQ Policy Threat Number is displayed adjacent to an <code className="nx-code">NxThreatBar</code>,
         style the number with <code className="nx-code">nx-threat-number</code>
       </p>
-      <p>
+      <p className="nx-p">
         Note that if a threat bar is used inside <code className="nx-code">nx-cell</code> the {''}
         <code className="nx-code">nx-cell--threat-bar</code> modifier must be applied to the table cell. If that cell
         might have multi-line content, that content would need to be wrapped in a custom class to restore the padding

@@ -24,8 +24,8 @@ const disabledSourceCode = require('!!raw-loader!./NxStatefulTextInputDisabledEx
 const NxStatefulTextInputPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Standard text input with pristine state tracking and pluggable validation handling</p>
-      <p>Props:</p>
+      <p className="nx-p">Standard text input with pristine state tracking and pluggable validation handling</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">

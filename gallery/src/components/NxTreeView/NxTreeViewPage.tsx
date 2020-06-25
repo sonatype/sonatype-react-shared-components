@@ -24,7 +24,7 @@ const nxTreeViewCode = require('!!raw-loader!./NxTreeViewExample').default,
 const NxTreeViewPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         A set of default styles and basic React for an expanding tree view.
       </p>
 

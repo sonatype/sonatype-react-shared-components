@@ -15,12 +15,12 @@ const sourceCode = require('!!raw-loader!./NxTextInputStylesExample').default;
 const NxTextInputStylesPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         Base styles for Sonatype text inputs.  Only the styles intended for "static" usage are shown
         here. For styles that involve business logic, such as validation, see
         the <a href="#pages/NxTextInput">NxTextInput React Component</a>.
       </p>
-      <p>Classes:</p>
+      <p className="nx-p">Classes:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
