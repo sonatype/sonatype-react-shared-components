@@ -24,13 +24,13 @@ const StylingRSCPage = () =>
         next to the HTML that it modifies we decrease clutter/noise in our main stylesheet, keep our styles focused
         to what they modify, and also help maintain a clear separation between code, layout, and styling.
       </p>
-      <h4 className="h4">Modifying component styles</h4>
-      <p>
+      <h4 className="nx-h4">Modifying component styles</h4>
+      <p className="nx-p">
         It is not recommended that you directly modify any of the component styles in the RSC as a part of your
         project because your changes are likely to be overwritten the next time you update the RSC in your project.
         Instead you should create either a single file to contain modifications to the RSC styles or keep them within a
         page specific stylesheet if the changes are localised to a page. For example in IQ they have a SCSS file named
-        <code className="nx-code">_nx-overrides.scss</code> in which all global modifications to RSC styles are stored.
+        {' '}<code className="nx-code">_nx-overrides.scss</code> in which all global modifications to RSC styles are stored.
         If you are starting a brand new project you probably won't need to do this but for existing projects where RSC
         styles will be mixing with legacy styles it can be invaluable.
       </p>
@@ -43,7 +43,7 @@ const StylingRSCPage = () =>
         You might have noticed lots of dashes and underscores in our class names. That's because we use BEM naming
         by default. BEM stands for "Block", "Element", and "Modifier".{' '}
         <a href="https://www.toptal.com/css/introduction-to-bem-methodology" target="_blank">Learn more about BEM</a>.
-        We use a slightly modified version of BEM in the RSC; we have added name-spaces and utility classes.
+        We use a slightly modified version of BEM in the RSC; we have added namespaces and utility classes.
       </p>
     </section>
     <section className="nx-tile-subsection">
@@ -53,8 +53,8 @@ const StylingRSCPage = () =>
       <p className="nx-p">
         Because the RSC styles are used by multiple apps we wanted to clearly distinguish between RSC styles and
         custom app styles. To that end we use a namespace prefix in our class names. In RSC that prefix
-        is <code className="nx-code">nx-</code>. In IQ they use <code className="nx-code">iq-</code>
-        as a prefix in order to differentiate between classes in IQ and classes from RSC. When you
+        is <code className="nx-code">nx-</code>. In IQ they use <code className="nx-code">iq-</code> as
+        a prefix in order to differentiate between classes in IQ and classes from RSC. When you
         create custom CSS in your app you should create a simple unique prefix for your app.
       </p>
     </section>
@@ -88,7 +88,7 @@ const StylingRSCPage = () =>
         visual state. These classes are common across all components that might need them, especially in the case of the
         validation utility classes.
       </p>
-      <p>
+      <p className="nx-p">
         If you have questions about how to use RSC's styles in your app, or how to create customs style for your app
         #react-components on Slack is a good place to ask.
       </p>
