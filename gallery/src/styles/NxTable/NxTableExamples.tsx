@@ -8,8 +8,10 @@ import React from 'react';
 
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
+import NxTableClickableExample from './NxTableClickableExample';
+
 const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample.html').default,
-    NxTableClickableCode = require('!!raw-loader!./NxTableClickableExample.html').default,
+    NxTableClickableCode = require('!!raw-loader!./NxTableClickableExample').default,
     NxTableEmptyCode = require('!!raw-loader!./NxTableEmptyExample.html').default,
     NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample.html').default;
 
@@ -22,7 +24,7 @@ const NxTablesExamples = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table with Clickable Rows Example"
-                        htmlExample={NxTableClickableCode}
+                        liveExample={NxTableClickableExample}
                         codeExamples={NxTableClickableCode}>
       A demonstration of a <code className="nx-code">nx-table</code> with rows that receive clickable styling and
       a chevron column.

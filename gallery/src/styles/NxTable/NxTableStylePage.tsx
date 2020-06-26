@@ -106,9 +106,9 @@ const NxTableStylePage = () =>
         </tbody>
       </table>
       <NxInfoAlert>
-        NOTE: these HTML-only examples includes a simple custom SVG chevron. The preferred chevron icon for use in
-        this scenario is the FontAwesome 5 chevron available via React components.
-        See the <code className="nx-code">NxTable</code> React component examples.
+        Note that some of these examples are shown in react as they includes specific icons. When working in
+        React, <code className="nx-code">NxFontAwesomeIcon</code> should be used as shown to get these icons.
+        When not working in react, check the FontAwesome 5 documentation for alternative ways to include the icons.
       </NxInfoAlert>
     </GalleryDescriptionTile>
     <NxTableExamples />
