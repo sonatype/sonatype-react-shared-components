@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxInfoAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxTableExamples from './NxTableExamples';
@@ -104,6 +105,11 @@ const NxTableStylePage = () =>
           </tr>
         </tbody>
       </table>
+      <NxInfoAlert>
+        NOTE: these HTML-only examples includes a simple custom SVG chevron. The preferred chevron icon for use in
+        this scenario is the FontAwesome 5 chevron available via React components.
+        See the <code className="nx-code">NxTable</code> React component examples.
+      </NxInfoAlert>
     </GalleryDescriptionTile>
     <NxTableExamples />
   </>;

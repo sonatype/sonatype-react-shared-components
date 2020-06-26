@@ -6,14 +6,10 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxThreatNumberTableExample from './NxThreatNumberTableExample';
-import NxThreatNumberListExample from './NxThreatNumberListExample';
-
-const nxThreatNumberTableExampleCode = require('!!raw-loader!./NxThreatNumberTableExample').default,
-    nxThreatNumberListExampleCode = require('!!raw-loader!./NxThreatNumberListExample').default;
+const nxThreatNumberTableExampleCode = require('!!raw-loader!./NxThreatNumberTableExample.html').default,
+    nxThreatNumberListExampleCode = require('!!raw-loader!./NxThreatNumberListExample.html').default;
 
 const NxThreatNumberPage = () =>
   <>
@@ -29,14 +25,20 @@ const NxThreatNumberPage = () =>
         removed by <code className="nx-code">nx-cell--threat-bar</code>.
       </p>
     </GalleryDescriptionTile>
-    <GalleryTile title="List Example">
-      <NxThreatNumberListExample />
-      <CodeExample content={nxThreatNumberListExampleCode} />
-    </GalleryTile>
-    <GalleryTile title="Table Example">
-      <NxThreatNumberTableExample />
-      <CodeExample content={nxThreatNumberTableExampleCode} />
-    </GalleryTile>
+
+    <GalleryExampleTile title="List Example"
+                        htmlExample={nxThreatNumberListExampleCode}
+                        codeExamples={nxThreatNumberListExampleCode}>
+      An example of <code className="nx-code">nx-threat-number</code> used within
+      a <code className="nx-code">nx-list</code> adjacent to a <code className="nx-code">nx-threat-bar</code>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Table Example"
+                        htmlExample={nxThreatNumberTableExampleCode}
+                        codeExamples={nxThreatNumberTableExampleCode}>
+      An example of <code className="nx-code">nx-threat-number</code> used within
+      a <code className="nx-code">nx-table</code> adjacent to a <code className="nx-code">nx-threat-bar</code>.
+    </GalleryExampleTile>
   </>;
 
 export default NxThreatNumberPage;

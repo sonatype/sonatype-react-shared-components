@@ -6,9 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
-import RawHtmlExample from '../../RawHtmlExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 const nxAlertInfoCode = require('./NxAlertInfoExample.html').default,
     nxAlertWarningCode = require('./NxAlertWarningExample.html').default,
@@ -20,20 +18,23 @@ const NxAlertPage = () =>
       <p className="nx-p">Standard name spaced alert styles.</p>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Information alert">
-      <RawHtmlExample html={nxAlertInfoCode}/>
-      <CodeExample content={nxAlertInfoCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Information alert"
+                        htmlExample={nxAlertInfoCode}
+                        codeExamples={nxAlertInfoCode}>
+      A <code className="nx-code">nx-alert</code> demonstrating information styles.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Warning alert">
-      <RawHtmlExample html={nxAlertWarningCode}/>
-      <CodeExample content={nxAlertWarningCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Warning alert"
+                        htmlExample={nxAlertWarningCode}
+                        codeExamples={nxAlertWarningCode}>
+      A <code className="nx-code">nx-alert</code> demonstrating warning styles.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Error alert">
-      <RawHtmlExample html={nxAlertErrorCode}/>
-      <CodeExample content={nxAlertErrorCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Error alert"
+                        htmlExample={nxAlertErrorCode}
+                        codeExamples={nxAlertErrorCode}>
+      A <code className="nx-code">nx-alert</code> demonstrating error styles.
+    </GalleryExampleTile>
   </>;
 
 export default NxAlertPage;
