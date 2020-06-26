@@ -75,13 +75,13 @@ const NxAlertPage = () =>
     <GalleryExampleTile title="Info Alert Example"
                         liveExample={NxInfoAlertExample}
                         codeExamples={nxInfoAlertExampleCode}>
-      An example of an alert demonstrating error styling.
+      An example of an alert demonstrating information styling.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Warning Alert Example"
                         liveExample={NxWarningAlertExample}
                         codeExamples={nxWarningAlertExampleCode}>
-      An example of an alert demonstrating error styling.
+      An example of an alert demonstrating warning styling.
     </GalleryExampleTile>
   </>;
 
