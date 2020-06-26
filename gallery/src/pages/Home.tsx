@@ -21,16 +21,6 @@ const Home = () =>
       The sidebar at left can be used to navigate to the various examples, which are organized into groups as follows:
     </p>
     <dl className="nx-list nx-list--definition-list">
-      <dt className="nx-list__item nx-list__item--label">Styles - HTML Elements</dt>
-      <dd className="nx-list__item">
-        Demonstrations of raw CSS classes that are available to consumers of RSC. Some of these classes are also
-        available as React components, but are documented here as well for lower-level/non-React use.
-      </dd>
-      <dt className="nx-list__item nx-list__item--label">Styles - Mixins</dt>
-      <dd className="nx-list__item">Documentation of SCSS mixins available to consumers of RSC.</dd>
-      {/* TODO Layout Examples? */}
-      <dt className="nx-list__item nx-list__item--label">Guidelines</dt>
-      <dd className="nx-list__item">Miscellaneous advice for RSC consumers</dd>
       <dt className="nx-list__item nx-list__item--label">React Components</dt>
       <dd className="nx-list__item">
         Documentation of all React components available to consumers of RSC, including demonstrations, example
@@ -40,6 +30,23 @@ const Home = () =>
         should be taken as example only. Depending on the architectural needs of the consuming application, there
         are many different ways that state management and other supporting concerns could be handled.
       </dd>
+      <dt className="nx-list__item nx-list__item--label">Guidelines</dt>
+      <dd className="nx-list__item">Miscellaneous advice for RSC consumers</dd>
+      <dt className="nx-list__item nx-list__item--label">Styles - HTML Elements</dt>
+      <dd className="nx-list__item">
+        Demonstrations of raw CSS classes that are available to consumers of RSC. Some of these classes are also
+        available as React components, but are documented here as well for lower-level/non-React use.
+      </dd>
+      <dt className="nx-list__item nx-list__item--label">Styles - Mixins &amp; Helpers</dt>
+      <dd className="nx-list__item">
+        Documentation of SCSS mixins and CSS helper classes available to consumers of RSC.
+      </dd>
+      <dt className="nx-list__item nx-list__item--label">Layout Examples</dt>
+      <dd className="nx-list__item">
+        Explanations of broader layout concepts that includes groups of components and/or styles working together.
+      </dd>
+      <dt className="nx-list__item nx-list__item--label">JavaScript &amp; TypeScript Utilities</dt>
+      <dd className="nx-list__item">Utility function and datatypes available to users of RSC.</dd>
     </dl>
     <section className="nx-tile-subsection">
       <header className="nx-tile-subsection__header">
