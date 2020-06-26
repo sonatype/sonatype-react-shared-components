@@ -6,12 +6,11 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxBackButtonSimpleExample from './NxBackButtonSimpleExample';
 import NxBackButtonTitleExample from './NxBackButtonTitleExample';
 import NxBackButtonTextExample from './NxBackButtonTextExample';
-import CodeExample from '../../CodeExample';
 
 const simpleSourceCode = require('!!raw-loader!./NxBackButtonSimpleExample').default;
 const titleSourceCode = require('!!raw-loader!./NxBackButtonTitleExample').default;
@@ -54,18 +53,23 @@ const NxBackButtonPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Back button with no title or text specified">
-      <NxBackButtonSimpleExample />
-      <CodeExample content={simpleSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Back button with targetPageTitle specified">
-      <NxBackButtonTitleExample />
-      <CodeExample content={titleSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Back button with custom text specified">
-      <NxBackButtonTextExample />
-      <CodeExample content={textSourceCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Back button with no title or text specified"
+                        liveExample={NxBackButtonSimpleExample}
+                        codeExamples={simpleSourceCode}>
+      Basic <code className="nx-code">NxBackButton</code> example.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Back button with targetPageTitle specified"
+                        liveExample={NxBackButtonTitleExample}
+                        codeExamples={titleSourceCode}>
+      A demonstration of using the <code className="nx-code">targetPageTitle</code> to generate the text content.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Back button with custom text specified"
+                        liveExample={NxBackButtonTextExample}
+                        codeExamples={textSourceCode}>
+      A demonstration of using completely custom text for the <code className="nx-code">NxBackButton</code>.
+    </GalleryExampleTile>
   </>;
 
 export default NxBackButtonPage;

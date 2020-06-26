@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTreeViewMultiSelectExample from './NxTreeViewMultiSelectExample';
 import NxTreeViewMultiSelectDisabledExample from './NxTreeViewMultiSelectDisabledExample';
@@ -196,15 +195,18 @@ const NxTreeViewMultiSelectPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="NxTreeViewMultiSelect Example">
-      <NxTreeViewMultiSelectExample />
-      <CodeExample content={nxTreeViewMultiSelectExampleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxTreeViewMultiSelect Example"
+                        liveExample={NxTreeViewMultiSelectExample}
+                        codeExamples={nxTreeViewMultiSelectExampleCode}>
+      Basic example of a <code className="nx-code">NxTreeViewMultiSelect</code>.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NxTreeViewMultiSelect Disabled Example With Tooltip">
-      <NxTreeViewMultiSelectDisabledExample />
-      <CodeExample content={nxTreeViewMultiSelectDisabledExampleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxTreeViewMultiSelect Disabled Example With Tooltip"
+                        liveExample={NxTreeViewMultiSelectDisabledExample}
+                        codeExamples={nxTreeViewMultiSelectDisabledExampleCode}>
+      An example of a <code className="nx-code">NxTreeViewMultiSelect</code> which is disabled and which displays
+      a tooltip to explain why.
+    </GalleryExampleTile>
   </>;
 
 export default NxTreeViewMultiSelectPage;

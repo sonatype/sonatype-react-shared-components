@@ -6,12 +6,11 @@
  */
 import React from 'react';
 
-import {GalleryDescriptionTile, GalleryExampleTile, GalleryTile} from '../../gallery-components/GalleryTiles';
+import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxCheckboxExample from './NxCheckboxExample';
 import NxCheckboxInlineExample from './NxCheckboxInlineExample';
 import NxCheckboxNowrapExample from './NxCheckboxNowrapExample';
-import CodeExample from '../../CodeExample';
 
 const exampleCode = require('!!raw-loader!./NxCheckboxExample').default;
 const inlineExampleCode = require('!!raw-loader!./NxCheckboxInlineExample').default;
@@ -85,15 +84,18 @@ const NxCheckboxPage = () =>
       at all but is adjacent to other content, demonstrating its lack of inherent margin.
     </GalleryExampleTile>
 
-    <GalleryTile title="Inline Checkbox">
-      <NxCheckboxInlineExample />
-      <CodeExample content={inlineExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Inline Checkbox"
+                        liveExample={NxCheckboxInlineExample}
+                        codeExamples={inlineExampleCode}>
+      This examples shows a series of checkboxes laid out inline amongst other inline text.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Checkbox label should not wrap">
-      <NxCheckboxNowrapExample />
-      <CodeExample content={nowrapExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Checkbox label should not wrap"
+                        liveExample={NxCheckboxNowrapExample}
+                        codeExamples={nowrapExampleCode}>
+      This example includes a container around the checkboxes. This container is deliberately narrow and has a
+      red border. This makes it clear that the labels on checkboxes do not wrap.
+    </GalleryExampleTile>
   </>;
 
 export default NxCheckboxPage;

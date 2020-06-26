@@ -6,9 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxStatefulSubmitMaskExample from './NxStatefulSubmitMaskExample';
 import NxStatefulSubmitMaskCustomMessageExample from './NxStatefulSubmitMaskCustomMessageExample';
 import NxStatefulSubmitMaskFullscreenExample from './NxStatefulSubmitMaskFullscreenExample';
@@ -86,18 +84,27 @@ const NxStatefulSubmitMaskPage = () =>
       </p>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Simple Example">
-      <NxStatefulSubmitMaskExample />
-      <CodeExample content={NxStatefulSubmitMaskCode}/>
-    </GalleryTile>
-    <GalleryTile title="Custom Message Example">
-      <NxStatefulSubmitMaskCustomMessageExample />
-      <CodeExample content={NxStatefulSubmitMaskCustomMessageCode}/>
-    </GalleryTile>
-    <GalleryTile title="Fullscreen Example">
-      <NxStatefulSubmitMaskFullscreenExample />
-      <CodeExample content={NxStatefulSubmitMaskFullscreenCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Simple Example"
+                        liveExample={NxStatefulSubmitMaskExample}
+                        codeExamples={NxStatefulSubmitMaskCode}>
+      An example of a simple <code className="nx-code">NxStatefulSubmitMask</code>. Click the button below to begin
+      the example.  Once the button is clicked, the example is set up to stay in the non-success state for five
+      seconds, demonstrating the delay in the completion of some asynchronous processing. Then, after five seconds,
+      the mask reaches the Sucess state which it automatically displays for a brief period of time.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Custom Message Example"
+                        liveExample={NxStatefulSubmitMaskCustomMessageExample}
+                        codeExamples={NxStatefulSubmitMaskCustomMessageCode}>
+      An example with a similar setup to the one above. This one however includes custom message for both the
+      non-success and success phases.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Fullscreen Example"
+                        liveExample={NxStatefulSubmitMaskFullscreenExample}
+                        codeExamples={NxStatefulSubmitMaskFullscreenCode}>
+      This example is again similar in setup to the first one, but is displayed fullscreen.
+    </GalleryExampleTile>
   </>;
 
 export default NxStatefulSubmitMaskPage;

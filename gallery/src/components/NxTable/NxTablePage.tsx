@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import {GalleryDescriptionTile, GalleryTile} from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import {
   NxTable,
@@ -180,26 +179,37 @@ export default function NxTablePage() {
           </NxTableBody>
         </NxTable>
       </GalleryDescriptionTile>
-      <GalleryTile title="Simple Example">
-        <NxTableSimpleExample/>
-        <CodeExample content={tableSimpleExampleCode}/>
-      </GalleryTile>
-      <GalleryTile title="Clickable Row Example">
-        <NxTableClickableExample />
-        <CodeExample content={tableClickableExample} />
-      </GalleryTile>
-      <GalleryTile title="Sortable Columns Example">
-        <NxTableSortableExample />
-        <CodeExample content={tableSortableExample} />
-      </GalleryTile>
-      <GalleryTile title="Loading Example">
-        <NxTableLoadingExample />
-        <CodeExample content={tableLoadingExample} />
-      </GalleryTile>
-      <GalleryTile title="Error Example">
-        <NxTableErrorExample />
-        <CodeExample content={tableErrorExample} />
-      </GalleryTile>
+
+      <GalleryExampleTile title="Simple Example"
+                        liveExample={NxTableSimpleExample}
+                        codeExamples={tableSimpleExampleCode}>
+        A basic example of <code className="nx-code">NxTable</code>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Clickable Row Example"
+                        liveExample={NxTableClickableExample}
+                        codeExamples={tableClickableExample}>
+        An example where the rows are styled to indicate that they are clickable.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Sortable Columns Example"
+                        liveExample={NxTableSortableExample}
+                        codeExamples={tableSortableExample}>
+        An example with a sortable column.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Loading Example"
+                        liveExample={NxTableLoadingExample}
+                        codeExamples={tableLoadingExample}>
+        An example of how <code className="nx-code">NxTable</code> should be used while its data is loading.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Error Example"
+                        liveExample={NxTableErrorExample}
+                        codeExamples={tableErrorExample}>
+        An example of how <code className="nx-code">NxTable</code> should be used to indicate that there was an error
+        loading its data.
+      </GalleryExampleTile>
     </>
   );
 }

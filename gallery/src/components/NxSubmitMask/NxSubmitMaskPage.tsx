@@ -6,9 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxSubmitMaskExample from './NxSubmitMaskExample';
 import NxSubmitMaskCustomMessageExample from './NxSubmitMaskCustomMessageExample';
 import NxSubmitMaskSuccessExample from './NxSubmitMaskSuccessExample';
@@ -88,26 +86,38 @@ const NxSubmitMaskPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Simple Example">
-      <NxSubmitMaskExample />
-      <CodeExample content={NxSubmitMaskCode}/>
-    </GalleryTile>
-    <GalleryTile title="Custom Message Example">
-      <NxSubmitMaskCustomMessageExample />
-      <CodeExample content={NxSubmitMaskCustomMessageCode}/>
-    </GalleryTile>
-    <GalleryTile title="Success Example">
-      <NxSubmitMaskSuccessExample />
-      <CodeExample content={NxSubmitMaskSuccessCode}/>
-    </GalleryTile>
-    <GalleryTile title="Custom Success Message Example">
-      <NxSubmitMaskCustomSuccessMessageExample />
-      <CodeExample content={NxSubmitMaskCustomSuccessMessageCode}/>
-    </GalleryTile>
-    <GalleryTile title="Fullscreen Example">
-      <NxSubmitMaskFullscreenExample />
-      <CodeExample content={NxSubmitMaskFullscreenCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Simple Example"
+                        liveExample={NxSubmitMaskExample}
+                        codeExamples={NxSubmitMaskCode}>
+      A simple <code className="nx-code">NxSubmitMask</code> in the non-success phase.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Custom Message Example"
+                        liveExample={NxSubmitMaskCustomMessageExample}
+                        codeExamples={NxSubmitMaskCustomMessageCode}>
+      A <code className="nx-code">NxSubmitMask</code> in the non-success phase with a custom message.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Success Example"
+                        liveExample={NxSubmitMaskSuccessExample}
+                        codeExamples={NxSubmitMaskSuccessCode}>
+      A <code className="nx-code">NxSubmitMask</code> in the success phase.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Custom Success Message Example"
+                        liveExample={NxSubmitMaskCustomSuccessMessageExample}
+                        codeExamples={NxSubmitMaskCustomSuccessMessageCode}>
+      A <code className="nx-code">NxSubmitMask</code> in the success phase with a custom success message. Note that the
+      success message is a separate <code className="nx-code">prop</code> from the non-success message.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Fullscreen Example"
+                        liveExample={NxSubmitMaskFullscreenExample}
+                        codeExamples={NxSubmitMaskFullscreenCode}>
+      An example that displays a fullscreen submit mask. This example activates upon clicking the button below.
+      Once the mask is visible, press ESC to dismiss it. This ESC-key behavior is just part of this example so that you
+      can get out of it, it is not built-in mask behavior. It only works as long as the button has focus.
+    </GalleryExampleTile>
   </>;
 
 export default NxSubmitMaskPage;
