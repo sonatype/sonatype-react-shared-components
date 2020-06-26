@@ -39,8 +39,8 @@ const NxTablesExamples = () =>
     <GalleryExampleTile title="NX Table with Error Message Example"
                         htmlExample={NxTableErrorStateCode}
                         codeExamples={NxTableErrorStateCode}>
-      A demonstration of the expected styling and content and an <code className="nx-code">nx-table</code> whose contents
-      failed to load.
+      A demonstration of the expected styling and content and an <code className="nx-code">nx-table</code> whose
+      contents failed to load.
     </GalleryExampleTile>
   </>;
 

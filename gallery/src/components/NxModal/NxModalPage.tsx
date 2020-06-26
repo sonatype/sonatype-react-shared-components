@@ -133,7 +133,8 @@ export default function NxModalPage() {
       <GalleryExampleTile title="NxModal Example with NxAlert"
                           liveExample={NxModalAlertExample}
                           codeExamples={NxModalAlertSourceCode}>
-        An example of an <code className="nx-code">NxModal</code> containing an <code className="nx-code">NxAlert</code>.
+        An example of an <code className="nx-code">NxModal</code> containing
+        an <code className="nx-code">NxAlert</code>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal with stacked modal example"
