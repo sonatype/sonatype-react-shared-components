@@ -5,40 +5,43 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
 
-import NxTableDefault from './NxTableDefaultExample';
-import NxTableClickable from './NxTableClickableExample';
-import NxTableEmpty from './NxTableEmptyExample';
-import NxTableErrorState from './NxTableErrorStateExample';
+import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample').default,
+import NxTableClickableExample from './NxTableClickableExample';
+
+const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample.html').default,
     NxTableClickableCode = require('!!raw-loader!./NxTableClickableExample').default,
-    NxTableEmptyCode = require('!!raw-loader!./NxTableEmptyExample').default,
-    NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample').default;
+    NxTableEmptyCode = require('!!raw-loader!./NxTableEmptyExample.html').default,
+    NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample.html').default;
 
 const NxTablesExamples = () =>
   <>
-    <GalleryTile title="NX Simple Table Example">
-      <NxTableDefault />
-      <CodeExample content={NxTableSimpleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NX Simple Table Example"
+                        htmlExample={NxTableSimpleCode}
+                        codeExamples={NxTableSimpleCode}>
+      A simple, static demonstration of <code className="nx-code">nx-table</code> styles.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NX Table with Clickable Rows Example">
-      <NxTableClickable />
-      <CodeExample content={NxTableClickableCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NX Table with Clickable Rows Example"
+                        liveExample={NxTableClickableExample}
+                        codeExamples={NxTableClickableCode}>
+      A demonstration of an <code className="nx-code">nx-table</code> with rows that receive clickable styling and
+      a chevron column.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NX Table Empty Example">
-      <NxTableEmpty />
-      <CodeExample content={NxTableEmptyCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NX Table Empty Example"
+                        htmlExample={NxTableEmptyCode}
+                        codeExamples={NxTableEmptyCode}>
+      A demonstration of the expected styling and content of an empty <code className="nx-code">nx-table</code>.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NX Table with Error Message Example">
-      <NxTableErrorState />
-      <CodeExample content={NxTableErrorStateCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NX Table with Error Message Example"
+                        htmlExample={NxTableErrorStateCode}
+                        codeExamples={NxTableErrorStateCode}>
+      A demonstration of the expected styling and content and an <code className="nx-code">nx-table</code> whose
+      contents failed to load.
+    </GalleryExampleTile>
   </>;
 
 export default NxTablesExamples;

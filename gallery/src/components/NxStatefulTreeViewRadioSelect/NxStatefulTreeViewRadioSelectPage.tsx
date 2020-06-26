@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxStatefulTreeViewRadioSelectExample from './NxStatefulTreeViewRadioSelectExample';
 import NxStatefulTreeViewRadioSelectDisabledExample from './NxStatefulTreeViewRadioSelectDisabledExample';
@@ -163,15 +162,16 @@ const NxStatefulTreeViewRadioSelectPage = () =>
     <GalleryExampleTile title="General Example"
                         codeExamples={nxStatefulTreeViewRadioSelectExampleCode}
                         liveExample={NxStatefulTreeViewRadioSelectExample}>
-      This example demonstrates basic usage of NxStatefulTreeViewRadioSelect. Note that
+      This example demonstrates basic usage of <code className="nx-code">NxStatefulTreeViewRadioSelect</code>. Note that
       the component tracks the collapse/expand state and filter text internally, and the calling
       code only needs to track which items are selected.
     </GalleryExampleTile>
 
-    <GalleryTile title="Disabled Example With Tooltip">
-      <NxStatefulTreeViewRadioSelectDisabledExample />
-      <CodeExample content={nxStatefulTreeViewRadioSelectDisabledExampleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Disabled Example With Tooltip"
+                        liveExample={NxStatefulTreeViewRadioSelectDisabledExample}
+                        codeExamples={nxStatefulTreeViewRadioSelectDisabledExampleCode}>
+      This example shows a disabled <code className="nx-code">NxStatefulTreeViewRadioSelect</code> with a tooltip.
+    </GalleryExampleTile>
   </>;
 
 export default NxStatefulTreeViewRadioSelectPage;

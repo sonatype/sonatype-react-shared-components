@@ -8,9 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxCodeExample from './NxCodeExample';
-
-const nxCodeExampleCode = require('!!raw-loader!./NxCodeExample').default;
+const nxCodeExampleCode = require('!!raw-loader!./NxCodeExample.html').default;
 
 const NxCodePage = () => {
   return (
@@ -27,7 +25,7 @@ const NxCodePage = () => {
       </GalleryDescriptionTile>
       <GalleryExampleTile title="Styling code snippets"
                           codeExamples={nxCodeExampleCode}
-                          liveExample={NxCodeExample}>
+                          htmlExample={nxCodeExampleCode}>
         A couple of simple inline examples.
       </GalleryExampleTile>
     </>
