@@ -96,7 +96,7 @@ const NxStatefulSubmitMaskPage = () =>
     <GalleryExampleTile title="Custom Message Example"
                         liveExample={NxStatefulSubmitMaskCustomMessageExample}
                         codeExamples={NxStatefulSubmitMaskCustomMessageCode}>
-      An example with a similar setup to the one above. This one however includes custom message for both the
+      An example with a similar setup to the one above. This one however includes a custom message for both the
       non-success and success phases.
     </GalleryExampleTile>
 
