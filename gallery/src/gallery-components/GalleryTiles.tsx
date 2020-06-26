@@ -26,7 +26,7 @@ type GalleryTileProps = PropsWithRequiredChildren & GalleryBaseProps;
 
 type StringOrCodeExampleProps = string | CodeExampleProps;
 
-type GalleryExampleTileProps = GalleryBaseProps & {
+interface GalleryExampleTileProps extends GalleryBaseProps {
   children: ReactNode;
   liveExample?: JSXElementConstructor<{}>;
   htmlExample?: string;
@@ -62,9 +62,10 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
   function GalleryExampleTile(props: GalleryExampleTileProps) {
     const { id, children, className, title, liveExample: LiveExample, htmlExample, codeExamples } = props,
 
-        liveExampleRender = htmlExample ? <RawHtmlExample html={htmlExample} /> :
-            LiveExample ? <LiveExample /> :
-            null,
+        liveExampleRender =
+          htmlExample ? <RawHtmlExample html={htmlExample} /> :
+          LiveExample ? <LiveExample /> :
+          null,
 
         tileClasses = classnames('gallery-example', className),
         codeExampleElements = ensureArray(codeExamples)

@@ -66,8 +66,8 @@ export default function NxButtonPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Icon only buttons"
-                        liveExample={NxButtonIconOnlyExample}
-                        codeExamples={nxButtonIconOnlyCode}>
+                          liveExample={NxButtonIconOnlyExample}
+                          codeExamples={nxButtonIconOnlyCode}>
         An example of a button containing only an icon.
       </GalleryExampleTile>
     </>

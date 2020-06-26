@@ -125,14 +125,14 @@ export default function NxModalPage() {
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple NxModal Example"
-                        liveExample={NxModalSimpleExample}
-                        codeExamples={NxModalSimpleSourceCode}>
+                          liveExample={NxModalSimpleExample}
+                          codeExamples={NxModalSimpleSourceCode}>
         A basic example of a <code className="nx-code">NxModal</code>. Click the button to open the modal.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with NxAlert"
-                        liveExample={NxModalAlertExample}
-                        codeExamples={NxModalAlertSourceCode}>
+                          liveExample={NxModalAlertExample}
+                          codeExamples={NxModalAlertSourceCode}>
         An example of a <code className="nx-code">NxModal</code> containing an <code className="nx-code">NxAlert</code>.
       </GalleryExampleTile>
 
@@ -150,16 +150,16 @@ export default function NxModalPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with form and error styling"
-                        liveExample={NxModalFormErrorExample}
-                        codeExamples={NxModalFormErrorSourceCode}>
+                          liveExample={NxModalFormErrorExample}
+                          codeExamples={NxModalFormErrorSourceCode}>
         This <code className="nx-code">NxModal</code> also contains a form, but additionally demonstrates the typical
         way that an error upon the submission of said form would be handled: with
         an <code className="nx-code">NxErrorAlert</code> in the footer
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Extra Wide NxModal Example"
-                        liveExample={NxModalExtraWideExample}
-                        codeExamples={NxModalExtraWideSourceCode}>
+                          liveExample={NxModalExtraWideExample}
+                          codeExamples={NxModalExtraWideSourceCode}>
         A demonstration of the extra-wide styles for <code className="nx-code">NxModal</code>.
       </GalleryExampleTile>
     </>

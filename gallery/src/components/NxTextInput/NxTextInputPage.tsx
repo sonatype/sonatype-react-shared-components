@@ -223,8 +223,8 @@ const NxTextInputPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled example"
-                 liveExample={NxTextInputDisabledExample}
-                  codeExamples={disabledSourceCode}>
+                        liveExample={NxTextInputDisabledExample}
+                        codeExamples={disabledSourceCode}>
       Examples of disabled <code className="nx-code">NxTextInput</code>s. Notice that when
       disabled, <code className="nx-code">NxTextInput</code> never shows style variations for validation, hover, etc.
     </GalleryExampleTile>
