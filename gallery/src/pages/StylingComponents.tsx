@@ -14,8 +14,8 @@ const StylingRSCPage = () =>
       then you're going to have to create your own styles.
     </p>
     <section className="nx-tile-subsection">
-      <header>
-        <h3 className="h3 nx-h3--tile-subsection">Page &amp; component specific stylesheets</h3>
+      <header className="nx-tile-subsection__header">
+        <h3 className="nx-h3">Page &amp; component specific stylesheets</h3>
       </header>
       <p className="nx-p">
         Why have page and component specific stylesheets? By grouping our styles together by use and (ideally) locating
@@ -33,8 +33,8 @@ const StylingRSCPage = () =>
       </p>
     </section>
     <section className="nx-tile-subsection">
-      <header>
-        <h3 className="h3 nx-h3--tile-subsection">B.E.M.</h3>
+      <header className="nx-tile-subsection__header">
+        <h3 className="nx-h3">B.E.M.</h3>
       </header>
       <p className="nx-p">
         You might have noticed lots of dashes and underscores in our class names. That's because we use BEM naming
@@ -44,8 +44,8 @@ const StylingRSCPage = () =>
       </p>
     </section>
     <section className="nx-tile-subsection">
-      <header>
-        <h3 className="h3 nx-h3--tile-subsection">Namespaces</h3>
+      <header className="nx-tile-subsection__header">
+        <h3 className="nx-h3">Namespaces</h3>
       </header>
       <p className="nx-p">
         Because the RSC styles are used by multiple apps we wanted to clearly distinguish between RSC styles and
@@ -56,8 +56,8 @@ const StylingRSCPage = () =>
       </p>
     </section>
     <section className="nx-tile-subsection">
-      <header>
-        <h3 className="h3 nx-h3--tile-subsection">Utility classes</h3>
+      <header className="nx-tile-subsection__header">
+        <h3 className="nx-h3">Utility classes</h3>
       </header>
       <p className="nx-p">
         You may notice as you work with the various RSC that some components have CSS classes that don't follow
