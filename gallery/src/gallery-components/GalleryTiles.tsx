@@ -15,6 +15,7 @@ interface PropsWithRequiredChildren {
 }
 
 interface GalleryBaseProps {
+  id?: string;
   title: string;
   className?: string;
 }
@@ -32,11 +33,11 @@ interface GalleryExampleTileProps extends GalleryBaseProps {
 
 // Component for a simple nx-tile with a specified title and contents
 export const GalleryTile: FunctionComponent<GalleryTileProps> =
-  function GalleryTile({ title, className, children }) {
+  function GalleryTile({ id, title, className, children }) {
     const galleryTileClasses = classnames('nx-tile-content', className);
 
     return (
-      <div className="nx-tile">
+      <div id={id} className="nx-tile">
         <div className="nx-tile-header">
           <div className="nx-tile-header__title">
             <h2 className="nx-h2">{title}</h2>
@@ -57,7 +58,7 @@ export const GalleryDescriptionTile: FunctionComponent<PropsWithRequiredChildren
 
 export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
   function GalleryExampleTile(props: GalleryExampleTileProps) {
-    const { children, className, title, liveExample: LiveExample, codeExamples } = props,
+    const { id, children, className, title, liveExample: LiveExample, codeExamples } = props,
         tileClasses = classnames('gallery-example', className),
         codeExampleElements = ensureArray(codeExamples)
             .map((example, idx) => {
@@ -66,7 +67,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
             });
 
     return (
-      <GalleryTile title={title} className={tileClasses}>
+      <GalleryTile id={id} title={title} className={tileClasses}>
         <p className="nx-p">{children}</p>
 
         { LiveExample &&
