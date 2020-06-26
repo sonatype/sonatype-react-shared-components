@@ -17,7 +17,7 @@ const NxGridExamples = () =>
     <GalleryExampleTile title="NX Grid Example"
                         htmlExample={NxGridCode}
                         codeExamples={[NxGridCode, { content: NxGridMixinUsageCode, language: 'scss' }]}>
-      An example of a <code className="nx-code">nx-grid</code> demonstrating a variety of column layouts in different
+      An example of an <code className="nx-code">nx-grid</code> demonstrating a variety of column layouts in different
       rows. Particularly note the custom <code className="nx-code">nx-grid-col--200px</code> class defined for this
       example using a SCSS mixin.
     </GalleryExampleTile>

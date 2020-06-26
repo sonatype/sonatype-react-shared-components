@@ -37,7 +37,7 @@ export default function NxButtonPage() {
       <GalleryExampleTile title="Secondary (Default)"
                           liveExample={NxButtonDefaultExample}
                           codeExamples={NxButtonDefaultCode}>
-        An example of a <code className="nx-code">NxButton</code> using the default styling, also known as the
+        An example of an <code className="nx-code">NxButton</code> using the default styling, also known as the
         "secondary" styling, along with some other inline content and some disabled buttons.
       </GalleryExampleTile>
 

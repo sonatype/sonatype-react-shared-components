@@ -204,7 +204,7 @@ const NxTreeViewMultiSelectPage = () =>
     <GalleryExampleTile title="NxTreeViewMultiSelect Disabled Example With Tooltip"
                         liveExample={NxTreeViewMultiSelectDisabledExample}
                         codeExamples={nxTreeViewMultiSelectDisabledExampleCode}>
-      An example of a <code className="nx-code">NxTreeViewMultiSelect</code> which is disabled and which displays
+      An example of an <code className="nx-code">NxTreeViewMultiSelect</code> which is disabled and which displays
       a tooltip to explain why.
     </GalleryExampleTile>
   </>;

@@ -95,19 +95,19 @@ const NxSubmitMaskPage = () =>
     <GalleryExampleTile title="Custom Message Example"
                         liveExample={NxSubmitMaskCustomMessageExample}
                         codeExamples={NxSubmitMaskCustomMessageCode}>
-      A <code className="nx-code">NxSubmitMask</code> in the non-success phase with a custom message.
+      An <code className="nx-code">NxSubmitMask</code> in the non-success phase with a custom message.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Success Example"
                         liveExample={NxSubmitMaskSuccessExample}
                         codeExamples={NxSubmitMaskSuccessCode}>
-      A <code className="nx-code">NxSubmitMask</code> in the success phase.
+      An <code className="nx-code">NxSubmitMask</code> in the success phase.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Custom Success Message Example"
                         liveExample={NxSubmitMaskCustomSuccessMessageExample}
                         codeExamples={NxSubmitMaskCustomSuccessMessageCode}>
-      A <code className="nx-code">NxSubmitMask</code> in the success phase with a custom success message. Note that the
+      An <code className="nx-code">NxSubmitMask</code> in the success phase with a custom success message. Note that the
       success message is a separate <code className="nx-code">prop</code> from the non-success message.
     </GalleryExampleTile>
 

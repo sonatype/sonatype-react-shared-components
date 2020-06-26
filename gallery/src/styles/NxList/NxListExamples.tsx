@@ -32,33 +32,33 @@ const NxListsExamples = () =>
     <GalleryExampleTile title="NX Clickable List Example"
                         liveExample={NxListClickableExample}
                         codeExamples={NxListClickableCode}>
-      A <code className="nx-code">nx-list</code> demonstrating clickable, selection, and disabled styles.
+      An <code className="nx-code">nx-list</code> demonstrating clickable, selection, and disabled styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Bulleted List Example"
                         htmlExample={NxListBulletedCode}
                         codeExamples={NxListBulletedCode}>
-      A <code className="nx-code">nx-list</code> demonstrating bulleted list styles more typical of
+      An <code className="nx-code">nx-list</code> demonstrating bulleted list styles more typical of
       default <code className="nx-code">&lt;ul&gt;</code> styling. These can be nested.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Definition List Example"
                         htmlExample={NxListDefinitionListCode}
                         codeExamples={NxListDefinitionListCode}>
-      A <code className="nx-code">nx-list</code> style for definition lists
+      An <code className="nx-code">nx-list</code> style for definition lists.
       {' '}(<code className="nx-code">&lt;dl&gt;</code>s)
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List with Actions Example"
                         htmlExample={NxListWithActionsCode}
                         codeExamples={NxListWithActionsCode}>
-      A <code className="nx-code">nx-list</code> with icon buttons for initiation actions.
+      An <code className="nx-code">nx-list</code> with icon buttons for initiation actions.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Multi-line Example"
                         htmlExample={NxListMultiLineCode}
                         codeExamples={NxListMultiLineCode}>
-      A <code className="nx-code">nx-list</code> with subtext in each element. The subtext may optionally be multiple
+      An <code className="nx-code">nx-list</code> with subtext in each element. The subtext may optionally be multiple
       lines in which case it wraps.
     </GalleryExampleTile>
 
@@ -71,7 +71,7 @@ const NxListsExamples = () =>
     <GalleryExampleTile title="NX List with Error Message Example"
                         htmlExample={NxListErrorStateCode}
                         codeExamples={NxListErrorStateCode}>
-      A demonstration of the expected styling and content for a <code className="nx-code">nx-list</code> whose content
+      A demonstration of the expected styling and content for an <code className="nx-code">nx-list</code> whose content
       failed to load.
     </GalleryExampleTile>
   </>;

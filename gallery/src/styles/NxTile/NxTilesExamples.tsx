@@ -18,20 +18,20 @@ const NxTilesExamples = () =>
     <GalleryExampleTile title="NX Simple Tile Example"
                         htmlExample={NxSimpleTileCode}
                         codeExamples={NxSimpleTileCode}>
-      A simple example of a <code className="nx-code">nx-tile</code> including a header and a footer.
+      A simple example of an <code className="nx-code">nx-tile</code> including a header and a footer.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Tile with Actions Example"
                         htmlExample={NxTileWithActionsCode}
                         codeExamples={NxTileWithActionsCode}>
-      An example of a <code className="nx-code">nx-tile</code> with action buttons and a subtitle in the header.
+      An example of an <code className="nx-code">nx-tile</code> with action buttons and a subtitle in the header.
       Note that the title text does not wrap but truncates when it reaches the action buttons.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Tile with Subtitle Example"
                         htmlExample={NxTileWithSubtitleCode}
                         codeExamples={NxTileWithSubtitleCode}>
-      An example of a <code className="nx-code">nx-tile</code> with a long subtitle that wraps.
+      An example of an <code className="nx-code">nx-tile</code> with a long subtitle that wraps.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Tile with Horizontal Rule Example"
@@ -44,7 +44,7 @@ const NxTilesExamples = () =>
     <GalleryExampleTile title="NX Tile with a Subsection Header Example"
                         htmlExample={NxTileSubsectionCode}
                         codeExamples={NxTileSubsectionCode}>
-      An example of a <code className="nx-code">nx-tile</code> containing mulitple subsections. Note the horizontal
+      An example of an <code className="nx-code">nx-tile</code> containing mulitple subsections. Note the horizontal
       rule which appears before the first subsection, but not between subsections.
     </GalleryExampleTile>
   </>;

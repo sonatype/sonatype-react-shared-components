@@ -127,13 +127,13 @@ export default function NxModalPage() {
       <GalleryExampleTile title="Simple NxModal Example"
                           liveExample={NxModalSimpleExample}
                           codeExamples={NxModalSimpleSourceCode}>
-        A basic example of a <code className="nx-code">NxModal</code>. Click the button to open the modal.
+        A basic example of an <code className="nx-code">NxModal</code>. Click the button to open the modal.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with NxAlert"
                           liveExample={NxModalAlertExample}
                           codeExamples={NxModalAlertSourceCode}>
-        An example of a <code className="nx-code">NxModal</code> containing an <code className="nx-code">NxAlert</code>.
+        An example of an <code className="nx-code">NxModal</code> containing an <code className="nx-code">NxAlert</code>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal with stacked modal example"

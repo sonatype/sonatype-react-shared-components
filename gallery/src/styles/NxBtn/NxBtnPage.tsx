@@ -37,21 +37,21 @@ const NxBtnPage = () =>
     <GalleryExampleTile title="Primary"
                         htmlExample={nxBtnPrimaryCode}
                         codeExamples={nxBtnPrimaryCode}>
-      A demonstration of a <code className="nx-code">nx-btn</code> using "primary" styles, along with disabled
+      A demonstration of an <code className="nx-code">nx-btn</code> using "primary" styles, along with disabled
       primary buttons. Note that the standard disabled styles override the primary styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Tertiary"
                         htmlExample={nxBtnTertiaryCode}
                         codeExamples={nxBtnTertiaryCode}>
-      A demonstration of a <code className="nx-code">nx-btn</code> using "tertiary" styles, along with disabled
+      A demonstration of an <code className="nx-code">nx-btn</code> using "tertiary" styles, along with disabled
       tertiary buttons. Note that the standard disabled styles override the tertiary styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Error"
                         htmlExample={nxBtnErrorCode}
                         codeExamples={nxBtnErrorCode}>
-      A demonstration of a <code className="nx-code">nx-btn</code> using "error" styles, along with a disabled
+      A demonstration of an <code className="nx-code">nx-btn</code> using "error" styles, along with a disabled
       error buttons. Note that the standard disabled styles override the error styles.
     </GalleryExampleTile>
 

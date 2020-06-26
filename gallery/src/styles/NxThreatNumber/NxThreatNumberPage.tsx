@@ -30,14 +30,14 @@ const NxThreatNumberPage = () =>
                         htmlExample={nxThreatNumberListExampleCode}
                         codeExamples={nxThreatNumberListExampleCode}>
       An example of <code className="nx-code">nx-threat-number</code> used within
-      a <code className="nx-code">nx-list</code> adjacent to a <code className="nx-code">nx-threat-bar</code>.
+      an <code className="nx-code">nx-list</code> adjacent to an <code className="nx-code">nx-threat-bar</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Table Example"
                         htmlExample={nxThreatNumberTableExampleCode}
                         codeExamples={nxThreatNumberTableExampleCode}>
       An example of <code className="nx-code">nx-threat-number</code> used within
-      a <code className="nx-code">nx-table</code> adjacent to a <code className="nx-code">nx-threat-bar</code>.
+      an <code className="nx-code">nx-table</code> adjacent to an <code className="nx-code">nx-threat-bar</code>.
     </GalleryExampleTile>
   </>;
 

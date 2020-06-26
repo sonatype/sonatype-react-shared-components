@@ -94,7 +94,7 @@ const NxTreeViewPage = () =>
     <GalleryExampleTile title="NxTreeView Basic Example"
                         liveExample={NxTreeViewExample}
                         codeExamples={nxTreeViewCode}>
-      A basic example of a <code className="nx-code">NxTreeView</code> with the corresponding logic necessary to
+      A basic example of an <code className="nx-code">NxTreeView</code> with the corresponding logic necessary to
       track its collapse/expand state.
     </GalleryExampleTile>
 
@@ -117,7 +117,7 @@ const NxTreeViewPage = () =>
     <GalleryExampleTile title="NxTreeView Empty Example"
                         liveExample={NxTreeViewEmpty}
                         codeExamples={nxTreeViewEmptyCode}>
-      Example of a <code className="nx-code">NxTreeView</code> that cannot be opened because it has no children.
+      Example of an <code className="nx-code">NxTreeView</code> that cannot be opened because it has no children.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeView Disabled Example"

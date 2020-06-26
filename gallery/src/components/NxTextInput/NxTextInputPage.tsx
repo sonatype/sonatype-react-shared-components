@@ -193,13 +193,13 @@ const NxTextInputPage = () =>
     <GalleryExampleTile title="Simple Example"
                         liveExample={NxTextInputSimpleExample}
                         codeExamples={simpleSourceCode}>
-      A basic example of a <code className="nx-code">NxTextInput</code>.
+      A basic example of an <code className="nx-code">NxTextInput</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with non-emptiness validation"
                         liveExample={NxTextInputValidationExample}
                         codeExamples={validationSourceCode}>
-      An example of a <code className="nx-code">NxTextInput</code> that validates that its contents are non-empty.
+      An example of an <code className="nx-code">NxTextInput</code> that validates that its contents are non-empty.
       Notice that once the user has entered some content, the input from then on displays either the valid or invalid
       styles, depending on whether it has any contents.
     </GalleryExampleTile>
@@ -207,19 +207,19 @@ const NxTextInputPage = () =>
     <GalleryExampleTile title="Password input example"
                         liveExample={NxTextInputPasswordExample}
                         codeExamples={passwordSourceCode}>
-      An example of a <code className="nx-code">NxTextInput</code> for password entry.
+      An example of an <code className="nx-code">NxTextInput</code> for password entry.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="TextArea input example"
                         liveExample={NxTextInputTextAreaExample}
                         codeExamples={textAreaSourceCode}>
-      An example of a <code className="nx-code">NxTextInput</code> set up to be a multi-line text area.
+      An example of an <code className="nx-code">NxTextInput</code> set up to be a multi-line text area.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="TextArea input example with validation"
                         liveExample={NxTextInputTextAreaValidationExample}
                         codeExamples={textAreaValidationSourceCode}>
-      An example of a <code className="nx-code">NxTextInput</code> set up to be a multi-line text area with validation.
+      An example of an <code className="nx-code">NxTextInput</code> set up to be a multi-line text area with validation.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled example"

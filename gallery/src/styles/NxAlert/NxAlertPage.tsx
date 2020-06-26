@@ -33,25 +33,25 @@ const NxAlertPage = () =>
     <GalleryExampleTile title="Information alert"
                         liveExample={NxAlertInfoExample}
                         codeExamples={nxAlertInfoCode}>
-      A <code className="nx-code">nx-alert</code> demonstrating information styles.
+      An <code className="nx-code">nx-alert</code> demonstrating information styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Success alert"
                         liveExample={NxAlertSuccessExample}
                         codeExamples={nxAlertSuccessCode}>
-      A <code className="nx-code">nx-alert</code> demonstrating success styles.
+      An <code className="nx-code">nx-alert</code> demonstrating success styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Warning alert"
                         liveExample={NxAlertWarningExample}
                         codeExamples={nxAlertWarningCode}>
-      A <code className="nx-code">nx-alert</code> demonstrating warning styles.
+      An <code className="nx-code">nx-alert</code> demonstrating warning styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Error alert"
                         liveExample={NxAlertErrorExample}
                         codeExamples={nxAlertErrorCode}>
-      A <code className="nx-code">nx-alert</code> demonstrating error styles.
+      An <code className="nx-code">nx-alert</code> demonstrating error styles.
     </GalleryExampleTile>
   </>;
 

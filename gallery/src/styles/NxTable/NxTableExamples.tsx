@@ -26,7 +26,7 @@ const NxTablesExamples = () =>
     <GalleryExampleTile title="NX Table with Clickable Rows Example"
                         liveExample={NxTableClickableExample}
                         codeExamples={NxTableClickableCode}>
-      A demonstration of a <code className="nx-code">nx-table</code> with rows that receive clickable styling and
+      A demonstration of an <code className="nx-code">nx-table</code> with rows that receive clickable styling and
       a chevron column.
     </GalleryExampleTile>
 
@@ -39,7 +39,7 @@ const NxTablesExamples = () =>
     <GalleryExampleTile title="NX Table with Error Message Example"
                         htmlExample={NxTableErrorStateCode}
                         codeExamples={NxTableErrorStateCode}>
-      A demonstration of the expectd styling and content and a <code className="nx-code">nx-table</code> whose contents
+      A demonstration of the expected styling and content and an <code className="nx-code">nx-table</code> whose contents
       failed to load.
     </GalleryExampleTile>
   </>;

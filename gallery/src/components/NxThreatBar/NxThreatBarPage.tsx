@@ -98,26 +98,26 @@ const NxThreatBarPage = () =>
     <GalleryExampleTile title="Threat Bars by Category in .nx-list"
                         liveExample={NxThreatBarByCategoryExampleList}
                         codeExamples={nxThreatBarByCategoryListCode}>
-      A <code className="nx-code">.nx-list</code> including rows displaying threat bars for each category.
+      An <code className="nx-code">.nx-list</code> including rows displaying threat bars for each category.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Bars by Policy Number in .nx-list"
                         liveExample={NxThreatBarByPolicyNumberExampleList}
                         codeExamples={nxThreatBarByPolicyNumberListCode}>
-      A <code className="nx-code">.nx-list</code> including rows displaying threat bars for range of policy threat
+      An <code className="nx-code">.nx-list</code> including rows displaying threat bars for range of policy threat
       numbers.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Bars by Category in .nx-table"
                         liveExample={NxThreatBarByCategoryExampleTable}
                         codeExamples={nxThreatBarByCategoryTableCode}>
-      A <code className="nx-code">.nx-table</code> including rows displaying threat bars for each category.
+      An <code className="nx-code">.nx-table</code> including rows displaying threat bars for each category.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Bars by Policy Number in .nx-table"
                         liveExample={NxThreatBarByPolicyNumberExampleTable}
                         codeExamples={nxThreatBarByPolicyNumberTableCode}>
-      A <code className="nx-code">.nx-table</code> including rows displaying threat bars for range of policy threat
+      An <code className="nx-code">.nx-table</code> including rows displaying threat bars for range of policy threat
       numbers.
     </GalleryExampleTile>
   </>;

@@ -73,28 +73,28 @@ const NxLoadWrapperPage = () =>
     <GalleryExampleTile title="Renders children when not loading or in error"
                         liveExample={NxLoadWrapperChildrenExample}
                         codeExamples={childrenSourceCode}>
-      A <code className="nx-code">NxLoadWrapper</code> in which neither loading nor error are set. As a result, the
+      An <code className="nx-code">NxLoadWrapper</code> in which neither loading nor error are set. As a result, the
       children are rendered.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Loading"
                         liveExample={NxLoadWrapperLoadingExample}
                         codeExamples={loadingSourceCode}>
-      A <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">loading</code> flag is
+      An <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">loading</code> flag is
       set, and thus the loading spinner is visible.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Error"
                         liveExample={NxLoadWrapperErrorExample}
                         codeExamples={errorSourceCode}>
-      A <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">error</code> property
+      An <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">error</code> property
       is set, and thus an <code className="nx-code">NxErrorAlert</code> is rendered.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Error with retry button"
                         liveExample={NxLoadWrapperErrorRetryExample}
                         codeExamples={errorRetrySourceCode}>
-      A <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">error</code> property
+      An <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">error</code> property
       is set along with a <code className="nx-code">retryHandler</code>, and thus
       an <code className="nx-code">NxErrorAlert</code> is rendered with a "Retry" button.
     </GalleryExampleTile>

@@ -124,7 +124,7 @@ const NxDropdownPage = () =>
     <GalleryExampleTile title="Navigation Example"
                         liveExample={NxDropdownNavigationExample}
                         codeExamples={nxDropdownNavigationExampleCode}>
-      An example of a <code className="nx-code">NxDropdown</code> as it might be used to implement a navigation list.
+      An example of an <code className="nx-code">NxDropdown</code> as it might be used to implement a navigation list.
       Note that the menu can contain either <code className="nx-code">&lt;a&gt;</code> or
       {' '}<code className="nx-code">&lt;button&gt;</code> elements; this example contains both.
     </GalleryExampleTile>
