@@ -10,7 +10,7 @@ import { NxLoadWrapper } from '@sonatype/react-shared-components';
 
 const NxLoadWrapperChildrenExample = () =>
   <NxLoadWrapper>
-    <div>Children will render, because neither loading nor error are set</div>
+    <div>Children!</div>
   </NxLoadWrapper>;
 
 export default NxLoadWrapperChildrenExample;

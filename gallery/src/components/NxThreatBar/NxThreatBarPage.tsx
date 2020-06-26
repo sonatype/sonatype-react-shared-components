@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxThreatBarByCategoryExampleList from './NxThreatBarByCategoryExampleListElements';
 import NxThreatBarByPolicyNumberExampleList from './NxThreatBarByPolicyNumberExampleListElements';
@@ -96,25 +95,31 @@ const NxThreatBarPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Threat Bars by Category in .nx-list">
-      <NxThreatBarByCategoryExampleList/>
-      <CodeExample content={nxThreatBarByCategoryListCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Threat Bars by Category in .nx-list"
+                        liveExample={NxThreatBarByCategoryExampleList}
+                        codeExamples={nxThreatBarByCategoryListCode}>
+      An <code className="nx-code">.nx-list</code> including rows displaying threat bars for each category.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Threat Bars by Policy Number in .nx-list">
-      <NxThreatBarByPolicyNumberExampleList/>
-      <CodeExample content={nxThreatBarByPolicyNumberListCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Threat Bars by Policy Number in .nx-list"
+                        liveExample={NxThreatBarByPolicyNumberExampleList}
+                        codeExamples={nxThreatBarByPolicyNumberListCode}>
+      An <code className="nx-code">.nx-list</code> including rows displaying threat bars for range of policy threat
+      numbers.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Threat Bars by Category in .nx-table">
-      <NxThreatBarByCategoryExampleTable/>
-      <CodeExample content={nxThreatBarByCategoryTableCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Threat Bars by Category in .nx-table"
+                        liveExample={NxThreatBarByCategoryExampleTable}
+                        codeExamples={nxThreatBarByCategoryTableCode}>
+      An <code className="nx-code">.nx-table</code> including rows displaying threat bars for each category.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Threat Bars by Policy Number in .nx-table">
-      <NxThreatBarByPolicyNumberExampleTable/>
-      <CodeExample content={nxThreatBarByPolicyNumberTableCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Threat Bars by Policy Number in .nx-table"
+                        liveExample={NxThreatBarByPolicyNumberExampleTable}
+                        codeExamples={nxThreatBarByPolicyNumberTableCode}>
+      An <code className="nx-code">.nx-table</code> including rows displaying threat bars for range of policy threat
+      numbers.
+    </GalleryExampleTile>
   </>;
 
 export default NxThreatBarPage;

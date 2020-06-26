@@ -113,7 +113,6 @@ const pageConfig: PageConfig = {
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
     'nx-page-title': NxPageTitlePage,
-    'nx-scrollable': NxScrollablePage,
     'nx-table': NxTableStylePage,
     //'nx-text-input': NxTextInputStylesPage,
     'nx-threat-number': NxThreatNumberPage,
@@ -122,6 +121,7 @@ const pageConfig: PageConfig = {
   'Styles - Mixins & Helpers': {
     'nx-clickable': NxClickablePage,
     'nx-container-helpers': NxContainerHelpersPage,
+    'nx-scrollable': NxScrollablePage,
     'nx-truncate-ellipsis': NxTruncatePage
   },
   'Layout Examples': {

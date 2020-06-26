@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTreeViewRadioSelectExample from './NxTreeViewRadioSelectExample';
 import NxTreeViewRadioSelectDisabledExample from './NxTreeViewRadioSelectDisabledExample';
@@ -189,15 +188,18 @@ const NxTreeViewRadioSelectPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="NxTreeViewRadioSelect Basic Example">
-      <NxTreeViewRadioSelectExample />
-      <CodeExample content={nxTreeViewRadioSelectExampleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxTreeViewRadioSelect Basic Example"
+                        liveExample={NxTreeViewRadioSelectExample}
+                        codeExamples={nxTreeViewRadioSelectExampleCode}>
+      A basic example of <code className="nx-code">NxTreeViewRadioSelect</code>, with working collapse/expand,
+      filtering, and selection.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NxTreeViewRadioSelect Disabled Example">
-      <NxTreeViewRadioSelectDisabledExample />
-      <CodeExample content={nxTreeViewRadioSelectDisabledExampleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxTreeViewRadioSelect Disabled Example"
+                        liveExample={NxTreeViewRadioSelectDisabledExample}
+                        codeExamples={nxTreeViewRadioSelectDisabledExampleCode}>
+      A disabled <code className="nx-code">NxTreeViewRadioSelect</code>
+    </GalleryExampleTile>
   </>;
 
 export default NxTreeViewRadioSelectPage;
