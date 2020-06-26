@@ -34,10 +34,9 @@
 %nx-code {
   background-color: $nx-grey-1;
   border: $nx-border;
-  border-radius: 4px;
+  border-radius: $nx-border-radius;
   color: $nx-invalid-color;
   font-family: monospace;
-  font-size: $nx-font-size-s;
-  padding: 2px 4px;
+  padding: 1px 4px;
   white-space: nowrap;
 }
