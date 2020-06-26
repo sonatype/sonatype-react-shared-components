@@ -108,9 +108,9 @@ const NxListPage = () =>
         </tbody>
       </table>
       <NxInfoAlert>
-        Note that some of these examples are shown in react as they includes specific icons. When working in
+        Note that some of these examples are shown in React as they includes specific icons. When working in
         React, <code className="nx-code">NxFontAwesomeIcon</code> should be used as shown to get these icons.
-        When not working in react, check the FontAwesome 5 documentation for alternative ways to include the icons.
+        When not working in React, check the FontAwesome 5 documentation for alternative ways to include the icons.
       </NxInfoAlert>
     </GalleryDescriptionTile>
     <NxListExamples />
