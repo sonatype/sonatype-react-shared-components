@@ -18,10 +18,6 @@ function NxSubmitMaskFullscreenExample() {
 
   return (
     <div onKeyUp={handleKeyUp} className="gallery-submit-mask-area">
-      <p className="nx-p">
-        Note: once the mask is visible in this example, press ESC to dismiss it.
-        (This is just part of this example, not built-in mask behavior. It only works as long as the button has focus)
-      </p>
       <NxButton onClick={setMaskVisible.bind(null, true)}>Click here to create a fullscreen NxSubmitMask</NxButton>
       { maskVisible && <NxSubmitMask fullscreen /> }
     </div>

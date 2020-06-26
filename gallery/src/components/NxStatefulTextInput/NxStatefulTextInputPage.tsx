@@ -6,14 +6,13 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxStatefulTextInputSimpleExample from './NxStatefulTextInputSimpleExample';
 import NxStatefulTextInputValidationExample from './NxStatefulTextInputValidationExample';
 import NxStatefulTextInputPasswordExample from './NxStatefulTextInputPasswordExample';
 import NxStatefulTextInputTextAreaExample from './NxStatefulTextInputTextAreaExample';
 import NxStatefulTextInputDisabledExample from './NxStatefulTextInputDisabledExample';
-import CodeExample from '../../CodeExample';
 
 const simpleSourceCode = require('!!raw-loader!./NxStatefulTextInputSimpleExample').default;
 const validationSourceCode = require('!!raw-loader!./NxStatefulTextInputValidationExample').default;
@@ -71,26 +70,36 @@ const NxStatefulTextInputPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Simple Example">
-      <NxStatefulTextInputSimpleExample />
-      <CodeExample content={simpleSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Example with non-emptiness validation">
-      <NxStatefulTextInputValidationExample />
-      <CodeExample content={validationSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Password input example">
-      <NxStatefulTextInputPasswordExample />
-      <CodeExample content={passwordSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="TextArea input example">
-      <NxStatefulTextInputTextAreaExample />
-      <CodeExample content={textAreaSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Disabled example">
-      <NxStatefulTextInputDisabledExample />
-      <CodeExample content={disabledSourceCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Simple Example"
+                        liveExample={NxStatefulTextInputSimpleExample}
+                        codeExamples={simpleSourceCode}>
+      A simple example of an <code className="nx-code">NxStatefileTextInput</code>. Note that the content of the text
+      input does not need to be tracked separately.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with non-emptiness validation"
+                        liveExample={NxStatefulTextInputValidationExample}
+                        codeExamples={validationSourceCode}>
+      An example including validation.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Password input example"
+                        liveExample={NxStatefulTextInputPasswordExample}
+                        codeExamples={passwordSourceCode}>
+      An example of a stateful password input.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="TextArea input example"
+                        liveExample={NxStatefulTextInputTextAreaExample}
+                        codeExamples={textAreaSourceCode}>
+      An example of a stateful textarea input.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Disabled example"
+                        liveExample={NxStatefulTextInputDisabledExample}
+                        codeExamples={disabledSourceCode}>
+      An example of a stateful input which is disabled.
+    </GalleryExampleTile>
   </>;
 
 export default NxStatefulTextInputPage;

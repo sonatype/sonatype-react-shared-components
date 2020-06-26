@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import { ensureArray } from '../util/jsUtil';
 
 import CodeExample, { Props as CodeExampleProps } from '../CodeExample';
+import RawHtmlExample from '../RawHtmlExample';
 
 interface PropsWithRequiredChildren {
   children: ReactNode;
@@ -28,6 +29,7 @@ type StringOrCodeExampleProps = string | CodeExampleProps;
 interface GalleryExampleTileProps extends GalleryBaseProps {
   children: ReactNode;
   liveExample?: JSXElementConstructor<{}>;
+  htmlExample?: string;
   codeExamples: StringOrCodeExampleProps | StringOrCodeExampleProps[];
 }
 
@@ -58,7 +60,13 @@ export const GalleryDescriptionTile: FunctionComponent<PropsWithRequiredChildren
 
 export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
   function GalleryExampleTile(props: GalleryExampleTileProps) {
-    const { id, children, className, title, liveExample: LiveExample, codeExamples } = props,
+    const { id, children, className, title, liveExample: LiveExample, htmlExample, codeExamples } = props,
+
+        liveExampleRender =
+          htmlExample ? <RawHtmlExample html={htmlExample} /> :
+          LiveExample ? <LiveExample /> :
+          null,
+
         tileClasses = classnames('gallery-example', className),
         codeExampleElements = ensureArray(codeExamples)
             .map((example, idx) => {
@@ -70,12 +78,10 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
       <GalleryTile id={id} title={title} className={tileClasses}>
         <p className="nx-p">{children}</p>
 
-        { LiveExample &&
+        { liveExampleRender &&
           <>
             <h3 className="nx-h3 nx-tile__section-header">Example:</h3>
-            <div>
-              <LiveExample />
-            </div>
+            <div>{liveExampleRender}</div>
           </>
         }
 
