@@ -58,12 +58,6 @@ const NxFilterInputPage = () =>
             <td className="nx-cell">Id to assign to the input part of this component</td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">onClear</td>
-            <td className="nx-cell">Function</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">Function to execute whenever the clear icon is clicked</td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>
             <td className="nx-cell">Function</td>
             <td className="nx-cell">No</td>

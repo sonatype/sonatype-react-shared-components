@@ -11,15 +11,10 @@ import { NxFilterInput } from '@sonatype/react-shared-components';
 const NxFilterInputFullExample = () => {
   const [value, changeValue] = useState('');
 
-  function onClear() {
-    changeValue('');
-  }
-
   return (
     <NxFilterInput placeholder="Enter a filter value"
                    inputId="input-id"
                    onChange={changeValue}
-                   onClear={onClear}
                    value={value}/>
   );
 };
