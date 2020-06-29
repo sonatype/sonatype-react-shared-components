@@ -222,9 +222,9 @@ exports.config = {
         eyesConf.setBatch(new BatchInfo("local"));
       }
 
-      //if (branchName) {
-        //eyes.setBranchName(branchName);
-      //}
+      if (branchName) {
+        eyes.setBranchName(branchName);
+      }
 
       // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
       eyesConf.setAppName('React Shared Components');
