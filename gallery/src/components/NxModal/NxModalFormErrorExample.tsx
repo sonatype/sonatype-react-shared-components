@@ -14,11 +14,9 @@ export default function NxModalFormErrorExample() {
   const [showModal, setShowModal] = useState(false);
   const modalCloseHandler = () => setShowModal(false);
   const [state, setState] = useState(initialState(''));
-  const [error, setError] = useState<string | null>('');
-
   function retryHandler() {
     // lets say the retried action succeeded this time
-    setError(null);
+    setShowModal(false);
   }
   function onChange(val: string) {
     setState(userInput(null, val));
