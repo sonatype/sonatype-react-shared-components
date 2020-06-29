@@ -22,18 +22,24 @@ const AdditionalResources = () =>
         {' '}(Beginner Level)
       </li>
       <li className="nx-list__item">
-        <a rel="noreferrer" href="https://redux.js.org/basics/basic-tutorial" target="_blank">Official Redux Getting Started</a>
+        <a rel="noreferrer"
+           href="https://redux.js.org/basics/basic-tutorial"
+           target="_blank">Official Redux Getting Started
+        </a>
         {' '}(Beginner Level)
       </li>
       <li className="nx-list__item">
-        <a rel="noreferrer" href="https://egghead.io/courses/getting-started-with-redux" target="_blank">
+        <a rel="noreferrer"
+           href="https://egghead.io/courses/getting-started-with-redux"
+           target="_blank">
           Getting started with Redux
         </a>
         {' '}(egghead.io beginner course)
       </li>
       <li className="nx-list__item">
         <a rel="noreferrer"
-           href="https://www.pluralsight.com/paths/react" target="_blank">
+           href="https://www.pluralsight.com/paths/react"
+           target="_blank">
              Pluralsight React Path
         </a>
         {' '}(beginner to advanced)
@@ -43,7 +49,10 @@ const AdditionalResources = () =>
     <h3 className="nx-h3 nx-tile__section-header">Good Reads</h3>
     <ul className="nx-list nx-list--bulleted">
       <li className="nx-list__item">
-        <a rel="noreferrer" href="https://reactjs.org/docs/hello-world.html" target="_blank">Main Concepts in React</a>
+        <a rel="noreferrer"
+           href="https://reactjs.org/docs/hello-world.html"
+           target="_blank">Main Concepts in React
+        </a>
       </li>
       <li className="nx-list__item">
         <a rel="noreferrer" href="https://reactjs.org/docs/thinking-in-react.html" target="_blank">Thinking in React</a>
@@ -77,13 +86,14 @@ const AdditionalResources = () =>
            href="https://github.com/sonatype/sonatype-application-builder"
            target="_blank">
              Sonatype Application Builder (SAB) Template
-           </a>{' - '}A great place to start for new projects and a fun place to poke around. It is also setup as a{' '}
-           <a rel="noreferrer" 
-              href="https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-template-repository"
-              target="_blank">GitHub Template</a>
-           , just click the "use this template" button (or click{' '}
-           <a rel="noreferrer" href="https://github.com/sonatype/sonatype-application-builder/generate" target="_blank">here</a>)
-           in GitHub to get started.
+        </a>
+        {' - '}A great place to start for new projects and a fun place to poke around.
+        It is also setup as a GitHub Template, just click the "use this template" button (or click{' '}
+        <a rel="noreferrer"
+           href="https://github.com/sonatype/sonatype-application-builder/generate"
+           target="_blank">here
+        </a>
+        ) in GitHub to get started.
       </li>
     </ul>
 
