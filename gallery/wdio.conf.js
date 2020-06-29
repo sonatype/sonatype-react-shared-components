@@ -208,10 +208,10 @@ exports.config = {
       const batchId = process.env.GIT_COMMIT,
           eyesConf = new Configuration();
 
-      let branchName = process.env.GIT_BRANCH;
+      //let branchName = process.env.GIT_BRANCH;
 
       console.log('batchId', batchId);
-      console.log('branchName', branchName);
+      //console.log('branchName', branchName);
 
       if (batchId) {
         const batchInfo = new BatchInfo(branchName);
@@ -222,9 +222,9 @@ exports.config = {
         eyesConf.setBatch(new BatchInfo("local"));
       }
 
-      if (branchName) {
-        eyes.setBranchName(branchName);
-      }
+      //if (branchName) {
+        //eyes.setBranchName(branchName);
+      //}
 
       // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
       eyesConf.setAppName('React Shared Components');
