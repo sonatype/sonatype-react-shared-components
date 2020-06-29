@@ -8,9 +8,9 @@ import React from 'react';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import CodeExample from '../../CodeExample';
-import NxPageTitleExample from './NxPageTitleExample';
+import RawHtmlExample from '../../RawHtmlExample';
 
-const nxPageTitleCode = require('!!raw-loader!./NxPageTitleExample').default;
+const nxPageTitleCode = require('!!raw-loader!./NxPageTitleExample.html').default;
 
 const NxPageTitlePage = () =>
   <>
@@ -59,8 +59,8 @@ const NxPageTitlePage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <NxPageTitleExample/>
-    <CodeExample content={nxPageTitleCode}/>
+    <RawHtmlExample html={nxPageTitleCode} />
+    <CodeExample content={nxPageTitleCode} />
   </>;
 
 export default NxPageTitlePage;

@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxInfoAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxTableExamples from './NxTableExamples';
@@ -104,6 +105,11 @@ const NxTableStylePage = () =>
           </tr>
         </tbody>
       </table>
+      <NxInfoAlert>
+        Note that some of these examples are shown in react as they includes specific icons. When working in
+        React, <code className="nx-code">NxFontAwesomeIcon</code> should be used as shown to get these icons.
+        When not working in react, check the FontAwesome 5 documentation for alternative ways to include the icons.
+      </NxInfoAlert>
     </GalleryDescriptionTile>
     <NxTableExamples />
   </>;

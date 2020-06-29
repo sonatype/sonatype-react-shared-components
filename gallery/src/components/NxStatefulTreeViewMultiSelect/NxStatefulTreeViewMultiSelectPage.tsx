@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxStatefulTreeViewMultiSelectExample from './NxStatefulTreeViewMultiSelectExample';
 import NxStatefulTreeViewMultiSelectDisabledExample from './NxStatefulTreeViewMultiSelectDisabledExample';
@@ -167,15 +166,16 @@ const NxStatefulTreeViewMultiSelectPage = () =>
     <GalleryExampleTile title="General Example"
                         codeExamples={nxStatefulTreeViewMultiSelectExampleCode}
                         liveExample={NxStatefulTreeViewMultiSelectExample}>
-      This example demonstrates basic usage of NxStatefulTreeViewMultiSelect. Note that
+      This example demonstrates basic usage of <code className="nx-code">NxStatefulTreeViewMultiSelect</code>. Note that
       the component tracks the collapse/expand state and filter text internally, and the calling
       code only needs to track which items are selected.
     </GalleryExampleTile>
 
-    <GalleryTile title="Disabled Example With Tooltip">
-      <NxStatefulTreeViewMultiSelectDisabledExample />
-      <CodeExample content={nxStatefulTreeViewMultiSelectDisabledExampleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Disabled Example With Tooltip"
+                        liveExample={NxStatefulTreeViewMultiSelectDisabledExample}
+                        codeExamples={nxStatefulTreeViewMultiSelectDisabledExampleCode}>
+      This example shows a disabled <code className="nx-code">NxStatefulTreeViewMultiSelect</code> with a tooltip.
+    </GalleryExampleTile>
   </>;
 
 export default NxStatefulTreeViewMultiSelectPage;
