@@ -77,7 +77,7 @@ const AdditionalResources = () =>
       </li>
       <li className="nx-list__item">
         <a rel="noreferrer"
-           href="https://www.youtube.com/watch?time_continue=781&v=nYkdrAPrdcw&feature=emb_logo"
+           href="https://www.youtube.com/watch?time_continue=781&v=nYkdrAPrdcw"
            target="_blank">
           Video about Flux
         </a>
