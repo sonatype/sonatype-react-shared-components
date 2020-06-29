@@ -14,6 +14,7 @@ export default function NxModalFormErrorExample() {
   const [showModal, setShowModal] = useState(false);
   const modalCloseHandler = () => setShowModal(false);
   const [textFieldState, setTextFieldState] = useState(initialState(''));
+  const [error] = useState<string | null>('');
   function retryHandler() {
     // lets say the retried action succeeded this time
     setShowModal(false);
@@ -38,13 +39,13 @@ export default function NxModalFormErrorExample() {
               <div className="nx-form-group">
                 <label className="nx-label">
                   Username
-                  <NxTextInput { ...state } onChange={onChange} />
+                  <NxTextInput { ...textFieldState } onChange={onChange} />
                 </label>
               </div>
               <div className="nx-form-group">
                 <label className="nx-label">
                   Password
-                  <NxTextInput type="password" placeholder="Enter password" onChange={onChange} { ...state }/>
+                  <NxTextInput type="password" placeholder="Enter password" onChange={onChange} { ...textFieldState }/>
                 </label>
               </div>
             </div>
