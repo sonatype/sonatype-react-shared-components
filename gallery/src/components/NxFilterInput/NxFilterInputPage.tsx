@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxFilterInputFullExample from './NxFilterInputFullExample';
 import NxFilterInputDisabledExample from './NxFilterInputDisabledExample';
@@ -77,15 +76,19 @@ const NxFilterInputPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="NxFilterInput Example" className="nx-filter-input-examples">
-      <NxFilterInputFullExample />
-      <CodeExample content={nxFilterInputFullExampleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxFilterInput Example"
+                        className="nx-filter-input-examples"
+                        liveExample={NxFilterInputFullExample}
+                        codeExamples={nxFilterInputFullExampleCode}>
+      A simple <code className="nx-code">NxFilterInput</code>.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NxFilterInput Disabled Example" className="nx-filter-input-examples">
-      <NxFilterInputDisabledExample />
-      <CodeExample content={nxFilterInputDisabledExampleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxFilterInput Disabled Example"
+                        className="nx-filter-input-examples"
+                        liveExample={NxFilterInputDisabledExample}
+                        codeExamples={nxFilterInputDisabledExampleCode}>
+      A disabled <code className="nx-code">NxFilterInput</code>.
+    </GalleryExampleTile>
   </>;
 
 export default NxFilterInputPage;
