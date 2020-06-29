@@ -22,13 +22,21 @@ const AdditionalResources = () =>
         {' '}(Beginner Level)
       </li>
       <li className="nx-list__item">
-        <a rel="noreferrer" href="https://redux.js.org/basics/basic-tutorial" target="_blank">Redux Getting Started</a>
+        <a rel="noreferrer" href="https://redux.js.org/basics/basic-tutorial" target="_blank">Official Redux Getting Started</a>
+        {' '}(Beginner Level)
       </li>
       <li className="nx-list__item">
         <a rel="noreferrer" href="https://egghead.io/courses/getting-started-with-redux" target="_blank">
           Getting started with Redux
         </a>
-        {' '}(Beginner Level)
+        {' '}(egghead.io beginner course)
+      </li>
+      <li className="nx-list__item">
+        <a rel="noreferrer"
+           href="https://www.pluralsight.com/paths/react" target="_blank">
+             Pluralsight React Path
+        </a>
+        {' '}(beginner to advanced)
       </li>
     </ul>
 
@@ -59,6 +67,23 @@ const AdditionalResources = () =>
         </a>
         , which is a precursor to redux. Uses some real-world problems to motivate the concept of one-way dataflow for
         state management, which is what Redux is all about.
+      </li>
+    </ul>
+
+    <h3 className="nx-h3 nx-tile__section-header">Getting your hands dirty</h3>
+    <ul className="nx-list nx-list--bulleted">
+      <li className="nx-list__item">
+        <a rel="noreferrer"
+           href="https://github.com/sonatype/sonatype-application-builder"
+           target="_blank">
+             Sonatype Application Builder (SAB) Template
+           </a>{' - '}A great place to start for new projects and a fun place to poke around. It is also setup as a{' '}
+           <a rel="noreferrer" 
+              href="https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-template-repository"
+              target="_blank">GitHub Template</a>
+           , just click the "use this template" button (or click{' '}
+           <a rel="noreferrer" href="https://github.com/sonatype/sonatype-application-builder/generate" target="_blank">here</a>)
+           in GitHub to get started.
       </li>
     </ul>
 
