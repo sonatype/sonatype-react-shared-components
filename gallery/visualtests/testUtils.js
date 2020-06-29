@@ -18,7 +18,7 @@ module.exports = {
 
   hoverTest(elementSelector, hoverSelector = elementSelector) {
     return async () => {
-      const [targetElement, hoverElement] = await Promise.all(browser.$(elementSelector), browser.$(hoverElement));
+      const [targetElement, hoverElement] = await Promise.all([browser.$(elementSelector), browser.$(hoverSelector)]);
 
       await targetElement.scrollIntoView({ block: 'center' });
       await hoverElement.moveTo();
