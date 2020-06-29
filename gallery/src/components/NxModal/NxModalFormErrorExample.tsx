@@ -13,7 +13,7 @@ import { initialState, userInput } from '@sonatype/react-shared-components/compo
 export default function NxModalFormErrorExample() {
   const [showModal, setShowModal] = useState(false);
   const modalCloseHandler = () => setShowModal(false);
-  const [state, setState] = useState(initialState(''));
+  const [textFieldState, setTextFieldState] = useState(initialState(''));
   function retryHandler() {
     // lets say the retried action succeeded this time
     setShowModal(false);
