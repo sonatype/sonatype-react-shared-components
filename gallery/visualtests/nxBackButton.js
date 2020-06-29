@@ -7,11 +7,15 @@
 const { simpleTest } = require('./testUtils');
 
 describe('NxBackButton', function() {
+  const exampleSelector = '#nx-back-button-simple-example .nx-back-button',
+      hoverElementSelector = exampleSelector + ' a';
+
   beforeEach(async function() {
     await browser.url('#/pages/NxBackButton');
   });
 
   describe('Simple NxBackButton', function() {
-    it('looks right', simpleTest('#nx-back-button-simple-example .nx-back-button'));
+    it('looks right', simpleTest(exampleSelector));
+    it('looks right when hovered', hoverTest(exampleSelector, hoverElementSelector));
   });
 });

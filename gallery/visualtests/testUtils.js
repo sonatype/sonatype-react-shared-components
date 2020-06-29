@@ -12,5 +12,13 @@ module.exports = {
 
     await targetElement.scrollIntoView({ block: 'center' });
     await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+  },
+
+  async hoverTest(elementSelector, hoverSelector = elementSelector) {
+    const [targetElement, hoverElement] = await Promise.all(browser.$(elementSelector), browser.$(hoverElement));
+
+    await targetElement.scrollIntoView({ block: 'center' });
+    await hoverElement.moveTo();
+    await browser.eyesRegionSnapshot(null, Target.region(targetElement));
   }
 };
