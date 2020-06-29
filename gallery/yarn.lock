@@ -34,7 +34,7 @@
     stack-trace "^0.0.10"
     tunnel "0.0.6"
 
-"@applitools/eyes-webdriverio@^5.14.2":
+"@applitools/eyes-webdriverio@5.14.2":
   version "5.14.2"
   resolved "https://repo.sonatype.com/repository/npm-all/@applitools/eyes-webdriverio/-/eyes-webdriverio-5.14.2.tgz#2ed7aa3ecd02b752be361021b8e2dad12188d0be"
   integrity sha512-x3crOCZBs6J/qnt5PfGRvoOEzOybP7xTW7WgmCQb+1qYv5KheKZYDtukIkL6uaa/ed15UAf5Rfamglp57pD9yQ==
