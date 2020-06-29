@@ -225,7 +225,7 @@ exports.config = {
         eyes.setBranchName(applitoolsBranchname);
       }
 
-      eyes.setParentBranchName( 'sonatype/sonatype-react-shared-components/master');
+      eyes.setParentBranchName('sonatype/sonatype-react-shared-components/master');
 
       // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
       eyesConf.setAppName('React Shared Components');
