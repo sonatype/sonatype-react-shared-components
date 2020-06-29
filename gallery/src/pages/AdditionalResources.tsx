@@ -92,7 +92,7 @@ const AdditionalResources = () =>
         <a rel="noreferrer"
            href="https://github.com/sonatype/sonatype-application-builder"
            target="_blank">
-             Sonatype Application Builder (SAB) Template
+             Internal Sonatype Application Builder (SAB) Template
         </a>
         {' - '}A great place to start for new projects and a fun place to poke around.
         It is also setup as a GitHub Template, just click the "use this template" button (or click{' '}
@@ -100,7 +100,7 @@ const AdditionalResources = () =>
            href="https://github.com/sonatype/sonatype-application-builder/generate"
            target="_blank">here
         </a>
-        ) in GitHub to get started.
+        ) in GitHub to get started. Note this is an internal to Sonatype template.
       </li>
     </ul>
 
