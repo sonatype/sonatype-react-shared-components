@@ -169,18 +169,6 @@ describe('AbstractTreeViewSelect', function() {
         filterInput.simulate('change', 'bla');
         expect(onChangeSpy).toHaveBeenCalledWith('bla');
       });
-
-      it('calls onFilterChange with empty string when clear button is clicked', function() {
-        const onChangeSpy = jest.fn();
-        const shallowRender = getShallow({
-          onFilterChange: onChangeSpy
-        });
-
-        const filterInput = shallowRender.find('ForwardRef(NxFilterInput)');
-        expect(onChangeSpy).not.toHaveBeenCalled();
-        filterInput.simulate('clear');
-        expect(onChangeSpy).toHaveBeenCalledWith('');
-      });
     });
 
     describe('filter prop', function () {
