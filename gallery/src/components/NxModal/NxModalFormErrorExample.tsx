@@ -19,7 +19,7 @@ export default function NxModalFormErrorExample() {
     setShowModal(false);
   }
   function onChange(val: string) {
-    setState(userInput(null, val));
+    setTextFieldState(userInput(null, val));
   }
 
   return (
