@@ -222,8 +222,13 @@ exports.config = {
         eyesConf.setBatch(new BatchInfo("local"));
       }
 
-      if (branchName) {
-        eyes.setBranchName(branchName);
+      // if we are running on a dev branch we rely on the applitools github integration to set the
+      // branch and parent branch. If we are running on master however, there is no PR and we need to set them
+      // explicitly, using applitools branch naming conventions
+      if (branchName === 'master') {
+        const applitoolsBranchname = 'sonatype/sonatype-react-shared-components/master';
+        eyes.setBranchName(applitoolsBranchname);
+        eyes.setParentBranchName(applitoolsBranchname);
       }
 
       // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
