@@ -8,5 +8,5 @@
 .nx-btn-bar {
   @include container-horizontal;
 
-  margin: 8px 0;
+  margin: $nx-spacing-sm 0;
 }
