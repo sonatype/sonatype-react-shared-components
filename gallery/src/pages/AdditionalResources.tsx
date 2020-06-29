@@ -44,6 +44,13 @@ const AdditionalResources = () =>
         </a>
         {' '}(beginner to advanced)
       </li>
+      <li className="nx-list__item">
+        <a rel="noreferrer"
+           href="https://reactforbeginners.com/"
+           target="_blank">
+             React for beginners
+        </a>
+      </li>
     </ul>
 
     <h3 className="nx-h3 nx-tile__section-header">Good Reads</h3>
