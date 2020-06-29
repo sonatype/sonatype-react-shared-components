@@ -210,9 +210,6 @@ exports.config = {
 
       let branchName = process.env.GIT_BRANCH;
 
-      console.log('batchId', batchId);
-      //console.log('branchName', branchName);
-
       if (batchId) {
         const batchInfo = new BatchInfo(branchName);
         batchInfo.setId(batchId);
@@ -234,8 +231,6 @@ exports.config = {
       // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
       eyesConf.setAppName('React Shared Components');
       eyes.setConfiguration(eyesConf);
-
-      console.log('Configuration: ', eyesConf);
 
       browser.addCommand('eyesSnapshot', function(title) {
         return eyes.check(title, Target.window());
