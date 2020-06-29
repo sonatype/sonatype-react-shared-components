@@ -7,8 +7,8 @@
 const { Target } = require('@applitools/eyes-webdriverio');
 
 module.exports = {
-  async simpleTest(selector) {
-    return () => {
+  simpleTest(selector) {
+    return async () => {
       const targetElement = await browser.$(selector);
 
       await targetElement.scrollIntoView({ block: 'center' });
@@ -16,8 +16,8 @@ module.exports = {
     };
   },
 
-  async hoverTest(elementSelector, hoverSelector = elementSelector) {
-    return () => {
+  hoverTest(elementSelector, hoverSelector = elementSelector) {
+    return async () => {
       const [targetElement, hoverElement] = await Promise.all(browser.$(elementSelector), browser.$(hoverElement));
 
       await targetElement.scrollIntoView({ block: 'center' });
