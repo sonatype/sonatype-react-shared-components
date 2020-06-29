@@ -18,15 +18,14 @@
     .nx-tree-view__text {
       @include semi-bold();
 
-      color: #393939;
-      font-size: 16px;
+      color: #2c2c2c;
     }
   }
 }
 
 .nx-tree-view__child.gallery-nav-link {
-  height: 32px;
-  line-height: 32px;
+  height: 100%;
+  line-height: $nx-line-height;
   margin-right: 0;
   margin-bottom: 4px;
   margin-left: 0;
@@ -36,9 +35,7 @@
   border-radius: 6px;
   box-sizing: border-box;
   display: inline-block;
-  height: 32px;
-  margin-bottom: 4px;
-  padding-left: 45px;
+  padding: $nx-spacing-xxs $nx-spacing-xs $nx-spacing-xxs $nx-spacing-xl;
   text-decoration: none;
   width: 100%;
 
@@ -47,15 +44,15 @@
   }
 
   &.active {
-    @include bold;
+    @include semi-bold;
 
-    background-color: #1a2eac;
+    background-color: #000066;
     color: #fff;
     cursor: default;
     text-decoration: none;
 
     &:hover {
-      background-color: #1a2eac;
+      background-color: #000066;
       color: #fff;
     }
   }
