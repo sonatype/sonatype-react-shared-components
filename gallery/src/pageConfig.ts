@@ -100,11 +100,7 @@ const pageConfig: PageConfig = {
     NxTruncateEllipsis: NxTruncatePage
   },
   'Guidelines': {
-<<<<<<< HEAD
-=======
     'Additional Resources': AdditionalResourcePage,
-    'Form Validation Guidelines': FormValidationPage,
->>>>>>> Add to pageConfig - RSC-118
     'Contributing to the Gallery': ContributingPage,
     'font-size and line-height': FontSizePage,
     'Form Validation Guidelines': FormValidationPage,
