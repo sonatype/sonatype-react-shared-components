@@ -220,9 +220,11 @@ exports.config = {
       }
 
       if (branchName) {
-        const applitoolsBranchname = `sonatype/sonatype-react-shared-components/${branchName}`;
+        const applitoolsBranchname = `sonatype/sonatype-react-shared-components/${branchName}`,
+            masterBranchName = 'sonatype/sonatype-react-shared-components/master';
+
         eyes.setBranchName(applitoolsBranchname);
-        eyes.setParentBranchName(applitoolsBranchname);
+        eyes.setParentBranchName(masterBranchName);
       }
 
       // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
