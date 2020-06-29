@@ -65,7 +65,7 @@ const AdditionalResources = () =>
         <a rel="noreferrer" href="https://reactjs.org/docs/thinking-in-react.html" target="_blank">Thinking in React</a>
       </li>
       <li className="nx-list__item">
-        IQ (and many other apps utilizing React and Redux together) heavily utilize the official{' '}
+        Many apps utilizing React and Redux together utilize the official{' '}
         <a rel="noreferrer" href="https://react-redux.js.org/using-react-redux/connect-mapstate" target="_blank">
           react-redux
         </a>
