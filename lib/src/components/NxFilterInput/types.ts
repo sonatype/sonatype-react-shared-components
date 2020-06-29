@@ -10,7 +10,6 @@ import { HTMLAttributes } from 'react';
 export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'|'placeholder'|'className'> & {
   value: string;
   onChange?: ((value: string) => void) | null;
-  onClear?: (() => void) | null;
   placeholder?: string | null;
   className?: string | null;
   inputId?: string | null;
@@ -20,7 +19,6 @@ export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'|'placeholder
 export const propTypes: PropTypes.ValidationMap<Props> = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  onClear: PropTypes.func,
   placeholder: PropTypes.string,
   className: PropTypes.string,
   inputId: PropTypes.string,
