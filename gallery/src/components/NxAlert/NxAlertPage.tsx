@@ -49,6 +49,7 @@ const NxAlertPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Alert Example"
+                        id="nx-alert-custom-example"
                         liveExample={NxAlertExample}
                         codeExamples={nxAlertExampleCode}>
       An example of a simple alert which adds a custom modifier class.
@@ -61,24 +62,28 @@ const NxAlertPage = () =>
     </GalleryTile>
 
     <GalleryExampleTile title="Success Alert Example"
+                        id="nx-alert-success-example"
                         liveExample={NxSuccessAlertExample}
                         codeExamples={nxSuccessAlertExampleCode}>
       An example of an alert demonstrating success styling.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Error Alert Example"
+                        id="nx-alert-error-example"
                         liveExample={NxErrorAlertExample}
                         codeExamples={nxErrorAlertExampleCode}>
       An example of an alert demonstrating error styling.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Info Alert Example"
+                        id="nx-alert-info-example"
                         liveExample={NxInfoAlertExample}
                         codeExamples={nxInfoAlertExampleCode}>
       An example of an alert demonstrating information styling.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Warning Alert Example"
+                        id="nx-alert-warning-example"
                         liveExample={NxWarningAlertExample}
                         codeExamples={nxWarningAlertExampleCode}>
       An example of an alert demonstrating warning styling.

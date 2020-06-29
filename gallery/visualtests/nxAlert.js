@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { By, ClassicRunner, Configuration, Eyes, Target } = require('@applitools/eyes-webdriverio');
+const { simpleTest } = require('./testUtils');
 
 describe('NxAlert', function() {
   beforeEach(async function() {
@@ -12,47 +12,22 @@ describe('NxAlert', function() {
   });
 
   describe('Custom NxAlert', function() {
-    it('looks right', async function() {
-      const targetElement = await browser.$('.nx-alert--modifier');
-
-      await targetElement.scrollIntoView({ block: 'center' });
-      await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
-    });
+    it('looks right', simpleTest('#nx-alert-custom-example .nx-alert'));
   });
 
   describe('NxSuccessAlert', function() {
-    it('looks right', async function() {
-      const targetElement = await browser.$('.nx-alert--success');
-
-      await targetElement.scrollIntoView({ block: 'center' });
-      await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
-    });
+    it('looks right', simpleTest('#nx-alert-success-example .nx-alert'));
   });
 
   describe('NxErrorAlert', function() {
-    it('looks right', async function() {
-      const targetElement = await browser.$('.nx-alert--error');
-
-      await targetElement.scrollIntoView({ block: 'center' });
-      await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
-    });
+    it('looks right', simpleTest('#nx-alert-error-example .nx-alert'));
   });
 
   describe('NxInfoAlert', function() {
-    it('looks right', async function() {
-      const targetElement = await browser.$('.nx-alert--info');
-
-      await targetElement.scrollIntoView({ block: 'center' });
-      await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
-    });
+    it('looks right', simpleTest('#nx-alert-info-example .nx-alert'));
   });
 
   describe('NxWarningAlert', function() {
-    it('looks right', async function() {
-      const targetElement = await browser.$('.nx-alert--warning');
-
-      await targetElement.scrollIntoView({ block: 'center' });
-      await browser.eyesRegionSnapshot('Alert', Target.region(targetElement));
-    });
+    it('looks right', simpleTest('#nx-alert-warning-example .nx-alert'));
   });
 });
