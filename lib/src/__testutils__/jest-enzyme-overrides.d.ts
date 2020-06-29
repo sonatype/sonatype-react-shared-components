@@ -15,7 +15,7 @@ declare namespace jest {
     // React Components as well
     toMatchSelector(s: Selector): void;
     toContainMatchingElement(s: Selector): void;
-    toContainMatchingElements(s: Selector): void;
+    toContainMatchingElements(n: number, s: Selector): void;
     toContainExactlyOneMatchingElement(s: Selector): void;
   }
 }

@@ -8,9 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxScrollableExample from './NxScrollableExample';
-
-const nxScrollableExampleCode = require('!!raw-loader!./NxScrollableExample').default;
+const nxScrollableExampleCode = require('!!raw-loader!./NxScrollableExample.html').default;
 
 const NxScrollablePage = () =>
   <>
@@ -31,8 +29,8 @@ const NxScrollablePage = () =>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="General Example"
                         codeExamples={nxScrollableExampleCode}
-                        description="In this instance the max-height has been left at its default value of 400px.">
-      <NxScrollableExample />
+                        htmlExample={nxScrollableExampleCode}>
+      In this instance the max-height has been left at its default value of 400px.
     </GalleryExampleTile>
   </>;
 

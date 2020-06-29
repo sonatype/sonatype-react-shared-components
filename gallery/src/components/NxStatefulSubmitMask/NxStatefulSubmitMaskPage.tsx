@@ -6,9 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxStatefulSubmitMaskExample from './NxStatefulSubmitMaskExample';
 import NxStatefulSubmitMaskCustomMessageExample from './NxStatefulSubmitMaskCustomMessageExample';
 import NxStatefulSubmitMaskFullscreenExample from './NxStatefulSubmitMaskFullscreenExample';
@@ -20,11 +18,11 @@ const NxStatefulSubmitMaskCode = require('!!raw-loader!./NxStatefulSubmitMaskExa
 const NxStatefulSubmitMaskPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         This is a wrapper around <code className="nx-code">NxSubmitMask</code> which manages the display and then
         hiding of the success phase of the mask.
       </p>
-      <p>
+      <p className="nx-p">
         The externally visible "success" state, specified by setting the <code className="nx-code">success</code> prop
         to true, encompasses two interally-managed states: the actual, visible success state, and then the automatic
         removal of the mask after the success state has been visible for a brief time.  Since this component manages
@@ -80,24 +78,33 @@ const NxStatefulSubmitMaskPage = () =>
           </tr>
         </tbody>
       </table>
-      <p>
+      <p className="nx-p">
         The examples on this page each start in a non-success state for five seconds before being updated to the
         success state
       </p>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Simple Example">
-      <NxStatefulSubmitMaskExample />
-      <CodeExample content={NxStatefulSubmitMaskCode}/>
-    </GalleryTile>
-    <GalleryTile title="Custom Message Example">
-      <NxStatefulSubmitMaskCustomMessageExample />
-      <CodeExample content={NxStatefulSubmitMaskCustomMessageCode}/>
-    </GalleryTile>
-    <GalleryTile title="Fullscreen Example">
-      <NxStatefulSubmitMaskFullscreenExample />
-      <CodeExample content={NxStatefulSubmitMaskFullscreenCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Simple Example"
+                        liveExample={NxStatefulSubmitMaskExample}
+                        codeExamples={NxStatefulSubmitMaskCode}>
+      An example of a simple <code className="nx-code">NxStatefulSubmitMask</code>. Click the button below to begin
+      the example.  Once the button is clicked, the example is set up to stay in the non-success state for five
+      seconds, demonstrating the delay in the completion of some asynchronous processing. Then, after five seconds,
+      the mask reaches the Sucess state which it automatically displays for a brief period of time.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Custom Message Example"
+                        liveExample={NxStatefulSubmitMaskCustomMessageExample}
+                        codeExamples={NxStatefulSubmitMaskCustomMessageCode}>
+      An example with a similar setup to the one above. This one however includes a custom message for both the
+      non-success and success phases.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Fullscreen Example"
+                        liveExample={NxStatefulSubmitMaskFullscreenExample}
+                        codeExamples={NxStatefulSubmitMaskFullscreenCode}>
+      This example is again similar in setup to the first one, but is displayed fullscreen.
+    </GalleryExampleTile>
   </>;
 
 export default NxStatefulSubmitMaskPage;

@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxInfoAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxTableExamples from './NxTableExamples';
@@ -12,14 +13,16 @@ import NxTableExamples from './NxTableExamples';
 const NxTableStylePage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>This is the styling and layout for a basic table. There are few variations demonstrated here:</p>
+      <p className="nx-p">
+        This is the styling and layout for a basic table. There are few variations demonstrated here:
+      </p>
       <ul className="nx-list nx-list--bulleted">
         <li className="nx-list-item">Basic table layout</li>
         <li className="nx-list-item">Tables with clickable rows</li>
         <li className="nx-list-item">Empty tables</li>
         <li className="nx-list-item">A table with an error.</li>
       </ul>
-      <p>
+      <p className="nx-p">
         Components for column sorting, column filtering, and tables with fixed headers and
         scrolling content sections are pending.
       </p>
@@ -102,6 +105,11 @@ const NxTableStylePage = () =>
           </tr>
         </tbody>
       </table>
+      <NxInfoAlert>
+        Note that some of these examples are shown in react as they includes specific icons. When working in
+        React, <code className="nx-code">NxFontAwesomeIcon</code> should be used as shown to get these icons.
+        When not working in react, check the FontAwesome 5 documentation for alternative ways to include the icons.
+      </NxInfoAlert>
     </GalleryDescriptionTile>
     <NxTableExamples />
   </>;

@@ -6,56 +6,61 @@
  */
 import React from 'react';
 
-import {GalleryDescriptionTile, GalleryTile} from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
-import NxBtnPrimaryExample from './NxBtnPrimaryExample';
-import NxBtnDefaultExample from './NxBtnDefaultExample';
-import NxBtnTertiaryExample from './NxBtnTertiaryExample';
-import NxBtnErrorExample from './NxBtnErrorExample';
-import NxBtnIconExample from './NxBtnIconExample';
-
-const nxBtnPrimaryCode = require('!!raw-loader!./NxBtnPrimaryExample').default,
-    nxBtnDefaultCode = require('!!raw-loader!./NxBtnDefaultExample').default,
-    nxBtnTertiaryCode = require('!!raw-loader!./NxBtnTertiaryExample').default,
-    nxBtnErrorCode = require('!!raw-loader!./NxBtnErrorExample').default,
-    nxBtnIconCode = require('!!raw-loader!./NxBtnIconExample').default;
+const nxBtnPrimaryCode = require('!!raw-loader!./NxBtnPrimaryExample.html').default,
+    nxBtnDefaultCode = require('!!raw-loader!./NxBtnDefaultExample.html').default,
+    nxBtnTertiaryCode = require('!!raw-loader!./NxBtnTertiaryExample.html').default,
+    nxBtnErrorCode = require('!!raw-loader!./NxBtnErrorExample.html').default,
+    nxBtnIconCode = require('!!raw-loader!./NxBtnIconExample.html').default;
 
 const NxBtnPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p><code className="nx-code">.nx-btn</code> is the standard class for all buttons.</p>
-      <p>
+      <p className="nx-p"><code className="nx-code">.nx-btn</code> is the standard class for all buttons.</p>
+      <p className="nx-p">
         When a button is not contained in a <code className="nx-code">footer</code>, then an enclosing
         <code className="nx-code">.nx-btn-bar</code> is generally required to ensure that the buttons are spaced
         appropriately from other content.
       </p>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Default">
-      <NxBtnDefaultExample/>
-      <CodeExample content={nxBtnDefaultCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Default"
+                        htmlExample={nxBtnDefaultCode}
+                        codeExamples={nxBtnDefaultCode}>
+      A series of <code className="nx-code">nx-btn</code>s within a <code className="nx-code">nx-btn-bar</code>
+      alongside other block content and inline content. Some of the buttons demonstrate disabled styling, applied
+      both by the <code className="nx-code">disabled</code> HTML attribute and by
+      the <code className="nx-code">.disabled</code> class.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Primary">
-      <NxBtnPrimaryExample/>
-      <CodeExample content={nxBtnPrimaryCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Primary"
+                        htmlExample={nxBtnPrimaryCode}
+                        codeExamples={nxBtnPrimaryCode}>
+      A demonstration of an <code className="nx-code">nx-btn</code> using "primary" styles, along with disabled
+      primary buttons. Note that the standard disabled styles override the primary styles.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Tertiary">
-      <NxBtnTertiaryExample/>
-      <CodeExample content={nxBtnTertiaryCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Tertiary"
+                        htmlExample={nxBtnTertiaryCode}
+                        codeExamples={nxBtnTertiaryCode}>
+      A demonstration of an <code className="nx-code">nx-btn</code> using "tertiary" styles, along with disabled
+      tertiary buttons. Note that the standard disabled styles override the tertiary styles.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Error">
-      <NxBtnErrorExample/>
-      <CodeExample content={nxBtnErrorCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Error"
+                        htmlExample={nxBtnErrorCode}
+                        codeExamples={nxBtnErrorCode}>
+      A demonstration of an <code className="nx-code">nx-btn</code> using "error" styles, along with a disabled
+      error buttons. Note that the standard disabled styles override the error styles.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Buttons with Icons">
-      <NxBtnIconExample/>
-      <CodeExample content={nxBtnIconCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Buttons with Icons"
+                        htmlExample={nxBtnIconCode}
+                        codeExamples={nxBtnIconCode}>
+      A demonstration of <code className="nx-code">nx-btn</code>s containing icons. One contains only an icon while
+      the other contains both an icon and text.
+    </GalleryExampleTile>
   </>;
 
 export default NxBtnPage;

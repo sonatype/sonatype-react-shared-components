@@ -91,7 +91,6 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
                    placeholder={filterPlaceholder || ''}
                    inputId={generateId(name, 'filter-input')}
                    onChange={onFilterChange}
-                   onClear={() => onFilterChange('')}
                    value={filter || ''}/>
   );
 

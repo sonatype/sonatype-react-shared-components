@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import {GalleryDescriptionTile, GalleryTile} from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import {
   NxTable,
@@ -35,7 +34,7 @@ export default function NxTablePage() {
       <GalleryDescriptionTile>
         <h5>NxTable</h5>
 
-        <p>
+        <p className="nx-p">
           The top-level component to use when displaying tables of data.
           It can have <code className="nx-code">&lt;NxTableHead&gt;</code> and
           <code className="nx-code">&lt;NxTableBody&gt;</code> components as children.
@@ -45,7 +44,7 @@ export default function NxTablePage() {
 
         <h5>NxTableHead</h5>
 
-        <p>
+        <p className="nx-p">
           Equivalent to the <code className="nx-code">&lt;thead&gt;</code> element.
           The <code className="nx-code">&lt;NxTableRow&gt;</code> component is the only valid child.
           Descendant <code className="nx-code">&lt;NxTableCell&gt;</code> components will have the
@@ -56,7 +55,7 @@ export default function NxTablePage() {
 
         <h5>NxTableBody</h5>
 
-        <p>
+        <p className="nx-p">
           Equivalent to the <code className="nx-code">&lt;tbody&gt;</code> element.
           It should have <code className="nx-code">&lt;NxTableRow&gt;</code> for children.
         </p>
@@ -100,7 +99,7 @@ export default function NxTablePage() {
 
         <h5>NxTableRow</h5>
 
-        <p>
+        <p className="nx-p">
           Equivalent to the <code className="nx-code">&lt;tr&gt;</code> element.
           It automatically assigns <code className="nx-code">isHeader</code> on the children
           if that prop is set on this row.
@@ -111,7 +110,7 @@ export default function NxTablePage() {
 
         <h5>NxTableCell</h5>
 
-        <p>
+        <p className="nx-p">
           Equivalent to the <code className="nx-code">&lt;th&gt;</code> or
           <code className="nx-code">&lt;td&gt;</code> element.
         </p>
@@ -180,26 +179,37 @@ export default function NxTablePage() {
           </NxTableBody>
         </NxTable>
       </GalleryDescriptionTile>
-      <GalleryTile title="Simple Example">
-        <NxTableSimpleExample/>
-        <CodeExample content={tableSimpleExampleCode}/>
-      </GalleryTile>
-      <GalleryTile title="Clickable Row Example">
-        <NxTableClickableExample />
-        <CodeExample content={tableClickableExample} />
-      </GalleryTile>
-      <GalleryTile title="Sortable Columns Example">
-        <NxTableSortableExample />
-        <CodeExample content={tableSortableExample} />
-      </GalleryTile>
-      <GalleryTile title="Loading Example">
-        <NxTableLoadingExample />
-        <CodeExample content={tableLoadingExample} />
-      </GalleryTile>
-      <GalleryTile title="Error Example">
-        <NxTableErrorExample />
-        <CodeExample content={tableErrorExample} />
-      </GalleryTile>
+
+      <GalleryExampleTile title="Simple Example"
+                          liveExample={NxTableSimpleExample}
+                          codeExamples={tableSimpleExampleCode}>
+        A basic example of <code className="nx-code">NxTable</code>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Clickable Row Example"
+                          liveExample={NxTableClickableExample}
+                          codeExamples={tableClickableExample}>
+        An example where the rows are styled to indicate that they are clickable.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Sortable Columns Example"
+                          liveExample={NxTableSortableExample}
+                          codeExamples={tableSortableExample}>
+        An example with a sortable column.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Loading Example"
+                          liveExample={NxTableLoadingExample}
+                          codeExamples={tableLoadingExample}>
+        An example of how <code className="nx-code">NxTable</code> should be used while its data is loading.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Error Example"
+                          liveExample={NxTableErrorExample}
+                          codeExamples={tableErrorExample}>
+        An example of how <code className="nx-code">NxTable</code> should be used to indicate that there was an error
+        loading its data.
+      </GalleryExampleTile>
     </>
   );
 }

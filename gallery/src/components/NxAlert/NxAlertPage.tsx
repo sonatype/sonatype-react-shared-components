@@ -6,14 +6,13 @@
  */
 import React from 'react';
 
-import {GalleryDescriptionTile, GalleryTile} from '../../gallery-components/GalleryTiles';
+import {GalleryDescriptionTile, GalleryExampleTile, GalleryTile} from '../../gallery-components/GalleryTiles';
 
 import NxAlertExample from './NxAlertExample';
 import NxErrorAlertExample from './NxErrorAlertExample';
 import NxWarningAlertExample from './NxWarningAlertExample';
 import NxInfoAlertExample from './NxInfoAlertExample';
 import NxSuccessAlertExample from './NxSuccessAlertExample';
-import CodeExample from '../../CodeExample';
 
 const nxErrorAlertExampleCode = require('!!raw-loader!./NxErrorAlertExample').default,
     nxInfoAlertExampleCode = require('!!raw-loader!./NxInfoAlertExample').default,
@@ -24,9 +23,9 @@ const nxErrorAlertExampleCode = require('!!raw-loader!./NxErrorAlertExample').de
 const NxAlertPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Generic alert.</p>
-      <p>Handy for DIY alert variations</p>
-      <p>Accepts any prop that is valid on a div as well as the following:</p>
+      <p className="nx-p">Generic alert.</p>
+      <p className="nx-p">Handy for DIY alert variations</p>
+      <p className="nx-p">Accepts any prop that is valid on a div as well as the following:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -49,36 +48,41 @@ const NxAlertPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Alert Example">
-      <NxAlertExample/>
-      <CodeExample content={nxAlertExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Alert Example"
+                        liveExample={NxAlertExample}
+                        codeExamples={nxAlertExampleCode}>
+      An example of a simple alert which adds a custom modifier class.
+    </GalleryExampleTile>
 
     <GalleryTile title="NxErrorAlert, NxInfoAlert, NxWarningAlert">
-      <p>Standard sonatype alerts.</p>
-      <p>They come in three variations: Error, Info, and Warning.</p>
-      <p>Accepts any prop that is valid on a div</p>
+      <p className="nx-p">Standard sonatype alerts.</p>
+      <p className="nx-p">They come in three variations: Error, Info, and Warning.</p>
+      <p className="nx-p">Accepts any prop that is valid on a div</p>
     </GalleryTile>
 
-    <GalleryTile title="Success Alert Example">
-      <NxSuccessAlertExample />
-      <CodeExample content={nxSuccessAlertExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Success Alert Example"
+                        liveExample={NxSuccessAlertExample}
+                        codeExamples={nxSuccessAlertExampleCode}>
+      An example of an alert demonstrating success styling.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Error Alert Example">
-      <NxErrorAlertExample />
-      <CodeExample content={nxErrorAlertExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Error Alert Example"
+                        liveExample={NxErrorAlertExample}
+                        codeExamples={nxErrorAlertExampleCode}>
+      An example of an alert demonstrating error styling.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Info Alert Example">
-      <NxInfoAlertExample />
-      <CodeExample content={nxInfoAlertExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Info Alert Example"
+                        liveExample={NxInfoAlertExample}
+                        codeExamples={nxInfoAlertExampleCode}>
+      An example of an alert demonstrating information styling.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Warning Alert Example">
-      <NxWarningAlertExample />
-      <CodeExample content={nxWarningAlertExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Warning Alert Example"
+                        liveExample={NxWarningAlertExample}
+                        codeExamples={nxWarningAlertExampleCode}>
+      An example of an alert demonstrating warning styling.
+    </GalleryExampleTile>
   </>;
 
 export default NxAlertPage;

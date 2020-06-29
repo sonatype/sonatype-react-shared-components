@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTreeViewExample from './NxTreeViewExample';
 import NxTreeViewTooltipExample from './NxTreeViewTooltipExample';
@@ -24,7 +23,7 @@ const nxTreeViewCode = require('!!raw-loader!./NxTreeViewExample').default,
 const NxTreeViewPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         A set of default styles and basic React for an expanding tree view.
       </p>
 
@@ -92,30 +91,40 @@ const NxTreeViewPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="NxTreeView Basic Example">
-      <NxTreeViewExample />
-      <CodeExample content={nxTreeViewCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxTreeView Basic Example"
+                        liveExample={NxTreeViewExample}
+                        codeExamples={nxTreeViewCode}>
+      A basic example of an <code className="nx-code">NxTreeView</code> with the corresponding logic necessary to
+      track its collapse/expand state.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NxTreeView Example with trigger tooltip">
-      <NxTreeViewTooltipExample />
-      <CodeExample content={nxTreeViewTooltipCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxTreeView Example with trigger tooltip"
+                        liveExample={NxTreeViewTooltipExample}
+                        codeExamples={nxTreeViewTooltipCode}>
+      Examples of <code className="nx-code">NxTreeView</code>s with tooltips configured on their triggers. The first
+      example uses a simple string for the tooltip while the second example demonstrates a more custom tooltip
+      configuration.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NxTreeView Example with Extras">
-      <NxTreeViewExtras />
-      <CodeExample content={nxTreeViewExtrasCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxTreeView Example with Extras"
+                        liveExample={NxTreeViewExtras}
+                        codeExamples={nxTreeViewExtrasCode}>
+      These examples demonstrate <code className="nx-code">NxTreeView</code>s with extra content such as icons and
+      <code className="nx-code">nx-counter</code>s in their triggers. Note that the last example also demonstrates
+      text overflow behavior
+    </GalleryExampleTile>
 
-    <GalleryTile title="NxTreeView Empty Example">
-      <NxTreeViewEmpty />
-      <CodeExample content={nxTreeViewEmptyCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxTreeView Empty Example"
+                        liveExample={NxTreeViewEmpty}
+                        codeExamples={nxTreeViewEmptyCode}>
+      Example of an <code className="nx-code">NxTreeView</code> that cannot be opened because it has no children.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NxTreeView Disabled Example">
-      <NxTreeViewDisabled />
-      <CodeExample content={nxTreeViewDisabledCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxTreeView Disabled Example"
+                        liveExample={NxTreeViewDisabled}
+                        codeExamples={nxTreeViewDisabledCode}>
+      Example of a disabled <code className="nx-code">NxTreeView</code>.
+    </GalleryExampleTile>
   </>;
 
 export default NxTreeViewPage;

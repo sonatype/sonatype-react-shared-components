@@ -20,7 +20,7 @@ const NxContainerHelpersPage = () => {
   return (
     <>
       <GalleryDescriptionTile>
-        <p>
+        <p className="nx-p">
           The following general guidelines are recommended for the usage of padding and margin.
           The <code className="nx-code">container-vertical</code> and
           <code className="nx-code">container-horizontal</code> SCSS mixins are provided to facilitate these patterns.
@@ -44,13 +44,13 @@ const NxContainerHelpersPage = () => {
             sticking to margin here, we remain compatible with #2 above and also with margin collapsing rules.
           </li>
         </ul>
-        <p>
+        <p className="nx-p">
           The mixins facilitate point #2 above. The <code className="nx-code">container-vertical</code> mixin removes
           top margin from the first child and bottom margin from the last child, while the{' '}
           <code className="nx-code">container-horizontal</code> mixin removes the left margin from the first child and
           right margin from the last child.
         </p>
-        <p>
+        <p className="nx-p">
           These guidelines do have a few caveats that developers must be aware of:
         </p>
         <ul className="nx-list nx-list--bulleted">
@@ -77,12 +77,12 @@ const NxContainerHelpersPage = () => {
 
       <GalleryExampleTile title="General Example"
                           codeExamples={codeExamples}
-                          description="This example consists of a few HTML elements along with some styling which
-                              demonstrates the usage of the nx-container-helpers SCSS mixins. The outermost box is a
-                              vertical container. The second child box is a horizontal container. Note the vertical
-                              margin collapsing and the cancelling of the interior margins which would otherwise
-                              interfere with the padding from the container.">
-        <NxContainerHelpersExample />
+                          liveExample={NxContainerHelpersExample}>
+        This example consists of a few HTML elements along with some styling which
+        demonstrates the usage of the nx-container-helpers SCSS mixins. The outermost box is a
+        vertical container. The second child box is a horizontal container. Note the vertical
+        margin collapsing and the cancelling of the interior margins which would otherwise
+        interfere with the padding from the container.
       </GalleryExampleTile>
     </>
   );

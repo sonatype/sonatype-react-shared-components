@@ -14,7 +14,7 @@ function NxCheckboxInlineExample() {
 
   return (
     <>
-      <p>Subscribed: {isSubscribed.toString()}</p>
+      <p className="nx-p">Subscribed: {isSubscribed.toString()}</p>
 
       <div>
         Some text

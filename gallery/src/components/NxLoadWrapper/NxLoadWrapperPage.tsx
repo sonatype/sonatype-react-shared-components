@@ -6,13 +6,12 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxLoadWrapperErrorExample from './NxLoadWrapperErrorExample';
 import NxLoadWrapperErrorRetryExample from './NxLoadWrapperErrorRetryExample';
 import NxLoadWrapperLoadingExample from './NxLoadWrapperLoadingExample';
 import NxLoadWrapperChildrenExample from './NxLoadWrapperChildrenExample';
-import CodeExample from '../../CodeExample';
 
 const childrenSourceCode = require('!!raw-loader!./NxLoadWrapperChildrenExample').default;
 const loadingSourceCode = require('!!raw-loader!./NxLoadWrapperLoadingExample').default;
@@ -22,8 +21,10 @@ const errorRetrySourceCode = require('!!raw-loader!./NxLoadWrapperErrorRetryExam
 const NxLoadWrapperPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>A component that will display either a loading spinner, an error message, or the specified child VDOM</p>
-      <p>Props:</p>
+      <p className="nx-p">
+        A component that will display either a loading spinner, an error message, or the specified child VDOM
+      </p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -69,22 +70,34 @@ const NxLoadWrapperPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Renders children when not loading or in error">
-      <NxLoadWrapperChildrenExample />
-      <CodeExample content={childrenSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Loading">
-      <NxLoadWrapperLoadingExample />
-      <CodeExample content={loadingSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Error">
-      <NxLoadWrapperErrorExample />
-      <CodeExample content={errorSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Error with retry button">
-      <NxLoadWrapperErrorRetryExample />
-      <CodeExample content={errorRetrySourceCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Renders children when not loading or in error"
+                        liveExample={NxLoadWrapperChildrenExample}
+                        codeExamples={childrenSourceCode}>
+      An <code className="nx-code">NxLoadWrapper</code> in which neither loading nor error are set. As a result, the
+      children are rendered.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Loading"
+                        liveExample={NxLoadWrapperLoadingExample}
+                        codeExamples={loadingSourceCode}>
+      An <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">loading</code> flag is
+      set, and thus the loading spinner is visible.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Error"
+                        liveExample={NxLoadWrapperErrorExample}
+                        codeExamples={errorSourceCode}>
+      An <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">error</code> property
+      is set, and thus an <code className="nx-code">NxErrorAlert</code> is rendered.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Error with retry button"
+                        liveExample={NxLoadWrapperErrorRetryExample}
+                        codeExamples={errorRetrySourceCode}>
+      An <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">error</code> property
+      is set along with a <code className="nx-code">retryHandler</code>, and thus
+      an <code className="nx-code">NxErrorAlert</code> is rendered with a "Retry" button.
+    </GalleryExampleTile>
   </>;
 
 export default NxLoadWrapperPage;

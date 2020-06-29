@@ -6,21 +6,18 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxCounterExample from './NxCounterExample';
-
-const nxCounterCode = require('!!raw-loader!./NxCounterExample').default;
+const nxCounterCode = require('!!raw-loader!./NxCounterExample.html').default;
 
 const NxCounterPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         Basic style for small indicator token which typically displays a single #, a '# of #' string, or a short text
         string.
       </p>
-      <p>
+      <p className="nx-p">
         Some basic positioning CSS examples have been provided. To right justify the counter within its container use
         <code className="nx-code">nx-pull-right</code>.
       </p>
@@ -49,10 +46,14 @@ const NxCounterPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="nx-counter Examples">
-      <NxCounterExample/>
-      <CodeExample content={nxCounterCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="nx-counter Examples"
+                        htmlExample={nxCounterCode}
+                        codeExamples={nxCounterCode}>
+      Examples of <code className="nx-code">nx-counter</code>s with variations. The first is a basic example. The
+      second is an example of the active style. The third and fourth examples demonstrate the addition of the
+      <code className="nx-code">nx-pull-right</code> class to put the counter on the right side of the container.
+      The fourth example demonstrates this in conjunction with text that is long enough to overflow.
+    </GalleryExampleTile>
   </>;
 
 export default NxCounterPage;

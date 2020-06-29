@@ -23,7 +23,7 @@ export default function NxTextInputDisabledExample() {
                      disabled/>
       </div>
       <div>
-        <NxTextInput placeholder="Disabled invalidvalid input"
+        <NxTextInput placeholder="Disabled invalid input"
                      value=""
                      isPristine={false}
                      validatable={true}

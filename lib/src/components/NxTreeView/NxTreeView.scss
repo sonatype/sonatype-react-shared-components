@@ -61,7 +61,6 @@
   border: 1px solid transparent;
   cursor: pointer;
   display: flex;
-  font-size: 14px;
   height: 30px;
   line-height: 32px;
 
@@ -98,7 +97,7 @@
 
 .nx-tree-view__text {
   @include container-horizontal;
-  @include truncate-ellipsis;
+  @include nx-truncate-ellipsis;
 
   align-items: center;
   color: $nx-text-color-light;
@@ -110,7 +109,7 @@
   }
 
   span {
-    @include truncate-ellipsis;
+    @include nx-truncate-ellipsis;
     flex-grow: 1;
   }
 

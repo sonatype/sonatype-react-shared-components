@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxStatefulTreeViewMultiSelectExample from './NxStatefulTreeViewMultiSelectExample';
 import NxStatefulTreeViewMultiSelectDisabledExample from './NxStatefulTreeViewMultiSelectDisabledExample';
@@ -19,7 +18,7 @@ const nxStatefulTreeViewMultiSelectExampleCode = require('!!raw-loader!./NxState
 const NxStatefulTreeViewMultiSelectPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         Stateful Multi select component using tree view with checkboxes. It handles tree view toggling and filter state.
       </p>
 
@@ -38,13 +37,13 @@ const NxStatefulTreeViewMultiSelectPage = () =>
             <td className="nx-cell">Array of {'{id:String, name:String}'}</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">
-              <p>
+              <p className="nx-p">
                 An array of objects that corresponds to the possible options of the component (the checkboxes).
                 These objects need to at least have an <code className="nx-code">id: string</code> property and a{' '}
                 <code className="nx-code">name: string</code> property. If an empty array is passed in, the component
                 will be disabled.
               </p>
-              <p>
+              <p className="nx-p">
                 <code className="nx-code">id</code> will be the value provided to the{' '}
                 <code className="nx-code">onChange</code> callback, and{' '}
                 <code className="nx-code">name</code> will be used to render the option.
@@ -166,16 +165,17 @@ const NxStatefulTreeViewMultiSelectPage = () =>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={nxStatefulTreeViewMultiSelectExampleCode}
-                        description="This example demonstrates basic usage of NxStatefulTreeViewMultiSelect. Note that
-                            the component tracks the collapse/expand state and filter text internally, and the calling
-                            code only needs to track which items are selected.">
-      <NxStatefulTreeViewMultiSelectExample />
+                        liveExample={NxStatefulTreeViewMultiSelectExample}>
+      This example demonstrates basic usage of <code className="nx-code">NxStatefulTreeViewMultiSelect</code>. Note that
+      the component tracks the collapse/expand state and filter text internally, and the calling
+      code only needs to track which items are selected.
     </GalleryExampleTile>
 
-    <GalleryTile title="Disabled Example With Tooltip">
-      <NxStatefulTreeViewMultiSelectDisabledExample />
-      <CodeExample content={nxStatefulTreeViewMultiSelectDisabledExampleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Disabled Example With Tooltip"
+                        liveExample={NxStatefulTreeViewMultiSelectDisabledExample}
+                        codeExamples={nxStatefulTreeViewMultiSelectDisabledExampleCode}>
+      This example shows a disabled <code className="nx-code">NxStatefulTreeViewMultiSelect</code> with a tooltip.
+    </GalleryExampleTile>
   </>;
 
 export default NxStatefulTreeViewMultiSelectPage;

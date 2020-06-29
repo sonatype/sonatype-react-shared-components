@@ -58,6 +58,11 @@ import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
 import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
 import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
 import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPage';
+import NxClickablePage from './styles/NxClickable/NxClickablePage';
+import NxPageHeaderPage from './components/NxPageHeader/NxPageHeaderPage';
+import NxTruncatePage from './styles/NxTruncateEllipsis/NxTruncatePage';
+import NxCodePage from './styles/NxCode/NxCodePage';
+import StylingComponentsPage from './pages/StylingComponents';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -75,6 +80,7 @@ const pageConfig: PageConfig = {
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,
     NxModal: NxModalPage,
+    NxPageHeader: NxPageHeaderPage,
     NxPolicyThreatSlider: NxPolicyThreatSliderPage,
     NxRadio: NxRadioPage,
     NxSubmitMask: NxSubmitMaskPage,
@@ -89,29 +95,34 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
-    NxVulnerabilityDetails: NxVulnerabilityDetailsPage
+    NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
+    NxTruncateEllipsis: NxTruncatePage
   },
   'Guidelines': {
-    'Form Validation Guidelines': FormValidationPage,
     'Contributing to the Gallery': ContributingPage,
-    'font-size and line-height': FontSizePage
+    'font-size and line-height': FontSizePage,
+    'Form Validation Guidelines': FormValidationPage,
+    'Styling Components': StylingComponentsPage
   },
   'Styles - HTML Elements': {
     'nx-alert': NxAlertPage,
     'nx-btn': NxBtnPage,
+    'nx-code': NxCodePage,
     'nx-counter': NxCounterPage,
     'nx-grid': NxGridPage,
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
     'nx-page-title': NxPageTitlePage,
-    'nx-scrollable': NxScrollablePage,
     'nx-table': NxTableStylePage,
     //'nx-text-input': NxTextInputStylesPage,
     'nx-threat-number': NxThreatNumberPage,
     'nx-tile': NxTilePage
   },
-  'Styles - Mixins': {
-    'nx-container-helpers': NxContainerHelpersPage
+  'Styles - Mixins & Helpers': {
+    'nx-clickable': NxClickablePage,
+    'nx-container-helpers': NxContainerHelpersPage,
+    'nx-scrollable': NxScrollablePage,
+    'nx-truncate-ellipsis': NxTruncatePage
   },
   'Layout Examples': {
     //'Form Layout Styles': NxFormLayoutPage,
