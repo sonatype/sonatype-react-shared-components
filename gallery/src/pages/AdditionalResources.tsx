@@ -97,7 +97,8 @@ const AdditionalResources = () =>
         It is also setup as a GitHub Template, just click the "use this template" button (or click{' '}
         <a rel="noreferrer"
            href="https://github.com/sonatype/sonatype-application-builder/generate"
-           target="_blank">here
+           target="_blank">
+          here
         </a>
         ) in GitHub to get started. Note that, at this time, this is an internal to Sonatype template.
       </li>
