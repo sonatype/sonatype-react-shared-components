@@ -99,7 +99,7 @@ const AdditionalResources = () =>
            href="https://github.com/sonatype/sonatype-application-builder/generate"
            target="_blank">here
         </a>
-        ) in GitHub to get started. Note this is an internal to Sonatype template.
+        ) in GitHub to get started. Note that, at this time, this is an internal to Sonatype template.
       </li>
     </ul>
 
