@@ -56,9 +56,8 @@ const AdditionalResources = () =>
     <h3 className="nx-h3 nx-tile__section-header">Good Reads</h3>
     <ul className="nx-list nx-list--bulleted">
       <li className="nx-list__item">
-        <a rel="noreferrer"
-           href="https://reactjs.org/docs/hello-world.html"
-           target="_blank">Main Concepts in React
+        <a rel="noreferrer" href="https://reactjs.org/docs/hello-world.html" target="_blank">
+          Main Concepts in React
         </a>
       </li>
       <li className="nx-list__item">
@@ -92,15 +91,16 @@ const AdditionalResources = () =>
         <a rel="noreferrer"
            href="https://github.com/sonatype/sonatype-application-builder"
            target="_blank">
-             Internal Sonatype Application Builder (SAB) Template
+          Internal Sonatype Application Builder (SAB) Template
         </a>
         {' - '}A great place to start for new projects and a fun place to poke around.
         It is also setup as a GitHub Template, just click the "use this template" button (or click{' '}
         <a rel="noreferrer"
            href="https://github.com/sonatype/sonatype-application-builder/generate"
-           target="_blank">here
+           target="_blank">
+          here
         </a>
-        ) in GitHub to get started. Note this is an internal to Sonatype template.
+        ) in GitHub to get started. Note that, at this time, this is an internal to Sonatype template.
       </li>
     </ul>
 
