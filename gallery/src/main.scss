@@ -15,6 +15,8 @@
 
 .gallery-nav {
   .nx-tree-view__trigger {
+    padding-left: $nx-spacing-xs;
+
     .nx-tree-view__text {
       @include semi-bold();
 
@@ -27,15 +29,17 @@
   height: 100%;
   line-height: $nx-line-height;
   margin-right: 0;
-  margin-bottom: 4px;
+  margin-bottom: 0;
   margin-left: 0;
 }
 
 .gallery-link {
+  @include regular();
+
   border-radius: 6px;
   box-sizing: border-box;
   display: inline-block;
-  padding: $nx-spacing-xxs $nx-spacing-xs $nx-spacing-xxs $nx-spacing-xl;
+  padding: $nx-spacing-xxs $nx-spacing-xs $nx-spacing-xxs 36px;
   text-decoration: none;
   width: 100%;
 
