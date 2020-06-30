@@ -7,8 +7,11 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfigFn = require('./webpack.config.js');
+const { BatchInfo, By, ClassicRunner, Configuration, Eyes, Target } = require('@applitools/eyes-webdriverio');
 
 const host = process.env.TEST_IP || 'localhost';
+
+let eyes;
 
 exports.config = {
     //
@@ -69,7 +72,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'warn',
     //
     // Set specific log levels per logger
     // loggers:
@@ -199,8 +202,45 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function (capabilities, specs) {
+      eyes = new Eyes(new ClassicRunner());
+
+      const batchId = process.env.GIT_COMMIT,
+          eyesConf = new Configuration();
+
+      let branchName = process.env.GIT_BRANCH;
+
+      if (batchId) {
+        const batchInfo = new BatchInfo(branchName);
+        batchInfo.setId(batchId);
+        eyesConf.setBatch(batchInfo);
+      }
+      else {
+        eyesConf.setBatch(new BatchInfo("local"));
+      }
+
+      if (branchName) {
+        const applitoolsBranchname = `sonatype/sonatype-react-shared-components/${branchName}`;
+
+        eyes.setBranchName(applitoolsBranchname);
+      }
+
+      eyes.setParentBranchName('sonatype/sonatype-react-shared-components/master');
+
+      // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
+      eyesConf.setAppName('React Shared Components');
+      eyes.setConfiguration(eyesConf);
+
+      browser.addCommand('eyesSnapshot', function(title) {
+        return eyes.check(title, Target.window());
+      });
+
+      browser.addCommand('eyesRegionSnapshot', function(title, region) {
+        return eyes.check(title, region);
+      });
+
+      return Promise.resolve();
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -217,8 +257,9 @@ exports.config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+    beforeTest: async function (test, context) {
+      await eyes.open(browser, undefined, `${test.parent} ${test.title}`);
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
@@ -234,9 +275,10 @@ exports.config = {
     /**
      * Function to be executed after a test (in Mocha/Jasmine).
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
-
+    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+      await eyes.closeAsync();
+      await eyes.abortIfNotClosed();
+    },
 
     /**
      * Hook that gets executed after the suite has ended

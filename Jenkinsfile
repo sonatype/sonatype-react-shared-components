@@ -10,6 +10,9 @@ def seleniumDockerImage = 'selenium/standalone-chrome'
 def seleniumDockerVersion = '3.141.59-20200409'
 
 dockerizedBuildPipeline(
+  // expose gallery port on host so selenium container can hit it
+  dockerArgs: '-p 4043:4043',
+
   prepare: {
     githubStatusUpdate('pending')
 
@@ -53,23 +56,25 @@ dockerizedBuildPipeline(
       fi
     '''
 
-    sh '''
-      cd lib
-      yarn install
-      npm run test
-      npm run build
-      cd dist
-      npm pack
-      cd ../..
+    withCredentials([string(credentialsId: 'REACT_SHARED_COMPONENTS_APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
+      sh '''
+        cd lib
+        yarn install
+        npm run test
+        npm run build
+        cd dist
+        npm pack
+        cd ../..
 
-      cd gallery
-      yarn install
+        cd gallery
+        yarn install
 
-      # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
-      TEST_IP=$JENKINS_AGENT_IP npm run test
-      npm run build
-      cd ..
-    '''
+        # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
+        TEST_IP=$JENKINS_AGENT_IP npm run test
+        npm run build
+        cd ..
+      '''
+    }
   },
   vulnerabilityScan: {
     if (env.BRANCH_NAME == 'master') {
