@@ -22,6 +22,24 @@ module.exports = {
 
       await targetElement.scrollIntoView({ block: 'center' });
       await hoverElement.moveTo();
+
+      await browser.saveScreenshot('/tmp/before.png');
+
+      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+
+      await browser.saveScreenshot('/tmp/after.png');
+    };
+  },
+
+  focusTest(elementSelector, focusSelector = elementSelector) {
+    return async () => {
+      const [targetElement, focusElement] = await Promise.all([browser.$(elementSelector), browser.$(focusSelector)]);
+
+      await targetElement.scrollIntoView({ block: 'center' });
+      await browser.execute(function(el) {
+        el.focus();
+      }, focusElement);
+
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
     };
   }

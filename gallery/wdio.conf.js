@@ -229,6 +229,11 @@ exports.config = {
 
       // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
       eyesConf.setAppName('React Shared Components');
+
+      // The Hide Caret feature works by unfocusing the element. This prevents checking focus styles
+      eyesConf.setHideCaret(false);
+      eyesConf.setIgnoreCaret(false);
+
       eyes.setConfiguration(eyesConf);
 
       browser.addCommand('eyesSnapshot', function(title) {
