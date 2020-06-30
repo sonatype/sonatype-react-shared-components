@@ -63,6 +63,7 @@ import NxPageHeaderPage from './components/NxPageHeader/NxPageHeaderPage';
 import NxTruncatePage from './styles/NxTruncateEllipsis/NxTruncatePage';
 import NxCodePage from './styles/NxCode/NxCodePage';
 import StylingComponentsPage from './pages/StylingComponents';
+import AdditionalResourcePage from './pages/AdditionalResources';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -99,6 +100,7 @@ const pageConfig: PageConfig = {
     NxTruncateEllipsis: NxTruncatePage
   },
   'Guidelines': {
+    'Additional Resources': AdditionalResourcePage,
     'Contributing to the Gallery': ContributingPage,
     'font-size and line-height': FontSizePage,
     'Form Validation Guidelines': FormValidationPage,
