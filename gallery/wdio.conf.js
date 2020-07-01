@@ -234,6 +234,8 @@ exports.config = {
       eyesConf.setHideCaret(false);
       eyesConf.setIgnoreCaret(false);
 
+      eyesConf.setHideScrollbars(false);
+
       eyes.setConfiguration(eyesConf);
 
       browser.addCommand('eyesSnapshot', function(title) {

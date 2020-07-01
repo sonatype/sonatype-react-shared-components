@@ -36,6 +36,9 @@ module.exports = {
       const [targetElement, focusElement] = await Promise.all([browser.$(elementSelector), browser.$(focusSelector)]);
 
       await targetElement.scrollIntoView({ block: 'center' });
+
+      // make sure mouse is not on element
+      await focusElement.moveTo({ xOffset: -100, yOffset: -100 });
       await browser.execute(function(el) {
         el.focus();
       }, focusElement);
