@@ -35,12 +35,6 @@ export default function NxTabsPage() {
 
         <hr />
 
-        <h5>NxTabs</h5>
-
-        <p>The parent container for the tabs.</p>
-
-        <hr />
-
         <h5>NxTabList</h5>
 
         <p>
