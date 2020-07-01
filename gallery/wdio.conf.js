@@ -234,6 +234,8 @@ exports.config = {
       eyesConf.setHideCaret(false);
       eyesConf.setIgnoreCaret(false);
 
+      // without this hover testing doesn't seem to work; possibly the scrollbar-hiding styles cause elements on
+      // the page to shift, ruining any manual mouse positioning that had just been done
       eyesConf.setHideScrollbars(false);
 
       eyes.setConfiguration(eyesConf);
