@@ -6,26 +6,27 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTextInputSimpleExample from './NxTextInputSimpleExample';
 import NxTextInputValidationExample from './NxTextInputValidationExample';
 import NxTextInputPasswordExample from './NxTextInputPasswordExample';
 import NxTextInputTextAreaExample from './NxTextInputTextAreaExample';
+import NxTextInputTextAreaValidationExample from './NxTextInputTextAreaValidationExample';
 import NxTextInputDisabledExample from './NxTextInputDisabledExample';
-import CodeExample from '../../CodeExample';
 
 const simpleSourceCode = require('!!raw-loader!./NxTextInputSimpleExample').default;
 const validationSourceCode = require('!!raw-loader!./NxTextInputValidationExample').default;
 const passwordSourceCode = require('!!raw-loader!./NxTextInputPasswordExample').default;
 const textAreaSourceCode = require('!!raw-loader!./NxTextInputTextAreaExample').default;
+const textAreaValidationSourceCode = require('!!raw-loader!./NxTextInputTextAreaValidationExample').default;
 const disabledSourceCode = require('!!raw-loader!./NxTextInputDisabledExample').default;
 
 const NxTextInputPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Standard text input with validation styling</p>
-      <p>Props:</p>
+      <p className="nx-p">Standard text input with validation styling</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -57,12 +58,28 @@ const NxTextInputPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">validationErrors</td>
-            <td className="nx-cell">string[]</td>
+            <td className="nx-cell">validatable</td>
+            <td className="nx-cell">boolean</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Zero or more validation error messages.  If empty or not defined, the field is considered to be valid.
-              If the field is invalid, it will receive error styling and a tooltip displaying the first error message.
+              If true, this NxTextInput is subject to validation, the result of which should be passed in via
+              the <code className="nx-code">validationErrors</code> prop, resulting in validation CSS classes being
+              applied (see below). If false, the NxTextInput is not considered to be subject to validation, the
+              <code className="nx-code">validationErrors</code> prop is ignored, and validation-related CSS classes
+              are never applied.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">validationErrors</td>
+            <td className="nx-cell">string | string[]</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              Validation failure messages for components where <code className="nx-code">validatable</code> is
+              true. Any strings contained by this prop's value are taken to be error messages describing a validation
+              failure. These trigger the invalid styling on the component and the first such error message is
+              displayed within the component. If this prop's value does not contain any strings (i.e. if it is null,
+              undefined, or an empty array), the component value is taken to be valid, and corresponding styles
+              are added. For non-validatable components, this prop is ignored.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -78,9 +95,11 @@ const NxTextInputPage = () =>
             <td className="nx-cell">Function ((string) => void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              A callback for when the user presses a key that doesn't necessarily change the input value
-              (e.g. by hitting enter)
-              <p>
+              <p className="nx-p">
+                A callback for when the user presses a key that doesn't necessarily change the input value
+                (e.g. by hitting enter)
+              </p>
+              <p className="nx-p">
                 The value given to the callback will be that of the key name, as described in the spec
                 for{' '}
                 <a target="_blank"
@@ -124,10 +143,11 @@ const NxTextInputPage = () =>
         </tbody>
       </table>
       <h3>State Helpers</h3>
-      <p>
-        '@sonatype/react-shared-components/components/NxTextInput/stateHelpers.ts' includes the following recommended
-        state helper functions, which each return an object containining the "stateful" parts of the NxTextInput props
-        (<code className="nx-code">value</code>, <code className="nx-code">isPristine</code>, and
+      <p className="nx-p">
+        <code className="nx-code">@sonatype/react-shared-components/components/NxTextInput/stateHelpers.ts</code>{' '}
+        includes the following recommended state helper functions, which each return an object containining the
+        "stateful" parts of the NxTextInput props{' '}
+        (<code className="nx-code">value</code>, <code className="nx-code">isPristine</code>, and{' '}
         <code className="nx-code">validationErrors</code>) as well as <code className="nx-code">trimmedValue</code>,
         which holds a whitespace-trimmed copy of the <code className="nx-code">value</code>:
       </p>
@@ -152,7 +172,7 @@ const NxTextInputPage = () =>
             <td className="nx-cell">userInput</td>
             <td className="nx-cell">(validator, newValue: string)</td>
             <td className="nx-cell">
-              <p>
+              <p className="nx-p">
                 Meant to be used to handle user changes to the text input value. The first argument is an optional
                 validator function that receives the new input value (trimmed) as a string and returns zero or more
                 validation error messages. The next argument is the new (raw, untrimmed) value of the text box after
@@ -160,7 +180,7 @@ const NxTextInputPage = () =>
                 <code className="nx-code">value</code>, and with <code className="nx-code">validationErrors</code> as
                 computed by the validator function.
               </p>
-              <p>
+              <p className="nx-p">
                 This function is curried, so that it can be partially applied over the
                 <code className="nx-code">validator</code>.
               </p>
@@ -170,26 +190,44 @@ const NxTextInputPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Simple Example">
-      <NxTextInputSimpleExample />
-      <CodeExample content={simpleSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Example with non-emptiness validation">
-      <NxTextInputValidationExample />
-      <CodeExample content={validationSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Password input example">
-      <NxTextInputPasswordExample />
-      <CodeExample content={passwordSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="TextArea input example">
-      <NxTextInputTextAreaExample />
-      <CodeExample content={textAreaSourceCode} />
-    </GalleryTile>
-    <GalleryTile title="Disabled example">
-      <NxTextInputDisabledExample />
-      <CodeExample content={disabledSourceCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Simple Example"
+                        liveExample={NxTextInputSimpleExample}
+                        codeExamples={simpleSourceCode}>
+      A basic example of an <code className="nx-code">NxTextInput</code>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with non-emptiness validation"
+                        liveExample={NxTextInputValidationExample}
+                        codeExamples={validationSourceCode}>
+      An example of an <code className="nx-code">NxTextInput</code> that validates that its contents are non-empty.
+      Notice that once the user has entered some content, the input from then on displays either the valid or invalid
+      styles, depending on whether it has any contents.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Password input example"
+                        liveExample={NxTextInputPasswordExample}
+                        codeExamples={passwordSourceCode}>
+      An example of an <code className="nx-code">NxTextInput</code> for password entry.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="TextArea input example"
+                        liveExample={NxTextInputTextAreaExample}
+                        codeExamples={textAreaSourceCode}>
+      An example of an <code className="nx-code">NxTextInput</code> set up to be a multi-line text area.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="TextArea input example with validation"
+                        liveExample={NxTextInputTextAreaValidationExample}
+                        codeExamples={textAreaValidationSourceCode}>
+      An example of an <code className="nx-code">NxTextInput</code> set up to be a multi-line text area with validation.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Disabled example"
+                        liveExample={NxTextInputDisabledExample}
+                        codeExamples={disabledSourceCode}>
+      Examples of disabled <code className="nx-code">NxTextInput</code>s. Notice that when
+      disabled, <code className="nx-code">NxTextInput</code> never shows style variations for validation, hover, etc.
+    </GalleryExampleTile>
   </>;
 
 export default NxTextInputPage;

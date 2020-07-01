@@ -9,19 +9,18 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTextInputStylesExample from './NxTextInputStylesExample';
-import CodeExample from '../../CodeExample';
 
 const sourceCode = require('!!raw-loader!./NxTextInputStylesExample').default;
 
 const NxTextInputStylesPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         Base styles for Sonatype text inputs.  Only the styles intended for "static" usage are shown
         here. For styles that involve business logic, such as validation, see
         the <a href="#pages/NxTextInput">NxTextInput React Component</a>.
       </p>
-      <p>Classes:</p>
+      <p className="nx-p">Classes:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -53,9 +52,14 @@ const NxTextInputStylesPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
-      <NxTextInputStylesExample />
-      <CodeExample content={sourceCode} />
+    <GalleryExampleTile title="General Example"
+                        codeExamples={sourceCode}
+                        liveExample={NxTextInputStylesExample}>
+      This example demonstrates the fundamental look of various elements styled with
+      nx-text-input. Note that these styles are not typically used alone, and so elements looking
+      exactly like these will not typically be seen. Rather, these styles would typically be
+      used in conjunction with the validation styles provided by the NxTextInput react component,
+      which add border colors and other signifiers.
     </GalleryExampleTile>
   </>;
 

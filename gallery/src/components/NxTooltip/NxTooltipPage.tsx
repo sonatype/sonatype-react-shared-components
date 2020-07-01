@@ -8,7 +8,6 @@ import React from 'react';
 import { NxInfoAlert } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
 
 import NxTooltipExample from './NxTooltipExample';
 
@@ -16,10 +15,12 @@ const tooltipsExampleCode = require('!!raw-loader!./NxTooltipExample').default,
     tooltipsExampleStyles = require('!!raw-loader!./NxTooltipExample.scss').default;
 
 export default function NxTooltipPage() {
+  const codeExamples = [tooltipsExampleCode, { content: tooltipsExampleStyles, language: 'scss' }];
+
   return (
     <>
       <GalleryDescriptionTile>
-        <p>
+        <p className="nx-p">
           A tooltip component that can wrap other components in order to apply a tooltip to them. The wrapped component
           must be able to receive a ref which it must forward to its top-most native DOM element.
         </p>
@@ -82,10 +83,11 @@ export default function NxTooltipPage() {
           </tbody>
         </table>
       </GalleryDescriptionTile>
-      <GalleryExampleTile>
-        <NxTooltipExample/>
-        <CodeExample content={tooltipsExampleCode}/>
-        <CodeExample language="scss" content={tooltipsExampleStyles}/>
+      <GalleryExampleTile title="General Example"
+                          codeExamples={codeExamples}
+                          liveExample={NxTooltipExample}>
+        This example demonstrates a series of components with tooltips using various
+        configuration options.
       </GalleryExampleTile>
     </>
   );

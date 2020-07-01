@@ -15,32 +15,31 @@
 
 .gallery-nav {
   .nx-tree-view__trigger {
+    padding-left: $nx-spacing-xs;
+
     .nx-tree-view__text {
       @include semi-bold();
 
-      color: #393939;
-      font-size: 16px;
+      color: #2c2c2c;
     }
   }
 }
 
 .nx-tree-view__child.gallery-nav-link {
-  font-size: 16px;
-  height: 32px;
-  line-height: 32px;
+  height: 100%;
+  line-height: $nx-line-height;
   margin-right: 0;
-  margin-bottom: 4px;
+  margin-bottom: 0;
   margin-left: 0;
 }
 
 .gallery-link {
+  @include regular();
+
   border-radius: 6px;
   box-sizing: border-box;
   display: inline-block;
-  font-size: 14px;
-  height: 32px;
-  margin-bottom: 4px;
-  padding-left: 45px;
+  padding: $nx-spacing-xxs $nx-spacing-xs $nx-spacing-xxs 36px;
   text-decoration: none;
   width: 100%;
 
@@ -49,15 +48,15 @@
   }
 
   &.active {
-    @include bold;
+    @include semi-bold;
 
-    background-color: #1a2eac;
+    background-color: #000066;
     color: #fff;
     cursor: default;
     text-decoration: none;
 
     &:hover {
-      background-color: #1a2eac;
+      background-color: #000066;
       color: #fff;
     }
   }
@@ -76,6 +75,11 @@
   pre {
     font-size: $nx-font-size-s;
   }
+}
+
+// .nx-html added to this selector for specificity reasons
+.nx-html .gallery-example .nx-page-header {
+  position: static;
 }
 
 .gallery-submit-mask-area {

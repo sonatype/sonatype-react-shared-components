@@ -10,16 +10,17 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxLoadErrorSimpleExample from './NxLoadErrorSimpleExample';
 import NxLoadErrorRetryExample from './NxLoadErrorRetryExample';
-import CodeExample from '../../CodeExample';
+import NxLoadErrorRetryLongMessageExample from './NxLoadErrorRetryLongMessageExample';
 
 const simpleSourceCode = require('!!raw-loader!./NxLoadErrorSimpleExample').default;
 const retrySourceCode = require('!!raw-loader!./NxLoadErrorRetryExample').default;
+const retryLongMessageSourceCode = require('!!raw-loader!./NxLoadErrorRetryExample').default;
 
 const NxLoadErrorPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Error message with optional Retry button</p>
-      <p>Props:</p>
+      <p className="nx-p">Error message with optional Retry button</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -59,15 +60,25 @@ const NxLoadErrorPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
-      <NxLoadErrorSimpleExample />
-      <CodeExample content={simpleSourceCode} />
+    <GalleryExampleTile title="General Example"
+                        codeExamples={simpleSourceCode}
+                        liveExample={NxLoadErrorSimpleExample}>
+      This example demonstrates a basic NxLoadError which renders the error message in
+      an alert box.
     </GalleryExampleTile>
-    <GalleryExampleTile>
-      In this example, the error is cleared on retry.
-      Note that the NxLoadError component disappears when that happens
-      <NxLoadErrorRetryExample />
-      <CodeExample content={retrySourceCode} />
+
+    <GalleryExampleTile title="Retry Button"
+                        codeExamples={retrySourceCode}
+                        liveExample={NxLoadErrorRetryExample}>
+      In this example, the error is cleared on retry. Note that the NxLoadError
+      component disappears when that happens.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Retry Button with Long Text"
+                        codeExamples={retryLongMessageSourceCode}
+                        liveExample={NxLoadErrorRetryLongMessageExample}>
+      This example demonstrates that when the text is long, the Retry button falls
+      underneath of it but still on the right-hand side of the alert.
     </GalleryExampleTile>
   </>;
 

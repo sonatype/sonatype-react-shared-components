@@ -71,7 +71,7 @@ $nx-tile-background-color: $nx-white;
 }
 
 .nx-tile-header__title {
-  @include truncate-ellipsis;
+  @include nx-truncate-ellipsis;
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row-start: 1;
@@ -80,7 +80,7 @@ $nx-tile-background-color: $nx-white;
   -ms-grid-column: 1;
 
   h1, h2 {
-    @include truncate-ellipsis;
+    @include nx-truncate-ellipsis;
     margin: 0;
   }
 }
@@ -124,6 +124,7 @@ $nx-tile-background-color: $nx-white;
   grid-row-end: 1;
   -ms-grid-row: 1;
   -ms-grid-column: 2;
+  margin-left: $nx-spacing-l;
   text-align: right;
 }
 
@@ -134,11 +135,21 @@ $nx-tile-background-color: $nx-white;
 }
 
 // On pages with tiles with multiple sections these are lighter weight titles
-.nx-tile__section-header {
-  border-top: 1px solid #b7bfdb;
-  margin-top: $nx-spacing-l;
-  margin-bottom: $nx-spacing-md;
-  padding-top: $nx-spacing-l;
+.nx-tile-subsection {
+  @include container-vertical;
+  margin-top: $nx-spacing-xl;
+
+  &:first-of-type {
+    border-top: 1px solid #b7bfdb;
+    margin-top: $nx-spacing-l;
+    padding-top: $nx-spacing-l;
+  }
+
+  .nx-tile-subsection__header {
+    @include container-vertical;
+
+    margin-bottom: $nx-spacing-md;
+  }
 }
 
 .nx-tile-footer {

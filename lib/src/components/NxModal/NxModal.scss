@@ -34,21 +34,12 @@ $nx-modal-content-max-height: calc(100vh - #{$nx-modal-top-spacing} - #{$nx-moda
 
 .nx-modal-footer {
   @include container-vertical;
-  background-color: $nx-grey-1;
-  border-top: $nx-border-dark;
-  padding: 12px 8px;
+  background-color: #fff;
+  border-top: 1px solid #e9e9e9;
+  padding: $nx-spacing-l $nx-spacing-l $nx-spacing-xl $nx-spacing-l;
 
-  &.nx-error {
-    background-color: $nx-fail-color-bg;
-    border: $nx-border-error;
-    color: $nx-text-color-error;
-    margin-right: -1px;
-    margin-bottom: -1px;
-    margin-left: -1px;
-
-    > .nx-alert--error {
-      border: none;
-    }
+  .nx-alert {
+    margin-bottom: $nx-spacing-xl;
   }
 }
 

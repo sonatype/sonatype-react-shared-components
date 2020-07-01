@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxInfoAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxListExamples from './NxListExamples';
@@ -12,7 +13,7 @@ import NxListExamples from './NxListExamples';
 const NxListPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Lists take many forms:</p>
+      <p className="nx-p">Lists take many forms:</p>
       <ul className="nx-list nx-list--bulleted">
         <li className="nx-list__item">Simple data lists</li>
         <li className="nx-list__item">Lists with clickable list items</li>
@@ -21,17 +22,17 @@ const NxListPage = () =>
         <li className="nx-list__item">Lists with actions</li>
         <li className="nx-list__item">Lists with items that have multiple lines of text</li>
       </ul>
-      <p>Lists can also have modified states depending on their content:</p>
+      <p className="nx-p">Lists can also have modified states depending on their content:</p>
       <ul className="nx-list nx-list--bulleted">
         <li className="nx-list__item">Lists with no data</li>
         <li className="nx-list__item">Error states</li>
       </ul>
-      <p>
+      <p className="nx-p">
         The basic layout is a container <code className="nx-code">&lt;div&gt;</code> wrapping a
         <code className="nx-code">&lt;ul&gt;</code>. If the list has a title it is placed inside
         the <code className="nx-code">&lt;div&gt;</code> before the &lt;ul&gt;.
       </p>
-      <p>
+      <p className="nx-p">
         There are also lists that are "clickable", the list items in these lists indicate hover and click states and
         when clicked an event occurs - usually navigation. Clickable lists have hover and disabled states. They share
         error and empty states with default lists.
@@ -106,6 +107,11 @@ const NxListPage = () =>
           </tr>
         </tbody>
       </table>
+      <NxInfoAlert>
+        Note that some of these examples are shown in React as they includes specific icons. When working in
+        React, <code className="nx-code">NxFontAwesomeIcon</code> should be used as shown to get these icons.
+        When not working in React, check the FontAwesome 5 documentation for alternative ways to include the icons.
+      </NxInfoAlert>
     </GalleryDescriptionTile>
     <NxListExamples />
   </>;

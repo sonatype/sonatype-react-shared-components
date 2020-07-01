@@ -22,23 +22,20 @@
 
 .nx-list__title {
   color: $nx-text-color;
-  line-height: 14px;
-  margin: 0 0 10px 0;
+  margin: 0;
 }
 
 .nx-list__item {
   @include semi-bold();
-  @include truncate-ellipsis();
+  @include nx-truncate-ellipsis();
   @include container-vertical;
 
   border-top: 1px solid transparent;
   border-bottom: $nx-border-row;
   box-sizing: border-box;
   color: $nx-text-color;
-  font-size: 14px;
-  line-height: 17px;
   margin: 0;
-  padding: $nx-spacing-md $nx-spacing-xs $nx-spacing-md $nx-spacing-xs;
+  padding: $nx-spacing-sm $nx-spacing-xs;
 
   // we use first of type because we only want to modify the first list item,
   // not alerts, errors, or empty states
@@ -61,7 +58,6 @@
     @include regular();
 
     border: none;
-    line-height: $nx-line-height;
     list-style: disc outside;
     margin: $nx-spacing-sm 10px $nx-spacing-sm 36px;
     overflow: visible;
@@ -88,7 +84,6 @@
   border-top: $nx-border; // assume it's always the first item
   border-bottom: $nx-border-row;
   color: $nx-text-color-light;
-  font-size: 14px;
   text-align: center;
 }
 
@@ -113,7 +108,6 @@
   @include regular();
 
   display: block;
-  line-height: 14px;
   margin: 0;
   padding-top: 4px;
   white-space: normal;
@@ -182,7 +176,7 @@
 
       &:not(.nx-disabled):not([disabled]) {
         border: $nx-border-error;
-        
+
         &:hover, &:focus, &:active {
           background-color: $nx-fail-color-bg;
           border: $nx-border-error;

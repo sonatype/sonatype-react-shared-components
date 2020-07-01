@@ -116,3 +116,12 @@ export {
   default as NxStatefulTextInput,
   Props as NxStatefulTextInputProps
 } from './components/NxTextInput/stateful/NxStatefulTextInput';
+
+export { default as NxCloseButton } from './components/NxCloseButton/NxCloseButton';
+export {
+  default as NxPageHeader,
+  Props as NxPageHeaderProps
+} from './components/NxPageHeader/NxPageHeader';
+
+export * from './util/threatLevels';
+export * from './util/validationUtil';

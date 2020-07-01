@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxModalSimpleExample from './NxModalSimpleExample';
 import NxModalAlertExample from './NxModalAlertExample';
 import NxModalFormExample from './NxModalFormExample';
@@ -26,7 +25,7 @@ export default function NxModalPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p>
+        <p className="nx-p">
           <code className="nx-code">NxModal</code> is the preferred way to handle modals. Invoking
           an <code className="nx-code">NxModal</code> will create 2 separate <code className="nx-code">div</code>
           elements. One div will have the <code className="nx-code">nx-modal</code> class, along with any classes passed
@@ -74,9 +73,7 @@ export default function NxModalPage() {
               <td className="nx-cell"><code className="nx-code">.nx-modal--wide</code></td>
               <td className="nx-cell">The <code className="nx-code">NxModal</code> component</td>
               <td className="nx-cell">
-                <p>
-                  Applies an extra-wide style, for modals with large contents.
-                </p>
+                Applies an extra-wide style, for modals with large contents.
               </td>
             </tr>
           </tbody>
@@ -127,37 +124,45 @@ export default function NxModalPage() {
         </table>
       </GalleryDescriptionTile>
 
-      <GalleryTile title="Simple NxModal Example">
-        <NxModalSimpleExample/>
-        <CodeExample content={NxModalSimpleSourceCode}/>
-      </GalleryTile>
-      <GalleryTile title="NxModal Example with NxAlert">
-        <NxModalAlertExample/>
-        <CodeExample content={NxModalAlertSourceCode}/>
-      </GalleryTile>
-      <GalleryTile title="NxModal with stacked modal example">
-        <p>
-          <code>NxModal</code> also supports stacked or nested modals. A second modal can be generated from inside of
-          an <code>NxModal</code>.
-        </p>
-        <NxModalStackedExample/>
-        <CodeExample content={NxModalStackedSourceCode}/>
-      </GalleryTile>
-      <GalleryTile title="NxModal Example with form">
-        <p>
-          <code>NxModal</code> also supports inclusion and styling of form elements
-        </p>
-        <NxModalFormExample/>
-        <CodeExample content={NxModalFormSourceCode}/>
-      </GalleryTile>
-      <GalleryTile title="NxModal Example with form and error styling">
-        <NxModalFormErrorExample/>
-        <CodeExample content={NxModalFormErrorSourceCode}/>
-      </GalleryTile>
-      <GalleryTile title="Extra Wide NxModal Example">
-        <NxModalExtraWideExample/>
-        <CodeExample content={NxModalExtraWideSourceCode}/>
-      </GalleryTile>
+      <GalleryExampleTile title="Simple NxModal Example"
+                          liveExample={NxModalSimpleExample}
+                          codeExamples={NxModalSimpleSourceCode}>
+        A basic example of an <code className="nx-code">NxModal</code>. Click the button to open the modal.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxModal Example with NxAlert"
+                          liveExample={NxModalAlertExample}
+                          codeExamples={NxModalAlertSourceCode}>
+        An example of an <code className="nx-code">NxModal</code> containing
+        an <code className="nx-code">NxAlert</code>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxModal with stacked modal example"
+                          liveExample={NxModalStackedExample}
+                          codeExamples={NxModalStackedSourceCode}>
+        <code className="nx-code">NxModal</code> also supports stacked or nested modals. A second modal can be
+        generated from inside of an <code className="nx-code">NxModal</code>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxModal Example with form"
+                          liveExample={NxModalFormExample}
+                          codeExamples={NxModalFormSourceCode}>
+        <code className="nx-code">NxModal</code> also supports inclusion and styling of form elements.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxModal Example with form and error styling"
+                          liveExample={NxModalFormErrorExample}
+                          codeExamples={NxModalFormErrorSourceCode}>
+        This <code className="nx-code">NxModal</code> also contains a form, but additionally demonstrates the typical
+        way that an error upon the submission of said form would be handled: with
+        an <code className="nx-code">NxErrorAlert</code> in the footer
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Extra Wide NxModal Example"
+                          liveExample={NxModalExtraWideExample}
+                          codeExamples={NxModalExtraWideSourceCode}>
+        A demonstration of the extra-wide styles for <code className="nx-code">NxModal</code>.
+      </GalleryExampleTile>
     </>
   );
 };

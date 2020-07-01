@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxThreatBarByCategoryExampleList from './NxThreatBarByCategoryExampleListElements';
 import NxThreatBarByPolicyNumberExampleList from './NxThreatBarByPolicyNumberExampleListElements';
@@ -26,11 +25,11 @@ const nxThreatBarByCategoryListCode =
 const NxThreatBarPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         <code className="nx-code">NxThreatBar</code> is used at the left edge of a table cell or list item
         to indicate via color the threat level of the information to follow.
       </p>
-      <p>
+      <p className="nx-p">
         There are two scales to choose from: threat level by category, and policy threat
         level by number. When using this component, it is expected that just one of the props will be passed. If both
         are passed, <code className="nx-code">threatLevelCategory</code> takes precedence. If neither are passed,
@@ -61,7 +60,9 @@ const NxThreatBarPage = () =>
         </tbody>
       </table>
 
-      <p>The following table shows the mapping between threat level number and threat level category</p>
+      <p className="nx-p">
+        The following table shows the mapping between threat level number and threat level category.
+      </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -94,25 +95,31 @@ const NxThreatBarPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Threat Bars by Category in .nx-list">
-      <NxThreatBarByCategoryExampleList/>
-      <CodeExample content={nxThreatBarByCategoryListCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Threat Bars by Category in .nx-list"
+                        liveExample={NxThreatBarByCategoryExampleList}
+                        codeExamples={nxThreatBarByCategoryListCode}>
+      An <code className="nx-code">.nx-list</code> including rows displaying threat bars for each category.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Threat Bars by Policy Number in .nx-list">
-      <NxThreatBarByPolicyNumberExampleList/>
-      <CodeExample content={nxThreatBarByPolicyNumberListCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Threat Bars by Policy Number in .nx-list"
+                        liveExample={NxThreatBarByPolicyNumberExampleList}
+                        codeExamples={nxThreatBarByPolicyNumberListCode}>
+      An <code className="nx-code">.nx-list</code> including rows displaying threat bars for range of policy threat
+      numbers.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Threat Bars by Category in .nx-table">
-      <NxThreatBarByCategoryExampleTable/>
-      <CodeExample content={nxThreatBarByCategoryTableCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Threat Bars by Category in .nx-table"
+                        liveExample={NxThreatBarByCategoryExampleTable}
+                        codeExamples={nxThreatBarByCategoryTableCode}>
+      An <code className="nx-code">.nx-table</code> including rows displaying threat bars for each category.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Threat Bars by Policy Number in .nx-table">
-      <NxThreatBarByPolicyNumberExampleTable/>
-      <CodeExample content={nxThreatBarByPolicyNumberTableCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Threat Bars by Policy Number in .nx-table"
+                        liveExample={NxThreatBarByPolicyNumberExampleTable}
+                        codeExamples={nxThreatBarByPolicyNumberTableCode}>
+      An <code className="nx-code">.nx-table</code> including rows displaying threat bars for range of policy threat
+      numbers.
+    </GalleryExampleTile>
   </>;
 
 export default NxThreatBarPage;

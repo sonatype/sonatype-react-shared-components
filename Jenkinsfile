@@ -6,9 +6,17 @@
  */
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
+def seleniumDockerImage = 'selenium/standalone-chrome'
+def seleniumDockerVersion = '3.141.59-20200409'
+
 dockerizedBuildPipeline(
+  // expose gallery port on host so selenium container can hit it
+  dockerArgs: '-p 4043:4043',
+
   prepare: {
     githubStatusUpdate('pending')
+
+    sh "docker run --name selenium-chrome -d -p 4444:4444 ${seleniumDockerImage}:${seleniumDockerVersion}"
   },
   setVersion: {
     env['VERSION'] = sh(returnStdout: true, script: 'jq -r -e .version lib/package.json').trim()
@@ -48,20 +56,25 @@ dockerizedBuildPipeline(
       fi
     '''
 
-    sh '''
-      cd lib
-      yarn install
-      npm run test
-      npm run build
-      cd dist
-      npm pack
-      cd ../..
+    withCredentials([string(credentialsId: 'REACT_SHARED_COMPONENTS_APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
+      sh '''
+        cd lib
+        yarn install
+        npm run test
+        npm run build
+        cd dist
+        npm pack
+        cd ../..
 
-      cd gallery
-      yarn install
-      npm run build
-      cd ..
-    '''
+        cd gallery
+        yarn install
+
+        # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
+        TEST_IP=$JENKINS_AGENT_IP npm run test
+        npm run build
+        cd ..
+      '''
+    }
   },
   vulnerabilityScan: {
     if (env.BRANCH_NAME == 'master') {
@@ -76,18 +89,7 @@ dockerizedBuildPipeline(
   deploy: {
     withCredentials([string(credentialsId: 'uxui-npm-auth-token', variable: 'NPM_TOKEN')]) {
       withDockerImage(env.DOCKER_IMAGE_ID, 'npmjs-npmrc') {
-        sh '''
-          # The latest-published branch tracks the last commit that was published to npm
-          git fetch origin latest-published
-
-          # Only publish to npm if there were changes to the lib
-          if ! git diff -s --exit-code origin/latest-published... -- lib/; then
-            npm publish --access public lib/dist/sonatype-react-shared-components-$VERSION.tgz
-            git push origin HEAD:refs/heads/latest-published
-          else
-            echo 'Skipping npm publish: no changes in lib since last publish'
-          fi
-        '''
+        sh 'npm publish --access public lib/dist/sonatype-react-shared-components-$VERSION.tgz'
       }
     }
   },
@@ -111,5 +113,11 @@ dockerizedBuildPipeline(
   },
   onFailure: {
     githubStatusUpdate('failure')
+  },
+  cleanup: {
+    sh """
+      docker rm -f selenium-chrome
+      docker rmi ${seleniumDockerImage}:${seleniumDockerVersion}
+    """
   }
 )

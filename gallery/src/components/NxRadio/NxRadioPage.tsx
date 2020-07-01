@@ -6,12 +6,11 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryExampleTile, GalleryTile } from '../../gallery-components/GalleryTiles';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxRadioExample from './NxRadioExample';
 import NxRadioInlineExample from './NxRadioInlineExample';
 import NxRadioNowrapExample from './NxRadioNowrapExample';
-import CodeExample from '../../CodeExample';
 
 const exampleCode = require('!!raw-loader!./NxRadioExample').default;
 const inlineExampleCode = require('!!raw-loader!./NxRadioInlineExample').default;
@@ -20,9 +19,9 @@ const nowrapExampleCode = require('!!raw-loader!./NxRadioNowrapExample').default
 const NxRadioPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Custom Radio input.</p>
-      <p>Child VDOM will be used as a label following the radio button itself.</p>
-      <p>Props:</p>
+      <p className="nx-p">Custom Radio input.</p>
+      <p className="nx-p">Child VDOM will be used as a label following the radio button itself.</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -101,20 +100,28 @@ const NxRadioPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
-      <NxRadioExample />
-      <CodeExample content={exampleCode} />
+    <GalleryExampleTile title="General Example"
+                        codeExamples={exampleCode}
+                        liveExample={NxRadioExample}>
+      This example shows a series of radios in a typical vertical layout with
+      different label content. Note that one of the radios is disabled. Another has no label
+      at all but is adjacent to other content, demonstrating its lack of inherent margin.
+      These radios together operate as a single form control: only one value within the group
+      can be selected at a time.
     </GalleryExampleTile>
 
-    <GalleryTile title="Inline Radio">
-      <NxRadioInlineExample />
-      <CodeExample content={inlineExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Inline Radio"
+                        liveExample={NxRadioInlineExample}
+                        codeExamples={inlineExampleCode}>
+      This examples shows a series of radios laid out inline amongst other inline text.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Radio label does not wrap">
-      <NxRadioNowrapExample />
-      <CodeExample content={nowrapExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Radio label does not wrap"
+                        liveExample={NxRadioNowrapExample}
+                        codeExamples={nowrapExampleCode}>
+      This example includes a container around the radio buttons. This container is deliberately narrow and has a
+      red border. This makes it clear that the labels on radio buttons do not wrap.
+    </GalleryExampleTile>
   </>;
 
 export default NxRadioPage;

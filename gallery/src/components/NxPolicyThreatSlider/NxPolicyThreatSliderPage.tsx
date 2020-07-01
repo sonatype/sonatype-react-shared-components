@@ -7,7 +7,6 @@
 import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
 
 import NxPolicyThreatSliderExample from './NxPolicyThreatSliderExample';
 
@@ -17,7 +16,7 @@ export default function NxPolicyThreatSliderPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p>A slider for selecting a range of policy threats (e.g. values between 0 and 10)</p>
+        <p className="nx-p">A slider for selecting a range of policy threats (e.g. values between 0 and 10)</p>
         <table className="nx-table nx-table--gallery-props">
           <thead>
             <tr className="nx-table-row">
@@ -50,9 +49,11 @@ export default function NxPolicyThreatSliderPage() {
         </table>
       </GalleryDescriptionTile>
 
-      <GalleryExampleTile>
-        <NxPolicyThreatSliderExample/>
-        <CodeExample content={NxPolicyThreatSliderCode}/>
+      <GalleryExampleTile title="General Example"
+                          codeExamples={NxPolicyThreatSliderCode}
+                          liveExample={NxPolicyThreatSliderExample}>
+        This example shows an NxPolicyThreatSlider communicating its selected values
+        to the calling code.
       </GalleryExampleTile>
     </>
   );

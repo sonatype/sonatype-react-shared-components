@@ -6,12 +6,22 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxFontAwesomeIcon} from '@sonatype/react-shared-components';
+import {NxModal, NxFontAwesomeIcon, NxTextInput, NxLoadError} from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
+import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
 
 export default function NxModalFormErrorExample() {
   const [showModal, setShowModal] = useState(false);
   const modalCloseHandler = () => setShowModal(false);
+  const [textFieldState, setTextFieldState] = useState(initialState(''));
+  const [error] = useState<string | null>('');
+  function retryHandler() {
+    // lets say the retried action succeeded this time
+    setShowModal(false);
+  }
+  function onChange(val: string) {
+    setTextFieldState(userInput(null, val));
+  }
 
   return (
     <>
@@ -29,32 +39,21 @@ export default function NxModalFormErrorExample() {
               <div className="nx-form-group">
                 <label className="nx-label">
                   Username
-                  <input type="text"
-                         className="nx-text-input"
-                         placeholder="Username"/>
+                  <NxTextInput { ...textFieldState } onChange={onChange} />
                 </label>
               </div>
               <div className="nx-form-group">
                 <label className="nx-label">
                   Password
-                  <input type="password"
-                         className="nx-text-input"
-                         placeholder="Password"/>
+                  <NxTextInput type="password" placeholder="Enter password" onChange={onChange} { ...textFieldState }/>
                 </label>
               </div>
             </div>
-            <footer className="nx-modal-footer nx-error">
-              <div id="login-error" className="nx-alert nx-alert--error">
-                <NxFontAwesomeIcon icon={faAngry} />
-                <span>You really messed something up!</span>
-              </div>
+            <footer className="nx-modal-footer">
+              <NxLoadError { ...({ error, retryHandler }) } onClick={modalCloseHandler} />
               <div className="nx-btn-bar">
-                <button type="button" onClick={modalCloseHandler} className="nx-btn nx-btn--primary">
-                  Primary
-                </button>
-                <button type="button" onClick={modalCloseHandler} className="nx-btn">Default</button>
-                <button type="button" onClick={modalCloseHandler} className="nx-btn nx-btn--tertiary">
-                  Tertiary
+                <button type="button" onClick={modalCloseHandler} className="nx-btn">
+                  Cancel
                 </button>
               </div>
             </footer>

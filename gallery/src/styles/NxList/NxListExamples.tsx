@@ -5,68 +5,75 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxListSimple from './NxListDefaultExample';
-import NxListClickable from './NxListClickableExample';
-import NxListMultiLine from './NxListMultiLineExample';
-import NxListBulleted from './NxListBulletedExample';
-import NxListWithActions from './NxListWithActionsExample';
-import NxListDefinitionList from './NxListDefinitionListExample';
-import NxListEmpty from './NxListEmptyExample';
-import NxListErrorState from './NxListErrorStateExample';
+import NxListClickableExample from './NxListClickableExample';
 
-const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample').default,
+const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').default,
     NxListClickableCode = require('!!raw-loader!./NxListClickableExample').default,
-    NxListMultiLineCode = require('!!raw-loader!./NxListMultiLineExample').default,
-    NxListBulletedCode = require('!!raw-loader!./NxListBulletedExample').default,
-    NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample').default,
-    NxListDefinitionListCode = require('!!raw-loader!./NxListDefinitionListExample').default,
-    NxListEmptyCode = require('!!raw-loader!./NxListEmptyExample').default,
-    NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample').default;
+    NxListMultiLineCode = require('!!raw-loader!./NxListMultiLineExample.html').default,
+    NxListBulletedCode = require('!!raw-loader!./NxListBulletedExample.html').default,
+    NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.html').default,
+    NxListDefinitionListCode = require('!!raw-loader!./NxListDefinitionListExample.html').default,
+    NxListEmptyCode = require('!!raw-loader!./NxListEmptyExample.html').default,
+    NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.html').default;
 
 const NxListsExamples = () =>
   <>
-    <GalleryTile title="NX Simple List Example">
-      <NxListSimple />
-      <CodeExample content={NxListSimpleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NX Simple List Example"
+                        htmlExample={NxListSimpleCode}
+                        codeExamples={NxListSimpleCode}>
+      Two simple <code className="nx-code">nx-list</code> variations. One is a
+      bare <code className="nx-code">&lt;ul&gt;</code> while the other has
+      a <code className="nx-code">&lt;div&gt;</code> wrapping the <code className="nx-code">&lt;ul&gt;</code> along
+      with a <code className="nx-code">nx-list__title</code>.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NX Clickable List Example">
-      <NxListClickable />
-      <CodeExample content={NxListClickableCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NX Clickable List Example"
+                        liveExample={NxListClickableExample}
+                        codeExamples={NxListClickableCode}>
+      An <code className="nx-code">nx-list</code> demonstrating clickable, selection, and disabled styles.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NX Bulleted List Example">
-      <NxListBulleted />
-      <CodeExample content={NxListBulletedCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NX Bulleted List Example"
+                        htmlExample={NxListBulletedCode}
+                        codeExamples={NxListBulletedCode}>
+      An <code className="nx-code">nx-list</code> demonstrating bulleted list styles more typical of
+      default <code className="nx-code">&lt;ul&gt;</code> styling. These can be nested.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NX Definition List Example">
-      <NxListDefinitionList />
-      <CodeExample content={NxListDefinitionListCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NX Definition List Example"
+                        htmlExample={NxListDefinitionListCode}
+                        codeExamples={NxListDefinitionListCode}>
+      An <code className="nx-code">nx-list</code> style for definition lists.
+      {' '}(<code className="nx-code">&lt;dl&gt;</code>s)
+    </GalleryExampleTile>
 
-    <GalleryTile title="NX List with Actions Example">
-      <NxListWithActions />
-      <CodeExample content={NxListWithActionsCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NX List with Actions Example"
+                        htmlExample={NxListWithActionsCode}
+                        codeExamples={NxListWithActionsCode}>
+      An <code className="nx-code">nx-list</code> with icon buttons for initiation actions.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NX Multi-line Example">
-      <NxListMultiLine />
-      <CodeExample content={NxListMultiLineCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NX Multi-line Example"
+                        htmlExample={NxListMultiLineCode}
+                        codeExamples={NxListMultiLineCode}>
+      An <code className="nx-code">nx-list</code> with subtext in each element. The subtext may optionally be multiple
+      lines in which case it wraps.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NX List Empty Example">
-      <NxListEmpty />
-      <CodeExample content={NxListEmptyCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NX List Empty Example"
+                        htmlExample={NxListEmptyCode}
+                        codeExamples={NxListEmptyCode}>
+      A demonstration of the expected styling and content for an empty <code className="nx-code">nx-list</code>.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NX List with Error Message Example">
-      <NxListErrorState />
-      <CodeExample content={NxListErrorStateCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NX List with Error Message Example"
+                        htmlExample={NxListErrorStateCode}
+                        codeExamples={NxListErrorStateCode}>
+      A demonstration of the expected styling and content for an <code className="nx-code">nx-list</code> whose content
+      failed to load.
+    </GalleryExampleTile>
   </>;
 
 export default NxListsExamples;

@@ -6,19 +6,16 @@
  */
 import React from 'react';
 
-import {GalleryDescriptionTile, GalleryTile} from '../../gallery-components/GalleryTiles';
+import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxDropdownNavigationExample from './NxDropdownNavigationExample';
-import NxDropdownButtonVariantExample from './NxDropdownButtonVariantExample';
-import NxDropdownMixedExample from './NxDropdownMixedExample';
+import NxDropdownScrollingExample from './NxDropdownScrollingExample';
 import NxDropdownDisabledExample from './NxDropdownDisabledExample';
 import NxDropdownCustomLabelExample from './NxDropdownCustomLabelExample';
 import NxDropdownLinksExample from './NxDropdownLinksExample';
-import CodeExample from '../../CodeExample';
 
 const nxDropdownNavigationExampleCode = require('!!raw-loader!./NxDropdownNavigationExample').default,
-    nxDropdownButtonVariantExampleCode = require('!!raw-loader!./NxDropdownButtonVariantExample').default,
-    nxDropdownMixedExample = require('!!raw-loader!./NxDropdownMixedExample').default,
+    nxDropdownScrollingExampleCode = require('!!raw-loader!./NxDropdownScrollingExample').default,
     nxDropdownDisabledExampleCode = require('!!raw-loader!./NxDropdownDisabledExample').default,
     nxDropdownCustomLabelExampleCode = require('!!raw-loader!./NxDropdownCustomLabelExample').default,
     nxDropdownLinksExampleCode = require('!!raw-loader!./NxDropdownLinksExample').default;
@@ -26,8 +23,8 @@ const nxDropdownNavigationExampleCode = require('!!raw-loader!./NxDropdownNaviga
 const NxDropdownPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Dropdown component.</p>
-      <p>Props:</p>
+      <p className="nx-p">Dropdown component.</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -55,10 +52,8 @@ const NxDropdownPage = () =>
             <td className="nx-cell">"primary" | "secondary" | "tertiary"</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              <p>
-                What type of button to render for the dropdown.
-                Defaults to <code className="nx-code">"tertiary"</code>
-              </p>
+              What type of button to render for the dropdown.
+              Defaults to <code className="nx-code">"tertiary"</code>
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -72,10 +67,8 @@ const NxDropdownPage = () =>
             <td className="nx-cell">boolean</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              <p>
-                Controls if the component should be rendered as disabled.
-                Defaults to <code className="nx-code">false</code>
-              </p>
+              Controls if the component should be rendered as disabled.
+              Defaults to <code className="nx-code">false</code>
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -112,51 +105,53 @@ const NxDropdownPage = () =>
           </tr>
         </tbody>
       </table>
-      <h3>Auxiliary Components</h3>
-      <p>
+      <p className="nx-p">
+        By default the dropdown can display a maximum of 10 items before it scrolls the contents of the dropdown menu.
+      </p>
+      <h3 className="nx-h3">Auxiliary Components</h3>
+      <p className="nx-p">
         An auxiliary component called <code className="nx-code">NxDropdownDivider</code> is available
         to be used as separator between child elements.
       </p>
-      <h3>Modifier Classes</h3>
-      <p>
+      <h3 className="nx-h3">Modifier Classes</h3>
+      <p className="nx-p">
         A modifier class called <code className="nx-code">nx-dropdown--navigation</code> is available.
         This class modifies the look of the dropdown so that all child elements are clickable
         and their borders expand to the full width of the menu.
-        It also allows to specify a non-clickable title using the class{' '}
-        <code className="nx-code">nx-dropdown-title</code>.
       </p>
-      <p>For an example of these classes in action, see <i>Navigation Example</i>.</p>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Navigation Example">
-      <NxDropdownNavigationExample />
-      <CodeExample content={nxDropdownNavigationExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Navigation Example"
+                        liveExample={NxDropdownNavigationExample}
+                        codeExamples={nxDropdownNavigationExampleCode}>
+      An example of an <code className="nx-code">NxDropdown</code> as it might be used to implement a navigation list.
+      Note that the menu can contain either <code className="nx-code">&lt;a&gt;</code> or
+      {' '}<code className="nx-code">&lt;button&gt;</code> elements; this example contains both.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Button Variant Example">
-      <NxDropdownButtonVariantExample />
-      <CodeExample content={nxDropdownButtonVariantExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Scrolling Example"
+                        liveExample={NxDropdownScrollingExample}
+                        codeExamples={nxDropdownScrollingExampleCode}>
+      An example with enough elements in the menu to induce scrolling.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Disabled Example">
-      <NxDropdownDisabledExample />
-      <CodeExample content={nxDropdownDisabledExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Disabled Example"
+                        liveExample={NxDropdownDisabledExample}
+                        codeExamples={nxDropdownDisabledExampleCode}>
+      An example of a dropdown that is disabled.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Actions & Lists Example">
-      <NxDropdownMixedExample />
-      <CodeExample content={nxDropdownMixedExample} />
-    </GalleryTile>
+    <GalleryExampleTile title="Links Example"
+                        liveExample={NxDropdownLinksExample}
+                        codeExamples={nxDropdownLinksExampleCode}>
+      An example of a dropdown with a menu of links – typically, links to external sites.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Links Example">
-      <NxDropdownLinksExample />
-      <CodeExample content={nxDropdownLinksExampleCode} />
-    </GalleryTile>
-
-    <GalleryTile title="Custom label example">
-      <NxDropdownCustomLabelExample />
-      <CodeExample content={nxDropdownCustomLabelExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Custom label example"
+                        liveExample={NxDropdownCustomLabelExample}
+                        codeExamples={nxDropdownCustomLabelExampleCode}>
+      This dropdown contains more complex JSX in its label.
+    </GalleryExampleTile>
   </>;
 
 export default NxDropdownPage;

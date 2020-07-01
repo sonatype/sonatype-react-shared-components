@@ -79,7 +79,6 @@
 }
 
 .nx-p {
-  font-size: $nx-font-size-s;
   margin-bottom: $nx-spacing-md;
 }
 
@@ -91,10 +90,6 @@
 }
 
 // Form typography
-.nx-text-input, .nx-textarea {
+.nx-text-input__input {
   @include regular();
-
-  font-size: 14px;
-  line-height: 18px;
-  margin-bottom: 0;
 }

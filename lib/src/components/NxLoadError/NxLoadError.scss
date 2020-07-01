@@ -1,0 +1,27 @@
+@import '../../scss-shared/nx-variables';
+
+.nx-load-error__message {
+  margin-bottom: $nx-spacing-sm;
+  margin-right: $nx-spacing-sm;
+
+  // max-width is the full width minus the icon width, icon margin, and the right margin on this element
+  max-width: calc(100% - #{$nx-spacing-md + $nx-spacing-md + $nx-spacing-sm});
+  word-break: break-word;
+}
+
+.nx-load-error__retry {
+  margin-left: auto;
+}
+
+.nx-alert--load-error {
+  align-items: first baseline;
+  flex-wrap: wrap;
+
+  > .nx-icon {
+    // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
+    // no effect here so we use relative positioning instead
+    bottom: -0.125em;
+    height: 1em;
+    position: relative;
+  }
+}

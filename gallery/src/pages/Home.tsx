@@ -21,16 +21,6 @@ const Home = () =>
       The sidebar at left can be used to navigate to the various examples, which are organized into groups as follows:
     </p>
     <dl className="nx-list nx-list--definition-list">
-      <dt className="nx-list__item nx-list__item--label">Styles - HTML Elements</dt>
-      <dd className="nx-list__item">
-        Demonstrations of raw CSS classes that are available to consumers of RSC. Some of these classes are also
-        available as React components, but are documented here as well for lower-level/non-React use.
-      </dd>
-      <dt className="nx-list__item nx-list__item--label">Styles - Mixins</dt>
-      <dd className="nx-list__item">Documentation of SCSS mixins available to consumers of RSC.</dd>
-      {/* TODO Layout Examples? */}
-      <dt className="nx-list__item nx-list__item--label">Guidelines</dt>
-      <dd className="nx-list__item">Miscellaneous advice for RSC consumers</dd>
       <dt className="nx-list__item nx-list__item--label">React Components</dt>
       <dd className="nx-list__item">
         Documentation of all React components available to consumers of RSC, including demonstrations, example
@@ -40,28 +30,53 @@ const Home = () =>
         should be taken as example only. Depending on the architectural needs of the consuming application, there
         are many different ways that state management and other supporting concerns could be handled.
       </dd>
+      <dt className="nx-list__item nx-list__item--label">Guidelines</dt>
+      <dd className="nx-list__item">Miscellaneous advice for RSC consumers</dd>
+      <dt className="nx-list__item nx-list__item--label">Styles - HTML Elements</dt>
+      <dd className="nx-list__item">
+        Demonstrations of raw CSS classes that are available to consumers of RSC. Some of these classes are also
+        available as React components, but are documented here as well for lower-level/non-React use.
+      </dd>
+      <dt className="nx-list__item nx-list__item--label">Styles - Mixins &amp; Helpers</dt>
+      <dd className="nx-list__item">
+        Documentation of SCSS mixins and CSS helper classes available to consumers of RSC.
+      </dd>
+      <dt className="nx-list__item nx-list__item--label">Layout Examples</dt>
+      <dd className="nx-list__item">
+        Explanations of broader layout concepts that includes groups of components and/or styles working together.
+      </dd>
+      <dt className="nx-list__item nx-list__item--label">JavaScript &amp; TypeScript Utilities</dt>
+      <dd className="nx-list__item">Utility function and datatypes available to users of RSC.</dd>
     </dl>
-    <h3 className="nx-h3">Consuming the React Shared Components</h3>
-    <p className="nx-p">
-      The RSC library is available as an open-source npm module on{' '}
-      <a rel="noreferrer" target="_blank" href="https://www.npmjs.com/package/@sonatype/react-shared-components">
-        npmjs.com
-      </a>
-      {' '} under the name <code className="nx-code">@sonatype/react-shared-components</code>. It is packaged as
-      ECMAScript modules, and is intended to be consumed by project using webpack or a similar module bundler.
-    </p>
-    <h3 className="nx-h3">Component Architecture Philosophy</h3>
-    <p className="nx-p">
-      Most if not all components in RSC come in stateless forms by default. That is, they rely on the consuming
-      code to manage their state. This approach was taken in order to be as flexible as possible in regards to the
-      state management approach that a consuming application might take. For instance, some applications might use
-      redux entirely outside of the UI layer. Other applications might take a more traditional approach, and have
-      various UI components encapsulating their state internally and communicating through various means. In some
-      cases, RSC provides convenience wrapper components to support this latter case. For
-      instance <code className="nx-code">NxStatefulTextInput</code> is a wrapper around the
-      stateless <code className="nx-code">NxTextInput</code> that keeps track of basic state such as text box
-      contents. A non-redux application would likely use this wrapper, which a redux application would not.
-    </p>
+    <section className="nx-tile-subsection">
+      <header className="nx-tile-subsection__header">
+        <h3 className="nx-h3">Consuming the React Shared Components</h3>
+      </header>
+      <p className="nx-p">
+        The RSC library is available as an open-source npm module on{' '}
+        <a rel="noreferrer" target="_blank" href="https://www.npmjs.com/package/@sonatype/react-shared-components">
+          npmjs.com
+        </a>
+        {' '} under the name <code className="nx-code">@sonatype/react-shared-components</code>. It is packaged as
+        ECMAScript modules, and is intended to be consumed by project using webpack or a similar module bundler.
+      </p>
+    </section>
+    <section className="nx-tile-subsection">
+      <header className="nx-tile-subsection__header">
+        <h3 className="nx-h3">Component Architecture Philosophy</h3>
+      </header>
+      <p className="nx-p">
+        Most if not all components in RSC come in stateless forms by default. That is, they rely on the consuming
+        code to manage their state. This approach was taken in order to be as flexible as possible in regards to the
+        state management approach that a consuming application might take. For instance, some applications might use
+        redux entirely outside of the UI layer. Other applications might take a more traditional approach, and have
+        various UI components encapsulating their state internally and communicating through various means. In some
+        cases, RSC provides convenience wrapper components to support this latter case. For
+        instance <code className="nx-code">NxStatefulTextInput</code> is a wrapper around the
+        stateless <code className="nx-code">NxTextInput</code> that keeps track of basic state such as text box
+        contents. A non-redux application would likely use this wrapper, which a redux application would not.
+      </p>
+    </section>
   </GalleryTile>;
 
 export default Home;
