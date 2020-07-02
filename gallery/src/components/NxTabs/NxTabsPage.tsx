@@ -33,7 +33,6 @@ export default function NxTabsPage() {
           {' '}<code className="nx-code">&lt;NxTabPanel&gt;</code> components as children.
         </p>
 
-
         <h3 className="nx-h3">NxTabList</h3>
 
         <p className="nx-p">
