@@ -8,22 +8,20 @@
  /*
   #Tabs
 */
-.nx-tabs {
-  .nx-tab-list {
-    border-bottom: $nx-border-row-dark;
-    padding-left: 0;
+.nx-tab-list {
+  border-bottom: $nx-border-row-dark;
+  padding-left: 0;
+}
 
-    .nx-tab {
-      display: inline-block;
-      list-style: none;
-      margin-bottom: -1px;
-      padding: 9px 15px;
-    }
+.nx-tab {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: -1px;
+  padding: 9px 15px;
+}
 
-    .nx-tab--active {
-      border: solid $nx-background-color-interactive;
-      border-width: 0 0 4px 0;
-      font-weight: bold;
-    }
-  }
+.nx-tab--active {
+  border: solid $nx-background-color-interactive;
+  border-width: 0 0 4px 0;
+  font-weight: bold;
 }
