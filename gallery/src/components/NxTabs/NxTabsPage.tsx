@@ -25,28 +25,25 @@ export default function NxTabsPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <h5>NxTabs</h5>
+        <h3 className="nx-h3">NxTabs</h3>
 
-        <p>
+        <p className="nx-p">
           The top-level container for tabbed navigation.
           It can have <code className="nx-code">&lt;NxTabList&gt;</code> and
           {' '}<code className="nx-code">&lt;NxTabPanel&gt;</code> components as children.
         </p>
 
-        <hr />
 
-        <h5>NxTabList</h5>
+        <h3 className="nx-h3">NxTabList</h3>
 
-        <p>
+        <p className="nx-p">
           The parent container for <code className="nx-code">&lt;NxTab&gt;</code> components.
           These are the components the user would click on to switch tabs.
         </p>
 
-        <hr />
+        <h3 className="nx-h3">NxTab</h3>
 
-        <h5>NxTab</h5>
-
-        <p>The component the user clicks on to switch tabs.</p>
+        <p className="nx-p">The component the user clicks on to switch tabs.</p>
 
         <NxTable>
           <NxTableHead>
@@ -67,11 +64,9 @@ export default function NxTabsPage() {
           </NxTableBody>
         </NxTable>
 
-        <hr />
+        <h3 className="nx-h3">NxTabPanel</h3>
 
-        <h5>NxTabPanel</h5>
-
-        <p>
+        <p className="nx-p">
           Container component for the tab contents.
         </p>
 
