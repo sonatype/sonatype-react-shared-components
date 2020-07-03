@@ -1,7 +1,7 @@
 @mixin focusable-toggle-input($focus-border-selector) {
   position: relative;
 
-  input {
+  .nx-radio__input, .nx-checkbox__input {
     position: absolute;
     z-index: -1;
 
@@ -20,7 +20,7 @@
     #{$focus-border-selector} {
       // the non-IE focus style
       border-color: $nx-color-blue-44;
-      stroke: $nx-color-blue-44;
+      stroke: #43cbf5;
     }
 
     input:focus {
