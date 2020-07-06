@@ -45,11 +45,6 @@
   margin-right: $nx-spacing-md;
   width: 16px;
   vertical-align: top;
-
-  &:last-child {
-    // due to specificity issues the `container-horizontal` mixin on nx-radio isn't successfully setting this
-    margin-right: 0;
-  }
 }
 
 .nx-radio__outer-circle {
