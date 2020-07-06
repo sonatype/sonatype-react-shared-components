@@ -60,6 +60,7 @@
 .nx-radio__input:checked {
   + .nx-radio__circle {
     .nx-radio__outer-circle {
+      fill: #045dd1;
       stroke: #045dd1;
 
       &:hover {
