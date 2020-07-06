@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import { NxRadio } from '@sonatype/react-shared-components';
 
 export default function NxRadioExample() {
-  const [color, setColor] = useState<string | null>('green');
+  const [color, setColor] = useState<string | null>('');
 
   /**
    * TS+React freak out when they see a possible `null` being used in
