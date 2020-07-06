@@ -7,8 +7,11 @@
 import { HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
-export type Props = HTMLAttributes<HTMLDivElement>;
+export type Props = HTMLAttributes<HTMLDivElement> & {
+  activeTab: string | null;
+};
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
+  activeTab: PropTypes.string,
   children: PropTypes.node
 };

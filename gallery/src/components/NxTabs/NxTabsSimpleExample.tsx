@@ -17,17 +17,17 @@ const NxTableSimpleExample = () => {
   const [activeTabId, setActiveTabId] = useState('tab-1');
 
   return (
-    <NxTabs>
+    <NxTabs activeTab={activeTabId}>
       <NxTabList aria-label="Simple Tabs">
-        <NxTab id="tab-1" active={activeTabId === 'tab-1'} onClick={() => setActiveTabId('tab-1')}>Tab 1</NxTab>
-        <NxTab id="tab-2" active={activeTabId === 'tab-2'} onClick={() => setActiveTabId('tab-2')}>Tab 2</NxTab>
-        <NxTab id="tab-3" active={activeTabId === 'tab-3'} onClick={() => setActiveTabId('tab-3')}>Tab 3</NxTab>
-        <NxTab id="tab-4" active={activeTabId === 'tab-4'} onClick={() => setActiveTabId('tab-4')}>Tab 4</NxTab>
+        <NxTab id="tab-1" onClick={() => setActiveTabId('tab-1')}>Tab 1</NxTab>
+        <NxTab id="tab-2" onClick={() => setActiveTabId('tab-2')}>Tab 2</NxTab>
+        <NxTab id="tab-3" onClick={() => setActiveTabId('tab-3')}>Tab 3</NxTab>
+        <NxTab id="tab-4" onClick={() => setActiveTabId('tab-4')}>Tab 4</NxTab>
       </NxTabList>
-      {activeTabId === 'tab-1' && <NxTabPanel labelledBy="tab-1">Tab 1</NxTabPanel>}
-      {activeTabId === 'tab-2' && <NxTabPanel labelledBy="tab-2">Tab 2</NxTabPanel>}
-      {activeTabId === 'tab-3' && <NxTabPanel labelledBy="tab-3">Tab 3</NxTabPanel>}
-      {activeTabId === 'tab-4' && <NxTabPanel labelledBy="tab-4">Tab 4</NxTabPanel>}
+      <NxTabPanel labelledBy="tab-1">Tab 1</NxTabPanel>
+      <NxTabPanel labelledBy="tab-2">Tab 2</NxTabPanel>
+      <NxTabPanel labelledBy="tab-3">Tab 3</NxTabPanel>
+      <NxTabPanel labelledBy="tab-4">Tab 4</NxTabPanel>
     </NxTabs>
   );
 };

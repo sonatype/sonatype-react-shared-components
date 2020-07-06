@@ -9,9 +9,20 @@ import { shallow } from 'enzyme';
 import NxTabPanel from '../NxTabPanel';
 
 describe('NxTabPanel', function () {
-  it('renders an NxTabPanel', function () {
+  it('renders nothing when inactive', () => {
+    jest.spyOn(React, 'useContext').mockImplementation(() => 'anotherTab');
     const component = shallow(<NxTabPanel labelledBy="tab" />);
 
-    expect(component).toMatchSelector('div.nx-tab[role="tabpanel"][aria-expanded="true"][aria-labelledby="tab"]');
+    expect(component).toBeEmptyRender();
+  })
+
+  it('renders when active', function () {
+    jest.spyOn(React, 'useContext').mockImplementation(() => 'tab');
+    const component = shallow(<NxTabPanel labelledBy="tab" />);
+
+    expect(component).toHaveProp('aria-expanded', 'true');
+    expect(component).toHaveProp('aria-labelledby', 'tab');
+    expect(component).toHaveClassName('nx-tab-panel');
+    expect(component).toHaveProp('role', 'tabpanel');
   });
 });

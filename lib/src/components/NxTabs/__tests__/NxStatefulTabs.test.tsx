@@ -8,8 +8,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import NxStatefulTabs from '../stateful/NxStatefulTabs';
 import NxTabList from '../../NxTabList/NxTabList';
+// import NxTab from '../../NxTab/NxTab';
 import NxTab from '../../NxTab/NxTab';
-import NxStatefulTab from '../../NxTab/stateful/NxStatefulTab';
 import NxTabPanel from '../../NxTabPanel/NxTabPanel';
 
 describe('NxStatefulTabs', function () {
@@ -17,13 +17,13 @@ describe('NxStatefulTabs', function () {
     const component = mount(
       <NxStatefulTabs>
         <NxTabList>
-          <NxStatefulTab id="tab">Tab</NxStatefulTab>
+          <NxTab id="tab">Tab</NxTab>
         </NxTabList>
         <NxTabPanel labelledBy="tab">Tab Content</NxTabPanel>
       </NxStatefulTabs>
     );
 
-    expect(component.find(NxTab)).toHaveProp('active', true);
+    expect(component).toContainExactlyOneMatchingElement('#tab.nx-tab.active');
     expect(component.find('[labelledBy="tab"]')).not.toBeEmptyRender();
   });
 
@@ -31,8 +31,8 @@ describe('NxStatefulTabs', function () {
     const component = mount(
       <NxStatefulTabs>
         <NxTabList>
-          <NxStatefulTab id="tab">Tab</NxStatefulTab>
-          <NxStatefulTab id="tab-2">Tab 2</NxStatefulTab>
+          <NxTab id="tab">Tab</NxTab>
+          <NxTab id="tab-2">Tab 2</NxTab>
         </NxTabList>
         <NxTabPanel labelledBy="tab">Tab Content</NxTabPanel>
         <NxTabPanel labelledBy="tab-2">Tab 2 Content</NxTabPanel>
@@ -41,8 +41,8 @@ describe('NxStatefulTabs', function () {
 
     component.find('#tab-2').first().simulate('click');
 
-    expect(component.find('#tab').first()).toHaveProp('active', false);
-    expect(component.find('#tab-2').first()).toHaveProp('active', true);
-    expect(component.find('[labelledBy="tab-2"]')).not.toBeEmptyRender();
+    expect(component).toContainExactlyOneMatchingElement('.nx-tab.active');
+    expect(component).toContainExactlyOneMatchingElement('#tab-2.nx-tab.active');
+    expect(component.closest('[labelledBy="tab-2"]')).not.toBeEmptyRender();
   });
 });

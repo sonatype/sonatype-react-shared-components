@@ -9,18 +9,22 @@ import React from 'react';
 import {
   NxStatefulTabs,
   NxTabList,
-  NxStatefulTab,
+  NxTab,
   NxTabPanel
 } from '@sonatype/react-shared-components';
 
 const NxStatefulTabsSimpleExample = () => {
+  function clickHandler(event: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+    alert(`clicked ${event.currentTarget.id}`);
+  }
+
   return (
     <NxStatefulTabs>
       <NxTabList>
-        <NxStatefulTab id="tab-1">Tab 1</NxStatefulTab>
-        <NxStatefulTab id="tab-2">Tab 2</NxStatefulTab>
-        <NxStatefulTab id="tab-3">Tab 3</NxStatefulTab>
-        <NxStatefulTab id="tab-4" onClick={() => alert('click')}>Tab 4</NxStatefulTab>
+        <NxTab id="tab-1" onClick={clickHandler}>Tab 1</NxTab>
+        <NxTab id="tab-2" onClick={clickHandler}>Tab 2</NxTab>
+        <NxTab id="tab-3" onClick={clickHandler}>Tab 3</NxTab>
+        <NxTab id="tab-4" onClick={clickHandler}>Tab 4</NxTab>
       </NxTabList>
       <NxTabPanel labelledBy="tab-1">Tab 1</NxTabPanel>
       <NxTabPanel labelledBy="tab-2">Tab 2</NxTabPanel>

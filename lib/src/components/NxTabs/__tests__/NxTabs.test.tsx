@@ -10,8 +10,9 @@ import NxTabs from '../NxTabs';
 
 describe('NxTabs', function () {
   it('renders NxTabs', function () {
-    const component = shallow(<NxTabs />);
+    const component = shallow(<NxTabs activeTab="activeTabId"/>);
 
-    expect(component).toMatchSelector('div.nx-tabs');
+    expect(component).toHaveValue('activeTabId');
+    expect(component.dive()).toHaveClassName('nx-tabs');
   });
 });

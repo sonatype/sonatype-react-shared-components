@@ -9,16 +9,18 @@ import { shallow } from 'enzyme';
 import NxTab from '../NxTab';
 
 describe('NxTab', function () {
-  it('renders a tab with the expected class names when active={true}', function () {
-    const component = shallow(<NxTab id="tab" active={true} />);
+  it('renders a tab with the expected class names', function () {
+    const component = shallow(<NxTab id="tab"/>);
 
-    expect(component).toMatchSelector('li.nx-tab.nx-tab--active[role="tab"][aria-selected="true"]');
+    expect(component).toHaveProp('aria-selected', 'false');
+    expect(component).not.toHaveClassName('active');
   });
 
   it('renders a tab with the expected class names when active={false}', function () {
-    const component = shallow(<NxTab id="tab" active={false} />);
+    jest.spyOn(React, 'useContext').mockImplementation(() => 'tab');
+    const component = shallow(<NxTab id="tab"/>);
 
-    expect(component).toMatchSelector('li.nx-tab[aria-selected="false"]');
-    expect(component).not.toMatchSelector('li.nx-tab.nx-tab--active');
+    expect(component).toHaveProp('aria-selected', 'true');
+    expect(component).toHaveClassName('active');
   });
 });

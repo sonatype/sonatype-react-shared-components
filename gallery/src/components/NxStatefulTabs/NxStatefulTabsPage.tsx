@@ -22,19 +22,12 @@ export default function NxTablePage() {
         <p className="nx-p">
           The top-level container for tabbed navigation.
           The first child element must be a <code className="nx-code">&lt;NxTabList&gt;</code> component
-          containing <code className="nx-code">&lt;NxStatefulTab&gt;</code> components.
+          containing <code className="nx-code">&lt;NxTab&gt;</code> components.
           All other children must be <code className="nx-code">&lt;NxTabPanel&gt;</code> components.
           There must be at least one <code className="nx-code">&lt;NxTabPanel&gt;</code> for each
           {' '}<code className="nx-code">&lt;NxTabLabel&gt;</code> and they must include a
-          {' '}<code className="nx-code">labelledBy</code> attribute which matches the corresponding id for the related
-          {' '}<code className="nx-code">&lt;NxStatefulTab&gt;</code>.
-        </p>
-
-        <h3 className="nx-h3">NxStatefulTab</h3>
-
-        <p className="nx-p">
-          Replaces the <code className="nx-code">&lt;NxTab&gt;</code> to remove the requirement for
-          the <code className="nx-code">active</code> attribute.
+          {' '}<code className="nx-code">labelledBy</code> attribute which matches the corresponding
+          {' '}<code className="nx-code">id</code> for the related <code className="nx-code">&lt;NxTab&gt;</code>.
         </p>
       </GalleryDescriptionTile>
       <GalleryTile title="Simple Example">

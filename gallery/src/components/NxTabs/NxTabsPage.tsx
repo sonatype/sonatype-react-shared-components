@@ -40,10 +40,6 @@ export default function NxTabsPage() {
           These are the components the user would click on to switch tabs.
         </p>
 
-        <h3 className="nx-h3">NxTab</h3>
-
-        <p className="nx-p">The component the user clicks on to switch tabs.</p>
-
         <NxTable>
           <NxTableHead>
             <NxTableRow>
@@ -55,13 +51,21 @@ export default function NxTabsPage() {
           </NxTableHead>
           <NxTableBody>
             <NxTableRow>
-              <NxTableCell>active</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>Used to mark the current tab as active</NxTableCell>
+              <NxTableCell>activeTab</NxTableCell>
+              <NxTableCell>string</NxTableCell>
+              <NxTableCell>true</NxTableCell>
+              <NxTableCell>
+                The id of the active <code className="nx-code">NxTab</code>,
+                only the <code className="nx-code">NxTabPanel</code> with a
+                matching <code className="nx-code">labelledBy</code> prop will be rendered.
+              </NxTableCell>
             </NxTableRow>
           </NxTableBody>
         </NxTable>
+
+        <h3 className="nx-h3">NxTab</h3>
+
+        <p className="nx-p">The component the user clicks on to switch tabs.</p>
 
         <h3 className="nx-h3">NxTabPanel</h3>
 

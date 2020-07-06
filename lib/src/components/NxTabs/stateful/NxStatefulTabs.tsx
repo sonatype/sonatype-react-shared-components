@@ -9,7 +9,7 @@ import React, { cloneElement, isValidElement, useState, Children } from 'react';
 import NxTabs from '../NxTabs';
 import { Props as NxTabProps } from '../../NxTab/types';
 
-import { Props, propTypes } from '../types';
+import { Props, propTypes } from './types';
 
 /**
  * A stateful component for rendering clickable tabs.
@@ -30,24 +30,22 @@ const NxStatefulTabs = function NxStatefulTabsElement(props: Props) {
     return null;
   }
 
-  const firstTabId = (Children.toArray(originalTabList.props.children)[0].props as NxTabProps).id;
-  const [activeTabId, setActiveTabId] = useState(firstTabId);
+  const firstActiveTab = (Children.toArray(originalTabList.props.children)[0].props as NxTabProps).id;
+  const [activeTab, setActiveTab] = useState(firstActiveTab);
 
   const tabList = cloneElement(originalTabList, {
     children: Children.map(originalTabList.props.children, (child) => cloneElement(child, {
-      active: child.props.id === activeTabId,
       onClick: function() {
-        setActiveTabId(child.props.id);
+        setActiveTab(child.props.id);
         child.props.onClick && child.props.onClick.apply(null, arguments);
       }
     }))
   });
-  const activeTab = tabPanels.find(tabPanel => isValidElement(tabPanel) && tabPanel.props.labelledBy === activeTabId);
 
   return (
-    <NxTabs {...attrs}>
+    <NxTabs activeTab={activeTab} {...attrs}>
       {tabList}
-      {activeTab}
+      {tabPanels}
     </NxTabs>
   );
 };

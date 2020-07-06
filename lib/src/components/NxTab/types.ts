@@ -9,11 +9,9 @@ import PropTypes from 'prop-types';
 
 export type Props = LiHTMLAttributes<HTMLLIElement> & {
   id: string;
-  active: boolean;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   id: PropTypes.string.isRequired,
-  active: PropTypes.bool.isRequired,
   children: PropTypes.node
 };
