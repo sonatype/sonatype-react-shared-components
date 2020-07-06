@@ -17,9 +17,9 @@ export default function NxTablePage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <h5>NxStatefulTabs</h5>
+        <h3 className="nx-h3">NxStatefulTabs</h3>
 
-        <p>
+        <p className="nx-p">
           The top-level container for tabbed navigation.
           The first child element must be a <code className="nx-code">&lt;NxTabList&gt;</code> component
           containing <code className="nx-code">&lt;NxStatefulTab&gt;</code> components.
@@ -30,11 +30,9 @@ export default function NxTablePage() {
           {' '}<code className="nx-code">&lt;NxStatefulTab&gt;</code>.
         </p>
 
-        <hr />
+        <h3 className="nx-h3">NxStatefulTab</h3>
 
-        <h5>NxStatefulTab</h5>
-
-        <p>
+        <p className="nx-p">
           Replaces the <code className="nx-code">&lt;NxTab&gt;</code> to remove the requirement for
           the <code className="nx-code">active</code> attribute.
         </p>
