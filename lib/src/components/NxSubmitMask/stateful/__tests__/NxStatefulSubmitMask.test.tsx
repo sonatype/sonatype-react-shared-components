@@ -50,7 +50,7 @@ describe('NxStatefulSubmitMask', function() {
     act(function() {
       jest.runAllTimers();
       component.update();
-   });
+    });
   }
 
   it('briefly renders the NxSubmitMask with success=true when its success prop is true and then renders nothing',
