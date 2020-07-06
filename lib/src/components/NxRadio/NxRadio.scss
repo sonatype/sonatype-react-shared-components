@@ -24,6 +24,10 @@
       stroke: #2c2c2c;
     }
   }
+
+  + .nx-radio {
+    margin-left: $nx-spacing-xl;
+  }
 }
 
 .nx-radio--disabled {
