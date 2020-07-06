@@ -23,11 +23,7 @@ module.exports = {
       await targetElement.scrollIntoView({ block: 'center' });
       await hoverElement.moveTo();
 
-      await browser.saveScreenshot('/tmp/before.png');
-
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-
-      await browser.saveScreenshot('/tmp/after.png');
     };
   },
 
