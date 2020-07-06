@@ -8,7 +8,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import NxStatefulTabs from '../stateful/NxStatefulTabs';
 import NxTabList from '../../NxTabList/NxTabList';
-// import NxTab from '../../NxTab/NxTab';
 import NxTab from '../../NxTab/NxTab';
 import NxTabPanel from '../../NxTabPanel/NxTabPanel';
 
@@ -40,6 +39,25 @@ describe('NxStatefulTabs', function () {
     );
 
     component.find('#tab-2').first().simulate('click');
+
+    expect(component).toContainExactlyOneMatchingElement('.nx-tab.active');
+    expect(component).toContainExactlyOneMatchingElement('#tab-2.nx-tab.active');
+    expect(component.closest('[labelledBy="tab-2"]')).not.toBeEmptyRender();
+  });
+
+  it('selects the second tab on keypress', function () {
+    const component = mount(
+      <NxStatefulTabs>
+        <NxTabList>
+          <NxTab id="tab">Tab</NxTab>
+          <NxTab id="tab-2">Tab 2</NxTab>
+        </NxTabList>
+        <NxTabPanel labelledBy="tab">Tab Content</NxTabPanel>
+        <NxTabPanel labelledBy="tab-2">Tab 2 Content</NxTabPanel>
+      </NxStatefulTabs>
+    );
+
+    component.find('#tab-2').first().simulate('keypress', {key: ' '});
 
     expect(component).toContainExactlyOneMatchingElement('.nx-tab.active');
     expect(component).toContainExactlyOneMatchingElement('#tab-2.nx-tab.active');

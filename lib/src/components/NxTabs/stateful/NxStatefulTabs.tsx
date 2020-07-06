@@ -35,6 +35,13 @@ const NxStatefulTabs = function NxStatefulTabsElement(props: Props) {
 
   const tabList = cloneElement(originalTabList, {
     children: Children.map(originalTabList.props.children, (child) => cloneElement(child, {
+      onKeyPress: function(event: React.KeyboardEvent<NxTabProps>) {
+        if (event.key === ' ') {
+          event.preventDefault();
+          setActiveTab(child.props.id);
+        }
+        child.props.onKeyPress && child.props.onKeyPress.apply(null, arguments);
+      },
       onClick: function() {
         setActiveTab(child.props.id);
         child.props.onClick && child.props.onClick.apply(null, arguments);

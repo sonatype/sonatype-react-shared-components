@@ -14,7 +14,7 @@ describe('NxTabPanel', function () {
     const component = shallow(<NxTabPanel labelledBy="tab" />);
 
     expect(component).toBeEmptyRender();
-  })
+  });
 
   it('renders when active', function () {
     jest.spyOn(React, 'useContext').mockImplementation(() => 'tab');

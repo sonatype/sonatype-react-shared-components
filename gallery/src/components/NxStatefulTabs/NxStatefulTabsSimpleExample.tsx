@@ -21,10 +21,10 @@ const NxStatefulTabsSimpleExample = () => {
   return (
     <NxStatefulTabs>
       <NxTabList>
-        <NxTab id="tab-1" onClick={clickHandler}>Tab 1</NxTab>
-        <NxTab id="tab-2" onClick={clickHandler}>Tab 2</NxTab>
-        <NxTab id="tab-3" onClick={clickHandler}>Tab 3</NxTab>
-        <NxTab id="tab-4" onClick={clickHandler}>Tab 4</NxTab>
+        <NxTab id="tab-1" tabIndex={1} onClick={clickHandler}>Tab 1</NxTab>
+        <NxTab id="tab-2" tabIndex={2} onClick={clickHandler}>Tab 2</NxTab>
+        <NxTab id="tab-3" tabIndex={3} onClick={clickHandler}>Tab 3</NxTab>
+        <NxTab id="tab-4" tabIndex={4} onClick={clickHandler}>Tab 4</NxTab>
       </NxTabList>
       <NxTabPanel labelledBy="tab-1">Tab 1</NxTabPanel>
       <NxTabPanel labelledBy="tab-2">Tab 2</NxTabPanel>

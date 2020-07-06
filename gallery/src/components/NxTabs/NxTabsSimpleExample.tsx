@@ -16,13 +16,24 @@ import {
 const NxTableSimpleExample = () => {
   const [activeTabId, setActiveTabId] = useState('tab-1');
 
+  function handleKeyPress(event: React.KeyboardEvent<HTMLLIElement>) {
+    if (event.key === ' ') {
+      event.preventDefault();
+      setActiveTabId(event.currentTarget.id);
+    }
+  }
+
+  function handleClick(event: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+    setActiveTabId(event.currentTarget.id);
+  }
+
   return (
     <NxTabs activeTab={activeTabId}>
       <NxTabList aria-label="Simple Tabs">
-        <NxTab id="tab-1" onClick={() => setActiveTabId('tab-1')}>Tab 1</NxTab>
-        <NxTab id="tab-2" onClick={() => setActiveTabId('tab-2')}>Tab 2</NxTab>
-        <NxTab id="tab-3" onClick={() => setActiveTabId('tab-3')}>Tab 3</NxTab>
-        <NxTab id="tab-4" onClick={() => setActiveTabId('tab-4')}>Tab 4</NxTab>
+        <NxTab id="tab-1" tabIndex={1} onKeyPress={handleKeyPress} onClick={handleClick}>Tab 1</NxTab>
+        <NxTab id="tab-2" tabIndex={2} onKeyPress={handleKeyPress} onClick={handleClick}>Tab 2</NxTab>
+        <NxTab id="tab-3" tabIndex={3} onKeyPress={handleKeyPress} onClick={handleClick}>Tab 3</NxTab>
+        <NxTab id="tab-4" tabIndex={4} onKeyPress={handleKeyPress} onClick={handleClick}>Tab 4</NxTab>
       </NxTabList>
       <NxTabPanel labelledBy="tab-1">Tab 1</NxTabPanel>
       <NxTabPanel labelledBy="tab-2">Tab 2</NxTabPanel>
