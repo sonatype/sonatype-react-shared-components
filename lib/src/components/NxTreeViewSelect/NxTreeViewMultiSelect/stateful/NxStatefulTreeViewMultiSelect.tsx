@@ -7,12 +7,12 @@
 import React, {FunctionComponent, useState} from 'react';
 
 import NxTreeViewMultiSelect from '../NxTreeViewMultiSelect';
-import { Props, propTypes } from './types';
+import { Props, Option, propTypes } from './types';
 export { Props, Option } from './types';
-import useFuzzyFilter from '../../../../util/useFuzzyFilter';
+import useFuzzyFilter, { FuseOptions } from '../../../../util/useFuzzyFilter';
 
 const NxStatefulTreeViewMultiSelect: FunctionComponent<Props> = function NxStatefulTreeViewMultiSelect(props) {
-  const {options} = props,
+  const { options, fuzzyFilterConfig } = props,
       isOpenInitialState = !!props.isOpen;
 
   const [isOpen, toggleOpen] = useState(isOpenInitialState),
@@ -20,7 +20,23 @@ const NxStatefulTreeViewMultiSelect: FunctionComponent<Props> = function NxState
         toggleOpen(!isOpen);
       };
 
-  const [filteredOptions, filter, setFilter] = useFuzzyFilter(options, {keys: ['name'], threshold: 0.1});
+  /**
+   * Config fuzzyFilter threshold and distance from props.
+   *
+   * Defaults provided to handle our usual max-length for orgs/apps (200):
+   * According to https://fusejs.io/concepts/scoring-theory.html#scoring-theory
+   * an entry is considered a match if it is X characters from location,
+   * where:
+   *  X = distance * threshold,
+   *  location = 0 (default)
+   */
+  const filterConfigOptions: FuseOptions<Option> = {
+    keys: ['name'],
+    threshold: 0.1,
+    distance: 2000,
+    ...fuzzyFilterConfig
+  };
+  const [filteredOptions, filter, setFilter] = useFuzzyFilter(options, filterConfigOptions);
 
   return <NxTreeViewMultiSelect {...props}
                                 isOpen={isOpen}

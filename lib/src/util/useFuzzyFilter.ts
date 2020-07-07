@@ -16,4 +16,6 @@ function useFuzzyFilter<T>(input: T[], options: Fuse.FuseOptions<T>): [T[], stri
   return [output, filterTerm, setFilterTerm];
 }
 
+export type FuseOptions<T> = Fuse.FuseOptions<T>;
+
 export default useFuzzyFilter;

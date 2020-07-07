@@ -87,4 +87,47 @@ describe('NxStatefulTreeViewMultiSelect', function() {
       ]
     });
   });
+
+  describe('fuzzyFilterConfig props', function() {
+    const renderOpts = [
+      {id: 'foo', name: 'App With Many Spaces 1'},
+      {id: 'bar', name: 'App-With-Many-Dashes-1'}
+    ];
+
+    it('allows fuzzyFilter to be configured', function () {
+      const shallowRender = getShallow({
+        options: renderOpts,
+        fuzzyFilterConfig: {
+          distance: 100
+        }
+      });
+      shallowRender.simulate('filterChange', ' Spaces');
+      // Low filter distance means no match for terms at the tail of the string
+      expect(shallowRender).toHaveProp({
+        filter: ' Spaces',
+        filteredOptions: []
+      });
+    });
+
+    it('assigns fuzzyFilterConfig defaults', function() {
+      const shallowRender = getShallow({
+        options: renderOpts
+      });
+
+      shallowRender.simulate('filterChange', ' Spaces');
+      expect(shallowRender).toHaveProp({
+        filter: ' Spaces',
+        filteredOptions: [
+          {id: 'foo', name: 'App With Many Spaces 1'}
+        ]
+      });
+      shallowRender.simulate('filterChange', '-Dashes-1');
+      expect(shallowRender).toHaveProp({
+        filter: '-Dashes-1',
+        filteredOptions: [
+          {id: 'bar', name: 'App-With-Many-Dashes-1'}
+        ]
+      });
+    });
+  });
 });

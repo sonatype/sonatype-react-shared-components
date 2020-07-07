@@ -8,6 +8,7 @@ import {ReactNode} from 'react';
 import * as PropTypes from 'prop-types';
 import {Option, optionPropType} from '../../commonTypes';
 export {Option} from '../../commonTypes';
+import { FuseOptions } from '../../../../util/useFuzzyFilter';
 
 export interface Props {
   options: Option[];
@@ -23,6 +24,7 @@ export interface Props {
   tooltipModifierClass?: string | null;
   filterPlaceholder?: string | null;
   filterThreshold?: number | null;
+  fuzzyFilterConfig?: FuseOptions<Option> | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -41,5 +43,6 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   optionTooltipGenerator: PropTypes.func,
   tooltipModifierClass: PropTypes.string,
   filterPlaceholder: PropTypes.string,
-  filterThreshold: PropTypes.number
+  filterThreshold: PropTypes.number,
+  fuzzyFilterConfig: PropTypes.object
 };
