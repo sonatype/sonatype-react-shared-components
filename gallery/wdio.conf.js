@@ -56,7 +56,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 1,
+    maxInstances: 10,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -229,6 +229,15 @@ exports.config = {
 
       // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
       eyesConf.setAppName('React Shared Components');
+
+      // The Hide Caret feature works by unfocusing the element. This prevents checking focus styles
+      eyesConf.setHideCaret(false);
+      eyesConf.setIgnoreCaret(false);
+
+      // without this hover testing doesn't seem to work; possibly the scrollbar-hiding styles cause elements on
+      // the page to shift, ruining any manual mouse positioning that had just been done
+      eyesConf.setHideScrollbars(false);
+
       eyes.setConfiguration(eyesConf);
 
       browser.addCommand('eyesSnapshot', function(title) {

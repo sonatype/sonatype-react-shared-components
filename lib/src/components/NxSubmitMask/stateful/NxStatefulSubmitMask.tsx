@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, useRef, useState } from 'react';
+import React, { FunctionComponent, useRef, useState, useEffect } from 'react';
 
 import NxSubmitMask, { SUCCESS_VISIBLE_TIME_MS, Props } from '../NxSubmitMask';
 
@@ -30,15 +30,25 @@ const NxStatefulSubmitMask: FunctionComponent<Props> =
       setInternalState(stateFromProps);
     }
 
-    if (isSuccess) {
-      if (!successTimeoutHolder.current) {
-        successTimeoutHolder.current = setTimeout(setInternalState.bind(null, 'done'), SUCCESS_VISIBLE_TIME_MS);
+    function clearSuccessTimeout() {
+      if (successTimeoutHolder.current) {
+        clearTimeout(successTimeoutHolder.current);
+        successTimeoutHolder.current = null;
       }
     }
-    else if (successTimeoutHolder.current) {
-      clearTimeout(successTimeoutHolder.current);
-      successTimeoutHolder.current = null;
-    }
+
+    useEffect(function() {
+      if (isSuccess) {
+        if (!successTimeoutHolder.current) {
+          successTimeoutHolder.current = setTimeout(setInternalState.bind(null, 'done'), SUCCESS_VISIBLE_TIME_MS);
+        }
+      }
+      else {
+        clearSuccessTimeout();
+      }
+
+      return clearSuccessTimeout;
+    }, [isSuccess]);
 
     return internalState === 'done' ? null : <NxSubmitMask { ...props } success={isSuccess} />;
   };

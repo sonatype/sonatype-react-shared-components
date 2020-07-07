@@ -191,12 +191,14 @@ const NxTextInputPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
+                        id="nx-text-input-simple-example"
                         liveExample={NxTextInputSimpleExample}
                         codeExamples={simpleSourceCode}>
       A basic example of an <code className="nx-code">NxTextInput</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with non-emptiness validation"
+                        id="nx-text-input-validation-example"
                         liveExample={NxTextInputValidationExample}
                         codeExamples={validationSourceCode}>
       An example of an <code className="nx-code">NxTextInput</code> that validates that its contents are non-empty.
@@ -205,24 +207,28 @@ const NxTextInputPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Password input example"
+                        id="nx-text-input-password-example"
                         liveExample={NxTextInputPasswordExample}
                         codeExamples={passwordSourceCode}>
       An example of an <code className="nx-code">NxTextInput</code> for password entry.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="TextArea input example"
+                        id="nx-text-input-textarea-example"
                         liveExample={NxTextInputTextAreaExample}
                         codeExamples={textAreaSourceCode}>
       An example of an <code className="nx-code">NxTextInput</code> set up to be a multi-line text area.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="TextArea input example with validation"
+                        id="nx-text-input-textarea-validation-example"
                         liveExample={NxTextInputTextAreaValidationExample}
                         codeExamples={textAreaValidationSourceCode}>
       An example of an <code className="nx-code">NxTextInput</code> set up to be a multi-line text area with validation.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled example"
+                        id="nx-text-input-disabled-example"
                         liveExample={NxTextInputDisabledExample}
                         codeExamples={disabledSourceCode}>
       Examples of disabled <code className="nx-code">NxTextInput</code>s. Notice that when
