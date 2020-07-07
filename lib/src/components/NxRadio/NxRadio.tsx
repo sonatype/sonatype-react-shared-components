@@ -30,7 +30,7 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
                  onChange={() => onChange && onChange(value)}
                  readOnly={!onChange}/>
           <svg className="nx-radio__circle" viewBox="-8 -8 16 16" focusable={false}>
-            <circle r="7" strokeWidth="1" className="nx-radio__outer-circle"/>
+            <circle r="7.5" strokeWidth="1" className="nx-radio__outer-circle"/>
             { isChecked && <circle r="5" strokeWidth="3" className="nx-radio__inner-circle"/> }
           </svg>
           { children && <span className="nx-radio__content">{children}</span> }

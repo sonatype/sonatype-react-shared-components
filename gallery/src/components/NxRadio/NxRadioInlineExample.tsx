@@ -17,7 +17,7 @@ export default function NxRadioInlineExample() {
     <>
       <p style={{color: appliedColor}}>Selected Color: {color}</p>
 
-      <div>
+      <div className="nx-form-group">
         Some text
         {' '}
         <NxRadio name="color2" value="red" onChange={setColor} isChecked={color === 'red'}>
