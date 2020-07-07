@@ -10,10 +10,13 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxStatefulTreeViewMultiSelectExample from './NxStatefulTreeViewMultiSelectExample';
 import NxStatefulTreeViewMultiSelectDisabledExample from './NxStatefulTreeViewMultiSelectDisabledExample';
+import NxStatefulTreeViewMultiSelectFuzzyFilterExample from './NxStatefulTreeViewMultiSelectFuzzyFilterExample';
 
 const nxStatefulTreeViewMultiSelectExampleCode = require('!!raw-loader!./NxStatefulTreeViewMultiSelectExample').default,
     nxStatefulTreeViewMultiSelectDisabledExampleCode =
-        require('!!raw-loader!./NxStatefulTreeViewMultiSelectDisabledExample').default;
+        require('!!raw-loader!./NxStatefulTreeViewMultiSelectDisabledExample').default,
+    nxStatefulTrewwViewMultiSelectFuzzyFilterExampleCode =
+        require('!!raw-loader!./NxStatefulTreeViewMultiSelectFuzzyFilterExample').default;
 
 const NxStatefulTreeViewMultiSelectPage = () =>
   <>
@@ -159,6 +162,22 @@ const NxStatefulTreeViewMultiSelectPage = () =>
               If number of options is greater than filter-threshold - allows filtering the options. Default is 10.
             </td>
           </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">fuzzyFilterConfig</td>
+            <td className="nx-cell">Object</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              A configuration object to tweak the fuzzy filter used when filtering results.
+              It accepts any property that's accepted by
+              {' '}
+              <a className="nx-text-link"
+                 target="_blank"
+                 rel="noreferrer"
+                 href="https://fusejs.io/api/options.html">
+                Fuse Config Options
+              </a>.
+            </td>
+          </tr>
         </tbody>
       </table>
     </GalleryDescriptionTile>
@@ -175,6 +194,13 @@ const NxStatefulTreeViewMultiSelectPage = () =>
                         liveExample={NxStatefulTreeViewMultiSelectDisabledExample}
                         codeExamples={nxStatefulTreeViewMultiSelectDisabledExampleCode}>
       This example shows a disabled <code className="nx-code">NxStatefulTreeViewMultiSelect</code> with a tooltip.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Fuzzy Filter Config Example"
+                        liveExample={NxStatefulTreeViewMultiSelectFuzzyFilterExample}
+                        codeExamples={nxStatefulTrewwViewMultiSelectFuzzyFilterExampleCode}>
+      This example shows an <code className="nx-code">NxStatefulTreeViewMultiSelect</code> with a different
+      fuzzy filter configuration.
     </GalleryExampleTile>
   </>;
 
