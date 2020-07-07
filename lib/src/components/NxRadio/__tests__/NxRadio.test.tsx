@@ -22,7 +22,7 @@ describe('NxRadio', function() {
 
   const getShallow = getShallowComponent<Props>(NxRadio, simpleProps);
 
-  it('renders a <label> containing a radio <input> and .nx-radio__circle and .nx-radio__outer-circle  elements',
+  it('renders a <label> containing a radio <input> and .nx-radio__circle-container and .nx-radio__circle  elements',
       function() {
         const shallowRender = getShallow();
 
@@ -35,17 +35,10 @@ describe('NxRadio', function() {
 
         expect(shallowRender.find('input')).toHaveClassName('nx-radio__input');
 
-        expect(shallowRender.find('svg.nx-radio__circle')).toExist();
-        expect(shallowRender.find('.nx-radio__circle .nx-radio__outer-circle')).toExist();
+        expect(shallowRender.find('svg.nx-radio__circle-container')).toExist();
+        expect(shallowRender.find('.nx-radio__circle-container .nx-radio__circle')).toExist();
       }
   );
-
-  it('renders .nx-radio__inner-circle iff it is checked', function() {
-    expect(getShallow()).not.toContainMatchingElement('.nx-radio__inner-circle');
-    expect(getShallow({ isChecked: true })).toContainMatchingElement('.nx-radio__circle .nx-radio__inner-circle');
-    expect(getShallow({ isChecked: true, disabled: true }))
-        .toContainMatchingElement('.nx-radio__circle .nx-radio__inner-circle');
-  });
 
   it('uses null as the value passed to onChange if the supplied value is null', function() {
     const onChange = jest.fn();
