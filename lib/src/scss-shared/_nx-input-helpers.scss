@@ -23,7 +23,7 @@
       stroke: #43cbf5;
     }
 
-    input:focus {
+    .nx-radio__input:focus, .nx-checkbox__input:focus {
       // cancel IE11-specific focus style
       margin: 0;
       opacity: 0;
