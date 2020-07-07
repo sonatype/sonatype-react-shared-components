@@ -32,10 +32,4 @@
       height: initial;
     }
   }
-
-  &:hover:focus-within {
-    #{$focus-border-selector} {
-      fill:  #f2fcff;
-    }
-  }
 }

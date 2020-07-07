@@ -12,6 +12,7 @@
 .nx-radio {
   @include container-horizontal;
   @include regular();
+  @include focusable-toggle-input(".nx-radio__outer-circle");
 
   display: inline-block;
   margin-bottom: $nx-spacing-sm;
@@ -27,9 +28,6 @@
   + .nx-radio {
     margin-left: $nx-spacing-xl;
   }
-
-  // including here gives the :focus-within:hover styles precedence over :hover above
-  @include focusable-toggle-input(".nx-radio__outer-circle");
 }
 
 .nx-radio--disabled {
