@@ -2607,7 +2607,7 @@ functional-red-black-tree@^1.0.1:
 
 fuse.js@6.4.0:
   version "6.4.0"
-  resolved "https://repo.sonatype.com/repository/npm-all/fuse.js/-/fuse.js-6.4.0.tgz#a8db8b1c301cdb313f2ebb6812b31aa7dc2a6a14"
+  resolved "https://registry.npmjs.org/fuse.js/-/fuse.js-6.4.0.tgz#a8db8b1c301cdb313f2ebb6812b31aa7dc2a6a14"
   integrity sha512-MagWS1i3kj58BgF9xymo+n2ZiSs9MoyVfxkCcr11+mzMpNEyTDyLtbU3DyrVjHsy0Gkjf58FH1n+TaihylFcIA==
 
 gauge@~2.7.3:
