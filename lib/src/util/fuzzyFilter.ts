@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import Fuse from 'fuse.js';
+import { map, prop } from 'ramda';
 
 export default function fuzzyFilter<T>(input: T[], term: string, options: Fuse.IFuseOptions<T>): T[] {
   // fuse.js defaults "shouldSort" option to true, which is counter intuitive and contradicts their usage example
@@ -19,5 +20,5 @@ export default function fuzzyFilter<T>(input: T[], term: string, options: Fuse.I
   if (!term) {
     return input;
   }
-  return new Fuse(input, normalizedOptions).search(term);
+  return map(prop('item'), new Fuse(input, normalizedOptions).search(term));
 }
