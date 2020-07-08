@@ -20,7 +20,7 @@
   white-space: nowrap;
 
   &:hover {
-    .nx-radio__outer-circle {
+    .nx-radio__circle {
       stroke: #2c2c2c;
     }
   }
@@ -31,19 +31,19 @@
 }
 
 .nx-radio--disabled {
-  .nx-radio__circle {
+  .nx-radio__circle-container {
     cursor: default;
   }
 
   &, &:hover {
-    .nx-radio__outer-circle {
+    .nx-radio__circle {
       fill: #e9e9e9;
       stroke: #949494;
     }
   }
 }
 
-.nx-radio__circle {
+.nx-radio__circle-container {
   cursor: pointer;
   height: 24px;
   margin-right: $nx-spacing-md;
@@ -51,20 +51,14 @@
   vertical-align: top;
 }
 
-.nx-radio__outer-circle {
+.nx-radio__circle {
   fill: none;
   stroke: #d1d6f0;
 }
 
-.nx-radio__inner-circle {
-  stroke: #045dd1;
-  fill: #fff;
-}
-
 .nx-radio__input:checked {
-  + .nx-radio__circle {
-    .nx-radio__outer-circle {
-      fill: #045dd1;
+  + .nx-radio__circle-container {
+    .nx-radio__circle {
       stroke: #045dd1;
 
       &:hover {

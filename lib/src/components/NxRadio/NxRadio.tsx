@@ -14,10 +14,11 @@ export { Props } from './types';
 const NxRadio = forwardRef<HTMLLabelElement, Props>(
     function NxRadio({ name, value, onChange, isChecked, disabled, children, radioId, ...otherProps }, ref) {
       const labelClasses = classnames('nx-radio', {
-        'nx-radio--disabled': disabled,
-        'tm-checked': isChecked,
-        'tm-unchecked': !isChecked
-      });
+            'nx-radio--disabled': disabled,
+            'tm-checked': isChecked,
+            'tm-unchecked': !isChecked
+          }),
+          circleProps = (isChecked && !disabled) ? { r: 6, strokeWidth: 4 } : { r: 7.5, strokeWidth: 1 };
 
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
@@ -29,9 +30,8 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
                  checked={isChecked}
                  onChange={() => onChange && onChange(value)}
                  readOnly={!onChange}/>
-          <svg className="nx-radio__circle" viewBox="-8 -8 16 16" focusable={false}>
-            <circle r="7.5" strokeWidth="1" className="nx-radio__outer-circle"/>
-            { isChecked && <circle r="5" strokeWidth="3" className="nx-radio__inner-circle"/> }
+          <svg className="nx-radio__circle-container" viewBox="-8 -8 16 16" focusable={false}>
+            <circle { ...circleProps } className="nx-radio__circle"/>
           </svg>
           { children && <span className="nx-radio__content">{children}</span> }
         </label>
