@@ -6,12 +6,13 @@
  */
 import Fuse from 'fuse.js';
 
-export default function fuzzyFilter<T>(input: T[], term: string, options: Fuse.FuseOptions<T>): T[] {
+export default function fuzzyFilter<T>(input: T[], term: string, options: Fuse.IFuseOptions<T>): T[] {
   // fuse.js defaults "shouldSort" option to true, which is counter intuitive and contradicts their usage example
   // fix it by setting shouldSort to false by default
   const normalizedOptions = {
+    ...options,
     shouldSort: false,
-    ...options
+    ignoreLocation: true
   };
 
   term = term.trim();

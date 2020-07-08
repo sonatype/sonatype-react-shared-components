@@ -18,7 +18,7 @@ interface Entry {
 
 interface Props {
   input: Entry[];
-  options: Fuse.FuseOptions<Entry>;
+  options: Fuse.IFuseOptions<Entry>;
 }
 
 // since hooks can only be used inside a function component we wrap it inside one
