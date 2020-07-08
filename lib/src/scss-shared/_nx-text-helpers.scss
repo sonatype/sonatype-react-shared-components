@@ -31,6 +31,24 @@
   white-space: nowrap;
 }
 
+// Should be called on a custom class attached to the <body> tag
+@mixin font-size($custom-font-size) {
+  &.nx-body,
+
+  // buttons
+  .nx-btn,
+  .nx-dropdown-link,
+  .nx-dropdown-button,
+
+  // form elements
+  .nx-label,
+  .nx-text-input__input,
+  .nx-radio,
+  .nx-checkbox {
+    font-size: #{$custom-font-size};
+  }
+}
+
 %nx-code {
   background-color: $nx-grey-1;
   border: $nx-border;
