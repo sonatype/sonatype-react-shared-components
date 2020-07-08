@@ -45,7 +45,7 @@ describe('useFuzzyFilter', function () {
     }
   ];
 
-  const options: Fuse.FuseOptions<Entry> = {
+  const options: Fuse.IFuseOptions<Entry> = {
     keys: ['name'],
     threshold: 0.1
   };
