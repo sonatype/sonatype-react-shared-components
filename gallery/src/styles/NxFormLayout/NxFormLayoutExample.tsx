@@ -4,33 +4,45 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
 
 import { NxCheckbox } from '@sonatype/react-shared-components';
 import { NxRadio } from '@sonatype/react-shared-components';
 import { NxTextInput } from '@sonatype/react-shared-components';
 import { NxButton } from '@sonatype/react-shared-components';
 
+import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
+
 export default function NxFormLayoutExample() {
+  const [state, setState] = useState(initialState(''));
+
+  function onChange(val: string) {
+    setState(userInput(null, val));
+  }
+
+  function onKeyPress(key: string) {
+    console.log('Pressed key:', key); // eslint-disable-line
+  }
+
   return (
     <form className="nx-form">
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">Label</span>
-          <NxTextInput />
+          <NxTextInput  { ...state } onChange={onChange} onKeyPress={onKeyPress}/>
         </label>
       </div>
       <div className="nx-form-group">
         <label className="nx-label nx-label--optional">
           <span className="nx-label__text">Label</span>
-          <NxTextInput />
+          <NxTextInput  { ...state } onChange={onChange} onKeyPress={onKeyPress}/>
         </label>
       </div>
       <div className="nx-form-group">
         <label className="nx-label nx-label--optional">
           <span className="nx-label__text">Long field</span>
           <span className="nx-sub-label">This is a sub-label. The field element below is wider than the default.</span>
-          <input type="text" className="nx-text-input nx-text-input--long"/>
+          <NxTextInput { ...state } onChange={onChange} onKeyPress={onKeyPress} className="nx-text-input--long"/>
         </label>
       </div>
       <fieldset className="nx-fieldset">
@@ -48,13 +60,7 @@ export default function NxFormLayoutExample() {
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">Textarea</span>
-          <textarea className="nx-text-input"></textarea>
-        </label>
-      </div>
-      <div className="nx-form-group">
-        <label className="nx-label">
-          <span className="nx-label__text">Long Textarea</span>
-          <textarea className="nx-text-input nx-text-input--long"></textarea>
+          <NxTextInput { ...state } onChange={onChange} onKeyPress={onKeyPress} type="textarea" placeholder="placeholder"/>
         </label>
       </div>
       <footer className="nx-btn-bar nx-btn-bar--forms">
