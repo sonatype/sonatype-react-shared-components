@@ -8,6 +8,8 @@ import React from 'react';
 
 import { NxCheckbox } from '@sonatype/react-shared-components';
 import { NxRadio } from '@sonatype/react-shared-components';
+import { NxTextInput } from '@sonatype/react-shared-components';
+import { NxButton } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
   return (
@@ -15,13 +17,13 @@ export default function NxFormLayoutExample() {
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">Label</span>
-          <input type="text" className="nx-text-input"/>
+          <NxTextInput />
         </label>
       </div>
       <div className="nx-form-group">
         <label className="nx-label nx-label--optional">
           <span className="nx-label__text">Label</span>
-          <input type="text" className="nx-text-input"/>
+          <NxTextInput />
         </label>
       </div>
       <div className="nx-form-group">
@@ -55,10 +57,10 @@ export default function NxFormLayoutExample() {
           <textarea className="nx-text-input nx-text-input--long"></textarea>
         </label>
       </div>
-      <div className="nx-btn-bar nx-btn-bar--forms">
-        <button className="nx-btn nx-btn--primary">Submit</button>
-        <button className="nx-btn">Cancel</button>
-      </div>
+      <footer className="nx-btn-bar nx-btn-bar--forms">
+        <NxButton variant="primary">Submit</NxButton>
+        <NxButton>Cancel</NxButton>
+      </footer>
     </form>
   );
 }
