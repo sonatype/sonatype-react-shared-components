@@ -58,17 +58,12 @@ dockerizedBuildPipeline(
 
     // As this is an open source project, yarn.lock URLs should point to npmjs.org, not repo.sonatype.com
     sh '''
-      # sub-block to get around the fail-on-every-nonzero-return configuration of shells in jenkins
-      {
-        for f in */yarn.lock; do
-          grep --quiet repo.sonatype.com "${f}"
-
-          if [ $? ]; then
-            echo "repo.sonatype.com URL found in ${f}"
-            exit 1
-          fi
-        done
-      }
+      for f in */yarn.lock; do
+        if { grep --quiet repo.sonatype.com "${f}" }; then
+          echo "repo.sonatype.com URL found in ${f}"
+          exit 1
+        fi
+      done
     '''
 
     withCredentials([string(credentialsId: 'REACT_SHARED_COMPONENTS_APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
