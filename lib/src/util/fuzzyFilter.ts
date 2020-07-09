@@ -10,10 +10,12 @@ import { map, prop } from 'ramda';
 export default function fuzzyFilter<T>(input: T[], term: string, options: Fuse.IFuseOptions<T>): T[] {
   // fuse.js defaults "shouldSort" option to true, which is counter intuitive and contradicts their usage example
   // fix it by setting shouldSort to false by default
+  // fuse.js is biased to matching terms at the beggining of the string and will sometimes not match terms
+  // at the tail unless `ignoreLocation` is set to true.
   const normalizedOptions = {
-    ...options,
     shouldSort: false,
-    ignoreLocation: true
+    ignoreLocation: true,
+    ...options
   };
 
   term = term.trim();
