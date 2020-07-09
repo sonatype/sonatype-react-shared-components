@@ -61,7 +61,7 @@ dockerizedBuildPipeline(
       exitSuccessfully=0
 
       for f in */yarn.lock; do
-        if ( grep --quiet repo.sonatype.com "${f}" ); then
+        if ( grep --quiet 'repo\.sonatype\.com' "${f}" ); then
           echo "repo.sonatype.com URL found in ${f}"
           exitSuccessfully=1
         fi
