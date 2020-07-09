@@ -15,7 +15,7 @@
   @include focusable-toggle-input(".nx-radio__circle");
 
   display: inline-block;
-  margin-bottom: $nx-spacing-sm;
+  margin-bottom: $nx-spacing-xs;
   position: relative;
   white-space: nowrap;
 
@@ -56,13 +56,17 @@
   stroke: #d1d6f0;
 }
 
-.nx-radio__input:checked {
-  + .nx-radio__circle-container {
-    .nx-radio__circle {
-      stroke: #045dd1;
+.nx-radio__input {
+  margin: 0;
 
-      &:hover {
+  &:checked {
+    + .nx-radio__circle-container {
+      .nx-radio__circle {
         stroke: #045dd1;
+
+        &:hover {
+          stroke: #045dd1;
+        }
       }
     }
   }
