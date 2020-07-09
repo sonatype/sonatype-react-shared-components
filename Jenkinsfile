@@ -58,12 +58,16 @@ dockerizedBuildPipeline(
 
     // As this is an open source project, yarn.lock URLs should point to npmjs.org, not repo.sonatype.com
     sh '''
+      exitSuccessfully=0
+
       for f in */yarn.lock; do
         if ( grep --quiet repo.sonatype.com "${f}" ); then
           echo "repo.sonatype.com URL found in ${f}"
-          exit 1
+          exitSuccessfully=1
         fi
       done
+
+      exit $exitSuccessfully
     '''
 
     withCredentials([string(credentialsId: 'REACT_SHARED_COMPONENTS_APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
