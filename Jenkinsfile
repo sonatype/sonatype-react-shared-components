@@ -56,7 +56,7 @@ dockerizedBuildPipeline(
       fi
     '''
 
-    // As this is an open source project, yarn.lock URLs should point to npmjs.com, not repo.sonatype.com
+    // As this is an open source project, yarn.lock URLs should point to npmjs.org, not repo.sonatype.com
     sh '''
       for f in */yarn.lock; do
         grep --quiet repo.sonatype.com "${f}"
