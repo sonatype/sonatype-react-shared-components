@@ -72,8 +72,10 @@ dockerizedBuildPipeline(
 
     withCredentials([string(credentialsId: 'REACT_SHARED_COMPONENTS_APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
       sh '''
+        registry=https://repo.sonatype.com/repository/npm-all/
+
         cd lib
-        yarn install
+        yarn install --registry "${registry}"
         npm run test
         npm run build
         cd dist
@@ -81,7 +83,7 @@ dockerizedBuildPipeline(
         cd ../..
 
         cd gallery
-        yarn install
+        yarn install --registry "${registry}"
 
         # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
         TEST_IP=$JENKINS_AGENT_IP npm run test
