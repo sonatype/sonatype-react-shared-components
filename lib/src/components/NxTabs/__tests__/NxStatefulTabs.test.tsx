@@ -40,8 +40,11 @@ describe('NxStatefulTabs', function () {
 
     component.find('#tab-2').first().simulate('click');
 
+    // Ensure only the correct tab is set to active
     expect(component).toContainExactlyOneMatchingElement('.nx-tab.active');
     expect(component).toContainExactlyOneMatchingElement('#tab-2.nx-tab.active');
+
+    // Ensure the correct tab panel is rendered
     expect(component.closest('[labelledBy="tab-2"]')).not.toBeEmptyRender();
   });
 
@@ -59,8 +62,11 @@ describe('NxStatefulTabs', function () {
 
     component.find('#tab-2').first().simulate('keypress', {key: ' '});
 
+    // Ensure only the correct tab is set to active
     expect(component).toContainExactlyOneMatchingElement('.nx-tab.active');
     expect(component).toContainExactlyOneMatchingElement('#tab-2.nx-tab.active');
+
+    // Ensure the correct tab panel is rendered
     expect(component.closest('[labelledBy="tab-2"]')).not.toBeEmptyRender();
   });
 });
