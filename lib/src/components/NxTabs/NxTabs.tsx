@@ -10,13 +10,21 @@ import classnames from 'classnames';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
-export const ActiveTabContext = React.createContext<string|null>(null);
+export const ActiveTabContext = React.createContext<{ activeTab: string | null | undefined, onTabSelect: (id: string) => void }>({
+  activeTab: null,
+  onTabSelect: () => {}
+});
 
 const NxTabs = function NxTabsElement(props: Props) {
-  const {activeTab, className, ...attrs} = props;
+  const {activeTab, onTabSelect, className, ...attrs} = props;
+
+  const activeTabContext = {
+    activeTab,
+    onTabSelect: onTabSelect || (() => {})
+  };
 
   return (
-    <ActiveTabContext.Provider value={activeTab}>
+    <ActiveTabContext.Provider value={activeTabContext}>
       <div className={classnames('nx-tabs', className)} {...attrs} />
     </ActiveTabContext.Provider>
   );

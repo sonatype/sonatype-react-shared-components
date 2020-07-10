@@ -9,10 +9,19 @@ import { shallow } from 'enzyme';
 import NxTabs from '../NxTabs';
 
 describe('NxTabs', function () {
-  it('renders NxTabs', function () {
+  it('renders', function () {
     const component = shallow(<NxTabs activeTab="activeTabId"/>);
 
-    expect(component).toHaveValue('activeTabId');
+    expect(component.props().value.activeTab).toBe('activeTabId');
+    expect(component.props().value.onTabSelect.toString()).toBe((() => {}).toString());
+    expect(component.dive()).toHaveClassName('nx-tabs');
+  });
+
+  it('passes onTabSelect', function () {
+    const onTabSelect = (id: string) => id;
+    const component = shallow(<NxTabs activeTab="activeTabId" onTabSelect={onTabSelect}/>);
+
+    expect(component.props().value.onTabSelect).toBe(onTabSelect);
     expect(component.dive()).toHaveClassName('nx-tabs');
   });
 });

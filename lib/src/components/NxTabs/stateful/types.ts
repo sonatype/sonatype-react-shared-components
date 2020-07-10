@@ -8,9 +8,11 @@ import { HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
 export type Props = HTMLAttributes<HTMLDivElement> & {
+  onTabSelect?: ((id: string) => void) | null;
   children: React.ReactNode;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
+  onTabSelect: PropTypes.func,
   children: PropTypes.node
 };

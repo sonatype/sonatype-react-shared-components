@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { cloneElement, isValidElement, useState, Children } from 'react';
+import React, { isValidElement, useState, Children } from 'react';
 
 import NxTabs from '../NxTabs';
 import { Props as NxTabProps } from '../../NxTab/types';
@@ -21,36 +21,22 @@ import { Props, propTypes } from './types';
  */
 const NxStatefulTabs = function NxStatefulTabsElement(props: Props) {
   const { children, ...attrs } = props;
-  const [originalTabList, ...tabPanels] = Children.toArray(children);
+  const [tabList, ...tabPanels] = Children.toArray(children);
 
-  if (!isValidElement(originalTabList)) {
+  if (!isValidElement(tabList)) {
+    console.error('NxStatefulTabs must have an NxTabList')
     return null;
   }
-  else if (originalTabList.props.children.length === 0) {
+  else if (tabList.props.children.length === 0) {
+    console.error('NxStatefulTabs must have at least one NxTab');
     return null;
   }
 
-  const firstActiveTab = (Children.toArray(originalTabList.props.children)[0].props as NxTabProps).id;
+  const firstActiveTab = (Children.toArray(tabList.props.children)[0].props as NxTabProps).id;
   const [activeTab, setActiveTab] = useState(firstActiveTab);
 
-  const tabList = cloneElement(originalTabList, {
-    children: Children.map(originalTabList.props.children, (child) => cloneElement(child, {
-      onKeyPress: function(event: React.KeyboardEvent<NxTabProps>) {
-        if (event.key === ' ') {
-          event.preventDefault();
-          setActiveTab(child.props.id);
-        }
-        child.props.onKeyPress && child.props.onKeyPress.apply(null, arguments);
-      },
-      onClick: function() {
-        setActiveTab(child.props.id);
-        child.props.onClick && child.props.onClick.apply(null, arguments);
-      }
-    }))
-  });
-
   return (
-    <NxTabs activeTab={activeTab} {...attrs}>
+    <NxTabs activeTab={activeTab} onTabSelect={(id) => setActiveTab(id)} {...attrs}>
       {tabList}
       {tabPanels}
     </NxTabs>

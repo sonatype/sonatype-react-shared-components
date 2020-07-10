@@ -17,7 +17,7 @@ describe('NxTab', function () {
   });
 
   it('renders a tab with the expected class names when active={false}', function () {
-    jest.spyOn(React, 'useContext').mockImplementation(() => 'tab');
+    jest.spyOn(React, 'useContext').mockImplementation(() => ({activeTab: 'tab'}));
     const component = shallow(<NxTab id="tab"/>);
 
     expect(component).toHaveProp('aria-selected', 'true');

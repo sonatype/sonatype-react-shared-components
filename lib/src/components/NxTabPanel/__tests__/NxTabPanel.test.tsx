@@ -10,14 +10,14 @@ import NxTabPanel from '../NxTabPanel';
 
 describe('NxTabPanel', function () {
   it('renders nothing when inactive', () => {
-    jest.spyOn(React, 'useContext').mockImplementation(() => 'anotherTab');
+    jest.spyOn(React, 'useContext').mockImplementation(() => ({activeTab: 'anotherTab'}));
     const component = shallow(<NxTabPanel labelledBy="tab" />);
 
     expect(component).toBeEmptyRender();
   });
 
   it('renders when active', function () {
-    jest.spyOn(React, 'useContext').mockImplementation(() => 'tab');
+    jest.spyOn(React, 'useContext').mockImplementation(() => ({activeTab: 'tab'}));
     const component = shallow(<NxTabPanel labelledBy="tab" />);
 
     expect(component).toHaveProp('aria-expanded', 'true');

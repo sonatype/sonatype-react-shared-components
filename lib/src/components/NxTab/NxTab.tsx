@@ -14,13 +14,32 @@ export { Props } from './types';
 
 const NxTab = function NxTabElement(props: Props) {
   // Use React.useContext instead of importing useContext for jest to mock the value in the test
-  const activeTab = React.useContext(ActiveTabContext);
-  const {id, className, ...attrs} = props;
+  const {activeTab, onTabSelect} = React.useContext(ActiveTabContext);
+  const {id, className, onClick, onKeyPress, ...attrs} = props;
   const active = activeTab === id;
   const classNames = classnames('nx-tab', className, { active });
   const selected = active ? 'true' : 'false';
 
-  return <li role="tab" id={id} aria-selected={selected} className={classNames} {...attrs}/>;
+  function handleKeyPress(event: React.KeyboardEvent<HTMLLIElement>) {
+    if (onKeyPress) {
+      onKeyPress(event);
+    }
+    if (!event.isDefaultPrevented() && event.key === ' ') {
+      event.preventDefault();
+      onTabSelect(id);
+    }
+  }
+
+  function handleClick(event: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+    if (onClick) {
+      onClick(event);
+    }
+    if (!event.isDefaultPrevented()) {
+      onTabSelect(id);
+    }
+  }
+
+  return <li role="tab" id={id} aria-selected={selected} className={classNames} onKeyPress={handleKeyPress} onClick={handleClick} {...attrs}/>;
 };
 
 NxTab.propTypes = propTypes;
