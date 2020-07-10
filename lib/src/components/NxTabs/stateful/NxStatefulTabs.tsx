@@ -20,7 +20,7 @@ import { Props, propTypes } from './types';
  * * The NxTabPanel must have a labelledBy prop that matches the id of an NxTab.
  */
 const NxStatefulTabs = function NxStatefulTabsElement(props: Props) {
-  const { children, ...attrs } = props;
+  const { children, onTabSelect, ...attrs } = props;
   const [tabList, ...tabPanels] = Children.toArray(children);
 
   if (!isValidElement(tabList)) {
@@ -35,8 +35,15 @@ const NxStatefulTabs = function NxStatefulTabsElement(props: Props) {
   const firstActiveTab = (Children.toArray(tabList.props.children)[0].props as NxTabProps).id;
   const [activeTab, setActiveTab] = useState(firstActiveTab);
 
+  function handleTabSelect(id: string) {
+    if (onTabSelect) {
+      onTabSelect(id);
+    }
+    setActiveTab(id);
+  }
+
   return (
-    <NxTabs activeTab={activeTab} onTabSelect={(id) => setActiveTab(id)} {...attrs}>
+    <NxTabs activeTab={activeTab} onTabSelect={handleTabSelect} {...attrs}>
       {tabList}
       {tabPanels}
     </NxTabs>

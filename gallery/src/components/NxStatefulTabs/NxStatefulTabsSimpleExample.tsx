@@ -14,12 +14,12 @@ import {
 } from '@sonatype/react-shared-components';
 
 const NxStatefulTabsSimpleExample = () => (
-  <NxStatefulTabs onTabSelect={(id: string) => alert(`clicked ${id}`)}>
+  <NxStatefulTabs onTabSelect={(id: string) => alert(`selected tab ${id}`)}>
     <NxTabList>
-      <NxTab id="tab-1" tabIndex={1}>Tab 1</NxTab>
-      <NxTab id="tab-2" tabIndex={2}>Tab 2</NxTab>
-      <NxTab id="tab-3" tabIndex={3}>Tab 3</NxTab>
-      <NxTab id="tab-4" tabIndex={4}>Tab 4</NxTab>
+      <NxTab id="tab-1">Tab 1</NxTab>
+      <NxTab id="tab-2">Tab 2</NxTab>
+      <NxTab id="tab-3">Tab 3</NxTab>
+      <NxTab id="tab-4">Tab 4</NxTab>
     </NxTabList>
     <NxTabPanel labelledBy="tab-1">Tab 1</NxTabPanel>
     <NxTabPanel labelledBy="tab-2">Tab 2</NxTabPanel>

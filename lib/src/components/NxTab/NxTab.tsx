@@ -15,7 +15,7 @@ export { Props } from './types';
 const NxTab = function NxTabElement(props: Props) {
   // Use React.useContext instead of importing useContext for jest to mock the value in the test
   const {activeTab, onTabSelect} = React.useContext(ActiveTabContext);
-  const {id, className, onClick, onKeyPress, ...attrs} = props;
+  const {id, tabIndex = 0, className, onClick, onKeyPress, ...attrs} = props;
   const active = activeTab === id;
   const classNames = classnames('nx-tab', className, { active });
   const selected = active ? 'true' : 'false';
@@ -39,7 +39,7 @@ const NxTab = function NxTabElement(props: Props) {
     }
   }
 
-  return <li role="tab" id={id} aria-selected={selected} className={classNames} onKeyPress={handleKeyPress} onClick={handleClick} {...attrs}/>;
+  return <li role="tab" id={id} aria-selected={selected} className={classNames} onKeyPress={handleKeyPress} onClick={handleClick} tabIndex={tabIndex} {...attrs}/>;
 };
 
 NxTab.propTypes = propTypes;

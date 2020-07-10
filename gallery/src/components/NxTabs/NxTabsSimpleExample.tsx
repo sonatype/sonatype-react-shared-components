@@ -23,10 +23,10 @@ const NxTableSimpleExample = () => {
   return (
     <NxTabs activeTab={activeTabId} onTabSelect={handleTabSelect}>
       <NxTabList aria-label="Simple Tabs">
-        <NxTab id="tab-1" tabIndex={1}>Tab 1</NxTab>
-        <NxTab id="tab-2" tabIndex={2}>Tab 2</NxTab>
-        <NxTab id="tab-3" tabIndex={3}>Tab 3</NxTab>
-        <NxTab id="tab-4" tabIndex={4}>Tab 4</NxTab>
+        <NxTab id="tab-1">Tab 1</NxTab>
+        <NxTab id="tab-2">Tab 2</NxTab>
+        <NxTab id="tab-3">Tab 3</NxTab>
+        <NxTab id="tab-4">Tab 4</NxTab>
       </NxTabList>
       <NxTabPanel labelledBy="tab-1">Tab 1</NxTabPanel>
       <NxTabPanel labelledBy="tab-2">Tab 2</NxTabPanel>
