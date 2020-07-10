@@ -28,10 +28,13 @@ describe('fuzzyFilter', function () {
     }, {
       id: 'moped',
       name: 'Moped'
+    }, {
+      id: 'ufo',
+      name: 'An Unidentified Flying Object Or Device'
     }
   ];
 
-  const options: Fuse.FuseOptions<Entry> = {
+  const options: Fuse.IFuseOptions<Entry> = {
     keys: ['name'],
     threshold: 0.1
   };
@@ -70,6 +73,15 @@ describe('fuzzyFilter', function () {
       }, {
         id: 'motorcycle',
         name: 'Motorcycle'
+      }
+    ]);
+  });
+
+  it('matches even when the term is located at the tail of the string', function() {
+    expect(fuzzyFilter(input, ' object', options)).toEqual([
+      {
+        id: 'ufo',
+        name: 'An Unidentified Flying Object Or Device'
       }
     ]);
   });

@@ -3461,10 +3461,10 @@ functions-have-names@^1.1.1:
   resolved "https://registry.npmjs.org/functions-have-names/-/functions-have-names-1.2.0.tgz#83da7583e4ea0c9ac5ff530f73394b033e0bf77d"
   integrity sha512-zKXyzksTeaCSw5wIX79iCA40YAa6CJMJgNg9wdkU/ERBrIdPSimPICYiLp65lRbSBqtiHql/HZfS2DyI/AH6tQ==
 
-fuse.js@3.4.5:
-  version "3.4.5"
-  resolved "https://registry.npmjs.org/fuse.js/-/fuse.js-3.4.5.tgz#8954fb43f9729bd5dbcb8c08f251db552595a7a6"
-  integrity sha512-s9PGTaQIkT69HaeoTVjwGsLfb8V8ScJLx5XGFcKHg0MqLUH/UZ4EKOtqtXX9k7AFqCGxD1aJmYb8Q5VYDibVRQ==
+fuse.js@6.4.0:
+  version "6.4.0"
+  resolved "https://registry.npmjs.org/fuse.js/-/fuse.js-6.4.0.tgz#a8db8b1c301cdb313f2ebb6812b31aa7dc2a6a14"
+  integrity sha512-MagWS1i3kj58BgF9xymo+n2ZiSs9MoyVfxkCcr11+mzMpNEyTDyLtbU3DyrVjHsy0Gkjf58FH1n+TaihylFcIA==
 
 gauge@~2.7.3:
   version "2.7.4"

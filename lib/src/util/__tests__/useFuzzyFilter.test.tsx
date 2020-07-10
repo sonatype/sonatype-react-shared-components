@@ -18,7 +18,7 @@ interface Entry {
 
 interface Props {
   input: Entry[];
-  options: Fuse.FuseOptions<Entry>;
+  options: Fuse.IFuseOptions<Entry>;
 }
 
 // since hooks can only be used inside a function component we wrap it inside one
@@ -45,7 +45,7 @@ describe('useFuzzyFilter', function () {
     }
   ];
 
-  const options: Fuse.FuseOptions<Entry> = {
+  const options: Fuse.IFuseOptions<Entry> = {
     keys: ['name'],
     threshold: 0.1
   };
