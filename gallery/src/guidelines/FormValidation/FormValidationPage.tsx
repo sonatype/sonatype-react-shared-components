@@ -7,7 +7,6 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
 import FormValidationExample from './FormValidationExample';
 
 const FormValidationCode = require('!!raw-loader!./FormValidationExample').default;
@@ -15,7 +14,7 @@ const FormValidationCode = require('!!raw-loader!./FormValidationExample').defau
 const FormValidationPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         This page demonstrates the typical overall approach to communicating form validation matters to the user.
         There are several things to note here:
       </p>
@@ -42,9 +41,11 @@ const FormValidationPage = () =>
       </ul>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
-      <FormValidationExample />
-      <CodeExample content={FormValidationCode} />
+    <GalleryExampleTile title="General Example"
+                        codeExamples={FormValidationCode}
+                        liveExample={FormValidationExample}>
+      This example shows how typical form validation logic should be set up. It includes validation of individual
+      elements and management of the submit button.
     </GalleryExampleTile>
   </>;
 

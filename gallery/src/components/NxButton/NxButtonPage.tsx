@@ -6,57 +6,70 @@
  */
 import React from 'react';
 
-import {GalleryDescriptionTile, GalleryTile} from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxButtonDefaultExample from './NxButtonDefaultExample';
 import NxButtonPrimaryExample from './NxButtonPrimaryExample';
 import NxButtonTertiaryExample from './NxButtonTertiaryExample';
 import NxButtonErrorExample from './NxButtonErrorExample';
 import NxButtonIconExample from './NxButtonIconExample';
+import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
 
 const NxButtonDefaultCode = require('!!raw-loader!./NxButtonDefaultExample').default,
     nxButtonPrimaryCode = require('!!raw-loader!./NxButtonPrimaryExample').default,
     nxButtonTertiaryCode = require('!!raw-loader!./NxButtonTertiaryExample').default,
     nxButtonErrorCode = require('!!raw-loader!./NxButtonErrorExample').default,
-    nxButtonIconCode = require('!!raw-loader!./NxButtonIconExample').default;
+    nxButtonIconCode = require('!!raw-loader!./NxButtonIconExample').default,
+    nxButtonIconOnlyCode = require('!!raw-loader!./NxButtonIconOnlyExample').default;
 
 export default function NxButtonPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p><code className="nx-code">.nx-btn</code> is the standard class for all buttons.</p>
-        <p>
+        <p className="nx-p"><code className="nx-code">.nx-btn</code> is the standard class for all buttons.</p>
+        <p className="nx-p">
           When a button is not contained in a <code className="nx-code">footer</code>, then an enclosing
           <code className="nx-code">.nx-btn-bar</code> is generally required to ensure that the buttons are spaced
           appropriately from other content.
         </p>
       </GalleryDescriptionTile>
 
-      <GalleryTile title="Secondary (Default)">
-        <NxButtonDefaultExample/>
-        <CodeExample content={NxButtonDefaultCode}/>
-      </GalleryTile>
+      <GalleryExampleTile title="Secondary (Default)"
+                          liveExample={NxButtonDefaultExample}
+                          codeExamples={NxButtonDefaultCode}>
+        An example of an <code className="nx-code">NxButton</code> using the default styling, also known as the
+        "secondary" styling, along with some other inline content and some disabled buttons.
+      </GalleryExampleTile>
 
-      <GalleryTile title="Primary">
-        <NxButtonPrimaryExample/>
-        <CodeExample content={nxButtonPrimaryCode}/>
-      </GalleryTile>
+      <GalleryExampleTile title="Primary"
+                          liveExample={NxButtonPrimaryExample}
+                          codeExamples={nxButtonPrimaryCode}>
+        An example using the "primary" button styles.
+      </GalleryExampleTile>
 
-      <GalleryTile title="Tertiary">
-        <NxButtonTertiaryExample/>
-        <CodeExample content={nxButtonTertiaryCode}/>
-      </GalleryTile>
+      <GalleryExampleTile title="Tertiary"
+                          liveExample={NxButtonTertiaryExample}
+                          codeExamples={nxButtonTertiaryCode}>
+        An example using the "tertiary" button styles.
+      </GalleryExampleTile>
 
-      <GalleryTile title="Error">
-        <NxButtonErrorExample/>
-        <CodeExample content={nxButtonErrorCode}/>
-      </GalleryTile>
+      <GalleryExampleTile title="Error"
+                          liveExample={NxButtonErrorExample}
+                          codeExamples={nxButtonErrorCode}>
+        An example using the "error" button styles. Commonly seen in <code className="nx-code">NxErrorAlert</code>s.
+      </GalleryExampleTile>
 
-      <GalleryTile title="Buttons with Icons">
-        <NxButtonIconExample/>
-        <CodeExample content={nxButtonIconCode}/>
-      </GalleryTile>
+      <GalleryExampleTile title="Using icons in buttons"
+                          liveExample={NxButtonIconExample}
+                          codeExamples={nxButtonIconCode}>
+        An example of a button containing an icon in addition to text.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Icon only buttons"
+                          liveExample={NxButtonIconOnlyExample}
+                          codeExamples={nxButtonIconOnlyCode}>
+        An example of a button containing only an icon.
+      </GalleryExampleTile>
     </>
   );
 }

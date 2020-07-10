@@ -6,11 +6,11 @@
  */
 import React from 'react';
 import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
 const NxAlertErrorExample = () =>
   <div className="nx-alert nx-alert--error">
-    <NxFontAwesomeIcon icon={faTimesCircle}/>
+    <NxFontAwesomeIcon icon={faExclamationCircle}/>
     <span><strong>Error!</strong> I am an error alert! There is an error!</span>
   </div>;
 

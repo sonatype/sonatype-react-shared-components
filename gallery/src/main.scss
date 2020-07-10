@@ -9,95 +9,56 @@
 @import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 @import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
 
-.nx-title__brand a {
-  text-decoration: none;
-}
-
 .gallery-nav, .gallery-nav-links {
   @include container-vertical;
 }
 
-.gallery-nav-category {
-  @include semi-bold();
+.gallery-nav {
+  .nx-tree-view__trigger {
+    padding-left: $nx-spacing-xs;
 
-  color: $nx-text-color-light;
-  font-size: 16px;
-  margin-top: 16px;
-  margin-bottom: 12px;
+    .nx-tree-view__text {
+      @include semi-bold();
+
+      color: #2c2c2c;
+    }
+  }
 }
 
-.gallery-nav-link {
-  margin-bottom: 4px;
+.nx-tree-view__child.gallery-nav-link {
+  height: 100%;
+  line-height: $nx-line-height;
+  margin-right: 0;
+  margin-bottom: 0;
   margin-left: 0;
 }
 
 .gallery-link {
+  @include regular();
+
+  border-radius: 6px;
+  box-sizing: border-box;
   display: inline-block;
-  font-size: 14px;
-  margin-bottom: 4px;
+  padding: $nx-spacing-xxs $nx-spacing-xs $nx-spacing-xxs 36px;
   text-decoration: none;
-  color: $nx-text-color-light;
+  width: 100%;
 
   &:hover {
-    text-decoration: underline;
+    background-color: #e2e6f4;
   }
 
   &.active {
     @include semi-bold;
 
-    color: $nx-text-color;
+    background-color: #000066;
+    color: #fff;
     cursor: default;
     text-decoration: none;
-  }
-}
 
-.gallery-props-table {
-  border-collapse: collapse;
-
-  text-align: left;
-
-  th, td {
-    border: 1px solid #ccc;
-    padding: 5px;
-  }
-
-  th {
-    background: $nx-grey-1;
-  }
-}
-
-.gallery-description {
-  h1 {
-    @include bold();
-
-    font-size: 26px;
-    line-height: 28px;
-    margin-bottom: 24px;
-  }
-
-  h2 {
-    @include bold();
-
-    font-size: 20px;
-    line-height: 24px;
-    margin-bottom: 16px;
-  }
-
-  h3 {
-    @include bold();
-
-    font-size: 18px;
-    line-height: 21px;
-    margin-bottom: 8px;
-  }
-
-  h4 {
-    @include semi-bold();
-
-    font-size: 14px;
-    line-height: 16px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
+    &:hover {
+      background-color: #000066;
+      color: #fff;
+    }
   }
 }
 
@@ -110,8 +71,27 @@
   width: 400px;
 }
 
+.gallery-example {
+  pre {
+    font-size: $nx-font-size-s;
+  }
+}
+
+// .nx-html added to this selector for specificity reasons
+.nx-html .gallery-example .nx-page-header {
+  position: static;
+}
+
 .gallery-submit-mask-area {
   height: 100px;
 
   position: relative;
+}
+
+.gallery-highlight-background-example {
+  background-color: transparentize(#79acfb, 0.5);
+}
+
+.gallery-example-image {
+  max-width: 100%;
 }

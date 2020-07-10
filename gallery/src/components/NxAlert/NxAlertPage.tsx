@@ -6,25 +6,26 @@
  */
 import React from 'react';
 
-import {GalleryDescriptionTile, GalleryTile} from '../../gallery-components/GalleryTiles';
+import {GalleryDescriptionTile, GalleryExampleTile, GalleryTile} from '../../gallery-components/GalleryTiles';
 
 import NxAlertExample from './NxAlertExample';
 import NxErrorAlertExample from './NxErrorAlertExample';
 import NxWarningAlertExample from './NxWarningAlertExample';
 import NxInfoAlertExample from './NxInfoAlertExample';
-import CodeExample from '../../CodeExample';
+import NxSuccessAlertExample from './NxSuccessAlertExample';
 
 const nxErrorAlertExampleCode = require('!!raw-loader!./NxErrorAlertExample').default,
     nxInfoAlertExampleCode = require('!!raw-loader!./NxInfoAlertExample').default,
+    nxSuccessAlertExampleCode = require('!!raw-loader!./NxSuccessAlertExample').default,
     nxWarningAlertExampleCode = require('!!raw-loader!./NxWarningAlertExample').default,
     nxAlertExampleCode = require('!!raw-loader!./NxAlertExample').default;
 
 const NxAlertPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Generic alert.</p>
-      <p>Handy for DIY alert variations</p>
-      <p>Accepts any prop that is valid on a div as well as the following:</p>
+      <p className="nx-p">Generic alert.</p>
+      <p className="nx-p">Handy for DIY alert variations</p>
+      <p className="nx-p">Accepts any prop that is valid on a div as well as the following:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -47,31 +48,46 @@ const NxAlertPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Alert Example">
-      <NxAlertExample/>
-      <CodeExample content={nxAlertExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Alert Example"
+                        id="nx-alert-custom-example"
+                        liveExample={NxAlertExample}
+                        codeExamples={nxAlertExampleCode}>
+      An example of a simple alert which adds a custom modifier class.
+    </GalleryExampleTile>
 
     <GalleryTile title="NxErrorAlert, NxInfoAlert, NxWarningAlert">
-      <p>Standard sonatype alerts.</p>
-      <p>They come in three variations: Error, Info, and Warning.</p>
-      <p>Accepts any prop that is valid on a div</p>
+      <p className="nx-p">Standard sonatype alerts.</p>
+      <p className="nx-p">They come in three variations: Error, Info, and Warning.</p>
+      <p className="nx-p">Accepts any prop that is valid on a div</p>
     </GalleryTile>
 
-    <GalleryTile title="Error Alert Example">
-      <NxErrorAlertExample />
-      <CodeExample content={nxErrorAlertExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Success Alert Example"
+                        id="nx-alert-success-example"
+                        liveExample={NxSuccessAlertExample}
+                        codeExamples={nxSuccessAlertExampleCode}>
+      An example of an alert demonstrating success styling.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Info Alert Example">
-      <NxInfoAlertExample />
-      <CodeExample content={nxInfoAlertExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Error Alert Example"
+                        id="nx-alert-error-example"
+                        liveExample={NxErrorAlertExample}
+                        codeExamples={nxErrorAlertExampleCode}>
+      An example of an alert demonstrating error styling.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Warning Alert Example">
-      <NxWarningAlertExample />
-      <CodeExample content={nxWarningAlertExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Info Alert Example"
+                        id="nx-alert-info-example"
+                        liveExample={NxInfoAlertExample}
+                        codeExamples={nxInfoAlertExampleCode}>
+      An example of an alert demonstrating information styling.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Warning Alert Example"
+                        id="nx-alert-warning-example"
+                        liveExample={NxWarningAlertExample}
+                        codeExamples={nxWarningAlertExampleCode}>
+      An example of an alert demonstrating warning styling.
+    </GalleryExampleTile>
   </>;
 
 export default NxAlertPage;

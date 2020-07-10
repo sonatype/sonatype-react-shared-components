@@ -9,16 +9,15 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxStatefulCheckboxExample from './NxStatefulCheckboxExample';
-import CodeExample from '../../CodeExample';
 
 const exampleCode = require('!!raw-loader!./NxStatefulCheckboxExample').default;
 
 const NxStatefulCheckboxPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Custom stateful checkbox input.</p>
-      <p>Child VDOM will be used as a label following the stateful checkbox button itself.</p>
-      <p>Props:</p>
+      <p className="nx-p">Custom stateful checkbox input.</p>
+      <p className="nx-p">Child VDOM will be used as a label following the stateful checkbox button itself.</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -75,9 +74,12 @@ const NxStatefulCheckboxPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
-      <NxStatefulCheckboxExample />
-      <CodeExample content={exampleCode} />
+    <GalleryExampleTile title="General Example"
+                        codeExamples={exampleCode}
+                        liveExample={NxStatefulCheckboxExample}>
+      This example shows the usage of an NxStatefulCheckbox which tracks its own state,
+      along with a callback for initiating a side-effect - in this case, the opening of an alert
+      dialog.
     </GalleryExampleTile>
   </>;
 

@@ -36,7 +36,7 @@ const NxStatefulTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, P
         }
       }
 
-      return <NxTextInput ref={ref} { ...attrs } { ...state } onChange={changeHandler} />;
+      return <NxTextInput validatable={!!validator} ref={ref} { ...attrs } { ...state } onChange={changeHandler} />;
     }
 );
 

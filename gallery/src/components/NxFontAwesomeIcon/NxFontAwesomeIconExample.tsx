@@ -22,8 +22,8 @@ const NxFontAwesomeIconExample = () =>
       {/* Third icon has both margins */}
       <NxFontAwesomeIcon icon={faAtom} pulse={true} />
       {/*
-        * Fourth icon has no left margin due to being preceded by another icon and no right margin due to being
-        * the last element in a horizontal container
+        * Fourth icon has no left margin due to being preceded by another icon and no right margin due to
+        * being the last element in a horizontal container
         */}
       <NxFontAwesomeIcon icon={faBatteryEmpty} color="red" />
     </button>

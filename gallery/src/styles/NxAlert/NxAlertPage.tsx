@@ -6,44 +6,53 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxAlertInfoExample from './NxAlertInfoExample';
+import NxAlertSuccessExample from './NxAlertSuccessExample';
 import NxAlertWarningExample from './NxAlertWarningExample';
 import NxAlertErrorExample from './NxAlertErrorExample';
-import NxAlertErrorRetryExample from './NxAlertErrorRetryExample';
 
 const nxAlertInfoCode = require('!!raw-loader!./NxAlertInfoExample').default,
+    nxAlertSuccessCode = require('!!raw-loader!./NxAlertSuccessExample').default,
     nxAlertWarningCode = require('!!raw-loader!./NxAlertWarningExample').default,
-    nxAlertErrorCode = require('!!raw-loader!./NxAlertErrorExample').default,
-    nxAlertErrorRetryCode = require('!!raw-loader!./NxAlertErrorRetryExample').default;
+    nxAlertErrorCode = require('!!raw-loader!./NxAlertErrorExample').default;
 
 const NxAlertPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Standard name spaced alert styles.</p>
+      <p className="nx-p">
+        Standard name spaced alert styles. Note that these examples are shown in react as each style includes
+        specific icons. When working in React, <code className="nx-code">NxFontAwesomeIcon</code> should be used
+        as shown to get these icons (or preferably the <code className="nx-code">NxAlert</code> React component and
+        its variations should be used). When not working in react, check the FontAwesome 5 documentation for alternative
+        ways to include the icons.
+      </p>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="Information alert">
-      <NxAlertInfoExample/>
-      <CodeExample content={nxAlertInfoCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Information alert"
+                        liveExample={NxAlertInfoExample}
+                        codeExamples={nxAlertInfoCode}>
+      An <code className="nx-code">nx-alert</code> demonstrating information styles.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Warning alert">
-      <NxAlertWarningExample/>
-      <CodeExample content={nxAlertWarningCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Success alert"
+                        liveExample={NxAlertSuccessExample}
+                        codeExamples={nxAlertSuccessCode}>
+      An <code className="nx-code">nx-alert</code> demonstrating success styles.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Error alert">
-      <NxAlertErrorExample/>
-      <CodeExample content={nxAlertErrorCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Warning alert"
+                        liveExample={NxAlertWarningExample}
+                        codeExamples={nxAlertWarningCode}>
+      An <code className="nx-code">nx-alert</code> demonstrating warning styles.
+    </GalleryExampleTile>
 
-    <GalleryTile title="Error alert with retry button">
-      <NxAlertErrorRetryExample/>
-      <CodeExample content={nxAlertErrorRetryCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Error alert"
+                        liveExample={NxAlertErrorExample}
+                        codeExamples={nxAlertErrorCode}>
+      An <code className="nx-code">nx-alert</code> demonstrating error styles.
+    </GalleryExampleTile>
   </>;
 
 export default NxAlertPage;

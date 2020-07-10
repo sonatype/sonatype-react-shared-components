@@ -6,11 +6,15 @@
  */
 import React, { forwardRef } from 'react';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
+import classnames from 'classnames';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { NxErrorAlert } from '../NxAlert/NxAlert';
+import NxButton from '../NxButton/NxButton';
 import { Props, propTypes } from './types';
 export { Props, propTypes } from './types';
+
+import './NxLoadError.scss';
 
 /**
  * A component that conditionally renders standardized DOM for error messages, optionally with a retry button.
@@ -21,19 +25,21 @@ export { Props, propTypes } from './types';
  * @param retryHandler If this is defined, a Retry button will be rendered which executes this function when clicked
  */
 const NxLoadError = forwardRef<HTMLDivElement, Props>(
-    function NxLoadError({ error, titleMessage, retryHandler, ...otherProps }, ref) {
+    function NxLoadError({ error, titleMessage, retryHandler, className, ...otherProps }, ref) {
+      const alertClasses = classnames('nx-alert--load-error', className);
+
       return error != null && (
-        <NxErrorAlert { ...otherProps } ref={ref}>
-          <span>{ titleMessage || 'An error occurred loading data.' }</span>
-          {' '}
-          <span>{ error }</span>
+        <NxErrorAlert { ...otherProps } className={alertClasses} ref={ref}>
+          <span className="nx-load-error__message">
+            { titleMessage || 'An error occurred loading data.' }
+            {' '}
+            { error }
+          </span>
           { retryHandler &&
-            <div className="nx-btn-bar">
-              <button className="nx-btn nx-btn--error" onClick={retryHandler}>
-                <NxFontAwesomeIcon icon={faSync} />
-                <span>Retry</span>
-              </button>
-            </div>
+            <NxButton variant="error" onClick={retryHandler} className="nx-load-error__retry">
+              <NxFontAwesomeIcon icon={faSync} />
+              <span>Retry</span>
+            </NxButton>
           }
         </NxErrorAlert>
       ) || null;

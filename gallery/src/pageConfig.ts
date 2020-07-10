@@ -18,7 +18,7 @@ import NxLoadWrapperPage from './components/NxLoadWrapper/NxLoadWrapperPage';
 import NxModalPage from './components/NxModal/NxModalPage';
 import NxPageTitlePage from './styles/NxPageTitle/NxPageTitlePage';
 import NxTilePage from './styles/NxTile/NxTilePage';
-import NxTextInputStylesPage from './styles/NxTextInputStyles/NxTextInputStylesPage';
+//import NxTextInputStylesPage from './styles/NxTextInputStyles/NxTextInputStylesPage';
 import NxBtnPage from './styles/NxBtn/NxBtnPage';
 import NxThreatBarPage from './components/NxThreatBar/NxThreatBarPage';
 import NxRadioPage from './components/NxRadio/NxRadioPage';
@@ -32,7 +32,7 @@ import NxIconPage from './styles/NxIcon/NxIconPage';
 import NxFontAwesomeIconPage from './components/NxFontAwesomeIcon/NxFontAwesomeIconPage';
 import NxCounterPage from './styles/NxCounter/NxCounterPage';
 import NxThreatNumberPage from './styles/NxThreatNumber/NxThreatNumberPage';
-import NxFormLayoutPage from './styles/NxFormLayout/NxFormLayoutPage';
+//import NxFormLayoutPage from './styles/NxFormLayout/NxFormLayoutPage';
 import NxSubmitMaskPage from './components/NxSubmitMask/NxSubmitMaskPage';
 import NxStatefulSubmitMaskPage from './components/NxStatefulSubmitMask/NxStatefulSubmitMaskPage';
 import NxTablePage from './components/NxTable/NxTablePage';
@@ -48,38 +48,31 @@ import NxFilterInputPage from './components/NxFilterInput/NxFilterInputPage';
 import NxPolicyThreatSliderPage from './components/NxPolicyThreatSlider/NxPolicyThreatSliderPage';
 import NxDropdownPage from './components/NxDropdown/NxDropdownPage';
 import FormValidationPage from './guidelines/FormValidation/FormValidationPage';
+import PageLayoutPage from './styles/PageLayout/PageLayoutPage';
 import NxStatefulDropdownPage from './components/NxStatefulDropdown/NxStatefulDropdownPage';
 import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCheckboxPage';
+import ContributingPage from './pages/Contributing';
+import FontSizePage from './guidelines/FontSize/FontSizePage';
+import NxCloseButtonPage from './components/NxCloseButton/NxCloseButtonPage';
+import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
+import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
+import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
+import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPage';
+import NxClickablePage from './styles/NxClickable/NxClickablePage';
+import NxPageHeaderPage from './components/NxPageHeader/NxPageHeaderPage';
+import NxTruncatePage from './styles/NxTruncateEllipsis/NxTruncatePage';
+import NxCodePage from './styles/NxCode/NxCodePage';
+import StylingComponentsPage from './pages/StylingComponents';
+import AdditionalResourcePage from './pages/AdditionalResources';
 
 const pageConfig: PageConfig = {
-  'Styles - HTML Elements': {
-    'nx-alert': NxAlertPage,
-    'nx-btn': NxBtnPage,
-    'nx-counter': NxCounterPage,
-    'nx-grid': NxGridPage,
-    'nx-icon': NxIconPage,
-    'nx-list': NxListPage,
-    'nx-page-title': NxPageTitlePage,
-    'nx-table': NxTableStylePage,
-    'nx-text-input': NxTextInputStylesPage,
-    'nx-threat-number': NxThreatNumberPage,
-    'nx-tile': NxTilePage
-  },
-  'Styles - Mixins': {
-    'nx-container-helpers': NxContainerHelpersPage
-  },
-  'Layout Examples': {
-    'Form Layout Styles': NxFormLayoutPage
-  },
-  'Guidelines': {
-    'Form Validation Guidelines': FormValidationPage
-  },
   'React Components': {
     NxAlert: NxAlertComponentsPage,
     NxBackButton: NxBackButtonPage,
     NxButton: NxButtonPage,
     NxCheckbox: NxCheckboxPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
+    NxCloseButton: NxCloseButtonPage,
     NxDropdown: NxDropdownPage,
     NxStatefulDropdown: NxStatefulDropdownPage,
     NxFilterInput: NxFilterInputPage,
@@ -88,6 +81,7 @@ const pageConfig: PageConfig = {
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,
     NxModal: NxModalPage,
+    NxPageHeader: NxPageHeaderPage,
     NxPolicyThreatSlider: NxPolicyThreatSliderPage,
     NxRadio: NxRadioPage,
     NxSubmitMask: NxSubmitMaskPage,
@@ -102,7 +96,44 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
-    NxVulnerabilityDetails: NxVulnerabilityDetailsPage
+    NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
+    NxTruncateEllipsis: NxTruncatePage
+  },
+  'Guidelines': {
+    'Additional Resources': AdditionalResourcePage,
+    'Contributing to the Gallery': ContributingPage,
+    'font-size and line-height': FontSizePage,
+    'Form Validation Guidelines': FormValidationPage,
+    'Styling Components': StylingComponentsPage
+  },
+  'Styles - HTML Elements': {
+    'nx-alert': NxAlertPage,
+    'nx-btn': NxBtnPage,
+    'nx-code': NxCodePage,
+    'nx-counter': NxCounterPage,
+    'nx-grid': NxGridPage,
+    'nx-icon': NxIconPage,
+    'nx-list': NxListPage,
+    'nx-page-title': NxPageTitlePage,
+    'nx-table': NxTableStylePage,
+    //'nx-text-input': NxTextInputStylesPage,
+    'nx-threat-number': NxThreatNumberPage,
+    'nx-tile': NxTilePage
+  },
+  'Styles - Mixins & Helpers': {
+    'nx-clickable': NxClickablePage,
+    'nx-container-helpers': NxContainerHelpersPage,
+    'nx-scrollable': NxScrollablePage,
+    'nx-truncate-ellipsis': NxTruncatePage
+  },
+  'Layout Examples': {
+    //'Form Layout Styles': NxFormLayoutPage,
+    'Page Layout': PageLayoutPage
+  },
+  'JavaScript & TypeScript Utilities': {
+    'TooltipConfigProps': TooltipConfigPropsPage,
+    'Policy Threat Level Utils': PolicyThreatLevelUtilsPage,
+    'Validation Utils': ValidationUtilsPage
   }
 };
 

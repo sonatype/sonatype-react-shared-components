@@ -6,9 +6,17 @@
  */
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
+def seleniumDockerImage = 'selenium/standalone-chrome'
+def seleniumDockerVersion = '3.141.59-20200409'
+
 dockerizedBuildPipeline(
+  // expose gallery port on host so selenium container can hit it
+  dockerArgs: '-p 4043:4043',
+
   prepare: {
     githubStatusUpdate('pending')
+
+    sh "docker run --name selenium-chrome -d -p 4444:4444 -v /dev/shm:/dev/shm ${seleniumDockerImage}:${seleniumDockerVersion}"
   },
   setVersion: {
     env['VERSION'] = sh(returnStdout: true, script: 'jq -r -e .version lib/package.json').trim()
@@ -48,25 +56,46 @@ dockerizedBuildPipeline(
       fi
     '''
 
+    // As this is an open source project, yarn.lock URLs should point to npmjs.org, not repo.sonatype.com
     sh '''
-      cd lib
-      yarn install
-      npm run test
-      npm run build
-      cd dist
-      npm pack
-      cd ../..
+      exitSuccessfully=0
 
-      cd gallery
-      yarn install
-      npm run build
-      cd ..
+      for f in */yarn.lock; do
+        if ( grep --quiet 'repo\\.sonatype\\.com' "${f}" ); then
+          echo "repo.sonatype.com URL found in ${f}"
+          exitSuccessfully=1
+        fi
+      done
+
+      exit $exitSuccessfully
     '''
+
+    withCredentials([string(credentialsId: 'REACT_SHARED_COMPONENTS_APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
+      sh '''
+        registry=https://repo.sonatype.com/repository/npm-all/
+
+        cd lib
+        yarn install --registry "${registry}"
+        npm run test
+        npm run build
+        cd dist
+        npm pack
+        cd ../..
+
+        cd gallery
+        yarn install --registry "${registry}"
+
+        # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
+        TEST_IP=$JENKINS_AGENT_IP npm run test
+        npm run build
+        cd ..
+      '''
+    }
   },
   vulnerabilityScan: {
     if (env.BRANCH_NAME == 'master') {
       nexusPolicyEvaluation(
-        iqStage: 'build',
+        iqStage: 'release',
         iqApplication: 'react-shared-components',
         iqScanPatterns: [[scanPattern: 'gallery/webpack-modules']],
         failBuildOnNetworkError: true
@@ -92,11 +121,19 @@ dockerizedBuildPipeline(
   testResults: ['lib/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
-    build job:'/uxui/publish-gallery-to-s3', propagate: false, wait: false, parameters: [
-      run(name: 'Producer', runId: "${currentBuild.fullProjectName}${currentBuild.displayName}")
-    ]
+    if (env.BRANCH_NAME == 'master') {
+      build job:'/uxui/publish-gallery-to-s3', propagate: false, wait: false, parameters: [
+        run(name: 'Producer', runId: "${currentBuild.fullProjectName}${currentBuild.displayName}")
+      ]
+    }
   },
   onFailure: {
     githubStatusUpdate('failure')
+  },
+  cleanup: {
+    sh """
+      docker rm -f selenium-chrome
+      docker rmi ${seleniumDockerImage}:${seleniumDockerVersion}
+    """
   }
 )

@@ -4,13 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/nx-variables';
-@import '../scss-shared/nx-text-helpers';
-@import '../scss-shared/nx-container-helpers';
 
-$main-header-background: $nx-sonatype-blue;
-$main-header-color: $nx-off-white;
-$main-header-height: 72px;
+$main-header-background: $nx-off-white;
+$main-header-color: $nx-off-black;
 $main-header-product-height: 52px;
 $main-header-product-title-row-height: 2fr;
 $main-header-product-version-row-height: 1fr;
@@ -20,80 +16,115 @@ $main-header-product-version-row-height: 1fr;
 */
 
 .nx-page-header {
-  background-color: $nx-off-black;
+  background-color: $main-header-background;
+  border-bottom: 1px solid $nx-header-border;
   flex-shrink: 0; // needed for IE11
-  height: $main-header-height;
+  height: $nx-main-header-height;
   width: 100%;
 }
 
 .nx-page-header__inner {
   @include container-horizontal;
 
+  align-items: center;
+  box-sizing: border-box;
   display: flex;
-  height: $main-header-height;
+  height: $nx-main-header-height;
   margin: 0 auto;
+  padding: 0 $nx-spacing-l;
   width: 100%;
   max-width: $nx-page-width-max;
 }
 
-.nx-product {
-  align-self: center;
-  box-sizing: border-box;
-  color: $nx-off-white;
-  display: -ms-grid;
-  display: grid;
-  grid-column-gap: $nx-spacing-xxs;
-  -ms-grid-rows: $main-header-product-title-row-height $main-header-product-version-row-height;
-  grid-template-rows: $main-header-product-title-row-height $main-header-product-version-row-height;
-  -ms-grid-columns: $main-header-product-height $nx-spacing-xxs auto;
-  grid-template-columns: $main-header-product-height auto;
-  grid-template-areas:
-    "logo title"
-    "logo version";
-  height: $main-header-product-height;
-  text-decoration: none;
-  min-width: $nx-sidebar-width;
+.nx-page-header__links {
+  @include container-horizontal;
+  margin: 0 $nx-spacing-xxl;
 }
 
-.nx-product__logo {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 1;
-  -ms-grid-row-align: center;
-  align-self: center;
+.nx-page-header__link {
+  border-bottom: 2px solid transparent;
+
+  color: #515151;
+  display: inline-block;
+  font-size: $nx-font-size-s;
+  margin-right: $nx-spacing-l;
+  padding-bottom: $nx-spacing-xxs;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    font-weight: 600;
+  }
+
+  &.nx-page-header__link--current {
+    &, .nx-page-header__link-sizing-text {
+      font-weight: 600;
+    }
+  }
+
+  &:active, &.nx-page-header__link--current {
+    border-bottom-color: #0000cc;
+  }
+
+  // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
+  &::before {
+    display: block;
+    content: attr(data-text);
+    font-weight: 600;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
+.nx-page-header__extra-content {
+  @include container-horizontal;
+
+  margin-left: auto;
+}
+
+.nx-product {
+  align-items: center;
   box-sizing: border-box;
-  grid-area: logo;
-  height: 100%;
-  width: 100%;
+  color: $main-header-color;
+  display: flex;
+  height: $nx-main-header-height - 6px; // aids vertical alignment of contents
+  margin-bottom: 6px;
+  text-decoration: none;
+}
+
+.nx-product__home-link {
+  display: block;
+}
+
+.nx-product__wordmark {
+  display: inline-block;
+  height: 21px;
+  margin-top: 13px; // fix vertical centering
 }
 
 .nx-product__name {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
-  @include semi-bold();
-
-  -ms-grid-row-align: center;
-
-  align-self: center;
-  font-size: 23px;
-  grid-area: title;
-  -ms-grid-column-align: left;
-  justify-self: left;
-  line-height: normal;
+  color: $nx-text-color-light;
+  display: inline-block;
+  font-size: 26px;
+  margin-left: $nx-spacing-sm;
   text-transform: lowercase;
   white-space: nowrap;
+
+  &::before {
+    color: #000;
+    content: "|";
+    display: inline-block;
+    font-size: 21px;
+    margin-right: $nx-spacing-sm;
+  }
 }
 
 .nx-product__version {
-  -ms-grid-row: 2;
-  -ms-grid-column: 3;
-  @include bold();
-
-  -ms-grid-row-align: start;
-  align-self: start;
-  font-size: 11px;
-  grid-area: version;
-  -ms-grid-column-align: left;
-  justify-self: left;
-  line-height: 1.1;
+  color: #545454;
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 8px; // move version down to match product name baseline
+  margin-left: $nx-spacing-sm;
 }

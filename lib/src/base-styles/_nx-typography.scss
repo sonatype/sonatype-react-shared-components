@@ -4,8 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/nx-container-helpers';
-@import '../scss-shared/nx-text-helpers';
 
 @font-face {
   font-family: "Open Sans";
@@ -38,25 +36,26 @@
 .nx-body {
   @include regular();
 
-  font-size: $nx-font-size-s;
-  line-height: 18px;
+  color: $nx-text-color;
+  font-size: $nx-font-size;
+  line-height: $nx-line-height;
 }
 
 .nx-h1 {
   @include bold();
   @include container-horizontal;
 
+  color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-1;
-  line-height: 35px;
   margin-bottom: $nx-spacing-l;
 }
 
 .nx-h2 {
-  @include bold();
+  @include semi-bold();
   @include container-horizontal;
 
+  color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-2;
-  line-height: 24px;
   margin-bottom: $nx-spacing-md;
 }
 
@@ -64,8 +63,8 @@
   @include bold();
   @include container-horizontal;
 
+  color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-3;
-  line-height: 21px;
   margin-bottom: $nx-spacing-xs;
 }
 
@@ -73,15 +72,13 @@
   @include semi-bold();
   @include container-horizontal;
 
+  color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-4;
-  line-height: 16px;
-  margin-bottom: 8px;
+  margin-bottom: $nx-spacing-xs;
   text-transform: uppercase;
 }
 
 .nx-p {
-  font-size: $nx-font-size-s;
-  line-height: 16px;
   margin-bottom: $nx-spacing-md;
 }
 
@@ -93,10 +90,6 @@
 }
 
 // Form typography
-.nx-text-input, .nx-textarea {
+.nx-text-input__input {
   @include regular();
-
-  font-size: 14px;
-  line-height: 18px;
-  margin-bottom: 0;
 }

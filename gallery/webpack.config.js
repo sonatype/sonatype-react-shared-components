@@ -57,12 +57,22 @@ module.exports = function(env = { production: false }) {
           name: 'img/[name].[ext]'
         }
       }, {
+        include: /\.png$/,
+        exclude: libImgDir,
+        loader: 'file-loader',
+        options: {
+          name: 'img/[name].[ext]'
+        }
+      }, {
         test: /\.(ttf|eot|woff2?|svg)$/,
         exclude: libImgDir,
         loader: 'file-loader',
         options: {
           name: 'fonts/[name].[ext]'
         }
+      }, {
+        test: /\.html$/,
+        loader: 'raw-loader',
       }]
     },
     plugins: [

@@ -5,20 +5,35 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import 'nx-variables';
+@import 'nx-container-helpers';
 
 @mixin valid() {
-  border-left-color: $nx-valid-color;
-  border-left-style: solid;
+  .nx-text-input__box {
+    border-color: $nx-valid-color;
+  }
+
+  .nx-icon--valid {
+    display: inline-block;
+  }
 }
 
 @mixin invalid() {
-  border-color: $nx-invalid-color;
-  border-left-style: solid;
+  .nx-text-input__box {
+    border-color: $nx-invalid-color;
+  }
+
+  .nx-icon--invalid {
+    display: inline-block;
+  }
 }
 
 @mixin pristine() {
-  border-color: $nx-grey-4;
-  border-left-color: $nx-valid-color;
-  border-left-style: double;
-  color: $nx-text-color-light;
+  .nx-text-input__box {
+    border-color: #d1d6f0;
+    color: $nx-text-color-light;
+  }
+
+  .nx-icon--invalid, .nx-icon--valid {
+    display: none;
+  }
 }

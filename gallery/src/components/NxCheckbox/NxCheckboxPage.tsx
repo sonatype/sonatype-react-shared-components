@@ -6,12 +6,11 @@
  */
 import React from 'react';
 
-import {GalleryDescriptionTile, GalleryExampleTile, GalleryTile} from '../../gallery-components/GalleryTiles';
+import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxCheckboxExample from './NxCheckboxExample';
 import NxCheckboxInlineExample from './NxCheckboxInlineExample';
 import NxCheckboxNowrapExample from './NxCheckboxNowrapExample';
-import CodeExample from '../../CodeExample';
 
 const exampleCode = require('!!raw-loader!./NxCheckboxExample').default;
 const inlineExampleCode = require('!!raw-loader!./NxCheckboxInlineExample').default;
@@ -20,9 +19,9 @@ const nowrapExampleCode = require('!!raw-loader!./NxCheckboxNowrapExample').defa
 const NxCheckboxPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>Custom checkbox input.</p>
-      <p>Child VDOM will be used as a label following the checkbox button itself.</p>
-      <p>Props:</p>
+      <p className="nx-p">Custom checkbox input.</p>
+      <p className="nx-p">Child VDOM will be used as a label following the checkbox button itself.</p>
+      <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -77,20 +76,26 @@ const NxCheckboxPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile>
-      <NxCheckboxExample />
-      <CodeExample content={exampleCode} />
+    <GalleryExampleTile title="General Example"
+                        codeExamples={exampleCode}
+                        liveExample={NxCheckboxExample}>
+      This example shows a series of checkboxes in a typical vertical layout with
+      different label content. Note that one of the checkboxes is disabled. Another has no label
+      at all but is adjacent to other content, demonstrating its lack of inherent margin.
     </GalleryExampleTile>
 
-    <GalleryTile title='Inline Checkbox'>
-      <NxCheckboxInlineExample />
-      <CodeExample content={inlineExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Inline Checkbox"
+                        liveExample={NxCheckboxInlineExample}
+                        codeExamples={inlineExampleCode}>
+      This examples shows a series of checkboxes laid out inline amongst other inline text.
+    </GalleryExampleTile>
 
-    <GalleryTile title='Checkbox label should not wrap'>
-      <NxCheckboxNowrapExample />
-      <CodeExample content={nowrapExampleCode} />
-    </GalleryTile>
+    <GalleryExampleTile title="Checkbox label should not wrap"
+                        liveExample={NxCheckboxNowrapExample}
+                        codeExamples={nowrapExampleCode}>
+      This example includes a container around the checkboxes. This container is deliberately narrow and has a
+      red border. This makes it clear that the labels on checkboxes do not wrap.
+    </GalleryExampleTile>
   </>;
 
 export default NxCheckboxPage;

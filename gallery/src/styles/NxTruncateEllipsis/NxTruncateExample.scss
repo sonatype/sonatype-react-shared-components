@@ -1,0 +1,26 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+ @import '~@sonatype/react-shared-components/scss-shared/nx-text-helpers';
+
+.nx-truncate-example1 {
+  @include nx-truncate-ellipsis;
+  max-width: 400px;
+}
+
+.nx-truncate-example2 {
+  @include nx-truncate-ellipsis;
+  max-width: 600px;
+}
+
+// styling added for clarity
+.nx-truncation-examples {
+  .nx-truncate-example1, .nx-truncate-example2 {
+    border: 1px solid #949494;
+    margin-bottom: $nx-spacing-md;
+    padding: $nx-spacing-md;
+  }
+}

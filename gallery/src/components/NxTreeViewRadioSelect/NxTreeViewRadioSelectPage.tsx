@@ -6,8 +6,7 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTreeViewRadioSelectExample from './NxTreeViewRadioSelectExample';
 import NxTreeViewRadioSelectDisabledExample from './NxTreeViewRadioSelectDisabledExample';
@@ -18,7 +17,7 @@ const nxTreeViewRadioSelectExampleCode = require('!!raw-loader!./NxTreeViewRadio
 const NxTreeViewRadioSelectPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p>
+      <p className="nx-p">
         A tree view radio group component.
       </p>
 
@@ -37,13 +36,13 @@ const NxTreeViewRadioSelectPage = () =>
             <td className="nx-cell">Array of {'{id:string, name:string}'}</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">
-              <p>
+              <p className="nx-p">
                 An array of objects that corresponds to the possible options of the component (the checkboxes).
                 These objects need to at least have an <code className="nx-code">id: string</code> property and a{' '}
                 <code className="nx-code">name: string</code> property. If an empty array is passed in, the component
                 will be disabled.
               </p>
-              <p>
+              <p className="nx-p">
                 <code className="nx-code">id</code> will be the value provided to the{' '}
                 <code className="nx-code">onChange</code> callback, and{' '}
                 <code className="nx-code">name</code> will be used to render the option.
@@ -189,15 +188,18 @@ const NxTreeViewRadioSelectPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="NxTreeViewRadioSelect Basic Example">
-      <NxTreeViewRadioSelectExample />
-      <CodeExample content={nxTreeViewRadioSelectExampleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxTreeViewRadioSelect Basic Example"
+                        liveExample={NxTreeViewRadioSelectExample}
+                        codeExamples={nxTreeViewRadioSelectExampleCode}>
+      A basic example of <code className="nx-code">NxTreeViewRadioSelect</code>, with working collapse/expand,
+      filtering, and selection.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NxTreeViewRadioSelect Disabled Example">
-      <NxTreeViewRadioSelectDisabledExample />
-      <CodeExample content={nxTreeViewRadioSelectDisabledExampleCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="NxTreeViewRadioSelect Disabled Example"
+                        liveExample={NxTreeViewRadioSelectDisabledExample}
+                        codeExamples={nxTreeViewRadioSelectDisabledExampleCode}>
+      A disabled <code className="nx-code">NxTreeViewRadioSelect</code>
+    </GalleryExampleTile>
   </>;
 
 export default NxTreeViewRadioSelectPage;

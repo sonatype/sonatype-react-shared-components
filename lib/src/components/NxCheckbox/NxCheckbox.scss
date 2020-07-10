@@ -7,10 +7,12 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
+@import '../../scss-shared/nx-input-helpers';
 
 .nx-checkbox {
   @include container-horizontal;
   @include regular();
+  @include focusable-toggle-input(".nx-checkbox__box");
 
   cursor: pointer;
   display: inline;
@@ -18,10 +20,6 @@
   line-height: 20px;
   overflow: hidden;
   white-space: nowrap;
-}
-
-.nx-checkbox__input {
-  display: none;
 }
 
 .nx-checkbox__box {

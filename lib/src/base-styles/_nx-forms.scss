@@ -5,13 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../scss-shared/nx-variables';
-@import '../scss-shared/nx-text-helpers';
-@import '../scss-shared/nx-container-helpers';
-@import 'nx-text-input';
-
-$nx-form-element-height: 32px;
-$nx-form-element-width-normal: 219px;
-$nx-form-element-width-wide: 395px;
 
 // Basic form layout
 
@@ -78,7 +71,7 @@ $nx-form-element-width-wide: 395px;
 
   .nx-text-input, .nx-textarea {
     display: block;
-    margin-top: 7px; // gives proper 8px spacing between label text and field
+    margin-top: $nx-spacing-xs;
   }
 }
 

@@ -5,10 +5,16 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { ComponentType } from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 export function getShallowComponent<P>(Component: ComponentType<P>, minimalProps: P) {
   return function getShallowComponent(additionalProps?: Partial<P>) {
     return shallow(<Component { ...minimalProps } { ...additionalProps } />);
+  };
+}
+
+export function getMountedComponent<P>(Component: ComponentType<P>, minimalProps: P) {
+  return function getMountedComponent(additionalProps?: Partial<P>) {
+    return mount(<Component { ...minimalProps } { ...additionalProps } />);
   };
 }

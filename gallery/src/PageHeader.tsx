@@ -5,27 +5,17 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxPageHeader } from '@sonatype/react-shared-components';
 
 import packageJson from '../package.json';
 
-const sonatypeLogo = require('@sonatype/react-shared-components/assets/img/SON_hexagon_cropped.svg');
-
 function PageHeader() {
-  return (
-    <header className="nx-page-header">
-      <div className="nx-page-header__inner">
-        <a href="#" className="nx-product">
-          <img src={sonatypeLogo} className="nx-product__logo"/>
-          <div className="nx-product__name">
-            Sonatype Component Library
-          </div>
-          <div className="nx-product__version">
-            Version: {packageJson.version}
-          </div>
-        </a>
-      </div>
-    </header>
-  );
+  const productInfo = {
+    name: 'React Shared Component Library',
+    version: packageJson.version
+  };
+
+  return <NxPageHeader homeLink="#" productInfo={productInfo} />;
 }
 
 export default PageHeader;

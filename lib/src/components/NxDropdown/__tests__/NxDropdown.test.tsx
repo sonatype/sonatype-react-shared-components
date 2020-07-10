@@ -25,7 +25,7 @@ describe('NxDropdown', () => {
     expect(component).toHaveClassName('.nx-dropdown');
     expect(button).toHaveClassName('.nx-dropdown__toggle');
     expect(button).toHaveProp('variant', 'tertiary');
-    expect(button.childAt(0)).toContainReact(<span>dropdown</span>);
+    expect(button.childAt(0)).toContainReact(<span className="nx-dropdown__toggle-label">dropdown</span>);
     expect(button.childAt(1)).toHaveProp('icon', faCaretDown);
   });
 

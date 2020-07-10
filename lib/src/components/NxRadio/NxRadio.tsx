@@ -29,7 +29,7 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
                  checked={isChecked}
                  onChange={() => onChange && onChange(value)}
                  readOnly={!onChange}/>
-          <svg className="nx-radio__circle" viewBox="-8 -8 16 16">
+          <svg className="nx-radio__circle" viewBox="-8 -8 16 16" focusable={false}>
             <circle r="7" strokeWidth="1" fill="none" className="nx-radio__outer-circle"/>
             { isChecked && <circle r="5" stroke="none" className="nx-radio__inner-circle"/> }
           </svg>
