@@ -20,12 +20,10 @@ export default function NxRadioExample() {
   return (
     <>
       <p style={{color: appliedColor}}>Selected Color: {color}</p>
-      <div>
+      <fieldset className="nx-fieldset">
         <NxRadio name="color" value="red" onChange={setColor} isChecked={color === 'red'} radioId="color-red">
           Red
         </NxRadio>
-      </div>
-      <div>
         <NxRadio name="color"
                  value="purple"
                  onChange={setColor}
@@ -34,20 +32,15 @@ export default function NxRadioExample() {
                  radioId="color-purple">
           Purple (disabled)
         </NxRadio>
-      </div>
-
-      <div>
         <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
           <span style={{color: 'green'}}>Green</span>
           {' '}
           <em>(non-text children)</em>
         </NxRadio>
-      </div>
-
-      <div>
-        <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue"/>
-        No label
-      </div>
+        <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue">
+          Blue
+        </NxRadio>
+      </fieldset>
     </>
   );
 }
