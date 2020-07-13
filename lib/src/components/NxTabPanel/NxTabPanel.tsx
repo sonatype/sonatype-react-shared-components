@@ -23,7 +23,6 @@ const NxTabPanel = function NxTabPanelElement(props: Props) {
 
   return (
     <div role="tabpanel"
-         aria-expanded="true"
          aria-labelledby={labelledBy}
          className={classnames('nx-tab-panel', className)}
          {...attrs}
