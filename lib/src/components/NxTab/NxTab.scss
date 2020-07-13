@@ -8,14 +8,15 @@
  @import '../../scss-shared/nx-variables';
 
 .nx-tab {
+  border: transparent;
+  border-width: 0 0 4px 0;
+  cursor: pointer;
   display: inline-block;
   list-style: none;
   padding: $nx-spacing-xs $nx-spacing-l;
-  cursor: pointer;
 }
 
 .nx-tab.active {
   border: solid $nx-background-color-interactive;
-  border-width: 0 0 4px 0;
   font-weight: bold;
 }
