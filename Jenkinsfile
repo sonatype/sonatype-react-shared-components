@@ -16,7 +16,7 @@ dockerizedBuildPipeline(
   prepare: {
     githubStatusUpdate('pending')
 
-    sh "docker run --name selenium-chrome -d -p 4444:4444 ${seleniumDockerImage}:${seleniumDockerVersion}"
+    sh "docker run --name selenium-chrome -d -p 4444:4444 -v /dev/shm:/dev/shm ${seleniumDockerImage}:${seleniumDockerVersion}"
   },
   setVersion: {
     env['VERSION'] = sh(returnStdout: true, script: 'jq -r -e .version lib/package.json').trim()
@@ -29,7 +29,7 @@ dockerizedBuildPipeline(
       # the second parameter
       # From https://stackoverflow.com/a/4024263
       verlte() {
-          [  "$1" = "`echo -e "$1\n$2" | sort -V | head -n1`" ]
+          [  "$1" = "`/bin/echo -e "$1\\n$2" | sort -V | head -n1`" ]
       }
 
       if [ "$BRANCH_NAME" != "master" ]; then
@@ -56,10 +56,26 @@ dockerizedBuildPipeline(
       fi
     '''
 
+    // As this is an open source project, yarn.lock URLs should point to npmjs.org, not repo.sonatype.com
+    sh '''
+      exitSuccessfully=0
+
+      for f in */yarn.lock; do
+        if ( grep --quiet 'repo\\.sonatype\\.com' "${f}" ); then
+          echo "repo.sonatype.com URL found in ${f}"
+          exitSuccessfully=1
+        fi
+      done
+
+      exit $exitSuccessfully
+    '''
+
     withCredentials([string(credentialsId: 'REACT_SHARED_COMPONENTS_APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
       sh '''
+        registry=https://repo.sonatype.com/repository/npm-all/
+
         cd lib
-        yarn install
+        yarn install --registry "${registry}"
         npm run test
         npm run build
         cd dist
@@ -67,7 +83,7 @@ dockerizedBuildPipeline(
         cd ../..
 
         cd gallery
-        yarn install
+        yarn install --registry "${registry}"
 
         # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
         TEST_IP=$JENKINS_AGENT_IP npm run test

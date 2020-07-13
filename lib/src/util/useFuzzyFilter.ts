@@ -9,7 +9,7 @@ import Fuse from 'fuse.js';
 
 import fuzzyFilter from './fuzzyFilter';
 
-function useFuzzyFilter<T>(input: T[], options: Fuse.FuseOptions<T>): [T[], string, ((s: string) => void)] {
+function useFuzzyFilter<T>(input: T[], options: Fuse.IFuseOptions<T>): [T[], string, ((s: string) => void)] {
   const [filterTerm, setFilterTerm] = useState('');
 
   const output = filterTerm ? fuzzyFilter(input, filterTerm, options) : input;
