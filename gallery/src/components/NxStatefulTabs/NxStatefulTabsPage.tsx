@@ -6,12 +6,11 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxTabsSimpleExample from './NxStatefulTabsSimpleExample';
+import NxStatefulTabsSimpleExample from './NxStatefulTabsSimpleExample';
 
-const tabsSimpleExampleCode = require('!!raw-loader!./NxStatefulTabsSimpleExample').default;
+const NxStatefulTabsSimpleCode = require('!!raw-loader!./NxStatefulTabsSimpleExample').default;
 
 export default function NxTablePage() {
   return (
@@ -30,10 +29,12 @@ export default function NxTablePage() {
           {' '}<code className="nx-code">id</code> for the related <code className="nx-code">&lt;NxTab&gt;</code>.
         </p>
       </GalleryDescriptionTile>
-      <GalleryTile title="Simple Example">
-        <NxTabsSimpleExample />
-        <CodeExample content={tabsSimpleExampleCode} />
-      </GalleryTile>
+
+      <GalleryExampleTile title="Simple NxTabs Example"
+                          liveExample={NxStatefulTabsSimpleExample}
+                          codeExamples={NxStatefulTabsSimpleCode}>
+        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components.
+      </GalleryExampleTile>
     </>
   );
 }
