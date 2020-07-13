@@ -15,15 +15,14 @@ export { Props } from './types';
 const NxTabPanel = function NxTabPanelElement(props: Props) {
   // Use React.useContext instead of importing useContext for jest to mock the value in the test
   const {activeTab} = React.useContext(ActiveTabContext);
-  const {labelledBy, className, ...attrs} = props;
+  const {index, className, ...attrs} = props;
 
-  if (activeTab !== labelledBy) {
+  if (activeTab !== index) {
     return null;
   }
 
   return (
     <div role="tabpanel"
-         aria-labelledby={labelledBy}
          className={classnames('nx-tab-panel', className)}
          {...attrs}
     />

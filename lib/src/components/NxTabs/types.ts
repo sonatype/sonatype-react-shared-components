@@ -4,16 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 
 export type Props = HTMLAttributes<HTMLDivElement> & {
-  activeTab: string | null;
-  onTabSelect?: ((id: string) => void) | null;
+  activeTab: number | null | undefined;
+  onTabSelect?: ((index: number | null | undefined) => void) | null;
+  children?: ReactNode | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  activeTab: PropTypes.string,
+  activeTab: PropTypes.number,
   onTabSelect: PropTypes.func,
   children: PropTypes.node
 };

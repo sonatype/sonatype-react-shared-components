@@ -8,10 +8,10 @@ import { LiHTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
 export type Props = LiHTMLAttributes<HTMLLIElement> & {
-  id: string;
+  index?: number | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  id: PropTypes.string.isRequired,
+  index: PropTypes.number,
   children: PropTypes.node
 };

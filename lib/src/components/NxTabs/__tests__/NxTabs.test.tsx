@@ -5,23 +5,49 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import NxTabs from '../NxTabs';
+import NxTabList from '../../NxTabList/NxTabList';
+import NxTab from '../../NxTab/NxTab';
+import NxTabPanel from '../../NxTabPanel/NxTabPanel';
 
 describe('NxTabs', function () {
-  it('renders', function () {
-    const component = shallow(<NxTabs activeTab="activeTabId"/>);
+  it('renders with a unique id each time', function () {
+    const firstTabs = shallow(<NxTabs activeTab={0}><NxTabList><NxTab>Tabs 0 Tab 0</NxTab></NxTabList></NxTabs>);
+    const secondTabs = shallow(<NxTabs activeTab={0}><NxTabList><NxTab>Tabs 1 Tab 0</NxTab></NxTabList></NxTabs>);
 
-    expect(component.props().value.activeTab).toBe('activeTabId');
-    expect(component.props().value.onTabSelect.toString()).toBe((() => {}).toString());
-    expect(component.dive()).toHaveClassName('nx-tabs');
+    expect(firstTabs).not.toHaveProp('id', secondTabs.props().id);
   });
 
-  it('passes onTabSelect', function () {
-    const onTabSelect = (id: string) => id;
-    const component = shallow(<NxTabs activeTab="activeTabId" onTabSelect={onTabSelect}/>);
+  it('activates the active tab', function () {
+    const component = mount(
+      <NxTabs activeTab={1}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+          <NxTab>Tab 1</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+        <NxTabPanel>Content 1</NxTabPanel>
+      </NxTabs>
+    );
 
-    expect(component.props().value.onTabSelect).toBe(onTabSelect);
-    expect(component.dive()).toHaveClassName('nx-tabs');
+    expect(component.find('[role="tab"]').first()).not.toHaveClassName('active');
+    expect(component.find('[role="tab"]').last()).toHaveClassName('active');
+    expect(component.find('[role="tabpanel"]')).toHaveText('Content 1');
+  });
+
+  it('calls onTabSelect', function() {
+    const onTabSelect = jest.fn();
+    const component = mount(
+      <NxTabs activeTab={0} onTabSelect={onTabSelect}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+        </NxTabList>
+      </NxTabs>
+    );
+
+    component.find('[role="tab"]').simulate('click');
+
+    expect(onTabSelect).toHaveBeenCalledWith(0);
   });
 });

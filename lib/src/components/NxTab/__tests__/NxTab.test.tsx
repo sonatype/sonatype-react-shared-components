@@ -5,22 +5,31 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import NxTab from '../NxTab';
+
+import {ActiveTabContext} from '../../NxTabs/NxTabs';
 
 describe('NxTab', function () {
   it('renders a tab with the expected class names', function () {
-    const component = shallow(<NxTab id="tab"/>);
+    const component = mount(
+      <ActiveTabContext.Provider value={{ activeTab: -1, onTabSelect: jest.fn() }}>
+        <NxTab index={0}>Tab</NxTab>
+      </ActiveTabContext.Provider>
+    );
 
-    expect(component).toHaveProp('aria-selected', 'false');
-    expect(component).not.toHaveClassName('active');
+    expect(component.find('[role="tab"]')).toHaveProp('aria-selected', 'false');
+    expect(component.find('[role="tab"]')).not.toHaveClassName('active');
   });
 
   it('renders a tab with the expected class names when active={false}', function () {
-    jest.spyOn(React, 'useContext').mockImplementation(() => ({activeTab: 'tab'}));
-    const component = shallow(<NxTab id="tab"/>);
+    const component = mount(
+      <ActiveTabContext.Provider value={{ activeTab: 0, onTabSelect: jest.fn() }}>
+        <NxTab index={0}>Tab</NxTab>
+      </ActiveTabContext.Provider>
+    );
 
-    expect(component).toHaveProp('aria-selected', 'true');
-    expect(component).toHaveClassName('active');
+    expect(component.find('[role="tab"]')).toHaveProp('aria-selected', 'true');
+    expect(component.find('[role="tab"]')).toHaveClassName('active');
   });
 });

@@ -16,57 +16,65 @@ describe('NxStatefulTabs', function () {
     const component = mount(
       <NxStatefulTabs>
         <NxTabList>
-          <NxTab id="tab">Tab</NxTab>
+          <NxTab>Tab</NxTab>
         </NxTabList>
-        <NxTabPanel labelledBy="tab">Tab Content</NxTabPanel>
+        <NxTabPanel>Tab Content</NxTabPanel>
       </NxStatefulTabs>
     );
 
-    expect(component).toContainExactlyOneMatchingElement('#tab.nx-tab.active');
-    expect(component.find('[labelledBy="tab"]')).not.toBeEmptyRender();
+    expect(component.find('[role="tab"].active')).toHaveText('Tab');
+    expect(component.find('[role="tabpanel"]')).toHaveText('Tab Content');
+  });
+
+  it('selects the default tab initially', function () {
+    const component = mount(
+      <NxStatefulTabs defaultActiveTab={1}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+          <NxTab>Tab 1</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+        <NxTabPanel>Content 1</NxTabPanel>
+      </NxStatefulTabs>
+    );
+
+    expect(component.find('[role="tabpanel"]')).not.toHaveText('Content 0');
+    expect(component.find('[role="tabpanel"]')).toHaveText('Content 1');
   });
 
   it('selects the second tab on click', function () {
     const component = mount(
       <NxStatefulTabs>
         <NxTabList>
-          <NxTab id="tab">Tab</NxTab>
-          <NxTab id="tab-2">Tab 2</NxTab>
+          <NxTab>Tab 0</NxTab>
+          <NxTab>Tab 1</NxTab>
         </NxTabList>
-        <NxTabPanel labelledBy="tab">Tab Content</NxTabPanel>
-        <NxTabPanel labelledBy="tab-2">Tab 2 Content</NxTabPanel>
+        <NxTabPanel>Content 0</NxTabPanel>
+        <NxTabPanel>Content 1</NxTabPanel>
       </NxStatefulTabs>
     );
 
-    component.find('#tab-2').first().simulate('click');
+    component.find('[role="tab"]').last().simulate('click');
 
-    // Ensure only the correct tab is set to active
-    expect(component).toContainExactlyOneMatchingElement('.nx-tab.active');
-    expect(component).toContainExactlyOneMatchingElement('#tab-2.nx-tab.active');
-
-    // Ensure the correct tab panel is rendered
-    expect(component.closest('[labelledBy="tab-2"]')).not.toBeEmptyRender();
+    expect(component.find('[role="tab"].active')).toHaveText('Tab 1');
+    expect(component.find('[role="tabpanel"]')).toHaveText('Content 1');
   });
 
   it('selects the second tab on keypress', function () {
     const component = mount(
       <NxStatefulTabs>
         <NxTabList>
-          <NxTab id="tab">Tab</NxTab>
-          <NxTab id="tab-2">Tab 2</NxTab>
+          <NxTab id="tab">Tab 0</NxTab>
+          <NxTab id="tab-2">Tab 1</NxTab>
         </NxTabList>
-        <NxTabPanel labelledBy="tab">Tab Content</NxTabPanel>
-        <NxTabPanel labelledBy="tab-2">Tab 2 Content</NxTabPanel>
+        <NxTabPanel>Content 0</NxTabPanel>
+        <NxTabPanel>Content 1</NxTabPanel>
       </NxStatefulTabs>
     );
 
-    component.find('#tab-2').first().simulate('keypress', {key: ' '});
+    component.find('[role="tab"]').last().simulate('keypress', {key: ' '});
 
-    // Ensure only the correct tab is set to active
-    expect(component).toContainExactlyOneMatchingElement('.nx-tab.active');
-    expect(component).toContainExactlyOneMatchingElement('#tab-2.nx-tab.active');
-
-    // Ensure the correct tab panel is rendered
-    expect(component.closest('[labelledBy="tab-2"]')).not.toBeEmptyRender();
+    expect(component.find('[role="tab"].active')).toHaveText('Tab 1');
+    expect(component.find('[role="tabpanel"]')).toHaveText('Content 1');
   });
 });

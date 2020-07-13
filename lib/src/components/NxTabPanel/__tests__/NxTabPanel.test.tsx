@@ -5,24 +5,28 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import NxTabPanel from '../NxTabPanel';
+import { ActiveTabContext } from '../../NxTabs/NxTabs';
 
 describe('NxTabPanel', function () {
   it('renders nothing when inactive', () => {
-    jest.spyOn(React, 'useContext').mockImplementation(() => ({activeTab: 'anotherTab'}));
-    const component = shallow(<NxTabPanel labelledBy="tab" />);
+    const component = mount(
+      <ActiveTabContext.Provider value={{activeTab: -1, onTabSelect: jest.fn() }}>
+        <NxTabPanel index={0}>Content</NxTabPanel>
+      </ActiveTabContext.Provider>
+    );
 
     expect(component).toBeEmptyRender();
   });
 
   it('renders when active', function () {
-    jest.spyOn(React, 'useContext').mockImplementation(() => ({activeTab: 'tab'}));
-    const component = shallow(<NxTabPanel labelledBy="tab" />);
+    const component = mount(
+      <ActiveTabContext.Provider value={{ activeTab: -1, onTabSelect: jest.fn() }}>
+        <NxTabPanel index={0}>Content</NxTabPanel>
+      </ActiveTabContext.Provider>
+    );
 
-    expect(component).toHaveProp('aria-expanded', 'true');
-    expect(component).toHaveProp('aria-labelledby', 'tab');
-    expect(component).toHaveClassName('nx-tab-panel');
-    expect(component).toHaveProp('role', 'tabpanel');
+    expect(component.find('[role="tabpanel"]')).not.toBeEmptyRender();
   });
 });

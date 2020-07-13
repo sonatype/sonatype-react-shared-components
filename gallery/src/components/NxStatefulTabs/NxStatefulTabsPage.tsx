@@ -8,6 +8,14 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
+import {
+  NxTable,
+  NxTableBody,
+  NxTableCell,
+  NxTableHead,
+  NxTableRow
+} from '@sonatype/react-shared-components';
+
 import NxStatefulTabsSimpleExample from './NxStatefulTabsSimpleExample';
 
 const NxStatefulTabsSimpleCode = require('!!raw-loader!./NxStatefulTabsSimpleExample').default;
@@ -16,18 +24,31 @@ export default function NxTablePage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <h3 className="nx-h3">NxStatefulTabs</h3>
+        <section className="nx-tile--subsection">
+          <p className="nx-p">
+            This component simply wraps the <code className="nx-code">NxTabs</code> component
+            to track the currently selected tab.
+          </p>
 
-        <p className="nx-p">
-          The top-level container for tabbed navigation.
-          The first child element must be a <code className="nx-code">&lt;NxTabList&gt;</code> component
-          containing <code className="nx-code">&lt;NxTab&gt;</code> components.
-          All other children must be <code className="nx-code">&lt;NxTabPanel&gt;</code> components.
-          There must be at least one <code className="nx-code">&lt;NxTabPanel&gt;</code> for each
-          {' '}<code className="nx-code">&lt;NxTabLabel&gt;</code> and they must include a
-          {' '}<code className="nx-code">labelledBy</code> attribute which matches the corresponding
-          {' '}<code className="nx-code">id</code> for the related <code className="nx-code">&lt;NxTab&gt;</code>.
-        </p>
+          <NxTable className="nx-table--gallery-props">
+            <NxTableHead>
+              <NxTableRow>
+                <NxTableCell>Prop</NxTableCell>
+                <NxTableCell>Type</NxTableCell>
+                <NxTableCell>Details</NxTableCell>
+              </NxTableRow>
+            </NxTableHead>
+            <NxTableBody>
+              <NxTableRow>
+                <NxTableCell>defaultActiveTab</NxTableCell>
+                <NxTableCell>number</NxTableCell>
+                <NxTableCell>
+                  The index of the tab that should be active initially.
+                </NxTableCell>
+              </NxTableRow>
+            </NxTableBody>
+          </NxTable>
+        </section>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple NxTabs Example"

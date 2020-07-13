@@ -24,74 +24,73 @@ export default function NxTabsPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <h3 className="nx-h3">NxTabs</h3>
-
         <p className="nx-p">
-          The top-level container for tabbed navigation.
-          It can have <code className="nx-code">&lt;NxTabList&gt;</code> and
-          {' '}<code className="nx-code">&lt;NxTabPanel&gt;</code> components as children.
+          A set of accessible tabs components which must be used together.
         </p>
 
-        <h3 className="nx-h3">NxTabList</h3>
+        <section className="nx-tile--subsection">
+          <h3 className="nx-h3">NxTabs</h3>
 
-        <p className="nx-p">
-          The parent container for <code className="nx-code">&lt;NxTab&gt;</code> components.
-          These are the components the user would click on to switch tabs.
-        </p>
+          <p className="nx-p">
+            The top-level container for tabbed navigation.
+            It can have <code className="nx-code">&lt;NxTabList&gt;</code> and
+            {' '}<code className="nx-code">&lt;NxTabPanel&gt;</code> components as children.
+          </p>
 
-        <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Prop</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Details</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>activeTab</NxTableCell>
-              <NxTableCell>string</NxTableCell>
-              <NxTableCell>true</NxTableCell>
-              <NxTableCell>
-                The id of the active <code className="nx-code">NxTab</code>,
-                only the <code className="nx-code">NxTabPanel</code> with a
-                matching <code className="nx-code">labelledBy</code> prop will be rendered.
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
-        </NxTable>
+          <NxTable className="nx-table--gallery-props">
+            <NxTableHead>
+              <NxTableRow>
+                <NxTableCell>Prop</NxTableCell>
+                <NxTableCell>Type</NxTableCell>
+                <NxTableCell>Details</NxTableCell>
+              </NxTableRow>
+            </NxTableHead>
+            <NxTableBody>
+              <NxTableRow>
+                <NxTableCell>activeTab</NxTableCell>
+                <NxTableCell>number</NxTableCell>
+                <NxTableCell>
+                  The index of the active tab.
+                </NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>onTabSelect</NxTableCell>
+                <NxTableCell>function(number)</NxTableCell>
+                <NxTableCell>
+                  Called with the index of the newly selected tab when the currently selected tab changes.
+                </NxTableCell>
+              </NxTableRow>
+            </NxTableBody>
+          </NxTable>
+        </section>
 
-        <h3 className="nx-h3">NxTab</h3>
+        <section className="nx-tile--subsection">
+          <h3 className="nx-h3">NxTabList</h3>
 
-        <p className="nx-p">The component the user clicks on to switch tabs.</p>
+          <p className="nx-p">
+            The parent container for the <code className="nx-code">&lt;NxTab&gt;</code> components.
+          </p>
+        </section>
 
-        <h3 className="nx-h3">NxTabPanel</h3>
+        <section className="nx-tile--subsection">
+          <h3 className="nx-h3">NxTab</h3>
 
-        <p className="nx-p">
-          Container component for the tab contents.
-        </p>
+          <p className="nx-p">
+            The component the user selects to switch tabs.
+            The index prop is automatically configured by the <code className="nx-code">NxTabs</code> component.
+            There should be one of these for each <code className="nx-code">NxTabPanel</code> component.
+          </p>
+        </section>
 
-        <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Prop</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Details</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>labelledBy</NxTableCell>
-              <NxTableCell>string</NxTableCell>
-              <NxTableCell>true</NxTableCell>
-              <NxTableCell>
-                The id of the related <code className="nx-code">&lt;NxTab&gt;</code>.
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
-        </NxTable>
+        <section className="nx-tile--subsection">
+          <h3 className="nx-h3">NxTabPanel</h3>
+
+          <p className="nx-p">
+            Container component for the tab contents.
+            The index prop is automatically configured by the <code className="nx-code">NxTabs</code> component.
+            There should be one of these for each <code className="nx-code">NxTab</code> component.
+          </p>
+        </section>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="Simple NxTabs Example"
                           liveExample={NxTabsSimpleExample}

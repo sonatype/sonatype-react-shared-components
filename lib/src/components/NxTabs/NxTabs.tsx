@@ -4,28 +4,71 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, {Children, cloneElement, isValidElement, useMemo} from 'react';
 import classnames from 'classnames';
+
+import {Props as NxTabProps} from '../NxTab/types';
+import {Props as NxTabPanelProps} from '../NxTabPanel/types';
 
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
-export const ActiveTabContext = React.createContext<{ activeTab: string | null | undefined, onTabSelect: (id: string) => void }>({
-  activeTab: null,
-  onTabSelect: () => {}
-});
+interface ActiveTabContextType {
+  activeTab: number | null | undefined;
+  onTabSelect: (index: number | null | undefined) => void;
+};
+
+export const ActiveTabContext = React.createContext<ActiveTabContextType>({activeTab: null, onTabSelect: () => {}});
+
+let tabId = 0;
 
 const NxTabs = function NxTabsElement(props: Props) {
-  const {activeTab, onTabSelect, className, ...attrs} = props;
+  const {activeTab, onTabSelect, id, className, children, ...attrs} = props;
 
-  const activeTabContext = {
+  const activeTabContext: ActiveTabContextType = {
     activeTab,
     onTabSelect: onTabSelect || (() => {})
   };
 
+  const [tabList, ...tabPanels] = Children.toArray(children);
+
+  if (!isValidElement(tabList)) {
+    console.error('NxTabs must have an NxTabList');
+    return null;
+  }
+  else if (tabList.props.children.length === 0) {
+    console.error('NxTabs must have at least one NxTab');
+    return null;
+  }
+
+  const rootId = id || 'nx-tabs-' + useMemo(() => tabId++, []);
+
+  const clonedTabList = cloneElement(tabList, {
+    children: Children.toArray(tabList.props.children).map((tab, index) => {
+      if (isValidElement<NxTabProps>(tab)) {
+        return cloneElement(tab, {
+          id: `${rootId}-tab-${index}`,
+          'aria-controls': `${rootId}-tab-panel-${index}`,
+          index
+        });
+      }
+      return tab;
+    })
+  });
+
+  const clonedTabPanels = tabPanels.map((tabPanel, index) => {
+    if (isValidElement<NxTabPanelProps>(tabPanel)) {
+      return cloneElement(tabPanel, {'aria-labelledby': `${id}-tab-panel-${index}`, index});
+    }
+    return tabPanel;
+  });
+
   return (
     <ActiveTabContext.Provider value={activeTabContext}>
-      <div className={classnames('nx-tabs', className)} {...attrs} />
+      <div id={rootId} className={classnames('nx-tabs', className)} {...attrs}>
+        {clonedTabList}
+        {clonedTabPanels}
+      </div>
     </ActiveTabContext.Provider>
   );
 };

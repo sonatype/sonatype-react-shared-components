@@ -4,10 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { isValidElement, useState, Children } from 'react';
+import React, { useState } from 'react';
 
 import NxTabs from '../NxTabs';
-import { Props as NxTabProps } from '../../NxTab/types';
 
 import { Props, propTypes } from './types';
 
@@ -20,33 +19,19 @@ import { Props, propTypes } from './types';
  * * The NxTabPanel must have a labelledBy prop that matches the id of an NxTab.
  */
 const NxStatefulTabs = function NxStatefulTabsElement(props: Props) {
-  const { children, onTabSelect, ...attrs } = props;
-  const [tabList, ...tabPanels] = Children.toArray(children);
+  const { defaultActiveTab = 0, children, onTabSelect, ...attrs } = props;
 
-  if (!isValidElement(tabList)) {
-    console.error('NxStatefulTabs must have an NxTabList')
-    return null;
-  }
-  else if (tabList.props.children.length === 0) {
-    console.error('NxStatefulTabs must have at least one NxTab');
-    return null;
-  }
+  const [activeTab, setActiveTab] = useState<number | null | undefined>(defaultActiveTab);
 
-  const firstActiveTab = (Children.toArray(tabList.props.children)[0].props as NxTabProps).id;
-  const [activeTab, setActiveTab] = useState(firstActiveTab);
-
-  function handleTabSelect(id: string) {
+  function handleTabSelect(index: number | null | undefined) {
     if (onTabSelect) {
-      onTabSelect(id);
+      onTabSelect(index);
     }
-    setActiveTab(id);
+    setActiveTab(index);
   }
 
   return (
-    <NxTabs activeTab={activeTab} onTabSelect={handleTabSelect} {...attrs}>
-      {tabList}
-      {tabPanels}
-    </NxTabs>
+    <NxTabs activeTab={activeTab} onTabSelect={handleTabSelect} {...attrs}>{children}</NxTabs>
   );
 };
 

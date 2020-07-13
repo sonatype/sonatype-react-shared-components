@@ -8,10 +8,10 @@ import { HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
 export type Props = HTMLAttributes<HTMLDivElement> & {
-  labelledBy: string;
+  index?: number | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  labelledBy: PropTypes.string.isRequired,
+  index: PropTypes.number,
   children: PropTypes.node
 };
