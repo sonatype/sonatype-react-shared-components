@@ -12,6 +12,8 @@ import { ActiveTabContext } from '../NxTabs/NxTabs';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
+import './NxTab.scss';
+
 const NxTab = function NxTabElement(props: Props) {
   // Use React.useContext instead of importing useContext for jest to mock the value in the test
   const {activeTab, onTabSelect} = React.useContext(ActiveTabContext);

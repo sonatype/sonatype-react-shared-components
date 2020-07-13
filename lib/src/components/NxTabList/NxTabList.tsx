@@ -10,6 +10,8 @@ import classnames from 'classnames';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
+import './NxTabList.scss';
+
 const NxTabList = function NxTabListElement(props: Props) {
   const {className, ...attrs} = props;
 
