@@ -16,18 +16,13 @@
   position: relative; // to make a containing block for validation popovers
 }
 
-.nx-form--simple {
-  border-top: none;
-  padding: 0;
-}
-
 // for a form that is the entirety of a modal
 .nx-form--modal-form {
   padding-top: 0;
 }
 
 .nx-form-group {
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 }
 
 .nx-form-row {
@@ -62,8 +57,6 @@
 
   color: $nx-text-color;
   display: block;
-  font-size: 16px;
-  margin-bottom: 7px;
 
   .disabled {
     color: $nx-grey-4;
@@ -71,8 +64,12 @@
 
   .nx-text-input, .nx-textarea {
     display: block;
-    margin-top: $nx-spacing-xs;
   }
+}
+
+.nx-label__text {
+  display: inline-block;
+  margin-bottom: $nx-spacing-xs;
 }
 
 .nx-label--optional {
@@ -80,7 +77,8 @@
     @include regular();
 
     color: $nx-text-color-light;
-    content: " - optional";
+    content: " optional";
+    font-size: $nx-font-size-xs;
     font-style: italic;
   }
 }
@@ -89,9 +87,9 @@
   @include container-horizontal;
   @include regular();
 
-  color: $nx-text-color;
+  color: $nx-text-color-light;
   display: block;
-  font-size: 14px;
+  margin-bottom: $nx-spacing-xs;
 }
 
 // Defining labels for groups of radio buttons or checkboxes is tricky - each individual radio has a <label>
@@ -104,14 +102,14 @@
   padding: 0;
 
   .nx-label {
-    margin-bottom: 0;
+    margin-bottom: $nx-spacing-xs;
   }
 
   .nx-radio, .nx-checkbox {
     @include container-vertical;
 
     display: block;
-    margin: 8px 0 0 24px;
+    margin-bottom: $nx-spacing-xs;
   }
 }
 
