@@ -15,7 +15,7 @@
   padding: $nx-spacing-xs $nx-spacing-l;
 
   &.active {
-    border-bottom: solid $nx-background-color-interactive;
+    border-bottom-color: $nx-background-color-interactive;
     font-weight: bold;
   }
 }
