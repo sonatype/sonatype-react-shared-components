@@ -20,7 +20,7 @@ import NxStatefulTabsSimpleExample from './NxStatefulTabsSimpleExample';
 
 const NxStatefulTabsSimpleCode = require('!!raw-loader!./NxStatefulTabsSimpleExample').default;
 
-export default function NxTablePage() {
+export default function NxStatefulTabsPage() {
   return (
     <>
       <GalleryDescriptionTile>
