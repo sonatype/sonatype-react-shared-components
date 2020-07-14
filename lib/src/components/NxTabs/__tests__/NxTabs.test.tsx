@@ -13,8 +13,20 @@ import NxTabPanel from '../../NxTabPanel/NxTabPanel';
 
 describe('NxTabs', function () {
   it('renders with a unique id each time', function () {
-    const firstTabs = shallow(<NxTabs activeTab={0}><NxTabList><NxTab>Tabs 0 Tab 0</NxTab></NxTabList></NxTabs>);
-    const secondTabs = shallow(<NxTabs activeTab={0}><NxTabList><NxTab>Tabs 1 Tab 0</NxTab></NxTabList></NxTabs>);
+    const firstTabs = shallow(
+      <NxTabs activeTab={0}>
+        <NxTabList>
+          <NxTab>Tabs 0 Tab 0</NxTab>
+        </NxTabList>
+      </NxTabs>
+    );
+    const secondTabs = shallow(
+      <NxTabs activeTab={0}>
+        <NxTabList>
+          <NxTab>Tabs 1 Tab 0</NxTab>
+        </NxTabList>
+      </NxTabs>
+    );
 
     expect(firstTabs).not.toHaveProp('id', secondTabs.props().id);
   });
