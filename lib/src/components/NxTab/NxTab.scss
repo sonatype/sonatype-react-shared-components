@@ -8,8 +8,7 @@
  @import '../../scss-shared/nx-variables';
 
 .nx-tab {
-  border: transparent;
-  border-width: 0 0 4px 0;
+  border-bottom: 4px solid transparent;
   cursor: pointer;
   display: inline-block;
   list-style: none;
