@@ -16,7 +16,7 @@ import './NxTab.scss';
 
 const NxTab = function NxTabElement(props: Props) {
   const {activeTab, onTabSelect} = useContext(ActiveTabContext);
-  const {id, index, tabIndex = 0, className, onClick, onKeyPress, ...attrs} = props;
+  const {index, tabIndex = 0, className, onClick, onKeyPress, ...attrs} = props;
   const active = activeTab === index;
   const classNames = classnames('nx-tab', className, { active });
   const selected = active ? 'true' : 'false';
@@ -42,7 +42,6 @@ const NxTab = function NxTabElement(props: Props) {
 
   return (
     <li role="tab"
-        id={id}
         className={classNames}
         aria-selected={selected}
         onKeyPress={handleKeyPress}
