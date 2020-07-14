@@ -83,10 +83,9 @@
 }
 
 .nx-label {
-  @include semi-bold();
+  @include bold();
 
   cursor: default;
-  font-size: 16px;
 }
 
 // Form typography
