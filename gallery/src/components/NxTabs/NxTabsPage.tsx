@@ -42,6 +42,7 @@ export default function NxTabsPage() {
               <NxTableRow>
                 <NxTableCell>Prop</NxTableCell>
                 <NxTableCell>Type</NxTableCell>
+                <NxTableCell>Required</NxTableCell>
                 <NxTableCell>Details</NxTableCell>
               </NxTableRow>
             </NxTableHead>
@@ -49,13 +50,15 @@ export default function NxTabsPage() {
               <NxTableRow>
                 <NxTableCell>activeTab</NxTableCell>
                 <NxTableCell>number</NxTableCell>
+                <NxTableCell>false</NxTableCell>
                 <NxTableCell>
-                  The index of the active tab.
+                  The index of the active tab. If not set no tab contents will be shown.
                 </NxTableCell>
               </NxTableRow>
               <NxTableRow>
                 <NxTableCell>onTabSelect</NxTableCell>
                 <NxTableCell>function(number)</NxTableCell>
+                <NxTableCell>false</NxTableCell>
                 <NxTableCell>
                   Called with the index of the newly selected tab when the currently selected tab changes.
                 </NxTableCell>

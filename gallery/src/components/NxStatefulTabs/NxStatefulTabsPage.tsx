@@ -24,31 +24,31 @@ export default function NxStatefulTabsPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <section className="nx-tile--subsection">
-          <p className="nx-p">
-            This component simply wraps the <code className="nx-code">NxTabs</code> component
-            to track the currently selected tab.
-          </p>
+        <p className="nx-p">
+          This component simply wraps the <code className="nx-code">NxTabs</code> component
+          to track the currently selected tab.
+        </p>
 
-          <NxTable className="nx-table--gallery-props">
-            <NxTableHead>
-              <NxTableRow>
-                <NxTableCell>Prop</NxTableCell>
-                <NxTableCell>Type</NxTableCell>
-                <NxTableCell>Details</NxTableCell>
-              </NxTableRow>
-            </NxTableHead>
-            <NxTableBody>
-              <NxTableRow>
-                <NxTableCell>defaultActiveTab</NxTableCell>
-                <NxTableCell>number</NxTableCell>
-                <NxTableCell>
-                  The index of the tab that should be active initially.
-                </NxTableCell>
-              </NxTableRow>
-            </NxTableBody>
-          </NxTable>
-        </section>
+        <NxTable className="nx-table--gallery-props">
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Prop</NxTableCell>
+              <NxTableCell>Type</NxTableCell>
+              <NxTableCell>Required</NxTableCell>
+              <NxTableCell>Details</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody>
+            <NxTableRow>
+              <NxTableCell>defaultActiveTab</NxTableCell>
+              <NxTableCell>number</NxTableCell>
+              <NxTableCell>false</NxTableCell>
+              <NxTableCell>
+                The index of the tab that should be active initially. Defaults to the first tab if not set.
+              </NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple NxTabs Example"
