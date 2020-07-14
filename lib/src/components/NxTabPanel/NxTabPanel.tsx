@@ -12,6 +12,8 @@ import { ActiveTabContext } from '../NxTabs/NxTabs';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
+import './NxTabPanel.scss';
+
 const NxTabPanel = function NxTabPanelElement(props: Props) {
   const {activeTab} = useContext(ActiveTabContext);
   const {index, className, ...attrs} = props;
