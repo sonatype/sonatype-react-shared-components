@@ -36,4 +36,4 @@ const NxTabsSimpleExample = () => {
   );
 };
 
-export default NxTableSimpleExample;
+export default NxTabsSimpleExample;
