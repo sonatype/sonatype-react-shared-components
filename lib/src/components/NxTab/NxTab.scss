@@ -14,9 +14,9 @@
   display: inline-block;
   list-style: none;
   padding: $nx-spacing-xs $nx-spacing-l;
-}
 
-.nx-tab.active {
-  border: solid $nx-background-color-interactive;
-  font-weight: bold;
+  &.active {
+    border-bottom: solid $nx-background-color-interactive;
+    font-weight: bold;
+  }
 }
