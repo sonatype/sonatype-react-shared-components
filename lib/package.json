@@ -75,7 +75,7 @@
     "@types/prop-types": "15.7.1",
     "@types/ramda": "0.26.8",
     "classnames": "=2.2.6",
-    "fuse.js": "3.4.5",
+    "fuse.js": "6.4.0",
     "prop-types": "15.7.2",
     "ramda": "0.26.1",
     "react-commonmark": "3.0.0"
