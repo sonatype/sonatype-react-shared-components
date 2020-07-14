@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, {useContext} from 'react';
 import classnames from 'classnames';
 
 import { ActiveTabContext } from '../NxTabs/NxTabs';
@@ -13,8 +13,7 @@ import { Props, propTypes } from './types';
 export { Props } from './types';
 
 const NxTabPanel = function NxTabPanelElement(props: Props) {
-  // Use React.useContext instead of importing useContext for jest to mock the value in the test
-  const {activeTab} = React.useContext(ActiveTabContext);
+  const {activeTab} = useContext(ActiveTabContext);
   const {index, className, ...attrs} = props;
 
   if (activeTab !== index) {
