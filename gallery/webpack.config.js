@@ -35,7 +35,8 @@ module.exports = function(env = { production: false }) {
         test: /\.(t|j)sx?$/,
         loader: 'ts-loader',
         include: [
-          path.resolve(__dirname, 'src')
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'node_modules/fuse.js/')
         ]
       }, {
         test: /\.s?css$/,
