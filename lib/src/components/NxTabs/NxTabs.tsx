@@ -58,7 +58,7 @@ const NxTabs = function NxTabsElement(props: Props) {
 
   const clonedTabPanels = tabPanels.map((tabPanel, index) => {
     if (isValidElement<NxTabPanelProps>(tabPanel)) {
-      return cloneElement(tabPanel, {'aria-labelledby': `${id}-tab-panel-${index}`, index});
+      return cloneElement(tabPanel, {'aria-labelledby': `${rootId}-tab-panel-${index}`, index});
     }
     return tabPanel;
   });
