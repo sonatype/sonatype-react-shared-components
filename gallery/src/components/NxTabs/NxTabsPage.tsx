@@ -72,6 +72,7 @@ export default function NxTabsPage() {
 
           <p className="nx-p">
             The parent container for the <code className="nx-code">&lt;NxTab&gt;</code> components.
+            Passes through all attributes to an underlying ul element.
           </p>
         </section>
 
@@ -82,6 +83,7 @@ export default function NxTabsPage() {
             The component the user selects to switch tabs.
             The index prop is automatically configured by the <code className="nx-code">NxTabs</code> component.
             There should be one of these for each <code className="nx-code">NxTabPanel</code> component.
+            Passes through all attributes to an underlying li element.
           </p>
         </section>
 
