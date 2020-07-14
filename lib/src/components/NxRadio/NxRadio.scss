@@ -12,7 +12,7 @@
 .nx-radio {
   @include container-horizontal;
   @include regular();
-  @include focusable-toggle-input(".nx-radio__circle");
+  @include focusable-toggle-input(".nx-radio__outer-circle");
 
   display: inline-block;
   margin-bottom: $nx-spacing-xs;

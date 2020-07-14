@@ -23,6 +23,14 @@
       stroke: #02A6D9;
     }
 
+    .nx-radio__input:checked {
+      + .nx-radio__circle {
+        #{$focus-border-selector} {
+          stroke: #02A6D9;
+        }
+      }
+    }
+
     .nx-radio__input:focus, .nx-checkbox__input:focus {
       // cancel IE11-specific focus style
       margin: 0;
