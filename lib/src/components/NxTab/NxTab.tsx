@@ -7,7 +7,7 @@
 import React, {useContext} from 'react';
 import classnames from 'classnames';
 
-import { ActiveTabContext } from '../NxTabs/NxTabs';
+import { TabContext } from '../NxTabs/NxTabs';
 
 import { Props, propTypes } from './types';
 export { Props } from './types';
@@ -15,8 +15,8 @@ export { Props } from './types';
 import './NxTab.scss';
 
 const NxTab = function NxTabElement(props: Props) {
-  const {activeTab, onTabSelect} = useContext(ActiveTabContext);
-  const {index, tabIndex = 0, className, onClick, onKeyPress, ...attrs} = props;
+  const {activeTab, rootId, index, onTabSelect} = useContext(TabContext);
+  const {tabIndex = 0, className, onClick, onKeyPress, ...attrs} = props;
   const active = activeTab === index;
   const classNames = classnames('nx-tab', className, { active });
   const selected = active ? 'true' : 'false';
@@ -42,6 +42,8 @@ const NxTab = function NxTabElement(props: Props) {
 
   return (
     <li role="tab"
+        id={`${rootId}-tab-${index}`}
+        aria-controls={`${rootId}-tabpanel-${index}`}
         className={classNames}
         aria-selected={selected}
         onKeyPress={handleKeyPress}

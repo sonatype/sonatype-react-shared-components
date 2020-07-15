@@ -8,28 +8,43 @@ import React from 'react';
 import { mount } from 'enzyme';
 import NxTab from '../NxTab';
 
-import {ActiveTabContext} from '../../NxTabs/NxTabs';
+import {TabContext} from '../../NxTabs/NxTabs';
 
 describe('NxTab', function () {
-  it('renders a tab with the expected class names', function () {
+  it('renders an inactive tab with the expected attributes', function () {
     const component = mount(
-      <ActiveTabContext.Provider value={{ activeTab: -1, onTabSelect: jest.fn() }}>
-        <NxTab index={0}>Tab</NxTab>
-      </ActiveTabContext.Provider>
+      <TabContext.Provider value={testContext({activeTab: -1, index: 0})}>
+        <NxTab>Tab</NxTab>
+      </TabContext.Provider>
     );
 
-    expect(component.find('[role="tab"]')).toHaveProp('aria-selected', 'false');
-    expect(component.find('[role="tab"]')).not.toHaveClassName('active');
+    const tab = component.find('[role="tab"]');
+    expect(tab).toHaveProp('aria-selected', 'false');
+    expect(tab).not.toHaveClassName('active');
+    expect(tab).toHaveProp('id', 'nx-tabs-0-tab-0');
+    expect(tab).toHaveProp('aria-controls', 'nx-tabs-0-tabpanel-0');
   });
 
-  it('renders a tab with the expected class names when active={false}', function () {
+  it('renders an active tab with the expected attributes', function () {
     const component = mount(
-      <ActiveTabContext.Provider value={{ activeTab: 0, onTabSelect: jest.fn() }}>
+      <TabContext.Provider value={testContext({ activeTab: 1, index: 1 })}>
         <NxTab index={0}>Tab</NxTab>
-      </ActiveTabContext.Provider>
+      </TabContext.Provider>
     );
 
-    expect(component.find('[role="tab"]')).toHaveProp('aria-selected', 'true');
-    expect(component.find('[role="tab"]')).toHaveClassName('active');
+    const tab = component.find('[role="tab"]');
+    expect(tab).toHaveProp('aria-selected', 'true');
+    expect(tab).toHaveClassName('active');
+    expect(tab).toHaveProp('id', 'nx-tabs-0-tab-1');
+    expect(tab).toHaveProp('aria-controls', 'nx-tabs-0-tabpanel-1');
   });
+
+
+  function testContext(testContext: any) {
+    return {
+      rootId: 'nx-tabs-0',
+      onTabSelect: jest.fn(),
+      ...testContext
+    };
+  }
 });

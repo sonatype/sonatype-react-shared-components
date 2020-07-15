@@ -7,26 +7,46 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import NxTabPanel from '../NxTabPanel';
-import { ActiveTabContext } from '../../NxTabs/NxTabs';
+import { TabContext } from '../../NxTabs/NxTabs';
 
 describe('NxTabPanel', function () {
   it('renders nothing when inactive', () => {
     const component = mount(
-      <ActiveTabContext.Provider value={{activeTab: -1, onTabSelect: jest.fn() }}>
-        <NxTabPanel index={0}>Content</NxTabPanel>
-      </ActiveTabContext.Provider>
+      <TabContext.Provider value={testContext({activeTab: -1, index: 0})}>
+        <NxTabPanel>Content</NxTabPanel>
+      </TabContext.Provider>
     );
 
     expect(component).toBeEmptyRender();
   });
 
-  it('renders when active', function () {
+  it('renders when active', () => {
     const component = mount(
-      <ActiveTabContext.Provider value={{ activeTab: -1, onTabSelect: jest.fn() }}>
-        <NxTabPanel index={0}>Content</NxTabPanel>
-      </ActiveTabContext.Provider>
+      <TabContext.Provider value={testContext({ activeTab: 0, index: 0})}>
+        <NxTabPanel>Content</NxTabPanel>
+      </TabContext.Provider>
     );
 
     expect(component.find('[role="tabpanel"]')).not.toBeEmptyRender();
   });
+
+  it('generates the correct props from the context', () => {
+    const component = mount(
+      <TabContext.Provider value={testContext({ activeTab: 1, index: 1 })}>
+        <NxTabPanel>Content</NxTabPanel>
+      </TabContext.Provider>
+    );
+
+    const tabpanel = component.find('[role="tabpanel"]');
+    expect(tabpanel).toHaveProp('id', 'nx-tabs-0-tabpanel-1');
+    expect(tabpanel).toHaveProp('aria-labelledby', 'nx-tabs-0-tab-1');
+  });
+
+  function testContext(testContext: any) {
+    return {
+      rootId: 'nx-tabs-0',
+      onTabSelect: jest.fn(),
+      ...testContext
+    };
+  }
 });

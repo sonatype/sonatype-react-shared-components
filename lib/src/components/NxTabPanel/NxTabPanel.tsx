@@ -7,7 +7,7 @@
 import React, {useContext} from 'react';
 import classnames from 'classnames';
 
-import { ActiveTabContext } from '../NxTabs/NxTabs';
+import { TabContext } from '../NxTabs/NxTabs';
 
 import { Props, propTypes } from './types';
 export { Props } from './types';
@@ -15,8 +15,8 @@ export { Props } from './types';
 import './NxTabPanel.scss';
 
 const NxTabPanel = function NxTabPanelElement(props: Props) {
-  const {activeTab} = useContext(ActiveTabContext);
-  const {index, className, ...attrs} = props;
+  const {activeTab, rootId, index} = useContext(TabContext);
+  const {className, ...attrs} = props;
 
   if (activeTab !== index) {
     return null;
@@ -24,6 +24,8 @@ const NxTabPanel = function NxTabPanelElement(props: Props) {
 
   return (
     <div role="tabpanel"
+         id={`${rootId}-tabpanel-${index}`}
+         aria-labelledby={`${rootId}-tab-${index}`}
          className={classnames('nx-tab-panel', className)}
          {...attrs}
     />

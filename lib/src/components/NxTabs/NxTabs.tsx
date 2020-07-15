@@ -13,22 +13,19 @@ import {Props as NxTabPanelProps} from '../NxTabPanel/types';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
-interface ActiveTabContextType {
+interface TabContextType {
   activeTab: number | null | undefined;
+  rootId: string;
+  index: number;
   onTabSelect: (index: number | null | undefined) => void;
 };
 
-export const ActiveTabContext = React.createContext<ActiveTabContextType>({activeTab: null, onTabSelect: () => {}});
+export const TabContext = React.createContext<TabContextType>({activeTab: null, rootId: '', index: -1, onTabSelect: () => {}});
 
 let tabId = 0;
 
 const NxTabs = function NxTabsElement(props: Props) {
   const {activeTab, onTabSelect, id, className, children, ...attrs} = props;
-
-  const activeTabContext: ActiveTabContextType = {
-    activeTab,
-    onTabSelect: onTabSelect || (() => {})
-  };
 
   const [tabList, ...tabPanels] = Children.toArray(children);
 
@@ -46,11 +43,13 @@ const NxTabs = function NxTabsElement(props: Props) {
   const clonedTabList = cloneElement(tabList, {
     children: Children.toArray(tabList.props.children).map((tab, index) => {
       if (isValidElement<NxTabProps>(tab)) {
-        return cloneElement(tab, {
-          id: `${rootId}-tab-${index}`,
-          'aria-controls': `${rootId}-tab-panel-${index}`,
-          index
-        });
+        const activeTabContext: TabContextType = {
+          activeTab,
+          rootId,
+          index,
+          onTabSelect: onTabSelect || (() => { })
+        };
+        return <TabContext.Provider key={index} value={activeTabContext}>{tab}</TabContext.Provider>;
       }
       return tab;
     })
@@ -58,18 +57,22 @@ const NxTabs = function NxTabsElement(props: Props) {
 
   const clonedTabPanels = tabPanels.map((tabPanel, index) => {
     if (isValidElement<NxTabPanelProps>(tabPanel)) {
-      return cloneElement(tabPanel, {'aria-labelledby': `${rootId}-tab-panel-${index}`, index});
+      const activeTabContext: TabContextType = {
+        activeTab,
+        rootId,
+        index,
+        onTabSelect: onTabSelect || (() => { })
+      };
+      return <TabContext.Provider key={index} value={activeTabContext}>{tabPanel}</TabContext.Provider>;
     }
     return tabPanel;
   });
 
   return (
-    <ActiveTabContext.Provider value={activeTabContext}>
-      <div id={rootId} className={classnames('nx-tabs', className)} {...attrs}>
-        {clonedTabList}
-        {clonedTabPanels}
-      </div>
-    </ActiveTabContext.Provider>
+    <div id={rootId} className={classnames('nx-tabs', className)} {...attrs}>
+      {clonedTabList}
+      {clonedTabPanels}
+    </div>
   );
 };
 

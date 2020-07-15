@@ -7,11 +7,8 @@
 import { HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
-export type Props = HTMLAttributes<HTMLDivElement> & {
-  index?: number | null;
-};
+export type Props = HTMLAttributes<HTMLDivElement>;
 
-export const propTypes: PropTypes.ValidationMap<Props> = {
-  index: PropTypes.number,
-  children: PropTypes.node
-};
+export const propTypes = {
+  className: PropTypes.string
+} as PropTypes.ValidationMap<Props>;
