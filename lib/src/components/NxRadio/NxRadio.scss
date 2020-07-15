@@ -54,6 +54,7 @@
 }
 
 .nx-radio__outer-circle {
+  fill: #fff;
   stroke: #d1d6f0;
 }
 
@@ -68,6 +69,7 @@
   &:checked {
     + .nx-radio__circle {
       .nx-radio__outer-circle {
+        fill: none;
         stroke: #045dd1;
 
         &:hover {
