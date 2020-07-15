@@ -55,4 +55,21 @@ describe('NxStatefulTabs', function () {
     component.simulate('tabSelect', 1);
     expect(component).toHaveProp('activeTab', 1);
   });
+
+  it('allows for a custom onTabSelect', function () {
+    const selectHandler = jest.fn();
+    const component = shallow(
+      <NxStatefulTabs onTabSelect={selectHandler}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+          <NxTab>Tab 1</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+        <NxTabPanel>Content 1</NxTabPanel>
+      </NxStatefulTabs>
+    );
+
+    component.simulate('tabSelect', 1);
+    expect(selectHandler).toHaveBeenCalledWith(1);
+  });
 });
