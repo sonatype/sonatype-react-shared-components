@@ -45,6 +45,7 @@
 
 .nx-radio__circle {
   cursor: pointer;
+  fill: none;
   height: 24px;
   margin-right: $nx-spacing-md;
   width: 16px;
@@ -52,13 +53,11 @@
 }
 
 .nx-radio__outer-circle {
-  fill: none;
   stroke: #d1d6f0;
 }
 
 .nx-radio__inner-circle {
   stroke: #045dd1;
-  fill: #fff;
 }
 
 .nx-radio__input {
@@ -67,7 +66,6 @@
   &:checked {
     + .nx-radio__circle {
       .nx-radio__outer-circle {
-        fill: #045dd1;
         stroke: #045dd1;
 
         &:hover {
