@@ -1,3 +1,7 @@
+@mixin focus-glow {
+  filter: drop-shadow(0 0 3px rgba(2, 166, 217, 0.4));
+}
+
 @mixin focusable-toggle-input($focus-border-selector) {
   position: relative;
 
@@ -18,7 +22,7 @@
 
   &:focus-within {
     .nx-radio__circle {
-      filter: drop-shadow(0 0 3px rgba(2, 166, 217, 0.4));
+      @include focus-glow;
     }
 
     #{$focus-border-selector} {
