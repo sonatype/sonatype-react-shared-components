@@ -20,6 +20,10 @@
   white-space: nowrap;
 
   &:hover {
+    .nx-radio__circle {
+      filter: none;
+    }
+
     .nx-radio__outer-circle {
       stroke: #2c2c2c;
     }
