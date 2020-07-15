@@ -10,6 +10,14 @@ import NxTabPanel from '../NxTabPanel';
 import { TabContext } from '../../NxTabs/NxTabs';
 
 describe('NxTabPanel', function () {
+  function testContext(testContext: { activeTab: number; index: number }) {
+    return {
+      rootId: 'nx-tabs-0',
+      onTabSelect: jest.fn(),
+      ...testContext
+    };
+  }
+
   it('renders nothing when inactive', () => {
     const component = mount(
       <TabContext.Provider value={testContext({activeTab: -1, index: 0})}>
@@ -41,12 +49,4 @@ describe('NxTabPanel', function () {
     expect(tabpanel).toHaveProp('id', 'nx-tabs-0-tabpanel-1');
     expect(tabpanel).toHaveProp('aria-labelledby', 'nx-tabs-0-tab-1');
   });
-
-  function testContext(testContext: any) {
-    return {
-      rootId: 'nx-tabs-0',
-      onTabSelect: jest.fn(),
-      ...testContext
-    };
-  }
 });

@@ -11,6 +11,14 @@ import NxTab from '../NxTab';
 import {TabContext} from '../../NxTabs/NxTabs';
 
 describe('NxTab', function () {
+  function testContext(testContext: { activeTab: number; index: number }) {
+    return {
+      rootId: 'nx-tabs-0',
+      onTabSelect: jest.fn(),
+      ...testContext
+    };
+  }
+
   it('renders an inactive tab with the expected attributes', function () {
     const component = mount(
       <TabContext.Provider value={testContext({activeTab: -1, index: 0})}>
@@ -38,13 +46,4 @@ describe('NxTab', function () {
     expect(tab).toHaveProp('id', 'nx-tabs-0-tab-1');
     expect(tab).toHaveProp('aria-controls', 'nx-tabs-0-tabpanel-1');
   });
-
-
-  function testContext(testContext: any) {
-    return {
-      rootId: 'nx-tabs-0',
-      onTabSelect: jest.fn(),
-      ...testContext
-    };
-  }
 });
