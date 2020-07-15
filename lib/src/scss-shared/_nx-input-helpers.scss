@@ -17,6 +17,10 @@
   }
 
   &:focus-within {
+    .nx-radio__circle {
+      filter: drop-shadow(0 0 3px rgba(2, 166, 217, 0.4));
+    }
+
     #{$focus-border-selector} {
       // the non-IE focus style
       border-color: $nx-color-blue-44;
@@ -25,8 +29,6 @@
 
     .nx-radio__input:checked {
       + .nx-radio__circle {
-        filter: drop-shadow(0 0 3px rgba(2, 166, 217, 0.4));
-
         #{$focus-border-selector} {
           stroke: #02A6D9;
         }
