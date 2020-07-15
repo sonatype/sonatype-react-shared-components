@@ -29,7 +29,9 @@ export default function NxTabsPage() {
         </p>
 
         <section className="nx-tile--subsection">
-          <h3 className="nx-h3">NxTabs</h3>
+          <header className="nx-tile-subsection--header">
+            <h3 className="nx-h3">NxTabs</h3>
+          </header>
 
           <p className="nx-p">
             The top-level container for tabbed navigation.
@@ -68,7 +70,9 @@ export default function NxTabsPage() {
         </section>
 
         <section className="nx-tile--subsection">
-          <h3 className="nx-h3">NxTabList</h3>
+          <header className="nx-tile-subsection--header">
+            <h3 className="nx-h3">NxTabList</h3>
+          </header>
 
           <p className="nx-p">
             The parent container for the <code className="nx-code">&lt;NxTab&gt;</code> components.
@@ -77,7 +81,9 @@ export default function NxTabsPage() {
         </section>
 
         <section className="nx-tile--subsection">
-          <h3 className="nx-h3">NxTab</h3>
+          <header className="nx-tile-subsection--header">
+            <h3 className="nx-h3">NxTab</h3>
+          </header>
 
           <p className="nx-p">
             The component the user selects to switch tabs.
@@ -88,7 +94,9 @@ export default function NxTabsPage() {
         </section>
 
         <section className="nx-tile--subsection">
-          <h3 className="nx-h3">NxTabPanel</h3>
+          <header className="nx-tile-subsection--header">
+            <h3 className="nx-h3">NxTabPanel</h3>
+          </header>
 
           <p className="nx-p">
             Container component for the tab contents.
