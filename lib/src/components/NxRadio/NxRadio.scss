@@ -18,9 +18,10 @@
   @include regular();
   @include focusable-toggle-input(".nx-radio__outer-circle");
 
-  display: inline-block;
+  display: block;
   font-size: 14px;
   line-height: $line-height;
+  margin-bottom: $nx-spacing-xs;
   position: relative;
   white-space: nowrap;
 
