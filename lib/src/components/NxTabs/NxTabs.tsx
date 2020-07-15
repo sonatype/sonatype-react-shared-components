@@ -20,7 +20,12 @@ interface TabContextType {
   onTabSelect: (index: number | null | undefined) => void;
 };
 
-export const TabContext = React.createContext<TabContextType>({activeTab: null, rootId: '', index: -1, onTabSelect: () => {}});
+export const TabContext = React.createContext<TabContextType>({
+  activeTab: null,
+  rootId: '',
+  index: -1,
+  onTabSelect: () => {}
+});
 
 let tabId = 0;
 
