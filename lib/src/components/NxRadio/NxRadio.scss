@@ -44,6 +44,7 @@
 }
 
 .nx-radio__circle {
+  border-radius: 8px;
   cursor: pointer;
   fill: none;
   height: 24px;
@@ -57,6 +58,7 @@
 }
 
 .nx-radio__inner-circle {
+  fill: #fff;
   stroke: #045dd1;
 }
 
