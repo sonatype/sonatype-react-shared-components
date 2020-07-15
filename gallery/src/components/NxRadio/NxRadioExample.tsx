@@ -38,7 +38,7 @@ export default function NxRadioExample() {
           <em>(non-text children)</em>
         </NxRadio>
         <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue">
-          Blue
+          Blue - but a very long and verbose blue that makes for a long label
         </NxRadio>
       </fieldset>
     </>

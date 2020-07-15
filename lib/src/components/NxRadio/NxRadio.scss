@@ -14,12 +14,15 @@
   @include regular();
   @include focusable-toggle-input(".nx-radio__outer-circle");
 
-  display: inline-block;
+  display: block;
   margin-bottom: $nx-spacing-xs;
   position: relative;
   white-space: nowrap;
+  max-width: 100px;
 
   &:hover {
+    cursor: pointer;
+
     .nx-radio__circle {
       filter: none;
     }
