@@ -59,22 +59,4 @@ describe('NxStatefulTabs', function () {
     expect(component.find('[role="tab"].active')).toHaveText('Tab 1');
     expect(component.find('[role="tabpanel"]')).toHaveText('Content 1');
   });
-
-  it('selects the second tab on keypress', function () {
-    const component = mount(
-      <NxStatefulTabs>
-        <NxTabList>
-          <NxTab id="tab">Tab 0</NxTab>
-          <NxTab id="tab-2">Tab 1</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-        <NxTabPanel>Content 1</NxTabPanel>
-      </NxStatefulTabs>
-    );
-
-    component.find('[role="tab"]').last().simulate('keypress', {key: ' '});
-
-    expect(component.find('[role="tab"].active')).toHaveText('Tab 1');
-    expect(component.find('[role="tabpanel"]')).toHaveText('Content 1');
-  });
 });
