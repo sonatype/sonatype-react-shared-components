@@ -19,7 +19,6 @@ const NxTab = function NxTabElement(props: Props) {
   const {tabIndex = 0, className, onClick, onKeyPress, ...attrs} = props;
   const active = activeTab === index;
   const classNames = classnames('nx-tab', className, { active });
-  const selected = active ? 'true' : 'false';
 
   function handleKeyPress(event: React.KeyboardEvent<HTMLLIElement>) {
     if (onKeyPress) {
@@ -45,7 +44,7 @@ const NxTab = function NxTabElement(props: Props) {
         id={`${rootId}-tab-${index}`}
         aria-controls={`${rootId}-tabpanel-${index}`}
         className={classNames}
-        aria-selected={selected}
+        aria-selected={active}
         onKeyPress={handleKeyPress}
         onClick={handleClick}
         tabIndex={tabIndex}

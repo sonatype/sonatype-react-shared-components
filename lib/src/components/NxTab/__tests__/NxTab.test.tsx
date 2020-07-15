@@ -19,7 +19,7 @@ describe('NxTab', function () {
     );
 
     const tab = component.find('[role="tab"]');
-    expect(tab).toHaveProp('aria-selected', 'false');
+    expect(tab).toHaveProp('aria-selected', false);
     expect(tab).not.toHaveClassName('active');
     expect(tab).toHaveProp('id', 'nx-tabs-0-tab-0');
     expect(tab).toHaveProp('aria-controls', 'nx-tabs-0-tabpanel-0');
@@ -33,7 +33,7 @@ describe('NxTab', function () {
     );
 
     const tab = component.find('[role="tab"]');
-    expect(tab).toHaveProp('aria-selected', 'true');
+    expect(tab).toHaveProp('aria-selected', true);
     expect(tab).toHaveClassName('active');
     expect(tab).toHaveProp('id', 'nx-tabs-0-tab-1');
     expect(tab).toHaveProp('aria-controls', 'nx-tabs-0-tabpanel-1');
