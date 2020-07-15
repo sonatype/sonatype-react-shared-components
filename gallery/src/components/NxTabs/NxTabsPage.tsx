@@ -29,7 +29,7 @@ export default function NxTabsPage() {
         </p>
 
         <section className="nx-tile--subsection">
-          <header className="nx-tile-subsection--header">
+          <header className="nx-tile--subsection__header">
             <h3 className="nx-h3">NxTabs</h3>
           </header>
 
@@ -70,7 +70,7 @@ export default function NxTabsPage() {
         </section>
 
         <section className="nx-tile--subsection">
-          <header className="nx-tile-subsection--header">
+          <header className="nx-tile--subsection__header">
             <h3 className="nx-h3">NxTabList</h3>
           </header>
 
@@ -81,7 +81,7 @@ export default function NxTabsPage() {
         </section>
 
         <section className="nx-tile--subsection">
-          <header className="nx-tile-subsection--header">
+          <header className="nx-tile--subsection__header">
             <h3 className="nx-h3">NxTab</h3>
           </header>
 
@@ -94,7 +94,7 @@ export default function NxTabsPage() {
         </section>
 
         <section className="nx-tile--subsection">
-          <header className="nx-tile-subsection--header">
+          <header className="nx-tile--subsection__header">
             <h3 className="nx-h3">NxTabPanel</h3>
           </header>
 
