@@ -55,9 +55,9 @@ export default function NxFormLayoutExample() {
           <NxStatefulTextInput type="textarea" placeholder="placeholder"/>
         </label>
       </div>
-      <footer className="nx-btn-bar nx-btn-bar--forms">
-        <NxButton variant="primary">Submit</NxButton>
+      <footer className="nx-form-footer">
         <NxButton>Cancel</NxButton>
+        <NxButton variant="primary">Submit</NxButton>
       </footer>
     </form>
   );
