@@ -48,7 +48,7 @@ describe('NxTabs', function () {
     expect(component.find('[role="tabpanel"]')).toHaveText('Content 1');
   });
 
-  it('calls onTabSelect', function() {
+  it('calls onTabSelect when a tab is clicked', function() {
     const onTabSelect = jest.fn();
     const component = mount(
       <NxTabs activeTab={0} onTabSelect={onTabSelect}>
@@ -59,6 +59,21 @@ describe('NxTabs', function () {
     );
 
     component.find('[role="tab"]').simulate('click');
+
+    expect(onTabSelect).toHaveBeenCalledWith(0);
+  });
+
+  it('calls onTabSelect when a tab is selected via keyboard', function () {
+    const onTabSelect = jest.fn();
+    const component = mount(
+      <NxTabs activeTab={0} onTabSelect={onTabSelect}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+        </NxTabList>
+      </NxTabs>
+    );
+
+    component.find('[role="tab"]').simulate('keypress', { key: ' ' });
 
     expect(onTabSelect).toHaveBeenCalledWith(0);
   });
