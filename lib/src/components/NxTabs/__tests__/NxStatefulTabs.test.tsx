@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import NxStatefulTabs from '../stateful/NxStatefulTabs';
 import NxTabList from '../../NxTabList/NxTabList';
 import NxTab from '../../NxTab/NxTab';
@@ -13,7 +13,7 @@ import NxTabPanel from '../../NxTabPanel/NxTabPanel';
 
 describe('NxStatefulTabs', function () {
   it('selects the first tab automatically', function () {
-    const component = mount(
+    const component = shallow(
       <NxStatefulTabs>
         <NxTabList>
           <NxTab>Tab</NxTab>
@@ -22,12 +22,11 @@ describe('NxStatefulTabs', function () {
       </NxStatefulTabs>
     );
 
-    expect(component.find('[role="tab"].active')).toHaveText('Tab');
-    expect(component.find('[role="tabpanel"]')).toHaveText('Tab Content');
+    expect(component).toHaveProp('activeTab', 0);
   });
 
   it('selects the default tab initially', function () {
-    const component = mount(
+    const component = shallow(
       <NxStatefulTabs defaultActiveTab={1}>
         <NxTabList>
           <NxTab>Tab 0</NxTab>
@@ -38,12 +37,11 @@ describe('NxStatefulTabs', function () {
       </NxStatefulTabs>
     );
 
-    expect(component.find('[role="tabpanel"]')).not.toHaveText('Content 0');
-    expect(component.find('[role="tabpanel"]')).toHaveText('Content 1');
+    expect(component).toHaveProp('activeTab', 1);
   });
 
-  it('selects the second tab on click', function () {
-    const component = mount(
+  it('selects the second tab on tab select', function () {
+    const component = shallow(
       <NxStatefulTabs>
         <NxTabList>
           <NxTab>Tab 0</NxTab>
@@ -54,9 +52,7 @@ describe('NxStatefulTabs', function () {
       </NxStatefulTabs>
     );
 
-    component.find('[role="tab"]').last().simulate('click');
-
-    expect(component.find('[role="tab"].active')).toHaveText('Tab 1');
-    expect(component.find('[role="tabpanel"]')).toHaveText('Content 1');
+    component.simulate('tabSelect', 1);
+    expect(component).toHaveProp('activeTab', 1);
   });
 });
