@@ -12,16 +12,16 @@ export default function NxTextInputSimpleExample() {
   return (
     <div className="nx-form-group">
       <label className="nx-label">
-        <NxStatefulTextInput type="number"/>
+        <NxStatefulTextInput type="number" validator={validator}/>
       </label>
       <label className="nx-label">
-        <NxStatefulTextInput type="date"/>
+        <NxStatefulTextInput type="date" validator={validator}/>
       </label>
       <label className="nx-label">
-        <NxStatefulTextInput type="email" />
+        <NxStatefulTextInput type="email" validator={validator}/>
       </label>
       <label className="nx-label">
-        <NxStatefulTextInput type="range" />
+        <NxStatefulTextInput type="range" validator={validator} />
       </label>
     </div>
   );
