@@ -28,7 +28,47 @@ describe('NxTabs', function () {
       </NxTabs>
     );
 
-    expect(firstTabs).not.toHaveProp('id', secondTabs.props().id);
+    expect(firstTabs).not.toHaveProp('id', secondTabs.prop('id'));
+  });
+
+  it('renders with the correct classnames', function () {
+    const component = shallow(
+      <NxTabs activeTab={-1} className="test">
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+      </NxTabs>
+    );
+
+    expect(component).toHaveClassName('nx-tabs test');
+  });
+
+  it('renders a generated id', function () {
+    const component = shallow(
+      <NxTabs activeTab={-1}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+      </NxTabs>
+    );
+
+    expect(component.prop('id')).toMatch(/^nx-tabs-\d+$/);
+  });
+
+  it('renders no tab contents when none are active', function () {
+    const component = mount(
+      <NxTabs activeTab={-1}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+      </NxTabs>
+    );
+
+    expect(component.find(NxTab)).not.toHaveClassName('active');
+    expect(component.find(NxTabPanel)).toBeEmptyRender();
   });
 
   it('activates the active tab', function () {
