@@ -10,7 +10,7 @@ import {InputHTMLAttributes, TextareaHTMLAttributes} from 'react';
 /**
  * The valid values for the `type` Prop
  */
-export const inputTypes = ['textarea', 'text', 'password'] as const;
+export const inputTypes = ['textarea', 'text', 'password', 'number', 'date', 'email', 'range'] as const;
 
 // See https://stackoverflow.com/a/45486495
 export type NxTextInputType = (typeof inputTypes)[number];

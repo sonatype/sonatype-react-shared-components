@@ -14,6 +14,7 @@ import NxTextInputPasswordExample from './NxTextInputPasswordExample';
 import NxTextInputTextAreaExample from './NxTextInputTextAreaExample';
 import NxTextInputTextAreaValidationExample from './NxTextInputTextAreaValidationExample';
 import NxTextInputDisabledExample from './NxTextInputDisabledExample';
+import NxTextInputTypesExample from './NxTextInputTypesExample';
 
 const simpleSourceCode = require('!!raw-loader!./NxTextInputSimpleExample').default;
 const validationSourceCode = require('!!raw-loader!./NxTextInputValidationExample').default;
@@ -21,6 +22,7 @@ const passwordSourceCode = require('!!raw-loader!./NxTextInputPasswordExample').
 const textAreaSourceCode = require('!!raw-loader!./NxTextInputTextAreaExample').default;
 const textAreaValidationSourceCode = require('!!raw-loader!./NxTextInputTextAreaValidationExample').default;
 const disabledSourceCode = require('!!raw-loader!./NxTextInputDisabledExample').default;
+const typesSourceCode = require('!!raw-loader!./NxTextInputTypesExample').default;
 
 const NxTextInputPage = () =>
   <>
@@ -233,6 +235,13 @@ const NxTextInputPage = () =>
                         codeExamples={disabledSourceCode}>
       Examples of disabled <code className="nx-code">NxTextInput</code>s. Notice that when
       disabled, <code className="nx-code">NxTextInput</code> never shows style variations for validation, hover, etc.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Disabled example"
+                        id="nx-text-input-disabled-example"
+                        liveExample={NxTextInputTypesExample}
+                        codeExamples={typesSourceCode}>
+      Examples of different types.
     </GalleryExampleTile>
   </>;
 
