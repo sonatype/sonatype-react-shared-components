@@ -4,35 +4,24 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { NxTextInput } from '@sonatype/react-shared-components';
-import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
+import { NxStatefulTextInput } from '@sonatype/react-shared-components';
 
 export default function NxTextInputSimpleExample() {
-  const [state, setState] = useState(initialState(''));
-
-  function onChange(val: string) {
-    setState(userInput(null, val));
-  }
-
-  function onKeyPress(key: string) {
-    console.log('Pressed key:', key); // eslint-disable-line
-  }
-
   return (
     <div className="nx-form-group">
       <label className="nx-label">
-        <NxTextInput { ...state } onChange={onChange} onKeyPress={onKeyPress} type="number"/>
+        <NxStatefulTextInput type="number"/>
       </label>
       <label className="nx-label">
-        <NxTextInput { ...state } onChange={onChange} onKeyPress={onKeyPress} type="date"/>
+        <NxStatefulTextInput type="date"/>
       </label>
       <label className="nx-label">
-        <NxTextInput { ...state } onChange={onChange} onKeyPress={onKeyPress} type="email" />
+        <NxStatefulTextInput type="email" />
       </label>
       <label className="nx-label">
-        <NxTextInput { ...state } onChange={onChange} onKeyPress={onKeyPress} type="range" />
+        <NxStatefulTextInput type="range" />
       </label>
     </div>
   );
