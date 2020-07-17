@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 
 import { TabContext } from '../NxTabs/NxTabs';
@@ -15,8 +15,8 @@ export { Props } from './types';
 import './NxTab.scss';
 
 const NxTab = function NxTabElement(props: Props) {
-  const {activeTab, rootId, index, onTabSelect} = useContext(TabContext);
-  const {tabIndex = 0, className, onClick, onKeyPress, ...attrs} = props;
+  const { activeTab, rootId, index, onTabSelect } = useContext(TabContext);
+  const { tabIndex = 0, className, onClick, onKeyPress, ...attrs } = props;
   const active = activeTab === index;
   const classNames = classnames('nx-tab', className, { active });
 

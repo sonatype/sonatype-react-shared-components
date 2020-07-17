@@ -13,7 +13,7 @@ export { Props } from './types';
 import './NxTabList.scss';
 
 const NxTabList = function NxTabListElement(props: Props) {
-  const {className, ...attrs} = props;
+  const { className, ...attrs } = props;
 
   return <ul role="tablist" className={classnames('nx-tab-list', className)} {...attrs} />;
 };

@@ -88,7 +88,7 @@ describe('NxTabs', function () {
     expect(component.find('[role="tabpanel"]')).toHaveText('Content 1');
   });
 
-  it('calls onTabSelect when a tab is clicked', function() {
+  it('calls onTabSelect when a tab is clicked', function () {
     const onTabSelect = jest.fn();
     const component = mount(
       <NxTabs activeTab={0} onTabSelect={onTabSelect}>

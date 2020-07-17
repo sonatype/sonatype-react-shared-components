@@ -8,7 +8,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import NxTab from '../NxTab';
 
-import {TabContext} from '../../NxTabs/NxTabs';
+import { TabContext } from '../../NxTabs/NxTabs';
 
 describe('NxTab', function () {
   function testContext(testContext: { activeTab: number; index: number }) {
@@ -21,7 +21,7 @@ describe('NxTab', function () {
 
   it('renders an inactive tab with the expected attributes', function () {
     const component = mount(
-      <TabContext.Provider value={testContext({activeTab: -1, index: 0})}>
+      <TabContext.Provider value={testContext({ activeTab: -1, index: 0 })}>
         <NxTab>Tab</NxTab>
       </TabContext.Provider>
     );

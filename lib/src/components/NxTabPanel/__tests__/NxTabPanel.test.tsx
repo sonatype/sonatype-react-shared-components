@@ -20,7 +20,7 @@ describe('NxTabPanel', function () {
 
   it('renders nothing when inactive', () => {
     const component = mount(
-      <TabContext.Provider value={testContext({activeTab: -1, index: 0})}>
+      <TabContext.Provider value={testContext({ activeTab: -1, index: 0 })}>
         <NxTabPanel>Content</NxTabPanel>
       </TabContext.Provider>
     );
@@ -30,7 +30,7 @@ describe('NxTabPanel', function () {
 
   it('renders when active', () => {
     const component = mount(
-      <TabContext.Provider value={testContext({ activeTab: 0, index: 0})}>
+      <TabContext.Provider value={testContext({ activeTab: 0, index: 0 })}>
         <NxTabPanel>Content</NxTabPanel>
       </TabContext.Provider>
     );
