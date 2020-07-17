@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {Children, cloneElement, isValidElement, useMemo} from 'react';
+import React, { Children, cloneElement, isValidElement, useMemo } from 'react';
 import classnames from 'classnames';
 
-import {Props as NxTabProps} from '../NxTab/types';
-import {Props as NxTabPanelProps} from '../NxTabPanel/types';
+import { Props as NxTabProps } from '../NxTab/types';
+import { Props as NxTabPanelProps } from '../NxTabPanel/types';
 
 import { Props, propTypes } from './types';
 export { Props } from './types';
@@ -30,7 +30,7 @@ export const TabContext = React.createContext<TabContextType>({
 let tabId = 0;
 
 const NxTabs = function NxTabsElement(props: Props) {
-  const {activeTab, onTabSelect, id, className, children, ...attrs} = props;
+  const { activeTab, onTabSelect, id, className, children, ...attrs } = props;
 
   const [tabList, ...tabPanels] = Children.toArray(children);
 
