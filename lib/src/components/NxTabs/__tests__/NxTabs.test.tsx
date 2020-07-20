@@ -71,6 +71,20 @@ describe('NxTabs', function () {
     expect(component.find(NxTabPanel)).toBeEmptyRender();
   });
 
+  it('renders no tab contents when no active tab is specified', function () {
+    const component = mount(
+      <NxTabs>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+      </NxTabs>
+    );
+
+    expect(component.find(NxTab)).not.toHaveClassName('active');
+    expect(component.find(NxTabPanel)).toBeEmptyRender();
+  });
+
   it('activates the active tab', function () {
     const component = mount(
       <NxTabs activeTab={1}>
