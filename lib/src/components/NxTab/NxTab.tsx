@@ -14,6 +14,8 @@ export { Props } from './types';
 
 import './NxTab.scss';
 
+const SPACE = ' ';
+
 const NxTab = function NxTabElement(props: Props) {
   const { activeTab, rootId, index, onTabSelect } = useContext(TabContext);
   const { tabIndex = 0, className, onClick, onKeyPress, ...attrs } = props;
@@ -24,7 +26,7 @@ const NxTab = function NxTabElement(props: Props) {
     if (onKeyPress) {
       onKeyPress(event);
     }
-    if (!event.isDefaultPrevented() && (event.key === ' ' || event.key === 'Enter')) {
+    if (!event.isDefaultPrevented() && (event.key === SPACE || event.key === 'Enter')) {
       event.preventDefault();
       onTabSelect(index);
     }
