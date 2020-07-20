@@ -53,7 +53,6 @@
 .nx-radio__circle {
   border-radius: 8px;
   cursor: pointer;
-  flex-shrink: 1;
   height: 24px;
   margin-right: $nx-spacing-md;
   width: 16px;
@@ -93,6 +92,5 @@
   @include nx-truncate-ellipsis;
 
   display: inline-block;
-  flex-shrink: 1;
   max-width: $nx-form-label-width-maximum;
 }
