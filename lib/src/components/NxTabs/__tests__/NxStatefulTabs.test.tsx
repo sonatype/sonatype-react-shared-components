@@ -12,7 +12,7 @@ import NxTab from '../../NxTab/NxTab';
 import NxTabPanel from '../../NxTabPanel/NxTabPanel';
 
 describe('NxStatefulTabs', function () {
-  it('selects the first tab automatically', function () {
+  it('selects no tab when none is provided', function () {
     const component = shallow(
       <NxStatefulTabs>
         <NxTabList>
@@ -22,7 +22,7 @@ describe('NxStatefulTabs', function () {
       </NxStatefulTabs>
     );
 
-    expect(component).toHaveProp('activeTab', 0);
+    expect(component).toHaveProp('activeTab', undefined);
   });
 
   it('selects the default tab initially', function () {
