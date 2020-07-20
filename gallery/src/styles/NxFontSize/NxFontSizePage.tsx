@@ -25,7 +25,8 @@ const NxFontSizePage = () =>
         {' '}<code className="nx-code">@include font-size(1.1em);</code>.
       </p>
       <p className="nx-p">
-        The mixin adjusts the default text size as well as several user agent set form element font sizes.
+        The mixin adjusts the default text size as well as several form elements which have default font size values
+        set by the browser.
       </p>
       <p className="nx-p">
         This mixin is primarily intended for use when RSC is incorporated into existing/legacy projects. If you're
