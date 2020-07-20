@@ -14,10 +14,10 @@ import { Props, propTypes } from './types';
 export { Props } from './types';
 
 interface TabContextType {
-  activeTab: number | null | undefined;
+  activeTab?: number | null;
   rootId: string;
   index: number;
-  onTabSelect: (index: number | null | undefined) => void;
+  onTabSelect: (index: number) => void;
 };
 
 export const TabContext = React.createContext<TabContextType>({
