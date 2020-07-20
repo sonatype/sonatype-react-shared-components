@@ -14,11 +14,10 @@
   @include regular();
   @include focusable-toggle-input(".nx-radio__outer-circle");
 
-  display: block;
+  display: flex;
   margin-bottom: $nx-spacing-xs;
   position: relative;
   width: 1px;
-  max-width: 100px;
   white-space: nowrap;
 
   &:hover {
@@ -54,6 +53,7 @@
 .nx-radio__circle {
   border-radius: 8px;
   cursor: pointer;
+  flex-shrink: 1;
   height: 24px;
   margin-right: $nx-spacing-md;
   width: 16px;
@@ -72,6 +72,7 @@
 
 .nx-radio__input {
   margin: 0;
+  width: 0;
 
   &:checked {
     + .nx-radio__circle {
@@ -92,5 +93,6 @@
   @include nx-truncate-ellipsis;
 
   display: inline-block;
-  max-width: $nx-form-label-iwdth-maximum;
+  flex-shrink: 1;
+  max-width: $nx-form-label-width-maximum;
 }
