@@ -8,8 +8,8 @@ import { HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
 export type Props = HTMLAttributes<HTMLDivElement> & {
-  defaultActiveTab?: number | null | undefined;
-  onTabSelect?: ((id: number | null | undefined) => void) | null;
+  defaultActiveTab?: number | null;
+  onTabSelect?: ((id: number) => void) | null;
   children: React.ReactNode;
 };
 

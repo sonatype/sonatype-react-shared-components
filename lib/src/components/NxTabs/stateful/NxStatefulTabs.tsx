@@ -23,7 +23,7 @@ const NxStatefulTabs = function NxStatefulTabsElement(props: Props) {
 
   const [activeTab, setActiveTab] = useState<number | null | undefined>(defaultActiveTab);
 
-  function handleTabSelect(index: number | null | undefined) {
+  function handleTabSelect(index: number) {
     if (onTabSelect) {
       onTabSelect(index);
     }
