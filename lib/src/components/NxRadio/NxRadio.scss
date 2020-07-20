@@ -17,8 +17,9 @@
   display: block;
   margin-bottom: $nx-spacing-xs;
   position: relative;
-  white-space: nowrap;
+  width: 1px;
   max-width: 100px;
+  white-space: nowrap;
 
   &:hover {
     cursor: pointer;
@@ -88,4 +89,8 @@
 
 .nx-radio__content {
   @include container-horizontal;
+  @include nx-truncate-ellipsis;
+
+  display: inline-block;
+  max-width: $nx-form-label-iwdth-maximum;
 }

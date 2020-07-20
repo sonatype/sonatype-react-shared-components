@@ -38,7 +38,8 @@ export default function NxRadioExample() {
           <em>(non-text children)</em>
         </NxRadio>
         <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue">
-          Blue - but a very long and verbose blue that makes for a long label
+          Blue - but a very long and verbose blue that makes for a long label, so long that it should trigger ellipsis
+          truncation if I have counted my characters closely enough
         </NxRadio>
       </fieldset>
     </>
