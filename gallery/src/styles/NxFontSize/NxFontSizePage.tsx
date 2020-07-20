@@ -15,14 +15,14 @@ const NxFontSizePage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <code className="nx-code">nx-font-size()</code> is a mixin that can be applied to the
+        <code className="nx-code">font-size()</code> is a mixin that can be applied to the
         {' '}<code className="nx-code">&lt;body&gt;</code> tag of your project to adjust the default RSC font size to
         better match your project. The default font size in RSC is 16px.
       </p>
       <p className="nx-p">
         The mixin takes a single variable which is the desired font-size with unit. For example:
-        {' '}<code className="nx-code">@include nx-font-size(14px);</code> or
-        {' '}<code className="nx-code">@include nx-font-size(1.1em);</code>.
+        {' '}<code className="nx-code">@include font-size(14px);</code> or
+        {' '}<code className="nx-code">@include font-size(1.1em);</code>.
       </p>
       <p className="nx-p">
         The mixin adjusts the default text size as well as several user agent set form element font sizes.
