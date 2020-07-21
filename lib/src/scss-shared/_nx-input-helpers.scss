@@ -3,19 +3,16 @@
 }
 
 @mixin focusable-toggle-input($focus-border-selector) {
-  position: relative;
-
   .nx-radio__input, .nx-checkbox__input {
-    position: absolute;
-    z-index: -1;
-
     &:focus {
       // less-nice IE11 focus style because IE11 doesn't support :focus-within
+      height: 100%;
+      margin-top: 5px;
       margin-right: $nx-spacing-xxs;
       outline: 1px solid $nx-color-blue-44;
       opacity: 1;
       position: static;
-      height: 100%;
+      vertical-align: top;
       width: 0;
     }
   }
