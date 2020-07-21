@@ -44,6 +44,21 @@ const NxAlertPage = () =>
               A FontAwesome icon to use in the alert message
             </td>
           </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">onClose</td>
+            <td className="nx-cell">Function</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              A handler that dismisses the alert when called. If this prop is present, a close button will be rendered
+              at the right-hand side of the alert. When that button is clicked, this callback will be fired. Note that
+              while this callback (and button) are optional, our UX patterns call for <em>all</em> alerts to be
+              dismissable in some way. Therefore, an <code className="nx-code">onClose</code> callback should always
+              be provided, <em>unless some other mechanism for closing the alert is provided within the alert children
+              </em>. A "Retry" button would be an example of such an alternative mechanism. Conversely, in the case
+              where such an alternative mechanism is present, the <code className="nx-code">onClose</code> callback{' '}
+              <em>should not</em> be provided.
+            </td>
+          </tr>
         </tbody>
       </table>
     </GalleryDescriptionTile>
@@ -58,7 +73,10 @@ const NxAlertPage = () =>
     <GalleryTile title="NxErrorAlert, NxInfoAlert, NxWarningAlert">
       <p className="nx-p">Standard sonatype alerts.</p>
       <p className="nx-p">They come in three variations: Error, Info, and Warning.</p>
-      <p className="nx-p">Accepts any prop that is valid on a div</p>
+      <p className="nx-p">
+        Accepts any prop that is valid on a div as well as the <code className="nx-code">onClose</code> prop
+        described above.
+      </p>
     </GalleryTile>
 
     <GalleryExampleTile title="Success Alert Example"
