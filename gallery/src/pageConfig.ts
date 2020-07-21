@@ -122,9 +122,9 @@ const pageConfig: PageConfig = {
     'nx-tile': NxTilePage
   },
   'Styles - Mixins & Helpers': {
+    'Custom app font size': NxFontSizePage,
     'nx-clickable': NxClickablePage,
     'nx-container-helpers': NxContainerHelpersPage,
-    'Custom app font-size': NxFontSizePage,
     'nx-scrollable': NxScrollablePage,
     'nx-truncate-ellipsis': NxTruncatePage
   },
