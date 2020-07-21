@@ -124,7 +124,7 @@ const pageConfig: PageConfig = {
   'Styles - Mixins & Helpers': {
     'nx-clickable': NxClickablePage,
     'nx-container-helpers': NxContainerHelpersPage,
-    'nx-font-size': NxFontSizePage,
+    'Custom app font-size': NxFontSizePage,
     'nx-scrollable': NxScrollablePage,
     'nx-truncate-ellipsis': NxTruncatePage
   },
