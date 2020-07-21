@@ -19,8 +19,8 @@ export default function NxRadioExample() {
 
   return (
     <>
-      <p style={{color: appliedColor}}>Selected Color: {color}</p>
       <fieldset className="nx-fieldset">
+        <legend className="nx-legend" style={{color: appliedColor}}>Selected Color: {color}</legend>
         <NxRadio name="color" value="red" onChange={setColor} isChecked={color === 'red'} radioId="color-red">
           Red
         </NxRadio>
