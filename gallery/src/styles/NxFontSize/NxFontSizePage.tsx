@@ -35,14 +35,10 @@ const NxFontSizePage = () =>
       </p>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="Sample HTML"
-                        codeExamples={nxFontSizeHtmlExampleCode}
+                        codeExamples={[{ content: nxFontSizeHtmlExampleCode, language: 'html' },
+                          { content: nxFontSizeScssExampleCode, language: 'scss' }]}
                         htmlExample={nxFontSizeHtmlExampleCode}>
       In the example below the &lt;body&gt; tag has a custom CSS class applied which is referenced in the SCSS.
-    </GalleryExampleTile>
-    <GalleryExampleTile title="Mixin usage"
-                        codeExamples={nxFontSizeScssExampleCode}
-                        htmlExample={nxFontSizeScssExampleCode}>
-      The mixin is called and the font-size will be changed to 14px.
     </GalleryExampleTile>
   </>;
 
