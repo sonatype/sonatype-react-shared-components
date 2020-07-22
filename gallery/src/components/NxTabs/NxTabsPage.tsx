@@ -25,11 +25,11 @@ export default function NxTabsPage() {
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          A set of accessible tabs components which must be used together.
+          A set of accessible tab components which must be used together.
         </p>
 
-        <section className="nx-tile--subsection">
-          <header className="nx-tile--subsection__header">
+        <section className="nx-tile-subsection">
+          <header className="nx-tile-subsection__header">
             <h3 className="nx-h3">NxTabs</h3>
           </header>
 
@@ -69,8 +69,8 @@ export default function NxTabsPage() {
           </NxTable>
         </section>
 
-        <section className="nx-tile--subsection">
-          <header className="nx-tile--subsection__header">
+        <section className="nx-tile-subsction">
+          <header className="nx-tile-subsction__header">
             <h3 className="nx-h3">NxTabList</h3>
           </header>
 
@@ -80,8 +80,8 @@ export default function NxTabsPage() {
           </p>
         </section>
 
-        <section className="nx-tile--subsection">
-          <header className="nx-tile--subsection__header">
+        <section className="nx-tile-subsction">
+          <header className="nx-tile-subsction__header">
             <h3 className="nx-h3">NxTab</h3>
           </header>
 
@@ -93,8 +93,8 @@ export default function NxTabsPage() {
           </p>
         </section>
 
-        <section className="nx-tile--subsection">
-          <header className="nx-tile--subsection__header">
+        <section className="nx-tile-subsction">
+          <header className="nx-tile-subsction__header">
             <h3 className="nx-h3">NxTabPanel</h3>
           </header>
 
