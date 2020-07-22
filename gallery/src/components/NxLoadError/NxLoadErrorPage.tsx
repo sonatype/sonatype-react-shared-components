@@ -56,6 +56,15 @@ const NxLoadErrorPage = () =>
               If this is defined, a Retry button will be rendered which executes this function when clicked
             </td>
           </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">onClose</td>
+            <td className="nx-cell">Function</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              A handler that dismisses the alert when called.
+              See <a href="#/page/NxAlert"><code className="nx-code">NxAlert</code></a> for details.
+            </td>
+          </tr>
         </tbody>
       </table>
     </GalleryDescriptionTile>
@@ -64,7 +73,9 @@ const NxLoadErrorPage = () =>
                         codeExamples={simpleSourceCode}
                         liveExample={NxLoadErrorSimpleExample}>
       This example demonstrates a basic NxLoadError which renders the error message in
-      an alert box.
+      an alert box. Note that like <code className="nx-code">NxAlert</code>s in
+      general, <code className="nx-code">NxLoadError</code>s that do not have a Retry button must define
+      an <code className="nx-code">onClose</code> handler which is exposed via a Close button in the alert.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Retry Button"
