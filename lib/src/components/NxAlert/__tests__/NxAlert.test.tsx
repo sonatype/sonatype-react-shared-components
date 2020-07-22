@@ -11,16 +11,19 @@ import {
   faBiohazard,
   faCrow,
   faInfoCircle,
-  faExclamationCircle
+  faExclamationCircle,
+  faCheckCircle
 } from '@fortawesome/free-solid-svg-icons';
 import NxAlert, {
   NxErrorAlert,
   NxWarningAlert,
   NxInfoAlert,
   NxAlertProps,
-  Props
+  Props,
+  NxSuccessAlert
 } from '../NxAlert';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import NxCloseButton from '../../NxCloseButton/NxCloseButton';
 
 describe('NxAlert', function() {
   const minimalProps: NxAlertProps = {
@@ -43,20 +46,17 @@ describe('NxAlert', function() {
     expect(nxAlert).toMatchSelector('.nx-alert.test-classname.ufo');
   });
 
-  it('renders the children passed to it', function() {
+  it('renders the children in an .nx-alert__content', function() {
     const children = [
       <p key="1" className="test-paragraph">Test Paragraph</p>,
       <div key="2" className="test-container"></div>
     ];
-    const nxAlert = getNxAlert({ children });
-    expect(nxAlert.find('.test-paragraph')).toExist();
-    expect(nxAlert.find('.test-container')).toExist();
-  });
 
-  it('wraps the children in a span if they are just a text node', function() {
-    const children = 'foo';
-    const nxAlert = getNxAlert({ children });
-    expect(nxAlert).toContainReact(<span>foo</span>);
+    const contentEl = getNxAlert({ children }).find('.nx-alert__content');
+
+    expect(contentEl).toExist();
+    expect(contentEl.find('.test-paragraph')).toExist();
+    expect(contentEl.find('.test-container')).toExist();
   });
 
   it('renders the icon passed to it', function() {
@@ -71,6 +71,21 @@ describe('NxAlert', function() {
     const component = getNxAlert({ id: 'foo', title: 'baz' });
     expect(component).toHaveProp('id', 'foo');
     expect(component).toHaveProp('title', 'baz');
+  });
+
+  it('renders a Close button if given an onClose prop', function() {
+    const onClose = jest.fn(),
+        component = getNxAlert({ onClose });
+
+    expect(component).toContainMatchingElement(NxCloseButton);
+    expect(onClose).not.toHaveBeenCalled();
+
+    component.find(NxCloseButton).simulate('click');
+    expect(onClose).toHaveBeenCalled();
+  });
+
+  it('does not render a Close button if not given an onClose prop', function() {
+    expect(getNxAlert()).not.toContainMatchingElement(NxCloseButton);
   });
 
   describe('NxAlert variations', function() {
@@ -101,10 +116,12 @@ describe('NxAlert', function() {
         expect(nxErrorAlert).toContainReact(<p>Hello</p>);
       });
 
-      it('passes any other props to the div', function() {
-        const component = getNxErrorAlert({ id: 'foo', title: 'baz' });
+      it('passes any other props to the NxAlert', function() {
+        const onClose = jest.fn(),
+            component = getNxErrorAlert({ id: 'foo', title: 'baz', onClose });
         expect(component).toHaveProp('id', 'foo');
         expect(component).toHaveProp('title', 'baz');
+        expect(component).toHaveProp('onClose', onClose);
       });
     });
 
@@ -133,10 +150,12 @@ describe('NxAlert', function() {
         expect(nxWarningAlert).toContainReact(<p>Hello</p>);
       });
 
-      it('passes any other props to the div', function() {
-        const component = getNxWarningAlert({ id: 'foo', title: 'baz' });
+      it('passes any other props to the NxAlert', function() {
+        const onClose = jest.fn(),
+            component = getNxWarningAlert({ id: 'foo', title: 'baz', onClose });
         expect(component).toHaveProp('id', 'foo');
         expect(component).toHaveProp('title', 'baz');
+        expect(component).toHaveProp('onClose', onClose);
       });
     });
 
@@ -165,10 +184,46 @@ describe('NxAlert', function() {
         expect(nxInfoAlert).toContainReact(<p>Hello</p>);
       });
 
-      it('passes any other props to the div', function() {
-        const component = getNxInfoAlert({ id: 'foo', title: 'baz' });
+      it('passes any other props to the NxAlert', function() {
+        const onClose = jest.fn(),
+            component = getNxInfoAlert({ id: 'foo', title: 'baz', onClose });
         expect(component).toHaveProp('id', 'foo');
         expect(component).toHaveProp('title', 'baz');
+        expect(component).toHaveProp('onClose', onClose);
+      });
+    });
+
+    describe('NxSuccessAlert', function() {
+      const getNxSuccessAlert = enzymeUtils.getShallowComponent<Props>(NxSuccessAlert, minimalProps);
+
+      it('renders an NxAlert', function() {
+        const nxSuccessAlert = getNxSuccessAlert();
+        expect(nxSuccessAlert).toMatchSelector(NxAlert);
+      });
+
+      it('renders the appropriate info classes', function() {
+        const nxSuccessAlert = getNxSuccessAlert();
+        expect(nxSuccessAlert).toMatchSelector(NxAlert);
+        expect(nxSuccessAlert).toHaveClassName('nx-alert--success');
+      });
+
+      it('renders the appropriate info icon', function() {
+        const nxSuccessAlert = getNxSuccessAlert();
+        expect(nxSuccessAlert).toMatchSelector(NxAlert);
+        expect(nxSuccessAlert).toHaveProp('icon', faCheckCircle);
+      });
+
+      it('renders the children passed into it', function() {
+        const nxSuccessAlert = getNxSuccessAlert();
+        expect(nxSuccessAlert).toContainReact(<p>Hello</p>);
+      });
+
+      it('passes any other props to the NxAlert', function() {
+        const onClose = jest.fn(),
+            component = getNxSuccessAlert({ id: 'foo', title: 'baz', onClose });
+        expect(component).toHaveProp('id', 'foo');
+        expect(component).toHaveProp('title', 'baz');
+        expect(component).toHaveProp('onClose', onClose);
       });
     });
   });
