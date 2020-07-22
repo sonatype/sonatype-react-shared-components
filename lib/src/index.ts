@@ -25,6 +25,14 @@ export {
   Props as NxAlertVariationProps
 } from './components/NxAlert/NxAlert';
 
+export {
+  default as NxStatefulAlert,
+  NxStatefulWarningAlert,
+  NxStatefulSuccessAlert,
+  NxStatefulInfoAlert,
+  NxStatefulErrorAlert
+} from './components/NxAlert/stateful/NxStatefulAlert';
+
 export { default as NxThreatBar, Props as NxThreatBarProps } from './components/NxThreatBar/NxThreatBar';
 export { default as NxFontAwesomeIcon, Props as NxFontAwesomeIconProps }
   from './components/NxFontAwesomeIcon/NxFontAwesomeIcon';
