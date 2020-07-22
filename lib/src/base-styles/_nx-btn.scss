@@ -66,6 +66,7 @@
 .nx-btn--tertiary {
   @extend %nx-btn--disabled;
 
+  background-color: transparent;
   border-color: #d1d6f0;
   color: #2c2c2c;
 
