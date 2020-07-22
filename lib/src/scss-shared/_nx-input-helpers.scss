@@ -6,13 +6,11 @@
   .nx-radio__input, .nx-checkbox__input {
     &:focus {
       // less-nice IE11 focus style because IE11 doesn't support :focus-within
-      height: 100%;
-      margin-top: 5px;
       margin-right: $nx-spacing-xxs;
       outline: 1px solid $nx-color-blue-44;
       opacity: 1;
       position: static;
-      vertical-align: top;
+      vertical-align: 5px;
       width: 0;
     }
   }
