@@ -93,7 +93,7 @@ describe('NxAlert', function() {
       it('renders the appropriate error icon', function() {
         const nxErrorAlert = getNxErrorAlert();
         expect(nxErrorAlert).toMatchSelector(NxAlert);
-        expect(nxErrorAlert).toHaveProp('icon', faExclamationCircle);
+        expect(nxErrorAlert).toContainReact(<NxFontAwesomeIcon icon={faExclamationCircle} aria-label="Error" />);
       });
 
       it('renders the children passed into it', function() {
@@ -119,7 +119,7 @@ describe('NxAlert', function() {
       it('renders the appropriate alert icon', function() {
         const nxWarningAlert = getNxWarningAlert();
         expect(nxWarningAlert).toMatchSelector(NxAlert);
-        expect(nxWarningAlert).toHaveProp('icon', faExclamationTriangle);
+        expect(nxWarningAlert).toContainReact(<NxFontAwesomeIcon icon={faExclamationTriangle} aria-label="Warning" />);
       });
 
       it('uses the appropriate warning classes', function() {
@@ -157,7 +157,7 @@ describe('NxAlert', function() {
       it('renders the appropriate info icon', function() {
         const nxInfoAlert = getNxInfoAlert();
         expect(nxInfoAlert).toMatchSelector(NxAlert);
-        expect(nxInfoAlert).toHaveProp('icon', faInfoCircle);
+        expect(nxInfoAlert).toContainReact(<NxFontAwesomeIcon icon={faInfoCircle} aria-label="Information" />);
       });
 
       it('renders the children passed into it', function() {
