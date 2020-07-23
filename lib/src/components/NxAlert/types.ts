@@ -17,7 +17,7 @@ export const propTypes = {
 } as PropTypes.ValidationMap<Props>;
 
 export type NxAlertProps = HTMLAttributes<HTMLDivElement> & {
-  icon: IconDefinition;
+  icon?: IconDefinition;
 };
 
 export const nxAlertPropTypes: PropTypes.ValidationMap<NxAlertProps> = {

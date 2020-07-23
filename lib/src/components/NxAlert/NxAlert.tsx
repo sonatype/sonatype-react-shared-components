@@ -27,8 +27,8 @@ const NxAlert = forwardRef<HTMLDivElement, NxAlertProps>(
           classes = classnames('nx-alert', className);
 
       return (
-        <div { ...otherProps } ref={ref} className={classes}>
-          <NxFontAwesomeIcon icon={icon}/>
+        <div role="alert" { ...otherProps } ref={ref} className={classes}>
+          { icon && <NxFontAwesomeIcon icon={icon}/> }
           { ensureElement(children) }
         </div>
       );
@@ -43,10 +43,15 @@ export default NxAlert;
  * @param children VDOM nodes to be included after the icon.
  */
 export const NxErrorAlert = forwardRef<HTMLDivElement, Props>(
-    function NxErrorAlert(props, ref) {
+    function NxErrorAlert({children, ...props}, ref) {
       const classes = classnames('nx-alert--error', props.className);
 
-      return <NxAlert { ...props } ref={ref} className={classes} icon={faExclamationCircle} />;
+      return (
+        <NxAlert {...props} className={classes} ref={ref}>
+          <NxFontAwesomeIcon icon={faExclamationCircle} aria-label="Error"/>
+          {children}
+        </NxAlert>
+      );
     }
 );
 
@@ -57,10 +62,15 @@ NxErrorAlert.propTypes = propTypes;
  * @param children VDOM nodes to be included after the icon.
  */
 export const NxInfoAlert = forwardRef<HTMLDivElement, Props>(
-    function NxInfoAlert(props, ref) {
+    function NxInfoAlert({children, ...props}, ref) {
       const classes = classnames('nx-alert--info', props.className);
 
-      return <NxAlert { ...props } ref={ref} className={classes} icon={faInfoCircle} />;
+      return (
+        <NxAlert { ...props } ref={ref} className={classes}>
+          <NxFontAwesomeIcon icon={faInfoCircle} aria-label="Information" />
+          {children}
+        </NxAlert>
+      );
     }
 );
 NxInfoAlert.propTypes = propTypes;
@@ -70,10 +80,15 @@ NxInfoAlert.propTypes = propTypes;
  * @param children VDOM nodes to be included after the icon.
  */
 export const NxWarningAlert = forwardRef<HTMLDivElement, Props>(
-    function NxWarningAlert(props, ref) {
+    function NxWarningAlert({children, ...props}, ref) {
       const classes = classnames('nx-alert--warning', props.className);
 
-      return <NxAlert { ...props } ref={ref} className={classes} icon={faExclamationTriangle} />;
+      return (
+        <NxAlert {...props} ref={ref} className={classes}>
+          <NxFontAwesomeIcon icon={faExclamationTriangle} aria-label="Warning" />
+          {children}
+        </NxAlert>
+      );
     }
 );
 
@@ -84,10 +99,15 @@ NxWarningAlert.propTypes = propTypes;
  * @param children VDOM nodes to be included after the icon.
  */
 export const NxSuccessAlert = forwardRef<HTMLDivElement, Props>(
-    function NxSuccessAlert(props, ref) {
+    function NxSuccessAlert({children, ...props}, ref) {
       const classes = classnames('nx-alert--success', props.className);
 
-      return <NxAlert { ...props } ref={ref} className={classes} icon={faCheckCircle} />;
+      return (
+        <NxAlert {...props} ref={ref} className={classes}>
+          <NxFontAwesomeIcon icon={faCheckCircle} aria-label="Success" />
+          {children}
+        </NxAlert>
+      );
     }
 );
 
