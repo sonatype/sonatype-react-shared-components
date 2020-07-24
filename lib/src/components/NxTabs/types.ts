@@ -9,12 +9,12 @@ import PropTypes from 'prop-types';
 
 export type Props = HTMLAttributes<HTMLDivElement> & {
   activeTab?: number | null ;
-  onTabSelect?: ((index: number) => void) | null;
+  onTabSelect: ((index: number) => void);
   children?: ReactNode | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   activeTab: PropTypes.number,
-  onTabSelect: PropTypes.func,
+  onTabSelect: PropTypes.func.isRequired,
   children: PropTypes.node
 };

@@ -14,7 +14,7 @@ import {
 } from '@sonatype/react-shared-components';
 
 const NxStatefulTabsSimpleExample = () => (
-  <NxStatefulTabs onTabSelect={(id) => alert(`selected tab ${id}`)}>
+  <NxStatefulTabs defaultActiveTab={0} onTabSelect={(id) => alert(`selected tab ${id}`)}>
     <NxTabList>
       <NxTab>Tab 1</NxTab>
       <NxTab>Tab 2</NxTab>

@@ -14,14 +14,14 @@ import NxTabPanel from '../../NxTabPanel/NxTabPanel';
 describe('NxTabs', function () {
   it('renders with a unique id each time', function () {
     const firstTabs = shallow(
-      <NxTabs activeTab={0}>
+      <NxTabs onTabSelect={() => {}} activeTab={0}>
         <NxTabList>
           <NxTab>Tabs 0 Tab 0</NxTab>
         </NxTabList>
       </NxTabs>
     );
     const secondTabs = shallow(
-      <NxTabs activeTab={0}>
+      <NxTabs onTabSelect={() => {}} activeTab={0}>
         <NxTabList>
           <NxTab>Tabs 1 Tab 0</NxTab>
         </NxTabList>
@@ -33,7 +33,7 @@ describe('NxTabs', function () {
 
   it('renders with the correct classnames', function () {
     const component = shallow(
-      <NxTabs activeTab={-1} className="test">
+      <NxTabs onTabSelect={() => {}} activeTab={-1} className="test">
         <NxTabList>
           <NxTab>Tab 0</NxTab>
         </NxTabList>
@@ -46,7 +46,7 @@ describe('NxTabs', function () {
 
   it('renders a generated id', function () {
     const component = shallow(
-      <NxTabs activeTab={-1}>
+      <NxTabs onTabSelect={() => {}} activeTab={-1}>
         <NxTabList>
           <NxTab>Tab 0</NxTab>
         </NxTabList>
@@ -59,7 +59,7 @@ describe('NxTabs', function () {
 
   it('renders using as specific id', function () {
     const component = shallow(
-      <NxTabs activeTab={-1} id="my-tabs">
+      <NxTabs onTabSelect={() => {}} activeTab={-1} id="my-tabs">
         <NxTabList>
           <NxTab>Tab 0</NxTab>
         </NxTabList>
@@ -72,7 +72,7 @@ describe('NxTabs', function () {
 
   it('renders no tab contents when none are active', function () {
     const component = mount(
-      <NxTabs activeTab={-1}>
+      <NxTabs onTabSelect={() => {}} activeTab={-1}>
         <NxTabList>
           <NxTab>Tab 0</NxTab>
         </NxTabList>
@@ -86,7 +86,7 @@ describe('NxTabs', function () {
 
   it('renders no tab contents when no active tab is specified', function () {
     const component = mount(
-      <NxTabs>
+      <NxTabs onTabSelect={() => {}}>
         <NxTabList>
           <NxTab>Tab 0</NxTab>
         </NxTabList>
@@ -100,7 +100,7 @@ describe('NxTabs', function () {
 
   it('activates the active tab', function () {
     const component = mount(
-      <NxTabs activeTab={1}>
+      <NxTabs onTabSelect={() => {}} activeTab={1}>
         <NxTabList>
           <NxTab>Tab 0</NxTab>
           <NxTab>Tab 1</NxTab>

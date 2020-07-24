@@ -47,6 +47,14 @@ export default function NxStatefulTabsPage() {
                 The index of the tab that should be active initially. If not set, no tab will be activated.
               </NxTableCell>
             </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>onTabSelect</NxTableCell>
+              <NxTableCell>function(number)</NxTableCell>
+              <NxTableCell>false</NxTableCell>
+              <NxTableCell>
+                Called with the index of the newly selected tab when the currently selected tab changes.
+              </NxTableCell>
+            </NxTableRow>
           </NxTableBody>
         </NxTable>
       </GalleryDescriptionTile>
