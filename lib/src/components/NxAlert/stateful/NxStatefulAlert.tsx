@@ -7,7 +7,7 @@
 import React, { forwardRef, useState, JSXElementConstructor } from 'react';
 import NxAlert, { NxSuccessAlert, NxWarningAlert, NxInfoAlert, NxErrorAlert } from '../NxAlert';
 import { nxStatefulAlertPropTypes, propTypes } from './types';
-import { Props, NxAlertProps } from '../types';
+import { Props } from '../types';
 
 function mkStatefulAlertComponent<T extends Props>(StatelessAlert: JSXElementConstructor<T>) {
   return forwardRef<HTMLDivElement, T>(
@@ -23,15 +23,15 @@ function mkStatefulAlertComponent<T extends Props>(StatelessAlert: JSXElementCon
   );
 }
 
-const NxStatefulAlert = mkStatefulAlertComponent<NxAlertProps>(NxAlert);
+const NxStatefulAlert = mkStatefulAlertComponent(NxAlert);
 
 NxStatefulAlert.propTypes = nxStatefulAlertPropTypes;
 export default NxStatefulAlert;
 
-export const NxStatefulErrorAlert = mkStatefulAlertComponent<Props>(NxErrorAlert);
-export const NxStatefulInfoAlert = mkStatefulAlertComponent<Props>(NxInfoAlert);
-export const NxStatefulWarningAlert = mkStatefulAlertComponent<Props>(NxWarningAlert);
-export const NxStatefulSuccessAlert = mkStatefulAlertComponent<Props>(NxSuccessAlert);
+export const NxStatefulErrorAlert = mkStatefulAlertComponent(NxErrorAlert);
+export const NxStatefulInfoAlert = mkStatefulAlertComponent(NxInfoAlert);
+export const NxStatefulWarningAlert = mkStatefulAlertComponent(NxWarningAlert);
+export const NxStatefulSuccessAlert = mkStatefulAlertComponent(NxSuccessAlert);
 
 NxStatefulErrorAlert.propTypes = NxStatefulWarningAlert.propTypes = NxStatefulInfoAlert.propTypes =
     NxStatefulSuccessAlert.propTypes = propTypes;
