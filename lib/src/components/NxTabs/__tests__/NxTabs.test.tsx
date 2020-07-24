@@ -57,6 +57,19 @@ describe('NxTabs', function () {
     expect(component.prop('id')).toMatch(/^nx-tabs-\d+$/);
   });
 
+  it('renders using as specific id', function () {
+    const component = shallow(
+      <NxTabs activeTab={-1} id="my-tabs">
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+      </NxTabs>
+    );
+
+    expect(component.prop('id')).toMatch('my-tabs');
+  });
+
   it('renders no tab contents when none are active', function () {
     const component = mount(
       <NxTabs activeTab={-1}>
