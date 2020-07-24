@@ -14,9 +14,9 @@ import {
 } from '@sonatype/react-shared-components';
 
 const NxTabsSimpleExample = () => {
-  const [activeTabId, setActiveTabId] = useState<number | null | undefined>(0);
+  const [activeTabId, setActiveTabId] = useState<number>(0);
 
-  function handleTabSelect(index: number | null | undefined) {
+  function handleTabSelect(index: number) {
     setActiveTabId(index);
   }
 
