@@ -20,6 +20,6 @@ const NxLoadWrapperErrorRetryExample = () => {
       <div>Children will not render until after Retry</div>
     </NxLoadWrapper>
   );
-}
+};
 
 export default NxLoadWrapperErrorRetryExample;
