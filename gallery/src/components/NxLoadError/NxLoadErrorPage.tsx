@@ -64,7 +64,8 @@ const NxLoadErrorPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               A handler that dismisses the alert when called.
-              See <a href="#/page/NxAlert"><code className="nx-code">NxAlert</code></a> for details.
+              See <a href="#/page/NxAlert"><code className="nx-code">NxAlert</code></a> for details. This should only
+              be specified when a <code className="nx-code">retryHandler</code> is not provided.
             </td>
           </tr>
         </tbody>
