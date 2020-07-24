@@ -66,6 +66,7 @@ import NxTruncatePage from './styles/NxTruncateEllipsis/NxTruncatePage';
 import NxCodePage from './styles/NxCode/NxCodePage';
 import StylingComponentsPage from './pages/StylingComponents';
 import AdditionalResourcePage from './pages/AdditionalResources';
+import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -125,6 +126,7 @@ const pageConfig: PageConfig = {
     'nx-tile': NxTilePage
   },
   'Styles - Mixins & Helpers': {
+    'Custom app font size': NxFontSizePage,
     'nx-clickable': NxClickablePage,
     'nx-container-helpers': NxContainerHelpersPage,
     'nx-scrollable': NxScrollablePage,
