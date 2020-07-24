@@ -72,9 +72,9 @@ const NxAlertPage = () =>
       An example of a simple alert which adds a custom modifier class.
     </GalleryExampleTile>
 
-    <GalleryTile title="NxErrorAlert, NxInfoAlert, NxWarningAlert">
+    <GalleryTile title="NxErrorAlert, etc.">
       <p className="nx-p">Standard sonatype alerts.</p>
-      <p className="nx-p">They come in three variations: Error, Info, and Warning.</p>
+      <p className="nx-p">They come in four variations: Error, Info, Warning, and Success.</p>
       <p className="nx-p">
         Accepts any prop that is valid on a div as well as the <code className="nx-code">onClose</code> prop
         described above.
