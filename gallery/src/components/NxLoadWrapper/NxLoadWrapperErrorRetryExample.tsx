@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 
 import { NxLoadWrapper } from '@sonatype/react-shared-components';
 
-const NxLoadWrapperErrorExample = () => {
+const NxLoadWrapperErrorRetryExample = () => {
   const [error, setError] = useState<string | null>('Server Error');
 
   function retryHandler() {
@@ -22,4 +22,4 @@ const NxLoadWrapperErrorExample = () => {
   );
 }
 
-export default NxLoadWrapperErrorExample;
+export default NxLoadWrapperErrorRetryExample;
