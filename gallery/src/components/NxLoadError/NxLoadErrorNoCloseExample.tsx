@@ -6,13 +6,12 @@
  */
 import React from 'react';
 
-import { NxLoadWrapper } from '@sonatype/react-shared-components';
+import { NxLoadError } from '@sonatype/react-shared-components';
 
-const error = 'Server Error';
+const error = 'Page Not Found';
 
-const NxLoadWrapperErrorExample = () =>
-  <NxLoadWrapper error={error}>
-    <div>Children will not render</div>
-  </NxLoadWrapper>;
+function NxLoadErrorNoCloseExample() {
+  return <NxLoadError error={error} />;
+}
 
-export default NxLoadWrapperErrorExample;
+export default NxLoadErrorNoCloseExample;
