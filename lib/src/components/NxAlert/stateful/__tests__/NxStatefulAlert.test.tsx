@@ -22,11 +22,12 @@ import NxAlert, {
 } from '../../NxAlert';
 import { JSXElementConstructor } from 'react';
 
+/* eslint @typescript-eslint/no-explicit-any: 0 */
 function statefulAlertTests(
   StatefulAlert: JSXElementConstructor<any>,
   StatelessAlert: JSXElementConstructor<any>,
-  minimalProps = {})
-{
+  minimalProps = {}
+) {
   return function() {
     const getShallowComponent = enzymeUtils.getShallowComponent<any>(StatefulAlert, minimalProps);
 
@@ -37,7 +38,7 @@ function statefulAlertTests(
       expect(component).toHaveProp({
         ...minimalProps,
         className: 'bar',
-        id: 'baz',
+        id: 'baz'
       });
     });
 
@@ -47,7 +48,7 @@ function statefulAlertTests(
       component.simulate('close');
       expect(component).toBeEmptyRender();
     });
-  }
+  };
 }
 
 describe('NxStatefulAlert', statefulAlertTests(NxStatefulAlert, NxAlert, { icon: faCheckCircle }));
