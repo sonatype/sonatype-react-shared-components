@@ -64,8 +64,8 @@ const NxLoadErrorPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               A handler that dismisses the alert when called.
-              See <a href="#/page/NxAlert"><code className="nx-code">NxAlert</code></a> for details. This should only
-              be specified when a <code className="nx-code">retryHandler</code> is not provided.
+              See <a href="#/page/NxAlert"><code className="nx-code">NxAlert</code></a> for details. This never
+              be specified at the same time as <code className="nx-code">retryHandler</code>.
             </td>
           </tr>
         </tbody>
@@ -92,8 +92,8 @@ const NxLoadErrorPage = () =>
     <GalleryExampleTile title="Example without Close Button"
                         codeExamples={noCloseSourceCode}
                         liveExample={NxLoadErrorNoCloseExample}>
-      This example demonstrates an <code className="nx-code">NxLoadError</code> has neither a Retry button nor a
-      Close button. This arrangement should only be used for cases where:
+      This example demonstrates an <code className="nx-code">NxLoadError</code> which has neither a Retry button nor a
+      Close button. This arrangement should only be used for cases where both of the following are true:
       <ol>
         <li>
           The <code className="nx-code">NxLoadError</code> is the only component within the main area of the page.
