@@ -51,12 +51,10 @@ const NxAlertPage = () =>
             <td className="nx-cell">
               A handler that dismisses the alert when called. If this prop is present, a close button will be rendered
               at the right-hand side of the alert. When that button is clicked, this callback will be fired. Note that
-              while this callback (and button) are optional, our UX patterns call for <em>all</em> alerts to be
-              dismissable in some way. Therefore, an <code className="nx-code">onClose</code> callback should always
-              be provided,{' '}
-              <em>
-                unless some other mechanism for closing the alert is provided within the alert children
-              </em>. A "Retry" button would be an example of such an alternative mechanism. Conversely, in the
+              while this callback (and button) are optional, our UX patterns call for almost all alerts to be
+              dismissable in some way. Therefore, an <code className="nx-code">onClose</code> callback should
+              be provided, unless some other mechanism for closing the alert is provided within the alert children.
+              A "Retry" button would be an example of such an alternative mechanism. Conversely, in the
               case where such an alternative mechanism is present, the <code className="nx-code">onClose</code>
               callback <em>should not</em> be provided.
             </td>
