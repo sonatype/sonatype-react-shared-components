@@ -60,10 +60,11 @@ const NxLoadWrapperPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell">retryHandler</td>
             <td className="nx-cell">Function</td>
-            <td className="nx-cell">No</td>
+            <td className="nx-cell">Yes</td>
             <td className="nx-cell">
               If this is defined, a Retry button will be rendered in the NxLoadError which executes this function
-              when clicked
+              when clicked. For backwards compatibility reasons, this prop is not technically required. However
+              current UX standards are that it should always be present.
             </td>
           </tr>
         </tbody>
