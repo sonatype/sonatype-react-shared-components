@@ -36,6 +36,8 @@ import NxThreatNumberPage from './styles/NxThreatNumber/NxThreatNumberPage';
 import NxSubmitMaskPage from './components/NxSubmitMask/NxSubmitMaskPage';
 import NxStatefulSubmitMaskPage from './components/NxStatefulSubmitMask/NxStatefulSubmitMaskPage';
 import NxTablePage from './components/NxTable/NxTablePage';
+import NxTabsPage from './components/NxTabs/NxTabsPage';
+import NxStatefulTabsPage from './components/NxStatefulTabs/NxStatefulTabsPage';
 import NxTreeViewPage from './components/NxTreeView/NxTreeViewPage';
 import NxTreeViewRadioSelectPage from './components/NxTreeViewRadioSelect/NxTreeViewRadioSelectPage';
 import NxStatefulTreeViewRadioSelectPage
@@ -64,6 +66,7 @@ import NxTruncatePage from './styles/NxTruncateEllipsis/NxTruncatePage';
 import NxCodePage from './styles/NxCode/NxCodePage';
 import StylingComponentsPage from './pages/StylingComponents';
 import AdditionalResourcePage from './pages/AdditionalResources';
+import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -87,6 +90,8 @@ const pageConfig: PageConfig = {
     NxSubmitMask: NxSubmitMaskPage,
     NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
     NxTable: NxTablePage,
+    NxTabs: NxTabsPage,
+    NxStatefulTabs: NxStatefulTabsPage,
     NxTextInput: NxTextInputPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatBar: NxThreatBarPage,
@@ -121,6 +126,7 @@ const pageConfig: PageConfig = {
     'nx-tile': NxTilePage
   },
   'Styles - Mixins & Helpers': {
+    'Custom app font size': NxFontSizePage,
     'nx-clickable': NxClickablePage,
     'nx-container-helpers': NxContainerHelpersPage,
     'nx-scrollable': NxScrollablePage,
