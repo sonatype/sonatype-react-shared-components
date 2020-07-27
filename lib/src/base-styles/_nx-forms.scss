@@ -57,13 +57,13 @@
 
 // labels
 
-.nx-label {
+.nx-label, .nx-legend {
   @include semi-bold();
 
   color: $nx-text-color;
   display: block;
-  font-size: 16px;
-  margin-bottom: 7px;
+  font-size: $nx-font-size;
+  margin-bottom: $nx-spacing-xs;
 
   .disabled {
     color: $nx-grey-4;
@@ -99,19 +99,10 @@
 // be used, but you'll still typically want the <legend> styled the way a <label> on a text field would be using
 // .nx-label.
 .nx-fieldset {
+  @include container-vertical;
+
   border: 0;
-  margin: 0 0 20px 0;
+  margin: 0 0 $nx-spacing-xl 0;
   padding: 0;
-
-  .nx-label {
-    margin-bottom: 0;
-  }
-
-  .nx-radio, .nx-checkbox {
-    @include container-vertical;
-
-    display: block;
-    margin: 8px 0 0 24px;
-  }
 }
 

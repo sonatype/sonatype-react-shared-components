@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import { NxRadio } from '@sonatype/react-shared-components';
 
 export default function NxRadioExample() {
-  const [color, setColor] = useState<string | null>('green');
+  const [color, setColor] = useState<string | null>(null);
 
   /**
    * TS+React freak out when they see a possible `null` being used in
@@ -19,13 +19,11 @@ export default function NxRadioExample() {
 
   return (
     <>
-      <p style={{color: appliedColor}}>Selected Color: {color}</p>
-      <div>
+      <fieldset className="nx-fieldset">
+        <legend className="nx-legend" style={{color: appliedColor}}>Selected Color: {color}</legend>
         <NxRadio name="color" value="red" onChange={setColor} isChecked={color === 'red'} radioId="color-red">
           Red
         </NxRadio>
-      </div>
-      <div>
         <NxRadio name="color"
                  value="purple"
                  onChange={setColor}
@@ -34,20 +32,16 @@ export default function NxRadioExample() {
                  radioId="color-purple">
           Purple (disabled)
         </NxRadio>
-      </div>
-
-      <div>
         <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
           <span style={{color: 'green'}}>Green</span>
           {' '}
           <em>(non-text children)</em>
         </NxRadio>
-      </div>
-
-      <div>
-        <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue"/>
-        No label
-      </div>
+        <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue">
+          Blue - but a very long and verbose blue that makes for a long label, so long that it should trigger ellipsis
+          truncation if I have counted my characters closely enough
+        </NxRadio>
+      </fieldset>
     </>
   );
 }

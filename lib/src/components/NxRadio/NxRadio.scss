@@ -10,56 +10,86 @@
 @import '../../scss-shared/nx-input-helpers';
 
 .nx-radio {
-  $circle-width: 16px;
-  $label-margin: 8px;
-  $line-height: 20px;
-
   @include container-horizontal;
   @include regular();
   @include focusable-toggle-input(".nx-radio__outer-circle");
 
-  display: inline-block;
-  font-size: 14px;
-  line-height: $line-height;
-  position: relative;
+  display: block;
+  margin-bottom: $nx-spacing-xs;
   white-space: nowrap;
+  max-width: max-content;
 
-  &:hover:not(.nx-radio--disabled) {
+  &:hover {
     cursor: pointer;
-  }
-
-  .nx-radio__circle {
-    color: $nx-text-color-light;
-    cursor: pointer;
-    height: $line-height;
-    margin-right: $label-margin;
-    width: $circle-width;
-    vertical-align: top;
-
-    &:last-child {
-      // due to specificity issues the `container-horizontal` mixin on nx-radio isn't successfully setting this
-      margin-right: 0;
-    }
-  }
-
-  .nx-radio__outer-circle {
-    stroke: currentColor;
-  }
-
-  .nx-radio__inner-circle {
-    fill: currentColor;
-  }
-
-  &.nx-radio--disabled {
-    color: $nx-grey-4;
 
     .nx-radio__circle {
-      color: $nx-grey-4;
-      cursor: default;
+      filter: none;
+    }
+
+    .nx-radio__outer-circle {
+      stroke: #2c2c2c;
+    }
+  }
+}
+
+.nx-radio--disabled {
+  .nx-radio__circle {
+    cursor: default;
+  }
+
+  .nx-radio__content {
+    color: #949494;
+  }
+
+  &, &:hover {
+    .nx-radio__outer-circle {
+      fill: #e9e9e9;
+      stroke: #949494;
+    }
+  }
+}
+
+.nx-radio__circle {
+  border-radius: 8px;
+  cursor: pointer;
+  height: 24px;
+  margin-right: $nx-spacing-md;
+  width: 16px;
+  vertical-align: top;
+}
+
+.nx-radio__outer-circle {
+  fill: #fff;
+  stroke: #d1d6f0;
+}
+
+.nx-radio__inner-circle {
+  fill: #fff;
+  stroke: #045dd1;
+}
+
+.nx-radio__input {
+  margin: 0;
+  width: 0;
+
+  &:checked {
+    + .nx-radio__circle {
+      .nx-radio__outer-circle {
+        fill: none;
+        stroke: #045dd1;
+
+        &:hover {
+          stroke: #045dd1;
+        }
+      }
     }
   }
 }
 
 .nx-radio__content {
   @include container-horizontal;
+  @include nx-truncate-ellipsis;
+
+  display: inline-block;
+  max-width: $nx-form-label-width-maximum;
 }
