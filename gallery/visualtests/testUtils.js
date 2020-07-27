@@ -41,5 +41,17 @@ module.exports = {
 
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
     };
+  },
+
+  focusAndHoverTest(elementSelector, focusHoverSelector = elementSelector) {
+    return async () => {
+      const focusElement = await browser.$(focusHoverSelector);
+
+      await browser.execute(function(el) {
+        el.focus();
+      }, focusElement);
+
+      await hoverTest(elementSelector)();
+    };
   }
 };
