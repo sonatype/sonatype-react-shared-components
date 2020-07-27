@@ -53,5 +53,30 @@ module.exports = {
 
       await hoverTest(elementSelector)();
     };
+  },
+
+  clickTest(elementSelector, clickSelector = elementSelector) {
+    return async () => {
+      const [targetElement, clickElement] = await Promise.all([browser.$(elementSelector), browser.$(clickSelector)]);
+
+      await clickElement.moveTo();
+      await browser.performActions([{
+        type: 'pointer',
+        parameters: {
+          pointerType: 'mouse'
+        },
+        actions: [{
+          type: 'pointerDown',
+          button: 1
+        }]
+      }]);
+
+      try {
+        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      }
+      finally {
+        browser.releaseActions();
+      }
+    };
   }
 };
