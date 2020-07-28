@@ -51,7 +51,7 @@ module.exports = {
         el.focus();
       }, focusElement);
 
-      await hoverTest(elementSelector)();
+      await module.exports.hoverTest(elementSelector)();
     };
   },
 
@@ -61,6 +61,7 @@ module.exports = {
 
       await clickElement.moveTo();
       await browser.performActions([{
+        id: 'pointer1',
         type: 'pointer',
         parameters: {
           pointerType: 'mouse'
