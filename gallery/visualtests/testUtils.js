@@ -74,7 +74,7 @@ module.exports = {
         },
         actions: [{
           type: 'pointerDown',
-          button: 1
+          button: 0
         }]
       }]);
 
