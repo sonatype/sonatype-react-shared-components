@@ -7,7 +7,8 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfigFn = require('./webpack.config.js');
-const { BatchInfo, By, ClassicRunner, Configuration, Eyes, Target } = require('@applitools/eyes-webdriverio');
+const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, Target } =
+    require('@applitools/eyes-webdriverio');
 
 const host = process.env.TEST_IP || 'localhost';
 
@@ -237,6 +238,8 @@ exports.config = {
       // without this hover testing doesn't seem to work; possibly the scrollbar-hiding styles cause elements on
       // the page to shift, ruining any manual mouse positioning that had just been done
       eyesConf.setHideScrollbars(false);
+
+      eyesConf.setViewportSize(new RectangleSize(1366, 1000));
 
       eyes.setConfiguration(eyesConf);
 
