@@ -11,6 +11,9 @@ module.exports = {
     return async () => {
       const targetElement = await browser.$(selector);
 
+      // make sure mouse is not on element
+      await targetElement.moveTo({ xOffset: -100, yOffset: -100 });
+
       await targetElement.scrollIntoView({ block: 'center' });
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
     };
