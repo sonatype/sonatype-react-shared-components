@@ -49,11 +49,10 @@ module.exports = {
       const [focusElement, targetElement] =
           await Promise.all([browser.$(focusHoverSelector), browser.$(elementSelector)]);
 
+      await targetElement.scrollIntoView({ block: 'center' });
       await browser.execute(function(el) {
         el.focus();
       }, focusElement);
-
-      await targetElement.scrollIntoView({ block: 'center' });
       await focusElement.moveTo();
 
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
@@ -65,7 +64,9 @@ module.exports = {
       const [targetElement, clickElement] = await Promise.all([browser.$(elementSelector), browser.$(clickSelector)]);
 
       await clickElement.scrollIntoView({ block: 'center' });
-      await clickElement.moveTo();
+
+      const elementCoords = await clickElement.getLocation();
+
       await browser.performActions([{
         id: 'pointer1',
         type: 'pointer',
@@ -73,6 +74,11 @@ module.exports = {
           pointerType: 'mouse'
         },
         actions: [{
+          type: "pointerMove",
+          duration: 0,
+          x: parseInt(elementCoords.x, 10),
+          y: parseInt(elementCoords.y, 10)
+        }, {
           type: 'pointerDown',
           button: 0
         }]
