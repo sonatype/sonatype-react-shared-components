@@ -54,7 +54,10 @@ module.exports = {
         el.focus();
       }, focusElement);
 
-      await module.exports.hoverTest(elementSelector)();
+      await targetElement.scrollIntoView({ block: 'center' });
+      await focusElement.moveTo();
+
+      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
     };
   },
 
