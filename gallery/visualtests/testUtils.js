@@ -75,8 +75,8 @@ module.exports = {
           type: "pointerMove",
           duration: 0,
           origin: clickElement,
-          x: 0,
-          y: 0
+          x: 10,
+          y: 10
         }, {
           type: 'pointerDown',
           button: 0
