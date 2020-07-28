@@ -74,7 +74,7 @@ describe('NxButton', function() {
     it('has a dark red background when hovered', hoverTest(selector));
     it('has a pink background when clicked', clickTest(selector));
     it('has a light blue border when focused', focusTest(selector));
-    it('has a dark red background when focused and hovered', focusAndHoverTest(selector));
+    it('has a red background and blue border when focused and hovered', focusAndHoverTest(selector));
   });
 
   describe('NxButton with icon', function() {
