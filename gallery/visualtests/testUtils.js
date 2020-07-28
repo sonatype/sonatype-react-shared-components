@@ -14,6 +14,7 @@ module.exports = {
       await targetElement.scrollIntoView({ block: 'center' });
       await browser.pause(1000);
       await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+      await browser.pause(1000);
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
     };
   },
@@ -25,6 +26,7 @@ module.exports = {
       await targetElement.scrollIntoView({ block: 'center' });
       await browser.pause(1000);
       await hoverElement.moveTo();
+      await browser.pause(1000);
 
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
     };
@@ -39,6 +41,7 @@ module.exports = {
 
       // make sure mouse is not on element
       await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+      await browser.pause(1000);
       await browser.execute(function(el) {
         el.focus();
       }, focusElement);
@@ -58,6 +61,7 @@ module.exports = {
         el.focus();
       }, focusElement);
       await focusElement.moveTo();
+      await browser.pause(1000);
 
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
     };
@@ -87,6 +91,7 @@ module.exports = {
           button: 0
         }]
       }]);
+      await browser.pause(1000);
 
       try {
         await browser.eyesRegionSnapshot(null, Target.region(targetElement));
