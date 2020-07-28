@@ -58,6 +58,16 @@ describe('NxButton', function() {
   });
 
   describe('Tertiary NxButton', function() {
+    const selector = '#nx-button-tertiary-example .nx-btn:not([disabled]):not(.disabled)';
+
+    it('has a grey border by default', simpleTest(selector));
+    it('has a dark grey border when hovered', hoverTest(selector));
+    it('has a dark grey border and light grey background when clicked', clickTest(selector));
+    it('has a light blue border when focused', focusTest(selector));
+    it('has a dark grey border when focused and hovered', focusAndHoverTest(selector));
+  });
+
+  describe('Error NxButton', function() {
     const selector = '#nx-button-error-example .nx-btn:not([disabled]):not(.disabled)';
 
     it('has a red background by default', simpleTest(selector));
