@@ -65,7 +65,7 @@ exports.config = {
     //
     capabilities: [{
       browserName: 'chrome',
-      chromeOptions: {
+      'goog:chromeOptions': {
         args: [
           'headless',
           // Use --disable-gpu to avoid an error from a missing Mesa
