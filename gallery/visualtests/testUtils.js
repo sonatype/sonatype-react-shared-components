@@ -44,6 +44,7 @@ module.exports = {
       }]);
       await browser.pause(1000);
 
+      await browser.saveScreenshot('/tmp/webdriver-screenshot.png');
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
     };
   },
