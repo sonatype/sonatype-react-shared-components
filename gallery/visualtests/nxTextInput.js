@@ -26,11 +26,11 @@ describe('NxTextInput', function() {
   });
 
   describe('Simple NxTextInput', function() {
-    it('has a light border when pristine', simpleTest(simpleComponentSelector));
+    //it('has a light border when pristine', simpleTest(simpleComponentSelector));
 
     it('has a dark border when hovered',
         hoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
-
+    /*
     it('has a blue border when focused',
         focusTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
 
@@ -48,8 +48,10 @@ describe('NxTextInput', function() {
 
       await simpleTest(simpleComponentSelector)();
     });
+    */
   });
 
+  /*
   describe('Validatable NxTextInput', function() {
     it('has a light border when pristine', simpleTest(validatableComponentSelector));
 
@@ -129,4 +131,5 @@ describe('NxTextInput', function() {
     it('looks disabled when valid', simpleTest(disabledValidComponentSelector));
     it('looks disabled when invalid', simpleTest(disabledInvalidComponentSelector));
   });
+  */
 });
