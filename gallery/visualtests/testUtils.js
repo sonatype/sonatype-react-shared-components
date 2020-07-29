@@ -11,6 +11,7 @@ module.exports = {
     return async () => {
       const targetElement = await browser.$(selector);
 
+      await browser.pause(1000);
       await targetElement.scrollIntoView({ block: 'center' });
       await browser.pause(1000);
       await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
@@ -23,6 +24,7 @@ module.exports = {
     return async () => {
       const [targetElement, hoverElement] = await Promise.all([browser.$(elementSelector), browser.$(hoverSelector)]);
 
+      await browser.pause(1000);
       await targetElement.scrollIntoView({ block: 'center' });
       await browser.pause(1000);
       await hoverElement.moveTo();
@@ -36,6 +38,7 @@ module.exports = {
     return async () => {
       const [targetElement, focusElement] = await Promise.all([browser.$(elementSelector), browser.$(focusSelector)]);
 
+      await browser.pause(1000);
       await targetElement.scrollIntoView({ block: 'center' });
       await browser.pause(1000);
 
@@ -55,6 +58,7 @@ module.exports = {
       const [focusElement, targetElement] =
           await Promise.all([browser.$(focusHoverSelector), browser.$(elementSelector)]);
 
+      await browser.pause(1000);
       await targetElement.scrollIntoView({ block: 'center' });
       await browser.pause(1000);
       await browser.execute(function(el) {
@@ -71,6 +75,7 @@ module.exports = {
     return async () => {
       const [targetElement, clickElement] = await Promise.all([browser.$(elementSelector), browser.$(clickSelector)]);
 
+      await browser.pause(1000);
       await clickElement.scrollIntoView({ block: 'center' });
       await browser.pause(1000);
 
