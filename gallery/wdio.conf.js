@@ -206,7 +206,7 @@ exports.config = {
     before: function (capabilities, specs) {
       eyes = new Eyes(new ClassicRunner());
 
-      const batchId = `${process.env.GIT_COMMIT} ${new Date().getTime()}`,
+      const batchId = process.env.GIT_COMMIT,
           eyesConf = new Configuration();
 
       let branchName = process.env.GIT_BRANCH;
