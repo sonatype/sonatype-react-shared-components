@@ -65,7 +65,6 @@ module.exports = {
 
       await clickElement.scrollIntoView({ block: 'center' });
 
-      await clickElement.moveTo();
       await browser.performActions([{
         id: 'pointer1',
         type: 'pointer',
@@ -73,6 +72,12 @@ module.exports = {
           pointerType: 'mouse'
         },
         actions: [{
+          type: "pointerMove",
+          duration: 0,
+          origin: clickElement,
+          x: 10,
+          y: 10
+        }, {
           type: 'pointerDown',
           button: 0
         }]
