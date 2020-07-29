@@ -27,7 +27,21 @@ module.exports = {
       await browser.pause(1000);
       await targetElement.scrollIntoView({ block: 'center' });
       await browser.pause(1000);
-      await hoverElement.moveTo();
+      //await hoverElement.moveTo();
+      await browser.performActions([{
+        id: 'pointer1',
+        type: 'pointer',
+        parameters: {
+          pointerType: 'mouse'
+        },
+        actions: [{
+          type: "pointerMove",
+          duration: 0,
+          origin: hoverElement,
+          x: 10,
+          y: 10
+        }]
+      }]);
       await browser.pause(1000);
 
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
