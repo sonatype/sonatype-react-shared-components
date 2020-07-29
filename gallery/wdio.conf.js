@@ -35,9 +35,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './visualtests/nxTextInput.js',
-        './visualtests/nxAlert.js',
-        './visualtests/nxBackButton.js'
+        './visualtests/*.js'
     ],
     // Patterns to exclude.
     exclude: [
