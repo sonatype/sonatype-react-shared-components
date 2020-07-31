@@ -11,25 +11,23 @@ describe('NxDropdown', function() {
     await browser.url('#/pages/NxDropdown');
   });
 
-  describe('Default NxDropdown', function() {
+  describe('Default NxDropdown when closed', function() {
     const selector = '#nx-dropdown-scrolling-example .nx-dropdown';
 
-    describe('when closed', function() {
-      it('has a light grey border by default', simpleTest(selector));
-      it('has a dark grey border when hovered', hoverTest(selector));
-      it('has a light blue border when focused', focusTest(selector));
-      it('has a dark grey border when focused and hovered', focusAndHoverTest(selector));
-      it('has a dark grey border and light grey background when clicked', clickTest(selector));
+    it('has a light grey border by default', simpleTest(selector));
+    it('has a dark grey border when hovered', hoverTest(selector));
+    it('has a light blue border when focused', focusTest(selector));
+    it('has a dark grey border when focused and hovered', focusAndHoverTest(selector));
+    it('has a dark grey border and light grey background when clicked', clickTest(selector));
+  });
+
+  describe('Default NxDropdown when open', function() {
+    beforeEach(async function() {
+      const button = await browser.$(selector);
+
+      await button.click();
     });
 
-    describe('when open', function() {
-      beforeEach(async function() {
-        const button = await browser.$(selector);
-
-        await button.click();
-      });
-
-      it('has a dark blue button border with expanded menu', simpleTest(selector));
-    });
+    it('has a dark blue button border with expanded menu', simpleTest(selector));
   });
 });
