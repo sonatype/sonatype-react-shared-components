@@ -19,7 +19,6 @@ describe('NxTextInput', function() {
     await browser.url('#/pages/NxFilterInput');
   });
 
-  // TODO some of these differ arbitrarily from the NxTextInput states.  Double check that they are correct
   describe('Simple NxFilterInput', function() {
     it('has a dark border when pristine', simpleTest(simpleComponentSelector));
 
