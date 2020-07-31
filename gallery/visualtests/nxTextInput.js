@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Target } = require('@applitools/eyes-webdriverio');
-const { focusTest, hoverTest, simpleTest } = require('./testUtils');
+const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 
 describe('NxTextInput', function() {
   const simpleComponentSelector = '#nx-text-input-simple-example .nx-text-input',
@@ -30,19 +30,11 @@ describe('NxTextInput', function() {
 
     it('has a dark border when hovered',
         hoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
-
     it('has a blue border when focused',
         focusTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
 
-    it('has a dark border when hovered and focused', async function() {
-      const focusElement = await browser.$(getInputElementSelector(simpleComponentSelector));
-
-      await browser.execute(function(el) {
-        el.focus();
-      }, focusElement);
-
-      await hoverTest(simpleComponentSelector)();
-    });
+    it('has a dark border when hovered and focused',
+        focusAndHoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
 
     it('has a dark border when non-empty', async function() {
       const inputElement = await browser.$(getInputElementSelector(simpleComponentSelector));
