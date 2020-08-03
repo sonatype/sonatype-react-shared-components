@@ -87,6 +87,7 @@ const NxSubmitMaskPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
+                        id="nx-submit-mask-loading-example"
                         liveExample={NxSubmitMaskExample}
                         codeExamples={NxSubmitMaskCode}>
       A simple <code className="nx-code">NxSubmitMask</code> in the non-success phase.
@@ -99,6 +100,7 @@ const NxSubmitMaskPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Success Example"
+                        id="nx-submit-mask-success-example"
                         liveExample={NxSubmitMaskSuccessExample}
                         codeExamples={NxSubmitMaskSuccessCode}>
       An <code className="nx-code">NxSubmitMask</code> in the success phase.
@@ -112,6 +114,7 @@ const NxSubmitMaskPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Fullscreen Example"
+                        id="nx-submit-mask-fullscreen-example"
                         liveExample={NxSubmitMaskFullscreenExample}
                         codeExamples={NxSubmitMaskFullscreenCode}>
       An example that displays a fullscreen submit mask. This example activates upon clicking the button below.
