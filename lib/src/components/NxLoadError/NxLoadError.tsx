@@ -36,7 +36,7 @@ const NxLoadError = forwardRef<HTMLDivElement, Props>(
             { error }
           </span>
           { retryHandler &&
-            <NxButton variant="error" onClick={retryHandler} className="nx-load-error__retry">
+            <NxButton type="button" variant="error" onClick={retryHandler} className="nx-load-error__retry">
               <NxFontAwesomeIcon icon={faSync} />
               <span>Retry</span>
             </NxButton>
