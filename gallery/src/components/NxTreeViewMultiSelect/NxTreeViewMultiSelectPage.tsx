@@ -196,6 +196,7 @@ const NxTreeViewMultiSelectPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="NxTreeViewMultiSelect Example"
+                        id="nx-tree-view-multi-select-example"
                         liveExample={NxTreeViewMultiSelectExample}
                         codeExamples={nxTreeViewMultiSelectExampleCode}>
       Basic example of a <code className="nx-code">NxTreeViewMultiSelect</code>.
