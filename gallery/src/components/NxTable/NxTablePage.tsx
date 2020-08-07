@@ -187,24 +187,28 @@ export default function NxTablePage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Clickable Row Example"
+                          id="nx-table-clickable-example"
                           liveExample={NxTableClickableExample}
                           codeExamples={tableClickableExample}>
         An example where the rows are styled to indicate that they are clickable.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Sortable Columns Example"
+                          id="nx-table-sortable-example"
                           liveExample={NxTableSortableExample}
                           codeExamples={tableSortableExample}>
         An example with a sortable column.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Loading Example"
+                          id="nx-table-loading-example"
                           liveExample={NxTableLoadingExample}
                           codeExamples={tableLoadingExample}>
         An example of how <code className="nx-code">NxTable</code> should be used while its data is loading.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Error Example"
+                          id="nx-table-error-example"
                           liveExample={NxTableErrorExample}
                           codeExamples={tableErrorExample}>
         An example of how <code className="nx-code">NxTable</code> should be used to indicate that there was an error
