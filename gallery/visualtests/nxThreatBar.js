@@ -1,0 +1,20 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+const { Target } = require('@applitools/eyes-webdriverio');
+const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+
+describe('NxThreatBar', function() {
+  beforeEach(async function() {
+    await browser.url('#/pages/NxThreatBar');
+  });
+
+  const threatBarsListExampleSelector = '#nx-threat-bar-list-example .nx-list',
+     threatBarsTableExampleSelector = '#nx-threat-bar-table-example .nx-table';
+
+  it('looks right in a list', simpleTest(threatBarsListExampleSelector));
+  it('looks right in a table', simpleTest(threatBarsTableExampleSelector));
+});
