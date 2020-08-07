@@ -35,7 +35,8 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   const toggleTooltipProps = toggleTooltip && wrapTooltipProps(toggleTooltip);
 
   const toggle = (
-    <NxButton variant={variant || 'tertiary'}
+    <NxButton type="button"
+              variant={variant || 'tertiary'}
               className={buttonClasses}
               onClick={!disabled && onToggleCollapse || undefined}>
       <span className="nx-dropdown__toggle-label">{ label }</span>
