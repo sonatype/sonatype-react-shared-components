@@ -18,7 +18,7 @@ const NxCloseButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLBut
       const btnClasses = classnames('nx-btn--close', className);
 
       return (
-        <NxButton ref={ref} className={btnClasses} iconOnly={true} variant="tertiary" { ...otherProps }>
+        <NxButton ref={ref} type="button" className={btnClasses} iconOnly={true} variant="tertiary" { ...otherProps }>
           <Close/>
         </NxButton>
       );

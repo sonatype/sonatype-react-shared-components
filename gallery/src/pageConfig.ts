@@ -101,8 +101,7 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
-    NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
-    NxTruncateEllipsis: NxTruncatePage
+    NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,
