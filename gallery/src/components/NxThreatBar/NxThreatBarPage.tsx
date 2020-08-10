@@ -96,6 +96,7 @@ const NxThreatBarPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Threat Bars by Category in .nx-list"
+                        id="nx-threat-bar-list-example"
                         liveExample={NxThreatBarByCategoryExampleList}
                         codeExamples={nxThreatBarByCategoryListCode}>
       An <code className="nx-code">.nx-list</code> including rows displaying threat bars for each category.
@@ -109,6 +110,7 @@ const NxThreatBarPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Bars by Category in .nx-table"
+                        id="nx-threat-bar-table-example"
                         liveExample={NxThreatBarByCategoryExampleTable}
                         codeExamples={nxThreatBarByCategoryTableCode}>
       An <code className="nx-code">.nx-table</code> including rows displaying threat bars for each category.

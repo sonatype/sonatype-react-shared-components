@@ -97,6 +97,7 @@ const NxPageHeaderPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Header"
+                        id="nx-page-header-simple-example"
                         codeExamples={simplePageHeaderExampleCode}
                         liveExample={SimplePageHeaderExample}>
       A minimal instance of <code className="nx-code">NxPageHeader</code> which includes no
@@ -137,6 +138,7 @@ const NxPageHeaderPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Complex Page Header"
+                        id="nx-page-header-complex-example"
                         codeExamples={complexPageHeaderExampleCode}
                         liveExample={ComplexPageHeaderExample}>
       An instance of <code className="nx-code">NxPageHeader</code> which includes all features

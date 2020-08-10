@@ -18,13 +18,14 @@ describe('NxDropdown', () => {
     isOpen: false
   });
 
-  it('renders a button with the appropriate classes', function() {
+  it('renders a button with the appropriate classes and type=button', function() {
     const component = getShallowComponent(),
         button = component.find(NxButton);
 
     expect(component).toHaveClassName('.nx-dropdown');
     expect(button).toHaveClassName('.nx-dropdown__toggle');
     expect(button).toHaveProp('variant', 'tertiary');
+    expect(button).toHaveProp('type', 'button');
     expect(button.childAt(0)).toContainReact(<span className="nx-dropdown__toggle-label">dropdown</span>);
     expect(button.childAt(1)).toHaveProp('icon', faCaretDown);
   });
