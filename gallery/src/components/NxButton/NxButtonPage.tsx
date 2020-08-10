@@ -35,6 +35,7 @@ export default function NxButtonPage() {
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Secondary (Default)"
+                          id="nx-button-default-example"
                           liveExample={NxButtonDefaultExample}
                           codeExamples={NxButtonDefaultCode}>
         An example of an <code className="nx-code">NxButton</code> using the default styling, also known as the
@@ -42,30 +43,35 @@ export default function NxButtonPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Primary"
+                          id="nx-button-primary-example"
                           liveExample={NxButtonPrimaryExample}
                           codeExamples={nxButtonPrimaryCode}>
         An example using the "primary" button styles.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Tertiary"
+                          id="nx-button-tertiary-example"
                           liveExample={NxButtonTertiaryExample}
                           codeExamples={nxButtonTertiaryCode}>
         An example using the "tertiary" button styles.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Error"
+                          id="nx-button-error-example"
                           liveExample={NxButtonErrorExample}
                           codeExamples={nxButtonErrorCode}>
         An example using the "error" button styles. Commonly seen in <code className="nx-code">NxErrorAlert</code>s.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Using icons in buttons"
+                          id="nx-button-icon-example"
                           liveExample={NxButtonIconExample}
                           codeExamples={nxButtonIconCode}>
         An example of a button containing an icon in addition to text.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Icon only buttons"
+                          id="nx-button-icon-only-example"
                           liveExample={NxButtonIconOnlyExample}
                           codeExamples={nxButtonIconOnlyCode}>
         An example of a button containing only an icon.
