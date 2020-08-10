@@ -7,10 +7,8 @@
 import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxListClickableExample from './NxListClickableExample';
-
 const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').default,
-    NxListClickableCode = require('!!raw-loader!./NxListClickableExample').default,
+    NxListClickableCode = require('!!raw-loader!./NxListClickableExample.html').default,
     NxListMultiLineCode = require('!!raw-loader!./NxListMultiLineExample.html').default,
     NxListBulletedCode = require('!!raw-loader!./NxListBulletedExample.html').default,
     NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.html').default,
@@ -30,7 +28,7 @@ const NxListsExamples = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Clickable List Example"
-                        liveExample={NxListClickableExample}
+                        htmlExample={NxListClickableCode}
                         codeExamples={NxListClickableCode}>
       An <code className="nx-code">nx-list</code> demonstrating clickable, selection, and disabled styles.
     </GalleryExampleTile>
