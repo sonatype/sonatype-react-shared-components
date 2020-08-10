@@ -4,6 +4,9 @@
 
 @mixin focusable-toggle-input($focus-border-selector) {
   .nx-radio__input, .nx-checkbox__input {
+    position: absolute;
+    z-index: -1;
+
     &:focus {
       // less-nice IE11 focus style because IE11 doesn't support :focus-within
       margin-right: $nx-spacing-xxs;
