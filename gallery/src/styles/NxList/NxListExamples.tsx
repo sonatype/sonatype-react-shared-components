@@ -19,6 +19,7 @@ const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').def
 const NxListsExamples = () =>
   <>
     <GalleryExampleTile title="NX Simple List Example"
+                        id="nx-list-simple-example"
                         htmlExample={NxListSimpleCode}
                         codeExamples={NxListSimpleCode}>
       Two simple <code className="nx-code">nx-list</code> variations. One is a
@@ -28,12 +29,14 @@ const NxListsExamples = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Clickable List Example"
+                        id="nx-list-clickable-example"
                         htmlExample={NxListClickableCode}
                         codeExamples={NxListClickableCode}>
       An <code className="nx-code">nx-list</code> demonstrating clickable, selection, and disabled styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Bulleted List Example"
+                        id="nx-list-bulleted-example"
                         htmlExample={NxListBulletedCode}
                         codeExamples={NxListBulletedCode}>
       An <code className="nx-code">nx-list</code> demonstrating bulleted list styles more typical of
@@ -41,6 +44,7 @@ const NxListsExamples = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Definition List Example"
+                        id="nx-list-definition-example"
                         htmlExample={NxListDefinitionListCode}
                         codeExamples={NxListDefinitionListCode}>
       An <code className="nx-code">nx-list</code> style for definition lists.
@@ -48,12 +52,14 @@ const NxListsExamples = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List with Actions Example"
+                        id="nx-list-actions-example"
                         htmlExample={NxListWithActionsCode}
                         codeExamples={NxListWithActionsCode}>
       An <code className="nx-code">nx-list</code> with icon buttons for initiation actions.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Multi-line Example"
+                        id="nx-list-multi-line-example"
                         htmlExample={NxListMultiLineCode}
                         codeExamples={NxListMultiLineCode}>
       An <code className="nx-code">nx-list</code> with subtext in each element. The subtext may optionally be multiple
@@ -61,12 +67,14 @@ const NxListsExamples = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List Empty Example"
+                        id="nx-list-empty-example"
                         htmlExample={NxListEmptyCode}
                         codeExamples={NxListEmptyCode}>
       A demonstration of the expected styling and content for an empty <code className="nx-code">nx-list</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List with Error Message Example"
+                        id="nx-list-error-example"
                         htmlExample={NxListErrorStateCode}
                         codeExamples={NxListErrorStateCode}>
       A demonstration of the expected styling and content for an <code className="nx-code">nx-list</code> whose content
