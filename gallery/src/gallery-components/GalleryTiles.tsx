@@ -81,7 +81,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
         { liveExampleRender &&
           <>
             <h3 className="nx-h3 nx-tile__section-header">Example:</h3>
-            <div className="gallery-example__live">{liveExampleRender}</div>
+            <div>{liveExampleRender}</div>
           </>
         }
 
