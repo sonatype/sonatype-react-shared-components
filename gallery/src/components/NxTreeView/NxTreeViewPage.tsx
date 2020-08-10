@@ -107,6 +107,7 @@ const NxTreeViewPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeView Example with Extras"
+                        id="nx-tree-view-example"
                         liveExample={NxTreeViewExtras}
                         codeExamples={nxTreeViewExtrasCode}>
       These examples demonstrate <code className="nx-code">NxTreeView</code>s with extra content such as icons and
@@ -121,6 +122,7 @@ const NxTreeViewPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeView Disabled Example"
+                        id="nx-tree-view-disabled-example"
                         liveExample={NxTreeViewDisabled}
                         codeExamples={nxTreeViewDisabledCode}>
       Example of a disabled <code className="nx-code">NxTreeView</code>.

@@ -7,7 +7,8 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfigFn = require('./webpack.config.js');
-const { BatchInfo, By, ClassicRunner, Configuration, Eyes, Target } = require('@applitools/eyes-webdriverio');
+const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, Target } =
+    require('@applitools/eyes-webdriverio');
 
 const host = process.env.TEST_IP || 'localhost';
 
@@ -56,14 +57,19 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    // NOTE: Experimentally, it appears this needs to be one less than the NODE_MAX_* variables set in the
+    // docker environment variables in the Jenkinsfile
+    maxInstances: 4,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
     capabilities: [{
-        browserName: 'chrome',
+      browserName: 'chrome',
+      'goog:chromeOptions': {
+        args: [ 'headless', 'font-render-hinting=none']
+      }
     }],
     //
     // ===================
@@ -237,6 +243,8 @@ exports.config = {
       // without this hover testing doesn't seem to work; possibly the scrollbar-hiding styles cause elements on
       // the page to shift, ruining any manual mouse positioning that had just been done
       eyesConf.setHideScrollbars(false);
+
+      eyesConf.setViewportSize(new RectangleSize(1366, 1000));
 
       eyes.setConfiguration(eyesConf);
 
