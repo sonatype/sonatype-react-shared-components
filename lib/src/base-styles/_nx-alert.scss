@@ -31,7 +31,11 @@
   }
 
   > .nx-btn--close {
-    background-color: transparent;
+
+    &, &:hover, &:active, &:focus {
+      background-color: transparent;
+    }
+
     flex-shrink: 0;
     margin-left: auto;
   }
