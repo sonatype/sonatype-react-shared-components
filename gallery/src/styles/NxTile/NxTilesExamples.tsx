@@ -16,12 +16,14 @@ const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample.html').defa
 const NxTilesExamples = () =>
   <>
     <GalleryExampleTile title="NX Simple Tile Example"
+                        id="nx-tile-simple-example"
                         htmlExample={NxSimpleTileCode}
                         codeExamples={NxSimpleTileCode}>
       A simple example of an <code className="nx-code">nx-tile</code> including a header and a footer.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Tile with Actions Example"
+                        id="nx-tile-actions-example"
                         htmlExample={NxTileWithActionsCode}
                         codeExamples={NxTileWithActionsCode}>
       An example of an <code className="nx-code">nx-tile</code> with action buttons and a subtitle in the header.
@@ -29,12 +31,14 @@ const NxTilesExamples = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Tile with Subtitle Example"
+                        id="nx-tile-subtitle-example"
                         htmlExample={NxTileWithSubtitleCode}
                         codeExamples={NxTileWithSubtitleCode}>
       An example of an <code className="nx-code">nx-tile</code> with a long subtitle that wraps.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Tile with Horizontal Rule Example"
+                        id="nx-tile-horizontal-rule-example"
                         htmlExample={NxTileWithHorizontalRuleCode}
                         codeExamples={NxTileWithHorizontalRuleCode}>
       An example of a style variation giving the <code className="nx-code">nx-tile</code> a horizontal rule in between
@@ -42,6 +46,7 @@ const NxTilesExamples = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Tile with a Subsection Header Example"
+                        id="nx-tile-subsections-example"
                         htmlExample={NxTileSubsectionCode}
                         codeExamples={NxTileSubsectionCode}>
       An example of an <code className="nx-code">nx-tile</code> containing mulitple subsections. Note the horizontal

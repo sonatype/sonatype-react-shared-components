@@ -27,6 +27,7 @@ const NxThreatNumberPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="List Example"
+                        id="nx-threat-number-list-example"
                         htmlExample={nxThreatNumberListExampleCode}
                         codeExamples={nxThreatNumberListExampleCode}>
       An example of <code className="nx-code">nx-threat-number</code> used within
@@ -34,6 +35,7 @@ const NxThreatNumberPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Table Example"
+                        id="nx-threat-number-table-example"
                         htmlExample={nxThreatNumberTableExampleCode}
                         codeExamples={nxThreatNumberTableExampleCode}>
       An example of <code className="nx-code">nx-threat-number</code> used within
