@@ -4,10 +4,13 @@
 
 @mixin focusable-toggle-input($focus-border-selector) {
   .nx-radio__input, .nx-checkbox__input {
+    position: absolute;
+    z-index: -1;
+
     &:focus {
       // less-nice IE11 focus style because IE11 doesn't support :focus-within
       margin-right: $nx-spacing-xxs;
-      outline: 1px solid $nx-color-blue-44;
+      outline: 1px solid #02a6d9;
       opacity: 1;
       position: static;
       vertical-align: 5px;
@@ -16,13 +19,13 @@
   }
 
   &:focus-within {
-    .nx-radio__circle {
+    .nx-radio__circle, .nx-checkbox__box {
       @include focus-glow;
     }
 
     #{$focus-border-selector} {
       // the non-IE focus style
-      border-color: $nx-color-blue-44;
+      border-color: #02a6d9;
       stroke: #02A6D9;
     }
 
@@ -31,6 +34,12 @@
         #{$focus-border-selector} {
           stroke: #02A6D9;
         }
+      }
+    }
+
+    .nx-checkbox__input:checked {
+      + .nx-checkbox__box {
+        border-color: #02a6d9;
       }
     }
 
