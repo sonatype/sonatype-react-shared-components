@@ -4,10 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { mergeAll, values } from 'ramda';
+import queryString from 'query-string';
 
 import { PageMapping } from './pageConfigTypes';
 import pageConfig from './pageConfig';
@@ -17,10 +18,23 @@ import Home from './pages/Home';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
-function renderPage({ match }: RouteChildrenProps<{ pageName: string }>) {
+function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
   const pageName = match ? match.params.pageName : null,
       pageHeader = pageName || 'Home',
       Content = pageName ? pageMappings[pageName] : Home;
+
+  // Different page layout modes can be triggered via query params.  These page layout modes are
+  // implemented via classes on the <html> element. This feature exists so that visual tests
+  // of all page layout modes can be done
+  useEffect(function() {
+    const queryParams = queryString.parse(location.search),
+        htmlEl = document.documentElement;
+
+    /* eslint-disable @typescript-eslint/no-non-null-assertion */
+    htmlEl!.classList.toggle('nx-html--page-scrolling', queryParams.disablePageScrolling !== 'true');
+    htmlEl!.classList.toggle('gallery-hide-sidebar', queryParams.hideSidebar === 'true');
+    /* eslint-enable @typescript-eslint/no-non-null-assertion */
+  }, [location.search]);
 
   if (Content) {
     // Put a key on <main> so that it re-renders entirely on route change, resetting scroll position
@@ -50,8 +64,8 @@ function Application() {
           <GalleryNav />
         </aside>
         <Switch>
-          <Route path="/pages/:pageName" render={renderPage} />
-          <Route exact path="/" render={renderPage} />
+          <Route path="/pages/:pageName" component={Page} />
+          <Route exact path="/" component={Page} />
           <Redirect to="/" />
         </Switch>
       </div>
