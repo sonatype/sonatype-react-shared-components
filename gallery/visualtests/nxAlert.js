@@ -11,23 +11,30 @@ describe('NxAlert', function() {
     await browser.url('#/pages/NxAlert');
   });
 
+  const simpleSelector = '#nx-alert-custom-example .nx-alert',
+      successSelector = '#nx-alert-success-example .nx-alert',
+      errorSelector = '#nx-alert-error-example .nx-alert',
+      infoSelector = '#nx-alert-info-example .nx-alert',
+      warningSelector = '#nx-alert-warning-example .nx-alert';
+
   describe('Custom NxAlert', function() {
-    it('looks right', simpleTest('#nx-alert-custom-example .nx-alert'));
+    it('looks right', simpleTest(simpleSelector));
   });
 
   describe('NxSuccessAlert', function() {
-    it('looks right', simpleTest('#nx-alert-success-example .nx-alert'));
+    it('looks right', simpleTest(successSelector));
   });
 
   describe('NxErrorAlert', function() {
-    it('looks right', simpleTest('#nx-alert-error-example .nx-alert'));
+    it('looks right', simpleTest(errorSelector));
+    it('looks right with the close button hovered', hoverTest(errorSelector, `${errorSelector} .nx-btn--close`));
   });
 
   describe('NxInfoAlert', function() {
-    it('looks right', simpleTest('#nx-alert-info-example .nx-alert'));
+    it('looks right', simpleTest(infoSelector));
   });
 
   describe('NxWarningAlert', function() {
-    it('looks right', simpleTest('#nx-alert-warning-example .nx-alert'));
+    it('looks right', simpleTest(warningSelector));
   });
 });
