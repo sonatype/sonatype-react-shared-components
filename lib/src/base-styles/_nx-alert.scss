@@ -15,7 +15,7 @@
   align-items: first baseline;
   background-color: $nx-off-white;
   border: $nx-border-darker;
-  border-radius: 6px; //TODO use variable once it's available
+  border-radius: $nx-border-radius;
   color: $nx-text-color;
   display: flex;
   margin: 8px 0;
