@@ -36,7 +36,7 @@ const PageLayoutPage = () =>
       <p className="nx-p">
         Our single and double column layouts are essentially the same except that the single column layout omits the
         sidebar element. When the sidebar element is not present the
-        {' '}<code className="nx-code">nx-page-content-main</code> block will expand to fill the available space.
+        {' '}<code className="nx-code">.nx-page-main</code> block will expand to fill the available space.
       </p>
       <h2 className="nx-h2">Scrolling</h2>
       <p className="nx-p">
@@ -45,10 +45,10 @@ const PageLayoutPage = () =>
         state.
       </p>
       <p className="nx-p">
-        Including the <code className="nx-code">.nx-page--page-scrolling</code> modifier to
-        {' '}<code className="nx-code">&lt;div className="nx-page"&gt;</code> will change this to "page scrolling" where
+        Including the <code className="nx-code">.nx-html--page-scrolling</code> modifier to
+        {' '}<code className="nx-code">&lt;html&gt;</code> will change this to "page scrolling" where
         the sidebar and main content areas scroll together if either has content which overflows and causes scrollbars
-        to appear. The header and footer (if used) remain fixed.
+        to appear. The header and footer (if used) remain fixed. Note that the RSC gallery uses this scrolling mode.
       </p>
       <h2 className="nx-h2">Page layout illustrations</h2>
       <h3 className="nx-h3">Standard two column layout</h3>
@@ -69,12 +69,12 @@ const PageLayoutPage = () =>
       <RawHtmlExample content={singleColumnLayoutExampleCode}/>
       <h3 className="nx-h3">React Root Element</h3>
       <p className="nx-p">
-        Typically in a React app, some high level element in the page which is a descendant of the
-        <code className="nx-code">{'<body>'}</code> is used as the attachment point for the root React
-        <code className="nx-code">ReactDOM.render</code> call. In the gallery itself, the
-        <code className="nx-code">.nx-page</code> element, which also has an <code className="nx-code">id</code> of
-        <code className="nx-code">ui</code>, is used as this attachment point.  We recommend that other apps use the
-        same pattern.
+        Typically in a React app, some high level element in the page which is a descendant of
+        the <code className="nx-code">{'<body>'}</code> is used as the attachment point for the root
+        React <code className="nx-code">ReactDOM.render</code> call. In the gallery itself,
+        the <code className="nx-code">.nx-page</code> element, which also has
+        an <code className="nx-code">id</code> of <code className="nx-code">ui</code>, is used as this attachment
+        point.  We recommend that other apps use the same pattern.
       </p>
       <RawHtmlExample content={reactRootLayoutExampleCode}/>
     </GalleryDescriptionTile>
