@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Target } = require('@applitools/eyes-webdriverio');
+const { Region, Target } = require('@applitools/eyes-webdriverio');
 
 module.exports = {
   simpleTest(selector) {
@@ -88,6 +88,35 @@ module.exports = {
       }
       finally {
         browser.releaseActions();
+      }
+    };
+  },
+
+  // A simple-style test for elements that are too tall to fit into view all at once. It takes a series of screenshots
+  // with appropriate scrolling to ultimately capture the whole element
+  simpleTestLongElement(selector) {
+    return async () => {
+      const targetElement = await browser.$(selector),
+          screenshotHeight = 900,
+          headerHeight = 75;
+
+      const { x, y, width, height } = await browser.getElementRect(targetElement.elementId);
+
+      let currentScreenshotY = y,
+          i = 0;
+      while (currentScreenshotY < y + height) {
+        const remainingElementHeight = height - screenshotHeight * i,
+          currentScreenshotHeight = Math.min(screenshotHeight, remainingElementHeight),
+          screenshotRegion = new Region(x, currentScreenshotY, width, currentScreenshotHeight);
+
+        await browser.execute(function(x, y) {
+          return window.scroll(x, y);
+        }, 0, y + (screenshotHeight * i) - headerHeight);
+
+        await browser.eyesRegionSnapshot(`Part ${i}`, Target.region(screenshotRegion));
+
+        i++;
+        currentScreenshotY += screenshotHeight;
       }
     };
   }

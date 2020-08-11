@@ -4,15 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Region, Target } = require('@applitools/eyes-webdriverio');
 const { simpleTestLongElement } = require('./testUtils');
 
-describe('NxVulnerabilityDetails', function() {
+describe('nx-grid', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxVulnerabilityDetails');
+    await browser.url('#/pages/nx-grid');
   });
 
-  const selector = '.gallery-example .nx-vulnerability-details';
+  const selector = '.gallery-raw-html-example';
 
   it('looks right', simpleTestLongElement(selector));
 });
