@@ -95,3 +95,9 @@
 .gallery-example-image {
   max-width: 100%;
 }
+
+.gallery-hide-sidebar {
+  .nx-page-sidebar {
+    display: none;
+  }
+}
