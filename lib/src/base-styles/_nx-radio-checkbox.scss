@@ -10,11 +10,13 @@
 
 .nx-radio-checkbox {
   @include container-horizontal;
+  @include nx-truncate-ellipsis;
   @include regular();
 
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: $nx-spacing-xs;
   white-space: nowrap;
+  width: $nx-form-label-width-maximum;
   max-width: max-content;
 
   &:hover {
@@ -66,11 +68,8 @@ svg.nx-radio-checkbox__control {
 
 .nx-radio-checkbox__content {
   @include container-horizontal;
-  @include nx-truncate-ellipsis;
 
   color: #474747;
-  display: inline-block;
-  max-width: $nx-form-label-width-maximum;
 }
 
 .nx-radio-checkbox--disabled {
