@@ -15,10 +15,10 @@ function NxCheckboxExample() {
       [isBlue, setIsBlue] = useState(false),
       [isGreen, setIsGreen] = useState(false),
       [isDisabled, setIsDisabled] = useState(false),
-      onChange1 = () => setIsRed(!isRed),
-      onChange2 = () => setIsBlue(!isBlue),
-      onChange3 = () => setIsGreen(!isGreen),
-      onChange4 = () => setIsDisabled(!isDisabled);
+      toggleRed = () => setIsRed(!isRed),
+      toggleBlue = () => setIsBlue(!isBlue),
+      toggleGreen = () => setIsGreen(!isGreen),
+      toggleDisabled = () => setIsDisabled(!isDisabled);
 
   return (
     <fieldset className="nx-fieldset">
