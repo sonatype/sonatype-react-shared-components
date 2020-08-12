@@ -5,47 +5,19 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../../scss-shared/nx-variables';
-@import '../../scss-shared/nx-text-helpers';
-@import '../../scss-shared/nx-container-helpers';
-@import '../../scss-shared/nx-input-helpers';
-
-.nx-checkbox {
-  @include container-horizontal;
-  @include regular();
-  @include focusable-toggle-input(".nx-checkbox__box");
-
-  cursor: pointer;
-  display: inline;
-  font-size: 14px;
-  line-height: 20px;
-  overflow: hidden;
-  white-space: nowrap;
-}
 
 .nx-checkbox__box {
-  border: $nx-border-darker;
   border-radius: 2px;
+  box-sizing: border-box;
   display: inline-block;
-  height: 14px;
-  margin-right: 8px;
+  height: 16px;
   position: relative;
-  vertical-align: -2px;
-  width: 14px;
+  vertical-align: -5px;
+  width: 16px;
 
   .fa-check {
-    margin-bottom: 1.5px;
+    color: #fff;
+    font-size: $nx-font-size-s;
+    vertical-align: 4px;
   }
-}
-
-.nx-checkbox--disabled {
-  color: $nx-grey-4;
-  cursor: not-allowed;
-
-  .nx-checkbox__box {
-    border: $nx-border-dark;
-  }
-}
-
-.nx-checkbox__content {
-  @include container-horizontal;
 }

@@ -11,38 +11,36 @@ import { NxCheckbox } from '@sonatype/react-shared-components';
 function NxCheckboxExample() {
   // this example uses the `useState` hook for succinctness, but you could also manage the state manually
   // in a class component
-  const [isSubscribed, setIsSubscribed] = useState(false),
-      onChange = () => setIsSubscribed(!isSubscribed);
+  const [isRed, setIsRed] = useState(false),
+      [isBlue, setIsBlue] = useState(false),
+      [isGreen, setIsGreen] = useState(false),
+      [isDisabled, setIsDisabled] = useState(false),
+      toggleRed = () => setIsRed(!isRed),
+      toggleBlue = () => setIsBlue(!isBlue),
+      toggleGreen = () => setIsGreen(!isGreen),
+      toggleDisabled = () => setIsDisabled(!isDisabled);
 
   return (
-    <>
-      <p className="nx-p">Subscribed: {isSubscribed.toString()}</p>
-      <div>
-        <NxCheckbox checkboxId="subscribe-check" onChange={onChange} isChecked={isSubscribed}>
-          Subscribe
-        </NxCheckbox>
-      </div>
-      <div>
-        <NxCheckbox checkboxId="disabled-check" disabled={true} onChange={onChange} isChecked={isSubscribed}>
-          disabled
-        </NxCheckbox>
-      </div>
-
-      <div>
-        <NxCheckbox checkboxId="no-label-check" onChange={onChange} isChecked={isSubscribed}/>No label
-      </div>
-
-      Non-text children:
-      <div>
-        <NxCheckbox checkboxId="children-check" onChange={onChange} isChecked={isSubscribed}>
-          <svg width="12px" height="12px" viewBox="-1 -1 2 2">
-            <circle r="1"/>
-          </svg>
-          {' '}
-          - A circle
-        </NxCheckbox>
-      </div>
-    </>
+    <fieldset className="nx-fieldset">
+      <legend className="nx-label">
+        Selected colours: {isRed && 'Red'} {isBlue && 'Blue'} {isGreen && 'Green'}
+      </legend>
+      <NxCheckbox checkboxId="subscribe-check" onChange={toggleRed} isChecked={isRed}>
+        Red
+      </NxCheckbox>
+      <NxCheckbox checkboxId="no-label-check" onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
+      <NxCheckbox checkboxId="children-check" onChange={toggleGreen} isChecked={isGreen}>
+        <svg width="12px" height="12px" viewBox="-1 -1 2 2">
+          <circle r="1"/>
+        </svg>
+        {' '}
+        Green - A circle, a perfectly round SVG circle, pleasing to the eye, not too big and not too small, just right
+        to appear beside a checkbox and demonstrate ellipsis truncation
+      </NxCheckbox>
+      <NxCheckbox checkboxId="disabled-check" disabled={true} onChange={toggleDisabled} isChecked={isDisabled}>
+        disabled
+      </NxCheckbox>
+    </fieldset>
   );
 }
 
