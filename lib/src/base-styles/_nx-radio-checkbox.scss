@@ -8,19 +8,19 @@
 @import '../scss-shared/nx-text-helpers';
 @import '../scss-shared/nx-container-helpers';
 
-.nx-toggle {
+.nx-radio-checkbox {
   @include container-horizontal;
   @include regular();
 
   display: block;
-  margin-bottom: $nx-spacing-xs;
+  margin-bottom: 2px;
   white-space: nowrap;
   max-width: max-content;
 
   &:hover {
     cursor: pointer;
 
-    .nx-toggle__control {
+    .nx-radio-checkbox__control {
       border-color: #2c2c2c;
       filter: none;
       stroke: #2c2c2c;
@@ -28,19 +28,19 @@
   }
 
   &:focus-within {
-    .nx-toggle__control {
+    .nx-radio-checkbox__control {
       border-color: #02a6d9;
       stroke: #02A6D9;
       filter: drop-shadow(0 0 3px rgba(2, 166, 217, 0.4));
     }
 
-    &:hover .nx-toggle__input:checked + .nx-toggle__control {
+    &:hover .nx-radio-checkbox__input:checked + .nx-radio-checkbox__control {
       border-color: #045dd1;
       stroke: #045dd1;
       filter: none;
     }
 
-    .nx-toggle__input:focus {
+    .nx-radio-checkbox__input:focus {
       // cancel IE11-specific focus style
       margin: 0;
       opacity: 0;
@@ -51,21 +51,21 @@
   }
 }
 
-.nx-toggle__control {
+.nx-radio-checkbox__control {
   background-color: #fff;
   border: 1px solid #d1d6f0;
   cursor: pointer;
   margin-right: $nx-spacing-xs;
 }
 
-svg.nx-toggle__control {
+svg.nx-radio-checkbox__control {
   border-style: none;
   background: none;
   fill: #fff;
   stroke: #d1d6f0;
 }
 
-.nx-toggle__content {
+.nx-radio-checkbox__content {
   @include container-horizontal;
   @include nx-truncate-ellipsis;
 
@@ -73,16 +73,16 @@ svg.nx-toggle__control {
   max-width: $nx-form-label-width-maximum;
 }
 
-.nx-toggle--disabled {
+.nx-radio-checkbox--disabled {
   cursor: default;
 
   &, &:hover {
-    .nx-toggle__control {
+    .nx-radio-checkbox__control {
       background-color: #e9e9e9;
       border-color: #949494;
     }
 
-    svg.nx-toggle__control {
+    svg.nx-radio-checkbox__control {
       background: none;
       fill: #e9e9e9;
       stroke: #949494;
@@ -90,7 +90,7 @@ svg.nx-toggle__control {
   }
 }
 
-.nx-toggle__input {
+.nx-radio-checkbox__input {
   margin: 0;
   width: 0;
   position: absolute;
@@ -107,7 +107,7 @@ svg.nx-toggle__control {
   }
 
   &:checked {
-    + .nx-toggle__control {
+    + .nx-radio-checkbox__control {
       background-color: #045dd1;
       border-color: #045dd1;
 
@@ -116,7 +116,7 @@ svg.nx-toggle__control {
       }
     }
 
-    + svg.nx-toggle__control {
+    + svg.nx-radio-checkbox__control {
       background: none;
       fill: #045dd1;
       stroke: #045dd1;

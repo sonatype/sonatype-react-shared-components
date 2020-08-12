@@ -25,8 +25,8 @@ export { Props } from './types';
  */
 const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
     function NxCheckbox({ onChange, isChecked, disabled, checkboxId, children, ...otherProps }, ref) {
-      const labelClasses = classnames('nx-toggle', 'nx-checkbox', {
-        'nx-toggle--disabled': disabled,
+      const labelClasses = classnames('nx-radio-checkbox', 'nx-checkbox', {
+        'nx-radio-checkbox--disabled': disabled,
         'tm-checked': isChecked,
         'tm-unchecked': !isChecked
       });
@@ -35,18 +35,18 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
         <label { ...otherProps } ref={ref} className={labelClasses}>
           <input type="checkbox"
                  id={checkboxId || undefined}
-                 className="nx-toggle__input nx-checkbox__input"
+                 className="nx-radio-checkbox__input nx-checkbox__input"
                  disabled={!!disabled}
                  checked={isChecked}
                  readOnly={!onChange}
                  onChange={onChange || undefined}/>
-          <span className="nx-toggle__control nx-checkbox__box">
+          <span className="nx-radio-checkbox__control nx-checkbox__box">
             {/* Put a non-breaking space in the box if not checked,
               * in order to provide a consistent vertical-align baseline
               */}
             { isChecked ? <FontAwesomeIcon icon={faCheck} /> : '\u00A0' }
           </span>
-          { children && <span className="nx-toggle__content nx-checkbox__content">{children}</span> }
+          { children && <span className="nx-radio-checkbox__content nx-checkbox__content">{children}</span> }
         </label>
       );
     }
