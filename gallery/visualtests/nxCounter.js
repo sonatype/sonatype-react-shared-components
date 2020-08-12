@@ -4,13 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+const { simpleTest } = require('./testUtils');
 
-interface Props {
-  html: string;
-}
+describe('nx-counter', function() {
+  beforeEach(async function() {
+    await browser.url('#/pages/nx-counter');
+  });
 
-const RawHtmlExample = ({ html }: Props) =>
-  <div className="gallery-raw-html-example" dangerouslySetInnerHTML={{ __html: html }} />;
+  const selector = '.gallery-raw-html-example';
 
-export default RawHtmlExample;
+  it('looks right', simpleTest(selector));
+});
