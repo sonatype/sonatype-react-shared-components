@@ -35,6 +35,13 @@
           stroke: #02A6D9;
         }
       }
+      &:hover {
+        + .nx-radio__circle {
+          #{$focus-border-selector} {
+            stroke: #045dd1;
+          }
+        }
+      }
     }
 
     .nx-checkbox__input:checked {
