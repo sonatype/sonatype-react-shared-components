@@ -11,15 +11,15 @@ import { Props } from '../types';
 
 function mkStatefulAlertComponent<T extends Props>(StatelessAlert: JSXElementConstructor<T>) {
   return forwardRef<HTMLDivElement, T>(
-    function NxStatefulAlertBase(props, ref) {
-      const [isOpen, setIsOpen] = useState<boolean>(true);
+      function NxStatefulAlertBase(props, ref) {
+        const [isOpen, setIsOpen] = useState<boolean>(true);
 
-      function onClose() {
-        setIsOpen(false);
+        function onClose() {
+          setIsOpen(false);
+        }
+
+        return isOpen ? <StatelessAlert { ...props } { ...({ ref, onClose }) } /> : null;
       }
-
-      return isOpen ? <StatelessAlert { ...props } { ...({ ref, onClose }) } /> : null;
-    }
   );
 }
 
