@@ -69,6 +69,7 @@ svg.nx-radio-checkbox__control {
   @include container-horizontal;
   @include nx-truncate-ellipsis;
 
+  color: #474747;
   display: inline-block;
   max-width: $nx-form-label-width-maximum;
 }
