@@ -25,7 +25,8 @@ const FallbackFontExampleStyles = require('!!raw-loader!./FallbackFontExample.sc
 const BadLineHeightExampleCode = require('!!raw-loader!./BadLineHeightExample').default;
 const BadLineHeightExampleStyles = require('!!raw-loader!./BadLineHeightExample.scss').default;
 
-const firstReferenceUrl = 'https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align';
+const firstReferenceUrl = 'https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align',
+    css2SpecUrl = 'https://www.w3.org/TR/CSS2/visudet.html#inline-box-height';
 
 const FontSizePage = () =>
   <GalleryDescriptionTile>
@@ -238,7 +239,8 @@ const FontSizePage = () =>
         <li className="nx-list__item">
           inline-block elements use the baseline of their last line box as their baseline, unless they have no text
           content or have <code className="nx-code">overflow</code> set to something other
-          than <code className="nx-code">visible</code>. In these cases the baseline is the bottom margin edge. [3]
+          than <code className="nx-code">visible</code>. In these cases the baseline is the bottom margin
+          edge. <a href={css2SpecUrl}>[3]</a>
         </li>
         <li className="nx-list__item">
           Things get more complicated when a line box includes inline elements of multiple heights. In this
@@ -312,7 +314,7 @@ const FontSizePage = () =>
           <a href="https://glyphsapp.com/tutorials/vertical-metrics">Vertical Metrics - Glyphs</a>
         </li>
         <li>
-          <a href="https://www.w3.org/TR/CSS2/visudet.html#inline-box-height">Line Height Calculatons: CSS 2.1 Spec</a>
+          <a href={css2SpecUrl}>Line Height Calculatons: CSS 2.1 Spec</a>
         </li>
       </ol>
     </section>
