@@ -5,38 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../../scss-shared/nx-variables';
-@import '../../scss-shared/nx-text-helpers';
-@import '../../scss-shared/nx-container-helpers';
-@import '../../scss-shared/nx-input-helpers';
-
-.nx-checkbox {
-  @include container-horizontal;
-  @include regular();
-  @include focusable-toggle-input(".nx-checkbox__box");
-
-  display: block;
-  margin-bottom: $nx-spacing-xs;
-  white-space: nowrap;
-  max-width: max-content;
-
-  &:hover {
-    cursor: pointer;
-
-    .nx-checkbox__box {
-      border-color: #2c2c2c;
-      filter: none;
-    }
-  }
-}
 
 .nx-checkbox__box {
-  background-color: #fff;
-  border: 1px solid #d1d6f0;
   border-radius: 2px;
   box-sizing: border-box;
   display: inline-block;
   height: 16px;
-  margin-right: $nx-spacing-xs;
   position: relative;
   vertical-align: 1px;
   width: 16px;
@@ -46,44 +20,4 @@
     font-size: $nx-font-size-s;
     vertical-align: 4px;
   }
-}
-
-.nx-checkbox--disabled {
-  cursor: default;
-
-  .nx-checkbox__box {
-    background-color: #e9e9e9;
-    border-color: #949494;
-  }
-
-  &, &:hover {
-    .nx-checkbox__box {
-      background-color: #e9e9e9;
-      border-color: #949494;
-    }
-  }
-}
-
-.nx-checkbox__input {
-  margin: 0;
-  width: 0;
-
-  &:checked {
-    + .nx-checkbox__box {
-        background-color: #045dd1;
-        border-color: #045dd1;
-
-      &:hover {
-        border-color: #045dd1;
-      }
-    }
-  }
-}
-
-.nx-checkbox__content {
-  @include container-horizontal;
-  @include nx-truncate-ellipsis;
-
-  display: inline-block;
-  max-width: $nx-form-label-width-maximum;
 }

@@ -1,0 +1,129 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-variables';
+@import '../scss-shared/nx-text-helpers';
+@import '../scss-shared/nx-container-helpers';
+
+.nx-toggle {
+  @include container-horizontal;
+  @include regular();
+
+  display: block;
+  margin-bottom: $nx-spacing-xs;
+  white-space: nowrap;
+  max-width: max-content;
+
+  &:hover {
+    cursor: pointer;
+
+    .nx-toggle__control {
+      border-color: #2c2c2c;
+      filter: none;
+      stroke: #2c2c2c;
+    }
+  }
+
+  &:focus-within {
+    .nx-toggle__control {
+      border-color: #02a6d9;
+      stroke: #02A6D9;
+      filter: drop-shadow(0 0 3px rgba(2, 166, 217, 0.4));
+    }
+
+    &:hover .nx-toggle__input:checked + .nx-toggle__control {
+      border-color: #045dd1;
+      stroke: #045dd1;
+      filter: none;
+    }
+
+    .nx-toggle__input:focus {
+      // cancel IE11-specific focus style
+      margin: 0;
+      opacity: 0;
+      outline: none;
+      position: absolute;
+      height: initial;
+    }
+  }
+}
+
+.nx-toggle__control {
+  background-color: #fff;
+  border: 1px solid #d1d6f0;
+  cursor: pointer;
+  margin-right: $nx-spacing-xs;
+}
+
+svg.nx-toggle__control {
+  border-style: none;
+  background: none;
+  fill: #fff;
+  stroke: #d1d6f0;
+}
+
+.nx-toggle__content {
+  @include container-horizontal;
+  @include nx-truncate-ellipsis;
+
+  display: inline-block;
+  max-width: $nx-form-label-width-maximum;
+}
+
+.nx-toggle--disabled {
+  cursor: default;
+
+  &, &:hover {
+    .nx-toggle__control {
+      background-color: #e9e9e9;
+      border-color: #949494;
+    }
+
+    svg.nx-toggle__control {
+      background: none;
+      fill: #e9e9e9;
+      stroke: #949494;
+    }
+  }
+}
+
+.nx-toggle__input {
+  margin: 0;
+  width: 0;
+  position: absolute;
+  z-index: -1;
+
+  &:focus {
+    // less-nice IE11 focus style because IE11 doesn't support :focus-within
+    margin-right: $nx-spacing-xxs;
+    outline: 1px solid #02a6d9;
+    opacity: 1;
+    position: static;
+    vertical-align: 5px;
+    width: 0;
+  }
+
+  &:checked {
+    + .nx-toggle__control {
+      background-color: #045dd1;
+      border-color: #045dd1;
+
+      &:hover {
+        border-color: #045dd1;
+      }
+    }
+
+    + svg.nx-toggle__control {
+      background: none;
+      fill: #045dd1;
+      stroke: #045dd1;
+
+      &:hover {
+        stroke: #045dd1;
+      }
+    }
+  }
+}
