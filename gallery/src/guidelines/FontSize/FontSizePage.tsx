@@ -236,7 +236,9 @@ const FontSizePage = () =>
           inline-block elements <em>are</em> sizable using the CSS width and height properties
         </li>
         <li className="nx-list__item">
-          inline-block elements use the bottom of the element as their baseline, even if they only contain text
+          inline-block elements use the baseline of their last line box as their baseline, unless they have no text
+          content or have <code className="nx-code">overflow</code> set to something other
+          than <code className="nx-code">visible</code>. In these cases the baseline is the bottom margin edge. [3]
         </li>
         <li className="nx-list__item">
           Things get more complicated when a line box includes inline elements of multiple heights. In this
