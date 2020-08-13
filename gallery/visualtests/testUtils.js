@@ -92,6 +92,17 @@ module.exports = {
     };
   },
 
+  clickedTest(elementSelector, clickSelector = elementSelector) {
+    return async () => {
+      const [targetElement, clickElement] = await Promise.all([browser.$(elementSelector), browser.$(clickSelector)]);
+
+      await clickElement.scrollIntoView({ block: 'center' });
+      await clickElement.click();
+
+      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+    };
+  },
+
   // A simple-style test for elements that are too tall to fit into view all at once. It takes a series of screenshots
   // with appropriate scrolling to ultimately capture the whole element
   simpleTestLongElement(selector) {
