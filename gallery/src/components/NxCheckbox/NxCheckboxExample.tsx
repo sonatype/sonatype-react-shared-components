@@ -25,7 +25,7 @@ function NxCheckboxExample() {
       <legend className="nx-label">
         Selected colours: {isRed && 'Red'} {isBlue && 'Blue'} {isGreen && 'Green'}
       </legend>
-      <NxCheckbox checkboxId="subscribe-check" onChange={toggleRed} isChecked={isRed} id="nx-checkbox-default-example">
+      <NxCheckbox checkboxId="subscribe-check" onChange={toggleRed} isChecked={isRed}>
         Red
       </NxCheckbox>
       <NxCheckbox checkboxId="no-label-check" onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
@@ -40,8 +40,7 @@ function NxCheckboxExample() {
       <NxCheckbox checkboxId="disabled-check"
                   disabled={true}
                   onChange={toggleDisabled}
-                  isChecked={isDisabled}
-                  id="nx-checkbox-disabled-example">
+                  isChecked={isDisabled}>
         disabled
       </NxCheckbox>
     </fieldset>

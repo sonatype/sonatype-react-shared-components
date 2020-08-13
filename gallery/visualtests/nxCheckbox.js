@@ -12,9 +12,10 @@ describe('NxCheckbox', function() {
     await browser.url('#/pages/NxCheckbox');
   });
 
-  describe('Default NxCheckbox', function() {
-    const selector = '#nx-checkbox-default-example';
+  const selector = '#nx-checkbox-example label:nth-of-type(3)',
+      disabledSelector = '#nx-checkbox-example label:nth-of-type(4)';
 
+  describe('Default NxCheckbox', function() {
     it('has a light grey border and white background by default', simpleTest(selector));
     it('has a black border when hovered', hoverTest(selector));
 
@@ -74,13 +75,11 @@ describe('NxCheckbox', function() {
     });
 
     it('has a light blue border and glow when focused', focusTest(selector));
-    it('has a light blue border and glow when focused and hovered', focusAndHoverTest(selector));
+    it('has a dark border when focused and hovered', focusAndHoverTest(selector));
   });
 
   describe('Attribute-Disabled NxCheckbox', function() {
-    const selector = '#nx-checkbox-disabled-example';
-
-    it('looks disabled by default', simpleTest(selector));
-    it('looks disabled when hovered', hoverTest(selector));
+    it('looks disabled by default', simpleTest(disabledSelector));
+    it('looks disabled when hovered', hoverTest(disabledSelector));
   });
 });

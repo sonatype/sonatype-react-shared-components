@@ -75,6 +75,7 @@ const NxCheckboxPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
+                        id="nx-checkbox-example"
                         codeExamples={exampleCode}
                         liveExample={NxCheckboxExample}>
       This example shows a series of checkboxes in a typical vertical layout with

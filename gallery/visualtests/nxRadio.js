@@ -12,13 +12,16 @@ describe('NxRadio', function() {
     await browser.url('#/pages/NxRadio');
   });
 
+  const selector = '#nx-radio-example label:nth-of-type(4)',
+      otherRadioSelector = '#nx-radio-example label:nth-of-type(1)',
+      disabledSelector = '#nx-radio-example label:nth-of-type(2)';
+
   describe('Default NxRadio', function() {
-    const selector = '#nx-radio-default-example';
 
     it('has a light grey border and white background by default', simpleTest(selector));
     it('has a black border when hovered', hoverTest(selector));
     it('has a thick blue border and white background when clicked', async function() {
-      const targetElement = await browser.$(selector);
+      const [targetElement, otherElement] = await Promise.all([browser.$(selector), browser.$(otherRadioSelector)]);
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
@@ -27,14 +30,15 @@ describe('NxRadio', function() {
         await browser.eyesRegionSnapshot(null, Target.region(targetElement));
       }
       finally {
-        // click again to reset the state
-        await targetElement.click();
+        // click away to reset the state
+        await otherElement.click();
       }
     });
 
     it('has a thick blue border, white background, and glow when clicked and focused', async function() {
       const focusSelector = `${selector} input`,
-          [targetElement, focusElement] = await Promise.all([browser.$(selector), browser.$(focusSelector)]);
+          [targetElement, otherElement, focusElement] =
+            await Promise.all([browser.$(selector), browser.$(otherRadioSelector), browser.$(focusSelector)]);
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
@@ -48,13 +52,14 @@ describe('NxRadio', function() {
       }
       finally {
         // click again to reset the state
-        await targetElement.click();
+        await otherElement.click();
       }
     });
 
     it('has a thick blue border and white background when clicked, focused, and hovered', async function() {
       const focusSelector = `${selector} input`,
-          [targetElement, focusElement] = await Promise.all([browser.$(selector), browser.$(focusSelector)]);
+          [targetElement, otherElement, focusElement] =
+            await Promise.all([browser.$(selector), browser.$(otherRadioSelector), browser.$(focusSelector)]);
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
@@ -68,18 +73,16 @@ describe('NxRadio', function() {
       }
       finally {
         // click again to reset the state
-        await targetElement.click();
+        await otherElement.click();
       }
     });
 
     it('has a light blue border and glow when focused', focusTest(selector));
-    it('has a light blue border and glow when focused and hovered', focusAndHoverTest(selector));
+    it('has a dark border when focused and hovered', focusAndHoverTest(selector));
   });
 
   describe('Attribute-Disabled NxRadio', function() {
-    const selector = '#nx-radio-disabled-example';
-
-    it('looks disabled by default', simpleTest(selector));
-    it('looks disabled when hovered', hoverTest(selector));
+    it('looks disabled by default', simpleTest(disabledSelector));
+    it('looks disabled when hovered', hoverTest(disabledSelector));
   });
 });
