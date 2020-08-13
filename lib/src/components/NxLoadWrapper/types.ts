@@ -11,6 +11,8 @@ export interface Props {
   error?: string | null;
   loading?: boolean | null;
   children: ReactNode | (() => ReactNode) | null;
+
+  // The optionalness of this is deprecated; to be removed in 2.0
   retryHandler?: (() => void) | null;
 }
 

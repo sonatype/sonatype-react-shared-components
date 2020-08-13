@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode, useEffect } from 'react';
 import { always } from 'ramda';
 
 import NxLoadError from '../NxLoadError/NxLoadError';
@@ -26,6 +26,12 @@ export { Props, propTypes } from './types';
 const NxLoadWrapper: FunctionComponent<Props> =
   function NxLoadWrapper({ error, loading, children, retryHandler }) {
     const getChildren: (() => ReactNode) = children instanceof Function ? children : always(children);
+
+    useEffect(function() {
+      if (!retryHandler) {
+        console.warn('Using NxLoadWrapper without a retryHandler is deprecated.');
+      }
+    }, [retryHandler]);
 
     return error ? <NxLoadError error={error} retryHandler={retryHandler} /> :
       loading ? <NxLoadingSpinner /> :

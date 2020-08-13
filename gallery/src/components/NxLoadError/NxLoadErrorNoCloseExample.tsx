@@ -4,20 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
 import { NxLoadError } from '@sonatype/react-shared-components';
 
-const error = 'Server Error';
+const error = 'Page Not Found';
 
-function NxLoadErrorSimpleExample() {
-  const [isOpen, setIsOpen] = useState(true);
-
-  function dismiss() {
-    setIsOpen(false);
-  }
-
-  return isOpen ? <NxLoadError error={error} onClose={dismiss} /> : null;
+function NxLoadErrorNoCloseExample() {
+  return <NxLoadError error={error} />;
 }
 
-export default NxLoadErrorSimpleExample;
+export default NxLoadErrorNoCloseExample;
