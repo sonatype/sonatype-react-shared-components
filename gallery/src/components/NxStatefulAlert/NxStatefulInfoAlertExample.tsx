@@ -6,13 +6,12 @@
  */
 import React from 'react';
 
-import { NxLoadWrapper } from '@sonatype/react-shared-components';
+import { NxStatefulInfoAlert } from '@sonatype/react-shared-components';
 
-const error = 'Server Error';
+function NxStatefulInfoAlertExample() {
+  return (
+    <NxStatefulInfoAlert>This is an example <strong>information</strong> message.</NxStatefulInfoAlert>
+  );
+}
 
-const NxLoadWrapperErrorExample = () =>
-  <NxLoadWrapper error={error}>
-    <div>Children will not render</div>
-  </NxLoadWrapper>;
-
-export default NxLoadWrapperErrorExample;
+export default NxStatefulInfoAlertExample;

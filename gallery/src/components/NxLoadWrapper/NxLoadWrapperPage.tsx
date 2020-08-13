@@ -8,14 +8,12 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxLoadWrapperErrorExample from './NxLoadWrapperErrorExample';
 import NxLoadWrapperErrorRetryExample from './NxLoadWrapperErrorRetryExample';
 import NxLoadWrapperLoadingExample from './NxLoadWrapperLoadingExample';
 import NxLoadWrapperChildrenExample from './NxLoadWrapperChildrenExample';
 
 const childrenSourceCode = require('!!raw-loader!./NxLoadWrapperChildrenExample').default;
 const loadingSourceCode = require('!!raw-loader!./NxLoadWrapperLoadingExample').default;
-const errorSourceCode = require('!!raw-loader!./NxLoadWrapperErrorExample').default;
 const errorRetrySourceCode = require('!!raw-loader!./NxLoadWrapperErrorRetryExample').default;
 
 const NxLoadWrapperPage = () =>
@@ -60,10 +58,13 @@ const NxLoadWrapperPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell">retryHandler</td>
             <td className="nx-cell">Function</td>
-            <td className="nx-cell">No</td>
+            <td className="nx-cell">Yes</td>
             <td className="nx-cell">
-              If this is defined, a Retry button will be rendered in the NxLoadError which executes this function
-              when clicked
+              If this is defined, a Retry button will be rendered in
+              the <code className="nx-code">NxLoadError</code> which executes this function
+              when clicked. For backwards compatibility reasons, this prop is not technically required. However
+              current UX standards are that it should always be present. If not specified
+              the <code className="nx-code">NxLoadError</code> will be rendered without a Retry button.
             </td>
           </tr>
         </tbody>
@@ -73,8 +74,9 @@ const NxLoadWrapperPage = () =>
     <GalleryExampleTile title="Renders children when not loading or in error"
                         liveExample={NxLoadWrapperChildrenExample}
                         codeExamples={childrenSourceCode}>
-      An <code className="nx-code">NxLoadWrapper</code> in which neither loading nor error are set. As a result, the
-      children are rendered.
+      An <code className="nx-code">NxLoadWrapper</code> in which
+      neither <code className="nx-code">loading</code> nor <code className="nx-code">error</code> are
+      set. As a result, the children are rendered.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Loading"
@@ -84,19 +86,12 @@ const NxLoadWrapperPage = () =>
       set, and thus the loading spinner is visible.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Error"
-                        liveExample={NxLoadWrapperErrorExample}
-                        codeExamples={errorSourceCode}>
-      An <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">error</code> property
-      is set, and thus an <code className="nx-code">NxErrorAlert</code> is rendered.
-    </GalleryExampleTile>
-
     <GalleryExampleTile title="Error with retry button"
                         liveExample={NxLoadWrapperErrorRetryExample}
                         codeExamples={errorRetrySourceCode}>
       An <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">error</code> property
       is set along with a <code className="nx-code">retryHandler</code>, and thus
-      an <code className="nx-code">NxErrorAlert</code> is rendered with a "Retry" button.
+      an <code className="nx-code">NxErrorAlert</code> is rendered.
     </GalleryExampleTile>
   </>;
 

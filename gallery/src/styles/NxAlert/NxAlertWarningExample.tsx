@@ -5,13 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxFontAwesomeIcon, NxCloseButton } from '@sonatype/react-shared-components';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 const NxAlertWarningExample = () =>
   <div className="nx-alert nx-alert--warning">
     <NxFontAwesomeIcon icon={faExclamationTriangle}/>
     <span><strong>Alert!</strong> I am an alert! Be alerted!</span>
+    <NxCloseButton />
   </div>;
 
 export default NxAlertWarningExample;
