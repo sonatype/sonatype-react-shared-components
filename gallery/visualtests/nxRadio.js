@@ -12,17 +12,17 @@ describe('NxRadio', function() {
   });
 
   describe('Default NxRadio', function() {
-    const selector = '#nx-radio-default-example';
+    const selector = '#nx-radio-default-example .nx-radio:last-of-type';
 
     it('has a light grey border and white background by default', simpleTest(selector));
     it('has a black border when hovered', hoverTest(selector));
     it('has a thick blue border and white background when clicked', clickTest(selector));
     it('has a light blue border and glow when focused', focusTest(selector));
-    it('has a light blue border and glow when focused and hovered', focusAndHoverTest(selector));
+    it('has a grey border and no glow when focused and hovered', focusAndHoverTest(selector));
   });
 
   describe('Attribute-Disabled NxRadio', function() {
-    const selector = '#nx-radio-disabled-example';
+    const selector = '#nx-radio-disabled-example .nx-radio-checkbox--disabled';
 
     it('looks disabled by default', simpleTest(selector));
     it('looks disabled when hovered', hoverTest(selector));
