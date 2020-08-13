@@ -16,7 +16,59 @@ describe('NxRadio', function() {
 
     it('has a light grey border and white background by default', simpleTest(selector));
     it('has a black border when hovered', hoverTest(selector));
-    it('has a thick blue border and white background when clicked', clickedTest(selector));
+    it('has a thick blue border and white background when clicked', function() {
+      const targetElement = browser.$(elementSelector);
+
+      await targetElement.scrollIntoView({ block: 'center' });
+      await targetElement.click();
+
+      try {
+        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      }
+      finally {
+        // click again to reset the state
+        await targetElement.click();
+      }
+    });
+
+    it('has a thick blue border, white background, and glow when clicked and focused', function() {
+      const targetElement = browser.$(elementSelector);
+
+      await targetElement.scrollIntoView({ block: 'center' });
+      await targetElement.click();
+      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+      await browser.execute(function(el) {
+        el.focus();
+      }, focusElement);
+
+      try {
+        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      }
+      finally {
+        // click again to reset the state
+        await targetElement.click();
+      }
+    });
+
+    it('has a thick blue border and white background when clicked, focused, and hovered', function() {
+      const targetElement = browser.$(elementSelector);
+
+      await targetElement.scrollIntoView({ block: 'center' });
+      await targetElement.click();
+      await targetElement.moveTo();
+      await browser.execute(function(el) {
+        el.focus();
+      }, focusElement);
+
+      try {
+        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      }
+      finally {
+        // click again to reset the state
+        await targetElement.click();
+      }
+    });
+
     it('has a light blue border and glow when focused', focusTest(selector));
     it('has a light blue border and glow when focused and hovered', focusAndHoverTest(selector));
   });
