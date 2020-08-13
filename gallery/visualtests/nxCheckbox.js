@@ -12,17 +12,17 @@ describe('NxCheckbox', function() {
   });
 
   describe('Default NxCheckbox', function() {
-    const selector = '#nx-checkbox-default-example .nx-checkbox:nth-child(4)';
+    const selector = '#nx-checkbox-default-example';
 
     it('has a light grey border and white background by default', simpleTest(selector));
     it('has a black border when hovered', hoverTest(selector));
     it('has a thick blue border and white background when clicked', clickTest(selector));
     it('has a light blue border and glow when focused', focusTest(selector));
-    it('has a grey border and no glow when focused and hovered', focusAndHoverTest(selector));
+    it('has a light blue border and glow when focused and hovered', focusAndHoverTest(selector));
   });
 
   describe('Attribute-Disabled NxCheckbox', function() {
-    const selector = '#nx-checkbox-default-example .nx-radio-checkbox--disabled';
+    const selector = '#nx-checkbox-disabled-example';
 
     it('looks disabled by default', simpleTest(selector));
     it('looks disabled when hovered', hoverTest(selector));
