@@ -10,10 +10,10 @@
 
 .nx-radio-checkbox {
   @include container-horizontal;
-  @include nx-truncate-ellipsis;
   @include regular();
 
-  display: block;
+  align-items: center;
+  display: flex;
   margin-bottom: $nx-spacing-xs;
   white-space: nowrap;
   width: $nx-form-label-width-maximum;
@@ -63,6 +63,7 @@
 .nx-radio-checkbox__control {
   background-color: #fff;
   border: 1px solid #d1d6f0;
+  flex-shrink: 0;
   margin-right: $nx-spacing-xs;
 }
 
@@ -75,6 +76,7 @@ svg.nx-radio-checkbox__control {
 
 .nx-radio-checkbox__content {
   @include container-horizontal;
+  @include nx-truncate-ellipsis;
 
   color: #474747;
 }
