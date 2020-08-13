@@ -9,8 +9,8 @@ import classnames from 'classnames';
 import { faCheckCircle, faExclamationTriangle, faExclamationCircle, faInfoCircle }
   from '@fortawesome/free-solid-svg-icons';
 
+import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { ensureElement } from '../../util/reactUtil';
 
 import { Props, propTypes, NxAlertProps, nxAlertPropTypes} from './types';
 export { Props, propTypes, NxAlertProps, nxAlertPropTypes } from './types';
@@ -23,13 +23,14 @@ export { Props, propTypes, NxAlertProps, nxAlertPropTypes } from './types';
  */
 const NxAlert = forwardRef<HTMLDivElement, NxAlertProps>(
     function NxAlert(props, ref) {
-      const { className, icon, children, ...otherProps } = props,
+      const { className, icon, children, onClose, ...otherProps } = props,
           classes = classnames('nx-alert', className);
 
       return (
         <div { ...otherProps } ref={ref} className={classes}>
           <NxFontAwesomeIcon icon={icon}/>
-          { ensureElement(children) }
+          <div className="nx-alert__content">{children}</div>
+          { onClose && <NxCloseButton onClick={onClose} /> }
         </div>
       );
     }

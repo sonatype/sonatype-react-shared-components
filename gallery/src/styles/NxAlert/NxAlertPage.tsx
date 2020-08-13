@@ -26,7 +26,8 @@ const NxAlertPage = () =>
         specific icons. When working in React, <code className="nx-code">NxFontAwesomeIcon</code> should be used
         as shown to get these icons (or preferably the <code className="nx-code">NxAlert</code> React component and
         its variations should be used). When not working in react, check the FontAwesome 5 documentation for alternative
-        ways to include the icons.
+        ways to include the icons. Alerts should generally include Close buttons or another way to dismiss themselves.
+        In this example standard Close button styling is provided by <code className="nx-code">NxCloseButton</code>.
       </p>
     </GalleryDescriptionTile>
 
