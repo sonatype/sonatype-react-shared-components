@@ -24,7 +24,6 @@
 
     .nx-radio-checkbox__control {
       border-color: #2c2c2c;
-      filter: none;
       stroke: #2c2c2c;
     }
   }
@@ -36,10 +35,18 @@
       filter: drop-shadow(0 0 3px rgba(2, 166, 217, 0.4));
     }
 
-    &:hover .nx-radio-checkbox__input:checked + .nx-radio-checkbox__control {
-      border-color: #045dd1;
-      stroke: #045dd1;
-      filter: none;
+    &:hover {
+      .nx-radio-checkbox__control {
+        border-color: #2c2c2c;
+        filter: none;
+        stroke: #2c2c2c;
+      }
+
+      .nx-radio-checkbox__input:checked + .nx-radio-checkbox__control {
+        border-color: #045dd1;
+        stroke: #045dd1;
+        filter: none;
+      }
     }
 
     .nx-radio-checkbox__input:focus {
