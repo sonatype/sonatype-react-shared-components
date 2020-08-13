@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickedTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { Target } = require('@applitools/eyes-webdriverio');
 
 describe('NxCheckbox', function() {
   beforeEach(async function() {
@@ -17,8 +18,8 @@ describe('NxCheckbox', function() {
     it('has a light grey border and white background by default', simpleTest(selector));
     it('has a black border when hovered', hoverTest(selector));
 
-    it('has a blue background and white checkmark when clicked', function() {
-      const targetElement = browser.$(elementSelector);
+    it('has a blue background and white checkmark when clicked', async function() {
+      const targetElement = await browser.$(selector);
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
@@ -32,8 +33,9 @@ describe('NxCheckbox', function() {
       }
     });
 
-    it('has a blue background, white checkmark, and glow when clicked and focused', function() {
-      const targetElement = browser.$(elementSelector);
+    it('has a blue background, white checkmark, and glow when clicked and focused', async function() {
+      const focusSelector = `${selector} input`,
+          [targetElement, focusElement] = await Promise.all([browser.$(selector), browser.$(focusSelector)]);
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
@@ -51,8 +53,9 @@ describe('NxCheckbox', function() {
       }
     });
 
-    it('has a blue background and white checkmark when clicked, focused, and hovered', function() {
-      const targetElement = browser.$(elementSelector);
+    it('has a blue background and white checkmark when clicked, focused, and hovered', async function() {
+      const focusSelector = `${selector} input`,
+          [targetElement, focusElement] = await Promise.all([browser.$(selector), browser.$(focusSelector)]);
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
@@ -79,6 +82,5 @@ describe('NxCheckbox', function() {
 
     it('looks disabled by default', simpleTest(selector));
     it('looks disabled when hovered', hoverTest(selector));
-    it('looks disabled when clicked', clickedTest(selector));
   });
 });
