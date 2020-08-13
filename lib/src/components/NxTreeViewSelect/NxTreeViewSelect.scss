@@ -19,4 +19,9 @@
       width: calc(100% - #{$filter-input-offset});
     }
   }
+
+  .nx-tree-view__child {
+    height: auto;
+    line-height: 1.5;
+  }
 }
