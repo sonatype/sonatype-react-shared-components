@@ -4,10 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
-export type Props = HTMLAttributes<HTMLDivElement> & {
+import { Props as NxAlertProps, propTypes as nxAlertPropTypes } from '../NxAlert/types';
+
+export type Props = NxAlertProps & {
   error?: string | null;
   titleMessage?: string | null;
   retryHandler?: (() => void) | null;
@@ -16,6 +17,7 @@ export type Props = HTMLAttributes<HTMLDivElement> & {
 // In a strictly typescript environment, PropTypes are mostly redundant.  However, they still provide safety when this
 // project is consumed by javascript projects
 export const propTypes: PropTypes.ValidationMap<Props> = {
+  ...nxAlertPropTypes,
   error: PropTypes.string,
   titleMessage: PropTypes.string,
   retryHandler: PropTypes.func

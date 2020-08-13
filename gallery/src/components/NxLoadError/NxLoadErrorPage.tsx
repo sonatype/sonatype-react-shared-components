@@ -9,10 +9,12 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxLoadErrorSimpleExample from './NxLoadErrorSimpleExample';
+import NxLoadErrorNoCloseExample from './NxLoadErrorNoCloseExample';
 import NxLoadErrorRetryExample from './NxLoadErrorRetryExample';
 import NxLoadErrorRetryLongMessageExample from './NxLoadErrorRetryLongMessageExample';
 
 const simpleSourceCode = require('!!raw-loader!./NxLoadErrorSimpleExample').default;
+const noCloseSourceCode = require('!!raw-loader!./NxLoadErrorNoCloseExample').default;
 const retrySourceCode = require('!!raw-loader!./NxLoadErrorRetryExample').default;
 const retryLongMessageSourceCode = require('!!raw-loader!./NxLoadErrorRetryExample').default;
 
@@ -56,22 +58,51 @@ const NxLoadErrorPage = () =>
               If this is defined, a Retry button will be rendered which executes this function when clicked
             </td>
           </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">onClose</td>
+            <td className="nx-cell">Function</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              A handler that dismisses the alert when called.
+              See <a href="#/page/NxAlert"><code className="nx-code">NxAlert</code></a> for details. This never
+              be specified at the same time as <code className="nx-code">retryHandler</code>.
+            </td>
+          </tr>
         </tbody>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="General Example"
-                        codeExamples={simpleSourceCode}
-                        liveExample={NxLoadErrorSimpleExample}>
-      This example demonstrates a basic NxLoadError which renders the error message in
-      an alert box.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Retry Button"
+    <GalleryExampleTile title="Standard Example with Retry Button"
                         codeExamples={retrySourceCode}
                         liveExample={NxLoadErrorRetryExample}>
-      In this example, the error is cleared on retry. Note that the NxLoadError
-      component disappears when that happens.
+      In this example, the error is cleared on retry. Note that
+      the <code className="nx-code">NxLoadError</code> component
+      disappears when that happens. This is the most common usage
+      of <code className="nx-code">NxLoadError</code>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with Close Button"
+                        codeExamples={simpleSourceCode}
+                        liveExample={NxLoadErrorSimpleExample}>
+      This example demonstrates a basic <code className="nx-code">NxLoadError</code> for cases where a Retry action
+      does not make sense. In most cases, when an <code className="nx-code">NxLoadError</code> does
+      not have a Retry button, it should have a Close button.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example without Close Button"
+                        codeExamples={noCloseSourceCode}
+                        liveExample={NxLoadErrorNoCloseExample}>
+      This example demonstrates an <code className="nx-code">NxLoadError</code> which has neither a Retry button nor a
+      Close button. This arrangement should only be used for cases where both of the following are true:
+      <ol>
+        <li>
+          The <code className="nx-code">NxLoadError</code> is the only component within the main area of the page.
+        </li>
+        <li>
+          Retrying the load would not help.
+        </li>
+      </ol>
+      Most typically, these conditions are met when the user manually navigates the page URL to an invalid route.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Retry Button with Long Text"

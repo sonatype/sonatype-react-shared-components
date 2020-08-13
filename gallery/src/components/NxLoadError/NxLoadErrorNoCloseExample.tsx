@@ -1,21 +1,17 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
+import React from 'react';
 
-.nx-checkbox__box {
-  border-radius: 2px;
-  box-sizing: border-box;
-  height: 16px;
-  position: relative;
-  width: 16px;
+import { NxLoadError } from '@sonatype/react-shared-components';
 
-  .fa-check {
-    color: #fff;
-    font-size: $nx-font-size-s;
-    vertical-align: 4px;
-  }
+const error = 'Page Not Found';
+
+function NxLoadErrorNoCloseExample() {
+  return <NxLoadError error={error} />;
 }
+
+export default NxLoadErrorNoCloseExample;

@@ -9,11 +9,9 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxCheckboxExample from './NxCheckboxExample';
-import NxCheckboxInlineExample from './NxCheckboxInlineExample';
 import NxCheckboxNowrapExample from './NxCheckboxNowrapExample';
 
 const exampleCode = require('!!raw-loader!./NxCheckboxExample').default;
-const inlineExampleCode = require('!!raw-loader!./NxCheckboxInlineExample').default;
 const nowrapExampleCode = require('!!raw-loader!./NxCheckboxNowrapExample').default;
 
 const NxCheckboxPage = () =>
@@ -77,17 +75,11 @@ const NxCheckboxPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
+                        id="nx-checkbox-example"
                         codeExamples={exampleCode}
                         liveExample={NxCheckboxExample}>
       This example shows a series of checkboxes in a typical vertical layout with
-      different label content. Note that one of the checkboxes is disabled. Another has no label
-      at all but is adjacent to other content, demonstrating its lack of inherent margin.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Inline Checkbox"
-                        liveExample={NxCheckboxInlineExample}
-                        codeExamples={inlineExampleCode}>
-      This examples shows a series of checkboxes laid out inline amongst other inline text.
+      different label content. Note that one of the checkboxes is disabled.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Checkbox label should not wrap"

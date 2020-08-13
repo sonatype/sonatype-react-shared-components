@@ -26,6 +26,7 @@ import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVu
 import NxListPage from './styles/NxList/NxListPage';
 import NxTableStylePage from './styles/NxTable/NxTableStylePage';
 import NxAlertComponentsPage from './components/NxAlert/NxAlertPage';
+import NxStatefulAlertComponentsPage from './components/NxStatefulAlert/NxStatefulAlertPage';
 import NxContainerHelpersPage from './styles/NxContainerHelpers/NxContainerHelpersPage';
 import NxGridPage from './styles/NxGrid/NxGridPage';
 import NxIconPage from './styles/NxIcon/NxIconPage';
@@ -71,6 +72,7 @@ import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 const pageConfig: PageConfig = {
   'React Components': {
     NxAlert: NxAlertComponentsPage,
+    NxStatefulAlert: NxStatefulAlertComponentsPage,
     NxBackButton: NxBackButtonPage,
     NxButton: NxButtonPage,
     NxCheckbox: NxCheckboxPage,

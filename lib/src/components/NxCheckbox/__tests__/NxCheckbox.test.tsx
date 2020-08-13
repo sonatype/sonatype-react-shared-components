@@ -52,9 +52,9 @@ describe('NxCheckbox', function() {
     expect(shallow(<NxCheckbox checkboxId="checkbox-id" isChecked={false} onChange={() => {}} />)).toHaveText(' ');
   });
 
-  it('adds the nx-checkbox--disabled class if disabled is set', function() {
-    expect(getShallowComponent()).not.toHaveClassName('nx-checkbox--disabled');
-    expect(getShallowComponent({ disabled: true })).toHaveClassName('nx-checkbox--disabled');
+  it('adds the nx-radio-checkbox--disabled class if disabled is set', function() {
+    expect(getShallowComponent()).not.toHaveClassName('nx-radio-checkbox--disabled');
+    expect(getShallowComponent({ disabled: true })).toHaveClassName('nx-radio-checkbox--disabled');
   });
 
   it('adds the tm-checked class if isChecked is true, and the tm-unchecked class if it is false', function() {
