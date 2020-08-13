@@ -21,7 +21,12 @@ export default function NxRadioExample() {
     <>
       <fieldset className="nx-fieldset">
         <legend className="nx-legend" style={{color: appliedColor}}>Selected Color: {color}</legend>
-        <NxRadio name="color" value="red" onChange={setColor} isChecked={color === 'red'} radioId="color-red">
+        <NxRadio name="color"
+                 value="red"
+                 onChange={setColor}
+                 isChecked={color === 'red'}
+                 radioId="color-red"
+                 id="nx-radio-default-example">
           Red
         </NxRadio>
         <NxRadio name="color"
@@ -29,7 +34,8 @@ export default function NxRadioExample() {
                  onChange={setColor}
                  isChecked={color === 'purple'}
                  disabled={true}
-                 radioId="color-purple">
+                 radioId="color-purple"
+                 id="nx-radio-disabled-example">
           Purple (disabled)
         </NxRadio>
         <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
