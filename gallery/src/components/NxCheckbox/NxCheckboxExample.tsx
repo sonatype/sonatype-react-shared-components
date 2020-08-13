@@ -25,7 +25,7 @@ function NxCheckboxExample() {
       <legend className="nx-label">
         Selected colours: {isRed && 'Red'} {isBlue && 'Blue'} {isGreen && 'Green'}
       </legend>
-      <NxCheckbox checkboxId="subscribe-check" onChange={toggleRed} isChecked={isRed}>
+      <NxCheckbox checkboxId="subscribe-check" onChange={toggleRed} isChecked={isRed} id="nx-checkbox-default-example">
         Red
       </NxCheckbox>
       <NxCheckbox checkboxId="no-label-check" onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
@@ -37,7 +37,11 @@ function NxCheckboxExample() {
         Green - A circle, a perfectly round SVG circle, pleasing to the eye, not too big and not too small, just right
         to appear beside a checkbox and demonstrate ellipsis truncation
       </NxCheckbox>
-      <NxCheckbox checkboxId="disabled-check" disabled={true} onChange={toggleDisabled} isChecked={isDisabled}>
+      <NxCheckbox checkboxId="disabled-check"
+                  disabled={true}
+                  onChange={toggleDisabled}
+                  isChecked={isDisabled}
+                  id="nx-checkbox-disabled-example">
         disabled
       </NxCheckbox>
     </fieldset>
