@@ -25,7 +25,8 @@ export default function NxRadioExample() {
                  value="red"
                  onChange={setColor}
                  isChecked={color === 'red'}
-                 radioId="color-red">
+                 radioId="color-red"
+                 id="nx-radio-default-example">
           Red
         </NxRadio>
         <NxRadio name="color"
@@ -33,7 +34,8 @@ export default function NxRadioExample() {
                  onChange={setColor}
                  isChecked={color === 'purple'}
                  disabled={true}
-                 radioId="color-purple">
+                 radioId="color-purple"
+                 id="nx-radio-disabled-example">
           Purple (disabled)
         </NxRadio>
         <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
