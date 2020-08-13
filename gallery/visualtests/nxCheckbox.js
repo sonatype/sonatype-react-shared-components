@@ -27,7 +27,5 @@ describe('NxCheckbox', function() {
     it('looks disabled by default', simpleTest(selector));
     it('looks disabled when hovered', hoverTest(selector));
     it('looks disabled when clicked', clickTest(selector));
-    it('looks disabled when focused', focusTest(selector));
-    it('looks disabled when focused and hovered', focusAndHoverTest(selector));
   });
 });
