@@ -43,7 +43,7 @@
   @include semi-bold();
 
   color: $nx-text-color;
-  display: block;
+  padding: 0;
 
   .disabled {
     color: $nx-grey-4;
@@ -55,12 +55,12 @@
 }
 
 .nx-label__text, .nx-legend__text {
-  display: inline-block;
+  display: block;
   margin-bottom: $nx-spacing-xs;
 }
 
-.nx-label--optional {
-  .nx-label__text::after {
+.nx-label--optional, .nx-legend--optional {
+  .nx-label__text::after, .nx-legend__text::after {
     @include regular();
 
     color: $nx-text-color-light;

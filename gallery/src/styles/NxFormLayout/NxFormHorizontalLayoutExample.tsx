@@ -33,7 +33,7 @@ export default function NxFormLayoutExample() {
         </div>
       </div>
       <fieldset className="nx-fieldset">
-        <legend className="nx-label nx-label--optional"><span className="nx-legend__text">Checkboxes</span></legend>
+        <legend className="nx-legend nx-legend--optional"><span className="nx-legend__text">Checkboxes</span></legend>
         <NxCheckbox isChecked={false}>Checkbox 1</NxCheckbox>
         <NxCheckbox isChecked={true}>Checkbox 2</NxCheckbox>
         <NxCheckbox isChecked={false}>Checkbox 3</NxCheckbox>
