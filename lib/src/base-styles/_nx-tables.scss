@@ -9,7 +9,7 @@
   #Tables
 */
 .nx-table {
-  border-collapse: collapse;
+  border-spacing: 0;
   display: table;
   height: 1px; // hack to fix threat bars in multi-line cells in FF
   margin: $nx-spacing-sm 0 $nx-spacing-l 0;
@@ -42,6 +42,11 @@
       .nx-cell--label, .nx-cell--chevron {
         color: $nx-text-color;
       }
+
+    }
+
+    &:first-child .nx-cell {
+      border-top-style: none;
     }
 
     .nx-cell--label {
