@@ -10,21 +10,16 @@
 
 .nx-form {
   @include container-vertical;
-  border-top: $nx-border-dark;
   margin: 0;
-  padding-top: 20px;
   position: relative; // to make a containing block for validation popovers
 }
 
 .nx-form-footer {
+  @include container-horizontal;
+
   border-top: 1px solid #e9e9e9;
   padding: $nx-spacing-xl $nx-spacing-l;
   text-align: right;
-}
-
-// for a form that is the entirety of a modal
-.nx-form--modal-form {
-  padding-top: 0;
 }
 
 .nx-form-group {
@@ -38,15 +33,6 @@
   .nx-form-group, .nx-fieldset {
     display: inline-block;
     margin-right: $nx-spacing-l;
-    margin-bottom: 0;
-    vertical-align: bottom; // fixes issue where certain form types display lower
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  .nx-label {
     margin-bottom: 0;
   }
 }
@@ -68,7 +54,7 @@
   }
 }
 
-.nx-label__text {
+.nx-label__text, .nx-legend__text {
   display: inline-block;
   margin-bottom: $nx-spacing-xs;
 }
