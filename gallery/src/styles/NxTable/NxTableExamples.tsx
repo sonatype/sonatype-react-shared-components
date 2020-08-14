@@ -11,6 +11,7 @@ import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxTableClickableExample from './NxTableClickableExample';
 
 const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample.html').default,
+    NxTableScrollingCode = require('!!raw-loader!./NxTableScrollingExample.html').default,
     NxTableClickableCode = require('!!raw-loader!./NxTableClickableExample').default,
     NxTableEmptyCode = require('!!raw-loader!./NxTableEmptyExample.html').default,
     NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample.html').default;
@@ -21,6 +22,17 @@ const NxTablesExamples = () =>
                         htmlExample={NxTableSimpleCode}
                         codeExamples={NxTableSimpleCode}>
       A simple, static demonstration of <code className="nx-code">nx-table</code> styles.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Table Scrolling Example"
+                        htmlExample={NxTableScrollingCode}
+                        codeExamples={NxTableScrollingCode}>
+      A demonstration of a table that scrolls due to the presence of a height-constrained, scrolling wrapper element.
+      The headers stay stationary as the rows scroll. All tables that scroll "by themselves" (as opposed to being
+      part of some broader section of the page that scrolls) should be implemented in this manner in order to get
+      the sticky header behavior. Tables which, on the other hand, <em>are</em> part of some broader scrolling
+      section should not have sticky headers and therefore should not use
+      the <code className="nx-code">nx-scrollable__table</code> class.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table with Clickable Rows Example"
