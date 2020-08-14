@@ -60,6 +60,7 @@
     "@fortawesome/react-fontawesome": "=0.1.4",
     "@sonatype/react-shared-components": "link:../lib/dist",
     "classnames": "2.2.6",
+    "core-js": "3.6.5",
     "es6-object-assign": "1.1.0",
     "es6-set": "0.1.5",
     "node-sass": "4.12.0",
