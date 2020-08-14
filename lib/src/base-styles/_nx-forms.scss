@@ -53,7 +53,7 @@
 
 // labels
 
-.nx-label {
+.nx-label, .nx-legend {
   @include semi-bold();
 
   color: $nx-text-color;

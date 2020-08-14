@@ -189,6 +189,7 @@ const NxTreeViewRadioSelectPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="NxTreeViewRadioSelect Basic Example"
+                        id="nx-tree-view-radio-select-example"
                         liveExample={NxTreeViewRadioSelectExample}
                         codeExamples={nxTreeViewRadioSelectExampleCode}>
       A basic example of <code className="nx-code">NxTreeViewRadioSelect</code>, with working collapse/expand,

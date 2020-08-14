@@ -71,6 +71,7 @@ const NxFilterInputPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="NxFilterInput Example"
+                        id="nx-filter-input-simple-example"
                         className="nx-filter-input-examples"
                         liveExample={NxFilterInputFullExample}
                         codeExamples={nxFilterInputFullExampleCode}>
@@ -78,6 +79,7 @@ const NxFilterInputPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxFilterInput Disabled Example"
+                        id="nx-filter-input-disabled-example"
                         className="nx-filter-input-examples"
                         liveExample={NxFilterInputDisabledExample}
                         codeExamples={nxFilterInputDisabledExampleCode}>

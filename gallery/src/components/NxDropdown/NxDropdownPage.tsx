@@ -130,24 +130,28 @@ const NxDropdownPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Scrolling Example"
+                        id="nx-dropdown-scrolling-example"
                         liveExample={NxDropdownScrollingExample}
                         codeExamples={nxDropdownScrollingExampleCode}>
       An example with enough elements in the menu to induce scrolling.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled Example"
+                        id="nx-dropdown-disabled-example"
                         liveExample={NxDropdownDisabledExample}
                         codeExamples={nxDropdownDisabledExampleCode}>
       An example of a dropdown that is disabled.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Links Example"
+                        id="nx-dropdown-links-example"
                         liveExample={NxDropdownLinksExample}
                         codeExamples={nxDropdownLinksExampleCode}>
       An example of a dropdown with a menu of links – typically, links to external sites.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Custom label example"
+                        id="nx-dropdown-custom-label-example"
                         liveExample={NxDropdownCustomLabelExample}
                         codeExamples={nxDropdownCustomLabelExampleCode}>
       This dropdown contains more complex JSX in its label.

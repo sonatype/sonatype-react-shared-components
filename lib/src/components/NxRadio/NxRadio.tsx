@@ -13,15 +13,15 @@ export { Props } from './types';
 
 const NxRadio = forwardRef<HTMLLabelElement, Props>(
     function NxRadio({ name, value, onChange, isChecked, disabled, children, radioId, ...otherProps }, ref) {
-      const labelClasses = classnames('nx-radio', {
-        'nx-radio--disabled': disabled,
+      const labelClasses = classnames('nx-radio-checkbox', 'nx-radio', {
+        'nx-radio-checkbox--disabled': disabled,
         'tm-checked': isChecked,
         'tm-unchecked': !isChecked
       });
 
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
-          <input className="nx-radio__input"
+          <input className="nx-radio-checkbox__input nx-radio__input"
                  id={radioId || undefined}
                  type="radio"
                  name={name}
@@ -29,11 +29,11 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
                  checked={isChecked}
                  onChange={() => onChange && onChange(value)}
                  readOnly={!onChange}/>
-          <svg className="nx-radio__circle" viewBox="-8 -8 16 16" focusable={false}>
-            <circle r="7" strokeWidth="1" fill="none" className="nx-radio__outer-circle"/>
-            { isChecked && <circle r="5" stroke="none" className="nx-radio__inner-circle"/> }
+          <svg className="nx-radio-checkbox__control nx-radio__circle" viewBox="-8 -8 16 16" focusable={false}>
+            { isChecked && <circle r="6" strokeWidth="4" className="nx-radio__inner-circle"/> }
+            <circle r="7.5" strokeWidth="1" className="nx-radio__outer-circle"/>
           </svg>
-          { children && <span className="nx-radio__content">{children}</span> }
+          { children && <span className="nx-radio-checkbox__content nx-radio__content">{children}</span> }
         </label>
       );
     }

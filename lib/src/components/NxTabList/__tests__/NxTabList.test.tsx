@@ -5,14 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { shallow } from 'enzyme';
+import NxTabList from '../NxTabList';
 
-import { NxLoadWrapper } from '@sonatype/react-shared-components';
+describe('NxTabList', function () {
+  it('renders an NxTabList', function () {
+    const component = shallow(<NxTabList />);
 
-const error = 'Server Error';
-
-const NxLoadWrapperErrorExample = () =>
-  <NxLoadWrapper error={error}>
-    <div>Children will not render</div>
-  </NxLoadWrapper>;
-
-export default NxLoadWrapperErrorExample;
+    expect(component).toMatchSelector('ul.nx-tab-list[role="tablist"]');
+  });
+});

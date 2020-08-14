@@ -25,6 +25,14 @@ export {
   Props as NxAlertVariationProps
 } from './components/NxAlert/NxAlert';
 
+export {
+  default as NxStatefulAlert,
+  NxStatefulWarningAlert,
+  NxStatefulSuccessAlert,
+  NxStatefulInfoAlert,
+  NxStatefulErrorAlert
+} from './components/NxAlert/stateful/NxStatefulAlert';
+
 export { default as NxThreatBar, Props as NxThreatBarProps } from './components/NxThreatBar/NxThreatBar';
 export { default as NxFontAwesomeIcon, Props as NxFontAwesomeIconProps }
   from './components/NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -49,6 +57,12 @@ export { default as NxTableBody } from './components/NxTableBody/NxTableBody';
 export { default as NxTableCell } from './components/NxTableCell/NxTableCell';
 export { default as NxTableHead } from './components/NxTableHead/NxTableHead';
 export { default as NxTableRow } from './components/NxTableRow/NxTableRow';
+
+export { default as NxTabs } from './components/NxTabs/NxTabs';
+export { default as NxStatefulTabs } from './components/NxTabs/stateful/NxStatefulTabs';
+export { default as NxTabList } from './components/NxTabList/NxTabList';
+export { default as NxTab } from './components/NxTab/NxTab';
+export { default as NxTabPanel } from './components/NxTabPanel/NxTabPanel';
 
 export {
   default as NxTreeView,

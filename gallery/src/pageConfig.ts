@@ -26,6 +26,7 @@ import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVu
 import NxListPage from './styles/NxList/NxListPage';
 import NxTableStylePage from './styles/NxTable/NxTableStylePage';
 import NxAlertComponentsPage from './components/NxAlert/NxAlertPage';
+import NxStatefulAlertComponentsPage from './components/NxStatefulAlert/NxStatefulAlertPage';
 import NxContainerHelpersPage from './styles/NxContainerHelpers/NxContainerHelpersPage';
 import NxGridPage from './styles/NxGrid/NxGridPage';
 import NxIconPage from './styles/NxIcon/NxIconPage';
@@ -36,6 +37,8 @@ import NxFormLayoutPage from './styles/NxFormLayout/NxFormLayoutPage';
 import NxSubmitMaskPage from './components/NxSubmitMask/NxSubmitMaskPage';
 import NxStatefulSubmitMaskPage from './components/NxStatefulSubmitMask/NxStatefulSubmitMaskPage';
 import NxTablePage from './components/NxTable/NxTablePage';
+import NxTabsPage from './components/NxTabs/NxTabsPage';
+import NxStatefulTabsPage from './components/NxStatefulTabs/NxStatefulTabsPage';
 import NxTreeViewPage from './components/NxTreeView/NxTreeViewPage';
 import NxTreeViewRadioSelectPage from './components/NxTreeViewRadioSelect/NxTreeViewRadioSelectPage';
 import NxStatefulTreeViewRadioSelectPage
@@ -64,10 +67,12 @@ import NxTruncatePage from './styles/NxTruncateEllipsis/NxTruncatePage';
 import NxCodePage from './styles/NxCode/NxCodePage';
 import StylingComponentsPage from './pages/StylingComponents';
 import AdditionalResourcePage from './pages/AdditionalResources';
+import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
     NxAlert: NxAlertComponentsPage,
+    NxStatefulAlert: NxStatefulAlertComponentsPage,
     NxBackButton: NxBackButtonPage,
     NxButton: NxButtonPage,
     NxCheckbox: NxCheckboxPage,
@@ -87,6 +92,8 @@ const pageConfig: PageConfig = {
     NxSubmitMask: NxSubmitMaskPage,
     NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
     NxTable: NxTablePage,
+    NxTabs: NxTabsPage,
+    NxStatefulTabs: NxStatefulTabsPage,
     NxTextInput: NxTextInputPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatBar: NxThreatBarPage,
@@ -96,8 +103,7 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
-    NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
-    NxTruncateEllipsis: NxTruncatePage
+    NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,
@@ -121,6 +127,7 @@ const pageConfig: PageConfig = {
     'nx-tile': NxTilePage
   },
   'Styles - Mixins & Helpers': {
+    'Custom app font size': NxFontSizePage,
     'nx-clickable': NxClickablePage,
     'nx-container-helpers': NxContainerHelpersPage,
     'nx-scrollable': NxScrollablePage,

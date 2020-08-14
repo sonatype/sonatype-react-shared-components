@@ -9,11 +9,9 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxRadioExample from './NxRadioExample';
-import NxRadioInlineExample from './NxRadioInlineExample';
 import NxRadioNowrapExample from './NxRadioNowrapExample';
 
 const exampleCode = require('!!raw-loader!./NxRadioExample').default;
-const inlineExampleCode = require('!!raw-loader!./NxRadioInlineExample').default;
 const nowrapExampleCode = require('!!raw-loader!./NxRadioNowrapExample').default;
 
 const NxRadioPage = () =>
@@ -101,19 +99,13 @@ const NxRadioPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
+                        id="nx-radio-example"
                         codeExamples={exampleCode}
                         liveExample={NxRadioExample}>
       This example shows a series of radios in a typical vertical layout with
-      different label content. Note that one of the radios is disabled. Another has no label
-      at all but is adjacent to other content, demonstrating its lack of inherent margin.
+      different label content. Note that one of the radios is disabled.
       These radios together operate as a single form control: only one value within the group
       can be selected at a time.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Inline Radio"
-                        liveExample={NxRadioInlineExample}
-                        codeExamples={inlineExampleCode}>
-      This examples shows a series of radios laid out inline amongst other inline text.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Radio label does not wrap"

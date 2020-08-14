@@ -10,6 +10,7 @@ interface Props {
   html: string;
 }
 
-const RawHtmlExample = ({ html }: Props) => <div dangerouslySetInnerHTML={{ __html: html }} />;
+const RawHtmlExample = ({ html }: Props) =>
+  <div className="gallery-raw-html-example" dangerouslySetInnerHTML={{ __html: html }} />;
 
 export default RawHtmlExample;
