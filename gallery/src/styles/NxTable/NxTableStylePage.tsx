@@ -17,10 +17,10 @@ const NxTableStylePage = () =>
         This is the styling and layout for a basic table. There are few variations demonstrated here:
       </p>
       <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list-item">Basic table layout</li>
-        <li className="nx-list-item">Tables with clickable rows</li>
-        <li className="nx-list-item">Empty tables</li>
-        <li className="nx-list-item">A table with an error.</li>
+        <li className="nx-list__item">Basic table layout</li>
+        <li className="nx-list__item">Tables with clickable rows</li>
+        <li className="nx-list__item">Empty tables</li>
+        <li className="nx-list__item">A table with an error.</li>
       </ul>
       <p className="nx-p">
         Components for column sorting, column filtering, and tables with fixed headers and

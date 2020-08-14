@@ -17,7 +17,7 @@ const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample.html').d
 
 const NxTablesExamples = () =>
   <>
-    <GalleryExampleTile title="NX Simple Table Example"
+    <GalleryExampleTile title="NX Table Simple Example"
                         htmlExample={NxTableSimpleCode}
                         codeExamples={NxTableSimpleCode}>
       A simple, static demonstration of <code className="nx-code">nx-table</code> styles.
