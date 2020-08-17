@@ -42,7 +42,6 @@
 .nx-label, .nx-legend {
   @include bold();
 
-  color: $nx-text-color;
   cursor: default;
   display: block;
   padding: 0;
