@@ -51,7 +51,7 @@ export default function NxFormLayoutExample() {
       <fieldset className="nx-fieldset">
         <legend className="nx-legend">
           <span className="nx-legend__text">
-            Checkboxes ({isRed && ' Red'}{isBlue && ' Blue'}{isGreen && ' Green'} )
+            Checkboxes ({isRed && ' Red'}{isBlue && ' Blue'}{isGreen && ' Green'})
           </span>
         </legend>
         <NxCheckbox checkboxId="subscribe-check" onChange={toggleRed} isChecked={isRed}>
