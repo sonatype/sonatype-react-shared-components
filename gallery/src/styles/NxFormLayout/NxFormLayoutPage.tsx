@@ -112,11 +112,11 @@ const NxFormLayoutPage = () =>
       This example shows a standard vertical form layout with validation on some fields.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Checkbox label should not wrap"
+    <GalleryExampleTile title="Horizontal form layout"
                         liveExample={NxFormHorizontalLayoutExample}
                         codeExamples={NxFormHorizontalLayoutCode}>
       This example demonstrates a form layout with horizontally placed text input fields. Note that the chcekbox and
-      radio fieldsets remain vertically separated, the should not be placed side-by-side.
+      radio fieldsets remain vertically separated, they should not be placed side-by-side.
     </GalleryExampleTile>
   </>;
 
