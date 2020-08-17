@@ -36,7 +36,10 @@ module.exports = function(env = { production: false }) {
         loader: 'ts-loader',
         include: [
           path.resolve(__dirname, 'src'),
-          path.resolve(__dirname, 'node_modules/fuse.js/')
+          path.resolve(__dirname, 'node_modules/fuse.js/'),
+          path.resolve(__dirname, 'node_modules/query-string/'),
+          path.resolve(__dirname, 'node_modules/split-on-first/'),
+          path.resolve(__dirname, 'node_modules/strict-uri-encode/')
         ]
       }, {
         test: /\.s?css$/,
