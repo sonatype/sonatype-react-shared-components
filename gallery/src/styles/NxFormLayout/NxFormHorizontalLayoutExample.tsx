@@ -16,13 +16,13 @@ export default function NxFormLayoutExample() {
     return val.length ? null : 'Must be non-empty';
   }
 
-  function onSubmit(evt) {
-    evt.preventDefaul();
-    alert('Submitted!');
-  }
+  // function onSubmit(evt) {
+  //   evt.preventDefaul();
+  //   alert('Submitted!');
+  // }
 
   return (
-    <form className="nx-form" onSubmit={onSubmit}>
+    <form className="nx-form">
       <div className="nx-form-row">
         <div className="nx-form-group">
           <label className="nx-label">
