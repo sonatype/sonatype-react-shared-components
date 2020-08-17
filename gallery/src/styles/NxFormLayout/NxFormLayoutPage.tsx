@@ -109,7 +109,7 @@ const NxFormLayoutPage = () =>
     <GalleryExampleTile title="General Example"
                         codeExamples={NxFormLayoutCode}
                         liveExample={NxFormLayoutExample}>
-      This example shows a stand vertical form layout with validation on some fields.
+      This example shows a standard vertical form layout with validation on some fields.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Checkbox label should not wrap"
