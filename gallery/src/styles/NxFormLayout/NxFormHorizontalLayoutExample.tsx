@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
 
 import { NxCheckbox } from '@sonatype/react-shared-components';
 import { NxRadio } from '@sonatype/react-shared-components';
@@ -15,6 +15,15 @@ export default function NxFormLayoutExample() {
   function validator(val: string) {
     return val.length ? null : 'Must be non-empty';
   }
+
+  const [isRed, setIsRed] = useState(false),
+  [isBlue, setIsBlue] = useState(false),
+  [isGreen, setIsGreen] = useState(false),
+  toggleRed = () => setIsRed(!isRed),
+  toggleBlue = () => setIsBlue(!isBlue),
+  toggleGreen = () => setIsGreen(!isGreen);
+
+  const [color, setColor] = useState<string | null>(null);
 
   // function onSubmit(evt) {
   //   evt.preventDefaul();
@@ -38,16 +47,37 @@ export default function NxFormLayoutExample() {
         </div>
       </div>
       <fieldset className="nx-fieldset">
-        <legend className="nx-legend nx-legend--optional"><span className="nx-legend__text">Checkboxes</span></legend>
-        <NxCheckbox isChecked={false}>Checkbox 1</NxCheckbox>
-        <NxCheckbox isChecked={true}>Checkbox 2</NxCheckbox>
-        <NxCheckbox isChecked={false}>Checkbox 3</NxCheckbox>
+        <legend className="nx-legend">
+          <span className="nx-legend__text">
+            Checkboxes
+          </span>
+        </legend>
+        <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
+        <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
+        <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
       </fieldset>
       <fieldset className="nx-fieldset">
         <legend className="nx-legend"><span className="nx-legend__text">Radio buttons</span></legend>
-        <NxRadio name="demo1" value="demo1" isChecked={true}>Radio Button 1</NxRadio>
-        <NxRadio name="demo2" value="demo2" isChecked={false}>Radio Button 2</NxRadio>
-        <NxRadio name="demo3" value="demo3" isChecked={false}>Radio Button 3</NxRadio>
+        <NxRadio name="color"
+                 value="red"
+                 onChange={setColor}
+                 isChecked={color === 'red'}
+                 radioId="color-red">
+          Red
+        </NxRadio>
+        <NxRadio name="color"
+                 value="purple"
+                 onChange={setColor}
+                 isChecked={color === 'purple'}
+                 radioId="color-purple">
+          Purple
+        </NxRadio>
+        <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
+          Green
+        </NxRadio>
+        <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue">
+          Blue
+        </NxRadio>
       </fieldset>
       <footer className="nx-form-footer">
         <NxButton type="button">Cancel</NxButton>
