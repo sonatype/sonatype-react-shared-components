@@ -107,7 +107,6 @@ const NxFormLayoutPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
-                        id="nx-checkbox-example"
                         codeExamples={NxFormLayoutCode}
                         liveExample={NxFormLayoutExample}>
       This example shows a stand vertical form layout with validation on some fields.
