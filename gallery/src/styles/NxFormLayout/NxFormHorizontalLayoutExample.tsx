@@ -27,13 +27,13 @@ export default function NxFormLayoutExample() {
         <div className="nx-form-group">
           <label className="nx-label">
             <span className="nx-label__text">Label</span>
-            <NxStatefulTextInput/>
+            <NxStatefulTextInput validator={validator}/>
           </label>
         </div>
         <div className="nx-form-group">
           <label className="nx-label nx-label--optional">
             <span className="nx-label__text">Label</span>
-            <NxStatefulTextInput validator={validator}/>
+            <NxStatefulTextInput/>
           </label>
         </div>
       </div>

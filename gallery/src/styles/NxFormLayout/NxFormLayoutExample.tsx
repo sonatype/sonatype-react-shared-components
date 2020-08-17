@@ -19,11 +19,9 @@ export default function NxFormLayoutExample() {
   const [isRed, setIsRed] = useState(false),
       [isBlue, setIsBlue] = useState(false),
       [isGreen, setIsGreen] = useState(false),
-      [isDisabled, setIsDisabled] = useState(false),
       toggleRed = () => setIsRed(!isRed),
       toggleBlue = () => setIsBlue(!isBlue),
-      toggleGreen = () => setIsGreen(!isGreen),
-      toggleDisabled = () => setIsDisabled(!isDisabled);
+      toggleGreen = () => setIsGreen(!isGreen);
 
   const [color, setColor] = useState<string | null>(null);
 
@@ -32,13 +30,13 @@ export default function NxFormLayoutExample() {
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">Label</span>
-          <NxStatefulTextInput/>
+          <NxStatefulTextInput validator={validator}/>
         </label>
       </div>
       <div className="nx-form-group">
         <label className="nx-label nx-label--optional">
           <span className="nx-label__text">Label</span>
-          <NxStatefulTextInput validator={validator}/>
+          <NxStatefulTextInput/>
         </label>
       </div>
       <div className="nx-form-group">
@@ -51,30 +49,15 @@ export default function NxFormLayoutExample() {
       <fieldset className="nx-fieldset">
         <legend className="nx-legend">
           <span className="nx-legend__text">
-            Checkboxes ({isRed && ' Red'}{isBlue && ' Blue'}{isGreen && ' Green'})
+            Checkboxes
           </span>
         </legend>
-        <NxCheckbox checkboxId="subscribe-check" onChange={toggleRed} isChecked={isRed}>
-          Red
-        </NxCheckbox>
-        <NxCheckbox checkboxId="no-label-check" onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
-        <NxCheckbox checkboxId="children-check" onChange={toggleGreen} isChecked={isGreen}>
-          <svg width="12px" height="12px" viewBox="-1 -1 2 2">
-            <circle r="1"/>
-          </svg>
-          {' '}
-          Green - A circle, a perfectly round SVG circle, pleasing to the eye, not too big and not too small, just right
-          to appear beside a checkbox and demonstrate ellipsis truncation
-        </NxCheckbox>
-        <NxCheckbox checkboxId="disabled-check"
-                    disabled={true}
-                    onChange={toggleDisabled}
-                    isChecked={isDisabled}>
-          disabled
-        </NxCheckbox>
+        <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
+        <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
+        <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
       </fieldset>
       <fieldset className="nx-fieldset">
-        <legend className="nx-legend"><span className="nx-legend__text">Radio buttons ( {color} )</span></legend>
+        <legend className="nx-legend"><span className="nx-legend__text">Radio buttons</span></legend>
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
@@ -86,18 +69,14 @@ export default function NxFormLayoutExample() {
                  value="purple"
                  onChange={setColor}
                  isChecked={color === 'purple'}
-                 disabled={true}
                  radioId="color-purple">
-          Purple (disabled)
+          Purple
         </NxRadio>
         <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
-          <span style={{color: 'green'}}>Green</span>
-          {' '}
-          <em>(non-text children)</em>
+          Green
         </NxRadio>
         <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue">
-          Blue - but a very long and verbose blue that makes for a long label, so long that it should trigger ellipsis
-          truncation if I have counted my characters closely enough
+          Blue
         </NxRadio>
       </fieldset>
       <div className="nx-form-group">
