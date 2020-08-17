@@ -80,8 +80,10 @@ export default function NxFormLayoutExample() {
         </NxRadio>
       </fieldset>
       <footer className="nx-form-footer">
-        <NxButton type="button">Cancel</NxButton>
-        <NxButton variant="primary" type="button">Submit</NxButton>
+        <div className="nx-btn-bar">
+          <NxButton type="button">Cancel</NxButton>
+          <NxButton variant="primary" type="button">Submit</NxButton>
+        </div>
       </footer>
     </form>
   );
