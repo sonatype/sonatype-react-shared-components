@@ -64,7 +64,7 @@
     @include regular();
 
     color: $nx-text-color-light;
-    content: " optional";
+    content: "Optional";
     font-size: $nx-font-size-xs;
     font-style: italic;
     margin-left: 4px;
@@ -95,4 +95,3 @@
     margin-bottom: $nx-spacing-xs;
   }
 }
-
