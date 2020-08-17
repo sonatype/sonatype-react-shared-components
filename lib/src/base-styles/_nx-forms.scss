@@ -40,9 +40,11 @@
 // labels
 
 .nx-label, .nx-legend {
-  @include semi-bold();
+  @include bold();
 
   color: $nx-text-color;
+  cursor: default;
+  display: block;
   padding: 0;
 
   .disabled {
@@ -90,8 +92,4 @@
   border: 0;
   margin: 0 0 $nx-spacing-xl 0;
   padding: 0;
-
-  .nx-label {
-    margin-bottom: $nx-spacing-xs;
-  }
 }
