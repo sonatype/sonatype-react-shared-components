@@ -8,6 +8,9 @@ import React, { useEffect } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { mergeAll, values } from 'ramda';
+
+// polyfill Array.prototype.includes which is used in query-string
+import 'core-js/features/array/includes';
 import queryString from 'query-string';
 
 import { PageMapping } from './pageConfigTypes';
@@ -15,6 +18,7 @@ import pageConfig from './pageConfig';
 import PageHeader from './PageHeader';
 import GalleryNav from './GalleryNav';
 import Home from './pages/Home';
+import handleQueryParams from './handleQueryParams';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
@@ -23,17 +27,8 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
       pageHeader = pageName || 'Home',
       Content = pageName ? pageMappings[pageName] : Home;
 
-  // Different page layout modes can be triggered via query params.  These page layout modes are
-  // implemented via classes on the <html> element. This feature exists so that visual tests
-  // of all page layout modes can be done
   useEffect(function() {
-    const queryParams = queryString.parse(location.search),
-        htmlEl = document.documentElement;
-
-    /* eslint-disable @typescript-eslint/no-non-null-assertion */
-    htmlEl!.classList.toggle('nx-html--page-scrolling', queryParams.disablePageScrolling !== 'true');
-    htmlEl!.classList.toggle('gallery-hide-sidebar', queryParams.hideSidebar === 'true');
-    /* eslint-enable @typescript-eslint/no-non-null-assertion */
+    handleQueryParams(queryString.parse(location.search));
   }, [location.search]);
 
   if (Content) {
