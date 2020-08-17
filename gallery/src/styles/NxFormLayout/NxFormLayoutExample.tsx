@@ -107,8 +107,8 @@ export default function NxFormLayoutExample() {
         </label>
       </div>
       <footer className="nx-form-footer">
-        <NxButton>Cancel</NxButton>
-        <NxButton variant="primary">Submit</NxButton>
+        <NxButton type="button">Cancel</NxButton>
+        <NxButton variant="primary" type="button">Submit</NxButton>
       </footer>
     </form>
   );
