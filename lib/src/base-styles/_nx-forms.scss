@@ -10,7 +10,7 @@
 
 .nx-form {
   @include container-vertical;
-  margin: 0;
+  margin: 0 0 $nx-spacing-xl 0;
   position: relative; // to make a containing block for validation popovers
 }
 
