@@ -10,6 +10,7 @@ import { NxCheckbox } from '@sonatype/react-shared-components';
 import { NxRadio } from '@sonatype/react-shared-components';
 import { NxButton } from '@sonatype/react-shared-components';
 import { NxStatefulTextInput } from '@sonatype/react-shared-components';
+import { NxErrorAlert } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
@@ -17,11 +18,11 @@ export default function NxFormLayoutExample() {
   }
 
   const [isRed, setIsRed] = useState(false),
-  [isBlue, setIsBlue] = useState(false),
-  [isGreen, setIsGreen] = useState(false),
-  toggleRed = () => setIsRed(!isRed),
-  toggleBlue = () => setIsBlue(!isBlue),
-  toggleGreen = () => setIsGreen(!isGreen);
+      [isBlue, setIsBlue] = useState(false),
+      [isGreen, setIsGreen] = useState(false),
+      toggleRed = () => setIsRed(!isRed),
+      toggleBlue = () => setIsBlue(!isBlue),
+      toggleGreen = () => setIsGreen(!isGreen);
 
   const [color, setColor] = useState<string | null>(null);
 
@@ -31,55 +32,58 @@ export default function NxFormLayoutExample() {
   // }
 
   return (
-    <form className="nx-form">
-      <div className="nx-form-row">
-        <div className="nx-form-group">
-          <label className="nx-label">
-            <span className="nx-label__text">Label</span>
-            <NxStatefulTextInput validator={validator}/>
-          </label>
+    <form className="nx-tile">
+      <div className="nx-tile-content">
+        <div className="nx-form-row">
+          <div className="nx-form-group">
+            <label className="nx-label">
+              <span className="nx-label__text">Label</span>
+              <NxStatefulTextInput validator={validator}/>
+            </label>
+          </div>
+          <div className="nx-form-group">
+            <label className="nx-label nx-label--optional">
+              <span className="nx-label__text">Label</span>
+              <NxStatefulTextInput/>
+            </label>
+          </div>
         </div>
-        <div className="nx-form-group">
-          <label className="nx-label nx-label--optional">
-            <span className="nx-label__text">Label</span>
-            <NxStatefulTextInput/>
-          </label>
-        </div>
+        <fieldset className="nx-fieldset">
+          <legend className="nx-legend">
+            <span className="nx-legend__text">
+              Checkboxes
+            </span>
+          </legend>
+          <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
+          <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
+          <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
+        </fieldset>
+        <fieldset className="nx-fieldset">
+          <legend className="nx-legend"><span className="nx-legend__text">Radio buttons</span></legend>
+          <NxRadio name="color"
+                  value="red"
+                  onChange={setColor}
+                  isChecked={color === 'red'}
+                  radioId="color-red">
+            Red
+          </NxRadio>
+          <NxRadio name="color"
+                  value="purple"
+                  onChange={setColor}
+                  isChecked={color === 'purple'}
+                  radioId="color-purple">
+            Purple
+          </NxRadio>
+          <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
+            Green
+          </NxRadio>
+          <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue">
+            Blue
+          </NxRadio>
+        </fieldset>
       </div>
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend">
-          <span className="nx-legend__text">
-            Checkboxes
-          </span>
-        </legend>
-        <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
-        <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
-        <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
-      </fieldset>
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend"><span className="nx-legend__text">Radio buttons</span></legend>
-        <NxRadio name="color"
-                 value="red"
-                 onChange={setColor}
-                 isChecked={color === 'red'}
-                 radioId="color-red">
-          Red
-        </NxRadio>
-        <NxRadio name="color"
-                 value="purple"
-                 onChange={setColor}
-                 isChecked={color === 'purple'}
-                 radioId="color-purple">
-          Purple
-        </NxRadio>
-        <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
-          Green
-        </NxRadio>
-        <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue">
-          Blue
-        </NxRadio>
-      </fieldset>
-      <footer className="nx-form-footer">
+      <footer className="nx-tile-footer">
+        <NxErrorAlert>This is an example <strong>error</strong> message.</NxErrorAlert>
         <div className="nx-btn-bar">
           <NxButton type="button">Cancel</NxButton>
           <NxButton variant="primary" type="button">Submit</NxButton>
