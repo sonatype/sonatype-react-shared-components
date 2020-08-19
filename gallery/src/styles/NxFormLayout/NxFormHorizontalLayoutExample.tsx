@@ -32,57 +32,55 @@ export default function NxFormLayoutExample() {
   // }
 
   return (
-    <form className="nx-tile">
-      <div className="nx-tile-content">
-        <div className="nx-form-row">
-          <div className="nx-form-group">
-            <label className="nx-label">
-              <span className="nx-label__text">Label</span>
-              <NxStatefulTextInput validator={validator}/>
-            </label>
-          </div>
-          <div className="nx-form-group">
-            <label className="nx-label nx-label--optional">
-              <span className="nx-label__text">Label</span>
-              <NxStatefulTextInput/>
-            </label>
-          </div>
+    <form className="nx-form">
+      <div className="nx-form-row">
+        <div className="nx-form-group">
+          <label className="nx-label">
+            <span className="nx-label__text">Label</span>
+            <NxStatefulTextInput validator={validator}/>
+          </label>
         </div>
-        <fieldset className="nx-fieldset">
-          <legend className="nx-legend">
-            <span className="nx-legend__text">
-              Checkboxes
-            </span>
-          </legend>
-          <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
-          <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
-          <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
-        </fieldset>
-        <fieldset className="nx-fieldset">
-          <legend className="nx-legend"><span className="nx-legend__text">Radio buttons</span></legend>
-          <NxRadio name="color"
-                   value="red"
-                   onChange={setColor}
-                   isChecked={color === 'red'}
-                   radioId="color-red">
-            Red
-          </NxRadio>
-          <NxRadio name="color"
-                   value="purple"
-                   onChange={setColor}
-                   isChecked={color === 'purple'}
-                   radioId="color-purple">
-            Purple
-          </NxRadio>
-          <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
-            Green
-          </NxRadio>
-          <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue">
-            Blue
-          </NxRadio>
-        </fieldset>
+        <div className="nx-form-group">
+          <label className="nx-label nx-label--optional">
+            <span className="nx-label__text">Label</span>
+            <NxStatefulTextInput/>
+          </label>
+        </div>
       </div>
-      <footer className="nx-tile-footer">
+      <fieldset className="nx-fieldset">
+        <legend className="nx-legend">
+          <span className="nx-legend__text">
+            Checkboxes
+          </span>
+        </legend>
+        <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
+        <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
+        <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
+      </fieldset>
+      <fieldset className="nx-fieldset">
+        <legend className="nx-legend"><span className="nx-legend__text">Radio buttons</span></legend>
+        <NxRadio name="color"
+                  value="red"
+                  onChange={setColor}
+                  isChecked={color === 'red'}
+                  radioId="color-red">
+          Red
+        </NxRadio>
+        <NxRadio name="color"
+                  value="purple"
+                  onChange={setColor}
+                  isChecked={color === 'purple'}
+                  radioId="color-purple">
+          Purple
+        </NxRadio>
+        <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
+          Green
+        </NxRadio>
+        <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue">
+          Blue
+        </NxRadio>
+      </fieldset>
+      <footer className="nx-form-footer">
         <NxErrorAlert>This is an example <strong>error</strong> message.</NxErrorAlert>
         <div className="nx-btn-bar">
           <NxButton type="button">Cancel</NxButton>

@@ -116,7 +116,8 @@ const NxFormLayoutPage = () =>
                         liveExample={NxFormHorizontalLayoutExample}
                         codeExamples={NxFormHorizontalLayoutCode}>
       This example demonstrates a form layout with horizontally placed text input fields. Note that the chcekbox and
-      radio fieldsets remain vertically separated, they should not be placed side-by-side.
+      radio fieldsets remain vertically separated, they should not be placed side-by-side. This example also
+      demonstrates the use of an <code className="nx-code">NxErrorAlert</code> in the footer.
     </GalleryExampleTile>
   </>;
 
