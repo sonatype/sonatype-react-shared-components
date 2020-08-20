@@ -26,13 +26,8 @@ export default function NxFormLayoutExample() {
 
   const [color, setColor] = useState<string | null>(null);
 
-  function onSubmit(evt: React.FormEvent<HTMLInputElement>) {
-    evt.preventDefault();
-    alert('Submitted!');
-  }
-
   return (
-    <form className="nx-form" onSubmit={onSubmit}>
+    <form className="nx-form">
       <div className="nx-form-row">
         <div className="nx-form-group">
           <label className="nx-label">
