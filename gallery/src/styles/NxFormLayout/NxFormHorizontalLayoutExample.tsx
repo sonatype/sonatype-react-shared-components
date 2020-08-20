@@ -55,17 +55,17 @@ export default function NxFormLayoutExample() {
       <fieldset className="nx-fieldset">
         <legend className="nx-legend"><span className="nx-legend__text">Radio buttons</span></legend>
         <NxRadio name="color"
-                  value="red"
-                  onChange={setColor}
-                  isChecked={color === 'red'}
-                  radioId="color-red">
+                 value="red"
+                 onChange={setColor}
+                 isChecked={color === 'red'}
+                 radioId="color-red">
           Red
         </NxRadio>
         <NxRadio name="color"
-                  value="purple"
-                  onChange={setColor}
-                  isChecked={color === 'purple'}
-                  radioId="color-purple">
+                 value="purple"
+                 onChange={setColor}
+                 isChecked={color === 'purple'}
+                 radioId="color-purple">
           Purple
         </NxRadio>
         <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
