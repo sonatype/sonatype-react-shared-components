@@ -53,10 +53,15 @@ $nx-scrollable-default-height: 400px;
   @include vertically-scrollable($nx-scrollable-default-height);
 }
 
-.nx-scrollable__table .nx-cell--header {
-  position: sticky;
-  top: 0;
-  z-index: 1;
+.nx-scrollable__table {
+  // create a stacking context so the headers don't appear over other content outside the table
+  isolation: isolate;
+
+  .nx-cell--header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 }
 
 .nx-truncate-ellipsis {
