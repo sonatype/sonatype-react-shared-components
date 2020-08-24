@@ -8,7 +8,8 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxScrollableExampleCode = require('!!raw-loader!./NxScrollableExample.html').default;
+const nxScrollableExampleCode = require('!!raw-loader!./NxScrollableExample.html').default,
+    nxScrollableTableCode = require('!!raw-loader!./NxScrollableTableExample.html').default;
 
 const NxScrollablePage = () =>
   <>
@@ -31,6 +32,17 @@ const NxScrollablePage = () =>
                         codeExamples={nxScrollableExampleCode}
                         htmlExample={nxScrollableExampleCode}>
       In this instance the max-height has been left at its default value of 400px.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Table Example"
+                        htmlExample={nxScrollableTableCode}
+                        codeExamples={nxScrollableTableCode}>
+      A demonstration of a table that scrolls due to the presence of a height-constrained, scrolling wrapper element.
+      The headers stay stationary as the rows scroll. All tables that scroll "by themselves" (as opposed to being
+      part of some broader section of the page that scrolls) should be implemented in this manner in order to get
+      the sticky header behavior. For scrollable containers which, on the other hand, contain more content in addition
+      to a scrolling table, sticky headers should not be used and therefore
+      the <code className="nx-code">nx-scrollable__table</code> class should not be used on the table.
     </GalleryExampleTile>
   </>;
 

@@ -22,10 +22,6 @@ const NxTableStylePage = () =>
         <li className="nx-list__item">Empty tables</li>
         <li className="nx-list__item">A table with an error.</li>
       </ul>
-      <p className="nx-p">
-        Components for column sorting, column filtering, and tables with fixed headers and
-        scrolling content sections are pending.
-      </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row nx-table-row--header">
@@ -105,6 +101,14 @@ const NxTableStylePage = () =>
           </tr>
         </tbody>
       </table>
+
+      <p className="nx-p">
+        When a table which scrolls in of itself is desired, wrap the table in
+        a <code className="nx-code">.nx-scrollable</code> wrapper and give it a class
+        of <code className="nx-code">.nx-scrollable__table</code> as documented on
+        the <a href="#/pages/nx-scrollable">nx-scrollable</a> page.
+      </p>
+
       <NxInfoAlert>
         Note that some of these examples are shown in react as they includes specific icons. When working in
         React, <code className="nx-code">NxFontAwesomeIcon</code> should be used as shown to get these icons.
