@@ -29,12 +29,14 @@ const NxScrollablePage = () =>
       </p>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="General Example"
+                        id="nx-scrollable-simple-example"
                         codeExamples={nxScrollableExampleCode}
                         htmlExample={nxScrollableExampleCode}>
       In this instance the max-height has been left at its default value of 400px.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Table Example"
+                        id="nx-scrollable-table-example"
                         htmlExample={nxScrollableTableCode}
                         codeExamples={nxScrollableTableCode}>
       A demonstration of a table that scrolls due to the presence of a height-constrained, scrolling wrapper element.
