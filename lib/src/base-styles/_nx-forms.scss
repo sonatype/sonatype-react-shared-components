@@ -32,7 +32,7 @@
 
 .nx-form-row {
   @include container-horizontal;
-  margin-bottom: 6px;
+  margin-bottom: $nx-spacing-xs;
 
   .nx-form-group {
     display: inline-block;
