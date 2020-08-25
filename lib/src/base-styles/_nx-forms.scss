@@ -14,7 +14,7 @@
 }
 
 .nx-form-footer {
-  @include container-horizontal;
+  @include container-vertical;
 
   border-top: 1px solid #e9e9e9;
   padding: $nx-spacing-l 0;
