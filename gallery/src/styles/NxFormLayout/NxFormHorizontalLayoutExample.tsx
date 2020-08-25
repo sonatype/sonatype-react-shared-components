@@ -10,7 +10,7 @@ import { NxCheckbox } from '@sonatype/react-shared-components';
 import { NxRadio } from '@sonatype/react-shared-components';
 import { NxButton } from '@sonatype/react-shared-components';
 import { NxStatefulTextInput } from '@sonatype/react-shared-components';
-import { NxErrorAlert } from '@sonatype/react-shared-components';
+import { NxInfoAlert } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
@@ -79,7 +79,7 @@ export default function NxFormLayoutExample() {
         </NxRadio>
       </fieldset>
       <footer className="nx-form-footer">
-        <NxErrorAlert>This is an example <strong>error</strong> message.</NxErrorAlert>
+        <NxInfoAlert className="nx-alert--modifier">This is a sample alert message</NxInfoAlert>
         <div className="nx-btn-bar">
           <NxButton type="button">Cancel</NxButton>
           <NxButton variant="primary" type="submit">Submit</NxButton>
