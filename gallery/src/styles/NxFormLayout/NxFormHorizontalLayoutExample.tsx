@@ -79,7 +79,7 @@ export default function NxFormLayoutExample() {
         </NxRadio>
       </fieldset>
       <footer className="nx-form-footer">
-        <NxInfoAlert className="nx-alert--modifier">This is a sample alert message</NxInfoAlert>
+        <NxInfoAlert>This is a sample alert message</NxInfoAlert>
         <div className="nx-btn-bar">
           <NxButton type="button">Cancel</NxButton>
           <NxButton variant="primary" type="submit">Submit</NxButton>
