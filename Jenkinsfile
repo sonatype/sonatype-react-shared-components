@@ -7,7 +7,7 @@
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
 def seleniumDockerImage = 'selenium/standalone-chrome'
-def seleniumDockerVersion = '84.0'
+def seleniumDockerVersion = '3.141.59'
 
 dockerizedBuildPipeline(
   // expose gallery port on host so selenium container can hit it
