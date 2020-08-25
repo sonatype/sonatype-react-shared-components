@@ -50,8 +50,8 @@ export default function NxFormLayoutExample() {
         <label className="nx-label nx-label--optional">
           <span className="nx-label__text">Long field</span>
           <span className="nx-sub-label">
-            <NxFontAwesomeIcon icon={faCalendar}/> This is a sub-label. The field element below is wider than the
-            default.
+            <NxFontAwesomeIcon icon={faCalendar}/>
+            <span>This is a sub-label. The field element below is wider than the default.</span>
           </span>
           <NxStatefulTextInput className="nx-text-input--long"/>
         </label>
