@@ -57,7 +57,10 @@ export default function NxFormLayoutExample() {
         <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
       </fieldset>
       <fieldset className="nx-fieldset">
-        <legend className="nx-legend"><span className="nx-legend__text">Radio buttons</span></legend>
+        <legend className="nx-legend nx-legend--optional">
+          <span className="nx-legend__text">Radio buttons</span>
+          <span className="nx-sub-label">Sub-label</span>
+        </legend>
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
