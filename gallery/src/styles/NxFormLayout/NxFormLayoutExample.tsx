@@ -10,6 +10,8 @@ import { NxCheckbox } from '@sonatype/react-shared-components';
 import { NxRadio } from '@sonatype/react-shared-components';
 import { NxStatefulTextInput } from '@sonatype/react-shared-components';
 import { NxButton } from '@sonatype/react-shared-components';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
@@ -42,7 +44,10 @@ export default function NxFormLayoutExample() {
       <div className="nx-form-group">
         <label className="nx-label nx-label--optional">
           <span className="nx-label__text">Long field</span>
-          <span className="nx-sub-label">This is a sub-label. The field element below is wider than the default.</span>
+          <span className="nx-sub-label">
+            <NxFontAwesomeIcon icon={faCalendar}/> This is a sub-label. The field element below is wider than the
+            default.
+          </span>
           <NxStatefulTextInput className="nx-text-input--long"/>
         </label>
       </div>
