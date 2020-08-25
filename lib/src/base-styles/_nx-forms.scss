@@ -74,7 +74,6 @@
 
 .nx-sub-label {
   @include container-horizontal;
-  @include regular();
 
   color: $nx-text-color-light;
   display: block;
