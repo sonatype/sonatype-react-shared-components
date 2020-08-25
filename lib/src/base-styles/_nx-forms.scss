@@ -51,9 +51,6 @@
 // labels
 
 .nx-label, .nx-legend {
-  @include bold();
-
-  cursor: default;
   display: block;
   padding: 0;
 
@@ -63,6 +60,9 @@
 }
 
 .nx-label__text, .nx-legend__text {
+  @include bold();
+
+  cursor: default;
   display: block;
   margin-bottom: $nx-spacing-xs;
 }
