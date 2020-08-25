@@ -34,7 +34,6 @@
 }
 
 .nx-text-input__invalid-message {
-  @include regular();
   color: #cd0028;
   font-size: $nx-font-size-xs;
   line-height: 16px;
