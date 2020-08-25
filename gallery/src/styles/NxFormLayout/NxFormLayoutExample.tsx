@@ -61,21 +61,19 @@ export default function NxFormLayoutExample() {
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
-                 isChecked={color === 'red'}
-                 radioId="color-red">
+                 isChecked={color === 'red'}>
           Red
         </NxRadio>
         <NxRadio name="color"
                  value="purple"
                  onChange={setColor}
-                 isChecked={color === 'purple'}
-                 radioId="color-purple">
+                 isChecked={color === 'purple'}>
           Purple
         </NxRadio>
-        <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
+        <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'}>
           Green
         </NxRadio>
-        <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue">
+        <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'}>
           Blue
         </NxRadio>
       </fieldset>
