@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 
 import { NxCheckbox } from '@sonatype/react-shared-components';
 import { NxRadio } from '@sonatype/react-shared-components';
@@ -27,8 +27,13 @@ export default function NxFormLayoutExample() {
 
   const [color, setColor] = useState<string | null>(null);
 
+  function onSubmit(evt: FormEvent) {
+    evt.preventDefault();
+    alert('Submitted!');
+  }
+
   return (
-    <form className="nx-form">
+    <form className="nx-form" onSubmit={onSubmit}>
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">Label</span>
@@ -94,7 +99,7 @@ export default function NxFormLayoutExample() {
       <footer className="nx-form-footer">
         <div className="nx-btn-bar">
           <NxButton type="button">Cancel</NxButton>
-          <NxButton variant="primary" type="button">Submit</NxButton>
+          <NxButton variant="primary" type="submit">Submit</NxButton>
         </div>
       </footer>
     </form>
