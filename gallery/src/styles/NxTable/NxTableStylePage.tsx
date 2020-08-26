@@ -104,7 +104,7 @@ const NxTableStylePage = () =>
 
       <p className="nx-p">
         When a table which scrolls in of itself is desired, wrap the table in
-        a <code className="nx-code">.nx-scrollable</code> wrapper and give it a class
+        an <code className="nx-code">.nx-scrollable</code> wrapper and give it a class
         of <code className="nx-code">.nx-scrollable__table</code> as documented on
         the <a href="#/pages/nx-scrollable">nx-scrollable</a> page.
       </p>
