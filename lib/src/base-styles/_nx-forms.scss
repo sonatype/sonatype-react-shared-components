@@ -74,16 +74,12 @@
 
 .nx-sub-label {
   @include container-horizontal;
+  @include semi-bold();
 
   color: $nx-text-color-light;
+  font-size: $nx-font-size-s;
   display: block;
-  margin-bottom: $nx-spacing-xs;
-}
-
-.nx-legend {
-  .nx-sub-label {
-    margin-bottom: $nx-spacing-sm;
-  }
+  margin-bottom: $nx-spacing-sm;
 }
 
 // Defining labels for groups of radio buttons or checkboxes is tricky - each individual radio has a <label>
