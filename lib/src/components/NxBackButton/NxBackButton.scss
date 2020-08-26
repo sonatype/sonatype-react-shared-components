@@ -6,24 +6,15 @@
  */
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
-@import '../../scss-shared/nx-text-helpers';
 
 .nx-back-button {
-  a {
+  margin-top: $nx-spacing-l;
+  margin-bottom: $nx-spacing-l;
+
+  .nx-text-link {
     @include container-horizontal;
-    @include semi-bold();
 
-    color: $nx-link-color;
-    font-size: 14px;
-    line-height: 32px;
+    font-size: $nx-font-size-s;
     text-decoration: none;
-
-    &:hover {
-      color: $nx-link-color-hover;
-    }
-
-    > .fa-chevron-left {
-      margin-right: 6px;
-    }
   }
 }
