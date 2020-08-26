@@ -15,11 +15,15 @@ $nx-scrollable-default-height: 400px;
   #Basic links
 */
 .nx-text-link {
-  color: $nx-link-color;
+  color: #045dd1;
   cursor: pointer;
 
   &:hover {
-    color: $nx-link-color-hover;
+    color: #034396;
+  }
+
+  &:active {
+    color: #2783fb;
   }
 }
 
