@@ -80,6 +80,12 @@
   margin-bottom: $nx-spacing-xs;
 }
 
+.nx-legend {
+  .nx-sub-label {
+    margin-bottom: $nx-spacing-sm;
+  }
+}
+
 // Defining labels for groups of radio buttons or checkboxes is tricky - each individual radio has a <label>
 // element, so it is inappropriate to use a <label> for the group as a whole.  Instead, a <fieldset> and <legend> can
 // be used, but you'll still typically want the <legend> styled the way a <label> on a text field would be using
