@@ -20,9 +20,7 @@
   padding: $nx-spacing-l 0;
 
   .nx-alert {
-    + .nx-btn-bar {
-      margin-top: 24px;
-    }
+    margin-bottom: $nx-spacing-l;
   }
 }
 
