@@ -73,6 +73,7 @@ const NxLoadErrorPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Standard Example with Retry Button"
+                        id="nx-load-error-retry-example"
                         codeExamples={retrySourceCode}
                         liveExample={NxLoadErrorRetryExample}>
       In this example, the error is cleared on retry. Note that
@@ -106,6 +107,7 @@ const NxLoadErrorPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Retry Button with Long Text"
+                        id="nx-load-error-long-retry-example"
                         codeExamples={retryLongMessageSourceCode}
                         liveExample={NxLoadErrorRetryLongMessageExample}>
       This example demonstrates that when the text is long, the Retry button falls
