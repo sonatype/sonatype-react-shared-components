@@ -160,9 +160,7 @@ $nx-tile-background-color: $nx-white;
   padding: $nx-spacing-l 0;
 
   .nx-alert {
-    + .nx-btn-bar {
-      margin-top: $nx-spacing-l;
-    }
+    margin-bottom: $nx-spacing-l;
   }
 }
 
