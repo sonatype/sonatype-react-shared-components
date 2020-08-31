@@ -25,6 +25,7 @@
     // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
     // no effect here so we use relative positioning instead
     bottom: -0.125em;
+    flex-shrink: 0;
     height: 1em;
     margin-right: $nx-spacing-md;
     position: relative;

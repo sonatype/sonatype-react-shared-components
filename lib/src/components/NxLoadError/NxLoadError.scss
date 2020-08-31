@@ -3,16 +3,15 @@
 
 .nx-alert--load-error {
   .nx-alert__content {
-    @include container-vertical;
     @include container-horizontal;
     align-items: first baseline;
     display: flex;
     flex-wrap: wrap;
+    row-gap: $nx-spacing-l;
   }
 }
 
 .nx-load-error__message {
-  margin-bottom: $nx-spacing-sm;
   margin-right: $nx-spacing-sm;
 
   word-break: break-word;

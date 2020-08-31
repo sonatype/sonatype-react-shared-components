@@ -10,88 +10,74 @@
 
 .nx-form {
   @include container-vertical;
-  border-top: $nx-border-dark;
-  margin: 0;
-  padding-top: 20px;
-  position: relative; // to make a containing block for validation popovers
+  margin: $nx-spacing-xl 0;
 }
 
-.nx-form--simple {
-  border-top: none;
-  padding: 0;
-}
+.nx-form-footer {
+  @include container-vertical;
 
-// for a form that is the entirety of a modal
-.nx-form--modal-form {
-  padding-top: 0;
+  border-top: 1px solid #e9e9e9;
+  padding: $nx-spacing-l 0;
+
+  .nx-alert {
+    margin-bottom: $nx-spacing-l;
+  }
 }
 
 .nx-form-group {
-  margin-bottom: 20px;
+  margin-bottom: $nx-spacing-xs;
 }
 
 .nx-form-row {
   @include container-horizontal;
-  margin-bottom: 24px;
+  margin-bottom: $nx-spacing-xs;
 
-  .nx-form-group, .nx-fieldset {
+  .nx-form-group {
     display: inline-block;
-    margin-right: 24px;
-    margin-bottom: 0;
-    vertical-align: bottom; // fixes issue where certain form types display lower
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  .nx-label {
+    margin-right: $nx-spacing-l;
     margin-bottom: 0;
   }
-}
-
-.nx-btn-bar--forms {
-  border-top: $nx-border-dark;
-  padding-top: 8px;
 }
 
 // labels
 
 .nx-label, .nx-legend {
-  @include semi-bold();
-
-  color: $nx-text-color;
   display: block;
-  font-size: $nx-font-size;
-  margin-bottom: $nx-spacing-xs;
-
-  .disabled {
-    color: $nx-grey-4;
-  }
+  padding: 0;
 
   .nx-text-input, .nx-textarea {
     display: block;
-    margin-top: $nx-spacing-xs;
   }
 }
 
-.nx-label--optional {
-  .nx-label__text::after {
+.nx-label__text, .nx-legend__text {
+  @include bold();
+
+  cursor: default;
+  display: block;
+  margin-bottom: $nx-spacing-xs;
+}
+
+.nx-label--optional, .nx-legend--optional {
+  .nx-label__text::after, .nx-legend__text::after {
     @include regular();
 
     color: $nx-text-color-light;
-    content: " - optional";
+    content: "Optional";
+    font-size: $nx-font-size-xs;
     font-style: italic;
+    margin-left: $nx-spacing-xxs;
   }
 }
 
 .nx-sub-label {
   @include container-horizontal;
-  @include regular();
+  @include semi-bold();
 
   color: $nx-text-color;
+  font-size: $nx-font-size-s;
   display: block;
-  font-size: 14px;
+  margin-bottom: $nx-spacing-md;
 }
 
 // Defining labels for groups of radio buttons or checkboxes is tricky - each individual radio has a <label>
@@ -105,4 +91,3 @@
   margin: 0 0 $nx-spacing-xl 0;
   padding: 0;
 }
-

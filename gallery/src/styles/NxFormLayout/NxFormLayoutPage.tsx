@@ -6,14 +6,13 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+
 import NxFormLayoutExample from './NxFormLayoutExample';
 import NxFormHorizontalLayoutExample from './NxFormHorizontalLayoutExample';
 
-const NxFormLayoutCode = require('!!raw-loader!./NxFormLayoutExample').default,
-    NxFormHorizontalLayoutCode = require('!!raw-loader!./NxFormHorizontalLayoutExample').default;
+const NxFormLayoutCode = require('!!raw-loader!./NxFormLayoutExample').default;
+const NxFormHorizontalLayoutCode = require('!!raw-loader!./NxFormHorizontalLayoutExample').default;
 
 const NxFormLayoutPage = () =>
   <>
@@ -107,15 +106,19 @@ const NxFormLayoutPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="NX Form Layout Example">
-      <NxFormLayoutExample />
-      <CodeExample content={NxFormLayoutCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={NxFormLayoutCode}
+                        liveExample={NxFormLayoutExample}>
+      This example shows a standard vertical form layout with validation on some fields.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NX Form Horizontal Layout Example">
-      <NxFormHorizontalLayoutExample />
-      <CodeExample content={NxFormHorizontalLayoutCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Horizontal form layout"
+                        liveExample={NxFormHorizontalLayoutExample}
+                        codeExamples={NxFormHorizontalLayoutCode}>
+      This example demonstrates a form layout with horizontally placed text input fields. Note that the checkbox and
+      radio fieldsets remain vertically separated, they should not be placed side-by-side. This example also
+      demonstrates the use of an <code className="nx-code">NxErrorAlert</code> in the footer.
+    </GalleryExampleTile>
   </>;
 
 export default NxFormLayoutPage;
