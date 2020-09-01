@@ -4,53 +4,87 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { FormEvent, useState } from 'react';
 
 import { NxCheckbox } from '@sonatype/react-shared-components';
 import { NxRadio } from '@sonatype/react-shared-components';
-
-import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
-import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { NxButton } from '@sonatype/react-shared-components';
+import { NxStatefulTextInput } from '@sonatype/react-shared-components';
+import { NxInfoAlert } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
+  function validator(val: string) {
+    return val.length ? null : 'Must be non-empty';
+  }
+
+  const [isRed, setIsRed] = useState(false),
+      [isBlue, setIsBlue] = useState(false),
+      [isGreen, setIsGreen] = useState(false),
+      toggleRed = () => setIsRed(!isRed),
+      toggleBlue = () => setIsBlue(!isBlue),
+      toggleGreen = () => setIsGreen(!isGreen);
+
+  const [color, setColor] = useState<string | null>(null);
+
+  function onSubmit(evt: FormEvent) {
+    evt.preventDefault();
+    alert('Submitted!');
+  }
+
   return (
-    <form className="nx-form">
+    <form className="nx-form" onSubmit={onSubmit}>
       <div className="nx-form-row">
         <div className="nx-form-group">
           <label className="nx-label">
-            <span className="nx-label__text">Horizontal layout</span>
-            <span className="nx-sub-label">
-              <NxFontAwesomeIcon icon={faCalendar}/>
-              <span>Sub-label with icon.</span>
-            </span>
-            <input type="text" className="nx-text-input"/>
+            <span className="nx-label__text">Label</span>
+            <NxStatefulTextInput validator={validator}/>
           </label>
         </div>
         <div className="nx-form-group">
-          <label className="nx-label">
-            <span className="nx-label__text">Second column</span>
-            <span className="nx-sub-label">This is a sub-label.</span>
-            <input type="text" className="nx-text-input"/>
+          <label className="nx-label nx-label--optional">
+            <span className="nx-label__text">Label</span>
+            <NxStatefulTextInput/>
           </label>
         </div>
-        <div className="nx-form-group">
-          <button className="nx-btn" type="button">Button</button>
+      </div>
+      <fieldset className="nx-fieldset">
+        <legend className="nx-legend">
+          <span className="nx-legend__text">
+            Checkboxes
+          </span>
+        </legend>
+        <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
+        <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
+        <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
+      </fieldset>
+      <fieldset className="nx-fieldset">
+        <legend className="nx-legend"><span className="nx-legend__text">Radio buttons</span></legend>
+        <NxRadio name="color"
+                 value="red"
+                 onChange={setColor}
+                 isChecked={color === 'red'}>
+          Red
+        </NxRadio>
+        <NxRadio name="color"
+                 value="purple"
+                 onChange={setColor}
+                 isChecked={color === 'purple'}>
+          Purple
+        </NxRadio>
+        <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'}>
+          Green
+        </NxRadio>
+        <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'}>
+          Blue
+        </NxRadio>
+      </fieldset>
+      <footer className="nx-form-footer">
+        <NxInfoAlert>This is a sample alert message</NxInfoAlert>
+        <div className="nx-btn-bar">
+          <NxButton type="button">Cancel</NxButton>
+          <NxButton variant="primary" type="submit">Submit</NxButton>
         </div>
-      </div>
-      <div className="nx-form-row">
-        <fieldset className="nx-fieldset">
-          <legend className="nx-label nx-label--optional">Checkboxes</legend>
-          <NxCheckbox isChecked={false}>Checkbox 1</NxCheckbox>
-          <NxCheckbox isChecked={true}>Checkbox 2</NxCheckbox>
-          <NxCheckbox isChecked={false}>Checkbox 3</NxCheckbox>
-        </fieldset>
-        <fieldset className="nx-fieldset">
-          <legend className="nx-label">Radio buttons</legend>
-          <NxRadio name="demo1" value="demo1" isChecked={true}>Radio Button 1</NxRadio>
-          <NxRadio name="demo2" value="demo2" isChecked={false}>Radio Button 2</NxRadio>
-          <NxRadio name="demo3" value="demo3" isChecked={true}>Radio Button 3</NxRadio>
-        </fieldset>
-      </div>
+      </footer>
     </form>
   );
 }
