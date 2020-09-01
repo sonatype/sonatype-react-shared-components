@@ -7,7 +7,7 @@
 
 .nx-list {
   @include container-vertical;
-  margin: $nx-component-spacing 0;
+  margin: $nx-flow-content-spacing 0;
   padding: 0;
 
   &, > ul, > ol {
