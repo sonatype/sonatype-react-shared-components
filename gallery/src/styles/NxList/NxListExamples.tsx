@@ -7,6 +7,8 @@
 import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
+import NxListErrorExample from './NxListErrorStateExample';
+
 const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').default,
     NxListClickableCode = require('!!raw-loader!./NxListClickableExample.html').default,
     NxListMultiLineCode = require('!!raw-loader!./NxListMultiLineExample.html').default,
@@ -14,7 +16,7 @@ const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').def
     NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.html').default,
     NxListDefinitionListCode = require('!!raw-loader!./NxListDefinitionListExample.html').default,
     NxListEmptyCode = require('!!raw-loader!./NxListEmptyExample.html').default,
-    NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.html').default;
+    NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.tsx').default;
 
 const NxListsExamples = () =>
   <>
@@ -75,7 +77,7 @@ const NxListsExamples = () =>
 
     <GalleryExampleTile title="NX List with Error Message Example"
                         id="nx-list-error-example"
-                        htmlExample={NxListErrorStateCode}
+                        liveExample={NxListErrorExample}
                         codeExamples={NxListErrorStateCode}>
       A demonstration of the expected styling and content for an <code className="nx-code">nx-list</code> whose content
       failed to load.

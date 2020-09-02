@@ -63,6 +63,10 @@
   text-align: center;
 }
 
+.nx-list__item--error {
+  padding-top: $nx-spacing-xl;
+}
+
 .nx-list-item.disabled {
   color: $nx-text-color-disabled;
   cursor: default;
@@ -113,7 +117,8 @@
       pointer-events: none;
     }
 
-    &:not(.nx-list__item--empty):not(.disabled):not([disabled]) {
+    &:not(.nx-list__item--empty):not(.disabled):not([disabled]),
+    &:not(.nx-list__item--error) {
       &:hover, &:focus {
         background-color: #f1f3fa;
         cursor: pointer;
@@ -133,21 +138,6 @@
       @include regular();
 
       color: $nx-text-color-light;
-    }
-
-    &.nx-error {
-      color: $nx-text-color-error;
-
-      &:not(.disabled):not([disabled]) {
-        border: $nx-border-error;
-
-        &:hover, &:focus, &:active {
-          background-color: $nx-fail-color-bg;
-          border: $nx-border-error;
-          color: $nx-text-color-error;
-          cursor: default;
-        }
-      }
     }
 
     .nx-list__subtext {
