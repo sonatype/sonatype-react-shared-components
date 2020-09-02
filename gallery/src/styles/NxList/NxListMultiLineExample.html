@@ -8,24 +8,34 @@
 -->
 <div class="nx-list">
   <h3 class="nx-list__title">
-    List title
+    Examples of wrapping and truncation
   </h3>
   <ul class="nx-list">
     <li class="nx-list__item">
-      Item 1
-      <p class="nx-list__subtext">This is a second line.</p>
+      <span class="nx-list__text">
+        Text wrapping - standard list item text that is very long and will wrap onto the next line, standard list item text
+        that is very long and will wrap onto the next line
+      </span>
+    </li>
+    <li class="nx-list__item nx-truncate-ellipsis">
+      <span class="nx-list__text">
+        Text truncation - Add <code class="nx-code">.nx-truncate-ellipsis</code> to
+        <code class="nx-code">.nx-list__item</code> to cause the text to truncate at the right edge of the list item.
+      </span>
     </li>
     <li class="nx-list__item">
-      Item 2
-      <p class="nx-list__subtext">
-        This is a second line. It includes text that might relate to the top line or might not.
+      <span class="nx-list__text">Subtext wrapping</span>
+      <p class="nx-list__item__subtext">
+        A long line of subtext that wraps. Add <code class="nx-code">.nx-truncate-ellipsis</code>
+        to the <code class="nx-code">&lt;p&gt;</code> tag if you don't want the text to wrap. More text to trigger the
+        wrapping
       </p>
     </li>
     <li class="nx-list__item">
-      Item 3
-      <p class="nx-list__subtext">
-        A long line of subtext that wraps. Add <code class="nx-code">.nx-truncate-ellipsis</code>
-        to the <code class="nx-code">&lt;p&gt;</code> tag if you don't want the text to wrap.
+      <span class="nx-list__text">Subtext truncation</span>
+      <p class="nx-list__item__subtext nx-truncate-ellipsis">
+        Add <code class="nx-code">.nx-truncate-ellipsis</code> to <code class="nx-code">.nx-list__item__subtext</code> to
+        cause the text to truncate at the standard maximum paragraph width.
       </p>
     </li>
   </ul>

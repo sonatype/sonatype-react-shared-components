@@ -27,30 +27,45 @@
 }
 
 .nx-list__item {
-  @include semi-bold();
-  @include nx-truncate-ellipsis();
   @include container-vertical;
 
   border-top: 1px solid #e9e9e9;
   box-sizing: border-box;
   color: $nx-text-color-light;
   margin: 0;
-  padding: $nx-spacing-md 0;
+  padding: $nx-spacing-md;
 
   // we use first of type because we only want to modify the first list item,
   // not alerts, errors, or empty states
   &:first-of-type {
     border-top: 1px solid #d1d6f0;
   }
+}
 
-  &.nx-error {
-    border: $nx-border-error;
-    color: $nx-text-color-error;
-  }
+.nx-list__text {
+  @include semi-bold();
+}
 
-  > .fa, > .svg-inline--fa {
-    margin-right: $nx-spacing-md;
+.nx-list__subtext {
+  @include regular();
+
+  display: block;
+  margin: 0;
+  white-space: normal;
+
+  &.nx-truncate-ellipsis {
+    white-space: nowrap;
+    width: $nx-paragraph-width-maximum;
   }
+}
+
+.nx-list-item--empty {
+  text-align: center;
+}
+
+.nx-list-item.disabled {
+  color: $nx-text-color-disabled;
+  cursor: default;
 }
 
 .nx-list--bulleted {
@@ -78,45 +93,6 @@
   }
 }
 
-.nx-list__item--empty {
-  @include regular();
-
-  border-top: $nx-border; // assume it's always the first item
-  border-bottom: $nx-border-row;
-  color: $nx-text-color-light;
-  text-align: center;
-}
-
-.nx-list__item--disabled {
-  color: $nx-text-color-disabled;
-  cursor: default;
-}
-
-.nx-list__item--expanding {
-  height: auto;
-}
-
-.nx-list__item--with-modifier-icon {
-  line-height: 30px;
-}
-
-.nx-list__actions {
-  float: right;
-}
-
-.nx-list__subtext {
-  @include regular();
-
-  display: block;
-  margin: 0;
-  white-space: normal;
-  width: $nx-paragraph-width-maximum;
-
-  &.nx-truncate-ellipsis {
-    white-space: nowrap;
-  }
-}
-
 .nx-list--unstyled {
   list-style-type: none;
   margin: 0;
@@ -132,48 +108,37 @@
   }
 
   .nx-list__item {
-    @include semi-bold();
-
-    color: $nx-text-color-light;
-
     &.selected {
-      background-color: $nx-grey-3;
-      color: $nx-text-color;
+      background-color: #d3e6ff;
       pointer-events: none;
     }
 
-    &:not(.nx-list__item--empty):not(.nx-disabled):not([disabled]) {
+    &:not(.nx-list__item--empty):not(.disabled):not([disabled]) {
       &:hover, &:focus {
-        background-color: $nx-color-blue-96;
-        border-top: $nx-border-row-hover;
-        border-bottom: $nx-border-row-hover;
-        color: $nx-text-color;
+        background-color: #f1f3fa;
         cursor: pointer;
         outline-style: none; // removes :focus outline
 
         .fa-chevron-right {
-          color: $nx-color-blue-41;
+          color: #045dd1;
         }
       }
 
       &:active {
-        background-color: $nx-grey-1;
-        border-top: $nx-border-row-hover;
-        border-bottom: $nx-border-row-hover;
+        background-color: #d3e6ff;
       }
     }
 
     &.nx-list__item--empty {
       @include regular();
 
-      border-top: $nx-border; // assume it's always the first item
       color: $nx-text-color-light;
     }
 
     &.nx-error {
       color: $nx-text-color-error;
 
-      &:not(.nx-disabled):not([disabled]) {
+      &:not(.disabled):not([disabled]) {
         border: $nx-border-error;
 
         &:hover, &:focus, &:active {
