@@ -11,8 +11,8 @@ describe('nx-threat-number', function() {
     await browser.url('#/pages/nx-threat-number');
   });
 
-  const listSelector = '#nx-threat-number-list-example .gallery-raw-html-example',
-      tableSelector = '#nx-threat-number-table-example .gallery-raw-html-example';
+  const listSelector = '#nx-threat-number-list-example .gallery-example-live',
+      tableSelector = '#nx-threat-number-table-example .gallery-example-live';
 
 
   it('looks right in a list', simpleTest(listSelector));

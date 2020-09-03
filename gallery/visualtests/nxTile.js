@@ -11,11 +11,11 @@ describe('nx-tile', function() {
     await browser.url('#/pages/nx-tile');
   });
 
-  const simpleTileSelector = '#nx-tile-simple-example .gallery-raw-html-example',
-      actionsTileSelector = '#nx-tile-actions-example .gallery-raw-html-example',
-      subtitleTileSelector = '#nx-tile-subtitle-example .gallery-raw-html-example',
-      horizontalRuleTileSelector = '#nx-tile-horizontal-rule-example .gallery-raw-html-example',
-      subsectionsTileSelector = '#nx-tile-subsections-example .gallery-raw-html-example';
+  const simpleTileSelector = '#nx-tile-simple-example .gallery-example-live',
+      actionsTileSelector = '#nx-tile-actions-example .gallery-example-live',
+      subtitleTileSelector = '#nx-tile-subtitle-example .gallery-example-live',
+      horizontalRuleTileSelector = '#nx-tile-horizontal-rule-example .gallery-example-live',
+      subsectionsTileSelector = '#nx-tile-subsections-example .gallery-example-live';
 
   describe('Simple nx-tile', function() {
     it('looks right', simpleTest(simpleTileSelector));
