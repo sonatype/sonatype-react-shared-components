@@ -11,7 +11,7 @@ describe('nx-grid', function() {
     await browser.url('#/pages/nx-grid');
   });
 
-  const selector = '.gallery-raw-html-example';
+  const selector = '.gallery-example-live';
 
   it('looks right', simpleTestLongElement(selector));
 });

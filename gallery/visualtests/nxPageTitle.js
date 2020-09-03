@@ -11,7 +11,7 @@ describe('nx-page-title', function() {
     await browser.url('#/pages/nx-page-title');
   });
 
-  const selector = '.gallery-raw-html-example';
+  const selector = '.gallery-example-live';
 
   it('looks right', simpleTest(selector));
 });

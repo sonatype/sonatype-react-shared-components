@@ -11,7 +11,7 @@ describe('nx-scrollable', function() {
     await browser.url('#/pages/nx-scrollable');
   });
 
-  const selector = '.gallery-raw-html-example';
+  const selector = '.gallery-example-live';
 
   it('looks right', simpleTest(selector));
 });
