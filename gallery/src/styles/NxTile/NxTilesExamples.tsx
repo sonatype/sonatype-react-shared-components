@@ -16,7 +16,6 @@ const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample.html').defa
     NxTileWithHorizontalRuleCode = require('!!raw-loader!./NxTileWithHorizontalRuleExample.html').default,
     NxTileFormCode = require('!!raw-loader!./NxTileFormExample.tsx').default;
 
-
 const NxTilesExamples = () =>
   <>
     <GalleryExampleTile title="NX Simple Tile Example"
