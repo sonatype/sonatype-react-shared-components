@@ -84,14 +84,13 @@
   $checker-dimensions: $checker-size $checker-size;
   $checker-layer-1-position: top left;
   $checker-layer-2-position: #{$checker-size / 2} #{$checker-size / 2};
+  $checker-gradient: linear-gradient(to top right, $checker-color 25%, transparent 25% 75%, $checker-color 75%);
 
   padding: $nx-spacing-l;
 
   // create a checkerbox pattern for the background so that the edges and background of the example are clear
-  background: repeat $checker-layer-2-position/$checker-dimensions
-                  linear-gradient(to top right, $checker-color 25%, transparent 25% 75%, $checker-color 75%),
-              repeat $checker-layer-1-position/$checker-dimensions
-                  linear-gradient(to top right, $checker-color 25%, transparent 25% 75%, $checker-color 75%),
+  background: repeat $checker-layer-2-position/$checker-dimensions $checker-gradient,
+              repeat $checker-layer-1-position/$checker-dimensions $checker-gradient,
               $checker-bg-color;
 }
 
