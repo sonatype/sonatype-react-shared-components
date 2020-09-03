@@ -88,9 +88,9 @@
 
   // create a checkerbox pattern for the background so that the edges and background of the example are clear
   background: repeat $checker-layer-2-positioning
-                  linear-gradient(45deg, $checker-color 25%, transparent 25% 75%, $checker-color 75%),
+                  linear-gradient(to top right, $checker-color 25%, transparent 25% 75%, $checker-color 75%),
               repeat $checker-layer-1-positioning
-                  linear-gradient(45deg, $checker-color 25%, transparent 25% 75%, $checker-color 75%),
+                  linear-gradient(to top right, $checker-color 25%, transparent 25% 75%, $checker-color 75%),
               $checker-bg-color;
 }
 
