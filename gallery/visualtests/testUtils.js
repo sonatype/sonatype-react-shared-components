@@ -17,12 +17,16 @@ module.exports = {
     };
   },
 
-  hoverTest(elementSelector, hoverSelector = elementSelector) {
+  hoverTest(elementSelector, hoverSelector = elementSelector, localScreenshot = false) {
     return async () => {
       const [targetElement, hoverElement] = await Promise.all([browser.$(elementSelector), browser.$(hoverSelector)]);
 
       await targetElement.scrollIntoView({ block: 'center' });
       await hoverElement.moveTo();
+
+      if (localScreenshot) {
+        await browser.saveScreenshot('/tmp/screenshot.png');
+      }
 
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
     };
