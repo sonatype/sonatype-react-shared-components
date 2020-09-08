@@ -16,24 +16,4 @@ describe('nx-scrollable', function() {
       tableSelector = '#nx-scrollable-table-example .nx-scrollable';
 
   it('looks right', simpleTest(simpleSelector));
-
-  describe('Scrollable table', function() {
-    it('looks right', simpleTest(tableSelector));
-
-    it('looks right when scrolled down', async function() {
-      const bottomRowSelector = `${tableSelector} tbody tr:last-child`,
-          topRowSelector = `${tableSelector} tbody tr:first-child`,
-          [scrollableEl, bottomRowEl, topRowEl] =
-              await Promise.all([browser.$(tableSelector), browser.$(bottomRowSelector), browser.$(topRowSelector)]);
-
-      try {
-        await bottomRowEl.scrollIntoView({ block: 'center' });
-        await browser.saveScreenshot('/tmp/screenshot.png');
-        await browser.eyesRegionSnapshot(null, Target.region(scrollableEl));
-      }
-      finally {
-        await topRowEl.scrollIntoView({ block: 'center' });
-      }
-    });
-  });
 });

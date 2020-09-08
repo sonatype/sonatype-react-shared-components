@@ -49,6 +49,15 @@ const NxTableStylePage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-table--scrollable</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-table</code></td>
+            <td className="nx-cell">
+              When a table which scrolls in of itself is desired, wrap the table in
+              an <code className="nx-code">.nx-scrollable</code> wrapper and give it a class
+              of <code className="nx-code">.nx-table--scrollable</code>.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-table-row</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">Basic table row class.</td>
@@ -101,13 +110,6 @@ const NxTableStylePage = () =>
           </tr>
         </tbody>
       </table>
-
-      <p className="nx-p">
-        When a table which scrolls in of itself is desired, wrap the table in
-        an <code className="nx-code">.nx-scrollable</code> wrapper and give it a class
-        of <code className="nx-code">.nx-scrollable__table</code> as documented on
-        the <a href="#/pages/nx-scrollable">nx-scrollable</a> page.
-      </p>
 
       <NxInfoAlert>
         Note that some of these examples are shown in react as they includes specific icons. When working in

@@ -16,6 +16,18 @@
   width: 100%;
 }
 
+.nx-table--scrollable {
+  // create a stacking context so the headers don't appear over other content outside the table
+  position: relative;
+  z-index: 0;
+
+  .nx-cell--header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
+
 .nx-table-row {
   &:last-child {
     .nx-cell:not(.nx-cell--header):not(.nx-error) {
