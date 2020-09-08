@@ -78,7 +78,7 @@ export default function NxFormLayoutExample() {
           Blue
         </NxRadio>
       </fieldset>
-      <footer className="nx-form-footer">
+      <footer className="nx-footer">
         <NxInfoAlert>This is a sample alert message</NxInfoAlert>
         <div className="nx-btn-bar">
           <NxButton type="button">Cancel</NxButton>
