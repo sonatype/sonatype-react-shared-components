@@ -65,7 +65,7 @@ const NxFormLayoutPage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-label--optional</code></td>
             <td className="nx-cell">Modifier</td>
             <td className="nx-cell">
-              Used when you want "- optional" text to appear after a <code className="nx-code">&lt;label&gt;</code>
+              Used when you want "Optional" text to appear after a <code className="nx-code">&lt;label&gt;</code>
               element.
             </td>
           </tr>
