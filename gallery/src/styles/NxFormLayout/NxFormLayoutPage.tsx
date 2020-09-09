@@ -44,13 +44,6 @@ const NxFormLayoutPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-form--simple</code></td>
-            <td className="nx-cell">Modifier</td>
-            <td className="nx-cell">
-              Removes border and padding from <code className="nx-code">.nx-form</code>.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-form-group</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">Basic container for form elements.</td>
@@ -61,14 +54,6 @@ const NxFormLayoutPage = () =>
             <td className="nx-cell">
               Used as a parent when you want <code className="nx-code">.nx-form-group</code> blocks to display
               horizontally rather than stack vertically.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-btn-bar--forms</code></td>
-            <td className="nx-cell">Modifier</td>
-            <td className="nx-cell">
-              Modifies <span className="nx-code">.nx-btn-bar</span> for form buttons, usually appears at the end
-              of the form.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -100,6 +85,23 @@ const NxFormLayoutPage = () =>
             <td className="nx-cell">
               Applied to a <code className="nx-code">&lt;fieldset&gt;</code> element that wraps checkboxes or
               radio buttons.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-legend</code></td>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">
+              Standard class for <code className="nx-code">&lt;legend&gt;</code> elements. A legend is used inside of a
+              <code className="nx-code">&lt;fieldset&gt;</code> in the place of a
+              <code className="nx-code">&lt;label&gt;</code>
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-legend--optional</code></td>
+            <td className="nx-cell">Modifier</td>
+            <td className="nx-cell">
+              Used when you want "- optional" text to appear after a <code className="nx-code">&lt;legend&gt;</code>
+              element.
             </td>
           </tr>
         </tbody>
