@@ -7,6 +7,8 @@
 
 .nx-list {
   @include container-vertical;
+
+  color: $nx-text-color-light;
   margin: $nx-flow-content-spacing 0;
   padding: 0;
 
@@ -50,7 +52,7 @@
   @include regular();
 
   display: block;
-  margin: 0;
+  margin-top: $nx-spacing-md;
   white-space: normal;
 
   &.nx-truncate-ellipsis {
@@ -73,13 +75,15 @@
 }
 
 .nx-list--bulleted {
+  margin: 0;
+
   .nx-list__item {
     @include regular();
 
     border: none;
-    list-style: disc outside;
-    margin: $nx-spacing-sm 10px $nx-spacing-sm 36px;
+    list-style: disc inside;
     overflow: visible;
+    margin: $nx-spacing-xs $nx-spacing-md;
     padding: 0;
     white-space: normal;
   }
