@@ -66,7 +66,11 @@
 }
 
 .nx-list__item--error {
-  padding-top: $nx-spacing-xl;
+  padding-top: 0;
+
+  .nx-alert {
+    margin-top: $nx-spacing-xl;
+  }
 }
 
 .nx-list-item.disabled {
@@ -78,21 +82,19 @@
   margin: 0;
 
   .nx-list__item {
-    @include regular();
-
     border: none;
     list-style: disc inside;
     overflow: visible;
     margin: $nx-spacing-xs $nx-spacing-md;
     padding: 0;
     white-space: normal;
-  }
-
-  .nx-list__item {
-    list-style-type: disc;
 
     .nx-list__item {
       list-style-type: circle;
+
+      .nx-list__text {
+        @include regular();
+      }
 
       .nx-list__item {
         list-style-type: square;
@@ -174,21 +176,15 @@
 .nx-list--definition-list {
   box-sizing: border-box;
 
-  display: flex;
-  flex-wrap: wrap;
-
   .nx-list__item {
+    display: block;
+  }
+
+  .nx-list__text {
     @include regular();
-
-    display: inline-block;
-    width: 75%;
-
-    white-space: normal;
   }
 
   .nx-list__item--label {
     @include semi-bold();
-
-    width: 25%;
   }
 }
