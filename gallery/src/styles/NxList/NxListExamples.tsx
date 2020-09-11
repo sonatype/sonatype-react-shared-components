@@ -14,7 +14,6 @@ const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').def
     NxListMultiLineCode = require('!!raw-loader!./NxListMultiLineExample.html').default,
     NxListBulletedCode = require('!!raw-loader!./NxListBulletedExample.html').default,
     NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.html').default,
-    NxListDefinitionListCode = require('!!raw-loader!./NxListDefinitionListExample.html').default,
     NxListEmptyCode = require('!!raw-loader!./NxListEmptyExample.html').default,
     NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.tsx').default;
 
@@ -43,14 +42,6 @@ const NxListsExamples = () =>
                         codeExamples={NxListBulletedCode}>
       An <code className="nx-code">nx-list</code> demonstrating bulleted list styles more typical of
       default <code className="nx-code">&lt;ul&gt;</code> styling. These can be nested.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="NX Definition List Example"
-                        id="nx-list-definition-example"
-                        htmlExample={NxListDefinitionListCode}
-                        codeExamples={NxListDefinitionListCode}>
-      An <code className="nx-code">nx-list</code> style for definition lists.
-      {' '}(<code className="nx-code">&lt;dl&gt;</code>s)
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List with Actions Example"

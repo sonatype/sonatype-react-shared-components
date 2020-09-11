@@ -18,7 +18,6 @@ const NxListPage = () =>
         <li className="nx-list__item">Simple data lists</li>
         <li className="nx-list__item">Lists with clickable list items</li>
         <li className="nx-list__item">Lists with bullets</li>
-        <li className="nx-list__item">Definition Lists</li>
         <li className="nx-list__item">Lists with actions</li>
         <li className="nx-list__item">Lists with items that have multiple lines of text</li>
       </ul>
@@ -63,13 +62,6 @@ const NxListPage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-list--bulleted</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-list</code></td>
             <td className="nx-cell">If you need a list with bullets.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list--definition-list</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list</code></td>
-            <td className="nx-cell">
-              Definition lists have two elements: a label and the data associated with that label.
-            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-list__item--with-modifier-icon</code></td>

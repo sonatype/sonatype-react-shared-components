@@ -166,25 +166,3 @@
     margin-top: 1px;
   }
 }
-
-/*
- * Definition Lists
- *
- * Typically use <dl>
- */
-
-.nx-list--definition-list {
-  box-sizing: border-box;
-
-  .nx-list__item {
-    display: block;
-  }
-
-  .nx-list__text {
-    @include regular();
-  }
-
-  .nx-list__item--label {
-    @include semi-bold();
-  }
-}
