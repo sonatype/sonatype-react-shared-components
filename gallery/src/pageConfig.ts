@@ -33,7 +33,7 @@ import NxIconPage from './styles/NxIcon/NxIconPage';
 import NxFontAwesomeIconPage from './components/NxFontAwesomeIcon/NxFontAwesomeIconPage';
 import NxCounterPage from './styles/NxCounter/NxCounterPage';
 import NxThreatNumberPage from './styles/NxThreatNumber/NxThreatNumberPage';
-//import NxFormLayoutPage from './styles/NxFormLayout/NxFormLayoutPage';
+import NxFormLayoutPage from './styles/NxFormLayout/NxFormLayoutPage';
 import NxSubmitMaskPage from './components/NxSubmitMask/NxSubmitMaskPage';
 import NxStatefulSubmitMaskPage from './components/NxStatefulSubmitMask/NxStatefulSubmitMaskPage';
 import NxTablePage from './components/NxTable/NxTablePage';
@@ -134,7 +134,7 @@ const pageConfig: PageConfig = {
     'nx-truncate-ellipsis': NxTruncatePage
   },
   'Layout Examples': {
-    //'Form Layout Styles': NxFormLayoutPage,
+    'Form Layout Styles': NxFormLayoutPage,
     'Page Layout': PageLayoutPage
   },
   'JavaScript & TypeScript Utilities': {

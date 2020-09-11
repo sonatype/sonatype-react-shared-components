@@ -6,14 +6,13 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { GalleryTile } from '../../gallery-components/GalleryTiles';
-import CodeExample from '../../CodeExample';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+
 import NxFormLayoutExample from './NxFormLayoutExample';
 import NxFormHorizontalLayoutExample from './NxFormHorizontalLayoutExample';
 
-const NxFormLayoutCode = require('!!raw-loader!./NxFormLayoutExample').default,
-    NxFormHorizontalLayoutCode = require('!!raw-loader!./NxFormHorizontalLayoutExample').default;
+const NxFormLayoutCode = require('!!raw-loader!./NxFormLayoutExample').default;
+const NxFormHorizontalLayoutCode = require('!!raw-loader!./NxFormHorizontalLayoutExample').default;
 
 const NxFormLayoutPage = () =>
   <>
@@ -45,13 +44,6 @@ const NxFormLayoutPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-form--simple</code></td>
-            <td className="nx-cell">Modifier</td>
-            <td className="nx-cell">
-              Removes border and padding from <code className="nx-code">.nx-form</code>.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-form-group</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">Basic container for form elements.</td>
@@ -65,14 +57,6 @@ const NxFormLayoutPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-btn-bar--forms</code></td>
-            <td className="nx-cell">Modifier</td>
-            <td className="nx-cell">
-              Modifies <span className="nx-code">.nx-btn-bar</span> for form buttons, usually appears at the end
-              of the form.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-label</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">Standard class for <code className="nx-code">&lt;label&gt;</code> elements.</td>
@@ -81,7 +65,7 @@ const NxFormLayoutPage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-label--optional</code></td>
             <td className="nx-cell">Modifier</td>
             <td className="nx-cell">
-              Used when you want "- optional" text to appear after a <code className="nx-code">&lt;label&gt;</code>
+              Used when you want "Optional" text to appear after a <code className="nx-code">&lt;label&gt;</code>
               element.
             </td>
           </tr>
@@ -103,19 +87,40 @@ const NxFormLayoutPage = () =>
               radio buttons.
             </td>
           </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-legend</code></td>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">
+              Standard class for <code className="nx-code">&lt;legend&gt;</code> elements. A legend is used inside of a
+              <code className="nx-code">&lt;fieldset&gt;</code> in the place of a
+              <code className="nx-code">&lt;label&gt;</code>
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-legend--optional</code></td>
+            <td className="nx-cell">Modifier</td>
+            <td className="nx-cell">
+              Used when you want "Optional" text to appear after a <code className="nx-code">&lt;legend&gt;</code>
+              element.
+            </td>
+          </tr>
         </tbody>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryTile title="NX Form Layout Example">
-      <NxFormLayoutExample />
-      <CodeExample content={NxFormLayoutCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="General Example"
+                        codeExamples={NxFormLayoutCode}
+                        liveExample={NxFormLayoutExample}>
+      This example shows a standard vertical form layout with validation on some fields.
+    </GalleryExampleTile>
 
-    <GalleryTile title="NX Form Horizontal Layout Example">
-      <NxFormHorizontalLayoutExample />
-      <CodeExample content={NxFormHorizontalLayoutCode}/>
-    </GalleryTile>
+    <GalleryExampleTile title="Horizontal form layout"
+                        liveExample={NxFormHorizontalLayoutExample}
+                        codeExamples={NxFormHorizontalLayoutCode}>
+      This example demonstrates a form layout with horizontally placed text input fields. Note that the checkbox and
+      radio fieldsets remain vertically separated, they should not be placed side-by-side. This example also
+      demonstrates the use of an <code className="nx-code">NxErrorAlert</code> in the footer.
+    </GalleryExampleTile>
   </>;
 
 export default NxFormLayoutPage;
