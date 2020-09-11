@@ -43,7 +43,7 @@ describe('NxTable', function() {
       await browser.url('#/pages/nx-table');
     });
 
-    const tableSelector = '#nx-table-scrollable-example .nx-scrollable';
+    const tableSelector = '#nx-table-scrolling-example .nx-scrollable';
 
     it('looks right', simpleTest(tableSelector));
 
