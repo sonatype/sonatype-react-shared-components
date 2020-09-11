@@ -13,11 +13,12 @@ import NxTableClickableExample from './NxTableClickableExample';
 const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample.html').default,
     NxTableClickableCode = require('!!raw-loader!./NxTableClickableExample').default,
     NxTableEmptyCode = require('!!raw-loader!./NxTableEmptyExample.html').default,
-    NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample.html').default;
+    NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample.html').default,
+    NxTableScrollingCode = require('!!raw-loader!./NxTableScrollingExample.html').default;
 
 const NxTablesExamples = () =>
   <>
-    <GalleryExampleTile title="NX Simple Table Example"
+    <GalleryExampleTile title="NX Table Simple Example"
                         htmlExample={NxTableSimpleCode}
                         codeExamples={NxTableSimpleCode}>
       A simple, static demonstration of <code className="nx-code">nx-table</code> styles.
@@ -41,6 +42,18 @@ const NxTablesExamples = () =>
                         codeExamples={NxTableErrorStateCode}>
       A demonstration of the expected styling and content and an <code className="nx-code">nx-table</code> whose
       contents failed to load.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Table Scrolling Example"
+                        id="nx-table-scrolling-example"
+                        htmlExample={NxTableScrollingCode}
+                        codeExamples={NxTableScrollingCode}>
+      A demonstration of a table that scrolls due to the presence of a height-constrained, scrolling wrapper element.
+      The headers stay stationary as the rows scroll. All tables that scroll "by themselves" (as opposed to being
+      part of some broader section of the page that scrolls) should be implemented in this manner in order to get
+      the sticky header behavior. For scrollable containers which, on the other hand, contain more content in addition
+      to a table, sticky headers should not be used and therefore
+      the <code className="nx-code">nx-table--scrollable</code> class should not be used on the table.
     </GalleryExampleTile>
   </>;
 

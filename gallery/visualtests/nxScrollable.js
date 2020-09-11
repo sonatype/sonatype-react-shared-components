@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+const { Target } = require('@applitools/eyes-webdriverio');
 const { simpleTest } = require('./testUtils');
 
 describe('nx-scrollable', function() {
@@ -11,7 +12,8 @@ describe('nx-scrollable', function() {
     await browser.url('#/pages/nx-scrollable');
   });
 
-  const selector = '.gallery-raw-html-example';
+  const simpleSelector = '#nx-scrollable-simple-example .nx-scrollable',
+      tableSelector = '#nx-scrollable-table-example .nx-scrollable';
 
-  it('looks right', simpleTest(selector));
+  it('looks right', simpleTest(simpleSelector));
 });

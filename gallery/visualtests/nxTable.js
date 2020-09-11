@@ -37,4 +37,30 @@ describe('NxTable', function() {
 
   it('looks right when loading', simpleTest(loadingTableSelector));
   it('looks right when showing an error', simpleTest(errorTableSelector));
+
+  describe('Scrollable table', function() {
+    beforeEach(async function() {
+      await browser.url('#/pages/nx-table');
+    });
+
+    const tableSelector = '#nx-table-scrolling-example .nx-scrollable';
+
+    it('looks right', simpleTest(tableSelector));
+
+    it('looks right when scrolled down', async function() {
+      const bottomRowSelector = `${tableSelector} tbody tr:last-child`,
+          topRowSelector = `${tableSelector} tbody tr:first-child`,
+          [scrollableEl, bottomRowEl, topRowEl] =
+              await Promise.all([browser.$(tableSelector), browser.$(bottomRowSelector), browser.$(topRowSelector)]);
+
+      try {
+        await bottomRowEl.scrollIntoView({ block: 'center' });
+        await browser.saveScreenshot('/tmp/screenshot.png');
+        await browser.eyesRegionSnapshot(null, Target.region(scrollableEl));
+      }
+      finally {
+        await topRowEl.scrollIntoView({ block: 'center' });
+      }
+    });
+  });
 });

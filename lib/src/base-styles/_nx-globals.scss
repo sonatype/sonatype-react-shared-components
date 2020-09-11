@@ -53,6 +53,7 @@ $nx-scrollable-default-height: 400px;
 }
 
 .nx-scrollable {
+  @include container-vertical;
   @include vertically-scrollable($nx-scrollable-default-height);
 }
 
