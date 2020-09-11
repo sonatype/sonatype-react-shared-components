@@ -144,13 +144,12 @@
       pointer-events: none; // Fix for IE11 :active state display
     }
 
-    &.nx-list__item--disabled {
+    &.disabled {
       color: $nx-text-color-disabled;
-      cursor: default;
 
       &:hover {
-        border-top: 1px solid transparent;
-        border-bottom: $nx-border-row;
+        background-color: transparent;
+        cursor: default;
       }
     }
   }
