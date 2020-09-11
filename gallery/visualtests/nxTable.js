@@ -39,7 +39,7 @@ describe('NxTable', function() {
   it('looks right when showing an error', simpleTest(errorTableSelector));
 
   describe('Scrollable table', function() {
-    beforeEach(function() {
+    beforeEach(async function() {
       await browser.url('#/pages/nx-table');
     });
 
