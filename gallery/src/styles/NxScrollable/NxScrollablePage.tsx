@@ -28,6 +28,7 @@ const NxScrollablePage = () =>
       </p>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="General Example"
+                        id="nx-scrollable-simple-example"
                         codeExamples={nxScrollableExampleCode}
                         htmlExample={nxScrollableExampleCode}>
       In this instance the max-height has been left at its default value of 400px.
