@@ -9,7 +9,7 @@ import { NxLoadError } from '@sonatype/react-shared-components';
 
 const NxListErrorExample = () =>
   <div className="nx-list">
-    <h3 className="nx-list__title">
+    <h3 className="nx-h3">
       List with an error alert
     </h3>
     <ul>
