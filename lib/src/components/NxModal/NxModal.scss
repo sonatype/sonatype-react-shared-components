@@ -7,46 +7,37 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
 
-$nx-modal-top-spacing: 48px;
-$nx-modal-bottom-spacing: 8px;
-$nx-modal-width: 560px;
-$nx-modal-width-wide: 900px;
-$nx-modal-content-max-height: calc(100vh - #{$nx-modal-top-spacing} - #{$nx-modal-bottom-spacing} - 215px);
-
 .nx-modal {
-  align-self: flex-start;
-  background-color: $nx-off-white;
-  border: $nx-border-darker;
-  box-shadow: -8px 8px 12px $nx-slate;
-  margin-top: $nx-modal-top-spacing;
-  width: $nx-modal-width;
+  display: flex;
+  flex-basis: auto;
+  flex-direction: column;
+  flex-shrink: 1;
+  background-color: #ffffff;
+  margin: 200px 0;
+  overflow-y: hidden;
+  width: 800px;
+}
+
+.nx-modal--narrow {
+  width: 600px;
 }
 
 .nx-modal--wide {
-  width: $nx-modal-width-wide;
+  width: 1000px;
 }
 
 .nx-modal-header {
   @include container-vertical;
-  border-bottom: $nx-border-dark;
-  padding: 12px 8px;
-}
-
-.nx-modal-footer {
-  @include container-vertical;
-  background-color: #fff;
-  border-top: 1px solid #e9e9e9;
-  padding: $nx-spacing-l $nx-spacing-l $nx-spacing-xl $nx-spacing-l;
-
-  .nx-alert {
-    margin-bottom: $nx-spacing-xl;
-  }
+  border-bottom: #d1d6f0;
+  padding-bottom: 24px;
 }
 
 .nx-modal-backdrop {
-  background-color: transparentize($nx-off-black, 0.4);
+  align-items: center;
+  background-color: transparentize(#555555, 0.25);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  overflow-y: hidden;
   position: fixed;
   top: 0;
   right: 0;
@@ -57,8 +48,10 @@ $nx-modal-content-max-height: calc(100vh - #{$nx-modal-top-spacing} - #{$nx-moda
 
 .nx-modal-content {
   @include container-vertical;
-  @include vertically-scrollable($nx-modal-content-max-height);
+  flex-shrink: 1;
+  flex-basis: auto;
   padding: 20px 8px 18px 8px;
+  overflow-y: auto;
 
   > .nx-alert {
     &:first-child {
