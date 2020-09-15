@@ -45,7 +45,9 @@ const FormValidationPage = () =>
                         codeExamples={FormValidationCode}
                         liveExample={FormValidationExample}>
       This example shows how typical form validation logic should be set up. It includes validation of individual
-      elements and management of the submit button.
+      elements and management of the submit button. The first input has validation that it is non-empty. The second
+      input has no validation. The third input has validation that it is non-empty and also validation that it contains
+      no dollar signs.
     </GalleryExampleTile>
   </>;
 

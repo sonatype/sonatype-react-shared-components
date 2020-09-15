@@ -29,7 +29,9 @@ export default function FormValidationExample() {
     setter(userInput(validator, value));
   };
 
-  const nonEmptyValidator = (val: string) => val && val.length ? null : 'Must be non-empty';
+  const nonEmptyValidator = (val: string) => val && val.length ? null : 'Must be non-empty',
+      noDollarSignsValidator = (val: string) => val && val.indexOf('$') >= 0 ? 'Must not contain dollar signs' : null,
+      combinedValidator = (val: string) => nonEmptyValidator(val) || noDollarSignsValidator(val);
 
   function onSubmit(evt: FormEvent) {
     evt.preventDefault();
@@ -44,12 +46,9 @@ export default function FormValidationExample() {
   }
 
   const submitBtnClasses = classnames({ disabled: !isSubmittable }),
-      submitBtn = <NxButton className={submitBtnClasses} variant="primary" type="submit">Submit</NxButton>,
-      submitTooltip = isSubmittable ? null : (
-        <NxTooltip title={hasAllRequiredData ? 'Validation errors are present' : 'Required fields are missing'}>
-          {submitBtn}
-        </NxTooltip>
-      );
+      submitTooltip = isSubmittable ? '' :
+        hasAllRequiredData ? 'Validation errors are present' :
+        'Required fields are missing';
 
   return (
     <form className="nx-form" onSubmit={onSubmit}>
@@ -72,18 +71,24 @@ export default function FormValidationExample() {
           <span className="nx-label__text">Text input 3</span>
           <NxTextInput { ...textInput3State }
                        validatable={true}
-                       onChange={setTextInput(setTextInput3State, nonEmptyValidator)}/>
+                       onChange={setTextInput(setTextInput3State, combinedValidator)}/>
         </label>
       </div>
 
       <fieldset className="nx-fieldset">
-        <legend className="nx-label">Check this box?</legend>
+        <legend className="nx-legend">
+          <span className="nx-legend__text">Check this box?</span>
+        </legend>
         <NxCheckbox isChecked={checkboxValue} onChange={() => setCheckboxState(!checkboxValue)}>Check It</NxCheckbox>
       </fieldset>
 
-      <div className="nx-btn-bar">
-        {submitTooltip || submitBtn}
-      </div>
+      <footer className="nx-form-footer">
+        <div className="nx-btn-bar">
+          <NxTooltip title={submitTooltip}>
+            <NxButton className={submitBtnClasses} variant="primary" type="submit">Submit</NxButton>
+          </NxTooltip>
+        </div>
+      </footer>
     </form>
   );
 }
