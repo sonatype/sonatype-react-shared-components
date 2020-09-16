@@ -12,15 +12,19 @@ const NxListErrorExample = () =>
   <ul className="nx-list">
     <li className="nx-list__item nx-list__item--with-modifier-icon">
       <span className="nx-list__text">List item</span>
-      <NxButton iconOnly className="nx-pull-right"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
-      <NxButton iconOnly className="nx-pull-right"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+      <div className="nx-list-actions">
+        <NxButton iconOnly><NxFontAwesomeIcon icon={faTrash} /></NxButton>
+        <NxButton iconOnly><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+      </div>
     </li>
     <li className="nx-list__item nx-list__item--with-modifier-icon">
       <span className="nx-list__text">List item</span>
-      <p className="nx-list__item__subtext">
+      <p className="nx-list__subtext">
         This is some sub-text to demonstrate spacing
       </p>
-      <NxButton iconOnly className="nx-pull-right"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
+      <div className="nx-list-actions">
+        <NxButton iconOnly><NxFontAwesomeIcon icon={faTrash} /></NxButton>
+      </div>
     </li>
   </ul>;
 
