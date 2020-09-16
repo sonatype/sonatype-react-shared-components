@@ -13,6 +13,8 @@ describe('NxTextInput', function() {
       passwordComponentSelector = '#nx-text-input-password-example .nx-text-input',
       textareaComponentSelector = '#nx-text-input-textarea-validation-example .nx-text-input',
       validatableTextareaComponentSelector = '#nx-text-input-textarea-validation-example .nx-text-input',
+      longComponentSelector = '#nx-text-input-long-example .nx-text-input:not(.nx-text-input--textarea)',
+      longTextareaComponentSelector = '#nx-text-input-long-example .nx-text-input--textarea',
       disabledComponentSelector = '#nx-text-input-disabled-example .nx-text-input.pristine',
       disabledValidComponentSelector = '#nx-text-input-disabled-example .nx-text-input.valid',
       disabledInvalidComponentSelector = '#nx-text-input-disabled-example .nx-text-input.invalid';
@@ -121,6 +123,14 @@ describe('NxTextInput', function() {
       await browser.keys(['Backspace', 'Backspace', 'Backspace']);
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
     });
+  });
+
+  describe('Long NxTextInput', function() {
+    it('looks right', simpleTest(textareaComponentSelector));
+  });
+
+  describe('Long textarea NxTextInput', function() {
+    it('looks right', simpleTest(textareaComponentSelector));
   });
 
   describe('Disabled NxTextInput', function() {
