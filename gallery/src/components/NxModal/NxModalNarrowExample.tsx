@@ -6,9 +6,10 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxWarningAlert, NxButton} from '@sonatype/react-shared-components';
+import {NxModal, NxFontAwesomeIcon, NxButton} from '@sonatype/react-shared-components';
+import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
-export default function NxModalAlertExample() {
+export default function NxModalSimpleExample() {
   const [showModal, setShowModal] = useState(false);
   const modalCloseHandler = () => setShowModal(false);
 
@@ -16,14 +17,15 @@ export default function NxModalAlertExample() {
     <>
       <NxButton onClick={() => setShowModal(true)}>Open Modal</NxButton>
       { showModal &&
-        <NxModal id="nx-modal-alert-example" onClose={modalCloseHandler}>
+        <NxModal className="nx-modal--narrow" id="nx-modal-simple-example" onClose={modalCloseHandler}>
           <header className="nx-modal-header">
-            <h2 className="nx-h2">Example NxModal with NxAlert</h2>
+            <h2 className="nx-h2">
+              <NxFontAwesomeIcon icon={faAngry} />
+              <span>Example NxModal header</span>
+            </h2>
           </header>
           <div className="nx-modal-content">
-            <NxWarningAlert>
-              The page may contain unsaved changes; continuing will discard them.
-            </NxWarningAlert>
+            <p className="nx-p">This is some content inside a narrower modal.</p>
           </div>
           <footer className="nx-footer">
             <div className="nx-btn-bar">

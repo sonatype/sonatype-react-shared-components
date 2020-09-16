@@ -13,6 +13,7 @@ import NxModalFormExample from './NxModalFormExample';
 import NxModalStackedExample from './NxModalStackedExample';
 import NxModalFormErrorExample from './NxModalFormErrorExample';
 import NxModalExtraWideExample from './NxModalExtraWideExample';
+import NxModalNarrowExample from './NxModalNarrowExample';
 
 const NxModalSimpleSourceCode = require('!!raw-loader!./NxModalSimpleExample').default;
 const NxModalAlertSourceCode = require('!!raw-loader!./NxModalAlertExample').default;
@@ -20,6 +21,7 @@ const NxModalFormSourceCode = require('!!raw-loader!./NxModalFormExample').defau
 const NxModalStackedSourceCode = require('!!raw-loader!./NxModalStackedExample').default;
 const NxModalFormErrorSourceCode = require('!!raw-loader!./NxModalFormErrorExample').default;
 const NxModalExtraWideSourceCode = require('!!raw-loader!./NxModalExtraWideExample').default;
+const NxModalNarrowSourceCode = require('!!raw-loader!./NxModalNarrowExample').default;
 
 export default function NxModalPage() {
   return (
@@ -158,10 +160,18 @@ export default function NxModalPage() {
         an <code className="nx-code">NxErrorAlert</code> in the footer
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="Extra Wide NxModal Example"
+      <GalleryExampleTile title="Wide NxModal Example"
                           liveExample={NxModalExtraWideExample}
                           codeExamples={NxModalExtraWideSourceCode}>
-        A demonstration of the extra-wide styles for <code className="nx-code">NxModal</code>.
+        A demonstration of the <code className="nx-code">wide</code> styles
+        for <code className="nx-code">NxModal</code>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Narrow NxModal Example"
+                          liveExample={NxModalNarrowExample}
+                          codeExamples={NxModalNarrowSourceCode}>
+        A demonstration of the <code className="nx-code">narrow</code> styles
+        for <code className="nx-code">NxModal</code>.
       </GalleryExampleTile>
     </>
   );

@@ -6,7 +6,7 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxFontAwesomeIcon} from '@sonatype/react-shared-components';
+import {NxModal, NxFontAwesomeIcon, NxButton, NxStatefulTextInput} from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
 export default function NxModalFormExample() {
@@ -15,10 +15,10 @@ export default function NxModalFormExample() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="nx-btn">Open Modal with Form</button>
+      <NxButton onClick={() => setShowModal(true)}>Open Modal with Form</NxButton>
       {showModal &&
         <NxModal id="nx-modal-form-example" onClose={modalCloseHandler}>
-          <form className="nx-form nx-form--simple">
+          <form className="nx-form">
             <header className="nx-modal-header">
               <h2 className="nx-h2">
                 <NxFontAwesomeIcon icon={faAngry} />
@@ -28,30 +28,22 @@ export default function NxModalFormExample() {
             <div className="nx-modal-content">
               <div className="nx-form-group">
                 <label className="nx-label">
-                  Username
-                  <input type="text"
-                         className="nx-text-input"
-                         placeholder="Username"/>
+                 <span className="nx-label__text">Username</span>
+                  <NxStatefulTextInput placeholder="Username"/>
                 </label>
               </div>
               <div className="nx-form-group">
                 <label className="nx-label">
-                  Password
-                  <input type="password"
-                         className="nx-text-input"
-                         placeholder="Password"/>
+                  <span className="nx-label__text">Password</span>
+                  <NxStatefulTextInput type="password" placeholder="Password"/>
                 </label>
               </div>
             </div>
-            <footer className="nx-modal-footer">
+            <footer className="nx-footer">
               <div className="nx-btn-bar">
-                <button type="button" onClick={modalCloseHandler} className="nx-btn nx-btn--primary">
-                  Primary
-                </button>
-                <button type="button" onClick={modalCloseHandler} className="nx-btn">Default</button>
-                <button type="button" onClick={modalCloseHandler} className="nx-btn nx-btn--tertiary">
-                  Tertiary
-                </button>
+                <NxButton onClick={modalCloseHandler} variant="primary">Primary</NxButton>
+                <NxButton onClick={modalCloseHandler}>Default</NxButton>
+                <NxButton onClick={modalCloseHandler} variant="tertiary">Tertiary</NxButton>
               </div>
             </footer>
           </form>
