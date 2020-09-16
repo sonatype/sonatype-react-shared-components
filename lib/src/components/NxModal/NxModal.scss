@@ -7,7 +7,13 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
 
+// the "padding" around the interior of nx-modal. In order to get borders and scrollbars to appear
+// in the desired locations, this can't actually be implemented as padding on .nx-modal, but must instead be
+// a mix of padding and margin on the .nx-modal, .nx-modal-header, .nx-modal-content, and .nx-footer elements
+$nx-modal-padding: $nx-spacing-l;
+
 .nx-modal {
+  border-radius: $nx-border-radius;
   display: flex;
   flex-basis: auto;
   flex-direction: column;
@@ -16,6 +22,10 @@
   margin: 200px 0;
   overflow-y: hidden;
   width: 800px;
+
+  .nx-footer {
+    margin: 0 $nx-modal-padding;
+  }
 }
 
 .nx-modal--narrow {
@@ -28,8 +38,9 @@
 
 .nx-modal-header {
   @include container-vertical;
-  border-bottom: #d1d6f0;
-  padding-bottom: 24px;
+  border-bottom: 1px solid #d1d6f0;
+  margin: 0 $nx-modal-padding;
+  padding: $nx-modal-padding 0 $nx-spacing-l 0;
 }
 
 .nx-modal-backdrop {
@@ -50,7 +61,7 @@
   @include container-vertical;
   flex-shrink: 1;
   flex-basis: auto;
-  padding: 20px 8px 18px 8px;
+  padding: $nx-spacing-l $nx-modal-padding $nx-spacing-xl $nx-modal-padding;
   overflow-y: auto;
 
   > .nx-alert {

@@ -43,7 +43,7 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, ...attrs}) => {
 
   return (
     <div className="nx-modal-backdrop">
-      <div className={modalClasses} {...attrs} />
+      <section className={modalClasses} {...attrs} />
     </div>
   );
 };

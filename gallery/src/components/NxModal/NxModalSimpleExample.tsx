@@ -6,7 +6,7 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxFontAwesomeIcon} from '@sonatype/react-shared-components';
+import {NxModal, NxFontAwesomeIcon, NxButton} from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
 export default function NxModalSimpleExample() {
@@ -15,7 +15,7 @@ export default function NxModalSimpleExample() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="nx-btn">Open Modal</button>
+      <NxButton onClick={() => setShowModal(true)}>Open Modal</NxButton>
       { showModal &&
         <NxModal id="nx-modal-simple-example" onClose={modalCloseHandler}>
           <header className="nx-modal-header">
@@ -27,9 +27,9 @@ export default function NxModalSimpleExample() {
           <div className="nx-modal-content">
             <p className="nx-p">This is some content inside a modal.</p>
           </div>
-          <footer className="nx-modal-footer">
+          <footer className="nx-footer">
             <div className="nx-btn-bar">
-              <button type="button" onClick={modalCloseHandler} className="nx-btn">Close</button>
+              <NxButton onClick={modalCloseHandler}>Close</NxButton>
             </div>
           </footer>
         </NxModal>
