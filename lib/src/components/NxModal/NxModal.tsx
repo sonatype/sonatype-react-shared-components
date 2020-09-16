@@ -13,8 +13,11 @@ import './NxModal.scss';
 
 const currentModalCloseHandlers: CloseHandler[] = [];
 
-const NxModal: FunctionComponent<Props> = ({className, onClose, ...attrs}) => {
-  const modalClasses = classnames('nx-modal', className);
+const NxModal: FunctionComponent<Props> = ({className, onClose, variant, ...attrs}) => {
+  const modalClasses = classnames('nx-modal', className, {
+    'nx-modal--wide': variant === 'wide',
+    'nx-modal--narrow': variant === 'narrow'
+  });
 
   const modalCloseListener = ({ key }: KeyboardEvent) => {
     const isKeyPressedEscape = key === 'Escape' || key === 'Esc';
