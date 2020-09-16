@@ -17,17 +17,20 @@ $nx-modal-padding: $nx-spacing-l;
   @include container-vertical;
 
   border-radius: $nx-border-radius;
-  display: flex;
-  flex-basis: auto;
-  flex-direction: column;
-  flex-shrink: 1;
   background-color: #ffffff;
   margin: 200px 0;
-  overflow-y: hidden;
   width: 800px;
 
   .nx-footer {
     margin: 0 $nx-modal-padding;
+  }
+
+  &, > .nx-form {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-shrink: 1;
+    overflow-y: hidden;
   }
 }
 
