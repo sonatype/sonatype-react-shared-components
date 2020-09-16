@@ -7,9 +7,6 @@
 import React, {useState} from 'react';
 
 import {NxModal, NxButton} from '@sonatype/react-shared-components';
-import {NxVulnerabilityDetails} from '@sonatype/react-shared-components';
-
-const vulnerabilityDetailsJson = require('../../resources/vulnerabilities/vulnerabilityDetailsJson.json');
 
 export default function NxModalExtraWideExample() {
   const [showModal, setShowModal] = useState(false);
@@ -17,16 +14,14 @@ export default function NxModalExtraWideExample() {
 
   return (
     <>
-      <NxButton onClick={() => setShowModal(true)}>
-        Open modal with vulnerability details component
-      </NxButton>
+      <NxButton onClick={() => setShowModal(true)}>Open wide modal</NxButton>
       {showModal &&
-      <NxModal id="nx-modal-with-vuln" className="nx-modal--wide" onClose={modalCloseHandler}>
+      <NxModal id="nx-modal-wide-example" variant="wide" onClose={modalCloseHandler}>
         <header className="nx-modal-header">
           <h3 className="nx-h3">Vulnerability Information</h3>
         </header>
         <div className="nx-modal-content">
-          <NxVulnerabilityDetails vulnerabilityDetails={vulnerabilityDetailsJson}/>
+          <p className="nx-p">This is some content inside a wider modal.</p>
         </div>
         <footer className="nx-footer">
           <div className="nx-btn-bar">
