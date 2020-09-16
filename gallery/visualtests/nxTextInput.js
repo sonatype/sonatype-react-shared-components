@@ -13,7 +13,6 @@ describe('NxTextInput', function() {
       passwordComponentSelector = '#nx-text-input-password-example .nx-text-input',
       textareaComponentSelector = '#nx-text-input-textarea-validation-example .nx-text-input',
       validatableTextareaComponentSelector = '#nx-text-input-textarea-validation-example .nx-text-input',
-      validatableTextareaComponentSelector = '#nx-text-input-textarea-validation-example .nx-text-input',
       longComponentSelector = '#nx-text-input-long-example .nx-text-input:not(.nx-text-input--textarea)',
       longTextareaComponentSelector = '#nx-text-input-long-example .nx-text-input--textarea',
       disabledComponentSelector = '#nx-text-input-disabled-example .nx-text-input.pristine',
