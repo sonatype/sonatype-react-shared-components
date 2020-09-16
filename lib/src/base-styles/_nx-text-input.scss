@@ -103,11 +103,16 @@
   content: '\200b';
 }
 
+@function getInputWidth($component-width) {
+  // subtract padding and border from the component width to get the necessary <input> or <textarea> width
+  @return $component-width - (2 * ($nx-spacing-md + 1));
+}
+
 .nx-text-input--long {
   width: $nx-form-element-width-wide;
 
   textarea.nx-text-input__input {
-    width: $nx-form-element-width-wide - (2 * $nx-spacing-md);
+    width: getInputWidth($nx-form-element-width-wide);
   }
 }
 
@@ -126,7 +131,7 @@ textarea.nx-text-input__input {
   min-height: 220px;
   padding: 0;
 
-  width: $nx-form-element-width-normal - (2 * $nx-spacing-md);
+  width: getInputWidth($nx-form-element-width-normal);
 }
 
 ::-ms-clear {
