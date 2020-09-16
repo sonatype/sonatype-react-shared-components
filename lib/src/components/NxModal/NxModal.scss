@@ -65,14 +65,4 @@ $nx-modal-padding: $nx-spacing-l;
   flex-basis: auto;
   padding: $nx-spacing-l $nx-modal-padding $nx-spacing-xl $nx-modal-padding;
   overflow-y: auto;
-
-  > .nx-alert {
-    &:first-child {
-      margin-top: -12px;
-    }
-
-    &:last-child {
-      margin-bottom: -10px;
-    }
-  }
 }
