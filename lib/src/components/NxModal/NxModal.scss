@@ -13,6 +13,8 @@
 $nx-modal-padding: $nx-spacing-l;
 
 .nx-modal {
+  @include container-vertical;
+
   border-radius: $nx-border-radius;
   display: flex;
   flex-basis: auto;
