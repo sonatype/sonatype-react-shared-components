@@ -14,7 +14,6 @@ const NxButton = forwardRef<HTMLButtonElement, Props>(
       const classNames = classnames('nx-btn', className, {
         // secondary is the default, its styles are directly on `nx-btn`
         [`nx-btn--${variant}`]: variant && variant !== 'secondary',
-        'nx-btn--tertiary nx-btn--icon-only': iconOnly,
         'nx-btn--inline': inline
       });
 

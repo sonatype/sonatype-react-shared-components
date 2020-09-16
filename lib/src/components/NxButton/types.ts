@@ -7,7 +7,7 @@
 import * as PropTypes from 'prop-types';
 import {ButtonHTMLAttributes, WeakValidationMap} from 'react';
 
-export const NX_BUTTON_VARIANTS = ['primary', 'secondary', 'tertiary', 'error'] as const;
+export const NX_BUTTON_VARIANTS = ['primary', 'secondary', 'tertiary', 'icon-only', 'error'] as const;
 export type NX_BUTTON_VARIANT_TYPE = (typeof NX_BUTTON_VARIANTS)[number]; // See https://stackoverflow.com/a/45486495
 
 export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
