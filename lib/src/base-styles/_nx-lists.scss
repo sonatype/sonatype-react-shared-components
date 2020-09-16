@@ -55,8 +55,12 @@
   }
 }
 
-.nx-list-item--empty {
+.nx-list__item--empty {
   text-align: center;
+
+  .nx-list__text {
+    @include regular();
+  }
 }
 
 .nx-list__item--error {
@@ -67,7 +71,7 @@
   }
 }
 
-.nx-list-item.disabled {
+.nx-list__item.disabled {
   color: $nx-text-color-disabled;
   cursor: default;
 }
