@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxInfoAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxModalSimpleExample from './NxModalSimpleExample';
@@ -137,6 +138,10 @@ export default function NxModalPage() {
             </tr>
           </tbody>
         </table>
+        <NxInfoAlert>
+          Note: Placing content into the modal which exceeds its horizontal bounds is not supported. The resulting
+          layout is unspecified.
+        </NxInfoAlert>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple NxModal Example"
