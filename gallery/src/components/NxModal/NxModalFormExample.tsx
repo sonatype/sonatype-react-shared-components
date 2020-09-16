@@ -28,7 +28,7 @@ export default function NxModalFormExample() {
             <div className="nx-modal-content">
               <div className="nx-form-group">
                 <label className="nx-label">
-                 <span className="nx-label__text">Username</span>
+                  <span className="nx-label__text">Username</span>
                   <NxStatefulTextInput placeholder="Username"/>
                 </label>
               </div>
@@ -41,9 +41,9 @@ export default function NxModalFormExample() {
             </div>
             <footer className="nx-footer">
               <div className="nx-btn-bar">
-                <NxButton onClick={modalCloseHandler} variant="primary">Primary</NxButton>
-                <NxButton onClick={modalCloseHandler}>Default</NxButton>
-                <NxButton onClick={modalCloseHandler} variant="tertiary">Tertiary</NxButton>
+                <NxButton type="button" onClick={modalCloseHandler} variant="primary">Primary</NxButton>
+                <NxButton type="button" onClick={modalCloseHandler}>Default</NxButton>
+                <NxButton type="button" onClick={modalCloseHandler} variant="tertiary">Tertiary</NxButton>
               </div>
             </footer>
           </form>

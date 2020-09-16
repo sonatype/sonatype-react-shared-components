@@ -52,7 +52,7 @@ export default function NxModalFormErrorExample() {
             <footer className="nx-footer">
               <NxLoadError { ...({ error, retryHandler }) } onClick={modalCloseHandler} />
               <div className="nx-btn-bar">
-                <NxButton onClick={modalCloseHandler}>Cancel</NxButton>
+                <NxButton type="button" onClick={modalCloseHandler}>Cancel</NxButton>
               </div>
             </footer>
           </form>
