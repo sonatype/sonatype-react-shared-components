@@ -7,19 +7,20 @@
 import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
+import NxListWithActionsExample from './NxListWithActionsExample';
 import NxListErrorExample from './NxListErrorStateExample';
 
 const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').default,
     NxListClickableCode = require('!!raw-loader!./NxListClickableExample.html').default,
     NxListMultiLineCode = require('!!raw-loader!./NxListMultiLineExample.html').default,
     NxListBulletedCode = require('!!raw-loader!./NxListBulletedExample.html').default,
-    NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.html').default,
+    NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.tsx').default,
     NxListEmptyCode = require('!!raw-loader!./NxListEmptyExample.html').default,
     NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.tsx').default;
 
 const NxListsExamples = () =>
   <>
-    <GalleryExampleTile title="NX Simple List Example"
+    <GalleryExampleTile title="NX Basic List Example"
                         id="nx-list-simple-example"
                         htmlExample={NxListSimpleCode}
                         codeExamples={NxListSimpleCode}>
@@ -46,7 +47,7 @@ const NxListsExamples = () =>
 
     <GalleryExampleTile title="NX List with Actions Example"
                         id="nx-list-actions-example"
-                        htmlExample={NxListWithActionsCode}
+                        liveExample={NxListWithActionsExample}
                         codeExamples={NxListWithActionsCode}>
       An <code className="nx-code">nx-list</code> with icon buttons for initiation actions.
     </GalleryExampleTile>
