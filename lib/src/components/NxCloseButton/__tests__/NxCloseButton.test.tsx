@@ -12,15 +12,14 @@ import Close from '../../../icons/Close';
 describe('NxCloseButton', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxCloseButton, {});
 
-  it('renders an tertiary NxButton with type=button', function() {
+  it('renders an NxButton with type=button', function() {
     expect(getShallowComponent()).toMatchSelector(NxButton);
-    expect(getShallowComponent()).toHaveProp('variant', 'tertiary');
     expect(getShallowComponent()).toHaveProp('type', 'button');
   });
 
-  it('passes the specified classes to the NxButton plus nx-btn--close', function() {
+  it('passes the specified classes to the NxButton plus nx-btn--icon-only', function() {
     expect(getShallowComponent({ className: 'foo' })).toHaveClassName('foo');
-    expect(getShallowComponent({ className: 'foo' })).toHaveClassName('nx-btn--close');
+    expect(getShallowComponent({ className: 'foo' })).toHaveClassName('nx-btn--icon-only');
   });
 
   it('passes other props on to the NxButton', function() {
