@@ -88,6 +88,13 @@ const NxFormLayoutPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-footer</code></td>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">
+              Applied to a footer which contains the form action buttons (e.g. Submit, Cancel, etc).
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-legend</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
