@@ -105,6 +105,10 @@
 
 .nx-text-input--long {
   width: $nx-form-element-width-wide;
+
+  textarea.nx-text-input__input {
+    width: $nx-form-element-width-wide - (2 * $nx-spacing-md);
+  }
 }
 
 .nx-text-input--textarea {
@@ -112,7 +116,8 @@
     align-items: flex-end;
   }
 
-  width: auto;
+  // textarea width is controlled at the textarea element itself so that it can still be user-resizable
+  width: min-content;
   min-width: 300px;
   max-width: 700px;
 }
@@ -120,6 +125,8 @@
 textarea.nx-text-input__input {
   min-height: 220px;
   padding: 0;
+
+  width: $nx-form-element-width-normal - (2 * $nx-spacing-md);
 }
 
 ::-ms-clear {
