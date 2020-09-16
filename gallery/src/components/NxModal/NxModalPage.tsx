@@ -129,7 +129,9 @@ export default function NxModalPage() {
       <GalleryExampleTile title="Simple NxModal Example"
                           liveExample={NxModalSimpleExample}
                           codeExamples={NxModalSimpleSourceCode}>
-        A basic example of an <code className="nx-code">NxModal</code>. Click the button to open the modal.
+        A basic example of an <code className="nx-code">NxModal</code>. Click the button to open the modal. Note that
+        this modal has sufficient content to induce scrolling (on most monitors). You will see in other examples that
+        when modals have smaller contents, the scrollbar does not appear and the modal content area shrinks to fit.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with NxAlert"
