@@ -110,6 +110,8 @@
 }
 
 .nx-btn--icon-only {
+  @extend .nx-btn--tertiary;
+
   border-color: transparent;
   height: 32px;
   padding: 0;
