@@ -11,6 +11,8 @@
 .nx-form {
   @include container-vertical;
   margin: $nx-spacing-xl 0;
+
+  position: relative;
 }
 
 .nx-form-group {
