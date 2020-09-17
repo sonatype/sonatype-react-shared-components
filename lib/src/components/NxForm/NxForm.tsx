@@ -6,6 +6,7 @@
  */
 import React, { forwardRef, FormEvent } from 'react';
 import { always } from 'ramda';
+import classnames from 'classnames';
 
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
 import NxLoadError from '../NxLoadError/NxLoadError';
@@ -25,7 +26,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
             loadError,
             submitError,
             validationError,
-            submitBtnClasses,
+            submitBtnClasses: submitBtnClassesProp,
             submitBtnText,
             submitMaskState,
             submitMaskMessage,
@@ -34,7 +35,10 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
             additionalFooterBtns,
             ...formAttrs
           } = props,
-          getChildren = children instanceof Function ? children : always(children);
+          getChildren = children instanceof Function ? children : always(children),
+          submitBtnClasses = classnames(submitBtnClassesProp, {
+            disabled: !!validationError
+          });
 
       function onSubmit(evt: FormEvent) {
         evt.preventDefault();
