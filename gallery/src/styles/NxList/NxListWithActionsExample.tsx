@@ -10,14 +10,14 @@ import { NxButton, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 const NxListErrorExample = () =>
   <ul className="nx-list">
-    <li className="nx-list__item nx-list__item--with-modifier-icon">
+    <li className="nx-list__item">
       <span className="nx-list__text">List item</span>
       <div className="nx-list-actions">
-        <NxButton iconOnly><NxFontAwesomeIcon icon={faTrash} /></NxButton>
         <NxButton iconOnly><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+        <NxButton iconOnly><NxFontAwesomeIcon icon={faTrash} /></NxButton>
       </div>
     </li>
-    <li className="nx-list__item nx-list__item--with-modifier-icon">
+    <li className="nx-list__item">
       <span className="nx-list__text">List item</span>
       <p className="nx-list__subtext">
         This is some sub-text to demonstrate spacing
