@@ -244,9 +244,6 @@ exports.config = {
       // the page to shift, ruining any manual mouse positioning that had just been done
       eyesConf.setHideScrollbars(false);
 
-      // should prevent applitools from srolling elements to the top before taking the picture
-      eyesConf.setStitchMode(StitchMode.CSS);
-
       eyesConf.setViewportSize(new RectangleSize(1366, 1000));
 
       eyes.setConfiguration(eyesConf);
