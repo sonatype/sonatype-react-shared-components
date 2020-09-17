@@ -51,7 +51,7 @@ describe('NxButton', function() {
     const selector = '#nx-button-primary-example .nx-btn:not([disabled]):not(.disabled)';
 
     it('has a bold blue background by default', simpleTest(selector));
-    it('has a dark background when hovered', hoverTest(selector, selector, true));
+    it('has a dark background when hovered', hoverTest(selector));
     it('has a light blue border and light blue background when clicked', clickTest(selector));
     it('has a light blue border when focused', focusTest(selector));
     it('has a light blue border and dark blue background when focused and hovered', focusAndHoverTest(selector));
