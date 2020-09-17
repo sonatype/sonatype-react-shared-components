@@ -78,6 +78,8 @@
 }
 
 .gallery-example--checkered-background {
+  padding: $nx-spacing-l;
+
   .gallery-example-live {
     $checker-size: 12px;
     $checker-color: #e9e9e9;
@@ -86,8 +88,6 @@
     $checker-layer-1-position: top left;
     $checker-layer-2-position: #{$checker-size / 2} #{$checker-size / 2};
     $checker-gradient: linear-gradient(to top right, $checker-color 25%, transparent 25% 75%, $checker-color 75%);
-
-    padding: $nx-spacing-l;
 
     // create a checkerbox pattern for the background so that the edges and background of the example are clear
     background: repeat $checker-layer-2-position/$checker-dimensions $checker-gradient,
