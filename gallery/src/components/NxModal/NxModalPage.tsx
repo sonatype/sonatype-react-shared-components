@@ -145,6 +145,7 @@ export default function NxModalPage() {
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple NxModal Example"
+                          id="nx-modal-simple-example"
                           liveExample={NxModalSimpleExample}
                           codeExamples={NxModalSimpleSourceCode}>
         A basic example of an <code className="nx-code">NxModal</code>. Click the button to open the modal. Note that
@@ -160,6 +161,7 @@ export default function NxModalPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal with stacked modal example"
+                          id="nx-modal-stacked-example"
                           liveExample={NxModalStackedExample}
                           codeExamples={NxModalStackedSourceCode}>
         <code className="nx-code">NxModal</code> also supports stacked or nested modals. A second modal can be
@@ -173,6 +175,7 @@ export default function NxModalPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with form and error styling"
+                          id="nx-modal-form-with-alert-example"
                           liveExample={NxModalFormErrorExample}
                           codeExamples={NxModalFormErrorSourceCode}>
         This <code className="nx-code">NxModal</code> also contains a form, but additionally demonstrates the typical
@@ -181,6 +184,7 @@ export default function NxModalPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Wide NxModal Example"
+                          id="nx-modal-narrow-example"
                           liveExample={NxModalExtraWideExample}
                           codeExamples={NxModalExtraWideSourceCode}>
         A demonstration of the <code className="nx-code">wide</code> styles
@@ -188,6 +192,7 @@ export default function NxModalPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Narrow NxModal Example"
+                          id="nx-modal-wide-example"
                           liveExample={NxModalNarrowExample}
                           codeExamples={NxModalNarrowSourceCode}>
         A demonstration of the <code className="nx-code">narrow</code> styles
