@@ -54,8 +54,28 @@
   background-color: $nx-grey-1;
   border: $nx-border;
   border-radius: $nx-border-radius;
-  color: $nx-invalid-color;
+  color: #cd0028;
   font-family: monospace;
   padding: 1px 4px;
   white-space: nowrap;
+}
+
+%nx-pre {
+  background-color: #fff;
+  border: 1px solid #474747;
+  border-left-width: 8px;
+  border-radius: $nx-border-radius;
+  font-size: $nx-font-size;
+  margin: 0 0 $nx-spacing-l 0;
+  padding: $nx-spacing-md;
+  white-space: pre-wrap;
+
+  // "code" used below to support Markdown text in NxVulnerabilityDetails
+  code, .nx-code {
+    background-color: inherit;
+    border: 0;
+    color: inherit;
+    padding: 0;
+    white-space: inherit;
+  }
 }
