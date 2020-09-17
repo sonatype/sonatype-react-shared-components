@@ -64,17 +64,13 @@ const NxListPage = () =>
             <td className="nx-cell">If you need a list with bullets.</td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list__item--with-modifier-icon</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list__item</code></td>
-            <td className="nx-cell">Use this when you want to have a button on the far right.</td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.selected</code></td>
-            <td className="nx-cell">Utility class that goes along
-              with <code className="nx-code">.nx-list__item</code>
+            <td className="nx-cell">
+              Utility class that goes along with <code className="nx-code">.nx-list__item</code>
             </td>
-            <td className="nx-cell">Use the <code className="nx-code">selected</code> class
-              alongside <code className="nx-code">.nx-list__item</code> when a clickable list item is selected
+            <td className="nx-cell">
+              Use the <code className="nx-code">selected</code> class alongside
+              <code className="nx-code">.nx-list__item</code> when a clickable list item is selected
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -86,16 +82,19 @@ const NxListPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list-actions</code></td>
+            <td className="nx-cell">A container for buttons inside list items</td>
+            <td className="nx-cell">Use this when you want to have a button on the far right.</td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-list__item--empty</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-list__item</code></td>
             <td className="nx-cell">Used when there are no list items returned.</td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-error</code></td>
+            <td className="nx-cell"><code className="nx-code">nx-list__item--error</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-list__item</code></td>
-            <td className="nx-cell">
-              Not strictly speaking a modifier, this is added to a list item when the list is in an error state.
-            </td>
+            <td className="nx-cell">This is added to a list item when the list is in an error state.</td>
           </tr>
         </tbody>
       </table>
