@@ -8,15 +8,15 @@ import React from 'react';
 import { NxLoadError } from '@sonatype/react-shared-components';
 
 const NxListErrorExample = () =>
-  <div className="nx-list">
+  <>
     <h3 className="nx-h3">
       List with error alert
     </h3>
-    <ul>
+    <ul className="nx-list">
       <li className="nx-list__item nx-list__item--error">
         <NxLoadError error=""/>
       </li>
     </ul>
-  </div>;
+  </>;
 
 export default NxListErrorExample;
