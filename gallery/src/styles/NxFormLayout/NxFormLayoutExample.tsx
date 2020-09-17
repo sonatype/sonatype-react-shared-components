@@ -45,21 +45,28 @@ export default function NxFormLayoutExample() {
     setTimeout(function() {
       setLoading(false);
       setLoadError(null);
-    }, 3000);
+    }, 500);
   }
 
   function onSubmit() {
-    setSubmitError(submitCount < 1 ? 'Stuff could not be saved!' : null);
-    setSubmitCount(submitCount + 1);
-    setSubmitMaskState(false);
+    if (submitCount < 1) {
+      setSubmitError('Stuff could not be saved!');
+    }
+    else {
+      setSubmitError(null);
 
-    setTimeout(function() {
-      setSubmitMaskState(true);
+      setSubmitMaskState(false);
 
       setTimeout(function() {
-        setSubmitMaskState(null);
-      }, SUCCESS_VISIBLE_TIME_MS);
-    }, 3000);
+        setSubmitMaskState(true);
+
+        setTimeout(function() {
+          setSubmitMaskState(null);
+        }, SUCCESS_VISIBLE_TIME_MS);
+      }, 3000);
+    }
+
+    setSubmitCount(submitCount + 1);
   }
 
   return (
