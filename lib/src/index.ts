@@ -129,6 +129,10 @@ export {
   default as NxPageHeader,
   Props as NxPageHeaderProps
 } from './components/NxPageHeader/NxPageHeader';
+export {
+  default as NxForm,
+  Props as NxFormProps
+} from './components/NxForm/NxForm';
 
 export * from './util/threatLevels';
 export * from './util/validationUtil';

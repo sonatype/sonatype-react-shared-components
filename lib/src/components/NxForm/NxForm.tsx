@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React, { forwardRef, FormEvent } from 'react';
 import { always } from 'ramda';
 
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
@@ -20,7 +20,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
       const {
             loading,
             doLoad,
-            onSubmit,
+            onSubmit: onSubmitProp,
             onCancel,
             loadError,
             submitError,
@@ -36,40 +36,47 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
           } = props,
           getChildren = children instanceof Function ? children : always(children);
 
-      return (
-        <NxLoadWrapper loading={loading} error={loadError} retryHandler={doLoad}>
-          {() =>
-            <form className="nx-form" onSubmit={onSubmit} { ...formAttrs }>
-              { getChildren() }
-              <footer className="nx-footer">
-                { submitError &&
-                  <NxLoadError titleMessage="An error occurred saving data."
-                               error={submitError}
-                               retryHandler={onSubmit} />
-                }
+      function onSubmit(evt: FormEvent) {
+        evt.preventDefault();
+        onSubmitProp();
+      }
 
-                <div className="nx-btn-bar">
-                  { additionalFooterBtns }
-                  <NxButton type="button" onClick={onCancel}>Cancel</NxButton>
-                  { !!submitError ||
-                    <NxTooltip title={validationError || ''}>
-                      <NxButton variant="primary" className={submitBtnClasses || undefined}>
-                        {submitBtnText || 'Submit'}
-                      </NxButton>
-                    </NxTooltip>
-                  }
-                </div>
+      const renderForm = () => (
+        <form className="nx-form" onSubmit={onSubmit} { ...formAttrs }>
+          { getChildren() }
+          <footer className="nx-footer">
+            { submitError &&
+              <NxLoadError titleMessage="An error occurred saving data."
+                           error={submitError}
+                           retryHandler={onSubmitProp} />
+            }
 
-              </footer>
-              { submitMaskState != null &&
-                <NxSubmitMask success={ submitMaskState }
-                              message={submitMaskMessage}
-                              successMessage={submitMaskSuccessMessage} />
+            <div className="nx-btn-bar">
+              { additionalFooterBtns }
+              <NxButton type="button" onClick={onCancel}>Cancel</NxButton>
+              { !!submitError ||
+                <NxTooltip title={validationError || ''}>
+                  <NxButton variant="primary" className={submitBtnClasses || undefined}>
+                    {submitBtnText || 'Submit'}
+                  </NxButton>
+                </NxTooltip>
               }
-            </form>
+            </div>
+
+          </footer>
+          { submitMaskState != null &&
+            <NxSubmitMask success={ submitMaskState }
+                          message={submitMaskMessage}
+                          successMessage={submitMaskSuccessMessage} />
           }
-        </NxLoadWrapper>
+        </form>
       );
+
+      return doLoad ? (
+        <NxLoadWrapper loading={loading} error={loadError} retryHandler={doLoad}>
+          {renderForm}
+        </NxLoadWrapper>
+      ) : renderForm();
     }
 );
 

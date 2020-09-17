@@ -9,7 +9,7 @@ import * as PropTypes from 'prop-types';
 
 export interface Props extends FormHTMLAttributes<HTMLFormElement> {
   loading?: boolean | null;
-  doLoad: () => void,
+  doLoad?: () => void | null,
   onSubmit: () => void,
   onCancel?: () => void,
   loadError?: string | null,
@@ -26,7 +26,7 @@ export interface Props extends FormHTMLAttributes<HTMLFormElement> {
 
 export const propTypes: ValidationMap<Props> = {
   loading: PropTypes.bool,
-  doLoad: PropTypes.func.isRequired,
+  doLoad: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   loadError: PropTypes.string,
