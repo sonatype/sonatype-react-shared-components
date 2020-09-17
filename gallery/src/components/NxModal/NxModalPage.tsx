@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxInfoAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxModalSimpleExample from './NxModalSimpleExample';
@@ -13,6 +14,7 @@ import NxModalFormExample from './NxModalFormExample';
 import NxModalStackedExample from './NxModalStackedExample';
 import NxModalFormErrorExample from './NxModalFormErrorExample';
 import NxModalExtraWideExample from './NxModalExtraWideExample';
+import NxModalNarrowExample from './NxModalNarrowExample';
 
 const NxModalSimpleSourceCode = require('!!raw-loader!./NxModalSimpleExample').default;
 const NxModalAlertSourceCode = require('!!raw-loader!./NxModalAlertExample').default;
@@ -20,6 +22,7 @@ const NxModalFormSourceCode = require('!!raw-loader!./NxModalFormExample').defau
 const NxModalStackedSourceCode = require('!!raw-loader!./NxModalStackedExample').default;
 const NxModalFormErrorSourceCode = require('!!raw-loader!./NxModalFormErrorExample').default;
 const NxModalExtraWideSourceCode = require('!!raw-loader!./NxModalExtraWideExample').default;
+const NxModalNarrowSourceCode = require('!!raw-loader!./NxModalNarrowExample').default;
 
 export default function NxModalPage() {
   return (
@@ -58,22 +61,21 @@ export default function NxModalPage() {
               <td className="nx-cell">Wrapping the modal content</td>
               <td className="nx-cell">
                 All content between the header and footer should be wrapped in a div with
-                the <code className="nx-code">.nx-modal-content</code> className.
+                the <code className="nx-code">.nx-modal-content</code> className. This element (and thus the modal
+                overall) will shrink to fit the content, or expand vertically until the modal reaches its maximum height
+                (determined as a distance from the viewport edges). If the contents of
+                the <code className="nx-code">nx-modal-content</code> continue to grow beyond that height, it
+                introduces a scrollbar.
               </td>
             </tr>
             <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-modal-footer</code></td>
+              <td className="nx-cell"><code className="nx-code">.nx-footer</code></td>
               <td className="nx-cell">HTML <code className="nx-code">footer</code> element</td>
               <td className="nx-cell">
-                The <code className="nx-code">NxModal</code> component supports
-                buttons, <code className="nx-code">nx-error</code> or <code className="nx-code">nx-alert</code> classes
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-modal--wide</code></td>
-              <td className="nx-cell">The <code className="nx-code">NxModal</code> component</td>
-              <td className="nx-cell">
-                Applies an extra-wide style, for modals with large contents.
+                Each modal should contain a footer containing buttons for various actions. At a minimum, there
+                should be a button that enables the user to close the modal. Further, the footer may contain
+                an <code className="nx-code">NxAlert</code> as would typically be the case after a form submission
+                which resulted in an error.
               </td>
             </tr>
           </tbody>
@@ -85,6 +87,7 @@ export default function NxModalPage() {
               <th className="nx-cell nx-cell--header">Prop</th>
               <th className="nx-cell nx-cell--header">Type</th>
               <th className="nx-cell nx-cell--header">Required</th>
+              <th className="nx-cell nx-cell--header">Default</th>
               <th className="nx-cell nx-cell--header">Details</th>
             </tr>
           </thead>
@@ -93,6 +96,7 @@ export default function NxModalPage() {
               <td className="nx-cell">className</td>
               <td className="nx-cell">string</td>
               <td className="nx-cell">No</td>
+              <td className="nx-cell"></td>
               <td className="nx-cell">
                 Any <code className="nx-code">className</code> attributes passed in on
                 the <code className="nx-code">NxModal</code> element will be added to
@@ -103,9 +107,20 @@ export default function NxModalPage() {
               <td className="nx-cell">onClose</td>
               <td className="nx-cell">Function (() => void)</td>
               <td className="nx-cell">Yes</td>
+              <td className="nx-cell"></td>
               <td className="nx-cell">
                 The function to be called to close the modal when pressing
                 the <code className="nx-code">Escape</code> key.
+              </td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell">variant</td>
+              <td className="nx-cell">"wide" | "narrow" | "normal"</td>
+              <td className="nx-cell">No</td>
+              <td className="nx-cell">"normal"</td>
+              <td className="nx-cell">
+                This prop specifies a style variant for the modal. Currently, variants only differ in width.
+                "wide" modals are 1000px wide, "normal" modals are 800px wide, and "narrow" modals are 600px wide.
               </td>
             </tr>
             <tr className="nx-table-row">
@@ -118,16 +133,23 @@ export default function NxModalPage() {
                 </a>
               </td>
               <td className="nx-cell">No</td>
+              <td className="nx-cell"></td>
               <td className="nx-cell">NxModal supports any html attribute that's normally supported by Div elements</td>
             </tr>
           </tbody>
         </table>
+        <NxInfoAlert>
+          Note: Placing content into the modal which exceeds its horizontal bounds is not supported. The resulting
+          layout is unspecified.
+        </NxInfoAlert>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple NxModal Example"
                           liveExample={NxModalSimpleExample}
                           codeExamples={NxModalSimpleSourceCode}>
-        A basic example of an <code className="nx-code">NxModal</code>. Click the button to open the modal.
+        A basic example of an <code className="nx-code">NxModal</code>. Click the button to open the modal. Note that
+        this modal has sufficient content to induce scrolling (on most monitors). You will see in other examples that
+        when modals have smaller contents, the scrollbar does not appear and the modal content area shrinks to fit.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with NxAlert"
@@ -158,10 +180,18 @@ export default function NxModalPage() {
         an <code className="nx-code">NxErrorAlert</code> in the footer
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="Extra Wide NxModal Example"
+      <GalleryExampleTile title="Wide NxModal Example"
                           liveExample={NxModalExtraWideExample}
                           codeExamples={NxModalExtraWideSourceCode}>
-        A demonstration of the extra-wide styles for <code className="nx-code">NxModal</code>.
+        A demonstration of the <code className="nx-code">wide</code> styles
+        for <code className="nx-code">NxModal</code>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Narrow NxModal Example"
+                          liveExample={NxModalNarrowExample}
+                          codeExamples={NxModalNarrowSourceCode}>
+        A demonstration of the <code className="nx-code">narrow</code> styles
+        for <code className="nx-code">NxModal</code>.
       </GalleryExampleTile>
     </>
   );
