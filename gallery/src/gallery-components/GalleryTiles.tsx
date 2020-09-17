@@ -95,7 +95,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
         tileActions = (
           <NxCheckbox isChecked={checkeredBackground}
                       onChange={toggleCheckeredBackground}>
-            Show Checkered Background on example
+            Show checkered background
           </NxCheckbox>
         );
 
