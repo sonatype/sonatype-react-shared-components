@@ -17,6 +17,7 @@ const NxTilesExamples = () =>
   <>
     <GalleryExampleTile title="NX Simple Tile Example"
                         id="nx-tile-simple-example"
+                        defaultCheckeredBackground={true}
                         htmlExample={NxSimpleTileCode}
                         codeExamples={NxSimpleTileCode}>
       A simple example of an <code className="nx-code">nx-tile</code> including a header and a footer.
@@ -24,6 +25,7 @@ const NxTilesExamples = () =>
 
     <GalleryExampleTile title="NX Tile with Actions Example"
                         id="nx-tile-actions-example"
+                        defaultCheckeredBackground={true}
                         htmlExample={NxTileWithActionsCode}
                         codeExamples={NxTileWithActionsCode}>
       An example of an <code className="nx-code">nx-tile</code> with action buttons and a subtitle in the header.
@@ -32,6 +34,7 @@ const NxTilesExamples = () =>
 
     <GalleryExampleTile title="NX Tile with Subtitle Example"
                         id="nx-tile-subtitle-example"
+                        defaultCheckeredBackground={true}
                         htmlExample={NxTileWithSubtitleCode}
                         codeExamples={NxTileWithSubtitleCode}>
       An example of an <code className="nx-code">nx-tile</code> with a long subtitle that wraps.
@@ -39,6 +42,7 @@ const NxTilesExamples = () =>
 
     <GalleryExampleTile title="NX Tile with Horizontal Rule Example"
                         id="nx-tile-horizontal-rule-example"
+                        defaultCheckeredBackground={true}
                         htmlExample={NxTileWithHorizontalRuleCode}
                         codeExamples={NxTileWithHorizontalRuleCode}>
       An example of a style variation giving the <code className="nx-code">nx-tile</code> a horizontal rule in between
@@ -47,6 +51,7 @@ const NxTilesExamples = () =>
 
     <GalleryExampleTile title="NX Tile with a Subsection Header Example"
                         id="nx-tile-subsections-example"
+                        defaultCheckeredBackground={true}
                         htmlExample={NxTileSubsectionCode}
                         codeExamples={NxTileSubsectionCode}>
       An example of an <code className="nx-code">nx-tile</code> containing mulitple subsections. Note the horizontal

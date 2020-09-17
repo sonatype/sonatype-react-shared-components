@@ -77,21 +77,23 @@
   }
 }
 
-.gallery-example-live {
-  $checker-size: 12px;
-  $checker-color: #e9e9e9;
-  $checker-bg-color: #f9f9f9;
-  $checker-dimensions: $checker-size $checker-size;
-  $checker-layer-1-position: top left;
-  $checker-layer-2-position: #{$checker-size / 2} #{$checker-size / 2};
-  $checker-gradient: linear-gradient(to top right, $checker-color 25%, transparent 25% 75%, $checker-color 75%);
+.gallery-example--checkered-background {
+  .gallery-example-live {
+    $checker-size: 12px;
+    $checker-color: #e9e9e9;
+    $checker-bg-color: #f9f9f9;
+    $checker-dimensions: $checker-size $checker-size;
+    $checker-layer-1-position: top left;
+    $checker-layer-2-position: #{$checker-size / 2} #{$checker-size / 2};
+    $checker-gradient: linear-gradient(to top right, $checker-color 25%, transparent 25% 75%, $checker-color 75%);
 
-  padding: $nx-spacing-l;
+    padding: $nx-spacing-l;
 
-  // create a checkerbox pattern for the background so that the edges and background of the example are clear
-  background: repeat $checker-layer-2-position/$checker-dimensions $checker-gradient,
-              repeat $checker-layer-1-position/$checker-dimensions $checker-gradient,
-              $checker-bg-color;
+    // create a checkerbox pattern for the background so that the edges and background of the example are clear
+    background: repeat $checker-layer-2-position/$checker-dimensions $checker-gradient,
+                repeat $checker-layer-1-position/$checker-dimensions $checker-gradient,
+                $checker-bg-color;
+  }
 }
 
 // .nx-html added to this selector for specificity reasons
