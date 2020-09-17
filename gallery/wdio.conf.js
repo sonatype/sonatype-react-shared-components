@@ -7,7 +7,7 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfigFn = require('./webpack.config.js');
-const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, StitchMode, Target } =
+const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, Target } =
     require('@applitools/eyes-webdriverio');
 
 const host = process.env.TEST_IP || 'localhost';
