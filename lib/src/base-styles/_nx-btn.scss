@@ -27,7 +27,7 @@
   color: #045dd1;
   cursor: pointer;
   display: inline-block;
-  font-size: 16px;
+  font-size: $nx-font-size;
   line-height: $nx-line-height;
   margin: 0 $nx-spacing-xs;
   padding: $nx-spacing-xs $nx-spacing-l;
@@ -110,8 +110,15 @@
 }
 
 .nx-btn--icon-only {
+  @extend .nx-btn--tertiary;
+
+  border-color: transparent;
   height: 32px;
   padding: 0;
   width: 32px;
   min-width: 0;
+
+  .nx-icon {
+    height: 1em;
+  }
 }

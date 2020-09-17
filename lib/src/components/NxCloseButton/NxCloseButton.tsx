@@ -11,14 +11,12 @@ import classnames from 'classnames';
 import Close from '../../icons/Close';
 import NxButton from '../NxButton/NxButton';
 
-import './NxCloseButton.scss';
-
 const NxCloseButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLButtonElement>>(
     function NxCloseButton({ className, ...otherProps }, ref) {
       const btnClasses = classnames('nx-btn--close', className);
 
       return (
-        <NxButton ref={ref} type="button" className={btnClasses} iconOnly={true} variant="tertiary" { ...otherProps }>
+        <NxButton ref={ref} type="button" className={btnClasses} variant="icon-only" { ...otherProps }>
           <Close/>
         </NxButton>
       );
