@@ -13,7 +13,7 @@ import NxButton from '../NxButton/NxButton';
 
 const NxCloseButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLButtonElement>>(
     function NxCloseButton({ className, ...otherProps }, ref) {
-      const btnClasses = classnames(className);
+      const btnClasses = classnames('nx-btn--close', className);
 
       return (
         <NxButton ref={ref} type="button" className={btnClasses} variant="icon-only" { ...otherProps }>

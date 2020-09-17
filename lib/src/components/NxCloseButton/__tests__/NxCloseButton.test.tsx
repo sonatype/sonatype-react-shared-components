@@ -20,6 +20,7 @@ describe('NxCloseButton', function() {
 
   it('passes the specified classes to the NxButton', function() {
     expect(getShallowComponent({ className: 'foo' })).toHaveClassName('foo');
+    expect(getShallowComponent({ className: 'foo' })).toHaveClassName('nx-btn--close');
   });
 
   it('passes other props on to the NxButton', function() {
