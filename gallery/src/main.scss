@@ -77,9 +77,11 @@
   }
 }
 
-.gallery-example--checkered-background {
+.gallery-example-live {
   padding: $nx-spacing-l;
+}
 
+.gallery-example--checkered-background {
   .gallery-example-live {
     $checker-size: 12px;
     $checker-color: #e9e9e9;
