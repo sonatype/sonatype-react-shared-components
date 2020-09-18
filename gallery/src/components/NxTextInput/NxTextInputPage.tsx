@@ -13,6 +13,7 @@ import NxTextInputValidationExample from './NxTextInputValidationExample';
 import NxTextInputPasswordExample from './NxTextInputPasswordExample';
 import NxTextInputTextAreaExample from './NxTextInputTextAreaExample';
 import NxTextInputTextAreaValidationExample from './NxTextInputTextAreaValidationExample';
+import NxTextInputLongExample from './NxTextInputLongExample';
 import NxTextInputDisabledExample from './NxTextInputDisabledExample';
 
 const simpleSourceCode = require('!!raw-loader!./NxTextInputSimpleExample').default;
@@ -20,6 +21,7 @@ const validationSourceCode = require('!!raw-loader!./NxTextInputValidationExampl
 const passwordSourceCode = require('!!raw-loader!./NxTextInputPasswordExample').default;
 const textAreaSourceCode = require('!!raw-loader!./NxTextInputTextAreaExample').default;
 const textAreaValidationSourceCode = require('!!raw-loader!./NxTextInputTextAreaValidationExample').default;
+const longSourceCode = require('!!raw-loader!./NxTextInputLongExample').default;
 const disabledSourceCode = require('!!raw-loader!./NxTextInputDisabledExample').default;
 
 const NxTextInputPage = () =>
@@ -225,6 +227,14 @@ const NxTextInputPage = () =>
                         liveExample={NxTextInputTextAreaValidationExample}
                         codeExamples={textAreaValidationSourceCode}>
       An example of an <code className="nx-code">NxTextInput</code> set up to be a multi-line text area with validation.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Long example"
+                        id="nx-text-input-long-example"
+                        liveExample={NxTextInputLongExample}
+                        codeExamples={longSourceCode}>
+      Examples of <code className="nx-code">NxTextInput</code>s using
+      the <code className="nx-code">long</code> modifier, which makes them wider.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled example"
