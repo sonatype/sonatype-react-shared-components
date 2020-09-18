@@ -30,8 +30,11 @@
   box-sizing: border-box;
   color: $nx-text-color-light;
   display: grid;
-  grid-template-columns: 85% auto;
+  grid-template-columns: 1fr auto;
   grid-template-rows: auto auto;
+  grid-template-areas: 
+    "list-text actions"
+    "list-sub-text actions";
   margin: 0;
   padding: $nx-spacing-md;
 
@@ -45,17 +48,14 @@
 .nx-list__text {
   @include semi-bold();
 
-  grid-column: 1;
-  grid-row: 1;
+  grid-area: list-text;
 }
 
 .nx-list__subtext {
   @include regular();
 
-  align-self: start;
   display: block;
-  grid-column: 1;
-  grid-row: 2;
+  grid-area: list-sub-text;
   // top margin is measured down from the top of the objects grid row
   margin: $nx-spacing-sm 0 0 0;
 
@@ -168,21 +168,19 @@
         cursor: default;
       }
     }
-  }
 
-  .nx-icon {
-    align-self: center;
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
+    > .nx-icon {
+      align-self: center;
+      grid-area: actions;
+      justify-self: end;
+    }
   }
 }
 
 .nx-list-actions {
   @include container-horizontal;
 
-  grid-column: 2;
-  grid-row: 1;
+  grid-area: actions;
   justify-self: end;
 
   .nx-btn {
