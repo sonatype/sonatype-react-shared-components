@@ -57,8 +57,8 @@ const NxListsExamples = () =>
                         id="nx-list-multi-line-example"
                         htmlExample={NxListMultiLineCode}
                         codeExamples={NxListMultiLineCode}>
-      Examples of list items that wrap and truncate, some examples demonstrating wrapping and truncation on
-      <code className="nx-code">nx-list-item__subtext</code>.
+      Examples of list items that wrap and truncate, some examples demonstrating wrapping and truncation
+      on <code className="nx-code">nx-list-item__subtext</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List Empty Example"
