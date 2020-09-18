@@ -57,7 +57,7 @@
   display: block;
   grid-area: list-sub-text;
   // top margin is measured down from the top of the objects grid row
-  margin: $nx-spacing-sm 0 0 0;
+  margin: $nx-spacing-md 0 0 0;
 
   &.nx-truncate-ellipsis {
     white-space: nowrap;
