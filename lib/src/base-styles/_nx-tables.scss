@@ -88,13 +88,6 @@
   color: $nx-text-color;
 }
 
-.nx-cell--error {
-  border-color: $nx-fail-color-bg;
-  border-bottom-color: $nx-fail-color;
-  color: $nx-text-color-error;
-  text-align: center;
-}
-
 .nx-cell--header {
   @include bold;
   background-color: #bbc1de;

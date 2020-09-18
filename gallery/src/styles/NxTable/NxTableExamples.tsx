@@ -9,11 +9,12 @@ import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTableClickableExample from './NxTableClickableExample';
+import NxTableErrorExample from './NxTableErrorStateExample';
 
 const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample.html').default,
     NxTableClickableCode = require('!!raw-loader!./NxTableClickableExample').default,
     NxTableEmptyCode = require('!!raw-loader!./NxTableEmptyExample.html').default,
-    NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample.html').default,
+    NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample').default,
     NxTableScrollingCode = require('!!raw-loader!./NxTableScrollingExample.html').default;
 
 const NxTablesExamples = () =>
@@ -38,7 +39,7 @@ const NxTablesExamples = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table with Error Message Example"
-                        htmlExample={NxTableErrorStateCode}
+                        liveExample={NxTableErrorExample}
                         codeExamples={NxTableErrorStateCode}>
       A demonstration of the expected styling and content and an <code className="nx-code">nx-table</code> whose
       contents failed to load.
