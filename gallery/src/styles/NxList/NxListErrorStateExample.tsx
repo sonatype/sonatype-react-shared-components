@@ -4,14 +4,24 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, {useState} from 'react';
 import { NxLoadError } from '@sonatype/react-shared-components';
 
-const NxListErrorExample = () =>
-  <ul className="nx-list">
-    <li className="nx-list__item nx-list__item--error">
-      <NxLoadError error="Network Error"/>
-    </li>
-  </ul>;
+function NxListErrorExample() { 
+  const [error, setError] = useState<string | null>('Server Error');
+
+  function retryHandler() {
+    // lets say the retried action succeeded this time
+    setError(null);
+  }
+
+  return (
+    <ul className="nx-list">
+      <li className="nx-list__item nx-list__item--error">
+        <NxLoadError { ...({ error, retryHandler }) } />
+      </li>
+    </ul>
+  )
+};
 
 export default NxListErrorExample;
