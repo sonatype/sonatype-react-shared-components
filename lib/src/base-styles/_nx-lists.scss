@@ -123,7 +123,6 @@
   .nx-list__item {
     &.selected {
       background-color: #d3e6ff;
-      pointer-events: none;
     }
 
     &:not(.nx-list__item--empty):not(.disabled):not([disabled]),
@@ -143,10 +142,6 @@
       @include regular();
 
       color: $nx-text-color-light;
-    }
-
-    .nx-list__subtext {
-      pointer-events: none; // Fix for IE11 :active state display
     }
 
     &.disabled {
