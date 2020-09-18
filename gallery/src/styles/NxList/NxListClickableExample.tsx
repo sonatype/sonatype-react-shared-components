@@ -15,24 +15,24 @@ const NxListClickableExample = () =>
     </h3>
     <ul className="nx-list nx-list--clickable">
       <li className="nx-list__item">
-        <span className="nx-list__text">action 1</span>
+        <span className="nx-list__text">Action 1</span>
         <NxFontAwesomeIcon icon={faAngleRight} />
       </li>
       <li className="nx-list__item">
         <span className="nx-list__text nx-truncate-ellipsis">
-          this list item should be truncated at the right end edge. youtube weathered network network systemic
+          This list item should be truncated at the right end edge. youtube weathered network network systemic
           systema claymore mine voodoo god garage monofilament realism order-flow corporation car footage vinyl.
         </span>
         <NxFontAwesomeIcon icon={faAngleRight} />
       </li>
       <li className="nx-list__item selected">
-        <span className="nx-list__text">this list item is selected</span>
+        <span className="nx-list__text">This list item is selected</span>
         <NxFontAwesomeIcon icon={faAngleRight} />
       </li>
       <li className="nx-list__item">
-        <span className="nx-list__text">action 4</span>
+        <span className="nx-list__text">Action 4</span>
         <span className="nx-list__subtext">
-          - this is a fourth line. It includes text that might relate to the top line or might not.
+          This is a fourth line. It includes text that might relate to the top line or might not.
         </span>
         <NxFontAwesomeIcon icon={faAngleRight} />
       </li>
