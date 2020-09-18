@@ -8,15 +8,10 @@ import React from 'react';
 import { NxLoadError } from '@sonatype/react-shared-components';
 
 const NxListErrorExample = () =>
-  <>
-    <h3 className="nx-h3">
-      List with error alert
-    </h3>
-    <ul className="nx-list">
-      <li className="nx-list__item nx-list__item--error">
-        <NxLoadError error="Network Error"/>
-      </li>
-    </ul>
-  </>;
+  <ul className="nx-list">
+    <li className="nx-list__item nx-list__item--error">
+      <NxLoadError error="Network Error"/>
+    </li>
+  </ul>;
 
 export default NxListErrorExample;
