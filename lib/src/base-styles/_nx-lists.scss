@@ -123,20 +123,22 @@
   .nx-list__item {
     &.selected {
       background-color: #d3e6ff;
-    }
 
-    &:not(.nx-list__item--empty):not(.disabled):not([disabled]),
-    &:not(.nx-list__item--error) {
-      &:hover, &:focus {
-        background-color: #f1f3fa;
-        cursor: pointer;
-        outline-style: none; // removes :focus outline
-      }
-
-      &:active {
+      &:hover {
         background-color: #d3e6ff;
       }
     }
+
+    &:hover {
+      background-color: #f1f3fa;
+      cursor: pointer;
+      outline-style: none; // removes :focus outline
+    }
+
+    &:active {
+      background-color: #d3e6ff;
+    }
+
 
     &.nx-list__item--empty {
       @include regular();
