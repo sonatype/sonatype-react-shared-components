@@ -73,10 +73,9 @@
 
 .nx-list__item--error {
   display: list-item;
-  padding-top: 0;
 
   .nx-alert {
-    margin-top: $nx-spacing-xl;
+    margin-top: 0;
   }
 }
 
