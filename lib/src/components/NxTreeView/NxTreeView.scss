@@ -15,7 +15,7 @@
   @include semi-bold();
 
   box-sizing: border-box;
-  color: $nx-text-color-light;
+  color: $nx-text-color;
   max-width: 330px;
 }
 
@@ -65,7 +65,7 @@
   line-height: 32px;
 
   &:hover, &:focus {
-    color: $nx-text-color-light;
+    color: $nx-text-color;
     text-decoration: none;
   }
 }
@@ -100,7 +100,7 @@
   @include nx-truncate-ellipsis;
 
   align-items: center;
-  color: $nx-text-color-light;
+  color: $nx-text-color;
   display: flex;
   flex-grow: 1;
 
@@ -137,11 +137,11 @@
   white-space: nowrap;
 
   a {
-    color: $nx-text-color-light;
+    color: $nx-text-color;
     text-decoration: none;
 
     &:hover {
-      color: $nx-text-color;
+      color: $nx-text-color-dark;
     }
   }
 }
