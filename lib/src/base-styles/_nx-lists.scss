@@ -58,7 +58,6 @@
   grid-row: 2;
   // top margin is measured down from the top of the objects grid row
   margin: $nx-spacing-sm 0 0 0;
-  white-space: normal;
 
   &.nx-truncate-ellipsis {
     white-space: nowrap;
