@@ -14,7 +14,7 @@ const NxListErrorExample = () =>
     </h3>
     <ul className="nx-list">
       <li className="nx-list__item nx-list__item--error">
-        <NxLoadError error=""/>
+        <NxLoadError error="Network Error"/>
       </li>
     </ul>
   </>;
