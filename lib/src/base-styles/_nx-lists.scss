@@ -157,9 +157,13 @@
         background-color: transparent;
         cursor: default;
       }
+
+      > .nx-chevron {
+        display: none;
+      }
     }
 
-    > .nx-icon {
+    > .nx-chevron {
       align-self: center;
       color: #2c2c2c;
       grid-area: actions;
