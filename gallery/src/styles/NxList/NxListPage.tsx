@@ -94,7 +94,10 @@ const NxListPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">nx-list__item--error</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-list__item</code></td>
-            <td className="nx-cell">This is added to a list item when the list is in an error state.</td>
+            <td className="nx-cell">
+              This is added to a list item when the list is in an error state. In this case it's expected that there
+              would only be a single list item which contains the error alert.
+            </td>
           </tr>
         </tbody>
       </table>
