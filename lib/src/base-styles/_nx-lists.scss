@@ -175,6 +175,10 @@
   justify-self: end;
 
   .nx-btn {
-    margin: 0 0 0 $nx-spacing-xs;
+    margin: 0;
+
+    + .nx-btn {
+      margin-left: 8px;
+    }
   }
 }
