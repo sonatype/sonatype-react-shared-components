@@ -85,14 +85,26 @@
 }
 
 .nx-list--bulleted {
+  margin-left: $nx-spacing-xs;
+
   .nx-list__item {
     border: none;
     display: list-item;
-    list-style: disc inside;
-    overflow: visible;
+    list-style: disc outside;
     margin: $nx-spacing-xs $nx-spacing-md;
     padding: 0;
-    white-space: normal;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .nx-list {
+      margin: 0;
+    }
 
     .nx-list__item {
       list-style-type: circle;
