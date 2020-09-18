@@ -12,7 +12,7 @@ import NxListWithActionsExample from './NxListWithActionsExample';
 import NxListErrorExample from './NxListErrorStateExample';
 
 const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').default,
-    NxListClickableCode = require('!!raw-loader!./NxListClickableExample.tsx').default,
+    NxListClickableCode = require('!!raw-loader!./NxListClickableExample').default,
     NxListMultiLineCode = require('!!raw-loader!./NxListMultiLineExample.html').default,
     NxListBulletedCode = require('!!raw-loader!./NxListBulletedExample.html').default,
     NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.tsx').default,
