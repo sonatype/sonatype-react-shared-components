@@ -27,9 +27,8 @@ const NxListPage = () =>
         <li className="nx-list__item">Error states</li>
       </ul>
       <p className="nx-p">
-        The basic layout is a container <code className="nx-code">&lt;div&gt;</code> wrapping a
-        <code className="nx-code">&lt;ul&gt;</code>. If the list has a title it is placed inside
-        the <code className="nx-code">&lt;div&gt;</code> before the &lt;ul&gt;.
+        The basic layout is a <code className="nx-code">&lt;ul&gt;</code>. If the list has a title a simple heading
+        such as <code className="nx-code">&lt;h3 className="nx-h3"&gt;</code> should be used before the &lt;ul&gt;.
       </p>
       <p className="nx-p">
         There are also lists that are "clickable", the list items in these lists indicate hover and click states and
