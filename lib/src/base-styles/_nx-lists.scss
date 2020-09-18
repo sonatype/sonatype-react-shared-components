@@ -8,7 +8,6 @@
 .nx-list {
   @include container-vertical;
 
-  color: $nx-text-color-light;
   margin: $nx-flow-content-spacing 0;
   padding: 0;
 
@@ -28,7 +27,6 @@
 
   border-top: 1px solid #e9e9e9;
   box-sizing: border-box;
-  color: $nx-text-color-light;
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto auto;
@@ -123,10 +121,6 @@
  * Action or Clickable Lists
  */
 .nx-list--clickable {
-  .nx-list__title {
-    color: $nx-text-color;
-  }
-
   .nx-list__item {
     &.selected {
       background-color: #d3e6ff;
@@ -139,10 +133,6 @@
         background-color: #f1f3fa;
         cursor: pointer;
         outline-style: none; // removes :focus outline
-
-        .fa-chevron-right {
-          color: #045dd1;
-        }
       }
 
       &:active {
@@ -171,6 +161,7 @@
 
     > .nx-icon {
       align-self: center;
+      color: #2c2c2c;
       grid-area: actions;
       justify-self: end;
     }
