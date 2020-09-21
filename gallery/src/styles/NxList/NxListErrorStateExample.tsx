@@ -7,7 +7,7 @@
 import React, {useState} from 'react';
 import { NxLoadError } from '@sonatype/react-shared-components';
 
-function NxListErrorExample() { 
+function NxListErrorExample() {
   const [error, setError] = useState<string | null>('Server Error');
 
   function retryHandler() {
@@ -21,7 +21,7 @@ function NxListErrorExample() {
         <NxLoadError { ...({ error, retryHandler }) } />
       </li>
     </ul>
-  )
+  );
 };
 
 export default NxListErrorExample;
