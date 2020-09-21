@@ -25,10 +25,7 @@ const NxListsExamples = () =>
                         id="nx-list-simple-example"
                         htmlExample={NxListSimpleCode}
                         codeExamples={NxListSimpleCode}>
-      Two simple <code className="nx-code">nx-list</code> variations. One is a
-      bare <code className="nx-code">&lt;ul&gt;</code> while the other has
-      a <code className="nx-code">&lt;div&gt;</code> wrapping the <code className="nx-code">&lt;ul&gt;</code> along
-      with a <code className="nx-code">nx-list__title</code>.
+      Basic <code className="nx-code">nx-list</code> with a heading.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Clickable List Example"
