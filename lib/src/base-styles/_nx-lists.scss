@@ -126,6 +126,10 @@
  */
 .nx-list--clickable {
   .nx-list__item {
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+
     &.selected {
       &, &:hover {
         background-color: #d3e6ff;
@@ -142,6 +146,11 @@
       background-color: #d3e6ff;
     }
 
+    &:focus {
+      box-shadow: 0 0 3px 1px rgba(2, 166, 217, 0.3);
+      border: solid 1px #02a6d9;
+      outline: none;
+    }
 
     &.nx-list__item--empty {
       @include regular();
