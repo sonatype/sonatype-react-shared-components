@@ -172,8 +172,6 @@
       -ms-grid-row: 1;
       -ms-grid-column: 2;
       grid-area: actions;
-      -ms-grid-column-align: end;
-      justify-self: end;
 
       // custom sizing for the icon to match the text size
       height: 25px;
@@ -189,7 +187,6 @@
   -ms-grid-column: 2;
   grid-area: actions;
   -ms-grid-column-align: end;
-  justify-self: end;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
   margin-top: -4px;
 
