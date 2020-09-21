@@ -32,7 +32,7 @@ const NxListClickableExample = () =>
       </span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>
-    <li className="nx-list__item disabled" tabIndex={0}>
+    <li className="nx-list__item disabled">
       <span className="nx-list__text">This list item is disabled</span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>
