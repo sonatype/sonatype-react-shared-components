@@ -78,8 +78,6 @@ svg.nx-radio-checkbox__control {
 .nx-radio-checkbox__content {
   @include container-horizontal;
   @include nx-truncate-ellipsis;
-
-  color: #474747;
 }
 
 .nx-radio-checkbox--disabled {
