@@ -31,7 +31,7 @@
   -ms-grid-rows: auto auto;
   grid-template-areas: 
     "list-text actions"
-    "list-sub-text list-sub-text";
+    "list-sub-text blank";
   margin: 0;
   padding: $nx-spacing-md;
 
