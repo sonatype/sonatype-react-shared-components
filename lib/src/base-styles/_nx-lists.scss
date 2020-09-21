@@ -172,6 +172,10 @@
       grid-area: actions;
       -ms-grid-column-align: end;
       justify-self: end;
+
+      // custom sizing for the icon to match the text size
+      height: 25px;
+      width: 1em;
     }
   }
 }
