@@ -14,7 +14,7 @@ const NxListErrorExample = () =>
       <span className="nx-list__text">
         List item
       </span>
-      <div className="nx-list-actions">
+      <div className="nx-list__actions">
         <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
       </div>
@@ -27,7 +27,7 @@ const NxListErrorExample = () =>
       <span className="nx-list__subtext">
         This is some sub-text to demonstrate spacing
       </span>
-      <div className="nx-list-actions">
+      <div className="nx-list__actions">
         <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
       </div>
     </li>

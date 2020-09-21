@@ -81,7 +81,7 @@ const NxListPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list-actions</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-list__actions</code></td>
             <td className="nx-cell">A container for buttons inside list items</td>
             <td className="nx-cell">Use this when you want to have a button on the far right.</td>
           </tr>
