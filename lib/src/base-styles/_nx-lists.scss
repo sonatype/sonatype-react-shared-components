@@ -100,12 +100,6 @@
     margin: $nx-spacing-xs $nx-spacing-md;
     padding: 0;
 
-    .nx-list__text {
-      @include semi-bold();
-
-      display: inline-block;
-    }
-
     .nx-list {
       margin: 0;
     }
