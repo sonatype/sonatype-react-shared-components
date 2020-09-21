@@ -38,6 +38,11 @@
   &:first-of-type {
     border-top: 1px solid #d1d6f0;
   }
+
+  &.disabled {
+    color: $nx-text-color-disabled;
+    cursor: default;
+  }
 }
 
 .nx-list__text {
@@ -76,11 +81,6 @@
   display: list-item;
   padding-left: 0;
   padding-right: 0;
-}
-
-.nx-list__item.disabled {
-  color: $nx-text-color-disabled;
-  cursor: default;
 }
 
 .nx-list--bulleted {
@@ -127,9 +127,7 @@
 .nx-list--clickable {
   .nx-list__item {
     &.selected {
-      background-color: #d3e6ff;
-
-      &:hover {
+      &, &:hover {
         background-color: #d3e6ff;
       }
     }
