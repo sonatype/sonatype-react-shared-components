@@ -135,11 +135,15 @@
 }
 
 .nx-cell__sort-icons {
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: $nx-spacing-xxs;
+
   > :first-child path {
-    color: $nx-grey-4;
+    color: #fff;
   }
 
   > :nth-child(2) path {
-    color: $nx-slate;
+    color: #045dd1;
   }
 }
