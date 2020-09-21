@@ -8,17 +8,12 @@ import React, {useState} from 'react';
 import { NxLoadError } from '@sonatype/react-shared-components';
 
 function NxListErrorExample() {
-  const [error, setError] = useState<string | null>('Server Error');
-
-  function retryHandler() {
-    // lets say the retried action succeeded this time
-    setError(null);
-  }
+  const [error] = useState<string | null>('Server Error');
 
   return (
     <ul className="nx-list">
       <li className="nx-list__item nx-list__item--error">
-        <NxLoadError { ...({ error, retryHandler }) } />
+        <NxLoadError error={error} retryHandler={() => {}} />
       </li>
     </ul>
   );
