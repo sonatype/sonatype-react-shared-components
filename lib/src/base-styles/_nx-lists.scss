@@ -94,8 +94,12 @@
     border: none;
     display: list-item;
     list-style: disc outside;
-    margin: $nx-spacing-xs $nx-spacing-md;
+    margin: $nx-spacing-xs $nx-spacing-md $nx-spacing-xs 18px;
     padding: 0;
+
+    .nx-list__text {
+      margin-left: -6px;
+    }
 
     .nx-list {
       margin: 0;
