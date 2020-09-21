@@ -61,10 +61,6 @@
   grid-area: list-sub-text;
   // top margin is measured down from the top of the objects grid row
   margin: $nx-spacing-md 0 0 0;
-
-  &.nx-truncate-ellipsis {
-    white-space: nowrap;
-  }
 }
 
 .nx-list__item--empty {
