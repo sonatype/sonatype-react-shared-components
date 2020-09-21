@@ -79,6 +79,8 @@
 
 .nx-list__item--error {
   display: list-item;
+  padding-left: 0;
+  padding-right: 0;
 
   .nx-alert {
     margin-top: 0;
