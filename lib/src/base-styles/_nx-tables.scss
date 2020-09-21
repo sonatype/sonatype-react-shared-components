@@ -42,11 +42,11 @@
           background-color: #f1f3fa;
         }
       }
-    }
 
-    &.selected {
-      > .nx-cell {
-        background-color: #d3e6ff;
+      &.selected, &:active {
+        > .nx-cell {
+          background-color: #d3e6ff;
+        }
       }
     }
   }

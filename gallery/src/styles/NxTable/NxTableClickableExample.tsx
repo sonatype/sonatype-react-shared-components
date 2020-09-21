@@ -21,7 +21,7 @@ const NxTableClickable = () =>
       </tr>
     </thead>
     <tbody>
-      <tr className="nx-table-row nx-clickable">
+      <tr className="nx-table-row nx-clickable" tabIndex={0}>
         <td className="nx-cell nx-cell--label">Clickable row</td>
         <td className="nx-cell">Content 1</td>
         <td className="nx-cell">Content 2</td>
@@ -29,7 +29,7 @@ const NxTableClickable = () =>
         <td className="nx-cell">Content 4</td>
         <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
       </tr>
-      <tr className="nx-table-row nx-clickable">
+      <tr className="nx-table-row nx-clickable selected" tabIndex={0}>
         <td className="nx-cell nx-cell--label">Row Label</td>
         <td className="nx-cell">Content 1</td>
         <td className="nx-cell">Content 2</td>
@@ -37,7 +37,7 @@ const NxTableClickable = () =>
         <td className="nx-cell">Content 4</td>
         <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
       </tr>
-      <tr className="nx-table-row nx-clickable">
+      <tr className="nx-table-row nx-clickable" tabIndex={0}>
         <td className="nx-cell nx-cell--label">Row Label</td>
         <td className="nx-cell">Content 1</td>
         <td className="nx-cell">Content 2</td>
@@ -45,7 +45,7 @@ const NxTableClickable = () =>
         <td className="nx-cell">Content 4</td>
         <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
       </tr>
-      <tr className="nx-table-row nx-clickable">
+      <tr className="nx-table-row nx-clickable" tabIndex={0}>
         <td className="nx-cell nx-cell--label">Row Label</td>
         <td className="nx-cell">Content 1</td>
         <td className="nx-cell">Content 2</td>
