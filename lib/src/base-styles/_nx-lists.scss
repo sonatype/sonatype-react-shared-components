@@ -31,12 +31,10 @@
   -ms-grid-rows: auto auto;
   grid-template-areas: 
     "list-text actions"
-    "list-sub-text actions";
+    "list-sub-text list-sub-text";
   margin: 0;
   padding: $nx-spacing-md;
 
-  // we use first of type because we only want to modify the first list item,
-  // not alerts, errors, or empty states
   &:first-of-type {
     border-top: 1px solid #d1d6f0;
   }
@@ -45,6 +43,7 @@
 .nx-list__text {
   @include semi-bold();
 
+  align-self: center;
   display: block;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
