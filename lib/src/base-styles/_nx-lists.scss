@@ -25,9 +25,11 @@
 
   border-top: 1px solid #e9e9e9;
   box-sizing: border-box;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr auto;
   grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto;
+  -ms-grid-rows: auto auto;
   grid-template-areas: 
     "list-text actions"
     "list-sub-text actions";
@@ -44,13 +46,19 @@
 .nx-list__text {
   @include semi-bold();
 
+  display: block;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
   grid-area: list-text;
+  margin: 0;
 }
 
 .nx-list__subtext {
   @include regular();
 
   display: block;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
   grid-area: list-sub-text;
   // top margin is measured down from the top of the objects grid row
   margin: $nx-spacing-md 0 0 0;
@@ -91,6 +99,12 @@
     list-style: disc outside;
     margin: $nx-spacing-xs $nx-spacing-md;
     padding: 0;
+
+    .nx-list__text {
+      @include semi-bold();
+
+      display: inline-block;
+    }
 
     .nx-list {
       margin: 0;
@@ -162,7 +176,10 @@
     > .nx-chevron {
       align-self: center;
       color: #2c2c2c;
+      -ms-grid-row: 1;
+      -ms-grid-column: 2;
       grid-area: actions;
+      -ms-grid-column-align: end;
       justify-self: end;
     }
   }
@@ -171,7 +188,10 @@
 .nx-list-actions {
   @include container-horizontal;
 
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
   grid-area: actions;
+  -ms-grid-column-align: end;
   justify-self: end;
 
   .nx-btn {

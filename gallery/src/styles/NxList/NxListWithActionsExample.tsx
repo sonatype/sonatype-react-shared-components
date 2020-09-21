@@ -11,17 +11,22 @@ import { NxButton, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 const NxListErrorExample = () =>
   <ul className="nx-list">
     <li className="nx-list__item">
-      <span className="nx-list__text">List item</span>
+      <span className="nx-list__text">
+        List item
+      </span>
       <div className="nx-list-actions">
         <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
       </div>
     </li>
     <li className="nx-list__item">
-      <span className="nx-list__text">List item</span>
-      <p className="nx-list__subtext">
+      <span className="nx-list__text nx-truncate-ellipsis">
+        List item deliberately made very long so that the text will wrap before it gets to the action buttons nodal
+        point bridge kanji San Francisco render-farm chrome human paranoid San Francisco skyscraper convenience store
+      </span>
+      <span className="nx-list__subtext">
         This is some sub-text to demonstrate spacing
-      </p>
+      </span>
       <div className="nx-list-actions">
         <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
       </div>
