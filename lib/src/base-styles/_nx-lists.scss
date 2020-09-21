@@ -71,13 +71,11 @@
 }
 
 .nx-list__item--error {
+  @include container-vertical;
+
   display: list-item;
   padding-left: 0;
   padding-right: 0;
-
-  .nx-alert {
-    margin-top: 0;
-  }
 }
 
 .nx-list__item.disabled {
