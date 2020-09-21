@@ -21,7 +21,7 @@
   "author": "Sonatype, Inc.",
   "license": "EPL-2.0",
   "devDependencies": {
-    "@applitools/eyes-webdriverio": "5.14.2",
+    "@applitools/eyes-webdriverio": "5.22.2",
     "@types/classnames": "=2.2.7",
     "@types/react": "16.9.14",
     "@types/react-dom": "16.9.1",
