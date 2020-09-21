@@ -5,17 +5,16 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 import {Props, propTypes} from './types';
 import NxTableRow from '../NxTableRow/NxTableRow';
 import NxTableCell from '../NxTableCell/NxTableCell';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
-import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import NxLoadError from '../NxLoadError/NxLoadError';
 export {Props} from './types';
 
 const NxTableBody = function NxTableBody(props: Props) {
-  const {isLoading = false, error, columns, children, ...attrs} = props;
+  const {isLoading = false, error, columns, children, retryHandler, ...attrs} = props;
 
   if (isLoading && !columns) {
     console.warn('columns is required when isLoading is set, this should have been determined automatically');
@@ -27,7 +26,7 @@ const NxTableBody = function NxTableBody(props: Props) {
 
   const loadingSpinnerRow = (
     <NxTableRow>
-      <NxTableCell isEmpty colSpan={columns || undefined}>
+      <NxTableCell fullSpan colSpan={columns || undefined}>
         <NxLoadingSpinner />
       </NxTableCell>
     </NxTableRow>
@@ -35,9 +34,8 @@ const NxTableBody = function NxTableBody(props: Props) {
 
   const errorRow = (
     <NxTableRow>
-      <NxTableCell isError colSpan={columns || undefined}>
-        <NxFontAwesomeIcon icon={faExclamationTriangle} fixedWidth/>
-        {error}
+      <NxTableCell fullSpan colSpan={columns || undefined}>
+        <NxLoadError { ...{ error, retryHandler } } />
       </NxTableCell>
     </NxTableRow>
   );

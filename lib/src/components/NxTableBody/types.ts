@@ -12,11 +12,13 @@ export type Props = HTMLAttributes<HTMLTableSectionElement> & {
   isLoading?: boolean | null;
   error?: string | null;
   columns?: number | null;
+  retryHandler?: (() => void) | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   isLoading: PropTypes.bool,
   error: PropTypes.string,
   columns: PropTypes.number,
+  retryHandler: PropTypes.func,
   children: PropTypes.node
 };

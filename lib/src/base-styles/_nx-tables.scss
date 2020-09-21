@@ -136,10 +136,7 @@
 }
 
 // Used when table contents are empty
-.nx-cell--empty {
-  @include regular();
-
-  color: $nx-text-color;
+.nx-cell--full-span {
   text-align: center;
 }
 

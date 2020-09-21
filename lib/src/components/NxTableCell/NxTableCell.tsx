@@ -17,8 +17,7 @@ export { Props } from './types';
 const NxTableCell = function NxTableCell(props: Props) {
   const {
     isHeader = false,
-    isEmpty = false,
-    isError = false,
+    fullSpan = false,
     isNumeric = false,
     isSortable = false,
     hasIcon = false,
@@ -30,8 +29,7 @@ const NxTableCell = function NxTableCell(props: Props) {
 
   const classes = classnames('nx-cell', className, {
     'nx-cell--header': isHeader,
-    'nx-cell--empty': isEmpty,
-    'nx-error': isError,
+    'nx-cell--full-span': fullSpan,
     'nx-cell--num': isNumeric,
     'nx-cell--icon': hasIcon,
     'nx-cell--sortable': isSortable
