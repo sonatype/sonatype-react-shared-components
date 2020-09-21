@@ -184,7 +184,7 @@ export default function NxModalPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Wide NxModal Example"
-                          id="nx-modal-narrow-example"
+                          id="nx-modal-wide-example"
                           liveExample={NxModalExtraWideExample}
                           codeExamples={NxModalExtraWideSourceCode}>
         A demonstration of the <code className="nx-code">wide</code> styles
@@ -192,7 +192,7 @@ export default function NxModalPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Narrow NxModal Example"
-                          id="nx-modal-wide-example"
+                          id="nx-modal-narrow-example"
                           liveExample={NxModalNarrowExample}
                           codeExamples={NxModalNarrowSourceCode}>
         A demonstration of the <code className="nx-code">narrow</code> styles
