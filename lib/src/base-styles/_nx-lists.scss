@@ -144,8 +144,8 @@
     }
 
     &:focus {
-      box-shadow: 0 0 3px 1px rgba(2, 166, 217, 0.3);
-      border: solid 1px #02a6d9;
+      box-shadow: 0 0 3px 1px transparentize(#02a6d9, 0.7);
+      border-color: #02a6d9;
       outline: none;
     }
 
@@ -175,9 +175,8 @@
       -ms-grid-column: 2;
       grid-area: actions;
 
-      // custom sizing for the icon to match the text size
-      height: 25px;
-      width: 1em;
+      // custom sizing for the icon, brings it up to 13px
+      font-size: 21px;
     }
   }
 }
@@ -188,7 +187,6 @@
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: actions;
-  -ms-grid-column-align: end;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
   margin-top: -4px;
 
