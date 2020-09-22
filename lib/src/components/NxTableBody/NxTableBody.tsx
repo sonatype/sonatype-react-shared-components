@@ -14,7 +14,7 @@ import NxLoadError from '../NxLoadError/NxLoadError';
 export {Props} from './types';
 
 const NxTableBody = function NxTableBody(props: Props) {
-  const {isLoading = false, error, columns, children, retryHandler, ...attrs} = props;
+  const {isLoading = false, emptyMessage, error, columns, children, retryHandler, ...attrs} = props;
 
   if (isLoading && !columns) {
     console.warn('columns is required when isLoading is set, this should have been determined automatically');
@@ -24,9 +24,19 @@ const NxTableBody = function NxTableBody(props: Props) {
     console.warn('columns is required when error is set, this should have been determined automatically');
   }
 
+  if (!React.Children.count(children) && !isLoading && !error) {
+    if (!emptyMessage) {
+      console.warn('emptyMessage is required when no rows are to be rendered');
+    }
+    else if (!columns) {
+      console.warn(
+        'columns is required when emptyMessage is to be used, this should have been determined automatically');
+    }
+  }
+
   const loadingSpinnerRow = (
     <NxTableRow>
-      <NxTableCell fullSpan colSpan={columns || undefined}>
+      <NxTableCell metaInfo colSpan={columns || undefined}>
         <NxLoadingSpinner />
       </NxTableCell>
     </NxTableRow>
@@ -34,9 +44,15 @@ const NxTableBody = function NxTableBody(props: Props) {
 
   const errorRow = (
     <NxTableRow>
-      <NxTableCell fullSpan colSpan={columns || undefined}>
+      <NxTableCell metaInfo colSpan={columns || undefined}>
         <NxLoadError { ...{ error, retryHandler } } />
       </NxTableCell>
+    </NxTableRow>
+  );
+
+  const emptyMessageRow = (
+    <NxTableRow>
+      <NxTableCell metaInfo colSpan={columns || undefined}>{emptyMessage}</NxTableCell>
     </NxTableRow>
   );
 
@@ -45,6 +61,7 @@ const NxTableBody = function NxTableBody(props: Props) {
       {isLoading && loadingSpinnerRow}
       {!!error && !isLoading && errorRow}
       {!isLoading && !error && children}
+      {!(isLoading || error || children) && emptyMessageRow}
     </tbody>
   );
 };

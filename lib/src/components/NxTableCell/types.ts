@@ -10,7 +10,7 @@ import {TdHTMLAttributes, ThHTMLAttributes} from 'react';
 // Final Props are the HTMLProps & our re-definitions
 export type Props = (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<HTMLTableHeaderCellElement>) & {
   isHeader?: boolean | null;
-  fullSpan?: boolean | null;
+  metaInfo?: boolean | null;
   isNumeric?: boolean | null;
   isSortable?: boolean | null;
   hasIcon?: boolean | null;
@@ -19,7 +19,7 @@ export type Props = (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<H
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   isHeader: PropTypes.bool,
-  fullSpan: PropTypes.bool,
+  metaInfo: PropTypes.bool,
   isNumeric: PropTypes.bool,
   isSortable: PropTypes.bool,
   hasIcon: PropTypes.bool,

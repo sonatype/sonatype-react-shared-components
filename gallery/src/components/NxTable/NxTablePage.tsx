@@ -21,12 +21,14 @@ import NxTableClickableExample from './NxTableClickableExample';
 import NxTableSortableExample from './NxTableSortableExample';
 import NxTableLoadingExample from './NxTableLoadingExample';
 import NxTableErrorExample from './NxTableErrorExample';
+import NxTableEmptyExample from './NxTableEmptyExample';
 
 const tableSimpleExampleCode = require('!!raw-loader!./NxTableSimpleExample').default;
 const tableClickableExample = require('!!raw-loader!./NxTableClickableExample').default;
 const tableSortableExample = require('!!raw-loader!./NxTableSortableExample').default;
 const tableLoadingExample = require('!!raw-loader!./NxTableLoadingExample').default;
 const tableErrorExample = require('!!raw-loader!./NxTableErrorExample').default;
+const tableEmptyExample = require('!!raw-loader!./NxTableEmptyExample').default;
 
 export default function NxTablePage() {
   return (
@@ -90,13 +92,14 @@ export default function NxTablePage() {
                 <NxTableCell>Used to show an error message instead of the table content</NxTableCell>
               </NxTableRow>
               <NxTableRow>
-                <NxTableCell>columns</NxTableCell>
-                <NxTableCell>number</NxTableCell>
+                <NxTableCell>emptyMessage</NxTableCell>
+                <NxTableCell>string</NxTableCell>
                 <NxTableCell>false</NxTableCell>
                 <NxTableCell>
-                  Automatically set by <code className="nx-code">&lt;NxTable&gt;</code> to set the
-                  <code className="nx-code">colSpan</code> attribute on the loading spinner and error message
-                  <code className="nx-code">&lt;NxTableCell&gt;</code>
+                  Used to show a message when the table is otherwise empty (i.e. when it has no externally specified
+                  child rows, is not loading, and is not in an error state. This prop must be specified if the
+                  table is empty. If this table is not empty, this prop may be specified, having no effect.
+                  In essence, the best practice is to specify this prop on all tables which <em>may</em> be empty.
                 </NxTableCell>
               </NxTableRow>
             </NxTableBody>
@@ -229,6 +232,13 @@ export default function NxTablePage() {
                           codeExamples={tableErrorExample}>
         An example of how <code className="nx-code">NxTable</code> should be used to indicate that there was an error
         loading its data.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Empty Example"
+                          liveExample={NxTableEmptyExample}
+                          codeExamples={tableEmptyExample}>
+        An example of how <code className="nx-code">NxTable</code> should be used to indicate that there is no data
+        to be seen.
       </GalleryExampleTile>
     </>
   );

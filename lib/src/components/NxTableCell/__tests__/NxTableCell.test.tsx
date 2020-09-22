@@ -22,12 +22,8 @@ describe('NxTableCell', function () {
     expect(getShallowComponent({ isHeader: true })).toMatchSelector('th.nx-cell.nx-cell--header');
   });
 
-  it('adds the correct classnames when the cell isEmpty', function () {
-    expect(getShallowComponent({ isEmpty: true })).toMatchSelector('td.nx-cell.nx-cell--empty');
-  });
-
-  it('adds the correct classnames when the cell isError', function () {
-    expect(getShallowComponent({ isError: true })).toMatchSelector('td.nx-cell.nx-error');
+  it('adds the correct classnames when the cell metaInfo', function () {
+    expect(getShallowComponent({ metaInfo: true })).toMatchSelector('td.nx-cell.nx-cell--meta-info');
   });
 
   it('adds the correct classnames when the cell isNumeric', function () {
@@ -41,7 +37,7 @@ describe('NxTableCell', function () {
   it('shows the sortable icon when the cell isSortable but has no sort direction', function () {
     const component = getShallowComponent({ isSortable: true });
 
-    expect(component.find('.nx-cell__sort-icons.fa-layers.fa-fw')).toContainReact(<NxFontAwesomeIcon icon={faSort}/>);
+    expect(component.find('.nx-cell__sort-icons.fa-layers')).toContainReact(<NxFontAwesomeIcon icon={faSort}/>);
   });
 
   it('shows the sort ascending icon when the cell isSortable and has a sort direction "asc"', function () {
