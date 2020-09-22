@@ -169,11 +169,13 @@ export default function NxTablePage() {
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell>hasIcon</NxTableCell>
+              <NxTableCell>chevron</NxTableCell>
               <NxTableCell>boolean</NxTableCell>
               <NxTableCell>false</NxTableCell>
               <NxTableCell>
-                Used to indicate a column that contains a <code className="nx-code">&lt;NxFontAwesomeIcon&gt;</code>
+                Used to indicate a column that contains the chevrons that should be at the right end of all clickable
+                rows. These cells should have no <code className="nx-code">children</code> (the chevron icon is
+                added automatically) and should be the last cell in each row.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
