@@ -92,6 +92,15 @@ export default function NxTablePage() {
                 <NxTableCell>Used to show an error message instead of the table content</NxTableCell>
               </NxTableRow>
               <NxTableRow>
+                <NxTableCell>retryHandler</NxTableCell>
+                <NxTableCell>Function</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>
+                  Used to provide the handler for the Retry button that appears when the error state is active.
+                  Required when <code className="nx-code">error</code> is present.
+                </NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
                 <NxTableCell>emptyMessage</NxTableCell>
                 <NxTableCell>string</NxTableCell>
                 <NxTableCell>false</NxTableCell>
