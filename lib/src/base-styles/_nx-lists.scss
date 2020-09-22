@@ -34,7 +34,8 @@
     "list-text actions"
     "list-sub-text blank";
   margin: 0;
-  padding: $nx-spacing-md;
+  // 1px of padding subtracted to account for the transparent border
+  padding: $nx-spacing-md ($nx-spacing-md - 1px) ($nx-spacing-md - 1px) ($nx-spacing-md - 1px);
 
   &:first-of-type {
     border-top: 1px solid #d1d6f0;
