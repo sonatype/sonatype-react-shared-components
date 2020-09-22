@@ -190,6 +190,7 @@
   grid-area: actions;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
   margin-top: -4px;
+  margin-bottom: -4px;
 
   .nx-btn {
     margin: 0;
