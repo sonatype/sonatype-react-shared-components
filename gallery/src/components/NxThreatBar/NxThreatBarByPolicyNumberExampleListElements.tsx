@@ -10,33 +10,31 @@ import { NxThreatBar } from '@sonatype/react-shared-components';
 
 const NxThreatLevelsByPolicyNumberListElements = () =>
   <>
-    <div className="nx-list">
-      <h4 className="nx-list__title">
-        List Title
-      </h4>
-      <ul>
-        <li className="nx-list__item">
-          <NxThreatBar policyThreatLevel={0}/>
-          <span>Threat Bar Policy Level 0</span>
-        </li>
-        <li className="nx-list__item">
-          <NxThreatBar policyThreatLevel={1}/>
-          <span>Threat Bar Policy Level 1</span>
-        </li>
-        <li className="nx-list__item">
-          <NxThreatBar policyThreatLevel={2}/>
-          <span>Threat Bar Policy Level 2-3</span>
-        </li>
-        <li className="nx-list__item">
-          <NxThreatBar policyThreatLevel={4}/>
-          <span>Threat Bar Policy Level 4-7</span>
-        </li>
-        <li className="nx-list__item">
-          <NxThreatBar policyThreatLevel={8}/>
-          <span>Threat Bar Policy Level 8-10</span>
-        </li>
-      </ul>
-    </div>
+    <h3 className="nx-h3">
+      List Title
+    </h3>
+    <ul className="nx-list nx-list--threat-bars">
+      <li className="nx-list__item">
+        <NxThreatBar policyThreatLevel={0}/>
+        <span className="nx-list__text">Threat Bar Policy Level 0</span>
+      </li>
+      <li className="nx-list__item">
+        <NxThreatBar policyThreatLevel={1}/>
+        <span className="nx-list__text">Threat Bar Policy Level 1</span>
+      </li>
+      <li className="nx-list__item">
+        <NxThreatBar policyThreatLevel={2}/>
+        <span className="nx-list__text">Threat Bar Policy Level 2-3</span>
+      </li>
+      <li className="nx-list__item">
+        <NxThreatBar policyThreatLevel={4}/>
+        <span className="nx-list__text">Threat Bar Policy Level 4-7</span>
+      </li>
+      <li className="nx-list__item">
+        <NxThreatBar policyThreatLevel={8}/>
+        <span className="nx-list__text">Threat Bar Policy Level 8-10</span>
+      </li>
+    </ul>
   </>;
 
 export default NxThreatLevelsByPolicyNumberListElements;
