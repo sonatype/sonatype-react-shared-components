@@ -162,7 +162,7 @@
     &.nx-list__item--empty {
       @include regular();
 
-      color: $nx-text-color-light;
+      color: $nx-text-color;
     }
 
     &.disabled {
