@@ -47,8 +47,8 @@ export default function FormValidationExample() {
 
   const submitBtnClasses = classnames({ disabled: !isSubmittable }),
       submitTooltip = isSubmittable ? '' :
-        hasAllRequiredData ? 'Validation errors are present' :
-        'Required fields are missing';
+      hasAllRequiredData ? 'Validation errors are present' :
+      'Required fields are missing';
 
   return (
     <form className="nx-form" onSubmit={onSubmit}>
