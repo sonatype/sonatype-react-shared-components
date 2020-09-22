@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+const { Region, Target } = require('@applitools/eyes-webdriverio');
 const { simpleTest } = require('./testUtils');
 
 describe('nx-tile', function() {
@@ -15,7 +16,8 @@ describe('nx-tile', function() {
       actionsTileSelector = '#nx-tile-actions-example .gallery-raw-html-example',
       subtitleTileSelector = '#nx-tile-subtitle-example .gallery-raw-html-example',
       horizontalRuleTileSelector = '#nx-tile-horizontal-rule-example .gallery-raw-html-example',
-      subsectionsTileSelector = '#nx-tile-subsections-example .gallery-raw-html-example';
+      subsectionsTileSelector = '#nx-tile-subsections-example .gallery-raw-html-example',
+      dropdownActionMenuTileSelector = '#nx-tile-dropdown-actions-example .nx-tile';
 
   describe('Simple nx-tile', function() {
     it('looks right', simpleTest(simpleTileSelector));
@@ -35,5 +37,22 @@ describe('nx-tile', function() {
 
   describe('nx-tile with subsections', function() {
     it('looks right', simpleTest(subsectionsTileSelector));
+  });
+
+  describe('nx-tile with expanded dropdown in actions menu', function() {
+    it('looks right', function() {
+      const dropdownSelector = `${dropdownActionMenuTileSelector} .nx-dropdown`,
+          screenshotHeight = 210,
+          [tileEl, dropdownEl] =
+              await Promise.all([browser.$(dropdownActionMenuTileSelector), browser.$(dropdownSelector)]);
+
+      await dropdownEl.scrollIntoView({ block: 'center' });
+      await dropdownEl.click();
+
+      const { x, y, width, height } = await browser.getElementRect(tileElement.elementId),
+          screenshotRegion = new Region(x, y, width, screenshotHeight);
+
+      await browser.eyesRegionSnapshot(null, Target.region(screenshotRegion));
+    });
   });
 });
