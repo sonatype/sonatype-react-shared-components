@@ -19,7 +19,9 @@
 
   > tbody > .nx-table-row {
     > .nx-cell {
-      border-width: 1px;
+      $border-width: 1px;
+
+      border-width: $border-width;
       border-color: transparent;
       border-style: none;
 
@@ -29,16 +31,16 @@
 
       // we want the perceived padding to be the standard spacing size. As the top border is generally invisible,
       // it should be counted as padding from that perspective
-      padding-top: $nx-spacing-sm - 1px;
+      padding-top: $nx-spacing-sm - $border-width;
 
       &:first-child {
         border-left-style: solid;
-        padding-left: $nx-spacing-md - 1px;
+        padding-left: $nx-spacing-md - $border-width;
       }
 
       &:last-child {
         border-right-style: solid;
-        padding-right: $nx-spacing-md - 1px;
+        padding-right: $nx-spacing-md - $border-width;
       }
     }
 
