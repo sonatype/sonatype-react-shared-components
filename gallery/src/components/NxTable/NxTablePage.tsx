@@ -173,7 +173,8 @@ export default function NxTablePage() {
               <NxTableCell>boolean</NxTableCell>
               <NxTableCell>false</NxTableCell>
               <NxTableCell>
-                Used to indicate a column that contains a <code className="nx-code">&lt;NxFontAwesomeIcon&gt;</code>
+                Used to indicate a column whose data cells contain only
+                an <code className="nx-code">&lt;NxFontAwesomeIcon&gt;</code>
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>

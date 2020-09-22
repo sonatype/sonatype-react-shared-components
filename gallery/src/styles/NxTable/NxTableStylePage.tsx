@@ -97,15 +97,13 @@ const NxTableStylePage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">
-              <code className="nx-code">.nx-cell--chevron</code>
-              &amp; <code className="nx-code">.nx-cell--icon</code>
+              <code className="nx-code">.nx-cell--icon</code>
             </td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
             <td className="nx-cell">
-              Both of these classes are used when the only contents of a cell are an icon. This class creates a narrow
-              column suitable for holding a single icon. The chevron is used for "clickable" rows and indicates
-              that a navigation event will occur if the table row is clicked. Examples of icons might be edit icons,
-              trash icons, or confirmation icons.
+              This class is used when the only contents of a cell are an icon. This class creates a narrow
+              column suitable for holding a single icon. One particular use is the chevron icon, which should be present
+              in an unlabeled (empty header) column at the right end of the table when rows are clickable.
             </td>
           </tr>
         </tbody>
