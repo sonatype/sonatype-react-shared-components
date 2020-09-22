@@ -32,153 +32,168 @@ export default function NxTablePage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <h5>NxTable</h5>
-
         <p className="nx-p">
-          The top-level component to use when displaying tables of data.
-          It can have <code className="nx-code">&lt;NxTableHead&gt;</code> and
-          <code className="nx-code">&lt;NxTableBody&gt;</code> components as children.
+          A set of React components which encapsulate and assist with the styles for HTML tables.
         </p>
 
-        <hr />
+        <section className="nx-tile-subsection">
+          <header className="nx-tile-subsection__header">
+            <h3 className="nx-h3">NxTable</h3>
+          </header>
+          <p className="nx-p">
+            The top-level component to use when displaying tables of data.
+            It can have <code className="nx-code">&lt;NxTableHead&gt;</code> and
+            <code className="nx-code">&lt;NxTableBody&gt;</code> components as children.
+          </p>
+        </section>
 
-        <h5>NxTableHead</h5>
+        <section className="nx-tile-subsection">
+          <header className="nx-tile-subsection__header">
+            <h3 className="nx-h3">NxTableHead</h3>
+          </header>
+          <p className="nx-p">
+            Equivalent to the <code className="nx-code">&lt;thead&gt;</code> element.
+            The <code className="nx-code">&lt;NxTableRow&gt;</code> component is the only valid child.
+            Descendant <code className="nx-code">&lt;NxTableCell&gt;</code> components will have the
+            <code className="nx-code">&lt;isHeader&gt;</code> prop set.
+          </p>
+        </section>
+
+        <section className="nx-tile-subsection">
+          <header className="nx-tile-subsection__header">
+            <h3 className="nx-h3">NxTableBody</h3>
+          </header>
+          <p className="nx-p">
+            Equivalent to the <code className="nx-code">&lt;tbody&gt;</code> element.
+            It should have <code className="nx-code">&lt;NxTableRow&gt;</code> for children.
+          </p>
+          <NxTable>
+            <NxTableHead>
+              <NxTableRow>
+                <NxTableCell>Prop</NxTableCell>
+                <NxTableCell>Type</NxTableCell>
+                <NxTableCell>Required</NxTableCell>
+                <NxTableCell>Details</NxTableCell>
+              </NxTableRow>
+            </NxTableHead>
+            <NxTableBody>
+              <NxTableRow>
+                <NxTableCell>isLoading</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>Used to show a loading spinner instead of the table content</NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>error</NxTableCell>
+                <NxTableCell>string</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>Used to show an error message instead of the table content</NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>columns</NxTableCell>
+                <NxTableCell>number</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>
+                  Automatically set by <code className="nx-code">&lt;NxTable&gt;</code> to set the
+                  <code className="nx-code">colSpan</code> attribute on the loading spinner and error message
+                  <code className="nx-code">&lt;NxTableCell&gt;</code>
+                </NxTableCell>
+              </NxTableRow>
+            </NxTableBody>
+          </NxTable>
+        </section>
+
+        <section className="nx-tile-subsection">
+          <header className="nx-tile-subsection__header">
+            <h3 className="nx-h3">NxTableRow</h3>
+          </header>
+          <p className="nx-p">
+            Equivalent to the <code className="nx-code">&lt;tr&gt;</code> element.
+            It automatically assigns <code className="nx-code">isHeader</code> on the children
+            if that prop is set on this row.
+            It should have <code className="nx-code">&lt;NxTableCell&gt;</code> for children.
+          </p>
+        </section>
+
+        <section className="nx-tile-subsection">
+          <header className="nx-tile-subsection__header">
+            <h3 className="nx-h3">NxTableCell</h3>
+          </header>
+          <p className="nx-p">
+            Equivalent to the <code className="nx-code">&lt;th&gt;</code> or
+            {' '}<code className="nx-code">&lt;td&gt;</code> element.
+          </p>
+
+          <NxTable>
+            <NxTableHead>
+              <NxTableRow>
+                <NxTableCell>Prop</NxTableCell>
+                <NxTableCell>Type</NxTableCell>
+                <NxTableCell>Required</NxTableCell>
+                <NxTableCell>Details</NxTableCell>
+              </NxTableRow>
+            </NxTableHead>
+            <NxTableBody>
+              <NxTableRow>
+                <NxTableCell>isHeader</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>Automatically set to true when in a &lt;NxTableHead&gt; component</NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>isEmpty</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>
+                  Used to indicate a table without contents, automatically applied when rendering the loading spinner
+                </NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>isError</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>Automatically set to true when in a &lt;NxTableHead&gt; component</NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>isNumeric</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>Used for columns that contain numeric information</NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>isSortable</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>Used for columns that can be sorted</NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>sortDir</NxTableCell>
+                <NxTableCell style={{whiteSpace: 'nowrap'}}>asc | desc</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>
+                  Used to indicate the sorting direction applied.
+                  A null value indicates the column is not yet sorted.
+                  This should only be used for <code className="nx-code">&lt;NxTableCell&gt;</code> components
+                  in the <code className="nx-code">&lt;NxTableHead&gt;</code>
+                </NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>hasIcon</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>
+                  Used to indicate a column whose data cells contain only
+                  an <code className="nx-code">&lt;NxFontAwesomeIcon&gt;</code>
+                </NxTableCell>
+              </NxTableRow>
+            </NxTableBody>
+          </NxTable>
+        </section>
 
         <p className="nx-p">
-          Equivalent to the <code className="nx-code">&lt;thead&gt;</code> element.
-          The <code className="nx-code">&lt;NxTableRow&gt;</code> component is the only valid child.
-          Descendant <code className="nx-code">&lt;NxTableCell&gt;</code> components will have the
-          <code className="nx-code">&lt;isHeader&gt;</code> prop set.
+          For guidance on the construction of a scrolling table, see the scrolling example on
+          the <code className="nx-code">nx-table</code> HTML element page.
         </p>
-
-        <hr />
-
-        <h5>NxTableBody</h5>
-
-        <p className="nx-p">
-          Equivalent to the <code className="nx-code">&lt;tbody&gt;</code> element.
-          It should have <code className="nx-code">&lt;NxTableRow&gt;</code> for children.
-        </p>
-
-        <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Prop</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Details</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>isLoading</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>Used to show a loading spinner instead of the table content</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>error</NxTableCell>
-              <NxTableCell>string</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>Used to show an error message instead of the table content</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>columns</NxTableCell>
-              <NxTableCell>number</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>
-                Automatically set by <code className="nx-code">&lt;NxTable&gt;</code> to set the
-                <code className="nx-code">colSpan</code> attribute on the loading spinner and error message
-                <code className="nx-code">&lt;NxTableCell&gt;</code>
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
-        </NxTable>
-
-        <hr />
-
-        <h5>NxTableRow</h5>
-
-        <p className="nx-p">
-          Equivalent to the <code className="nx-code">&lt;tr&gt;</code> element.
-          It automatically assigns <code className="nx-code">isHeader</code> on the children
-          if that prop is set on this row.
-          It should have <code className="nx-code">&lt;NxTableCell&gt;</code> for children.
-        </p>
-
-        <hr />
-
-        <h5>NxTableCell</h5>
-
-        <p className="nx-p">
-          Equivalent to the <code className="nx-code">&lt;th&gt;</code> or
-          <code className="nx-code">&lt;td&gt;</code> element.
-        </p>
-
-        <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Prop</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Details</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>isHeader</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>Automatically set to true when in a &lt;NxTableHead&gt; component</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>isEmpty</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>
-                Used to indicate a table without contents, automatically applied when rendering the loading spinner
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>isError</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>Automatically set to true when in a &lt;NxTableHead&gt; component</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>isNumeric</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>Used for columns that contain numeric information</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>isSortable</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>Used for columns that can be sorted</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>sortDir</NxTableCell>
-              <NxTableCell style={{whiteSpace: 'nowrap'}}>asc | desc</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>
-                Used to indicate the sorting direction applied.
-                A null value indicates the column is not yet sorted.
-                This should only be used for <code className="nx-code">&lt;NxTableCell&gt;</code> components
-                in the <code className="nx-code">&lt;NxTableHead&gt;</code>
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>hasIcon</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>
-                Used to indicate a column whose data cells contain only
-                an <code className="nx-code">&lt;NxFontAwesomeIcon&gt;</code>
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
-        </NxTable>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple Example"
