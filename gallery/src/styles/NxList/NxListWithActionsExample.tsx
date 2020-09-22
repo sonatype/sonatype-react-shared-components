@@ -16,18 +16,33 @@ const NxListErrorExample = () =>
       </span>
       <div className="nx-list__actions">
         <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+      </div>
+    </li>
+    <li className="nx-list__item">
+      <span className="nx-list__text">
+        List item deliberately made very long so that the text will wrap before it gets to the action buttons nodal
+        point bridge kanji San Francisco render-farm chrome human paranoid San Francisco skyscraper convenience store
+      </span>
+      <span className="nx-list__subtext">
+        This is some sub-text to demonstrate spacing point bridge kanji San Francisco render-farm chrome human paranoid
+        San Francisco skyscraper convenience store
+      </span>
+      <div className="nx-list__actions">
+        <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
       </div>
     </li>
     <li className="nx-list__item">
       <span className="nx-list__text nx-truncate-ellipsis">
-        List item deliberately made very long so that the text will wrap before it gets to the action buttons nodal
+        List item deliberately made very long so that the text will truncate before it gets to the action buttons nodal
         point bridge kanji San Francisco render-farm chrome human paranoid San Francisco skyscraper convenience store
       </span>
-      <span className="nx-list__subtext">
-        This is some sub-text to demonstrate spacing
+      <span className="nx-list__subtext nx-truncate-ellipsis">
+        This is some sub-text to demonstrate spacing point bridge kanji San Francisco render-farm chrome human paranoid
+        San Francisco skyscraper convenience store
       </span>
       <div className="nx-list__actions">
+        <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
       </div>
     </li>
