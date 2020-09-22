@@ -37,7 +37,7 @@
   // 1px of padding subtracted to account for the transparent border
   padding: $nx-spacing-md ($nx-spacing-md - 1px) ($nx-spacing-md - 1px) ($nx-spacing-md - 1px);
 
-  &:first-of-type {
+  &:first-child {
     border-top: 1px solid #d1d6f0;
   }
 
