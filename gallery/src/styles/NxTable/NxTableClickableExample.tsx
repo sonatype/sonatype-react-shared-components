@@ -17,7 +17,7 @@ const NxTableClickable = () =>
         <th className="nx-cell nx-cell--header">Header 3</th>
         <th className="nx-cell nx-cell--header">Header 4</th>
         <th className="nx-cell nx-cell--header">Header 5</th>
-        <th className="nx-cell nx-cell--header nx-cell--chevron"></th>
+        <th className="nx-cell nx-cell--header nx-cell--icon"></th>
       </tr>
     </thead>
     <tbody>
@@ -27,7 +27,7 @@ const NxTableClickable = () =>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell">Content 3</td>
         <td className="nx-cell">Content 4</td>
-        <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
+        <td className="nx-cell nx-cell--icon"><NxFontAwesomeIcon icon={faChevronRight}/></td>
       </tr>
       <tr className="nx-table-row nx-clickable selected" tabIndex={0}>
         <td className="nx-cell nx-cell--label">Row Label</td>
@@ -35,7 +35,7 @@ const NxTableClickable = () =>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell">Content 3</td>
         <td className="nx-cell">Content 4</td>
-        <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
+        <td className="nx-cell nx-cell--icon"><NxFontAwesomeIcon icon={faChevronRight}/></td>
       </tr>
       <tr className="nx-table-row nx-clickable" tabIndex={0}>
         <td className="nx-cell nx-cell--label">Row Label</td>
@@ -43,7 +43,7 @@ const NxTableClickable = () =>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell">Content 3</td>
         <td className="nx-cell">Content 4</td>
-        <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
+        <td className="nx-cell nx-cell--icon"><NxFontAwesomeIcon icon={faChevronRight}/></td>
       </tr>
       <tr className="nx-table-row nx-clickable" tabIndex={0}>
         <td className="nx-cell nx-cell--label">Row Label</td>
@@ -51,7 +51,7 @@ const NxTableClickable = () =>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell">Content 3</td>
         <td className="nx-cell">Content 4</td>
-        <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
+        <td className="nx-cell nx-cell--icon"><NxFontAwesomeIcon icon={faChevronRight}/></td>
       </tr>
     </tbody>
   </table>;

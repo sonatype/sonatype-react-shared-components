@@ -140,19 +140,12 @@
   text-align: center;
 }
 
-// special cells that usually contain a button or indicator - usually on the right side
-.nx-cell--chevron {
-  color: #2c2c2c;
-  width: 10px;
-}
-
 .nx-cell--icon {
-  color: $nx-text-color;
-  padding: 0 $nx-spacing-sm;
-  text-align: right;
-  width: 14px;
-  max-width: 32px;
-  min-width: 14px;
+  color: #2c2c2c;
+  text-align: center;
+
+  // seems there's still no cleaner way to get a cell to shrink to fit its contents
+  width: 1px;
 }
 
 .nx-cell--sortable {
