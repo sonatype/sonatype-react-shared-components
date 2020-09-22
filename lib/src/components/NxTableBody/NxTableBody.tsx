@@ -30,7 +30,7 @@ const NxTableBody = function NxTableBody(props: Props) {
     }
     else if (!columns) {
       console.warn(
-        'columns is required when emptyMessage is to be used, this should have been determined automatically');
+          'columns is required when emptyMessage is to be used, this should have been determined automatically');
     }
   }
 
