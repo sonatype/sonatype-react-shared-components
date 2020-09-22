@@ -13,7 +13,7 @@ export type Props = (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<H
   fullSpan?: boolean | null;
   isNumeric?: boolean | null;
   isSortable?: boolean | null;
-  hasIcon?: boolean | null;
+  chevron?: boolean | null;
   sortDir?: 'asc' | 'desc' | null;
 };
 
@@ -22,7 +22,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   fullSpan: PropTypes.bool,
   isNumeric: PropTypes.bool,
   isSortable: PropTypes.bool,
-  hasIcon: PropTypes.bool,
+  chevron: PropTypes.bool,
   sortDir: PropTypes.oneOf(['asc', 'desc', null]),
   children: PropTypes.node
 };

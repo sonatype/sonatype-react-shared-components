@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import classnames from 'classnames';
-import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
+import { faSort, faSortDown, faSortUp, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import {ensureElement} from '../../util/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -20,7 +20,7 @@ const NxTableCell = function NxTableCell(props: Props) {
     fullSpan = false,
     isNumeric = false,
     isSortable = false,
-    hasIcon = false,
+    chevron = false,
     sortDir,
     className,
     children,
@@ -31,7 +31,7 @@ const NxTableCell = function NxTableCell(props: Props) {
     'nx-cell--header': isHeader,
     'nx-cell--full-span': fullSpan,
     'nx-cell--num': isNumeric,
-    'nx-cell--icon': hasIcon,
+    'nx-cell--chevron': chevron,
     'nx-cell--sortable': isSortable
   });
 
@@ -58,11 +58,16 @@ const NxTableCell = function NxTableCell(props: Props) {
 
   const Tag = isHeader ? 'th' : 'td';
 
-  return (
-    <Tag className={classes} {...attrs}>
+  const contents = chevron ? <NxFontAwesomeIcon icon={faChevronRight}/> : (
+    <>
       {ensureElement(children)}
       {isSortable && <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>}
-    </Tag>
+    </>
+  );
+
+
+  return (
+    <Tag className={classes} {...attrs}>{contents}</Tag>
   );
 };
 

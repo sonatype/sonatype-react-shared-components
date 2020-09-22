@@ -11,10 +11,8 @@ import {
   NxTableBody,
   NxTableCell,
   NxTableHead,
-  NxTableRow,
-  NxFontAwesomeIcon
+  NxTableRow
 } from '@sonatype/react-shared-components';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const NxTableClickableExample = () => {
   const rows = [
@@ -29,7 +27,7 @@ const NxTableClickableExample = () => {
         <NxTableRow>
           <NxTableCell>Name</NxTableCell>
           <NxTableCell>Header 2</NxTableCell>
-          <NxTableCell hasIcon />
+          <NxTableCell />
         </NxTableRow>
       </NxTableHead>
       <NxTableBody>
@@ -37,7 +35,7 @@ const NxTableClickableExample = () => {
           <NxTableRow key={row.name} isClickable onClick={() => alert(`Clicked ${row.name}`)}>
             <NxTableCell>{row.name}</NxTableCell>
             <NxTableCell>Content</NxTableCell>
-            <NxTableCell hasIcon><NxFontAwesomeIcon icon={faChevronRight}/></NxTableCell>
+            <NxTableCell chevron />
           </NxTableRow>
         )}
       </NxTableBody>
