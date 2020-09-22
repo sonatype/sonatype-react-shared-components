@@ -64,7 +64,7 @@
     .nx-cell--label {
       @include semi-bold();
 
-      color: $nx-text-color-light;
+      color: $nx-text-color;
     }
   }
 }
@@ -101,7 +101,7 @@
   background-color: $nx-off-white;
   border-top: none;
 
-  color: $nx-text-color-light;
+  color: $nx-text-color;
   font-size: 12px;
   height: 24px;
   line-height: 12px;
@@ -124,13 +124,13 @@
 .nx-cell--empty {
   @include regular();
 
-  color: $nx-text-color-light;
+  color: $nx-text-color;
   text-align: center;
 }
 
 // special cells that usually contain a button or indicator - usually on the right side
 .nx-cell--chevron {
-  color: $nx-text-color-light;
+  color: $nx-text-color;
   padding: 0 $nx-spacing-sm;
   text-align: right;
   width: 14px;
@@ -139,7 +139,7 @@
 }
 
 .nx-cell--icon {
-  color: $nx-text-color-light;
+  color: $nx-text-color;
   padding: 0 $nx-spacing-sm;
   text-align: right;
   width: 14px;

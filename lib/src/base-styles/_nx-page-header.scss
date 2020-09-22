@@ -87,7 +87,6 @@ $main-header-product-version-row-height: 1fr;
 .nx-product {
   align-items: center;
   box-sizing: border-box;
-  color: $main-header-color;
   display: flex;
   height: $nx-main-header-height - 6px; // aids vertical alignment of contents
   margin-bottom: 6px;
@@ -105,7 +104,6 @@ $main-header-product-version-row-height: 1fr;
 }
 
 .nx-product__name {
-  color: $nx-text-color-light;
   display: inline-block;
   font-size: 26px;
   margin-left: $nx-spacing-sm;

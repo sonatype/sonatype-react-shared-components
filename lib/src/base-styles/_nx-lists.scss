@@ -83,7 +83,7 @@
 
   border-top: $nx-border; // assume it's always the first item
   border-bottom: $nx-border-row;
-  color: $nx-text-color-light;
+  color: $nx-text-color;
   text-align: center;
 }
 
@@ -135,7 +135,7 @@
   .nx-list__item {
     @include semi-bold();
 
-    color: $nx-text-color-light;
+    color: $nx-text-color;
 
     &.selected {
       background-color: $nx-grey-3;
@@ -168,7 +168,7 @@
       @include regular();
 
       border-top: $nx-border; // assume it's always the first item
-      color: $nx-text-color-light;
+      color: $nx-text-color;
     }
 
     &.nx-error {

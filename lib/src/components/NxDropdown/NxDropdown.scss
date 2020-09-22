@@ -17,6 +17,7 @@ $nx-dropdown-width: 250px;
 }
 
 .nx-dropdown__toggle {
+  color: $nx-text-color;
   display: flex;
   margin: 0;
   outline: none;
@@ -58,7 +59,6 @@ $nx-dropdown-width: 250px;
               0 1px 2px 0 rgba(91, 95, 141, 0.2),
               0 1px 1px 0 rgba(124, 128, 179, 0.2);
   box-sizing: border-box;
-  color: $nx-text-color-light;
   display: block;
   max-height: 328px;
   margin: $nx-spacing-xxs 0 0 0;
@@ -87,7 +87,7 @@ $nx-dropdown-width: 250px;
   background-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
-  color: $nx-text-color-light;
+  color: $nx-text-color;
   outline: none;
   text-align: left;
   width: 100%;
@@ -114,17 +114,6 @@ $nx-dropdown-width: 250px;
   .nx-dropdown-menu {
     padding-left: 0;
     padding-right: 0;
-  }
-
-  .nx-dropdown-title {
-    @include semi-bold();
-
-    border-bottom: $nx-border-dark;
-    color: $nx-text-color-light;
-    line-height: 16px;
-    margin: 0;
-    padding: 12px 8px 16px 8px;
-    text-transform: uppercase;
   }
 }
 
