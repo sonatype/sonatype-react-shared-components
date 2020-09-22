@@ -18,7 +18,8 @@ describe('nx-list', function() {
       actionsSelector = '#nx-list-actions-example .nx-list',
       multiLineSelector = '#nx-list-multi-line-example .gallery-raw-html-example',
       emptySelector = '#nx-list-empty-example .gallery-raw-html-example',
-      errorSelector = '#nx-list-error-example .nx-list';
+      errorSelector = '#nx-list-error-example .nx-list',
+      errorSelector = '#nx-list-loading-example .nx-list';
 
   describe('Simple nx-list', function() {
     it('looks right', simpleTest(simpleSelector));
@@ -46,5 +47,9 @@ describe('nx-list', function() {
 
   describe('Errored nx-list', function() {
     it('looks right', simpleTest(errorSelector));
+  });
+
+  describe('Loading nx-list', function() {
+    it('looks right', simpleTest(loadingSelector));
   });
 });
