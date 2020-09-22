@@ -21,7 +21,7 @@ export default () =>
     </thead>
     <tbody>
       <tr className="nx-table-row">
-        <td colSpan={6} className="nx-cell nx-cell-full-span">
+        <td colSpan={6} className="nx-cell nx-cell--meta-info">
           <NxLoadError error="Something's broken" retryHandler={() => {}} />
         </td>
       </tr>

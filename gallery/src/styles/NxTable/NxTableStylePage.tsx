@@ -88,11 +88,13 @@ const NxTableStylePage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-cell--empty</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-cell--meta-info</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
             <td className="nx-cell">
-              Applied to a <code className="nx-code">&lt;td&gt;</code>
-              to indicate a table without contents.
+              Applied to table cells that provide meta-information about the table data. There are three known use
+              cases for this: loading states, error states, and empty states. In each of these cases, the table body
+              should contain a single row with a single cell. That cell should use the `colspan` attribute to
+              stretch all the way across the table, and should use this class.
             </td>
           </tr>
           <tr className="nx-table-row">
