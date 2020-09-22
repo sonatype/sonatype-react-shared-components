@@ -10,6 +10,7 @@ import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxListClickableExample from './NxListClickableExample';
 import NxListWithActionsExample from './NxListWithActionsExample';
 import NxListErrorExample from './NxListErrorStateExample';
+import NxListLoadingExample from './NxListLoadingExample';
 
 const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').default,
     NxListClickableCode = require('!!raw-loader!./NxListClickableExample').default,
@@ -17,7 +18,8 @@ const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').def
     NxListBulletedCode = require('!!raw-loader!./NxListBulletedExample.html').default,
     NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.tsx').default,
     NxListEmptyCode = require('!!raw-loader!./NxListEmptyExample.html').default,
-    NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.tsx').default;
+    NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.tsx').default,
+    NxListLoadingCode = require('!!raw-loader!./NxListLoadingExample.tsx').default;
 
 const NxListsExamples = () =>
   <>
@@ -71,6 +73,14 @@ const NxListsExamples = () =>
                         codeExamples={NxListErrorStateCode}>
       A demonstration of the expected styling and content for an <code className="nx-code">nx-list</code> whose content
       failed to load.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX List demonstrating loading indicator"
+                        id="nx-list-loading-example"
+                        liveExample={NxListLoadingExample}
+                        codeExamples={NxListLoadingCode}>
+      A demonstration of the expected styling and placement for a loading indicator
+      within <code className="nx-code">nx-list</code>.
     </GalleryExampleTile>
   </>;
 

@@ -6,6 +6,7 @@
  */
 
 .nx-list {
+  border-top: 1px solid #d1d6f0;
   margin: $nx-spacing-md 0 $nx-flow-content-spacing 0;
   padding: 0;
 
@@ -38,12 +39,17 @@
   padding: $nx-spacing-md ($nx-spacing-md - 1px) ($nx-spacing-md - 1px) ($nx-spacing-md - 1px);
 
   &:first-child {
-    border-top: 1px solid #d1d6f0;
+    border-top: none;
   }
 
   &.disabled {
     color: $nx-text-color-disabled;
     cursor: default;
+  }
+
+  .nx-loading-spinner {
+    margin: 0;
+    text-align: center;
   }
 }
 
