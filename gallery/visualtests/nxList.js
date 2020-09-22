@@ -19,7 +19,7 @@ describe('nx-list', function() {
       multiLineSelector = '#nx-list-multi-line-example .gallery-raw-html-example',
       emptySelector = '#nx-list-empty-example .gallery-raw-html-example',
       errorSelector = '#nx-list-error-example .nx-list',
-      errorSelector = '#nx-list-loading-example .nx-list';
+      loadingSelector = '#nx-list-loading-example .nx-list';
 
   describe('Simple nx-list', function() {
     it('looks right', simpleTest(simpleSelector));
