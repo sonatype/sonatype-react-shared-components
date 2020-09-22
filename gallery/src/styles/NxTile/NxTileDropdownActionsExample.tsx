@@ -27,6 +27,9 @@ export default function NxTileDropdownActionsExample() {
             <a onClick={onClick} className="nx-dropdown-button">
               Nav Link3
             </a>
+            <button onClick={onClick} className="nx-dropdown-button">
+              Nav Link4 - this link should trigger truncation
+            </button>
           </NxStatefulDropdown>
         </div>
       </header>
