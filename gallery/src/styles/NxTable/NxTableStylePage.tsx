@@ -53,7 +53,7 @@ const NxTableStylePage = () =>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-table</code></td>
             <td className="nx-cell">
               When a table which scrolls in of itself is desired, wrap the table in
-              an <code className="nx-code">.nx-scrollable--table-container</code> wrapper and give it a class
+              an <code className="nx-code">.nx-scrollable</code> wrapper and give it a class
               of <code className="nx-code">.nx-table--scrollable</code>.
             </td>
           </tr>
@@ -71,16 +71,14 @@ const NxTableStylePage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-cell</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              Standard table cell class, applied to both <code className="nx-code">&lt;td&gt;</code> and
+              Standard tabel cell class, applied to both <code className="nx-code">&lt;td&gt;</code> and
               <code className="nx-code">&lt;th&gt;</code>.
             </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-cell--header</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
-            <td className="nx-cell">
-              Used to style table header cells (<code className="nx-code">&lt;th&gt;</code> elements).
-            </td>
+            <td className="nx-cell">Used for style table header cells.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-cell--num</code></td>
@@ -90,13 +88,11 @@ const NxTableStylePage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-cell--full-span</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-cell--empty</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
             <td className="nx-cell">
-              Applied to table cells that convey meta-information about the table data and which span
-              across the entire table. Should be used in conjunction with the HTML colspan attribute.
-              There are three cases where this should be used (see below), and in each case
-              the spanned cell should be the sole cell in the sole row in the table body.
+              Applied to a <code className="nx-code">&lt;td&gt;</code>
+              to indicate a table without contents.
             </td>
           </tr>
           <tr className="nx-table-row">
