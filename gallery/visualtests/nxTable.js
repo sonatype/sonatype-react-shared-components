@@ -63,4 +63,24 @@ describe('NxTable', function() {
       }
     });
   });
+
+  describe('Truncation and Wrapping table', function() {
+    beforeEach(async function() {
+      await browser.url('#/pages/nx-table');
+    });
+
+    const tableSelector = '#nx-table-truncation-wrapping-example .nx-table';
+
+    it('looks right', simpleTest(tableSelector));
+  });
+
+  describe('Fixed layout table', function() {
+    beforeEach(async function() {
+      await browser.url('#/pages/nx-table');
+    });
+
+    const tableSelector = '#nx-table-fixed-layout-example .nx-table';
+
+    it('looks right', simpleTest(tableSelector));
+  });
 });

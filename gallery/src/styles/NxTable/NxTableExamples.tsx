@@ -43,6 +43,7 @@ const NxTablesExamples = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table Truncation and Wrapping Example"
+                        id="nx-table-truncation-wrapping-example"
                         htmlExample={NxTableTruncationAndWrappingCode}
                         codeExamples={truncationAndWrappingCodeExamples}>
       A demonstration of text truncation and wrapping within table cells. The first column truncates, while the second
@@ -58,6 +59,7 @@ const NxTablesExamples = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table Fixed Layout Example"
+                        id="nx-table-fixed-layout-example"
                         liveExample={NxTableFixedLayoutExample}
                         codeExamples={fixedLayoutCodeExamples}>
       This example demonstrates the nx-table--fixed-layout class which is typically used in conjunction with
