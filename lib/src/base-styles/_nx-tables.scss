@@ -145,6 +145,7 @@
   @include container-horizontal;
 
   padding: $nx-spacing-sm $nx-spacing-md;
+  vertical-align: top;
 }
 
 .nx-cell--label {
