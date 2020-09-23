@@ -13,15 +13,15 @@
 }
 
 .nx-tab {
-  border-bottom: 2px solid transparent;
+  border: 1px solid transparent;
+  border-bottom-width: 2px;
   cursor: pointer;
   display: inline-block;
   list-style: none;
   margin: 0 $nx-spacing-md -1px 0;
   // subtract border thickness for consistent spacing
-  padding: $nx-spacing-md 0 ($nx-spacing-md - 2px) 0;
+  padding: $nx-spacing-md $nx-spacing-md ($nx-spacing-md - 2px) $nx-spacing-md;
   text-align: center;
-  min-width: 125px;
 
   &.active {
     @include semi-bold();
@@ -38,5 +38,20 @@
     border: solid 1px #02a6d9;
     box-shadow: 0 0 3px 1px transparentize(#02a6d9, 0.7);
     outline: none;
+  }
+
+  a:hover, a:focus {
+    font-weight: bold;
+    letter-spacing: 0
+  }
+
+  // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
+  &::before {
+    display: block;
+    content: attr(data-text);
+    font-weight: 600;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
   }
 }
