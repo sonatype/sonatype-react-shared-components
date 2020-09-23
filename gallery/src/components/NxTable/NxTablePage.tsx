@@ -22,6 +22,7 @@ import NxTableSortableExample from './NxTableSortableExample';
 import NxTableLoadingExample from './NxTableLoadingExample';
 import NxTableErrorExample from './NxTableErrorExample';
 import NxTableEmptyExample from './NxTableEmptyExample';
+import NxTableMetaInfoExample from './NxTableMetaInfoExample';
 
 const tableSimpleExampleCode = require('!!raw-loader!./NxTableSimpleExample').default;
 const tableClickableExample = require('!!raw-loader!./NxTableClickableExample').default;
@@ -29,6 +30,7 @@ const tableSortableExample = require('!!raw-loader!./NxTableSortableExample').de
 const tableLoadingExample = require('!!raw-loader!./NxTableLoadingExample').default;
 const tableErrorExample = require('!!raw-loader!./NxTableErrorExample').default;
 const tableEmptyExample = require('!!raw-loader!./NxTableEmptyExample').default;
+const tableMetaInfoExample = require('!!raw-loader!./NxTableMetaInfoExample').default;
 
 export default function NxTablePage() {
   return (
@@ -153,18 +155,21 @@ export default function NxTablePage() {
                 <NxTableCell>Automatically set to true when in a &lt;NxTableHead&gt; component</NxTableCell>
               </NxTableRow>
               <NxTableRow>
-                <NxTableCell>isEmpty</NxTableCell>
+                <NxTableCell>metaInfo</NxTableCell>
                 <NxTableCell>boolean</NxTableCell>
                 <NxTableCell>false</NxTableCell>
                 <NxTableCell>
-                  Used to indicate a table without contents, automatically applied when rendering the loading spinner
+                  Sets the <code className="nx-code">.nx-cell--meta-info</code> class on the cell. This class is
+                  applied to table cells that provide meta-information about the table data, such as loading, error,
+                  and empty table states. For those three states, the caller of
+                  the <code className="nx-code">NxTable</code> react component does not manage the table cells
+                  directly (instead using the appropriate props on <code className="nx-code">NxTableBody</code>, and
+                  therefore does not need to use this prop. However, the prop is available for any
+                  other meta-info states that the caller might wish to convey. The intended usage is that a cell
+                  using this prop would be the only cell in the only row in the table body, and would have
+                  a <code className="nx-code">colspan</code> attribute causing it to span all the way across the
+                  table.
                 </NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>isError</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>Automatically set to true when in a &lt;NxTableHead&gt; component</NxTableCell>
               </NxTableRow>
               <NxTableRow>
                 <NxTableCell>isNumeric</NxTableCell>
@@ -248,6 +253,12 @@ export default function NxTablePage() {
                           codeExamples={tableEmptyExample}>
         An example of how <code className="nx-code">NxTable</code> should be used to indicate that there is no data
         to be seen.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Custom Meta-Info Example"
+                          liveExample={NxTableMetaInfoExample}
+                          codeExamples={tableMetaInfoExample}>
+        An example of how <code className="nx-code">NxTable</code> should be used with a custom meta-info situation.
       </GalleryExampleTile>
     </>
   );
