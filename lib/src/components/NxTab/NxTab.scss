@@ -6,16 +6,32 @@
  */
  @import '../../scss-shared/nx-colors';
  @import '../../scss-shared/nx-variables';
+ @import '../../scss-shared/nx-text-helpers';
 
 .nx-tab {
-  border-bottom: 4px solid transparent;
+  border-bottom: 2px solid transparent;
   cursor: pointer;
   display: inline-block;
   list-style: none;
-  padding: $nx-spacing-xs $nx-spacing-l;
+  margin-right: $nx-spacing-md;
+  // subtract border thickness for consistent spacing
+  padding: $nx-spacing-md 0 ($nx-spacing-md - 2px) 0;
+  text-align: center;
+  min-width: 125px;
 
   &.active {
-    border-bottom-color: $nx-background-color-interactive;
-    font-weight: bold;
+    @include semi-bold();
+
+    border-bottom-color: #045dd1;
+    color: #045dd1;
+  }
+
+  &:hover {
+    @include semi-bold();
+  }
+
+  &:focus {
+    box-shadow: 0 0 3px 1px transparentize(#02a6d9, 0.7);
+    outline: none;
   }
 }

@@ -5,9 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../../scss-shared/nx-colors';
+@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-container-helpers';
 
 .nx-tab-list {
-  border-bottom: $nx-border-row-dark;
+  @include container-horizontal;
+
+  border-bottom: 1px solid #d1d6f0;
+  margin: 0;
   padding: 0;
-  margin-bottom: 0;
 }
