@@ -20,6 +20,7 @@ const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample.html').d
     NxTableEmptyCode = require('!!raw-loader!./NxTableEmptyExample.html').default,
     NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample').default,
     NxTableScrollingCode = require('!!raw-loader!./NxTableScrollingExample.html').default,
+    NxTableUnfilledScrollContainerCode = require('!!raw-loader!./NxTableUnfilledScrollContainerExample.html').default,
     NxTableTruncationAndWrappingCode = require('!!raw-loader!./NxTableTruncationAndWrappingExample.html').default,
     NxTableFixedLayoutCode = require('!!raw-loader!./NxTableFixedLayoutExample').default,
     NxTableTruncationAndWrappingScss = require('!!raw-loader!./NxTableTruncationAndWrappingExample.scss').default,
@@ -91,6 +92,14 @@ const NxTablesExamples = () =>
       the sticky header behavior. For scrollable containers which, on the other hand, contain more content in addition
       to a table, sticky headers should not be used and therefore
       the <code className="nx-code">nx-table--scrollable</code> class should not be used on the table.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Table Unfilled Scroll Container Example"
+                        id="nx-table-unfilled-scroll-container-example"
+                        htmlExample={NxTableUnfilledScrollContainerCode}
+                        codeExamples={NxTableUnfilledScrollContainerCode}>
+      This example demonstrates what happens when a table is set up to enable scrolling, but does not have enough
+      content to cause scrolling.
     </GalleryExampleTile>
   </>;
 

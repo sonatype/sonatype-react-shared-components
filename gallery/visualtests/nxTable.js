@@ -64,6 +64,16 @@ describe('NxTable', function() {
     });
   });
 
+  describe('Unfilled Scrollable table', function() {
+    beforeEach(async function() {
+      await browser.url('#/pages/nx-table');
+    });
+
+    const tableSelector = '#nx-table-unfilled-scroll-container-example .nx-scrollable';
+
+    it('looks right', simpleTest(tableSelector));
+  });
+
   describe('Truncation and Wrapping table', function() {
     beforeEach(async function() {
       await browser.url('#/pages/nx-table');

@@ -97,6 +97,12 @@
   border-radius: 0;
   overflow: visible;
 
+  // In Chrome (at least), tables are forced to have a whole number of pixels for their width. This means that
+  // if a container has a fractional number of pixels width, the table width will be truncated down and a visible
+  // gap will appear.  This calc ensures that when in a fractional-width container, the table will get an extra
+  // pixel of width
+  width: calc(100% + 0.9999px);
+
   > thead > :first-child, > tbody > :last-child, {
     > .nx-cell {
       &:first-child, &:last-child {
