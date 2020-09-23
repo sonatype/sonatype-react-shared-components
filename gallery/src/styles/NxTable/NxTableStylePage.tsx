@@ -5,7 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxTableExamples from './NxTableExamples';
@@ -55,6 +56,23 @@ const NxTableStylePage = () =>
               When a table which scrolls in of itself is desired, wrap the table in
               an <code className="nx-code">.nx-scrollable</code> wrapper and give it a class
               of <code className="nx-code">.nx-table--scrollable</code>.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-table--fixed-layout</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-table</code></td>
+            <td className="nx-cell">
+              Used to apply{' '}
+              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout"
+                 className="nx-text-link"
+                 target="_blank"
+                 rel="noreferrer">
+                <code className="nx-code">table-layout: fixed</code>
+                <NxFontAwesomeIcon icon={faExternalLinkAlt} />
+              </a>
+              {' '}to <code className="nx-code">nx-table</code>s. This class should be used in lieu of setting
+              <code className="nx-code">table-layout</code> manually, as it also makes some adjustments to the
+              behavior of other table classes in order to make them compatible with a fixed layout.
             </td>
           </tr>
           <tr className="nx-table-row">
