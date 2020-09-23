@@ -19,6 +19,7 @@
   display: flex;
   margin: 8px 0;
   padding: $nx-spacing-xs $nx-spacing-md $nx-spacing-xs $nx-spacing-md;
+  text-align: initial;
 
   > .nx-icon {
     // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
