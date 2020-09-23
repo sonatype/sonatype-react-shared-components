@@ -107,6 +107,24 @@
   }
 }
 
+.nx-table--fixed-layout {
+  table-layout: fixed;
+
+  .nx-cell--icon {
+    box-sizing: content-box;
+
+    // the width:1px that works well with auto-layout tables is taken literally in fixed-layout tables.
+    // Instead, we make a reasonable guess at the width of the icon here.
+    width: 1em;
+
+    &:last-child {
+      // in case the icon is less than 1em wide, still put it the correct distance from the right edge
+      // (typical case: chevrons)
+      text-align: right;
+    }
+  }
+}
+
 .nx-cell {
   @include container-vertical;
   @include container-horizontal;
