@@ -42,6 +42,15 @@
         border-right-style: solid;
         padding-right: $nx-spacing-md - $border-width;
       }
+
+      // Used for table cells containiner meta-information such as the fact that the table is empty, or
+      // that the data is loading. These cells are expected to take up the entire row using colspan attributes
+      &.nx-cell--meta-info {
+        text-align: center;
+
+        padding-top: $nx-spacing-md - 1px;
+        padding-bottom: $nx-spacing-md;
+      }
     }
 
     &:last-child {
@@ -155,11 +164,6 @@
   text-align: center;
 }
 
-// Used for table cells containiner meta-information such as the fact that the table is empty, or
-// that the data is loading. These cells are expected to take up the entire row using colspan attributes
-.nx-cell--meta-info {
-  text-align: center;
-}
 
 .nx-cell--icon {
   color: #2c2c2c;
