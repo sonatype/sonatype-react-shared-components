@@ -10,12 +10,29 @@ import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTableClickableExample from './NxTableClickableExample';
 import NxTableErrorExample from './NxTableErrorStateExample';
+import NxTableFixedLayoutExample from './NxTableFixedLayoutExample';
+
+import './NxTableTruncationAndWrappingExample.scss';
+import './NxTableFixedLayoutExample.scss';
 
 const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample.html').default,
     NxTableClickableCode = require('!!raw-loader!./NxTableClickableExample').default,
     NxTableEmptyCode = require('!!raw-loader!./NxTableEmptyExample.html').default,
     NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample').default,
-    NxTableScrollingCode = require('!!raw-loader!./NxTableScrollingExample.html').default;
+    NxTableScrollingCode = require('!!raw-loader!./NxTableScrollingExample.html').default,
+    NxTableTruncationAndWrappingCode = require('!!raw-loader!./NxTableTruncationAndWrappingExample.html').default,
+    NxTableFixedLayoutCode = require('!!raw-loader!./NxTableFixedLayoutExample').default,
+    NxTableTruncationAndWrappingScss = require('!!raw-loader!./NxTableTruncationAndWrappingExample.scss').default,
+    NxTableFixedLayoutScss = require('!!raw-loader!./NxTableFixedLayoutExample.scss').default;
+
+const truncationAndWrappingCodeExamples = [
+      NxTableTruncationAndWrappingCode,
+      { content: NxTableTruncationAndWrappingScss, language: 'scss'}
+    ],
+    fixedLayoutCodeExamples = [
+      NxTableFixedLayoutCode,
+      { content: NxTableFixedLayoutScss, language: 'scss'}
+    ];
 
 const NxTablesExamples = () =>
   <>
@@ -25,11 +42,28 @@ const NxTablesExamples = () =>
       A simple, static demonstration of <code className="nx-code">nx-table</code> styles.
     </GalleryExampleTile>
 
+    <GalleryExampleTile title="NX Table Truncation and Wrapping Example"
+                        htmlExample={NxTableTruncationAndWrappingCode}
+                        codeExamples={truncationAndWrappingCodeExamples}>
+      A demonstration of text truncation and wrapping within table cells. The first column truncates, while the second
+      wraps. Notice that wrapping is the default behavior. Truncation requires an extra element within the table cell,
+      which must have an explicit width.
+    </GalleryExampleTile>
+
     <GalleryExampleTile title="NX Table with Clickable Rows Example"
                         liveExample={NxTableClickableExample}
                         codeExamples={NxTableClickableCode}>
       A demonstration of an <code className="nx-code">nx-table</code> with rows that receive clickable styling and
       a chevron column.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Table Fixed Layout Example"
+                        liveExample={NxTableFixedLayoutExample}
+                        codeExamples={fixedLayoutCodeExamples}>
+      This example demonstrates the nx-table--fixed-layout class which is typically used in conjunction with
+      a custom class to explicitly set the widths of table rows. Notice here that the implementation of a
+      truncated column is simpler: the inner <code className="nx-code">div</code> is not necessary and instead
+      the <code className="nx-code">.nx-truncate-ellipsis</code> class can be applied directly to the table cell.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table Empty Example"
