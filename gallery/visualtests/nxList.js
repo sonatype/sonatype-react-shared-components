@@ -12,13 +12,14 @@ describe('nx-list', function() {
   });
 
   const simpleSelector = '#nx-list-simple-example .gallery-raw-html-example',
-      clickableSelector = '#nx-list-clickable-example .gallery-raw-html-example',
+      clickableSelector = '#nx-list-clickable-example .nx-list--clickable',
       bulletedSelector = '#nx-list-bulleted-example .gallery-raw-html-example',
       definitionListSelector = '#nx-list-definition-example .gallery-raw-html-example',
-      actionsSelector = '#nx-list-actions-example .gallery-raw-html-example',
+      actionsSelector = '#nx-list-actions-example .nx-list',
       multiLineSelector = '#nx-list-multi-line-example .gallery-raw-html-example',
       emptySelector = '#nx-list-empty-example .gallery-raw-html-example',
-      errorSelector = '#nx-list-error-example .gallery-raw-html-example';
+      errorSelector = '#nx-list-error-example .nx-list',
+      loadingSelector = '#nx-list-loading-example .nx-list';
 
   describe('Simple nx-list', function() {
     it('looks right', simpleTest(simpleSelector));
@@ -30,10 +31,6 @@ describe('nx-list', function() {
 
   describe('Bulleted nx-list', function() {
     it('looks right', simpleTest(bulletedSelector));
-  });
-
-  describe('Definition List nx-list', function() {
-    it('looks right', simpleTest(definitionListSelector));
   });
 
   describe('nx-list with actions', function() {
@@ -50,5 +47,9 @@ describe('nx-list', function() {
 
   describe('Errored nx-list', function() {
     it('looks right', simpleTest(errorSelector));
+  });
+
+  describe('Loading nx-list', function() {
+    it('looks right', simpleTest(loadingSelector));
   });
 });

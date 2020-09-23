@@ -7,30 +7,32 @@
 import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
+import NxListClickableExample from './NxListClickableExample';
+import NxListWithActionsExample from './NxListWithActionsExample';
+import NxListErrorExample from './NxListErrorStateExample';
+import NxListLoadingExample from './NxListLoadingExample';
+
 const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').default,
-    NxListClickableCode = require('!!raw-loader!./NxListClickableExample.html').default,
+    NxListClickableCode = require('!!raw-loader!./NxListClickableExample').default,
     NxListMultiLineCode = require('!!raw-loader!./NxListMultiLineExample.html').default,
     NxListBulletedCode = require('!!raw-loader!./NxListBulletedExample.html').default,
-    NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.html').default,
-    NxListDefinitionListCode = require('!!raw-loader!./NxListDefinitionListExample.html').default,
+    NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.tsx').default,
     NxListEmptyCode = require('!!raw-loader!./NxListEmptyExample.html').default,
-    NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.html').default;
+    NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.tsx').default,
+    NxListLoadingCode = require('!!raw-loader!./NxListLoadingExample.tsx').default;
 
 const NxListsExamples = () =>
   <>
-    <GalleryExampleTile title="NX Simple List Example"
+    <GalleryExampleTile title="NX Basic List Example"
                         id="nx-list-simple-example"
                         htmlExample={NxListSimpleCode}
                         codeExamples={NxListSimpleCode}>
-      Two simple <code className="nx-code">nx-list</code> variations. One is a
-      bare <code className="nx-code">&lt;ul&gt;</code> while the other has
-      a <code className="nx-code">&lt;div&gt;</code> wrapping the <code className="nx-code">&lt;ul&gt;</code> along
-      with a <code className="nx-code">nx-list__title</code>.
+      Basic <code className="nx-code">nx-list</code> with a heading.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Clickable List Example"
                         id="nx-list-clickable-example"
-                        htmlExample={NxListClickableCode}
+                        liveExample={NxListClickableExample}
                         codeExamples={NxListClickableCode}>
       An <code className="nx-code">nx-list</code> demonstrating clickable, selection, and disabled styles.
     </GalleryExampleTile>
@@ -43,17 +45,9 @@ const NxListsExamples = () =>
       default <code className="nx-code">&lt;ul&gt;</code> styling. These can be nested.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Definition List Example"
-                        id="nx-list-definition-example"
-                        htmlExample={NxListDefinitionListCode}
-                        codeExamples={NxListDefinitionListCode}>
-      An <code className="nx-code">nx-list</code> style for definition lists.
-      {' '}(<code className="nx-code">&lt;dl&gt;</code>s)
-    </GalleryExampleTile>
-
     <GalleryExampleTile title="NX List with Actions Example"
                         id="nx-list-actions-example"
-                        htmlExample={NxListWithActionsCode}
+                        liveExample={NxListWithActionsExample}
                         codeExamples={NxListWithActionsCode}>
       An <code className="nx-code">nx-list</code> with icon buttons for initiation actions.
     </GalleryExampleTile>
@@ -62,8 +56,8 @@ const NxListsExamples = () =>
                         id="nx-list-multi-line-example"
                         htmlExample={NxListMultiLineCode}
                         codeExamples={NxListMultiLineCode}>
-      An <code className="nx-code">nx-list</code> with subtext in each element. The subtext may optionally be multiple
-      lines in which case it wraps.
+      Examples of list items that wrap and truncate, some examples demonstrating wrapping and truncation
+      on <code className="nx-code">nx-list-item__subtext</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List Empty Example"
@@ -75,10 +69,18 @@ const NxListsExamples = () =>
 
     <GalleryExampleTile title="NX List with Error Message Example"
                         id="nx-list-error-example"
-                        htmlExample={NxListErrorStateCode}
+                        liveExample={NxListErrorExample}
                         codeExamples={NxListErrorStateCode}>
       A demonstration of the expected styling and content for an <code className="nx-code">nx-list</code> whose content
       failed to load.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX List demonstrating loading indicator"
+                        id="nx-list-loading-example"
+                        liveExample={NxListLoadingExample}
+                        codeExamples={NxListLoadingCode}>
+      A demonstration of the expected styling and placement for a loading indicator
+      within <code className="nx-code">nx-list</code>.
     </GalleryExampleTile>
   </>;
 
