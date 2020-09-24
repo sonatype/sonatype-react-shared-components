@@ -12,9 +12,9 @@ describe('nx-threat-number', function() {
   });
 
   const listSelector = '#nx-threat-number-list-example .gallery-example-live',
-      tableSelector = '#nx-threat-number-table-example .gallery-example-live';
+      basicSelector = '#nx-threat-number-basic-example .gallery-example-live';
 
 
+  it('looks right', simpleTest(basicSelector));
   it('looks right in a list', simpleTest(listSelector));
-  it('looks right in a table', simpleTest(tableSelector));
 });
