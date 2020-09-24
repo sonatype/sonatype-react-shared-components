@@ -13,7 +13,7 @@ describe('NxThreatIndicator', function() {
   });
 
   const threatIndicatorsListExampleSelector = '#nx-threat-indicator-list-example .nx-list',
-     threatIndicatorsSimpleExampleSelector = '#nx-threat-indicator-simple-example .nx-table';
+     threatIndicatorsSimpleExampleSelector = '#nx-threat-indicator-simple-example .gallery-example-live';
 
   it('looks right', simpleTest(threatIndicatorsSimpleExampleSelector));
   it('looks right in a list', simpleTest(threatIndicatorsListExampleSelector));
