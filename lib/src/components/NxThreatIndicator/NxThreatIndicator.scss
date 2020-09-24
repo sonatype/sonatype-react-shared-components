@@ -10,7 +10,9 @@
  */
 
 .nx-threat-indicator {
-  margin: 0 $nx-spacing-sm;
+  font-size: $nx-font-size-s;
+  margin: 0 $nx-spacing-xs;
+  vertical-align: -0.1em; // eyeballed
 }
 
 .nx-threat-indicator--unspecified {
