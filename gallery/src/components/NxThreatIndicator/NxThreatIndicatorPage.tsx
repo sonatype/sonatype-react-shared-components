@@ -21,7 +21,7 @@ const NxThreatIndicatorPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">
         <code className="nx-code">NxThreatIndicator</code> is an inline element used
-        to indicate via color the IQ policy threat level of the information to follow.
+        to indicate via color the IQ policy threat level of the information to follow that follows it.
       </p>
       <p className="nx-p">
         There are two scales to choose from: threat level by category, and threat
@@ -93,21 +93,24 @@ const NxThreatIndicatorPage = () =>
                         id="nx-threat-indicator-list-example"
                         liveExample={NxThreatIndicatorByCategoryExample}
                         codeExamples={nxThreatIndicatorByCategoryCode}>
-      An <code className="nx-code">.nx-list</code> including rows displaying threat indicators for each category.
+      A series of lines of text, each beginning with an <code className="nx-code">NxThreatIndicator</code> whose
+      color is set to a different <code className="nx-code">threatLevelCategory</code> value.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Indicators by Policy Number"
                         liveExample={NxThreatIndicatorByPolicyNumberExample}
                         codeExamples={nxThreatIndicatorByPolicyNumberCode}>
-      An <code className="nx-code">.nx-list</code> including rows displaying threat indicators for range of policy
-      threat numbers.
+      A series of lines of text, each beginning with an <code className="nx-code">NxThreatIndicator</code> whose
+      color is set to a different <code className="nx-code">policyThreatNumber</code> value.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Indicators in nx-list"
                         liveExample={NxThreatIndicatorListExample}
                         codeExamples={nxThreatIndicatorListCode}>
-      An <code className="nx-code">.nx-list</code> including rows displaying threat indicators for range of policy
-      threat numbers.
+      An <code className="nx-code">.nx-list</code> including rows in various configurations, each starting with
+      and <code className="nx-code">NxThreatIndicator</code>. Note that this list uses such a wide variety of
+      items for layout illustration purposes only. In practice you would not, for instance, have action buttons within
+      an item of a clickable list.
     </GalleryExampleTile>
   </>;
 
