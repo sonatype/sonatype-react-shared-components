@@ -10,11 +10,7 @@
  */
 
 .nx-threat-indicator {
-  display: inline-block;
-  height: 100%;
-  margin: 0 12px 0 -12px;
-  vertical-align: middle;
-  width: 8px;
+  margin: 0 $nx-spacing-sm;
 }
 
 .nx-threat-indicator--unspecified {
