@@ -40,39 +40,3 @@
 .nx-threat-indicator--critical {
   background-color: $nx-threat-color-critical;
 }
-
-.nx-list--threat-indicators {
-  .nx-list__item {
-    -ms-grid-columns: auto 1fr auto;
-    grid-template-columns: auto 1fr auto;
-    -ms-grid-rows: auto auto auto;
-    grid-template-areas:
-      "threat-bar list-text actions"
-      "threat-bar list-sub-text blank";
-
-      .nx-threat-bar {
-      -ms-grid-row: 1;
-      -ms-grid-column: 1 / 2;
-      grid-area: threat-bar;
-      min-height: 56px;
-
-      // top and bottom values are magic numbers, tweaked to fit 56px height of a standard list row
-      margin: -16px 12px -16px -16px;
-    }
-
-    > .nx-chevron {
-      -ms-grid-column: 3;
-    }
-  }
-
-  .nx-list__actions {
-    -ms-grid-column: 3;
-  }
-}
-
-.nx-cell--threat-bar {
-  height: 100%;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-}
