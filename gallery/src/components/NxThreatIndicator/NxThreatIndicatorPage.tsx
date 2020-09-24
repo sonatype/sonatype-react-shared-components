@@ -109,7 +109,7 @@ const NxThreatIndicatorPage = () =>
                         liveExample={NxThreatIndicatorListExample}
                         codeExamples={nxThreatIndicatorListCode}>
       An <code className="nx-code">.nx-list</code> including rows in various configurations, each starting with
-      and <code className="nx-code">NxThreatIndicator</code>. Note that this list uses such a wide variety of
+      an <code className="nx-code">NxThreatIndicator</code>. Note that this list uses such a wide variety of
       items for layout illustration purposes only. In practice you would not, for instance, have action buttons within
       an item of a clickable list.
     </GalleryExampleTile>

@@ -19,7 +19,7 @@ const NxThreatNumberPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">
         When an IQ Policy Threat Number is displayed adjacent to an <code className="nx-code">NxThreatIndicator</code>,
-        style the number with <code className="nx-code">.nx-threat-number</code>
+        style the number with <code className="nx-code">.nx-threat-number</code>.
       </p>
     </GalleryDescriptionTile>
 

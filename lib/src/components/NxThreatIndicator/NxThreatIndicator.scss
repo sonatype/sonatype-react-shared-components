@@ -5,14 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../../scss-shared/nx-variables';
-/*
-  Threat Legends
- */
 
 .nx-threat-indicator {
   font-size: $nx-font-size-s;
   margin: 0 $nx-spacing-xs;
-  vertical-align: -0.1em; // eyeballed
+  vertical-align: -0.1em; // eyeballed, assumes $nx-font-size surrounding text
 }
 
 .nx-list__item {
