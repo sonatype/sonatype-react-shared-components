@@ -8,44 +8,25 @@ import React from 'react';
 
 import { NxThreatIndicator } from '@sonatype/react-shared-components';
 
-const NxThreatLevelsByNameExample = () =>
-  <ul className="nx-list">
-    <li className="nx-list__item">
-      <span className="nx-list__text">
-        <NxThreatIndicator />
-        <span>Threat Level Unspecified</span>
-      </span>
-    </li>
-    <li className="nx-list__item">
-      <span className="nx-list__text">
-        <NxThreatIndicator threatLevelCategory="none" />
-        <span>Threat Level None</span>
-      </span>
-    </li>
-    <li className="nx-list__item">
-      <span className="nx-list__text">
-        <NxThreatIndicator threatLevelCategory="low" />
-        <span>Threat Level Low</span>
-      </span>
-    </li>
-    <li className="nx-list__item">
-      <span className="nx-list__text">
-        <NxThreatIndicator threatLevelCategory="moderate" />
-        <span>Threat Level Moderate</span>
-      </span>
-    </li>
-    <li className="nx-list__item">
-      <span className="nx-list__text">
-        <NxThreatIndicator threatLevelCategory="severe" />
-        <span>Threat Level Severe</span>
-      </span>
-    </li>
-    <li className="nx-list__item">
-      <span className="nx-list__text">
-        <NxThreatIndicator threatLevelCategory="critical" />
-        <span>Threat Level Critical</span>
-      </span>
-    </li>
-  </ul>;
+const NxThreatIndicatorByNameExample = () =>
+  <>
+    <NxThreatIndicator />
+    <span>Threat Level Unspecified</span>
+    <br/>
+    <NxThreatIndicator threatLevelCategory="none" />
+    <span>Threat Level None</span>
+    <br/>
+    <NxThreatIndicator threatLevelCategory="low" />
+    <span>Threat Level Low</span>
+    <br/>
+    <NxThreatIndicator threatLevelCategory="moderate" />
+    <span>Threat Level Moderate</span>
+    <br/>
+    <NxThreatIndicator threatLevelCategory="severe" />
+    <span>Threat Level Severe</span>
+    <br/>
+    <NxThreatIndicator threatLevelCategory="critical" />
+    <span>Threat Level Critical</span>
+  </>;
 
-export default NxThreatLevelsByNameExample;
+export default NxThreatIndicatorByNameExample;

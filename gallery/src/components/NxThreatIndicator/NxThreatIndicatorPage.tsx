@@ -10,9 +10,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxThreatIndicatorByCategoryExample from './NxThreatIndicatorByCategoryExample';
 import NxThreatIndicatorByPolicyNumberExample from './NxThreatIndicatorByPolicyNumberExample';
+import NxThreatIndicatorListExample from './NxThreatIndicatorListExample';
 
-const nxThreatIndicatorByCategoryListCode = require('!!raw-loader!./NxThreatIndicatorByCategoryExample').default,
-    nxThreatIndicatorByPolicyNumberListCode = require('!!raw-loader!./NxThreatIndicatorByPolicyNumberExample').default;
+const nxThreatIndicatorByCategoryCode = require('!!raw-loader!./NxThreatIndicatorByCategoryExample').default,
+    nxThreatIndicatorByPolicyNumberCode = require('!!raw-loader!./NxThreatIndicatorByPolicyNumberExample').default,
+    nxThreatIndicatorListCode = require('!!raw-loader!./NxThreatIndicatorListExample').default;
 
 const NxThreatIndicatorPage = () =>
   <>
@@ -90,13 +92,20 @@ const NxThreatIndicatorPage = () =>
     <GalleryExampleTile title="Threat Indicators by Category"
                         id="nx-threat-indicator-list-example"
                         liveExample={NxThreatIndicatorByCategoryExample}
-                        codeExamples={nxThreatIndicatorByCategoryListCode}>
+                        codeExamples={nxThreatIndicatorByCategoryCode}>
       An <code className="nx-code">.nx-list</code> including rows displaying threat indicators for each category.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Indicators by Policy Number"
                         liveExample={NxThreatIndicatorByPolicyNumberExample}
-                        codeExamples={nxThreatIndicatorByPolicyNumberListCode}>
+                        codeExamples={nxThreatIndicatorByPolicyNumberCode}>
+      An <code className="nx-code">.nx-list</code> including rows displaying threat indicators for range of policy
+      threat numbers.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Threat Indicators in nx-list"
+                        liveExample={NxThreatIndicatorListExample}
+                        codeExamples={nxThreatIndicatorListCode}>
       An <code className="nx-code">.nx-list</code> including rows displaying threat indicators for range of policy
       threat numbers.
     </GalleryExampleTile>
