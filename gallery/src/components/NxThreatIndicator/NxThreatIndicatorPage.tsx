@@ -90,7 +90,7 @@ const NxThreatIndicatorPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Threat Indicators by Category"
-                        id="nx-threat-indicator-list-example"
+                        id="nx-threat-indicator-simple-example"
                         liveExample={NxThreatIndicatorByCategoryExample}
                         codeExamples={nxThreatIndicatorByCategoryCode}>
       A series of lines of text, each beginning with an <code className="nx-code">NxThreatIndicator</code> whose
@@ -105,6 +105,7 @@ const NxThreatIndicatorPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Indicators in nx-list"
+                        id="nx-threat-indicator-list-example"
                         liveExample={NxThreatIndicatorListExample}
                         codeExamples={nxThreatIndicatorListCode}>
       An <code className="nx-code">.nx-list</code> including rows in various configurations, each starting with

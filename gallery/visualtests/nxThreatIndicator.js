@@ -7,14 +7,14 @@
 const { Target } = require('@applitools/eyes-webdriverio');
 const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 
-describe('NxThreatBar', function() {
+describe('NxThreatIndicator', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxThreatBar');
+    await browser.url('#/pages/NxThreatIndicator');
   });
 
-  const threatBarsListExampleSelector = '#nx-threat-bar-list-example .nx-list',
-     threatBarsTableExampleSelector = '#nx-threat-bar-table-example .nx-table';
+  const threatIndicatorsListExampleSelector = '#nx-threat-indicator-list-example .nx-list',
+     threatIndicatorsSimpleExampleSelector = '#nx-threat-indicator-simple-example .nx-table';
 
-  it('looks right in a list', simpleTest(threatBarsListExampleSelector));
-  it('looks right in a table', simpleTest(threatBarsTableExampleSelector));
+  it('looks right', simpleTest(threatIndicatorsSimpleExampleSelector));
+  it('looks right in a list', simpleTest(threatIndicatorsListExampleSelector));
 });
