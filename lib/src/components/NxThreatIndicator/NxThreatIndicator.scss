@@ -9,7 +9,7 @@
   Threat Legends
  */
 
-.nx-threat-bar {
+.nx-threat-indicator {
   display: inline-block;
   height: 100%;
   margin: 0 12px 0 -12px;
@@ -17,31 +17,31 @@
   width: 8px;
 }
 
-.nx-threat-bar--unspecified {
+.nx-threat-indicator--unspecified {
   background-color: $nx-threat-color-unspecified;
 }
 
-.nx-threat-bar--none {
+.nx-threat-indicator--none {
   background-color: $nx-threat-color-none;
 }
 
-.nx-threat-bar--low {
+.nx-threat-indicator--low {
   background-color: $nx-threat-color-low;
 }
 
-.nx-threat-bar--moderate {
+.nx-threat-indicator--moderate {
   background-color: $nx-threat-color-moderate;
 }
 
-.nx-threat-bar--severe {
+.nx-threat-indicator--severe {
   background-color: $nx-threat-color-severe;
 }
 
-.nx-threat-bar--critical {
+.nx-threat-indicator--critical {
   background-color: $nx-threat-color-critical;
 }
 
-.nx-list--threat-bars {
+.nx-list--threat-indicators {
   .nx-list__item {
     -ms-grid-columns: auto 1fr auto;
     grid-template-columns: auto 1fr auto;
