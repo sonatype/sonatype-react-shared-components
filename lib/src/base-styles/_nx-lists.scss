@@ -183,7 +183,7 @@
       align-self: center;
       color: #2c2c2c;
       -ms-grid-row: 1;
-      -ms-grid-column: 2;
+      -ms-grid-column: 3;
       grid-area: actions;
 
       // custom sizing for the icon, brings it up to 13px
@@ -196,7 +196,7 @@
   @include container-horizontal;
 
   -ms-grid-row: 1;
-  -ms-grid-column: 2;
+  -ms-grid-column: 3;
   grid-area: actions;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
   margin-top: -4px;
