@@ -48,7 +48,10 @@
     cursor: default;
   }
 
-  .nx-loading-spinner {
+  > .nx-loading-spinner {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: list-text;
     margin: 0;
     text-align: center;
   }
