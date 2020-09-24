@@ -46,7 +46,10 @@ const NxThreatIndicatorListExample = () =>
     </li>
     <li className="nx-list__item" tabIndex={0}>
       <NxThreatIndicator threatLevelCategory="critical" />
-      <span className="nx-list__text">Indicator on clickable row with subtext</span>
+      <span className="nx-list__text">
+        Indicator on clickable row with subtext. This should wrap so here's some more content, and more, and more.
+        Annnnndddd more.
+      </span>
       <span className="nx-list__subtext">
         This is list sub-text.  Lots of subtext. Such an incredible amount of subtext that it will surely wrap and
         show that the layout can handle that sort of thing.
