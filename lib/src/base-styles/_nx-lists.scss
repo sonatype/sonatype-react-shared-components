@@ -28,12 +28,12 @@
   box-sizing: border-box;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr auto;
-  grid-template-columns: 1fr auto;
+  -ms-grid-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto;
   -ms-grid-rows: auto auto;
   grid-template-areas:
-    "list-text actions"
-    "list-sub-text blank";
+    "indicator list-text actions"
+    ". list-sub-text .";
   margin: 0;
   // 1px of padding subtracted to account for the transparent border
   padding: $nx-spacing-md ($nx-spacing-md - 1px) ($nx-spacing-md - 1px) ($nx-spacing-md - 1px);
@@ -55,10 +55,11 @@
 
 .nx-list__text {
   @include semi-bold();
+  @include container-horizontal;
 
   display: block;
   -ms-grid-row: 1;
-  -ms-grid-column: 1;
+  -ms-grid-column: 2;
   grid-area: list-text;
   margin: 0;
 }
@@ -68,7 +69,7 @@
 
   display: block;
   -ms-grid-row: 2;
-  -ms-grid-column: 1;
+  -ms-grid-column: 2;
   grid-area: list-sub-text;
   // top margin is measured down from the top of the objects grid row
   margin: $nx-spacing-md 0 0 0;
