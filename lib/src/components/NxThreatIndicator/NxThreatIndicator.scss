@@ -14,25 +14,25 @@
 }
 
 .nx-threat-indicator--unspecified {
-  background-color: $nx-threat-color-unspecified;
+  color: $nx-threat-color-unspecified;
 }
 
 .nx-threat-indicator--none {
-  background-color: $nx-threat-color-none;
+  color: $nx-threat-color-none;
 }
 
 .nx-threat-indicator--low {
-  background-color: $nx-threat-color-low;
+  color: $nx-threat-color-low;
 }
 
 .nx-threat-indicator--moderate {
-  background-color: $nx-threat-color-moderate;
+  color: $nx-threat-color-moderate;
 }
 
 .nx-threat-indicator--severe {
-  background-color: $nx-threat-color-severe;
+  color: $nx-threat-color-severe;
 }
 
 .nx-threat-indicator--critical {
-  background-color: $nx-threat-color-critical;
+  color: $nx-threat-color-critical;
 }
