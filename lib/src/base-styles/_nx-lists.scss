@@ -181,10 +181,9 @@
     > .nx-chevron {
       align-self: center;
       color: #2c2c2c;
-      -ms-grid-row: 1;
+      -ms-grid-row: 1 / 2;
       -ms-grid-column: 2;
-      grid-area: actions;
-
+      grid-row: actions / blank;
       // custom sizing for the icon, brings it up to 13px
       font-size: 21px;
     }
