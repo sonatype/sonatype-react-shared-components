@@ -45,21 +45,23 @@ const FontSizePage = () =>
 
     <section>
       <h3 className="nx-h3">Vocabulary</h3>
-      <dl className="nx-list nx-list--definition-list">
-        <dt className="nx-list__item nx-list__item--label">Glyph</dt>
-        <dd className="nx-list__item">The visible shape of a character</dd>
-        <dt className="nx-list__item nx-list__item--label">Baseline</dt>
-        <dd className="nx-list__item">
-          When writing or printing characters, the baseline is the <q>bottom</q> of standard characters. For instance,
-          when writing by hand on ruled paper, the rule line on which you are writing is the baseline. By default,
-          the characters in a sequence of text all have their baselines aligned.
-        </dd>
-        <dt className="nx-list__item nx-list__item--label">Descender</dt>
-        <dd className="nx-list__item">
-          Many glyphs, such as <q>q</q>, contain parts that drop below the baseline. Fonts and line layouts
-          must take this into account
-        </dd>
-      </dl>
+      <ul className="nx-list">
+        <li className="nx-list__item">
+          <span className="nx-list__text"><strong>Glyph:</strong> The visible shape of a character.</span></li>
+        <li className="nx-list__item">
+          <span className="nx-list__text">
+            <strong>Baseline:</strong> When writing or printing characters, the baseline is the <q>bottom</q> of
+            standard characters. For instance, when writing by hand on ruled paper, the rule line on which you are
+            writing is the baseline. By default, the characters in a sequence of text all have their baselines aligned.
+          </span>
+        </li>
+        <li className="nx-list__item">
+          <span className="nx-list__text">
+            <strong>Descender:</strong> Many glyphs, such as <q>q</q>, contain parts that drop below the baseline. Fonts
+            and line layouts must take this into account.
+          </span>
+        </li>
+      </ul>
     </section>
 
     <section>
