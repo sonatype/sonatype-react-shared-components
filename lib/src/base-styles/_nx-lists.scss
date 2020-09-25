@@ -104,7 +104,7 @@
 
     .nx-list__text {
       display: inline-block;
-      margin-left: -6px;
+      // margin-left: -6px;
       // solves problem where bullet is beside 2nd line of wrapped text
       vertical-align: top;
     }
@@ -197,8 +197,7 @@
   -ms-grid-column: 2;
   grid-area: actions;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
-  margin-top: -4px;
-  margin-bottom: -4px;
+  margin: -4px 0 -4px $nx-spacing-md;
 
   .nx-btn {
     margin: 0;
