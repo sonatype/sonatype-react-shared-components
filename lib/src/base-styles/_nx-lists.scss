@@ -93,7 +93,8 @@
 
 .nx-list--bulleted {
   border-top: none;
-  margin: 0 0 0 26px;
+  margin: 0;
+  padding: 0 0 0 26px;
 
   .nx-list__item {
     border: none;
@@ -109,7 +110,7 @@
     }
 
     .nx-list {
-      margin: 0 0 0 14px;
+      padding: 0 0 0 14px;
     }
 
     .nx-list__item {
