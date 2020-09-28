@@ -17,35 +17,41 @@ const Home = () =>
       component, live examples are provided along with displays of the code snippets used for generate those live
       examples.
     </p>
-    <p className="nx-p">
-      The sidebar at left can be used to navigate to the various examples, which are organized into groups as follows:
-    </p>
-    <h3 className="nx-h3">React Components</h3>
-    <p className="nx-p">
-      Documentation of all React components available to consumers of RSC, including demonstrations, example
-      code, and full documentation of relevant React <code className="nx-code">props</code>. Examples here
-      demonstrate basic usage of each component along with some modicum of supporting code - for example,
-      code tracking the toggle state of a <code className="nx-code">NxCheckbox</code>. This supporting code
-      should be taken as example only. Depending on the architectural needs of the consuming application, there
-      are many different ways that state management and other supporting concerns could be handled.
-    </p>
-    <h3 className="nx-h3">Guidelines</h3>
-    <p className="nx-p">Miscellaneous advice for RSC consumers</p>
-    <h3 className="nx-h3">Styles - HTML Elements</h3>
-    <p className="nx-p">
-      Demonstrations of raw CSS classes that are available to consumers of RSC. Some of these classes are also
-      available as React components, but are documented here as well for lower-level/non-React use.
-    </p>
-    <h3 className="nx-h3">Styles - Mixins &amp; Helpers</h3>
-    <p className="nx-p">
-      Documentation of SCSS mixins and CSS helper classes available to consumers of RSC.
-    </p>
-    <h3 className="nx-h3">Layout Examples</h3>
-    <p className="nx-p">
-      Explanations of broader layout concepts that includes groups of components and/or styles working together.
-    </p>
-    <h3 className="nx-h3">JavaScript &amp; TypeScript Utilities</h3>
-    <p className="nx-p">Utility function and datatypes available to users of RSC.</p>
+    <section className="nx-tile-subsection">
+      <header className="nx-tile-subsection__header">
+        <h3 className="nx-h3">Navigating the Gallery</h3>
+      </header>
+      <p className="nx-p">
+        The sidebar at left can be used to navigate to the various examples, which are organized into groups
+        as follows:
+      </p>
+      <h4 className="nx-h4">React Components</h4>
+      <p className="nx-p">
+        Documentation of all React components available to consumers of RSC, including demonstrations, example
+        code, and full documentation of relevant React <code className="nx-code">props</code>. Examples here
+        demonstrate basic usage of each component along with some modicum of supporting code - for example,
+        code tracking the toggle state of a <code className="nx-code">NxCheckbox</code>. This supporting code
+        should be taken as example only. Depending on the architectural needs of the consuming application, there
+        are many different ways that state management and other supporting concerns could be handled.
+      </p>
+      <h4 className="nx-h4">Guidelines</h4>
+      <p className="nx-p">Miscellaneous advice for RSC consumers</p>
+      <h4 className="nx-h4">Styles - HTML Elements</h4>
+      <p className="nx-p">
+        Demonstrations of raw CSS classes that are available to consumers of RSC. Some of these classes are also
+        available as React components, but are documented here as well for lower-level/non-React use.
+      </p>
+      <h4 className="nx-h4">Styles - Mixins &amp; Helpers</h4>
+      <p className="nx-p">
+        Documentation of SCSS mixins and CSS helper classes available to consumers of RSC.
+      </p>
+      <h4 className="nx-h4">Layout Examples</h4>
+      <p className="nx-p">
+        Explanations of broader layout concepts that includes groups of components and/or styles working together.
+      </p>
+      <h4 className="nx-h4">JavaScript &amp; TypeScript Utilities</h4>
+      <p className="nx-p">Utility function and datatypes available to users of RSC.</p>
+    </section>
     <section className="nx-tile-subsection">
       <header className="nx-tile-subsection__header">
         <h3 className="nx-h3">Consuming the React Shared Components</h3>
