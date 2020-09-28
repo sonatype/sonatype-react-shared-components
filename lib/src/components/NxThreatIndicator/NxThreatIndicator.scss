@@ -6,10 +6,13 @@
  */
 @import '../../scss-shared/nx-variables';
 
+// eyeballed, assumes $nx-font-size surrounding text
+$nx-threat-indicator-vertical-alignment: -0.1em;
+
 .nx-threat-indicator {
   font-size: $nx-font-size-s;
   margin: 0 $nx-spacing-xs;
-  vertical-align: -0.1em; // eyeballed, assumes $nx-font-size surrounding text
+  vertical-align: $nx-threat-indicator-vertical-alignment;
 }
 
 .nx-list__item {
@@ -18,6 +21,8 @@
     -ms-grid-column: 1;
     grid-area: indicator;
     margin-left: 0;
+    position: relative;
+    bottom: $nx-threat-indicator-vertical-alignment;
   }
 }
 
