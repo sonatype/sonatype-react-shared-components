@@ -11,7 +11,7 @@ describe('nx-counter', function() {
     await browser.url('#/pages/nx-counter');
   });
 
-  const selector = '.gallery-raw-html-example';
+  const selector = '.gallery-example-live';
 
   it('looks right', simpleTest(selector));
 });

@@ -11,14 +11,14 @@ describe('nx-list', function() {
     await browser.url('#/pages/nx-list');
   });
 
-  const simpleSelector = '#nx-list-simple-example .gallery-raw-html-example',
-      clickableSelector = '#nx-list-clickable-example .nx-list--clickable',
-      bulletedSelector = '#nx-list-bulleted-example .gallery-raw-html-example',
-      definitionListSelector = '#nx-list-definition-example .gallery-raw-html-example',
-      actionsSelector = '#nx-list-actions-example .nx-list',
-      multiLineSelector = '#nx-list-multi-line-example .gallery-raw-html-example',
-      emptySelector = '#nx-list-empty-example .gallery-raw-html-example',
-      errorSelector = '#nx-list-error-example .nx-list',
+  const simpleSelector = '#nx-list-simple-example .gallery-example-live',
+      clickableSelector = '#nx-list-clickable-example .gallery-example-live',
+      bulletedSelector = '#nx-list-bulleted-example .gallery-example-live',
+      definitionListSelector = '#nx-list-definition-example .gallery-example-live',
+      actionsSelector = '#nx-list-actions-example .gallery-example-live',
+      multiLineSelector = '#nx-list-multi-line-example .gallery-example-live',
+      emptySelector = '#nx-list-empty-example .gallery-example-live',
+      errorSelector = '#nx-list-error-example .gallery-example-live',
       loadingSelector = '#nx-list-loading-example .nx-list';
 
   describe('Simple nx-list', function() {

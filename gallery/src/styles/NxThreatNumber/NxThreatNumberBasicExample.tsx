@@ -5,12 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxThreatIndicator } from '@sonatype/react-shared-components';
 
-interface Props {
-  html: string;
-}
+const NxThreatNumberBasicExample = () =>
+  <>
+    <NxThreatIndicator threatLevelCategory="severe" />
+    <span className="nx-threat-number">7</span>
+  </>;
 
-const RawHtmlExample = ({ html }: Props) =>
-  <div className="gallery-example-live gallery-example-live--raw-html" dangerouslySetInnerHTML={{ __html: html }} />;
-
-export default RawHtmlExample;
+export default NxThreatNumberBasicExample;
