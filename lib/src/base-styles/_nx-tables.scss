@@ -43,7 +43,7 @@
         padding-right: $nx-spacing-md - $border-width;
       }
 
-      // Used for table cells containiner meta-information such as the fact that the table is empty, or
+      // Used for table cells container meta-information such as the fact that the table is empty, or
       // that the data is loading. These cells are expected to take up the entire row using colspan attributes
       &.nx-cell--meta-info {
         text-align: center;
