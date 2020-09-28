@@ -33,7 +33,7 @@
   -ms-grid-rows: auto auto;
   grid-template-areas:
     "list-text actions"
-    "list-sub-text blank";
+    "list-sub-text actions";
   margin: 0;
   // 1px of padding subtracted to account for the transparent border
   padding: $nx-spacing-md ($nx-spacing-md - 1px) ($nx-spacing-md - 1px) ($nx-spacing-md - 1px);
@@ -61,6 +61,7 @@
   -ms-grid-column: 1;
   grid-area: list-text;
   margin: 0;
+  padding-right: $nx-spacing-l;
 }
 
 .nx-list__subtext {
@@ -89,11 +90,17 @@
   display: list-item;
   padding-left: 0;
   padding-right: 0;
+
+  .nx-alert {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .nx-list--bulleted {
   border-top: none;
-  margin: 0 0 0 26px;
+  margin: 0;
+  padding: 0 0 0 26px;
 
   .nx-list__item {
     border: none;
@@ -103,13 +110,15 @@
 
     .nx-list__text {
       display: inline-block;
-      margin-left: -6px;
+      // this is half the value specified in the designs. Browsers calculate the distance between the bullet
+      // and the text differently and this is the "least wrong" solution across all browsers.
+      margin-left: -3px;
       // solves problem where bullet is beside 2nd line of wrapped text
       vertical-align: top;
     }
 
     .nx-list {
-      margin: 0 0 0 14px;
+      padding: 0 0 0 14px;
     }
 
     .nx-list__item {
@@ -180,10 +189,9 @@
     > .nx-chevron {
       align-self: center;
       color: #2c2c2c;
-      -ms-grid-row: 1;
+      -ms-grid-row: 1 / 2;
       -ms-grid-column: 2;
-      grid-area: actions;
-
+      grid-row: actions;
       // custom sizing for the icon, brings it up to 13px
       font-size: 21px;
     }
@@ -197,8 +205,7 @@
   -ms-grid-column: 2;
   grid-area: actions;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
-  margin-top: -4px;
-  margin-bottom: -4px;
+  margin: -4px 0 -4px $nx-spacing-md;
 
   .nx-btn {
     margin: 0;
