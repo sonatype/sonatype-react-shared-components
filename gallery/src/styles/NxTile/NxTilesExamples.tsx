@@ -8,13 +8,15 @@ import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTileFormExample from './NxTileFormExample';
+import NxTileDropdownActionsExample from './NxTileDropdownActionsExample';
 
 const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample.html').default,
     NxTileWithActionsCode = require('!!raw-loader!./NxTileWithActionsExample.html').default,
     NxTileWithSubtitleCode = require('!!raw-loader!./NxTileWithSubtitleExample.html').default,
     NxTileSubsectionCode = require('!!raw-loader!./NxTileSubsectionExample.html').default,
     NxTileWithHorizontalRuleCode = require('!!raw-loader!./NxTileWithHorizontalRuleExample.html').default,
-    NxTileFormCode = require('!!raw-loader!./NxTileFormExample.tsx').default;
+    NxTileFormCode = require('!!raw-loader!./NxTileFormExample.tsx').default,
+    NxTileDropdownActionsCode = require('!!raw-loader!./NxTileDropdownActionsExample').default;
 
 const NxTilesExamples = () =>
   <>
@@ -61,6 +63,14 @@ const NxTilesExamples = () =>
                         liveExample={NxTileFormExample}
                         codeExamples={NxTileFormCode}>
       An example of an <code className="nx-code">nx-tile</code> which solely contains a form.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Tile with an NxDropdown in the actions buttons area"
+                        id="nx-tile-dropdown-actions-example"
+                        liveExample={NxTileDropdownActionsExample}
+                        codeExamples={NxTileDropdownActionsCode}>
+      An example of a tile with an <code className="nx-code">NxDropdown</code> (or
+      {' '}<code className="nx-code">NxStatefulDropdown</code>, as the case may be) in the actions area.
     </GalleryExampleTile>
   </>;
 
