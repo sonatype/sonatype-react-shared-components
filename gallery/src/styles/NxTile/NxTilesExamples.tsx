@@ -7,11 +7,14 @@
 import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
+import NxTileDropdownActionsExample from './NxTileDropdownActionsExample';
+
 const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample.html').default,
     NxTileWithActionsCode = require('!!raw-loader!./NxTileWithActionsExample.html').default,
     NxTileWithSubtitleCode = require('!!raw-loader!./NxTileWithSubtitleExample.html').default,
     NxTileSubsectionCode = require('!!raw-loader!./NxTileSubsectionExample.html').default,
-    NxTileWithHorizontalRuleCode = require('!!raw-loader!./NxTileWithHorizontalRuleExample.html').default;
+    NxTileWithHorizontalRuleCode = require('!!raw-loader!./NxTileWithHorizontalRuleExample.html').default,
+    NxTileDropdownActionsCode = require('!!raw-loader!./NxTileDropdownActionsExample').default;
 
 const NxTilesExamples = () =>
   <>
@@ -51,6 +54,14 @@ const NxTilesExamples = () =>
                         codeExamples={NxTileSubsectionCode}>
       An example of an <code className="nx-code">nx-tile</code> containing mulitple subsections. Note the horizontal
       rule which appears before the first subsection, but not between subsections.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Tile with an NxDropdown in the actions buttons area"
+                        id="nx-tile-dropdown-actions-example"
+                        liveExample={NxTileDropdownActionsExample}
+                        codeExamples={NxTileDropdownActionsCode}>
+      An example of a tile with an <code className="nx-code">NxDropdown</code> (or
+      {' '}<code className="nx-code">NxStatefulDropdown</code>, as the case may be) in the actions area.
     </GalleryExampleTile>
   </>;
 
