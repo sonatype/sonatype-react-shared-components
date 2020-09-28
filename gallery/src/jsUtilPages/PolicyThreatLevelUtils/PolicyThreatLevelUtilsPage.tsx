@@ -22,8 +22,9 @@ const PolicyThreatLevelUtilsPage = () =>
       </p>
 
       <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item"><strong>Policy Threat Level:</strong>
-          {' '}An integer between 0 and 10, inclusive, that describes the severity of a threat.  Zero represents no
+        <li className="nx-list__item">
+          <strong>Policy Threat Level:</strong> An integer between 0 and 10, inclusive, that describes
+          the severity of a threat.  Zero represents no
           threat at all and ten represents the most severe of threats
         </li>
         <li className="nx-list__item"><strong>Policy Threat Level Category:</strong>
