@@ -104,6 +104,8 @@
 
     .nx-list__text {
       display: inline-block;
+      // this is half the value specified in the designs. Browsers calculate the distance between the bullet
+      // and the text differently and this is the "least wrong" solution across all browsers.
       margin-left: -3px;
       // solves problem where bullet is beside 2nd line of wrapped text
       vertical-align: top;
