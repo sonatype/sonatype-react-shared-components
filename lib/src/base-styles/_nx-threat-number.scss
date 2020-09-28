@@ -9,28 +9,3 @@
   @include semi-bold;
   font-size: 16px;
 }
-
-.nx-list--threat-number.nx-list--threat-bars {
-  .nx-list__item {
-    -ms-grid-columns: auto auto 1fr auto;
-    grid-template-columns: auto auto 1fr auto;
-    -ms-grid-rows: auto auto auto auto;
-    grid-template-areas:
-      "threat-bar threat-number list-text actions"
-      "threat-bar threat-number list-sub-text blank";
-
-      .nx-threat-number {
-      -ms-grid-row: 1;
-      -ms-grid-column: 2;
-      grid-area: threat-number;
-    }
-
-    > .nx-chevron {
-      -ms-grid-column: 4;
-    }
-  }
-
-  .nx-list__actions {
-    -ms-grid-column: 4;
-  }
-}

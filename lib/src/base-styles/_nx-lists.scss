@@ -23,17 +23,18 @@
 .nx-list__item {
   @include container-horizontal;
 
+  align-items: first baseline;
   border: 1px solid transparent;
   border-top-color: #e9e9e9;
   box-sizing: border-box;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr auto;
-  grid-template-columns: 1fr auto;
+  -ms-grid-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto;
   -ms-grid-rows: auto auto;
   grid-template-areas:
-    "list-text actions"
-    "list-sub-text actions";
+    "indicator list-text actions"
+    ". list-sub-text actions";
   margin: 0;
   // 1px of padding subtracted to account for the transparent border
   padding: $nx-spacing-md ($nx-spacing-md - 1px) ($nx-spacing-md - 1px) ($nx-spacing-md - 1px);
@@ -47,7 +48,10 @@
     cursor: default;
   }
 
-  .nx-loading-spinner {
+  > .nx-loading-spinner {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: list-text;
     margin: 0;
     text-align: center;
   }
@@ -55,10 +59,11 @@
 
 .nx-list__text {
   @include semi-bold();
+  @include container-horizontal;
 
   display: block;
   -ms-grid-row: 1;
-  -ms-grid-column: 1;
+  -ms-grid-column: 2;
   grid-area: list-text;
   margin: 0;
   padding-right: $nx-spacing-l;
@@ -69,7 +74,7 @@
 
   display: block;
   -ms-grid-row: 2;
-  -ms-grid-column: 1;
+  -ms-grid-column: 2;
   grid-area: list-sub-text;
   // top margin is measured down from the top of the objects grid row
   margin: $nx-spacing-md 0 0 0;
@@ -190,8 +195,9 @@
       align-self: center;
       color: #2c2c2c;
       -ms-grid-row: 1 / 2;
-      -ms-grid-column: 2;
-      grid-row: actions;
+      -ms-grid-column: 3;
+      grid-area: actions;
+
       // custom sizing for the icon, brings it up to 13px
       font-size: 21px;
     }
@@ -202,7 +208,7 @@
   @include container-horizontal;
 
   -ms-grid-row: 1;
-  -ms-grid-column: 2;
+  -ms-grid-column: 3;
   grid-area: actions;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
   margin: -4px 0 -4px $nx-spacing-md;
