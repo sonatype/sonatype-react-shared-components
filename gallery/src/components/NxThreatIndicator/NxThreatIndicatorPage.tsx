@@ -11,10 +11,12 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxThreatIndicatorByCategoryExample from './NxThreatIndicatorByCategoryExample';
 import NxThreatIndicatorByPolicyNumberExample from './NxThreatIndicatorByPolicyNumberExample';
 import NxThreatIndicatorListExample from './NxThreatIndicatorListExample';
+import NxThreatIndicatorTableExample from './NxThreatIndicatorTableExample';
 
 const nxThreatIndicatorByCategoryCode = require('!!raw-loader!./NxThreatIndicatorByCategoryExample').default,
     nxThreatIndicatorByPolicyNumberCode = require('!!raw-loader!./NxThreatIndicatorByPolicyNumberExample').default,
-    nxThreatIndicatorListCode = require('!!raw-loader!./NxThreatIndicatorListExample').default;
+    nxThreatIndicatorListCode = require('!!raw-loader!./NxThreatIndicatorListExample').default,
+    nxThreatIndicatorTableCode = require('!!raw-loader!./NxThreatIndicatorTableExample').default;
 
 const NxThreatIndicatorPage = () =>
   <>
@@ -112,6 +114,16 @@ const NxThreatIndicatorPage = () =>
       an <code className="nx-code">NxThreatIndicator</code>. Note that this list uses such a wide variety of
       items for layout illustration purposes only. In practice you would not, for instance, have action buttons within
       an item of a clickable list.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Threat Indicators in nx-table"
+                        id="nx-threat-indicator-table-example"
+                        liveExample={NxThreatIndicatorTableExample}
+                        codeExamples={nxThreatIndicatorTableCode}>
+      Since <code className="nx-code">nx-table</code> is one of the primary places
+      that <code className="nx-code">NxThreatIndicator</code> is intended to be used, this example demonstrates a
+      typical usage of it. Note that no special classes or placements are needed here, it is essentially just the
+      usual inline layout of the threat indicator and adjacent content, within a table cell.
     </GalleryExampleTile>
   </>;
 
