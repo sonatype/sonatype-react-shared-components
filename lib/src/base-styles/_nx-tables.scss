@@ -135,6 +135,7 @@
     // the width:1px that works well with auto-layout tables is taken literally in fixed-layout tables.
     // Instead, we make a reasonable guess at the width of the icon here.
     width: 1em;
+    height: auto;
 
     &:last-child {
       // in case the icon is less than 1em wide, still put it the correct distance from the right edge
@@ -168,6 +169,7 @@
   text-align: left;
   text-transform: uppercase;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
 // columns whose content is numerical
