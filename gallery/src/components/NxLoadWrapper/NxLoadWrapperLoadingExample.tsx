@@ -9,7 +9,7 @@ import React from 'react';
 import { NxLoadWrapper } from '@sonatype/react-shared-components';
 
 const NxLoadWrapperLoadingExample = () =>
-  <NxLoadWrapper loading={true}>
+  <NxLoadWrapper loading={true} retryHandler={() => {}}>
     <div>Children will not render</div>
   </NxLoadWrapper>;
 
