@@ -40,7 +40,7 @@ describe('nx-tile', function() {
   });
 
   describe('nx-tile with expanded dropdown in actions menu', function() {
-    it('looks right', function() {
+    it('looks right', async function() {
       const dropdownSelector = `${dropdownActionMenuTileSelector} .nx-dropdown`,
           screenshotHeight = 210,
           [tileEl, dropdownEl] =
