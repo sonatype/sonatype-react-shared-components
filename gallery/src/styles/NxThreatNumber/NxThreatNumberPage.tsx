@@ -30,8 +30,7 @@ const NxThreatNumberPage = () =>
                         liveExample={NxThreatNumberBasicExample}
                         codeExamples={nxThreatNumberBasicExampleCode}>
       An example of <code className="nx-code">.nx-threat-number</code> used
-      adjacent to an <code className="nx-code">NxThreatIndicator</code> in a simple inline layout. This how how the
-      two would be used together within a table cell, for instance.
+      adjacent to an <code className="nx-code">NxThreatIndicator</code> in a simple inline layout.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="List Example"
