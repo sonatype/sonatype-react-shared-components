@@ -49,7 +49,7 @@ describe('nx-tile', function() {
       await dropdownEl.scrollIntoView({ block: 'center' });
       await dropdownEl.click();
 
-      const { x, y, width, height } = await browser.getElementRect(tileElement.elementId),
+      const { x, y, width, height } = await browser.getElementRect(tileEl.elementId),
           screenshotRegion = new Region(x, y, width, screenshotHeight);
 
       await browser.eyesRegionSnapshot(null, Target.region(screenshotRegion));
