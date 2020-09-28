@@ -9,7 +9,7 @@ import React from 'react';
 import { NxThreatIndicator } from '@sonatype/react-shared-components';
 
 const NxThreatNumberListExample = () =>
-  <ul className="nx-list nx-list--threat-number nx-list--threat-bars">
+  <ul className="nx-list">
     <li className="nx-list__item">
       <NxThreatIndicator threatLevelCategory="none" />
       <span className="nx-list__text nx-threat-number">0</span>
