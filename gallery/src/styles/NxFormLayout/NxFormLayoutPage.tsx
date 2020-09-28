@@ -116,12 +116,14 @@ const NxFormLayoutPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
+                        id="nx-form-layout-example"
                         codeExamples={NxFormLayoutCode}
                         liveExample={NxFormLayoutExample}>
       This example shows a standard vertical form layout with validation on some fields.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Horizontal form layout"
+                        id="nx-form-layout-horizontal-example"
                         liveExample={NxFormHorizontalLayoutExample}
                         codeExamples={NxFormHorizontalLayoutCode}>
       This example demonstrates a form layout with horizontally placed text input fields. Note that the checkbox and
