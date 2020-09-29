@@ -41,12 +41,13 @@
   }
 
   a:hover, a:focus {
-    font-weight: bold;
+    @include bold();
+
     letter-spacing: 0
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
-  .hidden-children {
+  .tab-content-hidden-children {
     display: block;
     font-weight: 600;
     height: 0;
