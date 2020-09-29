@@ -21,6 +21,7 @@
   // subtract border thickness for consistent spacing
   padding: $nx-spacing-md $nx-spacing-l ($nx-spacing-md - 2px) $nx-spacing-l;
   text-align: center;
+  min-width: 76px;
 
   &.active {
     @include semi-bold();
