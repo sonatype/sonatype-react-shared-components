@@ -16,13 +16,8 @@ describe('NxTabs', function() {
       tabModalExampleSelector = '#nx-tab-modal-example',
       tabModalNoHeaderExampleSelector = '#nx-tab-modal-no-header-example';
 
-  describe('Tabs in an NxTile', function() {
-    it('looks right', simpleTest(tabTileExampleSelector));
-  });
-
-  describe('Tabs in an NxTile with no header', function() {
-    it('looks right', simpleTest(tabTileNoHeaderExampleSelector));
-  });
+  it('looks right in a Tile', simpleTest(tabTileExampleSelector));
+  it('looks right in a Tile with no header', simpleTest(tabTileNoHeaderExampleSelector));
 
   function simpleModalTest(exampleSelector) {
     return async function() {
