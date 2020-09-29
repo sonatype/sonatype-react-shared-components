@@ -31,7 +31,7 @@ const NxTabsModalNoHeaderExample = () => {
         <NxModal onClose={modalCloseHandler} className="nx-modal--wide">
           <div className="nx-modal-content">
             <NxTabs activeTab={activeTabId} onTabSelect={handleTabSelect}>
-              <NxTabList aria-label="Simple Tabs">
+              <NxTabList aria-label="Tabs in a modal with no header">
                 <NxTab>Tab</NxTab>
                 <NxTab>Tab with longer name</NxTab>
                 <NxTab>Another Tab 3</NxTab>
