@@ -21,10 +21,10 @@ const NxTabsTileHeaderExample = () => {
   }
 
   return (
-    <div className="nx-tile">
-      <div className="nx-tile-header">
+    <section className="nx-tile">
+      <header className="nx-tile-header">
         <div className="nx-tile-header__title"><h2 className="nx-h2">Tile Header</h2></div>
-      </div>
+      </header>
       <div className="nx-tile-content">
         <NxTabs activeTab={activeTabId} onTabSelect={handleTabSelect}>
           <NxTabList aria-label="Simple Tabs">
