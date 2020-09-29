@@ -39,8 +39,8 @@ const NxTabsTileHeaderExample = () => {
           <NxTabPanel>Tab 4</NxTabPanel>
         </NxTabs>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default NxTabsSimpleExample;
+export default NxTabsTileHeaderExample;
