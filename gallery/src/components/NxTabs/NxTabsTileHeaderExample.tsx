@@ -13,7 +13,7 @@ import {
   NxTabPanel
 } from '@sonatype/react-shared-components';
 
-const NxTabsSimpleExample = () => {
+const NxTabsTileHeaderExample = () => {
   const [activeTabId, setActiveTabId] = useState<number>(0);
 
   function handleTabSelect(index: number) {
