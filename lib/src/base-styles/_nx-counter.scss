@@ -8,20 +8,21 @@
 .nx-counter {
   @include semi-bold();
 
-  background-color: $nx-grey-3;
-  border: $nx-border-dark;
-  border-radius: 8px;
-  color: $nx-text-color;
+  background-color: #fff;
+  border: 1px solid #15203e;
+  border-radius: 12px;
+  color: $nx-text-color-dark;
   display: inline-block;
-  font-size: 11px;
-  line-height: 1.4; // vertically centres text in pill
-  margin-left: 8px;
-  padding: 0 4px 1px 4px;
+  font-size: 14px;
+  line-height: $nx-line-height;
+  margin-left: $nx-spacing-l;
+  padding: 1px ($nx-spacing-xs - 1px);
   text-align: center;
   min-width: 8px;
 
   &.nx-counter--active {
-    background-color: $nx-grey-1;
-    border-color: $nx-grey-3;
+    background-color: #15203e;
+    border-color: #15203e;
+    color: #fff;
   }
 }
