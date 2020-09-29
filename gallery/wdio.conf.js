@@ -295,9 +295,6 @@ exports.config = {
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
       await eyes.closeAsync();
       await eyes.abortIfNotClosed();
-
-      // fail if differences on master
-      await eyes.getAllTestResults(process.env.GIT_BRANCH === 'master');
     },
 
     /**
