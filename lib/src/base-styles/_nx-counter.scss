@@ -14,7 +14,7 @@
   color: $nx-text-color-dark;
   display: inline-block;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: $nx-line-height;
   margin-left: $nx-spacing-l;
   padding: 1px ($nx-spacing-xs - 1px);
   text-align: center;
