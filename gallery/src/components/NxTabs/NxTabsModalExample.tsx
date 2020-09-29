@@ -32,7 +32,7 @@ const NxTabsModalExample = () => {
     <>
       <button onClick={() => setShowModal(true)} className="nx-btn">Open Modal</button>
       { showModal &&
-        <NxModal id="nx-modal-simple-example" onClose={modalCloseHandler} className="nx-modal--wide">
+        <NxModal onClose={modalCloseHandler} className="nx-modal--wide">
           <header className="nx-modal-header">
             <h2 className="nx-h2">
               <NxFontAwesomeIcon icon={faAngry} />
