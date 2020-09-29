@@ -9,15 +9,20 @@
  @import '../../scss-shared/nx-text-helpers';
 
 .nx-tab {
+  @include nx-truncate-ellipsis;
+
+  box-sizing: border-box;
   border-bottom: 2px solid transparent;
   cursor: pointer;
   display: inline-block;
+  flex-shrink: 1;
   list-style: none;
   margin: 0 $nx-spacing-md -1px 0;
   // subtract border thickness for consistent spacing
   padding: $nx-spacing-md $nx-spacing-l ($nx-spacing-md - 2px) $nx-spacing-l;
   text-align: center;
-  min-width: 76px;
+  min-width: 80px;
+  max-width: 240px;
 
   &.active {
     @include semi-bold();
