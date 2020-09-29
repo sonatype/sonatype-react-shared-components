@@ -13,6 +13,8 @@ import { Props as NxTabPanelProps } from '../NxTabPanel/types';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
+import './NxTabs.scss';
+
 interface TabContextType {
   activeTab?: number | null;
   rootId: string;
