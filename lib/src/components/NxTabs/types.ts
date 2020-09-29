@@ -8,8 +8,8 @@ import { HTMLAttributes, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 
 export type Props = HTMLAttributes<HTMLDivElement> & {
-  activeTab?: number | null;
-  onTabSelect: ((index: number) => void) | null;
+  activeTab?: number | null ;
+  onTabSelect: ((index: number) => void);
   children?: ReactNode | null;
 };
 
