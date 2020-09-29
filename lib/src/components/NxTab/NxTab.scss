@@ -47,7 +47,7 @@
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
-  .tab-content-hidden-children {
+  .nx-tab__hidden-children {
     display: block;
     font-weight: 600;
     height: 0;

@@ -52,7 +52,7 @@ const NxTab = function NxTabElement(props: Props) {
         tabIndex={tabIndex}
         {...attrs}>
       {children}
-      <div className="hidden-children">
+      <div className="nx-tab__hidden-children">
         {children}
       </div>
     </li>
