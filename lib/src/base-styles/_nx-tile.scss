@@ -30,7 +30,7 @@ $nx-tile-background-color: $nx-white;
     margin-bottom: 0;
   }
 
-  .nx-tile-footer {
+  .nx-footer {
     margin-top: 0;
   }
 }
@@ -67,7 +67,6 @@ $nx-tile-background-color: $nx-white;
   -ms-grid-columns: 1fr auto;
   min-height: $nx-tile-header-height;
   margin-bottom: $nx-spacing-md;
-  overflow: hidden;
 }
 
 .nx-tile-header__title {
@@ -150,15 +149,6 @@ $nx-tile-background-color: $nx-white;
 
     margin-bottom: $nx-spacing-md;
   }
-}
-
-.nx-tile-footer {
-  @include container-horizontal;
-
-  border-top: 1px solid #e9e9e9;
-  margin-top: $nx-spacing-md;
-  padding: $nx-spacing-xl 0;
-  text-align: right;
 }
 
 // A tile at the top of the page, usually contains a nav bar with scrolling buttons

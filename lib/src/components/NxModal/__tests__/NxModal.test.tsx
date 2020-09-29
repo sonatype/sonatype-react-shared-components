@@ -51,6 +51,18 @@ describe('NxModal', function() {
     expect(nxModal.find('.nx-modal').prop('data-foo')).toEqual('bar');
   });
 
+  it('adds the nx-modal--wide class when the wide variant is specified', function() {
+    const nxModal = shallow(<NxModal { ...minimalProps } variant="wide"/>);
+
+    expect(nxModal.find('.nx-modal')).toHaveClassName('nx-modal--wide');
+  });
+
+  it('adds the nx-modal--narrow class when the narrow variant is specified', function() {
+    const nxModal = shallow(<NxModal { ...minimalProps } variant="narrow"/>);
+
+    expect(nxModal.find('.nx-modal')).toHaveClassName('nx-modal--narrow');
+  });
+
   describe('NxModal event listener support', () => {
     let containerMainModal: HTMLDivElement | null;
     let containerSecondaryModal: HTMLDivElement | null;

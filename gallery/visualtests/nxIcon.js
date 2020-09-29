@@ -11,7 +11,7 @@ describe('nx-icon', function() {
     await browser.url('#/pages/nx-icon');
   });
 
-  const selector = '.gallery-raw-html-example';
+  const selector = '.gallery-example-live';
 
   it('looks right', simpleTest(selector));
 });

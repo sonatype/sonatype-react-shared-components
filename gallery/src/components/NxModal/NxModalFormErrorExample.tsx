@@ -6,7 +6,7 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxFontAwesomeIcon, NxTextInput, NxLoadError} from '@sonatype/react-shared-components';
+import {NxModal, NxFontAwesomeIcon, NxTextInput, NxLoadError, NxButton} from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
 
@@ -25,10 +25,10 @@ export default function NxModalFormErrorExample() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="nx-btn">Open Modal with Form and Error Styling</button>
+      <NxButton onClick={() => setShowModal(true)}>Open Modal with Form and Error Styling</NxButton>
       {showModal &&
         <NxModal id="nx-modal-form-error-example" onClose={modalCloseHandler}>
-          <form className="nx-form nx-form--simple">
+          <form className="nx-form">
             <header className="nx-modal-header">
               <h2 className="nx-h2">
                 <NxFontAwesomeIcon icon={faAngry} />
@@ -38,23 +38,21 @@ export default function NxModalFormErrorExample() {
             <div className="nx-modal-content">
               <div className="nx-form-group">
                 <label className="nx-label">
-                  Username
+                  <span className="nx-label__text">Username</span>
                   <NxTextInput { ...textFieldState } onChange={onChange} />
                 </label>
               </div>
               <div className="nx-form-group">
                 <label className="nx-label">
-                  Password
+                  <span className="nx-label__text">Password</span>
                   <NxTextInput type="password" placeholder="Enter password" onChange={onChange} { ...textFieldState }/>
                 </label>
               </div>
             </div>
-            <footer className="nx-modal-footer">
+            <footer className="nx-footer">
               <NxLoadError { ...({ error, retryHandler }) } onClick={modalCloseHandler} />
               <div className="nx-btn-bar">
-                <button type="button" onClick={modalCloseHandler} className="nx-btn">
-                  Cancel
-                </button>
+                <NxButton type="button" onClick={modalCloseHandler}>Cancel</NxButton>
               </div>
             </footer>
           </form>

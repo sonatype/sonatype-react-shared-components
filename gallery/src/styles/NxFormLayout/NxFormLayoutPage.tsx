@@ -88,6 +88,13 @@ const NxFormLayoutPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-footer</code></td>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">
+              Applied to a footer which contains the form action buttons (e.g. Submit, Cancel, etc).
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-legend</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
@@ -109,12 +116,14 @@ const NxFormLayoutPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
+                        id="nx-form-layout-example"
                         codeExamples={NxFormLayoutCode}
                         liveExample={NxFormLayoutExample}>
       This example shows a standard vertical form layout with validation on some fields.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Horizontal form layout"
+                        id="nx-form-layout-horizontal-example"
                         liveExample={NxFormHorizontalLayoutExample}
                         codeExamples={NxFormHorizontalLayoutCode}>
       This example demonstrates a form layout with horizontally placed text input fields. Note that the checkbox and

@@ -6,8 +6,8 @@
  */
 
 .nx-list {
-  @include container-vertical;
-  margin: $nx-spacing-sm 0 $nx-spacing-md 0;
+  border-top: 1px solid #d1d6f0;
+  margin: $nx-spacing-md 0 $nx-flow-content-spacing 0;
   padding: 0;
 
   &, > ul, > ol {
@@ -20,101 +20,123 @@
   }
 }
 
-.nx-list__title {
-  color: $nx-text-color;
-  margin: 0;
-}
-
 .nx-list__item {
-  @include semi-bold();
-  @include nx-truncate-ellipsis();
-  @include container-vertical;
+  @include container-horizontal;
 
-  border-top: 1px solid transparent;
-  border-bottom: $nx-border-row;
+  align-items: first baseline;
+  border: 1px solid transparent;
+  border-top-color: #e9e9e9;
   box-sizing: border-box;
-  color: $nx-text-color;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto;
+  -ms-grid-rows: auto auto;
+  grid-template-areas:
+    "indicator list-text actions"
+    ". list-sub-text actions";
   margin: 0;
-  padding: $nx-spacing-sm $nx-spacing-xs;
+  // 1px of padding subtracted to account for the transparent border
+  padding: $nx-spacing-md ($nx-spacing-md - 1px) ($nx-spacing-md - 1px) ($nx-spacing-md - 1px);
 
-  // we use first of type because we only want to modify the first list item,
-  // not alerts, errors, or empty states
-  &:first-of-type {
-    border-top: $nx-border;
+  &:first-child {
+    border-top: none;
   }
 
-  &.nx-error {
-    border: $nx-border-error;
-    color: $nx-text-color-error;
+  &.disabled {
+    color: $nx-text-color-disabled;
+    cursor: default;
   }
 
-  > .fa, > .svg-inline--fa {
-    margin-right: $nx-spacing-md;
-  }
-}
-
-.nx-list--bulleted {
-  .nx-list__item {
-    @include regular();
-
-    border: none;
-    list-style: disc outside;
-    margin: $nx-spacing-sm 10px $nx-spacing-sm 36px;
-    overflow: visible;
-    padding: 0;
-    white-space: normal;
-  }
-
-  .nx-list__item {
-    list-style-type: disc;
-
-    .nx-list__item {
-      list-style-type: circle;
-
-      .nx-list__item {
-        list-style-type: square;
-      }
-    }
+  > .nx-loading-spinner {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: list-text;
+    margin: 0;
+    text-align: center;
   }
 }
 
-.nx-list__item--empty {
-  @include regular();
+.nx-list__text {
+  @include semi-bold();
+  @include container-horizontal;
 
-  border-top: $nx-border; // assume it's always the first item
-  border-bottom: $nx-border-row;
-  color: $nx-text-color;
-  text-align: center;
-}
-
-.nx-list__item--disabled {
-  color: $nx-text-color-disabled;
-  cursor: default;
-}
-
-.nx-list__item--expanding {
-  height: auto;
-}
-
-.nx-list__item--with-modifier-icon {
-  line-height: 30px;
-}
-
-.nx-list__actions {
-  float: right;
+  display: block;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: list-text;
+  margin: 0;
+  padding-right: $nx-spacing-l;
 }
 
 .nx-list__subtext {
   @include regular();
 
   display: block;
-  margin: 0;
-  padding-top: 4px;
-  white-space: normal;
-  width: $nx-paragraph-width-maximum;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: list-sub-text;
+  // top margin is measured down from the top of the objects grid row
+  margin: $nx-spacing-md 0 0 0;
+}
 
-  &.nx-truncate-ellipsis {
-    white-space: nowrap;
+.nx-list__item--empty {
+  display: list-item;
+  text-align: center;
+
+  .nx-list__text {
+    @include regular();
+  }
+}
+
+.nx-list__item--error {
+  @include container-vertical;
+
+  display: list-item;
+  padding-left: 0;
+  padding-right: 0;
+
+  .nx-alert {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.nx-list--bulleted {
+  border-top: none;
+  margin: 0;
+  padding: 0 0 0 26px;
+
+  .nx-list__item {
+    border: none;
+    display: list-item;
+    list-style: disc outside;
+    padding: 8px 0 0 0;
+
+    .nx-list__text {
+      display: inline-block;
+      // this is half the value specified in the designs. Browsers calculate the distance between the bullet
+      // and the text differently and this is the "least wrong" solution across all browsers.
+      margin-left: -3px;
+      // solves problem where bullet is beside 2nd line of wrapped text
+      vertical-align: top;
+    }
+
+    .nx-list {
+      padding: 0 0 0 14px;
+    }
+
+    .nx-list__item {
+      list-style-type: circle;
+
+      .nx-list__text {
+        @include regular();
+      }
+
+      .nx-list__item {
+        list-style-type: square;
+      }
+    }
   }
 }
 
@@ -128,109 +150,76 @@
  * Action or Clickable Lists
  */
 .nx-list--clickable {
-  .nx-list__title {
-    color: $nx-text-color;
-  }
-
   .nx-list__item {
-    @include semi-bold();
-
-    color: $nx-text-color;
-
     &.selected {
-      background-color: $nx-grey-3;
-      color: $nx-text-color;
-      pointer-events: none;
+      &, &:hover {
+        background-color: #d3e6ff;
+      }
     }
 
-    &:not(.nx-list__item--empty):not(.nx-disabled):not([disabled]) {
-      &:hover, &:focus {
-        background-color: $nx-color-blue-96;
-        border-top: $nx-border-row-hover;
-        border-bottom: $nx-border-row-hover;
-        color: $nx-text-color;
-        cursor: pointer;
-        outline-style: none; // removes :focus outline
+    &:hover {
+      background-color: #f1f3fa;
+      cursor: pointer;
+    }
 
-        .fa-chevron-right {
-          color: $nx-color-blue-41;
-        }
-      }
+    &:active {
+      background-color: #d3e6ff;
+    }
 
-      &:active {
-        background-color: $nx-grey-1;
-        border-top: $nx-border-row-hover;
-        border-bottom: $nx-border-row-hover;
-      }
+    &:focus {
+      box-shadow: 0 0 3px 1px transparentize(#02a6d9, 0.7);
+      border-color: #02a6d9;
+      outline: none;
     }
 
     &.nx-list__item--empty {
       @include regular();
 
-      border-top: $nx-border; // assume it's always the first item
       color: $nx-text-color;
     }
 
-    &.nx-error {
-      color: $nx-text-color-error;
-
-      &:not(.nx-disabled):not([disabled]) {
-        border: $nx-border-error;
-
-        &:hover, &:focus, &:active {
-          background-color: $nx-fail-color-bg;
-          border: $nx-border-error;
-          color: $nx-text-color-error;
-          cursor: default;
-        }
-      }
-    }
-
-    .nx-list__subtext {
-      pointer-events: none; // Fix for IE11 :active state display
-    }
-
-    &.nx-list__item--disabled {
+    &.disabled {
       color: $nx-text-color-disabled;
-      cursor: default;
 
       &:hover {
-        border-top: 1px solid transparent;
-        border-bottom: $nx-border-row;
+        background-color: transparent;
+        cursor: default;
+      }
+
+      > .nx-chevron {
+        display: none;
       }
     }
-  }
 
-  .fa-chevron-right {
-    margin-right: 3px;
-    margin-top: 1px;
+    > .nx-chevron {
+      align-self: center;
+      -ms-grid-row-align: center;
+      color: #2c2c2c;
+      -ms-grid-row: 1;
+      -ms-grid-row-span: 2;
+      -ms-grid-column: 3;
+      grid-area: actions;
+
+      // custom sizing for the icon, brings it up to 13px
+      font-size: 21px;
+    }
   }
 }
 
-/*
- * Definition Lists
- *
- * Typically use <dl>
- */
+.nx-list__actions {
+  @include container-horizontal;
 
-.nx-list--definition-list {
-  box-sizing: border-box;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: actions;
+  // list items have 16px of padding, but the buttons are supposed to be 12px from the top
+  margin: -4px 0 -4px $nx-spacing-md;
 
-  display: flex;
-  flex-wrap: wrap;
+  .nx-btn {
+    margin: 0;
 
-  .nx-list__item {
-    @include regular();
-
-    display: inline-block;
-    width: 75%;
-
-    white-space: normal;
-  }
-
-  .nx-list__item--label {
-    @include semi-bold();
-
-    width: 25%;
+    + .nx-btn {
+      margin-left: 8px;
+    }
   }
 }
