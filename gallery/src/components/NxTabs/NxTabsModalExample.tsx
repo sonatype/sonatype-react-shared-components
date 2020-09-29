@@ -47,7 +47,47 @@ const NxTabsModalExample = () => {
                 <NxTab>Another Tab 3</NxTab>
                 <NxTab>Fourth Tab</NxTab>
               </NxTabList>
-              <NxTabPanel>Tab 1</NxTabPanel>
+              <NxTabPanel>
+              <ul className="nx-list nx-list--bulleted">
+                <li className="nx-list__item">
+                  <span className="nx-list__text">Item 1</span>
+                </li>
+                <li className="nx-list__item">
+                  <span className="nx-list__text">Item 2</span>
+                  <ul className="nx-list nx-list--bulleted">
+                    <li className="nx-list__item">
+                      <span className="nx-list__text">Item 1</span>
+                    </li>
+                    <li className="nx-list__item">
+                      <span className="nx-list__text">Item 2</span>
+                    </li>
+                    <li className="nx-list__item">
+                      <span className="nx-list__text">Item 3</span>
+                      <ul className="nx-list nx-list--bulleted">
+                        <li className="nx-list__item">
+                          <span className="nx-list__text">
+                            Item 1 this list items is also long enough that it wraps, or at least it should if I have typed enough
+                            text, how much wood would a woodchuck chuck
+                          </span>
+                        </li>
+                        <li className="nx-list__item">
+                          <span className="nx-list__text">Item 2</span>
+                        </li>
+                        <li className="nx-list__item">
+                          <span className="nx-list__text">Item 3</span>
+                        </li>
+                      </ul>
+                    </li>
+                    <li className="nx-list__item">
+                      <span className="nx-list__text">Item 4</span>
+                    </li>
+                  </ul>
+                </li>
+                <li className="nx-list__item">
+                  <span className="nx-list__text">Item 3</span>
+                </li>
+              </ul>
+              </NxTabPanel>
               <NxTabPanel>Tab 2</NxTabPanel>
               <NxTabPanel>Tab 3</NxTabPanel>
               <NxTabPanel>Tab 4</NxTabPanel>
