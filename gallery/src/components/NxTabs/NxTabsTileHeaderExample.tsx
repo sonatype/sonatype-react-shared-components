@@ -10,7 +10,8 @@ import {
   NxTabs,
   NxTabList,
   NxTab,
-  NxTabPanel
+  NxTabPanel,
+  NxButton
 } from '@sonatype/react-shared-components';
 
 const NxTabsTileHeaderExample = () => {
@@ -39,6 +40,11 @@ const NxTabsTileHeaderExample = () => {
           <NxTabPanel>Tab 4</NxTabPanel>
         </NxTabs>
       </div>
+      <footer className="nx-footer">
+        <div className="nx-btn-bar">
+          <NxButton variant="primary">Button</NxButton>
+        </div>
+      </footer>
     </section>
   );
 };
