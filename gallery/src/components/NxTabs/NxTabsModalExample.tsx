@@ -42,10 +42,10 @@ const NxTabsModalExample = () => {
           <div className="nx-modal-content">
             <NxTabs activeTab={activeTabId} onTabSelect={handleTabSelect}>
               <NxTabList aria-label="Simple Tabs">
-                <NxTab data-text="Tab">Tab</NxTab>
-                <NxTab data-text="Tab with longer name">Tab with longer name</NxTab>
-                <NxTab data-text="Another Tab 3">Another Tab 3</NxTab>
-                <NxTab data-text="Forth Tab">Fourth Tab</NxTab>
+                <NxTab>Tab</NxTab>
+                <NxTab>Tab with longer name</NxTab>
+                <NxTab>Another Tab 3</NxTab>
+                <NxTab>Fourth Tab</NxTab>
               </NxTabList>
               <NxTabPanel>Tab 1</NxTabPanel>
               <NxTabPanel>Tab 2</NxTabPanel>
