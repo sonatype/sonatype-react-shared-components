@@ -45,9 +45,8 @@
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
-  &::before {
+  .hidden-children {
     display: block;
-    content: attr(data-text);
     font-weight: 600;
     height: 0;
     overflow: hidden;

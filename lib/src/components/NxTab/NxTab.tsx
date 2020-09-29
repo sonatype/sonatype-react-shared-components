@@ -18,7 +18,7 @@ const SPACE = ' ';
 
 const NxTab = function NxTabElement(props: Props) {
   const { activeTab, rootId, index, onTabSelect } = useContext(TabContext);
-  const { tabIndex = 0, className, onClick, onKeyPress, ...attrs } = props;
+  const { tabIndex = 0, className, children, onClick, onKeyPress, ...attrs } = props;
   const active = activeTab === index;
   const classNames = classnames('nx-tab', className, { active });
 
@@ -50,7 +50,12 @@ const NxTab = function NxTabElement(props: Props) {
         onKeyPress={handleKeyPress}
         onClick={handleClick}
         tabIndex={tabIndex}
-        {...attrs} />
+        {...attrs}>
+      {children}
+      <div className="hidden-children">
+        {children}
+      </div>
+    </li>
   );
 };
 
