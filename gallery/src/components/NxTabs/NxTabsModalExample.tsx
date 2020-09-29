@@ -17,7 +17,6 @@ import {
 
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
-
 const NxTabsModalExample = () => {
   const [showModal, setShowModal] = useState(false);
   const modalCloseHandler = () => setShowModal(false);

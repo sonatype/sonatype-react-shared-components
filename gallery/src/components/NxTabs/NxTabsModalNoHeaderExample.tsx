@@ -14,7 +14,6 @@ import {
   NxModal
 } from '@sonatype/react-shared-components';
 
-
 const NxTabsModalNoHeaderExample = () => {
   const [showModal, setShowModal] = useState(false);
   const modalCloseHandler = () => setShowModal(false);
