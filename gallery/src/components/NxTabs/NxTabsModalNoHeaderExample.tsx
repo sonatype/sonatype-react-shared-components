@@ -18,7 +18,7 @@ const NxTabsModalNoHeaderExample = () => {
   const [showModal, setShowModal] = useState(false);
   const modalCloseHandler = () => setShowModal(false);
 
-  const [activeTabId, setActiveTabId] = useState<number>(0);
+  const [activeTabId, setActiveTabId] = useState(0);
 
   function handleTabSelect(index: number) {
     setActiveTabId(index);
