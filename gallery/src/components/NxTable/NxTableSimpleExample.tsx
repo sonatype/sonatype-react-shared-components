@@ -14,7 +14,7 @@ import {
   NxTableRow,
   NxFontAwesomeIcon
 } from '@sonatype/react-shared-components';
-import { faAtom, faBatteryEmpty } from '@fortawesome/free-solid-svg-icons';
+import { faAtom, faBatteryEmpty, faCarBattery } from '@fortawesome/free-solid-svg-icons';
 
 const NxTableSimpleExample = () => {
   return (
@@ -36,6 +36,7 @@ const NxTableSimpleExample = () => {
           <NxTableCell isNumeric>4</NxTableCell>
           <NxTableCell hasIcon>
             <NxFontAwesomeIcon icon={faAtom} />
+            <NxFontAwesomeIcon icon={faCarBattery} />
           </NxTableCell>
         </NxTableRow>
         <NxTableRow>

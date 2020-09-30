@@ -128,21 +128,6 @@
 
 .nx-table--fixed-layout {
   table-layout: fixed;
-
-  .nx-cell--icon {
-    box-sizing: content-box;
-
-    // the width:1px that works well with auto-layout tables is taken literally in fixed-layout tables.
-    // Instead, we make a reasonable guess at the width of the icon here.
-    width: 1em;
-    height: auto;
-
-    &:last-child {
-      // in case the icon is less than 1em wide, still put it the correct distance from the right edge
-      // (typical case: chevrons)
-      text-align: right;
-    }
-  }
 }
 
 .nx-cell {
@@ -181,9 +166,16 @@
 .nx-cell--icon {
   color: #2c2c2c;
   text-align: center;
+}
 
-  // seems there's still no cleaner way to get a cell to shrink to fit its contents
-  width: 1px;
+.nx-cell--chevron {
+  @extend .nx-cell--icon;
+
+  box-sizing: content-box;
+
+  // this is the width of the chevron svg
+  width: 10px;
+  height: auto;
 }
 
 .nx-cell--sortable {

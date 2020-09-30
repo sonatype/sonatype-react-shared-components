@@ -12,7 +12,8 @@ describe('NxTable', function() {
     await browser.url('#/pages/NxTable');
   });
 
-  const clickableTableSelector = '#nx-table-clickable-example .nx-table',
+  const iconColumnTableSelector = '#nx-table-clickable-example .nx-table',
+      clickableTableSelector = '#nx-table-clickable-example .nx-table',
       sortableTableSelector = '#nx-table-sortable-example .nx-table',
       loadingTableSelector = '#nx-table-loading-example .nx-table',
       errorTableSelector = '#nx-table-error-example .nx-table';
@@ -37,6 +38,7 @@ describe('NxTable', function() {
 
   it('looks right when loading', simpleTest(loadingTableSelector));
   it('looks right when showing an error', simpleTest(errorTableSelector));
+  it('looks right with an icon column', simpleTest(iconColumnTableSelector));
 
   describe('Scrollable table', function() {
     beforeEach(async function() {

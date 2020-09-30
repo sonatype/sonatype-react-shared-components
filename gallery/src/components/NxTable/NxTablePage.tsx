@@ -199,8 +199,18 @@ export default function NxTablePage() {
                 <NxTableCell>boolean</NxTableCell>
                 <NxTableCell>false</NxTableCell>
                 <NxTableCell>
-                  Used to indicate a column whose data cells contain only
-                  an <code className="nx-code">&lt;NxFontAwesomeIcon&gt;</code>
+                  Used to indicate a column whose data cells contain only one or
+                  more <code className="nx-code">&lt;NxFontAwesomeIcon&gt;</code>s
+                </NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>chevron</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>
+                  Desginates a cell that should contain only the right-facing chevron icon used at that end of
+                  clickable table cells. <code className="nx-code">NxTableCell</code>s with this prop set will
+                  self-populate with the icon, and do not take <code className="nx-code">children</code>.
                 </NxTableCell>
               </NxTableRow>
             </NxTableBody>

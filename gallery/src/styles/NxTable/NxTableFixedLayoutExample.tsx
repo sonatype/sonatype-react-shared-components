@@ -15,7 +15,7 @@ const NxTableClickable = () =>
         <th className="nx-cell nx-cell--header">Header 1</th>
         <th className="nx-cell nx-cell--header">Header 2</th>
         <th className="nx-cell nx-cell--header nx-cell--num">Number</th>
-        <th className="nx-cell nx-cell--header nx-cell--icon"></th>
+        <th className="nx-cell nx-cell--header nx-cell--chevron"></th>
       </tr>
     </thead>
     <tbody>
@@ -28,7 +28,7 @@ const NxTableClickable = () =>
           chuck filet mignon leberkas.
         </td>
         <td className="nx-cell nx-cell--num">3</td>
-        <td className="nx-cell nx-cell--icon"><NxFontAwesomeIcon icon={faChevronRight}/></td>
+        <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
       </tr>
       <tr className="nx-table-row nx-clickable" tabIndex={0}>
         <td className="nx-cell nx-truncate-ellipsis">
@@ -39,13 +39,13 @@ const NxTableClickable = () =>
         </td>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell nx-cell--num">3</td>
-        <td className="nx-cell nx-cell--icon"><NxFontAwesomeIcon icon={faChevronRight}/></td>
+        <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
       </tr>
       <tr className="nx-table-row nx-clickable" tabIndex={0}>
         <td className="nx-cell nx-truncate-ellipsis">Content 1</td>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell nx-cell--num">3</td>
-        <td className="nx-cell nx-cell--icon"><NxFontAwesomeIcon icon={faChevronRight}/></td>
+        <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
       </tr>
     </tbody>
   </table>;

@@ -121,9 +121,19 @@ const NxTableStylePage = () =>
             </td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
             <td className="nx-cell">
-              This class is used when the only contents of a cell are an icon. This class creates a narrow
-              column suitable for holding a single icon. One particular use is the chevron icon, which should be present
-              in an unlabeled (empty header) column at the right end of the table when rows are clickable.
+              This class should be used when the only contents of a cell one or more icons.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">
+              <code className="nx-code">.nx-cell--chevron</code>
+            </td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
+            <td className="nx-cell">
+              This class is intended for the cells holding the Chevron icons that should be placed on the right
+              side of clickable table rows. It creates a column of the appropriate width for the icon. It
+              is <em>not</em> necessary to additionall use <code className="nx-code">.nx-cell--icon</code> on these
+              cells.
             </td>
           </tr>
         </tbody>
