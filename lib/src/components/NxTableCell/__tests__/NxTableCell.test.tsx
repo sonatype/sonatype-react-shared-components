@@ -55,7 +55,7 @@ describe('NxTableCell', function () {
       }
 
       expect(component.children()).toMatchElement(<Fixture />);
-    })
+    });
   });
 
   it('shows the sortable icon when the cell isSortable but has no sort direction', function () {
