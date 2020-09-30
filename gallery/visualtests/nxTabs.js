@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { Target } = require('@applitools/eyes-webdriverio');
 
 describe('NxTabs', function() {
   beforeEach(async function() {
