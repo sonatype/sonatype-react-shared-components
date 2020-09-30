@@ -14,33 +14,22 @@ import {
   NxTableRow
 } from '@sonatype/react-shared-components';
 
-const NxTableClickableExample = () => {
-  const rows = [
-    { name: 'Name 1' },
-    { name: 'Name 2' },
-    { name: 'Name 3' }
-  ];
-
+const NxTableLoadingExample = () => {
   return (
     <NxTable>
       <NxTableHead>
         <NxTableRow>
-          <NxTableCell>Name</NxTableCell>
+          <NxTableCell>Header 1</NxTableCell>
           <NxTableCell>Header 2</NxTableCell>
-          <NxTableCell chevron />
+          <NxTableCell>Header 3</NxTableCell>
+          <NxTableCell isNumeric>Header 4</NxTableCell>
+          <NxTableCell>Header 5</NxTableCell>
         </NxTableRow>
       </NxTableHead>
-      <NxTableBody>
-        {rows.map(row =>
-          <NxTableRow key={row.name} isClickable onClick={() => alert(`Clicked ${row.name}`)}>
-            <NxTableCell>{row.name}</NxTableCell>
-            <NxTableCell>Content</NxTableCell>
-            <NxTableCell chevron/>
-          </NxTableRow>
-        )}
+      <NxTableBody emptyMessage="No data found.">
       </NxTableBody>
     </NxTable>
   );
 };
 
-export default NxTableClickableExample;
+export default NxTableLoadingExample;
