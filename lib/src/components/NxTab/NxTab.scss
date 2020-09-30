@@ -42,10 +42,6 @@
     outline: solid 1px #02a6d9;
   }
 
-  a:hover, a:focus {
-    @include bold();
-  }
-
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
   .nx-tab__hidden-children {
     display: block;
