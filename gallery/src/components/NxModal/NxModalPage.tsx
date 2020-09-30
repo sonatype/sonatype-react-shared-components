@@ -83,8 +83,8 @@ export default function NxModalPage() {
               <td className="nx-cell">Modifier of <code className="nx-code">.nx-modal-content</code></td>
               <td className="nx-cell">
                 A modifier class that must be added to <code className="nx-code">.nx-modal-content</code> when
-                you want to use tabs within an <code className="nx-code">NxModal</code>. The modifier
-                keeps the tabs "sticky" while allowing the tab content to scroll.
+                you want to use tabs within an <code className="nx-code">NxModal</code> as the sole contents of
+                the modal body. The modifier keeps the tabs "sticky" while allowing the tab content to scroll.
               </td>
             </tr>
           </tbody>
