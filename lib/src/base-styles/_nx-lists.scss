@@ -193,8 +193,10 @@
 
     > .nx-chevron {
       align-self: center;
+      -ms-grid-row-align: center;
       color: #2c2c2c;
-      -ms-grid-row: 1 / 2;
+      -ms-grid-row: 1;
+      -ms-grid-row-span: 2;
       -ms-grid-column: 3;
       grid-area: actions;
 

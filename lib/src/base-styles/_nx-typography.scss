@@ -69,7 +69,7 @@
 }
 
 .nx-h4 {
-  @include semi-bold();
+  @include bold();
   @include container-horizontal;
 
   color: $nx-heading-color;
