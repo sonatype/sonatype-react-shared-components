@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
+import { faSort, faSortDown, faSortUp, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
@@ -32,6 +32,30 @@ describe('NxTableCell', function () {
 
   it('adds the correct classnames when the cell hasIcon', function () {
     expect(getShallowComponent({ hasIcon: true })).toMatchSelector('td.nx-cell.nx-cell--icon');
+  });
+
+  describe('when the chevron prop is true', function() {
+    it('adds the nx-cell--chevron class', function() {
+      expect(getShallowComponent({ chevron: undefined })).not.toHaveClassName('nx-cell--chevron');
+      expect(getShallowComponent({ chevron: null })).not.toHaveClassName('nx-cell--chevron');
+      expect(getShallowComponent({ chevron: false })).not.toHaveClassName('nx-cell--chevron');
+
+      expect(getShallowComponent({ chevron: true })).toHaveClassName('nx-cell--chevron');
+    });
+
+    it('ignores the children and sort settings and adds a Chevron icon child', function() {
+      const component = getShallowComponent({
+        chevron: true,
+        sortDir: 'asc',
+        children: <span>foo</span>
+      });
+
+      function Fixture() {
+        return <NxFontAwesomeIcon icon={faChevronRight} />;
+      }
+
+      expect(component.children()).toMatchElement(<Fixture />);
+    })
   });
 
   it('shows the sortable icon when the cell isSortable but has no sort direction', function () {
