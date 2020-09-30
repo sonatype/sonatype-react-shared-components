@@ -78,3 +78,26 @@ $nx-modal-padding: $nx-spacing-l;
   padding: $nx-spacing-l $nx-modal-padding $nx-spacing-xl $nx-modal-padding;
   overflow-y: auto;
 }
+
+.nx-modal-content--tabs {
+  display: flex;
+  padding-bottom: 0;
+
+  .nx-tabs {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .nx-tab-list {
+    margin: 1px 1px 0 1px;
+  }
+
+  .nx-tab-panel {
+    flex-shrink: 1;
+    overflow-y: auto;
+    padding-bottom: $nx-spacing-l;
+  }
+}
