@@ -77,7 +77,7 @@ export default function NxTabsPage() {
                 <NxTableCell></NxTableCell>
                 <NxTableCell>
                   A modifier class that must be added to <code className="nx-code">.nx-modal-content</code> when
-                  you want to use tabs within an <code className="nx-code">NxModal</code>. The modifier makes
+                  you want to use tabs within an <code className="nx-code">NxModal</code>. The modifier
                   keeps the tabs "sticky" while allowing the tab content to scroll.
                 </NxTableCell>
               </NxTableRow>
