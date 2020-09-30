@@ -42,7 +42,7 @@ const NxTabsModalNoHeaderExample = () => {
           </div>
           <footer className="nx-footer">
             <div className="nx-btn-bar">
-            <NxButton type="button" onClick={modalCloseHandler}>Close</NxButton>
+              <NxButton type="button" onClick={modalCloseHandler}>Close</NxButton>
             </div>
           </footer>
         </NxModal>
