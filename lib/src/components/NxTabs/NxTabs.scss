@@ -9,3 +9,26 @@
 .nx-tabs {
   margin: $nx-spacing-md 0 $nx-spacing-l 0;
 }
+
+.nx-modal-content--tabs {
+  display: flex;
+  padding-bottom: 0;
+
+  .nx-tabs {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .nx-tab-list {
+    padding-top: 1px;
+    padding-left: 1px;
+  }
+
+  .nx-tab-panel {
+    flex-shrink: 1;
+    overflow-y: auto;
+    padding-bottom: $nx-spacing-l;
+  }
+}

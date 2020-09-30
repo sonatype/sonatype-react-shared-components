@@ -35,7 +35,7 @@ const NxTabsModalExample = () => {
               <span>Modal header</span>
             </h2>
           </header>
-          <div className="nx-modal-content">
+          <div className="nx-modal-content nx-modal-content--tabs">
             <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId}>
               <NxTabList aria-label="Tabs in a Modal">
                 <NxTab>Tab</NxTab>
