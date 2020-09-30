@@ -24,10 +24,6 @@ const NxTabsModalExample = () => {
 
   const [activeTabId, setActiveTabId] = useState(0);
 
-  function handleTabSelect(index: number) {
-    setActiveTabId(index);
-  }
-
   return (
     <>
       <button onClick={() => setShowModal(true)} className="nx-btn">Open Modal</button>
@@ -40,7 +36,7 @@ const NxTabsModalExample = () => {
             </h2>
           </header>
           <div className="nx-modal-content">
-            <NxTabs activeTab={activeTabId} onTabSelect={handleTabSelect}>
+            <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId}>
               <NxTabList aria-label="Tabs in a Modal">
                 <NxTab>Tab</NxTab>
                 <NxTab>Tab with longer name</NxTab>

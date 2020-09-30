@@ -21,17 +21,13 @@ const NxTabsModalNoHeaderExample = () => {
 
   const [activeTabId, setActiveTabId] = useState(0);
 
-  function handleTabSelect(index: number) {
-    setActiveTabId(index);
-  }
-
   return (
     <>
       <NxButton onClick={() => setShowModal(true)}>Open Modal</NxButton>
       { showModal &&
         <NxModal onClose={modalCloseHandler} className="nx-modal--wide">
           <div className="nx-modal-content">
-            <NxTabs activeTab={activeTabId} onTabSelect={handleTabSelect}>
+            <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId}>
               <NxTabList aria-label="Tabs in a modal with no header">
                 <NxTab>Tab</NxTab>
                 <NxTab>Tab with longer name</NxTab>

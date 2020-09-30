@@ -17,17 +17,13 @@ import {
 const NxTabsTileHeaderExample = () => {
   const [activeTabId, setActiveTabId] = useState(0);
 
-  function handleTabSelect(index: number) {
-    setActiveTabId(index);
-  }
-
   return (
     <section className="nx-tile">
       <header className="nx-tile-header">
         <div className="nx-tile-header__title"><h2 className="nx-h2">Tile Header</h2></div>
       </header>
       <div className="nx-tile-content">
-        <NxTabs activeTab={activeTabId} onTabSelect={handleTabSelect}>
+        <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId}>
           <NxTabList aria-label="Tabs in a tile">
             <NxTab>Tab</NxTab>
             <NxTab>Tab with longer name</NxTab>
