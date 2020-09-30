@@ -71,6 +71,16 @@ export default function NxTabsPage() {
                   Called with the index of the newly selected tab when the currently selected tab changes.
                 </NxTableCell>
               </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>.nx-modal-content--tabs</NxTableCell>
+                <NxTableCell>Modifier</NxTableCell>
+                <NxTableCell></NxTableCell>
+                <NxTableCell>
+                  A modifier class that must be added to <code className="nx-code">.nx-modal-content</code> when
+                  you want to use tabs within an <code className="nx-code">NxModal</code>. The modifier makes
+                  keeps the tabs "sticky" while allowing the tab content to scroll.
+                </NxTableCell>
+              </NxTableRow>
             </NxTableBody>
           </NxTable>
         </section>
