@@ -44,7 +44,7 @@ describe('NxTabs', function() {
 
       try {
         // take image of entire viewport in order to capture the backdrop color
-        await browser.eyesSnapshot(null);
+        await eyesRegionSnapshot(null, Target.region(targetElement));
       }
       finally {
         await closeModalBtn.click();
