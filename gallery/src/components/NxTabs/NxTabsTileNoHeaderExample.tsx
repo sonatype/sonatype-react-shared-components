@@ -28,7 +28,7 @@ const NxTabsSimpleExample = () => {
             <NxTab data-text="Tab">Tab</NxTab>
             <NxTab data-text="Tab with longer name">Tab with longer name</NxTab>
             <NxTab data-text="Another Tab 3">Another Tab 3</NxTab>
-            <NxTab data-text="Forth Tab">Forth Tab</NxTab>
+            <NxTab data-text="Fourth Tab">Fourth Tab</NxTab>
           </NxTabList>
           <NxTabPanel>Tab 1</NxTabPanel>
           <NxTabPanel>Tab 2</NxTabPanel>

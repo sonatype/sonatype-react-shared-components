@@ -35,7 +35,7 @@ const NxTabsModalNoHeaderExample = () => {
                 <NxTab>Tab</NxTab>
                 <NxTab>Tab with longer name</NxTab>
                 <NxTab>Another Tab 3</NxTab>
-                <NxTab>Forth Tab</NxTab>
+                <NxTab>Fourth Tab</NxTab>
               </NxTabList>
               <NxTabPanel>Tab 1</NxTabPanel>
               <NxTabPanel>Tab 2</NxTabPanel>
