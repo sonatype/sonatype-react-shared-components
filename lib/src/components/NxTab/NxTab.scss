@@ -44,8 +44,6 @@
 
   a:hover, a:focus {
     @include bold();
-
-    letter-spacing: 0
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
