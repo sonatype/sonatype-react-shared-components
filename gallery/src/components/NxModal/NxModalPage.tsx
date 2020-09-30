@@ -78,6 +78,15 @@ export default function NxModalPage() {
                 which resulted in an error.
               </td>
             </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell"><code className="nx-code">.nx-modal-content--tabs</code></td>
+              <td className="nx-cell">Modifier of <code className="nx-code">.nx-modal-content</code></td>
+              <td className="nx-cell">
+                A modifier class that must be added to <code className="nx-code">.nx-modal-content</code> when
+                you want to use tabs within an <code className="nx-code">NxModal</code>. The modifier makes
+                keeps the tabs "sticky" while allowing the tab content to scroll.
+              </td>
+            </tr>
           </tbody>
         </table>
         <h3>Props</h3>
