@@ -33,7 +33,8 @@ describe('NxTabs', function() {
     return async function() {
       const openModalBtnSelector = `${exampleSelector} button`,
           closeModalBtnSelector =
-              `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`;
+              `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`,
+          modalSelector = `${exampleSelector} .nx-modal`;
 
       const openModalBtn = await browser.$(openModalBtnSelector);
 
@@ -42,12 +43,10 @@ describe('NxTabs', function() {
 
       const closeModalBtn = await browser.$(closeModalBtnSelector);
 
-      const targetElement = await browser.$(selector);
-
-      await targetElement.scrollIntoView({ block: 'center' });
+      const targetElement = await browser.$(modalSelector);
 
       try {
-        await eyesRegionSnapshot(null, Target.region(targetElement));
+        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
       }
       finally {
         await closeModalBtn.click();
