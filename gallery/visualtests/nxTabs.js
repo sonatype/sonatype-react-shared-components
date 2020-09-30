@@ -19,6 +19,16 @@ describe('NxTabs', function() {
   it('looks right in a Tile', simpleTest(tabTileExampleSelector));
   it('looks right in a Tile with no header', simpleTest(tabTileNoHeaderExampleSelector));
 
+  describe('Check tab styles', function() {
+    const selector = '#test-tab-list .nx-tab-test:nth-child(2)';
+
+    it('has regular text and no border by default', simpleTest(selector));
+    it('has semi-bold text when hovered', hoverTest(selector));
+    it('has a light blue border and semi-bold text when clicked', clickTest(selector));
+    it('has a light blue border when focused', focusTest(selector));
+    it('has a light blue border and semi-bold text when focused and hovered', focusAndHoverTest(selector));
+  });
+
   function simpleModalTest(exampleSelector) {
     return async function() {
       const openModalBtnSelector = `${exampleSelector} button`,
