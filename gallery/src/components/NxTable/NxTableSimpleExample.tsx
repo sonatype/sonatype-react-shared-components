@@ -11,8 +11,10 @@ import {
   NxTableBody,
   NxTableCell,
   NxTableHead,
-  NxTableRow
+  NxTableRow,
+  NxFontAwesomeIcon
 } from '@sonatype/react-shared-components';
+import { faAtom, faBatteryEmpty, faCarBattery } from '@fortawesome/free-solid-svg-icons';
 
 const NxTableSimpleExample = () => {
   return (
@@ -23,7 +25,7 @@ const NxTableSimpleExample = () => {
           <NxTableCell>Header 2</NxTableCell>
           <NxTableCell>Header 3</NxTableCell>
           <NxTableCell isNumeric>Header 4</NxTableCell>
-          <NxTableCell>Header 5</NxTableCell>
+          <NxTableCell hasIcon>Header 5 - icons</NxTableCell>
         </NxTableRow>
       </NxTableHead>
       <NxTableBody>
@@ -32,14 +34,19 @@ const NxTableSimpleExample = () => {
           <NxTableCell>Content 2</NxTableCell>
           <NxTableCell>Content 3</NxTableCell>
           <NxTableCell isNumeric>4</NxTableCell>
-          <NxTableCell>Content 5</NxTableCell>
+          <NxTableCell hasIcon>
+            <NxFontAwesomeIcon icon={faAtom} />
+            <NxFontAwesomeIcon icon={faCarBattery} />
+          </NxTableCell>
         </NxTableRow>
         <NxTableRow>
           <NxTableCell>Content 1</NxTableCell>
           <NxTableCell>Content 2</NxTableCell>
           <NxTableCell>Content 3</NxTableCell>
           <NxTableCell isNumeric>4</NxTableCell>
-          <NxTableCell>Content 5</NxTableCell>
+          <NxTableCell hasIcon>
+            <NxFontAwesomeIcon icon={faBatteryEmpty} />
+          </NxTableCell>
         </NxTableRow>
       </NxTableBody>
     </NxTable>
