@@ -27,7 +27,7 @@ const NxTabsModalNoHeaderExample = () => {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="nx-btn">Open Modal</button>
+      <NxButton onClick={() => setShowModal(true)}>Open Modal</NxButton>
       { showModal &&
         <NxModal onClose={modalCloseHandler} className="nx-modal--wide">
           <div className="nx-modal-content">
