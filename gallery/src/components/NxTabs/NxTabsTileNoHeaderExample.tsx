@@ -13,7 +13,7 @@ import {
   NxTabPanel
 } from '@sonatype/react-shared-components';
 
-const NxTabsSimpleExample = () => {
+const NxTabsTileNoHeaderExample = () => {
   const [activeTabId, setActiveTabId] = useState(0);
 
   function handleTabSelect(index: number) {
@@ -40,4 +40,4 @@ const NxTabsSimpleExample = () => {
   );
 };
 
-export default NxTabsSimpleExample;
+export default NxTabsTileNoHeaderExample;
