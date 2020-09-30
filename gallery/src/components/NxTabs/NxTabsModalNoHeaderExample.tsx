@@ -11,7 +11,8 @@ import {
   NxTabList,
   NxTab,
   NxTabPanel,
-  NxModal
+  NxModal,
+  NxButton
 } from '@sonatype/react-shared-components';
 
 const NxTabsModalNoHeaderExample = () => {
@@ -45,7 +46,7 @@ const NxTabsModalNoHeaderExample = () => {
           </div>
           <footer className="nx-footer">
             <div className="nx-btn-bar">
-              <button type="button" onClick={modalCloseHandler} className="nx-btn">Close</button>
+            <NxButton type="button" onClick={modalCloseHandler}>Close</NxButton>
             </div>
           </footer>
         </NxModal>
