@@ -23,7 +23,7 @@ const NxTabsSimpleExample = () => {
   return (
     <div className="nx-tile">
       <div className="nx-tile-content">
-        <NxTabs activeTab={activeTabId} onTabSelect={handleTabSelect} id="test-tab-list">
+        <NxTabs activeTab={activeTabId} onTabSelect={handleTabSelect}>
           <NxTabList aria-label="Tabs in a tile with no header">
             <NxTab>Tab</NxTab>
             <NxTab>Tab with longer name</NxTab>
