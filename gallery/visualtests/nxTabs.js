@@ -42,8 +42,11 @@ describe('NxTabs', function() {
 
       const closeModalBtn = await browser.$(closeModalBtnSelector);
 
+      const targetElement = await browser.$(selector);
+
+      await targetElement.scrollIntoView({ block: 'center' });
+
       try {
-        // take image of entire viewport in order to capture the backdrop color
         await eyesRegionSnapshot(null, Target.region(targetElement));
       }
       finally {
