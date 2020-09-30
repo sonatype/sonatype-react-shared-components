@@ -20,7 +20,7 @@ describe('NxTabs', function() {
   it('looks right in a Tile with no header', simpleTest(tabTileNoHeaderExampleSelector));
 
   describe('Check tab styles', function() {
-    const selector = '#test-tab-list .nx-tab-test:nth-child(2)';
+    const selector = '#nx-tab-tile-example .nx-tab:nth-child(2)';
 
     it('has regular text and no border by default', simpleTest(selector));
     it('has semi-bold text when hovered', hoverTest(selector));
