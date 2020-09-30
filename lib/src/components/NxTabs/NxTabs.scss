@@ -19,11 +19,11 @@
     flex-direction: column;
     height: 100%;
     overflow: hidden;
+    width: 100%;
   }
 
   .nx-tab-list {
-    padding-top: 1px;
-    padding-left: 1px;
+    margin: 1px 1px 0 1px;
   }
 
   .nx-tab-panel {
