@@ -10,9 +10,9 @@ const webpackConfigFn = require('./webpack.config.js');
 const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, Target } =
     require('@applitools/eyes-webdriverio');
 
-const host = process.env.TEST_IP || 'localhost';
+const host = process.env.TEST_IP || 'localhost',
+    random = Math.random();
 
-let random = Math.random();
 let eyes;
 
 exports.config = {
@@ -204,7 +204,46 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
     beforeSession: function (config, capabilities, specs) {
-      random = config.random
+      eyes = new Eyes(new ClassicRunner());
+
+      const batchId = process.env.GIT_COMMIT,
+          eyesConf = new Configuration();
+
+      let branchName = process.env.GIT_BRANCH;
+
+      if (batchId) {
+        const batchInfo = new BatchInfo(branchName);
+        batchInfo.setId(`${batchId}-${config.random}`);
+        eyesConf.setBatch(batchInfo);
+      }
+      else {
+        const batchInfo = new BatchInfo("local");
+        batchInfo.setId(`local-${config.random}`);
+        eyesConf.setBatch(batchInfo);
+      }
+
+      if (branchName) {
+        const applitoolsBranchname = `sonatype/sonatype-react-shared-components/${branchName}`;
+
+        eyes.setBranchName(applitoolsBranchname);
+      }
+
+      eyes.setParentBranchName('sonatype/sonatype-react-shared-components/master');
+
+      // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
+      eyesConf.setAppName('React Shared Components');
+
+      // The Hide Caret feature works by unfocusing the element. This prevents checking focus styles
+      eyesConf.setHideCaret(false);
+      eyesConf.setIgnoreCaret(false);
+
+      // without this hover testing doesn't seem to work; possibly the scrollbar-hiding styles cause elements on
+      // the page to shift, ruining any manual mouse positioning that had just been done
+      eyesConf.setHideScrollbars(false);
+
+      eyesConf.setViewportSize(new RectangleSize(1366, 1000));
+
+      eyes.setConfiguration(eyesConf);
     },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
@@ -240,47 +279,6 @@ exports.config = {
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
     beforeTest: async function (test, context) {
-      eyes = new Eyes(new ClassicRunner());
-
-      const batchId = process.env.GIT_COMMIT,
-          eyesConf = new Configuration();
-
-      let branchName = process.env.GIT_BRANCH;
-
-      if (batchId) {
-        const batchInfo = new BatchInfo(branchName);
-        batchInfo.setId(`${batchId}-${random}`);
-        eyesConf.setBatch(batchInfo);
-      }
-      else {
-        const batchInfo = new BatchInfo("local");
-        batchInfo.setId(`local-${random}`);
-        eyesConf.setBatch(batchInfo);
-      }
-
-      if (branchName) {
-        const applitoolsBranchname = `sonatype/sonatype-react-shared-components/${branchName}`;
-
-        eyes.setBranchName(applitoolsBranchname);
-      }
-
-      eyes.setParentBranchName('sonatype/sonatype-react-shared-components/master');
-
-      // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
-      eyesConf.setAppName('React Shared Components');
-
-      // The Hide Caret feature works by unfocusing the element. This prevents checking focus styles
-      eyesConf.setHideCaret(false);
-      eyesConf.setIgnoreCaret(false);
-
-      // without this hover testing doesn't seem to work; possibly the scrollbar-hiding styles cause elements on
-      // the page to shift, ruining any manual mouse positioning that had just been done
-      eyesConf.setHideScrollbars(false);
-
-      eyesConf.setViewportSize(new RectangleSize(1366, 1000));
-
-      eyes.setConfiguration(eyesConf);
-
       await eyes.open(browser, undefined, `${test.parent} ${test.title}`);
     },
     /**
@@ -301,15 +299,6 @@ exports.config = {
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
       await eyes.closeAsync();
       await eyes.abortIfNotClosed();
-
-      if (process.env.GIT_BRANCH === 'master') {
-        try {
-          await eyes.getRunner().getAllTestResults(true);
-        }
-        catch (e) {
-          context.test.callback(e);
-        }
-      }
     },
 
     /**
