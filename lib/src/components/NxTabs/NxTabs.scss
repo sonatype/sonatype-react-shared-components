@@ -5,15 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../../scss-shared/nx-variables';
-@import '../../scss-shared/nx-colors';
-@import '../../scss-shared/nx-container-helpers';
 
-.nx-btn--close {
-  border-color: transparent;
-  font-size: $nx-font-size;
-
-  .nx-icon {
-    height: 1em;
-    width: 1em;
-  }
+.nx-tabs {
+  margin: $nx-spacing-md 0 $nx-spacing-l 0;
 }

@@ -16,9 +16,15 @@ import {
   NxTableRow
 } from '@sonatype/react-shared-components';
 
-import NxTabsSimpleExample from './NxTabsSimpleExample';
+import NxTabsTileHeaderExample from './NxTabsTileHeaderExample';
+import NxTabsTileNoHeaderExample from './NxTabsTileNoHeaderExample';
+import NxTabsModalExample from './NxTabsModalExample';
+import NxTabsModalNoHeaderExample from './NxTabsModalNoHeaderExample';
 
-const NxTabsSimpleExampleCode = require('!!raw-loader!./NxTabsSimpleExample').default;
+const NxTabsTileHeaderExampleCode = require('!!raw-loader!./NxTabsTileHeaderExample').default;
+const NxTabsTileNoHeaderExampleCode = require('!!raw-loader!./NxTabsTileNoHeaderExample').default;
+const NxTabsModalExampleCode = require('!!raw-loader!./NxTabsModalExample').default;
+const NxTabsModalNoHeaderExampleCode = require('!!raw-loader!./NxTabsModalNoHeaderExample').default;
 
 export default function NxTabsPage() {
   return (
@@ -105,10 +111,34 @@ export default function NxTabsPage() {
           </p>
         </section>
       </GalleryDescriptionTile>
-      <GalleryExampleTile title="Simple NxTabs Example"
-                          liveExample={NxTabsSimpleExample}
-                          codeExamples={NxTabsSimpleExampleCode}>
-        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components.
+      <GalleryExampleTile title="NxTabs in NxTile Example"
+                          id="nx-tab-tile-example"
+                          liveExample={NxTabsTileHeaderExample}
+                          codeExamples={NxTabsTileHeaderExampleCode}>
+        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
+        {' '}<code className="nx-code">NxTile</code>.
+      </GalleryExampleTile>
+      <GalleryExampleTile title="NxTabs in NxTile with no header Example"
+                          id="nx-tab-tile-no-header-example"
+                          liveExample={NxTabsTileNoHeaderExample}
+                          codeExamples={NxTabsTileNoHeaderExampleCode}>
+        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
+        {' '}<code className="nx-code">NxTile</code> where there is no tile header and the tabs are top most within
+        the tile.
+      </GalleryExampleTile>
+      <GalleryExampleTile title="NxTabs in NxModal Example"
+                          id="nx-tab-modal-example"
+                          liveExample={NxTabsModalExample}
+                          codeExamples={NxTabsModalExampleCode}>
+        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
+        {' '}<code className="nx-code">NxModal</code>.
+      </GalleryExampleTile>
+      <GalleryExampleTile title="NxTabs in NxModal with No Header Example"
+                          id="nx-tab-modal-no-header-example"
+                          liveExample={NxTabsModalNoHeaderExample}
+                          codeExamples={NxTabsModalNoHeaderExampleCode}>
+        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
+        {' '}<code className="nx-code">NxModal</code> with no modal header.
       </GalleryExampleTile>
     </>
   );

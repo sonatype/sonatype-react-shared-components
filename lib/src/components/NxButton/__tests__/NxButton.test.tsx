@@ -32,7 +32,7 @@ describe('NxButton', function() {
   });
 
   it('renders an icon-only button', function() {
-    const button = shallow(<NxButton iconOnly={true}><NxFontAwesomeIcon icon={faCheck}/></NxButton>);
+    const button = shallow(<NxButton variant="icon-only"><NxFontAwesomeIcon icon={faCheck}/></NxButton>);
 
     expect(button).toMatchSelector('button.nx-btn.nx-btn--icon-only');
   });

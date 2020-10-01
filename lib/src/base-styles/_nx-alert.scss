@@ -16,10 +16,11 @@
   background-color: $nx-off-white;
   border: $nx-border-darker;
   border-radius: $nx-border-radius;
-  color: $nx-text-color;
   display: flex;
-  margin: 8px 0;
+  margin: 8px auto;
+  max-width: 950px;
   padding: $nx-spacing-xs $nx-spacing-md $nx-spacing-xs $nx-spacing-md;
+  text-align: initial;
 
   > .nx-icon {
     // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has

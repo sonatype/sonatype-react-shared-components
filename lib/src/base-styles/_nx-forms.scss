@@ -13,17 +13,6 @@
   margin: $nx-spacing-xl 0;
 }
 
-.nx-form-footer {
-  @include container-vertical;
-
-  border-top: 1px solid #e9e9e9;
-  padding: $nx-spacing-l 0;
-
-  .nx-alert {
-    margin-bottom: $nx-spacing-l;
-  }
-}
-
 .nx-form-group {
   margin-bottom: $nx-spacing-xs;
 }
@@ -53,6 +42,7 @@
 .nx-label__text, .nx-legend__text {
   @include bold();
 
+  color: $nx-text-color-dark;
   cursor: default;
   display: block;
   margin-bottom: $nx-spacing-xs;
@@ -62,7 +52,7 @@
   .nx-label__text::after, .nx-legend__text::after {
     @include regular();
 
-    color: $nx-text-color-light;
+    color: $nx-text-color;
     content: "Optional";
     font-size: $nx-font-size-xs;
     font-style: italic;
@@ -74,7 +64,7 @@
   @include container-horizontal;
   @include semi-bold();
 
-  color: $nx-text-color;
+  color: $nx-text-color-dark;
   font-size: $nx-font-size-s;
   display: block;
   margin-bottom: $nx-spacing-md;

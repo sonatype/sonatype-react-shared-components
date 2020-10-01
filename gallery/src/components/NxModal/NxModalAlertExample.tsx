@@ -6,7 +6,7 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxWarningAlert} from '@sonatype/react-shared-components';
+import {NxModal, NxWarningAlert, NxButton} from '@sonatype/react-shared-components';
 
 export default function NxModalAlertExample() {
   const [showModal, setShowModal] = useState(false);
@@ -14,24 +14,20 @@ export default function NxModalAlertExample() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="nx-btn">Open Modal</button>
+      <NxButton onClick={() => setShowModal(true)}>Open Modal</NxButton>
       { showModal &&
         <NxModal id="nx-modal-alert-example" onClose={modalCloseHandler}>
           <header className="nx-modal-header">
-            <h2 className="nx-h2">
-              <span>Example NxModal with NxAlert</span>
-            </h2>
+            <h2 className="nx-h2">Example NxModal with NxAlert</h2>
           </header>
           <div className="nx-modal-content">
-            <NxWarningAlert className="nx-alert--modifier">
-              <span>
-                The page may contain unsaved changes; continuing will discard them.
-              </span>
+            <NxWarningAlert>
+              The page may contain unsaved changes; continuing will discard them.
             </NxWarningAlert>
           </div>
-          <footer className="nx-modal-footer">
+          <footer className="nx-footer">
             <div className="nx-btn-bar">
-              <button type="button" onClick={modalCloseHandler} className="nx-btn">Close</button>
+              <NxButton onClick={modalCloseHandler}>Close</NxButton>
             </div>
           </footer>
         </NxModal>

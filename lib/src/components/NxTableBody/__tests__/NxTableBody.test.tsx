@@ -10,18 +10,17 @@ import NxTableBody from '../NxTableBody';
 import NxTableCell from '../../NxTableCell/NxTableCell';
 import NxTableRow from '../../NxTableRow/NxTableRow';
 import NxLoadingSpinner from '../../NxLoadingSpinner/NxLoadingSpinner';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import NxLoadError from '../../NxLoadError/NxLoadError';
 
 describe('NxTableBody', function () {
   it('passes additional props through', function () {
-    expect(shallow(<NxTableBody className="test" />)).toMatchSelector('tbody.test');
+    expect(shallow(<NxTableBody className="test" emptyMessage="foo" columns={1}/>)).toMatchSelector('tbody.test');
   });
 
   it('shows the loading spinner when isLoading is set', function () {
     const loadingSpinner = (
       <NxTableRow>
-        <NxTableCell isEmpty colSpan={1}>
+        <NxTableCell metaInfo colSpan={1}>
           <NxLoadingSpinner />
         </NxTableCell>
       </NxTableRow>
@@ -31,16 +30,64 @@ describe('NxTableBody', function () {
   });
 
   it('shows the error when error is set', function () {
-    const errorMessage = (
+    const retryHandler = jest.fn(),
+        errorMessage = (
+          <NxTableRow>
+            <NxTableCell metaInfo colSpan={1}>
+              <NxLoadError error="Error message" retryHandler={retryHandler} />
+            </NxTableCell>
+          </NxTableRow>
+        ),
+        component = shallow(
+          <NxTableBody error="Error message" columns={1} retryHandler={retryHandler}>
+            nothing
+          </NxTableBody>
+        );
+
+    expect(component).toContainReact(errorMessage);
+  });
+
+  it('shows the emptyMessage when there are no children, no error, and not loading', function () {
+    const emptyMessage = (
       <NxTableRow>
-        <NxTableCell isError colSpan={1}>
-          <NxFontAwesomeIcon icon={faExclamationTriangle} fixedWidth />
-          Error message
+        <NxTableCell metaInfo colSpan={1}>
+          Empty message
         </NxTableCell>
       </NxTableRow>
     );
 
-    expect(shallow(<NxTableBody error="Error message" columns={1}>nothing</NxTableBody>)).toContainReact(errorMessage);
+    expect(shallow(<NxTableBody emptyMessage="Empty message" columns={1}></NxTableBody>))
+        .toContainReact(emptyMessage);
+  });
+
+  it('does not show the emptyMessage when there are children', function () {
+    const component = shallow(
+      <NxTableBody emptyMessage="Empty message" columns={1}>
+        <NxTableRow>
+          <NxTableCell>Foo</NxTableCell>
+        </NxTableRow>
+      </NxTableBody>
+    );
+
+    expect(component).not.toHaveText('Empty message');
+  });
+
+  it('does not show the emptyMessage when isLoading', function () {
+    const component = shallow(
+      <NxTableBody emptyMessage="Empty message" columns={1} isLoading>
+      </NxTableBody>
+    );
+
+    expect(component).not.toHaveText('Empty message');
+  });
+
+  it('does not show the emptyMessage when in error', function () {
+    const component = shallow(
+      <NxTableBody emptyMessage="Empty message" columns={1} error="Errr" retryHandler={() => {}}>
+      </NxTableBody>
+    );
+
+    expect(component).not.toHaveText('Empty message');
   });
 
   it('shows the body', function () {

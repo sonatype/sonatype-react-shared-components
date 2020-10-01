@@ -10,22 +10,22 @@ import { ThreatLevelCategory, categoryByPolicyThreatLevel } from '../../util/thr
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
-import './NxThreatBar.scss';
+import './NxThreatIndicator.scss';
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
-const NxThreatBar: FunctionComponent<Props> =
-  function NxThreatBar({ threatLevelCategory, policyThreatLevel }): ReactElement<Props> {
+const NxThreatIndicator: FunctionComponent<Props> =
+  function NxThreatIndicator({ threatLevelCategory, policyThreatLevel }): ReactElement<Props> {
     const category: ThreatLevelCategory =
           threatLevelCategory ? threatLevelCategory :
           policyThreatLevel != null ? categoryByPolicyThreatLevel[policyThreatLevel] :
           'unspecified',
 
-        className = `nx-threat-bar nx-threat-bar--${category}`;
+        className = `nx-threat-indicator nx-threat-indicator--${category}`;
 
-    return (
-      <div className={className}></div>
-    );
+    return <NxFontAwesomeIcon className={className} icon={faCircle} />;
   };
 
-NxThreatBar.propTypes = propTypes;
+NxThreatIndicator.propTypes = propTypes;
 
-export default NxThreatBar;
+export default NxThreatIndicator;

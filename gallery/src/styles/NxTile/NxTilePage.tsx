@@ -67,9 +67,13 @@ const NxTilePage = () =>
             <td className="nx-cell">Used for the tile content.</td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-tile-footer</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-footer</code></td>
             <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell">Used for footer contents (buttons for example)</td>
+            <td className="nx-cell">
+              Used for footer contents (buttons for example). This class is not
+              called <code className="nx-code">nx-tile-footer</code> because it is used across a number of different
+              containers (e.g. forms and modals in addition to tiles) which have identical footer styles.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-alert</code></td>
