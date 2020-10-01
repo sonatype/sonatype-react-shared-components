@@ -299,13 +299,6 @@ exports.config = {
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
       await eyes.closeAsync();
       await eyes.abortIfNotClosed();
-
-      try {
-        await eyes.getRunner().getAllTestResults(process.env.GIT_BRANCH === 'master');
-      }
-      catch (e) {
-        context.test.callback(e);
-      }
     },
 
     /**
@@ -348,9 +341,10 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    onComplete: function(exitCode, config) {
-      return new Promise(function(resolve, reject) {
-        console.time('WebpackDevServer Shut Down');
+    onComplete: async function(exitCode, config) {
+      console.time('WebpackDevServer Shut Down');
+
+      await new Promise(function(resolve, reject) {
         config.webpackServer.close(function(err) {
           if (err) {
             reject(err);
@@ -362,6 +356,9 @@ exports.config = {
           }
         });
       });
+
+      // throw error if failures on master
+      await eyes.getRunner().getAllTestResults(process.env.GIT_BRANCH === 'master');
     },
     /**
     * Gets executed when a refresh happens.
