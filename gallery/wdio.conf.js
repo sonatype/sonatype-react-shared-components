@@ -10,9 +10,9 @@ const webpackConfigFn = require('./webpack.config.js');
 const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, Target } =
     require('@applitools/eyes-webdriverio');
 
-const host = process.env.TEST_IP || 'localhost',
-    random = Math.random();
+const host = process.env.TEST_IP || 'localhost';
 
+let random = Math.random();
 let eyes;
 
 exports.config = {
@@ -204,6 +204,15 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
     beforeSession: function (config, capabilities, specs) {
+      random = config.random
+    },
+    /**
+     * Gets executed before test execution begins. At this point you can access to all global
+     * variables like `browser`. It is the perfect place to define custom commands.
+     * @param {Array.<Object>} capabilities list of capabilities details
+     * @param {Array.<String>} specs List of spec file paths that are to be run
+     */
+    before: function (capabilities, specs) {
       eyes = new Eyes(new ClassicRunner());
 
       const batchId = process.env.GIT_COMMIT,
@@ -213,12 +222,12 @@ exports.config = {
 
       if (batchId) {
         const batchInfo = new BatchInfo(branchName);
-        batchInfo.setId(`${batchId}-${config.random}`);
+        batchInfo.setId(`${batchId}-${random}`);
         eyesConf.setBatch(batchInfo);
       }
       else {
         const batchInfo = new BatchInfo("local");
-        batchInfo.setId(`local-${config.random}`);
+        batchInfo.setId(`local-${random}`);
         eyesConf.setBatch(batchInfo);
       }
 
@@ -244,14 +253,6 @@ exports.config = {
       eyesConf.setViewportSize(new RectangleSize(1366, 1000));
 
       eyes.setConfiguration(eyesConf);
-    },
-    /**
-     * Gets executed before test execution begins. At this point you can access to all global
-     * variables like `browser`. It is the perfect place to define custom commands.
-     * @param {Array.<Object>} capabilities list of capabilities details
-     * @param {Array.<String>} specs List of spec file paths that are to be run
-     */
-    before: function (capabilities, specs) {
       browser.addCommand('eyesSnapshot', function(title) {
         return eyes.check(title, Target.window());
       });
@@ -299,6 +300,15 @@ exports.config = {
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
       await eyes.closeAsync();
       await eyes.abortIfNotClosed();
+
+      if (process.env.GIT_BRANCH === 'master') {
+        try {
+          await eyes.getRunner().getAllTestResults(true);
+        }
+        catch (e) {
+          context.test.callback(e);
+        }
+      }
     },
 
     /**
@@ -341,33 +351,20 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    onComplete: async function(exitCode, config) {
-      console.time('WebpackDevServer Shut Down');
-
-      await new Promise(function(resolve, reject) {
+    onComplete: function(exitCode, config) {
+      return new Promise(function(resolve, reject) {
+        console.time('WebpackDevServer Shut Down');
         config.webpackServer.close(function(err) {
           if (err) {
             reject(err);
           }
           else {
+            console.timeEnd('WebpackDevServer Shut Down');
+
             resolve();
           }
         });
       });
-
-      console.timeEnd('WebpackDevServer Shut Down');
-
-
-      // note: eyes will only be defined on the worker processes not the parent wdio process
-      if (eyes) {
-        try {
-          await eyes.getRunner().getAllTestResults(process.env.GIT_BRANCH === 'master');
-        }
-        catch (e) {
-          console.error('Failing build due to detected applitools differences on master');
-          throw e;
-        }
-      }
     },
     /**
     * Gets executed when a refresh happens.
