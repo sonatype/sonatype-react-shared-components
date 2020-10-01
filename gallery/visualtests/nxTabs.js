@@ -12,8 +12,8 @@ describe('NxTabs', function() {
     await browser.url('#/pages/NxTabs');
   });
 
-  const tabTileExampleSelector = '#nx-tab-tile-example .gallery-example-live',
-      tabTileNoHeaderExampleSelector = '#nx-tab-tile-no-header-example .gallery-example-live',
+  const tabTileExampleSelector = '#nx-tab-tile-example .nx-tile',
+      tabTileNoHeaderExampleSelector = '#nx-tab-tile-no-header-example .nx-tile',
       tabModalExampleSelector = '#nx-tab-modal-example',
       tabModalNoHeaderExampleSelector = '#nx-tab-modal-no-header-example';
 
