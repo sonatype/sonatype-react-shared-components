@@ -10,7 +10,8 @@ const webpackConfigFn = require('./webpack.config.js');
 const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, Target } =
     require('@applitools/eyes-webdriverio');
 
-const host = process.env.TEST_IP || 'localhost';
+const host = process.env.TEST_IP || 'localhost',
+    random = Math.random();
 
 let eyes;
 
@@ -191,8 +192,10 @@ exports.config = {
      * @param  {[type]} args     object that will be merged with the main configuration once worker is initialised
      * @param  {[type]} execArgv list of string arguments passed to the worker process
      */
-    // onWorkerStart: function (cid, caps, specs, args, execArgv) {
-    // },
+    onWorkerStart: function (cid, caps, specs, args, execArgv) {
+      // use same random number for batch id across all workers
+      args.random = random;
+    },
     /**
      * Gets executed just before initialising the webdriver session and test framework. It allows you
      * to manipulate configurations depending on the capability or spec.
@@ -200,15 +203,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // beforeSession: function (config, capabilities, specs) {
-    // },
-    /**
-     * Gets executed before test execution begins. At this point you can access to all global
-     * variables like `browser`. It is the perfect place to define custom commands.
-     * @param {Array.<Object>} capabilities list of capabilities details
-     * @param {Array.<String>} specs List of spec file paths that are to be run
-     */
-    before: function (capabilities, specs) {
+    beforeSession: function (config, capabilities, specs) {
       eyes = new Eyes(new ClassicRunner());
 
       const batchId = process.env.GIT_COMMIT,
@@ -218,11 +213,13 @@ exports.config = {
 
       if (batchId) {
         const batchInfo = new BatchInfo(branchName);
-        batchInfo.setId(batchId);
+        batchInfo.setId(`${batchId}-${config.random}`);
         eyesConf.setBatch(batchInfo);
       }
       else {
-        eyesConf.setBatch(new BatchInfo("local"));
+        const batchInfo = new BatchInfo("local");
+        batchInfo.setId(`local-${config.random}`);
+        eyesConf.setBatch(batchInfo);
       }
 
       if (branchName) {
@@ -247,7 +244,14 @@ exports.config = {
       eyesConf.setViewportSize(new RectangleSize(1366, 1000));
 
       eyes.setConfiguration(eyesConf);
-
+    },
+    /**
+     * Gets executed before test execution begins. At this point you can access to all global
+     * variables like `browser`. It is the perfect place to define custom commands.
+     * @param {Array.<Object>} capabilities list of capabilities details
+     * @param {Array.<String>} specs List of spec file paths that are to be run
+     */
+    before: function (capabilities, specs) {
       browser.addCommand('eyesSnapshot', function(title) {
         return eyes.check(title, Target.window());
       });
