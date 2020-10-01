@@ -11,6 +11,6 @@ interface Props {
 }
 
 const RawHtmlExample = ({ html }: Props) =>
-  <div className="gallery-raw-html-example" dangerouslySetInnerHTML={{ __html: html }} />;
+  <div className="gallery-example-live gallery-example-live--raw-html" dangerouslySetInnerHTML={{ __html: html }} />;
 
 export default RawHtmlExample;

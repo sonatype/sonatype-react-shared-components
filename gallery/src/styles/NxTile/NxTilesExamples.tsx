@@ -7,6 +7,7 @@
 import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
+import NxTileFormExample from './NxTileFormExample';
 import NxTileDropdownActionsExample from './NxTileDropdownActionsExample';
 
 const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample.html').default,
@@ -14,6 +15,7 @@ const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample.html').defa
     NxTileWithSubtitleCode = require('!!raw-loader!./NxTileWithSubtitleExample.html').default,
     NxTileSubsectionCode = require('!!raw-loader!./NxTileSubsectionExample.html').default,
     NxTileWithHorizontalRuleCode = require('!!raw-loader!./NxTileWithHorizontalRuleExample.html').default,
+    NxTileFormCode = require('!!raw-loader!./NxTileFormExample.tsx').default,
     NxTileDropdownActionsCode = require('!!raw-loader!./NxTileDropdownActionsExample').default;
 
 const NxTilesExamples = () =>
@@ -54,6 +56,13 @@ const NxTilesExamples = () =>
                         codeExamples={NxTileSubsectionCode}>
       An example of an <code className="nx-code">nx-tile</code> containing mulitple subsections. Note the horizontal
       rule which appears before the first subsection, but not between subsections.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Tile consisting of a form"
+                        id="nx-tile-form-example"
+                        liveExample={NxTileFormExample}
+                        codeExamples={NxTileFormCode}>
+      An example of an <code className="nx-code">nx-tile</code> which solely contains a form.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Tile with an NxDropdown in the actions buttons area"

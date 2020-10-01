@@ -8,12 +8,16 @@ import {HTMLAttributes, WeakValidationMap} from 'react';
 import * as PropTypes from 'prop-types';
 
 export type CloseHandler = () => void;
+export const NX_MODAL_VARIANTS = ['wide', 'normal', 'narrow'] as const;
+export type NX_MODAL_VARIANT_TYPE = (typeof NX_MODAL_VARIANTS)[number];
 
 export type Props = HTMLAttributes<HTMLDivElement> & {
   onClose: CloseHandler;
+  variant?: NX_MODAL_VARIANT_TYPE;
 };
 
 export const propTypes: WeakValidationMap<Props> = {
   className: PropTypes.string,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  variant: PropTypes.oneOf(NX_MODAL_VARIANTS)
 };

@@ -26,8 +26,7 @@ const NxTableLoadingExample = () => {
           <NxTableCell>Header 5</NxTableCell>
         </NxTableRow>
       </NxTableHead>
-      <NxTableBody error="Failed to load list message">
-
+      <NxTableBody error="Failed to load list message" retryHandler={() => {}}>
       </NxTableBody>
     </NxTable>
   );

@@ -6,47 +6,63 @@
  */
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
+@import '../../scss-shared/nx-text-helpers';
 
-$nx-modal-top-spacing: 48px;
-$nx-modal-bottom-spacing: 8px;
-$nx-modal-width: 560px;
-$nx-modal-width-wide: 900px;
-$nx-modal-content-max-height: calc(100vh - #{$nx-modal-top-spacing} - #{$nx-modal-bottom-spacing} - 215px);
+// the "padding" around the interior of nx-modal. In order to get borders and scrollbars to appear
+// in the desired locations, this can't actually be implemented as padding on .nx-modal, but must instead be
+// a mix of padding and margin on the .nx-modal, .nx-modal-header, .nx-modal-content, and .nx-footer elements
+$nx-modal-padding: $nx-spacing-l;
 
 .nx-modal {
-  align-self: flex-start;
-  background-color: $nx-off-white;
-  border: $nx-border-darker;
-  box-shadow: -8px 8px 12px $nx-slate;
-  margin-top: $nx-modal-top-spacing;
-  width: $nx-modal-width;
+  @include container-vertical;
+
+  border-radius: $nx-border-radius;
+  background-color: #ffffff;
+  margin: 100px 0;
+  width: 800px;
+
+  .nx-footer {
+    // without this, IE11 demonstrates a weird behavior where the footer _grows_ for no reason when interactive
+    // elements in the modal are clicked or focused.
+    flex-shrink: 0;
+    margin: 0 $nx-modal-padding;
+  }
+
+  &, > .nx-form {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-shrink: 1;
+    overflow-y: hidden;
+  }
+}
+
+.nx-modal--narrow {
+  width: 600px;
 }
 
 .nx-modal--wide {
-  width: $nx-modal-width-wide;
+  width: 1000px;
 }
 
 .nx-modal-header {
   @include container-vertical;
-  border-bottom: $nx-border-dark;
-  padding: 12px 8px;
-}
 
-.nx-modal-footer {
-  @include container-vertical;
-  background-color: #fff;
-  border-top: 1px solid #e9e9e9;
-  padding: $nx-spacing-l $nx-spacing-l $nx-spacing-xl $nx-spacing-l;
+  border-bottom: 1px solid #d1d6f0;
+  margin: 0 $nx-modal-padding;
+  padding: $nx-modal-padding 0 $nx-spacing-l 0;
 
-  .nx-alert {
-    margin-bottom: $nx-spacing-xl;
+  .nx-h2 {
+    @include nx-truncate-ellipsis;
   }
 }
 
 .nx-modal-backdrop {
-  background-color: transparentize($nx-off-black, 0.4);
+  align-items: center;
+  background-color: transparentize(#555555, 0.25);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  overflow-y: hidden;
   position: fixed;
   top: 0;
   right: 0;
@@ -57,16 +73,31 @@ $nx-modal-content-max-height: calc(100vh - #{$nx-modal-top-spacing} - #{$nx-moda
 
 .nx-modal-content {
   @include container-vertical;
-  @include vertically-scrollable($nx-modal-content-max-height);
-  padding: 20px 8px 18px 8px;
+  flex-shrink: 1;
+  flex-basis: auto;
+  padding: $nx-spacing-l $nx-modal-padding $nx-spacing-xl $nx-modal-padding;
+  overflow-y: auto;
+}
 
-  > .nx-alert {
-    &:first-child {
-      margin-top: -12px;
-    }
+.nx-modal-content--tabs {
+  display: flex;
+  padding-bottom: 0;
 
-    &:last-child {
-      margin-bottom: -10px;
-    }
+  .nx-tabs {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .nx-tab-list {
+    margin: 1px 1px 0 1px;
+  }
+
+  .nx-tab-panel {
+    flex-shrink: 1;
+    overflow-y: auto;
+    padding-bottom: $nx-spacing-l;
   }
 }

@@ -64,7 +64,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
 
         liveExampleRender =
           htmlExample ? <RawHtmlExample html={htmlExample} /> :
-          LiveExample ? <LiveExample /> :
+          LiveExample ? <div className="gallery-example-live"><LiveExample /></div> :
           null,
 
         tileClasses = classnames('gallery-example', className),
@@ -81,7 +81,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
         { liveExampleRender &&
           <>
             <h3 className="nx-h3 nx-tile__section-header">Example:</h3>
-            <div>{liveExampleRender}</div>
+            {liveExampleRender}
           </>
         }
 

@@ -19,8 +19,8 @@ const NxScrollablePage = () =>
         class (e.g. <code className="nx-code">.nx-scrollable--my-box</code>) to adjust the height to suit your needs.
       </p>
       <p className="nx-p">
-        Generally <code className="nx-code">.nx-scrollable</code> is applied to blocks like
-        {' '}<code className="nx-code">.nx-tile-content</code> or <code className="nx-code">.nx-modal-content</code>.
+        Generally <code className="nx-code">.nx-scrollable</code> is applied to blocks
+        like <code className="nx-code">.nx-tile-content</code>.
       </p>
       <p className="nx-p">
         <code className="nx-code">.nx-scrollable</code> should <strong>not</strong> be used to replicate page or browser

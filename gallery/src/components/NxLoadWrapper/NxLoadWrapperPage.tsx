@@ -60,11 +60,8 @@ const NxLoadWrapperPage = () =>
             <td className="nx-cell">Function</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">
-              If this is defined, a Retry button will be rendered in
-              the <code className="nx-code">NxLoadError</code> which executes this function
-              when clicked. For backwards compatibility reasons, this prop is not technically required. However
-              current UX standards are that it should always be present. If not specified
-              the <code className="nx-code">NxLoadError</code> will be rendered without a Retry button.
+              A Retry button will be rendered in the <code className="nx-code">NxLoadError</code> which
+              executes this function when clicked.
             </td>
           </tr>
         </tbody>
