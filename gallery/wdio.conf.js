@@ -350,15 +350,24 @@ exports.config = {
             reject(err);
           }
           else {
-            console.timeEnd('WebpackDevServer Shut Down');
-
             resolve();
           }
         });
       });
 
-      // throw error if failures on master
-      await eyes.getRunner().getAllTestResults(process.env.GIT_BRANCH === 'master');
+      console.timeEnd('WebpackDevServer Shut Down');
+
+
+      // note: eyes will only be defined on the worker processes not the parent wdio process
+      if (eyes) {
+        try {
+          await eyes.getRunner().getAllTestResults(process.env.GIT_BRANCH === 'master');
+        }
+        catch (e) {
+          console.error('Failing build due to detected applitools differences on master');
+          throw e;
+        }
+      }
     },
     /**
     * Gets executed when a refresh happens.
