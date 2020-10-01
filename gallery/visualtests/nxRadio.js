@@ -12,9 +12,9 @@ describe('NxRadio', function() {
     await browser.url('#/pages/NxRadio');
   });
 
-  const selector = '#nx-radio-example label:nth-of-type(4)',
-      otherRadioSelector = '#nx-radio-example label:nth-of-type(1)',
-      disabledSelector = '#nx-radio-example label:nth-of-type(2)';
+  const selector = '#nx-radio-example .gallery-example-live label:nth-of-type(4)',
+      otherRadioSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(1)',
+      disabledSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(2)';
 
   describe('Default NxRadio', function() {
 

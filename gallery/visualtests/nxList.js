@@ -11,9 +11,9 @@ describe('nx-list', function() {
     await browser.url('#/pages/nx-list');
   });
 
-  const simpleSelector = '#nx-list-simple-example .nx-list',
+  const simpleSelector = '#nx-list-simple-example .gallery-example-live',
       clickableSelector = '#nx-list-clickable-example .nx-list',
-      bulletedSelector = '#nx-list-bulleted-example .nx-list',
+      bulletedSelector = '#nx-list-bulleted-example .gallery-example-live',
       definitionListSelector = '#nx-list-definition-example .nx-list',
       actionsSelector = '#nx-list-actions-example .nx-list',
       multiLineSelector = '#nx-list-multi-line-example .nx-list',
