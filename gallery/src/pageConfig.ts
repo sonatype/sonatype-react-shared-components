@@ -20,7 +20,7 @@ import NxPageTitlePage from './styles/NxPageTitle/NxPageTitlePage';
 import NxTilePage from './styles/NxTile/NxTilePage';
 //import NxTextInputStylesPage from './styles/NxTextInputStyles/NxTextInputStylesPage';
 import NxBtnPage from './styles/NxBtn/NxBtnPage';
-import NxThreatBarPage from './components/NxThreatBar/NxThreatBarPage';
+import NxThreatIndicatorPage from './components/NxThreatIndicator/NxThreatIndicatorPage';
 import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
@@ -96,7 +96,7 @@ const pageConfig: PageConfig = {
     NxStatefulTabs: NxStatefulTabsPage,
     NxTextInput: NxTextInputPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
-    NxThreatBar: NxThreatBarPage,
+    NxThreatIndicator: NxThreatIndicatorPage,
     NxTooltip: NxTooltipPage,
     NxTreeView: NxTreeViewPage,
     NxTreeViewMultiSelect: NxTreeViewMultiSelect,

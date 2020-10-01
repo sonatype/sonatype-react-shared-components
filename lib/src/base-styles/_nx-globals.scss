@@ -15,15 +15,16 @@ $nx-scrollable-default-height: 400px;
   #Basic links
 */
 .nx-text-link {
-  color: #045dd1;
+  color: $nx-link-color;
   cursor: pointer;
+  text-decoration: none;
 
   &:hover {
-    color: #034396;
+    color: $nx-link-color-hover;
   }
 
   &:active {
-    color: #2783fb;
+    color: $nx-link-color-active;
   }
 }
 
@@ -55,6 +56,11 @@ $nx-scrollable-default-height: 400px;
 .nx-scrollable {
   @include container-vertical;
   @include vertically-scrollable($nx-scrollable-default-height);
+}
+
+.nx-scrollable--table-container {
+  border: 1px solid #d1d6f0;
+  border-radius: $nx-border-radius;
 }
 
 .nx-truncate-ellipsis {

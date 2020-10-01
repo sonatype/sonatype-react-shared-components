@@ -33,7 +33,8 @@ export {
   NxStatefulErrorAlert
 } from './components/NxAlert/stateful/NxStatefulAlert';
 
-export { default as NxThreatBar, Props as NxThreatBarProps } from './components/NxThreatBar/NxThreatBar';
+export { default as NxThreatIndicator, Props as NxThreatIndicatorProps }
+  from './components/NxThreatIndicator/NxThreatIndicator';
 export { default as NxFontAwesomeIcon, Props as NxFontAwesomeIconProps }
   from './components/NxFontAwesomeIcon/NxFontAwesomeIcon';
 

@@ -40,26 +40,32 @@ const FontSizePage = () =>
       At the time of writing, RSC uses the OpenSans font. This font will be used as the example for this guide,
       with screenshots showing its configuration as observed using the font editing program FontForge. Several
       FontForge screenshots are displayed here. If you'd like to see this information in FontForge yourself, it is
-      located in the UI under Element -> Font Info.
+      located in the UI under Element -&gt; Font Info.
     </p>
 
     <section>
       <h3 className="nx-h3">Vocabulary</h3>
-      <dl className="nx-list nx-list--definition-list">
-        <dt className="nx-list__item nx-list__item--label">Glyph</dt>
-        <dd className="nx-list__item">The visible shape of a character</dd>
-        <dt className="nx-list__item nx-list__item--label">Baseline</dt>
-        <dd className="nx-list__item">
-          When writing or printing characters, the baseline is the <q>bottom</q> of standard characters. For instance,
-          when writing by hand on ruled paper, the rule line on which you are writing is the baseline. By default,
-          the characters in a sequence of text all have their baselines aligned.
-        </dd>
-        <dt className="nx-list__item nx-list__item--label">Descender</dt>
-        <dd className="nx-list__item">
-          Many glyphs, such as <q>q</q>, contain parts that drop below the baseline. Fonts and line layouts
-          must take this into account
-        </dd>
-      </dl>
+      <ul className="nx-list">
+        <li className="nx-list__item">
+          <span className="nx-list__text">Glyph:</span>
+          <span className="nx-list__subtext">The visible shape of a character.</span>
+        </li>
+        <li className="nx-list__item">
+          <span className="nx-list__text">Baseline:</span>
+          <span className="nx-list__subtext">
+            When writing or printing characters, the baseline is the <q>bottom</q> of standard characters. For
+            instance, when writing by hand on ruled paper, the rule line on which you are writing is the baseline.
+            By default, the characters in a sequence of text all have their baselines aligned.
+          </span>
+        </li>
+        <li className="nx-list__item">
+          <span className="nx-list__text">Descender:</span>
+          <span className="nx-list__subtext">
+            Many glyphs, such as <q>q</q>, contain parts that drop below the baseline. Fonts and line layouts must
+            take this into account.
+          </span>
+        </li>
+      </ul>
     </section>
 
     <section>

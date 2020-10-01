@@ -1,0 +1,15 @@
+.gallery-fixed-layout-table-example {
+  .nx-table-row--header {
+    > :nth-child(1) {
+      width: 150px;
+    }
+
+    // typically you'll want to leave one column to auto-size. In this example that's column 2.
+
+    > :nth-child(3) {
+      width: 100px;
+    }
+
+    // Icon columns come with a width preset, no need to set it here. It can be overridden if need be, of course.
+  }
+}

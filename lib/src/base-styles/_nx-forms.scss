@@ -44,6 +44,7 @@
 .nx-label__text, .nx-legend__text {
   @include bold();
 
+  color: $nx-text-color-dark;
   cursor: default;
   display: block;
   margin-bottom: $nx-spacing-xs;
@@ -53,7 +54,7 @@
   .nx-label__text::after, .nx-legend__text::after {
     @include regular();
 
-    color: $nx-text-color-light;
+    color: $nx-text-color;
     content: "Optional";
     font-size: $nx-font-size-xs;
     font-style: italic;
@@ -65,7 +66,7 @@
   @include container-horizontal;
   @include semi-bold();
 
-  color: $nx-text-color;
+  color: $nx-text-color-dark;
   font-size: $nx-font-size-s;
   display: block;
   margin-bottom: $nx-spacing-md;

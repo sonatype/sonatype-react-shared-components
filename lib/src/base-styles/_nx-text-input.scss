@@ -64,6 +64,7 @@
   @include container-horizontal;
 
   align-items: center;
+  background-color: #fff;
   border: 1px solid #2c2c2c;
   border-radius: $nx-border-radius;
   display: flex;
@@ -83,7 +84,7 @@
 .nx-text-input__input {
   background-color: transparent;
   border: none;
-  color: $nx-text-color-light;
+  color: $nx-text-color;
   flex-grow: 1;
   font-size: $nx-font-size;
   line-height: $nx-line-height;

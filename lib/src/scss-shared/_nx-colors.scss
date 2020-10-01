@@ -72,15 +72,15 @@ $nx-header-border: #f1f3fa;
 
 //  Text
 $nx-heading-color: #2C2C2C;
-$nx-text-color: #2c2c2c;
-$nx-text-color-light: #474747;
+$nx-text-color-dark: #2c2c2c;
+$nx-text-color: #474747;
 $nx-text-color-disabled: #949494;
 $nx-text-color-error: $nx-fail-color;
 
-$nx-link-color: $nx-color-blue-44;
-$nx-link-color-active: #0046b1;
-$nx-link-color-hover: $nx-color-blue-42;
-$nx-link-color-disabled: #97cbee;
+$nx-link-color: #045dd1;
+$nx-link-color-active: #2783fb;
+$nx-link-color-hover: #034396;
+$nx-link-color-disabled: #949494;
 
 $nx-background-color-interactive: #2476c3;
 $nx-background-color-interactive-active: #0046b1;
@@ -101,12 +101,12 @@ $nx-border-row-disabled: 1px solid $nx-grey-1;
 $nx-border-row-dark: 1px solid $nx-grey-5;
 
 // Threat colors
-$nx-threat-color-unspecified: #d9dade;
-$nx-threat-color-none: $nx-light-blue;
-$nx-threat-color-low: $nx-dark-blue;
-$nx-threat-color-moderate: $nx-yellow;
-$nx-threat-color-severe: $nx-orange;
-$nx-threat-color-critical: $nx-dark-red;
+$nx-threat-color-unspecified: #d1d6f0;
+$nx-threat-color-none: #c5deff;
+$nx-threat-color-low: #045dd1;
+$nx-threat-color-moderate: #ffbf27;
+$nx-threat-color-severe: #ff8100;
+$nx-threat-color-critical: #cd0028;
 
 // Threat colors - light variant
 $nx-threat-color-none-light: #d9ecfb;

@@ -5,7 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-container-helpers';
 
 .nx-tab-panel {
-  padding: $nx-spacing-md;
+  @include container-vertical;
+  padding-top: $nx-spacing-l;
 }

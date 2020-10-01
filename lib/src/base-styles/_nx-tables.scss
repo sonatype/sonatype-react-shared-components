@@ -10,13 +10,111 @@
 */
 .nx-table {
   border-spacing: 0;
+  border: 1px solid #d1d6f0;
+  border-radius: $nx-border-radius;
   display: table;
-  height: 1px; // hack to fix threat bars in multi-line cells in FF
   margin: $nx-spacing-sm 0 $nx-spacing-l 0;
+  overflow: hidden;
   width: 100%;
+
+  > tbody > .nx-table-row {
+    > .nx-cell {
+      $border-width: 1px;
+
+      border-width: $border-width;
+      border-color: transparent;
+      border-style: none;
+
+      border-bottom-style: solid;
+      border-bottom-color: #e9e9e9;
+      border-top-style: solid;
+
+      // we want the perceived padding to be the standard spacing size. As the top border is generally invisible,
+      // it should be counted as padding from that perspective
+      padding-top: $nx-spacing-sm - $border-width;
+
+      &:first-child {
+        border-left-style: solid;
+        padding-left: $nx-spacing-md - $border-width;
+      }
+
+      &:last-child {
+        border-right-style: solid;
+        padding-right: $nx-spacing-md - $border-width;
+      }
+
+      // Used for table cells container meta-information such as the fact that the table is empty, or
+      // that the data is loading. These cells are expected to take up the entire row using colspan attributes
+      &.nx-cell--meta-info {
+        padding-top: $nx-spacing-md - 1px;
+        padding-bottom: $nx-spacing-md;
+        text-align: center;
+
+        > * {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+
+    &:last-child {
+      > .nx-cell {
+        border-bottom-style: none;
+      }
+
+      > :first-child {
+        border-bottom-left-radius: $nx-border-radius;
+      }
+
+      > :last-child {
+        border-bottom-right-radius: $nx-border-radius;
+      }
+    }
+
+    &.nx-clickable {
+      &:hover {
+        > .nx-cell {
+          background-color: #f1f3fa;
+        }
+      }
+
+      &.selected, &:active {
+        > .nx-cell {
+          background-color: #d3e6ff;
+        }
+      }
+
+      &:focus {
+        box-shadow: 0 0 3px 1px transparentize(#02a6d9, 0.7);
+        outline: none;
+
+        > .nx-cell {
+          border-color: #02a6d9;
+        }
+      }
+    }
+  }
 }
 
 .nx-table--scrollable {
+  border-style: none;
+  border-radius: 0;
+  overflow: visible;
+
+  // In Chrome (at least), tables are forced to have a whole number of pixels for their width. This means that
+  // if a container has a fractional number of pixels width, the table width will be truncated down and a visible
+  // gap will appear.  This calc ensures that when in a fractional-width container, the table will get an extra
+  // pixel of width
+  width: calc(100% + 0.9999px);
+
+  > thead > :first-child, > tbody > :last-child, {
+    > .nx-cell {
+      &:first-child, &:last-child {
+        border-radius: 0;
+      }
+    }
+  }
+
   // create a stacking context so the headers don't appear over other content outside the table
   position: relative;
   z-index: 0;
@@ -28,91 +126,35 @@
   }
 }
 
-.nx-table-row {
-  &:last-child {
-    .nx-cell:not(.nx-cell--header):not(.nx-error) {
-      border-bottom: $nx-border-row;
-    }
-  }
-
-  &.nx-clickable {
-    &:last-child {
-      &:hover .nx-cell {
-        border-bottom: $nx-border-row-hover;
-      }
-    }
-
-    &:hover {
-      .nx-cell {
-        border-top: $nx-border-row-hover;
-      }
-
-      + .nx-table-row .nx-cell {
-        border-top: $nx-border-row-hover;
-      }
-
-      .nx-cell--label, .nx-cell--chevron {
-        color: $nx-text-color;
-      }
-
-    }
-
-    &:first-child .nx-cell {
-      border-top-style: none;
-    }
-
-    .nx-cell--label {
-      @include semi-bold();
-
-      color: $nx-text-color-light;
-    }
-  }
-}
-
-.nx-table-row--header {
-  border-bottom: $nx-border-row-dark;
+.nx-table--fixed-layout {
+  table-layout: fixed;
 }
 
 .nx-cell {
   @include container-vertical;
   @include container-horizontal;
 
-  background-clip: padding-box;
-  border-top: $nx-border-row;
-  box-sizing: border-box;
-  color: $nx-text-color;
-  display: table-cell;
-  height: 39px; // 38px cell, 1px top border
-  padding: $nx-spacing-xs $nx-spacing-sm;
-  position: relative;
-  text-align: left;
-
-  &.nx-error {
-    border-color: $nx-fail-color-bg;
-    border-bottom-color: $nx-fail-color;
-    color: $nx-text-color-error;
-    text-align: center;
-  }
-}
-
-.nx-cell--header {
-  @include semi-bold;
-  border-bottom: $nx-border-row-dark;
-  background-color: $nx-off-white;
-  border-top: none;
-
-  color: $nx-text-color-light;
-  font-size: 12px;
-  height: 24px;
-  line-height: 12px;
-  text-align: left;
-  text-transform: uppercase;
+  padding: $nx-spacing-sm $nx-spacing-md;
+  vertical-align: top;
 }
 
 .nx-cell--label {
   @include semi-bold();
+}
 
-  color: $nx-text-color;
+.nx-cell--header {
+  @include bold;
+  background-color: #bbc1de;
+  border-top: none;
+  box-sizing: border-box;
+
+  color: $nx-text-color-dark;
+  font-size: $nx-font-size-s;
+  height: 48px;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
 // columns whose content is numerical
@@ -120,31 +162,20 @@
   text-align: center;
 }
 
-// Used when table contents are empty
-.nx-cell--empty {
-  @include regular();
 
-  color: $nx-text-color-light;
+.nx-cell--icon {
+  color: #2c2c2c;
   text-align: center;
 }
 
-// special cells that usually contain a button or indicator - usually on the right side
 .nx-cell--chevron {
-  color: $nx-text-color-light;
-  padding: 0 $nx-spacing-sm;
-  text-align: right;
-  width: 14px;
-  max-width: 32px;
-  min-width: 14px;
-}
+  @extend .nx-cell--icon;
 
-.nx-cell--icon {
-  color: $nx-text-color-light;
-  padding: 0 $nx-spacing-sm;
-  text-align: right;
-  width: 14px;
-  max-width: 32px;
-  min-width: 14px;
+  box-sizing: content-box;
+
+  // this is the width of the chevron svg
+  width: 10px;
+  height: auto;
 }
 
 .nx-cell--sortable {
@@ -153,11 +184,15 @@
 }
 
 .nx-cell__sort-icons {
-  :first-child path {
-    color: $nx-grey-4;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: $nx-spacing-xxs;
+
+  > :first-child path {
+    color: #fff;
   }
 
-  :nth-child(2) path {
-    color: $nx-slate;
+  > :nth-child(2) path {
+    color: #045dd1;
   }
 }

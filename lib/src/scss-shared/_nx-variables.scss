@@ -32,6 +32,9 @@ $nx-spacing-l: 24px;
 $nx-spacing-xl: 32px;
 $nx-spacing-xxl: 64px;
 
+// this variable sets the default spacing between two block level containers/elements like lists, tables, tiles, etc
+$nx-flow-content-spacing: $nx-spacing-l;
+
 /*
   #Typography
 */
