@@ -12,13 +12,13 @@ describe('nx-list', function() {
   });
 
   const simpleSelector = '#nx-list-simple-example .gallery-example-live',
-      clickableSelector = '#nx-list-clickable-example .gallery-example-live',
+      clickableSelector = '#nx-list-clickable-example .nx-list',
       bulletedSelector = '#nx-list-bulleted-example .gallery-example-live',
-      definitionListSelector = '#nx-list-definition-example .gallery-example-live',
-      actionsSelector = '#nx-list-actions-example .gallery-example-live',
-      multiLineSelector = '#nx-list-multi-line-example .gallery-example-live',
-      emptySelector = '#nx-list-empty-example .gallery-example-live',
-      errorSelector = '#nx-list-error-example .gallery-example-live',
+      definitionListSelector = '#nx-list-definition-example .nx-list',
+      actionsSelector = '#nx-list-actions-example .nx-list',
+      multiLineSelector = '#nx-list-multi-line-example .nx-list',
+      emptySelector = '#nx-list-empty-example .nx-list',
+      errorSelector = '#nx-list-error-example .nx-list',
       loadingSelector = '#nx-list-loading-example .nx-list';
 
   describe('Simple nx-list', function() {

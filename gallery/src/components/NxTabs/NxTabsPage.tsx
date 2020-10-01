@@ -113,6 +113,7 @@ export default function NxTabsPage() {
       </GalleryDescriptionTile>
       <GalleryExampleTile title="NxTabs in NxTile Example"
                           id="nx-tab-tile-example"
+                          defaultCheckeredBackground={true}
                           liveExample={NxTabsTileHeaderExample}
                           codeExamples={NxTabsTileHeaderExampleCode}>
         A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
@@ -120,6 +121,7 @@ export default function NxTabsPage() {
       </GalleryExampleTile>
       <GalleryExampleTile title="NxTabs in NxTile with no header Example"
                           id="nx-tab-tile-no-header-example"
+                          defaultCheckeredBackground={true}
                           liveExample={NxTabsTileNoHeaderExample}
                           codeExamples={NxTabsTileNoHeaderExampleCode}>
         A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an

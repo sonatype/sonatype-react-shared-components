@@ -12,8 +12,8 @@ describe('NxCheckbox', function() {
     await browser.url('#/pages/NxCheckbox');
   });
 
-  const selector = '#nx-checkbox-example label:nth-of-type(3)',
-      disabledSelector = '#nx-checkbox-example label:nth-of-type(4)';
+  const selector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(3)',
+      disabledSelector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(4)';
 
   describe('Default NxCheckbox', function() {
     it('has a light grey border and white background by default', simpleTest(selector));
