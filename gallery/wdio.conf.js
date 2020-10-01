@@ -213,6 +213,33 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
     before: function (capabilities, specs) {
+      browser.addCommand('eyesSnapshot', function(title) {
+        return eyes.check(title, Target.window());
+      });
+
+      browser.addCommand('eyesRegionSnapshot', function(title, region) {
+        return eyes.check(title, region);
+      });
+
+      return Promise.resolve();
+    },
+    /**
+     * Runs before a WebdriverIO command gets executed.
+     * @param {String} commandName hook command name
+     * @param {Array} args arguments that command would receive
+     */
+    // beforeCommand: function (commandName, args) {
+    // },
+    /**
+     * Hook that gets executed before the suite starts
+     * @param {Object} suite suite details
+     */
+    // beforeSuite: function (suite) {
+    // },
+    /**
+     * Function to be executed before a test (in Mocha/Jasmine) starts.
+     */
+    beforeTest: async function (test, context) {
       eyes = new Eyes(new ClassicRunner());
 
       const batchId = process.env.GIT_COMMIT,
@@ -253,33 +280,7 @@ exports.config = {
       eyesConf.setViewportSize(new RectangleSize(1366, 1000));
 
       eyes.setConfiguration(eyesConf);
-      browser.addCommand('eyesSnapshot', function(title) {
-        return eyes.check(title, Target.window());
-      });
 
-      browser.addCommand('eyesRegionSnapshot', function(title, region) {
-        return eyes.check(title, region);
-      });
-
-      return Promise.resolve();
-    },
-    /**
-     * Runs before a WebdriverIO command gets executed.
-     * @param {String} commandName hook command name
-     * @param {Array} args arguments that command would receive
-     */
-    // beforeCommand: function (commandName, args) {
-    // },
-    /**
-     * Hook that gets executed before the suite starts
-     * @param {Object} suite suite details
-     */
-    // beforeSuite: function (suite) {
-    // },
-    /**
-     * Function to be executed before a test (in Mocha/Jasmine) starts.
-     */
-    beforeTest: async function (test, context) {
       await eyes.open(browser, undefined, `${test.parent} ${test.title}`);
     },
     /**
