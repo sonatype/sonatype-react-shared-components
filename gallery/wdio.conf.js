@@ -7,13 +7,22 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfigFn = require('./webpack.config.js');
+const axios = require('axios');
 const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, Target } =
     require('@applitools/eyes-webdriverio');
 
 const host = process.env.TEST_IP || 'localhost';
 
-let random = Math.random();
-let eyes;
+const random = Math.random(),
+    gitCommit = process.env.GIT_COMMIT;
+
+
+let batchId = `${gitCommit || 'local'}-${random}`,
+    eyes;
+
+// Prevent the applitools batch from being closed when we call getAllTestResults at the end of each test.
+// We close it manually in onComplete.
+process.env.APPLITOOLS_DONT_CLOSE_BATCHES = 'true';
 
 exports.config = {
     //
@@ -193,8 +202,8 @@ exports.config = {
      * @param  {[type]} execArgv list of string arguments passed to the worker process
      */
     onWorkerStart: function (cid, caps, specs, args, execArgv) {
-      // use same random number for batch id across all workers
-      args.random = random;
+      // use same batchId across all workers
+      args.batchId = batchId;
     },
     /**
      * Gets executed just before initialising the webdriver session and test framework. It allows you
@@ -204,7 +213,7 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
     beforeSession: function (config, capabilities, specs) {
-      random = config.random
+      batchId = config.batchId;
     },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
@@ -242,21 +251,13 @@ exports.config = {
     beforeTest: async function (test, context) {
       eyes = new Eyes(new ClassicRunner());
 
-      const batchId = process.env.GIT_COMMIT,
-          eyesConf = new Configuration();
+      const eyesConf = new Configuration();
 
-      let branchName = process.env.GIT_BRANCH;
+      const branchName = process.env.GIT_BRANCH;
 
-      if (batchId) {
-        const batchInfo = new BatchInfo(branchName);
-        batchInfo.setId(`${batchId}-${random}`);
-        eyesConf.setBatch(batchInfo);
-      }
-      else {
-        const batchInfo = new BatchInfo("local");
-        batchInfo.setId(`local-${random}`);
-        eyesConf.setBatch(batchInfo);
-      }
+      const batchInfo = new BatchInfo(branchName || 'local');
+      batchInfo.setId(batchId);
+      eyesConf.setBatch(batchInfo);
 
       if (branchName) {
         const applitoolsBranchname = `sonatype/sonatype-react-shared-components/${branchName}`;
@@ -352,20 +353,35 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    onComplete: function(exitCode, config) {
-      return new Promise(function(resolve, reject) {
-        console.time('WebpackDevServer Shut Down');
+    onComplete: async function(exitCode, config) {
+      console.time('WebpackDevServer Shut Down');
+      const shutDownWebpackPromise = new Promise(function(resolve, reject) {
         config.webpackServer.close(function(err) {
           if (err) {
             reject(err);
           }
           else {
-            console.timeEnd('WebpackDevServer Shut Down');
-
             resolve();
           }
         });
       });
+
+      const encodedBatchId = encodeURIComponent(batchId),
+          encodedApiKey = encodeURIComponent(process.env.APPLITOOLS_API_KEY),
+          closeBatchUrl = `https://eyesapi.applitools.com/api/sessions/batches/${encodedBatchId}/close/bypointerid/` +
+            `?apiKey=${encodedApiKey}`,
+          deleteBatchPromise = axios.delete(closeBatchUrl);
+
+      await shutDownWebpackPromise;
+      console.timeEnd('WebpackDevServer Shut Down');
+
+      try {
+        await deleteBatchPromise;
+      }
+      catch (e) {
+        console.error('Failure while closing batch', closeBatchUrl);
+        throw e;
+      }
     },
     /**
     * Gets executed when a refresh happens.
