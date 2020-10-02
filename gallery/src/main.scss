@@ -122,3 +122,12 @@
     display: none;
   }
 }
+
+// This media query selects IE11
+@media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  // hide checkered background checkbox in IE since the background doesn't work there (and we don't care to support
+  // it there
+  .gallery-checkered-background-toggle {
+    display: none;
+  }
+}

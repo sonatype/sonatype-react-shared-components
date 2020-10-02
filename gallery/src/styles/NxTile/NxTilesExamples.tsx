@@ -65,6 +65,7 @@ const NxTilesExamples = () =>
 
     <GalleryExampleTile title="NX Tile consisting of a form"
                         id="nx-tile-form-example"
+                        defaultCheckeredBackground={true}
                         liveExample={NxTileFormExample}
                         codeExamples={NxTileFormCode}>
       An example of an <code className="nx-code">nx-tile</code> which solely contains a form.
@@ -72,6 +73,7 @@ const NxTilesExamples = () =>
 
     <GalleryExampleTile title="NX Tile with an NxDropdown in the actions buttons area"
                         id="nx-tile-dropdown-actions-example"
+                        defaultCheckeredBackground={true}
                         liveExample={NxTileDropdownActionsExample}
                         codeExamples={NxTileDropdownActionsCode}>
       An example of a tile with an <code className="nx-code">NxDropdown</code> (or

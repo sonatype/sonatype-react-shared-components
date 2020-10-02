@@ -48,7 +48,9 @@ export const GalleryTile: FunctionComponent<GalleryTileProps> =
           <div className="nx-tile-header__title">
             <h2 className="nx-h2">{title}</h2>
           </div>
-          { actionButtons && <div className="nx-tile-header__actions">{actionButtons}</div> }
+          { actionButtons &&
+            <div className="nx-tile__actions gallery-checkered-background-toggle">{actionButtons}</div>
+          }
         </div>
         <div className={galleryTileClasses}>
           {children}
