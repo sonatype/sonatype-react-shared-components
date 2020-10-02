@@ -13,11 +13,11 @@ const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, Target
 
 const host = process.env.TEST_IP || 'localhost';
 
-const random = Math.random(),
+const timestamp = new Date().getTime(),
     gitCommit = process.env.GIT_COMMIT;
 
 
-let batchId = `${gitCommit || 'local'}-${random}`,
+let batchId = `${gitCommit || 'local'}-${timestamp}`,
     eyes;
 
 // Prevent the applitools batch from being closed when we call getAllTestResults at the end of each test.
