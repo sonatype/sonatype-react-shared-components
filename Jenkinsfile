@@ -135,6 +135,7 @@ dockerizedBuildPipeline(
   },
   onFailure: {
     githubStatusUpdate('failure')
+    sendEmailNotification(currentBuild, env, [[$class: 'RequesterRecipientProvider']], null)
   },
   cleanup: {
     sh """
