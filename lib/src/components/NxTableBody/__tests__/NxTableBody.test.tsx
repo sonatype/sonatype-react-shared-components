@@ -58,6 +58,9 @@ describe('NxTableBody', function () {
 
     expect(shallow(<NxTableBody emptyMessage="Empty message" columns={1}></NxTableBody>))
         .toContainReact(emptyMessage);
+
+    expect(shallow(<NxTableBody emptyMessage="Empty message" columns={1}>{[]}</NxTableBody>))
+        .toContainReact(emptyMessage);
   });
 
   it('does not show the emptyMessage when there are children', function () {
