@@ -17,7 +17,7 @@ const timestamp = new Date().getTime(),
     gitCommit = process.env.GIT_COMMIT;
 
 
-let batchId = `${gitCommit || 'local'}-${timestamp}`,
+let batchId = gitCommit || `local-${timestamp}`,
     eyes;
 
 // Prevent the applitools batch from being closed when we call getAllTestResults at the end of each test.
