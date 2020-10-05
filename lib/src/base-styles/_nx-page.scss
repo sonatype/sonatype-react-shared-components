@@ -11,7 +11,6 @@
 
   .nx-h1 {
     display: inline-block;
-    font-size: 26px;
     margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -23,13 +22,11 @@
 
 .nx-page-title__page-icon {
   display: inline-block;
-  font-size: 26px;
   vertical-align: middle;
 }
 
 .nx-page-title__description {
   @include container-vertical;
-  line-height: 16px;
   margin: 8px 0 0 0;
   max-width: $nx-paragraph-width-maximum;
 }
