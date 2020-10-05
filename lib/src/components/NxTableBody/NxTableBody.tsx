@@ -14,7 +14,8 @@ import NxLoadError from '../NxLoadError/NxLoadError';
 export {Props} from './types';
 
 const NxTableBody = function NxTableBody(props: Props) {
-  const {isLoading = false, emptyMessage, error, columns, children, retryHandler, ...attrs} = props;
+  const {isLoading = false, emptyMessage, error, columns, children, retryHandler, ...attrs} = props,
+      isEmpty = !React.Children.count(children);
 
   if (isLoading && !columns) {
     console.warn('columns is required when isLoading is set, this should have been determined automatically');
@@ -24,7 +25,7 @@ const NxTableBody = function NxTableBody(props: Props) {
     console.warn('columns is required when error is set, this should have been determined automatically');
   }
 
-  if (!React.Children.count(children) && !isLoading && !error) {
+  if (isEmpty && !isLoading && !error) {
     if (!emptyMessage) {
       console.warn('emptyMessage is required when no rows are to be rendered');
     }
@@ -61,7 +62,7 @@ const NxTableBody = function NxTableBody(props: Props) {
       {isLoading && loadingSpinnerRow}
       {!!error && !isLoading && errorRow}
       {!isLoading && !error && children}
-      {!(isLoading || error || children) && emptyMessageRow}
+      {!(isLoading || error) && isEmpty && emptyMessageRow}
     </tbody>
   );
 };
