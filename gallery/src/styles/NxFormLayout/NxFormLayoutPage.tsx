@@ -16,8 +16,6 @@ const NxFormLayoutCode = require('!!raw-loader!./NxFormLayoutExample').default;
 const NxFormHorizontalLayoutCode = require('!!raw-loader!./NxFormHorizontalLayoutExample').default;
 const NxFormInlineLayoutCode = require('!!raw-loader!./NxFormInlineLayoutExample').default;
 
-
-
 const NxFormLayoutPage = () =>
   <>
     <GalleryDescriptionTile>
