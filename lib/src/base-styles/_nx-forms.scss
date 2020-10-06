@@ -81,3 +81,18 @@
   margin: 0 0 $nx-spacing-xl 0;
   padding: 0;
 }
+
+// Inline form group
+.nx-form-group--inline {
+  .nx-text-input {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .nx-btn {
+    display: inline-block;
+    margin-left: $nx-spacing-l;
+    vertical-align: top;
+  }
+}
+
