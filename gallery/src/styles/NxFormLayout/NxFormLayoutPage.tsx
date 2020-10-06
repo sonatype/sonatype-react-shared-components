@@ -10,9 +10,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxFormLayoutExample from './NxFormLayoutExample';
 import NxFormHorizontalLayoutExample from './NxFormHorizontalLayoutExample';
+import NxFormInlineLayoutExample from './NxFormInlineLayoutExample';
 
 const NxFormLayoutCode = require('!!raw-loader!./NxFormLayoutExample').default;
 const NxFormHorizontalLayoutCode = require('!!raw-loader!./NxFormHorizontalLayoutExample').default;
+const NxFormInlineLayoutCode = require('!!raw-loader!./NxFormInlineLayoutExample').default;
 
 const NxFormLayoutPage = () =>
   <>
@@ -129,6 +131,13 @@ const NxFormLayoutPage = () =>
       This example demonstrates a form layout with horizontally placed text input fields. Note that the checkbox and
       radio fieldsets remain vertically separated, they should not be placed side-by-side. This example also
       demonstrates the use of an <code className="nx-code">NxErrorAlert</code> in the footer.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Inline form layout"
+                        id="nx-form-layout-inline-example"
+                        liveExample={NxFormInlineLayoutExample}
+                        codeExamples={NxFormInlineLayoutCode}>
+      This example demonstrates a form layout with the submit button placed inline with a text input field.
     </GalleryExampleTile>
   </>;
 
