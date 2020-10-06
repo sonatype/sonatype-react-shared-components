@@ -94,13 +94,13 @@ const NxTextInput = forwardRef<TextInputElement, Props>(
         }
       }
 
-      function inputOnChange(e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
+      function inputOnChange(e: FormEvent<TextInputElement>) {
         if (onChange) {
           onChange(e.currentTarget.value);
         }
       }
 
-      function inputOnKeyPress(e: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) {
+      function inputOnKeyPress(e: KeyboardEvent<TextInputElement>) {
         if (onKeyPress) {
           onKeyPress(e.key);
         }
