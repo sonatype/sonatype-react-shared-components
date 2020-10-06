@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, FormEvent, KeyboardEvent } from 'react';
+import React, { forwardRef, FormEvent, KeyboardEvent, useRef } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -63,6 +63,12 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
             'nx-text-input--textarea': isTextArea
           });
 
+      const setFocusToInput = () => {
+        if (ref.current) {
+          ref.current.focus();
+        }
+      };
+
       function inputOnChange(e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
         if (onChange) {
           onChange(e.currentTarget.value);
@@ -77,7 +83,7 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
 
       return (
         <div className={internalClassName}>
-          <div className="nx-text-input__box">
+          <div className="nx-text-input__box" onClick={setFocusToInput}>
             {React.createElement(element, {
               ...newProps,
               disabled,
