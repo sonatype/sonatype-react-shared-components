@@ -5,9 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { FormEvent } from 'react';
+import {faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
 
 import { NxButton } from '@sonatype/react-shared-components';
 import { NxStatefulTextInput } from '@sonatype/react-shared-components';
+import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
@@ -21,12 +23,29 @@ export default function NxFormLayoutExample() {
 
   return (
     <form className="nx-form" onSubmit={onSubmit}>
-      <div className="nx-form-group nx-form-group--inline">
-        <label className="nx-label">
-          <span className="nx-label__text">Label</span>
-          <NxStatefulTextInput validator={validator}/>
+      <div className="nx-form-row--inline-form">
+        <div className="nx-form-group">
+          <label className="nx-label">
+            <span className="nx-label__text">Label</span>
+            <NxStatefulTextInput validator={validator}/>
+          </label>
+        </div>
+        <div className="nx-form-group nx-form-group--button-only">
           <NxButton variant="primary" type="submit">Submit</NxButton>
-        </label>
+        </div>
+      </div>
+      <div className="nx-form-row--inline-form">
+        <div className="nx-form-group">
+          <label className="nx-label">
+            <span className="nx-label__text">Label</span>
+            <span className="nx-sub-label">This is a sub-label.</span>
+            <NxStatefulTextInput validator={validator}/>
+          </label>
+        </div>
+        <div className="nx-form-group nx-form-group--button-only">
+          <NxButton><NxFontAwesomeIcon icon={faPlus}/></NxButton>
+          <NxButton><NxFontAwesomeIcon icon={faMinus}/></NxButton>
+        </div>
       </div>
     </form>
   );

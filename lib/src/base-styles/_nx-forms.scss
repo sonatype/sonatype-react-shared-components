@@ -83,16 +83,18 @@
 }
 
 // Inline form group
-.nx-form-group--inline {
-  .nx-text-input {
-    display: inline-block;
-    vertical-align: top;
-  }
+.nx-form-row--inline-form {
+  display: flex;
 
-  .nx-btn {
-    display: inline-block;
+  .nx-form-group--button-only {
+    @include container-horizontal;
+
+    align-items: flex-end;
+    display: flex;
+    flex-shrink: 1;
     margin-left: $nx-spacing-l;
-    vertical-align: top;
+    // bottom padding to compensate for the form field's validation message
+    padding-bottom: $nx-spacing-l;
   }
 }
 
