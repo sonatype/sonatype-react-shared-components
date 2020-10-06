@@ -19,12 +19,17 @@
 
 .nx-form-row {
   @include container-horizontal;
+  align-items: flex-end;
+  display: flex;
   margin-bottom: $nx-spacing-xs;
 
   .nx-form-group {
-    display: inline-block;
     margin-right: $nx-spacing-l;
     margin-bottom: 0;
+  }
+
+  .nx-btn-bar {
+    margin-bottom: $nx-spacing-l;
   }
 }
 
@@ -81,20 +86,3 @@
   margin: 0 0 $nx-spacing-xl 0;
   padding: 0;
 }
-
-// Inline form group
-.nx-form-row--inline-form {
-  display: flex;
-
-  .nx-form-group--button-only {
-    @include container-horizontal;
-
-    align-items: flex-end;
-    display: flex;
-    flex-shrink: 1;
-    margin-left: $nx-spacing-l;
-    // bottom padding to compensate for the form field's validation message
-    padding-bottom: $nx-spacing-l;
-  }
-}
-

@@ -23,18 +23,18 @@ export default function NxFormLayoutExample() {
 
   return (
     <form className="nx-form" onSubmit={onSubmit}>
-      <div className="nx-form-row--inline-form">
+      <div className="nx-form-row">
         <div className="nx-form-group">
           <label className="nx-label">
             <span className="nx-label__text">Label</span>
             <NxStatefulTextInput validator={validator}/>
           </label>
         </div>
-        <div className="nx-form-group nx-form-group--button-only">
+        <div className="nx-btn-bar">
           <NxButton variant="primary" type="submit">Submit</NxButton>
         </div>
       </div>
-      <div className="nx-form-row--inline-form">
+      <div className="nx-form-row">
         <div className="nx-form-group">
           <label className="nx-label">
             <span className="nx-label__text">Label</span>
@@ -42,7 +42,7 @@ export default function NxFormLayoutExample() {
             <NxStatefulTextInput validator={validator}/>
           </label>
         </div>
-        <div className="nx-form-group nx-form-group--button-only">
+        <div className="nx-btn-bar">
           <NxButton><NxFontAwesomeIcon icon={faPlus}/></NxButton>
           <NxButton><NxFontAwesomeIcon icon={faMinus}/></NxButton>
         </div>
