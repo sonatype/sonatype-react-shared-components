@@ -68,6 +68,7 @@ import NxCodePage from './styles/NxCode/NxCodePage';
 import StylingComponentsPage from './pages/StylingComponents';
 import AdditionalResourcePage from './pages/AdditionalResources';
 import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
+import NxCardPage from './styles/NxCard/NxCardPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -115,6 +116,7 @@ const pageConfig: PageConfig = {
   'Styles - HTML Elements': {
     'nx-alert': NxAlertPage,
     'nx-btn': NxBtnPage,
+    'nx-card': NxCardPage,
     'nx-code': NxCodePage,
     'nx-counter': NxCounterPage,
     'nx-grid': NxGridPage,

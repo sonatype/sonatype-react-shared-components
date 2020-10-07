@@ -1,0 +1,121 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+.nx-card-container {
+  display: flex;
+  margin-bottom: $nx-spacing-md;
+}
+.nx-card-container--row {
+  @include container-horizontal;
+}
+
+.nx-card-container--column {
+  @include container-vertical;
+
+  flex-direction: column;
+}
+
+.nx-card {
+  background-color: #fff;
+  border-radius: $nx-border-radius;
+  box-sizing: border-box;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+  grid-template-columns: auto;
+  -ms-grid-rows: auto auto auto;
+  grid-template-areas:
+    "card-title"
+    "card-content"
+    "card-footer";
+  margin: 0 $nx-spacing-md 0 0;
+  padding: $nx-spacing-l 48px;
+  min-width: 230px;
+  max-width: 330px;
+}
+
+.nx-card-header {
+  @include container-vertical;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: card-title;
+  margin-bottom: $nx-spacing-md;
+  text-align: center;
+}
+
+.nx-card-content {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: card-content;
+  text-align: center;
+}
+
+.nx-card__call-out {
+  display: inline-block;
+  margin: 0 $nx-spacing-sm $nx-spacing-md $nx-spacing-sm;
+  text-align: center;
+
+  .nx-icon {
+    // translates to 48px;
+    font-size: 3em;
+  }
+
+  .nx-icon--large {
+    // translates to 64px;
+    font-size: 4em;
+  }
+}
+
+.nx-call__call-out-text {
+  @include bold();
+
+  font-size: 32px;
+}
+
+.nx-card__text {
+  display: inline-block;
+  margin: 0 $nx-spacing-sm $nx-spacing-md $nx-spacing-sm;
+  text-align: center;
+}
+
+.nx-card-footer {
+  border-top: 1px solid #d1d6f0;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: card-footer;
+  margin-top: $nx-spacing-xs;
+  padding-top: $nx-spacing-l;
+  text-align: center;
+}
+
+.nx-card--horizontal {
+  margin: $nx-spacing-md 0;
+  width: 100%;
+  max-width: 100%;
+
+  .nx-card-header {
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  .nx-card__text {
+    margin: $nx-spacing-md $nx-spacing-xs;
+    text-align: left;
+  }
+
+  .nx-card__call-out {
+    margin: $nx-spacing-md $nx-spacing-xs;
+    text-align: center;
+  }
+
+  .nx-card-footer {
+    border-top: none;
+    border-left: 1px solid #d1d6f0;
+    padding: 0 0 0 48px;
+    text-align: center;
+  }
+}
