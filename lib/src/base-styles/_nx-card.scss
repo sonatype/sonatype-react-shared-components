@@ -48,15 +48,23 @@
 }
 
 .nx-card-content {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  //justify-content: space-between;
+  column-gap: 24px;
+
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: card-content;
+
   text-align: center;
 }
 
 .nx-card__call-out {
   display: inline-block;
-  margin: 0 $nx-spacing-sm $nx-spacing-md $nx-spacing-sm;
+  flex-grow: 1;
+  margin-bottom: $nx-spacing-md;
   text-align: center;
 
   .nx-icon {
@@ -78,7 +86,8 @@
 
 .nx-card__text {
   display: inline-block;
-  margin: 0 $nx-spacing-sm $nx-spacing-md $nx-spacing-sm;
+  flex-grow: 1;
+  margin-bottom: $nx-spacing-md;
   text-align: center;
 }
 
@@ -93,28 +102,67 @@
 }
 
 .nx-card--horizontal {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+  grid-template-columns: auto 1fr auto;
+  -ms-grid-rows: auto auto;
+  grid-template-areas:
+    "card-callout card-title card-footer"
+    "card-callout card-text card-footer";
+
   margin: $nx-spacing-md 0;
   width: 100%;
   max-width: 100%;
 
   .nx-card-header {
-    margin-bottom: 0;
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: card-title;
+
+    margin-bottom: $nx-spacing-md;
     text-align: left;
   }
 
+  .nx-card-content {
+    background: #f00;
+  }
+
   .nx-card__text {
-    margin: $nx-spacing-md $nx-spacing-xs;
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: card-text;
+
+    margin: 0;
     text-align: left;
   }
 
   .nx-card__call-out {
-    margin: $nx-spacing-md $nx-spacing-xs;
+    border-right: 1px solid #d1d6f0;
+
+    align-self: center;
+    -ms-grid-row: 1 / 2;
+    -ms-grid-column: 1;
+    grid-area: card-callout;
+    justify-self: start;
+
+    margin: $nx-spacing-md 48px;
+    padding-right: 48px;
     text-align: center;
   }
 
   .nx-card-footer {
     border-top: none;
     border-left: 1px solid #d1d6f0;
+
+    align-self: center;
+    -ms-grid-row: 1 / 2;
+    -ms-grid-column: 3;
+    grid-area: card-footer;
+    justify-self: end;
+
+    border-top: none;
+    margin-left: 48px;
     padding: 0 0 0 48px;
     text-align: center;
   }

@@ -14,37 +14,85 @@ export default function NxCardVerticalExample() {
     <div className="nx-card-container nx-card-container--column">
       <div className="nx-card nx-card--horizontal">
         <header className="nx-card-header">
-          <h3 className="nx-h3 nx-h3--card-header">Card header</h3>
+          <h3 className="nx-h3">Header</h3>
         </header>
-        <div className="nx-card__call-out">
-          <span className="nx-call__call-out-text">XXXXX%</span>
-        </div>
-        <div className="nx-card__text">
-          Descriptive text
+        <div className="nx-card-content">
+          <div className="nx-card__call-out">
+            <span className="nx-call__call-out-text">42</span>
+          </div>
+          <div className="nx-card__text">
+            Text
+          </div>
         </div>
         <footer className="nx-card-footer"><a href="nx-link">Link</a></footer>
       </div>
       <div className="nx-card nx-card--horizontal">
         <header className="nx-card-header">
-          <h3 className="nx-h3 nx-h3--card-header">Card header</h3>
+          <h3 className="nx-h3">Card header</h3>
         </header>
-        <div className="nx-card__call-out">
-          <NxFontAwesomeIcon icon={faShapes}/>
-        </div>
-        <div className="nx-card__text">
-          Descriptive text
+        <div className="nx-card-content">
+          <div className="nx-card__call-out">
+            <NxFontAwesomeIcon icon={faShapes}/>
+          </div>
+          <div className="nx-card__text">
+            Data point details
+          </div>
         </div>
         <footer className="nx-card-footer"><a href="nx-link">Link</a></footer>
       </div>
       <div className="nx-card nx-card--horizontal">
         <header className="nx-card-header">
-          <h3 className="nx-h3 nx-h3--card-header">Card header</h3>
+          <h3 className="nx-h3">Card header</h3>
         </header>
-        <div className="nx-card__call-out">
-          <span className="nx-call__call-out-text">XXXXX%</span>
+        <div className="nx-card-content">
+          <div className="nx-card__call-out">
+            <span className="nx-call__call-out-text">XX%</span>
+          </div>
+          <div className="nx-card__text">
+            Descriptive text
+          </div>
         </div>
-        <div className="nx-card__text">
-          Descriptive text
+        <footer className="nx-card-footer"><a href="nx-link">Link</a></footer>
+      </div>
+      <div className="nx-card nx-card--horizontal">
+        <header className="nx-card-header">
+          <h3 className="nx-h3">Card header</h3>
+        </header>
+        <div className="nx-card-content">
+          <div className="nx-card__call-out">
+            <span className="nx-call__call-out-text">XXX%</span>
+          </div>
+          <div className="nx-card__text">
+            Descriptive text
+          </div>
+        </div>
+        <footer className="nx-card-footer"><a href="nx-link">Link</a></footer>
+      </div>
+      <div className="nx-card nx-card--horizontal">
+        <header className="nx-card-header">
+          <h3 className="nx-h3">Card header</h3>
+        </header>
+        <div className="nx-card-content">
+          <div className="nx-card__call-out">
+            <span className="nx-call__call-out-text">XXXX%</span>
+          </div>
+          <div className="nx-card__text">
+            Descriptive text
+          </div>
+        </div>
+        <footer className="nx-card-footer"><a href="nx-link">Link</a></footer>
+      </div>
+      <div className="nx-card nx-card--horizontal">
+        <header className="nx-card-header">
+          <h3 className="nx-h3">Card header</h3>
+        </header>
+        <div className="nx-card-content">
+          <div className="nx-card__call-out">
+            <span className="nx-call__call-out-text">XXXXX%</span>
+          </div>
+          <div className="nx-card__text">
+            Descriptive text
+          </div>
         </div>
         <footer className="nx-card-footer"><a href="nx-link">Link</a></footer>
       </div>
