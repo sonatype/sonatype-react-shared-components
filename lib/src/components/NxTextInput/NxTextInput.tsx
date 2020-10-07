@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, FormEvent, KeyboardEvent } from 'react';
+import React, { forwardRef, FormEvent, KeyboardEvent, useRef, MutableRefObject } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +15,8 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 export { Props, propTypes, inputTypes } from './types';
+
+type TextInputElement = HTMLInputElement | HTMLTextAreaElement;
 
 /**
  * Standard text input with validation styling
@@ -28,8 +30,8 @@ export { Props, propTypes, inputTypes } from './types';
  * @param onKeyPress A callback for when the user presses a key that doesn't necessarily change the input value
  *    (e.g. by hitting enter)
  */
-const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
-    function NxTextInput(props, ref) {
+const NxTextInput = forwardRef<TextInputElement, Props>(
+    function NxTextInput(props, forwardedRef) {
       const {
         type,
         isPristine,
@@ -63,13 +65,42 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
             'nx-text-input--textarea': isTextArea
           });
 
-      function inputOnChange(e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
+      const inputRef: MutableRefObject<TextInputElement | null> = useRef<TextInputElement>(null);
+
+      /*
+       * We have two different refs that we want set to the <input>: the forwarded one
+       * and the one we use internally for setting the focus. We can't just use the forwarded one
+       * to manage the focus, because it isn't guaranteed to be an object with a `current` prop, it could actually
+       * be a function instead. So what we have to do is pass this refSetter function to the <input>, which handles
+       * setting both the forwarded and the internal ref.
+       * Inspired by: https://stackoverflow.com/a/62238917
+       */
+      function refSetter(el: TextInputElement) {
+        inputRef.current = el;
+
+        if (typeof forwardedRef === 'function') {
+          forwardedRef(el);
+        }
+        else if (forwardedRef) {
+          (forwardedRef as MutableRefObject<TextInputElement>).current = el;
+        }
+      }
+
+      // when the box padding is clicked, set the focus to the <input> as that's what the user thought
+      // they were clicking
+      function setFocusToInput() {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }
+
+      function inputOnChange(e: FormEvent<TextInputElement>) {
         if (onChange) {
           onChange(e.currentTarget.value);
         }
       }
 
-      function inputOnKeyPress(e: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) {
+      function inputOnKeyPress(e: KeyboardEvent<TextInputElement>) {
         if (onKeyPress) {
           onKeyPress(e.key);
         }
@@ -77,11 +108,11 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
 
       return (
         <div className={internalClassName}>
-          <div className="nx-text-input__box">
+          <div className="nx-text-input__box" onClick={setFocusToInput}>
             {React.createElement(element, {
               ...newProps,
               disabled,
-              ref,
+              ref: refSetter,
               type: typeAttr,
               onChange: inputOnChange,
               className: 'nx-text-input__input',
