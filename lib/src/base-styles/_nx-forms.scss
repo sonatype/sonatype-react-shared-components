@@ -19,12 +19,18 @@
 
 .nx-form-row {
   @include container-horizontal;
+  align-items: flex-end;
+  display: flex;
   margin-bottom: $nx-spacing-xs;
 
   .nx-form-group {
-    display: inline-block;
     margin-right: $nx-spacing-l;
     margin-bottom: 0;
+  }
+
+  .nx-btn-bar {
+    margin-top: 0;
+    margin-bottom: $nx-spacing-l;
   }
 }
 
