@@ -18,25 +18,22 @@ const NxCardPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        Standard name spaced alert styles. Note that these examples are shown in react as each style includes
-        specific icons. When working in React, <code className="nx-code">NxFontAwesomeIcon</code> should be used
-        as shown to get these icons (or preferably the <code className="nx-code">NxAlert</code> React component and
-        its variations should be used). When not working in react, check the FontAwesome 5 documentation for alternative
-        ways to include the icons. Alerts should generally include Close buttons or another way to dismiss themselves.
-        In this example standard Close button styling is provided by <code className="nx-code">NxCloseButton</code>.
+        Cards can be displayed in two orientations, horizontal and vertical.
       </p>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Information alert"
                         liveExample={NxCardVerticalExample}
-                        codeExamples={nxCardVerticalCode}>
-      An <code className="nx-code">nx-alert</code> demonstrating information styles.
+                        codeExamples={nxCardVerticalCode}
+                        defaultCheckeredBackground={true}>
+      Cards shown in vertical orientation.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Success alert"
                         liveExample={NxCardHorizontalExample}
-                        codeExamples={nxCardHorizontalCode}>
-      An <code className="nx-code">nx-alert</code> demonstrating success styles.
+                        codeExamples={nxCardHorizontalCode}
+                        defaultCheckeredBackground={true}>
+      Cards shown in horizontal orientation.
     </GalleryExampleTile>
 
   </>;

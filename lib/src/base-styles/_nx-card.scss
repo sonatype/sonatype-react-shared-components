@@ -34,38 +34,41 @@
     "card-footer";
   margin: 0 $nx-spacing-md 0 0;
   padding: $nx-spacing-l 48px;
+  text-align: center;
   min-width: 230px;
   max-width: 330px;
 }
 
 .nx-card-header {
   @include container-vertical;
+  -ms-flex-align: start;
+  align-self: start;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: card-title;
   margin-bottom: $nx-spacing-md;
-  text-align: center;
 }
 
-.nx-card-content {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  //justify-content: space-between;
-  column-gap: 24px;
+.nx-card--vertical {
+  .nx-card-content {
+    -ms-flex-align: center;
+    align-items: center;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    column-gap: 24px;
 
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  grid-area: card-content;
-
-  text-align: center;
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: card-content;
+  }
 }
 
 .nx-card__call-out {
   display: inline-block;
   flex-grow: 1;
+  gap: $nx-spacing-l;
   margin-bottom: $nx-spacing-md;
-  text-align: center;
 
   .nx-icon {
     // translates to 48px;
@@ -88,17 +91,17 @@
   display: inline-block;
   flex-grow: 1;
   margin-bottom: $nx-spacing-md;
-  text-align: center;
 }
 
 .nx-card-footer {
+  -ms-flex-align: end;
+  align-self: end;
   border-top: 1px solid #d1d6f0;
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: card-footer;
   margin-top: $nx-spacing-xs;
   padding-top: $nx-spacing-l;
-  text-align: center;
 }
 
 .nx-card--horizontal {
@@ -112,8 +115,23 @@
     "card-callout card-text card-footer";
 
   margin: $nx-spacing-md 0;
+  text-align: left;
   width: 100%;
   max-width: 100%;
+
+  .nx-card-content {
+    -ms-flex-align: stretch;
+    align-self: stretch;
+    -ms-grid-row: 1 / 2;
+    -ms-grid-column: 2;
+    grid-row: 1 / 2;
+    grid-column: 2;
+
+    border-right: 1px solid #d1d6f0;
+    border-left: 1px solid #d1d6f0;
+    margin: 0 48px;
+    padding: 0 48px;
+  }
 
   .nx-card-header {
     -ms-grid-row: 1;
@@ -121,11 +139,6 @@
     grid-area: card-title;
 
     margin-bottom: $nx-spacing-md;
-    text-align: left;
-  }
-
-  .nx-card-content {
-    background: #f00;
   }
 
   .nx-card__text {
@@ -134,36 +147,32 @@
     grid-area: card-text;
 
     margin: 0;
-    text-align: left;
   }
 
   .nx-card__call-out {
-    border-right: 1px solid #d1d6f0;
-
+    -ms-flex-align: center;
     align-self: center;
     -ms-grid-row: 1 / 2;
     -ms-grid-column: 1;
     grid-area: card-callout;
     justify-self: start;
 
-    margin: $nx-spacing-md 48px;
-    padding-right: 48px;
-    text-align: center;
+    margin: 0;
+    padding-right: 0;
   }
 
   .nx-card-footer {
-    border-top: none;
-    border-left: 1px solid #d1d6f0;
-
+    -ms-flex-align: center;
     align-self: center;
     -ms-grid-row: 1 / 2;
     -ms-grid-column: 3;
     grid-area: card-footer;
-    justify-self: end;
+    -ms-grid-column-align: center;
+    justify-self: center;
 
-    border-top: none;
-    margin-left: 48px;
-    padding: 0 0 0 48px;
-    text-align: center;
+    border: none;
+    margin: 0;
+    padding: 0;
+    max-width: 150px;
   }
 }
