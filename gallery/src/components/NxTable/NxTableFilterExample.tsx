@@ -27,7 +27,6 @@ const NxTableFilterExample = () => {
 
   const [rows, setRows] = useState(initialState);
   const [filter, setFilter] = useState('');
-  const [filterDropdown, setFilterDropdown] = useState<string>('');
 
   function getCountries(list: { name: string; country: string }[]) {
     return list.map((state: any) => {
@@ -63,7 +62,6 @@ const NxTableFilterExample = () => {
         //set dropdown title
       }
     }
-    setFilterDropdown(filterDropdown);
   };
 
   return (
@@ -83,7 +81,6 @@ const NxTableFilterExample = () => {
             <NxTableCell isFilterDropdown
                          initialFilterDropdownLabel='Select a country'
                          filterDropdownOptions={optionsDropdown}
-                         filterDropdown={filterDropdown}
                          onDropdownLinkChange={onDropdownLinkChange}
                          >
             </NxTableCell>

@@ -18,7 +18,7 @@ import { Props, propTypes } from './types';
 export { Props } from './types';
 
 const NxTableCell = function NxTableCell(props: Props) {
-  let {
+  const {
     isHeader = false,
     metaInfo = false,
     isNumeric = false,
@@ -33,7 +33,6 @@ const NxTableCell = function NxTableCell(props: Props) {
     children,
     filterPlaceholder,
     filter,
-    filterDropdown,
     initialFilterDropdownLabel,
     onFilterChange,
     filterDropdownOptions,
@@ -84,8 +83,7 @@ const NxTableCell = function NxTableCell(props: Props) {
   const onDropdownLinkClick = (item: string) => {
     if (onDropdownLinkChange) {
       onDropdownLinkChange(item);
-      filterDropdown = item;
-      setFilterDropdownLabel(filterDropdown);
+      setFilterDropdownLabel(item);
     }
   };
 
