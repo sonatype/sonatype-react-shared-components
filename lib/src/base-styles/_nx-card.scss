@@ -7,7 +7,7 @@
 
 .nx-card-container {
   display: flex;
-  margin-bottom: $nx-spacing-md;
+  margin-bottom: $nx-spacing-md 0 $nx-spacing-l 0;
 }
 .nx-card-container--row {
   @include container-horizontal;
@@ -23,53 +23,40 @@
   background-color: #fff;
   border-radius: $nx-border-radius;
   box-sizing: border-box;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto;
-  grid-template-columns: auto;
-  -ms-grid-rows: auto auto auto;
-  grid-template-areas:
-    "card-title"
-    "card-content"
-    "card-footer";
-  margin: 0 $nx-spacing-md 0 0;
   padding: $nx-spacing-l $nx-spacing-xxl;
-  text-align: center;
-  min-width: 230px;
-  max-width: 330px;
-}
-
-.nx-card-header {
-  @include container-vertical;
-  -ms-flex-align: start;
-  align-self: start;
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: card-title;
-  margin-bottom: $nx-spacing-md;
 }
 
 .nx-card--vertical {
-  .nx-card-content {
-    -ms-flex-align: center;
-    align-items: center;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    column-gap: 24px;
+  display: flex;
+  flex-direction: column;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 $nx-spacing-md 0 0;
+  text-align: center;
+  min-width: 230px;
+  max-width: 330px;
 
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
-    grid-area: card-content;
+  .nx-card-header {
+    @include container-vertical;
+    margin-bottom: $nx-spacing-md;
+  }
+
+  .nx-card__call-out {
+    margin-bottom: $nx-spacing-xs;
+  }
+
+  .nx-card__text {
+    margin-bottom: $nx-spacing-l;
+  }
+
+  .nx-card-footer {
+    border-top: 1px solid #d1d6f0;
+    padding-top: $nx-spacing-l;
+    width: 100%;
   }
 }
 
 .nx-card__call-out {
-  display: inline-block;
-  flex-grow: 1;
-  gap: $nx-spacing-l;
-  margin-bottom: $nx-spacing-md;
-
   .nx-icon {
     font-size: 48px;
   }
@@ -85,27 +72,11 @@
   font-size: 32px;
 }
 
-.nx-card__text {
-  display: inline-block;
-  flex-grow: 1;
-  margin-bottom: $nx-spacing-md;
-}
-
-.nx-card-footer {
-  -ms-flex-align: end;
-  align-self: end;
-  border-top: 1px solid #d1d6f0;
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  grid-area: card-footer;
-  margin-top: $nx-spacing-xs;
-  padding-top: $nx-spacing-l;
-}
 
 .nx-card--horizontal {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: auto;
+  -ms-grid-columns: auto 1fr auto;
   grid-template-columns: auto 1fr auto;
   -ms-grid-rows: auto auto;
   grid-template-areas:
@@ -115,18 +86,17 @@
   margin: $nx-spacing-md 0;
   text-align: left;
   width: 100%;
-  max-width: 100%;
-
-  .nx-card-content {
-    display: contents;
-  }
 
   .nx-card-header {
     -ms-grid-row: 1;
     -ms-grid-column: 2;
     grid-area: card-title;
 
-    margin-bottom: $nx-spacing-md;
+    @include container-vertical;
+    border-right: 1px solid #d1d6f0;
+    border-left: 1px solid #d1d6f0;
+    margin: 0;
+    padding: 0 $nx-spacing-xxl $nx-spacing-md $nx-spacing-xxl;
   }
 
   .nx-card__text {
@@ -134,35 +104,40 @@
     -ms-grid-column: 2;
     grid-area: card-text;
 
+    border-right: 1px solid #d1d6f0;
+    border-left: 1px solid #d1d6f0;
     margin: 0;
+    padding: 0 $nx-spacing-xxl;
   }
 
   .nx-card__call-out {
-    -ms-flex-align: center;
+    -ms-grid-row-align: center;
     align-self: center;
-    -ms-grid-row: 1 / 2;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
     -ms-grid-column: 1;
     grid-area: card-callout;
-    justify-self: start;
+    -ms-grid-column-align: center;
+    justify-self: center;
 
-    border-right: 1px solid #d1d6f0;
-    margin: 0 $nx-spacing-xxl 0 0;
+    margin: 0;
     padding: 0 $nx-spacing-xxl 0 0;
   }
 
   .nx-card-footer {
-    -ms-flex-align: center;
+    -ms-grid-row-align: center;
     align-self: center;
-    -ms-grid-row: 1 / 2;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
     -ms-grid-column: 3;
     grid-area: card-footer;
-    -ms-grid-column-align: center;
-    justify-self: center;
+    -ms-grid-column-align: start;
+    justify-self: start;
 
     border: none;
-    border-left: 1px solid #d1d6f0;
-    margin: 0 0 0 $nx-spacing-xxl;
+    margin: 0;
     padding: 0 0 0 $nx-spacing-xxl;
+    // necessary to make the link wrap
     max-width: 150px;
   }
 }
