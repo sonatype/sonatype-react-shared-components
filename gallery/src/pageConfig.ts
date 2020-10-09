@@ -68,6 +68,7 @@ import NxCodePage from './styles/NxCode/NxCodePage';
 import StylingComponentsPage from './pages/StylingComponents';
 import AdditionalResourcePage from './pages/AdditionalResources';
 import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
+import NxPaginationPage from './styles/NxPagination/NxPaginationPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -121,6 +122,7 @@ const pageConfig: PageConfig = {
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
     'nx-page-title': NxPageTitlePage,
+    'nx-pagination': NxPaginationPage,
     'nx-table': NxTableStylePage,
     //'nx-text-input': NxTextInputStylesPage,
     'nx-threat-number': NxThreatNumberPage,
