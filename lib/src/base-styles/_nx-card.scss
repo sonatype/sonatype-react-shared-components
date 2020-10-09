@@ -33,7 +33,7 @@
     "card-content"
     "card-footer";
   margin: 0 $nx-spacing-md 0 0;
-  padding: $nx-spacing-l 48px;
+  padding: $nx-spacing-l $nx-spacing-xxl;
   text-align: center;
   min-width: 230px;
   max-width: 330px;
@@ -71,13 +71,11 @@
   margin-bottom: $nx-spacing-md;
 
   .nx-icon {
-    // translates to 48px;
-    font-size: 3em;
+    font-size: 48px;
   }
 
   .nx-icon--large {
-    // translates to 64px;
-    font-size: 4em;
+    font-size: 64px;
   }
 }
 
@@ -120,17 +118,7 @@
   max-width: 100%;
 
   .nx-card-content {
-    -ms-flex-align: stretch;
-    align-self: stretch;
-    -ms-grid-row: 1 / 2;
-    -ms-grid-column: 2;
-    grid-row: 1 / 2;
-    grid-column: 2;
-
-    border-right: 1px solid #d1d6f0;
-    border-left: 1px solid #d1d6f0;
-    margin: 0 48px;
-    padding: 0 48px;
+    display: contents;
   }
 
   .nx-card-header {
@@ -157,8 +145,9 @@
     grid-area: card-callout;
     justify-self: start;
 
-    margin: 0;
-    padding-right: 0;
+    border-right: 1px solid #d1d6f0;
+    margin: 0 $nx-spacing-xxl 0 0;
+    padding: 0 $nx-spacing-xxl 0 0;
   }
 
   .nx-card-footer {
@@ -171,8 +160,9 @@
     justify-self: center;
 
     border: none;
-    margin: 0;
-    padding: 0;
+    border-left: 1px solid #d1d6f0;
+    margin: 0 0 0 $nx-spacing-xxl;
+    padding: 0 0 0 $nx-spacing-xxl;
     max-width: 150px;
   }
 }
