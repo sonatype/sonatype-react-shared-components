@@ -22,7 +22,7 @@ export type Props = (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<H
   onFilterChange?: ((filter: string) => void) | null;
   filterPlaceholder?: string | null;
   filter?: string | null;
-  initialFilterDropdownLabel?: string | null;
+  filterDropdownLabel?: string | null;
   filterDropdownOptions?: Set<string> | null;
   onDropdownLinkChange?: ((filter: string) => void) | null;
 };
@@ -42,7 +42,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   onFilterChange: PropTypes.func,
   filterPlaceholder: PropTypes.string,
   filter: PropTypes.string,
-  initialFilterDropdownLabel: PropTypes.string,
+  filterDropdownLabel: PropTypes.string,
   filterDropdownOptions: PropTypes.instanceOf(Set) as PropTypes.Validator<Set<string>>,
   onDropdownLinkChange: PropTypes.func
 };

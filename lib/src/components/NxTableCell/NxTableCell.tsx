@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import { faSort, faSortDown, faSortUp, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -33,7 +33,7 @@ const NxTableCell = function NxTableCell(props: Props) {
     children,
     filterPlaceholder,
     filter,
-    initialFilterDropdownLabel,
+    filterDropdownLabel,
     onFilterChange,
     filterDropdownOptions,
     onDropdownLinkChange,
@@ -79,11 +79,9 @@ const NxTableCell = function NxTableCell(props: Props) {
                    value={filter || ''}/>
   );
 
-  const [filterDropdownLabel, setFilterDropdownLabel] = useState(initialFilterDropdownLabel || '');
   const onDropdownLinkClick = (item: string) => {
     if (onDropdownLinkChange) {
       onDropdownLinkChange(item);
-      setFilterDropdownLabel(item);
     }
   };
 
@@ -94,7 +92,7 @@ const NxTableCell = function NxTableCell(props: Props) {
   });
 
   const filterDropdownElement =
-    <NxStatefulDropdown className="nx-dropdown--navigation" label={filterDropdownLabel}>
+    <NxStatefulDropdown className="nx-dropdown--navigation" label={filterDropdownLabel || ''}>
       {renderedDropdownOptions}
     </NxStatefulDropdown>;
 
