@@ -23,10 +23,12 @@ import NxTableLoadingExample from './NxTableLoadingExample';
 import NxTableErrorExample from './NxTableErrorExample';
 import NxTableEmptyExample from './NxTableEmptyExample';
 import NxTableMetaInfoExample from './NxTableMetaInfoExample';
+import NxTableFilterExample from './NxTableFilterExample';
 
 const tableSimpleExampleCode = require('!!raw-loader!./NxTableSimpleExample').default;
 const tableClickableExample = require('!!raw-loader!./NxTableClickableExample').default;
 const tableSortableExample = require('!!raw-loader!./NxTableSortableExample').default;
+const tableFilterableExample = require('!!raw-loader!./NxTableFilterExample').default;
 const tableLoadingExample = require('!!raw-loader!./NxTableLoadingExample').default;
 const tableErrorExample = require('!!raw-loader!./NxTableErrorExample').default;
 const tableEmptyExample = require('!!raw-loader!./NxTableEmptyExample').default;
@@ -241,6 +243,13 @@ export default function NxTablePage() {
                           liveExample={NxTableSortableExample}
                           codeExamples={tableSortableExample}>
         An example with a sortable column.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Filterable Columns Example"
+                          id="nx-table-filterable-example"
+                          liveExample={NxTableFilterExample}
+                          codeExamples={tableFilterableExample}>
+        An example with filtered columns.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Loading Example"

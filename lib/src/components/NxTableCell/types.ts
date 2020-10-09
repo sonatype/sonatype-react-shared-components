@@ -13,9 +13,19 @@ export type Props = (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<H
   metaInfo?: boolean | null;
   isNumeric?: boolean | null;
   isSortable?: boolean | null;
+  isFilter?: boolean | null;
+  isFilterDropdown?: boolean | null;
+  isFilterDisable?: boolean | null;
   hasIcon?: boolean | null;
   chevron?: boolean | null;
   sortDir?: 'asc' | 'desc' | null;
+  onFilterChange?: ((filter: string) => void) | null;
+  filterPlaceholder?: string | null;
+  filter?: string | null;
+  filterDropdown?: string | null;
+  initialFilterDropdownLabel?: string | null;
+  filterDropdownOptions?: Set<string> | null;
+  onDropdownLinkChange?: ((filter: string) => void) | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -23,8 +33,18 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   metaInfo: PropTypes.bool,
   isNumeric: PropTypes.bool,
   isSortable: PropTypes.bool,
+  isFilter: PropTypes.bool,
+  isFilterDropdown: PropTypes.bool,
+  isFilterDisable: PropTypes.bool,
   hasIcon: PropTypes.bool,
   chevron: PropTypes.bool,
   sortDir: PropTypes.oneOf(['asc', 'desc', null]),
-  children: PropTypes.node
+  children: PropTypes.node,
+  onFilterChange: PropTypes.func,
+  filterPlaceholder: PropTypes.string,
+  filter: PropTypes.string,
+  filterDropdown: PropTypes.string,
+  initialFilterDropdownLabel: PropTypes.string,
+  filterDropdownOptions: PropTypes.instanceOf(Set) as PropTypes.Validator<Set<string>>,
+  onDropdownLinkChange: PropTypes.func
 };
