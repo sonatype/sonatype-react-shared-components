@@ -40,17 +40,20 @@ const NxTableFilterExample = () => {
   const onFilterChange = (filter: string) => {
     setFilter(filter);
     if (filter !== '') {
-      setRows(rows.filter((row: any) => toLower(row.name).includes(toLower(filter))));
+      let filteredRows = rows.filter((row: any) => toLower(row.name).includes(toLower(filter)));
+      setRows(filteredRows);
+      setOptionsDropdown(new Set(getCountries(filteredRows)));
     }
     else {
       setRows(initialState);
+      setOptionsDropdown(new Set(getCountries(initialState)));
     }
   };
 
   const onDropdownLinkChange = (filterDropdown: string) => {
     if (filterDropdown !== '') {
       if ('All' !== filterDropdown) {
-        const filteredRows = initialState.filter((row: any) => toLower(row.country).includes(toLower(filterDropdown)));
+        const filteredRows = rows.filter((row: any) => toLower(row.country).includes(toLower(filterDropdown)));
         const dropDownOptions = ['All'].concat(getCountries(filteredRows));
         setRows(filteredRows);
         setOptionsDropdown(new Set(dropDownOptions));
