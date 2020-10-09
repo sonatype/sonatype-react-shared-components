@@ -51,8 +51,8 @@ const NxTableFilterExample = () => {
   const onDropdownLinkChange = (filterDropdown: string) => {
     if (filterDropdown !== '') {
       if ('All' !== filterDropdown) {
-        let filteredRows = initialState.filter((row: any) => toLower(row.country).includes(toLower(filterDropdown)));
-        let dropDownOptions = ['All'].concat(getCountries(filteredRows));
+        const filteredRows = initialState.filter((row: any) => toLower(row.country).includes(toLower(filterDropdown)));
+        const dropDownOptions = ['All'].concat(getCountries(filteredRows));
         setRows(filteredRows);
         setOptionsDropdown(new Set(dropDownOptions));
       }
