@@ -72,15 +72,13 @@ const NxTableFilterExample = () => {
       if ('All' !== filterDropdown) {
         setFilterDropdownLabel(filterDropdown);
         setFilterDropdown(filterDropdown);
-        const filteredRows = applyFilter(rows, filter, filterDropdown);
-        const dropDownOptions = ['All'].concat(getCountries(filteredRows));
-        setRows(filteredRows);
+        const dropDownOptions = ['All'].concat(countries.filter(c => c !== filterDropdown));
+        setRows(applyFilter(initialState, filter, filterDropdown));
         setOptionsDropdown(new Set(dropDownOptions));
       }
       else {
-        setRows(initialState);
+        setRows(applyFilter(initialState, filter, ''));
         setOptionsDropdown(new Set(countries));
-        setFilter('');
         setFilterDropdown('');
         setFilterDropdownLabel(dropdownDefaultLabel);
       }
@@ -97,7 +95,7 @@ const NxTableFilterExample = () => {
           </NxTableRow>
           <NxTableRow>
             <NxTableCell isFilter
-                         filterPlaceholder="Filter"
+                         filterPlaceholder='Filter'
                          filter={filter}
                          onFilterChange={onFilterChange}>
             </NxTableCell>
