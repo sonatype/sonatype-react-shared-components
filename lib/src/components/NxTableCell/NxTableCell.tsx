@@ -92,7 +92,7 @@ const NxTableCell = function NxTableCell(props: Props) {
   });
 
   const filterDropdownElement =
-    <NxStatefulDropdown className="nx-dropdown--navigation table-filter" label={filterDropdownLabel || ''}>
+    <NxStatefulDropdown className="nx-dropdown--navigation" label={filterDropdownLabel || ''}>
       {renderedDropdownOptions}
     </NxStatefulDropdown>;
 
