@@ -94,7 +94,7 @@ const NxFilterInputPage = () =>
                         className="nx-filter-input-examples"
                         liveExample={NxFilterInputDataListExample}
                         codeExamples={nxFilterInputDataListExampleCode}>
-      An exampling using a <code className="nx-code">datalist</code> with
+      An example using a <code className="nx-code">datalist</code> with
       <code className="nx-code">NxFilterInput</code>.
     </GalleryExampleTile>
   </>;
