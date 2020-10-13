@@ -64,8 +64,7 @@ const NxTableFilterExample = () => {
 
   const onFilterChange = (filter: string) => {
     setFilter(filter);
-    let filteredRows = applyFilter(initialState, filter, filterDropdown);
-    setRows(filteredRows);
+    setRows(applyFilter(initialState, filter, filterDropdown));
     handleOptionsDropdown(filterDropdown);
   };
 
