@@ -10,11 +10,13 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxFilterInputFullExample from './NxFilterInputFullExample';
 import NxFilterInputDisabledExample from './NxFilterInputDisabledExample';
+import NxFilterInputDataListExample from './NxFilterInputDataListExample';
 
 import './NxFilterInputPage.scss';
 
 const nxFilterInputFullExampleCode = require('!!raw-loader!./NxFilterInputFullExample').default,
-    nxFilterInputDisabledExampleCode = require('!!raw-loader!./NxFilterInputDisabledExample').default;
+nxFilterInputDisabledExampleCode = require('!!raw-loader!./NxFilterInputDisabledExample').default,
+nxFilterInputDataListExampleCode = require('!!raw-loader!./NxFilterInputDataListExample').default;
 
 const NxFilterInputPage = () =>
   <>
@@ -83,6 +85,14 @@ const NxFilterInputPage = () =>
                         className="nx-filter-input-examples"
                         liveExample={NxFilterInputDisabledExample}
                         codeExamples={nxFilterInputDisabledExampleCode}>
+      A disabled <code className="nx-code">NxFilterInput</code>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxFilterInput DataList Example"
+                        id="nx-filter-input-datalist-example"
+                        className="nx-filter-input-examples"
+                        liveExample={NxFilterInputDataListExample}
+                        codeExamples={nxFilterInputDataListExampleCode}>
       A disabled <code className="nx-code">NxFilterInput</code>.
     </GalleryExampleTile>
   </>;
