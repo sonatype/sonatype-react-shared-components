@@ -11,7 +11,8 @@ import {
   NxTableBody,
   NxTableCell,
   NxTableHead,
-  NxTableRow
+  NxTableRow,
+  NxFilterInput
 } from '@sonatype/react-shared-components';
 import { toLower } from 'ramda';
 
@@ -30,9 +31,9 @@ const NxTableFilterExample = () => {
   const [countryFilter, setCountryFilter] = useState('');
 
   const dropdownDefaultLabel = 'All countries';
-  const countries = new Set(initialState.map((state: any) => {
-    return state['country'];
-  }).sort());
+  // const countries = new Set(initialState.map((state: any) => {
+  //   return state['country'];
+  // }).sort());
 
   const applyFilter = (rows: { name: string; country: string }[], name: string, country: string) => {
     let filteredRows = rows;
@@ -64,18 +65,17 @@ const NxTableFilterExample = () => {
             <NxTableCell>Country</NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell isFilter
-                         filterPlaceholder='Filter'
-                         filter={nameFilter}
-                         onFilterChange={onFilterNameChange}>
+            <NxTableCell isFilter>
+              <NxFilterInput disabled={false}
+                             placeholder="Type a ame"
+                             onChange={onFilterNameChange}
+                             value={nameFilter}/>
             </NxTableCell>
-            <NxTableCell isFilter
-                         filterPlaceholder='All countries'
-                         filter={countryFilter}
-                         onFilterChange={onFilterCountryChange}
-                         filterListId='countries-list'
-                         filterOptions={countries}
-                         >
+            <NxTableCell isFilter>
+              <NxFilterInput disabled={false}
+                             placeholder="Select a country"
+                             onChange={onFilterCountryChange}
+                             value={countryFilter}/>
             </NxTableCell>
           </NxTableRow>
         </NxTableHead>

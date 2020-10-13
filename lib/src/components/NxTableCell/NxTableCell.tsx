@@ -24,15 +24,9 @@ const NxTableCell = function NxTableCell(props: Props) {
     hasIcon = false,
     chevron = false,
     isFilter = false,
-    isFilterDisable = false,
     sortDir,
     className,
     children,
-    filterPlaceholder,
-    filter,
-    filterListId,
-    filterOptions,
-    onFilterChange,
     ...attrs
   } = props;
 
@@ -67,16 +61,6 @@ const NxTableCell = function NxTableCell(props: Props) {
     maskedSort = <NxFontAwesomeIcon icon={faSort} />;
   }
 
-  const filterContent = onFilterChange && (
-    <NxFilterInput disabled={isFilterDisable}
-                   placeholder={filterPlaceholder || ''}
-                   onChange={onFilterChange}
-                   value={filter || ''}
-                   listId={filterListId}
-                   options={filterOptions}
-    />
-  );
-
   const Tag = isHeader ? 'th' : 'td';
 
   return (
@@ -86,7 +70,6 @@ const NxTableCell = function NxTableCell(props: Props) {
         <>
           {ensureElement(children)}
           {isSortable && <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>}
-          {isFilter && <div>{filterContent}</div>}
         </>
       }
     </Tag>

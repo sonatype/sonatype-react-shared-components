@@ -14,15 +14,9 @@ export type Props = (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<H
   isNumeric?: boolean | null;
   isSortable?: boolean | null;
   isFilter?: boolean | null;
-  isFilterDisable?: boolean | null;
   hasIcon?: boolean | null;
   chevron?: boolean | null;
   sortDir?: 'asc' | 'desc' | null;
-  onFilterChange?: ((filter: string) => void) | null;
-  filterPlaceholder?: string | null;
-  filter?: string | null;
-  filterListId?: string | null;
-  filterOptions?: Set<string> | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -31,14 +25,8 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   isNumeric: PropTypes.bool,
   isSortable: PropTypes.bool,
   isFilter: PropTypes.bool,
-  isFilterDisable: PropTypes.bool,
   hasIcon: PropTypes.bool,
   chevron: PropTypes.bool,
   sortDir: PropTypes.oneOf(['asc', 'desc', null]),
-  children: PropTypes.node,
-  onFilterChange: PropTypes.func,
-  filterPlaceholder: PropTypes.string,
-  filter: PropTypes.string,
-  filterListId: PropTypes.string,
-  filterOptions: PropTypes.instanceOf(Set) as PropTypes.Validator<Set<string>>
+  children: PropTypes.node
 };
