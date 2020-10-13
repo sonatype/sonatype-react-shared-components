@@ -67,7 +67,7 @@ const NxTableFilterExample = () => {
           <NxTableRow>
             <NxTableCell isFilter>
               <NxFilterInput disabled={false}
-                             placeholder="Type a ame"
+                             placeholder="Type a name"
                              onChange={onFilterNameChange}
                              value={nameFilter}/>
             </NxTableCell>
