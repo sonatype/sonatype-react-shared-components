@@ -38,7 +38,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
                    onChange={inputOnChange}
                    placeholder={placeholder || undefined}
                    className="nx-text-input__input nx-filter-text-input"
-                   disabled={disabled || undefined} 
+                   disabled={disabled || undefined}
                    list={list || undefined} />
           </div>
         </div>
