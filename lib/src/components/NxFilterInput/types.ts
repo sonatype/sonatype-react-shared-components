@@ -13,7 +13,9 @@ export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'|'placeholder
   placeholder?: string | null;
   className?: string | null;
   inputId?: string | null;
+  listId?: string | null;
   disabled?: boolean | null;
+  options?: Set<string> | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -22,5 +24,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   placeholder: PropTypes.string,
   className: PropTypes.string,
   inputId: PropTypes.string,
-  disabled: PropTypes.bool
+  listId: PropTypes.string,
+  disabled: PropTypes.bool,
+  options: PropTypes.instanceOf(Set) as PropTypes.Validator<Set<string>>
 };

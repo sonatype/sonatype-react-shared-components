@@ -26,19 +26,13 @@ const initialState = [
 const NxTableFilterExample = () => {
 
   const [rows, setRows] = useState(initialState);
-  const [filter, setFilter] = useState('');
-
-  const getCountries = (list: { name: string; country: string }[]) => {
-    return list.map((state: any) => {
-      return state['country'];
-    }).sort();
-  };
+  const [nameFilter, setNameFilter] = useState('');
+  const [countryFilter, setCountryFilter] = useState('');
 
   const dropdownDefaultLabel = 'All countries';
-  const countries = getCountries(initialState);
-  const [optionsDropdown, setOptionsDropdown] = useState<Set<string>>(new Set(countries));
-  const [filterDropdownLabel, setFilterDropdownLabel] = useState(dropdownDefaultLabel);
-  const [filterDropdown, setFilterDropdown] = useState('');
+  const countries = new Set(initialState.map((state: any) => {
+    return state['country'];
+  }).sort());
 
   const applyFilter = (rows: { name: string; country: string }[], name: string, country: string) => {
     let filteredRows = rows;
@@ -51,37 +45,14 @@ const NxTableFilterExample = () => {
     return filteredRows;
   };
 
-  const handleOptionsDropdown = (country: string) => {
-    if (country === '') {
-      setOptionsDropdown(new Set(countries));
-    }
-    else {
-      const dropDownOptions = [dropdownDefaultLabel].concat(countries.filter(c => c !== country));
-      setOptionsDropdown(new Set(dropDownOptions));
-    }
+  const onFilterNameChange = (filter: string) => {
+    setNameFilter(filter);
+    setRows(applyFilter(initialState, filter, countryFilter));
   };
 
-  const onFilterChange = (filter: string) => {
-    setFilter(filter);
-    setRows(applyFilter(initialState, filter, filterDropdown));
-    handleOptionsDropdown(filterDropdown);
-  };
-
-  const onDropdownLinkChange = (filterDropdown: string) => {
-    if (filterDropdown !== '') {
-      if (dropdownDefaultLabel === filterDropdown) {
-        setRows(applyFilter(initialState, filter, ''));
-        setFilterDropdown('');
-        setFilterDropdownLabel(dropdownDefaultLabel);
-        handleOptionsDropdown('');
-      }
-      else {
-        setFilterDropdownLabel(filterDropdown);
-        setFilterDropdown(filterDropdown);
-        setRows(applyFilter(initialState, filter, filterDropdown));
-        handleOptionsDropdown(filterDropdown);
-      }
-    }
+  const onFilterCountryChange = (filter: string) => {
+    setCountryFilter(filter);
+    setRows(applyFilter(initialState, nameFilter, filter));
   };
 
   return (
@@ -95,13 +66,15 @@ const NxTableFilterExample = () => {
           <NxTableRow>
             <NxTableCell isFilter
                          filterPlaceholder='Filter'
-                         filter={filter}
-                         onFilterChange={onFilterChange}>
+                         filter={nameFilter}
+                         onFilterChange={onFilterNameChange}>
             </NxTableCell>
-            <NxTableCell isFilterDropdown
-                         filterDropdownLabel={filterDropdownLabel}
-                         filterDropdownOptions={optionsDropdown}
-                         onDropdownLinkChange={onDropdownLinkChange}
+            <NxTableCell isFilter
+                         filterPlaceholder='All countries'
+                         filter={countryFilter}
+                         onFilterChange={onFilterCountryChange}
+                         filterListId='countries-list'
+                         filterOptions={countries}
                          >
             </NxTableCell>
           </NxTableRow>

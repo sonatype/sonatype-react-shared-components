@@ -14,7 +14,6 @@ export type Props = (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<H
   isNumeric?: boolean | null;
   isSortable?: boolean | null;
   isFilter?: boolean | null;
-  isFilterDropdown?: boolean | null;
   isFilterDisable?: boolean | null;
   hasIcon?: boolean | null;
   chevron?: boolean | null;
@@ -22,9 +21,8 @@ export type Props = (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<H
   onFilterChange?: ((filter: string) => void) | null;
   filterPlaceholder?: string | null;
   filter?: string | null;
-  filterDropdownLabel?: string | null;
-  filterDropdownOptions?: Set<string> | null;
-  onDropdownLinkChange?: ((filter: string) => void) | null;
+  filterListId?: string | null;
+  filterOptions?: Set<string> | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -33,7 +31,6 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   isNumeric: PropTypes.bool,
   isSortable: PropTypes.bool,
   isFilter: PropTypes.bool,
-  isFilterDropdown: PropTypes.bool,
   isFilterDisable: PropTypes.bool,
   hasIcon: PropTypes.bool,
   chevron: PropTypes.bool,
@@ -42,7 +39,6 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   onFilterChange: PropTypes.func,
   filterPlaceholder: PropTypes.string,
   filter: PropTypes.string,
-  filterDropdownLabel: PropTypes.string,
-  filterDropdownOptions: PropTypes.instanceOf(Set) as PropTypes.Validator<Set<string>>,
-  onDropdownLinkChange: PropTypes.func
+  filterListId: PropTypes.string,
+  filterOptions: PropTypes.instanceOf(Set) as PropTypes.Validator<Set<string>>
 };

@@ -11,8 +11,6 @@ import { faSort, faSortDown, faSortUp, faChevronRight } from '@fortawesome/free-
 import {ensureElement} from '../../util/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
-import NxStatefulDropdown from '../NxDropdown/stateful/NxStatefulDropdown';
-import NxButton from '../NxButton/NxButton';
 
 import { Props, propTypes } from './types';
 export { Props } from './types';
@@ -27,16 +25,14 @@ const NxTableCell = function NxTableCell(props: Props) {
     chevron = false,
     isFilter = false,
     isFilterDisable = false,
-    isFilterDropdown = false,
     sortDir,
     className,
     children,
     filterPlaceholder,
     filter,
-    filterDropdownLabel,
+    filterListId,
+    filterOptions,
     onFilterChange,
-    filterDropdownOptions,
-    onDropdownLinkChange,
     ...attrs
   } = props;
 
@@ -47,7 +43,7 @@ const NxTableCell = function NxTableCell(props: Props) {
     'nx-cell--icon': hasIcon,
     'nx-cell--chevron': chevron,
     'nx-cell--sortable': isSortable,
-    'nx-cell--header--filter': isFilter || isFilterDropdown
+    'nx-table-row--filter-header': isFilter
   });
 
   let maskedSort;
@@ -75,25 +71,11 @@ const NxTableCell = function NxTableCell(props: Props) {
     <NxFilterInput disabled={isFilterDisable}
                    placeholder={filterPlaceholder || ''}
                    onChange={onFilterChange}
-                   value={filter || ''}/>
+                   value={filter || ''}
+                   listId={filterListId}
+                   options={filterOptions}
+    />
   );
-
-  const onDropdownLinkClick = (item: string) => {
-    if (onDropdownLinkChange) {
-      onDropdownLinkChange(item);
-    }
-  };
-
-  const renderedDropdownOptions = filterDropdownOptions && Array.from(filterDropdownOptions).map((item: string) => {
-    return (
-      <NxButton key={item} className="nx-dropdown-button" onClick={() => onDropdownLinkClick(item)}>{item}</NxButton>
-    );
-  });
-
-  const filterDropdownElement =
-    <NxStatefulDropdown className="nx-dropdown--navigation" label={filterDropdownLabel || ''}>
-      {renderedDropdownOptions}
-    </NxStatefulDropdown>;
 
   const Tag = isHeader ? 'th' : 'td';
 
@@ -105,7 +87,6 @@ const NxTableCell = function NxTableCell(props: Props) {
           {ensureElement(children)}
           {isSortable && <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>}
           {isFilter && <div>{filterContent}</div>}
-          {isFilterDropdown && <div>{filterDropdownElement}</div>}
         </>
       }
     </Tag>
