@@ -31,10 +31,11 @@ const NxTableFilterExample = () => {
   const getCountries = (list: { name: string; country: string }[]) => {
     return list.map((state: any) => {
       return state['country'];
-    });
+    }).sort();
   };
 
   const dropdownDefaultLabel = 'Select a country';
+  const allLabel = 'All';
   const countries = getCountries(initialState);
   const [optionsDropdown, setOptionsDropdown] = useState<Set<string>>(new Set(countries));
   const [filterDropdownLabel, setFilterDropdownLabel] = useState(dropdownDefaultLabel);
@@ -45,18 +46,19 @@ const NxTableFilterExample = () => {
     if (name !== '') {
       filteredRows = filteredRows.filter((row: any) => toLower(row.name).includes(toLower(name)));
     }
-    if (country !== '' && country !== 'All') {
+    if (country !== '' && country !== allLabel) {
       filteredRows = filteredRows.filter((row: any) => toLower(row.country).includes(toLower(country)));
     }
     return filteredRows;
   };
 
-  const handleOptionsDropdown = (rows: { name: string; country: string }[]) => {
-    if (filterDropdown === '') {
-      setOptionsDropdown(new Set(getCountries(rows)));
+  const handleOptionsDropdown = (country: string) => {
+    if (country === '') {
+      setOptionsDropdown(new Set(countries));
     }
     else {
-      setOptionsDropdown(new Set(['All'].concat(getCountries(rows))));
+      const dropDownOptions = [allLabel].concat(countries.filter(c => c !== country));
+      setOptionsDropdown(new Set(dropDownOptions));
     }
   };
 
@@ -64,23 +66,22 @@ const NxTableFilterExample = () => {
     setFilter(filter);
     let filteredRows = applyFilter(initialState, filter, filterDropdown);
     setRows(filteredRows);
-    handleOptionsDropdown(filteredRows);
+    handleOptionsDropdown(filterDropdown);
   };
 
   const onDropdownLinkChange = (filterDropdown: string) => {
     if (filterDropdown !== '') {
-      if ('All' !== filterDropdown) {
-        setFilterDropdownLabel(filterDropdown);
-        setFilterDropdown(filterDropdown);
-        const dropDownOptions = ['All'].concat(countries.filter(c => c !== filterDropdown));
-        setRows(applyFilter(initialState, filter, filterDropdown));
-        setOptionsDropdown(new Set(dropDownOptions));
-      }
-      else {
+      if (allLabel === filterDropdown) {
         setRows(applyFilter(initialState, filter, ''));
-        setOptionsDropdown(new Set(countries));
         setFilterDropdown('');
         setFilterDropdownLabel(dropdownDefaultLabel);
+        handleOptionsDropdown('');
+      }
+      else {
+        setFilterDropdownLabel(filterDropdown);
+        setFilterDropdown(filterDropdown);
+        setRows(applyFilter(initialState, filter, filterDropdown));
+        handleOptionsDropdown(filterDropdown);
       }
     }
   };
