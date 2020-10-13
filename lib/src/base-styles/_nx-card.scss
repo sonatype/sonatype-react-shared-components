@@ -7,7 +7,7 @@
 
 .nx-card-container {
   display: flex;
-  margin-bottom: $nx-spacing-md 0 $nx-spacing-l 0;
+  margin: $nx-spacing-md 0 $nx-spacing-l 0;
 }
 .nx-card-container--row {
   @include container-horizontal;

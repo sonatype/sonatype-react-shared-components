@@ -45,7 +45,7 @@ export default function NxCardVerticalExample() {
           <h3 className="nx-h3">Card header</h3>
         </header>
         <div className="nx-card__call-out">
-        <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
+          <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
         </div>
         <div className="nx-card__text">
           Large icon
@@ -123,8 +123,7 @@ export default function NxCardVerticalExample() {
           singularity sensory smart-boat Legba smart-sunglasses spook city
         </div>
         <footer className="nx-card-footer">
-
-            <a href="#" className="nx-text-link">uplink numino</a>
+          <a href="#" className="nx-text-link">uplink numino</a>
         </footer>
       </div>
       <div className="nx-card nx-card--horizontal">
