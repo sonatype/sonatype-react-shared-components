@@ -74,7 +74,6 @@ const NxTableCell = function NxTableCell(props: Props) {
   const filterContent = onFilterChange && (
     <NxFilterInput disabled={isFilterDisable}
                    placeholder={filterPlaceholder || ''}
-                   inputId="myId"
                    onChange={onFilterChange}
                    value={filter || ''}/>
   );
