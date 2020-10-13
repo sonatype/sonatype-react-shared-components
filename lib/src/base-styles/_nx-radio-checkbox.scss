@@ -16,7 +16,14 @@
   display: flex;
   margin-bottom: $nx-spacing-xs;
   white-space: nowrap;
+
+  // fallback for IE11, which understands neither min nor max-content
   width: $nx-form-label-width-maximum;
+
+  // We have three upper bounds on the width of the element: $nx-form-label-width-maximum, the available space
+  // in the container, and the actual content width. The latter being needed so the click target doesn't extend beyond
+  // the end of the text
+  width: calc(min(#{$nx-form-label-width-maximum}, 100%));
   max-width: max-content;
 
   &:hover {
