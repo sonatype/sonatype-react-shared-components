@@ -13,11 +13,12 @@ const NxFilterInputDataListExample = () => {
 
   return (
     <>
-      <NxFilterInput placeholder="Enter a filter value"
-                     inputId="input-id"
+      <NxFilterInput placeholder="Choose browser"
+                     inputId="filter-datalist"
                      onChange={changeValue}
                      value={value}
-                     list="browsers" />
+                     list="browsers"
+                     className="nx-filter-input--datalist" />
 
       <datalist id="browsers">
         <option value="Chrome" />

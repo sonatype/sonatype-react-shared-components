@@ -35,3 +35,17 @@
     margin-right: 8px;
   }
 }
+
+.nx-filter-input--datalist {
+  .nx-text-input__box {
+    padding-bottom: 0;
+  }
+
+  .nx-text-input__input {
+    padding: 0 0 8px 0;
+  }
+
+  .nx-icon--filter-icons {
+    margin-bottom: 8px;
+  }
+}

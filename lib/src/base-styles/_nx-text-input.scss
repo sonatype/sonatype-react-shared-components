@@ -122,3 +122,11 @@ textarea.nx-text-input__input {
 ::-ms-clear {
   display: none;
 }
+
+// used to duplicate the basic NxTextInput styles on a basic HTML <input> tag.
+.nx-text-input-html {
+  background-color: #fff;
+  border: 1px solid #2c2c2c;
+  border-radius: $nx-border-radius;
+  padding: $nx-spacing-xs $nx-spacing-md;
+}

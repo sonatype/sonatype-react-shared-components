@@ -15,8 +15,8 @@ import NxFilterInputDataListExample from './NxFilterInputDataListExample';
 import './NxFilterInputPage.scss';
 
 const nxFilterInputFullExampleCode = require('!!raw-loader!./NxFilterInputFullExample').default,
-nxFilterInputDisabledExampleCode = require('!!raw-loader!./NxFilterInputDisabledExample').default,
-nxFilterInputDataListExampleCode = require('!!raw-loader!./NxFilterInputDataListExample').default;
+    nxFilterInputDisabledExampleCode = require('!!raw-loader!./NxFilterInputDisabledExample').default,
+    nxFilterInputDataListExampleCode = require('!!raw-loader!./NxFilterInputDataListExample').default;
 
 const NxFilterInputPage = () =>
   <>
@@ -25,6 +25,31 @@ const NxFilterInputPage = () =>
         An input to be used for filtering purposes
       </p>
 
+      <h3>NxFilterInput Style Classes</h3>
+      <table className="nx-table nx-table--gallery-props">
+        <thead>
+          <tr className="nx-table-row nx-table-row--header">
+            <th className="nx-cell nx-cell--header">Class</th>
+            <th className="nx-cell nx-cell--header">Location</th>
+            <th className="nx-cell nx-cell--header">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="nx-table-row">
+            <td className="nx-cell">nx-filter-input--datalist</td>
+            <td className="nx-cell">
+              modifier class applied to <code className="nx-code">&lt;NxFilterInput&gt;</code>
+            </td>
+            <td className="nx-cell">
+              Modifier class that should be added when you intend to use a
+              {' '}<code className="nx-code">datalist</code> with your filter.
+              See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist">MDN datalist</a>
+              {' '}for information about <code className="nx-code">datalist</code>.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>NxFilterInput Props</h3>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -88,12 +113,13 @@ const NxFilterInputPage = () =>
       A disabled <code className="nx-code">NxFilterInput</code>.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NxFilterInput DataList Example"
+    <GalleryExampleTile title="NxFilterInput Datalist Example"
                         id="nx-filter-input-datalist-example"
                         className="nx-filter-input-examples"
                         liveExample={NxFilterInputDataListExample}
                         codeExamples={nxFilterInputDataListExampleCode}>
-      A disabled <code className="nx-code">NxFilterInput</code>.
+      An exampling using a <code className="nx-code">datalist</code> with
+      <code className="nx-code">NxFilterInput</code>.
     </GalleryExampleTile>
   </>;
 

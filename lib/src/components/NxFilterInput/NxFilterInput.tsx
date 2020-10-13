@@ -32,13 +32,14 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
           <div className="nx-text-input__box">
             <NxFontAwesomeIcon icon={faFilter} className="nx-icon--filter-icons" />
             <input type="text"
-                   autoComplete="off"
+                   autoComplete="on"
                    id={inputId || undefined}
                    value={value}
                    onChange={inputOnChange}
                    placeholder={placeholder || undefined}
                    className="nx-text-input__input nx-filter-text-input"
-                   disabled={disabled || undefined} />
+                   disabled={disabled || undefined} 
+                   list={list || undefined} />
           </div>
         </div>
       );
