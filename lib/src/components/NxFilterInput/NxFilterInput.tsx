@@ -16,17 +16,7 @@ export { Props } from './types';
 
 const NxFilterInput = forwardRef<HTMLDivElement, Props>(
     function NxFilterInput(props, ref) {
-      const {
-            value,
-            placeholder,
-            onChange,
-            className,
-            inputId,
-            disabled,
-            listId,
-            options,
-            ...otherProps
-          } = props,
+      const { value, placeholder, onChange, className, inputId, disabled, ...otherProps } = props,
           classes = classnames('nx-filter-input', className, {
             'nx-filter-input--disabled': disabled
           });
@@ -48,19 +38,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
                    onChange={inputOnChange}
                    placeholder={placeholder || undefined}
                    className="nx-text-input__input nx-filter-text-input"
-                   disabled={disabled || undefined}
-                   list={listId || ''}/>
-            { (listId && options) &&
-            <datalist id={listId}>
-              {
-                Array.from(options).map((option: string) => (
-                  <option key={option}
-                          value={option}
-                  />
-                ))
-              }
-            </datalist>
-            }
+                   disabled={disabled || undefined} />
           </div>
         </div>
       );

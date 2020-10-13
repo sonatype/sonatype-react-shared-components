@@ -10,7 +10,6 @@ import { faSort, faSortDown, faSortUp, faChevronRight } from '@fortawesome/free-
 
 import {ensureElement} from '../../util/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import NxFilterInput from '../NxFilterInput/NxFilterInput';
 
 import { Props, propTypes } from './types';
 export { Props } from './types';
