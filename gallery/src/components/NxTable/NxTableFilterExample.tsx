@@ -34,8 +34,7 @@ const NxTableFilterExample = () => {
     }).sort();
   };
 
-  const dropdownDefaultLabel = 'Select a country';
-  const allLabel = 'All';
+  const dropdownDefaultLabel = 'All countries';
   const countries = getCountries(initialState);
   const [optionsDropdown, setOptionsDropdown] = useState<Set<string>>(new Set(countries));
   const [filterDropdownLabel, setFilterDropdownLabel] = useState(dropdownDefaultLabel);
@@ -46,7 +45,7 @@ const NxTableFilterExample = () => {
     if (name !== '') {
       filteredRows = filteredRows.filter((row: any) => toLower(row.name).includes(toLower(name)));
     }
-    if (country !== '' && country !== allLabel) {
+    if (country !== '' && country !== dropdownDefaultLabel) {
       filteredRows = filteredRows.filter((row: any) => toLower(row.country).includes(toLower(country)));
     }
     return filteredRows;
@@ -57,7 +56,7 @@ const NxTableFilterExample = () => {
       setOptionsDropdown(new Set(countries));
     }
     else {
-      const dropDownOptions = [allLabel].concat(countries.filter(c => c !== country));
+      const dropDownOptions = [dropdownDefaultLabel].concat(countries.filter(c => c !== country));
       setOptionsDropdown(new Set(dropDownOptions));
     }
   };
@@ -70,7 +69,7 @@ const NxTableFilterExample = () => {
 
   const onDropdownLinkChange = (filterDropdown: string) => {
     if (filterDropdown !== '') {
-      if (allLabel === filterDropdown) {
+      if (dropdownDefaultLabel === filterDropdown) {
         setRows(applyFilter(initialState, filter, ''));
         setFilterDropdown('');
         setFilterDropdownLabel(dropdownDefaultLabel);
