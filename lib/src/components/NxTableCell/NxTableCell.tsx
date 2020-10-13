@@ -43,7 +43,7 @@ const NxTableCell = function NxTableCell(props: Props) {
     'nx-cell--icon': hasIcon,
     'nx-cell--chevron': chevron,
     'nx-cell--sortable': isSortable,
-    'nx-table-row--filter-header': isFilter
+    'nx-table-cell--filter-header': isFilter
   });
 
   let maskedSort;
