@@ -12,7 +12,7 @@ describe('nx-card', function() {
   });
 
   const verticalCardSelector = '#nx-card-vertical-example .gallery-example-live',
-      horizontalCardSelector =  '#nx-form-layout-horizontal-example .gallery-example-live',
+      horizontalCardSelector =  '#nx-card-horizontal-example .gallery-example-live',
       verticalCardAltSelector = '#nx-card-vertical-alt-example .gallery-example-live';
 
   describe('nx-card vertical layout', function() {
