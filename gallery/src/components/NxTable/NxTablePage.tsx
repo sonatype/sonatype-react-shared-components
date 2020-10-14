@@ -220,7 +220,7 @@ export default function NxTablePage() {
                 <NxTableCell>boolean</NxTableCell>
                 <NxTableCell>false</NxTableCell>
                 <NxTableCell>
-                  Used to indicate a cell contains a filter
+                  Used to indicate a table header cell contains a filter. When a table supports filtering, it should include a second row within the `thead` (`NxTableHead`) which contains the filter header cells.
                 </NxTableCell>
               </NxTableRow>
             </NxTableBody>
