@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { simpleTest } = require('./testUtils');
+const { simpleTest, simpleTestLongElement } = require('./testUtils');
 
 describe('nx-card', function() {
   beforeEach(async function() {
@@ -20,7 +20,7 @@ describe('nx-card', function() {
   });
 
   describe('nx-card horizontal layout', function() {
-    it('looks right', simpleTest(horizontalCardSelector));
+    it('looks right', simpleTestLongElement(horizontalCardSelector));
   });
 
   describe('nx-card vertical alternate layout', function() {
