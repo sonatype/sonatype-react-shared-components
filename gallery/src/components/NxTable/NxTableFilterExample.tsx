@@ -72,7 +72,7 @@ const NxTableFilterExample = () => {
                              onChange={onFilterNameChange}
                              value={nameFilter}/>
             </NxTableCell>
-            <NxTableCell isFilterList>
+            <NxTableCell isFilter>
               <NxFilterInput disabled={false}
                              placeholder="Select a country"
                              list={listId}
