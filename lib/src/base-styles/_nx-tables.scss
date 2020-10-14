@@ -201,3 +201,9 @@
     color: #045dd1;
   }
 }
+
+.nx-cell--input--filter {
+  input::-webkit-calendar-picker-indicator {
+    opacity: 100;
+  }
+}

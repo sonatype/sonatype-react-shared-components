@@ -14,6 +14,7 @@ export type Props = (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<H
   isNumeric?: boolean | null;
   isSortable?: boolean | null;
   isFilter?: boolean | null;
+  isFilterList?: boolean | null;
   hasIcon?: boolean | null;
   chevron?: boolean | null;
   sortDir?: 'asc' | 'desc' | null;
@@ -25,6 +26,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   isNumeric: PropTypes.bool,
   isSortable: PropTypes.bool,
   isFilter: PropTypes.bool,
+  isFilterList: PropTypes.bool,
   hasIcon: PropTypes.bool,
   chevron: PropTypes.bool,
   sortDir: PropTypes.oneOf(['asc', 'desc', null]),

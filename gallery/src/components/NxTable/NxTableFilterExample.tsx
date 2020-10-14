@@ -31,9 +31,10 @@ const NxTableFilterExample = () => {
   const [countryFilter, setCountryFilter] = useState('');
 
   const dropdownDefaultLabel = 'All countries';
-  // const countries = new Set(initialState.map((state: any) => {
-  //   return state['country'];
-  // }).sort());
+  const listId = 'countryList';
+  const countries = new Set(initialState.map((state: any) => {
+    return state['country'];
+  }).sort());
 
   const applyFilter = (rows: { name: string; country: string }[], name: string, country: string) => {
     let filteredRows = rows;
@@ -71,11 +72,19 @@ const NxTableFilterExample = () => {
                              onChange={onFilterNameChange}
                              value={nameFilter}/>
             </NxTableCell>
-            <NxTableCell isFilter>
+            <NxTableCell isFilterList>
               <NxFilterInput disabled={false}
                              placeholder="Select a country"
+                             list={listId}
                              onChange={onFilterCountryChange}
                              value={countryFilter}/>
+              <datalist id={listId}>
+                {
+                  Array.from(countries).map((country: string) => (
+                    <option key={country} value={country} />
+                  ))
+                }
+              </datalist>
             </NxTableCell>
           </NxTableRow>
         </NxTableHead>
