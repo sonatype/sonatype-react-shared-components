@@ -90,19 +90,14 @@ const NxTableFilterExample = () => {
           </NxTableCell>
         </NxTableRow>
       </NxTableHead>
-      {rows.length === 0 &&
-        <NxTableBody emptyMessage="No data" />
-      }
-      {rows.length > 0 &&
-        <NxTableBody>
-          {rows.map((row: Row) =>
-            <NxTableRow key={row.name.concat(row.country)}>
-              <NxTableCell>{row.name}</NxTableCell>
-              <NxTableCell>{row.country}</NxTableCell>
-            </NxTableRow>
-          )}
-        </NxTableBody>
-      }
+      <NxTableBody emptyMessage="No data">
+        {rows.map((row: Row) =>
+          <NxTableRow key={row.name.concat(row.country)}>
+            <NxTableCell>{row.name}</NxTableCell>
+            <NxTableCell>{row.country}</NxTableCell>
+          </NxTableRow>
+        )}
+      </NxTableBody>
     </NxTable>
   );
 };
