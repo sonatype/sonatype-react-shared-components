@@ -16,7 +16,7 @@ import {
 } from '@sonatype/react-shared-components';
 import { toLower } from 'ramda';
 
-const initialState = [
+const tableData = [
   {name: 'Anna', country: 'USA'},
   {name: 'Lean', country: 'France'},
   {name: 'Louis', country: 'France'},
@@ -24,37 +24,42 @@ const initialState = [
   {name: 'Jimmy', country: 'Germany'}
 ];
 
+interface Row { name: string; country: string };
+
 const NxTableFilterExample = () => {
 
-  const [rows, setRows] = useState(initialState);
+  const [rows, setRows] = useState(tableData);
   const [nameFilter, setNameFilter] = useState('');
   const [countryFilter, setCountryFilter] = useState('');
 
-  const dropdownDefaultLabel = 'All countries';
   const listId = 'countryList';
-  const countries = new Set(initialState.map((row: any) => {
-    return row['country'];
+  const countries = new Set(tableData.map((row: Row) => {
+    return row.country;
   }).sort());
 
-  const applyFilter = (rows: { name: string; country: string }[], name: string, country: string) => {
+  const applyFilter = (rows: Row[], name: string, country: string) => {
     let filteredRows = rows;
     if (name !== '') {
-      filteredRows = filteredRows.filter((row: any) => toLower(row.name).includes(toLower(name)));
+      filteredRows = filteredRows.filter(
+          (row: Row) => toLower(row.name).includes(toLower(name))
+      );
     }
-    if (country !== '' && country !== dropdownDefaultLabel) {
-      filteredRows = filteredRows.filter((row: any) => toLower(row.country).includes(toLower(country)));
+    if (country !== '') {
+      filteredRows = filteredRows.filter(
+          (row: Row) => toLower(row.country).includes(toLower(country))
+      );
     }
     return filteredRows;
   };
 
   const onFilterNameChange = (filter: string) => {
     setNameFilter(filter);
-    setRows(applyFilter(initialState, filter, countryFilter));
+    setRows(applyFilter(tableData, filter, countryFilter));
   };
 
   const onFilterCountryChange = (filter: string) => {
     setCountryFilter(filter);
-    setRows(applyFilter(initialState, nameFilter, filter));
+    setRows(applyFilter(tableData, nameFilter, filter));
   };
 
   return (
@@ -89,7 +94,7 @@ const NxTableFilterExample = () => {
           </NxTableRow>
         </NxTableHead>
         <NxTableBody>
-          {rows.map((row: any) =>
+          {rows.map((row: Row) =>
             <NxTableRow key={row.name.concat(row.country)}>
               <NxTableCell>{row.name}</NxTableCell>
               <NxTableCell>{row.country}</NxTableCell>
