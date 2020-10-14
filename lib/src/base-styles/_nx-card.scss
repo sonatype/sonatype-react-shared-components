@@ -9,16 +9,6 @@
   display: flex;
   margin: $nx-spacing-md 0 $nx-spacing-l 0;
 }
-.nx-card-container--row {
-  align-content: stretch;
-  @include container-horizontal;
-}
-
-.nx-card-container--column {
-  @include container-vertical;
-
-  flex-direction: column;
-}
 
 .nx-card {
   background-color: #fff;
@@ -27,15 +17,36 @@
   padding: $nx-spacing-l $nx-spacing-xxl;
 }
 
-.nx-card--vertical {
-  display: flex;
-  flex-direction: column;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin: 0 $nx-spacing-md 0 0;
-  text-align: center;
-  min-width: 230px;
-  max-width: 330px;
+.nx-card__call-out {
+  .nx-icon {
+    font-size: 48px;
+  }
+
+  .nx-icon--large {
+    font-size: 64px;
+  }
+}
+
+.nx-call__call-out-text {
+  @include bold();
+
+  font-size: 32px;
+}
+
+// Vertically oriented cards appear in a row container
+.nx-card-container--row {
+  @include container-horizontal;
+
+  .nx-card {
+    display: flex;
+    flex-direction: column;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0 $nx-spacing-md 0 0;
+    text-align: center;
+    min-width: 230px;
+    max-width: 330px;
+  }
 
   .nx-card-header {
     @include container-vertical;
@@ -57,36 +68,26 @@
   }
 }
 
-.nx-card__call-out {
-  .nx-icon {
-    font-size: 48px;
+// Horizontally orientated cards appear in a column
+.nx-card-container--column {
+  @include container-vertical;
+
+  flex-direction: column;
+
+  .nx-card {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto;
+    -ms-grid-rows: auto auto;
+    grid-template-areas:
+      "card-callout card-title card-footer"
+      "card-callout card-text card-footer";
+
+    margin: $nx-spacing-md 0;
+    text-align: left;
+    width: 100%;
   }
-
-  .nx-icon--large {
-    font-size: 64px;
-  }
-}
-
-.nx-call__call-out-text {
-  @include bold();
-
-  font-size: 32px;
-}
-
-
-.nx-card--horizontal {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto 1fr auto;
-  grid-template-columns: auto 1fr auto;
-  -ms-grid-rows: auto auto;
-  grid-template-areas:
-    "card-callout card-title card-footer"
-    "card-callout card-text card-footer";
-
-  margin: $nx-spacing-md 0;
-  text-align: left;
-  width: 100%;
 
   .nx-card-header {
     -ms-grid-row: 1;
@@ -143,27 +144,30 @@
   }
 }
 
-.nx-card--vertical-alt {
-  .nx-card-content {
-    align-items: center;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    column-gap: 24px;
-  }
+// Styles for the alternate vertical style
+.nx-card-container--row {
+  .nx-card--vertical-alt {
+    .nx-card-content {
+      align-items: center;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      column-gap: 24px;
+    }
 
-  .nx-card__call-out {
-    @include container-horizontal;
-    display: inline-block;
-    flex-grow: 1;
-    margin-bottom: $nx-spacing-md;
-    text-align: right;
-  }
+    .nx-card__call-out {
+      @include container-horizontal;
+      display: inline-block;
+      flex-grow: 1;
+      margin-bottom: $nx-spacing-md;
+      text-align: right;
+    }
 
-  .nx-card__text {
-    display: inline-block;
-    flex-grow: 1;
-    margin-bottom: $nx-spacing-md;
-    text-align: left;
+    .nx-card__text {
+      display: inline-block;
+      flex-grow: 1;
+      margin-bottom: $nx-spacing-md;
+      text-align: left;
+    }
   }
 }
