@@ -14,7 +14,7 @@ import {
   NxTableRow,
   NxFilterInput
 } from '@sonatype/react-shared-components';
-import { toLower } from 'ramda';
+import { toLower, uniq } from 'ramda';
 
 const tableData = [
   {name: 'Anna', country: 'USA'},
@@ -33,7 +33,7 @@ const NxTableFilterExample = () => {
   const [countryFilter, setCountryFilter] = useState('');
 
   const listId = 'countryList';
-  const countries = new Set(tableData.map((row: Row) => {
+  const countries = uniq(tableData.map((row: Row) => {
     return row.country;
   }).sort());
 
@@ -82,7 +82,7 @@ const NxTableFilterExample = () => {
                            value={countryFilter}/>
             <datalist id={listId}>
               {
-                Array.from(countries).map((country: string) => (
+                countries.map((country: string) => (
                   <option key={country} value={country} />
                 ))
               }
