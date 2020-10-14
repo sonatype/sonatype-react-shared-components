@@ -63,46 +63,42 @@ const NxTableFilterExample = () => {
   };
 
   return (
-    <div>
-      <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Name</NxTableCell>
-            <NxTableCell>Country</NxTableCell>
+    <NxTable>
+      <NxTableHead>
+        <NxTableRow>
+          <NxTableCell>Name</NxTableCell>
+          <NxTableCell>Country</NxTableCell>
+        </NxTableRow>
+        <NxTableRow>
+          <NxTableCell isFilter>
+            <NxFilterInput placeholder="Type a name"
+                           onChange={onFilterNameChange}
+                           value={nameFilter}/>
+          </NxTableCell>
+          <NxTableCell isFilter>
+            <NxFilterInput placeholder="Select a country"
+                           list={listId}
+                           onChange={onFilterCountryChange}
+                           value={countryFilter}/>
+            <datalist id={listId}>
+              {
+                Array.from(countries).map((country: string) => (
+                  <option key={country} value={country} />
+                ))
+              }
+            </datalist>
+          </NxTableCell>
+        </NxTableRow>
+      </NxTableHead>
+      <NxTableBody>
+        {rows.map((row: Row) =>
+          <NxTableRow key={row.name.concat(row.country)}>
+            <NxTableCell>{row.name}</NxTableCell>
+            <NxTableCell>{row.country}</NxTableCell>
           </NxTableRow>
-          <NxTableRow>
-            <NxTableCell isFilter>
-              <NxFilterInput disabled={false}
-                             placeholder="Type a name"
-                             onChange={onFilterNameChange}
-                             value={nameFilter}/>
-            </NxTableCell>
-            <NxTableCell isFilter>
-              <NxFilterInput disabled={false}
-                             placeholder="Select a country"
-                             list={listId}
-                             onChange={onFilterCountryChange}
-                             value={countryFilter}/>
-              <datalist id={listId}>
-                {
-                  Array.from(countries).map((country: string) => (
-                    <option key={country} value={country} />
-                  ))
-                }
-              </datalist>
-            </NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody>
-          {rows.map((row: Row) =>
-            <NxTableRow key={row.name.concat(row.country)}>
-              <NxTableCell>{row.name}</NxTableCell>
-              <NxTableCell>{row.country}</NxTableCell>
-            </NxTableRow>
-          )}
-        </NxTableBody>
-      </NxTable>
-    </div>
+        )}
+      </NxTableBody>
+    </NxTable>
   );
 };
 
