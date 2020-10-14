@@ -11,9 +11,9 @@ describe('nx-card', function() {
     await browser.url('#/styles/NxCard');
   });
 
-  const verticalCardSelector = '#nx-card-vertical-example',
-      horizontalCardSelector =  '#nx-form-layout-horizontal-example',
-      verticalCardAltSelector = '#nx-card-vertical-alt-example';
+  const verticalCardSelector = '#nx-card-vertical-example .gallery-example-live',
+      horizontalCardSelector =  '#nx-form-layout-horizontal-example .gallery-example-live',
+      verticalCardAltSelector = '#nx-card-vertical-alt-example .gallery-example-live';
 
   describe('nx-card vertical layout', function() {
     it('looks right', simpleTestLongElement(verticalCardSelector));
