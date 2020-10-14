@@ -215,6 +215,14 @@ export default function NxTablePage() {
                   self-populate with the icon, and do not take <code className="nx-code">children</code>.
                 </NxTableCell>
               </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>isFilterHeader</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>
+                  Used to indicate a cell contains a filter
+                </NxTableCell>
+              </NxTableRow>
             </NxTableBody>
           </NxTable>
         </section>
