@@ -47,7 +47,7 @@ export default function NxCardVerticalAltExample() {
           </header>
           <div className="nx-card-content">
             <div className="nx-card__call-out">
-            <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
+              <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
             </div>
             <div className="nx-card__text">
               Large icon
