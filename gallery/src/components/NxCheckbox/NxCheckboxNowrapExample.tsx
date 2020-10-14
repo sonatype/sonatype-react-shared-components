@@ -16,11 +16,11 @@ function NxCheckboxNowrapExample() {
     <>
       <p className="nx-p">Subscribed: {isSubscribed.toString()}</p>
 
-      <div style={{width: '40px', border: '1px solid red'}}>
+      <div style={{width: '70px', border: '1px solid red'}}>
         Some text
         {' '}
         <NxCheckbox checkboxId="checkbox-nowrap" onChange={onChange} isChecked={isSubscribed}>
-          <span style={{color: 'red'}}>Subscribe</span>
+          Subscribe
         </NxCheckbox>
         {' '}
         some other text
