@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { simpleTest, simpleTestLongElement } = require('./testUtils');
+const { simpleTest } = require('./testUtils');
 
 describe('nx-card', function() {
   beforeEach(async function() {
-    await browser.url('#/styles/NxCard');
+    await browser.url('#/pages/nx-card');
   });
 
   const verticalCardSelector = '#nx-card-vertical-example .gallery-example-live',
@@ -16,7 +16,7 @@ describe('nx-card', function() {
       verticalCardAltSelector = '#nx-card-vertical-alt-example .gallery-example-live';
 
   describe('nx-card vertical layout', function() {
-    it('looks right', simpleTestLongElement(verticalCardSelector));
+    it('looks right', simpleTest(verticalCardSelector));
   });
 
   describe('nx-card horizontal layout', function() {
