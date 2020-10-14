@@ -10,9 +10,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxCardVerticalExample from './NxCardVerticalExample';
 import NxCardHorizontalExample from './NxCardHorizontalExample';
+import NxCardVerticalAltExample from './NxCardVerticalAlternateExample';
 
 const nxCardVerticalCode = require('!!raw-loader!./NxCardVerticalExample').default,
-    nxCardHorizontalCode = require('!!raw-loader!./NxCardHorizontalExample').default;
+    nxCardHorizontalCode = require('!!raw-loader!./NxCardHorizontalExample').default,
+    nxCardVerticalAltCode = require('!!raw-loader!./NxCardVerticalAlternateExample').default;
 
 const NxCardPage = () =>
   <>
@@ -22,18 +24,26 @@ const NxCardPage = () =>
       </p>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Information alert"
+    <GalleryExampleTile title="Vertical Card"
                         liveExample={NxCardVerticalExample}
                         codeExamples={nxCardVerticalCode}
                         defaultCheckeredBackground={true}>
       Cards shown in vertical orientation.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Success alert"
+    <GalleryExampleTile title="Horizontal Card"
                         liveExample={NxCardHorizontalExample}
                         codeExamples={nxCardHorizontalCode}
                         defaultCheckeredBackground={true}>
       Cards shown in horizontal orientation.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Alternate Vertical Card"
+                        liveExample={NxCardVerticalAltExample}
+                        codeExamples={nxCardVerticalAltCode}
+                        defaultCheckeredBackground={true}>
+      This variation of the vertical cards has the callout and the description text side-by-side (when content allows).
+      It cannot be transformed into a horizontal card with a simple class change.
     </GalleryExampleTile>
 
   </>;

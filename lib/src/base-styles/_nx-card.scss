@@ -10,6 +10,7 @@
   margin: $nx-spacing-md 0 $nx-spacing-l 0;
 }
 .nx-card-container--row {
+  align-content: stretch;
   @include container-horizontal;
 }
 
@@ -139,5 +140,30 @@
     padding: 0 0 0 $nx-spacing-xxl;
     // necessary to make the link wrap
     max-width: 150px;
+  }
+}
+
+.nx-card--vertical-alt {
+  .nx-card-content {
+    align-items: center;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    column-gap: 24px;
+  }
+
+  .nx-card__call-out {
+    @include container-horizontal;
+    display: inline-block;
+    flex-grow: 1;
+    margin-bottom: $nx-spacing-md;
+    text-align: right;
+  }
+
+  .nx-card__text {
+    display: inline-block;
+    flex-grow: 1;
+    margin-bottom: $nx-spacing-md;
+    text-align: left;
   }
 }
