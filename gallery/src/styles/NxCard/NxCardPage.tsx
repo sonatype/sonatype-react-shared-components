@@ -68,7 +68,9 @@ const NxCardPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card-header</code></td>
             <td className="nx-cell">Element</td>
-            <td className="nx-cell">Card header element, typically wraps an <code className="nx-code">&lt;h3&gt;</code>.</td>
+            <td className="nx-cell">
+              Card header element, typically wraps an <code className="nx-code">&lt;h3&gt;</code>.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__call-out</code></td>
@@ -120,6 +122,7 @@ const NxCardPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Vertical Card"
+                        id="nx-card-vertical-example"
                         liveExample={NxCardVerticalExample}
                         codeExamples={nxCardVerticalCode}
                         defaultCheckeredBackground={true}>
@@ -128,6 +131,7 @@ const NxCardPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Horizontal Card"
+                        id="nx-card-horizontal-example"
                         liveExample={NxCardHorizontalExample}
                         codeExamples={nxCardHorizontalCode}
                         defaultCheckeredBackground={true}>
@@ -136,13 +140,13 @@ const NxCardPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Alternate Vertical Card"
+                        id="nx-card-vertical-alt-example"
                         liveExample={NxCardVerticalAltExample}
                         codeExamples={nxCardVerticalAltCode}
                         defaultCheckeredBackground={true}>
       This variation of the vertical cards has the callout and the description text side-by-side (when content allows).
       It cannot be transformed into a horizontal card with a simple class change.
     </GalleryExampleTile>
-
   </>;
 
 export default NxCardPage;
