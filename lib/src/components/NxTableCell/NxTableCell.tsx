@@ -37,7 +37,7 @@ const NxTableCell = function NxTableCell(props: Props) {
     'nx-cell--icon': hasIcon,
     'nx-cell--chevron': chevron,
     'nx-cell--sortable': isSortable,
-    'nx-table-cell--filter-header': isFilter || isFilterList,
+    'nx-cell--filter-header': isFilter || isFilterList,
     'nx-cell--input--filter': isFilterList
   });
 
