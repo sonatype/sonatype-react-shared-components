@@ -112,7 +112,7 @@ const NxRadioPage = () =>
                         liveExample={NxRadioNowrapExample}
                         codeExamples={nowrapExampleCode}>
       This example includes a container around the radio buttons. This container is deliberately narrow and has a
-      red border. This makes it clear that the labels on radio buttons do not wrap.
+      red border. This makes it clear that the labels on radio buttons do not wrap, and truncates with an ellipsis.
     </GalleryExampleTile>
   </>;
 
