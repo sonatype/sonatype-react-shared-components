@@ -70,12 +70,12 @@ const NxTableFilterExample = () => {
           <NxTableCell>Country</NxTableCell>
         </NxTableRow>
         <NxTableRow>
-          <NxTableCell isFilter>
+          <NxTableCell isFilterHeader>
             <NxFilterInput placeholder="Type a name"
                            onChange={onFilterNameChange}
                            value={nameFilter}/>
           </NxTableCell>
-          <NxTableCell isFilter>
+          <NxTableCell isFilterHeader>
             <NxFilterInput placeholder="Select a country"
                            list={listId}
                            onChange={onFilterCountryChange}
@@ -90,14 +90,19 @@ const NxTableFilterExample = () => {
           </NxTableCell>
         </NxTableRow>
       </NxTableHead>
-      <NxTableBody>
-        {rows.map((row: Row) =>
-          <NxTableRow key={row.name.concat(row.country)}>
-            <NxTableCell>{row.name}</NxTableCell>
-            <NxTableCell>{row.country}</NxTableCell>
-          </NxTableRow>
-        )}
-      </NxTableBody>
+      {rows.length === 0 &&
+        <NxTableBody emptyMessage="No data" />
+      }
+      {rows.length > 0 &&
+        <NxTableBody>
+          {rows.map((row: Row) =>
+            <NxTableRow key={row.name.concat(row.country)}>
+              <NxTableCell>{row.name}</NxTableCell>
+              <NxTableCell>{row.country}</NxTableCell>
+            </NxTableRow>
+          )}
+        </NxTableBody>
+      }
     </NxTable>
   );
 };

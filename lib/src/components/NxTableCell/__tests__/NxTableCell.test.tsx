@@ -35,7 +35,7 @@ describe('NxTableCell', function () {
   });
 
   it('adds the correct classnames when has a filter', function () {
-    expect(getShallowComponent({ isFilter: true })).toMatchSelector('td.nx-cell.nx-cell--filter-header');
+    expect(getShallowComponent({ isFilterHeader: true })).toMatchSelector('td.nx-cell.nx-cell--filter-header');
   });
 
   describe('when the chevron prop is true', function() {
