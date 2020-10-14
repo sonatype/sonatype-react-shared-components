@@ -32,8 +32,8 @@ const NxTableFilterExample = () => {
 
   const dropdownDefaultLabel = 'All countries';
   const listId = 'countryList';
-  const countries = new Set(initialState.map((state: any) => {
-    return state['country'];
+  const countries = new Set(initialState.map((row: any) => {
+    return row['country'];
   }).sort());
 
   const applyFilter = (rows: { name: string; country: string }[], name: string, country: string) => {
