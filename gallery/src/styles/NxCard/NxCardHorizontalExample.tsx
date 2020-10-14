@@ -73,7 +73,7 @@ export default function NxCardVerticalExample() {
           <h3 className="nx-h3 nx-h3--card-header">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
         </header>
         <div className="nx-card__call-out">
-          <NxFontAwesomeIcon icon={faShapes}/>
+          <NxFontAwesomeIcon icon={faChartLine}/>
         </div>
         <div className="nx-card__text">
           Marketing systemic math- hotdog saturation
@@ -95,53 +95,6 @@ export default function NxCardVerticalExample() {
         </div>
         <footer className="nx-card-footer">
           <a href="#" className="nx-text-link">Film sprawl wristwatch math-engine</a>
-        </footer>
-      </div>
-      <div className="nx-card">
-        <header className="nx-card-header">
-          <h3 className="nx-h3 nx-h3--card-header">Weathered plastic saturation point realism</h3>
-        </header>
-        <div className="nx-card__call-out">
-          <span className="nx-call__call-out-text">XXXX%</span>
-        </div>
-        <div className="nx-card__text">
-          Construct otaku monofilament skyscraper
-        </div>
-        <footer className="nx-card-footer">
-          <a href="#" className="nx-text-link">Jabberwocky</a>
-        </footer>
-      </div>
-      <div className="nx-card">
-        <header className="nx-card-header">
-          <h3 className="nx-h3 nx-h3--card-header">Augmented reality grenade</h3>
-        </header>
-        <div className="nx-card__call-out">
-          <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
-        </div>
-        <div className="nx-card__text">
-          Neural sign shrine corrupted decay fluidity paranoid nodality long-chain hydrocarbons physical shoes 8-bit
-          singularity sensory smart-boat Legba smart-sunglasses spook city
-        </div>
-        <footer className="nx-card-footer">
-          <a href="#" className="nx-text-link">uplink numino</a>
-        </footer>
-      </div>
-      <div className="nx-card">
-        <header className="nx-card-header">
-          <h3 className="nx-h3 nx-h3--card-header">
-            Fluidity futurity order-flow city neon pre-DIY wristwatch-space bicycle digital geodesic realism sensory
-            dome otaku rain-ware lights
-          </h3>
-        </header>
-        <div className="nx-card__call-out">
-          <NxFontAwesomeIcon icon={faChartLine} className="nx-icon--large" />
-        </div>
-        <div className="nx-card__text">
-          BASE jump boy corrupted nano-skyscraper disposable sub-orbital marketing apophenia sign military-grade
-          saturation point drugs
-        </div>
-        <footer className="nx-card-footer">
-          <a href="#" className="nx-text-link">digital military-grade j-pop-ware</a>
         </footer>
       </div>
     </div>
