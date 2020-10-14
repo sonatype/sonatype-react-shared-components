@@ -33,12 +33,15 @@ const NxTableFilterExample = () => {
   const [countryFilter, setCountryFilter] = useState('');
 
   const listId = 'countryList';
+  // the countries will be rendered in a <datalist/> element
+  // datalist doesn't do deduplication by itself, so in order to have
+  // a deduplicate list of countries the use of a function as uniq is needed
   const countries = uniq(tableData.map((row: Row) => {
     return row.country;
   }).sort());
 
-  const applyFilter = (rows: Row[], name: string, country: string) => {
-    let filteredRows = rows;
+  const applyFilter = (name: string, country: string) => {
+    let filteredRows = tableData;
     if (name !== '') {
       filteredRows = filteredRows.filter(
           (row: Row) => toLower(row.name).includes(toLower(name))
@@ -54,12 +57,12 @@ const NxTableFilterExample = () => {
 
   const onFilterNameChange = (filter: string) => {
     setNameFilter(filter);
-    setRows(applyFilter(tableData, filter, countryFilter));
+    setRows(applyFilter(filter, countryFilter));
   };
 
   const onFilterCountryChange = (filter: string) => {
     setCountryFilter(filter);
-    setRows(applyFilter(tableData, nameFilter, filter));
+    setRows(applyFilter(nameFilter, filter));
   };
 
   return (
