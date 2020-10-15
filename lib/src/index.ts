@@ -133,3 +133,5 @@ export {
 
 export * from './util/threatLevels';
 export * from './util/validationUtil';
+
+export { default as NxDonutChart } from './components/NxDonutChart/NxDonutChart';

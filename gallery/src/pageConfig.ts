@@ -69,6 +69,7 @@ import StylingComponentsPage from './pages/StylingComponents';
 import AdditionalResourcePage from './pages/AdditionalResources';
 import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 import NxCardPage from './styles/NxCard/NxCardPage';
+import NxDonutChartPage from './components/NxDonutChart/NxDonutChartPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -104,7 +105,8 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
-    NxVulnerabilityDetails: NxVulnerabilityDetailsPage
+    NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
+    NxDonutChart: NxDonutChartPage
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,
