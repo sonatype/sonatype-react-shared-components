@@ -94,9 +94,6 @@ export default function NxCardHorizontalExample() {
         <div className="nx-card__text">
           City advert motion apophenia film skyscraper sentient beef
         </div>
-        <footer className="nx-card__footer">
-          <a href="#" className="nx-text-link">Film sprawl wristwatch math-engine</a>
-        </footer>
       </div>
     </div>
   );
