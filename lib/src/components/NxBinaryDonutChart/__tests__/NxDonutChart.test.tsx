@@ -40,7 +40,7 @@ describe('NxBinaryDonutChart', function() {
       expect(circle).toHaveProp('cy', minimalProps.outerRadius);
       expect(circle).toHaveProp('strokeWidth', strokeWidth);
       expect(circle).toHaveProp('r', r);
-      expect(circle).toHaveProp('fill', 'transparent');
+      expect(circle).toHaveProp('fill', 'none');
     });
     // First circle shows the other percent
     expect(circles.at(0)).toHaveProp('stroke', minimalProps.fillColors[0]);
