@@ -21,7 +21,11 @@ const tableData = [
   {name: 'Lean', country: 'France'},
   {name: 'Louis', country: 'France'},
   {name: 'Zach', country: 'Colombia'},
-  {name: 'Jimmy', country: 'Germany'}
+  {name: 'Jimmy', country: 'Germany'},
+  {name: 'Karen', country: 'Australia'},
+  {name: 'Paul', country: 'UK'},
+  {name: 'Raul', country: 'Argentina'},
+  {name: 'Maria', country: 'Spain'}
 ];
 
 interface Row { name: string; country: string };
@@ -66,42 +70,44 @@ const NxTableFilterExample = () => {
   };
 
   return (
-    <NxTable>
-      <NxTableHead>
-        <NxTableRow>
-          <NxTableCell>Name</NxTableCell>
-          <NxTableCell>Country</NxTableCell>
-        </NxTableRow>
-        <NxTableRow>
-          <NxTableCell isFilterHeader>
-            <NxFilterInput placeholder="Type a name"
-                           onChange={onFilterNameChange}
-                           value={nameFilter}/>
-          </NxTableCell>
-          <NxTableCell isFilterHeader>
-            <NxFilterInput placeholder="Select a country"
-                           list={listId}
-                           onChange={onFilterCountryChange}
-                           value={countryFilter}/>
-            <datalist id={listId}>
-              {
-                countries.map((country: string) => (
-                  <option key={country} value={country} />
-                ))
-              }
-            </datalist>
-          </NxTableCell>
-        </NxTableRow>
-      </NxTableHead>
-      <NxTableBody emptyMessage="No data">
-        {rows.map((row: Row) =>
-          <NxTableRow key={row.name.concat(row.country)}>
-            <NxTableCell>{row.name}</NxTableCell>
-            <NxTableCell>{row.country}</NxTableCell>
+    <div className="nx-scrollable nx-scrollable--table-container">
+      <NxTable className="nx-table nx-table--scrollable">
+        <NxTableHead>
+          <NxTableRow>
+            <NxTableCell>Name</NxTableCell>
+            <NxTableCell>Country</NxTableCell>
           </NxTableRow>
-        )}
-      </NxTableBody>
-    </NxTable>
+          <NxTableRow>
+            <NxTableCell isFilterHeader>
+              <NxFilterInput placeholder="Type a name"
+                             onChange={onFilterNameChange}
+                             value={nameFilter}/>
+            </NxTableCell>
+            <NxTableCell isFilterHeader>
+              <NxFilterInput placeholder="Select a country"
+                             list={listId}
+                             onChange={onFilterCountryChange}
+                             value={countryFilter}/>
+              <datalist id={listId}>
+                {
+                  countries.map((country: string) => (
+                    <option key={country} value={country} />
+                  ))
+                }
+              </datalist>
+            </NxTableCell>
+          </NxTableRow>
+        </NxTableHead>
+        <NxTableBody emptyMessage="No data">
+          {rows.map((row: Row) =>
+            <NxTableRow key={row.name.concat(row.country)}>
+              <NxTableCell>{row.name}</NxTableCell>
+              <NxTableCell>{row.country}</NxTableCell>
+            </NxTableRow>
+          )}
+        </NxTableBody>
+      </NxTable>
+    </div>
   );
 };
 
