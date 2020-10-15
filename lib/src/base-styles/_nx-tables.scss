@@ -122,11 +122,13 @@
   > thead tr:nth-child(1) th {
     position: sticky;
     top: 0;
+    z-index: 1
   }
 
   > thead tr:nth-child(2) th {
     position: sticky;
     top: 45px;
+    z-index: 1
   }
 }
 
