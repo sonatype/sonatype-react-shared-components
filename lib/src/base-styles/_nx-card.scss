@@ -6,7 +6,6 @@
  */
 
 .nx-card-container {
-  display: flex;
   margin: $nx-spacing-md 0 $nx-spacing-l 0;
 }
 
@@ -36,6 +35,7 @@
 // Vertically oriented cards appear in a row container
 .nx-card-container--row {
   @include container-horizontal;
+  display: flex;
 
   .nx-card {
     display: flex;
@@ -71,8 +71,6 @@
 // Horizontally orientated cards appear in a column
 .nx-card-container--column {
   @include container-vertical;
-
-  flex-direction: column;
 
   .nx-card {
     display: -ms-grid;
