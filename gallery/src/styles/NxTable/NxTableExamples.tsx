@@ -11,8 +11,8 @@ import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxTableClickableExample from './NxTableClickableExample';
 import NxTableErrorExample from './NxTableErrorStateExample';
 import NxTableFixedLayoutExample from './NxTableFixedLayoutExample';
-import NxTableFilterExample from '../../components/NxTable/NxTableFilterExample';
-import NxTableSortableExample from '../../components/NxTable/NxTableSortableExample';
+import NxTableSortableExample from './NxTableSortableExample';
+import NxTableFilterExample from './NxTableFilterExample';
 
 import './NxTableTruncationAndWrappingExample.scss';
 import './NxTableFixedLayoutExample.scss';

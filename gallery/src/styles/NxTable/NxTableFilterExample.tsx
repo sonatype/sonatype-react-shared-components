@@ -5,8 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { NxFilterInput } from '@sonatype/react-shared-components';
 
 const NxTableFilter = () =>
   <table className="nx-table">
@@ -17,33 +16,16 @@ const NxTableFilter = () =>
       </tr>
       <tr className="nx-table-row nx-table-row--header">
         <th className="nx-cell nx-cell--header nx-cell--filter-header">
-          <div className="nx-filter-input">
-            <div className="nx-text-input__box">
-              <NxFontAwesomeIcon icon={faFilter}/>
-              <input type="text"
-                     placeholder="Type a name"
-                     className="nx-text-input__input nx-filter-text-input"
-                     value=""/>
-            </div>
-          </div>
+          <NxFilterInput value="" placeholder="Type a name"/>
         </th>
         <th className="nx-cell nx-cell--header nx-cell--filter-header">
-          <div className="nx-filter-input">
-            <div className="nx-text-input__box">
-              <NxFontAwesomeIcon icon={faFilter}/>
-              <input type="text"
-                     placeholder="Select a country"
-                     list="countryList"
-                     className="nx-text-input__input nx-filter-text-input"
-                     value=""/>
-              <datalist id="countryList">
-                <option value="Colombia"></option>
-                <option value="France"></option>
-                <option value="Germany"></option>
-                <option value="USA"></option>
-              </datalist>
-            </div>
-          </div>
+          <NxFilterInput value="" placeholder="Select a country" list="countryList"/>
+          <datalist id="countryList">
+            <option value="Colombia"/>
+            <option value="France"/>
+            <option value="Germany"/>
+            <option value="USA"/>
+          </datalist>
         </th>
       </tr>
     </thead>
