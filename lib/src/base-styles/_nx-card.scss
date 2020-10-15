@@ -55,15 +55,14 @@
   }
 
   .nx-card__call-out {
-    margin-bottom: $nx-spacing-xs;
-  }
-
-  .nx-card__text {
-    margin-bottom: $nx-spacing-l;
+    + .nx-card__text {
+      margin-top: $nx-spacing-md;
+    }
   }
 
   .nx-card__footer {
     border-top: 1px solid #d1d6f0;
+    margin-top: $nx-spacing-l;
     padding-top: $nx-spacing-l;
     width: 100%;
   }
