@@ -16,7 +16,7 @@ describe('nx-card', function() {
       verticalCardAltSelector = '#nx-card-vertical-alt-example .gallery-example-live';
 
   describe('nx-card vertical layout', function() {
-    it('looks right', simpleTest(verticalCardSelector));
+    it('looks right', simpleTestLongElement(verticalCardSelector));
   });
 
   describe('nx-card horizontal layout', function() {
