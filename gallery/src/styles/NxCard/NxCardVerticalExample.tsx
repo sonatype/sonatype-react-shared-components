@@ -46,7 +46,9 @@ export default function NxCardVerticalExample() {
             <h3 className="nx-h3">Card header</h3>
           </header>
           <div className="nx-card__call-out">
-            <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
+            <div className="nx-btn-bar">
+              <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
+            </div>
           </div>
           <div className="nx-card__text">
             Large icon
@@ -81,8 +83,10 @@ export default function NxCardVerticalExample() {
             systemic
           </div>
           <footer className="nx-card__footer">
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} className="nx-icon--large" /></NxButton>
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} className="nx-icon--large" /></NxButton>
+            <div className="nx-btn-bar">
+              <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} className="nx-icon--large" /></NxButton>
+              <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} className="nx-icon--large" /></NxButton>
+            </div>
           </footer>
         </div>
         <div className="nx-card">

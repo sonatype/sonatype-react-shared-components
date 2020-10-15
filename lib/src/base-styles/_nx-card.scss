@@ -66,6 +66,10 @@
     margin-top: $nx-spacing-l;
     padding-top: $nx-spacing-l;
     width: 100%;
+
+    > .nx-btn-bar {
+      text-align: center;
+    }
   }
 }
 

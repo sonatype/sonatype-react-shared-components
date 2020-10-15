@@ -37,7 +37,9 @@ export default function NxCardHorizontalExample() {
           Data point details
         </div>
         <footer className="nx-card__footer">
-          <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} className="nx-icon--large" /></NxButton>
+          <div className="nx-btn-bar">
+            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} className="nx-icon--large" /></NxButton>
+          </div>
         </footer>
       </div>
       <div className="nx-card">
@@ -51,8 +53,11 @@ export default function NxCardHorizontalExample() {
           Large icon
         </div>
         <footer className="nx-card__footer">
-          <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} className="nx-icon--large" /></NxButton>
-          <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} className="nx-icon--large" /></NxButton>
+          <div className="nx-btn-bar">
+            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} className="nx-icon--large" /></NxButton>
+            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} className="nx-icon--large" /></NxButton>
+            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} className="nx-icon--large" /></NxButton>
+          </div>
         </footer>
       </div>
       <div className="nx-card">
