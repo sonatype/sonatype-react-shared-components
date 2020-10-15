@@ -5,9 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { faShapes, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { faShapes, faChartLine, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxFontAwesomeIcon, NxButton } from '@sonatype/react-shared-components';
 
 export default function NxCardVerticalExample() {
   return (
@@ -83,7 +83,8 @@ export default function NxCardVerticalExample() {
             systemic
           </div>
           <footer className="nx-card__footer">
-            <a href="#" className="nx-text-link">Artisanal denim</a>
+            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} className="nx-icon--large" /></NxButton>
+            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} className="nx-icon--large" /></NxButton>
           </footer>
         </div>
         <div className="nx-card">

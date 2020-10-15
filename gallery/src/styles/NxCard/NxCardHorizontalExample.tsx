@@ -37,7 +37,7 @@ export default function NxCardHorizontalExample() {
           Data point details
         </div>
         <footer className="nx-card__footer">
-          <a href="#" className="nx-text-link">Link</a>
+          <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} className="nx-icon--large" /></NxButton>
         </footer>
       </div>
       <div className="nx-card">
