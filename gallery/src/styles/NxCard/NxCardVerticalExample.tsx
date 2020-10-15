@@ -55,8 +55,6 @@ export default function NxCardVerticalExample() {
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </div>
-      </div>
-      <div className="nx-card-container nx-card-container--row">
         <div className="nx-card">
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">Card header</h3>
