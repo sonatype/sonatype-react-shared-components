@@ -5,16 +5,16 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import NxDonutChart from '../NxDonutChart';
+import NxBinaryDonutChart from '../NxBinaryDonutChart';
 
-describe('NxDonutChart', function() {
+describe('NxBinaryDonutChart', function() {
   const minimalProps = {
     percent: 90,
     outerRadius: 30,
     innerRadius: 10,
     fillColors: ['#97cbed', '#006bbf']
   };
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxDonutChart, minimalProps);
+  const getShallowComponent = enzymeUtils.getShallowComponent(NxBinaryDonutChart, minimalProps);
 
   it('renders an svg with the expected properties', function() {
     const diameter = minimalProps.outerRadius * 2;

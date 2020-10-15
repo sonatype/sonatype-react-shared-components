@@ -7,23 +7,23 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import NxDonutChartExample from './NxDonutChartExample';
+import NxBinaryDonutChartExample from './NxBinaryDonutChartExample';
 
-const nxDonutChartExampleCode = require('!!raw-loader!./NxDonutChartExample').default;
+const nxBinaryDonutChartExampleCode = require('!!raw-loader!./NxBinaryDonutChartExample').default;
 
-const NxDonutChartPage = () =>
+const NxBinaryDonutChartPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <code className="nx-code">NxDonutChart</code> represents a donut chart.
+        <code className="nx-code">NxBinaryDonutChart</code> represents a donut chart.
       </p>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
-                        codeExamples={nxDonutChartExampleCode}
-                        liveExample={NxDonutChartExample}>
-        This example demonstrates the display of an NxDonutChart.
+                        codeExamples={nxBinaryDonutChartExampleCode}
+                        liveExample={NxBinaryDonutChartExample}>
+        This example demonstrates the display of an NxBinaryDonutChart.
     </GalleryExampleTile>
   </>;
 
-export default NxDonutChartPage;
+export default NxBinaryDonutChartPage;

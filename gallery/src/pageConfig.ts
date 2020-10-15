@@ -70,6 +70,7 @@ import AdditionalResourcePage from './pages/AdditionalResources';
 import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 import NxCardPage from './styles/NxCard/NxCardPage';
 import NxDonutChartPage from './components/NxDonutChart/NxDonutChartPage';
+import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -106,7 +107,7 @@ const pageConfig: PageConfig = {
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
-    NxDonutChart: NxDonutChartPage
+    NxBinaryDonutChart: NxBinaryDonutChartPage
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,

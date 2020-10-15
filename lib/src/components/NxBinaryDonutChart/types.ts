@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import { SVGAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
-export interface Props {
-  id?: string | null;
+export interface Props extends SVGAttributes<SVGElement>{
   percent: number;
   outerRadius: number;
   innerRadius: number;
@@ -15,7 +15,6 @@ export interface Props {
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  id: PropTypes.string,
   percent: PropTypes.number.isRequired,
   outerRadius: PropTypes.number.isRequired,
   innerRadius: PropTypes.number.isRequired,
