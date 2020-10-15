@@ -103,6 +103,43 @@ export default function NxCardVerticalExample() {
           </footer>
         </div>
       </div>
+
+      <div className="nx-card-container nx-card-container--row">
+        <div className="nx-card">
+          <header className="nx-card__header">
+            <h3 className="nx-h3">Header</h3>
+          </header>
+          <div className="nx-card__call-out">
+            <span className="nx-card__call-out-text">42</span>
+          </div>
+        </div>
+      </div>
+      <div className="nx-card-container nx-card-container--row">
+        <div className="nx-card">
+          <header className="nx-card__header">
+            <h3 className="nx-h3">Card header</h3>
+          </header>
+          <div className="nx-card__call-out">
+            <NxFontAwesomeIcon icon={faShapes} />
+          </div>
+          <footer className="nx-card__footer">
+            <a href="#" className="nx-text-link">Link</a>
+          </footer>
+        </div>
+      </div>
+      <div className="nx-card-container nx-card-container--row">
+        <div className="nx-card">
+          <header className="nx-card__header">
+            <h3 className="nx-h3">Card header</h3>
+          </header>
+          <div className="nx-card__call-out">
+            <NxFontAwesomeIcon icon={faShapes} className="nx-icon" />
+          </div>
+          <div className="nx-card__text">
+            Sentient noodles
+          </div>
+        </div>
+      </div>
     </>
   );
 }
