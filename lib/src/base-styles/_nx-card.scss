@@ -132,6 +132,7 @@
     -ms-grid-column-align: start;
     justify-self: start;
 
+    @include container-horizontal;
     border: none;
     margin: 0;
     padding: 0 0 0 $nx-spacing-xxl;
@@ -146,8 +147,6 @@
     .nx-card__content {
       align-items: center;
       display: flex;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
       column-gap: 24px;
     }
 
