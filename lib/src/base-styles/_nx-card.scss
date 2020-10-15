@@ -6,7 +6,7 @@
  */
 
 .nx-card-container {
-  margin: $nx-spacing-md 0 $nx-spacing-l 0;
+  margin: $nx-spacing-md 0;
 }
 
 .nx-card {
@@ -38,6 +38,7 @@
   display: flex;
 
   .nx-card {
+    @include container-vertical;
     display: flex;
     flex-direction: column;
     -ms-flex-pack: justify;
