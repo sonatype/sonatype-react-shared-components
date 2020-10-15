@@ -77,7 +77,7 @@ const NxTableFilterExample = () => {
             <NxTableCell>Name</NxTableCell>
             <NxTableCell>Country</NxTableCell>
           </NxTableRow>
-          <NxTableRow>
+          <NxTableRow className="nx-table-row--filter-header">
             <NxTableCell isFilterHeader>
               <NxFilterInput placeholder="Type a name"
                              onChange={onFilterNameChange}

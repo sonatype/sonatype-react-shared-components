@@ -119,17 +119,15 @@
   position: relative;
   z-index: 0;
 
-  > thead tr:nth-child(1) th {
+  .nx-cell--header {
     position: sticky;
     top: 0;
-    z-index: 1
+    z-index: 1;
   }
+}
 
-  > thead tr:nth-child(2) th {
-    position: sticky;
-    top: 45px;
-    z-index: 1
-  }
+.nx-table-row--filter-header > .nx-cell--header {
+  top: $nx-table-celle-header-height;
 }
 
 .nx-table--fixed-layout {
