@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { faShapes, faChartLine, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faShapes, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { NxFontAwesomeIcon, NxButton } from '@sonatype/react-shared-components';
 
@@ -73,9 +73,6 @@ export default function NxCardHorizontalExample() {
         <header className="nx-card__header">
           <h3 className="nx-h3 nx-h3--card-header">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
         </header>
-        <div className="nx-card__call-out">
-          <NxFontAwesomeIcon icon={faChartLine}/>
-        </div>
         <div className="nx-card__text">
           Marketing systemic math- hotdog saturation
           systemic

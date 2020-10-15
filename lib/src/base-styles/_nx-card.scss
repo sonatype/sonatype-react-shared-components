@@ -92,7 +92,7 @@
     grid-area: card-title;
 
     @include container-vertical;
-    margin: 0 $nx-spacing-xxl $nx-spacing-md $nx-spacing-xxl;
+    margin: 0 0 $nx-spacing-md 0;
     padding: 0;
   }
 
@@ -103,7 +103,7 @@
 
 
     margin: 0;
-    padding: 0 $nx-spacing-xxl;
+    padding: 0;
   }
 
   .nx-card__call-out {
@@ -120,7 +120,7 @@
     border-right: 1px solid #d1d6f0;
     display: flex;
     height: 100%;
-    margin: 0;
+    margin: 0 $nx-spacing-xxl 0 0;
     padding: 0 $nx-spacing-xxl 0 0;
   }
 
@@ -140,7 +140,7 @@
     border-left: 1px solid #d1d6f0;
     display: flex;
     height: 100%;
-    margin: 0;
+    margin: 0  0 0 $nx-spacing-xxl;
     padding: 0 0 0 $nx-spacing-xxl;
     // necessary to make the link wrap
     max-width: 150px;
