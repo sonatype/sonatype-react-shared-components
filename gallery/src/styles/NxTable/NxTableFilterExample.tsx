@@ -15,7 +15,7 @@ const NxTableFilter = () =>
         <th className="nx-cell nx-cell--header">Country</th>
       </tr>
       <tr className="nx-table-row nx-table-row--header nx-table-row--filter-header">
-        <th className="nx-cell nx-cell--header nx-cell--filter-header">
+        <th className="nx-cell nx-cell--header">
           <NxFilterInput value="" placeholder="Type a name"/>
         </th>
         <th className="nx-cell nx-cell--header">
