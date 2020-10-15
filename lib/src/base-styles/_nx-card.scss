@@ -27,7 +27,7 @@
   }
 }
 
-.nx-call__call-out-text {
+.nx-card__call-out-text {
   @include bold();
 
   font-size: 32px;
@@ -48,7 +48,7 @@
     max-width: 330px;
   }
 
-  .nx-card-header {
+  .nx-card__header {
     @include container-vertical;
     margin-bottom: $nx-spacing-md;
   }
@@ -61,7 +61,7 @@
     margin-bottom: $nx-spacing-l;
   }
 
-  .nx-card-footer {
+  .nx-card__footer {
     border-top: 1px solid #d1d6f0;
     padding-top: $nx-spacing-l;
     width: 100%;
@@ -89,7 +89,7 @@
     width: 100%;
   }
 
-  .nx-card-header {
+  .nx-card__header {
     -ms-grid-row: 1;
     -ms-grid-column: 2;
     grid-area: card-title;
@@ -126,7 +126,7 @@
     padding: 0 $nx-spacing-xxl 0 0;
   }
 
-  .nx-card-footer {
+  .nx-card__footer {
     -ms-grid-row-align: center;
     align-self: center;
     -ms-grid-row: 1;
@@ -147,7 +147,7 @@
 // Styles for the alternate vertical style
 .nx-card-container--row {
   .nx-card--vertical-alt {
-    .nx-card-content {
+    .nx-card__content {
       align-items: center;
       display: flex;
       -ms-flex-wrap: wrap;

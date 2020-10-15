@@ -66,7 +66,7 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card-header</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-card__header</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Card header element, typically wraps an <code className="nx-code">&lt;h3&gt;</code>.
@@ -81,7 +81,7 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-call__call-out-text</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-card__call-out-text</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               In the case where the call out consists of text (e.g. 99%) it should be wrapped in this class (typically
@@ -94,7 +94,7 @@ const NxCardPage = () =>
             <td className="nx-cell">Free-form text. Should be concise.</td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card-footer</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-card__footer</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">Card footer. Typically provides a link to more information.</td>
           </tr>
@@ -108,13 +108,13 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card-content</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-card__content</code></td>
             <td className="nx-cell">Wrapping element</td>
             <td className="nx-cell">
-              <code className="nx-code">.nx-card-content</code> applied to a
+              <code className="nx-code">.nx-card__content</code> applied to a
               {' '}<code className="nx-code">&lt;div&gt;</code> wraps
               {' '}<code className="nx-code">.nx-card__call-out</code> and
-              {' '}<code className="nx-code">.nx-call__call-out-text</code> in the alternate vertical card layout.
+              {' '}<code className="nx-code">.nx-card__call-out-text</code> in the alternate vertical card layout.
             </td>
           </tr>
         </tbody>

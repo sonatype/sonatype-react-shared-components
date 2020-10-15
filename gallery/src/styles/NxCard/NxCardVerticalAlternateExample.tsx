@@ -14,24 +14,24 @@ export default function NxCardVerticalAltExample() {
     <>
       <div className="nx-card-container nx-card-container--row">
         <div className="nx-card nx-card--vertical-alt">
-          <header className="nx-card-header">
+          <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
           </header>
-          <div className="nx-card-content">
+          <div className="nx-card__content">
             <div className="nx-card__call-out">
-              <span className="nx-call__call-out-text">42</span>
+              <span className="nx-card__call-out-text">42</span>
             </div>
             <div className="nx-card__text">
               Text
             </div>
           </div>
-          <footer className="nx-card-footer"><a href="nx-text-link">Link</a></footer>
+          <footer className="nx-card__footer"><a href="nx-text-link">Link</a></footer>
         </div>
         <div className="nx-card nx-card--vertical-alt">
-          <header className="nx-card-header">
+          <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
-          <div className="nx-card-content">
+          <div className="nx-card__content">
             <div className="nx-card__call-out">
               <NxFontAwesomeIcon icon={faChartLine} />
             </div>
@@ -39,13 +39,13 @@ export default function NxCardVerticalAltExample() {
               Data point details
             </div>
           </div>
-          <footer className="nx-card-footer"><a href="nx-text-link">Link</a></footer>
+          <footer className="nx-card__footer"><a href="nx-text-link">Link</a></footer>
         </div>
         <div className="nx-card nx-card--vertical-alt">
-          <header className="nx-card-header">
+          <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
-          <div className="nx-card-content">
+          <div className="nx-card__content">
             <div className="nx-card__call-out">
               <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
             </div>
@@ -53,7 +53,7 @@ export default function NxCardVerticalAltExample() {
               Large icon
             </div>
           </div>
-          <footer className="nx-card-footer"><a href="nx-text-link">Link</a></footer>
+          <footer className="nx-card__footer"><a href="nx-text-link">Link</a></footer>
         </div>
       </div>
     </>
