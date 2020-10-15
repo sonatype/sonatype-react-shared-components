@@ -191,7 +191,7 @@ $nx-table-cell-header-height: 48px;
   -ms-user-select: none;
 }
 
-.nx-cell--filter-header {
+.nx-table-row--filter-header > .nx-cell--header {
   background-color: #ffffff;
   border-bottom: 1px solid #d1d6f0;
 }
