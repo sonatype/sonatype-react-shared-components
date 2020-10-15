@@ -153,7 +153,6 @@
 
     .nx-card__call-out {
       @include container-horizontal;
-      display: inline-block;
       flex-grow: 1;
       margin-bottom: $nx-spacing-md;
       text-align: right;
