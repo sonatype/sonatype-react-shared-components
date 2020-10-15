@@ -132,8 +132,17 @@ const NxTableStylePage = () =>
             <td className="nx-cell">
               This class is intended for the cells holding the Chevron icons that should be placed on the right
               side of clickable table rows. It creates a column of the appropriate width for the icon. It
-              is <em>not</em> necessary to additionall use <code className="nx-code">.nx-cell--icon</code> on these
+              is <em>not</em> necessary to additional use <code className="nx-code">.nx-cell--icon</code> on these
               cells.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">
+              <code className="nx-code">.nx-cell--filter-header</code>
+            </td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
+            <td className="nx-cell">
+              Used for style table header cells with a filter
             </td>
           </tr>
         </tbody>
