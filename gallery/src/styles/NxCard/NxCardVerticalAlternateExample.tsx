@@ -13,7 +13,7 @@ export default function NxCardVerticalAltExample() {
   return (
     <>
       <div className="nx-card-container nx-card-container--row">
-        <div className="nx-card nx-card--vertical-alt">
+        <section className="nx-card nx-card--vertical-alt">
           <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
           </header>
@@ -26,8 +26,8 @@ export default function NxCardVerticalAltExample() {
             </div>
           </div>
           <footer className="nx-card__footer"><a href="nx-text-link">Link</a></footer>
-        </div>
-        <div className="nx-card nx-card--vertical-alt">
+        </section>
+        <section className="nx-card nx-card--vertical-alt">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
@@ -40,8 +40,8 @@ export default function NxCardVerticalAltExample() {
             </div>
           </div>
           <footer className="nx-card__footer"><a href="nx-text-link">Link</a></footer>
-        </div>
-        <div className="nx-card nx-card--vertical-alt">
+        </section>
+        <section className="nx-card nx-card--vertical-alt">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
@@ -54,7 +54,7 @@ export default function NxCardVerticalAltExample() {
             </div>
           </div>
           <footer className="nx-card__footer"><a href="nx-text-link">Link</a></footer>
-        </div>
+        </section>
       </div>
     </>
   );

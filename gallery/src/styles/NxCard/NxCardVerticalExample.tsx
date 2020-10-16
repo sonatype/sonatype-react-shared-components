@@ -13,7 +13,7 @@ export default function NxCardVerticalExample() {
   return (
     <>
       <div className="nx-card-container nx-card-container--row">
-        <div className="nx-card">
+        <section className="nx-card">
           <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
           </header>
@@ -26,8 +26,8 @@ export default function NxCardVerticalExample() {
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
-        </div>
-        <div className="nx-card">
+        </section>
+        <section className="nx-card">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
@@ -40,8 +40,8 @@ export default function NxCardVerticalExample() {
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
-        </div>
-        <div className="nx-card">
+        </section>
+        <section className="nx-card">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
@@ -56,8 +56,8 @@ export default function NxCardVerticalExample() {
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
-        </div>
-        <div className="nx-card">
+        </section>
+        <section className="nx-card">
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">Card header</h3>
           </header>
@@ -70,8 +70,8 @@ export default function NxCardVerticalExample() {
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
-        </div>
-        <div className="nx-card">
+        </section>
+        <section className="nx-card">
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
           </header>
@@ -88,8 +88,8 @@ export default function NxCardVerticalExample() {
               <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} className="nx-icon--large" /></NxButton>
             </div>
           </footer>
-        </div>
-        <div className="nx-card">
+        </section>
+        <section className="nx-card">
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">Render-farm dolphin beef noodles</h3>
           </header>
@@ -103,21 +103,21 @@ export default function NxCardVerticalExample() {
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Film sprawl wristwatch math-engine</a>
           </footer>
-        </div>
+        </section>
       </div>
 
       <div className="nx-card-container nx-card-container--row">
-        <div className="nx-card">
+        <section className="nx-card">
           <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
           </header>
           <div className="nx-card__call-out">
             <span className="nx-card__call-out-text">42</span>
           </div>
-        </div>
+        </section>
       </div>
       <div className="nx-card-container nx-card-container--row">
-        <div className="nx-card">
+        <section className="nx-card">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
@@ -127,10 +127,10 @@ export default function NxCardVerticalExample() {
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
-        </div>
+        </section>
       </div>
       <div className="nx-card-container nx-card-container--row">
-        <div className="nx-card">
+        <section className="nx-card">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
@@ -140,7 +140,7 @@ export default function NxCardVerticalExample() {
           <div className="nx-card__text">
             Sentient noodles
           </div>
-        </div>
+        </section>
       </div>
     </>
   );
