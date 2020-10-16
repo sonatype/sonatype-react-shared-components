@@ -5,11 +5,29 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
+.nx-btn-bar--pagination {
+  text-align: center;
+
+  .nx-btn {
+    height: 40px;
+    margin: 0 $nx-spacing-xs 0 0;
+    width: 40px;
+    padding: 0;
+
+    &:focus {
+      box-shadow: 0 0 3px 1px rgba(2, 166, 217, 0.3);
+    }
+  }
+}
+
 .nx-btn--pagination {
+  @include regular();
   background-color: #fff;
   border-color: #fff;
+  color: #474747;
 
   &:hover {
+    background-color: #fff;
     border-color: #474747;
   }
 
@@ -26,9 +44,11 @@
 
   &.selected {
     background-color: #232c50;
-    border: solid 1px #02a6d9;
+    border-color: #232c50;
+    color: #fff;
 
     &:focus {
+      border-color: #02a6d9;
       box-shadow: 0 0 3px 1px rgba(2, 166, 217, 0.3);
     }
   }
