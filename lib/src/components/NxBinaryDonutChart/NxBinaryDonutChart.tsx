@@ -16,8 +16,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
 
       const strokeWidth = 100 - innerRadiusPercent;
       const r = innerRadiusPercent + (strokeWidth / 2);
-      const circumfrence = 2 * Math.PI * r;
-      const strokeDasharray = [circumfrence * (100 - props.percent) / 100, circumfrence * props.percent / 100];
+      const strokeDasharray = [(100 - props.percent), props.percent];
       return (
         <svg ref={ref} viewBox="-100 -100 200 200" {...props}>
           <circle className="nx-binary-donut-chart-circle"
@@ -27,6 +26,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
           <circle className="nx-binary-donut-chart-circle"
                   strokeWidth={strokeWidth}
                   r={r}
+                  pathLength="100"
                   strokeDasharray={strokeDasharray.join(' ')}>
           </circle>
         </svg>

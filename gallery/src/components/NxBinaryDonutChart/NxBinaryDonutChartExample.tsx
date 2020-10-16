@@ -12,7 +12,7 @@ export default function NxBinaryDonutChartExample() {
                              width="200"
                              height="200"
                              preserveAspectRatio="none"
-                             percent={25}
+                             percent={90}
                              innerRadiusPercent={50}
                              fillColors={['#97cbed', '#006bbf']}
   />;
