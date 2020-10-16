@@ -22,6 +22,10 @@ $nx-tile-background-color: $nx-white;
   border-radius: $nx-border-radius;
   margin: $nx-spacing-xs 0 $nx-spacing-md 0;
   padding: $nx-spacing-l;
+
+  .nx-footer {
+    padding-bottom: 0;
+  }
 }
 
 // Special tile for containing grids
