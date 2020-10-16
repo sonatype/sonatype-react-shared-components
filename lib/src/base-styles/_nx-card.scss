@@ -13,6 +13,7 @@
   background-color: #fff;
   border-radius: $nx-border-radius;
   box-sizing: border-box;
+  margin-bottom: $nx-spacing-md;
   padding: $nx-spacing-l $nx-spacing-xxl;
 }
 
@@ -37,6 +38,11 @@
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  margin-bottom: 0;
+
+  + .nx-card-container--row {
+    margin-top: 0;
+  }
 
   .nx-card {
     @include container-vertical;
@@ -44,7 +50,7 @@
     flex-direction: column;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    margin: 0 $nx-spacing-md $nx-spacing-md 0;
+    margin-right: $nx-spacing-md;
     text-align: center;
     min-width: 230px;
     max-width: 330px;
@@ -86,8 +92,6 @@
     grid-template-areas:
       "card-callout card-title card-footer"
       "card-callout card-text card-footer";
-
-    margin: $nx-spacing-md 0;
   }
 
   .nx-card__header {
