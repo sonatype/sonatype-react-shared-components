@@ -18,16 +18,16 @@
 }
 
 .nx-card__call-out {
-  .nx-icon {
+  .nx-icon--card-call-out {
     font-size: 48px;
   }
 
-  .nx-icon--large {
+  .nx-icon--card-call-out-xl {
     font-size: 64px;
   }
 }
 
-.nx-card__call-out-text {
+.nx-card__call-out {
   @include bold();
 
   font-size: 32px;

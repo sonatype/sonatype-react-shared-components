@@ -31,14 +31,14 @@ export default function NxCardHorizontalExample() {
           <h3 className="nx-h3">Card header</h3>
         </header>
         <div className="nx-card__call-out">
-          <NxFontAwesomeIcon icon={faShapes} />
+          <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out" />
         </div>
         <div className="nx-card__content">
           Data point details
         </div>
         <footer className="nx-card__footer">
           <div className="nx-btn-bar">
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} className="nx-icon--large" /></NxButton>
+            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
           </div>
         </footer>
       </section>
@@ -47,16 +47,16 @@ export default function NxCardHorizontalExample() {
           <h3 className="nx-h3">Card header</h3>
         </header>
         <div className="nx-card__call-out">
-          <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
+          <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out-xl" />
         </div>
         <div className="nx-card__content">
           Large icon
         </div>
         <footer className="nx-card__footer">
           <div className="nx-btn-bar">
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} className="nx-icon--large" /></NxButton>
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} className="nx-icon--large" /></NxButton>
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} className="nx-icon--large" /></NxButton>
+            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
+            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
           </div>
         </footer>
       </section>

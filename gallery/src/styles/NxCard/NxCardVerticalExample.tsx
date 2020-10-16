@@ -18,7 +18,7 @@ export default function NxCardVerticalExample() {
             <h3 className="nx-h3">Header</h3>
           </header>
           <div className="nx-card__call-out">
-            <span className="nx-card__call-out-text">42</span>
+            42
           </div>
           <div className="nx-card__content">
             Text
@@ -32,7 +32,7 @@ export default function NxCardVerticalExample() {
             <h3 className="nx-h3">Card header</h3>
           </header>
           <div className="nx-card__call-out">
-            <NxFontAwesomeIcon icon={faShapes} />
+            <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out" />
           </div>
           <div className="nx-card__content">
             Data point details
@@ -46,7 +46,7 @@ export default function NxCardVerticalExample() {
             <h3 className="nx-h3">Card header</h3>
           </header>
           <div className="nx-card__call-out">
-            <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
+            <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out-xl" />
           </div>
           <div className="nx-card__content">
             Large icon
@@ -60,7 +60,7 @@ export default function NxCardVerticalExample() {
             <h3 className="nx-h3 nx-h3--card-header">Card header</h3>
           </header>
           <div className="nx-card__call-out">
-            <span className="nx-card__call-out-text">XX%</span>
+            XX%
           </div>
           <div className="nx-card__content">
             Descriptive text
@@ -74,7 +74,7 @@ export default function NxCardVerticalExample() {
             <h3 className="nx-h3 nx-h3--card-header">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
           </header>
           <div className="nx-card__call-out">
-            <NxFontAwesomeIcon icon={faChartLine}/>
+            <NxFontAwesomeIcon icon={faChartLine} className="nx-icon--card-call-out" />
           </div>
           <div className="nx-card__content">
             Marketing systemic math- hotdog saturation point nodal point footage disposable singularity order-flow
@@ -82,8 +82,8 @@ export default function NxCardVerticalExample() {
           </div>
           <footer className="nx-card__footer">
             <div className="nx-btn-bar">
-              <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} className="nx-icon--large" /></NxButton>
-              <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} className="nx-icon--large" /></NxButton>
+              <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+              <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
             </div>
           </footer>
         </section>
@@ -92,7 +92,7 @@ export default function NxCardVerticalExample() {
             <h3 className="nx-h3 nx-h3--card-header">Render-farm dolphin beef noodles</h3>
           </header>
           <div className="nx-card__call-out">
-            <span className="nx-card__call-out-text">XXX%</span>
+            XXX%
           </div>
           <div className="nx-card__content">
             City advert motion apophenia film skyscraper sentient beef noodles industrial grade motion tanto BASE jump
@@ -110,7 +110,7 @@ export default function NxCardVerticalExample() {
             <h3 className="nx-h3">Header</h3>
           </header>
           <div className="nx-card__call-out">
-            <span className="nx-card__call-out-text">42</span>
+            42
           </div>
         </section>
       </div>
@@ -120,7 +120,7 @@ export default function NxCardVerticalExample() {
             <h3 className="nx-h3">Card header</h3>
           </header>
           <div className="nx-card__call-out">
-            <NxFontAwesomeIcon icon={faShapes} />
+            <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out" />
           </div>
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
@@ -133,7 +133,7 @@ export default function NxCardVerticalExample() {
             <h3 className="nx-h3">Card header</h3>
           </header>
           <div className="nx-card__call-out">
-            <NxFontAwesomeIcon icon={faShapes} className="nx-icon" />
+            <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out" />
           </div>
           <div className="nx-card__content">
             Sentient noodles
