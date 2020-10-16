@@ -15,7 +15,7 @@ const NxBinaryDonutChartPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <code className="nx-code">NxBinaryDonutChart</code> represents a donut chart.
+        <code className="nx-code">NxBinaryDonutChart</code> represents a binary donut chart.
       </p>
     </GalleryDescriptionTile>
 

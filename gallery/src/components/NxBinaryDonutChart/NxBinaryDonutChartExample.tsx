@@ -9,9 +9,11 @@ import { NxBinaryDonutChart } from '@sonatype/react-shared-components';
 
 export default function NxBinaryDonutChartExample() {
   return <NxBinaryDonutChart id="donut-chart-id"
-                             percent={90}
-                             outerRadius={30}
-                             innerRadius={10}
+                             width="200"
+                             height="200"
+                             preserveAspectRatio="none"
+                             percent={25}
+                             innerRadiusPercent={50}
                              fillColors={['#97cbed', '#006bbf']}
   />;
 }

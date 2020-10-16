@@ -7,16 +7,12 @@
 import { SVGAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
-export interface Props extends SVGAttributes<SVGElement>{
+export interface Props extends SVGAttributes<SVGSVGElement>{
   percent: number;
-  outerRadius: number;
-  innerRadius: number;
-  fillColors: string[];
+  innerRadiusPercent?: number | null | undefined;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   percent: PropTypes.number.isRequired,
-  outerRadius: PropTypes.number.isRequired,
-  innerRadius: PropTypes.number.isRequired,
-  fillColors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  innerRadiusPercent: PropTypes.number
 };

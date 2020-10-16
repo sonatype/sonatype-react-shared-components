@@ -4,36 +4,30 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, ReactElement } from 'react';
+import React, { forwardRef } from 'react';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
-const NxBinaryDonutChart = forwardRef<SVGElement, Props>(
-    function NxBinaryDonutChart(props): ReactElement<Props> {
-      const decimal = props.percent / 100;
-      const diameter = props.outerRadius * 2;
-      const strokeWidth = props.outerRadius - props.innerRadius;
-      const r = props.innerRadius + strokeWidth / 2;
-      const circumference = 2 * Math.PI * r;
-      const strokeDasharray = [decimal * circumference, (1.0 - decimal) * circumference];
-      const strokeDashoffset = (0.25 * circumference) - (1.0 - decimal) * circumference;
+import './NxBinaryDonutChart.scss';
+
+const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
+    function NxBinaryDonutChart(props, ref) {
+      const innerRadiusPercent = props.innerRadiusPercent || 0;
+
+      const strokeWidth = 100 - innerRadiusPercent;
+      const r = innerRadiusPercent + (strokeWidth / 2);
+      const circumfrence = 2 * Math.PI * r;
+      const strokeDasharray = [circumfrence * (100 - props.percent) / 100, circumfrence * props.percent / 100];
       return (
-        <svg width={diameter} height={diameter}>
-          <circle cx={props.outerRadius}
-                  cy={props.outerRadius}
+        <svg ref={ref} viewBox="-100 -100 200 200" {...props}>
+          <circle className="nx-binary-donut-chart-circle"
                   strokeWidth={strokeWidth}
-                  r={r}
-                  fill="none"
-                  stroke={props.fillColors[0]}>
+                  r={r}>
           </circle>
-          <circle cx={props.outerRadius}
-                  cy={props.outerRadius}
+          <circle className="nx-binary-donut-chart-circle"
                   strokeWidth={strokeWidth}
                   r={r}
-                  strokeDasharray={strokeDasharray.join(' ')}
-                  strokeDashoffset={strokeDashoffset}
-                  fill="none"
-                  stroke={props.fillColors[1]}>
+                  strokeDasharray={strokeDasharray.join(' ')}>
           </circle>
         </svg>
       );
