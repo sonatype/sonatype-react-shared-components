@@ -101,3 +101,9 @@ $nx-modal-padding: $nx-spacing-l;
     padding-bottom: $nx-spacing-l;
   }
 }
+
+.nx-modal {
+  .nx-footer {
+    padding-bottom: $nx-spacing-l;
+  }
+}
