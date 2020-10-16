@@ -19,7 +19,7 @@ export default function NxCardHorizontalExample() {
         <div className="nx-card__call-out">
           <span className="nx-card__call-out-text">42</span>
         </div>
-        <div className="nx-card__text">
+        <div className="nx-card__content">
           Text
         </div>
         <footer className="nx-card__footer">
@@ -33,7 +33,7 @@ export default function NxCardHorizontalExample() {
         <div className="nx-card__call-out">
           <NxFontAwesomeIcon icon={faShapes} />
         </div>
-        <div className="nx-card__text">
+        <div className="nx-card__content">
           Data point details
         </div>
         <footer className="nx-card__footer">
@@ -49,7 +49,7 @@ export default function NxCardHorizontalExample() {
         <div className="nx-card__call-out">
           <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
         </div>
-        <div className="nx-card__text">
+        <div className="nx-card__content">
           Large icon
         </div>
         <footer className="nx-card__footer">
@@ -67,7 +67,7 @@ export default function NxCardHorizontalExample() {
         <div className="nx-card__call-out">
           <span className="nx-card__call-out-text">XX%</span>
         </div>
-        <div className="nx-card__text">
+        <div className="nx-card__content">
           Descriptive text
         </div>
         <footer className="nx-card__footer">
@@ -78,7 +78,7 @@ export default function NxCardHorizontalExample() {
         <header className="nx-card__header">
           <h3 className="nx-h3 nx-h3--card-header">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
         </header>
-        <div className="nx-card__text">
+        <div className="nx-card__content">
           Marketing systemic math- hotdog saturation
           systemic
         </div>
@@ -93,7 +93,7 @@ export default function NxCardHorizontalExample() {
         <div className="nx-card__call-out">
           <span className="nx-card__call-out-text">XXX%</span>
         </div>
-        <div className="nx-card__text">
+        <div className="nx-card__content">
           City advert motion apophenia film skyscraper sentient beef
         </div>
       </section>

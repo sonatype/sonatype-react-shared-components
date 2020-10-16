@@ -20,7 +20,7 @@ export default function NxCardVerticalExample() {
           <div className="nx-card__call-out">
             <span className="nx-card__call-out-text">42</span>
           </div>
-          <div className="nx-card__text">
+          <div className="nx-card__content">
             Text
           </div>
           <footer className="nx-card__footer">
@@ -34,7 +34,7 @@ export default function NxCardVerticalExample() {
           <div className="nx-card__call-out">
             <NxFontAwesomeIcon icon={faShapes} />
           </div>
-          <div className="nx-card__text">
+          <div className="nx-card__content">
             Data point details
           </div>
           <footer className="nx-card__footer">
@@ -46,11 +46,9 @@ export default function NxCardVerticalExample() {
             <h3 className="nx-h3">Card header</h3>
           </header>
           <div className="nx-card__call-out">
-            <div className="nx-btn-bar">
-              <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
-            </div>
+            <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
           </div>
-          <div className="nx-card__text">
+          <div className="nx-card__content">
             Large icon
           </div>
           <footer className="nx-card__footer">
@@ -64,7 +62,7 @@ export default function NxCardVerticalExample() {
           <div className="nx-card__call-out">
             <span className="nx-card__call-out-text">XX%</span>
           </div>
-          <div className="nx-card__text">
+          <div className="nx-card__content">
             Descriptive text
           </div>
           <footer className="nx-card__footer">
@@ -78,7 +76,7 @@ export default function NxCardVerticalExample() {
           <div className="nx-card__call-out">
             <NxFontAwesomeIcon icon={faChartLine}/>
           </div>
-          <div className="nx-card__text">
+          <div className="nx-card__content">
             Marketing systemic math- hotdog saturation point nodal point footage disposable singularity order-flow
             systemic
           </div>
@@ -96,7 +94,7 @@ export default function NxCardVerticalExample() {
           <div className="nx-card__call-out">
             <span className="nx-card__call-out-text">XXX%</span>
           </div>
-          <div className="nx-card__text">
+          <div className="nx-card__content">
             City advert motion apophenia film skyscraper sentient beef noodles industrial grade motion tanto BASE jump
             girl realism
           </div>
@@ -137,8 +135,18 @@ export default function NxCardVerticalExample() {
           <div className="nx-card__call-out">
             <NxFontAwesomeIcon icon={faShapes} className="nx-icon" />
           </div>
-          <div className="nx-card__text">
+          <div className="nx-card__content">
             Sentient noodles
+          </div>
+        </section>
+      </div>
+      <div className="nx-card-container nx-card-container--row">
+        <section className="nx-card">
+          <header className="nx-card__header">
+            <h3 className="nx-h3 nx-h3--card-header">3D-printed voodoo</h3>
+          </header>
+          <div className="nx-card__content">
+            Hotdog saturation point
           </div>
         </section>
       </div>

@@ -17,11 +17,11 @@ export default function NxCardVerticalAltExample() {
           <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
           </header>
-          <div className="nx-card__content">
+          <div className="nx-card__content-container">
             <div className="nx-card__call-out">
               <span className="nx-card__call-out-text">42</span>
             </div>
-            <div className="nx-card__text">
+            <div className="nx-card__content">
               Text
             </div>
           </div>
@@ -31,11 +31,11 @@ export default function NxCardVerticalAltExample() {
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
-          <div className="nx-card__content">
+          <div className="nx-card__content-container">
             <div className="nx-card__call-out">
               <NxFontAwesomeIcon icon={faChartLine} />
             </div>
-            <div className="nx-card__text">
+            <div className="nx-card__content">
               Data point details
             </div>
           </div>
@@ -45,11 +45,11 @@ export default function NxCardVerticalAltExample() {
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
-          <div className="nx-card__content">
+          <div className="nx-card__content-container">
             <div className="nx-card__call-out">
               <NxFontAwesomeIcon icon={faShapes} className="nx-icon--large" />
             </div>
-            <div className="nx-card__text">
+            <div className="nx-card__content">
               Large icon
             </div>
           </div>
