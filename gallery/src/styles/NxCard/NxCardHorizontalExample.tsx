@@ -62,7 +62,7 @@ export default function NxCardHorizontalExample() {
       </section>
       <section className="nx-card">
         <header className="nx-card__header">
-          <h3 className="nx-h3 nx-h3--card-header">Card header</h3>
+          <h3 className="nx-h3">Card header</h3>
         </header>
         <div className="nx-card__call-out">
           <span className="nx-card__call-out-text">XX%</span>
@@ -76,7 +76,7 @@ export default function NxCardHorizontalExample() {
       </section>
       <section className="nx-card">
         <header className="nx-card__header">
-          <h3 className="nx-h3 nx-h3--card-header">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
+          <h3 className="nx-h3">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
         </header>
         <div className="nx-card__content">
           Marketing systemic math- hotdog saturation
@@ -88,7 +88,7 @@ export default function NxCardHorizontalExample() {
       </section>
       <section className="nx-card">
         <header className="nx-card__header">
-          <h3 className="nx-h3 nx-h3--card-header">Render-farm dolphin beef noodles</h3>
+          <h3 className="nx-h3">Render-farm dolphin beef noodles</h3>
         </header>
         <div className="nx-card__call-out">
           <span className="nx-card__call-out-text">XXX%</span>
