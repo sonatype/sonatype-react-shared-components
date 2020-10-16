@@ -104,7 +104,7 @@
 
 .nx-list--bulleted {
   border-top: none;
-  margin: 0;
+  margin: $nx-spacing-md 0 $nx-spacing-l 0;
   padding: 0 0 0 26px;
 
   .nx-list__item {
@@ -123,6 +123,7 @@
     }
 
     .nx-list {
+      margin: 0;
       padding: 0 0 0 14px;
     }
 

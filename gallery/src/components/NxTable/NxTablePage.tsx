@@ -23,10 +23,12 @@ import NxTableLoadingExample from './NxTableLoadingExample';
 import NxTableErrorExample from './NxTableErrorExample';
 import NxTableEmptyExample from './NxTableEmptyExample';
 import NxTableMetaInfoExample from './NxTableMetaInfoExample';
+import NxTableFilterExample from './NxTableFilterExample';
 
 const tableSimpleExampleCode = require('!!raw-loader!./NxTableSimpleExample').default;
 const tableClickableExample = require('!!raw-loader!./NxTableClickableExample').default;
 const tableSortableExample = require('!!raw-loader!./NxTableSortableExample').default;
+const tableFilterExample = require('!!raw-loader!./NxTableFilterExample').default;
 const tableLoadingExample = require('!!raw-loader!./NxTableLoadingExample').default;
 const tableErrorExample = require('!!raw-loader!./NxTableErrorExample').default;
 const tableEmptyExample = require('!!raw-loader!./NxTableEmptyExample').default;
@@ -213,6 +215,16 @@ export default function NxTablePage() {
                   self-populate with the icon, and do not take <code className="nx-code">children</code>.
                 </NxTableCell>
               </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>isFilterHeader</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>
+                  Used to indicate a table header cell contains a filter. When a table supports filtering,
+                  it should include a second row within the <code className="nx-code">thead</code>
+                  (<code className="nx-code">NxTableHead</code>) which contains the filter header cells.
+                </NxTableCell>
+              </NxTableRow>
             </NxTableBody>
           </NxTable>
         </section>
@@ -241,6 +253,17 @@ export default function NxTablePage() {
                           liveExample={NxTableSortableExample}
                           codeExamples={tableSortableExample}>
         An example with a sortable column.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Filter Columns Example"
+                          id="nx-table-filter-example"
+                          liveExample={NxTableFilterExample}
+                          codeExamples={tableFilterExample}>
+        An example with filter columns.
+        The first column has a basic filter input, the rows will be filteredx
+        if any name contains the text provided in the input.
+        The second column has a filter input which provides a suggestion capability, the rows will be filtered
+        when the country contains the text provided in the input.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Loading Example"

@@ -33,4 +33,8 @@ describe('NxTableRow', function () {
   it('does not set the isHeader property on children if prop is not supplied', function () {
     expect(shallow(<NxTableRow><NxTableCell /></NxTableRow>)).toContainReact(<NxTableCell isHeader={false} />);
   });
+
+  it('sets the filter header class', function() {
+    expect(shallow(<NxTableRow isFilterHeader />)).toMatchSelector('tr.nx-table-row--filter-header');
+  });
 });
