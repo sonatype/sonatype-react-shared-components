@@ -7,9 +7,17 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import NxBinaryDonutChartExample from './NxBinaryDonutChartExample';
+import NxBinaryDonutChartMinimalExample from './NxBinaryDonutChartMinimalExample';
+import NxBinaryDonutChartNoHoleExample from './NxBinaryDonutChartNoHoleExample';
+import NxBinaryDonutChartLargeHoleExample from './NxBinaryDonutChartLargeHoleExample';
+import NxBinaryDonutChartSkewedExample from './NxBinaryDonutChartSkewedExample';
 
-const nxBinaryDonutChartExampleCode = require('!!raw-loader!./NxBinaryDonutChartExample').default;
+import './NxBinaryDonutChartPage.scss';
+
+const nxBinaryDonutChartMinimalExampleCode = require('!!raw-loader!./NxBinaryDonutChartMinimalExample').default;
+const nxBinaryDonutChartNoHoleExample = require('!!raw-loader!./NxBinaryDonutChartNoHoleExample').default;
+const nxBinaryDonutChartLargeHoleExample = require('!!raw-loader!./NxBinaryDonutChartLargeHoleExample').default;
+const nxBinaryDonutChartSkewedExample = require('!!raw-loader!./NxBinaryDonutChartSkewedExample').default;
 
 const NxBinaryDonutChartPage = () =>
   <>
@@ -19,10 +27,31 @@ const NxBinaryDonutChartPage = () =>
       </p>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="General Example"
-                        codeExamples={nxBinaryDonutChartExampleCode}
-                        liveExample={NxBinaryDonutChartExample}>
-        This example demonstrates the display of an NxBinaryDonutChart.
+    <GalleryExampleTile title="Minimal Example"
+                        className="nx-binary-donut-chart-examples"
+                        codeExamples={nxBinaryDonutChartMinimalExampleCode}
+                        liveExample={NxBinaryDonutChartMinimalExample}>
+        A minimal example of a <code className="nx-code">NxBinaryDonutChart</code>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with no Hole"
+                        className="nx-binary-donut-chart-examples"
+                        codeExamples={nxBinaryDonutChartNoHoleExample}
+                        liveExample={NxBinaryDonutChartNoHoleExample}>
+        An example of a <code className="nx-code">NxBinaryDonutChart</code> without a hole i.e. a pie chart.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with a Large Hole"
+                        className="nx-binary-donut-chart-examples"
+                        codeExamples={nxBinaryDonutChartLargeHoleExample}
+                        liveExample={NxBinaryDonutChartLargeHoleExample}>
+        An example of a <code className="nx-code">NxBinaryDonutChart</code> with a large hole.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Skewed Example"
+                        codeExamples={nxBinaryDonutChartSkewedExample}
+                        liveExample={NxBinaryDonutChartSkewedExample}>
+        An example of a <code className="nx-code">NxBinaryDonutChart</code> which is skewed.
     </GalleryExampleTile>
   </>;
 

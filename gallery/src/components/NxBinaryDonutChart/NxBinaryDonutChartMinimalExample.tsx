@@ -1,19 +1,12 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-colors';
+import React from 'react';
+import { NxBinaryDonutChart } from '@sonatype/react-shared-components';
 
-.nx-binary-donut-chart-circle {
-  fill: none;
-  transform: rotate(-90deg);
-
-  &:nth-of-type(1) {
-    stroke: $nx-dark-blue;
-  }
-  &:nth-of-type(2) {
-    stroke: $nx-light-blue;
-  }
+export default function NxBinaryDonutChartMinimalExample() {
+  return <NxBinaryDonutChart percent={90} />;
 }

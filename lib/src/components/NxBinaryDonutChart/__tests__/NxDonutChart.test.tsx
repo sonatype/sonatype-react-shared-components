@@ -9,44 +9,27 @@ import NxBinaryDonutChart from '../NxBinaryDonutChart';
 
 describe('NxBinaryDonutChart', function() {
   const minimalProps = {
-    percent: 90,
-    outerRadius: 30,
-    innerRadius: 10,
-    fillColors: ['#97cbed', '#006bbf']
+    percent: 90
   };
   const getShallowComponent = enzymeUtils.getShallowComponent(NxBinaryDonutChart, minimalProps);
 
   it('renders an svg with the expected properties', function() {
-    const diameter = minimalProps.outerRadius * 2;
-
     expect(getShallowComponent()).toMatchSelector('svg');
-    expect(getShallowComponent()).toHaveProp('width', diameter);
-    expect(getShallowComponent()).toHaveProp('height', diameter);
+    expect(getShallowComponent()).toHaveProp('viewBox', '-100 -100 200 200');
   });
 
   it('renders circles with the expected properties', function() {
-    const decimal = minimalProps.percent / 100;
-    const strokeWidth = minimalProps.outerRadius - minimalProps.innerRadius;
-    const r = minimalProps.innerRadius + strokeWidth / 2;
-    const circumference = 2 * Math.PI * r;
-    const strokeDasharray = [decimal * circumference, (1.0 - decimal) * circumference];
-    const strokeDashoffset = (0.25 * circumference) - (1.0 - decimal) * circumference;
+    const strokeDasharray = [(100 - minimalProps.percent), minimalProps.percent];
 
     const circles = getShallowComponent().find('circle');
 
     expect(circles.length).toBe(2);
-    circles.forEach(circle => {
-      expect(circle).toHaveProp('cx', minimalProps.outerRadius);
-      expect(circle).toHaveProp('cy', minimalProps.outerRadius);
-      expect(circle).toHaveProp('strokeWidth', strokeWidth);
-      expect(circle).toHaveProp('r', r);
-      expect(circle).toHaveProp('fill', 'none');
+    circles.forEach((circle: object) => {
+      expect(circle).toHaveClassName('.nx-binary-donut-chart-circle');
+      expect(circle).toHaveProp('strokeWidth', 50);
+      expect(circle).toHaveProp('r', 75);
     });
-    // First circle shows the other percent
-    expect(circles.at(0)).toHaveProp('stroke', minimalProps.fillColors[0]);
-    // Second circle shows the percent
-    expect(circles.at(1)).toHaveProp('stroke', minimalProps.fillColors[1]);
+    expect(circles.at(1)).toHaveProp('pathLength', '100');
     expect(circles.at(1)).toHaveProp('strokeDasharray', strokeDasharray.join(' '));
-    expect(circles.at(1)).toHaveProp('strokeDashoffset', strokeDashoffset);
   });
 });
