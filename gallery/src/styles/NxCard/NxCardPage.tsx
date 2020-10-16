@@ -20,10 +20,9 @@ const NxCardPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        Cards can be displayed in two orientations, vertical and horizontal. The vertical and horizontal cards can be
-        transformed into one another with a simple class change on their container. There is also a vertical variant
-        supplied which displays the call out and description text side-by-side when the content allows, these cannot be
-        transformed into horizontal cards.
+        Cards can be displayed in two orientations: rows and columns. Cards can be transformed between rows and columns
+        with a simple class change on their container. There is also a row variant supplied which displays the call out
+        and cosntent side-by-side, this variant cannot be transformed into column oriented cards.
       </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
@@ -45,17 +44,17 @@ const NxCardPage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-card-container--row</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-card-container</code></td>
             <td className="nx-cell">
-              Container for vertically orientated cards (normal and variant). Normal vertical cards can be transformed
-              into horizontal cards by replacing this style with
-              {' '}<code className="nx-code">.nx-card-container--column</code> below.
+              Container for cards that are displayed in row(s), both normal and variant layouts. Rows can be
+              transformed into columns by replacing this style with
+              <code className="nx-code">.nx-card-container--column</code> below.
             </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card-container--column</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-card-container</code></td>
             <td className="nx-cell">
-              Container for horizontally orientated cards. Horizontal cards can be transformed into vertical cards by
-              replacing this style with <code className="nx-code">.nx-card-container--row</code> above.
+              Container for cards that are displayed in a column. Cards displayed in a column can be transformed
+              into rows by replacing this style with <code className="nx-code">.nx-card-container--row</code> above.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -99,22 +98,13 @@ const NxCardPage = () =>
             <td className="nx-cell">Card footer. Typically provides a link to more information.</td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card--vertical-alt</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card</code></td>
-            <td className="nx-cell">
-              In order to use the variant vertical layout this class should be applied to
-              {' '}<code className="nx-code">.nx-card</code> in conjunction with a
-              {' '}<code className="nx-code">&lt;div&gt;</code> wrapping the call out and description text.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__content</code></td>
             <td className="nx-cell">Wrapping element</td>
             <td className="nx-cell">
               <code className="nx-code">.nx-card__content</code> applied to a
               {' '}<code className="nx-code">&lt;div&gt;</code> wraps
               {' '}<code className="nx-code">.nx-card__call-out</code> and
-              {' '}<code className="nx-code">.nx-card__call-out-text</code> in the alternate vertical card layout.
+              {' '}<code className="nx-code">.nx-card__call-out-text</code> in the alternate row card layout.
             </td>
           </tr>
         </tbody>
@@ -126,17 +116,8 @@ const NxCardPage = () =>
                         liveExample={NxCardVerticalExample}
                         codeExamples={nxCardVerticalCode}
                         defaultCheckeredBackground={true}>
-      Cards shown in vertical orientation. While we have shown some content heavy examples it is recomended to keep the
-      content as minimal as possible. The orientation of the cards is determined by a class applied to their container.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Horizontal Card"
-                        id="nx-card-horizontal-example"
-                        liveExample={NxCardHorizontalExample}
-                        codeExamples={nxCardHorizontalCode}
-                        defaultCheckeredBackground={true}>
-      Cards shown in horizontal orientation. The orientation of the cards is determined by a class applied to their
-      container.
+      Cards shown in a row layout. While we have shown some content heavy examples it is recomended to keep the
+      content as minimal as possible. The layout of the cards is determined by a class applied to their container.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Alternate Vertical Card"
@@ -144,8 +125,17 @@ const NxCardPage = () =>
                         liveExample={NxCardVerticalAltExample}
                         codeExamples={nxCardVerticalAltCode}
                         defaultCheckeredBackground={true}>
-      This variation of the vertical cards has the callout and the description text side-by-side (when content allows).
-      It cannot be transformed into a horizontal card with a simple class change.
+      This variation of the row layout has the callout and the description text side-by-side (when content allows).
+      It cannot be transformed into a column layout with a simple class change.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Horizontal Card"
+                        id="nx-card-horizontal-example"
+                        liveExample={NxCardHorizontalExample}
+                        codeExamples={nxCardHorizontalCode}
+                        defaultCheckeredBackground={true}>
+      Cards shown in column layout. The layout of the cards is determined by a class applied to their
+      container.
     </GalleryExampleTile>
   </>;
 

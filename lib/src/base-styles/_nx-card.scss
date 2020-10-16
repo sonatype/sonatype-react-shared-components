@@ -155,12 +155,10 @@
 
 // Styles for the alternate vertical style
 .nx-card-container--row {
-  .nx-card--vertical-alt {
-    .nx-card__content-container {
-      align-items: center;
-      display: flex;
-      column-gap: 24px;
-    }
+  .nx-card__content-container {
+    align-items: center;
+    display: flex;
+    column-gap: 24px;
 
     .nx-card__call-out {
       @include container-horizontal;

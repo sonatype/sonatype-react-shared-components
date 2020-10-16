@@ -12,7 +12,7 @@ import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 export default function NxCardVerticalAltExample() {
   return (
     <div className="nx-card-container nx-card-container--row">
-      <section className="nx-card nx-card--vertical-alt">
+      <section className="nx-card">
         <header className="nx-card__header">
           <h3 className="nx-h3">Header</h3>
         </header>
@@ -26,7 +26,7 @@ export default function NxCardVerticalAltExample() {
         </div>
         <footer className="nx-card__footer"><a href="nx-text-link">Link</a></footer>
       </section>
-      <section className="nx-card nx-card--vertical-alt">
+      <section className="nx-card">
         <header className="nx-card__header">
           <h3 className="nx-h3">Card header</h3>
         </header>
@@ -40,7 +40,7 @@ export default function NxCardVerticalAltExample() {
         </div>
         <footer className="nx-card__footer"><a href="nx-text-link">Link</a></footer>
       </section>
-      <section className="nx-card nx-card--vertical-alt">
+      <section className="nx-card">
         <header className="nx-card__header">
           <h3 className="nx-h3">Card header</h3>
         </header>
