@@ -125,8 +125,8 @@ const NxCardPage = () =>
                         liveExample={NxCardVerticalAltExample}
                         codeExamples={nxCardVerticalAltCode}
                         defaultCheckeredBackground={true}>
-      This variation of the row layout has the callout and the description text side-by-side (when content allows).
-      It cannot be transformed into a column layout with a simple class change.
+      This variation of the row layout has the callout and the description text side-by-side. It cannot be transformed
+      into a column layout with a simple class change.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Horizontal Card"
