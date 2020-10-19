@@ -19,6 +19,7 @@ $nx-modal-padding: $nx-spacing-l;
   border-radius: $nx-border-radius;
   background-color: #ffffff;
   margin: 100px 0;
+  padding: $nx-spacing-l 0;
   width: 800px;
 
   .nx-footer {
@@ -50,7 +51,7 @@ $nx-modal-padding: $nx-spacing-l;
 
   border-bottom: 1px solid #d1d6f0;
   margin: 0 $nx-modal-padding;
-  padding: $nx-modal-padding 0 $nx-spacing-l 0;
+  padding: 0 0 $nx-spacing-l 0;
 
   .nx-h2 {
     @include nx-truncate-ellipsis;
@@ -98,12 +99,6 @@ $nx-modal-padding: $nx-spacing-l;
   .nx-tab-panel {
     flex-shrink: 1;
     overflow-y: auto;
-    padding-bottom: $nx-spacing-l;
-  }
-}
-
-.nx-modal {
-  .nx-footer {
     padding-bottom: $nx-spacing-l;
   }
 }
