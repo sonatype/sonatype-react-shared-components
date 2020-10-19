@@ -8,13 +8,13 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxCardVerticalExample from './NxCardVerticalExample';
-import NxCardHorizontalExample from './NxCardHorizontalExample';
-import NxCardVerticalAltExample from './NxCardVerticalAlternateExample';
+import NxCardRowLayoutExample from './NxCardRowLayoutExample';
+import NxCardColumnLayoutExample from './NxCardColumnLayoutExample';
+import NxCardRowAltLayoutExample from './NxCardRowAltLayoutExample';
 
-const nxCardVerticalCode = require('!!raw-loader!./NxCardVerticalExample').default,
-    nxCardHorizontalCode = require('!!raw-loader!./NxCardHorizontalExample').default,
-    nxCardVerticalAltCode = require('!!raw-loader!./NxCardVerticalAlternateExample').default;
+const nxCardRowLayoutCode = require('!!raw-loader!./NxCardRowLayoutExample').default,
+    nxCardColumnLayoutCode = require('!!raw-loader!./NxCardColumnLayoutExample').default,
+    nxCardRowAltLayoutCode = require('!!raw-loader!./NxCardRowAltLayoutExample').default;
 
 const NxCardPage = () =>
   <>
@@ -111,28 +111,28 @@ const NxCardPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Vertical Card"
-                        id="nx-card-vertical-example"
-                        liveExample={NxCardVerticalExample}
-                        codeExamples={nxCardVerticalCode}
+    <GalleryExampleTile title="Card Row Layout"
+                        id="nx-card-row-example"
+                        liveExample={NxCardRowLayoutExample}
+                        codeExamples={nxCardRowLayoutCode}
                         defaultCheckeredBackground={true}>
       Cards shown in a row layout. While we have shown some content heavy examples it is recomended to keep the
       content as minimal as possible. The layout of the cards is determined by a class applied to their container.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Alternate Vertical Card"
-                        id="nx-card-vertical-alt-example"
-                        liveExample={NxCardVerticalAltExample}
-                        codeExamples={nxCardVerticalAltCode}
+    <GalleryExampleTile title="Card Row Layout Alternate"
+                        id="nx-card-row-alt-example"
+                        liveExample={NxCardRowAltLayoutExample}
+                        codeExamples={nxCardRowAltLayoutCode}
                         defaultCheckeredBackground={true}>
       This variation of the row layout has the callout and the description text side-by-side. It cannot be transformed
       into a column layout with a simple class change.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Horizontal Card"
-                        id="nx-card-horizontal-example"
-                        liveExample={NxCardHorizontalExample}
-                        codeExamples={nxCardHorizontalCode}
+    <GalleryExampleTile title="Card Column Layout"
+                        id="nx-card-column-example"
+                        liveExample={NxCardColumnLayoutExample}
+                        codeExamples={nxCardColumnLayoutCode}
                         defaultCheckeredBackground={true}>
       Cards shown in column layout. The layout of the cards is determined by a class applied to their
       container.

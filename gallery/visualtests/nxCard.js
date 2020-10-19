@@ -11,19 +11,19 @@ describe('nx-card', function() {
     await browser.url('#/pages/nx-card');
   });
 
-  const verticalCardSelector = '#nx-card-vertical-example .gallery-example-live',
-      horizontalCardSelector = '#nx-card-horizontal-example .gallery-example-live',
-      verticalCardAltSelector = '#nx-card-vertical-alt-example .gallery-example-live';
+  const rowLayoutCardSelector = '#nx-card-row-example .gallery-example-live',
+      columnLayoutCardSelector = '#nx-card-column-example .gallery-example-live',
+      altRowLayoutCardSelector = '#nx-card-row-alt-example .gallery-example-live';
 
-  describe('nx-card vertical layout', function() {
-    it('looks right', simpleTestLongElement(verticalCardSelector));
+  describe('nx-card row layout', function() {
+    it('looks right', simpleTestLongElement(rowLayoutCardSelector));
   });
 
-  describe('nx-card horizontal layout', function() {
-    it('looks right', simpleTestLongElement(horizontalCardSelector));
+  describe('nx-card column layout', function() {
+    it('looks right', simpleTestLongElement(columnLayoutCardSelector));
   });
 
-  describe('nx-card vertical alternate layout', function() {
-    it('looks right', simpleTest(verticalCardAltSelector));
+  describe('nx-card alternate row layout', function() {
+    it('looks right', simpleTest(altRowLayoutCardSelector));
   });
 });

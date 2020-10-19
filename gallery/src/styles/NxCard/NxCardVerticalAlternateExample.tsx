@@ -9,7 +9,7 @@ import { faShapes, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
-export default function NxCardVerticalAltExample() {
+export default function NxCardRowAltLayoutExample() {
   return (
     <div className="nx-card-container nx-card-container--row">
       <section className="nx-card">

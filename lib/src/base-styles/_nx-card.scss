@@ -33,7 +33,6 @@
   font-size: 32px;
 }
 
-// Vertically oriented cards appear in a row container
 .nx-card-container--row {
   display: flex;
   -ms-flex-wrap: wrap;
@@ -79,7 +78,6 @@
   }
 }
 
-// Horizontally orientated cards appear in a column
 .nx-card-container--column {
   @include container-vertical;
 
@@ -153,7 +151,7 @@
   }
 }
 
-// Styles for the alternate vertical style
+// Styles for the alternate row layout
 .nx-card-container--row {
   .nx-card__content-container {
     align-items: center;

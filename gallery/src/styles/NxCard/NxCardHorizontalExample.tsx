@@ -9,7 +9,7 @@ import { faShapes, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { NxFontAwesomeIcon, NxButton } from '@sonatype/react-shared-components';
 
-export default function NxCardHorizontalExample() {
+export default function NxCardColumnLayoutExample() {
   return (
     <div className="nx-card-container nx-card-container--column">
       <section className="nx-card">
