@@ -1,0 +1,177 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+.nx-card-container {
+  margin: $nx-spacing-md 0;
+}
+
+.nx-card {
+  background-color: #fff;
+  border-radius: $nx-border-radius;
+  box-sizing: border-box;
+  margin-bottom: $nx-spacing-md;
+  padding: $nx-spacing-l $nx-spacing-xxl;
+}
+
+.nx-card__call-out {
+  @include bold();
+
+  font-size: 32px;
+
+  .nx-icon--card-call-out {
+    font-size: 48px;
+  }
+
+  .nx-icon--card-call-out-xl {
+    font-size: 64px;
+  }
+}
+
+.nx-card-container--row {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+
+  + .nx-card-container--row {
+    margin-top: 0;
+  }
+
+  .nx-card {
+    @include container-vertical;
+    display: flex;
+    flex-direction: column;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-right: $nx-spacing-md;
+    text-align: center;
+    min-width: 230px;
+    max-width: 330px;
+  }
+
+  .nx-card__header {
+    @include container-vertical;
+    margin-bottom: $nx-spacing-md;
+  }
+
+  .nx-card__call-out {
+    + .nx-card__content {
+      margin-top: $nx-spacing-md;
+    }
+  }
+
+  .nx-card__call-out--text-only {
+    + .nx-card__content {
+      margin-top: $nx-spacing-xs;
+    }
+  }
+
+  .nx-card__footer {
+    border-top: 1px solid #d1d6f0;
+    margin-top: $nx-spacing-l;
+    padding-top: $nx-spacing-l;
+    width: 100%;
+
+    > .nx-btn-bar {
+      text-align: center;
+    }
+  }
+}
+
+.nx-card-container--column {
+  @include container-vertical;
+
+  .nx-card {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto;
+    -ms-grid-rows: auto auto;
+    grid-template-areas:
+      "card-callout card-title card-footer"
+      "card-callout card-text card-footer";
+  }
+
+  .nx-card__header {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: card-title;
+
+    @include container-vertical;
+    margin: 0 0 $nx-spacing-md 0;
+    padding: 0;
+  }
+
+  .nx-card__content {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: card-text;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nx-card__call-out {
+    -ms-grid-row-align: center;
+    align-self: center;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 1;
+    grid-area: card-callout;
+    -ms-grid-column-align: center;
+    justify-self: center;
+
+    align-items: center;
+    border-right: 1px solid #d1d6f0;
+    display: flex;
+    height: 100%;
+    margin: 0 $nx-spacing-xxl 0 0;
+    padding: 0 $nx-spacing-xxl 0 0;
+  }
+
+  .nx-card__footer {
+    -ms-grid-row-align: center;
+    align-self: center;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 3;
+    grid-area: card-footer;
+    -ms-grid-column-align: start;
+    justify-self: start;
+
+    @include container-horizontal;
+    align-items: center;
+    border: none;
+    border-left: 1px solid #d1d6f0;
+    display: flex;
+    height: 100%;
+    margin: 0 0 0 $nx-spacing-xxl;
+    padding: 0 0 0 $nx-spacing-xxl;
+    // necessary to make the link wrap
+    max-width: 150px;
+  }
+}
+
+// Styles for the alternate row layout
+.nx-card-container--row {
+  .nx-card__content-container {
+    align-items: center;
+    display: flex;
+    column-gap: 24px;
+
+    .nx-card__call-out {
+      @include container-horizontal;
+      flex-grow: 1;
+      text-align: right;
+    }
+
+    .nx-card__content {
+      flex-grow: 1;
+      margin-top: 0;
+      text-align: left;
+    }
+  }
+}
