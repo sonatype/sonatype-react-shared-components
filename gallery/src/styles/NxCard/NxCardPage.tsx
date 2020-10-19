@@ -22,7 +22,7 @@ const NxCardPage = () =>
       <p className="nx-p">
         Cards can be displayed in two orientations: rows and columns. Cards can be transformed between rows and columns
         with a simple class change on their container. There is also a row variant supplied which displays the call out
-        and cosntent side-by-side, this variant cannot be transformed into column oriented cards.
+        and content side-by-side, this variant cannot be transformed into column oriented cards.
       </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
