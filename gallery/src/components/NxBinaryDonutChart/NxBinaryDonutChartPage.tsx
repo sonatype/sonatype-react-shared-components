@@ -10,14 +10,10 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxBinaryDonutChartMinimalExample from './NxBinaryDonutChartMinimalExample';
 import NxBinaryDonutChartNoHoleExample from './NxBinaryDonutChartNoHoleExample';
 import NxBinaryDonutChartLargeHoleExample from './NxBinaryDonutChartLargeHoleExample';
-import NxBinaryDonutChartSkewedExample from './NxBinaryDonutChartSkewedExample';
-
-import './NxBinaryDonutChartPage.scss';
 
 const nxBinaryDonutChartMinimalExampleCode = require('!!raw-loader!./NxBinaryDonutChartMinimalExample').default;
 const nxBinaryDonutChartNoHoleExample = require('!!raw-loader!./NxBinaryDonutChartNoHoleExample').default;
 const nxBinaryDonutChartLargeHoleExample = require('!!raw-loader!./NxBinaryDonutChartLargeHoleExample').default;
-const nxBinaryDonutChartSkewedExample = require('!!raw-loader!./NxBinaryDonutChartSkewedExample').default;
 
 const NxBinaryDonutChartPage = () =>
   <>
@@ -46,12 +42,6 @@ const NxBinaryDonutChartPage = () =>
                         codeExamples={nxBinaryDonutChartLargeHoleExample}
                         liveExample={NxBinaryDonutChartLargeHoleExample}>
         An example of a <code className="nx-code">NxBinaryDonutChart</code> with a large hole.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Skewed Example"
-                        codeExamples={nxBinaryDonutChartSkewedExample}
-                        liveExample={NxBinaryDonutChartSkewedExample}>
-        An example of a <code className="nx-code">NxBinaryDonutChart</code> which is skewed.
     </GalleryExampleTile>
   </>;
 

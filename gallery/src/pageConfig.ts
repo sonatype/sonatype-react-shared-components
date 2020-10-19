@@ -77,6 +77,7 @@ const pageConfig: PageConfig = {
     NxAlert: NxAlertComponentsPage,
     NxStatefulAlert: NxStatefulAlertComponentsPage,
     NxBackButton: NxBackButtonPage,
+    NxBinaryDonutChart: NxBinaryDonutChartPage,
     NxButton: NxButtonPage,
     NxCheckbox: NxCheckboxPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
@@ -106,8 +107,7 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
-    NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
-    NxBinaryDonutChart: NxBinaryDonutChartPage
+    NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,

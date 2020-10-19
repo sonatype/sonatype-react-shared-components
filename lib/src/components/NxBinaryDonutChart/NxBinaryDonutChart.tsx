@@ -12,24 +12,32 @@ import './NxBinaryDonutChart.scss';
 
 const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
     function NxBinaryDonutChart(props, ref) {
-      const innerRadiusPercent = props.innerRadiusPercent === 0 ? props.innerRadiusPercent :
-        (props.innerRadiusPercent || 50);
+      const { innerRadiusPercent, percent, ...svgAttrs } = props;
+      const innerRadiusPercentNotNull = innerRadiusPercent == null ? 50 : innerRadiusPercent;
 
-      const strokeWidth = 100 - innerRadiusPercent;
-      const r = innerRadiusPercent + (strokeWidth / 2);
-      const strokeDasharray = [(100 - props.percent), props.percent];
+      const strokeWidth = 100 - innerRadiusPercentNotNull;
+      const r = innerRadiusPercentNotNull + (strokeWidth / 2);
+
+      // Add 0.5π because we want the angle from the top of the circle, not the right
+      const arcEndAngle = (Math.PI / 2) + (2 * Math.PI * (percent / 100));
+      const arcEndX = r * Math.cos(arcEndAngle);
+      // Multiply by -1 because the y-axis origin (0,0) is at the top-left rather than bottom-left
+      const arcEndY = -1 * r * Math.sin(arcEndAngle);
+      const largeArc = percent > 50 ? 1 : 0;
+
       return (
-        <svg ref={ref} viewBox="-100 -100 200 200" {...props}>
-          <circle className="nx-binary-donut-chart-circle"
-                  strokeWidth={strokeWidth}
-                  r={r}>
-          </circle>
-          <circle className="nx-binary-donut-chart-circle"
-                  strokeWidth={strokeWidth}
-                  r={r}
-                  pathLength="100"
-                  strokeDasharray={strokeDasharray.join(' ')}>
-          </circle>
+        <svg ref={ref} viewBox="-100 -100 200 200" className="nx-binary-donut-chart" {...svgAttrs}>
+          { percent < 100 &&
+            <circle className="nx-binary-donut-chart__background" strokeWidth={strokeWidth} r={r}/>
+          }
+          { percent > 0 && percent < 100 &&
+            <path className="nx-binary-donut-chart__arc"
+                  d={`M 0 ${-r} A ${r} ${r} 0 ${largeArc} 0 ${arcEndX} ${arcEndY}`}
+                  strokeWidth={strokeWidth}/>
+          }
+          { percent === 100 &&
+            <circle className="nx-binary-donut-chart__arc" strokeWidth={strokeWidth} r={r}/>
+          }
         </svg>
       );
     }

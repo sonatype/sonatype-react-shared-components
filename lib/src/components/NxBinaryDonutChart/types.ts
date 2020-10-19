@@ -6,6 +6,7 @@
  */
 import { SVGAttributes } from 'react';
 import * as PropTypes from 'prop-types';
+import { requiredPercentNumber, optionalPercentNumber } from '../../util/customPropTypes';
 
 export interface Props extends SVGAttributes<SVGSVGElement>{
   percent: number;
@@ -13,6 +14,6 @@ export interface Props extends SVGAttributes<SVGSVGElement>{
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  percent: PropTypes.number.isRequired,
-  innerRadiusPercent: PropTypes.number
+  percent: requiredPercentNumber,
+  innerRadiusPercent: optionalPercentNumber
 };
