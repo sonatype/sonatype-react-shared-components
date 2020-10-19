@@ -17,8 +17,8 @@ export default function NxCardRowAltLayoutExample() {
           <h3 className="nx-h3">Header</h3>
         </header>
         <div className="nx-card__content-container">
-          <div className="nx-card__call-out">
-            <span className="nx-card__call-out-text">42</span>
+          <div className="nx-card__call-out nx-card__call-out--text-only">
+            42
           </div>
           <div className="nx-card__content">
             Text

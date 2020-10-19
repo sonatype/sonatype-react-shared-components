@@ -16,8 +16,8 @@ export default function NxCardColumnLayoutExample() {
         <header className="nx-card__header">
           <h3 className="nx-h3">Header</h3>
         </header>
-        <div className="nx-card__call-out">
-          <span className="nx-card__call-out-text">42</span>
+        <div className="nx-card__call-out nx-card__call-out--text-only">
+          42
         </div>
         <div className="nx-card__content">
           Text
@@ -64,8 +64,8 @@ export default function NxCardColumnLayoutExample() {
         <header className="nx-card__header">
           <h3 className="nx-h3">Card header</h3>
         </header>
-        <div className="nx-card__call-out">
-          <span className="nx-card__call-out-text">XX%</span>
+        <div className="nx-card__call-out nx-card__call-out--text-only">
+          XX%
         </div>
         <div className="nx-card__content">
           Descriptive text
@@ -90,8 +90,8 @@ export default function NxCardColumnLayoutExample() {
         <header className="nx-card__header">
           <h3 className="nx-h3">Render-farm dolphin beef noodles</h3>
         </header>
-        <div className="nx-card__call-out">
-          <span className="nx-card__call-out-text">XXX%</span>
+        <div className="nx-card__call-out nx-card__call-out--text-only">
+          XXX%
         </div>
         <div className="nx-card__content">
           City advert motion apophenia film skyscraper sentient beef

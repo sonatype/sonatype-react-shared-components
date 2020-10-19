@@ -17,7 +17,7 @@ export default function NxCardRowLayoutExample() {
           <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
           </header>
-          <div className="nx-card__call-out">
+          <div className="nx-card__call-out nx-card__call-out--text-only">
             42
           </div>
           <div className="nx-card__content">
@@ -59,7 +59,7 @@ export default function NxCardRowLayoutExample() {
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">Card header</h3>
           </header>
-          <div className="nx-card__call-out">
+          <div className="nx-card__call-out nx-card__call-out--text-only">
             XX%
           </div>
           <div className="nx-card__content">
@@ -91,7 +91,7 @@ export default function NxCardRowLayoutExample() {
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">Render-farm dolphin beef noodles</h3>
           </header>
-          <div className="nx-card__call-out">
+          <div className="nx-card__call-out nx-card__call-out--text-only">
             XXX%
           </div>
           <div className="nx-card__content">
