@@ -87,14 +87,6 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card__call-out-text</code></td>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">
-              In the case where the call out consists of text (e.g. 99%) it should be wrapped in this class (typically
-              in a <code className="nx-code">&lt;span&gt;</code>).
-            </td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__text</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">Free-form text. Should be concise.</td>
