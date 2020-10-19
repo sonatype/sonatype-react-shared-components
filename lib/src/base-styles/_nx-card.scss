@@ -64,6 +64,12 @@
     }
   }
 
+  .nx-card__call-out--text-only {
+    + .nx-card__content {
+      margin-top: $nx-spacing-xs;
+    }
+  }
+
   .nx-card__footer {
     border-top: 1px solid #d1d6f0;
     margin-top: $nx-spacing-l;

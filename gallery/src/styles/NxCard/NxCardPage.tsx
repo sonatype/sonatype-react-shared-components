@@ -80,6 +80,13 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-card__call-out--text-only</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card__call-out</code></td>
+            <td className="nx-cell">
+              Used when the content of <code className="nx-code">.nx-card__call-out</code> consists of text.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__call-out-text</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
@@ -105,6 +112,20 @@ const NxCardPage = () =>
               {' '}<code className="nx-code">&lt;div&gt;</code> wraps
               {' '}<code className="nx-code">.nx-card__call-out</code> and
               {' '}<code className="nx-code">.nx-card__call-out-text</code> in the alternate row card layout.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">nx-icon--card-call-out</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-icon</code></td>
+            <td className="nx-cell">
+              Changes the size of <code className="nx-code">.nx-icon</code> to <code className="nx-code">48px</code>.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">nx-icon--card-call-out-xl</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-icon</code></td>
+            <td className="nx-cell">
+              Changes the size of <code className="nx-code">.nx-icon</code> to <code className="nx-code">64px</code>.
             </td>
           </tr>
         </tbody>
