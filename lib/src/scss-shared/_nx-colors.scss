@@ -105,7 +105,7 @@ $nx-border-row-dark: 1px solid $nx-grey-5;
 
 // Threat colors
 $nx-threat-color-unspecified: #d1d6f0;
-$nx-threat-color-none: #c5deff;
+$nx-threat-color-none: $nx-blue-300;
 $nx-threat-color-low: $nx-blue-600;
 $nx-threat-color-moderate: #ffbf27;
 $nx-threat-color-severe: #ff8100;
