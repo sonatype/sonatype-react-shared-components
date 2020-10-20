@@ -97,7 +97,7 @@ $nx-dropdown-width: 250px;
   }
 
   &:active {
-    background-color: #d3e6ff;
+    background-color:$nx-blue-200;
   }
 
   &.disabled {

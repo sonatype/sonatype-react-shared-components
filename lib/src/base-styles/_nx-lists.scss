@@ -163,7 +163,7 @@
   .nx-list__item {
     &.selected {
       &, &:hover {
-        background-color: #d3e6ff;
+        background-color:$nx-blue-200;
       }
     }
 
@@ -173,7 +173,7 @@
     }
 
     &:active {
-      background-color: #d3e6ff;
+      background-color:$nx-blue-200;
     }
 
     &:focus {

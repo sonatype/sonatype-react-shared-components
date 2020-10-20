@@ -84,7 +84,7 @@ $nx-table-cell-header-height: 48px;
 
       &.selected, &:active {
         > .nx-cell {
-          background-color: #d3e6ff;
+          background-color:$nx-blue-200;
         }
       }
 
