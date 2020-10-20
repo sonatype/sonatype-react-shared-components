@@ -13,7 +13,8 @@ import './NxBinaryDonutChart.scss';
 const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
     function NxBinaryDonutChart(props, ref) {
       const { innerRadiusPercent, percent, ...svgAttrs } = props;
-      const innerRadiusPercentNotNull = innerRadiusPercent == null ? 50 : innerRadiusPercent;
+      const innerRadiusPercentNotNull = innerRadiusPercent == null ? 50 : innerRadiusPercent < 0 ? 0 :
+        innerRadiusPercent > 100 ? 100 : innerRadiusPercent;
 
       const strokeWidth = 100 - innerRadiusPercentNotNull;
       const r = innerRadiusPercentNotNull + (strokeWidth / 2);
