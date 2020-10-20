@@ -29,6 +29,11 @@ const NxPaginationPage = () =>
         {' '}<code className="nx-code">variant="tertiary"</code> applied. The number and ellipsis buttons (if
         necessary) are <code className="nx-code">.nx-btn</code> with a modifier class - documented below.
       </p>
+      <p className="nx-p">
+        The ellipsis button takes the user to the next full set of results. For example, if
+        {' '}<code className="nx-code">&lt; 1 2 3 4 5 …  20 &gt;</code> are shown clicking on the ellipsis would take
+        the user to page 6, with <code className="nx-code">&lt; 6 7 8 9 10 … 20 &gt;</code> showing and 6 selected.
+      </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
