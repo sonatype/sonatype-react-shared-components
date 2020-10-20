@@ -28,8 +28,8 @@ describe('NxBinaryDonutChart', function() {
     expect(paths.length).toBe(0);
   });
 
-  it('renders only a background circle with the expected properties when percent is 0', function() {
-    const getShallowComponent = enzymeUtils.getShallowComponent(NxBinaryDonutChart, { percent: 0 });
+  it('renders only a background circle with the expected properties when percent is 50', function() {
+    const getShallowComponent = enzymeUtils.getShallowComponent(NxBinaryDonutChart, { percent: 50 });
     const circles = getShallowComponent().find('circle');
     const paths = getShallowComponent().find('path');
 
@@ -37,7 +37,8 @@ describe('NxBinaryDonutChart', function() {
     expect(circles.at(0)).toHaveClassName('.nx-binary-donut-chart__background');
     expect(circles.at(0)).toHaveProp('strokeWidth', 50);
     expect(circles.at(0)).toHaveProp('r', 75);
-    expect(paths.length).toBe(0);
+    expect(paths.length).toBe(1);
+    expect(paths.at(0)).toHaveProp('strokeWidth', 50);
   });
 
   it('renders only an arc circle with the expected properties when percent is 100', function() {
@@ -47,6 +48,18 @@ describe('NxBinaryDonutChart', function() {
 
     expect(circles.length).toBe(1);
     expect(circles.at(0)).toHaveClassName('.nx-binary-donut-chart__arc');
+    expect(circles.at(0)).toHaveProp('strokeWidth', 50);
+    expect(circles.at(0)).toHaveProp('r', 75);
+    expect(paths.length).toBe(0);
+  });
+
+  it('renders only a background circle with the expected properties when percent is negative', function() {
+    const getShallowComponent = enzymeUtils.getShallowComponent(NxBinaryDonutChart, { percent: -50 });
+    const circles = getShallowComponent().find('circle');
+    const paths = getShallowComponent().find('path');
+
+    expect(circles.length).toBe(1);
+    expect(circles.at(0)).toHaveClassName('.nx-binary-donut-chart__background');
     expect(circles.at(0)).toHaveProp('strokeWidth', 50);
     expect(circles.at(0)).toHaveProp('r', 75);
     expect(paths.length).toBe(0);
