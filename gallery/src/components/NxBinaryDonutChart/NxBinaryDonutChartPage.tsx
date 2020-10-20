@@ -30,42 +30,42 @@ const NxBinaryDonutChartPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Minimal Example"
-                        className="nx-binary-donut-chart-examples"
+                        id="nx-binary-donut-chart-examples"
                         codeExamples={nxBinaryDonutChartMinimalExampleCode}
                         liveExample={NxBinaryDonutChartMinimalExample}>
         A minimal example of a <code className="nx-code">NxBinaryDonutChart</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with half Donut"
-                        className="nx-binary-donut-chart-examples"
+                        id="nx-binary-donut-chart-examples"
                         codeExamples={nxBinaryDonutChartHalfExample}
                         liveExample={NxBinaryDonutChartHalfExample}>
         An example of a half <code className="nx-code">NxBinaryDonutChart</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with quarter Donut"
-                        className="nx-binary-donut-chart-examples"
+                        id="nx-binary-donut-chart-examples"
                         codeExamples={nxBinaryDonutChartQuarterExample}
                         liveExample={NxBinaryDonutChartQuarterExample}>
         An example of a quarter <code className="nx-code">NxBinaryDonutChart</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with full Donut"
-                        className="nx-binary-donut-chart-examples"
+                        id="nx-binary-donut-chart-examples"
                         codeExamples={nxBinaryDonutChartFullExample}
                         liveExample={NxBinaryDonutChartFullExample}>
         An example of a full <code className="nx-code">NxBinaryDonutChart</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with no Hole"
-                        className="nx-binary-donut-chart-examples"
+                        id="nx-binary-donut-chart-examples"
                         codeExamples={nxBinaryDonutChartNoHoleExample}
                         liveExample={NxBinaryDonutChartNoHoleExample}>
         An example of a <code className="nx-code">NxBinaryDonutChart</code> without a hole i.e. a pie chart.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with a Large Hole"
-                        className="nx-binary-donut-chart-examples"
+                        id="nx-binary-donut-chart-examples"
                         codeExamples={nxBinaryDonutChartLargeHoleExample}
                         liveExample={NxBinaryDonutChartLargeHoleExample}>
         An example of a <code className="nx-code">NxBinaryDonutChart</code> with a large hole.
