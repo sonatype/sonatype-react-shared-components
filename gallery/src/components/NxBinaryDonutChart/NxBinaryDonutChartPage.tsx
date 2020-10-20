@@ -23,11 +23,39 @@ const nxBinaryDonutChartQuarterExample = require('!!raw-loader!./NxBinaryDonutCh
 
 const NxBinaryDonutChartPage = () =>
   <>
-    <GalleryDescriptionTile>
-      <p className="nx-p">
-        <code className="nx-code">NxBinaryDonutChart</code> represents a binary donut chart.
-      </p>
-    </GalleryDescriptionTile>
+      <GalleryDescriptionTile>
+          <p className="nx-p">
+              <code className="nx-code">NxBinaryDonutChart</code> represents a binary donut chart.
+          </p>
+          <table className="nx-table nx-table--gallery-props">
+              <thead>
+              <tr className="nx-table-row">
+                  <th className="nx-cell nx-cell--header">Prop</th>
+                  <th className="nx-cell nx-cell--header">Type</th>
+                  <th className="nx-cell nx-cell--header">Required</th>
+                  <th className="nx-cell nx-cell--header">Details</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr className="nx-table-row">
+                  <td className="nx-cell">percent</td>
+                  <td className="nx-cell">number</td>
+                  <td className="nx-cell">Yes</td>
+                  <td className="nx-cell">
+                      Percentage of the donut
+                  </td>
+              </tr>
+              <tr className="nx-table-row">
+                  <td className="nx-cell">innerRadiusPercent</td>
+                  <td className="nx-cell">number</td>
+                  <td className="nx-cell">No</td>
+                  <td className="nx-cell">
+                      Represent the radius of the value displayed in the donut, the default value is 50
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+      </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Minimal Example"
                         id="nx-binary-donut-chart-examples"
