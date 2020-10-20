@@ -35,7 +35,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
                   d={`M 0 ${-r} A ${r} ${r} 0 ${largeArc} 0 ${arcEndX} ${arcEndY}`}
                   strokeWidth={strokeWidth}/>
           }
-          { percent === 100 &&
+          { percent >= 100 &&
             <circle className="nx-binary-donut-chart__arc" strokeWidth={strokeWidth} r={r}/>
           }
         </svg>
