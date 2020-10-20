@@ -67,10 +67,10 @@
 
 .nx-alert--info {
   background-color: #f1f7ff;
-  border-color: #045dd1;
+  border-color: $nx-blue-600;
 
   > .nx-icon {
-    color: #045dd1;
+    color: $nx-blue-600;
   }
 }
 

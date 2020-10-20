@@ -80,7 +80,7 @@ $nx-text-color: #474747;
 $nx-text-color-disabled: #949494;
 $nx-text-color-error: $nx-fail-color;
 
-$nx-link-color: #045dd1;
+$nx-link-color: $nx-blue-600;
 $nx-link-color-active: #2783fb;
 $nx-link-color-hover: $nx-blue-800;
 $nx-link-color-disabled: #949494;
@@ -106,7 +106,7 @@ $nx-border-row-dark: 1px solid $nx-grey-5;
 // Threat colors
 $nx-threat-color-unspecified: #d1d6f0;
 $nx-threat-color-none: #c5deff;
-$nx-threat-color-low: #045dd1;
+$nx-threat-color-low: $nx-blue-600;
 $nx-threat-color-moderate: #ffbf27;
 $nx-threat-color-severe: #ff8100;
 $nx-threat-color-critical: #cd0028;

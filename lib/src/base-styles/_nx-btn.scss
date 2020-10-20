@@ -22,9 +22,9 @@
   @extend %nx-btn--disabled;
 
   background-color: $nx-white;
-  border: 1px solid #045dd1;
+  border: 1px solid $nx-blue-600;
   border-radius: 6px;
-  color: #045dd1;
+  color: $nx-blue-600;
   cursor: pointer;
   display: inline-block;
   font-size: $nx-font-size;
@@ -54,8 +54,8 @@
 .nx-btn--primary {
   @extend %nx-btn--disabled;
 
-  background-color: #045dd1;
-  border-color: #045dd1;
+  background-color: $nx-blue-600;
+  border-color: $nx-blue-600;
   color: $nx-white;
 
   &:hover {

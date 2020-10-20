@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@import '../../scss-shared/nx-variables';
 
 .nx-radio__circle {
   height: 24px;
@@ -12,7 +13,7 @@
 
 .nx-radio__inner-circle {
   fill: #fff;
-  stroke: #045dd1;
+  stroke: $nx-blue-600;
 }
 
 .nx-radio__input:checked + .nx-radio__circle .nx-radio__outer-circle {
