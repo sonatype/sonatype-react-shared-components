@@ -113,6 +113,10 @@
     list-style: disc outside;
     padding: 8px 0 0 0;
 
+    &:first-child {
+      padding-top: 0;
+    }
+
     .nx-list__text {
       display: inline-block;
       // this is half the value specified in the designs. Browsers calculate the distance between the bullet
@@ -129,6 +133,11 @@
 
     .nx-list__item {
       list-style-type: circle;
+      padding-top: 8px;
+
+      &:first-child {
+        padding-top: 8px;
+      }
 
       .nx-list__text {
         @include regular();
