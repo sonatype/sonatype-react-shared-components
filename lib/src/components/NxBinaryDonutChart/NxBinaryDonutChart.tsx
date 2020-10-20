@@ -15,7 +15,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
     function NxBinaryDonutChart(props, ref) {
       const { innerRadiusPercent, percent, ...svgAttrs } = props;
 
-      const donutClasses = classnames('nx-binary-donut-chart', { innerRadiusPercent, percent });
+      const donutClasses = classnames('nx-binary-donut-chart', { innerRadiusPercent });
 
       const innerRadiusPercentNotNull = innerRadiusPercent == null ? 50 : innerRadiusPercent < 0 ? 0 :
         innerRadiusPercent > 100 ? 100 : innerRadiusPercent;
@@ -26,7 +26,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
       // Add 0.5π because we want the angle from the top of the circle, not the right
       const arcEndAngle = (Math.PI / 2) + (2 * Math.PI * (percent / 100));
       const arcEndX = r * Math.cos(arcEndAngle);
-      // Multiply by -1 because the y-axis origin (0,0) is at the top-left rather than bottom-left
+      // Multiply by -1 because the y-axis origin (0,0) increases going downwards on the screen, not upwards
       const arcEndY = -1 * r * Math.sin(arcEndAngle);
       const largeArc = percent > 50 ? 1 : 0;
 

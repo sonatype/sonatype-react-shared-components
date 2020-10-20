@@ -98,6 +98,26 @@ describe('Custom PropTypes', function() {
       expect(retVal).toBeInstanceOf(TypeError);
       expect(retVal).toEqual(new TypeError(err));
     });
+
+    it('should return an error if the value supplied is null', function() {
+      const props = { requiredPercent: null },
+          retVal = requiredPercentNumber(props, propName, componentName, '', ''),
+          err = `${componentName}: prop "${propName}" must be a number between 0 and 100 inclusive; received ` +
+              props[propName];
+
+      expect(retVal).toBeInstanceOf(TypeError);
+      expect(retVal).toEqual(new TypeError(err));
+    });
+
+    it('should return an error if the value supplied is undefined', function() {
+      const props = { requiredPercent: undefined },
+          retVal = requiredPercentNumber(props, propName, componentName, '', ''),
+          err = `${componentName}: prop "${propName}" must be a number between 0 and 100 inclusive; received ` +
+              props[propName];
+
+      expect(retVal).toBeInstanceOf(TypeError);
+      expect(retVal).toEqual(new TypeError(err));
+    });
   });
 
   describe('optionalPercentNumber', function() {
