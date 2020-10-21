@@ -78,7 +78,7 @@ $nx-table-cell-header-height: 48px;
     &.nx-clickable {
       &:hover {
         > .nx-cell {
-          background-color: #f1f3fa;
+          background-color: $nx-hover-background;
         }
       }
 

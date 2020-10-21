@@ -93,7 +93,7 @@ $nx-dropdown-width: 250px;
   width: 100%;
 
   &:hover, &:focus {
-    background-color: #f1f3fa;
+    background-color: $nx-hover-background;
   }
 
   &:active {

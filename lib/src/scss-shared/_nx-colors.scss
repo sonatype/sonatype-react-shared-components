@@ -88,9 +88,7 @@ $nx-link-color-disabled: #949494;
 // Basic interactive states
 $nx-selected-background: $nx-blue-200;
 $nx-active-background: $nx-blue-200;
-$nx-disabled-background: grey;
-$nx-disabled-color: grey;
-$nx-focus-shadow: 0 0 3px 1px transparentize(#02a6d9, 0.7);
+$nx-hover-background: #f1f3fa;
 
 //  Borders
 $nx-border-darker: 1px solid $nx-slate;
