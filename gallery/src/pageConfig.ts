@@ -69,7 +69,6 @@ import StylingComponentsPage from './pages/StylingComponents';
 import AdditionalResourcePage from './pages/AdditionalResources';
 import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 import NxCardPage from './styles/NxCard/NxCardPage';
-import NxDonutChartPage from './components/NxDonutChart/NxDonutChartPage';
 import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
 
 const pageConfig: PageConfig = {
