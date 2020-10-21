@@ -160,12 +160,15 @@
   .nx-card__content-container {
     align-items: center;
     display: flex;
-    column-gap: 24px;
 
     .nx-card__call-out {
       @include container-horizontal;
       flex-grow: 1;
       text-align: right;
+
+      + .nx-card__content {
+        margin-left: $nx-spacing-l;
+      }
     }
 
     .nx-card__content {
