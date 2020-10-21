@@ -109,7 +109,7 @@ export default function NxCardRowLayoutExample() {
           <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
           </header>
-          <div className="nx-card__call-out">
+          <div className="nx-card__call-out nx-card__call-out--text-only">
             42
           </div>
         </section>
