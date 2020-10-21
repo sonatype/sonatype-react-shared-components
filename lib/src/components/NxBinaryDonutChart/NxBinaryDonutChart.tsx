@@ -17,8 +17,10 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
 
       const donutClasses = classnames('nx-binary-donut-chart', className);
 
-      const innerRadiusPercentNotNull = innerRadiusPercent == null ? 50 : innerRadiusPercent < 0 ? 0 :
-        innerRadiusPercent > 100 ? 100 : innerRadiusPercent;
+      const innerRadiusPercentNotNull = innerRadiusPercent == null ? 50 :
+        innerRadiusPercent < 0 ? 0 :
+        innerRadiusPercent > 100 ? 100 :
+        innerRadiusPercent;
 
       const strokeWidth = 100 - innerRadiusPercentNotNull;
       const r = innerRadiusPercentNotNull + (strokeWidth / 2);
