@@ -45,7 +45,7 @@ $nx-dropdown-width: 250px;
   }
 
   &.open {
-    border-color: #045dd1;
+    border-color: $nx-blue-600;
   }
 }
 
@@ -93,11 +93,11 @@ $nx-dropdown-width: 250px;
   width: 100%;
 
   &:hover, &:focus {
-    background-color: #f1f3fa;
+    background-color: $nx-hover-background;
   }
 
   &:active {
-    background-color: #d3e6ff;
+    background-color:$nx-active-background;
   }
 
   &.disabled {

@@ -50,8 +50,8 @@
       }
 
       .nx-radio-checkbox__input:checked + .nx-radio-checkbox__control {
-        border-color: #045dd1;
-        stroke: #045dd1;
+        border-color: $nx-blue-600;
+        stroke: $nx-blue-600;
         filter: none;
       }
     }
@@ -123,21 +123,21 @@ svg.nx-radio-checkbox__control {
 
   &:checked {
     + .nx-radio-checkbox__control {
-      background-color: #045dd1;
-      border-color: #045dd1;
+      background-color: $nx-blue-600;
+      border-color: $nx-blue-600;
 
       &:hover {
-        border-color: #045dd1;
+        border-color: $nx-blue-600;
       }
     }
 
     + svg.nx-radio-checkbox__control {
       background: none;
-      fill: #045dd1;
-      stroke: #045dd1;
+      fill: $nx-blue-600;
+      stroke: $nx-blue-600;
 
       &:hover {
-        stroke: #045dd1;
+        stroke: $nx-blue-600;
       }
     }
   }

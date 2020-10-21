@@ -9,7 +9,7 @@
   @include semi-bold();
 
   background-color: #fff;
-  border: 1px solid #15203e;
+  border: 1px solid $nx-blue-1000;
   border-radius: 12px;
   color: $nx-text-color-dark;
   display: inline-block;
@@ -21,8 +21,8 @@
   min-width: 8px;
 
   &.nx-counter--active {
-    background-color: #15203e;
-    border-color: #15203e;
+    background-color: $nx-blue-1000;
+    border-color: $nx-blue-1000;
     color: #fff;
   }
 }

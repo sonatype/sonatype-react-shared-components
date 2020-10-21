@@ -27,8 +27,8 @@
   &.active {
     @include semi-bold();
 
-    border-bottom-color: #045dd1;
-    color: #045dd1;
+    border-bottom-color: $nx-blue-600;
+    color: $nx-blue-600;
   }
 
   &:hover {

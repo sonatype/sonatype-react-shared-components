@@ -163,17 +163,17 @@
   .nx-list__item {
     &.selected {
       &, &:hover {
-        background-color: #d3e6ff;
+        background-color: $nx-selected-background;
       }
     }
 
     &:hover {
-      background-color: #f1f3fa;
+      background-color: $nx-hover-background;
       cursor: pointer;
     }
 
     &:active {
-      background-color: #d3e6ff;
+      background-color: $nx-active-background;
     }
 
     &:focus {
