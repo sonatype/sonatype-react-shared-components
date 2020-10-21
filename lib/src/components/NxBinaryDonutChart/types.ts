@@ -8,7 +8,7 @@ import { SVGAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 import { requiredPercentNumber, optionalPercentNumber } from '../../util/customPropTypes';
 
-export interface Props extends SVGAttributes<SVGSVGElement>{
+export interface Props extends SVGAttributes<SVGSVGElement> {
   percent: number;
   innerRadiusPercent?: number | null;
 }
