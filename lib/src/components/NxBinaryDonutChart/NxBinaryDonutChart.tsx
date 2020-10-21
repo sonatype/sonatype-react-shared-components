@@ -12,8 +12,8 @@ import './NxBinaryDonutChart.scss';
 import classnames from 'classnames';
 
 const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
-    function NxBinaryDonutChart({className, ...props}, ref) {
-      const { innerRadiusPercent, percent, ...svgAttrs } = props;
+    function NxBinaryDonutChart(props, ref) {
+      const { innerRadiusPercent, percent, className, ...svgAttrs } = props;
 
       const donutClasses = classnames('nx-binary-donut-chart', className);
 
