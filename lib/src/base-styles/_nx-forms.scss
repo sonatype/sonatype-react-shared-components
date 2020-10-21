@@ -7,11 +7,6 @@
 @import '../scss-shared/nx-variables';
 
 // Basic form layout
-
-.nx-form {
-  @include container-vertical;
-}
-
 .nx-form-group {
   margin-bottom: $nx-spacing-xs;
 }
