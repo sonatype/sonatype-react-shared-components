@@ -60,7 +60,7 @@ const NxBinaryDonutChartPage = () =>
                         id="nx-binary-donut-chart-minimal-examples"
                         codeExamples={nxBinaryDonutChartMinimalExampleCode}
                         liveExample={NxBinaryDonutChartMinimalExample}>
-        Minimal examples of a <code className="nx-code">NxBinaryDonutChart</code> with different values.
+        Minimal examples of <code className="nx-code">NxBinaryDonutChart</code>s with different values.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with empty Donut"
