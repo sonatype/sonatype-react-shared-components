@@ -11,7 +11,30 @@ describe('NxBinaryDonutChart', function() {
     await browser.url('#/pages/NxBinaryDonutChart');
   });
 
-  const simpleDonutSelector = 'nx-binary-donut-chart-examples';
+  describe('Minimal examples', function() {
+    const simpleDonutSelector = '#nx-binary-donut-chart-minimal-examples';
+    it('looks right', simpleTest(simpleDonutSelector));
+  });
 
-  it('looks right', simpleTest(simpleDonutSelector));
+  describe('Empty donut', function() {
+    const simpleDonutSelector = '#nx-binary-donut-chart-empty-example';
+
+    it('looks right', simpleTest(simpleDonutSelector));
+  });
+
+  describe('Full donut', function() {
+    const simpleDonutSelector = '#nx-binary-donut-chart-full-example';
+    it('looks right', simpleTest(simpleDonutSelector));
+  });
+
+  describe('Donut with no hole', function() {
+    const simpleDonutSelector = '#nx-binary-donut-chart-no-hole-example';
+    it('looks right', simpleTest(simpleDonutSelector));
+  });
+
+  describe('Donut with large hole', function() {
+    const simpleDonutSelector = '#nx-binary-donut-chart-large-hole-example';
+    it('looks right', simpleTest(simpleDonutSelector));
+  });
+
 });

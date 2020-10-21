@@ -7,93 +7,85 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import NxBinaryDonutChartEmptyExample from './NxBinaryDonutChartEmptyExample';
 import NxBinaryDonutChartFullExample from './NxBinaryDonutChartFullExample';
-import NxBinaryDonutChartHalfExample from './NxBinaryDonutChartHalfExample';
 import NxBinaryDonutChartMinimalExample from './NxBinaryDonutChartMinimalExample';
 import NxBinaryDonutChartNoHoleExample from './NxBinaryDonutChartNoHoleExample';
 import NxBinaryDonutChartLargeHoleExample from './NxBinaryDonutChartLargeHoleExample';
-import NxBinaryDonutChartQuarterExample from './NxBinaryDonutChartQuarterExample';
 
+const nxBinaryDonutChartEmptyExample = require('!!raw-loader!./NxBinaryDonutChartEmptyExample').default;
 const nxBinaryDonutChartFullExample = require('!!raw-loader!./NxBinaryDonutChartFullExample').default;
-const nxBinaryDonutChartHalfExample = require('!!raw-loader!./NxBinaryDonutChartHalfExample').default;
 const nxBinaryDonutChartMinimalExampleCode = require('!!raw-loader!./NxBinaryDonutChartMinimalExample').default;
 const nxBinaryDonutChartNoHoleExample = require('!!raw-loader!./NxBinaryDonutChartNoHoleExample').default;
 const nxBinaryDonutChartLargeHoleExample = require('!!raw-loader!./NxBinaryDonutChartLargeHoleExample').default;
-const nxBinaryDonutChartQuarterExample = require('!!raw-loader!./NxBinaryDonutChartQuarterExample').default;
 
 const NxBinaryDonutChartPage = () =>
   <>
-      <GalleryDescriptionTile>
-          <p className="nx-p">
-              <code className="nx-code">NxBinaryDonutChart</code> represents a binary donut chart.
-          </p>
-          <table className="nx-table nx-table--gallery-props">
-              <thead>
-              <tr className="nx-table-row">
-                  <th className="nx-cell nx-cell--header">Prop</th>
-                  <th className="nx-cell nx-cell--header">Type</th>
-                  <th className="nx-cell nx-cell--header">Required</th>
-                  <th className="nx-cell nx-cell--header">Details</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr className="nx-table-row">
-                  <td className="nx-cell">percent</td>
-                  <td className="nx-cell">number</td>
-                  <td className="nx-cell">Yes</td>
-                  <td className="nx-cell">
-                      Percentage of the donut
-                  </td>
-              </tr>
-              <tr className="nx-table-row">
-                  <td className="nx-cell">innerRadiusPercent</td>
-                  <td className="nx-cell">number</td>
-                  <td className="nx-cell">No</td>
-                  <td className="nx-cell">
-                      Represent the radius of the value displayed in the donut, the default value is 50
-                  </td>
-              </tr>
-              </tbody>
-          </table>
-      </GalleryDescriptionTile>
+    <GalleryDescriptionTile>
+      <p className="nx-p">
+        <code className="nx-code">NxBinaryDonutChart</code> represents a binary donut chart.
+      </p>
+      <table className="nx-table nx-table--gallery-props">
+        <thead>
+          <tr className="nx-table-row">
+            <th className="nx-cell nx-cell--header">Prop</th>
+            <th className="nx-cell nx-cell--header">Type</th>
+            <th className="nx-cell nx-cell--header">Required</th>
+            <th className="nx-cell nx-cell--header">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="nx-table-row">
+            <td className="nx-cell">percent</td>
+            <td className="nx-cell">number</td>
+            <td className="nx-cell">Yes</td>
+            <td className="nx-cell">
+              Percentage which this donut represents. E.g. when 0 the donut is empty, and as it increases towards 100
+              the amount of the donut which is filled in increases.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">innerRadiusPercent</td>
+            <td className="nx-cell">number</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              The size of the hole in the donut, as a percentage of the donut's overall size.  The default value is 50.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Minimal Example"
-                        id="nx-binary-donut-chart-examples"
+    <GalleryExampleTile title="Minimal Examples"
+                        id="nx-binary-donut-chart-minimal-examples"
                         codeExamples={nxBinaryDonutChartMinimalExampleCode}
                         liveExample={NxBinaryDonutChartMinimalExample}>
-        A minimal example of a <code className="nx-code">NxBinaryDonutChart</code>.
+        Minimal examples of a <code className="nx-code">NxBinaryDonutChart</code> with different values.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Example with half Donut"
-                        id="nx-binary-donut-chart-examples"
-                        codeExamples={nxBinaryDonutChartHalfExample}
-                        liveExample={NxBinaryDonutChartHalfExample}>
-        An example of a half <code className="nx-code">NxBinaryDonutChart</code>.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Example with quarter Donut"
-                        id="nx-binary-donut-chart-examples"
-                        codeExamples={nxBinaryDonutChartQuarterExample}
-                        liveExample={NxBinaryDonutChartQuarterExample}>
-        An example of a quarter <code className="nx-code">NxBinaryDonutChart</code>.
+    <GalleryExampleTile title="Example with empty Donut"
+                        id="nx-binary-donut-chart-empty-example"
+                        codeExamples={nxBinaryDonutChartEmptyExample}
+                        liveExample={NxBinaryDonutChartEmptyExample}>
+        An example of a an empty <code className="nx-code">NxBinaryDonutChart</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with full Donut"
-                        id="nx-binary-donut-chart-examples"
+                        id="nx-binary-donut-chart-full-example"
                         codeExamples={nxBinaryDonutChartFullExample}
                         liveExample={NxBinaryDonutChartFullExample}>
         An example of a full <code className="nx-code">NxBinaryDonutChart</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with no Hole"
-                        id="nx-binary-donut-chart-examples"
+                        id="nx-binary-donut-chart-no-hole-example"
                         codeExamples={nxBinaryDonutChartNoHoleExample}
                         liveExample={NxBinaryDonutChartNoHoleExample}>
         An example of a <code className="nx-code">NxBinaryDonutChart</code> without a hole i.e. a pie chart.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with a Large Hole"
-                        id="nx-binary-donut-chart-examples"
+                        id="nx-binary-donut-chart-large-hole-example"
                         codeExamples={nxBinaryDonutChartLargeHoleExample}
                         liveExample={NxBinaryDonutChartLargeHoleExample}>
         An example of a <code className="nx-code">NxBinaryDonutChart</code> with a large hole.
