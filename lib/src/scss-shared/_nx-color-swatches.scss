@@ -4,18 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
 
-.nx-radio__circle {
-  height: 24px;
-  width: 16px;
-}
-
-.nx-radio__inner-circle {
-  fill: #fff;
-  stroke: $nx-blue-600;
-}
-
-.nx-radio__input:checked + .nx-radio__circle .nx-radio__outer-circle {
-  fill: none;
-}
+// Blues
+$nx-blue-1000: #15203e;
+$nx-blue-900: #00306F;
+$nx-blue-800: #034396;
+$nx-blue-700: #0055c3;
+$nx-blue-600: #045dd1;
+$nx-blue-500: #1770e4;
+$nx-blue-400: #2783fb;
+$nx-blue-300: #c5deff;
+$nx-blue-200: #d3e6ff;
+$nx-blue-100: #e8f2ff;
+$nx-blue-50: #f1f7ff;
