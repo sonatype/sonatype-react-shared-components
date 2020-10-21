@@ -73,7 +73,8 @@ describe('NxBinaryDonutChart', function() {
     const circles = getShallowComponent().find('circle');
     const paths = getShallowComponent().find('path');
 
-    const arcEnd = Math.PI / 2 + 1.44 * Math.PI;
+    // (2*percent + 0.5)π
+    const arcEnd = 1.94 * Math.PI;
 
     expect(circles.length).toBe(1);
     expect(circles.at(0)).toHaveClassName('.nx-binary-donut-chart__background');
