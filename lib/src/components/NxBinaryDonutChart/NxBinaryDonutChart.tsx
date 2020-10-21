@@ -9,13 +9,13 @@ import { Props, propTypes } from './types';
 export { Props } from './types';
 
 import './NxBinaryDonutChart.scss';
-import classnames from "classnames";
+import classnames from 'classnames';
 
 const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
-    function NxBinaryDonutChart(props, ref) {
+    function NxBinaryDonutChart({className , ...props}, ref) {
       const { innerRadiusPercent, percent, ...svgAttrs } = props;
 
-      const donutClasses = classnames('nx-binary-donut-chart', { innerRadiusPercent });
+      const donutClasses = classnames('nx-binary-donut-chart', className);
 
       const innerRadiusPercentNotNull = innerRadiusPercent == null ? 50 : innerRadiusPercent < 0 ? 0 :
         innerRadiusPercent > 100 ? 100 : innerRadiusPercent;
