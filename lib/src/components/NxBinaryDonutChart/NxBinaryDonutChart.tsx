@@ -28,7 +28,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
       // Add 0.5π because we want the angle from the top of the circle, not the right
       const arcEndAngle = (Math.PI / 2) + (2 * Math.PI * (percent / 100));
       const arcEndX = r * Math.cos(arcEndAngle);
-      // Multiply by -1 because the y-axis origin (0,0) increases going downwards on the screen, not upwards
+      // Multiply by -1 because the y values increases going downwards on the screen, not upwards
       const arcEndY = -1 * r * Math.sin(arcEndAngle);
       const largeArc = percent > 50 ? 1 : 0;
 
