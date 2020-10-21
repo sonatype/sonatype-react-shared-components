@@ -85,9 +85,12 @@ $nx-link-color-active: $nx-blue-400;
 $nx-link-color-hover: $nx-blue-800;
 $nx-link-color-disabled: #949494;
 
-$nx-background-color-interactive: #2476c3;
-$nx-background-color-interactive-active: #0046b1;
-$nx-background-color-interactive-disabled: #97cbee;
+// Basic interactive states
+$nx-selected-background: $nx-blue-200;
+$nx-active-background: $nx-blue-200;
+$nx-disabled-background: grey;
+$nx-disabled-color: grey;
+$nx-focus-shadow: 0 0 3px 1px transparentize(#02a6d9, 0.7);
 
 //  Borders
 $nx-border-darker: 1px solid $nx-slate;
