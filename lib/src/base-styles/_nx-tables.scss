@@ -78,13 +78,13 @@ $nx-table-cell-header-height: 48px;
     &.nx-clickable {
       &:hover {
         > .nx-cell {
-          background-color: #f1f3fa;
+          background-color: $nx-hover-background;
         }
       }
 
       &.selected, &:active {
         > .nx-cell {
-          background-color: #d3e6ff;
+          background-color: $nx-selected-background;
         }
       }
 
@@ -206,6 +206,6 @@ $nx-table-cell-header-height: 48px;
   }
 
   > :nth-child(2) path {
-    color: #045dd1;
+    color: $nx-blue-600;
   }
 }
