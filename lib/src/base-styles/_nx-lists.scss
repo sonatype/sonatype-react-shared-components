@@ -104,7 +104,7 @@
 
 .nx-list--bulleted {
   border-top: none;
-  margin: 0;
+  margin: $nx-spacing-md 0 $nx-spacing-l 0;
   padding: 0 0 0 26px;
 
   .nx-list__item {
@@ -112,6 +112,10 @@
     display: list-item;
     list-style: disc outside;
     padding: 8px 0 0 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
 
     .nx-list__text {
       display: inline-block;
@@ -123,11 +127,17 @@
     }
 
     .nx-list {
+      margin: 0;
       padding: 0 0 0 14px;
     }
 
     .nx-list__item {
       list-style-type: circle;
+      padding-top: 8px;
+
+      &:first-child {
+        padding-top: 8px;
+      }
 
       .nx-list__text {
         @include regular();

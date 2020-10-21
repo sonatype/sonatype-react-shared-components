@@ -29,7 +29,7 @@
   display: inline-block;
   font-size: $nx-font-size;
   line-height: $nx-line-height;
-  margin: 0 $nx-spacing-xs;
+  margin: 0 $nx-spacing-l;
   padding: $nx-spacing-xs $nx-spacing-l;
   text-align: center;
 
@@ -44,6 +44,10 @@
 
   &:active {
     background-color: #e8f2ff;
+  }
+
+  + .nx-btn {
+    margin-left: 0;
   }
 }
 

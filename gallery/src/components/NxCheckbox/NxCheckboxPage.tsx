@@ -86,7 +86,7 @@ const NxCheckboxPage = () =>
                         liveExample={NxCheckboxNowrapExample}
                         codeExamples={nowrapExampleCode}>
       This example includes a container around the checkboxes. This container is deliberately narrow and has a
-      red border. This makes it clear that the labels on checkboxes do not wrap.
+      red border. This makes it clear that the labels on checkboxes do not wrap, and truncate with an ellipsis.
     </GalleryExampleTile>
   </>;
 

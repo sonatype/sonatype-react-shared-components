@@ -17,8 +17,8 @@ const NxButtonDefaultExample = () =>
     <div className="nx-btn-bar">
       <NxButton>Button</NxButton>
       <span>Some other inline content.</span>
-      <NxButton className="disabled">Button disabled by class</NxButton>
-      <NxButton disabled>Button disabled by attribute</NxButton>
+      <NxButton className="disabled">Disabled by class</NxButton>
+      <NxButton disabled>Disabled by attribute</NxButton>
     </div>
   </>;
 

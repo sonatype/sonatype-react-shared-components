@@ -10,11 +10,13 @@ import {HTMLAttributes} from 'react';
 // Final Props are the HTMLProps & our re-definitions
 export type Props = HTMLAttributes<HTMLTableRowElement> & {
   isHeader?: boolean | null;
+  isFilterHeader?: boolean | null;
   isClickable?: boolean | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   isHeader: PropTypes.bool,
+  isFilterHeader: PropTypes.bool,
   isClickable: PropTypes.bool,
   children: PropTypes.node
 };
