@@ -50,7 +50,6 @@ describe('NxBinaryDonutChart', function() {
   });
 
   it('renders a background circle and arc path with expected properties when 0 < percent < 100', function() {
-    const getShallowComponent = enzymeUtils.getShallowComponent(NxBinaryDonutChart, { percent: 50 });
     const circles = getShallowComponent({ percent: 50}).find('circle');
     const paths = getShallowComponent({ percent: 50}).find('path');
 
