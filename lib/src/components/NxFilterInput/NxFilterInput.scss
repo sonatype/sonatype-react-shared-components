@@ -10,7 +10,6 @@
 .nx-filter-input {
   @include container-horizontal;
 
-  display: inline-block;
   white-space: nowrap;
 
   &:focus-within {
