@@ -15,6 +15,7 @@ describe('NxFilterInput', function() {
   it('renders component with minimal props', function() {
     const component = shallowComponent();
     expect(component).toHaveClassName('nx-filter-input');
+    expect(component).toHaveClassName('nx-text-input');
   });
 
   it('calls onChange whenever a change occurs in the input', function() {
