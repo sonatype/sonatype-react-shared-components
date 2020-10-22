@@ -66,8 +66,8 @@ describe('NxBinaryDonutChart', function() {
   });
 
   it('renders an arc circle and its background with the expected properties when percent is 72', function() {
-    const circles = getShallowComponent({ percent: 72}).find('circle');
-    const paths = getShallowComponent({ percent: 72}).find('path');
+    const circles = getShallowComponent({ percent: 72 }).find('circle');
+    const paths = getShallowComponent({ percent: 72 }).find('path');
 
     // (2*percent + 0.5)π
     const arcEnd = 1.94 * Math.PI;
