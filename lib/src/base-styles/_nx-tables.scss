@@ -130,8 +130,14 @@ $nx-table-cell-header-height: 48px;
   }
 }
 
-.nx-table-row--filter-header > .nx-cell--header {
-  top: $nx-table-cell-header-height;
+.nx-table-row--filter-header {
+  > .nx-cell--header {
+    top: $nx-table-cell-header-height;
+  }
+
+  .nx-filter-input {
+    width: 250px;
+  }
 }
 
 .nx-table--fixed-layout {
