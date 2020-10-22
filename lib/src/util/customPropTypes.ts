@@ -29,3 +29,23 @@ export const requiredNullableString: PropTypes.Validator<string> =
     const err = `${componentName}: prop "${propName}" must be null or string; received ${typeof props[propName]}`;
     return new TypeError(err);
   };
+
+function requiredPercentNumberValidator(props: Props, propName: string, componentName: string): Error | null {
+  const value = props[propName];
+  if (typeof value === 'number' && value >= 0 && value <= 100) {
+    return null;
+  }
+  const err = `${componentName}: prop "${propName}" must be a number between 0 and 100 inclusive; received ${value}`;
+  return new TypeError(err);
+}
+
+export const requiredPercentNumber: PropTypes.Validator<number> = requiredPercentNumberValidator;
+
+export const optionalPercentNumber: PropTypes.Validator<number> =
+  function optionalPercentNumberValidator(props: Props, propName: string, componentName: string): Error | null {
+    const value = props[propName];
+    if (value === undefined || value === null) {
+      return null;
+    }
+    return requiredPercentNumberValidator(props, propName, componentName);
+  };
