@@ -6,7 +6,9 @@
  */
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
 export { Props, propTypes } from './types';
 
@@ -28,9 +30,15 @@ const NxSubmitMask: FunctionComponent<Props> =
 
     return (
       <div className={classes}>
-        <h3 className="nx-h3 nx-submit-mask__message">
-          <NxLoadingSpinner>{spinnerMessage}</NxLoadingSpinner>
-        </h3>
+        <div className="nx-submit-mask__message">
+          { success ?
+            <>
+              <NxFontAwesomeIcon icon={faCheckCircle} className="nx-loading-spinner__icon" />
+              <span>{spinnerMessage || 'Loading…'}</span> 
+            </> :
+            <NxLoadingSpinner>{spinnerMessage}</NxLoadingSpinner>
+          }
+        </div>
       </div>
     );
   };

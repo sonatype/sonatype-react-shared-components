@@ -6,11 +6,12 @@
  */
 @import '../../scss-shared/_nx-variables';
 @import '../../scss-shared/_nx-container-helpers';
+@import '../../scss-shared/_nx-text-helpers';
 
 .nx-submit-mask {
   align-items: center;
 
-  background-color: rgba($nx-off-white, 0.9);
+  background-color: rgba(#555, 0.75);
 
   display: flex;
   justify-content: center;
@@ -30,17 +31,18 @@
 
 .nx-submit-mask__message {
   @include container-vertical;
+  @include semi-bold();
 
-  background-color: $nx-off-white;
-  border: 2px solid $nx-slate;
-  box-shadow: -4px 4px 0px rgba($nx-slate, 0.65);
+  background-color: #fff;
+  border-radius: $nx-border-radius;
   margin: 0;
-  padding: 22px 12px;
+  padding: $nx-spacing-l;
+  min-width: 124px;
+  max-width: 250px;
 }
 
 .nx-submit-mask--success {
   .nx-submit-mask__message {
-    border-color: $nx-dark-green;
-    color: $nx-dark-green;
+    color: #099843;
   }
 }
