@@ -70,12 +70,17 @@
 .nx-btn--tertiary {
   @extend %nx-btn--disabled;
 
+  background-color: transparent;
   border-color: #d1d6f0;
   color: #2c2c2c;
 
   &:hover {
-    background-color: $nx-white;
+    background-color: transparent;
     border-color: #2c2c2c;
+  }
+
+  &:focus {
+    background-color: transparent;
   }
 
   &:active {
