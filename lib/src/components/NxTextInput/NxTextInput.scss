@@ -37,5 +37,7 @@
   font-size: $nx-font-size-xs;
   line-height: 16px;
   margin-top: $nx-spacing-xs;
+  // this positions the invalid message inside the bottom padding of .nx-form-group which allows
+  // us to maintain consistent spacing whether there is validation or not
   position: absolute;
 }
