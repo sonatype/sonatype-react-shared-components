@@ -11,14 +11,13 @@ import NxLoadingSpinner from '../../NxLoadingSpinner/NxLoadingSpinner';
 import NxSubmitMask from '../NxSubmitMask';
 
 describe('NxSubmitMask', function() {
-  it('renders a .nx-submit-mask div containing a .nx-submit-mask__message h3 containing a NxLoadingSpinner',
+  it('renders a .nx-submit-mask div containing a .nx-submit-mask__message div containing a NxLoadingSpinner',
       function() {
         const component = shallow(<NxSubmitMask/>);
 
         expect(component).toMatchSelector('div.nx-submit-mask');
-        expect(component.find('h3')).toHaveClassName('nx-h3');
-        expect(component.find('h3')).toHaveClassName('nx-submit-mask__message');
-        expect(component.find('h3').find(NxLoadingSpinner)).toExist();
+        expect(component.find('div.nx-submit-mask div')).toHaveClassName('nx-submit-mask__message');
+        expect(component.find('div.nx-submit-mask__message').find(NxLoadingSpinner)).toExist();
       }
   );
 
@@ -42,7 +41,7 @@ describe('NxSubmitMask', function() {
 
   it('passes the successMessage prop as the child of NxLoadingSpinner when the success prop is true', function() {
     const spinnerChildren = shallow(<NxSubmitMask message="foo" successMessage="bar" success />)
-        .find(NxLoadingSpinner).children();
+        .find('div.nx-submit-mask__message span').children();
 
     expect(spinnerChildren).toHaveText('bar');
     expect(spinnerChildren).not.toHaveText('foo');
@@ -50,9 +49,10 @@ describe('NxSubmitMask', function() {
 
   it('passes "Success!" as the child of NxLoadingSpinner when the success is true and successMessage is not specified',
       function() {
-        expect(shallow(<NxSubmitMask success />).find(NxLoadingSpinner).children()).toHaveText('Success!');
-        expect(shallow(<NxSubmitMask successMessage={null} success />).find(NxLoadingSpinner).children())
+        expect(shallow(<NxSubmitMask success />).find('div.nx-submit-mask__message span').children())
             .toHaveText('Success!');
+        expect(shallow(<NxSubmitMask successMessage={null} success />).find('div.nx-submit-mask__message span')
+            .children()).toHaveText('Success!');
       }
   );
 });
