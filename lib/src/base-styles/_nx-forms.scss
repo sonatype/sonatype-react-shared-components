@@ -15,7 +15,7 @@
   @include container-horizontal;
   align-items: flex-end;
   display: flex;
-  margin-bottom: $nx-spacing-xs;
+  margin-bottom: $nx-spacing-xl;
 
   .nx-form-group {
     margin-right: $nx-spacing-l;
@@ -24,7 +24,7 @@
 
   .nx-btn-bar {
     margin-top: 0;
-    margin-bottom: $nx-spacing-l;
+    margin-bottom: 0;
   }
 }
 
