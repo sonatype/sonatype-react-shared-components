@@ -34,7 +34,7 @@ const NxSubmitMask: FunctionComponent<Props> =
           { success ?
             <>
               <NxFontAwesomeIcon icon={faCheckCircle} className="nx-loading-spinner__icon" />
-              <span>{spinnerMessage || 'Loading…'}</span> 
+              <span>{spinnerMessage || 'Loading…'}</span>
             </> :
             <NxLoadingSpinner>{spinnerMessage}</NxLoadingSpinner>
           }
