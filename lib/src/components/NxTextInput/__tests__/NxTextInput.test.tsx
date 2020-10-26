@@ -138,15 +138,16 @@ describe('NxTextInput', function() {
     expect(getShallowComponent({ name: 'a-name' }).find('input')).toHaveProp('name', 'a-name');
   });
 
-  it('calls onChange with the new value of the input element', function() {
+  it('calls onChange with the new value of the input element and event that fired', function() {
     const onChange = jest.fn(),
+        givenChangeEvent = { currentTarget: { value: 'foo' }},
         element = getShallowComponent({ onChange }).find('input');
 
     expect(onChange).not.toHaveBeenCalled();
 
-    element.simulate('change', { currentTarget: { value: 'foo' } });
+    element.simulate('change', givenChangeEvent);
 
-    expect(onChange).toHaveBeenCalledWith('foo');
+    expect(onChange).toHaveBeenCalledWith('foo', givenChangeEvent);
   });
 
   it('calls onKeyPress with the key value', function() {
