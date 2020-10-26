@@ -24,7 +24,7 @@ export default function NxCardRowAltLayoutExample() {
             Text
           </div>
         </div>
-        <footer className="nx-card__footer"><a href="nx-text-link">Link</a></footer>
+        <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
       </section>
       <section className="nx-card">
         <header className="nx-card__header">
@@ -38,7 +38,7 @@ export default function NxCardRowAltLayoutExample() {
             Data point details
           </div>
         </div>
-        <footer className="nx-card__footer"><a href="nx-text-link">Link</a></footer>
+        <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
       </section>
       <section className="nx-card">
         <header className="nx-card__header">
@@ -52,7 +52,7 @@ export default function NxCardRowAltLayoutExample() {
             Large icon
           </div>
         </div>
-        <footer className="nx-card__footer"><a href="nx-text-link">Link</a></footer>
+        <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
       </section>
     </div>
   );
