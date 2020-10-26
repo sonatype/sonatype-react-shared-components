@@ -12,11 +12,9 @@ import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons'
 import './NxTextInput.scss';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { Props, propTypes } from './types';
+import { Props, propTypes, TextInputElement } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 export { Props, propTypes, inputTypes } from './types';
-
-type TextInputElement = HTMLInputElement | HTMLTextAreaElement;
 
 /**
  * Standard text input with validation styling
@@ -96,7 +94,7 @@ const NxTextInput = forwardRef<TextInputElement, Props>(
 
       function inputOnChange(e: FormEvent<TextInputElement>) {
         if (onChange) {
-          onChange(e.currentTarget.value);
+          onChange(e.currentTarget.value, e);
         }
       }
 

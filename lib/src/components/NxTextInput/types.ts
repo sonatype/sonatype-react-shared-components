@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import {InputHTMLAttributes, TextareaHTMLAttributes} from 'react';
+import { FormEvent, InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
 
 /**
  * The valid values for the `type` Prop
@@ -34,10 +34,12 @@ type FusedProps = InputHTMLAttributes<HTMLInputElement> & TextareaHTMLAttributes
 // Leave out props to be re-defined
 export type HTMLProps = Omit<FusedProps, 'onChange'|'onKeyPress'|'type'|'defaultValue'>;
 
+export type TextInputElement = HTMLInputElement | HTMLTextAreaElement;
+
 // Final Props are the HTMLProps & our re-definitions
 export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   type?: NxTextInputType | null;
-  onChange?: ((newVal: string) => void) | null;
+  onChange?: ((newVal: string, e: FormEvent<TextInputElement>) => void) | null;
   onKeyPress?: ((keyCode: string) => void) | null;
   validatable?: boolean | null;
 };
