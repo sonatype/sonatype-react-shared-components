@@ -11,7 +11,7 @@
 .nx-submit-mask {
   align-items: center;
 
-  background-color: rgba(#555, 0.75);
+  background-color: rgba(85, 85, 85, 0.75);
 
   display: flex;
   justify-content: center;
@@ -35,6 +35,7 @@
 
   background-color: #fff;
   border-radius: $nx-border-radius;
+  box-sizing: border-box;
   margin: 0;
   padding: $nx-spacing-l;
   min-width: 124px;
