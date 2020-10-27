@@ -10,7 +10,7 @@ import { NxSubmitMask } from '@sonatype/react-shared-components';
 const NxSubmitMaskCustomMessageExample = () =>
   <div className="gallery-submit-mask-area">
     Masked content
-    <NxSubmitMask message="Foo Bar⋯"/>
+    <NxSubmitMask message="Foo Bar"/>
   </div>;
 
 export default NxSubmitMaskCustomMessageExample;

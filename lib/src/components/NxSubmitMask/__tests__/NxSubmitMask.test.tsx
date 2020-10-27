@@ -11,16 +11,18 @@ import NxLoadingSpinner from '../../NxLoadingSpinner/NxLoadingSpinner';
 import NxSubmitMask from '../NxSubmitMask';
 
 describe('NxSubmitMask', function() {
-  it('renders a .nx-submit-mask div containing a .nx-submit-mask__message h3 containing a NxLoadingSpinner',
+  it('renders a .nx-submit-mask div containing a .nx-submit-mask__message div containing a NxLoadingSpinner',
       function() {
         const component = shallow(<NxSubmitMask/>);
 
         expect(component).toMatchSelector('div.nx-submit-mask');
-        expect(component.find('h3')).toHaveClassName('nx-h3');
-        expect(component.find('h3')).toHaveClassName('nx-submit-mask__message');
-        expect(component.find('h3').find(NxLoadingSpinner)).toExist();
+        expect(component.find('.nx-submit-mask .nx-submit-mask__message').find(NxLoadingSpinner)).toExist();
       }
   );
+
+  it('has Submitting… as the default message', function() {
+    expect(shallow(<NxSubmitMask />).find(NxLoadingSpinner).children()).toHaveText('Submitting…');
+  });
 
   it('applies the nx-submit-mask--fullscreen class iff the fullscreen prop is set', function() {
     expect(shallow(<NxSubmitMask/>)).not.toHaveClassName('nx-submit-mask--fullscreen');
@@ -35,14 +37,12 @@ describe('NxSubmitMask', function() {
   });
 
   it('passes the message prop as the child of NxLoadingSpinner', function() {
-    expect(shallow(<NxSubmitMask/>).find(NxLoadingSpinner).children()).not.toExist();
-    expect(shallow(<NxSubmitMask message={null} />).find(NxLoadingSpinner).children()).not.toExist();
     expect(shallow(<NxSubmitMask message="foo" />).find(NxLoadingSpinner).children()).toHaveText('foo');
   });
 
-  it('passes the successMessage prop as the child of NxLoadingSpinner when the success prop is true', function() {
+  it('passes the successMessage prop as the success message text when the success prop is true', function() {
     const spinnerChildren = shallow(<NxSubmitMask message="foo" successMessage="bar" success />)
-        .find(NxLoadingSpinner).children();
+        .find('.nx-submit-mask__message .nx-submit-mask__message-text').children();
 
     expect(spinnerChildren).toHaveText('bar');
     expect(spinnerChildren).not.toHaveText('foo');
@@ -50,9 +50,9 @@ describe('NxSubmitMask', function() {
 
   it('passes "Success!" as the child of NxLoadingSpinner when the success is true and successMessage is not specified',
       function() {
-        expect(shallow(<NxSubmitMask success />).find(NxLoadingSpinner).children()).toHaveText('Success!');
-        expect(shallow(<NxSubmitMask successMessage={null} success />).find(NxLoadingSpinner).children())
-            .toHaveText('Success!');
+        expect(shallow(<NxSubmitMask success />).find('.nx-submit-mask__message-text')).toHaveText('Success!');
+        expect(shallow(<NxSubmitMask successMessage={null} success />)
+            .find('.nx-submit-mask__message-text')).toHaveText('Success!');
       }
   );
 });
