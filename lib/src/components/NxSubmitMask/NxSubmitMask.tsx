@@ -25,8 +25,7 @@ const NxSubmitMask: FunctionComponent<Props> =
           'nx-submit-mask--success': !!success
         }),
 
-        // the default Loading... message is provided by NxLoadingSpinner
-        spinnerMessage = success ? (successMessage || 'Success!') : message;
+        showMessage = success ? (successMessage || 'Success!') : message;
 
     return (
       <div className={classes}>
@@ -34,9 +33,9 @@ const NxSubmitMask: FunctionComponent<Props> =
           { success ?
             <>
               <NxFontAwesomeIcon icon={faCheckCircle} className="nx-loading-spinner__icon" />
-              <span>{spinnerMessage || 'Loading…'}</span>
+              <span>{showMessage}</span>
             </> :
-            <NxLoadingSpinner>{spinnerMessage}</NxLoadingSpinner>
+            <NxLoadingSpinner>{showMessage || 'Submitting...'}</NxLoadingSpinner>
           }
         </div>
       </div>
