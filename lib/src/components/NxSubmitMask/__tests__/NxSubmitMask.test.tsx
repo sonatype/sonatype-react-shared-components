@@ -16,9 +16,13 @@ describe('NxSubmitMask', function() {
         const component = shallow(<NxSubmitMask/>);
 
         expect(component).toMatchSelector('div.nx-submit-mask');
-        expect(component.find('.nx-submit-mask  .nx-submit-mask__message').find(NxLoadingSpinner)).toExist();
+        expect(component.find('.nx-submit-mask .nx-submit-mask__message').find(NxLoadingSpinner)).toExist();
       }
   );
+
+  it('has Submitting… as the default message', function() {
+    expect(shallow(<NxSubmitMask />).find(NxLoadingSpinner).children()).toHaveText('Submitting…');
+  });
 
   it('applies the nx-submit-mask--fullscreen class iff the fullscreen prop is set', function() {
     expect(shallow(<NxSubmitMask/>)).not.toHaveClassName('nx-submit-mask--fullscreen');
