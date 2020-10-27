@@ -29,8 +29,8 @@
   position: fixed;
 
   .nx-submit-mask__message {
-    position: absolute;
-    top: 200px;
+    align-self: start;
+    margin-top: 200px;
   }
 }
 
