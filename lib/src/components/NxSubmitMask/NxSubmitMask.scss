@@ -27,6 +27,11 @@
 
 .nx-submit-mask--fullscreen {
   position: fixed;
+
+  .nx-submit-mask__message {
+    position: absolute;
+    top: 200px;
+  }
 }
 
 .nx-submit-mask__message {
