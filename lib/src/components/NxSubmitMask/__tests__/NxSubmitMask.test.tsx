@@ -46,10 +46,9 @@ describe('NxSubmitMask', function() {
 
   it('passes "Success!" as the child of NxLoadingSpinner when the success is true and successMessage is not specified',
       function() {
-        expect(shallow(<NxSubmitMask success />).find('.nx-submit-mask__message .nx-submit-mask__message-text')
-            .children()).toHaveText('Success!');
+        expect(shallow(<NxSubmitMask success />).find('.nx-submit-mask__message-text')).toHaveText('Success!');
         expect(shallow(<NxSubmitMask successMessage={null} success />)
-            .find('.nx-submit-mask__message .nx-submit-mask__message-text').children()).toHaveText('Success!');
+            .find('.nx-submit-mask__message-text')).toHaveText('Success!');
       }
   );
 });
