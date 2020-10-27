@@ -30,6 +30,7 @@
 }
 
 .nx-submit-mask__message {
+  @include container-horizontal;
   @include container-vertical;
   @include semi-bold();
 

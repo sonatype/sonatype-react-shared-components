@@ -15,7 +15,7 @@ const NxLoadingSpinner: FunctionComponent<{}> =
   function NxLoadingSpinner({ children }) {
     return (
       <div className="nx-loading-spinner">
-        <NxFontAwesomeIcon icon={faCircleNotch} className="fa-spin nx-loading-spinner__icon" />
+        <NxFontAwesomeIcon icon={faCircleNotch} className="fa-spin" />
         <span>{children || 'Loading…'}</span>
       </div>
     );
