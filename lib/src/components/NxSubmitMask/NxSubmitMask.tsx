@@ -25,7 +25,8 @@ const NxSubmitMask: FunctionComponent<Props> =
           'nx-submit-mask--success': !!success
         }),
 
-        showMessage = success ? (successMessage || 'Success!') : message;
+        showSuccessMessage = (successMessage || 'Success!'),
+        showSubmittingMessage = (message || 'Submitting…');
 
     return (
       <div className={classes}>
@@ -33,9 +34,9 @@ const NxSubmitMask: FunctionComponent<Props> =
           { success ?
             <>
               <NxFontAwesomeIcon icon={faCheckCircle} className="nx-loading-spinner__icon" />
-              <span className="nx-submit-mask__message-text">{showMessage}</span>
+              <span className="nx-submit-mask__message-text">{showSuccessMessage}</span>
             </> :
-            <NxLoadingSpinner>{showMessage || 'Submitting…'}</NxLoadingSpinner>
+            <NxLoadingSpinner>{showSubmittingMessage}</NxLoadingSpinner>
           }
         </div>
       </div>
