@@ -37,7 +37,7 @@ describe('NxSubmitMask', function() {
     expect(shallow(<NxSubmitMask message="foo" />).find(NxLoadingSpinner).children()).toHaveText('foo');
   });
 
-  it('passes the successMessage prop as the child of NxLoadingSpinner when the success prop is true', function() {
+  it('passes the successMessage prop as the success message text when the success prop is true', function() {
     const spinnerChildren = shallow(<NxSubmitMask message="foo" successMessage="bar" success />)
         .find('.nx-submit-mask__message .nx-submit-mask__message-text').children();
 
