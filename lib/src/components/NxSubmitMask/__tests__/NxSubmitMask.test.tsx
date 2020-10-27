@@ -16,8 +16,7 @@ describe('NxSubmitMask', function() {
         const component = shallow(<NxSubmitMask/>);
 
         expect(component).toMatchSelector('div.nx-submit-mask');
-        expect(component.find('.nx-submit-mask div')).toHaveClassName('nx-submit-mask__message');
-        expect(component.find('.nx-submit-mask__message').find(NxLoadingSpinner)).toExist();
+        expect(component.find('.nx-submit-mask  .nx-submit-mask__message').find(NxLoadingSpinner)).toExist();
       }
   );
 
