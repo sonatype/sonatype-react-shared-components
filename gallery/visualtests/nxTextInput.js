@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Target } = require('@applitools/eyes-webdriverio');
+const { Region, Target } = require('@applitools/eyes-webdriverio');
 const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 
 describe('NxTextInput', function() {
@@ -76,7 +76,11 @@ describe('NxTextInput', function() {
       await targetElement.scrollIntoView({ block: 'center' });
       await inputElement.setValue('foo');
       await browser.keys(['Backspace', 'Backspace', 'Backspace']);
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+
+      const { x, y } = await targetElement.getLocation();
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 74);
+
+      await browser.eyesRegionSnapshot(null, Target.region(region));
     });
   });
 
@@ -121,7 +125,11 @@ describe('NxTextInput', function() {
       await targetElement.scrollIntoView({ block: 'center' });
       await inputElement.setValue('foo');
       await browser.keys(['Backspace', 'Backspace', 'Backspace']);
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+
+      const { x, y } = await targetElement.getLocation();
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 270);
+
+      await browser.eyesRegionSnapshot(null, Target.region(region));
     });
   });
 

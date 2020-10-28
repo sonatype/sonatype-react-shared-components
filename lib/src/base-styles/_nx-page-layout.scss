@@ -11,7 +11,6 @@
 .nx-html, .nx-body {
   box-sizing: border-box;
   height: 100%;
-  overflow: hidden;
 }
 
 .nx-body {
@@ -51,7 +50,7 @@
   box-sizing: border-box;
   flex-basis: $nx-sidebar-width;
   overflow-x: hidden;
-  padding: $nx-spacing-xl $nx-spacing-md $nx-spacing-xs $nx-spacing-md;
+  padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-xs $nx-spacing-l;
   position: relative;
   white-space: normal;
 }
@@ -72,7 +71,7 @@
   overflow: auto;
 
   > .nx-body {
-    overflow: auto;
+    overflow: visible;
   }
 
   .nx-page-header {

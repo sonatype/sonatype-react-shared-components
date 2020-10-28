@@ -6,11 +6,12 @@
  */
 @import '../../scss-shared/_nx-variables';
 @import '../../scss-shared/_nx-container-helpers';
+@import '../../scss-shared/_nx-text-helpers';
 
 .nx-submit-mask {
   align-items: center;
 
-  background-color: rgba($nx-off-white, 0.9);
+  background-color: transparentize(#555555, 0.25);
 
   display: flex;
   justify-content: center;
@@ -26,21 +27,30 @@
 
 .nx-submit-mask--fullscreen {
   position: fixed;
+
+  .nx-submit-mask__message {
+    align-self: start;
+    margin-top: 200px;
+  }
 }
 
 .nx-submit-mask__message {
+  @include container-horizontal;
   @include container-vertical;
+  @include semi-bold();
 
-  background-color: $nx-off-white;
-  border: 2px solid $nx-slate;
-  box-shadow: -4px 4px 0px rgba($nx-slate, 0.65);
+  background-color: #fff;
+  border-radius: $nx-border-radius;
+  box-sizing: border-box;
   margin: 0;
-  padding: 22px 12px;
+  padding: $nx-spacing-l;
+  text-align: center;
+  min-width: 124px;
+  max-width: 250px;
 }
 
 .nx-submit-mask--success {
   .nx-submit-mask__message {
-    border-color: $nx-dark-green;
-    color: $nx-dark-green;
+    color: #1a832b;
   }
 }

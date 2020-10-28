@@ -70,12 +70,14 @@ import AdditionalResourcePage from './pages/AdditionalResources';
 import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 import NxCardPage from './styles/NxCard/NxCardPage';
 import NxPaginationPage from './styles/NxPagination/NxPaginationPage';
+import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
     NxAlert: NxAlertComponentsPage,
     NxStatefulAlert: NxStatefulAlertComponentsPage,
     NxBackButton: NxBackButtonPage,
+    NxBinaryDonutChart: NxBinaryDonutChartPage,
     NxButton: NxButtonPage,
     NxCheckbox: NxCheckboxPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
