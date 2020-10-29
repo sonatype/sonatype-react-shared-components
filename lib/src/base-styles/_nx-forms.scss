@@ -9,6 +9,10 @@
 // Basic form layout
 .nx-form-group {
   margin-bottom: $nx-spacing-xl;
+
+  .nx-text-input {
+    margin-bottom: 0;
+  }
 }
 
 .nx-form-row {
