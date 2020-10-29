@@ -135,3 +135,4 @@ export * from './util/threatLevels';
 export * from './util/validationUtil';
 
 export { default as NxBinaryDonutChart } from './components/NxBinaryDonutChart/NxBinaryDonutChart';
+export { default as NxPagination, Props as NxPaginationProps } from './components/NxPagination/NxPagination';

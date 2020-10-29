@@ -5,22 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxFontAwesomeIcon, NxButton } from '@sonatype/react-shared-components';
-import { faCaretRight, faCaretLeft } from '@fortawesome/free-solid-svg-icons';
+import { NxPagination } from '@sonatype/react-shared-components';
 
 const NxAlertErrorExample = () =>
   <div className="nx-footer">
-    <div className="nx-btn-bar nx-btn-bar--pagination">
-      <NxButton variant="tertiary"><NxFontAwesomeIcon icon={faCaretLeft}/></NxButton>
-      <NxButton className="nx-btn--pagination">1</NxButton>
-      <NxButton className="nx-btn--pagination">2</NxButton>
-      <NxButton className="nx-btn--pagination">3</NxButton>
-      <NxButton className="nx-btn--pagination selected">4</NxButton>
-      <NxButton className="nx-btn--pagination">5</NxButton>
-      <NxButton className="nx-btn--pagination">...</NxButton>
-      <NxButton className="nx-btn--pagination">7</NxButton>
-      <NxButton variant="tertiary"><NxFontAwesomeIcon icon={faCaretRight}/></NxButton>
-    </div>
+    <NxPagination pageCount={7} currentPage={4} />
   </div>;
 
 export default NxAlertErrorExample;
