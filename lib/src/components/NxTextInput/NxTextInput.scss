@@ -7,6 +7,8 @@
 @import '../../scss-shared/_nx-form-validation.scss';
 
 .nx-text-input {
+  margin-bottom: $nx-spacing-xl;
+
   .nx-icon--invalid, .nx-icon--valid {
     display: none;
   }
