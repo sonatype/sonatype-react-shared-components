@@ -64,7 +64,7 @@ const NxStatefulSubmitMaskPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               The text to display inside of the mask when <code className="nx-code">success</code> is false.  Defaults
-              to "Loading…"
+              to "Submitting…"
             </td>
           </tr>
           <tr className="nx-table-row nx-table-row--header">
