@@ -1,0 +1,46 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-container-helpers';
+@import '../../scss-shared/nx-text-helpers';
+
+
+.nx-page-header--nexus {
+  .nx-page-header__inner {
+    padding-left: 0;
+  }
+
+  .nx-product {
+    height: 72px;
+    margin-bottom: 0;
+  }
+
+  .nx-product__branding {
+    align-items: center;
+    display: flex;
+  }
+
+  .nx-product__logo {
+    margin-right: $nx-spacing-md;
+  }
+
+  .nx-product__brand {
+    @include bold();
+
+    font-size: 26px;
+  }
+
+  .nx-product__name {
+    font-size: 26px;
+    margin-left: $nx-spacing-sm;
+
+    &::before {
+      content: "";
+      margin-right: 0;
+    }
+  }
+}

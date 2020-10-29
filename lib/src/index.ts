@@ -135,3 +135,8 @@ export * from './util/threatLevels';
 export * from './util/validationUtil';
 
 export { default as NxBinaryDonutChart } from './components/NxBinaryDonutChart/NxBinaryDonutChart';
+
+export {
+  default as NxNexusPageHeader,
+  Props as NxNexusPageHeaderProps
+} from './components/NxNexusPageHeader/NxNexusPageHeader';

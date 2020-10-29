@@ -70,6 +70,7 @@ import AdditionalResourcePage from './pages/AdditionalResources';
 import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 import NxCardPage from './styles/NxCard/NxCardPage';
 import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
+import NxNexusPageHeaderPage from './components/NxNexusPageHeader/NxNexusPageHeaderPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -89,6 +90,7 @@ const pageConfig: PageConfig = {
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,
     NxModal: NxModalPage,
+    NxNexusPageHeader: NxNexusPageHeaderPage,
     NxPageHeader: NxPageHeaderPage,
     NxPolicyThreatSlider: NxPolicyThreatSliderPage,
     NxRadio: NxRadioPage,
