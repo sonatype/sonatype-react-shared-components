@@ -29,6 +29,7 @@
   position: fixed;
 
   .nx-submit-mask__message {
+    -ms-flex-item-align: start;
     align-self: start;
     margin-top: 200px;
   }
