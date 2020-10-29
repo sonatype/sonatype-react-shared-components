@@ -14,10 +14,6 @@
     width: 40px;
     padding: 0;
 
-    &:focus {
-      box-shadow: 0 0 3px 1px rgba(2, 166, 217, 0.3);
-    }
-
     &:last-child {
       margin-right: 0;
     }
@@ -39,25 +35,21 @@
     border-color: #474747;
   }
 
-  &:active {
-    background-color: #f1f3fa;
-    border-color: #474747;
-  }
-
-  &:focus {
-    background-color: rgba(255, 255, 255, 0);
-    border: solid 1px #02a6d9;
-    box-shadow: 0 0 3px 1px rgba(2, 166, 217, 0.3);
-  }
-
   &.selected {
     background-color: #232c50;
     border-color: #232c50;
     color: #fff;
-
-    &:focus {
-      border-color: #02a6d9;
-      box-shadow: 0 0 3px 1px rgba(2, 166, 217, 0.3);
-    }
   }
+
+  &:focus {
+    border: solid 1px #02a6d9;
+    box-shadow: 0 0 3px 1px rgba(2, 166, 217, 0.3);
+  }
+
+  &:active {
+    background-color: #f1f3fa;
+    border-color: #474747;
+    box-shadow: none;
+  }
+
 }
