@@ -13,6 +13,7 @@ import NxPagination, { Props } from '../NxPagination';
 import NxButton from '../../NxButton/NxButton';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
+/* eslint-disable @typescript-eslint/no-object-literal-type-assertion */
 describe('NxPagination', function() {
   const minimalProps = {
         currentPage: 1,
@@ -247,7 +248,7 @@ describe('NxPagination', function() {
   });
 
   it('adds the `selected` class to only the button for the current page', function() {
-    function testWithProps(props: { currentPage: number, pageCount: number }) {
+    function testWithProps(props: { currentPage: number; pageCount: number }) {
       const buttons = getShallowComponent(props).children();
 
       expect(buttons.filterWhere(btn => btn.text() === props.currentPage.toString())).toHaveClassName('selected');
