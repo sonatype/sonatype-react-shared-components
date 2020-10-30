@@ -14,8 +14,11 @@
   }
 
   .nx-product {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 72px 16px 1fr;
     grid-template-columns: 72px 1fr;
+    -ms-grid-rows: 39px 0 auto;
     grid-template-rows: 39px auto;
     gap: 0 16px;
     grid-template-areas:
@@ -30,14 +33,16 @@
     -ms-grid-row-align: start;
     align-self: start;
     -ms-grid-row: 1;
-    -ms-grid-column: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 3;
     grid-area: top-row;
     padding-top: $nx-spacing-xs;
   }
 
   .nx-product__bottom-row {
     -ms-grid-row: 2;
-    -ms-grid-column: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 3;
     -ms-grid-row-align: start;
     align-self: start;
     grid-area: bottom-row;
