@@ -69,7 +69,7 @@ import StylingComponentsPage from './pages/StylingComponents';
 import AdditionalResourcePage from './pages/AdditionalResources';
 import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 import NxCardPage from './styles/NxCard/NxCardPage';
-import NxPaginationPage from './styles/NxPagination/NxPaginationPage';
+import NxPaginationPage from './components/NxPagination/NxPaginationPage';
 import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
 
 const pageConfig: PageConfig = {
@@ -91,6 +91,7 @@ const pageConfig: PageConfig = {
     NxLoadingSpinner: NxLoadingSpinnerPage,
     NxModal: NxModalPage,
     NxPageHeader: NxPageHeaderPage,
+    NxPagination: NxPaginationPage,
     NxPolicyThreatSlider: NxPolicyThreatSliderPage,
     NxRadio: NxRadioPage,
     NxSubmitMask: NxSubmitMaskPage,
@@ -126,7 +127,6 @@ const pageConfig: PageConfig = {
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
     'nx-page-title': NxPageTitlePage,
-    'nx-pagination': NxPaginationPage,
     'nx-table': NxTableStylePage,
     //'nx-text-input': NxTextInputStylesPage,
     'nx-threat-number': NxThreatNumberPage,

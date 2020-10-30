@@ -4,10 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
 import { NxPagination } from '@sonatype/react-shared-components';
 
-const NxAlertErrorExample = () =>
-  <NxPagination onChange={(num: any) => alert(num)} pageCount={7002} currentPage={4} />;
+export default function NxPaginationExample() {
+  const [page, setPage] = useState(17);
 
-export default NxAlertErrorExample;
+  return <NxPagination onChange={setPage} pageCount={41} currentPage={page} />;
+}
