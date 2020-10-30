@@ -26,6 +26,13 @@ describe('NxPagination', function() {
     expect(getShallowComponent()).toHaveClassName('nx-btn-bar');
   });
 
+  it('adds custom class names to the btn bar', function() {
+    const component = getShallowComponent({ className: 'foo' });
+
+    expect(component).toHaveClassName('foo');
+    expect(component).toHaveClassName('nx-btn-bar');
+  });
+
   describe('when there are no pages', function() {
     it('displays no buttons', function() {
       expect(getShallowComponent({ currentPage: null, pageCount: 0 })).toMatchElement(<div/>);
