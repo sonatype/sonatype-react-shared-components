@@ -11,6 +11,7 @@ export interface Props {
   className?: string | null;
   pageCount: number;
   currentPage: number;
+  onChange: ((newPage: number, evt: MouseEvent) => void);
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -20,5 +21,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const propTypes: ValidationMap<Props> = {
   className: PropTypes.string,
   pageCount: PropTypes.number.isRequired,
-  currentPage: PropTypes.number.isRequired
+  currentPage: PropTypes.number.isRequired,
+  onChange: PropTypes.func
 };

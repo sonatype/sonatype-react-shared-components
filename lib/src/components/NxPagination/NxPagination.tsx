@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import classnames from 'classnames';
-import { max, min, range, map } from 'ramda';
+import { max, min, range, map, curryN } from 'ramda';
 
 import { ButtonProps, Props, propTypes } from './types';
 import NxButton from '../NxButton/NxButton';
@@ -34,34 +34,55 @@ function validate(pageCount: number, currentPage: number) {
   }
 }
 
-export default function NxPagination({ className, pageCount, currentPage }: Props) {
+export default function NxPagination({ className, pageCount, currentPage, onChange }: Props) {
   const classes = classnames('nx-btn-bar', 'nx-btn-bar--pagination', className);
 
   validate(pageCount, currentPage);
 
-  const currentPageRangeStart = max(trunc(currentPage / PAGE_RANGE_SIZE) * PAGE_RANGE_SIZE, 1),
+  const onFirstPage = currentPage === 1,
+      onLastPage = currentPage === pageCount,
+      currentPageRangeStart = max(trunc(currentPage / PAGE_RANGE_SIZE) * PAGE_RANGE_SIZE, 1),
       currentPageRangeEnd = min(currentPageRangeStart + 4, pageCount), // inclusive
       currentPageRange = range(currentPageRangeStart, currentPageRangeEnd + 1),
       morePagesBelow = currentPageRangeStart > 1,
       morePagesAbove = pageCount > currentPageRangeEnd,
-      mkBtn = (num: number) => <NxPaginationButton key={num} selected={num === currentPage} >{num}</NxPaginationButton>;
+      handleBtnClick = curryN(2, onChange),
+      mkBtn = (num: number) => {
+        const selected = num === currentPage;
+
+        return (
+          <NxPaginationButton onClick={selected ? null : handleBtnClick(num)}
+                              key={num}
+                              selected={selected}>
+            {num}
+          </NxPaginationButton>
+        );
+      };
 
   return (
     <div className={classes}>
+      { onFirstPage ||
+        <NxButton onClick={handleBtnClick(currentPage - 1)} variant="tertiary">
+          <NxFontAwesomeIcon icon={faCaretLeft} />
+        </NxButton>
+      }
       { morePagesBelow &&
         <>
-          <NxButton variant="tertiary"><NxFontAwesomeIcon icon={faCaretLeft} /></NxButton>
-          <NxPaginationButton>1</NxPaginationButton>
-          <NxPaginationButton>…</NxPaginationButton>
+          <NxPaginationButton onClick={handleBtnClick(1)}>1</NxPaginationButton>
+          <NxPaginationButton onClick={handleBtnClick(currentPageRangeStart - 5)}>…</NxPaginationButton>
         </>
       }
       { map(mkBtn, currentPageRange) }
       { morePagesAbove &&
         <>
-          <NxPaginationButton>…</NxPaginationButton>
-          <NxPaginationButton>{pageCount}</NxPaginationButton>
-          <NxButton variant="tertiary"><NxFontAwesomeIcon icon={faCaretRight} /></NxButton>
+          <NxPaginationButton onClick={handleBtnClick(currentPageRangeStart + 5)}>…</NxPaginationButton>
+          <NxPaginationButton onClick={handleBtnClick(pageCount)}>{pageCount}</NxPaginationButton>
         </>
+      }
+      { onLastPage ||
+          <NxButton onClick={handleBtnClick(currentPage + 1)} variant="tertiary">
+            <NxFontAwesomeIcon icon={faCaretRight} />
+          </NxButton>
       }
     </div>
   );
