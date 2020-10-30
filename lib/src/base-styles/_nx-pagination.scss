@@ -27,7 +27,7 @@
 .nx-btn--pagination {
   @include regular();
   background-color: transparent;
-  border-color: #fff;
+  border-color: transparent;
   color: #474747;
 
   &:hover {
