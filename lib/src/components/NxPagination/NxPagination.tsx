@@ -33,11 +33,10 @@ function validate(pageCount: number, currentPage: number) {
 }
 
 export default function NxPagination({ className, pageCount, currentPage, onChange }: Props) {
-  const classes = classnames('nx-btn-bar', 'nx-btn-bar--pagination', className);
-
   validate(pageCount, currentPage);
 
-  const onFirstPage = currentPage === 1,
+  const classes = classnames('nx-btn-bar', 'nx-btn-bar--pagination', className),
+      onFirstPage = currentPage === 1,
       onLastPage = currentPage === pageCount,
       currentPageRangeStart = max(currentPage - (currentPage % PAGE_RANGE_SIZE), 1),
       currentPageRangeEnd = min(currentPageRangeStart + (PAGE_RANGE_SIZE - 1), pageCount), // inclusive
