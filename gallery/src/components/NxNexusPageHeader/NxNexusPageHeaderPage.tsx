@@ -8,9 +8,9 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import ComplexPageHeaderExample from './ComplexPageHeaderExample';
+import NexusPageHeaderExample from './NexusPageHeaderExample';
 
-const complexPageHeaderExampleCode = require('!!raw-loader!./ComplexPageHeaderExample').default;
+const nexusPageHeaderExampleCode = require('!!raw-loader!./NexusPageHeaderExample').default;
 
 const NxPageHeaderPage = () =>
   <>
@@ -85,8 +85,8 @@ const NxPageHeaderPage = () =>
 
     <GalleryExampleTile title="Complex Page Header"
                         id="nx-page-header-complex-example"
-                        codeExamples={complexPageHeaderExampleCode}
-                        liveExample={ComplexPageHeaderExample}
+                        codeExamples={nexusPageHeaderExampleCode}
+                        liveExample={NexusPageHeaderExample}
                         defaultCheckeredBackground={true}>
       An instance of <code className="nx-code">NxNexusPageHeader</code> which includes all features
       at once.

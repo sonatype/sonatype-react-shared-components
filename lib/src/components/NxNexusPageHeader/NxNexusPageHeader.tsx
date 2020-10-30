@@ -29,23 +29,24 @@ function HeaderLink({ name, href, current }: HeaderLinkProps) {
 export { HeaderLinkProps, HeaderLink };
 
 export default function NxNexusPageHeader({ links, homeLink, productInfo, children }: Props) {
-  const logoEl = <img src={logoImg} className="nx-product__logo" alt="⬡ Sonatype"/>,
+  const logoEl = <img src={logoImg} className="nx-product__logo-image" alt="⬡ Sonatype"/>,
       linkEls = links && links.map(link => <HeaderLink key={link.name} { ...link } />);
 
   return (
     <header className="nx-page-header nx-page-header--nexus">
       <div className="nx-page-header__inner">
         <div className="nx-product">
-          <div className="nx-product__branding">
+          <div className="nx-product__logo">
             { homeLink ? <a className="nx-product__link" href={homeLink}>{logoEl}</a> : logoEl }
-            <div className="nx-product__brand">Nexus</div>
           </div>
-          { productInfo &&
-            <>
-              <div className="nx-product__name">{productInfo.name}</div>
-              { productInfo.version && <div className="nx-product__version">Version: {productInfo.version}</div> }
-            </>
-          }
+          <div className="nx-product__top-row">
+            <span className="nx-product__brand">nexus</span>
+            { productInfo && <span className="nx-product__name">{productInfo.name}</span> }
+          </div>
+          <div className="nx-product__bottom-row">
+            <span className="nx-product__byline">from sonatype</span>
+            { productInfo && <span className="nx-product__version">{productInfo.version}</span> }
+          </div>
         </div>
         { linkEls && <div className="nx-page-header__links">{linkEls}</div> }
         { children && <div className="nx-page-header__extra-content">{children}</div> }

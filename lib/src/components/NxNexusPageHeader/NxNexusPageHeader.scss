@@ -8,39 +8,126 @@
 @import '../../scss-shared/nx-container-helpers';
 @import '../../scss-shared/nx-text-helpers';
 
-
 .nx-page-header--nexus {
   .nx-page-header__inner {
     padding-left: 0;
   }
 
   .nx-product {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    grid-template-rows: 39px auto;
+    gap: 0 16px;
+    grid-template-areas:
+      "logo top-row"
+      "logo bottom-row";
+
     height: 72px;
     margin-bottom: 0;
   }
 
-  .nx-product__branding {
-    align-items: center;
-    display: flex;
+  .nx-product__top-row {
+    -ms-grid-row-align: start;
+    align-self: start;
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: top-row;
+    padding-top: $nx-spacing-xs;
+  }
+
+  .nx-product__bottom-row {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    -ms-grid-row-align: start;
+    align-self: start;
+    grid-area: bottom-row;
+    padding-bottom: $nx-spacing-xs;
   }
 
   .nx-product__logo {
-    margin-right: $nx-spacing-md;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 1;
+    grid-area: logo;
+  }
+
+  .nx-product__link {
+    display: block;
+    height: 72px;
   }
 
   .nx-product__brand {
     @include bold();
-
+    color: #2c2c2c;
+    display: inline-block;
     font-size: 26px;
+    margin: 0;
   }
 
   .nx-product__name {
+    color: #2c2c2c;
+    display: inline-block;
     font-size: 26px;
-    margin-left: $nx-spacing-sm;
+    margin: 0 0 0 6px;
 
     &::before {
       content: "";
       margin-right: 0;
     }
+  }
+
+  .nx-product__byline, .nx-product__version {
+    color: #474747;
+    display: inline-block;
+    font-size: $nx-font-size-xs;
+    margin: 0;
+  }
+
+  .nx-product__version {
+    margin: 0 0 0 6px;
+
+    &::before {
+      content: "|";
+      display: inline-block;
+      font-size: 12px;
+      margin-right: $nx-spacing-xs;
+    }
+  }
+
+  .nx-page-header__link {
+    color: #2c2c2c;
+    padding-bottom: $nx-spacing-xxs;
+
+    &:active, &.nx-page-header__link--current {
+      border-bottom-color: #00a1e2;
+    }
+  }
+
+  .nx-page-header__links {
+    flex-grow: 1;
+  }
+
+  .nx-page-header__extra-content {
+    align-self: stretch;
+    align-items: center;
+    display: flex;
+    flex-shrink: 1;
+  }
+
+  .nx-page-header__extra-content-right {
+    @include container-horizontal;
+    align-self: stretch;
+    align-items: center;
+    border-left: 1px solid #e9e9e9;
+    display: flex;
+    flex-shrink: 1;
+    margin-left: $nx-spacing-l;
+    padding-left: $nx-spacing-l;
+  }
+
+  .nx-page-header__extra-content-left {
+    @include container-horizontal;
+    align-items: center;
+    flex-shrink: 1;
   }
 }
