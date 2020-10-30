@@ -14,8 +14,6 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 export { Props, propTypes };
 
-const { trunc } = Math;
-
 const PAGE_RANGE_SIZE = 5;
 
 function NxPaginationButton({ selected, ...attrs }: ButtonProps) {
@@ -41,8 +39,8 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
 
   const onFirstPage = currentPage === 1,
       onLastPage = currentPage === pageCount,
-      currentPageRangeStart = max(trunc(currentPage / PAGE_RANGE_SIZE) * PAGE_RANGE_SIZE, 1),
-      currentPageRangeEnd = min(currentPageRangeStart + 4, pageCount), // inclusive
+      currentPageRangeStart = max(currentPage - (currentPage % PAGE_RANGE_SIZE), 1),
+      currentPageRangeEnd = min(currentPageRangeStart + (PAGE_RANGE_SIZE - 1), pageCount), // inclusive
       currentPageRange = range(currentPageRangeStart, currentPageRangeEnd + 1),
       morePagesBelow = currentPageRangeStart > 1,
       morePagesAbove = pageCount > currentPageRangeEnd,
@@ -69,13 +67,13 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
       { morePagesBelow &&
         <>
           <NxPaginationButton onClick={handleBtnClick(1)}>1</NxPaginationButton>
-          <NxPaginationButton onClick={handleBtnClick(currentPageRangeStart - 5)}>…</NxPaginationButton>
+          <NxPaginationButton onClick={handleBtnClick(currentPageRangeStart - PAGE_RANGE_SIZE)}>…</NxPaginationButton>
         </>
       }
       { map(mkBtn, currentPageRange) }
       { morePagesAbove &&
         <>
-          <NxPaginationButton onClick={handleBtnClick(currentPageRangeStart + 5)}>…</NxPaginationButton>
+          <NxPaginationButton onClick={handleBtnClick(currentPageRangeStart + PAGE_RANGE_SIZE)}>…</NxPaginationButton>
           <NxPaginationButton onClick={handleBtnClick(pageCount)}>{pageCount}</NxPaginationButton>
         </>
       }
