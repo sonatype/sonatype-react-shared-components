@@ -16,5 +16,5 @@ export interface Props {
 export const propTypes: ValidationMap<Props> = {
   className: PropTypes.string,
   onPrevPageSelect: PropTypes.func.isRequired,
-  onPageSelect: PropTypes.func.isRequired
+  onNextPageSelect: PropTypes.func.isRequired
 };
