@@ -10,9 +10,9 @@
 
   .nx-btn {
     height: 40px;
+    min-width: 40px;
     margin: 0 $nx-spacing-xs 0 0;
-    width: 40px;
-    padding: 0;
+    padding: 0 $nx-spacing-md;
 
     &:last-child {
       margin-right: 0;
@@ -26,12 +26,12 @@
 
 .nx-btn--pagination {
   @include regular();
-  background-color: #fff;
+  background-color: transparent;
   border-color: #fff;
   color: #474747;
 
   &:hover {
-    background-color: #fff;
+    background-color: transparent;
     border-color: #474747;
   }
 
@@ -52,5 +52,4 @@
     box-shadow: none;
     color: #474747;
   }
-
 }
