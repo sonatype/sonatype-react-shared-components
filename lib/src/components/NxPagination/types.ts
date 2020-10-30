@@ -18,5 +18,5 @@ export const propTypes: ValidationMap<Props> = {
   className: PropTypes.string,
   pageCount: PropTypes.number.isRequired,
   currentPage: PropTypes.number,
-  onChange: PropTypes.func
+  onChange: PropTypes.func.isRequired
 };
