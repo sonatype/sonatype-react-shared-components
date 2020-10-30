@@ -8,8 +8,6 @@ import React from 'react';
 import { NxPagination } from '@sonatype/react-shared-components';
 
 const NxAlertErrorExample = () =>
-  <div className="nx-footer">
-    <NxPagination onChange={(num: any) => alert(num)} pageCount={7002} currentPage={4} />
-  </div>;
+  <NxPagination onChange={(num: any) => alert(num)} pageCount={7002} currentPage={4} />;
 
 export default NxAlertErrorExample;
