@@ -41,8 +41,8 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
       currentPageRangeStart = max(currentPage - (currentPage % PAGE_RANGE_SIZE), 1),
       currentPageRangeEnd = min(currentPageRangeStart + (PAGE_RANGE_SIZE - 1), pageCount), // inclusive
       currentPageRange = range(currentPageRangeStart, currentPageRangeEnd + 1),
-      morePagesBelow = currentPageRangeStart > 1,
-      morePagesAbove = pageCount > currentPageRangeEnd,
+      numPagesBelowRange = currentPageRangeStart - 1,
+      numPagesAboveRange = pageCount - currentPageRangeEnd,
       handleBtnClick = curryN(2, onChange),
       mkBtn = (num: number) => {
         const selected = num === currentPage;
@@ -63,23 +63,23 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
           <NxFontAwesomeIcon icon={faCaretLeft} />
         </NxButton>
       }
-      { morePagesBelow &&
-        <>
-          <NxPaginationButton onClick={handleBtnClick(1)}>1</NxPaginationButton>
-          <NxPaginationButton onClick={handleBtnClick(currentPageRangeStart - PAGE_RANGE_SIZE)}>…</NxPaginationButton>
-        </>
+      { !!numPagesBelowRange &&
+        <NxPaginationButton onClick={handleBtnClick(1)}>1</NxPaginationButton>
+      }
+      { numPagesBelowRange > 1 &&
+        <NxPaginationButton onClick={handleBtnClick(currentPageRangeStart - PAGE_RANGE_SIZE)}>…</NxPaginationButton>
       }
       { map(mkBtn, currentPageRange) }
-      { morePagesAbove &&
-        <>
-          <NxPaginationButton onClick={handleBtnClick(currentPageRangeStart + PAGE_RANGE_SIZE)}>…</NxPaginationButton>
-          <NxPaginationButton onClick={handleBtnClick(pageCount)}>{pageCount}</NxPaginationButton>
-        </>
+      { numPagesAboveRange > 1 &&
+        <NxPaginationButton onClick={handleBtnClick(currentPageRangeStart + PAGE_RANGE_SIZE)}>…</NxPaginationButton>
+      }
+      { !!numPagesAboveRange &&
+        <NxPaginationButton onClick={handleBtnClick(pageCount)}>{pageCount}</NxPaginationButton>
       }
       { onLastPage ||
-          <NxButton onClick={handleBtnClick(currentPage + 1)} variant="tertiary">
-            <NxFontAwesomeIcon icon={faCaretRight} />
-          </NxButton>
+        <NxButton onClick={handleBtnClick(currentPage + 1)} variant="tertiary">
+          <NxFontAwesomeIcon icon={faCaretRight} />
+        </NxButton>
       }
     </div>
   );
