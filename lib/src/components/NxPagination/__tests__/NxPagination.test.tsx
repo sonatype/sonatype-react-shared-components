@@ -16,7 +16,7 @@ import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 /* eslint-disable @typescript-eslint/no-object-literal-type-assertion */
 describe('NxPagination', function() {
   const minimalProps = {
-        currentPage: 1,
+        currentPage: 0,
         pageCount: 1,
         onChange: () => {}
       },
@@ -54,9 +54,9 @@ describe('NxPagination', function() {
 
   describe('when currentPage is not valid', function() {
     it('throws a TypeError', function() {
-      expect(() => getShallowComponent({ pageCount: 10, currentPage: 0 })).toThrow(TypeError);
       expect(() => getShallowComponent({ pageCount: 10, currentPage: -1 })).toThrow(TypeError);
       expect(() => getShallowComponent({ pageCount: 10, currentPage: Math.PI})).toThrow(TypeError);
+      expect(() => getShallowComponent({ pageCount: 10, currentPage: 10 })).toThrow(TypeError);
       expect(() => getShallowComponent({ pageCount: 10, currentPage: 11 })).toThrow(TypeError);
       expect(() => getShallowComponent({ pageCount: 10, currentPage: Infinity })).toThrow(TypeError);
       expect(() => getShallowComponent({ pageCount: 10, currentPage: -Infinity })).toThrow(TypeError);
@@ -68,7 +68,7 @@ describe('NxPagination', function() {
 
   describe('when there are five or fewer pages', function() {
     it('renders only arrows and buttons for the individual pages', function() {
-      expect(getShallowComponent({ pageCount: 2, currentPage: 1 })).toMatchElement(
+      expect(getShallowComponent({ pageCount: 2, currentPage: 0 })).toMatchElement(
         <div>
           <NxButton>1</NxButton>
           <NxButton>2</NxButton>
@@ -76,7 +76,7 @@ describe('NxPagination', function() {
         </div>
       );
 
-      expect(getShallowComponent({ pageCount: 5, currentPage: 2 })).toMatchElement(
+      expect(getShallowComponent({ pageCount: 5, currentPage: 1 })).toMatchElement(
         <div>
           <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
           <NxButton>1</NxButton>
@@ -88,7 +88,7 @@ describe('NxPagination', function() {
         </div>
       );
 
-      expect(getShallowComponent({ pageCount: 3, currentPage: 3 })).toMatchElement(
+      expect(getShallowComponent({ pageCount: 3, currentPage: 2 })).toMatchElement(
         <div>
           <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
           <NxButton>1</NxButton>
@@ -184,7 +184,7 @@ describe('NxPagination', function() {
 
   describe('when the pageCount is not divisible by 5 and the currentPage is less than 5 from the max', function() {
     it('renders the final group mod 5 of pages', function() {
-      expect(getShallowComponent({ pageCount: 43, currentPage: 41 })).toMatchElement(
+      expect(getShallowComponent({ pageCount: 43, currentPage: 40 })).toMatchElement(
         <div>
           <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
           <NxButton>1</NxButton>
@@ -200,7 +200,7 @@ describe('NxPagination', function() {
 
   describe('when the current page is the first page', function() {
     it('does not render the back arrow', function() {
-      expect(getShallowComponent({ pageCount: 7, currentPage: 1 })).toMatchElement(
+      expect(getShallowComponent({ pageCount: 7, currentPage: 0 })).toMatchElement(
         <div>
           <NxButton>1</NxButton>
           <NxButton>2</NxButton>
@@ -217,7 +217,7 @@ describe('NxPagination', function() {
 
   describe('when the current page is not the first page', function() {
     it('renders a back arrow as the first button', function() {
-      const icon = getShallowComponent({ pageCount: 7, currentPage: 2 }).children().first().children();
+      const icon = getShallowComponent({ pageCount: 7, currentPage: 1 }).children().first().children();
 
       expect(icon).toMatchSelector(NxFontAwesomeIcon);
       expect(icon).toHaveProp(icon, faCaretLeft);
@@ -226,7 +226,7 @@ describe('NxPagination', function() {
 
   describe('when the current page is the last page', function() {
     it('does not render the forward arrow', function() {
-      expect(getShallowComponent({ pageCount: 7, currentPage: 7 })).toMatchElement(
+      expect(getShallowComponent({ pageCount: 7, currentPage: 6 })).toMatchElement(
         <div>
           <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
           <NxButton>1</NxButton>
@@ -240,7 +240,7 @@ describe('NxPagination', function() {
 
   describe('when the current page is not the last page', function() {
     it('renders a forward arrow as the last button', function() {
-      const icon = getShallowComponent({ pageCount: 7, currentPage: 6 }).children().last().children();
+      const icon = getShallowComponent({ pageCount: 7, currentPage: 5 }).children().last().children();
 
       expect(icon).toMatchSelector(NxFontAwesomeIcon);
       expect(icon).toHaveProp(icon, faCaretRight);
@@ -249,22 +249,22 @@ describe('NxPagination', function() {
 
   it('adds the `selected` class to only the button for the current page', function() {
     function testWithProps(props: { currentPage: number; pageCount: number }) {
-      const buttons = getShallowComponent(props).children();
+      const buttons = getShallowComponent(props).children(),
+          pageIndexStr = (props.currentPage + 1).toString();
 
-      expect(buttons.filterWhere(btn => btn.text() === props.currentPage.toString())).toHaveClassName('selected');
-      expect(buttons.filterWhere(btn => btn.text() !== props.currentPage.toString()).find('.selected')) .not.toExist();
+      expect(buttons.filter('.selected')).toHaveText(pageIndexStr);
     }
 
-    testWithProps({ pageCount: 1, currentPage: 1 });
+    testWithProps({ pageCount: 1, currentPage: 0 });
+    testWithProps({ pageCount: 5, currentPage: 3 });
     testWithProps({ pageCount: 5, currentPage: 4 });
-    testWithProps({ pageCount: 5, currentPage: 5 });
+    testWithProps({ pageCount: 7, currentPage: 4 });
     testWithProps({ pageCount: 7, currentPage: 5 });
     testWithProps({ pageCount: 7, currentPage: 6 });
-    testWithProps({ pageCount: 7, currentPage: 7 });
   });
 
   it('adds the `nx-btn--pagination` class to all buttons except the arrows', function() {
-    const buttons = getShallowComponent({ pageCount: 50, currentPage: 25 }).children();
+    const buttons = getShallowComponent({ pageCount: 50, currentPage: 24 }).children();
 
     expect(buttons.first()).not.toHaveClassName('nx-btn--pagination');
     expect(buttons.filterWhere(btn => btn.text() === '…').first()).toHaveClassName('nx-btn--pagination');
@@ -285,14 +285,14 @@ describe('NxPagination', function() {
 
     beforeEach(function() {
       onChangeSpy = jest.fn();
-      buttons = getShallowComponent({ pageCount: 50, currentPage: 25, onChange: onChangeSpy }).children();
+      buttons = getShallowComponent({ pageCount: 50, currentPage: 24, onChange: onChangeSpy }).children();
     });
 
     describe('when the back arrow is clicked', function() {
       it('fires onChange with the previous page number and the event', function() {
         buttons.first().simulate('click', evt);
 
-        expect(onChangeSpy).toHaveBeenCalledWith(24, evt);
+        expect(onChangeSpy).toHaveBeenCalledWith(23, evt);
       });
     });
 
@@ -300,7 +300,7 @@ describe('NxPagination', function() {
       it('fires onChange with the next page number and the event', function() {
         buttons.last().simulate('click', evt);
 
-        expect(onChangeSpy).toHaveBeenCalledWith(26, evt);
+        expect(onChangeSpy).toHaveBeenCalledWith(25, evt);
       });
     });
 
@@ -308,7 +308,7 @@ describe('NxPagination', function() {
       it('fires onChange with 1 and the event', function() {
         buttons.filterWhere(btn => btn.text() === '1').simulate('click', evt);
 
-        expect(onChangeSpy).toHaveBeenCalledWith(1, evt);
+        expect(onChangeSpy).toHaveBeenCalledWith(0, evt);
       });
     });
 
@@ -316,7 +316,7 @@ describe('NxPagination', function() {
       it('fires onChange with the max page number and the event', function() {
         buttons.filterWhere(btn => btn.text() === '50').simulate('click', evt);
 
-        expect(onChangeSpy).toHaveBeenCalledWith(50, evt);
+        expect(onChangeSpy).toHaveBeenCalledWith(49, evt);
       });
     });
 
@@ -324,7 +324,7 @@ describe('NxPagination', function() {
       it('fires onChange with the page number one less than shown in the current group, and the event', function() {
         buttons.filterWhere(btn => btn.text() === '…').first().simulate('click', evt);
 
-        expect(onChangeSpy).toHaveBeenCalledWith(20, evt);
+        expect(onChangeSpy).toHaveBeenCalledWith(19, evt);
       });
     });
 
@@ -332,23 +332,23 @@ describe('NxPagination', function() {
       it('fires onChange with the page number one more than shown in the current group, and the event', function() {
         buttons.filterWhere(btn => btn.text() === '…').last().simulate('click', evt);
 
-        expect(onChangeSpy).toHaveBeenCalledWith(26, evt);
+        expect(onChangeSpy).toHaveBeenCalledWith(25, evt);
       });
     });
 
     describe('when the nearby page buttons are clicked', function() {
       it('fires onChange with the corresponding page number and the event', function() {
         buttons.filterWhere(btn => btn.text() === '21').simulate('click', evt);
-        expect(onChangeSpy).toHaveBeenLastCalledWith(21, evt);
+        expect(onChangeSpy).toHaveBeenLastCalledWith(20, evt);
 
         buttons.filterWhere(btn => btn.text() === '22').simulate('click', evt);
-        expect(onChangeSpy).toHaveBeenLastCalledWith(22, evt);
+        expect(onChangeSpy).toHaveBeenLastCalledWith(21, evt);
 
         buttons.filterWhere(btn => btn.text() === '23').simulate('click', evt);
-        expect(onChangeSpy).toHaveBeenLastCalledWith(23, evt);
+        expect(onChangeSpy).toHaveBeenLastCalledWith(22, evt);
 
         buttons.filterWhere(btn => btn.text() === '24').simulate('click', evt);
-        expect(onChangeSpy).toHaveBeenLastCalledWith(24, evt);
+        expect(onChangeSpy).toHaveBeenLastCalledWith(23, evt);
       });
     });
 

@@ -91,13 +91,13 @@ const NxPaginationPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">currentPage</code></td>
-            <td className="nx-cell">Positive integer</td>
+            <td className="nx-cell">Non-negative integer</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               The currently selected page. Must be null or undefined if <code className="nx-code">pageCount</code>
               is 0, and must <em>not</em> be null or undefined if <code className="nx-code">pageCount</code> is
-              greater than 0. Pages are counted in a ones-based manner - that is, the page numbers displayed in the
-              UI match what needs to be provided here.
+              greater than 0. Pages are counted in a zero-based manner - that is, the page numbers displayed in the
+              UI are one higher than this property specifies.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -106,7 +106,7 @@ const NxPaginationPage = () =>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">
               Handler function which gets called whenever the user selects a different page. Receives the selected
-              page as its first argument (using ones-based counting), and the button's click event as its
+              page as its first argument (using zero-based counting), and the button's click event as its
               second argument.
             </td>
           </tr>
