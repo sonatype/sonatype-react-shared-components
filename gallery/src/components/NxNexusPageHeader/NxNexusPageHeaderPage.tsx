@@ -93,7 +93,7 @@ const NxNexusPageHeaderPage = () =>
                         codeExamples={nexusPageHeaderExampleCode}
                         liveExample={NexusPageHeaderExample}
                         defaultCheckeredBackground={true}>
-      An instance of <code className="nx-code">NxNexusPageHeader</code> with branding, navigationm and examples of
+      An instance of <code className="nx-code">NxNexusPageHeader</code> with branding, navigation and examples of
       extra content.
     </GalleryExampleTile>
   </>;
