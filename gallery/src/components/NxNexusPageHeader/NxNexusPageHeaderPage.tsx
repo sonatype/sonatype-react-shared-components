@@ -17,7 +17,8 @@ const NxNexusPageHeaderPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">
         <code className="nx-code">NxNexusPageHeader</code> is a React component encapsulating the Sonatype Nexus
-        branded page header logo and structure.
+        branded page header logo and structure. This header should only be used for products in the Sonatype Nexus
+        family.
       </p>
       <h3 className="nx-h3 nx-tile__subsection-header">Props</h3>
       <table className="nx-table nx-table--gallery-props">
@@ -35,7 +36,7 @@ const NxNexusPageHeaderPage = () =>
             <td className="nx-cell">object</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              An optional object containing at least one field: <code className="nx-code">name</code>, the product
+              An object containing at least one field: <code className="nx-code">name</code>, the product
               name to display in the header. Additionally, this object may contain
               a <code className="nx-code">version</code> field holding the product's version number to display.
             </td>
