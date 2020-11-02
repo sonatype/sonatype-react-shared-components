@@ -12,8 +12,8 @@ describe('NxPagination', function() {
   });
 
   const selector = '#nx-pagination-example .gallery-example-live',
-      btnSelector = `${selector} .nx-btn--pagination:nth-child(3)`,
-      currentBtnSelector = `${selector} .nx-btn--pagination:nth-child(4)`;
+      btnSelector = `${selector} .nx-btn--pagination:nth-child(4)`,
+      currentBtnSelector = `${selector} .nx-btn--pagination:nth-child(5)`;
 
   it('looks right', simpleTest(selector));
   it('puts a border on a hovered button', hoverTest(selector, btnSelector));
