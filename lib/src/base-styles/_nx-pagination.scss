@@ -6,20 +6,12 @@
  */
 
 .nx-btn-bar--pagination {
-  display: grid;
-  grid-template-columns: repeat(11, 1fr);
-  gap: 8px;
-  margin-left: auto;
-  margin-right: auto;
-  width: max-content;
-  max-width: 100%;
-
   text-align: center;
 
   .nx-btn {
     height: 40px;
     min-width: 40px;
-    margin: 0;
+    margin: 0 $nx-spacing-xs 0 0;
     padding: 0 $nx-spacing-md;
 
     &:last-child {
