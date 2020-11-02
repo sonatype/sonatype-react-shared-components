@@ -136,12 +136,6 @@ const NxPaginationPage = () =>
                         codeExamples={nxPaginationSinglePageCode}>
       An example demonstrating that when there is only one page, the only rendered button is the first page button.
     </GalleryExampleTile>
-
-    <GalleryExampleTile title="NxPagination Single Page Example"
-                        liveExample={NxPaginationSinglePageExample}
-                        codeExamples={nxPaginationSinglePageCode}>
-      An example demonstrating that when there is only one page, the only rendered button is the first page button.
-    </GalleryExampleTile>
   </>;
 
 export default NxPaginationPage;
