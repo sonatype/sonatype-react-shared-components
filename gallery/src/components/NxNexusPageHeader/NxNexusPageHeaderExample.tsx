@@ -9,7 +9,7 @@ import {faSave, faCog } from '@fortawesome/free-solid-svg-icons';
 
 import { NxButton, NxNexusPageHeader, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
-const NexusPageHeaderExample = () => {
+const NxNexusPageHeaderExample = () => {
   const links = [{
     name: 'NxButton',
     href: '#/pages/NxButton'
@@ -39,4 +39,4 @@ const NexusPageHeaderExample = () => {
   );
 };
 
-export default NexusPageHeaderExample;
+export default NxNexusPageHeaderExample;

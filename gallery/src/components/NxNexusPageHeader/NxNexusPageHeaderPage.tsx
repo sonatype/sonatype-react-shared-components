@@ -8,9 +8,9 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NexusPageHeaderExample from './NexusPageHeaderExample';
+import NxNexusPageHeaderExample from './NxNexusPageHeaderExample';
 
-const nexusPageHeaderExampleCode = require('!!raw-loader!./NexusPageHeaderExample').default;
+const nxNexusPageHeaderExampleCode = require('!!raw-loader!./NxNexusPageHeaderExample').default;
 
 const NxNexusPageHeaderPage = () =>
   <>
@@ -90,8 +90,8 @@ const NxNexusPageHeaderPage = () =>
 
     <GalleryExampleTile title="Nexus Page Header"
                         id="nx-page-header-complex-example"
-                        codeExamples={nexusPageHeaderExampleCode}
-                        liveExample={NexusPageHeaderExample}
+                        codeExamples={nxNexusPageHeaderExampleCode}
+                        liveExample={NxNexusPageHeaderExample}
                         defaultCheckeredBackground={true}>
       An instance of <code className="nx-code">NxNexusPageHeader</code> with branding, navigationm and examples of
       extra content.
