@@ -12,12 +12,12 @@ import NexusPageHeaderExample from './NexusPageHeaderExample';
 
 const nexusPageHeaderExampleCode = require('!!raw-loader!./NexusPageHeaderExample').default;
 
-const NxPageHeaderPage = () =>
+const NxNexusPageHeaderPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <code className="nx-code">NxPageHeader</code> is a React component encapsulating the standard Sonatype
-        page header structure and logo.
+        <code className="nx-code">NxNexusPageHeader</code> is a React component encapsulating the Sonatype Nexus
+        branded page header logo and structure.
       </p>
       <h3 className="nx-h3 nx-tile__subsection-header">Props</h3>
       <table className="nx-table nx-table--gallery-props">
@@ -46,7 +46,7 @@ const NxPageHeaderPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               A URL (typically relative) that navigates to the home page of the application. If this prop is
-              present, the <q>Sonatype</q> logo in the header will be a link to this home page.
+              present, the <q>Nexus</q> logo in the header will be a link to this home page.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -66,15 +66,20 @@ const NxPageHeaderPage = () =>
             <td className="nx-cell">ReactNode</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Optional additional JSX content that will be displayed at the right end of the header.
+              Optional additional JSX content that will be displayed at the right end of the header. Note that there
+              are two sections of extra content divided with a vertical line. Which section(s) are used is a design
+              consideration.
             </td>
           </tr>
         </tbody>
       </table>
       <p className="nx-p">
-        Note that in each of the following examples, the headers have been tweaked to display in the normal page
-        flow for the sake of demonstration. Normally, they would automatically display at the top of the viewport
-        using CSS fixed positioning.
+        Note that the header below has been tweaked to display in the normal page flow for the sake of this
+        demonstration. Normally it would automatically display at the top of the viewport using CSS fixed positioning.
+      </p>
+      <p className="nx-p">
+        It is expected that consuming projects will modify the SCSS to use the correct colours to match their product's
+        branding requirements.
       </p>
       <p className="nx-p">
         It is the responsibility of calling code to ensure the that content included in the header fits in a single
@@ -83,14 +88,14 @@ const NxPageHeaderPage = () =>
       </p>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Complex Page Header"
+    <GalleryExampleTile title="Nexus Page Header"
                         id="nx-page-header-complex-example"
                         codeExamples={nexusPageHeaderExampleCode}
                         liveExample={NexusPageHeaderExample}
                         defaultCheckeredBackground={true}>
-      An instance of <code className="nx-code">NxNexusPageHeader</code> which includes all features
-      at once.
+      An instance of <code className="nx-code">NxNexusPageHeader</code> with branding, navigationm and examples of
+      extra content.
     </GalleryExampleTile>
   </>;
 
-export default NxPageHeaderPage;
+export default NxNexusPageHeaderPage;
