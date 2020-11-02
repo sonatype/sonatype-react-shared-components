@@ -46,7 +46,7 @@ const NxNexusPageHeaderPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               A URL (typically relative) that navigates to the home page of the application. If this prop is
-              present, the <q>Nexus</q> logo in the header will be a link to this home page.
+              present, the hexagon logo in the header will be a link to this home page.
             </td>
           </tr>
           <tr className="nx-table-row">
