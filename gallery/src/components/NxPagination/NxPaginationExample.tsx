@@ -10,5 +10,5 @@ import { NxPagination } from '@sonatype/react-shared-components';
 export default function NxPaginationExample() {
   const [page, setPage] = useState(17);
 
-  return <NxPagination onChange={setPage} pageCount={41} currentPage={page} />;
+  return <NxPagination onChange={setPage} pageCount={40000000000} currentPage={page} />;
 }
