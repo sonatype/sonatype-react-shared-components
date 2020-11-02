@@ -57,7 +57,7 @@ const NxNexusPageHeaderPage = () =>
               An optional array of objects describing navigation links to display in the middle section of the header.
               Each link object should contain a <code className="nx-code">name</code> to be displayed and
               a <code className="nx-code">href</code> for the link. Additionally, at most one link should include
-              an <code className="nx-code">current</code> flag set to true indicating that it should be styled as
+              a <code className="nx-code">current</code> flag set to true indicating that it should be styled as
               the currently active link.
             </td>
           </tr>
