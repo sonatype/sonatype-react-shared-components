@@ -1,17 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Group 7 Copy</title>
-    <g id="Navigation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Nexus-Headers" transform="translate(-81.000000, -579.000000)">
-            <g id="Group-7-Copy" transform="translate(81.000000, 579.000000)">
-                <rect id="Rectangle" fill="#949494" x="0" y="0" width="72" height="72"></rect>
-                <g id="Group-3" transform="translate(8.000000, 9.000000)" fill="#FFFFFF">
-                    <g id="Group-2" transform="translate(28.000000, 27.000000) scale(-1, 1) translate(-28.000000, -27.000000) ">
-                        <polygon id="Fill-3-Copy-2" transform="translate(28.354000, 26.853113) rotate(-120.000000) translate(-28.354000, -26.853113) " points="28.797 5.72811296 10 16.290113 10 37.415113 28.797 47.978113 46.615 37.963113 42.001 35.373113 28.797 42.791113 14.616 34.823113 14.616 18.883113 28.797 10.915113 42.092 18.385113 46.708 15.792113"></polygon>
-                        <polygon id="Fill-6-Copy-2" transform="translate(20.185525, 12.607500) rotate(-120.000000) translate(-20.185525, -12.607500) " points="17.9685254 5.592 17.9605254 19.622 22.4045254 22.215 22.4105254 3"></polygon>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg width="72" height="72" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="#FFF"><path d="M54.162 46.032L35.617 57.03 17.322 46.467l.25-21.56 17.583-10.423-.064 5.29L22.065 27.5l-.19 16.266 13.804 7.97 13.991-8.298.179-15.248 4.553-2.701z"/><path d="M48.782 27.035l-12.155-7.008-.023-5.145 16.643 9.602z"/></g></g></svg>
