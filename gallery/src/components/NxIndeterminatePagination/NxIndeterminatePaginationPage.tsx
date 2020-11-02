@@ -57,6 +57,7 @@ const NxIndeterminatePaginationPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Default Example"
+                        id="nx-indeterminate-pagination-example"
                         liveExample={NxIndeterminatePaginationExample}
                         codeExamples={nxIndeterminatePaginationCode}>
       An <code className="nx-code">NxIndeterminatePagination</code> component.
