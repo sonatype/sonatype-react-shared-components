@@ -116,6 +116,7 @@ const NxPaginationPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="NxPagination Example"
+                        id="nx-pagination-example"
                         liveExample={NxPaginationExample}
                         codeExamples={nxPaginationCode}>
       An interactive example showing all possible types of buttons that can appear within
