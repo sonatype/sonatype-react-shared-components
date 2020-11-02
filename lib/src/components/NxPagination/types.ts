@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ValidationMap, MouseEvent } from 'react';
+import { ValidationMap, MouseEvent, HTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
-export interface Props {
+export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange'> {
   className?: string | null;
   pageCount: number;
   currentPage?: number | null;

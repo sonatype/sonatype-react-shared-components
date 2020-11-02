@@ -43,6 +43,13 @@ describe('NxIndeterminatePagination', function() {
     expect(component).toHaveClassName('nx-btn-bar');
   });
 
+  it('adds native div attrs to the btn bar', function() {
+    const component = getShallowComponent({ id: 'foo', spellCheck: true });
+
+    expect(component).toHaveProp('id', 'foo');
+    expect(component).toHaveProp('spellCheck', true);
+  });
+
   it('fires onPrevPageSelect when the back button is clicked', function() {
     const prevHandler = jest.fn(),
         nextHandler = jest.fn(),

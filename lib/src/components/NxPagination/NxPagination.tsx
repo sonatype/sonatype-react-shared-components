@@ -37,7 +37,7 @@ function validate(pageCount: number, currentPage: number | null | undefined) {
   }
 }
 
-export default function NxPagination({ className, pageCount, currentPage, onChange }: Props) {
+export default function NxPagination({ className, pageCount, currentPage, onChange, ...attrs }: Props) {
   validate(pageCount, currentPage);
 
   const classes = classnames('nx-btn-bar', 'nx-btn-bar--pagination', className);
@@ -66,7 +66,7 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
         };
 
     return (
-      <div className={classes}>
+      <div className={classes} { ...attrs }>
         { !onFirstPage &&
           <NxButton onClick={handleBtnClick(currentPage - 1)} variant="tertiary">
             <NxFontAwesomeIcon icon={faCaretLeft} />
