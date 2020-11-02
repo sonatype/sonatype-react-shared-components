@@ -11,7 +11,7 @@ describe('NxPagination', function() {
     await browser.url('#/pages/NxPagination');
   });
 
-  const selector = '#nx-pagination-example',
+  const selector = '#nx-pagination-example .gallery-example-live',
       btnSelector = `${selector} .nx-btn--pagination:nth-child(3)`,
       currentBtnSelector = `${selector} .nx-btn--pagination:nth-child(4)`;
 

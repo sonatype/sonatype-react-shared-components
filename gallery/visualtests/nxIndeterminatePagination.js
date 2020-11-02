@@ -11,7 +11,7 @@ describe('NxIndeterminatePagination', function() {
     await browser.url('#/pages/NxIndeterminatePagination');
   });
 
-  const selector = '#nx-indeterminate-pagination-example';
+  const selector = '#nx-indeterminate-pagination-example .gallery-example-live';
 
   it('looks right', simpleTest(selector));
 });
