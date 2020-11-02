@@ -73,6 +73,26 @@ const NxNexusPageHeaderPage = () =>
           </tr>
         </tbody>
       </table>
+      <h3>Modal Style Classes</h3>
+      <table className="nx-table nx-table--gallery-props">
+        <thead>
+          <tr className="nx-table-row nx-table-row--header">
+            <th className="nx-cell nx-cell--header">Class</th>
+            <th className="nx-cell nx-cell--header">Location</th>
+            <th className="nx-cell nx-cell--header">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="nx-table-row">
+            <td className="nx-cell">.nx-page-header__extra-content-divider</td>
+            <td className="nx-cell">CSS Class</td>
+            <td className="nx-cell"></td>
+            <td className="nx-cell">
+              Applied to a <code className="nx-code">&lt;div&gt;</code> styles a vertical rule between objects.
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <p className="nx-p">
         Note that the header below has been tweaked to display in the normal page flow for the sake of this
         demonstration. Normally it would automatically display at the top of the viewport using CSS fixed positioning.

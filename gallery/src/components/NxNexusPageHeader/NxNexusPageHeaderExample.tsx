@@ -27,14 +27,9 @@ const NxNexusPageHeaderExample = () => {
     <NxNexusPageHeader productInfo={{ name: 'Test Product', version: 'Fancy code name 1.0.0' }}
                        homeLink="#"
                        links={links}>
-      <div className="nx-page-header__extra-content">
-        <div className="nx-page-header__extra-content-left">
-          <NxButton variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faSave}/></NxButton>
-        </div>
-        <div className="nx-page-header__extra-content-right">
-          <NxButton variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faCog}/></NxButton>
-        </div>
-      </div>
+      <NxButton variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faSave}/></NxButton>
+      <div className="nx-page-header__extra-content-divider"></div>
+      <NxButton variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faCog}/></NxButton>
     </NxNexusPageHeader>
   );
 };
