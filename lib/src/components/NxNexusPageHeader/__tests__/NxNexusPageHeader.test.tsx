@@ -9,7 +9,7 @@ import React from 'react';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxPageHeader, { HeaderLink, HeaderLinkProps } from '../NxNexusPageHeader';
 
-describe('NxPageHeader', function() {
+describe('NxNexusPageHeader', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxPageHeader, {});
 
   it('renders a nx-page-header <header> with nx-page-header__inner child', function() {
