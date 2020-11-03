@@ -100,13 +100,15 @@ const NxNexusPageHeaderPage = () =>
             <td className="nx-cell">.nx-page-header__extra-content-divider</td>
             <td className="nx-cell">Child Element</td>
             <td className="nx-cell">
-              Applied to a <code className="nx-code">&lt;div&gt;</code> to create a vertical rule between children rendered in the extra content area at the right end of the header.
+              Applied to a <code className="nx-code">&lt;div&gt;</code> to create a vertical rule between children
+              rendered in the extra content area at the right end of the header.
             </td>
           </tr>
         </tbody>
       </table>
       <p className="nx-p">
-        Note that the headers in the examples below have been tweaked to display in the normal page flow for the sake of this.  Normally they would automatically display at the top of the viewport using CSS fixed positioning.
+        Note that the headers in the examples below have been tweaked to display in the normal page flow for the sake
+        of this.  Normally they would automatically display at the top of the viewport using CSS fixed positioning.
       </p>
       <p className="nx-p">
         It is expected that consuming projects will modify the SCSS to use the correct colours to match their product's
