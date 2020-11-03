@@ -113,12 +113,6 @@ const NxDropdownPage = () =>
         An auxiliary component called <code className="nx-code">NxDropdownDivider</code> is available
         to be used as separator between child elements.
       </p>
-      <h3 className="nx-h3">Modifier Classes</h3>
-      <p className="nx-p">
-        A modifier class called <code className="nx-code">nx-dropdown--navigation</code> is available.
-        This class modifies the look of the dropdown so that all child elements are clickable
-        and their borders expand to the full width of the menu.
-      </p>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Navigation Example"
