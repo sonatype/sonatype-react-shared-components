@@ -23,7 +23,7 @@ export interface Props {
   homeLink?: string | null;
   productInfo?: ProductInfo | null;
   children?: ReactNode | null;
-  imgURL?: string | null;
+  logoPath?: string | null;
 }
 
 export const propTypes: ValidationMap<Props> = {

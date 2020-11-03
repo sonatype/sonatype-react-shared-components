@@ -67,9 +67,7 @@ const NxNexusPageHeaderPage = () =>
             <td className="nx-cell">ReactNode</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Optional additional JSX content that will be displayed at the right end of the header. Note that there
-              are two sections of extra content divided with a vertical line. Which section(s) are used is a design
-              consideration.
+              Optional additional JSX content that will be displayed at the right end of the header.
             </td>
           </tr>
         </tbody>
