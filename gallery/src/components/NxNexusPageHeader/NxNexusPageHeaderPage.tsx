@@ -47,7 +47,16 @@ const NxNexusPageHeaderPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               A URL (typically relative) that navigates to the home page of the application. If this prop is
-              present, the hexagon logo in the header will be a link to this home page.
+              present, the logo in the header will be a link to this home page.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">logoPath</td>
+            <td className="nx-cell">string</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              The path to the image file that will display as the logo. If no URL is provided the default white hexagon
+              on grey background will appear.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -72,7 +81,12 @@ const NxNexusPageHeaderPage = () =>
           </tr>
         </tbody>
       </table>
-      <h3>Modal Style Classes</h3>
+      <h3>Nexus Page Header Style Classes</h3>
+      <p className="nx-p">
+        Note that <code className="nx-code">NxNexusPageHeader</code> shares much of its styling with
+        {' '}<code className="nx-code">NxPageHeader</code>. If you don't see the class you're looking for described
+        below check out <a href="#Pages/NxPageHeader/">NxPageHeader</a>.
+      </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row nx-table-row--header">
