@@ -31,7 +31,6 @@ export default function NxNexusPageHeader({ links, homeLink, productInfo, childr
       logoEl = <img src={logoImg} className="nx-product__logo-image" alt="⬡ Sonatype"/>,
       linkEls = links && links.map(link => <HeaderLink key={link.name} { ...link } />);
 
-
   return (
     <header className="nx-page-header nx-page-header--nexus">
       <div className="nx-page-header__inner">
@@ -39,11 +38,11 @@ export default function NxNexusPageHeader({ links, homeLink, productInfo, childr
           <div className="nx-product__logo">
             { homeLink ? <a className="nx-product__link" href={homeLink}>{logoEl}</a> : logoEl }
           </div>
-          <div className="nx-product__top-row">
+          <div className="nx-product__summary">
             <span className="nx-product__brand">nexus</span>
             { productInfo && <span className="nx-product__name">{productInfo.name}</span> }
           </div>
-          <div className="nx-product__bottom-row">
+          <div className="nx-product__details">
             <span className="nx-product__byline">from sonatype</span>
             { productInfo && <span className="nx-product__version">{productInfo.version}</span> }
           </div>
