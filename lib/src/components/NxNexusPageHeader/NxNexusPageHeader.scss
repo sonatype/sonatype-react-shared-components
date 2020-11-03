@@ -61,11 +61,10 @@
   }
 
   .nx-product__name {
-    margin: 0 0 0 $nx-spacing-xs;
+    margin: 0 0 0 6px;
 
     &::before {
-      content: "";
-      margin-right: 0;
+      display: none;
     }
   }
 
