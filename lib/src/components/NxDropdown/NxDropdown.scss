@@ -71,6 +71,9 @@ $nx-dropdown-width: 250px;
 
 .nx-dropdown-link, .nx-dropdown-button {
   @include container-horizontal;
+}
+
+.nx-dropdown-link, .nx-dropdown-button, .nx-dropdown-button-container {
   @include nx-truncate-ellipsis();
   @include regular();
 
@@ -83,7 +86,7 @@ $nx-dropdown-width: 250px;
   text-decoration: none;
 }
 
-.nx-dropdown-button {
+.nx-dropdown-button, .nx-dropdown-button-container {
   background-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
@@ -138,4 +141,24 @@ $nx-dropdown-width: 250px;
   background-color: $nx-grey-3;
   height: 1px;
   margin: 9px 1px;
+}
+
+.nx-dropdown-button-container {
+  @include nx-truncate-ellipsis;
+  padding: 0;
+
+  .nx-dropdown-button {
+    box-sizing: content-box;
+    padding-right: 0;
+    width: auto;
+  }
+
+  .nx-dropdown-button-content {
+    line-height: $nx-spacing-xl;
+  }
+}
+
+.nx-dropdown-button--right {
+  float: right;
+  margin: $nx-spacing-xxs $nx-spacing-xs $nx-spacing-xxs $nx-spacing-l;
 }
