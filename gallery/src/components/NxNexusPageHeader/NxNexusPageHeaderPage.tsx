@@ -92,8 +92,7 @@ const NxNexusPageHeaderPage = () =>
         </tbody>
       </table>
       <p className="nx-p">
-        Note that the header below has been tweaked to display in the normal page flow for the sake of this
-        demonstration. Normally it would automatically display at the top of the viewport using CSS fixed positioning.
+        Note that the headers in the examples below have been tweaked to display in the normal page flow for the sake of this.  Normally they would automatically display at the top of the viewport using CSS fixed positioning.
       </p>
       <p className="nx-p">
         It is expected that consuming projects will modify the SCSS to use the correct colours to match their product's
