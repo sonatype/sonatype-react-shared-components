@@ -27,7 +27,7 @@ function HeaderLink({ name, href, current }: HeaderLinkProps) {
 export { HeaderLinkProps, HeaderLink };
 
 export default function NxNexusPageHeader({ links, homeLink, productInfo, children, imgURL }: Props) {
-  const logoImg = imgURL || '../../assets/img/logo_nexus_generic.svg',
+  const logoImg = imgURL || require('../../assets/img/logo_nexus_generic.svg'),
       logoEl = <img src={logoImg} className="nx-product__logo-image" />,
       linkEls = links && links.map(link => <HeaderLink key={link.name} { ...link } />);
 
