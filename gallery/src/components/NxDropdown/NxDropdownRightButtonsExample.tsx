@@ -16,9 +16,11 @@ function NxDropdownRightButtonsExample() {
 
   return (
     <NxDropdown label="Navigation" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
-      <a onClick={onClick} className="nx-dropdown-button">
-        Nav Link1
-      </a>
+      <div className="nx-dropdown-button-container">
+        <a onClick={onClick} className="nx-dropdown-button">
+          Nav Link1
+        </a>
+      </div>
       <div className="nx-dropdown-button-container">
         <NxButton onClick={() => alert('icon click')} className="nx-dropdown-button--right" variant="icon-only">
           <NxFontAwesomeIcon icon={faTrash}/>

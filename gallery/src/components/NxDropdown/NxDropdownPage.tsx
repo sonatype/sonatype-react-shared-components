@@ -154,15 +154,17 @@ const NxDropdownPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with right-floating buttons"
-                        id="nx-dropdown-custom-label-example"
+                        id="nx-dropdown-right-buttons-example"
                         liveExample={NxDropdownRightButtonsExample}
                         codeExamples={nxDropdownRightButtonsExampleCode}>
       This example demonstrates a dropdown where some of the dropdown menu rows have an additional icon-only button
       at their right end.  Clicking the row itself still behaves as normal, while clicking the icon button performs
-      some other action related to the row, such as deleting the item the row represents. Note that this example uses
-      <code className="nx-code">&lt;a&gt;</code> elements for all menu items –
-      unfortunately <code className="nx-code">&lt;button&gt;</code> elements get some special behaviors from the browser
-      that prevent them from working with the styling here.
+      some other action related to the row, such as deleting the item the row represents. There are a few caveats to
+      using these styles: note that this example uses <code className="nx-code">&lt;a&gt;</code> elements for all
+      menu items – unfortunately <code className="nx-code">&lt;button&gt;</code> elements get some special behaviors
+      from the browser that prevent them from working with the styling here. Additionally, note that
+      the <code className="nx-code">nx-dropdown-button-container</code> is present on all menu items, even those that
+      do not have icon buttons, in order to get consistent menu item heights.
     </GalleryExampleTile>
   </>;
 
