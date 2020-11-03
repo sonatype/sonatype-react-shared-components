@@ -90,6 +90,7 @@
 
   .nx-page-header__link {
     color: #2c2c2c;
+    padding-bottom: $nx-spacing-xs;
 
     &:active, &.nx-page-header__link--current {
       border-bottom-color: #00a1e2;
