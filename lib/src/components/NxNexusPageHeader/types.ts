@@ -23,6 +23,7 @@ export interface Props {
   homeLink?: string | null;
   productInfo?: ProductInfo | null;
   children?: ReactNode | null;
+  imgURL?: string | null;
 }
 
 export const propTypes: ValidationMap<Props> = {
@@ -32,6 +33,7 @@ export const propTypes: ValidationMap<Props> = {
     current: PropTypes.bool
   }).isRequired),
   homeLink: PropTypes.string,
+  imgURL: PropTypes.string,
   productInfo: PropTypes.shape({
     name: PropTypes.string.isRequired,
     version: PropTypes.string

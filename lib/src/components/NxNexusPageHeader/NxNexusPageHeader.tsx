@@ -13,8 +13,6 @@ export { Props };
 
 import './NxNexusPageHeader.scss';
 
-const logoImg = require('../../assets/img/logo_nexus_generic.svg');
-
 function HeaderLink({ name, href, current }: HeaderLinkProps) {
   const classes = classnames('nx-page-header__link', {
     'nx-page-header__link--current': current
@@ -28,9 +26,11 @@ function HeaderLink({ name, href, current }: HeaderLinkProps) {
 // visible for testing
 export { HeaderLinkProps, HeaderLink };
 
-export default function NxNexusPageHeader({ links, homeLink, productInfo, children }: Props) {
-  const logoEl = <img src={logoImg} className="nx-product__logo-image" alt="⬡ Sonatype"/>,
+export default function NxNexusPageHeader({ links, homeLink, productInfo, children, imgURL }: Props) {
+  const logoImg = imgURL || '../../assets/img/logo_nexus_generic.svg',
+      logoEl = <img src={logoImg} className="nx-product__logo-image" alt="⬡ Sonatype"/>,
       linkEls = links && links.map(link => <HeaderLink key={link.name} { ...link } />);
+
 
   return (
     <header className="nx-page-header nx-page-header--nexus">
