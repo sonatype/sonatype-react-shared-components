@@ -86,8 +86,7 @@ const NxNexusPageHeaderPage = () =>
         <tbody>
           <tr className="nx-table-row">
             <td className="nx-cell">.nx-page-header__extra-content-divider</td>
-            <td className="nx-cell">CSS Class</td>
-            <td className="nx-cell"></td>
+            <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Applied to a <code className="nx-code">&lt;div&gt;</code> styles a vertical rule between objects.
             </td>
