@@ -18,7 +18,7 @@
     display: grid;
     -ms-grid-columns: 72px 16px 1fr;
     grid-template-columns: 72px 1fr;
-    -ms-grid-rows: 39px 0 auto;
+    -ms-grid-rows: 39px auto;
     grid-template-rows: 39px auto;
     gap: 0 16px;
     grid-template-areas:
@@ -91,22 +91,16 @@
 
   .nx-page-header__link {
     color: #2c2c2c;
-    padding-bottom: $nx-spacing-xxs;
 
     &:active, &.nx-page-header__link--current {
       border-bottom-color: #00a1e2;
     }
   }
 
-  .nx-page-header__links {
-    flex-grow: 1;
-  }
-
   .nx-page-header__extra-content {
     align-self: stretch;
     align-items: center;
     display: flex;
-    flex-shrink: 1;
   }
 
   .nx-page-header__extra-content-divider {
