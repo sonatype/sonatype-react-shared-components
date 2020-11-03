@@ -6,8 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { NxDropdown, NxButton, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { NxDropdown } from '@sonatype/react-shared-components';
 
 function NxDropdownNavigationExample() {
   const [isOpen, toggleOpen] = useState(false),
@@ -22,14 +21,9 @@ function NxDropdownNavigationExample() {
       <a onClick={onClick} className="nx-dropdown-button">
         Nav Link2
       </a>
-      <div className="nx-dropdown-button-container">
-        <NxButton onClick={() => alert('icon click')} className="nx-dropdown-button--right" variant="icon-only">
-          <NxFontAwesomeIcon icon={faEdit}/>
-        </NxButton>
-        <a onClick={onClick} className="nx-dropdown-button">
-          Nav LinkNav LinkNav LinkNav LinkNav Link33333Nav Link3
-        </a>
-      </div>
+      <a onClick={onClick} className="nx-dropdown-button">
+        Nav Link3
+      </a>
       <button onClick={onClick} className="nx-dropdown-button">
         Nav Link4 - this link should trigger truncation
       </button>

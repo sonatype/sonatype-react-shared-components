@@ -11,6 +11,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxDropdownNavigationExample from './NxDropdownNavigationExample';
 import NxDropdownScrollingExample from './NxDropdownScrollingExample';
 import NxDropdownDisabledExample from './NxDropdownDisabledExample';
+import NxDropdownRightButtonsExample from './NxDropdownRightButtonsExample';
 import NxDropdownCustomLabelExample from './NxDropdownCustomLabelExample';
 import NxDropdownLinksExample from './NxDropdownLinksExample';
 
@@ -18,6 +19,7 @@ const nxDropdownNavigationExampleCode = require('!!raw-loader!./NxDropdownNaviga
     nxDropdownScrollingExampleCode = require('!!raw-loader!./NxDropdownScrollingExample').default,
     nxDropdownDisabledExampleCode = require('!!raw-loader!./NxDropdownDisabledExample').default,
     nxDropdownCustomLabelExampleCode = require('!!raw-loader!./NxDropdownCustomLabelExample').default,
+    nxDropdownRightButtonsExampleCode = require('!!raw-loader!./NxDropdownRightButtonsExample').default,
     nxDropdownLinksExampleCode = require('!!raw-loader!./NxDropdownLinksExample').default;
 
 const NxDropdownPage = () =>
@@ -149,6 +151,18 @@ const NxDropdownPage = () =>
                         liveExample={NxDropdownCustomLabelExample}
                         codeExamples={nxDropdownCustomLabelExampleCode}>
       This dropdown contains more complex JSX in its label.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with right-floating buttons"
+                        id="nx-dropdown-custom-label-example"
+                        liveExample={NxDropdownRightButtonsExample}
+                        codeExamples={nxDropdownRightButtonsExampleCode}>
+      This example demonstrates a dropdown where some of the dropdown menu rows have an additional icon-only button
+      at their right end.  Clicking the row itself still behaves as normal, while clicking the icon button performs
+      some other action related to the row, such as deleting the item the row represents. Note that this example uses
+      <code className="nx-code">&lt;a&gt;</code> elements for all menu items –
+      unfortunately <code className="nx-code">&lt;button&gt;</code> elements get some special behaviors from the browser
+      that prevent them from working with the styling here.
     </GalleryExampleTile>
   </>;
 
