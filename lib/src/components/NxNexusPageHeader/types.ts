@@ -33,7 +33,7 @@ export const propTypes: ValidationMap<Props> = {
     current: PropTypes.bool
   }).isRequired),
   homeLink: PropTypes.string,
-  imgURL: PropTypes.string,
+  logoPath: PropTypes.string,
   productInfo: PropTypes.shape({
     name: PropTypes.string.isRequired,
     version: PropTypes.string
