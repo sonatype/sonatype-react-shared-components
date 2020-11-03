@@ -23,11 +23,13 @@ const NxNexusPageHeaderExample = () => {
     alert('Click');
   }
 
+  const linkToLogo = require('../../resources/logos/logo_nexus_generic.svg');
+
   return (
     <NxNexusPageHeader productInfo={{ name: 'Test Product', version: 'Fancy code name 1.0.0' }}
                        homeLink="#"
                        links={links}
-                       imgURL="./resources/logos/logo_nexus_generic.svg">
+                       imgURL={linkToLogo}>
       <NxButton variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faSave}/></NxButton>
       <div className="nx-page-header__extra-content-divider"></div>
       <NxButton variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faCog}/></NxButton>
