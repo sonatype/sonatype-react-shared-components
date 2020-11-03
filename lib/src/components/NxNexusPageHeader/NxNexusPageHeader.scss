@@ -18,8 +18,8 @@
     display: grid;
     -ms-grid-columns: 72px 16px 1fr;
     grid-template-columns: 72px 1fr;
-    -ms-grid-rows: 39px auto;
-    grid-template-rows: 39px auto;
+    -ms-grid-rows: 47px auto;
+    grid-template-rows: 47px auto;
     gap: 0 16px;
     grid-template-areas:
       "logo top-row"
@@ -43,7 +43,7 @@
 
   .nx-product__summary {
     -ms-grid-row-align: start;
-    align-self: start;
+    align-self: end;
     -ms-grid-row: 1;
     -ms-grid-row-span: 1;
     -ms-grid-column: 3;
@@ -51,7 +51,6 @@
 
     color: #2c2c2c;
     font-size: 26px;
-    padding-top: $nx-spacing-xs;
   }
 
   .nx-product__brand {
@@ -76,7 +75,6 @@
 
     color: #474747;
     font-size: $nx-font-size-xs;
-    padding-top: $nx-spacing-xs;
   }
 
   .nx-product__version {
