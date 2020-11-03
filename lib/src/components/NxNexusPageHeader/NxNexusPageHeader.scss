@@ -57,7 +57,6 @@
 
   .nx-product__brand {
     @include bold();
-    margin: 0;
   }
 
   .nx-product__name {
@@ -79,10 +78,6 @@
     color: #474747;
     font-size: $nx-font-size-xs;
     padding-top: $nx-spacing-xs;
-  }
-
-  .nx-product__byline, .nx-product__version {
-    margin: 0;
   }
 
   .nx-product__version {
