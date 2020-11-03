@@ -27,7 +27,7 @@ function NxDropdownNavigationExample() {
           <NxFontAwesomeIcon icon={faEdit}/>
         </NxButton>
         <a onClick={onClick} className="nx-dropdown-button">
-          <span className="nx-dropdown-button-content">Nav LinkNav LinkNav LinkNav LinkNav Link33333Nav Link3</span>
+          Nav LinkNav LinkNav LinkNav LinkNav Link33333Nav Link3
         </a>
       </div>
       <button onClick={onClick} className="nx-dropdown-button">

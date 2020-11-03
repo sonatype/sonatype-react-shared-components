@@ -143,11 +143,8 @@ $nx-dropdown-width: 250px;
   .nx-dropdown-button {
     box-sizing: content-box;
     padding-right: 0;
-    width: auto;
-  }
-
-  .nx-dropdown-button-content {
     line-height: $nx-spacing-xl;
+    width: auto;
   }
 }
 
