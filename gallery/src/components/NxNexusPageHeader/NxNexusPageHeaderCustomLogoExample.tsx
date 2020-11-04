@@ -7,9 +7,9 @@
 import React from 'react';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 
-import { NxButton, NxNexusPageHeader, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+const customLogo = require('../../resources/logos/logo_nexus_sonatype_teal.svg');
 
-const linkToLogo = require('../../resources/logos/logo_nexus_sonatype_teal.svg');
+import { NxButton, NxNexusPageHeader, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 const NxNexusPageHeaderExample = () => {
   const links = [{
@@ -32,7 +32,7 @@ const NxNexusPageHeaderExample = () => {
     <NxNexusPageHeader productInfo={{ name: 'Test Product', meta: 'Fancy code name', version: '1.0.0' }}
                        homeLink="#"
                        links={links}
-                       logoPath={linkToLogo}>
+                       logoPath={customLogo}>
       <div className="nx-page-header__extra-content-divider"></div>
       <NxButton variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faCog}/></NxButton>
     </NxNexusPageHeader>

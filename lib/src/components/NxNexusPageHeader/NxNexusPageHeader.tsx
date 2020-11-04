@@ -7,6 +7,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
+const defaultLogo = require('../../assets/img/logo_nexus_generic.svg');
+
 import { HeaderLinkProps, Props, propTypes } from './types';
 
 export { Props };
@@ -27,7 +29,7 @@ function HeaderLink({ name, href, current }: HeaderLinkProps) {
 export { HeaderLinkProps, HeaderLink };
 
 export default function NxNexusPageHeader({ links, homeLink, productInfo, children, logoPath }: Props) {
-  const logoImg = logoPath || require('../../assets/img/logo_nexus_generic.svg'),
+  const logoImg = logoPath || defaultLogo,
       logoEl = <img src={logoImg} className="nx-product__logo-image" />,
       linkEls = links && links.map(link => <HeaderLink key={link.name} { ...link } />);
 
