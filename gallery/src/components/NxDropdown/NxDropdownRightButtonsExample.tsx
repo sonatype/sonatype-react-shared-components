@@ -22,7 +22,7 @@ function NxDropdownRightButtonsExample() {
         </a>
       </div>
       <div className="nx-dropdown-button-container">
-        <NxButton onClick={() => alert('icon click')} className="nx-dropdown-button--right" variant="icon-only">
+        <NxButton onClick={() => alert('icon click')} className="nx-dropdown-right-button" variant="icon-only">
           <NxFontAwesomeIcon icon={faTrash}/>
         </NxButton>
         <a href="#" onClick={onClick} className="nx-dropdown-button">
@@ -30,7 +30,7 @@ function NxDropdownRightButtonsExample() {
         </a>
       </div>
       <div className="nx-dropdown-button-container">
-        <NxButton onClick={() => alert('icon click')} className="nx-dropdown-button--right" variant="icon-only">
+        <NxButton onClick={() => alert('icon click')} className="nx-dropdown-right-button" variant="icon-only">
           <NxFontAwesomeIcon icon={faTrash}/>
         </NxButton>
         <a href="#" onClick={onClick} className="nx-dropdown-button">
