@@ -73,7 +73,7 @@ $nx-dropdown-width: 250px;
   @include container-horizontal;
 }
 
-.nx-dropdown-link, .nx-dropdown-button, .nx-dropdown-button-container {
+.nx-dropdown-link, .nx-dropdown-button {
   @include nx-truncate-ellipsis();
   @include regular();
 
@@ -86,7 +86,7 @@ $nx-dropdown-width: 250px;
   text-decoration: none;
 }
 
-.nx-dropdown-button, .nx-dropdown-button-container {
+.nx-dropdown-button {
   background-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
