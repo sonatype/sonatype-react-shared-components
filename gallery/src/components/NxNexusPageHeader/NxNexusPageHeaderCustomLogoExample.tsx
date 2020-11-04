@@ -18,10 +18,10 @@ const NxNexusPageHeaderExample = () => {
     current: true
   }, {
     name: 'NxAlert',
-    href: '#/pages/NxAlert',
+    href: '#/pages/NxAlert'
   }, {
     name: 'NxModal',
-    href: '#/pages/NxModal',
+    href: '#/pages/NxModal'
   }];
 
   function onButtonClick() {

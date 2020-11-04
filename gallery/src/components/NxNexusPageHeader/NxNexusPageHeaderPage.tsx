@@ -128,21 +128,21 @@ const NxNexusPageHeaderPage = () =>
       </p>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Nexus Page Header"
-                        id="nx-page-header-complex-example"
-                        codeExamples={nxNexusPageHeaderExampleCode}
-                        liveExample={NxNexusPageHeaderExample}
-                        defaultCheckeredBackground={true}>
-      An instance of <code className="nx-code">NxNexusPageHeader</code> with branding, navigation and examples of
-      extra content.
-    </GalleryExampleTile>
-
     <GalleryExampleTile title="Nexus Page Header with custom logo"
                         id="nx-page-header-complex-example"
                         codeExamples={nxNexusPageHeaderCustomLogoExampleCode}
                         liveExample={NxNexusPageHeaderCustomLogoExample}
                         defaultCheckeredBackground={true}>
       An instance of <code className="nx-code">NxNexusPageHeader</code> that demonstrates how to load a custom logo.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Nexus Page Header"
+                        id="nx-page-header-complex-example"
+                        codeExamples={nxNexusPageHeaderExampleCode}
+                        liveExample={NxNexusPageHeaderExample}
+                        defaultCheckeredBackground={true}>
+      An instance of <code className="nx-code">NxNexusPageHeader</code> with default branding, navigation and
+      examples of extra content.
     </GalleryExampleTile>
   </>;
 
