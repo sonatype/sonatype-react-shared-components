@@ -82,22 +82,6 @@
       content: "|";
       margin-right: $nx-spacing-xs;
     }
-
-    & + .nx-product__version {
-      &::before {
-        display: none;
-      }
-    }
-  }
-
-  .nx-product__version {
-    color: #474747;
-    margin: 0 0 0 $nx-spacing-xxs;
-
-    &::before {
-      content: "|";
-      margin-right: $nx-spacing-xs;
-    }
   }
 
   .nx-page-header__links {
