@@ -122,10 +122,6 @@ const NxNexusPageHeaderPage = () =>
         of this.  Normally they would automatically display at the top of the viewport using CSS fixed positioning.
       </p>
       <p className="nx-p">
-        It is expected that consuming projects will modify the SCSS to use the correct colours to match their product's
-        branding requirements.
-      </p>
-      <p className="nx-p">
         It is the responsibility of calling code to ensure the that content included in the header fits in a single
         row at all supported resolutions. Behavior of this component when content exceeds the space allowed is
         unspecified.
