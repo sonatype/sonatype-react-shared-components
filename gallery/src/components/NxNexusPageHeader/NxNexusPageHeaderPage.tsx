@@ -96,7 +96,7 @@ const NxNexusPageHeaderPage = () =>
       <p className="nx-p">
         Note that <code className="nx-code">NxNexusPageHeader</code> shares much of its styling with
         {' '}<code className="nx-code">NxPageHeader</code>. If you don't see the class you're looking for described
-        below check out <a href="#Pages/NxPageHeader/">NxPageHeader</a>.
+        below check out <a className="nx-text-link" href="#Pages/NxPageHeader/">NxPageHeader</a>.
       </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>

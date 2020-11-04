@@ -6,7 +6,6 @@
  */
 import React from 'react';
 import { faSave, faCog } from '@fortawesome/free-solid-svg-icons';
-
 import { NxButton, NxNexusPageHeader, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 const NxNexusPageHeaderExample = () => {
