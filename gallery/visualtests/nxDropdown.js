@@ -102,4 +102,29 @@ describe('NxDropdown', function() {
     });
 
   });
+
+  describe('NxDropdown with right-floating buttons', function() {
+    const selector = '#nx-dropdown-right-buttons-example .nx-dropdown';
+
+    beforeEach(async function() {
+      const button = await browser.$(selector + ' .nx-dropdown__toggle');
+
+      // for some weird reason the test infra requires you to click it twice
+      await button.scrollIntoView({ block: 'center' });
+      await button.click();
+      await button.click();
+    });
+
+    it('looks right', async function() {
+      const targetElement = await browser.$(selector);
+
+      await targetElement.scrollIntoView({ block: 'center' });
+      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+
+      const { x, y } = await targetElement.getLocation();
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 281);
+
+      await browser.eyesRegionSnapshot(null, Target.region(region));
+    });
+  });
 });
