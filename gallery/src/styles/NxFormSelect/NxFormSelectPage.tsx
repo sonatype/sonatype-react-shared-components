@@ -16,9 +16,9 @@ const NxFormSelectPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        Base styles for Sonatype text inputs.  Only the styles intended for "static" usage are shown
-        here. For styles that involve business logic, such as validation, see
-        the <a href="#pages/NxTextInput">NxTextInput React Component</a>.
+        Basic styles for Sonatype form select inputs. There isn't very much styling available for the
+        <code className="nx-code">&lt;select&gt;</code> tag. As such we've just implemented the basic borders, font,
+        and padding as well as disabled and focus styles.
       </p>
       <p className="nx-p">Classes:</p>
       <table className="nx-table nx-table--gallery-props">
@@ -31,35 +31,22 @@ const NxFormSelectPage = () =>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-text-input</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-form-select</code></td>
             <td className="nx-cell">
-              Any text-oriented <code className="nx-code">{'<input>'}</code> type or
-              <code className="nx-code">{'<textarea>'}</code>
+              Base class
             </td>
             <td className="nx-cell">
-              Gives the input typical Sonatype input styling with 1px grey borders on the top, right, and bottom,
-              and a 3px grey border on the left
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-text-input--long</code></td>
-            <td className="nx-cell">Any <code className="nx-code">.nx-text-input</code> element</td>
-            <td className="nx-cell">
-              Use this class to make the text input particularly wide (395px vs the default 219px)
+              Base class for a form <code className="nx-code">&lt;select&gt;</code>.
             </td>
           </tr>
         </tbody>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="General Example"
+    <GalleryExampleTile title="Form Select Example"
                         codeExamples={sourceCode}
                         liveExample={NxFormSelectExample}>
-      This example demonstrates the fundamental look of various elements styled with
-      nx-text-input. Note that these styles are not typically used alone, and so elements looking
-      exactly like these will not typically be seen. Rather, these styles would typically be
-      used in conjunction with the validation styles provided by the NxTextInput react component,
-      which add border colors and other signifiers.
+      Demonstrates a form select and also its disabled state.
     </GalleryExampleTile>
   </>;
 

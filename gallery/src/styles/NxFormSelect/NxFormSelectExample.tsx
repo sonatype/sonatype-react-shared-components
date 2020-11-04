@@ -7,17 +7,31 @@
 import React from 'react';
 
 const NxSelectExample = () =>
-  <div className="nx-form-group">
-    <label className="nx-label">
-      <span className="nx-label__text">Pick one</span>
-      <select className="nx-form-select">
-        <option className="nx-form-select__option">Option 1</option>
-        <option className="nx-form-select__option">Option 2</option>
-        <option className="nx-form-select__option">Option 3</option>
-        <option className="nx-form-select__option">Option 4</option>
-        <option className="nx-form-select__option">Option 5</option>
-      </select>
-    </label>
-  </div>;
+  <>
+    <div className="nx-form-group">
+      <label className="nx-label">
+        <span className="nx-label__text">Select</span>
+        <select className="nx-form-select">
+          <option className="nx-form-select__option">Option 1</option>
+          <option className="nx-form-select__option">Option 2</option>
+          <option className="nx-form-select__option">Option 3</option>
+          <option className="nx-form-select__option">Option 4</option>
+          <option className="nx-form-select__option">Option 5</option>
+        </select>
+      </label>
+    </div>
+    <div className="nx-form-group">
+      <label className="nx-label">
+        <span className="nx-label__text">Disabled</span>
+        <select className="nx-form-select disabled" disabled>
+          <option className="nx-form-select__option">Option 1</option>
+          <option className="nx-form-select__option">Option 2</option>
+          <option className="nx-form-select__option">Option 3</option>
+          <option className="nx-form-select__option">Option 4</option>
+          <option className="nx-form-select__option">Option 5</option>
+        </select>
+      </label>
+    </div>
+  </>;
 
 export default NxSelectExample;
