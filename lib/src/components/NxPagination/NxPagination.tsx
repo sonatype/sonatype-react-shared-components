@@ -63,14 +63,17 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
     return <div className={classes} />;
   }
   else {
-    const onFirstPage = currentPage === 0,
+    // Button click handler is the onChange prop just curried so we can pass the number ahead of time
+    const handleBtnClick = curryN(2, onChange),
+
+        onFirstPage = currentPage === 0,
         onLastPage = currentPage === pageCount - 1,
         currentPageRangeStart = getCurrentPageRangeStart(pageCount, currentPage),
         currentPageRangeEnd = min(currentPageRangeStart + PAGE_RANGE_SIZE, pageCount),
         currentPageRange = range(currentPageRangeStart, currentPageRangeEnd),
         numPagesBelowRange = currentPageRangeStart,
         numPagesAboveRange = pageCount - currentPageRangeEnd,
-        handleBtnClick = curryN(2, onChange),
+
         mkBtn = (num: number) => {
           const selected = num === currentPage,
               classes = getBtnClasses(selected);
@@ -85,30 +88,44 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
     return (
       <div className={classes} { ...attrs }>
         { !onFirstPage &&
+          // Left arrow - back one page
           <NxButton onClick={handleBtnClick(currentPage - 1)} variant="tertiary">
             <NxFontAwesomeIcon icon={faCaretLeft} />
           </NxButton>
         }
+
         { !!numPagesBelowRange &&
+          // First page express
           <NxButton className={getBtnClasses()} onClick={handleBtnClick(0)}>1</NxButton>
         }
+
         { numPagesBelowRange > 1 &&
+          // Left '...' - back one page group
           <NxButton className={getBtnClasses()} onClick={handleBtnClick(currentPageRangeStart - 1)}>
             …
           </NxButton>
         }
-        { map(mkBtn, currentPageRange) }
+
+        { // The local group of pages
+          map(mkBtn, currentPageRange)
+        }
+
         { numPagesAboveRange > 1 &&
+          // Rigth '...' - forward one page group
           <NxButton className={getBtnClasses()} onClick={handleBtnClick(currentPageRangeEnd)}>
             …
           </NxButton>
         }
+
         { !!numPagesAboveRange &&
+          // Last page express
           <NxButton className={getBtnClasses(currentPage === pageCount - 1)} onClick={handleBtnClick(pageCount - 1)}>
             {pageCount}
           </NxButton>
         }
+
         { !onLastPage &&
+          // Right arrow - forward one page
           <NxButton onClick={handleBtnClick(currentPage + 1)} variant="tertiary">
             <NxFontAwesomeIcon icon={faCaretRight} />
           </NxButton>
