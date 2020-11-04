@@ -137,14 +137,18 @@ $nx-dropdown-width: 250px;
 }
 
 .nx-dropdown-button-container {
-  @include nx-truncate-ellipsis;
   padding: 0;
 
   .nx-dropdown-button {
-    box-sizing: content-box;
+    display: block;
     padding-right: 0;
+    overflow: visible;
+  }
+
+  .nx-dropdown-button-content {
+    @include nx-truncate-ellipsis;
+    display: block;
     line-height: $nx-spacing-xl;
-    width: auto;
   }
 }
 
