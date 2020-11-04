@@ -9,8 +9,10 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxNexusPageHeaderExample from './NxNexusPageHeaderExample';
+import NxNexusPageHeaderCustomLogoExample from './NxNexusPageHeaderCustomLogoExample';
 
 const nxNexusPageHeaderExampleCode = require('!!raw-loader!./NxNexusPageHeaderExample').default;
+const nxNexusPageHeaderCustomLogoExampleCode = require('!!raw-loader!./NxNexusPageHeaderCustomLogoExample').default;
 
 const NxNexusPageHeaderPage = () =>
   <>
@@ -128,6 +130,14 @@ const NxNexusPageHeaderPage = () =>
                         defaultCheckeredBackground={true}>
       An instance of <code className="nx-code">NxNexusPageHeader</code> with branding, navigation and examples of
       extra content.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Nexus Page Header with custom logo"
+                        id="nx-page-header-complex-example"
+                        codeExamples={nxNexusPageHeaderCustomLogoExampleCode}
+                        liveExample={NxNexusPageHeaderCustomLogoExample}
+                        defaultCheckeredBackground={true}>
+      An instance of <code className="nx-code">NxNexusPageHeader</code> that demonstrates how to load a custom logo.
     </GalleryExampleTile>
   </>;
 

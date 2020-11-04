@@ -27,7 +27,7 @@ function HeaderLink({ name, href, current }: HeaderLinkProps) {
 export { HeaderLinkProps, HeaderLink };
 
 export default function NxNexusPageHeader({ links, homeLink, productInfo, children, logoPath }: Props) {
-  const logoImg = logoPath || require('../../../../../../gallery/src/resources/logos/logo_nexus_generic.svg'),
+  const logoImg = logoPath || require('../../assets/img/logo_nexus_generic.svg'),
       logoEl = <img src={logoImg} className="nx-product__logo-image" />,
       linkEls = links && links.map(link => <HeaderLink key={link.name} { ...link } />);
 
@@ -46,7 +46,7 @@ export default function NxNexusPageHeader({ links, homeLink, productInfo, childr
             <span className="nx-product__byline">from sonatype</span>
             { productInfo &&
               <>
-                <span className="nx-product__text">{productInfo.meta}</span>
+                <span className="nx-product__meta">{productInfo.meta}</span>
               </>
             }
             { productInfo &&

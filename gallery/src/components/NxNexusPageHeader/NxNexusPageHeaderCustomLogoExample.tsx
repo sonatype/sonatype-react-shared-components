@@ -5,18 +5,23 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { faSave, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 import { NxButton, NxNexusPageHeader, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+
+const linkToLogo = require('../../resources/logos/logo_nexus_sonatype_teal.svg');
 
 const NxNexusPageHeaderExample = () => {
   const links = [{
     name: 'NxButton',
-    href: '#/pages/NxButton'
+    href: '#/pages/NxButton',
+    current: true
   }, {
     name: 'NxAlert',
     href: '#/pages/NxAlert',
-    current: true
+  }, {
+    name: 'NxModal',
+    href: '#/pages/NxModal',
   }];
 
   function onButtonClick() {
@@ -26,8 +31,8 @@ const NxNexusPageHeaderExample = () => {
   return (
     <NxNexusPageHeader productInfo={{ name: 'Test Product', meta: 'Fancy code name', version: '1.0.0' }}
                        homeLink="#"
-                       links={links}>
-      <NxButton variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faSave}/></NxButton>
+                       links={links}
+                       logoPath={linkToLogo}>
       <div className="nx-page-header__extra-content-divider"></div>
       <NxButton variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faCog}/></NxButton>
     </NxNexusPageHeader>
