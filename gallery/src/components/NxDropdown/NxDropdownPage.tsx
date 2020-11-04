@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
@@ -14,7 +15,6 @@ import NxDropdownDisabledExample from './NxDropdownDisabledExample';
 import NxDropdownRightButtonsExample from './NxDropdownRightButtonsExample';
 import NxDropdownCustomLabelExample from './NxDropdownCustomLabelExample';
 import NxDropdownLinksExample from './NxDropdownLinksExample';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody } from '@sonatype/react-shared-components';
 
 const nxDropdownNavigationExampleCode = require('!!raw-loader!./NxDropdownNavigationExample').default,
     nxDropdownScrollingExampleCode = require('!!raw-loader!./NxDropdownScrollingExample').default,
