@@ -44,7 +44,16 @@ export default function NxNexusPageHeader({ links, homeLink, productInfo, childr
           </div>
           <div className="nx-product__details">
             <span className="nx-product__byline">from sonatype</span>
-            { productInfo && <span className="nx-product__version">{productInfo.version}</span> }
+            { productInfo &&
+              <>
+                <span className="nx-product__text">{productInfo.meta}</span>
+              </>
+            }
+            { productInfo &&
+              <>
+                <span className="nx-product__version">{productInfo.version}</span>
+              </>
+            }
           </div>
         </div>
         { linkEls && <div className="nx-page-header__links">{linkEls}</div> }

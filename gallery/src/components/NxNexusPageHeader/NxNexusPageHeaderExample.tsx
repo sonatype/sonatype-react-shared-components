@@ -26,7 +26,7 @@ const NxNexusPageHeaderExample = () => {
   const linkToLogo = require('../../resources/logos/logo_nexus_generic.svg');
 
   return (
-    <NxNexusPageHeader productInfo={{ name: 'Test Product', version: 'Fancy code name 1.0.0' }}
+    <NxNexusPageHeader productInfo={{ name: 'Test Product', meta: 'Fancy code name', version: '1.0.0' }}
                        homeLink="#"
                        links={links}
                        imgURL={linkToLogo}>

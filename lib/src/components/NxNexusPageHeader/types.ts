@@ -9,6 +9,7 @@ import * as PropTypes from 'prop-types';
 
 interface ProductInfo {
   name: string;
+  meta? : string | null;
   version? : string | null;
 }
 
@@ -36,6 +37,7 @@ export const propTypes: ValidationMap<Props> = {
   logoPath: PropTypes.string,
   productInfo: PropTypes.shape({
     name: PropTypes.string.isRequired,
+    meta: PropTypes.string,
     version: PropTypes.string
   })
 };
