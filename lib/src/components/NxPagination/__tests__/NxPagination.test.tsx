@@ -212,6 +212,24 @@ describe('NxPagination', function() {
     });
   });
 
+  describe('when there are 5n + 1 pages and currentPage is the last page', function() {
+    it('renders the previous page group along with the final page button', function() {
+      expect(getShallowComponent({ pageCount: 41, currentPage: 40 })).toMatchElement(
+        <div>
+          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+          <NxButton>1</NxButton>
+          <NxButton>…</NxButton>
+          <NxButton>36</NxButton>
+          <NxButton>37</NxButton>
+          <NxButton>38</NxButton>
+          <NxButton>39</NxButton>
+          <NxButton>40</NxButton>
+          <NxButton>41</NxButton>
+        </div>
+      );
+    });
+  });
+
   describe('when the current page is the first page', function() {
     it('does not render the back arrow', function() {
       expect(getShallowComponent({ pageCount: 7, currentPage: 0 })).toMatchElement(

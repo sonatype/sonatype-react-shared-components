@@ -37,6 +37,21 @@ function validate(pageCount: number, currentPage: number | null | undefined) {
   }
 }
 
+/**
+ * @return the index of the first page in the current page range
+ */
+function getCurrentPageRangeStart(pageCount: number, currentPage: number) {
+  // special case: we are on the last page which also happens to be the first
+  // page of a new group/range. In this case we want to actually show the previous range, along with the
+  // always-visible final page button
+  if (currentPage && currentPage + 1 === pageCount && pageCount % PAGE_RANGE_SIZE === 1) {
+    return currentPage - PAGE_RANGE_SIZE;
+  }
+  else {
+    return currentPage - (currentPage % PAGE_RANGE_SIZE);
+  }
+}
+
 export default function NxPagination({ className, pageCount, currentPage, onChange, ...attrs }: Props) {
   validate(pageCount, currentPage);
 
@@ -48,7 +63,7 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
   else {
     const onFirstPage = currentPage === 0,
         onLastPage = currentPage === pageCount - 1,
-        currentPageRangeStart = currentPage - (currentPage % PAGE_RANGE_SIZE),
+        currentPageRangeStart = getCurrentPageRangeStart(pageCount, currentPage),
         currentPageRangeEnd = min(currentPageRangeStart + PAGE_RANGE_SIZE, pageCount),
         currentPageRange = range(currentPageRangeStart, currentPageRangeEnd),
         numPagesBelowRange = currentPageRangeStart,
