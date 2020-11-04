@@ -214,7 +214,9 @@ describe('NxPagination', function() {
 
   describe('when there are 5n + 1 pages and currentPage is the last page', function() {
     it('renders the previous page group along with the final page button', function() {
-      expect(getShallowComponent({ pageCount: 41, currentPage: 40 })).toMatchElement(
+      const component = getShallowComponent({ pageCount: 41, currentPage: 40 });
+
+      expect(component).toMatchElement(
         <div>
           <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
           <NxButton>1</NxButton>
@@ -227,6 +229,8 @@ describe('NxPagination', function() {
           <NxButton>41</NxButton>
         </div>
       );
+
+      expect(component.children().last()).toHaveClassName('selected');
     });
   });
 

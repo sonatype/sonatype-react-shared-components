@@ -52,6 +52,8 @@ function getCurrentPageRangeStart(pageCount: number, currentPage: number) {
   }
 }
 
+const getBtnClasses = (selected: boolean = false) => classnames('nx-btn--pagination', { selected });
+
 export default function NxPagination({ className, pageCount, currentPage, onChange, ...attrs }: Props) {
   validate(pageCount, currentPage);
 
@@ -71,7 +73,7 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
         handleBtnClick = curryN(2, onChange),
         mkBtn = (num: number) => {
           const selected = num === currentPage,
-              classes = classnames('nx-btn--pagination', { selected });
+              classes = getBtnClasses(selected);
 
           return (
             <NxButton onClick={selected ? undefined : handleBtnClick(num)} key={num} className={classes}>
@@ -88,21 +90,21 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
           </NxButton>
         }
         { !!numPagesBelowRange &&
-          <NxButton className="nx-btn--pagination" onClick={handleBtnClick(0)}>1</NxButton>
+          <NxButton className={getBtnClasses()} onClick={handleBtnClick(0)}>1</NxButton>
         }
         { numPagesBelowRange > 1 &&
-          <NxButton className="nx-btn--pagination" onClick={handleBtnClick(currentPageRangeStart - 1)}>
+          <NxButton className={getBtnClasses()} onClick={handleBtnClick(currentPageRangeStart - 1)}>
             …
           </NxButton>
         }
         { map(mkBtn, currentPageRange) }
         { numPagesAboveRange > 1 &&
-          <NxButton className="nx-btn--pagination" onClick={handleBtnClick(currentPageRangeEnd)}>
+          <NxButton className={getBtnClasses()} onClick={handleBtnClick(currentPageRangeEnd)}>
             …
           </NxButton>
         }
         { !!numPagesAboveRange &&
-          <NxButton className="nx-btn--pagination" onClick={handleBtnClick(pageCount - 1)}>
+          <NxButton className={getBtnClasses(currentPage === pageCount - 1)} onClick={handleBtnClick(pageCount - 1)}>
             {pageCount}
           </NxButton>
         }
