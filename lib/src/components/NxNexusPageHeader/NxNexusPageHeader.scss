@@ -44,7 +44,6 @@
     -ms-grid-row-align: start;
     align-self: end;
     -ms-grid-row: 1;
-    -ms-grid-row-span: 1;
     -ms-grid-column: 3;
     grid-area: top-row;
 
@@ -67,7 +66,6 @@
 
   .nx-product__details {
     -ms-grid-row: 2;
-    -ms-grid-row-span: 1;
     -ms-grid-column: 3;
     -ms-grid-row-align: start;
     align-self: start;
