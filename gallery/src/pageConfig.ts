@@ -70,6 +70,7 @@ import AdditionalResourcePage from './pages/AdditionalResources';
 import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 import NxCardPage from './styles/NxCard/NxCardPage';
 import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
+import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -125,6 +126,7 @@ const pageConfig: PageConfig = {
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
     'nx-page-title': NxPageTitlePage,
+    'nx-form-select': NxFormSelectPage,
     'nx-table': NxTableStylePage,
     //'nx-text-input': NxTextInputStylesPage,
     'nx-threat-number': NxThreatNumberPage,
