@@ -42,7 +42,7 @@ export default function NxNexusPageHeader({ links, homeLink, productInfo, childr
           </div>
           <div className="nx-product__summary">
             <span className="nx-product__brand">nexus</span>
-            { productInfo && <span className="nx-product__name">{productInfo.name}</span> }
+            <span className="nx-product__name">{productInfo.name}</span>
           </div>
           <div className="nx-product__details">
             <span className="nx-product__byline">from sonatype</span>
