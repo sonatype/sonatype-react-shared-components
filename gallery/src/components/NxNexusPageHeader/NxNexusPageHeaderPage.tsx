@@ -36,13 +36,13 @@ const NxNexusPageHeaderPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell">productInfo</td>
             <td className="nx-cell">object</td>
-            <td className="nx-cell">No</td>
+            <td className="nx-cell">Yes</td>
             <td className="nx-cell">
               An object containing at least one field: <code className="nx-code">name</code>, the product
               name to display in the header. Additionally, this object may contain
-              a a <code className="nx-code">meta</code> field which might contain information about the license
+              a <code className="nx-code">meta</code> field which might contain information about the license
               (as it does in IQ), or other information about the product (e.g. beta, pre-release)
-              a <code className="nx-code">version</code> field holding the product's version number to display.
+              and a <code className="nx-code">version</code> field holding the product's version number to display.
             </td>
           </tr>
           <tr className="nx-table-row">
