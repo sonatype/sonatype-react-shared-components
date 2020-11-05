@@ -36,6 +36,13 @@
     border-color: #474747;
   }
 
+  &:active {
+    background-color: #f1f3fa;
+    border-color: #474747;
+    box-shadow: none;
+    color: #474747;
+  }
+
   &.selected {
     background-color: #232c50;
     border-color: #232c50;
@@ -45,12 +52,5 @@
   &:focus {
     border: solid 1px #02a6d9;
     box-shadow: 0 0 3px 1px transparentize(#02a6d9, 0.7);
-  }
-
-  &:active {
-    background-color: #f1f3fa;
-    border-color: #474747;
-    box-shadow: none;
-    color: #474747;
   }
 }

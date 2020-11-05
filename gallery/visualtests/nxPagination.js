@@ -23,5 +23,5 @@ describe('NxPagination', function() {
   it('puts a dark border and grey background on a clicked button', clickTest(selector, btnSelector));
 
   it('puts a blue glow on a focused selected button', focusTest(selector, currentBtnSelector));
-  it('puts a dark border and grey background on a clicked selected button', clickTest(selector, currentBtnSelector));
+  it('stays blue on click', clickTest(selector, currentBtnSelector));
 });
