@@ -11,7 +11,7 @@ import { omit } from 'ramda';
 import { Props as AbstractNxPageHeaderProps, propTypes as abstractNxPageHeaderPropTypes }
   from '../AbstractNxPageHeader/types';
 
-interface ProductInfo {
+export interface ProductInfo {
   name: string;
   meta? : string | null;
   version? : string | null;

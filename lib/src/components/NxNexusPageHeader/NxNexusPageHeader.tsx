@@ -9,30 +9,35 @@ import React from 'react';
 const defaultLogo = require('../../assets/img/logo_nexus_generic.svg');
 
 import AbstractNxPageHeader from '../AbstractNxPageHeader/AbstractNxPageHeader';
-import { Props, propTypes } from './types';
+import { Props, ProductInfo, propTypes } from './types';
 
 export { Props };
 
 import './NxNexusPageHeader.scss';
+import { join, reject, isNil } from 'ramda';
+
+function HeaderProductInfo({ name, meta, version }: ProductInfo) {
+  // note that combining these in JSX with a space in between would result in an extra space when one of the
+  // fields isn't present, so we have to combine them more carefully like this
+  const metaAndVersionString = join(' ', reject(isNil, [meta, version]));
+
+  return (
+    <>
+      <div className="nx-product__summary">
+        <span className="nx-product__brand">nexus</span>
+        <span className="nx-product__name">{name}</span>
+      </div>
+      <div className="nx-product__details">
+        <span className="nx-product__byline">from sonatype</span>
+        { metaAndVersionString && <span className="nx-product__meta">{metaAndVersionString}</span> }
+      </div>
+    </>
+  );
+}
 
 export default function NxNexusPageHeader({ productInfo, logoPath, ...otherProps }: Props) {
   const logo = <img src={logoPath || defaultLogo} className="nx-product__logo-image" />,
-      productInfoContent = (
-        <>
-          <div className="nx-product__summary">
-            <span className="nx-product__brand">nexus</span>
-            <span className="nx-product__name">{productInfo.name}</span>
-          </div>
-          <div className="nx-product__details">
-            <span className="nx-product__byline">from sonatype</span>
-            { !!(productInfo.meta || productInfo.version) &&
-              <span className="nx-product__meta">
-                {productInfo.meta || ''} {productInfo.version || ''}
-              </span>
-            }
-          </div>
-        </>
-      );
+      productInfoContent = <HeaderProductInfo { ...productInfo } />;
 
   return <AbstractNxPageHeader className="nx-page-header--nexus"
                               { ...otherProps }

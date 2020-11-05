@@ -7,20 +7,24 @@
 import React from 'react';
 
 import AbstractNxPageHeader from '../AbstractNxPageHeader/AbstractNxPageHeader';
-import { Props, propTypes } from './types';
+import { Props, ProductInfo, propTypes } from './types';
 
 export { Props };
 
 const logoImg = require('../../assets/img/sonatype-logo-with-hexagon.png');
 
+function HeaderProductInfo({ name, version }: ProductInfo) {
+  return (
+    <>
+      <div className="nx-product__name">{name}</div>
+      { version && <div className="nx-product__version">Version: {version}</div> }
+    </>
+  );
+}
+
 export default function NxPageHeader({ productInfo, ...otherProps }: Props) {
   const logo = <img src={logoImg} className="nx-product__logo-image" alt="⬡ Sonatype"/>,
-      productInfoContent = productInfo ? (
-        <>
-          <div className="nx-product__name">{productInfo.name}</div>
-          { productInfo.version && <div className="nx-product__version">Version: {productInfo.version}</div> }
-        </>
-      ) : null;
+      productInfoContent = productInfo ? <HeaderProductInfo { ...productInfo } /> : null;
 
   return <AbstractNxPageHeader { ...otherProps } { ...{ logo, productInfoContent } } />;
 }
