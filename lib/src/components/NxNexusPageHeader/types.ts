@@ -22,7 +22,7 @@ export interface HeaderLinkProps {
 export interface Props {
   links?: HeaderLinkProps[] | null;
   homeLink?: string | null;
-  productInfo?: ProductInfo | null;
+  productInfo: ProductInfo;
   children?: ReactNode | null;
   logoPath?: string | null;
 }
@@ -35,9 +35,9 @@ export const propTypes: ValidationMap<Props> = {
   }).isRequired),
   homeLink: PropTypes.string,
   logoPath: PropTypes.string,
-  productInfo: PropTypes.shape({
+  productInfo: (PropTypes.shape({
     name: PropTypes.string.isRequired,
     meta: PropTypes.string,
     version: PropTypes.string
-  })
+  }).isRequired)
 };
