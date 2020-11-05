@@ -46,7 +46,7 @@ const NxFormSelectPage = () =>
     <GalleryExampleTile title="Form Select Example"
                         codeExamples={sourceCode}
                         liveExample={NxFormSelectExample}>
-      Demonstrates a form select and also its disabled state.
+      Demonstrates a form <code className="nx-code">&lt;select&gt;</code> active and disabled state.
     </GalleryExampleTile>
   </>;
 
