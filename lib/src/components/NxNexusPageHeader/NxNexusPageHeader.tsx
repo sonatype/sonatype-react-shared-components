@@ -5,41 +5,20 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import classnames from 'classnames';
 
 const defaultLogo = require('../../assets/img/logo_nexus_generic.svg');
 
-import { HeaderLinkProps, Props, propTypes } from './types';
+import AbstractNxPageHeader from '../AbstractNxPageHeader/AbstractNxPageHeader';
+import { Props, propTypes } from './types';
 
 export { Props };
 
 import './NxNexusPageHeader.scss';
 
-function HeaderLink({ name, href, current }: HeaderLinkProps) {
-  const classes = classnames('nx-page-header__link', {
-    'nx-page-header__link--current': current
-  });
-
-  return (
-    <a className={classes} href={href} data-text={name}>{name}</a>
-  );
-}
-
-// visible for testing
-export { HeaderLinkProps, HeaderLink };
-
-export default function NxNexusPageHeader({ links, homeLink, productInfo, children, logoPath }: Props) {
-  const logoImg = logoPath || defaultLogo,
-      logoEl = <img src={logoImg} className="nx-product__logo-image" />,
-      linkEls = links && links.map(link => <HeaderLink key={link.name} { ...link } />);
-
-  return (
-    <header className="nx-page-header nx-page-header--nexus">
-      <div className="nx-page-header__inner">
-        <div className="nx-product">
-          <div className="nx-product__logo">
-            { homeLink ? <a className="nx-product__link" href={homeLink}>{logoEl}</a> : logoEl }
-          </div>
+export default function NxNexusPageHeader({ productInfo, logoPath, ...otherProps }: Props) {
+  const logo = <img src={logoPath || defaultLogo} className="nx-product__logo-image" />,
+      productInfoContent = (
+        <>
           <div className="nx-product__summary">
             <span className="nx-product__brand">nexus</span>
             <span className="nx-product__name">{productInfo.name}</span>
@@ -52,12 +31,12 @@ export default function NxNexusPageHeader({ links, homeLink, productInfo, childr
               </span>
             }
           </div>
-        </div>
-        { linkEls && <div className="nx-page-header__links">{linkEls}</div> }
-        { children && <div className="nx-page-header__extra-content">{children}</div> }
-      </div>
-    </header>
-  );
+        </>
+      );
+
+  return <AbstractNxPageHeader className="nx-page-header--nexus"
+                              { ...otherProps }
+                              { ...{ logo, productInfoContent } } />;
 }
 
 NxNexusPageHeader.propTypes = propTypes;
