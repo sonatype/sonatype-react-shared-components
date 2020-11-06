@@ -59,11 +59,11 @@ export { default as NxTableCell } from './components/NxTableCell/NxTableCell';
 export { default as NxTableHead } from './components/NxTableHead/NxTableHead';
 export { default as NxTableRow } from './components/NxTableRow/NxTableRow';
 
-export { default as NxTabs } from './components/NxTabs/NxTabs';
+export { default as NxTabs, NxTabsProps } from './components/NxTabs/NxTabs';
 export { default as NxStatefulTabs } from './components/NxTabs/stateful/NxStatefulTabs';
-export { default as NxTabList } from './components/NxTabs/NxTabList';
-export { default as NxTab } from './components/NxTabs/NxTab';
-export { default as NxTabPanel } from './components/NxTabs/NxTabPanel';
+export { default as NxTabList, NxTabListProps } from './components/NxTabs/NxTabList';
+export { default as NxTab, NxTabProps } from './components/NxTabs/NxTab';
+export { default as NxTabPanel, NxTabPanelProps } from './components/NxTabs/NxTabPanel';
 
 export {
   default as NxTreeView,
