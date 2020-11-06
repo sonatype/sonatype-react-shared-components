@@ -9,7 +9,7 @@ import classnames from 'classnames';
 
 import TabContext from './TabContext';
 
-import { NxTabProps } from './types';
+import { NxTabProps, nxTabPropTypes } from './types';
 export { NxTabProps };
 
 const SPACE = ' ';
@@ -56,5 +56,7 @@ const NxTab = function NxTabElement(props: NxTabProps) {
     </li>
   );
 };
+
+NxTab.propTypes = nxTabPropTypes;
 
 export default NxTab;

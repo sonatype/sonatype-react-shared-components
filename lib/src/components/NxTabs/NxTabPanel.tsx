@@ -9,7 +9,7 @@ import classnames from 'classnames';
 
 import TabContext from './TabContext';
 
-import { NxTabPanelProps } from './types';
+import { NxTabPanelProps, nxTabPanelPropTypes } from './types';
 export { NxTabPanelProps };
 
 const NxTabPanel = function NxTabPanelElement(props: NxTabPanelProps) {
@@ -29,5 +29,7 @@ const NxTabPanel = function NxTabPanelElement(props: NxTabPanelProps) {
     />
   );
 };
+
+NxTabPanel.propTypes = nxTabPanelPropTypes;
 
 export default NxTabPanel;

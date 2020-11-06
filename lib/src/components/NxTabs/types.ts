@@ -26,8 +26,21 @@ export type NxTabProps = LiHTMLAttributes<HTMLLIElement> & {
   index?: number | null;
 };
 
-export const propTypes: PropTypes.ValidationMap<NxTabsProps> = {
+export const nxTabsPropTypes: PropTypes.ValidationMap<NxTabsProps> = {
   activeTab: PropTypes.number,
   onTabSelect: PropTypes.func.isRequired,
   children: PropTypes.node
 };
+
+export const nxTabPropTypes: PropTypes.ValidationMap<NxTabProps> = {
+  index: PropTypes.number,
+  children: PropTypes.node
+};
+
+export const nxTabListPropTypes: PropTypes.ValidationMap<NxTabListProps> = {
+  children: PropTypes.node
+};
+
+export const nxTabPanelPropTypes = {
+  className: PropTypes.string
+} as PropTypes.ValidationMap<NxTabPanelProps>;

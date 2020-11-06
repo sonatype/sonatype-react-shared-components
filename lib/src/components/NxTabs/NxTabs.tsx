@@ -8,7 +8,7 @@ import React, { Children, cloneElement, isValidElement, useMemo } from 'react';
 import classnames from 'classnames';
 
 import TabContext from './TabContext';
-import { TabContextType, NxTabProps, NxTabPanelProps, NxTabsProps, propTypes } from './types';
+import { TabContextType, NxTabProps, NxTabPanelProps, NxTabsProps, nxTabsPropTypes } from './types';
 
 export { NxTabsProps } from './types';
 
@@ -68,6 +68,6 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
   );
 };
 
-NxTabs.propTypes = propTypes;
+NxTabs.propTypes = nxTabsPropTypes;
 
 export default NxTabs;
