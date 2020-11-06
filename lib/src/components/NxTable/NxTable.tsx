@@ -8,14 +8,14 @@ import React from 'react';
 import classnames from 'classnames';
 
 import {only} from '../../util/childUtil';
-import NxTableHead from '../NxTableHead/NxTableHead';
-import NxTableBody from '../NxTableBody/NxTableBody';
-import NxTableRow from '../NxTableRow/NxTableRow';
+import NxTableHead from './NxTableHead';
+import NxTableBody from './NxTableBody';
+import NxTableRow from './NxTableRow';
 
-import {Props, propTypes} from './types';
-export {Props} from './types';
+import { NxTableProps, nxTablePropTypes } from './types';
+export { NxTableProps };
 
-const NxTable = function NxTableElement(props: Props) {
+const NxTable = function NxTableElement(props: NxTableProps) {
   const {className, children, ...attrs} = props;
 
   const thead = only(children, NxTableHead);
@@ -33,6 +33,6 @@ const NxTable = function NxTableElement(props: Props) {
   );
 };
 
-NxTable.propTypes = propTypes;
+NxTable.propTypes = nxTablePropTypes;
 
 export default NxTable;

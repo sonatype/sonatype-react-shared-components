@@ -55,7 +55,7 @@ export const nxTableCellPropTypes: PropTypes.ValidationMap<NxTableCellProps> = {
 
 export type NxTableHeadProps = HTMLAttributes<HTMLTableSectionElement>;
 
-export const nxTableHeadePropTypes: PropTypes.ValidationMap<NxTableHeadProps> = {
+export const nxTableHeadPropTypes: PropTypes.ValidationMap<NxTableHeadProps> = {
   children: PropTypes.node
 };
 

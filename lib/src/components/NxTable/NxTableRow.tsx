@@ -9,10 +9,10 @@ import classnames from 'classnames';
 
 import {addPropsToChildren} from '../../util/childUtil';
 
-import {Props, propTypes} from './types';
-export {Props} from './types';
+import { NxTableRowProps, nxTableRowPropTypes} from './types';
+export { NxTableRowProps };
 
-const NxTableRow = function NxTableRow(props: Props) {
+const NxTableRow = function NxTableRow(props: NxTableRowProps) {
   const {isHeader = false, isFilterHeader = false, isClickable = false, className, children, ...attrs} = props;
   const classes = classnames('nx-table-row', className, {
     'nx-table-row--header': isHeader,
@@ -27,6 +27,6 @@ const NxTableRow = function NxTableRow(props: Props) {
   );
 };
 
-NxTableRow.propTypes = propTypes;
+NxTableRow.propTypes = nxTableRowPropTypes;
 
 export default NxTableRow;

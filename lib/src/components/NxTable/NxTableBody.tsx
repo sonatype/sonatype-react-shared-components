@@ -6,14 +6,14 @@
  */
 import React from 'react';
 
-import {Props, propTypes} from './types';
-import NxTableRow from '../NxTableRow/NxTableRow';
-import NxTableCell from '../NxTableCell/NxTableCell';
+import { NxTableBodyProps, nxTableBodyPropTypes } from './types';
+import NxTableRow from './NxTableRow';
+import NxTableCell from './NxTableCell';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import NxLoadError from '../NxLoadError/NxLoadError';
-export {Props} from './types';
+export { NxTableBodyProps };
 
-const NxTableBody = function NxTableBody(props: Props) {
+const NxTableBody = function NxTableBody(props: NxTableBodyProps) {
   const {isLoading = false, emptyMessage, error, columns, children, retryHandler, ...attrs} = props,
       isEmpty = !React.Children.count(children);
 
@@ -67,6 +67,6 @@ const NxTableBody = function NxTableBody(props: Props) {
   );
 };
 
-NxTableBody.propTypes = propTypes;
+NxTableBody.propTypes = nxTableBodyPropTypes;
 
 export default NxTableBody;

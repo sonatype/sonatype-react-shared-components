@@ -8,10 +8,10 @@ import React from 'react';
 
 import {addPropsToChildren} from '../../util/childUtil';
 
-import {Props, propTypes} from './types';
-export {Props} from './types';
+import { NxTableHeadProps, nxTableHeadPropTypes } from './types';
+export { NxTableHeadProps };
 
-const NxTableHead = function NxTableHead(props: Props) {
+const NxTableHead = function NxTableHead(props: NxTableHeadProps) {
   const {children, ...attrs} = props;
 
   return (
@@ -21,6 +21,6 @@ const NxTableHead = function NxTableHead(props: Props) {
   );
 };
 
-NxTableHead.propTypes = propTypes;
+NxTableHead.propTypes = nxTableHeadPropTypes;
 
 export default NxTableHead;

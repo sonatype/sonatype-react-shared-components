@@ -11,10 +11,10 @@ import { faSort, faSortDown, faSortUp, faChevronRight } from '@fortawesome/free-
 import {ensureElement} from '../../util/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-import { Props, propTypes } from './types';
-export { Props } from './types';
+import { NxTableCellProps, nxTableCellPropTypes } from './types';
+export { NxTableCellProps };
 
-const NxTableCell = function NxTableCell(props: Props) {
+const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   const {
     isHeader = false,
     metaInfo = false,
@@ -73,6 +73,6 @@ const NxTableCell = function NxTableCell(props: Props) {
   );
 };
 
-NxTableCell.propTypes = propTypes;
+NxTableCell.propTypes = nxTableCellPropTypes;
 
 export default NxTableCell;
