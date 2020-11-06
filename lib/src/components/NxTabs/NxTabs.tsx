@@ -7,13 +7,9 @@
 import React, { Children, cloneElement, isValidElement, useMemo } from 'react';
 import classnames from 'classnames';
 
-import { Props as NxTabProps } from '../NxTab/types';
-import { Props as NxTabPanelProps } from '../NxTabPanel/types';
+import { NxTabProps, NxTabPanelProps, NxTabsProps, propTypes } from './types';
 
-import { Props, propTypes } from './types';
-export { Props } from './types';
-
-import './NxTabs.scss';
+export { NxTabsProps } from './types';
 
 interface TabContextType {
   activeTab?: number | null;
@@ -31,7 +27,7 @@ export const TabContext = React.createContext<TabContextType>({
 
 let tabId = 0;
 
-const NxTabs = function NxTabsElement(props: Props) {
+const NxTabs = function NxTabsElement(props: NxTabsProps) {
   const { activeTab, onTabSelect, id, className, children, ...attrs } = props;
 
   const [tabList, ...tabPanels] = Children.toArray(children);

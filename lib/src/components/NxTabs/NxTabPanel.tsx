@@ -9,12 +9,10 @@ import classnames from 'classnames';
 
 import { TabContext } from '../NxTabs/NxTabs';
 
-import { Props, propTypes } from './types';
-export { Props } from './types';
+import { NxTabPanelProps } from './types';
+export { NxTabPanelProps };
 
-import './NxTabPanel.scss';
-
-const NxTabPanel = function NxTabPanelElement(props: Props) {
+const NxTabPanel = function NxTabPanelElement(props: NxTabPanelProps) {
   const { activeTab, rootId, index } = useContext(TabContext);
   const { className, ...attrs } = props;
 
@@ -31,7 +29,5 @@ const NxTabPanel = function NxTabPanelElement(props: Props) {
     />
   );
 };
-
-NxTabPanel.propTypes = propTypes;
 
 export default NxTabPanel;
