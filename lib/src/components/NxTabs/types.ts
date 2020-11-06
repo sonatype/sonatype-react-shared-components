@@ -13,29 +13,14 @@ export type NxTabsProps = HTMLAttributes<HTMLDivElement> & {
   children?: ReactNode | null;
 };
 
-export const nxTabsPropTypes: PropTypes.ValidationMap<NxTabsProps> = {
-  activeTab: PropTypes.number,
-  onTabSelect: PropTypes.func.isRequired,
-  children: PropTypes.node
-};
-
+export type NxTabListProps = HTMLAttributes<HTMLUListElement>;
+export type NxTabPanelProps = HTMLAttributes<HTMLDivElement>;
 export type NxTabProps = LiHTMLAttributes<HTMLLIElement> & {
   index?: number | null;
 };
 
-export const nxTabPropTypes: PropTypes.ValidationMap<NxTabProps> = {
-  index: PropTypes.number,
+export const propTypes: PropTypes.ValidationMap<NxTabsProps> = {
+  activeTab: PropTypes.number,
+  onTabSelect: PropTypes.func.isRequired,
   children: PropTypes.node
 };
-
-export type NxTabListProps = HTMLAttributes<HTMLUListElement>;
-
-export const nxTabListPropTypes: PropTypes.ValidationMap<NxTabListProps> = {
-  children: PropTypes.node
-};
-
-export type NxTabPanelProps = HTMLAttributes<HTMLDivElement>;
-
-export const nxTabPanelPropTypes = {
-  className: PropTypes.string
-} as PropTypes.ValidationMap<NxTabPanelProps>;
