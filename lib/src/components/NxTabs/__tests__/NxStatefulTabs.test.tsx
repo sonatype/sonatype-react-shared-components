@@ -7,9 +7,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import NxStatefulTabs from '../stateful/NxStatefulTabs';
-import NxTabList from '../../NxTabList/NxTabList';
-import NxTab from '../../NxTab/NxTab';
-import NxTabPanel from '../../NxTabPanel/NxTabPanel';
+import NxTabList from '../NxTabList';
+import NxTab from '../NxTab';
+import NxTabPanel from '../NxTabPanel';
 
 describe('NxStatefulTabs', function () {
   it('selects no tab when none is provided', function () {
