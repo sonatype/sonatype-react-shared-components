@@ -11,24 +11,24 @@ import {only} from '../../util/childUtil';
 import NxTableHead from './NxTableHead';
 import NxTableBody from './NxTableBody';
 import NxTableRow from './NxTableRow';
+import { ColumnCountContext } from './contexts';
 
 import { NxTableProps, nxTablePropTypes } from './types';
 export { NxTableProps };
 
 const NxTable = function NxTableElement(props: NxTableProps) {
-  const {className, children, ...attrs} = props;
-
-  const thead = only(children, NxTableHead);
-  const trow = thead && only(thead.props.children, NxTableRow);
-  let tbody = only(children, NxTableBody);
-  if (trow && tbody) {
-    tbody = React.cloneElement(tbody, { columns: React.Children.count(trow.props.children)});
-  }
+  const {className, children, ...attrs} = props,
+      thead = only(children, NxTableHead),
+      tbody = only(children, NxTableBody),
+      trow = thead && only(thead.props.children, NxTableRow),
+      columns = trow ? React.Children.count(trow.props.children) : 0;
 
   return (
     <table className={classnames('nx-table', className)} {...attrs}>
-      {thead}
-      {tbody}
+      <ColumnCountContext.Provider value={columns}>
+        {thead}
+        {tbody}
+      </ColumnCountContext.Provider>
     </table>
   );
 };

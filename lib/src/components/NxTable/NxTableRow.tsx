@@ -4,16 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 
-import {addPropsToChildren} from '../../util/childUtil';
-
 import { NxTableRowProps, nxTableRowPropTypes} from './types';
+import { HeaderContext } from './contexts';
 export { NxTableRowProps };
 
 const NxTableRow = function NxTableRow(props: NxTableRowProps) {
-  const {isHeader = false, isFilterHeader = false, isClickable = false, className, children, ...attrs} = props;
+  const {isFilterHeader = false, isClickable = false, className, children, ...attrs} = props,
+      isHeader = useContext(HeaderContext);
+
   const classes = classnames('nx-table-row', className, {
     'nx-table-row--header': isHeader,
     'nx-clickable': isClickable,
@@ -21,9 +22,7 @@ const NxTableRow = function NxTableRow(props: NxTableRowProps) {
   });
 
   return (
-    <tr className={classes} {...attrs}>
-      {addPropsToChildren(children, {isHeader})}
-    </tr>
+    <tr className={classes} {...attrs}>{children}</tr>
   );
 };
 

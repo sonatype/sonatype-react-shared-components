@@ -6,9 +6,8 @@
  */
 import React from 'react';
 
-import {addPropsToChildren} from '../../util/childUtil';
-
 import { NxTableHeadProps, nxTableHeadPropTypes } from './types';
+import { HeaderContext } from './contexts';
 export { NxTableHeadProps };
 
 const NxTableHead = function NxTableHead(props: NxTableHeadProps) {
@@ -16,7 +15,9 @@ const NxTableHead = function NxTableHead(props: NxTableHeadProps) {
 
   return (
     <thead {...attrs}>
-      {addPropsToChildren(children, {isHeader: true})}
+      <HeaderContext.Provider value={true}>
+        {children}
+      </HeaderContext.Provider>
     </thead>
   );
 };

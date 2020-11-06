@@ -17,21 +17,18 @@ export type NxTableBodyProps = HTMLAttributes<HTMLTableSectionElement> & {
   isLoading?: boolean | null;
   error?: string | null;
   emptyMessage?: string | null;
-  columns?: number | null;
   retryHandler?: (() => void) | null;
 };
 
 export const nxTableBodyPropTypes: PropTypes.ValidationMap<NxTableBodyProps> = {
   isLoading: PropTypes.bool,
   error: PropTypes.string,
-  columns: PropTypes.number,
   retryHandler: PropTypes.func,
   children: PropTypes.node
 };
 
 export type NxTableCellProps =
     (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<HTMLTableHeaderCellElement>) & {
-      isHeader?: boolean | null;
       metaInfo?: boolean | null;
       isNumeric?: boolean | null;
       isSortable?: boolean | null;
@@ -42,7 +39,6 @@ export type NxTableCellProps =
     };
 
 export const nxTableCellPropTypes: PropTypes.ValidationMap<NxTableCellProps> = {
-  isHeader: PropTypes.bool,
   metaInfo: PropTypes.bool,
   isNumeric: PropTypes.bool,
   isSortable: PropTypes.bool,
@@ -60,13 +56,11 @@ export const nxTableHeadPropTypes: PropTypes.ValidationMap<NxTableHeadProps> = {
 };
 
 export type NxTableRowProps = HTMLAttributes<HTMLTableRowElement> & {
-  isHeader?: boolean | null;
   isFilterHeader?: boolean | null;
   isClickable?: boolean | null;
 };
 
 export const nxTableRowPropTypes: PropTypes.ValidationMap<NxTableRowProps> = {
-  isHeader: PropTypes.bool,
   isFilterHeader: PropTypes.bool,
   isClickable: PropTypes.bool,
   children: PropTypes.node

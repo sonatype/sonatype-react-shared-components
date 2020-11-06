@@ -4,17 +4,19 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { NxTableBodyProps, nxTableBodyPropTypes } from './types';
 import NxTableRow from './NxTableRow';
 import NxTableCell from './NxTableCell';
+import { ColumnCountContext } from './contexts';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import NxLoadError from '../NxLoadError/NxLoadError';
 export { NxTableBodyProps };
 
 const NxTableBody = function NxTableBody(props: NxTableBodyProps) {
-  const {isLoading = false, emptyMessage, error, columns, children, retryHandler, ...attrs} = props,
+  const {isLoading = false, emptyMessage, error, children, retryHandler, ...attrs} = props,
+      columns = useContext(ColumnCountContext),
       isEmpty = !React.Children.count(children);
 
   if (isLoading && !columns) {
