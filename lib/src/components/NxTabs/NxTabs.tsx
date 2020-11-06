@@ -12,6 +12,7 @@ import { TabContextType, NxTabProps, NxTabPanelProps, NxTabsProps, propTypes } f
 
 export { NxTabsProps } from './types';
 
+import './NxTabs.scss';
 
 let tabId = 0;
 

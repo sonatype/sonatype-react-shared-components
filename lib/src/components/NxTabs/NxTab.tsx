@@ -12,8 +12,6 @@ import TabContext from './TabContext';
 import { NxTabProps } from './types';
 export { NxTabProps };
 
-import './NxTab.scss';
-
 const SPACE = ' ';
 
 const NxTab = function NxTabElement(props: NxTabProps) {
