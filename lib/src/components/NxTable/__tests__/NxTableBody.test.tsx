@@ -7,14 +7,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import NxTableBody from '../NxTableBody';
-import NxTableCell from '../../NxTableCell/NxTableCell';
-import NxTableRow from '../../NxTableRow/NxTableRow';
+import NxTableCell from '../NxTableCell';
+import NxTableRow from '../NxTableRow';
 import NxLoadingSpinner from '../../NxLoadingSpinner/NxLoadingSpinner';
 import NxLoadError from '../../NxLoadError/NxLoadError';
 
 describe('NxTableBody', function () {
   it('passes additional props through', function () {
-    expect(shallow(<NxTableBody className="test" emptyMessage="foo" columns={1}/>)).toMatchSelector('tbody.test');
+    expect(shallow(<NxTableBody className="test" emptyMessage="foo" />)).toMatchSelector('tbody.test');
   });
 
   it('shows the loading spinner when isLoading is set', function () {
@@ -26,7 +26,7 @@ describe('NxTableBody', function () {
       </NxTableRow>
     );
 
-    expect(shallow(<NxTableBody isLoading columns={1}>nothing</NxTableBody>)).toContainReact(loadingSpinner);
+    expect(shallow(<NxTableBody isLoading>nothing</NxTableBody>)).toContainReact(loadingSpinner);
   });
 
   it('shows the error when error is set', function () {
@@ -39,7 +39,7 @@ describe('NxTableBody', function () {
           </NxTableRow>
         ),
         component = shallow(
-          <NxTableBody error="Error message" columns={1} retryHandler={retryHandler}>
+          <NxTableBody error="Error message" retryHandler={retryHandler}>
             nothing
           </NxTableBody>
         );
@@ -56,16 +56,16 @@ describe('NxTableBody', function () {
       </NxTableRow>
     );
 
-    expect(shallow(<NxTableBody emptyMessage="Empty message" columns={1}></NxTableBody>))
+    expect(shallow(<NxTableBody emptyMessage="Empty message"></NxTableBody>))
         .toContainReact(emptyMessage);
 
-    expect(shallow(<NxTableBody emptyMessage="Empty message" columns={1}>{[]}</NxTableBody>))
+    expect(shallow(<NxTableBody emptyMessage="Empty message">{[]}</NxTableBody>))
         .toContainReact(emptyMessage);
   });
 
   it('does not show the emptyMessage when there are children', function () {
     const component = shallow(
-      <NxTableBody emptyMessage="Empty message" columns={1}>
+      <NxTableBody emptyMessage="Empty message">
         <NxTableRow>
           <NxTableCell>Foo</NxTableCell>
         </NxTableRow>
@@ -77,7 +77,7 @@ describe('NxTableBody', function () {
 
   it('does not show the emptyMessage when isLoading', function () {
     const component = shallow(
-      <NxTableBody emptyMessage="Empty message" columns={1} isLoading>
+      <NxTableBody emptyMessage="Empty message" isLoading>
       </NxTableBody>
     );
 
@@ -86,7 +86,7 @@ describe('NxTableBody', function () {
 
   it('does not show the emptyMessage when in error', function () {
     const component = shallow(
-      <NxTableBody emptyMessage="Empty message" columns={1} error="Errr" retryHandler={() => {}}>
+      <NxTableBody emptyMessage="Empty message" error="Errr" retryHandler={() => {}}>
       </NxTableBody>
     );
 

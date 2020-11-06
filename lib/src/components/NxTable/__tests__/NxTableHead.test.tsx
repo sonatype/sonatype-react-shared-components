@@ -7,11 +7,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import NxTableHead from '../NxTableHead';
-import NxTableRow from '../../NxTableRow/NxTableRow';
+import NxTableRow from '../NxTableRow';
 
 describe('NxTableHead', function () {
   it('sets the isHeader property on children', function () {
-    expect(shallow(<NxTableHead><NxTableRow /></NxTableHead>)).toContainReact(<NxTableRow isHeader />);
+    expect(shallow(<NxTableHead><NxTableRow /></NxTableHead>)).toContainReact(<NxTableRow />);
   });
 
   it('passes additional props through', function () {

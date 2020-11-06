@@ -7,10 +7,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import NxTable from '../NxTable';
-import NxTableHead from '../../NxTableHead/NxTableHead';
-import NxTableRow from '../../NxTableRow/NxTableRow';
-import NxTableCell from '../../NxTableCell/NxTableCell';
-import NxTableBody from '../../NxTableBody/NxTableBody';
+import NxTableHead from '../NxTableHead';
+import NxTableRow from '../NxTableRow';
+import NxTableCell from '../NxTableCell';
+import NxTableBody from '../NxTableBody';
 
 describe('NxTable', function() {
   it('renders a table with the expected class names and id', function() {
