@@ -7,6 +7,13 @@
 import { ReactNode, HTMLAttributes, LiHTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
+export interface TabContextType {
+  activeTab?: number | null;
+  rootId: string;
+  index: number;
+  onTabSelect: (index: number) => void;
+};
+
 export type NxTabsProps = HTMLAttributes<HTMLDivElement> & {
   activeTab?: number | null ;
   onTabSelect: ((index: number) => void);

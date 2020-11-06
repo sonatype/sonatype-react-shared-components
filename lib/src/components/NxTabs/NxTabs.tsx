@@ -7,23 +7,11 @@
 import React, { Children, cloneElement, isValidElement, useMemo } from 'react';
 import classnames from 'classnames';
 
-import { NxTabProps, NxTabPanelProps, NxTabsProps, propTypes } from './types';
+import TabContext from './TabContext';
+import { TabContextType, NxTabProps, NxTabPanelProps, NxTabsProps, propTypes } from './types';
 
 export { NxTabsProps } from './types';
 
-interface TabContextType {
-  activeTab?: number | null;
-  rootId: string;
-  index: number;
-  onTabSelect: (index: number) => void;
-};
-
-export const TabContext = React.createContext<TabContextType>({
-  activeTab: null,
-  rootId: '',
-  index: -1,
-  onTabSelect: () => {}
-});
 
 let tabId = 0;
 

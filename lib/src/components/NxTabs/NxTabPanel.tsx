@@ -7,7 +7,7 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 
-import { TabContext } from '../NxTabs/NxTabs';
+import TabContext from './TabContext';
 
 import { NxTabPanelProps } from './types';
 export { NxTabPanelProps };
