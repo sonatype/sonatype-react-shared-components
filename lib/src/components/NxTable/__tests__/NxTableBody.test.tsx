@@ -14,53 +14,65 @@ import NxLoadError from '../../NxLoadError/NxLoadError';
 
 describe('NxTableBody', function () {
   it('passes additional props through', function () {
-    expect(shallow(<NxTableBody className="test" emptyMessage="foo" />)).toMatchSelector('tbody.test');
+    expect(shallow(<NxTableBody className="test" id="bar" emptyMessage="empty"/>)).toMatchSelector('tbody#bar.test');
   });
 
   it('shows the loading spinner when isLoading is set', function () {
-    const loadingSpinner = (
-      <NxTableRow>
-        <NxTableCell metaInfo colSpan={1}>
-          <NxLoadingSpinner />
-        </NxTableCell>
-      </NxTableRow>
+    const component = shallow(<NxTableBody isLoading>nothing</NxTableBody>);
+
+    expect(component).toMatchElement(
+      <tbody>
+        <NxTableRow>
+          <NxTableCell>
+            <NxLoadingSpinner />
+          </NxTableCell>
+        </NxTableRow>
+      </tbody>
     );
 
-    expect(shallow(<NxTableBody isLoading>nothing</NxTableBody>)).toContainReact(loadingSpinner);
+    expect(component.find(NxTableCell)).toHaveProp('metaInfo', true);
   });
 
   it('shows the error when error is set', function () {
     const retryHandler = jest.fn(),
-        errorMessage = (
-          <NxTableRow>
-            <NxTableCell metaInfo colSpan={1}>
-              <NxLoadError error="Error message" retryHandler={retryHandler} />
-            </NxTableCell>
-          </NxTableRow>
-        ),
         component = shallow(
           <NxTableBody error="Error message" retryHandler={retryHandler}>
             nothing
           </NxTableBody>
         );
 
-    expect(component).toContainReact(errorMessage);
+    expect(component).toMatchElement(
+      <tbody>
+        <NxTableRow>
+          <NxTableCell>
+            <NxLoadError />
+          </NxTableCell>
+        </NxTableRow>
+      </tbody>
+    );
+
+    expect(component.find(NxTableCell)).toHaveProp('metaInfo', true);
+    expect(component.find(NxLoadError)).toHaveProp('error', 'Error message');
+    expect(component.find(NxLoadError)).toHaveProp('retryHandler', retryHandler);
   });
 
   it('shows the emptyMessage when there are no children, no error, and not loading', function () {
-    const emptyMessage = (
-      <NxTableRow>
-        <NxTableCell metaInfo colSpan={1}>
-          Empty message
-        </NxTableCell>
-      </NxTableRow>
-    );
+    const trulyEmptyComponent = shallow(<NxTableBody emptyMessage="Empty message"></NxTableBody>),
+        emptyListComponent = shallow(<NxTableBody emptyMessage="Empty message">{[]}</NxTableBody>),
+        emptyMessageRow = (
+          <tbody>
+            <NxTableRow>
+              <NxTableCell>
+                Empty message
+              </NxTableCell>
+            </NxTableRow>
+          </tbody>
+        );
 
-    expect(shallow(<NxTableBody emptyMessage="Empty message"></NxTableBody>))
-        .toContainReact(emptyMessage);
-
-    expect(shallow(<NxTableBody emptyMessage="Empty message">{[]}</NxTableBody>))
-        .toContainReact(emptyMessage);
+    expect(trulyEmptyComponent).toMatchElement(emptyMessageRow);
+    expect(trulyEmptyComponent.find(NxTableCell)).toHaveProp('metaInfo', true);
+    expect(emptyListComponent).toMatchElement(emptyMessageRow);
+    expect(emptyListComponent.find(NxTableCell)).toHaveProp('metaInfo', true);
   });
 
   it('does not show the emptyMessage when there are children', function () {
@@ -94,8 +106,18 @@ describe('NxTableBody', function () {
   });
 
   it('shows the body', function () {
-    const body = <NxTableRow><NxTableCell>test</NxTableCell></NxTableRow>;
-
-    expect(shallow(<NxTableBody>{body}</NxTableBody>)).toContainReact(body);
+    expect(shallow(
+      <NxTableBody>
+        <NxTableRow>
+          <NxTableCell>test</NxTableCell>
+        </NxTableRow>
+      </NxTableBody>
+    )).toMatchElement(
+      <tbody>
+        <NxTableRow>
+          <NxTableCell>test</NxTableCell>
+        </NxTableRow>
+      </tbody>
+    );
   });
 });
