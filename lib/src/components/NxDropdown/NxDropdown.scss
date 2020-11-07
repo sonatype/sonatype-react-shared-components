@@ -136,23 +136,20 @@ $nx-dropdown-width: 250px;
   margin: 9px 1px;
 }
 
-.nx-dropdown-button-container {
-  padding: 0;
 
-  .nx-dropdown-button {
-    display: block;
-    padding-right: 0;
-    overflow: visible;
-  }
-
-  .nx-dropdown-button-content {
-    @include nx-truncate-ellipsis;
-    display: block;
-    line-height: $nx-spacing-xl;
-  }
+.nx-dropdown-button-content {
+  @include nx-truncate-ellipsis;
+  display: block;
+  line-height: $nx-spacing-xl;
 }
 
 .nx-dropdown-right-button {
   float: right;
   margin: $nx-spacing-xxs $nx-spacing-xs $nx-spacing-xxs $nx-spacing-l;
+
+  + .nx-dropdown-button {
+    display: block;
+    padding-right: 0;
+    overflow: visible;
+  }
 }

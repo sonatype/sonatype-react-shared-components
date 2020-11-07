@@ -16,27 +16,21 @@ function NxDropdownRightButtonsExample() {
 
   return (
     <NxDropdown label="Navigation" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
-      <div className="nx-dropdown-button-container">
-        <a href="#" onClick={onClick} className="nx-dropdown-button">
-          <span className="nx-dropdown-button-content">Nav Link1</span>
-        </a>
-      </div>
-      <div className="nx-dropdown-button-container">
-        <NxButton onClick={() => alert('icon click')} className="nx-dropdown-right-button" variant="icon-only">
-          <NxFontAwesomeIcon icon={faTrash}/>
-        </NxButton>
-        <a href="#" onClick={onClick} className="nx-dropdown-button">
-          <span className="nx-dropdown-button-content">Nav Link2</span>
-        </a>
-      </div>
-      <div className="nx-dropdown-button-container">
-        <NxButton onClick={() => alert('icon click')} className="nx-dropdown-right-button" variant="icon-only">
-          <NxFontAwesomeIcon icon={faTrash}/>
-        </NxButton>
-        <a href="#" onClick={onClick} className="nx-dropdown-button">
-          <span className="nx-dropdown-button-content">Nav Link3 - this link should trigger truncation</span>
-        </a>
-      </div>
+      <a href="#" onClick={onClick} className="nx-dropdown-button">
+        <span className="nx-dropdown-button-content">Nav Link1</span>
+      </a>
+      <NxButton onClick={() => alert('icon click')} className="nx-dropdown-right-button" variant="icon-only">
+        <NxFontAwesomeIcon icon={faTrash}/>
+      </NxButton>
+      <a href="#" onClick={onClick} className="nx-dropdown-button">
+        <span className="nx-dropdown-button-content">Nav Link2</span>
+      </a>
+      <NxButton onClick={() => alert('icon click')} className="nx-dropdown-right-button" variant="icon-only">
+        <NxFontAwesomeIcon icon={faTrash}/>
+      </NxButton>
+      <a href="#" onClick={onClick} className="nx-dropdown-button">
+        <span className="nx-dropdown-button-content">Nav Link3 - this link should trigger truncation</span>
+      </a>
     </NxDropdown>
   );
 }

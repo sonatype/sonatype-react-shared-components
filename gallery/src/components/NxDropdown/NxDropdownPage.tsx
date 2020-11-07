@@ -174,25 +174,15 @@ const NxDropdownPage = () =>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell><code className="nx-code">nx-dropdown-button-container</code></NxTableCell>
-              <NxTableCell>
-                Menu items when <code className="nx-code">nx-dropdown-right-button</code> is used
-              </NxTableCell>
-              <NxTableCell>
-                This wrapper is necessary around all rows in a dropdown menu when any row in the dropdown menu includes
-                a <code className="nx-code">nx-dropdown-right-button</code>.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
               <NxTableCell><code className="nx-code">nx-dropdown-button-content</code></NxTableCell>
               <NxTableCell>
                 Wrapper around text content of menu rows
-                when <code className="nx-code">nx-dropdown-button-container</code> is in use.
+                when <code className="nx-code">nx-dropdown-right-button</code> is in use.
               </NxTableCell>
               <NxTableCell>
                 This wrapper is necessary around the text content of
-                any <code className="nx-code">nx-dropdown-button</code> which is a child of
-                a <code className="nx-code">nx-dropdown-button-container</code>.
+                any <code className="nx-code">nx-dropdown-button</code> which is in a menu containing
+                any <code className="nx-code">.nx-dropdown-right-button</code>s.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
@@ -246,7 +236,7 @@ const NxDropdownPage = () =>
       using these styles: note that this example uses <code className="nx-code">&lt;a&gt;</code> elements for all
       menu items – unfortunately <code className="nx-code">&lt;button&gt;</code> elements get some special behaviors
       from the browser that prevent them from working with the styling here. Additionally, note that
-      the <code className="nx-code">nx-dropdown-button-container</code> is present on all menu items, even those that
+      the <code className="nx-code">nx-dropdown-button-contente</code> is present on all menu items, even those that
       do not have icon buttons, in order to get consistent menu item heights.
     </GalleryExampleTile>
   </>;
