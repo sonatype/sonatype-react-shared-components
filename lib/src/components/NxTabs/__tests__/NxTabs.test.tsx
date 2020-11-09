@@ -7,9 +7,9 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import NxTabs from '../NxTabs';
-import NxTabList from '../../NxTabList/NxTabList';
-import NxTab from '../../NxTab/NxTab';
-import NxTabPanel from '../../NxTabPanel/NxTabPanel';
+import NxTabList from '../NxTabList';
+import NxTab from '../NxTab';
+import NxTabPanel from '../NxTabPanel';
 
 describe('NxTabs', function () {
   it('renders with a unique id each time', function () {
