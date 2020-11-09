@@ -18,7 +18,8 @@ const NxTableRow = function NxTableRow(props: NxTableRowProps) {
   const classes = classnames('nx-table-row', className, {
     'nx-table-row--header': isHeader,
     'nx-clickable': isClickable,
-    'nx-table-row--filter-header': isFilterHeader
+    'nx-table-row--filter-header': isFilterHeader,
+    selected
   });
 
   return (
