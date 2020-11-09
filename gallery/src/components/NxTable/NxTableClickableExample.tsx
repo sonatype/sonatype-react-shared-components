@@ -17,7 +17,7 @@ import {
 const NxTableClickableExample = () => {
   const rows = [
     { name: 'Name 1' },
-    { name: 'Name 2' },
+    { name: 'Name 2', selected: true },
     { name: 'Name 3' }
   ];
 
@@ -31,9 +31,9 @@ const NxTableClickableExample = () => {
         </NxTableRow>
       </NxTableHead>
       <NxTableBody>
-        {rows.map(row =>
-          <NxTableRow key={row.name} isClickable onClick={() => alert(`Clicked ${row.name}`)}>
-            <NxTableCell>{row.name}</NxTableCell>
+        {rows.map(({ name, selected = false }) =>
+          <NxTableRow key={name} isClickable selected={selected} onClick={() => alert(`Clicked ${name}`)}>
+            <NxTableCell>{name}</NxTableCell>
             <NxTableCell>Content</NxTableCell>
             <NxTableCell chevron/>
           </NxTableRow>
