@@ -7,7 +7,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import NxTabPanel from '../NxTabPanel';
-import { TabContext } from '../../NxTabs/NxTabs';
+import TabContext from '../TabContext';
 
 describe('NxTabPanel', function () {
   function testContext(testContext: { activeTab: number; index: number }) {
