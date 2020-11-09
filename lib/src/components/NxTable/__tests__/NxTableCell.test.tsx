@@ -18,10 +18,6 @@ describe('NxTableCell', function () {
     expect(getShallowComponent({ className: 'test' })).toMatchSelector('td.nx-cell.test');
   });
 
-  it('adds the correct classnames when the cell isHeader', function () {
-    expect(getShallowComponent({ isHeader: true })).toMatchSelector('th.nx-cell.nx-cell--header');
-  });
-
   it('adds the correct classnames when the cell metaInfo', function () {
     expect(getShallowComponent({ metaInfo: true })).toMatchSelector('td.nx-cell.nx-cell--meta-info');
   });
