@@ -113,6 +113,7 @@ describe('NxDropdown', function() {
       await button.scrollIntoView({ block: 'center' });
       await button.click();
       await button.click();
+      await button.click();
     });
 
     it('looks right', async function() {
