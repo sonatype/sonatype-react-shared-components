@@ -71,6 +71,9 @@ $nx-dropdown-width: 250px;
 
 .nx-dropdown-link, .nx-dropdown-button {
   @include container-horizontal;
+}
+
+.nx-dropdown-link, .nx-dropdown-button {
   @include nx-truncate-ellipsis();
   @include regular();
 
@@ -110,13 +113,6 @@ $nx-dropdown-width: 250px;
   }
 }
 
-.nx-dropdown--navigation {
-  .nx-dropdown-menu {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
 .nx-dropdown-link {
   color: $nx-link-color;
 
@@ -138,4 +134,22 @@ $nx-dropdown-width: 250px;
   background-color: $nx-grey-3;
   height: 1px;
   margin: 9px 1px;
+}
+
+
+.nx-dropdown-button-content {
+  @include nx-truncate-ellipsis;
+  display: block;
+  line-height: $nx-spacing-xl;
+}
+
+.nx-dropdown-right-button {
+  float: right;
+  margin: $nx-spacing-xxs $nx-spacing-xs $nx-spacing-xxs $nx-spacing-l;
+
+  + .nx-dropdown-button {
+    display: block;
+    padding-right: 0;
+    overflow: visible;
+  }
 }

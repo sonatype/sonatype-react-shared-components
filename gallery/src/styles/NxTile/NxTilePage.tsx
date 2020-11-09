@@ -57,11 +57,6 @@ const NxTilePage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-tile-header--hrule</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile-header</code></td>
-            <td className="nx-cell">Used for displaying an horizontal rule between the header and the content.</td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile-content</code></td>
             <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile</code></td>
             <td className="nx-cell">Used for the tile content.</td>

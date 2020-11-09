@@ -14,7 +14,6 @@ const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample.html').defa
     NxTileWithActionsCode = require('!!raw-loader!./NxTileWithActionsExample.html').default,
     NxTileWithSubtitleCode = require('!!raw-loader!./NxTileWithSubtitleExample.html').default,
     NxTileSubsectionCode = require('!!raw-loader!./NxTileSubsectionExample.html').default,
-    NxTileWithHorizontalRuleCode = require('!!raw-loader!./NxTileWithHorizontalRuleExample.html').default,
     NxTileFormCode = require('!!raw-loader!./NxTileFormExample.tsx').default,
     NxTileDropdownActionsCode = require('!!raw-loader!./NxTileDropdownActionsExample').default;
 
@@ -43,15 +42,6 @@ const NxTilesExamples = () =>
                         htmlExample={NxTileWithSubtitleCode}
                         codeExamples={NxTileWithSubtitleCode}>
       An example of an <code className="nx-code">nx-tile</code> with a long subtitle that wraps.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="NX Tile with Horizontal Rule Example"
-                        id="nx-tile-horizontal-rule-example"
-                        defaultCheckeredBackground={true}
-                        htmlExample={NxTileWithHorizontalRuleCode}
-                        codeExamples={NxTileWithHorizontalRuleCode}>
-      An example of a style variation giving the <code className="nx-code">nx-tile</code> a horizontal rule in between
-      its header and content.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Tile with a Subsection Header Example"
