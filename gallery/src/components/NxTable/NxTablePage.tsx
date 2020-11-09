@@ -48,8 +48,8 @@ export default function NxTablePage() {
           </header>
           <p className="nx-p">
             The top-level component to use when displaying tables of data.
-            It can have <code className="nx-code">&lt;NxTableHead&gt;</code> and
-            <code className="nx-code">&lt;NxTableBody&gt;</code> components as children.
+            It can have <code className="nx-code">NxTableHead</code> and
+            {' '}<code className="nx-code">NxTableBody</code> components as children.
           </p>
         </section>
 
@@ -59,9 +59,9 @@ export default function NxTablePage() {
           </header>
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;thead&gt;</code> element.
-            The <code className="nx-code">&lt;NxTableRow&gt;</code> component is the only valid child.
-            Descendant <code className="nx-code">&lt;NxTableCell&gt;</code> components will have the
-            <code className="nx-code">&lt;isHeader&gt;</code> prop set.
+            The <code className="nx-code">NxTableRow</code> component is the only valid child.
+            Descendant <code className="nx-code">NxTableCell</code> components will have the
+            <code className="nx-code">isHeader</code> prop set.
           </p>
         </section>
 
@@ -71,7 +71,7 @@ export default function NxTablePage() {
           </header>
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;tbody&gt;</code> element.
-            It should have <code className="nx-code">&lt;NxTableRow&gt;</code> for children.
+            It should have <code className="nx-code">NxTableRow</code> for children.
           </p>
           <NxTable>
             <NxTableHead>
@@ -127,8 +127,48 @@ export default function NxTablePage() {
             Equivalent to the <code className="nx-code">&lt;tr&gt;</code> element.
             It automatically assigns <code className="nx-code">isHeader</code> on the children
             if that prop is set on this row.
-            It should have <code className="nx-code">&lt;NxTableCell&gt;</code> for children.
+            It should have <code className="nx-code">NxTableCell</code> for children.
           </p>
+          <NxTable>
+            <NxTableHead>
+              <NxTableRow>
+                <NxTableCell>Prop</NxTableCell>
+                <NxTableCell>Type</NxTableCell>
+                <NxTableCell>Required</NxTableCell>
+                <NxTableCell>Details</NxTableCell>
+              </NxTableRow>
+            </NxTableHead>
+            <NxTableBody>
+              <NxTableRow>
+                <NxTableCell>isClickable</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>Indicates that a table row is clickable.</NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>isFilterHeader</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>Indicates that this row is a table header row containing filter inputs.</NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>selected</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>
+                  For clickable table rows, indicates that this row is the currently selected one.
+                </NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>isHeader</NxTableCell>
+                <NxTableCell>boolean</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>
+                  Automatically set to true when in an <code className="nx-code">NxTableHead</code> component
+                </NxTableCell>
+              </NxTableRow>
+            </NxTableBody>
+          </NxTable>
         </section>
 
         <section className="nx-tile-subsection">
@@ -154,7 +194,9 @@ export default function NxTablePage() {
                 <NxTableCell>isHeader</NxTableCell>
                 <NxTableCell>boolean</NxTableCell>
                 <NxTableCell>false</NxTableCell>
-                <NxTableCell>Automatically set to true when in a &lt;NxTableHead&gt; component</NxTableCell>
+                <NxTableCell>
+                  Automatically set to true when in an <code className="nx-code">NxTableHead</code> component
+                </NxTableCell>
               </NxTableRow>
               <NxTableRow>
                 <NxTableCell>metaInfo</NxTableCell>
@@ -165,7 +207,7 @@ export default function NxTablePage() {
                   applied to table cells that provide meta-information about the table data, such as loading, error,
                   and empty table states. For those three states, the caller of
                   the <code className="nx-code">NxTable</code> react component does not manage the table cells
-                  directly (instead using the appropriate props on <code className="nx-code">NxTableBody</code>, and
+                  directly (instead using the appropriate props on <code className="nx-code">NxTableBody</code>), and
                   therefore does not need to use this prop. However, the prop is available for any
                   other meta-info states that the caller might wish to convey. The intended usage is that a cell
                   using this prop would be the only cell in the only row in the table body, and would have
@@ -183,7 +225,9 @@ export default function NxTablePage() {
                 <NxTableCell>isSortable</NxTableCell>
                 <NxTableCell>boolean</NxTableCell>
                 <NxTableCell>false</NxTableCell>
-                <NxTableCell>Used for columns that can be sorted</NxTableCell>
+                <NxTableCell>
+                  Used for column headers that can be sorted. Should not be applied to data cells
+                </NxTableCell>
               </NxTableRow>
               <NxTableRow>
                 <NxTableCell>sortDir</NxTableCell>
@@ -192,8 +236,8 @@ export default function NxTablePage() {
                 <NxTableCell>
                   Used to indicate the sorting direction applied.
                   A null value indicates the column is not yet sorted.
-                  This should only be used for <code className="nx-code">&lt;NxTableCell&gt;</code> components
-                  in the <code className="nx-code">&lt;NxTableHead&gt;</code>
+                  This should only be used for <code className="nx-code">NxTableCell</code> components
+                  in the <code className="nx-code">NxTableHead</code>
                 </NxTableCell>
               </NxTableRow>
               <NxTableRow>
@@ -202,7 +246,7 @@ export default function NxTablePage() {
                 <NxTableCell>false</NxTableCell>
                 <NxTableCell>
                   Used to indicate a column whose data cells contain only one or
-                  more <code className="nx-code">&lt;NxFontAwesomeIcon&gt;</code>s
+                  more <code className="nx-code">NxFontAwesomeIcon</code>s
                 </NxTableCell>
               </NxTableRow>
               <NxTableRow>
@@ -213,16 +257,6 @@ export default function NxTablePage() {
                   Desginates a cell that should contain only the right-facing chevron icon used at that end of
                   clickable table cells. <code className="nx-code">NxTableCell</code>s with this prop set will
                   self-populate with the icon, and do not take <code className="nx-code">children</code>.
-                </NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>isFilterHeader</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
-                  Used to indicate a table header cell contains a filter. When a table supports filtering,
-                  it should include a second row within the <code className="nx-code">thead</code>
-                  (<code className="nx-code">NxTableHead</code>) which contains the filter header cells.
                 </NxTableCell>
               </NxTableRow>
             </NxTableBody>

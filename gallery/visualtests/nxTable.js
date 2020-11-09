@@ -20,7 +20,7 @@ describe('NxTable', function() {
       errorTableSelector = '#nx-table-error-example .nx-table';
 
   it('looks right with a hovered row', async function() {
-    const middleRowSelector = `${clickableTableSelector} tbody tr:nth-of-type(2)`,
+    const middleRowSelector = `${clickableTableSelector} tbody tr:nth-of-type(1)`,
         [table, row] = await Promise.all([browser.$(clickableTableSelector), browser.$(middleRowSelector)]);
 
       await row.scrollIntoView({ block: 'center' });
