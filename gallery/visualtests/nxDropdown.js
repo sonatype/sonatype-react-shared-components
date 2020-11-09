@@ -123,7 +123,7 @@ describe('NxDropdown', function() {
       await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
 
       const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 281);
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 179);
 
       await browser.eyesRegionSnapshot(null, Target.region(region));
     });
