@@ -4,23 +4,25 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ChangeEvent } from 'react';
+import React, { MouseEvent } from 'react';
 
 import { Props, propTypes } from './types';
 
-export default function NxAccordion({ onToggle: onToggleProp, ...otherProps }: Props) {
+export default function NxAccordion({ onToggle, onClick: onClickProp, ...otherProps }: Props) {
 
-  function onToggle(evt: ChangeEvent<HTMLDetailsElement>) {
-    if (onToggleProp) {
-      onToggleProp(evt.target.open, evt);
+  function onClick(evt: MouseEvent<HTMLDetailsElement>) {
+    evt.preventDefault();
+
+    if (onToggle) {
+      onToggle(!evt.currentTarget.open);
+    }
+
+    if (onClickProp) {
+      onClickProp(evt);
     }
   }
 
-  // doing the props like this is a hack around the fact that the onToggle handler is missing
-  // from the react typescript types
-  const detailsProps = { ...otherProps, onToggle };
-
-  return <details { ...detailsProps } />;
+  return <details { ...otherProps} onClick={onClick} />;
 }
 
 NxAccordion.propTypes = propTypes;
