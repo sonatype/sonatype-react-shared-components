@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { TableHTMLAttributes, HTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from 'react';
+import { TableHTMLAttributes, HTMLAttributes, TdHTMLAttributes, ThHTMLAttributes, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 
 export type NxTableProps = TableHTMLAttributes<HTMLTableElement>;
@@ -16,13 +16,14 @@ export const nxTablePropTypes: PropTypes.ValidationMap<NxTableProps> = {
 export type NxTableBodyProps = HTMLAttributes<HTMLTableSectionElement> & {
   isLoading?: boolean | null;
   error?: string | null;
-  emptyMessage?: string | null;
+  emptyMessage?: ReactNode | null;
   retryHandler?: (() => void) | null;
 };
 
 export const nxTableBodyPropTypes: PropTypes.ValidationMap<NxTableBodyProps> = {
   isLoading: PropTypes.bool,
   error: PropTypes.string,
+  emptyMessage: PropTypes.node,
   retryHandler: PropTypes.func,
   children: PropTypes.node
 };
