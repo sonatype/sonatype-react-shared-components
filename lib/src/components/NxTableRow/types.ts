@@ -12,11 +12,13 @@ export type Props = HTMLAttributes<HTMLTableRowElement> & {
   isHeader?: boolean | null;
   isFilterHeader?: boolean | null;
   isClickable?: boolean | null;
+  selected?: boolean | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   isHeader: PropTypes.bool,
   isFilterHeader: PropTypes.bool,
   isClickable: PropTypes.bool,
+  selected: PropTypes.bool,
   children: PropTypes.node
 };
