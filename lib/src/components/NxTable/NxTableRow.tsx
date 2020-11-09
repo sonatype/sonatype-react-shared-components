@@ -4,16 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 
-import {addPropsToChildren} from '../../util/childUtil';
+import { NxTableRowProps, nxTableRowPropTypes} from './types';
+import { HeaderContext } from './contexts';
+export { NxTableRowProps };
 
-import {Props, propTypes} from './types';
-export {Props} from './types';
+const NxTableRow = function NxTableRow(props: NxTableRowProps) {
+  const {isFilterHeader = false, isClickable = false, className, selected, children, ...attrs} = props,
+      isHeader = useContext(HeaderContext);
 
-const NxTableRow = function NxTableRow(props: Props) {
-  const {isHeader = false, isFilterHeader = false, isClickable, selected, className, children, ...attrs} = props;
   const classes = classnames('nx-table-row', className, {
     'nx-table-row--header': isHeader,
     'nx-clickable': isClickable,
@@ -22,12 +23,10 @@ const NxTableRow = function NxTableRow(props: Props) {
   });
 
   return (
-    <tr className={classes} {...attrs}>
-      {addPropsToChildren(children, {isHeader})}
-    </tr>
+    <tr className={classes} {...attrs}>{children}</tr>
   );
 };
 
-NxTableRow.propTypes = propTypes;
+NxTableRow.propTypes = nxTableRowPropTypes;
 
 export default NxTableRow;

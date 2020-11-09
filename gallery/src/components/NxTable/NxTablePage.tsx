@@ -60,8 +60,6 @@ export default function NxTablePage() {
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;thead&gt;</code> element.
             The <code className="nx-code">NxTableRow</code> component is the only valid child.
-            Descendant <code className="nx-code">NxTableCell</code> components will have the
-            <code className="nx-code">isHeader</code> prop set.
           </p>
         </section>
 
@@ -125,8 +123,6 @@ export default function NxTablePage() {
           </header>
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;tr&gt;</code> element.
-            It automatically assigns <code className="nx-code">isHeader</code> on the children
-            if that prop is set on this row.
             It should have <code className="nx-code">NxTableCell</code> for children.
           </p>
           <NxTable>
@@ -190,14 +186,6 @@ export default function NxTablePage() {
               </NxTableRow>
             </NxTableHead>
             <NxTableBody>
-              <NxTableRow>
-                <NxTableCell>isHeader</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
-                  Automatically set to true when in an <code className="nx-code">NxTableHead</code> component
-                </NxTableCell>
-              </NxTableRow>
               <NxTableRow>
                 <NxTableCell>metaInfo</NxTableCell>
                 <NxTableCell>boolean</NxTableCell>
