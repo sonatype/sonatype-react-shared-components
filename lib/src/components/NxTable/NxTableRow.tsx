@@ -12,7 +12,7 @@ import { HeaderContext } from './contexts';
 export { NxTableRowProps };
 
 const NxTableRow = function NxTableRow(props: NxTableRowProps) {
-  const {isFilterHeader = false, isClickable = false, className, children, ...attrs} = props,
+  const {isFilterHeader = false, isClickable = false, className, selected, children, ...attrs} = props,
       isHeader = useContext(HeaderContext);
 
   const classes = classnames('nx-table-row', className, {
