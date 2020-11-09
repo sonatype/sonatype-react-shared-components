@@ -7,16 +7,14 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 
-import { TabContext } from '../NxTabs/NxTabs';
+import TabContext from './TabContext';
 
-import { Props, propTypes } from './types';
-export { Props } from './types';
-
-import './NxTab.scss';
+import { NxTabProps, nxTabPropTypes } from './types';
+export { NxTabProps };
 
 const SPACE = ' ';
 
-const NxTab = function NxTabElement(props: Props) {
+const NxTab = function NxTabElement(props: NxTabProps) {
   const { activeTab, rootId, index, onTabSelect } = useContext(TabContext);
   const { tabIndex = 0, className, children, onClick, onKeyPress, ...attrs } = props;
   const active = activeTab === index;
@@ -59,6 +57,6 @@ const NxTab = function NxTabElement(props: Props) {
   );
 };
 
-NxTab.propTypes = propTypes;
+NxTab.propTypes = nxTabPropTypes;
 
 export default NxTab;
