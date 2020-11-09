@@ -13,11 +13,12 @@ import {Props, propTypes} from './types';
 export {Props} from './types';
 
 const NxTableRow = function NxTableRow(props: Props) {
-  const {isHeader = false, isFilterHeader = false, isClickable = false, className, children, ...attrs} = props;
+  const {isHeader = false, isFilterHeader = false, isClickable, selected, className, children, ...attrs} = props;
   const classes = classnames('nx-table-row', className, {
     'nx-table-row--header': isHeader,
     'nx-clickable': isClickable,
-    'nx-table-row--filter-header': isFilterHeader
+    'nx-table-row--filter-header': isFilterHeader,
+    selected
   });
 
   return (
