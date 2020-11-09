@@ -4,29 +4,30 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { faSort, faSortDown, faSortUp, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import {ensureElement} from '../../util/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-import { Props, propTypes } from './types';
-export { Props } from './types';
+import { NxTableCellProps, nxTableCellPropTypes } from './types';
+import { HeaderContext } from './contexts';
+export { NxTableCellProps };
 
-const NxTableCell = function NxTableCell(props: Props) {
+const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   const {
-    isHeader = false,
-    metaInfo = false,
-    isNumeric = false,
-    isSortable = false,
-    hasIcon = false,
-    chevron = false,
-    sortDir,
-    className,
-    children,
-    ...attrs
-  } = props;
+        metaInfo = false,
+        isNumeric = false,
+        isSortable = false,
+        hasIcon = false,
+        chevron = false,
+        sortDir,
+        className,
+        children,
+        ...attrs
+      } = props,
+      isHeader = useContext(HeaderContext);
 
   const classes = classnames('nx-cell', className, {
     'nx-cell--header': isHeader,
@@ -73,6 +74,6 @@ const NxTableCell = function NxTableCell(props: Props) {
   );
 };
 
-NxTableCell.propTypes = propTypes;
+NxTableCell.propTypes = nxTableCellPropTypes;
 
 export default NxTableCell;

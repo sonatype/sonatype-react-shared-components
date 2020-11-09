@@ -35,7 +35,7 @@ const NxLoadErrorPage = () =>
         <tbody>
           <tr className="nx-table-row">
             <td className="nx-cell">error</td>
-            <td className="nx-cell">string</td>
+            <td className="nx-cell">string | JSX</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               A message that represents an error that occurred.  If null or undefined, NxLoadError will not render
@@ -87,7 +87,8 @@ const NxLoadErrorPage = () =>
                         liveExample={NxLoadErrorSimpleExample}>
       This example demonstrates a basic <code className="nx-code">NxLoadError</code> for cases where a Retry action
       does not make sense. In most cases, when an <code className="nx-code">NxLoadError</code> does
-      not have a Retry button, it should have a Close button.
+      not have a Retry button, it should have a Close button. Additionally, this example demonstrates that the
+      error message may be JSX as opposed to just a simple string
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example without Close Button"

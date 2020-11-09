@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 
 import { NxLoadError } from '@sonatype/react-shared-components';
 
-const error = 'Server Error';
+const error = <>Server <em>Error</em></>;
 
 function NxLoadErrorSimpleExample() {
   const [isOpen, setIsOpen] = useState(true);
