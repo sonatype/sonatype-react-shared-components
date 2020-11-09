@@ -12,8 +12,7 @@ export default function NxAccordionExample() {
   const [open, setOpen] = useState(false);
 
   return (
-    <NxAccordion open={open} onToggle={setOpen}>
-      <summary>Foo</summary>
+    <NxAccordion open={open} onToggle={setOpen} headerContent="Foo">
       <p>Foo Bar Baz</p>
     </NxAccordion>
   );
