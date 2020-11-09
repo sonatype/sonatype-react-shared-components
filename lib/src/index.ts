@@ -53,11 +53,11 @@ export {
 export { default as NxStatefulSubmitMask }
   from './components/NxSubmitMask/stateful/NxStatefulSubmitMask';
 
-export { default as NxTable } from './components/NxTable/NxTable';
-export { default as NxTableBody } from './components/NxTableBody/NxTableBody';
-export { default as NxTableCell } from './components/NxTableCell/NxTableCell';
-export { default as NxTableHead } from './components/NxTableHead/NxTableHead';
-export { default as NxTableRow } from './components/NxTableRow/NxTableRow';
+export { default as NxTable, NxTableProps } from './components/NxTable/NxTable';
+export { default as NxTableBody, NxTableBodyProps } from './components/NxTable/NxTableBody';
+export { default as NxTableCell, NxTableCellProps } from './components/NxTable/NxTableCell';
+export { default as NxTableHead, NxTableHeadProps } from './components/NxTable/NxTableHead';
+export { default as NxTableRow, NxTableRowProps } from './components/NxTable/NxTableRow';
 
 export { default as NxTabs } from './components/NxTabs/NxTabs';
 export { default as NxStatefulTabs } from './components/NxTabs/stateful/NxStatefulTabs';
