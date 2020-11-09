@@ -6,7 +6,7 @@
  */
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
-def seleniumDockerImage = 'selenium/standalone-chrome'
+def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/standalone-chrome'
 def seleniumDockerVersion = '3.141.59-20200730'
 
 dockerizedBuildPipeline(
@@ -16,13 +16,15 @@ dockerizedBuildPipeline(
   prepare: {
     githubStatusUpdate('pending')
 
-    sh """
-      docker run --name selenium-chrome -d \
-        -p 4444:4444 \
-        -v /dev/shm:/dev/shm \
-        -e NODE_MAX_INSTANCES=5 -e NODE_MAX_SESSION=5 -e START_XVFB=false \
-        ${seleniumDockerImage}:${seleniumDockerVersion}
-    """
+    withSonatypeDockerRegistry() {
+      sh """
+        docker run --name selenium-chrome -d \
+          -p 4444:4444 \
+          -v /dev/shm:/dev/shm \
+          -e NODE_MAX_INSTANCES=5 -e NODE_MAX_SESSION=5 -e START_XVFB=false \
+          ${seleniumDockerImage}:${seleniumDockerVersion}
+      """
+    }
   },
   setVersion: {
     env['VERSION'] = sh(returnStdout: true, script: 'jq -r -e .version lib/package.json').trim()
