@@ -7,17 +7,15 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import { Props, propTypes } from './types';
-export { Props } from './types';
+import { NxTabListProps, nxTabListPropTypes } from './types';
+export { NxTabListProps };
 
-import './NxTabList.scss';
-
-const NxTabList = function NxTabListElement(props: Props) {
+const NxTabList = function NxTabListElement(props: NxTabListProps) {
   const { className, ...attrs } = props;
 
   return <ul role="tablist" className={classnames('nx-tab-list', className)} {...attrs} />;
 };
 
-NxTabList.propTypes = propTypes;
+NxTabList.propTypes = nxTabListPropTypes;
 
 export default NxTabList;
