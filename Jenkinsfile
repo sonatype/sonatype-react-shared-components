@@ -6,7 +6,7 @@
  */
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
-def seleniumDockerImage = 'selenium/standalone-chrome'
+def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/standalone-chrome'
 def seleniumDockerVersion = '3.141.59-20200730'
 
 dockerizedBuildPipeline(
