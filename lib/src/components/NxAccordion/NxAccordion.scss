@@ -28,10 +28,17 @@
   }
 
   align-items: center;
+  color: #2c2c2c;
+  cursor: pointer;
   display: flex;
+  font-weight: bold;
   height: $nx-spacing-xxxl;
-
 }
+
+.nx-accordion__chevron {
+  font-size: 14px;
+}
+
 .nx-accordion__content {
   @include container-vertical;
 
