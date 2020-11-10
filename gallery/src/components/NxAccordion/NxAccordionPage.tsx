@@ -148,6 +148,9 @@ const NxTilePage = () =>
                         liveExample={NxAccordionComplexExample}
                         codeExamples={NxAccordionComplexCode}>
       A more complex <code className="nx-code">NxAccordion</code> including header buttons and a subheader.
+      This example also demonstrates that clicks on the header and buttons are handled correctly. Clicking a header
+      button does not cause the accordion to toggle, but clicking anywhere else on the header does, even including
+      places that have their own click handlers.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with tertiary button in header"

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { MouseEvent, useContext } from 'react';
+import React, { MouseEvent, useContext, useRef } from 'react';
 import classnames from 'classnames';
 import { faChevronCircleDown, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 
@@ -23,18 +23,30 @@ const HeaderContext = React.createContext<HeaderContextType>({
 
 function NxAccordionHeader({ className, onClick: onClickProp, children, ...otherProps }: HeaderProps) {
   const classes = classnames('nx-accordion__header', className),
-      { onClick: onClickContext, open } = useContext(HeaderContext);
+      { onClick: onClickContext, open } = useContext(HeaderContext),
+      summaryElRef = useRef(null);
+
+  // returns whether or not el is within a <button>. Assumes that el is a child of the <summary>
+  function isWithinSummaryBtn(el: HTMLElement): boolean {
+    return el.tagName === 'BUTTON' ? true :
+      el === summaryElRef.current ? false :
+      el.parentElement === null ? false :
+      isWithinSummaryBtn(el.parentElement);
+  }
 
   function onClick(evt: MouseEvent<HTMLElement>) {
     if (onClickProp) {
       onClickProp(evt);
     }
 
-    onClickContext(evt);
+    // do not trigger collapse/expand for clicks on nested buttons, only on the header itself
+    if (!isWithinSummaryBtn(evt.target as HTMLElement)) {
+      onClickContext(evt);
+    }
   }
 
   return (
-    <summary className={classes} onClick={onClick} { ...otherProps }>
+    <summary className={classes} onClick={onClick} { ...otherProps } ref={summaryElRef}>
       <NxFontAwesomeIcon className="nx-accordion__chevron" icon={open ? faChevronCircleUp : faChevronCircleDown} />
       {ensureElement(children)}
     </summary>
