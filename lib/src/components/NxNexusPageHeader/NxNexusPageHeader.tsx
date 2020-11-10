@@ -36,7 +36,7 @@ function HeaderProductInfo({ name, meta, version }: ProductInfo) {
 }
 
 export default function NxNexusPageHeader({ productInfo, logoPath, ...otherProps }: Props) {
-  const logo = <img src={logoPath || defaultLogo} className="nx-product__logo-image" />,
+  const logo = <img src={logoPath || defaultLogo} className="nx-product__logo-image" alt="" />,
       productInfoContent = <HeaderProductInfo { ...productInfo } />;
 
   return <AbstractNxPageHeader className="nx-page-header--nexus"
