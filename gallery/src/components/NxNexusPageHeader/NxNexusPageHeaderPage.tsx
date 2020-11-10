@@ -125,7 +125,7 @@ const NxNexusPageHeaderPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Nexus Page Header with custom logo"
-                        id="nx-page-header-complex-example"
+                        id="nx-page-header-custom-logo-example"
                         codeExamples={nxNexusPageHeaderCustomLogoExampleCode}
                         liveExample={NxNexusPageHeaderCustomLogoExample}
                         defaultCheckeredBackground={true}>
@@ -133,7 +133,7 @@ const NxNexusPageHeaderPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Nexus Page Header"
-                        id="nx-page-header-complex-example"
+                        id="nx-page-header-default-example"
                         codeExamples={nxNexusPageHeaderExampleCode}
                         liveExample={NxNexusPageHeaderExample}
                         defaultCheckeredBackground={true}>
