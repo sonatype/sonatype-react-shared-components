@@ -11,11 +11,15 @@
   background: #fff;
   border-radius: $nx-border-radius;
 
-  padding: 0 $nx-spacing-l;
-
   &[open] {
     .nx-accordion__header {
-      border-bottom: 1px solid #e5e8f4;
+      // This svg is a 3x3 grid where only the bottom middle pixel has color. The border image slicing algorithm,
+      // with the border-image-slice: 1 configuration set below, slices it up such that that bottom-middle
+      // pixel defines the bottom-middle border of this element.
+      border-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="3" width="3">
+        <rect fill="%23E5E8F4" x="1" y="2" height="1" width="1"/>
+      </svg>');
+      border-image-slice: 1;
     }
   }
 }
@@ -27,12 +31,26 @@
     display: none;
   }
 
+  // The complexity of this border definition is necessary because we want this element, as a click target,
+  // to span all the way across while its bottom border (when open) does not go all the way across. This image
+  // slicing creates a bottom border that only goes underneath of the content area, and does not go underneath
+  // the transparent side borders on either side.
+  border-color: transparent;
+  border-style: solid;
+  border-width: 0 $nx-spacing-l 1px $nx-spacing-l;
+
   align-items: center;
+  box-sizing: border-box;
   color: #2c2c2c;
   cursor: pointer;
   display: flex;
   font-weight: bold;
   height: $nx-spacing-xxxl;
+  padding: $nx-spacing-md 0;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .nx-accordion__chevron {
@@ -42,5 +60,5 @@
 .nx-accordion__content {
   @include container-vertical;
 
-  padding: $nx-spacing-l 0;
+  padding: $nx-spacing-l;
 }
