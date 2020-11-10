@@ -17,7 +17,7 @@ const NxAccordionSimpleCode = require('!!raw-loader!./NxAccordionExample').defau
     NxAccordionComplexCode = require('!!raw-loader!./NxAccordionComplexExample').default,
     NxAccordionTertiaryButtonCode = require('!!raw-loader!./NxAccordionTertiaryButtonExample').default;
 
-const NxTilePage = () =>
+const NxAccordionPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
@@ -103,7 +103,7 @@ const NxTilePage = () =>
                 the text content of the always visible section of the accordion. This element should be
                 and <code className="nx-code">h*</code>  heading. Note however
                 that <code className="nx-code">NxAccordion</code> is a{' '}
-                 <a rel="noreferrer"
+                <a rel="noreferrer"
                    className="nx-text-link"
                    href="https://html.spec.whatwg.org/multipage/sections.html#sectioning-root">
                   sectioning root
@@ -163,4 +163,4 @@ const NxTilePage = () =>
     </GalleryExampleTile>
   </>;
 
-export default NxTilePage;
+export default NxAccordionPage;
