@@ -9,6 +9,7 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxFormSelectExample from './NxFormSelectExample';
+import NxFormSelectDisabledExample from './NxFormSelectDisabledExample';
 
 const sourceCode = require('!!raw-loader!./NxFormSelectExample').default;
 
@@ -44,9 +45,16 @@ const NxFormSelectPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Form Select Example"
+                        id="nx-form-select-example"
                         codeExamples={sourceCode}
                         liveExample={NxFormSelectExample}>
-      Demonstrates a form <code className="nx-code">&lt;select&gt;</code> active and disabled state.
+      Demonstrates a form <code className="nx-code">&lt;select&gt;</code> active state.
+    </GalleryExampleTile>
+    <GalleryExampleTile title="Form Select Disabled Example"
+                        id="nx-form-select-disabled-example"
+                        codeExamples={sourceCode}
+                        liveExample={NxFormSelectDisabledExample}>
+      Demonstrates a form <code className="nx-code">&lt;select&gt;</code> disabled state.
     </GalleryExampleTile>
   </>;
 

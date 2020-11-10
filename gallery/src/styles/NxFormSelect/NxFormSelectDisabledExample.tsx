@@ -6,8 +6,8 @@
  */
 import React from 'react';
 
-const NxFormSelectExample = () =>
-  <select className="nx-form-select">
+const NxFormSelectDisabledExample = () =>
+  <select className="nx-form-select disabled" disabled>
     <option className="nx-form-select__option">Option 1</option>
     <option className="nx-form-select__option">Option 2</option>
     <option className="nx-form-select__option">Option 3</option>
@@ -15,4 +15,4 @@ const NxFormSelectExample = () =>
     <option className="nx-form-select__option">Option 5</option>
   </select>;
 
-export default NxFormSelectExample;
+export default NxFormSelectDisabledExample;
