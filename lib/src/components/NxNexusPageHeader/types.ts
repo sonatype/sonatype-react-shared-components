@@ -4,40 +4,30 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode, ValidationMap } from 'react';
+import { ValidationMap } from 'react';
 import * as PropTypes from 'prop-types';
+import { omit } from 'ramda';
 
-interface ProductInfo {
+import { Props as AbstractNxPageHeaderProps, propTypes as abstractNxPageHeaderPropTypes }
+  from '../AbstractNxPageHeader/types';
+
+export interface ProductInfo {
   name: string;
   meta? : string | null;
   version? : string | null;
 }
 
-export interface HeaderLinkProps {
-  name: string;
-  href: string;
-  current?: boolean | null;
-}
-
-export interface Props {
-  links?: HeaderLinkProps[] | null;
-  homeLink?: string | null;
+export type Props = Omit<AbstractNxPageHeaderProps, 'logo' | 'productInfoContent'> & {
   productInfo: ProductInfo;
-  children?: ReactNode | null;
   logoPath?: string | null;
 }
 
 export const propTypes: ValidationMap<Props> = {
-  links: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
-    current: PropTypes.bool
-  }).isRequired),
-  homeLink: PropTypes.string,
+  ...omit(['logo', 'productInfoContent'], abstractNxPageHeaderPropTypes),
   logoPath: PropTypes.string,
-  productInfo: (PropTypes.shape({
+  productInfo: PropTypes.shape({
     name: PropTypes.string.isRequired,
     meta: PropTypes.string,
     version: PropTypes.string
-  }).isRequired)
+  }).isRequired
 };
