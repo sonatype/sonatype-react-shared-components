@@ -16,25 +16,21 @@ import { Props, propTypes } from './types';
 import './NxAccordion.scss';
 
 export default function NxAccordion(props: Props) {
-  const { className, onToggle, open, onClick: onClickProp, headerContent, children, ...otherProps } = props,
+  const { className, onToggle, open, headerContent, children, ...otherProps } = props,
       classes = classnames('nx-accordion', className);
 
-  function onClick(evt: MouseEvent<HTMLDetailsElement>) {
+  function onSummaryClick(evt: MouseEvent<HTMLDetailsElement>) {
     evt.preventDefault();
 
     if (onToggle) {
-      onToggle(!evt.currentTarget.open);
-    }
-
-    if (onClickProp) {
-      onClickProp(evt);
+      onToggle(!open);
     }
   }
 
   return (
-    <details className={classes} open={open} { ...otherProps} onClick={onClick}>
-      <summary className="nx-accordion__header">
-        <NxFontAwesomeIcon icon={open ? faChevronCircleUp : faChevronCircleDown} />
+    <details className={classes} open={open} { ...otherProps}>
+      <summary className="nx-accordion__header" onClick={onSummaryClick}>
+        <NxFontAwesomeIcon className="nx-accordion__chevron" icon={open ? faChevronCircleUp : faChevronCircleDown} />
         {ensureElement(headerContent)}
       </summary>
       <div className="nx-accordion__content">{children}</div>
