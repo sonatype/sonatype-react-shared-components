@@ -11,9 +11,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxAccordionSimpleExample from './NxAccordionExample';
 import NxAccordionComplexExample from './NxAccordionComplexExample';
+import NxAccordionTertiaryButtonExample from './NxAccordionTertiaryButtonExample';
 
 const NxAccordionSimpleCode = require('!!raw-loader!./NxAccordionExample').default,
-    NxAccordionComplexCode = require('!!raw-loader!./NxAccordionComplexExample').default;
+    NxAccordionComplexCode = require('!!raw-loader!./NxAccordionComplexExample').default,
+    NxAccordionTertiaryButtonCode = require('!!raw-loader!./NxAccordionTertiaryButtonExample').default;
 
 const NxTilePage = () =>
   <>
@@ -146,6 +148,15 @@ const NxTilePage = () =>
                         liveExample={NxAccordionComplexExample}
                         codeExamples={NxAccordionComplexCode}>
       A more complex <code className="nx-code">NxAccordion</code> including header buttons and a subheader.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with tertiary button in header"
+                        id="nx-accordion-complex-example"
+                        defaultCheckeredBackground={true}
+                        liveExample={NxAccordionTertiaryButtonExample}
+                        codeExamples={NxAccordionTertiaryButtonCode}>
+      An <code className="nx-code">NxAccordion</code> which contains a tertiary button in the header. Note that the
+      height of this button causes the height of the entire header to grow slightly.
     </GalleryExampleTile>
   </>;
 
