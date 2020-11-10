@@ -17,7 +17,7 @@ function HeaderLink({ name, href, current }: HeaderLinkProps) {
   });
 
   return (
-    <a className={classes} href={href} data-text={name} aria-label={name}>{name}</a>
+    <a className={classes} href={href} data-text={name}>{name}</a>
   );
 }
 
