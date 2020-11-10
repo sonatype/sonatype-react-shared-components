@@ -19,7 +19,7 @@ export default function NxAccordion(props: Props) {
   const { className, onToggle, open, headerContent, children, ...otherProps } = props,
       classes = classnames('nx-accordion', className);
 
-  function onSummaryClick(evt: MouseEvent<HTMLDetailsElement>) {
+  function onSummaryClick(evt: MouseEvent) {
     evt.preventDefault();
 
     if (onToggle) {
