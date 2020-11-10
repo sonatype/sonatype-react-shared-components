@@ -86,15 +86,6 @@ const NxNexusPageHeaderPage = () =>
               Optional additional JSX content that will be displayed at the right end of the header.
             </td>
           </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">meta</td>
-            <td className="nx-cell">field of the <a href="#Pages/NxPageHeader/">productInfo</a> object</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
-              Optional additional text that will be displayed to the right of the version number. Typically used to
-              display the applicable license name.
-            </td>
-          </tr>
         </tbody>
       </table>
       <h3>Nexus Page Header Style Classes</h3>
