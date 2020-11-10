@@ -6,21 +6,22 @@
  */
 import React from 'react';
 
-import {addPropsToChildren} from '../../util/childUtil';
+import { NxTableHeadProps, nxTableHeadPropTypes } from './types';
+import { HeaderContext } from './contexts';
+export { NxTableHeadProps };
 
-import {Props, propTypes} from './types';
-export {Props} from './types';
-
-const NxTableHead = function NxTableHead(props: Props) {
+const NxTableHead = function NxTableHead(props: NxTableHeadProps) {
   const {children, ...attrs} = props;
 
   return (
     <thead {...attrs}>
-      {addPropsToChildren(children, {isHeader: true})}
+      <HeaderContext.Provider value={true}>
+        {children}
+      </HeaderContext.Provider>
     </thead>
   );
 };
 
-NxTableHead.propTypes = propTypes;
+NxTableHead.propTypes = nxTableHeadPropTypes;
 
 export default NxTableHead;

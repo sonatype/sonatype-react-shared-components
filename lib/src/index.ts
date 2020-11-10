@@ -53,17 +53,17 @@ export {
 export { default as NxStatefulSubmitMask }
   from './components/NxSubmitMask/stateful/NxStatefulSubmitMask';
 
-export { default as NxTable } from './components/NxTable/NxTable';
-export { default as NxTableBody } from './components/NxTableBody/NxTableBody';
-export { default as NxTableCell } from './components/NxTableCell/NxTableCell';
-export { default as NxTableHead } from './components/NxTableHead/NxTableHead';
-export { default as NxTableRow } from './components/NxTableRow/NxTableRow';
+export { default as NxTable, NxTableProps } from './components/NxTable/NxTable';
+export { default as NxTableBody, NxTableBodyProps } from './components/NxTable/NxTableBody';
+export { default as NxTableCell, NxTableCellProps } from './components/NxTable/NxTableCell';
+export { default as NxTableHead, NxTableHeadProps } from './components/NxTable/NxTableHead';
+export { default as NxTableRow, NxTableRowProps } from './components/NxTable/NxTableRow';
 
-export { default as NxTabs } from './components/NxTabs/NxTabs';
+export { default as NxTabs, NxTabsProps } from './components/NxTabs/NxTabs';
 export { default as NxStatefulTabs } from './components/NxTabs/stateful/NxStatefulTabs';
-export { default as NxTabList } from './components/NxTabList/NxTabList';
-export { default as NxTab } from './components/NxTab/NxTab';
-export { default as NxTabPanel } from './components/NxTabPanel/NxTabPanel';
+export { default as NxTabList, NxTabListProps } from './components/NxTabs/NxTabList';
+export { default as NxTab, NxTabProps } from './components/NxTabs/NxTab';
+export { default as NxTabPanel, NxTabPanelProps } from './components/NxTabs/NxTabPanel';
 
 export {
   default as NxTreeView,
@@ -134,7 +134,10 @@ export {
 export * from './util/threatLevels';
 export * from './util/validationUtil';
 
-export { default as NxBinaryDonutChart } from './components/NxBinaryDonutChart/NxBinaryDonutChart';
+export {
+  default as NxBinaryDonutChart,
+  Props as NxBinaryDonutChartProps
+} from './components/NxBinaryDonutChart/NxBinaryDonutChart';
 
 export {
   default as NxNexusPageHeader,

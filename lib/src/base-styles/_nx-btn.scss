@@ -38,7 +38,8 @@
   }
 
   &:focus {
-    border: 1px solid #43cbf5;
+    border: 1px solid #02a6d9;
+    box-shadow: $nx-focus-box-shadow;
     outline: 0;
   }
 

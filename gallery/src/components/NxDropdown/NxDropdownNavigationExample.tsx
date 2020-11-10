@@ -14,10 +14,7 @@ function NxDropdownNavigationExample() {
       onClick = () => { alert('click'); };
 
   return (
-    <NxDropdown label="Navigation"
-                className="nx-dropdown--navigation"
-                isOpen={isOpen}
-                onToggleCollapse={onToggleCollapse}>
+    <NxDropdown label="Navigation" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
       <a onClick={onClick} className="nx-dropdown-button">
         Nav Link1
       </a>

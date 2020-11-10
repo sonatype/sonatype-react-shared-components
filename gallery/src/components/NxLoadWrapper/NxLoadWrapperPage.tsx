@@ -35,7 +35,7 @@ const NxLoadWrapperPage = () =>
         <tbody>
           <tr className="nx-table-row">
             <td className="nx-cell">error</td>
-            <td className="nx-cell">string</td>
+            <td className="nx-cell">string | JSX</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               A message that represents an error that occurred.  If defined, will be rendered via NxLoadError

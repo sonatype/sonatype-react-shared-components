@@ -15,7 +15,6 @@ function NxDropdownNavigationExample() {
 
   return (
     <NxDropdown label="Scrolling - this label also triggers truncation"
-                className="nx-dropdown--navigation"
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
       <a onClick={onClick} className="nx-dropdown-button">
