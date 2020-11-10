@@ -71,10 +71,12 @@ import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 import NxCardPage from './styles/NxCard/NxCardPage';
 import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
+import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
     NxAccordion: NxAccordionPage,
+    NxStatefulAccordion: NxStatefulAccordionPage,
     NxAlert: NxAlertComponentsPage,
     NxStatefulAlert: NxStatefulAlertComponentsPage,
     NxBackButton: NxBackButtonPage,

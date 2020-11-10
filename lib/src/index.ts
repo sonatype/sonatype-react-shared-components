@@ -139,4 +139,13 @@ export {
   Props as NxBinaryDonutChartProps
 } from './components/NxBinaryDonutChart/NxBinaryDonutChart';
 
-export { default as NxAccordion } from './components/NxAccordion/NxAccordion';
+export {
+  default as NxAccordion,
+  Props as NxAccordionProps,
+  HeaderProps as NxAccordionHeaderProps
+} from './components/NxAccordion/NxAccordion';
+
+export {
+  default as NxStatefulAccordion,
+  Props as NxStatefulAccordionProps
+} from './components/NxAccordion/stateful/NxStatefulAccordion';

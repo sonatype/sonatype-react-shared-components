@@ -16,6 +16,8 @@ import { HeaderContextType, HeaderProps, Props, propTypes } from './types';
 import './NxAccordion.scss';
 import { splitOutFirst } from '../../util/childUtil';
 
+export { Props, HeaderProps };
+
 const HeaderContext = React.createContext<HeaderContextType>({
   onClick: () => {},
   open: false
