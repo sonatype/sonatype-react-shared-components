@@ -49,7 +49,10 @@
   padding: $nx-spacing-md 0;
 
   &:focus {
-    outline: none;
+    // use outline to not interfere with the complex border
+    outline: 1px solid #02a6d9;
+    outline-offset: -1px;
+    box-shadow: $nx-focus-box-shadow;
   }
 }
 
