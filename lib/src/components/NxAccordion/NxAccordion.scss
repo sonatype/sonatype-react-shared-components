@@ -6,6 +6,7 @@
  */
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
+@import '../../scss-shared/nx-text-helpers';
 
 .nx-accordion {
   background: #fff;
@@ -56,8 +57,15 @@
   }
 
   > .nx-btn-bar {
-    margin-left: auto;
+    margin-left: $nx-spacing-l;
+    flex-shrink: 0;
   }
+}
+
+.nx-accordion__header-title {
+  @include nx-truncate-ellipsis;
+
+  margin-right: auto;
 }
 
 .nx-accordion__chevron {

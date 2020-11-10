@@ -4,22 +4,49 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, useContext } from 'react';
 import classnames from 'classnames';
 import { faChevronCircleDown, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { ensureElement } from '../../util/reactUtil';
 
-import { Props, propTypes } from './types';
+import { HeaderContextType, HeaderProps, Props, propTypes } from './types';
 
 import './NxAccordion.scss';
+import { splitOutFirst } from '../../util/childUtil';
+
+const HeaderContext = React.createContext<HeaderContextType>({
+  onClick: () => {},
+  open: false
+});
+
+function NxAccordionHeader({ className, onClick: onClickProp, children, ...otherProps }: HeaderProps) {
+  const classes = classnames('nx-accordion__header', className),
+      { onClick: onClickContext, open } = useContext(HeaderContext);
+
+  function onClick(evt: MouseEvent<HTMLElement>) {
+    if (onClickProp) {
+      onClickProp(evt);
+    }
+
+    onClickContext(evt);
+  }
+
+  return (
+    <summary className={classes} onClick={onClick} { ...otherProps }>
+      <NxFontAwesomeIcon className="nx-accordion__chevron" icon={open ? faChevronCircleUp : faChevronCircleDown} />
+      {ensureElement(children)}
+    </summary>
+  );
+}
 
 export default function NxAccordion(props: Props) {
-  const { className, onToggle, open, headerContent, children, ...otherProps } = props,
-      classes = classnames('nx-accordion', className);
+  const { className, onToggle, open, children, ...otherProps } = props,
+      classes = classnames('nx-accordion', className),
+      [header, otherChildren] = splitOutFirst(NxAccordionHeader, children);
 
-  function onSummaryClick(evt: MouseEvent) {
+  function onHeaderClick(evt: MouseEvent) {
     evt.preventDefault();
 
     if (onToggle) {
@@ -27,15 +54,18 @@ export default function NxAccordion(props: Props) {
     }
   }
 
+  const headerContext = {
+    onClick: onHeaderClick,
+    open: open || false
+  };
+
   return (
     <details className={classes} open={open} { ...otherProps}>
-      <summary className="nx-accordion__header" onClick={onSummaryClick}>
-        <NxFontAwesomeIcon className="nx-accordion__chevron" icon={open ? faChevronCircleUp : faChevronCircleDown} />
-        {ensureElement(headerContent)}
-      </summary>
-      <div className="nx-accordion__content">{children}</div>
+      <HeaderContext.Provider value={headerContext}>{header}</HeaderContext.Provider>
+      <div className="nx-accordion__content">{otherChildren}</div>
     </details>
   );
 }
 
 NxAccordion.propTypes = propTypes;
+NxAccordion.Header = NxAccordionHeader;
