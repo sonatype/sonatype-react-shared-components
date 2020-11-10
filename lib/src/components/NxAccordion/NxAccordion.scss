@@ -65,7 +65,17 @@
 .nx-accordion__header-title {
   @include nx-truncate-ellipsis;
 
-  margin-right: auto;
+  font-size: $nx-font-size;
+  margin: 0 auto 0 0;
+}
+
+.nx-accordion__subheader {
+  @include bold();
+  @include container-horizontal;
+
+  color: $nx-heading-color;
+  font-size: $nx-font-size-heading-level-3;
+  margin-bottom: $nx-spacing-md;
 }
 
 .nx-accordion__chevron {
