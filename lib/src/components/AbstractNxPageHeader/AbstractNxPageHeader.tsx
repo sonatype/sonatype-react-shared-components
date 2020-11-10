@@ -17,7 +17,7 @@ function HeaderLink({ name, href, current }: HeaderLinkProps) {
   });
 
   return (
-    <a className={classes} href={href} data-text={name}>{name}</a>
+    <a className={classes} href={href} data-text={name} aria-label={name}>{name}</a>
   );
 }
 
@@ -33,7 +33,7 @@ export default function NxPageHeader({ className, links, homeLink, productInfoCo
       <div className="nx-page-header__inner">
         <div className="nx-product">
           <div className="nx-product__logo">
-            { homeLink ? <a className="nx-product__home-link" href={homeLink}>{logo}</a> : logo }
+            { homeLink ? <a className="nx-product__home-link" href={homeLink} aria-label="Home">{logo}</a> : logo }
           </div>
           {productInfoContent}
         </div>
