@@ -10,9 +10,12 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxNexusPageHeaderExample from './NxNexusPageHeaderExample';
 import NxNexusPageHeaderCustomLogoExample from './NxNexusPageHeaderCustomLogoExample';
+import NxNexusPageHeaderMetaExample from './NxNexusPageHeaderMetaExample';
+import NxNexusPageHeaderVersionExample from './NxNexusPageHeaderVersionExample';
+import NxNexusPageHeaderMinimalExample from './NxNexusPageHeaderMinimalExample';
 
 const nxNexusPageHeaderExampleCode = require('!!raw-loader!./NxNexusPageHeaderExample').default;
-const nxNexusPageHeaderCustomLogoExampleCode = require('!!raw-loader!./NxNexusPageHeaderCustomLogoExample').default;
+const nxNexusPageHeaderCustomLogoExampleCode = require('!!raw-loader!./NxNexusPageHeaderCustomLogoExample').default;const nxNexusPageHeaderMetaExampleCode = require('!!raw-loader!./NxNexusPageHeaderMetaExample').default;const nxNexusPageHeaderVersionExampleCode = require('!!raw-loader!./NxNexusPageHeaderVersionExample').default;const nxNexusPageHeaderMinimalExampleCode = require('!!raw-loader!./NxNexusPageHeaderMinimalExample').default;
 
 const NxNexusPageHeaderPage = () =>
   <>
@@ -145,6 +148,31 @@ const NxNexusPageHeaderPage = () =>
                         defaultCheckeredBackground={true}>
       An instance of <code className="nx-code">NxNexusPageHeader</code> with default branding, navigation and
       examples of extra content.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Nexus Page Header with Meta"
+                        id="nx-page-header-meta-example"
+                        codeExamples={nxNexusPageHeaderMetaExampleCode}
+                        liveExample={NxNexusPageHeaderMetaExample}
+                        defaultCheckeredBackground={true}>
+      An instance of <code className="nx-code">NxNexusPageHeader</code> with default branding, meta info, and
+      navigation.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Nexus Page Header with Version"
+                        id="nx-page-header-version-example"
+                        codeExamples={nxNexusPageHeaderVersionExampleCode}
+                        liveExample={NxNexusPageHeaderVersionExample}
+                        defaultCheckeredBackground={true}>
+      <code className="nx-code">NxNexusPageHeader</code> with default branding, version, and navigation.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Nexus Page Header Minimal"
+                        id="nx-page-header-minimal-example"
+                        codeExamples={nxNexusPageHeaderMinimalExampleCode}
+                        liveExample={NxNexusPageHeaderMinimalExample}
+                        defaultCheckeredBackground={true}>
+      A minimal instance of <code className="nx-code">NxNexusPageHeader</code> with default branding.
     </GalleryExampleTile>
   </>;
 
