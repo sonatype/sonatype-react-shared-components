@@ -15,7 +15,6 @@ describe('nx-tile', function() {
   const simpleTileSelector = '#nx-tile-simple-example .nx-tile',
       actionsTileSelector = '#nx-tile-actions-example .nx-tile',
       subtitleTileSelector = '#nx-tile-subtitle-example .nx-tile',
-      horizontalRuleTileSelector = '#nx-tile-horizontal-rule-example .nx-tile',
       subsectionsTileSelector = '#nx-tile-subsections-example .nx-tile',
       dropdownActionMenuTileSelector = '#nx-tile-dropdown-actions-example .nx-tile';
 
@@ -29,10 +28,6 @@ describe('nx-tile', function() {
 
   describe('nx-tile with wrapping subtitle', function() {
     it('looks right', simpleTest(subtitleTileSelector));
-  });
-
-  describe('nx-tile with horizontal rule', function() {
-    it('looks right', simpleTest(horizontalRuleTileSelector));
   });
 
   describe('nx-tile with subsections', function() {

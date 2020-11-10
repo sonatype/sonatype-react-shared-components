@@ -7,15 +7,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import NxTableRow from '../NxTableRow';
-import NxTableCell from '../../NxTableCell/NxTableCell';
 
 describe('NxTableRow', function () {
   it('sets the correct class names', function () {
     expect(shallow(<NxTableRow className="test" />)).toMatchSelector('tr.test');
-  });
-
-  it('sets the header class', function() {
-    expect(shallow(<NxTableRow isHeader />)).toMatchSelector('tr.nx-table-row--header');
   });
 
   it('sets the clickable class', function () {
@@ -24,14 +19,6 @@ describe('NxTableRow', function () {
 
   it('passes through arbitrary props', function() {
     expect(shallow(<NxTableRow id="test" />)).toMatchSelector('#test');
-  });
-
-  it('sets the isHeader property on children', function () {
-    expect(shallow(<NxTableRow isHeader><NxTableCell /></NxTableRow>)).toContainReact(<NxTableCell isHeader />);
-  });
-
-  it('does not set the isHeader property on children if prop is not supplied', function () {
-    expect(shallow(<NxTableRow><NxTableCell /></NxTableRow>)).toContainReact(<NxTableCell isHeader={false} />);
   });
 
   it('sets the filter header class', function() {
