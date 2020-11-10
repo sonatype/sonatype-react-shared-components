@@ -15,7 +15,10 @@ import NxNexusPageHeaderVersionExample from './NxNexusPageHeaderVersionExample';
 import NxNexusPageHeaderMinimalExample from './NxNexusPageHeaderMinimalExample';
 
 const nxNexusPageHeaderExampleCode = require('!!raw-loader!./NxNexusPageHeaderExample').default;
-const nxNexusPageHeaderCustomLogoExampleCode = require('!!raw-loader!./NxNexusPageHeaderCustomLogoExample').default;const nxNexusPageHeaderMetaExampleCode = require('!!raw-loader!./NxNexusPageHeaderMetaExample').default;const nxNexusPageHeaderVersionExampleCode = require('!!raw-loader!./NxNexusPageHeaderVersionExample').default;const nxNexusPageHeaderMinimalExampleCode = require('!!raw-loader!./NxNexusPageHeaderMinimalExample').default;
+const nxNexusPageHeaderCustomLogoExampleCode = require('!!raw-loader!./NxNexusPageHeaderCustomLogoExample').default;
+const nxNexusPageHeaderMetaExampleCode = require('!!raw-loader!./NxNexusPageHeaderMetaExample').default;
+const nxNexusPageHeaderVersionExampleCode = require('!!raw-loader!./NxNexusPageHeaderVersionExample').default;
+const nxNexusPageHeaderMinimalExampleCode = require('!!raw-loader!./NxNexusPageHeaderMinimalExample').default;
 
 const NxNexusPageHeaderPage = () =>
   <>
@@ -115,7 +118,8 @@ const NxNexusPageHeaderPage = () =>
       </table>
       <p className="nx-p">
         Note that the headers in the examples below have been tweaked to display in the normal page flow for the sake
-        of demonstration.  Normally they would automatically display at the top of the viewport using CSS fixed positioning.
+        of demonstration.  Normally they would automatically display at the top of the viewport using CSS fixed
+        positioning.
       </p>
       <p className="nx-p">
         It is the responsibility of calling code to ensure the that content included in the header fits in a single
