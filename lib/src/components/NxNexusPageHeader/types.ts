@@ -20,7 +20,7 @@ export interface ProductInfo {
 export type Props = Omit<AbstractNxPageHeaderProps, 'logo' | 'productInfoContent'> & {
   productInfo: ProductInfo;
   logoPath?: string | null;
-}
+};
 
 export const propTypes: ValidationMap<Props> = {
   ...omit(['logo', 'productInfoContent'], abstractNxPageHeaderPropTypes),

@@ -40,8 +40,8 @@ export default function NxNexusPageHeader({ productInfo, logoPath, ...otherProps
       productInfoContent = <HeaderProductInfo { ...productInfo } />;
 
   return <AbstractNxPageHeader className="nx-page-header--nexus"
-                              { ...otherProps }
-                              { ...{ logo, productInfoContent } } />;
+                               { ...otherProps }
+                               { ...{ logo, productInfoContent } } />;
 }
 
 NxNexusPageHeader.propTypes = propTypes;
