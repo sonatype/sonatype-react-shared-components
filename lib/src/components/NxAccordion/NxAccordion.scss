@@ -54,6 +54,10 @@
     outline-offset: -1px;
     box-shadow: $nx-focus-box-shadow;
   }
+
+  > .nx-btn-bar {
+    margin-left: auto;
+  }
 }
 
 .nx-accordion__chevron {
