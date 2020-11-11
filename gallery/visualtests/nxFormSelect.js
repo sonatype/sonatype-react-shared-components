@@ -7,12 +7,12 @@
 const { Target } = require('@applitools/eyes-webdriverio');
 const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 
-describe('NxFormSelect', function() {
+describe('nx-form-select', function() {
   const selector = '#nx-form-select-example .nx-form-select',
       disabledSelector = '#nx-form-select-disabled-example .nx-form-select';
 
   beforeEach(async function() {
-    await browser.url('#/pages/NxFormSelect');
+    await browser.url('#/pages/nx-form-select');
   });
 
   describe('Simple NxFormSelect', function() {
