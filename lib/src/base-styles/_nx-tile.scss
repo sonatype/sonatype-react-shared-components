@@ -24,38 +24,6 @@ $nx-tile-background-color: $nx-white;
   padding: $nx-spacing-l;
 }
 
-// Special tile for containing grids
-.nx-tile--grid-tile {
-  .nx-tile-header {
-    margin-bottom: 0;
-  }
-
-  .nx-footer {
-    margin-top: 0;
-  }
-}
-
-// Tile for scrolling content
-.nx-tile-scroll-container {
-  margin: 0 8px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-top: 8px;
-  position: relative; //required for scrollspy
-  width: calc(100% - 16px);
-  z-index: $nx-tile-scroll-container-z-index;
-
-  .nx-tile {
-    margin: 0 0 8px 0;
-  }
-}
-
-// used when a <form> is the first element in an nx-tile
-.nx-tile--form-tile {
-  .nx-tile-header {
-    margin-bottom: 6px;
-  }
-}
 
 // Tile headers
 
@@ -82,14 +50,6 @@ $nx-tile-background-color: $nx-white;
     @include nx-truncate-ellipsis;
     margin: 0;
   }
-}
-
-.nx-tile-header__icon {
-  display: block;
-  float: left;
-  font-size: 30px;
-  margin-right: 8px;
-  vertical-align: middle;
 }
 
 .nx-tile-header__subtitle {
@@ -124,7 +84,6 @@ $nx-tile-background-color: $nx-white;
 .nx-tile-content {
   @include container-vertical;
 
-  clear: both;
 }
 
 // On pages with tiles with multiple sections these are lighter weight titles
@@ -143,12 +102,4 @@ $nx-tile-background-color: $nx-white;
 
     margin-bottom: $nx-spacing-md;
   }
-}
-
-// A tile at the top of the page, usually contains a nav bar with scrolling buttons
-.nx-tile--top-tile {
-  box-shadow: 0px 5px 6px 0px $nx-grey-1;
-  margin-bottom: 0;
-  position: relative;
-  z-index: $nx-tile-scroll-container-z-index + 1;
 }
