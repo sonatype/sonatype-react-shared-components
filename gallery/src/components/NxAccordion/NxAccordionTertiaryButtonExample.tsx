@@ -19,7 +19,12 @@ export default function NxAccordionExample() {
           <NxButton variant="tertiary">Click Here!</NxButton>
         </div>
       </NxAccordion.Header>
-      <div className="nx-accordion__subheader">Foo Bar Baz</div>
+      <div className="nx-accordion__subheader">
+        Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz
+        Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz
+        Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz
+        Foo Bar Baz Foo Bar Baz Foo Bar Baz Foo Bar Baz
+      </div>
       <p className="nx-p">
         Bacon ipsum dolor amet pastrami bacon picanha ball tip bresaola, turkey tri-tip pork chop shoulder beef
         ribs cupim porchetta swine. T-bone brisket frankfurter flank. T-bone chicken prosciutto ribeye kielbasa

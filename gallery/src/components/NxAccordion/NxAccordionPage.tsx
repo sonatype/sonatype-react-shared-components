@@ -159,7 +159,8 @@ const NxAccordionPage = () =>
                         liveExample={NxAccordionTertiaryButtonExample}
                         codeExamples={NxAccordionTertiaryButtonCode}>
       An <code className="nx-code">NxAccordion</code> which contains a tertiary button in the header. Note that the
-      height of this button causes the height of the entire header to grow slightly.
+      height of this button causes the height of the entire header to grow slightly. This example also demonstrates
+      a long subheader, which wraps.
     </GalleryExampleTile>
   </>;
 
