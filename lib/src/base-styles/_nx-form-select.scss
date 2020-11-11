@@ -17,7 +17,7 @@
   background-size: 12px;
   background-position: calc(100% - 16px) 16px;
   background-repeat: no-repeat;
-  border: 1px solid #2c2c2c;
+  border: 1px solid #d1d6f0;
   border-radius: $nx-border-radius;
   color: $nx-text-color;
   display: inline-block;
@@ -25,6 +25,10 @@
   line-height: $nx-line-height;
   padding: $nx-spacing-xs $nx-spacing-md;
   width: $nx-form-element-width-normal;
+
+  &:hover {
+    border-color: #2c2c2c;
+  }
 
   &:focus {
     box-shadow: $nx-focus-box-shadow;
