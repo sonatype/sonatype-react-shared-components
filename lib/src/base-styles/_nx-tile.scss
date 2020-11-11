@@ -97,6 +97,11 @@ $nx-tile-padding: $nx-spacing-l;
   padding: 0 $nx-spacing-l $nx-spacing-l $nx-spacing-l;
 }
 
+.nx-tile-content--accordion-container {
+  background-color: #e5e8f4;
+  padding: $nx-spacing-md;
+}
+
 // On pages with tiles with multiple sections these are lighter weight titles
 .nx-tile-subsection {
   @include container-vertical;
