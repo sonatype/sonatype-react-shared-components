@@ -69,7 +69,7 @@ export default function NxAccordion(props: Props) {
 
   const headerContext = {
     onClick: onHeaderClick,
-    open: open || false
+    open: !!open
   };
 
   return (
