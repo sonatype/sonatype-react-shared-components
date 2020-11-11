@@ -79,7 +79,10 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
               classes = getBtnClasses(selected);
 
           return (
-            <NxButton onClick={selected ? undefined : handleBtnClick(num)} key={num} className={classes}>
+            <NxButton onClick={selected ? undefined : handleBtnClick(num)}
+                      tabIndex={selected ? -1 : 0 /* selected page is not focusable */}
+                      key={num}
+                      className={classes}>
               {num + 1}
             </NxButton>
           );
@@ -119,7 +122,9 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
 
         { !!numPagesAboveRange &&
           // Last page express
-          <NxButton className={getBtnClasses(currentPage === pageCount - 1)} onClick={handleBtnClick(pageCount - 1)}>
+          <NxButton className={getBtnClasses(onLastPage)}
+                    tabIndex={onLastPage ? -1 : 0}
+                    onClick={handleBtnClick(pageCount - 1)}>
             {pageCount}
           </NxButton>
         }

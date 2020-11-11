@@ -46,9 +46,6 @@
     background-color: #232c50;
     border-color: #232c50;
     color: #fff;
-
-    &:focus {
-      border-color: #02a6d9;
-    }
+    cursor: default;
   }
 }
