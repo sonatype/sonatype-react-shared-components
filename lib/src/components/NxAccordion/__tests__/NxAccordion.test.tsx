@@ -37,7 +37,8 @@ describe('NxAccordion', function() {
   });
 
   it('renders non-header children in an nx-accordion__content wrapper', function() {
-    const component = mount(
+    const component =
+        mount(
           <NxAccordion>
             <NxAccordion.Header>
               <span>Foo</span>
@@ -63,7 +64,6 @@ describe('NxAccordion', function() {
           }),
           header = component.find('summary');
 
-
       expect(header).toExist();
       expect(header).toMatchSelector('#headerId');
       expect(header).toContainReact(<span>Foo</span>);
@@ -79,7 +79,6 @@ describe('NxAccordion', function() {
             )
           }),
           header = component.find('summary');
-
 
       expect(header).toHaveClassName('nx-accordion__header');
       expect(header).toHaveClassName('header-class');
