@@ -69,6 +69,9 @@ import StylingComponentsPage from './pages/StylingComponents';
 import AdditionalResourcePage from './pages/AdditionalResources';
 import NxFontSizePage from './styles/NxFontSize/NxFontSizePage';
 import NxCardPage from './styles/NxCard/NxCardPage';
+import NxPaginationPage from './components/NxPagination/NxPaginationPage';
+import NxIndeterminatePaginationPage
+  from './components/NxIndeterminatePagination/NxIndeterminatePaginationPage';
 import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
 import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
@@ -94,6 +97,8 @@ const pageConfig: PageConfig = {
     NxLoadingSpinner: NxLoadingSpinnerPage,
     NxModal: NxModalPage,
     NxPageHeader: NxPageHeaderPage,
+    NxPagination: NxPaginationPage,
+    NxIndeterminatePagination: NxIndeterminatePaginationPage,
     NxPolicyThreatSlider: NxPolicyThreatSliderPage,
     NxRadio: NxRadioPage,
     NxSubmitMask: NxSubmitMaskPage,

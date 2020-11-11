@@ -149,3 +149,7 @@ export {
   default as NxStatefulAccordion,
   Props as NxStatefulAccordionProps
 } from './components/NxAccordion/stateful/NxStatefulAccordion';
+
+export { default as NxPagination, Props as NxPaginationProps } from './components/NxPagination/NxPagination';
+export { default as NxIndeterminatePagination, Props as NxIndeterminatePaginationProps }
+  from './components/NxIndeterminatePagination/NxIndeterminatePagination';
