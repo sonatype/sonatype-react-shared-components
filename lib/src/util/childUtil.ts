@@ -17,15 +17,6 @@ export function addPropsToChildren(children: ReactNode, props: object) {
 }
 
 /**
- * @param children to search
- * @param type the component type to find
- * @returns the first child that matches the type (or null if none are found).
- */
-export function only(children: ReactNode, type: ComponentType): ReactElement | null {
-  return splitOutFirst(type, children)[0];
-}
-
-/**
  * Splits out the first child that matches the type from the rest of the children.
  * @param type the component type to find
  * @param children the children to search
@@ -46,4 +37,13 @@ export function splitOutFirst(type: ComponentType, children: ReactNode): [ReactE
   });
 
   return [matchingChild, nonMatchingChildren];
+}
+
+/**
+ * @param children to search
+ * @param type the component type to find
+ * @returns the first child that matches the type (or null if none are found).
+ */
+export function only(children: ReactNode, type: ComponentType): ReactElement | null {
+  return splitOutFirst(type, children)[0];
 }
