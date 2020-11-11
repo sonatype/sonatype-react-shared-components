@@ -27,7 +27,7 @@ describe('NxAccordion', function() {
       await header.scrollIntoView({ block: 'center' });
       await header.click();
       await browser.execute(function(el) {
-        el.focus();
+        el.blur();
       }, header);
     });
 
