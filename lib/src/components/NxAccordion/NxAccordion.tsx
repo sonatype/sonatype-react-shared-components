@@ -9,7 +9,6 @@ import classnames from 'classnames';
 import { faChevronCircleDown, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { ensureElement } from '../../util/reactUtil';
 
 import { HeaderContextType, HeaderProps, Props, propTypes } from './types';
 
@@ -50,7 +49,7 @@ function NxAccordionHeader({ className, onClick: onClickProp, children, ...other
   return (
     <summary className={classes} onClick={onClick} { ...otherProps } ref={summaryElRef}>
       <NxFontAwesomeIcon className="nx-accordion__chevron" icon={open ? faChevronCircleUp : faChevronCircleDown} />
-      {ensureElement(children)}
+      {children}
     </summary>
   );
 }
