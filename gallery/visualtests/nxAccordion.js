@@ -9,6 +9,7 @@ const { focusTest, simpleTest } = require('./testUtils');
 describe('NxAccordion', function() {
   beforeEach(async function() {
     await browser.url('#/pages/NxAccordion');
+    await browser.refresh();
   });
 
   const exampleSelector = '#nx-accordion-example .gallery-example-live',
