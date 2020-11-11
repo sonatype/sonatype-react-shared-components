@@ -22,7 +22,7 @@
   color: $nx-text-color;
   display: inline-block;
   font-size: $nx-font-size;
-  line-height: 1.5;
+  line-height: $nx-line-height;
   padding: $nx-spacing-xs $nx-spacing-md;
   width: $nx-form-element-width-normal;
 
