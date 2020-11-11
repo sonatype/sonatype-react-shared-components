@@ -138,3 +138,7 @@ export {
   default as NxBinaryDonutChart,
   Props as NxBinaryDonutChartProps
 } from './components/NxBinaryDonutChart/NxBinaryDonutChart';
+
+export { default as NxPagination, Props as NxPaginationProps } from './components/NxPagination/NxPagination';
+export { default as NxIndeterminatePagination, Props as NxIndeterminatePaginationProps }
+  from './components/NxIndeterminatePagination/NxIndeterminatePagination';
