@@ -11,8 +11,8 @@ describe('NxAccordion', function() {
     await browser.url('#/pages/NxAccordion');
   });
 
-  const exampleSelector = '#nx-accordion-example',
-      tertiaryBtnExampleSelector = '#nx-accordion-tertiary-button-example',
+  const exampleSelector = '#nx-accordion-example .gallery-example-live',
+      tertiaryBtnExampleSelector = '#nx-accordion-tertiary-button-example .gallery-example-live',
       headerSelector = `${exampleSelector} .nx-accordion__header`;
 
   describe('Closed NxAccordion', function() {
