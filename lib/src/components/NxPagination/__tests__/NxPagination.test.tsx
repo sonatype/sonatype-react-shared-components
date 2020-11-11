@@ -12,6 +12,7 @@ import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import NxPagination, { Props } from '../NxPagination';
 import NxButton from '../../NxButton/NxButton';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import { either, equals } from 'ramda';
 
 /* eslint-disable @typescript-eslint/no-object-literal-type-assertion */
 describe('NxPagination', function() {
@@ -53,6 +54,7 @@ describe('NxPagination', function() {
           btn = component.children();
 
       expect(btn).toMatchSelector(NxButton);
+      expect(btn).toHaveClassName('selected');
     });
   });
 
@@ -297,6 +299,29 @@ describe('NxPagination', function() {
     testWithProps({ pageCount: 7, currentPage: 4 });
     testWithProps({ pageCount: 7, currentPage: 5 });
     testWithProps({ pageCount: 7, currentPage: 6 });
+    testWithProps({ pageCount: 6, currentPage: 5 });
+  });
+
+  it('adds tabIndex=-1 to the selected page and either tabIndex=0 or no tabIndex to all other buttons', function() {
+    function testWithProps(props: { currentPage: number; pageCount: number }) {
+      const buttons = getShallowComponent(props).children();
+
+      expect(buttons.filter('.selected')).toHaveProp('tabIndex', -1);
+
+      buttons.filter(':not(.selected)').forEach(function(btn) {
+        const is0OrUndefined = either(equals(0), equals(undefined));
+
+        expect(is0OrUndefined(btn.prop('tabIndex'))).toBe(true);
+      });
+    }
+
+    testWithProps({ pageCount: 1, currentPage: 0 });
+    testWithProps({ pageCount: 5, currentPage: 3 });
+    testWithProps({ pageCount: 5, currentPage: 4 });
+    testWithProps({ pageCount: 7, currentPage: 4 });
+    testWithProps({ pageCount: 7, currentPage: 5 });
+    testWithProps({ pageCount: 7, currentPage: 6 });
+    testWithProps({ pageCount: 6, currentPage: 5 });
   });
 
   it('adds the `nx-btn--pagination` class to all buttons except the arrows', function() {
