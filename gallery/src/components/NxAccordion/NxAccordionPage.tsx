@@ -135,7 +135,6 @@ const NxAccordionPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
-                        id="nx-accordion-simple-example"
                         defaultCheckeredBackground={true}
                         liveExample={NxAccordionSimpleExample}
                         codeExamples={NxAccordionSimpleCode}>
@@ -143,24 +142,25 @@ const NxAccordionPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with optional elements"
-                        id="nx-accordion-complex-example"
+                        id="nx-accordion-example"
                         defaultCheckeredBackground={true}
                         liveExample={NxAccordionComplexExample}
                         codeExamples={NxAccordionComplexCode}>
       A more complex <code className="nx-code">NxAccordion</code> including header buttons and a subheader.
       This example also demonstrates that clicks on the header and buttons are handled correctly. Clicking a header
       button does not cause the accordion to toggle, but clicking anywhere else on the header does, even including
-      places that have their own click handlers.
+      places that have their own click handlers. This example also demonstrates that the header title uses
+      ellipsis truncation to handle long content, while the subheader wraps. Developers should however avoid
+      creating titles and subheaders that are long enough to trigger these behaviors when possible.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with tertiary button in header"
-                        id="nx-accordion-complex-example"
+                        id="nx-accordion-tertiary-button-example"
                         defaultCheckeredBackground={true}
                         liveExample={NxAccordionTertiaryButtonExample}
                         codeExamples={NxAccordionTertiaryButtonCode}>
       An <code className="nx-code">NxAccordion</code> which contains a tertiary button in the header. Note that the
-      height of this button causes the height of the entire header to grow slightly. This example also demonstrates
-      a long subheader, which wraps.
+      height of this button causes the height of the entire header to grow slightly.
     </GalleryExampleTile>
   </>;
 
