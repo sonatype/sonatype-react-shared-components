@@ -15,7 +15,7 @@ export default function NxAccordionExample() {
   return (
     <NxAccordion open={open} onToggle={setOpen}>
       <NxAccordion.Header>
-        <h3 className="nx-accordion__header-title" onClick={() => { alert('Title click'); }}>
+        <h3 className="nx-h3" onClick={() => { alert('Title click'); }}>
           Foo lots of content to demonstrate that this element does not wrap but rather overflows with
           ellipsis truncation.
         </h3>

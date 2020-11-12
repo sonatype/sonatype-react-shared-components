@@ -14,7 +14,7 @@ export default function NxAccordionExample() {
   return (
     <NxAccordion open={open} onToggle={setOpen}>
       <NxAccordion.Header>
-        <h3 className="nx-accordion__header-title">Foo</h3>
+        <h3 className="nx-h3">Foo</h3>
       </NxAccordion.Header>
       <p>Foo Bar Baz</p>
     </NxAccordion>
