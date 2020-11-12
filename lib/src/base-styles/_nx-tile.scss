@@ -28,8 +28,8 @@ $nx-tile-padding: $nx-spacing-l;
 
   > .nx-footer, > .nx-form .nx-footer {
     // use margin for sides so the top border ends in the right places
-    margin: 0 $nx-tile-padding;
-    padding: $nx-spacing-l 0;
+    margin: $nx-tile-padding $nx-tile-padding 0 $nx-tile-padding;
+    padding-bottom: $nx-spacing-l;
   }
 }
 
@@ -42,7 +42,11 @@ $nx-tile-padding: $nx-spacing-l;
   grid-template-columns: 1fr auto;
   -ms-grid-columns: 1fr auto;
   min-height: $nx-tile-header-height;
-  padding: $nx-tile-padding $nx-tile-padding $nx-spacing-md $nx-tile-padding;
+  padding: $nx-tile-padding $nx-tile-padding 0 $nx-tile-padding;
+
+  + .nx-tile-content {
+    padding-top: $nx-spacing-md;
+  }
 }
 
 .nx-tile-header__title {
@@ -92,12 +96,21 @@ $nx-tile-padding: $nx-spacing-l;
 .nx-tile-content {
   @include container-vertical;
 
-  padding: 0 $nx-tile-padding $nx-spacing-l $nx-tile-padding;
+  padding: $nx-tile-padding $nx-tile-padding 0 $nx-tile-padding;
+
+  &:last-child {
+    padding-bottom: $nx-tile-padding;
+  }
 }
 
 .nx-tile-content--accordion-container {
   background-color: #e5e8f4;
+  margin-top: $nx-spacing-md;
   padding: $nx-spacing-md;
+
+  &:last-child {
+    padding-bottom: $nx-spacing-md;
+  }
 }
 
 // On pages with tiles with multiple sections these are lighter weight titles
