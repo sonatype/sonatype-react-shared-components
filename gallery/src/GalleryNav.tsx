@@ -6,7 +6,7 @@
  */
 import React, { useState, ReactNode } from 'react';
 import { addIndex, toPairs, keys, map, pipe } from 'ramda';
-import { NxTreeView, NxTreeViewChild } from '@sonatype/react-shared-components';
+import { NxTreeView } from '@sonatype/react-shared-components';
 
 import pageConfig from './pageConfig';
 import {NavLink} from 'react-router-dom';
@@ -15,9 +15,9 @@ import { PageMapping, PageConfig } from './pageConfigTypes';
 const renderLinks: ((categoryEntries: PageMapping) => ReactNode) = pipe(
     keys,
     map((pageName: string) =>
-      <NxTreeViewChild key={pageName} clickable>
-        <NavLink to={`/pages/${pageName}`}>{pageName}</NavLink>
-      </NxTreeViewChild>
+      <NavLink key={pageName} to={`/pages/${pageName}`} className="nx-tree-view__child" activeClassName="selected">
+        {pageName}
+      </NavLink>
     )
 );
 

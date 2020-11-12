@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ReactNode, HTMLAttributes} from 'react';
+import {ReactNode} from 'react';
 import * as PropTypes from 'prop-types';
 
 import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
@@ -18,11 +18,6 @@ export interface Props {
   children?: ReactNode;
   className?: string | null;
   id?: string | null;
-}
-
-export interface ChildProps extends HTMLAttributes<HTMLDivElement> {
-  clickable?: boolean | null;
-  selected?: boolean | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -43,7 +38,5 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
 };
 
 export const childPropTypes = {
-  className: PropTypes.string,
-  selectable: PropTypes.bool,
-  selected: PropTypes.bool
+  className: PropTypes.string
 };

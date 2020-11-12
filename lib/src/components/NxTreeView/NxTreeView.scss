@@ -105,6 +105,9 @@ $twisty-proportion-difference: 2px;
 .nx-tree-view__child {
   border: 1px solid transparent;
   border-radius: $nx-border-radius;
+  box-sizing: border-box;
+  color: $nx-text-color;
+  display: block;
   overflow: hidden;
 
   // subtract 1 from all sides to make room for focus border
@@ -116,41 +119,45 @@ $twisty-proportion-difference: 2px;
 
   text-overflow: ellipsis;
   white-space: nowrap;
+}
 
-  &.nx-clickable {
+button, a {
+  &.nx-tree-view__child {
+    font-weight: normal;
+    margin: 0;
+    text-align: left;
+    text-decoration: none;
+    width: 100%;
+
     &:hover {
       background-color: #f1f3fa;
     }
 
     &.selected {
       background-color: $nx-blue-200;
+      font-weight: 600;
     }
 
     &:focus {
-      outline: none;
       border-color: #02a6d9;
       box-shadow: $nx-focus-box-shadow;
-    }
-  }
-
-  a {
-    color: $nx-text-color;
-    text-decoration: none;
-
-    &:hover {
-      color: $nx-text-color-dark;
+      outline: none;
     }
   }
 }
 
 // sidebars don't typically have the white background and so warrant different highlight colors
-.nx-page-sidebar
-  .nx-tree-view__child.nx-clickable {
-    &:hover {
-      background-color: #d1d6f0;
-    }
+.nx-page-sidebar {
+  button, a {
+    &.nx-tree-view__child {
+      &:hover {
+        background-color: #d1d6f0;
+      }
 
-    &.selected {
-      background-color: $nx-blue-1000;
+      &.selected {
+        background-color: $nx-blue-1000;
+        color: #fff;
+      }
     }
   }
+}

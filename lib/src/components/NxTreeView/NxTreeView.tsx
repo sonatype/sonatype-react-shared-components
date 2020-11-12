@@ -4,15 +4,15 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 import NxTooltip from '../NxTooltip/NxTooltip';
-import { Props, ChildProps, propTypes, childPropTypes } from './types';
+import { Props, propTypes, childPropTypes } from './types';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-export { Props, ChildProps } from './types';
+export { Props } from './types';
 
 import './NxTreeView.scss';
 
@@ -46,14 +46,11 @@ const NxTreeView: FunctionComponent<Props> =
     );
   };
 
-export const NxTreeViewChild: FunctionComponent<ChildProps> =
-  function NxTreeViewChild({ clickable, selected, className, ...otherProps }) {
-    const classes = classnames('nx-tree-view__child', className, {
-      'nx-clickable': clickable,
-      selected
-    });
-
-    return <div { ...otherProps } className={classes} tabIndex={clickable ? 0 : -1}/>;
+export const NxTreeViewChild: FunctionComponent<HTMLAttributes<HTMLDivElement>> =
+  function NxTreeViewChild(props) {
+    return (
+      <div { ...props } className={classnames('nx-tree-view__child', props.className)} />
+    );
   };
 
 NxTreeViewChild.propTypes = childPropTypes;
