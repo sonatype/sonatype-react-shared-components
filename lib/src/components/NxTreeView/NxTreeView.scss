@@ -8,20 +8,27 @@
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
 
+// The caret is taller than it is wide. It is rotated using `transform`, which does not change its effect
+// on the layout of surrounding elements.  However, we _want_ its rotation to affect the layout of surrounding
+// elements such that the title is always 8px from the nearest visible point on the caret. This variable
+// represents the distance necessary to make that happen
+$twisty-proportion-difference: 2px;
+
 /*
   #Tree view
 */
 .nx-tree-view {
-  @include semi-bold();
-
   box-sizing: border-box;
   margin: $nx-spacing-md 0;
-  width: 300px;
+
+  // Design specifies 300px wide not including the caret and its padding (which are themselves 30px)
+  max-width: 330px;
 }
 
 .nx-tree-view--expanded {
   .nx-tree-view__twisty {
     transform: rotate(90deg);
+    padding: 0 $twisty-proportion-difference;
   }
 }
 
@@ -53,6 +60,7 @@
   color: #2c2c2c;
   cursor: pointer;
   display: flex;
+  font-weight: 600;
 
   &:hover, &:focus {
     text-decoration: none;
@@ -88,19 +96,11 @@
 
 .nx-tree-view__children {
   overflow: hidden;
-
-  > .nx-tree-view__child:last-child {
-    margin-bottom: 12px;
-  }
 }
 
 .nx-tree-view__child {
-  box-sizing: border-box;
-  height: 30px;
-  line-height: 30px;
   overflow: hidden;
-  margin-right: 8px;
-  margin-left: 45px;
+  padding: $nx-spacing-xs $nx-spacing-l 0 ($nx-spacing-l + 2 * $twisty-proportion-difference);
   text-overflow: ellipsis;
   white-space: nowrap;
 
