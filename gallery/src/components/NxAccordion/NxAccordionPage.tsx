@@ -101,7 +101,7 @@ const NxAccordionPage = () =>
                 It is expected that the first child of <code className="nx-code">NxAccordion.Header</code>
                 will always be a <code className="nx-code">.nx-accordion__header-title</code> containing
                 the text content of the always visible section of the accordion. This element should be
-                and <code className="nx-code">h*</code>  heading. Note however
+                an <code className="nx-code">h*</code>  heading. Note however
                 that <code className="nx-code">NxAccordion</code> is a{' '}
                 <a rel="noreferrer"
                    className="nx-text-link"
