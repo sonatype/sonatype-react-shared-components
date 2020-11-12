@@ -12,6 +12,7 @@ import NxTreeViewExample from './NxTreeViewExample';
 import NxTreeViewTooltipExample from './NxTreeViewTooltipExample';
 import NxTreeViewExtras from './NxTreeViewExtrasExample';
 import NxTreeViewClickable from './NxTreeViewClickableExample';
+import NxTreeViewCheckbox from './NxTreeViewCheckboxExample';
 import NxTreeViewEmpty from './NxTreeViewEmptyExample';
 import NxTreeViewDisabled from './NxTreeViewDisabledExample';
 
@@ -19,6 +20,7 @@ const nxTreeViewCode = require('!!raw-loader!./NxTreeViewExample').default,
     nxTreeViewTooltipCode = require('!!raw-loader!./NxTreeViewTooltipExample').default,
     nxTreeViewExtrasCode = require('!!raw-loader!./NxTreeViewExtrasExample').default,
     nxTreeViewClickableCode = require('!!raw-loader!./NxTreeViewClickableExample').default,
+    nxTreeViewCheckboxCode = require('!!raw-loader!./NxTreeViewCheckboxExample').default,
     nxTreeViewEmptyCode = require('!!raw-loader!./NxTreeViewEmptyExample').default,
     nxTreeViewDisabledCode = require('!!raw-loader!./NxTreeViewDisabledExample').default;
 
@@ -122,6 +124,14 @@ const NxTreeViewPage = () =>
                         liveExample={NxTreeViewClickable}
                         codeExamples={nxTreeViewClickableCode}>
       Example of an <code className="nx-code">NxTreeView</code> with clickable children one of which is selected
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxTreeView Checkbox and radio Example"
+                        id="nx-tree-view-checkbox-example"
+                        liveExample={NxTreeViewCheckbox}
+                        codeExamples={nxTreeViewCheckboxCode}>
+      Example showing how to construct <code className="nx-code">NxTreeView</code>s with checkboxes and radios as
+      children. This example omits the state management for the checkboxes and radios themselves
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeView Empty Example"
