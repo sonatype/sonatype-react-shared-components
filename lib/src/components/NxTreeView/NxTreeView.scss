@@ -43,18 +43,19 @@ $twisty-proportion-difference: 2px;
 }
 
 .nx-tree-view--disabled {
-  .nx-tree-view__trigger {
-    cursor: default;
-  }
-
-  .nx-tree-view__text, .nx-tree-view__child {
+  .nx-tree-view__trigger, .nx-tree-view__child {
     color: $nx-grey-4;
+    cursor: default;
   }
 }
 
 .nx-tree-view--empty {
-  .nx-tree-view__trigger, .nx-tree-view__twisty {
+  .nx-tree-view__trigger {
     cursor: default;
+  }
+
+  .nx-tree-view__twisty {
+    display: none;
   }
 }
 
