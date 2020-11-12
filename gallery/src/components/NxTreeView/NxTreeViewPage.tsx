@@ -131,7 +131,7 @@ const NxTreeViewPage = () =>
                         liveExample={NxTreeViewCheckbox}
                         codeExamples={nxTreeViewCheckboxCode}>
       Example showing how to construct <code className="nx-code">NxTreeView</code>s with checkboxes and radios as
-      children. This example omits the state management for the checkboxes and radios themselves
+      children. This example omits the state management and is focused on demonstrating the styling.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeView Empty Example"
