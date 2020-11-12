@@ -28,7 +28,7 @@ $nx-tile-padding: $nx-spacing-l;
 
   > .nx-footer, > .nx-form .nx-footer {
     // use margin for sides so the top border ends in the right places
-    margin: 0 $nx-spacing-l;
+    margin: 0 $nx-tile-padding;
     padding: $nx-spacing-l 0;
   }
 }
@@ -42,8 +42,7 @@ $nx-tile-padding: $nx-spacing-l;
   grid-template-columns: 1fr auto;
   -ms-grid-columns: 1fr auto;
   min-height: $nx-tile-header-height;
-  margin-bottom: $nx-spacing-md;
-  padding: $nx-spacing-l $nx-spacing-l 0 $nx-spacing-l;
+  padding: $nx-tile-padding $nx-tile-padding $nx-spacing-md $nx-tile-padding;
 }
 
 .nx-tile-header__title {
@@ -93,7 +92,7 @@ $nx-tile-padding: $nx-spacing-l;
 .nx-tile-content {
   @include container-vertical;
 
-  padding: 0 $nx-spacing-l $nx-spacing-l $nx-spacing-l;
+  padding: 0 $nx-tile-padding $nx-spacing-l $nx-tile-padding;
 }
 
 .nx-tile-content--accordion-container {
