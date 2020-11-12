@@ -6,10 +6,14 @@
  */
 import React, { FunctionComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 import NxTooltip from '../NxTooltip/NxTooltip';
 import { Props, propTypes, childPropTypes } from './types';
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+
 export { Props } from './types';
+
 import './NxTreeView.scss';
 
 const NxTreeView: FunctionComponent<Props> =
@@ -24,12 +28,10 @@ const NxTreeView: FunctionComponent<Props> =
         }),
         trigger = (
           <div className="nx-tree-view__trigger" onClick={onToggleCollapse || undefined}>
-            <div className="nx-tree-view__twisty">
-              <span className="nx-tree-view__twisty-icon"/>
-            </div>
-            <div className="nx-tree-view__text">
+            <NxFontAwesomeIcon className="nx-tree-view__twisty" icon={faCaretRight} />
+            <span className="nx-tree-view__text">
               {triggerContent}
-            </div>
+            </span>
           </div>
         ),
         triggerTooltipProps = typeof triggerTooltip === 'string' ? { title: triggerTooltip } : triggerTooltip;
