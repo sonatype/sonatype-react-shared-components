@@ -11,12 +11,14 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxTreeViewExample from './NxTreeViewExample';
 import NxTreeViewTooltipExample from './NxTreeViewTooltipExample';
 import NxTreeViewExtras from './NxTreeViewExtrasExample';
+import NxTreeViewClickable from './NxTreeViewClickableExample';
 import NxTreeViewEmpty from './NxTreeViewEmptyExample';
 import NxTreeViewDisabled from './NxTreeViewDisabledExample';
 
 const nxTreeViewCode = require('!!raw-loader!./NxTreeViewExample').default,
     nxTreeViewTooltipCode = require('!!raw-loader!./NxTreeViewTooltipExample').default,
     nxTreeViewExtrasCode = require('!!raw-loader!./NxTreeViewExtrasExample').default,
+    nxTreeViewClickableCode = require('!!raw-loader!./NxTreeViewClickableExample').default,
     nxTreeViewEmptyCode = require('!!raw-loader!./NxTreeViewEmptyExample').default,
     nxTreeViewDisabledCode = require('!!raw-loader!./NxTreeViewDisabledExample').default;
 
@@ -113,6 +115,13 @@ const NxTreeViewPage = () =>
       These examples demonstrate <code className="nx-code">NxTreeView</code>s with extra content such as icons and
       <code className="nx-code">nx-counter</code>s in their triggers. Note that the last example also demonstrates
       text overflow behavior
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxTreeView Clickable Example"
+                        id="nx-tree-view-clickable-example"
+                        liveExample={NxTreeViewClickable}
+                        codeExamples={nxTreeViewClickableCode}>
+      Example of an <code className="nx-code">NxTreeView</code> with clickable children one of which is selected
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeView Empty Example"

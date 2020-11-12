@@ -36,6 +36,10 @@ $twisty-proportion-difference: 2px;
   .nx-tree-view__children{
     max-height: 0;
   }
+
+  .nx-tree-view__child {
+    display: none;
+  }
 }
 
 .nx-tree-view--disabled {
@@ -95,14 +99,39 @@ $twisty-proportion-difference: 2px;
 }
 
 .nx-tree-view__children {
-  overflow: hidden;
+  padding-top: $nx-spacing-xxs;
 }
 
 .nx-tree-view__child {
+  border: 1px solid transparent;
+  border-radius: $nx-border-radius;
   overflow: hidden;
-  padding: $nx-spacing-xs $nx-spacing-l 0 ($nx-spacing-l + 2 * $twisty-proportion-difference);
+
+  // subtract 1 from all sides to make room for focus border
+  padding:
+    ($nx-spacing-xxs - 1)
+    ($nx-spacing-l - 1)
+    ($nx-spacing-xxs - 1)
+    ($nx-spacing-l + 2 * $twisty-proportion-difference - 1);
+
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  &.nx-clickable {
+    &:hover {
+      background-color: #f1f3fa;
+    }
+
+    &.selected {
+      background-color: $nx-blue-200;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #02a6d9;
+      box-shadow: $nx-focus-box-shadow;
+    }
+  }
 
   a {
     color: $nx-text-color;
@@ -113,3 +142,15 @@ $twisty-proportion-difference: 2px;
     }
   }
 }
+
+// sidebars don't typically have the white background and so warrant different highlight colors
+.nx-page-sidebar
+  .nx-tree-view__child.nx-clickable {
+    &:hover {
+      background-color: #d1d6f0;
+    }
+
+    &.selected {
+      background-color: $nx-blue-1000;
+    }
+  }
