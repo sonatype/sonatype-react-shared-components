@@ -47,6 +47,26 @@ export default function NxFormLayoutExample() {
           </label>
         </div>
       </div>
+      <div className="nx-form-row">
+        <div className="nx-form-group">
+          <label className="nx-label nx-label--optional">
+            <span className="nx-label__text">Label</span>
+            <NxStatefulTextInput/>
+          </label>
+        </div>
+        <div className="nx-form-group">
+          <label className="nx-label">
+            <span className="nx-label__text">Label</span>
+            <select className="nx-form-select">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+              <option>Option 4</option>
+              <option>Option 5</option>
+            </select>
+          </label>
+        </div>
+      </div>
       <fieldset className="nx-fieldset">
         <legend className="nx-legend">
           <span className="nx-legend__text">
