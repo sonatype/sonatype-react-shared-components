@@ -41,19 +41,13 @@ describe('AbstractTreeViewSelect', function() {
       expect(nxTreeView.children().length).toBe(3);
 
       const fooOption = nxTreeView.childAt(0);
-      expect(fooOption).toHaveDisplayName('NxTreeViewChild');
-      expect(fooOption.children().length).toBe(1);
-      expect(fooOption.childAt(0)).toHaveText('Foo');
+      expect(fooOption).toMatchElement(<span>Foo</span>);
 
       const barOption = nxTreeView.childAt(1);
-      expect(barOption).toHaveDisplayName('NxTreeViewChild');
-      expect(barOption.children().length).toBe(1);
-      expect(barOption.childAt(0)).toHaveText('Bar');
+      expect(barOption).toMatchElement(<span>Bar</span>);
 
       const nullOption = nxTreeView.childAt(2);
-      expect(nullOption).toHaveDisplayName('NxTreeViewChild');
-      expect(nullOption.children().length).toBe(1);
-      expect(nullOption.childAt(0)).toHaveText('Null');
+      expect(nullOption).toMatchElement(<span>Null</span>);
     });
   });
 
@@ -120,7 +114,7 @@ describe('AbstractTreeViewSelect', function() {
 
         const nxTreeView = shallowRender.find('NxTreeView');
         expect(nxTreeView.children().length).toBe(3);
-        expect(nxTreeView.childAt(0)).toHaveDisplayName('NxTreeViewChild');
+        expect(nxTreeView.childAt(0)).toMatchElement(<span>Foo</span>);
       });
 
       describe('default value', function () {
@@ -149,7 +143,7 @@ describe('AbstractTreeViewSelect', function() {
 
               const nxTreeView = shallowRender.find('NxTreeView');
               expect(nxTreeView.children().length).toBe(10);
-              expect(nxTreeView.childAt(0)).toHaveDisplayName('NxTreeViewChild');
+              expect(nxTreeView.childAt(0)).toMatchElement(<span>0</span>);
             }
         );
       });
@@ -217,10 +211,12 @@ describe('AbstractTreeViewSelect', function() {
       it('renders only filtered options', function () {
         const shallowRender = getShallow();
 
-        const options = shallowRender.find('NxTreeViewChild');
-        expect(options.length).toBe(2);
-        expect(options.at(0).childAt(0)).toHaveText('Bar');
-        expect(options.at(1).childAt(0)).toHaveText('Baz');
+        const options = shallowRender.children();
+        expect(options.length).toBe(3);
+
+        // first one is the filter itself
+        expect(options.at(1)).toHaveText('Bar');
+        expect(options.at(2)).toHaveText('Baz');
       });
 
       it('renders all options if filteredOptions prop is not provided', function () {
@@ -228,11 +224,13 @@ describe('AbstractTreeViewSelect', function() {
           filteredOptions: null
         });
 
-        const options = shallowRender.find('NxTreeViewChild');
-        expect(options.length).toBe(3);
-        expect(options.at(0).childAt(0)).toHaveText('Foo');
-        expect(options.at(1).childAt(0)).toHaveText('Bar');
-        expect(options.at(2).childAt(0)).toHaveText('Baz');
+        const options = shallowRender.children();
+        expect(options.length).toBe(4);
+
+        // first one is the filter itself
+        expect(options.at(1)).toHaveText('Foo');
+        expect(options.at(2)).toHaveText('Bar');
+        expect(options.at(3)).toHaveText('Baz');
       });
     });
   });
@@ -245,9 +243,9 @@ describe('AbstractTreeViewSelect', function() {
         renderToggleAllOption: () => <input type="checkbox" id="toggleAllOption"/>
       });
 
-      const options = shallowRender.find('NxTreeViewChild');
+      const options = shallowRender.children();
       expect(options.length).toBe(4);
-      expect(options.at(0).childAt(0)).toMatchSelector('input#toggleAllOption');
+      expect(options.at(0)).toMatchSelector('input#toggleAllOption');
     });
   });
 
@@ -381,13 +379,13 @@ describe('AbstractTreeViewSelect', function() {
     it('adds tooltip for each option except all/none', function () {
       const shallowRender = getShallow();
 
-      const fooTooltip = shallowRender.find('NxTreeViewChild').at(0).childAt(0);
+      const fooTooltip = shallowRender.children().at(0);
       expect(fooTooltip).toHaveDisplayName('NxTooltip');
       expect(fooTooltip).toHaveProp('title', 'Foo');
       expect(fooTooltip).toHaveProp('placement', 'top');
       expect(fooTooltip).not.toHaveProp('className');
 
-      const barTooltip = shallowRender.find('NxTreeViewChild').at(1).childAt(0);
+      const barTooltip = shallowRender.children().at(1);
       expect(barTooltip).toHaveDisplayName('NxTooltip');
       expect(barTooltip).toHaveProp('title', 'Bar');
       expect(barTooltip).toHaveProp('placement', 'top');
@@ -399,11 +397,11 @@ describe('AbstractTreeViewSelect', function() {
         tooltipModifierClass: 'test-tooltip-modifier'
       });
 
-      const fooTooltip = shallowRender.find('NxTreeViewChild').at(0).childAt(0);
+      const fooTooltip = shallowRender.children().at(0);
       expect(fooTooltip).toHaveDisplayName('NxTooltip');
       expect(fooTooltip).toHaveProp('className', 'test-tooltip-modifier');
 
-      const barTooltip = shallowRender.find('NxTreeViewChild').at(1).childAt(0);
+      const barTooltip = shallowRender.children().at(1);
       expect(barTooltip).toHaveDisplayName('NxTooltip');
       expect(barTooltip).toHaveProp('className', 'test-tooltip-modifier');
     });

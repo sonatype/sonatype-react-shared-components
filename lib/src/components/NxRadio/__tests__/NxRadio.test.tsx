@@ -40,6 +40,13 @@ describe('NxRadio', function() {
       }
   );
 
+  it('adds classes specified with the className prop', function() {
+    const component = getShallow({ className: 'foo' });
+
+    expect(component).toHaveClassName('foo');
+    expect(component).toHaveClassName('nx-radio');
+  });
+
   it('renders .nx-radio__inner-circle iff it is checked', function() {
     expect(getShallow()).not.toContainMatchingElement('.nx-radio__inner-circle');
     expect(getShallow({ isChecked: true })).toContainMatchingElement('.nx-radio__circle .nx-radio__inner-circle');
