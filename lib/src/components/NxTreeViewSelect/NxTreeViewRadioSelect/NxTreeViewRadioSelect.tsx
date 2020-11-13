@@ -21,8 +21,7 @@ const NxTreeViewRadioSelect: FunctionComponent<Props> =
         selectedItem = find(propEq('id', selectedId), options);
 
     const renderOption = ({id, name: optionName}: Option) => (
-      <NxRadio className="nx-tree-view__child"
-               radioId={generateId(name, id)}
+      <NxRadio radioId={generateId(name, id)}
                name={name}
                value={id}
                isChecked={id === selectedId}
