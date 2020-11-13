@@ -35,7 +35,6 @@ function NxTreeViewExample() {
                   }>
         <NxTreeViewChild>Test1</NxTreeViewChild>
         <NxTreeViewChild>Test2</NxTreeViewChild>
-        <NxTreeViewChild><a href="#">Link</a></NxTreeViewChild>
       </NxTreeView>
       <NxTreeView onToggleCollapse={onToggleCollapse2}
                   isOpen={toggleCheck2}
@@ -48,7 +47,6 @@ function NxTreeViewExample() {
                   }>
         <NxTreeViewChild>Test1</NxTreeViewChild>
         <NxTreeViewChild>Test2</NxTreeViewChild>
-        <NxTreeViewChild><a href="#">Link</a></NxTreeViewChild>
       </NxTreeView>
       <NxTreeView onToggleCollapse={onToggleCollapse3}
                   isOpen={toggleCheck3}
@@ -61,7 +59,6 @@ function NxTreeViewExample() {
                   }>
         <NxTreeViewChild>Test1</NxTreeViewChild>
         <NxTreeViewChild>Test2</NxTreeViewChild>
-        <NxTreeViewChild><a href="#">Link</a></NxTreeViewChild>
       </NxTreeView>
     </>
   );
