@@ -8,7 +8,7 @@
 import React, { FunctionComponent, ReactElement } from 'react';
 
 import { Option } from './commonTypes';
-import NxTreeView, {NxTreeViewChild} from '../NxTreeView/NxTreeView';
+import NxTreeView from '../NxTreeView/NxTreeView';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import { TooltipConfigProps } from '../../util/tooltipUtils';
