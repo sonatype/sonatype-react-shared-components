@@ -33,12 +33,12 @@ $twisty-proportion-difference: 2px;
 }
 
 .nx-tree-view--collapsed {
-  .nx-tree-view__children{
+  > .nx-tree-view__children {
     max-height: 0;
-  }
 
-  .nx-tree-view__child {
-    display: none;
+    > .nx-tree-view__child, > .nx-radio-checkbox {
+      display: none;
+    }
   }
 }
 
