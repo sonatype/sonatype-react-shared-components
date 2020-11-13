@@ -93,6 +93,51 @@ const NxTreeViewPage = () =>
           </tr>
         </tbody>
       </table>
+      <section className="nx-tile-subsection">
+        <header className="nx-tile-subsection__header">
+          <h3 className="nx-h3">Children</h3>
+        </header>
+        <p className="nx-p">
+          The "children" of an <code className="nx-code">NxTreeView</code> are the elements which appear when the
+          tree view is expanded.
+          There are essentially three different types of children supported
+          within <code className="nx-code">NxTreeView</code>. All children use
+          the <code className="nx-code">.nx-tree-view__child</code> class.
+        </p>
+        <ul className="nx-list">
+          <li className="nx-list__item">
+            <span className="nx-list__text">Clickable/selectable children</span>
+            <span className="nx-list__subtext">
+              Links (<code className="nx-code">&lt;a&gt;</code> tags)
+              and <code className="nx-code">&lt;button&gt;</code>s should be provided as direct child elements and
+              given the <code className="nx-code">.nx-tree-view__child</code> class. They should <em>not</em> be
+              wrapped in an extra <code className="nx-code">&lt;div&gt;</code>. When constructing a navigation list
+              within an <code className="nx-code">NxTreeView</code>, the link representing the current page should
+              also be given the <code className="nx-code">.selected</code> class.
+            </span>
+          </li>
+          <li className="nx-list__item">
+            <span className="nx-list__text">Radio/Checkbox children</span>
+            <span className="nx-list__subtext">
+              When constructing an <code className="nx-code">NxTreeView</code> whose children are checkboxes or
+              radios, for instance to create a filter sidebar, the <code className="nx-code">NxRadio</code>{' '}
+              and <code className="nx-code">NxCheckbox</code> components should be direct children of
+              the <code className="nx-code">NxTreeView</code>, and should be given
+              the <code className="nx-code">.nx-tree-view__child</code> class.
+            </span>
+          </li>
+          <li className="nx-list__item">
+            <span className="nx-list__text">Non-interactive or other children</span>
+            <span className="nx-list__subtext">
+              Child elements which contain non-interactive or general content which does not fit into the above
+              categories can simply be placed in a <code className="nx-code">&lt;div&gt;</code> with
+              the <code className="nx-code">.nx-tree-view__child</code> class. For convenience,
+              a <code className="nx-code">NxTreeViewChild</code> react component is provided which creates such
+              a wrapper
+            </span>
+          </li>
+        </ul>
+      </section>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="NxTreeView Basic Example"
