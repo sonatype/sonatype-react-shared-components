@@ -69,7 +69,8 @@ const NxTreeViewMultiSelect: FunctionComponent<Props> = function NxTreeViewMulti
   }
 
   const renderOption = ({id, name: optionName}: Option) => (
-    <NxCheckbox checkboxId={generateId(name, id)}
+    <NxCheckbox className="nx-tree-view__child"
+                checkboxId={generateId(name, id)}
                 onChange={() => toggle(id)}
                 isChecked={normalizedSelectedIds.has(id)}
                 disabled={disabled}>
@@ -78,7 +79,8 @@ const NxTreeViewMultiSelect: FunctionComponent<Props> = function NxTreeViewMulti
   );
 
   const renderToggleAllOption = () => filteredOptions.length > 0 ? (
-    <NxCheckbox checkboxId={generateId(name, 'all/none')}
+    <NxCheckbox className="nx-tree-view__child"
+                checkboxId={generateId(name, 'all/none')}
                 onChange={toggleSelectAll}
                 isChecked={allFilteredSelected}
                 disabled={disabled}>
