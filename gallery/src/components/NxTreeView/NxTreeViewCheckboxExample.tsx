@@ -14,7 +14,9 @@ export default function NxTreeViewCheckboxExample() {
       <NxTreeView id="example-nx-tree-view"
                   isOpen={true}
                   triggerContent="Organization">
-        <NxCheckbox className="nx-tree-view__child" isChecked={true}>Foo</NxCheckbox>
+        <NxCheckbox className="nx-tree-view__child" isChecked={true}>
+          Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo
+        </NxCheckbox>
         <NxCheckbox className="nx-tree-view__child" isChecked={true}>Bar</NxCheckbox>
         <NxCheckbox className="nx-tree-view__child" isChecked={true}>Baz</NxCheckbox>
       </NxTreeView>
