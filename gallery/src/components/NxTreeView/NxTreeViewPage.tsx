@@ -12,6 +12,7 @@ import NxTreeViewExample from './NxTreeViewExample';
 import NxTreeViewTooltipExample from './NxTreeViewTooltipExample';
 import NxTreeViewExtras from './NxTreeViewExtrasExample';
 import NxTreeViewClickable from './NxTreeViewClickableExample';
+import NxTreeViewClickableSidebar from './NxTreeViewClickableSidebarExample';
 import NxTreeViewCheckbox from './NxTreeViewCheckboxExample';
 import NxTreeViewEmpty from './NxTreeViewEmptyExample';
 import NxTreeViewDisabled from './NxTreeViewDisabledExample';
@@ -20,6 +21,7 @@ const nxTreeViewCode = require('!!raw-loader!./NxTreeViewExample').default,
     nxTreeViewTooltipCode = require('!!raw-loader!./NxTreeViewTooltipExample').default,
     nxTreeViewExtrasCode = require('!!raw-loader!./NxTreeViewExtrasExample').default,
     nxTreeViewClickableCode = require('!!raw-loader!./NxTreeViewClickableExample').default,
+    nxTreeViewClickableSidebarCode = require('!!raw-loader!./NxTreeViewClickableSidebarExample').default,
     nxTreeViewCheckboxCode = require('!!raw-loader!./NxTreeViewCheckboxExample').default,
     nxTreeViewEmptyCode = require('!!raw-loader!./NxTreeViewEmptyExample').default,
     nxTreeViewDisabledCode = require('!!raw-loader!./NxTreeViewDisabledExample').default;
@@ -169,6 +171,16 @@ const NxTreeViewPage = () =>
                         liveExample={NxTreeViewClickable}
                         codeExamples={nxTreeViewClickableCode}>
       Example of an <code className="nx-code">NxTreeView</code> with clickable children one of which is selected
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxTreeView Clickable Sidebar Example"
+                        id="nx-tree-view-clickable-example"
+                        liveExample={NxTreeViewClickableSidebar}
+                        codeExamples={nxTreeViewClickableSidebarCode}>
+      Example of an <code className="nx-code">NxTreeView</code> with clickable children one of which is selected.
+      This example differs from the previous one in that the tree view is contained within
+      an <code className="nx-code">.nx-page-sidebar</code>. <code className="nx-code">NxTreeView</code>s that are
+      descendants of sidebars use different colors for their hover and selected states.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeView Checkbox and radio Example"

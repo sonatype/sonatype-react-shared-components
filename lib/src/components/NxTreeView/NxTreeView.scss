@@ -131,6 +131,7 @@ $twisty-proportion-difference: 2px;
 
 button, a {
   &.nx-tree-view__child {
+    background-color: transparent;
     font-weight: normal;
     margin: 0;
     text-align: left;

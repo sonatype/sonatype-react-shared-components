@@ -8,9 +8,7 @@ import React, { useState } from 'react';
 
 import { NxTreeView, NxButton } from '@sonatype/react-shared-components';
 
-function NxTreeViewExample() {
-  // this example uses the `useState` hook for succinctness, but you could also manage the state manually
-  // in a class component
+function NxTreeViewClickableExample() {
   const [toggleCheck, setToggleCheck] = useState(false),
       onToggleCollapse = () => setToggleCheck(!toggleCheck);
 
@@ -28,4 +26,4 @@ function NxTreeViewExample() {
   );
 }
 
-export default NxTreeViewExample;
+export default NxTreeViewClickableExample;
