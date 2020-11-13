@@ -14,18 +14,18 @@ export default function NxTreeViewCheckboxExample() {
       <NxTreeView id="example-nx-tree-view"
                   isOpen={true}
                   triggerContent="Organization">
-        <NxCheckbox className="nx-tree-view__child" isChecked={true}>
+        <NxCheckbox isChecked={true}>
           Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo
         </NxCheckbox>
-        <NxCheckbox className="nx-tree-view__child" isChecked={true}>Bar</NxCheckbox>
-        <NxCheckbox className="nx-tree-view__child" isChecked={true}>Baz</NxCheckbox>
+        <NxCheckbox isChecked={true}>Bar</NxCheckbox>
+        <NxCheckbox isChecked={true}>Baz</NxCheckbox>
       </NxTreeView>
       <NxTreeView id="example-nx-tree-view"
                   isOpen={true}
                   triggerContent="Organization">
-        <NxRadio className="nx-tree-view__child" name="test-radio" value="foo" isChecked={false}>Foo</NxRadio>
-        <NxRadio className="nx-tree-view__child" name="test-radio" value="bar" isChecked={false}>Bar</NxRadio>
-        <NxRadio className="nx-tree-view__child" name="test-radio" value="baz" isChecked={true}>Baz</NxRadio>
+        <NxRadio name="test-radio" value="foo" isChecked={false}>Foo</NxRadio>
+        <NxRadio name="test-radio" value="bar" isChecked={false}>Bar</NxRadio>
+        <NxRadio name="test-radio" value="baz" isChecked={true}>Baz</NxRadio>
       </NxTreeView>
     </>
   );

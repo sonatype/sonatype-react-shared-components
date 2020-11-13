@@ -101,6 +101,14 @@ $twisty-proportion-difference: 2px;
 
 .nx-tree-view__children {
   padding-top: $nx-spacing-xxs;
+
+  > .nx-radio-checkbox {
+    box-sizing: border-box;
+    border: none;
+    display: flex;
+    margin: 0;
+    padding: $nx-spacing-xxs 0 $nx-spacing-xxs ($nx-spacing-md + 2 * $twisty-proportion-difference);
+  }
 }
 
 .nx-tree-view__child {
@@ -120,13 +128,6 @@ $twisty-proportion-difference: 2px;
 
   text-overflow: ellipsis;
   white-space: nowrap;
-
-  &.nx-radio-checkbox {
-    border: none;
-    display: flex;
-    margin: 0;
-    padding: $nx-spacing-xxs 0 $nx-spacing-xxs ($nx-spacing-md + 2 * $twisty-proportion-difference);
-  }
 }
 
 button, a {
