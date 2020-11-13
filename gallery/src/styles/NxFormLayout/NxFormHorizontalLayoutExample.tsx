@@ -17,17 +17,6 @@ export default function NxFormLayoutExample() {
     return val.length ? null : 'Must be non-empty';
   }
 
-  const [isOption1, setIsOption1] = useState(false),
-      [isOption2, setIsOption2] = useState(false),
-      [isOption3, setIsOption3] = useState(false),
-      [isOption4, setIsOption4] = useState(false),
-      [isOption5, setIsOption5] = useState(false),
-      setOption1 = () => setIsOption1(!isOption1),
-      setOption2 = () => setIsOption2(!isOption2),
-      setOption3 = () => setIsOption3(!isOption3),
-      setOption4 = () => setIsOption4(!isOption4),
-      setOption5 = () => setIsOption5(!isOption5);
-
   const [isRed, setIsRed] = useState(false),
       [isBlue, setIsBlue] = useState(false),
       [isGreen, setIsGreen] = useState(false),
@@ -69,11 +58,11 @@ export default function NxFormLayoutExample() {
           <label className="nx-label">
             <span className="nx-label__text">Label</span>
             <select className="nx-form-select">
-              <option onChange={setOption1}>Option 1</option>
-              <option onChange={setOption2}>Option 2</option>
-              <option onChange={setOption3}>Option 3</option>
-              <option onChange={setOption4}>Option 4</option>
-              <option onChange={setOption5}>Option 5</option>
+              <option value="Option1">Option 1</option>
+              <option value="Option2">Option 2</option>
+              <option value="Option3">Option 3</option>
+              <option value="Option4">Option 4</option>
+              <option value="Option5">Option 5</option>
             </select>
           </label>
         </div>

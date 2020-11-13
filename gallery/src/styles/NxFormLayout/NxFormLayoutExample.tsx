@@ -18,6 +18,12 @@ export default function NxFormLayoutExample() {
     return val.length ? null : 'Must be non-empty';
   }
 
+  const [selectVal, setSelectVal] = useState('');
+
+  function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
+    setSelectVal(evt.currentTarget.value);
+  }
+
   const [isRed, setIsRed] = useState(false),
       [isBlue, setIsBlue] = useState(false),
       [isGreen, setIsGreen] = useState(false),
@@ -93,7 +99,7 @@ export default function NxFormLayoutExample() {
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">Select</span>
-          <select className="nx-form-select">
+          <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
             <option>Option 1</option>
             <option>Option 2</option>
             <option>Option 3</option>
