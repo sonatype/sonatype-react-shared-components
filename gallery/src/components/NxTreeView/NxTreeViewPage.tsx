@@ -173,7 +173,7 @@ const NxTreeViewPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeView Clickable Sidebar Example"
-                        id="nx-tree-view-clickable-example"
+                        id="nx-tree-view-clickable-sidebar-example"
                         liveExample={NxTreeViewClickableSidebar}
                         codeExamples={nxTreeViewClickableSidebarCode}>
       Example of an <code className="nx-code">NxTreeView</code> with clickable children one of which is selected.
@@ -187,10 +187,11 @@ const NxTreeViewPage = () =>
                         liveExample={NxTreeViewCheckbox}
                         codeExamples={nxTreeViewCheckboxCode}>
       Example showing how to construct <code className="nx-code">NxTreeView</code>s with checkboxes and radios as
-      children. This example omits the state management and is focused on demonstrating the styling.
+      children. This example omits the input state management and is focused on demonstrating the styling.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeView Empty Example"
+                        id="nx-tree-view-empty-example"
                         liveExample={NxTreeViewEmpty}
                         codeExamples={nxTreeViewEmptyCode}>
       Example of an <code className="nx-code">NxTreeView</code> that cannot be opened because it has no children.
