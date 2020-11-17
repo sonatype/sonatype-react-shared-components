@@ -22,9 +22,9 @@ const NxThreatIndicator: FunctionComponent<Props> =
           'unspecified',
 
         className = `nx-threat-indicator nx-threat-indicator--${category}`,
-        title = `threat level ${category}`;
+        label = `threat level ${category}`;
 
-    return <NxFontAwesomeIcon title={title} className={className} icon={faCircle}/>;
+    return <NxFontAwesomeIcon aria-hidden="false" aria-label={label} className={className} icon={faCircle}/>;
   };
 
 NxThreatIndicator.propTypes = propTypes;
