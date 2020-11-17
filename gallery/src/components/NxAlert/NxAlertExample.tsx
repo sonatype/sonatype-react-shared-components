@@ -16,7 +16,11 @@ function NxAlertExample() {
   }
 
   return isOpen ? (
-    <NxAlert icon={faEye} id="this-id-ends-up-on-the-div" className="nx-alert--modifier" onClose={dismiss}>
+    <NxAlert icon={faEye}
+             iconLabel="Observe"
+             id="this-id-ends-up-on-the-div"
+             className="nx-alert--modifier"
+             onClose={dismiss}>
       This is an example alert message.
       It is expected that users create their own modifier classes to alter the styles of this component.
       This alert has long text content in order to demonstrate text wrapping.

@@ -23,12 +23,12 @@ export { Props, propTypes, NxAlertProps, nxAlertPropTypes } from './types';
  */
 const NxAlert = forwardRef<HTMLDivElement, NxAlertProps>(
     function NxAlert(props, ref) {
-      const { className, icon, children, onClose, ...otherProps } = props,
+      const { className, icon, iconLabel, children, onClose, ...otherProps } = props,
           classes = classnames('nx-alert', className);
 
       return (
-        <div { ...otherProps } ref={ref} className={classes}>
-          <NxFontAwesomeIcon icon={icon}/>
+        <div { ...otherProps } ref={ref} className={classes} aria-atomic="true">
+          <NxFontAwesomeIcon aria-label={iconLabel} icon={icon}/>
           <div className="nx-alert__content">{children}</div>
           { onClose && <NxCloseButton onClick={onClose} /> }
         </div>
@@ -47,7 +47,12 @@ export const NxErrorAlert = forwardRef<HTMLDivElement, Props>(
     function NxErrorAlert(props, ref) {
       const classes = classnames('nx-alert--error', props.className);
 
-      return <NxAlert { ...props } ref={ref} className={classes} icon={faExclamationCircle} />;
+      return <NxAlert role="alert"
+                      { ...props }
+                      ref={ref}
+                      className={classes}
+                      icon={faExclamationCircle}
+                      iconLabel="Error" />;
     }
 );
 
@@ -61,7 +66,7 @@ export const NxInfoAlert = forwardRef<HTMLDivElement, Props>(
     function NxInfoAlert(props, ref) {
       const classes = classnames('nx-alert--info', props.className);
 
-      return <NxAlert { ...props } ref={ref} className={classes} icon={faInfoCircle} />;
+      return <NxAlert { ...props } ref={ref} className={classes} icon={faInfoCircle} iconLabel="Info" />;
     }
 );
 NxInfoAlert.propTypes = propTypes;
@@ -74,7 +79,7 @@ export const NxWarningAlert = forwardRef<HTMLDivElement, Props>(
     function NxWarningAlert(props, ref) {
       const classes = classnames('nx-alert--warning', props.className);
 
-      return <NxAlert { ...props } ref={ref} className={classes} icon={faExclamationTriangle} />;
+      return <NxAlert { ...props } ref={ref} className={classes} icon={faExclamationTriangle} iconLabel="Warning" />;
     }
 );
 
@@ -88,7 +93,12 @@ export const NxSuccessAlert = forwardRef<HTMLDivElement, Props>(
     function NxSuccessAlert(props, ref) {
       const classes = classnames('nx-alert--success', props.className);
 
-      return <NxAlert { ...props } ref={ref} className={classes} icon={faCheckCircle} />;
+      return <NxAlert role="status"
+                      { ...props }
+                      ref={ref}
+                      className={classes}
+                      icon={faCheckCircle}
+                      iconLabel="Success" />;
     }
 );
 
