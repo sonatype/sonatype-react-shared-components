@@ -27,7 +27,7 @@ const NxAlert = forwardRef<HTMLDivElement, NxAlertProps>(
           classes = classnames('nx-alert', className);
 
       return (
-        <div { ...otherProps } ref={ref} className={classes} aria-atomic="true">
+        <div { ...otherProps } ref={ref} className={classes} aria-atomic={true}>
           <NxFontAwesomeIcon aria-label={iconLabel} icon={icon}/>
           <div className="nx-alert__content">{children}</div>
           { onClose && <NxCloseButton onClick={onClose} /> }

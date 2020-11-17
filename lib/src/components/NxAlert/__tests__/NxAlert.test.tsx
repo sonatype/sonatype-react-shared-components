@@ -73,6 +73,14 @@ describe('NxAlert', function() {
     expect(component).toHaveProp('title', 'baz');
   });
 
+  it('sets aria-atomic on the div', function() {
+    expect(getNxAlert()).toHaveProp('aria-atomic', true);
+  });
+
+  it('sets the icons\'s aria-label from the iconLabel prop', function() {
+    expect(getNxAlert({ iconLabel: 'foo' }).find(NxFontAwesomeIcon)).toHaveProp('aria-label', 'foo');
+  });
+
   it('renders a Close button if given an onClose prop', function() {
     const onClose = jest.fn(),
         component = getNxAlert({ onClose });
@@ -97,6 +105,14 @@ describe('NxAlert', function() {
       it('renders an NxAlert', function() {
         const nxErrorAlert = getNxErrorAlert();
         expect(nxErrorAlert).toMatchSelector(NxAlert);
+      });
+
+      it('sets the role to "alert"', function() {
+        expect(getNxErrorAlert()).toHaveProp('role', 'alert');
+      });
+
+      it('sets the iconLabel to "Error"', function() {
+        expect(getNxErrorAlert()).toHaveProp('iconLabel', 'Error');
       });
 
       it('uses the appropriate error classes', function() {
@@ -133,6 +149,10 @@ describe('NxAlert', function() {
         expect(nxWarningAlert).toMatchSelector(NxAlert);
       });
 
+      it('sets the iconLabel to "Warning"', function() {
+        expect(getNxWarningAlert()).toHaveProp('iconLabel', 'Warning');
+      });
+
       it('renders the appropriate alert icon', function() {
         const nxWarningAlert = getNxWarningAlert();
         expect(nxWarningAlert).toMatchSelector(NxAlert);
@@ -167,6 +187,10 @@ describe('NxAlert', function() {
         expect(nxInfoAlert).toMatchSelector(NxAlert);
       });
 
+      it('sets the iconLabel to "Info"', function() {
+        expect(getNxInfoAlert()).toHaveProp('iconLabel', 'Info');
+      });
+
       it('renders the appropriate info classes', function() {
         const nxInfoAlert = getNxInfoAlert();
         expect(nxInfoAlert).toMatchSelector(NxAlert);
@@ -199,6 +223,14 @@ describe('NxAlert', function() {
       it('renders an NxAlert', function() {
         const nxSuccessAlert = getNxSuccessAlert();
         expect(nxSuccessAlert).toMatchSelector(NxAlert);
+      });
+
+      it('sets the role to "status"', function() {
+        expect(getNxSuccessAlert()).toHaveProp('role', 'status');
+      });
+
+      it('sets the iconLabel to "Success"', function() {
+        expect(getNxSuccessAlert()).toHaveProp('iconLabel', 'Success');
       });
 
       it('renders the appropriate info classes', function() {
