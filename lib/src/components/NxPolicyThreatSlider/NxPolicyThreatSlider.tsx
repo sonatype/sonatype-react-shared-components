@@ -11,7 +11,6 @@ import classnames from 'classnames';
 import { omit } from 'ramda';
 
 import { categoryByPolicyThreatLevel, ThreatLevelNumber } from '../../util/threatLevels';
-import { pathSet } from '../../util/jsUtil';
 
 import { Props, PolicyThreatLevelRange, propTypes } from './types';
 export { Props, PolicyThreatLevelRange, propTypes } from './types';
@@ -26,12 +25,14 @@ function NxPolicyThreatSliderValueLabelDisplay({ value, children, className, ...
 
   // this impl doesn't need to support these props. Filter them out so they don't cause react warnings on the span
   const filteredProps = omit(['open', 'valueLabelFormat', 'valueLabelDisplay'], otherProps),
-      thumb = React.Children.only(children),
-
-      // the thumb element isn't initially constructed with any children. Add the value as its child
-      thumbWithLabel = pathSet(['props', 'children'], value, thumb),
       limitedValue = Math.min(10, Math.max(0, Math.round(value))) as ThreatLevelNumber,
       threatCategory = categoryByPolicyThreatLevel[limitedValue],
+      thumb = React.Children.only(children),
+      screenReaderValue = `${limitedValue} (${threatCategory})`,
+
+      // the thumb element isn't initially constructed with any children. Add the value as its child and
+      // add extra accessibility attrs
+      thumbWithLabel = React.cloneElement(thumb, { 'aria-valuetext': screenReaderValue }, limitedValue),
       nxBaseClass = 'nx-policy-threat-slider__value-label',
       classes = classnames(nxBaseClass, `${nxBaseClass}--${threatCategory}`, className);
 
