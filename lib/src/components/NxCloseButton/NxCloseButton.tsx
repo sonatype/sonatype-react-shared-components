@@ -20,7 +20,7 @@ const NxCloseButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLBut
                   type="button"
                   className={btnClasses}
                   variant="icon-only"
-                  aria-label="Dismiss"
+                  aria-label="Close"
                   { ...otherProps }>
           <Close/>
         </NxButton>
