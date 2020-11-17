@@ -40,7 +40,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
               className={buttonClasses}
               onClick={!disabled && onToggleCollapse || undefined}
               aria-haspopup="true"
-              aria-expanded={isOpen ? true : false}>
+              aria-expanded={isOpen}>
       <span className="nx-dropdown__toggle-label">{ label }</span>
       <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown}/>
     </NxButton>
