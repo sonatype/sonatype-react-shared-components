@@ -25,8 +25,8 @@ const NxTableClickableExample = () => {
     <NxTable>
       <NxTableHead>
         <NxTableRow>
-          <NxTableCell>Name</NxTableCell>
-          <NxTableCell>Header 2</NxTableCell>
+          <NxTableCell scope="col">Name</NxTableCell>
+          <NxTableCell scope="col">Header 2</NxTableCell>
           <NxTableCell chevron />
         </NxTableRow>
       </NxTableHead>

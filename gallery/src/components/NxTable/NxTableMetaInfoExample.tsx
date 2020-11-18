@@ -20,11 +20,11 @@ const NxTableLoadingExample = () => {
     <NxTable>
       <NxTableHead>
         <NxTableRow>
-          <NxTableCell>Header 1</NxTableCell>
-          <NxTableCell>Header 2</NxTableCell>
-          <NxTableCell>Header 3</NxTableCell>
-          <NxTableCell isNumeric>Header 4</NxTableCell>
-          <NxTableCell>Header 5</NxTableCell>
+          <NxTableCell scope="col">Header 1</NxTableCell>
+          <NxTableCell scope="col">Header 2</NxTableCell>
+          <NxTableCell scope="col">Header 3</NxTableCell>
+          <NxTableCell scope="col" isNumeric>Header 4</NxTableCell>
+          <NxTableCell scope="col">Header 5</NxTableCell>
         </NxTableRow>
       </NxTableHead>
       <NxTableBody>

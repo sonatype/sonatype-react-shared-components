@@ -14,7 +14,16 @@ import {
   NxTableRow
 } from '@sonatype/react-shared-components';
 
-const initialState = ['A', '1', 'B', '2', 'C', '3', 'D', '4'];
+const initialState = [
+  {key: 'A', value: 'a'},
+  {key: '1', value: 1},
+  {key: 'B', value: 'b'},
+  {key: '2', value: 2},
+  {key: 'C', value: 'c'},
+  {key: '3', value: 3},
+  {key: 'D', value: 'd'},
+  {key: '4', value: 4}
+];
 
 const NxTableSortableExample = () => {
   const [rows, setRows] = useState(initialState);
@@ -23,7 +32,7 @@ const NxTableSortableExample = () => {
   function sort() {
     if (sortDir === null) {
       setSortDir('asc');
-      setRows(rows.slice().sort((a, b) => a > b ? 1 : -1));
+      setRows(rows.slice().sort((a, b) => a.key > b.key ? 1 : -1));
     }
     else if (sortDir === 'asc') {
       setSortDir('desc');
@@ -39,13 +48,15 @@ const NxTableSortableExample = () => {
     <NxTable>
       <NxTableHead>
         <NxTableRow>
-          <NxTableCell isSortable sortDir={sortDir} onClick={sort}>Name</NxTableCell>
+          <NxTableCell scope="col" isSortable sortDir={sortDir} onClick={sort}>Key</NxTableCell>
+          <NxTableCell scope="col">Value</NxTableCell>
         </NxTableRow>
       </NxTableHead>
       <NxTableBody>
-        {rows.map(row =>
-          <NxTableRow key={row}>
-            <NxTableCell>{row}</NxTableCell>
+        {rows.map(({key, value}) =>
+          <NxTableRow key={key}>
+            <NxTableCell>{key}</NxTableCell>
+            <NxTableCell>{value}</NxTableCell>
           </NxTableRow>
         )}
       </NxTableBody>

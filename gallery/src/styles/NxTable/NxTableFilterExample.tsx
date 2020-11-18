@@ -11,8 +11,8 @@ const NxTableFilter = () =>
   <table className="nx-table">
     <thead>
       <tr className="nx-table-row nx-table-row--header">
-        <th className="nx-cell nx-cell--header">Name</th>
-        <th className="nx-cell nx-cell--header">Country</th>
+        <th scope="col" className="nx-cell nx-cell--header">Name</th>
+        <th scope="col" className="nx-cell nx-cell--header">Country</th>
       </tr>
       <tr className="nx-table-row nx-table-row--header nx-table-row--filter-header">
         <th className="nx-cell nx-cell--header">

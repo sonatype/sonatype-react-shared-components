@@ -74,8 +74,8 @@ const NxTableFilterExample = () => {
       <NxTable className="nx-table nx-table--scrollable">
         <NxTableHead>
           <NxTableRow>
-            <NxTableCell>Name</NxTableCell>
-            <NxTableCell>Country</NxTableCell>
+            <NxTableCell scope="col">Name</NxTableCell>
+            <NxTableCell scope="col">Country</NxTableCell>
           </NxTableRow>
           <NxTableRow isFilterHeader>
             <NxTableCell>

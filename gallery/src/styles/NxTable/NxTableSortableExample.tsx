@@ -12,7 +12,7 @@ const NxTableSortable = () =>
   <table className="nx-table">
     <thead>
       <tr className="nx-table-row nx-table-row--header">
-        <th className="nx-cell nx-cell--header nx-cell--sortable">
+        <th scope="col" className="nx-cell nx-cell--header nx-cell--sortable">
           <span>Name</span>
           <span className="nx-cell__sort-icons fa-layers">
             <NxFontAwesomeIcon icon={faSortUp} />

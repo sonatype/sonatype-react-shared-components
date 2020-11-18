@@ -10,11 +10,11 @@ const NxClickableExample = () =>
   <table className="nx-table">
     <thead>
       <tr className="nx-table-row nx-table-row--header">
-        <th className="nx-cell nx-cell--header">Header 1</th>
-        <th className="nx-cell nx-cell--header">Header 2</th>
-        <th className="nx-cell nx-cell--header">Header 3</th>
-        <th className="nx-cell nx-cell--header">Header 4</th>
-        <th className="nx-cell nx-cell--header">Header 5</th>
+        <th scope="col" className="nx-cell nx-cell--header">Header 1</th>
+        <th scope="col" className="nx-cell nx-cell--header">Header 2</th>
+        <th scope="col" className="nx-cell nx-cell--header">Header 3</th>
+        <th scope="col" className="nx-cell nx-cell--header">Header 4</th>
+        <th scope="col" className="nx-cell nx-cell--header">Header 5</th>
       </tr>
     </thead>
     <tbody>
