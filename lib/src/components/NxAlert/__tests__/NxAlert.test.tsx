@@ -60,11 +60,11 @@ describe('NxAlert', function() {
   });
 
   it('renders the icon passed to it', function() {
-    expect(getNxAlert())
-        .toContainReact(<NxFontAwesomeIcon icon={faBiohazard}/>);
+    expect(getNxAlert().find(NxFontAwesomeIcon)).toExist();
+    expect(getNxAlert().find(NxFontAwesomeIcon)).toHaveProp('icon', faBiohazard);
 
-    expect(getNxAlert({icon: faCrow}))
-        .toContainReact(<NxFontAwesomeIcon icon={faCrow}/>);
+    expect(getNxAlert({icon: faCrow}).find(NxFontAwesomeIcon)).toExist();
+    expect(getNxAlert({icon: faCrow}).find(NxFontAwesomeIcon)).toHaveProp('icon', faCrow);
   });
 
   it('passes any other props to the div', function() {
@@ -79,6 +79,11 @@ describe('NxAlert', function() {
 
   it('sets the icons\'s aria-label from the iconLabel prop', function() {
     expect(getNxAlert({ iconLabel: 'foo' }).find(NxFontAwesomeIcon)).toHaveProp('aria-label', 'foo');
+  });
+
+  it('sets the icons\'s aria-hidden to false if the iconLabel is defined', function() {
+    expect(getNxAlert({ iconLabel: 'foo' }).find(NxFontAwesomeIcon)).toHaveProp('aria-hidden', false);
+    expect(getNxAlert().find(NxFontAwesomeIcon)).toHaveProp('aria-hidden', true);
   });
 
   it('renders a Close button if given an onClose prop', function() {
