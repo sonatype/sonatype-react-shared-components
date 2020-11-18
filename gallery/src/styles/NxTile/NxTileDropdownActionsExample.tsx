@@ -11,10 +11,10 @@ export default function NxTileDropdownActionsExample() {
   const onClick = () => { alert('click'); };
 
   return (
-    <section className="nx-tile" aria-labelledby="nx-tile-example2">
+    <section className="nx-tile" aria-label="Example of nx-tile with an actions dropdown">
       <header className="nx-tile-header">
         <div className="nx-tile-header__title">
-          <h2 className="nx-h2" id="nx-tile-example2">Tile with actions dropdown</h2>
+          <h2 className="nx-h2">Tile with actions dropdown</h2>
         </div>
         <div className="nx-tile__actions">
           <NxStatefulDropdown label="Actions">
