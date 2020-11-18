@@ -41,6 +41,7 @@ describe('NxButton', function() {
     const button = shallow(<NxButton variant="error" disabled>Disabled Button</NxButton>);
 
     expect(button).toMatchSelector('button.nx-btn.nx-btn--error');
+    expect(button).toHaveProp('aria-disabled', false);
     expect(button).toBeDisabled();
   });
 
@@ -48,5 +49,11 @@ describe('NxButton', function() {
     const button = shallow(<NxButton variant="error" inline>Disabled Button</NxButton>);
 
     expect(button).toMatchSelector('button.nx-btn.nx-btn--error.nx-btn--inline');
+  });
+
+  it('disabled by class button has aria-disabled true', function() {
+    const button = shallow(<NxButton className="disabled">Disabled Button</NxButton>);
+
+    expect(button).toHaveProp('aria-disabled', true);
   });
 });

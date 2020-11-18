@@ -17,7 +17,13 @@ const NxButton = forwardRef<HTMLButtonElement, Props>(
         'nx-btn--inline': inline
       });
 
-      return <button ref={ref} className={classNames} {...attrs}>{children}</button>;
+      return (
+        <button aria-disabled={classNames.includes('disabled')}
+                ref={ref}
+                className={classNames}
+                {...attrs}>{children}
+        </button>
+      );
     }
 );
 
