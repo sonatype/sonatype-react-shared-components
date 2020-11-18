@@ -18,43 +18,43 @@ function NxDropdownNavigationExample() {
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        Nav Link1
+        Text Link 1
       </a>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        Nav Link2
+        Text Link 2
       </a>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        Nav Link3
+        Text Link 3
       </a>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        Nav Link4
+        Text Link 4
       </a>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        Nav Link5
+        Text Link 5
       </a>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        Nav Link6
+        Text Link 6
       </a>
       <a href="#" className="disabled nx-dropdown-button">
-        Nav Link7 Disabled
+        Text Link 7 Disabled
       </a>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        Nav Link8
+        Text Link 8
       </a>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        Nav Link9
+        Text Link 9
       </a>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        Nav Link10
+        Text Link 10
       </a>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        Nav Link11
+        Text Link 11
       </a>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        Nav Link12
+        Text Link 12
       </a>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        Nav Link13
+        Text Link 13
       </a>
     </NxDropdown>
   );

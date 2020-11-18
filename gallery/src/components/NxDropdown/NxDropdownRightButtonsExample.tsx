@@ -17,19 +17,19 @@ function NxDropdownRightButtonsExample() {
   return (
     <NxDropdown label="Navigation" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        <span className="nx-dropdown-button-content">Nav Link1</span>
+        <span className="nx-dropdown-button-content">Text Link1</span>
       </a>
       <NxButton onClick={() => alert('icon click')} className="nx-dropdown-right-button" variant="icon-only">
         <NxFontAwesomeIcon icon={faTrash}/>
       </NxButton>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        <span className="nx-dropdown-button-content">Nav Link2</span>
+        <span className="nx-dropdown-button-content">Button Link2</span>
       </a>
       <NxButton onClick={() => alert('icon click')} className="nx-dropdown-right-button" variant="icon-only">
         <NxFontAwesomeIcon icon={faTrash}/>
       </NxButton>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
-        <span className="nx-dropdown-button-content">Nav Link3 - this link should trigger truncation</span>
+        <span className="nx-dropdown-button-content">Text Link3 - this link should trigger truncation</span>
       </a>
     </NxDropdown>
   );

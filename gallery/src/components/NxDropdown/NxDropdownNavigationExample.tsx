@@ -25,16 +25,16 @@ function NxDropdownNavigationExample() {
         Text link 3
       </a>
       <button onClick={onClick} className="nx-dropdown-button">
-        Nav Link4 - this link should trigger truncation
+        Button Link 4 - this link should trigger truncation
       </button>
       <button onClick={onClick} className="nx-dropdown-button">
-        Nav Link5
+        Button Link 5
       </button>
       <button onClick={onClick} className="nx-dropdown-button">
-        Nav Link6
+        Button Link 6
       </button>
       <button className="disabled nx-dropdown-button">
-        Nav Link7 Disabled
+        Button Link 7 Disabled
       </button>
     </NxDropdown>
   );
