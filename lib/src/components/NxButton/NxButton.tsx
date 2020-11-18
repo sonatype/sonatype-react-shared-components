@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { forwardRef } from 'react';
+import { includes } from 'ramda';
 import classnames from 'classnames';
 
 import {Props, propTypes} from './types';
@@ -18,7 +19,7 @@ const NxButton = forwardRef<HTMLButtonElement, Props>(
       });
 
       return (
-        <button aria-disabled={classNames.includes('disabled')}
+        <button aria-disabled={includes('disabled', classNames)}
                 ref={ref}
                 className={classNames}
                 {...attrs}>
