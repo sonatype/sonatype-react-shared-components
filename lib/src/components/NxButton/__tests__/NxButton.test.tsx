@@ -41,7 +41,6 @@ describe('NxButton', function() {
     const button = shallow(<NxButton variant="error" disabled>Disabled Button</NxButton>);
 
     expect(button).toMatchSelector('button.nx-btn.nx-btn--error');
-    expect(button).toHaveProp('aria-disabled', false);
     expect(button).toBeDisabled();
   });
 

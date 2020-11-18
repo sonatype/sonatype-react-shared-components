@@ -17,15 +17,15 @@ const NxButton = forwardRef<HTMLButtonElement, Props>(
         [`nx-btn--${variant}`]: variant && variant !== 'secondary',
         'nx-btn--inline': inline
       });
-
       return (
-        <button aria-disabled={includes('disabled', classNames)}
+        <button aria-disabled={includes('disabled', classNames) ? true : undefined}
                 ref={ref}
                 className={classNames}
                 {...attrs}>
           {children}
         </button>
       );
+
     }
 );
 
