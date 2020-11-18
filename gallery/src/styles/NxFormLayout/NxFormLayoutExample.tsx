@@ -36,25 +36,27 @@ export default function NxFormLayoutExample() {
     <form className="nx-form" onSubmit={onSubmit}>
       <div className="nx-form-group">
         <label className="nx-label">
-          <span className="nx-label__text">Label</span>
-          <NxStatefulTextInput validator={validator}/>
+          <span className="nx-label__text">A Field to Fill in</span>
+          <NxStatefulTextInput aria-required={true} validator={validator}/>
         </label>
       </div>
       <div className="nx-form-group">
-        <label className="nx-label nx-label--optional">
+        <label htmlFor="input-2" className="nx-label nx-label--optional">
           <span className="nx-label__text">Label</span>
-          <NxStatefulTextInput/>
         </label>
+        <NxStatefulTextInput id="input-2"/>
       </div>
       <div className="nx-form-group">
-        <label className="nx-label nx-label--optional">
+        <label htmlFor="long-field" className="nx-label nx-label--optional">
           <span className="nx-label__text">Long field</span>
-          <span className="nx-sub-label">
-            <NxFontAwesomeIcon icon={faCalendar}/>
-            <span>This is a sub-label. The field element below is wider than the default.</span>
-          </span>
-          <NxStatefulTextInput className="nx-text-input--long"/>
         </label>
+        <span className="nx-sub-label">
+          <NxFontAwesomeIcon icon={faCalendar}/>
+          <span id="long-field-sublabel">
+            This is a sub-label. The field element below is wider than the default.
+          </span>
+        </span>
+        <NxStatefulTextInput id="long-field" aria-describedby="long-field-sublabel" className="nx-text-input--long"/>
       </div>
       <fieldset className="nx-fieldset">
         <legend className="nx-legend">

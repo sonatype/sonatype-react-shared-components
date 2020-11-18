@@ -37,7 +37,7 @@ export default function NxFormLayoutExample() {
         <div className="nx-form-group">
           <label className="nx-label">
             <span className="nx-label__text">Label</span>
-            <NxStatefulTextInput validator={validator}/>
+            <NxStatefulTextInput aria-required={true} validator={validator}/>
           </label>
         </div>
         <div className="nx-form-group">
