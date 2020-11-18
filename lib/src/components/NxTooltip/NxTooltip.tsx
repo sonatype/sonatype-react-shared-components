@@ -7,6 +7,7 @@
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
+import { textContent } from '../../util/childUtil';
 
 import { Props, propTypes, TooltipPlacement } from './types';
 export { Props, propTypes, TooltipPlacement } from './types';
@@ -36,7 +37,8 @@ function fixOptional(props: Props): TooltipProps {
     onClose: props.onClose || undefined,
     open: props.open === null ? undefined : props.open,
     placement: convertPlacement(props.placement),
-    title: props.title || ''
+    title: props.title || '',
+    'aria-label': textContent(props.title)
   };
 }
 
