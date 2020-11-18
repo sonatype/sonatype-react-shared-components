@@ -15,7 +15,7 @@ export default function NxCardRowLayoutExample() {
       <div className="nx-card-container nx-card-container--row">
         <section className="nx-card" aria-label="Card 1 in Row Layout">
           <header className="nx-card__header">
-            <h3 className="nx-h3" id="header-1">Header</h3>
+            <h3 className="nx-h3">Header</h3>
           </header>
           <div className="nx-card__call-out nx-card__call-out--text-only">
             42
