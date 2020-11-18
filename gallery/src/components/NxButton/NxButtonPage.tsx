@@ -68,7 +68,7 @@ export default function NxButtonPage() {
                           id="nx-button-icon-example"
                           liveExample={NxButtonIconExample}
                           codeExamples={nxButtonIconCode}>
-          An example of a button containing an icon in addition to text.
+        An example of a button containing an icon in addition to text.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Icon only buttons"
