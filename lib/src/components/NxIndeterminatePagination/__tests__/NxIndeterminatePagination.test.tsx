@@ -26,10 +26,10 @@ describe('NxIndeterminatePagination', function() {
 
     expect(component).toHaveClassName('nx-btn-bar');
     expect(component).toMatchElement(
-      <div>
-        <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-        <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-      </div>
+      <nav>
+        <NxButton><NxFontAwesomeIcon aria-label="previous page" icon={{} as IconProp} /></NxButton>
+        <NxButton><NxFontAwesomeIcon aria-label="next page" icon={{} as IconProp} /></NxButton>
+      </nav>
     );
 
     expect(component.find(NxFontAwesomeIcon).first()).toHaveProp('icon', faCaretLeft);

@@ -17,14 +17,14 @@ export default function NxIndeterminatePagination({ className, onPrevPageSelect,
   const classes = classnames('nx-btn-bar', 'nx-btn-bar--pagination', className);
 
   return (
-    <div className={classes} { ...attrs }>
-      <NxButton onClick={onPrevPageSelect} variant="tertiary">
+    <nav aria-label="pagination" className={classes} { ...attrs }>
+      <NxButton aria-label="previous Page" onClick={onPrevPageSelect} variant="tertiary">
         <NxFontAwesomeIcon icon={faCaretLeft} />
       </NxButton>
-      <NxButton onClick={onNextPageSelect} variant="tertiary">
+      <NxButton aria-label="next Page" onClick={onNextPageSelect} variant="tertiary">
         <NxFontAwesomeIcon icon={faCaretRight} />
       </NxButton>
-    </div>
+    </nav>
   );
 }
 

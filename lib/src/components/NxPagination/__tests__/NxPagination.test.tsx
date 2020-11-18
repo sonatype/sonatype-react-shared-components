@@ -85,32 +85,32 @@ describe('NxPagination', function() {
   describe('when there are five or fewer pages', function() {
     it('renders only arrows and buttons for the individual pages', function() {
       expect(getShallowComponent({ pageCount: 2, currentPage: 0 })).toMatchElement(
-        <div>
-          <NxButton>1</NxButton>
-          <NxButton>2</NxButton>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-        </div>
+        <nav>
+          <NxButton aria-label="first page">1</NxButton>
+          <NxButton aria-label="page 2">2</NxButton>
+          <NxButton aria-label="next page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+        </nav>
       );
 
       expect(getShallowComponent({ pageCount: 5, currentPage: 1 })).toMatchElement(
-        <div>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-          <NxButton>1</NxButton>
-          <NxButton>2</NxButton>
-          <NxButton>3</NxButton>
-          <NxButton>4</NxButton>
-          <NxButton>5</NxButton>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-        </div>
+        <nav>
+          <NxButton aria-label="previous page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+          <NxButton aria-label="first page">1</NxButton>
+          <NxButton aria-label="page 2">2</NxButton>
+          <NxButton aria-label="page 3">3</NxButton>
+          <NxButton aria-label="page 4">4</NxButton>
+          <NxButton aria-label="page 5">5</NxButton>
+          <NxButton aria-label="next page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+        </nav>
       );
 
       expect(getShallowComponent({ pageCount: 3, currentPage: 2 })).toMatchElement(
-        <div>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-          <NxButton>1</NxButton>
-          <NxButton>2</NxButton>
-          <NxButton>3</NxButton>
-        </div>
+        <nav>
+          <NxButton aria-label="previous page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+          <NxButton aria-label="first page">1</NxButton>
+          <NxButton aria-label="page 2">2</NxButton>
+          <NxButton aria-label="page 3">3</NxButton>
+        </nav>
       );
     });
   });
@@ -118,16 +118,16 @@ describe('NxPagination', function() {
   describe('when there are six pages', function() {
     it('renders only arrows and buttons for the individual pages', function() {
       expect(getShallowComponent({ pageCount: 6, currentPage: 2 })).toMatchElement(
-        <div>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-          <NxButton>1</NxButton>
-          <NxButton>2</NxButton>
-          <NxButton>3</NxButton>
-          <NxButton>4</NxButton>
-          <NxButton>5</NxButton>
+        <nav>
+          <NxButton aria-label="previous page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+          <NxButton aria-label="first page">1</NxButton>
+          <NxButton aria-label="page 2">2</NxButton>
+          <NxButton aria-label="page 3">3</NxButton>
+          <NxButton aria-label="page 4">4</NxButton>
+          <NxButton aria-label="page 5">5</NxButton>
           <NxButton>6</NxButton>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-        </div>
+          <NxButton aria-label="next page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+        </nav>
       );
     });
   });
@@ -135,31 +135,31 @@ describe('NxPagination', function() {
   describe('when there are seven or more pages', function() {
     it('renders an ellipsis button and the max page button', function() {
       expect(getShallowComponent({ pageCount: 7, currentPage: 2 })).toMatchElement(
-        <div>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-          <NxButton>1</NxButton>
-          <NxButton>2</NxButton>
-          <NxButton>3</NxButton>
-          <NxButton>4</NxButton>
-          <NxButton>5</NxButton>
+        <nav>
+          <NxButton aria-label="previous page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+          <NxButton aria-label="first page">1</NxButton>
+          <NxButton aria-label="page 2">2</NxButton>
+          <NxButton aria-label="page 3">3</NxButton>
+          <NxButton aria-label="page 4">4</NxButton>
+          <NxButton aria-label="page 5">5</NxButton>
           <NxButton>…</NxButton>
           <NxButton>7</NxButton>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-        </div>
+          <NxButton aria-label="next page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+        </nav>
       );
 
       expect(getShallowComponent({ pageCount: 25, currentPage: 2 })).toMatchElement(
-        <div>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-          <NxButton>1</NxButton>
-          <NxButton>2</NxButton>
-          <NxButton>3</NxButton>
-          <NxButton>4</NxButton>
-          <NxButton>5</NxButton>
+        <nav>
+          <NxButton aria-label="previous page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+          <NxButton aria-label="first page">1</NxButton>
+          <NxButton aria-label="page 2">2</NxButton>
+          <NxButton aria-label="page 3">3</NxButton>
+          <NxButton aria-label="page 4">4</NxButton>
+          <NxButton aria-label="page 5">5</NxButton>
           <NxButton>…</NxButton>
           <NxButton>25</NxButton>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-        </div>
+          <NxButton aria-label="next page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+        </nav>
       );
     });
   });
@@ -167,23 +167,23 @@ describe('NxPagination', function() {
   describe('when the current page is greater than 5', function() {
     it('renders the first page button and a descending ellipsis button', function() {
       expect(getShallowComponent({ pageCount: 10, currentPage: 8 })).toMatchElement(
-        <div>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-          <NxButton>1</NxButton>
+        <nav>
+          <NxButton aria-label="previous page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+          <NxButton aria-label="first page">1</NxButton>
           <NxButton>…</NxButton>
           <NxButton>6</NxButton>
           <NxButton>7</NxButton>
           <NxButton>8</NxButton>
           <NxButton>9</NxButton>
           <NxButton>10</NxButton>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-        </div>
+          <NxButton aria-label="next page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+        </nav>
       );
 
       expect(getShallowComponent({ pageCount: 25, currentPage: 8 })).toMatchElement(
-        <div>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-          <NxButton>1</NxButton>
+        <nav>
+          <NxButton aria-label="previous page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+          <NxButton aria-label="first page">1</NxButton>
           <NxButton>…</NxButton>
           <NxButton>6</NxButton>
           <NxButton>7</NxButton>
@@ -192,8 +192,8 @@ describe('NxPagination', function() {
           <NxButton>10</NxButton>
           <NxButton>…</NxButton>
           <NxButton>25</NxButton>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-        </div>
+          <NxButton aria-label="next page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+        </nav>
       );
     });
   });
@@ -201,15 +201,15 @@ describe('NxPagination', function() {
   describe('when the pageCount is not divisible by 5 and the currentPage is less than 5 from the max', function() {
     it('renders the final group mod 5 of pages', function() {
       expect(getShallowComponent({ pageCount: 43, currentPage: 40 })).toMatchElement(
-        <div>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-          <NxButton>1</NxButton>
+        <nav>
+          <NxButton aria-label="previous page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+          <NxButton aria-label="first page">1</NxButton>
           <NxButton>…</NxButton>
           <NxButton>41</NxButton>
           <NxButton>42</NxButton>
           <NxButton>43</NxButton>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-        </div>
+          <NxButton aria-label="next page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+        </nav>
       );
     });
   });
@@ -219,9 +219,9 @@ describe('NxPagination', function() {
       const component = getShallowComponent({ pageCount: 41, currentPage: 40 });
 
       expect(component).toMatchElement(
-        <div>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-          <NxButton>1</NxButton>
+        <nav>
+          <NxButton aria-label="previous page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+          <NxButton aria-label="first page">1</NxButton>
           <NxButton>…</NxButton>
           <NxButton>36</NxButton>
           <NxButton>37</NxButton>
@@ -229,7 +229,7 @@ describe('NxPagination', function() {
           <NxButton>39</NxButton>
           <NxButton>40</NxButton>
           <NxButton>41</NxButton>
-        </div>
+        </nav>
       );
 
       expect(component.children().last()).toHaveClassName('selected');
@@ -239,16 +239,16 @@ describe('NxPagination', function() {
   describe('when the current page is the first page', function() {
     it('does not render the back arrow', function() {
       expect(getShallowComponent({ pageCount: 7, currentPage: 0 })).toMatchElement(
-        <div>
-          <NxButton>1</NxButton>
-          <NxButton>2</NxButton>
-          <NxButton>3</NxButton>
-          <NxButton>4</NxButton>
-          <NxButton>5</NxButton>
+        <nav>
+          <NxButton aria-label="first page">1</NxButton>
+          <NxButton aria-label="page 2">2</NxButton>
+          <NxButton aria-label="page 3">3</NxButton>
+          <NxButton aria-label="page 4">4</NxButton>
+          <NxButton aria-label="page 5">5</NxButton>
           <NxButton>…</NxButton>
           <NxButton>7</NxButton>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-        </div>
+          <NxButton aria-label="next page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+        </nav>
       );
     });
   });
@@ -265,13 +265,13 @@ describe('NxPagination', function() {
   describe('when the current page is the last page', function() {
     it('does not render the forward arrow', function() {
       expect(getShallowComponent({ pageCount: 7, currentPage: 6 })).toMatchElement(
-        <div>
-          <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-          <NxButton>1</NxButton>
-          <NxButton>…</NxButton>
-          <NxButton>6</NxButton>
-          <NxButton>7</NxButton>
-        </div>
+        <nav>
+          <NxButton aria-label="previous page"><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
+          <NxButton aria-label="first page">1</NxButton>
+          <NxButton aria-label="previous 5 pages">…</NxButton>
+          <NxButton aria-label="page 6">6</NxButton>
+          <NxButton aria-label="page 7">7</NxButton>
+        </nav>
       );
     });
   });
