@@ -19,10 +19,12 @@ export default function NxTileFormExample() {
   }
 
   return (
-    <section className="nx-tile" aria-label="Example tile containing a form">
+    <section className="nx-tile" aria-labelledby="nx-tile-example3">
       <form className="nx-form" onSubmit={onSubmit}>
         <header className="nx-tile-header">
-          <div className="nx-tile-header__title"><h2 className="nx-h2">NX Simple Tile with Form</h2></div>
+          <div className="nx-tile-header__title">
+            <h2 className="nx-h2" id="nx-tile-example3">NX Simple Tile with Form</h2>
+          </div>
         </header>
         <div className="nx-tile-content">
           <div className="nx-form-group">
