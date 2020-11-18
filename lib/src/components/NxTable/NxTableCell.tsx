@@ -59,10 +59,10 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
       ariaSort = 'descending';
       ariaLabel = `${text} ${ariaSort}`;
       maskedSort = (
-          <>
-            <NxFontAwesomeIcon icon={faSortUp} />
-            <NxFontAwesomeIcon icon={faSortDown} />
-          </>
+        <>
+          <NxFontAwesomeIcon icon={faSortUp} />
+          <NxFontAwesomeIcon icon={faSortDown} />
+        </>
       );
     }
     else {
@@ -72,9 +72,8 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
     }
   }
 
-
   const Tag = isHeader ? 'th' : 'td';
-  const tabIndex = isSortable? 0 : undefined;
+  const tabIndex = isSortable ? 0 : undefined;
   const cell = (
     <Tag className={classes} tabIndex={tabIndex} aria-sort={ariaSort} {...attrs}>
       { (chevron && !isHeader) ?
@@ -88,7 +87,7 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   );
 
   if (isSortable) {
-    return <NxTooltip title={ariaLabel}>{cell}</NxTooltip>
+    return <NxTooltip title={ariaLabel}>{cell}</NxTooltip>;
   }
   return cell;
 };
