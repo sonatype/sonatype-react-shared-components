@@ -48,4 +48,11 @@ describe('NxThreatIndicator', function() {
     expect(component).not.toMatchSelector('.nx-threat-indicator--critical');
     expect(component).not.toMatchSelector('.nx-threat-indicator--unspecified');
   });
+
+  it('adds aria attrs to help the icon show up for screen readers', function() {
+    const component = getShallowComponent({ policyThreatLevel: 9, threatLevelCategory: 'low' });
+
+    expect(component.find(NxFontAwesomeIcon)).toHaveProp('aria-label', 'threat level low');
+    expect(component.find(NxFontAwesomeIcon)).toHaveProp('aria-hidden', false);
+  });
 });

@@ -86,6 +86,14 @@ describe('NxPolicyThreatSlider', function() {
       expect(getValueLabelDisplay({ value: 5 }).find('.foo').children()).toHaveText('5');
     });
 
+    it('sets the aria-valuetext of its child to include the numeric threat level and category', function() {
+      const component = getValueLabelDisplay({ value: 5 }).find('.foo'),
+          valueText = component.prop('aria-valuetext');
+
+      expect(valueText).toContain('5');
+      expect(valueText).toContain('severe');
+    });
+
     it('passes other props except open, valueLabelFormat, and valueLabelDisplay to the span', function() {
       const onClick = jest.fn(),
           props: any = {
