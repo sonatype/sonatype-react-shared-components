@@ -21,7 +21,8 @@ const NxButton = forwardRef<HTMLButtonElement, Props>(
         <button aria-disabled={classNames.includes('disabled')}
                 ref={ref}
                 className={classNames}
-                {...attrs}>{children}
+                {...attrs}>
+          {children}
         </button>
       );
     }
