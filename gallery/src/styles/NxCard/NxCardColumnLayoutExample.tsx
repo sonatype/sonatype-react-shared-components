@@ -12,7 +12,7 @@ import { NxFontAwesomeIcon, NxButton } from '@sonatype/react-shared-components';
 export default function NxCardColumnLayoutExample() {
   return (
     <div className="nx-card-container nx-card-container--column">
-      <section className="nx-card">
+      <section className="nx-card" aria-label="Card 1 in Column Layout">
         <header className="nx-card__header">
           <h3 className="nx-h3">Header</h3>
         </header>
@@ -26,7 +26,7 @@ export default function NxCardColumnLayoutExample() {
           <a href="#" className="nx-text-link">Link</a>
         </footer>
       </section>
-      <section className="nx-card">
+      <section className="nx-card" aria-label="Card 2 in Column Layout">
         <header className="nx-card__header">
           <h3 className="nx-h3">Card header</h3>
         </header>
@@ -42,7 +42,7 @@ export default function NxCardColumnLayoutExample() {
           </div>
         </footer>
       </section>
-      <section className="nx-card">
+      <section className="nx-card" aria-label="Card 3 in Column Layout">
         <header className="nx-card__header">
           <h3 className="nx-h3">Card header</h3>
         </header>
@@ -60,7 +60,7 @@ export default function NxCardColumnLayoutExample() {
           </div>
         </footer>
       </section>
-      <section className="nx-card">
+      <section className="nx-card" aria-label="Card 4 in Column Layout">
         <header className="nx-card__header">
           <h3 className="nx-h3">Card header</h3>
         </header>
@@ -74,7 +74,7 @@ export default function NxCardColumnLayoutExample() {
           <a href="#" className="nx-text-link">Link</a>
         </footer>
       </section>
-      <section className="nx-card">
+      <section className="nx-card" aria-label="Card 5 in Column Layout">
         <header className="nx-card__header">
           <h3 className="nx-h3">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
         </header>
@@ -86,7 +86,7 @@ export default function NxCardColumnLayoutExample() {
           <a href="#" className="nx-text-link">Artisanal denim</a>
         </footer>
       </section>
-      <section className="nx-card">
+      <section className="nx-card" aria-label="Card 6 in Column Layout">
         <header className="nx-card__header">
           <h3 className="nx-h3">Render-farm dolphin beef noodles</h3>
         </header>
