@@ -24,7 +24,7 @@ const NxThreatIndicator: FunctionComponent<Props> =
         className = `nx-threat-indicator nx-threat-indicator--${category}`,
         label = `threat level ${category}`;
 
-    return <NxFontAwesomeIcon aria-hidden="false"
+    return <NxFontAwesomeIcon aria-hidden={false}
                               aria-label={label}
                               className={className}
                               icon={faCircle}/>;
