@@ -39,8 +39,8 @@ export default function NxButtonPage() {
                           liveExample={NxButtonDefaultExample}
                           codeExamples={NxButtonDefaultCode}>
         An example of an <code className="nx-code">NxButton</code> using the default styling, also known as the
-          "secondary" styling, along with some other inline content and some disabled buttons. Disabling by class will
-          add aria-disabled=true to the button.
+        "secondary" styling, along with some other inline content and some disabled buttons. Disabling by class will
+        add aria-disabled=true to the button.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Primary"
@@ -68,8 +68,7 @@ export default function NxButtonPage() {
                           id="nx-button-icon-example"
                           liveExample={NxButtonIconExample}
                           codeExamples={nxButtonIconCode}>
-          An example of a button containing an icon in addition to text. For accessibility purposes it is important to
-          add an aria-label and aria-hidden=false for screen reader to interpret the content correctly.
+          An example of a button containing an icon in addition to text.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Icon only buttons"
