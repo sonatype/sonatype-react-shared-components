@@ -75,8 +75,8 @@ export default function NxButtonPage() {
                           id="nx-button-icon-only-example"
                           liveExample={NxButtonIconOnlyExample}
                           codeExamples={nxButtonIconOnlyCode}>
-          An example of a button containing only an icon. For accessibility purposes it is important to add an
-          aria-label and aria-hidden=false for the screen reader to interpret the content correctly.
+        An example of a button containing only an icon. For accessibility purposes it is important to add an
+        aria-label and aria-hidden=false for the screen reader to interpret the content correctly.
       </GalleryExampleTile>
     </>
   );
