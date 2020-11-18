@@ -12,7 +12,7 @@ import { NxButton, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 const NxButtonIconExample = () =>
   <div className="nx-btn-bar">
     <NxButton>
-      <NxFontAwesomeIcon aria-hidden={false} aria-label="icon label" icon={faSync}/>
+      <NxFontAwesomeIcon icon={faSync}/>
       <span>Icons in buttons</span>
     </NxButton>
   </div>;
