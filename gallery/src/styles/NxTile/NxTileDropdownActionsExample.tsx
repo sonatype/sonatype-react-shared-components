@@ -11,7 +11,7 @@ export default function NxTileDropdownActionsExample() {
   const onClick = () => { alert('click'); };
 
   return (
-    <section className="nx-tile">
+    <section className="nx-tile" aria-label="Example tile with dropdown">
       <header className="nx-tile-header">
         <div className="nx-tile-header__title">
           <h2 className="nx-h2">Tile with actions dropdown</h2>
