@@ -13,7 +13,7 @@ export default function NxCardRowLayoutExample() {
   return (
     <>
       <div className="nx-card-container nx-card-container--row">
-        <section className="nx-card" aria-label="Card 1 in Row Layout">
+        <section className="nx-card" aria-label="card 1 in row layout">
           <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
           </header>
@@ -27,7 +27,7 @@ export default function NxCardRowLayoutExample() {
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
-        <section className="nx-card" aria-label="Card 2 in Row Layout">
+        <section className="nx-card" aria-label="card 2 in row layout">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
@@ -41,7 +41,7 @@ export default function NxCardRowLayoutExample() {
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
-        <section className="nx-card" aria-label="Card 3 in Row Layout">
+        <section className="nx-card" aria-label="card 3 in row layout">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
@@ -55,7 +55,7 @@ export default function NxCardRowLayoutExample() {
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
-        <section className="nx-card" aria-label="Card 4 in Row Layout">
+        <section className="nx-card" aria-label="card 4 in row layout">
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">Card header</h3>
           </header>
@@ -69,7 +69,7 @@ export default function NxCardRowLayoutExample() {
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
-        <section className="nx-card" aria-label="Card 5 in Row Layout">
+        <section className="nx-card" aria-label="card 5 in row layout">
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
           </header>
@@ -87,7 +87,7 @@ export default function NxCardRowLayoutExample() {
             </div>
           </footer>
         </section>
-        <section className="nx-card" aria-label="Card 6 in Row Layout">
+        <section className="nx-card" aria-label="card 6 in row layout">
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">Render-farm dolphin beef noodles</h3>
           </header>
@@ -105,7 +105,7 @@ export default function NxCardRowLayoutExample() {
       </div>
 
       <div className="nx-card-container nx-card-container--row">
-        <section className="nx-card" aria-label="Card 7 in Row Layout">
+        <section className="nx-card" aria-label="card 7 in row layout">
           <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
           </header>
@@ -115,7 +115,7 @@ export default function NxCardRowLayoutExample() {
         </section>
       </div>
       <div className="nx-card-container nx-card-container--row">
-        <section className="nx-card" aria-label="Card 8 in Row Layout">
+        <section className="nx-card" aria-label="card 8 in row layout">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
@@ -128,7 +128,7 @@ export default function NxCardRowLayoutExample() {
         </section>
       </div>
       <div className="nx-card-container nx-card-container--row">
-        <section className="nx-card" aria-label="Card 9 in Row Layout">
+        <section className="nx-card" aria-label="card 9 in row layout">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
@@ -141,7 +141,7 @@ export default function NxCardRowLayoutExample() {
         </section>
       </div>
       <div className="nx-card-container nx-card-container--row">
-        <section className="nx-card" aria-label="Card 10 in Row Layout">
+        <section className="nx-card" aria-label="card 10 in row layout">
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">3D-printed voodoo</h3>
           </header>
