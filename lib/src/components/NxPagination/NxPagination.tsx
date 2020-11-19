@@ -89,16 +89,13 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
             ariaLabel = `goto page ${num + 1}`;
           }
 
-          if (selected) {
-            ariaLabel = 'current page, ' + ariaLabel;
-          }
-
           return (
             <NxButton onClick={selected ? () => {} : handleBtnClick(num)}
                       tabIndex={0}
                       key={num}
                       className={classes}
-                      aria-current={selected}
+                      aria-current={selected && "page"}
+                      aria-disabled={selected}
                       aria-label={ariaLabel}>
               {num + 1}
             </NxButton>
