@@ -22,8 +22,9 @@ const NxTreeView: FunctionComponent<Props> =
           'nx-tree-view--disabled': disabled,
           'nx-tree-view--empty': !React.Children.count(children)
         }),
+        treeViewId = id || getRandomId('nx-tree-view'),
         trigger = (
-          <div className="nx-tree-view__trigger" onClick={onToggleCollapse || undefined}>
+          <div className="nx-tree-view__trigger" onClick={onToggleCollapse || undefined} aria-controls={treeViewId}>
             <div className="nx-tree-view__twisty">
               <span className="nx-tree-view__twisty-icon"/>
             </div>
@@ -35,8 +36,7 @@ const NxTreeView: FunctionComponent<Props> =
         triggerTooltipProps = typeof triggerTooltip === 'string' ? { title: triggerTooltip } : triggerTooltip;
 
     return (
-      <div className={treeViewClasses}
-           id={id || undefined}>
+      <div className={treeViewClasses} id={treeViewId} role="tree" aria-expanded={isOpen}>
         { triggerTooltipProps ? <NxTooltip { ...triggerTooltipProps } >{trigger}</NxTooltip> : trigger }
         <div className="nx-tree-view__children">
           {children}
@@ -48,7 +48,7 @@ const NxTreeView: FunctionComponent<Props> =
 export const NxTreeViewChild: FunctionComponent<HTMLAttributes<HTMLDivElement>> =
   function NxTreeViewChild(props) {
     return (
-      <div { ...props } className={classnames('nx-tree-view__child', props.className)} />
+      <div { ...props } className={classnames('nx-tree-view__child', props.className)} role="treeitem" />
     );
   };
 
