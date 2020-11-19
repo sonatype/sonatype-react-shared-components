@@ -253,6 +253,10 @@ describe('NxPagination', function() {
   });
 
   describe('accessibility', function() {
+    it('includes the current and max page in the nav label', function() {
+      expect(getShallowComponent({ pageCount: 3, currentPage: 0 })).toHaveProp('aria-label', 'pagination, page 1 of 3');
+    });
+
     it('shows the correct aria labels for a small pagination range', function () {
       const buttons = getShallowComponent({ pageCount: 3, currentPage: 1 }).find(NxButton);
       expect(buttons.at(0)).toHaveProp('aria-label', 'goto previous page');
