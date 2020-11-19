@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, HTMLAttributes } from 'react';
+import React, { FunctionComponent, HTMLAttributes, useMemo } from 'react';
 import classnames from 'classnames';
 
 import NxTooltip from '../NxTooltip/NxTooltip';
@@ -23,8 +23,8 @@ const NxTreeView: FunctionComponent<Props> =
           'nx-tree-view--disabled': disabled,
           'nx-tree-view--empty': !React.Children.count(children)
         }),
-        treeViewId = id || getRandomId('nx-tree-view'),
-        triggerId = getRandomId('nx-tree-view-trigger'),
+        treeViewId = useMemo(() => id || getRandomId('nx-tree-view'), []),
+        triggerId = useMemo(() => getRandomId('nx-tree-view-trigger'), []),
         trigger = (
           <button id={triggerId}
                   className="nx-tree-view__trigger"
