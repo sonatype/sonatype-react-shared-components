@@ -10,7 +10,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 const NxAlertErrorExample = () =>
   <div className="nx-alert nx-alert--success" role="status" aria-atomic={true}>
-    <NxFontAwesomeIcon icon={faCheckCircle}/ aria-label="success">
+    <NxFontAwesomeIcon icon={faCheckCircle} aria-label="success" aria-hidden={false} />
     <span><strong>Success!</strong> This was a triumph! A great success!</span>
     <NxCloseButton />
   </div>;

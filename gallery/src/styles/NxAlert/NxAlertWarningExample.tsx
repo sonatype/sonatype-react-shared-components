@@ -10,7 +10,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 const NxAlertWarningExample = () =>
   <div className="nx-alert nx-alert--warning" aria-atomic={true}>
-    <NxFontAwesomeIcon icon={faExclamationTriangle} aria-label="warning" />
+    <NxFontAwesomeIcon icon={faExclamationTriangle} aria-label="warning" aria-hidden={false} />
     <span><strong>Alert!</strong> I am an alert! Be alerted!</span>
     <NxCloseButton />
   </div>;

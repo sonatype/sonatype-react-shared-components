@@ -10,7 +10,7 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
 const NxAlertErrorExample = () =>
   <div className="nx-alert nx-alert--error" role="alert" aria-atomic={true}>
-    <NxFontAwesomeIcon icon={faExclamationCircle} aria-label="error" />
+    <NxFontAwesomeIcon icon={faExclamationCircle} aria-label="error" aria-hidden={false} />
     <span><strong>Error!</strong> I am an error alert! There is an error!</span>
     <NxCloseButton />
   </div>;
