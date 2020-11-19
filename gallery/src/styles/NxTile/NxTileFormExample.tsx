@@ -27,13 +27,13 @@ export default function NxTileFormExample() {
         <div className="nx-tile-content">
           <div className="nx-form-group">
             <label className="nx-label">
-              <span className="nx-label__text">Label</span>
+              <span className="nx-label__text">Username</span>
               <NxStatefulTextInput aria-required={true} validator={validator}/>
             </label>
           </div>
           <div className="nx-form-group">
             <label className="nx-label nx-label--optional">
-              <span className="nx-label__text">Label</span>
+              <span className="nx-label__text">Hostname</span>
               <NxStatefulTextInput/>
             </label>
           </div>
