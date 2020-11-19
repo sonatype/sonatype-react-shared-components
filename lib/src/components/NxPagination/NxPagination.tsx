@@ -78,13 +78,28 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
           const selected = num === currentPage,
               classes = getBtnClasses(selected);
 
+          let ariaLabel;
+          if (num === 0) {
+            ariaLabel = 'goto first page';
+          }
+          else if (num === pageCount - 1) {
+            ariaLabel = 'goto last page';
+          }
+          else {
+            ariaLabel = `goto page ${num + 1}`;
+          }
+
+          if (selected) {
+            ariaLabel = 'current page, ' + ariaLabel;
+          }
+
           return (
-            <NxButton onClick={selected ? undefined : handleBtnClick(num)}
-                      tabIndex={selected ? -1 : 0 /* selected page is not focusable */}
+            <NxButton onClick={selected ? () => {} : handleBtnClick(num)}
+                      tabIndex={0}
                       key={num}
                       className={classes}
                       aria-current={selected}
-                      aria-label={`page ${num+1}`}>
+                      aria-label={ariaLabel}>
               {num + 1}
             </NxButton>
           );
@@ -94,19 +109,22 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
       <nav aria-label="pagination" className={classes} { ...attrs }>
         { !onFirstPage &&
           // Left arrow - back one page
-          <NxButton aria-label="previous page" onClick={handleBtnClick(currentPage - 1)} variant="tertiary">
+          <NxButton aria-label="goto previous page" tabIndex={0} onClick={handleBtnClick(currentPage - 1)} variant="tertiary">
             <NxFontAwesomeIcon icon={faCaretLeft} />
           </NxButton>
         }
 
         { !!numPagesBelowRange &&
           // First page express
-          <NxButton aria-label="first page" className={getBtnClasses()} onClick={handleBtnClick(0)}>1</NxButton>
+          <NxButton aria-label="goto first page" tabIndex={0} className={getBtnClasses()} onClick={handleBtnClick(0)}>1</NxButton>
         }
 
         { numPagesBelowRange > 1 &&
           // Left '...' - back one page group
-          <NxButton aria-label={`show previous ${PAGE_RANGE_SIZE} pages`} className={getBtnClasses()} onClick={handleBtnClick(currentPageRangeStart - 1)}>
+          <NxButton aria-label={`show previous ${PAGE_RANGE_SIZE} pages`}
+                    tabIndex={0}
+                    className={getBtnClasses()}
+                    onClick={handleBtnClick(currentPageRangeStart - 1)}>
             …
           </NxButton>
         }
@@ -117,7 +135,10 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
 
         { numPagesAboveRange > 1 &&
           // Rigth '...' - forward one page group
-          <NxButton aria-label={`show next ${PAGE_RANGE_SIZE} pages`} className={getBtnClasses()} onClick={handleBtnClick(currentPageRangeEnd)}>
+          <NxButton aria-label={`show next ${PAGE_RANGE_SIZE} pages`}
+                    tabIndex={0}
+                    className={getBtnClasses()}
+                    onClick={handleBtnClick(currentPageRangeEnd)}>
             …
           </NxButton>
         }
@@ -125,16 +146,16 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
         { !!numPagesAboveRange &&
           // Last page express
           <NxButton className={getBtnClasses(onLastPage)}
-                    tabIndex={onLastPage ? -1 : 0}
+                    tabIndex={0}
                     onClick={handleBtnClick(pageCount - 1)}
-                    aria-label="last page">
+                    aria-label="goto last page">
             {pageCount}
           </NxButton>
         }
 
         { !onLastPage &&
           // Right arrow - forward one page
-          <NxButton aria-label="next page" onClick={handleBtnClick(currentPage + 1)} variant="tertiary">
+          <NxButton aria-label="goto next page" tabIndex={0} onClick={handleBtnClick(currentPage + 1)} variant="tertiary">
             <NxFontAwesomeIcon icon={faCaretRight} />
           </NxButton>
         }
