@@ -57,23 +57,14 @@
 .nx-tree-view__trigger {
   @include container-horizontal;
   align-items: center;
-  background: none;
   border: 1px solid transparent;
-  color: inherit;
   cursor: pointer;
   display: flex;
-  font: inherit;
   height: 30px;
   line-height: 32px;
 
   &:hover, &:focus {
     text-decoration: none;
-  }
-
-  &:focus {
-    outline: 1px solid #02a6d9;
-    outline-offset: -1px;
-    box-shadow: $nx-focus-box-shadow;
   }
 }
 
@@ -107,8 +98,13 @@
   @include nx-truncate-ellipsis;
 
   align-items: center;
+  background: none;
+  border: none;
+  color: inherit;
   display: flex;
+  font: inherit;
   flex-grow: 1;
+  text-align: left;
 
   .nx-icon {
     flex-shrink: 0;
@@ -121,6 +117,12 @@
 
   .nx-counter {
     flex-shrink: 0;
+  }
+
+  &:focus {
+    outline: 1px solid #02a6d9;
+    outline-offset: -1px;
+    box-shadow: $nx-focus-box-shadow;
   }
 }
 
