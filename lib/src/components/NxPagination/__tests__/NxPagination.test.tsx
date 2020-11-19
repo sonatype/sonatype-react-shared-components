@@ -270,13 +270,13 @@ describe('NxPagination', function() {
       const buttons = getShallowComponent({ pageCount: 25, currentPage: 8 }).find(NxButton);
       expect(buttons.at(0)).toHaveProp('aria-label', 'goto previous page');
       expect(buttons.at(1)).toHaveProp('aria-label', 'goto first page');
-      expect(buttons.at(2)).toHaveProp('aria-label', 'show previous 5 pages');
+      expect(buttons.at(2)).toHaveProp('aria-label', 'goto page 5');
       expect(buttons.at(3)).toHaveProp('aria-label', 'goto page 6');
       expect(buttons.at(4)).toHaveProp('aria-label', 'goto page 7');
       expect(buttons.at(5)).toHaveProp('aria-label', 'goto page 8');
       expect(buttons.at(6)).toHaveProp('aria-label', 'current page, goto page 9');
       expect(buttons.at(7)).toHaveProp('aria-label', 'goto page 10');
-      expect(buttons.at(8)).toHaveProp('aria-label', 'show next 5 pages');
+      expect(buttons.at(8)).toHaveProp('aria-label', 'goto page 11');
       expect(buttons.at(9)).toHaveProp('aria-label', 'goto last page');
       expect(buttons.at(10)).toHaveProp('aria-label', 'goto next page');
     });

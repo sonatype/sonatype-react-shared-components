@@ -121,7 +121,7 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
 
         { numPagesBelowRange > 1 &&
           // Left '...' - back one page group
-          <NxButton aria-label={`show previous ${PAGE_RANGE_SIZE} pages`}
+          <NxButton aria-label={`goto page ${currentPageRangeStart}`}
                     tabIndex={0}
                     className={getBtnClasses()}
                     onClick={handleBtnClick(currentPageRangeStart - 1)}>
@@ -135,7 +135,7 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
 
         { numPagesAboveRange > 1 &&
           // Rigth '...' - forward one page group
-          <NxButton aria-label={`show next ${PAGE_RANGE_SIZE} pages`}
+          <NxButton aria-label={`goto page ${currentPageRangeEnd + 1}`}
                     tabIndex={0}
                     className={getBtnClasses()}
                     onClick={handleBtnClick(currentPageRangeEnd)}>
