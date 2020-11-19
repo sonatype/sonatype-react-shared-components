@@ -20,7 +20,7 @@ function NxTreeViewExample() {
     <NxTreeView onToggleCollapse={onToggleCollapse}
                 isOpen={toggleCheck}
                 triggerContent={
-                  <><NxFontAwesomeIcon icon={faCube}/><span>No children</span></>
+                  <><NxFontAwesomeIcon icon={faCube}/><span>All Items</span></>
                 }>
     </NxTreeView>
   );

@@ -25,12 +25,17 @@ function NxTreeViewExample() {
   return (
     <>
       <NxTreeView onToggleCollapse={onToggleCollapse1}
+                  aria-describedby="extras-example-1-counter"
                   isOpen={toggleCheck1}
                   triggerContent={
                     <>
                       <NxFontAwesomeIcon icon={faCube}/>
                       <span>Trigger with icon &amp; counter</span>
-                      <div className="nx-counter">12 of 43</div>
+                      <div id="extras-example-1-counter"
+                           aria-label="12 out of 43 options selected"
+                           className="nx-counter">
+                        12 of 43
+                      </div>
                     </>
                   }>
         <NxTreeViewChild>Test1</NxTreeViewChild>
@@ -39,11 +44,16 @@ function NxTreeViewExample() {
       </NxTreeView>
       <NxTreeView onToggleCollapse={onToggleCollapse2}
                   isOpen={toggleCheck2}
+                  aria-describedby="extras-example-2-counter"
                   triggerContent={
                     <>
                       <NxFontAwesomeIcon icon={faCube}/>
                       <span>Foo</span>
-                      <div className="nx-counter">12 of 43</div>
+                      <div id="extras-example-2-counter"
+                           aria-label="12 out of 43 options selected"
+                           className="nx-counter">
+                        12 of 43
+                      </div>
                     </>
                   }>
         <NxTreeViewChild>Test1</NxTreeViewChild>
@@ -52,11 +62,16 @@ function NxTreeViewExample() {
       </NxTreeView>
       <NxTreeView onToggleCollapse={onToggleCollapse3}
                   isOpen={toggleCheck3}
+                  aria-describedby="extras-example-3-counter"
                   triggerContent={
                     <>
                       <NxFontAwesomeIcon icon={faCube}/>
                       <span>This title is extra long and triggers ellipsis truncation</span>
-                      <div className="nx-counter">12 of 43</div>
+                      <div id="extras-example-3-counter"
+                           aria-label="12 out of 43 options selected"
+                           className="nx-counter">
+                        12 of 43
+                      </div>
                     </>
                   }>
         <NxTreeViewChild>Test1</NxTreeViewChild>
