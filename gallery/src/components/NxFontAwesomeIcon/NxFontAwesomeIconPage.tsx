@@ -33,12 +33,26 @@ const NxFontAwesomeIconPage = () => {
           <a href="https://github.com/FortAwesome/react-fontawesome#features" target="_blank">documentation</a>
           {' '}for details on available props
         </p>
+        <h3 className="nx-h3">Accessibility</h3>
+        <p className="nx-p">
+          By default Font Awesome icons are set to <code className="nx-code">aria-hidden="true"</code> which means that
+          they are not "seen" by screen readers. Normally this is acceptable because icons are usually presentational
+          in nature, however if the icon has information that is important to convey to the user (e.g. an icon only
+          button) the value of <code className="nx-code">aria-hidden</code> should be set to
+          {' '}<code className="nx-code">false</code> and an <code className="nx-code">aria-label</code> with
+          explanatory text should also be employed. The last two examples demonstrate this.
+        </p>
+        <p className="nx-p">
+          If you are in doubt about whether an icon should be made accessible consider whether the user could perform
+          their given task, or understand an explaination if that icon was not there.
+        </p>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
                           codeExamples={codeExamples}
                           liveExample={NxFontAwesomeIconExample}>
         This example shows a button containing a series of icons inline with some text.
-        The buttons showcase various FontAwesome options that are supported.
+        The buttons showcase various FontAwesome options that are supported. The edit button and address card icon
+        demonstrate accessibility requirements for buttons that are not purely presentational.
       </GalleryExampleTile>
     </>
   );
