@@ -8,6 +8,7 @@ import React, { FunctionComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 
 import NxTooltip from '../NxTooltip/NxTooltip';
+import { getRandomId } from '../../util/idUtil';
 import { Props, propTypes, childPropTypes } from './types';
 export { Props } from './types';
 import './NxTreeView.scss';
@@ -23,20 +24,30 @@ const NxTreeView: FunctionComponent<Props> =
           'nx-tree-view--empty': !React.Children.count(children)
         }),
         treeViewId = id || getRandomId('nx-tree-view'),
+        triggerId = getRandomId('nx-tree-view-trigger'),
         trigger = (
-          <div className="nx-tree-view__trigger" onClick={onToggleCollapse || undefined} aria-controls={treeViewId}>
+          <button id={triggerId}
+                  className="nx-tree-view__trigger"
+                  onClick={onToggleCollapse || undefined}
+                  aria-controls={treeViewId}
+                  aria-disabled={disabled || undefined}>
             <div className="nx-tree-view__twisty">
               <span className="nx-tree-view__twisty-icon"/>
             </div>
             <div className="nx-tree-view__text">
               {triggerContent}
             </div>
-          </div>
+          </button>
         ),
         triggerTooltipProps = typeof triggerTooltip === 'string' ? { title: triggerTooltip } : triggerTooltip;
 
     return (
-      <div className={treeViewClasses} id={treeViewId} role="tree" aria-expanded={isOpen}>
+      <div className={treeViewClasses}
+           id={treeViewId}
+           role="tree"
+           aria-expanded={isOpen}
+           aria-labelledby={triggerId}
+           aria-disabled={disabled || undefined}>
         { triggerTooltipProps ? <NxTooltip { ...triggerTooltipProps } >{trigger}</NxTooltip> : trigger }
         <div className="nx-tree-view__children">
           {children}

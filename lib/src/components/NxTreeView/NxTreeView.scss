@@ -26,7 +26,7 @@
 
 .nx-tree-view--collapsed {
   .nx-tree-view__children{
-    max-height: 0;
+    display: none;
   }
 }
 
@@ -57,14 +57,23 @@
 .nx-tree-view__trigger {
   @include container-horizontal;
   align-items: center;
+  background: none;
   border: 1px solid transparent;
+  color: inherit;
   cursor: pointer;
   display: flex;
+  font: inherit;
   height: 30px;
   line-height: 32px;
 
   &:hover, &:focus {
     text-decoration: none;
+  }
+
+  &:focus {
+    outline: 1px solid #02a6d9;
+    outline-offset: -1px;
+    box-shadow: $nx-focus-box-shadow;
   }
 }
 
