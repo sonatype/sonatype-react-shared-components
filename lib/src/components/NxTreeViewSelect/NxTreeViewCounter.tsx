@@ -11,11 +11,12 @@ import classnames from 'classnames';
 export interface Props {
   isActive?: boolean | null;
   children: ReactNode;
+  id: string;
 }
 
-const NxTreeViewCounter: FunctionComponent<Props> = function NxTreeViewCounter({isActive, children}) {
+const NxTreeViewCounter: FunctionComponent<Props> = function NxTreeViewCounter({isActive, ...otherProps}) {
   const classes = classnames('nx-counter', {'nx-counter--active': isActive});
-  return <div className={classes}>{children}</div>;
+  return <div { ...otherProps } className={classes} />;
 };
 
 export default NxTreeViewCounter;

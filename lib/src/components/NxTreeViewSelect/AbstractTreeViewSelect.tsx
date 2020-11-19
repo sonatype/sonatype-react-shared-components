@@ -79,10 +79,12 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
 
   const wrappedTriggerContent = ensureElement(children);
 
-  const triggerWithCounter = renderCounter ? (
+  const counter = renderCounter && renderCounter();
+
+  const triggerWithCounter = counter ? (
     <>
       {wrappedTriggerContent}
-      {renderCounter()}
+      {counter}
     </>
   ) : wrappedTriggerContent;
 
@@ -115,7 +117,8 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
                 triggerContent={triggerWithCounter}
                 triggerTooltip={getTriggerTooltip()}
                 disabled={disabled}
-                className="nx-tree-view--select">
+                className="nx-tree-view--select"
+                aria-describedby={counter && counter.props.id}>
       {filterContent}
       {selectAllOption}
       {renderedOptions}

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import { all, propEq, any } from 'ramda';
 
 import { Props, propTypes, Option } from './types';
@@ -12,6 +12,7 @@ export { Props, Option } from './types';
 import NxCheckbox from '../../NxCheckbox/NxCheckbox';
 import MultiSelectCounter from './MultiSelectCounter';
 import AbstractTreeViewSelect, { generateId } from '../AbstractTreeViewSelect';
+import { getRandomId } from '../../../util/idUtil';
 
 const NxTreeViewMultiSelect: FunctionComponent<Props> = function NxTreeViewMultiSelect(props) {
   // exclude onChange and selectedIds from the props we pass to AbstractTreeViewSelect
@@ -21,7 +22,8 @@ const NxTreeViewMultiSelect: FunctionComponent<Props> = function NxTreeViewMulti
       filteredOptions = props.filteredOptions || options,
       normalizedSelectedIds = selectedIds || new Set(),
       disabled = !!props.disabled,
-      allFilteredSelected = all(item => normalizedSelectedIds.has(item.id), filteredOptions);
+      allFilteredSelected = all(item => normalizedSelectedIds.has(item.id), filteredOptions),
+      counterId = useMemo(() => getRandomId('nx-tree-view-multi-select-counter'), []);
 
   // Throw an error if one of the selectedIds is not part of the available options
   normalizedSelectedIds.forEach(itemId => {
@@ -86,7 +88,8 @@ const NxTreeViewMultiSelect: FunctionComponent<Props> = function NxTreeViewMulti
     </NxCheckbox>
   ) : null;
 
-  const renderCounter = () => <MultiSelectCounter options={options} selectedIds={normalizedSelectedIds} />;
+  const renderCounter = () =>
+      <MultiSelectCounter id={counterId}  options={options} selectedIds={normalizedSelectedIds} />;
 
   return <AbstractTreeViewSelect {...otherProps}
                                  renderOption={renderOption}
