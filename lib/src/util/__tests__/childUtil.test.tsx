@@ -20,11 +20,13 @@ describe('childUtil', function() {
     });
 
     it('returns all text from complex jsx', function() {
-      const jsx = <>
-        1
-        <span>2</span>
-        <div><span>3</span></div>
-      </>;
+      const jsx = (
+        <>
+          1
+          <span>2</span>
+          <div><span>3</span></div>
+        </>
+      );
       expect(textContent(jsx)).toBe('123');
     });
   });
