@@ -12,7 +12,7 @@ import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 export default function NxCardRowAltLayoutExample() {
   return (
     <div className="nx-card-container nx-card-container--row">
-      <section className="nx-card">
+      <section className="nx-card" aria-label="card 1 in alternate layout">
         <header className="nx-card__header">
           <h3 className="nx-h3">Header</h3>
         </header>
@@ -26,7 +26,7 @@ export default function NxCardRowAltLayoutExample() {
         </div>
         <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
       </section>
-      <section className="nx-card">
+      <section className="nx-card" aria-label="card 2 in alternate layout">
         <header className="nx-card__header">
           <h3 className="nx-h3">Card header</h3>
         </header>
@@ -40,7 +40,7 @@ export default function NxCardRowAltLayoutExample() {
         </div>
         <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
       </section>
-      <section className="nx-card">
+      <section className="nx-card" aria-label="card 3 in alternate layout">
         <header className="nx-card__header">
           <h3 className="nx-h3">Card header</h3>
         </header>
