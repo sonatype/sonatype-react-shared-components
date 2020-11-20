@@ -90,7 +90,7 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
           }
 
           return (
-            <NxButton onClick={selected ? () => {} : handleBtnClick(num)}
+            <NxButton onClick={selected ? undefined : handleBtnClick(num)}
                       tabIndex={0}
                       key={num}
                       className={classes}
