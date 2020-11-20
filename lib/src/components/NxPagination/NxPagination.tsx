@@ -94,7 +94,7 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
                       tabIndex={0}
                       key={num}
                       className={classes}
-                      aria-current={selected && "page"}
+                      aria-current={selected && 'page'}
                       aria-disabled={selected}
                       aria-label={ariaLabel}>
               {num + 1}
@@ -106,14 +106,22 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
       <nav aria-label={`pagination, page ${currentPage + 1} of ${pageCount}`} className={classes} { ...attrs }>
         { !onFirstPage &&
           // Left arrow - back one page
-          <NxButton aria-label="goto previous page" tabIndex={0} onClick={handleBtnClick(currentPage - 1)} variant="tertiary">
+          <NxButton aria-label="goto previous page"
+                    tabIndex={0}
+                    onClick={handleBtnClick(currentPage - 1)}
+                    variant="tertiary">
             <NxFontAwesomeIcon icon={faCaretLeft} />
           </NxButton>
         }
 
         { !!numPagesBelowRange &&
           // First page express
-          <NxButton aria-label="goto first page" tabIndex={0} className={getBtnClasses()} onClick={handleBtnClick(0)}>1</NxButton>
+          <NxButton aria-label="goto first page"
+                    tabIndex={0}
+                    className={getBtnClasses()}
+                    onClick={handleBtnClick(0)}>
+            1
+          </NxButton>
         }
 
         { numPagesBelowRange > 1 &&
@@ -152,7 +160,10 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
 
         { !onLastPage &&
           // Right arrow - forward one page
-          <NxButton aria-label="goto next page" tabIndex={0} onClick={handleBtnClick(currentPage + 1)} variant="tertiary">
+          <NxButton aria-label="goto next page"
+                    tabIndex={0}
+                    onClick={handleBtnClick(currentPage + 1)}
+                    variant="tertiary">
             <NxFontAwesomeIcon icon={faCaretRight} />
           </NxButton>
         }
