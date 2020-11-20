@@ -5,9 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { faAdjust, faAngry, faAtom, faBatteryEmpty, faEdit, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faAdjust, faAngry, faAtom, faBatteryEmpty, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
-import { NxFontAwesomeIcon, NxButton } from '@sonatype/react-shared-components';
+import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 import './NxFontAwesomeIconExample.scss';
 
@@ -27,12 +27,8 @@ const NxFontAwesomeIconExample = () =>
         */}
       <NxFontAwesomeIcon icon={faBatteryEmpty} color="red" />
     </button>
-    {/* Icon only variant button with aria-label on the icon, note that aria-hidden has been set to false */}
-    <NxButton variant="icon-only">
-      <NxFontAwesomeIcon icon={faEdit} aria-hidden="false" aria-label="Edit text" />
-    </NxButton>
-    {/* Icon with aria-label, note that aria-hidden has been set to false */}
-    <NxFontAwesomeIcon icon={faAddressCard} aria-hidden="false" aria-label="Address Card" />
+    {/* Icon with title, which sets the name for accessibility purposes*/}
+    <NxFontAwesomeIcon icon={faAddressCard} title="Address Card" />
   </div>;
 
 export default NxFontAwesomeIconExample;

@@ -35,12 +35,14 @@ const NxFontAwesomeIconPage = () => {
         </p>
         <h3 className="nx-h3">Accessibility</h3>
         <p className="nx-p">
-          By default Font Awesome icons are set to <code className="nx-code">aria-hidden="true"</code> which means that
-          they are not "seen" by screen readers. Normally this is acceptable because icons are usually presentational
-          in nature, however if the icon has information that is important to convey to the user (e.g. an icon only
-          button) the value of <code className="nx-code">aria-hidden</code> should be set to
-          {' '}<code className="nx-code">false</code> and an <code className="nx-code">aria-label</code> with
-          explanatory text should also be employed. The last two examples demonstrate this.
+          <code className="nx-code">FontAwesomeIcon</code> has a <code className="nx-code">title</code> prop which
+          sets up a <code className="nx-code">&lt;title&gt;</code> element within the rendered SVG and configures is
+          as the accessible name for the icon. Use this attribute when an icon itself needs to be read by a
+          screenreader. Note however that this will also create a native tooltip with the title, which is not ideal
+          due to our preference for <code className="nx-code">NxTooltip</code>. This technique should therefore be
+          used sparingly, and labels on parent elements should be preferred where appropriate. For instance,
+          the accessible name for an icon-only button should be placed on the button itself, not on the icon.
+          See the <a href="#/pages/NxButton"><code className="nx-code">NxButton</code></a> page for an example.
         </p>
         <p className="nx-p">
           If you are in doubt about whether an icon should be made accessible consider whether the user could perform
@@ -51,8 +53,8 @@ const NxFontAwesomeIconPage = () => {
                           codeExamples={codeExamples}
                           liveExample={NxFontAwesomeIconExample}>
         This example shows a button containing a series of icons inline with some text.
-        The buttons showcase various FontAwesome options that are supported. The edit button and address card icon
-        demonstrate accessibility requirements for buttons that are not purely presentational.
+        The buttons showcase various FontAwesome options that are supported. The address card icon
+        demonstrates accessibility requirements for icons that are not purely presentational.
       </GalleryExampleTile>
     </>
   );
