@@ -12,17 +12,17 @@ describe('NxBinaryDonutChart', function() {
   });
 
   describe('Minimal examples', function() {
-    const simpleDonutSelector = '#nx-binary-donut-chart-minimal-examples';
+    const simpleDonutSelector = '#nx-binary-donut-chart-minimal-examples .gallery-example-live';
     it('looks right', simpleTest(simpleDonutSelector));
   });
 
   describe('Donut with no hole', function() {
-    const simpleDonutSelector = '#nx-binary-donut-chart-no-hole-example';
+    const simpleDonutSelector = '#nx-binary-donut-chart-no-hole-example .gallery-example-live';
     it('looks right', simpleTest(simpleDonutSelector));
   });
 
   describe('Donut with large hole', function() {
-    const simpleDonutSelector = '#nx-binary-donut-chart-large-hole-example';
+    const simpleDonutSelector = '#nx-binary-donut-chart-large-hole-example .gallery-example-live';
     it('looks right', simpleTest(simpleDonutSelector));
   });
 
