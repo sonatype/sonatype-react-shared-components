@@ -9,7 +9,7 @@ import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { NxButton, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 const NxListErrorExample = () =>
-  <ul className="nx-list">
+  <ul className="nx-list" role="list">
     <li className="nx-list__item">
       <span className="nx-list__text">
         List item

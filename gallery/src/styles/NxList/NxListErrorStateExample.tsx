@@ -9,7 +9,7 @@ import { NxLoadError } from '@sonatype/react-shared-components';
 
 function NxListErrorExample() {
   return (
-    <ul className="nx-list">
+    <ul className="nx-list" role="list">
       <li className="nx-list__item nx-list__item--error">
         <NxLoadError error="Server Error" retryHandler={() => {}} />
       </li>

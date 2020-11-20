@@ -9,7 +9,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 const NxListClickableExample = () =>
-  <ul className="nx-list nx-list--clickable">
+  <ul className="nx-list nx-list--clickable" role="list">
     <li className="nx-list__item" tabIndex={0}>
       <span className="nx-list__text">Action 1</span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
@@ -22,7 +22,7 @@ const NxListClickableExample = () =>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>
     <li className="nx-list__item selected" tabIndex={0}>
-      <span className="nx-list__text">This list item is selected</span>
+      <span className="nx-list__text" aria-selected="true">This list item is selected</span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>
     <li className="nx-list__item" tabIndex={0}>
@@ -32,7 +32,7 @@ const NxListClickableExample = () =>
       </span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>
-    <li className="nx-list__item disabled">
+    <li className="nx-list__item disabled" aria-disabled="true">
       <span className="nx-list__text">This list item is disabled</span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>

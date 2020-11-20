@@ -8,7 +8,7 @@ import React from 'react';
 import { NxLoadingSpinner } from '@sonatype/react-shared-components';
 
 const NxListLoadingExample = () =>
-  <ul className="nx-list">
+  <ul className="nx-list" role="list">
     <li className="nx-list__item">
       <NxLoadingSpinner />
     </li>
