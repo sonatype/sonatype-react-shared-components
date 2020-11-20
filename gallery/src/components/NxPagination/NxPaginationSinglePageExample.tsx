@@ -8,5 +8,10 @@ import React from 'react';
 import { NxPagination } from '@sonatype/react-shared-components';
 
 export default function NxPaginationSinglePageExample() {
-  return <NxPagination onChange={() => {}} pageCount={1} currentPage={0} />;
+  return (
+    <>
+      <div id="single-page-example">Example 1</div>
+      <NxPagination aria-controls="single-page-example" onChange={() => { }} pageCount={1} currentPage={0} />
+    </>
+  );
 }
