@@ -102,7 +102,10 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
         };
 
     return (
-      <nav aria-label={`pagination, page ${currentPage + 1} of ${pageCount}`} className={classes} { ...attrs }>
+      <nav tabIndex={0}
+           aria-label={`pagination, page ${currentPage + 1} of ${pageCount}`}
+           className={classes}
+           { ...attrs }>
         { !onFirstPage &&
           // Left arrow - back one page
           <NxButton aria-label="goto previous page"

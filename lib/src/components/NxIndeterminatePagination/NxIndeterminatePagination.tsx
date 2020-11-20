@@ -17,7 +17,7 @@ export default function NxIndeterminatePagination({ className, onPrevPageSelect,
   const classes = classnames('nx-btn-bar', 'nx-btn-bar--pagination', className);
 
   return (
-    <nav aria-label="pagination" className={classes} { ...attrs }>
+    <nav tabIndex={0} aria-label="pagination" className={classes} { ...attrs }>
       <NxButton aria-label="previous page" onClick={onPrevPageSelect} variant="tertiary">
         <NxFontAwesomeIcon icon={faCaretLeft} />
       </NxButton>
