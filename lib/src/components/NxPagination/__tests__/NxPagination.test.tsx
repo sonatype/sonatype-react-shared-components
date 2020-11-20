@@ -334,26 +334,6 @@ describe('NxPagination', function() {
     testWithProps({ pageCount: 6, currentPage: 5 });
   });
 
-  it('adds either tabIndex=0 or no tabIndex to all other buttons', function() {
-    function testWithProps(props: { currentPage: number; pageCount: number }) {
-      const buttons = getShallowComponent(props).children();
-
-      expect(buttons.filter('.selected')).toHaveProp('tabIndex', 0);
-
-      buttons.filter(':not(.selected)').forEach(function(btn) {
-        expect(btn.prop('tabIndex')).toBe(0);
-      });
-    }
-
-    testWithProps({ pageCount: 1, currentPage: 0 });
-    testWithProps({ pageCount: 5, currentPage: 3 });
-    testWithProps({ pageCount: 5, currentPage: 4 });
-    testWithProps({ pageCount: 7, currentPage: 4 });
-    testWithProps({ pageCount: 7, currentPage: 5 });
-    testWithProps({ pageCount: 7, currentPage: 6 });
-    testWithProps({ pageCount: 6, currentPage: 5 });
-  });
-
   it('adds the `nx-btn--pagination` class to all buttons except the arrows', function() {
     const buttons = getShallowComponent({ pageCount: 50, currentPage: 24 }).children();
 
