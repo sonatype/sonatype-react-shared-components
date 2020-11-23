@@ -30,10 +30,8 @@ const NxTreeView: FunctionComponent<Props> =
           'nx-tree-view--empty': isEmpty
         }),
         treeViewId = useMemo(() => id || getRandomId('nx-tree-view'), [id]),
-        triggerId = useMemo(() => getRandomId('nx-tree-view-trigger'), []),
         trigger = (
-          <button id={triggerId}
-                  className="nx-tree-view__trigger"
+          <button className="nx-tree-view__trigger"
                   onClick={onToggleCollapse || undefined}
                   aria-controls={treeViewId}
                   aria-expanded={isExpanded}
