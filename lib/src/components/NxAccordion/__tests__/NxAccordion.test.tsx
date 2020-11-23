@@ -36,6 +36,16 @@ describe('NxAccordion', function() {
     expect(getShallowComponent({ className: 'foo' })).toHaveClassName('foo');
   });
 
+  it('sets an id if none is specified', function() {
+    expect(getShallowComponent().prop('id')).toBeTruthy();
+  });
+
+  it('sets aria-expanded from the open prop', function() {
+    expect(getShallowComponent()).toHaveProp('aria-expanded', false);
+    expect(getShallowComponent({ open: false })).toHaveProp('aria-expanded', false);
+    expect(getShallowComponent({ open: true })).toHaveProp('aria-expanded', true);
+  });
+
   it('renders non-header children in an nx-accordion__content wrapper', function() {
     const component =
         mount(
@@ -143,6 +153,29 @@ describe('NxAccordion', function() {
           header = component.find('summary');
 
       expect(header.find(NxFontAwesomeIcon)).toHaveProp('icon', faChevronCircleUp);
+    });
+
+    it('sets aria-controls to the accordion id', function() {
+      const explicitIdAccordion = getMountedComponent({
+            id: 'foo',
+            children: (
+              <NxAccordion.Header>
+                <span>Foo</span>
+              </NxAccordion.Header>
+            )
+          }),
+          autoIdAccordion = getMountedComponent({
+            id: 'foo',
+            children: (
+              <NxAccordion.Header>
+                <span>Foo</span>
+              </NxAccordion.Header>
+            )
+          }),
+          autoId = autoIdAccordion.prop('id');
+
+      expect(explicitIdAccordion.find('summary')).toHaveProp('aria-controls', 'foo');
+      expect(autoIdAccordion.find('summary')).toHaveProp('aria-controls', autoId);
     });
   });
 
