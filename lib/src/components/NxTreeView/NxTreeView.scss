@@ -58,13 +58,25 @@ $twisty-proportion-difference: 2px;
 .nx-tree-view__trigger {
   @include container-horizontal;
   align-items: center;
+  background: none;
+  border: none;
+  box-sizing: border-box;
   color: #2c2c2c;
   cursor: pointer;
   display: flex;
+  font: inherit;
   font-weight: 600;
+  text-align: left;
+  width: 100%;
 
   &:hover, &:focus {
     text-decoration: none;
+  }
+
+  &:focus {
+    outline: 1px solid #02a6d9;
+    outline-offset: -1px;
+    box-shadow: $nx-focus-box-shadow;
   }
 }
 
@@ -82,13 +94,8 @@ $twisty-proportion-difference: 2px;
   @include nx-truncate-ellipsis;
 
   align-items: center;
-  background: none;
-  border: none;
-  color: inherit;
   display: flex;
-  font: inherit;
   flex-grow: 1;
-  text-align: left;
 
   span {
     @include nx-truncate-ellipsis;
@@ -97,12 +104,6 @@ $twisty-proportion-difference: 2px;
 
   > .nx-counter {
     flex-shrink: 0;
-  }
-
-  &:focus {
-    outline: 1px solid #02a6d9;
-    outline-offset: -1px;
-    box-shadow: $nx-focus-box-shadow;
   }
 }
 

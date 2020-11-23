@@ -30,16 +30,16 @@ const NxTreeView: FunctionComponent<Props> =
         treeViewId = useMemo(() => id || getRandomId('nx-tree-view'), []),
         triggerId = useMemo(() => getRandomId('nx-tree-view-trigger'), []),
         trigger = (
-          <div id={triggerId}
+          <button id={triggerId}
                   className="nx-tree-view__trigger"
                   onClick={onToggleCollapse || undefined}
                   aria-controls={treeViewId}
                   aria-disabled={disabled || undefined}>
             <NxFontAwesomeIcon className="nx-tree-view__twisty" icon={faCaretRight} />
-            <button className="nx-tree-view__text">
+            <div className="nx-tree-view__text">
               {triggerContent}
-            </button>
-          </div>
+            </div>
+          </button>
         ),
         triggerTooltipProps = typeof triggerTooltip === 'string' ? { title: triggerTooltip } : triggerTooltip;
 
