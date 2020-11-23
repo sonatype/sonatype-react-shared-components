@@ -27,13 +27,14 @@ const NxTreeView: FunctionComponent<Props> =
           'nx-tree-view--disabled': disabled,
           'nx-tree-view--empty': !React.Children.count(children)
         }),
-        treeViewId = useMemo(() => id || getRandomId('nx-tree-view'), []),
+        treeViewId = useMemo(() => id || getRandomId('nx-tree-view'), [id]),
         triggerId = useMemo(() => getRandomId('nx-tree-view-trigger'), []),
         trigger = (
           <button id={triggerId}
                   className="nx-tree-view__trigger"
                   onClick={onToggleCollapse || undefined}
                   aria-controls={treeViewId}
+                  aria-expanded={isOpen}
                   aria-disabled={disabled || undefined}>
             <NxFontAwesomeIcon className="nx-tree-view__twisty" icon={faCaretRight} />
             <div className="nx-tree-view__text">
@@ -47,11 +48,9 @@ const NxTreeView: FunctionComponent<Props> =
       <div className={treeViewClasses}
            id={treeViewId}
            role="tree"
-           aria-expanded={isOpen}
-           aria-labelledby={triggerId}
            aria-disabled={disabled || undefined}>
         { triggerTooltipProps ? <NxTooltip { ...triggerTooltipProps } >{trigger}</NxTooltip> : trigger }
-        <div className="nx-tree-view__children">
+        <div className="nx-tree-view__children" role="group">
           {children}
         </div>
       </div>
