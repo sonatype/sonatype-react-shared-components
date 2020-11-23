@@ -47,9 +47,7 @@ const NxTreeView: FunctionComponent<Props> =
         triggerTooltipProps = typeof triggerTooltip === 'string' ? { title: triggerTooltip } : triggerTooltip;
 
     return (
-      <div className={treeViewClasses}
-           id={treeViewId}
-           role="tree">
+      <div className={treeViewClasses} id={treeViewId} role="tree">
         { triggerTooltipProps ? <NxTooltip { ...triggerTooltipProps } >{trigger}</NxTooltip> : trigger }
         <div className="nx-tree-view__children" role="group">
           {children}
