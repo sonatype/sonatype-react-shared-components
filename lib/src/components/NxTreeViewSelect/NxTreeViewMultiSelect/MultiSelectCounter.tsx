@@ -18,10 +18,12 @@ export interface Props {
 
 const MultiSelectCounter: FunctionComponent<Props> =
   function MultiSelectCounter({ options, selectedIds, ...otherProps }) {
-    const isAnyOptionSelected = selectedIds.size !== 0;
+    const isAnyOptionSelected = selectedIds.size !== 0,
+        ariaLabel = `${selectedIds.size} option${selectedIds.size === 1 ? '' : 's'} out of ${options.length} selected`;
+
     return (
       <NxTreeViewCounter { ...otherProps }
-                         aria-label={`${selectedIds.size} out of ${options.length} options selected`}
+                         aria-label={ariaLabel}
                          isActive={isAnyOptionSelected}>
         {isAnyOptionSelected ? selectedIds.size + ' of ' : ''}{options.length}
       </NxTreeViewCounter>
