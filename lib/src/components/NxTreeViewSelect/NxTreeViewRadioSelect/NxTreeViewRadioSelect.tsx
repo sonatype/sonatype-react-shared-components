@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import { propEq, find } from 'ramda';
 
 import { Props, propTypes, Option } from './types';
@@ -12,13 +12,15 @@ export { Props, Option } from './types';
 import NxTreeViewCounter from '../NxTreeViewCounter';
 import NxRadio from '../../NxRadio/NxRadio';
 import AbstractTreeViewSelect, { generateId } from '../AbstractTreeViewSelect';
+import { getRandomId } from '../../../util/idUtil';
 
 const NxTreeViewRadioSelect: FunctionComponent<Props> =
   function NxTreeViewRadioSelect({selectedId, onChange, ...props}) {
 
     const {name, options} = props,
         disabled = !!props.disabled,
-        selectedItem = find(propEq('id', selectedId), options);
+        selectedItem = find(propEq('id', selectedId), options),
+        counterId = useMemo(() => getRandomId('nx-tree-view-radio-select-counter'), []);
 
     const renderOption = ({id, name: optionName}: Option) => (
       <NxRadio radioId={generateId(name, id)}
@@ -32,7 +34,8 @@ const NxTreeViewRadioSelect: FunctionComponent<Props> =
     );
 
     const renderCounter = () =>
-      selectedItem && selectedItem.name ? <NxTreeViewCounter>{selectedItem.name}</NxTreeViewCounter> : null;
+      selectedItem && selectedItem.name ?
+          <NxTreeViewCounter id={counterId}>{selectedItem.name}</NxTreeViewCounter> : null;
 
     return <AbstractTreeViewSelect {...props} renderOption={renderOption} renderCounter={renderCounter}/>;
   };

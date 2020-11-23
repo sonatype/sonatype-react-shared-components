@@ -13,15 +13,19 @@ import NxTreeViewCounter from '../NxTreeViewCounter';
 export interface Props {
   options: Option[];
   selectedIds: Set<string | null>;
+  id: string;
 }
 
-const MultiSelectCounter: FunctionComponent<Props> = function MultiSelectCounter({options, selectedIds}) {
-  const isAnyOptionSelected = selectedIds.size !== 0;
-  return (
-    <NxTreeViewCounter isActive={isAnyOptionSelected}>
-      {isAnyOptionSelected ? selectedIds.size + ' of ' : ''}{options.length}
-    </NxTreeViewCounter>
-  );
-};
+const MultiSelectCounter: FunctionComponent<Props> =
+  function MultiSelectCounter({ options, selectedIds, ...otherProps }) {
+    const isAnyOptionSelected = selectedIds.size !== 0;
+    return (
+      <NxTreeViewCounter { ...otherProps }
+                         aria-label={`${selectedIds.size} out of ${options.length} options selected`}
+                         isActive={isAnyOptionSelected}>
+        {isAnyOptionSelected ? selectedIds.size + ' of ' : ''}{options.length}
+      </NxTreeViewCounter>
+    );
+  };
 
 export default MultiSelectCounter;

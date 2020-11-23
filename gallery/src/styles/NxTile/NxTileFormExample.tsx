@@ -19,21 +19,23 @@ export default function NxTileFormExample() {
   }
 
   return (
-    <section className="nx-tile">
+    <section className="nx-tile" aria-label="Example of nx-tile with a form">
       <form className="nx-form" onSubmit={onSubmit}>
         <header className="nx-tile-header">
-          <div className="nx-tile-header__title"><h2 className="nx-h2">NX Simple Tile</h2></div>
+          <div className="nx-tile-header__title">
+            <h2 className="nx-h2">NX Simple Tile with Form</h2>
+          </div>
         </header>
         <div className="nx-tile-content">
           <div className="nx-form-group">
             <label className="nx-label">
-              <span className="nx-label__text">Label</span>
-              <NxStatefulTextInput validator={validator}/>
+              <span className="nx-label__text">Username</span>
+              <NxStatefulTextInput aria-required={true} validator={validator}/>
             </label>
           </div>
           <div className="nx-form-group">
             <label className="nx-label nx-label--optional">
-              <span className="nx-label__text">Label</span>
+              <span className="nx-label__text">Hostname</span>
               <NxStatefulTextInput/>
             </label>
           </div>
