@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { MouseEvent, useContext, useRef } from 'react';
+import React, { MouseEvent, useContext, useRef, useMemo } from 'react';
 import classnames from 'classnames';
 import { faChevronCircleDown, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,17 +14,19 @@ import { HeaderContextType, HeaderProps, Props, propTypes } from './types';
 
 import './NxAccordion.scss';
 import { splitOutFirst } from '../../util/childUtil';
+import { getRandomId } from '../../util/idUtil';
 
 export { Props, HeaderProps };
 
 const HeaderContext = React.createContext<HeaderContextType>({
   onClick: () => {},
-  open: false
+  open: false,
+  accordionId: ''
 });
 
 function NxAccordionHeader({ className, onClick: onClickProp, children, ...otherProps }: HeaderProps) {
   const classes = classnames('nx-accordion__header', className),
-      { onClick: onClickContext, open } = useContext(HeaderContext),
+      { onClick: onClickContext, open, accordionId } = useContext(HeaderContext),
       summaryElRef = useRef(null);
 
   // returns whether or not el is within a <button>. Assumes that el is a child of the <summary>
@@ -47,7 +49,12 @@ function NxAccordionHeader({ className, onClick: onClickProp, children, ...other
   }
 
   return (
-    <summary className={classes} onClick={onClick} { ...otherProps } ref={summaryElRef}>
+    <summary className={classes}
+             onClick={onClick}
+             ref={summaryElRef}
+             role="button"
+             aria-controls={accordionId}
+             { ...otherProps }>
       <NxFontAwesomeIcon className="nx-accordion__chevron" icon={open ? faChevronCircleUp : faChevronCircleDown} />
       {children}
     </summary>
@@ -55,9 +62,10 @@ function NxAccordionHeader({ className, onClick: onClickProp, children, ...other
 }
 
 export default function NxAccordion(props: Props) {
-  const { className, onToggle, open, children, ...otherProps } = props,
+  const { className, onToggle, open, children, id, ...otherProps } = props,
       classes = classnames('nx-accordion', className),
-      [header, otherChildren] = splitOutFirst(NxAccordionHeader, children);
+      [header, otherChildren] = splitOutFirst(NxAccordionHeader, children),
+      accordionId = useMemo(() => id || getRandomId('nx-accordion'), [id]);
 
   function onHeaderClick(evt: MouseEvent) {
     evt.preventDefault();
@@ -69,11 +77,12 @@ export default function NxAccordion(props: Props) {
 
   const headerContext = {
     onClick: onHeaderClick,
-    open: !!open
+    open: !!open,
+    accordionId
   };
 
   return (
-    <details className={classes} open={open} { ...otherProps}>
+    <details id={accordionId} className={classes} open={open} { ...otherProps} role="group" aria-expanded={open}>
       <HeaderContext.Provider value={headerContext}>{header}</HeaderContext.Provider>
       <div className="nx-accordion__content">{otherChildren}</div>
     </details>
