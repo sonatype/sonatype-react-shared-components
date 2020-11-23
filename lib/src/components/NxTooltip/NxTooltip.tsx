@@ -37,8 +37,7 @@ function fixOptional(props: Props): TooltipProps {
     onClose: props.onClose || undefined,
     open: props.open === null ? undefined : props.open,
     placement: convertPlacement(props.placement),
-    title: props.title || '',
-    'aria-label': textContent(props.title)
+    title: props.title || ''
   };
 }
 
@@ -48,8 +47,9 @@ function fixOptional(props: Props): TooltipProps {
 const NxTooltip: FunctionComponent<Props> =
     function NxTooltip({ className, ...otherProps }) {
       const tooltipClassName = classnames('nx-tooltip', className);
+      const ariaLabel = textContent(otherProps.title);
 
-      return <Tooltip { ...fixOptional(otherProps) } classes={{ tooltip: tooltipClassName }} />;
+      return <Tooltip aria-label={ariaLabel} { ...fixOptional(otherProps) } classes={{ tooltip: tooltipClassName }} />;
     };
 
 NxTooltip.propTypes = propTypes;
