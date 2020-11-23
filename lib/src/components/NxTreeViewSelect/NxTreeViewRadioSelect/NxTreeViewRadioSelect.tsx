@@ -32,8 +32,7 @@ const NxTreeViewRadioSelect: FunctionComponent<Props> =
     );
 
     const renderCounter = () =>
-      selectedItem && selectedItem.name ?
-          <NxTreeViewCounter>{selectedItem.name}</NxTreeViewCounter> : null;
+      selectedItem && selectedItem.name ? <NxTreeViewCounter>{selectedItem.name}</NxTreeViewCounter> : null;
 
     return <AbstractTreeViewSelect {...props} renderOption={renderOption} renderCounter={renderCounter}/>;
   };
