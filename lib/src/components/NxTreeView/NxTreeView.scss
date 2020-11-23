@@ -117,6 +117,10 @@ $twisty-proportion-difference: 2px;
     margin: 0;
     padding: $nx-spacing-xxs 0 $nx-spacing-xxs ($nx-spacing-md + 2 * $twisty-proportion-difference);
   }
+
+  &:empty {
+    padding: 0;
+  }
 }
 
 .nx-tree-view__child {
