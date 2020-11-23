@@ -4,6 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
+
 import {getShallowComponent} from '../../../../__testutils__/enzymeUtils';
 import NxTreeViewMultiSelect, {Props, Option} from '../NxTreeViewMultiSelect';
 
@@ -319,10 +321,10 @@ describe('NxTreeViewMultiSelect', function() {
     it('renders <MultiSelectCounter> with empty selectedIds if selectedIds prop is not provided', function () {
       const renderPropWrapper = getShallow().renderProp('renderCounter')();
 
-      expect(renderPropWrapper).toMatchSelector(MultiSelectCounter);
-      expect(renderPropWrapper)
-          .toHaveProp('options', [{id: 'foo', name: 'Foo'}, {id: 'bar', name: 'Bar'}, {id: null, name: 'Null'}]);
-      expect(renderPropWrapper).toHaveProp('selectedIds', new Set());
+      expect(renderPropWrapper).toContainReact(
+        <MultiSelectCounter options={[{id: 'foo', name: 'Foo'}, {id: 'bar', name: 'Bar'}, {id: null, name: 'Null'}]}
+                            selectedIds={new Set()} />
+      );
     });
 
     it('renders <MultiSelectCounter> with selectedIds if selectedIds prop is provided', function () {
@@ -330,7 +332,10 @@ describe('NxTreeViewMultiSelect', function() {
         selectedIds: new Set(['bar'])
       }).renderProp('renderCounter')();
 
-      expect(renderPropWrapper).toHaveProp('selectedIds', new Set(['bar']));
+      expect(renderPropWrapper).toContainReact(
+        <MultiSelectCounter options={[{id: 'foo', name: 'Foo'}, {id: 'bar', name: 'Bar'}, {id: null, name: 'Null'}]}
+                            selectedIds={new Set(['bar'])} />
+      );
     });
   });
 });

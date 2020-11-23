@@ -22,8 +22,7 @@ const NxTreeViewMultiSelect: FunctionComponent<Props> = function NxTreeViewMulti
       filteredOptions = props.filteredOptions || options,
       normalizedSelectedIds = selectedIds || new Set(),
       disabled = !!props.disabled,
-      allFilteredSelected = all(item => normalizedSelectedIds.has(item.id), filteredOptions),
-      counterId = useMemo(() => getRandomId('nx-tree-view-multi-select-counter'), []);
+      allFilteredSelected = all(item => normalizedSelectedIds.has(item.id), filteredOptions);
 
   // Throw an error if one of the selectedIds is not part of the available options
   normalizedSelectedIds.forEach(itemId => {
@@ -89,7 +88,7 @@ const NxTreeViewMultiSelect: FunctionComponent<Props> = function NxTreeViewMulti
   ) : null;
 
   const renderCounter = () =>
-      <MultiSelectCounter id={counterId}  options={options} selectedIds={normalizedSelectedIds} />;
+      <MultiSelectCounter options={options} selectedIds={normalizedSelectedIds} />;
 
   return <AbstractTreeViewSelect {...otherProps}
                                  renderOption={renderOption}
