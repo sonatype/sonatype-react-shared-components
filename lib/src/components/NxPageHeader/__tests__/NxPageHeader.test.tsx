@@ -24,7 +24,7 @@ describe('NxPageHeader', function() {
 
     // this path comes from imgMock.ts
     expect(getShallowComponent().find('.nx-product__wordmark')).toHaveProp('src', 'path/to/asset.png');
-    expect(getShallowComponent().find('.nx-product__wordmark')).toHaveProp('alt', '⬡ Sonatype');
+    expect(getShallowComponent().find('.nx-product__wordmark')).toHaveProp('alt', 'Sonatype');
   });
 
   it('wraps the logo in a link iff the homeLink prop is specified', function() {

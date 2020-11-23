@@ -45,6 +45,16 @@ const NxAlertPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell">iconLabel</td>
+            <td className="nx-cell">string</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              Brief descriptive text to apply to the icon using
+              the <code className="nx-code">aria-label</code> attribute. Optional for backwards compatibility, but
+              strongly recommended.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell">onClose</td>
             <td className="nx-cell">Function</td>
             <td className="nx-cell">No</td>
@@ -77,6 +87,23 @@ const NxAlertPage = () =>
         Accepts any prop that is valid on a div as well as the <code className="nx-code">onClose</code> prop
         described above.
       </p>
+      <section className="nx-tile-subsection">
+        <header className="nx-tile-subsection__header">
+          <h3 className="nx-h3">Accessibility Considerations</h3>
+        </header>
+        <p className="nx-p">
+          Different types of alerts use
+          different <a target="_blank" rel="noreferrer" href="https://www.w3.org/WAI/PF/aria/roles">ARIA roles</a>.{' '}
+          <code className="nx-code">NxErrorAlert</code> uses <code className="nx-code">alert</code>.{' '}
+          <code className="nx-code">NxSuccessAlert</code> uses <code className="nx-code">status</code>.{' '}
+          <code className="nx-code">NxInfoAlert</code> uses no special role by default, though
+          the <code className="nx-code">status</code> role may be appropriate in some use cases.{' '}
+          Finally, <code className="nx-code">NxWarningAlert</code> also has no default role, but
+          when used in dynamic circumstances, should typically be given either
+          the <code className="nx-code">status</code> or <code className="nx-code">alert</code> role.
+          The roles which are provided by default may be overridden by the caller.
+        </p>
+      </section>
     </GalleryTile>
 
     <GalleryExampleTile title="Success Alert Example"

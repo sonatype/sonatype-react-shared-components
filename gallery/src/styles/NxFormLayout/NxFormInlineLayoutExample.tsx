@@ -26,8 +26,8 @@ export default function NxFormLayoutExample() {
       <div className="nx-form-row">
         <div className="nx-form-group">
           <label className="nx-label">
-            <span className="nx-label__text">Label</span>
-            <NxStatefulTextInput validator={validator}/>
+            <span className="nx-label__text">Username</span>
+            <NxStatefulTextInput aria-required={true} validator={validator}/>
           </label>
         </div>
         <div className="nx-btn-bar">
@@ -36,11 +36,14 @@ export default function NxFormLayoutExample() {
       </div>
       <div className="nx-form-row">
         <div className="nx-form-group">
-          <label className="nx-label">
-            <span className="nx-label__text">Label</span>
-            <span className="nx-sub-label">This is a sub-label.</span>
-            <NxStatefulTextInput validator={validator}/>
+          <label htmlFor="inline-sublabel-field" className="nx-label">
+            <span className="nx-label__text">Hostname</span>
           </label>
+          <span id="inline-sublabel-field-sublabel" className="nx-sub-label">Add a hostname</span>
+          <NxStatefulTextInput id="inline-sublabel-field"
+                               aria-describedby="inline-sublabel-field-sublabel"
+                               aria-required={true}
+                               validator={validator}/>
         </div>
         <div className="nx-btn-bar">
           <NxButton><NxFontAwesomeIcon icon={faPlus}/></NxButton>
