@@ -21,11 +21,13 @@ const NxTreeView: FunctionComponent<Props> =
   function NxTreeView(props) {
     const { onToggleCollapse, isOpen, disabled, children, triggerContent, triggerTooltip, className, id } = props;
 
-    const treeViewClasses = classnames('nx-tree-view', className, {
-          'nx-tree-view--expanded': isOpen,
-          'nx-tree-view--collapsed': !isOpen,
+    const isEmpty = !React.Children.count(children),
+        isExpanded = isOpen && !isEmpty, // conceptually we don't allow empty tree views to expand
+        treeViewClasses = classnames('nx-tree-view', className, {
+          'nx-tree-view--expanded': isExpanded,
+          'nx-tree-view--collapsed': !isExpanded,
           'nx-tree-view--disabled': disabled,
-          'nx-tree-view--empty': !React.Children.count(children)
+          'nx-tree-view--empty': isEmpty
         }),
         treeViewId = useMemo(() => id || getRandomId('nx-tree-view'), [id]),
         triggerId = useMemo(() => getRandomId('nx-tree-view-trigger'), []),
@@ -34,8 +36,8 @@ const NxTreeView: FunctionComponent<Props> =
                   className="nx-tree-view__trigger"
                   onClick={onToggleCollapse || undefined}
                   aria-controls={treeViewId}
-                  aria-expanded={isOpen}
-                  aria-disabled={disabled || undefined}>
+                  aria-expanded={isExpanded}
+                  aria-disabled={disabled || isEmpty || undefined}>
             <NxFontAwesomeIcon className="nx-tree-view__twisty" icon={faCaretRight} />
             <div className="nx-tree-view__text">
               {triggerContent}
@@ -47,8 +49,7 @@ const NxTreeView: FunctionComponent<Props> =
     return (
       <div className={treeViewClasses}
            id={treeViewId}
-           role="tree"
-           aria-disabled={disabled || undefined}>
+           role="tree">
         { triggerTooltipProps ? <NxTooltip { ...triggerTooltipProps } >{trigger}</NxTooltip> : trigger }
         <div className="nx-tree-view__children" role="group">
           {children}
