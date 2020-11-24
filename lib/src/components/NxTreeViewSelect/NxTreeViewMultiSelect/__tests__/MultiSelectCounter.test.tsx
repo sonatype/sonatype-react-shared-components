@@ -22,21 +22,33 @@ describe('MultiSelectCounter', function() {
 
   it('renders inactive NxTreeViewCounter when no option is selected', function() {
     const shallowRender = getShallow();
-    expect(shallowRender).toContainReact(<NxTreeViewCounter isActive={false}>2</NxTreeViewCounter>);
+
+    expect(shallowRender).toMatchSelector(NxTreeViewCounter);
+    expect(shallowRender).toHaveProp('isActive', false);
+
+    // Shockingly enzyme doesn't have a decent way to handle this. `.text()` (and thus the .toHaveText()` matcher)
+    // don't do anything useful when the node is not a native dom element
+    expect(React.Children.toArray(shallowRender.prop('children')).join('')).toBe('2');
   });
 
   it('renders active NxTreeViewCounter when all options are selected', function() {
     const shallowRender = getShallow({
       selectedIds: new Set(['foo', 'bar'])
     });
-    expect(shallowRender).toContainReact(<NxTreeViewCounter isActive={true}>2 of 2</NxTreeViewCounter>);
+
+    expect(shallowRender).toMatchSelector(NxTreeViewCounter);
+    expect(shallowRender).toHaveProp('isActive', true);
+    expect(React.Children.toArray(shallowRender.prop('children')).join('')).toBe('2 of 2');
   });
 
   it('renders active NxTreeViewCounter when some options are selected', function() {
     const shallowRender = getShallow({
       selectedIds: new Set(['bar'])
     });
-    expect(shallowRender).toContainReact(<NxTreeViewCounter isActive={true}>1 of 2</NxTreeViewCounter>);
+
+    expect(shallowRender).toMatchSelector(NxTreeViewCounter);
+    expect(shallowRender).toHaveProp('isActive', true);
+    expect(React.Children.toArray(shallowRender.prop('children')).join('')).toBe('1 of 2');
   });
 
   it('sets an aria label mentioning the current and possible selection count', function() {

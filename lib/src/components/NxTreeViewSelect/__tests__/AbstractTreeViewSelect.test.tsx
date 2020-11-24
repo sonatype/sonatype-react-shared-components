@@ -10,6 +10,7 @@ import {times} from 'ramda';
 import {getShallowComponent} from '../../../__testutils__/enzymeUtils';
 import AbstractTreeViewSelect, {Props} from '../AbstractTreeViewSelect';
 import {Option} from '../commonTypes';
+import { NxTreeViewChild } from '../../NxTreeView/NxTreeView';
 
 describe('AbstractTreeViewSelect', function() {
   const requiredProps: Props = {
@@ -41,13 +42,16 @@ describe('AbstractTreeViewSelect', function() {
       expect(nxTreeView.children().length).toBe(3);
 
       const fooOption = nxTreeView.childAt(0);
-      expect(fooOption).toMatchElement(<span>Foo</span>);
+      expect(fooOption).toMatchSelector(NxTreeViewChild);
+      expect(fooOption).toContainReact(<span>Foo</span>);
 
       const barOption = nxTreeView.childAt(1);
-      expect(barOption).toMatchElement(<span>Bar</span>);
+      expect(barOption).toMatchSelector(NxTreeViewChild);
+      expect(barOption).toContainReact(<span>Bar</span>);
 
       const nullOption = nxTreeView.childAt(2);
-      expect(nullOption).toMatchElement(<span>Null</span>);
+      expect(nullOption).toMatchSelector(NxTreeViewChild);
+      expect(nullOption).toContainReact(<span>Null</span>);
     });
   });
 
@@ -114,7 +118,8 @@ describe('AbstractTreeViewSelect', function() {
 
         const nxTreeView = shallowRender.find('NxTreeView');
         expect(nxTreeView.children().length).toBe(3);
-        expect(nxTreeView.childAt(0)).toMatchElement(<span>Foo</span>);
+        expect(nxTreeView.childAt(0)).toMatchSelector(NxTreeViewChild);
+        expect(nxTreeView.childAt(0)).toContainReact(<span>Foo</span>);
       });
 
       describe('default value', function () {
@@ -143,7 +148,8 @@ describe('AbstractTreeViewSelect', function() {
 
               const nxTreeView = shallowRender.find('NxTreeView');
               expect(nxTreeView.children().length).toBe(10);
-              expect(nxTreeView.childAt(0)).toMatchElement(<span>0</span>);
+              expect(nxTreeView.childAt(0)).toMatchSelector(NxTreeViewChild);
+              expect(nxTreeView.childAt(0)).toContainReact(<span>0</span>);
             }
         );
       });
@@ -245,7 +251,7 @@ describe('AbstractTreeViewSelect', function() {
 
       const options = shallowRender.children();
       expect(options.length).toBe(4);
-      expect(options.at(0)).toMatchSelector('input#toggleAllOption');
+      expect(options.at(0)).toContainMatchingElement('input#toggleAllOption');
     });
   });
 
