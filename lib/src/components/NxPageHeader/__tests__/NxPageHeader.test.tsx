@@ -18,7 +18,39 @@ describe('NxPageHeader', function() {
     expect(getShallowComponent()).toMatchSelector(AbstractNxPageHeader);
   });
 
-  it('passes its links, homeLink, and children props to the AbstractNxPageHeader', function() {
+
+  it('renders an nx-product within the nx-page-header__inner, minimally containing the branding', function() {
+    expect(getShallowComponent().find('.nx-page-header__inner')).toContainMatchingElement('.nx-product');
+    expect(getShallowComponent().find('.nx-product')).toContainMatchingElement('.nx-product__branding');
+    expect(getShallowComponent().find('.nx-product__branding')).toContainMatchingElement('img.nx-product__wordmark');
+
+    // this path comes from imgMock.ts
+    expect(getShallowComponent().find('.nx-product__wordmark')).toHaveProp('src', 'path/to/asset.png');
+    expect(getShallowComponent().find('.nx-product__wordmark')).toHaveProp('alt', 'Sonatype');
+  });
+
+  it('wraps the logo in a link iff the homeLink prop is specified', function() {
+    expect(getShallowComponent()).not.toContainMatchingElement('.nx-product__home-link');
+    expect(getShallowComponent({ homeLink: 'foo' })).toContainMatchingElement('.nx-product__home-link');
+    expect(getShallowComponent({ homeLink: 'foo' }).find('.nx-product__home-link'))
+        .toContainMatchingElement('.nx-product__wordmark');
+
+    expect(getShallowComponent({ homeLink: 'foo' }).find('.nx-product__home-link')).toHaveProp('href', 'foo');
+  });
+
+  it('includes the productInfo.name in a .nx-product__name if provided', function() {
+    const props = {
+      productInfo: {
+        name: 'test app'
+      }
+    };
+
+    expect(getShallowComponent()).not.toContainMatchingElement('.nx-product__name');
+    expect(getShallowComponent(props)).toContainMatchingElement('.nx-product__name');
+    expect(getShallowComponent(props).find('.nx-product__name')).toHaveText('test app');
+  });
+
+  it('includes the productInfo.version in a .nx-product__version if provided', function() {
     const props = {
           links: [{ name: 'foo', href: '#bar' }],
           homeLink: '#home',

@@ -22,9 +22,12 @@ function HeaderProductInfo({ name, version }: ProductInfo) {
   );
 }
 
-export default function NxPageHeader({ productInfo, ...otherProps }: Props) {
-  const logo = <img src={logoImg} className="nx-product__logo-image" alt="⬡ Sonatype"/>,
-      productInfoContent = productInfo ? <HeaderProductInfo { ...productInfo } /> : null;
+// visible for testing
+export { HeaderLinkProps, HeaderLink };
+
+export default function NxPageHeader({ links, homeLink, productInfo, children }: Props) {
+  const logoEl = <img src={logoImg} className="nx-product__wordmark" alt="Sonatype"/>,
+      linkEls = links && links.map(link => <HeaderLink key={link.name} { ...link } />);
 
   return <AbstractNxPageHeader { ...otherProps } { ...{ logo, productInfoContent } } />;
 }
