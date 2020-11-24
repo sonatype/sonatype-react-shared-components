@@ -65,16 +65,14 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
   }
 
   const renderedOptions = filteredOptions.map((item: Option) => {
-    const option = renderOption(item);
-    return (
-      <NxTreeViewChild key={`key-${item.id}`}>
-        {optionTooltipGenerator ? (
-          <NxTooltip {...getTooltipProps(optionTooltipGenerator(item))}>
-            {option}
-          </NxTooltip>
-        ) : option}
-      </NxTreeViewChild>
-    );
+    const option = renderOption(item),
+        key = `key-${item.id}`;
+
+    return optionTooltipGenerator ? (
+      <NxTooltip key={key} {...getTooltipProps(optionTooltipGenerator(item))}>
+        <NxTreeViewChild>{option}</NxTreeViewChild>
+      </NxTooltip>
+    ) : <NxTreeViewChild key={key}>{option}</NxTreeViewChild>;
   });
 
   const wrappedTriggerContent = ensureElement(children);
