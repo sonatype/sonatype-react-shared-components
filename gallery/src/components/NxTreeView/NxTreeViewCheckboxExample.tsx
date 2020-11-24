@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { NxTreeView, NxCheckbox, NxRadio } from '@sonatype/react-shared-components';
+import { NxTreeView, NxCheckbox, NxRadio, NxTreeViewChild } from '@sonatype/react-shared-components';
 
 export default function NxTreeViewCheckboxExample() {
   const [isOpen, setOpen] = useState(false),
@@ -17,18 +17,30 @@ export default function NxTreeViewCheckboxExample() {
       <NxTreeView isOpen={isOpen}
                   onToggleCollapse={onToggleCollapse}
                   triggerContent="Organization">
-        <NxCheckbox isChecked={true}>
-          Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo
-        </NxCheckbox>
-        <NxCheckbox isChecked={true}>Bar</NxCheckbox>
-        <NxCheckbox isChecked={true}>Baz</NxCheckbox>
+        <NxTreeViewChild>
+          <NxCheckbox isChecked={true}>
+            Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo
+          </NxCheckbox>
+        </NxTreeViewChild>
+        <NxTreeViewChild>
+          <NxCheckbox isChecked={true}>Bar</NxCheckbox>
+        </NxTreeViewChild>
+        <NxTreeViewChild>
+          <NxCheckbox isChecked={true}>Baz</NxCheckbox>
+        </NxTreeViewChild>
       </NxTreeView>
       <NxTreeView isOpen={isOpen}
                   onToggleCollapse={onToggleCollapse}
                   triggerContent="Organization">
-        <NxRadio name="test-radio" value="foo" isChecked={false}>Foo</NxRadio>
-        <NxRadio name="test-radio" value="bar" isChecked={false}>Bar</NxRadio>
-        <NxRadio name="test-radio" value="baz" isChecked={true}>Baz</NxRadio>
+        <NxTreeViewChild>
+          <NxRadio name="test-radio" value="foo" isChecked={false}>Foo</NxRadio>
+        </NxTreeViewChild>
+        <NxTreeViewChild>
+          <NxRadio name="test-radio" value="bar" isChecked={false}>Bar</NxRadio>
+        </NxTreeViewChild>
+        <NxTreeViewChild>
+          <NxRadio name="test-radio" value="baz" isChecked={true}>Baz</NxRadio>
+        </NxTreeViewChild>
       </NxTreeView>
     </>
   );

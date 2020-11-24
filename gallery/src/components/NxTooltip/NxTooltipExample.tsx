@@ -108,8 +108,8 @@ const NxTooltipExample = () => {
         <NxTreeView isOpen
                     triggerContent="NxTreeView"
                     triggerTooltip={{title: 'NxTreeView', placement: 'top'}}>
-          <NxTreeViewChild><NxTooltip title="Test1" placement="top"><span>Test1</span></NxTooltip></NxTreeViewChild>
-          <NxTreeViewChild><NxTooltip title="Test2" placement="top"><span>Test2</span></NxTooltip></NxTreeViewChild>
+          <NxTooltip title="Test1" placement="top"><NxTreeViewChild><span>Test1</span></NxTreeViewChild></NxTooltip>
+          <NxTooltip title="Test2" placement="top"><NxTreeViewChild><span>Test2</span></NxTreeViewChild></NxTooltip>
         </NxTreeView>
 
         <NxDropdown variant="tertiary"

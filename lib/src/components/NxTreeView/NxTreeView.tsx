@@ -4,16 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, HTMLAttributes, useMemo, ReactElement, SVGAttributes } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import classnames from 'classnames';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 import NxTooltip from '../NxTooltip/NxTooltip';
 import { getRandomId } from '../../util/idUtil';
-import { Props, propTypes, childPropTypes } from './types';
+import { Props, NxTreeViewChildProps, propTypes, childPropTypes } from './types';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-export { Props } from './types';
+export { Props, NxTreeViewChildProps } from './types';
 
 import './NxTreeView.scss';
 
@@ -55,20 +55,25 @@ const NxTreeView: FunctionComponent<Props> =
   };
 
 /**
- * All tree view children should be wrapped in this function to get the appropriate CSS class an ARIA role
+ * All individual treeview children should be wrapped in this component. When the child is an element,
+ * this does not actually add another element to the DOM (as doing so would cause styling and screenreading
+ * challenges) but instead adds the needed class and role to its child. If on the other hand the child is text,
+ * this wraps it in a div
  */
-export function asTreeViewChild<T extends Element>(component: ReactElement<HTMLAttributes<T> | SVGAttributes<T>>) {
-  const classes = classnames('nx-tree-view__child', component.props.className);
-
-  return React.cloneElement(component, { className: classes, role: 'treeitem' });
-}
-
-export const NxTreeViewChild: FunctionComponent<HTMLAttributes<HTMLDivElement>> =
-  function NxTreeViewChild(props) {
+export function NxTreeViewChild({ children }: NxTreeViewChildProps) {
+  if (typeof children === 'string' || typeof children === 'number') {
     return (
-      <div { ...props } className={classnames('nx-tree-view__child', props.className)} role="treeitem" />
+      <NxTreeViewChild>
+        <div>{children}</div>
+      </NxTreeViewChild>
     );
-  };
+  }
+  else {
+    const classes = classnames('nx-tree-view__child', children.props.className);
+
+    return React.cloneElement(children, { className: classes, role: 'treeitem' });
+  }
+}
 
 NxTreeViewChild.propTypes = childPropTypes;
 NxTreeView.propTypes = propTypes;

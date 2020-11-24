@@ -8,7 +8,7 @@
 import React, { FunctionComponent, ReactElement } from 'react';
 
 import { Option } from './commonTypes';
-import NxTreeView from '../NxTreeView/NxTreeView';
+import NxTreeView, { NxTreeViewChild } from '../NxTreeView/NxTreeView';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import { TooltipConfigProps } from '../../util/tooltipUtils';
@@ -65,13 +65,16 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
   }
 
   const renderedOptions = filteredOptions.map((item: Option) => {
-    const option = renderOption(item),
-        key = `key-${item.id}`;
-    return optionTooltipGenerator ? (
-      <NxTooltip key={key} {...getTooltipProps(optionTooltipGenerator(item))}>
-        {option}
-      </NxTooltip>
-    ) : React.cloneElement(option, { key });
+    const option = renderOption(item);
+    return (
+      <NxTreeViewChild key={`key-${item.id}`}>
+        {optionTooltipGenerator ? (
+          <NxTooltip {...getTooltipProps(optionTooltipGenerator(item))}>
+            {option}
+          </NxTooltip>
+        ) : option}
+      </NxTreeViewChild>
+    );
   });
 
   const wrappedTriggerContent = ensureElement(children);
@@ -117,7 +120,7 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
                 className="nx-tree-view--select"
                 aria-describedby={counter && counter.props.id}>
       {filterContent}
-      {selectAllOption}
+      { selectAllOption && <NxTreeViewChild>{selectAllOption}</NxTreeViewChild> }
       {renderedOptions}
     </NxTreeView>
   );

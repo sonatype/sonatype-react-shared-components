@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { NxTreeView, NxButton } from '@sonatype/react-shared-components';
+import { NxTreeView, NxButton, NxTreeViewChild } from '@sonatype/react-shared-components';
 
 function NxTreeViewClickableSidebarExample() {
   const [toggleCheck, setToggleCheck] = useState(false),
@@ -17,12 +17,20 @@ function NxTreeViewClickableSidebarExample() {
       <NxTreeView onToggleCollapse={onToggleCollapse}
                   isOpen={toggleCheck}
                   triggerContent="Organization">
-        <NxButton className="nx-tree-view__child">Test1</NxButton>
-        <a href="#" className="nx-tree-view__child selected">Test2</a>
-        <a href="#" className="nx-tree-view__child">
-          Test3 - an extra long example that should cause truncation
-        </a>
-        <a href="#" className="nx-tree-view__child">Test4</a>
+        <NxTreeViewChild>
+          <NxButton>Test1</NxButton>
+        </NxTreeViewChild>
+        <NxTreeViewChild>
+          <a href="#" className="selected">Test2</a>
+        </NxTreeViewChild>
+        <NxTreeViewChild>
+          <a href="#">
+            Test3 - an extra long example that should cause truncation
+          </a>
+        </NxTreeViewChild>
+        <NxTreeViewChild>
+          <a href="#">Test4</a>
+        </NxTreeViewChild>
       </NxTreeView>
     </div>
   );

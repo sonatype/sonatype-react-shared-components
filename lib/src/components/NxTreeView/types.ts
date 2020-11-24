@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ReactNode} from 'react';
+import {ReactNode, ReactChild} from 'react';
 import * as PropTypes from 'prop-types';
 
 import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
@@ -18,6 +18,11 @@ export interface Props {
   children?: ReactNode;
   className?: string | null;
   id?: string | null;
+}
+
+// NxTreeViewChild takes exactly one child element
+export interface NxTreeViewChildProps {
+  children: ReactChild;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -37,6 +42,6 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   id: PropTypes.string
 };
 
-export const childPropTypes = {
-  className: PropTypes.string
+export const childPropTypes: React.WeakValidationMap<NxTreeViewChildProps> = {
+  children: PropTypes.node
 };
