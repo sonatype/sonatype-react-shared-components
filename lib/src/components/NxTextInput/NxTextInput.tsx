@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, FormEvent, KeyboardEvent, useRef, MutableRefObject } from 'react';
+import React, { forwardRef, FormEvent, KeyboardEvent, useRef, MutableRefObject, useMemo } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +14,7 @@ import './NxTextInput.scss';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes, TextInputElement } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
+import { getRandomId } from '../../util/idUtil';
 export { Props, propTypes, inputTypes } from './types';
 
 /**
@@ -63,7 +64,8 @@ const NxTextInput = forwardRef<TextInputElement, Props>(
             'nx-text-input--textarea': isTextArea
           });
 
-      const inputRef: MutableRefObject<TextInputElement | null> = useRef<TextInputElement>(null);
+      const inputRef: MutableRefObject<TextInputElement | null> = useRef<TextInputElement>(null),
+          invalidMessageId = useMemo(() => getRandomId('nx-text-input-invalid-message'), []);
 
       /*
        * We have two different refs that we want set to the <input>: the forwarded one
@@ -114,12 +116,14 @@ const NxTextInput = forwardRef<TextInputElement, Props>(
               type: typeAttr,
               onChange: inputOnChange,
               className: 'nx-text-input__input',
-              onKeyPress: inputOnKeyPress
+              onKeyPress: inputOnKeyPress,
+              'aria-invalid': isInvalid,
+              'aria-errormessage': invalidMessageId
             })}
             <NxFontAwesomeIcon icon={faCheck} className="nx-icon nx-icon--valid"/>
             <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon nx-icon--invalid"/>
           </div>
-          <div className="nx-text-input__invalid-message">
+          <div id={invalidMessageId} role="alert" className="nx-text-input__invalid-message">
             {firstValidationError}
           </div>
         </div>

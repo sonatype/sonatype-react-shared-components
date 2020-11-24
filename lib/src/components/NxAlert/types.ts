@@ -21,9 +21,11 @@ export const propTypes = {
 
 export type NxAlertProps = Props & {
   icon: IconDefinition;
+  iconLabel? : string | null;
 };
 
 export const nxAlertPropTypes: PropTypes.ValidationMap<NxAlertProps> = {
   icon: PropTypes.any,
+  iconLabel: PropTypes.string,
   onClose: PropTypes.func
 };

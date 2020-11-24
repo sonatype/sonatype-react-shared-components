@@ -29,13 +29,13 @@ export default function NxModalFormExample() {
               <div className="nx-form-group">
                 <label className="nx-label">
                   <span className="nx-label__text">Username</span>
-                  <NxStatefulTextInput placeholder="Username"/>
+                  <NxStatefulTextInput aria-require={true} placeholder="Username"/>
                 </label>
               </div>
               <div className="nx-form-group">
                 <label className="nx-label">
                   <span className="nx-label__text">Password</span>
-                  <NxStatefulTextInput type="password" placeholder="Password"/>
+                  <NxStatefulTextInput type="password" aria-require={true} placeholder="Password"/>
                 </label>
               </div>
             </div>
