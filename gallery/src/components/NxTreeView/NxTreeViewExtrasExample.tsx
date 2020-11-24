@@ -10,7 +10,7 @@ import {faCube} from '@fortawesome/free-solid-svg-icons';
 
 import { NxTreeView, NxTreeViewChild, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
-function NxTreeViewExample() {
+function NxTreeViewExtrasExample() {
   // this example uses the `useState` hook for succinctness, but you could also manage the state manually
   // in a class component
   const [toggleCheck1, setToggleCheck1] = useState(false),
@@ -79,4 +79,4 @@ function NxTreeViewExample() {
   );
 }
 
-export default NxTreeViewExample;
+export default NxTreeViewExtrasExample;
