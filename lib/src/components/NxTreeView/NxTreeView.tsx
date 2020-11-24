@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent, useMemo, forwardRef } from 'react';
 import classnames from 'classnames';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -60,22 +60,25 @@ const NxTreeView: FunctionComponent<Props> =
  * challenges) but instead adds the needed class and role to its child. If on the other hand the child is text,
  * this wraps it in a div
  */
-export function NxTreeViewChild({ children }: NxTreeViewChildProps) {
-  if (typeof children === 'string' || typeof children === 'number') {
-    return (
-      <NxTreeViewChild>
-        <div>{children}</div>
-      </NxTreeViewChild>
-    );
-  }
-  else {
-    const classes = classnames('nx-tree-view__child', children.props.className);
+const NxTreeViewChild = forwardRef<Element, NxTreeViewChildProps>(
+    function NxTreeViewChildImpl({ children, className, ...otherProps }: NxTreeViewChildProps, ref) {
+      if (typeof children === 'string' || typeof children === 'number') {
+        return (
+          <NxTreeViewChild ref={ref}>
+            <div>{children}</div>
+          </NxTreeViewChild>
+        );
+      }
+      else {
+        const classes = classnames('nx-tree-view__child', children.props.className, className);
 
-    return React.cloneElement(children, { className: classes, role: 'treeitem' });
-  }
-}
+        return React.cloneElement(children, { className: classes, ref: ref, role: 'treeitem', ...otherProps });
+      }
+    }
+);
 
 NxTreeViewChild.propTypes = childPropTypes;
 NxTreeView.propTypes = propTypes;
 
 export default NxTreeView;
+export { NxTreeViewChild };
