@@ -64,7 +64,7 @@ const NxTreeViewChild = forwardRef<Element, NxTreeViewChildProps>(
     function NxTreeViewChildImpl({ children, className, ...otherProps }: NxTreeViewChildProps, ref) {
       if (typeof children === 'string' || typeof children === 'number') {
         return (
-          <NxTreeViewChild ref={ref}>
+          <NxTreeViewChild className={className} ref={ref} { ...otherProps }>
             <div>{children}</div>
           </NxTreeViewChild>
         );
@@ -72,7 +72,7 @@ const NxTreeViewChild = forwardRef<Element, NxTreeViewChildProps>(
       else {
         const classes = classnames('nx-tree-view__child', children.props.className, className);
 
-        return React.cloneElement(children, { className: classes, ref: ref, role: 'treeitem', ...otherProps });
+        return React.cloneElement(children, { className: classes, ref, role: 'treeitem', ...otherProps });
       }
     }
 );

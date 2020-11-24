@@ -10,6 +10,7 @@ import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxTreeView, { Props, NxTreeViewChild } from '../NxTreeView';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxTooltip from '../../NxTooltip/NxTooltip';
+import { mount } from 'enzyme';
 
 describe('NxTreeView', function() {
   const minimalProps = {
@@ -177,30 +178,75 @@ describe('NxTreeView', function() {
   });
 
   describe('NxTreeViewChild', function() {
-    const getShallowComponent = enzymeUtils.getShallowComponent(NxTreeViewChild, {});
+    describe('when children is a string', function() {
+      const component = mount(<NxTreeViewChild id="test-id" className="bar" lang="en">foo</NxTreeViewChild>),
+          div = component.children().children();
 
-    it('renders a div with the treeitem role and the nx-tree-view__child class', function() {
-      expect(getShallowComponent()).toMatchSelector('div.nx-tree-view__child');
-      expect(getShallowComponent()).toHaveProp('role', 'treeitem');
-    });
+      it('renders a div with the treeitem role and the nx-tree-view__child class', function() {
+        expect(component.hostNodes()).not.toExist();
+        expect(component.children().hostNodes()).not.toExist();
 
-    it('adds specified classnames', function() {
-      const component = getShallowComponent({ className: 'foo' });
-
-      expect(component).toHaveClassName('foo');
-      expect(component).toHaveClassName('nx-tree-view__child');
-    });
-
-    it('passes through additional props and children', function() {
-      const component = getShallowComponent({
-        id: 'foo',
-        lang: 'en',
-        children: 'asdf'
+        expect(div).toMatchSelector('div.nx-tree-view__child');
+        expect(div).toHaveProp('role', 'treeitem');
       });
 
-      expect(component).toHaveProp('id', 'foo');
-      expect(component).toHaveProp('lang', 'en');
-      expect(component).toHaveText('asdf');
+      it('adds specified classnames', function() {
+        expect(div).toHaveClassName('bar');
+        expect(div).toHaveClassName('nx-tree-view__child');
+      });
+
+      it('passes through additional props', function() {
+        expect(div).toHaveProp('id', 'test-id');
+        expect(div).toHaveProp('lang', 'en');
+      });
+
+      it('renders the child text within the div', function() {
+        expect(div).toHaveText('foo');
+      });
+
+      it('forwards a ref to the div', function() {
+        const ref = React.createRef<HTMLDivElement>(),
+
+            // note: the fragment is necessary to get around an enzyme issue:
+            // https://github.com/enzymejs/enzyme/issues/1852#issuecomment-433145879
+            div = mount(<><NxTreeViewChild ref={ref}>foo</NxTreeViewChild></>).children().children();
+
+        expect(ref.current).toBe(div.getDOMNode());
+      });
+    });
+
+    describe('when children is an element', function() {
+      const component = mount(
+            <NxTreeViewChild><div id="test-id" className="bar" lang="en">foo</div></NxTreeViewChild>
+          ),
+          div = component.children();
+
+      it('renders an element like the children', function() {
+        expect(component.hostNodes()).not.toExist();
+
+        expect(div).toMatchSelector('div.bar');
+        expect(div).toHaveText('foo');
+      });
+
+      it('adds the nx-tree-view__child classname', function() {
+        expect(div).toHaveClassName('nx-tree-view__child');
+      });
+
+      it('passes through additional props', function() {
+        expect(div).toHaveProp('id', 'test-id');
+        expect(div).toHaveProp('lang', 'en');
+      });
+
+      it('adds the treeitem role', function() {
+        expect(div).toHaveProp('role', 'treeitem');
+      });
+
+      it('forwards a ref to the div', function() {
+        const ref = React.createRef<HTMLDivElement>(),
+            div = mount(<><NxTreeViewChild ref={ref}><div>foo</div></NxTreeViewChild></>).children();
+
+        expect(ref.current).toBe(div.getDOMNode());
+      });
     });
   });
 });
