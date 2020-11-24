@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, HTMLAttributes, useMemo } from 'react';
+import React, { FunctionComponent, HTMLAttributes, useMemo, ReactElement, SVGAttributes } from 'react';
 import classnames from 'classnames';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -53,6 +53,15 @@ const NxTreeView: FunctionComponent<Props> =
       </div>
     );
   };
+
+/**
+ * All tree view children should be wrapped in this function to get the appropriate CSS class an ARIA role
+ */
+export function asTreeViewChild<T extends Element>(component: ReactElement<HTMLAttributes<T> | SVGAttributes<T>>) {
+  const classes = classnames('nx-tree-view__child', component.props.className);
+
+  return React.cloneElement(component, { className: classes, role: 'treeitem' });
+}
 
 export const NxTreeViewChild: FunctionComponent<HTMLAttributes<HTMLDivElement>> =
   function NxTreeViewChild(props) {
