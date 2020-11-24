@@ -10,5 +10,12 @@ import { NxPagination } from '@sonatype/react-shared-components';
 export default function NxPaginationExample() {
   const [page, setPage] = useState(17);
 
-  return <NxPagination onChange={setPage} pageCount={41} currentPage={page} />;
+  return (
+    <>
+      <div id="pagination-example-page" aria-live="polite" aria-atomic="true" aria-relevant="all">
+        Example {page + 1}
+      </div>
+      <NxPagination aria-controls="pagination-example-page" onChange={setPage} pageCount={41} currentPage={page} />
+    </>
+  );
 }
