@@ -12,9 +12,13 @@ export default function NxModalAlertExample() {
   const [showModal, setShowModal] = useState(false);
   const modalCloseHandler = () => setShowModal(false);
 
+  const [showModal2, setShowModal2] = useState(false);
+  const modalCloseHandler2 = () => setShowModal2(false);
+
   return (
     <>
-      <NxButton onClick={() => setShowModal(true)}>Open Modal</NxButton>
+      <NxButton onClick={() => setShowModal(true)}>Alert in content</NxButton>
+      <NxButton onClick={() => setShowModal2(true)}>Alert in footer</NxButton>
       { showModal &&
         <NxModal id="nx-modal-alert-example" onClose={modalCloseHandler}>
           <header className="nx-modal-header">
@@ -28,6 +32,24 @@ export default function NxModalAlertExample() {
           <footer className="nx-footer">
             <div className="nx-btn-bar">
               <NxButton onClick={modalCloseHandler}>Close</NxButton>
+            </div>
+          </footer>
+        </NxModal>
+      }
+      { showModal2 &&
+        <NxModal id="nx-modal-alert-example" onClose={modalCloseHandler2}>
+          <header className="nx-modal-header">
+            <h2 className="nx-h2">Example NxModal with NxAlert</h2>
+          </header>
+          <div className="nx-modal-content">
+            This is some content
+          </div>
+          <footer className="nx-footer">
+            <NxWarningAlert>
+              The page may contain unsaved changes; continuing will discard them.
+            </NxWarningAlert>
+            <div className="nx-btn-bar">
+              <NxButton onClick={modalCloseHandler2}>Close</NxButton>
             </div>
           </footer>
         </NxModal>
