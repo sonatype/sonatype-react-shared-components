@@ -42,13 +42,13 @@ export default function NxFormLayoutExample() {
       <div className="nx-form-row">
         <div className="nx-form-group">
           <label className="nx-label">
-            <span className="nx-label__text">Label</span>
-            <NxStatefulTextInput validator={validator}/>
+            <span className="nx-label__text">Username</span>
+            <NxStatefulTextInput aria-required={true} validator={validator}/>
           </label>
         </div>
         <div className="nx-form-group">
           <label className="nx-label nx-label--optional">
-            <span className="nx-label__text">Label</span>
+            <span className="nx-label__text">Hostname</span>
             <NxStatefulTextInput/>
           </label>
         </div>
@@ -76,16 +76,14 @@ export default function NxFormLayoutExample() {
       </div>
       <fieldset className="nx-fieldset">
         <legend className="nx-legend">
-          <span className="nx-legend__text">
-            Checkboxes
-          </span>
+          <span className="nx-legend__text">Colors</span>
         </legend>
         <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
         <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
         <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
       </fieldset>
       <fieldset className="nx-fieldset">
-        <legend className="nx-legend"><span className="nx-legend__text">Radio buttons</span></legend>
+        <legend className="nx-legend"><span className="nx-legend__text">Primary Color</span></legend>
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}

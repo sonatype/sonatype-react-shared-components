@@ -42,31 +42,29 @@ export default function NxFormLayoutExample() {
     <form className="nx-form" onSubmit={onSubmit}>
       <div className="nx-form-group">
         <label className="nx-label">
-          <span className="nx-label__text">Label</span>
-          <NxStatefulTextInput validator={validator}/>
+          <span className="nx-label__text">A Field to Fill in</span>
+          <NxStatefulTextInput aria-required={true} validator={validator}/>
         </label>
       </div>
       <div className="nx-form-group">
-        <label className="nx-label nx-label--optional">
-          <span className="nx-label__text">Label</span>
-          <NxStatefulTextInput/>
+        <label htmlFor="input-2" className="nx-label nx-label--optional">
+          <span className="nx-label__text">Username</span>
         </label>
+        <NxStatefulTextInput id="input-2"/>
       </div>
       <div className="nx-form-group">
-        <label className="nx-label nx-label--optional">
-          <span className="nx-label__text">Long field</span>
-          <span className="nx-sub-label">
-            <NxFontAwesomeIcon icon={faCalendar}/>
-            <span>This is a sub-label. The field element below is wider than the default.</span>
-          </span>
-          <NxStatefulTextInput className="nx-text-input--long"/>
+        <label htmlFor="long-field" className="nx-label nx-label--optional">
+          <span className="nx-label__text">Hostname</span>
         </label>
+        <span className="nx-sub-label">
+          <NxFontAwesomeIcon icon={faCalendar}/>
+          <span id="long-field-sublabel">The field element below is wider than the default.</span>
+        </span>
+        <NxStatefulTextInput id="long-field" aria-describedby="long-field-sublabel" className="nx-text-input--long"/>
       </div>
       <fieldset className="nx-fieldset">
         <legend className="nx-legend">
-          <span className="nx-legend__text">
-            Checkboxes
-          </span>
+          <span className="nx-legend__text">Colors</span>
         </legend>
         <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
         <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
@@ -74,8 +72,8 @@ export default function NxFormLayoutExample() {
       </fieldset>
       <fieldset className="nx-fieldset">
         <legend className="nx-legend nx-legend--optional">
-          <span className="nx-legend__text">Radio buttons</span>
-          <span className="nx-sub-label">Sub-label</span>
+          <span className="nx-legend__text">Primary Color</span>
+          <span className="nx-sub-label">Pick a single color</span>
         </legend>
         <NxRadio name="color"
                  value="red"
@@ -111,7 +109,7 @@ export default function NxFormLayoutExample() {
       </div>
       <div className="nx-form-group">
         <label className="nx-label">
-          <span className="nx-label__text">Textarea</span>
+          <span className="nx-label__text">Comments</span>
           <NxStatefulTextInput type="textarea" placeholder="placeholder"/>
         </label>
       </div>
