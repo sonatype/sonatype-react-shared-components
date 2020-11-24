@@ -46,7 +46,9 @@ const NxFontAwesomeIconPage = () => {
         </p>
         <p className="nx-p">
           If you are in doubt about whether an icon should be made accessible consider whether the user could perform
-          their given task, or understand an explaination if that icon was not there.
+          their given task, or understand an explaination if that icon was not there. Take care that adding an
+          {' '}<code className="nx-code">aria-label</code> does not cause repetition in text read by assistive
+          technologies.
         </p>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
