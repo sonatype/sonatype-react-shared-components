@@ -15,10 +15,10 @@ export default function NxAccordionExample() {
   return (
     <NxAccordion open={open} onToggle={setOpen}>
       <NxAccordion.Header>
-        <h3 className="nx-accordion__header-title" onClick={() => { alert('Title click'); }}>
+        <h2 className="nx-accordion__header-title" onClick={() => { alert('Title click'); }}>
           Foo lots of content to demonstrate that this element does not wrap but rather overflows with
           ellipsis truncation.
-        </h3>
+        </h2>
         <div className="nx-btn-bar">
           <NxButton variant="icon-only" onClick={() => { alert('Edit click'); }}>
             <NxFontAwesomeIcon icon={faEdit} />

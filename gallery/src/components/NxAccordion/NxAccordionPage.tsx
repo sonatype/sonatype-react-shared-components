@@ -98,17 +98,18 @@ const NxAccordionPage = () =>
               <NxTableCell><code className="nx-code">nx-accordion__header-title</code></NxTableCell>
               <NxTableCell>First child of <code className="nx-code">NxAccordion.Header</code></NxTableCell>
               <NxTableCell>
-                It is expected that the first child of <code className="nx-code">NxAccordion.Header</code>
-                will always be a <code className="nx-code">.nx-accordion__header-title</code> containing
-                the text content of the always visible section of the accordion. This element should be
-                an <code className="nx-code">h*</code>  heading. Note however
+                It is expected that the first child of <code className="nx-code">NxAccordion.Header</code> will
+                always be an <code className="nx-code">&lt;h2&gt;</code> with
+                the <code className="nx-code">.nx-accordion__header-title</code> class containing
+                the text content of the always-visible section of the accordion. Note
                 that <code className="nx-code">NxAccordion</code> is a{' '}
                 <a rel="noreferrer"
                    className="nx-text-link"
                    href="https://html.spec.whatwg.org/multipage/sections.html#sectioning-root">
                   sectioning root
                 </a>
-                , so it does not need to be a lower-rank heading than that of its surrounding section.
+                , so it does not matter whether this header is a lower-rank heading than that of its surrounding
+                section.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
@@ -117,7 +118,7 @@ const NxAccordionPage = () =>
               <NxTableCell>
                 <code className="nx-code">NxAccordion.Header</code> supports the inclusion of buttons on
                 its right-hand side. This is accomplished by adding
-                a <code className="nx-code">.nx-btn-bar</code> after
+                an <code className="nx-code">.nx-btn-bar</code> after
                 the <code className="nx-code">.nx-accordion__header-title</code>.
               </NxTableCell>
             </NxTableRow>
