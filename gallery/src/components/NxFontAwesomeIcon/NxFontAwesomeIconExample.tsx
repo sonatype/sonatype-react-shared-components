@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { faAdjust, faAngry, faAtom, faBatteryEmpty } from '@fortawesome/free-solid-svg-icons';
+import { faAdjust, faAngry, faAtom, faBatteryEmpty, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
 import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
@@ -27,6 +27,8 @@ const NxFontAwesomeIconExample = () =>
         */}
       <NxFontAwesomeIcon icon={faBatteryEmpty} color="red" />
     </button>
+    {/* Icon with title, which sets the name for accessibility purposes*/}
+    <NxFontAwesomeIcon icon={faAddressCard} title="Address Card" />
   </div>;
 
 export default NxFontAwesomeIconExample;

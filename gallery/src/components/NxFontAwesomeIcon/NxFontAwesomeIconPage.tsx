@@ -33,12 +33,30 @@ const NxFontAwesomeIconPage = () => {
           <a href="https://github.com/FortAwesome/react-fontawesome#features" target="_blank">documentation</a>
           {' '}for details on available props
         </p>
+        <h3 className="nx-h3">Accessibility</h3>
+        <p className="nx-p">
+          <code className="nx-code">FontAwesomeIcon</code> has a <code className="nx-code">title</code> prop which
+          sets up a <code className="nx-code">&lt;title&gt;</code> element within the rendered SVG and configures it
+          as the accessible name for the icon. Use this attribute when an icon itself needs to be read by a
+          screenreader. Note however that this will also create a native tooltip with the title, which is not ideal
+          due to our preference for <code className="nx-code">NxTooltip</code>. This technique should therefore be
+          used sparingly, and labels on parent elements should be preferred where appropriate. For instance,
+          the accessible name for an icon-only button should be placed on the button itself, not on the icon.
+          See the <a href="#/pages/NxButton"><code className="nx-code">NxButton</code></a> page for an example.
+        </p>
+        <p className="nx-p">
+          If you are in doubt about whether an icon should be made accessible consider whether the user could perform
+          their given task, or understand an explanation if that icon was not there. Take care that adding an
+          {' '}<code className="nx-code">aria-label</code> does not cause repetition in text read by assistive
+          technologies.
+        </p>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
                           codeExamples={codeExamples}
                           liveExample={NxFontAwesomeIconExample}>
         This example shows a button containing a series of icons inline with some text.
-        The buttons showcase various FontAwesome options that are supported.
+        The buttons showcase various FontAwesome options that are supported. The address card icon
+        demonstrates accessibility requirements for icons that are not purely presentational.
       </GalleryExampleTile>
     </>
   );
