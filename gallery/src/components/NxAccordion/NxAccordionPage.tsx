@@ -123,11 +123,12 @@ const NxAccordionPage = () =>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell><code className="nx-code">nx-accordion__subheader</code></NxTableCell>
-              <NxTableCell>Subheader</NxTableCell>
+              <NxTableCell><code className="nx-code">nx-h3</code></NxTableCell>
+              <NxTableCell>Subheader within accordion body</NxTableCell>
               <NxTableCell>
-                The first child of the accordion (aside from the <code className="nx-code">Header</code>) may be
-                a subheader using the <code className="nx-code">.nx-accordion__subheader</code> class.
+                The contents of the accordion body may include subheaders which should
+                be <code className="nx-code">&lt;h3&gt;</code> elements with
+                the <code className="nx-code">.nx-h3</code> class.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
