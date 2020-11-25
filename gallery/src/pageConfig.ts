@@ -73,6 +73,7 @@ import NxPaginationPage from './components/NxPagination/NxPaginationPage';
 import NxIndeterminatePaginationPage
   from './components/NxIndeterminatePagination/NxIndeterminatePaginationPage';
 import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
+import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
 import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
 
@@ -134,6 +135,7 @@ const pageConfig: PageConfig = {
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
     'nx-page-title': NxPageTitlePage,
+    'nx-form-select': NxFormSelectPage,
     'nx-table': NxTableStylePage,
     //'nx-text-input': NxTextInputStylesPage,
     'nx-threat-number': NxThreatNumberPage,
