@@ -87,7 +87,9 @@ export default function NxTileAccordionExample() {
         </header>
         <div className="nx-tile-content">
           <p className="nx-p">
-            Other content may optionally be present outside of the accordion container
+            An <code className="nx-code">nx-tile</code> may have
+            multiple <code className="nx-code">nx-tile-content</code> containers so accordions can appear within
+            a tile along with "normal" content.
           </p>
         </div>
         <div className="nx-tile-content nx-tile-content--accordion-container">
