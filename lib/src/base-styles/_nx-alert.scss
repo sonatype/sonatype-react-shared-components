@@ -17,7 +17,7 @@
   border: $nx-border-darker;
   border-radius: $nx-border-radius;
   display: flex;
-  margin: 8px auto;
+  margin: 16px auto 24px auto;
   max-width: 950px;
   padding: $nx-spacing-md;
   text-align: initial;
@@ -82,8 +82,4 @@
   > .nx-icon {
     color: #007623;
   }
-}
-
-.nx-page-main > .nx-alert {
-  margin-bottom: 24px;
 }
