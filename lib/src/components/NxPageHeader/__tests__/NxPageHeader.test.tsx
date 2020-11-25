@@ -18,7 +18,6 @@ describe('NxPageHeader', function() {
     expect(getShallowComponent()).toMatchSelector(AbstractNxPageHeader);
   });
 
-
   it('renders an nx-product within the nx-page-header__inner, minimally containing the branding', function() {
     expect(getShallowComponent().find('.nx-page-header__inner')).toContainMatchingElement('.nx-product');
     expect(getShallowComponent().find('.nx-product')).toContainMatchingElement('.nx-product__branding');
