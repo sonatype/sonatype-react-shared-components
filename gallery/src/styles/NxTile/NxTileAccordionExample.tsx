@@ -19,7 +19,7 @@ export default function NxTileAccordionExample() {
         <div className="nx-tile-content nx-tile-content--accordion-container">
           <NxStatefulAccordion>
             <NxAccordion.Header>
-              <div className="nx-accordion__header-title">Bacon</div>
+              <h2 className="nx-accordion__header-title">Bacon</h2>
             </NxAccordion.Header>
             <p className="nx-p">
               Bacon ipsum dolor amet tenderloin kevin jerky corned beef, kielbasa cow strip steak. Venison alcatra
@@ -32,7 +32,7 @@ export default function NxTileAccordionExample() {
           </NxStatefulAccordion>
           <NxStatefulAccordion>
             <NxAccordion.Header>
-              <div className="nx-accordion__header-title">Landjaeger</div>
+              <h2 className="nx-accordion__header-title">Landjaeger</h2>
             </NxAccordion.Header>
             <p className="nx-p">
               Landjaeger t-bone pastrami flank ribeye buffalo, hamburger salami corned beef tongue sausage. Capicola
@@ -42,7 +42,7 @@ export default function NxTileAccordionExample() {
           </NxStatefulAccordion>
           <NxStatefulAccordion>
             <NxAccordion.Header>
-              <div className="nx-accordion__header-title">Drumstick</div>
+              <h2 className="nx-accordion__header-title">Drumstick</h2>
             </NxAccordion.Header>
             <p className="nx-p">
               Drumstick ground round hamburger, salami turkey buffalo pork loin tri-tip. Doner kevin pancetta
@@ -55,7 +55,7 @@ export default function NxTileAccordionExample() {
           </NxStatefulAccordion>
           <NxStatefulAccordion>
             <NxAccordion.Header>
-              <div className="nx-accordion__header-title">Prosciutto</div>
+              <h2 className="nx-accordion__header-title">Prosciutto</h2>
             </NxAccordion.Header>
             <p className="nx-p">
               Prosciutto chislic tail beef sausage short loin spare ribs leberkas fatback landjaeger t-bone bacon
@@ -66,7 +66,7 @@ export default function NxTileAccordionExample() {
           </NxStatefulAccordion>
           <NxStatefulAccordion>
             <NxAccordion.Header>
-              <div className="nx-accordion__header-title">Short Loin</div>
+              <h2 className="nx-accordion__header-title">Short Loin</h2>
             </NxAccordion.Header>
             <p className="nx-p">
               Short loin bresaola turducken corned beef, chicken rump ground round cupim. Burgdoggen swine picanha tail
@@ -95,7 +95,7 @@ export default function NxTileAccordionExample() {
         <div className="nx-tile-content nx-tile-content--accordion-container">
           <NxStatefulAccordion>
             <NxAccordion.Header>
-              <div className="nx-accordion__header-title">Drumstick</div>
+              <h2 className="nx-accordion__header-title">Drumstick</h2>
             </NxAccordion.Header>
             <p className="nx-p">
               Drumstick ground round hamburger, salami turkey buffalo pork loin tri-tip. Doner kevin pancetta
