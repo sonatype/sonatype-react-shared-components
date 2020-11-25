@@ -73,6 +73,9 @@ describe('NxTreeView', function() {
   describe('NxTreeView with clickable children in sidebar', function() {
     it('looks right collapsed', simpleTest(clickableTreeViewSidebarSelector));
     it('looks right expanded', simpleExpandedTest(clickableTreeViewSidebarSelector));
+    it('has items that look right on hover', hoverExpandedTest(clickableTreeViewSidebarSelector));
+    it('has items that look right on focus', focusExpandedTest(clickableTreeViewSidebarSelector));
+    it('has items that look right on focus and hover', focusAndHoverExpandedTest(clickableTreeViewSidebarSelector));
   });
 
   describe('NxTreeView with checkbox/radio children', function() {
