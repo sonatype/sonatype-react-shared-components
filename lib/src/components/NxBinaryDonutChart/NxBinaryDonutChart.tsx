@@ -33,7 +33,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
       const largeArc = percent > 50 ? 1 : 0;
 
       return (
-        <svg ref={ref} viewBox="-100 -100 200 200" className={donutClasses} {...svgAttrs}>
+        <svg ref={ref} viewBox="-100 -100 200 200" role="img" className={donutClasses} {...svgAttrs}>
           { percent < 100 &&
             <circle className="nx-binary-donut-chart__background" strokeWidth={strokeWidth} r={r}/>
           }

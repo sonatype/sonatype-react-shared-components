@@ -30,3 +30,30 @@ export function only(children: ReactNode, type: React.ComponentType): React.Reac
   });
   return matchingChildren.length ? matchingChildren[0] : null;
 }
+
+/**
+ * @param children to search
+ * @returns the concatenated string contents of thie children
+ */
+export function textContent(children: ReactNode): string {
+  if (children === undefined || children === null) {
+    return '';
+  }
+
+  const type = typeof children;
+  if (type === 'string' || type === 'number') {
+    return children.toString();
+  }
+
+  if (type === 'boolean') {
+    return '';
+  }
+
+  if (React.isValidElement(children)) {
+    children = children.props.children;
+  }
+
+  return React.Children.toArray(children).reduce((text: string, child: ReactNode) => {
+    return text + textContent(child);
+  }, '');
+}

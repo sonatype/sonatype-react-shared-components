@@ -48,6 +48,18 @@ const NxBinaryDonutChartPage = () =>
               The size of the hole in the donut, as a percentage of the donut's overall size.  The default value is 50.
             </td>
           </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">aria-label</td>
+            <td className="nx-cell">string</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              If the chart is not accompanied by visible text content that contains the same information that the chart
+              conveys, then the chart should have an <code className="nx-code">aria-label</code> attribute giving it
+              an accessible name which adequately describes its information for non-visual users. If the chart is
+              accompanied by a text description however, such a label would be redundant and the chart is considered
+              a presentational element.
+            </td>
+          </tr>
         </tbody>
       </table>
     </GalleryDescriptionTile>
@@ -57,6 +69,8 @@ const NxBinaryDonutChartPage = () =>
                         codeExamples={nxBinaryDonutChartMinimalExampleCode}
                         liveExample={NxBinaryDonutChartMinimalExample}>
         Minimal examples of <code className="nx-code">NxBinaryDonutChart</code>s with different values.
+        Some of these charts demonstrate the usage of <code className="nx-code">aria-label</code> to describe the
+        chart contents.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with no Hole"
