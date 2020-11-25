@@ -98,17 +98,18 @@ const NxAccordionPage = () =>
               <NxTableCell><code className="nx-code">nx-accordion__header-title</code></NxTableCell>
               <NxTableCell>First child of <code className="nx-code">NxAccordion.Header</code></NxTableCell>
               <NxTableCell>
-                It is expected that the first child of <code className="nx-code">NxAccordion.Header</code>
-                will always be a <code className="nx-code">.nx-accordion__header-title</code> containing
-                the text content of the always visible section of the accordion. This element should be
-                and <code className="nx-code">h*</code>  heading. Note however
+                It is expected that the first child of <code className="nx-code">NxAccordion.Header</code> will
+                always be an <code className="nx-code">&lt;h2&gt;</code> with
+                the <code className="nx-code">.nx-accordion__header-title</code> class containing
+                the text content of the always-visible section of the accordion. Note
                 that <code className="nx-code">NxAccordion</code> is a{' '}
                 <a rel="noreferrer"
                    className="nx-text-link"
                    href="https://html.spec.whatwg.org/multipage/sections.html#sectioning-root">
                   sectioning root
                 </a>
-                , so it does not need to be a lower-rank heading than that of its surrounding section.
+                , so it does not matter whether this header is a lower-rank heading than that of its surrounding
+                section.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
@@ -117,16 +118,17 @@ const NxAccordionPage = () =>
               <NxTableCell>
                 <code className="nx-code">NxAccordion.Header</code> supports the inclusion of buttons on
                 its right-hand side. This is accomplished by adding
-                a <code className="nx-code">.nx-btn-bar</code> after
+                an <code className="nx-code">.nx-btn-bar</code> after
                 the <code className="nx-code">.nx-accordion__header-title</code>.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell><code className="nx-code">nx-accordion__subheader</code></NxTableCell>
-              <NxTableCell>Subheader</NxTableCell>
+              <NxTableCell><code className="nx-code">nx-h3</code></NxTableCell>
+              <NxTableCell>Subheader within accordion body</NxTableCell>
               <NxTableCell>
-                The first child of the accordion (aside from the <code className="nx-code">Header</code>) may be
-                a subheader using the <code className="nx-code">.nx-accordion__subheader</code> class.
+                The contents of the accordion body may include subheaders which should
+                be <code className="nx-code">&lt;h3&gt;</code> elements with
+                the <code className="nx-code">.nx-h3</code> class.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
@@ -149,9 +151,10 @@ const NxAccordionPage = () =>
       A more complex <code className="nx-code">NxAccordion</code> including header buttons and a subheader.
       This example also demonstrates that clicks on the header and buttons are handled correctly. Clicking a header
       button does not cause the accordion to toggle, but clicking anywhere else on the header does, even including
-      places that have their own click handlers. This example also demonstrates that the header title uses
-      ellipsis truncation to handle long content, while the subheader wraps. Developers should however avoid
-      creating titles and subheaders that are long enough to trigger these behaviors when possible.
+      places that have their own click handlers (e.g. the accordion title in this example). This example also
+      demonstrates that the header title uses ellipsis truncation to handle long content, while the subheader wraps.
+      Developers should however avoid creating titles and subheaders that are long enough to trigger these behaviors
+      when possible.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with tertiary button in header"

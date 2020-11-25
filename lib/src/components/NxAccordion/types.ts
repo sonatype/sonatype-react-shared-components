@@ -10,6 +10,7 @@ import * as PropTypes from 'prop-types';
 export interface HeaderContextType {
   onClick: (evt: MouseEvent) => void;
   open: boolean;
+  accordionId: string;
 }
 
 export interface Props extends Omit<DetailsHTMLAttributes<HTMLDetailsElement>, 'onToggle'> {

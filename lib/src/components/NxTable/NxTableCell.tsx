@@ -13,6 +13,8 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { NxTableCellProps, nxTableCellPropTypes } from './types';
 import { HeaderContext } from './contexts';
+import NxTooltip from '../NxTooltip/NxTooltip';
+import { textContent } from '../../util/childUtil';
 export { NxTableCellProps };
 
 const NxTableCell = function NxTableCell(props: NxTableCellProps) {
@@ -39,30 +41,41 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   });
 
   let maskedSort;
-  if (sortDir === 'asc') {
-    maskedSort = (
-      <>
-        <NxFontAwesomeIcon icon={faSortDown} />
-        <NxFontAwesomeIcon icon={faSortUp} />
-      </>
-    );
-  }
-  else if (sortDir === 'desc') {
-    maskedSort = (
-      <>
-        <NxFontAwesomeIcon icon={faSortUp} />
-        <NxFontAwesomeIcon icon={faSortDown} />
-      </>
-    );
-  }
-  else {
-    maskedSort = <NxFontAwesomeIcon icon={faSort} />;
+  let ariaSort: 'ascending' | 'descending' | 'none' | undefined;
+  let ariaLabel;
+  if (isSortable) {
+    const text = textContent(children);
+    if (sortDir === 'asc') {
+      ariaSort = 'ascending';
+      ariaLabel = `${text} ${ariaSort}`;
+      maskedSort = (
+        <>
+          <NxFontAwesomeIcon icon={faSortDown} />
+          <NxFontAwesomeIcon icon={faSortUp} />
+        </>
+      );
+    }
+    else if (sortDir === 'desc') {
+      ariaSort = 'descending';
+      ariaLabel = `${text} ${ariaSort}`;
+      maskedSort = (
+        <>
+          <NxFontAwesomeIcon icon={faSortUp} />
+          <NxFontAwesomeIcon icon={faSortDown} />
+        </>
+      );
+    }
+    else {
+      ariaSort = 'none';
+      ariaLabel = `${text} unsorted`;
+      maskedSort = <NxFontAwesomeIcon icon={faSort} />;
+    }
   }
 
   const Tag = isHeader ? 'th' : 'td';
-
-  return (
-    <Tag className={classes} {...attrs}>
+  const tabIndex = isSortable ? 0 : undefined;
+  const cell = (
+    <Tag className={classes} tabIndex={tabIndex} aria-sort={ariaSort} {...attrs}>
       { (chevron && !isHeader) ?
         <NxFontAwesomeIcon icon={faChevronRight}/> :
         <>
@@ -72,6 +85,11 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
       }
     </Tag>
   );
+
+  if (isSortable) {
+    return <NxTooltip title={ariaLabel}>{cell}</NxTooltip>;
+  }
+  return cell;
 };
 
 NxTableCell.propTypes = nxTableCellPropTypes;

@@ -41,6 +41,23 @@ describe('NxTextInput', function() {
         .toHaveText('asdf');
   });
 
+  it('places the alert role on the invalid message and references it as aria-errormessage', function() {
+    const component = getShallowComponent(),
+        invalidMessage = component.find('.nx-text-input__invalid-message'),
+        invalidMessageId = invalidMessage.prop('id');
+
+    expect(invalidMessage).toHaveProp('role', 'alert');
+    expect(invalidMessageId).toBeTruthy();
+    expect(component.find('.nx-text-input__input')).toHaveProp('aria-errormessage', invalidMessageId);
+  });
+
+  it('sets aria-invalid to true iff it is validatable and has validation errors', function() {
+    expect(getShallowComponent().find('input')).not.toHaveProp('aria-invalid', true);
+    expect(getShallowComponent({ validatable: true }).find('input')).not.toHaveProp('aria-invalid', true);
+    expect(getShallowComponent({ validatable: true, validationErrors: 'foo' }).find('input'))
+        .toHaveProp('aria-invalid', true);
+  });
+
   it('renders a text input by default', function() {
     expect(getShallowComponent().find('input')).toHaveProp('type', 'text');
   });
