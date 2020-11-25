@@ -216,9 +216,8 @@ describe('NxTreeView', function() {
     });
 
     describe('when children is an element', function() {
-      const component = mount(
-            <NxTreeViewChild><div id="test-id" className="bar" lang="en">foo</div></NxTreeViewChild>
-          ),
+      const jsx = <NxTreeViewChild><div id="test-id" className="bar" lang="en">foo</div></NxTreeViewChild>,
+          component = mount(jsx),
           div = component.children();
 
       it('renders an element like the children', function() {
