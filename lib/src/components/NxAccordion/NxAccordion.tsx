@@ -82,7 +82,7 @@ export default function NxAccordion(props: Props) {
   };
 
   return (
-    <details id={accordionId} className={classes} open={open} { ...otherProps} role="group" aria-expanded={open}>
+    <details id={accordionId} className={classes} open={open} { ...otherProps} role="group" aria-expanded={!!open}>
       <HeaderContext.Provider value={headerContext}>{header}</HeaderContext.Provider>
       <div className="nx-accordion__content">{otherChildren}</div>
     </details>
