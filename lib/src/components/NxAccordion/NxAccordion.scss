@@ -39,12 +39,13 @@
     margin: 0 0 0 $nx-spacing-l;
     flex-shrink: 0;
   }
+}
 
-  > .nx-h3 {
-    @include nx-truncate-ellipsis;
+.nx-accordion__header-title {
+  @include nx-truncate-ellipsis;
 
-    margin: 0 auto 0 0;
-  }
+  font-size: $nx-font-size;
+  margin: 0 auto 0 0;
 }
 
 .nx-accordion__subheader {

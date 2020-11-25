@@ -95,21 +95,20 @@ const NxAccordionPage = () =>
           </NxTableHead>
           <NxTableBody>
             <NxTableRow>
-              <NxTableCell><code className="nx-code">nx-h3</code></NxTableCell>
+              <NxTableCell><code className="nx-code">nx-accordion__header-title</code></NxTableCell>
               <NxTableCell>First child of <code className="nx-code">NxAccordion.Header</code></NxTableCell>
               <NxTableCell>
                 It is expected that the first child of <code className="nx-code">NxAccordion.Header</code>
-                will always be a <code className="nx-code">.nx-h3</code> containing
+                will always be a <code className="nx-code">.nx-accordion__header-title</code> containing
                 the text content of the always visible section of the accordion. This element should be
-                an <code className="nx-code">h3</code>  heading. Note
+                an <code className="nx-code">h*</code>  heading. Note however
                 that <code className="nx-code">NxAccordion</code> is a{' '}
                 <a rel="noreferrer"
                    className="nx-text-link"
                    href="https://html.spec.whatwg.org/multipage/sections.html#sectioning-root">
                   sectioning root
                 </a>
-                , so the relationship between the rank of this heading and the headings of content surrounding the
-                accordion is irrelevant.
+                , so it does not need to be a lower-rank heading than that of its surrounding section.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
