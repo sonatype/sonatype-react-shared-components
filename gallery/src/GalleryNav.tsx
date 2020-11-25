@@ -16,7 +16,7 @@ const renderLinks: ((categoryEntries: PageMapping) => ReactNode) = pipe(
     keys,
     map((pageName: string) =>
       <NxTreeViewChild key={pageName}>
-        <NavLink to={`/pages/${pageName}`} className="nx-tree-view__child" activeClassName="selected">
+        <NavLink to={`/pages/${pageName}`} activeClassName="selected">
           {pageName}
         </NavLink>
       </NxTreeViewChild>
