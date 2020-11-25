@@ -86,8 +86,7 @@ const NxTreeViewMultiSelect: FunctionComponent<Props> = function NxTreeViewMulti
     </NxCheckbox>
   ) : null;
 
-  const renderCounter = () =>
-      <MultiSelectCounter options={options} selectedIds={normalizedSelectedIds} />;
+  const renderCounter = () => <MultiSelectCounter options={options} selectedIds={normalizedSelectedIds} />;
 
   return <AbstractTreeViewSelect {...otherProps}
                                  renderOption={renderOption}
