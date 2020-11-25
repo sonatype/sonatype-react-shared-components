@@ -36,7 +36,7 @@ const NxFontAwesomeIconPage = () => {
         <h3 className="nx-h3">Accessibility</h3>
         <p className="nx-p">
           <code className="nx-code">FontAwesomeIcon</code> has a <code className="nx-code">title</code> prop which
-          sets up a <code className="nx-code">&lt;title&gt;</code> element within the rendered SVG and configures is
+          sets up a <code className="nx-code">&lt;title&gt;</code> element within the rendered SVG and configures it
           as the accessible name for the icon. Use this attribute when an icon itself needs to be read by a
           screenreader. Note however that this will also create a native tooltip with the title, which is not ideal
           due to our preference for <code className="nx-code">NxTooltip</code>. This technique should therefore be
