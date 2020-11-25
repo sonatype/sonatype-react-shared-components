@@ -6,7 +6,7 @@
  */
 import React, { ReactNode } from 'react';
 
-import { splitOutFirst } from '../childUtil';
+import { splitOutFirst, textContent } from '../childUtil';
 
 function Component() {
   return <div />;
@@ -66,6 +66,28 @@ describe('childUtil', function() {
         expect(results[0]).toBe(component);
         expect((results[1] as ReactNode[])[2]).toBe(otherComponent);
       });
+    });
+  });
+
+  describe('textContent', function() {
+    it('returns basic results', function() {
+      expect(textContent(undefined)).toBe('');
+      expect(textContent(null)).toBe('');
+      expect(textContent(true)).toBe('');
+      expect(textContent(false)).toBe('');
+      expect(textContent('test')).toBe('test');
+      expect(textContent(1)).toBe('1');
+    });
+
+    it('returns all text from complex jsx', function() {
+      const jsx = (
+        <>
+          1
+          <span>2</span>
+          <div><span>3</span></div>
+        </>
+      );
+      expect(textContent(jsx)).toBe('123');
     });
   });
 });

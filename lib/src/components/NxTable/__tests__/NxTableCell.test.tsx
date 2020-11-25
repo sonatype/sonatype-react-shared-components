@@ -55,22 +55,28 @@ describe('NxTableCell', function () {
   });
 
   it('shows the sortable icon when the cell isSortable but has no sort direction', function () {
-    const component = getShallowComponent({ isSortable: true });
+    const component = getShallowComponent({ isSortable: true, children: 'Text' });
 
+    expect(component).toHaveProp('title', 'Text unsorted');
+    expect(component.find('td')).toHaveProp('aria-sort', 'none');
     expect(component.find('.nx-cell__sort-icons.fa-layers')).toContainReact(<NxFontAwesomeIcon icon={faSort}/>);
   });
 
   it('shows the sort ascending icon when the cell isSortable and has a sort direction "asc"', function () {
-    const component = getShallowComponent({ isSortable: true, sortDir: 'asc' });
+    const component = getShallowComponent({ isSortable: true, sortDir: 'asc', children: 'Text' });
 
+    expect(component).toHaveProp('title', 'Text ascending');
+    expect(component.find('td')).toHaveProp('aria-sort', 'ascending');
     expect(component).toContainMatchingElement('.nx-cell__sort-icons');
     expect(component.find('NxFontAwesomeIcon').first()).toHaveProp('icon', faSortDown);
     expect(component.find('NxFontAwesomeIcon').last()).toHaveProp('icon', faSortUp);
   });
 
   it('shows the sort descending icon when the cell isSortable and has a sort direction "desc"', function () {
-    const component = getShallowComponent({ isSortable: true, sortDir: 'desc' });
+    const component = getShallowComponent({ isSortable: true, sortDir: 'desc', children: 'Text' });
 
+    expect(component).toHaveProp('title', 'Text descending');
+    expect(component.find('td')).toHaveProp('aria-sort', 'descending');
     expect(component).toContainMatchingElement('.nx-cell__sort-icons');
     expect(component.find('NxFontAwesomeIcon').first()).toHaveProp('icon', faSortUp);
     expect(component.find('NxFontAwesomeIcon').last()).toHaveProp('icon', faSortDown);
