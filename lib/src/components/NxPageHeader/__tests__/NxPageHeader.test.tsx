@@ -36,7 +36,7 @@ describe('NxPageHeader', function() {
 
     // this path comes from imgMock.ts
     expect(logo).toHaveProp('src', 'path/to/asset.png');
-    expect(logo).toHaveProp('alt', '⬡ Sonatype');
+    expect(logo).toHaveProp('alt', 'Sonatype');
     expect(logo).toHaveClassName('nx-product__logo-image');
   });
 
