@@ -17,7 +17,7 @@ describe('nx-tile', function() {
       subtitleTileSelector = '#nx-tile-subtitle-example .nx-tile',
       subsectionsTileSelector = '#nx-tile-subsections-example .nx-tile',
       dropdownActionMenuTileSelector = '#nx-tile-dropdown-actions-example .nx-tile';
-      accordionTileExampleSelector = '#nx-tile-accordion-example .gallery-example-live';
+      accordionTileSelector = '#nx-tile-accordion-example .gallery-example-live';
 
   describe('Simple nx-tile', function() {
     it('looks right', simpleTest(simpleTileSelector));
