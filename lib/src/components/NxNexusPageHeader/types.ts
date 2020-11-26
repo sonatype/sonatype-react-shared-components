@@ -13,17 +13,21 @@ import { Props as AbstractNxPageHeaderProps, propTypes as abstractNxPageHeaderPr
 
 export interface ProductInfo {
   name: string;
+  meta? : string | null;
   version? : string | null;
 }
 
 export type Props = Omit<AbstractNxPageHeaderProps, 'logo' | 'productInfoContent'> & {
-  productInfo?: ProductInfo | null;
+  productInfo: ProductInfo;
+  logoPath?: string | null;
 };
 
 export const propTypes: ValidationMap<Props> = {
   ...omit(['logo', 'productInfoContent'], abstractNxPageHeaderPropTypes),
+  logoPath: PropTypes.string,
   productInfo: PropTypes.shape({
     name: PropTypes.string.isRequired,
+    meta: PropTypes.string,
     version: PropTypes.string
-  })
+  }).isRequired
 };
