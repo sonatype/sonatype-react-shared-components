@@ -20,14 +20,18 @@ const NxPolicyViolationIndicatorPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <code className="nx-code">NxPolicyViolationIndicator</code> is an inline element used
-        to indicate via color the IQ policy threat level of the information to follow that follows it.
+        <code className="nx-code">NxPolicyViolationIndicator</code> is an element used to indicate IQ policy threat
+        level via color and text.
       </p>
       <p className="nx-p">
         There are two scales to choose from: threat level by category, and threat
         level by number. When using this component, it is expected that just one of the props will be passed. If both
         are passed, <code className="nx-code">threatLevelCategory</code> takes precedence. If neither are passed,
         the <code className="nx-code">unspecified</code> category is used
+      </p>
+      <p className="nx-p">
+        The text that appears inside the component can be specified by the user, or if no text is supplied the threat
+        category will appear.
       </p>
       <table className="nx-table">
         <thead>
@@ -89,19 +93,20 @@ const NxPolicyViolationIndicatorPage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Threat Indicators by Category"
-                        id="nx-threat-indicator-simple-example"
+    <GalleryExampleTile title="Policy Violation Indicators by Category"
+                        id="nx-policy-violation-indicator-category-example"
                         liveExample={NxPolicyViolationIndicatorByCategoryExample}
                         codeExamples={nxPolicyViolationIndicatorByCategoryCode}>
-      A series of lines of text, each beginning with an <code className="nx-code">NxPolicyViolationIndicator</code>
-      whose color is set to a different <code className="nx-code">threatLevelCategory</code> value.
+      Examples of <code className="nx-code">NxPolicyViolationIndicator</code> displaying each of the available
+      <code className="nx-code">threatLevelCategory</code> values with user specified text.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Threat Indicators by Policy Number"
+    <GalleryExampleTile title="Policy Violation Indicators by Policy Number"
+                        id="nx-policy-violation-indicator-number-example"
                         liveExample={NxPolicyViolationIndicatorByPolicyNumberExample}
                         codeExamples={nxPolicyViolationIndicatorByPolicyNumberCode}>
-      A series of lines of text, each beginning with an <code className="nx-code">NxPolicyViolationIndicator</code>
-      whose color is set to a different <code className="nx-code">policyThreatNumber</code> value.
+      Examples of <code className="nx-code">NxPolicyViolationIndicator</code> where the colours are specified by
+      the <code className="nx-code">policyThreatNumber</code> value and the text shown is the default category label.
     </GalleryExampleTile>
   </>;
 
