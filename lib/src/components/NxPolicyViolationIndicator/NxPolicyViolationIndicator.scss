@@ -9,7 +9,8 @@
 
 .nx-policy-violation-indicator {
   align-items: center;
-  border: 1px solid #000;
+  background-color: #fff;
+  border: 1px solid;
   border-radius: $nx-border-radius;
   display: flex;
   height: 30px;
