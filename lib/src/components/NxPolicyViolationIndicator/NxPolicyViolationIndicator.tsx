@@ -23,7 +23,8 @@ const NxPolicyViolationIndicator: FunctionComponent<Props> =
         className = `nx-policy-violation-indicator nx-policy-violation-indicator--${category}`,
         label = `threat level ${category}`;
 
-    return <div className={className}>
+    return (
+      <div className={className}>
         <div className="nx-policy-violation-indicator__badge">
           <NxFontAwesomeIcon aria-hidden={false}
                              aria-label={label}
@@ -32,7 +33,8 @@ const NxPolicyViolationIndicator: FunctionComponent<Props> =
         <div className="nx-policy-violation-indicator__text">
           <span>{children || category}</span>
         </div>
-      </div>;
+      </div>
+    );
   };
 
 NxPolicyViolationIndicator.propTypes = propTypes;
