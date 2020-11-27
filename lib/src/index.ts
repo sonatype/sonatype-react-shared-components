@@ -159,5 +159,5 @@ export { default as NxPagination, Props as NxPaginationProps } from './component
 export { default as NxIndeterminatePagination, Props as NxIndeterminatePaginationProps }
   from './components/NxIndeterminatePagination/NxIndeterminatePagination';
 
-  export { default as NxPolicyViolationIndicator, Props as NxPolicyViolationIndicatorProps }
+export { default as NxPolicyViolationIndicator, Props as NxPolicyViolationIndicatorProps }
   from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicator';
