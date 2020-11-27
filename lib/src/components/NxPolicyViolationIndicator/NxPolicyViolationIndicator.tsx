@@ -21,7 +21,7 @@ const NxPolicyViolationIndicator: FunctionComponent<Props> =
           policyThreatLevel != null ? categoryByPolicyThreatLevel[policyThreatLevel] : 'unspecified',
 
         className = `nx-policy-violation-indicator nx-policy-violation-indicator--${category}`,
-        label = `${category}`;
+        label = `threat level ${category}`;
 
     return <div className={className}>
         <div className="nx-policy-violation-indicator__badge">
@@ -30,7 +30,7 @@ const NxPolicyViolationIndicator: FunctionComponent<Props> =
                              icon={faExclamationCircle}/>
         </div>
         <div className="nx-policy-violation-indicator__text">
-          <span>{children || label}</span>
+          <span>{children || category}</span>
         </div>
       </div>;
   };
