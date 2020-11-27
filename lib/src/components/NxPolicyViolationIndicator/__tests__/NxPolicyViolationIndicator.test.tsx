@@ -28,7 +28,8 @@ describe('NxPolicyViolationIndicator', function() {
     expect(getShallowComponent({ policyThreatLevel: 3 })).toMatchSelector('.nx-policy-violation-indicator--moderate');
     expect(getShallowComponent({ policyThreatLevel: 5 })).toMatchSelector('.nx-policy-violation-indicator--severe');
     expect(getShallowComponent({ policyThreatLevel: 9 })).toMatchSelector('.nx-policy-violation-indicator--critical');
-    expect(getShallowComponent({ policyThreatLevel: 9 })).not.toMatchSelector('.nx-policy-violation-indicator--unspecified');
+    expect(getShallowComponent({ policyThreatLevel: 9 }))
+        .not.toMatchSelector('.nx-policy-violation-indicator--unspecified');
   });
 
   it('sets the modifier class using the threatLevelCategory if both props are provided', function() {
