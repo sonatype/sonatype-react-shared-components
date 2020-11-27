@@ -77,6 +77,7 @@ import NxNexusPageHeaderPage from './components/NxNexusPageHeader/NxNexusPageHea
 import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
 import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
+import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -103,6 +104,7 @@ const pageConfig: PageConfig = {
     NxPagination: NxPaginationPage,
     NxIndeterminatePagination: NxIndeterminatePaginationPage,
     NxPolicyThreatSlider: NxPolicyThreatSliderPage,
+    NxPolicyViolationIndicator: NxPolicyViolationIndicatorPage,
     NxRadio: NxRadioPage,
     NxSubmitMask: NxSubmitMaskPage,
     NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
