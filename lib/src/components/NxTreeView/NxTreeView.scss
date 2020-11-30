@@ -57,6 +57,8 @@ $twisty-proportion-difference: 2px;
 
 .nx-tree-view__trigger {
   @include container-horizontal;
+  @include semi-bold;
+
   align-items: center;
   background: none;
   border: none;
@@ -64,8 +66,6 @@ $twisty-proportion-difference: 2px;
   color: #2c2c2c;
   cursor: pointer;
   display: flex;
-  font: inherit;
-  font-weight: 600;
   text-align: left;
   padding: 0;
   width: 100%;
