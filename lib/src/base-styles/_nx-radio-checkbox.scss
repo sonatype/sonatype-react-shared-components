@@ -30,8 +30,8 @@
     cursor: pointer;
 
     .nx-radio-checkbox__control {
-      border-color: #2c2c2c;
-      stroke: #2c2c2c;
+      border-color: $nx-form-element-border-color;
+      stroke: $nx-grey-1100;
     }
   }
 
@@ -44,9 +44,9 @@
 
     &:hover {
       .nx-radio-checkbox__control {
-        border-color: #2c2c2c;
+        border-color: $nx-form-element-border-color;
         filter: none;
-        stroke: #2c2c2c;
+        stroke: $nx-grey-1100;
       }
 
       .nx-radio-checkbox__input:checked + .nx-radio-checkbox__control {

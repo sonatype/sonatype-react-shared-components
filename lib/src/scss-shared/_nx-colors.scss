@@ -74,8 +74,8 @@ $nx-content-background-color: $nx-site-background-color;
 $nx-header-border: #f1f3fa;
 
 //  Text
-$nx-heading-color: #2C2C2C;
-$nx-text-color-dark: #2c2c2c;
+$nx-heading-color: $nx-grey-1100;
+$nx-text-color-dark:$nx-grey-1100;
 $nx-text-color: #474747;
 $nx-text-color-disabled: #949494;
 $nx-text-color-error: $nx-fail-color;
@@ -103,6 +103,9 @@ $nx-border-row: 1px solid $nx-grey-1;
 $nx-border-row-hover: 1px solid $nx-grey-4;
 $nx-border-row-disabled: 1px solid $nx-grey-1;
 $nx-border-row-dark: 1px solid $nx-grey-5;
+
+// Borders in form elements
+$nx-form-element-border-color: $nx-grey-1100;
 
 // Threat colors
 $nx-threat-color-unspecified: #d1d6f0;

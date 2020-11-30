@@ -26,7 +26,7 @@
   width: $nx-form-element-width-normal;
 
   &:hover {
-    border-color: #2c2c2c;
+    border-color: $nx-form-element-border-color;
   }
 
   &:focus {

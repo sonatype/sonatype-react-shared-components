@@ -20,7 +20,7 @@
     .nx-tree-view__text {
       @include semi-bold();
 
-      color: #2c2c2c;
+      color: $nx-text-color-dark;
     }
   }
 }
