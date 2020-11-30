@@ -67,7 +67,7 @@ $nx-fail-color-hover: #5d0000;
 */
 
 // Structural
-$nx-site-background-color: #f4f5f9;
+$nx-site-background-color: $nx-grey-50;
 $nx-page-background-color: $nx-site-background-color;
 $nx-sidebar-background-color: $nx-site-background-color;
 $nx-content-background-color: $nx-site-background-color;
