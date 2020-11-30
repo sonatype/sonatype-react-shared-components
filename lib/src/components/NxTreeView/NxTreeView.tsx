@@ -37,9 +37,9 @@ const NxTreeView: FunctionComponent<Props> =
                   aria-expanded={isExpanded}
                   aria-disabled={disabled || isEmpty || undefined}>
             <NxFontAwesomeIcon className="nx-tree-view__twisty" icon={faCaretRight} />
-            <div className="nx-tree-view__text">
+            <span className="nx-tree-view__text">
               {triggerContent}
-            </div>
+            </span>
           </button>
         ),
         triggerTooltipProps = typeof triggerTooltip === 'string' ? { title: triggerTooltip } : triggerTooltip;
