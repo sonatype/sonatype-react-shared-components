@@ -77,18 +77,19 @@ $nx-header-border: #f1f3fa;
 $nx-heading-color: $nx-grey-1100;
 $nx-text-color-dark:$nx-grey-1100;
 $nx-text-color: $nx-grey-900;
-$nx-text-color-disabled: #949494;
+$nx-text-color-disabled: $nx-grey-500;
 $nx-text-color-error: $nx-fail-color;
 
 $nx-link-color: $nx-blue-600;
 $nx-link-color-active: $nx-blue-400;
 $nx-link-color-hover: $nx-blue-800;
-$nx-link-color-disabled: #949494;
+$nx-link-color-disabled: $nx-grey-500;
 
 // Basic interactive states
 $nx-selected-background: $nx-blue-200;
 $nx-active-background: $nx-blue-200;
 $nx-hover-background: #f1f3fa;
+$nx-disabled-border: $nx-grey-500;
 
 //  Borders
 $nx-border-darker: 1px solid $nx-slate;
