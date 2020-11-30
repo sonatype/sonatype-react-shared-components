@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { simpleTest } = require('./testUtils');
+const { simpleTest, simpleTestLongElement } = require('./testUtils');
 
 describe('nx-tile', function() {
   beforeEach(async function() {
@@ -61,7 +61,7 @@ describe('nx-tile', function() {
       await accordionEl.scrollIntoView({ block: 'center' });
       await accordionEl.click();
 
-      await simpleTest(accordionTileSelector)();
+      await simpleTestLongElement(accordionTileSelector)();
     });
   });
 });
