@@ -58,6 +58,7 @@ export { default as NxTableBody, NxTableBodyProps } from './components/NxTable/N
 export { default as NxTableCell, NxTableCellProps } from './components/NxTable/NxTableCell';
 export { default as NxTableHead, NxTableHeadProps } from './components/NxTable/NxTableHead';
 export { default as NxTableRow, NxTableRowProps } from './components/NxTable/NxTableRow';
+export { default as NxTableMetaInfoFooter } from './components/NxTable/NxTableMetaInfoFooter';
 
 export { default as NxTabs, NxTabsProps } from './components/NxTabs/NxTabs';
 export { default as NxStatefulTabs } from './components/NxTabs/stateful/NxStatefulTabs';

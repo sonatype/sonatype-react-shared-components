@@ -7,9 +7,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import {only} from '../../util/childUtil';
+import {only, splitOutFirst} from '../../util/childUtil';
 import NxTableHead from './NxTableHead';
-import NxTableBody from './NxTableBody';
 import NxTableRow from './NxTableRow';
 import { ColumnCountContext } from './contexts';
 
@@ -18,8 +17,7 @@ export { NxTableProps };
 
 const NxTable = function NxTableElement(props: NxTableProps) {
   const {className, children, ...attrs} = props,
-      thead = only(children, NxTableHead),
-      tbody = only(children, NxTableBody),
+      [thead, otherChildren] = splitOutFirst(NxTableHead, children),
       trow = thead && only(thead.props.children, NxTableRow),
       columns = trow ? React.Children.count(trow.props.children) : 0;
 
@@ -27,7 +25,7 @@ const NxTable = function NxTableElement(props: NxTableProps) {
     <table className={classnames('nx-table', className)} {...attrs}>
       <ColumnCountContext.Provider value={columns}>
         {thead}
-        {tbody}
+        {otherChildren}
       </ColumnCountContext.Provider>
     </table>
   );
