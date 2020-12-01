@@ -284,7 +284,7 @@ export default function NxTablePage() {
                           liveExample={NxTableFilterExample}
                           codeExamples={tableFilterExample}>
         An example with filter columns.
-        The first column has a basic filter input, the rows will be filteredx
+        The first column has a basic filter input, the rows will be filtered
         if any name contains the text provided in the input.
         The second column has a filter input which provides a suggestion capability, the rows will be filtered
         when the country contains the text provided in the input.
