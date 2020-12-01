@@ -17,6 +17,12 @@ export default function NxFormLayoutExample() {
     return val.length ? null : 'Must be non-empty';
   }
 
+  const [selectVal, setSelectVal] = useState('');
+
+  function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
+    setSelectVal(evt.currentTarget.value);
+  }
+
   const [isRed, setIsRed] = useState(false),
       [isBlue, setIsBlue] = useState(false),
       [isGreen, setIsGreen] = useState(false),
@@ -44,6 +50,27 @@ export default function NxFormLayoutExample() {
           <label className="nx-label nx-label--optional">
             <span className="nx-label__text">Hostname</span>
             <NxStatefulTextInput/>
+          </label>
+        </div>
+      </div>
+      <div className="nx-form-row">
+        <div className="nx-form-group">
+          <label className="nx-label nx-label--optional">
+            <span className="nx-label__text">Label</span>
+            <NxStatefulTextInput/>
+          </label>
+        </div>
+        <div className="nx-form-group">
+          <label className="nx-label">
+            <span className="nx-label__text">Label</span>
+            <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
+              <option value="">Select an option</option>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+              <option value="option4">Option 4</option>
+              <option value="option5">Option 5</option>
+            </select>
           </label>
         </div>
       </div>

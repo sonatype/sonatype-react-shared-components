@@ -59,7 +59,18 @@ const NxTilePage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile-content</code></td>
             <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell">Used for the tile content.</td>
+            <td className="nx-cell">
+              Used for the tile content. It is possible to have multiple of these in a row, particularly when one
+              is an accordion container (see below).
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-tile-content--accordion-container</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile-content</code></td>
+            <td className="nx-cell">
+              Creates a container for displaying one or more <code className="nx-code">NxAccordion</code>s
+              within an <code className="nx-code">.nx-tile</code>.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-footer</code></td>

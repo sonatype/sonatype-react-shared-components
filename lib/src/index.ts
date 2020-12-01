@@ -140,6 +140,22 @@ export {
   Props as NxBinaryDonutChartProps
 } from './components/NxBinaryDonutChart/NxBinaryDonutChart';
 
+export {
+  default as NxAccordion,
+  Props as NxAccordionProps,
+  HeaderProps as NxAccordionHeaderProps
+} from './components/NxAccordion/NxAccordion';
+
+export {
+  default as NxStatefulAccordion,
+  Props as NxStatefulAccordionProps
+} from './components/NxAccordion/stateful/NxStatefulAccordion';
+
+export {
+  default as NxNexusPageHeader,
+  Props as NxNexusPageHeaderProps
+} from './components/NxNexusPageHeader/NxNexusPageHeader';
+
 export { default as NxPagination, Props as NxPaginationProps } from './components/NxPagination/NxPagination';
 export { default as NxIndeterminatePagination, Props as NxIndeterminatePaginationProps }
   from './components/NxIndeterminatePagination/NxIndeterminatePagination';
