@@ -5,13 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
- /*
-  #Tables
-*/
-
-// table cell header
-$nx-table-cell-header-height: 48px;
-
 .nx-table {
   border-spacing: 0;
   border: 1px solid #d1d6f0;
@@ -156,7 +149,7 @@ $nx-table-cell-header-height: 48px;
   background-color: #fff;
   border-top: 1px solid #d1d6f0;
   margin-top: auto;
-  padding: $nx-spacing-l;
+  padding: $nx-table-footer-vertical-padding;
   position: sticky;
   bottom: 0;
   z-index: 1;
@@ -183,7 +176,8 @@ $nx-table-cell-header-height: 48px;
   @include container-vertical;
   @include container-horizontal;
 
-  padding: $nx-spacing-sm $nx-spacing-md;
+  min-height: $nx-table-cell-min-height;
+  padding: $nx-table-cell-vertical-padding $nx-spacing-md;
   vertical-align: top;
 }
 

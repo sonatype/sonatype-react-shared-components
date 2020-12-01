@@ -12,8 +12,7 @@ import {
   NxTableCell,
   NxTableHead,
   NxTableRow,
-  NxPagination,
-  NxTableMetaInfoFooter
+  NxPagination
 } from '@sonatype/react-shared-components';
 import { slice } from 'ramda';
 
@@ -39,7 +38,7 @@ const NxTablePaginationExample = () => {
       rows = slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE, tableData);
 
   return (
-    <div className="nx-table-container">
+    <div className="nx-table-container gallery-pagination-table-example">
       <NxTable>
         <NxTableHead>
           <NxTableRow>
@@ -55,8 +54,6 @@ const NxTablePaginationExample = () => {
             </NxTableRow>
           )}
         </NxTableBody>
-        <NxTableMetaInfoFooter>
-        </NxTableMetaInfoFooter>
       </NxTable>
       <div className="nx-table-container__footer">
         <NxPagination pageCount={Math.ceil(tableData.length / PAGE_SIZE)} currentPage={page} onChange={setPage} />

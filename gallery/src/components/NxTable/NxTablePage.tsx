@@ -31,10 +31,18 @@ const tableClickableExample = require('!!raw-loader!./NxTableClickableExample').
 const tableSortableExample = require('!!raw-loader!./NxTableSortableExample').default;
 const tableFilterExample = require('!!raw-loader!./NxTableFilterExample').default;
 const tablePaginationExample = require('!!raw-loader!./NxTablePaginationExample').default;
+const tablePaginationScss = require('!!raw-loader!./NxTablePaginationExample.scss').default;
 const tableLoadingExample = require('!!raw-loader!./NxTableLoadingExample').default;
 const tableErrorExample = require('!!raw-loader!./NxTableErrorExample').default;
 const tableEmptyExample = require('!!raw-loader!./NxTableEmptyExample').default;
 const tableMetaInfoExample = require('!!raw-loader!./NxTableMetaInfoExample').default;
+
+import './NxTablePaginationExample.scss';
+
+const paginationCodeExamples = [
+  tablePaginationExample,
+  { content: tablePaginationScss, language: 'scss'}
+];
 
 export default function NxTablePage() {
   return (
@@ -293,7 +301,7 @@ export default function NxTablePage() {
       <GalleryExampleTile title="Pagination Example"
                           id="nx-table-pagination-example"
                           liveExample={NxTablePaginationExample}
-                          codeExamples={tablePaginationExample}>
+                          codeExamples={paginationCodeExamples}>
         An example of a table with an <code className="nx-code">NxPagination</code> component in the footer to control
         paging.
       </GalleryExampleTile>
