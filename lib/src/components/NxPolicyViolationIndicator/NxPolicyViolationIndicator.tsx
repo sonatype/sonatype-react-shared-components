@@ -19,7 +19,8 @@ const NxPolicyViolationIndicator: FunctionComponent<Props> =
   function NxPolicyViolationIndicator({ threatLevelCategory, policyThreatLevel, children }) {
     const category: ThreatLevelCategory =
           threatLevelCategory ? threatLevelCategory :
-          policyThreatLevel != null ? categoryByPolicyThreatLevel[policyThreatLevel] : 'unspecified',
+          policyThreatLevel != null ? categoryByPolicyThreatLevel[policyThreatLevel] : 
+          'unspecified',
 
         className = `nx-policy-violation-indicator nx-policy-violation-indicator--${category}`,
         label = `threat level ${category}`;
