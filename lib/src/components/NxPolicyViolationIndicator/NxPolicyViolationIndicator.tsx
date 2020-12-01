@@ -5,14 +5,15 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { FunctionComponent, ReactElement } from 'react';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
 import { ThreatLevelCategory, categoryByPolicyThreatLevel } from '../../util/threatLevels';
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
 import './NxPolicyViolationIndicator.scss';
-import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
 const NxPolicyViolationIndicator: FunctionComponent<Props> =
   function NxPolicyViolationIndicator({ threatLevelCategory, policyThreatLevel, children }): ReactElement<Props> {
