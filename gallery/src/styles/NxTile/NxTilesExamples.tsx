@@ -9,13 +9,15 @@ import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTileFormExample from './NxTileFormExample';
 import NxTileDropdownActionsExample from './NxTileDropdownActionsExample';
+import NxTileAccordionExample from './NxTileAccordionExample';
 
 const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample.html').default,
     NxTileWithActionsCode = require('!!raw-loader!./NxTileWithActionsExample.html').default,
     NxTileWithSubtitleCode = require('!!raw-loader!./NxTileWithSubtitleExample.html').default,
     NxTileSubsectionCode = require('!!raw-loader!./NxTileSubsectionExample.html').default,
     NxTileFormCode = require('!!raw-loader!./NxTileFormExample.tsx').default,
-    NxTileDropdownActionsCode = require('!!raw-loader!./NxTileDropdownActionsExample').default;
+    NxTileDropdownActionsCode = require('!!raw-loader!./NxTileDropdownActionsExample').default,
+    NxTileAccordionCode = require('!!raw-loader!./NxTileAccordionExample').default;
 
 const NxTilesExamples = () =>
   <>
@@ -68,6 +70,15 @@ const NxTilesExamples = () =>
                         codeExamples={NxTileDropdownActionsCode}>
       An example of a tile with an <code className="nx-code">NxDropdown</code> (or
       {' '}<code className="nx-code">NxStatefulDropdown</code>, as the case may be) in the actions area.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Tile with accordions"
+                        id="nx-tile-accordion-example"
+                        defaultCheckeredBackground={true}
+                        liveExample={NxTileAccordionExample}
+                        codeExamples={NxTileAccordionCode}>
+      An example of a tile with <code className="nx-code">NxAccordions</code>{' '}
+      (or <code className="nx-code">NxStatefulAccordions</code>) within.
     </GalleryExampleTile>
   </>;
 

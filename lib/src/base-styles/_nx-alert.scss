@@ -17,9 +17,9 @@
   border: $nx-border-darker;
   border-radius: $nx-border-radius;
   display: flex;
-  margin: 8px auto;
+  margin: 16px auto 24px auto;
   max-width: 950px;
-  padding: $nx-spacing-xs $nx-spacing-md $nx-spacing-xs $nx-spacing-md;
+  padding: $nx-spacing-md;
   text-align: initial;
 
   > .nx-icon {
@@ -33,6 +33,7 @@
   }
 
   > .nx-btn--close {
+    margin-left: 24px;
 
     &, &:hover, &:active, &:focus {
       background-color: transparent;
@@ -45,6 +46,7 @@
 
 .nx-alert__content {
   flex-grow: 1;
+  overflow-wrap: anywhere;
 }
 
 .nx-alert--warning {

@@ -44,6 +44,14 @@ describe('NxFilterInput', function() {
     expect(input).toHaveProp('id', props.inputId);
   });
 
+  it('adds an aria-label based on the placeholder', function() {
+    const props = { placeholder: 'Country', value: 'a value', inputId: 'input-id'},
+        input = shallowComponent(props).find('input');
+
+    expect(input).toExist();
+    expect(input).toHaveProp('aria-label', 'filter Country');
+  });
+
   it('adds the nx-filter-input--disabled class iff the disabled prop is true', function() {
     expect(shallowComponent()).not.toHaveClassName('nx-filter-input--disabled');
     expect(shallowComponent({ disabled: null })).not.toHaveClassName('nx-filter-input--disabled');

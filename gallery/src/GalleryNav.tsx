@@ -15,8 +15,8 @@ import { PageMapping, PageConfig } from './pageConfigTypes';
 const renderLinks: ((categoryEntries: PageMapping) => ReactNode) = pipe(
     keys,
     map((pageName: string) =>
-      <NxTreeViewChild key={pageName} className="gallery-nav-link">
-        <NavLink to={`/pages/${pageName}`} className="gallery-link">{pageName}</NavLink>
+      <NxTreeViewChild key={pageName}>
+        <NavLink to={`/pages/${pageName}`} activeClassName="selected">{pageName}</NavLink>
       </NxTreeViewChild>
     )
 );
@@ -48,11 +48,7 @@ const categories = pipe<PageConfig, [string, PageMapping][], ReactNode[]>(
 )(pageConfig);
 
 function GalleryNav() {
-  return (
-    <nav className="gallery-nav">
-      {categories}
-    </nav>
-  );
+  return <nav>{categories}</nav>;
 }
 
 export default GalleryNav;
