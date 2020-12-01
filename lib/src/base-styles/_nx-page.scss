@@ -30,3 +30,23 @@
   margin: 8px 0 0 0;
   max-width: $nx-paragraph-width-maximum;
 }
+
+.nx-page-title__actions {
+  display: grid;
+  grid-template-areas: 
+    "title buttons"
+    "description description";
+
+  .nx-h1 {
+    grid-area: title;
+  }
+
+  .nx-btn-bar {
+    grid-area: buttons;
+    margin: 0;
+  }
+
+  .nx-page-title__description {
+    grid-area: description;
+  }
+}
