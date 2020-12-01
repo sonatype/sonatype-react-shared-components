@@ -8,7 +8,7 @@
 import React, { FunctionComponent, ReactElement } from 'react';
 
 import { Option } from './commonTypes';
-import NxTreeView, {NxTreeViewChild} from '../NxTreeView/NxTreeView';
+import NxTreeView, { NxTreeViewChild } from '../NxTreeView/NxTreeView';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import { TooltipConfigProps } from '../../util/tooltipUtils';
@@ -65,24 +65,24 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
   }
 
   const renderedOptions = filteredOptions.map((item: Option) => {
-    const option = renderOption(item);
-    return (
-      <NxTreeViewChild key={`key-${item.id}`}>
-        {optionTooltipGenerator ? (
-          <NxTooltip {...getTooltipProps(optionTooltipGenerator(item))}>
-            {option}
-          </NxTooltip>
-        ) : option}
-      </NxTreeViewChild>
-    );
+    const option = renderOption(item),
+        key = `key-${item.id}`;
+
+    return optionTooltipGenerator ? (
+      <NxTooltip key={key} {...getTooltipProps(optionTooltipGenerator(item))}>
+        <NxTreeViewChild>{option}</NxTreeViewChild>
+      </NxTooltip>
+    ) : <NxTreeViewChild key={key}>{option}</NxTreeViewChild>;
   });
 
   const wrappedTriggerContent = ensureElement(children);
 
-  const triggerWithCounter = renderCounter ? (
+  const counter = renderCounter && renderCounter();
+
+  const triggerWithCounter = counter ? (
     <>
       {wrappedTriggerContent}
-      {renderCounter()}
+      {counter}
     </>
   ) : wrappedTriggerContent;
 
@@ -94,7 +94,7 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
                    value={filter || ''}/>
   );
 
-  const selectAllOption = renderToggleAllOption && <NxTreeViewChild>{renderToggleAllOption()}</NxTreeViewChild>;
+  const selectAllOption = renderToggleAllOption && renderToggleAllOption();
 
   const getTriggerTooltip = () => {
     if (disabled) {
@@ -115,9 +115,10 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
                 triggerContent={triggerWithCounter}
                 triggerTooltip={getTriggerTooltip()}
                 disabled={disabled}
-                className="nx-tree-view--select">
+                className="nx-tree-view--select"
+                aria-describedby={counter && counter.props.id}>
       {filterContent}
-      {selectAllOption}
+      { selectAllOption && <NxTreeViewChild>{selectAllOption}</NxTreeViewChild> }
       {renderedOptions}
     </NxTreeView>
   );
