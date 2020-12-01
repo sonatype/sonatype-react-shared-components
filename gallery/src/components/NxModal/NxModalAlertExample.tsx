@@ -14,7 +14,7 @@ export default function NxModalAlertExample() {
 
   return (
     <>
-      <NxButton onClick={() => setShowModal(true)}>Open Modal</NxButton>
+      <NxButton onClick={() => setShowModal(true)}>Alert in content</NxButton>
       { showModal &&
         <NxModal id="nx-modal-alert-example" onClose={modalCloseHandler}>
           <header className="nx-modal-header">
