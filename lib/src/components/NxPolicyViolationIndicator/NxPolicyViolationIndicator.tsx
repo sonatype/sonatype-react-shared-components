@@ -27,14 +27,14 @@ const NxPolicyViolationIndicator = forwardRef<HTMLDivElement, Props>(
 
     return (
       <div className={className} ref={ref}>
-        <div className="nx-policy-violation-indicator__badge">
+        <span className="nx-policy-violation-indicator__badge">
           <NxFontAwesomeIcon aria-hidden={false}
                              aria-label={label}
                              icon={faExclamationCircle}/>
-        </div>
-        <div className="nx-policy-violation-indicator__text">
+        </span>
+        <span className="nx-policy-violation-indicator__text">
           {children || category}
-        </div>
+        </span>
       </div>
     );
   });
