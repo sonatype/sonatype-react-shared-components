@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, ReactElement } from 'react';
+import React, { forwardRef, FunctionComponent } from 'react';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
 import { ThreatLevelCategory, categoryByPolicyThreatLevel } from '../../util/threatLevels';
@@ -14,8 +14,7 @@ import { Props, propTypes } from './types';
 export { Props } from './types';
 
 import './NxPolicyViolationIndicator.scss';
-
-const NxPolicyViolationIndicator: FunctionComponent<Props> =
+const NxPolicyViolationIndicator = forwardRef<FunctionComponent, Props> (
   function NxPolicyViolationIndicator({ threatLevelCategory, policyThreatLevel, children }) {
     const category: ThreatLevelCategory =
           threatLevelCategory ? threatLevelCategory :
@@ -37,8 +36,8 @@ const NxPolicyViolationIndicator: FunctionComponent<Props> =
         </div>
       </div>
     );
-  };
+  );
 
-NxPolicyViolationIndicator.propTypes = propTypes;
+NxPolicyViolationIndicator.propTypes = propTypes
 
 export default NxPolicyViolationIndicator;
