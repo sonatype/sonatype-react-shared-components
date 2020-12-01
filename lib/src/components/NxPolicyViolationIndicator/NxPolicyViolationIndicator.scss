@@ -8,9 +8,9 @@
 @import '../../scss-shared/nx-text-helpers';
 
 .nx-policy-violation-indicator {
-  --policy-indicator-highlight-colour: #{$nx-threat-color-unspecified};
+  --policy-indicator-highlight-color: #{$nx-threat-color-unspecified};
   align-items: center;
-  border: 1px solid var(--policy-indicator-highlight-colour);
+  border: 1px solid var(--policy-indicator-highlight-color);
   border-radius: $nx-border-radius;
   display: flex;
   height: 30px;
@@ -23,7 +23,7 @@
 .nx-policy-violation-indicator__badge {
   align-self: stretch;
   align-items: center;
-  background-color: var(--policy-indicator-highlight-colour);
+  background-color: var(--policy-indicator-highlight-color);
   display: flex;
 
   .nx-icon {
@@ -43,25 +43,25 @@
 }
 
 .nx-policy-violation-indicator--unspecified {
-  --policy-indicator-highlight-colour: #{$nx-threat-color-unspecified};
+  --policy-indicator-highlight-color: #{$nx-threat-color-unspecified};
 }
 
 .nx-policy-violation-indicator--none {
-  --policy-indicator-highlight-colour: #{$nx-threat-color-none};
+  --policy-indicator-highlight-color: #{$nx-threat-color-none};
 }
 
 .nx-policy-violation-indicator--low {
-  --policy-indicator-highlight-colour: #{$nx-threat-color-low};
+  --policy-indicator-highlight-color: #{$nx-threat-color-low};
 }
 
 .nx-policy-violation-indicator--moderate {
-  --policy-indicator-highlight-colour: #{$nx-threat-color-moderate};
+  --policy-indicator-highlight-color: #{$nx-threat-color-moderate};
 }
 
 .nx-policy-violation-indicator--severe {
-  --policy-indicator-highlight-colour: #{$nx-threat-color-severe};
+  --policy-indicator-highlight-color: #{$nx-threat-color-severe};
 }
 
 .nx-policy-violation-indicator--critical {
-  --policy-indicator-highlight-colour: #{$nx-threat-color-critical};
+  --policy-indicator-highlight-color: #{$nx-threat-color-critical};
 }
