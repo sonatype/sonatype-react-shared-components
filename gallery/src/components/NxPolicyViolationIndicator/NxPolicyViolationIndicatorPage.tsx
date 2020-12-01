@@ -27,7 +27,7 @@ const NxPolicyViolationIndicatorPage = () =>
         There are two scales to choose from: threat level by category, and threat
         level by number. When using this component, it is expected that just one of the props will be passed. If both
         are passed, <code className="nx-code">threatLevelCategory</code> takes precedence. If neither are passed,
-        the <code className="nx-code">unspecified</code> category is used
+        the <code className="nx-code">unspecified</code> category is used.
       </p>
       <p className="nx-p">
         The text that appears inside the component can be specified by the user, or if no text is supplied the threat
