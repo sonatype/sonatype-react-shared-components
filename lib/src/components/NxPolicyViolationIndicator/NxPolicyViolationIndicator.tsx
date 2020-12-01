@@ -16,7 +16,7 @@ export { Props } from './types';
 import './NxPolicyViolationIndicator.scss';
 
 const NxPolicyViolationIndicator: FunctionComponent<Props> =
-  function NxPolicyViolationIndicator({ threatLevelCategory, policyThreatLevel, children }): ReactElement<Props> {
+  function NxPolicyViolationIndicator({ threatLevelCategory, policyThreatLevel, children }) {
     const category: ThreatLevelCategory =
           threatLevelCategory ? threatLevelCategory :
           policyThreatLevel != null ? categoryByPolicyThreatLevel[policyThreatLevel] : 'unspecified',
