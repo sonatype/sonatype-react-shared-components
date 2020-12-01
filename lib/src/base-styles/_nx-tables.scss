@@ -98,6 +98,11 @@ $nx-table-cell-header-height: 48px;
       }
     }
   }
+
+  > tfoot .nx-cell--meta-info {
+    border-top: 1px solid #d1d6f0;
+    padding: $nx-spacing-l;
+  }
 }
 
 .nx-table--scrollable {
