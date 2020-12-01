@@ -15,7 +15,9 @@ const NxPolicyViolationIndicatorByNameExample = () =>
     <NxPolicyViolationIndicator threatLevelCategory="low">Not much</NxPolicyViolationIndicator>
     <NxPolicyViolationIndicator threatLevelCategory="moderate">A little bit</NxPolicyViolationIndicator>
     <NxPolicyViolationIndicator threatLevelCategory="severe">A bunch</NxPolicyViolationIndicator>
-    <NxPolicyViolationIndicator threatLevelCategory="critical">A whole lot</NxPolicyViolationIndicator>
+    <NxPolicyViolationIndicator threatLevelCategory="critical">
+      WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+    </NxPolicyViolationIndicator>
   </>;
 
 export default NxPolicyViolationIndicatorByNameExample;

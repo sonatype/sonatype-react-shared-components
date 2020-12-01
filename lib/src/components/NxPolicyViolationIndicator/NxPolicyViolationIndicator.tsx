@@ -33,7 +33,7 @@ const NxPolicyViolationIndicator: FunctionComponent<Props> =
                              icon={faExclamationCircle}/>
         </div>
         <div className="nx-policy-violation-indicator__text">
-          <span>{children || category}</span>
+          {children || category}
         </div>
       </div>
     );

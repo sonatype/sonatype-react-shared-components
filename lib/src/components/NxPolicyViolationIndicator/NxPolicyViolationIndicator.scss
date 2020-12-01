@@ -14,7 +14,7 @@
   display: flex;
   height: 30px;
   margin: 0 0 $nx-spacing-xs $nx-spacing-md;
-  width: fit-content;
+  width: min-content;
 }
 
 .nx-policy-violation-indicator__badge {
@@ -30,6 +30,7 @@
 
 .nx-policy-violation-indicator__text {
   @include semi-bold();
+  @include nx-truncate-ellipsis;
 
   border-top-right-radius: $nx-border-radius;
   border-bottom-right-radius: $nx-border-radius;
@@ -38,6 +39,8 @@
   margin: 0 $nx-spacing-md;
   text-transform: uppercase;
   vertical-align: middle;
+  // max width of element from design is 859px, subtract the badge, the padding, and the borders.
+  max-width: 793px;
 }
 
 .nx-policy-violation-indicator--unspecified {
