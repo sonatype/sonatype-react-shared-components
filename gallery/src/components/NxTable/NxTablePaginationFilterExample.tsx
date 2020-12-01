@@ -41,7 +41,9 @@ const NxTablePaginationFilterExample = () => {
       matchesName = pipe<Row, string, boolean>(prop('name'), includes(toLower(nameFilter))),
       matchesCountry = pipe<Row, string, boolean>(prop('country'), includes(toLower(countryFilter))),
       filteredData = filter(both(matchesName, matchesCountry), tableData),
-      rows = slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE, filteredData);
+      pageCount = Math.ceil(filteredData.length / PAGE_SIZE),
+      currentPage = Math.min(page, pageCount - 1),
+      rows = slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE, filteredData);
 
   return (
     <div className="nx-table-container gallery-pagination-filter-table-example">
@@ -64,7 +66,7 @@ const NxTablePaginationFilterExample = () => {
             </NxTableCell>
           </NxTableRow>
         </NxTableHead>
-        <NxTableBody>
+        <NxTableBody emptyMessage="No rows match the current filter">
           {rows.map((row: Row) =>
             <NxTableRow key={row.name.concat(row.country)}>
               <NxTableCell>{row.name}</NxTableCell>
@@ -74,7 +76,7 @@ const NxTablePaginationFilterExample = () => {
         </NxTableBody>
       </NxTable>
       <div className="nx-table-container__footer">
-        <NxPagination pageCount={Math.ceil(tableData.length / PAGE_SIZE)} currentPage={page} onChange={setPage} />
+        <NxPagination { ...{ pageCount, currentPage } } onChange={setPage} />
       </div>
     </div>
   );
