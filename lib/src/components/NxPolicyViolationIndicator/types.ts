@@ -13,9 +13,11 @@ import { ThreatLevelNumber, ThreatLevelCategory, allThreatLevelCategories, allTh
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   threatLevelCategory?: ThreatLevelCategory;
   policyThreatLevel?: ThreatLevelNumber;
+  children?: string | null;
 }
 
 export const propTypes: WeakValidationMap<Props> = {
   threatLevelCategory: PropTypes.oneOf(allThreatLevelCategories),
-  policyThreatLevel: PropTypes.oneOf(allThreatLevelNumbers)
+  policyThreatLevel: PropTypes.oneOf(allThreatLevelNumbers),
+  children: PropTypes.string
 };
