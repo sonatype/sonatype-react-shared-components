@@ -8,8 +8,9 @@
 @import '../../scss-shared/nx-text-helpers';
 
 .nx-policy-violation-indicator {
+  --policy-indicator-highlight-colour: #{$nx-threat-color-unspecified};
   align-items: center;
-  border: 1px solid;
+  border: 1px solid var(--policy-indicator-highlight-colour);
   border-radius: $nx-border-radius;
   display: flex;
   height: 30px;
@@ -21,6 +22,7 @@
 .nx-policy-violation-indicator__badge {
   align-self: stretch;
   align-items: center;
+  background-color: var(--policy-indicator-highlight-colour);
   display: flex;
 
   .nx-icon {
@@ -40,49 +42,25 @@
 }
 
 .nx-policy-violation-indicator--unspecified {
-  border-color: $nx-threat-color-unspecified;
-
-  .nx-policy-violation-indicator__badge {
-    background-color: $nx-threat-color-unspecified;
-  }
+  --policy-indicator-highlight-colour: #{$nx-threat-color-unspecified};
 }
 
 .nx-policy-violation-indicator--none {
-  border-color: $nx-threat-color-none;
-
-  .nx-policy-violation-indicator__badge {
-    background-color: $nx-threat-color-none;
-  }
+  --policy-indicator-highlight-colour: #{$nx-threat-color-none};
 }
 
 .nx-policy-violation-indicator--low {
-  border-color: $nx-threat-color-low;
-
-  .nx-policy-violation-indicator__badge {
-    background-color: $nx-threat-color-low;
-  }
+  --policy-indicator-highlight-colour: #{$nx-threat-color-low};
 }
 
 .nx-policy-violation-indicator--moderate {
-  border-color: $nx-threat-color-moderate;
-
-  .nx-policy-violation-indicator__badge {
-    background-color: $nx-threat-color-moderate;
-  }
+  --policy-indicator-highlight-colour: #{$nx-threat-color-moderate};
 }
 
 .nx-policy-violation-indicator--severe {
-  border-color: $nx-threat-color-severe;
-
-  .nx-policy-violation-indicator__badge {
-    background-color: $nx-threat-color-severe;
-  }
+  --policy-indicator-highlight-colour: #{$nx-threat-color-severe};
 }
 
 .nx-policy-violation-indicator--critical {
-  border-color: $nx-threat-color-critical;
-
-  .nx-policy-violation-indicator__badge {
-    background-color: $nx-threat-color-critical;
-  }
+  --policy-indicator-highlight-colour: #{$nx-threat-color-critical};
 }
