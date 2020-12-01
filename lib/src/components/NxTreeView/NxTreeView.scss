@@ -8,88 +8,92 @@
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
 
+// The caret is taller than it is wide. It is rotated using `transform`, which does not change its effect
+// on the layout of surrounding elements.  However, we _want_ its rotation to affect the layout of surrounding
+// elements such that the title is always 8px from the nearest visible point on the caret. This variable
+// represents the distance necessary to make that happen
+$twisty-proportion-difference: 2px;
+
 /*
   #Tree view
 */
 .nx-tree-view {
-  @include semi-bold();
-
   box-sizing: border-box;
+  margin: $nx-spacing-md 0;
+
+  // Design specifies 300px wide not including the caret and its padding (which are themselves 30px)
   max-width: 330px;
 }
 
 .nx-tree-view--expanded {
-  .nx-tree-view__twisty-icon {
+  .nx-tree-view__twisty {
     transform: rotate(90deg);
+    padding: 0 $twisty-proportion-difference;
   }
 }
 
 .nx-tree-view--collapsed {
   .nx-tree-view__children{
-    max-height: 0;
+    display: none;
   }
 }
 
 .nx-tree-view--disabled {
-  .nx-tree-view__trigger {
-    cursor: default;
-  }
-
-  .nx-tree-view__text, .nx-tree-view__child {
+  .nx-tree-view__trigger, .nx-tree-view__child {
     color: $nx-grey-4;
-  }
-
-  .nx-tree-view__twisty-icon {
-    border-left-color: $nx-grey-4;
+    cursor: default;
   }
 }
 
 .nx-tree-view--empty {
-  .nx-tree-view__trigger, .nx-tree-view__twisty {
+  .nx-tree-view__trigger {
     cursor: default;
   }
 
-  .nx-tree-view__twisty-icon {
-    border: none;
+  .nx-tree-view__twisty {
+    display: none;
   }
 }
 
 .nx-tree-view__trigger {
   @include container-horizontal;
   align-items: center;
-  border: 1px solid transparent;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  color: $nx-text-color-dark;
   cursor: pointer;
   display: flex;
-  height: 30px;
-  line-height: 32px;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  padding: 0;
+  width: 100%;
 
   &:hover, &:focus {
     text-decoration: none;
   }
+
+  &:focus {
+    outline: none;
+
+    .nx-tree-view__twisty {
+      filter: drop-shadow(0 0 3px transparentize(#02a6d9, 0.7));
+      stroke: #02a6d9;
+
+      // This is intepreted in the SVG's coordinate space. The svg has a viewbox height of 512 and an on-page
+      // height of 22px so this computes to 1 on-page pixel
+      stroke-width: calc(512px / 22);
+    }
+  }
 }
 
 .nx-tree-view__twisty {
-  display: block;
-  flex-shrink: 0;
-  height: 17px;
-  margin-right: 5px;
-  width: 16px;
-}
-
-.nx-tree-view__twisty-icon {
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 5px solid $nx-slate;
-  display: block;
-  margin: 3px 0 0 4px;
-  transform:rotate(0deg);
   transition: all 300ms ease;
-  width: 0;
+  font-size: 22px;
 
   &.nx-tree-view--empty {
-    border-top: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
+    visibility: hidden;
   }
 }
 
@@ -101,44 +105,85 @@
   display: flex;
   flex-grow: 1;
 
-  .nx-icon {
-    flex-shrink: 0;
-  }
-
   span {
     @include nx-truncate-ellipsis;
     flex-grow: 1;
   }
 
-  .nx-counter {
+  > .nx-counter {
     flex-shrink: 0;
   }
 }
 
 .nx-tree-view__children {
-  overflow: hidden;
-
-  > .nx-tree-view__child:last-child {
-    margin-bottom: 12px;
-  }
+  margin-top: $nx-spacing-xxs;
 }
 
 .nx-tree-view__child {
+  border: 1px solid transparent;
+  border-radius: $nx-border-radius;
   box-sizing: border-box;
-  height: 30px;
-  line-height: 30px;
+  color: $nx-text-color;
+  display: block;
   overflow: hidden;
-  margin-right: 8px;
-  margin-left: 45px;
+
+  // subtract 1 from all sides to make room for focus border
+  padding:
+    ($nx-spacing-xxs - 1)
+    ($nx-spacing-l - 1)
+    ($nx-spacing-xxs - 1)
+    ($nx-spacing-l + 2 * $twisty-proportion-difference - 1);
+
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  a {
-    color: $nx-text-color;
+  &.nx-radio-checkbox {
+    box-sizing: border-box;
+    border: none;
+    display: flex;
+    margin: 0;
+    padding: $nx-spacing-xxs 0 $nx-spacing-xxs ($nx-spacing-md + 2 * $twisty-proportion-difference);
+  }
+}
+
+button, a {
+  &.nx-tree-view__child {
+    background-color: transparent;
+    font-weight: normal;
+    margin: 0;
+    text-align: left;
     text-decoration: none;
+    width: 100%;
 
     &:hover {
-      color: $nx-text-color-dark;
+      background-color: #f1f3fa;
+    }
+
+    &.selected {
+      background-color: $nx-blue-200;
+      font-weight: 600;
+    }
+
+    &:focus {
+      border-color: #02a6d9;
+      box-shadow: $nx-focus-box-shadow;
+      outline: none;
+    }
+  }
+}
+
+// sidebars don't typically have the white background and so warrant different highlight colors
+.nx-page-sidebar {
+  button, a {
+    &.nx-tree-view__child {
+      &:hover {
+        background-color: #d1d6f0;
+      }
+
+      &.selected {
+        background-color: $nx-blue-1000;
+        color: #fff;
+      }
     }
   }
 }

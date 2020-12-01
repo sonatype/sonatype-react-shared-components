@@ -10,7 +10,7 @@ import {faCube} from '@fortawesome/free-solid-svg-icons';
 
 import { NxTreeView, NxTreeViewChild, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
-function NxTreeViewExample() {
+function NxTreeViewExtrasExample() {
   // this example uses the `useState` hook for succinctness, but you could also manage the state manually
   // in a class component
   const [toggleCheck1, setToggleCheck1] = useState(false),
@@ -30,12 +30,13 @@ function NxTreeViewExample() {
                     <>
                       <NxFontAwesomeIcon icon={faCube}/>
                       <span>Trigger with icon &amp; counter</span>
-                      <div className="nx-counter">12 of 43</div>
+                      <div aria-label="12 options out of 43 selected" className="nx-counter">
+                        12 of 43
+                      </div>
                     </>
                   }>
         <NxTreeViewChild>Test1</NxTreeViewChild>
         <NxTreeViewChild>Test2</NxTreeViewChild>
-        <NxTreeViewChild><a href="#">Link</a></NxTreeViewChild>
       </NxTreeView>
       <NxTreeView onToggleCollapse={onToggleCollapse2}
                   isOpen={toggleCheck2}
@@ -43,12 +44,13 @@ function NxTreeViewExample() {
                     <>
                       <NxFontAwesomeIcon icon={faCube}/>
                       <span>Foo</span>
-                      <div className="nx-counter">12 of 43</div>
+                      <div aria-label="12 options out of 43 selected" className="nx-counter">
+                        12 of 43
+                      </div>
                     </>
                   }>
         <NxTreeViewChild>Test1</NxTreeViewChild>
         <NxTreeViewChild>Test2</NxTreeViewChild>
-        <NxTreeViewChild><a href="#">Link</a></NxTreeViewChild>
       </NxTreeView>
       <NxTreeView onToggleCollapse={onToggleCollapse3}
                   isOpen={toggleCheck3}
@@ -56,15 +58,16 @@ function NxTreeViewExample() {
                     <>
                       <NxFontAwesomeIcon icon={faCube}/>
                       <span>This title is extra long and triggers ellipsis truncation</span>
-                      <div className="nx-counter">12 of 43</div>
+                      <div aria-label="12 options out of 43 selected" className="nx-counter">
+                        12 of 43
+                      </div>
                     </>
                   }>
         <NxTreeViewChild>Test1</NxTreeViewChild>
         <NxTreeViewChild>Test2</NxTreeViewChild>
-        <NxTreeViewChild><a href="#">Link</a></NxTreeViewChild>
       </NxTreeView>
     </>
   );
 }
 
-export default NxTreeViewExample;
+export default NxTreeViewExtrasExample;

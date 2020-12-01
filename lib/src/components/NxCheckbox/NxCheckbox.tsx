@@ -24,8 +24,8 @@ export { Props } from './types';
  * [phrasing content](https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content).
  */
 const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
-    function NxCheckbox({ onChange, isChecked, disabled, checkboxId, children, ...otherProps }, ref) {
-      const labelClasses = classnames('nx-radio-checkbox', 'nx-checkbox', {
+    function NxCheckbox({ className, onChange, isChecked, disabled, checkboxId, children, ...otherProps }, ref) {
+      const labelClasses = classnames('nx-radio-checkbox', 'nx-checkbox', className, {
         'nx-radio-checkbox--disabled': disabled,
         'tm-checked': isChecked,
         'tm-unchecked': !isChecked

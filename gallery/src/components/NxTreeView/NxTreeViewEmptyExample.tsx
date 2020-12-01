@@ -10,7 +10,7 @@ import {faCube} from '@fortawesome/free-solid-svg-icons';
 
 import { NxTreeView, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
-function NxTreeViewExample() {
+function NxTreeViewEmptyExample() {
   // this example uses the `useState` hook for succinctness, but you could also manage the state manually
   // in a class component
   const [toggleCheck, setToggleCheck] = useState(false),
@@ -20,10 +20,10 @@ function NxTreeViewExample() {
     <NxTreeView onToggleCollapse={onToggleCollapse}
                 isOpen={toggleCheck}
                 triggerContent={
-                  <><NxFontAwesomeIcon icon={faCube}/><span>No children</span></>
+                  <><NxFontAwesomeIcon icon={faCube}/><span>All Items</span></>
                 }>
     </NxTreeView>
   );
 }
 
-export default NxTreeViewExample;
+export default NxTreeViewEmptyExample;

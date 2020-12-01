@@ -9,59 +9,6 @@
 @import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 @import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
 
-.gallery-nav, .gallery-nav-links {
-  @include container-vertical;
-}
-
-.gallery-nav {
-  .nx-tree-view__trigger {
-    padding-left: $nx-spacing-xs;
-
-    .nx-tree-view__text {
-      @include semi-bold();
-
-      color: #2c2c2c;
-    }
-  }
-}
-
-.nx-tree-view__child.gallery-nav-link {
-  height: 100%;
-  line-height: $nx-line-height;
-  margin-right: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-}
-
-.gallery-link {
-  @include regular();
-
-  border-radius: 6px;
-  box-sizing: border-box;
-  display: inline-block;
-  padding: $nx-spacing-xxs $nx-spacing-xs $nx-spacing-xxs 36px;
-  text-decoration: none;
-  width: 100%;
-
-  &:hover {
-    background-color: #e2e6f4;
-  }
-
-  &.active {
-    @include semi-bold;
-
-    background-color: #000066;
-    color: #fff;
-    cursor: default;
-    text-decoration: none;
-
-    &:hover {
-      background-color: #000066;
-      color: #fff;
-    }
-  }
-}
-
 .gallery-example-section {
   margin: 15px 0;
 }

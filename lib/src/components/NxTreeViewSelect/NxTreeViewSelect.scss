@@ -4,12 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@import '../../scss-shared/nx-variables';
+
 .nx-tree-view--select {
   .nx-filter-input {
+    box-sizing: border-box;
     display: block;
-    margin-bottom: 12px;
-    margin-right: 10px;
-    padding-left: 26px;
+    margin: $nx-spacing-md 0;
+    width: 100%;
 
     input {
       $input-prepend-width: 27px;
@@ -18,10 +20,5 @@
       $filter-input-offset: $input-prepend-width + $input-padding * 2 + $input-border;
       width: calc(100% - #{$filter-input-offset});
     }
-  }
-
-  .nx-tree-view__child {
-    height: auto;
-    line-height: 1.5;
   }
 }
