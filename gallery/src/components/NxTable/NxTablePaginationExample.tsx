@@ -39,25 +39,29 @@ const NxTablePaginationExample = () => {
       rows = slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE, tableData);
 
   return (
-    <NxTable>
-      <NxTableHead>
-        <NxTableRow>
-          <NxTableCell>Name</NxTableCell>
-          <NxTableCell>Country</NxTableCell>
-        </NxTableRow>
-      </NxTableHead>
-      <NxTableBody>
-        {rows.map((row: Row) =>
-          <NxTableRow key={row.name.concat(row.country)}>
-            <NxTableCell>{row.name}</NxTableCell>
-            <NxTableCell>{row.country}</NxTableCell>
+    <div className="nx-table-container">
+      <NxTable>
+        <NxTableHead>
+          <NxTableRow>
+            <NxTableCell>Name</NxTableCell>
+            <NxTableCell>Country</NxTableCell>
           </NxTableRow>
-        )}
-      </NxTableBody>
-      <NxTableMetaInfoFooter>
+        </NxTableHead>
+        <NxTableBody>
+          {rows.map((row: Row) =>
+            <NxTableRow key={row.name.concat(row.country)}>
+              <NxTableCell>{row.name}</NxTableCell>
+              <NxTableCell>{row.country}</NxTableCell>
+            </NxTableRow>
+          )}
+        </NxTableBody>
+        <NxTableMetaInfoFooter>
+        </NxTableMetaInfoFooter>
+      </NxTable>
+      <div className="nx-table-container__footer">
         <NxPagination pageCount={Math.ceil(tableData.length / PAGE_SIZE)} currentPage={page} onChange={setPage} />
-      </NxTableMetaInfoFooter>
-    </NxTable>
+      </div>
+    </div>
   );
 };
 

@@ -25,6 +25,7 @@ import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
 import NxTableStylePage from './styles/NxTable/NxTableStylePage';
+import NxTableContainerPage from './styles/NxTable/NxTableContainerPage';
 import NxAlertComponentsPage from './components/NxAlert/NxAlertPage';
 import NxStatefulAlertComponentsPage from './components/NxStatefulAlert/NxStatefulAlertPage';
 import NxContainerHelpersPage from './styles/NxContainerHelpers/NxContainerHelpersPage';
@@ -139,7 +140,7 @@ const pageConfig: PageConfig = {
     'nx-page-title': NxPageTitlePage,
     'nx-form-select': NxFormSelectPage,
     'nx-table': NxTableStylePage,
-    //'nx-text-input': NxTextInputStylesPage,
+    'nx-table-container': NxTableContainerPage,
     'nx-threat-number': NxThreatNumberPage,
     'nx-tile': NxTilePage
   },
