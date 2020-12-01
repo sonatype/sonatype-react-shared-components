@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxWarningAlert } from '@sonatype/react-shared-components';
 
 const NxTableFooterCode = require('!!raw-loader!./NxTableFooterExample.html').default,
     NxTableScrollingCode = require('!!raw-loader!./NxTableScrollingExample.html').default,
@@ -37,12 +38,23 @@ const NxTableContainerPage = () =>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-table-contaienr</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-table-container</code></td>
             <td className="nx-cell">Element wrapping an <code className="nx-code">.nx-table</code></td>
             <td className="nx-cell">
               Removes the border from the table itself and instead replicates on the container element. This allows
               layout patterns within the visually-apparent table that aren't supported
               on <code className="nx-code">&lt;table&gt;</code> itself.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-scrollable--table-container</code></td>
+            <td className="nx-cell">Element wrapping an <code className="nx-code">.nx-table</code></td>
+            <td className="nx-cell">
+              <NxWarningAlert>
+                Deprecated. Replaced by <code className="nx-code">.nx-table-container</code>.
+              </NxWarningAlert>
+              This class was originally supposed to be used in conjunction
+              with <code className="nx-code">.nx-table--scrollable</code>.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -72,11 +84,9 @@ const NxTableContainerPage = () =>
     <GalleryExampleTile title="NX Table Footer Example"
                         htmlExample={NxTableFooterCode}
                         codeExamples={NxTableFooterCode}>
-      A demonstration of a table with a footer element containing a button. The most common real-world use-case
-      for a footer is a pagination bar, which can be seen in the <code className="nx-code">NxTable</code> react
-      component examples. However, the general styling is flexible, built on
-      the <code className="nx-code">&lt;tfoot&gt;</code> element and
-      the <code className="nx-code">.nx-cell--meta-info</code> class.
+      A demonstration of a table with a footer element which for the sake of example just contains  a button.
+      The most common real-world use-case for a footer is a pagination bar, which can be seen in
+      the <code className="nx-code">NxTable</code> react component examples.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table Scrolling Example"
@@ -86,7 +96,7 @@ const NxTableContainerPage = () =>
       A demonstration of a table that scrolls due to the presence of a height-constrained, scrolling wrapper element.
       The headers and footer stay stationary as the rows scroll. All tables that scroll "by themselves" (as opposed
       to being part of some broader section of the page that scrolls) should be implemented in this manner in order
-      to get the sticky header behavior. For scrollable containers which, on the other hand, contain more content in
+      to get the sticky behavior. For scrollable containers which, on the other hand, contain more content in
       addition to a table, sticky headers should not be used and therefore the scrolling-related classes and
       elements should not be used on the table.
     </GalleryExampleTile>
@@ -96,7 +106,7 @@ const NxTableContainerPage = () =>
                         htmlExample={NxTableUnfilledContainerWithFooterCode}
                         codeExamples={NxTableUnfilledContainerWithFooterCode}>
       This example demonstrates what happens when a table is set up with an explicit height and a footer, but fewer
-      rows than would be necessary to fill up the height.
+      rows than would be necessary to fill up the height. The footer sticks to the bottoms of the container.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table Unfilled Scroll Container Example"

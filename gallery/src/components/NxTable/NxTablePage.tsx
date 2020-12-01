@@ -255,7 +255,7 @@ export default function NxTablePage() {
 
         <p className="nx-p">
           For guidance on the construction of a scrolling table, see the scrolling example on
-          the <code className="nx-code">nx-table</code> HTML element page.
+          the <code className="nx-code">nx-table-container</code> HTML element page.
         </p>
       </GalleryDescriptionTile>
 
