@@ -99,9 +99,15 @@ $nx-table-cell-header-height: 48px;
     }
   }
 
-  > tfoot .nx-cell--meta-info {
-    border-top: 1px solid #d1d6f0;
-    padding: $nx-spacing-l;
+  > tfoot {
+    .nx-cell {
+      background-color: #fff;
+      border-top: 1px solid #d1d6f0;
+    }
+
+    .nx-cell--meta-info {
+      padding: $nx-spacing-l;
+    }
   }
 }
 
@@ -128,10 +134,17 @@ $nx-table-cell-header-height: 48px;
   position: relative;
   z-index: 0;
 
-  .nx-cell--header {
+  .nx-cell--header, tfoot .nx-cell {
     position: sticky;
-    top: 0;
     z-index: 1;
+  }
+
+  .nx-cell--header {
+    top: 0;
+  }
+
+  tfoot .nx-cell {
+    bottom: 0;
   }
 }
 

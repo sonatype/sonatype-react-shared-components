@@ -21,6 +21,7 @@ const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample.html').d
     NxTableClickableCode = require('!!raw-loader!./NxTableClickableExample').default,
     NxTableEmptyCode = require('!!raw-loader!./NxTableEmptyExample.html').default,
     NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample').default,
+    NxTableFooterCode = require('!!raw-loader!./NxTableFooterExample.html').default,
     NxTableScrollingCode = require('!!raw-loader!./NxTableScrollingExample.html').default,
     NxTableUnfilledScrollContainerCode = require('!!raw-loader!./NxTableUnfilledScrollContainerExample.html').default,
     NxTableTruncationAndWrappingCode = require('!!raw-loader!./NxTableTruncationAndWrappingExample.html').default,
@@ -86,15 +87,25 @@ const NxTablesExamples = () =>
       contents failed to load.
     </GalleryExampleTile>
 
+    <GalleryExampleTile title="NX Table Footer Example"
+                        htmlExample={NxTableFooterCode}
+                        codeExamples={NxTableFooterCode}>
+      A demonstration of a table with a footer element containing a button. The most common real-world use-case
+      for a footer is a pagination bar, which can be seen in the <code className="nx-code">NxTable</code> react
+      component examples. However, the general styling is flexible, built on
+      the <code className="nx-code">&lt;tfoot&gt;</code> element and
+      the <code className="nx-code">.nx-cell--meta-info</code> class.
+    </GalleryExampleTile>
+
     <GalleryExampleTile title="NX Table Scrolling Example"
                         id="nx-table-scrolling-example"
                         htmlExample={NxTableScrollingCode}
                         codeExamples={NxTableScrollingCode}>
       A demonstration of a table that scrolls due to the presence of a height-constrained, scrolling wrapper element.
-      The headers stay stationary as the rows scroll. All tables that scroll "by themselves" (as opposed to being
-      part of some broader section of the page that scrolls) should be implemented in this manner in order to get
-      the sticky header behavior. For scrollable containers which, on the other hand, contain more content in addition
-      to a table, sticky headers should not be used and therefore
+      The headers and footer stay stationary as the rows scroll. All tables that scroll "by themselves" (as opposed
+      to being part of some broader section of the page that scrolls) should be implemented in this manner in order
+      to get the sticky header behavior. For scrollable containers which, on the other hand, contain more content in
+      addition to a table, sticky headers should not be used and therefore
       the <code className="nx-code">nx-table--scrollable</code> class should not be used on the table.
     </GalleryExampleTile>
 
