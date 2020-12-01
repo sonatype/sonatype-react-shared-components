@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
 import { ThreatLevelCategory, categoryByPolicyThreatLevel } from '../../util/threatLevels';
@@ -14,8 +14,9 @@ import { Props, propTypes } from './types';
 export { Props } from './types';
 
 import './NxPolicyViolationIndicator.scss';
-const NxPolicyViolationIndicator = forwardRef<FunctionComponent, Props> (
-  function NxPolicyViolationIndicator({ threatLevelCategory, policyThreatLevel, children }) {
+
+const NxPolicyViolationIndicator = forwardRef<HTMLDivElement, Props>(
+  function NxPolicyViolationIndicator({ threatLevelCategory, policyThreatLevel, children }, ref ) {
     const category: ThreatLevelCategory =
           threatLevelCategory ? threatLevelCategory :
           policyThreatLevel != null ? categoryByPolicyThreatLevel[policyThreatLevel] : 
@@ -25,7 +26,7 @@ const NxPolicyViolationIndicator = forwardRef<FunctionComponent, Props> (
         label = `threat level ${category}`;
 
     return (
-      <div className={className}>
+      <div className={className} ref={ref}>
         <div className="nx-policy-violation-indicator__badge">
           <NxFontAwesomeIcon aria-hidden={false}
                              aria-label={label}
@@ -38,6 +39,6 @@ const NxPolicyViolationIndicator = forwardRef<FunctionComponent, Props> (
     );
   });
 
-NxPolicyViolationIndicator.propTypes = propTypes
+NxPolicyViolationIndicator.propTypes = propTypes;
 
 export default NxPolicyViolationIndicator;
