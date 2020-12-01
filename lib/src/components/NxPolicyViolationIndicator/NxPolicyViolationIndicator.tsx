@@ -36,7 +36,7 @@ const NxPolicyViolationIndicator = forwardRef<FunctionComponent, Props> (
         </div>
       </div>
     );
-  );
+  });
 
 NxPolicyViolationIndicator.propTypes = propTypes
 
