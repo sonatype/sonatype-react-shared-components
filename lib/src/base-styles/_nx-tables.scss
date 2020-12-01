@@ -162,13 +162,16 @@ $nx-table-cell-header-height: 48px;
   z-index: 1;
 }
 
-.nx-table-row--filter-header {
-  > .nx-cell--header {
-    top: $nx-table-cell-header-height;
-  }
+// nested and located this far down the file for specificity reasons
+.nx-table {
+  .nx-table-row--filter-header {
+    > .nx-cell--header {
+      top: $nx-table-cell-header-height;
+    }
 
-  .nx-filter-input {
-    width: 250px;
+    .nx-filter-input {
+      width: 250px;
+    }
   }
 }
 
