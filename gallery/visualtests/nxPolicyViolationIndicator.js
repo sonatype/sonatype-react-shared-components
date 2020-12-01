@@ -13,9 +13,7 @@ describe('NxPolicyViolationIndicator', function() {
   });
 
   const policyViolationIndicatorCategoryExampleSelector =
-      '#nx-policy-violation-indicator-category-example .gallery-example-live',
-      policyViolationIndicatorNumberExampleSelector =
-        '#nx-policy-violation-indicator-number-example .gallery-example-live';
+      '#nx-policy-violation-indicator-category-example .gallery-example-live';
 
   it('looks right', simpleTest(policyViolationIndicatorCategoryExampleSelector));
 });
