@@ -18,5 +18,4 @@ describe('NxPolicyViolationIndicator', function() {
         '#nx-policy-violation-indicator-number-example .gallery-example-live';
 
   it('looks right', simpleTest(policyViolationIndicatorCategoryExampleSelector));
-  it('looks right', simpleTest(policyViolationIndicatorNumberExampleSelector));
 });
