@@ -25,24 +25,32 @@ import NxTableEmptyExample from './NxTableEmptyExample';
 import NxTableMetaInfoExample from './NxTableMetaInfoExample';
 import NxTableFilterExample from './NxTableFilterExample';
 import NxTablePaginationExample from './NxTablePaginationExample';
+import NxTablePaginationFilterExample from './NxTablePaginationFilterExample';
 
 const tableSimpleExampleCode = require('!!raw-loader!./NxTableSimpleExample').default;
 const tableClickableExample = require('!!raw-loader!./NxTableClickableExample').default;
 const tableSortableExample = require('!!raw-loader!./NxTableSortableExample').default;
 const tableFilterExample = require('!!raw-loader!./NxTableFilterExample').default;
 const tablePaginationExample = require('!!raw-loader!./NxTablePaginationExample').default;
+const tablePaginationFilterExample = require('!!raw-loader!./NxTablePaginationFilterExample').default;
 const tablePaginationScss = require('!!raw-loader!./NxTablePaginationExample.scss').default;
+const tablePaginationFilterScss = require('!!raw-loader!./NxTablePaginationFilterExample.scss').default;
 const tableLoadingExample = require('!!raw-loader!./NxTableLoadingExample').default;
 const tableErrorExample = require('!!raw-loader!./NxTableErrorExample').default;
 const tableEmptyExample = require('!!raw-loader!./NxTableEmptyExample').default;
 const tableMetaInfoExample = require('!!raw-loader!./NxTableMetaInfoExample').default;
 
 import './NxTablePaginationExample.scss';
+import './NxTablePaginationFilterExample.scss';
 
 const paginationCodeExamples = [
-  tablePaginationExample,
-  { content: tablePaginationScss, language: 'scss'}
-];
+      tablePaginationExample,
+      { content: tablePaginationScss, language: 'scss'}
+    ],
+    paginationFilterCodeExamples = [
+      tablePaginationFilterExample,
+      { content: tablePaginationFilterScss, language: 'scss'}
+    ];
 
 export default function NxTablePage() {
   return (
@@ -360,6 +368,15 @@ export default function NxTablePage() {
                           codeExamples={paginationCodeExamples}>
         An example of a table with an <code className="nx-code">NxPagination</code> component in the footer to control
         paging.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Pagination and Filtering Example"
+                          id="nx-table-pagination-filtering-example"
+                          liveExample={NxTablePaginationFilterExample}
+                          codeExamples={paginationFilterCodeExamples}>
+        An example of a table with an <code className="nx-code">NxPagination</code> component in the footer to control
+        paging as well as a row of filter headers. Demonstrates the use of
+        the <code className="nx-code">pagination-table-height</code> SCSS function when a filter row is present.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Loading Example"
