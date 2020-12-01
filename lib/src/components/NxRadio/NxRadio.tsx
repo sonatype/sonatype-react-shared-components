@@ -12,8 +12,8 @@ import { Props, propTypes } from './types';
 export { Props } from './types';
 
 const NxRadio = forwardRef<HTMLLabelElement, Props>(
-    function NxRadio({ name, value, onChange, isChecked, disabled, children, radioId, ...otherProps }, ref) {
-      const labelClasses = classnames('nx-radio-checkbox', 'nx-radio', {
+    function NxRadio({ className, name, value, onChange, isChecked, disabled, children, radioId, ...otherProps }, ref) {
+      const labelClasses = classnames('nx-radio-checkbox', 'nx-radio', className, {
         'nx-radio-checkbox--disabled': disabled,
         'tm-checked': isChecked,
         'tm-unchecked': !isChecked

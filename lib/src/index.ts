@@ -68,7 +68,8 @@ export { default as NxTabPanel, NxTabPanelProps } from './components/NxTabs/NxTa
 export {
   default as NxTreeView,
   NxTreeViewChild,
-  Props as NxTreeViewProps
+  Props as NxTreeViewProps,
+  NxTreeViewChildProps
 } from './components/NxTreeView/NxTreeView';
 
 export { default as NxTooltip, Props as NxTooltipProps, TooltipPlacement as NxTooltipPlacement }

@@ -11,12 +11,18 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxTreeViewExample from './NxTreeViewExample';
 import NxTreeViewTooltipExample from './NxTreeViewTooltipExample';
 import NxTreeViewExtras from './NxTreeViewExtrasExample';
+import NxTreeViewClickable from './NxTreeViewClickableExample';
+import NxTreeViewClickableSidebar from './NxTreeViewClickableSidebarExample';
+import NxTreeViewCheckbox from './NxTreeViewCheckboxExample';
 import NxTreeViewEmpty from './NxTreeViewEmptyExample';
 import NxTreeViewDisabled from './NxTreeViewDisabledExample';
 
 const nxTreeViewCode = require('!!raw-loader!./NxTreeViewExample').default,
     nxTreeViewTooltipCode = require('!!raw-loader!./NxTreeViewTooltipExample').default,
     nxTreeViewExtrasCode = require('!!raw-loader!./NxTreeViewExtrasExample').default,
+    nxTreeViewClickableCode = require('!!raw-loader!./NxTreeViewClickableExample').default,
+    nxTreeViewClickableSidebarCode = require('!!raw-loader!./NxTreeViewClickableSidebarExample').default,
+    nxTreeViewCheckboxCode = require('!!raw-loader!./NxTreeViewCheckboxExample').default,
     nxTreeViewEmptyCode = require('!!raw-loader!./NxTreeViewEmptyExample').default,
     nxTreeViewDisabledCode = require('!!raw-loader!./NxTreeViewDisabledExample').default;
 
@@ -89,6 +95,40 @@ const NxTreeViewPage = () =>
           </tr>
         </tbody>
       </table>
+      <section className="nx-tile-subsection">
+        <header className="nx-tile-subsection__header">
+          <h3 className="nx-h3">Children</h3>
+        </header>
+        <p className="nx-p">
+          The "children" of an <code className="nx-code">NxTreeView</code> are the elements which appear when the
+          tree view is expanded. All tree view children should be wrapped
+          in <code className="nx-code">NxTreeViewChild</code> components.{' '}
+          <code className="nx-code">NxTreeViewChild</code> does not actually create an element of its own – unless
+          its children consist only of text – but rather augments the classes and attributes of its child element
+          in order to apply the appropriate styles and accessibility roles. Note that NxTreeViewChild expects to have
+          exactly one child, and this restriction is enforced in the typescript types.
+        </p>
+        <p className="nx-p">Certain types of tree view children get special styling treatment as described below.</p>
+        <ul className="nx-list">
+          <li className="nx-list__item">
+            <span className="nx-list__text">Clickable/selectable children</span>
+            <span className="nx-list__subtext">
+              Links (<code className="nx-code">&lt;a&gt;</code> tags)
+              and <code className="nx-code">&lt;button&gt;</code>s get hover, focus, and click styles which
+              lay them out slightly differently from normal tree view children. When constructing
+              a navigation list within an <code className="nx-code">NxTreeView</code>, the link representing the
+              current page should be given the <code className="nx-code">.selected</code> class.
+            </span>
+          </li>
+          <li className="nx-list__item">
+            <span className="nx-list__text">Radio/Checkbox children</span>
+            <span className="nx-list__subtext">
+              Tree view children which are <code className="nx-code">NxRadio</code>s or{' '}
+              <code className="nx-code">NxCheckbox</code>s get special indentation.
+            </span>
+          </li>
+        </ul>
+      </section>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="NxTreeView Basic Example"
@@ -115,7 +155,33 @@ const NxTreeViewPage = () =>
       text overflow behavior
     </GalleryExampleTile>
 
+    <GalleryExampleTile title="NxTreeView Clickable Example"
+                        id="nx-tree-view-clickable-example"
+                        liveExample={NxTreeViewClickable}
+                        codeExamples={nxTreeViewClickableCode}>
+      Example of an <code className="nx-code">NxTreeView</code> with clickable children one of which is selected
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxTreeView Clickable Sidebar Example"
+                        id="nx-tree-view-clickable-sidebar-example"
+                        liveExample={NxTreeViewClickableSidebar}
+                        codeExamples={nxTreeViewClickableSidebarCode}>
+      Example of an <code className="nx-code">NxTreeView</code> with clickable children one of which is selected.
+      This example differs from the previous one in that the tree view is contained within
+      an <code className="nx-code">.nx-page-sidebar</code>. <code className="nx-code">NxTreeView</code>s that are
+      descendants of sidebars use different colors for their hover and selected states.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxTreeView Checkbox and radio Example"
+                        id="nx-tree-view-checkbox-example"
+                        liveExample={NxTreeViewCheckbox}
+                        codeExamples={nxTreeViewCheckboxCode}>
+      Example showing how to construct <code className="nx-code">NxTreeView</code>s with checkboxes and radios as
+      children. This example omits the input state management and is focused on demonstrating the styling.
+    </GalleryExampleTile>
+
     <GalleryExampleTile title="NxTreeView Empty Example"
+                        id="nx-tree-view-empty-example"
                         liveExample={NxTreeViewEmpty}
                         codeExamples={nxTreeViewEmptyCode}>
       Example of an <code className="nx-code">NxTreeView</code> that cannot be opened because it has no children.

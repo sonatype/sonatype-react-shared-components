@@ -39,6 +39,13 @@ describe('NxCheckbox', function() {
     expect(shallowRender).toHaveText(' ');
   });
 
+  it('adds classes specified with the className prop', function() {
+    const component = getShallowComponent({ className: 'foo' });
+
+    expect(component).toHaveClassName('foo');
+    expect(component).toHaveClassName('nx-checkbox');
+  });
+
   it('renders a faCheck FontAwesomeIcon inside the box when checked', function() {
     expect(getShallowComponent()).not.toContainReact(<FontAwesomeIcon icon={faCheck} />);
 
