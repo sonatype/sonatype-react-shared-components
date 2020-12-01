@@ -37,7 +37,8 @@ const NxPolicyViolationIndicator = forwardRef<HTMLDivElement, Props>(
         </span>
       </div>
     );
-  });
+  }
+);
 
 NxPolicyViolationIndicator.propTypes = propTypes;
 
