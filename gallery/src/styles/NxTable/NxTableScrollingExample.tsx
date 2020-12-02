@@ -8,7 +8,7 @@ import React from 'react';
 import { NxButton, NxFilterInput } from '@sonatype/react-shared-components';
 
 export default function NxTableScrollingExample() {
- return (
+  return (
     <div className="nx-scrollable nx-table-container" style={{ height: '400px' }}>
       <table className="nx-table">
         <thead>
