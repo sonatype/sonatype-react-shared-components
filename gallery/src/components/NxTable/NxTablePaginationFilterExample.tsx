@@ -38,12 +38,12 @@ const NxTablePaginationFilterExample = () => {
   const [nameFilter, setNameFilter] = useState(''),
       [countryFilter, setCountryFilter] = useState(''),
       [page, setPage] = useState(0),
-      matchesName = pipe<Row, string, boolean>(prop('name'), includes(toLower(nameFilter))),
-      matchesCountry = pipe<Row, string, boolean>(prop('country'), includes(toLower(countryFilter))),
+      matchesName = pipe<Row, string, string, boolean>(prop('name'), toLower, includes(toLower(nameFilter))),
+      matchesCountry = pipe<Row, string, string, boolean>(prop('country'), toLower, includes(toLower(countryFilter))),
       filteredData = filter(both(matchesName, matchesCountry), tableData),
       pageCount = Math.ceil(filteredData.length / PAGE_SIZE),
-      currentPage = Math.min(page, pageCount - 1),
-      rows = slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE, filteredData);
+      currentPage = pageCount ? Math.min(page, pageCount - 1) : undefined,
+      rows = currentPage != null && slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE, filteredData);
 
   return (
     <div className="nx-table-container gallery-pagination-filter-table-example">
@@ -55,19 +55,15 @@ const NxTablePaginationFilterExample = () => {
           </NxTableRow>
           <NxTableRow isFilterHeader>
             <NxTableCell>
-              <NxFilterInput placeholder="Type a name"
-                             onChange={setNameFilter}
-                             value={nameFilter}/>
+              <NxFilterInput placeholder="Type a name" onChange={setNameFilter} value={nameFilter}/>
             </NxTableCell>
             <NxTableCell>
-              <NxFilterInput placeholder="Select a country"
-                             onChange={setCountryFilter}
-                             value={countryFilter}/>
+              <NxFilterInput placeholder="Select a country" onChange={setCountryFilter} value={countryFilter}/>
             </NxTableCell>
           </NxTableRow>
         </NxTableHead>
         <NxTableBody emptyMessage="No rows match the current filter">
-          {rows.map((row: Row) =>
+          { rows && rows.map((row: Row) =>
             <NxTableRow key={row.name.concat(row.country)}>
               <NxTableCell>{row.name}</NxTableCell>
               <NxTableCell>{row.country}</NxTableCell>
