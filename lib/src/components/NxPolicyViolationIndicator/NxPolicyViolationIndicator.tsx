@@ -23,7 +23,7 @@ const NxPolicyViolationIndicator = forwardRef<HTMLDivElement, Props>(
           policyThreatLevel != null ? categoryByPolicyThreatLevel[policyThreatLevel] : 
           'unspecified',
 
-        classNames = classnames('nx-policy-violation-indicator nx-policy-violation-indicator--${category}', className),
+        classNames = classnames(`nx-policy-violation-indicator nx-policy-violation-indicator--${category}`, className),
         label = `threat level ${category}`;
 
     return (
