@@ -6,7 +6,8 @@
  */
 @import '../scss-shared/nx-variables';
 
-// calculates the content-box height of a nx-table with the given numbers of rows, headers, etc.
+// calculates the content-box height of a nx-table-container with the given numbers of rows and headers along
+// with a pagination footer.
 // Useful for calculating the static heights of paging tables where you want the table to perfectly fit a full
 // page.
 // NOTE: only works if rows display the standard single line of text. Wrapping text within a row, or any other larger
