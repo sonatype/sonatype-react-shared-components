@@ -15,30 +15,31 @@
 }
 
 .nx-accordion__header {
-  @include container-horizontal;
-
   &::-webkit-details-marker {
     display: none;
   }
 
-  align-items: center;
-  box-sizing: border-box;
-  color: $nx-text-color-dark;
-  cursor: pointer;
-  display: flex;
-  font-weight: bold;
-  min-height: $nx-spacing-xxxl;
-  padding: $nx-spacing-md $nx-spacing-l;
+  .nx-accordion__summary-wrapper {
+    @include container-horizontal;
+    align-items: center;
+    box-sizing: border-box;
+    color: $nx-text-color-dark;
+    cursor: pointer;
+    display: flex;
+    font-weight: bold;
+    min-height: $nx-spacing-xxxl;
+    padding: $nx-spacing-md $nx-spacing-l;
 
-  &:focus {
-    outline: 1px solid #02a6d9;
-    outline-offset: -1px;
-    box-shadow: $nx-focus-box-shadow;
-  }
+    &:focus {
+      outline: 1px solid #02a6d9;
+      outline-offset: -1px;
+      box-shadow: $nx-focus-box-shadow;
+    }
 
-  > .nx-btn-bar {
-    margin: 0 0 0 $nx-spacing-l;
-    flex-shrink: 0;
+    > .nx-btn-bar {
+      margin: 0 0 0 $nx-spacing-l;
+      flex-shrink: 0;
+    }
   }
 }
 
