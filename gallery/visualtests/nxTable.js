@@ -127,9 +127,8 @@ describe('NxTable', function() {
       expect(heightWithClassAndFullData).toBe(heightWithClassAndShortData);
 
       // remove the class that sets the explicit height
-      const classesNow = await browser.execute(function(tableContainerEl) {
+      await browser.execute(function(tableContainerEl) {
         tableContainerEl.classList.remove('gallery-pagination-filter-table-example');
-        return tableContainerEl.className;
       }, tableContainer);
 
       // measure the height of the second page again now that the class has been removed. Should come out smaller
