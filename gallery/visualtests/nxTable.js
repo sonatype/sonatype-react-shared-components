@@ -44,7 +44,7 @@ describe('NxTable', function() {
 
   describe('Scrollable table', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-table');
+      await browser.url('#/pages/nx-table-container');
     });
 
     const tableSelector = '#nx-table-scrolling-example .nx-scrollable';
@@ -83,7 +83,7 @@ describe('NxTable', function() {
       await browser.url('#/pages/nx-table-container');
     });
 
-    const tableSelector = '#nx-table-unfilled-with-footer-example .nx-scrollable';
+    const tableSelector = '#nx-table-unfilled-with-footer-example .nx-table-container';
 
     it('looks right', simpleTest(tableSelector));
   });
