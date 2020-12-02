@@ -30,7 +30,7 @@ $nx-table-cell-header-height: 48px;
       border-style: none;
 
       border-bottom-style: solid;
-      border-bottom-color: #e9e9e9;
+      border-bottom-color: $nx-grey-200;
       border-top-style: solid;
 
       // we want the perceived padding to be the standard spacing size. As the top border is generally invisible,
@@ -178,7 +178,7 @@ $nx-table-cell-header-height: 48px;
 
 
 .nx-cell--icon {
-  color: #2c2c2c;
+  color: $nx-text-color-dark;
   text-align: center;
 }
 
