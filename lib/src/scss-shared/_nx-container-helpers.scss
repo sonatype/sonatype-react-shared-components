@@ -27,5 +27,6 @@
 @mixin vertically-scrollable($max-height) {
   height: auto;
   max-height: $max-height;
+  overflow-x: hidden;
   overflow-y: auto;
 }
