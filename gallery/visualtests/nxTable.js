@@ -15,7 +15,7 @@ describe('NxTable', function() {
   const iconColumnTableSelector = '#nx-table-clickable-example .nx-table',
       clickableTableSelector = '#nx-table-clickable-example .nx-table',
       sortableTableSelector = '#nx-table-sortable-example .nx-table',
-      filterTableSelector = '#nx-table-filter-example .nx-table',
+      paginationFilterTableSelector = '#nx-table-pagination-filter-example .nx-table',
       loadingTableSelector = '#nx-table-loading-example .nx-table',
       errorTableSelector = '#nx-table-error-example .nx-table';
 
@@ -40,7 +40,7 @@ describe('NxTable', function() {
   it('looks right when loading', simpleTest(loadingTableSelector));
   it('looks right when showing an error', simpleTest(errorTableSelector));
   it('looks right with an icon column', simpleTest(iconColumnTableSelector));
-  it('looks right with an filter column', simpleTest(filterTableSelector));
+  it('looks right with a pagination bar and a filter row', simpleTest(paginationFilterTableSelector));
 
   describe('Scrollable table', function() {
     beforeEach(async function() {
@@ -70,10 +70,20 @@ describe('NxTable', function() {
 
   describe('Unfilled Scrollable table', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-table');
+      await browser.url('#/pages/nx-table-container');
     });
 
     const tableSelector = '#nx-table-unfilled-scroll-container-example .nx-scrollable';
+
+    it('looks right', simpleTest(tableSelector));
+  });
+
+  describe('Unfilled table with footer', function() {
+    beforeEach(async function() {
+      await browser.url('#/pages/nx-table-container');
+    });
+
+    const tableSelector = '#nx-table-unfilled-with-footer-example .nx-scrollable';
 
     it('looks right', simpleTest(tableSelector));
   });

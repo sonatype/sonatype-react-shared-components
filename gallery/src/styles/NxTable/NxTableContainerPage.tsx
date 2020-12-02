@@ -9,8 +9,10 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import { NxWarningAlert } from '@sonatype/react-shared-components';
 
+import NxTableScrollingExample from './NxTableScrollingExample';
+
 const NxTableFooterCode = require('!!raw-loader!./NxTableFooterExample.html').default,
-    NxTableScrollingCode = require('!!raw-loader!./NxTableScrollingExample.html').default,
+    NxTableScrollingCode = require('!!raw-loader!./NxTableScrollingExample.tsx').default,
     NxTableUnfilledScrollContainerCode = require('!!raw-loader!./NxTableUnfilledScrollContainerExample.html').default,
     NxTableUnfilledContainerWithFooterCode =
         require('!!raw-loader!./NxTableUnfilledContainerWithFooterExample.html').default;
@@ -84,14 +86,14 @@ const NxTableContainerPage = () =>
     <GalleryExampleTile title="NX Table Footer Example"
                         htmlExample={NxTableFooterCode}
                         codeExamples={NxTableFooterCode}>
-      A demonstration of a table with a footer element which for the sake of example just contains  a button.
+      A demonstration of a table with a footer element which for the sake of example just contains a button.
       The most common real-world use-case for a footer is a pagination bar, which can be seen in
       the <code className="nx-code">NxTable</code> react component examples.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table Scrolling Example"
                         id="nx-table-scrolling-example"
-                        htmlExample={NxTableScrollingCode}
+                        liveExample={NxTableScrollingExample}
                         codeExamples={NxTableScrollingCode}>
       A demonstration of a table that scrolls due to the presence of a height-constrained, scrolling wrapper element.
       The headers and footer stay stationary as the rows scroll. All tables that scroll "by themselves" (as opposed
@@ -102,7 +104,7 @@ const NxTableContainerPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table Unfilled Example with Footer"
-                        id="nx-table-unfilled-scroll-container-example"
+                        id="nx-table-unfilled-with-footer-example"
                         htmlExample={NxTableUnfilledContainerWithFooterCode}
                         codeExamples={NxTableUnfilledContainerWithFooterCode}>
       This example demonstrates what happens when a table is set up with an explicit height and a footer, but fewer

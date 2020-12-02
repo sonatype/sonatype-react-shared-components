@@ -371,7 +371,7 @@ export default function NxTablePage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Pagination and Filtering Example"
-                          id="nx-table-pagination-filtering-example"
+                          id="nx-table-pagination-filter-example"
                           liveExample={NxTablePaginationFilterExample}
                           codeExamples={paginationFilterCodeExamples}>
         An example of a table with an <code className="nx-code">NxPagination</code> component in the footer to control
