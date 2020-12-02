@@ -7,46 +7,30 @@
 .nx-page-title {
   @include container-horizontal;
   @include container-vertical;
-  margin: 0 0 16px 0;
+  display: grid;
+  grid-template-areas:
+    "title actions"
+    "description description";
+  margin: 0 0 $nx-spacing-md 0;
 
   .nx-h1 {
-    display: inline-block;
+    grid-area: title;
     margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
-    vertical-align: middle;
     white-space: nowrap;
     max-width: $nx-paragraph-width-maximum;
   }
-}
 
-.nx-page-title__page-icon {
-  display: inline-block;
-  vertical-align: middle;
+  .nx-btn-bar {
+    grid-area: actions;
+    margin: 0;
+  }
 }
 
 .nx-page-title__description {
   @include container-vertical;
-  margin: 8px 0 0 0;
+  grid-area: description;
+  margin: $nx-spacing-xs 0 0 0;
   max-width: $nx-paragraph-width-maximum;
-}
-
-.nx-page-title__actions {
-  display: grid;
-  grid-template-areas: 
-    "title buttons"
-    "description description";
-
-  .nx-h1 {
-    grid-area: title;
-  }
-
-  .nx-btn-bar {
-    grid-area: buttons;
-    margin: 0;
-  }
-
-  .nx-page-title__description {
-    grid-area: description;
-  }
 }
