@@ -12,7 +12,7 @@
   align-items: center;
   border: 1px solid var(--policy-indicator-highlight-color);
   border-radius: $nx-border-radius;
-  display: flex;
+  display: inline-flex;
   height: 30px;
   margin: 0 0 $nx-spacing-xs $nx-spacing-md;
   overflow: hidden;
@@ -24,7 +24,7 @@
   align-self: stretch;
   align-items: center;
   background-color: var(--policy-indicator-highlight-color);
-  display: flex;
+  display: inline-flex;
 
   .nx-icon {
     color: #fff;
