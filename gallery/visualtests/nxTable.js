@@ -59,7 +59,6 @@ describe('NxTable', function() {
 
       try {
         await bottomRowEl.scrollIntoView({ block: 'center' });
-        await browser.saveScreenshot('/tmp/screenshot.png');
         await browser.eyesRegionSnapshot(null, Target.region(scrollableEl));
       }
       finally {
