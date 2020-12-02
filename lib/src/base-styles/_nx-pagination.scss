@@ -30,18 +30,18 @@
   @include regular();
   background-color: transparent;
   border-color: transparent;
-  color: #474747;
+  color: $nx-text-color;
 
   &:hover {
     background-color: transparent;
-    border-color: #474747;
+    border-color: $nx-grey-900;
   }
 
   &:active {
-    background-color: #f1f3fa;
-    border-color: #474747;
+    background-color: $nx-grey-100;
+    border-color: $nx-grey-900;
     box-shadow: none;
-    color: #474747;
+    color: $nx-text-color;
   }
 
   &.selected {
