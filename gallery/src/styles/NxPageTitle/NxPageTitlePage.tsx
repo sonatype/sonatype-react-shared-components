@@ -5,13 +5,17 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import CodeExample from '../../CodeExample';
 import RawHtmlExample from '../../RawHtmlExample';
+import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
+import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxPageTitleCode = require('!!raw-loader!./NxPageTitleExample.html').default;
-const nxPageTitleActionsCode = require('!!raw-loader!./NxPageTitleActionsExample.html').default;
+import NxPageTitlePolicyViolationIndicatorExample from './NxPageTitlePolicyViolationIndicatorExample';
+
+const nxPageTitleCode = require('!!raw-loader!./NxPageTitleExample.html').default,
+    nxPageTitleActionsCode = require('!!raw-loader!./NxPageTitleActionsExample.html').default,
+    nxPageTitlePolicyViolationIndicatorCode =
+      require('!!raw-loader!./NxPageTitlePolicyViolationIndicatorExample.tsx').default;
 
 const NxPageTitlePage = () =>
   <>
@@ -65,6 +69,14 @@ const NxPageTitlePage = () =>
 
     <RawHtmlExample html={nxPageTitleActionsCode} />
     <CodeExample content={nxPageTitleActionsCode} />
+
+    <GalleryExampleTile title="NX Tile with Policy Violation Indicator"
+                        id="nx-tile-policy-violation-indicator-example"
+                        defaultCheckeredBackground={false}
+                        liveExample={NxPageTitlePolicyViolationIndicatorExample}
+                        codeExamples={nxPageTitlePolicyViolationIndicatorCode}>
+      An example of a page title with an <code className="nx-code">NxPolicyViolationIndicator</code>.
+    </GalleryExampleTile>
   </>;
 
 export default NxPageTitlePage;
