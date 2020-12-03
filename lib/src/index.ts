@@ -75,6 +75,9 @@ export {
 export { default as NxTooltip, Props as NxTooltipProps, TooltipPlacement as NxTooltipPlacement }
   from './components/NxTooltip/NxTooltip';
 
+export { default as NxOverflowTooltip, OverflowTooltipProps as NxOverflowTooltipProps }
+  from './components/NxTooltip/NxOverflowTooltip';
+
 export {
   default as NxTreeViewRadioSelect,
   Props as NxTreeViewRadioSelectProps,
