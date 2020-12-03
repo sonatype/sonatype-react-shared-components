@@ -4,41 +4,36 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState, useLayoutEffect } from 'react';
+import useResizeObserver from '@react-hook/resize-observer';
+
 import { textContent } from '../../util/childUtil';
 
 import { OverflowTooltipProps, overflowTooltipPropTypes } from './types';
 import NxTooltip from './NxTooltip';
 
-// You may wonder why we have this wrapper that just passes through to mui Tooltip. It is to encapsulate the fact
-// that we are using mui, and then limit the available props down to just those that would be still be easily supported
-// if we switched to a different implementation
-export default function NxOverflowTooltip({ children, ...otherProps }: OverflowTooltipProps) {
-  const title = textContent(children),
+export { OverflowTooltipProps };
+
+export default function NxOverflowTooltip({ title, children, ...otherProps }: OverflowTooltipProps) {
+  const computedTitle = title || textContent(children),
       [needsTooltip, setNeedsTooltip] = useState(false),
-      ref = useRef<Element>(null),
+      ref = useRef<HTMLElement>(null),
       childrenWithRef = React.cloneElement(children, { ref });
 
-  useEffect(function() {
-    const elementWithTooltip = ref.current;
+  function updateNeedsTooltip() {
+    const el = ref.current;
 
-    const resizeObserver = new ResizeObserver(function(entries) {
-      for (const { target } of entries) {
-        if (target === elementWithTooltip) {
-          setNeedsTooltip(target.clientWidth < target.scrollWidth);
-        }
-      }
-    });
+    setNeedsTooltip(!!el && el.clientWidth < el.scrollWidth);
+  }
 
-    resizeObserver.observe(elementWithTooltip, { box: 'border-box' });
+  // check the width on initial layout and any time computedTitle changes
+  useLayoutEffect(updateNeedsTooltip, [computedTitle]);
 
-    return function() {
-      resizeObserver.disconnect();
-    };
-  }, [title]);
+  // check the width any time the element resizes
+  useResizeObserver(ref, updateNeedsTooltip);
 
   return (
-    <NxTooltip { ...otherProps } title={needsTooltip ? title : ''}>
+    <NxTooltip { ...otherProps } title={needsTooltip ? computedTitle : ''}>
       {childrenWithRef}
     </NxTooltip>
   );
