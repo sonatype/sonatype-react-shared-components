@@ -22,7 +22,7 @@ export interface Props {
   children: ReactElement;
 }
 
-export type OverflowTooltipProps = Omit<Props, 'title'>;
+export type OverflowTooltipProps = Omit<Props, 'open'>;
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   className: PropTypes.string,
@@ -33,4 +33,4 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   title: PropTypes.node
 };
 
-export const overflowTooltipPropTypes = omit(['title'], propTypes);
+export const overflowTooltipPropTypes = omit(['open'], propTypes);
