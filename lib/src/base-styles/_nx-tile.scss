@@ -39,8 +39,8 @@ $nx-tile-padding: $nx-spacing-l;
   align-items: center;
   display: grid;
   display: -ms-grid;
-  grid-template-columns: 1fr auto;
-  -ms-grid-columns: 1fr auto;
+  grid-template-columns: auto 1fr auto;
+  -ms-grid-columns: auto 1fr auto;
   min-height: $nx-tile-header-height;
   padding: $nx-tile-padding $nx-tile-padding 0 $nx-tile-padding;
 
@@ -68,12 +68,12 @@ $nx-tile-padding: $nx-spacing-l;
   @include semi-bold();
 
   grid-column-start: 1;
-  grid-column-end: 2;
+  grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 2;
   -ms-grid-row: 2;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
+  -ms-grid-column-span: 3;
 
   color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-3;
@@ -83,14 +83,30 @@ $nx-tile-padding: $nx-spacing-l;
 .nx-tile__actions {
   @include container-horizontal;
 
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  margin-left: $nx-spacing-l;
+  text-align: right;
+}
+
+.nx-tile__tags {
+  @include container-horizontal;
+
   grid-column-start: 2;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 1;
   -ms-grid-row: 1;
   -ms-grid-column: 2;
-  margin-left: $nx-spacing-l;
-  text-align: right;
+  margin-left: $nx-spacing-md;
+
+  .nx-policy-violation-indicator {
+    margin: 0;
+  }
 }
 
 .nx-tile-content {
