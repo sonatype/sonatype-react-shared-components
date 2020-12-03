@@ -77,6 +77,7 @@ import NxNexusPageHeaderPage from './components/NxNexusPageHeader/NxNexusPageHea
 import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
 import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
+import NxDefinitionListPage from './styles/NxDefinitionList/NxDefinitionListPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -133,6 +134,7 @@ const pageConfig: PageConfig = {
     'nx-card': NxCardPage,
     'nx-code': NxCodePage,
     'nx-counter': NxCounterPage,
+    'nx-definition-list': NxDefinitionListPage,
     'nx-grid': NxGridPage,
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
