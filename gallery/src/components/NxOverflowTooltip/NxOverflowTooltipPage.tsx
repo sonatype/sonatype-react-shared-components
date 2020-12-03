@@ -35,6 +35,7 @@ export default function NxOverflowTooltipPage() {
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Example on NxDropdown items"
+                          id="nx-overflow-tooltip-dropdown-example"
                           codeExamples={overflowTooltipsExampleCode}
                           liveExample={NxOverflowTooltipExample}>
         This example demonstrates an <code className="nx-code">NxDropdown</code> which
@@ -44,6 +45,7 @@ export default function NxOverflowTooltipPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Dynamic example"
+                          id="nx-overflow-tooltip-dynamic-example"
                           codeExamples={overflowTooltipsDynamicExampleCode}
                           liveExample={NxOverflowTooltipDynamicExample}>
         This example displays user-controllable text in an paragraph wrapped

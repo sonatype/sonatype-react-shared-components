@@ -28,14 +28,16 @@ export default function NxOverflowTooltipExample() {
           Text link 2 - this text is long and should truncate with a tooltip
         </a>
       </NxOverflowTooltip>
-      <NxOverflowTooltip>
+      <NxOverflowTooltip title="Foo Button">
         <button className="nx-dropdown-button">
-          Button
+          <ExampleOtherComponent>
+            Button
+          </ExampleOtherComponent>
         </button>
       </NxOverflowTooltip>
       <NxOverflowTooltip>
         <button className="nx-dropdown-button">
-          Button 2 - this text is long and should truncate with a tooltip
+          Button 2 - this text is long and <em>should</em> truncate with a tooltip
         </button>
       </NxOverflowTooltip>
       <NxOverflowTooltip title="Foo Button 3 - this text is long and should truncate with a tooltip">
