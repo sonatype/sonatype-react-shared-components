@@ -47,7 +47,7 @@ const NxTablePaginationFilterExample = () => {
 
   return (
     <div className="nx-table-container gallery-pagination-filter-table-example">
-      <NxTable>
+      <NxTable id="pagination-filter-table" aria-live="polite">
         <NxTableHead>
           <NxTableRow>
             <NxTableCell>Name</NxTableCell>
@@ -55,10 +55,16 @@ const NxTablePaginationFilterExample = () => {
           </NxTableRow>
           <NxTableRow isFilterHeader>
             <NxTableCell>
-              <NxFilterInput placeholder="Type a name" onChange={setNameFilter} value={nameFilter}/>
+              <NxFilterInput placeholder="Type a name"
+                             onChange={setNameFilter}
+                             value={nameFilter}
+                             aria-controls="pagination-filter-table"/>
             </NxTableCell>
             <NxTableCell>
-              <NxFilterInput placeholder="Select a country" onChange={setCountryFilter} value={countryFilter}/>
+              <NxFilterInput placeholder="Select a country"
+                             onChange={setCountryFilter}
+                             value={countryFilter}
+                             aria-controls="pagination-filter-table"/>
             </NxTableCell>
           </NxTableRow>
         </NxTableHead>
@@ -72,7 +78,7 @@ const NxTablePaginationFilterExample = () => {
         </NxTableBody>
       </NxTable>
       <div className="nx-table-container__footer">
-        <NxPagination { ...{ pageCount, currentPage } } onChange={setPage} />
+        <NxPagination aria-controls="pagination-filter-table" { ...{ pageCount, currentPage } } onChange={setPage} />
       </div>
     </div>
   );

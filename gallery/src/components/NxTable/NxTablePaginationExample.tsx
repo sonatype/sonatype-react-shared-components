@@ -39,7 +39,7 @@ const NxTablePaginationExample = () => {
 
   return (
     <div className="nx-table-container gallery-pagination-table-example">
-      <NxTable>
+      <NxTable id="pagination-table" aria-live="polite">
         <NxTableHead>
           <NxTableRow>
             <NxTableCell>Name</NxTableCell>
@@ -56,7 +56,10 @@ const NxTablePaginationExample = () => {
         </NxTableBody>
       </NxTable>
       <div className="nx-table-container__footer">
-        <NxPagination pageCount={Math.ceil(tableData.length / PAGE_SIZE)} currentPage={page} onChange={setPage} />
+        <NxPagination aria-controls="pagination-table"
+                      pageCount={Math.ceil(tableData.length / PAGE_SIZE)}
+                      currentPage={page}
+                      onChange={setPage} />
       </div>
     </div>
   );
