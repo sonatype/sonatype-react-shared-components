@@ -34,7 +34,7 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
   if (Content) {
     // Put a key on <main> so that it re-renders entirely on route change, resetting scroll position
     return (
-      <main key={pageName || 'home'} className="nx-page-main">
+      <main id="gallery-main" key={pageName || 'home'} className="nx-page-main">
         <div className="nx-page-title">
           <h1 className="nx-h1">
             {pageHeader}
