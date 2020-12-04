@@ -29,18 +29,18 @@ const NxPolicyViolationIndicator = forwardRef<HTMLDivElement, Props>(
           label = `threat level ${category}`;
 
       return (
-      <div className={classNames} ref={ref} {...attrs}>
-        <span className="nx-policy-violation-indicator__badge">
-          <NxFontAwesomeIcon aria-hidden={false}
-                             aria-label={label}
-                             icon={faExclamationCircle}/>
-        </span>
-        <span className="nx-policy-violation-indicator__text">
-          {children || category}
-        </span>
-      </div>
-      );
-    }
+        <div className={classNames} ref={ref} {...attrs}>
+          <span className="nx-policy-violation-indicator__badge">
+            <NxFontAwesomeIcon aria-hidden={false}
+                              aria-label={label}
+                              icon={faExclamationCircle}/>
+          </span>
+          <span className="nx-policy-violation-indicator__text">
+            {children || category}
+          </span>
+        </div>
+        );
+      }
 );
 
 NxPolicyViolationIndicator.propTypes = propTypes;
