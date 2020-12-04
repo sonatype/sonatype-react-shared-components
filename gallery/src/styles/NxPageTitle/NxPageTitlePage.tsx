@@ -5,8 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import CodeExample from '../../CodeExample';
-import RawHtmlExample from '../../RawHtmlExample';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -21,8 +19,11 @@ const NxPageTitlePage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        nx-page-title is used at the top of a page, it always has a title, and can also have an icon
-        and descriptive text.
+        <code className="nx-code">nx-page-title</code> is used at the top of a page, it always has a title, and can also
+        have an icon and descriptive text.
+      </p>
+      <p className="nx-p">
+        In addition <code className="nx-code">.nx-page-title</code> can have tags or actions inline with the title.
       </p>
       <p className="nx-p">
         Note: <code className="nx-code">.nx-page-title</code> replaces
@@ -64,14 +65,24 @@ const NxPageTitlePage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <RawHtmlExample html={nxPageTitleCode} />
-    <CodeExample content={nxPageTitleCode} />
+    <GalleryExampleTile title="NX Page Title Example"
+                        id="nx-page-title-example"
+                        defaultCheckeredBackground={true}
+                        htmlExample={nxPageTitleCode}
+                        codeExamples={nxPageTitleCode}>
+      A simple example of an <code className="nx-code">nx-page-title</code>.
+    </GalleryExampleTile>
 
-    <RawHtmlExample html={nxPageTitleActionsCode} />
-    <CodeExample content={nxPageTitleActionsCode} />
+    <GalleryExampleTile title="NX Page Title with Actions Example"
+                        id="nx-page-title-actions-example"
+                        defaultCheckeredBackground={true}
+                        htmlExample={nxPageTitleActionsCode}
+                        codeExamples={nxPageTitleActionsCode}>
+      An example of <code className="nx-code">nx-page-title</code> with actions in the form of a drop-down.
+    </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Tile with Policy Violation Indicator"
-                        id="nx-tile-policy-violation-indicator-example"
+    <GalleryExampleTile title="NX Page Title with Policy Violation Indicator"
+                        id="nx-page-title-policy-violation-indicator-example"
                         defaultCheckeredBackground={false}
                         liveExample={NxPageTitlePolicyViolationIndicatorExample}
                         codeExamples={nxPageTitlePolicyViolationIndicatorCode}>
