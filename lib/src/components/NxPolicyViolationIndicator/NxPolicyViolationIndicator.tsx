@@ -17,14 +17,16 @@ export { Props } from './types';
 import './NxPolicyViolationIndicator.scss';
 
 const NxPolicyViolationIndicator = forwardRef<HTMLDivElement, Props>(
-  function NxPolicyViolationIndicator({ threatLevelCategory, policyThreatLevel, className, children, ...attrs }, ref) {
-    const category: ThreatLevelCategory =
+    function NxPolicyViolationIndicator(
+      { threatLevelCategory, policyThreatLevel, className, children, ...attrs }, ref) {
+      const category: ThreatLevelCategory =
           threatLevelCategory ? threatLevelCategory :
-          policyThreatLevel != null ? categoryByPolicyThreatLevel[policyThreatLevel] : 
+          policyThreatLevel != null ? categoryByPolicyThreatLevel[policyThreatLevel] :
           'unspecified',
 
-        classNames = classnames(`nx-policy-violation-indicator nx-policy-violation-indicator--${category}`, className),
-        label = `threat level ${category}`;
+          classNames = classnames(`nx-policy-violation-indicator nx-policy-violation-indicator--${category}`,
+            className),
+          label = `threat level ${category}`;
 
     return (
       <div className={classNames} ref={ref} {...attrs}>
@@ -37,8 +39,8 @@ const NxPolicyViolationIndicator = forwardRef<HTMLDivElement, Props>(
           {children || category}
         </span>
       </div>
-    );
-  }
+      );
+    }
 );
 
 NxPolicyViolationIndicator.propTypes = propTypes;
