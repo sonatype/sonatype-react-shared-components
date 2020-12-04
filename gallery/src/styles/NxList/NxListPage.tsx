@@ -108,7 +108,7 @@ const NxListPage = () =>
         <p className="nx-p">
           In addition to ordered and unordered lists, <code className="nx-code">nx-list</code> also supports the
           styling of description lists using the following classes. Terms and descriptions are laid out side-by-side
-          in rows. Currently only zero or one descriptions per term are supported, not multiple.
+          in rows. Currently only one description per term, and one term per description, are supported – not multiple.
         </p>
         <NxTable>
           <NxTableHead>
