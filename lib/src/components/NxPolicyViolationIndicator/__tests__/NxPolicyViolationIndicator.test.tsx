@@ -6,11 +6,11 @@
  */
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
-import NxPolicyViolationIndicator from '../NxPolicyViolationIndicator';
+import NxPolicyViolationIndicator, { Props } from '../NxPolicyViolationIndicator';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 describe('NxPolicyViolationIndicator', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxPolicyViolationIndicator, {});
+  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxPolicyViolationIndicator, {});
 
   it('sets the nx-policy-violation-indicator--unspecified class if no props are passed', function() {
     expect(getShallowComponent()).toMatchSelector('.nx-policy-violation-indicator--unspecified');
