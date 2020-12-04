@@ -83,7 +83,7 @@ const NxPageTitlePage = () =>
 
     <GalleryExampleTile title="NX Page Title with Policy Violation Indicator"
                         id="nx-page-title-policy-violation-indicator-example"
-                        defaultCheckeredBackground={false}
+                        defaultCheckeredBackground={true}
                         liveExample={NxPageTitlePolicyViolationIndicatorExample}
                         codeExamples={nxPageTitlePolicyViolationIndicatorCode}>
       An example of a page title with an <code className="nx-code">NxPolicyViolationIndicator</code>.
