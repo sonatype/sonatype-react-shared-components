@@ -155,7 +155,11 @@ const pageConfig: PageConfig = {
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
     'Page Layout': PageLayoutPage,
-    'Viewport-Oriented Scrollable Sizing': ViewportOrientedScrollableSizingPage
+    'Viewport-Oriented Scrollable Sizing': {
+      Component: ViewportOrientedScrollableSizingPage,
+      pageMainClassName: 'gallery-viewport-oriented-scrollable-page',
+      disablePageScrolling: true
+    }
   },
   'JavaScript & TypeScript Utilities': {
     'TooltipConfigProps': TooltipConfigPropsPage,

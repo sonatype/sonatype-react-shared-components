@@ -7,4 +7,11 @@
 import {ComponentType} from 'react';
 
 export type PageConfig = Record<string, PageMapping>;
-export type PageMapping = Record<string, ComponentType>;
+
+export type PageMappingValue = ComponentType | {
+  Component: ComponentType;
+  pageMainClassName?: string;
+  disablePageScrolling?: boolean;
+};
+
+export type PageMapping = Record<string, PageMappingValue>;

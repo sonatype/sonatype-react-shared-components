@@ -11,10 +11,10 @@ import { ParsedQuery } from 'query-string';
  * implemented via classes on the <html> element. This feature exists so that visual tests
  * of all page layout modes can be done
  */
-export default function handleQueryParams(queryParams: ParsedQuery) {
+export default function handleQueryParams(queryParams: ParsedQuery, forceDisablePageScrolling = false) {
   const { classList } = document.documentElement;
 
-  if (queryParams.disablePageScrolling === 'true') {
+  if (queryParams.disablePageScrolling === 'true' || forceDisablePageScrolling) {
     classList.remove('nx-html--page-scrolling');
   }
   else {

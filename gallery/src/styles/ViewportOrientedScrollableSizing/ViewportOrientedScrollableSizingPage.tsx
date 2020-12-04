@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import RawHtmlExample from '../../RawHtmlExample';
 import CodeExample from '../../CodeExample';
 import { NxButton, NxModal } from '@sonatype/react-shared-components';
@@ -23,16 +23,6 @@ export default function ViewportOrientedScrollableSizingPage() {
       openScssSnippetModal = () => setScssSnippetModalOpen(true),
       closeHtmlSnippetModal = () => setHtmlSnippetModalOpen(false),
       closeScssSnippetModal = () => setScssSnippetModalOpen(false);
-
-  useEffect(function() {
-    document.documentElement.classList.remove('nx-html--page-scrolling');
-    document.getElementById('gallery-main')!.classList!.add('gallery-viewport-oriented-scrollable-page');
-
-    return function() {
-      document.documentElement.classList.add('nx-html--page-scrolling');
-      document.getElementById('gallery-main')!.classList!.remove('gallery-viewport-oriented-scrollable-page');
-    };
-  });
 
   return (
     <>
