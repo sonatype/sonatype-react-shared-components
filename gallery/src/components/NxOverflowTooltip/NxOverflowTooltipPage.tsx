@@ -10,6 +10,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxOverflowTooltipExample from './NxOverflowTooltipExample';
 import NxOverflowTooltipDynamicExample from './NxOverflowTooltipDynamicExample';
+import { NxWarningAlert } from '@sonatype/react-shared-components';
 
 const overflowTooltipsExampleCode = require('!!raw-loader!./NxOverflowTooltipExample').default;
 const overflowTooltipsDynamicExampleCode = require('!!raw-loader!./NxOverflowTooltipDynamicExample').default;
@@ -32,6 +33,13 @@ export default function NxOverflowTooltipPage() {
           a <code className="nx-code">title</code> may still be specified explicitly. Additionally,
           the <code className="nx-code">open</code> prop is not supported on this component.
         </p>
+        <NxWarningAlert>
+          Changes after initial render which affect size of the child element's content without affecting either the
+          child element's text or the child element's size will not be detected. For instance, if an icon is added
+          to the child, causing its content to overflow when it wasn't previously, or if the child's font size is
+          increased, causing it to overflow when it wasn't previously, those changes will not cause the tooltip to
+          activate. However, changes the child's size or to its text content are detected.
+        </NxWarningAlert>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Example on NxDropdown items"
