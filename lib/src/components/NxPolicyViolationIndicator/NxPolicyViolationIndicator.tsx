@@ -25,10 +25,10 @@ const NxPolicyViolationIndicator = forwardRef<HTMLDivElement, Props>(
           'unspecified',
 
           classNames = classnames(`nx-policy-violation-indicator nx-policy-violation-indicator--${category}`,
-            className),
+              className),
           label = `threat level ${category}`;
 
-    return (
+      return (
       <div className={classNames} ref={ref} {...attrs}>
         <span className="nx-policy-violation-indicator__badge">
           <NxFontAwesomeIcon aria-hidden={false}
