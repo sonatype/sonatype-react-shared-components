@@ -88,7 +88,8 @@ const NxListsExamples = () =>
                         id="nx-list-description-example"
                         htmlExample={NxListDescriptionCode}
                         codeExamples={NxListDescriptionCode}>
-      Basic <code className="nx-code">nx-list--description</code> with a heading.
+      Basic <code className="nx-code">nx-list--description</code> with a heading. Wrapping is demonstrated in both
+      the terms and the descriptions.
     </GalleryExampleTile>
   </>;
 
