@@ -234,7 +234,7 @@
   }
 }
 
-.nx-list--definition-list {
+.nx-list--description-list {
   .nx-list__item {
     display: flex;
   }
@@ -249,7 +249,7 @@
   width: 250px;
 }
 
-.nx-list__definition {
+.nx-list__description {
   @include container-vertical;
 
   margin-left: $nx-spacing-l;
