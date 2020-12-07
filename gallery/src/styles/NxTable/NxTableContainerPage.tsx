@@ -43,7 +43,7 @@ const NxTableContainerPage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-table-container</code></td>
             <td className="nx-cell">Element wrapping an <code className="nx-code">.nx-table</code></td>
             <td className="nx-cell">
-              Removes the border from the table itself and instead replicates on the container element. This allows
+              Removes the border from the table itself and instead replicates it on the container element. This allows
               layout patterns within the visually-apparent table that aren't supported
               on <code className="nx-code">&lt;table&gt;</code> itself.
             </td>
