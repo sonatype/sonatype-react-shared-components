@@ -56,7 +56,7 @@ export default function NxOverflowTooltipPage() {
                           id="nx-overflow-tooltip-dynamic-example"
                           codeExamples={overflowTooltipsDynamicExampleCode}
                           liveExample={NxOverflowTooltipDynamicExample}>
-        This example displays user-controllable text in an paragraph wrapped
+        This example displays user-controllable text in a paragraph wrapped
         in <code className="nx-code">NxOverflowTooltip</code>. Observe that the tooltip enables/disables
         appropriately as the text and/or container size (resizable by adjusting the browser window width) changes.
       </GalleryExampleTile>
