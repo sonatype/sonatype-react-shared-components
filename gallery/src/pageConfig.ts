@@ -47,6 +47,7 @@ import NxTreeViewMultiSelect from './components/NxTreeViewMultiSelect/NxTreeView
 import NxStatefulTreeViewMultiSelect
   from './components/NxStatefulTreeViewMultiSelect/NxStatefulTreeViewMultiSelectPage';
 import NxTooltipPage from './components/NxTooltip/NxTooltipPage';
+import NxOverflowTooltipPage from './components/NxOverflowTooltip/NxOverflowTooltipPage';
 import NxFilterInputPage from './components/NxFilterInput/NxFilterInputPage';
 import NxPolicyThreatSliderPage from './components/NxPolicyThreatSlider/NxPolicyThreatSliderPage';
 import NxDropdownPage from './components/NxDropdown/NxDropdownPage';
@@ -113,6 +114,7 @@ const pageConfig: PageConfig = {
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatIndicator: NxThreatIndicatorPage,
     NxTooltip: NxTooltipPage,
+    NxOverflowTooltip: NxOverflowTooltipPage,
     NxTreeView: NxTreeViewPage,
     NxTreeViewMultiSelect: NxTreeViewMultiSelect,
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
