@@ -64,7 +64,7 @@ describe('NxAccordion', function() {
   });
 
   describe('Header', function() {
-    it('renders the NxAccordion.Header as a <summary>', function() {
+    it('renders the NxAccordion.Header as a <summary> containing a nx-accordion__summary-wrapper', function() {
       const component = getMountedComponent({
             children: (
               <NxAccordion.Header id="headerId">
@@ -72,11 +72,13 @@ describe('NxAccordion', function() {
               </NxAccordion.Header>
             )
           }),
-          header = component.find('summary');
+          header = component.find('summary'),
+          wrapper = header.children();
 
       expect(header).toExist();
       expect(header).toMatchSelector('#headerId');
-      expect(header).toContainReact(<span>Foo</span>);
+      expect(wrapper).toHaveClassName('nx-accordion__summary-wrapper');
+      expect(wrapper).toContainReact(<span>Foo</span>);
     });
 
     it('sets the nx-accordion__header class along with any provided className on the header', function() {
@@ -96,7 +98,7 @@ describe('NxAccordion', function() {
           .toHaveClassName('nx-accordion__header');
     });
 
-    it('renders an icon with nx-accordion__chevron class as the first child of the header', function() {
+    it('renders an icon with nx-accordion__chevron class as the first child of the header wrapper', function() {
       const component = getMountedComponent({
             children: (
               <NxAccordion.Header>
@@ -107,13 +109,13 @@ describe('NxAccordion', function() {
               </NxAccordion.Header>
             )
           }),
-          header = component.find('summary');
+          wrapper = component.find('summary').children();
 
-      expect(header.children().first()).toMatchSelector(NxFontAwesomeIcon);
-      expect(header.children().at(1)).toMatchSelector('span');
-      expect(header.children().last()).toMatchSelector('div');
+      expect(wrapper.children().first()).toMatchSelector(NxFontAwesomeIcon);
+      expect(wrapper.children().at(1)).toMatchSelector('span');
+      expect(wrapper.children().last()).toMatchSelector('div');
 
-      expect(header.find(NxFontAwesomeIcon)).toHaveClassName('nx-accordion__chevron');
+      expect(wrapper.find(NxFontAwesomeIcon)).toHaveClassName('nx-accordion__chevron');
     });
 
     it('uses faChevronCircleDown as the icon when the accordion is closed', function() {
