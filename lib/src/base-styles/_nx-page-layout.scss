@@ -74,6 +74,10 @@
     overflow: visible;
   }
 
+  .nx-page {
+    min-width: $nx-page-width-min - $nx-scrollbar-width;
+  }
+
   .nx-page-header {
     position: fixed;
     top: 0;

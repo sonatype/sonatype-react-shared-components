@@ -89,6 +89,10 @@ module.exports = function(env = { production: false }) {
     devServer: {
       port: 4043,
       host: '0.0.0.0',
+
+      // needed for browserstack testing with Safari to work. Not considered a security risk because nothing
+      // served here is sensitive and there is no server-side state to be at risk of changing.
+      disableHostCheck: true,
       publicPath: '/',
       contentBase: path.join(__dirname, 'src')
     }
