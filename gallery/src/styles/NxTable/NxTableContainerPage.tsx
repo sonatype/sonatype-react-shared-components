@@ -21,8 +21,8 @@ const NxTableContainerPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        Some table layouts require an extra wrapper element outside of
-        the <code className="nx-code">&lt;table&gt;</code> proper, but still stylistcally part of the table.
+        Some table layouts require an extra wrapper element around
+        the <code className="nx-code">&lt;table&gt;</code> proper, that appears visually as part of the table.
         For these situations, a wrapper element using the <code className="nx-code">.nx-table-container</code> class
         can be constructed around the table. This setup is needed for the following functionality:
       </p>
