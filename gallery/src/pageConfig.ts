@@ -25,6 +25,7 @@ import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
 import NxTableStylePage from './styles/NxTable/NxTableStylePage';
+import NxTableContainerPage from './styles/NxTable/NxTableContainerPage';
 import NxAlertComponentsPage from './components/NxAlert/NxAlertPage';
 import NxStatefulAlertComponentsPage from './components/NxStatefulAlert/NxStatefulAlertPage';
 import NxContainerHelpersPage from './styles/NxContainerHelpers/NxContainerHelpersPage';
@@ -47,6 +48,7 @@ import NxTreeViewMultiSelect from './components/NxTreeViewMultiSelect/NxTreeView
 import NxStatefulTreeViewMultiSelect
   from './components/NxStatefulTreeViewMultiSelect/NxStatefulTreeViewMultiSelectPage';
 import NxTooltipPage from './components/NxTooltip/NxTooltipPage';
+import NxOverflowTooltipPage from './components/NxOverflowTooltip/NxOverflowTooltipPage';
 import NxFilterInputPage from './components/NxFilterInput/NxFilterInputPage';
 import NxPolicyThreatSliderPage from './components/NxPolicyThreatSlider/NxPolicyThreatSliderPage';
 import NxDropdownPage from './components/NxDropdown/NxDropdownPage';
@@ -113,6 +115,7 @@ const pageConfig: PageConfig = {
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatIndicator: NxThreatIndicatorPage,
     NxTooltip: NxTooltipPage,
+    NxOverflowTooltip: NxOverflowTooltipPage,
     NxTreeView: NxTreeViewPage,
     NxTreeViewMultiSelect: NxTreeViewMultiSelect,
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
@@ -139,7 +142,7 @@ const pageConfig: PageConfig = {
     'nx-page-title': NxPageTitlePage,
     'nx-form-select': NxFormSelectPage,
     'nx-table': NxTableStylePage,
-    //'nx-text-input': NxTextInputStylesPage,
+    'nx-table-container': NxTableContainerPage,
     'nx-threat-number': NxThreatNumberPage,
     'nx-tile': NxTilePage
   },

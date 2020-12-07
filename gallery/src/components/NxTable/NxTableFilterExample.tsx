@@ -70,8 +70,8 @@ const NxTableFilterExample = () => {
   };
 
   return (
-    <div className="nx-scrollable nx-scrollable--table-container">
-      <NxTable className="nx-table nx-table--scrollable">
+    <div className="nx-scrollable nx-table-container">
+      <NxTable className="nx-table">
         <NxTableHead>
           <NxTableRow>
             <NxTableCell>Name</NxTableCell>

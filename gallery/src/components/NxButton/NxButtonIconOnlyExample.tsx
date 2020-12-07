@@ -11,9 +11,11 @@ import { NxButton, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 const NxButtonIconOnlyExample = () =>
   <div className="nx-btn-bar">
-    <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faExclamationTriangle}/></NxButton>
-    <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit}/></NxButton>
-    <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faSave}/></NxButton>
+    <NxButton variant="icon-only" aria-label="alert">
+      <NxFontAwesomeIcon icon={faExclamationTriangle}/>
+    </NxButton>
+    <NxButton variant="icon-only" aria-label="edit"><NxFontAwesomeIcon icon={faEdit}/></NxButton>
+    <NxButton variant="icon-only" aria-label="save"><NxFontAwesomeIcon icon={faSave}/></NxButton>
   </div>;
 
 export default NxButtonIconOnlyExample;
