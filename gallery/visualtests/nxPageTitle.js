@@ -17,7 +17,7 @@ describe('nx-page-title', function() {
 
   it('looks right', simpleTest(simplePageTitle));
 
-  it('looks right', simpleTest(actionsPageTitle));
+  it('looks right with actions', simpleTest(actionsPageTitle));
 
-  it('looks right', simpleTest(policyViolationIndicatorPageTitle));
+  it('looks right with policy violation indicator', simpleTest(policyViolationIndicatorPageTitle));
 });
