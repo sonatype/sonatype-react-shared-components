@@ -1,0 +1,32 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+.nx-page-main--viewport-sized-scrollable {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+.nx-viewport-sized-scrollable-parent {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  overflow-y: hidden;
+}
+
+.nx-viewport-sized-scrollable-parent--growable {
+  flex-grow: 1;
+
+  > .nx-viewport-sized-scrollable {
+    flex-grow: 1;
+  }
+}
+
+.nx-viewport-sized-scrollable {
+  flex-shrink: 1;
+  max-height: unset;
+}
