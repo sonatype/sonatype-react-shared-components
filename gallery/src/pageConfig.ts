@@ -77,8 +77,7 @@ import NxNexusPageHeaderPage from './components/NxNexusPageHeader/NxNexusPageHea
 import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
 import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
-import ViewportOrientedScrollableSizingPage
-  from './styles/ViewportOrientedScrollableSizing/ViewportOrientedScrollableSizingPage';
+import NxViewportSizedScrollablePage from './styles/NxViewportSizedScrollable/NxViewportSizedScrollablePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -150,16 +149,12 @@ const pageConfig: PageConfig = {
     'nx-clickable': NxClickablePage,
     'nx-container-helpers': NxContainerHelpersPage,
     'nx-scrollable': NxScrollablePage,
-    'nx-truncate-ellipsis': NxTruncatePage
+    'nx-truncate-ellipsis': NxTruncatePage,
+    'nx-viewport-sized-scrollable': NxViewportSizedScrollablePage
   },
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
-    'Page Layout': PageLayoutPage,
-    'Viewport-Oriented Scrollable Sizing': {
-      Component: ViewportOrientedScrollableSizingPage,
-      pageMainClassName: 'gallery-viewport-oriented-scrollable-page',
-      disablePageScrolling: true
-    }
+    'Page Layout': PageLayoutPage
   },
   'JavaScript & TypeScript Utilities': {
     'TooltipConfigProps': TooltipConfigPropsPage,

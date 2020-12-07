@@ -21,6 +21,8 @@ import GalleryNav from './GalleryNav';
 import Home from './pages/Home';
 import handleQueryParams from './handleQueryParams';
 
+import ViewportSizedScrollableExample from './styles/NxViewportSizedScrollable/NxViewportSizedScrollableExample';
+
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
 function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
@@ -64,6 +66,9 @@ function Application() {
         <Switch>
           <Route path="/pages/:pageName" component={Page} />
           <Route exact path="/" component={Page} />
+
+          {/* Special case, the example needs its own page separate from its documentation */}
+          <Route exact path="/ViewportSizedScrollableExample" component={ViewportSizedScrollableExample} />
           <Redirect to="/" />
         </Switch>
       </div>
