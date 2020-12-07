@@ -26,11 +26,12 @@ describe('NxOverflowTooltip', function() {
       dynamicExampleTooltipTargetSelector = `${dynamicExampleSelector} .gallery-example-live .nx-p`,
       tooltipSelector = '.nx-tooltip';
       maxBeforeOverflowStr =
-          'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW';
+          'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW';
 
   async function openDropdownAndHoverButton(btnSelector) {
     const dropdownEl = await browser.$(dropdownSelector);
 
+    await dropdownEl.scrollIntoView({ block: 'center' });
     await dropdownEl.click();
 
     const btnEl = await browser.$(btnSelector);
@@ -97,6 +98,7 @@ describe('NxOverflowTooltip', function() {
 
         await inputEl.setValue(maxBeforeOverflowStr);
 
+        await browser.pause(1000); // tooltip takes a bit to go away
         expect(await tooltipEl.isExisting()).toBe(false);
       }
   );
