@@ -1,0 +1,28 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-variables';
+
+// calculates the content-box height of a nx-table-container with the given numbers of rows and headers along
+// with a pagination footer.
+// Useful for calculating the static heights of paging tables where you want the table to perfectly fit a full
+// page.
+// NOTE: only works if rows display the standard single line of text. Wrapping text within a row, or any other larger
+// content, will increase the height of the row and prevent this calculation from being accurate.
+@function pagination-table-height($body-row-count, $header-filter-row-count: 0, $header-row-count: 1) {
+  $body-row-height: $nx-table-cell-min-height;
+  $header-row-height: $nx-table-cell-header-height;
+
+  // 42 is the effective height of a text input
+  $header-filter-row-height: 42px + ($nx-table-cell-vertical-padding * 2) + 1px;
+  $footer-height: $nx-pagination-button-height + ($nx-table-footer-vertical-padding * 2) + 1px;
+
+  @return ($body-row-count - 1) * ($body-row-height + 1px) + // extra 1px for border
+      ($body-row-height) + // last row doesn't have border
+      $header-row-count * $header-row-height +
+      $header-filter-row-height * $header-filter-row-count +
+      $footer-height;
+}

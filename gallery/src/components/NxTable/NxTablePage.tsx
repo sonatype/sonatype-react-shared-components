@@ -24,15 +24,33 @@ import NxTableErrorExample from './NxTableErrorExample';
 import NxTableEmptyExample from './NxTableEmptyExample';
 import NxTableMetaInfoExample from './NxTableMetaInfoExample';
 import NxTableFilterExample from './NxTableFilterExample';
+import NxTablePaginationExample from './NxTablePaginationExample';
+import NxTablePaginationFilterExample from './NxTablePaginationFilterExample';
 
 const tableSimpleExampleCode = require('!!raw-loader!./NxTableSimpleExample').default;
 const tableClickableExample = require('!!raw-loader!./NxTableClickableExample').default;
 const tableSortableExample = require('!!raw-loader!./NxTableSortableExample').default;
 const tableFilterExample = require('!!raw-loader!./NxTableFilterExample').default;
+const tablePaginationExample = require('!!raw-loader!./NxTablePaginationExample').default;
+const tablePaginationFilterExample = require('!!raw-loader!./NxTablePaginationFilterExample').default;
+const tablePaginationScss = require('!!raw-loader!./NxTablePaginationExample.scss').default;
+const tablePaginationFilterScss = require('!!raw-loader!./NxTablePaginationFilterExample.scss').default;
 const tableLoadingExample = require('!!raw-loader!./NxTableLoadingExample').default;
 const tableErrorExample = require('!!raw-loader!./NxTableErrorExample').default;
 const tableEmptyExample = require('!!raw-loader!./NxTableEmptyExample').default;
 const tableMetaInfoExample = require('!!raw-loader!./NxTableMetaInfoExample').default;
+
+import './NxTablePaginationExample.scss';
+import './NxTablePaginationFilterExample.scss';
+
+const paginationCodeExamples = [
+      tablePaginationExample,
+      { content: tablePaginationScss, language: 'scss'}
+    ],
+    paginationFilterCodeExamples = [
+      tablePaginationFilterExample,
+      { content: tablePaginationFilterScss, language: 'scss'}
+    ];
 
 export default function NxTablePage() {
   return (
@@ -250,10 +268,66 @@ export default function NxTablePage() {
             </NxTableBody>
           </NxTable>
         </section>
+        <section className="nx-tile-subsection">
+          <header className="nx-tile-subsection__header">
+            <h3 className="nx-h3">SCSS Helper Functions</h3>
+          </header>
+          <p className="nx-p">
+            When constructing a table of paginated data, it is often the case that the table is intended to be exactly
+            tall enough to contain one full page's worth of rows, even when on the last page, which may contain fewer
+            rows. Achieving this effect requires setting an explicit height on the table container element that is
+            equal to the height that it would implicitly get when full. Calculating this height however is
+            somewhat complex, requiring summing up the heights of the various table elements in play. Therefore
+            RSC provides a SCSS helper function which will return the height of
+            the <code className="nx-code">.nx-table-container</code>'s content box for a paginated table with the
+            given parameters. The function, located in
+            the <code className="nx-code">scss-shared/_nx-table-helpers.scss</code> file, is named
+            <code className="nx-code">pagination-table-height</code>. See the description of its parameters below.
+          </p>
+          <NxTable>
+            <NxTableHead>
+              <NxTableRow>
+                <NxTableCell>Name</NxTableCell>
+                <NxTableCell>Required</NxTableCell>
+                <NxTableCell>Default Value</NxTableCell>
+                <NxTableCell>Description</NxTableCell>
+              </NxTableRow>
+            </NxTableHead>
+            <NxTableBody>
+              <NxTableRow>
+                <NxTableCell><code className="nx-code">$body-row-count</code></NxTableCell>
+                <NxTableCell>Yes</NxTableCell>
+                <NxTableCell>N/A</NxTableCell>
+                <NxTableCell>
+                  The number of rows of content that the table body should have room for. This assumes that each
+                  row contains only a single line of text. Wrapping text or other elements that expand the size
+                  of any row will throw off the calculation.
+                </NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell><code className="nx-code">$header-filter-row-count</code></NxTableCell>
+                <NxTableCell>No</NxTableCell>
+                <NxTableCell>0</NxTableCell>
+                <NxTableCell>
+                  The number of filter header rows on the table.
+                </NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
+                <NxTableCell><code className="nx-code">$header-row-count</code></NxTableCell>
+                <NxTableCell>No</NxTableCell>
+                <NxTableCell>1</NxTableCell>
+                <NxTableCell>
+                  The number of standard header rows on the table. This number should not include the count of any
+                  filter header rows.
+                </NxTableCell>
+              </NxTableRow>
+            </NxTableBody>
+          </NxTable>
+        </section>
 
         <p className="nx-p">
           For guidance on the construction of a scrolling table, see the scrolling example on
-          the <code className="nx-code">nx-table</code> HTML element page.
+          the <code className="nx-code">nx-table-container</code> HTML element page.
         </p>
       </GalleryDescriptionTile>
 
@@ -282,10 +356,27 @@ export default function NxTablePage() {
                           liveExample={NxTableFilterExample}
                           codeExamples={tableFilterExample}>
         An example with filter columns.
-        The first column has a basic filter input, the rows will be filteredx
+        The first column has a basic filter input, the rows will be filtered
         if any name contains the text provided in the input.
         The second column has a filter input which provides a suggestion capability, the rows will be filtered
         when the country contains the text provided in the input.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Pagination Example"
+                          id="nx-table-pagination-example"
+                          liveExample={NxTablePaginationExample}
+                          codeExamples={paginationCodeExamples}>
+        An example of a table with an <code className="nx-code">NxPagination</code> component in the footer to control
+        paging.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Pagination and Filtering Example"
+                          id="nx-table-pagination-filter-example"
+                          liveExample={NxTablePaginationFilterExample}
+                          codeExamples={paginationFilterCodeExamples}>
+        An example of a table with an <code className="nx-code">NxPagination</code> component in the footer to control
+        paging as well as a row of filter headers. Demonstrates the use of
+        the <code className="nx-code">pagination-table-height</code> SCSS function when a filter row is present.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Loading Example"

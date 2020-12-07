@@ -60,3 +60,10 @@ $nx-submit-mask-z-index: 10;
 $nx-modal-backdrop-z-index: 1050;
 
 $nx-focus-box-shadow: 0 0 3px 1px transparentize(#02a6d9, 0.7);
+
+$nx-table-cell-header-height: 48px;
+$nx-table-cell-vertical-padding: $nx-spacing-sm;
+$nx-table-cell-min-height: 48px; //content box only
+$nx-table-footer-vertical-padding: $nx-spacing-l;
+
+$nx-pagination-button-height: 40px;
