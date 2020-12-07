@@ -38,7 +38,7 @@ export default function NxOverflowTooltipPage() {
           child element's text or the child element's size will not be detected. For instance, if an icon is added
           to the child, causing its content to overflow when it wasn't previously, or if the child's font size is
           increased, causing it to overflow when it wasn't previously, those changes will not cause the tooltip to
-          activate. However, changes the child's size or to its text content are detected.
+          activate. However, changes to the child's size or to its text content are detected.
         </NxWarningAlert>
       </GalleryDescriptionTile>
 
