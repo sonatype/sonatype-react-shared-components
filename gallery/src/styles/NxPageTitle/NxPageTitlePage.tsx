@@ -11,6 +11,7 @@ import CodeExample from '../../CodeExample';
 import RawHtmlExample from '../../RawHtmlExample';
 
 const nxPageTitleCode = require('!!raw-loader!./NxPageTitleExample.html').default;
+const nxPageTitleActionsCode = require('!!raw-loader!./NxPageTitleActionsExample.html').default;
 
 const NxPageTitlePage = () =>
   <>
@@ -61,6 +62,9 @@ const NxPageTitlePage = () =>
 
     <RawHtmlExample html={nxPageTitleCode} />
     <CodeExample content={nxPageTitleCode} />
+
+    <RawHtmlExample html={nxPageTitleActionsCode} />
+    <CodeExample content={nxPageTitleActionsCode} />
   </>;
 
 export default NxPageTitlePage;
