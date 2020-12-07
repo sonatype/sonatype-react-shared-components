@@ -18,5 +18,4 @@ const NxTooltipWrappingExample = () =>
     <NxButton>Foo</NxButton>
   </NxTooltip>;
 
-
 export default NxTooltipWrappingExample;
