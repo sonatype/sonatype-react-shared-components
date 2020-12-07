@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "npm-run-all -p lint compile-ts compile-scss copy-scss copy-package-json copy-assets",
-    "watch": "npm-run-all -p compile-ts-watch compile-scss-watch copy-scss-watch copy-package-json-watch copy-assets-watch",
+    "watch": "npm-run-all -p lint compile-ts-watch compile-scss-watch copy-scss-watch copy-package-json-watch copy-assets-watch",
     "lint": "eslint --ignore-pattern __tests__ --ignore-pattern __mocks__ --ignore-pattern __testutils__ 'src/**/*.{js,ts}{,x}'",
     "lint-tests": "eslint -c .eslintrc-tests 'src/**/{__tests__,__mocks__,__testutils__}/**/*.{js,ts}{,x}'",
     "compile-ts": "tsc --project tsconfig.build.json",
