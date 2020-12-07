@@ -5,10 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-text-helpers';
 
 .nx-tooltip {
   // for specificity
   &.MuiTooltip-tooltip {
+    @include semi-bold;
+
     box-sizing: border-box;
     background-color: $nx-grey-1000;
     border-radius: $nx-border-radius;
