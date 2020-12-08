@@ -26,6 +26,10 @@ describe('NxAccordion', function() {
       const header = await browser.$(headerSelector);
       await header.scrollIntoView({ block: 'center' });
       await header.click();
+
+      // this example header has a click handler that opens an alert
+      await browser.acceptAlert();
+
       await browser.execute(function(el) {
         el.blur();
       }, header);
