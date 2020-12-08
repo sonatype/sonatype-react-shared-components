@@ -8,7 +8,9 @@ import React from 'react';
 import CodeExample from '../../CodeExample';
 
 const NxViewportSizedScrollableExample =
-      require('!!raw-loader!./NxViewportSizedScrollableExample.tsx').default;
+      require('!!raw-loader!./NxViewportSizedScrollableExample.tsx').default,
+    NxViewportSizedScrollableGrowableExample =
+      require('!!raw-loader!./NxViewportSizedScrollableGrowableExample.tsx').default;
 
 export default function NxViewportOrientedScrollableSizingPage() {
   return (
@@ -66,19 +68,44 @@ export default function NxViewportOrientedScrollableSizingPage() {
       <section className="nx-tile">
         <header className="nx-tile-header">
           <div className="nx-tile-header__title">
-            <h2 className="nx-h2">Example</h2>
+            <h2 className="nx-h2">Typical Example</h2>
           </div>
         </header>
         <div className="nx-tile-content">
           <p className="nx-p">
             Demonstrating a viewport-sized-scrollable requires that the other content on the page is small enough to
             give the scrollable adequate vertical space at any supported resolution. Therefore, while the code
-            snippets are displayed below, the actual live example is a separate page.{' '}
+            snippets are displayed below, the actual live example is a separate page.
+          </p>
+          <p className="nx-p">
             <a className="nx-text-link" href="#/ViewportSizedScrollableExample">
               Click here to navigate to the live example.
             </a>
           </p>
           <CodeExample content={NxViewportSizedScrollableExample} />
+        </div>
+      </section>
+
+      <section className="nx-tile">
+        <header className="nx-tile-header">
+          <div className="nx-tile-header__title">
+            <h2 className="nx-h2">Growable Example</h2>
+          </div>
+        </header>
+        <div className="nx-tile-content">
+          <p className="nx-p">
+            By default, viewport-sized-scrollables will only shrink to fit the viewport. If they are naturally shorter
+            than the available space, they will not grow to fill it. If it is desired for a viewport-sized-scrollable
+            to also grow to fit the available space,
+            the <code className="nx-code">.nx-viewport-sized-scrollable-parent--growable</code> class can be added
+            to its ancestors. Follow the linke below to see an example.
+          </p>
+          <p className="nx-p">
+            <a className="nx-text-link" href="#/ViewportSizedScrollableGrowableExample">
+              Click here to navigate to the live example.
+            </a>
+          </p>
+          <CodeExample content={NxViewportSizedScrollableGrowableExample} />
         </div>
       </section>
     </>

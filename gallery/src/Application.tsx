@@ -22,6 +22,8 @@ import Home from './pages/Home';
 import handleQueryParams from './handleQueryParams';
 
 import ViewportSizedScrollableExample from './styles/NxViewportSizedScrollable/NxViewportSizedScrollableExample';
+import ViewportSizedScrollableGrowableExample
+  from './styles/NxViewportSizedScrollable/NxViewportSizedScrollableGrowableExample';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
@@ -67,8 +69,11 @@ function Application() {
           <Route path="/pages/:pageName" component={Page} />
           <Route exact path="/" component={Page} />
 
-          {/* Special case, the example needs its own page separate from its documentation */}
+          {/* Special cases, these examples need their own page separate from their documentation */}
           <Route exact path="/ViewportSizedScrollableExample" component={ViewportSizedScrollableExample} />
+          <Route exact
+                 path="/ViewportSizedScrollableGrowableExample"
+                 component={ViewportSizedScrollableGrowableExample} />
           <Redirect to="/" />
         </Switch>
       </div>
