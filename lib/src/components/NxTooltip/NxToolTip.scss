@@ -4,14 +4,28 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-colors';
+@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-text-helpers';
 
 .nx-tooltip {
+  // for specificity
+  &.MuiTooltip-tooltip {
+    @include semi-bold;
+
+    box-sizing: border-box;
+    background-color: $nx-grey-1000;
+    border-radius: $nx-border-radius;
+    font-size: $nx-font-size-s;
+    line-height: $nx-line-height;
+    max-width: 600px;
+    padding: $nx-spacing-xs $nx-spacing-md;
+  }
+
   &.MuiTooltip-tooltipPlacementTop, &.MuiTooltip-tooltipPlacementBottom {
-    margin: 6px 0;
+    margin: $nx-spacing-xs 0;
   }
   &.MuiTooltip-tooltipPlacementRight, &.MuiTooltip-tooltipPlacementLeft {
-    margin: 0 6px;
+    margin: 0 $nx-spacing-xs;
   }
 
   &.nx-tooltip--validation-error {
