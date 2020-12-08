@@ -12,6 +12,15 @@
 }
 
 .nx-viewport-sized-scrollable-parent {
+  > * {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 100%;
+  }
+}
+
+// note: it is important that these properties appear below the nested block above for specificity reasons
+.nx-viewport-sized-scrollable-parent {
   display: flex;
   flex-direction: column;
   flex-shrink: 1;
