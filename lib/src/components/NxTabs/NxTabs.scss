@@ -57,7 +57,7 @@
     border-bottom-width: 1px;
     box-shadow: $nx-focus-box-shadow;
     margin-bottom: 0;
-    outline: solid 1px #02a6d9;
+    outline: solid 1px $nx-focus-border-color;
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
