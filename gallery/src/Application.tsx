@@ -21,8 +21,8 @@ import GalleryNav from './GalleryNav';
 import Home from './pages/Home';
 import handleQueryParams from './handleQueryParams';
 
-import ViewportSizedScrollableExample from './styles/NxViewportSizedScrollable/NxViewportSizedScrollableExample';
-import ViewportSizedScrollableGrowableExample
+import NxViewportSizedScrollableExample from './styles/NxViewportSizedScrollable/NxViewportSizedScrollableExample';
+import NxViewportSizedScrollableGrowableExample
   from './styles/NxViewportSizedScrollable/NxViewportSizedScrollableGrowableExample';
 import SectionScrollingWrapper from './styles/NxViewportSizedScrollable/SectionScrollingWrapper';
 
@@ -71,14 +71,14 @@ function Application() {
           <Route exact path="/" component={Page} />
 
           {/* Special cases, these examples need their own page separate from their documentation */}
-          <Route exact path="/ViewportSizedScrollableExample">
+          <Route exact path="/NxViewportSizedScrollableExample">
             <SectionScrollingWrapper>
-              <ViewportSizedScrollableExample />
+              <NxViewportSizedScrollableExample />
             </SectionScrollingWrapper>
           </Route>
-          <Route exact path="/ViewportSizedScrollableGrowableExample">
+          <Route exact path="/NxViewportSizedScrollableGrowableExample">
             <SectionScrollingWrapper>
-              <ViewportSizedScrollableGrowableExample />
+              <NxViewportSizedScrollableGrowableExample />
             </SectionScrollingWrapper>
           </Route>
           <Redirect to="/" />

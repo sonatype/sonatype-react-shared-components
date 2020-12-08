@@ -156,7 +156,7 @@ export default function NxViewportOrientedScrollableSizingPage() {
             snippets are displayed below, the actual live example is a separate page.
           </p>
           <p className="nx-p">
-            <a className="nx-text-link" href="#/ViewportSizedScrollableExample">
+            <a className="nx-text-link" href="#/NxViewportSizedScrollableExample">
               Click here to navigate to the live example.
             </a>
           </p>
@@ -179,7 +179,7 @@ export default function NxViewportOrientedScrollableSizingPage() {
             to its ancestors. Follow the link below to see an example.
           </p>
           <p className="nx-p">
-            <a className="nx-text-link" href="#/ViewportSizedScrollableGrowableExample">
+            <a className="nx-text-link" href="#/NxViewportSizedScrollableGrowableExample">
               Click here to navigate to the live example.
             </a>
           </p>
