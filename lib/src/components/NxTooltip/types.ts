@@ -6,6 +6,7 @@
  */
 import { ReactElement, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
+import { omit } from 'ramda';
 
 const tooltipPlacements = ['top', 'bottom', 'left', 'right', 'top-end', 'bottom-end'] as const;
 
@@ -21,6 +22,8 @@ export interface Props {
   children: ReactElement;
 }
 
+export type OverflowTooltipProps = Omit<Props, 'open'>;
+
 export const propTypes: PropTypes.ValidationMap<Props> = {
   className: PropTypes.string,
   onOpen: PropTypes.func,
@@ -29,3 +32,5 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   placement: PropTypes.oneOf(tooltipPlacements),
   title: PropTypes.node
 };
+
+export const overflowTooltipPropTypes = omit(['open'], propTypes);
