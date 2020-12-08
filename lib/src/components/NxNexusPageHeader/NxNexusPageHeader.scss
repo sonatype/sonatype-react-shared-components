@@ -95,7 +95,7 @@
     padding-bottom: $nx-spacing-xs;
 
     &:active, &.nx-page-header__link--current {
-      border-bottom-color: #00a1e2;
+      border-bottom-color:$nx-teal-400;
     }
   }
 
