@@ -5,7 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useEffect } from 'react';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxBackButton }
+  from '@sonatype/react-shared-components';
 
 export default function NxViewportSizedScrollableExample() {
   useEffect(function() {
@@ -18,6 +19,7 @@ export default function NxViewportSizedScrollableExample() {
 
   return (
     <main className="nx-page-main nx-page-main--viewport-sized-scrollable">
+      <NxBackButton targetPageTitle="Nx-viewport-sized-scrollable Docs" href="#/pages/nx-viewport-sized-scrollable"/>
       <section className="nx-tile nx-viewport-sized-scrollable-parent">
         <header className="nx-tile-header">
           <div className="nx-tile-header__title">
