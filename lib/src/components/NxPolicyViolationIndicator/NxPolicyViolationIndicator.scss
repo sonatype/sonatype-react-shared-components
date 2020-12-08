@@ -1,0 +1,67 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-text-helpers';
+
+.nx-policy-violation-indicator {
+  --policy-indicator-highlight-color: #{$nx-threat-color-unspecified};
+  align-items: center;
+  border: 1px solid var(--policy-indicator-highlight-color);
+  border-radius: $nx-border-radius;
+  display: inline-flex;
+  height: 30px;
+  margin: 0 0 $nx-spacing-xs $nx-spacing-md;
+  overflow: hidden;
+  width: max-content;
+  max-width: 100%;
+}
+
+.nx-policy-violation-indicator__badge {
+  align-self: stretch;
+  align-items: center;
+  background-color: var(--policy-indicator-highlight-color);
+  display: inline-flex;
+
+  .nx-icon {
+    color: #fff;
+  }
+}
+
+.nx-policy-violation-indicator__text {
+  @include semi-bold();
+  @include nx-truncate-ellipsis;
+
+  font-size: $nx-font-size-s;
+  margin: 0 $nx-spacing-md;
+  text-transform: uppercase;
+  // max width of element from design is 859px, subtract the badge, the padding, and the borders.
+  max-width: 793px;
+}
+
+.nx-policy-violation-indicator--unspecified {
+  --policy-indicator-highlight-color: #{$nx-threat-color-unspecified};
+}
+
+.nx-policy-violation-indicator--none {
+  --policy-indicator-highlight-color: #{$nx-threat-color-none};
+}
+
+.nx-policy-violation-indicator--low {
+  --policy-indicator-highlight-color: #{$nx-threat-color-low};
+}
+
+.nx-policy-violation-indicator--moderate {
+  --policy-indicator-highlight-color: #{$nx-threat-color-moderate};
+}
+
+.nx-policy-violation-indicator--severe {
+  --policy-indicator-highlight-color: #{$nx-threat-color-severe};
+}
+
+.nx-policy-violation-indicator--critical {
+  --policy-indicator-highlight-color: #{$nx-threat-color-critical};
+}

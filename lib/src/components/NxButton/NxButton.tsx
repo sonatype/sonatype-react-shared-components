@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { forwardRef } from 'react';
+import { includes } from 'ramda';
 import classnames from 'classnames';
 
 import {Props, propTypes} from './types';
@@ -16,8 +17,15 @@ const NxButton = forwardRef<HTMLButtonElement, Props>(
         [`nx-btn--${variant}`]: variant && variant !== 'secondary',
         'nx-btn--inline': inline
       });
+      return (
+        <button aria-disabled={includes('disabled', classNames) ? true : undefined}
+                ref={ref}
+                className={classNames}
+                {...attrs}>
+          {children}
+        </button>
+      );
 
-      return <button ref={ref} className={classNames} {...attrs}>{children}</button>;
     }
 );
 

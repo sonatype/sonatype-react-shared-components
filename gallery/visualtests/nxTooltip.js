@@ -17,7 +17,7 @@ describe('NxTooltip', function() {
       secondBtnSelector = `${selector} button:nth-child(2)`,
 
       // expected distance from top of element to the top of its tooltip
-      tooltipHeightOffset = 30;
+      tooltipHeightOffset = 45;
 
   it('looks right', async function() {
     const [btnBarElement, firstBtnElement] = await Promise.all([browser.$(selector), browser.$(firstBtnSelector)]);

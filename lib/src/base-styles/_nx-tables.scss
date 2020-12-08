@@ -5,13 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
- /*
-  #Tables
-*/
-
-// table cell header
-$nx-table-cell-header-height: 48px;
-
 .nx-table {
   border-spacing: 0;
   border: 1px solid #d1d6f0;
@@ -30,7 +23,7 @@ $nx-table-cell-header-height: 48px;
       border-style: none;
 
       border-bottom-style: solid;
-      border-bottom-color: #e9e9e9;
+      border-bottom-color: $nx-grey-200;
       border-top-style: solid;
 
       // we want the perceived padding to be the standard spacing size. As the top border is generally invisible,
@@ -100,43 +93,78 @@ $nx-table-cell-header-height: 48px;
   }
 }
 
-.nx-table--scrollable {
-  border-style: none;
-  border-radius: 0;
-  overflow: visible;
+.nx-table-container {
+  border: 1px solid #d1d6f0;
+  border-radius: $nx-border-radius;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
-  // In Chrome (at least), tables are forced to have a whole number of pixels for their width. This means that
-  // if a container has a fractional number of pixels width, the table width will be truncated down and a visible
-  // gap will appear.  This calc ensures that when in a fractional-width container, the table will get an extra
-  // pixel of width
-  width: calc(100% + 0.9999px);
-
-  > thead > :first-child, > tbody > :last-child, {
-    > .nx-cell {
-      &:first-child, &:last-child {
-        border-radius: 0;
-      }
-    }
-  }
-
-  // create a stacking context so the headers don't appear over other content outside the table
+  // create a stacking context so the sticky content doesn't appear over other content outside the container
   position: relative;
   z-index: 0;
 
-  .nx-cell--header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+  // for specificity
+  &.nx-scrollable {
+    overflow-y: auto;
+  }
+
+  // NOTE: these styles used to be on .nx-table--scrollable
+  > .nx-table {
+    border-style: none;
+    border-radius: 0;
+    margin: 0;
+    overflow: visible;
+
+    // In Chrome (at least), tables are forced to have a whole number of pixels for their width. This means that
+    // if a container has a fractional number of pixels width, the table width will be truncated down and a visible
+    // gap will appear.  This calc ensures that when in a fractional-width container, the table will get an extra
+    // pixel of width
+    width: calc(100% + 0.9999px);
+
+    > thead > :first-child, > tbody > :last-child {
+      > .nx-cell {
+        &:first-child, &:last-child {
+          border-radius: 0;
+        }
+      }
+    }
+
+    .nx-cell--header {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
   }
 }
 
-.nx-table-row--filter-header {
-  > .nx-cell--header {
-    top: $nx-table-cell-header-height;
-  }
+// deprecated
+.nx-scrollable--table-container {
+  @extend .nx-table-container;
+}
 
-  .nx-filter-input {
-    width: 250px;
+.nx-table-container__footer {
+  @include container-vertical;
+
+  background-color: #fff;
+  border-top: 1px solid #d1d6f0;
+  margin-top: auto;
+  padding: $nx-table-footer-vertical-padding;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+}
+
+// nested and located this far down the file for specificity reasons
+.nx-table {
+  .nx-table-row--filter-header {
+    > .nx-cell--header {
+      top: $nx-table-cell-header-height;
+    }
+
+    .nx-filter-input {
+      width: 250px;
+    }
   }
 }
 
@@ -148,7 +176,8 @@ $nx-table-cell-header-height: 48px;
   @include container-vertical;
   @include container-horizontal;
 
-  padding: $nx-spacing-sm $nx-spacing-md;
+  min-height: $nx-table-cell-min-height;
+  padding: $nx-table-cell-vertical-padding $nx-spacing-md;
   vertical-align: top;
 }
 
@@ -178,7 +207,7 @@ $nx-table-cell-header-height: 48px;
 
 
 .nx-cell--icon {
-  color: #2c2c2c;
+  color: $nx-text-color-dark;
   text-align: center;
 }
 

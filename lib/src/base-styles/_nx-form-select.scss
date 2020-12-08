@@ -11,8 +11,8 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: #fff url("data:image/svg+xml;utf8,
-    <svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%232c2c2c'>
+  background: #fff url("data:image/svg+xml;utf8, \
+    <svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%232c2c2c'> \
     <polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
   background-size: 12px;
   background-position: calc(100% - 16px) 16px;
@@ -26,7 +26,7 @@
   width: $nx-form-element-width-normal;
 
   &:hover {
-    border-color: #2c2c2c;
+    border-color: $nx-form-element-border-color;
   }
 
   &:focus {
@@ -36,8 +36,8 @@
   }
 
   &.disabled {
-    background-color: #e9e9e9;
-    border-color: #949494;
+    background-color:$nx-disabled-background;
+    border-color: $nx-disabled-border;
   }
 }
 
