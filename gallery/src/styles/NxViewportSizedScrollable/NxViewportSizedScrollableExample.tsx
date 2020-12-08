@@ -17,14 +17,14 @@ export default function NxViewportSizedScrollableExample() {
   });
 
   return (
-    <main className="nx-page-main nx-page-name--viewport-sized-scrollable">
+    <main className="nx-page-main nx-page-main--viewport-sized-scrollable">
       <section className="nx-tile nx-viewport-sized-scrollable-parent">
         <header className="nx-tile-header">
           <div className="nx-tile-header__title">
             <h2 className="nx-h2">A table, with some stuff above</h2>
           </div>
         </header>
-        <div className="nx-tile-content nx-scrollable nx-viewport-sized-scrollable">
+        <div className="nx-tile-content nx-viewport-sized-scrollable-parent">
           <p className="nx-p">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
@@ -32,7 +32,7 @@ export default function NxViewportSizedScrollableExample() {
             fugiat nulla pariatur.  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
             mollit anim id est laborum.
           </p>
-          <div className="nx-scrollable nx--table-container">
+          <div className="nx-scrollable nx-table-container nx-viewport-sized-scrollable">
             <NxTable>
               <NxTableHead>
                 <NxTableRow>
