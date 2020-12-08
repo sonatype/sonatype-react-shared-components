@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useEffect } from 'react';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxBackButton }
+import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxBackButton, NxInfoAlert }
   from '@sonatype/react-shared-components';
 
 export default function NxViewportSizedScrollableExample() {
@@ -18,8 +18,8 @@ export default function NxViewportSizedScrollableExample() {
   });
 
   return (
-    <main className="nx-page-main nx-page-main--viewport-sized-scrollable">
-      <NxBackButton targetPageTitle="Nx-viewport-sized-scrollable Docs" href="#/pages/nx-viewport-sized-scrollable"/>
+    <main className="nx-page-main nx-page-main--viewport-sized-scrollable gallery-nx-viewport-sized-scrollable-example">
+      <NxBackButton targetPageTitle="nx-viewport-sized-scrollable Docs" href="#/pages/nx-viewport-sized-scrollable"/>
       <section className="nx-tile nx-viewport-sized-scrollable-parent">
         <header className="nx-tile-header">
           <div className="nx-tile-header__title">
@@ -28,12 +28,16 @@ export default function NxViewportSizedScrollableExample() {
         </header>
         <div className="nx-tile-content nx-viewport-sized-scrollable-parent">
           <p className="nx-p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur.  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum.
+            Observe that the table below, along with its containing tile, shrinks to fit the viewport and gets a
+            scrollbar. As the page size is adjusted, the table size changes accordingly. Notice that because the
+            table's parent containers are now flex boxes, custom styles must be applied to this page which remove
+            the smaller of each set of adjacent sibling margins.
           </p>
+          <NxInfoAlert>
+            Notice that <code className="nx-code">.nx-viewport-sized-scrollable-parent</code> must
+            add <code className="nx-code">width: 100%</code> to its children in order for elements such as this alert
+            to lay out correctly.
+          </NxInfoAlert>
           <div className="nx-scrollable nx-table-container nx-viewport-sized-scrollable">
             <NxTable>
               <NxTableHead>
