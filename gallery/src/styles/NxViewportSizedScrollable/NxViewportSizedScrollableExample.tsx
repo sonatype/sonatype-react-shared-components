@@ -29,9 +29,7 @@ export default function NxViewportSizedScrollableExample() {
         <div className="nx-tile-content nx-viewport-sized-scrollable-parent">
           <p className="nx-p">
             Observe that the table below, along with its containing tile, shrinks to fit the viewport and gets a
-            scrollbar. As the page size is adjusted, the table size changes accordingly. Notice that because the
-            table's parent containers are now flex boxes, custom styles must be applied to this page which remove
-            the smaller of each set of adjacent sibling margins.
+            scrollbar. As the page size is adjusted, the table size changes accordingly.
           </p>
           <NxInfoAlert>
             Notice that <code className="nx-code">.nx-viewport-sized-scrollable-parent</code> must
