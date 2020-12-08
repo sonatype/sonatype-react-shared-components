@@ -39,7 +39,7 @@
     .nx-radio-checkbox__control {
       border-color: $nx-focus-border-color;
       stroke: $nx-focus-border-color;
-      filter: drop-shadow(0 0 3px rgba(2, 166, 217, 0.4));
+      filter: drop-shadow(0 0 3px rgba($nx-focus-border-color, 0.4));
     }
 
     &:hover {
