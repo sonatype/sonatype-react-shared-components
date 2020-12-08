@@ -178,7 +178,7 @@
 
     &:focus {
       box-shadow: $nx-focus-box-shadow;
-      border-color: #02a6d9;
+      border-color: $nx-focus-border-color;
       outline: none;
     }
 
