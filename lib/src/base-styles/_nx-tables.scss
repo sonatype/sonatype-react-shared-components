@@ -86,7 +86,7 @@
         outline: none;
 
         > .nx-cell {
-          border-color: #02a6d9;
+          border-color: $nx-focus-border-color;
         }
       }
     }
