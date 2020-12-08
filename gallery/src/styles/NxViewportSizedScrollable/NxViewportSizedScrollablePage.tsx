@@ -8,11 +8,7 @@ import React from 'react';
 import CodeExample from '../../CodeExample';
 
 const NxViewportSizedScrollableExample =
-      require('!!raw-loader!./NxViewportSizedScrollableExample.tsx').default,
-    NxViewportSizedScrollableScss =
-      require('!!raw-loader!./NxViewportSizedScrollableExample.scss').default;
-
-import './NxViewportSizedScrollableExample.scss';
+      require('!!raw-loader!./NxViewportSizedScrollableExample.tsx').default;
 
 export default function NxViewportOrientedScrollableSizingPage() {
   return (
@@ -83,7 +79,6 @@ export default function NxViewportOrientedScrollableSizingPage() {
             </a>
           </p>
           <CodeExample content={NxViewportSizedScrollableExample} />
-          <CodeExample content={NxViewportSizedScrollableScss} language="scss"/>
         </div>
       </section>
     </>
