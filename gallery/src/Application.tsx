@@ -34,7 +34,7 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
 
   useEffect(function() {
     handleQueryParams(queryString.parse(location.search));
-  }, [location.search, location.pathname]);
+  }, [location.search]);
 
   if (Content) {
     // Put a key on <main> so that it re-renders entirely on route change, resetting scroll position

@@ -99,7 +99,9 @@ export default function NxViewportOrientedScrollableSizingPage() {
                 </NxTableCell>
               </NxTableRow>
               <NxTableRow>
-                <NxTableCell><code className="nx-code">nx-viewport-sized-scrollable-parent--growable</code></NxTableCell>
+                <NxTableCell>
+                  <code className="nx-code">nx-viewport-sized-scrollable-parent--growable</code>
+                </NxTableCell>
                 <NxTableCell>
                   Modifier on each <code className="nx-code">.nx-viewport-sized-scrollable-parent</code>
                 </NxTableCell>
@@ -129,9 +131,12 @@ export default function NxViewportOrientedScrollableSizingPage() {
             the <code className="nx-code">.nx-page-sidebar</code> and <code className="nx-code">.nx-page-main</code>
             are sized the fill the available space in the viewport and may scroll individually if their contents
             require. In the alternative "page scrolling" mode, those two elements are allowed to be as tall as their
-            content, and the page itself scrolls at the viewport level. <strong>Only the "section scrolling" mode is
-            compatible with viewport-sized-scrollables.</strong> Note that although the RSC gallery generally uses page
-            scrolling, the live example pages for the nx-viewport-sized-scrollable classes use section scrolling.
+            content, and the page itself scrolls at the viewport level.{' '}
+            <strong>
+              Only the "section scrolling" mode is compatible with viewport-sized-scrollables.
+            </strong>
+            {' '}Note that although the RSC gallery generally uses page scrolling, the live example pages for the
+            nx-viewport-sized-scrollable classes use section scrolling.
           </NxInfoAlert>
           <NxWarningAlert>
             <code className="nx-code">.nx-viewport-sized-scrollable-parent</code> unsets the top margin of all of its
