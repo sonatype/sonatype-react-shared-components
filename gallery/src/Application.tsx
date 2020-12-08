@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useEffect } from 'react';
-import classnames from 'classnames';
 import { RouteChildrenProps } from 'react-router';
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { mergeAll, values } from 'ramda';
@@ -14,7 +13,7 @@ import { mergeAll, values } from 'ramda';
 import 'core-js/features/array/includes';
 import queryString from 'query-string';
 
-import { PageMapping, PageMappingValue } from './pageConfigTypes';
+import { PageMapping } from './pageConfigTypes';
 import pageConfig from './pageConfig';
 import PageHeader from './PageHeader';
 import GalleryNav from './GalleryNav';
@@ -40,7 +39,7 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
   if (Content) {
     // Put a key on <main> so that it re-renders entirely on route change, resetting scroll position
     return (
-      <main key={pageName || 'home'} className={classnames('nx-page-main', pageMainClassName)}>
+      <main key={pageName || 'home'} className="nx-page-main">
         <div className="nx-page-title">
           <h1 className="nx-h1">
             {pageHeader}
