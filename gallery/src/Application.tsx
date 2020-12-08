@@ -31,12 +31,10 @@ const pageMappings: PageMapping = mergeAll(values(pageConfig));
 function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
   const pageName = match ? match.params.pageName : null,
       pageHeader = pageName || 'Home',
-      pageMapping: PageMappingValue = pageName ? pageMappings[pageName] : Home,
-      pageMappingObj = 'Component' in pageMapping ? pageMapping : { Component: pageMapping },
-      { Component: Content, disablePageScrolling, pageMainClassName } = pageMappingObj;
+      Content = pageName ? pageMappings[pageName] : Home;
 
   useEffect(function() {
-    handleQueryParams(queryString.parse(location.search), disablePageScrolling);
+    handleQueryParams(queryString.parse(location.search));
   }, [location.search, location.pathname]);
 
   if (Content) {
