@@ -4,19 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxBackButton, NxInfoAlert }
   from '@sonatype/react-shared-components';
 
 export default function NxViewportSizedScrollableExample() {
-  useEffect(function() {
-    document.documentElement.classList.remove('nx-html--page-scrolling');
-
-    return function() {
-      document.documentElement.classList.add('nx-html--page-scrolling');
-    };
-  });
-
   return (
     <main className="nx-page-main nx-page-main--viewport-sized-scrollable gallery-nx-viewport-sized-scrollable-example">
       <NxBackButton targetPageTitle="nx-viewport-sized-scrollable Docs" href="#/pages/nx-viewport-sized-scrollable"/>
