@@ -10,7 +10,7 @@ import { faGlobeEurope, faFlag } from '@fortawesome/free-solid-svg-icons';
 
 import { NxFormGroup, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
-export default function NxFormGroupSublabelExample() {
+export default function NxFormGroupRichLabelExample() {
   const [val, setVal] = useState('');
 
   function onChange(e: ChangeEvent<HTMLSelectElement>) {
