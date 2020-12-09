@@ -21,6 +21,6 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   label: PropTypes.node.isRequired,
-  sublabel: PropTypes.node.isRequired,
+  sublabel: PropTypes.node,
   isRequired: PropTypes.bool
 };
