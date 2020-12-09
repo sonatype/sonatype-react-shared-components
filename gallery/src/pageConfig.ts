@@ -18,7 +18,6 @@ import NxLoadWrapperPage from './components/NxLoadWrapper/NxLoadWrapperPage';
 import NxModalPage from './components/NxModal/NxModalPage';
 import NxPageTitlePage from './styles/NxPageTitle/NxPageTitlePage';
 import NxTilePage from './styles/NxTile/NxTilePage';
-//import NxTextInputStylesPage from './styles/NxTextInputStyles/NxTextInputStylesPage';
 import NxBtnPage from './styles/NxBtn/NxBtnPage';
 import NxThreatIndicatorPage from './components/NxThreatIndicator/NxThreatIndicatorPage';
 import NxRadioPage from './components/NxRadio/NxRadioPage';
@@ -80,6 +79,7 @@ import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
 import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
 import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
+import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -97,6 +97,7 @@ const pageConfig: PageConfig = {
     NxStatefulDropdown: NxStatefulDropdownPage,
     NxFilterInput: NxFilterInputPage,
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
+    NxFormGroup: NxFormGroupPage,
     NxLoadError: NxLoadErrorPage,
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,
