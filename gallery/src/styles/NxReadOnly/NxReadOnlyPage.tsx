@@ -15,7 +15,8 @@ const NxReadOnlyPage = () => {
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          <code className="nx-code">.nx-read-only</code> is a design pattern for when you wish to display data in a read only form. It's basic structure is a label and one or more data points.
+          <code className="nx-code">.nx-read-only</code> is a design pattern for when you wish to display data in a
+          read only form. It's basic structure is a label and one or more data points.
         </p>
         <p className="nx-p">
           <code className="nx-code">.nx-read-only</code> is layed out using a description list
