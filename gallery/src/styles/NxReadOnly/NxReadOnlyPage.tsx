@@ -8,8 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxReadOnlyDivExampleCode = require('!!raw-loader!./NxReadOnlyDivExample.html').default,
-    nxReadOnlyDlExampleCode = require('!!raw-loader!./NxReadOnlyDivExample.html').default;
+const nxReadOnlyDlExampleCode = require('!!raw-loader!./NxReadOnlyDlExample.html').default;
 
 const NxReadOnlyPage = () => {
   return (
@@ -19,16 +18,10 @@ const NxReadOnlyPage = () => {
           <code className="nx-code">.nx-read-only</code> is a design pattern for when you wish to display data in a read only form. It's basic structure is a label and one or more data points.
         </p>
         <p className="nx-p">
-          <code className="nx-code">.nx-read-only</code> can be layed out either using a
-          {' '}<code className="nx-code">&lt;div&gt;</code> or description list
-          (<code className="nx-code">&lt;dl&gt;</code>) as the container, examples of both are provided.
+          <code className="nx-code">.nx-read-only</code> is layed out using a description list
+          (<code className="nx-code">&lt;dl&gt;</code>) as the container.
         </p>
       </GalleryDescriptionTile>
-      <GalleryExampleTile title="Styling read-only lists of data"
-                          codeExamples={nxReadOnlyDivExampleCode}
-                          htmlExample={nxReadOnlyDivExampleCode}>
-        <code className="nx-code">&lt;div&gt;</code> layout.
-      </GalleryExampleTile>
       <GalleryExampleTile title="Styling read-only lists of data"
                           codeExamples={nxReadOnlyDlExampleCode}
                           htmlExample={nxReadOnlyDlExampleCode}>
