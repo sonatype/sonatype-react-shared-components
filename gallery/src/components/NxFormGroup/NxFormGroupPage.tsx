@@ -12,10 +12,12 @@ import NxFormGroupExample from './NxFormGroupExample';
 import NxFormGroupRequiredExample from './NxFormGroupRequiredExample';
 import NxFormGroupSublabelExample from './NxFormGroupSublabelExample';
 import NxFormGroupRichLabelExample from './NxFormGroupRichLabelExample';
+import NxFormGroupExistingAriaExample from './NxFormGroupExistingAriaExample';
 
 const nxFormGroupExampleCode = require('!raw-loader!!./NxFormGroupExample').default,
     nxFormGroupSublabelExampleCode = require('!raw-loader!!./NxFormGroupSublabelExample').default,
     nxFormGroupRichLabelExampleCode = require('!raw-loader!!./NxFormGroupRichLabelExample').default,
+    nxFormGroupExistingAriaExampleCode = require('!raw-loader!!./NxFormGroupExistingAriaExample').default,
     nxFormGroupRequiredExampleCode = require('!raw-loader!!./NxFormGroupRequiredExample').default;
 
 const NxFormGroupPage = () =>
@@ -112,6 +114,14 @@ const NxFormGroupPage = () =>
                         liveExample={NxFormGroupRichLabelExample}
                         codeExamples={nxFormGroupRichLabelExampleCode}>
       This example demonstrates that the label and sublabel can be JSX rather than just strings.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Existing ID and ARIA Attributes Example"
+                        liveExample={NxFormGroupExistingAriaExample}
+                        codeExamples={nxFormGroupExistingAriaExampleCode}>
+      This example shows how existing values of the id and aria-describedby attribute get respected/augmented.
+      Inspect the live example to see the resulting attributes. This example also happens to demonstrate a
+      different kind of text input – a large textarea.
     </GalleryExampleTile>
   </>;
 
