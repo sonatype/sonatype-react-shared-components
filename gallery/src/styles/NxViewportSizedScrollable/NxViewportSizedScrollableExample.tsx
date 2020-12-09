@@ -23,10 +23,15 @@ export default function NxViewportSizedScrollableExample() {
             Observe that the table below, along with its containing tile, shrinks to fit the viewport and gets a
             scrollbar. As the page size is adjusted, the table size changes accordingly.
           </p>
+          <p className="nx-p" style={{ width: '400px' }}>
+            This paragraph has an explicit, non-100% width. It is still left-aligned within the tile just like it
+            would be in block layout.
+          </p>
+          <p className="nx-p">
+            Single line paragraph.
+          </p>
           <NxInfoAlert>
-            Notice that <code className="nx-code">.nx-viewport-sized-scrollable-parent</code> must
-            add <code className="nx-code">width: 100%</code> to its children in order for elements such as this alert
-            to lay out correctly.
+            This alert is stretched as expected.
           </NxInfoAlert>
           <div className="nx-scrollable nx-table-container nx-viewport-sized-scrollable">
             <NxTable>

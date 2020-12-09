@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxBackButton, NxInfoAlert, NxPagination }
+import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxBackButton, NxPagination }
   from '@sonatype/react-shared-components';
 
 export default function NxViewportSizedScrollableExample() {
@@ -25,11 +25,6 @@ export default function NxViewportSizedScrollableExample() {
             As the page size is adjusted, the table size changes accordingly. If the page is made so short that
             the table does not fit, it gets a scrollbar just as in the non-growable example.
           </p>
-          <NxInfoAlert>
-            Notice that <code className="nx-code">.nx-viewport-sized-scrollable-parent</code> must
-            add <code className="nx-code">width: 100%</code> to its children in order for elements such as this alert
-            to lay out correctly.
-          </NxInfoAlert>
           <div className="nx-scrollable nx-table-container nx-viewport-sized-scrollable">
             <NxTable>
               <NxTableHead>
