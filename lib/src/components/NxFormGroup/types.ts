@@ -8,7 +8,8 @@ import { HTMLAttributes, ReactNode, ReactElement } from "react";
 import * as PropTypes from 'prop-types';
 
 interface ChildrenProps {
-  id: string;
+  id?: string | null;
+  'aria-describedby'?: string | null;
 }
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
