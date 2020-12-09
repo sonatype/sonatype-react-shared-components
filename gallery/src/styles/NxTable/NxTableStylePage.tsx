@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxFontAwesomeIcon, NxWarningAlert } from '@sonatype/react-shared-components';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
@@ -53,6 +53,10 @@ const NxTableStylePage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-table--scrollable</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-table</code></td>
             <td className="nx-cell">
+              <NxWarningAlert>
+                Deprecated. Use an <code className="nx-code">.nx-table-container.nx-scrollable</code> wrapper
+                around a plain <code className="nx-code">.nx-table</code> instead.
+              </NxWarningAlert>
               When a table which scrolls in of itself is desired, wrap the table in
               an <code className="nx-code">.nx-scrollable</code> wrapper and give it a class
               of <code className="nx-code">.nx-table--scrollable</code>.

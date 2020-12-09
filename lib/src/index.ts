@@ -75,6 +75,9 @@ export {
 export { default as NxTooltip, Props as NxTooltipProps, TooltipPlacement as NxTooltipPlacement }
   from './components/NxTooltip/NxTooltip';
 
+export { default as NxOverflowTooltip, OverflowTooltipProps as NxOverflowTooltipProps }
+  from './components/NxTooltip/NxOverflowTooltip';
+
 export {
   default as NxTreeViewRadioSelect,
   Props as NxTreeViewRadioSelectProps,
@@ -159,3 +162,6 @@ export {
 export { default as NxPagination, Props as NxPaginationProps } from './components/NxPagination/NxPagination';
 export { default as NxIndeterminatePagination, Props as NxIndeterminatePaginationProps }
   from './components/NxIndeterminatePagination/NxIndeterminatePagination';
+
+export { default as NxPolicyViolationIndicator, Props as NxPolicyViolationIndicatorProps }
+  from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicator';

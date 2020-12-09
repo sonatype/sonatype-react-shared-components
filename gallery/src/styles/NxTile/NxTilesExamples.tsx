@@ -10,6 +10,7 @@ import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxTileFormExample from './NxTileFormExample';
 import NxTileDropdownActionsExample from './NxTileDropdownActionsExample';
 import NxTileAccordionExample from './NxTileAccordionExample';
+import NxTilePolicyViolationIndicatorExample from './NxTilePolicyViolationIndicatorExample';
 
 const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample.html').default,
     NxTileWithActionsCode = require('!!raw-loader!./NxTileWithActionsExample.html').default,
@@ -17,7 +18,8 @@ const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample.html').defa
     NxTileSubsectionCode = require('!!raw-loader!./NxTileSubsectionExample.html').default,
     NxTileFormCode = require('!!raw-loader!./NxTileFormExample.tsx').default,
     NxTileDropdownActionsCode = require('!!raw-loader!./NxTileDropdownActionsExample').default,
-    NxTileAccordionCode = require('!!raw-loader!./NxTileAccordionExample').default;
+    NxTileAccordionCode = require('!!raw-loader!./NxTileAccordionExample').default,
+    NxTilePolicyViolationIndicatorCode = require('!!raw-loader!./NxTilePolicyViolationIndicatorExample').default;
 
 const NxTilesExamples = () =>
   <>
@@ -79,6 +81,15 @@ const NxTilesExamples = () =>
                         codeExamples={NxTileAccordionCode}>
       An example of a tile with <code className="nx-code">NxAccordions</code>{' '}
       (or <code className="nx-code">NxStatefulAccordions</code>) within.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Tile with Policy Violation Indicator"
+                        id="nx-tile-policy-violation-indicator-example"
+                        defaultCheckeredBackground={true}
+                        liveExample={NxTilePolicyViolationIndicatorExample}
+                        codeExamples={NxTilePolicyViolationIndicatorCode}>
+      An example of a tile with <code className="nx-code">NxPolicyViolationIndicator</code>{' '}
+      in the header.
     </GalleryExampleTile>
   </>;
 
