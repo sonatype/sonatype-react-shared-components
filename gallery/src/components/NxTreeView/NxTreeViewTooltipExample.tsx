@@ -11,8 +11,10 @@ import { NxTreeView, NxTreeViewChild, TooltipConfigProps } from '@sonatype/react
 function NxTreeViewTooltipExample() {
   // this example uses the `useState` hook for succinctness, but you could also manage the state manually
   // in a class component
-  const [toggleCheck, setToggleCheck] = useState(false),
-      onToggleCollapse = () => setToggleCheck(!toggleCheck),
+  const [toggle1Check, setToggle1Check] = useState(false),
+      [toggle2Check, setToggle2Check] = useState(false),
+      onToggle1Collapse = () => setToggle1Check(!toggle1Check),
+      onToggle2Collapse = () => setToggle2Check(!toggle2Check),
       complexTooltipConfig: TooltipConfigProps = {
         placement: 'left',
         title: <em>Complicated</em>
@@ -20,8 +22,8 @@ function NxTreeViewTooltipExample() {
 
   return (
     <>
-      <NxTreeView onToggleCollapse={onToggleCollapse}
-                  isOpen={toggleCheck}
+      <NxTreeView onToggleCollapse={onToggle1Collapse}
+                  isOpen={toggle1Check}
                   triggerTooltip="Tooltip!"
                   triggerContent="Tooltip configured by string">
         <NxTreeViewChild>Test1</NxTreeViewChild>
@@ -29,8 +31,8 @@ function NxTreeViewTooltipExample() {
         <NxTreeViewChild>Test3</NxTreeViewChild>
         <NxTreeViewChild>Test4</NxTreeViewChild>
       </NxTreeView>
-      <NxTreeView onToggleCollapse={onToggleCollapse}
-                  isOpen={toggleCheck}
+      <NxTreeView onToggleCollapse={onToggle2Collapse}
+                  isOpen={toggle2Check}
                   triggerTooltip={complexTooltipConfig}
                   triggerContent="Complex tooltip configuration">
         <NxTreeViewChild>Test1</NxTreeViewChild>
