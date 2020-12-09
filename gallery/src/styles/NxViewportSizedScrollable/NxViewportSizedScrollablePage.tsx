@@ -56,12 +56,15 @@ export default function NxViewportOrientedScrollableSizingPage() {
               </span>
             </li>
             <li className="nx-list__item">
-              <span className="nx-list__text">Default child width</span>
+              <span className="nx-list__text">Default child width with automatic margins</span>
               <span className="nx-list__subtext">
-                Block elements laid out within a block container will have a width of 100% by default. Children of a
-                flex column container, on the other hand, will default to their intrinsic
-                width. <code className="nx-code">width: 100%</code> must be explicitly applied to the children to
-                restore the normal behavior.
+                The behavior of left and right margins set to `auto` differs between block layouts and flex-column
+                layouts. In block layout, a child with auto side margins will default to the full width of its
+                container unless it has a width or max-width set.  In flex-column layout, a child with auto side
+                margins and no explicit width will default to its implicit width, even if it has a max-width set.
+                To get max-width to behave the way that it does in block
+                layouts, <code className="nx-code">width: 100%</code> must be applied. In RSC, this issue comes up
+                around <code className="nx-code">NxAlert</code>s in particular.
               </span>
             </li>
           </ul>
