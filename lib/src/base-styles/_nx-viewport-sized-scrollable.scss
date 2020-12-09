@@ -9,9 +9,10 @@
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
+
 }
 
-.nx-viewport-sized-scrollable-parent {
+.nx-viewport-sized-scrollable-parent, .nx-page-main--viewport-sized-scrollable {
   > * {
     box-sizing: border-box;
     flex-shrink: 0;
