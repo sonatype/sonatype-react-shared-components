@@ -5,7 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody }
+  from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxListExamples from './NxListExamples';
@@ -100,6 +101,56 @@ const NxListPage = () =>
           </tr>
         </tbody>
       </table>
+      <section className="nx-tile-subsection">
+        <header className="nx-tile-subsection__title">
+          <h3 className="nx-h3">Description Lists</h3>
+        </header>
+        <p className="nx-p">
+          In addition to ordered and unordered lists, <code className="nx-code">nx-list</code> also supports the
+          styling of description lists using the following classes. Terms and descriptions are laid out side-by-side
+          in rows. Currently only one description per term, and one term per description, are supported – not multiple.
+        </p>
+        <NxTable>
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Class</NxTableCell>
+              <NxTableCell>Location</NxTableCell>
+              <NxTableCell>Details</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody>
+            <NxTableRow>
+              <NxTableCell><code className="nx-code">.nx-list--description-list</code></NxTableCell>
+              <NxTableCell>
+                <code className="nx-code">&lt;dl&gt;</code> which also
+                has <code className="nx-code">.nx-list</code>.
+              </NxTableCell>
+              <NxTableCell>Root class to apply RSC description list styles</NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell><code className="nx-code">.nx-list__item</code></NxTableCell>
+              <NxTableCell>
+                <code className="nx-code">&lt;div&gt;</code> wrapping <code className="nx-code">&lt;dt&gt;</code>{' '}
+                and <code className="nx-code">&lt;dd&gt;</code> elements
+              </NxTableCell>
+              <NxTableCell>
+                Each <code className="nx-code">&lt;dt&gt;</code>/<code className="nx-code">&lt;dd&gt;</code> pairing
+                should be wrapped in a div which is styled similarly to an item row in a normal nx-list.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell><code className="nx-code">.nx-list__term</code></NxTableCell>
+              <NxTableCell><code className="nx-code">&lt;dt&gt;</code></NxTableCell>
+              <NxTableCell>Styles the description term elements</NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell><code className="nx-code">.nx-list__description</code></NxTableCell>
+              <NxTableCell><code className="nx-code">&lt;dd&gt;</code></NxTableCell>
+              <NxTableCell>Styles the description elements</NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
+      </section>
       <NxInfoAlert>
         Note that some of these examples are shown in React as they includes specific icons. When working in
         React, <code className="nx-code">NxFontAwesomeIcon</code> should be used as shown to get these icons.
