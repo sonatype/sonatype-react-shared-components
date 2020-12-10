@@ -58,6 +58,18 @@ describe('idUtil', function() {
       expect(id2).toBe('bar');
     });
 
+    it('returns the second argument if it is the empty string', function() {
+      function Fixture() {
+        return <div id={useRandomId('foo', '')} />;
+      }
+
+      const id1 = shallow(<Fixture />).prop('id'),
+          id2 = shallow(<Fixture />).prop('id');
+
+      expect(id1).toBe('');
+      expect(id2).toBe('');
+    });
+
     it('returns the same id for multiple renders of the same component instance', function() {
       function Fixture() {
         const [val, setVal] = useState('');
