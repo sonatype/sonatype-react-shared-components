@@ -193,10 +193,8 @@ describe('NxFormGroup', function() {
     });
 
     describe('when the child does not have an explicit id', function() {
-      const childIdProps = {};
-
       describe('when the child has an existing aria-describedby', function() {
-        const childProps = { ...childIdProps, 'aria-describedby': 'bar' };
+        const childProps = { 'aria-describedby': 'bar' };
 
         describe('when there is a sublabel', function() {
           const props = { sublabel: 'asdf', children: <NxStatefulTextInput { ...childProps } /> };
@@ -268,10 +266,8 @@ describe('NxFormGroup', function() {
       });
 
       describe('when the child does not have an existing aria-describedby', function() {
-        const childProps = childIdProps;
-
         describe('when there is a sublabel', function() {
-          const props = { sublabel: 'asdf', children: <NxStatefulTextInput { ...childProps } /> };
+          const props = { sublabel: 'asdf', children: <NxStatefulTextInput /> };
 
           it('generates a unique id on the child', function() {
             const component1 = getShallow(props),
