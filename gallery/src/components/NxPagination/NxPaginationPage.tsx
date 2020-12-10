@@ -112,7 +112,10 @@ const NxPaginationPage = () =>
           </tr>
         </tbody>
       </table>
-
+      <p className="nx-p">
+        For an example of an <code className="nx-code">NxPagination</code> component within/connected to a table,
+        see the <a className="nx-text-link" href="#/pages/NxTable"><code className="nx-code">NxTable</code></a> page.
+      </p>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="NxPagination Example"

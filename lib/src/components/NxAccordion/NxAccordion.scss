@@ -40,7 +40,7 @@
     outline: none;
 
     > .nx-accordion__summary-wrapper {
-      outline: 1px solid #02a6d9;
+      outline: 1px solid $nx-focus-border-color;
       outline-offset: -1px;
       box-shadow: $nx-focus-box-shadow;
     }

@@ -178,7 +178,7 @@
 
     &:focus {
       box-shadow: $nx-focus-box-shadow;
-      border-color: #02a6d9;
+      border-color: $nx-focus-border-color;
       outline: none;
     }
 
@@ -232,4 +232,25 @@
       margin-left: 8px;
     }
   }
+}
+
+.nx-list--description-list {
+  .nx-list__item {
+    display: flex;
+  }
+
+  border-bottom: 1px solid $nx-grey-200;
+}
+
+.nx-list__term {
+  flex: none;
+  font-weight: 600;
+  overflow-wrap: break-word;
+  width: 250px;
+}
+
+.nx-list__description {
+  @include container-vertical;
+
+  margin-left: $nx-spacing-l;
 }

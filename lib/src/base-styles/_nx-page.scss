@@ -9,11 +9,11 @@
   @include container-vertical;
   align-items: center;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: auto 1fr auto;
   grid-template-areas:
-    "title actions"
-    "description description";
-  margin: 0 0 $nx-spacing-md 0;
+    "title tags actions"
+    "description description description";
+  margin: 0 0 $nx-spacing-l 0;
 
   .nx-h1 {
     grid-area: title;
@@ -26,6 +26,17 @@
   .nx-btn-bar {
     grid-area: actions;
     margin: 0 0 0 $nx-spacing-l;
+  }
+}
+
+.nx-page-title__tags {
+  @include container-horizontal;
+
+  grid-area: tags;
+  margin-left: $nx-spacing-md;
+
+  .nx-policy-violation-indicator {
+    margin: 0;
   }
 }
 

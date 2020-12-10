@@ -9,13 +9,15 @@ import React, { useState } from 'react';
 import { NxTreeView, NxCheckbox, NxRadio, NxTreeViewChild } from '@sonatype/react-shared-components';
 
 export default function NxTreeViewCheckboxExample() {
-  const [isOpen, setOpen] = useState(false),
-      onToggleCollapse = () => setOpen(!isOpen);
+  const [is1Open, set1Open] = useState(false),
+      [is2Open, set2Open] = useState(false),
+      onToggle1Collapse = () => set1Open(!is1Open),
+      onToggle2Collapse = () => set2Open(!is2Open);
 
   return (
     <>
-      <NxTreeView isOpen={isOpen}
-                  onToggleCollapse={onToggleCollapse}
+      <NxTreeView isOpen={is1Open}
+                  onToggleCollapse={onToggle1Collapse}
                   triggerContent="Organization">
         <NxTreeViewChild>
           <NxCheckbox isChecked={true}>
@@ -29,8 +31,8 @@ export default function NxTreeViewCheckboxExample() {
           <NxCheckbox isChecked={true}>Baz</NxCheckbox>
         </NxTreeViewChild>
       </NxTreeView>
-      <NxTreeView isOpen={isOpen}
-                  onToggleCollapse={onToggleCollapse}
+      <NxTreeView isOpen={is2Open}
+                  onToggleCollapse={onToggle2Collapse}
                   triggerContent="Organization">
         <NxTreeViewChild>
           <NxRadio name="test-radio" value="foo" isChecked={false}>Foo</NxRadio>

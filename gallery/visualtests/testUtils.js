@@ -88,6 +88,13 @@ module.exports = {
       }
       finally {
         browser.releaseActions();
+
+        await browser.pause(1000);
+
+        // some button examples have click handlers that fire alert dialogs
+        if (await browser.isAlertOpen()) {
+          await browser.acceptAlert();
+        }
       }
     };
   },

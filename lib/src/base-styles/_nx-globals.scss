@@ -58,11 +58,6 @@ $nx-scrollable-default-height: 400px;
   @include vertically-scrollable($nx-scrollable-default-height);
 }
 
-.nx-scrollable--table-container {
-  border: 1px solid #d1d6f0;
-  border-radius: $nx-border-radius;
-}
-
 .nx-truncate-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;

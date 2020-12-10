@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components-gallery",
-  "version": "2.15.1",
+  "version": "2.18.0",
   "description": "Gallery application to demonstrate usage and look of Sonatype shared UI components",
   "main": "src/main.ts",
   "scripts": {
@@ -21,7 +21,7 @@
   "author": "Sonatype, Inc.",
   "license": "EPL-2.0",
   "devDependencies": {
-    "@applitools/eyes-webdriverio": "5.22.2",
+    "@applitools/eyes-webdriverio": "^5.27.2",
     "@types/classnames": "=2.2.7",
     "@types/react": "16.9.14",
     "@types/react-dom": "16.9.1",

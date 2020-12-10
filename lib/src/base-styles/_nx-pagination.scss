@@ -4,12 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@import '../scss-shared/nx-variables';
+
 .nx-btn-bar--pagination {
   text-align: center;
 
   .nx-btn {
-    height: 40px;
-    min-width: 40px;
+    height: $nx-pagination-button-height;
+    min-width: $nx-pagination-button-height;
     margin: 0 $nx-spacing-xs 0 0;
     padding: 0 $nx-spacing-md;
 

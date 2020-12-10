@@ -19,7 +19,8 @@ const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').def
     NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.tsx').default,
     NxListEmptyCode = require('!!raw-loader!./NxListEmptyExample.html').default,
     NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.tsx').default,
-    NxListLoadingCode = require('!!raw-loader!./NxListLoadingExample.tsx').default;
+    NxListLoadingCode = require('!!raw-loader!./NxListLoadingExample.tsx').default,
+    NxListDescriptionCode = require('!!raw-loader!./NxListDescriptionExample.html').default;
 
 const NxListsExamples = () =>
   <>
@@ -81,6 +82,14 @@ const NxListsExamples = () =>
                         codeExamples={NxListLoadingCode}>
       A demonstration of the expected styling and placement for a loading indicator
       within <code className="nx-code">nx-list</code>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxList description list example"
+                        id="nx-list-description-example"
+                        htmlExample={NxListDescriptionCode}
+                        codeExamples={NxListDescriptionCode}>
+      Basic <code className="nx-code">nx-list--description</code> with a heading. Wrapping is demonstrated in both
+      the terms and the descriptions.
     </GalleryExampleTile>
   </>;
 
