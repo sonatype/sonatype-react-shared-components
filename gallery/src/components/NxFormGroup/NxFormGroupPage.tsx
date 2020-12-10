@@ -27,7 +27,7 @@ const NxFormGroupPage = () =>
         An <code className="nx-code">NxFormGroup</code> is a wrapper around a form field which provides the labels
         and overall spacing. Most commonly, <code className="nx-code">NxFormGroup</code> wraps
         an <code className="nx-code">NxTextInput</code>, but it may wrap other content such as
-        a <code className="nx-code">&lt;select&gt;</code> as well. It <em>should not</em> be used to wrap radio
+        a <code className="nx-code">&lt;select&gt;</code>. It <em>should not</em> be used to wrap radio
         and checkbox groups, as those are best encapsulated
         in <code className="nx-code">&lt;fieldset&gt;</code> elements.
       </p>
