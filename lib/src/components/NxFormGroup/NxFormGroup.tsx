@@ -14,12 +14,13 @@ export { Props };
 
 const NxFormGroup = forwardRef<HTMLDivElement, Props>(
     function NxFormGroup({ className, label, sublabel, children, isRequired, ...attrs }, ref) {
-      const classNames = classnames('nx-form-group', className, {
-            'nx-label--optional': !isRequired
-          }),
+      const classNames = classnames('nx-form-group', className),
+          labelClassnames = classnames('nx-label', { 'nx-label--optional': !isRequired }),
+
           childId = children.props.id || getRandomId('nx-form-group-child'),
           sublabelId = sublabel ? getRandomId('nx-sub-label') : undefined,
           childDescribedBy = classnames(children.props['aria-describedby'], sublabelId),
+
           childNeedsAugmentation = !children.props.id || sublabelId,
           childEl = childNeedsAugmentation ?
             React.cloneElement(children, { id: childId, 'aria-describedby': childDescribedBy }) :
@@ -27,7 +28,7 @@ const NxFormGroup = forwardRef<HTMLDivElement, Props>(
 
       return (
         <div ref={ref} className={classNames} {...attrs}>
-          <label htmlFor={childId} className="nx-label">
+          <label htmlFor={childId} className={labelClassnames}>
             <span className="nx-label__text">{label}</span>
           </label>
           { sublabel && <span id={sublabelId} className="nx-sub-label">{sublabel}</span> }
