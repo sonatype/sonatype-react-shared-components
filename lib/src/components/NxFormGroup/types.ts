@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, ReactNode, ReactElement } from "react";
+import { HTMLAttributes, ReactNode, ReactElement } from 'react';
 import * as PropTypes from 'prop-types';
 
 interface ChildrenProps {

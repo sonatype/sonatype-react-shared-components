@@ -250,7 +250,6 @@ describe('NxFormGroup', function() {
             expect(id1).not.toBe(id2);
           });
 
-
           it('sets the child id in the htmlFor of the label', function() {
             const component = getShallow(props),
                 inputId = component.find(NxStatefulTextInput).prop('id');
@@ -280,7 +279,6 @@ describe('NxFormGroup', function() {
             expect(id1).not.toBe(id2);
           });
 
-
           it('sets the child id in the htmlFor of the label', function() {
             const component = getShallow(props),
                 inputId = component.find(NxStatefulTextInput).prop('id');
@@ -308,7 +306,7 @@ describe('NxFormGroup', function() {
         });
 
         describe('when there is not a sublabel', function() {
-          const props = { children: <NxStatefulTextInput { ...childProps } /> };
+          const props = { children: <NxStatefulTextInput /> };
 
           it('generates a unique id on the child', function() {
             const component1 = getShallow(props),
@@ -320,7 +318,6 @@ describe('NxFormGroup', function() {
             expect(id2).toMatch(/^nx-form-group-child.+/);
             expect(id1).not.toBe(id2);
           });
-
 
           it('sets the child id in the htmlFor of the label', function() {
             const component = getShallow(props),
