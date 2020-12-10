@@ -4,14 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { NxCheckbox } from '@sonatype/react-shared-components';
-import { NxRadio } from '@sonatype/react-shared-components';
-import { NxStatefulTextInput } from '@sonatype/react-shared-components';
-import { NxButton } from '@sonatype/react-shared-components';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxButton, NxCheckbox, NxFontAwesomeIcon, NxForm, NxRadio, NxStatefulTextInput }
+  from '@sonatype/react-shared-components';
+import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
@@ -27,19 +25,74 @@ export default function NxFormLayoutExample() {
   const [isRed, setIsRed] = useState(false),
       [isBlue, setIsBlue] = useState(false),
       [isGreen, setIsGreen] = useState(false),
+      [radioColor, setRadioColor] = useState<string | null>(null),
+      [loading, setLoading] = useState(true),
+      [loadError, setLoadError] = useState<string | null>(null),
+      [submitCount, setSubmitCount] = useState(0),
+      [submitError, setSubmitError] = useState<string | null>(null),
+      [submitMaskState, setSubmitMaskState] = useState<boolean | null>(null),
       toggleRed = () => setIsRed(!isRed),
       toggleBlue = () => setIsBlue(!isBlue),
       toggleGreen = () => setIsGreen(!isGreen);
 
-  const [color, setColor] = useState<string | null>(null);
+  const validationError = (isRed || isBlue || isGreen) ? '' : 'Please select at least one checkbox';
 
-  function onSubmit(evt: FormEvent) {
-    evt.preventDefault();
-    alert('Submitted!');
+  useEffect(function() {
+    setTimeout(function() {
+      setLoading(false);
+      setLoadError('Error loading stuff!');
+    }, 5000);
+  }, []);
+
+  function doLoad() {
+    setLoading(true);
+    setLoadError(null);
+
+    setTimeout(function() {
+      setLoading(false);
+      setLoadError(null);
+    }, 500);
+  }
+
+  function onSubmit() {
+    if (submitCount < 1) {
+      setSubmitError('Stuff could not be saved!');
+    }
+    else {
+      setSubmitError(null);
+
+      setSubmitMaskState(false);
+
+      setTimeout(function() {
+        setSubmitMaskState(true);
+
+        setTimeout(function() {
+          setSubmitMaskState(null);
+        }, SUCCESS_VISIBLE_TIME_MS);
+      }, 3000);
+    }
+
+    setSubmitCount(submitCount + 1);
   }
 
   return (
-    <form className="nx-form" onSubmit={onSubmit}>
+    <NxForm loading={loading}
+            doLoad={doLoad}
+            onSubmit={onSubmit}
+            onCancel={() => alert('Cancelled')}
+            loadError={loadError}
+            submitError={submitError}
+            validationError={validationError}
+            submitBtnClasses="my-submit-btn"
+            submitBtnText="Submit it!"
+            submitMaskState={submitMaskState}
+            submitMaskMessage="Submitting!"
+            submitMaskSuccessMessage="Successfully successful!"
+            additionalFooterBtns={
+              <NxButton type="button" onClick={() => alert('Clicked that other button')} variant="tertiary">
+                That Other Button
+              </NxButton>
+            }>
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">A Field to Fill in</span>
@@ -77,20 +130,20 @@ export default function NxFormLayoutExample() {
         </legend>
         <NxRadio name="color"
                  value="red"
-                 onChange={setColor}
-                 isChecked={color === 'red'}>
+                 onChange={setRadioColor}
+                 isChecked={radioColor === 'red'}>
           Red
         </NxRadio>
         <NxRadio name="color"
                  value="purple"
-                 onChange={setColor}
-                 isChecked={color === 'purple'}>
+                 onChange={setRadioColor}
+                 isChecked={radioColor === 'purple'}>
           Purple
         </NxRadio>
-        <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'}>
+        <NxRadio name="color" value="green" onChange={setRadioColor} isChecked={radioColor === 'green'}>
           Green
         </NxRadio>
-        <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'}>
+        <NxRadio name="color" value="blue" onChange={setRadioColor} isChecked={radioColor === 'blue'}>
           Blue
         </NxRadio>
       </fieldset>
@@ -113,12 +166,6 @@ export default function NxFormLayoutExample() {
           <NxStatefulTextInput type="textarea" placeholder="placeholder"/>
         </label>
       </div>
-      <footer className="nx-footer">
-        <div className="nx-btn-bar">
-          <NxButton type="button">Cancel</NxButton>
-          <NxButton variant="primary" type="submit">Submit</NxButton>
-        </div>
-      </footer>
-    </form>
+    </NxForm>
   );
 }
