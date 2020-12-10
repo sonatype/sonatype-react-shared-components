@@ -22,7 +22,7 @@ const NxReadOnlyPage = () => {
           <code className="nx-code">.nx-read-only</code> is layed out using a description list
           (<code className="nx-code">&lt;dl&gt;</code>) as the container.
         </p>
-        <table className="nx-table nx-table--gallery-props">
+        <table className="nx-table">
           <thead>
             <tr className="nx-table-row">
               <th className="nx-cell nx-cell--header">Class</th>
