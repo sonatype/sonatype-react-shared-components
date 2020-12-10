@@ -20,10 +20,10 @@ import GalleryNav from './GalleryNav';
 import Home from './pages/Home';
 import handleQueryParams from './handleQueryParams';
 
-import NxViewportSizedScrollableExample from './styles/NxViewportSizedScrollable/NxViewportSizedScrollableExample';
-import NxViewportSizedScrollableGrowableExample
-  from './styles/NxViewportSizedScrollable/NxViewportSizedScrollableGrowableExample';
-import SectionScrollingWrapper from './styles/NxViewportSizedScrollable/SectionScrollingWrapper';
+import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExample';
+import NxViewportSizedExpandingExample
+  from './styles/NxViewportSized/NxViewportSizedExpandingExample';
+import SectionScrollingWrapper from './styles/NxViewportSized/SectionScrollingWrapper';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
@@ -68,14 +68,14 @@ function Application() {
           <Route exact path="/" component={Page} />
 
           {/* Special cases, these examples need their own page separate from their documentation */}
-          <Route exact path="/NxViewportSizedScrollableExample">
+          <Route exact path="/NxViewportSizedExample">
             <SectionScrollingWrapper>
-              <NxViewportSizedScrollableExample />
+              <NxViewportSizedExample />
             </SectionScrollingWrapper>
           </Route>
-          <Route exact path="/NxViewportSizedScrollableGrowableExample">
+          <Route exact path="/NxViewportSizedExpandingExample">
             <SectionScrollingWrapper>
-              <NxViewportSizedScrollableGrowableExample />
+              <NxViewportSizedExpandingExample />
             </SectionScrollingWrapper>
           </Route>
           <Redirect to="/" />

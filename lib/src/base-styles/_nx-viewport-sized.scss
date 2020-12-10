@@ -5,14 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-.nx-page-main--viewport-sized-scrollable {
+.nx-viewport-sized {
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
-
 }
 
-.nx-viewport-sized-scrollable-parent, .nx-page-main--viewport-sized-scrollable {
+.nx-viewport-sized__container, .nx-viewport-sized {
   > * {
     box-sizing: border-box;
     flex-shrink: 0;
@@ -22,22 +21,22 @@
 }
 
 // note: it is important that these properties appear below the nested block above for specificity reasons
-.nx-viewport-sized-scrollable-parent {
+.nx-viewport-sized__container {
   display: flex;
   flex-direction: column;
   flex-shrink: 1;
   overflow-y: hidden;
 }
 
-.nx-viewport-sized-scrollable-parent--growable {
+.nx-viewport-sized__container--expanding {
   flex-grow: 1;
 
-  > .nx-viewport-sized-scrollable {
+  > .nx-viewport-sized__scrollable {
     flex-grow: 1;
   }
 }
 
-.nx-viewport-sized-scrollable {
+.nx-viewport-sized__scrollable {
   flex-shrink: 1;
   max-height: unset;
 }

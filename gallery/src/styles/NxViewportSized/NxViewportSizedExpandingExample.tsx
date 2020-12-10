@@ -10,22 +10,21 @@ import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxBackButto
 
 export default function NxViewportSizedScrollableExample() {
   return (
-    <main className="nx-page-main nx-page-main--viewport-sized-scrollable gallery-nx-viewport-sized-scrollable-example">
-      <NxBackButton targetPageTitle="nx-viewport-sized-scrollable Docs" href="#/pages/nx-viewport-sized-scrollable"/>
-      <section className="nx-tile nx-viewport-sized-scrollable-parent nx-viewport-sized-scrollable-parent--growable">
+    <main className="nx-page-main nx-viewport-sized">
+      <NxBackButton targetPageTitle="nx-viewport-sized Docs" href="#/pages/nx-viewport-sized"/>
+      <section className="nx-tile nx-viewport-sized__container nx-viewport-sized__container--expanding">
         <header className="nx-tile-header">
           <div className="nx-tile-header__title">
             <h2 className="nx-h2">A table, with some stuff above</h2>
           </div>
         </header>
-        <div className="nx-tile-content nx-viewport-sized-scrollable-parent
-                        nx-viewport-sized-scrollable-parent--growable">
+        <div className="nx-tile-content nx-viewport-sized__container nx-viewport-sized__container--expanding">
           <p className="nx-p">
             Observe that the table below, along with its containing tile, expands to fit the viewport.
             As the page size is adjusted, the table size changes accordingly. If the page is made so short that
-            the table does not fit, it gets a scrollbar just as in the non-growable example.
+            the table does not fit, it gets a scrollbar just as in the non-expanding example.
           </p>
-          <div className="nx-scrollable nx-table-container nx-viewport-sized-scrollable">
+          <div className="nx-scrollable nx-table-container nx-viewport-sized__scrollable">
             <NxTable>
               <NxTableHead>
                 <NxTableRow>

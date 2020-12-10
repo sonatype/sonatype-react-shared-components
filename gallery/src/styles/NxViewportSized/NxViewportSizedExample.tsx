@@ -10,15 +10,15 @@ import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxBackButto
 
 export default function NxViewportSizedScrollableExample() {
   return (
-    <main className="nx-page-main nx-page-main--viewport-sized-scrollable gallery-nx-viewport-sized-scrollable-example">
-      <NxBackButton targetPageTitle="nx-viewport-sized-scrollable Docs" href="#/pages/nx-viewport-sized-scrollable"/>
-      <section className="nx-tile nx-viewport-sized-scrollable-parent">
+    <main className="nx-page-main nx-viewport-sized">
+      <NxBackButton targetPageTitle="nx-viewport-sized Docs" href="#/pages/nx-viewport-sized"/>
+      <section className="nx-tile nx-viewport-sized__container">
         <header className="nx-tile-header">
           <div className="nx-tile-header__title">
             <h2 className="nx-h2">A table, with some stuff above</h2>
           </div>
         </header>
-        <div className="nx-tile-content nx-viewport-sized-scrollable-parent">
+        <div className="nx-tile-content nx-viewport-sized__container">
           <p className="nx-p">
             Observe that the table below, along with its containing tile, shrinks to fit the viewport and gets a
             scrollbar. As the page size is adjusted, the table size changes accordingly.
@@ -33,7 +33,7 @@ export default function NxViewportSizedScrollableExample() {
           <NxInfoAlert>
             This alert is stretched as expected.
           </NxInfoAlert>
-          <div className="nx-scrollable nx-table-container nx-viewport-sized-scrollable">
+          <div className="nx-scrollable nx-table-container nx-viewport-sized__scrollable">
             <NxTable>
               <NxTableHead>
                 <NxTableRow>
