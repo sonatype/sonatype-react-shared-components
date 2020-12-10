@@ -60,7 +60,7 @@ const NxReadOnlyPage = () => {
       <GalleryExampleTile title="Styling read-only lists of data"
                           codeExamples={nxReadOnlyDlExampleCode}
                           htmlExample={nxReadOnlyDlExampleCode}>
-        Standard <code className="nx-code">nx-read-only</code> layout, by default all text wraps.
+        Standard <code className="nx-code">nx-read-only</code> layouts, by default all text wraps.
       </GalleryExampleTile>
     </>
   );
