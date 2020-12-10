@@ -6,16 +6,16 @@
  */
 describe('nx-viewport-sized-scrollable', function() {
   beforeEach(async function() {
-    await browser.url('#/NxViewportSizedScrollableExample');
+    await browser.url('#/NxViewportSizedExample');
   });
 
   it('looks right', async function() {
     await browser.eyesSnapshot(null);
   });
 
-  describe('nx-viewport-sized-scrollable growable', function() {
+  describe('nx-viewport-sized expanding', function() {
     beforeEach(async function() {
-      await browser.url('#/NxViewportSizedScrollableGrowableExample');
+      await browser.url('#/NxViewportSizedGrowableExample');
     });
 
     it('looks right', async function() {
