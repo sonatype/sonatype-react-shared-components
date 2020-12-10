@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-describe('nx-viewport-sized-scrollable', function() {
+describe('nx-viewport-sized', function() {
   beforeEach(async function() {
     await browser.url('#/NxViewportSizedExample');
   });
