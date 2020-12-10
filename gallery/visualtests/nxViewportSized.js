@@ -15,7 +15,7 @@ describe('nx-viewport-sized', function() {
 
   describe('nx-viewport-sized expanding', function() {
     beforeEach(async function() {
-      await browser.url('#/NxViewportSizedGrowableExample');
+      await browser.url('#/NxViewportSizedExpandingExample');
     });
 
     it('looks right', async function() {
