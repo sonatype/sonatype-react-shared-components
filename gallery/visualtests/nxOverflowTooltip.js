@@ -37,6 +37,7 @@ describe('NxOverflowTooltip', function() {
     const btnEl = await browser.$(btnSelector);
 
     await btnEl.moveTo();
+    await browser.pause(1000);
   }
 
   it('does not display a tooltip when a non-overflowing element is hovered', async function() {
@@ -58,6 +59,7 @@ describe('NxOverflowTooltip', function() {
     await openDropdownAndHoverButton(btn3Selector);
     const tooltipEl = await browser.$(tooltipSelector);
 
+    await browser.pause(1000);
     expect(await tooltipEl.isDisplayed()).toBe(true);
     expect(await tooltipEl.getText()).toBe('Foo Button 3 - this text is long and should truncate with a tooltip');
   });
@@ -78,6 +80,7 @@ describe('NxOverflowTooltip', function() {
 
         await targetEl.moveTo();
 
+        await browser.pause(1000);
         expect(await tooltipEl.isExisting()).toBe(true);
         expect(await tooltipEl.getText()).toBe(maxBeforeOverflowStr + 'W');
       }
@@ -94,6 +97,7 @@ describe('NxOverflowTooltip', function() {
         await inputEl.setValue(maxBeforeOverflowStr + 'W');
         await targetEl.moveTo();
 
+        await browser.pause(1000);
         expect(await tooltipEl.isExisting()).toBe(true);
 
         await inputEl.setValue(maxBeforeOverflowStr);
@@ -120,6 +124,7 @@ describe('NxOverflowTooltip', function() {
         await browser.setWindowSize(1366, 1000);
         await targetEl.moveTo();
 
+        await browser.pause(1000);
         expect(await tooltipEl.isExisting()).toBe(true);
         expect(await tooltipEl.getText()).toBe(maxBeforeOverflowStr + 'W');
       }
@@ -136,6 +141,7 @@ describe('NxOverflowTooltip', function() {
         await inputEl.setValue(maxBeforeOverflowStr + 'W');
         await targetEl.moveTo();
 
+        await browser.pause(1000);
         expect(await tooltipEl.isExisting()).toBe(true);
 
         await browser.setWindowSize(1400, 1000);
