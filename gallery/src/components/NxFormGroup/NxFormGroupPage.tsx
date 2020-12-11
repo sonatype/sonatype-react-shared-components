@@ -106,7 +106,7 @@ const NxFormGroupPage = () =>
                         codeExamples={nxFormGroupSublabelExampleCode}>
       An example of an <code className="nx-code">NxFormGroup</code> which includes a sublabel. This example also
       shows that <code className="nx-code">NxFormGroup</code> can wrap a
-      <code className="nx-code">&lt;select&gt;</code> in addition to
+      {' '}<code className="nx-code">&lt;select&gt;</code> in addition to
       an <code className="nx-code">NxTextInput</code>.
     </GalleryExampleTile>
 
