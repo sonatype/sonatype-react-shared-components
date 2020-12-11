@@ -165,3 +165,5 @@ export { default as NxIndeterminatePagination, Props as NxIndeterminatePaginatio
 
 export { default as NxPolicyViolationIndicator, Props as NxPolicyViolationIndicatorProps }
   from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicator';
+
+export { default as NxFormGroup, Props as NxFormGroupProps } from './components/NxFormGroup/NxFormGroup';

@@ -45,6 +45,7 @@
 
 .nx-label__text, .nx-legend__text {
   @include bold();
+  @include container-horizontal;
 
   color: $nx-text-color-dark;
   cursor: default;
