@@ -6,8 +6,12 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody } from '@sonatype/react-shared-components';
+
+import NxFormExample from './NxFormExample';
+
+const NxFormExampleCode = require('raw-loader!!./NxFormExample').default;
 
 const NxFormGroupPage = () =>
   <>
@@ -178,6 +182,13 @@ const NxFormGroupPage = () =>
         </NxTableBody>
       </NxTable>
     </GalleryDescriptionTile>
+
+    <GalleryExampleTile title="Simple Example"
+                        id="nx-form-example"
+                        codeExamples={NxFormExampleCode}
+                        liveExample={NxFormExample}>
+      This example shows a standard vertical form layout with validation on some fields.
+    </GalleryExampleTile>
   </>;
 
 export default NxFormGroupPage;
