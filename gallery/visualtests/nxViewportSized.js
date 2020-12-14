@@ -5,21 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 describe('nx-viewport-sized', function() {
-  beforeEach(async function() {
+  it('looks right when shrinking content', async function() {
     await browser.url('#/NxViewportSizedExample');
-  });
-
-  it('looks right', async function() {
     await browser.eyesSnapshot(null);
   });
 
-  describe('nx-viewport-sized expanding', function() {
-    beforeEach(async function() {
-      await browser.url('#/NxViewportSizedExpandingExample');
-    });
-
-    it('looks right', async function() {
-      await browser.eyesSnapshot(null);
-    });
+  it('looks right when expanding content', async function() {
+    await browser.url('#/NxViewportSizedExpandingExample');
+    await browser.eyesSnapshot(null);
   });
 });
