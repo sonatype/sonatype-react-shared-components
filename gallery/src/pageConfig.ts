@@ -81,6 +81,7 @@ import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStateful
 import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
 import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
 import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
+import NxFormPage from './components/NxForm/NxFormPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -98,6 +99,7 @@ const pageConfig: PageConfig = {
     NxStatefulDropdown: NxStatefulDropdownPage,
     NxFilterInput: NxFilterInputPage,
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
+    NxForm: NxFormPage,
     NxFormGroup: NxFormGroupPage,
     NxLoadError: NxLoadErrorPage,
     NxLoadWrapper: NxLoadWrapperPage,
