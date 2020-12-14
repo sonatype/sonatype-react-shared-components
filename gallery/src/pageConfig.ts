@@ -18,7 +18,6 @@ import NxLoadWrapperPage from './components/NxLoadWrapper/NxLoadWrapperPage';
 import NxModalPage from './components/NxModal/NxModalPage';
 import NxPageTitlePage from './styles/NxPageTitle/NxPageTitlePage';
 import NxTilePage from './styles/NxTile/NxTilePage';
-//import NxTextInputStylesPage from './styles/NxTextInputStyles/NxTextInputStylesPage';
 import NxBtnPage from './styles/NxBtn/NxBtnPage';
 import NxThreatIndicatorPage from './components/NxThreatIndicator/NxThreatIndicatorPage';
 import NxRadioPage from './components/NxRadio/NxRadioPage';
@@ -81,6 +80,8 @@ import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
 import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
 import NxViewportSizedPage from './styles/NxViewportSized/NxViewportSizedPage';
 import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
+import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
+import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -98,6 +99,7 @@ const pageConfig: PageConfig = {
     NxStatefulDropdown: NxStatefulDropdownPage,
     NxFilterInput: NxFilterInputPage,
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
+    NxFormGroup: NxFormGroupPage,
     NxLoadError: NxLoadErrorPage,
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,
@@ -143,6 +145,7 @@ const pageConfig: PageConfig = {
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
     'nx-page-title': NxPageTitlePage,
+    'nx-read-only': NxReadOnlyPage,
     'nx-form-select': NxFormSelectPage,
     'nx-table': NxTableStylePage,
     'nx-table-container': NxTableContainerPage,

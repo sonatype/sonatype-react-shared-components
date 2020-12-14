@@ -55,8 +55,10 @@ function NxAccordionHeader({ className, onClick: onClickProp, children, ...other
              role="button"
              aria-controls={accordionId}
              { ...otherProps }>
-      <NxFontAwesomeIcon className="nx-accordion__chevron" icon={open ? faChevronCircleUp : faChevronCircleDown} />
-      {children}
+      <div className="nx-accordion__summary-wrapper">
+        <NxFontAwesomeIcon className="nx-accordion__chevron" icon={open ? faChevronCircleUp : faChevronCircleDown} />
+        {children}
+      </div>
     </summary>
   );
 }
