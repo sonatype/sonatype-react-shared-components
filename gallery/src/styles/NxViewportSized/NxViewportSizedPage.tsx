@@ -157,30 +157,6 @@ export default function NxViewportSizedPage() {
       <section className="nx-tile">
         <header className="nx-tile-header">
           <div className="nx-tile-header__title">
-            <h2 className="nx-h2">Shrinking Example</h2>
-          </div>
-        </header>
-        <div className="nx-tile-content">
-          <p className="nx-p">
-            In this example, the dynamic element is a large table who's scroll container shrinks to fit into the page.
-          </p>
-          <p className="nx-p">
-            Demonstrating viewport sizing requires that the other content on the page is small enough to
-            give the scrollable element adequate vertical space at any supported resolution. Therefore, while the code
-            snippets are displayed below, the actual live example is a separate page.
-          </p>
-          <p className="nx-p">
-            <a className="nx-text-link" href="#/NxViewportSizedExample">
-              Click here to navigate to the live example.
-            </a>
-          </p>
-          <CodeExample content={NxViewportSizedExample} />
-        </div>
-      </section>
-
-      <section className="nx-tile">
-        <header className="nx-tile-header">
-          <div className="nx-tile-header__title">
             <h2 className="nx-h2">Expanding Example</h2>
           </div>
         </header>
@@ -200,6 +176,29 @@ export default function NxViewportSizedPage() {
             </a>
           </p>
           <CodeExample content={NxViewportSizedExpandingExample} />
+        </div>
+      </section>
+      <section className="nx-tile">
+        <header className="nx-tile-header">
+          <div className="nx-tile-header__title">
+            <h2 className="nx-h2">Shrinking Example</h2>
+          </div>
+        </header>
+        <div className="nx-tile-content">
+          <p className="nx-p">
+            In this example, the dynamic element is a large table who's scroll container shrinks to fit into the page.
+          </p>
+          <p className="nx-p">
+            Demonstrating viewport sizing requires that the other content on the page is small enough to
+            give the scrollable element adequate vertical space at any supported resolution. Therefore, while the code
+            snippets are displayed below, the actual live example is a separate page.
+          </p>
+          <p className="nx-p">
+            <a className="nx-text-link" href="#/NxViewportSizedExample">
+              Click here to navigate to the live example.
+            </a>
+          </p>
+          <CodeExample content={NxViewportSizedExample} />
         </div>
       </section>
     </>
