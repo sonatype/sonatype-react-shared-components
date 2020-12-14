@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { faSync, faSave, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faSync, faSave, faEdit, faSmile } from '@fortawesome/free-solid-svg-icons';
 
 import { NxButton, NxFontAwesomeIcon, NxTooltip } from '@sonatype/react-shared-components';
 
@@ -17,11 +17,15 @@ const NxButtonIconExample = () =>
     </NxButton>
 
     <NxTooltip title="Save">
-      <NxButton><NxFontAwesomeIcon icon={faSave} aria-label="save" /></NxButton>
+      <NxButton><NxFontAwesomeIcon icon={faSave} /></NxButton>
     </NxTooltip>
 
     <NxTooltip title="Edit">
-      <NxButton variant="tertiary"><NxFontAwesomeIcon icon={faEdit} aria-label="edit" /></NxButton>
+      <NxButton variant="tertiary"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+    </NxTooltip>
+
+    <NxTooltip title="Smile">
+      <NxButton variant="primary"><NxFontAwesomeIcon icon={faSmile} /></NxButton>
     </NxTooltip>
   </div>;
 
