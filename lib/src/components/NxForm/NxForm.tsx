@@ -15,9 +15,10 @@ import NxTooltip from '../NxTooltip/NxTooltip';
 import NxSubmitMask from '../NxSubmitMask/NxSubmitMask';
 
 import { Props, propTypes } from './types';
+import { getFirstValidationError, hasValidationErrors } from '../../util/validationUtil';
 
 const NxForm = forwardRef<HTMLFormElement, Props>(
-    function NxForm(props) {
+    function NxForm(props, ref) {
       const {
             loading,
             doLoad,
@@ -25,18 +26,19 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
             onCancel,
             loadError,
             submitError,
-            validationError,
+            validationErrors,
             submitBtnClasses: submitBtnClassesProp,
             submitBtnText,
             submitMaskState,
             submitMaskMessage,
             submitMaskSuccessMessage,
+            submitMaskFullscreen,
             children,
             additionalFooterBtns,
             ...formAttrs
           } = props,
           getChildren = children instanceof Function ? children : always(children),
-          submitDisabled = !!validationError,
+          submitDisabled = hasValidationErrors(validationErrors),
           submitBtnClasses = classnames(submitBtnClassesProp, {
             disabled: submitDisabled
           });
@@ -50,7 +52,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
       }
 
       const renderForm = () => (
-        <form className="nx-form" onSubmit={onSubmit} { ...formAttrs }>
+        <form ref={ref} className="nx-form" onSubmit={onSubmit} { ...formAttrs }>
           { getChildren() }
           <footer className="nx-footer">
             { submitError &&
@@ -62,8 +64,8 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
             <div className="nx-btn-bar">
               { additionalFooterBtns }
               { onCancel && <NxButton type="button" onClick={onCancel}>Cancel</NxButton> }
-              { !submitError ||
-                <NxTooltip title={validationError || ''}>
+              { !submitError &&
+                <NxTooltip title={getFirstValidationError(validationErrors) || ''}>
                   <NxButton variant="primary" className={submitBtnClasses || undefined}>
                     {submitBtnText || 'Submit'}
                   </NxButton>
@@ -73,8 +75,9 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
 
           </footer>
           { submitMaskState != null &&
-            <NxSubmitMask success={ submitMaskState }
+            <NxSubmitMask success={submitMaskState}
                           message={submitMaskMessage}
+                          fullscreen={submitMaskFullscreen == null ? true : submitMaskFullscreen}
                           successMessage={submitMaskSuccessMessage} />
           }
         </form>

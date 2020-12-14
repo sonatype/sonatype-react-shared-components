@@ -11,9 +11,9 @@ import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody } from '@son
 
 import NxFormExample from './NxFormExample';
 
-const NxFormExampleCode = require('raw-loader!!./NxFormExample').default;
+const NxFormExampleCode = require('!raw-loader!!./NxFormExample').default;
 
-const NxFormGroupPage = () =>
+const NxFormPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
@@ -71,7 +71,9 @@ const NxFormGroupPage = () =>
               <a className="nx-text-link" href="#/pages/NxLoadWrapper">
                 <code className="nx-code">NxLoadWrapper</code>
               </a>
-              {' '}and this function is wired up to the retry button on the load error alert.
+              {' '}and this function is wired up to the retry button on the load error alert. Note that the
+              initial load of the form data is expected to be triggered externally{' '}
+              – <code className="nx-code">NxForm</code> only calls this function in response to the Retry button.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
@@ -167,8 +169,15 @@ const NxFormGroupPage = () =>
             <NxTableCell>No</NxTableCell>
             <NxTableCell>Success!</NxTableCell>
             <NxTableCell>
-              The message to display in the submit mask while the form submission is pending
+              The message to briefly display in the submit mask while the form submission has succeeded
             </NxTableCell>
+          </NxTableRow>
+          <NxTableRow>
+            <NxTableCell>submitMaskFullscreen</NxTableCell>
+            <NxTableCell>boolean</NxTableCell>
+            <NxTableCell>No</NxTableCell>
+            <NxTableCell>true</NxTableCell>
+            <NxTableCell>Whether to display the success mask fullscreen vs just covering the form</NxTableCell>
           </NxTableRow>
           <NxTableRow>
             <NxTableCell>additionalFooterBtns</NxTableCell>
@@ -187,8 +196,9 @@ const NxFormGroupPage = () =>
                         id="nx-form-example"
                         codeExamples={NxFormExampleCode}
                         liveExample={NxFormExample}>
-      This example shows a standard vertical form layout with validation on some fields.
+      This example shows a simple asynchronously loading NxForm. The example is contrived such that the
+      form fails to load the first time, but does load (after a brief wait) upon a second attempt.
     </GalleryExampleTile>
   </>;
 
-export default NxFormGroupPage;
+export default NxFormPage;

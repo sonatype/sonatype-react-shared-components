@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { ValidationErrors } from '../components/NxTextInput/types';
+import { reject, isNil, flatten } from 'ramda';
 
 export { ValidationErrors };
 
@@ -42,3 +43,7 @@ export function getFirstValidationError(validationErrors: ValidationErrors | und
     return validationErrors;
   }
 };
+
+export function combineValidationErrors(...validationErrors: (ValidationErrors | undefined)[]): ValidationErrors {
+  return reject(isNil, flatten(validationErrors)) as ValidationErrors;
+}

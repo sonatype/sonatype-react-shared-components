@@ -6,12 +6,13 @@
  */
 import React, { useState, useEffect, FormEvent } from 'react';
 
-import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { NxButton, NxCheckbox, NxFontAwesomeIcon, NxForm, NxRadio, NxStatefulTextInput }
+import { NxCheckbox, NxForm, NxRadio, NxStatefulTextInput, NxFormGroup, NxTextInput }
   from '@sonatype/react-shared-components';
 import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
+import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
+import { combineValidationErrors, hasValidationErrors } from '@sonatype/react-shared-components/util/validationUtil';
 
-export default function NxFormLayoutExample() {
+export default function NxFormExample() {
   function validator(val: string) {
     return val.length ? null : 'Must be non-empty';
   }
@@ -22,32 +23,47 @@ export default function NxFormLayoutExample() {
     setSelectVal(evt.currentTarget.value);
   }
 
-  const [isRed, setIsRed] = useState(false),
-      [isBlue, setIsBlue] = useState(false),
-      [isGreen, setIsGreen] = useState(false),
+  const [usernameState, setUsernameState] = useState(initialState('', validator)),
+      [hostnameState, setHostnameState] = useState(initialState('')),
+      [redChecked, setRedChecked] = useState(false),
+      [blueChecked, setBlueChecked] = useState(false),
+      [greenChecked, setGreenChecked] = useState(false),
       [radioColor, setRadioColor] = useState<string | null>(null),
       [loading, setLoading] = useState(true),
       [loadError, setLoadError] = useState<string | null>(null),
       [submitCount, setSubmitCount] = useState(0),
       [submitError, setSubmitError] = useState<string | null>(null),
       [submitMaskState, setSubmitMaskState] = useState<boolean | null>(null),
-      toggleRed = () => setIsRed(!isRed),
-      toggleBlue = () => setIsBlue(!isBlue),
-      toggleGreen = () => setIsGreen(!isGreen);
+      toggleRed = () => setRedChecked(!redChecked),
+      toggleBlue = () => setBlueChecked(!blueChecked),
+      toggleGreen = () => setGreenChecked(!greenChecked),
+      radioValidationErrors = (redChecked || blueChecked || greenChecked) ?
+        null : 'Please select at least one checkbox',
+      requiredFieldValidationErrors = hasValidationErrors(usernameState.validationErrors) ?
+        'Missing required fields' : null,
+      validationErrors = combineValidationErrors(requiredFieldValidationErrors, radioValidationErrors);
 
-  const validationError = (isRed || isBlue || isGreen) ? '' : 'Please select at least one checkbox';
+  function onUsernameChange(val: string) {
+    setUsernameState(userInput(validator, val));
+  }
+
+  function onHostnameChange(val: string) {
+    setHostnameState(userInput(validator, val));
+  }
 
   useEffect(function() {
+    // For the sake of example, simulate an async load which fails
     setTimeout(function() {
       setLoading(false);
-      setLoadError('Error loading stuff!');
-    }, 5000);
+      setLoadError('Error loading the form');
+    }, 2500);
   }, []);
 
   function doLoad() {
     setLoading(true);
     setLoadError(null);
 
+    // For the sake of example, simulate an async load which succeeds
     setTimeout(function() {
       setLoading(false);
       setLoadError(null);
@@ -55,8 +71,10 @@ export default function NxFormLayoutExample() {
   }
 
   function onSubmit() {
+    // For the sake of example, simulate that the submit fails the first time, and then upon retry
+    // succeeds after 3 seconds
     if (submitCount < 1) {
-      setSubmitError('Stuff could not be saved!');
+      setSubmitError('The form could not be saved!');
     }
     else {
       setSubmitError(null);
@@ -79,49 +97,23 @@ export default function NxFormLayoutExample() {
     <NxForm loading={loading}
             doLoad={doLoad}
             onSubmit={onSubmit}
-            onCancel={() => alert('Cancelled')}
             loadError={loadError}
             submitError={submitError}
-            validationError={validationError}
-            submitBtnClasses="my-submit-btn"
-            submitBtnText="Submit it!"
-            submitMaskState={submitMaskState}
-            submitMaskMessage="Submitting!"
-            submitMaskSuccessMessage="Successfully successful!"
-            additionalFooterBtns={
-              <NxButton type="button" onClick={() => alert('Clicked that other button')} variant="tertiary">
-                That Other Button
-              </NxButton>
-            }>
-      <div className="nx-form-group">
-        <label className="nx-label">
-          <span className="nx-label__text">A Field to Fill in</span>
-          <NxStatefulTextInput aria-required={true} validator={validator}/>
-        </label>
-      </div>
-      <div className="nx-form-group">
-        <label htmlFor="input-2" className="nx-label nx-label--optional">
-          <span className="nx-label__text">Username</span>
-        </label>
-        <NxStatefulTextInput id="input-2"/>
-      </div>
-      <div className="nx-form-group">
-        <label htmlFor="long-field" className="nx-label nx-label--optional">
-          <span className="nx-label__text">Hostname</span>
-        </label>
-        <span className="nx-sub-label">
-          <NxFontAwesomeIcon icon={faCalendar}/>
-          <span id="long-field-sublabel">The field element below is wider than the default.</span>
-        </span>
-        <NxStatefulTextInput id="long-field" aria-describedby="long-field-sublabel" className="nx-text-input--long"/>
-      </div>
+            validationErrors={validationErrors}
+            submitMaskState={submitMaskState}>
+      <NxFormGroup label="Username" isRequired>
+        <NxTextInput { ...usernameState } onChange={onUsernameChange} validatable/>
+      </NxFormGroup>
+      <NxFormGroup label="Hostname">
+        <NxTextInput { ...hostnameState } onChange={onHostnameChange} className="nx-text-input--long"/>
+      </NxFormGroup>
       <fieldset className="nx-fieldset">
         <legend className="nx-legend">
           <span className="nx-legend__text">Colors</span>
         </legend>
-        <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
-        <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
-        <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
+        <NxCheckbox onChange={toggleRed} isChecked={redChecked}>Red</NxCheckbox>
+        <NxCheckbox onChange={toggleBlue} isChecked={blueChecked}>Blue</NxCheckbox>
+        <NxCheckbox onChange={toggleGreen} isChecked={greenChecked}>Green</NxCheckbox>
       </fieldset>
       <fieldset className="nx-fieldset">
         <legend className="nx-legend nx-legend--optional">
@@ -147,25 +139,19 @@ export default function NxFormLayoutExample() {
           Blue
         </NxRadio>
       </fieldset>
-      <div className="nx-form-group">
-        <label className="nx-label">
-          <span className="nx-label__text">Select</span>
-          <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
-            <option value="">Select an option</option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-            <option value="option4">Option 4</option>
-            <option value="option5">Option 5</option>
-          </select>
-        </label>
-      </div>
-      <div className="nx-form-group">
-        <label className="nx-label">
-          <span className="nx-label__text">Comments</span>
-          <NxStatefulTextInput type="textarea" placeholder="placeholder"/>
-        </label>
-      </div>
+      <NxFormGroup label="Select">
+        <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
+          <option value="">Select an option</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+          <option value="option4">Option 4</option>
+          <option value="option5">Option 5</option>
+        </select>
+      </NxFormGroup>
+      <NxFormGroup label="Comments">
+        <NxStatefulTextInput type="textarea" placeholder="placeholder"/>
+      </NxFormGroup>
     </NxForm>
   );
 }
