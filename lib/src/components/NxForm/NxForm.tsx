@@ -61,7 +61,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
 
             <div className="nx-btn-bar">
               { additionalFooterBtns }
-              <NxButton type="button" onClick={onCancel}>Cancel</NxButton>
+              { onCancel && <NxButton type="button" onClick={onCancel}>Cancel</NxButton> }
               { !!submitError ||
                 <NxTooltip title={validationError || ''}>
                   <NxButton variant="primary" className={submitBtnClasses || undefined}>
