@@ -50,6 +50,11 @@ const PageLayoutPage = () =>
         the sidebar and main content areas scroll together if either has content which overflows and causes scrollbars
         to appear. The header and footer (if used) remain fixed. Note that the RSC gallery uses this scrolling mode.
       </p>
+      <p className="nx-p">
+        When in "section scrolling" mode, the the <code className="nx-code">.nx-viewport-sized</code> family of classes
+        may be used to fit the contents of a section to the height of that section, as described on{' '}
+        the <a className="nx-text-link" href="#/pages/nx-viewport-sized">nx-viewport-sized helper class page</a>.
+      </p>
       <h2 className="nx-h2">Page layout illustrations</h2>
       <h3 className="nx-h3">Standard two column layout</h3>
       <p className="nx-p">
