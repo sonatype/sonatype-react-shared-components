@@ -68,8 +68,8 @@ export default function NxButtonPage() {
                           id="nx-button-icon-example"
                           liveExample={NxButtonIconExample}
                           codeExamples={nxButtonIconCode}>
-        An example of buttons containing icons. When an icon's only content consists of an icon it should be wrapped
-        in an <code className="nx-code">NxTooltip</code> and its <code className="nx-code">aria-label</code> set.
+        An example of buttons containing icons. When an button's only content consists of an icon it should be wrapped
+        in an <code className="nx-code">NxTooltip</code> for accessibility.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Icon only buttons"
@@ -78,8 +78,7 @@ export default function NxButtonPage() {
                           codeExamples={nxButtonIconOnlyCode}>
         The <code className="nx-code">icon-only</code> variant is meant to be used in places like lists or tables where
         a slightly smaller button size is desirable. For accessibility purposes it is important to wrap it in
-        an <code className="nx-code">NxTooltip</code> and an <code className="nx-code">aria-label</code> for the screen
-        reader to interpret the content correctly.
+        an <code className="nx-code">NxTooltip</code>.
       </GalleryExampleTile>
     </>
   );
