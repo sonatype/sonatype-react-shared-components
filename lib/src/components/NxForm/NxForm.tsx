@@ -36,13 +36,17 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
             ...formAttrs
           } = props,
           getChildren = children instanceof Function ? children : always(children),
+          submitDisabled = !!validationError,
           submitBtnClasses = classnames(submitBtnClassesProp, {
-            disabled: !!validationError
+            disabled: submitDisabled
           });
 
       function onSubmit(evt: FormEvent) {
         evt.preventDefault();
-        onSubmitProp();
+
+        if (!submitDisabled) {
+          onSubmitProp();
+        }
       }
 
       const renderForm = () => (
