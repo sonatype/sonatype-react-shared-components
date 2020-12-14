@@ -117,30 +117,14 @@ export default function NxViewportSizedPage() {
                 </NxTableCell>
               </NxTableRow>
               <NxTableRow>
-                <NxTableCell>
-                  <code className="nx-code">nx-viewport-sized__container--expanding</code>
-                </NxTableCell>
-                <NxTableCell>
-                  Modifier on each <code className="nx-code">.nx-viewport-sized__container</code>
-                </NxTableCell>
-                <NxTableCell>
-                  Adding this modifier causes the scrollable to also grow to fit the page if there is extra space.
-                  By default (without this modifier), the <code className="nx-code">nx-viewport-sized</code> classes
-                  only cause the scrollable to shrink when it is too large, and leave it at its natural height if
-                  there is extra space. Note that to get the expanding behavior, this class must be applied to
-                  all <code className="nx-code">.nx-viewport-sized__container</code>s in the ancestor hierarchy, not
-                  just one of them.
-                </NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
                 <NxTableCell><code className="nx-code">nx-viewport-sized__scrollable</code></NxTableCell>
                 <NxTableCell>
                   The <code className="nx-code">.nx-scrollable</code> that is intended to adjust to the size of
                   the page.
                 </NxTableCell>
                 <NxTableCell>
-                  This class makes the target <code className="nx-code">.nx-scrollable</code> shrink from its natural
-                  height to fit the page. It removes the default max-height from
+                  This class makes the target <code className="nx-code">.nx-scrollable</code> shrink or expand from its
+                  natural height to fit the page. It removes the default max-height from
                   the <code className="nx-code">.nx-scrollable</code>.
                 </NxTableCell>
               </NxTableRow>
@@ -173,10 +157,13 @@ export default function NxViewportSizedPage() {
       <section className="nx-tile">
         <header className="nx-tile-header">
           <div className="nx-tile-header__title">
-            <h2 className="nx-h2">Typical Example</h2>
+            <h2 className="nx-h2">Shrinking Example</h2>
           </div>
         </header>
         <div className="nx-tile-content">
+          <p className="nx-p">
+            In this example, the dynamic element is a large table who's scroll container shrinks to fit into the page.
+          </p>
           <p className="nx-p">
             Demonstrating viewport sizing requires that the other content on the page is small enough to
             give the scrollable element adequate vertical space at any supported resolution. Therefore, while the code
@@ -199,11 +186,13 @@ export default function NxViewportSizedPage() {
         </header>
         <div className="nx-tile-content">
           <p className="nx-p">
-            By default, viewport sizing will only shrink the dynamic element to fit the viewport. If it is naturally
-            shorter than the available space, it will not grow to fill it. If it is desired for content to also grow
-            to fit the available space,
-            the <code className="nx-code">.nx-viewport-sized__container--expanding</code> class can be added
-            to its ancestors. Follow the link below to see an example.
+            In this example, the dynamic element is a small table who's scroll container expands to fill the
+            available space in the page.
+          </p>
+          <p className="nx-p">
+            Demonstrating viewport sizing requires that the other content on the page is small enough to
+            give the scrollable element adequate vertical space at any supported resolution. Therefore, while the code
+            snippets are displayed below, the actual live example is a separate page.
           </p>
           <p className="nx-p">
             <a className="nx-text-link" href="#/NxViewportSizedExpandingExample">
