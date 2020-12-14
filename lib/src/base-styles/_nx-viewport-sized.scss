@@ -14,7 +14,7 @@
 .nx-viewport-sized__container, .nx-viewport-sized {
   > * {
     box-sizing: border-box;
-    flex-shrink: 0;
+    flex: none;
     margin-top: 0;
     width: 100%;
   }
@@ -24,19 +24,11 @@
 .nx-viewport-sized__container {
   display: flex;
   flex-direction: column;
-  flex-shrink: 1;
+  flex: auto;
   overflow-y: hidden;
 }
 
-.nx-viewport-sized__container--expanding {
-  flex-grow: 1;
-
-  > .nx-viewport-sized__scrollable {
-    flex-grow: 1;
-  }
-}
-
 .nx-viewport-sized__scrollable {
-  flex-shrink: 1;
+  flex: auto;
   max-height: unset;
 }
