@@ -9,19 +9,19 @@ import * as PropTypes from 'prop-types';
 
 export interface Props extends FormHTMLAttributes<HTMLFormElement> {
   loading?: boolean | null;
-  doLoad?: () => void | null,
-  onSubmit: () => void,
-  onCancel?: () => void,
-  loadError?: string | null,
-  submitError?: string | null,
-  validationError?: string | null,
-  submitBtnClasses?: string | null,
-  submitBtnText?: string | null,
-  submitMaskState?: boolean | null,
-  submitMaskMessage?: string | null,
-  submitMaskSuccessMessage?: string | null,
-  children: ReactNode,
-  additionalFooterBtns?: ReactNode | null
+  doLoad?: () => void | null;
+  onSubmit: () => void;
+  onCancel?: () => void;
+  loadError?: string | null;
+  submitError?: string | null;
+  validationError?: string | null;
+  submitBtnClasses?: string | null;
+  submitBtnText?: string | null;
+  submitMaskState?: boolean | null;
+  submitMaskMessage?: string | null;
+  submitMaskSuccessMessage?: string | null;
+  children: ReactNode;
+  additionalFooterBtns?: ReactNode | null;
 }
 
 export const propTypes: ValidationMap<Props> = {
