@@ -81,6 +81,7 @@ import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStateful
 import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
 import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
 import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
+import NxTogglePage from './components/NxToggle/NxTogglePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -114,6 +115,7 @@ const pageConfig: PageConfig = {
     NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
     NxTable: NxTablePage,
     NxTabs: NxTabsPage,
+    NxToggle: NxTogglePage,
     NxStatefulTabs: NxStatefulTabsPage,
     NxTextInput: NxTextInputPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
