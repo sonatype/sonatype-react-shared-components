@@ -22,14 +22,16 @@ function NxToggleExample() {
 
   return (
     <fieldset className="nx-fieldset">
-      <legend className="nx-label">
-        Selected colours: {isRed && 'Red'} {isBlue && 'Blue'} {isGreen && 'Green'}
+      <legend className="nx-legend">
+        <span className="nx-legend__text">
+          Selected colours: {isRed && 'Red'} {isBlue && 'Blue'} {isGreen && 'Green'}
+        </span>
       </legend>
-      <NxToggle checkboxId="subscribe-check" onChange={toggleRed} isChecked={isRed}>
+      <NxToggle toggleId="subscribe-check" onChange={toggleRed} isChecked={isRed}>
         Red
       </NxToggle>
-      <NxToggle checkboxId="no-label-check" onChange={toggleBlue} isChecked={isBlue}>Blue</NxToggle>
-      <NxToggle checkboxId="children-check" onChange={toggleGreen} isChecked={isGreen}>
+      <NxToggle toggleId="no-label-check" onChange={toggleBlue} isChecked={isBlue}>Blue</NxToggle>
+      <NxToggle toggleId="children-check" onChange={toggleGreen} isChecked={isGreen}>
         <svg width="12px" height="12px" viewBox="-1 -1 2 2">
           <circle r="1"/>
         </svg>
@@ -37,7 +39,7 @@ function NxToggleExample() {
         Green - A circle, a perfectly round SVG circle, pleasing to the eye, not too big and not too small, just right
         to appear beside a checkbox and demonstrate that the label wraps
       </NxToggle>
-      <NxToggle checkboxId="disabled-check"
+      <NxToggle toggleId="disabled-check"
                 disabled={true}
                 onChange={toggleDisabled}
                 isChecked={isDisabled}>

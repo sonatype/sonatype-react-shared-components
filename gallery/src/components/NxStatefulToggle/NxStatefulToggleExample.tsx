@@ -13,11 +13,11 @@ function NxStatefulToggleExample() {
 
   return (
     <>
-      <div>
-        <NxStatefulToggle ToggleId="subscribe-check" onChange={onChange} defaultChecked={false}>
+      <fieldset className="nx-fieldset">
+        <NxStatefulToggle toggleId="subscribe-check" onChange={onChange} defaultChecked={false}>
           Check
         </NxStatefulToggle>
-      </div>
+      </fieldset>
     </>
   );
 }
