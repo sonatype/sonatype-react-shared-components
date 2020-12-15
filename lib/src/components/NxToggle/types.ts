@@ -8,7 +8,7 @@ import { LabelHTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
 export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
-  checkboxId?: string | null;
+  toggleId?: string | null;
   onChange?: (() => void) | null;
   isChecked: boolean;
   disabled?: boolean | null;
@@ -17,7 +17,7 @@ export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
 // In a strictly typescript environment, PropTypes are mostly redundant.  However, they still provide safety when this
 // project is consumed by javascript projects
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  checkboxId: PropTypes.string,
+  toggleId: PropTypes.string,
   onChange: PropTypes.func,
   isChecked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool

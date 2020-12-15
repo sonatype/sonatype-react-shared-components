@@ -5,15 +5,71 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-text-helpers';
 
-.nx-toggle__box {
+.nx-toggle {
+  display: flex;
+  margin-bottom: $nx-spacing-md;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.nx-toggle--disabled {
+    &, &:hover {
+      cursor: default;
+
+      .nx-toggle__control {
+        background-color: $nx-grey-200;
+        border-color: $nx-grey-500;
+      }
+      .nx-toggle__indicator {
+        background-color: $nx-grey-500;
+      }
+    }
+  }
+
+  &:focus-within {
+    .nx-toggle__control {
+      border-color: $nx-focus-border-color;
+      filter: drop-shadow(0 0 3px rgba($nx-focus-border-color, 0.4));
+    }
+  }
+}
+
+.nx-toggle__input {
+  margin: 0;
+  position: absolute;
+  width: 0;
+  z-index: -1;
+
+  &:checked {
+    + .nx-toggle__control {
+      background-color: $nx-blue-600;
+
+      .nx-toggle__indicator {
+        background-color: #fff;
+        left: 23px;
+      }
+    }
+  }
+}
+
+.nx-toggle__content {
+  flex-grow: 1;
+}
+
+.nx-toggle__control {
+  background-color: #fff;
   border: 1px solid $nx-blue-600;
   border-radius: 12px;
   box-sizing: border-box;
   height: 24px;
-  padding: 4px;
+  margin-left: $nx-spacing-l;
+  padding: $nx-spacing-xxs - 1px;
   position: relative;
-  width: 44px;
+  min-width: 44px;
+  max-width: 44px;
 
   &:hover {
     border-color: $nx-grey-1100;
@@ -25,4 +81,8 @@
   border-radius: 8px;
   height: 16px;
   width: 16px;
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  transition: left 0.35s;
 }

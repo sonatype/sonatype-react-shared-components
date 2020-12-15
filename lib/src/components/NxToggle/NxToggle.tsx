@@ -6,47 +6,40 @@
  */
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import './NxToggle.scss';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
 /**
- * A stateless component for rendering a checkbox with a label
- * @param props.checkboxId An id to identify the checkbox
- * @param props.onChange A callback for when the checkbox is toggled
- * @param props.isChecked Whether the checkbox should be rendered as checked or unchecked
- * @param props.disabled Whether the checkbox should be rendered as disabled or not.  When disabled, the onChange
+ * A stateless component for rendering a toggle control with a label
+ * @param props.toggleId An id to identify the toggle
+ * @param props.onChange A callback for when the toggle is toggled
+ * @param props.isChecked Whether the toggle should be rendered as on/selected or off/unselected
+ * @param props.disabled Whether the toggle should be rendered as disabled or not.  When disabled, the onChange
  * callback will not fire
  * @param props.children VDOM rendered as label. Should be
  * [phrasing content](https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content).
  */
 const NxToggle = forwardRef<HTMLLabelElement, Props>(
-    function NxToggle({ className, onChange, isChecked, disabled, checkboxId, children, ...otherProps }, ref) {
+    function NxToggle({ className, onChange, isChecked, disabled, toggleId, children, ...otherProps }, ref) {
       const labelClasses = classnames('nx-toggle', className, {
-        'nx-radio-checkbox--disabled': disabled,
+        'nx-toggle--disabled': disabled,
         'tm-checked': isChecked,
         'tm-unchecked': !isChecked
       });
 
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
+          { children && <span className="nx-toggle__content">{children}</span> }
           <input type="checkbox"
-                 id={checkboxId || undefined}
+                 id={toggleId || undefined}
                  className="nx-toggle__input"
                  disabled={!!disabled}
                  checked={isChecked}
                  readOnly={!onChange}
                  onChange={onChange || undefined}/>
-          <span className="nx-toggle__box">
-            {/* Put a non-breaking space in the box if not checked,
-              * in order to provide a consistent vertical-align baseline
-              */}
-            { isChecked ? <FontAwesomeIcon icon={faCheck} /> : '\u00A0' }
-          </span>
-          { children && <span className="nx-toggle__content">{children}</span> }
+          <div className="nx-toggle__control"><div className="nx-toggle__indicator"></div></div>
         </label>
       );
     }
