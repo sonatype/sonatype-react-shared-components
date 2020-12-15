@@ -7,7 +7,7 @@
 @import '../scss-shared/nx-variables';
 
 .nx-btn-bar--pagination {
-  text-align: center;
+  justify-content: center;
 
   .nx-btn {
     height: $nx-pagination-button-height;
