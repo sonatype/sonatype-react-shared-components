@@ -7,19 +7,19 @@
 const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 const { Target } = require('@applitools/eyes-webdriverio');
 
-describe('NxCheckbox', function() {
+describe('NxToggle', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxCheckbox');
+    await browser.url('#/pages/NxToggle');
   });
 
-  const selector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(3)',
-      disabledSelector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(4)';
+  const selector = '#nx-Toggle-example .gallery-example-live label:nth-of-type(3)',
+      disabledSelector = '#nx-Toggle-example .gallery-example-live label:nth-of-type(4)';
 
-  describe('Default NxCheckbox', function() {
-    it('has a light grey border and white background by default', simpleTest(selector));
+  describe('Default NxToggle', function() {
+    it('has a blue border, blue indicator, and white background by default', simpleTest(selector));
     it('has a black border when hovered', hoverTest(selector));
 
-    it('has a blue background and white checkmark when clicked', async function() {
+    it('has a blue background and white indicator when clicked', async function() {
       const targetElement = await browser.$(selector);
 
       await targetElement.scrollIntoView({ block: 'center' });
@@ -34,7 +34,7 @@ describe('NxCheckbox', function() {
       }
     });
 
-    it('has a blue background, white checkmark, and glow when clicked and focused', async function() {
+    it('has a blue background, white indicator, and glow when clicked and focused', async function() {
       const focusSelector = `${selector} input`,
           [targetElement, focusElement] = await Promise.all([browser.$(selector), browser.$(focusSelector)]);
 
@@ -54,7 +54,7 @@ describe('NxCheckbox', function() {
       }
     });
 
-    it('has a blue background and white checkmark when clicked, focused, and hovered', async function() {
+    it('has a blue background and white indicator when clicked, focused, and hovered', async function() {
       const focusSelector = `${selector} input`,
           [targetElement, focusElement] = await Promise.all([browser.$(selector), browser.$(focusSelector)]);
 
@@ -78,7 +78,7 @@ describe('NxCheckbox', function() {
     it('has a dark border when focused and hovered', focusAndHoverTest(selector));
   });
 
-  describe('Attribute-Disabled NxCheckbox', function() {
+  describe('Attribute-Disabled NxToggle', function() {
     it('looks disabled by default', simpleTest(disabledSelector));
     it('looks disabled when hovered', hoverTest(disabledSelector));
   });
