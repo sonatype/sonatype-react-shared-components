@@ -19,8 +19,8 @@ export { Props } from './types';
  * @param props.children VDOM rendered as label. Should be
  * [phrasing content](https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content).
  */
-const NxStateToggle = forwardRef<HTMLLabelElement, Props>(
-    function NxStateToggle({ defaultChecked, onChange, ...otherProps }, ref) {
+const NxStatefulToggle = forwardRef<HTMLLabelElement, Props>(
+    function NxStatefulToggle({ defaultChecked, onChange, ...otherProps }, ref) {
       const [isChecked, setIsChecked] = useState(defaultChecked);
 
       function changeHandler() {
@@ -35,5 +35,5 @@ const NxStateToggle = forwardRef<HTMLLabelElement, Props>(
     }
 );
 
-NxStateToggle.propTypes = propTypes;
-export default NxStateToggle;
+NxStatefulToggle.propTypes = propTypes;
+export default NxStatefulToggle;

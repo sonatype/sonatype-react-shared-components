@@ -8,17 +8,17 @@ import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
-import NxToggleExample from './NxToggleExample';
+import NxStatefulToggleExample from './NxStatefulToggleExample';
 
-const exampleCode = require('!!raw-loader!./NxToggleExample').default;
+const exampleCode = require('!!raw-loader!./NxStatefulToggleExample').default;
 
-const NxTogglePage = () =>
+const NxStatefulTogglePage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
         Custom toggle control, which uses a hidden checkbox input for its on/checked &amp; off/unselected states.
       </p>
-      <p className="nx-p">Child VDOM will be used as a label preceeding the toggle control.</p>
+      <p className="nx-p">Child VDOM will be used as a label preceeding the stateful toggle control.</p>
       <p className="nx-p">Props:</p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
@@ -34,27 +34,29 @@ const NxTogglePage = () =>
             <td className="nx-cell">toggleId</td>
             <td className="nx-cell">string</td>
             <td className="nx-cell">No</td>
-            <td className="nx-cell">An id to identify the toggle</td>
+            <td className="nx-cell">An id to identify the stateful toggle</td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">isChecked</td>
+            <td className="nx-cell">defaultChecked</td>
             <td className="nx-cell">boolean</td>
             <td className="nx-cell">Yes</td>
-            <td className="nx-cell">Whether the toggle should be rendered as on/checked or off/unchecked</td>
+            <td className="nx-cell">
+              Whether the stateful toggle should initially be rendered as checked (true) or unchecked (false)
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function (() =&gt; void)</td>
+            <td className="nx-cell">Function ((boolean) => void)</td>
             <td className="nx-cell">No</td>
-            <td className="nx-cell">A callback for when the toggle control is toggled</td>
+            <td className="nx-cell">A callback for when the stateful toggle is toggled</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">disabled</td>
             <td className="nx-cell">boolean</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Whether the toggle should be rendered as disabled or not. When disabled, the onChange callback will
-              not fire. Defaults to false.
+              Whether the stateful toggle should be rendered as disabled or not.
+              When disabled, the onChange callback will not fire.  Defaults to false
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -75,12 +77,12 @@ const NxTogglePage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
-                        id="nx-checkbox-example"
                         codeExamples={exampleCode}
-                        liveExample={NxToggleExample}>
-      This example shows a series of toggle controls in a typical vertical layout with
-      different label content. Note that one of the toggle controls is disabled.
+                        liveExample={NxStatefulToggleExample}>
+      This example shows the usage of an NxStatefulToggle which tracks its own state,
+      along with a callback for initiating a side-effect - in this case, the opening of an alert
+      dialog.
     </GalleryExampleTile>
   </>;
 
-export default NxTogglePage;
+export default NxStatefulTogglePage;

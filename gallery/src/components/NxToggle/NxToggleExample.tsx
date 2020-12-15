@@ -35,7 +35,7 @@ function NxToggleExample() {
         </svg>
         {' '}
         Green - A circle, a perfectly round SVG circle, pleasing to the eye, not too big and not too small, just right
-        to appear beside a checkbox and demonstrate ellipsis truncation
+        to appear beside a checkbox and demonstrate that the label wraps
       </NxToggle>
       <NxToggle checkboxId="disabled-check"
                 disabled={true}
