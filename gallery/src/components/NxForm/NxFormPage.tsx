@@ -7,11 +7,13 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import NxFormExample from './NxFormExample';
+import NxFormCustomizedExample from './NxFormCustomizedExample';
 
-const NxFormExampleCode = require('!raw-loader!!./NxFormExample').default;
+const NxFormExampleCode = require('!raw-loader!!./NxFormExample').default,
+    NxFormCustomizedExampleCode = require('!raw-loader!!./NxFormCustomizedExample').default;
 
 const NxFormPage = () =>
   <>
@@ -185,7 +187,17 @@ const NxFormPage = () =>
             <NxTableCell>No</NxTableCell>
             <NxTableCell>empty</NxTableCell>
             <NxTableCell>
-              Extra buttons to render in the form footer to the left of the Submit and Cancel buttons
+              <p className="nx-p">
+                Extra buttons to render in the form footer to the left of the Submit and Cancel buttons. These buttons
+                would typically use tertiary button styling.
+              </p>
+              <NxWarningAlert>
+                Do not forget that <code className="nx-code">&lt;button&gt;</code> elements, including those
+                rendered by <code className="nx-code">NxButton</code>,
+                have <code className="nx-code">type="submit"</code> by default. Therefore, in order to avoid these
+                additional buttons submitting the form, care must be taken to
+                add <code className="nx-code">type="button"</code> to each of them.
+              </NxWarningAlert>
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>
@@ -199,6 +211,13 @@ const NxFormPage = () =>
       This example shows an asynchronously loading NxForm. The example is contrived such that the
       form fails to load the first time, but does load (after a brief wait) upon a second attempt.
       Additionally, the first attempt to submit the form fails, while the retry succeeds.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Customized Example"
+                        id="nx-form-customized-example"
+                        codeExamples={NxFormCustomizedExampleCode}
+                        liveExample={NxFormCustomizedExample}>
+      This example demonstrates the various form props that can further customize the presentation of the form.
     </GalleryExampleTile>
   </>;
 
