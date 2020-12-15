@@ -27,17 +27,17 @@ const NxFormPage = () =>
           <span className="nx-list__text">Standard form footer with submit and cancel buttons</span>
         </li>
         <li className="nx-list__item">
-          <span className="nx-list__text">Initial Loading including error and retry handling</span>
+          <span className="nx-list__text">Initial loading including error and retry handling</span>
         </li>
         <li className="nx-list__item">
-          <span className="nx-list__text">Form Submission including the submit mask</span>
+          <span className="nx-list__text">Form submission including the submit mask</span>
         </li>
         <li className="nx-list__item">
-          <span className="nx-list__text">Form Cancellation</span>
+          <span className="nx-list__text">Form cancellation</span>
         </li>
         <li className="nx-list__item">
           <span className="nx-list__text">
-            Form Validation including disabling of submit button for invalid forms
+            Form validation including disabling of submit button for invalid forms
           </span>
         </li>
       </ul>
