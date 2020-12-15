@@ -16,7 +16,7 @@ export { Props } from './types';
  * @param props.toggleId An id to identify the toggle
  * @param props.onChange A callback for when the toggle control is toggled
  * @param props.isChecked Whether the toggle should be rendered as on/checked or off/unchecked
- * @param props.disabled Whether the toggle should be rendered as disabled or not.  When disabled, the onChange
+ * @param props.disabled Whether the toggle should be rendered as disabled or not. When disabled, the onChange
  * callback will not fire
  * @param props.children VDOM rendered as label. Should be
  * [phrasing content](https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content).
