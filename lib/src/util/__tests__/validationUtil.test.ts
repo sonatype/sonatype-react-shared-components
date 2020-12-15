@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { hasValidationErrors, getFirstValidationError } from '../validationUtil';
+import { combineValidationErrors, hasValidationErrors, getFirstValidationError } from '../validationUtil';
 
 describe('validationUtil', function() {
   describe('hasValidationErrors', function() {
@@ -43,6 +43,24 @@ describe('validationUtil', function() {
 
     it('returns the input if it is a string', function() {
       expect(getFirstValidationError('foo')).toBe('foo');
+    });
+  });
+
+  describe('combineValidationErrors', function() {
+    it('returns an empty array if given all valid ValidationErrors', function() {
+      expect(combineValidationErrors(null, [])).toEqual([]);
+      expect(combineValidationErrors()).toEqual([]);
+      expect(combineValidationErrors([])).toEqual([]);
+      expect(combineValidationErrors([], [])).toEqual([]);
+      expect(combineValidationErrors(null)).toEqual([]);
+    });
+
+    it('combines all validation errors into an array', function() {
+      expect(combineValidationErrors(null, ['foo'])).toEqual(['foo']);
+      expect(combineValidationErrors('foo')).toEqual(['foo']);
+      expect(combineValidationErrors(['foo'])).toEqual(['foo']);
+      expect(combineValidationErrors(['foo'], ['bar'], [], null)).toEqual(['foo', 'bar']);
+      expect(combineValidationErrors(['foo', 'bar'], ['baz'])).toEqual(['foo', 'bar', 'baz']);
     });
   });
 });
