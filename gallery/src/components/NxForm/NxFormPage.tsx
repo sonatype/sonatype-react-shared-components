@@ -200,6 +200,16 @@ const NxFormPage = () =>
               </NxWarningAlert>
             </NxTableCell>
           </NxTableRow>
+          <NxTableRow>
+            <NxTableCell>children</NxTableCell>
+            <NxTableCell>JSX or (() => JSX)</NxTableCell>
+            <NxTableCell>Yes</NxTableCell>
+            <NxTableCell>N/A</NxTableCell>
+            <NxTableCell>
+              The form contents, excluding the footer which is provided by this component. Can be specified as a
+              function in order to avoid rendering children before loading completes
+            </NxTableCell>
+          </NxTableRow>
         </NxTableBody>
       </NxTable>
     </GalleryDescriptionTile>
