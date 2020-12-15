@@ -43,7 +43,7 @@ function NxToggleExample() {
                 disabled={true}
                 onChange={toggleDisabled}
                 isChecked={isDisabled}>
-        disabled
+        This toggle is disabled
       </NxToggle>
     </fieldset>
   );

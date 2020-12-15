@@ -17,6 +17,7 @@
 
   &.nx-toggle--disabled {
     &, &:hover {
+      color: $nx-text-color-disabled;
       cursor: default;
 
       .nx-toggle__control {
