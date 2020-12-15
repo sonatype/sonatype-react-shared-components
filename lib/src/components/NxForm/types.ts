@@ -12,7 +12,7 @@ export interface Props extends FormHTMLAttributes<HTMLFormElement> {
   loading?: boolean | null;
   doLoad?: () => void | null;
   onSubmit: () => void;
-  onCancel?: () => void;
+  onCancel?: (() => void) | null;
   loadError?: string | null;
   submitError?: string | null;
   validationErrors?: ValidationErrors;
@@ -22,7 +22,7 @@ export interface Props extends FormHTMLAttributes<HTMLFormElement> {
   submitMaskMessage?: string | null;
   submitMaskSuccessMessage?: string | null;
   submitMaskFullscreen?: boolean | null;
-  children: ReactNode;
+  children: ReactNode | (() => ReactNode);
   additionalFooterBtns?: ReactNode | null;
 }
 
@@ -40,6 +40,6 @@ export const propTypes: ValidationMap<Props> = {
   submitMaskMessage: PropTypes.string,
   submitMaskSuccessMessage: PropTypes.string,
   submitMaskFullscreen: PropTypes.bool,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   additionalFooterBtns: PropTypes.node
 };
