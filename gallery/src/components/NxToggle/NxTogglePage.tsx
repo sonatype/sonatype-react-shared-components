@@ -74,8 +74,8 @@ const NxTogglePage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="General Example"
-                        id="nx-checkbox-example"
+    <GalleryExampleTile title="General NxToggle Example"
+                        id="nx-toggle-example"
                         codeExamples={exampleCode}
                         liveExample={NxToggleExample}>
       This example shows a series of toggle controls in a typical vertical layout with

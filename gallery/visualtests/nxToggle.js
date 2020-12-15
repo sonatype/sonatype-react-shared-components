@@ -12,8 +12,8 @@ describe('NxToggle', function() {
     await browser.url('#/pages/NxToggle');
   });
 
-  const selector = '#nx-Toggle-example .gallery-example-live label:nth-of-type(3)',
-      disabledSelector = '#nx-Toggle-example .gallery-example-live label:nth-of-type(4)';
+  const selector = '#nx-toggle-example .gallery-example-live label:nth-of-type(3)',
+      disabledSelector = '#nx-toggle-example .gallery-example-live label:nth-of-type(4)';
 
   describe('Default NxToggle', function() {
     it('has a blue border, blue indicator, and white background by default', simpleTest(selector));
