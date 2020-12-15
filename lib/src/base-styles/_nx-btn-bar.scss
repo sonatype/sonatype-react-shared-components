@@ -8,7 +8,7 @@
 .nx-btn-bar {
   @include container-horizontal;
 
-  align-items: first baseline;
+  align-items: center;
   display: flex;
   justify-content: flex-end;
   margin: $nx-spacing-sm 0;
