@@ -10,7 +10,7 @@ import { NxForm, NxFormGroup, NxTextInput, NxButton } from '@sonatype/react-shar
 import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
 import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
 
-export default function NxFormExample() {
+export default function NxFormCustomizedExample() {
   const initialFieldState = { username: initialState(''), hostname: initialState('') },
       [usernameState, setUsernameState] = useState(initialFieldState.username),
       [hostnameState, setHostnameState] = useState(initialFieldState.hostname),
