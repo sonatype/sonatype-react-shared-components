@@ -4,27 +4,27 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import NxCheckbox from '../../NxCheckbox';
-import NxStatefulCheckbox, { Props } from '../NxStatefulCheckbox';
+import NxToggle from '../../NxToggle';
+import NxStatefulToggle, { Props } from '../NxStatefulToggle';
 import {getShallowComponent} from '../../../../__testutils__/enzymeUtils';
 
-describe('NxStatefulCheckbox', function() {
+describe('NxStatefulToggle', function() {
   const simpleProps: Props = {
-    checkboxId: 'checkbox-id',
+    toggleId: 'toggle-id',
     defaultChecked: false,
     onChange: () => {},
     disabled: undefined,
     children: undefined
   };
 
-  const getShallow = getShallowComponent<Props>(NxStatefulCheckbox, {defaultChecked: false});
+  const getShallow = getShallowComponent<Props>(NxStatefulToggle, {defaultChecked: false});
 
-  it('renders a NxCheckbox with the provided properties', function() {
+  it('renders a NxToggle with the provided properties', function() {
     const shallowRender = getShallow(simpleProps);
 
-    expect(shallowRender).toMatchSelector(NxCheckbox);
+    expect(shallowRender).toMatchSelector(NxToggle);
 
-    expect(shallowRender).toHaveProp('checkboxId', 'checkbox-id');
+    expect(shallowRender).toHaveProp('toggleId', 'toggle-id');
     expect(shallowRender).toHaveProp('isChecked', simpleProps.defaultChecked);
     expect(shallowRender).toHaveProp('onChange');
   });
@@ -37,12 +37,12 @@ describe('NxStatefulCheckbox', function() {
     expect(shallowRenderWithDefaultCheckedTrue).toHaveProp('isChecked', true);
   });
 
-  it('adds the nx-checkbox--disabled class if disabled is set', function() {
+  it('adds the nx-toggle--disabled class if disabled is set', function() {
     expect(getShallow()).not.toHaveProp('disabled');
     expect(getShallow({ disabled: true })).toHaveProp('disabled');
   });
 
-  it('updates isChecked prop on NxCheckbox when the checkbox is toggled', function() {
+  it('updates isChecked prop on NxToggle when the control is toggled', function() {
     const component = getShallow(simpleProps);
     expect(component).toHaveProp('isChecked', false);
     component.simulate('change');

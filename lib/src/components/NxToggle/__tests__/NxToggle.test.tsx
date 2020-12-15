@@ -13,7 +13,7 @@ import NxToggle, { Props } from '../NxToggle';
 
 describe('NxToggle', function() {
   const simpleProps: Props = {
-    checkboxId: 'checkbox-id',
+    toggleId: 'toggle-id',
     isChecked: false,
     onChange: () => {},
     disabled: undefined,
@@ -24,44 +24,28 @@ describe('NxToggle', function() {
     return shallow(<NxToggle { ...simpleProps } { ...additionalProps } />);
   }
 
-  it('renders a <label> containing a checkbox <input> and visible box', function() {
+  it('renders a <label> containing a toggle <input> and toggle control', function() {
     const shallowRender = getShallowComponent();
 
-    expect(shallowRender).toMatchSelector('label.nx-checkbox');
+    expect(shallowRender).toMatchSelector('label.nx-toggle');
 
     expect(shallowRender.find('input')).toHaveProp('type', 'checkbox');
-    expect(shallowRender.find('input')).toHaveProp('id', 'checkbox-id');
-    expect(shallowRender.find('input')).toHaveClassName('nx-checkbox__input');
+    expect(shallowRender.find('input')).toHaveProp('id', 'toggle-id');
+    expect(shallowRender.find('input')).toHaveClassName('nx-toggle__input');
 
-    expect(shallowRender.find('.nx-checkbox__box')).toExist();
-
-    // space is nbsp for empty box
-    expect(shallowRender).toHaveText(' ');
+    expect(shallowRender.find('.nx-toggle__control')).toExist();
   });
 
   it('adds classes specified with the className prop', function() {
     const component = getShallowComponent({ className: 'foo' });
 
     expect(component).toHaveClassName('foo');
-    expect(component).toHaveClassName('nx-checkbox');
+    expect(component).toHaveClassName('nx-toggle');
   });
 
-  it('renders a faCheck FontAwesomeIcon inside the box when checked', function() {
-    expect(getShallowComponent()).not.toContainReact(<FontAwesomeIcon icon={faCheck} />);
-
-    // icon and no nbsp when checked
-    expect(getShallowComponent({ isChecked: true }).find('.nx-checkbox__box'))
-        .toMatchElement(<span className="nx-checkbox__box"><FontAwesomeIcon icon={faCheck} /></span>);
-  });
-
-  it('renders no label text if none is provided', function() {
-    // space is nbsp for empty box
-    expect(shallow(<NxToggle checkboxId="checkbox-id" isChecked={false} onChange={() => {}} />)).toHaveText(' ');
-  });
-
-  it('adds the nx-radio-checkbox--disabled class if disabled is set', function() {
-    expect(getShallowComponent()).not.toHaveClassName('nx-radio-checkbox--disabled');
-    expect(getShallowComponent({ disabled: true })).toHaveClassName('nx-radio-checkbox--disabled');
+  it('adds the nx-toggle--disabled class if disabled is set', function() {
+    expect(getShallowComponent()).not.toHaveClassName('nx-toggle--disabled');
+    expect(getShallowComponent({ disabled: true })).toHaveClassName('nx-toggle--disabled');
   });
 
   it('adds the tm-checked class if isChecked is true, and the tm-unchecked class if it is false', function() {
@@ -72,18 +56,14 @@ describe('NxToggle', function() {
     expect(getShallowComponent({ isChecked: true })).toHaveClassName('tm-checked');
   });
 
-  it('renders children nodes within an nx-checkbox__content <span>', function() {
+  it('renders children nodes within an nx-toggle__content <span>', function() {
     const render = shallow(
       <NxToggle { ...simpleProps }>
         <div className="bar"></div>
       </NxToggle>
     );
 
-    expect(render).toContainMatchingElement('label .nx-checkbox__content .bar');
-  });
-
-  it('does not render the .nx-checkbox__content element if there are no children', function() {
-    expect(getShallowComponent()).not.toContainMatchingElement('.nx-checkbox__content');
+    expect(render).toContainMatchingElement('label .nx-toggle__content .bar');
   });
 
   it('disables the input iff disabled is set', function() {
