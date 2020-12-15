@@ -54,7 +54,7 @@ describe('NxToggle', function() {
       }
     });
 
-    it('has a blue background and white indicator when clicked, focused, and hovered', async function() {
+    it('has a dark broder, blue background and white indicator when clicked, focused, and hovered', async function() {
       const focusSelector = `${selector} input`,
           [targetElement, focusElement] = await Promise.all([browser.$(selector), browser.$(focusSelector)]);
 
