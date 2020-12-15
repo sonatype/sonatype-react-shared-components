@@ -6,8 +6,7 @@
  */
 import React, { useState, useEffect, FormEvent } from 'react';
 
-import { NxCheckbox, NxForm, NxRadio, NxStatefulTextInput, NxFormGroup, NxTextInput }
-  from '@sonatype/react-shared-components';
+import { NxCheckbox, NxForm, NxRadio, NxFormGroup, NxTextInput } from '@sonatype/react-shared-components';
 import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
 import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
 import { combineValidationErrors, hasValidationErrors } from '@sonatype/react-shared-components/util/validationUtil';
@@ -148,9 +147,6 @@ export default function NxFormExample() {
           <option value="option4">Option 4</option>
           <option value="option5">Option 5</option>
         </select>
-      </NxFormGroup>
-      <NxFormGroup label="Comments">
-        <NxStatefulTextInput type="textarea" placeholder="placeholder"/>
       </NxFormGroup>
     </NxForm>
   );

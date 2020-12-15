@@ -192,12 +192,13 @@ const NxFormPage = () =>
       </NxTable>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Simple Example"
+    <GalleryExampleTile title="Asynchronous Example"
                         id="nx-form-example"
                         codeExamples={NxFormExampleCode}
                         liveExample={NxFormExample}>
-      This example shows a simple asynchronously loading NxForm. The example is contrived such that the
+      This example shows an asynchronously loading NxForm. The example is contrived such that the
       form fails to load the first time, but does load (after a brief wait) upon a second attempt.
+      Additionally, the first attempt to submit the form fails, while the retry succeeds.
     </GalleryExampleTile>
   </>;
 
