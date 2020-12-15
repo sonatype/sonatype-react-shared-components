@@ -20,6 +20,7 @@ import { getFirstValidationError, hasValidationErrors } from '../../util/validat
 const NxForm = forwardRef<HTMLFormElement, Props>(
     function NxForm(props, ref) {
       const {
+            className,
             loading,
             doLoad,
             onSubmit: onSubmitProp,
@@ -37,6 +38,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
             additionalFooterBtns,
             ...formAttrs
           } = props,
+          formClasses = classnames('nx-form', className),
           getChildren = children instanceof Function ? children : always(children),
           submitDisabled = hasValidationErrors(validationErrors),
           submitBtnClasses = classnames(submitBtnClassesProp, {
@@ -52,7 +54,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
       }
 
       const renderForm = () => (
-        <form ref={ref} className="nx-form" onSubmit={onSubmit} { ...formAttrs }>
+        <form ref={ref} className={formClasses} onSubmit={onSubmit} { ...formAttrs }>
           { getChildren() }
           <footer className="nx-footer">
             { submitError &&
