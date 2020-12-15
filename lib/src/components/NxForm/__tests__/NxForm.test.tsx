@@ -160,8 +160,8 @@ describe('NxForm', function() {
 
       it('does not render the submit button is there is a submitError', function() {
         const submitBtn = getShallow({ submitError: 'bad' })
-              .find(NxButton)
-              .filterWhere(btn => btn.prop('variant') === 'primary');
+            .find(NxButton)
+            .filterWhere(btn => btn.prop('variant') === 'primary');
 
         expect(submitBtn).not.toExist();
       });
