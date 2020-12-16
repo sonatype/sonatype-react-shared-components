@@ -82,6 +82,7 @@ import NxViewportSizedPage from './styles/NxViewportSized/NxViewportSizedPage';
 import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
 import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
 import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
+import NxFormPage from './components/NxForm/NxFormPage';
 import NxTogglePage from './components/NxToggle/NxTogglePage';
 import NxStatefulTogglePage from './components/NxStatefulToggle/NxStatefulTogglePage';
 
@@ -101,6 +102,7 @@ const pageConfig: PageConfig = {
     NxStatefulDropdown: NxStatefulDropdownPage,
     NxFilterInput: NxFilterInputPage,
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
+    NxForm: NxFormPage,
     NxFormGroup: NxFormGroupPage,
     NxLoadError: NxLoadErrorPage,
     NxLoadWrapper: NxLoadWrapperPage,
