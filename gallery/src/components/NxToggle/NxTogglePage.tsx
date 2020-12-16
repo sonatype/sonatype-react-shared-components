@@ -31,7 +31,7 @@ const NxTogglePage = () =>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell">toggleId</td>
+            <td className="nx-cell">inputId</td>
             <td className="nx-cell">string</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">An id to identify the toggle</td>

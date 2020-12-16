@@ -26,13 +26,13 @@ function NxToggleExample() {
         Here's what you can do:
       </h3>
       <div className="nx-form-group">
-        <NxToggle toggleId="subscribe-check" onChange={toggleWarp} isChecked={isWarpOn}>
+        <NxToggle inputId="subscribe-check" onChange={toggleWarp} isChecked={isWarpOn}>
           Enable Warp Drive
         </NxToggle>
-        <NxToggle toggleId="no-label-check" onChange={toggleKraken} isChecked={isKrakenOut}>
+        <NxToggle inputId="no-label-check" onChange={toggleKraken} isChecked={isKrakenOut}>
           Release the Kraken!
         </NxToggle>
-        <NxToggle toggleId="children-check" onChange={toggleShapes} isChecked={isShapes}>
+        <NxToggle inputId="children-check" onChange={toggleShapes} isChecked={isShapes}>
           <svg width="12px" height="12px" viewBox="-1 -1 2 2">
             <circle r="1"/>
           </svg>
@@ -40,7 +40,7 @@ function NxToggleExample() {
           Allow shapes - like a circle, a perfectly round SVG circle, pleasing to the eye, not too big and not too
           small, just right to appear beside a checkbox and demonstrate that the label wraps
         </NxToggle>
-        <NxToggle toggleId="disabled-check"
+        <NxToggle inputId="disabled-check"
                   disabled={true}
                   onChange={toggleDisabled}
                   isChecked={isDisabled}>
