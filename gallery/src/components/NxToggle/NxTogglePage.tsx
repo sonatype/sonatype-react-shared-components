@@ -20,7 +20,7 @@ const NxTogglePage = () =>
       </p>
       <p className="nx-p">Child VDOM will be used as a label preceeding the toggle control.</p>
       <p className="nx-p">Props:</p>
-      <table className="nx-table nx-table--gallery-props">
+      <table className="nx-table">
         <thead>
           <tr className="nx-table-row">
             <th className="nx-cell nx-cell--header">Prop</th>
