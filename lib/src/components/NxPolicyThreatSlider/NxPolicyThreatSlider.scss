@@ -7,19 +7,22 @@
 @import '../../scss-shared/nx-variables';
 
 .nx-policy-threat-slider {
-  display: inline-block;
+  $rail-height: 8px;
+  $thumb-size: 32px;
+
+  // distance from top of thumb to top of rail
+  $thumb-vertical-overflow: ($thumb-size - $rail-height) / 2;
 
   font-size: 13px;
 
   // the .MuiSlider-thumb elements actually stick out of the sides of the .MuiSlider-root at their min and max
   // positions.  This padding ensures that they don't stick out of the overall box for this component
-  padding: 0 9px;
+  padding: 0 ($thumb-size / 2);
 
   .MuiSlider-root {
-    display: inline-block;
-    height: 6px;
-    padding: 9px 0;
-    width: 180px;
+    height: $rail-height;
+    padding: $thumb-vertical-overflow 0;
+    width: 200px;
   }
 
   .MuiSlider-markActive {
@@ -31,15 +34,18 @@
   }
 
   .MuiSlider-thumb {
-    align-items: stretch;
-    border-radius: 4px;
-
-    color: $nx-off-white;
-
-    height: 17px;
-    width: 18px;
-
-    margin-left: -9px;
+    box-sizing: border-box;
+    background-color: $nx-white;
+    border: 2px solid;
+    border-radius: $nx-border-radius;
+    color: $nx-text-color-dark;
+    font-size: $nx-font-size-s;
+    font-weight: bold;
+    height: $thumb-size;
+    width: $thumb-size;
+    line-height: 1;
+    margin-left: $thumb-size / -2;
+    margin-top: -($thumb-vertical-overflow);
 
     &.MuiSlider-active, &:hover {
       box-shadow: none;
@@ -48,40 +54,42 @@
 
   .nx-policy-threat-slider__value-label--none {
     .MuiSlider-thumb {
-      background-color: $nx-threat-color-none;
+      border-color: $nx-threat-color-none;
     }
   }
 
   .nx-policy-threat-slider__value-label--low {
     .MuiSlider-thumb {
-      background-color: $nx-threat-color-low;
+      border-color: $nx-threat-color-low;
     }
   }
 
   .nx-policy-threat-slider__value-label--moderate {
     .MuiSlider-thumb {
-      background-color: $nx-threat-color-moderate;
+      border-color: $nx-threat-color-moderate;
     }
   }
 
   .nx-policy-threat-slider__value-label--severe {
     .MuiSlider-thumb {
-      background-color: $nx-threat-color-severe;
+      border-color: $nx-threat-color-severe;
     }
   }
 
   .nx-policy-threat-slider__value-label--critical {
     .MuiSlider-thumb {
-      background-color: $nx-threat-color-critical;
+      border-color: $nx-threat-color-critical;
     }
   }
 
   .MuiSlider-mark {
-    height: 6px;
+    $border-radius: $rail-height / 2;
+
+    height: $rail-height;
 
     // threat level 0
-    border-radius: 4px 0 0 4px;
-    color: $nx-threat-color-none-light;
+    border-radius: $border-radius 0 0 $border-radius;
+    color: $nx-threat-color-none;
 
     // the first mark only goes from 0 - 0.5, so is only 5% wide.
     // The rest (except the last) each go from (n - 0.5) to (n + 0.5), so are 10% wide with a -5% left margin.
@@ -98,18 +106,18 @@
       width: 10%;
 
       // threat level 1
-      color: $nx-threat-color-low-light;
+      color: $nx-threat-color-low;
 
       ~ .MuiSlider-mark {
         // threat level 2
-        color: $nx-threat-color-moderate-light;
+        color: $nx-threat-color-moderate;
 
         ~ .MuiSlider-mark {
           // threat level 3
 
           ~ .MuiSlider-mark {
             // threat level 4
-            color: $nx-threat-color-severe-light;
+            color: $nx-threat-color-severe;
 
             ~ .MuiSlider-mark {
               // threat level 5
@@ -122,14 +130,14 @@
 
                   ~ .MuiSlider-mark {
                     // threat level 8
-                    color: $nx-threat-color-critical-light;
+                    color: $nx-threat-color-critical;
 
                     ~ .MuiSlider-mark {
                       // threat level 9
 
                       ~ .MuiSlider-mark {
                         // threat level 10
-                        border-radius: 0 4px 4px 0;
+                        border-radius: 0 $border-radius $border-radius 0;
                         width: 5%;
                       }
                     }
