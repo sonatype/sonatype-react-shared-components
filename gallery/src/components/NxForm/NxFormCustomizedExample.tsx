@@ -52,7 +52,8 @@ export default function NxFormCustomizedExample() {
     <NxForm onSubmit={onSubmit}
             onCancel={resetForm}
             submitMaskState={submitMaskState}
-            submitBtnClasses="gallery-custom-form-submit"
+            className="gallery-custom-form"
+            submitBtnClasses="gallery-custom-form__submit"
             submitBtnText="Send it"
             submitMaskMessage="Sending…"
             submitMaskSuccessMessage="Sent!"

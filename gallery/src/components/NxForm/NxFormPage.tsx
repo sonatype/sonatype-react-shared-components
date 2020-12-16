@@ -14,7 +14,15 @@ import NxFormExample from './NxFormExample';
 import NxFormCustomizedExample from './NxFormCustomizedExample';
 
 const NxFormExampleCode = require('!raw-loader!!./NxFormExample').default,
-    NxFormCustomizedExampleCode = require('!raw-loader!!./NxFormCustomizedExample').default;
+    NxFormCustomizedExampleCode = require('!raw-loader!!./NxFormCustomizedExample').default,
+    NxFormCustomizedExampleScss = require('!raw-loader!!./NxFormCustomizedExample.scss').default;
+
+import './NxFormCustomizedExample.scss';
+
+const customizedExampleCode = [
+  NxFormCustomizedExampleCode,
+  { language: 'scss', content: NxFormCustomizedExampleScss}
+];
 
 const NxFormPage = () =>
   <>
@@ -226,9 +234,10 @@ const NxFormPage = () =>
 
     <GalleryExampleTile title="Customized Example"
                         id="nx-form-customized-example"
-                        codeExamples={NxFormCustomizedExampleCode}
+                        codeExamples={customizedExampleCode}
                         liveExample={NxFormCustomizedExample}>
-      This example demonstrates the various form props that can further customize the presentation of the form.
+      This example demonstrates the various form props that can further customize the presentation of the form,
+      including styling of the form overall as well as the submit button.
     </GalleryExampleTile>
   </>;
 
