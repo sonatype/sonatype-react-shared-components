@@ -300,16 +300,20 @@ exports.config = {
      * Function to be executed after a test (in Mocha/Jasmine).
      */
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
-      await eyes.closeAsync();
-      await eyes.abortIfNotClosed();
+      try {
+        await eyes.closeAsync();
 
-      if (process.env.GIT_BRANCH === 'master') {
-        try {
-          await eyes.getRunner().getAllTestResults(true);
+        if (process.env.GIT_BRANCH === 'master') {
+          try {
+            await eyes.getRunner().getAllTestResults(true);
+          }
+          catch (e) {
+            context.test.callback(e);
+          }
         }
-        catch (e) {
-          context.test.callback(e);
-        }
+      }
+      finally {
+        await eyes.abortAsync();
       }
     },
 
