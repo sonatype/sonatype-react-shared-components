@@ -27,7 +27,7 @@ describe('NxTextInput', function() {
     expect(getShallowComponent()).toContainMatchingElement('.nx-text-input__box .nx-icon--invalid');
   });
 
-  it('contains the first validation message', function() {
+  it('contains the first validation message if isPristine is not trie', function() {
     const validationErrorProps = { validatable: true, validationErrors: 'foo' },
         multiErrorValidationProps = { validatable: true, validationErrors: ['asdf', 'foo'] };
 
@@ -39,6 +39,9 @@ describe('NxTextInput', function() {
 
     expect(getShallowComponent(multiErrorValidationProps).find('.nx-text-input__invalid-message'))
         .toHaveText('asdf');
+
+    expect(getShallowComponent({ ...validationErrorProps, isPristine: true }).find('.nx-text-input__invalid-message'))
+        .toHaveText('');
   });
 
   it('places the alert role on the invalid message and references it as aria-errormessage', function() {
