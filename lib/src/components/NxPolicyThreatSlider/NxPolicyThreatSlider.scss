@@ -51,34 +51,39 @@
     &.MuiSlider-active, &:hover {
       box-shadow: none;
     }
+
+    &:focus {
+      border-color: $nx-focus-border-color;
+      box-shadow: $nx-focus-box-shadow;
+    }
   }
 
   .nx-policy-threat-slider__value-label--none {
-    .MuiSlider-thumb {
+    .MuiSlider-thumb:not(:focus) {
       border-color: $nx-threat-color-none;
     }
   }
 
   .nx-policy-threat-slider__value-label--low {
-    .MuiSlider-thumb {
+    .MuiSlider-thumb:not(:focus) {
       border-color: $nx-threat-color-low;
     }
   }
 
   .nx-policy-threat-slider__value-label--moderate {
-    .MuiSlider-thumb {
+    .MuiSlider-thumb:not(:focus) {
       border-color: $nx-threat-color-moderate;
     }
   }
 
   .nx-policy-threat-slider__value-label--severe {
-    .MuiSlider-thumb {
+    .MuiSlider-thumb:not(:focus) {
       border-color: $nx-threat-color-severe;
     }
   }
 
   .nx-policy-threat-slider__value-label--critical {
-    .MuiSlider-thumb {
+    .MuiSlider-thumb:not(:focus) {
       border-color: $nx-threat-color-critical;
     }
   }
