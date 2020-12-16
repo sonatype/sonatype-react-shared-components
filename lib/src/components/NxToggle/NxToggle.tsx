@@ -39,7 +39,7 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
                  checked={isChecked}
                  readOnly={!onChange}
                  onChange={onChange || undefined}/>
-          <div className="nx-toggle__control"><div className="nx-toggle__indicator"></div></div>
+          <div className="nx-toggle__control"><div className="nx-toggle__indicator"/></div>
         </label>
       );
     }
