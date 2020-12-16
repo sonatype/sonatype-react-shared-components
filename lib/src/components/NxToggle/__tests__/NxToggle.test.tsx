@@ -11,11 +11,11 @@ import NxToggle, { Props } from '../NxToggle';
 
 describe('NxToggle', function() {
   const simpleProps: Props = {
-    toggleId: 'toggle-id',
+    inputId: 'toggle-id',
     isChecked: false,
     onChange: () => {},
     disabled: undefined,
-    children: undefined
+    children: 'Enables whales'
   };
 
   function getShallowComponent(additionalProps?: Partial<Props>) {

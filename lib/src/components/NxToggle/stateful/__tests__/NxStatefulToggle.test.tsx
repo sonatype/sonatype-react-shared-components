@@ -10,11 +10,11 @@ import {getShallowComponent} from '../../../../__testutils__/enzymeUtils';
 
 describe('NxStatefulToggle', function() {
   const simpleProps: Props = {
-    toggleId: 'toggle-id',
+    inputId: 'toggle-id',
     defaultChecked: false,
     onChange: () => {},
     disabled: undefined,
-    children: undefined
+    children: 'Enables whales'
   };
 
   const getShallow = getShallowComponent<Props>(NxStatefulToggle, {defaultChecked: false});
@@ -24,7 +24,7 @@ describe('NxStatefulToggle', function() {
 
     expect(shallowRender).toMatchSelector(NxToggle);
 
-    expect(shallowRender).toHaveProp('toggleId', 'toggle-id');
+    expect(shallowRender).toHaveProp('inputId', 'toggle-id');
     expect(shallowRender).toHaveProp('isChecked', simpleProps.defaultChecked);
     expect(shallowRender).toHaveProp('onChange');
   });
