@@ -27,7 +27,7 @@ describe('NxTextInput', function() {
     expect(getShallowComponent()).toContainMatchingElement('.nx-text-input__box .nx-icon--invalid');
   });
 
-  it('contains the first validation message', function() {
+  it('contains the first validation message if isPristine is not true', function() {
     const validationErrorProps = { validatable: true, validationErrors: 'foo' },
         multiErrorValidationProps = { validatable: true, validationErrors: ['asdf', 'foo'] };
 
@@ -39,6 +39,9 @@ describe('NxTextInput', function() {
 
     expect(getShallowComponent(multiErrorValidationProps).find('.nx-text-input__invalid-message'))
         .toHaveText('asdf');
+
+    expect(getShallowComponent({ ...validationErrorProps, isPristine: true }).find('.nx-text-input__invalid-message'))
+        .toHaveText('');
   });
 
   it('places the alert role on the invalid message and references it as aria-errormessage', function() {
@@ -102,7 +105,7 @@ describe('NxTextInput', function() {
   describe('when validatable is true', function() {
     const validatable = { validatable: true };
 
-    it('sets the invalid className if there are validationErrors', function() {
+    it('sets the invalid className if there are validationErrors and isPristine is not true', function() {
       expect(getShallowComponent({ ...validatable, validationErrors: 'bad' })).toHaveClassName('invalid');
       expect(getShallowComponent({ ...validatable, validationErrors: ['baaad', 'asdf'] })).toHaveClassName('invalid');
 
@@ -119,6 +122,17 @@ describe('NxTextInput', function() {
       expect(getShallowComponent({ ...validatable })).not.toHaveClassName('invalid');
       expect(getShallowComponent({ ...validatable, validationErrors: null })).not.toHaveClassName('invalid');
       expect(getShallowComponent({ ...validatable, validationErrors: [] })).not.toHaveClassName('invalid');
+    });
+
+    it('does not set the valid or invalid classes if isPristine is true', function() {
+      expect(getShallowComponent({ ...validatable, isPristine: true, validationErrors: ['baaad', 'asdf'] }))
+          .not.toHaveClassName('invalid');
+
+      expect(getShallowComponent({ ...validatable, isPristine: true })).not.toHaveClassName('valid');
+      expect(getShallowComponent({ ...validatable, isPristine: true, validationErrors: null }))
+          .not.toHaveClassName('valid');
+      expect(getShallowComponent({ ...validatable, isPristine: true, validationErrors: [] }))
+          .not.toHaveClassName('valid');
     });
   });
 

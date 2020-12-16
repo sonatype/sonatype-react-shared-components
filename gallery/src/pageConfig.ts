@@ -78,9 +78,11 @@ import NxNexusPageHeaderPage from './components/NxNexusPageHeader/NxNexusPageHea
 import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
 import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
+import NxViewportSizedPage from './styles/NxViewportSized/NxViewportSizedPage';
 import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
 import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
 import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
+import NxFormPage from './components/NxForm/NxFormPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -98,6 +100,7 @@ const pageConfig: PageConfig = {
     NxStatefulDropdown: NxStatefulDropdownPage,
     NxFilterInput: NxFilterInputPage,
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
+    NxForm: NxFormPage,
     NxFormGroup: NxFormGroupPage,
     NxLoadError: NxLoadErrorPage,
     NxLoadWrapper: NxLoadWrapperPage,
@@ -156,7 +159,8 @@ const pageConfig: PageConfig = {
     'nx-clickable': NxClickablePage,
     'nx-container-helpers': NxContainerHelpersPage,
     'nx-scrollable': NxScrollablePage,
-    'nx-truncate-ellipsis': NxTruncatePage
+    'nx-truncate-ellipsis': NxTruncatePage,
+    'nx-viewport-sized': NxViewportSizedPage
   },
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
