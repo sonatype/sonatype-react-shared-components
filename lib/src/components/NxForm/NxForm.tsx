@@ -27,6 +27,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
             onCancel,
             loadError,
             submitError,
+            submitErrorTitleMessage,
             validationErrors,
             submitBtnClasses: submitBtnClassesProp,
             submitBtnText,
@@ -58,7 +59,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
           { getChildren() }
           <footer className="nx-footer">
             { submitError &&
-              <NxLoadError titleMessage="An error occurred saving data."
+              <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
                            error={submitError}
                            retryHandler={onSubmitProp} />
             }

@@ -132,6 +132,16 @@ const NxFormPage = () =>
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
+            <NxTableCell>submitErrorTitleMessage</NxTableCell>
+            <NxTableCell>string</NxTableCell>
+            <NxTableCell>No</NxTableCell>
+            <NxTableCell>"An error occurred saving data."</NxTableCell>
+            <NxTableCell>
+              The <code className="nx-code">titleMessage</code> to set on
+              the <code className="nx-code">NxLoadError</code> which displays errors from form submission.
+            </NxTableCell>
+          </NxTableRow>
+          <NxTableRow>
             <NxTableCell>validationError</NxTableCell>
             <NxTableCell>string</NxTableCell>
             <NxTableCell>No</NxTableCell>

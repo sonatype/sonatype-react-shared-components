@@ -167,15 +167,14 @@ describe('NxForm', function() {
       });
     });
 
-    describe('load error', function() {
-      it('renders an NxLoadError in the nx-footer with the submitError and an appropriate title message', function() {
+    describe('submit error', function() {
+      it('renders an NxLoadError in the nx-footer with the submitError', function() {
         const noErrorComponent = getShallow(),
             errorComponent = getShallow({ submitError: 'BAAAAD' }),
             loadError = errorComponent.find('.nx-footer').find(NxLoadError);
 
         expect(noErrorComponent.find(NxLoadError)).not.toExist();
         expect(loadError).toExist();
-        expect(loadError.prop('titleMessage')).toContain('saving');
         expect(loadError).toHaveProp('error', 'BAAAAD');
       });
 
@@ -186,6 +185,25 @@ describe('NxForm', function() {
 
         expect(loadError).toHaveProp('retryHandler', onSubmit);
       });
+
+      it('sets the NxLoadError titleMessage to the submitErrorTitleMessage prop if present', function() {
+        const errorComponent = getShallow({
+              submitError: 'BAAAAD',
+              submitErrorTitleMessage: 'An error occurred launching the rocket.'
+            }),
+            loadError = errorComponent.find('.nx-footer').find(NxLoadError);
+
+        expect(loadError).toHaveProp('titleMessage', 'An error occurred launching the rocket.');
+      });
+
+      it('sets the titleMessage to a default that mentions "saving" if submitErrorTitleMessage is not present',
+          function() {
+            const errorComponent = getShallow({ submitError: 'BAAAAD' }),
+                loadError = errorComponent.find('.nx-footer').find(NxLoadError);
+
+            expect(loadError.prop('titleMessage')).toContain('saving');
+          }
+      );
     });
 
     describe('other buttons', function() {

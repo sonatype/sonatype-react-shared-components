@@ -15,6 +15,7 @@ export interface Props extends FormHTMLAttributes<HTMLFormElement> {
   onCancel?: (() => void) | null;
   loadError?: string | null;
   submitError?: string | null;
+  submitErrorTitleMessage?: string | null;
   validationErrors?: ValidationErrors;
   submitBtnClasses?: string | null;
   submitBtnText?: string | null;
@@ -33,6 +34,7 @@ export const propTypes: ValidationMap<Props> = {
   onCancel: PropTypes.func,
   loadError: PropTypes.string,
   submitError: PropTypes.string,
+  submitErrorTitleMessage: PropTypes.string,
   validationErrors: nxTextInputPropTypes.validationErrors,
   submitBtnClasses: PropTypes.string,
   submitBtnText: PropTypes.string,

@@ -14,7 +14,9 @@ export default function NxFormCustomizedExample() {
   const initialFieldState = { username: initialState(''), hostname: initialState('') },
       [usernameState, setUsernameState] = useState(initialFieldState.username),
       [hostnameState, setHostnameState] = useState(initialFieldState.hostname),
-      [submitMaskState, setSubmitMaskState] = useState<boolean | null>(null);
+      [submitMaskState, setSubmitMaskState] = useState<boolean | null>(null),
+      [submitCount, setSubmitCount] = useState(0),
+      [submitError, setSubmitError] = useState<string | null>(null);
 
   function onUsernameChange(val: string) {
     setUsernameState(userInput(null, val));
@@ -30,15 +32,26 @@ export default function NxFormCustomizedExample() {
   }
 
   function onSubmit() {
-    setSubmitMaskState(false);
+    // For the sake of example, simulate that the submit fails the first time, and then upon retry
+    // succeeds after 3 seconds
+    if (submitCount < 1) {
+      setSubmitError('Avian carrier died.');
+    }
+    else {
+      setSubmitError(null);
 
-    setTimeout(function() {
-      setSubmitMaskState(true);
+      setSubmitMaskState(false);
 
       setTimeout(function() {
-        setSubmitMaskState(null);
-      }, SUCCESS_VISIBLE_TIME_MS);
-    }, 3000);
+        setSubmitMaskState(true);
+
+        setTimeout(function() {
+          setSubmitMaskState(null);
+        }, SUCCESS_VISIBLE_TIME_MS);
+      }, 3000);
+    }
+
+    setSubmitCount(submitCount + 1);
   }
 
   const additionalFooterBtns = (
@@ -54,6 +67,8 @@ export default function NxFormCustomizedExample() {
             submitMaskState={submitMaskState}
             className="gallery-custom-form"
             submitBtnClasses="gallery-custom-form__submit"
+            submitError={submitError}
+            submitErrorTitleMessage="There was an error sending the message."
             submitBtnText="Send it"
             submitMaskMessage="Sending…"
             submitMaskSuccessMessage="Sent!"
