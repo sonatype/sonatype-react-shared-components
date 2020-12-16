@@ -27,7 +27,7 @@ describe('NxTextInput', function() {
     expect(getShallowComponent()).toContainMatchingElement('.nx-text-input__box .nx-icon--invalid');
   });
 
-  it('contains the first validation message if isPristine is not trie', function() {
+  it('contains the first validation message if isPristine is not true', function() {
     const validationErrorProps = { validatable: true, validationErrors: 'foo' },
         multiErrorValidationProps = { validatable: true, validationErrors: ['asdf', 'foo'] };
 
