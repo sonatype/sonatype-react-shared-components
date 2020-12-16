@@ -15,7 +15,6 @@
 
   // flex so line-height doesn't get involved in the element overall height
   display: inline-flex;
-  font-size: 13px;
   margin: $nx-spacing-xs 0;
 
   // the .MuiSlider-thumb elements actually stick out of the sides of the .MuiSlider-root at their min and max
