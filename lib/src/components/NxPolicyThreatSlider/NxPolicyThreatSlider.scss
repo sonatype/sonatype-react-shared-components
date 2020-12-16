@@ -14,6 +14,7 @@
   $thumb-vertical-overflow: ($thumb-size - $rail-height) / 2;
 
   font-size: 13px;
+  margin: $nx-spacing-xs 0;
 
   // the .MuiSlider-thumb elements actually stick out of the sides of the .MuiSlider-root at their min and max
   // positions.  This padding ensures that they don't stick out of the overall box for this component
