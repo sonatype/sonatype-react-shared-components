@@ -13,6 +13,7 @@
   // distance from top of thumb to top of rail
   $thumb-vertical-overflow: ($thumb-size - $rail-height) / 2;
 
+  display: inline-block;
   font-size: 13px;
   margin: $nx-spacing-xs 0;
 
