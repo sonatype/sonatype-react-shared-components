@@ -6,24 +6,22 @@
  */
 import React from 'react';
 import { shallow } from 'enzyme';
+import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 
 import NxToggle, { Props } from '../NxToggle';
 
 describe('NxToggle', function() {
   const simpleProps: Props = {
-    inputId: 'toggle-id',
-    isChecked: false,
-    onChange: () => {},
-    disabled: undefined,
-    children: 'Enables whales'
-  };
-
-  function getShallowComponent(additionalProps?: Partial<Props>) {
-    return shallow(<NxToggle { ...simpleProps } { ...additionalProps } />);
-  }
+        inputId: 'toggle-id',
+        isChecked: false,
+        onChange: () => {},
+        disabled: undefined,
+        children: 'Enables whales'
+      },
+      getShallow = getShallowComponent<Props>(NxToggle, simpleProps);
 
   it('renders a <label> containing a toggle <input> and toggle control', function() {
-    const shallowRender = getShallowComponent();
+    const shallowRender = getShallow();
 
     expect(shallowRender).toMatchSelector('label.nx-toggle');
 
@@ -35,23 +33,23 @@ describe('NxToggle', function() {
   });
 
   it('adds classes specified with the className prop', function() {
-    const component = getShallowComponent({ className: 'foo' });
+    const component = getShallow({ className: 'foo' });
 
     expect(component).toHaveClassName('foo');
     expect(component).toHaveClassName('nx-toggle');
   });
 
   it('adds the nx-toggle--disabled class if disabled is set', function() {
-    expect(getShallowComponent()).not.toHaveClassName('nx-toggle--disabled');
-    expect(getShallowComponent({ disabled: true })).toHaveClassName('nx-toggle--disabled');
+    expect(getShallow()).not.toHaveClassName('nx-toggle--disabled');
+    expect(getShallow({ disabled: true })).toHaveClassName('nx-toggle--disabled');
   });
 
   it('adds the tm-checked class if isChecked is true, and the tm-unchecked class if it is false', function() {
-    expect(getShallowComponent()).toHaveClassName('tm-unchecked');
-    expect(getShallowComponent()).not.toHaveClassName('tm-checked');
+    expect(getShallow()).toHaveClassName('tm-unchecked');
+    expect(getShallow()).not.toHaveClassName('tm-checked');
 
-    expect(getShallowComponent({ isChecked: true })).not.toHaveClassName('tm-unchecked');
-    expect(getShallowComponent({ isChecked: true })).toHaveClassName('tm-checked');
+    expect(getShallow({ isChecked: true })).not.toHaveClassName('tm-unchecked');
+    expect(getShallow({ isChecked: true })).toHaveClassName('tm-checked');
   });
 
   it('renders children nodes within an nx-toggle__content <span>', function() {
@@ -65,19 +63,19 @@ describe('NxToggle', function() {
   });
 
   it('disables the input iff disabled is set', function() {
-    expect(getShallowComponent().find('input')).toHaveProp('disabled', false);
-    expect(getShallowComponent({ disabled: false }).find('input')).toHaveProp('disabled', false);
-    expect(getShallowComponent({ disabled: true }).find('input')).toHaveProp('disabled', true);
+    expect(getShallow().find('input')).toHaveProp('disabled', false);
+    expect(getShallow({ disabled: false }).find('input')).toHaveProp('disabled', false);
+    expect(getShallow({ disabled: true }).find('input')).toHaveProp('disabled', true);
   });
 
   it('sets the input to checked per the value of isChecked', function() {
-    expect(getShallowComponent({ isChecked: false }).find('input')).toHaveProp('checked', false);
-    expect(getShallowComponent({ isChecked: true }).find('input')).toHaveProp('checked', true);
+    expect(getShallow({ isChecked: false }).find('input')).toHaveProp('checked', false);
+    expect(getShallow({ isChecked: true }).find('input')).toHaveProp('checked', true);
   });
 
   it('calls its onChange prop when the input fires a change event', function() {
     const onChange = jest.fn(),
-        component = getShallowComponent({ onChange });
+        component = getShallow({ onChange });
 
     expect(onChange).not.toHaveBeenCalled();
     component.find('input').simulate('change');
@@ -85,13 +83,13 @@ describe('NxToggle', function() {
   });
 
   it('sets the input as readonly if there is no onChange handler', function() {
-    expect(getShallowComponent().find('input')).toHaveProp('readOnly', false);
-    expect(getShallowComponent({ onChange: undefined }).find('input')).toHaveProp('readOnly', true);
-    expect(getShallowComponent({ onChange: null }).find('input')).toHaveProp('readOnly', true);
+    expect(getShallow().find('input')).toHaveProp('readOnly', false);
+    expect(getShallow({ onChange: undefined }).find('input')).toHaveProp('readOnly', true);
+    expect(getShallow({ onChange: null }).find('input')).toHaveProp('readOnly', true);
   });
 
   it('passes unknown props to the label element', function() {
-    const component = getShallowComponent({ id: 'foo', htmlFor: 'baz' });
+    const component = getShallow({ id: 'foo', htmlFor: 'baz' });
 
     expect(component).toHaveProp('id', 'foo');
     expect(component).toHaveProp('htmlFor', 'baz');
