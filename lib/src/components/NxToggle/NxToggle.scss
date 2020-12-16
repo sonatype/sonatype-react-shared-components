@@ -54,7 +54,7 @@
 
       .nx-toggle__indicator {
         background-color: #fff;
-        left: 23px;
+        margin-left: 20px;
       }
     }
   }
@@ -69,10 +69,11 @@
   border: 1px solid $nx-blue-600;
   border-radius: 12px;
   box-sizing: border-box;
+  display: flex;
   height: 24px;
+  justify-content: start;
   margin-left: $nx-spacing-l;
   padding: $nx-spacing-xxs - 1px;
-  position: relative;
   min-width: 44px;
   max-width: 44px;
 
@@ -85,9 +86,7 @@
   background-color: $nx-blue-600;
   border-radius: 8px;
   height: 16px;
+  margin-left: 0;
   width: 16px;
-  position: absolute;
-  top: 3px;
-  left: 4px;
-  transition: left 0.35s;
+  transition: margin-left 0.35s;
 }
