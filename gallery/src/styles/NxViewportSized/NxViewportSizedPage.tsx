@@ -106,7 +106,7 @@ export default function NxViewportSizedPage() {
               <NxTableRow>
                 <NxTableCell><code className="nx-code">nx-viewport-sized__container</code></NxTableCell>
                 <NxTableCell>
-                  Each element that is both a desendant
+                  Each element that is both a descendant
                   of <code className="nx-code">.nx-viewport-sized</code> and an ancestor of the element which is
                   intended to dynamically take up the slack in the page.
                 </NxTableCell>
@@ -162,7 +162,7 @@ export default function NxViewportSizedPage() {
         </header>
         <div className="nx-tile-content">
           <p className="nx-p">
-            In this example, the dynamic element is a small table who's scroll container expands to fill the
+            In this example, the dynamic element is a small table whose scroll container expands to fill the
             available space in the page.
           </p>
           <p className="nx-p">
@@ -186,7 +186,7 @@ export default function NxViewportSizedPage() {
         </header>
         <div className="nx-tile-content">
           <p className="nx-p">
-            In this example, the dynamic element is a large table who's scroll container shrinks to fit into the page.
+            In this example, the dynamic element is a large table whose scroll container shrinks to fit into the page.
           </p>
           <p className="nx-p">
             Demonstrating viewport sizing requires that the other content on the page is small enough to
