@@ -11,7 +11,7 @@ export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   toggleId?: string | null;
   onChange?: ((isChecked: boolean) => void) | null;
   defaultChecked: boolean;
-  disabled?: boolean | undefined | null;
+  disabled?: boolean | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
