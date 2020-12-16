@@ -6,6 +6,10 @@
  */
 @import '../scss-shared/nx-variables';
 
+.nx-form {
+  position: relative;
+}
+
 // Basic form layout
 .nx-form-group {
   margin-bottom: $nx-spacing-xl;

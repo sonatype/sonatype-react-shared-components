@@ -10,11 +10,13 @@ import { curryN, trim } from 'ramda';
 /**
  * @return an initialized state with the specified value and isPristine set to true.
  */
-export function initialState(value: string): StateProps {
+export function initialState(value: string, validator?: Validator): StateProps {
+  const trimmedValue = trim(value);
   return {
     isPristine: true,
     value,
-    trimmedValue: trim(value)
+    trimmedValue: trimmedValue,
+    validationErrors: validator ? validator(trimmedValue) : null
   };
 }
 
