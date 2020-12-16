@@ -8,14 +8,14 @@ import { LabelHTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
 export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
-  toggleId?: string | null;
+  inputId?: string | null;
   onChange?: (() => void) | null;
   isChecked: boolean;
   disabled?: boolean | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  toggleId: PropTypes.string,
+  inputId: PropTypes.string,
   onChange: PropTypes.func,
   isChecked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool
