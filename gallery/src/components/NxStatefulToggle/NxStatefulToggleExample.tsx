@@ -9,16 +9,18 @@ import React from 'react';
 import { NxStatefulToggle } from '@sonatype/react-shared-components';
 
 function NxStatefulToggleExample() {
-  const onChange = (checkedState: boolean) => { alert(checkedState); };
+  const onChange1 = (checkedState: boolean) => { alert(checkedState); },
+      onChange2 = (checkedState: boolean) => { alert(checkedState); };
 
   return (
-    <>
-      <fieldset className="nx-fieldset">
-        <NxStatefulToggle toggleId="subscribe-check" onChange={onChange} defaultChecked={false}>
-          Check
-        </NxStatefulToggle>
-      </fieldset>
-    </>
+    <div className="nx-form-group">
+      <NxStatefulToggle toggleId="enable-whale" onChange={onChange1} defaultChecked={false}>
+        Enables whales
+      </NxStatefulToggle>
+      <NxStatefulToggle toggleId="enable-kraken" onChange={onChange2} defaultChecked={true}>
+        Enable krakens
+      </NxStatefulToggle>
+    </div>
   );
 }
 
