@@ -7,7 +7,8 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxWarningAlert } from '@sonatype/react-shared-components';
+import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxWarningAlert }
+  from '@sonatype/react-shared-components';
 
 import NxFormExample from './NxFormExample';
 import NxFormCustomizedExample from './NxFormCustomizedExample';
