@@ -14,10 +14,10 @@ function NxStatefulToggleExample() {
 
   return (
     <div className="nx-form-group">
-      <NxStatefulToggle toggleId="enable-whale" onChange={onChange1} defaultChecked={false}>
+      <NxStatefulToggle inputId="enable-whale" onChange={onChange1} defaultChecked={false}>
         Enables whales
       </NxStatefulToggle>
-      <NxStatefulToggle toggleId="enable-kraken" onChange={onChange2} defaultChecked={true}>
+      <NxStatefulToggle inputId="enable-kraken" onChange={onChange2} defaultChecked={true}>
         Enable krakens
       </NxStatefulToggle>
     </div>
