@@ -9,7 +9,7 @@
 
 .nx-toggle {
   display: flex;
-  margin-bottom: $nx-spacing-md;
+  margin: $nx-spacing-md 0;
 
   &:hover {
     cursor: pointer;
@@ -71,7 +71,6 @@
   box-sizing: border-box;
   display: flex;
   height: 24px;
-  justify-content: start;
   margin-left: $nx-spacing-l;
   padding: $nx-spacing-xxs - 1px;
   min-width: 44px;
