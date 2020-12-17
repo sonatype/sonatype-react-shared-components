@@ -57,6 +57,13 @@
       border-color: $nx-focus-border-color;
       box-shadow: $nx-focus-box-shadow;
     }
+
+    // this class seems to be applied, perhaps incorrectly,
+    // after a thumb loses focus due to arrows keys and thumbs crossing
+    // over one another. It should _not_ have focus styles
+    &.Mui-focusVisible:not(:focus) {
+      box-shadow: none;
+    }
   }
 
   .nx-policy-threat-slider__value-label--none {
