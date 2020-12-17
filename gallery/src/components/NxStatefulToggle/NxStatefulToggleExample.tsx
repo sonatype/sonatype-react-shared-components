@@ -13,14 +13,14 @@ function NxStatefulToggleExample() {
       onChange2 = (checkedState: boolean) => { alert(checkedState); };
 
   return (
-    <div>
+    <>
       <NxStatefulToggle inputId="enable-whale" onChange={onChange1} defaultChecked={false}>
         Enables whales
       </NxStatefulToggle>
       <NxStatefulToggle inputId="enable-kraken" onChange={onChange2} defaultChecked={true}>
         Enable krakens
       </NxStatefulToggle>
-    </div>
+    </>
   );
 }
 
