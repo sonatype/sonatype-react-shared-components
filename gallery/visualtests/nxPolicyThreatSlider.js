@@ -36,7 +36,7 @@ describe('NxPolicyThreatSlider', function() {
         type: 'pointerMove',
         duration: 0,
         origin: 'pointer',
-        x: 18 * spaces,
+        x: 20 * spaces,
         y: 0
       }, {
         type: 'pointerUp',
@@ -55,7 +55,7 @@ describe('NxPolicyThreatSlider', function() {
       await dragSliderHandle(browser, upperSliderElement, -(spacesFromDefault));
 
       // click off of the slider
-      await targetElement.click({ x: -1, y: -1 });
+      await targetElement.click({ x: -50, y: -50 });
 
       await simpleTest(selector)();
     };
@@ -68,5 +68,5 @@ describe('NxPolicyThreatSlider', function() {
   it('looks right at 4 and 6', testSlider(4));
   it('looks right at 5 and 5', testSlider(5));
 
-  it('looks right when a slider is focused', focusTest(selector, lowerSliderSelector));
+  it('looks right when a slider is focused', focusTest(selector, upperSliderSelector));
 });
