@@ -58,8 +58,8 @@ const NxTextInput = forwardRef<TextInputElement, Props>(
           firstValidationError = validatable && getFirstValidationError(validationErrors),
           internalClassName = classnames('nx-text-input', className, {
             pristine: isPristine,
-            invalid: validatable && isInvalid,
-            valid: validatable && !isInvalid,
+            invalid: !isPristine && validatable && isInvalid,
+            valid: !isPristine && validatable && !isInvalid,
             disabled: disabled,
             'nx-text-input--textarea': isTextArea
           });
@@ -124,7 +124,7 @@ const NxTextInput = forwardRef<TextInputElement, Props>(
             <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon nx-icon--invalid"/>
           </div>
           <div id={invalidMessageId} role="alert" className="nx-text-input__invalid-message">
-            {firstValidationError}
+            {!isPristine && firstValidationError}
           </div>
         </div>
       );

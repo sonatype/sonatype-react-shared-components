@@ -26,7 +26,7 @@ export { Props, propTypes } from './types';
 const NxStatefulTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
     function NxStatefulTextInput(props, ref) {
       const { defaultValue, onChange, validator, ...attrs } = props,
-          [state, setState] = useState(initialState(defaultValue || ''));
+          [state, setState] = useState(initialState(defaultValue || '', validator));
 
       function changeHandler(newValue: string) {
         setState(userInput(validator || null, newValue));
