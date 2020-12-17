@@ -91,3 +91,7 @@
   width: 16px;
   transition: margin-left 0.35s;
 }
+
+.nx-legend + .nx-toggle {
+  margin-top: 0;
+}
