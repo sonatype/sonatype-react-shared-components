@@ -25,7 +25,7 @@ function NxToggleExample() {
       <h3 className="nx-h3">
         Here's what you can do:
       </h3>
-      <div className="nx-form-group">
+      <div>
         <NxToggle inputId="subscribe-check" onChange={toggleWarp} isChecked={isWarpOn}>
           Enable Warp Drive
         </NxToggle>

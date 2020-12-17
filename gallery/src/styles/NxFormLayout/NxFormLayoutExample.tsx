@@ -6,12 +6,10 @@
  */
 import React, { FormEvent, useState } from 'react';
 
-import { NxCheckbox } from '@sonatype/react-shared-components';
-import { NxRadio } from '@sonatype/react-shared-components';
-import { NxStatefulTextInput } from '@sonatype/react-shared-components';
-import { NxButton } from '@sonatype/react-shared-components';
+import { NxCheckbox, NxRadio, NxStatefulTextInput, NxButton, NxFontAwesomeIcon, NxToggle }
+    from '@sonatype/react-shared-components';
+
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
@@ -32,6 +30,13 @@ export default function NxFormLayoutExample() {
       toggleGreen = () => setIsGreen(!isGreen);
 
   const [color, setColor] = useState<string | null>(null);
+
+  const [isWarpOn, setIsWarpOn] = useState(false),
+      [isKrakenOut, setIsKrakenOut] = useState(false),
+      [isShapes, setIsShapes] = useState(false),
+      toggleWarp = () => setIsWarpOn(!isWarpOn),
+      toggleKraken = () => setIsKrakenOut(!isKrakenOut),
+      toggleShapes = () => setIsShapes(!isShapes);
 
   function onSubmit(evt: FormEvent) {
     evt.preventDefault();
@@ -107,6 +112,26 @@ export default function NxFormLayoutExample() {
           </select>
         </label>
       </div>
+      <fieldset className="nx-fieldset">
+        <legend className="nx-legend">
+          <span className="nx-legend__text">
+            Here's what you can do: {isWarpOn && 'Warp drive started'}
+            {isKrakenOut && ' The Kraken is out!'} {isShapes && ' Shapes are allowed'}
+          </span>
+        </legend>
+        <span className="nx-sub-label">
+          In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
+        </span>
+        <NxToggle inputId="subscribe-check" onChange={toggleWarp} isChecked={isWarpOn}>
+          Enable Warp Drive
+        </NxToggle>
+        <NxToggle inputId="no-label-check" onChange={toggleKraken} isChecked={isKrakenOut}>
+          Release the Kraken!
+        </NxToggle>
+        <NxToggle inputId="children-check" onChange={toggleShapes} isChecked={isShapes}>
+          Allow shapes
+        </NxToggle>
+      </fieldset>
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">Comments</span>

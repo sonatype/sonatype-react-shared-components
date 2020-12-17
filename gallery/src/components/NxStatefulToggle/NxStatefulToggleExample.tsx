@@ -13,7 +13,7 @@ function NxStatefulToggleExample() {
       onChange2 = (checkedState: boolean) => { alert(checkedState); };
 
   return (
-    <div className="nx-form-group">
+    <div>
       <NxStatefulToggle inputId="enable-whale" onChange={onChange1} defaultChecked={false}>
         Enables whales
       </NxStatefulToggle>
