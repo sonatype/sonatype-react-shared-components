@@ -13,14 +13,6 @@
   overflow-wrap: anywhere;
   max-width: $nx-form-element-width-wide;
 
-  &:hover {
-    cursor: pointer;
-
-    .nx-toggle__control {
-      border-color: $nx-grey-1100;
-    }
-  }
-
   &.nx-toggle--disabled {
     &, &:hover {
       color: $nx-text-color-disabled;
@@ -44,6 +36,14 @@
       &:hover {
         border-color: $nx-grey-1100;
       }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .nx-toggle__control {
+      border-color: $nx-grey-1100;
     }
   }
 }
