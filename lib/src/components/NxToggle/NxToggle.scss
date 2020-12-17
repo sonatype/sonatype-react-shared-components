@@ -11,6 +11,7 @@
   display: flex;
   margin: $nx-spacing-md 0;
   overflow-wrap: anywhere;
+  max-width: $nx-form-element-width-wide;
 
   &:hover {
     cursor: pointer;
