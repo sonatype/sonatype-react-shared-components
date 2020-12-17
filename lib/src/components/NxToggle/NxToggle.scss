@@ -15,6 +15,10 @@
 
   &:hover {
     cursor: pointer;
+
+    .nx-toggle__control {
+      border-color: $nx-grey-1100;
+    }
   }
 
   &.nx-toggle--disabled {
@@ -77,10 +81,6 @@
   margin-left: $nx-spacing-l;
   padding: $nx-spacing-xxs - 1px;
   width: 44px;
-
-  &:hover {
-    border-color: $nx-grey-1100;
-  }
 }
 
 .nx-toggle__indicator {
