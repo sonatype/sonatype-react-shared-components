@@ -12,7 +12,7 @@ describe('NxToggle', function() {
     await browser.url('#/pages/NxToggle');
   });
 
-  const selector = '#nx-toggle-example .gallery-example-live label:nth-of-type(3)',
+  const selector = '#nx-toggle-example .gallery-example-live label:nth-of-type(2)',
       disabledSelector = '#nx-toggle-example .gallery-example-live label:nth-of-type(4)';
 
   describe('Default NxToggle', function() {
@@ -40,7 +40,7 @@ describe('NxToggle', function() {
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
-      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+      await targetElement.moveTo({ xOffset: -15, yOffset: -15 });
       await browser.execute(function(el) {
         el.focus();
       }, focusElement);
@@ -54,7 +54,7 @@ describe('NxToggle', function() {
       }
     });
 
-    it('has a dark broder, blue background and white indicator when clicked, focused, and hovered', async function() {
+    it('dark border, blue background and white indicator when clicked, focused, and hovered', async function() {
       const focusSelector = `${selector} input`,
           [targetElement, focusElement] = await Promise.all([browser.$(selector), browser.$(focusSelector)]);
 
