@@ -24,7 +24,9 @@
   .MuiSlider-root {
     height: $rail-height;
     padding: $thumb-vertical-overflow 0;
-    width: 200px;
+
+    // NOTE: this number needs to be divisible by 10 for the track to render cleanly
+    width: 230px;
   }
 
   .MuiSlider-markActive {
