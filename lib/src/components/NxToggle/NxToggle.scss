@@ -71,11 +71,11 @@
   border-radius: 12px;
   box-sizing: border-box;
   display: flex;
+  flex: none;
   height: 24px;
   margin-left: $nx-spacing-l;
   padding: $nx-spacing-xxs - 1px;
-  min-width: 44px;
-  max-width: 44px;
+  width: 44px;
 
   &:hover {
     border-color: $nx-grey-1100;
