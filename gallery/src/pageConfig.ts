@@ -83,6 +83,8 @@ import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndica
 import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
 import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
 import NxFormPage from './components/NxForm/NxFormPage';
+import NxTogglePage from './components/NxToggle/NxTogglePage';
+import NxStatefulTogglePage from './components/NxStatefulToggle/NxStatefulTogglePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -121,6 +123,8 @@ const pageConfig: PageConfig = {
     NxTextInput: NxTextInputPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatIndicator: NxThreatIndicatorPage,
+    NxToggle: NxTogglePage,
+    NxStatefulToggle: NxStatefulTogglePage,
     NxTooltip: NxTooltipPage,
     NxOverflowTooltip: NxOverflowTooltipPage,
     NxTreeView: NxTreeViewPage,
