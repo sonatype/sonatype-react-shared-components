@@ -7,7 +7,7 @@
 import React, { FormEvent, useState } from 'react';
 
 import { NxCheckbox, NxRadio, NxStatefulTextInput, NxButton, NxFontAwesomeIcon, NxToggle }
-    from '@sonatype/react-shared-components';
+  from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 
