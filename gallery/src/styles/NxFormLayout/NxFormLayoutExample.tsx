@@ -115,13 +115,12 @@ export default function NxFormLayoutExample() {
       <fieldset className="nx-fieldset">
         <legend className="nx-legend">
           <span className="nx-legend__text">
-            Here's what you can do: {isWarpOn && 'Warp drive started'}
-            {isKrakenOut && ' The Kraken is out!'} {isShapes && ' Shapes are allowed'}
+            Enable features
+          </span>
+          <span className="nx-sub-label">
+            In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
           </span>
         </legend>
-        <span className="nx-sub-label">
-          In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
-        </span>
         <NxToggle inputId="subscribe-check" onChange={toggleWarp} isChecked={isWarpOn}>
           Enable Warp Drive
         </NxToggle>
