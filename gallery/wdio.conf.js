@@ -286,6 +286,9 @@ exports.config = {
       // applitools trace logging - temporary
       eyes.setLogHandler(new ConsoleLogHandler(true));
 
+      // DOM info is sent for Root Cause Analysis, which we don't use and which may be causing intermittent failures
+      eyes.setSendDom(false);
+
       await eyes.open(browser, undefined, `${test.parent} ${test.title}`);
     },
     /**
