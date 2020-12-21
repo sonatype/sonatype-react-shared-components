@@ -198,6 +198,12 @@
   text-transform: uppercase;
   white-space: nowrap;
   vertical-align: middle;
+
+  &:focus {
+    outline: 1px solid $nx-focus-border-color;
+    outline-offset: -1px;
+    box-shadow: $nx-focus-box-shadow;
+  }
 }
 
 // columns whose content is numerical
