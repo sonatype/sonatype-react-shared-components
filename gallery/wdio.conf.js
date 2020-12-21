@@ -8,9 +8,8 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfigFn = require('./webpack.config.js');
 const axios = require('axios');
-const { BatchInfo, By, ClassicRunner, Configuration, ConsoleLogHandler, Eyes, RectangleSize, Target } =
+const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, Target } =
     require('@applitools/eyes-webdriverio');
-
 
 const host = process.env.TEST_IP || 'localhost';
 
@@ -282,9 +281,6 @@ exports.config = {
       eyesConf.setViewportSize(new RectangleSize(1366, 1000));
 
       eyes.setConfiguration(eyesConf);
-
-      // applitools trace logging - temporary
-      eyes.setLogHandler(new ConsoleLogHandler(true));
 
       // DOM info is sent for Root Cause Analysis, which we don't use and which may be causing intermittent failures
       eyes.setSendDom(false);
