@@ -12,17 +12,16 @@ import { textContent } from '../../util/childUtil';
 import { OverflowTooltipProps, overflowTooltipPropTypes } from './types';
 import NxTooltip from './NxTooltip';
 
-export { PublicOverflowTooltipProps as OverflowTooltipProps } from './types';
+export { OverflowTooltipProps };
 
-export default function NxOverflowTooltip({ title, children, overflowElementSelector, ...otherProps }: OverflowTooltipProps) {
+export default function NxOverflowTooltip({ title, children, ...otherProps }: OverflowTooltipProps) {
   const computedTitle = title || textContent(children),
       [needsTooltip, setNeedsTooltip] = useState(false),
       ref = useRef<HTMLElement>(null),
       childrenWithRef = React.cloneElement(children, { ref });
 
   function updateNeedsTooltip() {
-    const el = ref.current &&
-        (overflowElementSelector ? ref.current.querySelector(overflowElementSelector) : ref.current);
+    const el = ref.current;
 
     setNeedsTooltip(!!el && el.clientWidth < el.scrollWidth);
   }
