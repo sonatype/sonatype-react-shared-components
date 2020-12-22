@@ -22,7 +22,18 @@ export interface Props {
   children: ReactElement;
 }
 
-export type OverflowTooltipProps = Omit<Props, 'open'>;
+export interface OverflowTooltipProps extends PublicOverflowTooltipProps {
+  /*
+   * for internal usage only due to there being a lot of caveats on it.
+   * If present, causes the overflow detection to check the element identified by the specified selector string
+   * (relative to the element upon which the tooltip ref gets set) instead of check the ref element itself.
+   * Note that the tooltip _content_ is still derived from the JSX that it wraps, therefore care should be taken
+   * that all visible text content within the NxOverflowTooltip is also within the element selected by this prop
+   */
+  overflowElementSelector?: string | null;
+}
+
+export type PublicOverflowTooltipProps = Omit<Props, 'open'>;
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   className: PropTypes.string,
@@ -33,4 +44,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   title: PropTypes.node
 };
 
-export const overflowTooltipPropTypes = omit(['open'], propTypes);
+export const overflowTooltipPropTypes = {
+  ...omit(['open'], propTypes),
+  overflowElementSelector: PropTypes.string
+};
