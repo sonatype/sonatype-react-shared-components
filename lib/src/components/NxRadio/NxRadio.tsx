@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import './NxRadio.scss';
 
 import { Props, propTypes } from './types';
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 export { Props } from './types';
 
 const NxRadio = forwardRef<HTMLLabelElement, Props>(
@@ -33,7 +34,11 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
             { isChecked && <circle r="6" strokeWidth="4" className="nx-radio__inner-circle"/> }
             <circle r="7.5" strokeWidth="1" className="nx-radio__outer-circle"/>
           </svg>
-          { children && <span className="nx-radio-checkbox__content nx-radio__content">{children}</span> }
+          { children &&
+            <NxOverflowTooltip>
+              <span className="nx-radio-checkbox__content nx-radio__content">{children}</span>
+            </NxOverflowTooltip>
+          }
         </label>
       );
     }
