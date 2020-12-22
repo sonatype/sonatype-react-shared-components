@@ -45,7 +45,7 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
             {/* Put a space in the box if not checked,
               * in order to provide a consistent vertical-align baseline
               */}
-            { isChecked ? <FontAwesomeIcon icon={faCheck} /> : ' ' }
+            { isChecked ? <FontAwesomeIcon icon={faCheck} /> : '\u00A0' }
           </span>
           { children &&
             <NxOverflowTooltip>
