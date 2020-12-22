@@ -11,6 +11,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import './NxCheckbox.scss';
 import { Props, propTypes } from './types';
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 export { Props } from './types';
 
 /**
@@ -32,22 +33,24 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
       });
 
       return (
-        <label { ...otherProps } ref={ref} className={labelClasses}>
-          <input type="checkbox"
-                 id={checkboxId || undefined}
-                 className="nx-radio-checkbox__input nx-checkbox__input"
-                 disabled={!!disabled}
-                 checked={isChecked}
-                 readOnly={!onChange}
-                 onChange={onChange || undefined}/>
-          <span className="nx-radio-checkbox__control nx-checkbox__box">
-            {/* Put a non-breaking space in the box if not checked,
-              * in order to provide a consistent vertical-align baseline
-              */}
-            { isChecked ? <FontAwesomeIcon icon={faCheck} /> : '\u00A0' }
-          </span>
-          { children && <span className="nx-radio-checkbox__content nx-checkbox__content">{children}</span> }
-        </label>
+        <NxOverflowTooltip overflowElementSelector=".nx-checkbox__content">
+          <label { ...otherProps } ref={ref} className={labelClasses}>
+            <input type="checkbox"
+                   id={checkboxId || undefined}
+                   className="nx-radio-checkbox__input nx-checkbox__input"
+                   disabled={!!disabled}
+                   checked={isChecked}
+                   readOnly={!onChange}
+                   onChange={onChange || undefined}/>
+            <span className="nx-radio-checkbox__control nx-checkbox__box">
+              {/* Put a space in the box if not checked,
+                * in order to provide a consistent vertical-align baseline
+                */}
+              { isChecked ? <FontAwesomeIcon icon={faCheck} /> : ' ' }
+            </span>
+            { children && <span className="nx-radio-checkbox__content nx-checkbox__content">{children}</span> }
+          </label>
+        </NxOverflowTooltip>
       );
     }
 );
