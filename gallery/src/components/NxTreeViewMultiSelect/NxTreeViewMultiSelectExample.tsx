@@ -63,7 +63,7 @@ const NxTreeViewMultiSelectExample = () => {
                            isOpen={isOpen}
                            onToggleCollapse={onToggleCollapse}
                            options={options}
-                           optionTooltipGenerator={(option: CustomOption) => option.description}
+                           optionTooltipGenerator={option => option.description}
                            selectedIds={selection}
                            onChange={onSelectionChange}
                            filter={filter}
