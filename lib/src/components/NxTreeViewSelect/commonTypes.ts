@@ -37,7 +37,7 @@ export const optionPropType = PropTypes.shape({
   name: PropTypes.string.isRequired
 }).isRequired;
 
-export const commonPropTypes: PropTypes.ValidationMap<CommonProps<any>> = {
+export const commonPropTypes: PropTypes.ValidationMap<CommonProps> = {
   options: PropTypes.arrayOf(optionPropType).isRequired,
   name: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([

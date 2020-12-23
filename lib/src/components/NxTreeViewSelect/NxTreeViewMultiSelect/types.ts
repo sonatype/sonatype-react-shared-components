@@ -13,7 +13,7 @@ export interface Props<T extends Option = Option> extends CommonProps<T> {
   onChange: ((selectedIds: Set<string | null>, toggledId?: string | null) => void);
 }
 
-export const propTypes: React.WeakValidationMap<Props<any>> = {
+export const propTypes: React.WeakValidationMap<Props> = {
   ...commonPropTypes,
   selectedIds: PropTypes.instanceOf(Set) as PropTypes.Validator<Set<string | null>>,
   onChange: PropTypes.func.isRequired
