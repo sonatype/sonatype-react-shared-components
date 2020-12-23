@@ -35,14 +35,14 @@ describe('NxFieldset', function() {
   });
 
   it('sets the ref on the fieldset', function() {
-      const ref = React.createRef<HTMLFieldSetElement>(),
+    const ref = React.createRef<HTMLFieldSetElement>(),
 
-          // note: the fragment is necessary to get around an enzyme issue:
-          // https://github.com/enzymejs/enzyme/issues/1852#issuecomment-433145879
-          component = mount(<><NxFieldset { ...minimalProps } ref={ref} /></>),
-          domNode = component.find('fieldset').getDOMNode();
+        // note: the fragment is necessary to get around an enzyme issue:
+        // https://github.com/enzymejs/enzyme/issues/1852#issuecomment-433145879
+        component = mount(<><NxFieldset { ...minimalProps } ref={ref} /></>),
+        domNode = component.find('fieldset').getDOMNode();
 
-      expect(ref.current).toBe(domNode);
+    expect(ref.current).toBe(domNode);
   });
 
   it('contains the specified children', function() {
