@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import 'nx-variables';
+@import 'nx-container-helpers';
 
 @mixin nx-font-family() {
   font-family: Open Sans, sans-serif;
@@ -78,4 +79,15 @@
     padding: 0;
     white-space: inherit;
   }
+}
+
+
+%nx-blockquote {
+  @include container-vertical();
+  background-color: $nx-grey-50;
+  border: 1px solid #d1d6f0;
+  border-left-width: 8px;
+  border-radius: $nx-border-radius;
+  margin: $nx-spacing-md 0 $nx-spacing-l 0;
+  padding: $nx-spacing-l;
 }

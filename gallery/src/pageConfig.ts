@@ -85,6 +85,7 @@ import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
 import NxFormPage from './components/NxForm/NxFormPage';
 import NxTogglePage from './components/NxToggle/NxTogglePage';
 import NxStatefulTogglePage from './components/NxStatefulToggle/NxStatefulTogglePage';
+import NxBlockquotePage from './styles/NxBlockquote/NxBlockquotePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -143,6 +144,7 @@ const pageConfig: PageConfig = {
   },
   'Styles - HTML Elements': {
     'nx-alert': NxAlertPage,
+    'nx-blockquote': NxBlockquotePage,
     'nx-btn': NxBtnPage,
     'nx-card': NxCardPage,
     'nx-code': NxCodePage,

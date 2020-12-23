@@ -67,3 +67,7 @@ $nx-scrollable-default-height: 400px;
 .nx-code {
   @extend %nx-code;
 }
+
+.nx-blockquote {
+  @extend %nx-blockquote;
+}
