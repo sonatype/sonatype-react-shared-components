@@ -9,26 +9,36 @@ import {contains, toLower} from 'ramda';
 
 import { NxTreeViewRadioSelect, NxTreeViewRadioSelectOption } from '@sonatype/react-shared-components';
 
-const NxTreeViewRadioSelectExample = () => {
-  const options = [
+interface CustomOption extends NxTreeViewRadioSelectOption {
+  description: string;
+}
+
+const NxTreeViewRadioSelectCustomTooltipExample = () => {
+  const options: CustomOption[] = [
     {
       id: 'bike',
-      name: 'Bicycle'
+      name: 'Bicycle',
+      description: '2 wheels, a frame, and your leg muscles'
     }, {
       id: 'motorcycle',
-      name: 'Motorcycle'
+      name: 'Motorcycle',
+      description: '2 wheels, a frame, and an engine'
     }, {
       id: 'skate',
-      name: 'Skateboard'
+      name: 'Skateboard',
+      description: '4 little wheels and a board'
     }, {
       id: 'longboard',
-      name: 'Loooooooooooooooooooooooooooooooooongboard'
+      name: 'Loooooooooooooooooooooooooooooooooongboard',
+      description: '4 little wheels and a longer, more stable board'
     }, {
       id: 'moped',
-      name: 'Moped'
+      name: 'Moped',
+      description: '2 wheels, a frame, and an underpowered engine'
     }, {
       id: null,
-      name: 'No Transport'
+      name: 'No Transport',
+      description: 'Staying at home. There\'s a pandemic on, afterall.'
     }
   ];
 
@@ -53,6 +63,7 @@ const NxTreeViewRadioSelectExample = () => {
                            selectedId={selection}
                            onChange={onSelectionChange}
                            options={options}
+                           optionTooltipGenerator={option => option.description}
                            filter={filter}
                            filterPlaceholder="vehicle name"
                            filterThreshold={2}
@@ -63,4 +74,4 @@ const NxTreeViewRadioSelectExample = () => {
   );
 };
 
-export default NxTreeViewRadioSelectExample;
+export default NxTreeViewRadioSelectCustomTooltipExample;
