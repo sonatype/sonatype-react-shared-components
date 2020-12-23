@@ -58,8 +58,8 @@ const NxTreeViewRadioSelectCustomTooltipExample = () => {
     <NxTreeViewRadioSelect onToggleCollapse={onToggleCollapse}
                            isOpen={isOpen}
                            disabled={false}
-                           name="travel"
-                           id="nx-travel-tree-view"
+                           name="travel-custom-tooltips"
+                           id="nx-travel-tree-view-custom-tooltips"
                            selectedId={selection}
                            onChange={onSelectionChange}
                            options={options}

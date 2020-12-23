@@ -58,8 +58,8 @@ const NxTreeViewMultiSelectCustomTooltipExample = () => {
   }
 
   return (
-    <NxTreeViewMultiSelect name="travel"
-                           id="nx-travel-tree-view"
+    <NxTreeViewMultiSelect name="travel-custom-tooltips"
+                           id="nx-travel-tree-view-custom-tooltips"
                            isOpen={isOpen}
                            onToggleCollapse={onToggleCollapse}
                            options={options}
