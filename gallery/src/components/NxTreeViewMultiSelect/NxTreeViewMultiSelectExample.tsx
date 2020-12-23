@@ -8,25 +8,39 @@ import React, { useState } from 'react';
 import {contains, toLower} from 'ramda';
 import { faBicycle } from '@fortawesome/free-solid-svg-icons';
 
-import {NxTreeViewMultiSelect, NxFontAwesomeIcon, NxTreeViewMultiSelectOption} from '@sonatype/react-shared-components';
+import {NxFontAwesomeIcon, NxTreeViewMultiSelectOption, NxTreeViewMultiSelect}
+  from '@sonatype/react-shared-components';
+
+interface CustomOption extends NxTreeViewMultiSelectOption {
+  description: string;
+}
 
 const NxTreeViewMultiSelectExample = () => {
-  const options = [
+  const options: CustomOption[] = [
     {
       id: 'bike',
-      name: 'Bicycle'
+      name: 'Bicycle',
+      description: '2 wheels, a frame, and your leg muscles'
     }, {
       id: 'motorcycle',
-      name: 'Motorcycle'
+      name: 'Motorcycle',
+      description: '2 wheels, a frame, and an engine'
     }, {
       id: 'skate',
-      name: 'Skateboard'
+      name: 'Skateboard',
+      description: '4 little wheels and a board'
+    }, {
+      id: 'longboard',
+      name: 'Loooooooooooooooooooooooooooooooooongboard',
+      description: '4 little wheels and a longer, more stable board'
     }, {
       id: 'moped',
-      name: 'Moped'
+      name: 'Moped',
+      description: '2 wheels, a frame, and an underpowered engine'
     }, {
       id: null,
-      name: 'No Transport'
+      name: 'No Transport',
+      description: 'Staying at home'
     }
   ];
 
@@ -49,7 +63,7 @@ const NxTreeViewMultiSelectExample = () => {
                            isOpen={isOpen}
                            onToggleCollapse={onToggleCollapse}
                            options={options}
-                           optionTooltipGenerator={option => option.name}
+                           optionTooltipGenerator={(option: CustomOption) => option.description}
                            selectedIds={selection}
                            onChange={onSelectionChange}
                            filter={filter}
