@@ -25,12 +25,23 @@ export { Props } from './types';
  * [phrasing content](https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content).
  */
 const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
-    function NxCheckbox({ className, onChange, isChecked, disabled, checkboxId, children, ...otherProps }, ref) {
-      const labelClasses = classnames('nx-radio-checkbox', 'nx-checkbox', className, {
-        'nx-radio-checkbox--disabled': disabled,
-        'tm-checked': isChecked,
-        'tm-unchecked': !isChecked
-      });
+    function NxCheckbox(props, ref) {
+      const {
+            className,
+            onChange,
+            isChecked,
+            disabled,
+            checkboxId,
+            overflowTooltip,
+            children,
+            ...otherProps
+          } = props,
+          labelClasses = classnames('nx-radio-checkbox', 'nx-checkbox', className, {
+            'nx-radio-checkbox--disabled': disabled,
+            'tm-checked': isChecked,
+            'tm-unchecked': !isChecked
+          }),
+          content = children && <span className="nx-radio-checkbox__content nx-checkbox__content">{children}</span>;
 
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
@@ -47,10 +58,8 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
               */}
             { isChecked ? <FontAwesomeIcon icon={faCheck} /> : '\u00A0' }
           </span>
-          { children &&
-            <NxOverflowTooltip>
-              <span className="nx-radio-checkbox__content nx-checkbox__content">{children}</span>
-            </NxOverflowTooltip>
+          { content &&
+            (overflowTooltip !== false ? <NxOverflowTooltip>{content}</NxOverflowTooltip> : content)
           }
         </label>
       );
