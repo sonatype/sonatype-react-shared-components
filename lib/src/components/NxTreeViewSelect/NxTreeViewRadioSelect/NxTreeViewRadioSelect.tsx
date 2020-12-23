@@ -14,32 +14,32 @@ import NxRadio from '../../NxRadio/NxRadio';
 import AbstractTreeViewSelect, { generateId } from '../AbstractTreeViewSelect';
 
 function NxTreeViewRadioSelect<T extends Option>(props: Props<T>) {
+  const { selectedId, onChange, optionTooltipGenerator, ...otherProps } = props,
+      {name, options} = otherProps,
+      disabled = !!props.disabled,
+      selectedItem = find(propEq('id', selectedId), options);
 
-    const { selectedId, onChange, optionTooltipGenerator, ...otherProps } = props,
-        {name, options} = otherProps,
-        disabled = !!props.disabled,
-        selectedItem = find(propEq('id', selectedId), options);
+  const renderOption = ({id, name: optionName}: Option) => (
+    <NxRadio radioId={generateId(name, id)}
+             name={name}
+             value={id}
+             isChecked={id === selectedId}
+             onChange={onChange}
+             overflowTooltip={!optionTooltipGenerator}
+             disabled={disabled}>
+      {optionName}
+    </NxRadio>
+  );
 
-    const renderOption = ({id, name: optionName}: Option) => (
-      <NxRadio radioId={generateId(name, id)}
-               name={name}
-               value={id}
-               isChecked={id === selectedId}
-               onChange={onChange}
-               overflowTooltip={!optionTooltipGenerator}
-               disabled={disabled}>
-        {optionName}
-      </NxRadio>
-    );
+  const renderCounter = () =>
+    selectedItem && selectedItem.name ? <NxTreeViewCounter>{selectedItem.name}</NxTreeViewCounter> : null;
 
-    const renderCounter = () =>
-      selectedItem && selectedItem.name ? <NxTreeViewCounter>{selectedItem.name}</NxTreeViewCounter> : null;
+  return <AbstractTreeViewSelect {...props}
+                                 optionTooltipGenerator={optionTooltipGenerator}
+                                 renderOption={renderOption}
+                                 renderCounter={renderCounter}/>;
+};
 
-    return <AbstractTreeViewSelect {...props}
-                                   optionTooltipGenerator={optionTooltipGenerator}
-                                   renderOption={renderOption}
-                                   renderCounter={renderCounter}/>;
-  };
 NxTreeViewRadioSelect.propTypes = propTypes;
 
 export default NxTreeViewRadioSelect;
