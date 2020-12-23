@@ -86,6 +86,7 @@ import NxFormPage from './components/NxForm/NxFormPage';
 import NxTogglePage from './components/NxToggle/NxTogglePage';
 import NxStatefulTogglePage from './components/NxStatefulToggle/NxStatefulTogglePage';
 import NxBlockquotePage from './styles/NxBlockquote/NxBlockquotePage';
+import NxPrePage from './styles/NxPre/NxPrePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -153,6 +154,7 @@ const pageConfig: PageConfig = {
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
     'nx-page-title': NxPageTitlePage,
+    'nx-pre': NxPrePage,
     'nx-read-only': NxReadOnlyPage,
     'nx-form-select': NxFormSelectPage,
     'nx-table': NxTableStylePage,
