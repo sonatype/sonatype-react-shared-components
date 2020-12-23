@@ -15,7 +15,7 @@ import AbstractTreeViewSelect, { generateId } from '../AbstractTreeViewSelect';
 
 function NxTreeViewMultiSelect<T extends Option>(props: Props<T>) {
   // exclude onChange and selectedIds from the props we pass to AbstractTreeViewSelect
-  const {onChange, selectedIds, ...otherProps} = props;
+  const {onChange, selectedIds, optionTooltipGenerator, ...otherProps} = props;
 
   const {options, name} = props,
       filteredOptions = props.filteredOptions || options,
@@ -72,6 +72,7 @@ function NxTreeViewMultiSelect<T extends Option>(props: Props<T>) {
     <NxCheckbox checkboxId={generateId(name, id)}
                 onChange={() => toggle(id)}
                 isChecked={normalizedSelectedIds.has(id)}
+                overflowTooltip={!optionTooltipGenerator}
                 disabled={disabled}>
       {optionName}
     </NxCheckbox>
@@ -89,6 +90,7 @@ function NxTreeViewMultiSelect<T extends Option>(props: Props<T>) {
   const renderCounter = () => <MultiSelectCounter options={options} selectedIds={normalizedSelectedIds} />;
 
   return <AbstractTreeViewSelect {...otherProps}
+                                 optionTooltipGenerator={optionTooltipGenerator}
                                  renderOption={renderOption}
                                  renderToggleAllOption={renderToggleAllOption}
                                  renderCounter={renderCounter}/>;
