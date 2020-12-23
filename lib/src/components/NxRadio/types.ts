@@ -16,6 +16,7 @@ export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   isChecked: boolean;
   disabled?: boolean | null;
   radioId?: string | null;
+  overflowTooltip?: boolean | null;
 };
 
 // In a strictly typescript environment, PropTypes are mostly redundant.  However, they still provide safety when this
@@ -26,5 +27,6 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   onChange: PropTypes.func,
   isChecked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
-  radioId: PropTypes.string
+  radioId: PropTypes.string,
+  overflowTooltip: PropTypes.bool
 };

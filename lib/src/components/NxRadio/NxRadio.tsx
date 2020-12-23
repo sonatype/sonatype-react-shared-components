@@ -13,12 +13,25 @@ import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 export { Props } from './types';
 
 const NxRadio = forwardRef<HTMLLabelElement, Props>(
-    function NxRadio({ className, name, value, onChange, isChecked, disabled, children, radioId, ...otherProps }, ref) {
-      const labelClasses = classnames('nx-radio-checkbox', 'nx-radio', className, {
-        'nx-radio-checkbox--disabled': disabled,
-        'tm-checked': isChecked,
-        'tm-unchecked': !isChecked
-      });
+    function NxRadio(props, ref) {
+      const {
+            className,
+            name,
+            value,
+            onChange,
+            isChecked,
+            disabled,
+            children,
+            radioId,
+            overflowTooltip,
+            ...otherProps
+          } = props,
+          labelClasses = classnames('nx-radio-checkbox', 'nx-radio', className, {
+            'nx-radio-checkbox--disabled': disabled,
+            'tm-checked': isChecked,
+            'tm-unchecked': !isChecked
+          }),
+          content = children && <span className="nx-radio-checkbox__content nx-radio__content">{children}</span>;
 
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
@@ -34,10 +47,8 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
             { isChecked && <circle r="6" strokeWidth="4" className="nx-radio__inner-circle"/> }
             <circle r="7.5" strokeWidth="1" className="nx-radio__outer-circle"/>
           </svg>
-          { children &&
-            <NxOverflowTooltip>
-              <span className="nx-radio-checkbox__content nx-radio__content">{children}</span>
-            </NxOverflowTooltip>
+          { content &&
+            (overflowTooltip !== false ? <NxOverflowTooltip>{content}</NxOverflowTooltip> : content)
           }
         </label>
       );
