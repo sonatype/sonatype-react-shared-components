@@ -5,15 +5,15 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import {CommonProps, commonPropTypes} from '../commonTypes';
+import {CommonProps, Option, commonPropTypes} from '../commonTypes';
 export {Option} from '../commonTypes';
 
-export interface Props extends CommonProps {
+export interface Props<T extends Option = Option> extends CommonProps<T> {
   selectedIds?: Set<string | null> | null;
   onChange: ((selectedIds: Set<string | null>, toggledId?: string | null) => void);
 }
 
-export const propTypes: PropTypes.ValidationMap<Props> = {
+export const propTypes: React.WeakValidationMap<Props<any>> = {
   ...commonPropTypes,
   selectedIds: PropTypes.instanceOf(Set) as PropTypes.Validator<Set<string | null>>,
   onChange: PropTypes.func.isRequired

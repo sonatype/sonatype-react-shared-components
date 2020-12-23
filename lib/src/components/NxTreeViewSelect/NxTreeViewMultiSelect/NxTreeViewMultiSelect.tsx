@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import { all, propEq, any } from 'ramda';
 
 import { Props, propTypes, Option } from './types';
@@ -13,7 +13,7 @@ import NxCheckbox from '../../NxCheckbox/NxCheckbox';
 import MultiSelectCounter from './MultiSelectCounter';
 import AbstractTreeViewSelect, { generateId } from '../AbstractTreeViewSelect';
 
-const NxTreeViewMultiSelect: FunctionComponent<Props> = function NxTreeViewMultiSelect(props) {
+function NxTreeViewMultiSelect<T extends Option>(props: Props<T>) {
   // exclude onChange and selectedIds from the props we pass to AbstractTreeViewSelect
   const {onChange, selectedIds, ...otherProps} = props;
 
