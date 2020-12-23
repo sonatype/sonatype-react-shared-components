@@ -40,7 +40,7 @@ const NxTreeViewMultiSelectExample = () => {
     }, {
       id: null,
       name: 'No Transport',
-      description: 'Staying at home'
+      description: 'Staying at home. There\'s a pandemic on, afterall.'
     }
   ];
 
