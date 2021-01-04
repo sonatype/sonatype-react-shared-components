@@ -15,7 +15,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes, TextInputElement } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 import { getRandomId } from '../../util/idUtil';
-export { Props, propTypes, inputTypes } from './types';
+export { Props, PublicProps, propTypes, inputTypes } from './types';
 
 /**
  * Standard text input with validation styling
@@ -40,6 +40,7 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
         className,
         onKeyPress,
         disabled,
+        prefixContent,
         ...attrs
       } = props;
 
@@ -90,6 +91,7 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
       return (
         <div ref={forwardedRef} className={internalClassName}>
           <div className="nx-text-input__box" onClick={setFocusToInput}>
+            {prefixContent}
             {React.createElement(element, {
               ...newProps,
               disabled,
