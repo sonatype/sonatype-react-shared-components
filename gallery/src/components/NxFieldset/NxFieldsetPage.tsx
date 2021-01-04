@@ -23,7 +23,7 @@ const NxFieldsetPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">
         An <code className="nx-code">NxFieldset</code> is a wrapper around a collection of checkboxes, radios, or
-        similar form elements which should be displayed to be user as a group with an overall label. When used
+        similar form elements which should be displayed to the user as a group with an overall label. When used
         with <code className="nx-code">NxCheckbox</code> or <code className="nx-code">NxRadio</code>, all inputs
         contained within a single NxFieldset should represent different options/values of the same field.
       </p>
