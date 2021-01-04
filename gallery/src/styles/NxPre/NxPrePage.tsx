@@ -23,7 +23,7 @@ const NxPrePage = () => {
       <GalleryExampleTile title="Basic Example"
                           codeExamples={nxPreExampleCode}
                           htmlExample={nxPreExampleCode}>
-        An example preformatted text area.
+        An example preformatted text region.
       </GalleryExampleTile>
     </>
   );
