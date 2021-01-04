@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
 import { faCheck, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
@@ -190,5 +191,12 @@ describe('NxTextInput', function() {
     element.simulate('keyPress', { key: 'a' });
 
     expect(onKeyPress).toHaveBeenCalledWith('a');
+  });
+
+  it('renders the prefixContent just before the input element', function() {
+    const component = getShallowComponent({ prefixContent: <span className="foo"/> });
+
+    expect(component.find('.nx-text-input__box > .foo')).toExist();
+    expect(component.find('.nx-text-input__box > .foo + .nx-text-input__input')).toExist();
   });
 });

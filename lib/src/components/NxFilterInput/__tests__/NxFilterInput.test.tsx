@@ -4,65 +4,82 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import { mount, shallow } from 'enzyme';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 import NxFilterInput, { Props } from '../NxFilterInput';
+import NxTextInput from '../../NxTextInput/NxTextInput';
+import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 describe('NxFilterInput', function() {
   const minimalProps = { value: '' },
       shallowComponent = enzymeUtils.getShallowComponent<Props>(NxFilterInput, minimalProps);
 
-  it('renders component with minimal props', function() {
+  it('renders a NxTextInput with the nx-filter-input class', function() {
     const component = shallowComponent();
     expect(component).toHaveClassName('nx-filter-input');
-    expect(component).toHaveClassName('nx-text-input');
+    expect(component).toMatchSelector(NxTextInput);
   });
 
-  it('calls onChange whenever a change occurs in the input', function() {
+  it('adds custom classnames as specified', function() {
+    const component = shallowComponent({ className: 'foo' });
+    expect(component).toHaveClassName('foo');
+    expect(component).toHaveClassName('nx-filter-input');
+  });
+
+  it('passes misc props to the NxTextInput', function() {
     const onChange = jest.fn(),
-        input = shallowComponent({ onChange }).find('input');
+          onKeyPress = jest.fn(),
+        component = shallowComponent({
+          value: 'foo',
+          onChange,
+          onKeyPress,
+          id: 'bar'
+        });
 
-    input.simulate('change', { currentTarget: { value: 'hello'}});
-    expect(onChange).toHaveBeenCalledWith('hello');
+    expect(component).toHaveProp('value', 'foo');
+    expect(component).toHaveProp('onChange', onChange);
+    expect(component).toHaveProp('onKeyPress', onKeyPress);
+    expect(component).toHaveProp('id', 'bar');
   });
 
-  it('passes unknown props to the div element', function() {
-    const props = { className: 'extra-class', id: 'some-id' },
-        componentDiv = shallowComponent(props);
+  it('does not pass validatable, validationErrors, or type props to the NxTextInput', function() {
+    const component = shallowComponent({
+          validatable: true,
+          validationErrors: 'It\'s all wrong',
+          type: 'textarea'
+        } as Partial<Props>);
 
-    expect(componentDiv).toHaveClassName('extra-class');
-    expect(componentDiv).toHaveProp('id', 'some-id');
+    expect(component).not.toHaveProp('validatable');
+    expect(component).not.toHaveProp('validationErrors');
+    expect(component).not.toHaveProp('type');
   });
 
-  it('passes placeholder, inputId and value props to the input element', function() {
-    const props = { placeholder: 'a placeholder', value: 'a value', inputId: 'input-id'},
-        input = shallowComponent(props).find('input');
-
-    expect(input).toExist();
-    expect(input).toHaveProp('placeholder', props.placeholder);
-    expect(input).toHaveProp('value', props.value);
-    expect(input).toHaveProp('id', props.inputId);
+  it('passes isPristine = false to the NxTextInput', function() {
+    expect(shallowComponent()).toHaveProp('isPristine', false);
   });
 
-  it('adds an aria-label based on the placeholder', function() {
-    const props = { placeholder: 'Country', value: 'a value', inputId: 'input-id'},
-        input = shallowComponent(props).find('input');
+  it('puts the ref on the NxTextInput', function() {
+    const ref = React.createRef<HTMLDivElement>(),
 
-    expect(input).toExist();
-    expect(input).toHaveProp('aria-label', 'filter Country');
+        // note: the fragment is necessary to get around an enzyme issue:
+        // https://github.com/enzymejs/enzyme/issues/1852#issuecomment-433145879
+        component = mount(<><NxFilterInput { ...minimalProps } ref={ref} /></>),
+        domNode = component.find('div.nx-filter-input').getDOMNode();
+
+    expect(ref.current).toBe(domNode);
   });
 
-  it('adds the nx-filter-input--disabled class iff the disabled prop is true', function() {
-    expect(shallowComponent()).not.toHaveClassName('nx-filter-input--disabled');
-    expect(shallowComponent({ disabled: null })).not.toHaveClassName('nx-filter-input--disabled');
-    expect(shallowComponent({ disabled: false })).not.toHaveClassName('nx-filter-input--disabled');
-    expect(shallowComponent({ disabled: true })).toHaveClassName('nx-filter-input--disabled');
-  });
+  it('passes an icon with nx-icon--filter-icons as the prefixContent', function() {
+    const IconFixture = function() {
+          return shallowComponent().prop('prefixContent');
+        },
+        icon = shallow(<IconFixture />);
 
-  it('sets the disabled flag on the <input> iff the disabled prop is true', function() {
-    expect(shallowComponent().find('input')).toHaveProp('disabled', undefined);
-    expect(shallowComponent({ disabled: null }).find('input')).toHaveProp('disabled', undefined);
-    expect(shallowComponent({ disabled: false }).find('input')).toHaveProp('disabled', undefined);
-    expect(shallowComponent({ disabled: true }).find('input')).toHaveProp('disabled', true);
+    expect(icon).toMatchSelector(NxFontAwesomeIcon);
+    expect(icon).toHaveProp(icon, faFilter);
+    expect(icon).toHaveClassName('nx-icon--filter-icons');
   });
 });
