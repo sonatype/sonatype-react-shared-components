@@ -14,8 +14,7 @@ const NxButton = forwardRef<HTMLButtonElement, Props>(
     function NxButton({variant, inline, className, children, ...attrs}, ref) {
       const classNames = classnames('nx-btn', className, {
         // secondary is the default, its styles are directly on `nx-btn`
-        [`nx-btn--${variant}`]: variant && variant !== 'secondary',
-        'nx-btn--inline': inline
+        [`nx-btn--${variant}`]: variant && variant !== 'secondary'
       });
       return (
         <button aria-disabled={includes('disabled', classNames) ? true : undefined}
