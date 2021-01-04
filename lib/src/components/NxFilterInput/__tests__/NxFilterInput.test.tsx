@@ -31,7 +31,7 @@ describe('NxFilterInput', function() {
 
   it('passes misc props to the NxTextInput', function() {
     const onChange = jest.fn(),
-          onKeyPress = jest.fn(),
+        onKeyPress = jest.fn(),
         component = shallowComponent({
           value: 'foo',
           onChange,
@@ -46,11 +46,12 @@ describe('NxFilterInput', function() {
   });
 
   it('does not pass validatable, validationErrors, or type props to the NxTextInput', function() {
+    /* eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion */
     const component = shallowComponent({
-          validatable: true,
-          validationErrors: 'It\'s all wrong',
-          type: 'textarea'
-        } as Partial<Props>);
+      validatable: true,
+      validationErrors: 'It\'s all wrong',
+      type: 'textarea'
+    } as Partial<Props>);
 
     expect(component).not.toHaveProp('validatable');
     expect(component).not.toHaveProp('validationErrors');
