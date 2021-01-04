@@ -89,7 +89,7 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
   const filterContent = onFilterChange && options.length > filterThreshold && (
     <NxFilterInput disabled={disabled}
                    placeholder={filterPlaceholder || ''}
-                   inputId={generateId(name, 'filter-input')}
+                   id={generateId(name, 'filter-input')}
                    onChange={onFilterChange}
                    value={filter || ''}/>
   );
