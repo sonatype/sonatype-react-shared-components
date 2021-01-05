@@ -81,3 +81,9 @@
     display: none;
   }
 }
+
+// Temporary for RSC-84: this combined with applitools will tell us which components are sensitive to box-sizing
+// changes
+* {
+  box-sizing: border-box;
+}
