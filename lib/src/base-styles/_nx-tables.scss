@@ -96,6 +96,7 @@
 .nx-table-container {
   border: 1px solid #d1d6f0;
   border-radius: $nx-border-radius;
+  box-sizing: content-box;
   display: flex;
   flex-direction: column;
   overflow: hidden;
