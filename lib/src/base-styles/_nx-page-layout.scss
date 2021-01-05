@@ -85,13 +85,13 @@
   }
 
   .nx-page-header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     z-index: 1;
   }
 
   .nx-page-content {
-    margin: $nx-main-header-height auto 0 auto;
+    margin: 0 auto;
   }
 }
