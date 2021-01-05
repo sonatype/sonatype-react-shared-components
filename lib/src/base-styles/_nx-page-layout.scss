@@ -41,6 +41,12 @@
   max-width: $nx-page-width-max;
   overflow-y: hidden;
   width: 100%;
+
+  // page-load errors are often at this level and not encapsulated within a nx-page-sidebar or nx-page-main
+  > .nx-alert {
+    align-self: flex-start;
+    margin: $nx-spacing-xl auto 0 auto;
+  }
 }
 
 .nx-page-sidebar {
