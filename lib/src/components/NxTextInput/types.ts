@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { FormEvent, InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
+import { FormEvent, InputHTMLAttributes, TextareaHTMLAttributes, ReactNode } from 'react';
 
 /**
  * The valid values for the `type` Prop
@@ -42,9 +42,15 @@ export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   onChange?: ((newVal: string, e: FormEvent<TextInputElement>) => void) | null;
   onKeyPress?: ((keyCode: string) => void) | null;
   validatable?: boolean | null;
+
+  // For internal use only, this prop allows additional content to be inserted just before the
+  // <input>. This is used by NxFilterInput
+  prefixContent?: ReactNode | null;
 };
 
-export const propTypes: PropTypes.ValidationMap<Props> = {
+export type PublicProps = Omit<Props, 'prefixContent'>;
+
+export const propTypes: PropTypes.ValidationMap<PublicProps> = {
   type: PropTypes.oneOf([...inputTypes, undefined]),
   value: PropTypes.string.isRequired,
   isPristine: PropTypes.bool.isRequired,

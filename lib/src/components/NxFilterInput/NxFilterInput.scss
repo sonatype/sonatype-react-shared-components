@@ -19,14 +19,10 @@
     }
   }
 
-  &.nx-filter-input--disabled {
-    .nx-text-input__box {
-      background-color:$nx-disabled-background;
-      border-color: $nx-disabled-border;
-
-      .nx-icon--filter-icons {
-        color: $nx-text-color-disabled;
-      }
+  &.disabled {
+    .nx-icon--filter-icons {
+      color: $nx-text-color-disabled;
+      display: inline-block;
     }
   }
 

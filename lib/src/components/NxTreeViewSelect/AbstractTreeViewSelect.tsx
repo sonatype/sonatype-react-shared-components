@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 /* eslint react/prop-types: 0 */
-import React, { FunctionComponent, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 
 import { Option } from './commonTypes';
 import NxTreeView, { NxTreeViewChild } from '../NxTreeView/NxTreeView';
@@ -18,8 +18,8 @@ import { CommonProps } from './commonTypes';
 
 import './NxTreeViewSelect.scss';
 
-export interface Props extends CommonProps {
-  renderOption: ((option: Option) => ReactElement);
+export interface Props<T extends Option = Option> extends CommonProps<T> {
+  renderOption: ((option: T) => ReactElement);
   renderToggleAllOption?: (() => ReactElement | null) | null;
   renderCounter?: (() => ReactElement | null) | null;
 }
@@ -28,7 +28,7 @@ export function generateId(groupName: string, elementId: string | null) {
   return `nx-tree-view-select-${groupName}-${elementId}`.replace(' ', '-').toLowerCase();
 }
 
-const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeViewSelect(props) {
+function AbstractTreeViewSelect<T extends Option>(props: Props<T>) {
 
   const {
         options,
@@ -64,7 +64,7 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
     return tooltipProps;
   }
 
-  const renderedOptions = filteredOptions.map((item: Option) => {
+  const renderedOptions = filteredOptions.map((item: T) => {
     const option = renderOption(item),
         key = `key-${item.id}`;
 
@@ -89,7 +89,7 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
   const filterContent = onFilterChange && options.length > filterThreshold && (
     <NxFilterInput disabled={disabled}
                    placeholder={filterPlaceholder || ''}
-                   inputId={generateId(name, 'filter-input')}
+                   id={generateId(name, 'filter-input')}
                    onChange={onFilterChange}
                    value={filter || ''}/>
   );
