@@ -54,38 +54,6 @@ const NxAlertPage = () =>
                         codeExamples={nxAlertErrorCode}>
       An <code className="nx-code">nx-alert</code> demonstrating error styles.
     </GalleryExampleTile>
-
-    <section className="nx-tile">
-      <header className="nx-tile-header">
-        <div className="nx-tile-header__title">
-          <h2 className="nx-h2">Alert at the Page level</h2>
-        </div>
-      </header>
-      <div className="nx-tile-content">
-        <p className="nx-p">
-          It is frequently the case that an alert should be conditionally displayed as the entirety of the page
-          contents – that is, that a page which would typically include
-          an <code className="nx-code">.nx-page-main</code> and perhaps
-          an <code className="nx-code">.nx-page-sidebar</code> should instead include only an error alert in the
-          event that the data for the page fails to load, or the user does not have permission to access that page,
-          or some similar error condition. The RSC styles have specific support for this case:
-          an <code className="nx-code">.nx-alert</code> that is the only child of
-          the <code className="nx-code">.nx-page-content</code> element will correctly center itself on the page.
-          To view this in action, click the link below.
-        </p>
-        <p className="nx-p">
-          <a className="nx-text-link" href="#/PageLevelAlertExample">
-            Click here to navigate to the live example.
-          </a>
-        </p>
-        <p className="nx-p">
-          In terms of how an application would integrate such an alert, most typically
-          an <code className="nx-code">NxLoadWrapper</code> would be used which wraps
-          the <code className="nx-code">.nx-page-main</code> and
-          (optional) <code className="nx-code">.nx-page-sidebar</code> elements.
-        </p>
-      </div>
-    </section>
   </>;
 
 export default NxAlertPage;
