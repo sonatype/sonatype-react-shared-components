@@ -24,7 +24,7 @@ import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExam
 import NxViewportSizedExpandingExample
   from './styles/NxViewportSized/NxViewportSizedExpandingExample';
 import SectionScrollingWrapper from './styles/NxViewportSized/SectionScrollingWrapper';
-import { NxLoadError } from '@sonatype/react-shared-components';
+import { NxErrorAlert } from '@sonatype/react-shared-components';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
@@ -63,7 +63,10 @@ function Application() {
       <div className="nx-page-content">
         <Switch>
           <Route exact path="/PageLevelErrorExample">
-            <NxLoadError error={<>An example of a page-level error that is a direct child of <code className="nx-code">nx-page-content</code>.</>} retryHandler={() => {}} />
+            <NxErrorAlert>
+              This is an example of a page-level alert. Use your browser's back button to return to
+              another page of the RSC gallery.
+            </NxErrorAlert>
           </Route>
           <Route>
             <aside className="nx-page-sidebar" id="gallery-sidebar">
