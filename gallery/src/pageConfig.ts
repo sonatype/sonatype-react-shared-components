@@ -82,9 +82,12 @@ import NxViewportSizedPage from './styles/NxViewportSized/NxViewportSizedPage';
 import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
 import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
 import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
+import NxFieldsetPage from './components/NxFieldset/NxFieldsetPage';
 import NxFormPage from './components/NxForm/NxFormPage';
 import NxTogglePage from './components/NxToggle/NxTogglePage';
 import NxStatefulTogglePage from './components/NxStatefulToggle/NxStatefulTogglePage';
+import NxBlockquotePage from './styles/NxBlockquote/NxBlockquotePage';
+import NxPrePage from './styles/NxPre/NxPrePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -100,6 +103,7 @@ const pageConfig: PageConfig = {
     NxCloseButton: NxCloseButtonPage,
     NxDropdown: NxDropdownPage,
     NxStatefulDropdown: NxStatefulDropdownPage,
+    NxFieldset: NxFieldsetPage,
     NxFilterInput: NxFilterInputPage,
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
     NxForm: NxFormPage,
@@ -143,6 +147,7 @@ const pageConfig: PageConfig = {
   },
   'Styles - HTML Elements': {
     'nx-alert': NxAlertPage,
+    'nx-blockquote': NxBlockquotePage,
     'nx-btn': NxBtnPage,
     'nx-card': NxCardPage,
     'nx-code': NxCodePage,
@@ -151,6 +156,7 @@ const pageConfig: PageConfig = {
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
     'nx-page-title': NxPageTitlePage,
+    'nx-pre': NxPrePage,
     'nx-read-only': NxReadOnlyPage,
     'nx-form-select': NxFormSelectPage,
     'nx-table': NxTableStylePage,
