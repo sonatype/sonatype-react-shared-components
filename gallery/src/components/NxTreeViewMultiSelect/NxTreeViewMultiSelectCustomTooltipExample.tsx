@@ -11,26 +11,36 @@ import { faBicycle } from '@fortawesome/free-solid-svg-icons';
 import {NxFontAwesomeIcon, NxTreeViewMultiSelectOption, NxTreeViewMultiSelect}
   from '@sonatype/react-shared-components';
 
-const NxTreeViewMultiSelectExample = () => {
-  const options = [
+interface CustomOption extends NxTreeViewMultiSelectOption {
+  description: string;
+}
+
+const NxTreeViewMultiSelectCustomTooltipExample = () => {
+  const options: CustomOption[] = [
     {
       id: 'bike',
-      name: 'Bicycle'
+      name: 'Bicycle',
+      description: '2 wheels, a frame, and your leg muscles'
     }, {
       id: 'motorcycle',
-      name: 'Motorcycle'
+      name: 'Motorcycle',
+      description: '2 wheels, a frame, and an engine'
     }, {
       id: 'skate',
-      name: 'Skateboard'
+      name: 'Skateboard',
+      description: '4 little wheels and a board'
     }, {
       id: 'longboard',
-      name: 'Loooooooooooooooooooooooooooooooooongboard'
+      name: 'Loooooooooooooooooooooooooooooooooongboard',
+      description: '4 little wheels and a longer, more stable board'
     }, {
       id: 'moped',
-      name: 'Moped'
+      name: 'Moped',
+      description: '2 wheels, a frame, and an underpowered engine'
     }, {
       id: null,
-      name: 'No Transport'
+      name: 'No Transport',
+      description: 'Staying at home. There\'s a pandemic on, afterall.'
     }
   ];
 
@@ -48,11 +58,12 @@ const NxTreeViewMultiSelectExample = () => {
   }
 
   return (
-    <NxTreeViewMultiSelect name="travel"
-                           id="nx-travel-tree-view"
+    <NxTreeViewMultiSelect name="travel-custom-tooltips"
+                           id="nx-travel-tree-view-custom-tooltips"
                            isOpen={isOpen}
                            onToggleCollapse={onToggleCollapse}
                            options={options}
+                           optionTooltipGenerator={option => option.description}
                            selectedIds={selection}
                            onChange={onSelectionChange}
                            filter={filter}
@@ -66,4 +77,4 @@ const NxTreeViewMultiSelectExample = () => {
   );
 };
 
-export default NxTreeViewMultiSelectExample;
+export default NxTreeViewMultiSelectCustomTooltipExample;

@@ -15,7 +15,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes, TextInputElement } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 import { getRandomId } from '../../util/idUtil';
-export { Props, propTypes, inputTypes } from './types';
+export { Props, PublicProps, propTypes, inputTypes } from './types';
 
 /**
  * Standard text input with validation styling
@@ -29,7 +29,7 @@ export { Props, propTypes, inputTypes } from './types';
  * @param onKeyPress A callback for when the user presses a key that doesn't necessarily change the input value
  *    (e.g. by hitting enter)
  */
-const NxTextInput = forwardRef<TextInputElement, Props>(
+const NxTextInput = forwardRef<HTMLDivElement, Props>(
     function NxTextInput(props, forwardedRef) {
       const {
         type,
@@ -40,6 +40,7 @@ const NxTextInput = forwardRef<TextInputElement, Props>(
         className,
         onKeyPress,
         disabled,
+        prefixContent,
         ...attrs
       } = props;
 
@@ -67,25 +68,6 @@ const NxTextInput = forwardRef<TextInputElement, Props>(
       const inputRef: MutableRefObject<TextInputElement | null> = useRef<TextInputElement>(null),
           invalidMessageId = useMemo(() => getRandomId('nx-text-input-invalid-message'), []);
 
-      /*
-       * We have two different refs that we want set to the <input>: the forwarded one
-       * and the one we use internally for setting the focus. We can't just use the forwarded one
-       * to manage the focus, because it isn't guaranteed to be an object with a `current` prop, it could actually
-       * be a function instead. So what we have to do is pass this refSetter function to the <input>, which handles
-       * setting both the forwarded and the internal ref.
-       * Inspired by: https://stackoverflow.com/a/62238917
-       */
-      function refSetter(el: TextInputElement) {
-        inputRef.current = el;
-
-        if (typeof forwardedRef === 'function') {
-          forwardedRef(el);
-        }
-        else if (forwardedRef) {
-          (forwardedRef as MutableRefObject<TextInputElement>).current = el;
-        }
-      }
-
       // when the box padding is clicked, set the focus to the <input> as that's what the user thought
       // they were clicking
       function setFocusToInput() {
@@ -107,12 +89,13 @@ const NxTextInput = forwardRef<TextInputElement, Props>(
       }
 
       return (
-        <div className={internalClassName}>
+        <div ref={forwardedRef} className={internalClassName}>
           <div className="nx-text-input__box" onClick={setFocusToInput}>
+            {prefixContent}
             {React.createElement(element, {
               ...newProps,
               disabled,
-              ref: refSetter,
+              ref: inputRef,
               type: typeAttr,
               onChange: inputOnChange,
               className: 'nx-text-input__input',

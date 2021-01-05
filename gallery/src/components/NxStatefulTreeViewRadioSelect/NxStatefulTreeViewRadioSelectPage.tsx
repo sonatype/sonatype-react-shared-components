@@ -128,7 +128,8 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <td className="nx-cell">Function</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Callback to generate tooltip text for each option. Called with the option object.
+              Callback to generate tooltip text for each option. Called with the option object. If not supplied, the
+              default overflow tooltip behavior of the checkboxes will be active.
             </td>
           </tr>
           <tr className="nx-table-row">
