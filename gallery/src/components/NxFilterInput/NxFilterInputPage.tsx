@@ -75,7 +75,7 @@ const NxFilterInputPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">Input HTML Attributes | Textarea HTML Attributes</td>
+            <td className="nx-cell">Input HTML Attributes</td>
             <td className="nx-cell">
               <a target="_blank"
                  rel="noopener"
@@ -85,8 +85,8 @@ const NxFilterInputPage = () =>
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              NxFilterInput supports any html attribute that's normally supported by either HTML Inputs or HTML
-              Textareas. The only notable exceptions are:
+              NxFilterInput supports any html attribute that's normally supported by HTML Inputs. The only notable
+              exceptions are:
               <ul className="nx-list nx-list--bulleted">
                 <li className="nx-list__item">
                   <code className="nx-code">defaultValue</code> which is left out because it creates what's commonly
