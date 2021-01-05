@@ -11,7 +11,7 @@ import { NxTextInput, nxTextInputStateHelpers } from '@sonatype/react-shared-com
 const { initialState, userInput } = nxTextInputStateHelpers;
 
 export default function NxTextInputSimpleExample() {
-   const [state, setState] = useState(initialState(''));
+  const [state, setState] = useState(initialState(''));
 
   function onChange(val: string) {
     setState(userInput(null, val));
