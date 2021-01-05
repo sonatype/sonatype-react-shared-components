@@ -15,6 +15,10 @@ export { default as NxLoadError, Props as NxLoadErrorProps } from './components/
 export { default as NxLoadWrapper, Props as NxLoadWrapperProps } from './components/NxLoadWrapper/NxLoadWrapper';
 export { default as NxModal, Props as NxModalProps } from './components/NxModal/NxModal';
 export { default as NxTextInput, Props as NxTextInputProps } from './components/NxTextInput/NxTextInput';
+
+import * as nxTextInputStateHelpers from './components/NxTextInput/stateHelpers';
+export { nxTextInputStateHelpers };
+
 export {
   default as NxAlert,
   NxWarningAlert,
