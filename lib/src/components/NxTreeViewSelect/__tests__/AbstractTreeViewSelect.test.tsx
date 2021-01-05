@@ -108,7 +108,7 @@ describe('AbstractTreeViewSelect', function() {
 
         const filterInput = nxTreeView.childAt(0);
         expect(filterInput).toHaveDisplayName('ForwardRef(NxFilterInput)');
-        expect(filterInput).toHaveProp('inputId', 'nx-tree-view-select-foobar-filter-input');
+        expect(filterInput).toHaveProp('id', 'nx-tree-view-select-foobar-filter-input');
       });
 
       it('does not render filter input if filterThreshold is not less than amount of options', function () {
@@ -136,7 +136,7 @@ describe('AbstractTreeViewSelect', function() {
 
           const filterInput = nxTreeView.childAt(0);
           expect(filterInput).toHaveDisplayName('ForwardRef(NxFilterInput)');
-          expect(filterInput).toHaveProp('inputId', 'nx-tree-view-select-foobar-filter-input');
+          expect(filterInput).toHaveProp('id', 'nx-tree-view-select-foobar-filter-input');
         });
 
         it('does not render filter input if filterThreshold is not provided and amount of options is <= 10',

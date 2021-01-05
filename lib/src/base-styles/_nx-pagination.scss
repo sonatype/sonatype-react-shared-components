@@ -24,6 +24,12 @@
       vertical-align: -0.2em;
     }
   }
+
+  &:focus {
+    box-shadow: $nx-focus-box-shadow;
+    outline: 1px solid $nx-focus-border-color;
+    outline-offset: -1px;
+  }
 }
 
 .nx-btn--pagination {

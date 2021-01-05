@@ -12,10 +12,11 @@ export type NX_BUTTON_VARIANT_TYPE = (typeof NX_BUTTON_VARIANTS)[number]; // See
 
 export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: NX_BUTTON_VARIANT_TYPE;
+
+  // deprecated; only here to avoid type checker breaking changes. Remove in 3.0
   inline?: boolean;
 }
 
 export const propTypes: WeakValidationMap<Props> = {
-  variant: PropTypes.oneOf(NX_BUTTON_VARIANTS),
-  inline: PropTypes.bool
+  variant: PropTypes.oneOf(NX_BUTTON_VARIANTS)
 };
