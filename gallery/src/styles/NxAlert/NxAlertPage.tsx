@@ -74,7 +74,7 @@ const NxAlertPage = () =>
           To view this in action, click the link below.
         </p>
         <p className="nx-p">
-          <a className="nx-text-link" href="#/PageLevelErrorExample">
+          <a className="nx-text-link" href="#/PageLevelAlertExample">
             Click here to navigate to the live example.
           </a>
         </p>

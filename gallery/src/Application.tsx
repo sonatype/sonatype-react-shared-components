@@ -62,7 +62,7 @@ function Application() {
       <PageHeader />
       <div className="nx-page-content">
         <Switch>
-          <Route exact path="/PageLevelErrorExample">
+          <Route exact path="/PageLevelAlertExample">
             <NxErrorAlert>
               This is an example of a page-level alert. Use your browser's back button to return to
               another page of the RSC gallery.
