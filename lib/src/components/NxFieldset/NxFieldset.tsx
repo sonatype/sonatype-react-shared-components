@@ -20,7 +20,7 @@ const NxFieldset = forwardRef<HTMLFieldSetElement, Props>(
           <legend className={legendClassnames}>
             <span className="nx-legend__text">{label}</span>
           </legend>
-          { sublabel && <span className="nx-sub-label">{sublabel}</span> }
+          { sublabel && <div className="nx-sub-label">{sublabel}</div> }
           {children}
         </fieldset>
       );
