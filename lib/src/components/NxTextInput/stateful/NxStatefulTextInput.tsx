@@ -23,7 +23,7 @@ export { Props, propTypes } from './types';
  * @param onKeyPress A callback for when the user presses a key that not necessarily changes the value of the text box
  * See the doc page for this component for information about other supported attributes.
  */
-const NxStatefulTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
+const NxStatefulTextInput = forwardRef<HTMLDivElement, Props>(
     function NxStatefulTextInput(props, ref) {
       const { defaultValue, onChange, validator, ...attrs } = props,
           [state, setState] = useState(initialState(defaultValue || '', validator));
