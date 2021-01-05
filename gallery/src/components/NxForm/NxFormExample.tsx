@@ -6,10 +6,12 @@
  */
 import React, { useState, useEffect, FormEvent } from 'react';
 
-import { NxCheckbox, NxForm, NxRadio, NxFormGroup, NxTextInput } from '@sonatype/react-shared-components';
+import { NxCheckbox, NxForm, NxRadio, NxFormGroup, NxTextInput, nxTextInputStateHelpers }
+  from '@sonatype/react-shared-components';
 import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
-import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
 import { combineValidationErrors, hasValidationErrors } from '@sonatype/react-shared-components/util/validationUtil';
+
+const { initialState, userInput } = nxTextInputStateHelpers;
 
 export default function NxFormExample() {
   function validator(val: string) {

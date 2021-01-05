@@ -6,9 +6,11 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxFontAwesomeIcon, NxTextInput, NxLoadError, NxButton} from '@sonatype/react-shared-components';
+import {NxModal, NxFontAwesomeIcon, NxTextInput, NxLoadError, NxButton, nxTextInputStateHelpers}
+  from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
-import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
+
+const { initialState, userInput } = nxTextInputStateHelpers;
 
 export default function NxModalFormErrorExample() {
   const [showModal, setShowModal] = useState(false);
