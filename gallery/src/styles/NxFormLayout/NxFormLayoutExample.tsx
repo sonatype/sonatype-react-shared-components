@@ -60,11 +60,11 @@ export default function NxFormLayoutExample() {
       <div className="nx-form-group">
         <label htmlFor="long-field" className="nx-label nx-label--optional">
           <span className="nx-label__text">Hostname</span>
-          <div className="nx-sub-label">
-            <NxFontAwesomeIcon icon={faCalendar}/>
-            <span id="long-field-sublabel">The field element below is wider than the default.</span>
-          </div>
         </label>
+        <div className="nx-sub-label">
+          <NxFontAwesomeIcon icon={faCalendar}/>
+          <span id="long-field-sublabel">The field element below is wider than the default.</span>
+        </div>
         <NxStatefulTextInput id="long-field" aria-describedby="long-field-sublabel" className="nx-text-input--long"/>
       </div>
       <fieldset className="nx-fieldset">
@@ -78,8 +78,8 @@ export default function NxFormLayoutExample() {
       <fieldset className="nx-fieldset">
         <legend className="nx-legend nx-legend--optional">
           <span className="nx-legend__text">Primary Color</span>
-          <div className="nx-sub-label">Pick a single color</div>
         </legend>
+        <div className="nx-sub-label">Pick a single color</div>
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
@@ -117,10 +117,10 @@ export default function NxFormLayoutExample() {
           <span className="nx-legend__text">
             Enable features
           </span>
-          <div className="nx-sub-label">
-            In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
-          </div>
         </legend>
+        <div className="nx-sub-label">
+          In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
+        </div>
         <NxToggle inputId="subscribe-check" onChange={toggleWarp} isChecked={isWarpOn}>
           Enable Warp Drive
         </NxToggle>
@@ -134,8 +134,8 @@ export default function NxFormLayoutExample() {
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">Comments</span>
+          <NxStatefulTextInput type="textarea" placeholder="placeholder"/>
         </label>
-        <NxStatefulTextInput type="textarea" placeholder="placeholder"/>
       </div>
       <footer className="nx-footer">
         <div className="nx-btn-bar">
