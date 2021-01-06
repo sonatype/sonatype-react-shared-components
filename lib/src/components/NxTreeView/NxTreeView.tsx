@@ -19,7 +19,8 @@ import './NxTreeView.scss';
 
 const NxTreeView: FunctionComponent<Props> =
   function NxTreeView(props) {
-    const { onToggleCollapse, isOpen, disabled, children, triggerContent, triggerTooltip, className, id } = props;
+    const { onToggleCollapse, isOpen, disabled, children, triggerContent, triggerTooltip, className, id } = props,
+        onTriggerClick = disabled ? undefined : (onToggleCollapse || undefined);
 
     const isEmpty = !React.Children.count(children),
         isExpanded = isOpen && !isEmpty, // conceptually we don't allow empty tree views to expand
@@ -32,7 +33,7 @@ const NxTreeView: FunctionComponent<Props> =
         treeViewId = useMemo(() => id || getRandomId('nx-tree-view'), [id]),
         trigger = (
           <button className="nx-tree-view__trigger"
-                  onClick={onToggleCollapse || undefined}
+                  onClick={onTriggerClick}
                   aria-controls={treeViewId}
                   aria-expanded={isExpanded}
                   aria-disabled={disabled || isEmpty || undefined}>
