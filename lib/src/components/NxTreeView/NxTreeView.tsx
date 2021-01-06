@@ -35,7 +35,7 @@ const NxTreeView: FunctionComponent<Props> =
                   onClick={onToggleCollapse || undefined}
                   aria-controls={treeViewId}
                   aria-expanded={isExpanded}
-                  aria-disabled={disabled || isEmpty || undefined}>
+                  disabled={disabled || isEmpty || undefined}>
             <NxFontAwesomeIcon className="nx-tree-view__twisty" icon={faCaretRight} />
             <span className="nx-tree-view__text">
               {triggerContent}
