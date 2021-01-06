@@ -175,5 +175,23 @@ describe('NxModal', function() {
       expect(firstMockCallBack).toHaveBeenCalledTimes(1);
     });
 
+    it('executes only the most recent onClose callback if it has been updated', function() {
+      const mockCallBack1 = jest.fn(),
+          mockCallBack2 = jest.fn();
+
+      let nxModal: ReactWrapper;
+
+      act(() => {
+        nxModal = mount(<NxModal id="first-modal-id" onClose={mockCallBack1}/>, {attachTo: containerMainModal});
+      });
+
+      act(() => {
+        nxModal.setProps({ onClose: mockCallBack2 });
+      });
+
+      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+      expect(mockCallBack2).toHaveBeenCalledTimes(1);
+      expect(mockCallBack1).not.toHaveBeenCalled();
+    });
   });
 });

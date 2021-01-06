@@ -146,7 +146,7 @@ const NxTextInputPage = () =>
       </table>
       <h3>State Helpers</h3>
       <p className="nx-p">
-        <code className="nx-code">@sonatype/react-shared-components/components/NxTextInput/stateHelpers.ts</code>{' '}
+        The <code className="nx-code">nxTextInputStateHelpers</code>{' '}
         includes the following recommended state helper functions, which each return an object containining the
         "stateful" parts of the NxTextInput props{' '}
         (<code className="nx-code">value</code>, <code className="nx-code">isPristine</code>, and{' '}

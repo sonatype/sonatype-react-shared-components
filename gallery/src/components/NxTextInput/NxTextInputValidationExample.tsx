@@ -6,8 +6,9 @@
  */
 import React, { useState } from 'react';
 
-import { NxTextInput } from '@sonatype/react-shared-components';
-import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
+import { NxTextInput, nxTextInputStateHelpers } from '@sonatype/react-shared-components';
+
+const { initialState, userInput } = nxTextInputStateHelpers;
 
 function validator(val: string) {
   return val.length ? null : 'Must be non-empty';

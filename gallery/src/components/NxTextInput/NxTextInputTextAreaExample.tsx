@@ -6,8 +6,9 @@
  */
 import React, { useState } from 'react';
 
-import { NxTextInput } from '@sonatype/react-shared-components';
-import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
+import { NxTextInput, nxTextInputStateHelpers } from '@sonatype/react-shared-components';
+
+const { initialState, userInput } = nxTextInputStateHelpers;
 
 // exactly the same as NxTextInputSimpleExample, except for type="textarea"
 export default function NxTextInputTextAreaExample() {
