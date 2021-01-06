@@ -21,7 +21,7 @@ const NxLoadWrapperErrorRetryExample = () => {
   return (
     <NxLoadWrapper error={error} retryHandler={retryHandler}>
       <aside className="nx-page-sidebar">Sidebar stuff</aside>
-      <main className="nx-page-sidebar">Children will not render until after Retry</main>
+      <main className="nx-page-main">Children will not render until after Retry</main>
     </NxLoadWrapper>
   );
 };
