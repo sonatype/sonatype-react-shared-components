@@ -136,6 +136,14 @@ describe('NxTreeView', function() {
       expect(onToggleCollapse).toHaveBeenCalled();
     });
 
+    it('does not fire the components onToggleCollapse when disabled', function() {
+      const onToggleCollapse = jest.fn(),
+          trigger = getShallowTrigger({ onToggleCollapse, disabled: true });
+
+      trigger.simulate('click');
+      expect(onToggleCollapse).not.toHaveBeenCalled();
+    });
+
     it('contains an nx-tree-view__twisty icon', function() {
       expect(getShallowTrigger().find(NxFontAwesomeIcon)).toHaveClassName('nx-tree-view__twisty');
     });
