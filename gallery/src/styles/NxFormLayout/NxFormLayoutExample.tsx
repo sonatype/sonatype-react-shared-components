@@ -48,8 +48,8 @@ export default function NxFormLayoutExample() {
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">A Field to Fill in</span>
-          <NxStatefulTextInput aria-required={true} validator={validator}/>
         </label>
+        <NxStatefulTextInput aria-required={true} validator={validator}/>
       </div>
       <div className="nx-form-group">
         <label htmlFor="input-2" className="nx-label nx-label--optional">
@@ -61,10 +61,10 @@ export default function NxFormLayoutExample() {
         <label htmlFor="long-field" className="nx-label nx-label--optional">
           <span className="nx-label__text">Hostname</span>
         </label>
-        <span className="nx-sub-label">
+        <div className="nx-sub-label">
           <NxFontAwesomeIcon icon={faCalendar}/>
           <span id="long-field-sublabel">The field element below is wider than the default.</span>
-        </span>
+        </div>
         <NxStatefulTextInput id="long-field" aria-describedby="long-field-sublabel" className="nx-text-input--long"/>
       </div>
       <fieldset className="nx-fieldset">
@@ -78,8 +78,8 @@ export default function NxFormLayoutExample() {
       <fieldset className="nx-fieldset">
         <legend className="nx-legend nx-legend--optional">
           <span className="nx-legend__text">Primary Color</span>
-          <span className="nx-sub-label">Pick a single color</span>
         </legend>
+        <div className="nx-sub-label">Pick a single color</div>
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
@@ -102,25 +102,25 @@ export default function NxFormLayoutExample() {
       <div className="nx-form-group">
         <label className="nx-label">
           <span className="nx-label__text">Select</span>
-          <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
-            <option value="">Select an option</option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-            <option value="option4">Option 4</option>
-            <option value="option5">Option 5</option>
-          </select>
         </label>
+        <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
+          <option value="">Select an option</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+          <option value="option4">Option 4</option>
+          <option value="option5">Option 5</option>
+        </select>
       </div>
       <fieldset className="nx-fieldset">
         <legend className="nx-legend">
           <span className="nx-legend__text">
             Enable features
           </span>
-          <span className="nx-sub-label">
-            In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
-          </span>
         </legend>
+        <div className="nx-sub-label">
+          In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
+        </div>
         <NxToggle inputId="subscribe-check" onChange={toggleWarp} isChecked={isWarpOn}>
           Enable Warp Drive
         </NxToggle>
