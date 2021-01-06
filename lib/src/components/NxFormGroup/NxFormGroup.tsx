@@ -31,7 +31,7 @@ const NxFormGroup = forwardRef<HTMLDivElement, Props>(
           <label htmlFor={childId} className={labelClassnames}>
             <span className="nx-label__text">{label}</span>
           </label>
-          { sublabel && <span id={sublabelId} className="nx-sub-label">{sublabel}</span> }
+          { sublabel && <div id={sublabelId} className="nx-sub-label">{sublabel}</div> }
           {childEl}
         </div>
       );

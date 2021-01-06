@@ -42,7 +42,7 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, variant, ...attr
     currentModalCloseHandlers.push(onClose);
 
     return removeCloseHandlerListener;
-  }, []);
+  }, [onClose]);
 
   return (
     <div className="nx-modal-backdrop">

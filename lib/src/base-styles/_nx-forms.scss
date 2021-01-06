@@ -47,6 +47,11 @@
   }
 }
 
+// hack to get Safari to recognize the legend's text margins
+.nx-legend {
+  -webkit-margin-collapse: separate;
+}
+
 .nx-label__text, .nx-legend__text {
   @include bold();
   @include container-horizontal;
