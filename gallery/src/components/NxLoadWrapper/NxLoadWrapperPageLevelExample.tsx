@@ -9,8 +9,7 @@ import React, { useState } from 'react';
 import { NxLoadWrapper } from '@sonatype/react-shared-components';
 
 const errorMessage = `This is an example of a page-level alert. Use your browser's back button to return to
-    another page of the RSC gallery.`
-
+    another page of the RSC gallery.`;
 
 const NxLoadWrapperErrorRetryExample = () => {
   const [error, setError] = useState<string | null>(errorMessage);
