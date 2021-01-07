@@ -5,11 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState, ReactNode } from 'react';
-import { addIndex, toPairs, keys, map, pipe } from 'ramda';
+import { addIndex, toPairs, keys, map, pipe, includes } from 'ramda';
 import { NxTreeView, NxTreeViewChild } from '@sonatype/react-shared-components';
 
 import pageConfig from './pageConfig';
-import {NavLink} from 'react-router-dom';
+import { useLocation } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import { PageMapping, PageConfig } from './pageConfigTypes';
 
 const renderLinks: ((categoryEntries: PageMapping) => ReactNode) = pipe(
@@ -28,7 +29,13 @@ interface GalleryNavTreeViewProps {
 };
 
 function GalleryNavTreeView({ categoryName, categoryEntries, defaultOpen }: GalleryNavTreeViewProps) {
-  const [toggleCheck, setToggleCheck] = useState(defaultOpen),
+  const { pathname } = useLocation(),
+      pageName = (pathname.match(/\/pages\/(.*)$/) || [])[1],
+
+      // Have the tree for the current page expanded. if we are on a page that doesn't appear in the nav (e.g. the
+      // home page) then follow defaultOpen which, per the code farther down, will just expand the first tree
+      isInitiallyOpen = pageName ? includes(pageName, keys(categoryEntries)) : defaultOpen,
+      [toggleCheck, setToggleCheck] = useState(isInitiallyOpen),
       onToggleCollapse = () => setToggleCheck(!toggleCheck);
 
   return (
