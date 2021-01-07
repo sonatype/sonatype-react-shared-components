@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ReactNode, ReactChild, HTMLAttributes} from 'react';
+import {ReactNode, ReactChild, HTMLAttributes, WeakValidationMap} from 'react';
 import * as PropTypes from 'prop-types';
 
 import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
@@ -42,6 +42,6 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   id: PropTypes.string
 };
 
-export const childPropTypes: React.WeakValidationMap<NxTreeViewChildProps> = {
-  children: PropTypes.node
+export const childPropTypes: WeakValidationMap<NxTreeViewChildProps> = {
+  children: PropTypes.any // there isn't a proptype that quite matches/typechecks against ReactChild
 };

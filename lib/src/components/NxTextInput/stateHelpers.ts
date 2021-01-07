@@ -25,6 +25,9 @@ export function initialState(value: string, validator?: Validator): StateProps {
  *
  * This function is curried, so that it can be partially applied over the validator.
  *
+ * Note that the cast of this function is necessary because the current version of the ramda types wrongfully drops
+ * the `null` from the Validator union type.
+ *
  * @param validator an optional validator function that receives the new input value as a string and returns zero or
  * more validation error messages.
  * @param newValue the new value of the text box after the user's input.
@@ -40,4 +43,4 @@ export const userInput = curryN(2, function userInput(validator: Validator, newV
     trimmedValue,
     validationErrors: validator && validator(trimmedValue)
   };
-});
+}) as ((v: Validator, n: string) => StateProps) & ((v: Validator) => (n: string) => StateProps);

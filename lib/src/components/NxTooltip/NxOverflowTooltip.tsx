@@ -37,6 +37,6 @@ export default function NxOverflowTooltip({ title, children, ...otherProps }: Ov
       {childrenWithRef}
     </NxTooltip>
   );
-};
+}
 
 NxOverflowTooltip.propTypes = overflowTooltipPropTypes;

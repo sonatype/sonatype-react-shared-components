@@ -29,7 +29,7 @@ export const nxTableBodyPropTypes: PropTypes.ValidationMap<NxTableBodyProps> = {
 };
 
 export type NxTableCellProps =
-    (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<HTMLTableHeaderCellElement>) & {
+    (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<HTMLTableCellElement>) & {
       metaInfo?: boolean | null;
       isNumeric?: boolean | null;
       isSortable?: boolean | null;
