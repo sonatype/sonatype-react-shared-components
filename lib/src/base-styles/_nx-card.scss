@@ -133,6 +133,7 @@
   }
 
   .nx-card__footer {
+    box-sizing: content-box;
     -ms-grid-row-align: center;
     align-self: center;
     -ms-grid-row: 1;
