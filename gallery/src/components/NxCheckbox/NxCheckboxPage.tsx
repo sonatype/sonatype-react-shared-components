@@ -58,6 +58,17 @@ const NxCheckboxPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell">overflowTooltip</td>
+            <td className="nx-cell">boolean</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              Whether the checkbox label content should be wrapped in
+              an <code className="nx-code">NxOverflowTooltip</code>. Defaults to true. Set this to false when
+              the <code className="nx-code">NxCheckbox</code> is being wrapped in a tooltip externally, to prevent
+              multiple overlapping tooltips from appearing.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell">children</td>
             <td className="nx-cell">Virtual DOM</td>
             <td className="nx-cell">No</td>

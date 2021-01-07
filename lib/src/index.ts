@@ -14,7 +14,11 @@ export { default as NxLoadingSpinner } from './components/NxLoadingSpinner/NxLoa
 export { default as NxLoadError, Props as NxLoadErrorProps } from './components/NxLoadError/NxLoadError';
 export { default as NxLoadWrapper, Props as NxLoadWrapperProps } from './components/NxLoadWrapper/NxLoadWrapper';
 export { default as NxModal, Props as NxModalProps } from './components/NxModal/NxModal';
-export { default as NxTextInput, Props as NxTextInputProps } from './components/NxTextInput/NxTextInput';
+export { default as NxTextInput, PublicProps as NxTextInputProps } from './components/NxTextInput/NxTextInput';
+
+import * as nxTextInputStateHelpers from './components/NxTextInput/stateHelpers';
+export { nxTextInputStateHelpers };
+
 export {
   default as NxAlert,
   NxWarningAlert,
@@ -171,3 +175,8 @@ export { default as NxPolicyViolationIndicator, Props as NxPolicyViolationIndica
   from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicator';
 
 export { default as NxFormGroup, Props as NxFormGroupProps } from './components/NxFormGroup/NxFormGroup';
+export { default as NxFieldset, Props as NxFieldsetProps } from './components/NxFieldset/NxFieldset';
+
+export { default as NxToggle, Props as NxToggleProps } from './components/NxToggle/NxToggle';
+export { default as NxStatefulToggle, Props as NxStatefulToggleProps }
+  from './components/NxToggle/stateful/NxStatefulToggle';

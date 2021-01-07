@@ -10,7 +10,7 @@ import {contains, toLower} from 'ramda';
 import { NxTreeViewRadioSelect, NxTreeViewRadioSelectOption } from '@sonatype/react-shared-components';
 
 const NxTreeViewRadioSelectExample = () => {
-  const options: NxTreeViewRadioSelectOption[] = [
+  const options = [
     {
       id: 'bike',
       name: 'Bicycle'
@@ -20,6 +20,12 @@ const NxTreeViewRadioSelectExample = () => {
     }, {
       id: 'skate',
       name: 'Skateboard'
+    }, {
+      id: 'longboard',
+      name: 'Loooooooooooooooooooooooooooooooooongboard'
+    }, {
+      id: 'moped',
+      name: 'Moped'
     }, {
       id: null,
       name: 'No Transport'
@@ -47,7 +53,6 @@ const NxTreeViewRadioSelectExample = () => {
                            selectedId={selection}
                            onChange={onSelectionChange}
                            options={options}
-                           optionTooltipGenerator={option => option.name}
                            filter={filter}
                            filterPlaceholder="vehicle name"
                            filterThreshold={2}

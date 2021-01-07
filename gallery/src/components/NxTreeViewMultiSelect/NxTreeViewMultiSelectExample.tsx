@@ -8,7 +8,8 @@ import React, { useState } from 'react';
 import {contains, toLower} from 'ramda';
 import { faBicycle } from '@fortawesome/free-solid-svg-icons';
 
-import {NxTreeViewMultiSelect, NxFontAwesomeIcon, NxTreeViewMultiSelectOption} from '@sonatype/react-shared-components';
+import {NxFontAwesomeIcon, NxTreeViewMultiSelectOption, NxTreeViewMultiSelect}
+  from '@sonatype/react-shared-components';
 
 const NxTreeViewMultiSelectExample = () => {
   const options = [
@@ -21,6 +22,9 @@ const NxTreeViewMultiSelectExample = () => {
     }, {
       id: 'skate',
       name: 'Skateboard'
+    }, {
+      id: 'longboard',
+      name: 'Loooooooooooooooooooooooooooooooooongboard'
     }, {
       id: 'moped',
       name: 'Moped'
@@ -49,7 +53,6 @@ const NxTreeViewMultiSelectExample = () => {
                            isOpen={isOpen}
                            onToggleCollapse={onToggleCollapse}
                            options={options}
-                           optionTooltipGenerator={option => option.name}
                            selectedIds={selection}
                            onChange={onSelectionChange}
                            filter={filter}

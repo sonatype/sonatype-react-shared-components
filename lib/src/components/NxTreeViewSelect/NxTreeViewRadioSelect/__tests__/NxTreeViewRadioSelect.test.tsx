@@ -138,6 +138,16 @@ describe('NxTreeViewRadioSelect', function() {
         expect(onChangeSpy).toHaveBeenCalledWith(null);
       });
     });
+
+    it('sets overflowTooltip to false if optionTooltipGenerator is defined', function() {
+      const shallowRenderNoTooltipGen = getShallow(),
+          shallowRenderTooltipGen = getShallow({ optionTooltipGenerator: opt => opt.name }),
+          renderOptionNoTooltipGen = shallowRenderNoTooltipGen.renderProp('renderOption'),
+          renderOptionTooltipGen = shallowRenderTooltipGen.renderProp('renderOption');
+
+      expect(renderOptionNoTooltipGen({ id: 'foo', name: 'Foo' })).toHaveProp('overflowTooltip', true);
+      expect(renderOptionTooltipGen({ id: 'foo', name: 'Foo' })).toHaveProp('overflowTooltip', false);
+    });
   });
 
   describe('renderCounter prop', function () {

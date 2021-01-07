@@ -6,15 +6,15 @@
  */
 import * as PropTypes from 'prop-types';
 
-import {CommonProps, commonPropTypes} from '../commonTypes';
+import {CommonProps, Option, commonPropTypes} from '../commonTypes';
 export {Option} from '../commonTypes';
 
-export interface Props extends CommonProps {
+export interface Props<T extends Option = Option> extends CommonProps<T> {
   selectedId?: string | null;
   onChange: ((selected: string | null) => void);
 }
 
-export const propTypes: PropTypes.ValidationMap<Props> = {
+export const propTypes: React.WeakValidationMap<Props> = {
   ...commonPropTypes,
   selectedId: PropTypes.string,
   onChange: PropTypes.func.isRequired

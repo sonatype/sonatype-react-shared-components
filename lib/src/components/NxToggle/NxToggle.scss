@@ -1,0 +1,97 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-text-helpers';
+
+.nx-toggle {
+  display: flex;
+  margin: $nx-spacing-md 0;
+  overflow-wrap: anywhere;
+  max-width: $nx-form-element-width-wide;
+
+  &.nx-toggle--disabled {
+    &, &:hover {
+      color: $nx-text-color-disabled;
+      cursor: default;
+
+      .nx-toggle__control {
+        background-color: $nx-grey-200;
+        border-color: $nx-grey-500;
+      }
+      .nx-toggle__indicator {
+        background-color: $nx-grey-500;
+      }
+    }
+  }
+
+  &:focus-within {
+    .nx-toggle__control {
+      border-color: $nx-focus-border-color;
+      filter: drop-shadow(0 0 3px rgba($nx-focus-border-color, 0.4));
+
+      &:hover {
+        border-color: $nx-grey-1100;
+      }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .nx-toggle__control {
+      border-color: $nx-grey-1100;
+    }
+  }
+}
+
+.nx-toggle__input {
+  margin: 0;
+  position: absolute;
+  width: 0;
+  z-index: -1;
+
+  &:checked {
+    + .nx-toggle__control {
+      background-color: $nx-blue-600;
+
+      .nx-toggle__indicator {
+        background-color: #fff;
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+.nx-toggle__content {
+  flex-grow: 1;
+}
+
+.nx-toggle__control {
+  background-color: #fff;
+  border: 1px solid $nx-blue-600;
+  border-radius: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex: none;
+  height: 24px;
+  margin-left: $nx-spacing-l;
+  padding: $nx-spacing-xxs - 1px;
+  width: 44px;
+}
+
+.nx-toggle__indicator {
+  background-color: $nx-blue-600;
+  border-radius: 8px;
+  height: 16px;
+  margin-left: 0;
+  width: 16px;
+  transition: margin-left 0.35s;
+}
+
+.nx-legend + .nx-toggle {
+  margin-top: 0;
+}
