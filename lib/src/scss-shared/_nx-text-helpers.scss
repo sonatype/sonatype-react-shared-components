@@ -16,13 +16,30 @@
   font-weight: normal;
 }
 
+@mixin italic() {
+  @include nx-font-family;
+  font-style: italic;
+}
+
 @mixin bold() {
   @include nx-font-family;
   font-weight: bold;
 }
 
+@mixin bold-italic() {
+  @include nx-font-family;
+  font-style: italic;
+  font-weight: bold;
+}
+
 @mixin semi-bold() {
   @include nx-font-family;
+  font-weight: 600;
+}
+
+@mixin semi-bold-italic() {
+  @include nx-font-family;
+  font-style: italic;
   font-weight: 600;
 }
 
