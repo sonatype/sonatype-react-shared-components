@@ -43,4 +43,7 @@ export const userInput = curryN(2, function userInput(validator: Validator, newV
     trimmedValue,
     validationErrors: validator && validator(trimmedValue)
   };
+
+// This cast is necessary due to this bug in the ramda typings:
+// https://github.com/DefinitelyTyped/DefinitelyTyped/issues/50488
 }) as ((v: Validator, n: string) => StateProps) & ((v: Validator) => (n: string) => StateProps);
