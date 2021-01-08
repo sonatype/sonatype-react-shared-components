@@ -6,6 +6,7 @@
  */
 
 .nx-table {
+  background-color: $nx-white;
   border-spacing: 0;
   border: 1px solid #d1d6f0;
   border-radius: $nx-border-radius;
@@ -94,6 +95,7 @@
 }
 
 .nx-table-container {
+  background-color: $nx-white;
   border: 1px solid #d1d6f0;
   border-radius: $nx-border-radius;
   box-sizing: content-box;
@@ -147,7 +149,7 @@
 .nx-table-container__footer {
   @include container-vertical;
 
-  background-color: #fff;
+  background-color: $nx-white;
   border-top: 1px solid #d1d6f0;
   margin-top: auto;
   padding: $nx-table-footer-vertical-padding;
