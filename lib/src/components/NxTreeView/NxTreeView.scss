@@ -89,6 +89,7 @@ $twisty-proportion-difference: 2px;
 }
 
 .nx-tree-view__twisty {
+  box-sizing: content-box;
   transition: all 300ms ease;
   font-size: 22px;
 
