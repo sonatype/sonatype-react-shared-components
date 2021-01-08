@@ -33,6 +33,34 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../assets/fonts/courier-prime-v2-latin-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../assets/fonts/courier-prime-v2-latin-italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../assets/fonts/courier-prime-v2-latin-700.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../assets/fonts/courier-prime-v2-latin-700italic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+
 .nx-body {
   @include regular();
 

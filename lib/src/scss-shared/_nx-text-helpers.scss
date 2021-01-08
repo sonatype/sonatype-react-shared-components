@@ -56,7 +56,7 @@
   border: $nx-border;
   border-radius: $nx-border-radius;
   color: #cd0028;
-  font-family: monospace;
+  font-family: Courier Prime, monospace;
   padding: 1px 4px;
   white-space: nowrap;
 }
@@ -76,6 +76,7 @@
     background-color: inherit;
     border: 0;
     color: inherit;
+    font-family: Courier Prime, monospace;
     padding: 0;
     white-space: inherit;
   }
