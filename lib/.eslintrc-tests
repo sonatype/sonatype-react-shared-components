@@ -9,6 +9,6 @@
     "expect": true
   },
   "rules": {
-    "@typescript-eslint/no-non-null-assertion": false
+    "@typescript-eslint/no-non-null-assertion": "off"
   }
 }
