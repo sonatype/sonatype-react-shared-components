@@ -38,11 +38,15 @@ export default function NxModalFormErrorExample() {
               </h2>
             </header>
             <div className="nx-modal-content">
-              <NxFormGroup label="Username">
-                <NxTextInput { ...textFieldState } onChange={onChange} />
+              <NxFormGroup label="Username" isRequired>
+                <NxTextInput { ...textFieldState } onChange={onChange} aria-required={true} />
               </NxFormGroup>
-              <NxFormGroup label="Password">
-                <NxTextInput type="password" placeholder="Enter password" onChange={onChange} { ...textFieldState }/>
+              <NxFormGroup label="Password" isRequired>
+                <NxTextInput type="password"
+                             aria-required={true}
+                             placeholder="Enter password"
+                             onChange={onChange}
+                             { ...textFieldState }/>
               </NxFormGroup>
             </div>
             <footer className="nx-footer">

@@ -28,10 +28,10 @@ export default function NxModalFormExample() {
             </header>
             <div className="nx-modal-content">
               <NxFormGroup label="Username" isRequired>
-                <NxStatefulTextInput aria-require={true} placeholder="Username"/>
+                <NxStatefulTextInput aria-required={true} placeholder="Username"/>
               </NxFormGroup>
               <NxFormGroup label="Password" isRequired>
-                <NxStatefulTextInput type="password" aria-require={true} placeholder="Password"/>
+                <NxStatefulTextInput type="password" aria-required={true} placeholder="Password"/>
               </NxFormGroup>
             </div>
             <footer className="nx-footer">

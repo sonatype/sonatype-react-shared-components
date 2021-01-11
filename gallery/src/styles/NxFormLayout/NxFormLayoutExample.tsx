@@ -93,7 +93,7 @@ export default function NxFormLayoutExample() {
           Blue
         </NxRadio>
       </fieldset>
-      <NxFormGroup label="Select">
+      <NxFormGroup label="Select" isRequired>
         <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
           <option value="">Select an option</option>
           <option value="option1">Option 1</option>
@@ -122,8 +122,8 @@ export default function NxFormLayoutExample() {
           Allow shapes
         </NxToggle>
       </fieldset>
-      <NxFormGroup label="Comments">
-        <NxStatefulTextInput type="textarea" placeholder="placeholder"/>
+      <NxFormGroup label="Comments" isRequired>
+        <NxStatefulTextInput type="textarea" placeholder="placeholder" aria-required={true}/>
       </NxFormGroup>
       <footer className="nx-footer">
         <div className="nx-btn-bar">
