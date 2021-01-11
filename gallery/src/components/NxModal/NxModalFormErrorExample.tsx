@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { NxModal, NxFontAwesomeIcon, NxTextInput, NxLoadError, NxButton, nxTextInputStateHelpers }
+import { NxModal, NxFontAwesomeIcon, NxTextInput, NxLoadError, NxButton, nxTextInputStateHelpers, NxFormGroup }
   from '@sonatype/react-shared-components';
 import { faAngry } from '@fortawesome/free-solid-svg-icons';
 
@@ -38,18 +38,12 @@ export default function NxModalFormErrorExample() {
               </h2>
             </header>
             <div className="nx-modal-content">
-              <div className="nx-form-group">
-                <label className="nx-label">
-                  <span className="nx-label__text">Username</span>
-                  <NxTextInput { ...textFieldState } onChange={onChange} />
-                </label>
-              </div>
-              <div className="nx-form-group">
-                <label className="nx-label">
-                  <span className="nx-label__text">Password</span>
-                  <NxTextInput type="password" placeholder="Enter password" onChange={onChange} { ...textFieldState }/>
-                </label>
-              </div>
+              <NxFormGroup label="Username">
+                <NxTextInput { ...textFieldState } onChange={onChange} />
+              </NxFormGroup>
+              <NxFormGroup label="Password">
+                <NxTextInput type="password" placeholder="Enter password" onChange={onChange} { ...textFieldState }/>
+              </NxFormGroup>
             </div>
             <footer className="nx-footer">
               <NxLoadError { ...({ error, retryHandler }) } onClick={modalCloseHandler} />
