@@ -105,6 +105,7 @@ const NxFieldsetPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Deprecated Layout Example"
+                        id="nx-fieldset-deprecated-example"
                         liveExample={NxFieldsetDeprecatedExample}
                         codeExamples={nxFormGroupDeprecatedExampleCode}>
       This example show an alternative layout of the <code className="nx-code">nx-fieldset</code> internals. In this

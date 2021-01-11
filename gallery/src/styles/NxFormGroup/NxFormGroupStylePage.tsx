@@ -105,6 +105,7 @@ const NxFormGroupPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Deprecated Layout Example"
+                        id="nx-form-group-deprecated-example"
                         liveExample={NxFormGroupDeprecatedExample}
                         codeExamples={nxFormGroupDeprecatedExampleCode}>
       This example show an alternative layout of the <code className="nx-code">nx-form-group</code> internals. This
