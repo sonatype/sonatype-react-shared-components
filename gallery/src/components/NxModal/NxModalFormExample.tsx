@@ -6,7 +6,8 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxFontAwesomeIcon, NxButton, NxStatefulTextInput, NxFormGroup} from '@sonatype/react-shared-components';
+import {NxModal, NxFontAwesomeIcon, NxButton, NxStatefulTextInput, NxFormGroup}
+  from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
 export default function NxModalFormExample() {
