@@ -51,7 +51,7 @@ export default function NxFormLayoutExample() {
         <NxFormGroup label="Label">
           <NxStatefulTextInput/>
         </NxFormGroup>
-        <NxFormGroup label="Label">
+        <NxFormGroup label="Label" isRequired>
           <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
             <option value="">Select an option</option>
             <option value="option1">Option 1</option>
