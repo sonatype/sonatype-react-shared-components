@@ -33,7 +33,7 @@ See the [gallery](https://gallery.sonatype.dev/#/) for information on the availa
 RSC stylesheets are available in two forms. Consumers are encouraged to use SASS as part of their build process,
 in which case the necessary RSC styles will be picked up automatically via the import structure within the library.
 That is, each RSC component has a ES6 import referring to a scss file containing the necessary styles for that
-component, and your build shoul be set up to consume those imports. Alternatively if not using SASS, the full set
+component, and your build should be set up to consume those imports. Alternatively if not using SASS, the full set
 of RSC styles is available in CSS form within the `react-shared-components.css` in the module root directory.
 
 ## Contributing
