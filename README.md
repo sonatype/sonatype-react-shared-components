@@ -15,6 +15,27 @@ as Sonatype's standard CSS styles.
 This library is not intended for direct public usage. It is intended for usage internally within Sonatype products, and
 has been made open-source so that it may be used within Sonatype's other open-source products.
 
+## Usage
+
+This library is published to the main npm registry under the name `@sonatype/react-shared-components`, and can
+be installed using typical package management commands, e.g.
+
+```
+yarn add @sonatype/react-shared-components
+```
+
+Once installed, most JavaScript exports from the library can be accessed directly from the module root, for instance
+```
+import { NxButton } from '@sonatype/react-shared-components';
+```
+See the [gallery](https://gallery.sonatype.dev/#/) for information on the available components and their usage.
+
+RSC stylesheets are available in two forms. Consumers are encouraged to use SASS as part of their build process,
+in which case the necessary RSC styles will be picked up automatically via the import structure within the library.
+That is, each RSC component has a ES6 import referring to a scss file containing the necessary styles for that
+component, and your build shoul be set up to consume those imports. Alternatively if not using SASS, the full set
+of RSC styles is available in CSS form within the `react-shared-components.css` in the module root directory.
+
 ## Contributing
 
 See the [contributing document](./.github/CONTRIBUTING.md) for details.
