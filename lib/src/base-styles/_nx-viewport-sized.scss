@@ -16,7 +16,6 @@
     flex: none;
     margin-top: 0;
     width: 100%;
-    min-height: 0;
   }
 }
 
@@ -24,10 +23,13 @@
 .nx-viewport-sized__container {
   display: flex;
   flex-direction: column;
+}
+
+.nx-viewport-sized__container, .nx-viewport-sized__scrollable {
   flex: auto;
+  min-height: 0;
 }
 
 .nx-viewport-sized__scrollable {
-  flex: auto;
   max-height: unset;
 }
