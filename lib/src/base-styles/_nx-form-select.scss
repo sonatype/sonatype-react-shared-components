@@ -11,7 +11,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: #fff url("data:image/svg+xml;utf8, \
+  background: var(--rsc-component-background-color) url("data:image/svg+xml;utf8, \
     <svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%232c2c2c'> \
     <polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
   background-size: 12px;

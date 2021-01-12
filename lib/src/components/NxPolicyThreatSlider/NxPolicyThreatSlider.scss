@@ -39,7 +39,7 @@
 
   .MuiSlider-thumb {
     box-sizing: border-box;
-    background-color: $nx-white;
+    background-color: var(--rsc-component-background-color);
     border: 2px solid;
     border-radius: $nx-border-radius;
     color: $nx-text-color-dark;

@@ -9,7 +9,7 @@
 @import '../../scss-shared/nx-text-helpers';
 
 .nx-accordion {
-  background: #fff;
+  background: var(--rsc-component-background-color);
   border-radius: $nx-border-radius;
   margin: $nx-spacing-md 0;
 }

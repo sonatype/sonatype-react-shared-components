@@ -79,7 +79,7 @@
 }
 
 %nx-pre {
-  background-color: #fff;
+  background-color: var(--rsc-component-background-color);
   border: 1px solid $nx-grey-900;
   border-left-width: 8px;
   border-radius: $nx-border-radius;

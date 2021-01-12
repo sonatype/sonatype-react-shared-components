@@ -10,7 +10,7 @@
 }
 
 .nx-card {
-  background-color: #fff;
+  background-color: var(--rsc-component-background-color);
   border-radius: $nx-border-radius;
   box-sizing: border-box;
   margin-bottom: $nx-spacing-md;
