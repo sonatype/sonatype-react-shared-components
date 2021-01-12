@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxInfoAlert }
+import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxWarningAlert }
   from '@sonatype/react-shared-components';
 
 import NxFormGroupExample from './NxFormGroupExample';
@@ -28,11 +28,11 @@ const NxFormGroupPage = () =>
         and checkbox groups, as those are best encapsulated
         in <code className="nx-code">&lt;fieldset&gt;</code> elements.
       </p>
-      <NxInfoAlert>
+      <NxWarningAlert>
         Using these styles manually is not recommended, due to the complexity of setting up the proper attributes
         for screenreader support. Use the <code className="nx-code">NxFormGroup</code> react component instead
         where possible.
-      </NxInfoAlert>
+      </NxWarningAlert>
       <NxTable>
         <NxTableHead>
           <NxTableRow>
