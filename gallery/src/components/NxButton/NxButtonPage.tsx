@@ -52,7 +52,7 @@ export default function NxButtonPage() {
               <NxTableCell>The variant of button. See examples of each variant below.</NxTableCell>
             </NxTableRow>
           </NxTableBody>
-      </NxTable>
+        </NxTable>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Secondary (Default)"
