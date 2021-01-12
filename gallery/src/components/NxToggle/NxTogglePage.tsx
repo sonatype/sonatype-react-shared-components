@@ -19,7 +19,10 @@ const NxTogglePage = () =>
         Custom toggle control, which uses a hidden checkbox input for its on/checked &amp; off/unselected states.
       </p>
       <p className="nx-p">Child VDOM will be used as a label preceeding the toggle control.</p>
-      <p className="nx-p">Props:</p>
+      <p className="nx-p">
+        NxToggle can receive any prop that would be valid on an
+        HTML <code className="nx-code">&lt;label&gt;</code> as well as the following:
+      </p>
       <table className="nx-table">
         <thead>
           <tr className="nx-table-row">

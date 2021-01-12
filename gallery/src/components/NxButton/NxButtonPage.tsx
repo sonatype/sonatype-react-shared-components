@@ -14,6 +14,7 @@ import NxButtonTertiaryExample from './NxButtonTertiaryExample';
 import NxButtonErrorExample from './NxButtonErrorExample';
 import NxButtonIconExample from './NxButtonIconExample';
 import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
+import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
 
 const NxButtonDefaultCode = require('!!raw-loader!./NxButtonDefaultExample').default,
     nxButtonPrimaryCode = require('!!raw-loader!./NxButtonPrimaryExample').default,
@@ -26,12 +27,32 @@ export default function NxButtonPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p"><code className="nx-code">.nx-btn</code> is the standard class for all buttons.</p>
         <p className="nx-p">
-          When a button is not contained in a <code className="nx-code">footer</code>, then an enclosing
-          <code className="nx-code">.nx-btn-bar</code> is generally required to ensure that the buttons are spaced
-          appropriately from other content.
+          <code className="nx-code">NxButton</code> is a react wrapper around
+          HTML <code className="nx-code">&lt;button&gt;</code> elements using
+          the <code className="nx-code">.nx-btn</code> CSS class. It accepts
+          any <code className="nx-code">&lt;button&gt;</code> prop as well as the following:
         </p>
+        <NxTable>
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Prop</NxTableCell>
+              <NxTableCell>Type</NxTableCell>
+              <NxTableCell>Required</NxTableCell>
+              <NxTableCell>Default</NxTableCell>
+              <NxTableCell>Details</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody>
+            <NxTableRow>
+              <NxTableCell>variant</NxTableCell>
+              <NxTableCell>'primary' | 'secondary' | 'tertiary' | 'icon-only' | 'error'</NxTableCell>
+              <NxTableCell>No</NxTableCell>
+              <NxTableCell>secondary</NxTableCell>
+              <NxTableCell>The variant of button. See examples of each variant below.</NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+      </NxTable>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Secondary (Default)"

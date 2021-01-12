@@ -28,8 +28,7 @@ const NxAccordionPage = () =>
         children of <code className="nx-code">NxAccordion</code> aside from
         the <code className="nx-code">Header</code> are rendered in the collapsible section.
 
-        Note that this
-        component is stateless – its open state must be tracked externally.
+        Note that this component is stateless – its open state must be tracked externally.
         See <code className="nx-code">NxStatefulAccordion</code> for a version which tracks its own open state.
       </p>
       <section className="nx-tile-subsection">
@@ -37,8 +36,8 @@ const NxAccordionPage = () =>
           <h3 className="nx-h3">NxAccordion</h3>
         </header>
         <p className="nx-p">
-          In addition to all standard HTML props, <code className="nx-code">NxAccordion</code> can receive
-          the following:
+          In addition to all standard HTML <code className="nx-code">&lt;details&gt;</code> props,{' '}
+          <code className="nx-code">NxAccordion</code> can receive the following:
         </p>
         <NxTable>
           <NxTableHead>
@@ -77,7 +76,8 @@ const NxAccordionPage = () =>
           <h3 className="nx-h3">NxAccordion.Header</h3>
         </header>
         <p className="nx-p">
-          <code className="nx-code">NxAccordion.Header</code> can receive standard HTML props.
+          <code className="nx-code">NxAccordion.Header</code> can receive standard
+          HTML <code className="nx-code">&lt;summary&gt;</code> props.
         </p>
       </section>
       <section className="nx-tile-subsection">
