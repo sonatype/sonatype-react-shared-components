@@ -6,7 +6,7 @@
  */
 import React, { FormEvent, useState } from 'react';
 
-import { NxCheckbox, NxRadio, NxStatefulTextInput, NxButton, NxFontAwesomeIcon, NxToggle, NxFormGroup }
+import { NxCheckbox, NxRadio, NxStatefulTextInput, NxButton, NxFontAwesomeIcon, NxToggle, NxFormGroup, NxFieldset }
   from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
@@ -61,19 +61,12 @@ export default function NxFormLayoutExample() {
       <NxFormGroup label="Hostname" sublabel={hostnameSublabel}>
         <NxStatefulTextInput className="nx-text-input--long"/>
       </NxFormGroup>
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend">
-          <span className="nx-legend__text">Colors</span>
-        </legend>
+      <NxFieldset label="Colors">
         <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
         <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
         <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
-      </fieldset>
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend nx-legend--optional">
-          <span className="nx-legend__text">Primary Color</span>
-        </legend>
-        <div className="nx-sub-label">Pick a single color</div>
+      </NxFieldset>
+      <NxFieldset label="Primary Color" sublabel="Pick a single color">
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
@@ -92,7 +85,7 @@ export default function NxFormLayoutExample() {
         <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'}>
           Blue
         </NxRadio>
-      </fieldset>
+      </NxFieldset>
       <NxFormGroup label="Select" isRequired>
         <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
           <option value="">Select an option</option>
@@ -103,12 +96,7 @@ export default function NxFormLayoutExample() {
           <option value="option5">Option 5</option>
         </select>
       </NxFormGroup>
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend">
-          <span className="nx-legend__text">
-            Enable features
-          </span>
-        </legend>
+      <NxFieldset label="Enable features">
         <div className="nx-sub-label">
           In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
         </div>
@@ -121,7 +109,7 @@ export default function NxFormLayoutExample() {
         <NxToggle inputId="children-check" onChange={toggleShapes} isChecked={isShapes}>
           Allow shapes
         </NxToggle>
-      </fieldset>
+      </NxFieldset>
       <NxFormGroup label="Comments" isRequired>
         <NxStatefulTextInput type="textarea" placeholder="placeholder" aria-required={true}/>
       </NxFormGroup>

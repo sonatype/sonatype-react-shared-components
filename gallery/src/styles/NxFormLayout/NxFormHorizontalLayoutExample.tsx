@@ -6,7 +6,7 @@
  */
 import React, { FormEvent, useState } from 'react';
 
-import { NxCheckbox, NxFormGroup } from '@sonatype/react-shared-components';
+import { NxCheckbox, NxFormGroup, NxFieldset } from '@sonatype/react-shared-components';
 import { NxRadio } from '@sonatype/react-shared-components';
 import { NxButton } from '@sonatype/react-shared-components';
 import { NxStatefulTextInput } from '@sonatype/react-shared-components';
@@ -62,16 +62,12 @@ export default function NxFormLayoutExample() {
           </select>
         </NxFormGroup>
       </div>
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend">
-          <span className="nx-legend__text">Colors</span>
-        </legend>
+      <NxFieldset label="Colors">
         <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
         <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
         <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
-      </fieldset>
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend"><span className="nx-legend__text">Primary Color</span></legend>
+      </NxFieldset>
+      <NxFieldset label="Primary Color">
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
@@ -90,7 +86,7 @@ export default function NxFormLayoutExample() {
         <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'}>
           Blue
         </NxRadio>
-      </fieldset>
+      </NxFieldset>
       <footer className="nx-footer">
         <NxInfoAlert>This is a sample alert message</NxInfoAlert>
         <div className="nx-btn-bar">
