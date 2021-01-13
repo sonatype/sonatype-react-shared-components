@@ -49,6 +49,10 @@
   white-space: nowrap;
 }
 
+@mixin monospace() {
+  font-family: Courier Prime, monospace;
+}
+
 // for specificity reasons this should be called using a custom class on the <body> tag
 // e.g. `<body className="nx-body nx-body--my-app">`
 @mixin font-size($custom-font-size) {
@@ -69,11 +73,11 @@
 }
 
 %nx-code {
+  @include monospace();
   background-color: $nx-grey-1;
   border: $nx-border;
   border-radius: $nx-border-radius;
   color: #cd0028;
-  font-family: monospace;
   padding: 1px 4px;
   white-space: nowrap;
 }
@@ -90,6 +94,7 @@
 
   // "code" used below to support Markdown text in NxVulnerabilityDetails
   code, .nx-code {
+    @include monospace();
     background-color: inherit;
     border: 0;
     color: inherit;

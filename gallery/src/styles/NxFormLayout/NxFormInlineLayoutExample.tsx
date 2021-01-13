@@ -7,7 +7,7 @@
 import React, { FormEvent } from 'react';
 import {faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
 
-import { NxButton } from '@sonatype/react-shared-components';
+import { NxButton, NxFormGroup } from '@sonatype/react-shared-components';
 import { NxStatefulTextInput } from '@sonatype/react-shared-components';
 import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
@@ -24,27 +24,18 @@ export default function NxFormLayoutExample() {
   return (
     <form className="nx-form" onSubmit={onSubmit}>
       <div className="nx-form-row">
-        <div className="nx-form-group">
-          <label className="nx-label">
-            <span className="nx-label__text">Username</span>
-            <NxStatefulTextInput aria-required={true} validator={validator}/>
-          </label>
-        </div>
+        <NxFormGroup label="Username" isRequired>
+          <NxStatefulTextInput aria-required={true} validator={validator}/>
+        </NxFormGroup>
         <div className="nx-btn-bar">
           <NxButton variant="primary" type="submit">Submit</NxButton>
         </div>
       </div>
       <div className="nx-form-row">
-        <div className="nx-form-group">
-          <label htmlFor="inline-sublabel-field" className="nx-label">
-            <span className="nx-label__text">Hostname</span>
-          </label>
-          <span id="inline-sublabel-field-sublabel" className="nx-sub-label">Add a hostname</span>
-          <NxStatefulTextInput id="inline-sublabel-field"
-                               aria-describedby="inline-sublabel-field-sublabel"
-                               aria-required={true}
+        <NxFormGroup label="Hostname" sublabel="Add a hostname" isRequired>
+          <NxStatefulTextInput aria-required={true}
                                validator={validator}/>
-        </div>
+        </NxFormGroup>
         <div className="nx-btn-bar">
           <NxButton><NxFontAwesomeIcon icon={faPlus}/></NxButton>
           <NxButton><NxFontAwesomeIcon icon={faMinus}/></NxButton>
