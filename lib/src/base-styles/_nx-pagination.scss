@@ -27,7 +27,7 @@
 
   &:focus {
     box-shadow: $nx-focus-box-shadow;
-    outline: 1px solid $nx-focus-border-color;
+    outline: 1px solid var(--nx-interactive-focus-border-color);
     outline-offset: -1px;
   }
 }
@@ -36,7 +36,7 @@
   @include regular();
   background-color: transparent;
   border-color: transparent;
-  color: $nx-text-color;
+  color: var(--nx-text-color);
 
   &:hover {
     background-color: transparent;
@@ -47,7 +47,7 @@
     background-color: $nx-grey-100;
     border-color: $nx-grey-900;
     box-shadow: none;
-    color: $nx-text-color;
+    color: var(--nx-text-color);
   }
 
   &.selected {

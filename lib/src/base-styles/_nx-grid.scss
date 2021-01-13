@@ -13,7 +13,7 @@
 .nx-grid-col {
   flex: 1 0;
 
-  border-left: $nx-border-light;
+  border-left: 1px solid var(--nx-border-color-faded);
   box-sizing: border-box;
   margin: 8px 0;
   overflow-x: hidden;
@@ -59,7 +59,7 @@
 
 .nx-grid-h-keyline {
   border: none;
-  border-top: $nx-border-light;
+  border-top: 1px solid var(--nx-border-color-faded);
   margin: 0;
 }
 

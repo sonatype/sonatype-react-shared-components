@@ -23,7 +23,7 @@
     @include container-horizontal;
     align-items: center;
     box-sizing: border-box;
-    color: $nx-text-color-dark;
+    color: var(--nx-text-color-stark);
     cursor: pointer;
     display: flex;
     font-weight: bold;
@@ -40,7 +40,7 @@
     outline: none;
 
     > .nx-accordion__summary-wrapper {
-      outline: 1px solid $nx-focus-border-color;
+      outline: 1px solid var(--nx-interactive-focus-border-color);
       outline-offset: -1px;
       box-shadow: $nx-focus-box-shadow;
     }
@@ -58,7 +58,7 @@
   @include bold();
   @include container-horizontal;
 
-  color: $nx-heading-color;
+  color: var(--nx-heading-color);
   font-size: $nx-font-size-heading-level-3;
   margin-bottom: $nx-spacing-md;
 }

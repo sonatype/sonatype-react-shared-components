@@ -75,7 +75,7 @@
 %nx-code {
   @include monospace();
   background-color: $nx-grey-1;
-  border: $nx-border;
+  border: 1px solid var(--nx-border-color);
   border-radius: $nx-border-radius;
   color: #cd0028;
   padding: 1px 4px;
