@@ -6,7 +6,7 @@
  */
 import React, { FormEvent, useState } from 'react';
 
-import { NxCheckbox } from '@sonatype/react-shared-components';
+import { NxCheckbox, NxFormGroup, NxFieldset } from '@sonatype/react-shared-components';
 import { NxRadio } from '@sonatype/react-shared-components';
 import { NxButton } from '@sonatype/react-shared-components';
 import { NxStatefulTextInput } from '@sonatype/react-shared-components';
@@ -40,50 +40,34 @@ export default function NxFormLayoutExample() {
   return (
     <form className="nx-form" onSubmit={onSubmit}>
       <div className="nx-form-row">
-        <div className="nx-form-group">
-          <label className="nx-label">
-            <span className="nx-label__text">Username</span>
-            <NxStatefulTextInput aria-required={true} validator={validator}/>
-          </label>
-        </div>
-        <div className="nx-form-group">
-          <label className="nx-label nx-label--optional">
-            <span className="nx-label__text">Hostname</span>
-            <NxStatefulTextInput/>
-          </label>
-        </div>
+        <NxFormGroup label="Username" isRequired>
+          <NxStatefulTextInput aria-required={true} validator={validator}/>
+        </NxFormGroup>
+        <NxFormGroup label="Hostname">
+          <NxStatefulTextInput/>
+        </NxFormGroup>
       </div>
       <div className="nx-form-row">
-        <div className="nx-form-group">
-          <label className="nx-label nx-label--optional">
-            <span className="nx-label__text">Label</span>
-            <NxStatefulTextInput/>
-          </label>
-        </div>
-        <div className="nx-form-group">
-          <label className="nx-label">
-            <span className="nx-label__text">Label</span>
-            <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
-              <option value="">Select an option</option>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-              <option value="option4">Option 4</option>
-              <option value="option5">Option 5</option>
-            </select>
-          </label>
-        </div>
+        <NxFormGroup label="Label">
+          <NxStatefulTextInput/>
+        </NxFormGroup>
+        <NxFormGroup label="Label" isRequired>
+          <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
+            <option value="">Select an option</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+            <option value="option4">Option 4</option>
+            <option value="option5">Option 5</option>
+          </select>
+        </NxFormGroup>
       </div>
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend">
-          <span className="nx-legend__text">Colors</span>
-        </legend>
+      <NxFieldset label="Colors" isRequired>
         <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
         <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
         <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
-      </fieldset>
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend"><span className="nx-legend__text">Primary Color</span></legend>
+      </NxFieldset>
+      <NxFieldset label="Primary Color" isRequired>
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
@@ -102,7 +86,7 @@ export default function NxFormLayoutExample() {
         <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'}>
           Blue
         </NxRadio>
-      </fieldset>
+      </NxFieldset>
       <footer className="nx-footer">
         <NxInfoAlert>This is a sample alert message</NxInfoAlert>
         <div className="nx-btn-bar">

@@ -8,7 +8,8 @@ import React, { FormEvent, useState } from 'react';
 import { none } from 'ramda';
 import classnames from 'classnames';
 
-import { NxButton, NxCheckbox, NxTextInput, NxTooltip, hasValidationErrors } from '@sonatype/react-shared-components';
+import { NxButton, NxCheckbox, NxTextInput, NxTooltip, hasValidationErrors, NxFormGroup, NxFieldset }
+  from '@sonatype/react-shared-components';
 import { StateProps, Validator } from '@sonatype/react-shared-components/components/NxTextInput/types';
 import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
 
@@ -52,35 +53,23 @@ export default function FormValidationExample() {
 
   return (
     <form className="nx-form" onSubmit={onSubmit}>
-      <div className="nx-form-group">
-        <label className="nx-label">
-          <span className="nx-label__text">Text input 1</span>
-          <NxTextInput { ...textInput1State }
-                       validatable={true}
-                       onChange={setTextInput(setTextInput1State, nonEmptyValidator)}/>
-        </label>
-      </div>
-      <div className="nx-form-group">
-        <label className="nx-label nx-label--optional">
-          <span className="nx-label__text">Text input 2</span>
-          <NxTextInput { ...textInput2State } onChange={setTextInput(setTextInput2State)}/>
-        </label>
-      </div>
-      <div className="nx-form-group">
-        <label className="nx-label">
-          <span className="nx-label__text">Text input 3</span>
-          <NxTextInput { ...textInput3State }
-                       validatable={true}
-                       onChange={setTextInput(setTextInput3State, combinedValidator)}/>
-        </label>
-      </div>
+      <NxFormGroup label="Text input 1">
+        <NxTextInput { ...textInput1State }
+                     validatable={true}
+                     onChange={setTextInput(setTextInput1State, nonEmptyValidator)}/>
+      </NxFormGroup>
+      <NxFormGroup label="Text input 2">
+        <NxTextInput { ...textInput2State } onChange={setTextInput(setTextInput2State)}/>
+      </NxFormGroup>
+      <NxFormGroup label="Text input 3">
+        <NxTextInput { ...textInput3State }
+                     validatable={true}
+                     onChange={setTextInput(setTextInput3State, combinedValidator)}/>
+      </NxFormGroup>
 
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend">
-          <span className="nx-legend__text">Check this box?</span>
-        </legend>
+      <NxFieldset label="Check this box?">
         <NxCheckbox isChecked={checkboxValue} onChange={() => setCheckboxState(!checkboxValue)}>Check It</NxCheckbox>
-      </fieldset>
+      </NxFieldset>
 
       <footer className="nx-form-footer">
         <div className="nx-btn-bar">
