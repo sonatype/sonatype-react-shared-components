@@ -61,7 +61,7 @@ export default function NxFormLayoutExample() {
       <NxFormGroup label="Hostname" sublabel={hostnameSublabel}>
         <NxStatefulTextInput className="nx-text-input--long"/>
       </NxFormGroup>
-      <NxFieldset label="Colors">
+      <NxFieldset label="Colors" isRequired>
         <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
         <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
         <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
@@ -96,7 +96,7 @@ export default function NxFormLayoutExample() {
           <option value="option5">Option 5</option>
         </select>
       </NxFormGroup>
-      <NxFieldset label="Enable features">
+      <NxFieldset label="Enable features" isRequired>
         <div className="nx-sub-label">
           In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
         </div>

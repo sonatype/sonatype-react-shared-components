@@ -62,12 +62,12 @@ export default function NxFormLayoutExample() {
           </select>
         </NxFormGroup>
       </div>
-      <NxFieldset label="Colors">
+      <NxFieldset label="Colors" isRequired>
         <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
         <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
         <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
       </NxFieldset>
-      <NxFieldset label="Primary Color">
+      <NxFieldset label="Primary Color" isRequired>
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
