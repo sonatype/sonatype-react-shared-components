@@ -21,7 +21,7 @@
   @include container-horizontal;
   @extend %nx-btn--disabled;
 
-  background-color: var(--rsc-component-background-color);
+  background-color: $nx-white;
   border: 1px solid $nx-blue-600;
   border-radius: 6px;
   color: $nx-blue-600;
