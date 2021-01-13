@@ -11,6 +11,7 @@ import { faCaretDown, faTrash } from '@fortawesome/free-solid-svg-icons';
 import NxDropdown, { Props } from '../NxDropdown';
 import NxButton from '../../NxButton/NxButton';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 
 describe('NxDropdown', () => {
   const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxDropdown, {
@@ -90,13 +91,19 @@ describe('NxDropdown', () => {
     expect(component).toHaveProp('title', 'title-prop');
   });
 
-  it('appropriately renders children when isOpen is true', function() {
-    const children = (
-      <a id="link1">Link1</a>
-    );
+  it('renders the children within the .nx-dropdown-menu, each wrapped in NxOverflowTooltip', function() {
+    const children = [
+      <a id="link1">Link1</a>,
+      <a id="link2">Link2</a>
+    ];
     const component = getShallowComponent({ children, isOpen: true }),
         menu = component.find('.nx-dropdown-menu');
 
-    expect(menu).toContainReact(children);
+    expect(menu).toMatchElement(
+      <div className="nx-dropdown-menu">
+        <NxOverflowTooltip><a id="link1">Link1</a></NxOverflowTooltip>
+        <NxOverflowTooltip><a id="link2">Link2</a></NxOverflowTooltip>
+      </div>
+    );
   });
 });
