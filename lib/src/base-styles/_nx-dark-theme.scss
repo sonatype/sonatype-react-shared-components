@@ -1,0 +1,40 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@mixin dark-theme {
+  // global CSS variables/custom properties
+  --nx-site-background-color: #{invert($nx-site-background-color)};
+  --nx-component-background-color: #{invert($nx-white)};
+
+  --nx-text-color: #{invert($nx-text-color)};
+  --nx-text-color-stark: #{invert($nx-text-color-dark)};
+  --nx-text-color-disabled: #{invert($nx-text-color-disabled)};
+
+  --nx-interactive-selected-background-color: #{invert($nx-selected-background)};
+  --nx-interactive-active-background-color: #{invert($nx-active-background)};
+  --nx-interactive-hover-background-color: #{invert($nx-hover-background)};
+  --nx-interactive-disabled-background-color: #{invert($nx-disabled-background)};
+  --nx-interactive-disabled-border-color: #{invert($nx-disabled-border)};
+  --nx-interactive-focus-border-color: #{invert($nx-focus-border-color)};
+
+  --nx-border-color: #{invert($nx-grey-3)};
+  --nx-border-color-stark: #{invert($nx-grey-4)};
+  --nx-border-color-starker: #{invert($nx-slate)};
+  --nx-border-color-faded: #{invert($nx-grey-2)};
+  --nx-border-color-very-faded: #{invert($nx-grey-1)};
+
+  --nx-form-field-border-color: #{invert($nx-grey-1100)};
+}
+
+.nx-dark-theme {
+  @include dark-theme;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include dark-theme;
+  }
+}
