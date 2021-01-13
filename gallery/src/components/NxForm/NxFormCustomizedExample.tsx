@@ -6,9 +6,10 @@
  */
 import React, { useState } from 'react';
 
-import { NxForm, NxFormGroup, NxTextInput, NxButton } from '@sonatype/react-shared-components';
+import { NxForm, NxFormGroup, NxTextInput, NxButton, nxTextInputStateHelpers } from '@sonatype/react-shared-components';
 import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
-import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
+
+const { initialState, userInput } = nxTextInputStateHelpers;
 
 export default function NxFormCustomizedExample() {
   const initialFieldState = { username: initialState(''), hostname: initialState('') },

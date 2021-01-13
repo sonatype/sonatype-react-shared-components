@@ -108,23 +108,23 @@ describe('NxTreeView', function() {
       })).toHaveProp('aria-expanded', true);
     });
 
-    it('sets aria-disabled if the disabled prop is set to true or there are no children', function() {
-      expect(getShallowTrigger()).toHaveProp('aria-disabled', true);
-      expect(getShallowTrigger({ disabled: true })).toHaveProp('aria-disabled', true);
-      expect(getShallowTrigger({ disabled: false })).toHaveProp('aria-disabled', true);
-      expect(getShallowTrigger({ disabled: null })).toHaveProp('aria-disabled', true);
-      expect(getShallowTrigger({ disabled: undefined })).toHaveProp('aria-disabled', true);
+    it('sets disabled if the disabled prop is set to true or there are no children', function() {
+      expect(getShallowTrigger()).toHaveProp('disabled', true);
+      expect(getShallowTrigger({ disabled: true })).toHaveProp('disabled', true);
+      expect(getShallowTrigger({ disabled: false })).toHaveProp('disabled', true);
+      expect(getShallowTrigger({ disabled: null })).toHaveProp('disabled', true);
+      expect(getShallowTrigger({ disabled: undefined })).toHaveProp('disabled', true);
 
       expect(getShallowTrigger({
         children: <span>child</span>,
         disabled: true
-      })).toHaveProp('aria-disabled', true);
+      })).toHaveProp('disabled', true);
 
-      expect(getShallowTrigger({ children: <span>child</span> })).toHaveProp('aria-disabled', undefined);
+      expect(getShallowTrigger({ children: <span>child</span> })).toHaveProp('disabled', undefined);
       expect(getShallowTrigger({
         children: <span>child</span>,
         disabled: false
-      })).toHaveProp('aria-disabled', undefined);
+      })).toHaveProp('disabled', undefined);
     });
 
     it('fires the components onToggleCollapse when clicked', function() {

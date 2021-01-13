@@ -4,25 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import * as PropTypes from 'prop-types';
-import { HTMLAttributes } from 'react';
+import { ValidationMap } from 'prop-types';
+import { omit } from 'ramda';
+import { PublicProps as NxTextInputProps, propTypes as nxTextInputPropTypes } from '../NxTextInput/NxTextInput';
 
-export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'|'placeholder'|'className'> & {
-  value: string;
-  onChange?: ((value: string) => void) | null;
-  placeholder?: string | null;
-  className?: string | null;
-  inputId?: string | null;
-  disabled?: boolean | null;
-  list?: string | null;
-};
+export type Props = Omit<NxTextInputProps, 'validatable' | 'isPristine' | 'validationErrors' | 'type'>;
 
-export const propTypes: PropTypes.ValidationMap<Props> = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  className: PropTypes.string,
-  inputId: PropTypes.string,
-  disabled: PropTypes.bool,
-  list: PropTypes.string
-};
+export const propTypes: ValidationMap<Props> =
+    omit(['validatable', 'isPristine', 'validationErrors', 'type'], nxTextInputPropTypes);

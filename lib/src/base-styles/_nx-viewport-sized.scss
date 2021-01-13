@@ -8,7 +8,6 @@
 .nx-viewport-sized {
   display: flex;
   flex-direction: column;
-  overflow-y: hidden;
 }
 
 .nx-viewport-sized__container, .nx-viewport-sized {
@@ -24,11 +23,13 @@
 .nx-viewport-sized__container {
   display: flex;
   flex-direction: column;
+}
+
+.nx-viewport-sized__container, .nx-viewport-sized__scrollable {
   flex: auto;
-  overflow-y: hidden;
+  min-height: 0;
 }
 
 .nx-viewport-sized__scrollable {
-  flex: auto;
   max-height: unset;
 }

@@ -6,8 +6,9 @@
  */
 import React, { useState } from 'react';
 
-import { NxOverflowTooltip, NxTextInput } from '@sonatype/react-shared-components';
-import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
+import { NxOverflowTooltip, NxTextInput, nxTextInputStateHelpers } from '@sonatype/react-shared-components';
+
+const { initialState, userInput } = nxTextInputStateHelpers;
 
 export default function NxOverflowTooltipDynamicExample() {
   const [textState, setTextState] = useState(initialState('Supercalfragulisticexpealidocious'));

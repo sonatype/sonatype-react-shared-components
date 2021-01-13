@@ -17,7 +17,7 @@ $nx-modal-padding: $nx-spacing-l;
   @include container-vertical;
 
   border-radius: $nx-border-radius;
-  background-color: #ffffff;
+  background-color: var(--nx-component-background-color);
   margin: 100px 0;
   padding: $nx-spacing-l 0;
   width: 800px;

@@ -9,6 +9,7 @@ import { shallow } from 'enzyme';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 
 import NxRadio, { Props } from '../NxRadio';
+import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 
 describe('NxRadio', function() {
   const simpleProps: Props = {
@@ -111,6 +112,31 @@ describe('NxRadio', function() {
     it('does not render the .nx-radio__content element if there are no children', function() {
       expect(getShallow()).not.toContainMatchingElement('.nx-radio__content');
     });
+
+    it('wraps the .nx-radio__content element in an NxOverflowTooltip unless overflowTooltip is set to false',
+        function() {
+          expect(getShallow()).not.toContainMatchingElement(NxOverflowTooltip);
+
+          expect(getShallow({ children: <div/> })).toContainMatchingElement(NxOverflowTooltip);
+          expect(getShallow({ children: <div/> }).find(NxOverflowTooltip))
+              .toContainMatchingElement('.nx-radio__content');
+
+          expect(getShallow({ children: <div/>, overflowTooltip: true }))
+              .toContainMatchingElement(NxOverflowTooltip);
+          expect(getShallow({ children: <div/>, overflowTooltip: true }).find(NxOverflowTooltip))
+              .toContainMatchingElement('.nx-radio__content');
+
+          expect(getShallow({ children: <div/>, overflowTooltip: null }))
+              .toContainMatchingElement(NxOverflowTooltip);
+          expect(getShallow({ children: <div/>, overflowTooltip: null }).find(NxOverflowTooltip))
+              .toContainMatchingElement('.nx-radio__content');
+
+          expect(getShallow({ children: <div/>, overflowTooltip: false }))
+              .not.toContainMatchingElement(NxOverflowTooltip);
+          expect(getShallow({ children: <div/>, overflowTooltip: false }))
+              .toContainMatchingElement('.nx-radio__content');
+        }
+    );
   });
 
   it('calls its onChange prop with value argument when the input fires a change event', function() {

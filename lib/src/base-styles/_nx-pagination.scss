@@ -24,6 +24,12 @@
       vertical-align: -0.2em;
     }
   }
+
+  &:focus {
+    box-shadow: $nx-focus-box-shadow;
+    outline: 1px solid $nx-focus-border-color;
+    outline-offset: -1px;
+  }
 }
 
 .nx-btn--pagination {
@@ -47,7 +53,7 @@
   &.selected {
     background-color: #232c50;
     border-color: #232c50;
-    color: #fff;
+    color: var(--nx-component-background-color);
     cursor: default;
   }
 }

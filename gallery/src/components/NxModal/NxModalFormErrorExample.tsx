@@ -4,11 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-import {NxModal, NxFontAwesomeIcon, NxTextInput, NxLoadError, NxButton} from '@sonatype/react-shared-components';
-import {faAngry} from '@fortawesome/free-solid-svg-icons';
-import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
+import { NxModal, NxFontAwesomeIcon, NxTextInput, NxLoadError, NxButton, nxTextInputStateHelpers, NxFormGroup }
+  from '@sonatype/react-shared-components';
+import { faAngry } from '@fortawesome/free-solid-svg-icons';
+
+const { initialState, userInput } = nxTextInputStateHelpers;
 
 export default function NxModalFormErrorExample() {
   const [showModal, setShowModal] = useState(false);
@@ -36,18 +38,16 @@ export default function NxModalFormErrorExample() {
               </h2>
             </header>
             <div className="nx-modal-content">
-              <div className="nx-form-group">
-                <label className="nx-label">
-                  <span className="nx-label__text">Username</span>
-                  <NxTextInput { ...textFieldState } onChange={onChange} />
-                </label>
-              </div>
-              <div className="nx-form-group">
-                <label className="nx-label">
-                  <span className="nx-label__text">Password</span>
-                  <NxTextInput type="password" placeholder="Enter password" onChange={onChange} { ...textFieldState }/>
-                </label>
-              </div>
+              <NxFormGroup label="Username" isRequired>
+                <NxTextInput { ...textFieldState } onChange={onChange} aria-required={true} />
+              </NxFormGroup>
+              <NxFormGroup label="Password" isRequired>
+                <NxTextInput type="password"
+                             aria-required={true}
+                             placeholder="Enter password"
+                             onChange={onChange}
+                             { ...textFieldState }/>
+              </NxFormGroup>
             </div>
             <footer className="nx-footer">
               <NxLoadError { ...({ error, retryHandler }) } onClick={modalCloseHandler} />

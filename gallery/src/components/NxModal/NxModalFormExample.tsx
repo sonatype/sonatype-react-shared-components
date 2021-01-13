@@ -6,7 +6,8 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxFontAwesomeIcon, NxButton, NxStatefulTextInput} from '@sonatype/react-shared-components';
+import {NxModal, NxFontAwesomeIcon, NxButton, NxStatefulTextInput, NxFormGroup}
+  from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
 export default function NxModalFormExample() {
@@ -26,18 +27,12 @@ export default function NxModalFormExample() {
               </h2>
             </header>
             <div className="nx-modal-content">
-              <div className="nx-form-group">
-                <label className="nx-label">
-                  <span className="nx-label__text">Username</span>
-                  <NxStatefulTextInput aria-require={true} placeholder="Username"/>
-                </label>
-              </div>
-              <div className="nx-form-group">
-                <label className="nx-label">
-                  <span className="nx-label__text">Password</span>
-                  <NxStatefulTextInput type="password" aria-require={true} placeholder="Password"/>
-                </label>
-              </div>
+              <NxFormGroup label="Username" isRequired>
+                <NxStatefulTextInput aria-required={true} placeholder="Username"/>
+              </NxFormGroup>
+              <NxFormGroup label="Password" isRequired>
+                <NxStatefulTextInput type="password" aria-required={true} placeholder="Password"/>
+              </NxFormGroup>
             </div>
             <footer className="nx-footer">
               <div className="nx-btn-bar">

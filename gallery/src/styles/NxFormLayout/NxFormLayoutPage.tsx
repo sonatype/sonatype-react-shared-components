@@ -48,7 +48,10 @@ const NxFormLayoutPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-form-group</code></td>
             <td className="nx-cell">Element</td>
-            <td className="nx-cell">Basic container for form elements.</td>
+            <td className="nx-cell">
+              Basic container for form elements. Typically it is best to use
+              the <code className="nx-code">NxFormGroup</code> react component instead of using this class directly.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-form-row</code></td>
@@ -66,7 +69,8 @@ const NxFormLayoutPage = () =>
               wrapped around the form field and sublabel, or precede them and use
               the <code className="nx-code">for</code> attribute (<code className="nx-code">htmlFor</code> is react).
               When the sublabel is present, the label <em>should</em> be set up as a
-              preceding element for accessibility reasons.
+              preceding element for accessibility reasons. Using the <code className="nx-code">NxFormGroup</code>
+              react component handles all of this for you and is recommended.
             </td>
           </tr>
           <tr className="nx-table-row">
