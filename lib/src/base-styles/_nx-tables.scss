@@ -147,7 +147,7 @@
 .nx-table-container__footer {
   @include container-vertical;
 
-  background-color: #fff;
+  background-color: var(--nx-component-background-color);
   border-top: 1px solid #d1d6f0;
   margin-top: auto;
   padding: $nx-table-footer-vertical-padding;
@@ -234,7 +234,7 @@
 }
 
 .nx-table-row--filter-header > .nx-cell--header {
-  background-color: #ffffff;
+  background-color: var(--nx-component-background-color);
   border-bottom: 1px solid #d1d6f0;
 }
 
