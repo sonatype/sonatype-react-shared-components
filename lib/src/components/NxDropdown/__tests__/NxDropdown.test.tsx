@@ -93,16 +93,16 @@ describe('NxDropdown', () => {
 
   it('renders the children within the .nx-dropdown-menu, each wrapped in NxOverflowTooltip', function() {
     const children = [
-      <a id="link1">Link1</a>,
-      <a id="link2">Link2</a>
+      <a id="link1" key="1">Link1</a>,
+      <a id="link2" key="2">Link2</a>
     ];
     const component = getShallowComponent({ children, isOpen: true }),
         menu = component.find('.nx-dropdown-menu');
 
     expect(menu).toMatchElement(
       <div className="nx-dropdown-menu">
-        <NxOverflowTooltip><a id="link1">Link1</a></NxOverflowTooltip>
-        <NxOverflowTooltip><a id="link2">Link2</a></NxOverflowTooltip>
+        <NxOverflowTooltip><a id="link1" key="1">Link1</a></NxOverflowTooltip>
+        <NxOverflowTooltip><a id="link2" key="2">Link2</a></NxOverflowTooltip>
       </div>
     );
   });
