@@ -198,7 +198,7 @@ export default function NxTablePage() {
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;th&gt;</code> or
             {' '}<code className="nx-code">&lt;td&gt;</code> element. This component can
-            receive any prop that would be valid on a <code className="nx-code">&lt;td&gt;</code> as well as the
+            receive any attribute that would be valid on a <code className="nx-code">&lt;td&gt;</code> as well as the
             following:
           </p>
 
