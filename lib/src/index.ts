@@ -180,3 +180,5 @@ export { default as NxFieldset, Props as NxFieldsetProps } from './components/Nx
 export { default as NxToggle, Props as NxToggleProps } from './components/NxToggle/NxToggle';
 export { default as NxStatefulToggle, Props as NxStatefulToggleProps }
   from './components/NxToggle/stateful/NxStatefulToggle';
+
+export { default as NxTag, Props as NxTagProps } from './components/NxTag/NxTag';

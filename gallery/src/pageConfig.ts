@@ -90,6 +90,7 @@ import NxTogglePage from './components/NxToggle/NxTogglePage';
 import NxStatefulTogglePage from './components/NxStatefulToggle/NxStatefulTogglePage';
 import NxBlockquotePage from './styles/NxBlockquote/NxBlockquotePage';
 import NxPrePage from './styles/NxPre/NxPrePage';
+import NxTagPage from './components/NxTag/NxTagPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -126,6 +127,7 @@ const pageConfig: PageConfig = {
     NxTable: NxTablePage,
     NxTabs: NxTabsPage,
     NxStatefulTabs: NxStatefulTabsPage,
+    NxTag: NxTagPage,
     NxTextInput: NxTextInputPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatIndicator: NxThreatIndicatorPage,
