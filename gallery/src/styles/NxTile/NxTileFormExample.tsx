@@ -6,7 +6,7 @@
  */
 import React, { FormEvent } from 'react';
 
-import { NxStatefulTextInput, NxButton } from '@sonatype/react-shared-components';
+import { NxStatefulTextInput, NxButton, NxFormGroup } from '@sonatype/react-shared-components';
 
 export default function NxTileFormExample() {
   function validator(val: string) {
@@ -27,18 +27,12 @@ export default function NxTileFormExample() {
           </div>
         </header>
         <div className="nx-tile-content">
-          <div className="nx-form-group">
-            <label className="nx-label">
-              <span className="nx-label__text">Username</span>
-              <NxStatefulTextInput aria-required={true} validator={validator}/>
-            </label>
-          </div>
-          <div className="nx-form-group">
-            <label className="nx-label nx-label--optional">
-              <span className="nx-label__text">Hostname</span>
-              <NxStatefulTextInput/>
-            </label>
-          </div>
+          <NxFormGroup label="Username" isRequired>
+            <NxStatefulTextInput aria-required={true} validator={validator}/>
+          </NxFormGroup>
+          <NxFormGroup label="Hostname">
+            <NxStatefulTextInput/>
+          </NxFormGroup>
         </div>
         <footer className="nx-footer">
           <div className="nx-btn-bar">
