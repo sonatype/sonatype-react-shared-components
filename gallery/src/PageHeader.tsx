@@ -15,7 +15,7 @@ function PageHeader() {
     version: packageJson.version
   };
 
-  const [darkMode, setDarkMode] = useState((window.localStorage.getItem('darkMode') === 'true') || false);
+  const [darkMode, setDarkMode] = useState(window.localStorage.getItem('darkMode') === 'true');
 
   useEffect(function() {
     document.body.classList.toggle('nx-dark-theme', darkMode);
