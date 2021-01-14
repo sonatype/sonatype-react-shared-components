@@ -36,8 +36,8 @@ const NxAccordionPage = () =>
           <h3 className="nx-h3">NxAccordion</h3>
         </header>
         <p className="nx-p">
-          In addition to all standard HTML <code className="nx-code">&lt;details&gt;</code> props,{' '}
-          <code className="nx-code">NxAccordion</code> can receive the following:
+          In addition to all standard HTML <code className="nx-code">&lt;details&gt;</code> attributes,{' '}
+          <code className="nx-code">NxAccordion</code> can receive the following props:
         </p>
         <NxTable>
           <NxTableHead>
@@ -77,7 +77,7 @@ const NxAccordionPage = () =>
         </header>
         <p className="nx-p">
           <code className="nx-code">NxAccordion.Header</code> can receive standard
-          HTML <code className="nx-code">&lt;summary&gt;</code> props.
+          HTML <code className="nx-code">&lt;summary&gt;</code> attributes.
         </p>
       </section>
       <section className="nx-tile-subsection">

@@ -67,7 +67,7 @@ export default function NxTablePage() {
           <p className="nx-p">
             The top-level component to use when displaying tables of data.
             It can have <code className="nx-code">NxTableHead</code> and
-            {' '}<code className="nx-code">NxTableBody</code> components as children. It can receive any prop
+            {' '}<code className="nx-code">NxTableBody</code> components as children. It can receive any attribute
             that would be valid on a <code className="nx-code">&lt;table&gt;</code>.
           </p>
         </section>
@@ -79,7 +79,7 @@ export default function NxTablePage() {
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;thead&gt;</code> element.
             The <code className="nx-code">NxTableRow</code> component is the only valid child. This component can
-            receive any prop that would be valid on a <code className="nx-code">&lt;thead&gt;</code>.
+            receive any attribute that would be valid on a <code className="nx-code">&lt;thead&gt;</code>.
           </p>
         </section>
 
@@ -90,8 +90,8 @@ export default function NxTablePage() {
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;tbody&gt;</code> element.
             It should have <code className="nx-code">NxTableRow</code> for children. This component can
-            receive any prop that would be valid on a <code className="nx-code">&lt;tbody&gt;</code> as well as the
-            following:
+            receive any attribute that would be valid on a <code className="nx-code">&lt;tbody&gt;</code> as well as the
+            following props:
           </p>
           <NxTable>
             <NxTableHead>
@@ -146,8 +146,8 @@ export default function NxTablePage() {
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;tr&gt;</code> element.
             It should have <code className="nx-code">NxTableCell</code> for children. This component can
-            receive any prop that would be valid on a <code className="nx-code">&lt;tr&gt;</code> as well as the
-            following:
+            receive any attribute that would be valid on a <code className="nx-code">&lt;tr&gt;</code> as well as the
+            following props:
           </p>
           <NxTable>
             <NxTableHead>

@@ -43,7 +43,7 @@ export default function NxTabsPage() {
             The top-level container for tabbed navigation.
             It can have <code className="nx-code">&lt;NxTabList&gt;</code> and
             {' '}<code className="nx-code">&lt;NxTabPanel&gt;</code> components as children.
-            Support native <code className="nx-code">&lt;div&gt;</code> props as well as the following:
+            Support native <code className="nx-code">&lt;div&gt;</code> attributes as well as the following props:
           </p>
 
           <NxTable className="nx-table--gallery-props">

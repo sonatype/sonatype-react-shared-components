@@ -31,7 +31,7 @@ export default function NxButtonPage() {
           <code className="nx-code">NxButton</code> is a react wrapper around
           HTML <code className="nx-code">&lt;button&gt;</code> elements using
           the <code className="nx-code">.nx-btn</code> CSS class. It accepts
-          any <code className="nx-code">&lt;button&gt;</code> prop as well as the following:
+          any <code className="nx-code">&lt;button&gt;</code> attribute as well as the following props:
         </p>
         <NxTable>
           <NxTableHead>

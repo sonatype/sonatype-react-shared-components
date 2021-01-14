@@ -20,8 +20,8 @@ const NxRadioPage = () =>
       <p className="nx-p">Custom Radio input.</p>
       <p className="nx-p">Child VDOM will be used as a label following the radio button itself.</p>
       <p className="nx-p">
-        NxRadio can receive any prop that would be valid on an
-        HTML <code className="nx-code">&lt;label&gt;</code> as well as the following:
+        NxRadio can receive any attribute that would be valid on an
+        HTML <code className="nx-code">&lt;label&gt;</code> as well as the following props:
       </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
