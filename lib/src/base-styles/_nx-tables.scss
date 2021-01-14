@@ -6,6 +6,7 @@
  */
 
 .nx-table {
+  background-color: var(--rsc-component-background-color);
   border-spacing: 0;
   border: 1px solid #d1d6f0;
   border-radius: $nx-border-radius;
@@ -94,6 +95,7 @@
 }
 
 .nx-table-container {
+  background-color: var(--rsc-component-background-color);
   border: 1px solid #d1d6f0;
   border-radius: $nx-border-radius;
   box-sizing: content-box;
