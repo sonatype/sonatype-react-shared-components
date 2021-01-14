@@ -15,10 +15,11 @@ function PageHeader() {
     version: packageJson.version
   };
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState((window.localStorage.getItem('darkMode') === 'true') || false);
 
   useEffect(function() {
     document.body.classList.toggle('nx-dark-theme', darkMode);
+    window.localStorage.setItem('darkMode', darkMode.toString());
   }, [darkMode]);
 
   return (
