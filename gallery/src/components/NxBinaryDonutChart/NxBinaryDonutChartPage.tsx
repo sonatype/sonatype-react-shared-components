@@ -60,6 +60,21 @@ const NxBinaryDonutChartPage = () =>
               a presentational element.
             </td>
           </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">SVG <code className="nx-code">&lt;svg&gt;</code> Attributes</td>
+            <td className="nx-cell">
+              <a target="_blank"
+                 rel="noopener"
+                 href="https://developer.mozilla.org/en/docs/Web/SVG/Element/svg">
+                SVG Attributes
+              </a>
+            </td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              NxBinaryDonutChart supports any SVG attribute that's normally supported
+              by <code className="nx-code">&lt;svg&gt;</code>.
+            </td>
+          </tr>
         </tbody>
       </table>
     </GalleryDescriptionTile>
