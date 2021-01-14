@@ -19,11 +19,11 @@
       cursor: default;
 
       .nx-toggle__control {
-        background-color: $nx-grey-200;
-        border-color: $nx-grey-500;
+        background-color: var(--nx-interactive-disabled-background-color);
+        border-color: var(--nx-interactive-disabled-border-color);
       }
       .nx-toggle__indicator {
-        background-color: $nx-grey-500;
+        background-color: var(--nx-interactive-disabled-border-color);
       }
     }
   }
@@ -59,7 +59,7 @@
       background-color: $nx-blue-600;
 
       .nx-toggle__indicator {
-        background-color: #fff;
+        background-color: var(--nx-form-field-background-color);
         margin-left: 20px;
       }
     }
@@ -71,7 +71,7 @@
 }
 
 .nx-toggle__control {
-  background-color: #fff;
+  background-color: var(--nx-form-field-background-color);
   border: 1px solid $nx-blue-600;
   border-radius: 12px;
   box-sizing: border-box;
