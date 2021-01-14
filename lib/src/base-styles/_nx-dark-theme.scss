@@ -32,6 +32,14 @@
   --nx-page-header-border-color: #{invert($nx-grey-100)};
 
   --nx-code-background-color: #{invert($nx-grey-1)};
+
+  .nx-product__logo-image {
+    display: none;
+  }
+
+  .nx-product__logo-image--light-text {
+    display: revert;
+  }
 }
 
 .nx-dark-theme {

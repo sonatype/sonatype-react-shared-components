@@ -103,6 +103,10 @@ $main-header-product-version-row-height: 1fr;
   margin-top: 13px; // fix vertical centering
 }
 
+.nx-product__logo-image--light-text {
+  display: none;
+}
+
 .nx-product__name {
   display: inline-block;
   font-size: 26px;
