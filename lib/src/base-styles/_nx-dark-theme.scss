@@ -27,6 +27,11 @@
   --nx-border-color-very-faded: #{invert($nx-grey-1)};
 
   --nx-form-field-border-color: #{invert($nx-grey-1100)};
+
+  --nx-page-header-background-color: #{invert($nx-off-white)};
+  --nx-page-header-border-color: #{invert($nx-grey-100)};
+
+  --nx-code-background-color: #{invert($nx-grey-1)};
 }
 
 .nx-dark-theme {

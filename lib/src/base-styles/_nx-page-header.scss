@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-$main-header-background: $nx-off-white;
 $main-header-color: $nx-off-black;
 $main-header-product-height: 52px;
 $main-header-product-title-row-height: 2fr;
@@ -18,8 +17,8 @@ $main-header-product-version-row-height: 1fr;
 .nx-page-header {
   box-sizing: content-box;
 
-  background-color: $main-header-background;
-  border-bottom: 1px solid $nx-header-border;
+  background-color: var(--nx-page-header-background-color);
+  border-bottom: 1px solid var(--nx-page-header-border-color);
   flex-shrink: 0; // needed for IE11
   height: $nx-main-header-height;
   width: 100%;
@@ -46,7 +45,6 @@ $main-header-product-version-row-height: 1fr;
 .nx-page-header__link {
   border-bottom: 2px solid transparent;
 
-  color: #515151;
   display: inline-block;
   font-size: $nx-font-size-s;
   margin-right: $nx-spacing-l;
