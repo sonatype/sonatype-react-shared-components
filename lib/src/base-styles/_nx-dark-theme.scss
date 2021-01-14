@@ -8,9 +8,11 @@
   // global CSS variables/custom properties
   --nx-site-background-color: #{invert($nx-site-background-color)};
   --nx-component-background-color: #{invert($nx-white)};
+  --nx-form-field-background-color: var(--nx-component-background-color);
 
   --nx-text-color: #{invert($nx-text-color)};
   --nx-text-color-stark: #{invert($nx-text-color-dark)};
+  --nx-heading-color: var(--nx-text-color-stark);
   --nx-text-color-disabled: #{invert($nx-text-color-disabled)};
 
   --nx-interactive-selected-background-color: #{invert($nx-selected-background)};
