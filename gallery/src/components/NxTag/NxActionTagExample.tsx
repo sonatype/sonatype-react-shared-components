@@ -5,12 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTag } from '@sonatype/react-shared-components';
+import { NxActionTag } from '@sonatype/react-shared-components';
 
-function NxTagExample() {
+function NxActionTagExample() {
   return (
-    <NxTag>Leafspring</NxTag>
+    <NxActionTag>Leafspring</NxActionTag>
   );
 }
 
-export default NxTagExample;
+export default NxActionTagExample;

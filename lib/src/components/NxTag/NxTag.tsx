@@ -8,16 +8,20 @@ import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 
 import './NxTag.scss';
+import Close from '../../icons/Close';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
 const NxTag = forwardRef<HTMLDivElement, Props>(
-    function NxTag({ children, ...attrs }, ref) {
-      const tagClasses = classnames('nx-tag');
+    function NxTag(props, ref) {
+      const { children, ...attrs } = props,
+          tagClasses = classnames('nx-tag');
 
       return (
         <div className={tagClasses} ref={ref} {...attrs}>
-          {children}
+          <div className="nx-tag__text">
+            {children}
+          </div>
         </div>
       );
     }
@@ -25,3 +29,23 @@ const NxTag = forwardRef<HTMLDivElement, Props>(
 
 NxTag.propTypes = propTypes;
 export default NxTag;
+
+export const NxActionTag = forwardRef<HTMLDivElement, Props>(
+    function NxActionTag(props, ref) {
+      const { children, ...attrs } = props,
+          tagClasses = classnames('nx-tag');
+
+      return (
+        <div className={tagClasses} ref={ref} {...attrs}>
+          <div className="nx-tag__text">
+            {children}
+          </div>
+          <div className="nx-tag__actions">
+            <Close />
+          </div>
+        </div>
+      );
+    }
+);
+
+NxTag.propTypes = propTypes;

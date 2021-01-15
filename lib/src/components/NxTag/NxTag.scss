@@ -9,8 +9,31 @@
  @import '../../scss-shared/nx-container-helpers';
 
 .nx-tag {
-  background-color: $nx-grey-300;
-  border-radius: $nx-border-radius;
+  align-items: center;
+  background-color: $nx-grey-900;
+  border-radius: 16px;
   color: $nx-white;
+  display: inline-flex;
   font-size: $nx-font-size-s;
+  margin: 0 $nx-spacing-xs $nx-spacing-xs 0;
+  padding: 5px $nx-spacing-xs 6px $nx-spacing-md;
+}
+
+.nx-tag__text {
+  padding-right: $nx-spacing-xs;
+}
+
+.nx-tag--purple {
+  background-color: #d584ff;
+}
+
+.nx-tag__actions {
+  background-color: $nx-white;
+  border-radius: $nx-border-radius;
+  width: 16px;
+
+  .nx-icon {
+    color: #474747;
+    font-size: $nx-font-size-s;
+  }
 }
