@@ -6,7 +6,9 @@
  */
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import './NxTag.scss';
 import Close from '../../icons/Close';
 import { Props, propTypes } from './types';
@@ -41,7 +43,9 @@ export const NxActionTag = forwardRef<HTMLDivElement, Props>(
             {children}
           </div>
           <div className="nx-tag__actions">
-            <Close />
+            <div className="nx-tag__action">
+              <NxFontAwesomeIcon icon={faTimesCircle} />
+            </div>
           </div>
         </div>
       );

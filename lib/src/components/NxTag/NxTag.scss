@@ -28,12 +28,12 @@
 }
 
 .nx-tag__actions {
-  background-color: $nx-white;
-  border-radius: $nx-border-radius;
-  width: 16px;
+  @include container-horizontal;
+  align-items: center;
+  justify-items: right;
+  margin-left: $nx-spacing-xs;
+}
 
-  .nx-icon {
-    color: #474747;
-    font-size: $nx-font-size-s;
-  }
+.nx-tag__action {
+  @include container-horizontal;
 }
