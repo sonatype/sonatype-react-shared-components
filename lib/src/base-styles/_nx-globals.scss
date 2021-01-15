@@ -75,3 +75,8 @@ $nx-scrollable-default-height: 400px;
 .nx-blockquote {
   @extend %nx-blockquote;
 }
+
+:root {
+  // global CSS variables/custom properties
+  --nx-component-background-color: #{$nx-white};
+}

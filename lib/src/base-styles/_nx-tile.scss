@@ -7,7 +7,6 @@
 
 $nx-tile-header-height: 24px; // Minimum height
 $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right actions
-$nx-tile-background-color: $nx-white;
 
 // the "padding" around the inside edge of the nx-tile, which must be implemented using padding/margin
 // on children since nx-tile-content--accordion-container is supposed to go all the way to the edges
@@ -22,7 +21,7 @@ $nx-tile-padding: $nx-spacing-l;
 .nx-tile {
   @include container-vertical;
 
-  background-color: $nx-tile-background-color;
+  background-color: var(--nx-component-background-color);
   border-radius: $nx-border-radius;
   margin: $nx-spacing-xs 0 $nx-spacing-md 0;
 
