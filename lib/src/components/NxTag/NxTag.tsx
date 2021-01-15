@@ -12,7 +12,7 @@ import { Props, propTypes } from './types';
 export { Props } from './types';
 
 const NxTag = forwardRef<HTMLDivElement, Props>(
-  function NxTag({ children }, ref) {
+    function NxTag({ children }, ref) {
       const tagClasses = classnames('nx-tag');
 
       return (
