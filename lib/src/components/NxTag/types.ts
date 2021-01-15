@@ -7,9 +7,9 @@
 import * as PropTypes from 'prop-types';
 
 export interface Props {
-  text: string | null;
+  canClose?: boolean | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  text: PropTypes.string
+  canClose: PropTypes.bool
 };

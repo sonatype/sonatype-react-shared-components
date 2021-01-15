@@ -4,29 +4,23 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import classnames from 'classnames';
-import * as PropTypes from 'prop-types';
+
 import './NxTag.scss';
+import { Props, propTypes } from './types';
+export { Props } from './types';
 
-// import NxCloseButton from '../NxCloseButton/NxCloseButton';
+const NxTag = forwardRef<HTMLDivElement, Props>(
+  function NxTag({ children }, ref) {
+      const tagClasses = classnames('nx-tag');
 
-const NxTag = (
-  function NxTag(props) {
-    const { className, text } = props,
-        classes = classnames('nx-tag', className);
-
-    return (
-      <div className={classes} aria-atomic={true}>
-        <div className="nx-tag__content">{text}</div>
-        {/* { onClose && <NxCloseButton onClick={onClose} /> } */}
-      </div>
-    );
-  }
+      return (
+        <div className={tagClasses} ref={ref}>{children}</div>
+      );
+    }
 );
 
-NxTag.propTypes = {
-  className: PropTypes.string,
-  text: PropTypes.string
-};
+NxTag.propTypes = propTypes;
+
 export default NxTag;
