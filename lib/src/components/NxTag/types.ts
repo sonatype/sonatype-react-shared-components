@@ -5,11 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
+import { HTMLAttributes, WeakValidationMap } from 'react';
 
-export interface Props {
+export interface Props extends HTMLAttributes<HTMLDivElement> {
   canClose?: boolean | null;
+  children: string;
 }
 
-export const propTypes: PropTypes.ValidationMap<Props> = {
-  canClose: PropTypes.bool
+export const propTypes: WeakValidationMap<Props> = {
+  canClose: PropTypes.bool,
+  children: PropTypes.string
 };

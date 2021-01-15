@@ -12,15 +12,16 @@ import { Props, propTypes } from './types';
 export { Props } from './types';
 
 const NxTag = forwardRef<HTMLDivElement, Props>(
-    function NxTag({ children }, ref) {
+    function NxTag({ children, ...attrs }, ref) {
       const tagClasses = classnames('nx-tag');
 
       return (
-        <div className={tagClasses} ref={ref}>{children}</div>
+        <div className={tagClasses} ref={ref} {...attrs}>
+          {children}
+        </div>
       );
     }
 );
 
 NxTag.propTypes = propTypes;
-
 export default NxTag;
