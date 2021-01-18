@@ -15,6 +15,12 @@
 // as an example of the syntax
 //@import '~normalize.css';
 
+// Within the base styles, the scss-shared content should only be imported once - right here
+@import '../scss-shared/nx-variables';
+@import '../scss-shared/nx-container-helpers';
+@import '../scss-shared/nx-text-helpers';
+@import '../scss-shared/nx-flexbox-helpers';
+
 @import 'nx-globals';
 @import 'nx-typography';
 
