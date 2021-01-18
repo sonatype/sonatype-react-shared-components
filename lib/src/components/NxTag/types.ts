@@ -4,15 +4,18 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import {ReactNode, WeakValidationMap} from 'react';
 import * as PropTypes from 'prop-types';
-import { HTMLAttributes, WeakValidationMap } from 'react';
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {
-  canClose?: boolean | null;
-  children: string;
+export interface Props {
+  onTagSelect?: (() => void) | null;
+  tagSelected?: boolean;
+  children: ReactNode;
+  className?: string | null;
 }
-
 export const propTypes: WeakValidationMap<Props> = {
-  canClose: PropTypes.bool,
-  children: PropTypes.string
+  onTagSelect: PropTypes.func,
+  tagSelected: PropTypes.bool,
+  children: PropTypes.string,
+  className: PropTypes.string
 };
