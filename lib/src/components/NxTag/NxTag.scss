@@ -10,21 +10,23 @@
 
 .nx-tag {
   align-items: center;
-  background-color: $nx-grey-900;
+  background-color: $nx-grey-300;
+  border: 1px solid $nx-grey-900;
   border-radius: 16px;
-  color: $nx-white;
+  color: $nx-black;
   display: inline-flex;
   font-size: $nx-font-size-s;
   margin: 0 $nx-spacing-xs $nx-spacing-xs 0;
   padding: 5px $nx-spacing-xs 6px $nx-spacing-md;
+
+  &.selected {
+    background-color: $nx-grey-900;
+    color: $nx-white;
+  }
 }
 
 .nx-tag__text {
   padding-right: $nx-spacing-xs;
-}
-
-.nx-tag--purple {
-  background-color: #d584ff;
 }
 
 .nx-tag__actions {
@@ -36,4 +38,96 @@
 
 .nx-tag__action {
   @include container-horizontal;
+}
+
+.nx-tag {
+  .nx-tag--purple {
+    background-color: #f3dcff;
+    border-color: #d584ff;
+
+    .selected {
+      background-color: #d584ff;
+    }
+  }
+
+  .nx-tag--pink {
+    background-color: #ffdbf0;
+    border-color: #ff90d1;
+
+    .selected {
+      background-color: #ff90d1;
+    }
+  }
+
+  .nx-tag--blue {
+    background-color: #b5eaff;
+    border-color: #00a1e2;
+
+    .selected {
+      background-color: #00a1e2;
+    }
+  }
+
+  .nx-tag--light-blue {
+    background-color: #f0f6ff;
+    border-color: #d3e6ff;
+
+    .selected {
+      background-color: #d3e6ff;
+    }
+  }
+
+  .nx-tag--red {
+    background-color: #ffd7d8;
+    border-color: #ff8286;
+
+    .selected {
+      background-color: #ff8286;
+    }
+  }
+
+  .nx-tag--green {
+    background-color: #befffa;
+    border-color: #21c3b7;
+
+    .selected {
+      background-color: #21c3b7;
+    }
+  }
+
+  .nx-tag--orange {
+    background-color: #ffe4c7;
+    border-color: #fe9522;
+
+    .selected {
+      background-color: #fe9522;
+    }
+  }
+
+  .nx-tag--yellow {
+    background-color: #ffeab7;
+    border-color: #ffbf27;
+
+    .selected {
+      background-color: #ffbf27;
+    }
+  }
+
+  .nx-tag--lime {
+    background-color: #f2ffec;
+    border-color: #b2f795;
+
+    .selected {
+      background-color: #b2f795;
+    }
+  }
+
+  .nx-tag--indigo {
+    background-color: #eef0ff;
+    border-color: #919fe8;
+
+    .selected {
+      background-color: #919fe8;
+    }
+  }
 }
