@@ -41,7 +41,7 @@ of RSC styles is available in CSS form within the `react-shared-components.css` 
 
 RSC uses JavaScript imports (both ES6-style and commonjs-style) to refer to certain non-JavaScript files, so consuming
 bundlers must be configured to handle those imports. In webpack, this would typically be accomplished by including the
-sass-loader (and its related loaders) and the file-loader. See the configuration in the Gallery's webpack.config.js
+`sass-loader` (and its related loaders) and the `file-loader`. See the configuration in the `gallery/webpack.config.js`
 for a detailed, working example.
 
 ## Contributing
