@@ -9,7 +9,7 @@ import { NxTag } from '@sonatype/react-shared-components';
 
 function NxTagExample() {
   return (
-    <div>
+    <div className="test-nx-tag">
       <NxTag>Default</NxTag>
       <NxTag tagColor="purple">Purple</NxTag>
       <NxTag tagColor="pink">Pink</NxTag>

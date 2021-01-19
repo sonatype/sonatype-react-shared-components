@@ -50,12 +50,14 @@ const NxTagPage = () =>
       </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Tag Example"
+                        id="nx-tag-example"
                         liveExample={NxTagExample}
                         codeExamples={NxTagExampleCode}>
       Basic tags in all available colors.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Selectable NxTags Example"
+                        id="nx-selectable-tag-example"
                         liveExample={NxSelectableTagExample}
                         codeExamples={NxSelectableTagExampleCode}>
       Selectable tags in all available colors.
