@@ -152,6 +152,11 @@ export {
 } from './components/NxBinaryDonutChart/NxBinaryDonutChart';
 
 export {
+  default as NxDonutChart,
+  Props as NxDonutChartProps
+} from './components/NxDonutChart/NxDonutChart';
+
+export {
   default as NxAccordion,
   Props as NxAccordionProps,
   HeaderProps as NxAccordionHeaderProps

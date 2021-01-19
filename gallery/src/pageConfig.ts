@@ -74,6 +74,7 @@ import NxPaginationPage from './components/NxPagination/NxPaginationPage';
 import NxIndeterminatePaginationPage
   from './components/NxIndeterminatePagination/NxIndeterminatePaginationPage';
 import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
+import NxDonutChartPage from './components/NxDonutChart/NxDonutChartPage';
 import NxNexusPageHeaderPage from './components/NxNexusPageHeader/NxNexusPageHeaderPage';
 import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
@@ -99,6 +100,7 @@ const pageConfig: PageConfig = {
     NxStatefulAlert: NxStatefulAlertComponentsPage,
     NxBackButton: NxBackButtonPage,
     NxBinaryDonutChart: NxBinaryDonutChartPage,
+    NxDonutChart: NxDonutChartPage,
     NxButton: NxButtonPage,
     NxCheckbox: NxCheckboxPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
