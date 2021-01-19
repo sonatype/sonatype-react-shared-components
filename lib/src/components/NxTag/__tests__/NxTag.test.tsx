@@ -9,12 +9,12 @@ import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxSelectableTag from '../NxTag';
 
 describe('NxSelectableTag', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxSelectableTag, {});
+  const getShallowComponent = enzymeUtils.getShallowComponent(NxSelectableTag, { children: 'test' });
 
-  it('renders NxSelectableTag with the `nx-selectable-tag` class', function() {
+  it('renders NxSelectableTag with the `nx-tag--selectable` class', function() {
     const component = getShallowComponent();
 
-    expect(component).toHaveClassName('nx-tag nx-tag__selectable');
+    expect(component).toHaveClassName('nx-tag nx-tag--selectable');
   });
 
   it('sets the nx-tag--default class if no color prop is passed', function() {
