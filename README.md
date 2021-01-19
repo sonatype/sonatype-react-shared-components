@@ -149,9 +149,8 @@ The RSC code is split into two separate codebases: the library itself which live
 
 ## Building
 
-### Required software
-Node 10.16.0
-npm 6.7.0
+### Required Software
+Node 10.x or 12.x.  Node 14.x is known not to work currently.
 yarn 1.21.1
 
 ### Installation of Dependencies
