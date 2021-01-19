@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import NxDonutChartMinimalExample from './NxBinaryDonutChartMinimalExample';
+import NxDonutChartMinimalExample from './NxDonutChartMinimalExample';
 
 const nxDonutChartMinimalExampleCode = require('!!raw-loader!./NxDonutChartMinimalExample').default;
 

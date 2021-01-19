@@ -3,11 +3,11 @@
  * "Sonatype" is a trademark of Sonatype, Inc.
  */
 import React, { forwardRef } from 'react';
-import './NxDonutChart.css';
-import {Props} from './types';
+import './NxDonutChart.scss';
+import {Props, propTypes} from './types';
+export { Props } from './types';
 
 import classnames from 'classnames';
-import {propTypes} from '../NxBinaryDonutChart/types';
 
 const INNER_RADIUS_AS_PERCENT = 50; // The radius of the donut hole. Adjust this to change how "thick" the donut is.
 const STROKE_WIDTH = 100 - INNER_RADIUS_AS_PERCENT; // The thickness of the donut.

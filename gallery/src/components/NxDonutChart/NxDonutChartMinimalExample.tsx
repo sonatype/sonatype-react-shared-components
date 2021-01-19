@@ -5,23 +5,23 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import {chartSeverity, NxDonutChartDataPoint} from "../../../../lib/src/components/NxDonutChart/types";
-import {NxDonutChart} from "../../../../lib/src";
+import {chartSeverity, NxDonutChartDataPoint} from '../../../../lib/src/components/NxDonutChart/types';
+import {NxDonutChart} from '../../../../lib/src';
 
 export default function NxDonutChartMinimalExample() {
 
-    const dataPoints: NxDonutChartDataPoint[] = [
-        {
-            value: 50,
-            severity: chartSeverity.CRITICAL,
-            label: "label 1"
-        },
-        {
-            value: 10,
-            severity: chartSeverity.MODERATE,
-            label: "label 2"
-        }
-    ];
+  const dataPoints: NxDonutChartDataPoint[] = [
+    {
+      value: 50,
+      severity: chartSeverity.CRITICAL,
+      label: 'label 1'
+    },
+    {
+      value: 10,
+      severity: chartSeverity.MODERATE,
+      label: 'label 2'
+    }
+  ];
 
   return (
     <>
