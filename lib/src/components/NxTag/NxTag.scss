@@ -9,12 +9,13 @@
  @import '../../scss-shared/nx-container-helpers';
 
 .nx-tag {
+  @include semi-bold();
   align-items: center;
   background-color: #d3e6ff;
   border: 1px solid #d3e6ff;
   border-radius: 16px;
   box-sizing: border-box;
-  color: $nx-black;
+  color: $nx-text-color-dark;
   cursor: default;
   display: inline-flex;
   font-size: $nx-font-size-s;
@@ -89,7 +90,7 @@
 
   &.nx-tag--unselected {
     background-color: $nx-grey-300;
-    color: $nx-text-color;
+    color: $nx-text-color-dark;
   }
 }
 
