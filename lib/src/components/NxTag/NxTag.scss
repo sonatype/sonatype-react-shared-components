@@ -49,6 +49,10 @@
   border-color: $nx-blue-800;
   color: $nx-text-color-dark;
 
+  &:focus {
+    border: 1px solid $nx-focus-border-color;
+  }
+
   .nx-tag__action {
     .nx-icon {
       transform: rotate(-45deg);
