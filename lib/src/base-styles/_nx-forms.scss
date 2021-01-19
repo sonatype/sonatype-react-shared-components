@@ -76,7 +76,6 @@
 
 .nx-sub-label {
   @include container-horizontal;
-  @include semi-bold();
 
   color: $nx-text-color-dark;
   font-size: $nx-font-size-s;
