@@ -5,6 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
+// note: the outer calc call below is just necessary to keep sass from getting confused
+$nx-page-side-padding: calc(max(((100vw - #{$nx-page-width-max}) / 2) + #{$nx-spacing-l}, #{$nx-spacing-l}));
+
 /*
   #Layout
 */
@@ -38,7 +41,7 @@
   box-sizing: border-box;
   display: flex;
   flex-grow: 1;
-  max-width: $nx-page-width-max;
+  justify-content: flex-end;
   overflow-y: hidden;
   width: 100%;
 
@@ -54,7 +57,8 @@
 
   background-color: $nx-sidebar-background-color;
   box-sizing: border-box;
-  flex-basis: $nx-sidebar-width;
+  flex: 1 0 ($nx-page-width-min * $nx-sidebar-proportion);
+  max-width: $nx-page-width-max * $nx-sidebar-proportion;
   overflow-x: hidden;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-xs $nx-spacing-l;
   position: relative;
@@ -64,11 +68,12 @@
 .nx-page-main {
   @include container-vertical;
 
-  box-sizing: border-box;
-  flex: 1 0 $nx-content-width;
+  box-sizing: content-box;
+  flex: 1 0 ($nx-page-width-min * $nx-content-proportion);
+  max-width: $nx-page-width-max * $nx-content-proportion - (2 * $nx-spacing-l);
   overflow-x: hidden;
   overflow-y: auto;
-  padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-md $nx-spacing-l;
+  padding: $nx-spacing-xl $nx-page-side-padding $nx-spacing-md $nx-spacing-l;
   white-space: normal;
 }
 
@@ -93,5 +98,10 @@
 
   .nx-page-content {
     margin: 0 auto;
+    justify-content: center;
+  }
+
+  .nx-page-main {
+    padding-right: $nx-spacing-l;
   }
 }
