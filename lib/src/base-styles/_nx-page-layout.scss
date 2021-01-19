@@ -59,7 +59,7 @@ $nx-page-side-padding: calc(max(((100vw - #{$nx-page-width-max}) / 2), 0px));
 
   background-color: $nx-sidebar-background-color;
   box-sizing: border-box;
-  flex: 1 0 ($nx-page-width-min * $nx-sidebar-proportion);
+  flex: 1 0 ($nx-page-width-min * $nx-sidebar-proportion - $nx-scrollbar-width);
   max-width: $nx-page-width-max * $nx-sidebar-proportion;
   overflow-x: hidden;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-xs $nx-spacing-l;
@@ -71,8 +71,7 @@ $nx-page-side-padding: calc(max(((100vw - #{$nx-page-width-max}) / 2), 0px));
   @include container-vertical;
 
   box-sizing: content-box;
-  flex: 1 0 ($nx-page-width-min * $nx-content-proportion);
-  //max-width: $nx-page-width-max * $nx-content-proportion - (2 * $nx-spacing-l);
+  flex: 1 0 ($nx-page-width-min * $nx-content-proportion - (2 * $nx-spacing-l) - $nx-scrollbar-width);
   overflow-x: hidden;
   overflow-y: auto;
   padding: $nx-spacing-xl calc(#{$nx-page-side-padding} + #{$nx-spacing-l}) $nx-spacing-md $nx-spacing-l;
