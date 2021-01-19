@@ -45,7 +45,6 @@ $nx-page-side-padding: calc(max(((100vw - #{$nx-page-width-max}) / 2), 0px));
   overflow-y: hidden;
   padding-left: $nx-page-side-padding;
   width: 100%;
-  max-width: $nx-page-width-max;
 
   // page-load errors are often at this level and not encapsulated within a nx-page-sidebar or nx-page-main
   > .nx-alert {
@@ -98,9 +97,10 @@ $nx-page-side-padding: calc(max(((100vw - #{$nx-page-width-max}) / 2), 0px));
   }
 
   .nx-page-content {
+    justify-content: center;
     margin: 0 auto;
     padding: 0;
-    justify-content: center;
+    max-width: $nx-page-width-max;
   }
 
   .nx-page-main {
