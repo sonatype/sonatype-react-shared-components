@@ -11,6 +11,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import './NxTag.scss';
 import { Props, propTypes } from './types';
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 export { Props } from './types';
 
 const NxTag: FunctionComponent<Props> =
@@ -20,9 +21,9 @@ const NxTag: FunctionComponent<Props> =
 
       return (
         <div className={tagClasses} {...attrs}>
-          <div className="nx-tag__text">
-            {children}
-          </div>
+          <NxOverflowTooltip>
+            <div className="nx-tag__text">{children}</div>
+          </NxOverflowTooltip>
         </div>
       );
     };
@@ -41,9 +42,9 @@ export const NxSelectableTag: FunctionComponent<Props> =
 
       return (
         <div className={tagClasses} {...attrs} onClick={onTagSelect || undefined}>
-          <div className="nx-tag__text">
-            {children}
-          </div>
+          <NxOverflowTooltip>
+            <div className="nx-tag__text">{children}</div>
+          </NxOverflowTooltip>
           <div className="nx-tag__action">
             <NxFontAwesomeIcon icon={faPlusCircle} />
           </div>
