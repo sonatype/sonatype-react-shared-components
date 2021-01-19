@@ -6,7 +6,7 @@
  */
 
 // note: the outer calc call below is just necessary to keep sass from getting confused
-$nx-page-side-padding: calc(max(((100vw - #{$nx-page-width-max}) / 2) + #{$nx-spacing-l}, #{$nx-spacing-l}));
+$nx-page-side-padding: calc(max(((100vw - #{$nx-page-width-max}) / 2), 0px));
 
 /*
   #Layout
@@ -43,7 +43,9 @@ $nx-page-side-padding: calc(max(((100vw - #{$nx-page-width-max}) / 2) + #{$nx-sp
   flex-grow: 1;
   justify-content: flex-end;
   overflow-y: hidden;
+  padding-left: $nx-page-side-padding;
   width: 100%;
+  max-width: $nx-page-width-max;
 
   // page-load errors are often at this level and not encapsulated within a nx-page-sidebar or nx-page-main
   > .nx-alert {
@@ -70,10 +72,10 @@ $nx-page-side-padding: calc(max(((100vw - #{$nx-page-width-max}) / 2) + #{$nx-sp
 
   box-sizing: content-box;
   flex: 1 0 ($nx-page-width-min * $nx-content-proportion);
-  max-width: $nx-page-width-max * $nx-content-proportion - (2 * $nx-spacing-l);
+  //max-width: $nx-page-width-max * $nx-content-proportion - (2 * $nx-spacing-l);
   overflow-x: hidden;
   overflow-y: auto;
-  padding: $nx-spacing-xl $nx-page-side-padding $nx-spacing-md $nx-spacing-l;
+  padding: $nx-spacing-xl calc(#{$nx-page-side-padding} + #{$nx-spacing-l}) $nx-spacing-md $nx-spacing-l;
   white-space: normal;
 }
 
@@ -98,6 +100,7 @@ $nx-page-side-padding: calc(max(((100vw - #{$nx-page-width-max}) / 2) + #{$nx-sp
 
   .nx-page-content {
     margin: 0 auto;
+    padding: 0;
     justify-content: center;
   }
 
