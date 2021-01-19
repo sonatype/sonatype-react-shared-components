@@ -36,6 +36,14 @@ That is, each RSC component has a ES6 import referring to a scss file containing
 component, and your build should be set up to consume those imports. Alternatively if not using SASS, the full set
 of RSC styles is available in CSS form within the `react-shared-components.css` in the module root directory.
 
+
+### Usage with Webpack and other module bundlers
+
+RSC uses JavaScript imports (both ES6-style and commonjs-style) to refer to certain non-JavaScript files, so consuming
+bundlers must be configured to handle those imports. In webpack, this would typically be accomplished by including the
+`sass-loader` (and its related loaders) and the `file-loader`. See the configuration in the `gallery/webpack.config.js`
+for a detailed, working example.
+
 ## Contributing
 
 See the [contributing document](./.github/CONTRIBUTING.md) for details.
