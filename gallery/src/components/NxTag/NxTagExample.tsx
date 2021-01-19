@@ -10,17 +10,16 @@ import { NxTag } from '@sonatype/react-shared-components';
 function NxTagExample() {
   return (
     <div>
-      <NxTag>leafspring</NxTag>
-      <NxTag className="nx-tag--purple">liminal</NxTag>
-      <NxTag className="nx-tag--pink">denim</NxTag>
-      <NxTag className="nx-tag--blue">semiotics</NxTag>
-      <NxTag className="nx-tag--grey">disposable</NxTag>
-      <NxTag className="nx-tag--red">corporation</NxTag>
-      <NxTag className="nx-tag--green">geodesic</NxTag>
-      <NxTag className="nx-tag--orange">long-chain</NxTag>
-      <NxTag className="nx-tag--yellow">hydrocarbons</NxTag>
-      <NxTag className="nx-tag--lime">sub-orbital</NxTag>
-      <NxTag className="nx-tag--indigo">systemic</NxTag>
+      <NxTag>Default</NxTag>
+      <NxTag tagColor="purple">Purple</NxTag>
+      <NxTag tagColor="pink">Pink</NxTag>
+      <NxTag tagColor="blue">Blue</NxTag>
+      <NxTag tagColor="red">Red</NxTag>
+      <NxTag tagColor="green">Green</NxTag>
+      <NxTag tagColor="orange">Orange</NxTag>
+      <NxTag tagColor="yellow">Yellow</NxTag>
+      <NxTag tagColor="lime">Lime</NxTag>
+      <NxTag tagColor="indigo">Indigo</NxTag>
     </div>
   );
 }
