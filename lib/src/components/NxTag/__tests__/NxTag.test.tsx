@@ -6,7 +6,7 @@
  */
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
-import NxSelectableTag from '../NxTag';
+import { NxSelectableTag } from '../NxTag';
 
 describe('NxSelectableTag', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxSelectableTag, { children: 'test' });
