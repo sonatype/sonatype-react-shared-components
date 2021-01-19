@@ -11,11 +11,13 @@ export interface Props {
   onTagSelect?: (() => void) | null;
   tagSelected?: boolean;
   children: ReactNode;
+  tagColor?: string | null;
   className?: string | null;
 }
 export const propTypes: WeakValidationMap<Props> = {
   onTagSelect: PropTypes.func,
   tagSelected: PropTypes.bool,
   children: PropTypes.string,
+  tagColor: PropTypes.string,
   className: PropTypes.string
 };

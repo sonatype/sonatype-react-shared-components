@@ -11,13 +11,13 @@
 .nx-tag {
   @include semi-bold();
   align-items: center;
-  background-color: #d3e6ff;
-  border: 1px solid #d3e6ff;
+  background-color: $nx-blue-800;
+  border: 1px solid $nx-blue-800;
   border-radius: 16px;
   box-sizing: border-box;
   color: $nx-text-color-dark;
   cursor: default;
-  display: inline-flex;
+  display: inline-block;
   font-size: $nx-font-size-s;
   margin: 0 $nx-spacing-xs $nx-spacing-xs 0;
   padding: 5px $nx-spacing-xs 6px $nx-spacing-md;
@@ -30,12 +30,14 @@
 }
 
 .nx-tag--selectable {
-  background-color: #f0f6ff;
   cursor: pointer;
+  display: inline-flex;
 }
 
 .nx-tag--selected {
-  background-color: #d3e6ff;
+  background-color: $nx-blue-800;
+  border-color: $nx-blue-800;
+  color: $nx-text-color-dark;
 
   .nx-tag__action {
     .nx-icon {
@@ -55,7 +57,26 @@
   @include container-horizontal;
 }
 
-// Available tag colours, the default is light blue
+// Available tag colours
+.nx-tag--default {
+  color: $nx-white;
+
+  &.nx-tag--unselected {
+    background-color: $nx-grey-300;
+    border-color:$nx-grey-300;
+    color: $nx-text-color-dark;
+  }
+}
+
+.nx-tag--light-blue {
+  background-color: $nx-blue-200;
+  border-color: $nx-blue-200;
+
+  &.nx-tag--unselected {
+    background-color: $nx-grey-300;
+  }
+}
+
 .nx-tag--purple {
   background-color: #d584ff;
   border-color: #d584ff;
@@ -75,22 +96,11 @@
 }
 
 .nx-tag--blue {
-  background-color: #00a1e2;
-  border-color: #00a1e2;
+  background-color: $nx-teal-400;
+  border-color: $nx-teal-400;
 
   &.nx-tag--unselected {
     background-color: #b5eaff;
-  }
-}
-
-.nx-tag--grey {
-  background-color: $nx-grey-900;
-  border-color: $nx-grey-900;
-  color: $nx-white;
-
-  &.nx-tag--unselected {
-    background-color: $nx-grey-300;
-    color: $nx-text-color-dark;
   }
 }
 
