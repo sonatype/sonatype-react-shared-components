@@ -9,18 +9,18 @@ import { NxTag } from '@sonatype/react-shared-components';
 
 function NxTagExample() {
   return (
-    <div className="nx-tag-container">
-      <NxTag>Leafspring</NxTag>
-      <NxTag className="nx-tag--purple">Leafspring</NxTag>
-      <NxTag className="nx-tag--pink">Leafspring</NxTag>
-      <NxTag className="nx-tag--blue">Leafspring</NxTag>
-      <NxTag className="nx-tag--grey">Leafspring</NxTag>
-      <NxTag className="nx-tag--red">Leafspring</NxTag>
-      <NxTag className="nx-tag--green">Leafspring</NxTag>
-      <NxTag className="nx-tag--orange">Leafspring</NxTag>
-      <NxTag className="nx-tag--yellow">Leafspring</NxTag>
-      <NxTag className="nx-tag--lime">Leafspring</NxTag>
-      <NxTag className="nx-tag--indigo">Leafspring</NxTag>
+    <div>
+      <NxTag>leafspring</NxTag>
+      <NxTag className="nx-tag--purple">liminal</NxTag>
+      <NxTag className="nx-tag--pink">denim</NxTag>
+      <NxTag className="nx-tag--blue">semiotics</NxTag>
+      <NxTag className="nx-tag--grey">disposable</NxTag>
+      <NxTag className="nx-tag--red">corporation</NxTag>
+      <NxTag className="nx-tag--green">geodesic</NxTag>
+      <NxTag className="nx-tag--orange">long-chain</NxTag>
+      <NxTag className="nx-tag--yellow">hydrocarbons</NxTag>
+      <NxTag className="nx-tag--lime">sub-orbital</NxTag>
+      <NxTag className="nx-tag--indigo">systemic</NxTag>
     </div>
   );
 }
