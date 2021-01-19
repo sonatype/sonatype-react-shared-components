@@ -32,6 +32,16 @@
 .nx-tag--selectable {
   cursor: pointer;
   display: inline-flex;
+
+  &:focus {
+    border: 1px solid $nx-focus-border-color;
+    box-shadow: $nx-focus-box-shadow;
+    outline: 0;
+  }
+
+  &:hover {
+    border-color: $nx-grey-900;
+  }
 }
 
 .nx-tag--selected {
@@ -44,6 +54,10 @@
       transform: rotate(-45deg);
     }
   }
+}
+
+.nx-tag--unselected {
+  border-color: $nx-grey-300;
 }
 
 .nx-tag__actions {
@@ -63,7 +77,6 @@
 
   &.nx-tag--unselected {
     background-color: $nx-grey-300;
-    border-color:$nx-grey-300;
     color: $nx-text-color-dark;
   }
 }
