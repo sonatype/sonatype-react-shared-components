@@ -9,10 +9,10 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxTagExample from './NxTagExample';
-import NxActionTagExample from './NxActionTagExample';
+import NxSelectableTagExample from './NxSelectableTagExample';
 
 const NxTagExampleCode = require('!!raw-loader!./NxTagExample').default;
-const NxActionTagExampleCode = require('!!raw-loader!./NxActionTagExample').default;
+const NxSelectableTagExampleCode = require('!!raw-loader!./NxSelectableTagExample').default;
 
 const NxTagPage = () =>
   <>
@@ -27,9 +27,9 @@ const NxTagPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTags with Actions Example"
-                        liveExample={NxActionTagExample}
-                        codeExamples={NxActionTagExampleCode}>
-      An example of a simple tag.
+                        liveExample={NxSelectableTagExample}
+                        codeExamples={NxSelectableTagExampleCode}>
+      An example of a selectable tag.
     </GalleryExampleTile>
 
   </>;

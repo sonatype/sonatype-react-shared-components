@@ -183,5 +183,6 @@ export { default as NxStatefulToggle, Props as NxStatefulToggleProps }
 
 export {
   default as NxTag,
+  NxSelectableTag,
   Props as NxTagProps }
   from './components/NxTag/NxTag';
