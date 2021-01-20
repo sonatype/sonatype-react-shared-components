@@ -14,11 +14,13 @@ export interface Props {
   className?: string | null;
   onChange?: ((r: PolicyThreatLevelRange) => void) | null;
   value: PolicyThreatLevelRange;
+  disabled?: boolean | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   className: PropTypes.string,
   onChange: PropTypes.func,
+  disabled: PropTypes.bool,
 
   // cast necessary because PropTypes can't check array length
   value: PropTypes.arrayOf(PropTypes.oneOf(allThreatLevelNumbers).isRequired).isRequired as

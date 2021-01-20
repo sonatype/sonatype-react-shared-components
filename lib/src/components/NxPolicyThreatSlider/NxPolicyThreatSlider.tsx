@@ -42,7 +42,7 @@ function NxPolicyThreatSliderValueLabelDisplay({ value, children, className, ...
 }
 
 const NxPolicyThreatSlider: FunctionComponent<Props> =
-  function NxPolicyThreatSlider({ onChange, value, className }) {
+  function NxPolicyThreatSlider({ onChange, value, className, disabled }) {
     const classes = classnames('nx-policy-threat-slider', className);
 
     function sliderOnChange(_: unknown, val: number | number[]) {
@@ -57,6 +57,7 @@ const NxPolicyThreatSlider: FunctionComponent<Props> =
                 min={0}
                 max={10}
                 marks={true}
+                disabled={disabled || undefined}
                 ValueLabelComponent={NxPolicyThreatSliderValueLabelDisplay}
                 onChange={sliderOnChange} />
       </div>
