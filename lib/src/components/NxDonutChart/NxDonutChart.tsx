@@ -13,9 +13,10 @@ import { NxTooltip } from '../..';
 const INNER_RADIUS_AS_PERCENT = 50; // The radius of the donut hole. Adjust this to change how "thick" the donut is.
 const STROKE_WIDTH = 100 - INNER_RADIUS_AS_PERCENT; // The thickness of the donut.
 const RADIUS = INNER_RADIUS_AS_PERCENT + (STROKE_WIDTH / 2);
+const GAP = 0.2;
 
 const getArcAngle = (angleOffset: number, arcLengthAsPercent: number) => {
-  return angleOffset + (2 * Math.PI * (arcLengthAsPercent / 100));
+  return angleOffset + (2 * Math.PI * ((arcLengthAsPercent) / 100));
 };
 
 const getArcEndPositionX = (radius: number, argAngle: number) => {
@@ -31,8 +32,12 @@ const buildToolTip = (dataPoints: NxDonutChartDataPoint[]): any => {
     <>
       {
           dataPoints.map(point => {
-              // eslint-disable-next-line max-len
-            return <p className={`nx-severity-donut-chart-tooltip__${point.severity}-arc`} style={{color: point.severity}}>{point.label}: {point.value}%</p>;
+            return (
+              <p key={point.label}
+                 className={`nx-severity-donut-chart-tooltip__${point.severity}-arc`}
+                 style={{color: point.severity}}>{point.label}: {point.value}%
+              </p>
+            );
           })
         }
     </>);
@@ -78,12 +83,13 @@ const NxDonutChart = forwardRef<SVGSVGElement, Props>(
           <svg ref={ref} viewBox="-100 -100 200 200" role="img" className={donutClasses} {...svgAttrs}>
             {
                       dataPoints.map(point => {
-                        const arcEndAngle = getArcAngle(arcAngle, point.value);
+                        const arcEndAngle = getArcAngle(arcAngle, point.value - GAP);
                         const arcEndX = getArcEndPositionX(RADIUS, arcEndAngle);
                         const arcEndY = getArcEndPositionY(RADIUS, arcEndAngle);
 
                         const element = (
-                          <ArcPath category={point.severity.valueOf()}
+                          <ArcPath key={point.label}
+                                   category={point.severity.valueOf()}
                                    percentOfPie={arcAngle}
                                    arcStartX={arcStartX}
                                    arcStartY={arcStartY}
@@ -92,9 +98,9 @@ const NxDonutChart = forwardRef<SVGSVGElement, Props>(
                               />
                         );
 
-                        arcStartX = arcEndX;
-                        arcStartY = arcEndY;
-                        arcAngle = arcEndAngle;
+                        arcAngle = getArcAngle(arcAngle, point.value);
+                        arcStartX = getArcEndPositionX(RADIUS, arcAngle);
+                        arcStartY = getArcEndPositionY(RADIUS, arcAngle);
                         return element;
                       })
                   }
