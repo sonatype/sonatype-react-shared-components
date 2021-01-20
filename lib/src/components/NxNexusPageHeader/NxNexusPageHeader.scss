@@ -55,7 +55,7 @@
   .nx-product__brand {
     @include bold();
 
-    color: $nx-text-color-dark;
+    color: var(--nx-text-color-stark);
   }
 
   .nx-product__name {
@@ -73,7 +73,7 @@
     align-self: start;
     grid-area: bottom-row;
 
-    color: $nx-text-color;
+    color: var(--nx-text-color);
     font-size: $nx-font-size-xs;
   }
 
@@ -91,7 +91,7 @@
   }
 
   .nx-page-header__link {
-    color: $nx-text-color-dark;
+    color: var(--nx-text-color-stark);
     padding-bottom: $nx-spacing-xs;
 
     &:active, &.nx-page-header__link--current {

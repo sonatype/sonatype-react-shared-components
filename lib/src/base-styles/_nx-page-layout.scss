@@ -14,7 +14,7 @@
 }
 
 .nx-body {
-  background-color: $nx-site-background-color;
+  background-color: var(--nx-site-background-color);
   height: 100%;
   margin: 0;
   // prevents scrollbar flicker as tooltips appear in IE11
@@ -52,7 +52,6 @@
 .nx-page-sidebar {
   @include container-vertical;
 
-  background-color: $nx-sidebar-background-color;
   box-sizing: border-box;
   flex-basis: $nx-sidebar-width;
   overflow-x: hidden;

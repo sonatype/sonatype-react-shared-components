@@ -42,7 +42,7 @@
     background-color: $nx-white;
     border: 2px solid;
     border-radius: $nx-border-radius;
-    color: $nx-text-color-dark;
+    color: var(--nx-text-color-stark);
     font-size: $nx-font-size-s;
     font-weight: bold;
     height: $thumb-size;
@@ -56,7 +56,7 @@
     }
 
     &:focus {
-      border-color: $nx-focus-border-color;
+      border-color: var(--nx-interactive-focus-border-color);
       box-shadow: $nx-focus-box-shadow;
     }
 

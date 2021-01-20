@@ -68,7 +68,7 @@ $nx-tile-padding: $nx-spacing-l;
   grid-row-start: 2;
   grid-row-end: 2;
 
-  color: $nx-heading-color;
+  color: var(--nx-heading-color);
   font-size: $nx-font-size-heading-level-3;
   max-width: $nx-paragraph-width-maximum;
 }

@@ -72,13 +72,13 @@
     &.nx-clickable {
       &:hover {
         > .nx-cell {
-          background-color: $nx-hover-background;
+          background-color: var(--nx-interactive-hover-background-color);
         }
       }
 
       &.selected, &:active {
         > .nx-cell {
-          background-color: $nx-selected-background;
+          background-color: var(--nx-interactive-selected-background-color);
         }
       }
 
@@ -87,7 +87,7 @@
         outline: none;
 
         > .nx-cell {
-          border-color: $nx-focus-border-color;
+          border-color: var(--nx-interactive-focus-border-color);
         }
       }
     }
@@ -194,7 +194,7 @@
   border-top: none;
   box-sizing: border-box;
 
-  color: $nx-text-color-dark;
+  color: var(--nx-text-color-stark);
   font-size: $nx-font-size-s;
   height: $nx-table-cell-header-height;
   text-align: left;
@@ -203,7 +203,7 @@
   vertical-align: middle;
 
   &:focus {
-    outline: 1px solid $nx-focus-border-color;
+    outline: 1px solid var(--nx-interactive-focus-border-color);
     outline-offset: -1px;
     box-shadow: $nx-focus-box-shadow;
   }
@@ -216,7 +216,7 @@
 
 
 .nx-cell--icon {
-  color: $nx-text-color-dark;
+  color: var(--nx-text-color-stark);
   text-align: center;
 }
 

@@ -22,7 +22,7 @@
 
     &:hover {
       .nx-text-input__box {
-        border-color: $nx-form-element-border-color;
+        border-color: var(--nx-form-field-border-color);
       }
     }
   }
@@ -46,8 +46,8 @@
   &.disabled {
     &, &.valid, &.invalid, &.pristine {
       .nx-text-input__box {
-        background-color:$nx-disabled-background;
-        border-color: $nx-disabled-border;
+        background-color: var(--nx-interactive-disabled-background-color);
+        border-color: var(--nx-interactive-disabled-border-color);
       }
 
       .nx-text-input__invalid-message {
@@ -65,8 +65,8 @@
   @include container-horizontal;
 
   align-items: center;
-  background-color: #fff;
-  border: 1px solid $nx-form-element-border-color;
+  background-color: var(--nx-form-field-background-color);
+  border: 1px solid var(--nx-form-field-border-color);
   border-radius: $nx-border-radius;
   display: flex;
   padding: $nx-spacing-xs $nx-spacing-md;
@@ -85,7 +85,7 @@
 .nx-text-input__input {
   background-color: transparent;
   border: none;
-  color: $nx-text-color;
+  color: var(--nx-text-color);
   flex-grow: 1;
   font-size: $nx-font-size;
   line-height: $nx-line-height;

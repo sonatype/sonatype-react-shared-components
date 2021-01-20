@@ -21,7 +21,7 @@
 
   &.disabled {
     .nx-icon--filter-icons {
-      color: $nx-text-color-disabled;
+      color: var(--nx-text-color-disabled);
       display: inline-block;
     }
   }

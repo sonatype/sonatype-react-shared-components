@@ -15,23 +15,23 @@
 
   &.nx-toggle--disabled {
     &, &:hover {
-      color: $nx-text-color-disabled;
+      color: var(--nx-text-color-disabled);
       cursor: default;
 
       .nx-toggle__control {
-        background-color: $nx-grey-200;
-        border-color: $nx-grey-500;
+        background-color: var(--nx-interactive-disabled-background-color);
+        border-color: var(--nx-interactive-disabled-border-color);
       }
       .nx-toggle__indicator {
-        background-color: $nx-grey-500;
+        background-color: var(--nx-interactive-disabled-border-color);
       }
     }
   }
 
   &:focus-within {
     .nx-toggle__control {
-      border-color: $nx-focus-border-color;
-      filter: drop-shadow(0 0 3px rgba($nx-focus-border-color, 0.4));
+      border-color: var(--nx-interactive-focus-border-color);
+      filter: drop-shadow(0 0 3px rgba(var(--nx-interactive-focus-border-color), 0.4));
 
       &:hover {
         border-color: $nx-grey-1100;
@@ -59,7 +59,7 @@
       background-color: $nx-blue-600;
 
       .nx-toggle__indicator {
-        background-color: #fff;
+        background-color: var(--nx-form-field-background-color);
         margin-left: 20px;
       }
     }
@@ -71,7 +71,7 @@
 }
 
 .nx-toggle__control {
-  background-color: #fff;
+  background-color: var(--nx-form-field-background-color);
   border: 1px solid $nx-blue-600;
   border-radius: 12px;
   box-sizing: border-box;

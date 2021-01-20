@@ -19,25 +19,25 @@
   background-repeat: no-repeat;
   border: 1px solid #d1d6f0;
   border-radius: $nx-border-radius;
-  color: $nx-text-color;
+  color: var(--nx-text-color);
   font-size: $nx-font-size;
   line-height: $nx-line-height;
   padding: $nx-spacing-xs $nx-spacing-md;
   width: $nx-form-element-width-normal;
 
   &:hover {
-    border-color: $nx-form-element-border-color;
+    border-color: var(--nx-form-field-border-color);
   }
 
   &:focus {
     box-shadow: $nx-focus-box-shadow;
-    border-color: $nx-focus-border-color;
+    border-color: var(--nx-interactive-focus-border-color);
     outline: none;
   }
 
   &.disabled {
-    background-color:$nx-disabled-background;
-    border-color: $nx-disabled-border;
+    background-color: var(--nx-interactive-disabled-background-color);
+    border-color: var(--nx-interactive-disabled-border-color);
   }
 }
 

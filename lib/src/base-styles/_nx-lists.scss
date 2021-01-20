@@ -44,7 +44,7 @@
   }
 
   &.disabled {
-    color: $nx-text-color-disabled;
+    color: var(--nx-text-color-disabled);
     cursor: default;
   }
 
@@ -163,33 +163,33 @@
   .nx-list__item {
     &.selected {
       &, &:hover {
-        background-color: $nx-selected-background;
+        background-color: var(--nx-interactive-selected-background-color);
       }
     }
 
     &:hover {
-      background-color: $nx-hover-background;
+      background-color: var(--nx-interactive-hover-background-color);
       cursor: pointer;
     }
 
     &:active {
-      background-color: $nx-active-background;
+      background-color: var(--nx-interactive-active-background-color);
     }
 
     &:focus {
       box-shadow: $nx-focus-box-shadow;
-      border-color: $nx-focus-border-color;
+      border-color: var(--nx-interactive-focus-border-color);
       outline: none;
     }
 
     &.nx-list__item--empty {
       @include regular();
 
-      color: $nx-text-color;
+      color: var(--nx-text-color);
     }
 
     &.disabled {
-      color: $nx-text-color-disabled;
+      color: var(--nx-text-color-disabled);
 
       &:hover {
         background-color: transparent;
@@ -204,7 +204,7 @@
     > .nx-chevron {
       align-self: center;
       -ms-grid-row-align: center;
-      color: $nx-text-color-dark;
+      color: var(--nx-text-color-stark);
       -ms-grid-row: 1;
       -ms-grid-row-span: 2;
       -ms-grid-column: 3;

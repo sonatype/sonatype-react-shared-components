@@ -78,5 +78,33 @@ $nx-scrollable-default-height: 400px;
 
 :root {
   // global CSS variables/custom properties
+  --nx-site-background-color: #{$nx-site-background-color};
   --nx-component-background-color: #{$nx-white};
+  --nx-form-field-background-color: var(--nx-component-background-color);
+
+  --nx-text-color: #{$nx-text-color};
+  --nx-text-color-stark: #{$nx-text-color-dark};
+  --nx-heading-color: var(--nx-text-color-stark);
+  --nx-text-color-disabled: #{$nx-text-color-disabled};
+
+  --nx-interactive-selected-background-color: #{$nx-selected-background};
+  --nx-interactive-active-background-color: #{$nx-active-background};
+  --nx-interactive-hover-background-color: #{$nx-hover-background};
+  --nx-interactive-disabled-background-color: #{$nx-disabled-background};
+  --nx-interactive-disabled-border-color: #{$nx-disabled-border};
+  --nx-interactive-focus-border-color: #{$nx-focus-border-color};
+  --nx-interactive-focus-shadow-color: #{transparentize($nx-focus-border-color, 0.7)};
+
+  --nx-border-color: #{$nx-grey-3};
+  --nx-border-color-stark: #{$nx-grey-4};
+  --nx-border-color-starker: #{$nx-slate};
+  --nx-border-color-faded: #{$nx-grey-2};
+  --nx-border-color-very-faded: #{$nx-grey-1};
+
+  --nx-form-field-border-color: #{$nx-grey-1100};
+
+  --nx-page-header-background-color: #{$nx-off-white};
+  --nx-page-header-border-color: #{$nx-grey-100};
+
+  --nx-code-background-color: #{$nx-grey-1};
 }

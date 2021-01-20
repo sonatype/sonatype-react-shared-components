@@ -78,7 +78,7 @@
 .nx-body {
   @include regular();
 
-  color: $nx-text-color;
+  color: var(--nx-text-color);
   font-size: $nx-font-size;
   line-height: $nx-line-height;
 }
@@ -87,7 +87,7 @@
   @include bold();
   @include container-horizontal;
 
-  color: $nx-heading-color;
+  color: var(--nx-heading-color);
   font-size: $nx-font-size-heading-level-1;
   margin-bottom: $nx-spacing-l;
 }
@@ -96,7 +96,7 @@
   @include semi-bold();
   @include container-horizontal;
 
-  color: $nx-heading-color;
+  color: var(--nx-heading-color);
   font-size: $nx-font-size-heading-level-2;
   margin-bottom: $nx-spacing-md;
 }
@@ -105,7 +105,7 @@
   @include bold();
   @include container-horizontal;
 
-  color: $nx-heading-color;
+  color: var(--nx-heading-color);
   font-size: $nx-font-size-heading-level-3;
   margin-bottom: $nx-spacing-md;
 }
@@ -114,7 +114,7 @@
   @include bold();
   @include container-horizontal;
 
-  color: $nx-heading-color;
+  color: var(--nx-heading-color);
   font-size: $nx-font-size-heading-level-4;
   margin-bottom: $nx-spacing-xs;
   text-transform: uppercase;
