@@ -17,37 +17,37 @@ const NxSelectableTagExampleCode = require('!!raw-loader!./NxSelectableTagExampl
 const NxTagPage = () =>
   <>
     <GalleryDescriptionTile>
-        <p className="nx-p">
-          There are two types of <code className="nx-code">NxTag</code> the basic tags have a single state.
-          <code className="nx-code">NxSelectableTag</code> can be selected and deselected. It is up to the consumer
-          what that means in the context of the UI. The are many colors provided for
-          <code className="nx-code">NxTag</code> which can be specified via props.
-        </p>
-        <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Prop</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Default</NxTableCell>
-              <NxTableCell>Details</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>tagColor</NxTableCell>
-              <NxTableCell>
-                'light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime' | 'indigo'
-              </NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell></NxTableCell>
-              <NxTableCell>
-                If no `tagColor` is specified then the default (dark blue with a grey unselected state) colors are used.
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
-        </NxTable>
-      </GalleryDescriptionTile>
+      <p className="nx-p">
+        There are two types of <code className="nx-code">NxTag</code> the basic tags have a single state.
+        <code className="nx-code">NxSelectableTag</code> can be selected and deselected. It is up to the consumer
+        what that means in the context of the UI. The are many colors provided for
+        <code className="nx-code">NxTag</code> which can be specified via props.
+      </p>
+      <NxTable>
+        <NxTableHead>
+          <NxTableRow>
+            <NxTableCell>Prop</NxTableCell>
+            <NxTableCell>Type</NxTableCell>
+            <NxTableCell>Required</NxTableCell>
+            <NxTableCell>Default</NxTableCell>
+            <NxTableCell>Details</NxTableCell>
+          </NxTableRow>
+        </NxTableHead>
+        <NxTableBody>
+          <NxTableRow>
+            <NxTableCell>tagColor</NxTableCell>
+            <NxTableCell>
+              'light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime' | 'indigo'
+            </NxTableCell>
+            <NxTableCell>No</NxTableCell>
+            <NxTableCell></NxTableCell>
+            <NxTableCell>
+              If no `tagColor` is specified then the default (dark blue with a grey unselected state) colors are used.
+            </NxTableCell>
+          </NxTableRow>
+        </NxTableBody>
+      </NxTable>
+    </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Tag Example"
                         id="nx-tag-example"
