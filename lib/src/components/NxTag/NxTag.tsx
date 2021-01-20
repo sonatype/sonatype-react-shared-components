@@ -8,10 +8,10 @@ import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
-import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import './NxTag.scss';
-import { Props, propTypes } from './types';
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+import { Props, propTypes } from './types';
 export { Props } from './types';
 
 const NxTag: FunctionComponent<Props> =
