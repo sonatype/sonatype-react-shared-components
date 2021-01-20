@@ -9,10 +9,12 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxOverflowTooltipExample from './NxOverflowTooltipExample';
+import NxOverflowTooltipDescendantExample from './NxOverflowTooltipDescendantExample';
 import NxOverflowTooltipDynamicExample from './NxOverflowTooltipDynamicExample';
 import { NxWarningAlert } from '@sonatype/react-shared-components';
 
 const overflowTooltipsExampleCode = require('!!raw-loader!./NxOverflowTooltipExample').default;
+const overflowTooltipsDescendantExampleCode = require('!!raw-loader!./NxOverflowTooltipDescendantExample').default;
 const overflowTooltipsDynamicExampleCode = require('!!raw-loader!./NxOverflowTooltipDynamicExample').default;
 
 export default function NxOverflowTooltipPage() {
@@ -42,14 +44,25 @@ export default function NxOverflowTooltipPage() {
         </NxWarningAlert>
       </GalleryDescriptionTile>
 
-      <GalleryExampleTile title="Example on NxDropdown items"
-                          id="nx-overflow-tooltip-dropdown-example"
+      <GalleryExampleTile title="Simple example"
+                          id="nx-overflow-tooltip-simple-example"
                           codeExamples={overflowTooltipsExampleCode}
                           liveExample={NxOverflowTooltipExample}>
-        This example demonstrates an <code className="nx-code">NxDropdown</code> which
-        uses <code className="nx-code">NxOverflowTooltip</code> on each child element. Notice that on the last button
+        This example demonstrates an <code className="nx-code">nx-list</code> which
+        uses <code className="nx-code">NxOverflowTooltip</code> on each child element. Notice that on the last item
         in the example, the <code className="nx-code">title</code> must be explicitly specified as the
         automatically-computed title would miss the "Foo" text contributed by the child component.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Descendant overflow example"
+                          id="nx-overflow-tooltip-descendant-example"
+                          codeExamples={overflowTooltipsDescendantExampleCode}
+                          liveExample={NxOverflowTooltipDescendantExample}>
+        <code className="nx-code">NxOverflowTooltip</code> will trigger not only if its immediate child element
+        has overflow, but also if any of its descendants have overflow. This example demonstrates that by
+        placing <code className="nx-code">NxOverflowTooltip</code> around
+        the <code className="nx-code">nx-list__item</code>s rather than
+        the <code className="nx-code">nx-list__text</code> elements where the overflow actually occurs
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Dynamic example"
