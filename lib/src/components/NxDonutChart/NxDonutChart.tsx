@@ -27,7 +27,7 @@ const getArcEndPositionY = (radius: number, argAngle: number) => {
   return -1 * radius * Math.sin(argAngle);
 };
 
-const buildToolTip = (dataPoints: NxDonutChartDataPoint[]): any => {
+const buildToolTip = (dataPoints: NxDonutChartDataPoint[]) => {
   return (
     <>
       {

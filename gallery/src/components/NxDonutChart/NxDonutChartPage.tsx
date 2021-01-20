@@ -48,7 +48,7 @@ const NxDonutChartPage = () =>
               </ul>
               <p><strong>label:</strong> to be used</p>
               <p>
-                  {/* eslint-disable-next-line max-len */}
+                {/* eslint-disable-next-line max-len */}
                 <sup>note 1</sup>: It is possible to specify arbitrary colors, firstly you will need to <code className="nx-code">unset</code> all css color options <code className="nx-code">.nx-severity-donut-chart__#severity-arc</code> where <code className="nx-code">#severity</code> are the options from the list above
               </p>
             </td>
