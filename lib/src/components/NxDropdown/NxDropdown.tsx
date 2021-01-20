@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
 import classnames from 'classnames';
 import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
 
@@ -14,6 +14,7 @@ import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
 import './NxDropdown.scss';
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   const {
@@ -34,6 +35,10 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
 
   const toggleTooltipProps = toggleTooltip && wrapTooltipProps(toggleTooltip);
 
+  const wrappedChildren = children && React.Children.map<ReactElement, ReactElement>(children, child => (
+    <NxOverflowTooltip>{child}</NxOverflowTooltip>
+  ));
+
   const toggle = (
     <NxButton type="button"
               variant={variant || 'tertiary'}
@@ -52,7 +57,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
 
       { isOpen &&
         <div className="nx-dropdown-menu">
-          {children}
+          {wrappedChildren}
         </div>
       }
     </div>
