@@ -79,6 +79,22 @@ const NxFieldsetPage = () =>
               which represent different options for the same field.
             </NxTableCell>
           </NxTableRow>
+          <NxTableRow>
+            <NxTableCell>HTML <code className="nx-code">&lt;fieldset&gt;</code> Attributes</NxTableCell>
+            <NxTableCell>
+              <a target="_blank"
+                 rel="noopener"
+                 href="https://developer.mozilla.org/en/docs/Web/HTML/Element/fieldset">
+                HTML fieldset Attributes
+              </a>
+            </NxTableCell>
+            <NxTableCell>No</NxTableCell>
+            <NxTableCell>N/A</NxTableCell>
+            <NxTableCell>
+              NxFieldset supports any HTML attribute that's normally supported
+              by <code className="nx-code">&lt;fieldset&gt;</code>.
+            </NxTableCell>
+          </NxTableRow>
         </NxTableBody>
       </NxTable>
     </GalleryDescriptionTile>

@@ -16,7 +16,8 @@
   &, &.pristine, &.pristine.valid {
     &:focus-within {
       .nx-text-input__box {
-        border-color: #43cbf5;
+        border-color: $nx-focus-border-color;
+        box-shadow: $nx-focus-box-shadow;
       }
     }
 

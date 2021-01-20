@@ -36,6 +36,14 @@ That is, each RSC component has a ES6 import referring to a scss file containing
 component, and your build should be set up to consume those imports. Alternatively if not using SASS, the full set
 of RSC styles is available in CSS form within the `react-shared-components.css` in the module root directory.
 
+
+### Usage with Webpack and other module bundlers
+
+RSC uses JavaScript imports (both ES6-style and commonjs-style) to refer to certain non-JavaScript files, so consuming
+bundlers must be configured to handle those imports. In webpack, this would typically be accomplished by including the
+`sass-loader` (and its related loaders) and the `file-loader`. See the configuration in the `gallery/webpack.config.js`
+for a detailed, working example.
+
 ## Contributing
 
 See the [contributing document](./.github/CONTRIBUTING.md) for details.
@@ -141,28 +149,27 @@ The RSC code is split into two separate codebases: the library itself which live
 
 ## Building
 
-### Required software
-Node 10.16.0
-npm 6.7.0
+### Required Software
+Node 10.x or 12.x.  Node 14.x is known not to work currently.
 yarn 1.21.1
 
 ### Installation of Dependencies
 In the lib/ directory, run `yarn install`
 
 ### Build
-For a one-time build, `npm run build` in the lib/ directory.
+For a one-time build, `yarn run build` in the lib/ directory.
 
-When developing, you probably want to use `npm run watch` instead.
+When developing, you probably want to use `yarn run watch` instead.
 
 ## Running Unit Tests
 
 Run the following commands in the lib/ directory
 
 ### Single run
-`npm run test`
+`yarn run test`
 
 ### Watch in console
-`npm run test-watch`
+`yarn run test-watch`
 
 ### Watch in console, debug in browser
 
@@ -170,7 +177,7 @@ Jest runs in node, as opposed to in a browser like some other test setups. This 
 a little bit more difficult.
 
 To debug the unit tests, take the following steps
-* Run `npm run test-watch-debug` in the console
+* Run `yarn run test-watch-debug` in the console
 * Go to `chrome://inspect` in Google Chrome
 * Find and connect to the node process in Chrome by clicking Inspect in Chrome (this will open up a Chrome Dev Tools
 window)
@@ -185,11 +192,11 @@ hits.
 You can view components in your browser by running the gallery.
 
 ### Installation
-First, ensure the component library is built using `npm run build` or `npm run watch` from the lib/ dir. Then, from
+First, ensure the component library is built using `yarn run build` or `yarn run watch` from the lib/ dir. Then, from
 gallery/, run `yarn install`.
 
 ### Running the Gallery
-From gallery/, run `npm start`.
+From gallery/, run `yarn start`.
 
 To view the gallery, point your browser to `http://localhost:4043/`.
 
@@ -200,6 +207,6 @@ number from what is on master - this way, when the branch is merged, a new relea
 human-specified semantic version from the branch_.
 
 To increment the version on your branch, use the following command in the lib/ directory:
-`npm version --no-git-tag-version <new_version>`.
+`yarn version --no-git-tag-version (--patch|--minor|--major)`.
 This will ensure that the version number gets updated in all of the appropriate places (both package.json files and
 both package-lock.json files). Do not create or push git tags for versions, as the master CI build does that.
