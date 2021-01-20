@@ -46,7 +46,12 @@ export const NxSelectableTag: FunctionComponent<Props> =
           });
 
       return (
-        <div tabIndex={0} role="button" className={tagClasses} {...attrs} onClick={onTagSelect || undefined}>
+        <div tabIndex={0}
+             role="switch"
+             aria-checked={tagSelected}
+             className={tagClasses}
+             onClick={onTagSelect || undefined}
+             {...attrs}>
           <NxOverflowTooltip>
             <div className="nx-tag__text">{children}</div>
           </NxOverflowTooltip>
