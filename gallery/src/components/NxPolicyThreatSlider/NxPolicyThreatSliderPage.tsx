@@ -58,6 +58,7 @@ export default function NxPolicyThreatSliderPage() {
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="General Example"
+                          id="nx-policy-threat-slider-example"
                           codeExamples={NxPolicyThreatSliderCode}
                           liveExample={NxPolicyThreatSliderExample}>
         This example shows an NxPolicyThreatSlider communicating its selected values
@@ -65,6 +66,7 @@ export default function NxPolicyThreatSliderPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Disabled Example"
+                          id="nx-policy-threat-slider-disabled-example"
                           codeExamples={NxPolicyThreatSliderDisabledCode}
                           liveExample={NxPolicyThreatSliderDisabledExample}>
         This <code className="nx-code">NxPolicyThreatSlider</code> is disabled.
