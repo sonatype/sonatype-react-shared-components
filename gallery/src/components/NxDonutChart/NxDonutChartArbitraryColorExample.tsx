@@ -7,40 +7,27 @@
 import React from 'react';
 import {NxDonutChart} from '@sonatype/react-shared-components';
 
-export default function NxDonutChartMinimalExample() {
+export default function NxDonutChartArbitraryColorExample() {
 
   const dataPoints1 = [
     {
-      value: 50,
-      severity: 'critical',
-      label: 'label 1'
-    },
-    {
-      value: 10,
-      severity: 'moderate',
-      label: 'label 2'
-    }
-  ];
-
-  const dataPoints2 = [
-    {
       value: 25,
-      severity: 'no-threat',
+      severity: 'red',
       label: 'label 1'
     },
     {
       value: 25,
-      severity: 'critical',
+      severity: 'black',
       label: 'label 2'
     },
     {
       value: 25,
-      severity: 'low',
+      severity: 'green',
       label: 'label 3'
     },
     {
       value: 25,
-      severity: 'moderate',
+      severity: 'cyan',
       label: 'label 4'
     }
   ];
@@ -48,7 +35,6 @@ export default function NxDonutChartMinimalExample() {
   return (
     <>
       <NxDonutChart dataPoints={dataPoints1} />
-      <NxDonutChart dataPoints={dataPoints2} />
     </>
   );
 }

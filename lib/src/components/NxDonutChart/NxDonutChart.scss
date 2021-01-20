@@ -7,31 +7,54 @@
 @import '../../scss-shared/nx-colors';
 
 .nx-donut-chart {
-    height: 30px;
+    height: 100px;
     fill: none;
 }
 
-.cn-severity-donut-chart__critical-arc {
+.nx-severity-donut-chart__critical-arc {
     stroke: $nx-threat-color-critical;
 }
 
-.cn-severity-donut-chart__severe-arc {
+.nx-severity-donut-chart__severe-arc {
     stroke: $nx-threat-color-severe;
 }
 
-.cn-severity-donut-chart__moderate-arc {
+.nx-severity-donut-chart__moderate-arc {
     stroke: $nx-threat-color-moderate;
 }
 
-.cn-severity-donut-chart__low-arc {
+.nx-severity-donut-chart__low-arc {
     stroke: $nx-threat-color-low;
 }
 
-.cn-severity-donut-chart__no-threat-arc {
+.nx-severity-donut-chart__no-threat-arc {
     stroke: $nx-threat-color-none;
 }
 
-.cn-severity-donut-chart__unspecified-arc {
+.nx-severity-donut-chart__unspecified-arc {
     stroke: $nx-threat-color-unspecified;
 }
 
+.nx-severity-donut-chart-tooltip__critical-arc {
+    color: $nx-threat-color-critical;
+}
+
+.nx-severity-donut-chart-tooltip__severe-arc {
+    color: $nx-threat-color-severe;
+}
+
+.nx-severity-donut-chart-tooltip__moderate-arc {
+    color: $nx-threat-color-moderate;
+}
+
+.nx-severity-donut-chart-tooltip__low-arc {
+    color: $nx-threat-color-low;
+}
+
+.nx-severity-donut-chart-tooltip__no-threat-arc {
+    color: $nx-threat-color-none;
+}
+
+.nx-severity-donut-chart-tooltip__unspecified-arc {
+    color: $nx-threat-color-unspecified;
+}
