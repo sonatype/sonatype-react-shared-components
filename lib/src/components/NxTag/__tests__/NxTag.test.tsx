@@ -26,4 +26,13 @@ describe('NxSelectableTag', function() {
     expect(getShallowComponent({ tagColor: 'orange' }))
         .not.toMatchSelector('.nx-tag--default');
   });
+
+  it('fires the components onTagSelect when clicked', function() {
+    const onTagSelect = jest.fn(),
+        trigger = getShallowComponent({ onTagSelect });
+
+    expect(onTagSelect).not.toHaveBeenCalled();
+    trigger.simulate('click');
+    expect(onTagSelect).toHaveBeenCalled();
+  });
 });
