@@ -64,15 +64,9 @@
   border-color: $nx-grey-300;
 }
 
-.nx-tag__actions {
-  @include container-horizontal;
-  align-items: center;
-  justify-items: right;
-  margin-left: $nx-spacing-xs;
-}
-
 .nx-tag__action {
   @include container-horizontal;
+  margin-left: $nx-spacing-xs;
 }
 
 // Available tag colours
