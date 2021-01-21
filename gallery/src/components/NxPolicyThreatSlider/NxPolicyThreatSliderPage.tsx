@@ -9,8 +9,10 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxPolicyThreatSliderExample from './NxPolicyThreatSliderExample';
+import NxPolicyThreatSliderDisabledExample from './NxPolicyThreatSliderDisabledExample';
 
 const NxPolicyThreatSliderCode = require('!!raw-loader!./NxPolicyThreatSliderExample').default;
+const NxPolicyThreatSliderDisabledCode = require('!!raw-loader!./NxPolicyThreatSliderDisabledExample').default;
 
 export default function NxPolicyThreatSliderPage() {
   return (
@@ -45,15 +47,29 @@ export default function NxPolicyThreatSliderPage() {
               <td className="nx-cell">No</td>
               <td className="nx-cell">Callback executed when the user changes the range selection</td>
             </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell">disabled</td>
+              <td className="nx-cell">boolean</td>
+              <td className="nx-cell">No</td>
+              <td className="nx-cell">Set to true to disable interaction with this component.</td>
+            </tr>
           </tbody>
         </table>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="General Example"
+                          id="nx-policy-threat-slider-example"
                           codeExamples={NxPolicyThreatSliderCode}
                           liveExample={NxPolicyThreatSliderExample}>
         This example shows an NxPolicyThreatSlider communicating its selected values
         to the calling code.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Disabled Example"
+                          id="nx-policy-threat-slider-disabled-example"
+                          codeExamples={NxPolicyThreatSliderDisabledCode}
+                          liveExample={NxPolicyThreatSliderDisabledExample}>
+        This <code className="nx-code">NxPolicyThreatSlider</code> is disabled.
       </GalleryExampleTile>
     </>
   );
