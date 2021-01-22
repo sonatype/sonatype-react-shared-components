@@ -55,9 +55,7 @@ export const NxSelectableTag: FunctionComponent<Props> =
           <NxOverflowTooltip>
             <div className="nx-tag__text">{children}</div>
           </NxOverflowTooltip>
-          <div className="nx-tag__action">
-            <NxFontAwesomeIcon icon={faPlusCircle} />
-          </div>
+          <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
         </div>
       );
     };
