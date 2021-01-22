@@ -7,17 +7,22 @@
 import {ReactNode, WeakValidationMap} from 'react';
 import * as PropTypes from 'prop-types';
 
+export const NX_TAG_COLORS = 
+    ['light-blue', 'purple', 'pink', 'blue', 'red', 'green', 'orange', 'yellow', 'lime', 'indigo'] as const;
+export type NX_TAG_COLORS_TYPE = (typeof NX_TAG_COLORS)[number]; // See https://stackoverflow.com/a/45486495
+
 export interface Props {
-  onSelect?: (() => void) | null;
-  isSelected?: boolean;
+  onTagSelect?: (() => void) | null;
+  tagSelected?: boolean;
   children: ReactNode;
-  color?: string | null;
+  tagColor?: NX_TAG_COLORS_TYPE;
   className?: string | null;
 }
+
 export const propTypes: WeakValidationMap<Props> = {
   onTagSelect: PropTypes.func,
   tagSelected: PropTypes.bool,
   children: PropTypes.string,
-  tagColor: PropTypes.string,
+  tagColor: PropTypes.oneOf(NX_TAG_COLORS),
   className: PropTypes.string
 };
