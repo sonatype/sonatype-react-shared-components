@@ -80,92 +80,33 @@
   }
 }
 
-.nx-tag--light-blue {
-  background-color: $nx-blue-200;
-  border-color: $nx-blue-200;
-
-  &.nx-tag--unselected {
-    background-color: $nx-grey-300;
+@mixin tag-color($tag-name, $tag-color-dark, $tag-color-light) {
+  .nx-tag--#{$tag-name} {
+    background-color: $tag-color-dark;
+    border-color: $tag-color-dark;
+  
+    &.nx-tag--unselected {
+      background-color: $tag-color-light;
+    }
   }
 }
 
-.nx-tag--purple {
-  background-color: #d584ff;
-  border-color: #d584ff;
+@include tag-color(light-blue, $nx-blue-200, $nx-blue-300);
 
-  &.nx-tag--unselected {
-    background-color:#f3dcff;
-  }
-}
+@include tag-color(purple, #d584ff,#f3dcff);
 
-.nx-tag--pink {
-  background-color: #ff90d1;
-  border-color: #ff90d1;
+@include tag-color(pink, $nx-pink-300, #ffdbf0);
 
-  &.nx-tag--unselected {
-    background-color: #ffdbf0;
-  }
-}
+@include tag-color(blue, $nx-teal-400, #b5eaff);
 
-.nx-tag--blue {
-  background-color: $nx-teal-400;
-  border-color: $nx-teal-400;
+@include tag-color(red, $nx-red-300, #ffd7d8);
 
-  &.nx-tag--unselected {
-    background-color: #b5eaff;
-  }
-}
+@include tag-color(green, $nx-turquoise-600, #befffa);
 
-.nx-tag--red {
-  background-color: #ff8286;
-  border-color: #ff8286;
+@include tag-color(orange, $nx-orange-700, #ffe4c7);
 
-  &.nx-tag--unselected {
-    background-color: #ffd7d8;
-  }
-}
+@include tag-color(yellow, $nx-yellow-700, #ffeab7);
 
-.nx-tag--green {
-  background-color: #21c3b7;
-  border-color: #21c3b7;
+@include tag-color(lime, $nx-green-50, #f2ffec);
 
-  &.nx-tag--unselected {
-    background-color: #befffa;
-  }
-}
-
-.nx-tag--orange {
-  background-color: #fe9522;
-  border-color: #fe9522;
-
-  &.nx-tag--unselected {
-    background-color: #ffe4c7;
-  }
-}
-
-.nx-tag--yellow {
-  background-color: #ffbf27;
-  border-color: #ffbf27;
-
-  &.nx-tag--unselected {
-    background-color: #ffeab7;
-  }
-}
-
-.nx-tag--lime {
-  background-color: #b2f795;
-  border-color: #b2f795;
-
-  &.nx-tag--unselected {
-    background-color: #f2ffec;
-  }
-}
-
-.nx-tag--indigo {
-  background-color: #919fe8;
-  border-color: #919fe8;
-
-  &.nx-tag--unselected {
-    background-color: #eef0ff;
-  }
-}
+@include tag-color(indigo, #919fe8, #eef0ff);
