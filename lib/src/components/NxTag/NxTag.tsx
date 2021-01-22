@@ -23,11 +23,11 @@ const NxTag: FunctionComponent<Props> =
           });
 
       return (
-        <div className={tagClasses} {...attrs}>
-          <NxOverflowTooltip>
-            <div className="nx-tag__text">{children}</div>
-          </NxOverflowTooltip>
-        </div>
+        <NxOverflowTooltip>
+          <div className={tagClasses} {...attrs}>
+            {children}
+          </div>
+        </NxOverflowTooltip>
       );
     };
 
@@ -46,17 +46,17 @@ export const NxSelectableTag: FunctionComponent<Props> =
           });
 
       return (
-        <div tabIndex={0}
-             role="switch"
-             aria-checked={tagSelected}
-             className={tagClasses}
-             onClick={onTagSelect || undefined}
-             {...attrs}>
-          <NxOverflowTooltip>
-            <div className="nx-tag__text">{children}</div>
-          </NxOverflowTooltip>
-          <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
-        </div>
+        <NxOverflowTooltip>
+          <div tabIndex={0}
+              role="switch"
+              aria-checked={tagSelected}
+              className={tagClasses}
+              onClick={onTagSelect || undefined}
+              {...attrs}>
+            <span className="nx-tag__text">{children}</span>
+            <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
+          </div>
+        </NxOverflowTooltip>
       );
     };
 
