@@ -10,6 +10,7 @@
 
 .nx-tag {
   @include semi-bold();
+  @include container-horizontal;
   align-items: center;
   background-color: $nx-blue-800;
   border: 1px solid $nx-blue-800;
@@ -19,8 +20,9 @@
   cursor: default;
   display: inline-block;
   font-size: $nx-font-size-s;
+  height: 32px;
   margin: 0 $nx-spacing-xs $nx-spacing-xs 0;
-  padding: 5px $nx-spacing-xs 6px $nx-spacing-md;
+  padding: 5px $nx-spacing-md 6px $nx-spacing-md;
   max-width: 824px;
 }
 
@@ -32,6 +34,7 @@
 .nx-tag--selectable {
   cursor: pointer;
   display: inline-flex;
+  padding-right: $nx-spacing-xs;
 
   &:focus {
     border: 1px solid $nx-focus-border-color;
@@ -65,8 +68,7 @@
 }
 
 .nx-tag__action {
-  @include container-horizontal;
-  margin-left: $nx-spacing-xs;
+  margin-left: $nx-spacing-md;
 }
 
 // Available tag colours
