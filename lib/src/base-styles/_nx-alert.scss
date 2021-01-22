@@ -79,9 +79,9 @@
 
 .nx-alert--success {
   background-color: #fafffc;
-  border-color: #007623;
+  border-color: $nx-green-700;
 
   > .nx-icon {
-    color: #007623;
+    color: $nx-green-700;
   }
 }
