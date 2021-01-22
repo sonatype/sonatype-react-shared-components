@@ -181,8 +181,5 @@ export { default as NxToggle, Props as NxToggleProps } from './components/NxTogg
 export { default as NxStatefulToggle, Props as NxStatefulToggleProps }
   from './components/NxToggle/stateful/NxStatefulToggle';
 
-export {
-  default as NxTag,
-  NxSelectableTag,
-  Props as NxTagProps }
+export { default as NxTag, NxSelectableTag, Props as NxTagProps }
   from './components/NxTag/NxTag';

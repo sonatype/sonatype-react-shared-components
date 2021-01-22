@@ -11,7 +11,6 @@
 .nx-tag {
   @include semi-bold();
   @include container-horizontal;
-  align-items: center;
   background-color: $nx-blue-800;
   border: 1px solid $nx-blue-800;
   border-radius: 16px;

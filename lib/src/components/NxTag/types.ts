@@ -8,10 +8,10 @@ import {ReactNode, WeakValidationMap} from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface Props {
-  onTagSelect?: (() => void) | null;
-  tagSelected?: boolean;
+  onSelect?: (() => void) | null;
+  isSelected?: boolean;
   children: ReactNode;
-  tagColor?: string | null;
+  color?: string | null;
   className?: string | null;
 }
 export const propTypes: WeakValidationMap<Props> = {
