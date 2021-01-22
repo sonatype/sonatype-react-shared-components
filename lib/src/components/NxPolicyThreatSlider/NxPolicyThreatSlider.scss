@@ -37,20 +37,24 @@
     display: none;
   }
 
-  .MuiSlider-thumb {
-    box-sizing: border-box;
-    background-color: $nx-white;
-    border: 2px solid;
-    border-radius: $nx-border-radius;
-    color: $nx-text-color-dark;
-    font-size: $nx-font-size-s;
-    font-weight: bold;
-    height: $thumb-size;
-    width: $thumb-size;
-    line-height: 1;
-    margin-left: $thumb-size / -2;
-    margin-top: -($thumb-vertical-overflow);
+  &, .Mui-disabled {
+    .MuiSlider-thumb {
+      box-sizing: border-box;
+      background-color: $nx-white;
+      border: 2px solid;
+      border-radius: $nx-border-radius;
+      color: $nx-text-color-dark;
+      font-size: $nx-font-size-s;
+      font-weight: bold;
+      height: $thumb-size;
+      width: $thumb-size;
+      line-height: 1;
+      margin-left: $thumb-size / -2;
+      margin-top: -($thumb-vertical-overflow);
+    }
+  }
 
+  .MuiSlider-thumb {
     &.MuiSlider-active, &:hover {
       box-shadow: none;
     }
@@ -96,6 +100,12 @@
     .MuiSlider-thumb:not(:focus) {
       border-color: $nx-threat-color-critical;
     }
+  }
+
+  .Mui-disabled .nx-policy-threat-slider__value-label .MuiSlider-thumb {
+    border-color: $nx-disabled-border;
+    background-color: $nx-disabled-background;
+    color: $nx-text-color-disabled;
   }
 
   .MuiSlider-mark {
