@@ -30,7 +30,7 @@ function NxSelectableTagExample() {
       onTagSelect10 = () => setTagSelected10(!tagSelected10);
 
   return (
-    <div>
+    <>
       <NxSelectableTag onTagSelect={onTagSelect1} tagSelected={tagSelected1}>Default</NxSelectableTag>
       <NxSelectableTag onTagSelect={onTagSelect2} tagSelected={tagSelected2} tagColor="purple">
         Purple
@@ -60,7 +60,7 @@ function NxSelectableTagExample() {
       <NxSelectableTag onTagSelect={onTagSelect10} tagSelected={tagSelected10} tagColor="indigo">
         Indigo
       </NxSelectableTag>
-    </div>
+    </>
   );
 }
 
