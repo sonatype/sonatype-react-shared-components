@@ -14,7 +14,7 @@
   }
 
   .nx-icon--invalid {
-    color: #cd0028;
+    color: $nx-red-800;
   }
 
   .nx-icon--valid {
@@ -35,7 +35,7 @@
 }
 
 .nx-text-input__invalid-message {
-  color: #cd0028;
+  color: $nx-red-800;
   font-size: $nx-font-size-xs;
   line-height: 16px;
   margin-top: $nx-spacing-xs;
