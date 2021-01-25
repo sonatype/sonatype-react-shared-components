@@ -11,7 +11,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import './NxTag.scss';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
-import { Props, propTypes } from './types';
+import { Props, propTypes, SelectableProps, selectablePropTypes } from './types';
 export { Props } from './types';
 
 const NxTag: FunctionComponent<Props> =
@@ -34,30 +34,26 @@ const NxTag: FunctionComponent<Props> =
 NxTag.propTypes = propTypes;
 export default NxTag;
 
-export const NxSelectableTag: FunctionComponent<Props> =
+export const NxSelectableTag: FunctionComponent<SelectableProps> =
     function NxSelectableTag(props) {
-      const { children, className, color, selected, onSelect, ...attrs } = props,
+      const { children, className, selected, onSelect, ...attrs } = props,
           isSelected = selected,
-          tagClasses = classnames('nx-tag nx-tag--selectable', className, {
+          tagClasses = classnames('nx-tag--selectable', className, {
             'nx-tag--selected': isSelected,
-            'nx-tag--unselected': !isSelected,
-            [`nx-tag--${color}`]: color,
-            ['nx-tag--default']: !color
+            'nx-tag--unselected': !isSelected
           });
 
       return (
-        <NxOverflowTooltip>
-          <div tabIndex={0}
+        <NxTag tabIndex={0}
                role="switch"
                aria-checked={selected}
                className={tagClasses}
                onClick={onSelect || undefined}
                {...attrs}>
-            <span className="nx-tag__text">{children}</span>
-            <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
-          </div>
-        </NxOverflowTooltip>
+          <span className="nx-tag__text">{children}</span>
+          <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
+        </NxTag>
       );
     };
 
-NxSelectableTag.propTypes = propTypes;
+NxSelectableTag.propTypes = selectablePropTypes;
