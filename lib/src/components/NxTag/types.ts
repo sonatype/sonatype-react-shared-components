@@ -11,16 +11,23 @@ export const NX_TAG_COLORS =
     ['light-blue', 'purple', 'pink', 'blue', 'red', 'green', 'orange', 'yellow', 'lime', 'indigo'] as const;
 export type NX_TAG_COLORS_TYPE = (typeof NX_TAG_COLORS)[number]; // See https://stackoverflow.com/a/45486495
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {
-  onSelect?: (() => void) | null;
-  selected?: boolean;
+export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   children: ReactNode;
   tagColor?: NX_TAG_COLORS_TYPE;
 }
 
+export interface SelectableProps extends Props {
+  onSelect?: (() => void) | null;
+  selected?: boolean;
+}
+
 export const propTypes: WeakValidationMap<Props> = {
-  onSelect: PropTypes.func,
-  selected: PropTypes.bool,
   children: PropTypes.string,
   color: PropTypes.oneOf(NX_TAG_COLORS)
 };
+
+export const selectablePropTypes: WeakValidationMap<SelectableProps> = {
+  ...propTypes,
+  onSelect: PropTypes.func,
+  selected: PropTypes.bool
+}

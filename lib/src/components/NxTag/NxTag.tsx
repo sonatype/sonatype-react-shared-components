@@ -11,7 +11,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import './NxTag.scss';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
-import { Props, propTypes } from './types';
+import { Props, propTypes, SelectableProps, selectablePropTypes } from './types';
 export { Props } from './types';
 
 const NxTag: FunctionComponent<Props> =
@@ -34,7 +34,7 @@ const NxTag: FunctionComponent<Props> =
 NxTag.propTypes = propTypes;
 export default NxTag;
 
-export const NxSelectableTag: FunctionComponent<Props> =
+export const NxSelectableTag: FunctionComponent<SelectableProps> =
     function NxSelectableTag(props) {
       const { children, className, selected, onSelect, ...attrs } = props,
           isSelected = selected,
@@ -56,4 +56,4 @@ export const NxSelectableTag: FunctionComponent<Props> =
       );
     };
 
-NxSelectableTag.propTypes = propTypes;
+NxSelectableTag.propTypes = selectablePropTypes;
