@@ -15,7 +15,11 @@ interface TagInfo {
 const tags: TagInfo[] = [
   { color: undefined, value: 'Default' },
   { color: 'purple', value: 'Purple' },
-  { color: 'pink', value: 'Pink' },
+  {
+    color: 'pink',
+    value: `Pink - artisinal singularity tiger-team BASE jump meta-soul-delay network footage garage spook towards
+        tiger-team weathered chrome warehouse`
+  },
   { color: 'blue', value: 'Blue' },
   { color: 'red', value: 'Red' },
   { color: 'green', value: 'Green' },
