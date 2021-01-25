@@ -45,8 +45,8 @@ function NxSelectableTagExample() {
     setSelectedTags(newSet);
   }
 
-  return tags.map((tag, idx) => (
-    <NxSelectableTag key={idx} onSelect={() => toggleTag(tag)} selected={selectedTags.has(tag)} color={tag.color}>
+  return tags.map(tag => (
+    <NxSelectableTag key={tag.value} onSelect={() => toggleTag(tag)} selected={selectedTags.has(tag)} color={tag.color}>
       {tag.value}
     </NxSelectableTag>
   ));
