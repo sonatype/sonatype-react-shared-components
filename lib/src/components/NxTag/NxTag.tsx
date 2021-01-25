@@ -16,10 +16,10 @@ export { Props } from './types';
 
 const NxTag: FunctionComponent<Props> =
     function NxTag(props) {
-      const { children, className, tagColor, ...attrs } = props,
+      const { children, className, color, ...attrs } = props,
           tagClasses = classnames('nx-tag', className, {
-            [`nx-tag--${tagColor}`]: tagColor,
-            ['nx-tag--default']: !tagColor
+            [`nx-tag--${color}`]: color,
+            ['nx-tag--default']: !color
           });
 
       return (
@@ -36,22 +36,22 @@ export default NxTag;
 
 export const NxSelectableTag: FunctionComponent<Props> =
     function NxSelectableTag(props) {
-      const { children, className, tagColor, tagSelected, onTagSelect, ...attrs } = props,
-          isSelected = tagSelected,
+      const { children, className, color, selected, onSelect, ...attrs } = props,
+          isSelected = selected,
           tagClasses = classnames('nx-tag nx-tag--selectable', className, {
             'nx-tag--selected': isSelected,
             'nx-tag--unselected': !isSelected,
-            [`nx-tag--${tagColor}`]: tagColor,
-            ['nx-tag--default']: !tagColor
+            [`nx-tag--${color}`]: color,
+            ['nx-tag--default']: !color
           });
 
       return (
         <NxOverflowTooltip>
           <div tabIndex={0}
                role="switch"
-               aria-checked={tagSelected}
+               aria-checked={selected}
                className={tagClasses}
-               onClick={onTagSelect || undefined}
+               onClick={onSelect || undefined}
                {...attrs}>
             <span className="nx-tag__text">{children}</span>
             <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
