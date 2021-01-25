@@ -30,7 +30,15 @@ const tags: TagInfo[] = [
 ];
 
 function NxSelectableTagExample() {
-  const [selectedTags, setSelectedTags] = useState<Set<TagInfo>>(new Set());
+  const [selectedTags, setSelectedTags] = useState<Set<TagInfo>>(new Set()),
+      tagComponents = tags.map(tag => (
+        <NxSelectableTag key={tag.value}
+                         onSelect={() => toggleTag(tag)}
+                         selected={selectedTags.has(tag)}
+                         color={tag.color}>
+          {tag.value}
+        </NxSelectableTag>
+      ));
 
   function toggleTag(tag: TagInfo) {
     const newSet = new Set(selectedTags);
@@ -45,11 +53,7 @@ function NxSelectableTagExample() {
     setSelectedTags(newSet);
   }
 
-  return tags.map(tag => (
-    <NxSelectableTag key={tag.value} onSelect={() => toggleTag(tag)} selected={selectedTags.has(tag)} color={tag.color}>
-      {tag.value}
-    </NxSelectableTag>
-  ));
+  return <>{tagComponents}</>;
 }
 
 export default NxSelectableTagExample;
