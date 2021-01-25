@@ -35,14 +35,14 @@ const NxTagPage = () =>
         </NxTableHead>
         <NxTableBody>
           <NxTableRow>
-            <NxTableCell>tagColor</NxTableCell>
+            <NxTableCell>color</NxTableCell>
             <NxTableCell>
               'light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime' | 'indigo'
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
             <NxTableCell>
-              If no `tagColor` is specified then the default (dark blue with a grey unselected state) colors are used.
+              If no `color` is specified then the default (dark blue with a grey unselected state) colors are used.
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>
