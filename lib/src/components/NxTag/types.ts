@@ -30,4 +30,4 @@ export const selectablePropTypes: WeakValidationMap<SelectableProps> = {
   ...propTypes,
   onSelect: PropTypes.func,
   selected: PropTypes.bool
-}
+};
