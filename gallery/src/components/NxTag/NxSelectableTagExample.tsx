@@ -5,63 +5,66 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
-import { NxSelectableTag } from '@sonatype/react-shared-components';
+import { NxSelectableTag, NX_TAG_COLORS_TYPE } from '@sonatype/react-shared-components';
+
+interface TagInfo {
+  color?: NX_TAG_COLORS_TYPE;
+  value: string;
+}
+
+const tags: TagInfo[] = [{
+  color: undefined,
+  value: 'Default'
+}, {
+  color: 'purple',
+  value: 'Purple'
+}, {
+  color: 'pink',
+  value: 'Pink'
+}, {
+  color: 'blue',
+  value: 'Blue'
+}, {
+  color: 'red',
+  value: 'Red'
+}, {
+  color: 'green',
+  value: 'Green'
+}, {
+  color: 'orange',
+  value: 'Orange'
+}, {
+  color: 'yellow',
+  value: 'Yellow'
+}, {
+  color: 'lime',
+  value: 'Lime'
+}, {
+  color: 'indigo',
+  value: 'Indigo'
+}];
 
 function NxSelectableTagExample() {
-  const [tagSelected1, setTagSelected1] = useState(false),
-      onSelect1 = () => setTagSelected1(!tagSelected1),
-      [tagSelected2, setTagSelected2] = useState(false),
-      onSelect2 = () => setTagSelected2(!tagSelected2),
-      [tagSelected3, setTagSelected3] = useState(false),
-      onSelect3 = () => setTagSelected3(!tagSelected3),
-      [tagSelected4, setTagSelected4] = useState(false),
-      onSelect4 = () => setTagSelected4(!tagSelected4),
-      [tagSelected5, setTagSelected5] = useState(false),
-      onSelect5 = () => setTagSelected5(!tagSelected5),
-      [tagSelected6, setTagSelected6] = useState(false),
-      onSelect6 = () => setTagSelected6(!tagSelected6),
-      [tagSelected7, setTagSelected7] = useState(false),
-      onSelect7 = () => setTagSelected7(!tagSelected7),
-      [tagSelected8, setTagSelected8] = useState(false),
-      onSelect8 = () => setTagSelected8(!tagSelected8),
-      [tagSelected9, setTagSelected9] = useState(false),
-      onSelect9 = () => setTagSelected9(!tagSelected9),
-      [tagSelected10, setTagSelected10] = useState(false),
-      onSelect10 = () => setTagSelected10(!tagSelected10);
+  const [selectedTags, setSelectedTags] = useState<Set<TagInfo>>(new Set());
 
-  return (
-    <>
-      <NxSelectableTag onSelect={onSelect1} selected={tagSelected1}>Default</NxSelectableTag>
-      <NxSelectableTag onSelect={onSelect2} selected={tagSelected2} color="purple">
-        Purple
-      </NxSelectableTag>
-      <NxSelectableTag onSelect={onSelect3} selected={tagSelected3} color="pink">
-        Pink - artisinal singularity tiger-team BASE jump meta-soul-delay network footage garage spook towards
-        tiger-team weathered chrome warehouse
-      </NxSelectableTag>
-      <NxSelectableTag onSelect={onSelect4} selected={tagSelected4} color="blue">
-        Blue
-      </NxSelectableTag>
-      <NxSelectableTag onSelect={onSelect5} selected={tagSelected5} color="red">
-        Red
-      </NxSelectableTag>
-      <NxSelectableTag onSelect={onSelect6} selected={tagSelected6} color="green">
-        Green
-      </NxSelectableTag>
-      <NxSelectableTag onSelect={onSelect7} selected={tagSelected7} color="orange">
-        Orange
-      </NxSelectableTag>
-      <NxSelectableTag onSelect={onSelect8} selected={tagSelected8} color="yellow">
-        Yellow
-      </NxSelectableTag>
-      <NxSelectableTag onSelect={onSelect9} selected={tagSelected9} color="lime">
-        Lime
-      </NxSelectableTag>
-      <NxSelectableTag onSelect={onSelect10} selected={tagSelected10} color="indigo">
-        Indigo
-      </NxSelectableTag>
-    </>
-  );
+  function toggleTag(tag: TagInfo) {
+    const newSet = new Set(selectedTags);
+
+    if (newSet.has(tag)) {
+      newSet.delete(tag);
+    }
+    else {
+      newSet.add(tag);
+    }
+
+    setSelectedTags(newSet);
+  }
+
+  return tags.map((tag, idx) => (
+    <NxSelectableTag key={idx} onSelect={() => toggleTag(tag)} selected={selectedTags.has(tag)} color={tag.color}>
+      {tag.value}
+    </NxSelectableTag>
+  ));
 }
 
 export default NxSelectableTagExample;
