@@ -11,18 +11,18 @@ function NxTagExample() {
   return (
     <>
       <NxTag>Default</NxTag>
-      <NxTag tagColor="purple">Purple</NxTag>
-      <NxTag tagColor="pink">Pink</NxTag>
-      <NxTag tagColor="blue">Blue</NxTag>
-      <NxTag tagColor="red">Red</NxTag>
-      <NxTag tagColor="green">
+      <NxTag color="purple">Purple</NxTag>
+      <NxTag color="pink">Pink</NxTag>
+      <NxTag color="blue">Blue</NxTag>
+      <NxTag color="red">Red</NxTag>
+      <NxTag color="green">
         Green - artisinal singularity tiger-team BASE jump meta-soul-delay network footage garage spook towards
         tiger-team weathered chrome warehouse
       </NxTag>
-      <NxTag tagColor="orange">Orange</NxTag>
-      <NxTag tagColor="yellow">Yellow</NxTag>
-      <NxTag tagColor="lime">Lime</NxTag>
-      <NxTag tagColor="indigo">Indigo</NxTag>
+      <NxTag color="orange">Orange</NxTag>
+      <NxTag color="yellow">Yellow</NxTag>
+      <NxTag color="lime">Lime</NxTag>
+      <NxTag color="indigo">Indigo</NxTag>
     </>
   );
 }
