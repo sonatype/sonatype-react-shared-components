@@ -38,7 +38,7 @@ export const NxSelectableTag: FunctionComponent<Props> =
     function NxSelectableTag(props) {
       const { children, className, tagSelected, onTagSelect, ...attrs } = props,
           isSelected = tagSelected,
-          tagClasses = classnames('nx-tag nx-tag--selectable', className, {
+          tagClasses = classnames('nx-tag--selectable', className, {
             'nx-tag--selected': isSelected,
             'nx-tag--unselected': !isSelected
           });
