@@ -12,37 +12,18 @@ interface TagInfo {
   value: string;
 }
 
-const tags: TagInfo[] = [{
-  color: undefined,
-  value: 'Default'
-}, {
-  color: 'purple',
-  value: 'Purple'
-}, {
-  color: 'pink',
-  value: 'Pink'
-}, {
-  color: 'blue',
-  value: 'Blue'
-}, {
-  color: 'red',
-  value: 'Red'
-}, {
-  color: 'green',
-  value: 'Green'
-}, {
-  color: 'orange',
-  value: 'Orange'
-}, {
-  color: 'yellow',
-  value: 'Yellow'
-}, {
-  color: 'lime',
-  value: 'Lime'
-}, {
-  color: 'indigo',
-  value: 'Indigo'
-}];
+const tags: TagInfo[] = [
+  { color: undefined, value: 'Default' },
+  { color: 'purple', value: 'Purple' },
+  { color: 'pink', value: 'Pink' },
+  { color: 'blue', value: 'Blue' },
+  { color: 'red', value: 'Red' },
+  { color: 'green', value: 'Green' },
+  { color: 'orange', value: 'Orange' },
+  { color: 'yellow', value: 'Yellow' },
+  { color: 'lime', value: 'Lime' },
+  { color: 'indigo', value: 'Indigo' }
+];
 
 function NxSelectableTagExample() {
   const [selectedTags, setSelectedTags] = useState<Set<TagInfo>>(new Set());
