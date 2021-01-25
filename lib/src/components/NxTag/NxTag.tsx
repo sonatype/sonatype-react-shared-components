@@ -36,27 +36,23 @@ export default NxTag;
 
 export const NxSelectableTag: FunctionComponent<Props> =
     function NxSelectableTag(props) {
-      const { children, className, tagColor, tagSelected, onTagSelect, ...attrs } = props,
+      const { children, className, tagSelected, onTagSelect, ...attrs } = props,
           isSelected = tagSelected,
           tagClasses = classnames('nx-tag nx-tag--selectable', className, {
             'nx-tag--selected': isSelected,
-            'nx-tag--unselected': !isSelected,
-            [`nx-tag--${tagColor}`]: tagColor,
-            ['nx-tag--default']: !tagColor
+            'nx-tag--unselected': !isSelected
           });
 
       return (
-        <NxOverflowTooltip>
-          <div tabIndex={0}
-              role="switch"
-              aria-checked={tagSelected}
-              className={tagClasses}
-              onClick={onTagSelect || undefined}
-              {...attrs}>
-            <span className="nx-tag__text">{children}</span>
-            <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
-          </div>
-        </NxOverflowTooltip>
+        <NxTag tabIndex={0}
+               role="switch"
+               aria-checked={tagSelected}
+               className={tagClasses}
+               onClick={onTagSelect || undefined}
+               {...attrs}>
+          <span className="nx-tag__text">{children}</span>
+          <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
+        </NxTag>
       );
     };
 
