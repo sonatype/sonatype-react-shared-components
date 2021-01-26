@@ -14,6 +14,8 @@ import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
 import {Props, propTypes} from './types';
 
+import './NxSegmentedButton.scss';
+
 const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
     function NxSegmentedButton(props, ref) {
       const { variant, className, disabled, buttonContent, onClick, children, isOpen, onToggleOpen, ...attrs } = props,
@@ -27,7 +29,7 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
           <NxButton variant={variant} className="nx-segmented-btn__main-btn" onClick={onClick}>
             {buttonContent}
           </NxButton>
-          <NxButton variant={variant} className="nx-segmented-btn__dropdown" onClick={onToggleOpen}>
+          <NxButton variant={variant} className="nx-segmented-btn__dropdown-btn" onClick={onToggleOpen}>
             <NxFontAwesomeIcon icon={faCaretDown} />
           </NxButton>
           { isOpen &&
