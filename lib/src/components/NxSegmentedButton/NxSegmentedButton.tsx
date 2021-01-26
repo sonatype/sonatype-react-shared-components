@@ -16,16 +16,18 @@ import {Props, propTypes} from './types';
 
 const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
     function NxSegmentedButton(props, ref) {
-      const { variant, className, disabled, menuItems, onClick, children, isOpen, onToggleOpen, ...attrs } = props,
+      const { variant, className, disabled, buttonContent, onClick, children, isOpen, onToggleOpen, ...attrs } = props,
           classes = classnames('nx-segmented-btn', className),
-          wrappedMenuItems = React.Children.map<ReactElement, ReactElement>(menuItems, item => (
+          wrappedMenuItems = React.Children.map<ReactElement, ReactElement>(children, item => (
             <NxOverflowTooltip>{item}</NxOverflowTooltip>
           ));
 
       return (
         <div ref={ref} className={classes} { ...attrs }>
-          <NxButton className="nx-segmented-btn__main-btn" onClick={onClick}>{children}</NxButton>
-          <NxButton className="nx-segmented-btn__dropdown" onClick={onToggleOpen}>
+          <NxButton variant={variant} className="nx-segmented-btn__main-btn" onClick={onClick}>
+            {buttonContent}
+          </NxButton>
+          <NxButton variant={variant} className="nx-segmented-btn__dropdown" onClick={onToggleOpen}>
             <NxFontAwesomeIcon icon={faCaretDown} />
           </NxButton>
           { isOpen &&
