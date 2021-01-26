@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { NxButton, NxSegmentedButton } from '@sonatype/react-shared-components';
+import { NxSegmentedButton } from '@sonatype/react-shared-components';
 
 export default function NxSegmentedButtonSecondaryExample() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,12 +25,12 @@ export default function NxSegmentedButtonSecondaryExample() {
                        onToggleOpen={onToggleOpen}
                        onClick={onMainClick}
                        buttonContent="Click Here">
-      <NxButton className="nx-dropdown-button">
+      <button className="nx-dropdown-button">
         Dropdown item 1
-      </NxButton>
-      <NxButton className="nx-dropdown-button">
+      </button>
+      <button className="nx-dropdown-button">
         Dropdown item 2
-      </NxButton>
+      </button>
     </NxSegmentedButton>
   );
 };

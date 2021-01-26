@@ -6,7 +6,7 @@
  */
 import React, { forwardRef, ReactElement } from 'react';
 import classnames from 'classnames';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxButton from '../NxButton/NxButton';
@@ -30,7 +30,7 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
             {buttonContent}
           </NxButton>
           <NxButton variant={variant} className="nx-segmented-btn__dropdown-btn" onClick={onToggleOpen}>
-            <NxFontAwesomeIcon icon={faCaretDown} />
+            <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown} />
           </NxButton>
           { isOpen &&
             <div className="nx-dropdown-menu">
