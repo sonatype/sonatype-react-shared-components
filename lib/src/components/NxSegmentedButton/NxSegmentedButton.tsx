@@ -19,7 +19,9 @@ import './NxSegmentedButton.scss';
 const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
     function NxSegmentedButton(props, ref) {
       const { variant, className, disabled, buttonContent, onClick, children, isOpen, onToggleOpen, ...attrs } = props,
-          classes = classnames('nx-segmented-btn', className),
+          classes = classnames('nx-segmented-btn', className, {
+            'nx-segmented-btn--open': isOpen
+          }),
           wrappedMenuItems = React.Children.map<ReactElement, ReactElement>(children, item => (
             <NxOverflowTooltip>{item}</NxOverflowTooltip>
           ));

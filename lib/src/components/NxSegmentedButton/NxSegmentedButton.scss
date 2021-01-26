@@ -55,6 +55,10 @@
       border-right-color: $nx-blue-900;
     }
 
+    &:focus {
+      border-right-color: $nx-focus-border-color;
+    }
+
     // get fancy to prevent mitred corners on the inner border
     &:not(:focus) {
       border-top-style: none;
@@ -74,6 +78,10 @@
       border-left-color: $nx-blue-900;
     }
 
+    &:focus {
+      border-left-color: $nx-focus-border-color;
+    }
+
     // get fancy to prevent mitred corners on the inner border
     &:not(:focus) {
       border-top-style: none;
@@ -83,6 +91,22 @@
       padding-top: $nx-spacing-xs + 1px;
       padding-right: $nx-spacing-sm + 1px;
       padding-bottom: $nx-spacing-xs + 1px;
+    }
+  }
+}
+
+.nx-segmented-btn--open {
+  > .nx-segmented-btn__dropdown-btn {
+    &.nx-btn--primary {
+      background-color: $nx-blue-400;
+    }
+
+    &.nx-btn--secondary {
+      background-color: $nx-blue-100;
+    }
+
+    &.nx-btn--tertiary {
+      background-color: $nx-grey-100;
     }
   }
 }
