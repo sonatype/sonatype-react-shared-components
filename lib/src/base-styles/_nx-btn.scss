@@ -56,7 +56,7 @@
   @extend %nx-btn--disabled;
 
   background-color: $nx-blue-600;
-  border-color: $nx-blue-600;
+  border-color: transparent;
   color: $nx-white;
 
   &:hover {
