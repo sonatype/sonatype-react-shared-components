@@ -46,6 +46,10 @@
   &.nx-segmented-btn__main-btn {
     border-right-color: $nx-blue-400;
 
+    &:hover {
+      border-right-color: $nx-blue-900;
+    }
+
     // get fancy to prevent mitred corners on the inner border
     &:not(:focus) {
       border-top-style: none;
@@ -60,6 +64,10 @@
 
   &.nx-segmented-btn__dropdown-btn {
     border-left-color: $nx-blue-400;
+
+    &:hover {
+      border-left-color: $nx-blue-900;
+    }
 
     // get fancy to prevent mitred corners on the inner border
     &:not(:focus) {
