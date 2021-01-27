@@ -11,11 +11,12 @@ import { Props, propTypes } from './types';
 import useDropdownState from '../../../util/useDropdownState';
 
 const NxStatefulSegmentedButton = forwardRef<HTMLDivElement, Props>(
-    function NxStatefulSegmentedButton(props) {
+    function NxStatefulSegmentedButton(props, ref) {
       const { isOpen, onToggleOpen, handleKeyPress } = useDropdownState();
 
       return (
-        <NxSegmentedButton isOpen={isOpen}
+        <NxSegmentedButton ref={ref}
+                           isOpen={isOpen}
                            onToggleOpen={onToggleOpen}
                            onKeyDown={handleKeyPress}
                            {...props} />
