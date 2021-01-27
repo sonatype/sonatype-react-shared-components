@@ -23,11 +23,8 @@
   height: 32px;
   margin: 0 $nx-spacing-xs $nx-spacing-xs 0;
   padding: 5px $nx-spacing-md 6px $nx-spacing-md;
-  max-width: 824px;
-}
-
-.nx-tag__text {
-  @include nx-truncate-ellipsis;
+  // Uppercase Min so SCSS ignores it and uses CSS min, not SCSS min
+  max-width: Min(100%, 320px);
 }
 
 .nx-tag--selectable {
@@ -59,6 +56,10 @@
 
 .nx-tag--unselected {
   border-color: $nx-grey-300;
+}
+
+.nx-tag__text {
+  @include nx-truncate-ellipsis;
 }
 
 .nx-tag__action {

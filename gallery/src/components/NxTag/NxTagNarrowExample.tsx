@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
-import { NxSelectableTag, NX_TAG_COLORS_TYPE } from '@sonatype/react-shared-components';
+import { NxTag, NxSelectableTag, NX_TAG_COLORS_TYPE } from '@sonatype/react-shared-components';
 
 interface TagInfo {
   color?: NX_TAG_COLORS_TYPE;
@@ -15,7 +15,11 @@ interface TagInfo {
 const tags: TagInfo[] = [
   { color: undefined, value: 'Default' },
   { color: 'purple', value: 'Purple' },
-  { color: 'pink', value: `Pink`},
+  {
+    color: 'pink',
+    value: `Pink - artisinal singularity tiger-team BASE jump meta-soul-delay network footage garage spook towards
+        tiger-team weathered chrome warehouse`
+  },
   { color: 'blue', value: 'Blue' },
   { color: 'red', value: 'Red' },
   { color: 'green', value: 'Green' },
@@ -25,7 +29,7 @@ const tags: TagInfo[] = [
   { color: 'indigo', value: 'Indigo' }
 ];
 
-function NxSelectableTagExample() {
+function NxTagNarrowExample() {
   const [selectedTags, setSelectedTags] = useState<Set<TagInfo>>(new Set());
 
   function toggleTag(tag: TagInfo) {
@@ -42,7 +46,21 @@ function NxSelectableTagExample() {
   }
 
   return (
-    <>
+    <div style={{width: '250px'}}>
+      <NxTag>Default</NxTag>
+      <NxTag color="purple">Purple</NxTag>
+      <NxTag color="pink">Pink</NxTag>
+      <NxTag color="blue">Blue</NxTag>
+      <NxTag color="red">Red</NxTag>
+      <NxTag color="green">
+        Green - artisinal singularity tiger-team BASE jump meta-soul-delay network footage garage spook towards
+        tiger-team weathered chrome warehouse
+      </NxTag>
+      <NxTag color="orange">Orange</NxTag>
+      <NxTag color="yellow">Yellow</NxTag>
+      <NxTag color="lime">Lime</NxTag>
+      <NxTag color="indigo">Indigo</NxTag>
+
       {
         tags.map(tag => (
           <NxSelectableTag key={tag.value}
@@ -53,8 +71,8 @@ function NxSelectableTagExample() {
           </NxSelectableTag>
         ))
       }
-    </>
+    </div>
   );
 }
 
-export default NxSelectableTagExample;
+export default NxTagNarrowExample;

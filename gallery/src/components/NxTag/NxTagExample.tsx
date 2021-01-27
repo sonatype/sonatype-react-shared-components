@@ -15,10 +15,7 @@ function NxTagExample() {
       <NxTag color="pink">Pink</NxTag>
       <NxTag color="blue">Blue</NxTag>
       <NxTag color="red">Red</NxTag>
-      <NxTag color="green">
-        Green - artisinal singularity tiger-team BASE jump meta-soul-delay network footage garage spook towards
-        tiger-team weathered chrome warehouse
-      </NxTag>
+      <NxTag color="green">Green</NxTag>
       <NxTag color="orange">Orange</NxTag>
       <NxTag color="yellow">Yellow</NxTag>
       <NxTag color="lime">Lime</NxTag>

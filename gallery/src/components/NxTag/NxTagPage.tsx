@@ -9,10 +9,12 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 import NxTagExample from './NxTagExample';
 import NxSelectableTagExample from './NxSelectableTagExample';
+import NxTagNarrowExample from './NxTagNarrowExample';
 import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
 
 const NxTagExampleCode = require('!!raw-loader!./NxTagExample').default;
 const NxSelectableTagExampleCode = require('!!raw-loader!./NxSelectableTagExample').default;
+const NxTagNarrowExampleCode = require('!!raw-loader!./NxTagNarrowExample').default;
 
 const NxTagPage = () =>
   <>
@@ -84,6 +86,13 @@ const NxTagPage = () =>
                         liveExample={NxSelectableTagExample}
                         codeExamples={NxSelectableTagExampleCode}>
       Selectable tags in all available colors.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxTag Constrained Width Example"
+                        id="nx-tag-narrow-example"
+                        liveExample={NxTagNarrowExample}
+                        codeExamples={NxTagNarrowExampleCode}>
+      Unselectable and Selectable tags in a narrow (250px) container to demonstrate wrapping and truncation.
     </GalleryExampleTile>
 
   </>;
