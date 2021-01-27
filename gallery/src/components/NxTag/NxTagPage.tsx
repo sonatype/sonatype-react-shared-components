@@ -45,6 +45,28 @@ const NxTagPage = () =>
               If no `color` is specified then the default (dark blue with a grey unselected state) colors are used.
             </NxTableCell>
           </NxTableRow>
+          <NxTableRow>
+            <NxTableCell>onSelect</NxTableCell>
+            <NxTableCell>
+              Prop
+            </NxTableCell>
+            <NxTableCell>No</NxTableCell>
+            <NxTableCell></NxTableCell>
+            <NxTableCell>
+              What to do when a selectable tag is selected, default is change colour and icon.
+            </NxTableCell>
+          </NxTableRow>
+          <NxTableRow>
+            <NxTableCell>color</NxTableCell>
+            <NxTableCell>
+              'light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime' | 'indigo'
+            </NxTableCell>
+            <NxTableCell>No</NxTableCell>
+            <NxTableCell></NxTableCell>
+            <NxTableCell>
+              If no `color` is specified then the default (dark blue with a grey unselected state) colors are used.
+            </NxTableCell>
+          </NxTableRow>
         </NxTableBody>
       </NxTable>
     </GalleryDescriptionTile>
