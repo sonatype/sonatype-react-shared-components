@@ -183,3 +183,6 @@ export { default as NxStatefulToggle, Props as NxStatefulToggleProps }
 
 export { default as NxSegmentedButton, Props as NxSegmentedButtonProps }
   from './components/NxSegmentedButton/NxSegmentedButton';
+
+export { default as NxStatefulSegmentedButton, Props as NxStatefulSegmentedButtonProps }
+  from './components/NxSegmentedButton/stateful/NxStatefulSegmentedButton';
