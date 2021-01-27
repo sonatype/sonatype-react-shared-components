@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { useState, KeyboardEventHandler, useEffect } from "react";
+import { useState, KeyboardEventHandler, useEffect } from 'react';
 
 /**
  * Stateful dropdown handling, abstracted into a hook for use in various dropdown-like stateful

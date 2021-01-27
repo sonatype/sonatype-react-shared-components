@@ -28,10 +28,16 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
 
       return (
         <div ref={ref} className={classes} { ...attrs }>
-          <NxButton variant={variant} className="nx-segmented-btn__main-btn" onClick={onClick}>
+          <NxButton variant={variant}
+                    className="nx-segmented-btn__main-btn"
+                    onClick={onClick}
+                    disabled={disabled || undefined}>
             {buttonContent}
           </NxButton>
-          <NxButton variant={variant} className="nx-segmented-btn__dropdown-btn" onClick={onToggleOpen}>
+          <NxButton variant={variant}
+                    className="nx-segmented-btn__dropdown-btn"
+                    onClick={onToggleOpen}
+                    disabled={disabled || undefined}>
             <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown} />
           </NxButton>
           { isOpen &&
