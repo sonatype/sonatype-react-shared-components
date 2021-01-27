@@ -46,7 +46,9 @@
   &:active {
     background-color: $nx-blue-100;
   }
+}
 
+.nx-btn, .nx-segmented-btn {
   + .nx-btn {
     margin-left: 0;
   }

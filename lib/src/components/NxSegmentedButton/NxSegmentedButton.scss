@@ -19,6 +19,12 @@
   }
 }
 
+.nx-btn, .nx-segmented-btn {
+  + .nx-segmented-btn {
+    margin-left: 0;
+  }
+}
+
 .nx-segmented-btn__main-btn {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -47,7 +53,7 @@
   }
 }
 
-.nx-btn--primary {
+.nx-btn--primary:not([disabled]) {
   &.nx-segmented-btn__main-btn {
     border-right-color: $nx-blue-400;
 
