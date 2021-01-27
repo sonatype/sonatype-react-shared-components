@@ -5,34 +5,62 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
-import { NxSelectableTag } from '../NxTag';
+import NxTag, { NxSelectableTag } from '../NxTag';
+import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-describe('NxSelectableTag', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxSelectableTag, { children: 'test' });
+describe('NxTag', function() {
+  const getShallowComponent = enzymeUtils.getShallowComponent(NxTag, { children: 'basic tag' });
 
-  it('renders NxSelectableTag with the `nx-tag--selectable` class', function() {
-    const component = getShallowComponent();
-
-    expect(component).toHaveClassName('nx-tag nx-tag--selectable');
+  it('renders NxTag with the `nx-tag` class', function() {
+    expect(getShallowComponent().find('.nx-tag')).toExist();
   });
 
   it('sets the nx-tag--default class if no color prop is passed', function() {
-    expect(getShallowComponent()).toMatchSelector('.nx-tag--default');
+    expect(getShallowComponent().find('.nx-tag--default')).toExist();
   });
 
-  it('sets the color class using the tagColor if it is provided', function() {
-    expect(getShallowComponent({ tagColor: 'orange' })).toMatchSelector('.nx-tag--orange');
-    expect(getShallowComponent({ tagColor: 'orange' }))
-        .not.toMatchSelector('.nx-tag--default');
+  it('sets the color class using the color if it is provided', function() {
+    const colorComponent = getShallowComponent({ color: 'orange' });
+    expect(colorComponent.find('.nx-tag--orange')).toExist();
+    expect(colorComponent.find('.nx-tag--default')).not.toExist();
+  });
+});
+
+describe('NxSelectableTag', function() {
+  const getShallowComponent = enzymeUtils.getShallowComponent(NxSelectableTag, { children: 'selectable tag' });
+
+  it('renders NxSelectableTag with the `nx-tag--selectable` class', function() {
+    expect(getShallowComponent().find('.nx-tag--selectable')).toExist();
   });
 
-  it('fires the components onTagSelect when clicked', function() {
-    const onTagSelect = jest.fn(),
-        trigger = getShallowComponent({ onTagSelect });
+  it('renders the `nx-tag--unselected` class when not selected', function() {
+    expect(getShallowComponent().find('.nx-tag--unselected')).toExist();
+  });
 
-    expect(onTagSelect).not.toHaveBeenCalled();
+  it('renders the `nx-tag--selected` class when selected', function() {
+    const getSelectedComponent = getShallowComponent({ selected: true });
+    expect(getSelectedComponent.find('.nx-tag--selected')).toExist();
+  });
+
+  it('renders the plus icon when not selected', function() {
+    expect(getShallowComponent().find(NxFontAwesomeIcon)).toExist();
+    expect(getShallowComponent().find(NxFontAwesomeIcon)).toHaveProp('icon', faPlusCircle);
+  });
+
+  it('renders the times icon when selected', function() {
+    const getSelectedComponent = getShallowComponent({ selected: true });
+    expect(getSelectedComponent.find(NxFontAwesomeIcon)).toExist();
+    expect(getSelectedComponent.find(NxFontAwesomeIcon)).toHaveProp('icon', faTimesCircle);
+  });
+
+  it('fires the components onSelect when clicked', function() {
+    const onSelect = jest.fn(),
+        trigger = getShallowComponent({ onSelect });
+
+    expect(onSelect).not.toHaveBeenCalled();
     trigger.simulate('click');
-    expect(onTagSelect).toHaveBeenCalled();
+    expect(onSelect).toHaveBeenCalled();
   });
 });
