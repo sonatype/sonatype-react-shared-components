@@ -53,18 +53,19 @@ const NxTagPage = () =>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
             <NxTableCell>
-              What to do when a selectable tag is selected, default is change colour and icon.
+              What to do when a selectable <code className="nx-code">NxTag</code> is selected, default is change colour
+              and icon.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell>color</NxTableCell>
+            <NxTableCell>selected</NxTableCell>
             <NxTableCell>
-              'light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime' | 'indigo'
+              Prop
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
             <NxTableCell>
-              If no `color` is specified then the default (dark blue with a grey unselected state) colors are used.
+              Boolean for the selected/unselected state of a selectable <code className="nx-code">NxTag</code>
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>
