@@ -94,7 +94,7 @@
 
 @include tag-color(light-blue, $nx-blue-200, $nx-blue-300);
 
-@include tag-color(purple, #d584ff,#f3dcff);
+@include tag-color(purple, $nx-purple-200,#f3dcff);
 
 @include tag-color(pink, $nx-pink-300, #ffdbf0);
 
