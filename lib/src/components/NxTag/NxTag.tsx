@@ -6,7 +6,7 @@
  */
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import './NxTag.scss';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -51,7 +51,7 @@ export const NxSelectableTag: FunctionComponent<SelectableProps> =
                onClick={onSelect || undefined}
                {...attrs}>
           <span className="nx-tag__text">{children}</span>
-          <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
+          <NxFontAwesomeIcon icon={isSelected ? faTimesCircle : faPlusCircle} className="nx-tag__action" />
         </NxTag>
       );
     };
