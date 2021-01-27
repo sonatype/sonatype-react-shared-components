@@ -91,6 +91,7 @@ import NxStatefulTogglePage from './components/NxStatefulToggle/NxStatefulToggle
 import NxBlockquotePage from './styles/NxBlockquote/NxBlockquotePage';
 import NxPrePage from './styles/NxPre/NxPrePage';
 import NxSegmentedButtonPage from './components/NxSegmentedButton/NxSegmentedButtonPage';
+import NxStatefulSegmentedButtonPage from './components/NxStatefulSegmentedButton/NxStatefulSegmentedButtonPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -102,6 +103,7 @@ const pageConfig: PageConfig = {
     NxBinaryDonutChart: NxBinaryDonutChartPage,
     NxButton: NxButtonPage,
     NxSegmentedButton: NxSegmentedButtonPage,
+    NxStatefulSegmentedButton: NxStatefulSegmentedButtonPage,
     NxCheckbox: NxCheckboxPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
     NxCloseButton: NxCloseButtonPage,
