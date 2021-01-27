@@ -22,7 +22,7 @@ export interface SelectableProps extends Props {
 }
 
 export const propTypes: WeakValidationMap<Props> = {
-  children: PropTypes.string,
+  children: PropTypes.node.isRequired,
   color: PropTypes.oneOf(NX_TAG_COLORS)
 };
 
