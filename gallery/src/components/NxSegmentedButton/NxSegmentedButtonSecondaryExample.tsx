@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { NxSegmentedButton } from '@sonatype/react-shared-components';
+import { NxSegmentedButton, NxButton } from '@sonatype/react-shared-components';
 
 export default function NxSegmentedButtonSecondaryExample() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,17 +20,30 @@ export default function NxSegmentedButtonSecondaryExample() {
   }
 
   return (
-    <NxSegmentedButton variant="secondary"
-                       isOpen={isOpen}
-                       onToggleOpen={onToggleOpen}
-                       onClick={onMainClick}
-                       buttonContent="Click Here">
-      <button className="nx-dropdown-button">
-        Dropdown item 1
-      </button>
-      <button className="nx-dropdown-button">
-        Dropdown item 2
-      </button>
-    </NxSegmentedButton>
+    <div className="nx-btn-bar">
+      <NxSegmentedButton variant="secondary"
+                         isOpen={isOpen}
+                         onToggleOpen={onToggleOpen}
+                         onClick={onMainClick}
+                         buttonContent="Click Here">
+        <button className="nx-dropdown-button">
+          Dropdown item 1
+        </button>
+        <button className="nx-dropdown-button">
+          Dropdown item 2
+        </button>
+      </NxSegmentedButton>
+      <NxButton>A normal button to demonstrate alignment</NxButton>
+      <NxSegmentedButton disabled
+                         variant="secondary"
+                         isOpen={isOpen}
+                         onToggleOpen={onToggleOpen}
+                         onClick={onMainClick}
+                         buttonContent="Disabled Primary Button">
+        <button className="nx-dropdown-button">
+          Dropdown item 1
+        </button>
+      </NxSegmentedButton>
+    </div>
   );
 };

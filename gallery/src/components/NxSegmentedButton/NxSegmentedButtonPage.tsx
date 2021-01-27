@@ -102,21 +102,27 @@ export default function NxSegmentedButtonPage() {
                           id="nx-segmented-button-primary-example"
                           liveExample={NxSegmentedButtonPrimaryExample}
                           codeExamples={nxSegmentedButtonPrimaryCode}>
-        An <code className="nx-code">NxSegmentedButton</code> using primary styling
+        An <code className="nx-code">NxSegmentedButton</code> using primary styling, a disabled
+        primary-styled <code className="nx-code">NxSegmentedButton</code>, and a normal button to demonstrate
+        alignment.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Secondary Variant"
                           id="nx-segmented-button-secondary-example"
                           liveExample={NxSegmentedButtonSecondaryExample}
                           codeExamples={nxSegmentedButtonSecondaryCode}>
-        An <code className="nx-code">NxSegmentedButton</code> using secondary styling
+        An <code className="nx-code">NxSegmentedButton</code> using secondary styling, a disabled
+        secondary-styled <code className="nx-code">NxSegmentedButton</code>, and a normal button to demonstrate
+        alignment.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Tertiary Variant"
                           id="nx-segmented-button-tertiary-example"
                           liveExample={NxSegmentedButtonTertiaryExample}
                           codeExamples={nxSegmentedButtonTertiaryCode}>
-        An <code className="nx-code">NxSegmentedButton</code> using tertiary styling
+        An <code className="nx-code">NxSegmentedButton</code> using secondary styling, a disabled
+        secondary-styled <code className="nx-code">NxSegmentedButton</code>, and a normal button to demonstrate
+        alignment.
       </GalleryExampleTile>
     </>
   );
