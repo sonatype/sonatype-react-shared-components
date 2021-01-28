@@ -16,13 +16,11 @@ export default function NxCardRowAltLayoutExample() {
         <header className="nx-card__header">
           <h3 className="nx-h3">Header</h3>
         </header>
-        <div className="nx-card__content-container">
+        <div className="nx-card__content nx-card__content--2col">
           <div className="nx-card__call-out nx-card__call-out--text-only">
             42
           </div>
-          <div className="nx-card__content">
-            Text
-          </div>
+          <p className="nx-p">Text</p>
         </div>
         <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
       </section>
@@ -30,13 +28,11 @@ export default function NxCardRowAltLayoutExample() {
         <header className="nx-card__header">
           <h3 className="nx-h3">Card header</h3>
         </header>
-        <div className="nx-card__content-container">
+        <div className="nx-card__content nx-card__content--2col">
           <div className="nx-card__call-out">
             <NxFontAwesomeIcon icon={faChartLine} className="nx-icon--card-call-out" />
           </div>
-          <div className="nx-card__content">
-            Data point details
-          </div>
+          <p className="nx-p">Data point details</p>
         </div>
         <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
       </section>
@@ -44,13 +40,11 @@ export default function NxCardRowAltLayoutExample() {
         <header className="nx-card__header">
           <h3 className="nx-h3">Card header</h3>
         </header>
-        <div className="nx-card__content-container">
+        <div className="nx-card__content nx-card__content--2col">
           <div className="nx-card__call-out">
             <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out-xl" />
           </div>
-          <div className="nx-card__content">
-            Large icon
-          </div>
+          <p className="nx-p">Large icon</p>
         </div>
         <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
       </section>
