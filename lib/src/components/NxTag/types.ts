@@ -17,7 +17,7 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> 
 }
 
 export interface SelectableProps extends Props {
-  onSelect: (() => void) | null;
+  onSelect: (() => void);
   selected: boolean;
 }
 

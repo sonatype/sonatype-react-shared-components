@@ -29,7 +29,8 @@ describe('NxTag', function() {
 });
 
 describe('NxSelectableTag', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxSelectableTag, { children: 'selectable tag' });
+  const getShallowComponent = enzymeUtils.getShallowComponent(NxSelectableTag,
+      { children: 'selectable tag', selected: false, onSelect: jest.fn() });
 
   it('renders NxSelectableTag with the `nx-tag--selectable` class', function() {
     expect(getShallowComponent().find('.nx-tag--selectable')).toExist();
