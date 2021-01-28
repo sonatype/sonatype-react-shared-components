@@ -19,7 +19,7 @@ describe('NxTag', function() {
   });
 
   describe('Show NxTag overflow tooltip', function() {
-    const item2Selector = '#nx-tag-example .nx-tag:nth-child(3)', tooltipSelector = '.nx-tooltip';
+    const item2Selector = '#nx-tag-example .nx-tag:nth-child(4)', tooltipSelector = '.nx-tooltip';
     it('displays a tooltip with the full text when an overflowing tag is hovered', async function() {
       const item2 = await browser.$(item2Selector);
   
