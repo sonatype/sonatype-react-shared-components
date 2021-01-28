@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { Target } = require('@applitools/eyes-webdriverio');
 
 describe('NxTag', function() {
   beforeEach(async function() {
@@ -12,7 +13,7 @@ describe('NxTag', function() {
   });
 
   describe('Basic NxTag', function() {
-    const selector = '#nx-tag-example';
+    const selector = '#nx-tag-example .gallery-example-live';
 
     it('looks right', simpleTest(selector));
   });
