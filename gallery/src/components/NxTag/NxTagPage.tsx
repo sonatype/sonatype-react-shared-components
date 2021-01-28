@@ -61,6 +61,21 @@ const NxTagPage = () =>
             <NxTableCell>Default</NxTableCell>
             <NxTableCell>Details</NxTableCell>
           </NxTableRow>
+          <NxTableRow>
+            <NxTableCell>HTML div Attributes</NxTableCell>
+            <NxTableCell>
+              <a target="_blank"
+                 rel="noopener"
+                 href="https://developer.mozilla.org/es/docs/Web/HTML/Elemento/div">
+                HTML div Attributes
+              </a>
+            </NxTableCell>
+            <NxTableCell>No</NxTableCell>
+            <NxTableCell>
+              NxDropdown supports any html attribute that's normally supported by
+              {' '}<code className="nx-code">div</code> elements.
+            </NxTableCell>
+          </NxTableRow>
         </NxTableHead>
         <NxTableBody>
           <NxTableRow>
