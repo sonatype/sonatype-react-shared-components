@@ -44,7 +44,8 @@ const NxTagPage = () =>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
             <NxTableCell>
-              If no `color` is specified then the default (dark blue with a grey unselected state) colors are used.
+              If no <code className="nx-code">color</code> is specified then the default (dark blue with a grey
+              unselected state) colors are used.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
