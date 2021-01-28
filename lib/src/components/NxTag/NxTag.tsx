@@ -12,7 +12,7 @@ import './NxTag.scss';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import { Props, propTypes, SelectableProps, selectablePropTypes } from './types';
-export { Props } from './types';
+export { Props, SelectableProps } from './types';
 
 const NxTag: FunctionComponent<Props> =
     function NxTag(props) {
