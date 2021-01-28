@@ -36,7 +36,7 @@
   &:focus {
     border: 1px solid $nx-focus-border-color;
     box-shadow: $nx-focus-box-shadow;
-    outline: 0;
+    outline: none;
   }
 
   &:hover {
