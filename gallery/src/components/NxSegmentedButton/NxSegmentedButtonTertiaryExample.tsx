@@ -36,7 +36,7 @@ export default function NxSegmentedButtonTertiaryExample() {
       <NxButton>A normal button to demonstrate alignment</NxButton>
       <NxSegmentedButton disabled
                          variant="tertiary"
-                         isOpen={isOpen}
+                         isOpen={false}
                          onToggleOpen={onToggleOpen}
                          onClick={onMainClick}
                          buttonContent="Disabled Primary Button">

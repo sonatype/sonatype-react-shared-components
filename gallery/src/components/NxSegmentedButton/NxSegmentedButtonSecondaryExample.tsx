@@ -36,7 +36,7 @@ export default function NxSegmentedButtonSecondaryExample() {
       <NxButton>A normal button to demonstrate alignment</NxButton>
       <NxSegmentedButton disabled
                          variant="secondary"
-                         isOpen={isOpen}
+                         isOpen={false}
                          onToggleOpen={onToggleOpen}
                          onClick={onMainClick}
                          buttonContent="Disabled Primary Button">
