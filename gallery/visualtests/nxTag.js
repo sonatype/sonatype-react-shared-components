@@ -25,6 +25,17 @@ describe('NxTag', function() {
     it('has a dark grey border when hovered', hoverTest(selector));
     it('has a light blue glow and light blue border when focused', focusTest(selector));
     it('has a light blue glow and dark grey border when focused and hovered', focusAndHoverTest(selector));
-    it('has a dark grey border and dark blue background when clicked', clickTest(selector));
+
+    it('has a blue background and white indicator when clicked', async function() {
+      await targetElement.click();
+
+      try {
+        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      }
+      finally {
+        // click again to reset the state
+        await targetElement.click();
+      }
+    });
   });
 });
