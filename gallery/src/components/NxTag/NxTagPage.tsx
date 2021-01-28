@@ -22,8 +22,8 @@ const NxTagPage = () =>
       <p className="nx-p">
         There are two types of <code className="nx-code">NxTag</code>. The basic tags have a single state.
         <code className="nx-code">NxSelectableTag</code> can be selected and deselected. It is up to the consumer
-        what that means in the context of the UI. The are many colors provided for
-        <code className="nx-code">NxTag</code> which can be specified via props.
+        what that means in the context of the UI. The are many colors provided
+        for <code className="nx-code">NxTag</code> which can be specified via props.
       </p>
       <h3 className="nx-h3">Common Props</h3>
       <NxTable>
