@@ -9,7 +9,7 @@
  @import '../../scss-shared/nx-container-helpers';
 
 .nx-tag {
-  @include semi-bold();
+  @include semi-bold;
   @include container-horizontal;
   @include nx-truncate-ellipsis;
   background-color: $nx-blue-800;
@@ -36,7 +36,7 @@
   &:focus {
     border: 1px solid $nx-focus-border-color;
     box-shadow: $nx-focus-box-shadow;
-    outline: 0;
+    outline: none;
   }
 
   &:hover {
