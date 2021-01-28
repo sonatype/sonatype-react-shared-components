@@ -39,6 +39,7 @@
   // subtract border thickness for consistent spacing
   padding: $nx-spacing-md $nx-spacing-l ($nx-spacing-md - 2px) $nx-spacing-l;
   text-align: center;
+  user-select: none;
   min-width: 80px;
   max-width: 240px;
 
