@@ -15,7 +15,7 @@ interface TagInfo {
 const tags: TagInfo[] = [
   { color: undefined, value: 'Default' },
   { color: 'purple', value: 'Purple' },
-  { color: 'pink', value: `Pink`},
+  { color: 'pink', value: 'Pink'},
   { color: 'blue', value: 'Blue' },
   { color: 'red', value: 'Red' },
   { color: 'green', value: 'Green' },
