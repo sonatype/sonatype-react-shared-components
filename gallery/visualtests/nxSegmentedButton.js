@@ -94,7 +94,7 @@ describe('NxSegmentedButton', function() {
       it('has a light blue border when focused', focusTest(selector, mainBtnSelector));
     });
 
-    describe('Secondary NxButton dropdown section', function() {
+    describe('Tertiary NxButton dropdown section', function() {
       it('has a dark grey border when hovered', hoverTest(selector, dropdownBtnSelector));
       it('has a dark grey border and kight grey background when clicked', clickTest(selector, dropdownBtnSelector));
       it('has a light blue border when focused', focusTest(selector, dropdownBtnSelector));
