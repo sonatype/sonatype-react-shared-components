@@ -46,7 +46,7 @@ function NxTagNarrowExample() {
   }
 
   return (
-    <div style={{width: '250px'}}>
+    <div style={{width: '250px', border: '1px solid #ddd'}}>
       <NxTag>Default</NxTag>
       <NxTag color="purple">Purple</NxTag>
       <NxTag color="pink">Pink</NxTag>

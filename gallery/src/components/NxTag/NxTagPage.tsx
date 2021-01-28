@@ -109,6 +109,7 @@ const NxTagPage = () =>
                         liveExample={NxTagNarrowExample}
                         codeExamples={NxTagNarrowExampleCode}>
       Unselectable and Selectable tags in a narrow (250px) container to demonstrate wrapping and truncation.
+      Light grey border added for clarity.
     </GalleryExampleTile>
 
   </>;
