@@ -32,30 +32,33 @@ describe('NxSelectableTag', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxSelectableTag,
       { children: 'selectable tag', selected: false, onSelect: jest.fn() });
 
+  it('renders an NxTag', function() {
+    expect(getShallowComponent()).toMatchSelector('NxTag');
+  });
+
   it('renders NxSelectableTag with the `nx-tag--selectable` class', function() {
-    expect(getShallowComponent().find('.nx-tag--selectable')).toExist();
+    expect(getShallowComponent()).toMatchSelector('.nx-tag--selectable');
   });
 
   it('renders the `nx-tag--unselected` class when not selected', function() {
-    expect(getShallowComponent().find('.nx-tag--unselected')).toExist();
+    expect(getShallowComponent()).toMatchSelector('.nx-tag--unselected');
   });
 
   it('renders the `nx-tag--selected` class when selected', function() {
     const getSelectedComponent = getShallowComponent({ selected: true });
-    expect(getSelectedComponent.find('.nx-tag--selected')).toExist();
+    expect(getSelectedComponent).toMatchSelector('.nx-tag--selected');
   });
 
-  it('renders the plus icon when not selected', function() {
+  it('renders the plus icon and action class when not selected', function() {
     expect(getShallowComponent().find(NxFontAwesomeIcon)).toExist();
     expect(getShallowComponent().find(NxFontAwesomeIcon)).toHaveProp('icon', faPlusCircle);
-    expect(getShallowComponent().find(NxFontAwesomeIcon)).toHaveClassName('fa-plus-circle');
+    expect(getShallowComponent().find(NxFontAwesomeIcon)).toHaveClassName('nx-tag__action');
   });
 
   it('renders the times icon when selected', function() {
     const getSelectedComponent = getShallowComponent({ selected: true });
     expect(getSelectedComponent.find(NxFontAwesomeIcon)).toExist();
     expect(getSelectedComponent.find(NxFontAwesomeIcon)).toHaveProp('icon', faTimesCircle);
-    expect(getSelectedComponent.find(NxFontAwesomeIcon)).toHaveClassName('fa-times-circle');
   });
 
   it('fires the components onSelect when clicked', function() {
