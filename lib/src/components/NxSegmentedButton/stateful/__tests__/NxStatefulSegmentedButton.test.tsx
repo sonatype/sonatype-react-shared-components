@@ -56,7 +56,7 @@ describe('NxStatefulSegmentedButton', () => {
     expect(statelessButton).toHaveProp('children', <div className="child" />);
     expect(statelessButton).toHaveProp('disabled', true);
     expect(statelessButton).toHaveProp('buttonContent', 'Click Me');
-    expect(statelessButton).toHaveProp('onClick', );
+    expect(statelessButton).toHaveProp('onClick', onClick);
   });
 
   it('opens the dropdown when the toggle is clicked', function() {

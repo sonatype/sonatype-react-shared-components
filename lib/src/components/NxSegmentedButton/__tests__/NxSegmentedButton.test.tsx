@@ -118,7 +118,7 @@ describe('NxSegmentedButton', function() {
 
   it('renders the buttonContent within the nx-segmented-btn__main-btn', function() {
     expect(getShallow().find('.nx-segmented-btn__main-btn')).toHaveText('Click Me');
-  })
+  });
 
   it('renders a down caret in the dropdown button when not open', function() {
     expect(getShallow().find('.nx-segmented-btn__dropdown-btn')).toContainReact(
@@ -138,10 +138,9 @@ describe('NxSegmentedButton', function() {
   });
 
   it('wraps each child in an NxOverflowTooltip and renders them within the nx-dropdown-menu', function() {
-    const children = [<span className="foo" />, <span className="bar" />],
+    const children = [<span key="1" className="foo" />, <span key="2" className="bar" />],
         closedComp = getShallow({ children }),
         openComp = getShallow({ children, isOpen: true });
-
 
     expect(closedComp).not.toContainMatchingElement('.foo');
     expect(closedComp).not.toContainMatchingElement('.bar');
