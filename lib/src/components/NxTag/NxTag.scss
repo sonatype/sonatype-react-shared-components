@@ -88,21 +88,12 @@
 }
 
 @include tag-color(light-blue, $nx-blue-200, $nx-blue-300);
-
 @include tag-color(purple, $nx-purple-200,#f3dcff);
-
 @include tag-color(pink, $nx-pink-300, #ffdbf0);
-
 @include tag-color(blue, $nx-teal-400, #b5eaff);
-
 @include tag-color(red, $nx-red-300, #ffd7d8);
-
 @include tag-color(green, $nx-turquoise-600, #befffa);
-
 @include tag-color(orange, $nx-orange-700, #ffe4c7);
-
 @include tag-color(yellow, $nx-yellow-700, #ffeab7);
-
 @include tag-color(lime, $nx-green-50, #f2ffec);
-
 @include tag-color(indigo, #919fe8, #eef0ff);
