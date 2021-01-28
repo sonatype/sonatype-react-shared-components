@@ -12,9 +12,25 @@ describe('NxTag', function() {
   });
 
   describe('Basic NxTag', function() {
-    const selector = '#nx-tag-example .test-nx-tag';
+    const selector = '#nx-tag-example';
 
     it('looks right', simpleTest(selector));
+  });
+
+  describe('Show NxTag overflow tooltip', function() {
+    const item2Selector = '#nx-tag-example .nx-tag:nth-child(3)', tooltipSelector = '.nx-tooltip';
+    it('displays a tooltip with the full text when an overflowing tag is hovered', async function() {
+      const item2 = await browser.$(item2Selector);
+  
+      await item2.scrollIntoView({ block: 'center' });
+      await item2.moveTo();
+      await browser.pause(1000);
+  
+      const tooltipEl = await browser.$(tooltipSelector);
+  
+      expect(await tooltipEl.isDisplayed()).toBe(true);
+      expect(await tooltipEl.getText()).toBe( 'Pink - demonstrate that the tag overflows at 320px' );
+    });
   });
 
 
