@@ -48,12 +48,14 @@ describe('NxSelectableTag', function() {
   it('renders the plus icon when not selected', function() {
     expect(getShallowComponent().find(NxFontAwesomeIcon)).toExist();
     expect(getShallowComponent().find(NxFontAwesomeIcon)).toHaveProp('icon', faPlusCircle);
+    expect(getShallowComponent().find(NxFontAwesomeIcon)).toHaveClassName('fa-plus-circle');
   });
 
   it('renders the times icon when selected', function() {
     const getSelectedComponent = getShallowComponent({ selected: true });
     expect(getSelectedComponent.find(NxFontAwesomeIcon)).toExist();
     expect(getSelectedComponent.find(NxFontAwesomeIcon)).toHaveProp('icon', faTimesCircle);
+    expect(getSelectedComponent.find(NxFontAwesomeIcon)).toHaveClassName('fa-times-circle');
   });
 
   it('fires the components onSelect when clicked', function() {
