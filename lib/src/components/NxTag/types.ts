@@ -17,8 +17,8 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> 
 }
 
 export interface SelectableProps extends Props {
-  onSelect?: (() => void) | null;
-  selected?: boolean;
+  onSelect: (() => void) | null;
+  selected: boolean;
 }
 
 export const propTypes: WeakValidationMap<Props> = {
@@ -28,6 +28,6 @@ export const propTypes: WeakValidationMap<Props> = {
 
 export const selectablePropTypes: WeakValidationMap<SelectableProps> = {
   ...propTypes,
-  onSelect: PropTypes.func,
-  selected: PropTypes.bool
+  onSelect: PropTypes.func.isRequired,
+  selected: PropTypes.bool.isRequired
 };
