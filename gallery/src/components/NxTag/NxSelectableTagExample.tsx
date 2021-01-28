@@ -22,7 +22,7 @@ const tags: TagInfo[] = [
   { color: 'orange', value: 'Orange' },
   { color: 'yellow', value: 'Yellow' },
   { color: 'lime', value: 'Lime' },
-  { color: 'indigo', value: 'Indigo' }
+  { color: 'light-blue', value: 'Light Blue' }
 ];
 
 function NxSelectableTagExample() {

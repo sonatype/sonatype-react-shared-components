@@ -12,8 +12,7 @@
   @include semi-bold;
   @include container-horizontal;
   @include nx-truncate-ellipsis;
-  background-color: $nx-blue-800;
-  border: 1px solid $nx-blue-800;
+  border: 1px solid;
   border-radius: 16px;
   box-sizing: border-box;
   color: $nx-text-color-dark;
@@ -45,17 +44,9 @@
 }
 
 .nx-tag--selected {
-  background-color: $nx-blue-800;
-  border-color: $nx-blue-800;
-  color: $nx-text-color-dark;
-
   &:focus {
     border: 1px solid $nx-focus-border-color;
   }
-}
-
-.nx-tag--unselected {
-  border-color: $nx-grey-300;
 }
 
 .nx-tag__text {
@@ -67,15 +58,6 @@
 }
 
 // Available tag colours
-.nx-tag--default {
-  color: $nx-white;
-
-  &.nx-tag--unselected {
-    background-color: $nx-grey-300;
-    color: $nx-text-color-dark;
-  }
-}
-
 @mixin tag-color($tag-name, $tag-color-dark, $tag-color-light) {
   .nx-tag--#{$tag-name} {
     background-color: $tag-color-dark;
@@ -87,13 +69,13 @@
   }
 }
 
-@include tag-color(light-blue, $nx-blue-200, $nx-blue-300);
-@include tag-color(purple, $nx-purple-200,#f3dcff);
-@include tag-color(pink, $nx-pink-300, #ffdbf0);
-@include tag-color(blue, $nx-teal-400, #b5eaff);
-@include tag-color(red, $nx-red-300, #ffd7d8);
-@include tag-color(green, $nx-turquoise-600, #befffa);
-@include tag-color(orange, $nx-orange-700, #ffe4c7);
-@include tag-color(yellow, $nx-yellow-700, #ffeab7);
-@include tag-color(lime, $nx-green-50, #f2ffec);
-@include tag-color(indigo, #919fe8, #eef0ff);
+@include tag-color(default, #bbc5f6, #e7eaf9);
+@include tag-color(light-blue, $nx-blue-200, $nx-blue-50);
+@include tag-color(purple, $nx-purple-200, $nx-purple-50);
+@include tag-color(pink, $nx-pink-300, $nx-pink-50);
+@include tag-color(blue, $nx-teal-400, $nx-teal-50);
+@include tag-color(red, $nx-red-300, $nx-red-50);
+@include tag-color(green, $nx-turquoise-600, $nx-turquoise-50);
+@include tag-color(orange, $nx-orange-700, $nx-orange-50);
+@include tag-color(yellow, $nx-yellow-700, $nx-yellow-50);
+@include tag-color(lime, $nx-green-200, $nx-green-50);

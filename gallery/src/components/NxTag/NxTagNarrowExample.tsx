@@ -26,7 +26,7 @@ const tags: TagInfo[] = [
   { color: 'orange', value: 'Orange' },
   { color: 'yellow', value: 'Yellow' },
   { color: 'lime', value: 'Lime' },
-  { color: 'indigo', value: 'Indigo' }
+  { color: 'light-blue', value: 'Light Blue' }
 ];
 
 function NxTagNarrowExample() {
@@ -48,6 +48,7 @@ function NxTagNarrowExample() {
   return (
     <div style={{width: '250px', border: '1px solid #ddd'}}>
       <NxTag>Default</NxTag>
+      <NxTag color="light-blue">Light Blue</NxTag>
       <NxTag color="purple">Purple</NxTag>
       <NxTag color="pink">Pink</NxTag>
       <NxTag color="blue">Blue</NxTag>
@@ -59,7 +60,6 @@ function NxTagNarrowExample() {
       <NxTag color="orange">Orange</NxTag>
       <NxTag color="yellow">Yellow</NxTag>
       <NxTag color="lime">Lime</NxTag>
-      <NxTag color="indigo">Indigo</NxTag>
 
       {
         tags.map(tag => (
