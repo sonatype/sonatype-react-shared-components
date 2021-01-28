@@ -19,7 +19,7 @@ const NxTag: FunctionComponent<Props> =
       const { children, className, color, ...attrs } = props,
           tagClasses = classnames('nx-tag', className, {
             [`nx-tag--${color}`]: color,
-            ['nx-tag--default']: !color
+            'nx-tag--default': !color
           });
 
       return (
