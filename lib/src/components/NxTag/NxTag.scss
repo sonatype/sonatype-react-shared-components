@@ -9,7 +9,7 @@
  @import '../../scss-shared/nx-container-helpers';
 
 .nx-tag {
-  @include semi-bold();
+  @include semi-bold;
   @include container-horizontal;
   @include nx-truncate-ellipsis;
   background-color: $nx-blue-800;
