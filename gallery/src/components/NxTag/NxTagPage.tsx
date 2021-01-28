@@ -25,6 +25,7 @@ const NxTagPage = () =>
         what that means in the context of the UI. The are many colors provided for
         <code className="nx-code">NxTag</code> which can be specified via props.
       </p>
+      <h3 className="nx-h3">Common Props</h3>
       <NxTable>
         <NxTableHead>
           <NxTableRow>
@@ -48,22 +49,36 @@ const NxTagPage = () =>
               unselected state) colors are used.
             </NxTableCell>
           </NxTableRow>
+        </NxTableBody>
+      </NxTable>
+      <h3 className="nx-h3">Selectable Tag Props</h3>
+      <NxTable>
+        <NxTableHead>
+          <NxTableRow>
+            <NxTableCell>Prop</NxTableCell>
+            <NxTableCell>Type</NxTableCell>
+            <NxTableCell>Required</NxTableCell>
+            <NxTableCell>Default</NxTableCell>
+            <NxTableCell>Details</NxTableCell>
+          </NxTableRow>
+        </NxTableHead>
+        <NxTableBody>
           <NxTableRow>
             <NxTableCell>onSelect</NxTableCell>
             <NxTableCell>
-              Prop
+              Function
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
             <NxTableCell>
-              What to do when a selectable <code className="nx-code">NxTag</code> is selected, default is change colour
-              and icon.
+              Callback that changes the value of <code className="nx-code">selected</code> below between true
+              (selected) and false (unselected).
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
             <NxTableCell>selected</NxTableCell>
             <NxTableCell>
-              Prop
+              Boolean
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
