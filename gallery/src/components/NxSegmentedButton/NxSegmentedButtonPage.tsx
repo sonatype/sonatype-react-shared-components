@@ -94,6 +94,22 @@ export default function NxSegmentedButtonPage() {
               <NxTableCell>false</NxTableCell>
               <NxTableCell>Disables both segments of the button when true.</NxTableCell>
             </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
+              <NxTableCell>
+                <a target="_blank"
+                   rel="noopener"
+                   href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                  HTML div Attributes
+                </a>
+              </NxTableCell>
+              <NxTableCell>No</NxTableCell>
+              <NxTableCell>N/A</NxTableCell>
+              <NxTableCell>
+                <code className="nx-code">NxSegmentedButton</code> supports any HTML attribute that's normally
+                supported by <code className="nx-code">&lt;div&gt;</code>.
+              </NxTableCell>
+            </NxTableRow>
           </NxTableBody>
         </NxTable>
       </GalleryDescriptionTile>
