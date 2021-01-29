@@ -12,26 +12,25 @@
   @include semi-bold;
   @include container-horizontal;
   @include nx-truncate-ellipsis;
+  align-items: center;
   border: 1px solid;
   border-radius: 16px;
   box-sizing: border-box;
   color: $nx-text-color-dark;
   cursor: default;
-  display: inline-block;
+  display: inline-flex;
   font-size: $nx-font-size-s;
   height: 32px;
-  line-height: 1.4;
+  line-height: 30px;
   margin: 0 $nx-spacing-xs $nx-spacing-xs 0;
-  padding: 5px $nx-spacing-md 6px $nx-spacing-md;
+  padding: 0 $nx-spacing-md 0 $nx-spacing-md;
   user-select: none;
-  vertical-align: middle;
   // Uppercase Min so SCSS ignores it and uses CSS min, not SCSS min
   max-width: Min(100%, 320px);
 }
 
 .nx-tag--selectable {
   cursor: pointer;
-  display: inline-flex;
   padding-right: $nx-spacing-xs;
 
   &:focus {
@@ -56,7 +55,6 @@
 }
 
 .nx-tag__action {
-  margin-top: 3px;
   margin-left: $nx-spacing-md;
 }
 
