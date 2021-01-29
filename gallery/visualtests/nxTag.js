@@ -13,19 +13,15 @@ describe('NxTag', function() {
   });
 
   describe('Basic NxTag', function() {
-    const selector = '#nx-tag-example .gallery-example-live';
+    const selector = '#nx-tag-example .gallery-example-live',
+      tagSelector = `${selector} .nx-tag--pink`,
+
+      // expected distance from top of element to the top of its tooltip
+      tooltipHeightOffset = 45;
 
     it('looks right', simpleTest(selector));
-  });
 
-  describe('NxTag with overflow has a tooltip', function() {
-    const selector = '.gallery-example-live',
-          tagSelector = `${selector} .nx-tag--pink`,
-
-          // expected distance from top of element to the top of its tooltip
-          tooltipHeightOffset = 45;
-
-    it('looks right', async function() {
+    it('has a tooltip', async function() {
       const [tagElement, tooltipTagElement] = await Promise.all([browser.$(selector), browser.$(tagSelector)]);
 
       await tagElement.scrollIntoView({ block: 'center' });
@@ -43,12 +39,12 @@ describe('NxTag', function() {
   describe('NxTag Selectable', function() {
     const selector = '#nx-selectable-tag-example .nx-tag:first-child';
 
-    it('has a grey border and grey background by default', simpleTest(selector));
+    it('has a blue/grey border and lighter blue/grey background by default', simpleTest(selector));
     it('has a dark grey border when hovered', hoverTest(selector));
     it('has a light blue glow and light blue border when focused', focusTest(selector));
     it('has a light blue glow and dark grey border when focused and hovered', focusAndHoverTest(selector));
 
-    it('has a blue background and white indicator when clicked', async function() {
+    it('has a dark blue/grey background when clicked', async function() {
       const targetElement = await browser.$(selector);
 
       await targetElement.click();
