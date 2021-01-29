@@ -44,7 +44,7 @@ export const NxSelectableTag: FunctionComponent<SelectableProps> =
             'nx-tag--unselected': !isSelected
           }),
           tagIcons =
-            <NxFontAwesomeIcon icon={isSelected ? faTimesCircle : faPlusCircle} className="nx-tag__action" />
+            <NxFontAwesomeIcon icon={isSelected ? faTimesCircle : faPlusCircle} className="nx-tag__action" />;
 
       return (
         <NxTag tabIndex={0}
