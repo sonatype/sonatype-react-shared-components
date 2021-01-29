@@ -13,8 +13,18 @@ import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 describe('NxTag', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxTag, { children: 'basic tag' });
 
-  it('renders NxTag with the `nx-tag` class', function() {
+  it('renders NxTag with the `nx-tag` class along with any provided className', function() {
     expect(getShallowComponent().find('.nx-tag')).toExist();
+  });
+
+  it('correctly assigns supplied id', function() {
+    const classComponent = getShallowComponent({ className: 'foo' });
+    expect(classComponent.find('.nx-tag')).toHaveClassName('foo');
+  });
+
+  it('correctly assigns supplied id', function() {
+    const idComponent = getShallowComponent({ id: 'test-id' });
+    expect(idComponent.find('.nx-tag')).toHaveProp('id', 'test-id');
   });
 
   it('sets the nx-tag--default class if no color prop is passed', function() {
