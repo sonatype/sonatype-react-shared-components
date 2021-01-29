@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ReactNode, WeakValidationMap, HTMLAttributes} from 'react';
+import {ReactNode, ValidationMap, HTMLAttributes} from 'react';
 import * as PropTypes from 'prop-types';
 
 export const NX_TAG_COLORS =
@@ -21,12 +21,12 @@ export interface SelectableProps extends Props {
   selected: boolean;
 }
 
-export const propTypes: WeakValidationMap<Props> = {
+export const propTypes: ValidationMap<Props> = {
   children: PropTypes.node.isRequired,
   color: PropTypes.oneOf(NX_TAG_COLORS)
 };
 
-export const selectablePropTypes: WeakValidationMap<SelectableProps> = {
+export const selectablePropTypes: ValidationMap<SelectableProps> = {
   ...propTypes,
   onSelect: PropTypes.func.isRequired,
   selected: PropTypes.bool.isRequired
