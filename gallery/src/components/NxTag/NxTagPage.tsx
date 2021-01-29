@@ -40,13 +40,29 @@ const NxTagPage = () =>
           <NxTableRow>
             <NxTableCell>color</NxTableCell>
             <NxTableCell>
-              'light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime' | 'indigo'
+              'light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime'
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
             <NxTableCell>
-              If no <code className="nx-code">color</code> is specified then the default (dark blue with a grey
-              unselected state) colors are used.
+              If no <code className="nx-code">color</code> is specified then the default (dark grey/blue with a lighter
+              grey/blue unselected state) colors are used.
+            </NxTableCell>
+          </NxTableRow>
+          <NxTableRow>
+            <NxTableCell>HTML div Attributes</NxTableCell>
+            <NxTableCell>
+              <a target="_blank"
+                 rel="noopener"
+                 href="https://developer.mozilla.org/es/docs/Web/HTML/Elemento/div">
+                HTML div Attributes
+              </a>
+            </NxTableCell>
+            <NxTableCell>No</NxTableCell>
+            <NxTableCell></NxTableCell>
+            <NxTableCell>
+              NxTag supports any html attribute that's normally supported by
+              {' '}<code className="nx-code">div</code> elements.
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>
@@ -84,22 +100,6 @@ const NxTagPage = () =>
             <NxTableCell></NxTableCell>
             <NxTableCell>
               Boolean for the selected/unselected state of a <code className="nx-code">NxSelectableTag</code>
-            </NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>HTML div Attributes</NxTableCell>
-            <NxTableCell>
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://developer.mozilla.org/es/docs/Web/HTML/Elemento/div">
-                HTML div Attributes
-              </a>
-            </NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell></NxTableCell>
-            <NxTableCell>
-              NxTag supports any html attribute that's normally supported by
-              {' '}<code className="nx-code">div</code> elements.
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>
