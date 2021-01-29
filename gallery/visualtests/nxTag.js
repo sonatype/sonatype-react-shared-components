@@ -40,7 +40,7 @@ describe('NxTag', function() {
     });
   });
 
-  describe('NxTag Selectable', function() {
+  describe('NxSelectableTag', function() {
     const selector = '#nx-selectable-tag-example .nx-tag:first-child';
 
     it('has a grey border and grey background by default', simpleTest(selector));
