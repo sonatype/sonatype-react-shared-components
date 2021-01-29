@@ -52,14 +52,11 @@ function NxTagNarrowExample() {
       <NxTag color="purple">Purple</NxTag>
       <NxTag color="pink">Pink</NxTag>
       <NxTag color="blue">Blue</NxTag>
-      <NxTag color="red">Red</NxTag>
       <NxTag color="green">
         Green - artisinal singularity tiger-team BASE jump meta-soul-delay network footage garage spook towards
         tiger-team weathered chrome warehouse
       </NxTag>
-      <NxTag color="orange">Orange</NxTag>
-      <NxTag color="yellow">Yellow</NxTag>
-      <NxTag color="lime">Lime</NxTag>
+      <NxTag color="red">Red</NxTag>
 
       {
         tags.map(tag => (
@@ -71,6 +68,10 @@ function NxTagNarrowExample() {
           </NxSelectableTag>
         ))
       }
+
+      <NxTag color="orange">Orange</NxTag>
+      <NxTag color="yellow">Yellow</NxTag>
+      <NxTag color="lime">Lime</NxTag>
     </div>
   );
 }
