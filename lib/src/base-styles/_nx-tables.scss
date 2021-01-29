@@ -116,7 +116,7 @@
   > .nx-table {
     border-style: none;
     border-radius: 0;
-    margin: 0;
+    margin: 0 0 auto 0;
     overflow: visible;
 
     // In Chrome (at least), tables are forced to have a whole number of pixels for their width. This means that
@@ -125,7 +125,7 @@
     // pixel of width
     width: calc(100% + 0.9999px);
 
-    > thead > :first-child, > tbody > :last-child {
+    > thead > :first-child {
       > .nx-cell {
         &:first-child, &:last-child {
           border-radius: 0;
@@ -133,10 +133,24 @@
       }
     }
 
+    > tbody > :last-child {
+      > .nx-cell {
+        &:first-child, &:last-child {
+          border-radius: 0;
+        }
+
+        border-bottom-style: solid;
+      }
+    }
+
     .nx-cell--header {
       position: sticky;
       top: 0;
       z-index: 1;
+    }
+
+    &:last-child > tbody > :last-child > .nx-cell {
+      border-bottom-style: none;
     }
   }
 }
@@ -151,8 +165,12 @@
 
   background-color: var(--nx-component-background-color);
   border-top: 1px solid #d1d6f0;
-  margin-top: auto;
-  padding: $nx-table-footer-vertical-padding;
+
+  // when following a table with no space between, merge the table's bottom border and the pagination's top border
+  transform: translateY(-1px);
+
+  // subtract 1 from bottom padding to counteract the translateY above
+  padding: $nx-table-footer-vertical-padding $nx-spacing-l ($nx-table-footer-vertical-padding - 1px) $nx-spacing-l;
   position: sticky;
   bottom: 0;
   z-index: 1;
