@@ -17,7 +17,7 @@ describe('NxTag', function() {
     expect(getShallowComponent().find('.nx-tag')).toExist();
   });
 
-  it('correctly assigns supplied id', function() {
+  it('correctly assigns supplied class', function() {
     const classComponent = getShallowComponent({ className: 'foo' });
     expect(classComponent.find('.nx-tag')).toHaveClassName('foo');
   });
