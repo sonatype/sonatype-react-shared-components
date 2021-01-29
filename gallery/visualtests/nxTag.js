@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
-const { Target } = require('@applitools/eyes-webdriverio');
+const { Region, Target } = require('@applitools/eyes-webdriverio');
 
 describe('NxTag', function() {
   beforeEach(async function() {
