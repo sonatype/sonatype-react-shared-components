@@ -18,24 +18,27 @@ describe('NxTag', function() {
     it('looks right', simpleTest(selector));
   });
 
-  describe('Show NxTag overflow tooltip', function() {
-    const item2Selector = '#nx-tag-example .nx-tag:nth-child(4)', 
-        tooltipSelector = '.nx-tooltip';
+  describe('NxTag with overflow has a tooltip', function() {
+    const selector = '.gallery-example-live',
+          tagSelector = `${selector} .nx-tag--pink`,
 
-    it('displays a tooltip with the full text when an overflowing tag is hovered', async function() {
-      const item2 = await browser.$(item2Selector);
-  
-      await item2.scrollIntoView({ block: 'center' });
-      await item2.moveTo();
-      await browser.pause(1000);
-  
-      const tooltipEl = await browser.$(tooltipSelector);
-  
-      expect(await tooltipEl.isDisplayed()).toBe(true);
-      expect(await tooltipEl.getText()).toBe( 'Pink - demonstrate that the tag overflows at 320px' );
+          // expected distance from top of element to the top of its tooltip
+          tooltipHeightOffset = 45;
+
+    it('looks right', async function() {
+      const [tagElement, tooltipTagElement] = await Promise.all([browser.$(selector), browser.$(tagSelector)]);
+
+      await tagElement.scrollIntoView({ block: 'center' });
+
+      const { x, y, height, width } = await browser.getElementRect(tagElement.elementId);
+
+      // hover the tag to activate its tooltip.
+      await tooltipTagElement.moveTo();
+
+      const screenshotRegion = new Region(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
+      await browser.eyesRegionSnapshot(null, Target.region(screenshotRegion));
     });
   });
-
 
   describe('NxTag Selectable', function() {
     const selector = '#nx-selectable-tag-example .nx-tag:first-child';
