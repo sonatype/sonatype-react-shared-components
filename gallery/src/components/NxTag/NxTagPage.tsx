@@ -83,7 +83,7 @@ const NxTagPage = () =>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
             <NxTableCell>
-              Boolean for the selected/unselected state of a selectable <code className="nx-code">NxTag</code>
+              Boolean for the selected/unselected state of a <code className="nx-code">NxSelectableTag</code>
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>

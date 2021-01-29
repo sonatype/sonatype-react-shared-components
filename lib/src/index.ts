@@ -181,7 +181,7 @@ export { default as NxToggle, Props as NxToggleProps } from './components/NxTogg
 export { default as NxStatefulToggle, Props as NxStatefulToggleProps }
   from './components/NxToggle/stateful/NxStatefulToggle';
 
-export { default as NxTag, NxSelectableTag, Props, SelectableProps as NxTagProps }
+export { default as NxTag, NxSelectableTag, Props as NxTagProps, SelectableProps as NxSelectableTagProps }
   from './components/NxTag/NxTag';
 
 export { NX_TAG_COLORS, NX_TAG_COLORS_TYPE } from './components/NxTag/types';
