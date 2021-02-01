@@ -29,6 +29,11 @@ describe('NxTag', function() {
     expect(idComponent.find('.nx-tag')).toHaveProp('id', 'test-id');
   });
 
+  it('renders the supplied text inside .nx-tag__text', function() {
+    const tagChildren = getShallowComponent({ children: 'tag text' });
+    expect(tagChildren.find('.nx-tag__text')).toHaveText('tag text');
+  });
+
   it('sets the nx-tag--default class if no color prop is passed', function() {
     expect(getShallowComponent().find('.nx-tag--default')).toExist();
   });
