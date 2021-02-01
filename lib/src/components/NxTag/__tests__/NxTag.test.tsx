@@ -4,7 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import { shallow } from 'enzyme';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import NxTag, { NxSelectableTag } from '../NxTag';
@@ -60,15 +62,28 @@ describe('NxSelectableTag', function() {
   });
 
   it('renders the plus icon and action class when not selected', function() {
-    expect(getShallowComponent().find(NxFontAwesomeIcon)).toExist();
-    expect(getShallowComponent().find(NxFontAwesomeIcon)).toHaveProp('icon', faPlusCircle);
-    expect(getShallowComponent().find(NxFontAwesomeIcon)).toHaveClassName('nx-tag__action');
+    const SelectableTagIcons = function() {
+          return getShallowComponent().prop('selectedIcons');
+        },
+        icon = shallow(<SelectableTagIcons />);
+
+    expect(icon).toMatchSelector(NxFontAwesomeIcon);
+    expect(icon).toHaveProp(icon, faPlusCircle);
+    expect(icon).toHaveClassName('nx-tag__action');
   });
 
   it('renders the times icon when selected', function() {
-    const getSelectedComponent = getShallowComponent({ selected: true });
-    expect(getSelectedComponent.find(NxFontAwesomeIcon)).toExist();
-    expect(getSelectedComponent.find(NxFontAwesomeIcon)).toHaveProp('icon', faTimesCircle);
+    const getSelectedComponent = enzymeUtils.getShallowComponent(NxSelectableTag,
+      { children: 'selectable tag', selected: true, onSelect: jest.fn() });
+
+    const SelectableTagIcons = function() {
+          return getSelectedComponent().prop('selectedIcons');
+        },
+        icon = shallow(<SelectableTagIcons />);
+
+    expect(icon).toMatchSelector(NxFontAwesomeIcon);
+    expect(icon).toHaveProp(icon, faTimesCircle);
+    expect(icon).toHaveClassName('nx-tag__action');
   });
 
   it('fires the components onSelect when clicked', function() {
