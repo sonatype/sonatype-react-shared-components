@@ -8,7 +8,7 @@ import {ReactNode, ReactElement, ValidationMap, HTMLAttributes} from 'react';
 import * as PropTypes from 'prop-types';
 
 export const NX_TAG_COLORS =
-    ['light-blue', 'purple', 'pink', 'blue', 'red', 'green', 'orange', 'yellow', 'lime', 'indigo'] as const;
+    ['default', 'light-blue', 'purple', 'pink', 'blue', 'red', 'green', 'orange', 'yellow', 'lime'] as const;
 export type NX_TAG_COLORS_TYPE = (typeof NX_TAG_COLORS)[number]; // See https://stackoverflow.com/a/45486495
 
 export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {

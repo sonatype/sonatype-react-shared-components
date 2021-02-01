@@ -15,7 +15,7 @@ import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 describe('NxTag', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxTag, { children: 'basic tag' });
 
-  it('renders NxTag with the `nx-tag` class along with any provided className', function() {
+  it('renders NxTag with the `nx-tag` class', function() {
     expect(getShallowComponent().find('.nx-tag')).toExist();
   });
 
