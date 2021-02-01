@@ -32,6 +32,9 @@ describe('NxTag', function() {
   it('renders the supplied text inside .nx-tag__text', function() {
     const tagChildren = getShallowComponent({ children: 'tag text' });
     expect(tagChildren.find('.nx-tag__text')).toHaveText('tag text');
+
+    expect(tagChildren.children().first()).toMatchSelector('div');
+    // expect(tagChildren.children().at(1)).toMatchSelector('span');
   });
 
   it('sets the nx-tag--default class if no color prop is passed', function() {
@@ -61,9 +64,10 @@ describe('NxSelectableTag', function() {
     expect(getShallowComponent()).toMatchSelector('.nx-tag--unselected');
   });
 
-  it('renders the `nx-tag--selected` class when selected', function() {
-    const getSelectedComponent = getShallowComponent({ selected: true });
+  it('renders the `nx-tag--selected` class when selected and appears before the icon', function() {
+    const getSelectedComponent = getShallowComponent({ selected: true, children: 'foo bar' });
     expect(getSelectedComponent).toMatchSelector('.nx-tag--selected');
+    expect(getSelectedComponent.children().first()).toHaveText('foo bar');
   });
 
   it('renders the plus icon and action class when not selected', function() {
