@@ -14,7 +14,7 @@ export type NX_TAG_COLORS_TYPE = (typeof NX_TAG_COLORS)[number]; // See https://
 export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   children: ReactNode;
   tagColor?: NX_TAG_COLORS_TYPE;
-  // For internal use only, this prop is for our select/deselct tag icons
+  // For internal use only, this prop is for our select/deselect tag icons
   selectedIcons?: ReactElement | null;
 }
 
