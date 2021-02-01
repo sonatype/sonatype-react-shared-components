@@ -46,6 +46,16 @@ describe('NxTag', function() {
     expect(colorComponent.find('.nx-tag--orange')).toExist();
     expect(colorComponent.find('.nx-tag--default')).not.toExist();
   });
+
+  it('checks the children appear in the correct order, text then the icon', function() {
+    const getSelectedComponent = getShallowComponent({ 
+        children: 'foo bar',
+        selectedIcons: <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
+       });
+
+    expect(getSelectedComponent.find('.nx-tag').children().first()).toMatchSelector('span');
+    expect(getSelectedComponent.find('.nx-tag').children().last()).toHaveClassName('nx-tag__action');
+  });
 });
 
 describe('NxSelectableTag', function() {
@@ -67,7 +77,6 @@ describe('NxSelectableTag', function() {
   it('renders the `nx-tag--selected` class when selected and appears before the icon', function() {
     const getSelectedComponent = getShallowComponent({ selected: true, children: 'foo bar' });
     expect(getSelectedComponent).toMatchSelector('.nx-tag--selected');
-    expect(getSelectedComponent.children().first()).toHaveText('foo bar');
   });
 
   it('renders the plus icon and action class when not selected', function() {
