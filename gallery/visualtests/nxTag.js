@@ -17,7 +17,7 @@ describe('NxTag', function() {
       tagSelector = `${selector} .nx-tag--pink`,
 
       // expected distance from top of element to the top of its tooltip
-      tooltipHeightOffset = 45;
+      tooltipHeightOffset = 21;
 
     it('looks right', simpleTest(selector));
 
