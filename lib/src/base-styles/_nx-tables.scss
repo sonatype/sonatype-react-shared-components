@@ -8,7 +8,7 @@
 .nx-table {
   background-color: var(--nx-component-background-color);
   border-spacing: 0;
-  border: 1px solid #d1d6f0;
+  border: 1px solid $nx-indigo-100;
   border-radius: $nx-border-radius;
   display: table;
   margin: $nx-spacing-sm 0 $nx-spacing-l 0;
@@ -96,7 +96,7 @@
 
 .nx-table-container {
   background-color: var(--nx-component-background-color);
-  border: 1px solid #d1d6f0;
+  border: 1px solid $nx-indigo-100;
   border-radius: $nx-border-radius;
   box-sizing: content-box;
   display: flex;
@@ -150,7 +150,7 @@
   @include container-vertical;
 
   background-color: var(--nx-component-background-color);
-  border-top: 1px solid #d1d6f0;
+  border-top: 1px solid $nx-indigo-100;
   margin-top: auto;
   padding: $nx-table-footer-vertical-padding;
   position: sticky;
@@ -237,7 +237,7 @@
 
 .nx-table-row--filter-header > .nx-cell--header {
   background-color: var(--nx-component-background-color);
-  border-bottom: 1px solid #d1d6f0;
+  border-bottom: 1px solid $nx-indigo-100;
 }
 
 .nx-cell__sort-icons {

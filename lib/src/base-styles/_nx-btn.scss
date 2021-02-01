@@ -72,7 +72,7 @@
   @extend %nx-btn--disabled;
 
   background-color: transparent;
-  border-color: #d1d6f0;
+  border-color: $nx-indigo-100;
   color: $nx-text-color-dark;
 
   &:hover {

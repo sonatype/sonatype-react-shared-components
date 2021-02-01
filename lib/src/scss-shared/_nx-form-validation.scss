@@ -29,7 +29,7 @@
 
 @mixin pristine() {
   .nx-text-input__box {
-    border-color: #d1d6f0;
+    border-color: $nx-indigo-100;
   }
 
   .nx-icon--invalid, .nx-icon--valid {
