@@ -48,10 +48,10 @@ describe('NxTag', function() {
   });
 
   it('checks the children appear in the correct order, text then the icon', function() {
-    const getSelectedComponent = getShallowComponent({ 
-        children: 'foo bar',
-        selectedIcons: <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
-       });
+    const getSelectedComponent = getShallowComponent({
+      children: 'foo bar',
+      selectedIcons: <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
+    });
 
     expect(getSelectedComponent.find('.nx-tag').children().first()).toMatchSelector('span');
     expect(getSelectedComponent.find('.nx-tag').children().last()).toHaveClassName('nx-tag__action');
