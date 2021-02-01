@@ -8,7 +8,7 @@
 .nx-table {
   background-color: var(--nx-component-background-color);
   border-spacing: 0;
-  border: 1px solid $nx-indigo-100;
+  border: $nx-border-default;
   border-radius: $nx-border-radius;
   display: table;
   margin: $nx-spacing-sm 0 $nx-spacing-l 0;
@@ -96,7 +96,7 @@
 
 .nx-table-container {
   background-color: var(--nx-component-background-color);
-  border: 1px solid $nx-indigo-100;
+  border: $nx-border-default;
   border-radius: $nx-border-radius;
   box-sizing: content-box;
   display: flex;
@@ -164,7 +164,7 @@
   @include container-vertical;
 
   background-color: var(--nx-component-background-color);
-  border-top: 1px solid $nx-indigo-100;
+  border-top: $nx-border-default;
   margin-top: auto;
 
   // when following a table with no space between, merge the table's bottom border and the pagination's top border
@@ -256,7 +256,7 @@
 
 .nx-table-row--filter-header > .nx-cell--header {
   background-color: var(--nx-component-background-color);
-  border-bottom: 1px solid $nx-indigo-100;
+  border-bottom: $nx-border-default;
 }
 
 .nx-cell__sort-icons {

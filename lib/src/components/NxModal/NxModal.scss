@@ -49,7 +49,7 @@ $nx-modal-padding: $nx-spacing-l;
 .nx-modal-header {
   @include container-vertical;
 
-  border-bottom: 1px solid $nx-indigo-100;
+  border-bottom: $nx-border-default;
   margin: 0 $nx-modal-padding;
   padding: 0 0 $nx-spacing-l 0;
 
