@@ -74,7 +74,7 @@ describe('NxSelectableTag', function() {
 
   it('renders the times icon when selected', function() {
     const getSelectedComponent = enzymeUtils.getShallowComponent(NxSelectableTag,
-      { children: 'selectable tag', selected: true, onSelect: jest.fn() });
+        { children: 'selectable tag', selected: true, onSelect: jest.fn() });
 
     const SelectableTagIcons = function() {
           return getSelectedComponent().prop('selectedIcons');
