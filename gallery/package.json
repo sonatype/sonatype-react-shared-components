@@ -9,7 +9,7 @@
     "copy-assets": "cpx \"src/index.html\" dist",
     "lint": "eslint 'src/**/*.{js,ts}{,x}'",
     "webpack": "webpack --env production",
-    "webpack-dev-server": "webpack-dev-server",
+    "webpack-dev-server": "webpack serve",
     "test": "wdio run wdio.conf.js",
     "clean": "rimraf dist webpack-modules"
   },
