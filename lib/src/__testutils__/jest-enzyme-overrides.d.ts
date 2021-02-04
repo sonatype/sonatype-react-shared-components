@@ -7,7 +7,7 @@
 /// <reference types="react" />
 /// <reference types="jest-enzyme" />
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+/* eslint-disable */
 type Selector = string | React.ComponentType<any>;
 
 declare namespace jest {

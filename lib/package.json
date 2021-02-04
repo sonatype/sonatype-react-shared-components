@@ -23,7 +23,7 @@
     "copy-scss-watch": "cpx -w \"src/**/*.scss\" dist",
     "copy-assets-watch": "cpx -w \"src/assets/**/*\" dist/assets",
     "copy-package-json-watch": "cpx -w package.json dist",
-    "test": "npm-run-all jest",
+    "test": "npm-run-all lint-tests jest",
     "jest": "jest",
     "test-watch": "jest --watch",
     "test-watch-debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watchAll",
