@@ -12,7 +12,7 @@ import React from 'react';
 type Selector = string | React.ComponentType<any>;
 
 declare namespace jest {
-  interface Matchers<R, T> {
+  interface Matchers {
     // the type defs that ship with jest-enzyme say that these methods only take strings, but they can actually take
     // React Components as well
     toMatchSelector(s: Selector): void;
