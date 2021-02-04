@@ -68,23 +68,23 @@ const NxBinaryDonutChartPage = () =>
                         id="nx-binary-donut-chart-minimal-examples"
                         codeExamples={nxBinaryDonutChartMinimalExampleCode}
                         liveExample={NxBinaryDonutChartMinimalExample}>
-        Minimal examples of <code className="nx-code">NxBinaryDonutChart</code>s with different values.
-        Some of these charts demonstrate the usage of <code className="nx-code">aria-label</code> to describe the
-        chart contents.
+      Minimal examples of <code className="nx-code">NxBinaryDonutChart</code>s with different values.
+      Some of these charts demonstrate the usage of <code className="nx-code">aria-label</code> to describe the
+      chart contents.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with no Hole"
                         id="nx-binary-donut-chart-no-hole-example"
                         codeExamples={nxBinaryDonutChartNoHoleExample}
                         liveExample={NxBinaryDonutChartNoHoleExample}>
-        An example of a <code className="nx-code">NxBinaryDonutChart</code> without a hole i.e. a pie chart.
+      An example of a <code className="nx-code">NxBinaryDonutChart</code> without a hole i.e. a pie chart.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with a Large Hole"
                         id="nx-binary-donut-chart-large-hole-example"
                         codeExamples={nxBinaryDonutChartLargeHoleExample}
                         liveExample={NxBinaryDonutChartLargeHoleExample}>
-        An example of a <code className="nx-code">NxBinaryDonutChart</code> with a large hole.
+      An example of a <code className="nx-code">NxBinaryDonutChart</code> with a large hole.
     </GalleryExampleTile>
   </>;
 

@@ -221,7 +221,7 @@ const NxFormPage = () =>
           </NxTableRow>
           <NxTableRow>
             <NxTableCell>children</NxTableCell>
-            <NxTableCell>JSX or (() => JSX)</NxTableCell>
+            <NxTableCell>JSX or (() =&gt; JSX)</NxTableCell>
             <NxTableCell>Yes</NxTableCell>
             <NxTableCell>N/A</NxTableCell>
             <NxTableCell>

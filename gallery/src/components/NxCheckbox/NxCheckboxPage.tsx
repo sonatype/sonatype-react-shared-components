@@ -44,7 +44,7 @@ const NxCheckboxPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function (() => void)</td>
+            <td className="nx-cell">Function (() =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">A callback for when the checkbox is toggled</td>
           </tr>

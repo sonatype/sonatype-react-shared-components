@@ -85,7 +85,7 @@ module.exports = function(env = { production: false }) {
       }),
       ...productionPlugins
     ],
-    devtool: 'eval-sourcemap',
+    devtool: 'eval-source-map',
     devServer: {
       port: 4043,
       host: '0.0.0.0',

@@ -48,7 +48,7 @@ const NxFilterInputPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function ((string) => void)</td>
+            <td className="nx-cell">Function ((string) =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               A callback for when the user changes the value of the text box (e.g. by typing a letter)
@@ -56,7 +56,7 @@ const NxFilterInputPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onKeyPress</td>
-            <td className="nx-cell">Function ((string) => void)</td>
+            <td className="nx-cell">Function ((string) =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               <p className="nx-p">

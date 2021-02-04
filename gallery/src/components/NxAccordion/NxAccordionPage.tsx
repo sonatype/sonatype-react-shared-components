@@ -52,7 +52,7 @@ const NxAccordionPage = () =>
           <NxTableBody>
             <NxTableRow>
               <NxTableCell>onToggle</NxTableCell>
-              <NxTableCell>(boolean => void)</NxTableCell>
+              <NxTableCell>(boolean =&gt; void)</NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
                 A function which gets called when the accordion collapse/expand state is toggled. Receives the new

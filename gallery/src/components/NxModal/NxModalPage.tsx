@@ -114,7 +114,7 @@ export default function NxModalPage() {
             </tr>
             <tr className="nx-table-row">
               <td className="nx-cell">onClose</td>
-              <td className="nx-cell">Function (() => void)</td>
+              <td className="nx-cell">Function (() =&gt; void)</td>
               <td className="nx-cell">Yes</td>
               <td className="nx-cell"></td>
               <td className="nx-cell">
@@ -209,4 +209,4 @@ export default function NxModalPage() {
       </GalleryExampleTile>
     </>
   );
-};
+}

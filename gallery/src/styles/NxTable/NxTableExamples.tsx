@@ -87,16 +87,16 @@ const NxTablesExamples = () =>
     <GalleryExampleTile title="NX Table with Sortable Rows Example"
                         liveExample={NxTableSortableExample}
                         codeExamples={NxTableSortableCode}>
-          A demonstration of a <code className="nx-code">nx-table</code> used for columns that can be sorted.
-        In this example the interactivity to sort columns is not wired up.
+      A demonstration of a <code className="nx-code">nx-table</code> used for columns that can be sorted.
+      In this example the interactivity to sort columns is not wired up.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table with Filter Rows Example"
                         liveExample={NxTableFilterExample}
                         codeExamples={NxTableFilterCode}>
-        A demonstration of a <code className="nx-code">nx-table</code> with a header
-        cell that contains a filter. Rows can be filtered depending on the text provided in the input.
-        In this example the interactivity to filter content is not wired up.
+      A demonstration of a <code className="nx-code">nx-table</code> with a header
+      cell that contains a filter. Rows can be filtered depending on the text provided in the input.
+      In this example the interactivity to filter content is not wired up.
     </GalleryExampleTile>
   </>;
 

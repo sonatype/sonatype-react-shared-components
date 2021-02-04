@@ -49,7 +49,7 @@ const NxStatefulTextInputPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">validator</td>
-            <td className="nx-cell">Function ((string) => string | string[] | null)</td>
+            <td className="nx-cell">Function ((string) =&gt; string | string[] | null)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               A function that validates user-inputted changes to the text field value. Accepts the new value

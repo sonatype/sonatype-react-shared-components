@@ -34,7 +34,7 @@ export function initialState(value: string, validator?: Validator): StateProps {
  * @return a state object that is not pristine, with the specified value, and with validationErrorsas computed by the
  * validator function.
  */
-export const userInput = curryN(2, function userInput(validator: Validator, newValue: string): StateProps {
+export const userInput = curryN(2, function userInput(validator: Validator | undefined, newValue: string): StateProps {
   const trimmedValue = trim(newValue);
 
   return {
@@ -46,4 +46,4 @@ export const userInput = curryN(2, function userInput(validator: Validator, newV
 
 // This cast is necessary due to this bug in the ramda typings:
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/50488
-}) as ((v: Validator, n: string) => StateProps) & ((v: Validator) => (n: string) => StateProps);
+}) as ((v: Validator | undefined, n: string) => StateProps) & ((v: Validator) => (n: string) => StateProps);

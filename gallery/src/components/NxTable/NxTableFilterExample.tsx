@@ -28,7 +28,7 @@ const tableData = [
   {name: 'Maria', country: 'Spain'}
 ];
 
-interface Row { name: string; country: string };
+interface Row { name: string; country: string }
 
 const NxTableFilterExample = () => {
 

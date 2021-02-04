@@ -50,7 +50,7 @@ const NxRadioPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function ((currentValue: string) => void)</td>
+            <td className="nx-cell">Function ((currentValue: string) =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">A callback for when the radio is selected. The value is passed as an argument.</td>
           </tr>

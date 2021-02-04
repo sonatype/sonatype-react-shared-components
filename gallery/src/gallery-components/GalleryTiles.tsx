@@ -31,7 +31,7 @@ type StringOrCodeExampleProps = string | CodeExampleProps;
 
 interface GalleryExampleTileProps extends GalleryBaseProps {
   children: ReactNode;
-  liveExample?: JSXElementConstructor<{}>;
+  liveExample?: JSXElementConstructor<Record<string, never>>;
   htmlExample?: string;
   codeExamples: StringOrCodeExampleProps | StringOrCodeExampleProps[];
   defaultCheckeredBackground?: boolean;
