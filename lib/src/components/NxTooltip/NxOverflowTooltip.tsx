@@ -11,8 +11,17 @@ import { textContent } from '../../util/childUtil';
 
 import { OverflowTooltipProps, overflowTooltipPropTypes } from './types';
 import NxTooltip from './NxTooltip';
+import { any } from 'ramda';
 
 export { OverflowTooltipProps };
+
+function isOverflowing(el: Element) {
+  return el.clientWidth < el.scrollWidth;
+}
+
+function selfOrChildrenOverflowing(el: Element): boolean {
+  return isOverflowing(el) || any(selfOrChildrenOverflowing, Array.from(el.children));
+}
 
 export default function NxOverflowTooltip({ title, children, ...otherProps }: OverflowTooltipProps) {
   const computedTitle = title || textContent(children),
@@ -23,7 +32,7 @@ export default function NxOverflowTooltip({ title, children, ...otherProps }: Ov
   function updateNeedsTooltip() {
     const el = ref.current;
 
-    setNeedsTooltip(!!el && el.clientWidth < el.scrollWidth);
+    setNeedsTooltip(!!el && selfOrChildrenOverflowing(el));
   }
 
   // check the width on initial layout and any time computedTitle changes

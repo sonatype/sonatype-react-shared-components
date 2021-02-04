@@ -19,7 +19,10 @@ const NxCheckboxPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">Custom checkbox input.</p>
       <p className="nx-p">Child VDOM will be used as a label following the checkbox button itself.</p>
-      <p className="nx-p">Props:</p>
+      <p className="nx-p">
+        NxCheckbox can receive any attribute that would be valid on an
+        HTML <code className="nx-code">&lt;label&gt;</code> as well as the following prop
+      </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">

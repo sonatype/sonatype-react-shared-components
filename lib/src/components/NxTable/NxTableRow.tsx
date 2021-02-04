@@ -23,7 +23,7 @@ const NxTableRow = function NxTableRow(props: NxTableRowProps) {
   });
 
   return (
-    <tr className={classes} {...attrs}>{children}</tr>
+    <tr tabIndex={isClickable ? 0 : undefined} className={classes} {...attrs}>{children}</tr>
   );
 };
 

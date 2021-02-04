@@ -114,13 +114,6 @@ $nx-form-element-border-color: $nx-grey-1100;
 $nx-threat-color-unspecified: #d1d6f0;
 $nx-threat-color-none: $nx-blue-300;
 $nx-threat-color-low: $nx-blue-600;
-$nx-threat-color-moderate: #ffbf27;
+$nx-threat-color-moderate: $nx-yellow-700;
 $nx-threat-color-severe: #ff8100;
-$nx-threat-color-critical: #cd0028;
-
-// Threat colors - light variant
-$nx-threat-color-none-light: #d9ecfb;
-$nx-threat-color-low-light: #92cbff;
-$nx-threat-color-moderate-light: #fdecaf;
-$nx-threat-color-severe-light: #ffd6a2;
-$nx-threat-color-critical-light: #ff9493;
+$nx-threat-color-critical: $nx-red-800;

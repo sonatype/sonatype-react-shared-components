@@ -236,7 +236,7 @@ const NxDropdownPage = () =>
       using these styles: note that this example uses <code className="nx-code">&lt;a&gt;</code> elements for all
       menu items – unfortunately <code className="nx-code">&lt;button&gt;</code> elements get some special behaviors
       from the browser that prevent them from working with the styling here. Additionally, note that
-      the <code className="nx-code">nx-dropdown-button-contente</code> is present on all menu items, even those that
+      the <code className="nx-code">nx-dropdown-button-content</code> is present on all menu items, even those that
       do not have icon buttons, in order to get consistent menu item heights.
     </GalleryExampleTile>
   </>;

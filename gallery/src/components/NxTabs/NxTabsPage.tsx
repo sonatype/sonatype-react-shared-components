@@ -43,6 +43,7 @@ export default function NxTabsPage() {
             The top-level container for tabbed navigation.
             It can have <code className="nx-code">&lt;NxTabList&gt;</code> and
             {' '}<code className="nx-code">&lt;NxTabPanel&gt;</code> components as children.
+            Support native <code className="nx-code">&lt;div&gt;</code> attributes as well as the following props:
           </p>
 
           <NxTable className="nx-table--gallery-props">
@@ -108,6 +109,7 @@ export default function NxTabsPage() {
             Container component for the tab contents.
             The index prop is automatically configured by the <code className="nx-code">NxTabs</code> component.
             There should be one of these for each <code className="nx-code">NxTab</code> component.
+            Passes through all attributes to an underlying div element.
           </p>
         </section>
       </GalleryDescriptionTile>

@@ -67,6 +67,7 @@ $nx-dropdown-width: 250px;
   position: absolute;
   top: 100%;
   width: $nx-dropdown-width;
+  z-index: 1;
 }
 
 .nx-dropdown-link, .nx-dropdown-button {

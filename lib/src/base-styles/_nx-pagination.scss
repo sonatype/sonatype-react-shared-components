@@ -4,8 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/nx-variables';
-
 .nx-btn-bar--pagination {
   justify-content: center;
 
@@ -53,7 +51,7 @@
   &.selected {
     background-color: #232c50;
     border-color: #232c50;
-    color: #fff;
+    color: var(--nx-component-background-color);
     cursor: default;
   }
 }

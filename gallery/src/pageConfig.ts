@@ -82,12 +82,15 @@ import NxViewportSizedPage from './styles/NxViewportSized/NxViewportSizedPage';
 import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
 import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
 import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
+import NxFormGroupStylePage from './styles/NxFormGroup/NxFormGroupStylePage';
 import NxFieldsetPage from './components/NxFieldset/NxFieldsetPage';
+import NxFieldsetStylePage from './styles/NxFieldset/NxFieldsetStylePage';
 import NxFormPage from './components/NxForm/NxFormPage';
 import NxTogglePage from './components/NxToggle/NxTogglePage';
 import NxStatefulTogglePage from './components/NxStatefulToggle/NxStatefulTogglePage';
 import NxBlockquotePage from './styles/NxBlockquote/NxBlockquotePage';
 import NxPrePage from './styles/NxPre/NxPrePage';
+import NxTagPage from './components/NxTag/NxTagPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -124,6 +127,7 @@ const pageConfig: PageConfig = {
     NxTable: NxTablePage,
     NxTabs: NxTabsPage,
     NxStatefulTabs: NxStatefulTabsPage,
+    NxTag: NxTagPage,
     NxTextInput: NxTextInputPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatIndicator: NxThreatIndicatorPage,
@@ -158,6 +162,8 @@ const pageConfig: PageConfig = {
     'nx-page-title': NxPageTitlePage,
     'nx-pre': NxPrePage,
     'nx-read-only': NxReadOnlyPage,
+    'nx-fieldset': NxFieldsetStylePage,
+    'nx-form-group': NxFormGroupStylePage,
     'nx-form-select': NxFormSelectPage,
     'nx-table': NxTableStylePage,
     'nx-table-container': NxTableContainerPage,

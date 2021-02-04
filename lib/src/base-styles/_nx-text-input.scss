@@ -4,9 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/nx-variables';
-@import '../scss-shared/nx-container-helpers';
-
 .nx-text-input {
   display: inline-block;
   position: relative;
@@ -16,7 +13,8 @@
   &, &.pristine, &.pristine.valid {
     &:focus-within {
       .nx-text-input__box {
-        border-color: #43cbf5;
+        border-color: $nx-focus-border-color;
+        box-shadow: $nx-focus-box-shadow;
       }
     }
 
@@ -30,7 +28,7 @@
   &.invalid {
     &:focus-within, &:hover {
       .nx-text-input__box {
-        border-color: #cd0028;
+        border-color: $nx-red-800;
       }
     }
   }
@@ -38,7 +36,7 @@
   &.valid {
     &:focus-within, &:hover {
       .nx-text-input__box {
-        border-color: #007623;
+        border-color: $nx-green-700;
       }
     }
   }

@@ -55,6 +55,22 @@ const NxPolicyViolationIndicatorPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">A Policy Threat Level Number off of which to base the indicator color</td>
           </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
+            <td className="nx-cell">
+              <a target="_blank"
+                 rel="noopener"
+                 href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                HTML div Attributes
+              </a>
+            </td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">N/A</td>
+            <td className="nx-cell">
+              NxPolicyViolationIndicator supports any HTML attribute that's normally supported
+              by <code className="nx-code">&lt;div&gt;</code>.
+            </td>
+          </tr>
         </tbody>
       </table>
 

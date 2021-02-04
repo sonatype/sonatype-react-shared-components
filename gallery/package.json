@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components-gallery",
-  "version": "3.2.1",
+  "version": "3.5.2",
   "description": "Gallery application to demonstrate usage and look of Sonatype shared UI components",
   "main": "src/main.ts",
   "scripts": {
@@ -26,6 +26,7 @@
     "@types/classnames": "^2.2.11",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.0",
+    "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-syntax-highlighter": "^13.5.0",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
@@ -70,6 +71,7 @@
     "ramda": "^0.27.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-syntax-highlighter": "^15.4.3"
   }

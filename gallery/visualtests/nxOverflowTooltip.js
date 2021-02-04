@@ -17,16 +17,17 @@ describe('NxOverflowTooltip', function() {
     await browser.setWindowSize(1366, 1000);
   });
 
-  const dropdownSelector = '#nx-overflow-tooltip-dropdown-example .nx-dropdown',
-      btn1Selector = `${dropdownSelector} .nx-dropdown-menu button:nth-of-type(1)`,
-      btn2Selector = `${dropdownSelector} .nx-dropdown-menu button:nth-of-type(2)`,
-      btn3Selector = `${dropdownSelector} .nx-dropdown-menu button:nth-of-type(3)`,
+  const listSelector = '#nx-overflow-tooltip-simple-example .nx-list',
+      descendantOverflowListSelector = '#nx-overflow-tooltip-descendant-example .nx-list',
+      item1Selector = `${listSelector} .nx-list__item:nth-child(1) .nx-list__text`,
+      item2Selector = `${listSelector} .nx-list__item:nth-child(2) .nx-list__text`,
+      item4Selector = `${listSelector} .nx-list__item:nth-child(4) .nx-list__text`,
       dynamicExampleSelector = '#nx-overflow-tooltip-dynamic-example',
       dynamicExampleTextInputSelector = `${dynamicExampleSelector} .nx-text-input input`,
       dynamicExampleTooltipTargetSelector = `${dynamicExampleSelector} .gallery-example-live .nx-p`,
       tooltipSelector = '.nx-tooltip';
-      maxBeforeOverflowStr =
-          'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW';
+      maxBeforeOverflowStr = 'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
+      descendantOverflowItemSelector = `${descendantOverflowListSelector} .nx-list__item:nth-child(2)`;
 
   async function openDropdownAndHoverButton(btnSelector) {
     const dropdownEl = await browser.$(dropdownSelector);
@@ -41,27 +42,43 @@ describe('NxOverflowTooltip', function() {
   }
 
   it('does not display a tooltip when a non-overflowing element is hovered', async function() {
-    await openDropdownAndHoverButton(btn1Selector);
+    const item1 = await browser.$(item1Selector);
+
+    await item1.scrollIntoView({ block: 'center' });
+    await item1.moveTo();
+    await browser.pause(1000);
+
     const tooltipEl = await browser.$(tooltipSelector);
 
     expect(await tooltipEl.isDisplayed()).toBe(false);
   });
 
   it('displays a tooltip with the full text when an overflowing element is hovered', async function() {
-    await openDropdownAndHoverButton(btn2Selector);
+    const item2 = await browser.$(item2Selector);
+
+    await item2.scrollIntoView({ block: 'center' });
+    await item2.moveTo();
+    await browser.pause(1000);
+
     const tooltipEl = await browser.$(tooltipSelector);
 
     expect(await tooltipEl.isDisplayed()).toBe(true);
-    expect(await tooltipEl.getText()).toBe('Button 2 - this text is long and should truncate with a tooltip');
+    expect(await tooltipEl.getText()).toBe( 'List item 2 - this text is long and should truncate with a tooltip ' +
+        'this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip');
   });
 
   it('displays a tooltip with explicit title when the element is overflowing and hovered', async function() {
-    await openDropdownAndHoverButton(btn3Selector);
+    const item4 = await browser.$(item4Selector);
+
+    await item4.scrollIntoView({ block: 'center' });
+    await item4.moveTo();
+    await browser.pause(1000);
+
     const tooltipEl = await browser.$(tooltipSelector);
 
-    await browser.pause(1000);
     expect(await tooltipEl.isDisplayed()).toBe(true);
-    expect(await tooltipEl.getText()).toBe('Foo Button 3 - this text is long and should truncate with a tooltip');
+    expect(await tooltipEl.getText()).toBe('Foo Bar 2 - this text is long and should truncate with a tooltip ' +
+        'this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip');
   });
 
   it('activates tooltip display when an already existing element gains text overflow due to more content',
@@ -151,4 +168,18 @@ describe('NxOverflowTooltip', function() {
         expect(await tooltipEl.isExisting()).toBe(false);
       }
   );
+
+  it('displays a tooltip with the full text when an element with an overflowing child is hovered', async function() {
+    const item = await browser.$(descendantOverflowItemSelector);
+
+    await item.scrollIntoView({ block: 'center' });
+    await item.moveTo();
+    await browser.pause(1000);
+
+    const tooltipEl = await browser.$(tooltipSelector);
+
+    expect(await tooltipEl.isDisplayed()).toBe(true);
+    expect(await tooltipEl.getText()).toBe( 'List item 2 - this text is long and should truncate with a tooltip ' +
+        'this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip');
+  });
 });

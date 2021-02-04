@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { NxCheckbox } from '@sonatype/react-shared-components';
+import { NxCheckbox, NxFieldset } from '@sonatype/react-shared-components';
 
 function NxCheckboxExample() {
   // this example uses the `useState` hook for succinctness, but you could also manage the state manually
@@ -21,10 +21,7 @@ function NxCheckboxExample() {
       toggleDisabled = () => setIsDisabled(!isDisabled);
 
   return (
-    <fieldset className="nx-fieldset">
-      <legend className="nx-label">
-        Selected colours: {isRed && 'Red'} {isBlue && 'Blue'} {isGreen && 'Green'}
-      </legend>
+    <NxFieldset label={`Selected colours: ${isRed && 'Red'} ${isBlue && 'Blue'} ${isGreen && 'Green'}`}>
       <NxCheckbox checkboxId="subscribe-check" onChange={toggleRed} isChecked={isRed}>
         Red
       </NxCheckbox>
@@ -43,7 +40,7 @@ function NxCheckboxExample() {
                   isChecked={isDisabled}>
         disabled
       </NxCheckbox>
-    </fieldset>
+    </NxFieldset>
   );
 }
 
