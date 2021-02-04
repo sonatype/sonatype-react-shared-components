@@ -61,10 +61,10 @@
 
 .nx-alert--error {
   background-color: #fff6f8;
-  border-color: #cd0028;
+  border-color: $nx-red-800;
 
   > .nx-icon {
-    color: #cd0028;
+    color: $nx-red-800;
   }
 }
 
@@ -79,9 +79,9 @@
 
 .nx-alert--success {
   background-color: #fafffc;
-  border-color: #007623;
+  border-color: $nx-green-700;
 
   > .nx-icon {
-    color: #007623;
+    color: $nx-green-700;
   }
 }

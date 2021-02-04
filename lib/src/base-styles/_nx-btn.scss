@@ -93,24 +93,24 @@
 .nx-btn--error {
   @extend %nx-btn--disabled;
 
-  background-color: #cd0028;
-  border-color: #cd0028;
+  background-color: $nx-red-800;
+  border-color: $nx-red-800;
   color: $nx-off-white;
 
   &:hover, &:focus, &:active {
-    background-color: #a80222;
-    border-color: #a80222;
+    background-color: $nx-red-1000;
+    border-color: $nx-red-1000;
     color: $nx-off-white;
   }
 
   &:focus {
-    background-color: #cd0028;
+    background-color: $nx-red-800;
     border-color: #43cbf5;
   }
 
   &:active {
-    background-color: #fc496c;
-    border-color: #fc496c;
+    background-color: $nx-red-500;
+    border-color: $nx-red-500;
   }
 
   .nx-icon {
