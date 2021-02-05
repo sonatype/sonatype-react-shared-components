@@ -11,9 +11,11 @@ import { omit } from 'ramda';
 
 export interface Props extends Omit<NxFormGroupProps, 'children' | 'isRequired'> {
   content: string;
+  onCopyUsingBtn?: (() => void) | null;
 }
 
 export const propTypes: ValidationMap<Props> = {
   ...omit(['children', 'isRequired'], nxFormGroupPropTypes),
-  content: PropTypes.string.isRequired
+  content: PropTypes.string.isRequired,
+  onCopyUsingBtn: PropTypes.func
 };

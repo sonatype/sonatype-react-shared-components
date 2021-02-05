@@ -14,11 +14,11 @@ import NxButton from '../NxButton/NxButton';
 
 export { Props };
 
-export default function NxCodeSnippet({ content, label, sublabel, className, ...otherProps }: Props) {
+export default function NxCodeSnippet({ content, label, sublabel, className, onCopyUsingBtn, ...otherProps }: Props) {
   const classes = classnames('nx-code-snippet', className);
 
   function copyToClipboard() {
-    window.navigator.clipboard.writeText(content);
+    window.navigator.clipboard.writeText(content).then(onCopyUsingBtn);
   }
 
   return (
