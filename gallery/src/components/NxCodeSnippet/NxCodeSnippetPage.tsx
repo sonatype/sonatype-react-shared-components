@@ -9,10 +9,12 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxCodeSnippetExample from './NxCodeSnippetExample';
+import NxCodeSnippetComplexExample from './NxCodeSnippetComplexExample';
 
 import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
 
-const nxCodeSnippetCode = require('!!raw-loader!./NxCodeSnippetExample').default;
+const nxCodeSnippetCode = require('!!raw-loader!./NxCodeSnippetExample').default,
+    nxCodeSnippetComplexCode = require('!!raw-loader!./NxCodeSnippetComplexExample').default;
 
 export default function NxCodeSnippetPage() {
   return (
@@ -57,6 +59,22 @@ export default function NxCodeSnippetPage() {
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
+              <NxTableCell>onCopyUsingBtn</NxTableCell>
+              <NxTableCell>Function () =&gt; void</NxTableCell>
+              <NxTableCell>No</NxTableCell>
+              <NxTableCell></NxTableCell>
+              <NxTableCell>
+                A callback which fires after the copy initiated by the Copy to Clipboard button completes.
+                Note that copies initiated in other ways (e.g. Ctrl-C) do not trigger this callback.
+                See also the{' '}
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/copy_event"
+                   target="_blank"
+                   rel="noopener">
+                  native copy event
+                </a>
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
               <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
               <NxTableCell>
                 <a target="_blank"
@@ -76,12 +94,18 @@ export default function NxCodeSnippetPage() {
         </NxTable>
       </GalleryDescriptionTile>
 
-      <GalleryExampleTile title="Example"
+      <GalleryExampleTile title="Simple Example"
                           liveExample={NxCodeSnippetExample}
                           codeExamples={nxCodeSnippetCode}>
-        An <code className="nx-code">NxCodeSnippet</code> with some content which can be copied to the clipboard.
-        The snippet text in this example is an old submission to the International Obfuscated C Code
-        Competition.
+        An <code className="nx-code">NxCodeSnippet</code> with minimal props: just some content which can be
+        copied to the clipboard.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="More Complex Example"
+                          liveExample={NxCodeSnippetComplexExample}
+                          codeExamples={nxCodeSnippetComplexCode}>
+        An <code className="nx-code">NxCodeSnippet</code> demonstrating optional
+        props: <code className="nx-code">sublabel</code> and <code className="nx-code">onCopyUsingBtn</code>.
       </GalleryExampleTile>
     </>
   );
