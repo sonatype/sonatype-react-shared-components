@@ -26,7 +26,7 @@ export default function NxCodeSnippet({ content, label, sublabel, className, ...
       <NxFormGroup isRequired={true} label={label} sublabel={sublabel}>
         <NxTextInput className="nx-text-input--long" type="textarea" value={content} isPristine={true} />
       </NxFormGroup>
-      <NxButton variant="tertiary" onClick={copyToClipboard}>Copy Snippet</NxButton>
+      <NxButton variant="tertiary" onClick={copyToClipboard}>Copy to Clipboard</NxButton>
     </div>
   );
 }
