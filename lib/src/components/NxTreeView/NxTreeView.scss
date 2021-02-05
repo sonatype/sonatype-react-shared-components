@@ -178,7 +178,7 @@ button, a {
   button, a {
     &.nx-tree-view__child {
       &:hover {
-        background-color: #d1d6f0;
+        background-color: $nx-indigo-100;
       }
 
       &.selected {
