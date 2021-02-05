@@ -36,5 +36,13 @@
   .nx-text-input {
     grid-area: textarea;
     width: 100%;
+
+    .nx-text-input__box {
+      border-color: $nx-form-element-border-color;
+    }
+
+    .nx-text-input__box:focus-within {
+      border-color: $nx-focus-border-color;
+    }
   }
 }
