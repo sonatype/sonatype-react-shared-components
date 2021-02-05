@@ -55,6 +55,7 @@
   background-color: $nx-sidebar-background-color;
   box-sizing: border-box;
   flex-basis: $nx-sidebar-width;
+  min-width: 0;
   overflow-x: hidden;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-xs $nx-spacing-l;
   position: relative;
@@ -66,9 +67,10 @@
 
   box-sizing: border-box;
   flex: 1 0 $nx-content-width;
+  min-width: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-md $nx-spacing-l;
+  padding: $nx-spacing-xl $nx-spacing-l;
   white-space: normal;
 }
 
@@ -93,5 +95,9 @@
 
   .nx-page-content {
     margin: 0 auto;
+  }
+
+  .nx-page-main {
+    overflow: visible;
   }
 }

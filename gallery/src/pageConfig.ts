@@ -90,6 +90,8 @@ import NxTogglePage from './components/NxToggle/NxTogglePage';
 import NxStatefulTogglePage from './components/NxStatefulToggle/NxStatefulTogglePage';
 import NxBlockquotePage from './styles/NxBlockquote/NxBlockquotePage';
 import NxPrePage from './styles/NxPre/NxPrePage';
+import NxSegmentedButtonPage from './components/NxSegmentedButton/NxSegmentedButtonPage';
+import NxStatefulSegmentedButtonPage from './components/NxStatefulSegmentedButton/NxStatefulSegmentedButtonPage';
 import NxTagPage from './components/NxTag/NxTagPage';
 
 const pageConfig: PageConfig = {
@@ -101,6 +103,8 @@ const pageConfig: PageConfig = {
     NxBackButton: NxBackButtonPage,
     NxBinaryDonutChart: NxBinaryDonutChartPage,
     NxButton: NxButtonPage,
+    NxSegmentedButton: NxSegmentedButtonPage,
+    NxStatefulSegmentedButton: NxStatefulSegmentedButtonPage,
     NxCheckbox: NxCheckboxPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
     NxCloseButton: NxCloseButtonPage,
