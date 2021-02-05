@@ -92,6 +92,7 @@ import NxBlockquotePage from './styles/NxBlockquote/NxBlockquotePage';
 import NxPrePage from './styles/NxPre/NxPrePage';
 import NxSegmentedButtonPage from './components/NxSegmentedButton/NxSegmentedButtonPage';
 import NxStatefulSegmentedButtonPage from './components/NxStatefulSegmentedButton/NxStatefulSegmentedButtonPage';
+import NxTagPage from './components/NxTag/NxTagPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -130,6 +131,7 @@ const pageConfig: PageConfig = {
     NxTable: NxTablePage,
     NxTabs: NxTabsPage,
     NxStatefulTabs: NxStatefulTabsPage,
+    NxTag: NxTagPage,
     NxTextInput: NxTextInputPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatIndicator: NxThreatIndicatorPage,

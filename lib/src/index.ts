@@ -186,3 +186,8 @@ export { default as NxSegmentedButton, Props as NxSegmentedButtonProps }
 
 export { default as NxStatefulSegmentedButton, Props as NxStatefulSegmentedButtonProps }
   from './components/NxSegmentedButton/stateful/NxStatefulSegmentedButton';
+
+export { default as NxTag, NxSelectableTag, PublicProps as NxTagProps, SelectableProps as NxSelectableTagProps }
+  from './components/NxTag/NxTag';
+
+export { NX_TAG_COLORS, NX_TAG_COLORS_TYPE } from './components/NxTag/types';
