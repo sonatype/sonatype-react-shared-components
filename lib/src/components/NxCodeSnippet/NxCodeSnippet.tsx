@@ -12,6 +12,8 @@ import NxFormGroup from '../NxFormGroup/NxFormGroup';
 import NxTextInput from '../NxTextInput/NxTextInput';
 import NxButton from '../NxButton/NxButton';
 
+import './NxCodeSnippet.scss';
+
 export { Props };
 
 export default function NxCodeSnippet({ content, label, sublabel, className, onCopyUsingBtn, ...otherProps }: Props) {
@@ -24,7 +26,7 @@ export default function NxCodeSnippet({ content, label, sublabel, className, onC
   return (
     <div className={classes} { ...otherProps }>
       <NxFormGroup isRequired={true} label={label} sublabel={sublabel}>
-        <NxTextInput className="nx-text-input--long" type="textarea" value={content} isPristine={true} />
+        <NxTextInput type="textarea" value={content} isPristine={true} />
       </NxFormGroup>
       <NxButton variant="tertiary" onClick={copyToClipboard}>Copy to Clipboard</NxButton>
     </div>
