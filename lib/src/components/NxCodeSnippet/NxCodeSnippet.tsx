@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useRef } from 'react';
 import classnames from 'classnames';
 
 import { Props, propTypes } from './types';
@@ -17,18 +17,24 @@ import './NxCodeSnippet.scss';
 export { Props };
 
 export default function NxCodeSnippet({ content, label, sublabel, className, onCopyUsingBtn, ...otherProps }: Props) {
-  const classes = classnames('nx-code-snippet', className);
+  const classes = classnames('nx-code-snippet', className),
+      textInputRef = useRef<HTMLDivElement>(null);
 
   function copyToClipboard() {
     window.navigator.clipboard.writeText(content).then(onCopyUsingBtn);
+
+    // select all text in the input to help the user understand what happened
+    if (textInputRef.current) {
+      textInputRef.current.querySelector('textarea')!.select();
+    }
   }
 
   return (
     <div className={classes} { ...otherProps }>
-      <NxFormGroup isRequired={true} label={label} sublabel={sublabel}>
-        <NxTextInput type="textarea" value={content} isPristine={true} />
-      </NxFormGroup>
       <NxButton variant="tertiary" onClick={copyToClipboard}>Copy to Clipboard</NxButton>
+      <NxFormGroup isRequired={true} label={label} sublabel={sublabel}>
+        <NxTextInput ref={textInputRef} type="textarea" value={content} isPristine={true} readOnly />
+      </NxFormGroup>
     </div>
   );
 }
