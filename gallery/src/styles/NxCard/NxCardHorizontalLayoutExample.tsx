@@ -8,6 +8,7 @@ import React from 'react';
 import { faShapes, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { NxFontAwesomeIcon, NxButton } from '@sonatype/react-shared-components';
+const chart = require('./chart.png');
 
 export default function NxCardColumnLayoutExample() {
   return (
@@ -64,9 +65,6 @@ export default function NxCardColumnLayoutExample() {
         <div className="nx-card__call-out">
           XX%
         </div>
-        <header className="nx-card__header">
-          <h3 className="nx-h3">Card header</h3>
-        </header>
         <div className="nx-card__content">
           <div className="nx-card__text">Descriptive text</div>
         </div>
@@ -79,10 +77,7 @@ export default function NxCardColumnLayoutExample() {
           <h3 className="nx-h3">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
         </header>
         <div className="nx-card__content">
-          <div className="nx-card__text">Marketing systemic math- hotdog saturation systemic</div>
-        </div>
-        <div className="nx-card__actions">
-          <a href="#" className="nx-text-link">Artisanal denim</a>
+          <img src={chart}/>
         </div>
       </section>
       <section className="nx-card nx-card--horizontal" aria-label="card 6 in column layout">

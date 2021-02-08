@@ -6,7 +6,7 @@
  */
 // Reveal problems with box-sizing set to border-box, see https://issues.sonatype.org/browse/RSC-84
 
-.nx-card__2-column-example {
+.nx-card__content--2-column-example {
   align-items: center;
   display: flex;
 
@@ -15,6 +15,14 @@
   }
 }
 
-.nx-card-container--row .nx-card--extra-wide {
+.nx-card--align-left {
+  text-align: left;
+}
+
+.nx-card-container--row .nx-card--75wide {
+  max-width: 75%;
+}
+
+.nx-card-container--row .nx-card--50wide {
   max-width: 50%;
 }
