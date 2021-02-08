@@ -18,14 +18,28 @@ export default function NxCardRowLayoutExample() {
             <h3 className="nx-h3">Header</h3>
           </header>
           <div className="nx-card__content">
-            <div className="nx-card__call-out nx-card__call-out--text-only">
+            <div className="nx-card__call-out">
               42
             </div>
-            <p className="nx-p">Text</p>
+            <div className="nx-card__text">Text</div>
           </div>
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
+        </section>
+        <section className="nx-card" aria-label="card 2 in alternate layout">
+          <header className="nx-card__header">
+            <h3 className="nx-h3">Card header</h3>
+          </header>
+          <div className="nx-card__content">
+            <div className="nx-card__2-column-example">
+              <div className="nx-card__call-out">
+                100
+              </div>
+              <div className="nx-card__text">Data point details</div>
+            </div>
+          </div>
+          <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
         </section>
         <section className="nx-card" aria-label="card 2 in column layout">
           <header className="nx-card__header">
@@ -50,7 +64,7 @@ export default function NxCardRowLayoutExample() {
             <div className="nx-card__call-out">
               <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out" />
             </div>
-            <p className="nx-p">Data point details</p>
+            <div className="nx-card__text">Data point details</div>
           </div>
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
@@ -66,7 +80,7 @@ export default function NxCardRowLayoutExample() {
             <div className="nx-card__call-out">
               <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out" />
             </div>
-            <p className="nx-p">Data point details</p>
+            <div className="nx-card__text">Data point details</div>
           </div>
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
@@ -76,7 +90,7 @@ export default function NxCardRowLayoutExample() {
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
-          <div className="nx-card__content nx-card__content--margins">
+          <div className="nx-card__content">
             <div className="nx-status-indicator">
               <NxFontAwesomeIcon icon={faCircle} className="nx-icon--indicator nx-icon--indicator-on" />
               <span>Server on</span>
@@ -86,36 +100,21 @@ export default function NxCardRowLayoutExample() {
               <span>Server off</span>
             </div>
           </div>
+          <footer className="nx-card__footer">
+            <a href="#" className="nx-text-link">Link</a>
+          </footer>
         </section>
-        <section className="nx-card" aria-label="card 2 in column layout">
+        <section className="nx-card" aria-label="card 2 in alternate layout">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
-          <div className="nx-card__content nx-card__content--space-around">
-            <div className="nx-status-indicator">
-              <NxFontAwesomeIcon icon={faCircle} className="nx-icon--indicator nx-icon--indicator-on" />
-              <span>Server on</span>
+          <div className="nx-card__content nx-card__content--2-column">
+            <div className="nx-card__call-out">
+              <NxFontAwesomeIcon icon={faChartLine} className="nx-icon--card-call-out" />
             </div>
-            <div className="nx-status-indicator">
-              <NxFontAwesomeIcon icon={faCircle} className="nx-icon--indicator nx-icon--indicator-off" />
-              <span>Server off</span>
-            </div>
+            <div className="nx-card__text">Data point details</div>
           </div>
-        </section>
-        <section className="nx-card" aria-label="card 2 in column layout">
-          <header className="nx-card__header">
-            <h3 className="nx-h3">Card header</h3>
-          </header>
-          <div className="nx-card__content nx-card__content--space-between">
-            <div className="nx-status-indicator">
-              <NxFontAwesomeIcon icon={faCircle} className="nx-icon--indicator nx-icon--indicator-on" />
-              <span>Server on</span>
-            </div>
-            <div className="nx-status-indicator">
-              <NxFontAwesomeIcon icon={faCircle} className="nx-icon--indicator nx-icon--indicator-off" />
-              <span>Server off</span>
-            </div>
-          </div>
+          <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
         </section>
       </div>
       <div className="nx-card-container nx-card-container--row">
@@ -127,7 +126,7 @@ export default function NxCardRowLayoutExample() {
             <div className="nx-card__call-out">
               <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out-xl" />
             </div>
-            <span>Large icon</span>
+            <div className="nx-card__text">Large icon</div>
           </div>
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
@@ -138,10 +137,10 @@ export default function NxCardRowLayoutExample() {
             <h3 className="nx-h3 nx-h3--card-header">Card header</h3>
           </header>
           <div className="nx-card__content">
-            <div className="nx-card__call-out nx-card__call-out--text-only">
+            <div className="nx-card__call-out">
               XX%
             </div>
-            <span>Descriptive text</span>
+            <div className="nx-card__text">Descriptive text</div>
           </div>
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
@@ -155,10 +154,10 @@ export default function NxCardRowLayoutExample() {
             <div className="nx-card__call-out">
               <NxFontAwesomeIcon icon={faChartLine} className="nx-icon--card-call-out" />
             </div>
-            <span>
+            <div className="nx-card__text">
               Marketing systemic math- hotdog saturation point nodal point footage disposable singularity order-flow
               systemic
-            </span>
+            </div>
           </div>
           <footer className="nx-card__footer">
             <div className="nx-btn-bar">
@@ -172,13 +171,13 @@ export default function NxCardRowLayoutExample() {
             <h3 className="nx-h3 nx-h3--card-header">Render-farm dolphin beef noodles</h3>
           </header>
           <div className="nx-card__content">
-            <div className="nx-card__call-out nx-card__call-out--text-only">
+            <div className="nx-card__call-out">
               XXX%
             </div>
-            <span>
+            <div className="nx-card__text">
               City advert motion apophenia film skyscraper sentient beef noodles industrial grade motion tanto BASE jump
               girl realism
-            </span>
+            </div>
           </div>
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Film sprawl wristwatch math-engine</a>
@@ -191,7 +190,7 @@ export default function NxCardRowLayoutExample() {
           <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
           </header>
-          <div className="nx-card__call-out nx-card__call-out--text-only">
+          <div className="nx-card__call-out">
             42
           </div>
         </section>
@@ -218,17 +217,21 @@ export default function NxCardRowLayoutExample() {
             <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out" />
           </div>
           <div className="nx-card__content">
-            <span>Sentient noodles</span>
+            <div className="nx-card__text">Sentient noodles</div>
           </div>
         </section>
       </div>
       <div className="nx-card-container nx-card-container--row">
-        <section className="nx-card" aria-label="card 10 in row layout">
+        <section className="nx-card nx-card--extra-wide" aria-label="card 10 in row layout">
           <header className="nx-card__header">
-            <h3 className="nx-h3 nx-h3--card-header">3D-printed voodoo</h3>
+            <h3 className="nx-h3 nx-h3--card-header">A card that's 50% of available width</h3>
           </header>
           <div className="nx-card__content">
-            <span>Hotdog saturation point</span>
+            <div className="nx-card__text">
+              Lots of content to force the card to a wider size alcohol realism tower cardboard network sunglasses
+              Tokyo fetishism claymore mine bridge table faded. pistol tiger-team otaku sprawl tower corrupted cartel
+              carbon decay sentient post- singularity.
+            </div>
           </div>
         </section>
       </div>

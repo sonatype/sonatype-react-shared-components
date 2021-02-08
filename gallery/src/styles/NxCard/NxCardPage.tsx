@@ -8,21 +8,23 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxCardRowLayoutExample from './NxCardRowLayoutExample';
-import NxCardColumnLayoutExample from './NxCardColumnLayoutExample';
-import NxCardRowAltLayoutExample from './NxCardRowAltLayoutExample';
+import './NxCardPageExamples.scss';
 
-const nxCardRowLayoutCode = require('!!raw-loader!./NxCardRowLayoutExample').default,
-    nxCardColumnLayoutCode = require('!!raw-loader!./NxCardColumnLayoutExample').default,
-    nxCardRowAltLayoutCode = require('!!raw-loader!./NxCardRowAltLayoutExample').default;
+import NxCardVerticalLayoutExample from './NxCardVerticalLayoutExample';
+import NxCardHorizontalLayoutExample from './NxCardHorizontalLayoutExample';
+
+const nxCardVerticalLayoutCode = require('!!raw-loader!./NxCardVerticalLayoutExample').default,
+    nxCardHorizontalLayoutCode = require('!!raw-loader!./NxCardHorizontalLayoutExample').default;
 
 const NxCardPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        Cards can be displayed in two orientations: rows and columns. Cards can be transformed between rows and columns
-        with a simple class change on their container. There is also a row variant supplied which displays the call out
-        and content side-by-side, this variant cannot be transformed into column oriented cards.
+        Cards can be displayed in two orientations: vertically or horizontally. At its most basic a card is simply a
+        container like a smaller version of <code className="nx-code">nx-tile</code> meant to display some relevant
+        data. Because it's expected that cards will have many unanticipated uses the examples below are mant to be
+        representative of some common patterns we anticipate, or as examples of solutions to some design problems. The
+        examples below do not represent an exhasutive list.
       </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
@@ -80,13 +82,6 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card__call-out--text-only</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card__call-out</code></td>
-            <td className="nx-cell">
-              Used when the content of <code className="nx-code">.nx-card__call-out</code> consists of text.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__text</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">Free-form text. Should be concise.</td>
@@ -94,7 +89,14 @@ const NxCardPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__footer</code></td>
             <td className="nx-cell">Element</td>
-            <td className="nx-cell">Card footer. Typically provides a link to more information.</td>
+            <td className="nx-cell">
+              In a vertically oriented card the footer. Typically provides a link to more information.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-card__actions</code></td>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">In a horizontally oriented card where links and buttons are typically located.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__content</code></td>
@@ -126,29 +128,19 @@ const NxCardPage = () =>
 
     <GalleryExampleTile title="Card Row Layout"
                         id="nx-card-row-example"
-                        liveExample={NxCardRowLayoutExample}
-                        codeExamples={nxCardRowLayoutCode}
+                        liveExample={NxCardVerticalLayoutExample}
+                        codeExamples={nxCardVerticalLayoutCode}
                         defaultCheckeredBackground={true}>
       Cards shown in a row layout. While we have shown some content heavy examples it is recomended to keep the
-      content as minimal as possible. The layout of the cards is determined by a class applied to their container.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Card Row Layout Alternate"
-                        id="nx-card-row-alt-example"
-                        liveExample={NxCardRowAltLayoutExample}
-                        codeExamples={nxCardRowAltLayoutCode}
-                        defaultCheckeredBackground={true}>
-      This variation of the row layout has the callout and the description text side-by-side. It cannot be transformed
-      into a column layout with a simple class change.
+      content as minimal as possible.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Card Column Layout"
                         id="nx-card-column-example"
-                        liveExample={NxCardColumnLayoutExample}
-                        codeExamples={nxCardColumnLayoutCode}
+                        liveExample={NxCardHorizontalLayoutExample}
+                        codeExamples={nxCardHorizontalLayoutCode}
                         defaultCheckeredBackground={true}>
-      Cards shown in column layout. The layout of the cards is determined by a class applied to their
-      container.
+      Cards shown in column layout.
     </GalleryExampleTile>
   </>;
 

@@ -14,32 +14,19 @@
   border-radius: $nx-border-radius;
   box-sizing: border-box;
   margin-bottom: $nx-spacing-md;
-  padding: $nx-spacing-l $nx-spacing-xxl;
-}
-
-.nx-card__call-out {
-  @include bold();
-
-  font-size: 32px;
-
-  .nx-icon--card-call-out {
-    font-size: 48px;
-  }
-
-  .nx-icon--card-call-out-xl {
-    font-size: 64px;
-  }
+  padding: $nx-spacing-l;
 }
 
 .nx-card-container--row {
+  @include container-horizontal;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   margin-bottom: 0;
 
   .nx-card {
     @include container-vertical;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     margin-right: $nx-spacing-md;
     text-align: center;
     min-width: 230px;
@@ -52,21 +39,11 @@
   }
 
   .nx-card__content {
+    align-content: start;
+    align-items: start;
     border: 1px solid $nx-red-50;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-
-    .nx-card__call-out {
-      margin-bottom: $nx-spacing-md;
-    }
-  }
-
-  .nx-card__content--2col {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    display: grid;
+    row-gap: $nx-spacing-md;
   }
 
   .nx-card__footer {
@@ -81,16 +58,15 @@
   }
 }
 
-.nx-card-container--column {
-  @include container-vertical;
 
-  .nx-card {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas:
-      "card-callout card-title card-footer"
-      "card-callout card-text card-footer";
-  }
+
+.nx-card--horizontal {
+  @include container-vertical;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "card-callout card-title card-actions"
+    "card-callout card-content card-actions";
 
   .nx-card__header {
     grid-area: card-title;
@@ -101,8 +77,7 @@
   }
 
   .nx-card__content {
-    display: contents;
-    grid-area: card-text;
+    grid-area: card-content;
     margin: 0;
     padding: 0;
   }
@@ -116,50 +91,40 @@
     border-right: 1px solid #d1d6f0;
     display: flex;
     height: 100%;
-    margin: 0 $nx-spacing-xxl 0 0;
-    padding: 0 $nx-spacing-xxl 0 0;
+    margin: 0 $nx-spacing-l 0 0;
+    padding: 0 $nx-spacing-l 0 0;
   }
 
-  .nx-card__footer {
+  .nx-card__actions {
     box-sizing: content-box;
     align-self: center;
-    grid-area: card-footer;
+    grid-area: card-actions;
     justify-self: start;
 
     @include container-horizontal;
     align-items: center;
-    border: none;
     border-left: 1px solid #d1d6f0;
     display: flex;
     height: 100%;
-    margin: 0 0 0 $nx-spacing-xxl;
-    padding: 0 0 0 $nx-spacing-xxl;
+    margin: 0 0 0 $nx-spacing-l;
+    padding: 0 0 0 $nx-spacing-l;
     // necessary to make the link wrap
     max-width: 150px;
   }
 }
 
-// Styles for the alternate row layout
-.nx-card-container--row {
-  .nx-card__content-container {
-    align-items: center;
-    display: flex;
+// Common card Helpers
+.nx-card__call-out {
+  @include bold();
 
-    .nx-card__call-out {
-      @include container-horizontal;
-      flex-grow: 1;
-      text-align: right;
+  font-size: 32px;
 
-      + .nx-card__content {
-        margin-left: $nx-spacing-l;
-      }
-    }
+  .nx-icon--card-call-out {
+    font-size: 48px;
+  }
 
-    .nx-card__content {
-      flex-grow: 1;
-      margin-top: 0;
-      text-align: left;
-    }
+  .nx-icon--card-call-out-xl {
+    font-size: 64px;
   }
 }
 
@@ -170,4 +135,20 @@
 
 .nx-icon--indicator-on {
   color: $nx-green-200;
+}
+
+.nx-card__top-border {
+  border-top: 1px solid #f00;
+}
+
+.nx-card__right-border {
+  border-right: 1px solid #f00;
+}
+
+.nx-card__bottom-border {
+  border-bottom: 1px solid #f00;
+}
+
+.nx-card__left-border {
+  border-left: 1px solid #f00;
 }
