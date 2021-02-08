@@ -33,6 +33,10 @@
     grid-area: sublabel;
   }
 
+  .nx-label__text::after {
+    display: none;
+  }
+
   .nx-text-input {
     grid-area: textarea;
     width: 100%;

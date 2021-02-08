@@ -32,7 +32,7 @@ export default function NxCodeSnippet({ content, label, sublabel, className, onC
   return (
     <div className={classes} { ...otherProps }>
       <NxButton variant="tertiary" onClick={copyToClipboard}>Copy to Clipboard</NxButton>
-      <NxFormGroup isRequired={true} label={label} sublabel={sublabel}>
+      <NxFormGroup label={label} sublabel={sublabel}>
         <NxTextInput ref={textInputRef} type="textarea" value={content} isPristine={true} readOnly />
       </NxFormGroup>
     </div>
