@@ -26,3 +26,12 @@
 .nx-card-container--row .nx-card--50wide {
   max-width: 50%;
 }
+
+.nx-icon--indicator {
+  height: 10px;
+  width: 10px;
+}
+
+.nx-icon--indicator-on {
+  color: $nx-green-200;
+}
