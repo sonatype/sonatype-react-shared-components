@@ -28,7 +28,15 @@ describe('NxCodeSnippet', function() {
 
     await codeSnippet.scrollIntoView({ block: 'center' });
 
-    await copyBtn.click();
+    try {
+      await copyBtn.click();
+    }
+    finally {
+      if (await browser.isAlertOpen()) {
+        await browser.acceptAlert();
+      }
+    }
+
     await codeSnippet.moveTo({ xOffset: -10, yOffset: -10 });
 
     await browser.eyesRegionSnapshot(null, Target.region(codeSnippet));
@@ -39,7 +47,14 @@ describe('NxCodeSnippet', function() {
 
     await codeSnippet.scrollIntoView({ block: 'center' });
 
-    await copyBtn.click();
+    try {
+      await copyBtn.click();
+    }
+    finally {
+      if (await browser.isAlertOpen()) {
+        await browser.acceptAlert();
+      }
+    }
 
     const clipboardText = await browser.executeAsync(function(done) {
       return window.navigator.clipboard.readText().then(done);
