@@ -85,6 +85,48 @@ const StylingRSCPage = () =>
         visual state. These classes are common across all components that might need them, especially in the case of the
         validation utility classes.
       </p>
+
+      <h3 className="nx-h3 nx-tile__section-header">CSS Resources</h3>
+      <p className="nx-p">
+        Many components in the RSC are layed out using CSS Flexbox or CSS Grid. Flexbox is well
+        established, but Grid is quite new. The syntax for both can be a little confusing for those who aren't used to
+        them. There are many resources available on the web to help new users, the ones linked below are used by the RSC
+        team for reference.
+      </p>
+      <h4 className="nx-h4">Flexbox</h4>
+      <ul className="nx-list nx-list--bulleted">
+        <li className="nx-list__item">
+          <a rel="noreferrer"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox"
+            target="_blank">
+            MDN Layout Guide: Flexbox
+          </a>
+        </li>
+        <li className="nx-list__item">
+          <a rel="noreferrer"
+            href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+            target="_blank">
+            CSS Tricks Guide to CSS Flexbox
+          </a>
+        </li>
+      </ul>
+      <h4 className="nx-h4">CSS Grid</h4>
+      <ul className="nx-list nx-list--bulleted">
+        <li className="nx-list__item">
+          <a rel="noreferrer"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids"
+            target="_blank">
+            MDN Layout Guide: CSS Grid
+          </a>
+        </li>
+        <li className="nx-list__item">
+          <a rel="noreferrer"
+            href="https://css-tricks.com/snippets/css/complete-guide-grid/"
+            target="_blank">
+            CSS Tricks Guide to CSS Grid
+          </a>
+        </li>
+      </ul>
       <p className="nx-p">
         If you have questions about how to use RSC's styles in your app, or how to create customs style for your app
         #react-components on Slack is a good place to ask.
