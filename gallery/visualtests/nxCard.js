@@ -12,8 +12,7 @@ describe('nx-card', function() {
   });
 
   const rowLayoutCardSelector = '#nx-card-row-example .gallery-example-live',
-      columnLayoutCardSelector = '#nx-card-column-example .gallery-example-live',
-      altRowLayoutCardSelector = '#nx-card-row-alt-example .gallery-example-live';
+      columnLayoutCardSelector = '#nx-card-column-example .gallery-example-live';
 
   describe('nx-card row layout', function() {
     it('looks right', simpleTestLongElement(rowLayoutCardSelector));
@@ -21,9 +20,5 @@ describe('nx-card', function() {
 
   describe('nx-card column layout', function() {
     it('looks right', simpleTestLongElement(columnLayoutCardSelector));
-  });
-
-  describe('nx-card alternate row layout', function() {
-    it('looks right', simpleTest(altRowLayoutCardSelector));
   });
 });
