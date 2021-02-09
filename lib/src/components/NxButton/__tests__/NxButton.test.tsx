@@ -25,10 +25,10 @@ describe('NxButton', function() {
     expect(button).toHaveText('Primary Button');
   });
 
-  it('does not render a variant class if the variant is "secondary"', function() {
+  it('renders a secondary button by default', function() {
     const button = shallow(<NxButton variant="secondary">Secondary Button</NxButton>);
 
-    expect(button).not.toHaveClassName('.nx-btn--secondary');
+    expect(button).toHaveClassName('.nx-btn--secondary');
   });
 
   it('renders an icon-only button', function() {

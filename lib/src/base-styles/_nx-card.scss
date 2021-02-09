@@ -47,7 +47,7 @@
 }
 
 .nx-card__footer {
-  border-top: 1px solid #d1d6f0;
+  border-top: $nx-border-default;
   margin-top: $nx-spacing-l;
   padding-top: $nx-spacing-l;
   width: 100%;
@@ -90,7 +90,7 @@
     justify-self: center;
 
     align-items: center;
-    border-right: 1px solid #d1d6f0;
+    border-right: $nx-border-default;
     display: flex;
     height: 100%;
     margin: 0 $nx-spacing-l 0 0;
@@ -105,7 +105,7 @@
 
     @include container-horizontal;
     align-items: center;
-    border-left: 1px solid #d1d6f0;
+    border-left: $nx-border-default;
     display: flex;
     height: 100%;
     margin: 0 0 0 $nx-spacing-l;

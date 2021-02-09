@@ -36,11 +36,19 @@ module.exports = {
 
       // make sure mouse is not on element
       await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
-      await browser.execute(function(el) {
-        el.focus();
-      }, focusElement);
 
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      try {
+        await browser.execute(function(el) {
+          el.focus();
+        }, focusElement);
+
+        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      }
+      finally {
+        await browser.execute(function(el) {
+          el.blur();
+        }, focusElement);
+      }
     };
   },
 

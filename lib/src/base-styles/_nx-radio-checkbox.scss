@@ -66,7 +66,7 @@
 
 .nx-radio-checkbox__control {
   background-color: #fff;
-  border: 1px solid #d1d6f0;
+  border: $nx-border-default;
   flex-shrink: 0;
   margin-right: $nx-spacing-xs;
 }
@@ -75,7 +75,7 @@ svg.nx-radio-checkbox__control {
   border-style: none;
   background: none;
   fill: #fff;
-  stroke: #d1d6f0;
+  stroke: $nx-indigo-100;
 }
 
 .nx-radio-checkbox__content {
@@ -103,8 +103,10 @@ svg.nx-radio-checkbox__control {
 .nx-radio-checkbox__input {
   margin: 0;
   width: 0;
-  position: absolute;
-  z-index: -1;
+
+  // in FF, the checkboxes don't respect the width: 0 and we need this in order to hide them
+  // Fix discovered via the title of https://bugzilla.mozilla.org/show_bug.cgi?id=605985
+  -moz-appearance: none;
 
   &:focus {
     // less-nice IE11 focus style because IE11 doesn't support :focus-within

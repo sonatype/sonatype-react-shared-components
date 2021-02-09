@@ -6,9 +6,9 @@
  */
 
 .nx-table {
-  background-color: var(--rsc-component-background-color);
+  background-color: var(--nx-component-background-color);
   border-spacing: 0;
-  border: 1px solid #d1d6f0;
+  border: $nx-border-default;
   border-radius: $nx-border-radius;
   display: table;
   margin: $nx-spacing-sm 0 $nx-spacing-l 0;
@@ -95,8 +95,8 @@
 }
 
 .nx-table-container {
-  background-color: var(--rsc-component-background-color);
-  border: 1px solid #d1d6f0;
+  background-color: var(--nx-component-background-color);
+  border: $nx-border-default;
   border-radius: $nx-border-radius;
   box-sizing: content-box;
   display: flex;
@@ -125,7 +125,7 @@
     // pixel of width
     width: calc(100% + 0.9999px);
 
-    > thead > :first-child, > tbody > :last-child {
+    > thead > :first-child {
       > .nx-cell {
         &:first-child, &:last-child {
           border-radius: 0;
@@ -133,10 +133,24 @@
       }
     }
 
+    > tbody > :last-child {
+      > .nx-cell {
+        &:first-child, &:last-child {
+          border-radius: 0;
+        }
+
+        border-bottom-style: solid;
+      }
+    }
+
     .nx-cell--header {
       position: sticky;
       top: 0;
       z-index: 1;
+    }
+
+    &:last-child > tbody > :last-child > .nx-cell {
+      border-bottom-style: none;
     }
   }
 }
@@ -150,9 +164,14 @@
   @include container-vertical;
 
   background-color: var(--nx-component-background-color);
-  border-top: 1px solid #d1d6f0;
+  border-top: $nx-border-default;
   margin-top: auto;
-  padding: $nx-table-footer-vertical-padding;
+
+  // when following a table with no space between, merge the table's bottom border and the pagination's top border
+  transform: translateY(-1px);
+
+  // subtract 1 from bottom padding to counteract the translateY above
+  padding: $nx-table-footer-vertical-padding $nx-spacing-l ($nx-table-footer-vertical-padding - 1px) $nx-spacing-l;
   position: sticky;
   bottom: 0;
   z-index: 1;
@@ -237,7 +256,7 @@
 
 .nx-table-row--filter-header > .nx-cell--header {
   background-color: var(--nx-component-background-color);
-  border-bottom: 1px solid #d1d6f0;
+  border-bottom: $nx-border-default;
 }
 
 .nx-cell__sort-icons {

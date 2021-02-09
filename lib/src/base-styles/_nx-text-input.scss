@@ -28,7 +28,7 @@
   &.invalid {
     &:focus-within, &:hover {
       .nx-text-input__box {
-        border-color: #cd0028;
+        border-color: $nx-red-800;
       }
     }
   }
@@ -36,7 +36,7 @@
   &.valid {
     &:focus-within, &:hover {
       .nx-text-input__box {
-        border-color: #007623;
+        border-color: $nx-green-700;
       }
     }
   }
