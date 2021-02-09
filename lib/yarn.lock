@@ -4833,12 +4833,7 @@ jest-environment-enzyme@^7.1.2:
   resolved "https://registry.npmjs.org/jest-environment-enzyme/-/jest-environment-enzyme-7.1.2.tgz#4561f26a719e8e87ce8c9a6d3f540a92663ba8d5"
   integrity sha512-3tfaYAzO7qZSRrv+srQnfK16Vu5XwH/pHi8FpoqSHjKKngbHzXf7aBCBuWh8y3w0OtknHRfDMFrC60Khj+g1hA==
   dependencies:
-
-    # NOTE: hacked to newer version than it's actually supposed to be. Be careful making dependency changes as this
-    # will likely get overwritten by jest. Be on the lookup for a newer version of jest-enzyme and/or
-    # jest-environment-enzyme which will hopefully natively refer to the newer version of jest.
-    # This is needed so that window.getSelection is defined in NxCodeSnippet.test.tsx
-    jest-environment-jsdom "^26.6.2"
+    jest-environment-jsdom "^24.0.0"
 
 jest-environment-jsdom@^24.0.0:
   version "24.9.0"
