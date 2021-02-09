@@ -72,7 +72,6 @@ describe('NxCodeSnippet', function() {
         resolveClipboardPromise: Function | null,
         rejectClipboardPromise: Function | null;
 
-
     beforeEach(function() {
       container = document.createElement('div');
       document.body.appendChild(container);
