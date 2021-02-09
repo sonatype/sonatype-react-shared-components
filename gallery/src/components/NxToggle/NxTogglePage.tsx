@@ -9,8 +9,10 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxToggleExample from './NxToggleExample';
+import NxToggleGaplessExample from './NxToggleGaplessExample';
 
-const exampleCode = require('!!raw-loader!./NxToggleExample').default;
+const exampleCode = require('!!raw-loader!./NxToggleExample').default,
+    exampleGaplessCode = require('!!raw-loader!./NxToggleGaplessExample').default;
 
 const NxTogglePage = () =>
   <>
@@ -83,6 +85,12 @@ const NxTogglePage = () =>
                         liveExample={NxToggleExample}>
       This example shows a series of toggle controls in a typical vertical layout with
       different label content. Note that one of the toggle controls is disabled.
+    </GalleryExampleTile>
+    <GalleryExampleTile title="General NxToggle Gapless Example"
+                        id="nx-toggle-gapless-example"
+                        codeExamples={exampleGaplessCode}
+                        liveExample={NxToggleGaplessExample}>
+      This example demonstrates a toggle control with only a small spacing gap between the text and the toggle itself.
     </GalleryExampleTile>
   </>;
 
