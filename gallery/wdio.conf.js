@@ -11,7 +11,8 @@ const axios = require('axios');
 const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, Target } =
     require('@applitools/eyes-webdriverio');
 
-const host = process.env.TEST_IP || 'localhost';
+const host = process.env.TEST_IP || 'localhost',
+    origin = `http://${host}:4043`;
 
 const timestamp = new Date().getTime(),
     gitCommit = process.env.GIT_COMMIT;
@@ -78,7 +79,20 @@ exports.config = {
     capabilities: [{
       browserName: 'chrome',
       'goog:chromeOptions': {
-        args: [ 'headless', 'font-render-hinting=none']
+        args: [
+          'font-render-hinting=none',
+
+          // for basic clipboard access, which is normally only allowed for https
+          `unsafely-treat-insecure-origin-as-secure=${origin}`
+        ],
+        prefs: {
+          // enable clipboard read access for NxCodeSnippet tests
+          'profile.content_settings.exceptions.clipboard': {
+            '[*.],*': {
+              setting: 1
+            }
+          }
+        }
       }
     }],
     //
@@ -112,7 +126,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: `http://${host}:4043/`,
+    baseUrl: `${origin}/`,
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

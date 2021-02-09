@@ -102,6 +102,7 @@ export default function NxCodeSnippetPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="More Complex Example"
+                          id="nx-code-snippet-example"
                           liveExample={NxCodeSnippetComplexExample}
                           codeExamples={nxCodeSnippetComplexCode}>
         An <code className="nx-code">NxCodeSnippet</code> demonstrating optional
