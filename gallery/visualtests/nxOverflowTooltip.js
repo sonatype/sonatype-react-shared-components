@@ -89,6 +89,8 @@ describe('NxOverflowTooltip', function() {
           browser.$(tooltipSelector)
         ]);
 
+        await targetEl.scrollIntoView({ block: 'center' });
+        await browser.pause(1000);
         expect(await tooltipEl.isExisting()).toBe(false);
 
         await inputEl.setValue(maxBeforeOverflowStr + 'W');
@@ -135,6 +137,7 @@ describe('NxOverflowTooltip', function() {
         await browser.setWindowSize(1400, 1000);
         await inputEl.setValue(maxBeforeOverflowStr + 'W');
         await targetEl.moveTo();
+        await browser.pause(1000);
 
         expect(await tooltipEl.isExisting()).toBe(false);
 
