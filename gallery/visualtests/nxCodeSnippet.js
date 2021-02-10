@@ -13,6 +13,11 @@ describe('NxCodeSnippet', function() {
     await browser.url('#/pages/NxCodeSnippet');
   });
 
+  afterEach(async function() {
+    // these tests cause weird issues with other hover and click tests for unknown reasons; refreshing prevents that
+    await browser.refresh();
+  });
+
   const exampleSelector = '#nx-code-snippet-example .nx-code-snippet',
       textareaSelector = `${exampleSelector} textarea`,
       copyBtnSelector = `${exampleSelector} .nx-btn`;
