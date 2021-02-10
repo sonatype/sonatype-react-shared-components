@@ -97,15 +97,15 @@ const StylingRSCPage = () =>
       <ul className="nx-list nx-list--bulleted">
         <li className="nx-list__item">
           <a rel="noreferrer"
-            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox"
-            target="_blank">
+             href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox"
+             target="_blank">
             MDN Layout Guide: Flexbox
           </a>
         </li>
         <li className="nx-list__item">
           <a rel="noreferrer"
-            href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
-            target="_blank">
+             href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+             target="_blank">
             CSS Tricks Guide to CSS Flexbox
           </a>
         </li>
@@ -114,15 +114,15 @@ const StylingRSCPage = () =>
       <ul className="nx-list nx-list--bulleted">
         <li className="nx-list__item">
           <a rel="noreferrer"
-            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids"
-            target="_blank">
+             href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids"
+             target="_blank">
             MDN Layout Guide: CSS Grid
           </a>
         </li>
         <li className="nx-list__item">
           <a rel="noreferrer"
-            href="https://css-tricks.com/snippets/css/complete-guide-grid/"
-            target="_blank">
+             href="https://css-tricks.com/snippets/css/complete-guide-grid/"
+             target="_blank">
             CSS Tricks Guide to CSS Grid
           </a>
         </li>
