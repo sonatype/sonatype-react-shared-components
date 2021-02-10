@@ -92,15 +92,14 @@ const NxTogglePage = () =>
             <td className="nx-cell">.nx-toggle--no-gap</td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-toggle</code></td>
             <td className="nx-cell">
-              When this class is applied to an <code className="nx-code">NxToggle</code> it causes the toggle to appear
-              immediately after the label text rather than appearing to float to the right of the toggle's container.
-              Note that the maximum width of the toggle remains in effect as do the rules around the length and
-              wrapping of the toggle's label. See the example below for a demonstration.
+              When this class is applied to an <code className="nx-code">NxToggle</code> it causes the toggle control
+              to appear immediately after the label text rather than appearing to float to the right of the toggle's
+              container. Note that the maximum width of the toggle remains in effect as do the rules around the length
+              and wrapping of the toggle's label. See the example below for a demonstration.
             </td>
           </tr>
         </tbody>
       </table>
-      
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General NxToggle Example"
