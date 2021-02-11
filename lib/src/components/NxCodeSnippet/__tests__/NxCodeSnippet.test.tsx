@@ -68,25 +68,16 @@ describe('NxCodeSnippet', function() {
   });
 
   describe('when the button is clicked', function() {
-    let container: HTMLElement | null = null,
-        resolveClipboardPromise: Function | null,
-        rejectClipboardPromise: Function | null;
+    let container: HTMLElement | null = null;
+
+    function getElementSelection(element: HTMLTextAreaElement | null) {
+      return element && element.value.slice(element.selectionStart, element.selectionEnd);
+    }
 
     beforeEach(function() {
       container = document.createElement('div');
       document.body.appendChild(container);
 
-      Object.defineProperty(window.navigator, 'clipboard', {
-        value: {
-          writeText: jest.fn(() => {
-            return new Promise((resolve, reject) => {
-              resolveClipboardPromise = resolve;
-              rejectClipboardPromise = reject;
-            });
-          })
-        },
-        configurable: true
-      });
     });
 
     afterEach(function() {
@@ -95,73 +86,39 @@ describe('NxCodeSnippet', function() {
       }
     });
 
-    function getElementSelection(element: HTMLTextAreaElement) {
-      return element.value.slice(element.selectionStart, element.selectionEnd);
-    }
-
     it('copies the text to the clipboard', function() {
-      jest.spyOn(window.navigator.clipboard, 'writeText');
+      Object.defineProperty(document, 'execCommand', {
+        value: jest.fn().mockImplementation(function() {
+          expect(getElementSelection(document.querySelector('textarea'))).toBe('Lorem Ipsum');
+        }),
+        configurable: true
+      });
 
       const component = getMounted({}, { attachTo: container });
 
-      expect(window.navigator.clipboard.writeText).not.toHaveBeenCalled();
+      expect(document.execCommand).not.toHaveBeenCalled();
 
       component.find(NxButton).simulate('click');
 
-      expect(window.navigator.clipboard.writeText).toHaveBeenCalledWith('Lorem Ipsum');
+      expect(document.execCommand).toHaveBeenCalledWith('copy');
     });
 
-    it('calls onCopyUsingBtn after writing the text to the clipboard', function(done) {
-      const onCopyUsingBtn = jest.fn(),
-          component = getMounted({ onCopyUsingBtn }, { attachTo: container });
+    it('calls onCopyUsingBtn after writing the text to the clipboard', function() {
+      const onCopyUsingBtn = jest.fn();
+
+      Object.defineProperty(document, 'execCommand', {
+        value: jest.fn().mockImplementation(function() {
+          // shouldn't be called until after this
+          expect(onCopyUsingBtn).not.toHaveBeenCalled();
+        }),
+        configurable: true
+      });
+
+      const component = getMounted({ onCopyUsingBtn }, { attachTo: container });
 
       component.find(NxButton).simulate('click');
 
-      expect(onCopyUsingBtn).not.toHaveBeenCalled();
-
-      resolveClipboardPromise!();
-
-      // the promise then() is called asynchronously so we must do our expectation of its result asynchronously
-      // as well
-      setTimeout(function() {
-        expect(onCopyUsingBtn).toHaveBeenCalled();
-        done();
-      }, 0);
-    });
-
-    it('sets the text selection to the textarea\'s contents after writing the text to the clipboard', function(done) {
-      const component = getMounted({}, { attachTo: container }),
-          textarea = component.find('textarea').getDOMNode() as HTMLTextAreaElement;
-
-      expect(getElementSelection(textarea)).toBe('');
-
-      component.find(NxButton).simulate('click');
-
-      expect(getElementSelection(textarea)).toBe('');
-
-      resolveClipboardPromise!();
-
-      setTimeout(function() {
-        expect(getElementSelection(textarea)).toBe('Lorem Ipsum');
-        done();
-      }, 0);
-    });
-
-    it('does not call onCopyUsingBtn or set the text selection if the copy fails', function(done) {
-      const onCopyUsingBtn = jest.fn(),
-          component = getMounted({ onCopyUsingBtn }, { attachTo: container }),
-          textarea = component.find('textarea').getDOMNode() as HTMLTextAreaElement;
-
-      component.find(NxButton).simulate('click');
-
-      rejectClipboardPromise!();
-
-      setTimeout(function() {
-        expect(getElementSelection(textarea)).toBe('');
-
-        expect(onCopyUsingBtn).not.toHaveBeenCalled();
-        done();
-      }, 0);
+      expect(onCopyUsingBtn).toHaveBeenCalled();
     });
   });
 });
