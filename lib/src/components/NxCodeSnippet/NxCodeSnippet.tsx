@@ -21,22 +21,18 @@ export default function NxCodeSnippet({ content, label, sublabel, className, onC
       textInputRef = useRef<HTMLDivElement>(null);
 
   function copyToClipboard() {
-    window.navigator.clipboard.writeText(content).then(function() {
-      // select all text in the input to help the user understand what happened
-      if (textInputRef.current) {
-        const textarea = textInputRef.current.querySelector('textarea');
+    if (textInputRef.current) {
+      const textarea = textInputRef.current.querySelector('textarea');
 
-        if (textarea) {
-          textarea.select();
+      if (textarea) {
+        textarea.select();
+        document.execCommand('copy');
+
+        if (onCopyUsingBtn) {
+          onCopyUsingBtn();
         }
       }
-
-      if (onCopyUsingBtn) {
-        onCopyUsingBtn();
-      }
-    }, function(e) {
-      console.error('Error copying to clipboard', e);
-    });
+    }
   }
 
   return (
