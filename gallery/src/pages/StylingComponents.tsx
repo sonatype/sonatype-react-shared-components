@@ -85,10 +85,13 @@ const StylingRSCPage = () =>
         visual state. These classes are common across all components that might need them, especially in the case of the
         validation utility classes.
       </p>
-
-      <h3 className="nx-h3 nx-tile__section-header">CSS Resources</h3>
+    </section>
+    <section className="nx-tile-subsection">
+      <header className="nx-tile-subsection__header">
+        <h3 className="nx-h3">CSS Resources</h3>
+      </header>
       <p className="nx-p">
-        Many components in the RSC are layed out using CSS Flexbox or CSS Grid. Flexbox is well
+        Many components in the RSC are laid out using CSS Flexbox or CSS Grid. Flexbox is well
         established, but Grid is quite new. The syntax for both can be a little confusing for those who aren't used to
         them. There are many resources available on the web to help new users, the ones linked below are used by the RSC
         team for reference.
