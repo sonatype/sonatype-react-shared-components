@@ -15,7 +15,7 @@ import NxCardHorizontalLayoutExample from './NxCardHorizontalLayoutExample';
 
 const nxCardVerticalLayoutCode = require('!!raw-loader!./NxCardVerticalLayoutExample').default,
     nxCardHorizontalLayoutCode = require('!!raw-loader!./NxCardHorizontalLayoutExample').default,
-    NxCardCustomSCSSCode = require('!!raw-loader!./NxCardpageExamples.scss').default;
+    NxCardCustomSCSSCode = require('!!raw-loader!./NxCardPageExamples.scss').default;
 
 const NxCardPage = () =>
   <>
