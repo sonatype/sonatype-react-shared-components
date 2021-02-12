@@ -130,3 +130,12 @@
     font-size: 64px;
   }
 }
+
+.nx-card__content--2-column {
+  align-items: center;
+  display: flex;
+
+  > :first-child {
+    margin-right: 16px;
+  }
+}

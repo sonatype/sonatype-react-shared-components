@@ -4,32 +4,25 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-.nx-card__content--2-column-example {
-  align-items: center;
-  display: flex;
-
-  > :first-child {
-    margin-right: 16px;
-  }
-}
-
 .nx-card--align-left {
   text-align: left;
 }
 
-.nx-card-container--row .nx-card--75wide {
+.nx-card-container--row .gallery-card--75wide {
   max-width: 75%;
 }
 
-.nx-card-container--row .nx-card--50wide {
+.nx-card-container--row .gallery-card--50wide {
   max-width: 50%;
 }
 
-.nx-icon--indicator {
+.gallery--indicator {
+  margin-left: 0;
   height: 10px;
+  vertical-align: 0;
   width: 10px;
 }
 
-.nx-icon--indicator-on {
+.gallery-icon--indicator-on {
   color: #2dcc5c;
 }
