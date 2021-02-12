@@ -23,7 +23,7 @@ const NxCardPage = () =>
         Cards can be displayed in two orientations: vertically or horizontally. At its most basic a card is simply a
         container like a smaller version of <code className="nx-code">nx-tile</code> with header, content, and footer
         content areas. Because it's expected that cards will have many uses the examples below do not represent an
-        exhasutive list, instead the intent is to display some common patterns that we have seen to date, and provide a
+        exhaustive list, instead the intent is to display some common patterns that we have seen to date, and provide a
         starting off point for future implementations.
       </p>
       <table className="nx-table nx-table--gallery-props">
