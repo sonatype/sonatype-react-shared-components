@@ -121,14 +121,14 @@ const NxCardPage = () =>
             <td className="nx-cell">Free-form text. Should be concise.</td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">nx-icon--card-call-out</code></td>
+            <td className="nx-cell"><code className="nx-code">nx-card__call-out-icon</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-icon</code></td>
             <td className="nx-cell">
               Changes the size of <code className="nx-code">.nx-icon</code> to <code className="nx-code">48px</code>.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">nx-icon--card-call-out-xl</code></td>
+            <td className="nx-cell"><code className="nx-code">nx-card__call-out-icon--xl</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-icon</code></td>
             <td className="nx-cell">
               Changes the size of <code className="nx-code">.nx-icon</code> to <code className="nx-code">64px</code>.

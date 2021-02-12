@@ -29,7 +29,7 @@ export default function NxCardColumnLayoutExample() {
       </section>
       <section className="nx-card nx-card--horizontal" aria-label="card 2 in column layout">
         <div className="nx-card__call-out">
-          <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out" />
+          <NxFontAwesomeIcon icon={faShapes} className="nx-card__call-out-icon" />
         </div>
         <header className="nx-card__header">
           <h3 className="nx-h3">Card header</h3>
@@ -45,7 +45,7 @@ export default function NxCardColumnLayoutExample() {
       </section>
       <section className="nx-card nx-card--horizontal" aria-label="card 3 in column layout">
         <div className="nx-card__call-out">
-          <NxFontAwesomeIcon icon={faShapes} className="nx-icon--card-call-out-xl" />
+          <NxFontAwesomeIcon icon={faShapes} className="nx-card__call-out-icon--xl" />
         </div>
         <header className="nx-card__header">
           <h3 className="nx-h3">Card header</h3>

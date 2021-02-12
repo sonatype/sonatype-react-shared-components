@@ -9,19 +9,7 @@
   margin: $nx-spacing-md 0;
 }
 
-.nx-card {
-  @include container-vertical;
-  background-color: var(--nx-component-background-color);
-  border-radius: $nx-border-radius;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  padding: $nx-spacing-l;
-  text-align: center;
-  min-width: 230px;
-  max-width: 330px;
-}
-
+// Container modifier for cards that appear side-by-side
 .nx-card-container--row {
   column-gap: $nx-spacing-md;
   display: flex;
@@ -31,14 +19,34 @@
   row-gap: $nx-spacing-md;
 }
 
+// Container modifier for cards that appear one atop of another
+.nx-card-container--column {
+  @include container-vertical;
+}
+
+.nx-card {
+  @include container-vertical;
+  background-color: var(--nx-component-background-color);
+  border-radius: $nx-border-radius;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: $nx-spacing-l;
+  text-align: center;
+  min-width: 230px;
+  max-width: 330px;
+}
+
 .nx-card__header {
   @include container-vertical;
   margin-bottom: $nx-spacing-md;
 }
 
 .nx-card__content {
-  align-content: start;
-  display: grid;
+  align-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   row-gap: $nx-spacing-md;
 }
 
@@ -52,12 +60,7 @@
   }
 }
 
-.nx-card-container--column {
-  @include container-vertical;
-}
-
 .nx-card--horizontal {
-  @include container-vertical;
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-areas:
@@ -69,45 +72,33 @@
   max-width: unset;
 
   .nx-card__header {
-    grid-area: title;
-
     @include container-vertical;
-    margin: 0 0 $nx-spacing-md 0;
-    padding: 0;
+    grid-area: title;
   }
 
   .nx-card__content {
-    align-self: center;
     grid-area: content;
     margin: 0;
-    padding: 0;
     row-gap: 0;
   }
 
   .nx-card__call-out {
-    align-self: center;
     grid-area: callout;
-    justify-self: center;
 
     align-items: center;
     border-right: $nx-border-default;
     display: flex;
-    height: 100%;
     margin: 0 $nx-spacing-l 0 0;
     padding: 0 $nx-spacing-l 0 0;
   }
 
   .nx-card__actions {
-    box-sizing: content-box;
-    align-self: center;
-    grid-area: actions;
-    justify-self: start;
-
     @include container-horizontal;
     align-items: center;
     border-left: $nx-border-default;
+    box-sizing: content-box;
     display: flex;
-    height: 100%;
+    grid-area: actions;
     margin: 0 0 0 $nx-spacing-l;
     padding: 0 0 0 $nx-spacing-l;
     // necessary to make the link wrap
@@ -121,20 +112,17 @@
 
   font-size: 32px;
 
-  .nx-icon--card-call-out {
+  .nx-card__call-out-icon {
     font-size: 48px;
   }
 
-  .nx-icon--card-call-out-xl {
+  .nx-card__call-out-icon--xl {
     font-size: 64px;
   }
 }
 
 .nx-card__content--2-column {
   align-items: center;
-  display: flex;
-
-  > :first-child {
-    margin-right: 16px;
-  }
+  column-gap: 16px;
+  flex-direction: row;
 }
