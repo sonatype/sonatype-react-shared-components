@@ -86,8 +86,8 @@ describe('NxCodeSnippet', function() {
     }
 
     describe('when navigator.clipboard is available', function() {
-        let resolveClipboardPromise: Function | null,
-            rejectClipboardPromise: Function | null;
+      let resolveClipboardPromise: Function | null,
+          rejectClipboardPromise: Function | null;
 
       beforeEach(function() {
         Object.defineProperty(window.navigator, 'clipboard', {

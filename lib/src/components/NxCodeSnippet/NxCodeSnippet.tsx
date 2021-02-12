@@ -20,17 +20,6 @@ export default function NxCodeSnippet({ content, label, sublabel, className, onC
   const classes = classnames('nx-code-snippet', className),
       textInputRef = useRef<HTMLDivElement>(null);
 
-  function copyToClipboard() {
-    // the clipboard object is the modern API, but it is only available in secure contexts (ie https or localhost)
-    if (window.navigator.clipboard) {
-      copyWithNavigatorClipboard();
-    }
-    else {
-      // document.execCommand works outside of https, but is deprecated and might be deactivated some day
-      copyWithExecCommand();
-    }
-  }
-
   function copyWithNavigatorClipboard() {
     window.navigator.clipboard.writeText(content).then(function() {
       // select all text in the input to help the user understand what happened
@@ -62,6 +51,17 @@ export default function NxCodeSnippet({ content, label, sublabel, className, onC
           onCopyUsingBtn();
         }
       }
+    }
+  }
+
+  function copyToClipboard() {
+    // the clipboard object is the modern API, but it is only available in secure contexts (ie https or localhost)
+    if (window.navigator.clipboard) {
+      copyWithNavigatorClipboard();
+    }
+    else {
+      // document.execCommand works outside of https, but is deprecated and might be deactivated some day
+      copyWithExecCommand();
     }
   }
 
