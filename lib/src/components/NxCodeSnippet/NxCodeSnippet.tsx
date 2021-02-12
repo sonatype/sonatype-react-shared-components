@@ -21,10 +21,12 @@ export default function NxCodeSnippet({ content, label, sublabel, className, onC
       textInputRef = useRef<HTMLDivElement>(null);
 
   function copyToClipboard() {
+    // the clipboard object is the modern API, but it is only available in secure contexts (ie https or localhost)
     if (window.navigator.clipboard) {
       copyWithNavigatorClipboard();
     }
     else {
+      // document.execCommand works outside of https, but is deprecated and might be deactivated some day
       copyWithExecCommand();
     }
   }
