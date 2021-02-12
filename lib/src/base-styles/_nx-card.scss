@@ -52,6 +52,10 @@
   }
 }
 
+.nx-card-container--column {
+  @include container-vertical;
+}
+
 .nx-card--horizontal {
   @include container-vertical;
   display: grid;
@@ -60,8 +64,9 @@
     "callout title actions"
     "callout content actions";
   margin-right: 0;
+  margin-bottom: $nx-spacing-md;
   text-align: left;
-  max-width: 100%;
+  max-width: unset;
 
   .nx-card__header {
     grid-area: title;
