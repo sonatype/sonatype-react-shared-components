@@ -14,7 +14,8 @@ import NxCardVerticalLayoutExample from './NxCardVerticalLayoutExample';
 import NxCardHorizontalLayoutExample from './NxCardHorizontalLayoutExample';
 
 const nxCardVerticalLayoutCode = require('!!raw-loader!./NxCardVerticalLayoutExample').default,
-    nxCardHorizontalLayoutCode = require('!!raw-loader!./NxCardHorizontalLayoutExample').default;
+    nxCardHorizontalLayoutCode = require('!!raw-loader!./NxCardHorizontalLayoutExample').default,
+    NxCardCustomSCSSCode = require('!!raw-loader!./NxCardpageExamples.scss').default;
 
 const NxCardPage = () =>
   <>
@@ -139,10 +140,10 @@ const NxCardPage = () =>
     <GalleryExampleTile title="Card Row Layout"
                         id="nx-card-row-example"
                         liveExample={NxCardVerticalLayoutExample}
-                        codeExamples={nxCardVerticalLayoutCode}
+                        codeExamples={[nxCardVerticalLayoutCode, NxCardCustomSCSSCode]}
                         defaultCheckeredBackground={true}>
       Vertically oriented cards shown side by side. While we have shown some content heavy examples it is recomended to
-      keep the content as minimal as possible.
+      keep the content as minimal as possible. There is some custom SCSS used in these examples, it is shown below.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Card Column Layout"
