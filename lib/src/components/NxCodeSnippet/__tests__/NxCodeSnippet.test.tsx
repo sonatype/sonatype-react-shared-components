@@ -107,7 +107,7 @@ describe('NxCodeSnippet', function() {
         delete (window.navigator as any).clipboard;
       });
 
-      it('copies the text to the clipboard', function() {
+      it('copies the text using navigator.writeText', function() {
         const component = getMounted({}, { attachTo: container });
 
         expect(window.navigator.clipboard.writeText).not.toHaveBeenCalled();
@@ -178,7 +178,7 @@ describe('NxCodeSnippet', function() {
         }
       });
 
-      it('copies the text to the clipboard', function() {
+      it('copies the text using document.execCommand', function() {
         Object.defineProperty(document, 'execCommand', {
           value: jest.fn().mockImplementation(function() {
             expect(getElementSelection(document.querySelector('textarea'))).toBe('Lorem Ipsum');
