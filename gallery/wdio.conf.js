@@ -79,7 +79,7 @@ exports.config = {
         args: [
           // headless mode is currently incompatible with unsafely-treat-insecure-origni-as-secure.
           // See https://bugs.chromium.org/p/chromium/issues/detail?id=1176255
-          //'headless'
+          //'headless',
           'font-render-hinting=none',
 
           // for basic clipboard access, which is normally only allowed for https or 'localhost'
