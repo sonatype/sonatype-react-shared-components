@@ -57,14 +57,14 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-areas:
-    "card-callout card-title card-actions"
-    "card-callout card-content card-actions";
+    "callout title actions"
+    "callout content actions";
   margin-right: 0;
   text-align: left;
   max-width: 100%;
 
   .nx-card__header {
-    grid-area: card-title;
+    grid-area: title;
 
     @include container-vertical;
     margin: 0 0 $nx-spacing-md 0;
@@ -73,7 +73,7 @@
 
   .nx-card__content {
     align-self: center;
-    grid-area: card-content;
+    grid-area: content;
     margin: 0;
     padding: 0;
     row-gap: 0;
@@ -81,7 +81,7 @@
 
   .nx-card__call-out {
     align-self: center;
-    grid-area: card-callout;
+    grid-area: callout;
     justify-self: center;
 
     align-items: center;
@@ -95,7 +95,7 @@
   .nx-card__actions {
     box-sizing: content-box;
     align-self: center;
-    grid-area: card-actions;
+    grid-area: actions;
     justify-self: start;
 
     @include container-horizontal;
