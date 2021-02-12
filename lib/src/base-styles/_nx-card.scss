@@ -10,29 +10,25 @@
 }
 
 .nx-card {
+  @include container-vertical;
   background-color: var(--nx-component-background-color);
   border-radius: $nx-border-radius;
   box-sizing: border-box;
-  margin-bottom: $nx-spacing-md;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   padding: $nx-spacing-l;
   text-align: center;
+  min-width: 230px;
+  max-width: 330px;
 }
 
 .nx-card-container--row {
-  @include container-horizontal;
+  column-gap: $nx-spacing-md;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 0;
-}
-
-.nx-card {
-  @include container-vertical;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  margin-right: $nx-spacing-md;
-  min-width: 230px;
-  max-width: 330px;
+  margin-bottom: $nx-spacing-md;
+  row-gap: $nx-spacing-md;
 }
 
 .nx-card__header {
