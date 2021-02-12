@@ -218,9 +218,7 @@ describe('NxCodeSnippet', function() {
         const onCopyUsingBtn = jest.fn();
 
         Object.defineProperty(document, 'execCommand', {
-          value: jest.fn().mockImplementation(function() {
-            return false;
-          }),
+          value: jest.fn().mockImplementation(() => false),
           configurable: true
         });
 
