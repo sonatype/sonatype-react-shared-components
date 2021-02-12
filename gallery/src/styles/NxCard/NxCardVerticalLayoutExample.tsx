@@ -207,7 +207,7 @@ export default function NxCardRowLayoutExample() {
         </section>
       </div>
       <div className="nx-card-container nx-card-container--row">
-        <section className="nx-card nx-card--align-left nx-card--75wide" aria-label="card 9 in row">
+        <section className="nx-card nx-card--align-left gallery-card--66wide" aria-label="card 9 in row">
           <header className="nx-card__header">
             <h3 className="nx-h3">A wide card with left aligned content</h3>
           </header>
@@ -236,9 +236,9 @@ export default function NxCardRowLayoutExample() {
         </section>
       </div>
       <div className="nx-card-container nx-card-container--row">
-        <section className="nx-card nx-card--50wide" aria-label="card 10 in row">
+        <section className="nx-card gallery-card--49wide" aria-label="card 10 in row">
           <header className="nx-card__header">
-            <h3 className="nx-h3 nx-h3--card-header">A card that's 50% of available width</h3>
+            <h3 className="nx-h3 nx-h3--card-header">A card that's ~50% of available width</h3>
           </header>
           <div className="nx-card__content">
             <div className="nx-card__text">
@@ -248,9 +248,9 @@ export default function NxCardRowLayoutExample() {
             </div>
           </div>
         </section>
-        <section className="nx-card nx-card--50wide" aria-label="card 10 in row">
+        <section className="nx-card gallery-card--49wide" aria-label="card 10 in row">
           <header className="nx-card__header">
-            <h3 className="nx-h3 nx-h3--card-header">A card that's 50% of available width</h3>
+            <h3 className="nx-h3 nx-h3--card-header">A card that's ~50% of available width</h3>
           </header>
           <div className="nx-card__content">
             <div className="nx-card__text">

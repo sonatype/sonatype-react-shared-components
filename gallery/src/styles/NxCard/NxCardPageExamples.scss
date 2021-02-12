@@ -8,12 +8,13 @@
   text-align: left;
 }
 
-.nx-card-container--row .gallery-card--75wide {
-  max-width: 75%;
+.nx-card-container--row .gallery-card--66wide {
+  max-width: 66%;
 }
 
-.nx-card-container--row .gallery-card--50wide {
-  max-width: 50%;
+.nx-card-container--row .gallery-card--49wide {
+  flex-shrink: 1;
+  max-width: 49%;
 }
 
 .gallery--indicator {
