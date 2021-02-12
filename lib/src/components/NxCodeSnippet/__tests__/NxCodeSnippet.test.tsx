@@ -108,8 +108,6 @@ describe('NxCodeSnippet', function() {
       });
 
       it('copies the text to the clipboard', function() {
-        jest.spyOn(window.navigator.clipboard, 'writeText');
-
         const component = getMounted({}, { attachTo: container });
 
         expect(window.navigator.clipboard.writeText).not.toHaveBeenCalled();
