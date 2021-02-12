@@ -51,7 +51,6 @@ export default function NxCodeSnippet({ content, label, sublabel, className, onC
   }
 
   function copyWithExecCommand() {
-    // select all text in the input to help the user understand what happened
     if (textInputRef.current) {
       const textarea = textInputRef.current.querySelector('textarea');
 
