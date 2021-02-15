@@ -32,6 +32,14 @@
   min-width: $nx-page-width-min;
 }
 
+.nx-page--sidebar {
+  @include container-vertical;
+
+  display: flex;
+  height: 100%;
+  min-width: $nx-page-width-min;
+}
+
 .nx-page-content {
   @include container-horizontal;
 
