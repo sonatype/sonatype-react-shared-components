@@ -9,21 +9,11 @@
 }
 
 .nx-card-container--row .gallery-card--66wide {
-  max-width: 66%;
+  flex-basis: 66%;
+  max-width: unset;
 }
 
-.nx-card-container--row .gallery-card--49wide {
-  flex-shrink: 1;
-  max-width: 49%;
-}
-
-.gallery--indicator {
-  margin-left: 0;
-  height: 10px;
-  vertical-align: 0;
-  width: 10px;
-}
-
-.gallery-icon--indicator-on {
-  color: #2dcc5c;
+.nx-card-container--row .gallery-card--50wide {
+  flex-basis: 50%;
+  max-width: unset;
 }
