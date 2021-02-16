@@ -19,6 +19,10 @@
   row-gap: $nx-spacing-md;
 }
 
+.nx-card-container--no-wrap {
+  flex-wrap: nowrap;
+}
+
 // Container modifier for cards that appear one atop of another
 .nx-card-container--column {
   @include container-vertical;

@@ -51,6 +51,13 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-card-container--no-wrap</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card-container</code></td>
+            <td className="nx-cell">
+              Used when you do not want the cards to wrap. Use with care as this can break layouts.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card-container--column</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-card-container</code></td>
             <td className="nx-cell">

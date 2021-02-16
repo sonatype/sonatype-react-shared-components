@@ -9,11 +9,13 @@
 }
 
 .nx-card-container--row .gallery-card--66wide {
-  flex-basis: 66%;
+  flex-shrink: 1;
+  width: 66%;
   max-width: unset;
 }
 
 .nx-card-container--row .gallery-card--50wide {
-  flex-basis: 50%;
+  flex-shrink: 1;
+  width: 50%;
   max-width: unset;
 }
