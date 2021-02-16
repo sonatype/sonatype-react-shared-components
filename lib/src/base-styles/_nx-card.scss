@@ -68,7 +68,7 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-areas:
-    "callout title actions"
+    "callout content actions"
     "callout content actions";
   margin-right: 0;
   margin-bottom: $nx-spacing-md;
@@ -77,12 +77,12 @@
 
   .nx-card__header {
     @include container-vertical;
-    grid-area: title;
   }
 
   .nx-card__content {
-    align-items: start;
+    align-items: unset;
     grid-area: content;
+    justify-content: center;
     margin: 0;
     row-gap: 0;
   }
