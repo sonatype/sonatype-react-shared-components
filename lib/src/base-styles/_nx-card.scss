@@ -47,10 +47,11 @@
 }
 
 .nx-card__content {
+  align-items: center;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  row-gap: $nx-spacing-md;
+  gap: $nx-spacing-md;
 }
 
 .nx-card__actions {
@@ -126,7 +127,5 @@
 }
 
 .nx-card__content--2-column {
-  align-items: center;
-  column-gap: 16px;
   flex-direction: row;
 }
