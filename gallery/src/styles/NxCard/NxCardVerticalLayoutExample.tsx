@@ -204,8 +204,8 @@ export default function NxCardRowLayoutExample() {
           </footer>
         </section>
       </div>
-      <div className="nx-card-container nx-card-container--row">
-        <section className="nx-card nx-card--align-left gallery-card--66wide" aria-label="card 9 in row">
+      <div className="nx-card-container nx-card-container--row nx-card-container--no-wrap">
+        <section className="nx-card nx-card--align-left gallery-card--no-max" aria-label="card 9 in row">
           <header className="nx-card__header">
             <h3 className="nx-h3">A wide card with left aligned content</h3>
           </header>
@@ -214,8 +214,9 @@ export default function NxCardRowLayoutExample() {
               <NxFontAwesomeIcon icon={faChartLine} className="nx-card__call-out-icon" />
             </div>
             <div className="nx-card__text">
-              Lots of content to force the card to a wider size sentient noodles sprawl tower corrupted cartel
-              carbon decay sentient post- singularity
+              This card has had its <code className="nx-code">max-width</code> property removed. As a result it will
+              expand to occupy as much space as it can. <code className="nx-code">nx-card-container--no-wrap</code>
+              {' '}must be used or it will take 100% of the width and force other cards down.
             </div>
           </div>
         </section>
@@ -248,7 +249,7 @@ export default function NxCardRowLayoutExample() {
         </section>
         <section className="nx-card gallery-card--50wide" aria-label="card 10 in row">
           <header className="nx-card__header">
-            <h3 className="nx-h3 nx-h3--card-header">Normal card</h3>
+            <h3 className="nx-h3 nx-h3--card-header">A card that's 50% of available width</h3>
           </header>
           <div className="nx-card__content">
             <div className="nx-card__text">

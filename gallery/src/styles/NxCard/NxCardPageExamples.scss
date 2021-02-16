@@ -8,14 +8,11 @@
   text-align: left;
 }
 
-.nx-card-container--row .gallery-card--66wide {
-  flex-shrink: 1;
-  width: 66%;
+.nx-card-container--row .gallery-card--no-max {
   max-width: unset;
 }
 
 .nx-card-container--row .gallery-card--50wide {
-  flex-shrink: 1;
   width: 50%;
   max-width: unset;
 }
