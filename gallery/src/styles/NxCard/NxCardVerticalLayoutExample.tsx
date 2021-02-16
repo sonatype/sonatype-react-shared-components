@@ -23,7 +23,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Card text</div>
           </div>
-          <footer className="nx-card__footer">
+          <footer className="nx-card__actions">
             <a href="#" className="nx-text-link">Card link</a>
           </footer>
         </section>
@@ -37,7 +37,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Data point details</div>
           </div>
-          <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
+          <footer className="nx-card__actions"><a href="#" className="nx-text-link">Link</a></footer>
         </section>
         <section className="nx-card" aria-label="Card with indicators">
           <header className="nx-card__header">
@@ -64,7 +64,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Data point details</div>
           </div>
-          <footer className="nx-card__footer">
+          <footer className="nx-card__actions">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
@@ -80,7 +80,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Data point details</div>
           </div>
-          <footer className="nx-card__footer">
+          <footer className="nx-card__actions">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
@@ -98,7 +98,7 @@ export default function NxCardRowLayoutExample() {
               <span>Server off</span>
             </div>
           </div>
-          <footer className="nx-card__footer">
+          <footer className="nx-card__actions">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
@@ -112,7 +112,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Data point details</div>
           </div>
-          <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
+          <footer className="nx-card__actions"><a href="#" className="nx-text-link">Link</a></footer>
         </section>
       </div>
       <div className="nx-card-container nx-card-container--row">
@@ -126,7 +126,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Large icon</div>
           </div>
-          <footer className="nx-card__footer">
+          <footer className="nx-card__actions">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
@@ -140,7 +140,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Descriptive text</div>
           </div>
-          <footer className="nx-card__footer">
+          <footer className="nx-card__actions">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
@@ -157,7 +157,7 @@ export default function NxCardRowLayoutExample() {
               systemic
             </div>
           </div>
-          <footer className="nx-card__footer">
+          <footer className="nx-card__actions">
             <div className="nx-btn-bar">
               <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
               <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
@@ -177,7 +177,7 @@ export default function NxCardRowLayoutExample() {
               girl realism
             </div>
           </div>
-          <footer className="nx-card__footer">
+          <footer className="nx-card__actions">
             <a href="#" className="nx-text-link">Film sprawl wristwatch math-engine</a>
           </footer>
         </section>
@@ -201,7 +201,7 @@ export default function NxCardRowLayoutExample() {
           <div className="nx-card__call-out">
             <NxFontAwesomeIcon icon={faShapes} className="nx-card__call-out-icon" />
           </div>
-          <footer className="nx-card__footer">
+          <footer className="nx-card__actions">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>

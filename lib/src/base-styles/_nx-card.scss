@@ -50,7 +50,7 @@
   row-gap: $nx-spacing-md;
 }
 
-.nx-card__footer {
+.nx-card__actions {
   border-top: $nx-border-default;
   margin-top: $nx-spacing-l;
   padding-top: $nx-spacing-l;
@@ -95,6 +95,7 @@
   .nx-card__actions {
     @include container-horizontal;
     align-items: center;
+    border-top: none;
     border-left: $nx-border-default;
     box-sizing: content-box;
     display: flex;
