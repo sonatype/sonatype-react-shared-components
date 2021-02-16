@@ -85,8 +85,9 @@ export default function NxCodeSnippetPage() {
               </NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell></NxTableCell>
-              <NxTableCell>Props to apply to the textarea within the <code className="nx-code">NxCodeSnippet</code>
-            </NxTableCell>
+              <NxTableCell>
+                Props to apply to the textarea within the <code className="nx-code">NxCodeSnippet</code>
+              </NxTableCell>
             </NxTableRow>
             <NxTableRow>
               <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
