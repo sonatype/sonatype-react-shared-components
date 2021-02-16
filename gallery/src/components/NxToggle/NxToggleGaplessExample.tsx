@@ -9,8 +9,6 @@ import React, { useState } from 'react';
 import { NxToggle } from '@sonatype/react-shared-components';
 
 function NxToggleExample() {
-  // this example uses the `useState` hook for succinctness, but you could also manage the state manually
-  // in a class component
   const [isWarpOn, setIsWarpOn] = useState(false),
       [isKrakenOut, setIsKrakenOut] = useState(false),
       [isShapes, setIsShapes] = useState(false),
@@ -31,7 +29,7 @@ function NxToggleExample() {
         small, just right to appear beside a checkbox and demonstrate that the label wraps
       </NxToggle>
       <p>
-        {isWarpOn && 'Warp drive started'} {isKrakenOut && ' The Kraken is out!'}
+        {isWarpOn && 'Warp drive started'} {isKrakenOut && ' The Kraken is out!'} {isShapes && ' Shapes are allowed.'}
       </p>
     </>
   );
