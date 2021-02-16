@@ -13,12 +13,12 @@ describe('NxCodeSnippet', function() {
     await browser.url('#/pages/NxCodeSnippet');
   });
 
-  const exampleSelector = '#nx-code-snippet-example .gallery-example-live',
+  const multipleSnippetSelector = '#nx-code-snippet-simple-example .gallery-example-live',
       complexSnippetExample = '#complex-nx-code-snippet',
       textareaSelector = `${complexSnippetExample} textarea`,
       copyBtnSelector = `${complexSnippetExample} .nx-btn`;
 
-  it('looks right including distance to other components', simpleTest(exampleSelector));
+  it('looks right including distance to other components', simpleTest(multipleSnippetSelector));
   it('looks no different when the text area is hovered', hoverTest(complexSnippetExample, textareaSelector));
   it('has a blue border around the text area when it is focused', focusTest(complexSnippetExample, textareaSelector));
   it('has a blue border around the text area when it is focused and hovered',

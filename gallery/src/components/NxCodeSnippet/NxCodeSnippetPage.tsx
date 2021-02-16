@@ -109,20 +109,20 @@ export default function NxCodeSnippetPage() {
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple Example"
+                          id="nx-code-snippet-simple-example"
                           liveExample={NxCodeSnippetExample}
                           codeExamples={nxCodeSnippetCode}>
-        An <code className="nx-code">NxCodeSnippet</code> with minimal props: just some content which can be
+        Tow <code className="nx-code">NxCodeSnippet</code>s with minimal props: just some content which can be
         copied to the clipboard.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="More Complex Example"
-                          id="nx-code-snippet-example"
+                          id="nx-code-snippet-complex-example"
                           liveExample={NxCodeSnippetComplexExample}
                           codeExamples={nxCodeSnippetComplexCode}>
-        Two <code className="nx-code">NxCodeSnippet</code>s: one demonstrating optional
+        An <code className="nx-code">NxCodeSnippet</code> demonstrating optional
         props: <code className="nx-code">sublabel</code>, <code className="nx-code">onCopyUsingBtn</code>,
-        and <code className="nx-code">inputProps</code>; and another simple one to demonstrate the spacing between
-        them.
+        and <code className="nx-code">inputProps</code>
       </GalleryExampleTile>
     </>
   );

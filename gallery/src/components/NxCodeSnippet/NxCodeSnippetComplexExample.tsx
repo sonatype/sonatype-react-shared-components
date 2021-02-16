@@ -32,16 +32,10 @@ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 }`;
 
 export default function NxCodeSnippetExample() {
-  return (
-    <>
-      <NxCodeSnippet label="IOCCC Code"
-                     id="complex-nx-code-snippet"
-                     sublabel="The following is a winner of the International Obfuscated C Code Competition"
-                     onCopyUsingBtn={() => alert('Copied using the button')}
-                     inputProps={{rows: 20}}
-                     content={snippet} />
-      <NxCodeSnippet label="RSC Github URL"
-                     content="https://github.com/sonatype/sonatype-react-shared-components" />
-    </>
-  );
+  return <NxCodeSnippet label="IOCCC Code"
+                        id="complex-nx-code-snippet"
+                        sublabel="The following is a winner of the International Obfuscated C Code Competition"
+                        onCopyUsingBtn={() => alert('Copied using the button')}
+                        inputProps={{rows: 20}}
+                        content={snippet} />;
 }
