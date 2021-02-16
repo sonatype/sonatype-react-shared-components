@@ -111,8 +111,7 @@ const NxCardPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__call-out</code></td>
             <td className="nx-cell">
-              Element which contains a very small piece of content, frequently graphical, meant for visual impact
-              (icon, sparkline, small pie chart, etc). In a vertically oriented card it is typically a child of
+              Element. In a vertically oriented card it is typically a child of
               <code className="nx-code">.nx-card__content</code>.
             </td>
             <td className="nx-cell">
