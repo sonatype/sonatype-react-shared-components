@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { faShapes, faChartLine, faEdit, faTrash, faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faShapes, faChartLine, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { NxFontAwesomeIcon, NxButton } from '@sonatype/react-shared-components';
 
@@ -41,17 +41,17 @@ export default function NxCardRowLayoutExample() {
         </section>
         <section className="nx-card" aria-label="Card with indicators">
           <header className="nx-card__header">
-            <h3 className="nx-h3">Server status</h3>
+            <h3 className="nx-h3">Read only</h3>
           </header>
           <div className="nx-card__content">
-            <div className="nx-indicator">
-              <NxFontAwesomeIcon icon={faCircle} className="gallery--indicator gallery-icon--indicator-on" />
-              <span>Server on</span>
-            </div>
-            <div className="nx-indicator">
-              <NxFontAwesomeIcon icon={faCircle} className="gallery--indicator gallery-icon--indicator-off" />
-              <span>Server off</span>
-            </div>
+          <dl className="nx-read-only">
+            <dt className="nx-read-only__label">
+              Component Foo
+            </dt>
+            <dd className="nx-read-only__data">
+              Component Foo does not contain proprietary packages
+            </dd>
+          </dl>
           </div>
         </section>
         <section className="nx-card" aria-label="Icon in callout">
@@ -90,12 +90,10 @@ export default function NxCardRowLayoutExample() {
           </header>
           <div className="nx-card__content">
             <div className="nx-status-indicator">
-              <NxFontAwesomeIcon icon={faCircle} className="gallery--indicator gallery-icon--indicator-on" />
-              <span>Server on</span>
+              <span>Server one</span>
             </div>
             <div className="nx-status-indicator">
-              <NxFontAwesomeIcon icon={faCircle} className="gallery--indicator gallery-icon--indicator-off" />
-              <span>Server off</span>
+              <span>Server two</span>
             </div>
           </div>
           <footer className="nx-card__actions">
