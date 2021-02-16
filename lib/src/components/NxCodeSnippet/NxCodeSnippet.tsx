@@ -16,8 +16,9 @@ import './NxCodeSnippet.scss';
 
 export { Props };
 
-export default function NxCodeSnippet({ content, label, sublabel, className, onCopyUsingBtn, ...otherProps }: Props) {
-  const classes = classnames('nx-code-snippet', className),
+export default function NxCodeSnippet(props: Props) {
+  const { content, label, sublabel, className, onCopyUsingBtn, inputProps, ...otherProps } = props,
+      classes = classnames('nx-code-snippet', className),
       textInputRef = useRef<HTMLDivElement>(null);
 
   function copyWithNavigatorClipboard() {
@@ -69,7 +70,7 @@ export default function NxCodeSnippet({ content, label, sublabel, className, onC
     <div className={classes} { ...otherProps }>
       <NxButton type="button" variant="tertiary" onClick={copyToClipboard}>Copy to Clipboard</NxButton>
       <NxFormGroup label={label} sublabel={sublabel}>
-        <NxTextInput ref={textInputRef} type="textarea" value={content} isPristine={true} readOnly />
+        <NxTextInput { ...inputProps } ref={textInputRef} type="textarea" value={content} isPristine={true} readOnly />
       </NxFormGroup>
     </div>
   );

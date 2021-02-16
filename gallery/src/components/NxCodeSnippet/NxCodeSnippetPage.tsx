@@ -75,6 +75,20 @@ export default function NxCodeSnippetPage() {
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
+              <NxTableCell>inputProps</NxTableCell>
+              <NxTableCell>
+                Props for <code className="nx-code">NxTextInput</code> except
+                for <code className="nx-code">type</code>,{' '}
+                <code className="nx-code">value</code>,{' '}
+                <code className="nx-code">isPristine</code>,
+                and <code className="nx-code">readOnly</code>
+              </NxTableCell>
+              <NxTableCell>No</NxTableCell>
+              <NxTableCell></NxTableCell>
+              <NxTableCell>Props to apply to the textarea within the <code className="nx-code">NxCodeSnippet</code>
+            </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
               <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
               <NxTableCell>
                 <a target="_blank"
@@ -106,8 +120,9 @@ export default function NxCodeSnippetPage() {
                           liveExample={NxCodeSnippetComplexExample}
                           codeExamples={nxCodeSnippetComplexCode}>
         Two <code className="nx-code">NxCodeSnippet</code>s: one demonstrating optional
-        props: <code className="nx-code">sublabel</code> and <code className="nx-code">onCopyUsingBtn</code>, and
-        another simple one to demonstrate the spacing between them.
+        props: <code className="nx-code">sublabel</code>, <code className="nx-code">onCopyUsingBtn</code>,
+        and <code className="nx-code">inputProps</code>; and another simple one to demonstrate the spacing between
+        them.
       </GalleryExampleTile>
     </>
   );
