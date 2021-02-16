@@ -113,7 +113,7 @@ const NxTogglePage = () =>
                         id="nx-toggle-gapless-example"
                         codeExamples={exampleGaplessCode}
                         liveExample={NxToggleGaplessExample}>
-      This example demonstrates a toggle control with only a small spacing gap between the label and the toggle control.
+      This example demonstrates toggle controls with only a small spacing gap between the label and the toggle control.
     </GalleryExampleTile>
   </>;
 
