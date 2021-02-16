@@ -13,7 +13,7 @@ describe('NxCodeSnippet', function() {
     await browser.url('#/pages/NxCodeSnippet');
   });
 
-  const exampleSelector = '#nx-code-snippet-complex-example .gallery-example-live',
+  const exampleSelector = '#nx-code-snippet-example .gallery-example-live',
       complexSnippetExample = '#complex-nx-code-snippet',
       textareaSelector = `${complexSnippetExample} textarea`,
       copyBtnSelector = `${complexSnippetExample} .nx-btn`;
