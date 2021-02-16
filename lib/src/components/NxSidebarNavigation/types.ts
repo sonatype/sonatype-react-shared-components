@@ -9,11 +9,13 @@ import { HTMLAttributes, WeakValidationMap } from 'react';
 
 export type Props = HTMLAttributes<HTMLDivElement> & {
   isOpen?: boolean;
-  onClose?: (() => void) | null;
+  helpLink?: string;
+  onToggleOpen: (() => void);
 };
 
 export const propTypes: WeakValidationMap<Props> = {
   isOpen: PropTypes.bool,
   className: PropTypes.string,
-  onClose: PropTypes.func
+  helpLink: PropTypes.string,
+  onToggleOpen: PropTypes.func.isRequired
 };

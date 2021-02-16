@@ -14,26 +14,33 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
 import './NxSidebarNavitation.scss';
 
+
 const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
-  const { children, className } = props;
-  // const classes = classnames(className, 'nx-sidebar-nav', {
-  //   'nx-sidebar-nav__open': isOpen,
-  //   'nx-sidebar-nav__closed': !isOpen
-  // });
-  const classes = classnames(className, 'nx-sidebar-nav', 'nx-sidebar-nav__closed');
+  const { children, className, isOpen, helpLink, onToggleOpen } = props;
+  const classes = classnames(className, 'nx-sidebar-nav', {
+    'nx-sidebar-nav__open': isOpen,
+    'nx-sidebar-nav__closed': !isOpen
+  });
 
   return (
     <nav className={classes}>
-      <NxButton variant="icon-only"
-                className="nx-sidebar-nav--icon nx-closed-menu-icon">
-        <NxFontAwesomeIcon icon={faBars}/>
-      </NxButton>
+      { !isOpen &&
+        <NxButton variant="icon-only"
+                  className="nx-sidebar-nav--icon nx-closed-menu-icon"
+                  onClick={() => onToggleOpen()}>
+          <NxFontAwesomeIcon icon={faBars}/>
+        </NxButton>
+      }
       { children }
       <footer className="nx-sidebar-nav--footer">
-        <NxButton variant="icon-only"
-                  className="nx-sidebar-nav--icon nx-footer-help-icon">
-          <NxFontAwesomeIcon icon={faQuestionCircle}/>
-        </NxButton>
+        { !!helpLink &&
+          <a rel="noreferrer"
+             target="_blank"
+             className="nx-sidebar-nav--link"
+             href={helpLink}>
+            <NxFontAwesomeIcon icon={faQuestionCircle}/>
+          </a>
+        }
         <p className="nx-sidebar-nav--release">
           Release 10X
         </p>
