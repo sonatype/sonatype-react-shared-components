@@ -194,3 +194,5 @@ export { NX_TAG_COLORS, NX_TAG_COLORS_TYPE } from './components/NxTag/types';
 
 export { default as NxSidebarNavigation, Props as NxSidebarNavigationProps }
   from './components/NxSidebarNavigation/NxSidebarNavigation';
+export { default as NxStatefulSidebarNavigation, Props as NxStatefulSidebarNavigationProps }
+  from './components/NxSidebarNavigation/stateful/NxStatefulSidebarNavigation';
