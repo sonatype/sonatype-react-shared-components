@@ -13,18 +13,19 @@ describe('NxCodeSnippet', function() {
     await browser.url('#/pages/NxCodeSnippet');
   });
 
-  const exampleSelector = '#nx-code-snippet-example .nx-code-snippet',
-      textareaSelector = `${exampleSelector} textarea`,
-      copyBtnSelector = `${exampleSelector} .nx-btn`;
+  const exampleSelector = '$nx-code-snippet-complex-example .gallery-example-live',
+      complexSnippetExample = '#complex-nx-code-snippet',
+      textareaSelector = `${complexSnippetExample} textarea`,
+      copyBtnSelector = `${complexSnippetExample} .nx-btn`;
 
-  it('looks right', simpleTest(exampleSelector));
-  it('looks no different when the text area is hovered', hoverTest(exampleSelector, textareaSelector));
-  it('has a blue border around the text area when it is focused', focusTest(exampleSelector, textareaSelector));
+  it('looks right including distance to other components', simpleTest(exampleSelector));
+  it('looks no different when the text area is hovered', hoverTest(complexSnippetExample, textareaSelector));
+  it('has a blue border around the text area when it is focused', focusTest(complexSnippetExample, textareaSelector));
   it('has a blue border around the text area when it is focused and hovered',
-      focusAndHoverTest(exampleSelector, textareaSelector));
+      focusAndHoverTest(complexSnippetExample, textareaSelector));
 
   it('selects the text when the button is clicked', async function() {
-    const [codeSnippet, copyBtn] = await Promise.all([browser.$(exampleSelector), browser.$(copyBtnSelector)]);
+    const [codeSnippet, copyBtn] = await Promise.all([browser.$(complexSnippetExample), browser.$(copyBtnSelector)]);
 
     await codeSnippet.scrollIntoView({ block: 'center' });
 
@@ -43,7 +44,7 @@ describe('NxCodeSnippet', function() {
   });
 
   it('copies the text to the clipboard when the button is clicked', async function() {
-    const [codeSnippet, copyBtn] = await Promise.all([browser.$(exampleSelector), browser.$(copyBtnSelector)]);
+    const [codeSnippet, copyBtn] = await Promise.all([browser.$(complexSnippetExample), browser.$(copyBtnSelector)]);
 
     await codeSnippet.scrollIntoView({ block: 'center' });
 

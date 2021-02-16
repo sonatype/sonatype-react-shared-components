@@ -105,8 +105,9 @@ export default function NxCodeSnippetPage() {
                           id="nx-code-snippet-example"
                           liveExample={NxCodeSnippetComplexExample}
                           codeExamples={nxCodeSnippetComplexCode}>
-        An <code className="nx-code">NxCodeSnippet</code> demonstrating optional
-        props: <code className="nx-code">sublabel</code> and <code className="nx-code">onCopyUsingBtn</code>.
+        Two <code className="nx-code">NxCodeSnippet</code>s: one demonstrating optional
+        props: <code className="nx-code">sublabel</code> and <code className="nx-code">onCopyUsingBtn</code>, and
+        another simple one to demonstrate the spacing between them.
       </GalleryExampleTile>
     </>
   );

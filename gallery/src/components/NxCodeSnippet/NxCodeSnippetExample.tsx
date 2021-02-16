@@ -7,8 +7,7 @@
 import React from 'react';
 import { NxCodeSnippet } from '@sonatype/react-shared-components';
 
-const snippet = 'https://github.com/sonatype/sonatype-react-shared-components';
-
 export default function NxCodeSnippetExample() {
-  return <NxCodeSnippet label="RSC Github URL" content={snippet} />;
+  return <NxCodeSnippet label="RSC Github URL"
+                        content="https://github.com/sonatype/sonatype-react-shared-components" />;
 }
