@@ -241,9 +241,7 @@ export default function NxCardRowLayoutExample() {
           </header>
           <div className="nx-card__content">
             <div className="nx-card__text">
-              Lots of content to force the card to a wider size alcohol realism tower cardboard network sunglasses
-              Tokyo fetishism claymore mine bridge table faded. pistol tiger-team otaku sprawl tower corrupted cartel
-              carbon decay sentient post- singularity.
+              Post-singularity.
             </div>
           </div>
         </section>
@@ -253,9 +251,7 @@ export default function NxCardRowLayoutExample() {
           </header>
           <div className="nx-card__content">
             <div className="nx-card__text">
-              Lots of content to force the card to a wider size alcohol realism tower cardboard network sunglasses
-              Tokyo fetishism claymore mine bridge table faded. pistol tiger-team otaku sprawl tower corrupted cartel
-              carbon decay sentient post- singularity.
+              Tiger-team otaku carbon decay.
             </div>
           </div>
         </section>
