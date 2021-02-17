@@ -44,14 +44,14 @@ export default function NxCardRowLayoutExample() {
             <h3 className="nx-h3">Read only</h3>
           </header>
           <div className="nx-card__content">
-          <dl className="nx-read-only">
-            <dt className="nx-read-only__label">
-              Component Foo
-            </dt>
-            <dd className="nx-read-only__data">
-              Component Foo does not contain proprietary packages
-            </dd>
-          </dl>
+            <dl className="nx-read-only">
+              <dt className="nx-read-only__label">
+                Component Foo
+              </dt>
+              <dd className="nx-read-only__data">
+                Component Foo does not contain proprietary packages
+              </dd>
+            </dl>
           </div>
         </section>
         <section className="nx-card" aria-label="Icon in callout">

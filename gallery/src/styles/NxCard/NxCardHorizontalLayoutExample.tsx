@@ -14,13 +14,13 @@ export default function NxCardColumnLayoutExample() {
   return (
     <div className="nx-card-container nx-card-container--column">
       <section className="nx-card nx-card--horizontal" aria-label="card 1 in column layout">
-        <div className="nx-card__call-out">
-          42
-        </div>
+        <header className="nx-card__header">
+          <h3 className="nx-h3">Header</h3>
+        </header>
         <div className="nx-card__content">
-          <header className="nx-card__header">
-            <h3 className="nx-h3">Header</h3>
-          </header>
+          <div className="nx-card__call-out">
+            42
+          </div>
           <div className="nx-card__text">Text</div>
         </div>
         <div className="nx-card__actions">
@@ -28,13 +28,13 @@ export default function NxCardColumnLayoutExample() {
         </div>
       </section>
       <section className="nx-card nx-card--horizontal" aria-label="card 2 in column layout">
-        <div className="nx-card__call-out">
-          <NxFontAwesomeIcon icon={faShapes} className="nx-card__call-out-icon" />
-        </div>
+        <header className="nx-card__header">
+          <h3 className="nx-h3">Card header</h3>
+        </header>
         <div className="nx-card__content">
-          <header className="nx-card__header">
-            <h3 className="nx-h3">Card header</h3>
-          </header>
+          <div className="nx-card__call-out">
+            <NxFontAwesomeIcon icon={faShapes} className="nx-card__call-out-icon" />
+          </div>
           <div className="nx-card__text">Data point details</div>
         </div>
         <div className="nx-card__actions">
@@ -44,13 +44,13 @@ export default function NxCardColumnLayoutExample() {
         </div>
       </section>
       <section className="nx-card nx-card--horizontal" aria-label="card 3 in column layout">
-        <div className="nx-card__call-out">
-          <NxFontAwesomeIcon icon={faShapes} className="nx-card__call-out-icon--xl" />
-        </div>
+        <header className="nx-card__header">
+          <h3 className="nx-h3">Card header</h3>
+        </header>
         <div className="nx-card__content">
-          <header className="nx-card__header">
-            <h3 className="nx-h3">Card header</h3>
-          </header>
+          <div className="nx-card__call-out">
+            <NxFontAwesomeIcon icon={faShapes} className="nx-card__call-out-icon--xl" />
+          </div>
           <div className="nx-card__text">Large icon</div>
         </div>
         <div className="nx-card__actions">
@@ -62,10 +62,10 @@ export default function NxCardColumnLayoutExample() {
         </div>
       </section>
       <section className="nx-card nx-card--horizontal" aria-label="card 4 in column layout">
-        <div className="nx-card__call-out">
-          XX%
-        </div>
         <div className="nx-card__content">
+          <div className="nx-card__call-out">
+            XX%
+          </div>
           <div className="nx-card__text">Descriptive text</div>
         </div>
         <div className="nx-card__actions">
@@ -73,21 +73,23 @@ export default function NxCardColumnLayoutExample() {
         </div>
       </section>
       <section className="nx-card nx-card--horizontal" aria-label="card 5 in column layout">
+        <header className="nx-card__header">
+          <h3 className="nx-h3">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
+        </header>
         <div className="nx-card__content">
-          <header className="nx-card__header">
-            <h3 className="nx-h3">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
-          </header>
-          <img src={chart}/>
+          <div className="nx-card__text">
+            <img src={chart}/>
+          </div>
         </div>
       </section>
       <section className="nx-card nx-card--horizontal" aria-label="card 6 in column layout">
-        <div className="nx-card__call-out">
-          XXX%
-        </div>
+        <header className="nx-card__header">
+          <h3 className="nx-h3">Render-farm dolphin beef noodles</h3>
+        </header>
         <div className="nx-card__content">
-          <header className="nx-card__header">
-            <h3 className="nx-h3">Render-farm dolphin beef noodles</h3>
-          </header>
+          <div className="nx-card__call-out">
+            XXX%
+          </div>
           <div className="nx-card__text">City advert motion apophenia film skyscraper sentient beef</div>
         </div>
       </section>
