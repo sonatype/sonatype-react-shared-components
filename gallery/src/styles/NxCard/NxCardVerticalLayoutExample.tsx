@@ -39,19 +39,22 @@ export default function NxCardRowLayoutExample() {
           </div>
           <footer className="nx-card__actions"><a href="#" className="nx-text-link">Link</a></footer>
         </section>
-        <section className="nx-card" aria-label="Card with indicators">
-          <header className="nx-card__header">
-            <h3 className="nx-h3">Read only</h3>
-          </header>
+        <section className="nx-card" aria-label="Card with NxReadOnly">
           <div className="nx-card__content">
-          <dl className="nx-read-only">
-            <dt className="nx-read-only__label">
-              Component Foo
-            </dt>
-            <dd className="nx-read-only__data">
-              Component Foo does not contain proprietary packages
-            </dd>
-          </dl>
+            <dl className="nx-read-only">
+              <dt className="nx-read-only__label">
+                Component Foo
+              </dt>
+              <dd className="nx-read-only__data">
+                Component Foo does not contain proprietary packages
+              </dd>
+              <dt className="nx-read-only__label">
+                Component Bar
+              </dt>
+              <dd className="nx-read-only__data">
+                Component Bar does not contain proprietary packages
+              </dd>
+            </dl>
           </div>
         </section>
         <section className="nx-card" aria-label="Icon in callout">
