@@ -9,12 +9,11 @@ import React from 'react';
 import classnames from 'classnames';
 import { faBars, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
-import Close from '../../icons/Close';
 import NxButton from '../NxButton/NxButton';
+import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
 import './NxSidebarNavitation.scss';
-
 
 const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
   const { children, className, isOpen, helpLink, onToggleOpen } = props;
@@ -23,30 +22,45 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
     'nx-sidebar-nav__closed': !isOpen
   });
 
-  const toggleButton = (
+  const toggleButtonClasses = 'nx-sidebar-nav--icon nx-sidebar-nav--toggle';
+  const closeBtn = (
+    <NxCloseButton className={toggleButtonClasses}
+                     onClick={onToggleOpen} />
+  );
+  const openBtn = (
     <NxButton variant="icon-only"
               onClick={onToggleOpen}
-              className='nx-sidebar-nav--icon nx-sidebar-nav--toggle'>
-      { isOpen ? <Close /> : <NxFontAwesomeIcon icon={faBars} /> }
+              className={toggleButtonClasses}>
+      <NxFontAwesomeIcon icon={faBars} />
     </NxButton>
-  )
+  );
+  const toggleButton = isOpen ? closeBtn : openBtn;
 
   return (
     <nav className={classes}>
       { toggleButton }
       { children }
+      { isOpen && <div className="nx-sidebar-nav--separator" /> }
       <footer className="nx-sidebar-nav--footer">
         { !!helpLink &&
           <a rel="noreferrer"
              target="_blank"
-             className="nx-sidebar-nav--link"
+             className="nx-sidebar-nav--help-link"
              href={helpLink}>
             <NxFontAwesomeIcon icon={faQuestionCircle}/>
+            { isOpen && <span className="nx-sidebar-nav--help-text">Help and Support</span>}
           </a>
         }
+
         <p className="nx-sidebar-nav--release">
-          Release 10X
+          { isOpen ? 'Lifecycle Release 10X' : 'Release 10X' }
         </p>
+        { isOpen &&
+          <>
+            <p>Powered by Nexus IQ Server</p>
+            <p>Created by Sonatype</p>
+          </>
+        }
       </footer>
     </nav>
   );
