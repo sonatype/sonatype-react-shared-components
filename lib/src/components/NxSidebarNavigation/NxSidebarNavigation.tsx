@@ -9,6 +9,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { faBars, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
+import Close from '../../icons/Close';
 import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
@@ -22,15 +23,17 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
     'nx-sidebar-nav__closed': !isOpen
   });
 
+  const toggleButton = (
+    <NxButton variant="icon-only"
+              onClick={onToggleOpen}
+              className='nx-sidebar-nav--icon nx-sidebar-nav--toggle'>
+      { isOpen ? <Close /> : <NxFontAwesomeIcon icon={faBars} /> }
+    </NxButton>
+  )
+
   return (
     <nav className={classes}>
-      { !isOpen &&
-        <NxButton variant="icon-only"
-                  className="nx-sidebar-nav--icon nx-closed-menu-icon"
-                  onClick={() => onToggleOpen()}>
-          <NxFontAwesomeIcon icon={faBars}/>
-        </NxButton>
-      }
+      { toggleButton }
       { children }
       <footer className="nx-sidebar-nav--footer">
         { !!helpLink &&

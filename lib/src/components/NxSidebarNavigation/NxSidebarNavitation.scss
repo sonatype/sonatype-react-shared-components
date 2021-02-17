@@ -26,25 +26,23 @@ $nx-sidebar-nav-background: $nx-blue-1000;
   padding: 0;
   padding-top: $nx-spacing-l;
   padding-bottom: $nx-spacing-xxxl;
-
-  // padding: $nx-spacing-l $nx-spacing-sm $nx-spacing-xxxl;
   position: relative;
   transition: all 0.5s ease;
+}
 
-  .nx-sidebar-nav--icon {
-    color: $nx-white;
-    margin: 0;
-  }
+.nx-sidebar-nav--icon {
+  color: $nx-white;
+  margin: 0;
+}
 
-  .nx-footer-help-icon {
-    color: $nx-grey-50;
-  }
+.nx-footer-help-icon {
+  color: $nx-grey-50;
+}
 
-  .nx-sidebar-nav--footer {
-    position: absolute;
-    text-align: center;
-    bottom: $nx-spacing-xxl;
-  }
+.nx-sidebar-nav--footer {
+  position: absolute;
+  text-align: center;
+  bottom: $nx-spacing-xxl;
 }
 
 .nx-sidebar-nav--items {
@@ -78,6 +76,12 @@ $nx-sidebar-nav-background: $nx-blue-1000;
 
 .nx-sidebar-nav__open {
   width: 250px;
+
+  .nx-sidebar-nav--toggle {
+    position: absolute;
+    right: $nx-spacing-l;
+  }
+
 }
 
 .nx-sidebar-nav__closed {
