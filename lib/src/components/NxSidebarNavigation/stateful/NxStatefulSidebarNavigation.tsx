@@ -20,7 +20,7 @@ const NxStatefulSidebarNavigation = function(props: Props) {
       { children }
     </NxSidebarNavigation>
   );
-}
+};
 
 NxStatefulSidebarNavigation.propTypes = propTypes;
 export default NxStatefulSidebarNavigation;
