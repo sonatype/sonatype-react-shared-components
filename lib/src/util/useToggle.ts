@@ -6,7 +6,7 @@
  */
 import { useState } from 'react';
 
-type ReturnType = [boolean, () => void, (b: boolean) => void];
+type ReturnType = [boolean, () => boolean, (b: boolean) => void];
 
 /**
  * Convenience hook for boolean pieces of react state that are primarily interacted with via
@@ -21,7 +21,10 @@ export default function useToggle(initialValue: boolean): ReturnType {
   const [state, setState] = useState(initialValue);
 
   function toggleState() {
+    const newState = !state;
     setState(!state);
+
+    return newState;
   }
 
   return [state, toggleState, setState];

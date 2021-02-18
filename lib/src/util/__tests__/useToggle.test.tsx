@@ -45,6 +45,29 @@ describe('useToggle', function() {
     expect(component).toHaveText('false');
   });
 
+  it('returns a tuple who\'s second value is a function that returns the new state value after toggling', function() {
+    function Fixture({ onToggle }: { onToggle: (newVal: boolean) => void }) {
+      const [val, toggle] = useToggle(false);
+
+      function onClick() {
+        const newVal = toggle();
+        onToggle(newVal);
+      }
+
+      return <button onClick={onClick}>{val.toString()}</button>;
+    }
+
+    const onToggle = jest.fn(),
+        component = shallow(<Fixture onToggle={onToggle} />);
+
+    component.simulate('click');
+    expect(onToggle).toHaveBeenCalledWith(true);
+    expect(onToggle).not.toHaveBeenCalledWith(false);
+
+    component.simulate('click');
+    expect(onToggle).toHaveBeenCalledWith(false);
+  });
+
   it('returns a tuple who\'s third value is a function that sets the state to the specified value', function() {
     function Fixture() {
       const [val, , set] = useToggle(false);
