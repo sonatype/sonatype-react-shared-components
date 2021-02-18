@@ -142,7 +142,7 @@ const NxFormPage = () =>
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell>validationError</NxTableCell>
+            <NxTableCell>validationErrors</NxTableCell>
             <NxTableCell>string</NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell>undefined</NxTableCell>

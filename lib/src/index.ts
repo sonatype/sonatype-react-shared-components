@@ -181,6 +181,12 @@ export { default as NxToggle, Props as NxToggleProps } from './components/NxTogg
 export { default as NxStatefulToggle, Props as NxStatefulToggleProps }
   from './components/NxToggle/stateful/NxStatefulToggle';
 
+export { default as NxSegmentedButton, Props as NxSegmentedButtonProps }
+  from './components/NxSegmentedButton/NxSegmentedButton';
+
+export { default as NxStatefulSegmentedButton, Props as NxStatefulSegmentedButtonProps }
+  from './components/NxSegmentedButton/stateful/NxStatefulSegmentedButton';
+
 export { default as NxTag, NxSelectableTag, PublicProps as NxTagProps, SelectableProps as NxSelectableTagProps }
   from './components/NxTag/NxTag';
 

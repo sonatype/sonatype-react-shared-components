@@ -13,7 +13,8 @@ describe('NxToggle', function() {
   });
 
   const selector = '#nx-toggle-example .gallery-example-live label:nth-of-type(2)',
-      disabledSelector = '#nx-toggle-example .gallery-example-live label:nth-of-type(4)';
+      disabledSelector = '#nx-toggle-example .gallery-example-live label:nth-of-type(4)',
+      gaplessSelector = '#nx-toggle-gapless-example .gallery-example-live';
 
   describe('Default NxToggle', function() {
     it('has a blue border, blue indicator, and white background by default', simpleTest(selector));
@@ -81,5 +82,9 @@ describe('NxToggle', function() {
   describe('Attribute-Disabled NxToggle', function() {
     it('looks disabled by default', simpleTest(disabledSelector));
     it('looks disabled when hovered', hoverTest(disabledSelector));
+  });
+
+  describe('Gapless NxToggle', function() {
+    it('looks correct', simpleTest(gaplessSelector));
   });
 });

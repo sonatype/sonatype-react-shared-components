@@ -9,8 +9,10 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxToggleExample from './NxToggleExample';
+import NxToggleGaplessExample from './NxToggleGaplessExample';
 
-const exampleCode = require('!!raw-loader!./NxToggleExample').default;
+const exampleCode = require('!!raw-loader!./NxToggleExample').default,
+    exampleGaplessCode = require('!!raw-loader!./NxToggleGaplessExample').default;
 
 const NxTogglePage = () =>
   <>
@@ -75,6 +77,29 @@ const NxTogglePage = () =>
           </tr>
         </tbody>
       </table>
+
+      <h3 className="nx-h3">CSS classes</h3>
+      <table className="nx-table">
+        <thead>
+          <tr className="nx-table-row">
+            <th className="nx-cell nx-cell--header">Class</th>
+            <th className="nx-cell nx-cell--header">Type</th>
+            <th className="nx-cell nx-cell--header">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="nx-table-row">
+            <td className="nx-cell">.nx-toggle--no-gap</td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-toggle</code></td>
+            <td className="nx-cell">
+              When this class is applied to an <code className="nx-code">NxToggle</code> it causes the toggle control
+              to appear immediately after the label text rather than appearing to float to the right of the toggle's
+              container. Note that the maximum width of the toggle remains in effect as do the rules around the length
+              and wrapping of the toggle's label. See the example below for a demonstration.
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General NxToggle Example"
@@ -83,6 +108,12 @@ const NxTogglePage = () =>
                         liveExample={NxToggleExample}>
       This example shows a series of toggle controls in a typical vertical layout with
       different label content. Note that one of the toggle controls is disabled.
+    </GalleryExampleTile>
+    <GalleryExampleTile title="General NxToggle Gapless Example"
+                        id="nx-toggle-gapless-example"
+                        codeExamples={exampleGaplessCode}
+                        liveExample={NxToggleGaplessExample}>
+      This example demonstrates toggle controls with only a small spacing gap between the label and the toggle control.
     </GalleryExampleTile>
   </>;
 
