@@ -60,8 +60,9 @@ const NxAccordionPage = () =>
                 <NxInfoAlert>
                   Deprecated behavior: the onToggle callback does actually get passed a value; it gets the
                   presumed new value of the open state. However with the introduction of
-                  the <a href="#/page/useToggle">useToggle</a> hook, that is of minimal value, so for the sake
-                  of API consistency the intent going forward is to treat this as a parameterless callback
+                  the <a className="nx-text-link" href="#/pages/useToggle">useToggle</a> hook, that is of minimal
+                  value, so for the sake of API consistency the intent going forward is to treat this as a
+                  parameterless callback.
                 </NxInfoAlert>
               </NxTableCell>
             </NxTableRow>
