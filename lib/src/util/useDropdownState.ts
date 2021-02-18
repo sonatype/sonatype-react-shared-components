@@ -24,7 +24,7 @@ export default function useDropdownState() {
     }
   };
 
-  const handleClick: EventListener = () => {
+  const handleClick = () => {
     // Effects get re-executed after every render.
     // A consequence of this is that the `handleClick` function bound to
     // document.onclick will have values from the closure of the previous render.
