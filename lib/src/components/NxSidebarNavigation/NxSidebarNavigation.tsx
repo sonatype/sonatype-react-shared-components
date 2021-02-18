@@ -13,7 +13,9 @@ import NxButton from '../NxButton/NxButton';
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
+
 import './NxSidebarNavitation.scss';
+
 
 const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
   const { children, className, isOpen, helpLink, onToggleOpen } = props;
@@ -21,7 +23,6 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
     'nx-sidebar-nav__open': isOpen,
     'nx-sidebar-nav__closed': !isOpen
   });
-
   const toggleButtonClasses = 'nx-sidebar-nav--icon nx-sidebar-nav--toggle';
   const closeBtn = (
     <NxCloseButton className={toggleButtonClasses}
@@ -35,10 +36,19 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
     </NxButton>
   );
   const toggleButton = isOpen ? closeBtn : openBtn;
-
+  const logoImg = require('../../assets/img/SON_hexagon_cropped.svg');
+  const logo = <img src={logoImg} className="nx-sidebar-nav--logo" />;
+  const logoLink = 'http://google.com';
+  
   return (
     <nav className={classes}>
       { toggleButton }
+      { isOpen &&
+        <div className="nx-sidebar-nav--product-info">
+          { logoLink ? <a href={logoLink} aria-label="logo">{logo}</a> : logo }
+          <span className="nx-sidebar-nav--product-name">nexus lifecycle</span>
+        </div>
+      }
       { children }
       { isOpen && <div className="nx-sidebar-nav--separator" /> }
       <footer className="nx-sidebar-nav--footer">
