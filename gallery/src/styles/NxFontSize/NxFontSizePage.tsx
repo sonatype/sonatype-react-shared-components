@@ -9,7 +9,7 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import './NxFontSizeScssExample.scss';
 
-const nxFontSizeHtmlExampleCode = require('!!raw-loader!./NxFontSizeHtmlExample.html').default;
+const nxFontSizeHtmlExampleCode = require('./NxFontSizeHtmlExample.html');
 const nxFontSizeScssExampleCode = require('!!raw-loader!./NxFontSizeScssExample.scss').default;
 
 const NxFontSizePage = () =>

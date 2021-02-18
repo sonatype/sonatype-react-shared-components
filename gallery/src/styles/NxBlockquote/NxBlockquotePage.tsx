@@ -8,7 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxBlockquoteExampleCode = require('!!raw-loader!./NxBlockquoteExample.html').default;
+const nxBlockquoteExampleCode = require('./NxBlockquoteExample.html');
 
 const NxBlockquotePage = () => {
   return (

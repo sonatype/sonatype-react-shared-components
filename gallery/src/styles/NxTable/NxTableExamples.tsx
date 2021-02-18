@@ -17,11 +17,11 @@ import NxTableFilterExample from './NxTableFilterExample';
 import './NxTableTruncationAndWrappingExample.scss';
 import './NxTableFixedLayoutExample.scss';
 
-const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample.html').default,
+const NxTableSimpleCode = require('./NxTableDefaultExample.html'),
     NxTableClickableCode = require('!!raw-loader!./NxTableClickableExample').default,
-    NxTableEmptyCode = require('!!raw-loader!./NxTableEmptyExample.html').default,
+    NxTableEmptyCode = require('./NxTableEmptyExample.html'),
     NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample').default,
-    NxTableTruncationAndWrappingCode = require('!!raw-loader!./NxTableTruncationAndWrappingExample.html').default,
+    NxTableTruncationAndWrappingCode = require('./NxTableTruncationAndWrappingExample.html'),
     NxTableFixedLayoutCode = require('!!raw-loader!./NxTableFixedLayoutExample').default,
     NxTableTruncationAndWrappingScss = require('!!raw-loader!./NxTableTruncationAndWrappingExample.scss').default,
     NxTableFixedLayoutScss = require('!!raw-loader!./NxTableFixedLayoutExample.scss').default,

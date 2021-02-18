@@ -11,9 +11,9 @@ import RawHtmlExample from '../../CodeExample';
 const pageLayoutTwoColumnImg = require('./page-layout-2col.png');
 const pageLayoutSingleColumnImg = require('./page-layout-1col.png');
 
-const singleColumnLayoutExampleCode = require('!!raw-loader!./SingleColumnLayoutExample.html').default;
-const twoColumnLayoutExampleCode = require('!!raw-loader!./TwoColumnLayoutExample.html').default;
-const reactRootLayoutExampleCode = require('!!raw-loader!./ReactRootLayoutExample.html').default;
+const singleColumnLayoutExampleCode = require('./SingleColumnLayoutExample.html');
+const twoColumnLayoutExampleCode = require('./TwoColumnLayoutExample.html');
+const reactRootLayoutExampleCode = require('./ReactRootLayoutExample.html');
 
 const PageLayoutPage = () =>
   <>

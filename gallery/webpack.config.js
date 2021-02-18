@@ -95,7 +95,6 @@ module.exports = function(env = { production: false }) {
         // this conf is specific to the RSC gallery, not usage of RSC in general. Consuming projects only need
         // something like this if they want to be able to import contents of certain files as strings
         test: /\.html$/,
-        loader: 'raw-loader',
         type: 'asset/source'
       }]
     },

@@ -12,15 +12,15 @@ import NxListWithActionsExample from './NxListWithActionsExample';
 import NxListErrorExample from './NxListErrorStateExample';
 import NxListLoadingExample from './NxListLoadingExample';
 
-const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').default,
+const NxListSimpleCode = require('./NxListDefaultExample.html'),
     NxListClickableCode = require('!!raw-loader!./NxListClickableExample').default,
-    NxListMultiLineCode = require('!!raw-loader!./NxListMultiLineExample.html').default,
-    NxListBulletedCode = require('!!raw-loader!./NxListBulletedExample.html').default,
+    NxListMultiLineCode = require('./NxListMultiLineExample.html'),
+    NxListBulletedCode = require('./NxListBulletedExample.html'),
     NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.tsx').default,
-    NxListEmptyCode = require('!!raw-loader!./NxListEmptyExample.html').default,
+    NxListEmptyCode = require('./NxListEmptyExample.html'),
     NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.tsx').default,
     NxListLoadingCode = require('!!raw-loader!./NxListLoadingExample.tsx').default,
-    NxListDescriptionCode = require('!!raw-loader!./NxListDescriptionExample.html').default;
+    NxListDescriptionCode = require('./NxListDescriptionExample.html');
 
 const NxListsExamples = () =>
   <>
