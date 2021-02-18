@@ -5,7 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxInfoAlert }
+  from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -51,12 +52,17 @@ const NxAccordionPage = () =>
           <NxTableBody>
             <NxTableRow>
               <NxTableCell>onToggle</NxTableCell>
-              <NxTableCell>(boolean => void)</NxTableCell>
+              <NxTableCell>(() => void)</NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
-                A function which gets called when the accordion collapse/expand state is toggled. Receives the new
-                open value (<code className="nx-code">true</code> when
-                opening, <code className="nx-code">false</code> when closing) as an argument.
+                A function which gets called when the accordion collapse/expand state is toggled.
+
+                <NxInfoAlert>
+                  Deprecated behavior: the onToggle callback does actually get passed a value; it gets the
+                  presumed new value of the open state. However with the introduction of
+                  the <a href="#/page/useToggle">useToggle</a> hook, that is of minimal value, so for the sake
+                  of API consistency the intent going forward is to treat this as a parameterless callback
+                </NxInfoAlert>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
