@@ -12,7 +12,7 @@ import { NxWarningAlert } from '@sonatype/react-shared-components';
 import NxTableScrollingExample from './NxTableScrollingExample';
 
 const NxTableFooterCode = require('./NxTableFooterExample.html'),
-    NxTableScrollingCode = require('!!raw-loader!./NxTableScrollingExample.tsx').default,
+    NxTableScrollingCode = require('./NxTableScrollingExample.tsx?raw'),
     NxTableUnfilledScrollContainerCode = require('./NxTableUnfilledScrollContainerExample.html'),
     NxTableUnfilledContainerWithFooterCode = require('./NxTableUnfilledContainerWithFooterExample.html');
 

@@ -18,15 +18,15 @@ import './NxTableTruncationAndWrappingExample.scss';
 import './NxTableFixedLayoutExample.scss';
 
 const NxTableSimpleCode = require('./NxTableDefaultExample.html'),
-    NxTableClickableCode = require('!!raw-loader!./NxTableClickableExample').default,
+    NxTableClickableCode = require('./NxTableClickableExample?raw'),
     NxTableEmptyCode = require('./NxTableEmptyExample.html'),
-    NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample').default,
+    NxTableErrorStateCode = require('./NxTableErrorStateExample?raw'),
     NxTableTruncationAndWrappingCode = require('./NxTableTruncationAndWrappingExample.html'),
-    NxTableFixedLayoutCode = require('!!raw-loader!./NxTableFixedLayoutExample').default,
-    NxTableTruncationAndWrappingScss = require('!!raw-loader!./NxTableTruncationAndWrappingExample.scss').default,
-    NxTableFixedLayoutScss = require('!!raw-loader!./NxTableFixedLayoutExample.scss').default,
-    NxTableFilterCode = require('!!raw-loader!./NxTableFilterExample').default,
-    NxTableSortableCode = require('!!raw-loader!./NxTableSortableExample').default;
+    NxTableFixedLayoutCode = require('./NxTableFixedLayoutExample?raw'),
+    NxTableTruncationAndWrappingScss = require('./NxTableTruncationAndWrappingExample.scss?raw'),
+    NxTableFixedLayoutScss = require('./NxTableFixedLayoutExample.scss?raw'),
+    NxTableFilterCode = require('./NxTableFilterExample?raw'),
+    NxTableSortableCode = require('./NxTableSortableExample?raw');
 
 const truncationAndWrappingCodeExamples = [
       NxTableTruncationAndWrappingCode,

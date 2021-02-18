@@ -10,9 +10,9 @@ import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxWarningAl
   from '@sonatype/react-shared-components';
 
 const NxViewportSizedExample =
-      require('!!raw-loader!./NxViewportSizedExample.tsx').default,
+      require('./NxViewportSizedExample.tsx?raw'),
     NxViewportSizedExpandingExample =
-      require('!!raw-loader!./NxViewportSizedExpandingExample.tsx').default;
+      require('./NxViewportSizedExpandingExample.tsx?raw');
 
 export default function NxViewportSizedPage() {
   return (

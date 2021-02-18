@@ -14,9 +14,9 @@ import NxFilterInputDataListExample from './NxFilterInputDataListExample';
 
 import './NxFilterInputPage.scss';
 
-const nxFilterInputFullExampleCode = require('!!raw-loader!./NxFilterInputFullExample').default,
-    nxFilterInputDisabledExampleCode = require('!!raw-loader!./NxFilterInputDisabledExample').default,
-    nxFilterInputDataListExampleCode = require('!!raw-loader!./NxFilterInputDataListExample').default;
+const nxFilterInputFullExampleCode = require('./NxFilterInputFullExample?raw'),
+    nxFilterInputDisabledExampleCode = require('./NxFilterInputDisabledExample?raw'),
+    nxFilterInputDataListExampleCode = require('./NxFilterInputDataListExample?raw');
 
 const NxFilterInputPage = () =>
   <>

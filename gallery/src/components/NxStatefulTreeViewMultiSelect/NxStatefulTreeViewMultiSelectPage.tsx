@@ -11,9 +11,9 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxStatefulTreeViewMultiSelectExample from './NxStatefulTreeViewMultiSelectExample';
 import NxStatefulTreeViewMultiSelectDisabledExample from './NxStatefulTreeViewMultiSelectDisabledExample';
 
-const nxStatefulTreeViewMultiSelectExampleCode = require('!!raw-loader!./NxStatefulTreeViewMultiSelectExample').default,
+const nxStatefulTreeViewMultiSelectExampleCode = require('./NxStatefulTreeViewMultiSelectExample?raw'),
     nxStatefulTreeViewMultiSelectDisabledExampleCode =
-        require('!!raw-loader!./NxStatefulTreeViewMultiSelectDisabledExample').default;
+        require('./NxStatefulTreeViewMultiSelectDisabledExample?raw');
 
 const NxStatefulTreeViewMultiSelectPage = () =>
   <>

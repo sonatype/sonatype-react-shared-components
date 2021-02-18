@@ -36,6 +36,9 @@ module.exports = function(env = { production: false }) {
         // are written in TypeScript. The RSC package itself is pre-compiled to JS and so does not require
         // this loader in consuming projects.
         test: /\.(t|j)sx?$/,
+
+        // do not pass raw-loaded content through ts-loader
+        resourceQuery: /^(?!\?raw$).*/,
         loader: 'ts-loader',
         include: [
           path.resolve(__dirname, 'src'),
@@ -54,6 +57,9 @@ module.exports = function(env = { production: false }) {
         // using the precompiled RSC stylesheet (react-shared-components.css), consider using the webpack null-loader
         // to silently pass over the ES6 imports of scss files present within the RSC codebase.
         test: /\.s?css$/,
+
+        // do not pass raw-loaded content through these loaders
+        resourceQuery: /^(?!\?raw$).*/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
           { loader: 'css-loader' },
@@ -95,6 +101,9 @@ module.exports = function(env = { production: false }) {
         // this conf is specific to the RSC gallery, not usage of RSC in general. Consuming projects only need
         // something like this if they want to be able to import contents of certain files as strings
         test: /\.html$/,
+        type: 'asset/source'
+      }, {
+        resourceQuery: /raw/,
         type: 'asset/source'
       }]
     },

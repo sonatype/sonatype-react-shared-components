@@ -11,8 +11,8 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxRadioExample from './NxRadioExample';
 import NxRadioNowrapExample from './NxRadioNowrapExample';
 
-const exampleCode = require('!!raw-loader!./NxRadioExample').default;
-const nowrapExampleCode = require('!!raw-loader!./NxRadioNowrapExample').default;
+const exampleCode = require('./NxRadioExample?raw');
+const nowrapExampleCode = require('./NxRadioNowrapExample?raw');
 
 const NxRadioPage = () =>
   <>

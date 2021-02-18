@@ -12,9 +12,9 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxTooltipExample from './NxTooltipExample';
 import NxTooltipWrappingExample from './NxTooltipWrappingExample';
 
-const tooltipsExampleCode = require('!!raw-loader!./NxTooltipExample').default,
-    wrappingTooltipsExampleCode = require('!!raw-loader!./NxTooltipWrappingExample').default,
-    tooltipsExampleStyles = require('!!raw-loader!./NxTooltipExample.scss').default;
+const tooltipsExampleCode = require('./NxTooltipExample?raw'),
+    wrappingTooltipsExampleCode = require('./NxTooltipWrappingExample?raw'),
+    tooltipsExampleStyles = require('./NxTooltipExample.scss?raw');
 
 export default function NxTooltipPage() {
   const codeExamples = [tooltipsExampleCode, { content: tooltipsExampleStyles, language: 'scss' }];

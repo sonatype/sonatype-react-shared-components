@@ -14,11 +14,11 @@ import NxStatefulTextInputPasswordExample from './NxStatefulTextInputPasswordExa
 import NxStatefulTextInputTextAreaExample from './NxStatefulTextInputTextAreaExample';
 import NxStatefulTextInputDisabledExample from './NxStatefulTextInputDisabledExample';
 
-const simpleSourceCode = require('!!raw-loader!./NxStatefulTextInputSimpleExample').default;
-const validationSourceCode = require('!!raw-loader!./NxStatefulTextInputValidationExample').default;
-const passwordSourceCode = require('!!raw-loader!./NxStatefulTextInputPasswordExample').default;
-const textAreaSourceCode = require('!!raw-loader!./NxStatefulTextInputTextAreaExample').default;
-const disabledSourceCode = require('!!raw-loader!./NxStatefulTextInputDisabledExample').default;
+const simpleSourceCode = require('./NxStatefulTextInputSimpleExample?raw');
+const validationSourceCode = require('./NxStatefulTextInputValidationExample?raw');
+const passwordSourceCode = require('./NxStatefulTextInputPasswordExample?raw');
+const textAreaSourceCode = require('./NxStatefulTextInputTextAreaExample?raw');
+const disabledSourceCode = require('./NxStatefulTextInputDisabledExample?raw');
 
 const NxStatefulTextInputPage = () =>
   <>

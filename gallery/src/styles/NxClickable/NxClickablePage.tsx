@@ -10,7 +10,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxClickableExample from './NxClickableExample';
 
-const nxClickableExampleCode = require('!!raw-loader!./NxClickableExample').default;
+const nxClickableExampleCode = require('./NxClickableExample?raw');
 
 const NxClickablePage = () => {
   return (

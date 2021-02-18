@@ -12,9 +12,9 @@ import NxCardRowLayoutExample from './NxCardRowLayoutExample';
 import NxCardColumnLayoutExample from './NxCardColumnLayoutExample';
 import NxCardRowAltLayoutExample from './NxCardRowAltLayoutExample';
 
-const nxCardRowLayoutCode = require('!!raw-loader!./NxCardRowLayoutExample').default,
-    nxCardColumnLayoutCode = require('!!raw-loader!./NxCardColumnLayoutExample').default,
-    nxCardRowAltLayoutCode = require('!!raw-loader!./NxCardRowAltLayoutExample').default;
+const nxCardRowLayoutCode = require('./NxCardRowLayoutExample?raw'),
+    nxCardColumnLayoutCode = require('./NxCardColumnLayoutExample?raw'),
+    nxCardRowAltLayoutCode = require('./NxCardRowAltLayoutExample?raw');
 
 const NxCardPage = () =>
   <>

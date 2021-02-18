@@ -11,7 +11,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxStatefulSegmentedButtonExample from './NxStatefulSegmentedButtonExample';
 import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
 
-const nxStatefulSegmentedButtonCode = require('!!raw-loader!./NxStatefulSegmentedButtonExample').default;
+const nxStatefulSegmentedButtonCode = require('./NxStatefulSegmentedButtonExample?raw');
 
 export default function NxStatefulSegmentedButtonPage() {
   return (

@@ -11,9 +11,9 @@ import NxBinaryDonutChartMinimalExample from './NxBinaryDonutChartMinimalExample
 import NxBinaryDonutChartNoHoleExample from './NxBinaryDonutChartNoHoleExample';
 import NxBinaryDonutChartLargeHoleExample from './NxBinaryDonutChartLargeHoleExample';
 
-const nxBinaryDonutChartMinimalExampleCode = require('!!raw-loader!./NxBinaryDonutChartMinimalExample').default;
-const nxBinaryDonutChartNoHoleExample = require('!!raw-loader!./NxBinaryDonutChartNoHoleExample').default;
-const nxBinaryDonutChartLargeHoleExample = require('!!raw-loader!./NxBinaryDonutChartLargeHoleExample').default;
+const nxBinaryDonutChartMinimalExampleCode = require('./NxBinaryDonutChartMinimalExample?raw');
+const nxBinaryDonutChartNoHoleExample = require('./NxBinaryDonutChartNoHoleExample?raw');
+const nxBinaryDonutChartLargeHoleExample = require('./NxBinaryDonutChartLargeHoleExample?raw');
 
 const NxBinaryDonutChartPage = () =>
   <>

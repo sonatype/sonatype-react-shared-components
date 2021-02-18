@@ -13,13 +13,13 @@ import NxListErrorExample from './NxListErrorStateExample';
 import NxListLoadingExample from './NxListLoadingExample';
 
 const NxListSimpleCode = require('./NxListDefaultExample.html'),
-    NxListClickableCode = require('!!raw-loader!./NxListClickableExample').default,
+    NxListClickableCode = require('./NxListClickableExample?raw'),
     NxListMultiLineCode = require('./NxListMultiLineExample.html'),
     NxListBulletedCode = require('./NxListBulletedExample.html'),
-    NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.tsx').default,
+    NxListWithActionsCode = require('./NxListWithActionsExample.tsx?raw'),
     NxListEmptyCode = require('./NxListEmptyExample.html'),
-    NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.tsx').default,
-    NxListLoadingCode = require('!!raw-loader!./NxListLoadingExample.tsx').default,
+    NxListErrorStateCode = require('./NxListErrorStateExample.tsx?raw'),
+    NxListLoadingCode = require('./NxListLoadingExample.tsx?raw'),
     NxListDescriptionCode = require('./NxListDescriptionExample.html');
 
 const NxListsExamples = () =>

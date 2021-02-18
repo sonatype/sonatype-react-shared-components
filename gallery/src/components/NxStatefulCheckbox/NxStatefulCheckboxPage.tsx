@@ -10,7 +10,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxStatefulCheckboxExample from './NxStatefulCheckboxExample';
 
-const exampleCode = require('!!raw-loader!./NxStatefulCheckboxExample').default;
+const exampleCode = require('./NxStatefulCheckboxExample?raw');
 
 const NxStatefulCheckboxPage = () =>
   <>

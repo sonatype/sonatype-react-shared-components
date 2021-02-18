@@ -11,8 +11,8 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxCheckboxExample from './NxCheckboxExample';
 import NxCheckboxNowrapExample from './NxCheckboxNowrapExample';
 
-const exampleCode = require('!!raw-loader!./NxCheckboxExample').default;
-const nowrapExampleCode = require('!!raw-loader!./NxCheckboxNowrapExample').default;
+const exampleCode = require('./NxCheckboxExample?raw');
+const nowrapExampleCode = require('./NxCheckboxNowrapExample?raw');
 
 const NxCheckboxPage = () =>
   <>

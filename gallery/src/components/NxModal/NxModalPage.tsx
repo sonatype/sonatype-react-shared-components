@@ -16,13 +16,13 @@ import NxModalFormErrorExample from './NxModalFormErrorExample';
 import NxModalExtraWideExample from './NxModalExtraWideExample';
 import NxModalNarrowExample from './NxModalNarrowExample';
 
-const NxModalSimpleSourceCode = require('!!raw-loader!./NxModalSimpleExample').default;
-const NxModalAlertSourceCode = require('!!raw-loader!./NxModalAlertExample').default;
-const NxModalFormSourceCode = require('!!raw-loader!./NxModalFormExample').default;
-const NxModalStackedSourceCode = require('!!raw-loader!./NxModalStackedExample').default;
-const NxModalFormErrorSourceCode = require('!!raw-loader!./NxModalFormErrorExample').default;
-const NxModalExtraWideSourceCode = require('!!raw-loader!./NxModalExtraWideExample').default;
-const NxModalNarrowSourceCode = require('!!raw-loader!./NxModalNarrowExample').default;
+const NxModalSimpleSourceCode = require('./NxModalSimpleExample?raw');
+const NxModalAlertSourceCode = require('./NxModalAlertExample?raw');
+const NxModalFormSourceCode = require('./NxModalFormExample?raw');
+const NxModalStackedSourceCode = require('./NxModalStackedExample?raw');
+const NxModalFormErrorSourceCode = require('./NxModalFormErrorExample?raw');
+const NxModalExtraWideSourceCode = require('./NxModalExtraWideExample?raw');
+const NxModalNarrowSourceCode = require('./NxModalNarrowExample?raw');
 
 export default function NxModalPage() {
   return (

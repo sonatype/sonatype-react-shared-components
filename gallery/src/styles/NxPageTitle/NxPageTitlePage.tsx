@@ -13,7 +13,7 @@ import NxPageTitlePolicyViolationIndicatorExample from './NxPageTitlePolicyViola
 const nxPageTitleCode = require('./NxPageTitleExample.html'),
     nxPageTitleActionsCode = require('./NxPageTitleActionsExample.html'),
     nxPageTitlePolicyViolationIndicatorCode =
-      require('!!raw-loader!./NxPageTitlePolicyViolationIndicatorExample.tsx').default;
+      require('./NxPageTitlePolicyViolationIndicatorExample.tsx?raw');
 
 const NxPageTitlePage = () =>
   <>

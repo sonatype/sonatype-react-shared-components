@@ -13,9 +13,9 @@ import NxAccordionSimpleExample from './NxAccordionExample';
 import NxAccordionComplexExample from './NxAccordionComplexExample';
 import NxAccordionTertiaryButtonExample from './NxAccordionTertiaryButtonExample';
 
-const NxAccordionSimpleCode = require('!!raw-loader!./NxAccordionExample').default,
-    NxAccordionComplexCode = require('!!raw-loader!./NxAccordionComplexExample').default,
-    NxAccordionTertiaryButtonCode = require('!!raw-loader!./NxAccordionTertiaryButtonExample').default;
+const NxAccordionSimpleCode = require('./NxAccordionExample?raw'),
+    NxAccordionComplexCode = require('./NxAccordionComplexExample?raw'),
+    NxAccordionTertiaryButtonCode = require('./NxAccordionTertiaryButtonExample?raw');
 
 const NxAccordionPage = () =>
   <>

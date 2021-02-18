@@ -13,9 +13,9 @@ import NxSegmentedButtonSecondaryExample from './NxSegmentedButtonSecondaryExamp
 import NxSegmentedButtonTertiaryExample from './NxSegmentedButtonTertiaryExample';
 import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
 
-const nxSegmentedButtonPrimaryCode = require('!!raw-loader!./NxSegmentedButtonPrimaryExample').default,
-    nxSegmentedButtonSecondaryCode = require('!!raw-loader!./NxSegmentedButtonSecondaryExample').default,
-    nxSegmentedButtonTertiaryCode = require('!!raw-loader!./NxSegmentedButtonTertiaryExample').default;
+const nxSegmentedButtonPrimaryCode = require('./NxSegmentedButtonPrimaryExample?raw'),
+    nxSegmentedButtonSecondaryCode = require('./NxSegmentedButtonSecondaryExample?raw'),
+    nxSegmentedButtonTertiaryCode = require('./NxSegmentedButtonTertiaryExample?raw');
 
 export default function NxSegmentedButtonPage() {
   return (
