@@ -38,21 +38,16 @@ const NxCardPage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-card-container</code></td>
             <td className="nx-cell">Top-Level</td>
             <td className="nx-cell">
-              Basic card container class.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card-container--row</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card-container</code></td>
-            <td className="nx-cell">
-              Container for cards that are displayed side by side.
+              Container for <code className="nx-code">.nx-card</code>s
             </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card-container--no-wrap</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-card-container</code></td>
             <td className="nx-cell">
-              Used when you do not want the cards to wrap. Use with care as this can break layouts.
+              By default if you put more cards into a container than can fit horizontally the cards will wrap into a
+              new row. This modifier is used when you do not want the cards to wrap. Use with care as this can break
+              layouts.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -126,9 +121,9 @@ const NxCardPage = () =>
                         liveExample={NxCardLayoutExample}
                         codeExamples={[nxCardLayoutCode, NxCardCustomSCSSCode]}
                         defaultCheckeredBackground={true}>
-      Basic card layouts. While we have shown some content heavy examples it is recomended to
-      keep the content as minimal as possible. There is some custom SCSS used in these examples, it is shown below.
-      Note that these are just samples of some common layouts, it's expected that many layouts will be custom.
+      Samples of some common layouts, it's expected that many layouts will be custom. While we have shown some content
+      heavy examples it is recomended to keep the content as minimal as possible. There is some custom SCSS used in
+      these examples, it is shown below.
     </GalleryExampleTile>
   </>;
 
