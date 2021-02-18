@@ -12,7 +12,7 @@ import { NxFontAwesomeIcon, NxButton } from '@sonatype/react-shared-components';
 export default function NxCardRowLayoutExample() {
   return (
     <>
-      <div className="nx-card-container nx-card-container--row">
+      <div className="nx-card-container">
         <section className="nx-card" aria-label="card 1 in row">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
@@ -23,7 +23,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Card text</div>
           </div>
-          <footer className="nx-card__actions">
+          <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Card link</a>
           </footer>
         </section>
@@ -37,7 +37,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Data point details</div>
           </div>
-          <footer className="nx-card__actions"><a href="#" className="nx-text-link">Link</a></footer>
+          <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
         </section>
         <section className="nx-card" aria-label="Card with NxReadOnly">
           <div className="nx-card__content">
@@ -67,12 +67,12 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Data point details</div>
           </div>
-          <footer className="nx-card__actions">
+          <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
       </div>
-      <div className="nx-card-container nx-card-container--row">
+      <div className="nx-card-container">
         <section className="nx-card" aria-label="Another card with icon in callout">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
@@ -83,7 +83,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Data point details</div>
           </div>
-          <footer className="nx-card__actions">
+          <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
@@ -99,7 +99,7 @@ export default function NxCardRowLayoutExample() {
               <span>Server two</span>
             </div>
           </div>
-          <footer className="nx-card__actions">
+          <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
@@ -113,10 +113,10 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Data point details</div>
           </div>
-          <footer className="nx-card__actions"><a href="#" className="nx-text-link">Link</a></footer>
+          <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
         </section>
       </div>
-      <div className="nx-card-container nx-card-container--row">
+      <div className="nx-card-container">
         <section className="nx-card" aria-label="card 3 in row">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
@@ -127,7 +127,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Large icon</div>
           </div>
-          <footer className="nx-card__actions">
+          <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
@@ -141,7 +141,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Descriptive text</div>
           </div>
-          <footer className="nx-card__actions">
+          <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
@@ -158,7 +158,7 @@ export default function NxCardRowLayoutExample() {
               systemic
             </div>
           </div>
-          <footer className="nx-card__actions">
+          <footer className="nx-card__footer">
             <div className="nx-btn-bar">
               <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
               <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
@@ -178,13 +178,13 @@ export default function NxCardRowLayoutExample() {
               girl realism
             </div>
           </div>
-          <footer className="nx-card__actions">
+          <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Film sprawl wristwatch math-engine</a>
           </footer>
         </section>
       </div>
 
-      <div className="nx-card-container nx-card-container--row">
+      <div className="nx-card-container">
         <section className="nx-card" aria-label="card 7 in row">
           <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
@@ -194,7 +194,7 @@ export default function NxCardRowLayoutExample() {
           </div>
         </section>
       </div>
-      <div className="nx-card-container nx-card-container--row">
+      <div className="nx-card-container">
         <section className="nx-card" aria-label="card 8 in row">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
@@ -202,13 +202,13 @@ export default function NxCardRowLayoutExample() {
           <div className="nx-card__call-out">
             <NxFontAwesomeIcon icon={faShapes} className="nx-card__call-out-icon" />
           </div>
-          <footer className="nx-card__actions">
+          <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
       </div>
-      <div className="nx-card-container nx-card-container--row nx-card-container--no-wrap">
-        <section className="nx-card nx-card--align-left gallery-card--no-max" aria-label="card 9 in row">
+      <div className="nx-card-container nx-card-container--no-wrap">
+        <section className="nx-card gallery-card--align-left gallery-card--no-max" aria-label="card 9 in row">
           <header className="nx-card__header">
             <h3 className="nx-h3">A wide card with left aligned content</h3>
           </header>
@@ -237,7 +237,7 @@ export default function NxCardRowLayoutExample() {
           </div>
         </section>
       </div>
-      <div className="nx-card-container nx-card-container--row nx-card-container--no-wrap">
+      <div className="nx-card-container nx-card-container--no-wrap">
         <section className="nx-card gallery-card--50wide" aria-label="card 10 in row">
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">A card that's 50% of available width</h3>

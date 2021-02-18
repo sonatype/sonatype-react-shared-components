@@ -4,15 +4,15 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-.nx-card--align-left {
+.gallery-card--align-left {
   text-align: left;
 }
 
-.nx-card-container--row .gallery-card--no-max {
+.gallery-card--no-max {
   max-width: unset;
 }
 
-.nx-card-container--row .gallery-card--50wide {
+.gallery-card--50wide {
   width: 50%;
   max-width: unset;
 }

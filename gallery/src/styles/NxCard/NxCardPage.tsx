@@ -10,11 +10,9 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import './NxCardPageExamples.scss';
 
-import NxCardVerticalLayoutExample from './NxCardVerticalLayoutExample';
-import NxCardHorizontalLayoutExample from './NxCardHorizontalLayoutExample';
+import NxCardLayoutExample from './NxCardLayoutExample';
 
-const nxCardVerticalLayoutCode = require('!!raw-loader!./NxCardVerticalLayoutExample').default,
-    nxCardHorizontalLayoutCode = require('!!raw-loader!./NxCardHorizontalLayoutExample').default,
+const nxCardLayoutCode = require('!!raw-loader!./NxCardLayoutExample').default,
     NxCardCustomSCSSCode = require('!!raw-loader!./NxCardPageExamples.scss').default;
 
 const NxCardPage = () =>
@@ -58,25 +56,10 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card-container--column</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card-container</code></td>
-            <td className="nx-cell">
-              Container for cards that are displayed one on top of another (typically
-              <code className="nx-code">.nx-card--horizontal</code>).
-            </td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Basic card element.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card--horizontal</code></td>
-            <td className="nx-cell">Modifer of <code className="nx-code">.nx-card</code></td>
-            <td className="nx-cell">
-              Used for cards that are laid out horizontally rather than vertically.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -90,29 +73,23 @@ const NxCardPage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-card__footer</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              In a vertically oriented card the footer. Typically provides a link to more information.
+              Card footer, typically provides a link to more information or an action button.
             </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card__actions</code></td>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">In a horizontally oriented card where links and buttons are typically located.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__content</code></td>
             <td className="nx-cell">Wrapping element</td>
             <td className="nx-cell">
               <code className="nx-code">.nx-card__content</code> applied to a
-              {' '}<code className="nx-code">&lt;div&gt;</code> wraps
+              {' '}<code className="nx-code">&lt;div&gt;</code> wraps card contents. In the layouts below it wraps
               {' '}<code className="nx-code">.nx-card__call-out</code> and
-              {' '}<code className="nx-code">.nx-card__text</code> or any other card content.
+              {' '}<code className="nx-code">.nx-card__text</code> as well as other card content.
             </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__call-out</code></td>
             <td className="nx-cell">
-              Element. In a vertically oriented card it is typically a child of
-              <code className="nx-code">.nx-card__content</code>.
+              Element, typically a child of <code className="nx-code">.nx-card__content</code>
             </td>
             <td className="nx-cell">
               Wraps the card call out (if any). The call out typically consists of a number, sparkline, icon, or
@@ -146,19 +123,12 @@ const NxCardPage = () =>
 
     <GalleryExampleTile title="Card Row Layout"
                         id="nx-card-row-example"
-                        liveExample={NxCardVerticalLayoutExample}
-                        codeExamples={[nxCardVerticalLayoutCode, NxCardCustomSCSSCode]}
+                        liveExample={NxCardLayoutExample}
+                        codeExamples={[nxCardLayoutCode, NxCardCustomSCSSCode]}
                         defaultCheckeredBackground={true}>
-      Vertically oriented cards shown side by side. While we have shown some content heavy examples it is recomended to
+      Basic card layouts. While we have shown some content heavy examples it is recomended to
       keep the content as minimal as possible. There is some custom SCSS used in these examples, it is shown below.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Card Column Layout"
-                        id="nx-card-column-example"
-                        liveExample={NxCardHorizontalLayoutExample}
-                        codeExamples={nxCardHorizontalLayoutCode}
-                        defaultCheckeredBackground={true}>
-      Horizontally oriented cards shown stacked one above the other.
+      Note that these are just samples of some common layouts, it's expected that many layouts will be custom.
     </GalleryExampleTile>
   </>;
 
