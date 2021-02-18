@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   NxButton,
@@ -18,7 +18,8 @@ import {
   NxTreeView,
   NxTreeViewChild,
   NxFilterInput,
-  NxDropdown
+  NxDropdown,
+  useToggle
 } from '@sonatype/react-shared-components';
 
 import { NxStatefulTextInput, NxStatefulCheckbox } from '@sonatype/react-shared-components';
@@ -28,8 +29,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import './NxTooltipExample.scss';
 
 const NxTooltipExample = () => {
-  const [isOpen, toggleOpen] = useState(false),
-      toggle = () => toggleOpen(!isOpen);
+  const [isOpen, toggle] = useToggle(false);
 
   return (
     <>

@@ -4,16 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 import { faEdit, faCog } from '@fortawesome/free-solid-svg-icons';
 
-import { NxAccordion, NxFontAwesomeIcon, NxButton } from '@sonatype/react-shared-components';
+import { NxAccordion, NxFontAwesomeIcon, NxButton, useToggle } from '@sonatype/react-shared-components';
 
 export default function NxAccordionExample() {
-  const [open, setOpen] = useState(false);
+  const [open, toggleOpen] = useToggle(false);
 
   return (
-    <NxAccordion open={open} onToggle={setOpen}>
+    <NxAccordion open={open} onToggle={toggleOpen}>
       <NxAccordion.Header>
         <h2 className="nx-accordion__header-title" onClick={() => { alert('Title click'); }}>
           Foo lots of content to demonstrate that this element does not wrap but rather overflows with

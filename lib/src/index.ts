@@ -191,3 +191,4 @@ export { default as NxTag, NxSelectableTag, PublicProps as NxTagProps, Selectabl
   from './components/NxTag/NxTag';
 
 export { NX_TAG_COLORS, NX_TAG_COLORS_TYPE } from './components/NxTag/types';
+export { default as useToggle } from './util/useToggle';

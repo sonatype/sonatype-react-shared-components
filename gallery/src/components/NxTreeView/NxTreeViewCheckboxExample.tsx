@@ -4,15 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { NxTreeView, NxCheckbox, NxRadio, NxTreeViewChild } from '@sonatype/react-shared-components';
+import { NxTreeView, NxCheckbox, NxRadio, NxTreeViewChild, useToggle } from '@sonatype/react-shared-components';
 
 export default function NxTreeViewCheckboxExample() {
-  const [is1Open, set1Open] = useState(false),
-      [is2Open, set2Open] = useState(false),
-      onToggle1Collapse = () => set1Open(!is1Open),
-      onToggle2Collapse = () => set2Open(!is2Open);
+  const [is1Open, onToggle1Collapse] = useToggle(false),
+      [is2Open, onToggle2Collapse] = useToggle(false);
 
   return (
     <>

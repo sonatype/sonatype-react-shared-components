@@ -7,7 +7,7 @@
 import React, { useState } from 'react';
 import {contains, toLower} from 'ramda';
 
-import { NxTreeViewRadioSelect, NxTreeViewRadioSelectOption } from '@sonatype/react-shared-components';
+import { NxTreeViewRadioSelect, NxTreeViewRadioSelectOption, useToggle } from '@sonatype/react-shared-components';
 
 const NxTreeViewRadioSelectExample = () => {
   const options = [
@@ -32,11 +32,8 @@ const NxTreeViewRadioSelectExample = () => {
     }
   ];
 
-  const [isOpen, toggleOpen] = useState(true),
-      [selection, onSelectionChange] = useState<string | null>(options[0].id),
-      onToggleCollapse = () => {
-        toggleOpen(!isOpen);
-      };
+  const [isOpen, onToggleCollapse] = useToggle(true),
+      [selection, onSelectionChange] = useState<string | null>(options[0].id);
 
   const [filter, setFilter] = useState('');
 
