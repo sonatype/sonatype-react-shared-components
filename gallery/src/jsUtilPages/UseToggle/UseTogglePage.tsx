@@ -35,6 +35,12 @@ const UseTogglePage = () =>
       </p>
 
       <p className="nx-p">
+        The toggle function provided by <code className="nx-code">useToggle</code> also provides the new state
+        value as its return value, which can be useful if that value is needed for passing to a callback prop
+        on your own component.
+      </p>
+
+      <p className="nx-p">
         Like <code className="nx-code">useState</code>, <code className="nx-code">useToggle</code> takes the
         initial state value as its parameter.
       </p>
