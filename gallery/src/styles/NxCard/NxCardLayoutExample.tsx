@@ -237,10 +237,10 @@ export default function NxCardRowLayoutExample() {
           </div>
         </section>
       </div>
-      <div className="nx-card-container nx-card-container--no-wrap">
-        <section className="nx-card gallery-card--50wide" aria-label="card 10 in row">
+      <div className="nx-card-container">
+        <section className="nx-card nx-card--equal" aria-label="card 10 in row">
           <header className="nx-card__header">
-            <h3 className="nx-h3 nx-h3--card-header">A card that's 50% of available width</h3>
+            <h3 className="nx-h3 nx-h3--card-header">Equal width cards</h3>
           </header>
           <div className="nx-card__content">
             <div className="nx-card__text">
@@ -248,9 +248,41 @@ export default function NxCardRowLayoutExample() {
             </div>
           </div>
         </section>
-        <section className="nx-card gallery-card--50wide" aria-label="card 10 in row">
+        <section className="nx-card nx-card--equal" aria-label="card 10 in row">
           <header className="nx-card__header">
-            <h3 className="nx-h3 nx-h3--card-header">A card that's 50% of available width</h3>
+            <h3 className="nx-h3 nx-h3--card-header">Equal width cards</h3>
+          </header>
+          <div className="nx-card__content">
+            <div className="nx-card__text">
+              Tiger-team otaku carbon decay.
+            </div>
+          </div>
+        </section>
+      </div>
+      <div className="nx-card-container">
+        <section className="nx-card nx-card--equal" aria-label="card 10 in row">
+          <header className="nx-card__header">
+            <h3 className="nx-h3 nx-h3--card-header">Equal width cards</h3>
+          </header>
+          <div className="nx-card__content">
+            <div className="nx-card__text">
+              Post-singularity.
+            </div>
+          </div>
+        </section>
+        <section className="nx-card nx-card--equal" aria-label="card 10 in row">
+          <header className="nx-card__header">
+            <h3 className="nx-h3 nx-h3--card-header">Equal width cards</h3>
+          </header>
+          <div className="nx-card__content">
+            <div className="nx-card__text">
+              Tiger-team otaku carbon decay.
+            </div>
+          </div>
+        </section>
+        <section className="nx-card nx-card--equal" aria-label="card 10 in row">
+          <header className="nx-card__header">
+            <h3 className="nx-h3 nx-h3--card-header">Equal width cards</h3>
           </header>
           <div className="nx-card__content">
             <div className="nx-card__text">

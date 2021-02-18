@@ -55,6 +55,11 @@
 }
 
 // Common card Helpers
+.nx-card--equal {
+  flex: 1;
+  max-width: unset;
+}
+
 .nx-card__call-out {
   @include bold();
 
