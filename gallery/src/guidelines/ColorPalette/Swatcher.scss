@@ -1,0 +1,43 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+ @import '~@sonatype/react-shared-components/scss-shared/nx-colors';
+ @import '~@sonatype/react-shared-components/scss-shared/nx-variables';
+ @import '~@sonatype/react-shared-components/scss-shared/nx-text-helpers';
+
+.gallery-swatches {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gallery-swatches__container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 $nx-spacing-xl $nx-spacing-l 0;
+
+  .nx-h3 {
+    text-transform: capitalize;
+  }
+}
+
+.gallery-swatch {
+  align-items: center;
+  display: flex;
+}
+
+.gallery-swatch__thumb {
+  height: 64px;
+  width: 64px;
+}
+
+.gallery-swatch__variable, .gallery-swatch__hex {
+  @include semi-bold();
+}
+
+.gallery-swatch__hex {
+  flex-basis: 7ch;
+  padding: 0 $nx-spacing-l;
+}

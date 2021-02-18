@@ -4,15 +4,52 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import { groupBy, prop, toPairs } from 'ramda';
+import React from 'react';
 
+const swatchSCSS =
+    require('!!raw-loader!@sonatype/react-shared-components/scss-shared/_nx-color-swatches.scss').default;
+import './Swatcher.scss';
+interface ColorInfo {
+  colorVariable: string;
+  colorName: string;
+  colorHex: string;
+}
 
- <div className="gallery-swatch-container">
-  <div className="gallery-color-swatch">
-    <div className="gallery-swatch-thumb">
+const swatchFile: string[] = swatchSCSS.split('\n');
 
-    </div>
-    <div className="gallery-swatch-hex">
+const swatchLines = swatchFile.map(line => {
+  const matchResults = /^\s*(\$nx-(\w+)-\d+):\s*#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8});$/.exec(line);
 
-    </div>
-  </div>
- </div>
+  if (matchResults) {
+    return {colorVariable: matchResults[1], colorName: matchResults[2], colorHex: matchResults[3]};
+  }
+  else {
+    return null;
+  };
+}).filter(data => data !== null) as ColorInfo[];
+
+const varsByColor = groupBy(prop('colorName'), swatchLines);
+
+export default function Swatcher() {
+  return (
+    <>
+      { toPairs(varsByColor).map(([colorName, colors]) =>
+        <div className="gallery-swatches__container" key={colorName}>
+          <h3 className="nx-h3">{colorName}</h3>
+          {colors.map(({colorVariable, colorHex}) =>
+            <div className="gallery-swatch" key={colorHex}>
+              <div className="gallery-swatch__thumb" style={{backgroundColor: `#${colorHex}`}}></div>
+              <div className="gallery-swatch__hex">
+                #{colorHex}
+              </div>
+              <div className="gallery-swatch__variable">
+                {colorVariable}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </>
+  )
+};
