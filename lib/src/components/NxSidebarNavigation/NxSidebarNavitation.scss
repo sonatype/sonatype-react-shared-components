@@ -10,14 +10,21 @@
 
 $nx-sidebar-width__open: 250px;
 $nx-sidebar-width__closed: 69px;
-$nx-sidebar-nav-background: $nx-blue-1000;
+$nx-sidebar-logo-height: 33px;
+$nx-sidebar-nav-background-color: $nx-blue-1000;
+$nx-sidebar-nav-text-color: $nx-white;
+$nx-sidebar-nav-help-color: $nx-grey-50;
+$nx-sidebar-nav-hover-color: $nx-indigo-600;
+$nx-sidebar-nav-selected-color: $nx-indigo-800;
+$nx-sidebar-separator-color: $nx-grey-900;
+
 
 .nx-sidebar-nav {
   @include container-vertical;
 
   box-sizing: border-box;
-  background-color: $nx-sidebar-nav-background;
-  color: $nx-white;
+  background-color: $nx-sidebar-nav-background-color;
+  color: $nx-sidebar-nav-text-color;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -30,29 +37,29 @@ $nx-sidebar-nav-background: $nx-blue-1000;
 
 .nx-sidebar-nav--product-info {
   margin: $nx-spacing-sm $nx-spacing-l 0;
-  height: 33px;
+  height: $nx-sidebar-logo-height;
 }
 
 .nx-sidebar-nav--product-name {
   display: inline-block;
   font-size: 16px;
-  line-height: 33px;
+  line-height: $nx-sidebar-logo-height;
   vertical-align: top;
 }
 
 .nx-sidebar-nav--logo {
-  width: 30px;
-  height: 33px;
+  height: $nx-sidebar-logo-height;
   margin-right: $nx-spacing-xs;
+  width: 30px;
 }
 
 .nx-sidebar-nav--icon {
-  color: $nx-white;
+  color: $nx-sidebar-nav-text-color;
   margin: 0;
 }
 
 .nx-footer-help-icon {
-  color: $nx-grey-50;
+  color: $nx-sidebar-nav-help-color;
 }
 
 .nx-sidebar-nav--footer {
@@ -74,11 +81,11 @@ $nx-sidebar-nav-background: $nx-blue-1000;
   height: 32px;
 
   &:hover {
-    background-color: $nx-indigo-600;
+    background-color: $nx-sidebar-nav-hover-color;
   }
 
   &.selected {
-    background-color: $nx-indigo-800;
+    background-color: $nx-sidebar-nav-selected-color;
 
     .nx-sidebar-nav--link {
       @include semi-bold;
@@ -87,7 +94,7 @@ $nx-sidebar-nav-background: $nx-blue-1000;
 }
 
 .nx-sidebar-nav--separator {
-  background-color: $nx-grey-900;
+  background-color: $nx-sidebar-separator-color;
   height: 1px;
   width: 100%;
 }
@@ -103,9 +110,9 @@ $nx-sidebar-nav-background: $nx-blue-1000;
 
   color: inherit;
   display: inline-block;
+  font-size: 16px;
   height: 32px;
   line-height: 32px;
-  font-size: 16px;
   text-decoration: none;
 
   .nx-icon {
@@ -127,16 +134,16 @@ $nx-sidebar-nav-background: $nx-blue-1000;
   font-size: 14px;
 }
 
+.nx-sidebar-nav--items {
+  margin-bottom: $nx-spacing-xxl;
+}
+
 .nx-sidebar-nav__open {
   .nx-sidebar-nav--toggle {
+    height: 16px;
     position: absolute;
     right: $nx-spacing-l;
     width: 16px;
-    height: 16px;
-  }
-
-  .nx-sidebar-nav--items {
-    margin-bottom: $nx-spacing-xxl;
   }
 
   .nx-sidebar-nav--item {
