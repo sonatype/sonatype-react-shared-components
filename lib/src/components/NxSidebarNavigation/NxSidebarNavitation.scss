@@ -177,4 +177,8 @@ $nx-sidebar-separator-color: $nx-grey-900;
   .nx-sidebar-nav--link-name {
     display: none;
   }
+
+  .nx-sidebar-nav--help-link .nx-icon{
+    margin-right: 0;
+  }
 }
