@@ -13,7 +13,7 @@ const ColorPalettePage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        The design group have created a palette of colors for use in RSC. The colors are organized into swatches
+        The design group has created a palette of colors for use in RSC. The colors are organized into swatches
         based on hue (red, green, blue, etc) and assigned values based on their lightness or darkness. Darker colors
         have higher values, and lighter colors have lower values, for example the lightest red is
         {' '}<code className="nx-code">$nx-red-50</code> and the darkest is
