@@ -10,15 +10,27 @@ import NxSidebarNavigation from '../NxSidebarNavigation';
 import { Props, propTypes } from './types';
 
 const NxStatefulSidebarNavigation = function(props: Props) {
-  const { children, isDefaultOpen, helpLink } = props,
-      [isOpen, setIsOpen] = useState(isDefaultOpen);
+  const {
+    isDefaultOpen,
+    onToggleClick,
+    ...otherProps
+  } = props;
+
+  const [isOpen, setIsOpen] = useState(isDefaultOpen);
+
+  const toggleHandler = function toggleHandler() {
+    const newToggleState = !isOpen;
+
+    setIsOpen(newToggleState);
+    if (onToggleClick) {
+      onToggleClick(newToggleState);
+    }
+  }
 
   return (
     <NxSidebarNavigation isOpen={isOpen}
-                         helpLink={helpLink}
-                         onToggleOpen={() => setIsOpen(!isOpen)}>
-      { children }
-    </NxSidebarNavigation>
+                         onToggleClick={toggleHandler}
+                         {...(otherProps)} />
   );
 };
 
