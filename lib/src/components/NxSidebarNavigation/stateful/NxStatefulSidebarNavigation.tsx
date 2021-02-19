@@ -25,7 +25,7 @@ const NxStatefulSidebarNavigation = function(props: Props) {
     if (onToggleClick) {
       onToggleClick(newToggleState);
     }
-  }
+  };
 
   return (
     <NxSidebarNavigation isOpen={isOpen}

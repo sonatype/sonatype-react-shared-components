@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { WeakValidationMap, ReactNode } from 'react';
+import { WeakValidationMap } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export interface SidebarNavLinkProps {
@@ -19,7 +19,7 @@ export interface Props {
   isOpen: boolean;
   className?: string | null;
   onToggleClick: (() => void);
-  logo: ReactNode;
+  logoImg: string;
   logoText: string;
   logoLink: string;
   links: SidebarNavLinkProps[];
@@ -41,7 +41,7 @@ export const propTypes: WeakValidationMap<Props> = {
   isOpen: PropTypes.bool.isRequired,
   className: PropTypes.string,
   onToggleClick: PropTypes.func.isRequired,
-  logo: PropTypes.node.isRequired,
+  logoImg: PropTypes.string.isRequired,
   logoText: PropTypes.string.isRequired,
   logoLink: PropTypes.string,
   links: PropTypes.arrayOf(sidebarNavLinkPropTypes),

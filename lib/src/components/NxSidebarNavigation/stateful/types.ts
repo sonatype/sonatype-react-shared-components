@@ -5,15 +5,15 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { WeakValidationMap, ReactNode } from 'react';
+import { WeakValidationMap } from 'react';
 
 import { SidebarNavLinkProps, sidebarNavLinkPropTypes } from '../types';
 
 export interface Props {
   isDefaultOpen: boolean;
   className?: string | null;
-  onToggleClick: ((newToggleState: boolean) => void);
-  logo: ReactNode;
+  onToggleClick?: ((newToggleState: boolean) => void) | null;
+  logoImg: string;
   logoText: string;
   logoLink: string;
   links: SidebarNavLinkProps[];
@@ -27,10 +27,10 @@ export interface Props {
 export const propTypes: WeakValidationMap<Props> = {
   isDefaultOpen: PropTypes.bool.isRequired,
   className: PropTypes.string,
-  onToggleClick: PropTypes.func.isRequired,
-  logo: PropTypes.node.isRequired,
+  onToggleClick: PropTypes.func,
+  logoImg: PropTypes.string.isRequired,
   logoText: PropTypes.string.isRequired,
-  logoLink: PropTypes.string,
+  logoLink: PropTypes.string.isRequired,
   links: PropTypes.arrayOf(sidebarNavLinkPropTypes),
   helpLink: PropTypes.string,
   helpText: PropTypes.string,

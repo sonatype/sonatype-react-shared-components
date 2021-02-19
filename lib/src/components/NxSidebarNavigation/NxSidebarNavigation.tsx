@@ -35,7 +35,7 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
     isOpen,
     className,
     onToggleClick,
-    logo,
+    logoImg,
     logoText,
     logoLink,
     links,
@@ -73,6 +73,8 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
       { links.map(NxSidebarNavLink)}
     </ul>
   );
+
+  const logo = <img src={logoImg} className="nx-sidebar-nav--logo" />;
 
   return (
     <nav className={classes}>
