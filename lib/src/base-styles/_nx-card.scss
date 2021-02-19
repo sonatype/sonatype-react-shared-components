@@ -37,16 +37,17 @@
 }
 
 .nx-card__content {
+  @include container-vertical;
   align-items: center;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   gap: $nx-spacing-md;
+  margin-bottom: $nx-spacing-l;
 }
 
 .nx-card__footer {
   border-top: $nx-border-default;
-  margin-top: $nx-spacing-l;
   padding-top: $nx-spacing-l;
 
   > .nx-btn-bar {

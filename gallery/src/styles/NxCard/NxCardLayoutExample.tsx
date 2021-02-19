@@ -189,8 +189,10 @@ export default function NxCardRowLayoutExample() {
           <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
           </header>
-          <div className="nx-card__call-out">
-            42
+          <div className="nx-card__content">
+            <div className="nx-card__call-out">
+              42
+            </div>
           </div>
         </section>
       </div>
@@ -199,8 +201,10 @@ export default function NxCardRowLayoutExample() {
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
-          <div className="nx-card__call-out">
-            <NxFontAwesomeIcon icon={faShapes} className="nx-card__call-out-icon" />
+          <div className="nx-card__content">
+            <div className="nx-card__call-out">
+              <NxFontAwesomeIcon icon={faShapes} className="nx-card__call-out-icon" />
+            </div>
           </div>
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
