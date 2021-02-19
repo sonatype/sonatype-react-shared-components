@@ -6,15 +6,14 @@
  */
 import React from 'react';
 
-import { useToggle } from '@sonatype/react-shared-components';
+import { useToggle, NxCheckbox } from '@sonatype/react-shared-components';
 
 export default function UseToggleExample() {
   const [checked, toggleChecked] = useToggle(false);
 
   return (
-    <label>
+    <NxCheckbox isChecked={checked} onChange={toggleChecked}>
       Checkbox brought to you by <code className="nx-code">useToggle</code>
-      <input type="checkbox" checked={checked} onChange={toggleChecked} />
-    </label>
+    </NxCheckbox>
   );
 }

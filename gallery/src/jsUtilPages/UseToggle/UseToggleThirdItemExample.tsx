@@ -6,19 +6,18 @@
  */
 import React from 'react';
 
-import { useToggle } from '@sonatype/react-shared-components';
+import { useToggle, NxButton, NxCheckbox } from '@sonatype/react-shared-components';
 
 export default function UseToggleThirdItemExample() {
   const [checked, toggleChecked, setChecked] = useToggle(false);
 
   return (
     <div>
-      <label>
+      <NxCheckbox isChecked={checked} onChange={toggleChecked}>
         Checkbox brought to you by <code className="nx-code">useToggle</code>
-        <input type="checkbox" checked={checked} onChange={toggleChecked} />
-      </label>
+      </NxCheckbox>
       <br/>
-      <button onClick={() => setChecked(false)}>Reset Checkbox</button>
+      <NxButton onClick={() => setChecked(false)}>Reset Checkbox</NxButton>
     </div>
   );
 }
