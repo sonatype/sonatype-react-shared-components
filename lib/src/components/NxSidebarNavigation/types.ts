@@ -6,7 +6,7 @@
  */
 import * as PropTypes from 'prop-types';
 import { WeakValidationMap, ReactNode } from 'react';
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export interface SidebarNavLinkProps {
   name: string;
@@ -30,6 +30,13 @@ export interface Props {
   attributions?: string[] | null;
 };
 
+export const sidebarNavLinkPropTypes = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+  icon: PropTypes.object.isRequired,
+  current: PropTypes.bool
+});
+
 export const propTypes: WeakValidationMap<Props> = {
   isOpen: PropTypes.bool.isRequired,
   className: PropTypes.string,
@@ -37,12 +44,7 @@ export const propTypes: WeakValidationMap<Props> = {
   logo: PropTypes.node.isRequired,
   logoText: PropTypes.string.isRequired,
   logoLink: PropTypes.string,
-  links: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
-    icon: PropTypes.object.isRequired,
-    current: PropTypes.bool
-  })),
+  links: PropTypes.arrayOf(sidebarNavLinkPropTypes),
   helpLink: PropTypes.string,
   helpText: PropTypes.string,
   collapsedReleaseText: PropTypes.string,
