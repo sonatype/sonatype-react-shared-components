@@ -92,6 +92,15 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-card__content--2-column</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card__content</code></td>
+            <td className="nx-cell">
+              <code className="nx-code">.nx-card__content--2-column</code> applied to
+              {' '}<code className="nx-code">.nx-card__content</code> creates a two column layout within
+              {' '}<code className="nx-code">.nx-card__content</code>.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__call-out</code></td>
             <td className="nx-cell">
               Element, typically a child of <code className="nx-code">.nx-card__content</code>
