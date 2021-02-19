@@ -4,92 +4,82 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useEffect } from 'react';
-import { RouteChildrenProps } from 'react-router';
-import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import { mergeAll, values } from 'ramda';
-
-// polyfill Array.prototype.includes which is used in query-string
-import 'core-js/features/array/includes';
-import queryString from 'query-string';
-
-import { PageMapping } from './pageConfigTypes';
-import pageConfig from './pageConfig';
-import PageHeader from './PageHeader';
-import GalleryNav from './GalleryNav';
-import Home from './pages/Home';
-import handleQueryParams from './handleQueryParams';
-
-import NxLoadWrapperPageLevelExample from './components/NxLoadWrapper/NxLoadWrapperPageLevelExample';
-import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExample';
-import NxViewportSizedExpandingExample
-  from './styles/NxViewportSized/NxViewportSizedExpandingExample';
-import SectionScrollingWrapper from './styles/NxViewportSized/SectionScrollingWrapper';
-
-const pageMappings: PageMapping = mergeAll(values(pageConfig));
-
-function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
-  const pageName = match ? match.params.pageName : null,
-      pageHeader = pageName || 'Home',
-      Content = pageName ? pageMappings[pageName] : Home;
-
-  useEffect(function() {
-    handleQueryParams(queryString.parse(location.search));
-  }, [location.search]);
-
-  if (Content) {
-    // Put a key on <main> so that it re-renders entirely on route change, resetting scroll position
-    return (
-      <main key={pageName || 'home'} className="nx-page-main">
-        <div className="nx-page-title">
-          <h1 className="nx-h1">
-            {pageHeader}
-          </h1>
-        </div>
-        <Content/>
-      </main>
-    );
-  }
-  else {
-    // unknown page
-    return <Redirect to="/" />;
-  }
-}
+import React from 'react';
+import {
+  faAtom,
+  faBiohazard,
+  faBolt,
+  faCrow,
+  faPlaceOfWorship
+} from '@fortawesome/free-solid-svg-icons';
+import { NxStatefulSidebarNavigation } from '@sonatype/react-shared-components';
 
 function Application() {
-  return (
-    <Router>
-      <PageHeader />
-      <div className="nx-page-content">
-        <Switch>
-          <Route exact path="/PageLevelAlertExample">
-            <NxLoadWrapperPageLevelExample/>
-          </Route>
-          <Route>
-            <aside className="nx-page-sidebar" id="gallery-sidebar">
-              <GalleryNav />
-            </aside>
-            <Switch>
-              <Route path="/pages/:pageName" component={Page} />
-              <Route exact path="/" component={Page} />
+  const navLinks = [
+    {
+      name: 'Link Name Alpha',
+      href: '/alpha',
+      icon: faAtom,
+      current: true
+    }, {
+      name: 'Link Name Beta',
+      href: '/beta',
+      icon: faBiohazard
+    }, {
+      name: 'Link Name Gamma',
+      href: '/gamma',
+      icon: faBolt
+    }, {
+      name: 'Link Name Delta',
+      href: '/delta',
+      icon: faCrow
+    }, {
+      name: 'Link Name Epsilon',
+      href: '/epsilon',
+      icon: faPlaceOfWorship
+    }, {
+      name: 'Link Name Zeta',
+      href: '/zeta',
+      icon: faAtom
+    }, {
+      name: 'Link Name Etha',
+      href: '/etha',
+      icon: faPlaceOfWorship
+    }, {
+      name: 'Link Name Theta',
+      href: '/theta',
+      icon: faBiohazard
+    }
+  ];
+  const attributions = [
+    'Powered by Nexux IQ Server',
+    'Created by Sonatype'
+  ];
+  const logoImg = require('./resources/logos/SON_hexagon_cropped.svg');
 
-              {/* Special cases, these examples need their own page separate from their documentation */}
-              <Route exact path="/NxViewportSizedExample">
-                <SectionScrollingWrapper>
-                  <NxViewportSizedExample />
-                </SectionScrollingWrapper>
-              </Route>
-              <Route exact path="/NxViewportSizedExpandingExample">
-                <SectionScrollingWrapper>
-                  <NxViewportSizedExpandingExample />
-                </SectionScrollingWrapper>
-              </Route>
-              <Redirect to="/" />
-            </Switch>
-          </Route>
-        </Switch>
+  return (
+    <>
+      <NxStatefulSidebarNavigation isDefaultOpen={true}
+                                   logoImg={logoImg}
+                                   logoText="nexus lifecycle"
+                                   logoLink="/home"
+                                   links={navLinks}
+                                   helpLink="http://google.com"
+                                   helpText="google help"
+                                   collapsedReleaseText="release 105"
+                                   expandedReleaseText="lifecycle release 105"
+                                   attributions={attributions} />
+      <div className="nx-page-content">
+        <div className="nx-page-main">
+          <p>
+            Cupidatat pariatur mollit sit pariatur mollit qui.{' '}
+            Est sint sunt ea laborum minim officia excepteur nostrud deserunt proident officia.{' '}
+            Ipsum nostrud do ipsum nisi occaecat reprehenderit aliquip in occaecat culpa consequat pariatur et.{' '}
+            Non adipisicing qui officia nisi do aliquip.
+          </p>
+        </div>
       </div>
-    </Router>
+    </>
   );
 }
 
