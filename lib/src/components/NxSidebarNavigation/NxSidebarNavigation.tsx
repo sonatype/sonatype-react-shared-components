@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-/* eslint-disable */
 import React from 'react';
 import classnames from 'classnames';
 import { faBars, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
@@ -12,44 +11,79 @@ import { faBars, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import NxButton from '../NxButton/NxButton';
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { Props, propTypes } from './types';
+import { Props, SidebarNavLinkProps, propTypes } from './types';
 
 import './NxSidebarNavitation.scss';
 
+const NxSidebarNavLink = function NxSidebarNavLink({ name, href, icon, current }: SidebarNavLinkProps) {
+  const navigationLinkClassnames = classnames('nx-sidebar-nav--item', {
+    'selected': current
+  });
+
+  return (
+    <li className={navigationLinkClassnames} key={`nav-link-${name}`}>
+      <a href={href} className="nx-sidebar-nav--link">
+        <NxFontAwesomeIcon icon={icon} />
+        <span className="nx-sidebar-nav--link-name">{name}</span>
+      </a>
+    </li>
+  );
+};
 
 const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
-  const { children, className, isOpen, helpLink, onToggleOpen } = props;
+  const {
+    isOpen,
+    className,
+    onToggleClick,
+    logo,
+    logoText,
+    logoLink,
+    links,
+    helpLink,
+    helpText,
+    collapsedReleaseText,
+    expandedReleaseText,
+    attributions
+  } = props;
+
   const classes = classnames(className, 'nx-sidebar-nav', {
     'nx-sidebar-nav__open': isOpen,
     'nx-sidebar-nav__closed': !isOpen
   });
+
   const toggleButtonClasses = 'nx-sidebar-nav--icon nx-sidebar-nav--toggle';
+
   const closeBtn = (
     <NxCloseButton className={toggleButtonClasses}
-                     onClick={onToggleOpen} />
+                   onClick={onToggleClick} />
   );
+
   const openBtn = (
     <NxButton variant="icon-only"
-              onClick={onToggleOpen}
+              onClick={onToggleClick}
               className={toggleButtonClasses}>
       <NxFontAwesomeIcon icon={faBars} />
     </NxButton>
   );
+
   const toggleButton = isOpen ? closeBtn : openBtn;
-  const logoImg = require('../../assets/img/SON_hexagon_cropped.svg');
-  const logo = <img src={logoImg} className="nx-sidebar-nav--logo" />;
-  const logoLink = 'http://google.com';
-  
+
+  const navigationLinks = (
+    <ul className="nx-sidebar-nav--items">
+      { links.map(NxSidebarNavLink)}
+    </ul>
+  );
+
   return (
     <nav className={classes}>
       { toggleButton }
       { isOpen &&
         <div className="nx-sidebar-nav--product-info">
           { logoLink ? <a href={logoLink} aria-label="logo">{logo}</a> : logo }
-          <span className="nx-sidebar-nav--product-name">nexus lifecycle</span>
+          <span className="nx-sidebar-nav--product-name">{logoText}</span>
         </div>
       }
-      { children }
+      { navigationLinks }
       { isOpen && <div className="nx-sidebar-nav--separator" /> }
       <footer className="nx-sidebar-nav--footer">
         { !!helpLink &&
@@ -58,18 +92,22 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
              className="nx-sidebar-nav--help-link"
              href={helpLink}>
             <NxFontAwesomeIcon icon={faQuestionCircle}/>
-            { isOpen && <span className="nx-sidebar-nav--help-text">Help and Support</span>}
+            { isOpen && <span className="nx-sidebar-nav--help-text">{ helpText }</span>}
           </a>
         }
 
-        <p className="nx-sidebar-nav--release">
-          { isOpen ? 'Lifecycle Release 10X' : 'Release 10X' }
-        </p>
-        { isOpen &&
-          <>
-            <p>Powered by Nexus IQ Server</p>
-            <p>Created by Sonatype</p>
-          </>
+        { isOpen && expandedReleaseText &&
+          <p className="nx-sidebar-nav--release">
+            {expandedReleaseText}
+          </p>
+        }
+        { !isOpen && collapsedReleaseText &&
+          <p className="nx-sidebar-nav--release">
+            { collapsedReleaseText }
+          </p>
+        }
+        { isOpen && attributions &&
+          attributions.map((attribution, index) => <p key={`attribution-${index}`}>{ attribution }</p>)
         }
       </footer>
     </nav>
