@@ -11,14 +11,9 @@ describe('nx-card', function() {
     await browser.url('#/pages/nx-card');
   });
 
-  const rowLayoutCardSelector = '#nx-card-row-example .gallery-example-live',
-      columnLayoutCardSelector = '#nx-card-column-example .gallery-example-live';
+  const rowLayoutCardSelector = '#nx-card-row-example .gallery-example-live';
 
   describe('nx-card row layout', function() {
     it('looks right', simpleTestLongElement(rowLayoutCardSelector));
-  });
-
-  describe('nx-card column layout', function() {
-    it('looks right', simpleTestLongElement(columnLayoutCardSelector));
   });
 });
