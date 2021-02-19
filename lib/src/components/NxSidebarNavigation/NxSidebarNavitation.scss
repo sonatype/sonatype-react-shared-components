@@ -149,8 +149,7 @@ $nx-sidebar-nav-background: $nx-blue-1000;
 }
 
 .nx-sidebar-nav__closed {
-  width: 69px;
-  min-width: 69px;src/components/NxSidebarNavigation/NxSidebarNavigation.tsx
+  min-width: 69px;
 
   .nx-sidebar-nav--toggle {
     align-self: center;
