@@ -17,11 +17,13 @@ import {
 } from '@sonatype/react-shared-components';
 
 import NxTabsTileHeaderExample from './NxTabsTileHeaderExample';
+import NxTabsOutsideTileExample from './NxTabsOutsideTileExample';
 import NxTabsTileNoHeaderExample from './NxTabsTileNoHeaderExample';
 import NxTabsModalExample from './NxTabsModalExample';
 import NxTabsModalNoHeaderExample from './NxTabsModalNoHeaderExample';
 
 const NxTabsTileHeaderExampleCode = require('!!raw-loader!./NxTabsTileHeaderExample').default;
+const NxTabsOutsideTileExampleCode = require('!!raw-loader!./NxTabsOutsideTileExample').default;
 const NxTabsTileNoHeaderExampleCode = require('!!raw-loader!./NxTabsTileNoHeaderExample').default;
 const NxTabsModalExampleCode = require('!!raw-loader!./NxTabsModalExample').default;
 const NxTabsModalNoHeaderExampleCode = require('!!raw-loader!./NxTabsModalNoHeaderExample').default;
@@ -126,6 +128,15 @@ export default function NxTabsPage() {
                           defaultCheckeredBackground={true}
                           liveExample={NxTabsTileNoHeaderExample}
                           codeExamples={NxTabsTileNoHeaderExampleCode}>
+        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
+        {' '}<code className="nx-code">NxTile</code> where there is no tile header and the tabs are top most within
+        the tile.
+      </GalleryExampleTile>
+      <GalleryExampleTile title="NxTabs outside of NxTile Example"
+                          id="nx-tab-outside-tile-example"
+                          defaultCheckeredBackground={true}
+                          liveExample={NxTabsOutsideTileExample}
+                          codeExamples={NxTabsOutsideTileExampleCode}>
         A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
         {' '}<code className="nx-code">NxTile</code> where there is no tile header and the tabs are top most within
         the tile.
