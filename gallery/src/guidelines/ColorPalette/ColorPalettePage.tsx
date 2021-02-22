@@ -23,19 +23,6 @@ const ColorPalettePage = () =>
       </p>
       <section className="nx-tile-subsection">
         <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">Color Variables</h3>
-        </header>
-        <p className="nx-p">
-          Where a color is used commonly across multiple components a custom variable is created. For example many
-          components with a disabled state have the same background color so we have created a color variable:
-          {' '}<code className="nx-code">$nx-disabled-background: $nx-grey-200;</code>. If the disabled background color
-          should change in the future this allows us to change all of the components in one place without effecting
-          other places where that color might be used. These variables are located in
-          {' '}<code className="nx-code">_nx-colors.scss</code>.
-        </p>
-      </section>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
           <h3 className="nx-h3">Using Colors</h3>
         </header>
         <p className="nx-p">
@@ -52,10 +39,8 @@ const ColorPalettePage = () =>
       </section>
     </GalleryDescriptionTile>
 
-    <div className="nx-tile">
-      <div className="nx-tile-content gallery-swatches">
-        <Swatcher/>
-      </div>
+    <div className="nx-card-container">
+      <Swatcher/>
     </div>
   </>;
 

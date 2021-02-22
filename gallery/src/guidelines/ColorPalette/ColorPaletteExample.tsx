@@ -35,9 +35,12 @@ export default function Swatcher() {
   return (
     <>
       { toPairs(varsByColor).map(([colorName, colors]) =>
-        <div className="gallery-swatches__container" key={colorName}>
-          <h3 className="nx-h3">{colorName}</h3>
-          {colors.map(({colorVariable, colorHex}) =>
+        <div className="nx-card gallery-card-swatch" key={colorName}>
+          <div className="nx-card__header">
+            <h3 className="nx-h3">{colorName}</h3>
+          </div>
+          <div className="nx-card__content">
+            {colors.map(({colorVariable, colorHex}) =>
             <div className="gallery-swatch" key={colorHex}>
               <div className="gallery-swatch__thumb" style={{backgroundColor: `#${colorHex}`}}></div>
               <div className="gallery-swatch__hex">
@@ -48,6 +51,7 @@ export default function Swatcher() {
               </div>
             </div>
           )}
+          </div>
         </div>
       )}
     </>
