@@ -8,21 +8,22 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxCardRowLayoutExample from './NxCardRowLayoutExample';
-import NxCardColumnLayoutExample from './NxCardColumnLayoutExample';
-import NxCardRowAltLayoutExample from './NxCardRowAltLayoutExample';
+import './NxCardPageExamples.scss';
 
-const nxCardRowLayoutCode = require('!!raw-loader!./NxCardRowLayoutExample').default,
-    nxCardColumnLayoutCode = require('!!raw-loader!./NxCardColumnLayoutExample').default,
-    nxCardRowAltLayoutCode = require('!!raw-loader!./NxCardRowAltLayoutExample').default;
+import NxCardLayoutExample from './NxCardLayoutExample';
+
+const nxCardLayoutCode = require('!!raw-loader!./NxCardLayoutExample').default,
+    NxCardCustomSCSSCode = require('!!raw-loader!./NxCardPageExamples.scss').default;
 
 const NxCardPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        Cards can be displayed in two orientations: rows and columns. Cards can be transformed between rows and columns
-        with a simple class change on their container. There is also a row variant supplied which displays the call out
-        and content side-by-side, this variant cannot be transformed into column oriented cards.
+        At its most basic a card is simply a container like a smaller version of
+        {' '}<code className="nx-code">nx-tile</code> with header, content, and footer content areas. Because it's
+        expected that cards will have many uses the examples below do not represent an exhaustive list, instead the
+        intent is to display some common patterns that we have seen to date, and provide a starting off point for
+        future implementations.
       </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
@@ -37,24 +38,16 @@ const NxCardPage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-card-container</code></td>
             <td className="nx-cell">Top-Level</td>
             <td className="nx-cell">
-              Basic card container class.
+              Container for <code className="nx-code">.nx-card</code>s
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card-container--row</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-card-container--no-wrap</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-card-container</code></td>
             <td className="nx-cell">
-              Container for cards that are displayed in row(s), both normal and variant layouts. Rows can be
-              transformed into columns by replacing this style with
-              <code className="nx-code">.nx-card-container--column</code> below.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card-container--column</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card-container</code></td>
-            <td className="nx-cell">
-              Container for cards that are displayed in a column. Cards displayed in a column can be transformed
-              into rows by replacing this style with <code className="nx-code">.nx-card-container--row</code> above.
+              By default if you put more cards into a container than can fit horizontally the cards will wrap into a
+              new row. This modifier is used when you do not want the cards to wrap. Use with care as this can break
+              layouts.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -65,6 +58,16 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-card--equal</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card</code></td>
+            <td className="nx-cell">
+              <code className="nx-code">.nx-card</code>s have a default <code className="nx-code">max-width</code>.
+              This modifer will override the <code className="nx-code">max-width</code> and force all cards to share
+              the available space equally. It should be applied to all cards within an
+              <code className="nx-code">.nx-card-container</code>.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__header</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
@@ -72,49 +75,57 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card__call-out</code></td>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">
-              Wraps the card call out (if any). The call out typically consists of a number, sparkline, icon, or
-              other small graphic. It should not be free form text.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card__call-out--text-only</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card__call-out</code></td>
-            <td className="nx-cell">
-              Used when the content of <code className="nx-code">.nx-card__call-out</code> consists of text.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card__text</code></td>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">Free-form text. Should be concise.</td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__footer</code></td>
             <td className="nx-cell">Element</td>
-            <td className="nx-cell">Card footer. Typically provides a link to more information.</td>
+            <td className="nx-cell">
+              Card footer, typically provides a link to more information or an action button.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__content</code></td>
             <td className="nx-cell">Wrapping element</td>
             <td className="nx-cell">
               <code className="nx-code">.nx-card__content</code> applied to a
-              {' '}<code className="nx-code">&lt;div&gt;</code> wraps
+              {' '}<code className="nx-code">&lt;div&gt;</code> wraps card contents. In the layouts below it wraps
               {' '}<code className="nx-code">.nx-card__call-out</code> and
-              {' '}<code className="nx-code">.nx-card__call-out-text</code> in the alternate row card layout.
+              {' '}<code className="nx-code">.nx-card__text</code> as well as other card content.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">nx-icon--card-call-out</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-card__content--columns</code></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card__content</code></td>
+            <td className="nx-cell">
+              <code className="nx-code">.nx-card__content--columns</code> applied to
+              {' '}<code className="nx-code">.nx-card__content</code> creates a two column layout within
+              {' '}<code className="nx-code">.nx-card__content</code>.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-card__call-out</code></td>
+            <td className="nx-cell">
+              Element, typically a child of <code className="nx-code">.nx-card__content</code>
+            </td>
+            <td className="nx-cell">
+              Wraps the card call out (if any). The call out typically consists of a number, sparkline, icon, or
+              other small graphic. It should not be free form text.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-card__text</code></td>
+            <td className="nx-cell">
+              Element, typically a child of <code className="nx-code">.nx-card__content</code>
+            </td>
+            <td className="nx-cell">Free-form text. Should be concise.</td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">nx-card__call-out-icon</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-icon</code></td>
             <td className="nx-cell">
               Changes the size of <code className="nx-code">.nx-icon</code> to <code className="nx-code">48px</code>.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">nx-icon--card-call-out-xl</code></td>
+            <td className="nx-cell"><code className="nx-code">nx-card__call-out-icon--xl</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-icon</code></td>
             <td className="nx-cell">
               Changes the size of <code className="nx-code">.nx-icon</code> to <code className="nx-code">64px</code>.
@@ -126,29 +137,12 @@ const NxCardPage = () =>
 
     <GalleryExampleTile title="Card Row Layout"
                         id="nx-card-row-example"
-                        liveExample={NxCardRowLayoutExample}
-                        codeExamples={nxCardRowLayoutCode}
+                        liveExample={NxCardLayoutExample}
+                        codeExamples={[nxCardLayoutCode, NxCardCustomSCSSCode]}
                         defaultCheckeredBackground={true}>
-      Cards shown in a row layout. While we have shown some content heavy examples it is recomended to keep the
-      content as minimal as possible. The layout of the cards is determined by a class applied to their container.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Card Row Layout Alternate"
-                        id="nx-card-row-alt-example"
-                        liveExample={NxCardRowAltLayoutExample}
-                        codeExamples={nxCardRowAltLayoutCode}
-                        defaultCheckeredBackground={true}>
-      This variation of the row layout has the callout and the description text side-by-side. It cannot be transformed
-      into a column layout with a simple class change.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Card Column Layout"
-                        id="nx-card-column-example"
-                        liveExample={NxCardColumnLayoutExample}
-                        codeExamples={nxCardColumnLayoutCode}
-                        defaultCheckeredBackground={true}>
-      Cards shown in column layout. The layout of the cards is determined by a class applied to their
-      container.
+      Samples of some common layouts, it's expected that many layouts will be custom. While we have shown some content
+      heavy examples it is recomended to keep the content as minimal as possible. There is some custom SCSS used in
+      these examples, it is shown below.
     </GalleryExampleTile>
   </>;
 
