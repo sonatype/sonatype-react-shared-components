@@ -93,6 +93,7 @@ import NxPrePage from './styles/NxPre/NxPrePage';
 import NxSegmentedButtonPage from './components/NxSegmentedButton/NxSegmentedButtonPage';
 import NxStatefulSegmentedButtonPage from './components/NxStatefulSegmentedButton/NxStatefulSegmentedButtonPage';
 import NxTagPage from './components/NxTag/NxTagPage';
+import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
 import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
 
 const pageConfig: PageConfig = {
@@ -191,7 +192,8 @@ const pageConfig: PageConfig = {
   'JavaScript & TypeScript Utilities': {
     'TooltipConfigProps': TooltipConfigPropsPage,
     'Policy Threat Level Utils': PolicyThreatLevelUtilsPage,
-    'Validation Utils': ValidationUtilsPage
+    'Validation Utils': ValidationUtilsPage,
+    'useToggle': UseTogglePage
   }
 };
 
