@@ -71,13 +71,11 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-sidebar-nav--items {
-  list-style-type: none;
   margin: 36px 0;
-  padding: 0;
-  width: 100%;
 }
 
 .nx-sidebar-nav--item {
+  display: block;
   height: 32px;
 
   &:hover {
@@ -109,7 +107,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
   @include regular;
 
   color: inherit;
-  display: inline-block;
   font-size: 16px;
   height: 32px;
   line-height: 32px;

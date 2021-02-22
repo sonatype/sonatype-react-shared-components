@@ -16,17 +16,15 @@ import { Props, SidebarNavLinkProps, propTypes } from './types';
 import './NxSidebarNavitation.scss';
 
 const NxSidebarNavLink = function NxSidebarNavLink({ name, href, icon, current }: SidebarNavLinkProps) {
-  const navigationLinkClassnames = classnames('nx-sidebar-nav--item', {
+  const navigationLinkClassnames = classnames('nx-sidebar-nav--item', 'nx-sidebar-nav--link', {
     'selected': current
   });
 
   return (
-    <li className={navigationLinkClassnames} key={`nav-link-${name}`}>
-      <a href={href} className="nx-sidebar-nav--link">
-        <NxFontAwesomeIcon icon={icon} />
-        <span className="nx-sidebar-nav--link-name">{name}</span>
-      </a>
-    </li>
+    <a href={href} className={navigationLinkClassnames} key={`nav-link-${name}`}>
+      <NxFontAwesomeIcon icon={icon} />
+      <span className="nx-sidebar-nav--link-name">{name}</span>
+    </a>
   );
 };
 
@@ -69,15 +67,15 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
   const toggleButton = isOpen ? closeBtn : openBtn;
 
   const navigationLinks = (
-    <ul className="nx-sidebar-nav--items">
+    <nav className="nx-sidebar-nav--items">
       { links.map(NxSidebarNavLink)}
-    </ul>
+    </nav>
   );
 
   const logo = <img src={logoImg} className="nx-sidebar-nav--logo" />;
 
   return (
-    <nav className={classes}>
+    <aside className={classes}>
       { toggleButton }
       { isOpen &&
         <div className="nx-sidebar-nav--product-info">
@@ -112,7 +110,7 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
           attributions.map((attribution, index) => <p key={`attribution-${index}`}>{ attribution }</p>)
         }
       </footer>
-    </nav>
+    </aside>
   );
 };
 
