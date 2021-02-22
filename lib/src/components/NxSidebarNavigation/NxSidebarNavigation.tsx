@@ -16,14 +16,14 @@ import { Props, SidebarNavLinkProps, propTypes } from './types';
 import './NxSidebarNavitation.scss';
 
 const NxSidebarNavLink = function NxSidebarNavLink({ name, href, icon, current }: SidebarNavLinkProps) {
-  const navigationLinkClassnames = classnames('nx-sidebar-nav--item', 'nx-sidebar-nav--link', {
+  const navigationLinkClassnames = classnames('nx-sidebar__item', 'nx-sidebar__link', {
     'selected': current
   });
 
   return (
     <a href={href} className={navigationLinkClassnames} key={`nav-link-${name}`}>
       <NxFontAwesomeIcon icon={icon} />
-      <span className="nx-sidebar-nav--link-name">{name}</span>
+      <span className="nx-sidebar__link-name">{name}</span>
     </a>
   );
 };
@@ -44,12 +44,12 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
     attributions
   } = props;
 
-  const classes = classnames(className, 'nx-sidebar-nav', {
-    'nx-sidebar-nav__open': isOpen,
-    'nx-sidebar-nav__closed': !isOpen
+  const classes = classnames(className, 'nx-sidebar', {
+    'nx-sidebar--open': isOpen,
+    'nx-sidebar--closed': !isOpen
   });
 
-  const toggleButtonClasses = 'nx-sidebar-nav--icon nx-sidebar-nav--toggle';
+  const toggleButtonClasses = 'nx-sidebar__toggle';
 
   const closeBtn = (
     <NxCloseButton className={toggleButtonClasses}
@@ -67,42 +67,42 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
   const toggleButton = isOpen ? closeBtn : openBtn;
 
   const navigationLinks = (
-    <nav className="nx-sidebar-nav--items">
+    <nav className="nx-sidebar__items">
       { links.map(NxSidebarNavLink)}
     </nav>
   );
 
-  const logo = <img src={logoImg} className="nx-sidebar-nav--logo" />;
+  const logo = <img src={logoImg} className="nx-sidebar__logo" />;
 
   return (
     <aside className={classes}>
       { toggleButton }
       { isOpen &&
-        <div className="nx-sidebar-nav--product-info">
+        <div className="nx-sidebar__product-info">
           { logoLink ? <a href={logoLink} aria-label="logo">{logo}</a> : logo }
-          <span className="nx-sidebar-nav--product-name">{logoText}</span>
+          <span className="nx-sidebar__product-name">{logoText}</span>
         </div>
       }
       { navigationLinks }
-      { isOpen && <div className="nx-sidebar-nav--separator" /> }
-      <footer className="nx-sidebar-nav--footer">
+      { isOpen && <div className="nx-sidebar__separator" /> }
+      <footer className="nx-sidebar__footer">
         { !!helpLink &&
           <a rel="noreferrer"
              target="_blank"
-             className="nx-sidebar-nav--help-link"
+             className="nx-sidebar__help-link"
              href={helpLink}>
             <NxFontAwesomeIcon icon={faQuestionCircle}/>
-            { isOpen && <span className="nx-sidebar-nav--help-text">{ helpText }</span>}
+            { isOpen && <span className="nx-sidebar__help-text">{ helpText }</span>}
           </a>
         }
 
         { isOpen && expandedReleaseText &&
-          <p className="nx-sidebar-nav--release">
+          <p className="nx-sidebar__release">
             {expandedReleaseText}
           </p>
         }
         { !isOpen && collapsedReleaseText &&
-          <p className="nx-sidebar-nav--release">
+          <p className="nx-sidebar__release">
             { collapsedReleaseText }
           </p>
         }

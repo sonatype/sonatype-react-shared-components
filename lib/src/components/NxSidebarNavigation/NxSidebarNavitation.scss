@@ -11,20 +11,20 @@
 $nx-sidebar-width__open: 250px;
 $nx-sidebar-width__closed: 69px;
 $nx-sidebar-logo-height: 33px;
-$nx-sidebar-nav-background-color: $nx-blue-1000;
-$nx-sidebar-nav-text-color: $nx-white;
-$nx-sidebar-nav-help-color: $nx-grey-50;
-$nx-sidebar-nav-hover-color: $nx-indigo-600;
-$nx-sidebar-nav-selected-color: $nx-indigo-800;
+$nx-sidebar-background-color: $nx-blue-1000;
+$nx-sidebar-text-color: $nx-white;
+$nx-sidebar-help-color: $nx-grey-50;
+$nx-sidebar-hover-color: $nx-indigo-600;
+$nx-sidebar-selected-color: $nx-indigo-800;
 $nx-sidebar-separator-color: $nx-grey-900;
 
 
-.nx-sidebar-nav {
+.nx-sidebar {
   @include container-vertical;
 
   box-sizing: border-box;
-  background-color: $nx-sidebar-nav-background-color;
-  color: $nx-sidebar-nav-text-color;
+  background-color: $nx-sidebar-background-color;
+  color: $nx-sidebar-text-color;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -34,34 +34,34 @@ $nx-sidebar-separator-color: $nx-grey-900;
   position: relative;
 }
 
-.nx-sidebar-nav--product-info {
+.nx-sidebar__product-info {
   margin: $nx-spacing-sm $nx-spacing-l 0;
   height: $nx-sidebar-logo-height;
 }
 
-.nx-sidebar-nav--product-name {
+.nx-sidebar__product-name {
   display: inline-block;
   font-size: $nx-font-size;
   line-height: $nx-sidebar-logo-height;
   vertical-align: top;
 }
 
-.nx-sidebar-nav--logo {
+.nx-sidebar__logo {
   height: $nx-sidebar-logo-height;
   margin-right: $nx-spacing-xs;
   width: 30px;
 }
 
-.nx-sidebar-nav--icon {
-  color: $nx-sidebar-nav-text-color;
+.nx-sidebar__toggle {
+  color: $nx-sidebar-text-color;
   margin: 0;
 }
 
 .nx-footer-help-icon {
-  color: $nx-sidebar-nav-help-color;
+  color: $nx-sidebar-help-color;
 }
 
-.nx-sidebar-nav--footer {
+.nx-sidebar__footer {
   align-self: center;
   bottom: $nx-spacing-xxl;
   font-size: $nx-font-size-xs;
@@ -69,40 +69,40 @@ $nx-sidebar-separator-color: $nx-grey-900;
   text-align: center;
 }
 
-.nx-sidebar-nav--items {
+.nx-sidebar__items {
   margin: 36px 0;
 }
 
-.nx-sidebar-nav--item {
+.nx-sidebar__item {
   display: block;
   height: 32px;
 
   &:hover {
-    background-color: $nx-sidebar-nav-hover-color;
+    background-color: $nx-sidebar-hover-color;
   }
 
   &.selected {
-    background-color: $nx-sidebar-nav-selected-color;
+    background-color: $nx-sidebar-selected-color;
 
-    .nx-sidebar-nav--link {
+    .nx-sidebar__link {
       @include semi-bold;
     }
   }
 }
 
-.nx-sidebar-nav--separator {
+.nx-sidebar__separator {
   background-color: $nx-sidebar-separator-color;
   height: 1px;
   width: 100%;
 }
 
-.nx-sidebar-nav--release {
+.nx-sidebar__release {
   height: 36px;
   margin-bottom: $nx-spacing-sm;
   margin-top: $nx-spacing-xxl;
 }
 
-.nx-sidebar-nav--link {
+.nx-sidebar__link {
   @include regular;
 
   color: inherit;
@@ -116,7 +116,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   }
 }
 
-.nx-sidebar-nav--help-link {
+.nx-sidebar__help-link {
   color: inherit;
   font-size: $nx-font-size-s;
   text-decoration: none;
@@ -126,55 +126,55 @@ $nx-sidebar-separator-color: $nx-grey-900;
   }
 }
 
-.nx-sidebar-nav--help-text {
+.nx-sidebar__help-text {
   font-size: $nx-font-size-s;
 }
 
-.nx-sidebar-nav--items {
+.nx-sidebar__items {
   margin-bottom: $nx-spacing-xxl;
 }
 
-.nx-sidebar-nav__open {
-  .nx-sidebar-nav--toggle {
+.nx-sidebar--open {
+  .nx-sidebar__toggle {
     height: 16px;
     position: absolute;
     right: $nx-spacing-l;
     width: 16px;
   }
 
-  .nx-sidebar-nav--item {
+  .nx-sidebar__item {
     padding-left: $nx-spacing-l;
   }
 
-  .nx-sidebar-nav--link-name {
+  .nx-sidebar__link-name {
     margin-left: $nx-spacing-sm;
   }
 }
 
-.nx-sidebar-nav__closed {
+.nx-sidebar--closed {
   min-width: 69px;
 
-  .nx-sidebar-nav--toggle {
+  .nx-sidebar__toggle {
     align-self: center;
   }
 
-  .nx-sidebar-nav--logo {
+  .nx-sidebar__logo {
     display: none;
   }
 
-  .nx-sidebar-nav--items {
+  .nx-sidebar__items {
     text-align: center;
   }
 
-  .nx-sidebar-nav--release {
+  .nx-sidebar__release {
     width: 44px;
   }
 
-  .nx-sidebar-nav--link-name {
+  .nx-sidebar__link-name {
     display: none;
   }
 
-  .nx-sidebar-nav--help-link .nx-icon{
+  .nx-sidebar__help-link .nx-icon{
     margin-right: 0;
   }
 }
