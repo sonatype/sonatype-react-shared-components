@@ -93,6 +93,7 @@ import NxPrePage from './styles/NxPre/NxPrePage';
 import NxSegmentedButtonPage from './components/NxSegmentedButton/NxSegmentedButtonPage';
 import NxStatefulSegmentedButtonPage from './components/NxStatefulSegmentedButton/NxStatefulSegmentedButtonPage';
 import NxTagPage from './components/NxTag/NxTagPage';
+import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -189,7 +190,8 @@ const pageConfig: PageConfig = {
   'JavaScript & TypeScript Utilities': {
     'TooltipConfigProps': TooltipConfigPropsPage,
     'Policy Threat Level Utils': PolicyThreatLevelUtilsPage,
-    'Validation Utils': ValidationUtilsPage
+    'Validation Utils': ValidationUtilsPage,
+    'useToggle': UseTogglePage
   }
 };
 
