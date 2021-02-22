@@ -11,8 +11,6 @@ import {faCube} from '@fortawesome/free-solid-svg-icons';
 import { NxTreeView, NxFontAwesomeIcon, useToggle } from '@sonatype/react-shared-components';
 
 function NxTreeViewEmptyExample() {
-  // this example uses the `useState` hook for succinctness, but you could also manage the state manually
-  // in a class component
   const [toggleCheck, onToggleCollapse] = useToggle(false);
 
   return (

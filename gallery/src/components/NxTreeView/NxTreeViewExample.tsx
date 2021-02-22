@@ -9,8 +9,6 @@ import React from 'react';
 import { NxTreeView, NxTreeViewChild, useToggle } from '@sonatype/react-shared-components';
 
 function NxTreeViewExample() {
-  // this example uses the `useState` hook for succinctness, but you could also manage the state manually
-  // in a class component
   const [toggleCheck, onToggleCollapse] = useToggle(false);
 
   return (

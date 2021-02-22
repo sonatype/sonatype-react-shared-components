@@ -9,8 +9,6 @@ import React from 'react';
 import { NxTreeView, NxTreeViewChild, TooltipConfigProps, useToggle } from '@sonatype/react-shared-components';
 
 function NxTreeViewTooltipExample() {
-  // this example uses the `useState` hook for succinctness, but you could also manage the state manually
-  // in a class component
   const [toggle1Check, onToggle1Collapse] = useToggle(false),
       [toggle2Check, onToggle2Collapse] = useToggle(false),
       complexTooltipConfig: TooltipConfigProps = {

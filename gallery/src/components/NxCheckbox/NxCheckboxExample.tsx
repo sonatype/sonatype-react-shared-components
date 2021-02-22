@@ -9,8 +9,6 @@ import React from 'react';
 import { NxCheckbox, NxFieldset, useToggle } from '@sonatype/react-shared-components';
 
 function NxCheckboxExample() {
-  // this example uses the `useState` hook for succinctness, but you could also manage the state manually
-  // in a class component
   const [isRed, toggleRed] = useToggle(false),
       [isBlue, toggleBlue] = useToggle(false),
       [isGreen, toggleGreen] = useToggle(false),

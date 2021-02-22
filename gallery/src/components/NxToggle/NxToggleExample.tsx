@@ -9,8 +9,6 @@ import React from 'react';
 import { NxToggle, useToggle } from '@sonatype/react-shared-components';
 
 function NxToggleExample() {
-  // this example uses the `useState` hook for succinctness, but you could also manage the state manually
-  // in a class component
   const [isWarpOn, toggleWarp] = useToggle(false),
       [isKrakenOut, toggleKraken] = useToggle(false),
       [isShapes, toggleShapes] = useToggle(false),
