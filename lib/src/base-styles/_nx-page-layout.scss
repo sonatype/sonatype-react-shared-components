@@ -33,11 +33,10 @@
 }
 
 .nx-page--sidebar {
-  @include container-vertical;
+  @include container-horizontal;
 
-  display: flex;
-  height: 100%;
-  min-width: $nx-page-width-min;
+  align-items: flex-start;
+  flex-direction: row;
 }
 
 .nx-page-content {
