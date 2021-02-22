@@ -16,7 +16,7 @@ import { Props, SidebarNavLinkProps, propTypes } from './types';
 import './NxSidebarNavitation.scss';
 
 const NxSidebarNavLink = function NxSidebarNavLink({ name, href, icon, current }: SidebarNavLinkProps) {
-  const navigationLinkClassnames = classnames('nx-sidebar__item', 'nx-sidebar__link', {
+  const navigationLinkClassnames = classnames('nx-sidebar__item', {
     'selected': current
   });
 
@@ -84,7 +84,6 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
         </div>
       }
       { navigationLinks }
-      { isOpen && <div className="nx-sidebar__separator" /> }
       <footer className="nx-sidebar__footer">
         { !!helpLink &&
           <a rel="noreferrer"
