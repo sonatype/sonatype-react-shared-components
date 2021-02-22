@@ -42,7 +42,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
 .nx-sidebar-nav--product-name {
   display: inline-block;
-  font-size: 16px;
+  font-size: $nx-font-size;
   line-height: $nx-sidebar-logo-height;
   vertical-align: top;
 }
@@ -107,7 +107,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   @include regular;
 
   color: inherit;
-  font-size: 16px;
+  font-size: $nx-font-size;
   height: 32px;
   line-height: 32px;
   text-decoration: none;
@@ -119,7 +119,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
 .nx-sidebar-nav--help-link {
   color: inherit;
-  font-size: 14px;
+  font-size: $nx-font-size-s;
   text-decoration: none;
 
   .nx-icon {
@@ -128,7 +128,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-sidebar-nav--help-text {
-  font-size: 14px;
+  font-size: $nx-font-size-s;
 }
 
 .nx-sidebar-nav--items {
