@@ -6,15 +6,59 @@
  */
 
 .nx-card-container {
+  column-gap: $nx-spacing-md;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin: $nx-spacing-md 0;
+  row-gap: $nx-spacing-md;
+}
+
+.nx-card-container--no-wrap {
+  flex-wrap: nowrap;
 }
 
 .nx-card {
+  @include container-vertical;
   background-color: var(--nx-component-background-color);
   border-radius: $nx-border-radius;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: $nx-spacing-l;
+  text-align: center;
+  min-width: 230px;
+  max-width: 330px;
+}
+
+.nx-card__header {
+  @include container-vertical;
   margin-bottom: $nx-spacing-md;
-  padding: $nx-spacing-l $nx-spacing-xxl;
+}
+
+.nx-card__content {
+  @include container-vertical;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: $nx-spacing-md;
+  margin-bottom: $nx-spacing-l;
+}
+
+.nx-card__footer {
+  border-top: $nx-border-default;
+  padding-top: $nx-spacing-l;
+
+  > .nx-btn-bar {
+    justify-content: center;
+  }
+}
+
+// Common card Helpers
+.nx-card--equal {
+  flex: 1;
+  max-width: unset;
 }
 
 .nx-card__call-out {
@@ -22,160 +66,15 @@
 
   font-size: 32px;
 
-  .nx-icon--card-call-out {
+  .nx-card__call-out-icon {
     font-size: 48px;
   }
 
-  .nx-icon--card-call-out-xl {
+  .nx-card__call-out-icon--xl {
     font-size: 64px;
   }
 }
 
-.nx-card-container--row {
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-bottom: 0;
-
-  + .nx-card-container--row {
-    margin-top: 0;
-  }
-
-  .nx-card {
-    @include container-vertical;
-    display: flex;
-    flex-direction: column;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    margin-right: $nx-spacing-md;
-    text-align: center;
-    min-width: 230px;
-    max-width: 330px;
-  }
-
-  .nx-card__header {
-    @include container-vertical;
-    margin-bottom: $nx-spacing-md;
-  }
-
-  .nx-card__call-out {
-    + .nx-card__content {
-      margin-top: $nx-spacing-md;
-    }
-  }
-
-  .nx-card__call-out--text-only {
-    + .nx-card__content {
-      margin-top: $nx-spacing-xs;
-    }
-  }
-
-  .nx-card__footer {
-    border-top: $nx-border-default;
-    margin-top: $nx-spacing-l;
-    padding-top: $nx-spacing-l;
-    width: 100%;
-
-    > .nx-btn-bar {
-      justify-content: center;
-    }
-  }
-}
-
-.nx-card-container--column {
-  @include container-vertical;
-
-  .nx-card {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: auto 1fr auto;
-    grid-template-columns: auto 1fr auto;
-    -ms-grid-rows: auto auto;
-    grid-template-areas:
-      "card-callout card-title card-footer"
-      "card-callout card-text card-footer";
-  }
-
-  .nx-card__header {
-    -ms-grid-row: 1;
-    -ms-grid-column: 2;
-    grid-area: card-title;
-
-    @include container-vertical;
-    margin: 0 0 $nx-spacing-md 0;
-    padding: 0;
-  }
-
-  .nx-card__content {
-    -ms-grid-row: 2;
-    -ms-grid-column: 2;
-    grid-area: card-text;
-    margin: 0;
-    padding: 0;
-  }
-
-  .nx-card__call-out {
-    -ms-grid-row-align: center;
-    align-self: center;
-    -ms-grid-row: 1;
-    -ms-grid-row-span: 2;
-    -ms-grid-column: 1;
-    grid-area: card-callout;
-    -ms-grid-column-align: center;
-    justify-self: center;
-
-    align-items: center;
-    border-right: $nx-border-default;
-    display: flex;
-    height: 100%;
-    margin: 0 $nx-spacing-xxl 0 0;
-    padding: 0 $nx-spacing-xxl 0 0;
-  }
-
-  .nx-card__footer {
-    box-sizing: content-box;
-    -ms-grid-row-align: center;
-    align-self: center;
-    -ms-grid-row: 1;
-    -ms-grid-row-span: 2;
-    -ms-grid-column: 3;
-    grid-area: card-footer;
-    -ms-grid-column-align: start;
-    justify-self: start;
-
-    @include container-horizontal;
-    align-items: center;
-    border: none;
-    border-left: $nx-border-default;
-    display: flex;
-    height: 100%;
-    margin: 0 0 0 $nx-spacing-xxl;
-    padding: 0 0 0 $nx-spacing-xxl;
-    // necessary to make the link wrap
-    max-width: 150px;
-  }
-}
-
-// Styles for the alternate row layout
-.nx-card-container--row {
-  .nx-card__content-container {
-    align-items: center;
-    display: flex;
-
-    .nx-card__call-out {
-      @include container-horizontal;
-      flex-grow: 1;
-      text-align: right;
-
-      + .nx-card__content {
-        margin-left: $nx-spacing-l;
-      }
-    }
-
-    .nx-card__content {
-      flex-grow: 1;
-      margin-top: 0;
-      text-align: left;
-    }
-  }
+.nx-card__content--columns {
+  flex-direction: row;
 }
