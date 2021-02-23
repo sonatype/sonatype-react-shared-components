@@ -94,6 +94,7 @@ import NxSegmentedButtonPage from './components/NxSegmentedButton/NxSegmentedBut
 import NxStatefulSegmentedButtonPage from './components/NxStatefulSegmentedButton/NxStatefulSegmentedButtonPage';
 import NxTagPage from './components/NxTag/NxTagPage';
 import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
+import NxColorPickerPage from './components/NxColorPicker/NxColorPickerPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -107,6 +108,7 @@ const pageConfig: PageConfig = {
     NxSegmentedButton: NxSegmentedButtonPage,
     NxStatefulSegmentedButton: NxStatefulSegmentedButtonPage,
     NxCheckbox: NxCheckboxPage,
+    NxColorPicker: NxColorPickerPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
     NxCloseButton: NxCloseButtonPage,
     NxDropdown: NxDropdownPage,
