@@ -41,16 +41,16 @@ export default function Swatcher() {
           </div>
           <div className="nx-card__content">
             {colors.map(({colorVariable, colorHex}) =>
-            <div className="gallery-swatch" key={colorHex}>
-              <div className="gallery-swatch__thumb" style={{backgroundColor: `#${colorHex}`}}></div>
-              <div className="gallery-swatch__hex">
-                #{colorHex}
+              <div className="gallery-swatch" key={colorHex}>
+                <div className="gallery-swatch__thumb" style={{backgroundColor: `#${colorHex}`}}></div>
+                <div className="gallery-swatch__hex">
+                  #{colorHex}
+                </div>
+                <div className="gallery-swatch__variable">
+                  {colorVariable}
+                </div>
               </div>
-              <div className="gallery-swatch__variable">
-                {colorVariable}
-              </div>
-            </div>
-          )}
+            )}
           </div>
         </div>
       )}
