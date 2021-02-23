@@ -32,7 +32,7 @@ const ColorPalettePage = () =>
           to replace colors in the future if the palette changes.
         </p>
         <p className="nx-p">
-          To access to the color variables you'll need to load
+          To access the color variables you'll need to load
           {' '}<code className="nx-code">_nx-variables.scss</code> into your SCSS like this:
           {' '}<code className="nx-code">@import '~@sonatype/react-shared-components/scss-shared/nx-variables';</code>.
         </p>
