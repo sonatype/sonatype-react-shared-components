@@ -22,7 +22,7 @@ const NxSidebarNavLink = function NxSidebarNavLink({ name, href, icon, current }
 
   return (
     <a href={href} className={navigationLinkClassnames} key={`nav-link-${name}`}>
-      <NxFontAwesomeIcon icon={icon} />
+      <NxFontAwesomeIcon icon={icon} fixedWidth />
       <span className="nx-sidebar__link-name">{name}</span>
     </a>
   );

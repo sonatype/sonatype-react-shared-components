@@ -27,7 +27,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  min-width: $nx-sidebar-width__open;
+  width: $nx-sidebar-width__open;
   padding: $nx-spacing-l 0 0 0;
   position: relative;
 }
@@ -88,10 +88,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
     .nx-sidebar__link {
       @include semi-bold;
     }
-  }
-
-  .nx-icon {
-    width: 21px;
   }
 }
 
