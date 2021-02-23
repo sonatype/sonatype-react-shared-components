@@ -1,0 +1,49 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '~@sonatype/react-shared-components/scss-shared/nx-variables';
+@import '~@sonatype/react-shared-components/scss-shared/nx-text-helpers';
+
+.gallery-card-swatch {
+  display: flex;
+  flex-grow: 1;
+  max-width: 380px;
+
+  .nx-h3 {
+    text-transform: capitalize;
+  }
+
+  .nx-card__content {
+    align-items: stretch;
+    gap: 0;
+  }
+}
+
+.gallery-swatch {
+  align-items: center;
+  column-gap: $nx-spacing-l;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}
+
+.gallery-swatch__thumb {
+  flex-shrink: 0;
+  height: 64px;
+  width: 64px;
+}
+
+.gallery-swatch__variable, .gallery-swatch__hex {
+  @include semi-bold();
+}
+
+.gallery-swatch__variable {
+  flex-grow: 1;
+}
+
+.gallery-swatch__hex {
+  flex-basis: 7ch;
+}
