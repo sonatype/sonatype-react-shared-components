@@ -42,7 +42,7 @@ export default function NxColorPicker({selectedColor, onChange, className, ...at
 
   return (
     <fieldset className={classes} { ...attrs }>
-      { selectableColors.map(color => <ColorRadio { ...{ color, name, selectedColor, onChange } } />)}
+      { selectableColors.map(color => <ColorRadio key={color} { ...{ color, name, selectedColor, onChange } } />)}
     </fieldset>
   );
 }
