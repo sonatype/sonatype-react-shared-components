@@ -120,7 +120,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-sidebar--closed {
-  min-width: $nx-sidebar-width__closed;
+  width: $nx-sidebar-width__closed;
 
   .nx-sidebar__toggle {
     align-self: center;
