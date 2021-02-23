@@ -190,5 +190,11 @@ export { default as NxStatefulSegmentedButton, Props as NxStatefulSegmentedButto
 export { default as NxTag, NxSelectableTag, PublicProps as NxTagProps, SelectableProps as NxSelectableTagProps }
   from './components/NxTag/NxTag';
 
-export { NX_TAG_COLORS, NX_TAG_COLORS_TYPE } from './components/NxTag/types';
+export { selectableColors, SelectableColor } from './util/selectableColors';
+
+// deprecated
+export { selectableColors as NX_TAG_COLORS, SelectableColor as NX_TAG_COLORS_TYPE } from './util/selectableColors';
+
 export { default as useToggle } from './util/useToggle';
+
+export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
