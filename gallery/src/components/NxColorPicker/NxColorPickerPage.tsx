@@ -57,7 +57,8 @@ const NxColorPickerPage = () =>
           <NxTableRow>
             <NxTableCell>HTML fieldset Attributes</NxTableCell>
             <NxTableCell>
-              <a target="_blank"
+              <a className="nx-text-link"
+                 target="_blank"
                  rel="noopener"
                  href="https://developer.mozilla.org/en/docs/Web/HTML/Element/fieldset">
                 HTML fieldset Attributes
