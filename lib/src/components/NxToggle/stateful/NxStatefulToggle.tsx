@@ -4,19 +4,20 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef } from 'react';
 
 import NxToggle from '../NxToggle';
 import { Props, propTypes } from './types';
+import useToggle from '../../../util/useToggle';
 export { Props } from './types';
 
 const NxStatefulToggle = forwardRef<HTMLLabelElement, Props>(
     function NxStatefulToggle({ defaultChecked, onChange, ...otherProps }, ref) {
-      const [isChecked, setIsChecked] = useState(defaultChecked);
+      const [isChecked, toggleChecked] = useToggle(defaultChecked);
 
       function changeHandler() {
-        const newCheckedStatus = !isChecked;
-        setIsChecked(newCheckedStatus);
+        const newCheckedStatus = toggleChecked();
+
         if (onChange) {
           onChange(newCheckedStatus);
         }

@@ -8,7 +8,7 @@ import React, { FormEvent, useState } from 'react';
 import { none } from 'ramda';
 import classnames from 'classnames';
 
-import { NxButton, NxCheckbox, NxTextInput, NxTooltip, hasValidationErrors, NxFormGroup, NxFieldset }
+import { NxButton, NxCheckbox, NxTextInput, NxTooltip, hasValidationErrors, NxFormGroup, NxFieldset, useToggle }
   from '@sonatype/react-shared-components';
 import { StateProps, Validator } from '@sonatype/react-shared-components/components/NxTextInput/types';
 import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
@@ -19,7 +19,7 @@ export default function FormValidationExample() {
   const [textInput1State, setTextInput1State] = useState(initialState('')),
       [textInput2State, setTextInput2State] = useState(initialState('')),
       [textInput3State, setTextInput3State] = useState(initialState('')),
-      [checkboxValue, setCheckboxState] = useState(false);
+      [checkboxValue, toggleCheckbox] = useToggle(false);
 
   const stateHasValidationErrors = (state: StateProps) => hasValidationErrors(state.validationErrors),
       isValid = none(stateHasValidationErrors, [textInput1State, textInput2State, textInput3State]),
@@ -68,7 +68,7 @@ export default function FormValidationExample() {
       </NxFormGroup>
 
       <NxFieldset label="Check this box?">
-        <NxCheckbox isChecked={checkboxValue} onChange={() => setCheckboxState(!checkboxValue)}>Check It</NxCheckbox>
+        <NxCheckbox isChecked={checkboxValue} onChange={toggleCheckbox}>Check It</NxCheckbox>
       </NxFieldset>
 
       <footer className="nx-form-footer">

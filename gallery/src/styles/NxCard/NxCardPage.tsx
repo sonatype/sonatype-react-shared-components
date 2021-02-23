@@ -61,9 +61,9 @@ const NxCardPage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-card--equal</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-card</code></td>
             <td className="nx-cell">
-              <code className="nx-code">.nx-card</code>s have a default <code className="nx-code">min-width</code>
-              and <code className="nx-code">max-width</code>. This modifer will override that and force all cards to
-              expand (or contract) to share the available space equally. It should be applied to all cards within an
+              <code className="nx-code">.nx-card</code>s have a default <code className="nx-code">max-width</code>.
+              This modifer will override the <code className="nx-code">max-width</code> and force all cards to share
+              the available space equally. It should be applied to all cards within an
               <code className="nx-code">.nx-card-container</code>.
             </td>
           </tr>

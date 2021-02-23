@@ -13,7 +13,7 @@ export default function NxCardRowLayoutExample() {
   return (
     <>
       <div className="nx-card-container">
-        <section className="nx-card" aria-label="card 1">
+        <section className="nx-card" aria-label="Basic card">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
@@ -117,7 +117,7 @@ export default function NxCardRowLayoutExample() {
         </section>
       </div>
       <div className="nx-card-container">
-        <section className="nx-card" aria-label="card 3">
+        <section className="nx-card" aria-label="Crad with XL icon">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
@@ -131,7 +131,7 @@ export default function NxCardRowLayoutExample() {
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
-        <section className="nx-card" aria-label="card 4">
+        <section className="nx-card" aria-label="Percentage stats">
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">Card header</h3>
           </header>
@@ -145,7 +145,7 @@ export default function NxCardRowLayoutExample() {
             <a href="#" className="nx-text-link">Link</a>
           </footer>
         </section>
-        <section className="nx-card" aria-label="card 5">
+        <section className="nx-card" aria-label="Chart card">
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
           </header>
@@ -165,7 +165,7 @@ export default function NxCardRowLayoutExample() {
             </div>
           </footer>
         </section>
-        <section className="nx-card" aria-label="card 6">
+        <section className="nx-card" aria-label="Big percentage card">
           <header className="nx-card__header">
             <h3 className="nx-h3 nx-h3--card-header">Render-farm dolphin beef noodles</h3>
           </header>
@@ -185,7 +185,7 @@ export default function NxCardRowLayoutExample() {
       </div>
 
       <div className="nx-card-container">
-        <section className="nx-card" aria-label="card 7">
+        <section className="nx-card" aria-label="Meaning of Life card">
           <header className="nx-card__header">
             <h3 className="nx-h3">Header</h3>
           </header>
@@ -197,7 +197,7 @@ export default function NxCardRowLayoutExample() {
         </section>
       </div>
       <div className="nx-card-container">
-        <section className="nx-card" aria-label="card 8">
+        <section className="nx-card" aria-label="Shapes card">
           <header className="nx-card__header">
             <h3 className="nx-h3">Card header</h3>
           </header>
