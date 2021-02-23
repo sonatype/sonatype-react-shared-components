@@ -4,9 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useMemo } from 'react';
 import classnames from 'classnames';
+import { pipe, split, map, join, toUpper, head, tail } from 'ramda';
 
+import NxTooltip from '../NxTooltip/NxTooltip';
 import { SelectableColor, selectableColors } from '../../util/selectableColors';
 import { useRandomId } from '../../util/idUtil';
 import { Props, propTypes } from './types';
@@ -22,9 +24,18 @@ interface ColorRadioProps {
   onChange: Props['onChange'];
 }
 
+// convert a color name to a human-friendly string
+// (i.e. spaced and capitalized)
+const humanReadable: (c: SelectableColor) => string = pipe(
+  split('-'),
+  map(s => `${toUpper(head(s))}${tail(s)}`),
+  join(' ')
+);
+
 function ColorRadio({ color, selectedColor, onChange, name }: ColorRadioProps) {
   const selected = selectedColor === color,
-      classes = classnames('nx-color-picker__color', `nx-color-picker__color--${color}`, { selected });
+      classes = classnames('nx-color-picker__color', `nx-color-picker__color--${color}`, { selected }),
+      humanReadableColor = useMemo(() => humanReadable(color), [color]);
 
   function inputOnChange() {
     if (onChange) {
@@ -33,13 +44,15 @@ function ColorRadio({ color, selectedColor, onChange, name }: ColorRadioProps) {
   }
 
   return (
-    <label className={classes} aria-label={color}>
-      <input className="nx-color-picker__input"
-             type="radio"
-             name={name}
-             checked={color === selectedColor}
-             onChange={inputOnChange} />
-    </label>
+    <NxTooltip title={humanReadableColor}>
+      <label className={classes}>
+        <input className="nx-color-picker__input"
+               type="radio"
+               name={name}
+               checked={color === selectedColor}
+               onChange={inputOnChange} />
+      </label>
+    </NxTooltip>
   );
 }
 
