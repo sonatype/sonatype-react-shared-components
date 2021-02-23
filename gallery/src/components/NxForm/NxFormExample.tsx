@@ -6,7 +6,7 @@
  */
 import React, { useState, useEffect, FormEvent } from 'react';
 
-import { NxCheckbox, NxForm, NxRadio, NxFormGroup, NxTextInput, nxTextInputStateHelpers, NxFieldset }
+import { NxCheckbox, NxForm, NxRadio, NxFormGroup, NxTextInput, nxTextInputStateHelpers, NxFieldset, useToggle }
   from '@sonatype/react-shared-components';
 import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
 import { combineValidationErrors, hasValidationErrors } from '@sonatype/react-shared-components/util/validationUtil';
@@ -26,18 +26,15 @@ export default function NxFormExample() {
 
   const [usernameState, setUsernameState] = useState(initialState('', validator)),
       [hostnameState, setHostnameState] = useState(initialState('')),
-      [redChecked, setRedChecked] = useState(false),
-      [blueChecked, setBlueChecked] = useState(false),
-      [greenChecked, setGreenChecked] = useState(false),
+      [redChecked, toggleRed] = useToggle(false),
+      [blueChecked, toggleBlue] = useToggle(false),
+      [greenChecked, toggleGreen] = useToggle(false),
       [radioColor, setRadioColor] = useState<string | null>(null),
       [loading, setLoading] = useState(true),
       [loadError, setLoadError] = useState<string | null>(null),
       [submitCount, setSubmitCount] = useState(0),
       [submitError, setSubmitError] = useState<string | null>(null),
       [submitMaskState, setSubmitMaskState] = useState<boolean | null>(null),
-      toggleRed = () => setRedChecked(!redChecked),
-      toggleBlue = () => setBlueChecked(!blueChecked),
-      toggleGreen = () => setGreenChecked(!greenChecked),
       radioValidationErrors = (redChecked || blueChecked || greenChecked) ?
         null : 'Please select at least one checkbox',
       requiredFieldValidationErrors = hasValidationErrors(usernameState.validationErrors) ?

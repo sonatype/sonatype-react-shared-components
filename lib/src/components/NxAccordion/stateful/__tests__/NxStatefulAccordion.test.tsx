@@ -29,25 +29,19 @@ describe('NxStatefulAccordion', function() {
     expect(getShallowComponent({ defaultOpen: true })).toHaveProp('open', true);
   });
 
-  it('sets the NxAccordion open prop to the value passed to the NxAccordion onToggle callback', function() {
+  it('toggles the NxAccordion open prop when the NxAccordion onToggle callback is called', function() {
     const component = getShallowComponent();
 
     expect(component).toHaveProp('open', false);
 
     act(function() {
-      component.simulate('toggle', true);
+      component.simulate('toggle');
     });
 
     expect(component).toHaveProp('open', true);
 
     act(function() {
-      component.simulate('toggle', true);
-    });
-
-    expect(component).toHaveProp('open', true);
-
-    act(function() {
-      component.simulate('toggle', false);
+      component.simulate('toggle');
     });
 
     expect(component).toHaveProp('open', false);

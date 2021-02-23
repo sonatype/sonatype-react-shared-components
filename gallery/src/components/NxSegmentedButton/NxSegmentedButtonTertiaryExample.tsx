@@ -4,16 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { NxSegmentedButton, NxButton } from '@sonatype/react-shared-components';
+import { NxSegmentedButton, NxButton, useToggle } from '@sonatype/react-shared-components';
 
 export default function NxSegmentedButtonTertiaryExample() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  function onToggleOpen() {
-    setIsOpen(!isOpen);
-  }
+  const [isOpen, onToggleOpen] = useToggle(false);
 
   function onMainClick() {
     alert('Clicked the main button!');

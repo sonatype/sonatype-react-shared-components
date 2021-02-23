@@ -4,17 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { NxToggle } from '@sonatype/react-shared-components';
+import { NxToggle, useToggle } from '@sonatype/react-shared-components';
 
 function NxToggleExample() {
-  const [isWarpOn, setIsWarpOn] = useState(false),
-      [isKrakenOut, setIsKrakenOut] = useState(false),
-      [isShapes, setIsShapes] = useState(false),
-      toggleWarp = () => setIsWarpOn(!isWarpOn),
-      toggleKraken = () => setIsKrakenOut(!isKrakenOut),
-      toggleShapes = () => setIsShapes(!isShapes);
+  const [isWarpOn, toggleWarp] = useToggle(false),
+      [isKrakenOut, toggleKraken] = useToggle(false),
+      [isShapes, toggleShapes] = useToggle(false);
 
   return (
     <>

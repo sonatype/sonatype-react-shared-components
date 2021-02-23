@@ -6,8 +6,17 @@
  */
 import React, { FormEvent, useState } from 'react';
 
-import { NxCheckbox, NxRadio, NxStatefulTextInput, NxButton, NxFontAwesomeIcon, NxToggle, NxFormGroup, NxFieldset }
-  from '@sonatype/react-shared-components';
+import {
+  NxCheckbox,
+  NxRadio,
+  NxStatefulTextInput,
+  NxButton,
+  NxFontAwesomeIcon,
+  NxToggle,
+  NxFormGroup,
+  NxFieldset,
+  useToggle
+} from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 
@@ -22,21 +31,15 @@ export default function NxFormLayoutExample() {
     setSelectVal(evt.currentTarget.value);
   }
 
-  const [isRed, setIsRed] = useState(false),
-      [isBlue, setIsBlue] = useState(false),
-      [isGreen, setIsGreen] = useState(false),
-      toggleRed = () => setIsRed(!isRed),
-      toggleBlue = () => setIsBlue(!isBlue),
-      toggleGreen = () => setIsGreen(!isGreen);
+  const [isRed, toggleRed] = useToggle(false),
+      [isBlue, toggleBlue] = useToggle(false),
+      [isGreen, toggleGreen] = useToggle(false);
 
   const [color, setColor] = useState<string | null>(null);
 
-  const [isWarpOn, setIsWarpOn] = useState(false),
-      [isKrakenOut, setIsKrakenOut] = useState(false),
-      [isShapes, setIsShapes] = useState(false),
-      toggleWarp = () => setIsWarpOn(!isWarpOn),
-      toggleKraken = () => setIsKrakenOut(!isKrakenOut),
-      toggleShapes = () => setIsShapes(!isShapes);
+  const [isWarpOn, toggleWarp] = useToggle(false),
+      [isKrakenOut, toggleKraken] = useToggle(false),
+      [isShapes, toggleShapes] = useToggle(false);
 
   function onSubmit(evt: FormEvent) {
     evt.preventDefault();
