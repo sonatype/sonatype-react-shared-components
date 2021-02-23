@@ -17,7 +17,7 @@ import './NxColorPicker.scss';
 
 interface ColorRadioProps {
   color: SelectableColor;
-  selectedColor: SelectableColor;
+  selectedColor?: SelectableColor | null;
   name: string;
   onChange: Props['onChange'];
 }

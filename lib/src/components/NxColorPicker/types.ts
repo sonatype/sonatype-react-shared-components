@@ -10,11 +10,11 @@ import * as PropTypes from 'prop-types';
 import { SelectableColor, selectableColors } from '../../util/selectableColors';
 
 export interface Props extends Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 'onChange'> {
-  selectedColor: SelectableColor;
+  selectedColor?: SelectableColor | null;
   onChange?: ((currentValue: SelectableColor) => void) | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  selectedColor: PropTypes.oneOf(selectableColors).isRequired,
+  selectedColor: PropTypes.oneOf(selectableColors),
   onChange: PropTypes.func
 };
