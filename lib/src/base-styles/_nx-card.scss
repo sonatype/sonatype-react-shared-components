@@ -35,7 +35,7 @@
   @supports (-webkit-appearance:none) and (display:flow-root) {
     .nx-card-container {
       @include container-horizontal;
-      margin-bottom: 0;
+      margin: 0;
     }
 
     .nx-card {
