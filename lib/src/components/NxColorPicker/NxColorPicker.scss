@@ -1,0 +1,51 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import "~@sonatype/react-shared-components/scss-shared/nx-variables";
+@import "~@sonatype/react-shared-components/scss-shared/nx-container-helpers";
+
+.nx-color-picker {
+  @include container-horizontal;
+
+  border: none;
+}
+
+.nx-color-picker__color {
+  $size: 32px;
+
+  background-clip: content-box;
+  border-radius: $size / 2;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  padding: $nx-spacing-xxs - 1px;
+  margin-right: $nx-spacing-xs;
+
+  height: $size;
+  width: $size;
+
+  &.selected {
+    border-color: $nx-teal-400;
+  }
+
+  &:focus-within {
+    border-color: $nx-focus-border-color;
+    box-shadow: $nx-focus-box-shadow;
+  }
+
+  &:hover {
+    border-color: $nx-form-element-border-color;
+  }
+}
+
+@each $color-name, $color-codes in $nx-selectable-colors {
+  .nx-color-picker__color--#{$color-name} {
+    background-color: nth($color-codes, 1);
+  }
+}
+
+.nx-color-picker__input {
+  opacity: 0;
+}

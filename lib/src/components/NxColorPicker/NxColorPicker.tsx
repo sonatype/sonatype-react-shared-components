@@ -23,6 +23,9 @@ interface ColorRadioProps {
 }
 
 function ColorRadio({ color, selectedColor, onChange, name }: ColorRadioProps) {
+  const selected = selectedColor === color,
+      classes = classnames('nx-color-picker__color', `nx-color-picker__color--${color}`, { selected });
+
   function inputOnChange() {
     if (onChange) {
       onChange(color);
@@ -30,8 +33,12 @@ function ColorRadio({ color, selectedColor, onChange, name }: ColorRadioProps) {
   }
 
   return (
-    <label aria-label={color}>
-      <input type="radio" name={name} checked={color === selectedColor} onChange={inputOnChange} />
+    <label className={classes} aria-label={color}>
+      <input className="nx-color-picker__input"
+             type="radio"
+             name={name}
+             checked={color === selectedColor}
+             onChange={inputOnChange} />
     </label>
   );
 }
