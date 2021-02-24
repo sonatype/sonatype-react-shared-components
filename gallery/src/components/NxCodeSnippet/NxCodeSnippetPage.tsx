@@ -92,7 +92,8 @@ export default function NxCodeSnippetPage() {
             <NxTableRow>
               <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
               <NxTableCell>
-                <a target="_blank"
+                <a className="nx-text-link"
+                   target="_blank"
                    rel="noopener"
                    href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                   HTML div Attributes
@@ -113,7 +114,7 @@ export default function NxCodeSnippetPage() {
                           id="nx-code-snippet-simple-example"
                           liveExample={NxCodeSnippetExample}
                           codeExamples={nxCodeSnippetCode}>
-        Tow <code className="nx-code">NxCodeSnippet</code>s with minimal props: just some content which can be
+        Two <code className="nx-code">NxCodeSnippet</code>s with minimal props: just some content which can be
         copied to the clipboard.
       </GalleryExampleTile>
 
