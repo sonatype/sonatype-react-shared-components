@@ -8,7 +8,7 @@ import { groupBy, prop, toPairs } from 'ramda';
 import React from 'react';
 
 const swatchSCSS =
-    require('!!raw-loader!@sonatype/react-shared-components/scss-shared/_nx-color-swatches.scss').default;
+    require('@sonatype/react-shared-components/scss-shared/_nx-color-swatches.scss?raw');
 import './Swatcher.scss';
 interface ColorInfo {
   colorVariable: string;
