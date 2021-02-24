@@ -20,6 +20,7 @@
   border-radius: $size / 2;
   box-sizing: border-box;
   border: 1px solid transparent;
+  cursor: pointer;
   padding: $nx-spacing-xxs - 1px;
   margin-right: $nx-spacing-xs;
 
@@ -47,5 +48,6 @@
 }
 
 .nx-color-picker__input {
+  cursor: pointer;
   opacity: 0;
 }
