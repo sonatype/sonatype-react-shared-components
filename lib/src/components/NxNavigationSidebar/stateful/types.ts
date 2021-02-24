@@ -10,7 +10,7 @@ import { omit } from 'ramda';
 
 import { Props as NxNavigationSidebarProps, propTypes as nxNavigationSidebarPropTypes } from '../types';
 
-export interface Props extends Omit<NxNavigationSidebarProps, 'isOpen' | 'onToggleClick'>  {
+export interface Props extends Omit<NxNavigationSidebarProps, 'isOpen' | 'onToggleClick'> {
   isDefaultOpen: boolean;
   onToggleClick?: (newToggleState: boolean) => {} | null;
 }
