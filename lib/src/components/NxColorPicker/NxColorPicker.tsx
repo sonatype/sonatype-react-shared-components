@@ -19,7 +19,7 @@ import './NxColorPicker.scss';
 
 interface ColorRadioProps {
   color: SelectableColor;
-  selectedColor?: SelectableColor | null;
+  value?: SelectableColor | null;
   name: string;
   onChange: Props['onChange'];
 }
@@ -32,8 +32,8 @@ const humanReadable: (c: SelectableColor) => string = pipe(
   join(' ')
 );
 
-function ColorRadio({ color, selectedColor, onChange, name }: ColorRadioProps) {
-  const selected = selectedColor === color,
+function ColorRadio({ color, value, onChange, name }: ColorRadioProps) {
+  const selected = value === color,
       classes = classnames('nx-color-picker__color', `nx-color-picker__color--${color}`, { selected }),
       humanReadableColor = useMemo(() => humanReadable(color), [color]);
 
@@ -50,20 +50,20 @@ function ColorRadio({ color, selectedColor, onChange, name }: ColorRadioProps) {
                type="radio"
                name={name}
                value={color}
-               checked={color === selectedColor}
+               checked={color === value}
                onChange={inputOnChange} />
       </label>
     </NxTooltip>
   );
 }
 
-export default function NxColorPicker({selectedColor, onChange, className, ...attrs }: Props) {
+export default function NxColorPicker({ value, onChange, className, ...attrs }: Props) {
   const name = useRandomId('nx-color-picker'),
       classes = classnames('nx-color-picker', className);
 
   return (
     <fieldset className={classes} { ...attrs }>
-      { selectableColors.map(color => <ColorRadio key={color} { ...{ color, name, selectedColor, onChange } } />)}
+      { selectableColors.map(color => <ColorRadio key={color} { ...{ color, name, value, onChange } } />)}
     </fieldset>
   );
 }

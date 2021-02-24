@@ -10,5 +10,5 @@ import { NxColorPicker, SelectableColor } from '@sonatype/react-shared-component
 export default function NxColorPickerExample() {
   const [selectedColor, setSelectedColor] = useState<SelectableColor | null>(null);
 
-  return <NxColorPicker selectedColor={selectedColor} onChange={setSelectedColor} />;
+  return <NxColorPicker value={selectedColor} onChange={setSelectedColor} />;
 }

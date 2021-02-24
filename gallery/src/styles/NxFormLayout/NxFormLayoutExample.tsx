@@ -121,7 +121,7 @@ export default function NxFormLayoutExample() {
         <NxStatefulTextInput type="textarea" placeholder="placeholder" aria-required={true}/>
       </NxFormGroup>
       <NxFormGroup label="Tag Color">
-        <NxColorPicker selectedColor={tagColor} onChange={setTagColor} />
+        <NxColorPicker value={tagColor} onChange={setTagColor} />
       </NxFormGroup>
       <footer className="nx-footer">
         <div className="nx-btn-bar">

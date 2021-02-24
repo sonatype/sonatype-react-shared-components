@@ -38,7 +38,7 @@ const NxColorPickerPage = () =>
         </NxTableHead>
         <NxTableBody>
           <NxTableRow>
-            <NxTableCell>selectedColor</NxTableCell>
+            <NxTableCell>value</NxTableCell>
             <NxTableCell>
               SelectableColor
               ('light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime')
