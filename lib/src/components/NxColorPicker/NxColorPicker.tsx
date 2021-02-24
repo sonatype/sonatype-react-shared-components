@@ -27,9 +27,9 @@ interface ColorRadioProps {
 // convert a color name to a human-friendly string
 // (i.e. spaced and capitalized)
 const humanReadable: (c: SelectableColor) => string = pipe(
-  split('-'),
-  map(s => `${toUpper(head(s))}${tail(s)}`),
-  join(' ')
+    split('-'),
+    map(s => `${toUpper(head(s))}${tail(s)}`),
+    join(' ')
 );
 
 function ColorRadio({ color, value, onChange, name }: ColorRadioProps) {
