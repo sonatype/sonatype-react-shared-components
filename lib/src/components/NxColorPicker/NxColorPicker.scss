@@ -11,6 +11,8 @@
   @include container-horizontal;
 
   border: none;
+  margin: $nx-spacing-md 0;
+  padding: 0;
 }
 
 .nx-color-picker__color {
