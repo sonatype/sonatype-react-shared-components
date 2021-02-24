@@ -15,7 +15,9 @@ import {
   NxToggle,
   NxFormGroup,
   NxFieldset,
-  useToggle
+  useToggle,
+  NxColorPicker,
+  SelectableColor
 } from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
@@ -40,6 +42,8 @@ export default function NxFormLayoutExample() {
   const [isWarpOn, toggleWarp] = useToggle(false),
       [isKrakenOut, toggleKraken] = useToggle(false),
       [isShapes, toggleShapes] = useToggle(false);
+
+  const [tagColor, setTagColor] = useState<SelectableColor | null>(null);
 
   function onSubmit(evt: FormEvent) {
     evt.preventDefault();
@@ -115,6 +119,9 @@ export default function NxFormLayoutExample() {
       </NxFieldset>
       <NxFormGroup label="Comments" isRequired>
         <NxStatefulTextInput type="textarea" placeholder="placeholder" aria-required={true}/>
+      </NxFormGroup>
+      <NxFormGroup label="Tag Color">
+        <NxColorPicker selectedColor={tagColor} onChange={setTagColor} />
       </NxFormGroup>
       <footer className="nx-footer">
         <div className="nx-btn-bar">
