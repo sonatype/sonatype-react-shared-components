@@ -26,7 +26,7 @@ const swatchLines = swatchFile.map(line => {
   }
   else {
     return null;
-  };
+  }
 }).filter(data => data !== null) as ColorInfo[];
 
 const varsByColor = groupBy(prop('colorName'), swatchLines);
@@ -56,4 +56,4 @@ export default function Swatcher() {
       )}
     </>
   );
-};
+}
