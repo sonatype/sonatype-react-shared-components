@@ -23,7 +23,7 @@
 
   .nx-btn {
     grid-area: copy-btn;
-    margin: 0 0 $nx-spacing-xs $nx-spacing-l;
+    margin: 0 0 $nx-spacing-md $nx-spacing-l;
   }
 
   .nx-label {
@@ -32,12 +32,9 @@
 
   .nx-sub-label {
     grid-area: sublabel;
-    margin: $nx-spacing-xs 0 0 0;
   }
 
   .nx-label__text {
-    margin: 0;
-
     &::after {
       display: none;
     }
@@ -45,7 +42,6 @@
 
   .nx-text-input {
     grid-area: textarea;
-    margin-top: $nx-spacing-md;
     width: 100%;
 
     .nx-text-input__box {
