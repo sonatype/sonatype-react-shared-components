@@ -15,6 +15,9 @@
 }
 
 .nx-accordion__header {
+  // removes ::marker from FF
+  list-style-type: none; 
+
   &::-webkit-details-marker {
     display: none;
   }

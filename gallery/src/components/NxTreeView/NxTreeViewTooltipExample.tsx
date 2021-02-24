@@ -4,17 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { NxTreeView, NxTreeViewChild, TooltipConfigProps } from '@sonatype/react-shared-components';
+import { NxTreeView, NxTreeViewChild, TooltipConfigProps, useToggle } from '@sonatype/react-shared-components';
 
 function NxTreeViewTooltipExample() {
-  // this example uses the `useState` hook for succinctness, but you could also manage the state manually
-  // in a class component
-  const [toggle1Check, setToggle1Check] = useState(false),
-      [toggle2Check, setToggle2Check] = useState(false),
-      onToggle1Collapse = () => setToggle1Check(!toggle1Check),
-      onToggle2Collapse = () => setToggle2Check(!toggle2Check),
+  const [toggle1Check, onToggle1Collapse] = useToggle(false),
+      [toggle2Check, onToggle2Collapse] = useToggle(false),
       complexTooltipConfig: TooltipConfigProps = {
         placement: 'left',
         title: <em>Complicated</em>

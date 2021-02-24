@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { useState, KeyboardEventHandler, useEffect } from 'react';
+import { KeyboardEventHandler, useEffect } from 'react';
+import useToggle from './useToggle';
 
 /**
  * Stateful dropdown handling, abstracted into a hook for use in various dropdown-like stateful
@@ -15,12 +16,11 @@ import { useState, KeyboardEventHandler, useEffect } from 'react';
  *   onKeyDown: Function to set on the dropdown to handle ESC keypresses within it
  */
 export default function useDropdownState() {
-  const [isOpen, toggleOpen] = useState(false),
-      onToggleOpen = () => { toggleOpen(!isOpen); };
+  const [isOpen, onToggleOpen, setOpen] = useToggle(false);
 
   const handleKeyPress: KeyboardEventHandler = (event) => {
     if (event.key === 'Escape') {
-      toggleOpen(false);
+      setOpen(false);
     }
   };
 
@@ -33,7 +33,7 @@ export default function useDropdownState() {
     // Something that we're depending on to avoid closing the menu when
     // it is just opening.
     if (isOpen) {
-      toggleOpen(false);
+      setOpen(false);
     }
   };
 

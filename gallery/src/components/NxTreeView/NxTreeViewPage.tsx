@@ -60,6 +60,15 @@ const NxTreeViewPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell">onToggleCollapse</td>
+            <td className="nx-cell">() => void</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              Callback that fires when the tree view collapse/expand toggle is clicked. Typically is a function
+              that toggles the state value which controls the tree view's <code className="nx-code">isOpen</code> prop.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell">disabled</td>
             <td className="nx-cell">boolean</td>
             <td className="nx-cell">No</td>
