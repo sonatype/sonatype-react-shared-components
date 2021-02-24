@@ -12,7 +12,7 @@ import {
   faCrow,
   faPlaceOfWorship
 } from '@fortawesome/free-solid-svg-icons';
-import { NxStatefulSidebarNavigation } from '@sonatype/react-shared-components';
+import { NxStatefulNavigationSidebar } from '@sonatype/react-shared-components';
 
 function Application() {
   const navLinks = [
@@ -58,8 +58,8 @@ function Application() {
   const logoImg = require('./resources/logos/SON_hexagon_cropped.svg');
 
   return (
-    <>
-      <NxStatefulSidebarNavigation isDefaultOpen={true}
+    <div className="nx-page-content nx-page-content--full-width">
+      <NxStatefulNavigationSidebar isDefaultOpen={true}
                                    logoImg={logoImg}
                                    logoText="nexus lifecycle"
                                    logoLink="/home"
@@ -69,17 +69,15 @@ function Application() {
                                    collapsedReleaseText="release 105"
                                    expandedReleaseText="lifecycle release 105"
                                    attributions={attributions} />
-      <div className="nx-page-content">
-        <div className="nx-page-main">
-          <p>
-            Cupidatat pariatur mollit sit pariatur mollit qui.{' '}
-            Est sint sunt ea laborum minim officia excepteur nostrud deserunt proident officia.{' '}
-            Ipsum nostrud do ipsum nisi occaecat reprehenderit aliquip in occaecat culpa consequat pariatur et.{' '}
-            Non adipisicing qui officia nisi do aliquip.
-          </p>
-        </div>
+      <div className="nx-page-main">
+        <p>
+          Cupidatat pariatur mollit sit pariatur mollit qui.{' '}
+          Est sint sunt ea laborum minim officia excepteur nostrud deserunt proident officia.{' '}
+          Ipsum nostrud do ipsum nisi occaecat reprehenderit aliquip in occaecat culpa consequat pariatur et.{' '}
+          Non adipisicing qui officia nisi do aliquip.
+        </p>
       </div>
-    </>
+    </div>
   );
 }
 
