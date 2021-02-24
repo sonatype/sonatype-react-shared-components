@@ -95,6 +95,7 @@ import NxStatefulSegmentedButtonPage from './components/NxStatefulSegmentedButto
 import NxTagPage from './components/NxTag/NxTagPage';
 import NxCodeSnippetPage from './components/NxCodeSnippet/NxCodeSnippetPage';
 import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
+import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -151,6 +152,7 @@ const pageConfig: PageConfig = {
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,
+    'Color Palettes': ColorPalettePage,
     'Contributing to the Gallery': ContributingPage,
     'font-size and line-height': FontSizePage,
     'Form Validation Guidelines': FormValidationPage,
