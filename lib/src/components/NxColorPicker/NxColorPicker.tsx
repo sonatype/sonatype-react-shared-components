@@ -49,6 +49,7 @@ function ColorRadio({ color, selectedColor, onChange, name }: ColorRadioProps) {
         <input className="nx-color-picker__input"
                type="radio"
                name={name}
+               value={color}
                checked={color === selectedColor}
                onChange={inputOnChange} />
       </label>
