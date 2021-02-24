@@ -11,7 +11,8 @@ const axios = require('axios');
 const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, Target } =
     require('@applitools/eyes-webdriverio');
 
-const host = process.env.TEST_IP || 'localhost';
+const host = process.env.TEST_IP || 'localhost',
+    origin = `http://${host}:4043`;
 
 const timestamp = new Date().getTime(),
     gitCommit = process.env.GIT_COMMIT;
@@ -66,10 +67,7 @@ exports.config = {
     // files and you set maxInstances to 10, all spec files will get tested at the same time
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
-    //
-    // NOTE: Experimentally, it appears this needs to be one less than the NODE_MAX_* variables set in the
-    // docker environment variables in the Jenkinsfile
-    maxInstances: 4,
+    maxInstances: parseInt(process.env.MAX_INSTANCES, 10) || 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -78,7 +76,23 @@ exports.config = {
     capabilities: [{
       browserName: 'chrome',
       'goog:chromeOptions': {
-        args: [ 'headless', 'font-render-hinting=none']
+        args: [
+          // headless mode is currently incompatible with unsafely-treat-insecure-origni-as-secure.
+          // See https://bugs.chromium.org/p/chromium/issues/detail?id=1176255
+          //'headless',
+          'font-render-hinting=none',
+
+          // for basic clipboard access, which is normally only allowed for https or 'localhost'
+          `unsafely-treat-insecure-origin-as-secure=${origin}`
+        ],
+        prefs: {
+          // enable clipboard read access for NxCodeSnippet tests
+          'profile.content_settings.exceptions.clipboard': {
+            '[*.],*': {
+              setting: 1
+            }
+          }
+        }
       }
     }],
     //
@@ -112,7 +126,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: `http://${host}:4043/`,
+    baseUrl: `${origin}/`,
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

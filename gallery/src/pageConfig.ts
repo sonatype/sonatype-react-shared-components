@@ -93,7 +93,9 @@ import NxPrePage from './styles/NxPre/NxPrePage';
 import NxSegmentedButtonPage from './components/NxSegmentedButton/NxSegmentedButtonPage';
 import NxStatefulSegmentedButtonPage from './components/NxStatefulSegmentedButton/NxStatefulSegmentedButtonPage';
 import NxTagPage from './components/NxTag/NxTagPage';
+import NxCodeSnippetPage from './components/NxCodeSnippet/NxCodeSnippetPage';
 import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
+import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -109,6 +111,7 @@ const pageConfig: PageConfig = {
     NxCheckbox: NxCheckboxPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
     NxCloseButton: NxCloseButtonPage,
+    NxCodeSnippet: NxCodeSnippetPage,
     NxDropdown: NxDropdownPage,
     NxStatefulDropdown: NxStatefulDropdownPage,
     NxFieldset: NxFieldsetPage,
@@ -149,6 +152,7 @@ const pageConfig: PageConfig = {
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,
+    'Color Palettes': ColorPalettePage,
     'Contributing to the Gallery': ContributingPage,
     'font-size and line-height': FontSizePage,
     'Form Validation Guidelines': FormValidationPage,
