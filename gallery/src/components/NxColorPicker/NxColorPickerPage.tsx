@@ -19,6 +19,12 @@ const NxColorPickerPage = () =>
         <code className="nx-code">NxColorPicker</code> allows the user to select from a set of nine colors. A typical
         use case would be to select the color to be associated with a colored <code className="nx-code">NxTag</code>.
       </p>
+      <p className="nx-p">
+        The colors available in <code className="nx-code">NxColorPicker</code> match those supported
+        by <code className="nx-code">NxTag</code>. The list of these colors is available programmatically via
+        RSC's <code className="nx-code">selectableColors</code> export. Additionally, a TypeScript type union
+        respresenting the color choices is available as <code className="nx-code">SelectableColor</code>.
+      </p>
       <h3 className="nx-h3">Props</h3>
       <NxTable>
         <NxTableHead>
@@ -34,7 +40,8 @@ const NxColorPickerPage = () =>
           <NxTableRow>
             <NxTableCell>selectedColor</NxTableCell>
             <NxTableCell>
-              'light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime'
+              SelectableColor
+              ('light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime')
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
