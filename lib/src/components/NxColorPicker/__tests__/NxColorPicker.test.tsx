@@ -105,9 +105,9 @@ describe('NxColorPicker', function() {
         .toHaveProp('value', 'green');
   });
 
-  it('sets the checked attr to true only on the input matching the selectedColor', function() {
+  it('sets the checked attr to true only on the input matching the value', function() {
     const noneSelectedComponent = getMounted(),
-        greenSelectedComponent = getMounted({ selectedColor: 'green' });
+        greenSelectedComponent = getMounted({ value: 'green' });
 
     expect(noneSelectedComponent.find('input').filterWhere(input => !!input.prop('checked'))).not.toExist();
 
@@ -116,7 +116,7 @@ describe('NxColorPicker', function() {
   });
 
   it('sets the selected class on the label of the selected color', function() {
-    expect(getMounted({ selectedColor: 'green' }).find('.nx-color-picker__color.selected'))
+    expect(getMounted({ value: 'green' }).find('.nx-color-picker__color.selected'))
         .toHaveClassName('nx-color-picker__color--green');
   });
 
