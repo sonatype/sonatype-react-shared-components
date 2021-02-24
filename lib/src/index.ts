@@ -195,6 +195,8 @@ export { selectableColors, SelectableColor } from './util/selectableColors';
 // deprecated
 export { selectableColors as NX_TAG_COLORS, SelectableColor as NX_TAG_COLORS_TYPE } from './util/selectableColors';
 
+export { default as NxCodeSnippet, Props as NxCodeSnippetProps } from './components/NxCodeSnippet/NxCodeSnippet';
+
 export { default as useToggle } from './util/useToggle';
 
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
