@@ -6,45 +6,32 @@
  */
 import * as PropTypes from 'prop-types';
 import { WeakValidationMap } from 'react';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
-export interface SidebarNavLinkProps {
-  name: string;
-  href: string;
-  icon: IconProp;
-  current?: boolean | null;
-}
+import { NavigationSidebarLinkProps, navigationSidebarLinkPropTypes } from '../types';
 
 export interface Props {
-  isOpen: boolean;
+  isDefaultOpen: boolean;
   className?: string | null;
-  onToggleClick: (() => void);
+  onToggleClick?: ((newToggleState: boolean) => void) | null;
   logoImg: string;
   logoText: string;
   logoLink: string;
-  links: SidebarNavLinkProps[];
+  links: NavigationSidebarLinkProps[];
   helpLink?: string | null;
   helpText?: string | null;
   collapsedReleaseText?: string | null;
   expandedReleaseText?: string | null;
   attributions?: string[] | null;
-};
-
-export const sidebarNavLinkPropTypes = PropTypes.shape({
-  name: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
-  icon: PropTypes.object.isRequired,
-  current: PropTypes.bool
-});
+}
 
 export const propTypes: WeakValidationMap<Props> = {
-  isOpen: PropTypes.bool.isRequired,
+  isDefaultOpen: PropTypes.bool.isRequired,
   className: PropTypes.string,
-  onToggleClick: PropTypes.func.isRequired,
+  onToggleClick: PropTypes.func,
   logoImg: PropTypes.string.isRequired,
   logoText: PropTypes.string.isRequired,
-  logoLink: PropTypes.string,
-  links: PropTypes.arrayOf(sidebarNavLinkPropTypes),
+  logoLink: PropTypes.string.isRequired,
+  links: PropTypes.arrayOf(navigationSidebarLinkPropTypes),
   helpLink: PropTypes.string,
   helpText: PropTypes.string,
   collapsedReleaseText: PropTypes.string,

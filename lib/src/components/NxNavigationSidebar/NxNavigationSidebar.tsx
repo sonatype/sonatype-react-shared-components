@@ -4,31 +4,32 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 import { faBars, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 import NxButton from '../NxButton/NxButton';
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { Props, SidebarNavLinkProps, propTypes } from './types';
+import { Props, NavigationSidebarLinkProps, propTypes } from './types';
 
-import './NxSidebarNavitation.scss';
+import './NxNavigationSidebar.scss';
 
-const NxSidebarNavLink = function NxSidebarNavLink({ name, href, icon, current }: SidebarNavLinkProps) {
-  const navigationLinkClassnames = classnames('nx-sidebar__item', {
-    'selected': current
-  });
+const NxNavigationSidebarLink =
+  function NxNavigationSidebarLink({ name, href, icon, current }: NavigationSidebarLinkProps) {
+    const navigationLinkClassnames = classnames('nx-sidebar__item', {
+      'selected': current
+    });
 
-  return (
-    <a href={href} className={navigationLinkClassnames} key={`nav-link-${name}`}>
-      <NxFontAwesomeIcon icon={icon} fixedWidth />
-      <span className="nx-sidebar__link-name">{name}</span>
-    </a>
-  );
-};
+    return (
+      <a href={href} className={navigationLinkClassnames} key={`nav-link-${name}`}>
+        <NxFontAwesomeIcon icon={icon} fixedWidth />
+        <span className="nx-sidebar__link-name">{name}</span>
+      </a>
+    );
+  };
 
-const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
+const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSidebar(props) {
   const {
     isOpen,
     className,
@@ -44,7 +45,7 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
     attributions
   } = props;
 
-  const classes = classnames(className, 'nx-sidebar', {
+  const classes = classnames(className, 'nx-page-sidebar', 'nx-page-sidebar--navigation', {
     'nx-sidebar--open': isOpen,
     'nx-sidebar--closed': !isOpen
   });
@@ -68,7 +69,7 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
 
   const navigationLinks = (
     <nav className="nx-sidebar__items">
-      { links.map(NxSidebarNavLink)}
+      { links.map(NxNavigationSidebarLink)}
     </nav>
   );
 
@@ -113,7 +114,7 @@ const NxSidebarNavigation = function NxSidebarNavigation(props: Props) {
   );
 };
 
-NxSidebarNavigation.propTypes = propTypes;
+NxNavigationSidebar.propTypes = propTypes;
 
-export default NxSidebarNavigation;
+export default NxNavigationSidebar;
 export { Props, propTypes } from './types';

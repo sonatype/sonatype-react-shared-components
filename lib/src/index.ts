@@ -192,7 +192,7 @@ export { default as NxTag, NxSelectableTag, PublicProps as NxTagProps, Selectabl
 
 export { NX_TAG_COLORS, NX_TAG_COLORS_TYPE } from './components/NxTag/types';
 
-export { default as NxSidebarNavigation, Props as NxSidebarNavigationProps }
-  from './components/NxSidebarNavigation/NxSidebarNavigation';
-export { default as NxStatefulSidebarNavigation, Props as NxStatefulSidebarNavigationProps }
-  from './components/NxSidebarNavigation/stateful/NxStatefulSidebarNavigation';
+export { default as NxNavigationSidebar, Props as NxNavigationSidebarProps }
+  from './components/NxNavigationSidebar/NxNavigationSidebar';
+export { default as NxStatefulNavigationSidebar, Props as NxStatefulNavigationSidebarProps }
+  from './components/NxNavigationSidebar/stateful/NxStatefulNavigationSidebar';

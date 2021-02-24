@@ -32,13 +32,6 @@
   min-width: $nx-page-width-min;
 }
 
-.nx-page--sidebar {
-  @include container-horizontal;
-
-  align-items: flex-start;
-  flex-direction: row;
-}
-
 .nx-page-content {
   @include container-horizontal;
 
@@ -54,6 +47,10 @@
     align-self: flex-start;
     margin: $nx-spacing-xl auto 0 auto;
   }
+}
+
+.nx-page-content--full-width{
+  max-width: none;
 }
 
 .nx-page-sidebar {

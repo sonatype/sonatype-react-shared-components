@@ -18,19 +18,16 @@ $nx-sidebar-hover-color: $nx-indigo-600;
 $nx-sidebar-selected-color: $nx-indigo-800;
 $nx-sidebar-separator-color: $nx-grey-900;
 
-.nx-sidebar {
+.nx-page-sidebar--navigation {
   @include container-vertical;
 
-  box-sizing: border-box;
   background-color: $nx-sidebar-background-color;
   color: $nx-sidebar-text-color;
   display: flex;
   flex: none;
   flex-direction: column;
-  min-height: 100vh;
   width: $nx-sidebar-width__open;
   padding: $nx-spacing-l 0 0 0;
-  position: relative;
 }
 
 .nx-sidebar__product-info {
