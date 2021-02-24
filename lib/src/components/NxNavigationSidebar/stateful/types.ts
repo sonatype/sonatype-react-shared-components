@@ -5,36 +5,18 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { WeakValidationMap } from 'react';
+import { ValidationMap } from 'react';
+import { omit } from 'ramda';
 
-import { NavigationSidebarLinkProps, navigationSidebarLinkPropTypes } from '../types';
+import { Props as NxNavigationSidebarProps, propTypes as nxNavigationSidebarPropTypes } from '../types';
 
-export interface Props {
+export interface Props extends Omit<NxNavigationSidebarProps, 'isOpen' | 'onToggleClick'>  {
   isDefaultOpen: boolean;
-  className?: string | null;
-  onToggleClick?: ((newToggleState: boolean) => void) | null;
-  logoImg: string;
-  logoText: string;
-  logoLink: string;
-  links: NavigationSidebarLinkProps[];
-  helpLink?: string | null;
-  helpText?: string | null;
-  collapsedReleaseText?: string | null;
-  expandedReleaseText?: string | null;
-  attributions?: string[] | null;
+  onToggleClick?: (newToggleState: boolean) => {} | null;
 }
 
-export const propTypes: WeakValidationMap<Props> = {
-  isDefaultOpen: PropTypes.bool.isRequired,
-  className: PropTypes.string,
+export const propTypes: ValidationMap<Props> = {
+  ...omit(['isOpen'], nxNavigationSidebarPropTypes),
   onToggleClick: PropTypes.func,
-  logoImg: PropTypes.string.isRequired,
-  logoText: PropTypes.string.isRequired,
-  logoLink: PropTypes.string.isRequired,
-  links: PropTypes.arrayOf(navigationSidebarLinkPropTypes),
-  helpLink: PropTypes.string,
-  helpText: PropTypes.string,
-  collapsedReleaseText: PropTypes.string,
-  expandedReleaseText: PropTypes.string,
-  attributions: PropTypes.arrayOf(PropTypes.string)
+  isDefaultOpen: PropTypes.bool.isRequired
 };
