@@ -138,7 +138,7 @@ export default function NxTabsPage() {
                           liveExample={NxTabsOutsideTileExample}
                           codeExamples={NxTabsOutsideTileExampleCode}>
         A basic example of how to use the <code className="nx-code">NxTabs</code> family of components at the page
-        level: outside of and typically in control of some tiles or tables.
+        level, outside of tiles or tables.
       </GalleryExampleTile>
       <GalleryExampleTile title="NxTabs in NxModal Example"
                           id="nx-tab-modal-example"
