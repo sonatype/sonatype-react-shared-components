@@ -10,8 +10,8 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxFontAwesomeIconExample from './NxFontAwesomeIconExample';
 
-const nxFontAwesomeIconExampleCode = require('!!raw-loader!./NxFontAwesomeIconExample').default,
-    nxFontAwesomeIconExampleScssCode = require('!!raw-loader!./NxFontAwesomeIconExample.scss').default;
+const nxFontAwesomeIconExampleCode = require('./NxFontAwesomeIconExample?raw'),
+    nxFontAwesomeIconExampleScssCode = require('./NxFontAwesomeIconExample.scss?raw');
 
 const NxFontAwesomeIconPage = () => {
   const codeExamples = [

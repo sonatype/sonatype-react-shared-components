@@ -16,12 +16,12 @@ import NxButtonIconExample from './NxButtonIconExample';
 import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
 import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
 
-const NxButtonDefaultCode = require('!!raw-loader!./NxButtonDefaultExample').default,
-    nxButtonPrimaryCode = require('!!raw-loader!./NxButtonPrimaryExample').default,
-    nxButtonTertiaryCode = require('!!raw-loader!./NxButtonTertiaryExample').default,
-    nxButtonErrorCode = require('!!raw-loader!./NxButtonErrorExample').default,
-    nxButtonIconCode = require('!!raw-loader!./NxButtonIconExample').default,
-    nxButtonIconOnlyCode = require('!!raw-loader!./NxButtonIconOnlyExample').default;
+const NxButtonDefaultCode = require('./NxButtonDefaultExample?raw'),
+    nxButtonPrimaryCode = require('./NxButtonPrimaryExample?raw'),
+    nxButtonTertiaryCode = require('./NxButtonTertiaryExample?raw'),
+    nxButtonErrorCode = require('./NxButtonErrorExample?raw'),
+    nxButtonIconCode = require('./NxButtonIconExample?raw'),
+    nxButtonIconOnlyCode = require('./NxButtonIconOnlyExample?raw');
 
 export default function NxButtonPage() {
   return (

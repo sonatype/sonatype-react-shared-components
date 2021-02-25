@@ -10,7 +10,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxStatefulCheckboxExample from './NxStatefulCheckboxExample';
 
-const exampleCode = require('!!raw-loader!./NxStatefulCheckboxExample').default;
+const exampleCode = require('./NxStatefulCheckboxExample?raw');
 
 const NxStatefulCheckboxPage = () =>
   <>
@@ -44,7 +44,7 @@ const NxStatefulCheckboxPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function ((boolean) => void)</td>
+            <td className="nx-cell">Function ((boolean) =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">A callback for when the stateful checkbox is toggled</td>
           </tr>

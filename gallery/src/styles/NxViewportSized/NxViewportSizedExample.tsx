@@ -60,7 +60,7 @@ export default function NxViewportSizedScrollableExample() {
                   <NxTableCell>042</NxTableCell>
                   <NxTableCell>34</NxTableCell>
                   <NxTableCell>22</NxTableCell>
-                  <NxTableCell>}</NxTableCell>
+                  <NxTableCell>{'"'}</NxTableCell>
                 </NxTableRow>
                 <NxTableRow>
                   <NxTableCell>043</NxTableCell>

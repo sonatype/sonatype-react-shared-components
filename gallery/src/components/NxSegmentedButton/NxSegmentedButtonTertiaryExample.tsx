@@ -42,4 +42,4 @@ export default function NxSegmentedButtonTertiaryExample() {
       </NxSegmentedButton>
     </div>
   );
-};
+}

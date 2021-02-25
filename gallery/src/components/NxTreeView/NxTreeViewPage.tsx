@@ -17,14 +17,14 @@ import NxTreeViewCheckbox from './NxTreeViewCheckboxExample';
 import NxTreeViewEmpty from './NxTreeViewEmptyExample';
 import NxTreeViewDisabled from './NxTreeViewDisabledExample';
 
-const nxTreeViewCode = require('!!raw-loader!./NxTreeViewExample').default,
-    nxTreeViewTooltipCode = require('!!raw-loader!./NxTreeViewTooltipExample').default,
-    nxTreeViewExtrasCode = require('!!raw-loader!./NxTreeViewExtrasExample').default,
-    nxTreeViewClickableCode = require('!!raw-loader!./NxTreeViewClickableExample').default,
-    nxTreeViewClickableSidebarCode = require('!!raw-loader!./NxTreeViewClickableSidebarExample').default,
-    nxTreeViewCheckboxCode = require('!!raw-loader!./NxTreeViewCheckboxExample').default,
-    nxTreeViewEmptyCode = require('!!raw-loader!./NxTreeViewEmptyExample').default,
-    nxTreeViewDisabledCode = require('!!raw-loader!./NxTreeViewDisabledExample').default;
+const nxTreeViewCode = require('./NxTreeViewExample?raw'),
+    nxTreeViewTooltipCode = require('./NxTreeViewTooltipExample?raw'),
+    nxTreeViewExtrasCode = require('./NxTreeViewExtrasExample?raw'),
+    nxTreeViewClickableCode = require('./NxTreeViewClickableExample?raw'),
+    nxTreeViewClickableSidebarCode = require('./NxTreeViewClickableSidebarExample?raw'),
+    nxTreeViewCheckboxCode = require('./NxTreeViewCheckboxExample?raw'),
+    nxTreeViewEmptyCode = require('./NxTreeViewEmptyExample?raw'),
+    nxTreeViewDisabledCode = require('./NxTreeViewDisabledExample?raw');
 
 const NxTreeViewPage = () =>
   <>
@@ -61,7 +61,7 @@ const NxTreeViewPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onToggleCollapse</td>
-            <td className="nx-cell">() => void</td>
+            <td className="nx-cell">() =&gt; void</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               Callback that fires when the tree view collapse/expand toggle is clicked. Typically is a function

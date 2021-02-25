@@ -24,4 +24,4 @@ export default function NxTextInputTextAreaValidationExample() {
   return (
     <NxTextInput type="textarea" validatable={true} { ...state } onChange={onChange} placeholder="placeholder"/>
   );
-};
+}

@@ -12,10 +12,10 @@ import NxTreeViewRadioSelectExample from './NxTreeViewRadioSelectExample';
 import NxTreeViewRadioSelectCustomTooltipExample from './NxTreeViewRadioSelectCustomTooltipExample';
 import NxTreeViewRadioSelectDisabledExample from './NxTreeViewRadioSelectDisabledExample';
 
-const nxTreeViewRadioSelectExampleCode = require('!!raw-loader!./NxTreeViewRadioSelectExample').default,
-    nxTreeViewRadioSelectDisabledExampleCode = require('!!raw-loader!./NxTreeViewRadioSelectDisabledExample').default,
+const nxTreeViewRadioSelectExampleCode = require('./NxTreeViewRadioSelectExample?raw'),
+    nxTreeViewRadioSelectDisabledExampleCode = require('./NxTreeViewRadioSelectDisabledExample?raw'),
     nxTreeViewRadioSelectCustomTooltipExampleCode =
-        require('!!raw-loader!./NxTreeViewRadioSelectCustomTooltipExample').default;
+        require('./NxTreeViewRadioSelectCustomTooltipExample?raw');
 
 const NxTreeViewRadioSelectPage = () =>
   <>

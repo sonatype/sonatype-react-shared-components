@@ -9,7 +9,7 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import FormValidationExample from './FormValidationExample';
 
-const FormValidationCode = require('!!raw-loader!./FormValidationExample').default;
+const FormValidationCode = require('./FormValidationExample?raw');
 
 const FormValidationPage = () =>
   <>

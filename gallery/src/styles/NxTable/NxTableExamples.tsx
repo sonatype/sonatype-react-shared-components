@@ -17,16 +17,16 @@ import NxTableFilterExample from './NxTableFilterExample';
 import './NxTableTruncationAndWrappingExample.scss';
 import './NxTableFixedLayoutExample.scss';
 
-const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample.html').default,
-    NxTableClickableCode = require('!!raw-loader!./NxTableClickableExample').default,
-    NxTableEmptyCode = require('!!raw-loader!./NxTableEmptyExample.html').default,
-    NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample').default,
-    NxTableTruncationAndWrappingCode = require('!!raw-loader!./NxTableTruncationAndWrappingExample.html').default,
-    NxTableFixedLayoutCode = require('!!raw-loader!./NxTableFixedLayoutExample').default,
-    NxTableTruncationAndWrappingScss = require('!!raw-loader!./NxTableTruncationAndWrappingExample.scss').default,
-    NxTableFixedLayoutScss = require('!!raw-loader!./NxTableFixedLayoutExample.scss').default,
-    NxTableFilterCode = require('!!raw-loader!./NxTableFilterExample').default,
-    NxTableSortableCode = require('!!raw-loader!./NxTableSortableExample').default;
+const NxTableSimpleCode = require('./NxTableDefaultExample.html'),
+    NxTableClickableCode = require('./NxTableClickableExample?raw'),
+    NxTableEmptyCode = require('./NxTableEmptyExample.html'),
+    NxTableErrorStateCode = require('./NxTableErrorStateExample?raw'),
+    NxTableTruncationAndWrappingCode = require('./NxTableTruncationAndWrappingExample.html'),
+    NxTableFixedLayoutCode = require('./NxTableFixedLayoutExample?raw'),
+    NxTableTruncationAndWrappingScss = require('./NxTableTruncationAndWrappingExample.scss?raw'),
+    NxTableFixedLayoutScss = require('./NxTableFixedLayoutExample.scss?raw'),
+    NxTableFilterCode = require('./NxTableFilterExample?raw'),
+    NxTableSortableCode = require('./NxTableSortableExample?raw');
 
 const truncationAndWrappingCodeExamples = [
       NxTableTruncationAndWrappingCode,
@@ -87,16 +87,16 @@ const NxTablesExamples = () =>
     <GalleryExampleTile title="NX Table with Sortable Rows Example"
                         liveExample={NxTableSortableExample}
                         codeExamples={NxTableSortableCode}>
-          A demonstration of a <code className="nx-code">nx-table</code> used for columns that can be sorted.
-        In this example the interactivity to sort columns is not wired up.
+      A demonstration of a <code className="nx-code">nx-table</code> used for columns that can be sorted.
+      In this example the interactivity to sort columns is not wired up.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table with Filter Rows Example"
                         liveExample={NxTableFilterExample}
                         codeExamples={NxTableFilterCode}>
-        A demonstration of a <code className="nx-code">nx-table</code> with a header
-        cell that contains a filter. Rows can be filtered depending on the text provided in the input.
-        In this example the interactivity to filter content is not wired up.
+      A demonstration of a <code className="nx-code">nx-table</code> with a header
+      cell that contains a filter. Rows can be filtered depending on the text provided in the input.
+      In this example the interactivity to filter content is not wired up.
     </GalleryExampleTile>
   </>;
 

@@ -13,9 +13,11 @@ import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../NxButton/types';
 // variants of NxButton that are not supported on NxSegmentedButton
 const invalidButtonVariants = ['icon-only', 'error'] as const;
 
-export const NX_SEGMENTED_BUTTON_VARIANTS = without(invalidButtonVariants, NX_BUTTON_VARIANTS);
 export type NX_SEGMENTED_BUTTON_VARIANT_TYPE =
   Exclude<NX_BUTTON_VARIANT_TYPE, (typeof invalidButtonVariants)[number]>;
+
+export const NX_SEGMENTED_BUTTON_VARIANTS =
+    without(invalidButtonVariants, NX_BUTTON_VARIANTS) as NX_SEGMENTED_BUTTON_VARIANT_TYPE[];
 
 export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
   variant: NX_SEGMENTED_BUTTON_VARIANT_TYPE;
@@ -29,7 +31,7 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
 
 export const propTypes: WeakValidationMap<Props> = {
   variant: PropTypes.oneOf(NX_SEGMENTED_BUTTON_VARIANTS).isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.element.isRequired,
   buttonContent: PropTypes.node.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onToggleOpen: PropTypes.func.isRequired,

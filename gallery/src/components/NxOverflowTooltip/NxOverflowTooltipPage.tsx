@@ -13,9 +13,9 @@ import NxOverflowTooltipDescendantExample from './NxOverflowTooltipDescendantExa
 import NxOverflowTooltipDynamicExample from './NxOverflowTooltipDynamicExample';
 import { NxWarningAlert } from '@sonatype/react-shared-components';
 
-const overflowTooltipsExampleCode = require('!!raw-loader!./NxOverflowTooltipExample').default;
-const overflowTooltipsDescendantExampleCode = require('!!raw-loader!./NxOverflowTooltipDescendantExample').default;
-const overflowTooltipsDynamicExampleCode = require('!!raw-loader!./NxOverflowTooltipDynamicExample').default;
+const overflowTooltipsExampleCode = require('./NxOverflowTooltipExample?raw');
+const overflowTooltipsDescendantExampleCode = require('./NxOverflowTooltipDescendantExample?raw');
+const overflowTooltipsDynamicExampleCode = require('./NxOverflowTooltipDynamicExample?raw');
 
 export default function NxOverflowTooltipPage() {
   return (
