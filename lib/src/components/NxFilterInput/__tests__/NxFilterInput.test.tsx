@@ -46,7 +46,6 @@ describe('NxFilterInput', function() {
   });
 
   it('does not pass validatable, validationErrors, or type props to the NxTextInput', function() {
-    /* eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion */
     const component = shallowComponent({
       validatable: true,
       validationErrors: 'It\'s all wrong',

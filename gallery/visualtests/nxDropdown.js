@@ -27,9 +27,7 @@ describe('NxDropdown', function() {
     beforeEach(async function() {
       const button = await browser.$(defaultSelector + ' .nx-dropdown__toggle');
 
-      // for some weird reason the test infra requires you to click it twice
       await button.scrollIntoView({ block: 'center' });
-      await button.click();
       await button.click();
     });
 

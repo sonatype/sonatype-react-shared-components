@@ -10,7 +10,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxStatefulAccordionExample from './NxStatefulAccordionExample';
 
-const NxStatefulAccordionCode = require('!!raw-loader!./NxStatefulAccordionExample').default;
+const NxStatefulAccordionCode = require('./NxStatefulAccordionExample?raw');
 
 const NxStatefulAccordionPage = () =>
   <>

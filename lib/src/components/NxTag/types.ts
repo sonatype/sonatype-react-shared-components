@@ -13,7 +13,7 @@ export type NX_TAG_COLORS_TYPE = (typeof NX_TAG_COLORS)[number]; // See https://
 
 export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   children: ReactNode;
-  tagColor?: NX_TAG_COLORS_TYPE;
+  tagColor?: NX_TAG_COLORS_TYPE | null;
   // For internal use only, this prop is for our select/deselect tag icons
   selectedIcons?: ReactElement | null;
 }
@@ -27,7 +27,7 @@ export interface SelectableProps extends Props {
 
 export const propTypes: ValidationMap<Props> = {
   children: PropTypes.node.isRequired,
-  color: PropTypes.oneOf(NX_TAG_COLORS)
+  tagColor: PropTypes.oneOf(NX_TAG_COLORS)
 };
 
 export const selectablePropTypes: ValidationMap<SelectableProps> = {

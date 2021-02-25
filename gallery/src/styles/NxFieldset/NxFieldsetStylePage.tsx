@@ -13,9 +13,9 @@ import NxFieldsetExample from './NxFieldsetExample';
 import NxFieldsetComplexExample from './NxFieldsetComplexExample';
 import NxFieldsetDeprecatedExample from './NxFieldsetDeprecatedExample';
 
-const nxFormGroupExampleCode = require('!raw-loader!!./NxFieldsetExample').default,
-    nxFormGroupComplexExampleCode = require('!raw-loader!!./NxFieldsetComplexExample').default,
-    nxFormGroupDeprecatedExampleCode = require('!raw-loader!!./NxFieldsetDeprecatedExample').default;
+const nxFormGroupExampleCode = require('./NxFieldsetExample?raw'),
+    nxFormGroupComplexExampleCode = require('./NxFieldsetComplexExample?raw'),
+    nxFormGroupDeprecatedExampleCode = require('./NxFieldsetDeprecatedExample?raw');
 
 const NxFieldsetPage = () =>
   <>

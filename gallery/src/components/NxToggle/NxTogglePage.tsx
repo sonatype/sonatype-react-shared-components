@@ -11,8 +11,8 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxToggleExample from './NxToggleExample';
 import NxToggleGaplessExample from './NxToggleGaplessExample';
 
-const exampleCode = require('!!raw-loader!./NxToggleExample').default,
-    exampleGaplessCode = require('!!raw-loader!./NxToggleGaplessExample').default;
+const exampleCode = require('./NxToggleExample?raw'),
+    exampleGaplessCode = require('./NxToggleGaplessExample?raw');
 
 const NxTogglePage = () =>
   <>

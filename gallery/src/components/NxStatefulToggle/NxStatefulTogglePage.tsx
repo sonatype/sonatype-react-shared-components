@@ -10,7 +10,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxStatefulToggleExample from './NxStatefulToggleExample';
 
-const exampleCode = require('!!raw-loader!./NxStatefulToggleExample').default;
+const exampleCode = require('./NxStatefulToggleExample?raw');
 
 const NxStatefulTogglePage = () =>
   <>
@@ -46,7 +46,7 @@ const NxStatefulTogglePage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function ((boolean) => void)</td>
+            <td className="nx-cell">Function ((boolean) =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">A callback for when the stateful toggle is toggled</td>
           </tr>

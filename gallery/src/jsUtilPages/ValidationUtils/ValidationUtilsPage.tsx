@@ -7,10 +7,10 @@
 import React from 'react';
 import { GalleryExampleTile, GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
-const validationErrorsExampleCode = require('!!raw-loader!./ValidationErrorsExample').default,
-    hasValidationErrorsExampleCode = require('!!raw-loader!./HasValidationErrorsExample').default,
-    getFirstValidationErrorExampleCode = require('!!raw-loader!./GetFirstValidationErrorExample').default,
-    combineValidationErrorsExampleCode = require('!!raw-loader!./CombineValidationErrorsExample').default;
+const validationErrorsExampleCode = require('./ValidationErrorsExample?raw'),
+    hasValidationErrorsExampleCode = require('./HasValidationErrorsExample?raw'),
+    getFirstValidationErrorExampleCode = require('./GetFirstValidationErrorExample?raw'),
+    combineValidationErrorsExampleCode = require('./CombineValidationErrorsExample?raw');
 
 const ValidationUtilsPage = () =>
   <>

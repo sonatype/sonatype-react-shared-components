@@ -16,14 +16,14 @@ import BadLineHeightExample from './BadLineHeightExample';
 const openSansEmSquareImg = require('./opensans-emsquare.png');
 const openSansLineSpacingImg = require('./opensans-line-spacing.png');
 
-const FontLayoutExampleCode = require('!!raw-loader!./FontLayoutExample').default;
-const FontLayoutExampleStyles = require('!!raw-loader!./FontLayoutExample.scss').default;
-const BlockLayoutExampleCode = require('!!raw-loader!./BlockLayoutExample').default;
-const BlockLayoutExampleStyles = require('!!raw-loader!./BlockLayoutExample.scss').default;
-const FallbackFontExampleCode = require('!!raw-loader!./FallbackFontExample').default;
-const FallbackFontExampleStyles = require('!!raw-loader!./FallbackFontExample.scss').default;
-const BadLineHeightExampleCode = require('!!raw-loader!./BadLineHeightExample').default;
-const BadLineHeightExampleStyles = require('!!raw-loader!./BadLineHeightExample.scss').default;
+const FontLayoutExampleCode = require('./FontLayoutExample?raw');
+const FontLayoutExampleStyles = require('./FontLayoutExample.scss?raw');
+const BlockLayoutExampleCode = require('./BlockLayoutExample?raw');
+const BlockLayoutExampleStyles = require('./BlockLayoutExample.scss?raw');
+const FallbackFontExampleCode = require('./FallbackFontExample?raw');
+const FallbackFontExampleStyles = require('./FallbackFontExample.scss?raw');
+const BadLineHeightExampleCode = require('./BadLineHeightExample?raw');
+const BadLineHeightExampleStyles = require('./BadLineHeightExample.scss?raw');
 
 const firstReferenceUrl = 'https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align',
     css2SpecUrl = 'https://www.w3.org/TR/CSS2/visudet.html#inline-box-height';

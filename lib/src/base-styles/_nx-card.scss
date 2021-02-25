@@ -6,12 +6,11 @@
  */
 
 .nx-card-container {
-  column-gap: $nx-spacing-md;
   display: flex;
   flex-wrap: wrap;
+  gap: $nx-spacing-md;
   justify-content: space-between;
   margin: $nx-spacing-md 0;
-  row-gap: $nx-spacing-md;
 }
 
 .nx-card-container--no-wrap {
@@ -29,6 +28,34 @@
   text-align: center;
   min-width: 230px;
   max-width: 330px;
+}
+
+// Safari does not support gap in flex layouts so we need to use this query and margin for Safari.
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) and (display:flow-root) {
+    .nx-card-container {
+      @include container-horizontal;
+      margin: 0;
+    }
+
+    .nx-card {
+      margin-right: $nx-spacing-md;
+      margin-bottom: $nx-spacing-md;
+    }
+
+    .nx-card__content {
+      > :first-child {
+        margin-bottom: $nx-spacing-md;
+      }
+    }
+
+    .nx-card__content--columns {
+      > :first-child {
+        margin-right: $nx-spacing-md;
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
 .nx-card__header {

@@ -8,7 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxCounterCode = require('!!raw-loader!./NxCounterExample.html').default;
+const nxCounterCode = require('./NxCounterExample.html');
 
 const NxCounterPage = () =>
   <>

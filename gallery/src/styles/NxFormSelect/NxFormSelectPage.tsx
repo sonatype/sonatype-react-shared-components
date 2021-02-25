@@ -11,7 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxFormSelectExample from './NxFormSelectExample';
 import NxFormSelectDisabledExample from './NxFormSelectDisabledExample';
 
-const sourceCode = require('!!raw-loader!./NxFormSelectExample').default;
+const sourceCode = require('./NxFormSelectExample?raw');
 
 const NxFormSelectPage = () =>
   <>

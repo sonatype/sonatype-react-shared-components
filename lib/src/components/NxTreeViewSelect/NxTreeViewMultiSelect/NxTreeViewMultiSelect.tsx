@@ -94,7 +94,7 @@ function NxTreeViewMultiSelect<T extends Option>(props: Props<T>) {
                                  renderOption={renderOption}
                                  renderToggleAllOption={renderToggleAllOption}
                                  renderCounter={renderCounter}/>;
-};
+}
 
 NxTreeViewMultiSelect.propTypes = propTypes;
 

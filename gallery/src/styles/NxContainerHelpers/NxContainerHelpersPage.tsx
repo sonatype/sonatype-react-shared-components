@@ -11,8 +11,8 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxContainerHelpersExample from './NxContainerHelpersExample';
 import './NxContainerHelpersExample.scss';
 
-const nxContainerHelpersCode = require('!!raw-loader!./NxContainerHelpersExample').default,
-    nxContainerHelpersScssCode = require('!!raw-loader!./NxContainerHelpersExample.scss').default;
+const nxContainerHelpersCode = require('./NxContainerHelpersExample?raw'),
+    nxContainerHelpersScssCode = require('./NxContainerHelpersExample.scss?raw');
 
 const NxContainerHelpersPage = () => {
   const codeExamples = [nxContainerHelpersCode, { content: nxContainerHelpersScssCode, language: 'scss' }];
