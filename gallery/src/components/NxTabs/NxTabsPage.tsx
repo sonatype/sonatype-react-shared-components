@@ -137,9 +137,8 @@ export default function NxTabsPage() {
                           defaultCheckeredBackground={true}
                           liveExample={NxTabsOutsideTileExample}
                           codeExamples={NxTabsOutsideTileExampleCode}>
-        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
-        {' '}<code className="nx-code">NxTile</code> where there is no tile header and the tabs are top most within
-        the tile.
+        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components at the page
+        level: outside of and typically in control of some tiles or tables.
       </GalleryExampleTile>
       <GalleryExampleTile title="NxTabs in NxModal Example"
                           id="nx-tab-modal-example"
