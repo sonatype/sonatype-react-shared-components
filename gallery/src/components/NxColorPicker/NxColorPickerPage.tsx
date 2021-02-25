@@ -10,7 +10,7 @@ import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@son
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 import NxColorPickerExample from './NxColorPickerExample';
 
-const NxColorPickerExampleCode = require('!!raw-loader!./NxColorPickerExample').default;
+const NxColorPickerExampleCode = require('./NxColorPickerExample?raw');
 
 const NxColorPickerPage = () =>
   <>
