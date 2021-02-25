@@ -96,7 +96,7 @@ describe('NxStatefulDropdown', () => {
     element.unmount();
   });
 
-  fit('closes the dropdown when an outside click happens', function() {
+  it('closes the dropdown when an outside click happens', function() {
     let element: ReactWrapper;
 
     // `act` ensures that updates related to “units” of interaction with a user interface have been processed
