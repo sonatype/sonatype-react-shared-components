@@ -10,7 +10,12 @@ import {
   NxTabs,
   NxTabList,
   NxTab,
-  NxTabPanel
+  NxTabPanel,
+  NxTableRow,
+  NxTable,
+  NxTableCell,
+  NxTableHead,
+  NxTableBody
 } from '@sonatype/react-shared-components';
 
 const NxTabsTileHeaderExample = () => {
@@ -55,14 +60,48 @@ const NxTabsTileHeaderExample = () => {
         </section>
       </NxTabPanel>
       <NxTabPanel>
-        <section className="nx-tile">
-          <header className="nx-tile-header">
-            <div className="nx-tile-header__title"><h2 className="nx-h2">Tile 4</h2></div>
-          </header>
-          <div className="nx-tile-content">
-            Qwerty
-          </div>
-        </section>
+        <NxTable>
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Oct</NxTableCell>
+              <NxTableCell>Dev</NxTableCell>
+              <NxTableCell>Hex</NxTableCell>
+              <NxTableCell>Char</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody>
+            <NxTableRow>
+              <NxTableCell>040</NxTableCell>
+              <NxTableCell>32</NxTableCell>
+              <NxTableCell>20</NxTableCell>
+              <NxTableCell>(space)</NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>041</NxTableCell>
+              <NxTableCell>33</NxTableCell>
+              <NxTableCell>21</NxTableCell>
+              <NxTableCell>!</NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>042</NxTableCell>
+              <NxTableCell>34</NxTableCell>
+              <NxTableCell>22</NxTableCell>
+              <NxTableCell>{'"'}</NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>043</NxTableCell>
+              <NxTableCell>35</NxTableCell>
+              <NxTableCell>23</NxTableCell>
+              <NxTableCell>#</NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>044</NxTableCell>
+              <NxTableCell>36</NxTableCell>
+              <NxTableCell>24</NxTableCell>
+              <NxTableCell>$</NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
       </NxTabPanel>
     </NxTabs>
   );
