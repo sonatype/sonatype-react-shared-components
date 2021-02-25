@@ -27,7 +27,7 @@ const NxTabsTileHeaderExample = () => {
       <NxTabPanel>
         <section className="nx-tile">
           <header className="nx-tile-header">
-            <div className="nx-tile-header__title"><h2 className="nx-h2">Tile Header</h2></div>
+            <div className="nx-tile-header__title"><h2 className="nx-h2">Tile 1</h2></div>
           </header>
           <div className="nx-tile-content">
             Foo
@@ -37,7 +37,7 @@ const NxTabsTileHeaderExample = () => {
       <NxTabPanel>
         <section className="nx-tile">
           <header className="nx-tile-header">
-            <div className="nx-tile-header__title"><h2 className="nx-h2">Tile Header</h2></div>
+            <div className="nx-tile-header__title"><h2 className="nx-h2">Tile 2</h2></div>
           </header>
           <div className="nx-tile-content">
             Bar
@@ -47,7 +47,7 @@ const NxTabsTileHeaderExample = () => {
       <NxTabPanel>
         <section className="nx-tile">
           <header className="nx-tile-header">
-            <div className="nx-tile-header__title"><h2 className="nx-h2">Tile Header</h2></div>
+            <div className="nx-tile-header__title"><h2 className="nx-h2">Tile 3</h2></div>
           </header>
           <div className="nx-tile-content">
             Baz
@@ -57,7 +57,7 @@ const NxTabsTileHeaderExample = () => {
       <NxTabPanel>
         <section className="nx-tile">
           <header className="nx-tile-header">
-            <div className="nx-tile-header__title"><h2 className="nx-h2">Tile Header</h2></div>
+            <div className="nx-tile-header__title"><h2 className="nx-h2">Tile 4</h2></div>
           </header>
           <div className="nx-tile-content">
             Qwerty
