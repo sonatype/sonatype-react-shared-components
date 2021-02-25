@@ -13,9 +13,9 @@ import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxWarningAl
 import NxFormExample from './NxFormExample';
 import NxFormCustomizedExample from './NxFormCustomizedExample';
 
-const NxFormExampleCode = require('!raw-loader!!./NxFormExample').default,
-    NxFormCustomizedExampleCode = require('!raw-loader!!./NxFormCustomizedExample').default,
-    NxFormCustomizedExampleScss = require('!raw-loader!!./NxFormCustomizedExample.scss').default;
+const NxFormExampleCode = require('./NxFormExample?raw'),
+    NxFormCustomizedExampleCode = require('./NxFormCustomizedExample?raw'),
+    NxFormCustomizedExampleScss = require('./NxFormCustomizedExample.scss?raw');
 
 import './NxFormCustomizedExample.scss';
 
@@ -221,7 +221,7 @@ const NxFormPage = () =>
           </NxTableRow>
           <NxTableRow>
             <NxTableCell>children</NxTableCell>
-            <NxTableCell>JSX or (() => JSX)</NxTableCell>
+            <NxTableCell>JSX or (() =&gt; JSX)</NxTableCell>
             <NxTableCell>Yes</NxTableCell>
             <NxTableCell>N/A</NxTableCell>
             <NxTableCell>

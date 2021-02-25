@@ -11,8 +11,8 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxCheckboxExample from './NxCheckboxExample';
 import NxCheckboxNowrapExample from './NxCheckboxNowrapExample';
 
-const exampleCode = require('!!raw-loader!./NxCheckboxExample').default;
-const nowrapExampleCode = require('!!raw-loader!./NxCheckboxNowrapExample').default;
+const exampleCode = require('./NxCheckboxExample?raw');
+const nowrapExampleCode = require('./NxCheckboxNowrapExample?raw');
 
 const NxCheckboxPage = () =>
   <>
@@ -47,7 +47,7 @@ const NxCheckboxPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function (() => void)</td>
+            <td className="nx-cell">Function (() =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">A callback for when the checkbox is toggled</td>
           </tr>

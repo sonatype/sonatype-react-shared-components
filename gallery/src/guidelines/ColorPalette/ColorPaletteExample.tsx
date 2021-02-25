@@ -8,7 +8,7 @@ import { groupBy, prop, toPairs } from 'ramda';
 import React from 'react';
 
 const swatchSCSS =
-    require('!!raw-loader!@sonatype/react-shared-components/scss-shared/_nx-color-swatches.scss').default;
+    require('@sonatype/react-shared-components/scss-shared/_nx-color-swatches.scss?raw');
 import './Swatcher.scss';
 interface ColorInfo {
   colorVariable: string;
@@ -26,7 +26,7 @@ const swatchLines = swatchFile.map(line => {
   }
   else {
     return null;
-  };
+  }
 }).filter(data => data !== null) as ColorInfo[];
 
 const varsByColor = groupBy(prop('colorName'), swatchLines);
@@ -56,4 +56,4 @@ export default function Swatcher() {
       )}
     </>
   );
-};
+}

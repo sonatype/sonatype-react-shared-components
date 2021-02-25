@@ -13,11 +13,11 @@ import NxSubmitMaskSuccessExample from './NxSubmitMaskSuccessExample';
 import NxSubmitMaskCustomSuccessMessageExample from './NxSubmitMaskCustomSuccessMessageExample';
 import NxSubmitMaskFullscreenExample from './NxSubmitMaskFullscreenExample';
 
-const NxSubmitMaskCode = require('!!raw-loader!./NxSubmitMaskExample').default,
-    NxSubmitMaskCustomMessageCode = require('!!raw-loader!./NxSubmitMaskCustomMessageExample').default,
-    NxSubmitMaskSuccessCode = require('!!raw-loader!./NxSubmitMaskSuccessExample').default,
-    NxSubmitMaskCustomSuccessMessageCode = require('!!raw-loader!./NxSubmitMaskCustomSuccessMessageExample').default,
-    NxSubmitMaskFullscreenCode = require('!!raw-loader!./NxSubmitMaskFullscreenExample').default;
+const NxSubmitMaskCode = require('./NxSubmitMaskExample?raw'),
+    NxSubmitMaskCustomMessageCode = require('./NxSubmitMaskCustomMessageExample?raw'),
+    NxSubmitMaskSuccessCode = require('./NxSubmitMaskSuccessExample?raw'),
+    NxSubmitMaskCustomSuccessMessageCode = require('./NxSubmitMaskCustomSuccessMessageExample?raw'),
+    NxSubmitMaskFullscreenCode = require('./NxSubmitMaskFullscreenExample?raw');
 
 const NxSubmitMaskPage = () =>
   <>

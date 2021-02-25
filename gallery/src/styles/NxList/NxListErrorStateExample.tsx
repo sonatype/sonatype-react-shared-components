@@ -15,6 +15,6 @@ function NxListErrorExample() {
       </li>
     </ul>
   );
-};
+}
 
 export default NxListErrorExample;

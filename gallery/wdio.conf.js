@@ -185,26 +185,29 @@ exports.config = {
      */
     onPrepare: function (config) {
       const webpackConfig = webpackConfigFn(),
-          server = new WebpackDevServer(webpack(webpackConfig), webpackConfig.devServer);
+          compiler = webpack(webpackConfig),
+          server = new WebpackDevServer(compiler, webpackConfig.devServer);
 
       // save the server so we can shut it down in onComplete
       config.webpackServer = server;
 
-      console.log('Starting WebpackDevServer');
+      const listenPromise = new Promise(function(resolve, reject) {
+            server.listen(webpackConfig.devServer.port, webpackConfig.devServer.host, function(err) {
+              if (err) {
+                reject(err);
+              }
+              else {
+                resolve();
+              }
+            });
+          }),
+          compilePromise = new Promise(function(resolve, reject) {
+            compiler.hooks.afterDone.tap('wdio onPrepare', function() {
+              resolve();
+            });
+          });
 
-      return new Promise(function(resolve, reject) {
-        server.listen(webpackConfig.devServer.port, webpackConfig.devServer.host, function(err) {
-          if (err) {
-            reject(err);
-          }
-          else {
-            console.log('WebpackDevServer started successfully on ' +
-                `http://${webpackConfig.devServer.host}:${webpackConfig.devServer.port}`);
-
-            resolve();
-          }
-        });
-      });
+      return Promise.all([listenPromise, compilePromise]);
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service

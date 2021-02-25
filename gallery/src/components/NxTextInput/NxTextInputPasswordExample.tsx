@@ -21,4 +21,4 @@ export default function NxTextInputPasswordExample() {
   return (
     <NxTextInput type="password" placeholder="Enter password" onChange={onChange} { ...state }/>
   );
-};
+}

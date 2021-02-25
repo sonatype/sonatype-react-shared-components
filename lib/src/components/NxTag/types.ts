@@ -11,7 +11,7 @@ import { selectableColors, SelectableColor } from '../../util/selectableColors';
 
 export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   children: ReactNode;
-  tagColor?: SelectableColor;
+  tagColor?: SelectableColor | null;
   // For internal use only, this prop is for our select/deselect tag icons
   selectedIcons?: ReactElement | null;
 }
@@ -25,7 +25,7 @@ export interface SelectableProps extends Props {
 
 export const propTypes: ValidationMap<Props> = {
   children: PropTypes.node.isRequired,
-  color: PropTypes.oneOf(selectableColors)
+  tagColor: PropTypes.oneOf(selectableColors)
 };
 
 export const selectablePropTypes: ValidationMap<SelectableProps> = {

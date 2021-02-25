@@ -9,7 +9,8 @@
     "expect": true
   },
   "rules": {
-    "@typescript-eslint/no-non-null-assertion": false,
-    "@typescript-eslint/no-explicit-any": false
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }

@@ -10,7 +10,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxLoadingSpinnerExample from './NxLoadingSpinnerExample';
 
-const sourceCode = require('!!raw-loader!./NxLoadingSpinnerExample').default;
+const sourceCode = require('./NxLoadingSpinnerExample?raw');
 
 const NxLoadingSpinnerPage = () =>
   <>

@@ -16,13 +16,13 @@ import NxTextInputTextAreaValidationExample from './NxTextInputTextAreaValidatio
 import NxTextInputLongExample from './NxTextInputLongExample';
 import NxTextInputDisabledExample from './NxTextInputDisabledExample';
 
-const simpleSourceCode = require('!!raw-loader!./NxTextInputSimpleExample').default;
-const validationSourceCode = require('!!raw-loader!./NxTextInputValidationExample').default;
-const passwordSourceCode = require('!!raw-loader!./NxTextInputPasswordExample').default;
-const textAreaSourceCode = require('!!raw-loader!./NxTextInputTextAreaExample').default;
-const textAreaValidationSourceCode = require('!!raw-loader!./NxTextInputTextAreaValidationExample').default;
-const longSourceCode = require('!!raw-loader!./NxTextInputLongExample').default;
-const disabledSourceCode = require('!!raw-loader!./NxTextInputDisabledExample').default;
+const simpleSourceCode = require('./NxTextInputSimpleExample?raw');
+const validationSourceCode = require('./NxTextInputValidationExample?raw');
+const passwordSourceCode = require('./NxTextInputPasswordExample?raw');
+const textAreaSourceCode = require('./NxTextInputTextAreaExample?raw');
+const textAreaValidationSourceCode = require('./NxTextInputTextAreaValidationExample?raw');
+const longSourceCode = require('./NxTextInputLongExample?raw');
+const disabledSourceCode = require('./NxTextInputDisabledExample?raw');
 
 const NxTextInputPage = () =>
   <>
@@ -86,7 +86,7 @@ const NxTextInputPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function ((string) => void)</td>
+            <td className="nx-cell">Function ((string) =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               A callback for when the user changes the value of the text box (e.g. by typing a letter)
@@ -94,7 +94,7 @@ const NxTextInputPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onKeyPress</td>
-            <td className="nx-cell">Function ((string) => void)</td>
+            <td className="nx-cell">Function ((string) =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               <p className="nx-p">

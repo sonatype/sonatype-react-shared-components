@@ -8,7 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxIconExampleCode = require('!!raw-loader!./NxIconExample.html').default;
+const nxIconExampleCode = require('./NxIconExample.html');
 
 const NxIconPage = () =>
   <>

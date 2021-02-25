@@ -13,10 +13,10 @@ import NxLoadWrapperLoadingExample from './NxLoadWrapperLoadingExample';
 import NxLoadWrapperChildrenExample from './NxLoadWrapperChildrenExample';
 import CodeExample from '../../CodeExample';
 
-const childrenSourceCode = require('!!raw-loader!./NxLoadWrapperChildrenExample').default;
-const pageLevelSourceCode = require('!!raw-loader!./NxLoadWrapperPageLevelExample').default;
-const loadingSourceCode = require('!!raw-loader!./NxLoadWrapperLoadingExample').default;
-const errorRetrySourceCode = require('!!raw-loader!./NxLoadWrapperErrorRetryExample').default;
+const childrenSourceCode = require('./NxLoadWrapperChildrenExample?raw');
+const pageLevelSourceCode = require('./NxLoadWrapperPageLevelExample?raw');
+const loadingSourceCode = require('./NxLoadWrapperLoadingExample?raw');
+const errorRetrySourceCode = require('./NxLoadWrapperErrorRetryExample?raw');
 
 const NxLoadWrapperPage = () =>
   <>

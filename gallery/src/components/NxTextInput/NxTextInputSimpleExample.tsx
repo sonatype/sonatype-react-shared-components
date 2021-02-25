@@ -24,4 +24,4 @@ export default function NxTextInputSimpleExample() {
   return (
     <NxTextInput { ...state } onChange={onChange} onKeyPress={onKeyPress} />
   );
-};
+}

@@ -32,7 +32,7 @@ const NxTreeViewRadioSelectDisabledExample = () => {
                            selectedId={selection}
                            onChange={onSelectionChange}
                            options={options}>
-     Transportation
+      Transportation
     </NxTreeViewRadioSelect>
   );
 };
