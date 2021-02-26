@@ -20,7 +20,7 @@ export default function NxModalFormExample() {
 
     setTimeout(function() {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }
 
   return (
