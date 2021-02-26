@@ -171,8 +171,8 @@ const NxFormPage = () =>
             <NxTableCell>No</NxTableCell>
             <NxTableCell>null</NxTableCell>
             <NxTableCell>
-              If null, the submit mask is not shown. If true, the mask is shown in its "submitting" state. If
-              false, the mask is shown in its "success" state.
+              If null, the submit mask is not shown. If false, the mask is shown in its "submitting" state. If
+              true, the mask is shown in its "success" state.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
