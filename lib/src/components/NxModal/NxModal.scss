@@ -19,15 +19,8 @@ $nx-modal-padding: $nx-spacing-l;
   border-radius: $nx-border-radius;
   background-color: var(--nx-component-background-color);
   margin: 100px 0;
-  padding: $nx-spacing-l 0;
+  padding: $nx-modal-padding;
   width: 800px;
-
-  .nx-footer {
-    // without this, IE11 demonstrates a weird behavior where the footer _grows_ for no reason when interactive
-    // elements in the modal are clicked or focused.
-    flex-shrink: 0;
-    margin: 0 $nx-modal-padding;
-  }
 
   &, > .nx-form {
     display: flex;
@@ -35,6 +28,16 @@ $nx-modal-padding: $nx-spacing-l;
     flex-direction: column;
     flex-shrink: 1;
     overflow-y: hidden;
+  }
+
+  > .nx-form {
+    // nx-form should take up the entire modal area so the children layout consistently
+    margin: -$nx-modal-padding;
+    padding: $nx-modal-padding;
+  }
+
+  .nx-footer {
+    margin: 0;
   }
 }
 
@@ -50,8 +53,7 @@ $nx-modal-padding: $nx-spacing-l;
   @include container-vertical;
 
   border-bottom: $nx-border-default;
-  margin: 0 $nx-modal-padding;
-  padding: 0 0 $nx-spacing-l 0;
+  padding-bottom: $nx-spacing-l;
 
   .nx-h2 {
     @include nx-truncate-ellipsis;
@@ -76,7 +78,11 @@ $nx-modal-padding: $nx-spacing-l;
   @include container-vertical;
   flex-shrink: 1;
   flex-basis: auto;
-  padding: $nx-spacing-l $nx-modal-padding $nx-spacing-xl $nx-modal-padding;
+
+  // we want the content area scrollbar to be at the right edge of the modal, so use negative margin
+  // to bump the content area over the right padding and then give that padding to the content area itself
+  margin-right: -$nx-modal-padding;
+  padding: $nx-spacing-l $nx-modal-padding $nx-spacing-xl 0;
   overflow-y: auto;
 }
 
