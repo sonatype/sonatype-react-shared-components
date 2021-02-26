@@ -13,8 +13,8 @@ import NxCodeSnippetComplexExample from './NxCodeSnippetComplexExample';
 
 import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
 
-const nxCodeSnippetCode = require('!!raw-loader!./NxCodeSnippetExample').default,
-    nxCodeSnippetComplexCode = require('!!raw-loader!./NxCodeSnippetComplexExample').default;
+const nxCodeSnippetCode = require('./NxCodeSnippetExample?raw'),
+    nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw');
 
 export default function NxCodeSnippetPage() {
   return (

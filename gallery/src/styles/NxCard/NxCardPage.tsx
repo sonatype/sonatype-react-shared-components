@@ -12,8 +12,8 @@ import './NxCardPageExamples.scss';
 
 import NxCardLayoutExample from './NxCardLayoutExample';
 
-const nxCardLayoutCode = require('!!raw-loader!./NxCardLayoutExample').default,
-    NxCardCustomSCSSCode = require('!!raw-loader!./NxCardPageExamples.scss').default;
+const nxCardLayoutCode = require('./NxCardLayoutExample?raw'),
+    NxCardCustomSCSSCode = require('./NxCardPageExamples.scss?raw');
 
 const NxCardPage = () =>
   <>

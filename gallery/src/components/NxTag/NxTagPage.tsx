@@ -12,9 +12,9 @@ import NxSelectableTagExample from './NxSelectableTagExample';
 import NxTagNarrowExample from './NxTagNarrowExample';
 import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
 
-const NxTagExampleCode = require('!!raw-loader!./NxTagExample').default;
-const NxSelectableTagExampleCode = require('!!raw-loader!./NxSelectableTagExample').default;
-const NxTagNarrowExampleCode = require('!!raw-loader!./NxTagNarrowExample').default;
+const NxTagExampleCode = require('./NxTagExample?raw');
+const NxSelectableTagExampleCode = require('./NxSelectableTagExample?raw');
+const NxTagNarrowExampleCode = require('./NxTagNarrowExample?raw');
 
 const NxTagPage = () =>
   <>

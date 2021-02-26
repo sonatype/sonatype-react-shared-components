@@ -12,10 +12,10 @@ import NxTreeViewMultiSelectExample from './NxTreeViewMultiSelectExample';
 import NxTreeViewMultiSelectCustomTooltipExample from './NxTreeViewMultiSelectCustomTooltipExample';
 import NxTreeViewMultiSelectDisabledExample from './NxTreeViewMultiSelectDisabledExample';
 
-const nxTreeViewMultiSelectExampleCode = require('!!raw-loader!./NxTreeViewMultiSelectExample').default,
-    nxTreeViewMultiSelectDisabledExampleCode = require('!!raw-loader!./NxTreeViewMultiSelectDisabledExample').default,
+const nxTreeViewMultiSelectExampleCode = require('./NxTreeViewMultiSelectExample?raw'),
+    nxTreeViewMultiSelectDisabledExampleCode = require('./NxTreeViewMultiSelectDisabledExample?raw'),
     nxTreeViewMultiSelectCustomTooltipExampleCode =
-        require('!!raw-loader!./NxTreeViewMultiSelectCustomTooltipExample').default;
+        require('./NxTreeViewMultiSelectCustomTooltipExample?raw');
 
 const NxTreeViewMultiSelectPage = () =>
   <>

@@ -12,9 +12,9 @@ import NxPaginationExample from './NxPaginationExample';
 import NxPaginationEmptyExample from './NxPaginationEmptyExample';
 import NxPaginationSinglePageExample from './NxPaginationSinglePageExample';
 
-const nxPaginationCode = require('!!raw-loader!./NxPaginationExample').default,
-    nxPaginationEmptyCode = require('!!raw-loader!./NxPaginationEmptyExample').default,
-    nxPaginationSinglePageCode = require('!!raw-loader!./NxPaginationSinglePageExample').default;
+const nxPaginationCode = require('./NxPaginationExample?raw'),
+    nxPaginationEmptyCode = require('./NxPaginationEmptyExample?raw'),
+    nxPaginationSinglePageCode = require('./NxPaginationSinglePageExample?raw');
 
 const NxPaginationPage = () =>
   <>

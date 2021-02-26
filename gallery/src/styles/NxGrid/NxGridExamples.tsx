@@ -9,8 +9,8 @@ import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import './CustomWidthExample.scss';
 
-const NxGridCode = require('!!raw-loader!./NxGridExample.html').default,
-    NxGridMixinUsageCode = require('!!raw-loader!./CustomWidthExample.scss').default;
+const NxGridCode = require('./NxGridExample.html'),
+    NxGridMixinUsageCode = require('./CustomWidthExample.scss?raw');
 
 const NxGridExamples = () =>
   <>

@@ -10,7 +10,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxIndeterminatePaginationExample from './NxIndeterminatePaginationExample';
 
-const nxIndeterminatePaginationCode = require('!!raw-loader!./NxIndeterminatePaginationExample').default;
+const nxIndeterminatePaginationCode = require('./NxIndeterminatePaginationExample?raw');
 
 const NxIndeterminatePaginationPage = () =>
   <>

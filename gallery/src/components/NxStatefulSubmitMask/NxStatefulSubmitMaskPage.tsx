@@ -11,9 +11,9 @@ import NxStatefulSubmitMaskExample from './NxStatefulSubmitMaskExample';
 import NxStatefulSubmitMaskCustomMessageExample from './NxStatefulSubmitMaskCustomMessageExample';
 import NxStatefulSubmitMaskFullscreenExample from './NxStatefulSubmitMaskFullscreenExample';
 
-const NxStatefulSubmitMaskCode = require('!!raw-loader!./NxStatefulSubmitMaskExample').default,
-    NxStatefulSubmitMaskCustomMessageCode = require('!!raw-loader!./NxStatefulSubmitMaskCustomMessageExample').default,
-    NxStatefulSubmitMaskFullscreenCode = require('!!raw-loader!./NxStatefulSubmitMaskFullscreenExample').default;
+const NxStatefulSubmitMaskCode = require('./NxStatefulSubmitMaskExample?raw'),
+    NxStatefulSubmitMaskCustomMessageCode = require('./NxStatefulSubmitMaskCustomMessageExample?raw'),
+    NxStatefulSubmitMaskFullscreenCode = require('./NxStatefulSubmitMaskFullscreenExample?raw');
 
 const NxStatefulSubmitMaskPage = () =>
   <>

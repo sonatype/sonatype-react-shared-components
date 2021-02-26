@@ -122,6 +122,6 @@ function AbstractTreeViewSelect<T extends Option>(props: Props<T>) {
       {renderedOptions}
     </NxTreeView>
   );
-};
+}
 
 export default AbstractTreeViewSelect;

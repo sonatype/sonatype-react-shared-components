@@ -9,7 +9,7 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxCloseButtonExample from './NxCloseButtonExample';
 
-const nxCloseButtonExampleCode = require('!!raw-loader!./NxCloseButtonExample').default;
+const nxCloseButtonExampleCode = require('./NxCloseButtonExample?raw');
 
 const NxCloseButtonPage = () =>
   <>

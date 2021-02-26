@@ -10,7 +10,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxTextInputStylesExample from './NxTextInputStylesExample';
 
-const sourceCode = require('!!raw-loader!./NxTextInputStylesExample').default;
+const sourceCode = require('./NxTextInputStylesExample?raw');
 
 const NxTextInputStylesPage = () =>
   <>

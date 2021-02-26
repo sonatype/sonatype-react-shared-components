@@ -14,9 +14,9 @@ import NxAccordionSimpleExample from './NxAccordionExample';
 import NxAccordionComplexExample from './NxAccordionComplexExample';
 import NxAccordionTertiaryButtonExample from './NxAccordionTertiaryButtonExample';
 
-const NxAccordionSimpleCode = require('!!raw-loader!./NxAccordionExample').default,
-    NxAccordionComplexCode = require('!!raw-loader!./NxAccordionComplexExample').default,
-    NxAccordionTertiaryButtonCode = require('!!raw-loader!./NxAccordionTertiaryButtonExample').default;
+const NxAccordionSimpleCode = require('./NxAccordionExample?raw'),
+    NxAccordionComplexCode = require('./NxAccordionComplexExample?raw'),
+    NxAccordionTertiaryButtonCode = require('./NxAccordionTertiaryButtonExample?raw');
 
 const NxAccordionPage = () =>
   <>
@@ -52,7 +52,7 @@ const NxAccordionPage = () =>
           <NxTableBody>
             <NxTableRow>
               <NxTableCell>onToggle</NxTableCell>
-              <NxTableCell>(() => void)</NxTableCell>
+              <NxTableCell>(() =&gt; void)</NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
                 A function which gets called when the accordion collapse/expand state is toggled.

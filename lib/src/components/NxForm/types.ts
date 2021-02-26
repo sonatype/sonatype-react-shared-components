@@ -10,7 +10,7 @@ import { ValidationErrors, propTypes as nxTextInputPropTypes } from '../NxTextIn
 
 export interface Props extends FormHTMLAttributes<HTMLFormElement> {
   loading?: boolean | null;
-  doLoad?: () => void | null;
+  doLoad?: (() => void) | null;
   onSubmit: () => void;
   onCancel?: (() => void) | null;
   loadError?: string | null;

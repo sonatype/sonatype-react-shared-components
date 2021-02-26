@@ -25,4 +25,4 @@ export default function NxTextInputTextAreaExample() {
   return (
     <NxTextInput type="textarea" { ...state } onChange={onChange} onKeyPress={onKeyPress} placeholder="placeholder"/>
   );
-};
+}

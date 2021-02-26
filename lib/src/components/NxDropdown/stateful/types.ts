@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ReactNode, HTMLAttributes, ReactElement} from 'react';
+import {ReactNode, HTMLAttributes, ReactElement, WeakValidationMap} from 'react';
 import * as PropTypes from 'prop-types';
 
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../../NxButton/types';
@@ -19,7 +19,7 @@ export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
   toggleTooltip?: TooltipConfigProps | string | null;
 };
 
-export const propTypes: React.WeakValidationMap<Props> = {
+export const propTypes: WeakValidationMap<Props> = {
   label: PropTypes.oneOfType([
     PropTypes.node.isRequired,
     PropTypes.string.isRequired
@@ -27,8 +27,8 @@ export const propTypes: React.WeakValidationMap<Props> = {
   variant: PropTypes.oneOf(NX_BUTTON_VARIANTS),
   className: PropTypes.string,
   children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
+    PropTypes.element.isRequired
   ]),
   disabled: PropTypes.bool,
   toggleTooltip: PropTypes.oneOfType([tooltipPropTypesShape, PropTypes.string])

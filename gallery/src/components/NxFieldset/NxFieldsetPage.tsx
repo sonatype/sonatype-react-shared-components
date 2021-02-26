@@ -13,10 +13,10 @@ import NxFieldsetRequiredExample from './NxFieldsetRequiredExample';
 import NxFieldsetSublabelExample from './NxFieldsetSublabelExample';
 import NxFieldsetRichLabelExample from './NxFieldsetRichLabelExample';
 
-const nxFieldsetExampleCode = require('!raw-loader!!./NxFieldsetExample').default,
-    nxFieldsetSublabelExampleCode = require('!raw-loader!!./NxFieldsetSublabelExample').default,
-    nxFieldsetRichLabelExampleCode = require('!raw-loader!!./NxFieldsetRichLabelExample').default,
-    nxFieldsetRequiredExampleCode = require('!raw-loader!!./NxFieldsetRequiredExample').default;
+const nxFieldsetExampleCode = require('./NxFieldsetExample?raw'),
+    nxFieldsetSublabelExampleCode = require('./NxFieldsetSublabelExample?raw'),
+    nxFieldsetRichLabelExampleCode = require('./NxFieldsetRichLabelExample?raw'),
+    nxFieldsetRequiredExampleCode = require('./NxFieldsetRequiredExample?raw');
 
 const NxFieldsetPage = () =>
   <>
