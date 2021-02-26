@@ -265,7 +265,7 @@ const NxFormPage = () =>
           </NxTableHead>
           <NxTableBody>
             <NxTableRow>
-              <NxTableCell><code className="nx-code">nx-btn--form-cancel</code></NxTableCell>
+              <NxTableCell><code className="nx-code">nx-form__cancel-btn</code></NxTableCell>
               <NxTableCell>
                 Applied to the default <code className="nx-code">NxForm</code> Cancel button.
               </NxTableCell>
@@ -274,7 +274,7 @@ const NxFormPage = () =>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell><code className="nx-code">nx-btn--form-submit</code></NxTableCell>
+              <NxTableCell><code className="nx-code">nx-form__submit-btn</code></NxTableCell>
               <NxTableCell>
                 Applied to the default <code className="nx-code">NxForm</code> Submit button.
               </NxTableCell>
