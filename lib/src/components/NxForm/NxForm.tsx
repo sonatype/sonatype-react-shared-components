@@ -42,7 +42,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
           formClasses = classnames('nx-form', className),
           getChildren = children instanceof Function ? children : always(children),
           submitDisabled = hasValidationErrors(validationErrors),
-          submitBtnClasses = classnames('nx-btn--form-submit', submitBtnClassesProp, {
+          submitBtnClasses = classnames('nx-form__submit-btn', submitBtnClassesProp, {
             disabled: submitDisabled
           });
 
@@ -66,12 +66,14 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
 
             <div className="nx-btn-bar">
               { additionalFooterBtns }
-              { onCancel && <NxButton type="button" onClick={onCancel} className="nx-btn--form-cancel">
-                Cancel
-              </NxButton> }
+              { onCancel &&
+                <NxButton type="button" onClick={onCancel} className="nx-form__cancel-btn">
+                  Cancel
+                </NxButton>
+              }
               { !submitError &&
                 <NxTooltip title={getFirstValidationError(validationErrors) || ''}>
-                  <NxButton variant="primary" className={submitBtnClasses || 'nx-btn--form-submit'}>
+                  <NxButton variant="primary" className={submitBtnClasses || 'nx-form__submit-btn'}>
                     {submitBtnText || 'Submit'}
                   </NxButton>
                 </NxTooltip>
