@@ -17,11 +17,13 @@ import {
 } from '@sonatype/react-shared-components';
 
 import NxTabsTileHeaderExample from './NxTabsTileHeaderExample';
+import NxTabsOutsideTileExample from './NxTabsOutsideTileExample';
 import NxTabsTileNoHeaderExample from './NxTabsTileNoHeaderExample';
 import NxTabsModalExample from './NxTabsModalExample';
 import NxTabsModalNoHeaderExample from './NxTabsModalNoHeaderExample';
 
 const NxTabsTileHeaderExampleCode = require('./NxTabsTileHeaderExample?raw');
+const NxTabsOutsideTileExampleCode = require('./NxTabsOutsideTileExample?raw');
 const NxTabsTileNoHeaderExampleCode = require('./NxTabsTileNoHeaderExample?raw');
 const NxTabsModalExampleCode = require('./NxTabsModalExample?raw');
 const NxTabsModalNoHeaderExampleCode = require('./NxTabsModalNoHeaderExample?raw');
@@ -129,6 +131,14 @@ export default function NxTabsPage() {
         A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
         {' '}<code className="nx-code">NxTile</code> where there is no tile header and the tabs are top most within
         the tile.
+      </GalleryExampleTile>
+      <GalleryExampleTile title="NxTabs outside of NxTile Example"
+                          id="nx-tab-outside-tile-example"
+                          defaultCheckeredBackground={true}
+                          liveExample={NxTabsOutsideTileExample}
+                          codeExamples={NxTabsOutsideTileExampleCode}>
+        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components at the page
+        level, outside of tiles or tables.
       </GalleryExampleTile>
       <GalleryExampleTile title="NxTabs in NxModal Example"
                           id="nx-tab-modal-example"
