@@ -31,20 +31,22 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-sidebar__product-info {
+  color: $nx-sidebar-text-color;
+  display: block;
   position: relative;
   text-align: left;
-  top: -$nx-spacing-xs;
-}
-
-.nx-sidebar__product-name {
-  font-size: $nx-font-size;
-  line-height: $nx-sidebar-logo-height;
-  vertical-align: top;
+  text-decoration: none;
+  top: -$nx-spacing-sm;
 }
 
 .nx-sidebar__logo {
   height: $nx-sidebar-logo-height;
   margin-right: $nx-spacing-xs;
+  vertical-align: middle;
+}
+
+.nx-sidebar__product-name {
+  vertical-align: middle;
 }
 
 .nx-sidebar__toggle {
