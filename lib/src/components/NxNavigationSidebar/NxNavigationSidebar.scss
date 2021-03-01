@@ -31,8 +31,9 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-sidebar__product-info {
-  margin: $nx-spacing-sm $nx-spacing-l 0;
-  height: $nx-sidebar-logo-height;
+  position: relative;
+  text-align: left;
+  top: -$nx-spacing-xs;
 }
 
 .nx-sidebar__product-name {
@@ -102,9 +103,10 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-sidebar--open {
-  .nx-sidebar__toggle {
-    position: absolute;
-    right: $nx-spacing-l;
+  .nx-sidebar__header {
+    margin: 0 $nx-spacing-l;
+    position: relative;
+    text-align: right;
   }
 
   .nx-sidebar__item {
@@ -119,11 +121,11 @@ $nx-sidebar-separator-color: $nx-grey-900;
 .nx-sidebar--closed {
   width: $nx-sidebar-width__closed;
 
-  .nx-sidebar__toggle {
-    align-self: center;
+  .nx-sidebar__header {
+    text-align: center;
   }
 
-  .nx-sidebar__logo {
+  .nx-sidebar__product-info {
     display: none;
   }
 

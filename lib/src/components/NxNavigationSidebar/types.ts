@@ -6,18 +6,20 @@
  */
 import * as PropTypes from 'prop-types';
 import { ValidationMap } from 'react';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import {IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 export interface NavigationSidebarLinkProps {
   name: string;
   href: string;
-  icon: IconProp;
+  icon: IconDefinition;
   current?: boolean | null;
 }
 
 export interface Props {
   isOpen: boolean;
   className?: string | null;
+  toggleOpenIcon: IconDefinition;
+  toggleCloseIcon: IconDefinition;
   onToggleClick: (() => void);
   logoImg: string;
   logoText: string;
@@ -40,6 +42,8 @@ export const navigationSidebarLinkPropTypes = PropTypes.shape({
 export const propTypes: ValidationMap<Props> = {
   isOpen: PropTypes.bool.isRequired,
   className: PropTypes.string,
+  toggleOpenIcon: PropTypes.object.isRequired,
+  toggleCloseIcon: PropTypes.object.isRequired,
   onToggleClick: PropTypes.func.isRequired,
   logoImg: PropTypes.string.isRequired,
   logoText: PropTypes.string.isRequired,

@@ -6,10 +6,9 @@
  */
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
-import { faBars, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 import NxButton from '../NxButton/NxButton';
-import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, NavigationSidebarLinkProps, propTypes } from './types';
 
@@ -33,6 +32,8 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
   const {
     isOpen,
     className,
+    toggleOpenIcon,
+    toggleCloseIcon,
     onToggleClick,
     logoImg,
     logoText,
@@ -50,22 +51,14 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
     'nx-sidebar--closed': !isOpen
   });
 
-  const toggleButtonClasses = 'nx-sidebar__toggle';
-
-  const closeBtn = (
-    <NxCloseButton className={toggleButtonClasses}
-                   onClick={onToggleClick} />
-  );
-
-  const openBtn = (
+  const toggleButtonIcon = isOpen ? toggleOpenIcon : toggleCloseIcon;
+  const toggleButton = (
     <NxButton variant="icon-only"
               onClick={onToggleClick}
-              className={toggleButtonClasses}>
-      <NxFontAwesomeIcon icon={faBars} />
+              className="nx-sidebar__toggle">
+      <NxFontAwesomeIcon icon={toggleButtonIcon} fixedWidth />
     </NxButton>
   );
-
-  const toggleButton = isOpen ? closeBtn : openBtn;
 
   const navigationLinks = (
     <nav className="nx-sidebar__items">
@@ -77,13 +70,13 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
 
   return (
     <aside className={classes}>
-      { toggleButton }
-      { isOpen &&
+      <div className="nx-sidebar__header">
+        { toggleButton }
         <div className="nx-sidebar__product-info">
           { logoLink ? <a href={logoLink} aria-label="logo">{logo}</a> : logo }
           <span className="nx-sidebar__product-name">{logoText}</span>
         </div>
-      }
+      </div>
       { navigationLinks }
       <footer className="nx-sidebar__footer">
         { !!helpLink &&
