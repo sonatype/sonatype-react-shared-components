@@ -14,11 +14,14 @@ describe('NxTabs', function() {
 
   const tabTileExampleSelector = '#nx-tab-tile-example .nx-tile',
       tabTileNoHeaderExampleSelector = '#nx-tab-tile-no-header-example .nx-tile',
+      tabOutsideTileExampleSelector = '#nx-tab-tile-no-header-example .nx-tile',
       tabModalExampleSelector = '#nx-tab-modal-example',
       tabModalNoHeaderExampleSelector = '#nx-tab-modal-no-header-example';
 
   it('looks right in a Tile', simpleTest(tabTileExampleSelector));
   it('looks right in a Tile with no header', simpleTest(tabTileNoHeaderExampleSelector));
+
+  it('looks right outside of a Tile', simpleTest(tabOutsideTileExampleSelector));
 
   describe('Check tab styles', function() {
     const selector = '#nx-tab-tile-example .nx-tab:nth-child(2)';
