@@ -31,8 +31,9 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-sidebar__product-info {
+  align-items: center;
   color: $nx-sidebar-text-color;
-  display: block;
+  display: flex;
   position: relative;
   text-align: left;
   text-decoration: none;
@@ -42,11 +43,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
 .nx-sidebar__logo {
   height: $nx-sidebar-logo-height;
   margin-right: $nx-spacing-xs;
-  vertical-align: middle;
-}
-
-.nx-sidebar__product-name {
-  vertical-align: middle;
 }
 
 .nx-sidebar__toggle {
