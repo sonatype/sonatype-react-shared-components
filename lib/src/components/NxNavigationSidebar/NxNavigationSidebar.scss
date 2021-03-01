@@ -30,14 +30,18 @@ $nx-sidebar-separator-color: $nx-grey-900;
   padding: $nx-spacing-l 0 0 0;
 }
 
+.nx-sidebar__header {
+  display: flex;
+  margin: 0 $nx-spacing-l;
+}
+
 .nx-sidebar__product-info {
   align-items: center;
   color: $nx-sidebar-text-color;
   display: flex;
-  position: relative;
-  text-align: left;
+  flex: 1 0 auto;
+  margin-top: $nx-spacing-sm;
   text-decoration: none;
-  top: -$nx-spacing-sm;
 }
 
 .nx-sidebar__logo {
@@ -47,6 +51,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
 .nx-sidebar__toggle {
   color: $nx-sidebar-text-color;
+  flex: 0 0 auto;
   margin: 0;
 }
 
@@ -62,6 +67,10 @@ $nx-sidebar-separator-color: $nx-grey-900;
   margin: $nx-spacing-xl 0 0 0;
   padding-bottom: $nx-spacing-xxl;
   border-bottom: 1px solid $nx-sidebar-separator-color;
+}
+
+.nx-sidebar__item {
+  padding-left: $nx-spacing-l;
 }
 
 .nx-sidebar__item {
@@ -100,18 +109,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
   text-decoration: none;
 }
 
-.open {
-  .nx-sidebar__header {
-    margin: 0 $nx-spacing-l;
-    position: relative;
-    text-align: right;
-  }
-
-  .nx-sidebar__item {
-    padding-left: $nx-spacing-l;
-  }
-}
-
 .nx-sidebar__link-name {
   margin-left: $nx-spacing-sm;
 }
@@ -120,7 +117,8 @@ $nx-sidebar-separator-color: $nx-grey-900;
   width: $nx-sidebar-width__closed;
 
   .nx-sidebar__header {
-    text-align: center;
+    margin: 0;
+    justify-content: center;
   }
 
   .nx-sidebar__product-info {
@@ -130,6 +128,10 @@ $nx-sidebar-separator-color: $nx-grey-900;
   .nx-sidebar__items {
     text-align: center;
     border-bottom: 0;
+  }
+
+  .nx-sidebar__item {
+    padding: 0;
   }
 
   .nx-sidebar__release {

@@ -71,11 +71,11 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
   return (
     <aside className={classes}>
       <div className="nx-sidebar__header">
-        { toggleButton }
         <a href={logoLink} className="nx-sidebar__product-info">
           { logo }
           <span className="nx-sidebar__product-name">{ logoText }</span>
         </a>
+        { toggleButton }
       </div>
       { navigationLinks }
       <footer className="nx-sidebar__footer">
