@@ -36,6 +36,10 @@
     .nx-card-container {
       @include container-horizontal;
       margin-bottom: 0;
+
+      + .nx-card-container {
+        margin-top: 0;
+      }
     }
 
     .nx-card {
@@ -44,7 +48,7 @@
     }
 
     .nx-card__content {
-      > :first-child {
+      > :not(:last-child) {
         margin-bottom: $nx-spacing-md;
       }
     }
