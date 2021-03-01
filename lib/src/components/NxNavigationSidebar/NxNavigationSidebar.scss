@@ -102,7 +102,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   text-decoration: none;
 }
 
-.nx-sidebar--open {
+.open {
   .nx-sidebar__header {
     margin: 0 $nx-spacing-l;
     position: relative;
@@ -118,7 +118,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   margin-left: $nx-spacing-sm;
 }
 
-.nx-sidebar--closed {
+.closed {
   width: $nx-sidebar-width__closed;
 
   .nx-sidebar__header {

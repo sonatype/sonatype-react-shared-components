@@ -47,8 +47,8 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
   } = props;
 
   const classes = classnames(className, 'nx-page-sidebar', 'nx-page-sidebar--navigation', {
-    'nx-sidebar--open': isOpen,
-    'nx-sidebar--closed': !isOpen
+    'open': isOpen,
+    'closed': !isOpen
   });
 
   const toggleButtonIcon = isOpen ? toggleOpenIcon : toggleCloseIcon;
