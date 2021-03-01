@@ -47,3 +47,21 @@
 .gallery-swatch__hex {
   flex-basis: 7ch;
 }
+
+// Safari does not support gap in flex layouts so we need to use this query and margin for Safari.
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) and (display:flow-root) {
+    // override a default .nx-card style
+    .nx-card__content > :first-child {
+      margin-bottom: 0;
+    }
+
+    .gallery-swatch__thumb {
+      margin-right: $nx-spacing-l;
+    }
+
+    .gallery-swatch__hex {
+      margin-right: $nx-spacing-l;
+    }
+  }
+}
