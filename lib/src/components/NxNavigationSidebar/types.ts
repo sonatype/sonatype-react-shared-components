@@ -17,19 +17,7 @@ export interface Props {
   logoImg?: string | null;
   logoText?: string | null;
   logoLink: string;
-  helpLink?: string | null;
-  helpText?: string | null;
-  collapsedReleaseText?: string | null;
-  expandedReleaseText?: string | null;
-  attributions?: string[] | null;
 };
-
-export const navigationSidebarLinkPropTypes = PropTypes.shape({
-  name: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
-  icon: PropTypes.object.isRequired,
-  current: PropTypes.bool
-});
 
 export const propTypes: ValidationMap<Props> = {
   isOpen: PropTypes.bool.isRequired,
@@ -40,11 +28,6 @@ export const propTypes: ValidationMap<Props> = {
   logoImg: PropTypes.string,
   logoText: PropTypes.string,
   logoLink: PropTypes.string.isRequired,
-  helpLink: PropTypes.string,
-  helpText: PropTypes.string,
-  collapsedReleaseText: PropTypes.string,
-  expandedReleaseText: PropTypes.string,
-  attributions: PropTypes.arrayOf(PropTypes.string)
 };
 
 export type NxNavigationSidebarContentProps = HTMLAttributes<HTMLDivElement> & {
