@@ -31,15 +31,20 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-sidebar__header {
+  @include container-horizontal;
+
   display: flex;
   margin: 0 $nx-spacing-l;
 }
 
 .nx-sidebar__product-info {
+  @include container-horizontal;
+
   align-items: center;
   color: $nx-sidebar-text-color;
   display: flex;
   flex: 1 0 auto;
+  max-width: 80%;
   margin-top: $nx-spacing-sm;
   text-decoration: none;
 }
@@ -62,54 +67,35 @@ $nx-sidebar-separator-color: $nx-grey-900;
   text-align: center;
 }
 
-.nx-sidebar__items {
+.nx-sidebar__navigation {
   margin: $nx-spacing-xl 0 0 0;
   padding-bottom: $nx-spacing-xxl;
   border-bottom: 1px solid $nx-sidebar-separator-color;
-}
 
-.nx-sidebar__item {
-  padding-left: $nx-spacing-l;
-}
+  > a {
+    @include container-horizontal;
+    @include regular;
 
-.nx-sidebar__item {
-  @include container-horizontal;
-  @include regular;
+    color: inherit;
+    display: block;
+    font-size: $nx-font-size;
+    height: 32px;
+    line-height: 32px;
+    padding-left: $nx-spacing-l;
+    text-decoration: none;
 
-  color: inherit;
-  display: block;
-  font-size: $nx-font-size;
-  height: 32px;
-  line-height: 32px;
-  text-decoration: none;
+    > span {
+      margin-left: $nx-spacing-sm;
+    }
 
-  &:hover {
-    background-color: $nx-sidebar-hover-color;
-  }
+    &:hover {
+      background-color: $nx-sidebar-hover-color;
+    }
 
-  &.selected {
-    background-color: $nx-sidebar-selected-color;
-
-    .nx-sidebar__link {
-      @include semi-bold;
+    &.selected {
+      background-color: $nx-sidebar-selected-color;
     }
   }
-}
-
-.nx-sidebar__release {
-  margin: $nx-spacing-xxl 0 $nx-spacing-xl;
-}
-
-.nx-sidebar__help-link {
-  @include container-horizontal;
-
-  color: inherit;
-  font-size: $nx-font-size-s;
-  text-decoration: none;
-}
-
-.nx-sidebar__link-name {
-  margin-left: $nx-spacing-sm;
 }
 
 .open {
@@ -134,17 +120,17 @@ $nx-sidebar-separator-color: $nx-grey-900;
     display: none;
   }
 
-  .nx-sidebar__items {
+  .nx-sidebar__navigation {
     text-align: center;
     border-bottom: 0;
-  }
 
-  .nx-sidebar__item {
-    padding: 0;
-  }
+    > a {
+      padding: 0;
 
-  .nx-sidebar__link-name {
-    display: none;
+      > span {
+        display: none;
+      }
+    }
   }
 
   .nx-sidebar__content {
