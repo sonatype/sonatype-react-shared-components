@@ -13,6 +13,7 @@ const NxStatefulNavigationSidebar: FunctionComponent<Props> = function(props) {
   const {
     isDefaultOpen,
     onToggleClick,
+    children,
     ...otherProps
   } = props;
 
@@ -30,7 +31,9 @@ const NxStatefulNavigationSidebar: FunctionComponent<Props> = function(props) {
   return (
     <NxNavigationSidebar isOpen={isOpen}
                          onToggleClick={toggleHandler}
-                         {...(otherProps)} />
+                         {...(otherProps)}>
+      { children }
+    </NxNavigationSidebar>
   );
 };
 
