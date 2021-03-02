@@ -13,7 +13,7 @@ export { NxNavigationSidebarContentProps as NxNavigationSidebarLinksProps } from
 
 const NxNavigationSidebarLinks: FunctionComponent<Props> = function NxNavigationSidebarLinks(props) {
   const { className, children } = props;
-  const classes = classnames(className, 'nx-sidebar__navigation')
+  const classes = classnames(className, 'nx-sidebar__navigation');
 
   return (
     <nav className={classes}>

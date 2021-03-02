@@ -63,6 +63,10 @@ $nx-sidebar-separator-color: $nx-grey-900;
 .nx-sidebar__content {
   padding: $nx-spacing-xxl;
   font-size: $nx-font-size-xs;
+
+  a {
+    color: $nx-sidebar-text-color;
+  }
 }
 
 .nx-sidebar__navigation {

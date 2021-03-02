@@ -27,7 +27,7 @@ export const propTypes: ValidationMap<Props> = {
   onToggleClick: PropTypes.func.isRequired,
   logoImg: PropTypes.string,
   logoText: PropTypes.string,
-  logoLink: PropTypes.string.isRequired,
+  logoLink: PropTypes.string.isRequired
 };
 
 export type NxNavigationSidebarContentProps = HTMLAttributes<HTMLDivElement> & {

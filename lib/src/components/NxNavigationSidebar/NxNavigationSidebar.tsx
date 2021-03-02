@@ -23,7 +23,7 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
     onToggleClick,
     logoImg,
     logoText,
-    logoLink,
+    logoLink
   } = props;
 
   const classes = classnames(className, 'nx-page-sidebar', 'nx-page-sidebar--navigation', {
