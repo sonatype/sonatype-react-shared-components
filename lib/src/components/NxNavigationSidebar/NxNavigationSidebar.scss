@@ -110,6 +110,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   }
 
   .nx-sidebar__header {
+    height: 45px;
     margin: 0;
     justify-content: center;
   }
@@ -124,7 +125,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
   .nx-sidebar__navigation {
     border-bottom: 0;
-    padding: 0;
     text-align: center;
 
     > a {
