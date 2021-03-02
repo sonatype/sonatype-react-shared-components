@@ -5,8 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { FunctionComponent } from 'react';
-import classnames from 'classnames';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+lib/src/components/NxNavigationSidebar/NxNavigationSidebar.tsx
 
 import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -31,6 +30,7 @@ const NxNavigationSidebarLink =
 const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSidebar(props) {
   const {
     isOpen,
+    children,
     className,
     toggleOpenIcon,
     toggleCloseIcon,
@@ -38,12 +38,7 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
     logoImg,
     logoText,
     logoLink,
-    links,
-    helpLink,
-    helpText,
-    collapsedReleaseText,
-    expandedReleaseText,
-    attributions
+    links
   } = props;
 
   const classes = classnames(className, 'nx-page-sidebar', 'nx-page-sidebar--navigation', {
@@ -78,31 +73,7 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
         { toggleButton }
       </div>
       { navigationLinks }
-      <footer className="nx-sidebar__footer">
-        { !!helpLink &&
-          <a rel="noreferrer"
-             target="_blank"
-             className="nx-sidebar__help-link"
-             href={helpLink}>
-            <NxFontAwesomeIcon icon={faQuestionCircle}/>
-            { isOpen && <span className="nx-sidebar__help-text">{ helpText }</span>}
-          </a>
-        }
-
-        { isOpen && expandedReleaseText &&
-          <p className="nx-sidebar__release">
-            {expandedReleaseText}
-          </p>
-        }
-        { !isOpen && collapsedReleaseText &&
-          <p className="nx-sidebar__release">
-            { collapsedReleaseText }
-          </p>
-        }
-        { isOpen && attributions &&
-          attributions.map((attribution, index) => <p key={`attribution-${index}`}>{ attribution }</p>)
-        }
-      </footer>
+      { children }
     </aside>
   );
 };

@@ -5,8 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ValidationMap } from 'react';
-import {IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { ValidationMap, ReactNode, HTMLAttributes } from 'react';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 export interface NavigationSidebarLinkProps {
   name: string;
@@ -54,4 +54,17 @@ export const propTypes: ValidationMap<Props> = {
   collapsedReleaseText: PropTypes.string,
   expandedReleaseText: PropTypes.string,
   attributions: PropTypes.arrayOf(PropTypes.string)
+};
+
+export type NxNavigationSidebarContentProps = HTMLAttributes<HTMLDivElement> & {
+  className?: string | null;
+  children: ReactNode | ReactNode[];
+};
+
+export const nxNavigationSidebarContentPropTypes: ValidationMap<NxNavigationSidebarContentProps> = {
+  className: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };

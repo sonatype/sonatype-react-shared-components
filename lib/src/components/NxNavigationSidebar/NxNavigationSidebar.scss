@@ -55,11 +55,10 @@ $nx-sidebar-separator-color: $nx-grey-900;
   margin: 0;
 }
 
-.nx-sidebar__footer {
-  align-self: center;
-  bottom: $nx-spacing-xxl;
+.nx-sidebar__content {
+  align-self: flex-end;
+  padding: $nx-spacing-xxl;
   font-size: $nx-font-size-xs;
-  position: absolute;
   text-align: center;
 }
 
@@ -113,8 +112,18 @@ $nx-sidebar-separator-color: $nx-grey-900;
   margin-left: $nx-spacing-sm;
 }
 
+.open {
+  .nx-sidebar__collapsed-content {
+    display: none;
+  }
+}
+
 .closed {
   width: $nx-sidebar-width__closed;
+
+  .nx-sidebar__expanded-content {
+    display: none;
+  }
 
   .nx-sidebar__header {
     margin: 0;
@@ -134,15 +143,11 @@ $nx-sidebar-separator-color: $nx-grey-900;
     padding: 0;
   }
 
-  .nx-sidebar__release {
-    width: 44px;
-  }
-
   .nx-sidebar__link-name {
     display: none;
   }
 
-  .nx-sidebar__help-link .nx-icon{
-    margin-right: 0;
+  .nx-sidebar__content {
+    padding: $nx-spacing-xxl $nx-spacing-sm;
   }
 }
