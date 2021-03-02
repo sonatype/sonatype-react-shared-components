@@ -11,12 +11,10 @@ import { omit } from 'ramda';
 import { Props as NxNavigationSidebarProps, propTypes as nxNavigationSidebarPropTypes } from '../types';
 
 export interface Props extends Omit<NxNavigationSidebarProps, 'isOpen' | 'onToggleClick'> {
-  isDefaultOpen: boolean;
-  onToggleClick?: (newToggleState: boolean) => {} | null;
+  isDefaultOpen: boolean
 }
 
 export const propTypes: ValidationMap<Props> = {
-  ...omit(['isOpen'], nxNavigationSidebarPropTypes),
-  onToggleClick: PropTypes.func,
+  ...omit(['isOpen', 'onToggleClick'], nxNavigationSidebarPropTypes),
   isDefaultOpen: PropTypes.bool.isRequired
 };
