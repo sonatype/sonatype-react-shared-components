@@ -15,14 +15,14 @@ import './NxNavigationSidebar.scss';
 
 const NxNavigationSidebarLink =
   function NxNavigationSidebarLink({ name, href, icon, current }: NavigationSidebarLinkProps) {
-    const navigationLinkClassnames = classnames('nx-sidebar__item', {
+    const navigationLinkClassnames = classnames({
       'selected': current
     });
 
     return (
       <a href={href} className={navigationLinkClassnames} key={`nav-link-${name}`}>
         <NxFontAwesomeIcon icon={icon} fixedWidth />
-        <span className="nx-sidebar__link-name">{name}</span>
+        <span>{name}</span>
       </a>
     );
   };
@@ -56,19 +56,20 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
   );
 
   const navigationLinks = (
-    <nav className="nx-sidebar__items">
+    <nav className="nx-sidebar__navigation">
       { links.map(NxNavigationSidebarLink)}
     </nav>
   );
 
-  const logo = <img src={logoImg} className="nx-sidebar__logo" />;
+  const defaultLogo = require('../../assets/img/SON_hexagon_cropped.svg');
+  const logo = <img src={logoImg || defaultLogo} className="nx-sidebar__logo" />;
 
   return (
     <aside className={classes}>
       <div className="nx-sidebar__header">
         <a href={logoLink} className="nx-sidebar__product-info">
           { logo }
-          <span className="nx-sidebar__product-name">{ logoText }</span>
+          { logoText && <span className="nx-sidebar__product-name">{ logoText }</span>}
         </a>
         { toggleButton }
       </div>
