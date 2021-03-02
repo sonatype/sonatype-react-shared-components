@@ -10,9 +10,14 @@ import {
   faBiohazard,
   faBolt,
   faCrow,
-  faPlaceOfWorship
+  faPlaceOfWorship,
+  faQuestionCircle
 } from '@fortawesome/free-solid-svg-icons';
-import { NxStatefulNavigationSidebar } from '@sonatype/react-shared-components';
+import {
+  NxStatefulNavigationSidebar,
+  NxNavigationSidebarContent,
+  NxFontAwesomeIcon
+} from '@sonatype/react-shared-components';
 
 function Application() {
   const navLinks = [
@@ -51,24 +56,35 @@ function Application() {
       icon: faBiohazard
     }
   ];
-  const attributions = [
-    'Powered by Nexux IQ Server',
-    'Created by Sonatype'
-  ];
   const logoImg = require('./resources/logos/SON_hexagon_cropped.svg');
 
   return (
     <div className="nx-page-content nx-page-content--full-width">
       <NxStatefulNavigationSidebar isDefaultOpen={true}
+                                   toggleOpenIcon={faBiohazard}
+                                   toggleCloseIcon={faCrow}
                                    logoImg={logoImg}
                                    logoText="nexus lifecycle"
                                    logoLink="/home"
-                                   links={navLinks}
-                                   helpLink="http://google.com"
-                                   helpText="google help"
-                                   collapsedReleaseText="release 105"
-                                   expandedReleaseText="lifecycle release 105"
-                                   attributions={attributions} />
+                                   links={navLinks}>
+        <NxNavigationSidebarContent>
+          <a rel="noreferrer"
+             target="_blank"
+             className="nx-sidebar__help-link"
+             href="www.google.com">
+            <NxFontAwesomeIcon icon={faQuestionCircle}/>
+            <span className="nx-sidebar__expanded-content">Help and Support</span>
+          </a>
+          <div className="nx-sidebar__expanded-content">
+            <p>lifecycle release 105</p>
+            <p>Powered by Nexux IQ Server</p>
+            <p>Created by Sonatype</p>
+          </div>
+          <div className="nx-sidebar__collapsed-content">
+            release 105
+          </div>
+        </NxNavigationSidebarContent>
+      </NxStatefulNavigationSidebar>
       <div className="nx-page-main">
         <p>
           Cupidatat pariatur mollit sit pariatur mollit qui.{' '}
