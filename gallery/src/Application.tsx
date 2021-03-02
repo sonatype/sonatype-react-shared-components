@@ -20,54 +20,48 @@ import {
 } from '@sonatype/react-shared-components';
 
 function Application() {
-  const navLinks = [
-    {
-      name: 'Link Name Alpha',
-      href: '/alpha',
-      icon: faAtom,
-      current: true
-    }, {
-      name: 'Link Name Beta',
-      href: '/beta',
-      icon: faBiohazard
-    }, {
-      name: 'Link Name Gamma',
-      href: '/gamma',
-      icon: faBolt
-    }, {
-      name: 'Link Name Delta',
-      href: '/delta',
-      icon: faCrow
-    }, {
-      name: 'Link Name Epsilon',
-      href: '/epsilon',
-      icon: faPlaceOfWorship
-    }, {
-      name: 'Link Name Zeta',
-      href: '/zeta',
-      icon: faAtom
-    }, {
-      name: 'Link Name Etha',
-      href: '/etha',
-      icon: faPlaceOfWorship
-    }, {
-      name: 'Link Name Theta',
-      href: '/theta',
-      icon: faBiohazard
-    }
-  ];
-  const logoImg = require('./resources/logos/SON_hexagon_cropped.svg');
-
   return (
     <div className="nx-page-content nx-page-content--full-width">
       <NxStatefulNavigationSidebar isDefaultOpen={true}
                                    toggleOpenIcon={faBiohazard}
                                    toggleCloseIcon={faCrow}
-                                   logoImg={logoImg}
                                    logoText="nexus lifecycle"
-                                   logoLink="/home"
-                                   links={navLinks}>
-        <NxNavigationSidebarContent>
+                                   logoLink="/home">
+        <NxNavigationSidebarContent navigation>
+          <a href="/alpha" className="selected">
+            <NxFontAwesomeIcon icon={faAtom} fixedWidth />
+            <span>Link Name Alpha</span>
+          </a>
+          <a href="/beta">
+            <NxFontAwesomeIcon icon={faBiohazard} fixedWidth />
+            <span>Link Name Beta</span>
+          </a>
+          <a href="/gamma">
+            <NxFontAwesomeIcon icon={faPlaceOfWorship} fixedWidth />
+            <span>Link Name Gamma</span>
+          </a>
+          <a href="/delta">
+            <NxFontAwesomeIcon icon={faCrow} fixedWidth />
+            <span>Link Name delta</span>
+          </a>
+          <a href="/epsilon">
+            <NxFontAwesomeIcon icon={faBolt} fixedWidth />
+            <span>Link Name Epsilon</span>
+          </a>
+          <a href="/Zeta">
+            <NxFontAwesomeIcon icon={faAtom} fixedWidth />
+            <span>Link Name Zeta</span>
+          </a>
+          <a href="/Etha">
+            <NxFontAwesomeIcon icon={faPlaceOfWorship} fixedWidth />
+            <span>Link Name Etha</span>
+          </a>
+          <a href="/Theta">
+            <NxFontAwesomeIcon icon={faCrow} fixedWidth />
+            <span>Link Name Theta</span>
+          </a>
+        </NxNavigationSidebarContent>
+        <NxNavigationSidebarContent className="example-sidebar-footer">
           <a rel="noreferrer"
              target="_blank"
              className="nx-sidebar__help-link"
