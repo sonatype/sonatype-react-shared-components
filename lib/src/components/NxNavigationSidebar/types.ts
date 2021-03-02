@@ -8,13 +8,6 @@ import * as PropTypes from 'prop-types';
 import { ValidationMap, ReactNode, HTMLAttributes } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
-export interface NavigationSidebarLinkProps {
-  name: string;
-  href: string;
-  icon: IconDefinition;
-  current?: boolean | null;
-}
-
 export interface Props {
   isOpen: boolean;
   className?: string | null;
@@ -24,7 +17,6 @@ export interface Props {
   logoImg?: string | null;
   logoText?: string | null;
   logoLink: string;
-  links: NavigationSidebarLinkProps[];
   helpLink?: string | null;
   helpText?: string | null;
   collapsedReleaseText?: string | null;
@@ -45,10 +37,9 @@ export const propTypes: ValidationMap<Props> = {
   toggleOpenIcon: PropTypes.object.isRequired,
   toggleCloseIcon: PropTypes.object.isRequired,
   onToggleClick: PropTypes.func.isRequired,
-  logoImg: PropTypes.string.isRequired,
-  logoText: PropTypes.string.isRequired,
-  logoLink: PropTypes.string,
-  links: PropTypes.arrayOf(navigationSidebarLinkPropTypes),
+  logoImg: PropTypes.string,
+  logoText: PropTypes.string,
+  logoLink: PropTypes.string.isRequired,
   helpLink: PropTypes.string,
   helpText: PropTypes.string,
   collapsedReleaseText: PropTypes.string,

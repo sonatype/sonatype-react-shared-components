@@ -9,23 +9,9 @@ import classnames from 'classnames';
 
 import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { Props, NavigationSidebarLinkProps, propTypes } from './types';
+import { Props, propTypes } from './types';
 
 import './NxNavigationSidebar.scss';
-
-const NxNavigationSidebarLink =
-  function NxNavigationSidebarLink({ name, href, icon, current }: NavigationSidebarLinkProps) {
-    const navigationLinkClassnames = classnames({
-      'selected': current
-    });
-
-    return (
-      <a href={href} className={navigationLinkClassnames} key={`nav-link-${name}`}>
-        <NxFontAwesomeIcon icon={icon} fixedWidth />
-        <span>{name}</span>
-      </a>
-    );
-  };
 
 const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSidebar(props) {
   const {
@@ -38,7 +24,6 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
     logoImg,
     logoText,
     logoLink,
-    links
   } = props;
 
   const classes = classnames(className, 'nx-page-sidebar', 'nx-page-sidebar--navigation', {
@@ -55,12 +40,6 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
     </NxButton>
   );
 
-  const navigationLinks = (
-    <nav className="nx-sidebar__navigation">
-      { links.map(NxNavigationSidebarLink)}
-    </nav>
-  );
-
   const defaultLogo = require('../../assets/img/SON_hexagon_cropped.svg');
   const logo = <img src={logoImg || defaultLogo} className="nx-sidebar__logo" />;
 
@@ -73,7 +52,6 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
         </a>
         { toggleButton }
       </div>
-      { navigationLinks }
       { children }
     </aside>
   );
