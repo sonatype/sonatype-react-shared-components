@@ -16,6 +16,7 @@ import {
 import {
   NxStatefulNavigationSidebar,
   NxNavigationSidebarContent,
+  NxNavigationSidebarLinks,
   NxFontAwesomeIcon
 } from '@sonatype/react-shared-components';
 
@@ -27,7 +28,7 @@ function Application() {
                                    toggleCloseIcon={faCrow}
                                    logoText="nexus lifecycle"
                                    logoLink="/home">
-        <NxNavigationSidebarContent navigation>
+        <NxNavigationSidebarLinks>
           <a href="/alpha" className="selected">
             <NxFontAwesomeIcon icon={faAtom} fixedWidth />
             <span>Link Name Alpha</span>
@@ -60,7 +61,7 @@ function Application() {
             <NxFontAwesomeIcon icon={faCrow} fixedWidth />
             <span>Link Name Theta</span>
           </a>
-        </NxNavigationSidebarContent>
+        </NxNavigationSidebarLinks>
         <NxNavigationSidebarContent className="example-sidebar-footer">
           <a rel="noreferrer"
              target="_blank"
