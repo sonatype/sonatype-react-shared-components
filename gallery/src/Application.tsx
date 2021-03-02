@@ -22,7 +22,7 @@ import {
 
 function Application() {
   return (
-    <div className="nx-page-content nx-page-content--full-width">
+    <div id="temporary-navigation-sidebar-example" className="nx-page-content nx-page-content--full-width">
       <NxStatefulNavigationSidebar isDefaultOpen={true}
                                    toggleOpenIcon={faBiohazard}
                                    toggleCloseIcon={faCrow}
@@ -62,18 +62,19 @@ function Application() {
             <span>Link Name Theta</span>
           </a>
         </NxNavigationSidebarLinks>
-        <NxNavigationSidebarContent className="example-sidebar-footer">
+        <NxNavigationSidebarContent className="navigation-sidebar-custom-content-1">
           <a rel="noreferrer"
              target="_blank"
-             className="nx-sidebar__help-link"
              href="www.google.com">
-            <NxFontAwesomeIcon icon={faQuestionCircle}/>
+            <NxFontAwesomeIcon fixedWidth icon={faQuestionCircle}/>
             <span className="nx-sidebar__expanded-content">Help and Support</span>
           </a>
+        </NxNavigationSidebarContent>
+        <NxNavigationSidebarContent className="navigation-sidebar-custom-content-2">
           <div className="nx-sidebar__expanded-content">
-            <p>lifecycle release 105</p>
-            <p>Powered by Nexux IQ Server</p>
-            <p>Created by Sonatype</p>
+            <p className="example-release-note">Lifecycle Release 105</p>
+            <p className="example-attribution">Powered by Nexux IQ Server</p>
+            <p className="example-attribution">Created by Sonatype</p>
           </div>
           <div className="nx-sidebar__collapsed-content">
             release 105

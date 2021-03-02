@@ -81,3 +81,32 @@
     display: none;
   }
 }
+
+#temporary-navigation-sidebar-example {
+  .navigation-sidebar-custom-content-1 {
+    font-size: $nx-font-size-s;
+    padding-left: $nx-spacing-sm;
+    padding-right: $nx-spacing-sm;
+    text-align: center;
+
+    > a {
+      text-decoration: none;
+    }
+
+  }
+
+  .navigation-sidebar-custom-content-2 {
+    font-size: $nx-font-size-xs;
+    padding: $nx-spacing-l $nx-spacing-l $nx-spacing-xl;
+    text-align: center;
+  }
+
+  .example-release-note {
+    margin-bottom: $nx-spacing-xl;
+  }
+
+  .example-attribution {
+    margin-bottom: $nx-spacing-xs;
+  }
+
+}
