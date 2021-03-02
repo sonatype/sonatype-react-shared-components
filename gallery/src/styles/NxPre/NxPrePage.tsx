@@ -8,7 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxPreExampleCode = require('!!raw-loader!./NxPreExample.html').default;
+const nxPreExampleCode = require('./NxPreExample.html');
 
 const NxPrePage = () => {
   return (

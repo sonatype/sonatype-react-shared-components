@@ -7,15 +7,6 @@
 
 import React, { ComponentType, ReactElement, ReactNode } from 'react';
 
-export function addPropsToChildren(children: ReactNode, props: object) {
-  return React.Children.map(children, (child: ReactNode) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, props);
-    }
-    return child;
-  });
-}
-
 /**
  * Splits out the first child that matches the type from the rest of the children.
  * @param type the component type to find
@@ -24,8 +15,8 @@ export function addPropsToChildren(children: ReactNode, props: object) {
  * of remaining children in the same order they were originally.
  */
 export function splitOutFirst(type: ComponentType, children: ReactNode): [ReactElement | null, ReactNode] {
-  let matchingChild: ReactElement | null = null,
-      nonMatchingChildren: ReactNode[] = [];
+  let matchingChild: ReactElement | null = null;
+  const nonMatchingChildren: ReactNode[] = [];
 
   React.Children.forEach(children, child => {
     if (!matchingChild && React.isValidElement(child) && child.type === type) {

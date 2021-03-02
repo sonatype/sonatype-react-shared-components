@@ -36,6 +36,9 @@ module.exports = function(env = { production: false }) {
         // are written in TypeScript. The RSC package itself is pre-compiled to JS and so does not require
         // this loader in consuming projects.
         test: /\.(t|j)sx?$/,
+
+        // do not pass raw-loaded content through ts-loader
+        resourceQuery: /^(?!\?raw$).*/,
         loader: 'ts-loader',
         include: [
           path.resolve(__dirname, 'src'),
@@ -54,6 +57,9 @@ module.exports = function(env = { production: false }) {
         // using the precompiled RSC stylesheet (react-shared-components.css), consider using the webpack null-loader
         // to silently pass over the ES6 imports of scss files present within the RSC codebase.
         test: /\.s?css$/,
+
+        // do not pass raw-loaded content through these loaders
+        resourceQuery: /^(?!\?raw$).*/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
           { loader: 'css-loader' },
@@ -66,35 +72,39 @@ module.exports = function(env = { production: false }) {
           }
         ]
       }, {
-        // use file-loader for any files from the RSC image dir regardless of extension
+        // load any files from the RSC image dir regardless of extension as resources
         include: libImgDir,
-        loader: 'file-loader',
-        options: {
-          name: 'img/[name].[ext]'
+        type: 'asset/resource',
+        generator: {
+          filename: 'img/[name][ext]'
         }
       }, {
-        // also use file-loader for any svg or png files. Consuming projects may or may not need a declaration
+        // Also load svg and png files as resources. Consuming projects may or may not need a declaration
         // similar to this depending on their own image files and how they include them in the build.
         include: /\.(png|svg)$/,
         exclude: libImgDir,
-        loader: 'file-loader',
-        options: {
-          name: 'img/[name].[ext]'
+        type: 'asset/resource',
+        generator: {
+          filename: 'img/[name][ext]'
         }
       }, {
-        // loader for fonts. Separate from the loaders for images because it has a different destination dir.
+        // conf for fonts. Separate from the loaders for images because it has a different destination dir.
         // If you want images and fonts to go to the same destination dir, your could combine the file-loader
         // declarations
-        test: /\.(ttf|eot|woff2?)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'fonts/[name].[ext]'
+        test: /\.(ttf|eot|woff2?|svg)$/,
+        exclude: libImgDir,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]'
         }
       }, {
-        // this loader is specific to the RSC gallery, not usage of RSC in general. Consuming projects only need
+        // this conf is specific to the RSC gallery, not usage of RSC in general. Consuming projects only need
         // something like this if they want to be able to import contents of certain files as strings
         test: /\.html$/,
-        loader: 'raw-loader'
+        type: 'asset/source'
+      }, {
+        resourceQuery: /raw/,
+        type: 'asset/source'
       }]
     },
     plugins: [
@@ -106,7 +116,7 @@ module.exports = function(env = { production: false }) {
       }),
       ...productionPlugins
     ],
-    devtool: 'eval-sourcemap',
+    devtool: 'eval-source-map',
     devServer: {
       port: 4043,
       host: '0.0.0.0',

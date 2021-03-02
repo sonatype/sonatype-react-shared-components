@@ -17,7 +17,7 @@ import {
 } from '@sonatype/react-shared-components';
 import { slice, toLower, pipe, prop, includes, filter, both } from 'ramda';
 
-interface Row { name: string; country: string };
+interface Row { name: string; country: string }
 
 const PAGE_SIZE = 5;
 

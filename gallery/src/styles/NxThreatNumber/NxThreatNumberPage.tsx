@@ -12,9 +12,9 @@ import NxThreatNumberBasicExample from './NxThreatNumberBasicExample';
 import NxThreatNumberListExample from './NxThreatNumberListExample';
 import NxThreatNumberTableExample from './NxThreatNumberTableExample';
 
-const nxThreatNumberBasicExampleCode = require('!!raw-loader!./NxThreatNumberBasicExample').default,
-    nxThreatNumberListExampleCode = require('!!raw-loader!./NxThreatNumberListExample').default,
-    nxThreatNumberTableExampleCode = require('!!raw-loader!./NxThreatNumberTableExample').default;
+const nxThreatNumberBasicExampleCode = require('./NxThreatNumberBasicExample?raw'),
+    nxThreatNumberListExampleCode = require('./NxThreatNumberListExample?raw'),
+    nxThreatNumberTableExampleCode = require('./NxThreatNumberTableExample?raw');
 
 const NxThreatNumberPage = () =>
   <>

@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import {contains, toLower} from 'ramda';
 import { faBicycle } from '@fortawesome/free-solid-svg-icons';
 
-import {NxFontAwesomeIcon, NxTreeViewMultiSelectOption, NxTreeViewMultiSelect}
+import {NxFontAwesomeIcon, NxTreeViewMultiSelectOption, NxTreeViewMultiSelect, useToggle}
   from '@sonatype/react-shared-components';
 
 interface CustomOption extends NxTreeViewMultiSelectOption {
@@ -44,10 +44,7 @@ const NxTreeViewMultiSelectCustomTooltipExample = () => {
     }
   ];
 
-  const [isOpen, toggleOpen] = useState(true),
-      onToggleCollapse = () => {
-        toggleOpen(!isOpen);
-      };
+  const [isOpen, onToggleCollapse] = useToggle(true);
 
   const [selection, onSelectionChange] = useState<Set<string | null>>(new Set(['motorcycle']));
 

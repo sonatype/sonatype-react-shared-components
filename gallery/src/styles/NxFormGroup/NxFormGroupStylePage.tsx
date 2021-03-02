@@ -13,9 +13,9 @@ import NxFormGroupExample from './NxFormGroupExample';
 import NxFormGroupComplexExample from './NxFormGroupComplexExample';
 import NxFormGroupDeprecatedExample from './NxFormGroupDeprecatedExample';
 
-const nxFormGroupExampleCode = require('!raw-loader!!./NxFormGroupExample').default,
-    nxFormGroupComplexExampleCode = require('!raw-loader!!./NxFormGroupComplexExample').default,
-    nxFormGroupDeprecatedExampleCode = require('!raw-loader!!./NxFormGroupDeprecatedExample').default;
+const nxFormGroupExampleCode = require('./NxFormGroupExample?raw'),
+    nxFormGroupComplexExampleCode = require('./NxFormGroupComplexExample?raw'),
+    nxFormGroupDeprecatedExampleCode = require('./NxFormGroupDeprecatedExample?raw');
 
 const NxFormGroupPage = () =>
   <>

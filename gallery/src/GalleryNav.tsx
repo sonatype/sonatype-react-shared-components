@@ -26,7 +26,7 @@ interface GalleryNavTreeViewProps {
   defaultOpen: boolean;
   categoryName: string;
   categoryEntries: PageMapping;
-};
+}
 
 function GalleryNavTreeView({ categoryName, categoryEntries, defaultOpen }: GalleryNavTreeViewProps) {
   const { pathname } = useLocation(),

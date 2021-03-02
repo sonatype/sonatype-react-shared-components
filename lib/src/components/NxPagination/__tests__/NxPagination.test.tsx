@@ -13,7 +13,6 @@ import NxPagination, { Props } from '../NxPagination';
 import NxButton from '../../NxButton/NxButton';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-/* eslint-disable @typescript-eslint/no-object-literal-type-assertion */
 describe('NxPagination', function() {
   const minimalProps = {
         currentPage: 0,

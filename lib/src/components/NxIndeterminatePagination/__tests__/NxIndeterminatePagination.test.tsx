@@ -13,7 +13,6 @@ import NxIndeterminatePagination, { Props } from '../NxIndeterminatePagination';
 import NxButton from '../../NxButton/NxButton';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-/* eslint-disable @typescript-eslint/no-object-literal-type-assertion */
 describe('NxIndeterminatePagination', function() {
   const minimalProps = {
         onPrevPageSelect: () => {},

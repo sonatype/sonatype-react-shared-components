@@ -8,11 +8,11 @@ import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
-const nxBtnPrimaryCode = require('!!raw-loader!./NxBtnPrimaryExample.html').default,
-    nxBtnDefaultCode = require('!!raw-loader!./NxBtnDefaultExample.html').default,
-    nxBtnTertiaryCode = require('!!raw-loader!./NxBtnTertiaryExample.html').default,
-    nxBtnErrorCode = require('!!raw-loader!./NxBtnErrorExample.html').default,
-    nxBtnIconCode = require('!!raw-loader!./NxBtnIconExample.html').default;
+const nxBtnPrimaryCode = require('./NxBtnPrimaryExample.html'),
+    nxBtnDefaultCode = require('./NxBtnDefaultExample.html'),
+    nxBtnTertiaryCode = require('./NxBtnTertiaryExample.html'),
+    nxBtnErrorCode = require('./NxBtnErrorExample.html'),
+    nxBtnIconCode = require('./NxBtnIconExample.html');
 
 const NxBtnPage = () =>
   <>

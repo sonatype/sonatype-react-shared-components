@@ -4,13 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { NxTreeView, NxButton, NxTreeViewChild } from '@sonatype/react-shared-components';
+import { NxTreeView, NxButton, NxTreeViewChild, useToggle } from '@sonatype/react-shared-components';
 
 function NxTreeViewClickableSidebarExample() {
-  const [toggleCheck, setToggleCheck] = useState(false),
-      onToggleCollapse = () => setToggleCheck(!toggleCheck);
+  const [toggleCheck, onToggleCollapse] = useToggle(false);
 
   return (
     <div className="nx-page-sidebar">

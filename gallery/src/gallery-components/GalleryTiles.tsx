@@ -4,13 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, JSXElementConstructor, ReactNode, useState } from 'react';
+import React, { FunctionComponent, JSXElementConstructor, ReactNode } from 'react';
 import classnames from 'classnames';
 import { ensureArray } from '../util/jsUtil';
 
 import CodeExample, { Props as CodeExampleProps } from '../CodeExample';
 import RawHtmlExample from '../RawHtmlExample';
-import { NxCheckbox } from '@sonatype/react-shared-components';
+import { NxCheckbox, useToggle } from '@sonatype/react-shared-components';
 
 interface PropsWithRequiredChildren {
   children: ReactNode;
@@ -31,7 +31,7 @@ type StringOrCodeExampleProps = string | CodeExampleProps;
 
 interface GalleryExampleTileProps extends GalleryBaseProps {
   children: ReactNode;
-  liveExample?: JSXElementConstructor<{}>;
+  liveExample?: JSXElementConstructor<Record<string, never>>;
   htmlExample?: string;
   codeExamples: StringOrCodeExampleProps | StringOrCodeExampleProps[];
   defaultCheckeredBackground?: boolean;
@@ -78,8 +78,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
           defaultCheckeredBackground
         } = props,
 
-        [checkeredBackground, setCheckeredBackground] = useState(defaultCheckeredBackground || false),
-        toggleCheckeredBackground = () => setCheckeredBackground(!checkeredBackground),
+        [checkeredBackground, toggleCheckeredBackground] = useToggle(defaultCheckeredBackground || false),
 
         liveExampleRender =
           htmlExample ? <RawHtmlExample html={htmlExample} /> :

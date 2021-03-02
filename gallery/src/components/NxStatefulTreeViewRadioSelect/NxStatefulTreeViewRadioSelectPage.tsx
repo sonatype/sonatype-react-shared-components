@@ -11,9 +11,9 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxStatefulTreeViewRadioSelectExample from './NxStatefulTreeViewRadioSelectExample';
 import NxStatefulTreeViewRadioSelectDisabledExample from './NxStatefulTreeViewRadioSelectDisabledExample';
 
-const nxStatefulTreeViewRadioSelectExampleCode = require('!!raw-loader!./NxStatefulTreeViewRadioSelectExample').default,
+const nxStatefulTreeViewRadioSelectExampleCode = require('./NxStatefulTreeViewRadioSelectExample?raw'),
     nxStatefulTreeViewRadioSelectDisabledExampleCode =
-        require('!!raw-loader!./NxStatefulTreeViewRadioSelectDisabledExample').default;
+        require('./NxStatefulTreeViewRadioSelectDisabledExample?raw');
 
 const NxStatefulTreeViewRadioSelectPage = () =>
   <>

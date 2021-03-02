@@ -12,14 +12,14 @@ import NxTileDropdownActionsExample from './NxTileDropdownActionsExample';
 import NxTileAccordionExample from './NxTileAccordionExample';
 import NxTilePolicyViolationIndicatorExample from './NxTilePolicyViolationIndicatorExample';
 
-const NxSimpleTileCode = require('!!raw-loader!./NxSimpleTileExample.html').default,
-    NxTileWithActionsCode = require('!!raw-loader!./NxTileWithActionsExample.html').default,
-    NxTileWithSubtitleCode = require('!!raw-loader!./NxTileWithSubtitleExample.html').default,
-    NxTileSubsectionCode = require('!!raw-loader!./NxTileSubsectionExample.html').default,
-    NxTileFormCode = require('!!raw-loader!./NxTileFormExample.tsx').default,
-    NxTileDropdownActionsCode = require('!!raw-loader!./NxTileDropdownActionsExample').default,
-    NxTileAccordionCode = require('!!raw-loader!./NxTileAccordionExample').default,
-    NxTilePolicyViolationIndicatorCode = require('!!raw-loader!./NxTilePolicyViolationIndicatorExample').default;
+const NxSimpleTileCode = require('./NxSimpleTileExample.html'),
+    NxTileWithActionsCode = require('./NxTileWithActionsExample.html'),
+    NxTileWithSubtitleCode = require('./NxTileWithSubtitleExample.html'),
+    NxTileSubsectionCode = require('./NxTileSubsectionExample.html'),
+    NxTileFormCode = require('./NxTileFormExample.tsx?raw'),
+    NxTileDropdownActionsCode = require('./NxTileDropdownActionsExample?raw'),
+    NxTileAccordionCode = require('./NxTileAccordionExample?raw'),
+    NxTilePolicyViolationIndicatorCode = require('./NxTilePolicyViolationIndicatorExample?raw');
 
 const NxTilesExamples = () =>
   <>

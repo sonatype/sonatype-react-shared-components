@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { useState, KeyboardEventHandler, useEffect } from 'react';
+import { KeyboardEventHandler, useEffect, useRef } from 'react';
+import useToggle from './useToggle';
 
 /**
  * Stateful dropdown handling, abstracted into a hook for use in various dropdown-like stateful
@@ -15,27 +16,27 @@ import { useState, KeyboardEventHandler, useEffect } from 'react';
  *   onKeyDown: Function to set on the dropdown to handle ESC keypresses within it
  */
 export default function useDropdownState() {
-  const [isOpen, toggleOpen] = useState(false),
-      onToggleOpen = () => { toggleOpen(!isOpen); };
+  const [isOpen, toggleOpen, setOpen] = useToggle(false),
+      isToggling = useRef(false);
 
   const handleKeyPress: KeyboardEventHandler = (event) => {
     if (event.key === 'Escape') {
-      toggleOpen(false);
+      setOpen(false);
     }
   };
 
-  const handleClick: EventListener = () => {
-    // Effects get re-executed after every render.
-    // A consequence of this is that the `handleClick` function bound to
-    // document.onclick will have values from the closure of the previous render.
-    // So for instance, while handling the click that opens the menu
-    // the value of `isOpen` will be that of the previous render: false.
-    // Something that we're depending on to avoid closing the menu when
-    // it is just opening.
-    if (isOpen) {
-      toggleOpen(false);
+  const handleClick = () => {
+    if (!isToggling.current) {
+      setOpen(false);
     }
+
+    isToggling.current = false;
   };
+
+  function onToggleOpen() {
+    isToggling.current = true;
+    toggleOpen();
+  }
 
   useEffect(() => {
     document.addEventListener('click', handleClick);

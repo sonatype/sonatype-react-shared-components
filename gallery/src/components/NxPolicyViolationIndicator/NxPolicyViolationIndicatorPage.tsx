@@ -12,9 +12,9 @@ import NxPolicyViolationIndicatorByCategoryExample from './NxPolicyViolationIndi
 import NxPolicyViolationIndicatorByPolicyNumberExample from './NxPolicyViolationIndicatorByPolicyNumberExample';
 
 const nxPolicyViolationIndicatorByCategoryCode =
-          require('!!raw-loader!./NxPolicyViolationIndicatorByCategoryExample').default,
+          require('./NxPolicyViolationIndicatorByCategoryExample?raw'),
     nxPolicyViolationIndicatorByPolicyNumberCode =
-        require('!!raw-loader!./NxPolicyViolationIndicatorByPolicyNumberExample').default;
+        require('./NxPolicyViolationIndicatorByPolicyNumberExample?raw');
 
 const NxPolicyViolationIndicatorPage = () =>
   <>

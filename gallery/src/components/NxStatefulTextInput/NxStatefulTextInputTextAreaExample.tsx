@@ -13,4 +13,4 @@ export default function NxStatefulTextInputTextAreaExample() {
   return (
     <NxStatefulTextInput type="textarea" placeholder="placeholder text" />
   );
-};
+}

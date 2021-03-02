@@ -12,4 +12,4 @@ export default function NxStatefulTextInputSimpleExample() {
   return (
     <NxStatefulTextInput />
   );
-};
+}

@@ -14,11 +14,11 @@ import NxNexusPageHeaderMetaExample from './NxNexusPageHeaderMetaExample';
 import NxNexusPageHeaderVersionExample from './NxNexusPageHeaderVersionExample';
 import NxNexusPageHeaderMinimalExample from './NxNexusPageHeaderMinimalExample';
 
-const nxNexusPageHeaderExampleCode = require('!!raw-loader!./NxNexusPageHeaderExample').default;
-const nxNexusPageHeaderCustomLogoExampleCode = require('!!raw-loader!./NxNexusPageHeaderCustomLogoExample').default;
-const nxNexusPageHeaderMetaExampleCode = require('!!raw-loader!./NxNexusPageHeaderMetaExample').default;
-const nxNexusPageHeaderVersionExampleCode = require('!!raw-loader!./NxNexusPageHeaderVersionExample').default;
-const nxNexusPageHeaderMinimalExampleCode = require('!!raw-loader!./NxNexusPageHeaderMinimalExample').default;
+const nxNexusPageHeaderExampleCode = require('./NxNexusPageHeaderExample?raw');
+const nxNexusPageHeaderCustomLogoExampleCode = require('./NxNexusPageHeaderCustomLogoExample?raw');
+const nxNexusPageHeaderMetaExampleCode = require('./NxNexusPageHeaderMetaExample?raw');
+const nxNexusPageHeaderVersionExampleCode = require('./NxNexusPageHeaderVersionExample?raw');
+const nxNexusPageHeaderMinimalExampleCode = require('./NxNexusPageHeaderMinimalExample?raw');
 
 const NxNexusPageHeaderPage = () =>
   <>

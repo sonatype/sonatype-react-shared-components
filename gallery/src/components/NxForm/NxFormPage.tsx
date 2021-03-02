@@ -13,9 +13,9 @@ import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxWarningAl
 import NxFormExample from './NxFormExample';
 import NxFormCustomizedExample from './NxFormCustomizedExample';
 
-const NxFormExampleCode = require('!raw-loader!!./NxFormExample').default,
-    NxFormCustomizedExampleCode = require('!raw-loader!!./NxFormCustomizedExample').default,
-    NxFormCustomizedExampleScss = require('!raw-loader!!./NxFormCustomizedExample.scss').default;
+const NxFormExampleCode = require('./NxFormExample?raw'),
+    NxFormCustomizedExampleCode = require('./NxFormCustomizedExample?raw'),
+    NxFormCustomizedExampleScss = require('./NxFormCustomizedExample.scss?raw');
 
 import './NxFormCustomizedExample.scss';
 
@@ -171,8 +171,8 @@ const NxFormPage = () =>
             <NxTableCell>No</NxTableCell>
             <NxTableCell>null</NxTableCell>
             <NxTableCell>
-              If null, the submit mask is not shown. If true, the mask is shown in its "submitting" state. If
-              false, the mask is shown in its "success" state.
+              If null, the submit mask is not shown. If false, the mask is shown in its "submitting" state. If
+              true, the mask is shown in its "success" state.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
@@ -221,7 +221,7 @@ const NxFormPage = () =>
           </NxTableRow>
           <NxTableRow>
             <NxTableCell>children</NxTableCell>
-            <NxTableCell>JSX or (() => JSX)</NxTableCell>
+            <NxTableCell>JSX or (() =&gt; JSX)</NxTableCell>
             <NxTableCell>Yes</NxTableCell>
             <NxTableCell>N/A</NxTableCell>
             <NxTableCell>
@@ -247,6 +247,44 @@ const NxFormPage = () =>
           </NxTableRow>
         </NxTableBody>
       </NxTable>
+      <section className="nx-tile-subsection">
+        <header className="nx-tile-subsection__header">
+          <h3 className="nx-h3">NxForm Submit and Cancel Button Classes</h3>
+        </header>
+        <p className="nx-p">
+          In order to differentiate them from other buttons that might be on the page the
+          <code className="nx-code">NxForm</code> cancel and submit buttons have custom classes.
+        </p>
+        <NxTable className="nx-table--gallery-props">
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Class</NxTableCell>
+              <NxTableCell>Location</NxTableCell>
+              <NxTableCell>Details</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody>
+            <NxTableRow>
+              <NxTableCell><code className="nx-code">nx-form__cancel-btn</code></NxTableCell>
+              <NxTableCell>
+                Applied to the default <code className="nx-code">NxForm</code> Cancel button.
+              </NxTableCell>
+              <NxTableCell>
+                A CSS class that can be used to identify the Cancel button on the page for testing or other purposes.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell><code className="nx-code">nx-form__submit-btn</code></NxTableCell>
+              <NxTableCell>
+                Applied to the default <code className="nx-code">NxForm</code> Submit button.
+              </NxTableCell>
+              <NxTableCell>
+                A CSS class that can be used to identify the Submit button on the page for testing or other purposes.
+              </NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
+      </section>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Asynchronous Example"

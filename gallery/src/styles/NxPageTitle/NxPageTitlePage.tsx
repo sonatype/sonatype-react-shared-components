@@ -10,10 +10,10 @@ import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxPageTitlePolicyViolationIndicatorExample from './NxPageTitlePolicyViolationIndicatorExample';
 
-const nxPageTitleCode = require('!!raw-loader!./NxPageTitleExample.html').default,
-    nxPageTitleActionsCode = require('!!raw-loader!./NxPageTitleActionsExample.html').default,
+const nxPageTitleCode = require('./NxPageTitleExample.html'),
+    nxPageTitleActionsCode = require('./NxPageTitleActionsExample.html'),
     nxPageTitlePolicyViolationIndicatorCode =
-      require('!!raw-loader!./NxPageTitlePolicyViolationIndicatorExample.tsx').default;
+      require('./NxPageTitlePolicyViolationIndicatorExample.tsx?raw');
 
 const NxPageTitlePage = () =>
   <>

@@ -8,7 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxReadOnlyDlExampleCode = require('!!raw-loader!./NxReadOnlyDlExample.html').default;
+const nxReadOnlyDlExampleCode = require('./NxReadOnlyDlExample.html');
 
 const NxReadOnlyPage = () => {
   return (

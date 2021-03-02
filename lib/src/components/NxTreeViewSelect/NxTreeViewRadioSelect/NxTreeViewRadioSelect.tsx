@@ -38,7 +38,7 @@ function NxTreeViewRadioSelect<T extends Option>(props: Props<T>) {
                                  optionTooltipGenerator={optionTooltipGenerator}
                                  renderOption={renderOption}
                                  renderCounter={renderCounter}/>;
-};
+}
 
 NxTreeViewRadioSelect.propTypes = propTypes;
 

@@ -20,6 +20,5 @@ export interface Props extends Omit<DetailsHTMLAttributes<HTMLDetailsElement>, '
 export type HeaderProps = HTMLAttributes<HTMLElement>;
 
 export const propTypes: ValidationMap<Props> = {
-  onToggle: PropTypes.func,
-  open: PropTypes.bool
+  onToggle: PropTypes.func
 };

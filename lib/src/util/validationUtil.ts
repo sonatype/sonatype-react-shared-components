@@ -42,7 +42,7 @@ export function getFirstValidationError(validationErrors: ValidationErrors | und
   else {
     return validationErrors;
   }
-};
+}
 
 export function combineValidationErrors(...validationErrors: (ValidationErrors | undefined)[]): ValidationErrors {
   return reject(isNil, flatten(validationErrors)) as ValidationErrors;
