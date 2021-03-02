@@ -21,8 +21,8 @@ export interface Props {
   toggleOpenIcon: IconDefinition;
   toggleCloseIcon: IconDefinition;
   onToggleClick: (() => void);
-  logoImg: string;
-  logoText: string;
+  logoImg?: string | null;
+  logoText?: string | null;
   logoLink: string;
   links: NavigationSidebarLinkProps[];
   helpLink?: string | null;
@@ -57,11 +57,13 @@ export const propTypes: ValidationMap<Props> = {
 };
 
 export type NxNavigationSidebarContentProps = HTMLAttributes<HTMLDivElement> & {
+  navigation?: boolean | null;
   className?: string | null;
   children: ReactNode | ReactNode[];
 };
 
 export const nxNavigationSidebarContentPropTypes: ValidationMap<NxNavigationSidebarContentProps> = {
+  navigation: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),

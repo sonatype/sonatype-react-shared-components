@@ -69,7 +69,7 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
       <div className="nx-sidebar__header">
         <a href={logoLink} className="nx-sidebar__product-info">
           { logo }
-          { logoText && <span className="nx-sidebar__product-name">{ logoText }</span>}
+          <span className="nx-sidebar__product-name">{ logoText || 'Sonatype React Shared Components' }</span>
         </a>
         { toggleButton }
       </div>
