@@ -109,4 +109,10 @@
     margin-bottom: $nx-spacing-xs;
   }
 
+  .closed {
+    .navigation-sidebar-custom-content-2 {
+      padding: 0 $nx-spacing-sm $nx-spacing-xxl;
+    }
+  }
+
 }

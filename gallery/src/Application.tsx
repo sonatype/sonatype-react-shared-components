@@ -76,9 +76,7 @@ function Application() {
             <p className="example-attribution">Powered by Nexux IQ Server</p>
             <p className="example-attribution">Created by Sonatype</p>
           </div>
-          <div className="nx-sidebar__collapsed-content">
-            release 105
-          </div>
+          <p className="nx-sidebar__collapsed-content">release 105</p>
         </NxNavigationSidebarContent>
       </NxStatefulNavigationSidebar>
       <div className="nx-page-main">
