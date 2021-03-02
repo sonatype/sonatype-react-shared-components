@@ -9,19 +9,19 @@ import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 
 import { NxNavigationSidebarContentProps as Props, nxNavigationSidebarContentPropTypes } from './types';
-export { NxNavigationSidebarContentProps } from './types';
+export { NxNavigationSidebarContentProps as NxNavigationSidebarLinksProps } from './types';
 
-const NxNavigationSidebarContent: FunctionComponent<Props> = function NxNavigationSidebarContent(props) {
+const NxNavigationSidebarLinks: FunctionComponent<Props> = function NxNavigationSidebarLinks(props) {
   const { className, children } = props;
-  const classes = classnames(className, 'nx-sidebar__content');
+  const classes = classnames(className, 'nx-sidebar__navigation')
 
   return (
-    <section className={classes}>
+    <nav className={classes}>
       { children }
-    </section>
+    </nav>
   );
 };
 
-NxNavigationSidebarContent.propTypes = nxNavigationSidebarContentPropTypes;
+NxNavigationSidebarLinks.propTypes = nxNavigationSidebarContentPropTypes;
 
-export default NxNavigationSidebarContent;
+export default NxNavigationSidebarLinks;

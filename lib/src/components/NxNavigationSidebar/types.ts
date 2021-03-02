@@ -31,13 +31,11 @@ export const propTypes: ValidationMap<Props> = {
 };
 
 export type NxNavigationSidebarContentProps = HTMLAttributes<HTMLDivElement> & {
-  navigation?: boolean | null;
   className?: string | null;
   children: ReactNode | ReactNode[];
 };
 
 export const nxNavigationSidebarContentPropTypes: ValidationMap<NxNavigationSidebarContentProps> = {
-  navigation: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
