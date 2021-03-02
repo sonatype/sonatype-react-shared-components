@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { FunctionComponent } from 'react';
-lib/src/components/NxNavigationSidebar/NxNavigationSidebar.tsx
+import classnames from 'classnames';
 
 import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
