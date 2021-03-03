@@ -111,6 +111,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
     }
 
     &.selected {
+      @include semi-bold;
       background-color: $nx-sidebar-selected-color;
     }
   }
