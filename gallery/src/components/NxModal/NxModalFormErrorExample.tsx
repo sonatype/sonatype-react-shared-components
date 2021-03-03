@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { NxModal, NxFontAwesomeIcon, NxTextInput, NxLoadError, NxButton, nxTextInputStateHelpers, NxFormGroup }
+import { NxModal, NxFontAwesomeIcon, NxTextInput, NxButton, nxTextInputStateHelpers, NxFormGroup, NxForm }
   from '@sonatype/react-shared-components';
 import { faAngry } from '@fortawesome/free-solid-svg-icons';
 
@@ -16,11 +16,8 @@ export default function NxModalFormErrorExample() {
   const [showModal, setShowModal] = useState(false);
   const modalCloseHandler = () => setShowModal(false);
   const [textFieldState, setTextFieldState] = useState(initialState(''));
-  const [error] = useState<string | null>('');
-  function retryHandler() {
-    // lets say the retried action succeeded this time
-    setShowModal(false);
-  }
+  const [error] = useState<string | null>('Avian carrier lost');
+
   function onChange(val: string) {
     setTextFieldState(userInput(null, val));
   }
@@ -30,7 +27,10 @@ export default function NxModalFormErrorExample() {
       <NxButton onClick={() => setShowModal(true)}>Open Modal with Form and Error Styling</NxButton>
       {showModal &&
         <NxModal id="nx-modal-form-error-example" onClose={modalCloseHandler}>
-          <form className="nx-form">
+          <NxForm className="nx-form"
+                  onSubmit={modalCloseHandler}
+                  onCancel={modalCloseHandler}
+                  submitError={error}>
             <header className="nx-modal-header">
               <h2 className="nx-h2">
                 <NxFontAwesomeIcon icon={faAngry} />
@@ -49,13 +49,7 @@ export default function NxModalFormErrorExample() {
                              { ...textFieldState }/>
               </NxFormGroup>
             </div>
-            <footer className="nx-footer">
-              <NxLoadError { ...({ error, retryHandler }) } onClick={modalCloseHandler} />
-              <div className="nx-btn-bar">
-                <NxButton type="button" onClick={modalCloseHandler}>Cancel</NxButton>
-              </div>
-            </footer>
-          </form>
+          </NxForm>
         </NxModal>
       }
     </>
