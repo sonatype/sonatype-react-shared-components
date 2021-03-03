@@ -10,7 +10,7 @@
 
 $nx-sidebar-width__open: 255px;
 $nx-sidebar-width__closed: 72px;
-$nx-sidebar-logo-height: 33px;
+$nx-sidebar-logo-height: 34px;
 $nx-sidebar-link-height: 40px;
 
 $nx-sidebar-text-color: $nx-white;
@@ -100,6 +100,14 @@ $nx-sidebar-separator-color: $nx-grey-900;
     padding: 0 $nx-spacing-sm 0 $nx-spacing-l;
     text-decoration: none;
 
+    > span {
+      margin-left: $nx-spacing-md;
+    }
+
+    &:active {
+      background-color: $nx-sidebar-active-color;
+    }
+
     &:hover {
       background-color: $nx-sidebar-hover-color;
     }
@@ -125,9 +133,12 @@ $nx-sidebar-separator-color: $nx-grey-900;
   }
 
   .nx-sidebar__header {
-    height: 45px;
     margin: 0;
-    justify-content: center;
+  }
+
+  .nx-sidebar__toggle {
+    align-self: center;
+    margin-bottom: $nx-sidebar-logo-height;
   }
 
   .nx-sidebar__product-info {
