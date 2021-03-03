@@ -11,9 +11,10 @@
 $nx-sidebar-width__open: 250px;
 $nx-sidebar-width__closed: 69px;
 $nx-sidebar-logo-height: 33px;
-$nx-sidebar-background-color: $nx-blue-1000;
+
 $nx-sidebar-text-color: $nx-white;
-$nx-sidebar-help-color: $nx-grey-50;
+$nx-sidebar-background-color: $nx-blue-1000;
+$nx-sidebar-active-color: $nx-indigo-400;
 $nx-sidebar-hover-color: $nx-indigo-600;
 $nx-sidebar-selected-color: $nx-indigo-800;
 $nx-sidebar-separator-color: $nx-grey-900;
@@ -55,9 +56,22 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-sidebar__toggle {
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
   color: $nx-sidebar-text-color;
   flex: 0 0 auto;
   margin: 0;
+
+  &:hover, &:focus {
+    background-color: $nx-sidebar-hover-color;
+    border-color: $nx-sidebar-hover-color;
+  }
+
+  &:active {
+    background-color: $nx-sidebar-active-color;
+    border-color: $nx-sidebar-active-color;
+  }
 }
 
 .nx-sidebar__content {
