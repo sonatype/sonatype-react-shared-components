@@ -85,8 +85,7 @@
 #temporary-navigation-sidebar-example {
   .navigation-sidebar-custom-content-1 {
     font-size: $nx-font-size-s;
-    padding-left: $nx-spacing-sm;
-    padding-right: $nx-spacing-sm;
+    padding: 110px $nx-spacing-sm $nx-spacing-xxl;
     text-align: center;
 
     > a {
@@ -96,13 +95,14 @@
   }
 
   .navigation-sidebar-custom-content-2 {
+    flex: none;
     font-size: $nx-font-size-xs;
-    padding: $nx-spacing-l $nx-spacing-l $nx-spacing-xl;
+    margin: 0;
     text-align: center;
   }
 
   .example-release-note {
-    margin-bottom: $nx-spacing-xl;
+    margin: 0 0 $nx-spacing-xl;
   }
 
   .example-attribution {
