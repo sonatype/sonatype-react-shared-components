@@ -29,7 +29,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   flex: none;
   flex-direction: column;
   width: $nx-sidebar-width__open;
-  padding: $nx-spacing-l 0 0 0;
+  padding: $nx-spacing-l 0 $nx-spacing-xxl 0;
 }
 
 .nx-sidebar__header {
@@ -76,8 +76,9 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-sidebar__content {
-  padding: $nx-spacing-xxl;
+  flex: 1 0 auto;
   font-size: $nx-font-size-xs;
+  margin: $nx-spacing-l 0 0;
 
   a {
     color: $nx-sidebar-text-color;
@@ -86,9 +87,8 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
 .nx-sidebar__navigation {
   border-bottom: 1px solid $nx-sidebar-separator-color;
-  flex: 1 0 auto;
-  margin:  0 0 $nx-spacing-xxl 0;
-  padding: $nx-spacing-xl 0 0;
+  flex: 0 0 auto;
+  margin: $nx-spacing-l 0 0;
 
   > a {
     @include container-horizontal;
@@ -99,12 +99,8 @@ $nx-sidebar-separator-color: $nx-grey-900;
     font-size: $nx-font-size;
     height: $nx-sidebar-link-height;
     line-height: $nx-sidebar-link-height;
-    padding-left: $nx-spacing-l;
+    padding: 0 $nx-spacing-sm 0 $nx-spacing-l;
     text-decoration: none;
-
-    > span {
-      margin-left: $nx-spacing-sm;
-    }
 
     &:hover {
       background-color: $nx-sidebar-hover-color;
@@ -138,10 +134,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
   .nx-sidebar__product-info {
     display: none;
-  }
-
-  .nx-sidebar__content {
-    padding: $nx-spacing-xxl $nx-spacing-sm;
   }
 
   .nx-sidebar__navigation {
