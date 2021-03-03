@@ -8,9 +8,10 @@
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
 
-$nx-sidebar-width__open: 250px;
-$nx-sidebar-width__closed: 69px;
+$nx-sidebar-width__open: 255px;
+$nx-sidebar-width__closed: 72px;
 $nx-sidebar-logo-height: 33px;
+$nx-sidebar-link-height: 40px;
 
 $nx-sidebar-text-color: $nx-white;
 $nx-sidebar-background-color: $nx-blue-1000;
@@ -96,8 +97,8 @@ $nx-sidebar-separator-color: $nx-grey-900;
     color: inherit;
     display: block;
     font-size: $nx-font-size;
-    height: 32px;
-    line-height: 32px;
+    height: $nx-sidebar-link-height;
+    line-height: $nx-sidebar-link-height;
     padding-left: $nx-spacing-l;
     text-decoration: none;
 
