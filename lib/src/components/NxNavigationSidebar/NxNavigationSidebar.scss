@@ -33,36 +33,20 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-sidebar__header {
-  @include container-horizontal;
+  @include container-vertical;
 
   display: flex;
+  flex-direction: column;
   margin: 0 $nx-spacing-l;
 }
 
-.nx-sidebar__product-info {
-  @include container-horizontal;
-
-  align-items: center;
-  color: $nx-sidebar-text-color;
-  display: flex;
-  flex: 1 0 auto;
-  max-width: 80%;
-  margin-top: $nx-spacing-sm;
-  text-decoration: none;
-}
-
-.nx-sidebar__logo {
-  height: $nx-sidebar-logo-height;
-  margin-right: $nx-spacing-xs;
-}
-
 .nx-sidebar__toggle {
-  width: 41px;
-  height: 41px;
+  align-self: flex-end;
   border-radius: 50%;
   color: $nx-sidebar-text-color;
-  flex: 0 0 auto;
+  height: 41px;
   margin: 0;
+  width: 41px;
 
   &:hover, &:focus {
     background-color: $nx-sidebar-hover-color;
@@ -73,6 +57,20 @@ $nx-sidebar-separator-color: $nx-grey-900;
     background-color: $nx-sidebar-active-color;
     border-color: $nx-sidebar-active-color;
   }
+}
+
+.nx-sidebar__product-info {
+  @include container-horizontal;
+
+  align-items: center;
+  display: flex;
+  color: $nx-sidebar-text-color;
+  text-decoration: none;
+}
+
+.nx-sidebar__logo {
+  height: $nx-sidebar-logo-height;
+  margin-right: $nx-spacing-xs;
 }
 
 .nx-sidebar__content {
