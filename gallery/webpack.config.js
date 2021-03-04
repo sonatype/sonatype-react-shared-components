@@ -126,6 +126,9 @@ module.exports = function(env = { production: false }) {
       disableHostCheck: true,
       publicPath: '/',
       contentBase: path.join(__dirname, 'src')
+    },
+    snapshot: {
+      managedPaths: []
     }
   };
 };
