@@ -200,3 +200,7 @@ export { default as NxCodeSnippet, Props as NxCodeSnippetProps } from './compone
 export { default as useToggle } from './util/useToggle';
 
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
+
+export { default as withClass } from './util/withClass';
+
+export * from './components/SimpleComponents';
