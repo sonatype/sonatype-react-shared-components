@@ -21,7 +21,7 @@
     gap: 0;
 
     // override Safari rule from .nx-card
-    & > .gallery-swatch {
+    > .gallery-swatch {
       margin-bottom: 0;
     }
   }
