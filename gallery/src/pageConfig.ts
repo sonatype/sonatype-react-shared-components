@@ -96,6 +96,7 @@ import NxTagPage from './components/NxTag/NxTagPage';
 import NxCodeSnippetPage from './components/NxCodeSnippet/NxCodeSnippetPage';
 import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
 import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
+import NxVulnerabilityIndicatorPage from './styles/NxVulnerabilityIndicator/NxVulnerabilityIndicatorPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -177,7 +178,8 @@ const pageConfig: PageConfig = {
     'nx-table': NxTableStylePage,
     'nx-table-container': NxTableContainerPage,
     'nx-threat-number': NxThreatNumberPage,
-    'nx-tile': NxTilePage
+    'nx-tile': NxTilePage,
+    'nx-vulnerability-indicator': NxVulnerabilityIndicatorPage
   },
   'Styles - Mixins & Helpers': {
     'Custom app font size': NxFontSizePage,
