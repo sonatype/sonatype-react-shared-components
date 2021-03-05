@@ -11,13 +11,16 @@ import { pipe, split, map, join, toUpper, head, tail } from 'ramda';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import { SelectableColor, selectableColors } from '../../util/selectableColors';
 import { useRandomId } from '../../util/idUtil';
+import { textContent } from '../../util/childUtil';
 import { Props, propTypes } from './types';
 
 export { Props } from './types';
 
 import './NxColorPicker.scss';
+import NxFieldset from '../NxFieldset/NxFieldset';
 
 interface ColorRadioProps {
+  pickerLabel: string;
   color: SelectableColor;
   value?: SelectableColor | null;
   name: string;
@@ -32,10 +35,11 @@ const humanReadable: (c: SelectableColor) => string = pipe(
     join(' ')
 );
 
-function ColorRadio({ color, value, onChange, name }: ColorRadioProps) {
+function ColorRadio({ pickerLabel, color, value, onChange, name }: ColorRadioProps) {
   const selected = value === color,
       classes = classnames('nx-color-picker__color', `nx-color-picker__color--${color}`, { selected }),
-      humanReadableColor = useMemo(() => humanReadable(color), [color]);
+      humanReadableColor = useMemo(() => humanReadable(color), [color]),
+      label = `${pickerLabel} ${humanReadableColor}`;
 
   function inputOnChange() {
     if (onChange) {
@@ -45,7 +49,7 @@ function ColorRadio({ color, value, onChange, name }: ColorRadioProps) {
 
   return (
     <NxTooltip title={humanReadableColor}>
-      <label className={classes}>
+      <label aria-label={label} className={classes}>
         <input className="nx-color-picker__input"
                type="radio"
                name={name}
@@ -57,14 +61,17 @@ function ColorRadio({ color, value, onChange, name }: ColorRadioProps) {
   );
 }
 
-export default function NxColorPicker({ value, onChange, className, ...attrs }: Props) {
+export default function NxColorPicker({ value, onChange, className, label, ...attrs }: Props) {
   const name = useRandomId('nx-color-picker'),
-      classes = classnames('nx-color-picker', className);
+      classes = classnames('nx-color-picker', className),
+      pickerLabel = textContent(label);
 
   return (
-    <fieldset className={classes} { ...attrs }>
-      { selectableColors.map(color => <ColorRadio key={color} { ...{ color, name, value, onChange } } />)}
-    </fieldset>
+    <NxFieldset label={label} className={classes} { ...attrs }>
+      {selectableColors.map(color =>
+        <ColorRadio key={color} { ...{ pickerLabel, color, name, value, onChange } } />
+      )}
+    </NxFieldset>
   );
 }
 

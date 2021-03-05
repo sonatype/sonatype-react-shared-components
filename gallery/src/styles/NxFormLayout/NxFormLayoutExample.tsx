@@ -120,9 +120,7 @@ export default function NxFormLayoutExample() {
       <NxFormGroup label="Comments" isRequired>
         <NxStatefulTextInput type="textarea" placeholder="placeholder" aria-required={true}/>
       </NxFormGroup>
-      <NxFormGroup label="Tag Color">
-        <NxColorPicker value={tagColor} onChange={setTagColor} />
-      </NxFormGroup>
+      <NxColorPicker label="Tag Color" isRequired value={tagColor} onChange={setTagColor} />
       <footer className="nx-footer">
         <div className="nx-btn-bar">
           <NxButton type="button">Cancel</NxButton>
