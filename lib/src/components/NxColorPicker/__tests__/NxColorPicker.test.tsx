@@ -6,18 +6,21 @@
  */
 import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
 
-import NxColorPicker from '../NxColorPicker';
+import NxColorPicker, { Props } from '../NxColorPicker';
 import NxTooltip from '../../NxTooltip/NxTooltip';
+import NxFieldset from '../../NxFieldset/NxFieldset';
 
 describe('NxColorPicker', function() {
-  const getShallow = getShallowComponent(NxColorPicker, {}),
-      getMounted = getMountedComponent(NxColorPicker, {});
+  const minimalProps = { label: 'My Color Picker' },
+      getShallow = getShallowComponent<Props>(NxColorPicker, minimalProps),
+      getMounted = getMountedComponent<Props>(NxColorPicker, minimalProps);
 
-  it('renders a fieldset with the nx-color-picker class', function() {
-    expect(getShallow()).toMatchSelector('fieldset.nx-color-picker');
+  it('renders an NxFieldset with the nx-color-picker class', function() {
+    expect(getShallow()).toMatchSelector('.nx-color-picker');
+    expect(getShallow()).toMatchSelector(NxFieldset);
   });
 
-  it('adds any custom classes to the fieldset', function() {
+  it('adds any custom classes to the NxFieldset', function() {
     const component = getShallow({ className: 'foo' });
 
     expect(component).toHaveClassName('foo');
@@ -29,6 +32,11 @@ describe('NxColorPicker', function() {
 
     expect(component).toHaveProp('id', 'foo');
     expect(component).toHaveProp('lang', 'en_US');
+  });
+
+  it('adds the label prop to the NxFieldset', function() {
+    const component = getShallow();
+    expect(component).toHaveProp('label', 'My Color Picker');
   });
 
   it('renders a label.nx-color-picker__color wrapped around a input.nx-color-picker__input radio for each color',
@@ -71,6 +79,14 @@ describe('NxColorPicker', function() {
 
     expect(tooltips.filterWhere(tooltip => tooltip.prop('title') === 'Green'))
         .toContainMatchingElement('label.nx-color-picker__color--green');
+  });
+
+  it('sets an aria-label derived from the color name and overall label on each <label>', function() {
+    const component = getMounted(),
+        labels = component.find('.nx-color-picker__color');
+
+    expect(labels.filter('.nx-color-picker__color--light-blue')).toHaveProp('aria-label', 'My Color Picker Light Blue');
+    expect(labels.filter('.nx-color-picker__color--green')).toHaveProp('aria-label', 'My Color Picker Green');
   });
 
   it('sets a random common name attr on each radio', function() {

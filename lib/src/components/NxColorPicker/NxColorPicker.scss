@@ -10,10 +10,6 @@
 .nx-color-picker {
   @include container-horizontal;
 
-  border: none;
-  margin: $nx-spacing-md 0;
-  padding: 0;
-
   .nx-legend__text {
     margin-bottom: $nx-spacing-md;
   }

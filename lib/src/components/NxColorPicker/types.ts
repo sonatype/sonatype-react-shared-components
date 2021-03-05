@@ -8,14 +8,15 @@ import * as PropTypes from 'prop-types';
 
 import { Props as NxFieldsetProps, propTypes as nxFieldsetPropTypes } from '../NxFieldset/types';
 import { SelectableColor, selectableColors } from '../../util/selectableColors';
+import { omit } from 'ramda';
 
-export interface Props extends Omit<NxFieldsetProps, 'onChange'> {
+export interface Props extends Omit<NxFieldsetProps, 'onChange' | 'sublabel'> {
   value?: SelectableColor | null;
   onChange?: ((currentValue: SelectableColor) => void) | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  ...nxFieldsetPropTypes,
+  ...omit(['sublabel'], nxFieldsetPropTypes),
   value: PropTypes.oneOf(selectableColors),
   onChange: PropTypes.func
 };
