@@ -19,12 +19,16 @@
   .nx-card__content {
     align-items: stretch;
     gap: 0;
+
+    // override Safari rule from .nx-card
+    > .gallery-swatch {
+      margin-bottom: 0;
+    }
   }
 }
 
 .gallery-swatch {
   align-items: center;
-  column-gap: $nx-spacing-l;
   display: flex;
   flex-direction: row;
   text-align: left;
@@ -33,6 +37,7 @@
 .gallery-swatch__thumb {
   flex-shrink: 0;
   height: 64px;
+  margin-right: $nx-spacing-l;
   width: 64px;
 }
 
@@ -46,4 +51,5 @@
 
 .gallery-swatch__hex {
   flex-basis: 7ch;
+  margin-right: $nx-spacing-l;
 }
