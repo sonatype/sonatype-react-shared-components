@@ -38,6 +38,23 @@ const NxColorPickerPage = () =>
         </NxTableHead>
         <NxTableBody>
           <NxTableRow>
+            <NxTableCell>label</NxTableCell>
+            <NxTableCell>string | ReactNode</NxTableCell>
+            <NxTableCell>Yes</NxTableCell>
+            <NxTableCell>N/A</NxTableCell>
+            <NxTableCell>JSX content to render as the label for the picker. Must not be null or undefined.</NxTableCell>
+          </NxTableRow>
+          <NxTableRow>
+            <NxTableCell>isRequired</NxTableCell>
+            <NxTableCell>boolean</NxTableCell>
+            <NxTableCell>No</NxTableCell>
+            <NxTableCell>false</NxTableCell>
+            <NxTableCell>
+              Sets whether the optional flag should be displayed next to the picker label – the flag is present
+              by default and setting <code className="nx-code">isRequired</code> to true removes the flag.
+            </NxTableCell>
+          </NxTableRow>
+          <NxTableRow>
             <NxTableCell>value</NxTableCell>
             <NxTableCell>
               SelectableColor
