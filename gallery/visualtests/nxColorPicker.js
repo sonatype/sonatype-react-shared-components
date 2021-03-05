@@ -13,7 +13,7 @@ describe('NxColorPicker', function() {
   });
 
   const selector = '.gallery-example-live .nx-color-picker',
-      labelSelector = `${selector} .nx-color-picker__color:first-child`;
+      labelSelector = `${selector} .nx-color-picker__color:first-of-type`;
 
   it('looks right', simpleTest(selector));
   it('looks right with a hovered color', hoverTest(selector, labelSelector));
