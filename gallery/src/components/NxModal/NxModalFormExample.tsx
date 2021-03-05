@@ -6,20 +6,38 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxFontAwesomeIcon, NxButton, NxStatefulTextInput, NxFormGroup}
+import {NxModal, NxFontAwesomeIcon, NxButton, NxStatefulTextInput, NxFormGroup, NxForm}
   from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
 export default function NxModalFormExample() {
-  const [showModal, setShowModal] = useState(false);
-  const modalCloseHandler = () => setShowModal(false);
+  const [showModal, setShowModal] = useState(false),
+      [loading, setLoading] = useState(true),
+      modalCloseHandler = () => setShowModal(false);
+
+  function openModal() {
+    setShowModal(true);
+
+    setTimeout(function() {
+      setLoading(false);
+    }, 1000);
+  }
 
   return (
     <>
-      <NxButton onClick={() => setShowModal(true)}>Open Modal with Form</NxButton>
+      <NxButton onClick={openModal}>Open Modal with Form</NxButton>
       {showModal &&
         <NxModal id="nx-modal-form-example" onClose={modalCloseHandler}>
-          <form className="nx-form">
+          <NxForm className="nx-form"
+                  onSubmit={modalCloseHandler}
+                  onCancel={modalCloseHandler}
+                  additionalFooterBtns={
+                    <NxButton type="button" onClick={modalCloseHandler} variant="tertiary">
+                      Tertiary
+                    </NxButton>
+                  }
+                  doLoad={() => {}}
+                  loading={loading}>
             <header className="nx-modal-header">
               <h2 className="nx-h2">
                 <NxFontAwesomeIcon icon={faAngry} />
@@ -34,14 +52,7 @@ export default function NxModalFormExample() {
                 <NxStatefulTextInput type="password" aria-required={true} placeholder="Password"/>
               </NxFormGroup>
             </div>
-            <footer className="nx-footer">
-              <div className="nx-btn-bar">
-                <NxButton type="button" onClick={modalCloseHandler} variant="primary">Primary</NxButton>
-                <NxButton type="button" onClick={modalCloseHandler}>Default</NxButton>
-                <NxButton type="button" onClick={modalCloseHandler} variant="tertiary">Tertiary</NxButton>
-              </div>
-            </footer>
-          </form>
+          </NxForm>
         </NxModal>
       }
     </>
