@@ -52,7 +52,7 @@
 @media not all and (min-resolution:.001dpcm) {
   @supports (-webkit-appearance:none) and (display:flow-root) {
     // override a default .nx-card style
-    .nx-card__content > :not(:last-child) {
+    .nx-card__content > .gallery-swatch {
       margin-bottom: 0;
     }
 
