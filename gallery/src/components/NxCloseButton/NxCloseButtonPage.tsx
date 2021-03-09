@@ -15,8 +15,8 @@ const NxCloseButtonPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <code className="nx-code">NxCloseButton</code> represents a standard "×" close button for use on modals,
-        alerts, etc. It supports all attributes supported by HTML <code className="nx-code">&lt;button&gt;</code>s.
+        <NxCode>NxCloseButton</NxCode> represents a standard "×" close button for use on modals,
+        alerts, etc. It supports all attributes supported by HTML <NxCode>&lt;button&gt;</NxCode>s.
       </p>
     </GalleryDescriptionTile>
 

@@ -15,12 +15,12 @@ const NxReadOnlyPage = () => {
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          <code className="nx-code">.nx-read-only</code> is a design pattern for when you wish to display read-only
+          <NxCode>.nx-read-only</NxCode> is a design pattern for when you wish to display read-only
           data in a form. Its basic structure is a label and one or more data points.
         </p>
         <p className="nx-p">
-          <code className="nx-code">.nx-read-only</code> is layed out using a description list
-          (<code className="nx-code">&lt;dl&gt;</code>) as the container.
+          <NxCode>.nx-read-only</NxCode> is layed out using a description list
+          (<NxCode>&lt;dl&gt;</NxCode>) as the container.
         </p>
         <table className="nx-table">
           <thead>
@@ -32,25 +32,25 @@ const NxReadOnlyPage = () => {
           </thead>
           <tbody>
             <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-read-only</code></td>
+              <td className="nx-cell"><NxCode>.nx-read-only</NxCode></td>
               <td className="nx-cell">Top level</td>
               <td className="nx-cell">
-                This is the basic wrapper class. It is applied to the <code className="nx-code">&lt;dl&gt;</code>.
+                This is the basic wrapper class. It is applied to the <NxCode>&lt;dl&gt;</NxCode>.
               </td>
             </tr>
             <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-read-only__label</code></td>
+              <td className="nx-cell"><NxCode>.nx-read-only__label</NxCode></td>
               <td className="nx-cell">Element</td>
               <td className="nx-cell">
-                This class is applied to the <code className="nx-code">&lt;dt&gt;</code>, it represents the label for
+                This class is applied to the <NxCode>&lt;dt&gt;</NxCode>, it represents the label for
                 the data below.
               </td>
             </tr>
             <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-read-only__data</code></td>
+              <td className="nx-cell"><NxCode>.nx-read-only__data</NxCode></td>
               <td className="nx-cell">Element</td>
               <td className="nx-cell">
-                This class is applied to any <code className="nx-code">&lt;dd&gt;</code>'s that appear. The data
+                This class is applied to any <NxCode>&lt;dd&gt;</NxCode>'s that appear. The data
                 displayed can be any string or HTML markup.
               </td>
             </tr>
@@ -60,7 +60,7 @@ const NxReadOnlyPage = () => {
       <GalleryExampleTile title="Styling read-only lists of data"
                           codeExamples={nxReadOnlyDlExampleCode}
                           htmlExample={nxReadOnlyDlExampleCode}>
-        Standard <code className="nx-code">nx-read-only</code> layouts, by default all text wraps.
+        Standard <NxCode>nx-read-only</NxCode> layouts, by default all text wraps.
       </GalleryExampleTile>
     </>
   );

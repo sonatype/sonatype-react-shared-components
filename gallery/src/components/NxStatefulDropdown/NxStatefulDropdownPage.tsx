@@ -39,7 +39,7 @@ const NxStatefulDropdownPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               What type of button to render for the dropdown.
-              Defaults to <code className="nx-code">"tertiary"</code>
+              Defaults to <NxCode>"tertiary"</NxCode>
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -54,7 +54,7 @@ const NxStatefulDropdownPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               Controls if the component should be rendered as disabled.
-              Defaults to <code className="nx-code">false</code>
+              Defaults to <NxCode>false</NxCode>
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -80,7 +80,7 @@ const NxStatefulDropdownPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               NxStatefulDropdown supports any html attribute that's normally supported by
-              {' '}<code className="nx-code">div</code> elements.
+              {' '}<NxCode>div</NxCode> elements.
             </td>
           </tr>
         </tbody>

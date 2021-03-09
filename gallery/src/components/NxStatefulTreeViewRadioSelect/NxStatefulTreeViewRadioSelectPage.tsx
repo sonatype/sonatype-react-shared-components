@@ -39,14 +39,14 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <td className="nx-cell">
               <p className="nx-p">
                 An array of objects that corresponds to the possible options of the component (the radios).
-                These objects need to at least have an <code className="nx-code">id: string | null</code> property{' '}
-                and a <code className="nx-code">name: string</code> property. If an empty array is passed in,{' '}
+                These objects need to at least have an <NxCode>id: string | null</NxCode> property{' '}
+                and a <NxCode>name: string</NxCode> property. If an empty array is passed in,{' '}
                 the component will be disabled.
               </p>
               <p className="nx-p">
-                <code className="nx-code">id</code> will be the value provided to the{' '}
-                <code className="nx-code">onChange</code> callback, and{' '}
-                <code className="nx-code">name</code> will be used to render the option.
+                <NxCode>id</NxCode> will be the value provided to the{' '}
+                <NxCode>onChange</NxCode> callback, and{' '}
+                <NxCode>name</NxCode> will be used to render the option.
               </p>
             </td>
           </tr>
@@ -74,7 +74,7 @@ const NxStatefulTreeViewRadioSelectPage = () =>
               Called whenever selection change occurs; it will receive one argument:
               <ul className="nx-list nx-list--bulleted">
                 <li className="nx-list__item">
-                  <code className="nx-code">id</code> of the toggled option
+                  <NxCode>id</NxCode> of the toggled option
                 </li>
               </ul>
             </td>
@@ -84,7 +84,7 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <td className="nx-cell">string | null</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              The <code className="nx-code" >id</code> of the option to be selected.
+              The <NxCode>id</NxCode> of the option to be selected.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -117,9 +117,9 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               Enables the tooltip that appears when the component is disabled.
-              If no <code className="nx-code">disabledTooltip</code> is passed in and the component is disabled due
-              to lack of <code className="nx-code">options</code>, a default tooltip will be provided. If the
-              component is disabled explicitly and no <code className="nx-code">disabledTooltip</code> is provided,
+              If no <NxCode>disabledTooltip</NxCode> is passed in and the component is disabled due
+              to lack of <NxCode>options</NxCode>, a default tooltip will be provided. If the
+              component is disabled explicitly and no <NxCode>disabledTooltip</NxCode> is provided,
               no tooltip will be shown.
             </td>
           </tr>
@@ -163,7 +163,7 @@ const NxStatefulTreeViewRadioSelectPage = () =>
     <GalleryExampleTile title="General Example"
                         codeExamples={nxStatefulTreeViewRadioSelectExampleCode}
                         liveExample={NxStatefulTreeViewRadioSelectExample}>
-      This example demonstrates basic usage of <code className="nx-code">NxStatefulTreeViewRadioSelect</code>. Note that
+      This example demonstrates basic usage of <NxCode>NxStatefulTreeViewRadioSelect</NxCode>. Note that
       the component tracks the collapse/expand state and filter text internally, and the calling
       code only needs to track which items are selected.
     </GalleryExampleTile>
@@ -171,7 +171,7 @@ const NxStatefulTreeViewRadioSelectPage = () =>
     <GalleryExampleTile title="Disabled Example With Tooltip"
                         liveExample={NxStatefulTreeViewRadioSelectDisabledExample}
                         codeExamples={nxStatefulTreeViewRadioSelectDisabledExampleCode}>
-      This example shows a disabled <code className="nx-code">NxStatefulTreeViewRadioSelect</code> with a tooltip.
+      This example shows a disabled <NxCode>NxStatefulTreeViewRadioSelect</NxCode> with a tooltip.
     </GalleryExampleTile>
   </>;
 

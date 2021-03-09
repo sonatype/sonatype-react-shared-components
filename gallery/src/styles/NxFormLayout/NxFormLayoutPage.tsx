@@ -38,91 +38,91 @@ const NxFormLayoutPage = () =>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-form</code></td>
+            <td className="nx-cell"><NxCode>.nx-form</NxCode></td>
             <td className="nx-cell">Top-Level</td>
             <td className="nx-cell">
-              Default form class. Resets browser <code className="nx-code">&lt;form&gt;</code> attributes and applies
+              Default form class. Resets browser <NxCode>&lt;form&gt;</NxCode> attributes and applies
               NX styles.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-form-group</code></td>
+            <td className="nx-cell"><NxCode>.nx-form-group</NxCode></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Basic container for form elements. Typically it is best to use
-              the <code className="nx-code">NxFormGroup</code> react component instead of using this class directly.
+              the <NxCode>NxFormGroup</NxCode> react component instead of using this class directly.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-form-row</code></td>
+            <td className="nx-cell"><NxCode>.nx-form-row</NxCode></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              Used as a parent when you want <code className="nx-code">.nx-form-group</code> blocks to display
+              Used as a parent when you want <NxCode>.nx-form-group</NxCode> blocks to display
               horizontally rather than stack vertically.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-label</code></td>
+            <td className="nx-cell"><NxCode>.nx-label</NxCode></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              Standard class for <code className="nx-code">&lt;label&gt;</code> elements. This element may either be
+              Standard class for <NxCode>&lt;label&gt;</NxCode> elements. This element may either be
               wrapped around the form field and sublabel, or precede them and use
-              the <code className="nx-code">for</code> attribute (<code className="nx-code">htmlFor</code> is react).
+              the <NxCode>for</NxCode> attribute (<NxCode>htmlFor</NxCode> is react).
               When the sublabel is present, the label <em>should</em> be set up as a
-              preceding element for accessibility reasons. Using the <code className="nx-code">NxFormGroup</code>
+              preceding element for accessibility reasons. Using the <NxCode>NxFormGroup</NxCode>
               react component handles all of this for you and is recommended.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-label--optional</code></td>
+            <td className="nx-cell"><NxCode>.nx-label--optional</NxCode></td>
             <td className="nx-cell">Modifier</td>
             <td className="nx-cell">
-              Used when you want "Optional" text to appear after a <code className="nx-code">&lt;label&gt;</code>
+              Used when you want "Optional" text to appear after a <NxCode>&lt;label&gt;</NxCode>
               element.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-sub-label</code></td>
+            <td className="nx-cell"><NxCode>.nx-sub-label</NxCode></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              Used when you want text below the standard <code className="nx-code">&lt;label&gt;</code> text.
-              <code className="nx-code">.nx-sub-label</code> is meant to be applied to a{' '}
-              <code className="nx-code">&lt;span&gt;</code> located after the{' '}
-              <code className="nx-code">&lt;label&gt;</code>, though for backwards compatibility placing it within
-              the <code className="nx-code">&lt;label&gt;</code> is also supported. The sublabel <em>should</em> be
+              Used when you want text below the standard <NxCode>&lt;label&gt;</NxCode> text.
+              <NxCode>.nx-sub-label</NxCode> is meant to be applied to a{' '}
+              <NxCode>&lt;span&gt;</NxCode> located after the{' '}
+              <NxCode>&lt;label&gt;</NxCode>, though for backwards compatibility placing it within
+              the <NxCode>&lt;label&gt;</NxCode> is also supported. The sublabel <em>should</em> be
               referenced as the accessibility description (i.e.
-              using <code className="nx-code">aria-describedby</code>) on the form field.
+              using <NxCode>aria-describedby</NxCode>) on the form field.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-fieldset</code></td>
+            <td className="nx-cell"><NxCode>.nx-fieldset</NxCode></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              Applied to a <code className="nx-code">&lt;fieldset&gt;</code> element that wraps checkboxes or
+              Applied to a <NxCode>&lt;fieldset&gt;</NxCode> element that wraps checkboxes or
               radio buttons.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-footer</code></td>
+            <td className="nx-cell"><NxCode>.nx-footer</NxCode></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Applied to a footer which contains the form action buttons (e.g. Submit, Cancel, etc).
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-legend</code></td>
+            <td className="nx-cell"><NxCode>.nx-legend</NxCode></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              Standard class for <code className="nx-code">&lt;legend&gt;</code> elements. A legend is used inside of a
-              <code className="nx-code">&lt;fieldset&gt;</code> in the place of a
-              <code className="nx-code">&lt;label&gt;</code>
+              Standard class for <NxCode>&lt;legend&gt;</NxCode> elements. A legend is used inside of a
+              <NxCode>&lt;fieldset&gt;</NxCode> in the place of a
+              <NxCode>&lt;label&gt;</NxCode>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-legend--optional</code></td>
+            <td className="nx-cell"><NxCode>.nx-legend--optional</NxCode></td>
             <td className="nx-cell">Modifier</td>
             <td className="nx-cell">
-              Used when you want "Optional" text to appear after a <code className="nx-code">&lt;legend&gt;</code>
+              Used when you want "Optional" text to appear after a <NxCode>&lt;legend&gt;</NxCode>
               element.
             </td>
           </tr>
@@ -143,7 +143,7 @@ const NxFormLayoutPage = () =>
                         codeExamples={NxFormHorizontalLayoutCode}>
       This example demonstrates a form layout with horizontally placed text input fields. Note that the checkbox and
       radio fieldsets remain vertically separated, they should not be placed side-by-side. This example also
-      demonstrates the use of an <code className="nx-code">NxErrorAlert</code> in the footer.
+      demonstrates the use of an <NxCode>NxErrorAlert</NxCode> in the footer.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Inline form layout"

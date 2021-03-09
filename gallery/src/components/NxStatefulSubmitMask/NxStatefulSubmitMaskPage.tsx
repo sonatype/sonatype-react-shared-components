@@ -19,11 +19,11 @@ const NxStatefulSubmitMaskPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        This is a wrapper around <code className="nx-code">NxSubmitMask</code> which manages the display and then
+        This is a wrapper around <NxCode>NxSubmitMask</NxCode> which manages the display and then
         hiding of the success phase of the mask.
       </p>
       <p className="nx-p">
-        The externally visible "success" state, specified by setting the <code className="nx-code">success</code> prop
+        The externally visible "success" state, specified by setting the <NxCode>success</NxCode> prop
         to true, encompasses two interally-managed states: the actual, visible success state, and then the automatic
         removal of the mask after the success state has been visible for a brief time.  Since this component manages
         these states internally, from an external perspective "success" is the end state
@@ -53,8 +53,8 @@ const NxStatefulSubmitMaskPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               Whether the mask should display as a success. When true, the loading spinner will not be present,
-              the mask will have green styling, and the <code className="nx-code">successMessage</code> will be used
-              instead of the <code className="nx-code">message</code> as described below. In this stateful component,
+              the mask will have green styling, and the <NxCode>successMessage</NxCode> will be used
+              instead of the <NxCode>message</NxCode> as described below. In this stateful component,
               the success state will only be visible briefly and then will automatically hide. Defaults to false
             </td>
           </tr>
@@ -63,7 +63,7 @@ const NxStatefulSubmitMaskPage = () =>
             <td className="nx-cell">string</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              The text to display inside of the mask when <code className="nx-code">success</code> is false.  Defaults
+              The text to display inside of the mask when <NxCode>success</NxCode> is false.  Defaults
               to "Submitting…"
             </td>
           </tr>
@@ -72,7 +72,7 @@ const NxStatefulSubmitMaskPage = () =>
             <td className="nx-cell">string</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              The text to display inside of the mask when <code className="nx-code">success</code> is true. Defaults
+              The text to display inside of the mask when <NxCode>success</NxCode> is true. Defaults
               to "Success!"
             </td>
           </tr>
@@ -87,7 +87,7 @@ const NxStatefulSubmitMaskPage = () =>
     <GalleryExampleTile title="Simple Example"
                         liveExample={NxStatefulSubmitMaskExample}
                         codeExamples={NxStatefulSubmitMaskCode}>
-      An example of a simple <code className="nx-code">NxStatefulSubmitMask</code>. Click the button below to begin
+      An example of a simple <NxCode>NxStatefulSubmitMask</NxCode>. Click the button below to begin
       the example.  Once the button is clicked, the example is set up to stay in the non-success state for five
       seconds, demonstrating the delay in the completion of some asynchronous processing. Then, after five seconds,
       the mask reaches the Sucess state which it automatically displays for a brief period of time.

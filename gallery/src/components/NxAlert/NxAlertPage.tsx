@@ -50,7 +50,7 @@ const NxAlertPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               Brief descriptive text to apply to the icon using
-              the <code className="nx-code">aria-label</code> attribute. Optional for backwards compatibility, but
+              the <NxCode>aria-label</NxCode> attribute. Optional for backwards compatibility, but
               strongly recommended.
             </td>
           </tr>
@@ -62,10 +62,10 @@ const NxAlertPage = () =>
               A handler that dismisses the alert when called. If this prop is present, a close button will be rendered
               at the right-hand side of the alert. When that button is clicked, this callback will be fired. Note that
               while this callback (and button) are optional, our UX patterns call for almost all alerts to be
-              dismissable in some way. Therefore, an <code className="nx-code">onClose</code> callback should
+              dismissable in some way. Therefore, an <NxCode>onClose</NxCode> callback should
               be provided, unless some other mechanism for closing the alert is provided within the alert children.
               A "Retry" button would be an example of such an alternative mechanism. Conversely, in the
-              case where such an alternative mechanism is present, the <code className="nx-code">onClose</code>
+              case where such an alternative mechanism is present, the <NxCode>onClose</NxCode>
               callback <em>should not</em> be provided.
             </td>
           </tr>
@@ -84,7 +84,7 @@ const NxAlertPage = () =>
       <p className="nx-p">Standard sonatype alerts.</p>
       <p className="nx-p">They come in four variations: Error, Info, Warning, and Success.</p>
       <p className="nx-p">
-        Accepts any prop that is valid on a div as well as the <code className="nx-code">onClose</code> prop
+        Accepts any prop that is valid on a div as well as the <NxCode>onClose</NxCode> prop
         described above.
       </p>
       <section className="nx-tile-subsection">
@@ -94,13 +94,13 @@ const NxAlertPage = () =>
         <p className="nx-p">
           Different types of alerts use
           different <a target="_blank" rel="noreferrer" href="https://www.w3.org/WAI/PF/aria/roles">ARIA roles</a>.{' '}
-          <code className="nx-code">NxErrorAlert</code> uses <code className="nx-code">alert</code>.{' '}
-          <code className="nx-code">NxSuccessAlert</code> uses <code className="nx-code">status</code>.{' '}
-          <code className="nx-code">NxInfoAlert</code> uses no special role by default, though
-          the <code className="nx-code">status</code> role may be appropriate in some use cases.{' '}
-          Finally, <code className="nx-code">NxWarningAlert</code> also has no default role, but
+          <NxCode>NxErrorAlert</NxCode> uses <NxCode>alert</NxCode>.{' '}
+          <NxCode>NxSuccessAlert</NxCode> uses <NxCode>status</NxCode>.{' '}
+          <NxCode>NxInfoAlert</NxCode> uses no special role by default, though
+          the <NxCode>status</NxCode> role may be appropriate in some use cases.{' '}
+          Finally, <NxCode>NxWarningAlert</NxCode> also has no default role, but
           when used in dynamic circumstances, should typically be given either
-          the <code className="nx-code">status</code> or <code className="nx-code">alert</code> role.
+          the <NxCode>status</NxCode> or <NxCode>alert</NxCode> role.
           The roles which are provided by default may be overridden by the caller.
         </p>
       </section>

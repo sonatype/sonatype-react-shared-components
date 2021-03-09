@@ -18,7 +18,7 @@ const NxFormSelectPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">
         Basic styles for Sonatype form select inputs. There isn't very much styling available for the
-        <code className="nx-code">&lt;select&gt;</code> tag. As such we've just implemented the basic borders, font,
+        <NxCode>&lt;select&gt;</NxCode> tag. As such we've just implemented the basic borders, font,
         and padding as well as disabled and focus styles.
       </p>
       <p className="nx-p">Classes:</p>
@@ -32,12 +32,12 @@ const NxFormSelectPage = () =>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-form-select</code></td>
+            <td className="nx-cell"><NxCode>.nx-form-select</NxCode></td>
             <td className="nx-cell">
               Base class
             </td>
             <td className="nx-cell">
-              Base class for a form <code className="nx-code">&lt;select&gt;</code>.
+              Base class for a form <NxCode>&lt;select&gt;</NxCode>.
             </td>
           </tr>
         </tbody>
@@ -48,13 +48,13 @@ const NxFormSelectPage = () =>
                         id="nx-form-select-example"
                         codeExamples={sourceCode}
                         liveExample={NxFormSelectExample}>
-      Demonstrates a form <code className="nx-code">&lt;select&gt;</code> active state.
+      Demonstrates a form <NxCode>&lt;select&gt;</NxCode> active state.
     </GalleryExampleTile>
     <GalleryExampleTile title="Form Select Disabled Example"
                         id="nx-form-select-disabled-example"
                         codeExamples={sourceCode}
                         liveExample={NxFormSelectDisabledExample}>
-      Demonstrates a form <code className="nx-code">&lt;select&gt;</code> disabled state.
+      Demonstrates a form <NxCode>&lt;select&gt;</NxCode> disabled state.
     </GalleryExampleTile>
   </>;
 

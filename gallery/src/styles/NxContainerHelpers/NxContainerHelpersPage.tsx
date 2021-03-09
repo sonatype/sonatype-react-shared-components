@@ -22,8 +22,8 @@ const NxContainerHelpersPage = () => {
       <GalleryDescriptionTile>
         <p className="nx-p">
           The following general guidelines are recommended for the usage of padding and margin.
-          The <code className="nx-code">container-vertical</code> and
-          <code className="nx-code">container-horizontal</code> SCSS mixins are provided to facilitate these patterns.
+          The <NxCode>container-vertical</NxCode> and
+          <NxCode>container-horizontal</NxCode> SCSS mixins are provided to facilitate these patterns.
         </p>
         <ul className="nx-list nx-list--bulleted">
           <li className="nx-list__item">
@@ -45,9 +45,9 @@ const NxContainerHelpersPage = () => {
           </li>
         </ul>
         <p className="nx-p">
-          The mixins facilitate point #2 above. The <code className="nx-code">container-vertical</code> mixin removes
+          The mixins facilitate point #2 above. The <NxCode>container-vertical</NxCode> mixin removes
           top margin from the first child and bottom margin from the last child, while the{' '}
-          <code className="nx-code">container-horizontal</code> mixin removes the left margin from the first child and
+          <NxCode>container-horizontal</NxCode> mixin removes the left margin from the first child and
           right margin from the last child.
         </p>
         <p className="nx-p">
@@ -55,21 +55,21 @@ const NxContainerHelpersPage = () => {
         </p>
         <ul className="nx-list nx-list--bulleted">
           <li className="nx-list__item">
-            Bare text nodes don't count in the <code className="nx-code">:first-child</code> and
-            <code className="nx-code">:last-child</code> selectors that are used to implement
+            Bare text nodes don't count in the <NxCode>:first-child</NxCode> and
+            <NxCode>:last-child</NxCode> selectors that are used to implement
             guideline #2. Therefore they can cause those selectors to select the wrong thing. As a result, bare
             text nodes as siblings of actual elements should be used with caution. This is particularly awkward with
             react components that take children but which support those children being a mix of inline and block
-            elements, such as <code className="nx-code">NxAlert</code>.
+            elements, such as <NxCode>NxAlert</NxCode>.
           </li>
           <li className="nx-list__item">
             Any CSS styles that cause the visual order of elements to not follow the document order of elements
-            can similarly cause <code className="nx-code">:first-child</code> and
-            <code className="nx-code">:last-child</code> problems. Floats are the most obvious offender here.
+            can similarly cause <NxCode>:first-child</NxCode> and
+            <NxCode>:last-child</NxCode> problems. Floats are the most obvious offender here.
             Again, use with caution.
           </li>
           <li className="nx-list__item">
-            The specificity on the <code className="nx-code">{'>'} :first-child</code> selector isn't that high as it
+            The specificity on the <NxCode>{'>'} :first-child</NxCode> selector isn't that high as it
             turns out, and component style can sometimes inadvertently override it.
           </li>
         </ul>

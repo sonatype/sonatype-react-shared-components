@@ -27,7 +27,7 @@ const NxFilterInputPage = () =>
 
       <h3>NxFilterInput Props</h3>
       <p className="nx-p">
-        <code className="nx-code">NxFilterInput</code> receives a subset of the props that are valid on NxTextInput,
+        <NxCode>NxFilterInput</NxCode> receives a subset of the props that are valid on NxTextInput,
         as described below.
       </p>
       <table className="nx-table nx-table--gallery-props">
@@ -89,7 +89,7 @@ const NxFilterInputPage = () =>
               exceptions are:
               <ul className="nx-list nx-list--bulleted">
                 <li className="nx-list__item">
-                  <code className="nx-code">defaultValue</code> which is left out because it creates what's commonly
+                  <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly
                   known as{' '}
                   <a target="_blank"
                      rel="noopener"
@@ -113,7 +113,7 @@ const NxFilterInputPage = () =>
                         className="nx-filter-input-examples"
                         liveExample={NxFilterInputFullExample}
                         codeExamples={nxFilterInputFullExampleCode}>
-      A simple <code className="nx-code">NxFilterInput</code>.
+      A simple <NxCode>NxFilterInput</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxFilterInput Disabled Example"
@@ -121,7 +121,7 @@ const NxFilterInputPage = () =>
                         className="nx-filter-input-examples"
                         liveExample={NxFilterInputDisabledExample}
                         codeExamples={nxFilterInputDisabledExampleCode}>
-      A disabled <code className="nx-code">NxFilterInput</code>.
+      A disabled <NxCode>NxFilterInput</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxFilterInput Datalist Example"
@@ -129,8 +129,8 @@ const NxFilterInputPage = () =>
                         className="nx-filter-input-examples"
                         liveExample={NxFilterInputDataListExample}
                         codeExamples={nxFilterInputDataListExampleCode}>
-      An example using a <code className="nx-code">datalist</code> with
-      <code className="nx-code">NxFilterInput</code>.
+      An example using a <NxCode>datalist</NxCode> with
+      <NxCode>NxFilterInput</NxCode>.
     </GalleryExampleTile>
   </>;
 

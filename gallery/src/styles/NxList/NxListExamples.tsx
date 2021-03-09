@@ -28,29 +28,29 @@ const NxListsExamples = () =>
                         id="nx-list-simple-example"
                         htmlExample={NxListSimpleCode}
                         codeExamples={NxListSimpleCode}>
-      Basic <code className="nx-code">nx-list</code> with a heading.
+      Basic <NxCode>nx-list</NxCode> with a heading.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Clickable List Example"
                         id="nx-list-clickable-example"
                         liveExample={NxListClickableExample}
                         codeExamples={NxListClickableCode}>
-      An <code className="nx-code">nx-list</code> demonstrating clickable, selection, and disabled styles.
+      An <NxCode>nx-list</NxCode> demonstrating clickable, selection, and disabled styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Bulleted List Example"
                         id="nx-list-bulleted-example"
                         htmlExample={NxListBulletedCode}
                         codeExamples={NxListBulletedCode}>
-      An <code className="nx-code">nx-list</code> demonstrating bulleted list styles more typical of
-      default <code className="nx-code">&lt;ul&gt;</code> styling. These can be nested.
+      An <NxCode>nx-list</NxCode> demonstrating bulleted list styles more typical of
+      default <NxCode>&lt;ul&gt;</NxCode> styling. These can be nested.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List with Actions Example"
                         id="nx-list-actions-example"
                         liveExample={NxListWithActionsExample}
                         codeExamples={NxListWithActionsCode}>
-      An <code className="nx-code">nx-list</code> with icon buttons for initiation actions.
+      An <NxCode>nx-list</NxCode> with icon buttons for initiation actions.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Multi-line Example"
@@ -58,21 +58,21 @@ const NxListsExamples = () =>
                         htmlExample={NxListMultiLineCode}
                         codeExamples={NxListMultiLineCode}>
       Examples of list items that wrap and truncate, some examples demonstrating wrapping and truncation
-      on <code className="nx-code">nx-list-item__subtext</code>.
+      on <NxCode>nx-list-item__subtext</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List Empty Example"
                         id="nx-list-empty-example"
                         htmlExample={NxListEmptyCode}
                         codeExamples={NxListEmptyCode}>
-      A demonstration of the expected styling and content for an empty <code className="nx-code">nx-list</code>.
+      A demonstration of the expected styling and content for an empty <NxCode>nx-list</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List with Error Message Example"
                         id="nx-list-error-example"
                         liveExample={NxListErrorExample}
                         codeExamples={NxListErrorStateCode}>
-      A demonstration of the expected styling and content for an <code className="nx-code">nx-list</code> whose content
+      A demonstration of the expected styling and content for an <NxCode>nx-list</NxCode> whose content
       failed to load.
     </GalleryExampleTile>
 
@@ -81,14 +81,14 @@ const NxListsExamples = () =>
                         liveExample={NxListLoadingExample}
                         codeExamples={NxListLoadingCode}>
       A demonstration of the expected styling and placement for a loading indicator
-      within <code className="nx-code">nx-list</code>.
+      within <NxCode>nx-list</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxList description list example"
                         id="nx-list-description-example"
                         htmlExample={NxListDescriptionCode}
                         codeExamples={NxListDescriptionCode}>
-      Basic <code className="nx-code">nx-list--description</code> with a heading. Wrapping is demonstrated in both
+      Basic <NxCode>nx-list--description</NxCode> with a heading. Wrapping is demonstrated in both
       the terms and the descriptions.
     </GalleryExampleTile>
   </>;

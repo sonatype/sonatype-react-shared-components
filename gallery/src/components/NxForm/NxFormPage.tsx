@@ -28,7 +28,7 @@ const NxFormPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <code className="nx-code">NxForm</code> is an encapsulation of styles and typical behavior for
+        <NxCode>NxForm</NxCode> is an encapsulation of styles and typical behavior for
         a form within a Sonatype application. It helps manage the UI around the following behaviors.
       </p>
       <ul className="nx-list nx-list--bulleted">
@@ -68,7 +68,7 @@ const NxFormPage = () =>
             <NxTableCell>false</NxTableCell>
             <NxTableCell>
               Set to true to display a loading spinner in place of the form. Only has an effect when used in
-              conjunction with <code className="nx-code">doLoad</code>
+              conjunction with <NxCode>doLoad</NxCode>
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
@@ -80,11 +80,11 @@ const NxFormPage = () =>
               When this prop is defined, it indicates that some asynchronous, retryable data load must happen
               before the form can be displayed. The form is wrapped in an{' '}
               <a className="nx-text-link" href="#/pages/NxLoadWrapper">
-                <code className="nx-code">NxLoadWrapper</code>
+                <NxCode>NxLoadWrapper</NxCode>
               </a>
               {' '}and this function is wired up to the retry button on the load error alert. Note that the
               initial load of the form data is expected to be triggered externally{' '}
-              – <code className="nx-code">NxForm</code> only calls this function in response to the Retry button.
+              – <NxCode>NxForm</NxCode> only calls this function in response to the Retry button.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
@@ -95,7 +95,7 @@ const NxFormPage = () =>
             <NxTableCell>
               The function to invoke in response to the form submission. Note that to prevent browser-native
               form submission semantics (e.g. page reload) the form
-              event's <code className="nx-code">preventDefault</code> method is called before this method is
+              event's <NxCode>preventDefault</NxCode> method is called before this method is
               dispatched. This function does not receive the form submit event as an argument, because it may
               also be called in response to a click on the Retry button in the form submission error alert.
             </NxTableCell>
@@ -117,7 +117,7 @@ const NxFormPage = () =>
             <NxTableCell>undefined</NxTableCell>
             <NxTableCell>
               If defined, the load wrapper's error alert will be displayed in place of the form, with this string
-              as its error message. Only has an effect if <code className="nx-code">doLoad</code> is also defined.
+              as its error message. Only has an effect if <NxCode>doLoad</NxCode> is also defined.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
@@ -127,7 +127,7 @@ const NxFormPage = () =>
             <NxTableCell>undefined</NxTableCell>
             <NxTableCell>
               If defined, an error alert will be rendered in the form footer showing the corresponding message,
-              along with a Retry button wired to the <code className="nx-code">onSubmit</code> handler.
+              along with a Retry button wired to the <NxCode>onSubmit</NxCode> handler.
               Additionally, the Submit button is hidden when this prop is defined.
             </NxTableCell>
           </NxTableRow>
@@ -137,8 +137,8 @@ const NxFormPage = () =>
             <NxTableCell>No</NxTableCell>
             <NxTableCell>"An error occurred saving data."</NxTableCell>
             <NxTableCell>
-              The <code className="nx-code">titleMessage</code> to set on
-              the <code className="nx-code">NxLoadError</code> which displays errors from form submission.
+              The <NxCode>titleMessage</NxCode> to set on
+              the <NxCode>NxLoadError</NxCode> which displays errors from form submission.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
@@ -211,11 +211,11 @@ const NxFormPage = () =>
                 would typically use tertiary button styling.
               </p>
               <NxWarningAlert>
-                Do not forget that <code className="nx-code">&lt;button&gt;</code> elements, including those
-                rendered by <code className="nx-code">NxButton</code>,
-                have <code className="nx-code">type="submit"</code> by default. Therefore, in order to avoid these
+                Do not forget that <NxCode>&lt;button&gt;</NxCode> elements, including those
+                rendered by <NxCode>NxButton</NxCode>,
+                have <NxCode>type="submit"</NxCode> by default. Therefore, in order to avoid these
                 additional buttons submitting the form, care must be taken to
-                add <code className="nx-code">type="button"</code> to each of them.
+                add <NxCode>type="button"</NxCode> to each of them.
               </NxWarningAlert>
             </NxTableCell>
           </NxTableRow>
@@ -230,7 +230,7 @@ const NxFormPage = () =>
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell>HTML <code className="nx-code">&lt;form&gt;</code> Attributes</NxTableCell>
+            <NxTableCell>HTML <NxCode>&lt;form&gt;</NxCode> Attributes</NxTableCell>
             <NxTableCell>
               <a target="_blank"
                  rel="noopener"
@@ -242,7 +242,7 @@ const NxFormPage = () =>
             <NxTableCell>N/A</NxTableCell>
             <NxTableCell>
               NxForm supports any HTML attribute that's normally supported
-              by <code className="nx-code">&lt;form&gt;</code>.
+              by <NxCode>&lt;form&gt;</NxCode>.
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>
@@ -253,7 +253,7 @@ const NxFormPage = () =>
         </header>
         <p className="nx-p">
           In order to differentiate them from other buttons that might be on the page the
-          <code className="nx-code">NxForm</code> cancel and submit buttons have custom classes.
+          <NxCode>NxForm</NxCode> cancel and submit buttons have custom classes.
         </p>
         <NxTable className="nx-table--gallery-props">
           <NxTableHead>
@@ -265,18 +265,18 @@ const NxFormPage = () =>
           </NxTableHead>
           <NxTableBody>
             <NxTableRow>
-              <NxTableCell><code className="nx-code">nx-form__cancel-btn</code></NxTableCell>
+              <NxTableCell><NxCode>nx-form__cancel-btn</NxCode></NxTableCell>
               <NxTableCell>
-                Applied to the default <code className="nx-code">NxForm</code> Cancel button.
+                Applied to the default <NxCode>NxForm</NxCode> Cancel button.
               </NxTableCell>
               <NxTableCell>
                 A CSS class that can be used to identify the Cancel button on the page for testing or other purposes.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell><code className="nx-code">nx-form__submit-btn</code></NxTableCell>
+              <NxTableCell><NxCode>nx-form__submit-btn</NxCode></NxTableCell>
               <NxTableCell>
-                Applied to the default <code className="nx-code">NxForm</code> Submit button.
+                Applied to the default <NxCode>NxForm</NxCode> Submit button.
               </NxTableCell>
               <NxTableCell>
                 A CSS class that can be used to identify the Submit button on the page for testing or other purposes.

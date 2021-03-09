@@ -105,7 +105,7 @@ export default function NxFormLayoutExample() {
       </NxFormGroup>
       <NxFieldset label="Enable features" isRequired>
         <div className="nx-sub-label">
-          In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
+          In a form layout toggles are laid out in a <NxCode>&lt;fieldset&gt;</NxCode>
         </div>
         <NxToggle inputId="subscribe-check" onChange={toggleWarp} isChecked={isWarpOn}>
           Enable Warp Drive

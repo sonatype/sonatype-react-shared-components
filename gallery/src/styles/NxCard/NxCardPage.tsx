@@ -20,7 +20,7 @@ const NxCardPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">
         At its most basic a card is simply a container like a smaller version of
-        {' '}<code className="nx-code">nx-tile</code> with header, content, and footer content areas. Because it's
+        {' '}<NxCode>nx-tile</NxCode> with header, content, and footer content areas. Because it's
         expected that cards will have many uses the examples below do not represent an exhaustive list, instead the
         intent is to display some common patterns that we have seen to date, and provide a starting off point for
         future implementations.
@@ -35,15 +35,15 @@ const NxCardPage = () =>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card-container</code></td>
+            <td className="nx-cell"><NxCode>.nx-card-container</NxCode></td>
             <td className="nx-cell">Top-Level</td>
             <td className="nx-cell">
-              Container for <code className="nx-code">.nx-card</code>s
+              Container for <NxCode>.nx-card</NxCode>s
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card-container--no-wrap</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card-container</code></td>
+            <td className="nx-cell"><NxCode>.nx-card-container--no-wrap</NxCode></td>
+            <td className="nx-cell">Modifier of <NxCode>.nx-card-container</NxCode></td>
             <td className="nx-cell">
               By default if you put more cards into a container than can fit horizontally the cards will wrap into a
               new row. This modifier is used when you do not want the cards to wrap. Use with care as this can break
@@ -51,59 +51,59 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card</code></td>
+            <td className="nx-cell"><NxCode>.nx-card</NxCode></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Basic card element.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card--equal</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card</code></td>
+            <td className="nx-cell"><NxCode>.nx-card--equal</NxCode></td>
+            <td className="nx-cell">Modifier of <NxCode>.nx-card</NxCode></td>
             <td className="nx-cell">
-              <code className="nx-code">.nx-card</code>s have a default <code className="nx-code">max-width</code>.
-              This modifer will override the <code className="nx-code">max-width</code> and force all cards to share
+              <NxCode>.nx-card</NxCode>s have a default <NxCode>max-width</NxCode>.
+              This modifer will override the <NxCode>max-width</NxCode> and force all cards to share
               the available space equally. It should be applied to all cards within an
-              <code className="nx-code">.nx-card-container</code>.
+              <NxCode>.nx-card-container</NxCode>.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card__header</code></td>
+            <td className="nx-cell"><NxCode>.nx-card__header</NxCode></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              Card header element, typically wraps an <code className="nx-code">&lt;h3&gt;</code>.
+              Card header element, typically wraps an <NxCode>&lt;h3&gt;</NxCode>.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card__footer</code></td>
+            <td className="nx-cell"><NxCode>.nx-card__footer</NxCode></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Card footer, typically provides a link to more information or an action button.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card__content</code></td>
+            <td className="nx-cell"><NxCode>.nx-card__content</NxCode></td>
             <td className="nx-cell">Wrapping element</td>
             <td className="nx-cell">
-              <code className="nx-code">.nx-card__content</code> applied to a
-              {' '}<code className="nx-code">&lt;div&gt;</code> wraps card contents. In the layouts below it wraps
-              {' '}<code className="nx-code">.nx-card__call-out</code> and
-              {' '}<code className="nx-code">.nx-card__text</code> as well as other card content.
+              <NxCode>.nx-card__content</NxCode> applied to a
+              {' '}<NxCode>&lt;div&gt;</NxCode> wraps card contents. In the layouts below it wraps
+              {' '}<NxCode>.nx-card__call-out</NxCode> and
+              {' '}<NxCode>.nx-card__text</NxCode> as well as other card content.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card__content--columns</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-card__content</code></td>
+            <td className="nx-cell"><NxCode>.nx-card__content--columns</NxCode></td>
+            <td className="nx-cell">Modifier of <NxCode>.nx-card__content</NxCode></td>
             <td className="nx-cell">
-              <code className="nx-code">.nx-card__content--columns</code> applied to
-              {' '}<code className="nx-code">.nx-card__content</code> creates a two column layout within
-              {' '}<code className="nx-code">.nx-card__content</code>.
+              <NxCode>.nx-card__content--columns</NxCode> applied to
+              {' '}<NxCode>.nx-card__content</NxCode> creates a two column layout within
+              {' '}<NxCode>.nx-card__content</NxCode>.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card__call-out</code></td>
+            <td className="nx-cell"><NxCode>.nx-card__call-out</NxCode></td>
             <td className="nx-cell">
-              Element, typically a child of <code className="nx-code">.nx-card__content</code>
+              Element, typically a child of <NxCode>.nx-card__content</NxCode>
             </td>
             <td className="nx-cell">
               Wraps the card call out (if any). The call out typically consists of a number, sparkline, icon, or
@@ -111,24 +111,24 @@ const NxCardPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-card__text</code></td>
+            <td className="nx-cell"><NxCode>.nx-card__text</NxCode></td>
             <td className="nx-cell">
-              Element, typically a child of <code className="nx-code">.nx-card__content</code>
+              Element, typically a child of <NxCode>.nx-card__content</NxCode>
             </td>
             <td className="nx-cell">Free-form text. Should be concise.</td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">nx-card__call-out-icon</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-icon</code></td>
+            <td className="nx-cell"><NxCode>nx-card__call-out-icon</NxCode></td>
+            <td className="nx-cell">Modifier of <NxCode>.nx-icon</NxCode></td>
             <td className="nx-cell">
-              Changes the size of <code className="nx-code">.nx-icon</code> to <code className="nx-code">48px</code>.
+              Changes the size of <NxCode>.nx-icon</NxCode> to <NxCode>48px</NxCode>.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">nx-card__call-out-icon--xl</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-icon</code></td>
+            <td className="nx-cell"><NxCode>nx-card__call-out-icon--xl</NxCode></td>
+            <td className="nx-cell">Modifier of <NxCode>.nx-icon</NxCode></td>
             <td className="nx-cell">
-              Changes the size of <code className="nx-code">.nx-icon</code> to <code className="nx-code">64px</code>.
+              Changes the size of <NxCode>.nx-icon</NxCode> to <NxCode>64px</NxCode>.
             </td>
           </tr>
         </tbody>

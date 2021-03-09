@@ -19,15 +19,15 @@ const NxPageTitlePage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <code className="nx-code">nx-page-title</code> is used at the top of a page, it always has a title, and can also
+        <NxCode>nx-page-title</NxCode> is used at the top of a page, it always has a title, and can also
         have an icon and descriptive text.
       </p>
       <p className="nx-p">
-        In addition <code className="nx-code">.nx-page-title</code> can have tags or actions inline with the title.
+        In addition <NxCode>.nx-page-title</NxCode> can have tags or actions inline with the title.
       </p>
       <p className="nx-p">
-        Note: <code className="nx-code">.nx-page-title</code> replaces
-        <code className="nx-code">.nx-tile--top-tile</code> and <code className="nx-code">.nx-tile--title-only</code>.
+        Note: <NxCode>.nx-page-title</NxCode> replaces
+        <NxCode>.nx-tile--top-tile</NxCode> and <NxCode>.nx-tile--title-only</NxCode>.
       </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
@@ -39,26 +39,26 @@ const NxPageTitlePage = () =>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-page-title</code></td>
+            <td className="nx-cell"><NxCode>.nx-page-title</NxCode></td>
             <td className="nx-cell">Top level</td>
             <td className="nx-cell">
               This is the basic wrapper class. The title text is almost always contained in an
-              <code className="nx-code">&lt;h1&gt;</code>.
+              <NxCode>&lt;h1&gt;</NxCode>.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-page-title__page-icon</code></td>
+            <td className="nx-cell"><NxCode>.nx-page-title__page-icon</NxCode></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Class for an icon that appears to the left of the page title.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-page-title__description</code></td>
+            <td className="nx-cell"><NxCode>.nx-page-title__description</NxCode></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               If there is page level descriptive text it should be wrapped in a containing
-              <code className="nx-code">&lt;div&gt;</code> with this class.
+              <NxCode>&lt;div&gt;</NxCode> with this class.
             </td>
           </tr>
         </tbody>
@@ -70,7 +70,7 @@ const NxPageTitlePage = () =>
                         defaultCheckeredBackground={true}
                         htmlExample={nxPageTitleCode}
                         codeExamples={nxPageTitleCode}>
-      A simple example of an <code className="nx-code">nx-page-title</code>.
+      A simple example of an <NxCode>nx-page-title</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Page Title with Actions Example"
@@ -78,7 +78,7 @@ const NxPageTitlePage = () =>
                         defaultCheckeredBackground={true}
                         htmlExample={nxPageTitleActionsCode}
                         codeExamples={nxPageTitleActionsCode}>
-      An example of <code className="nx-code">nx-page-title</code> with actions in the form of a drop-down.
+      An example of <NxCode>nx-page-title</NxCode> with actions in the form of a drop-down.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Page Title with Policy Violation Indicator"
@@ -86,7 +86,7 @@ const NxPageTitlePage = () =>
                         defaultCheckeredBackground={true}
                         liveExample={NxPageTitlePolicyViolationIndicatorExample}
                         codeExamples={nxPageTitlePolicyViolationIndicatorCode}>
-      An example of a page title with an <code className="nx-code">NxPolicyViolationIndicator</code>.
+      An example of a page title with an <NxCode>NxPolicyViolationIndicator</NxCode>.
     </GalleryExampleTile>
   </>;
 

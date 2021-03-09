@@ -22,15 +22,15 @@ const NxFieldsetPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        An <code className="nx-code">NxFieldset</code> is a wrapper around a collection of checkboxes, radios, or
+        An <NxCode>NxFieldset</NxCode> is a wrapper around a collection of checkboxes, radios, or
         similar form elements which should be displayed to the user as a group with an overall label. When used
-        with <code className="nx-code">NxCheckbox</code> or <code className="nx-code">NxRadio</code>, all inputs
+        with <NxCode>NxCheckbox</NxCode> or <NxCode>NxRadio</NxCode>, all inputs
         contained within a single NxFieldset should represent different options/values of the same field.
       </p>
       <p className="nx-p">
-        Form fields which have their own individual label styled using <code className="nx-code">.nx-label</code>{' '}
-        (including those wrapped in <code className="nx-code">NxFormGroup</code>) should not be wrapped
-        in <code className="nx-code">NxFieldset</code> as the label styles between the two are intended to be identical
+        Form fields which have their own individual label styled using <NxCode>.nx-label</NxCode>{' '}
+        (including those wrapped in <NxCode>NxFormGroup</NxCode>) should not be wrapped
+        in <NxCode>NxFieldset</NxCode> as the label styles between the two are intended to be identical
         and not hierarchical.
       </p>
       <NxTable>
@@ -65,7 +65,7 @@ const NxFieldsetPage = () =>
             <NxTableCell>false</NxTableCell>
             <NxTableCell>
               Sets whether the input should display the optional flag – the flag is present by default and
-              setting <code className="nx-code">isRequired</code> to true removes the flag.
+              setting <NxCode>isRequired</NxCode> to true removes the flag.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
@@ -75,12 +75,12 @@ const NxFieldsetPage = () =>
             <NxTableCell>N/A</NxTableCell>
             <NxTableCell>
               The child form elements to render within the fieldset – often a series
-              of <code className="nx-code">NxRadio</code> or <code className="nx-code">NxCheckbox</code> components
+              of <NxCode>NxRadio</NxCode> or <NxCode>NxCheckbox</NxCode> components
               which represent different options for the same field.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell>HTML <code className="nx-code">&lt;fieldset&gt;</code> Attributes</NxTableCell>
+            <NxTableCell>HTML <NxCode>&lt;fieldset&gt;</NxCode> Attributes</NxTableCell>
             <NxTableCell>
               <a target="_blank"
                  rel="noopener"
@@ -92,7 +92,7 @@ const NxFieldsetPage = () =>
             <NxTableCell>N/A</NxTableCell>
             <NxTableCell>
               NxFieldset supports any HTML attribute that's normally supported
-              by <code className="nx-code">&lt;fieldset&gt;</code>.
+              by <NxCode>&lt;fieldset&gt;</NxCode>.
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>
@@ -102,22 +102,22 @@ const NxFieldsetPage = () =>
     <GalleryExampleTile title="Basic Example"
                         liveExample={NxFieldsetExample}
                         codeExamples={nxFieldsetExampleCode}>
-      A basic example of an <code className="nx-code">NxFieldset</code> wrapping
-      some <code className="nx-code">NxCheckbox</code>s.
+      A basic example of an <NxCode>NxFieldset</NxCode> wrapping
+      some <NxCode>NxCheckbox</NxCode>s.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Required Example"
                         liveExample={NxFieldsetRequiredExample}
                         codeExamples={nxFieldsetRequiredExampleCode}>
-      An example of an <code className="nx-code">NxFieldset</code> wrapping
-      some <code className="nx-code">NxRadio</code>s which uses the isRequired flag to remove the "Optional"
+      An example of an <NxCode>NxFieldset</NxCode> wrapping
+      some <NxCode>NxRadio</NxCode>s which uses the isRequired flag to remove the "Optional"
       indicator.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Sublabel Example"
                         liveExample={NxFieldsetSublabelExample}
                         codeExamples={nxFieldsetSublabelExampleCode}>
-      An example of an <code className="nx-code">NxFieldset</code> which includes a sublabel.
+      An example of an <NxCode>NxFieldset</NxCode> which includes a sublabel.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Rich Label Content Example"

@@ -29,7 +29,7 @@ const NxPageHeaderPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <code className="nx-code">NxPageHeader</code> is a React component encapsulating the standard Sonatype
+        <NxCode>NxPageHeader</NxCode> is a React component encapsulating the standard Sonatype
         page header structure and logo.
       </p>
       <h3 className="nx-h3 nx-tile__subsection-header">Props</h3>
@@ -48,9 +48,9 @@ const NxPageHeaderPage = () =>
             <td className="nx-cell">object</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              An optional object containing at least one field: <code className="nx-code">name</code>, the product
+              An optional object containing at least one field: <NxCode>name</NxCode>, the product
               name to display in the header. Additionally, this object may contain
-              a <code className="nx-code">version</code> field holding the product's version number to display.
+              a <NxCode>version</NxCode> field holding the product's version number to display.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -68,9 +68,9 @@ const NxPageHeaderPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               An optional array of objects describing navigation links to display in the middle section of the header.
-              Each link object should contain a <code className="nx-code">name</code> to be displayed and
-              a <code className="nx-code">href</code> for the link. Additionally, at most one link should include
-              an <code className="nx-code">current</code> flag set to true indicating that it should be styled as
+              Each link object should contain a <NxCode>name</NxCode> to be displayed and
+              a <NxCode>href</NxCode> for the link. Additionally, at most one link should include
+              an <NxCode>current</NxCode> flag set to true indicating that it should be styled as
               the currently active link.
             </td>
           </tr>
@@ -100,40 +100,40 @@ const NxPageHeaderPage = () =>
                         id="nx-page-header-simple-example"
                         codeExamples={simplePageHeaderExampleCode}
                         liveExample={SimplePageHeaderExample}>
-      A minimal instance of <code className="nx-code">NxPageHeader</code> which includes no
+      A minimal instance of <NxCode>NxPageHeader</NxCode> which includes no
       product name, no version, no links, and no additional content.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Product Name"
                         codeExamples={productNamePageHeaderExampleCode}
                         liveExample={ProductNamePageHeaderExample}>
-      An instance of <code className="nx-code">NxPageHeader</code> which includes a product name.
+      An instance of <NxCode>NxPageHeader</NxCode> which includes a product name.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Product Name and Version"
                         codeExamples={productNameAndVersionPageHeaderExampleCode}
                         liveExample={ProductNameAndVersionPageHeaderExample}>
-      An instance of <code className="nx-code">NxPageHeader</code> which includes a product name
+      An instance of <NxCode>NxPageHeader</NxCode> which includes a product name
       and version.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Home Link"
                         codeExamples={homeLinkPageHeaderExampleCode}
                         liveExample={HomeLinkPageHeaderExample}>
-      An instance of <code className="nx-code">NxPageHeader</code> which includes a home link
+      An instance of <NxCode>NxPageHeader</NxCode> which includes a home link
       for the logo.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Links"
                         codeExamples={linksPageHeaderExampleCode}
                         liveExample={LinksPageHeaderExample}>
-      An instance of <code className="nx-code">NxPageHeader</code> which includes links.
+      An instance of <NxCode>NxPageHeader</NxCode> which includes links.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Extra Content"
                         codeExamples={extraContentPageHeaderExampleCode}
                         liveExample={ExtraContentPageHeaderExample}>
-      An instance of <code className="nx-code">NxPageHeader</code> with extra content on the
+      An instance of <NxCode>NxPageHeader</NxCode> with extra content on the
       right-hand side.
     </GalleryExampleTile>
 
@@ -141,7 +141,7 @@ const NxPageHeaderPage = () =>
                         id="nx-page-header-complex-example"
                         codeExamples={complexPageHeaderExampleCode}
                         liveExample={ComplexPageHeaderExample}>
-      An instance of <code className="nx-code">NxPageHeader</code> which includes all features
+      An instance of <NxCode>NxPageHeader</NxCode> which includes all features
       at once.
     </GalleryExampleTile>
   </>;

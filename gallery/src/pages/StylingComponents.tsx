@@ -26,7 +26,7 @@ const StylingRSCPage = () =>
       <p className="nx-p">
         If you need to modify any of the stock RSC styles for use within your project you should create either a single
         file to contain your modifications or keep them within a page specific stylesheet if the changes are localised
-        to a page. For example in IQ has an SCSS file named <code className="nx-code">_nx-overrides.scss</code> in
+        to a page. For example in IQ has an SCSS file named <NxCode>_nx-overrides.scss</NxCode> in
         which all IQ specific modifications to RSC styles are stored. If you are starting a brand new project you
         probably won't need to do this but for existing projects where RSC styles will be mixing with legacy styles it
         can be invaluable.
@@ -50,7 +50,7 @@ const StylingRSCPage = () =>
       <p className="nx-p">
         Because the RSC styles are used by multiple apps we wanted to clearly distinguish between RSC styles and
         custom app styles. To that end we use a namespace prefix in our class names. In RSC that prefix
-        is <code className="nx-code">nx-</code>. In IQ they use <code className="nx-code">iq-</code> as
+        is <NxCode>nx-</NxCode>. In IQ they use <NxCode>iq-</NxCode> as
         a prefix in order to differentiate between classes in IQ and classes from RSC. When you
         create custom CSS in your app you should create a simple unique prefix for your app.
       </p>
@@ -66,17 +66,17 @@ const StylingRSCPage = () =>
       <div className="nx-list nx-list--bulleted">
         <ul>
           <li className="nx-list__item">
-            <code className="nx-code">open</code> &amp; <code className="nx-code">closed</code>
+            <NxCode>open</NxCode> &amp; <NxCode>closed</NxCode>
           </li>
           <li className="nx-list__item">
-            <code className="nx-code">disabled</code>
+            <NxCode>disabled</NxCode>
           </li>
           <li className="nx-list__item">
-            <code className="nx-code">pristine</code>, <code className="nx-code">valid</code>,
-            {' '}<code className="nx-code">invalid</code>
+            <NxCode>pristine</NxCode>, <NxCode>valid</NxCode>,
+            {' '}<NxCode>invalid</NxCode>
           </li>
           <li className="nx-list__item">
-            <code className="nx-code">selected</code> &amp; <code className="nx-code">unselected</code>
+            <NxCode>selected</NxCode> &amp; <NxCode>unselected</NxCode>
           </li>
         </ul>
       </div>

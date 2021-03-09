@@ -69,7 +69,7 @@ export default function NxPolicyThreatSliderPage() {
                           id="nx-policy-threat-slider-disabled-example"
                           codeExamples={NxPolicyThreatSliderDisabledCode}
                           liveExample={NxPolicyThreatSliderDisabledExample}>
-        This <code className="nx-code">NxPolicyThreatSlider</code> is disabled.
+        This <NxCode>NxPolicyThreatSlider</NxCode> is disabled.
       </GalleryExampleTile>
     </>
   );

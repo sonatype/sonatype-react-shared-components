@@ -13,7 +13,7 @@ export default function UseToggleExample() {
 
   return (
     <NxCheckbox isChecked={checked} onChange={toggleChecked}>
-      Checkbox brought to you by <code className="nx-code">useToggle</code>
+      Checkbox brought to you by <NxCode>useToggle</NxCode>
     </NxCheckbox>
   );
 }

@@ -221,8 +221,8 @@ export default function NxCardRowLayoutExample() {
               <NxFontAwesomeIcon icon={faChartLine} className="nx-card__call-out-icon" />
             </div>
             <div className="nx-card__text">
-              This card has had its <code className="nx-code">max-width</code> property removed. As a result it will
-              expand to occupy as much space as it can. <code className="nx-code">nx-card-container--no-wrap</code>
+              This card has had its <NxCode>max-width</NxCode> property removed. As a result it will
+              expand to occupy as much space as it can. <NxCode>nx-card-container--no-wrap</NxCode>
               {' '}must be used or it will take 100% of the width and force other cards down.
             </div>
           </div>

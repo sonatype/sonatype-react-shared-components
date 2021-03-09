@@ -22,7 +22,7 @@ export default function NxSegmentedButtonPage() {
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          <code className="nx-code">NxSegmentedButton</code> renders a "segmented" or "split" button - one which
+          <NxCode>NxSegmentedButton</NxCode> renders a "segmented" or "split" button - one which
           contains the usual button behavior but in addition has a separate section on the right-hand end which
           opens a dropdown menu.
         </p>
@@ -58,7 +58,7 @@ export default function NxSegmentedButtonPage() {
               <NxTableCell></NxTableCell>
               <NxTableCell>
                 The items to display within the dropdown menu. Anything that can appear
-                within an <code className="nx-code">NxDropdown</code> is supported.
+                within an <NxCode>NxDropdown</NxCode> is supported.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
@@ -95,7 +95,7 @@ export default function NxSegmentedButtonPage() {
               <NxTableCell>Disables both segments of the button when true.</NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
+              <NxTableCell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTableCell>
               <NxTableCell>
                 <a target="_blank"
                    rel="noopener"
@@ -106,8 +106,8 @@ export default function NxSegmentedButtonPage() {
               <NxTableCell>No</NxTableCell>
               <NxTableCell>N/A</NxTableCell>
               <NxTableCell>
-                <code className="nx-code">NxSegmentedButton</code> supports any HTML attribute that's normally
-                supported by <code className="nx-code">&lt;div&gt;</code>.
+                <NxCode>NxSegmentedButton</NxCode> supports any HTML attribute that's normally
+                supported by <NxCode>&lt;div&gt;</NxCode>.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
@@ -118,8 +118,8 @@ export default function NxSegmentedButtonPage() {
                           id="nx-segmented-button-primary-example"
                           liveExample={NxSegmentedButtonPrimaryExample}
                           codeExamples={nxSegmentedButtonPrimaryCode}>
-        An <code className="nx-code">NxSegmentedButton</code> using primary styling, a disabled
-        primary-styled <code className="nx-code">NxSegmentedButton</code>, and a normal button to demonstrate
+        An <NxCode>NxSegmentedButton</NxCode> using primary styling, a disabled
+        primary-styled <NxCode>NxSegmentedButton</NxCode>, and a normal button to demonstrate
         alignment.
       </GalleryExampleTile>
 
@@ -127,8 +127,8 @@ export default function NxSegmentedButtonPage() {
                           id="nx-segmented-button-secondary-example"
                           liveExample={NxSegmentedButtonSecondaryExample}
                           codeExamples={nxSegmentedButtonSecondaryCode}>
-        An <code className="nx-code">NxSegmentedButton</code> using secondary styling, a disabled
-        secondary-styled <code className="nx-code">NxSegmentedButton</code>, and a normal button to demonstrate
+        An <NxCode>NxSegmentedButton</NxCode> using secondary styling, a disabled
+        secondary-styled <NxCode>NxSegmentedButton</NxCode>, and a normal button to demonstrate
         alignment.
       </GalleryExampleTile>
 
@@ -136,8 +136,8 @@ export default function NxSegmentedButtonPage() {
                           id="nx-segmented-button-tertiary-example"
                           liveExample={NxSegmentedButtonTertiaryExample}
                           codeExamples={nxSegmentedButtonTertiaryCode}>
-        An <code className="nx-code">NxSegmentedButton</code> using secondary styling, a disabled
-        secondary-styled <code className="nx-code">NxSegmentedButton</code>, and a normal button to demonstrate
+        An <NxCode>NxSegmentedButton</NxCode> using secondary styling, a disabled
+        secondary-styled <NxCode>NxSegmentedButton</NxCode>, and a normal button to demonstrate
         alignment.
       </GalleryExampleTile>
     </>

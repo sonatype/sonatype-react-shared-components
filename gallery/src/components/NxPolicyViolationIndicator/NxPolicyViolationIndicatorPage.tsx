@@ -20,14 +20,14 @@ const NxPolicyViolationIndicatorPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <code className="nx-code">NxPolicyViolationIndicator</code> is an element used to indicate IQ policy threat
+        <NxCode>NxPolicyViolationIndicator</NxCode> is an element used to indicate IQ policy threat
         level via color and text.
       </p>
       <p className="nx-p">
         There are two scales to choose from: threat level by category, and threat
         level by number. When using this component, it is expected that just one of the props will be passed. If both
-        are passed, <code className="nx-code">threatLevelCategory</code> takes precedence. If neither are passed,
-        the <code className="nx-code">unspecified</code> category is used.
+        are passed, <NxCode>threatLevelCategory</NxCode> takes precedence. If neither are passed,
+        the <NxCode>unspecified</NxCode> category is used.
       </p>
       <p className="nx-p">
         The text that appears inside the component can be specified by the user, or if no text is supplied the threat
@@ -56,7 +56,7 @@ const NxPolicyViolationIndicatorPage = () =>
             <td className="nx-cell">A Policy Threat Level Number off of which to base the indicator color</td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
+            <td className="nx-cell">HTML <NxCode>&lt;div&gt;</NxCode> Attributes</td>
             <td className="nx-cell">
               <a target="_blank"
                  rel="noopener"
@@ -68,7 +68,7 @@ const NxPolicyViolationIndicatorPage = () =>
             <td className="nx-cell">N/A</td>
             <td className="nx-cell">
               NxPolicyViolationIndicator supports any HTML attribute that's normally supported
-              by <code className="nx-code">&lt;div&gt;</code>.
+              by <NxCode>&lt;div&gt;</NxCode>.
             </td>
           </tr>
         </tbody>
@@ -113,16 +113,16 @@ const NxPolicyViolationIndicatorPage = () =>
                         id="nx-policy-violation-indicator-category-example"
                         liveExample={NxPolicyViolationIndicatorByCategoryExample}
                         codeExamples={nxPolicyViolationIndicatorByCategoryCode}>
-      Examples of <code className="nx-code">NxPolicyViolationIndicator</code> displaying each of the available
-      <code className="nx-code">threatLevelCategory</code> values with user specified text.
+      Examples of <NxCode>NxPolicyViolationIndicator</NxCode> displaying each of the available
+      <NxCode>threatLevelCategory</NxCode> values with user specified text.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Policy Violation Indicators by Policy Number"
                         id="nx-policy-violation-indicator-number-example"
                         liveExample={NxPolicyViolationIndicatorByPolicyNumberExample}
                         codeExamples={nxPolicyViolationIndicatorByPolicyNumberCode}>
-      Examples of <code className="nx-code">NxPolicyViolationIndicator</code> where the colours are specified by
-      the <code className="nx-code">policyThreatNumber</code> value and the text shown is the default category label.
+      Examples of <NxCode>NxPolicyViolationIndicator</NxCode> where the colours are specified by
+      the <NxCode>policyThreatNumber</NxCode> value and the text shown is the default category label.
     </GalleryExampleTile>
   </>;
 

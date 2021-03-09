@@ -21,7 +21,7 @@ const NxRadioPage = () =>
       <p className="nx-p">Child VDOM will be used as a label following the radio button itself.</p>
       <p className="nx-p">
         NxRadio can receive any attribute that would be valid on an
-        HTML <code className="nx-code">&lt;label&gt;</code> as well as the following props:
+        HTML <NxCode>&lt;label&gt;</NxCode> as well as the following props:
       </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
@@ -91,8 +91,8 @@ const NxRadioPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               Whether the radio label content should be wrapped in
-              an <code className="nx-code">NxOverflowTooltip</code>. Defaults to true. Set this to false when
-              the <code className="nx-code">NxRadio</code> is being wrapped in a tooltip externally, to prevent
+              an <NxCode>NxOverflowTooltip</NxCode>. Defaults to true. Set this to false when
+              the <NxCode>NxRadio</NxCode> is being wrapped in a tooltip externally, to prevent
               multiple overlapping tooltips from appearing.
             </td>
           </tr>

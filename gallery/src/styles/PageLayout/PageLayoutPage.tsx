@@ -29,14 +29,14 @@ const PageLayoutPage = () =>
       <p className="nx-p">
         One challenge of flexbox layouts is that direct parent-child relationships between elements are crucial, and
         adding intermediate ancestors can easily break the layout. This often makes flexbox layouts challenging with
-        frameworks which insert <code className="nx-code">&lt;div&gt;</code>'s into the DOM structure (like Angular)
+        frameworks which insert <NxCode>&lt;div&gt;</NxCode>'s into the DOM structure (like Angular)
         which can effect the order and/or nesting of the blocks. If your layout isn't working the way you expect this
         is the first thing you should check.
       </p>
       <p className="nx-p">
         Our single and double column layouts are essentially the same except that the single column layout omits the
         sidebar element. When the sidebar element is not present the
-        {' '}<code className="nx-code">.nx-page-main</code> block will expand to fill the available space.
+        {' '}<NxCode>.nx-page-main</NxCode> block will expand to fill the available space.
       </p>
       <h2 className="nx-h2">Scrolling</h2>
       <p className="nx-p">
@@ -45,13 +45,13 @@ const PageLayoutPage = () =>
         state.
       </p>
       <p className="nx-p">
-        Including the <code className="nx-code">.nx-html--page-scrolling</code> modifier to
-        {' '}<code className="nx-code">&lt;html&gt;</code> will change this to "page scrolling" where
+        Including the <NxCode>.nx-html--page-scrolling</NxCode> modifier to
+        {' '}<NxCode>&lt;html&gt;</NxCode> will change this to "page scrolling" where
         the sidebar and main content areas scroll together if either has content which overflows and causes scrollbars
         to appear. The header and footer (if used) remain fixed. Note that the RSC gallery uses this scrolling mode.
       </p>
       <p className="nx-p">
-        When in "section scrolling" mode, the the <code className="nx-code">.nx-viewport-sized</code> family of classes
+        When in "section scrolling" mode, the the <NxCode>.nx-viewport-sized</NxCode> family of classes
         may be used to fit the contents of a section to the height of that section, as described on{' '}
         the <a className="nx-text-link" href="#/pages/nx-viewport-sized">nx-viewport-sized helper class page</a>.
       </p>
@@ -66,7 +66,7 @@ const PageLayoutPage = () =>
       <RawHtmlExample content={twoColumnLayoutExampleCode} />
       <h3 className="nx-h3">Standard single column layout</h3>
       <p className="nx-p">
-        Note that the sidebar element is no longer defined, <code className="nx-code">nx-page-main-content</code> will
+        Note that the sidebar element is no longer defined, <NxCode>nx-page-main-content</NxCode> will
         expand to the left to occupy the available space.
       </p>
       <img src={pageLayoutSingleColumnImg}/>
@@ -75,10 +75,10 @@ const PageLayoutPage = () =>
       <h3 className="nx-h3">React Root Element</h3>
       <p className="nx-p">
         Typically in a React app, some high level element in the page which is a descendant of
-        the <code className="nx-code">{'<body>'}</code> is used as the attachment point for the root
-        React <code className="nx-code">ReactDOM.render</code> call. In the gallery itself,
-        the <code className="nx-code">.nx-page</code> element, which also has
-        an <code className="nx-code">id</code> of <code className="nx-code">ui</code>, is used as this attachment
+        the <NxCode>{'<body>'}</NxCode> is used as the attachment point for the root
+        React <NxCode>ReactDOM.render</NxCode> call. In the gallery itself,
+        the <NxCode>.nx-page</NxCode> element, which also has
+        an <NxCode>id</NxCode> of <NxCode>ui</NxCode>, is used as this attachment
         point.  We recommend that other apps use the same pattern.
       </p>
       <RawHtmlExample content={reactRootLayoutExampleCode}/>

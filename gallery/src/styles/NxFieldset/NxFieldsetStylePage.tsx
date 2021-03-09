@@ -21,15 +21,15 @@ const NxFieldsetPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <code className="nx-code">.nx-fieldset</code> is a wrapper around a collection of checkboxes, radios, or
+        <NxCode>.nx-fieldset</NxCode> is a wrapper around a collection of checkboxes, radios, or
         similar form elements which should be displayed to the user as a group with an overall label. When used
-        with <code className="nx-code">NxCheckbox</code> or <code className="nx-code">NxRadio</code>, all inputs
+        with <NxCode>NxCheckbox</NxCode> or <NxCode>NxRadio</NxCode>, all inputs
         contained within a single NxFieldset should represent different options/values of the same field.
       </p>
       <p className="nx-p">
-        Form fields which have their own individual label styled using <code className="nx-code">.nx-label</code>{' '}
-        (including those wrapped in <code className="nx-code">.nx-form-group</code>) should not be wrapped
-        in <code className="nx-code">.nx-fieldset</code> as the label styles between the two are intended to be
+        Form fields which have their own individual label styled using <NxCode>.nx-label</NxCode>{' '}
+        (including those wrapped in <NxCode>.nx-form-group</NxCode>) should not be wrapped
+        in <NxCode>.nx-fieldset</NxCode> as the label styles between the two are intended to be
         identical and not hierarchical.
       </p>
       <NxTable>
@@ -42,10 +42,10 @@ const NxFieldsetPage = () =>
         </NxTableHead>
         <NxTableBody>
           <NxTableRow>
-            <NxTableCell><code className="nx-code">nx-fieldset</code></NxTableCell>
+            <NxTableCell><NxCode>nx-fieldset</NxCode></NxTableCell>
             <NxTableCell>
-              A <code className="nx-code">&lt;fieldset&gt;</code> within
-              an <code className="nx-code">.nx-form</code>
+              A <NxCode>&lt;fieldset&gt;</NxCode> within
+              an <NxCode>.nx-form</NxCode>
             </NxTableCell>
             <NxTableCell>
               Wraps a collection of checkboxes or radios that represent different selections within the same
@@ -53,36 +53,36 @@ const NxFieldsetPage = () =>
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell><code className="nx-code">nx-legend</code></NxTableCell>
+            <NxTableCell><NxCode>nx-legend</NxCode></NxTableCell>
             <NxTableCell>
-              A <code className="nx-code">&lt;legend&gt;</code> element within
-              the <code className="nx-code">.nx-fieldset</code>.
+              A <NxCode>&lt;legend&gt;</NxCode> element within
+              the <NxCode>.nx-fieldset</NxCode>.
             </NxTableCell>
             <NxTableCell>
               The label for the fieldset.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell><code className="nx-code">nx-legend--optional</code></NxTableCell>
-            <NxTableCell>Modifier on <code className="nx-code">.nx-legend</code></NxTableCell>
+            <NxTableCell><NxCode>nx-legend--optional</NxCode></NxTableCell>
+            <NxTableCell>Modifier on <NxCode>.nx-legend</NxCode></NxTableCell>
             <NxTableCell>
-              This class should be present on the <code className="nx-code">.nx-legend</code> of any form
+              This class should be present on the <NxCode>.nx-legend</NxCode> of any form
               field which does not require a value to be entered before the form can be submitted. It adds a
               small "Optional" tag to the legend UI.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell><code className="nx-code">nx-legend__text</code></NxTableCell>
-            <NxTableCell>Wrapping text content within the <code className="nx-code">.nx-legend</code></NxTableCell>
+            <NxTableCell><NxCode>nx-legend__text</NxCode></NxTableCell>
+            <NxTableCell>Wrapping text content within the <NxCode>.nx-legend</NxCode></NxTableCell>
             <NxTableCell>
-              The text content within the <code className="nx-code">.nx-label</code> should be wrapped in a span
+              The text content within the <NxCode>.nx-label</NxCode> should be wrapped in a span
               with this class. This exists to maintain compatibility with the deprecated way of laying
-              out <code className="nx-code">.nx-fieldset</code>s.
+              out <NxCode>.nx-fieldset</NxCode>s.
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell><code className="nx-code">nx-sub-label</code></NxTableCell>
-            <NxTableCell>Following the <code className="nx-code">.nx-legend</code></NxTableCell>
+            <NxTableCell><NxCode>nx-sub-label</NxCode></NxTableCell>
+            <NxTableCell>Following the <NxCode>.nx-legend</NxCode></NxTableCell>
             <NxTableCell>
               The optional sublabel content should be displayed in this element.
             </NxTableCell>
@@ -94,13 +94,13 @@ const NxFieldsetPage = () =>
     <GalleryExampleTile title="Simple Example"
                         liveExample={NxFieldsetExample}
                         codeExamples={nxFormGroupExampleCode}>
-      A simple example of an <code className="nx-code">nx-form-group</code>.
+      A simple example of an <NxCode>nx-form-group</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Complex Example"
                         liveExample={NxFieldsetComplexExample}
                         codeExamples={nxFormGroupComplexExampleCode}>
-      An example of an <code className="nx-code">nx-form-group</code> containing a sublabel and the "Optional"
+      An example of an <NxCode>nx-form-group</NxCode> containing a sublabel and the "Optional"
       modifier
     </GalleryExampleTile>
 
@@ -108,11 +108,11 @@ const NxFieldsetPage = () =>
                         id="nx-fieldset-deprecated-example"
                         liveExample={NxFieldsetDeprecatedExample}
                         codeExamples={nxFormGroupDeprecatedExampleCode}>
-      This example show an alternative layout of the <code className="nx-code">nx-fieldset</code> internals. In this
-      layout, the <code className="nx-code">nx-sub-label</code> is inside of
-      the <code className="nx-code">.nx-legend</code>. This layout is deprecated since it is inconsistent with
-      the way that <code className="nx-code">.nx-sub-labels</code> are used
-      within <code className="nx-code">.nx-form-group</code>.
+      This example show an alternative layout of the <NxCode>nx-fieldset</NxCode> internals. In this
+      layout, the <NxCode>nx-sub-label</NxCode> is inside of
+      the <NxCode>.nx-legend</NxCode>. This layout is deprecated since it is inconsistent with
+      the way that <NxCode>.nx-sub-labels</NxCode> are used
+      within <NxCode>.nx-form-group</NxCode>.
     </GalleryExampleTile>
   </>;
 

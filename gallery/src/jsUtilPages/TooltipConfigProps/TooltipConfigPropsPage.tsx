@@ -16,14 +16,14 @@ const TooltipConfigPropsPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <code className="nx-code">TooltipConfigProps</code> is a TypeScript type that represents
-        all <code className="nx-code">NxTooltip</code> props except <code className="nx-code">children</code>.
+        <NxCode>TooltipConfigProps</NxCode> is a TypeScript type that represents
+        all <NxCode>NxTooltip</NxCode> props except <NxCode>children</NxCode>.
         This type is used for properties on some other components that can optionally contain a tooltip around
-        one of their elements. For example, <code className="nx-code">NxDropdown</code> has a prop
-        called <code className="nx-code">toggleTooltip</code> which can be used to specify configuration for
+        one of their elements. For example, <NxCode>NxDropdown</NxCode> has a prop
+        called <NxCode>toggleTooltip</NxCode> which can be used to specify configuration for
         a tooltip on the dropdown's toggle button. The omission of
-        the <code className="nx-code">children</code> prop is important here as
-        the <code className="nx-code">NxDropdown</code> itself fills in its own toggle button as the tooltip
+        the <NxCode>children</NxCode> prop is important here as
+        the <NxCode>NxDropdown</NxCode> itself fills in its own toggle button as the tooltip
         child.
       </p>
     </GalleryDescriptionTile>
@@ -31,9 +31,9 @@ const TooltipConfigPropsPage = () =>
     <GalleryExampleTile title="Example with NxDropdown"
                         liveExample={TooltipConfigPropsDropdownExample}
                         codeExamples={tooltipConfigPropsDropdownExampleCode}>
-      A basic <code className="nx-code">NxDropdown</code> demonstrating usage of its
-      {' '}<code className="nx-code">toggleTooltip</code> prop, which is of type
-      {' '}<code className="nx-code">TooltipConfigProps</code>.
+      A basic <NxCode>NxDropdown</NxCode> demonstrating usage of its
+      {' '}<NxCode>toggleTooltip</NxCode> prop, which is of type
+      {' '}<NxCode>TooltipConfigProps</NxCode>.
     </GalleryExampleTile>
   </>;
 
