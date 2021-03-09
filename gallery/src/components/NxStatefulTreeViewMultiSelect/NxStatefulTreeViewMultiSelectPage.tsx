@@ -39,14 +39,14 @@ const NxStatefulTreeViewMultiSelectPage = () =>
             <td className="nx-cell">
               <p className="nx-p">
                 An array of objects that corresponds to the possible options of the component (the checkboxes).
-                These objects need to at least have an <NxCode>id: string</NxCode> property and a{' '}
-                <NxCode>name: string</NxCode> property. If an empty array is passed in, the component
+                These objects need to at least have an <code className="nx-code">id: string</code> property and a{' '}
+                <code className="nx-code">name: string</code> property. If an empty array is passed in, the component
                 will be disabled.
               </p>
               <p className="nx-p">
-                <NxCode>id</NxCode> will be the value provided to the{' '}
-                <NxCode>onChange</NxCode> callback, and{' '}
-                <NxCode>name</NxCode> will be used to render the option.
+                <code className="nx-code">id</code> will be the value provided to the{' '}
+                <code className="nx-code">onChange</code> callback, and{' '}
+                <code className="nx-code">name</code> will be used to render the option.
               </p>
             </td>
           </tr>
@@ -74,11 +74,11 @@ const NxStatefulTreeViewMultiSelectPage = () =>
               Called whenever selection change occurs; it will receive two arguments:
               <ul className="nx-list nx-list--bulleted">
                 <li className="nx-list__item">
-                  <NxCode>Set</NxCode> of ids of the currently selected options
+                  <code className="nx-code">Set</code> of ids of the currently selected options
                 </li>
                 <li className="nx-list__item">
-                  <NxCode>id</NxCode> of the toggled option
-                  or <NxCode>undefined</NxCode> if all/none option was toggled
+                  <code className="nx-code">id</code> of the toggled option
+                  or <code className="nx-code">undefined</code> if all/none option was toggled
                 </li>
               </ul>
             </td>
@@ -88,7 +88,7 @@ const NxStatefulTreeViewMultiSelectPage = () =>
             <td className="nx-cell">Set</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              The <NxCode>Set</NxCode> of ids of options to be selected.
+              The <code className="nx-code" >Set</code> of ids of options to be selected.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -121,9 +121,9 @@ const NxStatefulTreeViewMultiSelectPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               Enables the tooltip that appears when the component is disabled.
-              If no <NxCode>disabledTooltip</NxCode> is passed in and the component is disabled due
-              to lack of <NxCode>options</NxCode>, a default tooltip will be provided. If the
-              component is disabled explicitly and no <NxCode>disabledTooltip</NxCode> is provided,
+              If no <code className="nx-code">disabledTooltip</code> is passed in and the component is disabled due
+              to lack of <code className="nx-code">options</code>, a default tooltip will be provided. If the
+              component is disabled explicitly and no <code className="nx-code">disabledTooltip</code> is provided,
               no tooltip will be shown.
             </td>
           </tr>
@@ -167,7 +167,7 @@ const NxStatefulTreeViewMultiSelectPage = () =>
     <GalleryExampleTile title="General Example"
                         codeExamples={nxStatefulTreeViewMultiSelectExampleCode}
                         liveExample={NxStatefulTreeViewMultiSelectExample}>
-      This example demonstrates basic usage of <NxCode>NxStatefulTreeViewMultiSelect</NxCode>. Note that
+      This example demonstrates basic usage of <code className="nx-code">NxStatefulTreeViewMultiSelect</code>. Note that
       the component tracks the collapse/expand state and filter text internally, and the calling
       code only needs to track which items are selected.
     </GalleryExampleTile>
@@ -175,7 +175,7 @@ const NxStatefulTreeViewMultiSelectPage = () =>
     <GalleryExampleTile title="Disabled Example With Tooltip"
                         liveExample={NxStatefulTreeViewMultiSelectDisabledExample}
                         codeExamples={nxStatefulTreeViewMultiSelectDisabledExampleCode}>
-      This example shows a disabled <NxCode>NxStatefulTreeViewMultiSelect</NxCode> with a tooltip.
+      This example shows a disabled <code className="nx-code">NxStatefulTreeViewMultiSelect</code> with a tooltip.
     </GalleryExampleTile>
   </>;
 

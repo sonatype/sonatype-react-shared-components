@@ -63,7 +63,7 @@ const NxDropdownPage = () =>
               <td className="nx-cell">No</td>
               <td className="nx-cell">
                 What type of button to render for the dropdown.
-                Defaults to <NxCode>"tertiary"</NxCode>
+                Defaults to <code className="nx-code">"tertiary"</code>
               </td>
             </tr>
             <tr className="nx-table-row">
@@ -78,7 +78,7 @@ const NxDropdownPage = () =>
               <td className="nx-cell">No</td>
               <td className="nx-cell">
                 Controls if the component should be rendered as disabled.
-                Defaults to <NxCode>false</NxCode>
+                Defaults to <code className="nx-code">false</code>
               </td>
             </tr>
             <tr className="nx-table-row">
@@ -110,7 +110,7 @@ const NxDropdownPage = () =>
               <td className="nx-cell">No</td>
               <td className="nx-cell">
                 NxDropdown supports any html attribute that's normally supported by
-                {' '}<NxCode>div</NxCode> elements.
+                {' '}<code className="nx-code">div</code> elements.
               </td>
             </tr>
           </tbody>
@@ -121,7 +121,7 @@ const NxDropdownPage = () =>
           <h3 className="nx-h3">Auxiliary Components</h3>
         </header>
         <p className="nx-p">
-          An auxiliary component called <NxCode>NxDropdownDivider</NxCode> is available
+          An auxiliary component called <code className="nx-code">NxDropdownDivider</code> is available
           to be used as separator between child elements.
         </p>
       </section>
@@ -142,9 +142,9 @@ const NxDropdownPage = () =>
           </NxTableHead>
           <NxTableBody>
             <NxTableRow>
-              <NxTableCell><NxCode>nx-dropdown-button</NxCode></NxTableCell>
+              <NxTableCell><code className="nx-code">nx-dropdown-button</code></NxTableCell>
               <NxTableCell>
-                <NxCode>&lt;a&gt;</NxCode> and <NxCode>&lt;button&gt;</NxCode> elements
+                <code className="nx-code">&lt;a&gt;</code> and <code className="nx-code">&lt;button&gt;</code> elements
                 within the dropdown menu
               </NxTableCell>
               <NxTableCell>
@@ -152,16 +152,16 @@ const NxDropdownPage = () =>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell><NxCode>nx-dropdown-link</NxCode></NxTableCell>
+              <NxTableCell><code className="nx-code">nx-dropdown-link</code></NxTableCell>
               <NxTableCell>
-                <NxCode>&lt;a&gt;</NxCode> elements within the dropdown menu
+                <code className="nx-code">&lt;a&gt;</code> elements within the dropdown menu
               </NxTableCell>
               <NxTableCell>
                 Applies typical blue styling to links within the menu
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell><NxCode>nx-dropdown-right-button</NxCode></NxTableCell>
+              <NxTableCell><code className="nx-code">nx-dropdown-right-button</code></NxTableCell>
               <NxTableCell>
                 An additional icon-only button which can appear on the right side of a menu row
               </NxTableCell>
@@ -169,20 +169,20 @@ const NxDropdownPage = () =>
                 Sometimes it is desireable to add a icon-only button to a menu row which performs an action distinct
                 from clicking on the row itself - for instance, a trashcan button which deletes the row. For this
                 scenario, the icon button, a sibling of the main row button, must include this class and
-                the <NxCode>nx-dropdown-button-container</NxCode> and{' '}
-                <NxCode>nx-dropdown-button-content</NxCode> must be used in conjunction.
+                the <code className="nx-code">nx-dropdown-button-container</code> and{' '}
+                <code className="nx-code">nx-dropdown-button-content</code> must be used in conjunction.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell><NxCode>nx-dropdown-button-content</NxCode></NxTableCell>
+              <NxTableCell><code className="nx-code">nx-dropdown-button-content</code></NxTableCell>
               <NxTableCell>
                 Wrapper around text content of menu rows
-                when <NxCode>nx-dropdown-right-button</NxCode> is in use.
+                when <code className="nx-code">nx-dropdown-right-button</code> is in use.
               </NxTableCell>
               <NxTableCell>
                 This wrapper is necessary around the text content of
-                any <NxCode>nx-dropdown-button</NxCode> which is in a menu containing
-                any <NxCode>.nx-dropdown-right-button</NxCode>s.
+                any <code className="nx-code">nx-dropdown-button</code> which is in a menu containing
+                any <code className="nx-code">.nx-dropdown-right-button</code>s.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
@@ -193,9 +193,9 @@ const NxDropdownPage = () =>
     <GalleryExampleTile title="Navigation Example"
                         liveExample={NxDropdownNavigationExample}
                         codeExamples={nxDropdownNavigationExampleCode}>
-      An example of an <NxCode>NxDropdown</NxCode> as it might be used to implement a navigation list.
-      Note that the menu can contain either <NxCode>&lt;a&gt;</NxCode> or
-      {' '}<NxCode>&lt;button&gt;</NxCode> elements; this example contains both.
+      An example of an <code className="nx-code">NxDropdown</code> as it might be used to implement a navigation list.
+      Note that the menu can contain either <code className="nx-code">&lt;a&gt;</code> or
+      {' '}<code className="nx-code">&lt;button&gt;</code> elements; this example contains both.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Scrolling Example"
@@ -233,10 +233,10 @@ const NxDropdownPage = () =>
       This example demonstrates a dropdown where some of the dropdown menu rows have an additional icon-only button
       at their right end.  Clicking the row itself still behaves as normal, while clicking the icon button performs
       some other action related to the row, such as deleting the item the row represents. There are a few caveats to
-      using these styles: note that this example uses <NxCode>&lt;a&gt;</NxCode> elements for all
-      menu items – unfortunately <NxCode>&lt;button&gt;</NxCode> elements get some special behaviors
+      using these styles: note that this example uses <code className="nx-code">&lt;a&gt;</code> elements for all
+      menu items – unfortunately <code className="nx-code">&lt;button&gt;</code> elements get some special behaviors
       from the browser that prevent them from working with the styling here. Additionally, note that
-      the <NxCode>nx-dropdown-button-content</NxCode> is present on all menu items, even those that
+      the <code className="nx-code">nx-dropdown-button-content</code> is present on all menu items, even those that
       do not have icon buttons, in order to get consistent menu item heights.
     </GalleryExampleTile>
   </>;

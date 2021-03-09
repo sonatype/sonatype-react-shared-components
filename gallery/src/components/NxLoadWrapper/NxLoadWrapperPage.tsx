@@ -62,7 +62,7 @@ const NxLoadWrapperPage = () =>
             <td className="nx-cell">Function</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">
-              A Retry button will be rendered in the <NxCode>NxLoadError</NxCode> which
+              A Retry button will be rendered in the <code className="nx-code">NxLoadError</code> which
               executes this function when clicked.
             </td>
           </tr>
@@ -73,46 +73,46 @@ const NxLoadWrapperPage = () =>
     <GalleryExampleTile title="Renders children when not loading or in error"
                         liveExample={NxLoadWrapperChildrenExample}
                         codeExamples={childrenSourceCode}>
-      An <NxCode>NxLoadWrapper</NxCode> in which
-      neither <NxCode>loading</NxCode> nor <NxCode>error</NxCode> are
+      An <code className="nx-code">NxLoadWrapper</code> in which
+      neither <code className="nx-code">loading</code> nor <code className="nx-code">error</code> are
       set. As a result, the children are rendered.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Loading"
                         liveExample={NxLoadWrapperLoadingExample}
                         codeExamples={loadingSourceCode}>
-      An <NxCode>NxLoadWrapper</NxCode> in which the <NxCode>loading</NxCode> flag is
+      An <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">loading</code> flag is
       set, and thus the loading spinner is visible.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Error with retry button"
                         liveExample={NxLoadWrapperErrorRetryExample}
                         codeExamples={errorRetrySourceCode}>
-      An <NxCode>NxLoadWrapper</NxCode> in which the <NxCode>error</NxCode> property
-      is set along with a <NxCode>retryHandler</NxCode>, and thus
-      an <NxCode>NxErrorAlert</NxCode> is rendered.
+      An <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">error</code> property
+      is set along with a <code className="nx-code">retryHandler</code>, and thus
+      an <code className="nx-code">NxErrorAlert</code> is rendered.
     </GalleryExampleTile>
 
     <section className="nx-tile">
       <header className="nx-tile-header">
         <div className="nx-tile-header__title">
-          <h2 className="nx-h2"><NxCode>NxLoadWrapper</NxCode> at the page level</h2>
+          <h2 className="nx-h2"><code className="nx-code">NxLoadWrapper</code> at the page level</h2>
         </div>
       </header>
       <div className="nx-tile-content">
         <p className="nx-p">
           It is frequently the case that the entire content of the page should be wrapped in
-          an <NxCode>NxLoadWrapper</NxCode>.
+          an <code className="nx-code">NxLoadWrapper</code>.
           That is, that a page which would typically include
-          an <NxCode>.nx-page-main</NxCode> and perhaps
-          an <NxCode>.nx-page-sidebar</NxCode> should instead include only an error alert in the
+          an <code className="nx-code">.nx-page-main</code> and perhaps
+          an <code className="nx-code">.nx-page-sidebar</code> should instead include only an error alert in the
           event that the data for the page fails to load, or the user does not have permission to access that page,
           or some similar error condition. The RSC styles have specific support for this case:
-          an <NxCode>.nx-alert</NxCode> that is the only child of
-          the <NxCode>.nx-page-content</NxCode> element will correctly center itself on the page.
-          Thus, <NxCode>NxLoadWrapper</NxCode> can be used to wrap
-          the <NxCode>.nx-page-main</NxCode> and
-          (optional) <NxCode>.nx-page-sidebar</NxCode> elements. See the example below:
+          an <code className="nx-code">.nx-alert</code> that is the only child of
+          the <code className="nx-code">.nx-page-content</code> element will correctly center itself on the page.
+          Thus, <code className="nx-code">NxLoadWrapper</code> can be used to wrap
+          the <code className="nx-code">.nx-page-main</code> and
+          (optional) <code className="nx-code">.nx-page-sidebar</code> elements. See the example below:
         </p>
         <p className="nx-p">
           <a className="nx-text-link" href="#/PageLevelAlertExample">

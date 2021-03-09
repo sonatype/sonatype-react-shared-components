@@ -25,7 +25,7 @@ export default function NxStatefulTabsPage() {
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          This component simply wraps the <NxCode>NxTabs</NxCode> component
+          This component simply wraps the <code className="nx-code">NxTabs</code> component
           to track the currently selected tab.
         </p>
 
@@ -62,7 +62,7 @@ export default function NxStatefulTabsPage() {
       <GalleryExampleTile title="Simple NxTabs Example"
                           liveExample={NxStatefulTabsSimpleExample}
                           codeExamples={NxStatefulTabsSimpleCode}>
-        A basic example of how to use the <NxCode>NxTabs</NxCode> family of components.
+        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components.
       </GalleryExampleTile>
     </>
   );

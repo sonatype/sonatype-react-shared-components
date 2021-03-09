@@ -21,8 +21,8 @@ const NxTableContainerPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">
         Some table layouts require an extra wrapper element around
-        the <NxCode>&lt;table&gt;</NxCode> proper, that appears visually as part of the table.
-        For these situations, a wrapper element using the <NxCode>.nx-table-container</NxCode> class
+        the <code className="nx-code">&lt;table&gt;</code> proper, that appears visually as part of the table.
+        For these situations, a wrapper element using the <code className="nx-code">.nx-table-container</code> class
         can be constructed around the table. This setup is needed for the following functionality:
       </p>
       <ul className="nx-list nx-list--bulleted">
@@ -39,43 +39,43 @@ const NxTableContainerPage = () =>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell"><NxCode>.nx-table-container</NxCode></td>
-            <td className="nx-cell">Element wrapping an <NxCode>.nx-table</NxCode></td>
+            <td className="nx-cell"><code className="nx-code">.nx-table-container</code></td>
+            <td className="nx-cell">Element wrapping an <code className="nx-code">.nx-table</code></td>
             <td className="nx-cell">
               Removes the border from the table itself and instead replicates it on the container element. This allows
               layout patterns within the visually-apparent table that aren't supported
-              on <NxCode>&lt;table&gt;</NxCode> itself.
+              on <code className="nx-code">&lt;table&gt;</code> itself.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><NxCode>.nx-scrollable--table-container</NxCode></td>
-            <td className="nx-cell">Element wrapping an <NxCode>.nx-table</NxCode></td>
+            <td className="nx-cell"><code className="nx-code">.nx-scrollable--table-container</code></td>
+            <td className="nx-cell">Element wrapping an <code className="nx-code">.nx-table</code></td>
             <td className="nx-cell">
               <NxWarningAlert>
-                Deprecated. Replaced by <NxCode>.nx-table-container</NxCode>.
+                Deprecated. Replaced by <code className="nx-code">.nx-table-container</code>.
               </NxWarningAlert>
               This class was originally supposed to be used in conjunction
-              with <NxCode>.nx-table--scrollable</NxCode>.
+              with <code className="nx-code">.nx-table--scrollable</code>.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><NxCode>.nx-scrollable</NxCode></td>
-            <td className="nx-cell">Same element as <NxCode>.nx-table-container</NxCode></td>
+            <td className="nx-cell"><code className="nx-code">.nx-scrollable</code></td>
+            <td className="nx-cell">Same element as <code className="nx-code">.nx-table-container</code></td>
             <td className="nx-cell">
-              The container element should also have the <NxCode>.nx-scrollable</NxCode> class
+              The container element should also have the <code className="nx-code">.nx-scrollable</code> class
               when table scrolling is desired.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><NxCode>.nx-table-container__footer</NxCode></td>
+            <td className="nx-cell"><code className="nx-code">.nx-table-container__footer</code></td>
             <td className="nx-cell">
-              Child of <NxCode>.nx-table-container</NxCode>, after
-              the <NxCode>.nx-table</NxCode>.
+              Child of <code className="nx-code">.nx-table-container</code>, after
+              the <code className="nx-code">.nx-table</code>.
             </td>
             <td className="nx-cell">
               Container for elements which should be displayed as if they are a table footer, but affixed to the
               bottom of the container, regardless of the size of the
-              actual <NxCode>&lt;table&gt;</NxCode>.
+              actual <code className="nx-code">&lt;table&gt;</code>.
             </td>
           </tr>
         </tbody>
@@ -87,7 +87,7 @@ const NxTableContainerPage = () =>
                         codeExamples={NxTableFooterCode}>
       A demonstration of a table with a footer element which for the sake of example just contains a button.
       The most common real-world use-case for a footer is a pagination bar, which can be seen in
-      the <a className="nx-text-link" href="#/pages/NxTable"><NxCode>NxTable</NxCode></a> react
+      the <a className="nx-text-link" href="#/pages/NxTable"><code className="nx-code">NxTable</code></a> react
       component examples.
     </GalleryExampleTile>
 

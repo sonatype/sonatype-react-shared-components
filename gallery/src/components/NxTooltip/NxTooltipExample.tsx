@@ -64,14 +64,14 @@ const NxTooltipExample = () => {
         <NxTooltip title="NxAlert" placement="top">
           <NxAlert icon={faEye} id="this-id-ends-up-on-the-div" className="nx-alert--modifier">
             <span>
-              This is an example <code>NxAlert</NxCode>.
+              This is an example <code>NxAlert</code>.
             </span>
           </NxAlert>
         </NxTooltip>
 
         <NxTooltip title="NxErrorAlert" placement="top">
           <NxErrorAlert>
-            <span>This is an example <code>NxErrorAlert</NxCode></span>
+            <span>This is an example <code>NxErrorAlert</code></span>
           </NxErrorAlert>
         </NxTooltip>
 

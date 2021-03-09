@@ -22,14 +22,14 @@ const NxThreatIndicatorPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <NxCode>NxThreatIndicator</NxCode> is an inline element used
+        <code className="nx-code">NxThreatIndicator</code> is an inline element used
         to indicate via color the IQ policy threat level of the information to follow that follows it.
       </p>
       <p className="nx-p">
         There are two scales to choose from: threat level by category, and threat
         level by number. When using this component, it is expected that just one of the props will be passed. If both
-        are passed, <NxCode>threatLevelCategory</NxCode> takes precedence. If neither are passed,
-        the <NxCode>unspecified</NxCode> category is used
+        are passed, <code className="nx-code">threatLevelCategory</code> takes precedence. If neither are passed,
+        the <code className="nx-code">unspecified</code> category is used
       </p>
       <table className="nx-table">
         <thead>
@@ -95,23 +95,23 @@ const NxThreatIndicatorPage = () =>
                         id="nx-threat-indicator-simple-example"
                         liveExample={NxThreatIndicatorByCategoryExample}
                         codeExamples={nxThreatIndicatorByCategoryCode}>
-      A series of lines of text, each beginning with an <NxCode>NxThreatIndicator</NxCode> whose
-      color is set to a different <NxCode>threatLevelCategory</NxCode> value.
+      A series of lines of text, each beginning with an <code className="nx-code">NxThreatIndicator</code> whose
+      color is set to a different <code className="nx-code">threatLevelCategory</code> value.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Indicators by Policy Number"
                         liveExample={NxThreatIndicatorByPolicyNumberExample}
                         codeExamples={nxThreatIndicatorByPolicyNumberCode}>
-      A series of lines of text, each beginning with an <NxCode>NxThreatIndicator</NxCode> whose
-      color is set to a different <NxCode>policyThreatNumber</NxCode> value.
+      A series of lines of text, each beginning with an <code className="nx-code">NxThreatIndicator</code> whose
+      color is set to a different <code className="nx-code">policyThreatNumber</code> value.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Indicators in nx-list"
                         id="nx-threat-indicator-list-example"
                         liveExample={NxThreatIndicatorListExample}
                         codeExamples={nxThreatIndicatorListCode}>
-      An <NxCode>.nx-list</NxCode> including rows in various configurations, each starting with
-      an <NxCode>NxThreatIndicator</NxCode>. Note that this list uses such a wide variety of
+      An <code className="nx-code">.nx-list</code> including rows in various configurations, each starting with
+      an <code className="nx-code">NxThreatIndicator</code>. Note that this list uses such a wide variety of
       items for layout illustration purposes only. In practice you would not, for instance, have action buttons within
       an item of a clickable list.
     </GalleryExampleTile>
@@ -120,8 +120,8 @@ const NxThreatIndicatorPage = () =>
                         id="nx-threat-indicator-table-example"
                         liveExample={NxThreatIndicatorTableExample}
                         codeExamples={nxThreatIndicatorTableCode}>
-      Since <NxCode>nx-table</NxCode> is one of the primary places
-      that <NxCode>NxThreatIndicator</NxCode> is intended to be used, this example demonstrates a
+      Since <code className="nx-code">nx-table</code> is one of the primary places
+      that <code className="nx-code">NxThreatIndicator</code> is intended to be used, this example demonstrates a
       typical usage of it. Note that no special classes or placements are needed here, it is essentially just the
       usual inline layout of the threat indicator and adjacent content, within a table cell.
     </GalleryExampleTile>

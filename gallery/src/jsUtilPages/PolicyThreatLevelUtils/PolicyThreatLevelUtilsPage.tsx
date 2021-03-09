@@ -45,25 +45,25 @@ const PolicyThreatLevelUtilsPage = () =>
 
     <GalleryExampleTile title="ThreatLevelCategory & allThreatLevelCategories"
                         codeExamples={threatLevelCategoryExampleCode}>
-      <NxCode>ThreatLevelCategory</NxCode> is a TypeScript type consisting of
+      <code className="nx-code">ThreatLevelCategory</code> is a TypeScript type consisting of
       only the valid Threat Level Category strings.
-      {' '}<NxCode>allThreatLevelCategories</NxCode> is a read-only array
+      {' '}<code className="nx-code">allThreatLevelCategories</code> is a read-only array
       containing those same values
     </GalleryExampleTile>
 
     <GalleryExampleTile title="ThreatLevelNumber & allThreatLevelNumbers"
                         codeExamples={threatLevelNumberExampleCode}>
-      <NxCode>ThreatLevelNumber</NxCode> is a TypeScript type consisting of
+      <code className="nx-code">ThreatLevelNumber</code> is a TypeScript type consisting of
       only the valid Threat Level Numbers – i.e. the integers 0 through 10.
-      {' '}<NxCode>allThreatLevelNumbers</NxCode> is a read-only array
+      {' '}<code className="nx-code">allThreatLevelNumbers</code> is a read-only array
       containing those same values
     </GalleryExampleTile>
 
     <GalleryExampleTile title="categoryByPolicyThreatLevel"
                         codeExamples={categoryByPolicyThreatLevelExampleCode}>
-      <NxCode>categoryByPolicyThreatLevel</NxCode> is a read-only array that,
-      when indexed into using a <NxCode>ThreatLevelNumber</NxCode>, gives the
-      {' '}<NxCode>ThreatLevelCategory</NxCode> to which that number belongs
+      <code className="nx-code">categoryByPolicyThreatLevel</code> is a read-only array that,
+      when indexed into using a <code className="nx-code">ThreatLevelNumber</code>, gives the
+      {' '}<code className="nx-code">ThreatLevelCategory</code> to which that number belongs
     </GalleryExampleTile>
   </>;
 

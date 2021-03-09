@@ -42,7 +42,7 @@ const NxTablesExamples = () =>
     <GalleryExampleTile title="NX Table Simple Example"
                         htmlExample={NxTableSimpleCode}
                         codeExamples={NxTableSimpleCode}>
-      A simple, static demonstration of <NxCode>nx-table</NxCode> styles.
+      A simple, static demonstration of <code className="nx-code">nx-table</code> styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table Truncation and Wrapping Example"
@@ -57,7 +57,7 @@ const NxTablesExamples = () =>
     <GalleryExampleTile title="NX Table with Clickable Rows Example"
                         liveExample={NxTableClickableExample}
                         codeExamples={NxTableClickableCode}>
-      A demonstration of an <NxCode>nx-table</NxCode> with rows that receive clickable styling and
+      A demonstration of an <code className="nx-code">nx-table</code> with rows that receive clickable styling and
       a chevron column.
     </GalleryExampleTile>
 
@@ -67,34 +67,34 @@ const NxTablesExamples = () =>
                         codeExamples={fixedLayoutCodeExamples}>
       This example demonstrates the nx-table--fixed-layout class which is typically used in conjunction with
       a custom class to explicitly set the widths of table rows. Notice here that the implementation of a
-      truncated column is simpler: the inner <NxCode>div</NxCode> is not necessary and instead
-      the <NxCode>.nx-truncate-ellipsis</NxCode> class can be applied directly to the table cell.
+      truncated column is simpler: the inner <code className="nx-code">div</code> is not necessary and instead
+      the <code className="nx-code">.nx-truncate-ellipsis</code> class can be applied directly to the table cell.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table Empty Example"
                         htmlExample={NxTableEmptyCode}
                         codeExamples={NxTableEmptyCode}>
-      A demonstration of the expected styling and content of an empty <NxCode>nx-table</NxCode>.
+      A demonstration of the expected styling and content of an empty <code className="nx-code">nx-table</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table with Error Message Example"
                         liveExample={NxTableErrorExample}
                         codeExamples={NxTableErrorStateCode}>
-      A demonstration of the expected styling and content and an <NxCode>nx-table</NxCode> whose
+      A demonstration of the expected styling and content and an <code className="nx-code">nx-table</code> whose
       contents failed to load.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table with Sortable Rows Example"
                         liveExample={NxTableSortableExample}
                         codeExamples={NxTableSortableCode}>
-      A demonstration of a <NxCode>nx-table</NxCode> used for columns that can be sorted.
+      A demonstration of a <code className="nx-code">nx-table</code> used for columns that can be sorted.
       In this example the interactivity to sort columns is not wired up.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table with Filter Rows Example"
                         liveExample={NxTableFilterExample}
                         codeExamples={NxTableFilterCode}>
-      A demonstration of a <NxCode>nx-table</NxCode> with a header
+      A demonstration of a <code className="nx-code">nx-table</code> with a header
       cell that contains a filter. Rows can be filtered depending on the text provided in the input.
       In this example the interactivity to filter content is not wired up.
     </GalleryExampleTile>

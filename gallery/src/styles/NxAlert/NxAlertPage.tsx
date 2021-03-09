@@ -23,36 +23,36 @@ const NxAlertPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">
         Standard name spaced alert styles. Note that these examples are shown in react as each style includes
-        specific icons. When working in React, <NxCode>NxFontAwesomeIcon</NxCode> should be used
-        as shown to get these icons (or preferably the <NxCode>NxAlert</NxCode> React component and
+        specific icons. When working in React, <code className="nx-code">NxFontAwesomeIcon</code> should be used
+        as shown to get these icons (or preferably the <code className="nx-code">NxAlert</code> React component and
         its variations should be used). When not working in react, check the FontAwesome 5 documentation for alternative
         ways to include the icons. Alerts should generally include Close buttons or another way to dismiss themselves.
-        In this example standard Close button styling is provided by <NxCode>NxCloseButton</NxCode>.
+        In this example standard Close button styling is provided by <code className="nx-code">NxCloseButton</code>.
       </p>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Information alert"
                         liveExample={NxAlertInfoExample}
                         codeExamples={nxAlertInfoCode}>
-      An <NxCode>nx-alert</NxCode> demonstrating information styles.
+      An <code className="nx-code">nx-alert</code> demonstrating information styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Success alert"
                         liveExample={NxAlertSuccessExample}
                         codeExamples={nxAlertSuccessCode}>
-      An <NxCode>nx-alert</NxCode> demonstrating success styles.
+      An <code className="nx-code">nx-alert</code> demonstrating success styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Warning alert"
                         liveExample={NxAlertWarningExample}
                         codeExamples={nxAlertWarningCode}>
-      An <NxCode>nx-alert</NxCode> demonstrating warning styles.
+      An <code className="nx-code">nx-alert</code> demonstrating warning styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Error alert"
                         liveExample={NxAlertErrorExample}
                         codeExamples={nxAlertErrorCode}>
-      An <NxCode>nx-alert</NxCode> demonstrating error styles.
+      An <code className="nx-code">nx-alert</code> demonstrating error styles.
     </GalleryExampleTile>
   </>;
 

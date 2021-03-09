@@ -31,10 +31,10 @@ const NxTextInputStylesPage = () =>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell"><NxCode>.nx-text-input</NxCode></td>
+            <td className="nx-cell"><code className="nx-code">.nx-text-input</code></td>
             <td className="nx-cell">
-              Any text-oriented <NxCode>{'<input>'}</NxCode> type or
-              <NxCode>{'<textarea>'}</NxCode>
+              Any text-oriented <code className="nx-code">{'<input>'}</code> type or
+              <code className="nx-code">{'<textarea>'}</code>
             </td>
             <td className="nx-cell">
               Gives the input typical Sonatype input styling with 1px grey borders on the top, right, and bottom,
@@ -42,8 +42,8 @@ const NxTextInputStylesPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><NxCode>.nx-text-input--long</NxCode></td>
-            <td className="nx-cell">Any <NxCode>.nx-text-input</NxCode> element</td>
+            <td className="nx-cell"><code className="nx-code">.nx-text-input--long</code></td>
+            <td className="nx-cell">Any <code className="nx-code">.nx-text-input</code> element</td>
             <td className="nx-cell">
               Use this class to make the text input particularly wide (395px vs the default 219px)
             </td>

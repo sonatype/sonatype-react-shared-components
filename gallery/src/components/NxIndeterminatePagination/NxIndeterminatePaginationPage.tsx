@@ -20,7 +20,7 @@ const NxIndeterminatePaginationPage = () =>
         This component simply allows the user to navigate to the next and previous pages.
       </p>
       <p className="nx-p">
-        In addition to all native attributes allowed on a <NxCode>div</NxCode>, the following props
+        In addition to all native attributes allowed on a <code className="nx-code">div</code>, the following props
         are supported.
       </p>
       <table className="nx-table nx-table--gallery-props">
@@ -34,7 +34,7 @@ const NxIndeterminatePaginationPage = () =>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell"><NxCode>onPrevPageSelect</NxCode></td>
+            <td className="nx-cell"><code className="nx-code">onPrevPageSelect</code></td>
             <td className="nx-cell">Function</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">
@@ -43,7 +43,7 @@ const NxIndeterminatePaginationPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><NxCode>onNextPageSelect</NxCode></td>
+            <td className="nx-cell"><code className="nx-code">onNextPageSelect</code></td>
             <td className="nx-cell">Function</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">
@@ -60,7 +60,7 @@ const NxIndeterminatePaginationPage = () =>
                         id="nx-indeterminate-pagination-example"
                         liveExample={NxIndeterminatePaginationExample}
                         codeExamples={nxIndeterminatePaginationCode}>
-      An <NxCode>NxIndeterminatePagination</NxCode> component.
+      An <code className="nx-code">NxIndeterminatePagination</code> component.
     </GalleryExampleTile>
   </>;
 

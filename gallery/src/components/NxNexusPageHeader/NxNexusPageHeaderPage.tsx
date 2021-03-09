@@ -24,7 +24,7 @@ const NxNexusPageHeaderPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        <NxCode>NxNexusPageHeader</NxCode> is a React component encapsulating the Sonatype Nexus
+        <code className="nx-code">NxNexusPageHeader</code> is a React component encapsulating the Sonatype Nexus
         branded page header logo and structure. This header should only be used for products in the Sonatype Nexus
         family.
       </p>
@@ -44,11 +44,11 @@ const NxNexusPageHeaderPage = () =>
             <td className="nx-cell">object</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">
-              An object containing at least one field: <NxCode>name</NxCode>, the product
+              An object containing at least one field: <code className="nx-code">name</code>, the product
               name to display in the header. Additionally, this object may contain
-              a <NxCode>meta</NxCode> field which might contain information about the license
+              a <code className="nx-code">meta</code> field which might contain information about the license
               (as it does in IQ), or other information about the product (e.g. beta, pre-release)
-              and a <NxCode>version</NxCode> field holding the product's version number to display.
+              and a <code className="nx-code">version</code> field holding the product's version number to display.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -75,9 +75,9 @@ const NxNexusPageHeaderPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               An optional array of objects describing navigation links to display in the middle section of the header.
-              Each link object should contain a <NxCode>name</NxCode> to be displayed and
-              a <NxCode>href</NxCode> for the link. Additionally, at most one link should include
-              a <NxCode>current</NxCode> flag set to true indicating that it should be styled as
+              Each link object should contain a <code className="nx-code">name</code> to be displayed and
+              a <code className="nx-code">href</code> for the link. Additionally, at most one link should include
+              a <code className="nx-code">current</code> flag set to true indicating that it should be styled as
               the currently active link.
             </td>
           </tr>
@@ -93,8 +93,8 @@ const NxNexusPageHeaderPage = () =>
       </table>
       <h3>Nexus Page Header Style Classes</h3>
       <p className="nx-p">
-        Note that <NxCode>NxNexusPageHeader</NxCode> shares much of its styling with
-        {' '}<NxCode>NxPageHeader</NxCode>. If you don't see the class you're looking for described
+        Note that <code className="nx-code">NxNexusPageHeader</code> shares much of its styling with
+        {' '}<code className="nx-code">NxPageHeader</code>. If you don't see the class you're looking for described
         below check out <a className="nx-text-link" href="#Pages/NxPageHeader/">NxPageHeader</a>.
       </p>
       <table className="nx-table nx-table--gallery-props">
@@ -110,7 +110,7 @@ const NxNexusPageHeaderPage = () =>
             <td className="nx-cell">.nx-page-header__extra-content-divider</td>
             <td className="nx-cell">Child Element</td>
             <td className="nx-cell">
-              Applied to a <NxCode>&lt;div&gt;</NxCode> to create a vertical rule between children
+              Applied to a <code className="nx-code">&lt;div&gt;</code> to create a vertical rule between children
               rendered in the extra content area at the right end of the header.
             </td>
           </tr>
@@ -133,7 +133,7 @@ const NxNexusPageHeaderPage = () =>
                         codeExamples={nxNexusPageHeaderCustomLogoExampleCode}
                         liveExample={NxNexusPageHeaderCustomLogoExample}
                         defaultCheckeredBackground={true}>
-      An instance of <NxCode>NxNexusPageHeader</NxCode> that demonstrates how to load a custom logo.
+      An instance of <code className="nx-code">NxNexusPageHeader</code> that demonstrates how to load a custom logo.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Nexus Page Header"
@@ -141,7 +141,7 @@ const NxNexusPageHeaderPage = () =>
                         codeExamples={nxNexusPageHeaderExampleCode}
                         liveExample={NxNexusPageHeaderExample}
                         defaultCheckeredBackground={true}>
-      An instance of <NxCode>NxNexusPageHeader</NxCode> with default branding, navigation and
+      An instance of <code className="nx-code">NxNexusPageHeader</code> with default branding, navigation and
       examples of extra content.
     </GalleryExampleTile>
 
@@ -150,7 +150,7 @@ const NxNexusPageHeaderPage = () =>
                         codeExamples={nxNexusPageHeaderMetaExampleCode}
                         liveExample={NxNexusPageHeaderMetaExample}
                         defaultCheckeredBackground={true}>
-      An instance of <NxCode>NxNexusPageHeader</NxCode> with default branding, meta info, and
+      An instance of <code className="nx-code">NxNexusPageHeader</code> with default branding, meta info, and
       navigation.
     </GalleryExampleTile>
 
@@ -159,7 +159,7 @@ const NxNexusPageHeaderPage = () =>
                         codeExamples={nxNexusPageHeaderVersionExampleCode}
                         liveExample={NxNexusPageHeaderVersionExample}
                         defaultCheckeredBackground={true}>
-      <NxCode>NxNexusPageHeader</NxCode> with default branding, version, and navigation.
+      <code className="nx-code">NxNexusPageHeader</code> with default branding, version, and navigation.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Nexus Page Header Minimal"
@@ -167,7 +167,7 @@ const NxNexusPageHeaderPage = () =>
                         codeExamples={nxNexusPageHeaderMinimalExampleCode}
                         liveExample={NxNexusPageHeaderMinimalExample}
                         defaultCheckeredBackground={true}>
-      A minimal instance of <NxCode>NxNexusPageHeader</NxCode> with default branding.
+      A minimal instance of <code className="nx-code">NxNexusPageHeader</code> with default branding.
     </GalleryExampleTile>
   </>;
 

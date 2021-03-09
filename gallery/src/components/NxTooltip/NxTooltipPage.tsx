@@ -28,7 +28,7 @@ export default function NxTooltipPage() {
         </p>
         <NxInfoAlert>
           Tooltips that are open at page load appear to exhibit a race condition in regards to their positioning.
-          Use the <NxCode>open</NxCode> prop with caution
+          Use the <code className="nx-code">open</code> prop with caution
         </NxInfoAlert>
         <table className="nx-table nx-table--gallery-props">
           <thead>

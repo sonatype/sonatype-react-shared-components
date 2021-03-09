@@ -105,7 +105,7 @@ const FontSizePage = () =>
         <p className="nx-p">
           Despite the nuances described above, we now get to the first connection with familiar CSS concepts:{' '}
           <strong>
-            the actual rendered size of the em-square box is what the CSS <NxCode>font-size</NxCode>
+            the actual rendered size of the em-square box is what the CSS <code className="nx-code">font-size</code>
             {' '}property specifies.
           </strong>
         </p>
@@ -114,7 +114,7 @@ const FontSizePage = () =>
       <section>
         <h4 className="nx-h4">Text Node Content Area</h4>
         <p className="nx-p">
-          As we've established, <NxCode>font-size</NxCode> sets the height of the em-square, a box
+          As we've established, <code className="nx-code">font-size</code> sets the height of the em-square, a box
           that is at a lower level than the HTML/CSS model. So what about HTML nodes and elements, what sets their
           height? Let's start with text nodes, and by extension, simple inline elements that only contain text
           nodes.
@@ -157,27 +157,27 @@ const FontSizePage = () =>
           out into a series of line boxes. The line boxes are a layout detail and not a manipulatable part of
           the DOM. Each one consists of (parts of) one or more inline elements and bare text nodes, and a given
           element/node may be split over multiple lines. The spacing between these lines is set using the familiar
-          {' '}<NxCode>line-height</NxCode> property. Extra space resulting from a
-          high <NxCode>line-height</NxCode> value is distributed equally above and below the content
+          {' '}<code className="nx-code">line-height</code> property. Extra space resulting from a
+          high <code className="nx-code">line-height</code> value is distributed equally above and below the content
           box, putting the content boxes in the middle of each line box. Note however that the visible glyphs are
           not necessarily in the middle of their content box. This extra space is known as the <q>leading</q>.
         </p>
 
         <p className="nx-p">
-          <NxCode>line-height</NxCode> can be set in a number of ways, some of which are more
+          <code className="nx-code">line-height</code> can be set in a number of ways, some of which are more
           problematic than others:
         </p>
 
-        <h5 className="nx-h5">Absolute <NxCode>line-height</NxCode> values</h5>
+        <h5 className="nx-h5">Absolute <code className="nx-code">line-height</code> values</h5>
         <p className="nx-p">
-          <NxCode>line-height</NxCode> can be set using absolute units such
-          as <NxCode>px</NxCode>. This allows simple, fine-grained control, but is inflexible,
+          <code className="nx-code">line-height</code> can be set using absolute units such
+          as <code className="nx-code">px</code>. This allows simple, fine-grained control, but is inflexible,
           especially when applied as a page-wide style.
         </p>
 
-        <h5 className="nx-h5">Proportional <NxCode>line-height</NxCode> values</h5>
+        <h5 className="nx-h5">Proportional <code className="nx-code">line-height</code> values</h5>
         <p className="nx-p">
-          <NxCode>line-height</NxCode> can be also be set using proportional values such as
+          <code className="nx-code">line-height</code> can be also be set using proportional values such as
           percentages and unitless values. Both of these are relative to the font-size, but there is an important
           difference. The unitless values compute a line-height relative to the actual font-size at which the text is
           displayed. In contrast, the percentage values compute a line-height relative to the
@@ -186,26 +186,26 @@ const FontSizePage = () =>
           at. <strong>Prefer the unitless approach.</strong>
         </p>
 
-        <h5 className="nx-h5">Automatic <NxCode>line-height</NxCode></h5>
+        <h5 className="nx-h5">Automatic <code className="nx-code">line-height</code></h5>
         <p className="nx-p">
-          The default value for <NxCode>line-height</NxCode> is
-          {' '}<NxCode>normal</NxCode>. The CSS spec is vague about what this means but in
+          The default value for <code className="nx-code">line-height</code> is
+          {' '}<code className="nx-code">normal</code>. The CSS spec is vague about what this means but in
           practice it takes into account the font metrics described above plus one more: the Line Gap.
           The Line Gap is another value built into the font which tells renderers how much extra space to put
           between lines in addition to the line spacing ascender and descender values. Conveniently for us, in
           OpenSans the line gap is zero, as can be seen in the FontForge images above. This means that in our case the
-          default CSS <NxCode>line-height</NxCode> works out to the ratio between the em-square and the
+          default CSS <code className="nx-code">line-height</code> works out to the ratio between the em-square and the
           content-box, which once again is about 1.36. This also means that when
-          using <NxCode>line-height: normal</NxCode> with OpenSans, the content boxes of adjacent
+          using <code className="nx-code">line-height: normal</code> with OpenSans, the content boxes of adjacent
           lines of text will touch without overlapping. This is not necessarily the case with other fonts, where
           there may be a gap.
         </p>
 
         <p className="nx-p">
-          When setting an explicit <NxCode>line-height</NxCode>, even a proportional one, it should
+          When setting an explicit <code className="nx-code">line-height</code>, even a proportional one, it should
           be noted that the ideal/default value varies from one font to another based on the font metrics
-          described above. The only <NxCode>line-height</NxCode> setting that is really
-          future-proofed against changes to a different font-face is <NxCode>normal</NxCode>.
+          described above. The only <code className="nx-code">line-height</code> setting that is really
+          future-proofed against changes to a different font-face is <code className="nx-code">normal</code>.
         </p>
       </section>
 
@@ -213,7 +213,7 @@ const FontSizePage = () =>
         <h4 className="nx-h4">Block Elements</h4>
         <p className="nx-p">
           Block Elements are more firmly within the realm of CSS itself and more directly controlled by CSS
-          properties such as <NxCode>height</NxCode> and <NxCode>width</NxCode>,
+          properties such as <code className="nx-code">height</code> and <code className="nx-code">width</code>,
           which won't be discussed here. A block elements can form a container for line boxes, the block's width
           determining the length of each line and thus, along with the text content, the number of lines. A block
           element's content area contains not only the content areas of its inline children but also any
@@ -235,8 +235,8 @@ const FontSizePage = () =>
       <ul className="nx-list nx-list--bulleted">
         <li className="nx-list__item">
           Inline elements do not respond to CSS width, height, margin-top, or margin-bottom properties. Their
-          size and vertical spacing only follows the <NxCode>font-size</NxCode>,
-          {' '}<NxCode>line-height</NxCode>, and font metrics as described above, as well as padding
+          size and vertical spacing only follows the <code className="nx-code">font-size</code>,
+          {' '}<code className="nx-code">line-height</code>, and font metrics as described above, as well as padding
           and borders.
         </li>
         <li className="nx-list__item">
@@ -244,15 +244,15 @@ const FontSizePage = () =>
         </li>
         <li className="nx-list__item">
           inline-block elements use the baseline of their last line box as their baseline, unless they have no text
-          content or have <NxCode>overflow</NxCode> set to something other
-          than <NxCode>visible</NxCode>. In these cases the baseline is the bottom margin
+          content or have <code className="nx-code">overflow</code> set to something other
+          than <code className="nx-code">visible</code>. In these cases the baseline is the bottom margin
           edge. <a href={css2SpecUrl}>[3]</a>
         </li>
         <li className="nx-list__item">
           Things get more complicated when a line box includes inline elements of multiple heights. In this
           scenario, the elements are sized individually,
-          including <NxCode>line-height</NxCode> spacing, lined up according to
-          the <NxCode>vertical-align</NxCode> property (by default: so their baselines
+          including <code className="nx-code">line-height</code> spacing, lined up according to
+          the <code className="nx-code">vertical-align</code> property (by default: so their baselines
           are aligned), and then the line box goes from the highest top to the lowest bottom.
         </li>
         <li className="nx-list__item">
@@ -267,7 +267,7 @@ const FontSizePage = () =>
         </li>
         <li className="nx-list__item">
           <p className="nx-p">
-            It is possible to specify a <NxCode>line-height</NxCode> smaller than an element's content
+            It is possible to specify a <code className="nx-code">line-height</code> smaller than an element's content
             height, in which case the leading will be negative and text node content areas will have a height exceeding
             that of their line box. In this scenario, text nodes in adjacent line boxes will overlap one another.
           </p>
@@ -289,12 +289,12 @@ const FontSizePage = () =>
           Different fonts, of course, have different metrics, which means different heights. Experimentally, in this
           case the browser appears to take the metrics of the declared font, even if that font is not
           contributing <em>any</em> of the glyphs in the text node in question. As an example, observe
-          the <NxCode>span</NxCode>s containing the following emojis. The first inherits the page styles
+          the <code className="nx-code">span</code>s containing the following emojis. The first inherits the page styles
           setting OpenSans as the font family.  Despite not actually having any glyphs from OpenSans, it still has a
           content height derived from OpenSans metrics - that is, a content height that is roughly 1.36 times the font
-          size. The second <NxCode>span</NxCode> however is styled with the
-          generic <NxCode>sans-serif</NxCode> font family. You will likely observe that this
-          second <NxCode>span</NxCode> has a different height
+          size. The second <code className="nx-code">span</code> however is styled with the
+          generic <code className="nx-code">sans-serif</code> font family. You will likely observe that this
+          second <code className="nx-code">span</code> has a different height
           - one which will depend on the default sans-serif font installed on your operating system:
 
           <FallbackFontExample />

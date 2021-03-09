@@ -15,8 +15,8 @@ const NxPrePage = () => {
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          The <NxCode>.nx-pre</NxCode> CSS class provides standard RSC styling
-          for <NxCode>&lt;pre&gt;</NxCode> elements such as code blocks.
+          The <code className="nx-code">.nx-pre</code> CSS class provides standard RSC styling
+          for <code className="nx-code">&lt;pre&gt;</code> elements such as code blocks.
         </p>
       </GalleryDescriptionTile>
 

@@ -59,11 +59,11 @@ const NxStatefulTextInputPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell">Input HTML Attributes | Textarea HTML Attributes</td>
             <td className="nx-cell">
-              <NxCode>NxTextInput</NxCode> props
+              <code className="nx-code">NxTextInput</code> props
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Any attribute supported by <NxCode>NxTextInput</NxCode>
+              Any attribute supported by <code className="nx-code">NxTextInput</code>
             </td>
           </tr>
         </tbody>
@@ -73,7 +73,7 @@ const NxStatefulTextInputPage = () =>
     <GalleryExampleTile title="Simple Example"
                         liveExample={NxStatefulTextInputSimpleExample}
                         codeExamples={simpleSourceCode}>
-      A simple example of an <NxCode>NxStatefileTextInput</NxCode>. Note that the content of the text
+      A simple example of an <code className="nx-code">NxStatefileTextInput</code>. Note that the content of the text
       input does not need to be tracked separately.
     </GalleryExampleTile>
 

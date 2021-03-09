@@ -30,10 +30,10 @@ const NxSubmitMaskPage = () =>
       <p className="nx-p">
         Handling the brief display of the "success" part of the mask is left up to the caller, as it is often
         intertwined with other business logic (for example closing a modal) and may be best managed in redux or similar.
-        A constant, <NxCode>SUBMIT_MASK_SUCCESS_VISIBLE_TIME_MS</NxCode>, is exported in order to
+        A constant, <code className="nx-code">SUBMIT_MASK_SUCCESS_VISIBLE_TIME_MS</code>, is exported in order to
         provide said external business logic with a standard value for the amount of time to show the success mask.
         If you do not need to tie the showing and hiding of the success mask to other business logic, consider
-        using <NxCode>NxStatefulSubmitMask</NxCode> which encapsulates the success mask management.
+        using <code className="nx-code">NxStatefulSubmitMask</code> which encapsulates the success mask management.
       </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
@@ -60,8 +60,8 @@ const NxSubmitMaskPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               Whether the mask should display as a success. When true, the loading spinner will not be present,
-              the mask will have green styling, and the <NxCode>successMessage</NxCode> will be used
-              instead of the <NxCode>message</NxCode> as described below. Defaults to false
+              the mask will have green styling, and the <code className="nx-code">successMessage</code> will be used
+              instead of the <code className="nx-code">message</code> as described below. Defaults to false
             </td>
           </tr>
           <tr className="nx-table-row nx-table-row--header">
@@ -69,7 +69,7 @@ const NxSubmitMaskPage = () =>
             <td className="nx-cell">string</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              The text to display inside of the mask when <NxCode>success</NxCode> is false.  Defaults
+              The text to display inside of the mask when <code className="nx-code">success</code> is false.  Defaults
               to "Submitting…"
             </td>
           </tr>
@@ -78,7 +78,7 @@ const NxSubmitMaskPage = () =>
             <td className="nx-cell">string</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              The text to display inside of the mask when <NxCode>success</NxCode> is true. Defaults
+              The text to display inside of the mask when <code className="nx-code">success</code> is true. Defaults
               to "Success!"
             </td>
           </tr>
@@ -90,27 +90,27 @@ const NxSubmitMaskPage = () =>
                         id="nx-submit-mask-loading-example"
                         liveExample={NxSubmitMaskExample}
                         codeExamples={NxSubmitMaskCode}>
-      A simple <NxCode>NxSubmitMask</NxCode> in the non-success phase.
+      A simple <code className="nx-code">NxSubmitMask</code> in the non-success phase.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Custom Message Example"
                         liveExample={NxSubmitMaskCustomMessageExample}
                         codeExamples={NxSubmitMaskCustomMessageCode}>
-      An <NxCode>NxSubmitMask</NxCode> in the non-success phase with a custom message.
+      An <code className="nx-code">NxSubmitMask</code> in the non-success phase with a custom message.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Success Example"
                         id="nx-submit-mask-success-example"
                         liveExample={NxSubmitMaskSuccessExample}
                         codeExamples={NxSubmitMaskSuccessCode}>
-      An <NxCode>NxSubmitMask</NxCode> in the success phase.
+      An <code className="nx-code">NxSubmitMask</code> in the success phase.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Custom Success Message Example"
                         liveExample={NxSubmitMaskCustomSuccessMessageExample}
                         codeExamples={NxSubmitMaskCustomSuccessMessageCode}>
-      An <NxCode>NxSubmitMask</NxCode> in the success phase with a custom success message. Note that the
-      success message is a separate <NxCode>prop</NxCode> from the non-success message.
+      An <code className="nx-code">NxSubmitMask</code> in the success phase with a custom success message. Note that the
+      success message is a separate <code className="nx-code">prop</code> from the non-success message.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Fullscreen Example"

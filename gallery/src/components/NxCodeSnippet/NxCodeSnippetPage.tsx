@@ -21,7 +21,7 @@ export default function NxCodeSnippetPage() {
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          <NxCode>NxCodeSnippet</NxCode> creates a read-only text area containing the specified text
+          <code className="nx-code">NxCodeSnippet</code> creates a read-only text area containing the specified text
           content, along with a button enabling the user to easily copy that text content to the clipboard.
         </p>
         <NxTable>
@@ -77,20 +77,20 @@ export default function NxCodeSnippetPage() {
             <NxTableRow>
               <NxTableCell>inputProps</NxTableCell>
               <NxTableCell>
-                Props for <NxCode>NxTextInput</NxCode> except
-                for <NxCode>type</NxCode>,{' '}
-                <NxCode>value</NxCode>,{' '}
-                <NxCode>isPristine</NxCode>,
-                and <NxCode>readOnly</NxCode>
+                Props for <code className="nx-code">NxTextInput</code> except
+                for <code className="nx-code">type</code>,{' '}
+                <code className="nx-code">value</code>,{' '}
+                <code className="nx-code">isPristine</code>,
+                and <code className="nx-code">readOnly</code>
               </NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell></NxTableCell>
               <NxTableCell>
-                Props to apply to the textarea within the <NxCode>NxCodeSnippet</NxCode>
+                Props to apply to the textarea within the <code className="nx-code">NxCodeSnippet</code>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTableCell>
+              <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
               <NxTableCell>
                 <a className="nx-text-link"
                    target="_blank"
@@ -102,8 +102,8 @@ export default function NxCodeSnippetPage() {
               <NxTableCell>No</NxTableCell>
               <NxTableCell>N/A</NxTableCell>
               <NxTableCell>
-                <NxCode>NxCodeSnippet</NxCode> supports any HTML attribute that's normally
-                supported by <NxCode>&lt;div&gt;</NxCode>.
+                <code className="nx-code">NxCodeSnippet</code> supports any HTML attribute that's normally
+                supported by <code className="nx-code">&lt;div&gt;</code>.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
@@ -114,7 +114,7 @@ export default function NxCodeSnippetPage() {
                           id="nx-code-snippet-simple-example"
                           liveExample={NxCodeSnippetExample}
                           codeExamples={nxCodeSnippetCode}>
-        Two <NxCode>NxCodeSnippet</NxCode>s with minimal props: just some content which can be
+        Two <code className="nx-code">NxCodeSnippet</code>s with minimal props: just some content which can be
         copied to the clipboard.
       </GalleryExampleTile>
 
@@ -122,9 +122,9 @@ export default function NxCodeSnippetPage() {
                           id="nx-code-snippet-complex-example"
                           liveExample={NxCodeSnippetComplexExample}
                           codeExamples={nxCodeSnippetComplexCode}>
-        An <NxCode>NxCodeSnippet</NxCode> demonstrating optional
-        props: <NxCode>sublabel</NxCode>, <NxCode>onCopyUsingBtn</NxCode>,
-        and <NxCode>inputProps</NxCode>
+        An <code className="nx-code">NxCodeSnippet</code> demonstrating optional
+        props: <code className="nx-code">sublabel</code>, <code className="nx-code">onCopyUsingBtn</code>,
+        and <code className="nx-code">inputProps</code>
       </GalleryExampleTile>
     </>
   );

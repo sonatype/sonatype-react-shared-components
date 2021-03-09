@@ -29,12 +29,12 @@ export default function NxModalPage() {
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          <NxCode>NxModal</NxCode> is the preferred way to handle modals. Invoking
-          an <NxCode>NxModal</NxCode> will create 2 separate <NxCode>div</NxCode>
-          elements. One div will have the <NxCode>nx-modal</NxCode> class, along with any classes passed
-          into the <NxCode>NxModal</NxCode> element with the <NxCode>className</NxCode>
+          <code className="nx-code">NxModal</code> is the preferred way to handle modals. Invoking
+          an <code className="nx-code">NxModal</code> will create 2 separate <code className="nx-code">div</code>
+          elements. One div will have the <code className="nx-code">nx-modal</code> class, along with any classes passed
+          into the <code className="nx-code">NxModal</code> element with the <code className="nx-code">className</code>
           attribute. The other div, the parent of the modal, will have
-          the <NxCode>nx-modal-backdrop</NxCode> class applied to it.
+          the <code className="nx-code">nx-modal-backdrop</code> class applied to it.
         </p>
         <h3>Modal Style Classes</h3>
         <table className="nx-table nx-table--gallery-props">
@@ -47,43 +47,43 @@ export default function NxModalPage() {
           </thead>
           <tbody>
             <tr className="nx-table-row">
-              <td className="nx-cell"><NxCode>.nx-modal-header</NxCode></td>
-              <td className="nx-cell">HTML <NxCode>header</NxCode> element</td>
+              <td className="nx-cell"><code className="nx-code">.nx-modal-header</code></td>
+              <td className="nx-cell">HTML <code className="nx-code">header</code> element</td>
               <td className="nx-cell">
-                The <NxCode>NxModal</NxCode> component supports any component that adheres to the
+                The <code className="nx-code">NxModal</code> component supports any component that adheres to the
                 RSC guidelines for margin and padding. Most commonly, components will be included in
-                an <NxCode>H2</NxCode> title tag (with
-                the <NxCode>.nx-h2</NxCode> style associated with it)
+                an <code className="nx-code">H2</code> title tag (with
+                the <code className="nx-code">.nx-h2</code> style associated with it)
               </td>
             </tr>
             <tr className="nx-table-row">
-              <td className="nx-cell"><NxCode>.nx-modal-content</NxCode></td>
+              <td className="nx-cell"><code className="nx-code">.nx-modal-content</code></td>
               <td className="nx-cell">Wrapping the modal content</td>
               <td className="nx-cell">
                 All content between the header and footer should be wrapped in a div with
-                the <NxCode>.nx-modal-content</NxCode> className. This element (and thus the modal
+                the <code className="nx-code">.nx-modal-content</code> className. This element (and thus the modal
                 overall) will shrink to fit the content, or expand vertically until the modal reaches its maximum height
                 (determined as a distance from the viewport edges). If the contents of
-                the <NxCode>nx-modal-content</NxCode> continue to grow beyond that height, it
+                the <code className="nx-code">nx-modal-content</code> continue to grow beyond that height, it
                 introduces a scrollbar.
               </td>
             </tr>
             <tr className="nx-table-row">
-              <td className="nx-cell"><NxCode>.nx-footer</NxCode></td>
-              <td className="nx-cell">HTML <NxCode>footer</NxCode> element</td>
+              <td className="nx-cell"><code className="nx-code">.nx-footer</code></td>
+              <td className="nx-cell">HTML <code className="nx-code">footer</code> element</td>
               <td className="nx-cell">
                 Each modal should contain a footer containing buttons for various actions. At a minimum, there
                 should be a button that enables the user to close the modal. Further, the footer may contain
-                an <NxCode>NxAlert</NxCode> as would typically be the case after a form submission
+                an <code className="nx-code">NxAlert</code> as would typically be the case after a form submission
                 which resulted in an error.
               </td>
             </tr>
             <tr className="nx-table-row">
-              <td className="nx-cell"><NxCode>.nx-modal-content--tabs</NxCode></td>
-              <td className="nx-cell">Modifier of <NxCode>.nx-modal-content</NxCode></td>
+              <td className="nx-cell"><code className="nx-code">.nx-modal-content--tabs</code></td>
+              <td className="nx-cell">Modifier of <code className="nx-code">.nx-modal-content</code></td>
               <td className="nx-cell">
-                A modifier class that must be added to <NxCode>.nx-modal-content</NxCode> when
-                you want to use tabs within an <NxCode>NxModal</NxCode> as the sole contents of
+                A modifier class that must be added to <code className="nx-code">.nx-modal-content</code> when
+                you want to use tabs within an <code className="nx-code">NxModal</code> as the sole contents of
                 the modal body. The modifier keeps the tabs "sticky" while allowing the tab content to scroll.
               </td>
             </tr>
@@ -107,9 +107,9 @@ export default function NxModalPage() {
               <td className="nx-cell">No</td>
               <td className="nx-cell"></td>
               <td className="nx-cell">
-                Any <NxCode>className</NxCode> attributes passed in on
-                the <NxCode>NxModal</NxCode> element will be added to
-                the <NxCode>nx-modal</NxCode> class on the modal div.
+                Any <code className="nx-code">className</code> attributes passed in on
+                the <code className="nx-code">NxModal</code> element will be added to
+                the <code className="nx-code">nx-modal</code> class on the modal div.
               </td>
             </tr>
             <tr className="nx-table-row">
@@ -119,7 +119,7 @@ export default function NxModalPage() {
               <td className="nx-cell"></td>
               <td className="nx-cell">
                 The function to be called to close the modal when pressing
-                the <NxCode>Escape</NxCode> key.
+                the <code className="nx-code">Escape</code> key.
               </td>
             </tr>
             <tr className="nx-table-row">
@@ -157,7 +157,7 @@ export default function NxModalPage() {
                           id="nx-modal-simple-example"
                           liveExample={NxModalSimpleExample}
                           codeExamples={NxModalSimpleSourceCode}>
-        A basic example of an <NxCode>NxModal</NxCode>. Click the button to open the modal. Note that
+        A basic example of an <code className="nx-code">NxModal</code>. Click the button to open the modal. Note that
         this modal has sufficient content to induce scrolling (on most monitors). You will see in other examples that
         when modals have smaller contents, the scrollbar does not appear and the modal content area shrinks to fit.
       </GalleryExampleTile>
@@ -165,47 +165,47 @@ export default function NxModalPage() {
       <GalleryExampleTile title="NxModal Example with NxAlert"
                           liveExample={NxModalAlertExample}
                           codeExamples={NxModalAlertSourceCode}>
-        An example of an <NxCode>NxModal</NxCode> containing
-        an <NxCode>NxAlert</NxCode>.
+        An example of an <code className="nx-code">NxModal</code> containing
+        an <code className="nx-code">NxAlert</code>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal with stacked modal example"
                           id="nx-modal-stacked-example"
                           liveExample={NxModalStackedExample}
                           codeExamples={NxModalStackedSourceCode}>
-        <NxCode>NxModal</NxCode> also supports stacked or nested modals. A second modal can be
-        generated from inside of an <NxCode>NxModal</NxCode>.
+        <code className="nx-code">NxModal</code> also supports stacked or nested modals. A second modal can be
+        generated from inside of an <code className="nx-code">NxModal</code>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with form"
                           liveExample={NxModalFormExample}
                           codeExamples={NxModalFormSourceCode}>
-        <NxCode>NxModal</NxCode> also supports inclusion and styling of form elements.
+        <code className="nx-code">NxModal</code> also supports inclusion and styling of form elements.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with form and error styling"
                           id="nx-modal-form-with-alert-example"
                           liveExample={NxModalFormErrorExample}
                           codeExamples={NxModalFormErrorSourceCode}>
-        This <NxCode>NxModal</NxCode> also contains a form, but additionally demonstrates the typical
+        This <code className="nx-code">NxModal</code> also contains a form, but additionally demonstrates the typical
         way that an error upon the submission of said form would be handled: with
-        an <NxCode>NxErrorAlert</NxCode> in the footer
+        an <code className="nx-code">NxErrorAlert</code> in the footer
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Wide NxModal Example"
                           id="nx-modal-wide-example"
                           liveExample={NxModalExtraWideExample}
                           codeExamples={NxModalExtraWideSourceCode}>
-        A demonstration of the <NxCode>wide</NxCode> styles
-        for <NxCode>NxModal</NxCode>.
+        A demonstration of the <code className="nx-code">wide</code> styles
+        for <code className="nx-code">NxModal</code>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Narrow NxModal Example"
                           id="nx-modal-narrow-example"
                           liveExample={NxModalNarrowExample}
                           codeExamples={NxModalNarrowSourceCode}>
-        A demonstration of the <NxCode>narrow</NxCode> styles
-        for <NxCode>NxModal</NxCode>.
+        A demonstration of the <code className="nx-code">narrow</code> styles
+        for <code className="nx-code">NxModal</code>.
       </GalleryExampleTile>
     </>
   );

@@ -14,7 +14,7 @@ export default function UseToggleThirdItemExample() {
   return (
     <div>
       <NxCheckbox isChecked={checked} onChange={toggleChecked}>
-        Checkbox brought to you by <NxCode>useToggle</NxCode>
+        Checkbox brought to you by <code className="nx-code">useToggle</code>
       </NxCheckbox>
       <br/>
       <NxButton onClick={() => setChecked(false)}>Reset Checkbox</NxButton>

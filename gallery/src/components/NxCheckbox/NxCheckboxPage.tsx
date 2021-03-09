@@ -21,7 +21,7 @@ const NxCheckboxPage = () =>
       <p className="nx-p">Child VDOM will be used as a label following the checkbox button itself.</p>
       <p className="nx-p">
         NxCheckbox can receive any attribute that would be valid on an
-        HTML <NxCode>&lt;label&gt;</NxCode> as well as the following prop
+        HTML <code className="nx-code">&lt;label&gt;</code> as well as the following prop
       </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
@@ -66,8 +66,8 @@ const NxCheckboxPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               Whether the checkbox label content should be wrapped in
-              an <NxCode>NxOverflowTooltip</NxCode>. Defaults to true. Set this to false when
-              the <NxCode>NxCheckbox</NxCode> is being wrapped in a tooltip externally, to prevent
+              an <code className="nx-code">NxOverflowTooltip</code>. Defaults to true. Set this to false when
+              the <code className="nx-code">NxCheckbox</code> is being wrapped in a tooltip externally, to prevent
               multiple overlapping tooltips from appearing.
             </td>
           </tr>

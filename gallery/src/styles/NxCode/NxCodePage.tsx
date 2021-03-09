@@ -15,12 +15,12 @@ const NxCodePage = () => {
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          Using the <NxCode>&lt;code&gt;</NxCode> HTML tag with the
-          <NxCode>.nx-code</NxCode> className applies a monospace font and other styling to make your
+          Using the <code className="nx-code">&lt;code&gt;</code> HTML tag with the
+          <code className="nx-code">.nx-code</code> className applies a monospace font and other styling to make your
           code snippets stand out.
         </p>
         <p className="nx-p">
-          <NxCode>.nx-code</NxCode> is used extensively throughout the RSC Gallery.
+          <code className="nx-code">.nx-code</code> is used extensively throughout the RSC Gallery.
         </p>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="Styling code snippets"

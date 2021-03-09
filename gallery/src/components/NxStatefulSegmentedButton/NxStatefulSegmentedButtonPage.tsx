@@ -52,7 +52,7 @@ export default function NxStatefulSegmentedButtonPage() {
               <NxTableCell></NxTableCell>
               <NxTableCell>
                 The items to display within the dropdown menu. Anything that can appear
-                within an <NxCode>NxDropdown</NxCode> is supported.
+                within an <code className="nx-code">NxDropdown</code> is supported.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
@@ -73,7 +73,7 @@ export default function NxStatefulSegmentedButtonPage() {
               <NxTableCell>Disables both segments of the button when true.</NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTableCell>
+              <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
               <NxTableCell>
                 <a target="_blank"
                    rel="noopener"
@@ -84,8 +84,8 @@ export default function NxStatefulSegmentedButtonPage() {
               <NxTableCell>No</NxTableCell>
               <NxTableCell>N/A</NxTableCell>
               <NxTableCell>
-                <NxCode>NxSegmentedButton</NxCode> supports any HTML attribute that's normally
-                supported by <NxCode>&lt;div&gt;</NxCode>.
+                <code className="nx-code">NxSegmentedButton</code> supports any HTML attribute that's normally
+                supported by <code className="nx-code">&lt;div&gt;</code>.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
@@ -95,7 +95,7 @@ export default function NxStatefulSegmentedButtonPage() {
       <GalleryExampleTile title="Example"
                           liveExample={NxStatefulSegmentedButtonExample}
                           codeExamples={nxStatefulSegmentedButtonCode}>
-        Example of an <NxCode>NxStatefulSegmentedButton</NxCode>.
+        Example of an <code className="nx-code">NxStatefulSegmentedButton</code>.
       </GalleryExampleTile>
     </>
   );

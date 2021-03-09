@@ -23,9 +23,9 @@ const NxTruncatePage = () => {
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          The <NxCode>.nx-truncate-ellipsis</NxCode> mixin is a simple way to add ellipsis truncation to
+          The <code className="nx-code">.nx-truncate-ellipsis</code> mixin is a simple way to add ellipsis truncation to
           any object. The mixin automatically adds the three required CSS attributes, but the end user must provide the
-          <NxCode>max-width:</NxCode> value to their SCSS for truncation to work properly. Since this
+          <code className="nx-code">max-width:</code> value to their SCSS for truncation to work properly. Since this
           value is likley to be custom no default has be set.
         </p>
       </GalleryDescriptionTile>

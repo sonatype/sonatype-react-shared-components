@@ -15,9 +15,9 @@ const NxThreatNumberListExample = () =>
       <span className="nx-list__text nx-threat-number">0</span>
       <span className="nx-list__subtext">
         In this row, the threat number value is the only content in
-        the <NxCode>.nx-list__text</NxCode>, so there's no need to make a separate element;
-        the <NxCode>.nx-threat-number</NxCode> class can be applied directly to
-        the <NxCode>.nx-list__text</NxCode>.
+        the <code className="nx-code">.nx-list__text</code>, so there's no need to make a separate element;
+        the <code className="nx-code">.nx-threat-number</code> class can be applied directly to
+        the <code className="nx-code">.nx-list__text</code>.
       </span>
     </li>
     <li className="nx-list__item">
@@ -27,11 +27,11 @@ const NxThreatNumberListExample = () =>
       </span>
       <span className="nx-list__subtext">
         In this row, there is other content aside from the threat number value within
-        the <NxCode>.nx-list__text</NxCode>, so a separate element is needed in order
-        to ensure that the <NxCode>.nx-threat-number</NxCode> styles are applied only to the
+        the <code className="nx-code">.nx-list__text</code>, so a separate element is needed in order
+        to ensure that the <code className="nx-code">.nx-threat-number</code> styles are applied only to the
         threat number value itself. Note that as of RSC 2.0.0, nx-threat-number does not actually have any styles
         that are distinct from the rest of the main list text. That may change in the future however, so
-        usage of <NxCode>.nx-threat-number</NxCode> here is still desired.
+        usage of <code className="nx-code">.nx-threat-number</code> here is still desired.
       </span>
     </li>
   </ul>;

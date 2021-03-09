@@ -23,8 +23,8 @@ const NxPaginationPage = () =>
         Pagination controls are used when there is a great deal of content that needs to be sorted into separate
         "pages" rather than scrolled. The controls offer multiple methods of navigating the paged content, forward and
         backward controls, specific page controls, and an ellipsis control.
-        This component renders pagination buttons contained within an <NxCode>.nx-btn-bar</NxCode>.
-        It is intended to be used within an <NxCode>.nx-footer</NxCode> element.
+        This component renders pagination buttons contained within an <code className="nx-code">.nx-btn-bar</code>.
+        It is intended to be used within an <code className="nx-code">.nx-footer</code> element.
         There are essentially five different "types" of buttons which can appear within the pagination control:
       </p>
       <ul className="nx-list">
@@ -32,7 +32,7 @@ const NxPaginationPage = () =>
           <span className="nx-list__text">Current page button</span>
           <span className="nx-list__subtext">
             A button for the current page will always be visible and is distinguished via a dark blue background.
-            Clicking this button has no effect - the component's <NxCode>onChange</NxCode> handler
+            Clicking this button has no effect - the component's <code className="nx-code">onChange</code> handler
             does not get triggered.
           </span>
         </li>
@@ -70,7 +70,7 @@ const NxPaginationPage = () =>
         </li>
       </ul>
       <p className="nx-p">
-        In addition to all native attributes allowed on a <NxCode>div</NxCode>, the following props
+        In addition to all native attributes allowed on a <code className="nx-code">div</code>, the following props
         are supported.
       </p>
       <table className="nx-table nx-table--gallery-props">
@@ -84,24 +84,24 @@ const NxPaginationPage = () =>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell"><NxCode>pageCount</NxCode></td>
+            <td className="nx-cell"><code className="nx-code">pageCount</code></td>
             <td className="nx-cell">Non-negative integer</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">The total number of pages</td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><NxCode>currentPage</NxCode></td>
+            <td className="nx-cell"><code className="nx-code">currentPage</code></td>
             <td className="nx-cell">Non-negative integer</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              The currently selected page. Must be null or undefined if <NxCode>pageCount</NxCode>
-              is 0, and must <em>not</em> be null or undefined if <NxCode>pageCount</NxCode> is
+              The currently selected page. Must be null or undefined if <code className="nx-code">pageCount</code>
+              is 0, and must <em>not</em> be null or undefined if <code className="nx-code">pageCount</code> is
               greater than 0. Pages are counted in a zero-based manner - that is, the page numbers displayed in the
               UI are one higher than this property specifies.
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><NxCode>onChange</NxCode></td>
+            <td className="nx-cell"><code className="nx-code">onChange</code></td>
             <td className="nx-cell">Function</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">
@@ -113,8 +113,8 @@ const NxPaginationPage = () =>
         </tbody>
       </table>
       <p className="nx-p">
-        For an example of an <NxCode>NxPagination</NxCode> component within/connected to a table,
-        see the <a className="nx-text-link" href="#/pages/NxTable"><NxCode>NxTable</NxCode></a> page.
+        For an example of an <code className="nx-code">NxPagination</code> component within/connected to a table,
+        see the <a className="nx-text-link" href="#/pages/NxTable"><code className="nx-code">NxTable</code></a> page.
       </p>
     </GalleryDescriptionTile>
 
@@ -123,7 +123,7 @@ const NxPaginationPage = () =>
                         liveExample={NxPaginationExample}
                         codeExamples={nxPaginationCode}>
       An interactive example showing all possible types of buttons that can appear within
-      an <NxCode>NxPagination</NxCode> component. Take special note of what happens when within
+      an <code className="nx-code">NxPagination</code> component. Take special note of what happens when within
       the page 36 - 40 range: Since there are no additional pages between that range and the final page (41), no
       ellipsis button is rendered in between.
     </GalleryExampleTile>
@@ -131,8 +131,8 @@ const NxPaginationPage = () =>
     <GalleryExampleTile title="NxPagination Empty Example"
                         liveExample={NxPaginationEmptyExample}
                         codeExamples={nxPaginationEmptyCode}>
-      An example demonstrating that when there are no pages, <NxCode>NxPagination</NxCode> renders
-      an empty <NxCode>nx-btn-bar</NxCode>.
+      An example demonstrating that when there are no pages, <code className="nx-code">NxPagination</code> renders
+      an empty <code className="nx-code">nx-btn-bar</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxPagination Single Page Example"

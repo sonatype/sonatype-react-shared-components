@@ -64,8 +64,8 @@ const NxLoadErrorPage = () =>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               A handler that dismisses the alert when called.
-              See <a href="#/page/NxAlert"><NxCode>NxAlert</NxCode></a> for details. This never
-              be specified at the same time as <NxCode>retryHandler</NxCode>.
+              See <a href="#/page/NxAlert"><code className="nx-code">NxAlert</code></a> for details. This never
+              be specified at the same time as <code className="nx-code">retryHandler</code>.
             </td>
           </tr>
         </tbody>
@@ -77,16 +77,16 @@ const NxLoadErrorPage = () =>
                         codeExamples={retrySourceCode}
                         liveExample={NxLoadErrorRetryExample}>
       In this example, the error is cleared on retry. Note that
-      the <NxCode>NxLoadError</NxCode> component
+      the <code className="nx-code">NxLoadError</code> component
       disappears when that happens. This is the most common usage
-      of <NxCode>NxLoadError</NxCode>.
+      of <code className="nx-code">NxLoadError</code>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Close Button"
                         codeExamples={simpleSourceCode}
                         liveExample={NxLoadErrorSimpleExample}>
-      This example demonstrates a basic <NxCode>NxLoadError</NxCode> for cases where a Retry action
-      does not make sense. In most cases, when an <NxCode>NxLoadError</NxCode> does
+      This example demonstrates a basic <code className="nx-code">NxLoadError</code> for cases where a Retry action
+      does not make sense. In most cases, when an <code className="nx-code">NxLoadError</code> does
       not have a Retry button, it should have a Close button. Additionally, this example demonstrates that the
       error message may be JSX as opposed to just a simple string
     </GalleryExampleTile>
@@ -94,11 +94,11 @@ const NxLoadErrorPage = () =>
     <GalleryExampleTile title="Example without Close Button"
                         codeExamples={noCloseSourceCode}
                         liveExample={NxLoadErrorNoCloseExample}>
-      This example demonstrates an <NxCode>NxLoadError</NxCode> which has neither a Retry button nor a
+      This example demonstrates an <code className="nx-code">NxLoadError</code> which has neither a Retry button nor a
       Close button. This arrangement should only be used for cases where both of the following are true:
       <ol>
         <li>
-          The <NxCode>NxLoadError</NxCode> is the only component within the main area of the page.
+          The <code className="nx-code">NxLoadError</code> is the only component within the main area of the page.
         </li>
         <li>
           Retrying the load would not help.

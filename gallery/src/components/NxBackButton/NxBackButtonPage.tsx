@@ -57,21 +57,21 @@ const NxBackButtonPage = () =>
                         id="nx-back-button-simple-example"
                         liveExample={NxBackButtonSimpleExample}
                         codeExamples={simpleSourceCode}>
-      Basic <NxCode>NxBackButton</NxCode> example.
+      Basic <code className="nx-code">NxBackButton</code> example.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Back button with targetPageTitle specified"
                         id="nx-back-button-title-example"
                         liveExample={NxBackButtonTitleExample}
                         codeExamples={titleSourceCode}>
-      A demonstration of using the <NxCode>targetPageTitle</NxCode> to generate the text content.
+      A demonstration of using the <code className="nx-code">targetPageTitle</code> to generate the text content.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Back button with custom text specified"
                         id="nx-back-button-text-example"
                         liveExample={NxBackButtonTextExample}
                         codeExamples={textSourceCode}>
-      A demonstration of using completely custom text for the <NxCode>NxBackButton</NxCode>.
+      A demonstration of using completely custom text for the <code className="nx-code">NxBackButton</code>.
     </GalleryExampleTile>
   </>;
 

@@ -23,7 +23,7 @@ const NxTogglePage = () =>
       <p className="nx-p">Child VDOM will be used as a label preceeding the toggle control.</p>
       <p className="nx-p">
         NxToggle can receive any attribute that would be valid on an
-        HTML <NxCode>&lt;label&gt;</NxCode> as well as the following props:
+        HTML <code className="nx-code">&lt;label&gt;</code> as well as the following props:
       </p>
       <table className="nx-table">
         <thead>
@@ -90,9 +90,9 @@ const NxTogglePage = () =>
         <tbody>
           <tr className="nx-table-row">
             <td className="nx-cell">.nx-toggle--no-gap</td>
-            <td className="nx-cell">Modifier of <NxCode>.nx-toggle</NxCode></td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-toggle</code></td>
             <td className="nx-cell">
-              When this class is applied to an <NxCode>NxToggle</NxCode> it causes the toggle control
+              When this class is applied to an <code className="nx-code">NxToggle</code> it causes the toggle control
               to appear immediately after the label text rather than appearing to float to the right of the toggle's
               container. Note that the maximum width of the toggle remains in effect as do the rules around the length
               and wrapping of the toggle's label. See the example below for a demonstration.

@@ -15,8 +15,8 @@ const NxBlockquotePage = () => {
     <>
       <GalleryDescriptionTile>
         <p className="nx-p">
-          The <NxCode>.nx-blockquote</NxCode> CSS class provides standard RSC styling
-          for <NxCode>&lt;blockquote&gt;</NxCode> elements.
+          The <code className="nx-code">.nx-blockquote</code> CSS class provides standard RSC styling
+          for <code className="nx-code">&lt;blockquote&gt;</code> elements.
         </p>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="Basic Example"

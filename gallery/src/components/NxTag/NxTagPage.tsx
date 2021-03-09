@@ -20,10 +20,10 @@ const NxTagPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        There are two types of <NxCode>NxTag</NxCode>. The basic tags have a single state.
-        <NxCode>NxSelectableTag</NxCode> can be selected and deselected. It is up to the consumer
+        There are two types of <code className="nx-code">NxTag</code>. The basic tags have a single state.
+        <code className="nx-code">NxSelectableTag</code> can be selected and deselected. It is up to the consumer
         what that means in the context of the UI. The are many colors provided
-        for <NxCode>NxTag</NxCode> which can be specified via props.
+        for <code className="nx-code">NxTag</code> which can be specified via props.
       </p>
       <h3 className="nx-h3">Common Props</h3>
       <NxTable>
@@ -45,7 +45,7 @@ const NxTagPage = () =>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
             <NxTableCell>
-              If no <NxCode>color</NxCode> is specified then the default (dark grey/blue with a lighter
+              If no <code className="nx-code">color</code> is specified then the default (dark grey/blue with a lighter
               grey/blue unselected state) colors are used.
             </NxTableCell>
           </NxTableRow>
@@ -62,7 +62,7 @@ const NxTagPage = () =>
             <NxTableCell></NxTableCell>
             <NxTableCell>
               NxTag supports any html attribute that's normally supported by
-              {' '}<NxCode>div</NxCode> elements.
+              {' '}<code className="nx-code">div</code> elements.
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>
@@ -87,7 +87,7 @@ const NxTagPage = () =>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
             <NxTableCell>
-              Callback that changes the value of <NxCode>selected</NxCode> below between true
+              Callback that changes the value of <code className="nx-code">selected</code> below between true
               (selected) and false (unselected).
             </NxTableCell>
           </NxTableRow>
@@ -99,7 +99,7 @@ const NxTagPage = () =>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
             <NxTableCell>
-              Boolean for the selected/unselected state of a <NxCode>NxSelectableTag</NxCode>
+              Boolean for the selected/unselected state of a <code className="nx-code">NxSelectableTag</code>
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>
