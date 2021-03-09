@@ -22,7 +22,7 @@ const NxStatefulNavigationSidebar: FunctionComponent<Props> = function(props) {
   return (
     <NxNavigationSidebar isOpen={isOpen}
                          onToggleClick={toggleOpen}
-                         {...(otherProps)}>
+                         {...otherProps}>
       { children }
     </NxNavigationSidebar>
   );
