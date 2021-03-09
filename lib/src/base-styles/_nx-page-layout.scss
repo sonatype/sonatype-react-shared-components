@@ -8,6 +8,13 @@
 /*
   #Layout
 */
+:root {
+  --page-width-max: 1600px;
+  --page-width-min: 1366px;
+  --content-width: 76%;
+  --sidebar-width: 100% - var(--content-width);
+}
+
 .nx-html, .nx-body {
   box-sizing: border-box;
   height: 100%;
