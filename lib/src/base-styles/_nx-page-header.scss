@@ -35,7 +35,7 @@ $main-header-product-version-row-height: 1fr;
   margin: 0 auto;
   padding: 0 $nx-spacing-l;
   width: 100%;
-  max-width: $nx-page-width-max;
+  max-width: var(--page-width-max);
 }
 
 .nx-page-header__links {
