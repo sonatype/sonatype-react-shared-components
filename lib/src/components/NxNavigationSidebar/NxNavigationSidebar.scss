@@ -85,7 +85,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
 .nx-sidebar__navigation {
   border-bottom: 1px solid $nx-sidebar-separator-color;
-  flex: 0 0 auto;
+  flex: none;
   margin: $nx-spacing-l 0 0;
 
   > a {
