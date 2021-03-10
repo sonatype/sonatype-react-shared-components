@@ -29,37 +29,37 @@ function Application() {
                                    logoText="nexus lifecycle"
                                    logoLink="/home">
         <NxNavigationSidebarLinks>
-          <a href="/alpha" className="selected">
+          <a href="/alpha" className="nx-sidebar__navigation__link selected nx-text-link">
             <NxFontAwesomeIcon icon={faAtom} fixedWidth />
-            <span>Link Name Alpha</span>
+            <span className="nx-sidebar__navigation__text nx-sidebar__expanded-content">Link Name Alpha</span>
           </a>
-          <a href="/beta">
+          <a href="/beta" className="nx-sidebar__navigation__link">
             <NxFontAwesomeIcon icon={faBiohazard} fixedWidth />
-            <span>Link Name Beta</span>
+            <span className="nx-sidebar__navigation__text nx-sidebar__expanded-content">Link Name Beta</span>
           </a>
-          <a href="/gamma">
+          <a href="/gamma" className="nx-sidebar__navigation__link">
             <NxFontAwesomeIcon icon={faPlaceOfWorship} fixedWidth />
-            <span>Link Name Gamma</span>
+            <span className="nx-sidebar__navigation__text nx-sidebar__expanded-content">Link Name Gamma</span>
           </a>
-          <a href="/delta">
+          <a href="/delta" className="nx-sidebar__navigation__link">
             <NxFontAwesomeIcon icon={faCrow} fixedWidth />
-            <span>Link Name delta</span>
+            <span className="nx-sidebar__navigation__text nx-sidebar__expanded-content">Link Name delta</span>
           </a>
-          <a href="/epsilon">
+          <a href="/epsilon" className="nx-sidebar__navigation__link">
             <NxFontAwesomeIcon icon={faBolt} fixedWidth />
-            <span>Link Name Epsilon</span>
+            <span className="nx-sidebar__navigation__text nx-sidebar__expanded-content">Link Name Epsilon</span>
           </a>
-          <a href="/Zeta">
+          <a href="/Zeta" className="nx-sidebar__navigation__link">
             <NxFontAwesomeIcon icon={faAtom} fixedWidth />
-            <span>Link Name Zeta</span>
+            <span className="nx-sidebar__navigation__text nx-sidebar__expanded-content">Link Name Zeta</span>
           </a>
-          <a href="/Etha">
+          <a href="/Etha" className="nx-sidebar__navigation__link">
             <NxFontAwesomeIcon icon={faPlaceOfWorship} fixedWidth />
-            <span>Link Name Etha</span>
+            <span className="nx-sidebar__navigation__text nx-sidebar__expanded-content">Link Name Etha</span>
           </a>
-          <a href="/Theta">
+          <a href="/Theta" className="nx-sidebar__navigation__link ">
             <NxFontAwesomeIcon icon={faCrow} fixedWidth />
-            <span>Link Name Theta</span>
+            <span className="nx-sidebar__navigation__text nx-sidebar__expanded-content">Link Name Theta</span>
           </a>
         </NxNavigationSidebarLinks>
         <NxNavigationSidebarContent className="navigation-sidebar-custom-content-1">

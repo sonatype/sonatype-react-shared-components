@@ -87,36 +87,36 @@ $nx-sidebar-separator-color: $nx-grey-900;
   border-bottom: 1px solid $nx-sidebar-separator-color;
   flex: none;
   margin: $nx-spacing-l 0 0;
+}
 
-  > a {
-    @include container-horizontal;
-    @include regular;
+.nx-sidebar__navigation__link {
+  @include container-horizontal;
+  @include regular;
 
-    color: inherit;
-    display: block;
-    font-size: $nx-font-size;
-    height: $nx-sidebar-link-height;
-    line-height: $nx-sidebar-link-height;
-    padding: 0 $nx-spacing-sm 0 $nx-spacing-l;
-    text-decoration: none;
+  color: inherit;
+  display: block;
+  font-size: $nx-font-size;
+  height: $nx-sidebar-link-height;
+  line-height: $nx-sidebar-link-height;
+  padding: 0 $nx-spacing-sm 0 $nx-spacing-l;
+  text-decoration: none;
 
-    > span {
-      margin-left: $nx-spacing-md;
-    }
-
-    &:active {
-      background-color: $nx-sidebar-active-color;
-    }
-
-    &:hover {
-      background-color: $nx-sidebar-hover-color;
-    }
-
-    &.selected {
-      @include semi-bold;
-      background-color: $nx-sidebar-selected-color;
-    }
+  &:hover {
+    background-color: $nx-sidebar-hover-color;
   }
+
+  &:active {
+    background-color: $nx-sidebar-active-color;
+  }
+
+  &.selected {
+    @include semi-bold;
+    background-color: $nx-sidebar-selected-color;
+  }
+}
+
+.nx-sidebar__navigation__text {
+  margin-left: $nx-spacing-md;
 }
 
 .open {
@@ -148,13 +148,9 @@ $nx-sidebar-separator-color: $nx-grey-900;
   .nx-sidebar__navigation {
     border-bottom: 0;
     text-align: center;
+  }
 
-    > a {
-      padding: 0;
-
-      > span {
-        display: none;
-      }
-    }
+  .nx-sidebar__navigation__link {
+    padding: 0;
   }
 }
