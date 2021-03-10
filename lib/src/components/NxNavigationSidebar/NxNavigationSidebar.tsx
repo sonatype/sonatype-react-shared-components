@@ -13,6 +13,8 @@ import { Props, propTypes } from './types';
 
 import './NxNavigationSidebar.scss';
 
+const defaultLogo = require('../../assets/img/SON_hexagon_cropped.svg');
+
 const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSidebar(props) {
   const {
     isOpen,
@@ -40,7 +42,6 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
     </NxButton>
   );
 
-  const defaultLogo = require('../../assets/img/SON_hexagon_cropped.svg');
   const logo = <img src={logoImg || defaultLogo} className="nx-sidebar__logo" />;
 
   return (
@@ -49,7 +50,7 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
         { toggleButton }
         <a href={logoLink} className="nx-sidebar__product-info">
           { logo }
-          <span className="nx-sidebar__product-name">{ logoText || 'Sonatype React Shared Components' }</span>
+          <span className="nx-sidebar__product-name">{ logoText }</span>
         </a>
       </div>
       { children }
