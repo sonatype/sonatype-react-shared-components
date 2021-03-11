@@ -29,7 +29,7 @@ $nx-heading-color: $nx-grey-1100;
 $nx-text-color-dark: $nx-grey-1100;
 $nx-text-color: $nx-grey-900;
 $nx-text-color-disabled: $nx-grey-500;
-$nx-text-color-error: #831d1d;
+$nx-text-color-error: $nx-red-800;
 
 $nx-link-color: $nx-blue-600;
 $nx-link-color-active: $nx-blue-400;
@@ -50,7 +50,7 @@ $nx-border-dark: 1px solid $nx-grey-300;
 $nx-border: 1px solid $nx-grey-200; // default
 $nx-border-light: 1px solid $nx-grey-100;
 $nx-border-lighter: 1px solid $nx-grey-50;
-$nx-border-error: 1px solid #831d1d;
+$nx-border-error: 1px solid $nx-red-800;
 
 // Borders in form elements
 $nx-form-element-border-color: $nx-grey-1100;
@@ -60,7 +60,7 @@ $nx-threat-color-unspecified: $nx-indigo-100;
 $nx-threat-color-none: $nx-blue-300;
 $nx-threat-color-low: $nx-blue-600;
 $nx-threat-color-moderate: $nx-yellow-700;
-$nx-threat-color-severe: #ff8100;
+$nx-threat-color-severe: $nx-orange-700;
 $nx-threat-color-critical: $nx-red-800;
 
 /*
