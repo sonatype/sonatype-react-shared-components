@@ -7,21 +7,13 @@
 @import '../../scss-shared/_nx-variables';
 @import '../../scss-shared/_nx-container-helpers';
 @import '../../scss-shared/_nx-text-helpers';
+@import '../../scss-shared/_nx-mixins';
 
 .nx-submit-mask {
-  align-items: center;
+  @include background-mask;
 
-  background-color: transparentize(#555555, 0.25);
-
-  display: flex;
   justify-content: center;
   position: absolute;
-
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
   z-index: $nx-submit-mask-z-index;
 }
 
