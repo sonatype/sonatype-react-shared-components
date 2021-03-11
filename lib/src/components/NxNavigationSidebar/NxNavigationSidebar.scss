@@ -11,7 +11,7 @@
 $nx-sidebar-width__open: 255px;
 $nx-sidebar-width__closed: 72px;
 $nx-sidebar-logo-height: 34px;
-$nx-sidebar-link-height: 40px;
+$nx-sidebar-link-line-height: $nx-spacing-l;
 
 $nx-sidebar-text-color: $nx-white;
 $nx-sidebar-background-color: $nx-blue-1000;
@@ -31,6 +31,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   display: flex;
   flex: none;
   flex-direction: column;
+  font-size: $nx-font-size;
   width: $nx-sidebar-width__open;
   padding: $nx-spacing-l 0;
 
@@ -38,7 +39,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
     color: $nx-sidebar-text-color;
   }
 }
-
 
 .nx-page-sidebar-operable__header {
   @include container-horizontal;
@@ -93,20 +93,21 @@ $nx-sidebar-separator-color: $nx-grey-900;
 .nx-sidebar-navigation {
   border-bottom: 1px solid $nx-sidebar-separator-color;
   flex: none;
-  margin: 0;
+  margin-bottom: $nx-spacing-md;
+  padding-bottom: $nx-spacing-xxl;
 }
 
 .nx-sidebar-navigation__link {
   @include container-horizontal;
-  @include regular;
 
-  color: inherit;
-  display: block;
-  font-size: $nx-font-size;
-  height: $nx-sidebar-link-height;
-  line-height: $nx-sidebar-link-height;
-  padding: 0 $nx-spacing-sm 0 $nx-spacing-l;
-  text-decoration: none;
+  align-items: center;
+  display: flex;
+  line-height: $nx-sidebar-link-line-height;
+  padding: 0 $nx-spacing-l;
+
+  .nx-icon {
+    margin: $nx-spacing-xs $nx-spacing-xs $nx-spacing-xs 0;
+  }
 
   &:hover {
     background-color: $nx-sidebar-hover-color;
@@ -120,10 +121,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
     @include semi-bold;
     background-color: $nx-sidebar-selected-color;
   }
-}
-
-.nx-sidebar-navigation__text {
-  margin-left: $nx-spacing-md;
 }
 
 .open {
@@ -142,14 +139,5 @@ $nx-sidebar-separator-color: $nx-grey-900;
   .nx-page-sidebar-operable__header {
     justify-content: center;
     padding: $nx-spacing-sm $nx-spacing-sm $nx-spacing-xl $nx-spacing-sm;
-  }
-
-  .nx-sidebar-navigation {
-    border-bottom: 0;
-    text-align: center;
-  }
-
-  .nx-sidebar-navigation__link {
-    padding: 0;
   }
 }
