@@ -15,9 +15,12 @@ $nx-sidebar-link-height: 40px;
 
 $nx-sidebar-text-color: $nx-white;
 $nx-sidebar-background-color: $nx-blue-1000;
-$nx-sidebar-active-color: $nx-indigo-400;
-$nx-sidebar-hover-color: $nx-indigo-600;
+
+$nx-sidebar-active-color: $nx-indigo-800;
 $nx-sidebar-selected-color: $nx-indigo-800;
+$nx-sidebar-hover-color: $nx-indigo-600;
+$nx-sidebar-focus-color: $nx-teal-300;
+
 $nx-sidebar-separator-color: $nx-grey-900;
 
 .nx-page-sidebar-operable {
@@ -46,20 +49,23 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
 .nx-page-sidebar-operable__toggle {
   align-self: flex-end;
+  border-color: transparent;
   border-radius: 50%;
   color: $nx-sidebar-text-color;
-  height: 41px;
+  height: 40px;
   margin: 0;
-  width: 41px;
+  width: 40px;
 
-  &:hover, &:focus {
-    background-color: $nx-sidebar-hover-color;
-    border-color: $nx-sidebar-hover-color;
+  &:focus {
+    border: 1px solid $nx-sidebar-focus-color;
   }
 
   &:active {
     background-color: $nx-sidebar-active-color;
-    border-color: $nx-sidebar-active-color;
+  }
+
+  &:hover {
+    background-color: $nx-sidebar-hover-color;
   }
 }
 
