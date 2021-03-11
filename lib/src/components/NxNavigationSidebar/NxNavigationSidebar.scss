@@ -16,10 +16,11 @@ $nx-sidebar-link-line-height: $nx-spacing-l;
 $nx-sidebar-text-color: $nx-white;
 $nx-sidebar-background-color: $nx-blue-1000;
 
-$nx-sidebar-active-color: $nx-indigo-800;
+$nx-sidebar-active-color: $nx-indigo-400;
 $nx-sidebar-selected-color: $nx-indigo-800;
 $nx-sidebar-hover-color: $nx-indigo-600;
-$nx-sidebar-focus-color: $nx-teal-300;
+
+$nx-sidebar-focus-border: 1px solid $nx-focus-border-color;
 
 $nx-sidebar-separator-color: $nx-grey-900;
 
@@ -57,7 +58,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   width: 40px;
 
   &:focus {
-    border: 1px solid $nx-sidebar-focus-color;
+    border: $nx-sidebar-focus-border;
   }
 
   &:active {
@@ -101,12 +102,20 @@ $nx-sidebar-separator-color: $nx-grey-900;
   @include container-horizontal;
 
   align-items: center;
+  border-color: transparent;
   display: flex;
   line-height: $nx-sidebar-link-line-height;
   padding: 0 $nx-spacing-l;
 
   .nx-icon {
     margin: $nx-spacing-xs $nx-spacing-xs $nx-spacing-xs 0;
+  }
+
+  &:focus {
+    border: $nx-sidebar-focus-border;
+    border-style: solid none; // only top and bottom borders
+    box-shadow: $nx-focus-box-shadow;
+    outline: none;
   }
 
   &:hover {
