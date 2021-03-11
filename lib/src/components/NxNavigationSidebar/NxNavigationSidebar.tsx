@@ -28,7 +28,7 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
     logoLink
   } = props;
 
-  const classes = classnames(className, 'nx-page-sidebar', 'nx-page-sidebar--navigation', {
+  const classes = classnames(className, 'nx-page-sidebar-operable', {
     'open': isOpen,
     'closed': !isOpen
   });
@@ -37,20 +37,21 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
   const toggleButton = (
     <NxButton variant="icon-only"
               onClick={onToggleClick}
-              className="nx-sidebar__toggle">
+              className="nx-page-sidebar-operable__toggle">
       <NxFontAwesomeIcon icon={toggleButtonIcon} fixedWidth />
     </NxButton>
   );
 
-  const logo = <img src={logoImg || defaultLogo} className="nx-sidebar__logo" />;
+  const logo = <img src={logoImg || defaultLogo} className="nx-page-sidebar-operable__logo" />;
 
   return (
     <aside className={classes}>
-      <div className="nx-sidebar__header">
+      <div className="nx-page-sidebar-operable__header">
         { toggleButton }
-        <a href={logoLink} className="nx-sidebar__product-info nx-text-link">
+        <a className="nx-page-sidebar-operable__product-info nx-page-sidebar-operable__expanded-content"
+           href={logoLink}>
           { logo }
-          <span className="nx-sidebar__product-name">{ logoText }</span>
+          <span className="nx-page-sidebar-operable__product-name">{ logoText }</span>
         </a>
       </div>
       { children }
