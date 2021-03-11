@@ -97,12 +97,12 @@
 
   background-color: $nx-red-800;
   border-color: $nx-red-800;
-  color: $nx-off-white;
+  color: $nx-white;
 
   &:hover, &:focus, &:active {
     background-color: $nx-red-1000;
     border-color: $nx-red-1000;
-    color: $nx-off-white;
+    color: $nx-white;
   }
 
   &:focus {

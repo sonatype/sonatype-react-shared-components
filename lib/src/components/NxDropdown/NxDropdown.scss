@@ -52,7 +52,7 @@ $nx-dropdown-width: 250px;
 .nx-dropdown-menu {
   @include container-vertical();
 
-  background: $nx-off-white;
+  background: $nx-white;
   border: $nx-border-dark;
   border-radius: $nx-border-radius;
   box-shadow: 0 2px 12px 0 rgba(74, 77, 113, 0.2),
