@@ -29,7 +29,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   flex: none;
   flex-direction: column;
   width: $nx-sidebar-width__open;
-  padding: $nx-spacing-l 0 $nx-spacing-xxl 0;
+  padding: $nx-spacing-l 0;
 
   .nx-text-link {
     color: $nx-sidebar-text-color;
@@ -38,11 +38,10 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
 
 .nx-page-sidebar-operable__header {
-  @include container-vertical;
+  @include container-horizontal;
 
   display: flex;
-  flex-direction: column;
-  margin: 0 $nx-spacing-l;
+  padding: $nx-spacing-sm $nx-spacing-l $nx-spacing-xl $nx-spacing-l;
 }
 
 .nx-page-sidebar-operable__toggle {
@@ -71,6 +70,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   display: flex;
   color: $nx-sidebar-text-color;
   text-decoration: none;
+  flex: 1 1 auto;
 }
 
 .nx-page-sidebar-operable__logo {
@@ -87,7 +87,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
 .nx-sidebar-navigation {
   border-bottom: 1px solid $nx-sidebar-separator-color;
   flex: none;
-  margin: $nx-spacing-l 0 0;
+  margin: 0;
 }
 
 .nx-sidebar-navigation__link {
@@ -134,12 +134,8 @@ $nx-sidebar-separator-color: $nx-grey-900;
   }
 
   .nx-page-sidebar-operable__header {
-    margin: 0;
-  }
-
-  .nx-page-sidebar-operable__toggle {
-    align-self: center;
-    margin-bottom: $nx-sidebar-logo-height;
+    justify-content: center;
+    padding: $nx-spacing-sm $nx-spacing-sm $nx-spacing-xl $nx-spacing-sm;
   }
 
   .nx-sidebar-navigation {

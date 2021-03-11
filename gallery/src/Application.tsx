@@ -27,7 +27,7 @@ function Application() {
       <NxStatefulNavigationSidebar isDefaultOpen={true}
                                    toggleOpenIcon={faArrowLeft}
                                    toggleCloseIcon={faCrow}
-                                   logoText="nexus lifecycle"
+                                   logoText="product name"
                                    logoLink="/home">
         <NxNavigationSidebarLinks>
           <a href="/alpha" className="nx-sidebar-navigation__link selected nx-text-link">
