@@ -31,12 +31,12 @@ $nx-sidebar-separator-color: $nx-grey-900;
   background-color: $nx-sidebar-background-color;
   color: $nx-sidebar-text-color;
   display: flex;
-  flex: none;
+  flex: 1 1 auto;
   flex-direction: column;
   font-size: $nx-font-size;
-  width: clamp($nx-sidebar-width__open, $nx-sidebar-width__open, $nx-sidebar-max-width);
-  // width: $nx-sidebar-width__open;
+  max-width: $nx-sidebar-max-width;
   padding: $nx-spacing-l 0;
+  width: $nx-sidebar-width__open;
 
   .nx-text-link {
     color: $nx-sidebar-text-color;
@@ -55,6 +55,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   border-color: transparent;
   border-radius: 50%;
   color: $nx-sidebar-text-color;
+  flex: none;
   height: 40px;
   margin: 0;
   width: 40px;
@@ -76,10 +77,11 @@ $nx-sidebar-separator-color: $nx-grey-900;
   @include container-horizontal;
 
   align-items: center;
-  display: flex;
   color: $nx-sidebar-text-color;
-  text-decoration: none;
+  display: flex;
   flex: 1 1 auto;
+  text-decoration: none;
+
 }
 
 .nx-page-sidebar-operable__logo {
@@ -142,6 +144,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
 .closed {
   width: $nx-sidebar-width__closed;
+  max-width: $nx-sidebar-width__closed;
 
   .nx-page-sidebar-operable__expanded-content {
     display: none;
