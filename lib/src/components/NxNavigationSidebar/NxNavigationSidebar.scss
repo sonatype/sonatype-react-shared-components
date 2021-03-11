@@ -30,9 +30,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
   background-color: $nx-sidebar-background-color;
   color: $nx-sidebar-text-color;
-  display: flex;
   flex: 1 1 auto;
-  flex-direction: column;
   font-size: $nx-font-size;
   max-width: $nx-sidebar-max-width;
   padding: $nx-spacing-l 0;
@@ -51,7 +49,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-page-sidebar-operable__toggle {
-  align-self: flex-end;
   border-color: transparent;
   border-radius: 50%;
   color: $nx-sidebar-text-color;
