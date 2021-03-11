@@ -12,11 +12,11 @@ import { NxNavigationSidebarContentProps as Props, nxNavigationSidebarContentPro
 export { NxNavigationSidebarContentProps } from './types';
 
 const NxNavigationSidebarContent: FunctionComponent<Props> = function NxNavigationSidebarContent(props) {
-  const { className, children } = props;
+  const { className, children, ...otherProps } = props;
   const classes = classnames(className, 'nx-page-sidebar-operable__content');
 
   return (
-    <section className={classes}>
+    <section className={classes} {...otherProps}>
       { children }
     </section>
   );
