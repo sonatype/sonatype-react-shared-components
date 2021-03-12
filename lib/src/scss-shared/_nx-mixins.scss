@@ -7,7 +7,7 @@
 
  @import 'nx-colors';
 
- @mixin background-mask() {
+ @mixin background-mask($z-index) {
   align-items: center;
   background-color: transparentize($nx-grey-800, 0.25);
   display: flex;
@@ -18,4 +18,5 @@
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: $z-index;
 }

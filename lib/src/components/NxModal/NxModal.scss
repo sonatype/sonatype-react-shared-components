@@ -63,9 +63,7 @@ $nx-modal-padding: $nx-spacing-l;
 }
 
 .nx-modal-backdrop {
-  @include background-mask;
-
-  z-index: $nx-modal-backdrop-z-index;
+  @include background-mask($nx-modal-backdrop-z-index);
 }
 
 .nx-modal-content {

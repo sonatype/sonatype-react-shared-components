@@ -10,11 +10,10 @@
 @import '../../scss-shared/_nx-mixins';
 
 .nx-submit-mask {
-  @include background-mask;
+  @include background-mask($nx-submit-mask-z-index);
 
   justify-content: center;
   position: absolute;
-  z-index: $nx-submit-mask-z-index;
 }
 
 .nx-submit-mask--fullscreen {
