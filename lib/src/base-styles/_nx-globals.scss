@@ -71,7 +71,13 @@ $nx-scrollable-default-height: 400px;
   @extend %nx-blockquote;
 }
 
+// global CSS variables/custom properties
 :root {
-  // global CSS variables/custom properties
+  // page dimensions
+  --page-width-max: 1600px;
+  --page-width-min: 1366px;
+  --content-width: 76%;
+  --sidebar-width: 100% - var(--content-width);
+
   --nx-component-background-color: #{$nx-white};
 }
