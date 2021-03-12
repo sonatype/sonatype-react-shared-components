@@ -95,6 +95,7 @@ import NxStatefulSegmentedButtonPage from './components/NxStatefulSegmentedButto
 import NxTagPage from './components/NxTag/NxTagPage';
 import NxCodeSnippetPage from './components/NxCodeSnippet/NxCodeSnippetPage';
 import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
+import NxColorPickerPage from './components/NxColorPicker/NxColorPickerPage';
 import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
 
 const pageConfig: PageConfig = {
@@ -109,6 +110,7 @@ const pageConfig: PageConfig = {
     NxSegmentedButton: NxSegmentedButtonPage,
     NxStatefulSegmentedButton: NxStatefulSegmentedButtonPage,
     NxCheckbox: NxCheckboxPage,
+    NxColorPicker: NxColorPickerPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
     NxCloseButton: NxCloseButtonPage,
     NxCodeSnippet: NxCodeSnippetPage,
