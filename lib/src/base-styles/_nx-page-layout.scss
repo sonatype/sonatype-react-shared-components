@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-width: var(--page-width-max);
+  min-width: var(--page-width-min);
 }
 
 .nx-page-content {
@@ -83,7 +83,7 @@
   }
 
   .nx-page {
-    min-width: var(--page-width-max) - $nx-scrollbar-width;
+    min-width: var(--page-width-min) - $nx-scrollbar-width;
   }
 
   .nx-page-header {
