@@ -78,7 +78,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
   display: flex;
   flex: 1 1 auto;
   text-decoration: none;
-
 }
 
 .nx-page-sidebar-operable__logo {
@@ -87,9 +86,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-page-sidebar-operable__content {
-  flex: 1 0 auto;
-  font-size: $nx-font-size-xs;
-  margin: $nx-spacing-l 0 0;
+  margin: $nx-spacing-l 0 0 0;
 }
 
 .nx-sidebar-navigation {
