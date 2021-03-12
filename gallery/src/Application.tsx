@@ -21,6 +21,8 @@ import {
   useToggle
 } from '@sonatype/react-shared-components';
 
+const logo = require('../src/resources/logos/lifecycle.svg');
+
 function Application() {
   const [toggleCheck, onToggleCollapse] = useToggle(false);
   const [toggleCheck2, onToggleCollapse2] = useToggle(false);
@@ -30,8 +32,9 @@ function Application() {
       <NxStatefulNavigationSidebar isDefaultOpen={true}
                                    toggleOpenIcon={faArrowLeft}
                                    toggleCloseIcon={faCrow}
-                                   logoText="product name"
-                                   logoLink="/home">
+                                   logoAltText="product name"
+                                   logoLink="/home"
+                                   logoImg={logo}>
         <NxNavigationSidebarLinks>
           <a href="#alpha" className="nx-sidebar-navigation__link selected nx-text-link">
             <NxFontAwesomeIcon icon={faCrow} fixedWidth />
