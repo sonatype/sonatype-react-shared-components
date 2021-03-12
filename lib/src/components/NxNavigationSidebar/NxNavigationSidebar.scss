@@ -129,6 +129,10 @@ $nx-sidebar-separator-color: $nx-grey-900;
   }
 }
 
+.nx-sidebar-navigation__text {
+  @include nx-truncate-ellipsis;
+}
+
 .open {
   .nx-page-sidebar-operable__collapsed-content {
     display: none;
