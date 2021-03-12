@@ -85,7 +85,8 @@ $nx-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-page-sidebar-operable__content {
-  margin: $nx-spacing-l 0 0 0;
+  color: $nx-sidebar-text-color;
+  margin: $nx-spacing-l $nx-spacing-md;
 }
 
 .nx-sidebar-navigation {
