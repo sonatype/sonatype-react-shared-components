@@ -13,10 +13,7 @@ export { NxNavigationSidebarContentProps } from './types';
 
 const NxNavigationSidebarContent: FunctionComponent<Props> = function NxNavigationSidebarContent(props) {
   const { className, children, ...otherProps } = props;
-  const classes = classnames([
-    'nx-page-sidebar-operable__content',
-    'nx-page-sidebar-operable__expanded-content'
-  ], className);
+  const classes = classnames('nx-page-sidebar-operable__content', className);
 
   return (
     <section className={classes} {...otherProps}>
