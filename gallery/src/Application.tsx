@@ -7,21 +7,24 @@
 import React from 'react';
 import {
   faArrowLeft,
-  faAtom,
   faBiohazard,
-  faBolt,
-  faCrow,
-  faPlaceOfWorship,
-  faQuestionCircle
+  faCrow
 } from '@fortawesome/free-solid-svg-icons';
 import {
   NxStatefulNavigationSidebar,
-  NxNavigationSidebarContent,
   NxNavigationSidebarLinks,
-  NxFontAwesomeIcon
+  NxFontAwesomeIcon,
+  NxOverflowTooltip,
+  NxNavigationSidebarContent,
+  NxTreeView,
+  NxTreeViewChild,
+  useToggle
 } from '@sonatype/react-shared-components';
 
 function Application() {
+  const [toggleCheck, onToggleCollapse] = useToggle(false);
+  const [toggleCheck2, onToggleCollapse2] = useToggle(false);
+
   return (
     <div id="temporary-navigation-sidebar-example" className="nx-page-content nx-page-content--full-width">
       <NxStatefulNavigationSidebar isDefaultOpen={true}
@@ -30,71 +33,73 @@ function Application() {
                                    logoText="product name"
                                    logoLink="/home">
         <NxNavigationSidebarLinks>
-          <a href="/alpha" className="nx-sidebar-navigation__link selected nx-text-link">
-            <NxFontAwesomeIcon icon={faAtom} fixedWidth />
+          <a href="#alpha" className="nx-sidebar-navigation__link selected nx-text-link">
+            <NxFontAwesomeIcon icon={faCrow} fixedWidth />
             <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Link Name Alpha
+              Nav Item
             </span>
           </a>
-          <a href="/beta" className="nx-sidebar-navigation__link nx-text-link">
+          <a href="#beta" className="nx-sidebar-navigation__link nx-text-link">
             <NxFontAwesomeIcon icon={faBiohazard} fixedWidth />
             <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              ink Name Beta
+              Nav Item
             </span>
           </a>
-          <a href="/gamma" className="nx-sidebar-navigation__link nx-text-link">
-            <NxFontAwesomeIcon icon={faPlaceOfWorship} fixedWidth />
-            <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Link Name Gamma
-            </span>
-          </a>
-          <a href="/delta" className="nx-sidebar-navigation__link nx-text-link">
+          <a href="#gamma" className="nx-sidebar-navigation__link nx-text-link">
             <NxFontAwesomeIcon icon={faCrow} fixedWidth />
             <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Link Name delta
+              Nav Item
             </span>
           </a>
-          <a href="/epsilon" className="nx-sidebar-navigation__link nx-text-link">
-            <NxFontAwesomeIcon icon={faBolt} fixedWidth />
+          <a href="#delta" className="nx-sidebar-navigation__link nx-text-link">
+            <NxFontAwesomeIcon icon={faBiohazard} fixedWidth />
             <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Link Name Epsilon
+              Nav Item
             </span>
           </a>
-          <a href="/Zeta" className="nx-sidebar-navigation__link nx-text-link">
-            <NxFontAwesomeIcon icon={faAtom} fixedWidth />
-            <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Link Name Zeta
-            </span>
-          </a>
-          <a href="/Etha" className="nx-sidebar-navigation__link nx-text-link">
-            <NxFontAwesomeIcon icon={faPlaceOfWorship} fixedWidth />
-            <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Link Name Etha
-            </span>
-          </a>
-          <a href="/Theta" className="nx-sidebar-navigation__link nx-text-link">
+          <a href="#epsilon" className="nx-sidebar-navigation__link nx-text-link">
             <NxFontAwesomeIcon icon={faCrow} fixedWidth />
             <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Link Name Theta
+              Nav Item
             </span>
+          </a>
+          <a href="#Zeta" className="nx-sidebar-navigation__link nx-text-link">
+            <NxFontAwesomeIcon icon={faBiohazard} fixedWidth />
+            <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
+              Nav Item
+            </span>
+          </a>
+          <a href="#Etha" className="nx-sidebar-navigation__link nx-text-link">
+            <NxFontAwesomeIcon icon={faCrow} fixedWidth />
+            <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
+              Nav Item
+            </span>
+          </a>
+          <a href="#Theta" className="nx-sidebar-navigation__link nx-text-link">
+            <NxFontAwesomeIcon icon={faBiohazard} fixedWidth />
+            <NxOverflowTooltip>
+              <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
+                Est sint sunt ea laborum minim officia excepteur nostrud deserunt proident officia.
+              </span>
+            </NxOverflowTooltip>
           </a>
         </NxNavigationSidebarLinks>
-        <NxNavigationSidebarContent className="navigation-sidebar-custom-content-1">
-          <a rel="noreferrer"
-             target="_blank"
-             href="www.google.com"
-             className="nx-text-link">
-            <NxFontAwesomeIcon fixedWidth icon={faQuestionCircle}/>
-            <span className="nx-page-sidebar-operable__expanded-content">Help and Support</span>
-          </a>
-        </NxNavigationSidebarContent>
-        <NxNavigationSidebarContent className="navigation-sidebar-custom-content-2">
-          <div className="nx-page-sidebar-operable__expanded-content">
-            <p className="example-release-note">Lifecycle Release 105</p>
-            <p className="example-attribution">Powered by Nexux IQ Server</p>
-            <p className="example-attribution">Created by Sonatype</p>
-          </div>
-          <p className="nx-page-sidebar-operable__collapsed-content">release 105</p>
+        <NxNavigationSidebarContent className="custom-tree-content nx-page-sidebar-operable__expanded-content">
+          <NxTreeView onToggleCollapse={onToggleCollapse}
+                      isOpen={toggleCheck}
+                      triggerContent="TreeView Content">
+            <NxTreeViewChild>
+              <NxTreeView onToggleCollapse={onToggleCollapse2}
+                          isOpen={toggleCheck2}
+                          triggerContent="Tree View Child">
+                <NxTreeViewChild>Tree View Item Nested</NxTreeViewChild>
+                <NxTreeViewChild>Tree View Item Nested</NxTreeViewChild>
+              </NxTreeView>
+            </NxTreeViewChild>
+            <NxTreeViewChild>Tree View Item</NxTreeViewChild>
+            <NxTreeViewChild>Tree View Item</NxTreeViewChild>
+            <NxTreeViewChild>Tree View Item</NxTreeViewChild>
+          </NxTreeView>
         </NxNavigationSidebarContent>
       </NxStatefulNavigationSidebar>
       <div className="nx-page-main">

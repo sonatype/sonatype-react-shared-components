@@ -83,36 +83,10 @@
 }
 
 #temporary-navigation-sidebar-example {
-  .navigation-sidebar-custom-content-1 {
+  .custom-tree-content {
     font-size: $nx-font-size-s;
-    padding: 110px $nx-spacing-sm $nx-spacing-xxl;
-    text-align: center;
-
-    > a {
-      text-decoration: none;
-    }
-
-  }
-
-  .navigation-sidebar-custom-content-2 {
-    flex: none;
-    font-size: $nx-font-size-xs;
-    margin: 0;
-    text-align: center;
-  }
-
-  .example-release-note {
-    margin: 0 0 $nx-spacing-xl;
-  }
-
-  .example-attribution {
-    margin-bottom: $nx-spacing-xs;
-  }
-
-  .closed {
-    .navigation-sidebar-custom-content-2 {
-      padding: 0 $nx-spacing-sm $nx-spacing-xxl;
+    * {
+      color: $nx-white;
     }
   }
-
 }
