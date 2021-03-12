@@ -7,13 +7,11 @@
 import {ReactNode, ReactElement, ValidationMap, HTMLAttributes} from 'react';
 import * as PropTypes from 'prop-types';
 
-export const NX_TAG_COLORS =
-    ['light-blue', 'purple', 'pink', 'blue', 'red', 'green', 'orange', 'yellow', 'lime'] as const;
-export type NX_TAG_COLORS_TYPE = (typeof NX_TAG_COLORS)[number]; // See https://stackoverflow.com/a/45486495
+import { selectableColors, SelectableColor } from '../../util/selectableColors';
 
 export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   children: ReactNode;
-  tagColor?: NX_TAG_COLORS_TYPE | null;
+  tagColor?: SelectableColor | null;
   // For internal use only, this prop is for our select/deselect tag icons
   selectedIcons?: ReactElement | null;
 }
@@ -27,7 +25,7 @@ export interface SelectableProps extends Props {
 
 export const propTypes: ValidationMap<Props> = {
   children: PropTypes.node.isRequired,
-  tagColor: PropTypes.oneOf(NX_TAG_COLORS)
+  tagColor: PropTypes.oneOf(selectableColors)
 };
 
 export const selectablePropTypes: ValidationMap<SelectableProps> = {
