@@ -26,6 +26,9 @@ describe('NxColorPicker', function() {
     await targetElement.scrollIntoView({ block: 'center' });
     await labelElement.click();
 
+    // make sure mouse is not on element
+    await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+
     await browser.eyesRegionSnapshot(null, Target.region(targetElement));
   });
 });
