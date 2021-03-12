@@ -24,7 +24,7 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
     toggleCloseIcon,
     onToggleClick,
     logoImg,
-    logoText,
+    logoAltText,
     logoLink
   } = props;
 
@@ -42,7 +42,7 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
     </NxButton>
   );
 
-  const logo = <img src={logoImg || defaultLogo} className="nx-page-sidebar-operable__logo" />;
+  const logo = <img src={logoImg || defaultLogo} alt={logoAltText} className="nx-page-sidebar-operable__logo" />;
 
   return (
     <aside className={classes}>
@@ -50,7 +50,6 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
         <a className="nx-page-sidebar-operable__product-info nx-page-sidebar-operable__expanded-content"
            href={logoLink}>
           { logo }
-          <span className="nx-page-sidebar-operable__product-name">{ logoText }</span>
         </a>
         { toggleButton }
       </div>
