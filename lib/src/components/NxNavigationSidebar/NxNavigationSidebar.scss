@@ -12,7 +12,6 @@ $nx-sidebar-max-width: 300px;
 $nx-sidebar-width__open: 250px;
 $nx-sidebar-width__closed: 72px;
 $nx-sidebar-logo-height: 34px;
-$nx-sidebar-link-line-height: $nx-spacing-l;
 
 $nx-sidebar-text-color: $nx-white;
 $nx-sidebar-background-color: $nx-blue-1000;
@@ -102,7 +101,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
   align-items: center;
   border-color: transparent;
   display: flex;
-  line-height: $nx-sidebar-link-line-height;
   padding: 0 $nx-spacing-l;
 
   .nx-icon {
