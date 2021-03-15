@@ -30,7 +30,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
   background-color: $nx-sidebar-background-color;
   box-sizing: border-box;
   color: $nx-sidebar-text-color;
-  font-size: $nx-font-size;
   max-width: $nx-sidebar-max-width;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-l $nx-spacing-l;
   width: $nx-sidebar-width-open;
@@ -81,7 +80,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
 .nx-page-sidebar-operable__logo {
   height: $nx-sidebar-logo-height;
-  margin-right: $nx-spacing-xs;
 }
 
 .nx-sidebar-navigation {
@@ -139,7 +137,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
   margin: 0;
   padding-left: 0;
   padding-right: 0;
-
   width: $nx-sidebar-width-closed;
 
   .nx-page-sidebar-operable__expanded-content {
