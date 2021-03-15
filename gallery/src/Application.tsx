@@ -13,8 +13,7 @@ import {
 import {
   NxStatefulNavigationSidebar,
   NxNavigationSidebarLinks,
-  NxFontAwesomeIcon,
-  NxOverflowTooltip,
+  NxNavigationSidebarLink,
   NxNavigationSidebarContent,
   NxTreeView,
   NxTreeViewChild,
@@ -27,6 +26,8 @@ function Application() {
   const [toggleCheck, onToggleCollapse] = useToggle(false);
   const [toggleCheck2, onToggleCollapse2] = useToggle(false);
 
+  const longText = 'Est sint sunt ea laborum minim officia excepteur nostrud deserunt proident officia.';
+
   return (
     <div id="temporary-navigation-sidebar-example" className="nx-page-content nx-page-content--full-width">
       <NxStatefulNavigationSidebar isDefaultOpen={true}
@@ -36,56 +37,31 @@ function Application() {
                                    logoLink="/home"
                                    logoImg={logo}>
         <NxNavigationSidebarLinks>
-          <a href="#alpha" className="nx-sidebar-navigation__link selected nx-text-link">
-            <NxFontAwesomeIcon icon={faCrow} fixedWidth />
-            <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Nav Item
-            </span>
-          </a>
-          <a href="#beta" className="nx-sidebar-navigation__link nx-text-link">
-            <NxFontAwesomeIcon icon={faBiohazard} fixedWidth />
-            <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Nav Item
-            </span>
-          </a>
-          <a href="#gamma" className="nx-sidebar-navigation__link nx-text-link">
-            <NxFontAwesomeIcon icon={faCrow} fixedWidth />
-            <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Nav Item
-            </span>
-          </a>
-          <a href="#delta" className="nx-sidebar-navigation__link nx-text-link">
-            <NxFontAwesomeIcon icon={faBiohazard} fixedWidth />
-            <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Nav Item
-            </span>
-          </a>
-          <a href="#epsilon" className="nx-sidebar-navigation__link nx-text-link">
-            <NxFontAwesomeIcon icon={faCrow} fixedWidth />
-            <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Nav Item
-            </span>
-          </a>
-          <a href="#Zeta" className="nx-sidebar-navigation__link nx-text-link">
-            <NxFontAwesomeIcon icon={faBiohazard} fixedWidth />
-            <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Nav Item
-            </span>
-          </a>
-          <a href="#Etha" className="nx-sidebar-navigation__link nx-text-link">
-            <NxFontAwesomeIcon icon={faCrow} fixedWidth />
-            <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-              Nav Item
-            </span>
-          </a>
-          <a href="#Theta" className="nx-sidebar-navigation__link nx-text-link">
-            <NxFontAwesomeIcon icon={faBiohazard} fixedWidth />
-            <NxOverflowTooltip>
-              <span className="nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content">
-                Est sint sunt ea laborum minim officia excepteur nostrud deserunt proident officia.
-              </span>
-            </NxOverflowTooltip>
-          </a>
+          <NxNavigationSidebarLink isSelected={true}
+                                   href="#alpha"
+                                   icon={faCrow}
+                                   text="Nav Item" />
+          <NxNavigationSidebarLink href="#beta"
+                                   icon={faBiohazard}
+                                   text="Nav Item" />
+          <NxNavigationSidebarLink href="#gamma"
+                                   icon={faCrow}
+                                   text="Nav Item" />
+          <NxNavigationSidebarLink href="#delta"
+                                   icon={faBiohazard}
+                                   text="Nav Item" />
+          <NxNavigationSidebarLink href="#epsilon"
+                                   icon={faCrow}
+                                   text="Nav Item" />
+          <NxNavigationSidebarLink href="#zeta"
+                                   icon={faBiohazard}
+                                   text="Nav Item" />
+          <NxNavigationSidebarLink href="#etha"
+                                   icon={faCrow}
+                                   text="Nav Item" />
+          <NxNavigationSidebarLink href="#theta"
+                                   icon={faBiohazard}
+                                   text={longText} />
         </NxNavigationSidebarLinks>
         <NxNavigationSidebarContent className="custom-tree-content nx-page-sidebar-operable__expanded-content">
           <NxTreeView onToggleCollapse={onToggleCollapse}
