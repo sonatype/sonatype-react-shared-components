@@ -205,6 +205,8 @@ export { default as NxNavigationSidebarContent, NxNavigationSidebarContentProps 
   from './components/NxNavigationSidebar/NxNavigationSidebarContent';
 export { default as NxNavigationSidebarLinks, NxNavigationSidebarLinksProps }
   from './components/NxNavigationSidebar/NxNavigationSidebarLinks';
+export { default as NxNavigationSidebarLink, NxNavigationSidebarLinkProps }
+  from './components/NxNavigationSidebar/NxNavigationSidebarLink';
 export { default as NxStatefulNavigationSidebar, Props as NxStatefulNavigationSidebarProps }
   from './components/NxNavigationSidebar/stateful/NxStatefulNavigationSidebar';
 
