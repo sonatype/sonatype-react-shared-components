@@ -54,7 +54,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   width: 34px;
 
   &:focus {
-    border: $nx-sidebar-focus-border;
+    border: $nx-focus-border-color;
   }
 
   &:active {
@@ -83,7 +83,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   @include container-horizontal;
 
   align-items: center;
-  border-color: transparent;
+  border: 1px solid transparent;
   display: flex;
   padding: 0 $nx-spacing-l;
 
@@ -92,8 +92,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   }
 
   &:focus {
-    border: $nx-sidebar-focus-border;
-    border-style: solid none; // only top and bottom borders
+    border-color: $nx-focus-border-color;
     box-shadow: $nx-focus-box-shadow;
     outline: none;
   }
