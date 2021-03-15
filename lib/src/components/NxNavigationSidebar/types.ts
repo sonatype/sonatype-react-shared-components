@@ -14,7 +14,7 @@ export interface Props {
   toggleOpenIcon: IconDefinition;
   toggleCloseIcon: IconDefinition;
   onToggleClick: (() => void);
-  logoImg?: string | null;
+  logoImg: string;
   logoAltText: string;
   logoLink: string;
 }
@@ -25,7 +25,7 @@ export const propTypes: ValidationMap<Props> = {
   toggleOpenIcon: PropTypes.object.isRequired as Validator<IconDefinition>,
   toggleCloseIcon: PropTypes.object.isRequired as Validator<IconDefinition>,
   onToggleClick: PropTypes.func.isRequired,
-  logoImg: PropTypes.string,
+  logoImg: PropTypes.string.isRequired,
   logoAltText: PropTypes.string.isRequired,
   logoLink: PropTypes.string.isRequired
 };

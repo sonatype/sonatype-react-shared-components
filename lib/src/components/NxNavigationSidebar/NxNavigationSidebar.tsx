@@ -13,8 +13,6 @@ import { Props, propTypes } from './types';
 
 import './NxNavigationSidebar.scss';
 
-const defaultLogo = require('../../assets/img/SON_hexagon_cropped.svg');
-
 const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSidebar(props) {
   const {
     isOpen,
@@ -43,7 +41,7 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
     </NxButton>
   );
 
-  const logo = <img src={logoImg || defaultLogo} alt={logoAltText} className="nx-page-sidebar-operable__logo" />;
+  const logo = <img src={logoImg} alt={logoAltText} className="nx-page-sidebar-operable__logo" />;
 
   return (
     <aside className={classes}>
