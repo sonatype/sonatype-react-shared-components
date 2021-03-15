@@ -83,7 +83,7 @@
   }
 
   .nx-page {
-    min-width: var(--page-width-min) - $nx-scrollbar-width;
+    min-width: calc(var(--page-width-min) - var(--scrollbar-width));
   }
 
   .nx-page-header {

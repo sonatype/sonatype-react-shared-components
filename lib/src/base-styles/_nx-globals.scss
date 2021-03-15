@@ -77,7 +77,8 @@ $nx-scrollable-default-height: 400px;
   --page-width-max: 1600px;
   --page-width-min: 1366px;
   --content-width: 76%;
-  --sidebar-width: 100% - var(--content-width);
+  --sidebar-width: calc(100% - var(--content-width));
+  --scrollbar-width: 15px;
 
   --nx-component-background-color: #{$nx-white};
 }
