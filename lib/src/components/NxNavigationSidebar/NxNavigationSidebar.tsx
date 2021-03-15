@@ -35,7 +35,8 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
 
   const toggleButtonIcon = isOpen ? toggleOpenIcon : toggleCloseIcon;
   const toggleButton = (
-    <NxButton variant="icon-only"
+    <NxButton aria-label="toggle"
+              variant="icon-only"
               onClick={onToggleClick}
               className="nx-page-sidebar-operable__toggle">
       <NxFontAwesomeIcon icon={toggleButtonIcon} fixedWidth />
