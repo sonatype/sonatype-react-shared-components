@@ -54,7 +54,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   width: 34px;
 
   &:focus {
-    border: $nx-focus-border-color;
+    border-color: $nx-focus-border-color;
   }
 
   &:active {
