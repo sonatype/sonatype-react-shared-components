@@ -115,13 +115,13 @@ $nx-sidebar-separator-color: $nx-grey-900;
   @include nx-truncate-ellipsis;
 }
 
-.open {
+.nx-page-sidebar-operable.open {
   .nx-page-sidebar-operable__collapsed-content {
     display: none;
   }
 }
 
-.closed {
+.nx-page-sidebar-operable.closed {
   margin: 0;
   padding-left: 0;
   padding-right: 0;
