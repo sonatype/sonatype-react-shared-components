@@ -81,14 +81,14 @@ function Application() {
           </NxTreeView>
         </NxNavigationSidebarContent>
       </NxStatefulNavigationSidebar>
-      <div className="nx-page-main">
+      <main className="nx-page-main">
         <p>
           Cupidatat pariatur mollit sit pariatur mollit qui.{' '}
           Est sint sunt ea laborum minim officia excepteur nostrud deserunt proident officia.{' '}
           Ipsum nostrud do ipsum nisi occaecat reprehenderit aliquip in occaecat culpa consequat pariatur et.{' '}
           Non adipisicing qui officia nisi do aliquip.
         </p>
-      </div>
+      </main>
     </div>
   );
 }
