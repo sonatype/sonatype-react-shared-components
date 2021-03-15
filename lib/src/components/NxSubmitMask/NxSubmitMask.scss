@@ -7,7 +7,7 @@
 @import '../../scss-shared/_nx-variables';
 @import '../../scss-shared/_nx-container-helpers';
 @import '../../scss-shared/_nx-text-helpers';
-@import '../../scss-shared/_nx-mixins';
+@import '../../scss-shared/_nx-mask-helpers';
 
 .nx-submit-mask {
   @include background-mask($nx-submit-mask-z-index);

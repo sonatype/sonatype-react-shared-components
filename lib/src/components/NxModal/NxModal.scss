@@ -7,7 +7,7 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
 @import '../../scss-shared/nx-text-helpers';
-@import '../../scss-shared/_nx-mixins';
+@import '../../scss-shared/_nx-mask-helpers';
 
 // the "padding" around the interior of nx-modal. In order to get borders and scrollbars to appear
 // in the desired locations, this can't actually be implemented as padding on .nx-modal, but must instead be
