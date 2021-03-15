@@ -38,3 +38,19 @@ export const nxNavigationSidebarContentPropTypes: ValidationMap<NxNavigationSide
     PropTypes.node
   ])
 };
+
+export interface NxNavigationSidebarLinkProps {
+  isSelected?: boolean | null;
+  className?: string | null;
+  icon: IconDefinition;
+  text: string;
+  href: string;
+}
+
+export const nxNavigationSidebarLinkPropTypes: ValidationMap<NxNavigationSidebarLinkProps> = {
+  isSelected: PropTypes.bool,
+  className: PropTypes.string,
+  icon: PropTypes.object.isRequired as Validator<IconDefinition>,
+  text: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired
+};
