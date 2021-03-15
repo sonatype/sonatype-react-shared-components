@@ -9,8 +9,8 @@
 @import '../../scss-shared/nx-container-helpers';
 
 $nx-sidebar-max-width: 300px;
-$nx-sidebar-width__open: 250px;
-$nx-sidebar-width__closed: 72px;
+$nx-sidebar-width-open: 250px;
+$nx-sidebar-width-closed: 72px;
 $nx-sidebar-logo-height: 34px;
 
 $nx-sidebar-text-color: $nx-white;
@@ -33,7 +33,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   font-size: $nx-font-size;
   max-width: $nx-sidebar-max-width;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-l $nx-spacing-l;
-  width: $nx-sidebar-width__open;
+  width: $nx-sidebar-width-open;
 
   .nx-text-link {
     color: $nx-sidebar-text-color;
@@ -140,7 +140,7 @@ $nx-sidebar-separator-color: $nx-grey-900;
   padding-left: 0;
   padding-right: 0;
 
-  width: $nx-sidebar-width__closed;
+  width: $nx-sidebar-width-closed;
 
   .nx-page-sidebar-operable__expanded-content {
     display: none;
