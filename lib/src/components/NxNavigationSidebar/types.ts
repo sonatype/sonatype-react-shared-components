@@ -32,12 +32,11 @@ export const propTypes: ValidationMap<Props> = {
 
 export type NxNavigationSidebarContentProps = HTMLAttributes<HTMLDivElement>;
 
-export const nxNavigationSidebarContentPropTypes: ValidationMap<NxNavigationSidebarContentProps> = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ])
-};
+// Casting to hack around flaws in react's typings: the typings for HTMLAttributes.className don't claim to accept null,
+// but non-required proptypes do, and the actual implementation does
+export const nxNavigationSidebarContentPropTypes = {
+  className: PropTypes.string
+} as ValidationMap<NxNavigationSidebarContentProps>;
 
 export interface NxNavigationSidebarLinkProps {
   isSelected?: boolean | null;
