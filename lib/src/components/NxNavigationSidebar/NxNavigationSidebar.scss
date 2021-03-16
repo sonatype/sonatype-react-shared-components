@@ -125,8 +125,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
 .nx-page-sidebar-operable.closed {
   margin: 0;
-  padding-left: 0;
-  padding-right: 0;
   width: $nx-sidebar-width-closed;
 
   .nx-page-sidebar-operable__expanded-content {
@@ -140,9 +138,5 @@ $nx-sidebar-separator-color: $nx-grey-900;
   .nx-sidebar-navigation__link {
     justify-content: center;
     padding: 0;
-  }
-
-  .nx-sidebar-navigation {
-    margin: 0;
   }
 }
