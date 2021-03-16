@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ValidationMap, HTMLAttributes, Validator } from 'react';
+import { ValidationMap, HTMLAttributes, Validator, ReactNode } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 export interface Props {
@@ -17,6 +17,7 @@ export interface Props {
   logoImg: string;
   logoAltText: string;
   logoLink: string;
+  children?: ReactNode | null;
 }
 
 export const propTypes: ValidationMap<Props> = {
@@ -27,7 +28,11 @@ export const propTypes: ValidationMap<Props> = {
   onToggleClick: PropTypes.func.isRequired,
   logoImg: PropTypes.string.isRequired,
   logoAltText: PropTypes.string.isRequired,
-  logoLink: PropTypes.string.isRequired
+  logoLink: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element.isRequired),
+    PropTypes.element
+  ])
 };
 
 export type NxNavigationSidebarContentProps = HTMLAttributes<HTMLDivElement>;
