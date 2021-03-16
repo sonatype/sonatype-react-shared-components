@@ -9,7 +9,7 @@ import { ShallowWrapper } from 'enzyme';
 import { faCrow, faBiohazard } from '@fortawesome/free-solid-svg-icons';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import NxNavigationSidebar, { Props } from '../NxGlobalSidebar';
+import NxGlobalSidebar, { Props } from '../NxGlobalSidebar';
 import NxButton from '../../NxButton/NxButton';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
@@ -29,7 +29,7 @@ describe('NxGlobalSidebar', function() {
       logoAltText: 'alt text',
       logoLink: '/ref'
     };
-    getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxNavigationSidebar, minimalProps);
+    getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxGlobalSidebar, minimalProps);
   });
 
   it('renders an aside with nx-global-sidebar class', function() {

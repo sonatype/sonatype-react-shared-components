@@ -10,7 +10,8 @@ import { faCrow, faBiohazard } from '@fortawesome/free-solid-svg-icons';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
-import NxNavigationSidebarLink, { NxNavigationSidebarLinkProps as Props } from '../NxGlobalSidebarNavigationLink';
+import NxGlobalSidebarNavigationLink, { NxGlobalSidebarNavigationLinkProps as Props }
+  from '../NxGlobalSidebarNavigationLink';
 
 describe('NxGlobalSidebarNavigationLink', function() {
   const minimalProps: Props = {
@@ -18,7 +19,7 @@ describe('NxGlobalSidebarNavigationLink', function() {
         text: 'textLink',
         href: '#someurl'
       },
-      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxNavigationSidebarLink, minimalProps);
+      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxGlobalSidebarNavigationLink, minimalProps);
 
   it('renders an NxOverflowTooltip as container', function () {
     expect(getShallowComponent().find(NxOverflowTooltip)).toExist();
