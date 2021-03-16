@@ -66,6 +66,10 @@ $nx-sidebar-separator-color: $nx-grey-900;
 
 .nx-page-sidebar-operable__product-info {
   flex: 1 1 auto;
+  display: flex;
+}
+
+.nx-page-sidebar-operable__logo {
   height: $nx-sidebar-logo-height;
 }
 

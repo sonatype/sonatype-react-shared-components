@@ -14,7 +14,6 @@ import {
   NxStatefulNavigationSidebar,
   NxNavigationSidebarLinks,
   NxNavigationSidebarLink,
-  NxNavigationSidebarContent,
   NxTreeView,
   NxTreeViewChild,
   useToggle
@@ -63,7 +62,7 @@ function Application() {
                                    icon={faBiohazard}
                                    text={longText} />
         </NxNavigationSidebarLinks>
-        <NxNavigationSidebarContent className="custom-tree-content nx-page-sidebar-operable__expanded-content">
+        <section className="custom-tree-content nx-page-sidebar-operable__expanded-content">
           <NxTreeView onToggleCollapse={onToggleCollapse}
                       isOpen={toggleCheck}
                       triggerContent="TreeView Content">
@@ -79,7 +78,7 @@ function Application() {
             <NxTreeViewChild>Tree View Item</NxTreeViewChild>
             <NxTreeViewChild>Tree View Item</NxTreeViewChild>
           </NxTreeView>
-        </NxNavigationSidebarContent>
+        </section>
       </NxStatefulNavigationSidebar>
       <main className="nx-page-main">
         <p>
