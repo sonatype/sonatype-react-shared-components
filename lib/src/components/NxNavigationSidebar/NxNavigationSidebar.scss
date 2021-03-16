@@ -8,7 +8,6 @@
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
 
-$nx-sidebar-max-width: 300px;
 $nx-sidebar-width-open: 250px;
 $nx-sidebar-width-closed: 72px;
 $nx-sidebar-logo-height: 34px;
@@ -30,7 +29,6 @@ $nx-sidebar-separator-color: $nx-grey-900;
   background-color: $nx-sidebar-background-color;
   box-sizing: border-box;
   color: $nx-sidebar-text-color;
-  max-width: $nx-sidebar-max-width;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-l $nx-spacing-l;
   width: $nx-sidebar-width-open;
 
