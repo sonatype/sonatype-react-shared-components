@@ -22,7 +22,7 @@ export function getRandomId(prefix: string) {
 }
 
 /**
- * A react hook for getting a random auto-generated id and keeping is consistent across re-renders.
+ * A react hook for getting a random auto-generated id and keeping it consistent across re-renders.
  * If the explicitId parameter is used, that is the id that is returned instead of computing a random
  * one. That parameter is for support of the common pattern where an auto-generated id is only
  * desired if the user of a component didn't specify an explicit one.
