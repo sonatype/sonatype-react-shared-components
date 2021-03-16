@@ -11,9 +11,9 @@ import {
   faCrow
 } from '@fortawesome/free-solid-svg-icons';
 import {
-  NxStatefulNavigationSidebar,
-  NxNavigationSidebarLinks,
-  NxNavigationSidebarLink,
+  NxStatefulGlobalSidebar,
+  NxGlobalSidebarNavigation,
+  NxGlobalSidebarNavigationLink,
   NxTreeView,
   NxTreeViewChild,
   useToggle
@@ -29,39 +29,39 @@ function Application() {
 
   return (
     <div id="temporary-navigation-sidebar-example" className="nx-page-content nx-page-content--full-width">
-      <NxStatefulNavigationSidebar isDefaultOpen={true}
-                                   toggleOpenIcon={faArrowLeft}
-                                   toggleCloseIcon={faCrow}
-                                   logoAltText="product name"
-                                   logoLink="/home"
-                                   logoImg={logo}>
-        <NxNavigationSidebarLinks>
-          <NxNavigationSidebarLink isSelected={true}
-                                   href="#alpha"
-                                   icon={faCrow}
-                                   text="Nav Item" />
-          <NxNavigationSidebarLink href="#beta"
-                                   icon={faBiohazard}
-                                   text="Nav Item" />
-          <NxNavigationSidebarLink href="#gamma"
-                                   icon={faCrow}
-                                   text="Nav Item" />
-          <NxNavigationSidebarLink href="#delta"
-                                   icon={faBiohazard}
-                                   text="Nav Item" />
-          <NxNavigationSidebarLink href="#epsilon"
-                                   icon={faCrow}
-                                   text="Nav Item" />
-          <NxNavigationSidebarLink href="#zeta"
-                                   icon={faBiohazard}
-                                   text="Nav Item" />
-          <NxNavigationSidebarLink href="#etha"
-                                   icon={faCrow}
-                                   text="Nav Item" />
-          <NxNavigationSidebarLink href="#theta"
-                                   icon={faBiohazard}
-                                   text={longText} />
-        </NxNavigationSidebarLinks>
+      <NxStatefulGlobalSidebar isDefaultOpen={true}
+                               toggleOpenIcon={faArrowLeft}
+                               toggleCloseIcon={faCrow}
+                               logoAltText="product name"
+                               logoLink="/home"
+                               logoImg={logo}>
+        <NxGlobalSidebarNavigation>
+          <NxGlobalSidebarNavigationLink isSelected={true}
+                                         href="#alpha"
+                                         icon={faCrow}
+                                         text="Nav Item" />
+          <NxGlobalSidebarNavigationLink href="#beta"
+                                         icon={faBiohazard}
+                                         text="Nav Item" />
+          <NxGlobalSidebarNavigationLink href="#gamma"
+                                         icon={faCrow}
+                                         text="Nav Item" />
+          <NxGlobalSidebarNavigationLink href="#delta"
+                                         icon={faBiohazard}
+                                         text="Nav Item" />
+          <NxGlobalSidebarNavigationLink href="#epsilon"
+                                         icon={faCrow}
+                                         text="Nav Item" />
+          <NxGlobalSidebarNavigationLink href="#zeta"
+                                         icon={faBiohazard}
+                                         text="Nav Item" />
+          <NxGlobalSidebarNavigationLink href="#etha"
+                                         icon={faCrow}
+                                         text="Nav Item" />
+          <NxGlobalSidebarNavigationLink href="#theta"
+                                         icon={faBiohazard}
+                                         text={longText} />
+        </NxGlobalSidebarNavigation>
         <section className="custom-tree-content nx-page-sidebar-operable__expanded-content">
           <NxTreeView onToggleCollapse={onToggleCollapse}
                       isOpen={toggleCheck}
@@ -79,7 +79,7 @@ function Application() {
             <NxTreeViewChild>Tree View Item</NxTreeViewChild>
           </NxTreeView>
         </section>
-      </NxStatefulNavigationSidebar>
+      </NxStatefulGlobalSidebar>
       <main className="nx-page-main">
         <p>
           Cupidatat pariatur mollit sit pariatur mollit qui.{' '}
