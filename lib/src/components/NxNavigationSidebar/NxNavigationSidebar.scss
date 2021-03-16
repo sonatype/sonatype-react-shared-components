@@ -11,6 +11,7 @@
 $nx-global-sidebar-width-open: 250px;
 $nx-global-sidebar-width-closed: 72px;
 $nx-global-sidebar-logo-height: 34px;
+$nx-global-sidebar-toggle-size: 32px;
 
 $nx-global-sidebar-text-color: $nx-white;
 $nx-global-sidebar-background-color: $nx-blue-1000;
@@ -39,6 +40,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 
 .nx-global-sidebar__header {
   display: flex;
+  height: $nx-global-sidebar-logo-height;
   margin-bottom: $nx-spacing-xl;
 }
 
@@ -47,9 +49,9 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   border-radius: 50%;
   color: $nx-global-sidebar-text-color;
   flex: none;
-  height: 34px;
+  height: $nx-global-sidebar-toggle-size;
   margin: 0;
-  width: 34px;
+  width: $nx-global-sidebar-toggle-size;
 
   &:focus {
     border-color: $nx-focus-border-color;
@@ -76,7 +78,6 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 .nx-global-sidebar__navigation {
   border-bottom: 1px solid $nx-global-sidebar-separator-color;
   flex: none;
-
   margin: 0 -#{$nx-spacing-l} $nx-spacing-md -#{$nx-spacing-l};
   padding-bottom: $nx-spacing-xxl;
 }
