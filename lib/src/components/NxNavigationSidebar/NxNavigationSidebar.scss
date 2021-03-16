@@ -8,44 +8,44 @@
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
 
-$nx-sidebar-width-open: 250px;
-$nx-sidebar-width-closed: 72px;
-$nx-sidebar-logo-height: 34px;
+$nx-global-sidebar-width-open: 250px;
+$nx-global-sidebar-width-closed: 72px;
+$nx-global-sidebar-logo-height: 34px;
 
-$nx-sidebar-text-color: $nx-white;
-$nx-sidebar-background-color: $nx-blue-1000;
+$nx-global-sidebar-text-color: $nx-white;
+$nx-global-sidebar-background-color: $nx-blue-1000;
 
-$nx-sidebar-active-color: $nx-indigo-400;
-$nx-sidebar-selected-color: $nx-indigo-800;
-$nx-sidebar-hover-color: $nx-indigo-600;
+$nx-global-sidebar-active-color: $nx-indigo-400;
+$nx-global-sidebar-selected-color: $nx-indigo-800;
+$nx-global-sidebar-hover-color: $nx-indigo-600;
 
-$nx-sidebar-focus-border: 1px solid $nx-focus-border-color;
+$nx-global-sidebar-focus-border: 1px solid $nx-focus-border-color;
 
-$nx-sidebar-separator-color: $nx-grey-900;
+$nx-global-sidebar-separator-color: $nx-grey-900;
 
-.nx-page-sidebar-operable {
+.nx-global-sidebar {
   @include container-vertical;
 
-  background-color: $nx-sidebar-background-color;
+  background-color: $nx-global-sidebar-background-color;
   box-sizing: border-box;
-  color: $nx-sidebar-text-color;
+  color: $nx-global-sidebar-text-color;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-l $nx-spacing-l;
-  width: $nx-sidebar-width-open;
+  width: $nx-global-sidebar-width-open;
 
   .nx-text-link {
-    color: $nx-sidebar-text-color;
+    color: $nx-global-sidebar-text-color;
   }
 }
 
-.nx-page-sidebar-operable__header {
+.nx-global-sidebar__header {
   display: flex;
   margin-bottom: $nx-spacing-xl;
 }
 
-.nx-page-sidebar-operable__toggle {
+.nx-global-sidebar__toggle {
   border-color: transparent;
   border-radius: 50%;
-  color: $nx-sidebar-text-color;
+  color: $nx-global-sidebar-text-color;
   flex: none;
   height: 34px;
   margin: 0;
@@ -56,32 +56,32 @@ $nx-sidebar-separator-color: $nx-grey-900;
   }
 
   &:active {
-    background-color: $nx-sidebar-active-color;
+    background-color: $nx-global-sidebar-active-color;
   }
 
   &:hover {
-    background-color: $nx-sidebar-hover-color;
+    background-color: $nx-global-sidebar-hover-color;
   }
 }
 
-.nx-page-sidebar-operable__product-info {
+.nx-global-sidebar__product-info {
   flex: 1 1 auto;
   display: flex;
 }
 
-.nx-page-sidebar-operable__logo {
-  height: $nx-sidebar-logo-height;
+.nx-global-sidebar__logo {
+  height: $nx-global-sidebar-logo-height;
 }
 
-.nx-sidebar-navigation {
-  border-bottom: 1px solid $nx-sidebar-separator-color;
+.nx-global-sidebar__navigation {
+  border-bottom: 1px solid $nx-global-sidebar-separator-color;
   flex: none;
 
   margin: 0 -#{$nx-spacing-l} $nx-spacing-md -#{$nx-spacing-l};
   padding-bottom: $nx-spacing-xxl;
 }
 
-.nx-sidebar-navigation__link {
+.nx-global-sidebar__navigation-link {
   @include container-horizontal;
 
   align-items: center;
@@ -100,42 +100,42 @@ $nx-sidebar-separator-color: $nx-grey-900;
   }
 
   &:hover {
-    background-color: $nx-sidebar-hover-color;
+    background-color: $nx-global-sidebar-hover-color;
   }
 
   &:active {
-    background-color: $nx-sidebar-active-color;
+    background-color: $nx-global-sidebar-active-color;
   }
 
   &.selected {
     @include semi-bold;
-    background-color: $nx-sidebar-selected-color;
+    background-color: $nx-global-sidebar-selected-color;
   }
 }
 
-.nx-sidebar-navigation__text {
+.nx-global-sidebar__navigation-text {
   @include nx-truncate-ellipsis;
 }
 
-.nx-page-sidebar-operable.open {
-  .nx-page-sidebar-operable__collapsed-content {
+.nx-global-sidebar.open {
+  .nx-global-sidebar__collapsed-content {
     display: none;
   }
 }
 
-.nx-page-sidebar-operable.closed {
+.nx-global-sidebar.closed {
   margin: 0;
-  width: $nx-sidebar-width-closed;
+  width: $nx-global-sidebar-width-closed;
 
-  .nx-page-sidebar-operable__expanded-content {
+  .nx-global-sidebar__expanded-content {
     display: none;
   }
 
-  .nx-page-sidebar-operable__header {
+  .nx-global-sidebar__header {
     justify-content: center;
   }
 
-  .nx-sidebar-navigation__link {
+  .nx-global-sidebar__navigation-link {
     justify-content: center;
     padding: 0;
   }

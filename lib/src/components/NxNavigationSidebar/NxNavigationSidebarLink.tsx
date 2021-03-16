@@ -16,10 +16,10 @@ export { NxNavigationSidebarLinkProps } from './types';
 const NxNavigationSidebarLink: FunctionComponent<Props> = function NxNavigationSidebarLink(props) {
   const { className, isSelected, icon, text, href } = props;
 
-  const classes = classnames(className, 'nx-sidebar-navigation__link nx-text-link', {
+  const classes = classnames(className, 'nx-global-sidebar__navigation-link nx-text-link', {
     'selected': isSelected
   });
-  const textClasses = 'nx-sidebar-navigation__text nx-page-sidebar-operable__expanded-content';
+  const textClasses = 'nx-global-sidebar__navigation-text nx-global-sidebar__expanded-content';
 
   return (
     <a href={href} className={classes}>

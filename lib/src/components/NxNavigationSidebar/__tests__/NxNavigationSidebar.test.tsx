@@ -32,19 +32,19 @@ describe('NxNavigationSidebar', function() {
     getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxNavigationSidebar, minimalProps);
   });
 
-  it('renders an aside with nx-page-sidebar-operable class', function() {
-    expect(getShallowComponent()).toMatchSelector('aside.nx-page-sidebar-operable');
+  it('renders an aside with nx-global-sidebar class', function() {
+    expect(getShallowComponent()).toMatchSelector('aside.nx-global-sidebar');
   });
 
   it('adds classes based on isOpen state', function() {
-    expect(getShallowComponent({ isOpen: true })).toMatchSelector('.nx-page-sidebar-operable.open');
-    expect(getShallowComponent({ isOpen: false })).toMatchSelector('.nx-page-sidebar-operable.closed');
+    expect(getShallowComponent({ isOpen: true })).toMatchSelector('.nx-global-sidebar.open');
+    expect(getShallowComponent({ isOpen: false })).toMatchSelector('.nx-global-sidebar.closed');
   });
 
   it('renders a link to `logoLink` with the `logoImg` and the `altLogoText`', function() {
     const component = getShallowComponent(),
-        link = component.find('.nx-page-sidebar-operable__product-info'),
-        logo = link.find('.nx-page-sidebar-operable__logo');
+        link = component.find('.nx-global-sidebar__product-info'),
+        logo = link.find('.nx-global-sidebar__logo');
 
     expect(link).toHaveProp('href', '/ref');
     expect(logo).toHaveProp('src', 'logoImg');
@@ -55,7 +55,7 @@ describe('NxNavigationSidebar', function() {
     const component = getShallowComponent({ isOpen: true }),
         toggleBtn = component.find(NxButton);
 
-    expect(toggleBtn).toMatchSelector('.nx-page-sidebar-operable__toggle');
+    expect(toggleBtn).toMatchSelector('.nx-global-sidebar__toggle');
     expect(toggleBtn).toHaveProp('variant', 'icon-only');
     expect(toggleBtn).toHaveProp('aria-label', 'Collapse Sidebar');
     expect(toggleBtn.find(NxFontAwesomeIcon)).toHaveProp('icon', faCrow);
@@ -65,7 +65,7 @@ describe('NxNavigationSidebar', function() {
     const component = getShallowComponent({ isOpen: false }),
         toggleBtn = component.find(NxButton);
 
-    expect(toggleBtn).toMatchSelector('.nx-page-sidebar-operable__toggle');
+    expect(toggleBtn).toMatchSelector('.nx-global-sidebar__toggle');
     expect(toggleBtn).toHaveProp('variant', 'icon-only');
     expect(toggleBtn).toHaveProp('aria-label', 'Expand Sidebar');
     expect(toggleBtn.find(NxFontAwesomeIcon)).toHaveProp('icon', faBiohazard);

@@ -11,8 +11,8 @@ describe('NxNavigationSidebarLinks', function() {
   const minimalProps: Props = {},
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxNavigationSidebarLinks, minimalProps);
 
-  it('renders a <nav> with nx-sidebar-navigation class and those passed as props', function() {
-    expect(getShallowComponent({ className: 'class-A' })).toMatchSelector('nav.nx-sidebar-navigation.class-A');
+  it('renders a <nav> with nx-global-sidebar__navigation class and those passed as props', function() {
+    expect(getShallowComponent({ className: 'class-A' })).toMatchSelector('nav.nx-global-sidebar__navigation.class-A');
   });
 
   it('passes any prop that <nav> handles', function() {

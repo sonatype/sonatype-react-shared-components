@@ -22,18 +22,18 @@ describe('NxNavigationSidebarLink', function() {
 
   it('renders an <a> with the passed href and classes', function() {
     const component = getShallowComponent();
-    expect(component).toMatchSelector('a.nx-sidebar-navigation__link.nx-text-link');
+    expect(component).toMatchSelector('a.nx-global-sidebar__navigation-link.nx-text-link');
     expect(component).toHaveProp('href', '#someurl');
 
     expect(getShallowComponent({ className: 'extra-class' })).toMatchSelector('.extra-class');
   });
 
   it('renders the specified text inside the link', function () {
-    expect(getShallowComponent().find('.nx-sidebar-navigation__text')).toHaveText('textLink');
+    expect(getShallowComponent().find('.nx-global-sidebar__navigation-text')).toHaveText('textLink');
   });
 
-  it('renders the specified text with `nx-page-sidebar-operable__expanded-content` class', function() {
-    expect(getShallowComponent().find('.nx-page-sidebar-operable__expanded-content'))
+  it('renders the specified text with `nx-global-sidebar__expanded-content` class', function() {
+    expect(getShallowComponent().find('.nx-global-sidebar__expanded-content'))
         .toHaveText('textLink');
   });
 
@@ -47,6 +47,6 @@ describe('NxNavigationSidebarLink', function() {
     const component = getShallowComponent(),
         overFlow = component.find(NxOverflowTooltip);
     expect(overFlow).toExist();
-    expect(overFlow.find('.nx-sidebar-navigation__text')).toHaveText('textLink');
+    expect(overFlow.find('.nx-global-sidebar__navigation-text')).toHaveText('textLink');
   });
 });
