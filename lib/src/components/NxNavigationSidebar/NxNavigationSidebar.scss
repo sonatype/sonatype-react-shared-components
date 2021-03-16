@@ -84,14 +84,14 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 
 .nx-global-sidebar__navigation-link {
   @include container-horizontal;
+  @include nx-truncate-ellipsis;
 
-  align-items: center;
   border: 1px solid transparent;
-  display: flex;
-  padding: 0 $nx-spacing-l;
+  display: block;
+  padding: $nx-spacing-xxs $nx-spacing-l;
 
   .nx-icon {
-    margin: $nx-spacing-xs $nx-spacing-xs $nx-spacing-xs 0;
+    margin: 0;
   }
 
   &:focus {
@@ -115,7 +115,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-global-sidebar__navigation-text {
-  @include nx-truncate-ellipsis;
+  margin-left: $nx-spacing-xs;
 }
 
 .nx-global-sidebar.open {
@@ -134,10 +134,5 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 
   .nx-global-sidebar__header {
     justify-content: center;
-  }
-
-  .nx-global-sidebar__navigation-link {
-    justify-content: center;
-    padding: 0;
   }
 }

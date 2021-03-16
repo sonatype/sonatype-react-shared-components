@@ -20,12 +20,15 @@ describe('NxNavigationSidebarLink', function() {
       },
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxNavigationSidebarLink, minimalProps);
 
-  it('renders an <a> with the passed href and classes', function() {
-    const component = getShallowComponent();
-    expect(component).toMatchSelector('a.nx-global-sidebar__navigation-link.nx-text-link');
-    expect(component).toHaveProp('href', '#someurl');
+  it('renders an NxOverflowTooltip as container', function () {
+    expect(getShallowComponent().find(NxOverflowTooltip)).toExist();
+  });
 
-    expect(getShallowComponent({ className: 'extra-class' })).toMatchSelector('.extra-class');
+  it('renders an <a> with the passed href and classes', function() {
+    const link = getShallowComponent({ className: 'extra-class' }).find('a');
+    expect(link).toMatchSelector('a.nx-global-sidebar__navigation-link.nx-text-link');
+    expect(link).toMatchSelector('.extra-class');
+    expect(link).toHaveProp('href', '#someurl');
   });
 
   it('renders the specified text inside the link', function () {

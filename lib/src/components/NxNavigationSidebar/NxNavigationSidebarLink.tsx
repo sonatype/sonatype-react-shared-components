@@ -22,14 +22,14 @@ const NxNavigationSidebarLink: FunctionComponent<Props> = function NxNavigationS
   const textClasses = 'nx-global-sidebar__navigation-text nx-global-sidebar__expanded-content';
 
   return (
-    <a href={href} className={classes}>
-      <NxFontAwesomeIcon icon={icon} fixedWidth />
-      <NxOverflowTooltip>
+    <NxOverflowTooltip>
+      <a href={href} className={classes}>
+        <NxFontAwesomeIcon icon={icon} fixedWidth />
         <span className={textClasses}>
           {text}
         </span>
-      </NxOverflowTooltip>
-    </a>
+      </a>
+    </NxOverflowTooltip>
   );
 };
 
