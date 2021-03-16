@@ -10,9 +10,9 @@ import { faCrow, faBiohazard } from '@fortawesome/free-solid-svg-icons';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
-import NxNavigationSidebarLink, { NxNavigationSidebarLinkProps as Props } from '../NxNavigationSidebarLink';
+import NxNavigationSidebarLink, { NxNavigationSidebarLinkProps as Props } from '../NxGlobalSidebarNavigationLink';
 
-describe('NxNavigationSidebarLink', function() {
+describe('NxGlobalSidebarNavigationLink', function() {
   const minimalProps: Props = {
         icon: faCrow,
         text: 'textLink',

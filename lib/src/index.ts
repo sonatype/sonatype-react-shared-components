@@ -200,12 +200,12 @@ export { default as NxCodeSnippet, Props as NxCodeSnippetProps } from './compone
 export { default as useToggle } from './util/useToggle';
 
 export { default as NxNavigationSidebar, Props as NxNavigationSidebarProps }
-  from './components/NxNavigationSidebar/NxNavigationSidebar';
-export { default as NxNavigationSidebarLinks, NxNavigationSidebarLinksProps }
-  from './components/NxNavigationSidebar/NxNavigationSidebarLinks';
-export { default as NxNavigationSidebarLink, NxNavigationSidebarLinkProps }
-  from './components/NxNavigationSidebar/NxNavigationSidebarLink';
-export { default as NxStatefulNavigationSidebar, Props as NxStatefulNavigationSidebarProps }
-  from './components/NxNavigationSidebar/stateful/NxStatefulNavigationSidebar';
+  from './components/NxGlobalSidebar/NxGlobalSidebar';
+export { default as NxGlobalSidebarNavigation, NxGlobalSidebarNavigationProps }
+  from './components/NxGlobalSidebar/NxGlobalSidebarNavigation';
+export { default as NxGlobalSidebarNavigationLink, NxGlobalSidebarNavigationLinkProps }
+  from './components/NxGlobalSidebar/NxGlobalSidebarNavigationLink';
+export { default as NxStatefulGlobalSidebar, Props as NxStatefulGlobalSidebarProps }
+  from './components/NxGlobalSidebar/stateful/NxStatefulGlobalSidebar';
 
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';

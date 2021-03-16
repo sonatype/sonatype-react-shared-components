@@ -10,10 +10,10 @@ import classnames from 'classnames';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
-import { NxNavigationSidebarLinkProps as Props, nxNavigationSidebarLinkPropTypes } from './types';
-export { NxNavigationSidebarLinkProps } from './types';
+import { NxGlobalSidebarNavigationLinkProps as Props, nxGlobalSidebarNavigationLinkPropTypes } from './types';
+export { NxGlobalSidebarNavigationLinkProps } from './types';
 
-const NxNavigationSidebarLink: FunctionComponent<Props> = function NxNavigationSidebarLink(props) {
+const NxGlobalSidebarNavigationLink: FunctionComponent<Props> = function NxNavigationSidebarLink(props) {
   const { className, isSelected, icon, text, href } = props;
 
   const classes = classnames(className, 'nx-global-sidebar__navigation-link nx-text-link', {
@@ -33,6 +33,6 @@ const NxNavigationSidebarLink: FunctionComponent<Props> = function NxNavigationS
   );
 };
 
-NxNavigationSidebarLink.propTypes = nxNavigationSidebarLinkPropTypes;
+NxGlobalSidebarNavigationLink.propTypes = nxGlobalSidebarNavigationLinkPropTypes;
 
-export default NxNavigationSidebarLink;
+export default NxGlobalSidebarNavigationLink;

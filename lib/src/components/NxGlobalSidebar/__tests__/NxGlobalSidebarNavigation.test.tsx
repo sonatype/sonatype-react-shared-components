@@ -5,9 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import NxNavigationSidebarLinks, { NxNavigationSidebarLinksProps as Props } from '../NxNavigationSidebarLinks';
+import NxNavigationSidebarLinks, { NxNavigationSidebarLinksProps as Props } from '../NxGlobalSidebarNavigation';
 
-describe('NxNavigationSidebarLinks', function() {
+describe('NxGlobalSidebarNavigation', function() {
   const minimalProps: Props = {},
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxNavigationSidebarLinks, minimalProps);
 

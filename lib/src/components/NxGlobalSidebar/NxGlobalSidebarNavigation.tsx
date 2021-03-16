@@ -8,10 +8,10 @@
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 
-import { NxNavigationSidebarContentProps as Props, nxNavigationSidebarContentPropTypes } from './types';
-export { NxNavigationSidebarContentProps as NxNavigationSidebarLinksProps } from './types';
+import { NxGlobalSidebarNavigationProps as Props, nxGlobalSidebarNavigationPropTypes } from './types';
+export { NxGlobalSidebarNavigationProps } from './types';
 
-const NxNavigationSidebarLinks: FunctionComponent<Props> = function NxNavigationSidebarLinks(props) {
+const NxGlobalSidebarNavigation: FunctionComponent<Props> = function NxNavigationSidebarLinks(props) {
   const { className, ...otherProps } = props;
   const classes = classnames(className, 'nx-global-sidebar__navigation');
 
@@ -20,6 +20,6 @@ const NxNavigationSidebarLinks: FunctionComponent<Props> = function NxNavigation
   );
 };
 
-NxNavigationSidebarLinks.propTypes = nxNavigationSidebarContentPropTypes;
+NxGlobalSidebarNavigation.propTypes = nxGlobalSidebarNavigationPropTypes;
 
-export default NxNavigationSidebarLinks;
+export default NxGlobalSidebarNavigation;

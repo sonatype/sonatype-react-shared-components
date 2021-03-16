@@ -8,13 +8,13 @@ import * as PropTypes from 'prop-types';
 import { ValidationMap } from 'react';
 import { omit } from 'ramda';
 
-import { Props as NxNavigationSidebarProps, propTypes as nxNavigationSidebarPropTypes } from '../types';
+import { Props as NxGlobalSidebarProps, propTypes as nxGlobalSidebarPropTypes } from '../types';
 
-export interface Props extends Omit<NxNavigationSidebarProps, 'isOpen' | 'onToggleClick'> {
+export interface Props extends Omit<NxGlobalSidebarProps, 'isOpen' | 'onToggleClick'> {
   isDefaultOpen: boolean
 }
 
 export const propTypes: ValidationMap<Props> = {
-  ...omit(['isOpen', 'onToggleClick'], nxNavigationSidebarPropTypes),
+  ...omit(['isOpen', 'onToggleClick'], nxGlobalSidebarPropTypes),
   isDefaultOpen: PropTypes.bool.isRequired
 };

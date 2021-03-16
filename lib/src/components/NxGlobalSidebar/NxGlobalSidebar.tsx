@@ -12,9 +12,9 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { useRandomId } from '../../util/idUtil';
 import { Props, propTypes } from './types';
 
-import './NxNavigationSidebar.scss';
+import './NxGlobalSidebar.scss';
 
-const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSidebar(props) {
+const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props) {
   const {
     isOpen,
     children,
@@ -63,7 +63,7 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
   );
 };
 
-NxNavigationSidebar.propTypes = propTypes;
+NxGlobalSidebar.propTypes = propTypes;
 
-export default NxNavigationSidebar;
+export default NxGlobalSidebar;
 export { Props, propTypes } from './types';

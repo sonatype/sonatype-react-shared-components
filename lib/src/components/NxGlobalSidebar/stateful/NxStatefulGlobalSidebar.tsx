@@ -7,10 +7,10 @@
 import React, { FunctionComponent } from 'react';
 
 import useToggle from '../../../util/useToggle';
-import NxNavigationSidebar from '../NxNavigationSidebar';
+import NxGlobalSidebar from '../NxGlobalSidebar';
 import { Props, propTypes } from './types';
 
-const NxStatefulNavigationSidebar: FunctionComponent<Props> = function(props) {
+const NxStatefulGlobalSidebar: FunctionComponent<Props> = function(props) {
   const {
     isDefaultOpen,
     children,
@@ -20,15 +20,15 @@ const NxStatefulNavigationSidebar: FunctionComponent<Props> = function(props) {
   const [isOpen, toggleOpen] = useToggle(isDefaultOpen);
 
   return (
-    <NxNavigationSidebar isOpen={isOpen}
-                         onToggleClick={toggleOpen}
-                         {...otherProps}>
+    <NxGlobalSidebar isOpen={isOpen}
+                     onToggleClick={toggleOpen}
+                     {...otherProps}>
       { children }
-    </NxNavigationSidebar>
+    </NxGlobalSidebar>
   );
 };
 
-NxStatefulNavigationSidebar.propTypes = propTypes;
-export default NxStatefulNavigationSidebar;
+NxStatefulGlobalSidebar.propTypes = propTypes;
+export default NxStatefulGlobalSidebar;
 
 export { Props, propTypes } from './types';

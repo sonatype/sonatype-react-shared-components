@@ -9,11 +9,11 @@ import { ShallowWrapper } from 'enzyme';
 import { faCrow, faBiohazard } from '@fortawesome/free-solid-svg-icons';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import NxNavigationSidebar, { Props } from '../NxNavigationSidebar';
+import NxNavigationSidebar, { Props } from '../NxGlobalSidebar';
 import NxButton from '../../NxButton/NxButton';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-describe('NxNavigationSidebar', function() {
+describe('NxGlobalSidebar', function() {
   let minimalProps: Props,
       toggleOpenSpy: () => void,
       getShallowComponent: (optionalProps?: Partial<Props>) => ShallowWrapper;
