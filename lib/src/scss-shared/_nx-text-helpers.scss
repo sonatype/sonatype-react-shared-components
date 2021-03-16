@@ -84,7 +84,7 @@
 
 %nx-pre {
   @include monospace();
-  background-color: #fff;
+  background-color: $nx-white;
   border: 1px solid $nx-grey-900;
   border-left-width: 8px;
   border-radius: $nx-border-radius;
