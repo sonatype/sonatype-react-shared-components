@@ -113,7 +113,7 @@ $main-header-product-version-row-height: 1fr;
   white-space: nowrap;
 
   &::before {
-    color: #000;
+    color: $nx-black;
     content: "|";
     display: inline-block;
     font-size: 21px;

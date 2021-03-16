@@ -107,7 +107,7 @@
 
   &:focus {
     background-color: $nx-red-800;
-    border-color: #43cbf5;
+    border-color: $nx-focus-border-color;
   }
 
   &:active {
