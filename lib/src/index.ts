@@ -201,8 +201,6 @@ export { default as useToggle } from './util/useToggle';
 
 export { default as NxNavigationSidebar, Props as NxNavigationSidebarProps }
   from './components/NxNavigationSidebar/NxNavigationSidebar';
-export { default as NxNavigationSidebarContent, NxNavigationSidebarContentProps }
-  from './components/NxNavigationSidebar/NxNavigationSidebarContent';
 export { default as NxNavigationSidebarLinks, NxNavigationSidebarLinksProps }
   from './components/NxNavigationSidebar/NxNavigationSidebarLinks';
 export { default as NxNavigationSidebarLink, NxNavigationSidebarLinkProps }
