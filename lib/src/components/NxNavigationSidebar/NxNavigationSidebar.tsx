@@ -32,8 +32,9 @@ const NxNavigationSidebar: FunctionComponent<Props> = function NxNavigationSideb
   });
 
   const toggleButtonIcon = isOpen ? toggleOpenIcon : toggleCloseIcon;
+  const toggleAriaLabel = isOpen ? 'Collapse Sidebar' : 'Expand Sidebar';
   const toggleButton = (
-    <NxButton aria-label="toggle"
+    <NxButton aria-label={toggleAriaLabel}
               variant="icon-only"
               onClick={onToggleClick}
               className="nx-page-sidebar-operable__toggle">

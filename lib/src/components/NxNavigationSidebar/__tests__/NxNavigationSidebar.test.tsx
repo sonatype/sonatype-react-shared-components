@@ -57,7 +57,7 @@ describe('NxNavigationSidebar', function() {
 
     expect(toggleBtn).toMatchSelector('.nx-page-sidebar-operable__toggle');
     expect(toggleBtn).toHaveProp('variant', 'icon-only');
-    expect(toggleBtn).toHaveProp('aria-label', 'toggle');
+    expect(toggleBtn).toHaveProp('aria-label', 'Collapse Sidebar');
     expect(toggleBtn.find(NxFontAwesomeIcon)).toHaveProp('icon', faCrow);
   });
 
@@ -67,7 +67,7 @@ describe('NxNavigationSidebar', function() {
 
     expect(toggleBtn).toMatchSelector('.nx-page-sidebar-operable__toggle');
     expect(toggleBtn).toHaveProp('variant', 'icon-only');
-    expect(toggleBtn).toHaveProp('aria-label', 'toggle');
+    expect(toggleBtn).toHaveProp('aria-label', 'Expand Sidebar');
     expect(toggleBtn.find(NxFontAwesomeIcon)).toHaveProp('icon', faBiohazard);
   });
 
