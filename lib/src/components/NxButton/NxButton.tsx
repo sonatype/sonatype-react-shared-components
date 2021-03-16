@@ -13,7 +13,8 @@ import {Props, propTypes} from './types';
 const NxButton = forwardRef<HTMLButtonElement, Props>(
     function NxButton({variant, className, children, ...attrs}, ref) {
       const classNames = classnames('nx-btn', className, {
-        [`nx-btn--${variant}`]: variant || 'secondary'
+        'nx-btn--secondary': !variant,
+        [`nx-btn--${variant}`]: variant
       });
       return (
         <button aria-disabled={includes('disabled', classNames) ? true : undefined}
