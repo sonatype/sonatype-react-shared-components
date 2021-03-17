@@ -107,7 +107,7 @@ $nx-dropdown-width: 250px;
   &.disabled {
     &, &:hover, &:focus {
       background-color: transparent;
-      color: $nx-grey-3;
+      color: $nx-text-color-disabled;
       cursor: default;
       text-decoration: none;
     }
