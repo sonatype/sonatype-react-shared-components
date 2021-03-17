@@ -22,7 +22,7 @@ export { nxTextInputStateHelpers };
 export {
   default as NxAlert,
   NxWarningAlert,
-    NxSuccessAlert,
+  NxSuccessAlert,
   NxInfoAlert,
   NxErrorAlert,
   NxAlertProps,
