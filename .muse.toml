@@ -1,2 +1,1 @@
-setup = ".muse/install_eslint_plugins.sh"
-tools = [ "eslint", "semgrep" ]
+tools = [ "semgrep" ]
