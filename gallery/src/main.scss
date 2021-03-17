@@ -4,89 +4,80 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '~@sonatype/react-shared-components/scss-shared/nx-variables';
-@import '~@sonatype/react-shared-components/scss-shared/nx-text-helpers';
-@import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
-@import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
+ @import '~@sonatype/react-shared-components/scss-shared/nx-variables';
+ @import '~@sonatype/react-shared-components/scss-shared/nx-text-helpers';
+ @import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
+ @import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
 
-.gallery-example-section {
-  margin: 15px 0;
-}
+ .gallery-example-section {
+   margin: 15px 0;
+ }
 
-.gallery-counter-example-container {
-  margin: 8px 0;
-  width: 400px;
-}
+ .gallery-counter-example-container {
+   margin: 8px 0;
+   width: 400px;
+ }
 
-.gallery-example {
-  pre {
-    font-size: $nx-font-size-s;
-  }
-}
+ .gallery-example {
+   pre {
+     font-size: $nx-font-size-s;
+   }
+ }
 
-.gallery-example-live {
-  padding: $nx-spacing-l;
-}
+ .gallery-example-live {
+   padding: $nx-spacing-l;
+ }
 
-.gallery-example--checkered-background {
-  .gallery-example-live {
-    $checker-size: 12px;
-    $checker-color: #e9e9e9;
-    $checker-bg-color: #f9f9f9;
-    $checker-dimensions: $checker-size $checker-size;
-    $checker-layer-1-position: top left;
-    $checker-layer-2-position: #{$checker-size / 2} #{$checker-size / 2};
-    $checker-gradient: linear-gradient(to top right, $checker-color 25%, transparent 25% 75%, $checker-color 75%);
+ .gallery-example--checkered-background {
+   .gallery-example-live {
+     $checker-size: 12px;
+     $checker-color: #e9e9e9;
+     $checker-bg-color: #f9f9f9;
+     $checker-dimensions: $checker-size $checker-size;
+     $checker-layer-1-position: top left;
+     $checker-layer-2-position: #{$checker-size / 2} #{$checker-size / 2};
+     $checker-gradient: linear-gradient(to top right, $checker-color 25%, transparent 25% 75%, $checker-color 75%);
 
-    // IE fallback
-    background-color: $checker-bg-color;
+     // IE fallback
+     background-color: $checker-bg-color;
 
-    // create a checkerbox pattern for the background so that the edges and background of the example are clear
-    background: repeat $checker-layer-2-position/$checker-dimensions $checker-gradient,
-                repeat $checker-layer-1-position/$checker-dimensions $checker-gradient,
-                $checker-bg-color;
-  }
-}
+     // create a checkerbox pattern for the background so that the edges and background of the example are clear
+     background: repeat $checker-layer-2-position/$checker-dimensions $checker-gradient,
+                 repeat $checker-layer-1-position/$checker-dimensions $checker-gradient,
+                 $checker-bg-color;
+   }
+ }
 
-// .nx-html added to this selector for specificity reasons
-.nx-html .gallery-example .nx-page-header {
-  position: static;
-}
+ // .nx-html added to this selector for specificity reasons
+ .nx-html .gallery-example .nx-page-header {
+   position: static;
+ }
 
-.gallery-submit-mask-area {
-  height: 100px;
+ .gallery-submit-mask-area {
+   height: 100px;
 
-  position: relative;
-}
+   position: relative;
+ }
 
-.gallery-highlight-background-example {
-  background-color: transparentize(#79acfb, 0.5);
-}
+ .gallery-highlight-background-example {
+   background-color: transparentize(#79acfb, 0.5);
+ }
 
-.gallery-example-image {
-  max-width: 100%;
-}
+ .gallery-example-image {
+   max-width: 100%;
+ }
 
-.gallery-hide-sidebar {
-  .nx-page-sidebar {
-    display: none;
-  }
-}
+ .gallery-hide-sidebar {
+   .nx-page-sidebar {
+     display: none;
+   }
+ }
 
-// This media query selects IE11
-@media (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  // hide checkered background checkbox in IE since the background doesn't work there (and we don't care to support
-  // it there
-  .gallery-checkered-background-toggle {
-    display: none;
-  }
-}
-
-#temporary-navigation-sidebar-example {
-  .custom-tree-content {
-    font-size: $nx-font-size-s;
-    * {
-      color: $nx-white;
-    }
-  }
-}
+ // This media query selects IE11
+ @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+   // hide checkered background checkbox in IE since the background doesn't work there (and we don't care to support
+   // it there
+   .gallery-checkered-background-toggle {
+     display: none;
+   }
+ }
