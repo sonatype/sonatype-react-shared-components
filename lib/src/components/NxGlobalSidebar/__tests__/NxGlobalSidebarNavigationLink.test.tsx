@@ -22,7 +22,7 @@ describe('NxGlobalSidebarNavigationLink', function() {
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxGlobalSidebarNavigationLink, minimalProps);
 
   it('renders an NxOverflowTooltip as container', function () {
-    expect(getShallowComponent().find(NxOverflowTooltip)).toExist();
+    expect(getShallowComponent()).toMatchSelector(NxOverflowTooltip);
   });
 
   it('renders an <a> with the passed href and classes', function() {
