@@ -16,10 +16,9 @@
 }
 
 .nx-submit-mask--fullscreen {
-  @include background-mask($nx-submit-mask-z-index);
-
   position: fixed;
   justify-content: start;
+  z-index: $nx-submit-mask-z-index;
 
   .nx-submit-mask__message {
     margin-top: 200px;
