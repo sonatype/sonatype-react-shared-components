@@ -42,5 +42,8 @@ describe('NxStatefulGlobalSidebar', () => {
 
     component.simulate('toggleClick');
     expect(component).toHaveProp('isOpen', true);
+
+    component.simulate('toggleClick');
+    expect(component).toHaveProp('isOpen', false);
   });
 });
