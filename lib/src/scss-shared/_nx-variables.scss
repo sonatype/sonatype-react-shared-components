@@ -62,3 +62,11 @@ $nx-table-cell-min-height: 48px; //content box only
 $nx-table-footer-vertical-padding: $nx-spacing-l;
 
 $nx-pagination-button-height: 40px;
+
+// Deprecated
+
+// Border rows are used by lists and tables
+$nx-border-row: 1px solid $nx-grey-1;
+$nx-border-row-hover: 1px solid $nx-grey-4;
+$nx-border-row-disabled: 1px solid $nx-grey-1;
+$nx-border-row-dark: 1px solid $nx-grey-5;
