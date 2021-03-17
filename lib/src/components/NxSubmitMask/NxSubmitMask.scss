@@ -12,12 +12,10 @@
 .nx-submit-mask {
   @include background-mask($nx-submit-mask-z-index);
 
-  justify-content: center;
   position: absolute;
 }
 
 .nx-submit-mask--fullscreen {
-  flex-direction: unset;
   position: fixed;
 
   .nx-submit-mask__message {
