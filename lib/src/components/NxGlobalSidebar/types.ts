@@ -29,10 +29,7 @@ export const propTypes: ValidationMap<Props> = {
   logoImg: PropTypes.string.isRequired,
   logoAltText: PropTypes.string.isRequired,
   logoLink: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element.isRequired),
-    PropTypes.element
-  ])
+  children: PropTypes.node
 };
 
 export type NxGlobalSidebarNavigationProps = HTMLAttributes<HTMLDivElement>;
