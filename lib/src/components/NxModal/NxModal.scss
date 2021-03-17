@@ -64,8 +64,6 @@ $nx-modal-padding: $nx-spacing-l;
 
 .nx-modal-backdrop {
   @include background-mask($nx-modal-backdrop-z-index);
-
-  flex-direction: column;
 }
 
 .nx-modal-content {

@@ -10,16 +10,18 @@
 @import '../../scss-shared/_nx-mask-helpers';
 
 .nx-submit-mask {
-  @include background-mask($nx-submit-mask-z-index);
+  @include background-mask(0);
 
   position: absolute;
 }
 
 .nx-submit-mask--fullscreen {
+  @include background-mask($nx-submit-mask-z-index);
+
   position: fixed;
+  justify-content: left;
 
   .nx-submit-mask__message {
-    align-self: start;
     margin-top: 200px;
   }
 }
