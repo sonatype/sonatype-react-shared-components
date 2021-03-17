@@ -13,11 +13,6 @@ $nx-main-header-height: 72px;
 $nx-paragraph-width-maximum: 562px;
 $nx-form-label-width-maximum: 562px;
 
-$nx-border-radius: 6px;
-
-// the most typical style of boder within RSC
-$nx-border-default: 1px solid $nx-indigo-100;
-
 //  #Margin/Padding widths
 $nx-spacing-xxs: 4px;
 $nx-spacing-xs: 8px;
@@ -64,6 +59,11 @@ $nx-table-footer-vertical-padding: $nx-spacing-l;
 $nx-pagination-button-height: 40px;
 
 //  Borders
+$nx-border-radius: 6px;
+
+// the most typical style of border within RSC
+$nx-border-default: 1px solid $nx-indigo-100;
+
 $nx-border-darker: 1px solid $nx-grey-800;
 $nx-border-dark: 1px solid $nx-grey-300;
 $nx-border: 1px solid $nx-grey-200; // default
