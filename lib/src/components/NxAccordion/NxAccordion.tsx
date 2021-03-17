@@ -14,7 +14,7 @@ import { HeaderContextType, HeaderProps, Props, propTypes } from './types';
 
 import './NxAccordion.scss';
 import { splitOutFirst } from '../../util/childUtil';
-import { getRandomId } from '../../util/idUtil';
+import { getUniqueId } from '../../util/idUtil';
 
 export { Props, HeaderProps };
 
@@ -67,7 +67,7 @@ export default function NxAccordion(props: Props) {
   const { className, onToggle, open, children, id, ...otherProps } = props,
       classes = classnames('nx-accordion', className),
       [header, otherChildren] = splitOutFirst(NxAccordionHeader, children),
-      accordionId = useMemo(() => id || getRandomId('nx-accordion'), [id]);
+      accordionId = useMemo(() => id || getUniqueId('nx-accordion'), [id]);
 
   function onHeaderClick(evt: MouseEvent) {
     evt.preventDefault();

@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 import NxTooltip from '../NxTooltip/NxTooltip';
-import { getRandomId } from '../../util/idUtil';
+import { getUniqueId } from '../../util/idUtil';
 import { Props, NxTreeViewChildProps, propTypes, childPropTypes } from './types';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
@@ -29,7 +29,7 @@ const NxTreeView: FunctionComponent<Props> =
           'nx-tree-view--disabled': disabled,
           'nx-tree-view--empty': isEmpty
         }),
-        treeViewId = useMemo(() => id || getRandomId('nx-tree-view'), [id]),
+        treeViewId = useMemo(() => id || getUniqueId('nx-tree-view'), [id]),
         trigger = (
           <button className="nx-tree-view__trigger"
                   onClick={onToggleCollapse || undefined}

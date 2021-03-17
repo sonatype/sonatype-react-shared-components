@@ -10,7 +10,7 @@ import { pipe, split, map, join, toUpper, head, tail } from 'ramda';
 
 import NxTooltip from '../NxTooltip/NxTooltip';
 import { SelectableColor, selectableColors } from '../../util/selectableColors';
-import { useRandomId } from '../../util/idUtil';
+import { useUniqueId } from '../../util/idUtil';
 import { textContent } from '../../util/childUtil';
 import { Props, propTypes } from './types';
 
@@ -62,7 +62,7 @@ function ColorRadio({ pickerLabel, color, value, onChange, name }: ColorRadioPro
 }
 
 export default function NxColorPicker({ value, onChange, className, label, ...attrs }: Props) {
-  const name = useRandomId('nx-color-picker'),
+  const name = useUniqueId('nx-color-picker'),
       classes = classnames('nx-color-picker', className),
       pickerLabel = textContent(label);
 
