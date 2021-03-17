@@ -39,6 +39,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-global-sidebar__header {
+  align-items: center;
   display: flex;
   height: $nx-global-sidebar-logo-height;
   margin-bottom: $nx-spacing-xl;
