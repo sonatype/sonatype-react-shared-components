@@ -46,4 +46,9 @@ describe('NxStatefulGlobalSidebar', () => {
     component.simulate('toggleClick');
     expect(component).toHaveProp('isOpen', false);
   });
+
+  it('sets the isOpen prop to the value of isDefaultOpen', function() {
+    expect(getShallowComponent({ isDefaultOpen: true })).toHaveProp('isOpen', true);
+    expect(getShallowComponent({ isDefaultOpen: false })).toHaveProp('isOpen', false);
+  });
 });
