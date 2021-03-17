@@ -53,21 +53,27 @@ describe('NxGlobalSidebar', function() {
 
   it('renders a button with toggleOpenIcon if isOpen is true', function() {
     const component = getShallowComponent({ isOpen: true }),
-        toggleBtn = component.find(NxButton);
+        toggleBtn = component.find(NxButton),
+        sidebarId = component.prop('id');
 
     expect(toggleBtn).toMatchSelector('.nx-global-sidebar__toggle');
     expect(toggleBtn).toHaveProp('variant', 'icon-only');
     expect(toggleBtn).toHaveProp('aria-label', 'Collapse Sidebar');
+    expect(toggleBtn).toHaveProp('aria-expanded', true);
+    expect(toggleBtn).toHaveProp('aria-controls', sidebarId);
     expect(toggleBtn.find(NxFontAwesomeIcon)).toHaveProp('icon', faCrow);
   });
 
   it('renders a button with toggleCloseIcon if isOpen is false', function() {
     const component = getShallowComponent({ isOpen: false }),
-        toggleBtn = component.find(NxButton);
+        toggleBtn = component.find(NxButton),
+        sidebarId = component.prop('id');
 
     expect(toggleBtn).toMatchSelector('.nx-global-sidebar__toggle');
     expect(toggleBtn).toHaveProp('variant', 'icon-only');
     expect(toggleBtn).toHaveProp('aria-label', 'Expand Sidebar');
+    expect(toggleBtn).toHaveProp('aria-expanded', false);
+    expect(toggleBtn).toHaveProp('aria-controls', sidebarId);
     expect(toggleBtn.find(NxFontAwesomeIcon)).toHaveProp('icon', faBiohazard);
   });
 
