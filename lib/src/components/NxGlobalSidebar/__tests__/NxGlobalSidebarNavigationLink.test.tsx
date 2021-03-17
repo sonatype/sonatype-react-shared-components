@@ -46,11 +46,4 @@ describe('NxGlobalSidebarNavigationLink', function() {
     expect(getShallowComponent({ icon: faBiohazard }).find(NxFontAwesomeIcon))
         .toHaveProp('icon', faBiohazard);
   });
-
-  it('renders an overflow tooltip for the text inside the link', function() {
-    const component = getShallowComponent(),
-        overFlow = component.find(NxOverflowTooltip);
-    expect(overFlow).toExist();
-    expect(overFlow.find('.nx-global-sidebar__navigation-text')).toHaveText('textLink');
-  });
 });
