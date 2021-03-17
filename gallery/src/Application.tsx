@@ -62,7 +62,7 @@ function Application() {
                                          icon={faBiohazard}
                                          text={longText} />
         </NxGlobalSidebarNavigation>
-        <section className="custom-tree-content nx-page-sidebar-operable__expanded-content">
+        <section className="custom-tree-content nx-global-sidebar__expanded-content">
           <NxTreeView onToggleCollapse={onToggleCollapse}
                       isOpen={toggleCheck}
                       triggerContent="TreeView Content">
