@@ -19,7 +19,7 @@
   @include background-mask($nx-submit-mask-z-index);
 
   position: fixed;
-  justify-content: left;
+  justify-content: start;
 
   .nx-submit-mask__message {
     margin-top: 200px;
