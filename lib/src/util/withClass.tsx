@@ -15,6 +15,7 @@ export default function withClass<E extends keyof JSX.IntrinsicElements>(
     // There should be a safer way but I can't figure it out; TS keeps thinking that
     // the props need to satisfy all possible types of E at the same time if I construct the JSX
     // using El
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     const CastEl = El as any,
         classes = classnames(withClassName, className);
 
