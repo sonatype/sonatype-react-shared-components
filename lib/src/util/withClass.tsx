@@ -4,14 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ComponentProps, JSXElementConstructor, ReactElement } from 'react';
+import React, { ComponentProps, ReactElement } from 'react';
 import classnames from 'classnames';
+
+type ElementType<E extends keyof JSX.IntrinsicElements> = ReactElement<ComponentProps<E>, E>;
+type ComponentConstructorType<E extends keyof JSX.IntrinsicElements> = (p: ComponentProps<E>) => ElementType<E>;
 
 export default function withClass<E extends keyof JSX.IntrinsicElements>(
   withClassName: string,
   El: E
-): JSXElementConstructor<ComponentProps<E>> {
-  return function WithClassWrapper({ className, ...otherProps }: ComponentProps<E>): ReactElement {
+): ComponentConstructorType<E> {
+  return function WithClassWrapper({ className, ...otherProps }: ComponentProps<E>): ElementType<E> {
     // There should be a safer way but I can't figure it out; TS keeps thinking that
     // the props need to satisfy all possible types of E at the same time if I construct the JSX
     // using El
