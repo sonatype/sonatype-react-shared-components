@@ -22,6 +22,7 @@ const NxTilePage = () =>
         <thead>
           <tr className="nx-table-row">
             <th className="nx-cell nx-cell--header">Class</th>
+            <th className="nx-cell nx-cell--header">Convenience Component</th>
             <th className="nx-cell nx-cell--header">Location</th>
             <th className="nx-cell nx-cell--header">Details</th>
           </tr>
@@ -29,21 +30,25 @@ const NxTilePage = () =>
         <tbody>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile</code></td>
+            <td className="nx-cell"><code className="nx-code">NxTile</code></td>
             <td className="nx-cell">Top-Level</td>
             <td className="nx-cell">The parent tile class.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile__actions</code></td>
+            <td className="nx-cell"><code className="nx-code">NxTile.HeaderActions</code></td>
             <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile</code></td>
             <td className="nx-cell">Used for actions (buttons or dropdowns) that appear in a tile header.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile-header</code></td>
+            <td className="nx-cell"><code className="nx-code">NxTile.Header</code></td>
             <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile</code></td>
             <td className="nx-cell">Used for tile titles, it has title and optional sub-title elements.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile-header__title</code></td>
+            <td className="nx-cell"><code className="nx-code">NxTile.HeaderTitle</code></td>
             <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile-header</code></td>
             <td className="nx-cell">
               Used for the main title inside an <code className="nx-code">.nx-tile-header</code>.
@@ -51,6 +56,7 @@ const NxTilePage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile-header__subtitle</code></td>
+            <td className="nx-cell"><code className="nx-code">NxTile.HeaderSubtitle</code></td>
             <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile-header</code></td>
             <td className="nx-cell">
               Used for the subtitle inside an <code className="nx-code">.nx-tile-header</code>.
@@ -58,6 +64,7 @@ const NxTilePage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile-content</code></td>
+            <td className="nx-cell"><code className="nx-code">NxTile.Content</code></td>
             <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile</code></td>
             <td className="nx-cell">
               Used for the tile content. It is possible to have multiple of these in a row, particularly when one
@@ -66,6 +73,7 @@ const NxTilePage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile-content--accordion-container</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile-content</code></td>
             <td className="nx-cell">
               Creates a container for displaying one or more <code className="nx-code">NxAccordion</code>s
@@ -74,6 +82,7 @@ const NxTilePage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-footer</code></td>
+            <td className="nx-cell"><code className="nx-code">NxFooter</code></td>
             <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile</code></td>
             <td className="nx-cell">
               Used for footer contents (buttons for example). This class is not
@@ -83,6 +92,7 @@ const NxTilePage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-alert</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile</code></td>
             <td className="nx-cell">
               Class for providing alert colorings to <code className="nx-code">.nx-tile</code>.
@@ -90,6 +100,7 @@ const NxTilePage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-alert--info</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile</code></td>
             <td className="nx-cell">
               Class for providing alert colorings to <code className="nx-code">.nx-tile</code>.
@@ -97,6 +108,7 @@ const NxTilePage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-alert--error</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile</code></td>
             <td className="nx-cell">
               Class for providing alert colorings to <code className="nx-code">.nx-tile</code>.

@@ -34,6 +34,7 @@ const NxGridPage = () =>
         <thead>
           <tr className="nx-table-row nx-table-row--header">
             <th className="nx-cell nx-cell--header">Class</th>
+            <th className="nx-cell nx-cell--header">Convenience Component</th>
             <th className="nx-cell nx-cell--header">Location</th>
             <th className="nx-cell nx-cell--header">Details</th>
           </tr>
@@ -41,6 +42,7 @@ const NxGridPage = () =>
         <tbody>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-row</code></td>
+            <td className="nx-cell"><code className="nx-code">NxGrid.Row</code></td>
             <td className="nx-cell">Top-Level</td>
             <td className="nx-cell">
               Basic row class. These can be nested inside other rows or within grid cells to allow
@@ -49,6 +51,7 @@ const NxGridPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-col</code></td>
+            <td className="nx-cell"><code className="nx-code">NxGrid.Column</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               A simple container, always placed inside <code className="nx-code">.nx-grid-row</code>.
@@ -56,6 +59,7 @@ const NxGridPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-col--##</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-grid-col</code></td>
             <td className="nx-cell">
               Used when you want to give a column cell a specific width. Modifiers are provided for
@@ -64,11 +68,13 @@ const NxGridPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-header</code></td>
+            <td className="nx-cell"><code className="nx-code">NxGrid.Header</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">Container for title text and icons.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-header__title</code></td>
+            <td className="nx-cell"><code className="nx-code">NxGrid.Title</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Applied to any <code className="nx-code">h#</code> element used as a header for a grid cell. Note that
@@ -77,26 +83,31 @@ const NxGridPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-header__icon</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">Applied to icons in grid headers.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-header__hrule</code></td>
+            <td className="nx-cell"><code className="nx-code">NxGrid.HeaderHrule</code></td>
             <td className="nx-cell">&lt;hr&gt;</td>
             <td className="nx-cell">Horizontal keyline used below grid cell headers.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-h-keyline</code></td>
+            <td className="nx-cell"><code className="nx-code">NxGrid.HorizontalKeyline</code></td>
             <td className="nx-cell">&lt;hr&gt;</td>
             <td className="nx-cell">Horizontal keyline used between grid cells.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-h-keyline--white</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-grid-h-keyline</code></td>
             <td className="nx-cell">Used when you don't want a visual keyline but need one for spacing.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-col--noborder</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-grid-col</code></td>
             <td className="nx-cell">
               <code className="nx-code">.nx-grid-col</code> has a left border by default, this removes it.
