@@ -41,7 +41,6 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
           { onKeyDown, onToggleCollapse } =
               useDropdownEvents(isOpen, disabled, onClose, externalOnToggleCollapse, externalOnKeyDown);
 
-
       return (
         <div ref={ref} className={classes} onKeyDown={onKeyDown} { ...attrs }>
           <NxButton variant={variant}
