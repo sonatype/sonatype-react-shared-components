@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import { faCaretDown, faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,9 +15,28 @@ import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 
 describe('NxDropdown', () => {
-  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxDropdown, {
-    label: 'dropdown',
-    isOpen: false
+  let container: HTMLDivElement | null;
+
+  const minimalProps = {
+        label: 'dropdown',
+        isOpen: false,
+        onToggleCollapse: () => {},
+        onClose: () => {}
+      },
+      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxDropdown, minimalProps),
+      getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxDropdown, minimalProps);
+
+  beforeEach(function() {
+    // Avoid rendering directly on the body.
+    container = document.createElement('div');
+    document.body.appendChild(container);
+  });
+
+  afterEach(function() {
+    if (container) {
+      document.body.removeChild(container);
+      container = null;
+    }
   });
 
   it('renders a button with the appropriate classes and type=button', function() {
@@ -105,5 +125,93 @@ describe('NxDropdown', () => {
         <NxOverflowTooltip><a id="link2" key="2">Link2</a></NxOverflowTooltip>
       </div>
     );
+  });
+
+  it('calls onClose if a click happens anywhere when the dropdown is already open', function() {
+    const onClose = jest.fn(),
+        component = getMountedComponent({ onClose, isOpen: true }, { attachTo: container });
+
+    expect(onClose).not.toHaveBeenCalled();
+
+    act(() => {
+      document.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onClose).toHaveBeenCalled();
+  });
+
+  it('does not call onClose if a click happens anywhere when the dropdown is closed', function() {
+    const onClose = jest.fn(),
+        component = getMountedComponent({ onClose }, { attachTo: container });
+
+    expect(onClose).not.toHaveBeenCalled();
+
+    act(() => {
+      document.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onClose).not.toHaveBeenCalled();
+  });
+
+  it('does not call onClose if a click happens anywhere when the dropdown is disabled', function() {
+    const onClose = jest.fn(),
+        component = getMountedComponent({ onClose, isOpen: true, disabled: true }, { attachTo: container });
+
+    expect(onClose).not.toHaveBeenCalled();
+
+    act(() => {
+      document.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onClose).not.toHaveBeenCalled();
+  });
+
+  it('does not call onClose during the click that opens the dropdown', function() {
+    const onClose = jest.fn(),
+        component = getMountedComponent({ onClose }, { attachTo: container });
+
+    expect(onClose).not.toHaveBeenCalled();
+
+    act(() => {
+      component!.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onClose).not.toHaveBeenCalled();
+  });
+
+  it('calls onClose if ESC is pressed within the component while the dropdown is open', function() {
+    const onClose = jest.fn(),
+        component = getShallowComponent({ onClose, isOpen: true });
+
+    component.simulate('keyDown', { key: 'Escape' });
+    expect(onClose).toHaveBeenCalled();
+  });
+
+  it('does not call onClose if ESC is pressed within the component when the dropdown is closed', function() {
+    const onClose = jest.fn(),
+        component = getShallowComponent({ onClose });
+
+    expect(onClose).not.toHaveBeenCalled();
+
+    component.simulate('keyDown', { key: 'Escape' });
+    expect(onClose).not.toHaveBeenCalled();
+  });
+
+  it('does not call onClose if ESC is pressed within the component when the component is disabled', function() {
+    const onClose = jest.fn(),
+        component = getShallowComponent({ onClose, isOpen: true, disabled: true });
+
+    expect(onClose).not.toHaveBeenCalled();
+
+    component.simulate('keyDown', { key: 'Escape' });
+    expect(onClose).not.toHaveBeenCalled();
   });
 });
