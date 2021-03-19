@@ -8,14 +8,8 @@ import React from 'react';
 
 import { useToggle, NxButton, NxCheckbox } from '@sonatype/react-shared-components';
 
-export default function UseToggleThirdItemExample() {
-  const [checked, toggleChecked, setChecked] = useToggle(false);
-
-  function randomSetChecked() {
-    const checkIt = Math.random() >= 0.5;
-
-    setChecked(checkIt);
-  }
+export default function UseToggleFourthFifthItemExample() {
+  const [checked, toggleChecked, , setFalse, setTrue] = useToggle(false);
 
   return (
     <div>
@@ -23,7 +17,8 @@ export default function UseToggleThirdItemExample() {
         Checkbox brought to you by <code className="nx-code">useToggle</code>
       </NxCheckbox>
       <br/>
-      <NxButton onClick={randomSetChecked}>Randomly Set Checkbox</NxButton>
+      <NxButton onClick={setFalse}>Unset Checkbox</NxButton>
+      <NxButton onClick={setTrue}>Set Checkbox</NxButton>
     </div>
   );
 }
