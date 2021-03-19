@@ -43,7 +43,7 @@ const IdUtilPage = () =>
       This example demonstrates how <code className="nx-code">useUniqueId</code> can be used in situations where an
       explicit ID <em>may</em> be provided by an external source instead. This example features two components: a
       child which can optionally receive an ID as a prop, but which
-      uses <code className="nx-code">useUniqueId</code> to generate a random ID in the event that it has not
+      uses <code className="nx-code">useUniqueId</code> to generate a unique ID in the event that it has not
       received an ID, and a parent component which renders two instances of the child, one with an
       explicit id passed and one without. Note that React hooks should never be called within a conditional
       statement. For this reason, <code className="nx-code">useUniqueId</code> has special support for handling an
