@@ -18,7 +18,7 @@ const IdUtilPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        The ID Utils consist of two utility functions for managing random, auto-generated strings for use
+        The ID Utils consist of two utility functions for managing unique, auto-generated strings for use
         as HTML IDs. This functionality is provided as both a simple
         function: <code className="nx-code">getUniqueId</code>, and as a React
         hook: <code className="nx-code">useUniqueId</code>.
