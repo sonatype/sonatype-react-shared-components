@@ -41,7 +41,7 @@ export default function useDropdownEvents(
     }
   };
 
-  const handleClick = () => {
+  const handleDocumentClick = () => {
     if (!isToggling.current) {
       closeDropdown();
     }
@@ -56,9 +56,9 @@ export default function useDropdownEvents(
   }
 
   useEffect(() => {
-    document.addEventListener('click', handleClick);
+    document.addEventListener('click', handleDocumentClick);
     return function cleanup() {
-      document.removeEventListener('click', handleClick);
+      document.removeEventListener('click', handleDocumentClick);
     };
   });
 
