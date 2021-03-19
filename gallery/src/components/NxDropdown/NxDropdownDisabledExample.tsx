@@ -12,6 +12,8 @@ function NxDropdownDisabledExample() {
   return (
     <NxDropdown label="Disabled Dropdown!"
                 isOpen={false}
+                onToggleCollapse={() => {}}
+                onClose={() => {}}
                 disabled={true} />
   );
 }

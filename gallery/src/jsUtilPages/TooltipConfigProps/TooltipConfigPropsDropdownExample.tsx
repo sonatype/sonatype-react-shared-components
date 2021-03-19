@@ -9,7 +9,7 @@ import React from 'react';
 import { NxDropdown, TooltipConfigProps, useToggle } from '@sonatype/react-shared-components';
 
 export default function TooltipConfigPropsDropdownExample() {
-  const [isOpen, onToggleCollapse] = useToggle(false);
+  const [isOpen, onToggleCollapse, , onClose] = useToggle(false);
 
   // explicit type here is optional; added for demonstration purposes
   const tooltipProps: TooltipConfigProps = {
@@ -21,6 +21,7 @@ export default function TooltipConfigPropsDropdownExample() {
   return (
     <NxDropdown label="Example"
                 isOpen={isOpen}
+                onClose={onClose}
                 toggleTooltip={tooltipProps}
                 onToggleCollapse={onToggleCollapse}>
       <a className="nx-dropdown-button">Nav Link1</a>

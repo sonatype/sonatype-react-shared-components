@@ -10,7 +10,7 @@ import { faFrog, faCarCrash } from '@fortawesome/free-solid-svg-icons';
 import { NxDropdown, NxFontAwesomeIcon, useToggle } from '@sonatype/react-shared-components';
 
 function NxDropdownCustomLabelExample() {
-  const [isOpen, onToggleCollapse] = useToggle(false),
+  const [isOpen, onToggleCollapse, , onClose] = useToggle(false),
       onClick = () => { alert('click'); },
       labelElement = <><NxFontAwesomeIcon icon={faCarCrash}/><span>Beep Beep!</span></>;
 
@@ -18,6 +18,7 @@ function NxDropdownCustomLabelExample() {
     <NxDropdown label={labelElement}
                 className="extra-class"
                 isOpen={isOpen}
+                onClose={onClose}
                 onToggleCollapse={onToggleCollapse}>
       <button onClick={onClick} className="nx-dropdown-button">
         <NxFontAwesomeIcon icon={faFrog}/>

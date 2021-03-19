@@ -15,16 +15,30 @@ import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import {Props, propTypes} from './types';
 
 import './NxSegmentedButton.scss';
+import useDropdownEvents from '../../util/useDropdownEvents';
 
 const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
     function NxSegmentedButton(props, ref) {
-      const { variant, className, disabled, buttonContent, onClick, children, isOpen, onToggleOpen, ...attrs } = props,
+      const {
+            variant,
+            className,
+            disabled,
+            buttonContent,
+            onClick,
+            children,
+            isOpen,
+            onClose,
+            onToggleCollapse: externalOnToggleCollapse,
+            onKeyDown: externalOnKeyDown,
+            ...attrs
+          } = props,
           classes = classnames('nx-segmented-btn', className, {
             'nx-segmented-btn--open': isOpen
           }),
           wrappedMenuItems = React.Children.map<ReactElement, ReactElement>(children, item => (
             <NxOverflowTooltip>{item}</NxOverflowTooltip>
-          ));
+          )),
+          { onKeyDown, onToggleCollapse } = useDropdownEvents(onClose, externalOnToggleCollapse, externalOnKeyDown);
 
       return (
         <div ref={ref} className={classes} { ...attrs }>
@@ -36,7 +50,8 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
           </NxButton>
           <NxButton variant={variant}
                     className="nx-segmented-btn__dropdown-btn"
-                    onClick={onToggleOpen}
+                    onClick={onToggleCollapse}
+                    onKeyDown={onKeyDown}
                     disabled={disabled || undefined}>
             <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown} />
           </NxButton>

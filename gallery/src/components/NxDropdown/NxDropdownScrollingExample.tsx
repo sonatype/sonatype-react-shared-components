@@ -9,12 +9,13 @@ import React from 'react';
 import { NxDropdown, useToggle } from '@sonatype/react-shared-components';
 
 function NxDropdownNavigationExample() {
-  const [isOpen, onToggleCollapse] = useToggle(false),
+  const [isOpen, onToggleCollapse, , onClose] = useToggle(false),
       onClick = () => { alert('click'); };
 
   return (
     <NxDropdown label="Scrolling - this label also triggers truncation"
                 isOpen={isOpen}
+                onClose={onClose}
                 onToggleCollapse={onToggleCollapse}>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
         Text Link 1

@@ -8,17 +8,12 @@ import React, { FunctionComponent } from 'react';
 
 import NxDropdown from '../NxDropdown';
 import { Props, propTypes } from './types';
-import useDropdownState from '../../../util/useDropdownState';
+import useToggle from '../../../util/useToggle';
 
 const NxStatefulDropdown: FunctionComponent<Props> = function NxStatefulDropdown(props) {
-  const { isOpen, onToggleOpen, handleKeyPress } = useDropdownState();
+  const [isOpen, onToggleCollapse, , onClose] = useToggle(false);
 
-  return (
-    <NxDropdown isOpen={isOpen}
-                onToggleCollapse={onToggleOpen}
-                onKeyDown={handleKeyPress}
-                {...props} />
-  );
+  return <NxDropdown { ...{ isOpen, onToggleCollapse, onClose } } {...props} />;
 };
 NxStatefulDropdown.propTypes = propTypes;
 export default NxStatefulDropdown;

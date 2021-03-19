@@ -8,19 +8,13 @@ import React, { forwardRef } from 'react';
 
 import NxSegmentedButton from '../NxSegmentedButton';
 import { Props, propTypes } from './types';
-import useDropdownState from '../../../util/useDropdownState';
+import useToggle from '../../../util/useToggle';
 
 const NxStatefulSegmentedButton = forwardRef<HTMLDivElement, Props>(
     function NxStatefulSegmentedButton(props, ref) {
-      const { isOpen, onToggleOpen, handleKeyPress } = useDropdownState();
+      const [isOpen, onToggleCollapse, , onClose] = useToggle(false);
 
-      return (
-        <NxSegmentedButton ref={ref}
-                           isOpen={isOpen}
-                           onToggleOpen={onToggleOpen}
-                           onKeyDown={handleKeyPress}
-                           {...props} />
-      );
+      return <NxSegmentedButton ref={ref} { ...{ isOpen, onToggleCollapse, onClose } } { ...props } />;
     }
 );
 

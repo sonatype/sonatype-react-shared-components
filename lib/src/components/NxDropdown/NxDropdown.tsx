@@ -15,6 +15,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
 import './NxDropdown.scss';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+import useDropdownEvents from '../../util/useDropdownEvents';
 
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   const {
@@ -22,12 +23,16 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
     label,
     className,
     isOpen,
-    onToggleCollapse,
+    onClose,
     disabled,
     children,
     toggleTooltip,
+    onToggleCollapse: externalOnToggleCollapse,
+    onKeyDown: externalOnKeyDown,
     ...attrs
   } = props;
+
+  const { onKeyDown, onToggleCollapse } = useDropdownEvents(onClose, externalOnToggleCollapse, externalOnKeyDown);
 
   const buttonClasses = classnames('nx-dropdown__toggle', { disabled, open: isOpen });
 
@@ -52,7 +57,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   );
 
   return (
-    <div className={classes} {...attrs}>
+    <div className={classes} onKeyDown={onKeyDown} {...attrs}>
       { toggleTooltipProps ? <NxTooltip { ...toggleTooltipProps } >{toggle}</NxTooltip> : toggle }
 
       { isOpen &&

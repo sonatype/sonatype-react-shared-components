@@ -9,6 +9,7 @@ import { omit } from 'ramda';
 
 import { Props as NxSegmentedButtonProps, propTypes as nxSegmentedButtonPropTypes } from '../types';
 
-export type Props = Omit<NxSegmentedButtonProps, 'isOpen' | 'onToggleOpen'>;
+export type Props = Omit<NxSegmentedButtonProps, 'isOpen' | 'onToggleCollapse' | 'onClose'>;
 
-export const propTypes: WeakValidationMap<Props> = omit(['isOpen', 'onToggleOpen'], nxSegmentedButtonPropTypes);
+export const propTypes: WeakValidationMap<Props> =
+    omit(['isOpen', 'onToggleCollapse', 'onClose'], nxSegmentedButtonPropTypes);

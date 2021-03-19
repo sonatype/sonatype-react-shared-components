@@ -10,11 +10,11 @@ import { NxDropdown, NxButton, NxFontAwesomeIcon, useToggle } from '@sonatype/re
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function NxDropdownRightButtonsExample() {
-  const [isOpen, onToggleCollapse] = useToggle(false),
+  const [isOpen, onToggleCollapse, , onClose] = useToggle(false),
       onClick = () => { alert('click'); };
 
   return (
-    <NxDropdown label="Navigation" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
+    <NxDropdown label="Navigation" isOpen={isOpen} onClose={onClose} onToggleCollapse={onToggleCollapse}>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
         <span className="nx-dropdown-button-content">Text Link</span>
       </a>
