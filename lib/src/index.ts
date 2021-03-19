@@ -199,7 +199,7 @@ export { default as NxCodeSnippet, Props as NxCodeSnippetProps } from './compone
 
 export { default as useToggle } from './util/useToggle';
 
-export { default as NxNavigationSidebar, Props as NxNavigationSidebarProps }
+export { default as NxGlobalSidebar, Props as NxGlobalSidebarProps }
   from './components/NxGlobalSidebar/NxGlobalSidebar';
 export { default as NxGlobalSidebarNavigation, NxGlobalSidebarNavigationProps }
   from './components/NxGlobalSidebar/NxGlobalSidebarNavigation';
