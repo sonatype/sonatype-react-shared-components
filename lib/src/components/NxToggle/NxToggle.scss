@@ -54,8 +54,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
 }
 
 .nx-toggle__input {
-  margin: 0;
-  margin-left: $nx-spacing-l + $nx-toggle-input-hide-hack-spacing;
+  margin: 0 0 0 ($nx-spacing-l + $nx-toggle-input-hide-hack-spacing);
   width: 0;
   -moz-appearance: none;
 
