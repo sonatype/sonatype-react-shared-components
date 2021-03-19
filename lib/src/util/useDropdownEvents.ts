@@ -17,6 +17,8 @@ import { KeyboardEventHandler, useEffect, useRef } from 'react';
  * onToggleCollapse function to set as the click handler on the dropdown toggle
  */
 export default function useDropdownEvents(
+  isOpen: boolean,
+  disabled: boolean | undefined | null,
   closeDropdown: () => void,
   externalOnToggleCollapse: () => void,
   externalOnKeyDown?: KeyboardEventHandler
@@ -24,7 +26,7 @@ export default function useDropdownEvents(
   const isToggling = useRef(false);
 
   const onKeyDown: KeyboardEventHandler = event => {
-    if (event.key === 'Escape') {
+    if (isOpen && !disabled && event.key === 'Escape') {
       closeDropdown();
     }
 
@@ -34,7 +36,7 @@ export default function useDropdownEvents(
   };
 
   const handleDocumentClick = () => {
-    if (!isToggling.current) {
+    if (isOpen && !isToggling.current) {
       closeDropdown();
     }
 
@@ -42,17 +44,24 @@ export default function useDropdownEvents(
   };
 
   function onToggleCollapse() {
-    isToggling.current = true;
+    if (!disabled) {
+      isToggling.current = true;
+    }
 
     externalOnToggleCollapse();
   }
 
   useEffect(() => {
-    document.addEventListener('click', handleDocumentClick);
-    return function cleanup() {
-      document.removeEventListener('click', handleDocumentClick);
-    };
-  });
+    if (!disabled) {
+      document.addEventListener('click', handleDocumentClick);
+      return function cleanup() {
+        document.removeEventListener('click', handleDocumentClick);
+      };
+    }
+    else {
+      return undefined;
+    }
+  }, [disabled, isOpen]);
 
   return { onKeyDown, onToggleCollapse };
 }
