@@ -364,6 +364,26 @@
   resolved "https://registry.npmjs.org/@sindresorhus/is/-/is-2.1.1.tgz#ceff6a28a5b4867c2dd4a1ba513de278ccbe8bb1"
   integrity sha512-/aPsuoj/1Dw/kzhkgz+ES6TxG0zfTMGLwuK2ZG00k/iJzYHTLCE8mVU8EPqEOp/lmxPoq1C1C9RYToRKb2KEfg==
 
+"@sonatype/commonmark-react-renderer@^4.3.6":
+  version "4.3.6"
+  resolved "https://registry.npmjs.org/@sonatype/commonmark-react-renderer/-/commonmark-react-renderer-4.3.6.tgz#c08e3a812850bcb5e31b321e6f6a7bfb0ab31028"
+  integrity sha512-MA6p6SR9nOCdELtYLOGWBNMHyQOJitIHuu024w77rPAhhV7Ut7//vseoDrypyeHJJf0qJ6wGSc67TC7xkmplsg==
+  dependencies:
+    lodash.assign "^4.2.0"
+    lodash.isplainobject "^4.0.6"
+    pascalcase "^0.1.1"
+    xss-filters "^1.2.6"
+
+"@sonatype/react-commonmark@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/@sonatype/react-commonmark/-/react-commonmark-3.0.1.tgz#a78851614c63b5b10106b7e01b925e67b243ae60"
+  integrity sha512-jI3q4Ss/tn5xMOvU2xyskRgnd1DmsUDqxqrleMrAgg5bA/2QM/3xQ7P4X5qK5pofqCpA34ifaXgeDrkFX5DfoQ==
+  dependencies:
+    "@sonatype/commonmark-react-renderer" "^4.3.6"
+    commonmark "^0.29.1"
+    in-publish "^2.0.0"
+    prop-types "^15.5.10"
+
 "@sonatype/react-shared-components@link:../lib/dist":
   version "0.0.0"
   uid ""
@@ -2119,24 +2139,14 @@ commander@^7.0.0:
   resolved "https://registry.npmjs.org/commander/-/commander-7.0.0.tgz#3e2bbfd8bb6724760980988fb5b22b7ee6b71ab2"
   integrity sha512-ovx/7NkTrnPuIV8sqk/GjUIIM1+iUQeqA3ye2VNpq9sVoiZsooObWlQy+OPWGI17GDaEoybuAGJm6U8yC077BA==
 
-commonmark-react-renderer@^4.3.3:
-  version "4.3.5"
-  resolved "https://registry.npmjs.org/commonmark-react-renderer/-/commonmark-react-renderer-4.3.5.tgz#021df0e855d096273bd0b3add5087fd0362cbd2e"
-  integrity sha512-UwUgplz8kFSMCe9+Dg/BcV75lc7R/V6mvMYJq2p29i5aaIBd0252k9HeSGa2VtEPHfg2/trS9qC7iAxnO7r6ng==
+commonmark@^0.29.1:
+  version "0.29.3"
+  resolved "https://registry.npmjs.org/commonmark/-/commonmark-0.29.3.tgz#bb1d5733bfe3ea213b412f33f16439cc12999c2c"
+  integrity sha512-fvt/NdOFKaL2gyhltSy6BC4LxbbxbnPxBMl923ittqO/JBM0wQHaoYZliE4tp26cRxX/ZZtRsJlZzQrVdUkXAA==
   dependencies:
-    lodash.assign "^4.2.0"
-    lodash.isplainobject "^4.0.6"
-    pascalcase "^0.1.1"
-    xss-filters "^1.2.6"
-
-commonmark@^0.27.0:
-  version "0.27.0"
-  resolved "https://registry.npmjs.org/commonmark/-/commonmark-0.27.0.tgz#d86c262b962821e9483c69c547bc58840c047b34"
-  integrity sha1-2GwmK5YoIelIPGnFR7xYhAwEezQ=
-  dependencies:
-    entities "~ 1.1.1"
-    mdurl "~ 1.0.1"
-    minimist "~ 1.2.0"
+    entities "~2.0"
+    mdurl "~1.0.1"
+    minimist ">=1.2.2"
     string.prototype.repeat "^0.2.0"
 
 component-emitter@^1.2.1:
@@ -2835,10 +2845,10 @@ enquirer@^2.3.5, enquirer@^2.3.6:
   dependencies:
     ansi-colors "^4.1.1"
 
-"entities@~ 1.1.1":
-  version "1.1.2"
-  resolved "https://registry.npmjs.org/entities/-/entities-1.1.2.tgz#bdfa735299664dfafd34529ed4f8522a275fea56"
-  integrity sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w==
+entities@~2.0:
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/entities/-/entities-2.0.3.tgz#5c487e5742ab93c15abb5da22759b8590ec03b7f"
+  integrity sha512-MyoZ0jgnLvB2X3Lg5HqpFmn1kybDiIfEQmKzTb5apr51Rb+T3KdmMiqa70T+bhGnyv7bQ6WMj2QMHpGMmlrUYQ==
 
 env-paths@^2.2.0:
   version "2.2.0"
@@ -5323,7 +5333,7 @@ mdn-data@2.0.6:
   resolved "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.6.tgz#852dc60fcaa5daa2e8cf6c9189c440ed3e042978"
   integrity sha512-rQvjv71olwNHgiTbfPZFkJtjNMciWgswYeciZhtvWLO8bmX3TnhyA62I6sTWOyZssWHJJjY6/KiWwqQsWWsqOA==
 
-"mdurl@~ 1.0.1":
+mdurl@~1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
   integrity sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=
@@ -5514,7 +5524,7 @@ minimatch@3.0.4, minimatch@^3.0.2, minimatch@^3.0.4, minimatch@~3.0.2:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.5, "minimist@~ 1.2.0":
+minimist@>=1.2.2, minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"
   resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
@@ -6662,16 +6672,6 @@ rc@^1.2.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
-
-react-commonmark@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/react-commonmark/-/react-commonmark-3.0.0.tgz#b396453e0e50f02e9ae1aad604a32c1394e7fc3d"
-  integrity sha1-s5ZFPg5Q8C6a4arWBKMsE5Tn/D0=
-  dependencies:
-    commonmark "^0.27.0"
-    commonmark-react-renderer "^4.3.3"
-    in-publish "^2.0.0"
-    prop-types "^15.5.10"
 
 react-dom@^17.0.1:
   version "17.0.1"
