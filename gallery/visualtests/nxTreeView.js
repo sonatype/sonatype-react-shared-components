@@ -90,7 +90,7 @@ describe('NxTreeView', function() {
     it('looks right with top level expanded', simpleExpandedTest(nestedTreeViewParentSelector));
 
     it('looks right with child expanded', async function() {
-      const parentToggle = browser.$(nestedTreeViewParentSelector);
+      const parentToggle = await browser.$(nestedTreeViewParentSelector);
 
       await parentToggle.click();
       await expandTreeView(nestedTreeViewChildSelector);
