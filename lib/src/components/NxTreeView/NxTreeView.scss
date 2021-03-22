@@ -26,7 +26,7 @@ $twisty-proportion-difference: 2px;
 }
 
 .nx-tree-view--expanded {
-  .nx-tree-view__twisty {
+  > .nx-tree-view__trigger > .nx-tree-view__twisty {
     transform: rotate(90deg);
     padding: 0 $twisty-proportion-difference;
   }
