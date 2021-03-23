@@ -97,44 +97,4 @@ describe('useToggle', function() {
     component.find('#set-false').simulate('click');
     expect(component.find('p')).toHaveText('false');
   });
-
-  it('returns a tuple who\'s fourth value is a function that sets the state to false', function() {
-    function Fixture() {
-      const [val, , , setFalse] = useToggle(true);
-
-      return (
-        <>
-          <p>{val.toString()}</p>
-          <button id="set-false" onClick={setFalse} />
-        </>
-      );
-    }
-
-    const component = shallow(<Fixture />);
-
-    expect(component.find('p')).toHaveText('true');
-
-    component.find('#set-false').simulate('click');
-    expect(component.find('p')).toHaveText('false');
-  });
-
-  it('returns a tuple who\'s fifth value is a function that sets the state to true', function() {
-    function Fixture() {
-      const [val, , , , setTrue] = useToggle(false);
-
-      return (
-        <>
-          <p>{val.toString()}</p>
-          <button id="set-true" onClick={setTrue} />
-        </>
-      );
-    }
-
-    const component = shallow(<Fixture />);
-
-    expect(component.find('p')).toHaveText('false');
-
-    component.find('#set-true').simulate('click');
-    expect(component.find('p')).toHaveText('true');
-  });
 });
