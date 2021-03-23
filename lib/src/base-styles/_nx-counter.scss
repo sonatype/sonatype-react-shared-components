@@ -8,7 +8,7 @@
 .nx-counter {
   @include semi-bold();
 
-  background-color: #fff;
+  background-color: $nx-white;
   border: 1px solid $nx-blue-1000;
   border-radius: 12px;
   color: $nx-text-color-dark;
@@ -23,6 +23,6 @@
   &.nx-counter--active {
     background-color: $nx-blue-1000;
     border-color: $nx-blue-1000;
-    color: #fff;
+    color: $nx-white;
   }
 }

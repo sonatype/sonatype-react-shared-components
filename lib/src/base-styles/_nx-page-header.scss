@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-$main-header-background: $nx-off-white;
+$main-header-background: $nx-white;
 $main-header-color: $nx-off-black;
 $main-header-product-height: 52px;
 $main-header-product-title-row-height: 2fr;
@@ -113,7 +113,7 @@ $main-header-product-version-row-height: 1fr;
   white-space: nowrap;
 
   &::before {
-    color: #000;
+    color: $nx-black;
     content: "|";
     display: inline-block;
     font-size: 21px;
