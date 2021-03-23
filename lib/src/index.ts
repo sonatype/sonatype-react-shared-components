@@ -209,3 +209,5 @@ export { default as NxStatefulGlobalSidebar, Props as NxStatefulGlobalSidebarPro
   from './components/NxGlobalSidebar/stateful/NxStatefulGlobalSidebar';
 
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
+
+export * from './util/idUtil';

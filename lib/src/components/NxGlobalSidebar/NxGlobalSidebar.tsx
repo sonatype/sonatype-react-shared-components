@@ -9,7 +9,7 @@ import classnames from 'classnames';
 
 import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { useRandomId } from '../../util/idUtil';
+import { useUniqueId } from '../../util/idUtil';
 import { Props, propTypes } from './types';
 
 import './NxGlobalSidebar.scss';
@@ -27,7 +27,7 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
     logoLink
   } = props;
 
-  const id = useRandomId('nx-global-sidebar');
+  const id = useUniqueId('nx-global-sidebar');
 
   const classes = classnames(className, 'nx-global-sidebar', {
     'open': isOpen,
