@@ -27,7 +27,7 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
             onClick,
             children,
             isOpen,
-            onToggleCollapse: externalOnToggleCollapse,
+            onToggleOpen: externalOnToggleCollapse,
             onKeyDown: externalOnKeyDown,
             ...attrs
           } = props,

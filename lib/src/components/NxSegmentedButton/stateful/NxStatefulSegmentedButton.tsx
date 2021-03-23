@@ -12,9 +12,9 @@ import useToggle from '../../../util/useToggle';
 
 const NxStatefulSegmentedButton = forwardRef<HTMLDivElement, Props>(
     function NxStatefulSegmentedButton(props, ref) {
-      const [isOpen, onToggleCollapse] = useToggle(false);
+      const [isOpen, onToggleOpen] = useToggle(false);
 
-      return <NxSegmentedButton ref={ref} { ...{ isOpen, onToggleCollapse } } { ...props } />;
+      return <NxSegmentedButton ref={ref} { ...{ isOpen, onToggleOpen } } { ...props } />;
     }
 );
 
