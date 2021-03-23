@@ -26,7 +26,7 @@ describe('NxButton', function() {
   });
 
   it('renders a secondary button by default', function() {
-    const button = shallow(<NxButton variant="secondary">Secondary Button</NxButton>);
+    const button = shallow(<NxButton>Secondary Button</NxButton>);
 
     expect(button).toHaveClassName('.nx-btn--secondary');
   });
