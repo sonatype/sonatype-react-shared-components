@@ -85,7 +85,11 @@ const NxDropdownPage = () =>
               <td className="nx-cell">onToggleCollapse</td>
               <td className="nx-cell">function</td>
               <td className="nx-cell">No</td>
-              <td className="nx-cell">A function to execute whenever the dropdown is toggled.</td>
+              <td className="nx-cell">
+                A function to execute whenever the dropdown is toggled. This toggling occurs when the dropdown button
+                is clicked and also, if the dropdown is currently open, whenever a click occurs anywhere on the
+                screen and any time the ESC key is pressed while focus is within the dropdown.
+              </td>
             </tr>
             <tr className="nx-table-row">
               <td className="nx-cell">toggleTooltip</td>
