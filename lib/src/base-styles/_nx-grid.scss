@@ -62,7 +62,7 @@
 }
 
 .nx-grid-h-keyline--white {
-  border-color: $nx-off-white;
+  border-color: $nx-white;
 }
 
 .nx-grid-col--noborder {
@@ -108,7 +108,7 @@ h2.nx-grid-header__title {
 }
 
 .nx-grid-header__hrule {
-  border: 0 solid $nx-grey-4;
+  border: 0 solid $nx-grey-300;
   border-bottom-width: 1px;
   margin: 0;
   padding-top: 9px;
