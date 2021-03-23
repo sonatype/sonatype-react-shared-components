@@ -10,7 +10,9 @@ import { NxDropdown } from '@sonatype/react-shared-components';
 
 function NxDropdownDisabledExample() {
   return (
-    <NxDropdown label="Disabled Dropdown!" isOpen={false} onToggleCollapse={() => {}} disabled={true} />
+    <NxDropdown label="Disabled Dropdown!"
+                isOpen={false}
+                disabled={true} />
   );
 }
 
