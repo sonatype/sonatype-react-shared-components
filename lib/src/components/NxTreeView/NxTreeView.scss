@@ -40,7 +40,7 @@ $twisty-proportion-difference: 2px;
 
 .nx-tree-view--disabled {
   .nx-tree-view__trigger, .nx-tree-view__child {
-    color: $nx-grey-4;
+    color: $nx-grey-300;
     cursor: default;
   }
 }
@@ -157,7 +157,7 @@ button, a {
     width: 100%;
 
     &:hover {
-      background-color: #f1f3fa;
+      background-color: $nx-grey-100;
     }
 
     &.selected {
@@ -183,7 +183,7 @@ button, a {
 
       &.selected {
         background-color: $nx-blue-1000;
-        color: #fff;
+        color: $nx-white;
       }
     }
   }
