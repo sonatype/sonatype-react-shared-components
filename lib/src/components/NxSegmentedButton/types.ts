@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { WeakValidationMap, ReactElement, HTMLAttributes, MouseEvent, ReactNode } from 'react';
+import { ReactElement, HTMLAttributes, MouseEvent, ReactNode } from 'react';
 import { without } from 'ramda';
 
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../NxButton/types';
@@ -29,9 +29,12 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
   disabled?: boolean | null;
 }
 
-export const propTypes: WeakValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   variant: PropTypes.oneOf(NX_SEGMENTED_BUTTON_VARIANTS).isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element.isRequired,
+    PropTypes.arrayOf(PropTypes.element.isRequired).isRequired
+  ]).isRequired,
   buttonContent: PropTypes.node.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onToggleOpen: PropTypes.func.isRequired,

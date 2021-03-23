@@ -75,6 +75,9 @@ export default function NxSegmentedButtonPage() {
               <NxTableCell></NxTableCell>
               <NxTableCell>
                 Callback function called when the dropdown toggle segment of the button is activated.
+                This activation occurs when the dropdown button
+                is clicked and also, if the dropdown is currently open, whenever a click occurs anywhere on the
+                screen and any time the ESC key is pressed while focus is within the dropdown.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
