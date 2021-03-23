@@ -194,4 +194,5 @@ describe('NxStatefulSegmentedButton', () => {
 
     expect(ref.current).toBe(div.getDOMNode());
   });
+
 });
