@@ -9,7 +9,6 @@ import { KeyboardEventHandler, useEffect, useRef } from 'react';
 /**
  * Dropdown global event handling, abstracted into a hook for use in various dropdown-like
  * components (e.g. NxDropdown and NxSegmentedButton)
- * @param closeDropdown - A function that, when called, sets whatever state is necessary to close the dropdown
  * @param externalOnToggleCollapse - The onToggleCollapse function that was provided from outside of the component
  * @param externalOnKeyDown - Any onKeyDown function that might have been provided from outside of the component
  * @return Object containing the following:
@@ -19,7 +18,6 @@ import { KeyboardEventHandler, useEffect, useRef } from 'react';
 export default function useDropdownEvents(
   isOpen: boolean,
   disabled: boolean | undefined | null,
-  closeDropdown: () => void,
   externalOnToggleCollapse: () => void,
   externalOnKeyDown?: KeyboardEventHandler
 ) {
@@ -27,7 +25,7 @@ export default function useDropdownEvents(
 
   const onKeyDown: KeyboardEventHandler = event => {
     if (isOpen && !disabled && event.key === 'Escape') {
-      closeDropdown();
+      externalOnToggleCollapse();
     }
 
     if (externalOnKeyDown) {
@@ -37,7 +35,7 @@ export default function useDropdownEvents(
 
   const handleDocumentClick = () => {
     if (isOpen && !isToggling.current) {
-      closeDropdown();
+      externalOnToggleCollapse();
     }
 
     isToggling.current = false;

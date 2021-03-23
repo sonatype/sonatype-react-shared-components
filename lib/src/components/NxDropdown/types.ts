@@ -18,7 +18,6 @@ export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
   children?: ReactElement | ReactElement[] | null;
   disabled?: boolean | null;
   onToggleCollapse: (() => void);
-  onClose: (() => void);
   toggleTooltip?: TooltipConfigProps | string | null;
 };
 
@@ -36,6 +35,5 @@ export const propTypes: WeakValidationMap<Props> = {
   ]),
   disabled: PropTypes.bool,
   onToggleCollapse: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
   toggleTooltip: PropTypes.oneOfType([tooltipPropTypesShape, PropTypes.string])
 };

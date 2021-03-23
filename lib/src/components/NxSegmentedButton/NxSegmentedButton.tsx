@@ -27,7 +27,6 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
             onClick,
             children,
             isOpen,
-            onClose,
             onToggleCollapse: externalOnToggleCollapse,
             onKeyDown: externalOnKeyDown,
             ...attrs
@@ -39,7 +38,7 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
             <NxOverflowTooltip>{item}</NxOverflowTooltip>
           )),
           { onKeyDown, onToggleCollapse } =
-              useDropdownEvents(isOpen, disabled, onClose, externalOnToggleCollapse, externalOnKeyDown);
+              useDropdownEvents(isOpen, disabled, externalOnToggleCollapse, externalOnKeyDown);
 
       return (
         <div ref={ref} className={classes} onKeyDown={onKeyDown} { ...attrs }>

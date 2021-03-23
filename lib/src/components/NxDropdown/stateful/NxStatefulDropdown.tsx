@@ -11,9 +11,9 @@ import { Props, propTypes } from './types';
 import useToggle from '../../../util/useToggle';
 
 const NxStatefulDropdown: FunctionComponent<Props> = function NxStatefulDropdown(props) {
-  const [isOpen, onToggleCollapse, , onClose] = useToggle(false);
+  const [isOpen, onToggleCollapse] = useToggle(false);
 
-  return <NxDropdown { ...{ isOpen, onToggleCollapse, onClose } } {...props} />;
+  return <NxDropdown { ...{ isOpen, onToggleCollapse } } {...props} />;
 };
 NxStatefulDropdown.propTypes = propTypes;
 export default NxStatefulDropdown;

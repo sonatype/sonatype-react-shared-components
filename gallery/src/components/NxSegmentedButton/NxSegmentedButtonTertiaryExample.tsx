@@ -9,7 +9,7 @@ import React from 'react';
 import { NxSegmentedButton, NxButton, useToggle } from '@sonatype/react-shared-components';
 
 export default function NxSegmentedButtonTertiaryExample() {
-  const [isOpen, onToggleCollapse, , onClose] = useToggle(false);
+  const [isOpen, onToggleCollapse] = useToggle(false);
 
   function onMainClick() {
     alert('Clicked the main button!');
@@ -19,7 +19,6 @@ export default function NxSegmentedButtonTertiaryExample() {
     <div className="nx-btn-bar">
       <NxSegmentedButton variant="tertiary"
                          isOpen={isOpen}
-                         onClose={onClose}
                          onToggleCollapse={onToggleCollapse}
                          onClick={onMainClick}
                          buttonContent="Click Here">
@@ -34,7 +33,6 @@ export default function NxSegmentedButtonTertiaryExample() {
       <NxSegmentedButton disabled
                          variant="tertiary"
                          isOpen={false}
-                         onClose={() => {}}
                          onToggleCollapse={() => {}}
                          onClick={() => {}}
                          buttonContent="Disabled Primary Button">

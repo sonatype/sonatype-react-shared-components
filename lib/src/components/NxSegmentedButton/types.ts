@@ -25,7 +25,6 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
   buttonContent: ReactNode;
   isOpen: boolean;
   onToggleCollapse: () => void;
-  onClose: () => void;
   onClick: (evt: MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean | null;
 }
@@ -39,7 +38,6 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   buttonContent: PropTypes.node.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onToggleCollapse: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   disabled: PropTypes.bool
 };

@@ -9,11 +9,11 @@ import React from 'react';
 import { NxDropdown, useToggle } from '@sonatype/react-shared-components';
 
 function NxDropdownNavigationExample() {
-  const [isOpen, onToggleCollapse, , onClose] = useToggle(false),
+  const [isOpen, onToggleCollapse] = useToggle(false),
       onClick = () => { alert('click'); };
 
   return (
-    <NxDropdown label="Navigation" isOpen={isOpen} onClose={onClose} onToggleCollapse={onToggleCollapse}>
+    <NxDropdown label="Navigation" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
       <a onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
         Text link 1
       </a>

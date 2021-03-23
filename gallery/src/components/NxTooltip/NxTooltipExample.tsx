@@ -29,7 +29,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import './NxTooltipExample.scss';
 
 const NxTooltipExample = () => {
-  const [isOpen, toggle, , onClose] = useToggle(false);
+  const [isOpen, toggle] = useToggle(false);
 
   return (
     <>
@@ -115,7 +115,6 @@ const NxTooltipExample = () => {
         <NxDropdown variant="tertiary"
                     label="Dropdown!"
                     isOpen={isOpen}
-                    onClose={onClose}
                     toggleTooltip="NxDropdown tooltip"
                     onToggleCollapse={toggle}>
           <NxTooltip title="item 1" placement="top">
