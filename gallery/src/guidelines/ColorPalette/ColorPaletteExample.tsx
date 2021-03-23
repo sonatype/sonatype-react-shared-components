@@ -19,7 +19,7 @@ interface ColorInfo {
 const swatchFile: string[] = swatchSCSS.split('\n');
 
 const swatchLines = swatchFile.map(line => {
-  const matchResults = /^\s*(\$nx-(\w+)-\d+):\s*#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8});$/.exec(line);
+  const matchResults = /^\s*(\$nx-(\w+)-\d+):\s*(hsla\(([\d%]+,\s*){3}[\d%]+\));$/.exec(line);
 
   if (matchResults) {
     return {colorVariable: matchResults[1], colorName: matchResults[2], colorHex: matchResults[3]};
@@ -42,9 +42,9 @@ export default function Swatcher() {
           <div className="nx-card__content">
             {colors.map(({colorVariable, colorHex}) =>
               <div className="gallery-swatch" key={colorHex}>
-                <div className="gallery-swatch__thumb" style={{backgroundColor: `#${colorHex}`}}></div>
+                <div className="gallery-swatch__thumb" style={{backgroundColor: `${colorHex}`}}></div>
                 <div className="gallery-swatch__hex">
-                  #{colorHex}
+                  {colorHex}
                 </div>
                 <div className="gallery-swatch__variable">
                   {colorVariable}
