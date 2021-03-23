@@ -18,13 +18,13 @@ import { KeyboardEventHandler, useEffect, useRef } from 'react';
 export default function useDropdownEvents(
   isOpen: boolean,
   disabled: boolean | undefined | null,
-  externalOnToggleCollapse: () => void,
+  externalOnToggleCollapse?: (() => void) | null,
   externalOnKeyDown?: KeyboardEventHandler
 ) {
   const isToggling = useRef(false);
 
   const onKeyDown: KeyboardEventHandler = event => {
-    if (isOpen && !disabled && event.key === 'Escape') {
+    if (isOpen && !disabled && event.key === 'Escape' && externalOnToggleCollapse) {
       externalOnToggleCollapse();
     }
 
@@ -34,7 +34,7 @@ export default function useDropdownEvents(
   };
 
   const handleDocumentClick = () => {
-    if (isOpen && !isToggling.current) {
+    if (isOpen && !isToggling.current && externalOnToggleCollapse) {
       externalOnToggleCollapse();
     }
 
@@ -46,7 +46,9 @@ export default function useDropdownEvents(
       isToggling.current = true;
     }
 
-    externalOnToggleCollapse();
+    if (externalOnToggleCollapse) {
+      externalOnToggleCollapse();
+    }
   }
 
   useEffect(() => {
