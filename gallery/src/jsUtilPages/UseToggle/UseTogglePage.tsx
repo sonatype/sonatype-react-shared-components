@@ -9,11 +9,9 @@ import { GalleryExampleTile, GalleryDescriptionTile } from '../../gallery-compon
 
 import UseToggleExample from './UseToggleExample';
 import UseToggleThirdItemExample from './UseToggleThirdItemExample';
-import UseToggleFourthFifthItemExample from './UseToggleFourthFifthItemExample';
 
 const useToggleExampleCode = require('./UseToggleExample?raw'),
-    useToggleThirdItemExampleCode = require('./UseToggleThirdItemExample?raw'),
-    useToggleFourthFifthItemExampleCode = require('./UseToggleFourthFifthItemExample?raw');
+    useToggleThirdItemExampleCode = require('./UseToggleThirdItemExample?raw');
 
 const UseTogglePage = () =>
   <>
@@ -29,15 +27,11 @@ const UseTogglePage = () =>
       <p className="nx-p">
         Whereas <code className="nx-code">useState</code> returns a pair containing two items: the current state
         value and a setter function which receives the new value as a parameter,{' '}
-        <code className="nx-code">useToggle</code> returns a tuple of five items. The first item is still the
+        <code className="nx-code">useToggle</code> returns a tuple of three items. The first item is still the
         state value. The second however is a parameterless function that, when called, will update the state
         value to be the opposite of what it currently is. Then the third item is the manual update function
-        analogous to <code className="nx-code">useState</code>'s second item. The fourth item is a parameterless
-        function that always sets the state value to false - useful as
-        an <code className="nx-code">onClose</code> handler for a dropdown for instance. Finally, the fifth item
-        is a parameterless function that always sets the state value to true – just for the sake of convenience.
-        In common usage, the third - fifth items would often not be used, but they are provided for the rare situations
-        that call for them.
+        analogous to <code className="nx-code">useState</code>'s second item. In common usage, the third
+        item would often not be used, but it is provided in cases there are rare situations that call for it.
       </p>
 
       <p className="nx-p">
@@ -63,14 +57,7 @@ const UseTogglePage = () =>
                         liveExample={UseToggleThirdItemExample}
                         codeExamples={useToggleThirdItemExampleCode}>
       This example demonstrates the usage of the third return item
-      from <code className="nx-code">useToggle</code> as a means to explicitly set the state value.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Fourth and Fifth Item Example"
-                        liveExample={UseToggleFourthFifthItemExample}
-                        codeExamples={useToggleFourthFifthItemExampleCode}>
-      This example demonstrates the usage of the third return item
-      from <code className="nx-code">useToggle</code> as a means to explicitly set the state value.
+      from <code className="nx-code">useToggle</code> as a means to manually set the state value.
     </GalleryExampleTile>
   </>;
 

@@ -11,19 +11,13 @@ import { useToggle, NxButton, NxCheckbox } from '@sonatype/react-shared-componen
 export default function UseToggleThirdItemExample() {
   const [checked, toggleChecked, setChecked] = useToggle(false);
 
-  function randomSetChecked() {
-    const checkIt = Math.random() >= 0.5;
-
-    setChecked(checkIt);
-  }
-
   return (
     <div>
       <NxCheckbox isChecked={checked} onChange={toggleChecked}>
         Checkbox brought to you by <code className="nx-code">useToggle</code>
       </NxCheckbox>
       <br/>
-      <NxButton onClick={randomSetChecked}>Randomly Set Checkbox</NxButton>
+      <NxButton onClick={() => setChecked(false)}>Reset Checkbox</NxButton>
     </div>
   );
 }
