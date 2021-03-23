@@ -20,8 +20,7 @@ describe('NxDropdown', () => {
   const minimalProps = {
         label: 'dropdown',
         isOpen: false,
-        onToggleCollapse: () => {},
-        onClose: () => {}
+        onToggleCollapse: () => {}
       },
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxDropdown, minimalProps),
       getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxDropdown, minimalProps);
@@ -78,15 +77,6 @@ describe('NxDropdown', () => {
     expect(component).toHaveClassName('nx-dropdown class1 class2');
   });
 
-  it('calls onToggleCollapse every time the dropdown is toggled', function() {
-    const toggleFn = jest.fn(),
-        component = getShallowComponent({ onToggleCollapse: toggleFn }),
-        button = component.find(NxButton);
-
-    button.simulate('click');
-    expect(toggleFn).toHaveBeenCalled();
-  });
-
   it('disables the button (and the toggle fn) when the disabled prop is supplied', function() {
     const toggleFn = jest.fn(),
         component = getShallowComponent({ onToggleCollapse: toggleFn, disabled: true }),
@@ -127,26 +117,11 @@ describe('NxDropdown', () => {
     );
   });
 
-  it('calls onClose if a click happens anywhere when the dropdown is already open', function() {
-    const onClose = jest.fn(),
-        component = getMountedComponent({ onClose, isOpen: true }, { attachTo: container });
+  it('calls onToggleCollapse if a click happens anywhere when the dropdown is already open', function() {
+    const onToggleCollapse = jest.fn(),
+        component = getMountedComponent({ onToggleCollapse, isOpen: true }, { attachTo: container });
 
-    expect(onClose).not.toHaveBeenCalled();
-
-    act(() => {
-      document.dispatchEvent(new MouseEvent('click', {
-        bubbles: true
-      }));
-    });
-    component!.update();
-    expect(onClose).toHaveBeenCalled();
-  });
-
-  it('does not call onClose if a click happens anywhere when the dropdown is closed', function() {
-    const onClose = jest.fn(),
-        component = getMountedComponent({ onClose }, { attachTo: container });
-
-    expect(onClose).not.toHaveBeenCalled();
+    expect(onToggleCollapse).not.toHaveBeenCalled();
 
     act(() => {
       document.dispatchEvent(new MouseEvent('click', {
@@ -154,14 +129,14 @@ describe('NxDropdown', () => {
       }));
     });
     component!.update();
-    expect(onClose).not.toHaveBeenCalled();
+    expect(onToggleCollapse).toHaveBeenCalled();
   });
 
-  it('does not call onClose if a click happens anywhere when the dropdown is disabled', function() {
-    const onClose = jest.fn(),
-        component = getMountedComponent({ onClose, isOpen: true, disabled: true }, { attachTo: container });
+  it('does not call onToggleCollapse if a click happens anywhere when the dropdown is closed', function() {
+    const onToggleCollapse = jest.fn(),
+        component = getMountedComponent({ onToggleCollapse }, { attachTo: container });
 
-    expect(onClose).not.toHaveBeenCalled();
+    expect(onToggleCollapse).not.toHaveBeenCalled();
 
     act(() => {
       document.dispatchEvent(new MouseEvent('click', {
@@ -169,14 +144,29 @@ describe('NxDropdown', () => {
       }));
     });
     component!.update();
-    expect(onClose).not.toHaveBeenCalled();
+    expect(onToggleCollapse).not.toHaveBeenCalled();
   });
 
-  it('does not call onClose during the click that opens the dropdown', function() {
-    const onClose = jest.fn(),
-        component = getMountedComponent({ onClose }, { attachTo: container });
+  it('does not call onToggleCollapse if a click happens anywhere when the dropdown is disabled', function() {
+    const onToggleCollapse = jest.fn(),
+        component = getMountedComponent({ onToggleCollapse, isOpen: true, disabled: true }, { attachTo: container });
 
-    expect(onClose).not.toHaveBeenCalled();
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+
+    act(() => {
+      document.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+  });
+
+  it('calls onToggleCollapse once when clicking to open the dropdown', function() {
+    const onToggleCollapse = jest.fn(),
+        component = getMountedComponent({ onToggleCollapse }, { attachTo: container });
+
+    expect(onToggleCollapse).not.toHaveBeenCalled();
 
     act(() => {
       component!.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', {
@@ -184,34 +174,51 @@ describe('NxDropdown', () => {
       }));
     });
     component!.update();
-    expect(onClose).not.toHaveBeenCalled();
+    expect(onToggleCollapse).toHaveBeenCalledTimes(1);
   });
 
-  it('calls onClose if ESC is pressed within the component while the dropdown is open', function() {
-    const onClose = jest.fn(),
-        component = getShallowComponent({ onClose, isOpen: true });
+  it('calls onToggleCollapse once when clicking to close the dropdown', function() {
+    const onToggleCollapse = jest.fn(),
+        component = getMountedComponent({ onToggleCollapse, isOpen: true }, { attachTo: container });
+
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+
+    act(() => {
+      component!.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleCollapse).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onToggleCollapse if ESC is pressed within the component while the dropdown is open', function() {
+    const onToggleCollapse = jest.fn(),
+        component = getShallowComponent({ onToggleCollapse, isOpen: true });
 
     component.simulate('keyDown', { key: 'Escape' });
-    expect(onClose).toHaveBeenCalled();
+    expect(onToggleCollapse).toHaveBeenCalled();
   });
 
-  it('does not call onClose if ESC is pressed within the component when the dropdown is closed', function() {
-    const onClose = jest.fn(),
-        component = getShallowComponent({ onClose });
+  it('does not call onToggleCollapse if ESC is pressed within the component when the dropdown is closed', function() {
+    const onToggleCollapse = jest.fn(),
+        component = getShallowComponent({ onToggleCollapse });
 
-    expect(onClose).not.toHaveBeenCalled();
+    expect(onToggleCollapse).not.toHaveBeenCalled();
 
     component.simulate('keyDown', { key: 'Escape' });
-    expect(onClose).not.toHaveBeenCalled();
+    expect(onToggleCollapse).not.toHaveBeenCalled();
   });
 
-  it('does not call onClose if ESC is pressed within the component when the component is disabled', function() {
-    const onClose = jest.fn(),
-        component = getShallowComponent({ onClose, isOpen: true, disabled: true });
+  it('does not call onToggleCollapse if ESC is pressed within the component when the component is disabled',
+      function() {
+        const onToggleCollapse = jest.fn(),
+            component = getShallowComponent({ onToggleCollapse, isOpen: true, disabled: true });
 
-    expect(onClose).not.toHaveBeenCalled();
+        expect(onToggleCollapse).not.toHaveBeenCalled();
 
-    component.simulate('keyDown', { key: 'Escape' });
-    expect(onClose).not.toHaveBeenCalled();
-  });
+        component.simulate('keyDown', { key: 'Escape' });
+        expect(onToggleCollapse).not.toHaveBeenCalled();
+      }
+  );
 });
