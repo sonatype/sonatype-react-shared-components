@@ -719,6 +719,26 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@sonatype/commonmark-react-renderer@^4.3.6":
+  version "4.3.6"
+  resolved "https://registry.npmjs.org/@sonatype/commonmark-react-renderer/-/commonmark-react-renderer-4.3.6.tgz#c08e3a812850bcb5e31b321e6f6a7bfb0ab31028"
+  integrity sha512-MA6p6SR9nOCdELtYLOGWBNMHyQOJitIHuu024w77rPAhhV7Ut7//vseoDrypyeHJJf0qJ6wGSc67TC7xkmplsg==
+  dependencies:
+    lodash.assign "^4.2.0"
+    lodash.isplainobject "^4.0.6"
+    pascalcase "^0.1.1"
+    xss-filters "^1.2.6"
+
+"@sonatype/react-commonmark@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/@sonatype/react-commonmark/-/react-commonmark-3.0.1.tgz#a78851614c63b5b10106b7e01b925e67b243ae60"
+  integrity sha512-jI3q4Ss/tn5xMOvU2xyskRgnd1DmsUDqxqrleMrAgg5bA/2QM/3xQ7P4X5qK5pofqCpA34ifaXgeDrkFX5DfoQ==
+  dependencies:
+    "@sonatype/commonmark-react-renderer" "^4.3.6"
+    commonmark "^0.29.1"
+    in-publish "^2.0.0"
+    prop-types "^15.5.10"
+
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.7":
   version "7.1.12"
   resolved "https://registry.npmjs.org/@types/babel__core/-/babel__core-7.1.12.tgz#4d8e9e51eb265552a7e4f1ff2219ab6133bdfb2d"
@@ -888,7 +908,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@^16", "@types/react@^16.0.0", "@types/react@*":
+"@types/react@*", "@types/react@^16", "@types/react@^16.0.0":
   version "16.14.3"
   resolved "https://registry.npmjs.org/@types/react/-/react-16.14.3.tgz#f5210f5deecf35d8794845549c93c2c3ad63aa9c"
   integrity sha512-zPrXn03hmPYqh9DznqSFQsoRtrQ4aHgnZDO+hMGvsE/PORvDTdJCHQ6XvJV31ic+0LzF73huPFXUb++W6Kri0Q==
@@ -2004,24 +2024,14 @@ commander@^6.2.0:
   resolved "https://registry.npmjs.org/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
   integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
 
-commonmark-react-renderer@^4.3.3:
-  version "4.3.5"
-  resolved "https://registry.npmjs.org/commonmark-react-renderer/-/commonmark-react-renderer-4.3.5.tgz#021df0e855d096273bd0b3add5087fd0362cbd2e"
-  integrity sha512-UwUgplz8kFSMCe9+Dg/BcV75lc7R/V6mvMYJq2p29i5aaIBd0252k9HeSGa2VtEPHfg2/trS9qC7iAxnO7r6ng==
+commonmark@^0.29.1:
+  version "0.29.3"
+  resolved "https://registry.npmjs.org/commonmark/-/commonmark-0.29.3.tgz#bb1d5733bfe3ea213b412f33f16439cc12999c2c"
+  integrity sha512-fvt/NdOFKaL2gyhltSy6BC4LxbbxbnPxBMl923ittqO/JBM0wQHaoYZliE4tp26cRxX/ZZtRsJlZzQrVdUkXAA==
   dependencies:
-    lodash.assign "^4.2.0"
-    lodash.isplainobject "^4.0.6"
-    pascalcase "^0.1.1"
-    xss-filters "^1.2.6"
-
-commonmark@^0.27.0:
-  version "0.27.0"
-  resolved "https://registry.npmjs.org/commonmark/-/commonmark-0.27.0.tgz#d86c262b962821e9483c69c547bc58840c047b34"
-  integrity sha1-2GwmK5YoIelIPGnFR7xYhAwEezQ=
-  dependencies:
-    entities "~ 1.1.1"
-    mdurl "~ 1.0.1"
-    minimist "~ 1.2.0"
+    entities "~2.0"
+    mdurl "~1.0.1"
+    minimist ">=1.2.2"
     string.prototype.repeat "^0.2.0"
 
 component-emitter@^1.2.1:
@@ -2493,10 +2503,10 @@ entities@^2.0.0, entities@~2.1.0:
   resolved "https://registry.npmjs.org/entities/-/entities-2.1.0.tgz#992d3129cf7df6870b96c57858c249a120f8b8b5"
   integrity sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==
 
-"entities@~ 1.1.1":
-  version "1.1.2"
-  resolved "https://registry.npmjs.org/entities/-/entities-1.1.2.tgz#bdfa735299664dfafd34529ed4f8522a275fea56"
-  integrity sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w==
+entities@~2.0:
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/entities/-/entities-2.0.3.tgz#5c487e5742ab93c15abb5da22759b8590ec03b7f"
+  integrity sha512-MyoZ0jgnLvB2X3Lg5HqpFmn1kybDiIfEQmKzTb5apr51Rb+T3KdmMiqa70T+bhGnyv7bQ6WMj2QMHpGMmlrUYQ==
 
 env-paths@^2.2.0:
   version "2.2.0"
@@ -5047,7 +5057,7 @@ math-random@^1.0.1:
   resolved "https://registry.npmjs.org/math-random/-/math-random-1.0.4.tgz#5dd6943c938548267016d4e34f057583080c514c"
   integrity sha512-rUxjysqif/BZQH2yhd5Aaq7vXMSx9NdEsQcyA07uEzIvxgI7zIr33gGsh+RU0/XjmQpCW7RsVof1vlkvQVCK5A==
 
-"mdurl@~ 1.0.1":
+mdurl@~1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
   integrity sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=
@@ -5170,7 +5180,7 @@ minimatch@^3.0.2, minimatch@^3.0.4, minimatch@~3.0.2:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@^1.1.0, minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.5, "minimist@~ 1.2.0":
+minimist@>=1.2.2, minimist@^1.1.0, minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"
   resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
@@ -6018,16 +6028,6 @@ randombytes@^2.1.0:
   integrity sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==
   dependencies:
     safe-buffer "^5.1.0"
-
-react-commonmark@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/react-commonmark/-/react-commonmark-3.0.0.tgz#b396453e0e50f02e9ae1aad604a32c1394e7fc3d"
-  integrity sha1-s5ZFPg5Q8C6a4arWBKMsE5Tn/D0=
-  dependencies:
-    commonmark "^0.27.0"
-    commonmark-react-renderer "^4.3.3"
-    in-publish "^2.0.0"
-    prop-types "^15.5.10"
 
 react-dom@^16.14.0:
   version "16.14.0"

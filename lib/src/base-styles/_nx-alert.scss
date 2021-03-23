@@ -13,7 +13,7 @@
   @include container-vertical;
 
   align-items: first baseline;
-  background-color: $nx-off-white;
+  background-color: $nx-white;
   border: $nx-border-darker;
   border-radius: $nx-border-radius;
   box-sizing: border-box;
@@ -60,7 +60,7 @@
 }
 
 .nx-alert--error {
-  background-color: #fff6f8;
+  background-color: $nx-red-25;
   border-color: $nx-red-800;
 
   > .nx-icon {

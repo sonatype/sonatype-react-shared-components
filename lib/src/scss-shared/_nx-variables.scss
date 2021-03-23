@@ -13,11 +13,6 @@ $nx-main-header-height: 72px;
 $nx-paragraph-width-maximum: 562px;
 $nx-form-label-width-maximum: 562px;
 
-$nx-border-radius: 6px;
-
-// the most typical style of boder within RSC
-$nx-border-default: 1px solid $nx-indigo-100;
-
 //  #Margin/Padding widths
 $nx-spacing-xxs: 4px;
 $nx-spacing-xs: 8px;
@@ -62,3 +57,29 @@ $nx-table-cell-min-height: 48px; //content box only
 $nx-table-footer-vertical-padding: $nx-spacing-l;
 
 $nx-pagination-button-height: 40px;
+
+//  Borders
+$nx-border-radius: 6px;
+
+// the most typical style of border within RSC
+$nx-border-default: 1px solid $nx-indigo-100;
+
+$nx-border-darker: 1px solid $nx-grey-800;
+$nx-border-dark: 1px solid $nx-grey-300;
+$nx-border: 1px solid $nx-grey-200; // default
+$nx-border-light: 1px solid $nx-grey-100;
+$nx-border-lighter: 1px solid $nx-grey-50;
+$nx-border-error: 1px solid $nx-red-800;
+
+// Borders in form elements
+$nx-form-element-border-color: $nx-grey-1100;
+
+/*
+  Deprecated
+*/
+
+// Border rows are used by lists and tables
+$nx-border-row: 1px solid $nx-grey-50;
+$nx-border-row-hover: 1px solid $nx-grey-300;
+$nx-border-row-disabled: 1px solid $nx-grey-50;
+$nx-border-row-dark: 1px solid $nx-grey-600;
