@@ -6,8 +6,9 @@
  */
 import React from 'react';
 import { mount } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
 
 import NxSegmentedButton, { Props } from '../NxSegmentedButton';
 import NxButton from '../../NxButton/NxButton';
@@ -16,6 +17,8 @@ import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 
 describe('NxSegmentedButton', function() {
+  let container: HTMLDivElement | null;
+
   const minimalProps: Props = {
         variant: 'primary',
         children: <div/>,
@@ -24,7 +27,21 @@ describe('NxSegmentedButton', function() {
         onToggleOpen: () => {},
         onClick: () => {}
       },
-      getShallow = getShallowComponent(NxSegmentedButton, minimalProps);
+      getShallow = getShallowComponent(NxSegmentedButton, minimalProps),
+      getMounted = getMountedComponent(NxSegmentedButton, minimalProps);
+
+  beforeEach(function() {
+    // Avoid rendering directly on the body.
+    container = document.createElement('div');
+    document.body.appendChild(container);
+  });
+
+  afterEach(function() {
+    if (container) {
+      document.body.removeChild(container);
+      container = null;
+    }
+  });
 
   it('renders a div with the nx-segmented-btn class', function() {
     expect(getShallow()).toMatchSelector('div.nx-segmented-btn');
@@ -89,9 +106,39 @@ describe('NxSegmentedButton', function() {
     expect(onClick).toHaveBeenCalled();
   });
 
-  it('sets the onToggleOpen prop as the onClick handler for the nx-segmented-btn__dropdown-btn', function() {
+  it('calls onToggleOpen once when clicking to open the dropdown', function() {
     const onToggleOpen = jest.fn(),
-        component = getShallow({ onToggleOpen });
+        component = getMounted({ onToggleOpen }, { attachTo: container });
+
+    expect(onToggleOpen).not.toHaveBeenCalled();
+
+    act(() => {
+      component!.find('button.nx-segmented-btn__dropdown-btn').getDOMNode().dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleOpen).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onToggleOpen once when clicking to close the dropdown', function() {
+    const onToggleOpen = jest.fn(),
+        component = getMounted({ onToggleOpen, isOpen: true }, { attachTo: container });
+
+    expect(onToggleOpen).not.toHaveBeenCalled();
+
+    act(() => {
+      component!.find('button.nx-segmented-btn__dropdown-btn').getDOMNode().dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleOpen).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not call the onToggleOpen prop when the component is disabled', function() {
+    const onToggleOpen = jest.fn(),
+        component = getShallow({ onToggleOpen, disabled: true });
 
     expect(onToggleOpen).not.toHaveBeenCalled();
 
@@ -156,5 +203,78 @@ describe('NxSegmentedButton', function() {
         <span className="bar" />
       </NxOverflowTooltip>
     );
+  });
+
+  it('calls onToggleOpen if a click happens anywhere when the dropdown is already open', function() {
+    const onToggleOpen = jest.fn(),
+        component = getMounted({ onToggleOpen, isOpen: true }, { attachTo: container });
+
+    expect(onToggleOpen).not.toHaveBeenCalled();
+
+    act(() => {
+      document.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleOpen).toHaveBeenCalled();
+  });
+
+  it('does not call onToggleOpen if a click happens anywhere when the dropdown is closed', function() {
+    const onToggleOpen = jest.fn(),
+        component = getMounted({ onToggleOpen }, { attachTo: container });
+
+    expect(onToggleOpen).not.toHaveBeenCalled();
+
+    act(() => {
+      document.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleOpen).not.toHaveBeenCalled();
+  });
+
+  it('does not call onToggleOpen if a click happens anywhere when the dropdown is disabled', function() {
+    const onToggleOpen = jest.fn(),
+        component = getMounted({ onToggleOpen, isOpen: true, disabled: true }, { attachTo: container });
+
+    expect(onToggleOpen).not.toHaveBeenCalled();
+
+    act(() => {
+      document.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleOpen).not.toHaveBeenCalled();
+  });
+
+  it('calls onToggleOpen if ESC is pressed within the component while the dropdown is open', function() {
+    const onToggleOpen = jest.fn(),
+        component = getShallow({ onToggleOpen, isOpen: true });
+
+    component.simulate('keyDown', { key: 'Escape' });
+    expect(onToggleOpen).toHaveBeenCalled();
+  });
+
+  it('does not call onToggleOpen if ESC is pressed within the component when the dropdown is closed', function() {
+    const onToggleOpen = jest.fn(),
+        component = getShallow({ onToggleOpen });
+
+    expect(onToggleOpen).not.toHaveBeenCalled();
+
+    component.simulate('keyDown', { key: 'Escape' });
+    expect(onToggleOpen).not.toHaveBeenCalled();
+  });
+
+  it('does not call onToggleOpen if ESC is pressed within the component when the component is disabled', function() {
+    const onToggleOpen = jest.fn(),
+        component = getShallow({ onToggleOpen, isOpen: true, disabled: true });
+
+    expect(onToggleOpen).not.toHaveBeenCalled();
+
+    component.simulate('keyDown', { key: 'Escape' });
+    expect(onToggleOpen).not.toHaveBeenCalled();
   });
 });
