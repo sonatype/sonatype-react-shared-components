@@ -15,7 +15,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes, TextInputElement } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 import { getUniqueId } from '../../util/idUtil';
-export { Props, PublicProps, propTypes, inputTypes } from './types';
+export { Props, PublicProps, StateProps, propTypes, inputTypes } from './types';
 
 /**
  * Standard text input with validation styling
