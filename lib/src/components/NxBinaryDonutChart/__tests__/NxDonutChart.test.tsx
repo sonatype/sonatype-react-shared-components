@@ -59,7 +59,7 @@ describe('NxBinaryDonutChart', function() {
     expect(circles.at(0)).toHaveProp('r', 75);
     expect(paths.length).toBe(1);
     expect(paths.at(0)).toHaveClassName('.nx-binary-donut-chart__arc');
-    expect(paths.at(0)).toHaveProp('d', 'M 0 -75 A 75 75 0 0 0 ' + (75 * Math.cos(1.5 * Math.PI))
+    expect(paths.at(0)).toHaveProp('d', 'M 0 -75 A 75 75 0 0 1 ' + (-75 * Math.cos(1.5 * Math.PI))
         + ' ' + (-75 * Math.sin(1.5 * Math.PI)));
     expect(paths.at(0)).toHaveProp('strokeWidth', 50);
   });
@@ -77,7 +77,7 @@ describe('NxBinaryDonutChart', function() {
     expect(circles.at(0)).toHaveProp('r', 75);
     expect(paths.length).toBe(1);
     expect(paths.at(0)).toHaveClassName('.nx-binary-donut-chart__arc');
-    expect(paths.at(0)).toHaveProp('d', 'M 0 -75 A 75 75 0 1 0 ' + (75 * Math.cos(arcEnd))
+    expect(paths.at(0)).toHaveProp('d', 'M 0 -75 A 75 75 0 1 1 ' + (-75 * Math.cos(arcEnd))
         + ' ' + (-75 * Math.sin(arcEnd)));
     expect(paths.at(0)).toHaveProp('strokeWidth', 50);
   });
@@ -95,7 +95,7 @@ describe('NxBinaryDonutChart', function() {
     expect(circles.at(0)).toHaveProp('r', 75);
     expect(paths.length).toBe(1);
     expect(paths.at(0)).toHaveClassName('.nx-binary-donut-chart__arc');
-    expect(paths.at(0)).toHaveProp('d', 'M 0 -75 A 75 75 0 0 0 ' + (75 * Math.cos(arcEnd))
+    expect(paths.at(0)).toHaveProp('d', 'M 0 -75 A 75 75 0 0 1 ' + (-75 * Math.cos(arcEnd))
         + ' ' + (-75 * Math.sin(arcEnd)));
     expect(paths.at(0)).toHaveProp('strokeWidth', 50);
   });

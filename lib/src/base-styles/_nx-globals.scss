@@ -39,7 +39,7 @@ $nx-scrollable-default-height: 400px;
 }
 
 .nx-error {
-  background-color: $nx-fail-color-bg;
+  background-color: $nx-red-25;
   border: $nx-border-error;
   color: $nx-text-color-error;
 
@@ -71,7 +71,14 @@ $nx-scrollable-default-height: 400px;
   @extend %nx-blockquote;
 }
 
+// global CSS variables/custom properties
 :root {
-  // global CSS variables/custom properties
+  // page dimensions
+  --page-width-max: 1600px;
+  --page-width-min: 1366px;
+  --content-width: 76%;
+  --sidebar-width: calc(100% - var(--content-width));
+  --scrollbar-width: 15px;
+
   --nx-component-background-color: #{$nx-white};
 }

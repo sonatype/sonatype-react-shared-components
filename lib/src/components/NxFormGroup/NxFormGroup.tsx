@@ -8,7 +8,7 @@ import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 
 import { Props, propTypes } from './types';
-import { useRandomId } from '../../util/idUtil';
+import { useUniqueId } from '../../util/idUtil';
 
 export { Props };
 
@@ -17,8 +17,8 @@ const NxFormGroup = forwardRef<HTMLDivElement, Props>(
       const classNames = classnames('nx-form-group', className),
           labelClassnames = classnames('nx-label', { 'nx-label--optional': !isRequired }),
 
-          childId = useRandomId('nx-form-group-child', children.props.id),
-          sublabelId = useRandomId('nx-sub-label', sublabel ? undefined : ''),
+          childId = useUniqueId('nx-form-group-child', children.props.id),
+          sublabelId = useUniqueId('nx-sub-label', sublabel ? undefined : ''),
           childDescribedBy = classnames(children.props['aria-describedby'], sublabelId),
 
           childNeedsAugmentation = !children.props.id || sublabelId,

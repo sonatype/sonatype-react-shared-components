@@ -95,7 +95,9 @@ import NxStatefulSegmentedButtonPage from './components/NxStatefulSegmentedButto
 import NxTagPage from './components/NxTag/NxTagPage';
 import NxCodeSnippetPage from './components/NxCodeSnippet/NxCodeSnippetPage';
 import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
+import NxColorPickerPage from './components/NxColorPicker/NxColorPickerPage';
 import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
+import IdUtilPage from './jsUtilPages/IdUtil/IdUtilPage';
 import NxVulnerabilityIndicatorPage from './styles/NxVulnerabilityIndicator/NxVulnerabilityIndicatorPage';
 
 const pageConfig: PageConfig = {
@@ -110,6 +112,7 @@ const pageConfig: PageConfig = {
     NxSegmentedButton: NxSegmentedButtonPage,
     NxStatefulSegmentedButton: NxStatefulSegmentedButtonPage,
     NxCheckbox: NxCheckboxPage,
+    NxColorPicker: NxColorPickerPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
     NxCloseButton: NxCloseButtonPage,
     NxCodeSnippet: NxCodeSnippetPage,
@@ -197,7 +200,8 @@ const pageConfig: PageConfig = {
     'TooltipConfigProps': TooltipConfigPropsPage,
     'Policy Threat Level Utils': PolicyThreatLevelUtilsPage,
     'Validation Utils': ValidationUtilsPage,
-    'useToggle': UseTogglePage
+    'useToggle': UseTogglePage,
+    'ID Utils': IdUtilPage
   }
 };
 

@@ -6,27 +6,27 @@
  */
 import React, { useState } from 'react';
 
-import { getRandomId, useRandomId } from '../idUtil';
+import { getUniqueId, useUniqueId } from '../idUtil';
 import { times } from 'ramda';
 import { shallow } from 'enzyme';
 
 describe('idUtil', function() {
-  describe('getRandomId', function() {
+  describe('getUniqueId', function() {
     it('returns a string that starts with the argument passed in', function() {
-      expect(getRandomId('foo')).toMatch(/^foo/);
+      expect(getUniqueId('foo')).toMatch(/^foo/);
     });
 
     it('returns a different string each time it is called', function() {
-      const thousandCallResults = new Set(times(() => getRandomId('foo'), 1000));
+      const thousandCallResults = new Set(times(() => getUniqueId('foo'), 1000));
 
       expect(thousandCallResults.size).toBe(1000);
     });
   });
 
-  describe('useRandomId', function() {
+  describe('useUniqueId', function() {
     it('is a react hook that returns a random id with the specified prefix', function() {
       function Fixture() {
-        return <div id={useRandomId('foo')} />;
+        return <div id={useUniqueId('foo')} />;
       }
 
       const id = shallow(<Fixture />).prop('id');
@@ -37,7 +37,7 @@ describe('idUtil', function() {
 
     it('returns a different value for each component instance', function() {
       function Fixture() {
-        return <div id={useRandomId('foo')} />;
+        return <div id={useUniqueId('foo')} />;
       }
 
       const id1 = shallow(<Fixture />).prop('id'),
@@ -48,7 +48,7 @@ describe('idUtil', function() {
 
     it('returns the second argument if it exists', function() {
       function Fixture() {
-        return <div id={useRandomId('foo', 'bar')} />;
+        return <div id={useUniqueId('foo', 'bar')} />;
       }
 
       const id1 = shallow(<Fixture />).prop('id'),
@@ -60,7 +60,7 @@ describe('idUtil', function() {
 
     it('returns the second argument if it is the empty string', function() {
       function Fixture() {
-        return <div id={useRandomId('foo', '')} />;
+        return <div id={useUniqueId('foo', '')} />;
       }
 
       const id1 = shallow(<Fixture />).prop('id'),
@@ -79,7 +79,7 @@ describe('idUtil', function() {
         }
 
         return (
-          <div id={useRandomId('foo')}>
+          <div id={useUniqueId('foo')}>
             {val}
             <button onClick={onClick}>Click Here</button>
           </div>
@@ -98,7 +98,7 @@ describe('idUtil', function() {
     it('returns the same id for multiple renders of the same component across prop changes', function () {
       function Fixture({ val }: { val: string }) {
         return (
-          <div id={useRandomId('foo')}>
+          <div id={useUniqueId('foo')}>
             {val}
           </div>
         );

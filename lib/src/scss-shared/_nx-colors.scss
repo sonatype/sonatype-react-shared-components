@@ -6,61 +6,13 @@
  */
 
 @import 'nx-color-swatches';
-
-// Sonatype brand colors
-$nx-sonatype-blue: #336699;
-$nx-sonatype-orange: #f89100;
+@import 'nx-deprecated-colors';
 
 /*
   #Base colors
 */
-// Tints based on HSL lightness value
-$nx-color-blue-41: #3A4D95;
-$nx-color-blue-42: #2B66AB;
-$nx-color-blue-44: $nx-teal-400;
-$nx-color-blue-96: #f2f3f8;
-
-// Shades of Grey
-$nx-black: #000; // darkest
-$nx-off-black: #070707;
-$nx-slate: #575757;
-$nx-grey-5: #838383;
-$nx-grey-4: #cacaca;
-$nx-grey-3: #dedede;
-$nx-grey-2: #eaeaea;
-$nx-grey-1: #f5f5f5;
-$nx-off-white: #fefefe;
-$nx-white: #fff; // lightest
-
-$nx-dark-blue: #006bbf;
-$nx-light-blue: #97cbee;
-
-$nx-dark-purple: #885195;
-$nx-light-purple: #dbc6df;
-$nx-medium-purple: #b087ba;
-
-$nx-dark-green: #099843;
-$nx-light-green: #b6e9ab;
-
-$nx-dark-red: #bc012f;
-$nx-light-red: #edb1af;
-
-$nx-orange: #f4861d;
-$nx-yellow: #f5c648;
-
-$nx-invalid-color: #c70000;
-$nx-valid-color: #84c900;
-
-// Was alert-fg & alert-bg
-$nx-warn-color: #9d6800;
-$nx-warn-color-bg: #fcf8e3;
-
-$nx-fail-color: #831d1d;
-$nx-fail-color-bg: #fce2e2;
-
-$nx-fail-color-active: #5c0000;
-$nx-fail-color-disabled: #dd9595;
-$nx-fail-color-hover: #5d0000;
+$nx-black: #000;
+$nx-white: #fff;
 
 /*
   #Applied Variables
@@ -75,10 +27,10 @@ $nx-header-border: $nx-grey-100;
 
 //  Text
 $nx-heading-color: $nx-grey-1100;
-$nx-text-color-dark:$nx-grey-1100;
+$nx-text-color-dark: $nx-grey-1100;
 $nx-text-color: $nx-grey-900;
 $nx-text-color-disabled: $nx-grey-500;
-$nx-text-color-error: $nx-fail-color;
+$nx-text-color-error: $nx-red-800;
 
 $nx-link-color: $nx-blue-600;
 $nx-link-color-active: $nx-blue-400;
@@ -93,30 +45,27 @@ $nx-disabled-background: $nx-grey-200;
 $nx-disabled-border: $nx-grey-500;
 $nx-focus-border-color: $nx-teal-300;
 
-//  Borders
-$nx-border-darker: 1px solid $nx-slate;
-$nx-border-dark: 1px solid $nx-grey-4;
-$nx-border: 1px solid $nx-grey-3; // default
-$nx-border-light: 1px solid $nx-grey-2;
-$nx-border-lighter: 1px solid $nx-grey-1;
-$nx-border-error: 1px solid $nx-fail-color;
-
-// Border rows are used by lists and tables
-$nx-border-row: 1px solid $nx-grey-1;
-$nx-border-row-hover: 1px solid $nx-grey-4;
-$nx-border-row-disabled: 1px solid $nx-grey-1;
-$nx-border-row-dark: 1px solid $nx-grey-5;
-
-// Borders in form elements
-$nx-form-element-border-color: $nx-grey-1100;
-
 // Threat colors
 $nx-threat-color-unspecified: $nx-indigo-100;
 $nx-threat-color-none: $nx-blue-300;
 $nx-threat-color-low: $nx-blue-600;
 $nx-threat-color-moderate: $nx-yellow-700;
-$nx-threat-color-severe: #ff8100;
+$nx-threat-color-severe: $nx-orange-700;
 $nx-threat-color-critical: $nx-red-800;
+
+// Color codes for the color names defined in selectableColors.ts.
+// This is a map from name to (dark color, light color) tuple
+$nx-selectable-colors: (
+  light-blue: ($nx-blue-200, $nx-blue-50),
+  purple: ($nx-purple-200, $nx-purple-50),
+  pink: ($nx-pink-300, $nx-pink-50),
+  blue: ($nx-teal-400, $nx-teal-50),
+  red: ($nx-red-300, $nx-red-50),
+  green: ($nx-turquoise-600, $nx-turquoise-50),
+  orange: ($nx-orange-700, $nx-orange-50),
+  yellow: ($nx-yellow-700, $nx-yellow-50),
+  lime: ($nx-green-200, $nx-green-50)
+);
 
 // Vulnerability Colours
 $nx-vulnerability-indicator-critical: $nx-red-800;

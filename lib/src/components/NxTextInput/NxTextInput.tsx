@@ -14,8 +14,8 @@ import './NxTextInput.scss';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes, TextInputElement } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
-import { getRandomId } from '../../util/idUtil';
-export { Props, PublicProps, propTypes, inputTypes } from './types';
+import { getUniqueId } from '../../util/idUtil';
+export { Props, PublicProps, StateProps, propTypes, inputTypes } from './types';
 
 /**
  * Standard text input with validation styling
@@ -66,7 +66,7 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
           });
 
       const inputRef: MutableRefObject<TextInputElement | null> = useRef<TextInputElement>(null),
-          invalidMessageId = useMemo(() => getRandomId('nx-text-input-invalid-message'), []);
+          invalidMessageId = useMemo(() => getUniqueId('nx-text-input-invalid-message'), []);
 
       // when the box padding is clicked, set the focus to the <input> as that's what the user thought
       // they were clicking

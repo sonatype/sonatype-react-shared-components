@@ -71,12 +71,7 @@
 }
 
 @include tag-color(default, #bbc5f6, #e7eaf9);
-@include tag-color(light-blue, $nx-blue-200, $nx-blue-50);
-@include tag-color(purple, $nx-purple-200, $nx-purple-50);
-@include tag-color(pink, $nx-pink-300, $nx-pink-50);
-@include tag-color(blue, $nx-teal-400, $nx-teal-50);
-@include tag-color(red, $nx-red-300, $nx-red-50);
-@include tag-color(green, $nx-turquoise-600, $nx-turquoise-50);
-@include tag-color(orange, $nx-orange-700, $nx-orange-50);
-@include tag-color(yellow, $nx-yellow-700, $nx-yellow-50);
-@include tag-color(lime, $nx-green-200, $nx-green-50);
+
+@each $color-name, $color-codes in $nx-selectable-colors {
+  @include tag-color($color-name, nth($color-codes, 1), nth($color-codes, 2));
+}
