@@ -8,12 +8,14 @@ import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxListClickableExample from './NxListClickableExample';
+import NxListClickableLinksExample from './NxListClickableLinksExample';
 import NxListWithActionsExample from './NxListWithActionsExample';
 import NxListErrorExample from './NxListErrorStateExample';
 import NxListLoadingExample from './NxListLoadingExample';
 
 const NxListSimpleCode = require('./NxListDefaultExample.html'),
     NxListClickableCode = require('./NxListClickableExample?raw'),
+    NxListClickableLinksCode = require('./NxListClickableLinksExample?raw'),
     NxListMultiLineCode = require('./NxListMultiLineExample.html'),
     NxListBulletedCode = require('./NxListBulletedExample.html'),
     NxListWithActionsCode = require('./NxListWithActionsExample.tsx?raw'),
@@ -36,6 +38,14 @@ const NxListsExamples = () =>
                         liveExample={NxListClickableExample}
                         codeExamples={NxListClickableCode}>
       An <code className="nx-code">nx-list</code> demonstrating clickable, selection, and disabled styles.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Clickable List Links Example"
+                        id="nx-list-clickable-links-example"
+                        liveExample={NxListClickableLinksExample}
+                        codeExamples={NxListClickableLinksCode}>
+      An <code className="nx-code">nx-list</code> demonstrating clickable and selection styles where the
+      clickable aspects of the list items are defined using <code className="nx-code">&lt;a&gt;</code> tags.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Bulleted List Example"

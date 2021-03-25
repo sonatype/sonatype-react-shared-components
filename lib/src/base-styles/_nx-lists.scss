@@ -21,23 +21,23 @@
 }
 
 .nx-list__item {
-  @include container-horizontal;
+  &, > .nx-list__link {
+    @include container-horizontal;
 
-  align-items: first baseline;
-  border: 1px solid transparent;
-  border-top-color: $nx-grey-200;
-  box-sizing: border-box;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto 1fr auto;
-  grid-template-columns: auto 1fr auto;
-  -ms-grid-rows: auto auto;
-  grid-template-areas:
-    "indicator list-text actions"
-    ". list-sub-text actions";
-  margin: 0;
-  // 1px of padding subtracted to account for the transparent border
-  padding: $nx-spacing-md ($nx-spacing-md - 1px) ($nx-spacing-md - 1px) ($nx-spacing-md - 1px);
+    align-items: first baseline;
+    border: 1px solid transparent;
+    border-top-color: $nx-grey-200;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "indicator list-text actions"
+      ". list-sub-text actions";
+    margin: 0;
+    // 1px of padding subtracted to account for the transparent border
+    padding: $nx-spacing-md ($nx-spacing-md - 1px) ($nx-spacing-md - 1px) ($nx-spacing-md - 1px);
+  }
 
   &:first-child {
     border-top: none;
@@ -49,12 +49,19 @@
   }
 
   > .nx-loading-spinner {
-    -ms-grid-row: 1;
-    -ms-grid-column: 2;
     grid-area: list-text;
     margin: 0;
     text-align: center;
   }
+}
+
+.nx-list__item--link {
+  display: contents;
+}
+
+.nx-list__link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .nx-list__text {
@@ -62,19 +69,22 @@
   @include container-horizontal;
 
   display: block;
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
   grid-area: list-text;
   margin: 0;
   padding-right: $nx-spacing-l;
+
+  &.nx-truncate-ellipsis {
+    // Something about the grid layout gets confused due to overflow: hidden on this element
+    // and adds vertical space to the second row of the grid.
+    // Experimentally, setting an explicit height here fixes that.
+    height: $nx-line-height * 1em;
+  }
 }
 
 .nx-list__subtext {
   @include regular();
 
   display: block;
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
   grid-area: list-sub-text;
   // top margin is measured down from the top of the objects grid row
   margin: $nx-spacing-md 0 0 0;
@@ -161,57 +171,56 @@
  */
 .nx-list--clickable {
   .nx-list__item {
-    &.selected {
-      &, &:hover {
-        background-color: $nx-selected-background;
+
+    &, > .nx-list__link {
+      &.selected {
+        &, &:hover {
+          background-color: $nx-selected-background;
+        }
       }
-    }
-
-    &:hover {
-      background-color: $nx-hover-background;
-      cursor: pointer;
-    }
-
-    &:active {
-      background-color: $nx-active-background;
-    }
-
-    &:focus {
-      box-shadow: $nx-focus-box-shadow;
-      border-color: $nx-focus-border-color;
-      outline: none;
-    }
-
-    &.nx-list__item--empty {
-      @include regular();
-
-      color: $nx-text-color;
-    }
-
-    &.disabled {
-      color: $nx-text-color-disabled;
 
       &:hover {
-        background-color: transparent;
-        cursor: default;
+        background-color: $nx-hover-background;
+        cursor: pointer;
+      }
+
+      &:active {
+        background-color: $nx-active-background;
+      }
+
+      &:focus {
+        box-shadow: $nx-focus-box-shadow;
+        border-color: $nx-focus-border-color;
+        outline: none;
+      }
+
+      &.nx-list__item--empty {
+        @include regular();
+
+        color: $nx-text-color;
+      }
+
+      &.disabled {
+        color: $nx-text-color-disabled;
+
+        &:hover {
+          background-color: transparent;
+          cursor: default;
+        }
+
+        > .nx-chevron {
+          display: none;
+        }
       }
 
       > .nx-chevron {
-        display: none;
+        align-self: center;
+        color: $nx-text-color-dark;
+        grid-area: actions;
+
+        // custom sizing for the icon, brings it up to 13px
+        font-size: 21px;
       }
-    }
-
-    > .nx-chevron {
-      align-self: center;
-      -ms-grid-row-align: center;
-      color: $nx-text-color-dark;
-      -ms-grid-row: 1;
-      -ms-grid-row-span: 2;
-      -ms-grid-column: 3;
-      grid-area: actions;
-
-      // custom sizing for the icon, brings it up to 13px
-      font-size: 21px;
     }
   }
 }
@@ -219,8 +228,6 @@
 .nx-list__actions {
   @include container-horizontal;
 
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
   grid-area: actions;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
   margin: -4px 0 -4px $nx-spacing-md;
