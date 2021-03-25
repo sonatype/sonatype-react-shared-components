@@ -45,7 +45,7 @@ const NxListsExamples = () =>
                         liveExample={NxListClickableLinksExample}
                         codeExamples={NxListClickableLinksCode}>
       An <code className="nx-code">nx-list</code> demonstrating clickable and selection styles where the
-      clickable aspects of the list items are defined using <code className="nx-code">&lta&gt;</code> tags.
+      clickable aspects of the list items are defined using <code className="nx-code">&lt;a&gt;</code> tags.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Bulleted List Example"
