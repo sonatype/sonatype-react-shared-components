@@ -212,3 +212,6 @@ export { default as NxStatefulGlobalSidebar, Props as NxStatefulGlobalSidebarPro
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
 
 export * from './util/idUtil';
+
+export { default as NxVulnerabilityIndicator, Props as NxVulnerabilityIndicatorProps }
+  from './components/NxVulnerabilityIndicator/NxVulnerabilityIndicator';

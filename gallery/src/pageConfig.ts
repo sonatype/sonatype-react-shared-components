@@ -98,7 +98,7 @@ import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
 import NxColorPickerPage from './components/NxColorPicker/NxColorPickerPage';
 import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
 import IdUtilPage from './jsUtilPages/IdUtil/IdUtilPage';
-import NxVulnerabilityIndicatorPage from './styles/NxVulnerabilityIndicator/NxVulnerabilityIndicatorPage';
+import NxVulnerabilityIndicatorPage from './components/NxVulnerabilityIndicator/NxVulnerabilityIndicatorPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -152,7 +152,8 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
-    NxVulnerabilityDetails: NxVulnerabilityDetailsPage
+    NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
+    NxVulnerabilityIndicator: NxVulnerabilityIndicatorPage
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,
@@ -181,8 +182,7 @@ const pageConfig: PageConfig = {
     'nx-table': NxTableStylePage,
     'nx-table-container': NxTableContainerPage,
     'nx-threat-number': NxThreatNumberPage,
-    'nx-tile': NxTilePage,
-    'nx-vulnerability-indicator': NxVulnerabilityIndicatorPage
+    'nx-tile': NxTilePage
   },
   'Styles - Mixins & Helpers': {
     'Custom app font size': NxFontSizePage,
