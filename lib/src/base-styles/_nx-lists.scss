@@ -75,7 +75,7 @@
 
   &.nx-truncate-ellipsis {
     // Something about the grid layout gets confused due to overflow: hidden on this element
-    //  and adds more vertical space to the grid, in the second row.
+    // and adds vertical space to the second row of the grid.
     // Experimentally, setting an explicit height here fixes that.
     height: $nx-line-height * 1em;
   }
