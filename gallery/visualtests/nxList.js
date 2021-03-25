@@ -13,7 +13,7 @@ describe('nx-list', function() {
 
   const simpleSelector = '#nx-list-simple-example .gallery-example-live',
       clickableSelector = '#nx-list-clickable-example .nx-list',
-      clickableSelector = '#nx-list-clickable-links-example .nx-list',
+      clickableLinksSelector = '#nx-list-clickable-links-example .nx-list',
       bulletedSelector = '#nx-list-bulleted-example .gallery-example-live',
       definitionListSelector = '#nx-list-definition-example .nx-list',
       actionsSelector = '#nx-list-actions-example .nx-list',
