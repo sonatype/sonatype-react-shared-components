@@ -32,7 +32,7 @@ describe('nx-list', function() {
   });
 
   describe('Clickable links nx-list', function() {
-    it('looks right with a row hovered', hoverTest(clickableLinksSelector, `${clickableSelector} li:first-child`));
+    it('looks right with a row hovered', hoverTest(clickableLinksSelector, `${clickableLinksSelector} li:first-child`));
   });
 
   describe('Bulleted nx-list', function() {
