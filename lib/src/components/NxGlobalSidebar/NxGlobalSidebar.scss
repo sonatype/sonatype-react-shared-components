@@ -1,0 +1,143 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-text-helpers';
+@import '../../scss-shared/nx-container-helpers';
+
+$nx-global-sidebar-width-open: 250px;
+$nx-global-sidebar-width-closed: 72px;
+$nx-global-sidebar-logo-height: 34px;
+$nx-global-sidebar-toggle-size: 32px;
+
+$nx-global-sidebar-text-color: $nx-white;
+$nx-global-sidebar-background-color: $nx-blue-1000;
+
+$nx-global-sidebar-active-color: $nx-indigo-400;
+$nx-global-sidebar-selected-color: $nx-indigo-800;
+$nx-global-sidebar-hover-color: $nx-indigo-600;
+
+$nx-global-sidebar-focus-border: 1px solid $nx-focus-border-color;
+
+$nx-global-sidebar-separator-color: $nx-grey-900;
+
+.nx-global-sidebar {
+  @include container-vertical;
+
+  background-color: $nx-global-sidebar-background-color;
+  box-sizing: border-box;
+  color: $nx-global-sidebar-text-color;
+  padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-l $nx-spacing-l;
+  width: $nx-global-sidebar-width-open;
+
+  .nx-text-link {
+    color: $nx-global-sidebar-text-color;
+  }
+}
+
+.nx-global-sidebar__header {
+  align-items: center;
+  display: flex;
+  height: $nx-global-sidebar-logo-height;
+  margin-bottom: $nx-spacing-xl;
+}
+
+.nx-global-sidebar__toggle {
+  border-color: transparent;
+  border-radius: 50%;
+  color: $nx-global-sidebar-text-color;
+  flex: none;
+  height: $nx-global-sidebar-toggle-size;
+  margin: 0;
+  width: $nx-global-sidebar-toggle-size;
+
+  &:focus {
+    border-color: $nx-focus-border-color;
+  }
+
+  &:active {
+    background-color: $nx-global-sidebar-active-color;
+  }
+
+  &:hover {
+    background-color: $nx-global-sidebar-hover-color;
+  }
+}
+
+.nx-global-sidebar__product-info {
+  flex: 1 1 auto;
+  display: flex;
+}
+
+.nx-global-sidebar__logo {
+  height: $nx-global-sidebar-logo-height;
+}
+
+.nx-global-sidebar__navigation {
+  border-bottom: 1px solid $nx-global-sidebar-separator-color;
+  flex: none;
+  margin: 0 -#{$nx-spacing-l} $nx-spacing-md -#{$nx-spacing-l};
+  padding-bottom: $nx-spacing-xxl;
+}
+
+.nx-global-sidebar__navigation-link {
+  @include container-horizontal;
+  @include nx-truncate-ellipsis;
+
+  border: 1px solid transparent;
+  display: block;
+  padding: $nx-spacing-xxs $nx-spacing-l;
+
+  .nx-icon {
+    margin: 0;
+  }
+
+  &:focus {
+    border-color: $nx-focus-border-color;
+    box-shadow: $nx-focus-box-shadow;
+    outline: none;
+  }
+
+  &:hover {
+    background-color: $nx-global-sidebar-hover-color;
+  }
+
+  &:active {
+    background-color: $nx-global-sidebar-active-color;
+  }
+
+  &.selected {
+    @include semi-bold;
+    background-color: $nx-global-sidebar-selected-color;
+  }
+}
+
+.nx-global-sidebar__navigation-text {
+  margin-left: $nx-spacing-xs;
+}
+
+.nx-global-sidebar.open {
+  .nx-global-sidebar__collapsed-content {
+    display: none;
+  }
+}
+
+.nx-global-sidebar.closed {
+  margin: 0;
+  width: $nx-global-sidebar-width-closed;
+
+  .nx-global-sidebar__expanded-content {
+    display: none;
+  }
+
+  .nx-global-sidebar__header {
+    justify-content: center;
+  }
+
+  .nx-global-sidebar__navigation-link {
+    text-align: center;
+  }
+}

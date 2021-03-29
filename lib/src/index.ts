@@ -14,7 +14,8 @@ export { default as NxLoadingSpinner } from './components/NxLoadingSpinner/NxLoa
 export { default as NxLoadError, Props as NxLoadErrorProps } from './components/NxLoadError/NxLoadError';
 export { default as NxLoadWrapper, Props as NxLoadWrapperProps } from './components/NxLoadWrapper/NxLoadWrapper';
 export { default as NxModal, Props as NxModalProps } from './components/NxModal/NxModal';
-export { default as NxTextInput, PublicProps as NxTextInputProps } from './components/NxTextInput/NxTextInput';
+export { default as NxTextInput, PublicProps as NxTextInputProps, StateProps as NxTextInputStateProps }
+  from './components/NxTextInput/NxTextInput';
 
 import * as nxTextInputStateHelpers from './components/NxTextInput/stateHelpers';
 export { nxTextInputStateHelpers };
@@ -199,8 +200,19 @@ export { default as NxCodeSnippet, Props as NxCodeSnippetProps } from './compone
 
 export { default as useToggle } from './util/useToggle';
 
+export { default as NxGlobalSidebar, Props as NxGlobalSidebarProps }
+  from './components/NxGlobalSidebar/NxGlobalSidebar';
+export { default as NxGlobalSidebarNavigation, NxGlobalSidebarNavigationProps }
+  from './components/NxGlobalSidebar/NxGlobalSidebarNavigation';
+export { default as NxGlobalSidebarNavigationLink, NxGlobalSidebarNavigationLinkProps }
+  from './components/NxGlobalSidebar/NxGlobalSidebarNavigationLink';
+export { default as NxStatefulGlobalSidebar, Props as NxStatefulGlobalSidebarProps }
+  from './components/NxGlobalSidebar/stateful/NxStatefulGlobalSidebar';
+
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
 
 export { default as withClass } from './util/withClass';
 
 export * from './components/SimpleComponents';
+
+export * from './util/idUtil';

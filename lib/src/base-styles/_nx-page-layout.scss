@@ -49,6 +49,10 @@
   }
 }
 
+.nx-page-content--full-width{
+  max-width: none;
+}
+
 .nx-page-sidebar {
   @include container-vertical;
 
