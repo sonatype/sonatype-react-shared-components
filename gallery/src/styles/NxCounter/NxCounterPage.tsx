@@ -16,8 +16,8 @@ const NxCounterPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">
         Basic style for small indicator token which typically displays a single #, a '# of #' string, or a short text
-        string. When working in React, the <NxCode>NxCounter</NxCode> component is available for a more convenient way to
-        create these elements.
+        string. When working in React, the <NxCode>NxCounter</NxCode> component is available for a more convenient way
+        to create these elements.
       </p>
       <p className="nx-p">
         Some basic positioning CSS examples have been provided. To right justify the counter within its container use
