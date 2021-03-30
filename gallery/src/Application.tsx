@@ -25,6 +25,8 @@ import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExam
 import NxViewportSizedExpandingExample
   from './styles/NxViewportSized/NxViewportSizedExpandingExample';
 import SectionScrollingWrapper from './styles/NxViewportSized/SectionScrollingWrapper';
+import { NxGlobalSidebar, useToggle } from '@sonatype/react-shared-components';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
@@ -57,15 +59,24 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
 }
 
 function Application() {
+  const [sidebarOpen, toggle] = useToggle(true);
+
   return (
     <Router>
       <PageHeader />
-      <div className="nx-page-content">
+      <div className="nx-page-content nx-page-content--full-width">
         <Switch>
           <Route exact path="/PageLevelAlertExample">
             <NxLoadWrapperPageLevelExample/>
           </Route>
           <Route>
+            <NxGlobalSidebar isOpen={sidebarOpen}
+                             toggleOpenIcon={faCircle}
+                             toggleCloseIcon={faCircle}
+                             onToggleClick={toggle}
+                             logoImg="foo"
+                             logoAltText="foo"
+                             logoLink="#" />
             <aside className="nx-page-sidebar" id="gallery-sidebar">
               <GalleryNav />
             </aside>
