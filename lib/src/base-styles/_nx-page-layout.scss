@@ -57,7 +57,7 @@
 
   background-color: $nx-sidebar-background-color;
   box-sizing: border-box;
-  flex-basis: var(--sidebar-width);
+  flex: 1 0 var(--sidebar-width);
   min-width: 0;
   overflow-x: hidden;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-xs $nx-spacing-l;
@@ -69,7 +69,7 @@
   @include container-vertical;
 
   box-sizing: border-box;
-  flex: 1 0 var(--content-width);
+  flex: auto;
   min-width: 0;
   overflow-x: hidden;
   overflow-y: auto;
