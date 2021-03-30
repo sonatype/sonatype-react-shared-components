@@ -30,6 +30,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   background-color: $nx-global-sidebar-background-color;
   box-sizing: border-box;
   color: $nx-global-sidebar-text-color;
+  flex: none;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-l $nx-spacing-l;
   width: $nx-global-sidebar-width-open;
 
