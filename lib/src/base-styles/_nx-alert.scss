@@ -50,11 +50,11 @@
 }
 
 .nx-alert--warning {
-  background-color: #fff6ec;
-  border-color: #ff8100;
+  background-color: $nx-orange-50;
+  border-color: $nx-orange-900;
 
   > .nx-icon {
-    color: #ff8100;
+    color: $nx-orange-900;
   }
 }
 
@@ -77,7 +77,7 @@
 }
 
 .nx-alert--success {
-  background-color: #fafffc;
+  background-color: $nx-green-5;
   border-color: $nx-green-700;
 
   > .nx-icon {

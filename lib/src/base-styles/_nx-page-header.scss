@@ -45,7 +45,7 @@ $main-header-product-version-row-height: 1fr;
 .nx-page-header__link {
   border-bottom: 2px solid transparent;
 
-  color: #515151;
+  color: $nx-grey-900;
   display: inline-block;
   font-size: $nx-font-size-s;
   margin-right: $nx-spacing-l;
@@ -65,7 +65,7 @@ $main-header-product-version-row-height: 1fr;
   }
 
   &:active, &.nx-page-header__link--current {
-    border-bottom-color: #0000cc;
+    border-bottom-color: $nx-teal-400;
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
@@ -121,7 +121,7 @@ $main-header-product-version-row-height: 1fr;
 }
 
 .nx-product__version {
-  color: #545454;
+  color: $nx-grey-900;
   display: inline-block;
   font-size: 12px;
   margin-top: 8px; // move version down to match product name baseline
