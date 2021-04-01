@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
@@ -7,6 +7,7 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
 @import '../../scss-shared/nx-text-helpers';
+@import '../../scss-shared/_nx-mask-helpers';
 
 // the "padding" around the interior of nx-modal. In order to get borders and scrollbars to appear
 // in the desired locations, this can't actually be implemented as padding on .nx-modal, but must instead be
@@ -62,17 +63,7 @@ $nx-modal-padding: $nx-spacing-l;
 }
 
 .nx-modal-backdrop {
-  align-items: center;
-  background-color: transparentize(#555555, 0.25);
-  display: flex;
-  flex-direction: column;
-  overflow-y: hidden;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: $nx-modal-backdrop-z-index;
+  @include background-mask($nx-modal-backdrop-z-index);
 }
 
 .nx-modal-content {

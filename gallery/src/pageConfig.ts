@@ -97,6 +97,7 @@ import NxCodeSnippetPage from './components/NxCodeSnippet/NxCodeSnippetPage';
 import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
 import NxColorPickerPage from './components/NxColorPicker/NxColorPickerPage';
 import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
+import IdUtilPage from './jsUtilPages/IdUtil/IdUtilPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -197,7 +198,8 @@ const pageConfig: PageConfig = {
     'TooltipConfigProps': TooltipConfigPropsPage,
     'Policy Threat Level Utils': PolicyThreatLevelUtilsPage,
     'Validation Utils': ValidationUtilsPage,
-    'useToggle': UseTogglePage
+    'useToggle': UseTogglePage,
+    'ID Utils': IdUtilPage
   }
 };
 

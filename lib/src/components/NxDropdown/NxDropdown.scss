@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
@@ -35,7 +35,7 @@ $nx-dropdown-width: 250px;
 
   .nx-icon {
     align-self: center;
-    color: #000000;
+    color: $nx-black;
   }
 
   &.disabled {
@@ -52,7 +52,7 @@ $nx-dropdown-width: 250px;
 .nx-dropdown-menu {
   @include container-vertical();
 
-  background: $nx-off-white;
+  background: $nx-white;
   border: $nx-border-dark;
   border-radius: $nx-border-radius;
   box-shadow: 0 2px 12px 0 rgba(74, 77, 113, 0.2),
@@ -107,7 +107,7 @@ $nx-dropdown-width: 250px;
   &.disabled {
     &, &:hover, &:focus {
       background-color: transparent;
-      color: $nx-grey-3;
+      color: $nx-text-color-disabled;
       cursor: default;
       text-decoration: none;
     }
@@ -132,7 +132,7 @@ $nx-dropdown-width: 250px;
 }
 
 .nx-dropdown--divider {
-  background-color: $nx-grey-3;
+  background-color: $nx-grey-300;
   height: 1px;
   margin: 9px 1px;
 }

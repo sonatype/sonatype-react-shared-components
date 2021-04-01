@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
@@ -26,7 +26,7 @@ $twisty-proportion-difference: 2px;
 }
 
 .nx-tree-view--expanded {
-  .nx-tree-view__twisty {
+  > .nx-tree-view__trigger > .nx-tree-view__twisty {
     transform: rotate(90deg);
     padding: 0 $twisty-proportion-difference;
   }
@@ -40,7 +40,7 @@ $twisty-proportion-difference: 2px;
 
 .nx-tree-view--disabled {
   .nx-tree-view__trigger, .nx-tree-view__child {
-    color: $nx-grey-4;
+    color: $nx-grey-300;
     cursor: default;
   }
 }
@@ -157,7 +157,7 @@ button, a {
     width: 100%;
 
     &:hover {
-      background-color: #f1f3fa;
+      background-color: $nx-grey-100;
     }
 
     &.selected {
@@ -183,7 +183,7 @@ button, a {
 
       &.selected {
         background-color: $nx-blue-1000;
-        color: #fff;
+        color: $nx-white;
       }
     }
   }

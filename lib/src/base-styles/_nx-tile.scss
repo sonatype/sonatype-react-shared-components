@@ -1,10 +1,9 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-
 $nx-tile-header-height: 24px; // Minimum height
 $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right actions
 
@@ -109,7 +108,7 @@ $nx-tile-padding: $nx-spacing-l;
 }
 
 .nx-tile-content--accordion-container {
-  background-color: #e5e8f4;
+  background-color: $nx-indigo-50;
   margin-top: $nx-spacing-md;
   padding: $nx-spacing-md;
 

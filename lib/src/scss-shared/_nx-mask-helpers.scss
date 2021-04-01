@@ -1,0 +1,21 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+ @import 'nx-colors';
+
+ @mixin background-mask($z-index) {
+  align-items: center;
+  background-color: transparentize($nx-grey-800, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $z-index;
+}

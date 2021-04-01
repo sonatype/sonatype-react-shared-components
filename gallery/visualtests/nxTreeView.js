@@ -18,6 +18,10 @@ describe('NxTreeView', function() {
       clickableTreeViewSelector = '#nx-tree-view-clickable-example .nx-tree-view',
       clickableTreeViewSidebarSelector = '#nx-tree-view-clickable-sidebar-example .nx-tree-view',
       checkboxTreeViewSelector = '#nx-tree-view-checkbox-example .gallery-example-live',
+      nestedTreeViewExampleSelector = '#nx-tree-view-nested-example .gallery-example-live',
+      nestedTreeViewSelector = `${nestedTreeViewExampleSelector} > .nx-tree-view`,
+      nestedTreeViewParentSelector = `${nestedTreeViewSelector} > .nx-tree-view__trigger`,
+      nestedTreeViewChildSelector = `${nestedTreeViewSelector} .nx-tree-view .nx-tree-view__trigger`,
       emptyTreeViewSelector = '#nx-tree-view-empty-example .nx-tree-view';
 
   async function expandTreeView(selector) {
@@ -81,6 +85,26 @@ describe('NxTreeView', function() {
   describe('NxTreeView with checkbox/radio children', function() {
     it('looks right collapsed', simpleTest(checkboxTreeViewSelector));
     it('looks right expanded', simpleExpandedTest(checkboxTreeViewSelector));
+  });
+
+  describe('NxTreeView nesting', function() {
+    it('looks right with top level expanded', simpleExpandedTest(nestedTreeViewSelector));
+
+    it('looks right with child expanded', async function() {
+      const parentToggle = await browser.$(nestedTreeViewParentSelector);
+
+      await parentToggle.click();
+      await expandTreeView(nestedTreeViewChildSelector);
+      await parentToggle.click();
+
+      await simpleTest(nestedTreeViewSelector)();
+    });
+
+    it('looks right with both expanded', async function () {
+      await expandTreeView(nestedTreeViewParentSelector);
+      await expandTreeView(nestedTreeViewChildSelector);
+      await simpleTest(nestedTreeViewSelector)();
+    });
   });
 
   describe('Empty NxTreeView', function() {

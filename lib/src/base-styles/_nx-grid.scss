@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
@@ -62,7 +62,7 @@
 }
 
 .nx-grid-h-keyline--white {
-  border-color: $nx-off-white;
+  border-color: $nx-white;
 }
 
 .nx-grid-col--noborder {
@@ -108,7 +108,7 @@ h2.nx-grid-header__title {
 }
 
 .nx-grid-header__hrule {
-  border: 0 solid $nx-grey-4;
+  border: 0 solid $nx-grey-300;
   border-bottom-width: 1px;
   margin: 0;
   padding-top: 9px;

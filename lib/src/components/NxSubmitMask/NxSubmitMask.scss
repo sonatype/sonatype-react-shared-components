@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
@@ -7,30 +7,21 @@
 @import '../../scss-shared/_nx-variables';
 @import '../../scss-shared/_nx-container-helpers';
 @import '../../scss-shared/_nx-text-helpers';
+@import '../../scss-shared/_nx-mask-helpers';
 
 .nx-submit-mask {
-  align-items: center;
+  @include background-mask(0);
 
-  background-color: transparentize(#555555, 0.25);
-
-  display: flex;
-  justify-content: center;
   position: absolute;
-
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  z-index: $nx-submit-mask-z-index;
+  justify-content: center;
 }
 
 .nx-submit-mask--fullscreen {
   position: fixed;
+  justify-content: start;
+  z-index: $nx-submit-mask-z-index;
 
   .nx-submit-mask__message {
-    -ms-flex-item-align: start;
-    align-self: start;
     margin-top: 200px;
   }
 }
@@ -52,6 +43,6 @@
 
 .nx-submit-mask--success {
   .nx-submit-mask__message {
-    color: #1a832b;
+    color: $nx-green-700;
   }
 }

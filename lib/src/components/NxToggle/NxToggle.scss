@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
@@ -6,6 +6,11 @@
  */
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
+
+// In safari, the width: 0 and -moz-appearance settings fail to hide the <input>.
+// So instead, we use margin on the checkbox and corresponding negative margin on the toggle to hide
+// the <input> under the toggle
+$nx-toggle-input-hide-hack-spacing: 5px;
 
 .nx-toggle {
   display: flex;
@@ -49,17 +54,16 @@
 }
 
 .nx-toggle__input {
-  margin: 0;
-  position: absolute;
+  margin: 0 0 0 ($nx-spacing-l + $nx-toggle-input-hide-hack-spacing);
   width: 0;
-  z-index: -1;
+  -moz-appearance: none;
 
   &:checked {
     + .nx-toggle__control {
       background-color: $nx-blue-600;
 
       .nx-toggle__indicator {
-        background-color: #fff;
+        background-color: $nx-white;
         margin-left: 20px;
       }
     }
@@ -71,14 +75,14 @@
 }
 
 .nx-toggle__control {
-  background-color: #fff;
+  background-color: $nx-white;
   border: 1px solid $nx-blue-600;
   border-radius: 12px;
   box-sizing: border-box;
   display: flex;
   flex: none;
   height: 24px;
-  margin-left: $nx-spacing-l;
+  margin-left: -$nx-toggle-input-hide-hack-spacing;
   padding: $nx-spacing-xxs - 1px;
   width: 44px;
 }
