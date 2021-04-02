@@ -51,11 +51,29 @@ export default function useDropdownEvents(
 
   const handleDocumentClick = (event: MouseEvent) => {
     if (isOpen && !isToggling.current && externalOnToggleCollapse) {
+      let defaultPrevented = false;
+
       if (externalOnCloseClick) {
-        externalOnCloseClick(event);
+        /* when consuming code calls preventDefault on the event, we only want that to affect this dropdown.
+         * Since the mouse clicks are captured at the document level, calling preventDefault on the actual
+         * native event could have a wide variety of other effects, so we proxy the event object overriding
+         * preventDefault with our own impl that only affects a locally-scoped variable
+         */
+        const proxiedClickEvent = new Proxy(event, {
+          get(target, prop, receiver) {
+            if (prop === 'preventDefault') {
+              return () => { defaultPrevented = true };
+            }
+            else {
+              return Reflect.get(target, prop, receiver);
+            }
+          }
+        });
+
+        externalOnCloseClick(proxiedClickEvent);
       }
 
-      if (!event.defaultPrevented) {
+      if (!defaultPrevented) {
         externalOnToggleCollapse();
       }
     }
