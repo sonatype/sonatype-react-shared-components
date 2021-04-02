@@ -111,8 +111,12 @@ const NxDropdownPage = () =>
               <td className="nx-cell">
                 A callback function to execute when a click is detected anywhere on the document which would by
                 default close this dropdown (i.e. any click while the dropdown is open). This callback is dispatched
-                before the dropdown is closed and is provided with the <em>native</em> MouseEvent object. Calling
-                <code className="nx-code">preventDefault</code> on this MouseEvent will cause the dropdown not to close.
+                before the dropdown is closed and is provided with a proxy of the <em>native</em> MouseEvent object.
+                Calling <code className="nx-code">preventDefault</code> on this MouseEvent will cause the dropdown
+                not to close. Note however that the event is proxied in such a way that
+                calling <code className="nx-code">preventDefault</code> <em>will not</em> have any other
+                effects – that is, the true native MouseEvent's <code className="nx-code">defautlPrevented</code> flag
+                will be untouched, and only the logic within the dropdown will be affected.
               </td>
             </tr>
             <tr className="nx-table-row">
