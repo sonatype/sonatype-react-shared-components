@@ -115,7 +115,7 @@ const NxDropdownPage = () =>
                 Calling <code className="nx-code">preventDefault</code> on this MouseEvent will cause the dropdown
                 not to close. Note however that the event is proxied in such a way that
                 calling <code className="nx-code">preventDefault</code> <em>will not</em> have any other
-                effects – that is, the true native MouseEvent's <code className="nx-code">defautlPrevented</code> flag
+                effects – that is, the true native MouseEvent's <code className="nx-code">defaultPrevented</code> flag
                 will be untouched, and only the logic within the dropdown will be affected.
               </td>
             </tr>
