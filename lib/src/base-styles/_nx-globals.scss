@@ -4,12 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@import '../scss-shared/nx-container-helpers';
+
 $nx-scrollable-default-height: 400px;
 
 /*
   #Basic links
 */
 .nx-text-link {
+  @include container-horizontal;
+
   color: $nx-link-color;
   cursor: pointer;
   text-decoration: none;
