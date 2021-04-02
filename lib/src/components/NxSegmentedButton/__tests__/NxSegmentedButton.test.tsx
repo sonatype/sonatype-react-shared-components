@@ -277,4 +277,59 @@ describe('NxSegmentedButton', function() {
     component.simulate('keyDown', { key: 'Escape' });
     expect(onToggleOpen).not.toHaveBeenCalled();
   });
+
+  it('does not call onToggleOpen if ESC is pressed within the component and onCloseKeyDown preventsDefault',
+      function() {
+        const onToggleOpen = jest.fn(),
+            component = getMounted({
+              onToggleOpen,
+              isOpen: true,
+              onCloseKeyDown: e => e.preventDefault()
+            }, { attachTo: container });
+
+        act(() => {
+          component.find('button.nx-segmented-btn__dropdown-btn').getDOMNode()
+              .dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+        });
+        component.update();
+        expect(onToggleOpen).not.toHaveBeenCalled();
+      }
+  );
+
+  it('does not call onToggleOpen if a click happens anywhere other than the dropdown button when onCloseClick ' +
+      'preventsDefault', function() {
+    const onToggleOpen = jest.fn(),
+        component = getMounted({
+          children: <button className="nx-dropdown-button">Foo</button>,
+          onToggleOpen,
+          isOpen: true,
+          onCloseClick: e => e.preventDefault()
+        }, { attachTo: container });
+
+    expect(onToggleOpen).not.toHaveBeenCalled();
+
+    act(() => {
+      document.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleOpen).not.toHaveBeenCalled();
+
+    act(() => {
+      component.find('.nx-dropdown-button').getDOMNode().dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleOpen).not.toHaveBeenCalled();
+
+    act(() => {
+      component.find('button.nx-segmented-btn__dropdown-btn').getDOMNode().dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleOpen).toHaveBeenCalledTimes(1);
+  });
 });
