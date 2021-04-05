@@ -12,17 +12,8 @@ describe('NxSubmitMask', function() {
   });
 
   const loadingMaskSelector = '#nx-submit-mask-loading-example .nx-submit-mask',
-      successMaskSelector = '#nx-submit-mask-success-example .nx-submit-mask',
-      fullscreenMaskActivationBtnSelector = '#nx-submit-mask-fullscreen-example button';
+      successMaskSelector = '#nx-submit-mask-success-example .nx-submit-mask';
 
   it('looks right when loading', simpleTest(loadingMaskSelector));
   it('looks right when successful', simpleTest(successMaskSelector));
-  it('looks right when fullscreen', async function() {
-    const btn = await browser.$(fullscreenMaskActivationBtnSelector);
-
-    await btn.scrollIntoView({ block: 'center' });
-    await btn.click();
-
-    await browser.eyesSnapshot(null);
-  });
 });
