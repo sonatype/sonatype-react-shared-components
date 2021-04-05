@@ -9,11 +9,9 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxStatefulSubmitMaskExample from './NxStatefulSubmitMaskExample';
 import NxStatefulSubmitMaskCustomMessageExample from './NxStatefulSubmitMaskCustomMessageExample';
-import NxStatefulSubmitMaskFullscreenExample from './NxStatefulSubmitMaskFullscreenExample';
 
 const NxStatefulSubmitMaskCode = require('./NxStatefulSubmitMaskExample?raw'),
-    NxStatefulSubmitMaskCustomMessageCode = require('./NxStatefulSubmitMaskCustomMessageExample?raw'),
-    NxStatefulSubmitMaskFullscreenCode = require('./NxStatefulSubmitMaskFullscreenExample?raw');
+    NxStatefulSubmitMaskCustomMessageCode = require('./NxStatefulSubmitMaskCustomMessageExample?raw');
 
 const NxStatefulSubmitMaskPage = () =>
   <>
@@ -38,15 +36,6 @@ const NxStatefulSubmitMaskPage = () =>
           </tr>
         </thead>
         <tbody>
-          <tr className="nx-table-row nx-table-row--header">
-            <td className="nx-cell">fullscreen</td>
-            <td className="nx-cell">boolean</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
-              Whether to display the mask fullscreen. When it is displayed fullscreen, it is still bound to the same
-              place in the DOM and uses CSS to achieve the fullscreen effect. Defaults to false.
-            </td>
-          </tr>
           <tr className="nx-table-row nx-table-row--header">
             <td className="nx-cell">success</td>
             <td className="nx-cell">boolean</td>
@@ -98,12 +87,6 @@ const NxStatefulSubmitMaskPage = () =>
                         codeExamples={NxStatefulSubmitMaskCustomMessageCode}>
       An example with a similar setup to the one above. This one however includes a custom message for both the
       non-success and success phases.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Fullscreen Example"
-                        liveExample={NxStatefulSubmitMaskFullscreenExample}
-                        codeExamples={NxStatefulSubmitMaskFullscreenCode}>
-      This example is again similar in setup to the first one, but is displayed fullscreen.
     </GalleryExampleTile>
   </>;
 

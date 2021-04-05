@@ -73,7 +73,6 @@ export default function NxFormCustomizedExample() {
             submitBtnText="Send it"
             submitMaskMessage="Sending…"
             submitMaskSuccessMessage="Sent!"
-            submitMaskFullscreen={false}
             additionalFooterBtns={additionalFooterBtns}>
       <NxFormGroup label="Username">
         <NxTextInput { ...usernameState } onChange={onUsernameChange} />
