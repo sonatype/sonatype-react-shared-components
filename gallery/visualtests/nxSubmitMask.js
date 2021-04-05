@@ -11,9 +11,24 @@ describe('NxSubmitMask', function() {
     await browser.url('#/pages/NxSubmitMask');
   });
 
-  const loadingMaskSelector = '#nx-submit-mask-loading-example .nx-submit-mask',
-      successMaskSelector = '#nx-submit-mask-success-example .nx-submit-mask';
+  const loadingMaskBtnSelector = '#nx-submit-mask-loading-example button',
+      successMaskBtnSelector = '#nx-submit-mask-success-example button';
 
-  it('looks right when loading', simpleTest(loadingMaskSelector));
-  it('looks right when successful', simpleTest(successMaskSelector));
+  it('looks right when loading', async function() {
+    const btn = await browser.$(loadingMaskBtnSelector);
+
+    await btn.scrollIntoView({ block: 'center' });
+    await btn.click();
+
+    await browser.eyesSnapshot(null);
+  });
+
+  it('looks right when successful', async function() {
+    const btn = await browser.$(successMaskBtnSelector);
+
+    await btn.scrollIntoView({ block: 'center' });
+    await btn.click();
+
+    await browser.eyesSnapshot(null);
+  });
 });
