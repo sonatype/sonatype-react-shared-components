@@ -26,7 +26,7 @@
 }
 
 .nx-threat-counter__text {
-  @include semi-bold;
+  @include semi-bold();
   margin-left: $nx-spacing-xs;
   text-transform: uppercase;
 }
@@ -51,17 +51,13 @@
   display: inline-grid;
   row-gap: $nx-spacing-md;
   column-gap: $nx-spacing-md;
+  grid-template-columns: auto auto auto auto;
   margin: $nx-spacing-md 0 $nx-spacing-l 0;
 }
 
-.nx-threat-counter-container--row {
-  @include container-horizontal;
-  grid-template-columns: auto auto auto auto;
-}
-
 .nx-threat-counter-container--column {
-  @include container-vertical;
   grid-template-rows: auto auto;
+  grid-template-columns: auto;
 }
 
 .nx-threat-counter-container--grid {
