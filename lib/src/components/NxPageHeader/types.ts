@@ -18,6 +18,8 @@ export interface ProductInfo {
 
 export type Props = Omit<AbstractNxPageHeaderProps, 'logo' | 'productInfoContent'> & {
   productInfo?: ProductInfo | null;
+  logoPath?: string | null;
+  alt?: string | null;
 };
 
 export const propTypes: ValidationMap<Props> = {
@@ -25,5 +27,7 @@ export const propTypes: ValidationMap<Props> = {
   productInfo: PropTypes.shape({
     name: PropTypes.string.isRequired,
     version: PropTypes.string
-  })
+  }),
+  logoPath: PropTypes.string,
+  alt: PropTypes.string
 };
