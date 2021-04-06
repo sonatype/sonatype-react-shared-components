@@ -19,7 +19,6 @@ describe('NxThreatCounter', function() {
 
   it('renders the container with the expected default classes', function() {
     expect(getShallowComponent().find('.nx-threat-counter-container')).toExist();
-    expect(getShallowComponent().find('.nx-threat-counter-container--row')).toExist();
   });
 
   it('renders all four indicators', function() {
