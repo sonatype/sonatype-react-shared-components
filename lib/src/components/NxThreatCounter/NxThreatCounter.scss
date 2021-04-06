@@ -26,6 +26,7 @@
 }
 
 .nx-threat-counter__text {
+  @include semi-bold;
   margin-left: $nx-spacing-xs;
   text-transform: uppercase;
 }
@@ -51,42 +52,24 @@
   margin: $nx-spacing-md 0 $nx-spacing-l 0;
 }
 
+.nx-threat-counter-container {
+  display: grid;
+  row-gap: $nx-spacing-md;
+  column-gap: $nx-spacing-md;
+}
+
 .nx-threat-counter-container--row {
   @include container-horizontal;
-
-  .nx-threat-counter {
-    margin-right: $nx-spacing-md;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
+  grid-template-rows: auto;
+  grid-template-columns: auto auto auto auto;
 }
 
 .nx-threat-counter-container--column {
   @include container-vertical;
-  flex-direction: column;
-
-  .nx-threat-counter {
-    margin-bottom: $nx-spacing-md;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
+  grid-template-rows: auto auto;
 }
 
 .nx-threat-counter-container--grid {
-  flex-wrap: wrap;
-  max-width: 350px;
-
-  .nx-threat-counter {
-    &:nth-child(1n + 3) {
-      margin-top: $nx-spacing-md;
-    }
-
-    &:nth-child(2n + 2) {
-      margin-left: 16px;
-    }
-  }
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
 }
