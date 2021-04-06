@@ -7,7 +7,7 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
 
-.nx-vulnerability-indicator {
+.nx-threat-counter {
   align-items: center;
   box-sizing: content-box;
   border: 1px solid;
@@ -21,40 +21,40 @@
   width: max-content;
 }
 
-.nx-vulnerability-indicator__count {
+.nx-threat-counter__count {
   @include bold();
 }
 
-.nx-vulnerability-indicator__text {
+.nx-threat-counter__text {
   margin-left: $nx-spacing-xs;
   text-transform: uppercase;
 }
 
-.nx-vulnerability-indicator--critical {
-  border-color: $nx-vulnerability-indicator-critical;
+.nx-threat-counter--critical {
+  border-color: $nx-threat-counter-critical;
 }
 
-.nx-vulnerability-indicator--severe {
-  border-color: $nx-vulnerability-indicator-severe;
+.nx-threat-counter--severe {
+  border-color: $nx-threat-counter-severe;
 }
 
-.nx-vulnerability-indicator--moderate {
-  border-color: $nx-vulnerability-indicator-moderate;
+.nx-threat-counter--moderate {
+  border-color: $nx-threat-counter-moderate;
 }
 
-.nx-vulnerability-indicator--low {
-  border-color: $nx-vulnerability-indicator-low;
+.nx-threat-counter--low {
+  border-color: $nx-threat-counter-low;
 }
 
-.nx-vulnerability-indicator-container {
+.nx-threat-counter-container {
   display: flex;
   margin: $nx-spacing-md 0 $nx-spacing-l 0;
 }
 
-.nx-vulnerability-indicator-container--row {
+.nx-threat-counter-container--row {
   @include container-horizontal;
 
-  .nx-vulnerability-indicator {
+  .nx-threat-counter {
     margin-right: $nx-spacing-md;
 
     &:last-child {
@@ -63,11 +63,11 @@
   }
 }
 
-.nx-vulnerability-indicator-container--column {
+.nx-threat-counter-container--column {
   @include container-vertical;
   flex-direction: column;
 
-  .nx-vulnerability-indicator {
+  .nx-threat-counter {
     margin-bottom: $nx-spacing-md;
 
     &:last-child {
@@ -76,11 +76,11 @@
   }
 }
 
-.nx-vulnerability-indicator-container--grid {
+.nx-threat-counter-container--grid {
   flex-wrap: wrap;
   max-width: 350px;
 
-  .nx-vulnerability-indicator {
+  .nx-threat-counter {
     &:nth-child(1n + 3) {
       margin-top: $nx-spacing-md;
     }

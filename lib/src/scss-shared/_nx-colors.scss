@@ -67,7 +67,7 @@ $nx-selectable-colors: (
 );
 
 // Vulnerability Colours
-$nx-vulnerability-indicator-critical: $nx-red-800;
-$nx-vulnerability-indicator-severe: $nx-orange-700;
-$nx-vulnerability-indicator-moderate: $nx-yellow-700;
-$nx-vulnerability-indicator-low: $nx-blue-600;
+$nx-threat-counter-critical: $nx-red-800;
+$nx-threat-counter-severe: $nx-orange-700;
+$nx-threat-counter-moderate: $nx-yellow-700;
+$nx-threat-counter-low: $nx-blue-600;

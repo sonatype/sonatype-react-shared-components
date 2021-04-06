@@ -213,5 +213,5 @@ export { default as NxColorPicker, Props } from './components/NxColorPicker/NxCo
 
 export * from './util/idUtil';
 
-export { default as NxVulnerabilityIndicator, Props as NxVulnerabilityIndicatorProps }
-  from './components/NxVulnerabilityIndicator/NxVulnerabilityIndicator';
+export { default as NxThreatCounter, Props as NxThreatCounterProps }
+  from './components/NxThreatCounter/NxThreatCounter';

@@ -98,7 +98,7 @@ import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
 import NxColorPickerPage from './components/NxColorPicker/NxColorPickerPage';
 import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
 import IdUtilPage from './jsUtilPages/IdUtil/IdUtilPage';
-import NxVulnerabilityIndicatorPage from './components/NxVulnerabilityIndicator/NxVulnerabilityIndicatorPage';
+import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -153,7 +153,7 @@ const pageConfig: PageConfig = {
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
-    NxVulnerabilityIndicator: NxVulnerabilityIndicatorPage
+    NxThreatCounter: NxThreatCounterPage
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,
