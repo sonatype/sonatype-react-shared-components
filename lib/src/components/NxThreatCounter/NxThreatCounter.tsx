@@ -16,8 +16,7 @@ export default function NxThreatCounter({
   criticalCount, severeCount, moderateCount, lowCount, layout, className, ...attrs }: Props) {
 
   const layoutClasses = classnames('nx-threat-counter-container', className, {
-    [`nx-threat-counter-container--${layout}`]: layout,
-    ['nx-threat-counter-container--row']: !layout
+    [`nx-threat-counter-container--${layout}`]: layout
   });
 
   return (
