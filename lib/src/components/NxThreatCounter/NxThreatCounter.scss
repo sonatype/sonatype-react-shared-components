@@ -48,19 +48,14 @@
 }
 
 .nx-threat-counter-container {
-  display: flex;
-  margin: $nx-spacing-md 0 $nx-spacing-l 0;
-}
-
-.nx-threat-counter-container {
-  display: grid;
+  display: inline-grid;
   row-gap: $nx-spacing-md;
   column-gap: $nx-spacing-md;
+  margin: $nx-spacing-md 0 $nx-spacing-l 0;
 }
 
 .nx-threat-counter-container--row {
   @include container-horizontal;
-  grid-template-rows: auto;
   grid-template-columns: auto auto auto auto;
 }
 
