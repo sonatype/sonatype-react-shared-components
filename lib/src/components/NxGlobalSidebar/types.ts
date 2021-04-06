@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ValidationMap, HTMLAttributes, Validator, ReactNode } from 'react';
+import { ValidationMap, HTMLAttributes, AnchorHTMLAttributes, Validator, ReactNode } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 export interface Props {
@@ -40,9 +40,8 @@ export const nxGlobalSidebarNavigationPropTypes = {
   className: PropTypes.string
 } as ValidationMap<NxGlobalSidebarNavigationProps>;
 
-export interface NxGlobalSidebarNavigationLinkProps {
+export interface NxGlobalSidebarNavigationLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   isSelected?: boolean | null;
-  className?: string | null;
   icon: IconDefinition;
   text: string;
   href: string;
@@ -50,7 +49,6 @@ export interface NxGlobalSidebarNavigationLinkProps {
 
 export const nxGlobalSidebarNavigationLinkPropTypes: ValidationMap<NxGlobalSidebarNavigationLinkProps> = {
   isSelected: PropTypes.bool,
-  className: PropTypes.string,
   icon: PropTypes.object.isRequired as Validator<IconDefinition>,
   text: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired

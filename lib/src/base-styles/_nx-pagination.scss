@@ -49,8 +49,8 @@
   }
 
   &.selected {
-    background-color: #232c50;
-    border-color: #232c50;
+    background-color: $nx-indigo-1100;
+    border-color: $nx-indigo-1100;
     color: var(--nx-component-background-color);
     cursor: default;
   }
