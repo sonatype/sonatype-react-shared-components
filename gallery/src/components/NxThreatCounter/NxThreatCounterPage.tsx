@@ -30,74 +30,27 @@ const NxThreatCounterPage = () =>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Class</th>
-            <th className="nx-cell nx-cell--header">Location</th>
+            <th className="nx-cell nx-cell--header">Prop</th>
+            <th className="nx-cell nx-cell--header">Type</th>
+            <th className="nx-cell nx-cell--header">Required</th>
             <th className="nx-cell nx-cell--header">Details</th>
           </tr>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-threat-counter-container</code></td>
-            <td className="nx-cell">Container</td>
-            <td className="nx-cell">Basic container class. It's always used with one of the modifiers below.</td>
+            <td className="nx-cell">criticalCount | severeCount | moderateCount | lowCount</td>
+            <td className="nx-cell">numerical</td>
+            <td className="nx-cell">Yes</td>
+            <td className="nx-cell">A numerical value is required for each type of counter.</td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell">layout</td>
+            <td className="nx-cell">string</td>
+            <td className="nx-cell">No</td>
             <td className="nx-cell">
-              <code className="nx-code">.nx-threat-counter-container--row</code>
+              Sets the layout of the counters. If no value is provided then "row" layout will be specified. The other
+              options are <code className="nx-code">column</code> and <code className="nx-code">grid</code>.
             </td>
-            <td className="nx-cell">
-              Modifier of <code className="nx-code">.nx-threat-counter-container</code>
-            </td>
-            <td className="nx-cell">
-              Used when you want the counters to appear in a row. This is the default. If no layout is specified
-              "row" will be used.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">
-              <code className="nx-code">.nx-threat-counter-container--column</code>
-            </td>
-            <td className="nx-cell">
-              Modifier of <code className="nx-code">.nx-threat-counter-container</code>
-            </td>
-            <td className="nx-cell">Used when you want the counters to appear in a column.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">
-              <code className="nx-code">.nx-threat-counter-container--grid</code>
-            </td>
-            <td className="nx-cell">
-              Modifier of <code className="nx-code">.nx-threat-counter-container</code>
-            </td>
-            <td className="nx-cell">Used when you want the threat counters to appear in a two by two grid layout.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-threat-counter</code></td>
-            <td className="nx-cell">Top level</td>
-            <td className="nx-cell">Basic threat counter styling.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">
-              <code className="nx-code">nx-threat-counter--critical</code><br/>
-              <code className="nx-code">nx-threat-counter--severe</code><br/>
-              <code className="nx-code">nx-threat-counter--moderate</code><br/>
-              <code className="nx-code">nx-threat-counter--low</code>
-            </td>
-            <td className="nx-cell">Modifiers of <code className="nx-code">.nx-threat-counter</code></td>
-            <td className="nx-cell">
-              These four modifiers style <code className="nx-code">.nx-threat-counter</code>
-              to match the required threat level.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-threat-counter__count</code></td>
-            <td className="nx-cell">Element of <code className="nx-code">.nx-threat-counter</code></td>
-            <td className="nx-cell">This class styles the count text.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-threat-counter__text</code></td>
-            <td className="nx-cell">Element of <code className="nx-code">.nx-threat-counter</code></td>
-            <td className="nx-cell">this class styles the threat level text.</td>
           </tr>
         </tbody>
       </table>
