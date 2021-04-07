@@ -65,9 +65,3 @@ $nx-selectable-colors: (
   yellow: ($nx-yellow-700, $nx-yellow-50),
   lime: ($nx-green-200, $nx-green-50)
 );
-
-// Vulnerability Colours
-$nx-threat-counter-critical: $nx-red-800;
-$nx-threat-counter-severe: $nx-orange-700;
-$nx-threat-counter-moderate: $nx-yellow-700;
-$nx-threat-counter-low: $nx-blue-600;

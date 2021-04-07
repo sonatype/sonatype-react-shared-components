@@ -32,19 +32,19 @@
 }
 
 .nx-threat-counter--critical {
-  border-color: $nx-threat-counter-critical;
+  border-color: $nx-threat-color-critical;
 }
 
 .nx-threat-counter--severe {
-  border-color: $nx-threat-counter-severe;
+  border-color: $nx-threat-color-severe;
 }
 
 .nx-threat-counter--moderate {
-  border-color: $nx-threat-counter-moderate;
+  border-color: $nx-threat-color-moderate;
 }
 
 .nx-threat-counter--low {
-  border-color: $nx-threat-counter-low;
+  border-color: $nx-threat-color-low;
 }
 
 .nx-threat-counter-container {
