@@ -142,6 +142,7 @@ const pageConfig: PageConfig = {
     NxTag: NxTagPage,
     NxTextInput: NxTextInputPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
+    NxThreatCounter: NxThreatCounterPage,
     NxThreatIndicator: NxThreatIndicatorPage,
     NxToggle: NxTogglePage,
     NxStatefulToggle: NxStatefulTogglePage,
@@ -152,8 +153,7 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
-    NxVulnerabilityDetails: NxVulnerabilityDetailsPage,
-    NxThreatCounter: NxThreatCounterPage
+    NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,
