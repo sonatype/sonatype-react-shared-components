@@ -14,7 +14,7 @@ import { NxGlobalSidebarNavigationLinkProps as Props, nxGlobalSidebarNavigationL
 export { NxGlobalSidebarNavigationLinkProps } from './types';
 
 const NxGlobalSidebarNavigationLink: FunctionComponent<Props> = function NxNavigationSidebarLink(props) {
-  const { className, isSelected, icon, text, href } = props;
+  const { className, isSelected, icon, text, ...attrs } = props;
 
   const classes = classnames(className, 'nx-global-sidebar__navigation-link nx-text-link', {
     'selected': isSelected
@@ -23,7 +23,7 @@ const NxGlobalSidebarNavigationLink: FunctionComponent<Props> = function NxNavig
 
   return (
     <NxOverflowTooltip>
-      <a href={href} className={classes}>
+      <a className={classes} { ...attrs }>
         <NxFontAwesomeIcon icon={icon} fixedWidth />
         <span className={textClasses}>
           {text}

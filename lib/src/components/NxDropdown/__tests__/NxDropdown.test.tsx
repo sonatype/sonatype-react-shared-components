@@ -221,4 +221,59 @@ describe('NxDropdown', () => {
         expect(onToggleCollapse).not.toHaveBeenCalled();
       }
   );
+
+  it('does not call onToggleCollapse if ESC is pressed within the component and onCloseKeyDown preventsDefault',
+      function() {
+        const onToggleCollapse = jest.fn(),
+            component = getMountedComponent({
+              onToggleCollapse,
+              isOpen: true,
+              onCloseKeyDown: e => e.preventDefault()
+            }, { attachTo: container });
+
+        act(() => {
+          component.find('button.nx-dropdown__toggle').getDOMNode()
+              .dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+        });
+        component.update();
+        expect(onToggleCollapse).not.toHaveBeenCalled();
+      }
+  );
+
+  it('does not call onToggleCollapse if a click happens anywhere other than the dropdown button when onCloseClick ' +
+      'preventsDefault', function() {
+    const onToggleCollapse = jest.fn(),
+        component = getMountedComponent({
+          children: <button className="nx-dropdown-button">Foo</button>,
+          onToggleCollapse,
+          isOpen: true,
+          onCloseClick: e => e.preventDefault()
+        }, { attachTo: container });
+
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+
+    act(() => {
+      document.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+
+    act(() => {
+      component.find('.nx-dropdown-button').getDOMNode().dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+
+    act(() => {
+      component.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+    expect(onToggleCollapse).toHaveBeenCalledTimes(1);
+  });
 });
