@@ -61,7 +61,7 @@
 
   // don't go beyond the max that it would have in a normal .nx-page-content, even when in an
   // .nx-page-content--full-width
-  max-width: calc(#{1 - $nx-content-width-proportion} * var(--page-width-max));
+  max-width: calc((1 - var(--content-width-proportion)) * var(--page-width-max));
   overflow-x: hidden;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-xs $nx-spacing-l;
   position: relative;

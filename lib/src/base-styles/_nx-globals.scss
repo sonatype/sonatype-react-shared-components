@@ -76,7 +76,8 @@ $nx-scrollable-default-height: 400px;
   // page dimensions
   --page-width-max: 1600px;
   --page-width-min: 1366px;
-  --content-width: 100% * $nx-content-width-proportion;
+  --content-width-proportion: 0.76;
+  --content-width: calc(100% * var(--content-width-proportion));
   --sidebar-width: calc(100% - var(--content-width));
   --scrollbar-width: 15px;
 
