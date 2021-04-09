@@ -10,11 +10,7 @@
 @import '../../scss-shared/_nx-mask-helpers';
 
 .nx-submit-mask {
-  @include background-mask(0);
-
-  position: fixed;
-  justify-content: start;
-  z-index: $nx-submit-mask-z-index;
+  @include background-mask($nx-submit-mask-z-index);
 
   .nx-submit-mask__message {
     margin-top: 200px;
