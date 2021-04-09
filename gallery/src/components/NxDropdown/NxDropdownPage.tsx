@@ -15,13 +15,15 @@ import NxDropdownDisabledExample from './NxDropdownDisabledExample';
 import NxDropdownRightButtonsExample from './NxDropdownRightButtonsExample';
 import NxDropdownCustomLabelExample from './NxDropdownCustomLabelExample';
 import NxDropdownLinksExample from './NxDropdownLinksExample';
+import NxDropdownCloseHandlerExample from './NxDropdownCloseHandlerExample';
 
 const nxDropdownNavigationExampleCode = require('./NxDropdownNavigationExample?raw'),
     nxDropdownScrollingExampleCode = require('./NxDropdownScrollingExample?raw'),
     nxDropdownDisabledExampleCode = require('./NxDropdownDisabledExample?raw'),
     nxDropdownCustomLabelExampleCode = require('./NxDropdownCustomLabelExample?raw'),
     nxDropdownRightButtonsExampleCode = require('./NxDropdownRightButtonsExample?raw'),
-    nxDropdownLinksExampleCode = require('./NxDropdownLinksExample?raw');
+    nxDropdownLinksExampleCode = require('./NxDropdownLinksExample?raw'),
+    nxDropdownCloseHandlerExampleCode = require('./NxDropdownCloseHandlerExample?raw');
 
 const NxDropdownPage = () =>
   <>
@@ -100,6 +102,33 @@ const NxDropdownPage = () =>
                 to specify the tooltip: the simpler way is to simply specify the tooltip text as a string. If control
                 of more complex tooltip options is desired, an object can be passed which will serve as the props for
                 NxTooltip
+              </td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell">onCloseClick</td>
+              <td className="nx-cell">Function (MouseEvent =&lt; void)</td>
+              <td className="nx-cell">No</td>
+              <td className="nx-cell">
+                A callback function to execute when a click is detected anywhere on the document which would by
+                default close this dropdown (i.e. any click while the dropdown is open). This callback is dispatched
+                before the dropdown is closed and is provided with a proxy of the <em>native</em> MouseEvent object.
+                Calling <code className="nx-code">preventDefault</code> on this MouseEvent will cause the dropdown
+                not to close. Note however that the event is proxied in such a way that
+                calling <code className="nx-code">preventDefault</code> <em>will not</em> have any other
+                effects – that is, the true native MouseEvent's <code className="nx-code">defaultPrevented</code> flag
+                will be untouched, and only the logic within the dropdown will be affected.
+              </td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell">onCloseKeyDown</td>
+              <td className="nx-cell">Function (KeyboardEvent =&lt; void)</td>
+              <td className="nx-cell">No</td>
+              <td className="nx-cell">
+                A callback function to execute when a key press is detected which would by
+                default close this dropdown (i.e. an ESC keypress occurring within the dropdown while it is open).
+                This callback is dispatched before the dropdown is closed and is provided with the React KeyboardEvent
+                object.  Calling <code className="nx-code">preventDefault</code> on this event object will cause the
+                dropdown not to close.
               </td>
             </tr>
             <tr className="nx-table-row">
@@ -242,6 +271,16 @@ const NxDropdownPage = () =>
       from the browser that prevent them from working with the styling here. Additionally, note that
       the <code className="nx-code">nx-dropdown-button-content</code> is present on all menu items, even those that
       do not have icon buttons, in order to get consistent menu item heights.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with disabled close handlers"
+                        liveExample={NxDropdownCloseHandlerExample}
+                        codeExamples={nxDropdownCloseHandlerExampleCode}>
+      This example demonstrates the usage of the <code className="nx-code">onCloseClick</code>{' '}
+      and <code className="nx-code">onCloseKeyDown</code> props. These props can be used to disable the
+      close-on-click and close-on-ESC behaviors that the dropdown has by default, by
+      calling <code className="nx-code">preventDefault()</code> on the event. This example demonstrates both props
+      simulataneously, but either can be used independently if desired.
     </GalleryExampleTile>
   </>;
 

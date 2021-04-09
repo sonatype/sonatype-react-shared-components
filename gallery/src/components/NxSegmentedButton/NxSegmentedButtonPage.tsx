@@ -11,11 +11,13 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxSegmentedButtonPrimaryExample from './NxSegmentedButtonPrimaryExample';
 import NxSegmentedButtonSecondaryExample from './NxSegmentedButtonSecondaryExample';
 import NxSegmentedButtonTertiaryExample from './NxSegmentedButtonTertiaryExample';
+import NxSegmentedButtonCloseHandlerExample from './NxSegmentedButtonCloseHandlerExample';
 import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
 
 const nxSegmentedButtonPrimaryCode = require('./NxSegmentedButtonPrimaryExample?raw'),
     nxSegmentedButtonSecondaryCode = require('./NxSegmentedButtonSecondaryExample?raw'),
-    nxSegmentedButtonTertiaryCode = require('./NxSegmentedButtonTertiaryExample?raw');
+    nxSegmentedButtonTertiaryCode = require('./NxSegmentedButtonTertiaryExample?raw'),
+    nxSegmentedButtonCloseHandlerExampleCode = require('./NxSegmentedButtonCloseHandlerExample?raw');
 
 export default function NxSegmentedButtonPage() {
   return (
@@ -98,6 +100,35 @@ export default function NxSegmentedButtonPage() {
               <NxTableCell>Disables both segments of the button when true.</NxTableCell>
             </NxTableRow>
             <NxTableRow>
+              <NxTableCell>onCloseClick</NxTableCell>
+              <NxTableCell>Function (MouseEvent =&lt; void)</NxTableCell>
+              <NxTableCell>No</NxTableCell>
+              <NxTableCell/>
+              <NxTableCell>
+                A callback function to execute when a click is detected anywhere on the document which would by
+                default close this dropdown (i.e. any click while the dropdown is open). This callback is dispatched
+                before the dropdown is closed and is provided with a proxy of the <em>native</em> MouseEvent object.
+                Calling <code className="nx-code">preventDefault</code> on this MouseEvent will cause the dropdown
+                not to close. Note however that the event is proxied in such a way that
+                calling <code className="nx-code">preventDefault</code> <em>will not</em> have any other
+                effects – that is, the true native MouseEvent's <code className="nx-code">defaultPrevented</code> flag
+                will be untouched, and only the logic within the dropdown will be affected.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>onCloseKeyDown</NxTableCell>
+              <NxTableCell>Function (KeyboardEvent =&lt; void)</NxTableCell>
+              <NxTableCell>No</NxTableCell>
+              <NxTableCell/>
+              <NxTableCell>
+                A callback function to execute when a key press is detected which would by
+                default close this dropdown (i.e. an ESC keypress occurring within the dropdown while it is open).
+                This callback is dispatched before the dropdown is closed and is provided with the React KeyboardEvent
+                object.  Calling <code className="nx-code">preventDefault</code> on this event object will cause the
+                dropdown not to close.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
               <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
               <NxTableCell>
                 <a target="_blank"
@@ -142,6 +173,16 @@ export default function NxSegmentedButtonPage() {
         An <code className="nx-code">NxSegmentedButton</code> using secondary styling, a disabled
         secondary-styled <code className="nx-code">NxSegmentedButton</code>, and a normal button to demonstrate
         alignment.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Example with disabled close handlers"
+                          liveExample={NxSegmentedButtonCloseHandlerExample}
+                          codeExamples={nxSegmentedButtonCloseHandlerExampleCode}>
+        This example demonstrates the usage of the <code className="nx-code">onCloseClick</code>{' '}
+        and <code className="nx-code">onCloseKeyDown</code> props. These props can be used to disable the
+        close-on-click and close-on-ESC behaviors that the dropdown has by default, by
+        calling <code className="nx-code">preventDefault()</code> on the event. This example demonstrates both props
+        simulataneously, but either can be used independently if desired.
       </GalleryExampleTile>
     </>
   );
