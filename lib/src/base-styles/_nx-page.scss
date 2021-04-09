@@ -11,8 +11,10 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-areas:
-    "title tags actions"
+    "title sub-title actions"
+    "tags tags tags"
     "description description description";
+  column-gap: $nx-spacing-md;
   margin: 0 0 $nx-spacing-l 0;
 
   .nx-h1 {
@@ -29,19 +31,29 @@
   }
 }
 
+.nx-page-title__sub-title {
+  border-left: 1px solid $nx-indigo-100;
+  margin: 0;
+  padding-left: $nx-spacing-md;
+}
+
 .nx-page-title__tags {
   @include container-horizontal;
 
   grid-area: tags;
-  margin-left: $nx-spacing-md;
+  margin: $nx-spacing-xs 0 0 0;
 
   .nx-policy-violation-indicator {
     margin: 0;
+  }
+
+  & + .nx-page-title__description {
+    margin-top: $nx-spacing-xs;
   }
 }
 
 .nx-page-title__description {
   @include container-vertical;
   grid-area: description;
-  margin: $nx-spacing-xs 0 0 0;
+  margin: $nx-spacing-md 0 0 0;
 }

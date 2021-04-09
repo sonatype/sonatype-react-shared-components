@@ -9,11 +9,14 @@ import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxPageTitlePolicyViolationIndicatorExample from './NxPageTitlePolicyViolationIndicatorExample';
+import NxPageTitleEverythingExample from './NxPageTitleEverythingExample';
 
 const nxPageTitleCode = require('./NxPageTitleExample.html'),
     nxPageTitleActionsCode = require('./NxPageTitleActionsExample.html'),
+    nxPageTitleSubtitleCode = require('./NxPageTitleSubtitleExample.html'),
     nxPageTitlePolicyViolationIndicatorCode =
-      require('./NxPageTitlePolicyViolationIndicatorExample.tsx?raw');
+      require('./NxPageTitlePolicyViolationIndicatorExample.tsx?raw'),
+    nxPageTitleEverythingCode = require('./NxPageTitleEverythingExample.tsx?raw');
 
 const NxPageTitlePage = () =>
   <>
@@ -65,7 +68,7 @@ const NxPageTitlePage = () =>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="NX Page Title Example"
+    <GalleryExampleTile title="Basic page title"
                         id="nx-page-title-example"
                         defaultCheckeredBackground={true}
                         htmlExample={nxPageTitleCode}
@@ -73,7 +76,7 @@ const NxPageTitlePage = () =>
       A simple example of an <code className="nx-code">nx-page-title</code>.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Page Title with Actions Example"
+    <GalleryExampleTile title="Page title with actions"
                         id="nx-page-title-actions-example"
                         defaultCheckeredBackground={true}
                         htmlExample={nxPageTitleActionsCode}
@@ -81,12 +84,29 @@ const NxPageTitlePage = () =>
       An example of <code className="nx-code">nx-page-title</code> with actions in the form of a drop-down.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Page Title with Policy Violation Indicator"
+    <GalleryExampleTile title="Page title with sub-title and page description"
+                        id="nx-page-title-subtitle-example"
+                        defaultCheckeredBackground={true}
+                        htmlExample={nxPageTitleSubtitleCode}
+                        codeExamples={nxPageTitleSubtitleCode}>
+      A simple example of an <code className="nx-code">nx-page-title</code> with a sub-title.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Page title with NxPolicyViolationIndicator"
                         id="nx-page-title-policy-violation-indicator-example"
                         defaultCheckeredBackground={true}
                         liveExample={NxPageTitlePolicyViolationIndicatorExample}
                         codeExamples={nxPageTitlePolicyViolationIndicatorCode}>
       An example of a page title with an <code className="nx-code">NxPolicyViolationIndicator</code>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Page title with everything"
+                        id="nx-page-title-everything-example"
+                        defaultCheckeredBackground={true}
+                        liveExample={NxPageTitleEverythingExample}
+                        codeExamples={nxPageTitleEverythingCode}>
+      A simple example of an <code className="nx-code">nx-page-title</code> with a sub-title, actions, tags, and a page
+      description.
     </GalleryExampleTile>
   </>;
 
