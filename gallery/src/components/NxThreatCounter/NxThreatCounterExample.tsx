@@ -10,7 +10,7 @@ import { NxThreatCounter } from '@sonatype/react-shared-components';
 function NxThreatCounterExample() {
   return (
     <NxThreatCounter criticalCount={45}
-                     severeCount={24}
+                     severeCount={21114}
                      moderateCount={12}
                      lowCount={45}/>
   );
