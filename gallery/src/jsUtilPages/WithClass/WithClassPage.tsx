@@ -22,7 +22,7 @@ const WithClassPage = () =>
         <NxCode>withClass</NxCode> is a higher-order component that allows for the easy creation of
         new React Component types that consist simply of a native DOM element with a particular class name.
         The resulting component supports all props that the underlying native component supports, including
-        additionaly class names that are added in addition to the one specified when <NxCode>withClass</NxCode>
+        class names that are added in addition to the one specified when <NxCode>withClass</NxCode>
         is called.
       </NxP>
 
