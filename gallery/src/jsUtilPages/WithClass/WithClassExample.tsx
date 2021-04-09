@@ -7,7 +7,7 @@
 import React from 'react';
 import { withClass } from '@sonatype/react-shared-components';
 
-const ClassyParagraph = withClass('gallery-classy-paragraph', 'p');
+const ClassyParagraph = withClass('p', 'gallery-classy-paragraph');
 
 export default function WithClassExample() {
   return (

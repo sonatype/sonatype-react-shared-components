@@ -11,8 +11,8 @@ type ElementType<E extends keyof JSX.IntrinsicElements> = ReactElement<Component
 type ComponentConstructorType<E extends keyof JSX.IntrinsicElements> = (p: ComponentProps<E>) => ElementType<E>;
 
 export default function withClass<E extends keyof JSX.IntrinsicElements>(
-  withClassName: string,
-  El: E
+  El: E,
+  withClassName: string
 ): ComponentConstructorType<E> {
   return function WithClassWrapper({ className, ...otherProps }: ComponentProps<E>): ElementType<E> {
     // There should be a safer way but I can't figure it out; TS keeps thinking that

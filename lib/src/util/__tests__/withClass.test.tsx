@@ -8,7 +8,7 @@ import withClass from '../withClass';
 import { getShallowComponent } from '../../__testutils__/enzymeUtils';
 
 describe('withClass', function() {
-  const ExampleComponent = withClass('foo-bar', 'hgroup'),
+  const ExampleComponent = withClass('hgroup', 'foo-bar'),
       getShallow = getShallowComponent(ExampleComponent, {});
 
   it('creates a component constructor that makes an element with the specified tag and class', function() {
