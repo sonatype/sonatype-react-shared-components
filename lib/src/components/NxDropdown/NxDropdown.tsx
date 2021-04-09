@@ -28,11 +28,13 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
     toggleTooltip,
     onToggleCollapse: externalOnToggleCollapse,
     onKeyDown: externalOnKeyDown,
+    onCloseClick,
+    onCloseKeyDown,
     ...attrs
   } = props;
 
   const { onKeyDown, onToggleCollapse } =
-      useDropdownEvents(isOpen, disabled, externalOnToggleCollapse, externalOnKeyDown);
+      useDropdownEvents(isOpen, disabled, externalOnToggleCollapse, onCloseClick, onCloseKeyDown, externalOnKeyDown);
 
   const buttonClasses = classnames('nx-dropdown__toggle', { disabled, open: isOpen });
 
