@@ -22,20 +22,20 @@ export default function NxThreatCounter({
   return (
     <dl className={layoutClasses} {...attrs}>
       <div className="nx-threat-counter nx-threat-counter--critical">
-        <dt className="nx-threat-counter__count">{criticalCount}</dt>
-        <dd className="nx-threat-counter__text">Critical</dd>
+        <dt className="nx-threat-counter__text">Critical</dt>
+        <dd className="nx-threat-counter__count">{criticalCount}</dd>
       </div>
       <div className="nx-threat-counter nx-threat-counter--severe">
-        <dt className="nx-threat-counter__count">{severeCount}</dt>
-        <dd className="nx-threat-counter__text">Severe</dd>
+        <dt className="nx-threat-counter__text">Severe</dt>
+        <dd className="nx-threat-counter__count">{severeCount}</dd>
       </div>
       <div className="nx-threat-counter nx-threat-counter--moderate">
-        <dt className="nx-threat-counter__count">{moderateCount}</dt>
-        <dd className="nx-threat-counter__text">Moderate</dd>
+        <dt className="nx-threat-counter__text">Moderate</dt>
+        <dd className="nx-threat-counter__count">{moderateCount}</dd>
       </div>
       <div className="nx-threat-counter nx-threat-counter--low">
-        <dt className="nx-threat-counter__count">{lowCount}</dt>
-        <dd className="nx-threat-counter__text">Low</dd>
+        <dt className="nx-threat-counter__text">Low</dt>
+        <dd className="nx-threat-counter__count">{lowCount}</dd>
       </div>
     </dl>
   );

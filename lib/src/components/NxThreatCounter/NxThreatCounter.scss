@@ -14,6 +14,7 @@
   border-left-width: 8px;
   border-radius: $nx-border-radius;
   display: inline-flex;
+  flex-direction: row-reverse;
   font-size: $nx-font-size-s;
   height: 30px;
   margin: 0;
@@ -23,6 +24,7 @@
 
 .nx-threat-counter__count {
   @include bold();
+  margin: 0;
 }
 
 .nx-threat-counter__text {
@@ -56,8 +58,16 @@
 
 .nx-threat-counter-container--column {
   grid-template-columns: auto;
+
+  .nx-threat-counter {
+    justify-content: flex-end;
+  }
 }
 
 .nx-threat-counter-container--grid {
   grid-template-columns: auto auto;
+
+  .nx-threat-counter {
+    justify-content: flex-end;
+  }
 }
