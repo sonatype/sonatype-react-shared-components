@@ -32,6 +32,7 @@
 }
 
 .nx-page-title__sub-title {
+  @include nx-truncate-ellipsis;
   border-left: 1px solid $nx-indigo-100;
   margin: 0;
   padding-left: $nx-spacing-md;

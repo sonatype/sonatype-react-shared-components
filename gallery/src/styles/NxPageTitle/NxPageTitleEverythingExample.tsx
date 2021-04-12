@@ -10,10 +10,10 @@ import { NxTag } from '@sonatype/react-shared-components';
 const NxPageTitleEverythingExample = () =>
   <div className="nx-page-title">
     <h1 className="nx-h1">
-      Page Title
+      Longer Page Title Foo Bar Foo!
     </h1>
     <h2 className="nx-h2 nx-page-title__sub-title">
-      This is a page sub-title
+      This is a page sub-title that will truncate with an ellipsis
     </h2>
     <div className="nx-btn-bar">
       <button className="nx-btn nx-btn--tertiary">First</button>
