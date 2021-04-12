@@ -57,19 +57,23 @@
 
   background-color: $nx-sidebar-background-color;
   box-sizing: border-box;
-  flex-basis: var(--sidebar-width);
-  min-width: 0;
+  flex: none;
+
+  // don't go beyond the max that it would have in a normal .nx-page-content, even when in an
+  // .nx-page-content--full-width
+  max-width: calc((1 - var(--content-width-proportion)) * var(--page-width-max));
   overflow-x: hidden;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-xs $nx-spacing-l;
   position: relative;
   white-space: normal;
+  width: var(--sidebar-width);
 }
 
 .nx-page-main {
   @include container-vertical;
 
   box-sizing: border-box;
-  flex: 1 0 var(--content-width);
+  flex: auto;
   min-width: 0;
   overflow-x: hidden;
   overflow-y: auto;
