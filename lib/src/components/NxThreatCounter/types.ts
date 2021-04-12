@@ -7,7 +7,7 @@
 import { HTMLAttributes, ValidationMap } from 'react';
 import * as PropTypes from 'prop-types';
 
-export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'children'> {
+export interface Props extends Omit<HTMLAttributes<HTMLDListElement>, 'className' | 'children'> {
   criticalCount: number;
   severeCount: number;
   moderateCount: number;
