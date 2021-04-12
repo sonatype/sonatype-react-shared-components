@@ -39,7 +39,7 @@ const NxThreatCounterPage = () =>
         <tbody>
           <tr className="nx-table-row">
             <td className="nx-cell">criticalCount | severeCount | moderateCount | lowCount</td>
-            <td className="nx-cell">numerical</td>
+            <td className="nx-cell">number</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">A numerical value is required for each type of counter.</td>
           </tr>
