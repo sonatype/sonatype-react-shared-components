@@ -22,7 +22,6 @@ export interface Props extends FormHTMLAttributes<HTMLFormElement> {
   submitMaskState?: boolean | null;
   submitMaskMessage?: string | null;
   submitMaskSuccessMessage?: string | null;
-  submitMaskFullscreen?: boolean | null;
   children: ReactNode | (() => ReactNode);
   additionalFooterBtns?: ReactNode | null;
 }
@@ -41,7 +40,6 @@ export const propTypes: ValidationMap<Props> = {
   submitMaskState: PropTypes.bool,
   submitMaskMessage: PropTypes.string,
   submitMaskSuccessMessage: PropTypes.string,
-  submitMaskFullscreen: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   additionalFooterBtns: PropTypes.node
 };

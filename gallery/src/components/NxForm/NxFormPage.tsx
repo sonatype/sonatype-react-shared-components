@@ -194,13 +194,6 @@ const NxFormPage = () =>
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell>submitMaskFullscreen</NxTableCell>
-            <NxTableCell>boolean</NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>true</NxTableCell>
-            <NxTableCell>Whether to display the success mask fullscreen vs just covering the form</NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
             <NxTableCell>additionalFooterBtns</NxTableCell>
             <NxTableCell>JSX</NxTableCell>
             <NxTableCell>No</NxTableCell>

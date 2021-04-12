@@ -7,14 +7,12 @@
 import * as PropTypes from 'prop-types';
 
 export interface Props {
-  fullscreen?: boolean | null;
   message?: string | null;
   successMessage?: string | null;
   success?: boolean | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  fullscreen: PropTypes.bool,
   message: PropTypes.string,
   successMessage: PropTypes.string,
   success: PropTypes.bool
