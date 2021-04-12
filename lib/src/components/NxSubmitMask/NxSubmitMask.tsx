@@ -19,9 +19,8 @@ import './NxSubmitMask.scss';
 export const SUCCESS_VISIBLE_TIME_MS = 800;
 
 const NxSubmitMask: FunctionComponent<Props> =
-  function NxSubmitMask({ fullscreen, message, successMessage, success }) {
+  function NxSubmitMask({ message, successMessage, success }) {
     const classes = classnames('nx-submit-mask', {
-      'nx-submit-mask--fullscreen': !!fullscreen,
       'nx-submit-mask--success': !!success
     });
 

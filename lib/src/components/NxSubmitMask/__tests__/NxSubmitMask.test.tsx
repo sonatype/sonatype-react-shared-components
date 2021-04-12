@@ -24,12 +24,6 @@ describe('NxSubmitMask', function() {
     expect(shallow(<NxSubmitMask />).find(NxLoadingSpinner).children()).toHaveText('Submitting…');
   });
 
-  it('applies the nx-submit-mask--fullscreen class iff the fullscreen prop is set', function() {
-    expect(shallow(<NxSubmitMask/>)).not.toHaveClassName('nx-submit-mask--fullscreen');
-    expect(shallow(<NxSubmitMask fullscreen={false}/>)).not.toHaveClassName('nx-submit-mask--fullscreen');
-    expect(shallow(<NxSubmitMask fullscreen/>)).toHaveClassName('nx-submit-mask--fullscreen');
-  });
-
   it('applies the nx-submit-mask--success class iff the success prop is set', function() {
     expect(shallow(<NxSubmitMask/>)).not.toHaveClassName('nx-submit-mask--success');
     expect(shallow(<NxSubmitMask success={false}/>)).not.toHaveClassName('nx-submit-mask--success');
