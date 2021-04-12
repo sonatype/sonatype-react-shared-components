@@ -69,6 +69,7 @@ const NxListPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-list__item</code></td>
+            <td className="nx-cell"><code className="nx-code">NxList.Item</code></td>
             <td className="nx-cell">The <code className="nx-code">&lt;li&gt;</code> elements within the list</td>
             <td className="nx-cell">
               This class should be present on all list items within an <code className="nx-code">nx-list</code>.
@@ -87,9 +88,10 @@ const NxListPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-list__text</code></td>
+            <td className="nx-cell"><code className="nx-code">NxList.Text</code></td>
             <td className="nx-cell">Element within <code className="nx-code">&lt;li&gt;</code></td>
             <td className="nx-cell">
-              The primary text content of the list item, displayed in a heavier font weight;
+              The primary text content of the list item, displayed in a heavier font weight.
             </td>
           </tr>
           <tr className="nx-table-row">
