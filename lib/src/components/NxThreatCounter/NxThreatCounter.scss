@@ -49,8 +49,7 @@
 
 .nx-threat-counter-container {
   display: inline-grid;
-  row-gap: $nx-spacing-md;
-  column-gap: $nx-spacing-md;
+  gap: $nx-spacing-md;
   grid-template-columns: auto auto auto auto;
   margin: $nx-spacing-md 0 $nx-spacing-l 0;
 }
