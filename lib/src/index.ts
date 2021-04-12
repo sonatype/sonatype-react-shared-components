@@ -213,5 +213,7 @@ export { default as NxColorPicker, Props } from './components/NxColorPicker/NxCo
 
 export * from './util/idUtil';
 
+export { default as NxTextLink, Props as NxTextLinkProps } from './components/NxTextLink/NxTextLink';
+
 export { default as NxThreatCounter, Props as NxThreatCounterProps }
   from './components/NxThreatCounter/NxThreatCounter';

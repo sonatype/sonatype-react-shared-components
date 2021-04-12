@@ -98,6 +98,7 @@ import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
 import NxColorPickerPage from './components/NxColorPicker/NxColorPickerPage';
 import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
 import IdUtilPage from './jsUtilPages/IdUtil/IdUtilPage';
+import NxTextLinkPage from './components/NxTextLink/NxTextLinkPage';
 import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPage';
 
 const pageConfig: PageConfig = {
@@ -141,6 +142,7 @@ const pageConfig: PageConfig = {
     NxStatefulTabs: NxStatefulTabsPage,
     NxTag: NxTagPage,
     NxTextInput: NxTextInputPage,
+    NxTextLink: NxTextLinkPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatCounter: NxThreatCounterPage,
     NxThreatIndicator: NxThreatIndicatorPage,
