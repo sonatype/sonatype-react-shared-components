@@ -98,6 +98,7 @@ import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
 import NxColorPickerPage from './components/NxColorPicker/NxColorPickerPage';
 import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
 import IdUtilPage from './jsUtilPages/IdUtil/IdUtilPage';
+import NxTextLinkPage from './components/NxTextLink/NxTextLinkPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -140,6 +141,7 @@ const pageConfig: PageConfig = {
     NxStatefulTabs: NxStatefulTabsPage,
     NxTag: NxTagPage,
     NxTextInput: NxTextInputPage,
+    NxTextLink: NxTextLinkPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatIndicator: NxThreatIndicatorPage,
     NxToggle: NxTogglePage,
