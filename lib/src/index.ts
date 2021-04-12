@@ -216,3 +216,5 @@ export { default as withClass } from './util/withClass';
 export * from './components/SimpleComponents';
 
 export * from './util/idUtil';
+
+export { default as NxTextLink, Props as NxTextLinkProps } from './components/NxTextLink/NxTextLink';
