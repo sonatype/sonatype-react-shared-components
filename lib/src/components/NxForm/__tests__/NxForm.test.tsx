@@ -252,25 +252,6 @@ describe('NxForm', function() {
         }).find(NxSubmitMask)).toHaveProp('message', 'running');
       });
 
-      it('sets the mask\'s fullscreen prop from submitMaskFullscreen, defaulting to true', function() {
-        expect(getShallow({ submitMaskState: true }).find(NxSubmitMask)).toHaveProp('fullscreen', true);
-
-        expect(getShallow({
-          submitMaskState: true,
-          submitMaskFullscreen: null
-        }).find(NxSubmitMask)).toHaveProp('fullscreen', true);
-
-        expect(getShallow({
-          submitMaskState: true,
-          submitMaskFullscreen: true
-        }).find(NxSubmitMask)).toHaveProp('fullscreen', true);
-
-        expect(getShallow({
-          submitMaskState: true,
-          submitMaskFullscreen: false
-        }).find(NxSubmitMask)).toHaveProp('fullscreen', false);
-      });
-
       it('sets the mask\'s successMessage prop from submitMaskSuccessMessage', function() {
         expect(getShallow({ submitMaskState: true }).find(NxSubmitMask)).toHaveProp('successMessage', undefined);
         expect(getShallow({

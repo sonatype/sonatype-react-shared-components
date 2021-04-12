@@ -49,7 +49,7 @@ const NxListPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-list</code></td>
             <td className="nx-cell"><code className="nx-code">NxList</code></td>
-            <td className="nx-cell">Top-Level</td>
+            <td className="nx-cell">Top-Level <code className="nx-code">&lt;ul&gt;</code></td>
             <td className="nx-cell">The parent list class. It has no bullets.</td>
           </tr>
           <tr className="nx-table-row">
@@ -68,6 +68,13 @@ const NxListPage = () =>
             <td className="nx-cell">If you need a list with bullets.</td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list__item</code></td>
+            <td className="nx-cell">The <code className="nx-code">&lt;li&gt;</code> elements within the list</td>
+            <td className="nx-cell">
+              This class should be present on all list items within an <code className="nx-code">nx-list</code>.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.selected</code></td>
             <td className="nx-cell"/>
             <td className="nx-cell">
@@ -79,12 +86,19 @@ const NxListPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list__text</code></td>
+            <td className="nx-cell">Element within <code className="nx-code">&lt;li&gt;</code></td>
+            <td className="nx-cell">
+              The primary text content of the list item, displayed in a heavier font weight;
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-list__subtext</code></td>
             <td className="nx-cell"><code className="nx-code">NxList.Subtext</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              When you want a separate line below the main list item use a <code className="nx-code">&lt;p&gt;</code>
-              with <code className="nx-code">.nx-list__subtext</code>
+              When you want a separate section of non-bolded text below the main list item text use
+              a <code className="nx-code">&lt;span&gt;</code> with <code className="nx-code">.nx-list__subtext</code>.
             </td>
           </tr>
           <tr className="nx-table-row">

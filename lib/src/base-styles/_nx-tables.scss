@@ -208,7 +208,7 @@
 
 .nx-cell--header {
   @include bold;
-  background-color: #bbc1de;
+  background-color: $nx-indigo-300;
   border-top: none;
   box-sizing: border-box;
 
