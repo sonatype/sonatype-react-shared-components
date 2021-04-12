@@ -20,8 +20,8 @@ const NxThreatCounterPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        Basic style for small counter which displays a number representing a count of violations, and a short pre-set
-        text string which displays the threat severity.
+        Component for a series of small counters which display a number representing a count of threats/violations,
+        and a short pre-set text string which displays the severity (critical, severe, moderate, and low).
       </p>
       <p className="nx-p">
         Three basic layouts have been demonstrated below. It is expected that one of these should satisfy any
@@ -38,10 +38,28 @@ const NxThreatCounterPage = () =>
         </thead>
         <tbody>
           <tr className="nx-table-row">
-            <td className="nx-cell">criticalCount | severeCount | moderateCount | lowCount</td>
+            <td className="nx-cell">criticalCount</td>
             <td className="nx-cell">number</td>
             <td className="nx-cell">Yes</td>
-            <td className="nx-cell">A numerical value is required for each type of counter.</td>
+            <td className="nx-cell">A numerical value, the number of critical threats.</td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">severeCount</td>
+            <td className="nx-cell">number</td>
+            <td className="nx-cell">Yes</td>
+            <td className="nx-cell">A numerical value, the number of severe threats.</td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">moderateCount</td>
+            <td className="nx-cell">number</td>
+            <td className="nx-cell">Yes</td>
+            <td className="nx-cell">A numerical value, the number of moderate threats.</td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">lowCount</td>
+            <td className="nx-cell">number</td>
+            <td className="nx-cell">Yes</td>
+            <td className="nx-cell">A numerical value, the number of low threats.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">layout</td>
@@ -74,7 +92,7 @@ const NxThreatCounterPage = () =>
                         id="nx-threat-counter-grid"
                         liveExample={NxThreatCounterGridExample}
                         codeExamples={NxThreatCounterGridCode}>
-      <code className="nx-code">nx-threat-counter</code>s in "grid" layout.
+      <code className="nx-code">nx-threat-counter</code>s in a 2x2 "grid" layout.
     </GalleryExampleTile>
   </>;
 
