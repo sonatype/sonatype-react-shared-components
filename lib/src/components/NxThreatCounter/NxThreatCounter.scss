@@ -16,6 +16,7 @@
   display: inline-flex;
   flex-direction: row-reverse;
   font-size: $nx-font-size-s;
+  justify-content: flex-end;
   height: 30px;
   margin: 0;
   padding-right: $nx-spacing-md;
@@ -58,16 +59,8 @@
 
 .nx-threat-counter-container--column {
   grid-template-columns: auto;
-
-  .nx-threat-counter {
-    justify-content: flex-end;
-  }
 }
 
 .nx-threat-counter-container--grid {
   grid-template-columns: auto auto;
-
-  .nx-threat-counter {
-    justify-content: flex-end;
-  }
 }
