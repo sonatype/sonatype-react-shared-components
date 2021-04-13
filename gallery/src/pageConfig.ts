@@ -98,6 +98,7 @@ import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
 import NxColorPickerPage from './components/NxColorPicker/NxColorPickerPage';
 import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
 import IdUtilPage from './jsUtilPages/IdUtil/IdUtilPage';
+import WithClassPage from './jsUtilPages/WithClass/WithClassPage';
 import NxTextLinkPage from './components/NxTextLink/NxTextLinkPage';
 
 const pageConfig: PageConfig = {
@@ -201,7 +202,8 @@ const pageConfig: PageConfig = {
     'Policy Threat Level Utils': PolicyThreatLevelUtilsPage,
     'Validation Utils': ValidationUtilsPage,
     'useToggle': UseTogglePage,
-    'ID Utils': IdUtilPage
+    'ID Utils': IdUtilPage,
+    'withClass Higher-Order Component': WithClassPage
   }
 };
 

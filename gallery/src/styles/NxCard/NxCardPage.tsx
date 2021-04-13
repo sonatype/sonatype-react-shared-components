@@ -29,6 +29,7 @@ const NxCardPage = () =>
         <thead>
           <tr className="nx-table-row nx-table-row--header">
             <th className="nx-cell nx-cell--header">Class</th>
+            <th className="nx-cell nx-cell--header">Convenience Component</th>
             <th className="nx-cell nx-cell--header">Location</th>
             <th className="nx-cell nx-cell--header">Details</th>
           </tr>
@@ -36,6 +37,7 @@ const NxCardPage = () =>
         <tbody>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card-container</code></td>
+            <td className="nx-cell"><code className="nx-code">NxCard.Container</code></td>
             <td className="nx-cell">Top-Level</td>
             <td className="nx-cell">
               Container for <code className="nx-code">.nx-card</code>s
@@ -43,6 +45,7 @@ const NxCardPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card-container--no-wrap</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-card-container</code></td>
             <td className="nx-cell">
               By default if you put more cards into a container than can fit horizontally the cards will wrap into a
@@ -52,6 +55,7 @@ const NxCardPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card</code></td>
+            <td className="nx-cell"><code className="nx-code">NxCard</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Basic card element.
@@ -59,6 +63,7 @@ const NxCardPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card--equal</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-card</code></td>
             <td className="nx-cell">
               <code className="nx-code">.nx-card</code>s have a default <code className="nx-code">max-width</code>.
@@ -69,6 +74,7 @@ const NxCardPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__header</code></td>
+            <td className="nx-cell"><code className="nx-code">NxCard.Header</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Card header element, typically wraps an <code className="nx-code">&lt;h3&gt;</code>.
@@ -76,6 +82,7 @@ const NxCardPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__footer</code></td>
+            <td className="nx-cell"><code className="nx-code">NxCard.Footer</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Card footer, typically provides a link to more information or an action button.
@@ -83,6 +90,7 @@ const NxCardPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__content</code></td>
+            <td className="nx-cell"><code className="nx-code">NxCard.Content</code></td>
             <td className="nx-cell">Wrapping element</td>
             <td className="nx-cell">
               <code className="nx-code">.nx-card__content</code> applied to a
@@ -93,6 +101,7 @@ const NxCardPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__content--columns</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-card__content</code></td>
             <td className="nx-cell">
               <code className="nx-code">.nx-card__content--columns</code> applied to
@@ -102,6 +111,7 @@ const NxCardPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__call-out</code></td>
+            <td className="nx-cell"><code className="nx-code">NxCard.CallOut</code></td>
             <td className="nx-cell">
               Element, typically a child of <code className="nx-code">.nx-card__content</code>
             </td>
@@ -112,6 +122,7 @@ const NxCardPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-card__text</code></td>
+            <td className="nx-cell"><code className="nx-code">NxCard.Text</code></td>
             <td className="nx-cell">
               Element, typically a child of <code className="nx-code">.nx-card__content</code>
             </td>
@@ -119,6 +130,7 @@ const NxCardPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">nx-card__call-out-icon</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-icon</code></td>
             <td className="nx-cell">
               Changes the size of <code className="nx-code">.nx-icon</code> to <code className="nx-code">48px</code>.
@@ -126,6 +138,7 @@ const NxCardPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">nx-card__call-out-icon--xl</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-icon</code></td>
             <td className="nx-cell">
               Changes the size of <code className="nx-code">.nx-icon</code> to <code className="nx-code">64px</code>.

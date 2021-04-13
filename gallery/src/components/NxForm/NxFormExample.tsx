@@ -105,7 +105,7 @@ export default function NxFormExample() {
       <NxFormGroup label="Hostname">
         <NxTextInput { ...hostnameState } onChange={onHostnameChange} className="nx-text-input--long"/>
       </NxFormGroup>
-      <NxFieldset label="Colors">
+      <NxFieldset label="Colors" isRequired>
         <NxCheckbox onChange={toggleRed} isChecked={redChecked}>Red</NxCheckbox>
         <NxCheckbox onChange={toggleBlue} isChecked={blueChecked}>Blue</NxCheckbox>
         <NxCheckbox onChange={toggleGreen} isChecked={greenChecked}>Green</NxCheckbox>

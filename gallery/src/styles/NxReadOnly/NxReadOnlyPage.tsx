@@ -26,6 +26,7 @@ const NxReadOnlyPage = () => {
           <thead>
             <tr className="nx-table-row">
               <th className="nx-cell nx-cell--header">Class</th>
+              <th className="nx-cell nx-cell--header">Convenience Component</th>
               <th className="nx-cell nx-cell--header">Location</th>
               <th className="nx-cell nx-cell--header">Details</th>
             </tr>
@@ -33,6 +34,7 @@ const NxReadOnlyPage = () => {
           <tbody>
             <tr className="nx-table-row">
               <td className="nx-cell"><code className="nx-code">.nx-read-only</code></td>
+              <td className="nx-cell"><code className="nx-code">NxReadOnly</code></td>
               <td className="nx-cell">Top level</td>
               <td className="nx-cell">
                 This is the basic wrapper class. It is applied to the <code className="nx-code">&lt;dl&gt;</code>.
@@ -40,6 +42,7 @@ const NxReadOnlyPage = () => {
             </tr>
             <tr className="nx-table-row">
               <td className="nx-cell"><code className="nx-code">.nx-read-only__label</code></td>
+              <td className="nx-cell"><code className="nx-code">NxReadOnly.Label</code></td>
               <td className="nx-cell">Element</td>
               <td className="nx-cell">
                 This class is applied to the <code className="nx-code">&lt;dt&gt;</code>, it represents the label for
@@ -48,6 +51,7 @@ const NxReadOnlyPage = () => {
             </tr>
             <tr className="nx-table-row">
               <td className="nx-cell"><code className="nx-code">.nx-read-only__data</code></td>
+              <td className="nx-cell"><code className="nx-code">NxReadOnly.Data</code></td>
               <td className="nx-cell">Element</td>
               <td className="nx-cell">
                 This class is applied to any <code className="nx-code">&lt;dd&gt;</code>'s that appear. The data
