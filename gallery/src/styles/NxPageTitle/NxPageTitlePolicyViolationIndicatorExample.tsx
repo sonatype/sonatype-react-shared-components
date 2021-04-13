@@ -15,15 +15,6 @@ const NxPageTitlePolicyViolationIndicatorExample = () =>
     <div className="nx-page-title__tags">
       <NxPolicyViolationIndicator threatLevelCategory="moderate"/>
     </div>
-    <div className="nx-page-title__description">
-      <p className="nx-p">This is a page description.</p>
-      <p className="nx-p">
-        jeans sign papier-mache assassin San Francisco rifle physical 3D-printed denim tanto courier concrete dolphin
-        rebar free-market. tank-traps papier-mache dead free-market tanto drone concrete dolphin sunglasses weathered
-        dead jeans office vehicle nodal point. motion film meta- monofilament knife vinyl post- bridge jeans city
-        Tokyo alcohol marketing girl vehicle.
-      </p>
-    </div>
   </div>;
 
 export default NxPageTitlePolicyViolationIndicatorExample;
