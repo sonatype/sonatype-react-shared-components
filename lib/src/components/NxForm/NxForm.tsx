@@ -34,7 +34,6 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
             submitMaskState,
             submitMaskMessage,
             submitMaskSuccessMessage,
-            submitMaskFullscreen,
             children,
             additionalFooterBtns,
             ...formAttrs
@@ -84,7 +83,6 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
           { submitMaskState != null &&
             <NxSubmitMask success={submitMaskState}
                           message={submitMaskMessage}
-                          fullscreen={submitMaskFullscreen == null ? true : submitMaskFullscreen}
                           successMessage={submitMaskSuccessMessage} />
           }
         </form>

@@ -33,6 +33,7 @@ const NxTableContainerPage = () =>
         <thead>
           <tr className="nx-table-row nx-table-row--header">
             <th className="nx-cell nx-cell--header">Class</th>
+            <th className="nx-cell nx-cell--header">Convenience Component</th>
             <th className="nx-cell nx-cell--header">Location</th>
             <th className="nx-cell nx-cell--header">Details</th>
           </tr>
@@ -40,6 +41,7 @@ const NxTableContainerPage = () =>
         <tbody>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-table-container</code></td>
+            <td className="nx-cell"><code className="nx-code">NxTableContainer</code></td>
             <td className="nx-cell">Element wrapping an <code className="nx-code">.nx-table</code></td>
             <td className="nx-cell">
               Removes the border from the table itself and instead replicates it on the container element. This allows
@@ -49,6 +51,7 @@ const NxTableContainerPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-scrollable--table-container</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Element wrapping an <code className="nx-code">.nx-table</code></td>
             <td className="nx-cell">
               <NxWarningAlert>
@@ -60,6 +63,7 @@ const NxTableContainerPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-scrollable</code></td>
+            <td className="nx-cell"/>
             <td className="nx-cell">Same element as <code className="nx-code">.nx-table-container</code></td>
             <td className="nx-cell">
               The container element should also have the <code className="nx-code">.nx-scrollable</code> class
@@ -68,6 +72,7 @@ const NxTableContainerPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-table-container__footer</code></td>
+            <td className="nx-cell"><code className="nx-code">NxTableContainer<br/>.Footer</code></td>
             <td className="nx-cell">
               Child of <code className="nx-code">.nx-table-container</code>, after
               the <code className="nx-code">.nx-table</code>.

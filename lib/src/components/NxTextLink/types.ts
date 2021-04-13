@@ -4,16 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import { AnchorHTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
-export interface Props {
-  message?: string | null;
-  successMessage?: string | null;
-  success?: boolean | null;
+export interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  external?: boolean | null;
+  noReferrer?: boolean | null;
+  newTab?: boolean | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  message: PropTypes.string,
-  successMessage: PropTypes.string,
-  success: PropTypes.bool
+  external: PropTypes.bool,
+  noReferrer: PropTypes.bool,
+  newTab: PropTypes.bool
 };

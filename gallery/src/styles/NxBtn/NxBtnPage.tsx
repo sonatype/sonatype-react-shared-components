@@ -7,6 +7,7 @@
 import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
+import { NxCode } from '@sonatype/react-shared-components';
 
 const nxBtnPrimaryCode = require('./NxBtnPrimaryExample.html'),
     nxBtnDefaultCode = require('./NxBtnDefaultExample.html'),
@@ -22,6 +23,10 @@ const NxBtnPage = () =>
         When a button is not contained in a <code className="nx-code">footer</code>, then an enclosing
         <code className="nx-code">.nx-btn-bar</code> is generally required to ensure that the buttons are spaced
         appropriately from other content.
+      </p>
+      <p className="nx-p">
+        When working in React, it is recommended to use the <NxCode>NxButton</NxCode> component which provides a more
+        convenient way to use these styles.
       </p>
     </GalleryDescriptionTile>
 

@@ -36,6 +36,7 @@ const NxPageTitlePage = () =>
         <thead>
           <tr className="nx-table-row">
             <th className="nx-cell nx-cell--header">Class</th>
+            <th className="nx-cell nx-cell--header">Convenience Component</th>
             <th className="nx-cell nx-cell--header">Location</th>
             <th className="nx-cell nx-cell--header">Details</th>
           </tr>
@@ -43,6 +44,7 @@ const NxPageTitlePage = () =>
         <tbody>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-page-title</code></td>
+            <td className="nx-cell"><code className="nx-code">NxPageTitle</code></td>
             <td className="nx-cell">Top level</td>
             <td className="nx-cell">
               This is the basic wrapper class. The title text is almost always contained in an
@@ -58,10 +60,20 @@ const NxPageTitlePage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-page-title__description</code></td>
+            <td className="nx-cell"><code className="nx-code">NxPageTitle.Description</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               If there is page level descriptive text it should be wrapped in a containing
               <code className="nx-code">&lt;div&gt;</code> with this class.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-page-title__tags</code></td>
+            <td className="nx-cell"><code className="nx-code">NxPageTitle.Tags</code></td>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">
+              Any "tags" to place in the page header, such as Policy Violation Indicators, should go in
+              this element.
             </td>
           </tr>
         </tbody>
