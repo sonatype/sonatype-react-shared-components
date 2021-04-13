@@ -8,6 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import RawHtmlExample from '../../CodeExample';
+import { NxCode } from '@sonatype/react-shared-components';
 const pageLayoutTwoColumnImg = require('./page-layout-2col.png');
 const pageLayoutSingleColumnImg = require('./page-layout-1col.png');
 
@@ -82,6 +83,11 @@ const PageLayoutPage = () =>
         point.  We recommend that other apps use the same pattern.
       </p>
       <RawHtmlExample content={reactRootLayoutExampleCode}/>
+      <h3 className="nx-h3">Convenience Components</h3>
+      <p className="nx-p">
+        For convenience the <NxCode>nx-page-main</NxCode> and <NxCode>nx-page-sidebar</NxCode> styles are available as
+        React components: <NxCode>NxPageMain</NxCode> and <NxCode>NxPageSidebar</NxCode>.
+      </p>
     </GalleryDescriptionTile>
   </>;
 

@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxCode } from '@sonatype/react-shared-components';
 
 const nxBlockquoteExampleCode = require('./NxBlockquoteExample.html');
 
@@ -17,6 +18,9 @@ const NxBlockquotePage = () => {
         <p className="nx-p">
           The <code className="nx-code">.nx-blockquote</code> CSS class provides standard RSC styling
           for <code className="nx-code">&lt;blockquote&gt;</code> elements.
+        </p>
+        <p className="nx-p">
+          These styles are also available via the <NxCode>NxBlockquote</NxCode> convenience React component.
         </p>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="Basic Example"

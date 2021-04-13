@@ -11,6 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxThreatNumberBasicExample from './NxThreatNumberBasicExample';
 import NxThreatNumberListExample from './NxThreatNumberListExample';
 import NxThreatNumberTableExample from './NxThreatNumberTableExample';
+import { NxCode } from '@sonatype/react-shared-components';
 
 const nxThreatNumberBasicExampleCode = require('./NxThreatNumberBasicExample?raw'),
     nxThreatNumberListExampleCode = require('./NxThreatNumberListExample?raw'),
@@ -22,6 +23,7 @@ const NxThreatNumberPage = () =>
       <p className="nx-p">
         When an IQ Policy Threat Number is displayed adjacent to an <code className="nx-code">NxThreatIndicator</code>,
         style the number with <code className="nx-code">.nx-threat-number</code>.
+        An <NxCode>NxThreatNumber</NxCode> convenience component is also available.
       </p>
     </GalleryDescriptionTile>
 

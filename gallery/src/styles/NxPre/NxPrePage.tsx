@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxCode } from '@sonatype/react-shared-components';
 
 const nxPreExampleCode = require('./NxPreExample.html');
 
@@ -17,6 +18,7 @@ const NxPrePage = () => {
         <p className="nx-p">
           The <code className="nx-code">.nx-pre</code> CSS class provides standard RSC styling
           for <code className="nx-code">&lt;pre&gt;</code> elements such as code blocks.
+          An <NxCode>NxPre</NxCode> convenience component is also provided.
         </p>
       </GalleryDescriptionTile>
 

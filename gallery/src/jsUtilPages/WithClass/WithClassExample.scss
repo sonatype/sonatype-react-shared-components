@@ -4,11 +4,15 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-.nx-btn-bar {
-  @include container-horizontal;
+@font-face {
+  font-family: monsieur-la-doulaise;
+  src: url(../../assets/MonsieurLaDoulaise-Regular.ttf) format("truetype");
+}
 
-  align-items: center;
-  display: flex;
-  justify-content: flex-end;
-  margin: $nx-spacing-l 0;
+.gallery-classy-paragraph {
+  font-family: monsieur-la-doulaise, serif;
+}
+
+.gallery-example-large-text {
+  font-size: 24px;
 }
