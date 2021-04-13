@@ -19,13 +19,6 @@ const NxPageTitleEverythingExample = () =>
       <button className="nx-btn nx-btn--tertiary">First</button>
       <button className="nx-btn nx-btn--tertiary">Second</button>
     </div>
-    <div className="nx-page-title__tags">
-      <NxTag>Default</NxTag>
-      <NxTag color="purple">Purple</NxTag>
-      <NxTag color="light-blue">Light Blue</NxTag>
-      <NxTag color="pink">Pink</NxTag>
-      <NxTag color="blue">Blue</NxTag>
-    </div>
     <div className="nx-page-title__description">
       <p className="nx-p">This is a page description.</p>
       <p className="nx-p">
@@ -34,6 +27,13 @@ const NxPageTitleEverythingExample = () =>
         dead jeans office vehicle nodal point. motion film meta- monofilament knife vinyl post- bridge jeans city
         Tokyo alcohol marketing girl vehicle.
       </p>
+    </div>
+    <div className="nx-page-title__tags">
+      <NxTag>Default</NxTag>
+      <NxTag color="purple">Purple</NxTag>
+      <NxTag color="light-blue">Light Blue</NxTag>
+      <NxTag color="pink">Pink</NxTag>
+      <NxTag color="blue">Blue</NxTag>
     </div>
   </div>;
 
