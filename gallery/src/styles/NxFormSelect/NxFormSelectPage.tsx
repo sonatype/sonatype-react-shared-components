@@ -10,6 +10,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxFormSelectExample from './NxFormSelectExample';
 import NxFormSelectDisabledExample from './NxFormSelectDisabledExample';
+import { NxCode } from '@sonatype/react-shared-components';
 
 const sourceCode = require('./NxFormSelectExample?raw');
 
@@ -19,7 +20,8 @@ const NxFormSelectPage = () =>
       <p className="nx-p">
         Basic styles for Sonatype form select inputs. There isn't very much styling available for the
         <code className="nx-code">&lt;select&gt;</code> tag. As such we've just implemented the basic borders, font,
-        and padding as well as disabled and focus styles.
+        and padding as well as disabled and focus styles. An <NxCode>NxFormSelect</NxCode> convenience component is
+        also available.
       </p>
       <p className="nx-p">Classes:</p>
       <table className="nx-table nx-table--gallery-props">
