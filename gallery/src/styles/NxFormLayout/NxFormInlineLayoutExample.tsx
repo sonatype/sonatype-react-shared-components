@@ -37,8 +37,8 @@ export default function NxFormLayoutExample() {
                                validator={validator}/>
         </NxFormGroup>
         <div className="nx-btn-bar">
-          <NxButton><NxFontAwesomeIcon icon={faPlus}/></NxButton>
-          <NxButton><NxFontAwesomeIcon icon={faMinus}/></NxButton>
+          <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faPlus}/></NxButton>
+          <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faMinus}/></NxButton>
         </div>
       </div>
     </form>
