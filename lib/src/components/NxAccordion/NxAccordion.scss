@@ -38,7 +38,7 @@
       margin: 0 0 0 $nx-spacing-l;
       flex-shrink: 0;
 
-      .nx-btn {
+      .nx-btn--icon-only {
         @include nx-small-icon-btn;
       }
     }
