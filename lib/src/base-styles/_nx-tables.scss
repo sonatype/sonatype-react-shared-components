@@ -200,6 +200,19 @@
   min-height: $nx-table-cell-min-height;
   padding: $nx-table-cell-vertical-padding $nx-spacing-md;
   vertical-align: top;
+
+  > .nx-btn-bar {
+    display: inline-flex;
+
+    // buttons should be 8px from row edges even though row padding is 12px
+    margin-block: -$nx-spacing-xxs;
+  }
+
+  &:not(.nx-cell--header) > .nx-btn-bar {
+    .nx-btn--icon-only {
+      @include nx-small-icon-btn;
+    }
+  }
 }
 
 .nx-cell--label {
