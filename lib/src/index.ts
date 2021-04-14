@@ -218,3 +218,6 @@ export * from './components/SimpleComponents';
 export * from './util/idUtil';
 
 export { default as NxTextLink, Props as NxTextLinkProps } from './components/NxTextLink/NxTextLink';
+
+export { default as NxThreatCounter, Props as NxThreatCounterProps }
+  from './components/NxThreatCounter/NxThreatCounter';
