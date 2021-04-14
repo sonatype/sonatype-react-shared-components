@@ -124,10 +124,10 @@
   @extend .nx-btn--tertiary;
 
   border-color: transparent;
-  height: 32px;
-  padding: 0;
-  width: 32px;
-  min-width: 0;
+
+  // icon width can vary, just don't bother with padding in this direction and let the centering work it out
+  padding-inline: 0;
+  width: 42px;
 
   .nx-icon {
     height: 1em;
