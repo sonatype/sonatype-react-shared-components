@@ -7,6 +7,7 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
 @import '../../scss-shared/nx-text-helpers';
+@import '../../scss-shared/nx-button-helpers';
 
 .nx-accordion {
   background: var(--nx-component-background-color);
@@ -16,7 +17,7 @@
 
 .nx-accordion__header {
   // removes ::marker from FF
-  list-style-type: none; 
+  list-style-type: none;
 
   &::-webkit-details-marker {
     display: none;
@@ -36,6 +37,10 @@
     > .nx-btn-bar {
       margin: 0 0 0 $nx-spacing-l;
       flex-shrink: 0;
+
+      .nx-btn {
+        @include nx-small-icon-btn;
+      }
     }
   }
 
