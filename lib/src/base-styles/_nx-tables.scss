@@ -202,8 +202,6 @@
   vertical-align: top;
 
   > .nx-btn-bar {
-    display: inline-flex;
-
     // buttons should be 8px from row edges even though row padding is 12px
     margin-block: -$nx-spacing-xxs;
   }
