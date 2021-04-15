@@ -5,7 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
- :root {
+
+
+:root {
+  --nx-blue-base: 214, 96%;
+
+
   // Blues
   --nx-blue-00: hsla(214, 96%, 0%, 100%);
   --nx-blue-50: hsla(214, 96%, 5%, 100%);
@@ -18,21 +23,22 @@
   --nx-blue-700: hsla(214, 96%, 70%, 100%);
   --nx-blue-800: hsla(214, 96%, 80%, 100%);
   --nx-blue-900: hsla(214, 96%, 90%, 100%);
+  --nx-blue-950: hsla(214, 96%, 95%, 100%);
   --nx-blue-1000: hsla(214, 96%, 100%, 100%);
 
   // Greys
-  --nx-grey-00: hsla(0, 0, 0%, 100%);
-  --nx-grey-50: hsla(0, 0, 5%, 100%);
-  --nx-grey-100: hsla(0, 0, 10%, 100%);
-  --nx-grey-200: hsla(0, 0, 20%, 100%);
-  --nx-grey-300: hsla(0, 0, 30%, 100%);
-  --nx-grey-400: hsla(0, 0, 40%, 100%);
-  --nx-grey-500: hsla(0, 0, 50%, 100%);
-  --nx-grey-600: hsla(0, 0, 60%, 100%);
-  --nx-grey-700: hsla(0, 0, 70%, 100%);
-  --nx-grey-800: hsla(0, 0, 80%, 100%);
-  --nx-grey-900: hsla(0, 0, 90%, 100%);
-  --nx-grey-1000: hsla(0, 0, 100%, 100%);
+  --nx-grey-00: hsla(0, 0%, 0%, 100%);
+  --nx-grey-50: hsla(0, 0%, 5%, 100%);
+  --nx-grey-100: hsla(0, 0%, 10%, 100%);
+  --nx-grey-200: hsla(0, 0%, 20%, 100%);
+  --nx-grey-300: hsla(0, 0%, 30%, 100%);
+  --nx-grey-400: hsla(0, 0%, 40%, 100%);
+  --nx-grey-500: hsla(0, 0%, 50%, 100%);
+  --nx-grey-600: hsla(0, 0%, 60%, 100%);
+  --nx-grey-700: hsla(0, 0%, 70%, 100%);
+  --nx-grey-800: hsla(0, 0%, 80%, 100%);
+  --nx-grey-900: hsla(0, 0%, 90%, 100%);
+  --nx-grey-1000: hsla(0, 0%, 100%, 100%);
 
   // Teals
   --nx-teal-00: hsla(198, 100%, 00%, 100%);
@@ -76,21 +82,30 @@
   --nx-green-1000: hsla(138, 100%, 100%, 100%);
 
   // Orange
-  --nx-orange-00: hsla(31, 100%, 0, 100%);
+  --nx-orange-00: hsla(31, 100%, 0%, 100%);
   --nx-orange-50: hsla(31, 100%, 5%, 100%);
   --nx-orange-100: hsla(31, 100%, 10%, 100%);
+  --nx-orange-150: hsla(31, 100%, 15%, 100%);
   --nx-orange-200: hsla(31, 100%, 20%, 100%);
+  --nx-orange-250: hsla(31, 100%, 25%, 100%);
   --nx-orange-300: hsla(31, 100%, 30%, 100%);
+  --nx-orange-350: hsla(31, 100%, 35%, 100%);
   --nx-orange-400: hsla(31, 100%, 40%, 100%);
+  --nx-orange-450: hsla(31, 100%, 45%, 100%);
   --nx-orange-500: hsla(31, 100%, 50%, 100%);
+  --nx-orange-550: hsla(31, 100%, 55%, 100%);
   --nx-orange-600: hsla(31, 100%, 60%, 100%);
+  --nx-orange-650: hsla(31, 100%, 65%, 100%);
   --nx-orange-700: hsla(31, 100%, 70%, 100%);
+  --nx-orange-750: hsla(31, 100%, 75%, 100%);
   --nx-orange-800: hsla(31, 100%, 80%, 100%);
+  --nx-orange-850: hsla(31, 100%, 85%, 100%);
   --nx-orange-900: hsla(31, 100%, 90%, 100%);
+  --nx-orange-950: hsla(31, 100%, 95%, 100%);
   --nx-orange-1000: hsla(31, 100%, 100%, 100%);
 
   // Yellow
-  --nx-yellow-00: hsla(42, 100%, 0, 100%);
+  --nx-yellow-00: hsla(42, 100%, 0%, 100%);
   --nx-yellow-50: hsla(42, 100%, 5%, 100%);
   --nx-yellow-100: hsla(42, 100%, 10%, 100%);
   --nx-yellow-200: hsla(42, 100%, 20%, 100%);
@@ -104,7 +119,7 @@
   --nx-yellow-1000: hsla(42, 100%, 100%, 100%);
 
   // Red
-  --nx-red-00: hsla(348, 100%, 0, 100%);
+  --nx-red-00: hsla(348, 100%, 0%, 100%);
   --nx-red-50: hsla(348, 100%, 5%, 100%);
   --nx-red-100: hsla(348, 100%, 10%, 100%);
   --nx-red-200: hsla(348, 100%, 20%, 100%);

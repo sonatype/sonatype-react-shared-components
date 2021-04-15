@@ -19,7 +19,7 @@ interface ColorInfo {
 const swatchFile: string[] = swatchSCSS.split('\n');
 
 const swatchLines = swatchFile.map(line => {
-  const matchResults = /^\s*(\$nx-(\w+)-\d+):\s*(hsla\(([\d%]+,\s*){3}[\d%]+\));$/.exec(line);
+  const matchResults = /^\s*(\--nx-(\w+)-\d+):\s*(hsla\(([\d%]+,\s*){3}[\d%]+\));$/.exec(line);
 
   if (matchResults) {
     return {colorVariable: matchResults[1], colorName: matchResults[2], colorHex: matchResults[3]};
