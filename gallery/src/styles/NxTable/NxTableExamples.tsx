@@ -17,6 +17,7 @@ import NxTableFilterExample from './NxTableFilterExample';
 
 import './NxTableTruncationAndWrappingExample.scss';
 import './NxTableFixedLayoutExample.scss';
+import { NxCode } from '@sonatype/react-shared-components';
 
 const NxTableSimpleCode = require('./NxTableDefaultExample.html'),
     NxTableClickableCode = require('./NxTableClickableExample?raw'),
@@ -104,9 +105,9 @@ const NxTablesExamples = () =>
     <GalleryExampleTile title="NX Table with Icon Buttons Example"
                         liveExample={NxTableIconButtonExample}
                         codeExamples={NxTableIconButtonCode}>
-      A demonstration of an <code className="nx-code">nx-table</code> with icon-only buttons in both the filter row
+      A demonstration of an <NxCode>nx-table</NxCode> with icon-only buttons in both the filter row
       and the content rows. Note that the buttons in the filter row are the standard height while the buttons in the
-      content rows are smaller.
+      content rows are smaller. The default styles only support these sorts of buttons in the rightmost column.
     </GalleryExampleTile>
   </>;
 
