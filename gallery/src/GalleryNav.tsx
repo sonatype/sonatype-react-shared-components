@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState, ReactNode } from 'react';
-import { addIndex, toPairs, keys, map, pipe, includes, pickBy, isEmpty, toLower, reduce, head, tail } from 'ramda';
+import { addIndex, toPairs, keys, map, pipe, includes, pickBy, isEmpty, toLower, reduce, head, tail, append } from 'ramda';
 import { NxTreeView, NxTreeViewChild, NxFilterInput } from '@sonatype/react-shared-components';
 
 import pageConfig from './pageConfig';
@@ -13,11 +13,36 @@ import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { PageMapping, PageConfig } from './pageConfigTypes';
 
-const renderLinks: ((categoryEntries: PageMapping) => ReactNode) = pipe(
+function markByFilter(filter: string | undefined, text: string) {
+  if (filter) {
+    const [marked] = reduce<string, [ReactNode[], string[]]>(
+      ([processed, remainingFilter], textChar) => {
+          const isMatch = head(remainingFilter) === toLower(textChar),
+              processedChar = isMatch ?
+                  <mark key={remainingFilter.length} className="gallery-filter-match">{textChar}</mark> :
+                  textChar,
+              newRemainingFilter = isMatch ? tail(remainingFilter) : remainingFilter;
+
+          return [append(processedChar, processed), newRemainingFilter];
+      },
+      [[], Array.from(toLower(filter))],
+      Array.from(text)
+    );
+
+    return marked;
+  }
+  else {
+    return text;
+  }
+}
+
+const renderLinks = (filter?: string) => pipe(
     keys,
     map((pageName: string) =>
       <NxTreeViewChild key={pageName}>
-        <NavLink to={`/pages/${pageName}`} activeClassName="selected">{pageName}</NavLink>
+        <NavLink to={`/pages/${pageName}`} activeClassName="selected">
+          {markByFilter(filter, pageName)}
+        </NavLink>
       </NxTreeViewChild>
     )
 );
@@ -25,10 +50,11 @@ const renderLinks: ((categoryEntries: PageMapping) => ReactNode) = pipe(
 interface GalleryNavTreeViewProps {
   defaultOpen: boolean;
   categoryName: string;
+  filter?: string;
   categoryEntries: PageMapping;
 }
 
-function GalleryNavTreeView({ categoryName, categoryEntries, defaultOpen }: GalleryNavTreeViewProps) {
+function GalleryNavTreeView({ categoryName, categoryEntries, filter, defaultOpen }: GalleryNavTreeViewProps) {
   const { pathname } = useLocation(),
       pageName = (pathname.match(/\/pages\/(.*)$/) || [])[1],
 
@@ -36,13 +62,14 @@ function GalleryNavTreeView({ categoryName, categoryEntries, defaultOpen }: Gall
       // home page) then follow defaultOpen which, per the code farther down, will just expand the first tree
       isInitiallyOpen = pageName ? includes(pageName, keys(categoryEntries)) : defaultOpen,
       [toggleCheck, setToggleCheck] = useState(isInitiallyOpen),
-      onToggleCollapse = () => setToggleCheck(!toggleCheck);
+      onToggleCollapse = () => setToggleCheck(!toggleCheck),
+      renderLinksWithFilter = renderLinks(filter);
 
   return (
     <NxTreeView onToggleCollapse={onToggleCollapse}
                 isOpen={toggleCheck}
                 triggerContent={categoryName}>
-      {renderLinks(categoryEntries)}
+      {renderLinksWithFilter(categoryEntries)}
     </NxTreeView>
   );
 }
@@ -77,6 +104,7 @@ function GalleryNav() {
             return hasFilteredEntries ?
               <GalleryNavTreeView key={categoryName}
                                   categoryEntries={filteredEntries}
+                                  filter={filter || undefined}
                                   { ...({ categoryName, defaultOpen }) }/> :
               null;
           })
