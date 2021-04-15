@@ -103,6 +103,7 @@ const NxTablesExamples = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table with Icon Buttons Example"
+                        id="nx-table-icon-buttons-example"
                         liveExample={NxTableIconButtonExample}
                         codeExamples={NxTableIconButtonCode}>
       A demonstration of an <NxCode>nx-table</NxCode> with icon-only buttons in both the filter row

@@ -107,6 +107,16 @@ describe('NxTable', function() {
     it('looks right', simpleTest(tableSelector));
   });
 
+  describe('Table with icon buttons', function() {
+    beforeEach(async function() {
+      await browser.url('#/pages/nx-table');
+    });
+
+    const tableSelector = '#nx-table-icon-buttons-example .nx-table';
+
+    it('looks right', simpleTest(tableSelector));
+  });
+
   describe('pagination-table-height scss function', function() {
     // This test verifies that the height applied by the gallery-pagination-table-example class, which uses the
     // pagination-table-height scss function, matches the height that the table would have with a full page of data
