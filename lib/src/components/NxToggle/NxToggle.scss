@@ -36,7 +36,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
   &:focus-within {
     .nx-toggle__control {
       border-color: $nx-focus-border-color;
-      filter: drop-shadow(0 0 3px rgba($nx-focus-border-color, 0.4));
+      filter: drop-shadow(0 0 3px rgba(#02a6d9, 0.4));
 
       &:hover {
         border-color: $nx-grey-1100;

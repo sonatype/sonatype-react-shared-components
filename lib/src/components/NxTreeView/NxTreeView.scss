@@ -78,7 +78,7 @@ $twisty-proportion-difference: 2px;
     outline: none;
 
     .nx-tree-view__twisty {
-      filter: drop-shadow(0 0 3px transparentize($nx-focus-border-color, 0.7));
+      filter: drop-shadow(0 0 3px transparentize(#02a6d9, 0.7));
       stroke: $nx-focus-border-color;
 
       // This is intepreted in the SVG's coordinate space. The svg has a viewbox height of 512 and an on-page
