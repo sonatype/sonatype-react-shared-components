@@ -50,13 +50,18 @@ const renderLinks = (filter?: string) => pipe(
 interface GalleryNavTreeViewProps {
   defaultOpen: boolean;
   categoryName: string;
-  filter?: string;
+  filter: string;
   categoryEntries: PageMapping;
 }
 
 function GalleryNavTreeView({ categoryName, categoryEntries, filter, defaultOpen }: GalleryNavTreeViewProps) {
   const { pathname } = useLocation(),
       pageName = (pathname.match(/\/pages\/(.*)$/) || [])[1],
+      isFiltering = !!filter,
+      filteredEntries: PageMapping = isFiltering ?
+          pickBy((_, pageName) => matchesFilter(filter, pageName), categoryEntries) :
+          categoryEntries,
+      hasFilteredEntries = keys(filteredEntries).length,
 
       // Have the tree for the current page expanded. if we are on a page that doesn't appear in the nav (e.g. the
       // home page) then follow defaultOpen which, per the code farther down, will just expand the first tree
@@ -65,19 +70,20 @@ function GalleryNavTreeView({ categoryName, categoryEntries, filter, defaultOpen
       onToggleCollapse = () => setToggleCheck(!toggleCheck),
       renderLinksWithFilter = renderLinks(filter);
 
-  useEffect(() => {
-    // When filtering, this tree view will only be rendered at all if its a filter match, so ensure it is
-    // open.  When filtering is cancelled, fall back to isInitiallyOpen logic
-    setToggleCheck(!!filter || isInitiallyOpen);
-  }, [filter]);
+    useEffect(() => {
+      // When filtering, this tree view will only be rendered at all if its a filter match, so ensure it is
+      // open.  When filtering is cancelled, fall back to isInitiallyOpen logic
+      setToggleCheck(!!filter || isInitiallyOpen);
+    }, [filter]);
 
-  return (
-    <NxTreeView onToggleCollapse={onToggleCollapse}
-                isOpen={toggleCheck}
-                triggerContent={categoryName}>
-      {renderLinksWithFilter(categoryEntries)}
-    </NxTreeView>
-  );
+  return hasFilteredEntries ? (
+      <NxTreeView onToggleCollapse={onToggleCollapse}
+                  isOpen={toggleCheck}
+                  triggerContent={categoryName}>
+        {renderLinksWithFilter(filteredEntries)}
+      </NxTreeView>
+    ) :
+    null;
 }
 
 // returns true if the pageName contains every character present in the filter in the same order, case insensitive
@@ -94,26 +100,16 @@ function matchesFilter(filter: string, pageName: string) {
 
 function GalleryNav() {
   const [filter, setFilter] = useState(''),
-      isFiltering = !!filter,
-
       // create a GalleryNavTreeView for each entry in the pageConfig that matches the filter.
       // Expand the tree views with matching contents, or expand the first one if no filtering is being done
       categories = pipe<PageConfig, [string, PageMapping][], ReactNode[]>(
           toPairs,
-          addIndex<[string, PageMapping], ReactNode>(map)(([categoryName, categoryEntries], idx) => {
-            const filteredEntries: PageMapping = isFiltering ?
-                pickBy((_, pageName) => matchesFilter(filter, pageName), categoryEntries) :
-                categoryEntries,
-                hasFilteredEntries = keys(filteredEntries).length,
-                defaultOpen = isFiltering || !idx;
-
-            return hasFilteredEntries ?
-              <GalleryNavTreeView key={categoryName}
-                                  categoryEntries={filteredEntries}
-                                  filter={filter || undefined}
-                                  { ...({ categoryName, defaultOpen }) }/> :
-              null;
-          })
+          addIndex<[string, PageMapping], ReactNode>(map)(([categoryName, categoryEntries], idx) =>
+            <GalleryNavTreeView key={categoryName}
+                                filter={filter}
+                                defaultOpen={!idx}
+                                { ...({ categoryEntries, categoryName }) }/>
+          )
       )(pageConfig);
 
   return (
