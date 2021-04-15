@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { reduce, head, tail, toLower, isEmpty, append } from "ramda";
+import { reduce, head, tail, toLower, isEmpty, splitAt, drop, join } from "ramda";
 import React, { ReactNode } from "react";
 
 /**
@@ -12,19 +12,45 @@ import React, { ReactNode } from "react";
  */
 export function markByFilter(filter: string | undefined, text: string): ReactNode {
   if (filter) {
-    const [marked] = reduce<string, [ReactNode[], string[]]>(
-      ([processed, remainingFilter], textChar) => {
-          const isMatch = head(remainingFilter) === toLower(textChar),
-              processedChar = isMatch ?
-                  <mark key={remainingFilter.length} className="gallery-filter-match">{textChar}</mark> :
-                  textChar,
-              newRemainingFilter = isMatch ? tail(remainingFilter) : remainingFilter;
+    let filterArr = Array.from(toLower(filter)),
+        textArr = Array.from(text);
 
-          return [append(processedChar, processed), newRemainingFilter];
-      },
-      [[], Array.from(toLower(filter))],
-      Array.from(text)
-    );
+    const marked = [];
+
+    while (!isEmpty(filterArr) && !isEmpty(textArr)) {
+      const markKey = filterArr.length;
+
+      let i: number;
+
+      // Count how many immediate chars in the text match the filter
+      for (i = 0; i < Math.min(filterArr.length, textArr.length) && filterArr[i] === toLower(textArr[i]); i++);
+
+      // if there are matching characters, gather them and wrap them in a <mark>
+      if (i) {
+        let matched: string[];
+        [matched, textArr] = splitAt(i, textArr);
+        filterArr = drop(i, filterArr);
+
+        const markEl = (
+          <mark key={markKey} className="gallery-filter-match">
+            {join('', matched)}
+          </mark>
+        );
+
+        marked.push(markEl);
+      }
+
+      // Count how many immediate chars in the text DO NOT match the filter
+      for (i = 0; i < textArr.length && (!filterArr.length || filterArr[0] !== toLower(textArr[i])); i++);
+
+      // if there are non-matching characters, gather them into a single text node
+      if (i) {
+        let unmatched: string[];
+        [unmatched, textArr] = splitAt(i, textArr);
+
+        marked.push(join('', unmatched));
+      }
+    }
 
     return marked;
   }
