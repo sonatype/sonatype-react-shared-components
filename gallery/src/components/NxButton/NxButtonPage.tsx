@@ -51,6 +51,18 @@ export default function NxButtonPage() {
               <NxTableCell>secondary</NxTableCell>
               <NxTableCell>The variant of button. See examples of each variant below.</NxTableCell>
             </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>title</NxTableCell>
+              <NxTableCell>string</NxTableCell>
+              <NxTableCell>Required on icon-only buttons</NxTableCell>
+              <NxTableCell>Empty</NxTableCell>
+              <NxTableCell>
+                A string to render as a tooltip and accessibility label for the button. This is generally not necessary
+                for buttons that include text content, but icon-only buttons should use this to make the buttons meaning
+                clear in all contexts. Omitting this prop when using an icon-only button is deprecated and will become
+                unsupported in a future release.
+              </NxTableCell>
+            </NxTableRow>
           </NxTableBody>
         </NxTable>
       </GalleryDescriptionTile>
@@ -96,8 +108,8 @@ export default function NxButtonPage() {
                           id="nx-button-icon-only-example"
                           liveExample={NxButtonIconOnlyExample}
                           codeExamples={nxButtonIconOnlyCode}>
-        An example of a button containing only an icon. For accessibility purposes it is important to add an
-        aria-label for the screen reader to interpret the content correctly.
+        An example of a button containing only an icon. For accessibility purposes it is important to use the
+        title prop for the screen reader to interpret the content correctly.
       </GalleryExampleTile>
     </>
   );

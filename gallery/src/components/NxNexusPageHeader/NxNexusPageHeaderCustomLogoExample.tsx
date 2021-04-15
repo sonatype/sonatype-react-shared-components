@@ -33,7 +33,9 @@ const NxNexusPageHeaderExample = () => {
                        links={links}
                        logoPath={customLogo}>
       <div className="nx-page-header__extra-content-divider"></div>
-      <NxButton variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faCog}/></NxButton>
+      <NxButton title="Settings" variant="icon-only" onClick={onButtonClick}>
+        <NxFontAwesomeIcon icon={faCog}/>
+      </NxButton>
     </NxNexusPageHeader>
   );
 };

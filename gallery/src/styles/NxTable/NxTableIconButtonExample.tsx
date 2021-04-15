@@ -31,7 +31,7 @@ const NxTableIconButtonExample = () =>
         </th>
         <th className="nx-cell nx-cell--header">
           <div className="nx-btn-bar">
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTasks} /></NxButton>
+            <NxButton title="Tasks" variant="icon-only"><NxFontAwesomeIcon icon={faTasks} /></NxButton>
           </div>
         </th>
       </tr>
@@ -42,8 +42,8 @@ const NxTableIconButtonExample = () =>
         <td className="nx-cell"><span>USA</span></td>
         <td className="nx-cell">
           <div className="nx-btn-bar">
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+            <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
+            <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
           </div>
         </td>
       </tr>
@@ -52,8 +52,8 @@ const NxTableIconButtonExample = () =>
         <td className="nx-cell"><span>France</span></td>
         <td className="nx-cell">
           <div className="nx-btn-bar">
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+            <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
+            <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
           </div>
         </td>
       </tr>
@@ -62,8 +62,8 @@ const NxTableIconButtonExample = () =>
         <td className="nx-cell"><span>France</span></td>
         <td className="nx-cell">
           <div className="nx-btn-bar">
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+            <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
+            <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
           </div>
         </td>
       </tr>
@@ -72,8 +72,8 @@ const NxTableIconButtonExample = () =>
         <td className="nx-cell"><span>Colombia</span></td>
         <td className="nx-cell">
           <div className="nx-btn-bar">
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+            <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
+            <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
           </div>
         </td>
       </tr>
@@ -82,8 +82,8 @@ const NxTableIconButtonExample = () =>
         <td className="nx-cell"><span>Germany</span></td>
         <td className="nx-cell">
           <div className="nx-btn-bar">
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+            <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
+            <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
           </div>
         </td>
       </tr>
