@@ -7,14 +7,12 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import NxSubmitMaskExample from './NxSubmitMaskExample';
 import NxSubmitMaskCustomMessageExample from './NxSubmitMaskCustomMessageExample';
 import NxSubmitMaskSuccessExample from './NxSubmitMaskSuccessExample';
 import NxSubmitMaskCustomSuccessMessageExample from './NxSubmitMaskCustomSuccessMessageExample';
 import NxSubmitMaskFullscreenExample from './NxSubmitMaskFullscreenExample';
 
-const NxSubmitMaskCode = require('./NxSubmitMaskExample?raw'),
-    NxSubmitMaskCustomMessageCode = require('./NxSubmitMaskCustomMessageExample?raw'),
+const NxSubmitMaskCustomMessageCode = require('./NxSubmitMaskCustomMessageExample?raw'),
     NxSubmitMaskSuccessCode = require('./NxSubmitMaskSuccessExample?raw'),
     NxSubmitMaskCustomSuccessMessageCode = require('./NxSubmitMaskCustomSuccessMessageExample?raw'),
     NxSubmitMaskFullscreenCode = require('./NxSubmitMaskFullscreenExample?raw');
@@ -23,8 +21,8 @@ const NxSubmitMaskPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
-        NxSubmitMask creates a mask that is meant to cover a form or similar element while submission of that form
-        is in progress, in order to indicate to the user that the submission is in-progress, and, typically, when it
+        NxSubmitMask creates a mask that covers the page while submission of a form or similar element
+        is in progress, in order to indicate to the user that the submission is in-progress, and typically, when it
         has completed.
       </p>
       <p className="nx-p">
@@ -45,15 +43,6 @@ const NxSubmitMaskPage = () =>
           </tr>
         </thead>
         <tbody>
-          <tr className="nx-table-row nx-table-row--header">
-            <td className="nx-cell">fullscreen</td>
-            <td className="nx-cell">boolean</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
-              Whether to display the mask fullscreen. When it is displayed fullscreen, it is still bound to the same
-              place in the DOM and uses CSS to achieve the fullscreen effect. Defaults to false.
-            </td>
-          </tr>
           <tr className="nx-table-row nx-table-row--header">
             <td className="nx-cell">success</td>
             <td className="nx-cell">boolean</td>
@@ -88,9 +77,11 @@ const NxSubmitMaskPage = () =>
 
     <GalleryExampleTile title="Simple Example"
                         id="nx-submit-mask-loading-example"
-                        liveExample={NxSubmitMaskExample}
-                        codeExamples={NxSubmitMaskCode}>
-      A simple <code className="nx-code">NxSubmitMask</code> in the non-success phase.
+                        liveExample={NxSubmitMaskFullscreenExample}
+                        codeExamples={NxSubmitMaskFullscreenCode}>
+      An example that displays a submit mask. This example activates upon clicking the button below.
+      Once the mask is visible, press ESC to dismiss it. This ESC-key behavior is just part of this example so that you
+      can get out of it, it is not built-in mask behavior. It only works as long as the button has focus.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Custom Message Example"
@@ -113,14 +104,6 @@ const NxSubmitMaskPage = () =>
       success message is a separate <code className="nx-code">prop</code> from the non-success message.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Fullscreen Example"
-                        id="nx-submit-mask-fullscreen-example"
-                        liveExample={NxSubmitMaskFullscreenExample}
-                        codeExamples={NxSubmitMaskFullscreenCode}>
-      An example that displays a fullscreen submit mask. This example activates upon clicking the button below.
-      Once the mask is visible, press ESC to dismiss it. This ESC-key behavior is just part of this example so that you
-      can get out of it, it is not built-in mask behavior. It only works as long as the button has focus.
-    </GalleryExampleTile>
   </>;
 
 export default NxSubmitMaskPage;

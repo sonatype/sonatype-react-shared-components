@@ -5,9 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { faShapes, faChartLine, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faShapes, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
-import { NxFontAwesomeIcon, NxButton } from '@sonatype/react-shared-components';
+import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 export default function NxCardRowLayoutExample() {
   return (
@@ -143,26 +143,6 @@ export default function NxCardRowLayoutExample() {
           </div>
           <footer className="nx-card__footer">
             <a href="#" className="nx-text-link">Link</a>
-          </footer>
-        </section>
-        <section className="nx-card" aria-label="Chart card">
-          <header className="nx-card__header">
-            <h3 className="nx-h3 nx-h3--card-header">Chiba advert hacker hotdog shoes voodoo god 3D-printed</h3>
-          </header>
-          <div className="nx-card__content">
-            <div className="nx-card__call-out">
-              <NxFontAwesomeIcon icon={faChartLine} className="nx-card__call-out-icon" />
-            </div>
-            <div className="nx-card__text">
-              Marketing systemic math- hotdog saturation point nodal point footage disposable singularity order-flow
-              systemic
-            </div>
-          </div>
-          <footer className="nx-card__footer">
-            <div className="nx-btn-bar">
-              <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
-              <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
-            </div>
           </footer>
         </section>
         <section className="nx-card" aria-label="Big percentage card">

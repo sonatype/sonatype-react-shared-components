@@ -32,6 +32,13 @@ describe('NxGlobalSidebarNavigationLink', function() {
     expect(link).toHaveProp('href', '#someurl');
   });
 
+  it('passes additional specified attrs to the <a>', function() {
+    const link = getShallowComponent({ id: 'foo', lang: 'en_US' }).find('a');
+
+    expect(link).toHaveProp('id', 'foo');
+    expect(link).toHaveProp('lang', 'en_US');
+  });
+
   it('renders the specified text inside the link', function () {
     expect(getShallowComponent().find('.nx-global-sidebar__navigation-text')).toHaveText('textLink');
   });
