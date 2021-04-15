@@ -38,17 +38,23 @@
   padding-left: $nx-spacing-md;
 }
 
+.nx-page-title__description {
+  @include container-vertical;
+  grid-area: description;
+  margin-top: $nx-spacing-xs;
+
+  & + .nx-page-title__tags {
+    margin-top: $nx-spacing-md;
+  }
+}
+
 .nx-page-title__tags {
   @include container-horizontal;
 
   grid-area: tags;
+  margin-top: $nx-spacing-xs;
 
   .nx-policy-violation-indicator {
     margin: 0;
   }
-}
-
-.nx-page-title__description {
-  @include container-vertical;
-  grid-area: description;
 }
