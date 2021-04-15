@@ -4,37 +4,27 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState, ReactNode, useEffect } from 'react';
-import { addIndex, toPairs, keys, map, pipe, includes, pickBy, isEmpty, toLower, reduce, head, tail, append } from 'ramda';
-import { NxTreeView, NxTreeViewChild, NxFilterInput } from '@sonatype/react-shared-components';
+import React, { useState, ReactNode } from 'react';
+import {
+  toPairs,
+  keys,
+  map,
+  pipe,
+  includes,
+  pickBy,
+  head,
+  over,
+  lensProp,
+  not,
+  mapObjIndexed
+} from 'ramda';
+import { NxTreeView, NxTreeViewChild, NxFilterInput, NxTreeViewProps } from '@sonatype/react-shared-components';
 
 import pageConfig from './pageConfig';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { PageMapping, PageConfig } from './pageConfigTypes';
-
-function markByFilter(filter: string | undefined, text: string) {
-  if (filter) {
-    const [marked] = reduce<string, [ReactNode[], string[]]>(
-      ([processed, remainingFilter], textChar) => {
-          const isMatch = head(remainingFilter) === toLower(textChar),
-              processedChar = isMatch ?
-                  <mark key={remainingFilter.length} className="gallery-filter-match">{textChar}</mark> :
-                  textChar,
-              newRemainingFilter = isMatch ? tail(remainingFilter) : remainingFilter;
-
-          return [append(processedChar, processed), newRemainingFilter];
-      },
-      [[], Array.from(toLower(filter))],
-      Array.from(text)
-    );
-
-    return marked;
-  }
-  else {
-    return text;
-  }
-}
+import { markByFilter, matchesFilter } from './filterUtil';
 
 const renderLinks = (filter?: string) => pipe(
     keys,
@@ -48,37 +38,25 @@ const renderLinks = (filter?: string) => pipe(
 );
 
 interface GalleryNavTreeViewProps {
-  defaultOpen: boolean;
+  isOpen: boolean;
   categoryName: string;
   filter: string;
   categoryEntries: PageMapping;
+  onToggleCollapse: NxTreeViewProps['onToggleCollapse'];
 }
 
-function GalleryNavTreeView({ categoryName, categoryEntries, filter, defaultOpen }: GalleryNavTreeViewProps) {
-  const { pathname } = useLocation(),
-      pageName = (pathname.match(/\/pages\/(.*)$/) || [])[1],
+function GalleryNavTreeView(props: GalleryNavTreeViewProps) {
+  const { categoryName, categoryEntries, filter, onToggleCollapse, isOpen } = props,
       isFiltering = !!filter,
       filteredEntries: PageMapping = isFiltering ?
           pickBy((_, pageName) => matchesFilter(filter, pageName), categoryEntries) :
           categoryEntries,
       hasFilteredEntries = keys(filteredEntries).length,
-
-      // Have the tree for the current page expanded. if we are on a page that doesn't appear in the nav (e.g. the
-      // home page) then follow defaultOpen which, per the code farther down, will just expand the first tree
-      isInitiallyOpen = pageName ? includes(pageName, keys(categoryEntries)) : defaultOpen,
-      [toggleCheck, setToggleCheck] = useState(isInitiallyOpen),
-      onToggleCollapse = () => setToggleCheck(!toggleCheck),
       renderLinksWithFilter = renderLinks(filter);
-
-    useEffect(() => {
-      // When filtering, this tree view will only be rendered at all if its a filter match, so ensure it is
-      // open.  When filtering is cancelled, fall back to isInitiallyOpen logic
-      setToggleCheck(!!filter || isInitiallyOpen);
-    }, [filter]);
 
   return hasFilteredEntries ? (
       <NxTreeView onToggleCollapse={onToggleCollapse}
-                  isOpen={toggleCheck}
+                  isOpen={isOpen}
                   triggerContent={categoryName}>
         {renderLinksWithFilter(filteredEntries)}
       </NxTreeView>
@@ -86,33 +64,40 @@ function GalleryNavTreeView({ categoryName, categoryEntries, filter, defaultOpen
     null;
 }
 
-// returns true if the pageName contains every character present in the filter in the same order, case insensitive
-function matchesFilter(filter: string, pageName: string) {
-  const unmatchedFilterChars = reduce(
-    (remainingFilter, pageNameChar) =>
-        head(remainingFilter) === pageNameChar ? tail(remainingFilter) : remainingFilter,
-    Array.from(toLower(filter)),
-    Array.from(toLower(pageName))
-  );
-
-  return isEmpty(unmatchedFilterChars);
-}
-
 function GalleryNav() {
-  const [filter, setFilter] = useState(''),
+  const { pathname } = useLocation(),
+      currentPageName = (pathname.match(/\/pages\/(.*)$/) || [])[1],
+      firstTree = head(keys(pageConfig)),
+
+      // Have the tree for the current page expanded. if we are on a page that doesn't appear in the nav (e.g. the
+      // home page) then expand the first tree
+      initialOpenTreeViews: Record<string, boolean> = mapObjIndexed(
+        (categoryEntries, treeName) => currentPageName ?
+            includes(currentPageName, keys(categoryEntries)) :
+            treeName === firstTree,
+        pageConfig
+      ),
+
+      [filter, setFilter] = useState(''),
+
+      // state of which tree views should be open when we aren't filtering - when we _are_ filtering, all tree
+      // views should be open (though some may not be rendered at all in that case)
+      [openTreeViews, setOpenTreeViews] = useState(initialOpenTreeViews),
+      isFiltering = !!filter,
       categories = pipe<PageConfig, [string, PageMapping][], ReactNode[]>(
           toPairs,
-          addIndex<[string, PageMapping], ReactNode>(map)(([categoryName, categoryEntries], idx) =>
+          map(([categoryName, categoryEntries]) =>
             <GalleryNavTreeView key={categoryName}
                                 filter={filter}
-                                defaultOpen={!idx}
+                                isOpen={isFiltering || openTreeViews[categoryName]}
+                                onToggleCollapse={() => setOpenTreeViews(over(lensProp(categoryName), not))}
                                 { ...({ categoryEntries, categoryName }) }/>
           )
       )(pageConfig);
 
   return (
     <nav>
-      <NxFilterInput value={filter} onChange={setFilter} autoFocus />
+      <NxFilterInput placeholder="Search RSC…" value={filter} onChange={setFilter} autoFocus />
       {categories}
     </nav>
   );
