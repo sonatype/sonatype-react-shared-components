@@ -4,8 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { reduce, head, tail, toLower, isEmpty, splitAt, drop, join } from "ramda";
-import React, { ReactNode } from "react";
+import { reduce, head, tail, toLower, isEmpty, splitAt, drop, join } from 'ramda';
+import React, { ReactNode } from 'react';
 
 /**
  * @return a ReactNode containing the input text string with parts which match the filter marked
@@ -20,10 +20,12 @@ export function markByFilter(filter: string | undefined, text: string): ReactNod
     while (!isEmpty(filterArr) && !isEmpty(textArr)) {
       const markKey = filterArr.length;
 
-      let i: number;
+      let i = 0;
 
       // Count how many immediate chars in the text match the filter
-      for (i = 0; i < Math.min(filterArr.length, textArr.length) && filterArr[i] === toLower(textArr[i]); i++);
+      while (i < Math.min(filterArr.length, textArr.length) && filterArr[i] === toLower(textArr[i])) {
+        i++;
+      }
 
       // if there are matching characters, gather them and wrap them in a <mark>
       if (i) {
@@ -41,7 +43,10 @@ export function markByFilter(filter: string | undefined, text: string): ReactNod
       }
 
       // Count how many immediate chars in the text DO NOT match the filter
-      for (i = 0; i < textArr.length && (!filterArr.length || filterArr[0] !== toLower(textArr[i])); i++);
+      i = 0;
+      while (i < textArr.length && (!filterArr.length || filterArr[0] !== toLower(textArr[i]))) {
+        i++;
+      }
 
       // if there are non-matching characters, gather them into a single text node
       if (i) {
@@ -64,10 +69,10 @@ export function markByFilter(filter: string | undefined, text: string): ReactNod
  */
 export function matchesFilter(filter: string, pageName: string) {
   const unmatchedFilterChars = reduce(
-    (remainingFilter, pageNameChar) =>
+      (remainingFilter, pageNameChar) =>
         head(remainingFilter) === pageNameChar ? tail(remainingFilter) : remainingFilter,
-    Array.from(toLower(filter)),
-    Array.from(toLower(pageName))
+      Array.from(toLower(filter)),
+      Array.from(toLower(pageName))
   );
 
   return isEmpty(unmatchedFilterChars);

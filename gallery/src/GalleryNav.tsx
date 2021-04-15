@@ -49,19 +49,18 @@ function GalleryNavTreeView(props: GalleryNavTreeViewProps) {
   const { categoryName, categoryEntries, filter, onToggleCollapse, isOpen } = props,
       isFiltering = !!filter,
       filteredEntries: PageMapping = isFiltering ?
-          pickBy((_, pageName) => matchesFilter(filter, pageName), categoryEntries) :
-          categoryEntries,
+        pickBy((_, pageName) => matchesFilter(filter, pageName), categoryEntries) :
+        categoryEntries,
       hasFilteredEntries = keys(filteredEntries).length,
       renderLinksWithFilter = renderLinks(filter);
 
   return hasFilteredEntries ? (
-      <NxTreeView onToggleCollapse={onToggleCollapse}
-                  isOpen={isOpen}
-                  triggerContent={categoryName}>
-        {renderLinksWithFilter(filteredEntries)}
-      </NxTreeView>
-    ) :
-    null;
+    <NxTreeView onToggleCollapse={onToggleCollapse}
+                isOpen={isOpen}
+                triggerContent={categoryName}>
+      {renderLinksWithFilter(filteredEntries)}
+    </NxTreeView>
+  ) : null;
 }
 
 function GalleryNav() {
@@ -72,10 +71,10 @@ function GalleryNav() {
       // Have the tree for the current page expanded. if we are on a page that doesn't appear in the nav (e.g. the
       // home page) then expand the first tree
       initialOpenTreeViews: Record<string, boolean> = mapObjIndexed(
-        (categoryEntries, treeName) => currentPageName ?
+          (categoryEntries, treeName) => currentPageName ?
             includes(currentPageName, keys(categoryEntries)) :
             treeName === firstTree,
-        pageConfig
+          pageConfig
       ),
 
       [filter, setFilter] = useState(''),
