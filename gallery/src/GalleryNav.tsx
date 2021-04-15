@@ -100,8 +100,6 @@ function matchesFilter(filter: string, pageName: string) {
 
 function GalleryNav() {
   const [filter, setFilter] = useState(''),
-      // create a GalleryNavTreeView for each entry in the pageConfig that matches the filter.
-      // Expand the tree views with matching contents, or expand the first one if no filtering is being done
       categories = pipe<PageConfig, [string, PageMapping][], ReactNode[]>(
           toPairs,
           addIndex<[string, PageMapping], ReactNode>(map)(([categoryName, categoryEntries], idx) =>
