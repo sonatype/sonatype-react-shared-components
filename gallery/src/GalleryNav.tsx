@@ -5,8 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState, ReactNode } from 'react';
-import { addIndex, toPairs, keys, map, pipe, includes } from 'ramda';
-import { NxTreeView, NxTreeViewChild } from '@sonatype/react-shared-components';
+import { addIndex, toPairs, keys, map, pipe, includes, pickBy, isEmpty, toLower, reduce, head, tail } from 'ramda';
+import { NxTreeView, NxTreeViewChild, NxFilterInput } from '@sonatype/react-shared-components';
 
 import pageConfig from './pageConfig';
 import { useLocation } from 'react-router';
@@ -47,15 +47,47 @@ function GalleryNavTreeView({ categoryName, categoryEntries, defaultOpen }: Gall
   );
 }
 
-// create a GalleryNavTreeView for each entry in the pageConfig. Only the first one is expanded by default
-const categories = pipe<PageConfig, [string, PageMapping][], ReactNode[]>(
-    toPairs,
-    addIndex<[string, PageMapping], ReactNode>(map)(([categoryName, categoryEntries], idx) =>
-      <GalleryNavTreeView key={categoryName} defaultOpen={!idx} { ...({ categoryName, categoryEntries }) }/>)
-)(pageConfig);
+// returns true if the pageName contains every character present in the filter in the same order, case insensitive
+function matchesFilter(filter: string, pageName: string) {
+  const unmatchedFilterChars = reduce(
+    (remainingFilter, pageNameChar) =>
+        head(remainingFilter) === pageNameChar ? tail(remainingFilter) : remainingFilter,
+    Array.from(toLower(filter)),
+    Array.from(toLower(pageName))
+  );
+
+  return isEmpty(unmatchedFilterChars);
+}
 
 function GalleryNav() {
-  return <nav>{categories}</nav>;
+  const [filter, setFilter] = useState(''),
+      isFiltering = !!filter,
+
+      // create a GalleryNavTreeView for each entry in the pageConfig that matches the filter.
+      // Expand the tree views with matching contents, or expand the first one if no filtering is being done
+      categories = pipe<PageConfig, [string, PageMapping][], ReactNode[]>(
+          toPairs,
+          addIndex<[string, PageMapping], ReactNode>(map)(([categoryName, categoryEntries], idx) => {
+            const filteredEntries: PageMapping = isFiltering ?
+                pickBy((_, pageName) => matchesFilter(filter, pageName), categoryEntries) :
+                categoryEntries,
+                hasFilteredEntries = keys(filteredEntries).length,
+                defaultOpen = isFiltering || !idx;
+
+            return hasFilteredEntries ?
+              <GalleryNavTreeView key={categoryName}
+                                  categoryEntries={filteredEntries}
+                                  { ...({ categoryName, defaultOpen }) }/> :
+              null;
+          })
+      )(pageConfig);
+
+  return (
+    <nav>
+      <NxFilterInput value={filter} onChange={setFilter} autoFocus />
+      {categories}
+    </nav>
+  );
 }
 
 export default GalleryNav;
