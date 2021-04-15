@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState, ReactNode } from 'react';
+import React, { useState, ReactNode, useEffect } from 'react';
 import { addIndex, toPairs, keys, map, pipe, includes, pickBy, isEmpty, toLower, reduce, head, tail, append } from 'ramda';
 import { NxTreeView, NxTreeViewChild, NxFilterInput } from '@sonatype/react-shared-components';
 
@@ -64,6 +64,12 @@ function GalleryNavTreeView({ categoryName, categoryEntries, filter, defaultOpen
       [toggleCheck, setToggleCheck] = useState(isInitiallyOpen),
       onToggleCollapse = () => setToggleCheck(!toggleCheck),
       renderLinksWithFilter = renderLinks(filter);
+
+  useEffect(() => {
+    // When filtering, this tree view will only be rendered at all if its a filter match, so ensure it is
+    // open.  When filtering is cancelled, fall back to isInitiallyOpen logic
+    setToggleCheck(!!filter || isInitiallyOpen);
+  }, [filter]);
 
   return (
     <NxTreeView onToggleCollapse={onToggleCollapse}
