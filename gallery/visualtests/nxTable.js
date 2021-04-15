@@ -128,6 +128,7 @@ describe('NxTable', function() {
           nextPageBtn = await tableContainer.$('.nx-btn-bar--pagination .nx-btn:last-child'),
           { height: heightWithClassAndFullData } = await browser.getElementRect(tableContainer.elementId);
 
+      await nextPageBtn.scrollIntoView({ block: 'center' });
       await nextPageBtn.click();
 
       // now we are on the second page, which has a smaller number of data rows. The explicit height is still
