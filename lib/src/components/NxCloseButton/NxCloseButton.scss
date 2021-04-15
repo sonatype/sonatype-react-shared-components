@@ -4,10 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import "nx-variables";
+@import "../../scss-shared/nx-button-helpers";
 
-// Icon buttons should appear smaller in certain contexts such as lists and table rows
-@mixin nx-small-icon-btn {
-  padding-block: $nx-spacing-xxs;
-  width: calc(1em * #{$nx-line-height} + 2 * #{$nx-spacing-xxs});
+.nx-btn--close {
+  @include nx-small-icon-btn;
 }
