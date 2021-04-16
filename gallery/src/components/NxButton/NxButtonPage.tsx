@@ -109,7 +109,7 @@ export default function NxButtonPage() {
                           liveExample={NxButtonIconOnlyExample}
                           codeExamples={nxButtonIconOnlyCode}>
         An example of a button containing only an icon. For accessibility purposes it is important to use the
-        title prop for the screen reader to interpret the content correctly.
+        title prop for a screen reader to interpret the content correctly.
       </GalleryExampleTile>
     </>
   );
