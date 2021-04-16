@@ -7,6 +7,7 @@
 import React from 'react';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxP, NxCode } from '@sonatype/react-shared-components';
 
 import NxPageTitlePolicyViolationIndicatorExample from './NxPageTitlePolicyViolationIndicatorExample';
 import NxPageTitleEverythingExample from './NxPageTitleEverythingExample';
@@ -21,17 +22,17 @@ const nxPageTitleCode = require('./NxPageTitleExample.html'),
 const NxPageTitlePage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         <code className="nx-code">nx-page-title</code> is used at the top of a page, it always has a title, and can also
-        have an icon and descriptive text.
-      </p>
-      <p className="nx-p">
-        In addition <code className="nx-code">.nx-page-title</code> can have tags or actions inline with the title.
-      </p>
-      <p className="nx-p">
+        have a sub-title, descriptive text, and space for tags or other indicators.
+      </NxP>
+      <NxP>
+        In addition <code className="nx-code">.nx-page-title</code> can have buttons inline with the title.
+      </NxP>
+      <NxP>
         Note: <code className="nx-code">.nx-page-title</code> replaces
         <code className="nx-code">.nx-tile--top-tile</code> and <code className="nx-code">.nx-tile--title-only</code>.
-      </p>
+      </NxP>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -72,8 +73,8 @@ const NxPageTitlePage = () =>
             <td className="nx-cell"><code className="nx-code">NxPageTitle.Tags</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              Any "tags" to place in the page header, such as Policy Violation Indicators, should go in
-              this element.
+              Any "tags" to place in the page header, such as <NxCode>NxTag</NxCode> or
+              <NxCode>NxPolicyViolationIndicator</NxCode>, should be wrapped by this element.
             </td>
           </tr>
         </tbody>
