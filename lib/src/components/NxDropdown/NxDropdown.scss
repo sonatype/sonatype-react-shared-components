@@ -18,6 +18,7 @@ $nx-dropdown-width: 250px;
 }
 
 .nx-dropdown__toggle {
+  box-sizing: border-box;
   color: $nx-text-color;
   display: flex;
   margin: 0;
