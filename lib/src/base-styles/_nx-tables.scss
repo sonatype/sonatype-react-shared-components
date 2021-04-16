@@ -203,7 +203,8 @@
 
   > .nx-btn-bar {
     // buttons should be 8px from row edges even though row padding is 12px
-    margin-block: -$nx-spacing-xxs;
+    margin-top: -$nx-spacing-xxs;
+    margin-bottom: -$nx-spacing-xxs;
   }
 
   &:not(.nx-cell--header) > .nx-btn-bar {

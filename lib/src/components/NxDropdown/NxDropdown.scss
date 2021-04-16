@@ -152,7 +152,8 @@ $nx-dropdown-width: 250px;
   margin-left: $nx-spacing-l;
 
   // take off a px to make room for the button border
-  margin-block: $nx-spacing-xxs - 1px;
+  margin-top: $nx-spacing-xxs - 1px;
+  margin-bottom: $nx-spacing-xxs - 1px;
 
   + .nx-dropdown-button {
     display: block;
