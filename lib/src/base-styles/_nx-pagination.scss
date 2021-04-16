@@ -8,9 +8,7 @@
   justify-content: center;
 
   .nx-btn {
-    // box-sizing is set to content-box here, so to get the min-width of the border box to equal the height,
-    // we need to subtract padding here
-    min-width: $nx-pagination-button-height - 2 * $nx-spacing-md;
+    min-width: $nx-pagination-button-height;
     margin: 0 $nx-spacing-xs 0 0;
     padding-inline: $nx-spacing-md;
 

@@ -20,7 +20,6 @@
   @include container-horizontal;
   @extend %nx-btn--disabled;
 
-  box-sizing: content-box;
   background-color: $nx-white;
   border: 1px solid $nx-blue-600;
   border-radius: 6px;
@@ -129,8 +128,8 @@
   // icon width can vary, just don't bother with padding in this direction and let the centering work it out
   padding-inline: 0;
 
-  // essentially, calculate the width the same way that the height is calculated
-  width: calc(1em * #{$nx-line-height} + 2 * #{$nx-spacing-xs});
+  // essentially, calculate the width the same way that the height is calculated (line height plus padding and border)
+  width: calc(1em * #{$nx-line-height} + 2 * #{$nx-spacing-xs} + 2px);
 
   .nx-icon {
     height: 1em;
