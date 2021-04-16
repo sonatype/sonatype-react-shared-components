@@ -14,10 +14,13 @@ describe('nx-page-title', function() {
   const simplePageTitle = '#nx-page-title-example .nx-page-title';
   const actionsPageTitle = '#nx-page-title-actions-example .nx-page-title';
   const policyViolationIndicatorPageTitle = '#nx-page-title-policy-violation-indicator-example .nx-page-title';
+  const everythingPageTitle = 'nx-page-title-everything-example .nx-page-title';
 
   it('looks right', simpleTest(simplePageTitle));
 
   it('looks right with actions', simpleTest(actionsPageTitle));
 
   it('looks right with policy violation indicator', simpleTest(policyViolationIndicatorPageTitle));
+
+  it('looks right with sub-title, description, and tags', simpleTest(everythingPageTitle));
 });
