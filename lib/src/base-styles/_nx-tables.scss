@@ -271,3 +271,21 @@
     color: $nx-blue-600;
   }
 }
+
+.nx-cell__sort-btn {
+  width: 100%;
+  text-align: left;
+
+  &, &:hover, &:active, &:focus {
+    border: none;
+    background: none;
+    font: inherit;
+    outline: none;
+  }
+
+  // first and last child selectors necessary for specificity
+  &, &:first-child, &:last-child {
+    margin: #{-$nx-spacing-sm} #{-$nx-spacing-md};
+    padding: $nx-spacing-sm $nx-spacing-md;
+  }
+}

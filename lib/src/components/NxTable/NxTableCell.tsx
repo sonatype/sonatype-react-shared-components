@@ -73,23 +73,24 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   }
 
   const Tag = isHeader ? 'th' : 'td';
-  const tabIndex = isSortable ? 0 : undefined;
-  const cell = (
-    <Tag className={classes} tabIndex={tabIndex} aria-sort={ariaSort} {...attrs}>
-      { (chevron && !isHeader) ?
-        <NxFontAwesomeIcon icon={faChevronRight}/> :
-        <>
-          {ensureElement(children)}
-          {isSortable && <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>}
-        </>
-      }
-    </Tag>
+  const cellContents =  (chevron && !isHeader) ?
+    <NxFontAwesomeIcon icon={faChevronRight}/> :
+    <>
+      {ensureElement(children)}
+      {isSortable && <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>}
+    </>;
+
+  const cellSortingContents = (
+      <NxTooltip title={ariaLabel}>
+        <button type="button" className="nx-cell__sort-btn">{cellContents}</button>
+      </NxTooltip>
   );
 
-  if (isSortable) {
-    return <NxTooltip title={ariaLabel}>{cell}</NxTooltip>;
-  }
-  return cell;
+  return (
+    <Tag className={classes} aria-sort={ariaSort} {...attrs}>
+      { isSortable ? cellSortingContents : cellContents }
+    </Tag>
+  );
 };
 
 NxTableCell.propTypes = nxTableCellPropTypes;
