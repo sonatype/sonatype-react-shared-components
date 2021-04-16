@@ -58,9 +58,9 @@ export default function NxButtonPage() {
               <NxTableCell>Empty</NxTableCell>
               <NxTableCell>
                 A string to render as a tooltip and accessibility label for the button. This is generally not necessary
-                for buttons that include text content, but icon-only buttons should use this to make the button's meaning
-                clear in all contexts. Omitting this prop when using an icon-only button is deprecated and will become
-                unsupported in a future release.
+                for buttons that include text content, but icon-only buttons should use this to make the button's
+                meaning clear in all contexts. Omitting this prop when using an icon-only button is deprecated and will
+                become unsupported in a future release.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
