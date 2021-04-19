@@ -12,7 +12,7 @@ import {ensureElement} from '../../util/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { NxTableCellProps, nxTableCellPropTypes } from './types';
-import { HeaderContext } from './contexts';
+import { HeaderContext, RowContext } from './contexts';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import { textContent } from '../../util/childUtil';
 export { NxTableCellProps };
@@ -30,6 +30,7 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
         ...attrs
       } = props,
       isHeader = useContext(HeaderContext),
+      rowTextContent = useContext(RowContext),
       isSortable = isSortableProp && isHeader && !chevron;
 
   const classes = classnames('nx-cell', className, {
@@ -76,7 +77,9 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   const Tag = isHeader ? 'th' : 'td';
   const cellContents = chevron ?
     (isHeader ? null : (
-      <button className="nx-cell__chevron-btn"><NxFontAwesomeIcon icon={faChevronRight}/></button>
+      <button className="nx-cell__chevron-btn" aria-label={rowTextContent}>
+        <NxFontAwesomeIcon icon={faChevronRight}/>
+      </button>
     )) :
     (isSortable ? (
       <>

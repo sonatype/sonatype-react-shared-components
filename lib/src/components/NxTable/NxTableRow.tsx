@@ -4,16 +4,22 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useEffect, useState } from 'react';
 import classnames from 'classnames';
+import { join, map, prop, filter } from 'ramda';
 
 import { NxTableRowProps, nxTableRowPropTypes} from './types';
-import { HeaderContext } from './contexts';
+import { HeaderContext, RowContext } from './contexts';
 export { NxTableRowProps };
 
 const NxTableRow = function NxTableRow(props: NxTableRowProps) {
   const {isFilterHeader = false, isClickable = false, className, selected, children, ...attrs} = props,
-      isHeader = useContext(HeaderContext);
+      isHeader = useContext(HeaderContext),
+
+      // For the accessibility label on the chevron button, we need the text content of the row.
+      // This component uses the DOM to retrieve that and provides it via RowContext
+      [rowTextContent, setRowTextContent] = useState(''),
+      rowRef = useRef<HTMLTableRowElement>(null);
 
   const classes = classnames('nx-table-row', className, {
     'nx-table-row--header': isHeader,
@@ -22,8 +28,21 @@ const NxTableRow = function NxTableRow(props: NxTableRowProps) {
     selected
   });
 
+  useEffect(function() {
+    if (rowRef.current) {
+      const row = rowRef.current,
+          cells = Array.from(row.querySelectorAll('td, th')),
+          cellTexts = filter(s => !!s, map(prop('textContent'), cells)),
+          rowText = join('; ', cellTexts);
+
+      setRowTextContent(rowText);
+    }
+  }, [children]);
+
   return (
-    <tr className={classes} {...attrs}>{children}</tr>
+    <RowContext.Provider value={rowTextContent}>
+      <tr ref={rowRef} className={classes} {...attrs}>{children}</tr>
+    </RowContext.Provider>
   );
 };
 
