@@ -238,6 +238,10 @@
       margin-left: 8px;
     }
   }
+
+  .nx-btn--icon-only {
+    @include nx-small-icon-btn;
+  }
 }
 
 .nx-list--description-list {

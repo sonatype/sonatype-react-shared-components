@@ -42,8 +42,11 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
 
   const toggleTooltipProps = toggleTooltip && wrapTooltipProps(toggleTooltip);
 
+  // Wrap .nx-dropdown-button and .nx-dropdown-link children in overflow tooltips
   const wrappedChildren = children && React.Children.map<ReactElement, ReactElement>(children, child => (
-    <NxOverflowTooltip>{child}</NxOverflowTooltip>
+    /(\s|^)nx-dropdown-(button|link)(\s|$)/.test(child.props.className) ?
+      <NxOverflowTooltip>{child}</NxOverflowTooltip> :
+      child
   ));
 
   const toggle = (

@@ -9,6 +9,7 @@ import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTableClickableExample from './NxTableClickableExample';
+import NxTableIconButtonExample from './NxTableIconButtonExample';
 import NxTableErrorExample from './NxTableErrorStateExample';
 import NxTableFixedLayoutExample from './NxTableFixedLayoutExample';
 import NxTableSortableExample from './NxTableSortableExample';
@@ -16,9 +17,11 @@ import NxTableFilterExample from './NxTableFilterExample';
 
 import './NxTableTruncationAndWrappingExample.scss';
 import './NxTableFixedLayoutExample.scss';
+import { NxCode } from '@sonatype/react-shared-components';
 
 const NxTableSimpleCode = require('./NxTableDefaultExample.html'),
     NxTableClickableCode = require('./NxTableClickableExample?raw'),
+    NxTableIconButtonCode = require('./NxTableIconButtonExample?raw'),
     NxTableEmptyCode = require('./NxTableEmptyExample.html'),
     NxTableErrorStateCode = require('./NxTableErrorStateExample?raw'),
     NxTableTruncationAndWrappingCode = require('./NxTableTruncationAndWrappingExample.html'),
@@ -97,6 +100,15 @@ const NxTablesExamples = () =>
       A demonstration of a <code className="nx-code">nx-table</code> with a header
       cell that contains a filter. Rows can be filtered depending on the text provided in the input.
       In this example the interactivity to filter content is not wired up.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Table with Icon Buttons Example"
+                        id="nx-table-icon-buttons-example"
+                        liveExample={NxTableIconButtonExample}
+                        codeExamples={NxTableIconButtonCode}>
+      A demonstration of an <NxCode>nx-table</NxCode> with icon-only buttons in both the filter row
+      and the content rows. Note that the buttons in the filter row are the standard height while the buttons in the
+      content rows are smaller. The default styles only support these sorts of buttons in the rightmost column.
     </GalleryExampleTile>
   </>;
 
