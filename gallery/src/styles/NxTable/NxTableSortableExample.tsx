@@ -12,12 +12,14 @@ const NxTableSortable = () =>
   <table className="nx-table">
     <thead>
       <tr className="nx-table-row nx-table-row--header">
-        <th className="nx-cell nx-cell--header nx-cell--sortable">
-          <span>Name</span>
-          <span className="nx-cell__sort-icons fa-layers">
-            <NxFontAwesomeIcon icon={faSortUp} />
-            <NxFontAwesomeIcon icon={faSortDown} />
-          </span>
+        <th className="nx-cell nx-cell--header nx-cell--sortable" aria-sort="none">
+          <button type="button" className="nx-cell__sort-btn" aria-label="Name unsorted">
+            <span>Name</span>
+            <span className="nx-cell__sort-icons fa-layers">
+              <NxFontAwesomeIcon icon={faSortUp} />
+              <NxFontAwesomeIcon icon={faSortDown} />
+            </span>
+          </button>
         </th>
       </tr>
     </thead>
