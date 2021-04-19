@@ -19,7 +19,7 @@ const NxGlobalSidebarNavigationLink: FunctionComponent<Props> = function NxNavig
   const classes = classnames(className, 'nx-global-sidebar__navigation-link nx-text-link', {
     'selected': isSelected
   });
-  const textClasses = 'nx-global-sidebar__navigation-text nx-global-sidebar__expanded-content';
+  const textClasses = 'nx-global-sidebar__navigation-text';
 
   return (
     <NxOverflowTooltip>

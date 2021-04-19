@@ -133,8 +133,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   width: $nx-global-sidebar-width-closed;
 
   .nx-global-sidebar__expanded-content {
-    display: inline-block;
-    visibility: hidden;
+    display: none;
   }
 
   .nx-global-sidebar__header {
@@ -144,5 +143,10 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   .nx-global-sidebar__navigation-link {
     text-align: center;
     text-overflow: revert;
+  }
+
+  .nx-global-sidebar__navigation-text {
+    display: inline-block;
+    visibility: hidden;
   }
 }
