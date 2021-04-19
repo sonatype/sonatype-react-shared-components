@@ -273,7 +273,7 @@
 }
 
 .nx-cell__sort-btn {
-  width: 100%;
+  width: calc(100% + 2 * #{$nx-spacing-md});
   text-align: left;
 
   &, &:hover, &:active, &:focus {
