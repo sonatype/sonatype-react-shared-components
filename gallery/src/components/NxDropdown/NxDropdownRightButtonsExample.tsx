@@ -23,13 +23,19 @@ function NxDropdownRightButtonsExample() {
           Text Link - this link should trigger truncation
         </span>
       </a>
-      <NxButton onClick={() => alert('icon click')} className="nx-dropdown-right-button" variant="icon-only">
+      <NxButton onClick={() => alert('icon click')}
+                className="nx-dropdown-right-button"
+                variant="icon-only"
+                title="Delete Button Link2">
         <NxFontAwesomeIcon icon={faTrash}/>
       </NxButton>
       <a href="#" onClick={onClick} className="nx-dropdown-button">
         <span className="nx-dropdown-button-content">Button Link2</span>
       </a>
-      <NxButton onClick={() => alert('icon click')} className="nx-dropdown-right-button" variant="icon-only">
+      <NxButton onClick={() => alert('icon click')}
+                className="nx-dropdown-right-button"
+                variant="icon-only"
+                title="Delete Text Link3">
         <NxFontAwesomeIcon icon={faTrash}/>
       </NxButton>
       <a href="#" onClick={onClick} className="nx-dropdown-button">

@@ -9,20 +9,25 @@ import { includes } from 'ramda';
 import classnames from 'classnames';
 
 import {Props, propTypes} from './types';
+import NxTooltip from '../NxTooltip/NxTooltip';
 
 const NxButton = forwardRef<HTMLButtonElement, Props>(
-    function NxButton({variant, className, children, ...attrs}, ref) {
-      const classNames = classnames(className, 'nx-btn', `nx-btn--${variant || 'secondary'}`);
+    function NxButton({ variant, className, children, title, ...attrs }, ref) {
+      const classNames = classnames(className, 'nx-btn', `nx-btn--${variant || 'secondary'}`),
+          btn = (
+            <button aria-disabled={includes('disabled', classNames) ? true : undefined}
+                    ref={ref}
+                    className={classNames}
+                    {...attrs}>
+              {children}
+            </button>
+          );
 
-      return (
-        <button aria-disabled={includes('disabled', classNames) ? true : undefined}
-                ref={ref}
-                className={classNames}
-                {...attrs}>
-          {children}
-        </button>
-      );
+      if (variant === 'icon-only' && !title) {
+        console.warn('Using icon-only buttons without the title prop is deprecated');
+      }
 
+      return title ? <NxTooltip title={title}>{btn}</NxTooltip> : btn;
     }
 );
 

@@ -20,10 +20,10 @@ export default function NxAccordionExample() {
           ellipsis truncation.
         </h2>
         <div className="nx-btn-bar">
-          <NxButton variant="icon-only" onClick={() => { alert('Edit click'); }}>
+          <NxButton title="Edit" variant="icon-only" onClick={() => { alert('Edit click'); }}>
             <NxFontAwesomeIcon icon={faEdit} />
           </NxButton>
-          <NxButton variant="icon-only" onClick={() => { alert('Settings click'); }}>
+          <NxButton title="Settings" variant="icon-only" onClick={() => { alert('Settings click'); }}>
             <NxFontAwesomeIcon icon={faCog} />
           </NxButton>
         </div>
