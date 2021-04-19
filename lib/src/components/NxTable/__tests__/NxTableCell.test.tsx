@@ -49,19 +49,23 @@ describe('NxTableCell', function () {
     });
 
     describe('when not isHeader', function() {
-      it('ignores the children and sort settings and adds a Chevron icon child', function() {
-        const component = getShallowComponent({
-          chevron: true,
-          sortDir: 'asc',
-          children: <span>foo</span>
-        });
+      it('ignores the children and sort settings and adds a Chevron icon child wrapped in a nx-cell__chevron-btn',
+          function() {
+            const component = getShallowComponent({
+              chevron: true,
+              sortDir: 'asc',
+              children: <span>foo</span>
+            });
 
-        function Fixture() {
-          return <NxFontAwesomeIcon icon={faChevronRight} />;
-        }
+            function Fixture() {
+              return (
+                <button className="nx-cell__chevron-btn"><NxFontAwesomeIcon icon={faChevronRight} /></button>
+              );
+            }
 
-        expect(component.children()).toMatchElement(<Fixture />);
-      });
+            expect(component.children()).toMatchElement(<Fixture />);
+          }
+      );
     });
 
     describe('when isHeader', function() {
