@@ -187,6 +187,16 @@ export default function NxTablePage() {
                   Automatically set to true when in an <code className="nx-code">NxTableHead</code> component
                 </NxTableCell>
               </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>clickAccessibleLabel</NxTableCell>
+                <NxTableCell>string</NxTableCell>
+                <NxTableCell>false</NxTableCell>
+                <NxTableCell>
+                  The accessible name to set on the click chevron for this row – i.e. the value to read out in a
+                  screenreader when the row (the chevron button, really) is focusd. If not specified, the full text
+                  content of all cells in the row will be used as the label.
+                </NxTableCell>
+              </NxTableRow>
             </NxTableBody>
           </NxTable>
         </section>

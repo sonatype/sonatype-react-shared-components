@@ -79,4 +79,25 @@ describe('NxTableRow', function () {
 
     expect(component.find('.context-dependent')).toHaveProp('aria-label', 'Foo; Bar; Baz');
   });
+
+  it('sets the clickAccessbleLabel into the RowContext provider if it is defined', function() {
+    function ContextDependentChild() {
+       const contextVal = useContext(RowContext);
+
+      return <span className="context-dependent" aria-label={contextVal} />;
+    }
+
+    const component = mount(
+      <NxTableRow clickAccessibleLabel="asdf">
+        <NxTableCell>Foo</NxTableCell>
+        <NxTableCell>Bar</NxTableCell>
+        <NxTableCell/>
+        <NxTableCell>Baz</NxTableCell>
+        <NxTableCell><ContextDependentChild/></NxTableCell>
+      </NxTableRow>,
+      { attachTo: document.createElement('tbody') }
+    );
+
+    expect(component.find('.context-dependent')).toHaveProp('aria-label', 'asdf');
+  });
 });

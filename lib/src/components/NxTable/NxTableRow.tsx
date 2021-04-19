@@ -13,10 +13,18 @@ import { HeaderContext, RowContext } from './contexts';
 export { NxTableRowProps };
 
 const NxTableRow = function NxTableRow(props: NxTableRowProps) {
-  const {isFilterHeader = false, isClickable = false, className, selected, children, ...attrs} = props,
+  const {
+        isFilterHeader = false,
+        isClickable = false,
+        className,
+        selected,
+        children,
+        clickAccessibleLabel,
+        ...attrs
+      } = props,
       isHeader = useContext(HeaderContext),
 
-      // For the accessibility label on the chevron button, we need the text content of the row.
+      // For the default accessibility label on the chevron button, we need the text content of the row.
       // This component uses the DOM to retrieve that and provides it via RowContext
       [rowTextContent, setRowTextContent] = useState(''),
       rowRef = useRef<HTMLTableRowElement>(null);
@@ -29,7 +37,8 @@ const NxTableRow = function NxTableRow(props: NxTableRowProps) {
   });
 
   useEffect(function() {
-    if (rowRef.current) {
+    // unused if clickAccessibleLabel is set
+    if (!clickAccessibleLabel && rowRef.current) {
       const row = rowRef.current,
           cells = Array.from(row.querySelectorAll('td, th')),
           cellTexts = filter(s => !!s, map(prop('textContent'), cells)),
@@ -37,11 +46,11 @@ const NxTableRow = function NxTableRow(props: NxTableRowProps) {
 
       setRowTextContent(rowText);
     }
-  }, [children]);
+  }, [clickAccessibleLabel, children]);
 
   return (
     <tr ref={rowRef} className={classes} {...attrs}>
-      <RowContext.Provider value={rowTextContent}>
+      <RowContext.Provider value={clickAccessibleLabel || rowTextContent}>
         {children}
       </RowContext.Provider>
     </tr>
