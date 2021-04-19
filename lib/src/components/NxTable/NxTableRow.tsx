@@ -40,9 +40,11 @@ const NxTableRow = function NxTableRow(props: NxTableRowProps) {
   }, [children]);
 
   return (
-    <RowContext.Provider value={rowTextContent}>
-      <tr ref={rowRef} className={classes} {...attrs}>{children}</tr>
-    </RowContext.Provider>
+    <tr ref={rowRef} className={classes} {...attrs}>
+      <RowContext.Provider value={rowTextContent}>
+        {children}
+      </RowContext.Provider>
+    </tr>
   );
 };
 
