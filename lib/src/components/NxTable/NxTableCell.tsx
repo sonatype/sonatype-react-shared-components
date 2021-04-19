@@ -75,7 +75,9 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
 
   const Tag = isHeader ? 'th' : 'td';
   const cellContents = chevron ?
-    (isHeader ? null : <NxFontAwesomeIcon icon={faChevronRight}/>) :
+    (isHeader ? null : (
+      <button className="nx-cell__chevron-btn"><NxFontAwesomeIcon icon={faChevronRight}/></button>
+    )) :
     (isSortable ? (
       <>
         {ensureElement(children)}

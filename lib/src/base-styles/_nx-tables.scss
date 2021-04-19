@@ -81,7 +81,7 @@
         }
       }
 
-      &:focus {
+      &:focus-within {
         box-shadow: $nx-focus-box-shadow;
         outline: none;
 
@@ -272,7 +272,7 @@
   }
 }
 
-.nx-cell__sort-btn {
+.nx-cell__sort-btn, .nx-cell__chevron-btn {
   width: calc(100% + 2 * #{$nx-spacing-md});
   text-align: left;
 
