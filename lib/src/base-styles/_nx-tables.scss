@@ -285,6 +285,7 @@
 
   // first and last child selectors necessary for specificity
   &, &:first-child, &:last-child {
+    // make button take up entire header including its padding box
     margin: #{-$nx-spacing-sm} #{-$nx-spacing-md};
     padding: $nx-spacing-sm $nx-spacing-md;
   }
