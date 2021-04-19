@@ -21,37 +21,61 @@ const NxTableClickable = () =>
       </tr>
     </thead>
     <tbody>
-      <tr className="nx-table-row nx-clickable" tabIndex={0}>
+      <tr className="nx-table-row nx-clickable">
         <td className="nx-cell nx-cell--label">Clickable row</td>
         <td className="nx-cell">Content 1</td>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell">Content 3</td>
         <td className="nx-cell">Content 4</td>
-        <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
+        <td className="nx-cell nx-cell--chevron">
+          <button type="button"
+                  className="nx-cell__chevron-btn"
+                  aria-label="Clickable row; Content1; Content 2; Content 3; Content 4">
+            <NxFontAwesomeIcon icon={faChevronRight}/>
+          </button>
+        </td>
       </tr>
-      <tr className="nx-table-row nx-clickable selected" tabIndex={0}>
+      <tr className="nx-table-row nx-clickable selected">
         <td className="nx-cell nx-cell--label">Row Label</td>
         <td className="nx-cell">Content 1</td>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell">Content 3</td>
         <td className="nx-cell">Content 4</td>
-        <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
+        <td className="nx-cell nx-cell--chevron">
+          <button type="button"
+                  className="nx-cell__chevron-btn"
+                  aria-label="Row Label; Content1; Content 2; Content 3; Content 4">
+            <NxFontAwesomeIcon icon={faChevronRight}/>
+          </button>
+        </td>
       </tr>
-      <tr className="nx-table-row nx-clickable" tabIndex={0}>
+      <tr className="nx-table-row nx-clickable">
         <td className="nx-cell nx-cell--label">Row Label</td>
         <td className="nx-cell">Content 1</td>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell">Content 3</td>
         <td className="nx-cell">Content 4</td>
-        <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
+        <td className="nx-cell nx-cell--chevron">
+          <button type="button"
+                  className="nx-cell__chevron-btn"
+                  aria-label="Row Label; Content1; Content 2; Content 3; Content 4">
+            <NxFontAwesomeIcon icon={faChevronRight}/>
+          </button>
+        </td>
       </tr>
-      <tr className="nx-table-row nx-clickable" tabIndex={0}>
+      <tr className="nx-table-row nx-clickable">
         <td className="nx-cell nx-cell--label">Row Label</td>
         <td className="nx-cell">Content 1</td>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell">Content 3</td>
         <td className="nx-cell">Content 4</td>
-        <td className="nx-cell nx-cell--chevron"><NxFontAwesomeIcon icon={faChevronRight}/></td>
+        <td className="nx-cell nx-cell--chevron">
+          <button type="button"
+                  className="nx-cell__chevron-btn"
+                  aria-label="Row Label; Content1; Content 2; Content 3; Content 4">
+            <NxFontAwesomeIcon icon={faChevronRight}/>
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>;

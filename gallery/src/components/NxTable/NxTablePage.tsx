@@ -270,7 +270,9 @@ export default function NxTablePage() {
                 <NxTableCell>
                   Desginates a cell that should contain only the right-facing chevron icon used at that end of
                   clickable table cells. <code className="nx-code">NxTableCell</code>s with this prop set will
-                  self-populate with the icon, and do not take <code className="nx-code">children</code>.
+                  self-populate with the icon, and do not take <code className="nx-code">children</code>. The icon
+                  will be wrapped in a button for accessibility purposes, with the button's accessible name generated
+                  from the text contents of the rest of the row.
                 </NxTableCell>
               </NxTableRow>
             </NxTableBody>

@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -88,7 +89,8 @@ const NxTablesExamples = () =>
                         liveExample={NxTableSortableExample}
                         codeExamples={NxTableSortableCode}>
       A demonstration of a <code className="nx-code">nx-table</code> used for columns that can be sorted.
-      In this example the interactivity to sort columns is not wired up.
+      In this example the interactivity to sort columns is not wired up. Note
+      the <NxCode>&lt;button&gt;</NxCode> surrounding the sort header contents.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table with Filter Rows Example"
@@ -96,7 +98,9 @@ const NxTablesExamples = () =>
                         codeExamples={NxTableFilterCode}>
       A demonstration of a <code className="nx-code">nx-table</code> with a header
       cell that contains a filter. Rows can be filtered depending on the text provided in the input.
-      In this example the interactivity to filter content is not wired up.
+      In this example the interactivity to filter content is not wired up. Note
+      the <NxCode>&lt;button&gt;</NxCode> surrounding the chevron cell contents.
+
     </GalleryExampleTile>
   </>;
 

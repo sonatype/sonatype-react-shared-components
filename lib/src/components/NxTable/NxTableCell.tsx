@@ -77,7 +77,7 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   const Tag = isHeader ? 'th' : 'td';
   const cellContents = chevron ?
     (isHeader ? null : (
-      <button className="nx-cell__chevron-btn" aria-label={rowTextContent}>
+      <button type="button" className="nx-cell__chevron-btn" aria-label={rowTextContent}>
         <NxFontAwesomeIcon icon={faChevronRight}/>
       </button>
     )) :
