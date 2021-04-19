@@ -75,28 +75,29 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   }
 
   const Tag = isHeader ? 'th' : 'td';
-  const cellContents = chevron ?
-    (isHeader ? null : (
-      <button type="button" className="nx-cell__chevron-btn" aria-label={rowTextContent}>
-        <NxFontAwesomeIcon icon={faChevronRight}/>
-      </button>
-    )) :
-    (isSortable ? (
-      <>
-        {ensureElement(children)}
-        <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>
-      </>
-    ) : children);
+
+  const chevronCellContents = isHeader ? null : (
+    <button type="button" className="nx-cell__chevron-btn" aria-label={rowTextContent}>
+      <NxFontAwesomeIcon icon={faChevronRight}/>
+    </button>
+  );
 
   const cellSortingContents = (
-      <NxTooltip title={ariaLabel}>
-        <button type="button" className="nx-cell__sort-btn">{cellContents}</button>
-      </NxTooltip>
+    <NxTooltip title={ariaLabel}>
+      <button type="button" className="nx-cell__sort-btn">
+        {ensureElement(children)}
+        <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>
+      </button>
+    </NxTooltip>
   );
 
   return (
     <Tag className={classes} aria-sort={ariaSort} {...attrs}>
-      { isSortable ? cellSortingContents : cellContents }
+      {
+        isSortable ? cellSortingContents :
+        chevron ? chevronCellContents :
+        children
+      }
     </Tag>
   );
 };
