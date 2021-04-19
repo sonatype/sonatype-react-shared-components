@@ -13,14 +13,15 @@ import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxTableCell from '../NxTableCell';
 import NxTooltip from '../../NxTooltip/NxTooltip';
 import { NxTableCellProps as Props } from '../types';
-import { HeaderContext } from '../contexts';
+import { HeaderContext, RowContext } from '../contexts';
 
 describe('NxTableCell', function () {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxTableCell, {}),
       getMountedHeaderComponent = (extraProps?: Props) => mount(
         <HeaderContext.Provider value={true}>
           <NxTableCell { ...extraProps }/>
-        </HeaderContext.Provider>
+        </HeaderContext.Provider>,
+        { attachTo: document.createElement('tr') }
       ).children();
 
   it('renders a table with the expected class names', function () {
@@ -40,15 +41,16 @@ describe('NxTableCell', function () {
   });
 
   describe('when the chevron prop is true', function() {
-    it('adds the nx-cell--chevron class', function() {
-      expect(getShallowComponent({ chevron: undefined })).not.toHaveClassName('nx-cell--chevron');
-      expect(getShallowComponent({ chevron: null })).not.toHaveClassName('nx-cell--chevron');
-      expect(getShallowComponent({ chevron: false })).not.toHaveClassName('nx-cell--chevron');
-
-      expect(getShallowComponent({ chevron: true })).toHaveClassName('nx-cell--chevron');
-    });
 
     describe('when not isHeader', function() {
+      it('adds the nx-cell--chevron class', function() {
+        expect(getShallowComponent({ chevron: undefined })).not.toHaveClassName('nx-cell--chevron');
+        expect(getShallowComponent({ chevron: null })).not.toHaveClassName('nx-cell--chevron');
+        expect(getShallowComponent({ chevron: false })).not.toHaveClassName('nx-cell--chevron');
+
+        expect(getShallowComponent({ chevron: true })).toHaveClassName('nx-cell--chevron');
+      });
+
       it('ignores the children and sort settings and adds a Chevron icon child wrapped in a nx-cell__chevron-btn',
           function() {
             const component = getShallowComponent({
@@ -66,6 +68,17 @@ describe('NxTableCell', function () {
             expect(component.children()).toMatchElement(<Fixture />);
           }
       );
+
+      it('sets the nx-cell__chevron-btn aria-label from the RowContext', function() {
+        const component = mount(
+          <RowContext.Provider value="foobar">
+            <NxTableCell chevron/>
+          </RowContext.Provider>,
+          { attachTo: document.createElement('tr') }
+        );
+
+        expect(component.find('.nx-cell__chevron-btn')).toHaveProp('aria-label', 'foobar');
+      });
     });
 
     describe('when isHeader', function() {
@@ -76,7 +89,8 @@ describe('NxTableCell', function () {
           children: <span>foo</span>
         });
 
-        expect(component).toMatchElement(<th className="nx-cell nx-cell--header"/>);
+        expect(component).toMatchSelector('th.nx-cell.nx-cell--header');
+        expect(component.children()).not.toExist();
       });
     });
   });
