@@ -100,7 +100,6 @@ const NxTablesExamples = () =>
       cell that contains a filter. Rows can be filtered depending on the text provided in the input.
       In this example the interactivity to filter content is not wired up. Note
       the <NxCode>&lt;button&gt;</NxCode> surrounding the chevron cell contents.
-
     </GalleryExampleTile>
   </>;
 
