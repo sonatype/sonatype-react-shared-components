@@ -193,7 +193,7 @@ export default function NxTablePage() {
                 <NxTableCell>false</NxTableCell>
                 <NxTableCell>
                   The accessible name to set on the click chevron for this row – i.e. the value to read out in a
-                  screenreader when the row (the chevron button, really) is focusd. If not specified, the full text
+                  screenreader when the row (the chevron button, really) is focused. If not specified, the full text
                   content of all cells in the row will be used as the label.
                 </NxTableCell>
               </NxTableRow>
