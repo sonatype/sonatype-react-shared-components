@@ -21,7 +21,7 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   const {
         metaInfo = false,
         isNumeric = false,
-        isSortable = false,
+        isSortable: isSortableProp = false,
         hasIcon = false,
         chevron = false,
         sortDir,
@@ -29,7 +29,8 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
         children,
         ...attrs
       } = props,
-      isHeader = useContext(HeaderContext);
+      isHeader = useContext(HeaderContext),
+      isSortable = isSortableProp && isHeader && !chevron;
 
   const classes = classnames('nx-cell', className, {
     'nx-cell--header': isHeader,
@@ -73,12 +74,14 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   }
 
   const Tag = isHeader ? 'th' : 'td';
-  const cellContents =  (chevron && !isHeader) ?
-    <NxFontAwesomeIcon icon={faChevronRight}/> :
-    <>
-      {ensureElement(children)}
-      {isSortable && <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>}
-    </>;
+  const cellContents = chevron ?
+    (isHeader ? null : <NxFontAwesomeIcon icon={faChevronRight}/>) :
+    (isSortable ? (
+      <>
+        {ensureElement(children)}
+        <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>
+      </>
+    ) : children);
 
   const cellSortingContents = (
       <NxTooltip title={ariaLabel}>
