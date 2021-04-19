@@ -24,8 +24,8 @@ const NxThreatIndicatorListExample = () =>
       <NxThreatIndicator threatLevelCategory="low" />
       <span className="nx-list__text">Indicator on row with actions</span>
       <div className="nx-list__actions">
-        <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
-        <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
+        <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+        <NxButton title="Trash" variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
       </div>
     </li>
     <li className="nx-list__item">
@@ -40,8 +40,8 @@ const NxThreatIndicatorListExample = () =>
       <NxThreatIndicator threatLevelCategory="severe" />
       <span className="nx-list__text">Indicator on row with subtext and actions</span>
       <div className="nx-list__actions">
-        <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
-        <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
+        <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+        <NxButton title="Trash" variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
       </div>
     </li>
     <li className="nx-list__item" tabIndex={0}>
