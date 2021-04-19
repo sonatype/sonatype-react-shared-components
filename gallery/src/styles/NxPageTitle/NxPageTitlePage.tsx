@@ -53,13 +53,6 @@ const NxPageTitlePage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-page-title__page-icon</code></td>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">
-              Class for an icon that appears to the left of the page title.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-page-title__description</code></td>
             <td className="nx-cell"><code className="nx-code">NxPageTitle.Description</code></td>
             <td className="nx-cell">Element</td>
