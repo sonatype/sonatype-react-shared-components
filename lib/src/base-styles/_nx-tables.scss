@@ -285,8 +285,11 @@
 }
 
 .nx-cell__sort-btn, .nx-cell__chevron-btn {
+  @include container-horizontal;
+
   width: calc(100% + 2 * #{$nx-spacing-md});
   text-align: left;
+  text-transform: uppercase;
 
   &, &:hover, &:active, &:focus {
     border: none;
