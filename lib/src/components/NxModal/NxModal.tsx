@@ -13,7 +13,7 @@ import './NxModal.scss';
 
 const currentModalCloseHandlers: CloseHandler[] = [];
 
-const NxModal: FunctionComponent<Props> = ({className, onClose, variant, ...attrs}) => {
+const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, ...attrs}) => {
   const modalClasses = classnames('nx-modal', className, {
         'nx-modal--wide': variant === 'wide',
         'nx-modal--narrow': variant === 'narrow'
@@ -65,8 +65,10 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, variant, ...attr
   }, []);
 
   return (
-    <dialog ref={dialogRef} className="nx-modal-backdrop">
-      <section className={modalClasses} {...attrs} />
+    // Note: role="dialog" should be redundant but I think some screenreaders (ChromeVox) don't know
+    // what a <dialog> is.  It makes a difference there.
+    <dialog ref={dialogRef} role={role || 'dialog'} aria-modal="true" className="nx-modal-backdrop">
+      <div className={modalClasses} {...attrs} />
     </dialog>
   );
 };
