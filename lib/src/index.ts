@@ -59,6 +59,8 @@ export { default as NxStatefulSubmitMask }
   from './components/NxSubmitMask/stateful/NxStatefulSubmitMask';
 
 export { default as NxTable, NxTableProps } from './components/NxTable/NxTable';
+
+// deprecated, use NxTable.Body etc now
 export { default as NxTableBody, NxTableBodyProps } from './components/NxTable/NxTableBody';
 export { default as NxTableCell, NxTableCellProps } from './components/NxTable/NxTableCell';
 export { default as NxTableHead, NxTableHeadProps } from './components/NxTable/NxTableHead';
