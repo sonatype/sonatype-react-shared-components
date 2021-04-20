@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxModalSimpleExample from './NxModalSimpleExample';
@@ -166,7 +166,10 @@ export default function NxModalPage() {
                           liveExample={NxModalAlertExample}
                           codeExamples={NxModalAlertSourceCode}>
         An example of an <code className="nx-code">NxModal</code> containing
-        an <code className="nx-code">NxAlert</code>.
+        an <code className="nx-code">NxAlert</code>. As shown in this example, the most appropriate accessibility role
+        in this scenario is <NxCode>alertdialog</NxCode>.  Note that this is actually the only role you'd ever want to
+        explicitly add to an <NxCode>NxModal</NxCode>. In non-alert cases, <NxCode>NxModal</NxCode> takes on the
+        semantics of the <NxCode>dialog</NxCode> role as one would expect.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal with stacked modal example"
