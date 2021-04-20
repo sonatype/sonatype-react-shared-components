@@ -30,10 +30,10 @@ export default function NxModalPage() {
       <GalleryDescriptionTile>
         <p className="nx-p">
           <code className="nx-code">NxModal</code> is the preferred way to handle modals. Invoking
-          an <code className="nx-code">NxModal</code> will create 2 separate <code className="nx-code">div</code>
-          elements. One div will have the <code className="nx-code">nx-modal</code> class, along with any classes passed
+          an <code className="nx-code">NxModal</code> will create 2 separate
+          elements. One will have the <code className="nx-code">nx-modal</code> class, along with any classes passed
           into the <code className="nx-code">NxModal</code> element with the <code className="nx-code">className</code>
-          attribute. The other div, the parent of the modal, will have
+          attribute. The other element, the parent of the modal, will have
           the <code className="nx-code">nx-modal-backdrop</code> class applied to it.
         </p>
         <h3>Modal Style Classes</h3>
