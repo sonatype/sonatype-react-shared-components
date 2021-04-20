@@ -8,6 +8,7 @@ import React from 'react';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {act} from 'react-dom/test-utils';
 
+import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxModal, {Props} from '../NxModal';
 
 describe('NxModal', function() {
@@ -17,48 +18,51 @@ describe('NxModal', function() {
     onClose: dummyCloseHandler
   };
 
-  it('renders divs with nx-modal and nx-modal-backdrop', function () {
-    const nxModal = shallow(
-      <NxModal { ...minimalProps } />
-    );
-    expect(nxModal.find('.nx-modal')).toExist();
-    expect(nxModal.find('.nx-modal-backdrop')).toExist();
+  const getShallow = getShallowComponent(NxModal, minimalProps);
+
+  it('renders an nx-modal-backdrop <dialog> containing an nx-modal <div>', function () {
+    const nxModal = getShallow();
+
+    expect(nxModal).toMatchSelector('dialog.nx-modal-backdrop');
+    expect(nxModal.children()).toMatchSelector('div.nx-modal');
   });
 
-  it('renders children nodes', function() {
-    const nxModal = shallow(
-      <NxModal { ...minimalProps }>
-        <div className="bar"></div>
-      </NxModal>
-    );
+  it('renders children nodes within the modal', function() {
+    const nxModal = getShallow({ children: <div className="bar"/> });
 
-    expect(nxModal).toContainMatchingElement('div.bar');
+    expect(nxModal.find('.nx-modal')).toContainMatchingElement('div.bar');
   });
 
   it('merges any passed in className to the nx-modal div', function() {
-    const nxModal = shallow(
-      <NxModal className="test" onClose={dummyCloseHandler}/>
-    );
+    const nxModal = getShallow({ className: 'test' });
+
     const nxModalDiv = nxModal.find('.nx-modal');
-    expect(nxModalDiv.hasClass('test')).toEqual(true);
+    expect(nxModalDiv).toHaveClassName('test');
   });
 
   it('includes any passed in attributes to the nx-modal div', function() {
-    const nxModal = shallow(
-      <NxModal id="modal-id" data-foo="bar" onClose={dummyCloseHandler}/>
-    );
+    const nxModal = getShallow({ id: 'modal-id', lang: 'en_US' });
+
     expect(nxModal.find('.nx-modal').prop('id')).toEqual('modal-id');
-    expect(nxModal.find('.nx-modal').prop('data-foo')).toEqual('bar');
+    expect(nxModal.find('.nx-modal').prop('lang')).toEqual('en_US');
+  });
+
+  it('sets the dialog role on the backdrop by default', function() {
+    expect(getShallow()).toHaveProp('role', 'dialog');
+  });
+
+  it('sets the specified role on the backdrop', function() {
+    expect(getShallow({ role: 'asdf' })).toHaveProp('role', 'asdf');
   });
 
   it('adds the nx-modal--wide class when the wide variant is specified', function() {
-    const nxModal = shallow(<NxModal { ...minimalProps } variant="wide"/>);
+    const nxModal = getShallow({ variant: 'wide' });
 
     expect(nxModal.find('.nx-modal')).toHaveClassName('nx-modal--wide');
   });
 
   it('adds the nx-modal--narrow class when the narrow variant is specified', function() {
-    const nxModal = shallow(<NxModal { ...minimalProps } variant="narrow"/>);
+    const nxModal = getShallow({ variant: 'narrow' });
 
     expect(nxModal.find('.nx-modal')).toHaveClassName('nx-modal--narrow');
   });
