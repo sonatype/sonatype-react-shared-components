@@ -7,11 +7,11 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
+@import '../../scss-shared/nx-button-helpers';
 
 $nx-global-sidebar-width-open: 250px;
 $nx-global-sidebar-width-closed: 72px;
 $nx-global-sidebar-logo-height: 34px;
-$nx-global-sidebar-toggle-size: 32px;
 
 $nx-global-sidebar-text-color: $nx-white;
 $nx-global-sidebar-background-color: $nx-blue-1000;
@@ -49,13 +49,12 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-global-sidebar__toggle {
+  @include nx-small-icon-btn;
   border-color: transparent;
   border-radius: 50%;
   color: $nx-global-sidebar-text-color;
   flex: none;
-  height: $nx-global-sidebar-toggle-size;
   margin: 0;
-  width: $nx-global-sidebar-toggle-size;
 
   &:focus {
     border-color: $nx-focus-border-color;
