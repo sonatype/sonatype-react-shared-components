@@ -8,7 +8,7 @@ import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
-import { NxTable } from '@sonatype/react-shared-components';
+import { NxTable, NxTile, NxH3, NxP, NxCode } from '@sonatype/react-shared-components';
 
 import NxTableSimpleExample from './NxTableSimpleExample';
 import NxTableClickableExample from './NxTableClickableExample';
@@ -262,6 +262,21 @@ export default function NxTablePage() {
             </NxTable.Body>
           </NxTable>
         </section>
+
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
+            <NxH3>Deprecated Component Names</NxH3>
+          </NxTile.SubsectionHeader>
+          <NxP>
+            As seen above, the various child components of <NxCode>NxTable</NxCode> are attached as properties on the
+            <NxCode>NxTable</NxCode> object and typically accessed using JavaScript dot notation. In previous versions
+            of RSC, this was not the case and the subobjects were instead exposed as top level exports with names along
+            the lines of <NxCode>NxTableRow</NxCode>, <NxCode>NxTableCell</NxCode>, and so on. These old names are still
+            exported by RSC for backwards compatibility, but are deprecated and may be removed in a future major version
+            release.
+          </NxP>
+        </NxTile.Subsection>
+
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
             <h3 className="nx-h3">SCSS Helper Functions</h3>
