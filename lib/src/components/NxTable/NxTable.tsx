@@ -4,13 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 
-import {only} from '../../util/childUtil';
-import NxTableHead from './NxTableHead';
-import NxTableBody from './NxTableBody';
-import NxTableRow from './NxTableRow';
 import { ColumnCountContext } from './contexts';
 
 import { NxTableProps, nxTablePropTypes } from './types';
@@ -18,16 +14,19 @@ export { NxTableProps };
 
 const NxTable = function NxTableElement(props: NxTableProps) {
   const {className, children, ...attrs} = props,
-      thead = only(children, NxTableHead),
-      tbody = only(children, NxTableBody),
-      trow = thead && only(thead.props.children, NxTableRow),
-      columns = trow ? React.Children.count(trow.props.children) : 0;
+      tableRef = useRef<HTMLTableElement>(null),
+      [columnCount, setColumnCount] = useState(1);
+
+  useEffect(function() {
+    if (tableRef.current) {
+      setColumnCount(tableRef.current.querySelectorAll('thead > tr:first-child > th').length);
+    }
+  }, [children]);
 
   return (
-    <table className={classnames('nx-table', className)} {...attrs}>
-      <ColumnCountContext.Provider value={columns}>
-        {thead}
-        {tbody}
+    <table ref={tableRef} className={classnames('nx-table', className)} {...attrs}>
+      <ColumnCountContext.Provider value={columnCount}>
+        {children}
       </ColumnCountContext.Provider>
     </table>
   );

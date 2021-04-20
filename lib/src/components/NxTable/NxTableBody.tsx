@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useEffect, useState } from 'react';
 
 import { NxTableBodyProps, nxTableBodyPropTypes } from './types';
 import NxTableRow from './NxTableRow';
@@ -17,7 +17,14 @@ export { NxTableBodyProps };
 const NxTableBody = function NxTableBody(props: NxTableBodyProps) {
   const {isLoading = false, emptyMessage, error, children, retryHandler, ...attrs} = props,
       columns = useContext(ColumnCountContext),
-      isEmpty = !React.Children.count(children);
+      [isEmpty, setIsEmpty] = useState(false),
+      bodyRef = useRef<HTMLTableSectionElement>(null);
+
+  useEffect(function() {
+    if (bodyRef.current) {
+      setIsEmpty(!bodyRef.current.childElementCount);
+    }
+  }, [children]);
 
   if (isLoading && !columns) {
     console.warn('columns is required when isLoading is set, this should have been determined automatically');
@@ -60,7 +67,7 @@ const NxTableBody = function NxTableBody(props: NxTableBodyProps) {
   );
 
   return (
-    <tbody {...attrs}>
+    <tbody ref={bodyRef} {...attrs}>
       {isLoading && loadingSpinnerRow}
       {!!error && !isLoading && errorRow}
       {!isLoading && !error && children}
