@@ -61,7 +61,7 @@ describe('NxTableRow', function () {
 
   it('sets the rendered text content into RowContext provider with cells separated by semi-colons', function() {
     function ContextDependentChild() {
-       const contextVal = useContext(RowContext);
+      const contextVal = useContext(RowContext);
 
       return <span className="context-dependent" aria-label={contextVal} />;
     }
@@ -82,7 +82,7 @@ describe('NxTableRow', function () {
 
   it('sets the clickAccessbleLabel into the RowContext provider if it is defined', function() {
     function ContextDependentChild() {
-       const contextVal = useContext(RowContext);
+      const contextVal = useContext(RowContext);
 
       return <span className="context-dependent" aria-label={contextVal} />;
     }

@@ -122,13 +122,13 @@ describe('NxTableCell', function () {
         expect(getMountedHeaderComponent({ isSortable: true, children: 'foo' }).children()).toMatchSelector(NxTooltip);
 
         expect(getMountedHeaderComponent({ isSortable: true, children: 'foo' }).find(NxTooltip))
-          .toHaveProp('title', 'foo unsorted');
+            .toHaveProp('title', 'foo unsorted');
 
         expect(getMountedHeaderComponent({ isSortable: true, children: 'foo', sortDir: 'asc' }).find(NxTooltip))
-          .toHaveProp('title', 'foo ascending');
+            .toHaveProp('title', 'foo ascending');
 
         expect(getMountedHeaderComponent({ isSortable: true, children: 'foo', sortDir: 'desc' }).find(NxTooltip))
-          .toHaveProp('title', 'foo descending');
+            .toHaveProp('title', 'foo descending');
       });
 
       it('wraps the cell contents in a button within the tooltip with the nx-cell__sort-btn class', function() {
