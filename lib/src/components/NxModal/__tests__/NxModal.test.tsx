@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {mount, ReactWrapper} from 'enzyme';
 import {act} from 'react-dom/test-utils';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
