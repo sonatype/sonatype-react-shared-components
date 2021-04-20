@@ -64,6 +64,12 @@ $nx-modal-padding: $nx-spacing-l;
 
 .nx-modal-backdrop {
   @include background-mask($nx-modal-backdrop-z-index);
+
+  // undo styles that chrome applies to <dialog> elements
+  max-width: initial;
+  max-height: initial;
+  width: initial;
+  height: initial;
 }
 
 .nx-modal-content {
