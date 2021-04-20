@@ -18,7 +18,6 @@ import NxTableFilterExample from './NxTableFilterExample';
 
 import './NxTableTruncationAndWrappingExample.scss';
 import './NxTableFixedLayoutExample.scss';
-import { NxCode } from '@sonatype/react-shared-components';
 
 const NxTableSimpleCode = require('./NxTableDefaultExample.html'),
     NxTableClickableCode = require('./NxTableClickableExample?raw'),
