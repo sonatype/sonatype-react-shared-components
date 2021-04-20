@@ -6,49 +6,42 @@
  */
 import React from 'react';
 
-import {
-  NxTable,
-  NxTableBody,
-  NxTableCell,
-  NxTableHead,
-  NxTableRow,
-  NxFontAwesomeIcon
-} from '@sonatype/react-shared-components';
+import { NxTable, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 import { faAtom, faBatteryEmpty, faCarBattery } from '@fortawesome/free-solid-svg-icons';
 
 const NxTableSimpleExample = () => {
   return (
     <NxTable>
-      <NxTableHead>
-        <NxTableRow>
-          <NxTableCell>Header 1</NxTableCell>
-          <NxTableCell>Header 2</NxTableCell>
-          <NxTableCell>Header 3</NxTableCell>
-          <NxTableCell isNumeric>Header 4</NxTableCell>
-          <NxTableCell hasIcon>Header 5 - icons</NxTableCell>
-        </NxTableRow>
-      </NxTableHead>
-      <NxTableBody>
-        <NxTableRow>
-          <NxTableCell>Content 1</NxTableCell>
-          <NxTableCell>Content 2</NxTableCell>
-          <NxTableCell>Content 3</NxTableCell>
-          <NxTableCell isNumeric>4</NxTableCell>
-          <NxTableCell hasIcon>
+      <NxTable.Head>
+        <NxTable.Row>
+          <NxTable.Cell>Header 1</NxTable.Cell>
+          <NxTable.Cell>Header 2</NxTable.Cell>
+          <NxTable.Cell>Header 3</NxTable.Cell>
+          <NxTable.Cell isNumeric>Header 4</NxTable.Cell>
+          <NxTable.Cell hasIcon>Header 5 - icons</NxTable.Cell>
+        </NxTable.Row>
+      </NxTable.Head>
+      <NxTable.Body>
+        <NxTable.Row>
+          <NxTable.Cell>Content 1</NxTable.Cell>
+          <NxTable.Cell>Content 2</NxTable.Cell>
+          <NxTable.Cell>Content 3</NxTable.Cell>
+          <NxTable.Cell isNumeric>4</NxTable.Cell>
+          <NxTable.Cell hasIcon>
             <NxFontAwesomeIcon icon={faAtom} />
             <NxFontAwesomeIcon icon={faCarBattery} />
-          </NxTableCell>
-        </NxTableRow>
-        <NxTableRow>
-          <NxTableCell>Content 1</NxTableCell>
-          <NxTableCell>Content 2</NxTableCell>
-          <NxTableCell>Content 3</NxTableCell>
-          <NxTableCell isNumeric>4</NxTableCell>
-          <NxTableCell hasIcon>
+          </NxTable.Cell>
+        </NxTable.Row>
+        <NxTable.Row>
+          <NxTable.Cell>Content 1</NxTable.Cell>
+          <NxTable.Cell>Content 2</NxTable.Cell>
+          <NxTable.Cell>Content 3</NxTable.Cell>
+          <NxTable.Cell isNumeric>4</NxTable.Cell>
+          <NxTable.Cell hasIcon>
             <NxFontAwesomeIcon icon={faBatteryEmpty} />
-          </NxTableCell>
-        </NxTableRow>
-      </NxTableBody>
+          </NxTable.Cell>
+        </NxTable.Row>
+      </NxTable.Body>
     </NxTable>
   );
 };

@@ -6,14 +6,7 @@
  */
 import React, {useState} from 'react';
 
-import {
-  NxTable,
-  NxTableBody,
-  NxTableCell,
-  NxTableHead,
-  NxTableRow,
-  NxPagination
-} from '@sonatype/react-shared-components';
+import { NxTable, NxPagination } from '@sonatype/react-shared-components';
 import { slice } from 'ramda';
 
 interface Row { name: string; country: string }
@@ -40,20 +33,20 @@ const NxTablePaginationExample = () => {
   return (
     <div className="nx-table-container gallery-pagination-table-example">
       <NxTable id="pagination-table" aria-live="polite">
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Name</NxTableCell>
-            <NxTableCell>Country</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Name</NxTable.Cell>
+            <NxTable.Cell>Country</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
           {rows.map((row: Row) =>
-            <NxTableRow key={row.name.concat(row.country)}>
-              <NxTableCell>{row.name}</NxTableCell>
-              <NxTableCell>{row.country}</NxTableCell>
-            </NxTableRow>
+            <NxTable.Row key={row.name.concat(row.country)}>
+              <NxTable.Cell>{row.name}</NxTable.Cell>
+              <NxTable.Cell>{row.country}</NxTable.Cell>
+            </NxTable.Row>
           )}
-        </NxTableBody>
+        </NxTable.Body>
       </NxTable>
       <div className="nx-table-container__footer">
         <NxPagination aria-controls="pagination-table"

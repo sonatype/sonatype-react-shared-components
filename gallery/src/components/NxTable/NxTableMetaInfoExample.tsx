@@ -6,36 +6,29 @@
  */
 import React from 'react';
 
-import {
-  NxTable,
-  NxTableBody,
-  NxTableCell,
-  NxTableHead,
-  NxTableRow,
-  NxWarningAlert
-} from '@sonatype/react-shared-components';
+import { NxTable, NxWarningAlert } from '@sonatype/react-shared-components';
 
 const NxTableLoadingExample = () => {
   return (
     <NxTable>
-      <NxTableHead>
-        <NxTableRow>
-          <NxTableCell>Header 1</NxTableCell>
-          <NxTableCell>Header 2</NxTableCell>
-          <NxTableCell>Header 3</NxTableCell>
-          <NxTableCell isNumeric>Header 4</NxTableCell>
-          <NxTableCell>Header 5</NxTableCell>
-        </NxTableRow>
-      </NxTableHead>
-      <NxTableBody>
-        <NxTableRow>
-          <NxTableCell colSpan={5} metaInfo>
+      <NxTable.Head>
+        <NxTable.Row>
+          <NxTable.Cell>Header 1</NxTable.Cell>
+          <NxTable.Cell>Header 2</NxTable.Cell>
+          <NxTable.Cell>Header 3</NxTable.Cell>
+          <NxTable.Cell isNumeric>Header 4</NxTable.Cell>
+          <NxTable.Cell>Header 5</NxTable.Cell>
+        </NxTable.Row>
+      </NxTable.Head>
+      <NxTable.Body>
+        <NxTable.Row>
+          <NxTable.Cell colSpan={5} metaInfo>
             <NxWarningAlert>
               This table data cannot be displayed due to quantum entanglement, or something.
             </NxWarningAlert>
-          </NxTableCell>
-        </NxTableRow>
-      </NxTableBody>
+          </NxTable.Cell>
+        </NxTable.Row>
+      </NxTable.Body>
     </NxTable>
   );
 };

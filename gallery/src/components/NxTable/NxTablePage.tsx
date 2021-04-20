@@ -8,13 +8,7 @@ import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
-import {
-  NxTable,
-  NxTableBody,
-  NxTableCell,
-  NxTableHead,
-  NxTableRow
-} from '@sonatype/react-shared-components';
+import { NxTable } from '@sonatype/react-shared-components';
 
 import NxTableSimpleExample from './NxTableSimpleExample';
 import NxTableClickableExample from './NxTableClickableExample';
@@ -66,134 +60,126 @@ export default function NxTablePage() {
           </header>
           <p className="nx-p">
             The top-level component to use when displaying tables of data.
-            It can have <code className="nx-code">NxTableHead</code> and
-            {' '}<code className="nx-code">NxTableBody</code> components as children. It can receive any attribute
+            It can have <code className="nx-code">NxTable.Head</code> and
+            {' '}<code className="nx-code">NxTable.Body</code> components as children. It can receive any attribute
             that would be valid on a <code className="nx-code">&lt;table&gt;</code>.
           </p>
         </section>
 
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTableHead</h3>
+            <h3 className="nx-h3">NxTable.Head</h3>
           </header>
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;thead&gt;</code> element.
-            The <code className="nx-code">NxTableRow</code> component is the only valid child. This component can
+            The <code className="nx-code">NxTable.Row</code> component is the only valid child. This component can
             receive any attribute that would be valid on a <code className="nx-code">&lt;thead&gt;</code>.
           </p>
         </section>
 
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTableBody</h3>
+            <h3 className="nx-h3">NxTable.Body</h3>
           </header>
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;tbody&gt;</code> element.
-            It should have <code className="nx-code">NxTableRow</code> for children. This component can
+            It should have <code className="nx-code">NxTable.Row</code> for children. This component can
             receive any attribute that would be valid on a <code className="nx-code">&lt;tbody&gt;</code> as well as the
             following props:
           </p>
           <NxTable>
-            <NxTableHead>
-              <NxTableRow>
-                <NxTableCell>Prop</NxTableCell>
-                <NxTableCell>Type</NxTableCell>
-                <NxTableCell>Required</NxTableCell>
-                <NxTableCell>Details</NxTableCell>
-              </NxTableRow>
-            </NxTableHead>
-            <NxTableBody>
-              <NxTableRow>
-                <NxTableCell>isLoading</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>Used to show a loading spinner instead of the table content</NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>error</NxTableCell>
-                <NxTableCell>string</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>Used to show an error message instead of the table content</NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>retryHandler</NxTableCell>
-                <NxTableCell>Function</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Prop</NxTable.Cell>
+                <NxTable.Cell>Type</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Details</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>isLoading</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>Used to show a loading spinner instead of the table content</NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>error</NxTable.Cell>
+                <NxTable.Cell>string</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>Used to show an error message instead of the table content</NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>retryHandler</NxTable.Cell>
+                <NxTable.Cell>Function</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
                   Used to provide the handler for the Retry button that appears when the error state is active.
                   Required when <code className="nx-code">error</code> is present.
-                </NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>emptyMessage</NxTableCell>
-                <NxTableCell>string</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>emptyMessage</NxTable.Cell>
+                <NxTable.Cell>string</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
                   Used to show a message when the table is otherwise empty (i.e. when it has no externally specified
                   child rows, is not loading, and is not in an error state. This prop must be specified if the
                   table is empty. If this table is not empty, this prop may be specified, having no effect.
                   In essence, the best practice is to specify this prop on all tables which <em>may</em> be empty.
-                </NxTableCell>
-              </NxTableRow>
-            </NxTableBody>
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
           </NxTable>
         </section>
 
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTableRow</h3>
+            <h3 className="nx-h3">NxTable.Row</h3>
           </header>
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;tr&gt;</code> element.
-            It should have <code className="nx-code">NxTableCell</code> for children. This component can
+            It should have <code className="nx-code">NxTable.Cell</code> for children. This component can
             receive any attribute that would be valid on a <code className="nx-code">&lt;tr&gt;</code> as well as the
             following props:
           </p>
           <NxTable>
-            <NxTableHead>
-              <NxTableRow>
-                <NxTableCell>Prop</NxTableCell>
-                <NxTableCell>Type</NxTableCell>
-                <NxTableCell>Required</NxTableCell>
-                <NxTableCell>Details</NxTableCell>
-              </NxTableRow>
-            </NxTableHead>
-            <NxTableBody>
-              <NxTableRow>
-                <NxTableCell>isClickable</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>Indicates that a table row is clickable.</NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>isFilterHeader</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>Indicates that this row is a table header row containing filter inputs.</NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>selected</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Prop</NxTable.Cell>
+                <NxTable.Cell>Type</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Details</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>isClickable</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>Indicates that a table row is clickable.</NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>isFilterHeader</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>Indicates that this row is a table header row containing filter inputs.</NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>selected</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
                   For clickable table rows, indicates that this row is the currently selected one.
-                </NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>isHeader</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
-                  Automatically set to true when in an <code className="nx-code">NxTableHead</code> component
-                </NxTableCell>
-              </NxTableRow>
-            </NxTableBody>
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
           </NxTable>
         </section>
 
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTableCell</h3>
+            <h3 className="nx-h3">NxTable.Cell</h3>
           </header>
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;th&gt;</code> or
@@ -203,77 +189,77 @@ export default function NxTablePage() {
           </p>
 
           <NxTable>
-            <NxTableHead>
-              <NxTableRow>
-                <NxTableCell>Prop</NxTableCell>
-                <NxTableCell>Type</NxTableCell>
-                <NxTableCell>Required</NxTableCell>
-                <NxTableCell>Details</NxTableCell>
-              </NxTableRow>
-            </NxTableHead>
-            <NxTableBody>
-              <NxTableRow>
-                <NxTableCell>metaInfo</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Prop</NxTable.Cell>
+                <NxTable.Cell>Type</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Details</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>metaInfo</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
                   Sets the <code className="nx-code">.nx-cell--meta-info</code> class on the cell. This class is
                   applied to table cells that provide meta-information about the table data, such as loading, error,
                   and empty table states. For those three states, the caller of
                   the <code className="nx-code">NxTable</code> react component does not manage the table cells
-                  directly (instead using the appropriate props on <code className="nx-code">NxTableBody</code>), and
+                  directly (instead using the appropriate props on <code className="nx-code">NxTable.Body</code>), and
                   therefore does not need to use this prop. However, the prop is available for any
                   other meta-info states that the caller might wish to convey. The intended usage is that a cell
                   using this prop would be the only cell in the only row in the table body, and would have
                   a <code className="nx-code">colspan</code> attribute causing it to span all the way across the
                   table.
-                </NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>isNumeric</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>Used for columns that contain numeric information</NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>isSortable</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>isNumeric</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>Used for columns that contain numeric information</NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>isSortable</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
                   Used for column headers that can be sorted. Should not be applied to data cells
-                </NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>sortDir</NxTableCell>
-                <NxTableCell style={{whiteSpace: 'nowrap'}}>asc | desc</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>sortDir</NxTable.Cell>
+                <NxTable.Cell style={{whiteSpace: 'nowrap'}}>asc | desc</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
                   Used to indicate the sorting direction applied.
                   A null value indicates the column is not yet sorted.
-                  This should only be used for <code className="nx-code">NxTableCell</code> components
-                  in the <code className="nx-code">NxTableHead</code>
-                </NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>hasIcon</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
+                  This should only be used for <code className="nx-code">NxTable.Cell</code> components
+                  in the <code className="nx-code">NxTable.Head</code>
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>hasIcon</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
                   Used to indicate a column whose data cells contain only one or
                   more <code className="nx-code">NxFontAwesomeIcon</code>s
-                </NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>chevron</NxTableCell>
-                <NxTableCell>boolean</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>chevron</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
                   Desginates a cell that should contain only the right-facing chevron icon used at that end of
-                  clickable table cells. <code className="nx-code">NxTableCell</code>s with this prop set will
+                  clickable table cells. <code className="nx-code">NxTable.Cell</code>s with this prop set will
                   self-populate with the icon, and do not take <code className="nx-code">children</code>.
-                </NxTableCell>
-              </NxTableRow>
-            </NxTableBody>
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
           </NxTable>
         </section>
         <section className="nx-tile-subsection">
@@ -293,43 +279,43 @@ export default function NxTablePage() {
             <code className="nx-code">pagination-table-height</code>. See the description of its parameters below.
           </p>
           <NxTable>
-            <NxTableHead>
-              <NxTableRow>
-                <NxTableCell>Name</NxTableCell>
-                <NxTableCell>Required</NxTableCell>
-                <NxTableCell>Default Value</NxTableCell>
-                <NxTableCell>Description</NxTableCell>
-              </NxTableRow>
-            </NxTableHead>
-            <NxTableBody>
-              <NxTableRow>
-                <NxTableCell><code className="nx-code">$body-row-count</code></NxTableCell>
-                <NxTableCell>Yes</NxTableCell>
-                <NxTableCell>N/A</NxTableCell>
-                <NxTableCell>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Name</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Default Value</NxTable.Cell>
+                <NxTable.Cell>Description</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell><code className="nx-code">$body-row-count</code></NxTable.Cell>
+                <NxTable.Cell>Yes</NxTable.Cell>
+                <NxTable.Cell>N/A</NxTable.Cell>
+                <NxTable.Cell>
                   The number of rows of content that the table body should have room for. This assumes that each
                   row contains only a single line of text. Wrapping text or other elements that expand the size
                   of any row will throw off the calculation.
-                </NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell><code className="nx-code">$header-filter-row-count</code></NxTableCell>
-                <NxTableCell>No</NxTableCell>
-                <NxTableCell>0</NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell><code className="nx-code">$header-filter-row-count</code></NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>0</NxTable.Cell>
+                <NxTable.Cell>
                   The number of filter header rows on the table.
-                </NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell><code className="nx-code">$header-row-count</code></NxTableCell>
-                <NxTableCell>No</NxTableCell>
-                <NxTableCell>1</NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell><code className="nx-code">$header-row-count</code></NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>1</NxTable.Cell>
+                <NxTable.Cell>
                   The number of standard header rows on the table. This number should not include the count of any
                   filter header rows.
-                </NxTableCell>
-              </NxTableRow>
-            </NxTableBody>
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
           </NxTable>
         </section>
 
