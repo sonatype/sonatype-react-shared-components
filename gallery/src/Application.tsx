@@ -8,6 +8,7 @@ import React, { useEffect } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { mergeAll, values } from 'ramda';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 // polyfill Array.prototype.includes which is used in query-string
 import 'core-js/features/array/includes';
@@ -25,6 +26,7 @@ import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExam
 import NxViewportSizedExpandingExample
   from './styles/NxViewportSized/NxViewportSizedExpandingExample';
 import SectionScrollingWrapper from './styles/NxViewportSized/SectionScrollingWrapper';
+import { NxGlobalSidebar, useToggle, NxGlobalSidebarNavigation, NxGlobalSidebarNavigationLink } from '@sonatype/react-shared-components';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
@@ -57,15 +59,28 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
 }
 
 function Application() {
+  const [sidebarOpen, toggle] = useToggle(true);
+
   return (
     <Router>
       <PageHeader />
-      <div className="nx-page-content">
+      <div className="nx-page-content nx-page-content--full-width">
         <Switch>
           <Route exact path="/PageLevelAlertExample">
             <NxLoadWrapperPageLevelExample/>
           </Route>
           <Route>
+            <NxGlobalSidebar isOpen={sidebarOpen}
+                             toggleOpenIcon={faEdit}
+                             toggleCloseIcon={faEdit}
+                             onToggleClick={toggle}
+                             logoImg="foo"
+                             logoAltText="foo"
+                             logoLink="#">
+              <NxGlobalSidebarNavigation>
+                <NxGlobalSidebarNavigationLink icon={faEdit} href="#" text="Foobar" />
+              </NxGlobalSidebarNavigation>
+            </NxGlobalSidebar>
             <aside className="nx-page-sidebar" id="gallery-sidebar">
               <GalleryNav />
             </aside>
