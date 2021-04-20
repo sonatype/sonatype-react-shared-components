@@ -58,7 +58,7 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, .
        * it together, we should be able to take advantage of the "top layer" functionality built into
        * the browser around modals to simplify the NxModal styling around z-index handling
        */
-       if (el.showModal) {
+      if (el.showModal) {
         el.showModal();
       }
     }
