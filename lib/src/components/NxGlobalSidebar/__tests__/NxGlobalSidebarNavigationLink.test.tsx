@@ -43,6 +43,11 @@ describe('NxGlobalSidebarNavigationLink', function() {
     expect(getShallowComponent().find('.nx-global-sidebar__navigation-text')).toHaveText('textLink');
   });
 
+  it('renders the specified text with `nx-global-sidebar__expanded-content` class', function() {
+    expect(getShallowComponent().find('.nx-global-sidebar__expanded-content'))
+        .toHaveText('textLink');
+  });
+
   it('renders the specified icon inside the link', function() {
     expect(getShallowComponent().find(NxFontAwesomeIcon)).toHaveProp('icon', faCrow);
     expect(getShallowComponent({ icon: faBiohazard }).find(NxFontAwesomeIcon))
