@@ -96,7 +96,7 @@ const NxPageTitlePage = () =>
                         defaultCheckeredBackground={true}
                         htmlExample={nxPageTitleActionsCode}
                         codeExamples={nxPageTitleActionsCode}>
-      An example of <code className="nx-code">nx-page-title</code> with actions in the form of a drop-down.
+      An example of <code className="nx-code">nx-page-title</code> with action buttons.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Page title with sub-title and page description"
