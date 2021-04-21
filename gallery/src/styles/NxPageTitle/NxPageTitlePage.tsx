@@ -53,6 +53,15 @@ const NxPageTitlePage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-page-title__sub-title</code></td>
+            <td className="nx-cell"><code className="nx-code">NxPageTitle.Subtitle</code></td>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">
+              If there is sub-title text it should be wrapped in a containing
+              <code className="nx-code">&lt;H2&gt;</code> with this class.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-page-title__description</code></td>
             <td className="nx-cell"><code className="nx-code">NxPageTitle.Description</code></td>
             <td className="nx-cell">Element</td>
