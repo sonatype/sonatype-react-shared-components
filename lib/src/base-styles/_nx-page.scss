@@ -31,6 +31,10 @@
   }
 }
 
+.nx-page-title__headings {
+  display: contents;
+}
+
 .nx-page-title__sub-title {
   @include nx-truncate-ellipsis;
   border-left: $nx-border-default;
