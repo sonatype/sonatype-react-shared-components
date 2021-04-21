@@ -4,14 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import classnames from 'classnames';
 
 import { NxTableRowProps, nxTableRowPropTypes} from './types';
 import { HeaderContext } from './contexts';
 export { NxTableRowProps };
 
-const NxTableRow = function NxTableRow(props: NxTableRowProps) {
+const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxTableRow(props, ref) {
   const {isFilterHeader = false, isClickable = false, className, selected, children, ...attrs} = props,
       isHeader = useContext(HeaderContext);
 
@@ -23,9 +23,9 @@ const NxTableRow = function NxTableRow(props: NxTableRowProps) {
   });
 
   return (
-    <tr tabIndex={isClickable ? 0 : undefined} className={classes} {...attrs}>{children}</tr>
+    <tr ref={ref} tabIndex={isClickable ? 0 : undefined} className={classes} {...attrs}>{children}</tr>
   );
-};
+});
 
 NxTableRow.propTypes = nxTableRowPropTypes;
 

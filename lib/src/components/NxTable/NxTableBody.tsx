@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useRef, useEffect, useState } from 'react';
+import React, { useContext, useRef, useState, useEffect, useCallback } from 'react';
+import useMutationObserver from '@rooks/use-mutation-observer';
 
 import { NxTableBodyProps, nxTableBodyPropTypes } from './types';
 import NxTableRow from './NxTableRow';
@@ -14,17 +15,28 @@ import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import NxLoadError from '../NxLoadError/NxLoadError';
 export { NxTableBodyProps };
 
+const mutationObserverConfig = { subtree: false, childList: true, attributes: false, characterData: false };
+
 const NxTableBody = function NxTableBody(props: NxTableBodyProps) {
   const {isLoading = false, emptyMessage, error, children, retryHandler, ...attrs} = props,
       columns = useContext(ColumnCountContext),
       [isEmpty, setIsEmpty] = useState(false),
-      bodyRef = useRef<HTMLTableSectionElement>(null);
+      bodyRef = useRef<HTMLTableSectionElement>(null),
+      emptyRowRef = useRef<HTMLTableRowElement>(null),
 
-  useEffect(function() {
-    if (bodyRef.current) {
-      setIsEmpty(!bodyRef.current.childElementCount);
-    }
-  }, [children]);
+      // use useCallback to memoize updateIsEmpty so that useMutationObserver isn't detaching
+      // and re-attaching the MutationObserver on every single render
+      updateIsEmpty = useCallback(function updateIsEmpty() {
+        debugger;
+        if (bodyRef.current) {
+          const rows = bodyRef.current.children;
+
+          setIsEmpty(!rows.length || (rows.length === 1 && rows.item(0) === emptyRowRef.current));
+        }
+      }, []);
+
+  useEffect(updateIsEmpty, []);
+  useMutationObserver(bodyRef, updateIsEmpty, mutationObserverConfig);
 
   if (isLoading && !columns) {
     console.warn('columns is required when isLoading is set, this should have been determined automatically');
@@ -61,7 +73,7 @@ const NxTableBody = function NxTableBody(props: NxTableBodyProps) {
   );
 
   const emptyMessageRow = (
-    <NxTableRow>
+    <NxTableRow ref={emptyRowRef}>
       <NxTableCell metaInfo colSpan={columns || undefined}>{emptyMessage}</NxTableCell>
     </NxTableRow>
   );

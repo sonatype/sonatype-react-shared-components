@@ -705,6 +705,11 @@
     "@react-hook/passive-layout-effect" "^1.2.0"
     resize-observer-polyfill "^1.5.1"
 
+"@rooks/use-mutation-observer@^4.11.0":
+  version "4.11.0"
+  resolved "https://registry.npmjs.org/@rooks/use-mutation-observer/-/use-mutation-observer-4.11.0.tgz#2df8f9520c6c63041c02f2e66e091c2cf40a178d"
+  integrity sha512-nvqYT49TCTC6RHR/2Seg8qXbnslHzA8ACSZeyck/4OyV5SCOggbIoJORWCxPMF6Skj+DIngbzf7Kfhx3b/LRvQ==
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.1"
   resolved "https://registry.npmjs.org/@sinonjs/commons/-/commons-1.8.1.tgz#e7df00f98a203324f6dc7cc606cad9d4a8ab2217"
