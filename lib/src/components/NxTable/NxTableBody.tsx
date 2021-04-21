@@ -27,7 +27,6 @@ const NxTableBody = function NxTableBody(props: NxTableBodyProps) {
       // use useCallback to memoize updateIsEmpty so that useMutationObserver isn't detaching
       // and re-attaching the MutationObserver on every single render
       updateIsEmpty = useCallback(function updateIsEmpty() {
-        debugger;
         if (bodyRef.current) {
           const rows = bodyRef.current.children;
 
