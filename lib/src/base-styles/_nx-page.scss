@@ -25,7 +25,7 @@
     white-space: nowrap;
   }
 
-  .nx-btn-bar {
+  .nx-btn-bar, .nx-dropdown {
     grid-area: actions;
     margin: 0 0 0 $nx-spacing-xs;
   }
