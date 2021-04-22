@@ -166,7 +166,7 @@ export default function NxGlobalSidebarPage() {
       <section className="nx-tile">
         <header className="nx-tile-header">
           <div className="nx-tile-header__title">
-            <h2 className="nx-h2">Basic Example with Nav</h2>
+            <h2 className="nx-h2">Basic Global Sidebar Example with Nav</h2>
           </div>
         </header>
         <div className="nx-tile-content">
@@ -181,7 +181,7 @@ export default function NxGlobalSidebarPage() {
       <section className="nx-tile">
         <header className="nx-tile-header">
           <div className="nx-tile-header__title">
-            <h2 className="nx-h2">Shrinking Example</h2>
+            <h2 className="nx-h2">Global Sidebar on a page with another page level sidebar</h2>
           </div>
         </header>
         <div className="nx-tile-content">
