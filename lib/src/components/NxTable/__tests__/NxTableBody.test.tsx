@@ -14,26 +14,27 @@ import NxLoadingSpinner from '../../NxLoadingSpinner/NxLoadingSpinner';
 import NxLoadError from '../../NxLoadError/NxLoadError';
 
 describe('NxTableBody', function () {
-  let mountContainers: HTMLElement[] = [],
-      getMountContainer = () => {
-        const newContainer = document.createElement('table');
-        mountContainers.push(newContainer);
-        document.body.append(newContainer);
+  let mountContainers: HTMLElement[] = [];
 
-        return newContainer;
-      },
+  function getMountContainer() {
+    const newContainer = document.createElement('table');
+    mountContainers.push(newContainer);
+    document.body.append(newContainer);
 
-      // create a mounted wrapper that is attached to the document, and deal with the timing complexities
-      // triggered by NxTableBody's MutationObserver usage
-      mountAttached = async (jsx: ReactElement) => {
-        let retval: ReactWrapper;
-        await act(async () => {
-          retval = mount(jsx, { attachTo: getMountContainer() });
-        });
-        retval!.update();
+    return newContainer;
+  }
 
-        return retval!;
-      }
+  // create a mounted wrapper that is attached to the document, and deal with the timing complexities
+  // triggered by NxTableBody's MutationObserver usage
+  async function mountAttached(jsx: ReactElement) {
+    let retval: ReactWrapper;
+    await act(async () => {
+      retval = mount(jsx, { attachTo: getMountContainer() });
+    });
+    retval!.update();
+
+    return retval!;
+  }
 
   afterEach(function() {
     mountContainers.forEach(container => document.body.removeChild(container));
