@@ -38,7 +38,10 @@ export default function NxGlobalSidebarPage() {
             with <NxCode>NxPageHeader</NxCode> or <NxCode>NxNexusPageHeader</NxCode>. Instead it should be paired with
             <NxCode>NxSystemHeader</NxCode> (not yet added to the gallery).
           </NxP>
-          <NxP>Addition custom content may be added below the navigation links if desired.</NxP>
+          <NxP>
+            Addition custom content may be added below the navigation links if desired, care should be taken that such
+            content can adapt to both the open and closed states.
+          </NxP>
           <section className="nx-tile-subsection">
             <header className="nx-tile-subsection__header">
               <h3 className="nx-h3"><NxCode>NxGlobalSidebar</NxCode> Props</h3>
@@ -183,7 +186,7 @@ export default function NxGlobalSidebarPage() {
         </header>
         <div className="nx-tile-content">
           <NxP>
-            In this example, there is another sidebar.
+            In this example, there is another standard page level sidebar.
           </NxP>
           <NxP>
             <a className="nx-text-link" href="#/NxGlobalSidebarWithPageSidebarExample">
