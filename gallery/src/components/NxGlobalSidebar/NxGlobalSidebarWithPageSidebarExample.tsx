@@ -5,8 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxGlobalSidebar, useToggle } from '@sonatype/react-shared-components';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { NxGlobalSidebar, NxGlobalSidebarNavigation, NxGlobalSidebarNavigationLink, useToggle }
+  from '@sonatype/react-shared-components';
+import { faCircle, faLink } from '@fortawesome/free-solid-svg-icons';
 import GalleryNav from '../../GalleryNav';
 
 export default function NxGlobalSidebarWithPageSidebarExample() {
@@ -19,7 +20,18 @@ export default function NxGlobalSidebarWithPageSidebarExample() {
                        onToggleClick={onToggleCollapse}
                        logoImg="foo"
                        logoAltText="foo"
-                       logoLink="#" />
+                       logoLink="#">
+        <NxGlobalSidebarNavigation>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxLoadError" href="#/pages/NxLoadError"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxLoadWrapper" href="#/pages/NxLoadWrapper"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxLoadingSpinner" href="#/pages/NxLoadingSpinner"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxModal" href="#/pages/NxModal"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxNexusPageHeader" href="#/pages/NxNexusPageHeader"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/NxPageHeader"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPagination" href="#/pages/NxPagination"/>
+        </NxGlobalSidebarNavigation>
+      </NxGlobalSidebar>
       <aside className="nx-page-sidebar" id="gallery-sidebar">
         <GalleryNav />
       </aside>
