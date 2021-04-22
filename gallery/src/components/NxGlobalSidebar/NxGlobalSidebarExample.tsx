@@ -5,14 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxGlobalSidebar, NxGlobalSidebarNavigation, NxGlobalSidebarNavigationLink, useToggle, NxP, NxH3 }
+import { NxGlobalSidebar, NxGlobalSidebarNavigation, NxGlobalSidebarNavigationLink, useToggle, NxP, NxH3, NxPageSidebar }
   from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxGlobalSidebarExample() {
   const [sidebarOpen, onToggleCollapse] = useToggle(true);
   return (
-    <div className="nx-page-content">
+    <>
       <NxGlobalSidebar isOpen={sidebarOpen}
                        toggleOpenIcon={faArrowLeft}
                        toggleCloseIcon={faArrowRight}
@@ -45,7 +45,8 @@ export default function NxGlobalSidebarExample() {
           </NxP>
         </section>
       </NxGlobalSidebar>
+      <NxPageSidebar>Sidebar</NxPageSidebar>
       <main className="nx-page-main">Page content</main>
-    </div>
+    </>
   );
 }
