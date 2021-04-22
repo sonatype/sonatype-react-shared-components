@@ -83,6 +83,10 @@ $main-header-product-version-row-height: 1fr;
   @include container-horizontal;
 
   margin-left: auto;
+
+  .nx-btn--icon-only {
+    @include nx-small-icon-btn;
+  }
 }
 
 .nx-product {
