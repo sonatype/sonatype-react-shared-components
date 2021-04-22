@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxCode, NxP } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxModalSimpleExample from './NxModalSimpleExample';
@@ -28,14 +28,10 @@ export default function NxModalPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
-          <code className="nx-code">NxModal</code> is the preferred way to handle modals. Invoking
-          an <code className="nx-code">NxModal</code> will create 2 separate <code className="nx-code">div</code>
-          elements. One div will have the <code className="nx-code">nx-modal</code> class, along with any classes passed
-          into the <code className="nx-code">NxModal</code> element with the <code className="nx-code">className</code>
-          attribute. The other div, the parent of the modal, will have
-          the <code className="nx-code">nx-modal-backdrop</code> class applied to it.
-        </p>
+        <NxP>
+          <code className="nx-code">NxModal</code> is the preferred way to handle modals. It creates a foreground modal
+          window along with a backdrop mask over the rest of the page.
+        </NxP>
         <h3>Modal Style Classes</h3>
         <table className="nx-table nx-table--gallery-props">
           <thead>
@@ -166,7 +162,10 @@ export default function NxModalPage() {
                           liveExample={NxModalAlertExample}
                           codeExamples={NxModalAlertSourceCode}>
         An example of an <code className="nx-code">NxModal</code> containing
-        an <code className="nx-code">NxAlert</code>.
+        an <code className="nx-code">NxAlert</code>. As shown in this example, the most appropriate accessibility role
+        in this scenario is <NxCode>alertdialog</NxCode>.  Note that this is actually the only role you'd ever want to
+        explicitly add to an <NxCode>NxModal</NxCode>. In non-alert cases, <NxCode>NxModal</NxCode> takes on the
+        semantics of the <NxCode>dialog</NxCode> role as one would expect.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal with stacked modal example"

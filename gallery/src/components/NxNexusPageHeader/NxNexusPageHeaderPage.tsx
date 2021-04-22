@@ -13,6 +13,7 @@ import NxNexusPageHeaderCustomLogoExample from './NxNexusPageHeaderCustomLogoExa
 import NxNexusPageHeaderMetaExample from './NxNexusPageHeaderMetaExample';
 import NxNexusPageHeaderVersionExample from './NxNexusPageHeaderVersionExample';
 import NxNexusPageHeaderMinimalExample from './NxNexusPageHeaderMinimalExample';
+import { NxCode } from '@sonatype/react-shared-components';
 
 const nxNexusPageHeaderExampleCode = require('./NxNexusPageHeaderExample?raw');
 const nxNexusPageHeaderCustomLogoExampleCode = require('./NxNexusPageHeaderCustomLogoExample?raw');
@@ -142,7 +143,10 @@ const NxNexusPageHeaderPage = () =>
                         liveExample={NxNexusPageHeaderExample}
                         defaultCheckeredBackground={true}>
       An instance of <code className="nx-code">NxNexusPageHeader</code> with default branding, navigation and
-      examples of extra content.
+      examples of extra content. A note about the extra content: icon-only buttons added in this area will
+      be of the smaller size that is also present in certain other areas (action buttons
+      within <NxCode>nx-list</NxCode>, for example). Placing these buttons alongside other buttons which have actual
+      text content is not supported due to the height difference.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Nexus Page Header with Meta"

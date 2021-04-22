@@ -6,15 +6,7 @@
  */
 import React, {useState} from 'react';
 
-import {
-  NxTable,
-  NxTableBody,
-  NxTableCell,
-  NxTableHead,
-  NxTableRow,
-  NxPagination,
-  NxFilterInput
-} from '@sonatype/react-shared-components';
+import { NxTable, NxPagination, NxFilterInput } from '@sonatype/react-shared-components';
 import { slice, toLower, pipe, prop, includes, filter, both } from 'ramda';
 
 interface Row { name: string; country: string }
@@ -48,34 +40,34 @@ const NxTablePaginationFilterExample = () => {
   return (
     <div className="nx-table-container gallery-pagination-filter-table-example">
       <NxTable id="pagination-filter-table" aria-live="polite">
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Name</NxTableCell>
-            <NxTableCell>Country</NxTableCell>
-          </NxTableRow>
-          <NxTableRow isFilterHeader>
-            <NxTableCell>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Name</NxTable.Cell>
+            <NxTable.Cell>Country</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row isFilterHeader>
+            <NxTable.Cell>
               <NxFilterInput placeholder="Type a name"
                              onChange={setNameFilter}
                              value={nameFilter}
                              aria-controls="pagination-filter-table"/>
-            </NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+            <NxTable.Cell>
               <NxFilterInput placeholder="Select a country"
                              onChange={setCountryFilter}
                              value={countryFilter}
                              aria-controls="pagination-filter-table"/>
-            </NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody emptyMessage="No rows match the current filter">
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body emptyMessage="No rows match the current filter">
           { rows && rows.map((row: Row) =>
-            <NxTableRow key={row.name.concat(row.country)}>
-              <NxTableCell>{row.name}</NxTableCell>
-              <NxTableCell>{row.country}</NxTableCell>
-            </NxTableRow>
+            <NxTable.Row key={row.name.concat(row.country)}>
+              <NxTable.Cell>{row.name}</NxTable.Cell>
+              <NxTable.Cell>{row.country}</NxTable.Cell>
+            </NxTable.Row>
           )}
-        </NxTableBody>
+        </NxTable.Body>
       </NxTable>
       <div className="nx-table-container__footer">
         <NxPagination aria-controls="pagination-filter-table" { ...{ pageCount, currentPage } } onChange={setPage} />
