@@ -32,8 +32,8 @@ const NxTableClickableExample = () => {
             <NxTable.Cell chevron/>
           </NxTable.Row>
         )}
-        <NxTableRow isClickable onClick={() => alert('Clicked last row')} clickAccessibleLabel="The last row">
-          <NxTableCell>
+        <NxTable.Row isClickable onClick={() => alert('Clicked last row')} clickAccessibleLabel="The last row">
+          <NxTable.Cell>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed lorem vitae dolor mattis imperdiet a ac
             nisl. Maecenas quis dapibus lacus, non lacinia dolor. In hac habitasse platea dictumst. Sed sit amet
             nulla facilisis, elementum tellus quis, mattis turpis. Vivamus accumsan, purus vel maximus condimentum,
@@ -41,11 +41,11 @@ const NxTableClickableExample = () => {
             Quisque et pellentesque ante. Sed porttitor sem ipsum, sit amet blandit felis hendrerit nec. Suspendisse
             congue, tortor tristique sollicitudin consectetur, sapien purus posuere massa, eget finibus nulla ipsum
             sed sapien.
-          </NxTableCell>
-          <NxTableCell>Content</NxTableCell>
-          <NxTableCell chevron/>
-        </NxTableRow>
-      </NxTableBody>
+          </NxTable.Cell>
+          <NxTable.Cell>Content</NxTable.Cell>
+          <NxTable.Cell chevron/>
+        </NxTable.Row>
+      </NxTable.Body>
     </NxTable>
   );
 };
