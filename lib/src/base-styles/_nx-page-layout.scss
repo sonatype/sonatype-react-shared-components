@@ -123,3 +123,12 @@
     overflow: visible;
   }
 }
+
+// TODO find the best place for this
+.nx-page-local-header {
+  border: $nx-border-default;
+  box-sizing: border-box;
+  grid-area: header; // see nx-page's grid-template
+  min-height: 80px;
+  padding: $nx-spacing-l;
+}

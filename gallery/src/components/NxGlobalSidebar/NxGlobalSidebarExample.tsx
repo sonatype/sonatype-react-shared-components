@@ -13,6 +13,7 @@ export default function NxGlobalSidebarExample() {
   const [sidebarOpen, onToggleCollapse] = useToggle(true);
   return (
     <>
+      <aside className="nx-page-local-header">Header</aside>
       <NxGlobalSidebar isOpen={sidebarOpen}
                        toggleOpenIcon={faArrowLeft}
                        toggleCloseIcon={faArrowRight}
