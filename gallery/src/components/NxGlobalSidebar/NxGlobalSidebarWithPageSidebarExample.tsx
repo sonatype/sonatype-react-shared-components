@@ -18,7 +18,7 @@ export default function NxGlobalSidebarWithPageSidebarExample() {
                        toggleOpenIcon={faCircle}
                        toggleCloseIcon={faCircle}
                        onToggleClick={onToggleCollapse}
-                       logoImg="./assets/logo-plaid-villain.svg"
+                       logoImg="./assets/logo-plaid-villain2.svg"
                        logoAltText="RSC Plaid Villain"
                        logoLink="#">
         <NxGlobalSidebarNavigation>
