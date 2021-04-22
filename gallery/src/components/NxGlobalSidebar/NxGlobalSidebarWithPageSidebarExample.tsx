@@ -7,8 +7,9 @@
 import React from 'react';
 import { NxGlobalSidebar, useToggle } from '@sonatype/react-shared-components';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import GalleryNav from '../../GalleryNav';
 
-export default function NxGlobalSidebarExample() {
+export default function NxGlobalSidebarWithPageSidebarExample() {
   const [sidebarOpen, onToggleCollapse] = useToggle(false);
   return (
     <div className="nx-page-content">
@@ -19,6 +20,9 @@ export default function NxGlobalSidebarExample() {
                        logoImg="foo"
                        logoAltText="foo"
                        logoLink="#" />
+      <aside className="nx-page-sidebar" id="gallery-sidebar">
+        <GalleryNav />
+      </aside>
       <main className="nx-page-main">Page content</main>
     </div>
   );

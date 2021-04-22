@@ -10,7 +10,7 @@ import { NxP, NxCode, NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody
   from '@sonatype/react-shared-components';
 
 const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw'),
-    NxGlobalSidebarSidebarExample = require('./NxGlobalSidebarSidebarExample.tsx?raw');
+    NxGlobalSidebarWithPageSidebarExample = require('./NxGlobalSidebarWithPageSidebarExample.tsx?raw');
 
 export default function NxGlobalSidebarPage() {
   return (
@@ -33,7 +33,7 @@ export default function NxGlobalSidebarPage() {
             </NxTableHead>
             <NxTableBody>
               <NxTableRow>
-                <NxTableCell><NxCode>.nx-gloabl-sidebar</NxCode></NxTableCell>
+                <NxTableCell><NxCode>.nx-global-sidebar</NxCode></NxTableCell>
                 <NxTableCell>
                 </NxTableCell>
                 <NxTableCell>
@@ -50,6 +50,11 @@ export default function NxGlobalSidebarPage() {
           </div>
         </header>
         <div className="nx-tile-content">
+          <p className="nx-p">
+            <a className="nx-text-link" href="#/NxGlobalSidebarExample">
+              Click here to navigate to the live example.
+            </a>
+          </p>
           <CodeExample content={NxGlobalSidebarExample} />
         </div>
       </section>
@@ -63,7 +68,12 @@ export default function NxGlobalSidebarPage() {
           <p className="nx-p">
             In this example, there is another sidebar.
           </p>
-          <CodeExample content={NxGlobalSidebarSidebarExample} />
+          <p className="nx-p">
+            <a className="nx-text-link" href="#/NxGlobalSidebarWithPageSidebarExample">
+              Click here to navigate to the live example.
+            </a>
+          </p>
+          <CodeExample content={NxGlobalSidebarWithPageSidebarExample} />
         </div>
       </section>
     </>

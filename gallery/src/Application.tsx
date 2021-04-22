@@ -20,6 +20,8 @@ import GalleryNav from './GalleryNav';
 import Home from './pages/Home';
 import handleQueryParams from './handleQueryParams';
 
+import NxGlobalSidebarExample from './components/NxGlobalSidebar/NxGlobalSidebarExample';
+import NxGlobalSidebarWithPageSidebarExample from './components/NxGlobalSidebar/NxGlobalSidebarWithPageSidebarExample';
 import NxLoadWrapperPageLevelExample from './components/NxLoadWrapper/NxLoadWrapperPageLevelExample';
 import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExample';
 import NxViewportSizedExpandingExample
@@ -59,36 +61,46 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
 function Application() {
   return (
     <Router>
-      <PageHeader />
-      <div className="nx-page-content">
-        <Switch>
-          <Route exact path="/PageLevelAlertExample">
-            <NxLoadWrapperPageLevelExample/>
-          </Route>
-          <Route>
-            <aside className="nx-page-sidebar" id="gallery-sidebar">
-              <GalleryNav />
-            </aside>
+      <Switch>
+        <Route exact path="/NxGlobalSidebarExample">
+          <NxGlobalSidebarExample />
+        </Route>
+        <Route exact path="/NxGlobalSidebarWithPageSidebarExample">
+          <NxGlobalSidebarWithPageSidebarExample />
+        </Route>
+        <Route>
+          <PageHeader />
+          <div className="nx-page-content">
             <Switch>
-              <Route path="/pages/:pageName" component={Page} />
-              <Route exact path="/" component={Page} />
+              <Route exact path="/PageLevelAlertExample">
+                <NxLoadWrapperPageLevelExample/>
+              </Route>
+              <Route>
+                <aside className="nx-page-sidebar" id="gallery-sidebar">
+                  <GalleryNav />
+                </aside>
+                <Switch>
+                  <Route path="/pages/:pageName" component={Page} />
+                  <Route exact path="/" component={Page} />
 
-              {/* Special cases, these examples need their own page separate from their documentation */}
-              <Route exact path="/NxViewportSizedExample">
-                <SectionScrollingWrapper>
-                  <NxViewportSizedExample />
-                </SectionScrollingWrapper>
+                  {/* Special cases, these examples need their own page separate from their documentation */}
+                  <Route exact path="/NxViewportSizedExample">
+                    <SectionScrollingWrapper>
+                      <NxViewportSizedExample />
+                    </SectionScrollingWrapper>
+                  </Route>
+                  <Route exact path="/NxViewportSizedExpandingExample">
+                    <SectionScrollingWrapper>
+                      <NxViewportSizedExpandingExample />
+                    </SectionScrollingWrapper>
+                  </Route>
+                  <Redirect to="/" />
+                </Switch>
               </Route>
-              <Route exact path="/NxViewportSizedExpandingExample">
-                <SectionScrollingWrapper>
-                  <NxViewportSizedExpandingExample />
-                </SectionScrollingWrapper>
-              </Route>
-              <Redirect to="/" />
             </Switch>
-          </Route>
-        </Switch>
-      </div>
+          </div>
+        </Route>
+      </Switch>
     </Router>
   );
 }
