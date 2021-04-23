@@ -14,7 +14,7 @@ describe('nx-page-title', function() {
   const simplePageTitle = '#nx-page-title-example .nx-page-title';
   const actionsPageTitle = '#nx-page-title-actions-example .nx-page-title';
   const policyViolationIndicatorPageTitle = '#nx-page-title-policy-violation-indicator-example .nx-page-title';
-  const everythingPageTitle = 'nx-page-title-everything-example .nx-page-title';
+  const everythingPageTitle = '#nx-page-title-everything-example .nx-page-title';
 
   it('looks right', simpleTest(simplePageTitle));
 
