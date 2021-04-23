@@ -29,7 +29,7 @@
   width: 100%;
 
   // NOTE: Most of this template is only used when using nx-page-content--full-width (or no nx-page-content at all).
-  // In traditional layouts that use plain nx-page-content, that element manages everything below the first
+  // In traditional layouts that use plain nx-page-content, that element manages everything below the second
   // row of this template.
   grid-template:
     'old-header              old-header        old-header' auto
@@ -47,7 +47,7 @@
   display: flex;
 
   // See the comment above on nx-page's grid template
-  grid-area: 2 / 1 / -1 / -1;
+  grid-area: 3 / 1 / -1 / -1;
   max-width: var(--page-width-max);
   overflow-y: hidden;
   width: 100%;
@@ -155,4 +155,9 @@
   .nx-btn--icon-only {
     @include nx-small-icon-btn;
   }
+}
+
+.nx-page-notices {
+  border-bottom: $nx-border-default;
+  grid-area: notices;
 }
