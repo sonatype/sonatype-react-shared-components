@@ -126,7 +126,10 @@
 
 // TODO find the best place for this
 .nx-page-local-header {
+  @include container-horizontal;
+  align-items: center;
   border-bottom: $nx-border-default;
+  display: flex;
   grid-area: header; // see nx-page's grid-template
   min-height: 32px;
   padding: $nx-spacing-l;
@@ -134,5 +137,22 @@
   &:empty {
     // if it has no content just don't show it
     display: none;
+  }
+
+  .nx-back-button {
+    margin: 0;
+  }
+}
+
+.nx-page-local-header__actions {
+  @include container-horizontal;
+  align-items: center;
+  border-left: $nx-border-default;
+  display: flex;
+  margin-left: auto;
+  padding-left: $nx-spacing-xl;
+
+  .nx-btn--icon-only {
+    @include nx-small-icon-btn;
   }
 }
