@@ -13,7 +13,12 @@ const NxPageTitlePolicyViolationIndicatorExample = () =>
       Page Title
     </h1>
     <div className="nx-page-title__tags">
-      <NxPolicyViolationIndicator threatLevelCategory="moderate"/>
+      <NxPolicyViolationIndicator>Unspecified</NxPolicyViolationIndicator>
+      <NxPolicyViolationIndicator threatLevelCategory="none">None</NxPolicyViolationIndicator>
+      <NxPolicyViolationIndicator threatLevelCategory="low">Not much</NxPolicyViolationIndicator>
+      <NxPolicyViolationIndicator threatLevelCategory="moderate">A little bit</NxPolicyViolationIndicator>
+      <NxPolicyViolationIndicator threatLevelCategory="severe">A bunch</NxPolicyViolationIndicator>
+      <NxPolicyViolationIndicator threatLevelCategory="critical">Danger Will Robinson!</NxPolicyViolationIndicator>
     </div>
   </div>;
 
