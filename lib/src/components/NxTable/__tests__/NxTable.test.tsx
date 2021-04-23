@@ -5,14 +5,26 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow, mount, ReactWrapper } from 'enzyme';
 import NxTable from '../NxTable';
 import NxTableHead from '../NxTableHead';
 import NxTableRow from '../NxTableRow';
 import NxTableCell from '../NxTableCell';
 import NxTableBody from '../NxTableBody';
+import { act } from 'react-dom/test-utils';
 
 describe('NxTable', function() {
+  let mountContainer: HTMLElement;
+
+  beforeEach(function() {
+    mountContainer = document.createElement('div');
+    document.body.append(mountContainer);
+  });
+
+  afterEach(function() {
+    document.body.removeChild(mountContainer);
+  });
+
   it('renders a table with the expected class names and id', function() {
     const component = shallow(<NxTable id="test" className="test" />);
 
@@ -76,22 +88,26 @@ describe('NxTable', function() {
     expect(component.find('td')).toHaveClassName('nx-cell--meta-info');
   });
 
-  it('Puts the correct colSpan on an emptyMessage meta-info cell', function() {
-    const component = mount(
-      <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Foo</NxTableCell>
-            <NxTableCell>Bar</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody emptyMessage="Empty" />
-      </NxTable>
-    );
+  it('Puts the correct colSpan on an emptyMessage meta-info cell', async function() {
+    let component: ReactWrapper;
+    await act(async () => {
+      component = mount(
+        <NxTable>
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Foo</NxTableCell>
+              <NxTableCell>Bar</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody emptyMessage="Empty" />
+        </NxTable>
+      );
+    });
+    component!.update();
 
-    expect(component.find('td')).toHaveProp('colSpan', 2);
-    expect(component.find('td')).toHaveClassName('nx-cell--meta-info');
-    expect(component.find('td')).toHaveText('Empty');
+    expect(component!.find('td')).toHaveProp('colSpan', 2);
+    expect(component!.find('td')).toHaveClassName('nx-cell--meta-info');
+    expect(component!.find('td')).toHaveText('Empty');
   });
 
   it('Puts the correct colSpan on an error meta-info cell', function() {
@@ -108,6 +124,41 @@ describe('NxTable', function() {
     );
 
     expect(component.find('td')).toHaveProp('colSpan', 2);
+    expect(component.find('td')).toHaveClassName('nx-cell--meta-info');
+    expect(component.find('td')).toIncludeText('Error!');
+  });
+
+  it('correctly updates the colspan if the number of columns changes', async function() {
+    const component = mount(
+      <NxTable>
+        <NxTableHead>
+          <NxTableRow>
+            <NxTableCell>Foo</NxTableCell>
+            <NxTableCell>Bar</NxTableCell>
+          </NxTableRow>
+        </NxTableHead>
+        <NxTableBody error="Error!"/>
+      </NxTable>,
+      { attachTo: mountContainer }
+    );
+
+    await act(async () => {
+      component.setProps({
+        children: (
+          <>
+            <NxTableHead>
+              <NxTableRow>
+                <NxTableCell>Foo</NxTableCell>
+              </NxTableRow>
+            </NxTableHead>
+            <NxTableBody error="Error!"/>
+          </>
+        )
+      });
+    });
+    component.update();
+
+    expect(component.find('td')).toHaveProp('colSpan', 1);
     expect(component.find('td')).toHaveClassName('nx-cell--meta-info');
     expect(component.find('td')).toIncludeText('Error!');
   });
