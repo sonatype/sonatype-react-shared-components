@@ -51,6 +51,11 @@ function NxPageTitleEverythingExample() {
         <NxTag color="light-blue">Light Blue</NxTag>
         <NxTag color="pink">Pink</NxTag>
         <NxTag color="blue">Blue</NxTag>
+        <NxTag color="red">Red</NxTag>
+        <NxTag color="green">Green</NxTag>
+        <NxTag color="orange">Orange</NxTag>
+        <NxTag color="yellow">Yellow</NxTag>
+        <NxTag color="lime">Lime</NxTag>
       </div>
     </div>
   );
