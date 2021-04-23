@@ -63,10 +63,14 @@ function Application() {
     <Router>
       <Switch>
         <Route exact path="/NxGlobalSidebarExample">
-          <NxGlobalSidebarExample />
+          <SectionScrollingWrapper>
+            <NxGlobalSidebarExample />
+          </SectionScrollingWrapper>
         </Route>
         <Route exact path="/NxGlobalSidebarWithPageSidebarExample">
-          <NxGlobalSidebarWithPageSidebarExample />
+          <SectionScrollingWrapper>
+            <NxGlobalSidebarWithPageSidebarExample />
+          </SectionScrollingWrapper>
         </Route>
         <Route>
           <PageHeader />
