@@ -21,7 +21,7 @@
 
 .nx-page {
   --max-sidebar-width: calc((1 - var(--content-width-proportion)) * var(--page-width-max));
-  --sidebar-area-width: minmax(var(--sidebar-width), var(--max-sidebar-width));
+  --sidebar-area-width: min(var(--sidebar-width), var(--max-sidebar-width));
 
   display: grid;
   min-width: var(--page-width-min);
