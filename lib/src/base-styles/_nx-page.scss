@@ -15,7 +15,7 @@
     "description description description"
     "tags tags tags";
   column-gap: $nx-spacing-md;
-  margin: 0;
+  margin: 0 0 $nx-spacing-l 0;
 
   .nx-h1 {
     grid-area: title;
@@ -28,19 +28,11 @@
   .nx-btn-bar {
     grid-area: actions;
     margin: 0 0 0 $nx-spacing-xs;
-
-    &:last-child {
-      margin-bottom: $nx-spacing-l;
-    }
   }
 }
 
 .nx-page-title__headings {
   display: contents;
-
-  &:last-child {
-    margin-bottom: $nx-spacing-l;
-  }
 }
 
 .nx-page-title__sub-title {
@@ -56,11 +48,7 @@
   grid-area: description;
   margin-top: $nx-spacing-xs;
 
-  &:last-child {
-    margin-bottom: $nx-spacing-l;
-  }
-
-  & + .nx-page-title__tags {
+  + .nx-page-title__tags {
     margin-top: $nx-spacing-md;
   }
 }
@@ -68,10 +56,13 @@
 .nx-page-title__tags {
   @include container-horizontal;
 
+  display: flex;
+  flex-wrap: wrap;
   grid-area: tags;
+  row-gap: $nx-spacing-xs;
   margin-top: $nx-spacing-xs;
 
-  &:last-child {
-    margin-bottom: $nx-spacing-md;
+  > :nth-child(1n) {
+    margin-bottom: 0;
   }
 }
