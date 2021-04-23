@@ -72,6 +72,15 @@ const NxPageTitlePage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-btn-bar</code></td>
+            <td className="nx-cell"><code className="nx-code">NxPageTitle.Subtitle</code></td>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">
+              <code className="nx-code">.nx-page-title</code> supports the inclusion of buttons on its right-hand side.
+              This is accomplished by adding an <code className="nx-code">.nx-btn-bar</code> after the heading elements.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-page-title__description</code></td>
             <td className="nx-cell"><code className="nx-code">NxPageTitle.Description</code></td>
             <td className="nx-cell">Element</td>
