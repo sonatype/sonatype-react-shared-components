@@ -4,24 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { simpleTest } = require('./testUtils');
-
 describe('nx-global-sidebar', function() {
-  beforeEach(async function() {
+  it('looks right when shrinking content', async function() {
     await browser.url('#/NxGlobalSidebarExample');
+    await browser.eyesSnapshot(null);
   });
 
-  const simpleGlobalSidebar = '.nx-page-content';
-
-  it('looks right', simpleTest(simpleGlobalSidebar));
-});
-
-describe('nx-global-sidebar-with-page-sidebar', function() {
-  beforeEach(async function() {
+  it('looks right when expanding content', async function() {
     await browser.url('#/NxGlobalSidebarWithPageSidebarExample');
+    await browser.eyesSnapshot(null);
   });
-
-  const complexGlobalSidebar = '.nx-page-content';
-
-  it('looks right', simpleTest(complexGlobalSidebar));
 });
