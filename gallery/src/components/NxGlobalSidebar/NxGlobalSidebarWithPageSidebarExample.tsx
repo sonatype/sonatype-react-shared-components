@@ -5,7 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxGlobalSidebar, NxGlobalSidebarNavigation, NxGlobalSidebarNavigationLink, useToggle }
+import {
+  NxGlobalSidebar,
+  NxGlobalSidebarNavigation,
+  NxGlobalSidebarNavigationLink,
+  NxPageMain,
+  NxPageSidebar,
+  useToggle }
   from '@sonatype/react-shared-components';
 import { faCircle, faLink } from '@fortawesome/free-solid-svg-icons';
 import GalleryNav from '../../GalleryNav';
@@ -32,10 +38,10 @@ export default function NxGlobalSidebarWithPageSidebarExample() {
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxPagination" href="#/pages/NxPagination"/>
         </NxGlobalSidebarNavigation>
       </NxGlobalSidebar>
-      <aside className="nx-page-sidebar" id="gallery-sidebar">
+      <NxPageSidebar>
         <GalleryNav />
-      </aside>
-      <main className="nx-page-main">Page content</main>
+      </NxPageSidebar>
+      <NxPageMain>Page content</NxPageMain>
     </div>
   );
 }
