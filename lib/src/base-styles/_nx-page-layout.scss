@@ -130,4 +130,9 @@
   grid-area: header; // see nx-page's grid-template
   min-height: 32px;
   padding: $nx-spacing-l;
+
+  &:empty {
+    // if it has no content just don't show it
+    display: none;
+  }
 }
