@@ -8,6 +8,10 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import useMutationObserver from '@rooks/use-mutation-observer';
 import classnames from 'classnames';
 
+import NxTableHead from './NxTableHead';
+import NxTableBody from './NxTableBody';
+import NxTableRow from './NxTableRow';
+import NxTableCell from './NxTableCell';
 import { ColumnCountContext } from './contexts';
 
 import { NxTableProps, nxTablePropTypes } from './types';
@@ -36,6 +40,11 @@ const NxTable = function NxTableElement(props: NxTableProps) {
     </table>
   );
 };
+
+NxTable.Body = NxTableBody;
+NxTable.Head = NxTableHead;
+NxTable.Row = NxTableRow;
+NxTable.Cell = NxTableCell;
 
 NxTable.propTypes = nxTablePropTypes;
 
