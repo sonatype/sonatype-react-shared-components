@@ -20,20 +20,22 @@ function NxPageTitleEverythingExample() {
           This is a page sub-title that will truncate with an ellipsis
         </h2>
       </hgroup>
-      <NxDropdown label="Example Dropdown" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
-        <a href="#" className="nx-dropdown-button">
-          <span className="nx-dropdown-button-content">Text Link 1</span>
-        </a>
-        <a href="#" className="nx-dropdown-button">
-          <span className="nx-dropdown-button-content">Text Link 2</span>
-        </a>
-        <a href="#" className="nx-dropdown-button">
-          <span className="nx-dropdown-button-content">Text Link 3</span>
-        </a>
-        <a href="#" className="nx-dropdown-button">
-          <span className="nx-dropdown-button-content">Text Link 4</span>
-        </a>
-      </NxDropdown>
+      <div className="nx-btn-bar">
+        <NxDropdown label="Example Dropdown" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
+          <a href="#" className="nx-dropdown-button">
+            <span className="nx-dropdown-button-content">Text Link 1</span>
+          </a>
+          <a href="#" className="nx-dropdown-button">
+            <span className="nx-dropdown-button-content">Text Link 2</span>
+          </a>
+          <a href="#" className="nx-dropdown-button">
+            <span className="nx-dropdown-button-content">Text Link 3</span>
+          </a>
+          <a href="#" className="nx-dropdown-button">
+            <span className="nx-dropdown-button-content">Text Link 4</span>
+          </a>
+        </NxDropdown>
+      </div>
       <div className="nx-page-title__description">
         <p className="nx-p">This is a page description.</p>
         <p className="nx-p">
