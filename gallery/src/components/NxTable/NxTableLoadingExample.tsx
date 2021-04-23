@@ -6,29 +6,21 @@
  */
 import React from 'react';
 
-import {
-  NxTable,
-  NxTableBody,
-  NxTableCell,
-  NxTableHead,
-  NxTableRow
-} from '@sonatype/react-shared-components';
+import { NxTable } from '@sonatype/react-shared-components';
 
 const NxTableLoadingExample = () => {
   return (
     <NxTable>
-      <NxTableHead>
-        <NxTableRow>
-          <NxTableCell>Header 1</NxTableCell>
-          <NxTableCell>Header 2</NxTableCell>
-          <NxTableCell>Header 3</NxTableCell>
-          <NxTableCell isNumeric>Header 4</NxTableCell>
-          <NxTableCell>Header 5</NxTableCell>
-        </NxTableRow>
-      </NxTableHead>
-      <NxTableBody isLoading>
-
-      </NxTableBody>
+      <NxTable.Head>
+        <NxTable.Row>
+          <NxTable.Cell>Header 1</NxTable.Cell>
+          <NxTable.Cell>Header 2</NxTable.Cell>
+          <NxTable.Cell>Header 3</NxTable.Cell>
+          <NxTable.Cell isNumeric>Header 4</NxTable.Cell>
+          <NxTable.Cell>Header 5</NxTable.Cell>
+        </NxTable.Row>
+      </NxTable.Head>
+      <NxTable.Body isLoading />
     </NxTable>
   );
 };
