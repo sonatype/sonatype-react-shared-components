@@ -54,7 +54,7 @@ const NxPageTitlePage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-page-title__headings</code></td>
-            <td className="nx-cell"><code className="nx-code"></code></td>
+            <td className="nx-cell"></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               If there is a sub-title then the <NxCode>&lt;h1&gt; &amp; &lt;h2&gt;</NxCode> should both be wrapped
