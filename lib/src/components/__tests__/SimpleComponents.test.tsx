@@ -303,7 +303,7 @@ describe('NxPageTitle.Headings', function() {
 });
 
 describe('NxPageTitle.Subtitle', function() {
-  it('makes a <h2> tag with nx-h3 and nx-page-title__sub-title classes', function() {
+  it('makes a <h2> tag with nx-h2 and nx-page-title__sub-title classes', function() {
     expect(shallow(<NxPageTitle.Subtitle/>)).toMatchSelector('h2.nx-h2.nx-page-title__sub-title');
   });
 });
