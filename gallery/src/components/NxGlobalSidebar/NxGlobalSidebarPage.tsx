@@ -59,15 +59,15 @@ export default function NxGlobalSidebarPage() {
                   <NxTable.Cell>isOpen</NxTable.Cell>
                   <NxTable.Cell>Boolean</NxTable.Cell>
                   <NxTable.Cell>No</NxTable.Cell>
-                  <NxTable.Cell></NxTable.Cell>
+                  <NxTable.Cell>This value determines whether the side starts in an open or closed state.</NxTable.Cell>
                 </NxTable.Row>
                 <NxTable.Row>
                   <NxTable.Cell>toggleOpenIcon</NxTable.Cell>
                   <NxTable.Cell>IconDefinition</NxTable.Cell>
                   <NxTable.Cell>Yes</NxTable.Cell>
                   <NxTable.Cell>
-                    An icon used in the sidebar's open/close toggle to represent Opening the sidebar from a closed
-                    state.
+                    An icon used by the sidebar's open/close toggle when the sidebar is in the open state. The icon
+                    should make it clear that clicking it will close the sidebar.
                   </NxTable.Cell>
                 </NxTable.Row>
                 <NxTable.Row>
@@ -75,8 +75,8 @@ export default function NxGlobalSidebarPage() {
                   <NxTable.Cell>IconDefinition</NxTable.Cell>
                   <NxTable.Cell>Yes</NxTable.Cell>
                   <NxTable.Cell>
-                    An icon used in the sidebar's open/close toggle to represent Opening the sidebar from an open
-                    state.
+                    An icon used by the sidebar's open/close toggle when the sidebar is in the closed state. This icon
+                    should make it clear that clicking it will open the sidebar.
                   </NxTable.Cell>
                 </NxTable.Row>
                 <NxTable.Row>
@@ -162,7 +162,7 @@ export default function NxGlobalSidebarPage() {
           </section>
           <section className="nx-tile-subsection">
             <header className="nx-tile-subsection__header">
-              <NxH3><NxCode>NxGlobalSidebarNavigationLink</NxCode> Props</NxH3>
+              <NxH3>CSS Classes</NxH3>
             </header>
             <NxP>The following CSS classes are available for use on child elements.</NxP>
             <NxTable>
