@@ -8,6 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxGridExamples from './NxGridExamples';
+import { NxCode } from '@sonatype/react-shared-components';
 
 const NxGridPage = () =>
   <>
@@ -52,9 +53,11 @@ const NxGridPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-col</code></td>
             <td className="nx-cell"><code className="nx-code">NxGrid.Column</code></td>
-            <td className="nx-cell">Element</td>
+            <td className="nx-cell">Element (<NxCode>&lt;div&gt;</NxCode> or <NxCode>&lt;section&gt;</NxCode>)</td>
             <td className="nx-cell">
               A simple container, always placed inside <code className="nx-code">.nx-grid-row</code>.
+              If this cell has a header, it should be a <NxCode>&lt;section&gt;</NxCode>. Otherwise, it should
+              be a <NxCode>&lt;div&gt;</NxCode>.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -69,49 +72,24 @@ const NxGridPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-header</code></td>
             <td className="nx-cell"><code className="nx-code">NxGrid.Header</code></td>
-            <td className="nx-cell">Element</td>
+            <td className="nx-cell">Element (<NxCode>&lt;header&gt;</NxCode>)</td>
             <td className="nx-cell">Container for title text and icons.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-header__title</code></td>
             <td className="nx-cell"><code className="nx-code">NxGrid.Title</code></td>
-            <td className="nx-cell">Element</td>
+            <td className="nx-cell">Element (<NxCode>&lt;h3&gt;</NxCode>)</td>
             <td className="nx-cell">
-              Applied to any <code className="nx-code">h#</code> element used as a header for a grid cell. Note that
-              it's expected that the corresponding <code className="nx-code">.nx-h#</code> class will also be applied.
+              Applied to any <code className="nx-code">h3</code> element used as a header for a grid cell. Note that
+              it's expected that the corresponding <code className="nx-code">.nx-h3</code> class will also be applied.
+              Headers of higher rank are no longer explicitly supported.
             </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-header__icon</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">Applied to icons in grid headers.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-header__hrule</code></td>
-            <td className="nx-cell"><code className="nx-code">NxGrid.HeaderHrule</code></td>
-            <td className="nx-cell">&lt;hr&gt;</td>
-            <td className="nx-cell">Horizontal keyline used below grid cell headers.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-h-keyline</code></td>
             <td className="nx-cell"><code className="nx-code">NxGrid.HorizontalKeyline</code></td>
             <td className="nx-cell">&lt;hr&gt;</td>
             <td className="nx-cell">Horizontal keyline used between grid cells.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-h-keyline--white</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-grid-h-keyline</code></td>
-            <td className="nx-cell">Used when you don't want a visual keyline but need one for spacing.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-col--noborder</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-grid-col</code></td>
-            <td className="nx-cell">
-              <code className="nx-code">.nx-grid-col</code> has a left border by default, this removes it.
-            </td>
           </tr>
         </tbody>
       </table>
