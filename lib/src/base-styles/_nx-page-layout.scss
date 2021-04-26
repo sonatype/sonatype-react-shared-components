@@ -20,9 +20,6 @@
 }
 
 .nx-page {
-  --max-sidebar-width: calc((1 - var(--content-width-proportion)) * var(--page-width-max));
-  --sidebar-area-width: min(var(--sidebar-width), var(--max-sidebar-width));
-
   display: grid;
   min-width: var(--page-width-min);
   height: 100%;
@@ -32,11 +29,11 @@
   // In traditional layouts that use plain nx-page-content, that element manages everything below the second
   // row of this template.
   grid-template:
-    'old-header              old-header        old-header' auto
-    'global-sidebar           notices             notices' auto
-    'global-sidebar           header               header' auto
-    'global-sidebar         old-sidebar           content' 1fr /
-      auto          var(--sidebar-area-width)       1fr;
+    'old-header     old-header  old-header' auto
+    'global-sidebar   notices      notices' auto
+    'global-sidebar   header        header' auto
+    'global-sidebar old-sidebar    content' 1fr /
+      auto             auto            1fr;
 }
 
 .nx-page-content {
@@ -72,10 +69,15 @@
 
   // sizing properties for when in .nx-page-sidebar
   flex: 0 0 var(--sidebar-width);
-  max-width: var(--max-sidebar-width);
 
-  // sizing properties for when in .nx-page-side--full-width or directly within .nx-page
+  // sizing properties for when in .nx-page-side--full-width or directly within .nx-page.
+  // Unfortunately we have to use vw units here because percent is taken relative to the grid cell
+  // not the entire container
   grid-area: old-sidebar;
+  width: calc((1 - var(--content-width-proportion)) * 100vw);
+
+  // sizing properties used in all layouts
+  max-width: calc((1 - var(--content-width-proportion)) * var(--page-width-max));
 
   overflow-x: hidden;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-xs $nx-spacing-l;
@@ -126,7 +128,6 @@
 
 // TODO find the best place for this
 .nx-page-local-header {
-  @include container-horizontal;
   align-items: center;
   border-bottom: $nx-border-default;
   display: flex;
