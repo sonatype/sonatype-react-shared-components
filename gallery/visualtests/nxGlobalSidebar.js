@@ -5,12 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 describe('nx-global-sidebar', function() {
-  it('looks right when shrinking content', async function() {
+  it('looks right', async function() {
     await browser.url('#/NxGlobalSidebarExample');
     await browser.eyesSnapshot(null);
   });
 
-  it('looks right when expanding content', async function() {
+  it('looks right with an extra page sidebar', async function() {
     await browser.url('#/NxGlobalSidebarWithPageSidebarExample');
     await browser.eyesSnapshot(null);
   });
