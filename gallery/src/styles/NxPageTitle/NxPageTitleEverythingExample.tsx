@@ -5,22 +5,29 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTag, NxDropdown, useToggle } from '@sonatype/react-shared-components';
+import {
+  NxPageTitle,
+  NxButtonBar,
+  NxTag,
+  NxDropdown,
+  NxPolicyViolationIndicator,
+  useToggle
+} from '@sonatype/react-shared-components';
 
 function NxPageTitleEverythingExample() {
   const [isOpen, onToggleCollapse] = useToggle(false);
 
   return (
-    <div className="nx-page-title">
-      <hgroup className="nx-page-title__headings">
+    <NxPageTitle>
+      <NxPageTitle.Headings>
         <h1 className="nx-h1">
           Longer Page Title Foo Bar Foo!
         </h1>
         <h2 className="nx-h2 nx-page-title__sub-title">
           This is a page sub-title that will truncate with an ellipsis
         </h2>
-      </hgroup>
-      <div className="nx-btn-bar">
+      </NxPageTitle.Headings>
+      <NxButtonBar>
         <NxDropdown label="Example Dropdown" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
           <a href="#" className="nx-dropdown-button">
             <span className="nx-dropdown-button-content">Text Link 1</span>
@@ -35,8 +42,8 @@ function NxPageTitleEverythingExample() {
             <span className="nx-dropdown-button-content">Text Link 4</span>
           </a>
         </NxDropdown>
-      </div>
-      <div className="nx-page-title__description">
+      </NxButtonBar>
+      <NxPageTitle.Description>
         <p className="nx-p">This is a page description.</p>
         <p className="nx-p">
           jeans sign papier-mache assassin San Francisco rifle physical 3D-printed denim tanto courier concrete dolphin
@@ -44,8 +51,10 @@ function NxPageTitleEverythingExample() {
           dead jeans office vehicle nodal point. motion film meta- monofilament knife vinyl post- bridge jeans city
           Tokyo alcohol marketing girl vehicle.
         </p>
-      </div>
-      <div className="nx-page-title__tags">
+      </NxPageTitle.Description>
+      <NxPageTitle.Tags>
+        <NxPolicyViolationIndicator threatLevelCategory="severe">A bunch</NxPolicyViolationIndicator>
+        <NxPolicyViolationIndicator threatLevelCategory="critical">Danger Will Robinson!</NxPolicyViolationIndicator>
         <NxTag>Default</NxTag>
         <NxTag color="purple">Purple</NxTag>
         <NxTag color="light-blue">Light Blue</NxTag>
@@ -56,8 +65,8 @@ function NxPageTitleEverythingExample() {
         <NxTag color="orange">Orange</NxTag>
         <NxTag color="yellow">Yellow</NxTag>
         <NxTag color="lime">Lime</NxTag>
-      </div>
-    </div>
+      </NxPageTitle.Tags>
+    </NxPageTitle>
   );
 }
 
