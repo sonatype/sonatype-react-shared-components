@@ -41,7 +41,7 @@ const NxPageLocalHeaderPage = () =>
         <NxTable.Body>
           <NxTable.Row>
             <NxTable.Cell><NxCode>nx-page-local-header</NxCode></NxTable.Cell>
-            <NxTable.Cell></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxPageLocalHeader</NxCode></NxTable.Cell>
             <NxTable.Cell>
               Immediate child of <NxCode>.nx-page</NxCode> or <NxCode>.nx-page-content--full-width</NxCode>
             </NxTable.Cell>
@@ -53,7 +53,7 @@ const NxPageLocalHeaderPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>nx-page-local-header__actions</NxCode></NxTable.Cell>
-            <NxTable.Cell></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxPageLocalHeader.Actions</NxCode></NxTable.Cell>
             <NxTable.Cell>
               Immediate child of <NxCode>.nx-page-local-header__actions</NxCode>
             </NxTable.Cell>

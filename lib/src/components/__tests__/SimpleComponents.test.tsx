@@ -29,7 +29,8 @@ import {
   NxList,
   NxPageTitle,
   NxReadOnly,
-  NxTableContainer
+  NxTableContainer,
+  NxPageLocalHeader
 } from '../SimpleComponents';
 
 describe('NxP', function() {
@@ -335,5 +336,17 @@ describe('NxTableContainer', function() {
 describe('NxTableContainer.Footer', function() {
   it('makes a <div> tag with an nx-table-container__footer class', function() {
     expect(shallow(<NxTableContainer.Footer/>)).toMatchSelector('div.nx-table-container__footer');
+  });
+});
+
+describe('NxPageLocalHeader', function() {
+  it('makes an <aside> with an nx-page-local-header class', function() {
+    expect(shallow(<NxPageLocalHeader/>)).toMatchSelector('aside.nx-page-local-header');
+  });
+});
+
+describe('NxPageLocalHeader.Actions', function() {
+  it('makes an <div> with an nx-page-local-header__actions class', function() {
+    expect(shallow(<NxPageLocalHeader.Actions/>)).toMatchSelector('div.nx-page-local-header__actions');
   });
 });
