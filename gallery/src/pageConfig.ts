@@ -102,6 +102,7 @@ import WithClassPage from './jsUtilPages/WithClass/WithClassPage';
 import NxTextLinkPage from './components/NxTextLink/NxTextLinkPage';
 import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPage';
 import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPage';
+import NxPageLocalHeaderPage from './styles/NxPageLocalHeader/NxPageLocalHeaderPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -178,6 +179,7 @@ const pageConfig: PageConfig = {
     'nx-grid': NxGridPage,
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
+    'nx-page-local-header': NxPageLocalHeaderPage,
     'nx-page-title': NxPageTitlePage,
     'nx-pre': NxPrePage,
     'nx-read-only': NxReadOnlyPage,

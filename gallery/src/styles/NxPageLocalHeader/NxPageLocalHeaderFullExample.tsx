@@ -6,85 +6,39 @@
  */
 import React from 'react';
 import {
-  NxGlobalSidebar,
   NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
-  useToggle,
-  NxP,
-  NxH3,
   NxPageSidebar,
   NxButton,
   NxFontAwesomeIcon,
   NxBackButton,
-  NxWarningAlert
+  NxStatefulGlobalSidebar
 } from '@sonatype/react-shared-components';
-import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight, faLink, faEdit } from '@fortawesome/free-solid-svg-icons';
 
-export default function NxGlobalSidebarExample() {
-  const [sidebarOpen, onToggleCollapse] = useToggle(true);
+const sidebarLogoPath = require('../../assets/logo-plaid-villain-text.png');
+
+export default function NxPageLocalHeaderFullExample() {
   return (
     <>
       <aside className="nx-page-local-header">
-        <NxBackButton href="#">Foo</NxBackButton>
+        <NxBackButton href="#/pages/nx-page-local-header" targetPageTitle="Documentation" />
         <div className="nx-page-local-header__actions">
           <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
           <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
           <NxButton>Foobar</NxButton>
         </div>
       </aside>
-      <div className="nx-page-notices">
-        <NxWarningAlert>Password Warning: 12345? That's like an idiot's luggage combination!</NxWarningAlert>
-      </div>
-      <NxGlobalSidebar isOpen={sidebarOpen}
-                       toggleOpenIcon={faArrowLeft}
-                       toggleCloseIcon={faArrowRight}
-                       onToggleClick={onToggleCollapse}
-                       logoImg="./assets/logo-plaid-villain-text.png"
-                       logoAltText="RSC Plaid Villain"
-                       logoLink="#">
+      <NxStatefulGlobalSidebar isDefaultOpen={false}
+                               toggleOpenIcon={faArrowLeft}
+                               toggleCloseIcon={faArrowRight}
+                               logoImg={sidebarLogoPath}
+                               logoAltText="RSC Plaid Villain"
+                               logoLink="#">
         <NxGlobalSidebarNavigation>
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
-          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/NxLoadError"/>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxLoadWrapper" href="#/pages/NxLoadWrapper"/>
-          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
-                                         text="NxLoadingSpinner"
-                                         href="#/pages/NxLoadingSpinner"/>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxModal" href="#/pages/NxModal"/>
-          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
-                                         text="NxNexusPageHeader"
-                                         href="#/pages/NxNexusPageHeader"/>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/NxPageHeader"/>
-          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
-                                         text="NxPagination"
-                                         href="#/pages/NxPagination"/>
         </NxGlobalSidebarNavigation>
-        <section className="gallery-custom-sidebar-content nx-global-sidebar__expanded-content">
-          <NxH3>
-            Custom Content
-          </NxH3>
-          <NxP>
-            neural decay saturation point assault camera neon concrete engine
-          </NxP>
-          <NxP>
-            neural decay saturation point assault camera neon concrete engine
-          </NxP>
-          <NxP>
-            neural decay saturation point assault camera neon concrete engine
-          </NxP>
-          <NxP>
-            neural decay saturation point assault camera neon concrete engine
-          </NxP>
-          <NxP>
-            neural decay saturation point assault camera neon concrete engine
-          </NxP>
-          <NxP>
-            neural decay saturation point assault camera neon concrete engine
-          </NxP>
-          <NxP>
-            neural decay saturation point assault camera neon concrete engine
-          </NxP>
-        </section>
-      </NxGlobalSidebar>
+      </NxStatefulGlobalSidebar>
       <NxPageSidebar>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdum
