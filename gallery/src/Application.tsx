@@ -72,7 +72,9 @@ function Application() {
           </SectionScrollingWrapper>
         </Route>
         <Route exact path="/NxGlobalSidebarWithPageSidebarExample">
-          <NxGlobalSidebarWithPageSidebarExample />
+          <SectionScrollingWrapper>
+            <NxGlobalSidebarWithPageSidebarExample />
+          </SectionScrollingWrapper>
         </Route>
         <Route exact path="/NxPageLocalHeaderFullExample">
           <SectionScrollingWrapper>

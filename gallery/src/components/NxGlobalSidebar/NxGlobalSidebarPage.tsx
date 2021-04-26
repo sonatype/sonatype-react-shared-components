@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import CodeExample from '../../CodeExample';
-import { NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxTable } from '@sonatype/react-shared-components';
 
 import './NxGlobalSidebarPage.scss';
 
@@ -46,64 +46,64 @@ export default function NxGlobalSidebarPage() {
             <header className="nx-tile-subsection__header">
               <h3 className="nx-h3"><NxCode>NxGlobalSidebar</NxCode> Props</h3>
             </header>
-            <table className="nx-table">
-              <thead>
-                <tr className="nx-table-row">
-                  <th className="nx-cell nx-cell--header">Prop</th>
-                  <th className="nx-cell nx-cell--header">Type</th>
-                  <th className="nx-cell nx-cell--header">Required</th>
-                  <th className="nx-cell nx-cell--header">Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="nx-table-row">
-                  <td className="nx-cell">isOpen</td>
-                  <td className="nx-cell">Boolean</td>
-                  <td className="nx-cell">No</td>
-                  <td className="nx-cell"></td>
-                </tr>
-                <tr className="nx-table-row">
-                  <td className="nx-cell">toggleOpenIcon</td>
-                  <td className="nx-cell">IconDefinition</td>
-                  <td className="nx-cell">Yes</td>
-                  <td className="nx-cell">
+            <NxTable>
+              <NxTable.Head>
+                <NxTable.Row>
+                  <NxTable.Cell>Prop</NxTable.Cell>
+                  <NxTable.Cell>Type</NxTable.Cell>
+                  <NxTable.Cell>Required</NxTable.Cell>
+                  <NxTable.Cell>Details</NxTable.Cell>
+                </NxTable.Row>
+              </NxTable.Head>
+              <NxTable.Body>
+                <NxTable.Row>
+                  <NxTable.Cell>isOpen</NxTable.Cell>
+                  <NxTable.Cell>Boolean</NxTable.Cell>
+                  <NxTable.Cell>No</NxTable.Cell>
+                  <NxTable.Cell></NxTable.Cell>
+                </NxTable.Row>
+                <NxTable.Row>
+                  <NxTable.Cell>toggleOpenIcon</NxTable.Cell>
+                  <NxTable.Cell>IconDefinition</NxTable.Cell>
+                  <NxTable.Cell>Yes</NxTable.Cell>
+                  <NxTable.Cell>
                     An icon used in the sidebar's open/close toggle to represent Opening the sidebar from a closed
                     state.
-                  </td>
-                </tr>
-                <tr className="nx-table-row">
-                  <td className="nx-cell">toggleClosedIcon</td>
-                  <td className="nx-cell">IconDefinition</td>
-                  <td className="nx-cell">Yes</td>
-                  <td className="nx-cell">
+                  </NxTable.Cell>
+                </NxTable.Row>
+                <NxTable.Row>
+                  <NxTable.Cell>toggleClosedIcon</NxTable.Cell>
+                  <NxTable.Cell>IconDefinition</NxTable.Cell>
+                  <NxTable.Cell>Yes</NxTable.Cell>
+                  <NxTable.Cell>
                     An icon used in the sidebar's open/close toggle to represent Opening the sidebar from an open
                     state.
-                  </td>
-                </tr>
-                <tr className="nx-table-row">
-                  <td className="nx-cell">logoImg</td>
-                  <td className="nx-cell">string</td>
-                  <td className="nx-cell">Yes</td>
-                  <td className="nx-cell">
+                  </NxTable.Cell>
+                </NxTable.Row>
+                <NxTable.Row>
+                  <NxTable.Cell>logoImg</NxTable.Cell>
+                  <NxTable.Cell>string</NxTable.Cell>
+                  <NxTable.Cell>Yes</NxTable.Cell>
+                  <NxTable.Cell>
                     An image placed in the top left corner which displays branding and product name.
-                  </td>
-                </tr>
-                <tr className="nx-table-row">
-                  <td className="nx-cell">logoAltText</td>
-                  <td className="nx-cell">string</td>
-                  <td className="nx-cell">Yes</td>
-                  <td className="nx-cell">Alt text for the logo</td>
-                </tr>
-                <tr className="nx-table-row">
-                  <td className="nx-cell">logoLink</td>
-                  <td className="nx-cell">string</td>
-                  <td className="nx-cell">Yes</td>
-                  <td className="nx-cell">
+                  </NxTable.Cell>
+                </NxTable.Row>
+                <NxTable.Row>
+                  <NxTable.Cell>logoAltText</NxTable.Cell>
+                  <NxTable.Cell>string</NxTable.Cell>
+                  <NxTable.Cell>Yes</NxTable.Cell>
+                  <NxTable.Cell>Alt text for the logo</NxTable.Cell>
+                </NxTable.Row>
+                <NxTable.Row>
+                  <NxTable.Cell>logoLink</NxTable.Cell>
+                  <NxTable.Cell>string</NxTable.Cell>
+                  <NxTable.Cell>Yes</NxTable.Cell>
+                  <NxTable.Cell>
                     When the logo is clicked it navigates to a page (typically Home) specified here.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                  </NxTable.Cell>
+                </NxTable.Row>
+              </NxTable.Body>
+            </NxTable>
           </section>
           <section className="nx-tile-subsection">
             <header className="nx-tile-subsection__header">
@@ -122,44 +122,69 @@ export default function NxGlobalSidebarPage() {
               In addition to all standard <NxCode>&lt;a&gt;</NxCode> HTML attributes,
               <NxCode>NxGlobalSidebarNavigationLink</NxCode> can receive the following props:
             </NxP>
-            <table className="nx-table">
-              <thead>
-                <tr className="nx-table-row">
-                  <th className="nx-cell nx-cell--header">Prop</th>
-                  <th className="nx-cell nx-cell--header">Type</th>
-                  <th className="nx-cell nx-cell--header">Required</th>
-                  <th className="nx-cell nx-cell--header">Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="nx-table-row">
-                  <td className="nx-cell">isSelected</td>
-                  <td className="nx-cell">Boolean</td>
-                  <td className="nx-cell">Optional</td>
-                  <td className="nx-cell">Toggle for the selected state of the currently clicked link</td>
-                </tr>
-                <tr className="nx-table-row">
-                  <td className="nx-cell">icon</td>
-                  <td className="nx-cell">IconDefinition</td>
-                  <td className="nx-cell">Yes</td>
-                  <td className="nx-cell">
+            <NxTable>
+              <NxTable.Head>
+                <NxTable.Row>
+                  <NxTable.Cell>Prop</NxTable.Cell>
+                  <NxTable.Cell>Type</NxTable.Cell>
+                  <NxTable.Cell>Required</NxTable.Cell>
+                  <NxTable.Cell>Details</NxTable.Cell>
+                </NxTable.Row>
+              </NxTable.Head>
+              <NxTable.Body>
+                <NxTable.Row>
+                  <NxTable.Cell>isSelected</NxTable.Cell>
+                  <NxTable.Cell>Boolean</NxTable.Cell>
+                  <NxTable.Cell>Optional</NxTable.Cell>
+                  <NxTable.Cell>Toggle for the selected state of the currently clicked link</NxTable.Cell>
+                </NxTable.Row>
+                <NxTable.Row>
+                  <NxTable.Cell>icon</NxTable.Cell>
+                  <NxTable.Cell>IconDefinition</NxTable.Cell>
+                  <NxTable.Cell>Yes</NxTable.Cell>
+                  <NxTable.Cell>
                     Navigation links have icons to their left, this specifies the icon to be used.
-                  </td>
-                </tr>
-                <tr className="nx-table-row">
-                  <td className="nx-cell">text</td>
-                  <td className="nx-cell">string</td>
-                  <td className="nx-cell">Yes</td>
-                  <td className="nx-cell">The text that should appear in the navigation link</td>
-                </tr>
-                <tr className="nx-table-row">
-                  <td className="nx-cell">href</td>
-                  <td className="nx-cell">string</td>
-                  <td className="nx-cell">Yes</td>
-                  <td className="nx-cell">URL</td>
-                </tr>
-              </tbody>
-            </table>
+                  </NxTable.Cell>
+                </NxTable.Row>
+                <NxTable.Row>
+                  <NxTable.Cell>text</NxTable.Cell>
+                  <NxTable.Cell>string</NxTable.Cell>
+                  <NxTable.Cell>Yes</NxTable.Cell>
+                  <NxTable.Cell>The text that should appear in the navigation link</NxTable.Cell>
+                </NxTable.Row>
+                <NxTable.Row>
+                  <NxTable.Cell>href</NxTable.Cell>
+                  <NxTable.Cell>string</NxTable.Cell>
+                  <NxTable.Cell>Yes</NxTable.Cell>
+                  <NxTable.Cell>URL</NxTable.Cell>
+                </NxTable.Row>
+              </NxTable.Body>
+            </NxTable>
+          </section>
+          <section className="nx-tile-subsection">
+            <header className="nx-tile-subsection__header">
+              <h3 className="nx-h3"><NxCode>NxGlobalSidebarNavigationLink</NxCode> Props</h3>
+            </header>
+            <p className="nx-p">The following CSS classes are available for use on child elements.</p>
+            <NxTable>
+              <NxTable.Head>
+                <NxTable.Row>
+                  <NxTable.Cell>Name</NxTable.Cell>
+                  <NxTable.Cell>Location</NxTable.Cell>
+                  <NxTable.Cell>Description</NxTable.Cell>
+                </NxTable.Row>
+              </NxTable.Head>
+              <NxTable.Body>
+                <NxTable.Row>
+                  <NxTable.Cell><NxCode>nx-global-sidebar__expanded-content</NxCode></NxTable.Cell>
+                  <NxTable.Cell>element</NxTable.Cell>
+                  <NxTable.Cell>
+                    Content wrapped with <NxCode>nx-global-sidebar__expanded-content</NxCode> will appear in the
+                    expanded view, but will not be displayed in the collapsed view.
+                  </NxTable.Cell>
+                </NxTable.Row>
+              </NxTable.Body>
+            </NxTable>
           </section>
         </div>
       </section>
