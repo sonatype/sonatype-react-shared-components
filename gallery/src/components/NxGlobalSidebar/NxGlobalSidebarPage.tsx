@@ -85,7 +85,7 @@ export default function NxGlobalSidebarPage() {
                   <NxTable.Cell>string</NxTable.Cell>
                   <NxTable.Cell>Yes</NxTable.Cell>
                   <NxTable.Cell>
-                    An image placed in the top left corner which displays branding and product name.
+                    The path to an image placed in the top left corner which displays branding and product name.
                   </NxTable.Cell>
                 </NxTable.Row>
                 <NxTable.Row>
