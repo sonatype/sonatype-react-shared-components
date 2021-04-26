@@ -8,7 +8,8 @@ import React from 'react';
 import {
   NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
-  NxStatefulGlobalSidebar
+  NxStatefulGlobalSidebar,
+  NxPageMain
 } from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink } from '@fortawesome/free-solid-svg-icons';
 
@@ -28,7 +29,7 @@ export default function NxPageLocalHeaderEmptyExample() {
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
-      <main className="nx-page-main">
+      <NxPageMain>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdum
         varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
@@ -39,7 +40,7 @@ export default function NxPageLocalHeaderEmptyExample() {
         praesent elementum facilisis leo. Dui sapien eget mi proin. Ultrices eros in cursus turpis massa tincidunt
         dui ut ornare. Et ligula ullamcorper malesuada proin libero nunc consequat interdum. Turpis egestas maecenas
         pharetra convallis posuere morbi leo urna.
-     </main>
+      </NxPageMain>
     </>
   );
 }
