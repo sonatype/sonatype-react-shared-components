@@ -17,8 +17,6 @@
   overflow-x: hidden;
   padding: 0 12px;
 
-  // necessary for IE11
-  word-wrap: break-word;
   overflow-wrap: break-word;
 
   &:first-child {
