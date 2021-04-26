@@ -39,7 +39,7 @@ export default function NxGlobalSidebarPage() {
             <NxCode>NxSystemHeader</NxCode> (not yet added to the gallery).
           </NxP>
           <NxP>
-            Addition custom content may be added below the navigation links if desired, care should be taken that such
+            Additional custom content may be added below the navigation links if desired, care should be taken that such
             content can adapt to both the open and closed states.
           </NxP>
           <section className="nx-tile-subsection">
