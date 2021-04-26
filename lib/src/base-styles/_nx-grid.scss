@@ -25,11 +25,11 @@
     border: none;
     padding-left: 0;
   }
-  
+
   &:last-child {
     padding-right: 0;
   }
-  
+
   .nx-grid-col {
     margin: 0;
   }
@@ -61,14 +61,6 @@
   margin: 0;
 }
 
-.nx-grid-h-keyline--white {
-  border-color: $nx-white;
-}
-
-.nx-grid-col--noborder {
-  border-left-color: transparent;
-}
-
 .nx-grid-col {
   .nx-grid-h-keyline {
     margin: 12px 0 4px 0;
@@ -86,30 +78,4 @@
 
   line-height: 120%;
   margin: 0; // zeros out any <h#> margin
-}
-
-h1.nx-grid-header__title {
-  font-size: 26px;
-}
-
-h2.nx-grid-header__title {
-  padding-top: 2px;
-}
-
-.nx-grid-header__icon {
-  display: inline-block;
-  margin: 0 8px 0 0;
-}
-
-.nx-grid-header__subtitle {
-  line-height: 16px;
-  max-width: $nx-paragraph-width-maximum;
-  padding-top: 2px;
-}
-
-.nx-grid-header__hrule {
-  border: 0 solid $nx-grey-300;
-  border-bottom-width: 1px;
-  margin: 0;
-  padding-top: 9px;
 }
