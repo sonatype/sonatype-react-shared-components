@@ -8,6 +8,7 @@ import React from 'react';
 import { NxGlobalSidebar, NxGlobalSidebarNavigation, NxGlobalSidebarNavigationLink, useToggle, NxP, NxH3, NxPageMain }
   from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
+const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 
 export default function NxGlobalSidebarExample() {
   const [sidebarOpen, onToggleCollapse] = useToggle(true);
@@ -17,7 +18,7 @@ export default function NxGlobalSidebarExample() {
                        toggleOpenIcon={faArrowLeft}
                        toggleCloseIcon={faArrowRight}
                        onToggleClick={onToggleCollapse}
-                       logoImg="./assets/images/logo-plaid-villain-text.png"
+                       logoImg={logoImg}
                        logoAltText="RSC Plaid Villain"
                        logoLink="#">
         <NxGlobalSidebarNavigation>
