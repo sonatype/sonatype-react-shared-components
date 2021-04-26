@@ -6,23 +6,22 @@
  */
 import React from 'react';
 import CodeExample from '../../CodeExample';
-import { NxP, NxCode, NxTable } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3 } from '@sonatype/react-shared-components';
 
 import './NxGlobalSidebarPage.scss';
 
-const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw'),
-    NxGlobalSidebarWithPageSidebarExample = require('./NxGlobalSidebarWithPageSidebarExample.tsx?raw');
+const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw');
 
 export default function NxGlobalSidebarPage() {
   return (
     <>
-      <section className="nx-tile">
-        <header className="nx-tile-header">
-          <div className="nx-tile-header__title">
-            <h2 className="nx-h2">Description</h2>
-          </div>
-        </header>
-        <div className="nx-tile-content">
+      <NxTile>
+        <NxTile.Header>
+          <NxTile.HeaderTitle>
+            <NxH2>Description</NxH2>
+          </NxTile.HeaderTitle>
+        </NxTile.Header>
+        <NxTile.Content>
           <NxP>
             <NxCode>NxGlobalSidebar</NxCode> is a collapsible page level sidebar. It has two main sections:
           </NxP>
@@ -163,9 +162,9 @@ export default function NxGlobalSidebarPage() {
           </section>
           <section className="nx-tile-subsection">
             <header className="nx-tile-subsection__header">
-              <h3 className="nx-h3"><NxCode>NxGlobalSidebarNavigationLink</NxCode> Props</h3>
+              <NxH3><NxCode>NxGlobalSidebarNavigationLink</NxCode> Props</NxH3>
             </header>
-            <p className="nx-p">The following CSS classes are available for use on child elements.</p>
+            <NxP>The following CSS classes are available for use on child elements.</NxP>
             <NxTable>
               <NxTable.Head>
                 <NxTable.Row>
@@ -186,41 +185,23 @@ export default function NxGlobalSidebarPage() {
               </NxTable.Body>
             </NxTable>
           </section>
-        </div>
-      </section>
-      <section className="nx-tile">
-        <header className="nx-tile-header">
-          <div className="nx-tile-header__title">
-            <h2 className="nx-h2">Basic Global Sidebar Example with Nav</h2>
-          </div>
-        </header>
-        <div className="nx-tile-content">
+        </NxTile.Content>
+      </NxTile>
+      <NxTile>
+        <NxTile.Header>
+          <NxTile.HeaderTitle>
+            <NxH2>Basic Global Sidebar Example with Nav</NxH2>
+          </NxTile.HeaderTitle>
+        </NxTile.Header>
+        <NxTile.Content>
           <NxP>
             <a className="nx-text-link" href="#/NxGlobalSidebarExample">
               Click here to navigate to the live example.
             </a>
           </NxP>
           <CodeExample content={NxGlobalSidebarExample} />
-        </div>
-      </section>
-      <section className="nx-tile">
-        <header className="nx-tile-header">
-          <div className="nx-tile-header__title">
-            <h2 className="nx-h2">Global Sidebar on a page with another page level sidebar</h2>
-          </div>
-        </header>
-        <div className="nx-tile-content">
-          <NxP>
-            In this example, there is another standard page level sidebar.
-          </NxP>
-          <NxP>
-            <a className="nx-text-link" href="#/NxGlobalSidebarWithPageSidebarExample">
-              Click here to navigate to the live example.
-            </a>
-          </NxP>
-          <CodeExample content={NxGlobalSidebarWithPageSidebarExample} />
-        </div>
-      </section>
+        </NxTile.Content>
+      </NxTile>
     </>
   );
 }
