@@ -61,7 +61,8 @@
   row-gap: $nx-spacing-xs;
   margin-top: $nx-spacing-xs;
 
-  > *, > :first-child, > :last-child {
+  // required due to specificity, removes bottom margin from children of nx-page-title__tags
+  > :nth-child(1n) {
     margin-bottom: 0;
   }
 }
