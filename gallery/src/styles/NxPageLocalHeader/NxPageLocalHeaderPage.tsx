@@ -29,7 +29,7 @@ const NxPageLocalHeaderPage = () =>
         Like all parts of the <NxCode>NxGlobalSidebar</NxCode> layout, this component is only to be
         used in full-width, section-scrolling layouts.
       </NxP>
-      <NxTable>
+      <NxTable className="gallery-documentation-table">
         <NxTable.Head>
           <NxTable.Row>
             <NxTable.Cell>Class</NxTable.Cell>
