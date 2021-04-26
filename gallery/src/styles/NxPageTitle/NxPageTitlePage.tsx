@@ -54,12 +54,12 @@ const NxPageTitlePage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-page-title__headings</code></td>
-            <td className="nx-cell"></td>
+            <td className="nx-cell">NxPageTitle.Headings</td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              If there is a sub-title then the <NxCode>&lt;h1&gt;</NxCode> &amp; <NxCode>&lt;h2&gt;</NxCode> should both be wrapped
-              in a containing <code className="nx-code">&lt;hgroup&gt;</code> with this class. If there is only an
-              <NxCode>&lt;h1&gt;</NxCode> then this element and its class are optional.
+              If there is a sub-title then the <NxCode>&lt;h1&gt;</NxCode> &amp; <NxCode>&lt;h2&gt;</NxCode> should
+              both be wrapped in a containing <code className="nx-code">&lt;hgroup&gt;</code> with this class. If there
+              is only an <NxCode>&lt;h1&gt;</NxCode> then this element and its class are optional.
             </td>
           </tr>
           <tr className="nx-table-row">
