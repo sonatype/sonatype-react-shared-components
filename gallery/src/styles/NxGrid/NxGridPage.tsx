@@ -85,7 +85,7 @@ const NxGridPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-h-keyline</code></td>
             <td className="nx-cell"><code className="nx-code">NxGrid.HorizontalKeyline</code></td>
-            <td className="nx-cell"><NxCode>&lt;hr&gt;</NxCode></td>
+            <td className="nx-cell">Element (<NxCode>&lt;hr&gt;</NxCode>)</td>
             <td className="nx-cell">Horizontal keyline used between grid cells.</td>
           </tr>
         </tbody>
