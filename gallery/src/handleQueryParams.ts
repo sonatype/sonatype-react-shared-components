@@ -27,11 +27,4 @@ export default function handleQueryParams(queryParams: ParsedQuery) {
   else {
     classList.remove('gallery-hide-sidebar');
   }
-
-  if (queryParams.showGlobalSidebar === 'true') {
-    classList.add('gallery-show-global-sidebar');
-  }
-  else {
-    classList.remove('gallery-show-global-sidebar');
-  }
 }
