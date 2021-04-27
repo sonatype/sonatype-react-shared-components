@@ -30,7 +30,7 @@ import {
   NxPageTitle,
   NxReadOnly,
   NxTableContainer,
-  NxPageLocalHeader
+  NxGlobalHeader
 } from '../SimpleComponents';
 
 describe('NxP', function() {
@@ -339,14 +339,14 @@ describe('NxTableContainer.Footer', function() {
   });
 });
 
-describe('NxPageLocalHeader', function() {
-  it('makes an <aside> with an nx-page-local-header class', function() {
-    expect(shallow(<NxPageLocalHeader/>)).toMatchSelector('aside.nx-page-local-header');
+describe('NxGlobalHeader', function() {
+  it('makes an <aside> with an nx-global-header class', function() {
+    expect(shallow(<NxGlobalHeader/>)).toMatchSelector('aside.nx-global-header');
   });
 });
 
-describe('NxPageLocalHeader.Actions', function() {
-  it('makes an <div> with an nx-page-local-header__actions class', function() {
-    expect(shallow(<NxPageLocalHeader.Actions/>)).toMatchSelector('div.nx-page-local-header__actions');
+describe('NxGlobalHeader.Actions', function() {
+  it('makes an <div> with an nx-global-header__actions class', function() {
+    expect(shallow(<NxGlobalHeader.Actions/>)).toMatchSelector('div.nx-global-header__actions');
   });
 });

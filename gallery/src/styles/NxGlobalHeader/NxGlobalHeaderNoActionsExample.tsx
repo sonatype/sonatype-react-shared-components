@@ -9,16 +9,19 @@ import {
   NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
   NxStatefulGlobalSidebar,
+  NxBackButton,
   NxPageMain
 } from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink } from '@fortawesome/free-solid-svg-icons';
 
 const sidebarLogoPath = require('../../assets/logo-plaid-villain-text.png');
 
-export default function NxPageLocalHeaderEmptyExample() {
+export default function NxGlobalHeaderNoActionsExample() {
   return (
     <>
-      <aside className="nx-page-local-header"></aside>
+      <aside className="nx-global-header">
+        <NxBackButton href="#/pages/nx-global-header" targetPageTitle="Documentation" />
+      </aside>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
                                toggleOpenIcon={faArrowLeft}
                                toggleCloseIcon={faArrowRight}

@@ -11,19 +11,17 @@ import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
 import CodeExample from '../../CodeExample';
 
-const nxPageLocalHeaderFullExampleCode = require('./NxPageLocalHeaderFullExample?raw'),
-    nxPageLocalHeaderNoBackButtonExampleCode = require('./NxPageLocalHeaderNoBackButtonExample?raw'),
-    nxPageLocalHeaderNoActionsExampleCode = require('./NxPageLocalHeaderNoActionsExample?raw'),
-    nxPageLocalHeaderEmptyExampleCode = require('./NxPageLocalHeaderEmptyExample?raw');
+const nxGlobalHeaderFullExampleCode = require('./NxGlobalHeaderFullExample?raw'),
+    nxGlobalHeaderNoBackButtonExampleCode = require('./NxGlobalHeaderNoBackButtonExample?raw'),
+    nxGlobalHeaderNoActionsExampleCode = require('./NxGlobalHeaderNoActionsExample?raw'),
+    nxGlobalHeaderEmptyExampleCode = require('./NxGlobalHeaderEmptyExample?raw');
 
-const NxPageLocalHeaderPage = () =>
+const NxGlobalHeaderPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
         A page header to be used along with the <NxCode>NxGlobalSidebar</NxCode>. So named in order to distinguish
-        it from the <NxCode>nx-page-header</NxCode> used within the legacy page layouts. That older header spans
-        across the entire viewport and therefore must be considered the more "global" of the two, while this header is
-        considered to be "local" to a particular page, both in positioning and content.
+        it from the <NxCode>nx-page-header</NxCode> used within the legacy page layouts.
       </NxP>
       <NxP>
         Like all parts of the <NxCode>NxGlobalSidebar</NxCode> layout, this component is only to be
@@ -40,22 +38,22 @@ const NxPageLocalHeaderPage = () =>
         </NxTable.Head>
         <NxTable.Body>
           <NxTable.Row>
-            <NxTable.Cell><NxCode>nx-page-local-header</NxCode></NxTable.Cell>
-            <NxTable.Cell><NxCode>NxPageLocalHeader</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>nx-global-header</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxGlobalHeader</NxCode></NxTable.Cell>
             <NxTable.Cell>
               Immediate child of <NxCode>.nx-page</NxCode> or <NxCode>.nx-page-content--full-width</NxCode>
             </NxTable.Cell>
             <NxTable.Cell>
               The overall block element for the header. Its children should consist of
-              an <NxCode>NxBackButton</NxCode> and/or a <NxCode>.nx-page-local-header__actions</NxCode>, both of which
+              an <NxCode>NxBackButton</NxCode> and/or a <NxCode>.nx-global-header__actions</NxCode>, both of which
               are optional, in that order.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
-            <NxTable.Cell><NxCode>nx-page-local-header__actions</NxCode></NxTable.Cell>
-            <NxTable.Cell><NxCode>NxPageLocalHeader.Actions</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>nx-global-header__actions</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxGlobalHeader.Actions</NxCode></NxTable.Cell>
             <NxTable.Cell>
-              Immediate child of <NxCode>.nx-page-local-header__actions</NxCode>
+              Immediate child of <NxCode>.nx-global-header__actions</NxCode>
             </NxTable.Cell>
             <NxTable.Cell>
               Container for buttons, dropdowns, and other action content at the right-hand end of the header.
@@ -84,11 +82,11 @@ const NxPageLocalHeaderPage = () =>
           top of the viewport.
         </NxP>
         <NxP>
-          <NxTextLink href="#/NxPageLocalHeaderFullExample">
+          <NxTextLink href="#/NxGlobalHeaderFullExample">
             Click here to navigate to the live example.
           </NxTextLink>
         </NxP>
-        <CodeExample content={nxPageLocalHeaderFullExampleCode} />
+        <CodeExample content={nxGlobalHeaderFullExampleCode} />
       </NxTile.Content>
     </NxTile>
 
@@ -105,11 +103,11 @@ const NxPageLocalHeaderPage = () =>
           to fit.
         </NxP>
         <NxP>
-          <NxTextLink href="#/NxPageLocalHeaderNoBackButtonExample">
+          <NxTextLink href="#/NxGlobalHeaderNoBackButtonExample">
             Click here to navigate to the live example.
           </NxTextLink>
         </NxP>
-        <CodeExample content={nxPageLocalHeaderNoBackButtonExampleCode} />
+        <CodeExample content={nxGlobalHeaderNoBackButtonExampleCode} />
       </NxTile.Content>
     </NxTile>
 
@@ -124,11 +122,11 @@ const NxPageLocalHeaderPage = () =>
           The actions collection within the header is optional as seen here.
         </NxP>
         <NxP>
-          <NxTextLink href="#/NxPageLocalHeaderNoActionsExample">
+          <NxTextLink href="#/NxGlobalHeaderNoActionsExample">
             Click here to navigate to the live example.
           </NxTextLink>
         </NxP>
-        <CodeExample content={nxPageLocalHeaderNoActionsExampleCode} />
+        <CodeExample content={nxGlobalHeaderNoActionsExampleCode} />
       </NxTile.Content>
     </NxTile>
 
@@ -142,16 +140,16 @@ const NxPageLocalHeaderPage = () =>
         <NxP>
           When the header has no content, it disappears entirely. This is a convenience for applications which
           do not have actions and which need a back button on some pages but not others, and which want to use
-          a common template that always includes the <NxCode>nx-page-local-header</NxCode>.
+          a common template that always includes the <NxCode>nx-global-header</NxCode>.
         </NxP>
         <NxP>
-          <NxTextLink href="#/NxPageLocalHeaderEmptyExample">
+          <NxTextLink href="#/NxGlobalHeaderEmptyExample">
             Click here to navigate to the live example.
           </NxTextLink>
         </NxP>
-        <CodeExample content={nxPageLocalHeaderEmptyExampleCode} />
+        <CodeExample content={nxGlobalHeaderEmptyExampleCode} />
       </NxTile.Content>
     </NxTile>
   </>;
 
-export default NxPageLocalHeaderPage;
+export default NxGlobalHeaderPage;

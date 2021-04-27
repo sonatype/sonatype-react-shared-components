@@ -76,6 +76,6 @@ export const NxTableContainer = Object.assign(withClass('div', 'nx-table-contain
   Footer: withClass('div', 'nx-table-container__footer')
 });
 
-export const NxPageLocalHeader = Object.assign(withClass('aside', 'nx-page-local-header'), {
-  Actions: withClass('div', 'nx-page-local-header__actions')
+export const NxGlobalHeader = Object.assign(withClass('aside', 'nx-global-header'), {
+  Actions: withClass('div', 'nx-global-header__actions')
 });

@@ -27,10 +27,10 @@ import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExam
 import NxViewportSizedExpandingExample
   from './styles/NxViewportSized/NxViewportSizedExpandingExample';
 import SectionScrollingWrapper from './styles/NxViewportSized/SectionScrollingWrapper';
-import NxPageLocalHeaderFullExample from './styles/NxPageLocalHeader/NxPageLocalHeaderFullExample';
-import NxPageLocalHeaderNoBackButtonExample from './styles/NxPageLocalHeader/NxPageLocalHeaderNoBackButtonExample';
-import NxPageLocalHeaderNoActionsExample from './styles/NxPageLocalHeader/NxPageLocalHeaderNoActionsExample';
-import NxPageLocalHeaderEmptyExample from './styles/NxPageLocalHeader/NxPageLocalHeaderEmptyExample';
+import NxGlobalHeaderFullExample from './styles/NxGlobalHeader/NxGlobalHeaderFullExample';
+import NxGlobalHeaderNoBackButtonExample from './styles/NxGlobalHeader/NxGlobalHeaderNoBackButtonExample';
+import NxGlobalHeaderNoActionsExample from './styles/NxGlobalHeader/NxGlobalHeaderNoActionsExample';
+import NxGlobalHeaderEmptyExample from './styles/NxGlobalHeader/NxGlobalHeaderEmptyExample';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
@@ -76,24 +76,24 @@ function Application() {
             <NxGlobalSidebarWithPageSidebarExample />
           </SectionScrollingWrapper>
         </Route>
-        <Route exact path="/NxPageLocalHeaderFullExample">
+        <Route exact path="/NxGlobalHeaderFullExample">
           <SectionScrollingWrapper>
-            <NxPageLocalHeaderFullExample />
+            <NxGlobalHeaderFullExample />
           </SectionScrollingWrapper>
         </Route>
-        <Route exact path="/NxPageLocalHeaderNoBackButtonExample">
+        <Route exact path="/NxGlobalHeaderNoBackButtonExample">
           <SectionScrollingWrapper>
-            <NxPageLocalHeaderNoBackButtonExample />
+            <NxGlobalHeaderNoBackButtonExample />
           </SectionScrollingWrapper>
         </Route>
-        <Route exact path="/NxPageLocalHeaderNoActionsExample">
+        <Route exact path="/NxGlobalHeaderNoActionsExample">
           <SectionScrollingWrapper>
-            <NxPageLocalHeaderNoActionsExample />
+            <NxGlobalHeaderNoActionsExample />
           </SectionScrollingWrapper>
         </Route>
-        <Route exact path="/NxPageLocalHeaderEmptyExample">
+        <Route exact path="/NxGlobalHeaderEmptyExample">
           <SectionScrollingWrapper>
-            <NxPageLocalHeaderEmptyExample />
+            <NxGlobalHeaderEmptyExample />
           </SectionScrollingWrapper>
         </Route>
         <Route>

@@ -17,11 +17,11 @@ import { faArrowLeft, faArrowRight, faLink, faEdit } from '@fortawesome/free-sol
 
 const sidebarLogoPath = require('../../assets/logo-plaid-villain-text.png');
 
-export default function NxPageLocalHeaderNoBackButtonExample() {
+export default function NxGlobalHeaderNoBackButtonExample() {
   return (
     <>
-      <aside className="nx-page-local-header">
-        <div className="nx-page-local-header__actions">
+      <aside className="nx-global-header">
+        <div className="nx-global-header__actions">
           <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
           <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         </div>
