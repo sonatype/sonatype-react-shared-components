@@ -53,8 +53,8 @@ const NxGridPage = () =>
             <td className="nx-cell">Element (<NxCode>&lt;div&gt;</NxCode> or <NxCode>&lt;section&gt;</NxCode>)</td>
             <td className="nx-cell">
               A simple container, always placed inside <code className="nx-code">.nx-grid-row</code>.
-              If this cell has a single header, it should be a <NxCode>&lt;section&gt;</NxCode>. Otherwise, it should
-              be a <NxCode>&lt;div&gt;</NxCode>.
+              If this cell has a single header, it should be a <NxCode>&lt;section&gt;</NxCode>. Otherwise, it may
+              be a <NxCode>&lt;div&gt;</NxCode> or a <NxCode>&lt;section&gt;</NxCode>.
             </td>
           </tr>
           <tr className="nx-table-row">
