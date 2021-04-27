@@ -53,7 +53,7 @@ const NxGridPage = () =>
             <td className="nx-cell">Element (<NxCode>&lt;div&gt;</NxCode> or <NxCode>&lt;section&gt;</NxCode>)</td>
             <td className="nx-cell">
               A simple container, always placed inside <code className="nx-code">.nx-grid-row</code>.
-              If this cell has a header, it should be a <NxCode>&lt;section&gt;</NxCode>. Otherwise, it should
+              If this cell has a single header, it should be a <NxCode>&lt;section&gt;</NxCode>. Otherwise, it should
               be a <NxCode>&lt;div&gt;</NxCode>.
             </td>
           </tr>
@@ -91,6 +91,16 @@ const NxGridPage = () =>
               but generally not before the first row or after the last. There may be cases however where it is
               desirable to place them before the first row or after the last, for instance when the grid cells are
               scroll containers.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-grid-col__section</code></td>
+            <td className="nx-cell"><code className="nx-code">NxGrid.ColumnSection</code></td>
+            <td className="nx-cell">Element within <NxCode>.nx-grid-col</NxCode> (<NxCode>&lt;section&gt;</NxCode>)</td>
+            <td className="nx-cell">
+              When a single cell contains multiple groups of headers and content, each such group should be wrapped
+              in a <NxCode>&lt;section&gt;</NxCode> with this class. The <NxCode>.nx-grid-col</NxCode> itself
+              should be a <NxCode>&lt;div&gt;</NxCode> in this case.
             </td>
           </tr>
         </tbody>

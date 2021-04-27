@@ -56,3 +56,10 @@ $nx-grid-border: $nx-border;
   @extend .nx-truncate-ellipsis;
   @include container-horizontal;
 }
+
+.nx-grid-col__section {
+  @include container-vertical;
+
+  margin-top: $nx-spacing-l;
+  margin-bottom: $nx-spacing-l;
+}
