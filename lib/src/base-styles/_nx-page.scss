@@ -65,4 +65,18 @@
   > :nth-child(1n) {
     margin-bottom: 0;
   }
+
+  .nx-policy-violation-indicator {
+    + .nx-threat-counter-container, + .nx-tag {
+      margin-left: $nx-spacing-xs;
+    }
+  }
+  
+  .nx-threat-counter-container {
+    margin-top: 0;
+  
+    + .nx-tag {
+      margin-left: $nx-spacing-l;
+    }
+  }
 }
