@@ -15,7 +15,7 @@
   border-radius: $nx-border-radius;
   display: inline-flex;
   height: 30px;
-  margin: 0 0 $nx-spacing-xs $nx-spacing-md;
+  margin: 0 $nx-spacing-md $nx-spacing-xs 0;
   overflow: hidden;
   width: max-content;
   max-width: 100%;
