@@ -4,6 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+$nx-grid-border: $nx-border;
+
 .nx-grid-row {
   display: flex;
   margin-top: $nx-spacing-l;
@@ -13,7 +15,7 @@
 .nx-grid-col {
   @include container-vertical;
 
-  border-left: $nx-border-light;
+  border-left: $nx-grid-border;
   box-sizing: border-box;
   flex: 1 0;
   overflow-x: hidden;
@@ -39,7 +41,7 @@
 
 .nx-grid-h-keyline {
   border: none;
-  border-top: $nx-border-light;
+  border-top: $nx-grid-border;
   margin-top: $nx-spacing-l;
   margin-bottom: $nx-spacing-l;
 }
