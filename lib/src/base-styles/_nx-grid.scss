@@ -6,16 +6,18 @@
  */
 .nx-grid-row {
   display: flex;
+  margin-top: $nx-spacing-l;
+  margin-bottom: $nx-spacing-l;
 }
 
 .nx-grid-col {
-  flex: 1 0;
+  @include container-vertical;
 
   border-left: $nx-border-light;
   box-sizing: border-box;
-  margin: 8px 0;
+  flex: 1 0;
   overflow-x: hidden;
-  padding: 0 12px;
+  padding: 0 $nx-spacing-xxl;
 
   overflow-wrap: break-word;
 
@@ -27,53 +29,28 @@
   &:last-child {
     padding-right: 0;
   }
+}
 
-  .nx-grid-col {
-    margin: 0;
+@each $percent in (25, 50, 75, 33, 67) {
+  .nx-grid-col--#{$percent} {
+    @include nx-grid-col-width(#{$percent + '%'});
   }
-}
-
-.nx-grid-col--25 {
-  @include nx-grid-col-width(25%);
-}
-
-.nx-grid-col--50 {
-  @include nx-grid-col-width(50%);
-}
-
-.nx-grid-col--75 {
-  @include nx-grid-col-width(75%);
-}
-
-.nx-grid-col--33 {
-  @include nx-grid-col-width(33%);
-}
-
-.nx-grid-col--67 {
-  @include nx-grid-col-width(67%);
 }
 
 .nx-grid-h-keyline {
   border: none;
   border-top: $nx-border-light;
-  margin: 0;
-}
-
-.nx-grid-col {
-  .nx-grid-h-keyline {
-    margin: 12px 0 4px 0;
-  }
+  margin-top: $nx-spacing-l;
+  margin-bottom: $nx-spacing-l;
 }
 
 // Grid headers
 .nx-grid-header {
-  margin: 0 0 18px 0;
+  @include container-vertical;
+  margin-bottom: $nx-spacing-md;
 }
 
 .nx-grid-header__title {
   @extend .nx-truncate-ellipsis;
   @include container-horizontal;
-
-  line-height: 120%;
-  margin: 0; // zeros out any <h#> margin
 }
