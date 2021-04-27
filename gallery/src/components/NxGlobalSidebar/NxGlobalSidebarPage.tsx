@@ -54,7 +54,7 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>isOpen</NxTable.Cell>
                 <NxTable.Cell>Boolean</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>This value determines whether the side starts in an open or closed state.</NxTable.Cell>
+                <NxTable.Cell>This value determines whether the sidebar is open or closed.</NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
                 <NxTable.Cell>toggleOpenIcon</NxTable.Cell>
