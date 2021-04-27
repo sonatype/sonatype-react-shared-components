@@ -47,7 +47,8 @@ export const NxCard = Object.assign(withClass('section', 'nx-card'), {
 
 export const NxGrid = {
   Row: withClass('div', 'nx-grid-row'),
-  Column: withClass('div', 'nx-grid-col'),
+  Column: withClass('section', 'nx-grid-col'),
+  ColumnSection: withClass('section', 'nx-grid-col__section'),
   HorizontalKeyline: withClass('div', 'nx-grid-h-keyline'),
   Header: withClass('div', 'nx-grid-header'),
   HeaderHrule: withClass('hr', 'nx-grid-header__hrule')
