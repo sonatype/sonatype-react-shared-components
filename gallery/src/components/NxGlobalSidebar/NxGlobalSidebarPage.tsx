@@ -29,8 +29,7 @@ export default function NxGlobalSidebarPage() {
         </ul>
         <NxP>
           Because <NxCode>NxGlobalSidebar</NxCode> contains product branding it should not be used in conjunction
-          with <NxCode>NxPageHeader</NxCode> or <NxCode>NxNexusPageHeader</NxCode>. Instead it should be paired with
-          <NxCode>NxSystemHeader</NxCode> (not yet added to the gallery).
+          with <NxCode>NxPageHeader</NxCode> or <NxCode>NxNexusPageHeader</NxCode>.
         </NxP>
         <NxP>
           Additional custom content may be added below the navigation links if desired, care should be taken that such
