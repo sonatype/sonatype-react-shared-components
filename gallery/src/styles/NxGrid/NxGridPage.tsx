@@ -100,7 +100,7 @@ const NxGridPage = () =>
             <td className="nx-cell">
               When a single cell contains multiple groups of headers and content, each such group should be wrapped
               in a <NxCode>&lt;section&gt;</NxCode> with this class. The <NxCode>.nx-grid-col</NxCode> itself
-              should be a <NxCode>&lt;div&gt;</NxCode> in this case.
+              may be a <NxCode>&lt;div&gt;</NxCode> in this case.
             </td>
           </tr>
         </tbody>
