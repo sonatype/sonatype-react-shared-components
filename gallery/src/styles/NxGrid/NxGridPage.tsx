@@ -86,7 +86,12 @@ const NxGridPage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-grid-h-keyline</code></td>
             <td className="nx-cell"><code className="nx-code">NxGrid.HorizontalKeyline</code></td>
             <td className="nx-cell">Element (<NxCode>&lt;hr&gt;</NxCode>)</td>
-            <td className="nx-cell">Horizontal keyline used between grid cells.</td>
+            <td className="nx-cell">
+              Horizontal keyline used between grid rows. Keylines should be placed between each row within the grid,
+              but generally not before the first row or after the last. There may be cases however where it is
+              desirable to place them before the first row or after the last, for instance when the grid cells are
+              scroll containers.
+            </td>
           </tr>
         </tbody>
       </table>
