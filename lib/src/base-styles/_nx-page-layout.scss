@@ -43,7 +43,7 @@
   box-sizing: border-box;
   display: flex;
 
-  // See the comment above on nx-page's grid template
+  // Cover all columns and the third through last rows of the nx-page grid template
   grid-area: 3 / 1 / -1 / -1;
   max-width: var(--page-width-max);
   overflow-y: hidden;
