@@ -13,7 +13,7 @@ const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 export default function NxGlobalSidebarExample() {
   const [sidebarOpen, onToggleCollapse] = useToggle(true);
   return (
-    <div className="nx-page-content">
+    <div className="nx-page-content nx-page-content--full-width">
       <NxGlobalSidebar isOpen={sidebarOpen}
                        toggleOpenIcon={faArrowLeft}
                        toggleCloseIcon={faArrowRight}
