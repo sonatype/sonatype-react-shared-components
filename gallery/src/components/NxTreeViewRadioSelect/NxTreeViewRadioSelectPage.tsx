@@ -177,7 +177,8 @@ const NxTreeViewRadioSelectPage = () =>
             <td className="nx-cell">string</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Placeholder to be used in filter text input.
+              Placeholder to be used in filter text input. Defaults to "filter" but recommended to
+              be something clearer for screenreading purposes.
             </td>
           </tr>
           <tr className="nx-table-row">
