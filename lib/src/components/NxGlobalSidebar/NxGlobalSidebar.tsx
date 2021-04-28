@@ -42,7 +42,8 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
               aria-controls={id}
               variant="icon-only"
               onClick={onToggleClick}
-              className="nx-global-sidebar__toggle">
+              className="nx-global-sidebar__toggle"
+              title={toggleAriaLabel}>
       <NxFontAwesomeIcon icon={toggleButtonIcon} fixedWidth />
     </NxButton>
   );
