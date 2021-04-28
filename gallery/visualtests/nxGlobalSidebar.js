@@ -5,23 +5,31 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 describe('nx-global-sidebar', function() {
-  const sidebarToggle = '.nx-global-sidebar .nx-global-sidebar__toggle';
-  it('looks right', async function() {
+  beforeEach(async function() {
     await browser.url('#/NxGlobalSidebarExample');
-    await browser.eyesSnapshot(null);
   });
 
-  it('looks right when closed', async function() {
-    const targetElement = await browser.$(sidebarToggle);
+  const sidebarToggle = '.nx-global-sidebar .nx-global-sidebar__toggle';
 
-    await targetElement.click();
-
-    try {
+  describe('NxGlobalSidebar when open', function() {
+    it('looks right', async function() {
       await browser.eyesSnapshot(null);
-    }
-    finally {
-      // click again to reset the state
+    });
+  });
+
+  describe('NxGlobalSidebar when closed', function() {
+    it('looks right when closed', async function() {
+      const targetElement = await browser.$(sidebarToggle);
+
       await targetElement.click();
-    }
+
+      try {
+        await browser.eyesSnapshot(null);
+      }
+      finally {
+        // click again to reset the state
+        await targetElement.click();
+      }
+    });
   });
 });
