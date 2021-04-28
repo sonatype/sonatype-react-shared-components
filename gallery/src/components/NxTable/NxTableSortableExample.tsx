@@ -6,13 +6,7 @@
  */
 import React, {useState} from 'react';
 
-import {
-  NxTable,
-  NxTableBody,
-  NxTableCell,
-  NxTableHead,
-  NxTableRow
-} from '@sonatype/react-shared-components';
+import { NxTable } from '@sonatype/react-shared-components';
 
 const initialState = ['A', '1', 'B', '2', 'C', '3', 'D', '4'];
 
@@ -37,18 +31,18 @@ const NxTableSortableExample = () => {
 
   return (
     <NxTable>
-      <NxTableHead>
-        <NxTableRow>
-          <NxTableCell isSortable sortDir={sortDir} onClick={sort}>Name</NxTableCell>
-        </NxTableRow>
-      </NxTableHead>
-      <NxTableBody>
+      <NxTable.Head>
+        <NxTable.Row>
+          <NxTable.Cell isSortable sortDir={sortDir} onClick={sort}>Name</NxTable.Cell>
+        </NxTable.Row>
+      </NxTable.Head>
+      <NxTable.Body>
         {rows.map(row =>
-          <NxTableRow key={row}>
-            <NxTableCell>{row}</NxTableCell>
-          </NxTableRow>
+          <NxTable.Row key={row}>
+            <NxTable.Cell>{row}</NxTable.Cell>
+          </NxTable.Row>
         )}
-      </NxTableBody>
+      </NxTable.Body>
     </NxTable>
   );
 };

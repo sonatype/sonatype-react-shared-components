@@ -11,8 +11,9 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-areas:
-    "title tags actions"
-    "description description description";
+    "title sub-title actions"
+    "description description description"
+    "tags tags tags";
   margin: 0 0 $nx-spacing-l 0;
 
   .nx-h1 {
@@ -29,19 +30,53 @@
   }
 }
 
-.nx-page-title__tags {
-  @include container-horizontal;
+.nx-page-title__headings {
+  display: contents;
+}
 
-  grid-area: tags;
-  margin-left: $nx-spacing-md;
-
-  .nx-policy-violation-indicator {
-    margin: 0;
-  }
+.nx-page-title__sub-title {
+  @include nx-truncate-ellipsis;
+  border-left: $nx-border-default;
+  margin: 0 0 0 $nx-spacing-md;
+  padding-left: $nx-spacing-md;
+  min-width: 150px;
 }
 
 .nx-page-title__description {
   @include container-vertical;
   grid-area: description;
-  margin: $nx-spacing-xs 0 0 0;
+  margin-top: $nx-spacing-xs;
+
+  + .nx-page-title__tags {
+    margin-top: $nx-spacing-md;
+  }
+}
+
+.nx-page-title__tags {
+  @include container-horizontal;
+
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: tags;
+  row-gap: $nx-spacing-xs;
+  margin-top: $nx-spacing-xs;
+
+  // required due to specificity, removes bottom margin from children of nx-page-title__tags
+  > :nth-child(1n) {
+    margin-bottom: 0;
+  }
+
+  .nx-policy-violation-indicator {
+    + .nx-threat-counter-container, + .nx-tag {
+      margin-left: $nx-spacing-xs;
+    }
+  }
+  
+  .nx-threat-counter-container {
+    margin-top: 0;
+  
+    + .nx-tag {
+      margin-left: $nx-spacing-l;
+    }
+  }
 }
