@@ -29,7 +29,7 @@ export default function NxGlobalSidebarPage() {
         </ul>
         <NxP>
           <NxCode>NxGlobalSidebar</NxCode> should only be used with section scrolling (make sure that
-          <NxCode>.nx-html-page-scrolling</NxCode> is <strong>not</strong> used) and in full-width mode (
+          <NxCode>.nx-html--page-scrolling</NxCode> is <strong>not</strong> used) and in full-width mode (
           make sure that <NxCode>.nx-page-content--full-width</NxCode> <strong>is</strong> used).
         </NxP>
         <NxP>
