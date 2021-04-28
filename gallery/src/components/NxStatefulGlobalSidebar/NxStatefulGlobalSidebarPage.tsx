@@ -28,6 +28,11 @@ export default function NxStatefulGlobalSidebarPage() {
           </li>
         </ul>
         <NxP>
+          <NxCode>NxGlobalSidebar</NxCode> should only be used with section scrolling (make sure that
+          <NxCode>.nx-html-page-scrolling</NxCode> is <strong>not</strong> used) and in full-width mode (
+          make sure that <NxCode>.nx-page-content--full-width</NxCode> <strong>is</strong> used).
+        </NxP>
+        <NxP>
           Because <NxCode>NxStatefulGlobalSidebar</NxCode> contains product branding it should not be used in
           conjunction with <NxCode>NxPageHeader</NxCode> or <NxCode>NxNexusPageHeader</NxCode>.
         </NxP>
@@ -106,20 +111,20 @@ export default function NxStatefulGlobalSidebarPage() {
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <h3 className="nx-h3"><NxCode>NxStatefulGlobalSidebarNavigation</NxCode> Props</h3>
+            <h3 className="nx-h3"><NxCode>NxGlobalSidebarNavigation</NxCode> Props</h3>
           </NxTile.SubsectionHeader>
           <NxP>
-            <NxCode>NxStatefulGlobalSidebarNavigation</NxCode> is a container for navigation links.
+            <NxCode>NxGlobalSidebarNavigation</NxCode> is a container for navigation links.
             It accepts all standard <NxCode>&lt;div&gt;</NxCode> HTML attributes.
           </NxP>
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <h3 className="nx-h3"><NxCode>NxStatefulGlobalSidebarNavigationLink</NxCode> Props</h3>
+            <h3 className="nx-h3"><NxCode>NxGlobalSidebarNavigationLink</NxCode> Props</h3>
           </NxTile.SubsectionHeader>
           <NxP>
             In addition to all standard <NxCode>&lt;a&gt;</NxCode> HTML attributes,
-            <NxCode>NxStatefulGlobalSidebarNavigationLink</NxCode> can receive the following props:
+            <NxCode>NxGlobalSidebarNavigationLink</NxCode> can receive the following props:
           </NxP>
           <NxTable>
             <NxTable.Head>

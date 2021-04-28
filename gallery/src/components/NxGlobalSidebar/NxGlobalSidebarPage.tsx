@@ -28,6 +28,11 @@ export default function NxGlobalSidebarPage() {
           </li>
         </ul>
         <NxP>
+          <NxCode>NxGlobalSidebar</NxCode> should only be used with section scrolling (make sure that
+          <NxCode>.nx-html-page-scrolling</NxCode> is <strong>not</strong> used) and in full-width mode (
+          make sure that <NxCode>.nx-page-content--full-width</NxCode> <strong>is</strong> used).
+        </NxP>
+        <NxP>
           Because <NxCode>NxGlobalSidebar</NxCode> contains product branding it should not be used in conjunction
           with <NxCode>NxPageHeader</NxCode> or <NxCode>NxNexusPageHeader</NxCode>.
         </NxP>
