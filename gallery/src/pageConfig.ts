@@ -102,6 +102,7 @@ import WithClassPage from './jsUtilPages/WithClass/WithClassPage';
 import NxTextLinkPage from './components/NxTextLink/NxTextLinkPage';
 import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPage';
 import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPage';
+import NxStatefulGlobalSidebarPage from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -127,6 +128,7 @@ const pageConfig: PageConfig = {
     NxForm: NxFormPage,
     NxFormGroup: NxFormGroupPage,
     NxGlobalSidebar: NxGlobalSidebarPage,
+    NxStatefulGlobalSidebar: NxStatefulGlobalSidebarPage,
     NxLoadError: NxLoadErrorPage,
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,

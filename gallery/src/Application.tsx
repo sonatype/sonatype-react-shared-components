@@ -21,6 +21,7 @@ import Home from './pages/Home';
 import handleQueryParams from './handleQueryParams';
 
 import NxGlobalSidebarExample from './components/NxGlobalSidebar/NxGlobalSidebarExample';
+import NxStatefulGlobalSidebarExample from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarExample';
 import NxLoadWrapperPageLevelExample from './components/NxLoadWrapper/NxLoadWrapperPageLevelExample';
 import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExample';
 import NxViewportSizedExpandingExample
@@ -64,6 +65,11 @@ function Application() {
         <Route exact path="/NxGlobalSidebarExample">
           <SectionScrollingWrapper>
             <NxGlobalSidebarExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxStatefulGlobalSidebarExample">
+          <SectionScrollingWrapper>
+            <NxStatefulGlobalSidebarExample />
           </SectionScrollingWrapper>
         </Route>
         <Route>
