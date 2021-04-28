@@ -63,6 +63,8 @@ export const NxList = Object.assign(withClass('ul', 'nx-list'), {
 });
 
 export const NxPageTitle = Object.assign(withClass('div', 'nx-page-title'), {
+  Headings: withClass('div', 'nx-page-title__headings'),
+  Subtitle: withClass('h2', 'nx-h2 nx-page-title__sub-title'),
   Description: withClass('div', 'nx-page-title__description'),
   Tags: withClass('div', 'nx-page-title__tags')
 });
