@@ -9,27 +9,22 @@ describe('nx-global-sidebar', function() {
     await browser.url('#/NxGlobalSidebarExample');
   });
 
-  const sidebarToggle = '.nx-global-sidebar .nx-global-sidebar__toggle';
-
-  describe('NxGlobalSidebar when open', function() {
-    it('looks right', async function() {
-      await browser.eyesSnapshot(null);
-    });
+  it('looks right', async function() {
+    await browser.eyesSnapshot(null);
   });
 
-  describe('NxGlobalSidebar when closed', function() {
-    it('looks right when closed', async function() {
-      const targetElement = await browser.$(sidebarToggle);
+  it('looks right when closed', async function() {
+    const sidebarToggle = '.nx-global-sidebar .nx-global-sidebar__toggle';
+    const targetElement = await browser.$(sidebarToggle);
 
+    await targetElement.click();
+
+    try {
+      await browser.eyesSnapshot(null);
+    }
+    finally {
+      // click again to reset the state
       await targetElement.click();
-
-      try {
-        await browser.eyesSnapshot(null);
-      }
-      finally {
-        // click again to reset the state
-        await targetElement.click();
-      }
-    });
+    }
   });
 });
