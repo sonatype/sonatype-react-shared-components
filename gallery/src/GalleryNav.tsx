@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState, ReactNode } from 'react';
+import React, { useState, ReactNode, useEffect } from 'react';
 import {
   toPairs,
   keys,
@@ -93,6 +93,18 @@ function GalleryNav() {
                                 { ...({ categoryEntries, categoryName }) }/>
           )
       )(pageConfig);
+
+  // keep the filter in session storage so it persists across refreshes
+  useEffect(() => {
+    const savedFilter = sessionStorage.getItem('nav-filter');
+    if (savedFilter) {
+      setFilter(savedFilter);
+    }
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem('nav-filter', filter);
+  }, [filter]);
 
   return (
     <nav>
