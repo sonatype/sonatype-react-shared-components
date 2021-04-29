@@ -72,6 +72,15 @@ module.exports = function(env = { production: false }) {
           }
         ]
       }, {
+        test: /\.((t|j)sx?|s?css)$/,
+
+        // do not pass raw-loaded content through these loaders
+        resourceQuery: /^(?!\?raw$).*/,
+        enforce: 'pre',
+
+        // This loader gets webpack to use sourcemaps included in upstream libraries (like the RSC lib)
+        use: ['source-map-loader']
+      }, {
         // load any files from the RSC image dir regardless of extension as resources
         include: libImgDir,
         type: 'asset/resource',
