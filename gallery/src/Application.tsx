@@ -20,11 +20,17 @@ import GalleryNav from './GalleryNav';
 import Home from './pages/Home';
 import handleQueryParams from './handleQueryParams';
 
+import NxGlobalSidebarExample from './components/NxGlobalSidebar/NxGlobalSidebarExample';
+import NxStatefulGlobalSidebarExample from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarExample';
 import NxLoadWrapperPageLevelExample from './components/NxLoadWrapper/NxLoadWrapperPageLevelExample';
 import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExample';
 import NxViewportSizedExpandingExample
   from './styles/NxViewportSized/NxViewportSizedExpandingExample';
 import SectionScrollingWrapper from './styles/NxViewportSized/SectionScrollingWrapper';
+import NxGlobalHeaderFullExample from './styles/NxGlobalHeader/NxGlobalHeaderFullExample';
+import NxGlobalHeaderNoBackButtonExample from './styles/NxGlobalHeader/NxGlobalHeaderNoBackButtonExample';
+import NxGlobalHeaderNoActionsExample from './styles/NxGlobalHeader/NxGlobalHeaderNoActionsExample';
+import NxGlobalHeaderEmptyExample from './styles/NxGlobalHeader/NxGlobalHeaderEmptyExample';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
@@ -59,36 +65,70 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
 function Application() {
   return (
     <Router>
-      <PageHeader />
-      <div className="nx-page-content">
-        <Switch>
-          <Route exact path="/PageLevelAlertExample">
-            <NxLoadWrapperPageLevelExample/>
-          </Route>
-          <Route>
-            <aside className="nx-page-sidebar" id="gallery-sidebar">
-              <GalleryNav />
-            </aside>
+      <Switch>
+        <Route exact path="/NxGlobalSidebarExample">
+          <SectionScrollingWrapper>
+            <NxGlobalSidebarExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxStatefulGlobalSidebarExample">
+          <SectionScrollingWrapper>
+            <NxStatefulGlobalSidebarExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxGlobalHeaderFullExample">
+          <SectionScrollingWrapper>
+            <NxGlobalHeaderFullExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxGlobalHeaderNoBackButtonExample">
+          <SectionScrollingWrapper>
+            <NxGlobalHeaderNoBackButtonExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxGlobalHeaderNoActionsExample">
+          <SectionScrollingWrapper>
+            <NxGlobalHeaderNoActionsExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxGlobalHeaderEmptyExample">
+          <SectionScrollingWrapper>
+            <NxGlobalHeaderEmptyExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route>
+          <PageHeader />
+          <div className="nx-page-content">
             <Switch>
-              <Route path="/pages/:pageName" component={Page} />
-              <Route exact path="/" component={Page} />
+              <Route exact path="/PageLevelAlertExample">
+                <NxLoadWrapperPageLevelExample/>
+              </Route>
+              <Route>
+                <aside className="nx-page-sidebar" id="gallery-sidebar">
+                  <GalleryNav />
+                </aside>
+                <Switch>
+                  <Route path="/pages/:pageName" component={Page} />
+                  <Route exact path="/" component={Page} />
 
-              {/* Special cases, these examples need their own page separate from their documentation */}
-              <Route exact path="/NxViewportSizedExample">
-                <SectionScrollingWrapper>
-                  <NxViewportSizedExample />
-                </SectionScrollingWrapper>
+                  {/* Special cases, these examples need their own page separate from their documentation */}
+                  <Route exact path="/NxViewportSizedExample">
+                    <SectionScrollingWrapper>
+                      <NxViewportSizedExample />
+                    </SectionScrollingWrapper>
+                  </Route>
+                  <Route exact path="/NxViewportSizedExpandingExample">
+                    <SectionScrollingWrapper>
+                      <NxViewportSizedExpandingExample />
+                    </SectionScrollingWrapper>
+                  </Route>
+                  <Redirect to="/" />
+                </Switch>
               </Route>
-              <Route exact path="/NxViewportSizedExpandingExample">
-                <SectionScrollingWrapper>
-                  <NxViewportSizedExpandingExample />
-                </SectionScrollingWrapper>
-              </Route>
-              <Redirect to="/" />
             </Switch>
-          </Route>
-        </Switch>
-      </div>
+          </div>
+        </Route>
+      </Switch>
     </Router>
   );
 }
