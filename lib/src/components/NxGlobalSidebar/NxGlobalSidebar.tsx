@@ -35,14 +35,14 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
   });
 
   const toggleButtonIcon = isOpen ? toggleOpenIcon : toggleCloseIcon;
-  const toggleAriaLabel = isOpen ? 'Collapse Sidebar' : 'Expand Sidebar';
+  const toggleButtonTitle = isOpen ? 'Collapse Sidebar' : 'Expand Sidebar';
   const toggleButton = (
-    <NxButton aria-label={toggleAriaLabel}
-              aria-expanded={isOpen}
+    <NxButton aria-expanded={isOpen}
               aria-controls={id}
               variant="icon-only"
               onClick={onToggleClick}
-              className="nx-global-sidebar__toggle">
+              className="nx-global-sidebar__toggle"
+              title={toggleButtonTitle}>
       <NxFontAwesomeIcon icon={toggleButtonIcon} fixedWidth />
     </NxButton>
   );

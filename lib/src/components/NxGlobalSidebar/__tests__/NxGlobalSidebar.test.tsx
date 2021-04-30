@@ -58,7 +58,7 @@ describe('NxGlobalSidebar', function() {
 
     expect(toggleBtn).toMatchSelector('.nx-global-sidebar__toggle');
     expect(toggleBtn).toHaveProp('variant', 'icon-only');
-    expect(toggleBtn).toHaveProp('aria-label', 'Collapse Sidebar');
+    expect(toggleBtn).toHaveProp('title', 'Collapse Sidebar');
     expect(toggleBtn).toHaveProp('aria-expanded', true);
     expect(toggleBtn).toHaveProp('aria-controls', sidebarId);
     expect(toggleBtn.find(NxFontAwesomeIcon)).toHaveProp('icon', faCrow);
@@ -71,7 +71,7 @@ describe('NxGlobalSidebar', function() {
 
     expect(toggleBtn).toMatchSelector('.nx-global-sidebar__toggle');
     expect(toggleBtn).toHaveProp('variant', 'icon-only');
-    expect(toggleBtn).toHaveProp('aria-label', 'Expand Sidebar');
+    expect(toggleBtn).toHaveProp('title', 'Expand Sidebar');
     expect(toggleBtn).toHaveProp('aria-expanded', false);
     expect(toggleBtn).toHaveProp('aria-controls', sidebarId);
     expect(toggleBtn.find(NxFontAwesomeIcon)).toHaveProp('icon', faBiohazard);
