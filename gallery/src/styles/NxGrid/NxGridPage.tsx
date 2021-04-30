@@ -8,28 +8,26 @@ import React from 'react';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxGridExamples from './NxGridExamples';
+import { NxP, NxInfoAlert, NxCode } from '@sonatype/react-shared-components';
 
 const NxGridPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
-        Described below are some basic grid patterns. These patterns rely on Flexbox to form simple grid patterns.
-        CSS Grid was examined but the lack of IE11 support forced us to pass it up.
-      </p>
-      <p className="nx-p">
-        Grids consist of rows and cells. There are optional title containers, as well as a keylines that can be used
-        for styling and spacing.
-      </p>
-      <p className="nx-p">
-        When you are creating a custom column with a specific width you should use the provided
-        <code className="nx-code">.nx-grid-col-width</code> mixin. The only required parameter is the width and unit.
-        For example: <code className="nx-code">@include nx-grid-col-width(200px);</code> will generate
-      </p>
-      <pre className="nx-code">
-        flex: 0 0 200px;<br/>
-        max-width: 200px;
-      </pre>
-      <p className="nx-p">The <code className="nx-code">max-width</code> attribute is required by IE11.</p>
+      <NxP>
+        These styles facilitate the creation of adjacent content areas separated by visible borders. Multiple
+        rows are supported and are also typically separated by a visible border. The cells in each row do not
+        necessarily align with other rows, though they can be made to by sizing them in the same way.
+      </NxP>
+      <NxInfoAlert>
+        The <em>only</em> current purpose of <NxCode>nx-grid</NxCode> is to facilitate the specific border and padding
+        styling shown in these examples, and not to create more general adjacent-content layouts. More general needs for
+        content that lays out in an adjacent or grid-like manner should be handled using custom CSS, typically via
+        CSS flexbox and CSS grid layouts. These CSS layouts are more powerful and flexible than what nx-grid provides.
+      </NxInfoAlert>
+      <NxP>
+        For creating a class for a custom-sized grid cell with a static width,
+        the <NxCode>nx-grid-col-width</NxCode> mixin is provided which sets the necessary width and flexbox properties.
+      </NxP>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row nx-table-row--header">
@@ -90,13 +88,13 @@ const NxGridPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-header__hrule</code></td>
             <td className="nx-cell"><code className="nx-code">NxGrid.HeaderHrule</code></td>
-            <td className="nx-cell">&lt;hr&gt;</td>
+            <td className="nx-cell"><NxCode>&lt;hr&gt;</NxCode></td>
             <td className="nx-cell">Horizontal keyline used below grid cell headers.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-grid-h-keyline</code></td>
             <td className="nx-cell"><code className="nx-code">NxGrid.HorizontalKeyline</code></td>
-            <td className="nx-cell">&lt;hr&gt;</td>
+            <td className="nx-cell"><NxCode>&lt;hr&gt;</NxCode></td>
             <td className="nx-cell">Horizontal keyline used between grid cells.</td>
           </tr>
           <tr className="nx-table-row">

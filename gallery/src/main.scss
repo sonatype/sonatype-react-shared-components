@@ -79,6 +79,12 @@
   font-weight: bold;
 }
 
+.gallery-documentation-table {
+  .nx-code {
+    white-space: normal;
+  }
+}
+
 // This media query selects IE11
 @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
   // hide checkered background checkbox in IE since the background doesn't work there (and we don't care to support

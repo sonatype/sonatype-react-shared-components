@@ -7,28 +7,32 @@
 import React from 'react';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxP, NxCode } from '@sonatype/react-shared-components';
 
 import NxPageTitlePolicyViolationIndicatorExample from './NxPageTitlePolicyViolationIndicatorExample';
+import NxPageTitleEverythingExample from './NxPageTitleEverythingExample';
 
 const nxPageTitleCode = require('./NxPageTitleExample.html'),
     nxPageTitleActionsCode = require('./NxPageTitleActionsExample.html'),
+    nxPageTitleSubtitleCode = require('./NxPageTitleSubtitleExample.html'),
     nxPageTitlePolicyViolationIndicatorCode =
-      require('./NxPageTitlePolicyViolationIndicatorExample.tsx?raw');
+      require('./NxPageTitlePolicyViolationIndicatorExample.tsx?raw'),
+    nxPageTitleEverythingCode = require('./NxPageTitleEverythingExample.tsx?raw');
 
 const NxPageTitlePage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         <code className="nx-code">nx-page-title</code> is used at the top of a page, it always has a title, and can also
-        have an icon and descriptive text.
-      </p>
-      <p className="nx-p">
-        In addition <code className="nx-code">.nx-page-title</code> can have tags or actions inline with the title.
-      </p>
-      <p className="nx-p">
+        have a sub-title, descriptive text, and space for tags or other indicators.
+      </NxP>
+      <NxP>
+        In addition <code className="nx-code">.nx-page-title</code> can have buttons inline with the title.
+      </NxP>
+      <NxP>
         Note: <code className="nx-code">.nx-page-title</code> replaces
         <code className="nx-code">.nx-tile--top-tile</code> and <code className="nx-code">.nx-tile--title-only</code>.
-      </p>
+      </NxP>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -49,10 +53,31 @@ const NxPageTitlePage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-page-title__page-icon</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-page-title__headings</code></td>
+            <td className="nx-cell"><code className="nx-code">NxPageTitle.Headings</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              Class for an icon that appears to the left of the page title.
+              If there is a sub-title then the <NxCode>&lt;h1&gt;</NxCode> &amp; <NxCode>&lt;h2&gt;</NxCode> should
+              both be wrapped in a containing <code className="nx-code">&lt;hgroup&gt;</code> with this class. If there
+              is only an <NxCode>&lt;h1&gt;</NxCode> then this element and its class are optional.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-page-title__sub-title</code></td>
+            <td className="nx-cell"><code className="nx-code">NxPageTitle.Subtitle</code></td>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">
+              If there is sub-title text it should be wrapped in a containing
+              <code className="nx-code">&lt;H2&gt;</code> with this class.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-btn-bar</code></td>
+            <td className="nx-cell"><code className="nx-code">NxBtnBar</code></td>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">
+              <code className="nx-code">.nx-page-title</code> supports the inclusion of buttons on its right-hand side.
+              This is accomplished by adding an <code className="nx-code">.nx-btn-bar</code> after the heading elements.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -69,15 +94,15 @@ const NxPageTitlePage = () =>
             <td className="nx-cell"><code className="nx-code">NxPageTitle.Tags</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              Any "tags" to place in the page header, such as Policy Violation Indicators, should go in
-              this element.
+              Any "tags" to place in the page header, such as <NxCode>NxTag</NxCode> or
+              <NxCode>NxPolicyViolationIndicator</NxCode>, should be wrapped by this element.
             </td>
           </tr>
         </tbody>
       </table>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="NX Page Title Example"
+    <GalleryExampleTile title="Basic page title"
                         id="nx-page-title-example"
                         defaultCheckeredBackground={true}
                         htmlExample={nxPageTitleCode}
@@ -85,20 +110,37 @@ const NxPageTitlePage = () =>
       A simple example of an <code className="nx-code">nx-page-title</code>.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Page Title with Actions Example"
+    <GalleryExampleTile title="Page title with actions"
                         id="nx-page-title-actions-example"
                         defaultCheckeredBackground={true}
                         htmlExample={nxPageTitleActionsCode}
                         codeExamples={nxPageTitleActionsCode}>
-      An example of <code className="nx-code">nx-page-title</code> with actions in the form of a drop-down.
+      An example of <code className="nx-code">nx-page-title</code> with action buttons.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Page Title with Policy Violation Indicator"
+    <GalleryExampleTile title="Page title with sub-title and page description"
+                        id="nx-page-title-subtitle-example"
+                        defaultCheckeredBackground={true}
+                        htmlExample={nxPageTitleSubtitleCode}
+                        codeExamples={nxPageTitleSubtitleCode}>
+      A simple example of an <code className="nx-code">nx-page-title</code> with a sub-title.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Page title with NxPolicyViolationIndicator"
                         id="nx-page-title-policy-violation-indicator-example"
                         defaultCheckeredBackground={true}
                         liveExample={NxPageTitlePolicyViolationIndicatorExample}
                         codeExamples={nxPageTitlePolicyViolationIndicatorCode}>
       An example of a page title with an <code className="nx-code">NxPolicyViolationIndicator</code>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Page title with everything"
+                        id="nx-page-title-everything-example"
+                        defaultCheckeredBackground={true}
+                        liveExample={NxPageTitleEverythingExample}
+                        codeExamples={nxPageTitleEverythingCode}>
+      A simple example of an <code className="nx-code">nx-page-title</code> with a sub-title, actions, tags, and a page
+      description.
     </GalleryExampleTile>
   </>;
 

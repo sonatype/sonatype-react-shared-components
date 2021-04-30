@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useRef, useEffect, useState } from 'react';
+import React, { forwardRef, useContext, useRef, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { join, map, prop, filter } from 'ramda';
 
@@ -12,7 +12,7 @@ import { NxTableRowProps, nxTableRowPropTypes} from './types';
 import { HeaderContext, RowContext } from './contexts';
 export { NxTableRowProps };
 
-const NxTableRow = function NxTableRow(props: NxTableRowProps) {
+const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxTableRow(props, ref) {
   const {
         isFilterHeader = false,
         isClickable = false,
@@ -55,7 +55,7 @@ const NxTableRow = function NxTableRow(props: NxTableRowProps) {
       </RowContext.Provider>
     </tr>
   );
-};
+});
 
 NxTableRow.propTypes = nxTableRowPropTypes;
 
