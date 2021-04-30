@@ -173,6 +173,16 @@ export default function NxTablePage() {
                   For clickable table rows, indicates that this row is the currently selected one.
                 </NxTable.Cell>
               </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>clickAccessibleLabel</NxTable.Cell>
+                <NxTable.Cell>string</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
+                  The accessible name to set on the click chevron for this row – i.e. the value to read out in a
+                  screenreader when the row (the chevron button, really) is focused. If not specified, the full text
+                  content of all cells in the row will be used as the label.
+                </NxTable.Cell>
+              </NxTable.Row>
             </NxTable.Body>
           </NxTable>
         </section>
@@ -256,7 +266,10 @@ export default function NxTablePage() {
                 <NxTable.Cell>
                   Desginates a cell that should contain only the right-facing chevron icon used at that end of
                   clickable table cells. <code className="nx-code">NxTable.Cell</code>s with this prop set will
-                  self-populate with the icon, and do not take <code className="nx-code">children</code>.
+                  self-populate with the icon, and do not take <code className="nx-code">children</code>. The icon
+                  will be wrapped in a button for accessibility purposes, with the button's accessible name set by
+                  the row's <NxCode>clickAccessibleLabel</NxCode> prop or generated from the text contents of the
+                  rest of the row.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>

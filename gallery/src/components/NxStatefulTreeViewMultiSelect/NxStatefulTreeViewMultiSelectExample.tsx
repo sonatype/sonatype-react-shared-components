@@ -41,7 +41,7 @@ const NxStatefulTreeViewMultiSelectExample = () => {
                                    optionTooltipGenerator={option => option.name}
                                    selectedIds={selection}
                                    onChange={onSelectionChange}
-                                   filterPlaceholder="vehicle name"
+                                   filterPlaceholder="filter vehicle name"
                                    filterThreshold={3}>
       <NxFontAwesomeIcon icon={faBicycle}/>
       <span>Transportation</span>

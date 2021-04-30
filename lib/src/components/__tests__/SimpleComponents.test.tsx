@@ -29,7 +29,8 @@ import {
   NxList,
   NxPageTitle,
   NxReadOnly,
-  NxTableContainer
+  NxTableContainer,
+  NxGlobalHeader
 } from '../SimpleComponents';
 
 describe('NxP', function() {
@@ -225,8 +226,14 @@ describe('NxGrid.Row', function() {
 });
 
 describe('NxGrid.Column', function() {
-  it('makes a <div> tag with an nx-grid-column class', function() {
-    expect(shallow(<NxGrid.Column/>)).toMatchSelector('div.nx-grid-col');
+  it('makes a <section> tag with an nx-grid-column class', function() {
+    expect(shallow(<NxGrid.Column/>)).toMatchSelector('section.nx-grid-col');
+  });
+});
+
+describe('NxGrid.ColumnSection', function() {
+  it('makes a <section> tag with an nx-grid-column__section class', function() {
+    expect(shallow(<NxGrid.ColumnSection/>)).toMatchSelector('section.nx-grid-col__section');
   });
 });
 
@@ -347,5 +354,17 @@ describe('NxTableContainer', function() {
 describe('NxTableContainer.Footer', function() {
   it('makes a <div> tag with an nx-table-container__footer class', function() {
     expect(shallow(<NxTableContainer.Footer/>)).toMatchSelector('div.nx-table-container__footer');
+  });
+});
+
+describe('NxGlobalHeader', function() {
+  it('makes an <aside> with an nx-global-header class', function() {
+    expect(shallow(<NxGlobalHeader/>)).toMatchSelector('aside.nx-global-header');
+  });
+});
+
+describe('NxGlobalHeader.Actions', function() {
+  it('makes an <div> with an nx-global-header__actions class', function() {
+    expect(shallow(<NxGlobalHeader.Actions/>)).toMatchSelector('div.nx-global-header__actions');
   });
 });

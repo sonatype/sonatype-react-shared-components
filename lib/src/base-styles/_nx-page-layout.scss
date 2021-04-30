@@ -16,27 +16,35 @@
   background-color: $nx-site-background-color;
   height: 100%;
   margin: 0;
-  // prevents scrollbar flicker as tooltips appear in IE11
-  overflow-y: hidden;
   padding: 0;
 }
 
 .nx-page {
-  @include container-vertical;
-
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  display: grid;
   min-width: var(--nx-page-width-min);
+  height: 100%;
+  width: 100%;
+
+  // NOTE: Most of this template is only used when using nx-page-content--full-width (or no nx-page-content at all).
+  // In traditional layouts that use plain nx-page-content, that element manages everything below the second
+  // row of this template.
+  grid-template:
+    'old-header     old-header  old-header' auto
+    'global-sidebar   notices      notices' auto
+    'global-sidebar   header        header' auto
+    'global-sidebar old-sidebar    content' 1fr /
+      auto             auto            1fr;
 }
 
 .nx-page-content {
   @include container-horizontal;
 
+  justify-self: center;
   box-sizing: border-box;
   display: flex;
-  flex-grow: 1;
+
+  // Cover all columns and the third through last rows of the nx-page grid template
+  grid-area: 3 / 1 / -1 / -1;
   max-width: var(--nx-page-width-max);
   overflow-y: hidden;
   width: 100%;
@@ -48,8 +56,9 @@
   }
 }
 
-.nx-page-content--full-width{
-  max-width: none;
+.nx-page-content--full-width {
+  // This element is deprecated, just add the children directly to .nx-page instead
+  display: contents;
 }
 
 .nx-page-sidebar {
@@ -57,16 +66,23 @@
 
   background-color: $nx-sidebar-background-color;
   box-sizing: border-box;
-  flex: none;
 
-  // don't go beyond the max that it would have in a normal .nx-page-content, even when in an
-  // .nx-page-content--full-width
+  // sizing properties for when in .nx-page-sidebar
+  flex: 0 0 var(--nx-sidebar-width);
+
+  // sizing properties for when in .nx-page-side--full-width or directly within .nx-page.
+  // Unfortunately we have to use vw units here because percent is taken relative to the grid cell
+  // not the entire container
+  grid-area: old-sidebar;
+  width: calc((1 - var(--nx-content-width-proportion)) * 100vw);
+
+  // sizing properties used in all layouts
   max-width: calc((1 - var(--nx-content-width-proportion)) * var(--nx-page-width-max));
+
   overflow-x: hidden;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-xs $nx-spacing-l;
   position: relative;
   white-space: normal;
-  width: var(--nx-sidebar-width);
 }
 
 .nx-page-main {
@@ -74,6 +90,7 @@
 
   box-sizing: border-box;
   flex: auto;
+  grid-area: content;
   min-width: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -107,4 +124,9 @@
   .nx-page-main {
     overflow: visible;
   }
+}
+
+.nx-page-notices {
+  border-bottom: $nx-border-default;
+  grid-area: notices;
 }

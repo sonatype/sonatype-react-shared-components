@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components-gallery",
-  "version": "5.6.2",
+  "version": "6.0.0",
   "description": "Gallery application to demonstrate usage and look of Sonatype shared UI components",
   "main": "src/main.ts",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "npm-run-all lint webpack copy-assets",
     "copy-assets": "cpx \"src/index.html\" dist",
     "lint": "eslint 'src/**/*.{js,ts}{,x}'",
-    "webpack": "webpack --env production",
+    "webpack": "webpack --env production --mode=production",
     "webpack-dev-server": "webpack serve",
     "test": "wdio run wdio.conf.js",
     "clean": "rimraf dist webpack-modules"

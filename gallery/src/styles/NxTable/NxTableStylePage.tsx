@@ -149,6 +149,42 @@ const NxTableStylePage = () =>
               Used for style table header cells with a filter
             </td>
           </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">
+              <code className="nx-code">.nx-cell__sort-btn</code>
+            </td>
+            <td className="nx-cell">
+              Child of <code className="nx-code">.nx-cell--header</code> wrapping all other content
+            </td>
+            <td className="nx-cell">
+              For a header cell that contains sort icons, the cell should contain a button with this class
+              which then contains the actual cell header text and sort icons. This improves accessibility of the
+              sorting feature. The button should have an accessible name which describes the header name and the
+              current sort direction of this column.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">
+              <code className="nx-code">.nx-cell__chevron-btn</code>
+            </td>
+            <td className="nx-cell">
+              Child of <code className="nx-code">.nx-cell--chevron</code> which then wraps the actual chevron icon
+            </td>
+            <td className="nx-cell">
+              In order to make clickable rows accessible, the chevron icon should be contained within a button
+              bearing this class. The button should additionally have an accessible name which describes the row,
+              typically by including its full text content.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">
+              <code className="nx-code">.nx-cell--filter-header</code>
+            </td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
+            <td className="nx-cell">
+              Used for style table header cells with a filter
+            </td>
+          </tr>
         </tbody>
       </table>
 
