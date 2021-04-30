@@ -53,7 +53,7 @@ const NxTreeViewMultiSelectExample = () => {
                            selectedIds={selection}
                            onChange={onSelectionChange}
                            filter={filter}
-                           filterPlaceholder="vehicle name"
+                           filterPlaceholder="filter vehicle name"
                            filterThreshold={3}
                            onFilterChange={setFilter}
                            filteredOptions={options.filter(filterPredicate)}>

@@ -25,7 +25,7 @@ const NxSubmitMask: FunctionComponent<Props> =
     });
 
     return (
-      <div className={classes}>
+      <div role="status" className={classes}>
         <div className="nx-submit-mask__message">
           { success ?
             <>
