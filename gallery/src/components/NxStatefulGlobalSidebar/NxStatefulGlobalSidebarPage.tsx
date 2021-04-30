@@ -41,7 +41,8 @@ export default function NxStatefulGlobalSidebarPage() {
                 <NxTable.Cell>Boolean</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  This value determines whether the sidebar's default state is open or closed.
+                  This value determines whether the sidebar's default state is open or closed. Replaces
+                  <NxCode>isOpen</NxCode> in the non-stateful version.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
