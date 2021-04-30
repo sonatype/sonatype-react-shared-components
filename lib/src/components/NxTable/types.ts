@@ -60,11 +60,13 @@ export type NxTableRowProps = HTMLAttributes<HTMLTableRowElement> & {
   isFilterHeader?: boolean | null;
   isClickable?: boolean | null;
   selected?: boolean | null;
+  clickAccessibleLabel?: string | null;
 };
 
 export const nxTableRowPropTypes: PropTypes.ValidationMap<NxTableRowProps> = {
   isFilterHeader: PropTypes.bool,
   isClickable: PropTypes.bool,
   selected: PropTypes.bool,
+  clickAccessibleLabel: PropTypes.string,
   children: PropTypes.node
 };

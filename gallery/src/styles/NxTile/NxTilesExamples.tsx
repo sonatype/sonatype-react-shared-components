@@ -11,6 +11,7 @@ import NxTileFormExample from './NxTileFormExample';
 import NxTileDropdownActionsExample from './NxTileDropdownActionsExample';
 import NxTileAccordionExample from './NxTileAccordionExample';
 import NxTilePolicyViolationIndicatorExample from './NxTilePolicyViolationIndicatorExample';
+import { NxCode } from '@sonatype/react-shared-components';
 
 const NxSimpleTileCode = require('./NxSimpleTileExample.html'),
     NxTileWithActionsCode = require('./NxTileWithActionsExample.html'),
@@ -19,6 +20,7 @@ const NxSimpleTileCode = require('./NxSimpleTileExample.html'),
     NxTileFormCode = require('./NxTileFormExample.tsx?raw'),
     NxTileDropdownActionsCode = require('./NxTileDropdownActionsExample?raw'),
     NxTileAccordionCode = require('./NxTileAccordionExample?raw'),
+    NxTileGridCode = require('./NxTileGridExample.html'),
     NxTilePolicyViolationIndicatorCode = require('./NxTilePolicyViolationIndicatorExample?raw');
 
 const NxTilesExamples = () =>
@@ -90,6 +92,15 @@ const NxTilesExamples = () =>
                         codeExamples={NxTilePolicyViolationIndicatorCode}>
       An example of a tile with <code className="nx-code">NxPolicyViolationIndicator</code>{' '}
       in the header.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Tile with grid"
+                        id="nx-tile-grid-example"
+                        defaultCheckeredBackground={true}
+                        htmlExample={NxTileGridCode}
+                        codeExamples={NxTileGridCode}>
+      An example of a tile with an <NxCode>nx-grid</NxCode> as the content, demonstrating that the spacing comes
+      out as expected.
     </GalleryExampleTile>
   </>;
 

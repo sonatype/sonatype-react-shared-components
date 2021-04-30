@@ -12,7 +12,7 @@ import {ensureElement} from '../../util/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { NxTableCellProps, nxTableCellPropTypes } from './types';
-import { HeaderContext } from './contexts';
+import { HeaderContext, RowContext } from './contexts';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import { textContent } from '../../util/childUtil';
 export { NxTableCellProps };
@@ -21,7 +21,7 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   const {
         metaInfo = false,
         isNumeric = false,
-        isSortable = false,
+        isSortable: isSortableProp = false,
         hasIcon = false,
         chevron = false,
         sortDir,
@@ -29,7 +29,9 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
         children,
         ...attrs
       } = props,
-      isHeader = useContext(HeaderContext);
+      isHeader = useContext(HeaderContext),
+      rowTextContent = useContext(RowContext),
+      isSortable = isSortableProp && isHeader && !chevron;
 
   const classes = classnames('nx-cell', className, {
     'nx-cell--header': isHeader,
@@ -73,23 +75,31 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   }
 
   const Tag = isHeader ? 'th' : 'td';
-  const tabIndex = isSortable ? 0 : undefined;
-  const cell = (
-    <Tag className={classes} tabIndex={tabIndex} aria-sort={ariaSort} {...attrs}>
-      { (chevron && !isHeader) ?
-        <NxFontAwesomeIcon icon={faChevronRight}/> :
-        <>
-          {ensureElement(children)}
-          {isSortable && <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>}
-        </>
+
+  const chevronCellContents = isHeader ? null : (
+    <button type="button" className="nx-cell__chevron-btn" aria-label={rowTextContent}>
+      <NxFontAwesomeIcon icon={faChevronRight}/>
+    </button>
+  );
+
+  const cellSortingContents = (
+    <NxTooltip title={ariaLabel}>
+      <button type="button" className="nx-cell__sort-btn">
+        {ensureElement(children)}
+        <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>
+      </button>
+    </NxTooltip>
+  );
+
+  return (
+    <Tag className={classes} aria-sort={ariaSort} {...attrs}>
+      {
+        isSortable ? cellSortingContents :
+        chevron ? chevronCellContents :
+        children
       }
     </Tag>
   );
-
-  if (isSortable) {
-    return <NxTooltip title={ariaLabel}>{cell}</NxTooltip>;
-  }
-  return cell;
 };
 
 NxTableCell.propTypes = nxTableCellPropTypes;

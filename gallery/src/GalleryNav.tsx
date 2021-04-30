@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState, ReactNode } from 'react';
+import React, { useState, ReactNode, useEffect } from 'react';
 import {
   toPairs,
   keys,
@@ -16,7 +16,10 @@ import {
   over,
   lensProp,
   not,
-  mapObjIndexed
+  mapObjIndexed,
+  isEmpty,
+  complement,
+  values
 } from 'ramda';
 import { NxTreeView, NxTreeViewChild, NxFilterInput, NxTreeViewProps } from '@sonatype/react-shared-components';
 
@@ -47,20 +50,15 @@ interface GalleryNavTreeViewProps {
 
 function GalleryNavTreeView(props: GalleryNavTreeViewProps) {
   const { categoryName, categoryEntries, filter, onToggleCollapse, isOpen } = props,
-      isFiltering = !!filter,
-      filteredEntries: PageMapping = isFiltering ?
-        pickBy((_, pageName) => matchesFilter(filter, pageName), categoryEntries) :
-        categoryEntries,
-      hasFilteredEntries = keys(filteredEntries).length,
       renderLinksWithFilter = renderLinks(filter);
 
-  return hasFilteredEntries ? (
+  return (
     <NxTreeView onToggleCollapse={onToggleCollapse}
                 isOpen={isOpen}
                 triggerContent={categoryName}>
-      {renderLinksWithFilter(filteredEntries)}
+      {renderLinksWithFilter(categoryEntries)}
     </NxTreeView>
-  ) : null;
+  );
 }
 
 function GalleryNav() {
@@ -83,21 +81,53 @@ function GalleryNav() {
       // views should be open (though some may not be rendered at all in that case)
       [openTreeViews, setOpenTreeViews] = useState(initialOpenTreeViews),
       isFiltering = !!filter,
-      categories = pipe<PageConfig, [string, PageMapping][], ReactNode[]>(
+      filteredConfig: PageConfig = isFiltering ? pipe<PageConfig, PageConfig, PageConfig>(
+          map<PageConfig, PageConfig>(pickBy<PageMapping>((_, pageName) => matchesFilter(filter, pageName))),
+          pickBy(complement(isEmpty))
+      )(pageConfig) : pageConfig,
+      filteredCategories = pipe<PageConfig, [string, PageMapping][], ReactNode[]>(
           toPairs,
           map(([categoryName, categoryEntries]) =>
             <GalleryNavTreeView key={categoryName}
                                 filter={filter}
                                 isOpen={isFiltering || openTreeViews[categoryName]}
                                 onToggleCollapse={() => setOpenTreeViews(over(lensProp(categoryName), not))}
-                                { ...({ categoryEntries, categoryName }) }/>
+                                categoryEntries={categoryEntries}
+                                categoryName={categoryName} />
           )
-      )(pageConfig);
+      )(filteredConfig);
+
+  // keep the filter in session storage so it persists across refreshes
+  useEffect(() => {
+    const savedFilter = sessionStorage.getItem('nav-filter');
+    if (savedFilter) {
+      setFilter(savedFilter);
+    }
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem('nav-filter', filter);
+  }, [filter]);
+
+  function onFilterKeyPress(keyCode: string) {
+    if (isFiltering && keyCode === 'Enter') {
+      const firstMatchingCategoryEntries = head(values(filteredConfig)),
+          firstMatchingPage = firstMatchingCategoryEntries && head(keys(firstMatchingCategoryEntries));
+
+      if (firstMatchingPage) {
+        location.assign(`#/pages/${firstMatchingPage}`);
+      }
+    }
+  }
 
   return (
     <nav>
-      <NxFilterInput placeholder="Search RSC…" value={filter} onChange={setFilter} autoFocus />
-      {categories}
+      <NxFilterInput placeholder="Search RSC…"
+                     value={filter}
+                     onChange={setFilter}
+                     autoFocus
+                     onKeyPress={onFilterKeyPress} />
+      {filteredCategories}
     </nav>
   );
 }

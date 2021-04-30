@@ -46,7 +46,16 @@ const NxTreeView: FunctionComponent<Props> =
 
     return (
       <div className={treeViewClasses} id={treeViewId} role="tree">
-        { triggerTooltipProps ? <NxTooltip { ...triggerTooltipProps } >{trigger}</NxTooltip> : trigger }
+        {
+          triggerTooltipProps ? (
+            // div necessary to avoid error message when tooltip is on disabled button
+            <NxTooltip { ...triggerTooltipProps } >
+              <div>
+                {trigger}
+              </div>
+            </NxTooltip>
+          ) : trigger
+        }
         <div className="nx-tree-view__children" role="group">
           {children}
         </div>
