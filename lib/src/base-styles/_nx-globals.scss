@@ -78,12 +78,20 @@ $nx-scrollable-default-height: 400px;
 // global CSS variables/custom properties
 :root {
   // page dimensions
-  --page-width-max: 1600px;
-  --page-width-min: 1366px;
-  --content-width-proportion: 0.76;
-  --content-width: calc(100% * var(--content-width-proportion));
-  --sidebar-width: calc(100% - var(--content-width));
-  --scrollbar-width: 15px;
+  --nx-page-width-max: 1600px;
+  --nx-page-width-min: 1366px;
+  --nx-content-width-proportion: 0.76;
+  --nx-content-width: calc(100% * var(--nx-content-width-proportion));
+  --nx-sidebar-width: calc(100% - var(--nx-content-width));
+  --nx-scrollbar-width: 15px;
 
   --nx-component-background-color: #{$nx-white};
+
+  // deprecated unprefixed variables
+  --page-width-max: var(--nx-page-width-max);
+  --page-width-min: var(--nx-page-width-min);
+  --content-width-proportion: var(--nx-content-width-proportion);
+  --content-width: var(--nx-content-width);
+  --sidebar-width: var(--nx-sidebar-width);
+  --scrollbar-width: var(--nx-scrollbar-width);
 }
