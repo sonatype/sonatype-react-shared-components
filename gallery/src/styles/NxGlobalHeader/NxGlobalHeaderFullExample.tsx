@@ -17,7 +17,7 @@ import {
 } from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faEdit } from '@fortawesome/free-solid-svg-icons';
 
-const sidebarLogoPath = require('../../assets/logo-plaid-villain-text.png');
+const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
 export default function NxGlobalHeaderFullExample() {
   return (
