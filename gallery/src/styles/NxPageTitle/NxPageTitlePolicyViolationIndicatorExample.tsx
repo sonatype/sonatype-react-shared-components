@@ -13,16 +13,12 @@ const NxPageTitlePolicyViolationIndicatorExample = () =>
       Page Title
     </h1>
     <div className="nx-page-title__tags">
-      <NxPolicyViolationIndicator threatLevelCategory="moderate"/>
-    </div>
-    <div className="nx-page-title__description">
-      <p className="nx-p">This is a page description.</p>
-      <p className="nx-p">
-        jeans sign papier-mache assassin San Francisco rifle physical 3D-printed denim tanto courier concrete dolphin
-        rebar free-market. tank-traps papier-mache dead free-market tanto drone concrete dolphin sunglasses weathered
-        dead jeans office vehicle nodal point. motion film meta- monofilament knife vinyl post- bridge jeans city
-        Tokyo alcohol marketing girl vehicle.
-      </p>
+      <NxPolicyViolationIndicator>Unspecified</NxPolicyViolationIndicator>
+      <NxPolicyViolationIndicator threatLevelCategory="none">None</NxPolicyViolationIndicator>
+      <NxPolicyViolationIndicator threatLevelCategory="low">Not much</NxPolicyViolationIndicator>
+      <NxPolicyViolationIndicator threatLevelCategory="moderate">A little bit</NxPolicyViolationIndicator>
+      <NxPolicyViolationIndicator threatLevelCategory="severe">A bunch</NxPolicyViolationIndicator>
+      <NxPolicyViolationIndicator threatLevelCategory="critical">Danger Will Robinson!</NxPolicyViolationIndicator>
     </div>
   </div>;
 

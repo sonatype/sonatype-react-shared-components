@@ -297,6 +297,18 @@ describe('NxPageTitle', function() {
   });
 });
 
+describe('NxPageTitle.Headings', function() {
+  it('makes a <hgroup> tag with an nx-page-title__headings class', function() {
+    expect(shallow(<NxPageTitle.Headings/>)).toMatchSelector('div.nx-page-title__headings');
+  });
+});
+
+describe('NxPageTitle.Subtitle', function() {
+  it('makes a <h2> tag with nx-h2 and nx-page-title__sub-title classes', function() {
+    expect(shallow(<NxPageTitle.Subtitle/>)).toMatchSelector('h2.nx-h2.nx-page-title__sub-title');
+  });
+});
+
 describe('NxPageTitle.Description', function() {
   it('makes a <div> tag with an nx-page-title__description class', function() {
     expect(shallow(<NxPageTitle.Description/>)).toMatchSelector('div.nx-page-title__description');

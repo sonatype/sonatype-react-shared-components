@@ -5,24 +5,30 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxGlobalSidebar, NxGlobalSidebarNavigation, NxGlobalSidebarNavigationLink, useToggle, NxP, NxH3, NxPageMain }
+import {
+  NxStatefulGlobalSidebar,
+  NxGlobalSidebarNavigation,
+  NxGlobalSidebarNavigationLink,
+  NxP,
+  NxH3,
+  NxPageMain }
   from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
 const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 
-export default function NxGlobalSidebarExample() {
-  const [sidebarOpen, onToggleCollapse] = useToggle(true);
+export default function NxStatefulGlobalSidebarExample() {
   return (
-    <>
-      <NxGlobalSidebar isOpen={sidebarOpen}
-                       toggleOpenIcon={faArrowLeft}
-                       toggleCloseIcon={faArrowRight}
-                       onToggleClick={onToggleCollapse}
-                       logoImg={logoImg}
-                       logoAltText="RSC Plaid Villain"
-                       logoLink="#">
+    <div className="nx-page-content nx-page-content--full-width">
+      <NxStatefulGlobalSidebar isDefaultOpen={true}
+                               toggleOpenIcon={faArrowLeft}
+                               toggleCloseIcon={faArrowRight}
+                               logoImg={logoImg}
+                               logoAltText="RSC Plaid Villain"
+                               logoLink="#">
         <NxGlobalSidebarNavigation>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
+          <NxGlobalSidebarNavigationLink icon={faLink}
+                                         text="NxStatefulGlobalSidebar"
+                                         href="#/pages/NxStatefulGlobalSidebar"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/NxLoadError"/>
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxLoadWrapper" href="#/pages/NxLoadWrapper"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
@@ -45,8 +51,8 @@ export default function NxGlobalSidebarExample() {
             neural decay saturation point assault camera neon concrete engine
           </NxP>
         </section>
-      </NxGlobalSidebar>
+      </NxStatefulGlobalSidebar>
       <NxPageMain>Page content</NxPageMain>
-    </>
+    </div>
   );
 }
