@@ -7,12 +7,13 @@
 import React, { forwardRef, useContext, useRef, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { join, map, prop, filter } from 'ramda';
+import useMergedRef from '@react-hook/merged-ref';
 
 import { NxTableRowProps, nxTableRowPropTypes} from './types';
 import { HeaderContext, RowContext } from './contexts';
 export { NxTableRowProps };
 
-const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxTableRow(props, ref) {
+const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxTableRow(props, externalRef) {
   const {
         isFilterHeader = false,
         isClickable = false,
@@ -27,7 +28,8 @@ const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxT
       // For the default accessibility label on the chevron button, we need the text content of the row.
       // This component uses the DOM to retrieve that and provides it via RowContext
       [rowTextContent, setRowTextContent] = useState(''),
-      rowRef = useRef<HTMLTableRowElement>(null);
+      rowRef = useRef<HTMLTableRowElement>(null),
+      ref = useMergedRef(rowRef, externalRef);
 
   const classes = classnames('nx-table-row', className, {
     'nx-table-row--header': isHeader,
@@ -49,7 +51,7 @@ const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxT
   }, [clickAccessibleLabel, children]);
 
   return (
-    <tr ref={rowRef} className={classes} {...attrs}>
+    <tr ref={ref} className={classes} {...attrs}>
       <RowContext.Provider value={clickAccessibleLabel || rowTextContent}>
         {children}
       </RowContext.Provider>
