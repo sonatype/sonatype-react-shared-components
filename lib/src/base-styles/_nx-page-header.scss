@@ -19,9 +19,8 @@ $main-header-product-version-row-height: 1fr;
 
   background-color: $main-header-background;
   border-bottom: 1px solid $nx-header-border;
-  flex-shrink: 0; // needed for IE11
+  grid-area: old-header; // see nx-page's grid template
   height: $nx-main-header-height;
-  width: 100%;
 }
 
 .nx-page-header__inner {

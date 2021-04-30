@@ -77,3 +77,7 @@ export const NxReadOnly = Object.assign(withClass('dl', 'nx-read-only'), {
 export const NxTableContainer = Object.assign(withClass('div', 'nx-table-container'), {
   Footer: withClass('div', 'nx-table-container__footer')
 });
+
+export const NxGlobalHeader = Object.assign(withClass('aside', 'nx-global-header'), {
+  Actions: withClass('div', 'nx-global-header__actions')
+});
