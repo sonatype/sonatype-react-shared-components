@@ -198,8 +198,8 @@ describe('AbstractTreeViewSelect', function() {
         expect(shallowRender.find('ForwardRef(NxFilterInput)')).toHaveProp('placeholder', 'options filter');
       });
 
-      it('defaults to empty string', function () {
-        expect(getShallow().find('ForwardRef(NxFilterInput)')).toHaveProp('placeholder', '');
+      it('defaults to "filter"', function () {
+        expect(getShallow().find('ForwardRef(NxFilterInput)')).toHaveProp('placeholder', 'filter');
       });
     });
 

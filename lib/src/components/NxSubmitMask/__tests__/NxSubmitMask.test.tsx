@@ -49,4 +49,8 @@ describe('NxSubmitMask', function() {
             .find('.nx-submit-mask__message-text')).toHaveText('Success!');
       }
   );
+
+  it('has the "status" role', function() {
+    expect(shallow(<NxSubmitMask />)).toHaveProp('role', 'status');
+  });
 });

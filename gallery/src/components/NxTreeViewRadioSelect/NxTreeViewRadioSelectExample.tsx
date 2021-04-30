@@ -51,7 +51,7 @@ const NxTreeViewRadioSelectExample = () => {
                            onChange={onSelectionChange}
                            options={options}
                            filter={filter}
-                           filterPlaceholder="vehicle name"
+                           filterPlaceholder="filter vehicle name"
                            filterThreshold={2}
                            onFilterChange={setFilter}
                            filteredOptions={options.filter(filterPredicate)}>
