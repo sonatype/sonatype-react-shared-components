@@ -27,6 +27,10 @@ import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExam
 import NxViewportSizedExpandingExample
   from './styles/NxViewportSized/NxViewportSizedExpandingExample';
 import SectionScrollingWrapper from './styles/NxViewportSized/SectionScrollingWrapper';
+import NxGlobalHeaderFullExample from './styles/NxGlobalHeader/NxGlobalHeaderFullExample';
+import NxGlobalHeaderNoBackButtonExample from './styles/NxGlobalHeader/NxGlobalHeaderNoBackButtonExample';
+import NxGlobalHeaderNoActionsExample from './styles/NxGlobalHeader/NxGlobalHeaderNoActionsExample';
+import NxGlobalHeaderEmptyExample from './styles/NxGlobalHeader/NxGlobalHeaderEmptyExample';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
@@ -70,6 +74,26 @@ function Application() {
         <Route exact path="/NxStatefulGlobalSidebarExample">
           <SectionScrollingWrapper>
             <NxStatefulGlobalSidebarExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxGlobalHeaderFullExample">
+          <SectionScrollingWrapper>
+            <NxGlobalHeaderFullExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxGlobalHeaderNoBackButtonExample">
+          <SectionScrollingWrapper>
+            <NxGlobalHeaderNoBackButtonExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxGlobalHeaderNoActionsExample">
+          <SectionScrollingWrapper>
+            <NxGlobalHeaderNoActionsExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxGlobalHeaderEmptyExample">
+          <SectionScrollingWrapper>
+            <NxGlobalHeaderEmptyExample />
           </SectionScrollingWrapper>
         </Route>
         <Route>
