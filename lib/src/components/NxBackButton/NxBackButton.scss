@@ -8,8 +8,8 @@
 @import '../../scss-shared/nx-container-helpers';
 
 .nx-back-button {
-  margin-top: $nx-spacing-l;
-  margin-bottom: $nx-spacing-l;
+  margin-top: var(--nx-spacing-l);
+  margin-bottom: var(--nx-spacing-l);
 
   .nx-text-link {
     @include container-horizontal;

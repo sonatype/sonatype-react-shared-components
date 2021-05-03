@@ -13,12 +13,12 @@
     align-items: first baseline;
     display: flex;
     flex-wrap: wrap;
-    row-gap: $nx-spacing-l;
+    row-gap: var(--nx-spacing-l);
   }
 }
 
 .nx-load-error__message {
-  margin-right: $nx-spacing-sm;
+  margin-right: var(--nx-spacing-sm);
 
   word-break: break-word;
 }

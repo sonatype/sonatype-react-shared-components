@@ -7,9 +7,9 @@
 .nx-card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: $nx-spacing-md;
+  gap: var(--nx-spacing-md);
   justify-content: space-between;
-  margin: $nx-spacing-md 0;
+  margin: var(--nx-spacing-md) 0;
 }
 
 .nx-card-container--no-wrap {
@@ -23,7 +23,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: $nx-spacing-l;
+  padding: var(--nx-spacing-l);
   text-align: center;
   min-width: 230px;
   max-width: 330px;
@@ -42,19 +42,19 @@
     }
 
     .nx-card {
-      margin-right: $nx-spacing-md;
-      margin-bottom: $nx-spacing-md;
+      margin-right: var(--nx-spacing-md);
+      margin-bottom: var(--nx-spacing-md);
     }
 
     .nx-card__content {
       > :not(:last-child) {
-        margin-bottom: $nx-spacing-md;
+        margin-bottom: var(--nx-spacing-md);
       }
     }
 
     .nx-card__content--columns {
       > :first-child {
-        margin-right: $nx-spacing-md;
+        margin-right: var(--nx-spacing-md);
         margin-bottom: 0;
       }
     }
@@ -63,7 +63,7 @@
 
 .nx-card__header {
   @include container-vertical;
-  margin-bottom: $nx-spacing-md;
+  margin-bottom: var(--nx-spacing-md);
 }
 
 .nx-card__content {
@@ -72,13 +72,13 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  gap: $nx-spacing-md;
-  margin-bottom: $nx-spacing-l;
+  gap: var(--nx-spacing-md);
+  margin-bottom: var(--nx-spacing-l);
 }
 
 .nx-card__footer {
   border-top: $nx-border-default;
-  padding-top: $nx-spacing-l;
+  padding-top: var(--nx-spacing-l);
 }
 
 // Common card Helpers

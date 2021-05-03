@@ -87,6 +87,15 @@ $nx-scrollable-default-height: 400px;
 
   --nx-component-background-color: #{$nx-white};
 
+  --nx-spacing-xxs: 4px;
+  --nx-spacing-xs: 8px;
+  --nx-spacing-sm: 12px;
+  --nx-spacing-md: 16px;
+  --nx-spacing-l: 24px;
+  --nx-spacing-xl: 32px;
+  --nx-spacing-xxl: 48px;
+  --nx-spacing-xxxl: 64px;
+
   // deprecated unprefixed variables
   --page-width-max: var(--nx-page-width-max);
   --page-width-min: var(--nx-page-width-min);

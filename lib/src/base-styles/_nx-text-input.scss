@@ -67,7 +67,7 @@
   border: 1px solid $nx-form-element-border-color;
   border-radius: $nx-border-radius;
   display: flex;
-  padding: $nx-spacing-xs $nx-spacing-md;
+  padding: var(--nx-spacing-xs) var(--nx-spacing-md);
 
   .nx-icon {
     margin-right: 0;
@@ -75,7 +75,7 @@
     + .nx-icon {
       // normally .nx-icon + .nx-icon removes the left margin so that it doesn't double up between icons.
       // In this case though the first icon isn't visible so we don't want that
-      margin-left: $nx-spacing-xs;
+      margin-left: var(--nx-spacing-xs);
     }
   }
 }

@@ -23,8 +23,8 @@ $nx-dropdown-width: 250px;
   margin: 0;
   outline: none;
   text-align: left;
-  padding-right: $nx-spacing-md;
-  padding-left: $nx-spacing-md;
+  padding-right: var(--nx-spacing-md);
+  padding-left: var(--nx-spacing-md);
   width: $nx-dropdown-width;
 
   .nx-dropdown__toggle-label {
@@ -62,9 +62,9 @@ $nx-dropdown-width: 250px;
   box-sizing: border-box;
   display: block;
   max-height: 328px;
-  margin: $nx-spacing-xxs 0 0 0;
+  margin: var(--nx-spacing-xxs) 0 0 0;
   overflow-y: auto;
-  padding: $nx-spacing-xxs 0;
+  padding: var(--nx-spacing-xxs) 0;
   position: absolute;
   top: 100%;
   width: $nx-dropdown-width;
@@ -84,7 +84,7 @@ $nx-dropdown-width: 250px;
   display: block;
   font-size: $nx-font-size;
   line-height: $nx-line-height;
-  padding: $nx-spacing-xxs $nx-spacing-md;
+  padding: var(--nx-spacing-xxs) var(--nx-spacing-md);
   text-decoration: none;
 }
 
@@ -142,18 +142,18 @@ $nx-dropdown-width: 250px;
 .nx-dropdown-button-content {
   @include nx-truncate-ellipsis;
   display: block;
-  line-height: $nx-spacing-xl;
+  line-height: var(--nx-spacing-xl);
 }
 
 .nx-dropdown-right-button {
   @include nx-small-icon-btn;
   float: right;
-  margin-right: $nx-spacing-xs;
-  margin-left: $nx-spacing-l;
+  margin-right: var(--nx-spacing-xs);
+  margin-left: var(--nx-spacing-l);
 
   // take off a px to make room for the button border
-  margin-top: $nx-spacing-xxs - 1px;
-  margin-bottom: $nx-spacing-xxs - 1px;
+  margin-top: calc(var(--nx-spacing-xxs) - 1px);
+  margin-bottom: calc(var(--nx-spacing-xxs) - 1px);
 
   + .nx-dropdown-button {
     display: block;

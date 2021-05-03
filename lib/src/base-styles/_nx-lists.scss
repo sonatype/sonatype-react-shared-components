@@ -6,7 +6,7 @@
  */
 .nx-list {
   border-top: $nx-border-default;
-  margin: $nx-spacing-md 0 $nx-flow-content-spacing 0;
+  margin: var(--nx-spacing-md) 0 $nx-flow-content-spacing 0;
   padding: 0;
 
   &, > ul, > ol {
@@ -14,7 +14,7 @@
   }
 
   > ul, > ol {
-    margin-top: $nx-spacing-sm;
+    margin-top: var(--nx-spacing-sm);
     padding: 0;
   }
 }
@@ -22,6 +22,8 @@
 .nx-list__item {
   &, > .nx-list__link {
     @include container-horizontal;
+
+    --nx-padding-without-border: calc(var(--nx-spacing-md) - 1px);
 
     align-items: first baseline;
     border: 1px solid transparent;
@@ -35,7 +37,8 @@
       ". list-sub-text actions";
     margin: 0;
     // 1px of padding subtracted to account for the transparent border
-    padding: $nx-spacing-md ($nx-spacing-md - 1px) ($nx-spacing-md - 1px) ($nx-spacing-md - 1px);
+    padding: var(--nx-spacing-md) var(--nx-padding-without-border)
+      var(--nx-padding-without-border) var(--nx-padding-without-border);
   }
 
   &:first-child {
@@ -70,7 +73,7 @@
   display: block;
   grid-area: list-text;
   margin: 0;
-  padding-right: $nx-spacing-l;
+  padding-right: var(--nx-spacing-l);
 
   &.nx-truncate-ellipsis {
     // Something about the grid layout gets confused due to overflow: hidden on this element
@@ -86,7 +89,7 @@
   display: block;
   grid-area: list-sub-text;
   // top margin is measured down from the top of the objects grid row
-  margin: $nx-spacing-md 0 0 0;
+  margin: var(--nx-spacing-md) 0 0 0;
 }
 
 .nx-list__item--empty {
@@ -113,7 +116,7 @@
 
 .nx-list--bulleted {
   border-top: none;
-  margin: $nx-spacing-md 0 $nx-spacing-l 0;
+  margin: var(--nx-spacing-md) 0 var(--nx-spacing-l) 0;
   padding: 0 0 0 26px;
 
   .nx-list__item {
@@ -229,7 +232,7 @@
 
   grid-area: actions;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
-  margin: -4px 0 -4px $nx-spacing-md;
+  margin: -4px 0 -4px var(--nx-spacing-md);
 
   .nx-btn {
     margin: 0;
@@ -262,5 +265,5 @@
 .nx-list__description {
   @include container-vertical;
 
-  margin-left: $nx-spacing-l;
+  margin-left: var(--nx-spacing-l);
 }

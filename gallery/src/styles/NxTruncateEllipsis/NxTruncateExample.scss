@@ -20,7 +20,7 @@
 .nx-truncation-examples {
   .nx-truncate-example1, .nx-truncate-example2 {
     border: 1px solid #949494;
-    margin-bottom: $nx-spacing-md;
-    padding: $nx-spacing-md;
+    margin-bottom: var(--nx-spacing-md);
+    padding: var(--nx-spacing-md);
   }
 }

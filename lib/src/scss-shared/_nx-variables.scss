@@ -6,18 +6,8 @@
  */
 @import 'nx-colors';
 
-//  #Margin/Padding widths
-$nx-spacing-xxs: 4px;
-$nx-spacing-xs: 8px;
-$nx-spacing-sm: 12px;
-$nx-spacing-md: 16px;
-$nx-spacing-l: 24px;
-$nx-spacing-xl: 32px;
-$nx-spacing-xxl: 48px;
-$nx-spacing-xxxl: 64px;
-
 // this variable sets the default spacing between two block level containers/elements like lists, tables, tiles, etc
-$nx-flow-content-spacing: $nx-spacing-l;
+$nx-flow-content-spacing: 24px;
 
 /*
   #Typography
@@ -45,14 +35,14 @@ $nx-modal-backdrop-z-index: 1050;
 $nx-focus-box-shadow: 0 0 3px 1px transparentize($nx-focus-border-color, 0.7);
 
 $nx-table-cell-header-height: 48px;
-$nx-table-cell-vertical-padding: $nx-spacing-sm;
+$nx-table-cell-vertical-padding: 12px;
 $nx-table-cell-min-height: 48px; //content box only
-$nx-table-footer-vertical-padding: $nx-spacing-l;
+$nx-table-footer-vertical-padding: 24px;
 
 // the effective height that pagination buttons (and currently, most buttons) have.
 // Use to decide the min width for pagination buttons (they should be no narrower than they are tall)
 // and also for calculating the height of a pagination table in the pagination-table-height mixin
-$nx-pagination-button-height: $nx-font-size * $nx-line-height + 2 * ($nx-spacing-xs + 1);
+$nx-pagination-button-height: $nx-font-size * $nx-line-height + 2 * (8px + 1);
 
 //  Borders
 $nx-border-radius: 6px;

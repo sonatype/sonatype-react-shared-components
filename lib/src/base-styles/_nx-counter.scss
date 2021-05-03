@@ -14,8 +14,8 @@
   display: inline-block;
   font-size: 14px;
   line-height: $nx-line-height;
-  margin-left: $nx-spacing-l;
-  padding: 1px ($nx-spacing-xs - 1px);
+  margin-left: var(--nx-spacing-l);
+  padding: 1px calc(var(--nx-spacing-xs) - 1px);
   text-align: center;
   min-width: 8px;
 

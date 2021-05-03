@@ -22,8 +22,8 @@
   font-size: $nx-font-size-s;
   height: 32px;
   line-height: 30px;
-  margin: 0 $nx-spacing-xs $nx-spacing-xs 0;
-  padding: 0 $nx-spacing-md 0 $nx-spacing-md;
+  margin: 0 var(--nx-spacing-xs) var(--nx-spacing-xs) 0;
+  padding: 0 var(--nx-spacing-md) 0 var(--nx-spacing-md);
   user-select: none;
   // Uppercase Min so SCSS ignores it and uses CSS min, not SCSS min
   max-width: Min(100%, 320px);
@@ -31,7 +31,7 @@
 
 .nx-tag--selectable {
   cursor: pointer;
-  padding-right: $nx-spacing-xs;
+  padding-right: var(--nx-spacing-xs);
 
   &:focus {
     border: 1px solid $nx-focus-border-color;
@@ -55,7 +55,7 @@
 }
 
 .nx-tag__action {
-  margin-left: $nx-spacing-md;
+  margin-left: var(--nx-spacing-md);
 }
 
 // Available tag colours

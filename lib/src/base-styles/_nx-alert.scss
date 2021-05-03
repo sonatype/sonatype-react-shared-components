@@ -19,7 +19,7 @@
   display: flex;
   margin: 16px auto 24px auto;
   max-width: 950px;
-  padding: $nx-spacing-md;
+  padding: var(--nx-spacing-md);
   text-align: initial;
 
   > .nx-icon {
@@ -28,7 +28,7 @@
     bottom: -0.125em;
     flex-shrink: 0;
     height: 1em;
-    margin-right: $nx-spacing-md;
+    margin-right: var(--nx-spacing-md);
     position: relative;
   }
 

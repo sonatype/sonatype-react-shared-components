@@ -88,7 +88,7 @@
 
   color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-1;
-  margin-bottom: $nx-spacing-l;
+  margin-bottom: var(--nx-spacing-l);
 }
 
 .nx-h2 {
@@ -97,7 +97,7 @@
 
   color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-2;
-  margin-bottom: $nx-spacing-md;
+  margin-bottom: var(--nx-spacing-md);
 }
 
 .nx-h3 {
@@ -106,7 +106,7 @@
 
   color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-3;
-  margin-bottom: $nx-spacing-md;
+  margin-bottom: var(--nx-spacing-md);
 }
 
 .nx-h4 {
@@ -115,12 +115,12 @@
 
   color: $nx-heading-color;
   font-size: $nx-font-size-heading-level-4;
-  margin-bottom: $nx-spacing-xs;
+  margin-bottom: var(--nx-spacing-xs);
   text-transform: uppercase;
 }
 
 .nx-p {
-  margin: $nx-spacing-md 0 $nx-spacing-l 0;
+  margin: var(--nx-spacing-md) 0 var(--nx-spacing-l) 0;
 }
 
 // Form typography

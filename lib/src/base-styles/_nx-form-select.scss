@@ -19,7 +19,7 @@
   color: $nx-text-color;
   font-size: $nx-font-size;
   line-height: $nx-line-height;
-  padding: $nx-spacing-xs $nx-spacing-md;
+  padding: var(--nx-spacing-xs) var(--nx-spacing-md);
   width: $nx-form-element-width-normal;
 
   &:hover {

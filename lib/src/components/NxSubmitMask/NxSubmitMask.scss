@@ -26,7 +26,7 @@
   border-radius: $nx-border-radius;
   box-sizing: border-box;
   margin: 0;
-  padding: $nx-spacing-l;
+  padding: var(--nx-spacing-l);
   text-align: center;
   min-width: 124px;
   max-width: 250px;

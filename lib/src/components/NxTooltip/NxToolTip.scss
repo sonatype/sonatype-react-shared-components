@@ -18,14 +18,14 @@
     font-size: $nx-font-size-s;
     line-height: $nx-line-height;
     max-width: 600px;
-    padding: $nx-spacing-xs $nx-spacing-md;
+    padding: var(--nx-spacing-xs) var(--nx-spacing-md);
   }
 
   &.MuiTooltip-tooltipPlacementTop, &.MuiTooltip-tooltipPlacementBottom {
-    margin: $nx-spacing-xs 0;
+    margin: var(--nx-spacing-xs) 0;
   }
   &.MuiTooltip-tooltipPlacementRight, &.MuiTooltip-tooltipPlacementLeft {
-    margin: 0 $nx-spacing-xs;
+    margin: 0 var(--nx-spacing-xs);
   }
 
   &.nx-tooltip--validation-error {

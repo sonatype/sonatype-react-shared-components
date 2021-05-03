@@ -19,8 +19,8 @@
   justify-content: flex-end;
   height: 30px;
   margin: 0;
-  padding-right: $nx-spacing-md;
-  padding-left: $nx-spacing-md;
+  padding-right: var(--nx-spacing-md);
+  padding-left: var(--nx-spacing-md);
 }
 
 .nx-threat-counter__count {
@@ -30,7 +30,7 @@
 
 .nx-threat-counter__text {
   @include semi-bold();
-  margin-left: $nx-spacing-xs;
+  margin-left: var(--nx-spacing-xs);
   text-transform: uppercase;
 }
 
@@ -52,9 +52,9 @@
 
 .nx-threat-counter-container {
   display: inline-grid;
-  gap: $nx-spacing-md;
+  gap: var(--nx-spacing-md);
   grid-template-columns: auto auto auto auto;
-  margin: $nx-spacing-md 0 $nx-spacing-l 0;
+  margin: var(--nx-spacing-md) 0 var(--nx-spacing-l) 0;
 }
 
 .nx-threat-counter-container--column {
