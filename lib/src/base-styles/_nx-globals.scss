@@ -106,6 +106,9 @@ $nx-scrollable-default-height: 400px;
 
   --nx-line-height: 1.5;
 
+  --nx-form-element-width-normal: 300px;
+  --nx-form-element-width-wide: 624px;
+
   // deprecated unprefixed variables
   --page-width-max: var(--nx-page-width-max);
   --page-width-min: var(--nx-page-width-min);

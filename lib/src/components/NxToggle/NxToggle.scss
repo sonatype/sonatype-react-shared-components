@@ -16,7 +16,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
   display: flex;
   margin: var(--nx-spacing-md) 0;
   overflow-wrap: anywhere;
-  max-width: $nx-form-element-width-wide;
+  max-width: var(--nx-form-element-width-wide);
 
   &.nx-toggle--disabled {
     &, &:hover {

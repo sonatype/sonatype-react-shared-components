@@ -20,7 +20,7 @@
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
   padding: var(--nx-spacing-xs) var(--nx-spacing-md);
-  width: $nx-form-element-width-normal;
+  width: var(--nx-form-element-width-normal);
 
   &:hover {
     border-color: $nx-form-element-border-color;
@@ -39,5 +39,5 @@
 }
 
 .nx-form-select--long {
-  width: $nx-form-element-width-wide;
+  width: var(--nx-form-element-width-wide);
 }

@@ -8,7 +8,7 @@
   display: inline-block;
   position: relative;
 
-  width: $nx-form-element-width-normal;
+  width: var(--nx-form-element-width-normal);
 
   &, &.pristine, &.pristine.valid {
     &:focus-within {
@@ -99,7 +99,7 @@
 }
 
 .nx-text-input--long {
-  width: $nx-form-element-width-wide;
+  width: var(--nx-form-element-width-wide);
 }
 
 .nx-text-input--textarea {
