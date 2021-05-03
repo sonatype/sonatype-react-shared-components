@@ -15,7 +15,7 @@
   background-position: calc(100% - 16px) 16px;
   background-repeat: no-repeat;
   border: $nx-border-default;
-  border-radius: $nx-border-radius;
+  border-radius: var(--nx-border-radius);
   color: $nx-text-color;
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);

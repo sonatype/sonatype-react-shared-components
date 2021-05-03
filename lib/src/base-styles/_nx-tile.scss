@@ -21,7 +21,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
   --nx-tile-padding: var(--nx-spacing-l);
 
   background-color: var(--nx-component-background-color);
-  border-radius: $nx-border-radius;
+  border-radius: var(--nx-border-radius);
   margin: var(--nx-spacing-xs) 0 var(--nx-spacing-md) 0;
 
   > .nx-footer, > .nx-form > .nx-footer {

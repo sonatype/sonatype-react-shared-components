@@ -8,7 +8,7 @@
   background-color: var(--nx-component-background-color);
   border-spacing: 0;
   border: $nx-border-default;
-  border-radius: $nx-border-radius;
+  border-radius: var(--nx-border-radius);
   display: table;
   margin: var(--nx-spacing-sm) 0 var(--nx-spacing-l) 0;
   overflow: hidden;
@@ -60,11 +60,11 @@
       }
 
       > :first-child {
-        border-bottom-left-radius: $nx-border-radius;
+        border-bottom-left-radius: var(--nx-border-radius);
       }
 
       > :last-child {
-        border-bottom-right-radius: $nx-border-radius;
+        border-bottom-right-radius: var(--nx-border-radius);
       }
     }
 
@@ -96,7 +96,7 @@
 .nx-table-container {
   background-color: var(--nx-component-background-color);
   border: $nx-border-default;
-  border-radius: $nx-border-radius;
+  border-radius: var(--nx-border-radius);
   box-sizing: content-box;
   display: flex;
   flex-direction: column;

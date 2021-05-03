@@ -12,7 +12,7 @@
   align-items: center;
   box-sizing: content-box;
   border: 1px solid var(--policy-indicator-highlight-color);
-  border-radius: $nx-border-radius;
+  border-radius: var(--nx-border-radius);
   display: inline-flex;
   height: 30px;
   margin: 0 var(--nx-spacing-md) var(--nx-spacing-xs) 0;

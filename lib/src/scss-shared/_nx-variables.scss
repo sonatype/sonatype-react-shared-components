@@ -18,9 +18,6 @@ $nx-table-footer-vertical-padding: var(--nx-spacing-l);
 // and also for calculating the height of a pagination table in the pagination-table-height mixin
 $nx-pagination-button-height: calc(var(--nx-spacing-md) * var(--nx-line-height) + 2 * (var(--nx-spacing-xs) + 1px));
 
-//  Borders
-$nx-border-radius: 6px;
-
 // the most typical style of border within RSC
 $nx-border-default: 1px solid $nx-indigo-100;
 

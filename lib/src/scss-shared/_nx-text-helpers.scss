@@ -76,7 +76,7 @@
   @include monospace();
   background-color: $nx-grey-50;
   border: $nx-border;
-  border-radius: $nx-border-radius;
+  border-radius: var(--nx-border-radius);
   color: $nx-red-800;
   padding: 1px 4px;
   white-space: nowrap;
@@ -87,7 +87,7 @@
   background-color: $nx-white;
   border: 1px solid $nx-grey-900;
   border-left-width: 8px;
-  border-radius: $nx-border-radius;
+  border-radius: var(--nx-border-radius);
   font-size: var(--nx-font-size);
   margin: var(--nx-spacing-md) 0 var(--nx-spacing-l) 0;
   padding: var(--nx-spacing-md);
@@ -109,7 +109,7 @@
   background-color: $nx-grey-50;
   border: $nx-border-default;
   border-left-width: 8px;
-  border-radius: $nx-border-radius;
+  border-radius: var(--nx-border-radius);
   margin: var(--nx-spacing-md) 0 var(--nx-spacing-l) 0;
   padding: var(--nx-spacing-l);
 }

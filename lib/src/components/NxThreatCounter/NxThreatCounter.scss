@@ -12,7 +12,7 @@
   box-sizing: content-box;
   border: 1px solid;
   border-left-width: 8px;
-  border-radius: $nx-border-radius;
+  border-radius: var(--nx-border-radius);
   display: inline-flex;
   flex-direction: row-reverse;
   font-size: var(--nx-font-size-s);

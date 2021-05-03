@@ -42,7 +42,7 @@
       box-sizing: border-box;
       background-color: $nx-white;
       border: 2px solid;
-      border-radius: $nx-border-radius;
+      border-radius: var(--nx-border-radius);
       color: $nx-text-color-dark;
       font-size: var(--nx-font-size-s);
       font-weight: bold;

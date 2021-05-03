@@ -11,7 +11,7 @@
 
 .nx-accordion {
   background: var(--nx-component-background-color);
-  border-radius: $nx-border-radius;
+  border-radius: var(--nx-border-radius);
   margin: var(--nx-spacing-md) 0;
 }
 
