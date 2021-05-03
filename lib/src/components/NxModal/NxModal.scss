@@ -63,7 +63,7 @@
 }
 
 .nx-modal-backdrop {
-  @include background-mask($nx-modal-backdrop-z-index);
+  @include background-mask(var(--nx-modal-backdrop-z-index));
 
   // undo styles that chrome applies to <dialog> elements
   border: initial;

@@ -6,10 +6,6 @@
  */
 @import 'nx-colors';
 
-// Z-index values
-$nx-submit-mask-z-index: 10;
-$nx-modal-backdrop-z-index: 1050;
-
 $nx-focus-box-shadow: 0 0 3px 1px transparentize($nx-focus-border-color, 0.7);
 
 $nx-table-cell-header-height: 48px;

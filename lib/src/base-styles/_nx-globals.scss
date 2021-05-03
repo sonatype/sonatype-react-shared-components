@@ -109,6 +109,9 @@ $nx-scrollable-default-height: 400px;
   --nx-form-element-width-normal: 300px;
   --nx-form-element-width-wide: 624px;
 
+  --nx-submit-mask-z-index: 10;
+  --nx-modal-backdrop-z-index: 1050;
+
   // deprecated unprefixed variables
   --page-width-max: var(--nx-page-width-max);
   --page-width-min: var(--nx-page-width-min);
