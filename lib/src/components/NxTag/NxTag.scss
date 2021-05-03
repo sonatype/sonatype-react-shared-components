@@ -38,6 +38,8 @@ $nx-tag-default-light: #e7eaf9;
   cursor: pointer;
   padding-right: $nx-spacing-xs;
 
+  background-color: var(--nx-selectable-color-light, #{$nx-tag-default-light});
+
   &:focus {
     border: 1px solid $nx-focus-border-color;
     box-shadow: $nx-focus-box-shadow;
@@ -50,7 +52,7 @@ $nx-tag-default-light: #e7eaf9;
 }
 
 .nx-tag--selected {
-  background-color: var(--nx-selectable-color-light, #{$nx-tag-default-light});
+  background-color: var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
 
   &:focus {
     border: 1px solid $nx-focus-border-color;
