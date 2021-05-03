@@ -45,7 +45,7 @@
     width: 100%;
 
     .nx-text-input__box {
-      border-color: $nx-form-element-border-color;
+      border-color: var(--nx-form-element-border-color);
     }
 
     .nx-text-input__box:focus-within {

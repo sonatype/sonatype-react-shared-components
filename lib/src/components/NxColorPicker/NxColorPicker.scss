@@ -40,7 +40,7 @@
   }
 
   &:hover {
-    border-color: $nx-form-element-border-color;
+    border-color: var(--nx-form-element-border-color);
   }
 }
 

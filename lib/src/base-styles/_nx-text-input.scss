@@ -20,7 +20,7 @@
 
     &:hover {
       .nx-text-input__box {
-        border-color: $nx-form-element-border-color;
+        border-color: var(--nx-form-element-border-color);
       }
     }
   }
@@ -64,7 +64,7 @@
 
   align-items: center;
   background-color: $nx-white;
-  border: 1px solid $nx-form-element-border-color;
+  border: 1px solid var(--nx-form-element-border-color);
   border-radius: var(--nx-border-radius);
   display: flex;
   padding: var(--nx-spacing-xs) var(--nx-spacing-md);

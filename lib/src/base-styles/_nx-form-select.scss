@@ -23,7 +23,7 @@
   width: var(--nx-form-element-width-normal);
 
   &:hover {
-    border-color: $nx-form-element-border-color;
+    border-color: var(--nx-form-element-border-color);
   }
 
   &:focus {
