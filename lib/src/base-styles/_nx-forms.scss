@@ -66,7 +66,7 @@
 
     color: $nx-text-color;
     content: "Optional";
-    font-size: $nx-font-size-xs;
+    font-size: var(--nx-font-size-xs);
     font-style: italic;
     margin-left: var(--nx-spacing-xxs);
   }
@@ -77,7 +77,7 @@
   @include semi-bold();
 
   color: $nx-text-color-dark;
-  font-size: $nx-font-size-s;
+  font-size: var(--nx-font-size-s);
   display: block;
   margin-bottom: var(--nx-spacing-md);
 }

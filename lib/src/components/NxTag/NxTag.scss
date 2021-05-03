@@ -19,7 +19,7 @@
   color: $nx-text-color-dark;
   cursor: default;
   display: inline-flex;
-  font-size: $nx-font-size-s;
+  font-size: var(--nx-font-size-s);
   height: 32px;
   line-height: 30px;
   margin: 0 var(--nx-spacing-xs) var(--nx-spacing-xs) 0;

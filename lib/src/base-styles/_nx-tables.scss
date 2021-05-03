@@ -226,7 +226,7 @@
   box-sizing: border-box;
 
   color: $nx-text-color-dark;
-  font-size: $nx-font-size-s;
+  font-size: var(--nx-font-size-s);
   height: $nx-table-cell-header-height;
   text-align: left;
   text-transform: uppercase;

@@ -47,7 +47,7 @@ $main-header-product-version-row-height: 1fr;
 
   color: $nx-grey-900;
   display: inline-block;
-  font-size: $nx-font-size-s;
+  font-size: var(--nx-font-size-s);
   margin-right: var(--nx-spacing-l);
   padding-bottom: var(--nx-spacing-xxs);
   position: relative;

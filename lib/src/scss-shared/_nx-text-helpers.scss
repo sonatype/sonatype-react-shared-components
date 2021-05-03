@@ -88,7 +88,7 @@
   border: 1px solid $nx-grey-900;
   border-left-width: 8px;
   border-radius: $nx-border-radius;
-  font-size: $nx-font-size;
+  font-size: var(--nx-font-size);
   margin: var(--nx-spacing-md) 0 var(--nx-spacing-l) 0;
   padding: var(--nx-spacing-md);
   white-space: pre-wrap;

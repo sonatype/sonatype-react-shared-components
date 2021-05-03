@@ -26,7 +26,7 @@
   color: $nx-blue-600;
   cursor: pointer;
   display: inline-block;
-  font-size: $nx-font-size;
+  font-size: var(--nx-font-size);
   line-height: $nx-line-height;
   margin: 0 var(--nx-spacing-l);
   padding: var(--nx-spacing-xs) var(--nx-spacing-l);

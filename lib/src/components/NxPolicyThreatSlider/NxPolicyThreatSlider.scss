@@ -44,7 +44,7 @@
       border: 2px solid;
       border-radius: $nx-border-radius;
       color: $nx-text-color-dark;
-      font-size: $nx-font-size-s;
+      font-size: var(--nx-font-size-s);
       font-weight: bold;
       height: $thumb-size;
       width: $thumb-size;

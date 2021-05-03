@@ -74,7 +74,7 @@
     grid-area: bottom-row;
 
     color: $nx-text-color;
-    font-size: $nx-font-size-xs;
+    font-size: var(--nx-font-size-xs);
   }
 
   .nx-product__meta {

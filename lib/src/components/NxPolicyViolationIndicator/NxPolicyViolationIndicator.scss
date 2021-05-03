@@ -36,7 +36,7 @@
   @include semi-bold();
   @include nx-truncate-ellipsis;
 
-  font-size: $nx-font-size-s;
+  font-size: var(--nx-font-size-s);
   margin: 0 var(--nx-spacing-md);
   text-transform: uppercase;
   // max width of element from design is 859px, subtract the badge, the padding, and the borders.

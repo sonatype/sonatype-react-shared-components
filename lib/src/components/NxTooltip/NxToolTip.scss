@@ -15,7 +15,7 @@
     box-sizing: border-box;
     background-color: $nx-grey-1000;
     border-radius: $nx-border-radius;
-    font-size: $nx-font-size-s;
+    font-size: var(--nx-font-size-s);
     line-height: $nx-line-height;
     max-width: 600px;
     padding: var(--nx-spacing-xs) var(--nx-spacing-md);

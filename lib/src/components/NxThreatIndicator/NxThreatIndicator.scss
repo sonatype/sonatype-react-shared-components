@@ -10,7 +10,7 @@
 $nx-threat-indicator-vertical-alignment: -0.1em;
 
 .nx-threat-indicator {
-  font-size: $nx-font-size-s;
+  font-size: var(--nx-font-size-s);
   margin: 0 var(--nx-spacing-xs);
   vertical-align: $nx-threat-indicator-vertical-alignment;
 }

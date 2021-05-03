@@ -6,18 +6,6 @@
  */
 @import 'nx-colors';
 
-/*
-  #Typography
-*/
-// Font size
-$nx-font-size: 16px;
-$nx-font-size-s: 14px;
-$nx-font-size-xs: 12px;
-$nx-font-size-heading-level-1: 32px;
-$nx-font-size-heading-level-2: 22px;
-$nx-font-size-heading-level-3: 16px;
-$nx-font-size-heading-level-4: 14px;
-
 // Line-height
 $nx-line-height: 1.5;
 
@@ -39,7 +27,7 @@ $nx-table-footer-vertical-padding: 24px;
 // the effective height that pagination buttons (and currently, most buttons) have.
 // Use to decide the min width for pagination buttons (they should be no narrower than they are tall)
 // and also for calculating the height of a pagination table in the pagination-table-height mixin
-$nx-pagination-button-height: $nx-font-size * $nx-line-height + 2 * (8px + 1);
+$nx-pagination-button-height: 16px * $nx-line-height + 2 * (8px + 1);
 
 //  Borders
 $nx-border-radius: 6px;

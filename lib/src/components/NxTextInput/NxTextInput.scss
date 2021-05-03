@@ -36,7 +36,7 @@
 
 .nx-text-input__invalid-message {
   color: $nx-red-800;
-  font-size: $nx-font-size-xs;
+  font-size: var(--nx-font-size-xs);
   line-height: 16px;
   margin-top: var(--nx-spacing-xs);
   // this positions the invalid message inside the bottom padding of .nx-form-group which allows

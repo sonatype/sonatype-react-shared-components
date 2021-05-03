@@ -15,7 +15,7 @@
 
   .fa-check {
     color: $nx-white;
-    font-size: $nx-font-size-s;
+    font-size: var(--nx-font-size-s);
     vertical-align: 4px;
   }
 }

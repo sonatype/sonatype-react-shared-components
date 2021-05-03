@@ -78,7 +78,7 @@
   @include regular();
 
   color: $nx-text-color;
-  font-size: $nx-font-size;
+  font-size: var(--nx-font-size);
   line-height: $nx-line-height;
 }
 
@@ -87,7 +87,7 @@
   @include container-horizontal;
 
   color: $nx-heading-color;
-  font-size: $nx-font-size-heading-level-1;
+  font-size: var(--nx-font-size-heading-level-1);
   margin-bottom: var(--nx-spacing-l);
 }
 
@@ -96,7 +96,7 @@
   @include container-horizontal;
 
   color: $nx-heading-color;
-  font-size: $nx-font-size-heading-level-2;
+  font-size: var(--nx-font-size-heading-level-2);
   margin-bottom: var(--nx-spacing-md);
 }
 
@@ -105,7 +105,7 @@
   @include container-horizontal;
 
   color: $nx-heading-color;
-  font-size: $nx-font-size-heading-level-3;
+  font-size: var(--nx-font-size-heading-level-3);
   margin-bottom: var(--nx-spacing-md);
 }
 
@@ -114,7 +114,7 @@
   @include container-horizontal;
 
   color: $nx-heading-color;
-  font-size: $nx-font-size-heading-level-4;
+  font-size: var(--nx-font-size-heading-level-4);
   margin-bottom: var(--nx-spacing-xs);
   text-transform: uppercase;
 }

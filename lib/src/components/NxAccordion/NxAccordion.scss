@@ -58,7 +58,7 @@
 .nx-accordion__header-title {
   @include nx-truncate-ellipsis;
 
-  font-size: $nx-font-size;
+  font-size: var(--nx-font-size);
   margin: 0 auto 0 0;
 }
 
@@ -67,7 +67,7 @@
   @include container-horizontal;
 
   color: $nx-heading-color;
-  font-size: $nx-font-size-heading-level-3;
+  font-size: var(--nx-font-size-heading-level-3);
   margin-bottom: var(--nx-spacing-md);
 }
 

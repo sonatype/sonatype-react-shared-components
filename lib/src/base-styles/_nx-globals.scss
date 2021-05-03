@@ -96,6 +96,14 @@ $nx-scrollable-default-height: 400px;
   --nx-spacing-xxl: 48px;
   --nx-spacing-xxxl: 64px;
 
+  --nx-font-size: 16px;
+  --nx-font-size-s: 14px;
+  --nx-font-size-xs: 12px;
+  --nx-font-size-heading-level-1: 32px;
+  --nx-font-size-heading-level-2: 22px;
+  --nx-font-size-heading-level-3: 16px;
+  --nx-font-size-heading-level-4: 14px;
+
   // deprecated unprefixed variables
   --page-width-max: var(--nx-page-width-max);
   --page-width-min: var(--nx-page-width-min);

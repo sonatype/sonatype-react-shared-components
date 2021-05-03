@@ -14,6 +14,6 @@
   .nx-text-link {
     @include container-horizontal;
 
-    font-size: $nx-font-size-s;
+    font-size: var(--nx-font-size-s);
   }
 }

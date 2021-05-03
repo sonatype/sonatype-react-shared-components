@@ -17,7 +17,7 @@
   border: $nx-border-default;
   border-radius: $nx-border-radius;
   color: $nx-text-color;
-  font-size: $nx-font-size;
+  font-size: var(--nx-font-size);
   line-height: $nx-line-height;
   padding: var(--nx-spacing-xs) var(--nx-spacing-md);
   width: $nx-form-element-width-normal;
