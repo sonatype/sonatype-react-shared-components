@@ -79,7 +79,7 @@
     // Something about the grid layout gets confused due to overflow: hidden on this element
     // and adds vertical space to the second row of the grid.
     // Experimentally, setting an explicit height here fixes that.
-    height: $nx-line-height * 1em;
+    height: calc(var(--nx-line-height) * 1em);
   }
 }
 

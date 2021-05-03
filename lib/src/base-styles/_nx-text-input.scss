@@ -86,7 +86,7 @@
   color: $nx-text-color;
   flex-grow: 1;
   font-size: var(--nx-font-size);
-  line-height: $nx-line-height;
+  line-height: var(--nx-line-height);
   padding: 0;
 
   &:focus {

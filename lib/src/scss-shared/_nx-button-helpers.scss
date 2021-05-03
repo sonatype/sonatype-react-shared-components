@@ -10,5 +10,5 @@
 @mixin nx-small-icon-btn {
   padding-top: var(--nx-spacing-xxs);
   padding-bottom: var(--nx-spacing-xxs);
-  width: calc(1em * #{$nx-line-height} + 2 * var(--nx-spacing-xxs) + 2px);
+  width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-xxs) + 2px);
 }

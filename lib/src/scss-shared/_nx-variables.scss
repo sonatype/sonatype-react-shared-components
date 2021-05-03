@@ -6,9 +6,6 @@
  */
 @import 'nx-colors';
 
-// Line-height
-$nx-line-height: 1.5;
-
 // Form variables
 $nx-form-element-width-normal: 300px;
 $nx-form-element-width-wide: 624px;
@@ -27,7 +24,7 @@ $nx-table-footer-vertical-padding: 24px;
 // the effective height that pagination buttons (and currently, most buttons) have.
 // Use to decide the min width for pagination buttons (they should be no narrower than they are tall)
 // and also for calculating the height of a pagination table in the pagination-table-height mixin
-$nx-pagination-button-height: 16px * $nx-line-height + 2 * (8px + 1);
+$nx-pagination-button-height: 16px * 1.5 + 2 * (8px + 1);
 
 //  Borders
 $nx-border-radius: 6px;

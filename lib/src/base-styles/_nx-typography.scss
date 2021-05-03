@@ -79,7 +79,7 @@
 
   color: $nx-text-color;
   font-size: var(--nx-font-size);
-  line-height: $nx-line-height;
+  line-height: var(--nx-line-height);
 }
 
 .nx-h1 {
