@@ -11,6 +11,7 @@ import './selectableColors.scss';
 export const selectableColors =
     ['light-blue', 'purple', 'pink', 'blue', 'red', 'green', 'orange', 'yellow', 'lime'] as const;
 
-export const seletableColorClasses = map(color => `nx-selectable-color--${color}`, selectableColors);
+export const selectableColorClasses: readonly string[] =
+    map(color => `nx-selectable-color--${color}`, selectableColors);
 
 export type SelectableColor = (typeof selectableColors)[number];
