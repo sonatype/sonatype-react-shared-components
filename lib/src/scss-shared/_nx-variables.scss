@@ -27,13 +27,3 @@ $nx-border: 1px solid $nx-grey-200; // default
 $nx-border-light: 1px solid $nx-grey-100;
 $nx-border-lighter: 1px solid $nx-grey-50;
 $nx-border-error: 1px solid $nx-red-800;
-
-/*
-  Deprecated
-*/
-
-// Border rows are used by lists and tables
-$nx-border-row: 1px solid $nx-grey-50;
-$nx-border-row-hover: 1px solid $nx-grey-300;
-$nx-border-row-disabled: 1px solid $nx-grey-50;
-$nx-border-row-dark: 1px solid $nx-grey-600;
