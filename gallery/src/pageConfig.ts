@@ -104,6 +104,7 @@ import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPag
 import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPage';
 import NxStatefulGlobalSidebarPage from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarPage';
 import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
+import SelectableColorsPage from './styles/SelectableColors/SelectableColorsPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -199,7 +200,8 @@ const pageConfig: PageConfig = {
     'nx-container-helpers': NxContainerHelpersPage,
     'nx-scrollable': NxScrollablePage,
     'nx-truncate-ellipsis': NxTruncatePage,
-    'nx-viewport-sized': NxViewportSizedPage
+    'nx-viewport-sized': NxViewportSizedPage,
+    'Selectable Colors': SelectableColorsPage
   },
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
