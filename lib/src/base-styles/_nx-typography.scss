@@ -82,11 +82,15 @@
   line-height: var(--nx-line-height);
 }
 
+%nx-heading {
+  color: var(--nx-text-color-dark);
+}
+
 .nx-h1 {
   @include bold();
   @include container-horizontal;
+  @extend %nx-heading;
 
-  color: $nx-heading-color;
   font-size: var(--nx-font-size-heading-level-1);
   margin-bottom: var(--nx-spacing-l);
 }
@@ -94,8 +98,8 @@
 .nx-h2 {
   @include semi-bold();
   @include container-horizontal;
+  @extend %nx-heading;
 
-  color: $nx-heading-color;
   font-size: var(--nx-font-size-heading-level-2);
   margin-bottom: var(--nx-spacing-md);
 }
@@ -103,8 +107,8 @@
 .nx-h3 {
   @include bold();
   @include container-horizontal;
+  @extend %nx-heading;
 
-  color: $nx-heading-color;
   font-size: var(--nx-font-size-heading-level-3);
   margin-bottom: var(--nx-spacing-md);
 }
@@ -112,8 +116,8 @@
 .nx-h4 {
   @include bold();
   @include container-horizontal;
+  @extend %nx-heading;
 
-  color: $nx-heading-color;
   font-size: var(--nx-font-size-heading-level-4);
   margin-bottom: var(--nx-spacing-xs);
   text-transform: uppercase;
