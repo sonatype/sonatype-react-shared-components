@@ -116,16 +116,16 @@ $nx-dropdown-width: 250px;
 }
 
 .nx-dropdown-link {
-  color: $nx-link-color;
+  color: var(--nx-link-color);
 
   &:hover, &:focus {
-    color: $nx-link-color-hover;
+    color: var(--nx-link-color-hover);
     text-decoration: underline;
   }
 
   &.disabled {
     &, &:hover, &:focus {
-      color: $nx-link-color-disabled;
+      color: var(--nx-link-color-disabled);
       cursor: default;
       text-decoration: none;
     }

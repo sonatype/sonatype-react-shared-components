@@ -14,16 +14,16 @@ $nx-scrollable-default-height: 400px;
 .nx-text-link {
   @include container-horizontal;
 
-  color: $nx-link-color;
+  color: var(--nx-link-color);
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
-    color: $nx-link-color-hover;
+    color: var(--nx-link-color-hover);
   }
 
   &:active {
-    color: $nx-link-color-active;
+    color: var(--nx-link-color-active);
   }
 }
 
@@ -116,6 +116,12 @@ $nx-scrollable-default-height: 400px;
   --nx-text-color-dark: $nx-grey-1100;
   --nx-text-color: $nx-grey-900;
   --nx-text-color-disabled: $nx-grey-500;
+
+  --nx-link-color: $nx-blue-600;
+  --nx-link-color-active: $nx-blue-400;
+  --nx-link-color-hover: $nx-blue-800;
+  --nx-link-color-disabled: $nx-grey-500;
+
 
   // deprecated unprefixed variables
   --page-width-max: var(--nx-page-width-max);
