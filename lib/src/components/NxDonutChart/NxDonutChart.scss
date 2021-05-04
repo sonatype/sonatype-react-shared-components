@@ -1,0 +1,60 @@
+/**
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-colors';
+
+.nx-donut-chart {
+    height: 100px;
+    fill: none;
+}
+
+.nx-severity-donut-chart__critical-arc {
+    stroke: $nx-threat-color-critical;
+}
+
+.nx-severity-donut-chart__severe-arc {
+    stroke: $nx-threat-color-severe;
+}
+
+.nx-severity-donut-chart__moderate-arc {
+    stroke: $nx-threat-color-moderate;
+}
+
+.nx-severity-donut-chart__low-arc {
+    stroke: $nx-threat-color-low;
+}
+
+.nx-severity-donut-chart__no-threat-arc {
+    stroke: $nx-threat-color-none;
+}
+
+.nx-severity-donut-chart__unspecified-arc {
+    stroke: $nx-threat-color-unspecified;
+}
+
+.nx-severity-donut-chart-tooltip__critical-arc {
+    color: $nx-threat-color-critical;
+}
+
+.nx-severity-donut-chart-tooltip__severe-arc {
+    color: $nx-threat-color-severe;
+}
+
+.nx-severity-donut-chart-tooltip__moderate-arc {
+    color: $nx-threat-color-moderate;
+}
+
+.nx-severity-donut-chart-tooltip__low-arc {
+    color: $nx-threat-color-low;
+}
+
+.nx-severity-donut-chart-tooltip__no-threat-arc {
+    color: $nx-threat-color-none;
+}
+
+.nx-severity-donut-chart-tooltip__unspecified-arc {
+    color: $nx-threat-color-unspecified;
+}
