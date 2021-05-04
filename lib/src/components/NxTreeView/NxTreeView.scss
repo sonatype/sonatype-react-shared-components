@@ -130,10 +130,10 @@ $twisty-proportion-difference: 2px;
 
   // subtract 1 from all sides to make room for focus border
   padding:
-    calc(var(--nx-spacing-xxs) - 1)
-    calc(var(--nx-spacing-l) - 1)
-    calc(var(--nx-spacing-xxs) - 1)
-    calc(var(--nx-spacing-l) + 2 * #{$twisty-proportion-difference} - 1);
+    calc(var(--nx-spacing-xxs) - 1px)
+    calc(var(--nx-spacing-l) - 1px)
+    calc(var(--nx-spacing-xxs) - 1px)
+    calc(var(--nx-spacing-l) + 2 * #{$twisty-proportion-difference} - 1px);
 
   text-overflow: ellipsis;
   white-space: nowrap;
