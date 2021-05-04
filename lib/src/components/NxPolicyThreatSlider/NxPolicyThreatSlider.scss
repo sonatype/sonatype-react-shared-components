@@ -60,8 +60,8 @@
     }
 
     &:focus {
-      border-color: $nx-focus-border-color;
-      box-shadow: $nx-focus-box-shadow;
+      border-color: var(--nx-focus-border-color);
+      box-shadow: var(--nx-focus-box-shadow);
     }
 
     // this class seems to be applied, perhaps incorrectly,

@@ -6,8 +6,6 @@
  */
 @import 'nx-colors';
 
-$nx-focus-box-shadow: 0 0 3px 1px transparentize($nx-focus-border-color, 0.7);
-
 $nx-table-cell-header-height: 48px;
 $nx-table-cell-vertical-padding: 12px;
 $nx-table-cell-min-height: 48px; //content box only

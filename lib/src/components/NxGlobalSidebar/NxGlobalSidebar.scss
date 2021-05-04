@@ -20,7 +20,7 @@ $nx-global-sidebar-active-color: $nx-indigo-400;
 $nx-global-sidebar-selected-color: $nx-indigo-800;
 $nx-global-sidebar-hover-color: $nx-indigo-600;
 
-$nx-global-sidebar-focus-border: 1px solid $nx-focus-border-color;
+$nx-global-sidebar-focus-border: 1px solid var(--nx-focus-border-color);
 
 $nx-global-sidebar-separator-color: $nx-grey-900;
 
@@ -57,7 +57,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   margin: 0;
 
   &:focus {
-    border-color: $nx-focus-border-color;
+    border-color: var(--nx-focus-border-color);
   }
 
   &:active {
@@ -98,8 +98,8 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   }
 
   &:focus {
-    border-color: $nx-focus-border-color;
-    box-shadow: $nx-focus-box-shadow;
+    border-color: var(--nx-focus-border-color);
+    box-shadow: var(--nx-focus-box-shadow);
     outline: none;
   }
 

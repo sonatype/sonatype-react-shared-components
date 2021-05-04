@@ -49,7 +49,7 @@
     }
 
     .nx-text-input__box:focus-within {
-      border-color: $nx-focus-border-color;
+      border-color: var(--nx-focus-border-color);
     }
   }
 }

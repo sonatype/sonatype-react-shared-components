@@ -35,8 +35,8 @@
   }
 
   &:focus-within {
-    border-color: $nx-focus-border-color;
-    box-shadow: $nx-focus-box-shadow;
+    border-color: var(--nx-focus-border-color);
+    box-shadow: var(--nx-focus-box-shadow);
   }
 
   &:hover {

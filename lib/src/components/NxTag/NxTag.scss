@@ -34,8 +34,8 @@
   padding-right: var(--nx-spacing-xs);
 
   &:focus {
-    border: 1px solid $nx-focus-border-color;
-    box-shadow: $nx-focus-box-shadow;
+    border: 1px solid var(--nx-focus-border-color);
+    box-shadow: var(--nx-focus-box-shadow);
     outline: none;
   }
 
@@ -46,7 +46,7 @@
 
 .nx-tag--selected {
   &:focus {
-    border: 1px solid $nx-focus-border-color;
+    border: 1px solid var(--nx-focus-border-color);
   }
 }
 

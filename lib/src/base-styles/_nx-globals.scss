@@ -129,6 +129,13 @@ $nx-scrollable-default-height: 400px;
 
   --nx-disabled-border: #{$nx-grey-500};
 
+  --nx-focus-border-color: #{$nx-teal-300};
+  --nx-focus-box-shadow-color: #{transparentize($nx-teal-300, 0.7)};
+  --nx-focus-box-shadow: 0 0 3px 1px var(--nx-focus-box-shadow-color);
+
+  // similar to above, but for use in drop-shadow filters rather than box-shadow properties
+  --nx-focus-drop-shadow: 0 0 3px var(--nx-focus-box-shadow-color);
+
   // deprecated unprefixed variables
   --page-width-max: var(--nx-page-width-max);
   --page-width-min: var(--nx-page-width-min);

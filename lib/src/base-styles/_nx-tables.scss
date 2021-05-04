@@ -82,11 +82,11 @@
       }
 
       &:focus-within {
-        box-shadow: $nx-focus-box-shadow;
+        box-shadow: var(--nx-focus-box-shadow);
         outline: none;
 
         > .nx-cell {
-          border-color: $nx-focus-border-color;
+          border-color: var(--nx-focus-border-color);
         }
       }
     }
@@ -234,9 +234,9 @@
   vertical-align: middle;
 
   &:focus {
-    outline: 1px solid $nx-focus-border-color;
+    outline: 1px solid var(--nx-focus-border-color);
     outline-offset: -1px;
-    box-shadow: $nx-focus-box-shadow;
+    box-shadow: var(--nx-focus-box-shadow);
   }
 }
 

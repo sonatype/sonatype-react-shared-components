@@ -32,9 +32,9 @@
 
   &:focus-within {
     .nx-radio-checkbox__control {
-      border-color: $nx-focus-border-color;
-      stroke: $nx-focus-border-color;
-      filter: drop-shadow(0 0 3px rgba($nx-focus-border-color, 0.4));
+      border-color: var(--nx-focus-border-color);
+      stroke: var(--nx-focus-border-color);
+      filter: drop-shadow(var(--nx-focus-drop-shadow));
     }
 
     &:hover {
@@ -110,7 +110,7 @@ svg.nx-radio-checkbox__control {
   &:focus {
     // less-nice IE11 focus style because IE11 doesn't support :focus-within
     margin-right: var(--nx-spacing-xxs);
-    outline: 1px solid $nx-focus-border-color;
+    outline: 1px solid var(--nx-focus-border-color);
     opacity: 1;
     position: static;
     vertical-align: 5px;

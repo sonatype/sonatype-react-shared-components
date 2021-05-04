@@ -48,9 +48,9 @@
     outline: none;
 
     > .nx-accordion__summary-wrapper {
-      outline: 1px solid $nx-focus-border-color;
+      outline: 1px solid var(--nx-focus-border-color);
       outline-offset: -1px;
-      box-shadow: $nx-focus-box-shadow;
+      box-shadow: var(---nx-focus-box-shadow);
     }
   }
 }
