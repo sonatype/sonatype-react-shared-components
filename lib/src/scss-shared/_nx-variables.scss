@@ -16,9 +16,4 @@ $nx-table-footer-vertical-padding: var(--nx-spacing-l);
 // and also for calculating the height of a pagination table in the pagination-table-height mixin
 $nx-pagination-button-height: calc(var(--nx-spacing-md) * var(--nx-line-height) + 2 * (var(--nx-spacing-xs) + 1px));
 
-$nx-border-darker: 1px solid $nx-grey-800;
-$nx-border-dark: 1px solid $nx-grey-300;
 $nx-border: 1px solid $nx-grey-200; // default
-$nx-border-light: 1px solid $nx-grey-100;
-$nx-border-lighter: 1px solid $nx-grey-50;
-$nx-border-error: 1px solid $nx-red-800;
