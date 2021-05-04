@@ -27,25 +27,25 @@ $nx-threat-indicator-vertical-alignment: -0.1em;
 }
 
 .nx-threat-indicator--unspecified {
-  color: $nx-threat-color-unspecified;
+  color: var(--nx-threat-color-unspecified);
 }
 
 .nx-threat-indicator--none {
-  color: $nx-threat-color-none;
+  color: var(--nx-threat-color-none);
 }
 
 .nx-threat-indicator--low {
-  color: $nx-threat-color-low;
+  color: var(--nx-threat-color-low);
 }
 
 .nx-threat-indicator--moderate {
-  color: $nx-threat-color-moderate;
+  color: var(--nx-threat-color-moderate);
 }
 
 .nx-threat-indicator--severe {
-  color: $nx-threat-color-severe;
+  color: var(--nx-threat-color-severe);
 }
 
 .nx-threat-indicator--critical {
-  color: $nx-threat-color-critical;
+  color: var(--nx-threat-color-critical);
 }

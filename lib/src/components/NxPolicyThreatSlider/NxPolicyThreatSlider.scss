@@ -74,31 +74,31 @@
 
   .nx-policy-threat-slider__value-label--none {
     .MuiSlider-thumb:not(:focus) {
-      border-color: $nx-threat-color-none;
+      border-color: var(--nx-threat-color-none);
     }
   }
 
   .nx-policy-threat-slider__value-label--low {
     .MuiSlider-thumb:not(:focus) {
-      border-color: $nx-threat-color-low;
+      border-color: var(--nx-threat-color-low);
     }
   }
 
   .nx-policy-threat-slider__value-label--moderate {
     .MuiSlider-thumb:not(:focus) {
-      border-color: $nx-threat-color-moderate;
+      border-color: var(--nx-threat-color-moderate);
     }
   }
 
   .nx-policy-threat-slider__value-label--severe {
     .MuiSlider-thumb:not(:focus) {
-      border-color: $nx-threat-color-severe;
+      border-color: var(--nx-threat-color-severe);
     }
   }
 
   .nx-policy-threat-slider__value-label--critical {
     .MuiSlider-thumb:not(:focus) {
-      border-color: $nx-threat-color-critical;
+      border-color: var(--nx-threat-color-critical);
     }
   }
 
@@ -115,7 +115,7 @@
 
     // threat level 0
     border-radius: $border-radius 0 0 $border-radius;
-    color: $nx-threat-color-none;
+    color: var(--nx-threat-color-none);
 
     // the first mark only goes from 0 - 0.5, so is only 5% wide.
     // The rest (except the last) each go from (n - 0.5) to (n + 0.5), so are 10% wide with a -5% left margin.
@@ -132,18 +132,18 @@
       width: 10%;
 
       // threat level 1
-      color: $nx-threat-color-low;
+      color: var(--nx-threat-color-low);
 
       ~ .MuiSlider-mark {
         // threat level 2
-        color: $nx-threat-color-moderate;
+        color: var(--nx-threat-color-moderate);
 
         ~ .MuiSlider-mark {
           // threat level 3
 
           ~ .MuiSlider-mark {
             // threat level 4
-            color: $nx-threat-color-severe;
+            color: var(--nx-threat-color-severe);
 
             ~ .MuiSlider-mark {
               // threat level 5
@@ -156,7 +156,7 @@
 
                   ~ .MuiSlider-mark {
                     // threat level 8
-                    color: $nx-threat-color-critical;
+                    color: var(--nx-threat-color-critical);
 
                     ~ .MuiSlider-mark {
                       // threat level 9
