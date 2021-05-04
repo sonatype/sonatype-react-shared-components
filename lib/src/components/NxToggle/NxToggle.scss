@@ -20,7 +20,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
 
   &.nx-toggle--disabled {
     &, &:hover {
-      color: $nx-text-color-disabled;
+      color: var(--nx-text-color-disabled);
       cursor: default;
 
       .nx-toggle__control {

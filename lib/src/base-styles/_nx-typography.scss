@@ -77,7 +77,7 @@
 .nx-body {
   @include regular();
 
-  color: $nx-text-color;
+  color: var(--nx-text-color);
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
 }

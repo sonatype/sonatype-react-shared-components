@@ -83,7 +83,7 @@
 .nx-text-input__input {
   background-color: transparent;
   border: none;
-  color: $nx-text-color;
+  color: var(--nx-text-color);
   flex-grow: 1;
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);

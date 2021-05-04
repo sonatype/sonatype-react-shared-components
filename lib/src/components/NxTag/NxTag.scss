@@ -16,7 +16,7 @@
   border: 1px solid;
   border-radius: 16px;
   box-sizing: border-box;
-  color: $nx-text-color-dark;
+  color: var(--nx-text-color-dark);
   cursor: default;
   display: inline-flex;
   font-size: var(--nx-font-size-s);

@@ -18,7 +18,7 @@ $nx-dropdown-width: 250px;
 }
 
 .nx-dropdown__toggle {
-  color: $nx-text-color;
+  color: var(--nx-text-color);
   display: flex;
   margin: 0;
   outline: none;
@@ -41,7 +41,7 @@ $nx-dropdown-width: 250px;
 
   &.disabled {
     .nx-icon {
-      color: $nx-text-color-disabled;
+      color: var(--nx-text-color-disabled);
     }
   }
 
@@ -92,7 +92,7 @@ $nx-dropdown-width: 250px;
   background-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
-  color: $nx-text-color;
+  color: var(--nx-text-color);
   outline: none;
   text-align: left;
   width: 100%;
@@ -108,7 +108,7 @@ $nx-dropdown-width: 250px;
   &.disabled {
     &, &:hover, &:focus {
       background-color: transparent;
-      color: $nx-text-color-disabled;
+      color: var(--nx-text-color-disabled);
       cursor: default;
       text-decoration: none;
     }

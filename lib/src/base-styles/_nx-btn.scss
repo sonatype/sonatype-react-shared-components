@@ -9,7 +9,7 @@
     &, &:hover, &:focus {
       background-color:$nx-disabled-background;
       border-color: $nx-disabled-border;
-      color: $nx-text-color-disabled;
+      color: var(--nx-text-color-disabled);
       cursor: default;
     }
   }
@@ -74,7 +74,7 @@
 
   background-color: transparent;
   border-color: $nx-indigo-100;
-  color: $nx-text-color-dark;
+  color: var(--nx-text-color-dark);
 
   &:hover {
     background-color: transparent;

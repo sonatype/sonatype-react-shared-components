@@ -61,7 +61,7 @@ $twisty-proportion-difference: 2px;
   background: none;
   border: none;
   box-sizing: border-box;
-  color: $nx-text-color-dark;
+  color: var(--nx-text-color-dark);
   cursor: pointer;
   display: flex;
   font: inherit;
@@ -124,7 +124,7 @@ $twisty-proportion-difference: 2px;
   border: 1px solid transparent;
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
-  color: $nx-text-color;
+  color: var(--nx-text-color);
   display: block;
   overflow: hidden;
 

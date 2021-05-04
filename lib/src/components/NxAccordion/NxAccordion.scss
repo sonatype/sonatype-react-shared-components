@@ -27,7 +27,7 @@
     @include container-horizontal;
     align-items: center;
     box-sizing: border-box;
-    color: $nx-text-color-dark;
+    color: var(--nx-text-color-dark);
     cursor: pointer;
     display: flex;
     font-weight: bold;
@@ -66,7 +66,7 @@
   @include bold();
   @include container-horizontal;
 
-  color: $nx-heading-color;
+  color: var(--nx-text-color-dark);
   font-size: var(--nx-font-size-heading-level-3);
   margin-bottom: var(--nx-spacing-md);
 }

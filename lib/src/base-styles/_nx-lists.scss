@@ -46,7 +46,7 @@
   }
 
   &.disabled {
-    color: $nx-text-color-disabled;
+    color: var(--nx-text-color-disabled);
     cursor: default;
   }
 
@@ -199,11 +199,11 @@
       &.nx-list__item--empty {
         @include regular();
 
-        color: $nx-text-color;
+        color: var(--nx-text-color);
       }
 
       &.disabled {
-        color: $nx-text-color-disabled;
+        color: var(--nx-text-color-disabled);
 
         &:hover {
           background-color: transparent;
@@ -217,7 +217,7 @@
 
       > .nx-chevron {
         align-self: center;
-        color: $nx-text-color-dark;
+        color: var(--nx-text-color-dark);
         grid-area: actions;
 
         // custom sizing for the icon, brings it up to 13px

@@ -225,7 +225,7 @@
   border-top: none;
   box-sizing: border-box;
 
-  color: $nx-text-color-dark;
+  color: var(--nx-text-color-dark);
   font-size: var(--nx-font-size-s);
   height: $nx-table-cell-header-height;
   text-align: left;
@@ -247,7 +247,7 @@
 
 
 .nx-cell--icon {
-  color: $nx-text-color-dark;
+  color: var(--nx-text-color-dark);
   text-align: center;
 }
 

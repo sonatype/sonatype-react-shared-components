@@ -43,7 +43,7 @@
       background-color: var(--nx-white);
       border: 2px solid;
       border-radius: var(--nx-border-radius);
-      color: $nx-text-color-dark;
+      color: var(--nx-text-color-dark);
       font-size: var(--nx-font-size-s);
       font-weight: bold;
       height: $thumb-size;
@@ -105,7 +105,7 @@
   .Mui-disabled .nx-policy-threat-slider__value-label .MuiSlider-thumb {
     border-color: $nx-disabled-border;
     background-color: $nx-disabled-background;
-    color: $nx-text-color-disabled;
+    color: var(--nx-text-color-disabled);
   }
 
   .MuiSlider-mark {
