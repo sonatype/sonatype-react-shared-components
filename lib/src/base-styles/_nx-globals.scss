@@ -42,16 +42,6 @@ $nx-scrollable-default-height: 400px;
   float: right;
 }
 
-.nx-error {
-  background-color: $nx-red-25;
-  border: $nx-border-error;
-  color: $nx-text-color-error;
-
-  .fa, .svg-inline--fa {
-    margin-right: 8px;
-  }
-}
-
 .nx-scrollable {
   @include container-vertical;
   @include vertically-scrollable($nx-scrollable-default-height);
