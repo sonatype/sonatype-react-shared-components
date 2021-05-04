@@ -116,6 +116,8 @@ $nx-scrollable-default-height: 400px;
 
   --nx-form-element-border-color: #{$nx-grey-1100};
 
+  --nx-border-default: 1px solid #{$nx-indigo-100};
+
   // deprecated unprefixed variables
   --page-width-max: var(--nx-page-width-max);
   --page-width-min: var(--nx-page-width-min);

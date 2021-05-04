@@ -14,7 +14,7 @@
   background-size: 12px;
   background-position: calc(100% - 16px) 16px;
   background-repeat: no-repeat;
-  border: $nx-border-default;
+  border: var(--nx-border-default);
   border-radius: var(--nx-border-radius);
   color: $nx-text-color;
   font-size: var(--nx-font-size);

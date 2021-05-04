@@ -36,7 +36,7 @@
 
 .nx-page-title__sub-title {
   @include nx-truncate-ellipsis;
-  border-left: $nx-border-default;
+  border-left: var(--nx-border-default);
   margin: 0 0 0 var(--nx-spacing-md);
   padding-left: var(--nx-spacing-md);
   min-width: 150px;

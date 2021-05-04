@@ -6,7 +6,7 @@
  */
 .nx-global-header {
   align-items: center;
-  border-bottom: $nx-border-default;
+  border-bottom: var(--nx-border-default);
   display: flex;
   grid-area: header; // see nx-page's grid-template
   min-height: 32px;
@@ -25,7 +25,7 @@
 .nx-global-header__actions {
   @include container-horizontal;
   align-items: center;
-  border-left: $nx-border-default;
+  border-left: var(--nx-border-default);
   display: flex;
   margin-left: auto;
   padding-left: var(--nx-spacing-xl);

@@ -65,7 +65,7 @@
 
 .nx-radio-checkbox__control {
   background-color: $nx-white;
-  border: $nx-border-default;
+  border: var(--nx-border-default);
   flex-shrink: 0;
   margin-right: var(--nx-spacing-xs);
 }

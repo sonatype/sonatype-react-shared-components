@@ -15,7 +15,7 @@
 .nx-tab-list {
   @include container-horizontal;
 
-  border-bottom: $nx-border-default;
+  border-bottom: var(--nx-border-default);
   display: flex;
   margin: 0;
   padding: 0;

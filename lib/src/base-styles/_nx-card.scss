@@ -77,7 +77,7 @@
 }
 
 .nx-card__footer {
-  border-top: $nx-border-default;
+  border-top: var(--nx-border-default);
   padding-top: var(--nx-spacing-l);
 }
 

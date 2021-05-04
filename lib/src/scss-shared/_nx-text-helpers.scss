@@ -107,7 +107,7 @@
 %nx-blockquote {
   @include container-vertical();
   background-color: $nx-grey-50;
-  border: $nx-border-default;
+  border: var(--nx-border-default);
   border-left-width: 8px;
   border-radius: var(--nx-border-radius);
   margin: var(--nx-spacing-md) 0 var(--nx-spacing-l) 0;

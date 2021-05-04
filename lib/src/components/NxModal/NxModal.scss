@@ -54,7 +54,7 @@
 .nx-modal-header {
   @include container-vertical;
 
-  border-bottom: $nx-border-default;
+  border-bottom: var(--nx-border-default);
   padding-bottom: var(--nx-spacing-l);
 
   .nx-h2 {
