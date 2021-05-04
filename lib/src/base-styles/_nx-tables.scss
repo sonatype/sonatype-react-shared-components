@@ -204,8 +204,8 @@
 
   > .nx-btn-bar {
     // buttons should be 8px from row edges even though row padding is 12px
-    margin-top: -var(--nx-spacing-xxs);
-    margin-bottom: -var(--nx-spacing-xxs);
+    margin-top: calc(0px - var(--nx-spacing-xxs));
+    margin-bottom: calc(0px - var(--nx-spacing-xxs));
   }
 
   &:not(.nx-cell--header) > .nx-btn-bar {
@@ -302,7 +302,7 @@
   // first and last child selectors necessary for specificity
   &, &:first-child, &:last-child {
     // make button take up entire header including its padding box
-    margin: -var(--nx-spacing-sm) -var(--nx-spacing-md);
+    margin: calc(0px - var(--nx-spacing-sm)) calc(0px - var(--nx-spacing-md));
     padding: var(--nx-spacing-sm) var(--nx-spacing-md);
   }
 }

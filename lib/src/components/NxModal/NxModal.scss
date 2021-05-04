@@ -34,7 +34,7 @@
 
   > .nx-form {
     // nx-form should take up the entire modal area so the children layout consistently
-    margin: -var(--nx-modal-padding);
+    margin: calc(0px - var(--nx-modal-padding));
     padding: var(--nx-modal-padding);
   }
 
@@ -82,7 +82,7 @@
 
   // we want the content area scrollbar to be at the right edge of the modal, so use negative margin
   // to bump the content area over the right padding and then give that padding to the content area itself
-  margin-right: -var(--nx-modal-padding);
+  margin-right: calc(0px - var(--nx-modal-padding));
   padding: var(--nx-spacing-l) var(--nx-modal-padding) var(--nx-spacing-xl) 0;
   overflow-y: auto;
 }

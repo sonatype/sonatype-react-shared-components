@@ -54,7 +54,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
 }
 
 .nx-toggle__input {
-  margin: 0 0 0 (var(--nx-spacing-l) + $nx-toggle-input-hide-hack-spacing);
+  margin: 0 0 0 calc(var(--nx-spacing-l) + $nx-toggle-input-hide-hack-spacing);
   width: 0;
   -moz-appearance: none;
 
@@ -83,7 +83,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
   flex: none;
   height: 24px;
   margin-left: -$nx-toggle-input-hide-hack-spacing;
-  padding: var(--nx-spacing-xxs) - 1px;
+  padding: calc(var(--nx-spacing-xxs) - 1px);
   width: 44px;
 }
 
