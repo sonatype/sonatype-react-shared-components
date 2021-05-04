@@ -103,6 +103,8 @@ $nx-scrollable-default-height: 400px;
   --nx-border-radius: 6px;
 
   --nx-border-default: 1px solid #{$nx-indigo-100};
+  --nx-border-color-subsection: #{$nx-grey-200};
+  --nx-border-subsection: 1px solid var(--nx-border-color-subsection);
 
   // colors
   --nx-black: #000;

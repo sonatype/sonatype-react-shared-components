@@ -7,7 +7,7 @@
 .nx-footer {
   @include container-vertical;
 
-  border-top: 1px solid $nx-grey-200;
+  border-top: var(--nx-border-subsection);
   margin-top: var(--nx-spacing-l);
   padding-top: var(--nx-spacing-l);
 

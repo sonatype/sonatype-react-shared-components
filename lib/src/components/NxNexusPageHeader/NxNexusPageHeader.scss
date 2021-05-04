@@ -107,6 +107,6 @@
 
   .nx-page-header__extra-content-divider {
     align-self: stretch;
-    border-left: 1px solid $nx-grey-200;
+    border-left: var(--nx-border-subsection);
   }
 }

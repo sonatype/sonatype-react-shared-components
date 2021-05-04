@@ -15,5 +15,3 @@ $nx-table-footer-vertical-padding: var(--nx-spacing-l);
 // Use to decide the min width for pagination buttons (they should be no narrower than they are tall)
 // and also for calculating the height of a pagination table in the pagination-table-height mixin
 $nx-pagination-button-height: calc(var(--nx-spacing-md) * var(--nx-line-height) + 2 * (var(--nx-spacing-xs) + 1px));
-
-$nx-border: 1px solid $nx-grey-200; // default

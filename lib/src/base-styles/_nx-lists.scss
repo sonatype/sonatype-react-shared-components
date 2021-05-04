@@ -27,7 +27,7 @@
 
     align-items: first baseline;
     border: 1px solid transparent;
-    border-top-color: $nx-grey-200;
+    border-top-color: var(--nx-border-color-subsection);
     box-sizing: border-box;
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -252,7 +252,7 @@
     display: flex;
   }
 
-  border-bottom: 1px solid $nx-grey-200;
+  border-bottom: var(--nx-border-subsection);
 }
 
 .nx-list__term {
