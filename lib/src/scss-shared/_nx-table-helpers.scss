@@ -23,7 +23,7 @@
   @return calc(#{
     ($body-row-count - 1) * ($body-row-height + 1px) + // extra 1px for border
     ($body-row-height) + // last row does not have border
-    $header-row-count * $header-row-height //+
+    $header-row-count * $header-row-height +
     $header-filter-row-height * $header-filter-row-count} +
     #{$footer-height}
   );

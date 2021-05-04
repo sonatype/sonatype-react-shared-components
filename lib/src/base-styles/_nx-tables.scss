@@ -171,7 +171,7 @@
 
   // subtract 1 from bottom padding to counteract the translateY above
   padding: $nx-table-footer-vertical-padding var(--nx-spacing-l)
-    ($nx-table-footer-vertical-padding - 1px) var(--nx-spacing-l);
+    calc(#{$nx-table-footer-vertical-padding} - 1px) var(--nx-spacing-l);
   position: sticky;
   bottom: 0;
   z-index: 1;
