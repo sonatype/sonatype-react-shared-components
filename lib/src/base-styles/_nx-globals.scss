@@ -127,6 +127,8 @@ $nx-scrollable-default-height: 400px;
   --nx-hover-background: $nx-grey-100;
   --nx-disabled-background: $nx-grey-200;
 
+  --nx-disabled-border: $nx-grey-500;
+
   // deprecated unprefixed variables
   --page-width-max: var(--nx-page-width-max);
   --page-width-min: var(--nx-page-width-min);

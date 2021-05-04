@@ -88,13 +88,13 @@ svg.nx-radio-checkbox__control {
 
     .nx-radio-checkbox__control {
       background-color:var(--nx-disabled-background);
-      border-color: $nx-disabled-border;
+      border-color: var(--nx-disabled-border);
     }
 
     svg.nx-radio-checkbox__control {
       background: none;
       fill: var(--nx-disabled-background);
-      stroke: $nx-disabled-border;
+      stroke: var(--nx-disabled-border);
     }
   }
 }

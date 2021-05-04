@@ -45,7 +45,7 @@
     &, &.valid, &.invalid, &.pristine {
       .nx-text-input__box {
         background-color: var(--nx-disabled-background);
-        border-color: $nx-disabled-border;
+        border-color: var(--nx-disabled-border);
       }
 
       .nx-text-input__invalid-message {
