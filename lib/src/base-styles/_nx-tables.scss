@@ -71,13 +71,13 @@
     &.nx-clickable {
       &:hover {
         > .nx-cell {
-          background-color: $nx-hover-background;
+          background-color: var(--nx-hover-background);
         }
       }
 
       &.selected, &:active {
         > .nx-cell {
-          background-color: $nx-selected-background;
+          background-color: var(--nx-selected-background);
         }
       }
 

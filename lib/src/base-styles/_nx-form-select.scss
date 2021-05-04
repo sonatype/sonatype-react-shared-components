@@ -33,7 +33,7 @@
   }
 
   &.disabled {
-    background-color:$nx-disabled-background;
+    background-color: var(--nx-disabled-background);
     border-color: $nx-disabled-border;
   }
 }

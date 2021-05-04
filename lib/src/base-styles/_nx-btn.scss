@@ -7,7 +7,7 @@
 %nx-btn--disabled {
   &.disabled, &[disabled] {
     &, &:hover, &:focus {
-      background-color:$nx-disabled-background;
+      background-color: var(--nx-disabled-background);
       border-color: $nx-disabled-border;
       color: var(--nx-text-color-disabled);
       cursor: default;

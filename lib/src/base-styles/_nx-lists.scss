@@ -177,17 +177,17 @@
     &, > .nx-list__link {
       &.selected {
         &, &:hover {
-          background-color: $nx-selected-background;
+          background-color: var(--nx-selected-background);
         }
       }
 
       &:hover {
-        background-color: $nx-hover-background;
+        background-color: var(--nx-hover-background);
         cursor: pointer;
       }
 
       &:active {
-        background-color: $nx-active-background;
+        background-color: var(--nx-active-background);
       }
 
       &:focus {

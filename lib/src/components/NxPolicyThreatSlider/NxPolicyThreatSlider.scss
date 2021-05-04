@@ -104,7 +104,7 @@
 
   .Mui-disabled .nx-policy-threat-slider__value-label .MuiSlider-thumb {
     border-color: $nx-disabled-border;
-    background-color: $nx-disabled-background;
+    background-color: var(--nx-disabled-background);
     color: var(--nx-text-color-disabled);
   }
 
