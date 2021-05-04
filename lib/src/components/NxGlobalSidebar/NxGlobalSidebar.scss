@@ -13,7 +13,7 @@ $nx-global-sidebar-width-open: 250px;
 $nx-global-sidebar-width-closed: 72px;
 $nx-global-sidebar-logo-height: 34px;
 
-$nx-global-sidebar-text-color: $nx-white;
+$nx-global-sidebar-text-color: var(--nx-white);
 $nx-global-sidebar-background-color: $nx-blue-1000;
 
 $nx-global-sidebar-active-color: $nx-indigo-400;

@@ -85,8 +85,6 @@ $nx-scrollable-default-height: 400px;
   --nx-sidebar-width: calc(100% - var(--nx-content-width));
   --nx-scrollbar-width: 15px;
 
-  --nx-component-background-color: #{$nx-white};
-
   --nx-spacing-xxs: 4px;
   --nx-spacing-xs: 8px;
   --nx-spacing-sm: 12px;
@@ -114,9 +112,14 @@ $nx-scrollable-default-height: 400px;
 
   --nx-border-radius: 6px;
 
-  --nx-form-element-border-color: #{$nx-grey-1100};
-
   --nx-border-default: 1px solid #{$nx-indigo-100};
+
+  // colors
+  --nx-black: #000;
+  --nx-white: #fff;
+
+  --nx-component-background-color: var(--nx-white);
+  --nx-form-element-border-color: #{$nx-grey-1100};
 
   // deprecated unprefixed variables
   --page-width-max: var(--nx-page-width-max);

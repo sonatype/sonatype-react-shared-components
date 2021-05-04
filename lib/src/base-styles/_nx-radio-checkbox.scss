@@ -64,7 +64,7 @@
 }
 
 .nx-radio-checkbox__control {
-  background-color: $nx-white;
+  background-color: var(--nx-white);
   border: var(--nx-border-default);
   flex-shrink: 0;
   margin-right: var(--nx-spacing-xs);
@@ -73,7 +73,7 @@
 svg.nx-radio-checkbox__control {
   border-style: none;
   background: none;
-  fill: $nx-white;
+  fill: var(--nx-white);
   stroke: $nx-indigo-100;
 }
 

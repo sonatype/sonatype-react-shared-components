@@ -184,7 +184,7 @@ button, a {
 
       &.selected {
         background-color: $nx-blue-1000;
-        color: $nx-white;
+        color: var(--nx-white);
       }
     }
   }
