@@ -40,7 +40,7 @@
   &, .Mui-disabled {
     .MuiSlider-thumb {
       box-sizing: border-box;
-      background-color: var(--nx-white);
+      background-color: $nx-white;
       border: 2px solid;
       border-radius: var(--nx-border-radius);
       color: var(--nx-color-text-dark);

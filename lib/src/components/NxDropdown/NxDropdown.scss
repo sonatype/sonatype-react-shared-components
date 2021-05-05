@@ -36,7 +36,7 @@ $nx-dropdown-width: 250px;
 
   .nx-icon {
     align-self: center;
-    color: var(--nx-black);
+    color: $nx-black;
   }
 
   &.disabled {
@@ -53,7 +53,7 @@ $nx-dropdown-width: 250px;
 .nx-dropdown-menu {
   @include container-vertical();
 
-  background: var(--nx-white);
+  background: $nx-white;
   border-radius: var(--nx-border-radius);
   box-shadow: 0 2px 12px 0 rgba(74, 77, 113, 0.2),
               0 1px 2px 0 rgba(91, 95, 141, 0.2),
