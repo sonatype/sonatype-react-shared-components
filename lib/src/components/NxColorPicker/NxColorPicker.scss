@@ -35,12 +35,12 @@
   }
 
   &:focus-within {
-    border-color: var(--nx-focus-border-color);
-    box-shadow: var(--nx-focus-box-shadow);
+    border-color: var(--nx-color-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
   }
 
   &:hover {
-    border-color: var(--nx-form-element-border-color);
+    border-color: var(--nx-color-border-form-element);
   }
 }
 

@@ -45,11 +45,11 @@
     width: 100%;
 
     .nx-text-input__box {
-      border-color: var(--nx-form-element-border-color);
+      border-color: var(--nx-color-border-form-element);
     }
 
     .nx-text-input__box:focus-within {
-      border-color: var(--nx-focus-border-color);
+      border-color: var(--nx-color-border-focus);
     }
   }
 }

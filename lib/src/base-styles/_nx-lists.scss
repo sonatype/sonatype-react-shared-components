@@ -27,7 +27,7 @@
 
     align-items: first baseline;
     border: 1px solid transparent;
-    border-top-color: var(--nx-border-color-subsection);
+    border-top-color: var(--nx-color-border-subsection);
     box-sizing: border-box;
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -46,7 +46,7 @@
   }
 
   &.disabled {
-    color: var(--nx-text-color-disabled);
+    color: var(--nx-color-text-disabled);
     cursor: default;
   }
 
@@ -177,33 +177,33 @@
     &, > .nx-list__link {
       &.selected {
         &, &:hover {
-          background-color: var(--nx-selected-background);
+          background-color: var(--nx-color-background-selected);
         }
       }
 
       &:hover {
-        background-color: var(--nx-hover-background);
+        background-color: var(--nx-color-background-hover);
         cursor: pointer;
       }
 
       &:active {
-        background-color: var(--nx-active-background);
+        background-color: var(--nx-color-background-active);
       }
 
       &:focus {
-        box-shadow: var(--nx-focus-box-shadow);
-        border-color: var(--nx-focus-border-color);
+        box-shadow: var(--nx-box-shadow-focus);
+        border-color: var(--nx-color-border-focus);
         outline: none;
       }
 
       &.nx-list__item--empty {
         @include regular();
 
-        color: var(--nx-text-color);
+        color: var(--nx-color-text);
       }
 
       &.disabled {
-        color: var(--nx-text-color-disabled);
+        color: var(--nx-color-text-disabled);
 
         &:hover {
           background-color: transparent;
@@ -217,7 +217,7 @@
 
       > .nx-chevron {
         align-self: center;
-        color: var(--nx-text-color-dark);
+        color: var(--nx-color-text-dark);
         grid-area: actions;
 
         // custom sizing for the icon, brings it up to 13px

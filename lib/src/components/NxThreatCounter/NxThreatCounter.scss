@@ -35,19 +35,19 @@
 }
 
 .nx-threat-counter--critical {
-  border-color: var(--nx-threat-color-critical);
+  border-color: var(--nx-color-threat-critical);
 }
 
 .nx-threat-counter--severe {
-  border-color: var(--nx-threat-color-severe);
+  border-color: var(--nx-color-threat-severe);
 }
 
 .nx-threat-counter--moderate {
-  border-color: var(--nx-threat-color-moderate);
+  border-color: var(--nx-color-threat-moderate);
 }
 
 .nx-threat-counter--low {
-  border-color: var(--nx-threat-color-low);
+  border-color: var(--nx-color-threat-low);
 }
 
 .nx-threat-counter-container {

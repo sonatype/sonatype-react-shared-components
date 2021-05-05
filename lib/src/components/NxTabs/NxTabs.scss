@@ -55,9 +55,9 @@
 
   &:focus {
     border-bottom-width: 1px;
-    box-shadow: var(--nx-focus-box-shadow);
+    box-shadow: var(--nx-box-shadow-focus);
     margin-bottom: 0;
-    outline: solid 1px var(--nx-focus-border-color);
+    outline: solid 1px var(--nx-color-border-focus);
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width

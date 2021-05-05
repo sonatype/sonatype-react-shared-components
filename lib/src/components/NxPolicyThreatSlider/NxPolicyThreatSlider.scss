@@ -43,7 +43,7 @@
       background-color: var(--nx-white);
       border: 2px solid;
       border-radius: var(--nx-border-radius);
-      color: var(--nx-text-color-dark);
+      color: var(--nx-color-text-dark);
       font-size: var(--nx-font-size-s);
       font-weight: bold;
       height: $thumb-size;
@@ -60,8 +60,8 @@
     }
 
     &:focus {
-      border-color: var(--nx-focus-border-color);
-      box-shadow: var(--nx-focus-box-shadow);
+      border-color: var(--nx-color-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
     }
 
     // this class seems to be applied, perhaps incorrectly,
@@ -74,38 +74,38 @@
 
   .nx-policy-threat-slider__value-label--none {
     .MuiSlider-thumb:not(:focus) {
-      border-color: var(--nx-threat-color-none);
+      border-color: var(--nx-color-threat-none);
     }
   }
 
   .nx-policy-threat-slider__value-label--low {
     .MuiSlider-thumb:not(:focus) {
-      border-color: var(--nx-threat-color-low);
+      border-color: var(--nx-color-threat-low);
     }
   }
 
   .nx-policy-threat-slider__value-label--moderate {
     .MuiSlider-thumb:not(:focus) {
-      border-color: var(--nx-threat-color-moderate);
+      border-color: var(--nx-color-threat-moderate);
     }
   }
 
   .nx-policy-threat-slider__value-label--severe {
     .MuiSlider-thumb:not(:focus) {
-      border-color: var(--nx-threat-color-severe);
+      border-color: var(--nx-color-threat-severe);
     }
   }
 
   .nx-policy-threat-slider__value-label--critical {
     .MuiSlider-thumb:not(:focus) {
-      border-color: var(--nx-threat-color-critical);
+      border-color: var(--nx-color-threat-critical);
     }
   }
 
   .Mui-disabled .nx-policy-threat-slider__value-label .MuiSlider-thumb {
-    border-color: var(--nx-disabled-border);
-    background-color: var(--nx-disabled-background);
-    color: var(--nx-text-color-disabled);
+    border-color: var(--nx-border-color-disabled);
+    background-color: var(--nx-color-background-disabled);
+    color: var(--nx-color-text-disabled);
   }
 
   .MuiSlider-mark {
@@ -115,7 +115,7 @@
 
     // threat level 0
     border-radius: $border-radius 0 0 $border-radius;
-    color: var(--nx-threat-color-none);
+    color: var(--nx-color-threat-none);
 
     // the first mark only goes from 0 - 0.5, so is only 5% wide.
     // The rest (except the last) each go from (n - 0.5) to (n + 0.5), so are 10% wide with a -5% left margin.
@@ -132,18 +132,18 @@
       width: 10%;
 
       // threat level 1
-      color: var(--nx-threat-color-low);
+      color: var(--nx-color-threat-low);
 
       ~ .MuiSlider-mark {
         // threat level 2
-        color: var(--nx-threat-color-moderate);
+        color: var(--nx-color-threat-moderate);
 
         ~ .MuiSlider-mark {
           // threat level 3
 
           ~ .MuiSlider-mark {
             // threat level 4
-            color: var(--nx-threat-color-severe);
+            color: var(--nx-color-threat-severe);
 
             ~ .MuiSlider-mark {
               // threat level 5
@@ -156,7 +156,7 @@
 
                   ~ .MuiSlider-mark {
                     // threat level 8
-                    color: var(--nx-threat-color-critical);
+                    color: var(--nx-color-threat-critical);
 
                     ~ .MuiSlider-mark {
                       // threat level 9

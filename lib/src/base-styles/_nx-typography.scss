@@ -77,13 +77,13 @@
 .nx-body {
   @include regular();
 
-  color: var(--nx-text-color);
+  color: var(--nx-color-text);
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
 }
 
 %nx-heading {
-  color: var(--nx-text-color-dark);
+  color: var(--nx-color-text-dark);
 }
 
 .nx-h1 {

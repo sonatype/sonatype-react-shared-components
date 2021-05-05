@@ -24,8 +24,8 @@
   }
 
   &:focus {
-    box-shadow: var(--nx-focus-box-shadow);
-    outline: 1px solid var(--nx-focus-border-color);
+    box-shadow: var(--nx-box-shadow-focus);
+    outline: 1px solid var(--nx-color-border-focus);
     outline-offset: -1px;
   }
 }
@@ -34,7 +34,7 @@
   @include regular();
   background-color: transparent;
   border-color: transparent;
-  color: var(--nx-text-color);
+  color: var(--nx-color-text);
 
   &:hover {
     background-color: transparent;
@@ -45,13 +45,13 @@
     background-color: $nx-grey-100;
     border-color: $nx-grey-900;
     box-shadow: none;
-    color: var(--nx-text-color);
+    color: var(--nx-color-text);
   }
 
   &.selected {
     background-color: $nx-indigo-1100;
     border-color: $nx-indigo-1100;
-    color: var(--nx-component-background-color);
+    color: var(--nx-color-background-component);
     cursor: default;
   }
 }

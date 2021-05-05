@@ -10,7 +10,7 @@
 @import '../../scss-shared/_nx-mask-helpers';
 
 .nx-submit-mask {
-  @include background-mask(var(--nx-submit-mask-z-index));
+  @include background-mask(var(--nx-z-index-submit-mask));
 
   .nx-submit-mask__message {
     margin-top: 200px;
@@ -22,7 +22,7 @@
   @include container-vertical;
   @include semi-bold();
 
-  background-color: var(--nx-component-background-color);
+  background-color: var(--nx-color-background-component);
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   margin: 0;

@@ -16,11 +16,11 @@ $nx-toggle-input-hide-hack-spacing: 5px;
   display: flex;
   margin: var(--nx-spacing-md) 0;
   overflow-wrap: anywhere;
-  max-width: var(--nx-form-element-width-wide);
+  max-width: var(--nx-width-form-element-wide);
 
   &.nx-toggle--disabled {
     &, &:hover {
-      color: var(--nx-text-color-disabled);
+      color: var(--nx-color-text-disabled);
       cursor: default;
 
       .nx-toggle__control {
@@ -35,8 +35,8 @@ $nx-toggle-input-hide-hack-spacing: 5px;
 
   &:focus-within {
     .nx-toggle__control {
-      border-color: var(--nx-focus-border-color);
-      filter: drop-shadow(var(--nx-focus-drop-shadow));
+      border-color: var(--nx-color-border-focus);
+      filter: drop-shadow(var(--nx-drop-shadow-focus));
 
       &:hover {
         border-color: $nx-grey-1100;

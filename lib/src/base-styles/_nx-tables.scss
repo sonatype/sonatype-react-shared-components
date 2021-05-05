@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 .nx-table {
-  background-color: var(--nx-component-background-color);
+  background-color: var(--nx-color-background-component);
   border-spacing: 0;
   border: var(--nx-border-default);
   border-radius: var(--nx-border-radius);
@@ -23,7 +23,7 @@
       border-style: none;
 
       border-bottom-style: solid;
-      border-bottom-color: var(--nx-border-color-subsection);
+      border-bottom-color: var(--nx-color-border-subsection);
       border-top-style: solid;
 
       // we want the perceived padding to be the standard spacing size. As the top border is generally invisible,
@@ -71,22 +71,22 @@
     &.nx-clickable {
       &:hover {
         > .nx-cell {
-          background-color: var(--nx-hover-background);
+          background-color: var(--nx-color-background-hover);
         }
       }
 
       &.selected, &:active {
         > .nx-cell {
-          background-color: var(--nx-selected-background);
+          background-color: var(--nx-color-background-selected);
         }
       }
 
       &:focus-within {
-        box-shadow: var(--nx-focus-box-shadow);
+        box-shadow: var(--nx-box-shadow-focus);
         outline: none;
 
         > .nx-cell {
-          border-color: var(--nx-focus-border-color);
+          border-color: var(--nx-color-border-focus);
         }
       }
     }
@@ -94,7 +94,7 @@
 }
 
 .nx-table-container {
-  background-color: var(--nx-component-background-color);
+  background-color: var(--nx-color-background-component);
   border: var(--nx-border-default);
   border-radius: var(--nx-border-radius);
   box-sizing: content-box;
@@ -162,7 +162,7 @@
 .nx-table-container__footer {
   @include container-vertical;
 
-  background-color: var(--nx-component-background-color);
+  background-color: var(--nx-color-background-component);
   border-top: var(--nx-border-default);
   margin-top: auto;
 
@@ -225,7 +225,7 @@
   border-top: none;
   box-sizing: border-box;
 
-  color: var(--nx-text-color-dark);
+  color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-s);
   height: $nx-table-cell-header-height;
   text-align: left;
@@ -234,9 +234,9 @@
   vertical-align: middle;
 
   &:focus {
-    outline: 1px solid var(--nx-focus-border-color);
+    outline: 1px solid var(--nx-color-border-focus);
     outline-offset: -1px;
-    box-shadow: var(--nx-focus-box-shadow);
+    box-shadow: var(--nx-box-shadow-focus);
   }
 }
 
@@ -247,7 +247,7 @@
 
 
 .nx-cell--icon {
-  color: var(--nx-text-color-dark);
+  color: var(--nx-color-text-dark);
   text-align: center;
 }
 
@@ -267,7 +267,7 @@
 }
 
 .nx-table-row--filter-header > .nx-cell--header {
-  background-color: var(--nx-component-background-color);
+  background-color: var(--nx-color-background-component);
   border-bottom: var(--nx-border-default);
 }
 

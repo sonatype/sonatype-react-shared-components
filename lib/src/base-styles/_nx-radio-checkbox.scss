@@ -25,21 +25,21 @@
     cursor: pointer;
 
     .nx-radio-checkbox__control {
-      border-color: var(--nx-form-element-border-color);
+      border-color: var(--nx-color-border-form-element);
       stroke: $nx-grey-1100;
     }
   }
 
   &:focus-within {
     .nx-radio-checkbox__control {
-      border-color: var(--nx-focus-border-color);
-      stroke: var(--nx-focus-border-color);
-      filter: drop-shadow(var(--nx-focus-drop-shadow));
+      border-color: var(--nx-color-border-focus);
+      stroke: var(--nx-color-border-focus);
+      filter: drop-shadow(var(--nx-drop-shadow-focus));
     }
 
     &:hover {
       .nx-radio-checkbox__control {
-        border-color: var(--nx-form-element-border-color);
+        border-color: var(--nx-color-border-form-element);
         filter: none;
         stroke: $nx-grey-1100;
       }
@@ -87,14 +87,14 @@ svg.nx-radio-checkbox__control {
     cursor: default;
 
     .nx-radio-checkbox__control {
-      background-color:var(--nx-disabled-background);
-      border-color: var(--nx-disabled-border);
+      background-color:var(--nx-color-background-disabled);
+      border-color: var(--nx-border-color-disabled);
     }
 
     svg.nx-radio-checkbox__control {
       background: none;
-      fill: var(--nx-disabled-background);
-      stroke: var(--nx-disabled-border);
+      fill: var(--nx-color-background-disabled);
+      stroke: var(--nx-border-color-disabled);
     }
   }
 }
@@ -110,7 +110,7 @@ svg.nx-radio-checkbox__control {
   &:focus {
     // less-nice IE11 focus style because IE11 doesn't support :focus-within
     margin-right: var(--nx-spacing-xxs);
-    outline: 1px solid var(--nx-focus-border-color);
+    outline: 1px solid var(--nx-color-border-focus);
     opacity: 1;
     position: static;
     vertical-align: 5px;

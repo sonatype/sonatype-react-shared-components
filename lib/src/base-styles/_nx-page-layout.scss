@@ -13,7 +13,7 @@
 }
 
 .nx-body {
-  background-color: var(--nx-site-background-color);
+  background-color: var(--nx-color-background-site);
   height: 100%;
   margin: 0;
   padding: 0;
@@ -21,7 +21,7 @@
 
 .nx-page {
   display: grid;
-  min-width: var(--nx-page-width-min);
+  min-width: var(--nx-width-page-min);
   height: 100%;
   width: 100%;
 
@@ -45,7 +45,7 @@
 
   // Cover all columns and the third through last rows of the nx-page grid template
   grid-area: 3 / 1 / -1 / -1;
-  max-width: var(--nx-page-width-max);
+  max-width: var(--nx-width-page-max);
   overflow-y: hidden;
   width: 100%;
 
@@ -64,20 +64,20 @@
 .nx-page-sidebar {
   @include container-vertical;
 
-  background-color: var(--nx-site-background-color);
+  background-color: var(--nx-color-background-site);
   box-sizing: border-box;
 
   // sizing properties for when in .nx-page-sidebar
-  flex: 0 0 var(--nx-sidebar-width);
+  flex: 0 0 var(--nx-width-sidebar);
 
   // sizing properties for when in .nx-page-side--full-width or directly within .nx-page.
   // Unfortunately we have to use vw units here because percent is taken relative to the grid cell
   // not the entire container
   grid-area: old-sidebar;
-  width: calc((1 - var(--nx-content-width-proportion)) * 100vw);
+  width: calc((1 - var(--nx-width-content-proportion)) * 100vw);
 
   // sizing properties used in all layouts
-  max-width: calc((1 - var(--nx-content-width-proportion)) * var(--nx-page-width-max));
+  max-width: calc((1 - var(--nx-width-content-proportion)) * var(--nx-width-page-max));
 
   overflow-x: hidden;
   padding: var(--nx-spacing-xl) var(--nx-spacing-l) var(--nx-spacing-xs) var(--nx-spacing-l);
@@ -107,7 +107,7 @@
   }
 
   .nx-page {
-    min-width: calc(var(--nx-page-width-min) - var(--nx-scrollbar-width));
+    min-width: calc(var(--nx-width-page-min) - var(--nx-width-scrollbar));
   }
 
   .nx-page-header {

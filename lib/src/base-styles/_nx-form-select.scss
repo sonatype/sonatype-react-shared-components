@@ -16,28 +16,28 @@
   background-repeat: no-repeat;
   border: var(--nx-border-default);
   border-radius: var(--nx-border-radius);
-  color: var(--nx-text-color);
+  color: var(--nx-color-text);
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
   padding: var(--nx-spacing-xs) var(--nx-spacing-md);
-  width: var(--nx-form-element-width-normal);
+  width: var(--nx-width-form-element-normal);
 
   &:hover {
-    border-color: var(--nx-form-element-border-color);
+    border-color: var(--nx-color-border-form-element);
   }
 
   &:focus {
-    box-shadow: var(--nx-focus-box-shadow);
-    border-color: var(--nx-focus-border-color);
+    box-shadow: var(--nx-box-shadow-focus);
+    border-color: var(--nx-color-border-focus);
     outline: none;
   }
 
   &.disabled {
-    background-color: var(--nx-disabled-background);
-    border-color: var(--nx-disabled-border);
+    background-color: var(--nx-color-background-disabled);
+    border-color: var(--nx-border-color-disabled);
   }
 }
 
 .nx-form-select--long {
-  width: var(--nx-form-element-width-wide);
+  width: var(--nx-width-form-element-wide);
 }

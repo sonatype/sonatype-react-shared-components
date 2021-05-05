@@ -54,7 +54,7 @@
   @include bold();
   @include container-horizontal;
 
-  color: var(--nx-text-color-dark);
+  color: var(--nx-color-text-dark);
   cursor: default;
   display: block;
   margin-bottom: var(--nx-spacing-xs);
@@ -64,7 +64,7 @@
   .nx-label__text::after, .nx-legend__text::after {
     @include regular();
 
-    color: var(--nx-text-color);
+    color: var(--nx-color-text);
     content: "Optional";
     font-size: var(--nx-font-size-xs);
     font-style: italic;
@@ -76,7 +76,7 @@
   @include container-horizontal;
   @include semi-bold();
 
-  color: var(--nx-text-color-dark);
+  color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-s);
   display: block;
   margin-bottom: var(--nx-spacing-md);

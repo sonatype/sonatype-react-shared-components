@@ -14,16 +14,16 @@ $nx-scrollable-default-height: 400px;
 .nx-text-link {
   @include container-horizontal;
 
-  color: var(--nx-link-color);
+  color: var(--nx-color-link);
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
-    color: var(--nx-link-color-hover);
+    color: var(--nx-color-link-hover);
   }
 
   &:active {
-    color: var(--nx-link-color-active);
+    color: var(--nx-color-link-active);
   }
 }
 
@@ -68,12 +68,14 @@ $nx-scrollable-default-height: 400px;
 // global CSS variables/custom properties
 :root {
   // page dimensions
-  --nx-page-width-max: 1600px;
-  --nx-page-width-min: 1366px;
-  --nx-content-width-proportion: 0.76;
-  --nx-content-width: calc(100% * var(--nx-content-width-proportion));
-  --nx-sidebar-width: calc(100% - var(--nx-content-width));
-  --nx-scrollbar-width: 15px;
+  --nx-width-page-max: 1600px;
+  --nx-width-page-min: 1366px;
+  --nx-width-content-proportion: 0.76;
+  --nx-width-content: calc(100% * var(--nx-width-content-proportion));
+  --nx-width-sidebar: calc(100% - var(--nx-width-content));
+  --nx-width-scrollbar: 15px;
+  --nx-width-form-element-normal: 300px;
+  --nx-width-form-element-wide: 624px;
 
   --nx-spacing-xxs: 4px;
   --nx-spacing-xs: 8px;
@@ -94,62 +96,59 @@ $nx-scrollable-default-height: 400px;
 
   --nx-line-height: 1.5;
 
-  --nx-form-element-width-normal: 300px;
-  --nx-form-element-width-wide: 624px;
-
-  --nx-submit-mask-z-index: 10;
-  --nx-modal-backdrop-z-index: 1050;
+  --nx-z-index-submit-mask: 10;
+  --nx-z-index-modal-backdrop: 1050;
 
   --nx-border-radius: 6px;
 
-  --nx-border-default: 1px solid #{$nx-indigo-100};
-  --nx-border-color-subsection: #{$nx-grey-200};
-  --nx-border-subsection: 1px solid var(--nx-border-color-subsection);
+  --nx-border-default: 1px solid var(--nx-color-border-default);
+  --nx-border-subsection: 1px solid var(--nx-color-border-subsection);
+
+  --nx-box-shadow-focus: 0 0 3px 1px var(--nx-focus-box-shadow-color);
+
+  // similar to above, but for use in drop-shadow filters rather than box-shadow properties
+  --nx-drop-shadow-focus: 0 0 3px var(--nx-color-box-shadow-focus);
 
   // colors
   --nx-black: #000;
   --nx-white: #fff;
 
-  --nx-component-background-color: var(--nx-white);
-  --nx-form-element-border-color: #{$nx-grey-1100};
+  --nx-color-border-default: #{$nx-indigo-100};
+  --nx-color-border-subsection: #{$nx-grey-200};
+  --nx-color-border-form-element: #{$nx-grey-1100};
+  --nx-color-border-disabled: #{$nx-grey-500};
+  --nx-color-border-focus: #{$nx-teal-300};
 
-  --nx-site-background-color: #{$nx-grey-50};
+  --nx-color-box-shadow-focus: #{transparentize($nx-teal-300, 0.7)};
 
-  --nx-text-color-dark: #{$nx-grey-1100};
-  --nx-text-color: #{$nx-grey-900};
-  --nx-text-color-disabled: #{$nx-grey-500};
+  --nx-color-background-component: var(--nx-white);
+  --nx-color-background-site: #{$nx-grey-50};
+  --nx-color-background-selected: #{$nx-blue-200};
+  --nx-color-background-active: #{$nx-blue-200};
+  --nx-color-background-hover: #{$nx-grey-100};
+  --nx-color-background-disabled: #{$nx-grey-200};
 
-  --nx-link-color: #{$nx-blue-600};
-  --nx-link-color-active: #{$nx-blue-400};
-  --nx-link-color-hover: #{$nx-blue-800};
-  --nx-link-color-disabled: #{$nx-grey-500};
+  --nx-color-text-dark: #{$nx-grey-1100};
+  --nx-color-text: #{$nx-grey-900};
+  --nx-color-text-disabled: #{$nx-grey-500};
 
-  --nx-selected-background: #{$nx-blue-200};
-  --nx-active-background: #{$nx-blue-200};
-  --nx-hover-background: #{$nx-grey-100};
-  --nx-disabled-background: #{$nx-grey-200};
+  --nx-color-link: #{$nx-blue-600};
+  --nx-color-link-active: #{$nx-blue-400};
+  --nx-color-link-hover: #{$nx-blue-800};
+  --nx-color-link-disabled: #{$nx-grey-500};
 
-  --nx-disabled-border: #{$nx-grey-500};
-
-  --nx-focus-border-color: #{$nx-teal-300};
-  --nx-focus-box-shadow-color: #{transparentize($nx-teal-300, 0.7)};
-  --nx-focus-box-shadow: 0 0 3px 1px var(--nx-focus-box-shadow-color);
-
-  // similar to above, but for use in drop-shadow filters rather than box-shadow properties
-  --nx-focus-drop-shadow: 0 0 3px var(--nx-focus-box-shadow-color);
-
-  --nx-threat-color-unspecified: #{$nx-indigo-100};
-  --nx-threat-color-none: #{$nx-blue-300};
-  --nx-threat-color-low: #{$nx-blue-600};
-  --nx-threat-color-moderate: #{$nx-yellow-700};
-  --nx-threat-color-severe: #{$nx-orange-700};
-  --nx-threat-color-critical: #{$nx-red-800};
+  --nx-color-threat-unspecified: #{$nx-indigo-100};
+  --nx-color-threat-none: #{$nx-blue-300};
+  --nx-color-threat-low: #{$nx-blue-600};
+  --nx-color-threat-moderate: #{$nx-yellow-700};
+  --nx-color-threat-severe: #{$nx-orange-700};
+  --nx-color-threat-critical: #{$nx-red-800};
 
   // deprecated unprefixed variables
-  --page-width-max: var(--nx-page-width-max);
-  --page-width-min: var(--nx-page-width-min);
-  --content-width-proportion: var(--nx-content-width-proportion);
-  --content-width: var(--nx-content-width);
-  --sidebar-width: var(--nx-sidebar-width);
-  --scrollbar-width: var(--nx-scrollbar-width);
+  --page-width-max: var(--nx-width-page-max);
+  --page-width-min: var(--nx-width-page-min);
+  --content-width-proportion: var(--nx-width-content-proportion);
+  --content-width: var(--nx-width-content);
+  --sidebar-width: var(--nx-width-sidebar);
+  --scrollbar-width: var(--nx-width-scrollbar);
 }

@@ -20,7 +20,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
   // on children since nx-tile-content--accordion-container is supposed to go all the way to the edges
   --nx-tile-padding: var(--nx-spacing-l);
 
-  background-color: var(--nx-component-background-color);
+  background-color: var(--nx-color-background-component);
   border-radius: var(--nx-border-radius);
   margin: var(--nx-spacing-xs) 0 var(--nx-spacing-md) 0;
 

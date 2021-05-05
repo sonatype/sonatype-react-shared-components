@@ -19,7 +19,7 @@
 
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
-  background-color: var(--nx-component-background-color);
+  background-color: var(--nx-color-background-component);
   margin: 100px 0;
   padding: var(--nx-modal-padding);
   width: 800px;
@@ -63,7 +63,7 @@
 }
 
 .nx-modal-backdrop {
-  @include background-mask(var(--nx-modal-backdrop-z-index));
+  @include background-mask(var(--nx-z-index-modal-backdrop));
 
   // undo styles that chrome applies to <dialog> elements
   border: initial;
