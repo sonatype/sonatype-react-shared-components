@@ -8,12 +8,11 @@
 @import '../../scss-shared/nx-container-helpers';
 
 .nx-back-button {
+  font-size: var(--nx-font-size-s);
   margin-top: var(--nx-spacing-l);
   margin-bottom: var(--nx-spacing-l);
 
   .nx-text-link {
     @include container-horizontal;
-
-    font-size: var(--nx-font-size-s);
   }
 }
