@@ -112,6 +112,7 @@ $nx-scrollable-default-height: 400px;
   --nx-color-border-default: #{$nx-indigo-100};
   --nx-color-border-subsection: #{$nx-grey-200};
   --nx-color-border-form-element: #{$nx-grey-1100};
+  --nx-color-border-form-element-pristine: #{$nx-indigo-100};
   --nx-color-border-disabled: #{$nx-grey-500};
   --nx-color-border-focus: #{$nx-teal-300};
 
@@ -139,6 +140,9 @@ $nx-scrollable-default-height: 400px;
   --nx-color-threat-moderate: #{$nx-yellow-700};
   --nx-color-threat-severe: #{$nx-orange-700};
   --nx-color-threat-critical: #{$nx-red-800};
+
+  --nx-color-validation-valid: #{$nx-green-700};
+  --nx-color-validation-invalid: #{$nx-red-800};
 
   // deprecated unprefixed variables
   --page-width-max: var(--nx-width-page-max);

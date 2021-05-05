@@ -14,11 +14,11 @@
   }
 
   .nx-icon--invalid {
-    color: $nx-red-800;
+    color: var(--nx-color-validation-invalid);
   }
 
   .nx-icon--valid {
-    color: $nx-green-700;
+    color: var(--nx-color-validation-valid);
   }
 
   &.invalid {
@@ -35,7 +35,7 @@
 }
 
 .nx-text-input__invalid-message {
-  color: $nx-red-800;
+  color: var(--nx-color-validation-invalid);
   font-size: var(--nx-font-size-xs);
   line-height: 16px;
   margin-top: var(--nx-spacing-xs);
