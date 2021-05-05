@@ -18,7 +18,7 @@
   // We have three upper bounds on the width of the element: $max-width, the available space
   // in the container, and the actual content width. The latter being needed so the click target doesn't extend beyond
   // the end of the text
-  width: calc(min(#{max-width}, 100%));
+  width: calc(min(#{$max-width}, 100%));
   max-width: max-content;
 
   &:hover {

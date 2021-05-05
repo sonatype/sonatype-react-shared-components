@@ -64,7 +64,7 @@
 .nx-page-sidebar {
   @include container-vertical;
 
-  background-color: var(--nx-sidebar-background-color);
+  background-color: var(--nx-site-background-color);
   box-sizing: border-box;
 
   // sizing properties for when in .nx-page-sidebar
