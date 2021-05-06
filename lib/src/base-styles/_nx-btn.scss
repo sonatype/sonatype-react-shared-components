@@ -21,9 +21,9 @@
   @extend %nx-btn--disabled;
 
   background-color: var(--nx-white);
-  border: 1px solid $nx-blue-600;
+  border: 1px solid var(--nx-blue-40);
   border-radius: 6px;
-  color: $nx-blue-600;
+  color: var(--nx-blue-40);
   cursor: pointer;
   display: inline-block;
   font-size: var(--nx-font-size);
@@ -33,7 +33,7 @@
   text-align: center;
 
   &:hover {
-    background-color: $nx-blue-300;
+    background-color: var(--nx-blue-70);
   }
 
   &:focus {
@@ -43,7 +43,7 @@
   }
 
   &:active {
-    background-color: $nx-blue-100;
+    background-color: var(--nx-blue-90);
   }
 }
 
@@ -56,16 +56,16 @@
 .nx-btn--primary {
   @extend %nx-btn--disabled;
 
-  background-color: $nx-blue-600;
+  background-color: var(--nx-blue-40);
   border-color: transparent;
   color: var(--nx-white);
 
   &:hover {
-    background-color: $nx-blue-800;
+    background-color: var(--nx-blue-20);
   }
 
   &:active {
-    background-color:  $nx-blue-400;
+    background-color:  var(--nx-blue-60);
   }
 }
 
@@ -73,12 +73,12 @@
   @extend %nx-btn--disabled;
 
   background-color: transparent;
-  border-color: $nx-indigo-100;
+  border-color: var(--nx-indigo-95);
   color: var(--nx-color-text-dark);
 
   &:hover {
     background-color: transparent;
-    border-color: $nx-grey-1100;
+    border-color: var(--nx-grey-05);
   }
 
   &:focus {
@@ -86,32 +86,32 @@
   }
 
   &:active {
-    background-color: $nx-grey-100;
-    border-color: $nx-grey-1100;
+    background-color: var(--nx-grey-90);
+    border-color: var(--nx-grey-05);
   }
 }
 
 .nx-btn--error {
   @extend %nx-btn--disabled;
 
-  background-color: $nx-red-800;
-  border-color: $nx-red-800;
+  background-color: var(--nx-red-45);
+  border-color: var(--nx-red-45);
   color: var(--nx-white);
 
   &:hover, &:focus, &:active {
-    background-color: $nx-red-1000;
-    border-color: $nx-red-1000;
+    background-color: var(--nx-red-35);
+    border-color: var(--nx-red-35);
     color: var(--nx-white);
   }
 
   &:focus {
-    background-color: $nx-red-800;
+    background-color: var(--nx-red-45);
     border-color: var(--nx-color-border-focus);
   }
 
   &:active {
-    background-color: $nx-red-500;
-    border-color: $nx-red-500;
+    background-color: var(--nx-red-60);
+    border-color: var(--nx-red-60);
   }
 
   .nx-icon {

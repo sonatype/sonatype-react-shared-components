@@ -13,15 +13,15 @@ $nx-global-sidebar-width-closed: 72px;
 $nx-global-sidebar-logo-height: 34px;
 
 $nx-global-sidebar-text-color: var(--nx-white);
-$nx-global-sidebar-background-color: $nx-blue-1000;
+$nx-global-sidebar-background-color: var(--nx-blue-10);
 
-$nx-global-sidebar-active-color: $nx-indigo-400;
-$nx-global-sidebar-selected-color: $nx-indigo-800;
-$nx-global-sidebar-hover-color: $nx-indigo-600;
+$nx-global-sidebar-active-color: var(--nx-indigo-70);
+$nx-global-sidebar-selected-color: var(--nx-indigo-30);
+$nx-global-sidebar-hover-color: var(--nx-indigo-50);
 
 $nx-global-sidebar-focus-border: 1px solid var(--nx-color-border-focus);
 
-$nx-global-sidebar-separator-color: $nx-grey-900;
+$nx-global-sidebar-separator-color: var(--nx-grey-10);
 
 .nx-global-sidebar {
   @include container-vertical;

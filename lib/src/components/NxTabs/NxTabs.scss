@@ -44,8 +44,8 @@
   &.active {
     @include semi-bold();
 
-    border-bottom-color: $nx-blue-600;
-    color: $nx-blue-600;
+    border-bottom-color: var(--nx-blue-40);
+    color: var(--nx-blue-40);
   }
 
   &:hover {

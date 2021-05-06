@@ -40,19 +40,19 @@
 
   &:hover {
     background-color: transparent;
-    border-color: $nx-grey-900;
+    border-color: var(--nx-grey-10);
   }
 
   &:active {
-    background-color: $nx-grey-100;
-    border-color: $nx-grey-900;
+    background-color: var(--nx-grey-90);
+    border-color: var(--nx-grey-10);
     box-shadow: none;
     color: var(--nx-color-text);
   }
 
   &.selected {
-    background-color: $nx-indigo-1100;
-    border-color: $nx-indigo-1100;
+    background-color: var(--nx-indigo-10);
+    border-color: var(--nx-indigo-10);
     color: var(--nx-color-background-component);
     cursor: default;
   }

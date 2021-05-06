@@ -74,10 +74,10 @@
 
 %nx-code {
   @include monospace();
-  background-color: $nx-grey-50;
-  border: 1px solid $nx-grey-200;
+  background-color: var(--nx-grey-95);
+  border: 1px solid var(--nx-grey-80);
   border-radius: var(--nx-border-radius);
-  color: $nx-red-800;
+  color: var(--nx-red-45);
   padding: 1px 4px;
   white-space: nowrap;
 }
@@ -85,7 +85,7 @@
 %nx-pre {
   @include monospace();
   background-color: var(--nx-white);
-  border: 1px solid $nx-grey-900;
+  border: 1px solid var(--nx-grey-10);
   border-left-width: 8px;
   border-radius: var(--nx-border-radius);
   font-size: var(--nx-font-size);
@@ -106,7 +106,7 @@
 
 %nx-blockquote {
   @include container-vertical();
-  background-color: $nx-grey-50;
+  background-color: var(--nx-grey-95);
   border: var(--nx-border-default);
   border-left-width: 8px;
   border-radius: var(--nx-border-radius);

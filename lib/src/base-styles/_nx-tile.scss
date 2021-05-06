@@ -107,7 +107,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 }
 
 .nx-tile-content--accordion-container {
-  background-color: $nx-indigo-50;
+  background-color: var(--nx-indigo-95);
   margin-top: var(--nx-spacing-4x);
   padding: var(--nx-spacing-4x);
 

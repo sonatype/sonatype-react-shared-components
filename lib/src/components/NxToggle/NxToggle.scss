@@ -23,11 +23,11 @@ $nx-toggle-input-hide-hack-spacing: 5px;
       cursor: default;
 
       .nx-toggle__control {
-        background-color: $nx-grey-200;
-        border-color: $nx-grey-500;
+        background-color: var(--nx-grey-80);
+        border-color: var(--nx-grey-50);
       }
       .nx-toggle__indicator {
-        background-color: $nx-grey-500;
+        background-color: var(--nx-grey-50);
       }
     }
   }
@@ -38,7 +38,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
       filter: drop-shadow(var(--nx-drop-shadow-focus));
 
       &:hover {
-        border-color: $nx-grey-1100;
+        border-color: var(--nx-grey-05);
       }
     }
   }
@@ -47,7 +47,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
     cursor: pointer;
 
     .nx-toggle__control {
-      border-color: $nx-grey-1100;
+      border-color: var(--nx-grey-05);
     }
   }
 }
@@ -59,7 +59,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
 
   &:checked {
     + .nx-toggle__control {
-      background-color: $nx-blue-600;
+      background-color: var(--nx-blue-40);
 
       .nx-toggle__indicator {
         background-color: var(--nx-white);
@@ -75,7 +75,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
 
 .nx-toggle__control {
   background-color: var(--nx-white);
-  border: 1px solid $nx-blue-600;
+  border: 1px solid var(--nx-blue-40);
   border-radius: 12px;
   box-sizing: border-box;
   display: flex;
@@ -87,7 +87,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
 }
 
 .nx-toggle__indicator {
-  background-color: $nx-blue-600;
+  background-color: var(--nx-blue-40);
   border-radius: 8px;
   height: 16px;
   margin-left: 0;

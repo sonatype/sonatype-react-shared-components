@@ -54,10 +54,10 @@
 
 .nx-btn--primary:not([disabled]) {
   &.nx-segmented-btn__main-btn {
-    border-right-color: $nx-blue-400;
+    border-right-color: var(--nx-blue-60);
 
     &:hover {
-      border-right-color: $nx-blue-900;
+      border-right-color: var(--nx-blue-10);
     }
 
     &:focus {
@@ -77,10 +77,10 @@
   }
 
   &.nx-segmented-btn__dropdown-btn {
-    border-left-color: $nx-blue-400;
+    border-left-color: var(--nx-blue-60);
 
     &:hover {
-      border-left-color: $nx-blue-900;
+      border-left-color: var(--nx-blue-10);
     }
 
     &:focus {
@@ -103,15 +103,15 @@
 .nx-segmented-btn--open {
   > .nx-segmented-btn__dropdown-btn {
     &.nx-btn--primary {
-      background-color: $nx-blue-400;
+      background-color: var(--nx-blue-60);
     }
 
     &.nx-btn--secondary {
-      background-color: $nx-blue-100;
+      background-color: var(--nx-blue-90);
     }
 
     &.nx-btn--tertiary {
-      background-color: $nx-grey-100;
+      background-color: var(--nx-grey-90);
     }
   }
 }

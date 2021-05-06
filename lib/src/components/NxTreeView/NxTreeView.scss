@@ -40,7 +40,7 @@ $twisty-proportion-difference: 2px;
 
 .nx-tree-view--disabled {
   .nx-tree-view__trigger, .nx-tree-view__child {
-    color: $nx-grey-300;
+    color: var(--nx-grey-70);
     cursor: default;
   }
 }
@@ -158,11 +158,11 @@ button, a {
     width: 100%;
 
     &:hover {
-      background-color: $nx-grey-100;
+      background-color: var(--nx-grey-90);
     }
 
     &.selected {
-      background-color: $nx-blue-200;
+      background-color: var(--nx-blue-80);
       font-weight: 600;
     }
 
@@ -179,11 +179,11 @@ button, a {
   button, a {
     &.nx-tree-view__child {
       &:hover {
-        background-color: $nx-indigo-100;
+        background-color: var(--nx-indigo-95);
       }
 
       &.selected {
-        background-color: $nx-blue-1000;
+        background-color: var(--nx-blue-10);
         color: var(--nx-white);
       }
     }

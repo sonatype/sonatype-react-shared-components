@@ -13,7 +13,7 @@
     @include semi-bold;
 
     box-sizing: border-box;
-    background-color: $nx-grey-1000;
+    background-color: var(--nx-grey-05);
     border-radius: var(--nx-border-radius);
     font-size: var(--nx-font-size-s);
     line-height: var(--nx-line-height);

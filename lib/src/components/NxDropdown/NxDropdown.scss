@@ -45,7 +45,7 @@ $nx-dropdown-width: 250px;
   }
 
   &.open {
-    border-color: $nx-blue-600;
+    border-color: var(--nx-blue-40);
   }
 }
 
@@ -131,7 +131,7 @@ $nx-dropdown-width: 250px;
 }
 
 .nx-dropdown--divider {
-  background-color: $nx-grey-300;
+  background-color: var(--nx-grey-70);
   height: 1px;
   margin: 9px 1px;
 }

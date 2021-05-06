@@ -7,13 +7,13 @@
 // Color codes for the color names defined in selectableColors.ts.
 // This is a map from name to (dark color, light color) tuple
 $nx-selectable-colors: (
-  light-blue: ($nx-blue-200, $nx-blue-50),
-  purple: ($nx-purple-200, $nx-purple-50),
-  pink: ($nx-pink-300, $nx-pink-50),
-  blue: ($nx-teal-400, $nx-teal-50),
-  red: ($nx-red-300, $nx-red-50),
-  green: ($nx-turquoise-600, $nx-turquoise-50),
-  orange: ($nx-orange-700, $nx-orange-50),
-  yellow: ($nx-yellow-700, $nx-yellow-50),
-  lime: ($nx-green-200, $nx-green-50)
+  light-blue: (var(--nx-blue-80), var(--nx-blue-95)),
+  purple: (var(--nx-purple-80), var(--nx-purple-95)),
+  pink: (var(--nx-pink-70), var(--nx-pink-95)),
+  blue: (var(--nx-teal-60), var(--nx-teal-90)),
+  red: (var(--nx-red-70), var(--nx-red-90)),
+  green: (var(--nx-turquoise-40), var(--nx-turquoise-95)),
+  orange: (var(--nx-orange-55), var(--nx-orange-90)),
+  yellow: (var(--nx-yellow-65), var(--nx-yellow-95)),
+  lime: (var(--nx-green-80), var(--nx-green-95))
 );

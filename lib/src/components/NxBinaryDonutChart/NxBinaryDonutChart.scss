@@ -12,9 +12,9 @@
 }
 
 .nx-binary-donut-chart__background {
-  stroke: $nx-indigo-50;
+  stroke: var(--nx-indigo-95);
 }
 
 .nx-binary-donut-chart__arc {
-  stroke: $nx-teal-400;
+  stroke: var(--nx-teal-60);
 }

@@ -13,7 +13,7 @@
 
 .nx-radio__inner-circle {
   fill: var(--nx-white);
-  stroke: $nx-blue-600;
+  stroke: var(--nx-blue-40);
 }
 
 .nx-radio__input:checked + .nx-radio__circle .nx-radio__outer-circle {

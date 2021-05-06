@@ -221,7 +221,7 @@
 
 .nx-cell--header {
   @include bold;
-  background-color: $nx-indigo-300;
+  background-color: var(--nx-indigo-80);
   border-top: none;
   box-sizing: border-box;
 
@@ -281,7 +281,7 @@
   }
 
   > :nth-child(2) path {
-    color: $nx-blue-600;
+    color: var(--nx-blue-40);
   }
 }
 
