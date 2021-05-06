@@ -4,12 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+
+// Values needed for the pagination-table-height mixin calculations, some of which are also needed in
+// nx-tables css
 $nx-table-cell-header-height: 48px;
-$nx-table-cell-vertical-padding: 12px;
 $nx-table-cell-min-height: 48px; //content box only
 $nx-table-footer-vertical-padding: var(--nx-spacing-l);
-
-// the effective height that pagination buttons (and currently, most buttons) have.
-// Use to decide the min width for pagination buttons (they should be no narrower than they are tall)
-// and also for calculating the height of a pagination table in the pagination-table-height mixin
-$nx-pagination-button-height: calc(var(--nx-spacing-md) * var(--nx-line-height) + 2 * (var(--nx-spacing-xs) + 1px));

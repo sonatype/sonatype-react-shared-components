@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../scss-shared/nx-table-variables';
+@import '../scss-shared/_nx-pagination-variables';
 
 // creates a calc expression for the content-box height of a nx-table-container with the given numbers of rows and
 // headers along with a pagination footer.
@@ -13,6 +14,7 @@
 // NOTE: only works if rows display the standard single line of text. Wrapping text within a row, or any other larger
 // content, will increase the height of the row and prevent this calculation from being accurate.
 @function pagination-table-height($body-row-count, $header-filter-row-count: 0, $header-row-count: 1) {
+  $nx-table-cell-vertical-padding: 12px;
   $body-row-height: $nx-table-cell-min-height;
   $header-row-height: $nx-table-cell-header-height;
 
