@@ -9,4 +9,4 @@
 // Use to decide the min width for pagination buttons (they should be no narrower than they are tall)
 // and also for calculating the height of a pagination table in the pagination-table-height mixin.
 // Needed for the pagination-table-height mixin calculations and within the nx-pagination styles
-$nx-pagination-button-height: calc(var(--nx-spacing-md) * var(--nx-line-height) + 2 * (var(--nx-spacing-xs) + 1px));
+$nx-pagination-button-height: calc(var(--nx-spacing-4x) * var(--nx-line-height) + 2 * (var(--nx-spacing-2x) + 1px));

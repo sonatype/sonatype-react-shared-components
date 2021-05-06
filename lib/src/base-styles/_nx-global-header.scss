@@ -10,7 +10,7 @@
   display: flex;
   grid-area: header; // see nx-page's grid-template
   min-height: 32px;
-  padding: var(--nx-spacing-l);
+  padding: var(--nx-spacing-6x);
 
   &:empty {
     // if it has no content just don't show it
@@ -28,7 +28,7 @@
   border-left: var(--nx-border-default);
   display: flex;
   margin-left: auto;
-  padding-left: var(--nx-spacing-xl);
+  padding-left: var(--nx-spacing-8x);
 
   .nx-btn--icon-only {
     @include nx-small-icon-btn;

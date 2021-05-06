@@ -52,7 +52,7 @@
   // page-load errors are often at this level and not encapsulated within a nx-page-sidebar or nx-page-main
   > .nx-alert {
     align-self: flex-start;
-    margin: var(--nx-spacing-xl) auto 0 auto;
+    margin: var(--nx-spacing-8x) auto 0 auto;
   }
 }
 
@@ -80,7 +80,7 @@
   max-width: calc((1 - var(--nx-width-content-proportion)) * var(--nx-width-page-max));
 
   overflow-x: hidden;
-  padding: var(--nx-spacing-xl) var(--nx-spacing-l) var(--nx-spacing-xs) var(--nx-spacing-l);
+  padding: var(--nx-spacing-8x) var(--nx-spacing-6x) var(--nx-spacing-2x) var(--nx-spacing-6x);
   position: relative;
   white-space: normal;
 }
@@ -94,7 +94,7 @@
   min-width: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: var(--nx-spacing-xl) var(--nx-spacing-l);
+  padding: var(--nx-spacing-8x) var(--nx-spacing-6x);
   white-space: normal;
 }
 

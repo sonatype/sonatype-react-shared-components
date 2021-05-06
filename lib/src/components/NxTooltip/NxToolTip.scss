@@ -18,13 +18,13 @@
     font-size: var(--nx-font-size-s);
     line-height: var(--nx-line-height);
     max-width: 600px;
-    padding: var(--nx-spacing-xs) var(--nx-spacing-md);
+    padding: var(--nx-spacing-2x) var(--nx-spacing-4x);
   }
 
   &.MuiTooltip-tooltipPlacementTop, &.MuiTooltip-tooltipPlacementBottom {
-    margin: var(--nx-spacing-xs) 0;
+    margin: var(--nx-spacing-2x) 0;
   }
   &.MuiTooltip-tooltipPlacementRight, &.MuiTooltip-tooltipPlacementLeft {
-    margin: 0 var(--nx-spacing-xs);
+    margin: 0 var(--nx-spacing-2x);
   }
 }

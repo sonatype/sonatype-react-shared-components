@@ -18,16 +18,16 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 
   // the "padding" around the inside edge of the nx-tile, which must be implemented using padding/margin
   // on children since nx-tile-content--accordion-container is supposed to go all the way to the edges
-  --nx-tile-padding: var(--nx-spacing-l);
+  --nx-tile-padding: var(--nx-spacing-6x);
 
   background-color: var(--nx-color-background-component);
   border-radius: var(--nx-border-radius);
-  margin: var(--nx-spacing-xs) 0 var(--nx-spacing-md) 0;
+  margin: var(--nx-spacing-2x) 0 var(--nx-spacing-4x) 0;
 
   > .nx-footer, > .nx-form > .nx-footer {
     // use margin for sides so the top border ends in the right places
     margin: var(--nx-tile-padding) var(--nx-tile-padding) 0 var(--nx-tile-padding);
-    padding-bottom: var(--nx-spacing-l);
+    padding-bottom: var(--nx-spacing-6x);
   }
 }
 
@@ -36,13 +36,13 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 .nx-tile-header {
   align-items: center;
   display: grid;
-  row-gap: var(--nx-spacing-xs);
+  row-gap: var(--nx-spacing-2x);
   grid-template-columns: auto 1fr auto;
   min-height: $nx-tile-header-height;
   padding: var(--nx-tile-padding) var(--nx-tile-padding) 0 var(--nx-tile-padding);
 
   + .nx-tile-content {
-    padding-top: var(--nx-spacing-md);
+    padding-top: var(--nx-spacing-4x);
   }
 }
 
@@ -78,7 +78,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 1;
-  margin-left: var(--nx-spacing-l);
+  margin-left: var(--nx-spacing-6x);
   text-align: right;
 }
 
@@ -89,7 +89,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 1;
-  margin-left: var(--nx-spacing-md);
+  margin-left: var(--nx-spacing-4x);
 
   .nx-policy-violation-indicator {
     margin: 0;
@@ -108,28 +108,28 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 
 .nx-tile-content--accordion-container {
   background-color: $nx-indigo-50;
-  margin-top: var(--nx-spacing-md);
-  padding: var(--nx-spacing-md);
+  margin-top: var(--nx-spacing-4x);
+  padding: var(--nx-spacing-4x);
 
   &:last-child {
-    padding-bottom: var(--nx-spacing-md);
+    padding-bottom: var(--nx-spacing-4x);
   }
 }
 
 // On pages with tiles with multiple sections these are lighter weight titles
 .nx-tile-subsection {
   @include container-vertical;
-  margin-top: var(--nx-spacing-xl);
+  margin-top: var(--nx-spacing-8x);
 
   &:first-of-type {
     border-top: var(--nx-border-subsection);
-    margin-top: var(--nx-spacing-l);
-    padding-top: var(--nx-spacing-l);
+    margin-top: var(--nx-spacing-6x);
+    padding-top: var(--nx-spacing-6x);
   }
 
   .nx-tile-subsection__header {
     @include container-vertical;
 
-    margin-bottom: var(--nx-spacing-md);
+    margin-bottom: var(--nx-spacing-4x);
   }
 }

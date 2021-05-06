@@ -11,9 +11,9 @@
 
   .nx-btn {
     min-width: $nx-pagination-button-height;
-    margin: 0 var(--nx-spacing-xs) 0 0;
-    padding-left: var(--nx-spacing-md);
-    padding-right: var(--nx-spacing-md);
+    margin: 0 var(--nx-spacing-2x) 0 0;
+    padding-left: var(--nx-spacing-4x);
+    padding-right: var(--nx-spacing-4x);
 
     &:last-child {
       margin-right: 0;

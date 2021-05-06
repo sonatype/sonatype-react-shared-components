@@ -18,8 +18,8 @@
   justify-content: flex-end;
   height: 30px;
   margin: 0;
-  padding-right: var(--nx-spacing-md);
-  padding-left: var(--nx-spacing-md);
+  padding-right: var(--nx-spacing-4x);
+  padding-left: var(--nx-spacing-4x);
 }
 
 .nx-threat-counter__count {
@@ -29,7 +29,7 @@
 
 .nx-threat-counter__text {
   @include semi-bold();
-  margin-left: var(--nx-spacing-xs);
+  margin-left: var(--nx-spacing-2x);
   text-transform: uppercase;
 }
 
@@ -51,9 +51,9 @@
 
 .nx-threat-counter-container {
   display: inline-grid;
-  gap: var(--nx-spacing-md);
+  gap: var(--nx-spacing-4x);
   grid-template-columns: auto auto auto auto;
-  margin: var(--nx-spacing-md) 0 var(--nx-spacing-l) 0;
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
 }
 
 .nx-threat-counter-container--column {

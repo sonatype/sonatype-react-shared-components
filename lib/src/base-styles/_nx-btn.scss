@@ -28,8 +28,8 @@
   display: inline-block;
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
-  margin: 0 var(--nx-spacing-l);
-  padding: var(--nx-spacing-xs) var(--nx-spacing-l);
+  margin: 0 var(--nx-spacing-6x);
+  padding: var(--nx-spacing-2x) var(--nx-spacing-6x);
   text-align: center;
 
   &:hover {
@@ -130,7 +130,7 @@
   padding-right: 0;
 
   // essentially, calculate the width the same way that the height is calculated (line height plus padding and border)
-  width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-xs) + 2px);
+  width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-2x) + 2px);
 
   .nx-icon {
     height: 1em;

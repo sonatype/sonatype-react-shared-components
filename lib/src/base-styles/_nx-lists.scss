@@ -6,7 +6,7 @@
  */
 .nx-list {
   border-top: var(--nx-border-default);
-  margin: var(--nx-spacing-md) 0 var(--nx-spacing-l) 0;
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
   padding: 0;
 
   &, > ul, > ol {
@@ -14,7 +14,7 @@
   }
 
   > ul, > ol {
-    margin-top: var(--nx-spacing-sm);
+    margin-top: var(--nx-spacing-3x);
     padding: 0;
   }
 }
@@ -23,7 +23,7 @@
   &, > .nx-list__link {
     @include container-horizontal;
 
-    --nx-padding-without-border: calc(var(--nx-spacing-md) - 1px);
+    --nx-padding-without-border: calc(var(--nx-spacing-4x) - 1px);
 
     align-items: first baseline;
     border: 1px solid transparent;
@@ -37,7 +37,7 @@
       ". list-sub-text actions";
     margin: 0;
     // 1px of padding subtracted to account for the transparent border
-    padding: var(--nx-spacing-md) var(--nx-padding-without-border)
+    padding: var(--nx-spacing-4x) var(--nx-padding-without-border)
       var(--nx-padding-without-border) var(--nx-padding-without-border);
   }
 
@@ -73,7 +73,7 @@
   display: block;
   grid-area: list-text;
   margin: 0;
-  padding-right: var(--nx-spacing-l);
+  padding-right: var(--nx-spacing-6x);
 
   &.nx-truncate-ellipsis {
     // Something about the grid layout gets confused due to overflow: hidden on this element
@@ -89,7 +89,7 @@
   display: block;
   grid-area: list-sub-text;
   // top margin is measured down from the top of the objects grid row
-  margin: var(--nx-spacing-md) 0 0 0;
+  margin: var(--nx-spacing-4x) 0 0 0;
 }
 
 .nx-list__item--empty {
@@ -116,7 +116,7 @@
 
 .nx-list--bulleted {
   border-top: none;
-  margin: var(--nx-spacing-md) 0 var(--nx-spacing-l) 0;
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
   padding: 0 0 0 26px;
 
   .nx-list__item {
@@ -232,7 +232,7 @@
 
   grid-area: actions;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
-  margin: -4px 0 -4px var(--nx-spacing-md);
+  margin: -4px 0 -4px var(--nx-spacing-4x);
 
   .nx-btn {
     margin: 0;
@@ -265,5 +265,5 @@
 .nx-list__description {
   @include container-vertical;
 
-  margin-left: var(--nx-spacing-l);
+  margin-left: var(--nx-spacing-6x);
 }

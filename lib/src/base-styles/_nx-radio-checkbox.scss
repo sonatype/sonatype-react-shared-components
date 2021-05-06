@@ -12,7 +12,7 @@
 
   align-items: center;
   display: flex;
-  margin-bottom: var(--nx-spacing-xs);
+  margin-bottom: var(--nx-spacing-2x);
   white-space: nowrap;
 
   // We have three upper bounds on the width of the element: $max-width, the available space
@@ -67,7 +67,7 @@
   background-color: $nx-white;
   border: var(--nx-border-default);
   flex-shrink: 0;
-  margin-right: var(--nx-spacing-xs);
+  margin-right: var(--nx-spacing-2x);
 }
 
 svg.nx-radio-checkbox__control {
@@ -109,7 +109,7 @@ svg.nx-radio-checkbox__control {
 
   &:focus {
     // less-nice IE11 focus style because IE11 doesn't support :focus-within
-    margin-right: var(--nx-spacing-xxs);
+    margin-right: var(--nx-spacing-base);
     outline: 1px solid var(--nx-color-border-focus);
     opacity: 1;
     position: static;

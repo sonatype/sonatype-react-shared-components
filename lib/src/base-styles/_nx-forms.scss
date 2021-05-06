@@ -10,7 +10,7 @@
 
 // Basic form layout
 .nx-form-group {
-  margin-bottom: var(--nx-spacing-xl);
+  margin-bottom: var(--nx-spacing-8x);
 
   .nx-text-input {
     margin-bottom: 0;
@@ -21,10 +21,10 @@
   @include container-horizontal;
   align-items: flex-end;
   display: flex;
-  margin-bottom: var(--nx-spacing-xl);
+  margin-bottom: var(--nx-spacing-8x);
 
   .nx-form-group {
-    margin-right: var(--nx-spacing-l);
+    margin-right: var(--nx-spacing-6x);
     margin-bottom: 0;
   }
 
@@ -57,7 +57,7 @@
   color: var(--nx-color-text-dark);
   cursor: default;
   display: block;
-  margin-bottom: var(--nx-spacing-xs);
+  margin-bottom: var(--nx-spacing-2x);
 }
 
 .nx-label--optional, .nx-legend--optional {
@@ -68,7 +68,7 @@
     content: "Optional";
     font-size: var(--nx-font-size-xs);
     font-style: italic;
-    margin-left: var(--nx-spacing-xxs);
+    margin-left: var(--nx-spacing-base);
   }
 }
 
@@ -79,7 +79,7 @@
   color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-s);
   display: block;
-  margin-bottom: var(--nx-spacing-md);
+  margin-bottom: var(--nx-spacing-4x);
 }
 
 // Defining labels for groups of radio buttons or checkboxes is tricky - each individual radio has a <label>
@@ -90,7 +90,7 @@
   @include container-vertical;
 
   border: 0;
-  margin: 0 0 var(--nx-spacing-xl) 0;
+  margin: 0 0 var(--nx-spacing-8x) 0;
   min-inline-size: auto;
   padding: 0;
 }

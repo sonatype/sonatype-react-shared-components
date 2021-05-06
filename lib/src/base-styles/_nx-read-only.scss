@@ -6,14 +6,14 @@
  */
 .nx-read-only {
   @include container-vertical;
-  margin: 0 0 var(--nx-spacing-xl) 0;
+  margin: 0 0 var(--nx-spacing-8x) 0;
 }
 
 .nx-read-only__label {
   @include bold();
-  margin: var(--nx-spacing-xl) 0 var(--nx-spacing-md) 0;
+  margin: var(--nx-spacing-8x) 0 var(--nx-spacing-4x) 0;
 }
 
 .nx-read-only__data {
-  margin: 0 0 var(--nx-spacing-xs) 0;
+  margin: 0 0 var(--nx-spacing-2x) 0;
 }

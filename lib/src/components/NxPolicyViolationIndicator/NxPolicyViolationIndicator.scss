@@ -14,7 +14,7 @@
   border-radius: var(--nx-border-radius);
   display: inline-flex;
   height: 30px;
-  margin: 0 var(--nx-spacing-md) var(--nx-spacing-xs) 0;
+  margin: 0 var(--nx-spacing-4x) var(--nx-spacing-2x) 0;
   overflow: hidden;
   width: max-content;
   max-width: 100%;
@@ -36,7 +36,7 @@
   @include nx-truncate-ellipsis;
 
   font-size: var(--nx-font-size-s);
-  margin: 0 var(--nx-spacing-md);
+  margin: 0 var(--nx-spacing-4x);
   text-transform: uppercase;
   // max width of element from design is 859px, subtract the badge, the padding, and the borders.
   max-width: 793px;

@@ -19,7 +19,7 @@ $twisty-proportion-difference: 2px;
 */
 .nx-tree-view {
   box-sizing: border-box;
-  margin: var(--nx-spacing-md) 0;
+  margin: var(--nx-spacing-4x) 0;
 
   // Design specifies 300px wide not including the caret and its padding (which are themselves 30px)
   max-width: 330px;
@@ -117,7 +117,7 @@ $twisty-proportion-difference: 2px;
 }
 
 .nx-tree-view__children {
-  margin-top: var(--nx-spacing-xxs);
+  margin-top: var(--nx-spacing-base);
 }
 
 .nx-tree-view__child {
@@ -130,10 +130,10 @@ $twisty-proportion-difference: 2px;
 
   // subtract 1 from all sides to make room for focus border
   padding:
-    calc(var(--nx-spacing-xxs) - 1px)
-    calc(var(--nx-spacing-l) - 1px)
-    calc(var(--nx-spacing-xxs) - 1px)
-    calc(var(--nx-spacing-l) + 2 * #{$twisty-proportion-difference} - 1px);
+    calc(var(--nx-spacing-base) - 1px)
+    calc(var(--nx-spacing-6x) - 1px)
+    calc(var(--nx-spacing-base) - 1px)
+    calc(var(--nx-spacing-6x) + 2 * #{$twisty-proportion-difference} - 1px);
 
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -143,8 +143,8 @@ $twisty-proportion-difference: 2px;
     border: none;
     display: flex;
     margin: 0;
-    padding: var(--nx-spacing-xxs) 0 var(--nx-spacing-xxs)
-      calc(var(--nx-spacing-md) + 2 * #{$twisty-proportion-difference});
+    padding: var(--nx-spacing-base) 0 var(--nx-spacing-base)
+      calc(var(--nx-spacing-4x) + 2 * #{$twisty-proportion-difference});
   }
 }
 

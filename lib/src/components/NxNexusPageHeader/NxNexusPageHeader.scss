@@ -77,21 +77,21 @@
   }
 
   .nx-product__meta {
-    margin: 0 0 0 var(--nx-spacing-xs);
+    margin: 0 0 0 var(--nx-spacing-2x);
 
     &::before {
       content: "|";
-      margin-right: var(--nx-spacing-xs);
+      margin-right: var(--nx-spacing-2x);
     }
   }
 
   .nx-page-header__links {
-    padding-top: var(--nx-spacing-xs);
+    padding-top: var(--nx-spacing-2x);
   }
 
   .nx-page-header__link {
     color: var(--nx-color-text-dark);
-    padding-bottom: var(--nx-spacing-xs);
+    padding-bottom: var(--nx-spacing-2x);
 
     &:active, &.nx-page-header__link--current {
       border-bottom-color:$nx-teal-400;

@@ -7,7 +7,7 @@
 
 // Values needed for the pagination-table-height mixin calculations, some of which are also needed in
 // nx-tables css
-$nx-table-cell-vertical-padding: var(--nx-spacing-sm);
+$nx-table-cell-vertical-padding: var(--nx-spacing-3x);
 $nx-table-cell-header-height: 48px;
 $nx-table-cell-min-height: 48px; //content box only
-$nx-table-footer-vertical-padding: var(--nx-spacing-l);
+$nx-table-footer-vertical-padding: var(--nx-spacing-6x);

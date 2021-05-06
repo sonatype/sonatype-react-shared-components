@@ -10,7 +10,7 @@
   border: var(--nx-border-default);
   border-radius: var(--nx-border-radius);
   display: table;
-  margin: var(--nx-spacing-sm) 0 var(--nx-spacing-l) 0;
+  margin: var(--nx-spacing-3x) 0 var(--nx-spacing-6x) 0;
   overflow: hidden;
   width: 100%;
 
@@ -28,23 +28,23 @@
 
       // we want the perceived padding to be the standard spacing size. As the top border is generally invisible,
       // it should be counted as padding from that perspective
-      padding-top: calc(var(--nx-spacing-sm) - #{$border-width});
+      padding-top: calc(var(--nx-spacing-3x) - #{$border-width});
 
       &:first-child {
         border-left-style: solid;
-        padding-left: calc(var(--nx-spacing-md) - #{$border-width});
+        padding-left: calc(var(--nx-spacing-4x) - #{$border-width});
       }
 
       &:last-child {
         border-right-style: solid;
-        padding-right: calc(var(--nx-spacing-md) - #{$border-width});
+        padding-right: calc(var(--nx-spacing-4x) - #{$border-width});
       }
 
       // Used for table cells container meta-information such as the fact that the table is empty, or
       // that the data is loading. These cells are expected to take up the entire row using colspan attributes
       &.nx-cell--meta-info {
-        padding-top: calc(var(--nx-spacing-md) - 1px);
-        padding-bottom: var(--nx-spacing-md);
+        padding-top: calc(var(--nx-spacing-4x) - 1px);
+        padding-bottom: var(--nx-spacing-4x);
         text-align: center;
 
         > * {
@@ -170,8 +170,8 @@
   transform: translateY(-1px);
 
   // subtract 1 from bottom padding to counteract the translateY above
-  padding: $nx-table-footer-vertical-padding var(--nx-spacing-l)
-    calc(#{$nx-table-footer-vertical-padding} - 1px) var(--nx-spacing-l);
+  padding: $nx-table-footer-vertical-padding var(--nx-spacing-6x)
+    calc(#{$nx-table-footer-vertical-padding} - 1px) var(--nx-spacing-6x);
   position: sticky;
   bottom: 0;
   z-index: 1;
@@ -199,13 +199,13 @@
   @include container-horizontal;
 
   min-height: $nx-table-cell-min-height;
-  padding: $nx-table-cell-vertical-padding var(--nx-spacing-md);
+  padding: $nx-table-cell-vertical-padding var(--nx-spacing-4x);
   vertical-align: top;
 
   > .nx-btn-bar {
     // buttons should be 8px from row edges even though row padding is 12px
-    margin-top: calc(0px - var(--nx-spacing-xxs));
-    margin-bottom: calc(0px - var(--nx-spacing-xxs));
+    margin-top: calc(0px - var(--nx-spacing-base));
+    margin-bottom: calc(0px - var(--nx-spacing-base));
   }
 
   &:not(.nx-cell--header) > .nx-btn-bar {
@@ -274,7 +274,7 @@
 .nx-cell__sort-icons {
   cursor: pointer;
   font-size: 16px;
-  margin-left: var(--nx-spacing-xxs);
+  margin-left: var(--nx-spacing-base);
 
   > :first-child path {
     color: $nx-white;
@@ -288,7 +288,7 @@
 .nx-cell__sort-btn, .nx-cell__chevron-btn {
   @include container-horizontal;
 
-  width: calc(100% + 2 * var(--nx-spacing-md));
+  width: calc(100% + 2 * var(--nx-spacing-4x));
   text-align: left;
   text-transform: uppercase;
 
@@ -302,7 +302,7 @@
   // first and last child selectors necessary for specificity
   &, &:first-child, &:last-child {
     // make button take up entire header including its padding box
-    margin: calc(0px - var(--nx-spacing-sm)) calc(0px - var(--nx-spacing-md));
-    padding: var(--nx-spacing-sm) var(--nx-spacing-md);
+    margin: calc(0px - var(--nx-spacing-3x)) calc(0px - var(--nx-spacing-4x));
+    padding: var(--nx-spacing-3x) var(--nx-spacing-4x);
   }
 }

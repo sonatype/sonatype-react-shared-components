@@ -11,7 +11,7 @@
   @include container-horizontal;
 
   .nx-legend__text {
-    margin-bottom: var(--nx-spacing-xxs);
+    margin-bottom: var(--nx-spacing-base);
   }
 }
 
@@ -24,8 +24,8 @@
   border: 1px solid transparent;
   cursor: pointer;
   display: inline-block;
-  padding: calc(var(--nx-spacing-xxs) - 1px);
-  margin-right: var(--nx-spacing-xs);
+  padding: calc(var(--nx-spacing-base) - 1px);
+  margin-right: var(--nx-spacing-2x);
 
   height: $size;
   width: $size;

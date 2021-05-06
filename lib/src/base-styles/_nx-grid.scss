@@ -6,8 +6,8 @@
  */
 .nx-grid-row {
   display: flex;
-  margin-top: var(--nx-spacing-l);
-  margin-bottom: var(--nx-spacing-l);
+  margin-top: var(--nx-spacing-6x);
+  margin-bottom: var(--nx-spacing-6x);
 }
 
 .nx-grid-col {
@@ -17,7 +17,7 @@
   box-sizing: border-box;
   flex: 1 0;
   overflow-x: hidden;
-  padding: 0 var(--nx-spacing-xxl);
+  padding: 0 var(--nx-spacing-12x);
 
   overflow-wrap: break-word;
 
@@ -40,14 +40,14 @@
 .nx-grid-h-keyline {
   border: none;
   border-top: var(--nx-border-subsection);
-  margin-top: var(--nx-spacing-l);
-  margin-bottom: var(--nx-spacing-l);
+  margin-top: var(--nx-spacing-6x);
+  margin-bottom: var(--nx-spacing-6x);
 }
 
 // Grid headers
 .nx-grid-header {
   @include container-vertical;
-  margin-bottom: var(--nx-spacing-md);
+  margin-bottom: var(--nx-spacing-4x);
 }
 
 .nx-grid-header__title {
@@ -58,6 +58,6 @@
 .nx-grid-col__section {
   @include container-vertical;
 
-  margin-top: var(--nx-spacing-l);
-  margin-bottom: var(--nx-spacing-l);
+  margin-top: var(--nx-spacing-6x);
+  margin-bottom: var(--nx-spacing-6x);
 }
