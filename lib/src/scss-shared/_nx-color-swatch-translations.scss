@@ -1,0 +1,143 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+$nx-grey-1100: var(--nx-grey-05);
+$nx-grey-1000: var(--nx-grey-05);
+$nx-grey-900: var(--nx-grey-10);
+$nx-grey-800: var(--nx-grey-20);
+$nx-grey-700: var(--nx-grey-30);
+$nx-grey-600: var(--nx-grey-40);
+$nx-grey-500: var(--nx-grey-50);
+$nx-grey-400: var(--nx-grey-60);
+$nx-grey-300: var(--nx-grey-70);
+$nx-grey-200: var(--nx-grey-80);
+$nx-grey-100: var(--nx-grey-90);
+$nx-grey-50: var(--nx-grey-95);
+
+$nx-blue-1000: var(--nx-blue-10);
+$nx-blue-900: var(--nx-blue-10);
+$nx-blue-800: var(--nx-blue-20);
+$nx-blue-700: var(--nx-blue-30);
+$nx-blue-600: var(--nx-blue-40);
+$nx-blue-500: var(--nx-blue-50);
+$nx-blue-400: var(--nx-blue-60);
+$nx-blue-300: var(--nx-blue-70);
+$nx-blue-200: var(--nx-blue-80);
+$nx-blue-100: var(--nx-blue-90);
+$nx-blue-50: var(--nx-blue-95);
+
+$nx-teal-1000: var(--nx-teal-25);
+$nx-teal-900: var(--nx-teal-30);
+$nx-teal-800: var(--nx-teal-35);
+$nx-teal-700: var(--nx-teal-45);
+$nx-teal-600: var(--nx-teal-50);
+$nx-teal-500: var(--nx-teal-55);
+$nx-teal-400: var(--nx-teal-60);
+$nx-teal-300: var(--nx-teal-65);
+$nx-teal-200: var(--nx-teal-70);
+$nx-teal-100: var(--nx-teal-80);
+$nx-teal-50: var(--nx-teal-90);
+$nx-teal-25: var(--nx-teal-95);
+
+$nx-pink-1000: var(--nx-pink-10);
+$nx-pink-900: var(--nx-pink-10);
+$nx-pink-800: var(--nx-pink-20);
+$nx-pink-700: var(--nx-pink-30);
+$nx-pink-600: var(--nx-pink-40);
+$nx-pink-500: var(--nx-pink-50);
+$nx-pink-400: var(--nx-pink-60);
+$nx-pink-300: var(--nx-pink-70);
+$nx-pink-200: var(--nx-pink-80);
+$nx-pink-100: var(--nx-pink-90);
+$nx-pink-50: var(--nx-pink-95);
+
+$nx-green-1000: var(--nx-green-10);
+$nx-green-900: var(--nx-green-10);
+$nx-green-800: var(--nx-green-20);
+$nx-green-700: var(--nx-green-30);
+$nx-green-600: var(--nx-green-40);
+$nx-green-500: var(--nx-green-50);
+$nx-green-400: var(--nx-green-60);
+$nx-green-300: var(--nx-green-70);
+$nx-green-200: var(--nx-green-80);
+$nx-green-100: var(--nx-green-90);
+$nx-green-50: var(--nx-green-95);
+$nx-green-25: var(--nx-green-95);
+$nx-green-5: var(--nx-green-95);
+
+$nx-orange-1000: var(--nx-orange-40);
+$nx-orange-900: var(--nx-orange-45);
+$nx-orange-800: var(--nx-orange-50);
+$nx-orange-700: var(--nx-orange-55);
+$nx-orange-600: var(--nx-orange-60);
+$nx-orange-500: var(--nx-orange-65);
+$nx-orange-400: var(--nx-orange-70);
+$nx-orange-300: var(--nx-orange-75);
+$nx-orange-200: var(--nx-orange-80);
+$nx-orange-100: var(--nx-orange-85);
+$nx-orange-50: var(--nx-orange-90);
+
+$nx-yellow-1000: var(--nx-yellow-45);
+$nx-yellow-900: var(--nx-yellow-50);
+$nx-yellow-800: var(--nx-yellow-55);
+$nx-yellow-700: var(--nx-yellow-65);
+$nx-yellow-600: var(--nx-yellow-70);
+$nx-yellow-500: var(--nx-yellow-75);
+$nx-yellow-400: var(--nx-yellow-80);
+$nx-yellow-300: var(--nx-yellow-85);
+$nx-yellow-200: var(--nx-yellow-90);
+$nx-yellow-100: var(--nx-yellow-95);
+$nx-yellow-50: var(--nx-yellow-95);
+
+$nx-red-1000: var(--nx-red-35);
+$nx-red-900: var(--nx-red-40);
+$nx-red-800: var(--nx-red-45);
+$nx-red-700: var(--nx-red-50);
+$nx-red-600: var(--nx-red-55);
+$nx-red-500: var(--nx-red-60);
+$nx-red-400: var(--nx-red-65);
+$nx-red-300: var(--nx-red-70);
+$nx-red-200: var(--nx-red-75);
+$nx-red-100: var(--nx-red-80);
+$nx-red-50: var(--nx-red-90);
+$nx-red-25: var(--nx-red-95);
+
+$nx-turquoise-1000: var(--nx-turquoise-10);
+$nx-turquoise-900: var(--nx-turquoise-10);
+$nx-turquoise-800: var(--nx-turquoise-20);
+$nx-turquoise-700: var(--nx-turquoise-30);
+$nx-turquoise-600: var(--nx-turquoise-40);
+$nx-turquoise-500: var(--nx-turquoise-50);
+$nx-turquoise-400: var(--nx-turquoise-60);
+$nx-turquoise-300: var(--nx-turquoise-70);
+$nx-turquoise-200: var(--nx-turquoise-80);
+$nx-turquoise-100: var(--nx-turquoise-90);
+$nx-turquoise-50: var(--nx-turquoise-95);
+
+$nx-purple-1000: var(--nx-purple-10);
+$nx-purple-900: var(--nx-purple-10);
+$nx-purple-800: var(--nx-purple-20);
+$nx-purple-700: var(--nx-purple-30);
+$nx-purple-600: var(--nx-purple-40);
+$nx-purple-500: var(--nx-purple-50);
+$nx-purple-400: var(--nx-purple-60);
+$nx-purple-300: var(--nx-purple-70);
+$nx-purple-200: var(--nx-purple-80);
+$nx-purple-100: var(--nx-purple-90);
+$nx-purple-50: var(--nx-purple-95);
+
+$nx-indigo-1100: var(--nx-indigo-10);
+$nx-indigo-1000: var(--nx-indigo-10);
+$nx-indigo-900: var(--nx-indigo-20);
+$nx-indigo-800: var(--nx-indigo-30);
+$nx-indigo-700: var(--nx-indigo-40);
+$nx-indigo-600: var(--nx-indigo-50);
+$nx-indigo-500: var(--nx-indigo-60);
+$nx-indigo-400: var(--nx-indigo-70);
+$nx-indigo-300: var(--nx-indigo-80);
+$nx-indigo-200: var(--nx-indigo-90);
+$nx-indigo-100: var(--nx-indigo-95);
+$nx-indigo-50: var(--nx-indigo-95);

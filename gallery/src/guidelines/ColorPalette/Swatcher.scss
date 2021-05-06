@@ -9,7 +9,7 @@
 .gallery-card-swatch {
   display: flex;
   flex-grow: 1;
-  max-width: 380px;
+  max-width: 500px;
 
   .nx-h3 {
     text-transform: capitalize;
@@ -49,6 +49,6 @@
 }
 
 .gallery-swatch__hex {
-  flex-basis: 7ch;
+  flex-basis: 25ch;
   margin-right: var(--nx-spacing-6x);
 }
