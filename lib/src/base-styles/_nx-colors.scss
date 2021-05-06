@@ -10,9 +10,9 @@
   --nx-color-border-form-element: var(--nx-grey-05);
   --nx-color-border-form-element-pristine: var(--nx-indigo-95);
   --nx-color-border-disabled: var(--nx-grey-50);
-  --nx-color-border-focus: var(--nx-teal-65);
+  --nx-color-border-focus: var(--nx-teal-45);
 
-  --nx-color-box-shadow-focus: transparentize(var(--nx-teal-65), 0.7);
+  --nx-color-box-shadow-focus: hsla(var(--nx-teal-hs), 65%, 0.3);
 
   --nx-color-background-component: var(--nx-white);
   --nx-color-background-site: var(--nx-indigo-97);
