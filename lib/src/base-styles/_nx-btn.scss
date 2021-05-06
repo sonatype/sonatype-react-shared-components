@@ -20,7 +20,7 @@
   @include container-horizontal;
   @extend %nx-btn--disabled;
 
-  background-color: $nx-white;
+  background-color: var(--nx-white);
   border: 1px solid $nx-blue-600;
   border-radius: 6px;
   color: $nx-blue-600;
@@ -58,7 +58,7 @@
 
   background-color: $nx-blue-600;
   border-color: transparent;
-  color: $nx-white;
+  color: var(--nx-white);
 
   &:hover {
     background-color: $nx-blue-800;
@@ -96,12 +96,12 @@
 
   background-color: $nx-red-800;
   border-color: $nx-red-800;
-  color: $nx-white;
+  color: var(--nx-white);
 
   &:hover, &:focus, &:active {
     background-color: $nx-red-1000;
     border-color: $nx-red-1000;
-    color: $nx-white;
+    color: var(--nx-white);
   }
 
   &:focus {
@@ -115,7 +115,7 @@
   }
 
   .nx-icon {
-    color: $nx-white;
+    color: var(--nx-white);
     height: 16px;
   }
 }

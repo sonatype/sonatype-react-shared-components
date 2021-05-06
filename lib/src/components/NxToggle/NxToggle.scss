@@ -62,7 +62,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
       background-color: $nx-blue-600;
 
       .nx-toggle__indicator {
-        background-color: $nx-white;
+        background-color: var(--nx-white);
         margin-left: 20px;
       }
     }
@@ -74,7 +74,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
 }
 
 .nx-toggle__control {
-  background-color: $nx-white;
+  background-color: var(--nx-white);
   border: 1px solid $nx-blue-600;
   border-radius: 12px;
   box-sizing: border-box;

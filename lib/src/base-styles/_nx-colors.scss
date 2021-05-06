@@ -14,7 +14,7 @@
 
   --nx-color-box-shadow-focus: #{transparentize($nx-teal-300, 0.7)};
 
-  --nx-color-background-component: #{$nx-white};
+  --nx-color-background-component: var(--nx-white);
   --nx-color-background-site: #{$nx-grey-50};
   --nx-color-background-selected: #{$nx-blue-200};
   --nx-color-background-active: #{$nx-blue-200};
