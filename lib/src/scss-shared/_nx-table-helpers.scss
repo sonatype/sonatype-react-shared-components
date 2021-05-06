@@ -14,12 +14,11 @@
 // NOTE: only works if rows display the standard single line of text. Wrapping text within a row, or any other larger
 // content, will increase the height of the row and prevent this calculation from being accurate.
 @function pagination-table-height($body-row-count, $header-filter-row-count: 0, $header-row-count: 1) {
-  $nx-table-cell-vertical-padding: var(--nx-spacing-sm);
+  $text-input-height: 42px;
   $body-row-height: $nx-table-cell-min-height;
   $header-row-height: $nx-table-cell-header-height;
 
-  // 42 is the effective height of a text input
-  $header-filter-row-height: calc(42px + (#{$nx-table-cell-vertical-padding} * 2) + 1px);
+  $header-filter-row-height: calc(#{text-input-height} + (#{$nx-table-cell-vertical-padding} * 2) + 1px);
   $footer-height: calc(#{$nx-pagination-button-height} + (#{$nx-table-footer-vertical-padding} * 2) + 1px);
 
   @return calc(#{

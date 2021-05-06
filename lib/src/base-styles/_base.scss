@@ -16,13 +16,12 @@
 //@import '~normalize.css';
 
 // Within the base styles, the scss-shared content should only be imported once - right here
-@import '../scss-shared/nx-variables';
+@import '../scss-shared/nx-table-variables';
 @import '../scss-shared/nx-container-helpers';
 @import '../scss-shared/nx-text-helpers';
 @import '../scss-shared/nx-flexbox-helpers';
 @import '../scss-shared/nx-button-helpers';
 
-@import 'nx-table-variables';
 
 @import 'nx-colors';
 @import 'nx-globals';
