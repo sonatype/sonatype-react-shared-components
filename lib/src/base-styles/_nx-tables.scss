@@ -81,7 +81,7 @@
         }
       }
 
-      &:focus {
+      &:focus-within {
         box-shadow: $nx-focus-box-shadow;
         outline: none;
 
@@ -200,6 +200,18 @@
   min-height: $nx-table-cell-min-height;
   padding: $nx-table-cell-vertical-padding $nx-spacing-md;
   vertical-align: top;
+
+  > .nx-btn-bar {
+    // buttons should be 8px from row edges even though row padding is 12px
+    margin-top: -$nx-spacing-xxs;
+    margin-bottom: -$nx-spacing-xxs;
+  }
+
+  &:not(.nx-cell--header) > .nx-btn-bar {
+    .nx-btn--icon-only {
+      @include nx-small-icon-btn;
+    }
+  }
 }
 
 .nx-cell--label {
@@ -269,5 +281,27 @@
 
   > :nth-child(2) path {
     color: $nx-blue-600;
+  }
+}
+
+.nx-cell__sort-btn, .nx-cell__chevron-btn {
+  @include container-horizontal;
+
+  width: calc(100% + 2 * #{$nx-spacing-md});
+  text-align: left;
+  text-transform: uppercase;
+
+  &, &:hover, &:active, &:focus {
+    border: none;
+    background: none;
+    font: inherit;
+    outline: none;
+  }
+
+  // first and last child selectors necessary for specificity
+  &, &:first-child, &:last-child {
+    // make button take up entire header including its padding box
+    margin: #{-$nx-spacing-sm} #{-$nx-spacing-md};
+    padding: $nx-spacing-sm $nx-spacing-md;
   }
 }

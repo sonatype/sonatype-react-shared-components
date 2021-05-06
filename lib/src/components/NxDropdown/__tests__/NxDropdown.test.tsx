@@ -101,18 +101,23 @@ describe('NxDropdown', () => {
     expect(component).toHaveProp('title', 'title-prop');
   });
 
-  it('renders the children within the .nx-dropdown-menu, each wrapped in NxOverflowTooltip', function() {
+  it('renders the children within the .nx-dropdown-menu, wrapping nx-dropdown-links and nx-dropdown-buttons ' +
+      'in NxOveflowTooltip', function() {
     const children = [
       <a id="link1" key="1">Link1</a>,
-      <a id="link2" key="2">Link2</a>
+      <a id="link2" className="nx-dropdown-link" key="2">Link2</a>,
+      <button id="link3" className="nx-dropdown-button" key="3">Link3</button>,
+      <button id="link4" className="nx-dropdown-right-button" key="4">Link4</button>
     ];
     const component = getShallowComponent({ children, isOpen: true }),
         menu = component.find('.nx-dropdown-menu');
 
     expect(menu).toMatchElement(
       <div className="nx-dropdown-menu">
-        <NxOverflowTooltip><a id="link1" key="1">Link1</a></NxOverflowTooltip>
-        <NxOverflowTooltip><a id="link2" key="2">Link2</a></NxOverflowTooltip>
+        <a id="link1" key="1">Link1</a>
+        <NxOverflowTooltip><a id="link2" key="2" className="nx-dropdown-link">Link2</a></NxOverflowTooltip>
+        <NxOverflowTooltip><button id="link3" key="3" className="nx-dropdown-button">Link3</button></NxOverflowTooltip>
+        <button id="link4" key="4" className="nx-dropdown-right-button">Link4</button>
       </div>
     );
   });

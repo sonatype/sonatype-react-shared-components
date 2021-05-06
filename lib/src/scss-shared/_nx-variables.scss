@@ -56,7 +56,10 @@ $nx-table-cell-vertical-padding: $nx-spacing-sm;
 $nx-table-cell-min-height: 48px; //content box only
 $nx-table-footer-vertical-padding: $nx-spacing-l;
 
-$nx-pagination-button-height: 40px;
+// the effective height that pagination buttons (and currently, most buttons) have.
+// Use to decide the min width for pagination buttons (they should be no narrower than they are tall)
+// and also for calculating the height of a pagination table in the pagination-table-height mixin
+$nx-pagination-button-height: $nx-font-size * $nx-line-height + 2 * ($nx-spacing-xs + 1);
 
 //  Borders
 $nx-border-radius: 6px;

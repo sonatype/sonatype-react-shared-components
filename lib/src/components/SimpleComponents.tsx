@@ -47,7 +47,8 @@ export const NxCard = Object.assign(withClass('section', 'nx-card'), {
 
 export const NxGrid = {
   Row: withClass('div', 'nx-grid-row'),
-  Column: withClass('div', 'nx-grid-col'),
+  Column: withClass('section', 'nx-grid-col'),
+  ColumnSection: withClass('section', 'nx-grid-col__section'),
   HorizontalKeyline: withClass('div', 'nx-grid-h-keyline'),
   Header: withClass('div', 'nx-grid-header'),
   HeaderHrule: withClass('hr', 'nx-grid-header__hrule')
@@ -63,6 +64,8 @@ export const NxList = Object.assign(withClass('ul', 'nx-list'), {
 });
 
 export const NxPageTitle = Object.assign(withClass('div', 'nx-page-title'), {
+  Headings: withClass('div', 'nx-page-title__headings'),
+  Subtitle: withClass('h2', 'nx-h2 nx-page-title__sub-title'),
   Description: withClass('div', 'nx-page-title__description'),
   Tags: withClass('div', 'nx-page-title__tags')
 });
@@ -74,4 +77,8 @@ export const NxReadOnly = Object.assign(withClass('dl', 'nx-read-only'), {
 
 export const NxTableContainer = Object.assign(withClass('div', 'nx-table-container'), {
   Footer: withClass('div', 'nx-table-container__footer')
+});
+
+export const NxGlobalHeader = Object.assign(withClass('aside', 'nx-global-header'), {
+  Actions: withClass('div', 'nx-global-header__actions')
 });

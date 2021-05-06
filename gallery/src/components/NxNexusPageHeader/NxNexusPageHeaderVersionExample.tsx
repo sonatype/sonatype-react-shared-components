@@ -26,9 +26,11 @@ const NxNexusPageHeaderVersionExample = () => {
     <NxNexusPageHeader productInfo={{ name: 'Test Product', version: '1.0.0' }}
                        homeLink="#"
                        links={links}>
-      <NxButton variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faSave}/></NxButton>
+      <NxButton title="Save" variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faSave}/></NxButton>
       <div className="nx-page-header__extra-content-divider"></div>
-      <NxButton variant="icon-only" onClick={onButtonClick}><NxFontAwesomeIcon icon={faCog}/></NxButton>
+      <NxButton title="Settings" variant="icon-only" onClick={onButtonClick}>
+        <NxFontAwesomeIcon icon={faCog}/>
+      </NxButton>
     </NxNexusPageHeader>
   );
 };

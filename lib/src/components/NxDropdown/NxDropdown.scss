@@ -7,6 +7,7 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
+@import '../../scss-shared/nx-button-helpers';
 
 $nx-dropdown-width: 250px;
 
@@ -145,8 +146,14 @@ $nx-dropdown-width: 250px;
 }
 
 .nx-dropdown-right-button {
+  @include nx-small-icon-btn;
   float: right;
-  margin: $nx-spacing-xxs $nx-spacing-xs $nx-spacing-xxs $nx-spacing-l;
+  margin-right: $nx-spacing-xs;
+  margin-left: $nx-spacing-l;
+
+  // take off a px to make room for the button border
+  margin-top: $nx-spacing-xxs - 1px;
+  margin-bottom: $nx-spacing-xxs - 1px;
 
   + .nx-dropdown-button {
     display: block;

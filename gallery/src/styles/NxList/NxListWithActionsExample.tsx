@@ -15,7 +15,7 @@ const NxListErrorExample = () =>
         List item
       </span>
       <div className="nx-list__actions">
-        <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+        <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
       </div>
     </li>
     <li className="nx-list__item">
@@ -28,8 +28,8 @@ const NxListErrorExample = () =>
         San Francisco skyscraper convenience store
       </span>
       <div className="nx-list__actions">
-        <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
-        <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
+        <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+        <NxButton title="Trash" variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
       </div>
     </li>
     <li className="nx-list__item">
@@ -42,8 +42,8 @@ const NxListErrorExample = () =>
         San Francisco skyscraper convenience store
       </span>
       <div className="nx-list__actions">
-        <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
-        <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
+        <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+        <NxButton title="Trash" variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
       </div>
     </li>
   </ul>;

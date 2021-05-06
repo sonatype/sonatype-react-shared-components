@@ -101,6 +101,9 @@ import IdUtilPage from './jsUtilPages/IdUtil/IdUtilPage';
 import WithClassPage from './jsUtilPages/WithClass/WithClassPage';
 import NxTextLinkPage from './components/NxTextLink/NxTextLinkPage';
 import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPage';
+import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPage';
+import NxStatefulGlobalSidebarPage from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarPage';
+import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -125,6 +128,8 @@ const pageConfig: PageConfig = {
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
     NxForm: NxFormPage,
     NxFormGroup: NxFormGroupPage,
+    NxGlobalSidebar: NxGlobalSidebarPage,
+    NxStatefulGlobalSidebar: NxStatefulGlobalSidebarPage,
     NxLoadError: NxLoadErrorPage,
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,
@@ -173,15 +178,16 @@ const pageConfig: PageConfig = {
     'nx-card': NxCardPage,
     'nx-code': NxCodePage,
     'nx-counter': NxCounterPage,
+    'nx-fieldset': NxFieldsetStylePage,
+    'nx-form-group': NxFormGroupStylePage,
+    'nx-form-select': NxFormSelectPage,
+    'nx-global-header': NxGlobalHeaderPage,
     'nx-grid': NxGridPage,
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
     'nx-page-title': NxPageTitlePage,
     'nx-pre': NxPrePage,
     'nx-read-only': NxReadOnlyPage,
-    'nx-fieldset': NxFieldsetStylePage,
-    'nx-form-group': NxFormGroupStylePage,
-    'nx-form-select': NxFormSelectPage,
     'nx-table': NxTableStylePage,
     'nx-table-container': NxTableContainerPage,
     'nx-threat-number': NxThreatNumberPage,

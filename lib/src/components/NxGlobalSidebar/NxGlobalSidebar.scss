@@ -7,11 +7,11 @@
 @import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
+@import '../../scss-shared/nx-button-helpers';
 
 $nx-global-sidebar-width-open: 250px;
 $nx-global-sidebar-width-closed: 72px;
 $nx-global-sidebar-logo-height: 34px;
-$nx-global-sidebar-toggle-size: 32px;
 
 $nx-global-sidebar-text-color: $nx-white;
 $nx-global-sidebar-background-color: $nx-blue-1000;
@@ -32,7 +32,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   color: $nx-global-sidebar-text-color;
   display: flex;
   flex-direction: column;
-  flex: none;
+  grid-area: global-sidebar;
   padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-l $nx-spacing-l;
   width: $nx-global-sidebar-width-open;
 
@@ -49,13 +49,12 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-global-sidebar__toggle {
+  @include nx-small-icon-btn;
   border-color: transparent;
   border-radius: 50%;
   color: $nx-global-sidebar-text-color;
   flex: none;
-  height: $nx-global-sidebar-toggle-size;
   margin: 0;
-  width: $nx-global-sidebar-toggle-size;
 
   &:focus {
     border-color: $nx-focus-border-color;
@@ -133,8 +132,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   width: $nx-global-sidebar-width-closed;
 
   .nx-global-sidebar__expanded-content {
-    display: inline-block;
-    visibility: hidden;
+    display: none;
   }
 
   .nx-global-sidebar__header {
@@ -144,5 +142,10 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   .nx-global-sidebar__navigation-link {
     text-align: center;
     text-overflow: revert;
+  }
+
+  .nx-global-sidebar__navigation-text {
+    display: inline-block;
+    visibility: hidden;
   }
 }

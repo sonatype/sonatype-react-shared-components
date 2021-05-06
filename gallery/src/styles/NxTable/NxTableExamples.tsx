@@ -5,10 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTableClickableExample from './NxTableClickableExample';
+import NxTableIconButtonExample from './NxTableIconButtonExample';
 import NxTableErrorExample from './NxTableErrorStateExample';
 import NxTableFixedLayoutExample from './NxTableFixedLayoutExample';
 import NxTableSortableExample from './NxTableSortableExample';
@@ -19,6 +21,7 @@ import './NxTableFixedLayoutExample.scss';
 
 const NxTableSimpleCode = require('./NxTableDefaultExample.html'),
     NxTableClickableCode = require('./NxTableClickableExample?raw'),
+    NxTableIconButtonCode = require('./NxTableIconButtonExample?raw'),
     NxTableEmptyCode = require('./NxTableEmptyExample.html'),
     NxTableErrorStateCode = require('./NxTableErrorStateExample?raw'),
     NxTableTruncationAndWrappingCode = require('./NxTableTruncationAndWrappingExample.html'),
@@ -88,7 +91,8 @@ const NxTablesExamples = () =>
                         liveExample={NxTableSortableExample}
                         codeExamples={NxTableSortableCode}>
       A demonstration of a <code className="nx-code">nx-table</code> used for columns that can be sorted.
-      In this example the interactivity to sort columns is not wired up.
+      In this example the interactivity to sort columns is not wired up. Note
+      the <NxCode>&lt;button&gt;</NxCode> surrounding the sort header contents.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table with Filter Rows Example"
@@ -96,7 +100,17 @@ const NxTablesExamples = () =>
                         codeExamples={NxTableFilterCode}>
       A demonstration of a <code className="nx-code">nx-table</code> with a header
       cell that contains a filter. Rows can be filtered depending on the text provided in the input.
-      In this example the interactivity to filter content is not wired up.
+      In this example the interactivity to filter content is not wired up. Note
+      the <NxCode>&lt;button&gt;</NxCode> surrounding the chevron cell contents.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Table with Icon Buttons Example"
+                        id="nx-table-icon-buttons-example"
+                        liveExample={NxTableIconButtonExample}
+                        codeExamples={NxTableIconButtonCode}>
+      A demonstration of an <NxCode>nx-table</NxCode> with icon-only buttons in both the filter row
+      and the content rows. Note that the buttons in the filter row are the standard height while the buttons in the
+      content rows are smaller. The default styles only support these sorts of buttons in the rightmost column.
     </GalleryExampleTile>
   </>;
 

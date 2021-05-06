@@ -32,7 +32,7 @@ export default function NxOverflowTooltipExample() {
             this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip
           </span>
           <div className="nx-list__actions">
-            <NxButton variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+            <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
           </div>
         </li>
       </NxOverflowTooltip>

@@ -41,15 +41,7 @@ module.exports = function(env = { production: false }) {
         resourceQuery: /^(?!\?raw$).*/,
         loader: 'ts-loader',
         include: [
-          path.resolve(__dirname, 'src'),
-
-          // the following dependencies use ES6 module syntax (import/export statements). In this build, we handle
-          // that syntax with the ts-loader even though these aren't typescript files. Webpack has other ways of
-          // handling module syntax either by itself or with babel, for consuming projects which do not use TypeScript.
-          path.resolve(__dirname, 'node_modules/fuse.js/'),
-          path.resolve(__dirname, 'node_modules/query-string/'),
-          path.resolve(__dirname, 'node_modules/split-on-first/'),
-          path.resolve(__dirname, 'node_modules/strict-uri-encode/')
+          path.resolve(__dirname, 'src')
         ]
       }, {
         // Loader pipeline for bundling SASS/SCSS stylesheets. As described in the sass-loader documentation, a series

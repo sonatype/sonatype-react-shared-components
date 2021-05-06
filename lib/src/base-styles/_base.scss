@@ -20,12 +20,14 @@
 @import '../scss-shared/nx-container-helpers';
 @import '../scss-shared/nx-text-helpers';
 @import '../scss-shared/nx-flexbox-helpers';
+@import '../scss-shared/nx-button-helpers';
 
 @import 'nx-globals';
 @import 'nx-typography';
 
 @import 'nx-page-header';
 @import 'nx-page-layout';
+@import 'nx-global-header';
 @import 'nx-page';
 @import 'nx-footer';
 @import 'nx-tile';
