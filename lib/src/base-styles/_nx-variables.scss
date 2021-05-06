@@ -46,12 +46,4 @@
 
   // similar to above, but for use in drop-shadow filters rather than box-shadow properties
   --nx-drop-shadow-focus: 0 0 3px var(--nx-color-box-shadow-focus);
-
-  // deprecated unprefixed variables
-  --page-width-max: var(--nx-width-page-max);
-  --page-width-min: var(--nx-width-page-min);
-  --content-width-proportion: var(--nx-width-content-proportion);
-  --content-width: var(--nx-width-content);
-  --sidebar-width: var(--nx-width-sidebar);
-  --scrollbar-width: var(--nx-width-scrollbar);
 }
