@@ -8,7 +8,7 @@ import React, { useState, useEffect } from 'react';
 import { toPairs } from 'ramda';
 
 import './ColorPaletteExample.scss';
-import { NxCard, NxH3 } from '@sonatype/react-shared-components';
+import { NxCard, NxH3, NxCode } from '@sonatype/react-shared-components';
 
 const paletteCssPropertyRegex = /^--nx-swatch-(\w+)-\d+$/;
 
@@ -67,12 +67,12 @@ export default function ColorPaletteExample() {
             {colorVars.map(colorVar =>
               <div className="gallery-swatch" key={colorVar}>
                 <div className="gallery-swatch__thumb" style={{backgroundColor: `var(${colorVar})`}}></div>
-                <div className="gallery-swatch__hex">
+                <NxCode className="gallery-swatch__hex">
                   {bodyStyles.getPropertyValue(colorVar)}
-                </div>
-                <div className="gallery-swatch__variable">
+                </NxCode>
+                <NxCode className="gallery-swatch__variable">
                   {colorVar}
-                </div>
+                </NxCode>
               </div>
             )}
           </div>
@@ -86,17 +86,17 @@ export default function ColorPaletteExample() {
         <NxCard.Content>
           <div className="gallery-swatch">
             <div className="gallery-swatch__thumb" style={{backgroundColor: 'var(--nx-swatch-black)'}} />
-            <div className="gallery-swatch__hex">
+            <NxCode className="gallery-swatch__hex">
               {bodyStyles.getPropertyValue('--nx-swatch-black')}
-            </div>
-            <div className="gallery-swatch__variable">--nx-swatch-black</div>
+            </NxCode>
+            <NxCode className="gallery-swatch__variable">--nx-swatch-black</NxCode>
           </div>
           <div className="gallery-swatch">
             <div className="gallery-swatch__thumb" style={{backgroundColor: 'var(--nx-swatch-white)'}} />
-            <div className="gallery-swatch__hex">
+            <NxCode className="gallery-swatch__hex">
               {bodyStyles.getPropertyValue('--nx-swatch-white')}
-            </div>
-            <div className="gallery-swatch__variable">--nx-swatch-white</div>
+            </NxCode>
+            <NxCode className="gallery-swatch__variable">--nx-swatch-white</NxCode>
           </div>
         </NxCard.Content>
       </NxCard>
