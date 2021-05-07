@@ -25,6 +25,11 @@ $nx-global-sidebar-focus-border: 1px solid $nx-focus-border-color;
 $nx-global-sidebar-separator-color: $nx-grey-900;
 
 .nx-global-sidebar {
+  // Override default dark grey & black text colours for white in the sidebar
+  $nx-heading-color: $nx-white;
+  $nx-text-color: $nx-white;
+  $nx-link-color: $nx-white;
+
   @include container-vertical;
 
   background-color: $nx-global-sidebar-background-color;
@@ -147,6 +152,14 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   .nx-global-sidebar__navigation-text {
     display: inline-block;
     visibility: hidden;
+  }
+}
+
+.nx-global-sidebar__other-content {
+  padding: $nx-spacing-md 0;
+
+  + .nx-global-sidebar__footer {
+    border-top: 1px solid $nx-global-sidebar-separator-color;
   }
 }
 

@@ -9,8 +9,6 @@ import CodeExample from '../../CodeExample';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxWarningAlert } from '@sonatype/react-shared-components';
 
-import './NxGlobalSidebarPage.scss';
-
 const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw');
 
 export default function NxGlobalSidebarPage() {
