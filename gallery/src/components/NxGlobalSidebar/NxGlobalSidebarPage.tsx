@@ -223,14 +223,22 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>productText</NxTable.Cell>
                 <NxTable.Cell>String</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>Text string to denote product family, or other custom text.</NxTable.Cell>
+                <NxTable.Cell>Text string to denote product family or other custom text.</NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
                 <NxTable.Cell>showSonatype</NxTable.Cell>
                 <NxTable.Cell>Boolean</NxTable.Cell>
                 <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell>
-                  If true the "Created by Sonatype" tagline is displayed.
+                  If true the "Created by Sonatype" tagline is displayed unless alternate text is provided below.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>sonatypeText</NxTable.Cell>
+                <NxTable.Cell>String</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  Used to provide text that overrides the default "Created by Sonatype" tagline.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
