@@ -18,14 +18,14 @@
   $body-row-height: $nx-table-cell-min-height;
   $header-row-height: $nx-table-cell-header-height;
 
-  $header-filter-row-height: calc(#{text-input-height} + (#{$nx-table-cell-vertical-padding} * 2) + 1px);
+  $header-filter-row-height: calc(#{$text-input-height} + (#{$nx-table-cell-vertical-padding} * 2) + 1px);
   $footer-height: calc(#{$nx-pagination-button-height} + (#{$nx-table-footer-vertical-padding} * 2) + 1px);
 
   @return calc(#{
     ($body-row-count - 1) * ($body-row-height + 1px) + // extra 1px for border
     ($body-row-height) + // last row does not have border
     $header-row-count * $header-row-height} +
-    $header-filter-row-height * $header-filter-row-count +
+    #{$header-filter-row-height} * #{$header-filter-row-count} +
     #{$footer-height}
   );
 }
