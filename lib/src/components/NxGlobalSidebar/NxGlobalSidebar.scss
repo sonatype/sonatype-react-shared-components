@@ -156,7 +156,9 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-global-sidebar__other-content {
-  padding: $nx-spacing-md 0;
+  @include container-vertical;
+
+  padding-bottom: $nx-spacing-md;
 
   + .nx-global-sidebar__footer {
     border-top: 1px solid $nx-global-sidebar-separator-color;
