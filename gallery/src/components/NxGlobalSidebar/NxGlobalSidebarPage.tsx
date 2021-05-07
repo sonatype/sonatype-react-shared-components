@@ -163,6 +163,81 @@ export default function NxGlobalSidebarPage() {
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
+            <h3 className="nx-h3"><NxCode>NxGlobalSidebarFooter</NxCode> Props</h3>
+          </NxTile.SubsectionHeader>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Prop</NxTable.Cell>
+                <NxTable.Cell>Type</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Details</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>showSupport</NxTable.Cell>
+                <NxTable.Cell>Boolean</NxTable.Cell>
+                <NxTable.Cell>Yes</NxTable.Cell>
+                <NxTable.Cell>
+                  If true the support link is shown. At minimum <NxCode>supportLink</NxCode> below should be
+                  provided.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>supportIcon</NxTable.Cell>
+                <NxTable.Cell>IconDefinition</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  The support link has an icon to its left, by default it is a circle enclosing a question mark
+                  (<NxCode>faQuestionCircle</NxCode>) this specifies an alternate icon to be used.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>supportText</NxTable.Cell>
+                <NxTable.Cell>string</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  Alternate text that should appear in the support link, by default the text reads "Help and Support".
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>supportLink</NxTable.Cell>
+                <NxTable.Cell>string</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>URL</NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>releaseText</NxTable.Cell>
+                <NxTable.Cell>String</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>Text that appears before the release number.</NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>releaseNumber</NxTable.Cell>
+                <NxTable.Cell>String</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>A release number.</NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>productText</NxTable.Cell>
+                <NxTable.Cell>String</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>Text string to denote product family, or other custom text.</NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>showSonatype</NxTable.Cell>
+                <NxTable.Cell>Boolean</NxTable.Cell>
+                <NxTable.Cell>Yes</NxTable.Cell>
+                <NxTable.Cell>
+                  If true the "Created by Sonatype" tagline is displayed.
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
+          </NxTable>
+        </NxTile.Subsection>
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
             <NxH3>CSS Classes</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>The following CSS classes are available for use on child elements.</NxP>
@@ -181,6 +256,13 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>
                   Content wrapped with <NxCode>nx-global-sidebar__expanded-content</NxCode> will appear in the
                   expanded view, but will not be displayed in the collapsed view.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell><NxCode>nx-global-sidebar__other-content</NxCode></NxTable.Cell>
+                <NxTable.Cell>element</NxTable.Cell>
+                <NxTable.Cell>
+                  A simple container for content that will appears below the navigation and above the footer.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
