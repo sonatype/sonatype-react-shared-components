@@ -151,27 +151,35 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-global-sidebar__footer {
+  @include container-vertical;
+
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: $nx-font-size-xs;
   margin-top: auto;
+  padding-top: $nx-spacing-xxl;
   padding-bottom: $nx-spacing-l;
   text-align: center;
 }
 
 .nx-global-sidebar__support {
-  height: 2em * $nx-line-height;
+  margin-bottom: $nx-spacing-xxl;
+}
+
+.nx-global-sidebar__support-text {
+  font-size: $nx-font-size-s;
 }
 
 .nx-global-sidebar__release {
-  height: 2em * $nx-line-height;
+  font-size: $nx-font-size-xs;
+  margin-bottom: $nx-spacing-xl;
 }
 
-.nx-global-sidebar__powered-by {
-  margin-top: $nx-spacing-sm;
+.nx-global-sidebar__product {
+  font-size: $nx-font-size-xs;
+  margin-bottom: $nx-spacing-xs;
 }
 
-.nx-global-sidebar__created-by {
-  margin-top: $nx-spacing-md;
+.nx-global-sidebar__sonatype {
+  font-size: $nx-font-size-xs;
 }

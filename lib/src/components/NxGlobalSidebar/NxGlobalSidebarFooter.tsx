@@ -8,18 +8,22 @@
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxTextLink from '../NxTextLink/NxTextLink';
 
 import { NxGlobalSidebarFooterProps as Props, nxGlobalSidebarFooterPropTypes } from './types';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 export { NxGlobalSidebarFooterProps } from './types';
 
 const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSidebarLinks(props) {
   const {
     className,
     showSupport,
+    supportIcon,
     supportText,
     supportLink,
     releaseText,
+    releaseNumber,
     productText,
     showSonatype,
     sonatypeText,
@@ -30,16 +34,34 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
     <footer className={classes} {...otherProps}>
       { showSupport &&
         <div className="nx-global-sidebar__support">
-          <NxTextLink external href={supportLink || undefined}>
-            {supportText || 'Help and Support'}
+          <NxTextLink href={supportLink || undefined}>
+            <NxFontAwesomeIcon icon={supportIcon || faQuestionCircle} />
+            <span className="nx-global-sidebar__support-text nx-global-sidebar__expanded-content">
+              {supportText || 'Help and Support'}
+            </span>
           </NxTextLink>
         </div> }
 
-      { releaseText ? <div className="nx-global-sidebar__release">{releaseText || undefined}</div> : null}
+      { releaseText ?
+        <div className="nx-global-sidebar__release">
+          <span className="nx-global-sidebar__release-text nx-global-sidebar__expanded-content">
+            {releaseText || undefined}
+          </span>{' '}
+          <span className="nx-global-sidebar__release-number">{releaseNumber || undefined}</span>
+        </div> : null
+      }
 
-      { productText ? <div className="nx-global-sidebar__product">{productText || undefined}</div> : null}
+      { productText ?
+        <div className="nx-global-sidebar__product nx-global-sidebar__expanded-content">
+          {productText || undefined}
+        </div> : null
+      }
 
-      { showSonatype && <div className="nx-global-sidebar__sonatype">{sonatypeText || 'Created by Sonatype'}</div> }
+      { showSonatype &&
+        <div className="nx-global-sidebar__sonatype nx-global-sidebar__expanded-content">
+          {sonatypeText || 'Created by Sonatype'}
+        </div>
+      }
     </footer>
   );
 };

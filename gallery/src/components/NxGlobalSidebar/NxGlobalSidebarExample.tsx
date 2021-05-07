@@ -16,10 +16,13 @@ import {
   NxPageMain }
   from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
+import packageJson from '../../../package.json';
+
 const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 
 export default function NxGlobalSidebarExample() {
   const [sidebarOpen, onToggleCollapse] = useToggle(true);
+
   return (
     <>
       <NxGlobalSidebar isOpen={sidebarOpen}
@@ -56,8 +59,9 @@ export default function NxGlobalSidebarExample() {
         <NxGlobalSidebarFooter showSupport={true}
                                supportText="Support from the Villains"
                                supportLink="http://www.plaid-villains.com"
-                               releaseText="PV 0.2.3b"
-                              //  productText="Powered by Pure Villainy"
+                               releaseText="React Shared Components"
+                               releaseNumber={packageJson.version}
+                               productText="Powered by Pure Villainy"
                                showSonatype={true}>
         </NxGlobalSidebarFooter>
       </NxGlobalSidebar>

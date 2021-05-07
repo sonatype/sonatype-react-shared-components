@@ -60,6 +60,7 @@ export interface NxGlobalSidebarFooterProps {
   supportText?: string | null;
   supportLink?: string | null;
   releaseText?: string | null;
+  releaseNumber?: string | null;
   productText?: string | null;
   showSonatype: boolean;
   sonatypeText?: string | null;
@@ -73,6 +74,7 @@ export const nxGlobalSidebarFooterPropTypes: ValidationMap<NxGlobalSidebarFooter
   supportText: PropTypes.string,
   supportLink: PropTypes.string,
   releaseText: PropTypes.string,
+  releaseNumber: PropTypes.string,
   productText: PropTypes.string,
   showSonatype: PropTypes.bool.isRequired,
   sonatypeText: PropTypes.string,
