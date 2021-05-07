@@ -42,7 +42,7 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
           </NxTextLink>
         </div> }
 
-      { releaseText ?
+      { releaseText || releaseNumber ?
         <div className="nx-global-sidebar__release">
           <span className="nx-global-sidebar__release-text nx-global-sidebar__expanded-content">
             {releaseText || undefined}
