@@ -48,7 +48,9 @@ export default function NxGlobalSidebarExample() {
                                          text="NxPagination"
                                          href="#/pages/NxPagination"/>
         </NxGlobalSidebarNavigation>
-        <section className="gallery-custom-sidebar-content nx-global-sidebar__expanded-content">
+        <section className="gallery-custom-sidebar-content
+                            nx-global-sidebar__other-content
+                            nx-global-sidebar__expanded-content">
           <NxH3>
             Custom Content
           </NxH3>
