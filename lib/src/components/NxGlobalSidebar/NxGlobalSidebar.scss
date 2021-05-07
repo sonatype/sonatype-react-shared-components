@@ -179,6 +179,11 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 
 .nx-global-sidebar__support {
   margin-bottom: $nx-spacing-xxl;
+
+  .nx-text-link {
+    align-items: center;
+    display: flex;
+  }
 }
 
 .nx-global-sidebar__support-text {
