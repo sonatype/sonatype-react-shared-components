@@ -59,11 +59,11 @@ export default function NxGlobalSidebarExample() {
           </NxP>
         </section>
         <NxGlobalSidebarFooter showSupport={true}
-                               supportText="Support from the Villains"
-                               supportLink="http://www.plaid-villains.com"
+                               supportText="Support for RSC"
+                               supportLink="https://github.com/sonatype/sonatype-react-shared-components"
                                releaseText="React Shared Components"
                                releaseNumber={packageJson.version}
-                               productText="Powered by Pure Villainy"
+                               productText="Powered by PLAID VILLAIN"
                                showSonatype={true}>
         </NxGlobalSidebarFooter>
       </NxGlobalSidebar>
