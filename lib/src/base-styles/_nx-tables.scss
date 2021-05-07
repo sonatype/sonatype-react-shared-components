@@ -221,7 +221,7 @@
 
 .nx-cell--header {
   @include bold;
-  background-color: var(--nx-indigo-80);
+  background-color: var(--nx-swatch-indigo-80);
   border-top: none;
   box-sizing: border-box;
 
@@ -277,11 +277,11 @@
   margin-left: var(--nx-spacing-base);
 
   > :first-child path {
-    color: var(--nx-white);
+    color: var(--nx-swatch-white);
   }
 
   > :nth-child(2) path {
-    color: var(--nx-blue-40);
+    color: var(--nx-swatch-blue-40);
   }
 }
 

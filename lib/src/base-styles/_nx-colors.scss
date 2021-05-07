@@ -5,38 +5,38 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 :root {
-  --nx-color-border-default: var(--nx-indigo-95);
-  --nx-color-border-subsection: var(--nx-grey-80);
-  --nx-color-border-form-element: var(--nx-grey-05);
-  --nx-color-border-form-element-pristine: var(--nx-indigo-95);
-  --nx-color-border-disabled: var(--nx-grey-50);
-  --nx-color-border-focus: var(--nx-teal-45);
+  --nx-color-border-default: var(--nx-swatch-indigo-95);
+  --nx-color-border-subsection: var(--nx-swatch-grey-80);
+  --nx-color-border-form-element: var(--nx-swatch-grey-05);
+  --nx-color-border-form-element-pristine: var(--nx-swatch-indigo-95);
+  --nx-color-border-disabled: var(--nx-swatch-grey-50);
+  --nx-color-border-focus: var(--nx-swatch-teal-45);
 
-  --nx-color-box-shadow-focus: hsla(var(--nx-teal-hs), 65%, 0.3);
+  --nx-color-box-shadow-focus: hsla(var(--nx-swatch-teal-hs), 65%, 0.3);
 
-  --nx-color-background-component: var(--nx-white);
-  --nx-color-background-site: var(--nx-indigo-97);
-  --nx-color-background-selected: var(--nx-blue-80);
-  --nx-color-background-active: var(--nx-blue-80);
-  --nx-color-background-hover: var(--nx-grey-90);
-  --nx-color-background-disabled: var(--nx-grey-80);
+  --nx-color-background-component: var(--nx-swatch-white);
+  --nx-color-background-site: var(--nx-swatch-indigo-97);
+  --nx-color-background-selected: var(--nx-swatch-blue-80);
+  --nx-color-background-active: var(--nx-swatch-blue-80);
+  --nx-color-background-hover: var(--nx-swatch-grey-90);
+  --nx-color-background-disabled: var(--nx-swatch-grey-80);
 
-  --nx-color-text-dark: var(--nx-grey-05);
-  --nx-color-text: var(--nx-grey-10);
-  --nx-color-text-disabled: var(--nx-grey-50);
+  --nx-color-text-dark: var(--nx-swatch-grey-05);
+  --nx-color-text: var(--nx-swatch-grey-10);
+  --nx-color-text-disabled: var(--nx-swatch-grey-50);
 
-  --nx-color-link: var(--nx-blue-40);
-  --nx-color-link-active: var(--nx-blue-60);
-  --nx-color-link-hover: var(--nx-blue-20);
-  --nx-color-link-disabled: var(--nx-grey-50);
+  --nx-color-link: var(--nx-swatch-blue-40);
+  --nx-color-link-active: var(--nx-swatch-blue-60);
+  --nx-color-link-hover: var(--nx-swatch-blue-20);
+  --nx-color-link-disabled: var(--nx-swatch-grey-50);
 
-  --nx-color-threat-unspecified: var(--nx-indigo-95);
-  --nx-color-threat-none: var(--nx-blue-70);
-  --nx-color-threat-low: var(--nx-blue-40);
-  --nx-color-threat-moderate: var(--nx-yellow-65);
-  --nx-color-threat-severe: var(--nx-orange-55);
-  --nx-color-threat-critical: var(--nx-red-45);
+  --nx-color-threat-unspecified: var(--nx-swatch-indigo-95);
+  --nx-color-threat-none: var(--nx-swatch-blue-70);
+  --nx-color-threat-low: var(--nx-swatch-blue-40);
+  --nx-color-threat-moderate: var(--nx-swatch-yellow-65);
+  --nx-color-threat-severe: var(--nx-swatch-orange-55);
+  --nx-color-threat-critical: var(--nx-swatch-red-45);
 
-  --nx-color-validation-valid: var(--nx-green-30);
-  --nx-color-validation-invalid: var(--nx-red-45);
+  --nx-color-validation-valid: var(--nx-swatch-green-30);
+  --nx-color-validation-invalid: var(--nx-swatch-red-45);
 }

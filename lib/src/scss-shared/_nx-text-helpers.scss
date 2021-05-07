@@ -74,18 +74,18 @@
 
 %nx-code {
   @include monospace();
-  background-color: var(--nx-grey-95);
-  border: 1px solid var(--nx-grey-80);
+  background-color: var(--nx-swatch-grey-95);
+  border: 1px solid var(--nx-swatch-grey-80);
   border-radius: var(--nx-border-radius);
-  color: var(--nx-red-45);
+  color: var(--nx-swatch-red-45);
   padding: 1px 4px;
   white-space: nowrap;
 }
 
 %nx-pre {
   @include monospace();
-  background-color: var(--nx-white);
-  border: 1px solid var(--nx-grey-10);
+  background-color: var(--nx-swatch-white);
+  border: 1px solid var(--nx-swatch-grey-10);
   border-left-width: 8px;
   border-radius: var(--nx-border-radius);
   font-size: var(--nx-font-size);
@@ -106,7 +106,7 @@
 
 %nx-blockquote {
   @include container-vertical();
-  background-color: var(--nx-grey-95);
+  background-color: var(--nx-swatch-grey-95);
   border: var(--nx-border-default);
   border-left-width: 8px;
   border-radius: var(--nx-border-radius);

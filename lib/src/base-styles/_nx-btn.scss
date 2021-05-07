@@ -20,10 +20,10 @@
   @include container-horizontal;
   @extend %nx-btn--disabled;
 
-  background-color: var(--nx-white);
-  border: 1px solid var(--nx-blue-40);
+  background-color: var(--nx-swatch-white);
+  border: 1px solid var(--nx-swatch-blue-40);
   border-radius: 6px;
-  color: var(--nx-blue-40);
+  color: var(--nx-swatch-blue-40);
   cursor: pointer;
   display: inline-block;
   font-size: var(--nx-font-size);
@@ -33,7 +33,7 @@
   text-align: center;
 
   &:hover {
-    background-color: var(--nx-blue-70);
+    background-color: var(--nx-swatch-blue-70);
   }
 
   &:focus {
@@ -43,7 +43,7 @@
   }
 
   &:active {
-    background-color: var(--nx-blue-90);
+    background-color: var(--nx-swatch-blue-90);
   }
 }
 
@@ -56,16 +56,16 @@
 .nx-btn--primary {
   @extend %nx-btn--disabled;
 
-  background-color: var(--nx-blue-40);
+  background-color: var(--nx-swatch-blue-40);
   border-color: transparent;
-  color: var(--nx-white);
+  color: var(--nx-swatch-white);
 
   &:hover {
-    background-color: var(--nx-blue-20);
+    background-color: var(--nx-swatch-blue-20);
   }
 
   &:active {
-    background-color:  var(--nx-blue-60);
+    background-color:  var(--nx-swatch-blue-60);
   }
 }
 
@@ -73,12 +73,12 @@
   @extend %nx-btn--disabled;
 
   background-color: transparent;
-  border-color: var(--nx-indigo-95);
+  border-color: var(--nx-swatch-indigo-95);
   color: var(--nx-color-text-dark);
 
   &:hover {
     background-color: transparent;
-    border-color: var(--nx-grey-05);
+    border-color: var(--nx-swatch-grey-05);
   }
 
   &:focus {
@@ -86,36 +86,36 @@
   }
 
   &:active {
-    background-color: var(--nx-grey-90);
-    border-color: var(--nx-grey-05);
+    background-color: var(--nx-swatch-grey-90);
+    border-color: var(--nx-swatch-grey-05);
   }
 }
 
 .nx-btn--error {
   @extend %nx-btn--disabled;
 
-  background-color: var(--nx-red-45);
-  border-color: var(--nx-red-45);
-  color: var(--nx-white);
+  background-color: var(--nx-swatch-red-45);
+  border-color: var(--nx-swatch-red-45);
+  color: var(--nx-swatch-white);
 
   &:hover, &:focus, &:active {
-    background-color: var(--nx-red-35);
-    border-color: var(--nx-red-35);
-    color: var(--nx-white);
+    background-color: var(--nx-swatch-red-35);
+    border-color: var(--nx-swatch-red-35);
+    color: var(--nx-swatch-white);
   }
 
   &:focus {
-    background-color: var(--nx-red-45);
+    background-color: var(--nx-swatch-red-45);
     border-color: var(--nx-color-border-focus);
   }
 
   &:active {
-    background-color: var(--nx-red-60);
-    border-color: var(--nx-red-60);
+    background-color: var(--nx-swatch-red-60);
+    border-color: var(--nx-swatch-red-60);
   }
 
   .nx-icon {
-    color: var(--nx-white);
+    color: var(--nx-swatch-white);
     height: 16px;
   }
 }

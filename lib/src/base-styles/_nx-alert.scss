@@ -12,8 +12,8 @@
   @include container-vertical;
 
   align-items: first baseline;
-  background-color: var(--nx-white);
-  border: 1px solid var(--nx-grey-05);
+  background-color: var(--nx-swatch-white);
+  border: 1px solid var(--nx-swatch-grey-05);
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   display: flex;
@@ -50,37 +50,37 @@
 }
 
 .nx-alert--warning {
-  background-color: var(--nx-orange-90);
-  border-color: var(--nx-orange-45);
+  background-color: var(--nx-swatch-orange-90);
+  border-color: var(--nx-swatch-orange-45);
 
   > .nx-icon {
-    color: var(--nx-orange-45);
+    color: var(--nx-swatch-orange-45);
   }
 }
 
 .nx-alert--error {
-  background-color: var(--nx-red-95);
-  border-color: var(--nx-red-45);
+  background-color: var(--nx-swatch-red-95);
+  border-color: var(--nx-swatch-red-45);
 
   > .nx-icon {
-    color: var(--nx-red-45);
+    color: var(--nx-swatch-red-45);
   }
 }
 
 .nx-alert--info {
-  background-color: var(--nx-blue-95);
-  border-color: var(--nx-blue-40);
+  background-color: var(--nx-swatch-blue-95);
+  border-color: var(--nx-swatch-blue-40);
 
   > .nx-icon {
-    color: var(--nx-blue-40);
+    color: var(--nx-swatch-blue-40);
   }
 }
 
 .nx-alert--success {
-  background-color: var(--nx-green-95);
-  border-color: var(--nx-green-30);
+  background-color: var(--nx-swatch-green-95);
+  border-color: var(--nx-swatch-green-30);
 
   > .nx-icon {
-    color: var(--nx-green-30);
+    color: var(--nx-swatch-green-30);
   }
 }

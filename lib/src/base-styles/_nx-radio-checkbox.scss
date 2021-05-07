@@ -26,7 +26,7 @@
 
     .nx-radio-checkbox__control {
       border-color: var(--nx-color-border-form-element);
-      stroke: var(--nx-grey-05);
+      stroke: var(--nx-swatch-grey-05);
     }
   }
 
@@ -41,12 +41,12 @@
       .nx-radio-checkbox__control {
         border-color: var(--nx-color-border-form-element);
         filter: none;
-        stroke: var(--nx-grey-05);
+        stroke: var(--nx-swatch-grey-05);
       }
 
       .nx-radio-checkbox__input:checked + .nx-radio-checkbox__control {
-        border-color: var(--nx-blue-40);
-        stroke: var(--nx-blue-40);
+        border-color: var(--nx-swatch-blue-40);
+        stroke: var(--nx-swatch-blue-40);
         filter: none;
       }
     }
@@ -64,7 +64,7 @@
 }
 
 .nx-radio-checkbox__control {
-  background-color: var(--nx-white);
+  background-color: var(--nx-swatch-white);
   border: var(--nx-border-default);
   flex-shrink: 0;
   margin-right: var(--nx-spacing-2x);
@@ -73,8 +73,8 @@
 svg.nx-radio-checkbox__control {
   border-style: none;
   background: none;
-  fill: var(--nx-white);
-  stroke: var(--nx-indigo-95);
+  fill: var(--nx-swatch-white);
+  stroke: var(--nx-swatch-indigo-95);
 }
 
 .nx-radio-checkbox__content {
@@ -120,21 +120,21 @@ svg.nx-radio-checkbox__control {
 
   &:checked {
     + .nx-radio-checkbox__control {
-      background-color: var(--nx-blue-40);
-      border-color: var(--nx-blue-40);
+      background-color: var(--nx-swatch-blue-40);
+      border-color: var(--nx-swatch-blue-40);
 
       &:hover {
-        border-color: var(--nx-blue-40);
+        border-color: var(--nx-swatch-blue-40);
       }
     }
 
     + svg.nx-radio-checkbox__control {
       background: none;
-      fill: var(--nx-blue-40);
-      stroke: var(--nx-blue-40);
+      fill: var(--nx-swatch-blue-40);
+      stroke: var(--nx-swatch-blue-40);
 
       &:hover {
-        stroke: var(--nx-blue-40);
+        stroke: var(--nx-swatch-blue-40);
       }
     }
   }
