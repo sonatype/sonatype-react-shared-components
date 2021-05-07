@@ -7,7 +7,8 @@
 import React, { useState, useEffect } from 'react';
 import { toPairs } from 'ramda';
 
-import './Swatcher.scss';
+import './ColorPaletteExample.scss';
+import { NxCard, NxH3 } from '@sonatype/react-shared-components';
 
 const paletteCssPropertyRegex = /^--nx-swatch-(\w+)-\d+$/;
 
@@ -46,7 +47,7 @@ function fetchSwatches(): Record<string, string[]> {
 
 const bodyStyles = getComputedStyle(document.body);
 
-export default function Swatcher() {
+export default function ColorPaletteExample() {
   const [swatches, setSwatches] = useState<Record<string, string[]>>({});
 
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function Swatcher() {
   }, []);
 
   return (
-    <>
+    <NxCard.Container className="gallery-card-swatch-container">
       { toPairs(swatches).map(([colorName, colorVars]) =>
         <div className="nx-card gallery-card-swatch" key={colorName}>
           <div className="nx-card__header">
@@ -77,6 +78,28 @@ export default function Swatcher() {
           </div>
         </div>
       )}
-    </>
+      {/* Special Case Swatches: black and white */}
+      <NxCard className="gallery-card-swatch">
+        <NxCard.Header>
+          <NxH3>Black and White</NxH3>
+        </NxCard.Header>
+        <NxCard.Content>
+          <div className="gallery-swatch">
+            <div className="gallery-swatch__thumb" style={{backgroundColor: 'var(--nx-swatch-black)'}} />
+            <div className="gallery-swatch__hex">
+              {bodyStyles.getPropertyValue('--nx-swatch-black')}
+            </div>
+            <div className="gallery-swatch__variable">--nx-swatch-black</div>
+          </div>
+          <div className="gallery-swatch">
+            <div className="gallery-swatch__thumb" style={{backgroundColor: 'var(--nx-swatch-white)'}} />
+            <div className="gallery-swatch__hex">
+              {bodyStyles.getPropertyValue('--nx-swatch-white')}
+            </div>
+            <div className="gallery-swatch__variable">--nx-swatch-white</div>
+          </div>
+        </NxCard.Content>
+      </NxCard>
+    </NxCard.Container>
   );
 }

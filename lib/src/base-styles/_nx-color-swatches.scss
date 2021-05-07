@@ -6,8 +6,11 @@
  */
 
 :root {
+  // NOTE: missing spaces after the colons in -hs prop definitions are deliberate, they effect the color
+  // code printouts in the gallery swatch page
+
   // Blues
-  --nx-swatch-blue-hs: 214, 96%;
+  --nx-swatch-blue-hs:214, 96%;
   --nx-swatch-blue-10: hsl(var(--nx-swatch-blue-hs) 10%);
   --nx-swatch-blue-20: hsl(var(--nx-swatch-blue-hs) 20%);
   --nx-swatch-blue-30: hsl(var(--nx-swatch-blue-hs) 30%);
@@ -20,7 +23,7 @@
   --nx-swatch-blue-95: hsl(var(--nx-swatch-blue-hs) 95%);
 
   // Greys
-  --nx-swatch-grey-hs: 0, 0%;
+  --nx-swatch-grey-hs:0, 0%;
   --nx-swatch-black: hsl(var(--nx-swatch-grey-hs), 0%);
   --nx-swatch-grey-05: hsl(var(--nx-swatch-grey-hs), 5%);
   --nx-swatch-grey-10: hsl(var(--nx-swatch-grey-hs), 10%);
@@ -35,7 +38,7 @@
   --nx-swatch-white: hsl(var(--nx-swatch-grey-hs), 100%);
 
   // Teals
-  --nx-swatch-teal-hs: 198, 100%;
+  --nx-swatch-teal-hs:198, 100%;
   --nx-swatch-teal-10: hsl(var(--nx-swatch-teal-hs), 10%);
   --nx-swatch-teal-20: hsl(var(--nx-swatch-teal-hs), 20%);
   --nx-swatch-teal-25: hsl(var(--nx-swatch-teal-hs), 25%);
@@ -54,7 +57,7 @@
   --nx-swatch-teal-95: hsl(var(--nx-swatch-teal-hs), 95%);
 
   // Pinks
-  --nx-swatch-pink-hs: 325, 100%;
+  --nx-swatch-pink-hs:325, 100%;
   --nx-swatch-pink-10: hsl(var(--nx-swatch-pink-hs), 10%);
   --nx-swatch-pink-20: hsl(var(--nx-swatch-pink-hs), 20%);
   --nx-swatch-pink-30: hsl(var(--nx-swatch-pink-hs), 30%);
@@ -67,7 +70,7 @@
   --nx-swatch-pink-95: hsl(var(--nx-swatch-pink-hs), 95%);
 
   // Green
-  --nx-swatch-green-hs: 138, 100%;
+  --nx-swatch-green-hs:138, 100%;
   --nx-swatch-green-10: hsl(var(--nx-swatch-green-hs), 10%);
   --nx-swatch-green-20: hsl(var(--nx-swatch-green-hs), 20%);
   --nx-swatch-green-25: hsl(var(--nx-swatch-green-hs), 25%);
@@ -84,7 +87,7 @@
   --nx-swatch-green-95: hsl(var(--nx-swatch-green-hs), 95%);
 
   // Lime
-  --nx-swatch-lime-hs: 102, 86%;
+  --nx-swatch-lime-hs:102, 86%;
   --nx-swatch-lime-10: hsl(var(--nx-swatch-lime-hs), 10%);
   --nx-swatch-lime-20: hsl(var(--nx-swatch-lime-hs), 20%);
   --nx-swatch-lime-25: hsl(var(--nx-swatch-lime-hs), 25%);
@@ -102,7 +105,7 @@
   --nx-swatch-lime-95: hsl(var(--nx-swatch-lime-hs), 95%);
 
   // Yellow
-  --nx-swatch-yellow-hs: 42, 100%;
+  --nx-swatch-yellow-hs:42, 100%;
   --nx-swatch-yellow-10: hsl(var(--nx-swatch-yellow-hs), 10%);
   --nx-swatch-yellow-20: hsl(var(--nx-swatch-yellow-hs), 20%);
   --nx-swatch-yellow-30: hsl(var(--nx-swatch-yellow-hs), 30%);
@@ -120,7 +123,7 @@
   --nx-swatch-yellow-95: hsl(var(--nx-swatch-yellow-hs), 95%);
 
   // Red
-  --nx-swatch-red-hs: 348, 100%;
+  --nx-swatch-red-hs:348, 100%;
   --nx-swatch-red-10: hsl(var(--nx-swatch-red-hs), 10%);
   --nx-swatch-red-20: hsl(var(--nx-swatch-red-hs), 20%);
   --nx-swatch-red-30: hsl(var(--nx-swatch-red-hs), 30%);
@@ -139,7 +142,7 @@
   --nx-swatch-red-95: hsl(var(--nx-swatch-red-hs), 95%);
 
   // Turquoise
-  --nx-swatch-turquoise-hs: 175, 97%;
+  --nx-swatch-turquoise-hs:175, 97%;
   --nx-swatch-turquoise-10: hsl(var(--nx-swatch-turquoise-hs), 10%);
   --nx-swatch-turquoise-20: hsl(var(--nx-swatch-turquoise-hs), 20%);
   --nx-swatch-turquoise-30: hsl(var(--nx-swatch-turquoise-hs), 30%);
@@ -152,7 +155,7 @@
   --nx-swatch-turquoise-95: hsl(var(--nx-swatch-turquoise-hs), 95%);
 
   // Purple
-  --nx-swatch-purple-hs: 280, 100%;
+  --nx-swatch-purple-hs:280, 100%;
   --nx-swatch-purple-10: hsl(var(--nx-swatch-purple-hs), 10%);
   --nx-swatch-purple-20: hsl(var(--nx-swatch-purple-hs), 20%);
   --nx-swatch-purple-30: hsl(var(--nx-swatch-purple-hs), 30%);
@@ -165,7 +168,7 @@
   --nx-swatch-purple-95: hsl(var(--nx-swatch-purple-hs), 95%);
 
   // Indigo
-  --nx-swatch-indigo-hs: 231, 43%;
+  --nx-swatch-indigo-hs:231, 43%;
   --nx-swatch-indigo-10: hsl(var(--nx-swatch-indigo-hs), 10%);
   --nx-swatch-indigo-20: hsl(var(--nx-swatch-indigo-hs), 20%);
   --nx-swatch-indigo-30: hsl(var(--nx-swatch-indigo-hs), 30%);
@@ -179,7 +182,7 @@
   --nx-swatch-indigo-97: hsl(var(--nx-swatch-indigo-hs), 97%);
 
   // Orange
-  --nx-swatch-orange-hs: 31, 100%;
+  --nx-swatch-orange-hs:31, 100%;
   --nx-swatch-orange-10: hsl(var(--nx-swatch-orange-hs), 10%);
   --nx-swatch-orange-15: hsl(var(--nx-swatch-orange-hs), 15%);
   --nx-swatch-orange-20: hsl(var(--nx-swatch-orange-hs), 20%);
