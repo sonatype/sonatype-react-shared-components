@@ -5,7 +5,15 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxGlobalSidebar, NxGlobalSidebarNavigation, NxGlobalSidebarNavigationLink, useToggle, NxP, NxH3, NxPageMain }
+import {
+  NxGlobalSidebar,
+  NxGlobalSidebarNavigation,
+  NxGlobalSidebarNavigationLink,
+  NxGlobalSidebarFooter,
+  useToggle,
+  NxP,
+  NxH3,
+  NxPageMain }
   from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
 const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
@@ -45,6 +53,13 @@ export default function NxGlobalSidebarExample() {
             neural decay saturation point assault camera neon concrete engine
           </NxP>
         </section>
+        <NxGlobalSidebarFooter showSupport={true}
+                               supportText="Support from the Villains"
+                               supportLink="http://www.plaid-villains.com"
+                               releaseText="PV 0.2.3b"
+                              //  productText="Powered by Pure Villainy"
+                               showSonatype={true}>
+        </NxGlobalSidebarFooter>
       </NxGlobalSidebar>
       <NxPageMain>Page content</NxPageMain>
     </>

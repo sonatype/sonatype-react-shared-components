@@ -149,3 +149,29 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
     visibility: hidden;
   }
 }
+
+.nx-global-sidebar__footer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: $nx-font-size-xs;
+  margin-top: auto;
+  padding-bottom: $nx-spacing-l;
+  text-align: center;
+}
+
+.nx-global-sidebar__support {
+  height: 2em * $nx-line-height;
+}
+
+.nx-global-sidebar__release {
+  height: 2em * $nx-line-height;
+}
+
+.nx-global-sidebar__powered-by {
+  margin-top: $nx-spacing-sm;
+}
+
+.nx-global-sidebar__created-by {
+  margin-top: $nx-spacing-md;
+}
