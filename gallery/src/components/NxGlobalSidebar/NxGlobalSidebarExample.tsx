@@ -57,8 +57,7 @@ export default function NxGlobalSidebarExample() {
             neural decay saturation point assault camera neon concrete engine
           </NxP>
         </section>
-        <NxGlobalSidebarFooter showSupport={true}
-                               supportText="Support for RSC"
+        <NxGlobalSidebarFooter supportText="Support for RSC"
                                supportLink="https://github.com/sonatype/sonatype-react-shared-components"
                                releaseText="React Shared Components"
                                releaseNumber="3.1.4"
