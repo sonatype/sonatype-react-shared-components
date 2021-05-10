@@ -24,7 +24,7 @@ const SelectableColorsPage = () =>
     <GalleryDescriptionTile>
       <NxP>
         RSC provides a palette of color values which are intended to be used for arbitrary but distinctly
-        colored elements. Examples include components such as tags and labels, or user interface elements like 
+        colored elements. Examples include components such as tags and labels, or user interface elements like
         highlighted regions of a text document.
       </NxP>
       <NxP>
@@ -33,8 +33,8 @@ const SelectableColorsPage = () =>
         for use in creating custom components.
       </NxP>
       <NxP>
-        For each named color within the selectable colors, light and dark RGB color codes are provided. This allows for two-tone components built with the selectable colors, as seen in
-        unselected selectable <NxCode>NxTag</NxCode>s.
+        For each named color within the selectable colors, light and dark RGB color codes are provided. This allows for
+        two-tone components built with the selectable colors, as seen in unselected selectable <NxCode>NxTag</NxCode>s.
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
