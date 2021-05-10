@@ -56,14 +56,14 @@ export const nxGlobalSidebarNavigationLinkPropTypes: ValidationMap<NxGlobalSideb
 
 export interface NxGlobalSidebarFooterProps {
   showSupport: boolean;
-  supportIcon?: IconDefinition;
+  supportIcon?: IconDefinition | null;
   supportText?: string | null;
   supportLink?: string | null;
   releaseText?: string | null;
   releaseNumber?: string | null;
-  productText?: string | null;
+  productName?: string | null;
   showSonatype: boolean;
-  sonatypeText?: string | null;
+  createdBy?: string | null;
   children?: ReactNode | null;
   className?: string | null;
 }
@@ -75,9 +75,9 @@ export const nxGlobalSidebarFooterPropTypes: ValidationMap<NxGlobalSidebarFooter
   supportLink: PropTypes.string,
   releaseText: PropTypes.string,
   releaseNumber: PropTypes.string,
-  productText: PropTypes.string,
+  productName: PropTypes.string,
   showSonatype: PropTypes.bool.isRequired,
-  sonatypeText: PropTypes.string,
+  createdBy: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string
 };
