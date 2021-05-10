@@ -63,7 +63,7 @@ const SelectableColorsPage = () =>
           color, they would add that color's class to the element in question (or a parent) and then use the custom
           properties to set styles as they see fit.  For instance, they might
           use <NxCode>--nx-selectable-color-light</NxCode> to set the element's background while
-          using <NxCode>--nx-selectable-color-dark</NxCode> to set the text color.
+          using <NxCode>--nx-selectable-color-dark</NxCode> to set the border color.
         </NxP>
         <NxP>
           It is commonly the case that the custom component won't want or need to know the exact name of the color
