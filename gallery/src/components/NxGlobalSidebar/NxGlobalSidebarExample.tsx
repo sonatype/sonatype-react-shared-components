@@ -63,8 +63,8 @@ export default function NxGlobalSidebarExample() {
                                supportLink="https://github.com/sonatype/sonatype-react-shared-components"
                                releaseText="React Shared Components"
                                releaseNumber={packageJson.version}
-                               productText="Powered by PLAID VILLAIN"
-                               showSonatype={true}>
+                               productName="Powered by PLAID VILLAIN"
+                               showCreatedBy={true}>
         </NxGlobalSidebarFooter>
       </NxGlobalSidebar>
       <NxPageMain>Page content</NxPageMain>

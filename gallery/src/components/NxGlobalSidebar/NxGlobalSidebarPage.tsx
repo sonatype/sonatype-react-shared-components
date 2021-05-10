@@ -220,13 +220,13 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>A release number.</NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>productText</NxTable.Cell>
+                <NxTable.Cell>productName</NxTable.Cell>
                 <NxTable.Cell>String</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>Text string to denote product family or other custom text.</NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>showSonatype</NxTable.Cell>
+                <NxTable.Cell>showCreatedBy</NxTable.Cell>
                 <NxTable.Cell>Boolean</NxTable.Cell>
                 <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell>
@@ -234,7 +234,7 @@ export default function NxGlobalSidebarPage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>sonatypeText</NxTable.Cell>
+                <NxTable.Cell>createdByText</NxTable.Cell>
                 <NxTable.Cell>String</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>

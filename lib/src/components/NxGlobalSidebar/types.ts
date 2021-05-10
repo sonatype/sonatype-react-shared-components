@@ -62,7 +62,7 @@ export interface NxGlobalSidebarFooterProps {
   releaseText?: string | null;
   releaseNumber?: string | null;
   productName?: string | null;
-  showSonatype: boolean;
+  showCreatedBy: boolean;
   createdBy?: string | null;
   children?: ReactNode | null;
   className?: string | null;
@@ -76,7 +76,7 @@ export const nxGlobalSidebarFooterPropTypes: ValidationMap<NxGlobalSidebarFooter
   releaseText: PropTypes.string,
   releaseNumber: PropTypes.string,
   productName: PropTypes.string,
-  showSonatype: PropTypes.bool.isRequired,
+  showCreatedBy: PropTypes.bool.isRequired,
   createdBy: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string
