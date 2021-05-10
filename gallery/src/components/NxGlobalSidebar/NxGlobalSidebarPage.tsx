@@ -205,7 +205,7 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>supportLink</NxTable.Cell>
                 <NxTable.Cell>string</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>URL</NxTable.Cell>
+                <NxTable.Cell>URL that points to the help or support documents for this product.</NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
                 <NxTable.Cell>releaseText</NxTable.Cell>
@@ -223,7 +223,10 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>productName</NxTable.Cell>
                 <NxTable.Cell>String</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>Text string to denote product family or other custom text.</NxTable.Cell>
+                <NxTable.Cell>
+                  This text is meant to indicate when a product is part of a suite or family of products for
+                  example: "Powered by Insight".
+                </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
                 <NxTable.Cell>showCreatedBy</NxTable.Cell>
