@@ -23,10 +23,9 @@ const SelectableColorsPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        RSC provides a collection of color values which are intended to be used anywhere that the user is intended to
-        be able to select from a small set of colors and anywhere that a collection of arbitrarily but distinctly
-        colored elements is needed. Examples of the former include tags and labels. Examples of the latter
-        include highlighted regions of a text document.
+        RSC provides a palette of color values which are intended to be used for arbitrary but distinctly
+        colored elements. Examples include components such as tags and labels, or user interface elements like 
+        highlighted regions of a text document.
       </NxP>
       <NxP>
         The colors that RSC provides for this purpose are known as the "selectable colors" and they are used within
