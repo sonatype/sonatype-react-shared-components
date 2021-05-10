@@ -16,7 +16,6 @@ import {
   NxPageMain }
   from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
-import packageJson from '../../../package.json';
 
 const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 
@@ -62,7 +61,7 @@ export default function NxGlobalSidebarExample() {
                                supportText="Support for RSC"
                                supportLink="https://github.com/sonatype/sonatype-react-shared-components"
                                releaseText="React Shared Components"
-                               releaseNumber={packageJson.version}
+                               releaseNumber="3.1.4"
                                productName="Powered by PLAID VILLAIN"
                                showCreatedBy={true}>
         </NxGlobalSidebarFooter>
