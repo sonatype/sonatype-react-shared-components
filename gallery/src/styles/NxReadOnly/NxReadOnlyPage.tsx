@@ -7,8 +7,15 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxCode } from '@sonatype/react-shared-components';
 
-const nxReadOnlyDlExampleCode = require('./NxReadOnlyDlExample.html');
+import './NxReadOnlyGridExample.scss';
+
+const nxReadOnlyDlExampleCode = require('./NxReadOnlyDlExample.html'),
+    nxReadOnlyGridExampleCode = require('./NxReadOnlyGridExample.html'),
+    nxReadOnlyGridExampleStyles = require('./NxReadOnlyGridExample.scss?raw');
+
+const gridCode = [nxReadOnlyGridExampleCode, { content: nxReadOnlyGridExampleStyles, language: 'scss' }];
 
 const NxReadOnlyPage = () => {
   return (
@@ -61,10 +68,18 @@ const NxReadOnlyPage = () => {
           </tbody>
         </table>
       </GalleryDescriptionTile>
-      <GalleryExampleTile title="Styling read-only lists of data"
+      <GalleryExampleTile title="Simple Example"
                           codeExamples={nxReadOnlyDlExampleCode}
                           htmlExample={nxReadOnlyDlExampleCode}>
         Standard <code className="nx-code">nx-read-only</code> layouts, by default all text wraps.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Grid Example"
+                          codeExamples={gridCode}
+                          htmlExample={nxReadOnlyGridExampleCode}>
+        An <NxCode>nx-read-only</NxCode> arranged in a grid. The exact layout of the grid is custom to this example.
+        In typical usage, the layout of the grid would be usage-specific requiring the use
+        of <NxCode>grid-template</NxCode> and/or <NxCode>grid-area</NxCode> CSS properties.
       </GalleryExampleTile>
     </>
   );
