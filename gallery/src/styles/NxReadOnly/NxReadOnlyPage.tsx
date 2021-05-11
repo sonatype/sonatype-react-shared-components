@@ -48,6 +48,17 @@ const NxReadOnlyPage = () => {
               </td>
             </tr>
             <tr className="nx-table-row">
+              <td className="nx-cell"><code className="nx-code">.nx-read-only--grid</code></td>
+              <td className="nx-cell"></td>
+              <td className="nx-cell">Modifier of <NxCode>.nx-read-only</NxCode></td>
+              <td className="nx-cell">
+                This class preps the <NxCode>nx-read-only</NxCode> to display its entries in a grid. While this class
+                adds the basic grid properties (<NxCode>display</NxCode>, <NxCode>gap</NxCode>, etc) it is up to
+                the caller to specify additional CSS to define their desired grid layout in terms of the number
+                and arrangement of the grid cells.
+              </td>
+            </tr>
+            <tr className="nx-table-row">
               <td className="nx-cell"><code className="nx-code">.nx-read-only__label</code></td>
               <td className="nx-cell"><code className="nx-code">NxReadOnly.Label</code></td>
               <td className="nx-cell">Element</td>
@@ -63,6 +74,19 @@ const NxReadOnlyPage = () => {
               <td className="nx-cell">
                 This class is applied to any <code className="nx-code">&lt;dd&gt;</code>'s that appear. The data
                 displayed can be any string or HTML markup.
+              </td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell"><code className="nx-code">.nx-read-only__item</code></td>
+              <td className="nx-cell"><code className="nx-code">NxReadOnly.Item</code></td>
+              <td className="nx-cell">
+                Child of <NxCode>.nx-read-only--grid</NxCode>, parent of <NxCode>.nx-read-only__label</NxCode> and
+                {' '}<NxCode>.nx-read-only__data</NxCode>.
+              </td>
+              <td className="nx-cell">
+                When creating an <NxCode>.nx-read-only</NxCode> with a grid layout,
+                each <NxCode>&lt;dt&gt;</NxCode>/<NxCode>&lt;dd&gt;</NxCode> group must be wrapped
+                in a div with this class. This class/element should not be used in non-grid layouts.
               </td>
             </tr>
           </tbody>
