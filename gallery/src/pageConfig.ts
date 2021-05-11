@@ -104,6 +104,7 @@ import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPag
 import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPage';
 import NxStatefulGlobalSidebarPage from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarPage';
 import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
+import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTilePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -203,7 +204,8 @@ const pageConfig: PageConfig = {
   },
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
-    'Page Layout': PageLayoutPage
+    'Page Layout': PageLayoutPage,
+    'Read Only Grid Tile Layout': NxReadOnlyGridTilePage
   },
   'JavaScript & TypeScript Utilities': {
     'TooltipConfigProps': TooltipConfigPropsPage,
