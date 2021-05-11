@@ -347,7 +347,7 @@ describe('NxReadOnly.Data', function() {
 
 describe('NxReadOnly.Item', function() {
   it('makes a <div> tag with an nx-read-only__item class', function() {
-    expect(shallow(<NxReadOnly.Item/>)).toMatchSelector('dd.nx-read-only__item');
+    expect(shallow(<NxReadOnly.Item/>)).toMatchSelector('div.nx-read-only__item');
   });
 });
 
