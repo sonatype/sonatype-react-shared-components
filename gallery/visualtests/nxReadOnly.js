@@ -11,7 +11,12 @@ describe('nx-read-only', function() {
     await browser.url('#/pages/nx-read-only');
   });
 
-  const selector = '.gallery-example-live';
+  const simpleSelector = '#nx-read-only-simple-example',
+      gridExample = '#nx-read-only-grid-example';
 
-  it('looks right', simpleTest(selector));
+  it('looks right', simpleTest(simpleSelector));
+
+  describe('nx-read-only grid', function() {
+    it('looks right', simpleTest(gridSelector));
+  });
 });

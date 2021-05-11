@@ -93,12 +93,14 @@ const NxReadOnlyPage = () => {
         </table>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="Simple Example"
+                          id="nx-read-only-simple-example"
                           codeExamples={nxReadOnlyDlExampleCode}
                           htmlExample={nxReadOnlyDlExampleCode}>
         Standard <code className="nx-code">nx-read-only</code> layouts, by default all text wraps.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Grid Example"
+                          id="nx-read-only-grid-example"
                           codeExamples={gridCode}
                           htmlExample={nxReadOnlyGridExampleCode}>
         An <NxCode>nx-read-only</NxCode> arranged in a grid. The exact layout of the grid is custom to this example.
