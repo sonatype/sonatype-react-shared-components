@@ -10,6 +10,7 @@
 
 .nx-system-notice {
   @include nx-truncate-ellipsis;
+  @include container-horizontal;
 
   background-color: $nx-indigo-50;
   padding: $nx-spacing-sm $nx-spacing-l;
