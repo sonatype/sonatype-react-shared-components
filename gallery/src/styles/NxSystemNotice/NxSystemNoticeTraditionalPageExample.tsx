@@ -27,13 +27,14 @@ export default function NxSystemNoticeGlobalSidebarExample() {
               dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdum
               varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
               rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus quam
-              pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id diam
-              maecenas. Porta nibh venenatis cras sed felis eget velit aliquet. Semper feugiat nibh sed pulvinar proin
-              gravida hendrerit lectus a. Auctor neque vitae tempus quam pellentesque nec nam aliquam sem. Purus non enim
-              praesent elementum facilisis leo. Dui sapien eget mi proin. Ultrices eros in cursus turpis massa tincidunt
-              dui ut ornare. Et ligula ullamcorper malesuada proin libero nunc consequat interdum. Turpis egestas maecenas
-              pharetra convallis posuere morbi leo urna. Tortor posuere ac ut consequat semper viverra nam libero.
-              Volutpat ac tincidunt vitae semper. Pretium fusce id velit ut tortor pretium viverra.
+              pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
+              diam maecenas. Porta nibh venenatis cras sed felis eget velit aliquet. Semper feugiat nibh sed pulvinar
+              proin gravida hendrerit lectus a. Auctor neque vitae tempus quam pellentesque nec nam aliquam sem. Purus
+              non enim praesent elementum facilisis leo. Dui sapien eget mi proin. Ultrices eros in cursus turpis
+              massa tincidunt dui ut ornare. Et ligula ullamcorper malesuada proin libero nunc consequat interdum.
+              Turpis egestas maecenas pharetra convallis posuere morbi leo urna. Tortor posuere ac ut consequat semper
+              viverra nam libero.  Volutpat ac tincidunt vitae semper. Pretium fusce id velit ut tortor pretium
+              viverra.
             </NxTile.Content>
           </NxTile>
         </NxPageMain>
