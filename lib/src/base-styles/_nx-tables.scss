@@ -75,9 +75,15 @@
         }
       }
 
-      &.selected, &:active {
+      &.selected {
         > .nx-cell {
           background-color: var(--nx-color-background-selected);
+        }
+      }
+
+      &:active {
+        > .nx-cell {
+          background-color: var(--nx-color-background-active);
         }
       }
 
