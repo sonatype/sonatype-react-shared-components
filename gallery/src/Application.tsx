@@ -31,6 +31,9 @@ import NxGlobalHeaderFullExample from './styles/NxGlobalHeader/NxGlobalHeaderFul
 import NxGlobalHeaderNoBackButtonExample from './styles/NxGlobalHeader/NxGlobalHeaderNoBackButtonExample';
 import NxGlobalHeaderNoActionsExample from './styles/NxGlobalHeader/NxGlobalHeaderNoActionsExample';
 import NxGlobalHeaderEmptyExample from './styles/NxGlobalHeader/NxGlobalHeaderEmptyExample';
+import NxSystemNoticeGlobalSidebarExample from './styles/NxSystemNotice/NxSystemNoticeGlobalSidebarExample';
+import NxSystemNoticeTraditionalPageExample from './styles/NxSystemNotice/NxSystemNoticeTraditionalPageExample';
+import NxSystemNoticeMultipleExample from './styles/NxSystemNotice/NxSystemNoticeMultipleExample';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
@@ -94,6 +97,19 @@ function Application() {
         <Route exact path="/NxGlobalHeaderEmptyExample">
           <SectionScrollingWrapper>
             <NxGlobalHeaderEmptyExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxSystemNoticeGlobalSidebarExample">
+          <SectionScrollingWrapper>
+            <NxSystemNoticeGlobalSidebarExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxSystemNoticeTraditionalPageExample">
+          <NxSystemNoticeTraditionalPageExample />
+        </Route>
+        <Route exact path="/NxSystemNoticeMultipleExample">
+          <SectionScrollingWrapper>
+            <NxSystemNoticeMultipleExample />
           </SectionScrollingWrapper>
         </Route>
         <Route>
