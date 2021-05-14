@@ -5,8 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 :root {
-  --nx-color-border-default: var(--nx-swatch-indigo-95);
-  --nx-color-border-subsection: var(--nx-swatch-grey-80);
+  --nx-color-border-default: var(--nx-swatch-indigo-90);
+  --nx-color-border-subsection: var(--nx-swatch-indigo-90);
   --nx-color-border-form-element: var(--nx-swatch-grey-05);
   --nx-color-border-form-element-pristine: var(--nx-swatch-indigo-95);
   --nx-color-border-disabled: var(--nx-swatch-grey-60);
@@ -16,9 +16,9 @@
 
   --nx-color-background-component: var(--nx-swatch-white);
   --nx-color-background-site: var(--nx-swatch-indigo-97);
-  --nx-color-background-selected: var(--nx-swatch-blue-80);
-  --nx-color-background-active: var(--nx-swatch-blue-80);
-  --nx-color-background-hover: var(--nx-swatch-grey-90);
+  --nx-color-background-selected: var(--nx-swatch-blue-90);
+  --nx-color-background-active: var(--nx-swatch-blue-95);
+  --nx-color-background-hover: var(--nx-swatch-indigo-95);
   --nx-color-background-disabled: var(--nx-swatch-grey-95);
 
   --nx-color-text-dark: var(--nx-swatch-grey-05);
