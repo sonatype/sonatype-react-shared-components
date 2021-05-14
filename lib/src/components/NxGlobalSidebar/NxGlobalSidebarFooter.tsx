@@ -23,7 +23,7 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
     supportLink,
     releaseText,
     releaseNumber,
-    productName,
+    productTagLine,
     showCreatedBy,
     createdBy,
     ...otherProps } = props;
@@ -51,9 +51,9 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
         </div> : null
       }
 
-      { productName ?
+      { productTagLine ?
         <div className="nx-global-sidebar__product-name nx-global-sidebar__expanded-content">
-          {productName || undefined}
+          {productTagLine || undefined}
         </div> : null
       }
 

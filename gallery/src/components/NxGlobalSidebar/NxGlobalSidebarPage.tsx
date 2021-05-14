@@ -215,7 +215,7 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>A release number.</NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>productName</NxTable.Cell>
+                <NxTable.Cell>productTagLine</NxTable.Cell>
                 <NxTable.Cell>String</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
