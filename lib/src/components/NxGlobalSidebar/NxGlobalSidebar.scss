@@ -38,10 +38,10 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   display: flex;
   flex-direction: column;
   grid-area: global-sidebar;
-  padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-l $nx-spacing-l;
+  padding: $nx-spacing-xl 0 $nx-spacing-l 0;
   width: $nx-global-sidebar-width-open;
 
-  .nx-text-link {
+  .nx-text-link, .nx-tree-view__trigger, .nx-tree-view__child {
     color: $nx-global-sidebar-text-color;
   }
 }
@@ -51,6 +51,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   display: flex;
   height: $nx-global-sidebar-logo-height;
   margin-bottom: $nx-spacing-xl;
+  padding: 0 $nx-spacing-l;
 }
 
 .nx-global-sidebar__toggle {
@@ -86,7 +87,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 .nx-global-sidebar__navigation {
   border-bottom: 1px solid $nx-global-sidebar-separator-color;
   flex: none;
-  margin: 0 -#{$nx-spacing-l} $nx-spacing-md -#{$nx-spacing-l};
+  margin: 0;
   padding-bottom: $nx-spacing-xxl;
 }
 
@@ -158,10 +159,13 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 .nx-global-sidebar__other-content {
   @include container-vertical;
 
-  padding-bottom: $nx-spacing-md;
+  flex-grow: 1;
+  padding: $nx-spacing-md $nx-spacing-l;
+  max-height: 100%;
 
   + .nx-global-sidebar__footer {
     border-top: 1px solid $nx-global-sidebar-separator-color;
+    margin-top: 0;
   }
 }
 
@@ -172,8 +176,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   display: flex;
   flex-direction: column;
   margin-top: auto;
-  padding-top: $nx-spacing-xxl;
-  padding-bottom: $nx-spacing-l;
+  padding: $nx-spacing-xxl $nx-spacing-l $nx-spacing-l $nx-spacing-l;
   text-align: center;
 }
 
