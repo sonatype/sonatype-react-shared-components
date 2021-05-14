@@ -19,15 +19,14 @@ $nx-toggle-input-hide-hack-spacing: 5px;
 
   &.nx-toggle--disabled {
     &, &:hover {
-      color: var(--nx-color-text-disabled);
       cursor: default;
 
       .nx-toggle__control {
-        background-color: var(--nx-swatch-grey-80);
-        border-color: var(--nx-swatch-grey-50);
+        background-color: var(--nx-color-background-disabled);
+        border-color: var(--nx-color-border-disabled);
       }
       .nx-toggle__indicator {
-        background-color: var(--nx-swatch-grey-50);
+        background-color: var(--nx-color-border-disabled);
       }
     }
   }
