@@ -8,7 +8,7 @@
   &.disabled, &[disabled] {
     &, &:hover, &:focus {
       background-color: var(--nx-color-background-disabled);
-      border-color: var(--nx-border-color-disabled);
+      border-color: var(--nx-color-border-disabled);
       color: var(--nx-color-text-disabled);
       cursor: default;
     }
@@ -33,7 +33,7 @@
   text-align: center;
 
   &:hover {
-    background-color: var(--nx-swatch-blue-70);
+    background-color: var(--nx-swatch-blue-90);
   }
 
   &:focus {
@@ -86,7 +86,7 @@
   }
 
   &:active {
-    background-color: var(--nx-swatch-grey-90);
+    background-color: var(--nx-swatch-grey-95);
     border-color: var(--nx-swatch-grey-05);
   }
 }
@@ -99,8 +99,8 @@
   color: var(--nx-swatch-white);
 
   &:hover, &:focus, &:active {
-    background-color: var(--nx-swatch-red-35);
-    border-color: var(--nx-swatch-red-35);
+    background-color: var(--nx-swatch-red-30);
+    border-color: var(--nx-swatch-red-30);
     color: var(--nx-swatch-white);
   }
 

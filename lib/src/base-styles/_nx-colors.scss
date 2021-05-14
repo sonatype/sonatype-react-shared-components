@@ -9,7 +9,7 @@
   --nx-color-border-subsection: var(--nx-swatch-grey-80);
   --nx-color-border-form-element: var(--nx-swatch-grey-05);
   --nx-color-border-form-element-pristine: var(--nx-swatch-indigo-95);
-  --nx-color-border-disabled: var(--nx-swatch-grey-50);
+  --nx-color-border-disabled: var(--nx-swatch-grey-60);
   --nx-color-border-focus: var(--nx-swatch-teal-45);
 
   --nx-color-box-shadow-focus: hsla(var(--nx-swatch-teal-hs), 65%, 0.3);
@@ -19,16 +19,16 @@
   --nx-color-background-selected: var(--nx-swatch-blue-80);
   --nx-color-background-active: var(--nx-swatch-blue-80);
   --nx-color-background-hover: var(--nx-swatch-grey-90);
-  --nx-color-background-disabled: var(--nx-swatch-grey-80);
+  --nx-color-background-disabled: var(--nx-swatch-grey-95);
 
   --nx-color-text-dark: var(--nx-swatch-grey-05);
   --nx-color-text: var(--nx-swatch-grey-10);
-  --nx-color-text-disabled: var(--nx-swatch-grey-50);
+  --nx-color-text-disabled: var(--nx-color-border-disabled); // match disabled text and border
 
   --nx-color-link: var(--nx-swatch-blue-40);
   --nx-color-link-active: var(--nx-swatch-blue-60);
   --nx-color-link-hover: var(--nx-swatch-blue-20);
-  --nx-color-link-disabled: var(--nx-swatch-grey-50);
+  --nx-color-link-disabled: var(--nx-color-text-disabled);
 
   --nx-color-threat-unspecified: var(--nx-swatch-indigo-95);
   --nx-color-threat-none: var(--nx-swatch-blue-70);
