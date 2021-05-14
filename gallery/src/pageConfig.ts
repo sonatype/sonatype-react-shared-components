@@ -104,6 +104,7 @@ import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPag
 import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPage';
 import NxStatefulGlobalSidebarPage from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarPage';
 import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
+import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -188,6 +189,7 @@ const pageConfig: PageConfig = {
     'nx-page-title': NxPageTitlePage,
     'nx-pre': NxPrePage,
     'nx-read-only': NxReadOnlyPage,
+    'nx-system-notice': NxSystemNoticePage,
     'nx-table': NxTableStylePage,
     'nx-table-container': NxTableContainerPage,
     'nx-threat-number': NxThreatNumberPage,
