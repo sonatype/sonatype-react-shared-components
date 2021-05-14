@@ -177,15 +177,6 @@ export default function NxGlobalSidebarPage() {
             </NxTable.Head>
             <NxTable.Body>
               <NxTable.Row>
-                <NxTable.Cell>showSupport</NxTable.Cell>
-                <NxTable.Cell>Boolean</NxTable.Cell>
-                <NxTable.Cell>Yes</NxTable.Cell>
-                <NxTable.Cell>
-                  If true the support link is shown. At minimum <NxCode>supportLink</NxCode> below should be
-                  provided.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
                 <NxTable.Cell>supportIcon</NxTable.Cell>
                 <NxTable.Cell>IconDefinition</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
@@ -206,7 +197,10 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>supportLink</NxTable.Cell>
                 <NxTable.Cell>string</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>URL that points to the help or support documents for this product.</NxTable.Cell>
+                <NxTable.Cell>
+                  URL that points to the help or support documents for this product. This prop is required for the
+                  support text to appear.
+                </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
                 <NxTable.Cell>releaseText</NxTable.Cell>
