@@ -33,8 +33,8 @@ const SelectableColorsPage = () =>
         for use in creating custom components.
       </NxP>
       <NxP>
-        For each named color within the selectable colors, light and dark RGB color codes are provided. This allows for
-        two-tone components built with the selectable colors, as seen in unselected selectable <NxCode>NxTag</NxCode>s.
+        For each named color within the selectable colors, light and dark RGB color codes are provided in order to
+        facilitate the creation of two-tone components. For an example see the selectable <NxCode>NxTag</NxCode>s.
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
