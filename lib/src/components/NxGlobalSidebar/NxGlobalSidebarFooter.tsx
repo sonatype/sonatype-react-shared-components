@@ -25,7 +25,6 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
     releaseNumber,
     productTagLine,
     showCreatedBy,
-    createdBy,
     ...otherProps } = props;
   const classes = classnames(className, 'nx-global-sidebar__footer');
 
@@ -59,7 +58,7 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
 
       { showCreatedBy &&
         <div className="nx-global-sidebar__created-by nx-global-sidebar__expanded-content">
-          {createdBy || 'Created by Sonatype'}
+          Created by Sonatype
         </div>
       }
     </footer>
