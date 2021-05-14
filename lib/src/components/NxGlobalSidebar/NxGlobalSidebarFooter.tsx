@@ -31,7 +31,7 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
 
   return (
     <footer className={classes} {...otherProps}>
-      { supportLink ?
+      { supportLink &&
         <div className="nx-global-sidebar__support">
           <NxTextLink href={supportLink || undefined}>
             <NxFontAwesomeIcon icon={supportIcon || faQuestionCircle} />
@@ -39,7 +39,7 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
               {supportText || 'Help and Support'}
             </span>
           </NxTextLink>
-        </div> : null
+        </div>
       }
 
       { releaseText || releaseNumber ?
