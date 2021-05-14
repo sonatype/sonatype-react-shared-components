@@ -22,8 +22,8 @@ const NxReadOnlyGridTilePage = () => {
       <GalleryDescriptionTile>
         <NxP>
           A common pattern in some designs is to have a number of <NxCode>nx-read-only</NxCode>-like sections
-          arranged into adjacent groups with borders in between within a tile. This page demonstrates the usage of
-          <NxCode>nx-read-only</NxCode>, <NxCode>nx-grid</NxCode>, and <NxCode>nx-tile</NxCode> to accomplish that
+          arranged into adjacent groups with borders in between within a tile. This page demonstrates the usage
+          of <NxCode>nx-read-only</NxCode>, <NxCode>nx-grid</NxCode>, and <NxCode>nx-tile</NxCode> to accomplish that
           effect.
         </NxP>
       </GalleryDescriptionTile>

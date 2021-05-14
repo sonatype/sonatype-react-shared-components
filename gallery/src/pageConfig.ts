@@ -205,7 +205,7 @@ const pageConfig: PageConfig = {
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
     'Page Layout': PageLayoutPage,
-    'Read Only Grid Tile Layout': NxReadOnlyGridTilePage
+    'Read-Only Grid Tile Layout': NxReadOnlyGridTilePage
   },
   'JavaScript & TypeScript Utilities': {
     'TooltipConfigProps': TooltipConfigPropsPage,

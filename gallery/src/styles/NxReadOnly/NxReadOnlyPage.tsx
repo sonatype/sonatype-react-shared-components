@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxCode } from '@sonatype/react-shared-components';
+import { NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import './NxReadOnlyGridExample.scss';
 
@@ -21,14 +21,19 @@ const NxReadOnlyPage = () => {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
-          <code className="nx-code">.nx-read-only</code> is a design pattern for when you wish to display read-only
-          data in a form. Its basic structure is a label and one or more data points.
-        </p>
-        <p className="nx-p">
-          <code className="nx-code">.nx-read-only</code> is layed out using a description list
-          (<code className="nx-code">&lt;dl&gt;</code>) as the container.
-        </p>
+        <NxP>
+          <NxCode>.nx-read-only</NxCode> is a design pattern for when you wish to display read-only
+          data in a form or elsewhere in a "label followed by content" visual pattern. Typically this occurs when
+          displaying data in a form, and when displaying an info grid. <NxCode>.nx-read-only</NxCode> is laid out
+          using a description list (<NxCode>&lt;dl&gt;</NxCode>) as the container.
+        </NxP>
+        <NxP>
+          When displayed as a grid, <NxCode>.nx-read-only</NxCode> is often wrapped in
+          an <NxCode>.nx-grid-col</NxCode> alongside other <NxCode>.nx-grid-col</NxCode>s wrapping
+          other <NxCode>.nx-read-only</NxCode>s in order the create the effect of several grid sections separated
+          by vertical dividers. For an example of that combination, see the{' '}
+          <NxTextLink href="#/pages/Read-Only%20Grid%20Tile%20Layout">Read-Only Grid Tile Layout</NxTextLink> page.
+        </NxP>
         <table className="nx-table">
           <thead>
             <tr className="nx-table-row">
