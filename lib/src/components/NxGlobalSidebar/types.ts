@@ -55,7 +55,6 @@ export const nxGlobalSidebarNavigationLinkPropTypes: ValidationMap<NxGlobalSideb
 };
 
 export interface NxGlobalSidebarFooterProps {
-  supportIcon?: IconDefinition | null;
   supportText?: string | null;
   supportLink?: string | null;
   releaseText?: string | null;
@@ -67,7 +66,6 @@ export interface NxGlobalSidebarFooterProps {
 }
 
 export const nxGlobalSidebarFooterPropTypes: ValidationMap<NxGlobalSidebarFooterProps> = {
-  supportIcon: PropTypes.object as Validator<IconDefinition>,
   supportText: PropTypes.string,
   supportLink: PropTypes.string,
   releaseText: PropTypes.string,

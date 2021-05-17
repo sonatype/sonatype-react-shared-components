@@ -18,7 +18,6 @@ export { NxGlobalSidebarFooterProps } from './types';
 const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSidebarLinks(props) {
   const {
     className,
-    supportIcon,
     supportText,
     supportLink,
     releaseText,
@@ -33,7 +32,7 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
       { supportLink &&
         <div className="nx-global-sidebar__support">
           <NxTextLink href={supportLink || undefined}>
-            <NxFontAwesomeIcon icon={supportIcon || faQuestionCircle} />
+            <NxFontAwesomeIcon icon={faQuestionCircle} />
             <span className="nx-global-sidebar__support-text nx-global-sidebar__expanded-content">
               {supportText || 'Help and Support'}
             </span>
