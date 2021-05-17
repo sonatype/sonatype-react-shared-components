@@ -7,12 +7,17 @@
  @import '../../scss-shared/nx-text-helpers';
  @import '../../scss-shared/nx-container-helpers';
 
+$nx-tag-default-dark: #bbc5f6;
+$nx-tag-default-light: #e7eaf9;
+
 .nx-tag {
   @include semi-bold;
   @include container-horizontal;
   @include nx-truncate-ellipsis;
+
   align-items: center;
-  border: 1px solid;
+  background-color: var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
+  border: 1px solid var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
   border-radius: 16px;
   box-sizing: border-box;
   color: var(--nx-color-text-dark);
@@ -32,6 +37,8 @@
   cursor: pointer;
   padding-right: var(--nx-spacing-2x);
 
+  background-color: var(--nx-selectable-color-light, #{$nx-tag-default-light});
+
   &:focus {
     border: 1px solid var(--nx-color-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
@@ -44,6 +51,8 @@
 }
 
 .nx-tag--selected {
+  background-color: var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
+
   &:focus {
     border: 1px solid var(--nx-color-border-focus);
   }
@@ -55,22 +64,4 @@
 
 .nx-tag__action {
   margin-left: var(--nx-spacing-4x);
-}
-
-// Available tag colours
-@mixin tag-color($tag-name, $tag-color-dark, $tag-color-light) {
-  .nx-tag--#{$tag-name} {
-    background-color: $tag-color-dark;
-    border-color: $tag-color-dark;
-  
-    &.nx-tag--unselected {
-      background-color: $tag-color-light;
-    }
-  }
-}
-
-@include tag-color(default, #bbc5f6, #e7eaf9);
-
-@each $color-name, $color-codes in $nx-selectable-colors {
-  @include tag-color($color-name, nth($color-codes, 1), nth($color-codes, 2));
 }

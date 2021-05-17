@@ -57,15 +57,15 @@ describe('NxColorPicker', function() {
     const component = getMounted(),
         labels = component.find('label.nx-color-picker__color');
 
-    expect(labels.filter('.nx-color-picker__color--light-blue')).toExist();
-    expect(labels.filter('.nx-color-picker__color--purple')).toExist();
-    expect(labels.filter('.nx-color-picker__color--pink')).toExist();
-    expect(labels.filter('.nx-color-picker__color--blue')).toExist();
-    expect(labels.filter('.nx-color-picker__color--red')).toExist();
-    expect(labels.filter('.nx-color-picker__color--green')).toExist();
-    expect(labels.filter('.nx-color-picker__color--orange')).toExist();
-    expect(labels.filter('.nx-color-picker__color--yellow')).toExist();
-    expect(labels.filter('.nx-color-picker__color--lime')).toExist();
+    expect(labels.filter('.nx-selectable-color--light-blue')).toExist();
+    expect(labels.filter('.nx-selectable-color--purple')).toExist();
+    expect(labels.filter('.nx-selectable-color--pink')).toExist();
+    expect(labels.filter('.nx-selectable-color--blue')).toExist();
+    expect(labels.filter('.nx-selectable-color--red')).toExist();
+    expect(labels.filter('.nx-selectable-color--green')).toExist();
+    expect(labels.filter('.nx-selectable-color--orange')).toExist();
+    expect(labels.filter('.nx-selectable-color--yellow')).toExist();
+    expect(labels.filter('.nx-selectable-color--lime')).toExist();
   });
 
   it('wraps each label in a tooltip with a display friendly color name', function() {
@@ -75,18 +75,18 @@ describe('NxColorPicker', function() {
     expect(tooltips).toHaveLength(9);
 
     expect(tooltips.filterWhere(tooltip => tooltip.prop('title') === 'Light Blue'))
-        .toContainMatchingElement('label.nx-color-picker__color--light-blue');
+        .toContainMatchingElement('label.nx-selectable-color--light-blue');
 
     expect(tooltips.filterWhere(tooltip => tooltip.prop('title') === 'Green'))
-        .toContainMatchingElement('label.nx-color-picker__color--green');
+        .toContainMatchingElement('label.nx-selectable-color--green');
   });
 
   it('sets an aria-label derived from the color name and overall label on each <label>', function() {
     const component = getMounted(),
         labels = component.find('.nx-color-picker__color');
 
-    expect(labels.filter('.nx-color-picker__color--light-blue')).toHaveProp('aria-label', 'My Color Picker Light Blue');
-    expect(labels.filter('.nx-color-picker__color--green')).toHaveProp('aria-label', 'My Color Picker Green');
+    expect(labels.filter('.nx-selectable-color--light-blue')).toHaveProp('aria-label', 'My Color Picker Light Blue');
+    expect(labels.filter('.nx-selectable-color--green')).toHaveProp('aria-label', 'My Color Picker Green');
   });
 
   it('sets a random common name attr on each radio', function() {
@@ -114,10 +114,10 @@ describe('NxColorPicker', function() {
     const component = getMounted(),
         labels = component.find('.nx-color-picker__color');
 
-    expect(labels.filterWhere(label => label.hasClass('nx-color-picker__color--light-blue')).find('input'))
+    expect(labels.filterWhere(label => label.hasClass('nx-selectable-color--light-blue')).find('input'))
         .toHaveProp('value', 'light-blue');
 
-    expect(labels.filterWhere(label => label.hasClass('nx-color-picker__color--green')).find('input'))
+    expect(labels.filterWhere(label => label.hasClass('nx-selectable-color--green')).find('input'))
         .toHaveProp('value', 'green');
   });
 
@@ -133,7 +133,7 @@ describe('NxColorPicker', function() {
 
   it('sets the selected class on the label of the selected color', function() {
     expect(getMounted({ value: 'green' }).find('.nx-color-picker__color.selected'))
-        .toHaveClassName('nx-color-picker__color--green');
+        .toHaveClassName('nx-selectable-color--green');
   });
 
   it('fires its onChange handler with the color of the clicked input', function() {
