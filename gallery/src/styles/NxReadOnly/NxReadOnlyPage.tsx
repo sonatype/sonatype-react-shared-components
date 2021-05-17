@@ -110,7 +110,9 @@ const NxReadOnlyPage = () => {
                           htmlExample={nxReadOnlyGridExampleCode}>
         An <NxCode>nx-read-only</NxCode> arranged in a grid. The exact layout of the grid is custom to this example.
         In typical usage, the layout of the grid would be usage-specific requiring the use
-        of <NxCode>grid-template</NxCode> and/or <NxCode>grid-area</NxCode> CSS properties.
+        of <NxCode>grid-template</NxCode> and/or <NxCode>grid-area</NxCode> CSS properties.  Note the use of
+        <NxCode>.nx-read-only__item</NxCode> wrapping each set
+        of <NxCode>&lt;dt&gt;</NxCode>/<NxCode>&lt;dd&gt;</NxCode>s.
       </GalleryExampleTile>
     </>
   );
