@@ -26,7 +26,7 @@ $nx-tile-padding: $nx-spacing-l;
 
   > .nx-footer, > .nx-form > .nx-footer {
     // use margin for sides so the top border ends in the right places
-    margin: $nx-tile-padding $nx-tile-padding 0 $nx-tile-padding;
+    margin: $nx-spacing-xl $nx-tile-padding 0 $nx-tile-padding;
     padding-bottom: $nx-spacing-l;
   }
 }

@@ -83,3 +83,7 @@ export const NxTableContainer = Object.assign(withClass('div', 'nx-table-contain
 export const NxGlobalHeader = Object.assign(withClass('aside', 'nx-global-header'), {
   Actions: withClass('div', 'nx-global-header__actions')
 });
+
+export const NxSystemNotice = Object.assign(withClass('div', 'nx-system-notice'), {
+  Container: withClass('div', 'nx-system-notice-container')
+});

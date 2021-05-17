@@ -105,6 +105,7 @@ import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPag
 import NxStatefulGlobalSidebarPage from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarPage';
 import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
 import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTilePage';
+import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -189,6 +190,7 @@ const pageConfig: PageConfig = {
     'nx-page-title': NxPageTitlePage,
     'nx-pre': NxPrePage,
     'nx-read-only': NxReadOnlyPage,
+    'nx-system-notice': NxSystemNoticePage,
     'nx-table': NxTableStylePage,
     'nx-table-container': NxTableContainerPage,
     'nx-threat-number': NxThreatNumberPage,
