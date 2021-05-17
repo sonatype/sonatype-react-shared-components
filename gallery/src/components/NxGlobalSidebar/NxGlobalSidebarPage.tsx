@@ -181,15 +181,6 @@ export default function NxGlobalSidebarPage() {
             </NxTable.Head>
             <NxTable.Body>
               <NxTable.Row>
-                <NxTable.Cell>supportIcon</NxTable.Cell>
-                <NxTable.Cell>IconDefinition</NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>
-                  The support link has an icon to its left, by default it is a circle enclosing a question mark
-                  (<NxCode>faQuestionCircle</NxCode>) this specifies an alternate icon to be used.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
                 <NxTable.Cell>supportText</NxTable.Cell>
                 <NxTable.Cell>string</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
