@@ -114,9 +114,10 @@ export default function NxGlobalSidebarPage() {
             <NxCode>NxGlobalSidebarNavigation</NxCode> is a container for navigation links.
             It accepts all standard <NxCode>&lt;div&gt;</NxCode> HTML attributes.
           </NxP>
-          <NxP>
-            Note that it is strongly suggested that the number of navigation links used be kept to 10 or less.
-          </NxP>
+          <NxWarningAlert>
+            Note that the number of navigation links must be kept to 10 or less in order to ensure that there is enough
+            space for both the navigation and footer areas in smaller viewports.
+          </NxWarningAlert>
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
