@@ -19,6 +19,7 @@
   $size: 32px;
 
   background-clip: content-box;
+  background-color: var(--nx-selectable-color-dark);
   border-radius: $size / 2;
   box-sizing: border-box;
   border: 1px solid transparent;
@@ -41,12 +42,6 @@
 
   &:hover {
     border-color: $nx-form-element-border-color;
-  }
-}
-
-@each $color-name, $color-codes in $nx-selectable-colors {
-  .nx-color-picker__color--#{$color-name} {
-    background-color: nth($color-codes, 1);
   }
 }
 
