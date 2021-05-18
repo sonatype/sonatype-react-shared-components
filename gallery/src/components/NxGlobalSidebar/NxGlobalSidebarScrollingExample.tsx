@@ -57,49 +57,48 @@ export default function NxGlobalSidebarExample() {
         </NxGlobalSidebarNavigation>
         <section className="gallery-custom-sidebar-content
                             nx-global-sidebar__other-content
-                            nx-global-sidebar__expanded-content
                             nx-scrollable">
-          <NxH3>
-            Custom Content
-          </NxH3>
-          <NxP>
-            neural decay saturation point assault camera neon concrete engine
-          </NxP>
-          <NxTreeView isOpen={is1Open}
-                      onToggleCollapse={onToggle1Collapse}
-                      triggerContent="Organization">
-            <NxTreeViewChild>
-              <NxCheckbox isChecked={true}>
-                Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo
-              </NxCheckbox>
-            </NxTreeViewChild>
-            <NxTreeViewChild>
-              <NxCheckbox isChecked={true}>Bar</NxCheckbox>
-            </NxTreeViewChild>
-            <NxTreeViewChild>
-              <NxCheckbox isChecked={true}>Baz</NxCheckbox>
-            </NxTreeViewChild>
-          </NxTreeView>
-          <NxTreeView isOpen={is2Open}
-                      onToggleCollapse={onToggle2Collapse}
-                      triggerContent="Organization">
-            <NxTreeViewChild>
-              <NxRadio name="test-radio" value="foo" isChecked={false}>Foo</NxRadio>
-            </NxTreeViewChild>
-            <NxTreeViewChild>
-              <NxRadio name="test-radio" value="bar" isChecked={false}>Bar</NxRadio>
-            </NxTreeViewChild>
-            <NxTreeViewChild>
-              <NxRadio name="test-radio" value="baz" isChecked={true}>Baz</NxRadio>
-            </NxTreeViewChild>
-          </NxTreeView>
+          <div className="nx-global-sidebar__expanded-content">
+            <NxH3>
+              Custom Content
+            </NxH3>
+            <NxP>
+              neural decay saturation point assault camera neon concrete engine
+            </NxP>
+            <NxTreeView isOpen={is1Open}
+                        onToggleCollapse={onToggle1Collapse}
+                        triggerContent="Organization">
+              <NxTreeViewChild>
+                <NxCheckbox isChecked={true}>
+                  Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo
+                </NxCheckbox>
+              </NxTreeViewChild>
+              <NxTreeViewChild>
+                <NxCheckbox isChecked={true}>Bar</NxCheckbox>
+              </NxTreeViewChild>
+              <NxTreeViewChild>
+                <NxCheckbox isChecked={true}>Baz</NxCheckbox>
+              </NxTreeViewChild>
+            </NxTreeView>
+            <NxTreeView isOpen={is2Open}
+                        onToggleCollapse={onToggle2Collapse}
+                        triggerContent="Organization">
+              <NxTreeViewChild>
+                <NxRadio name="test-radio" value="foo" isChecked={false}>Foo</NxRadio>
+              </NxTreeViewChild>
+              <NxTreeViewChild>
+                <NxRadio name="test-radio" value="bar" isChecked={false}>Bar</NxRadio>
+              </NxTreeViewChild>
+              <NxTreeViewChild>
+                <NxRadio name="test-radio" value="baz" isChecked={true}>Baz</NxRadio>
+              </NxTreeViewChild>
+            </NxTreeView>
+          </div>
         </section>
         <NxGlobalSidebarFooter supportText="Support for RSC"
                                supportLink="https://github.com/sonatype/sonatype-react-shared-components"
-                               releaseText="React Shared Components"
                                releaseNumber="3.1.4"
-                               productTagLine="Powered by PLAID VILLAIN"
-                               showCreatedBy={true}>
+                               showCreatedBy={false}>
         </NxGlobalSidebarFooter>
       </NxGlobalSidebar>
       <NxPageMain>Page content</NxPageMain>
