@@ -212,14 +212,6 @@
       @include nx-small-icon-btn;
     }
   }
-
-  &:first-child {
-    padding-left: $nx-spacing-md;
-  }
-
-  &:last-child {
-    padding-right: $nx-spacing-md;
-  }
 }
 
 .nx-cell--label {
