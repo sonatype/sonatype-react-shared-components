@@ -9,6 +9,8 @@ import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxGlobalSidebarFooter, { NxGlobalSidebarFooterProps as Props }
   from '../NxGlobalSidebarFooter';
 
+import NxTextLink from '../../NxTextLink/NxTextLink';
+
 describe('NxGlobalSidebarFooter', function() {
   const minimalProps: Props = {
         supportText: 'Support for RSC',
@@ -25,10 +27,12 @@ describe('NxGlobalSidebarFooter', function() {
   });
 
   it('renders the Support div with a link with the passed href and text', function() {
-    const support = getShallowComponent().find('div.nx-global-sidebar__support');
+    const support = getShallowComponent().find('div.nx-global-sidebar__support'),
+        supportLink = getShallowComponent().find('div.nx-global-sidebar__support').find(NxTextLink);
 
     expect(support).toContainMatchingElement('span.nx-global-sidebar__support-text');
     expect(support.find('span.nx-global-sidebar__support-text')).toHaveText('Support for RSC');
+    expect(supportLink).toHaveProp('href', '#supporturl');
   });
 
   it('renders the Release div with a text and version number', function() {
