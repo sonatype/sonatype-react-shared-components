@@ -72,7 +72,8 @@ export const NxPageTitle = Object.assign(withClass('div', 'nx-page-title'), {
 
 export const NxReadOnly = Object.assign(withClass('dl', 'nx-read-only'), {
   Label: withClass('dt', 'nx-read-only__label'),
-  Data: withClass('dd', 'nx-read-only__data')
+  Data: withClass('dd', 'nx-read-only__data'),
+  Item: withClass('div', 'nx-read-only__item')
 });
 
 export const NxTableContainer = Object.assign(withClass('div', 'nx-table-container'), {
