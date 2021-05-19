@@ -17,7 +17,7 @@
   $header-row-height: $nx-table-cell-header-height;
 
   // 42 is the effective height of a text input
-  $header-filter-row-height: 42px + ($nx-table-cell-vertical-padding * 2) + 1px;
+  $header-filter-row-height: 42px + ($nx-spacing-md * 2) + 1px;
   $footer-height: $nx-pagination-button-height + ($nx-table-footer-vertical-padding * 2) + 1px;
 
   @return ($body-row-count - 1) * ($body-row-height + 1px) + // extra 1px for border
