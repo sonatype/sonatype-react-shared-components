@@ -20,7 +20,7 @@
 
     &:hover {
       .nx-text-input__box {
-        border-color: var(--nx-color-border-form-element);
+        border-color: var(--nx-color-form-element-border);
       }
     }
   }
@@ -44,7 +44,7 @@
   &.disabled {
     &, &.valid, &.invalid, &.pristine {
       .nx-text-input__box {
-        background-color: var(--nx-color-background-disabled);
+        background-color: var(--nx-interactive-background-disabled);
         border-color: var(--nx-border-color-disabled);
       }
 
@@ -64,7 +64,7 @@
 
   align-items: center;
   background-color: $nx-white;
-  border: 1px solid var(--nx-color-border-form-element);
+  border: 1px solid var(--nx-color-form-element-border);
   border-radius: var(--nx-border-radius);
   display: flex;
   padding: var(--nx-spacing-2x) var(--nx-spacing-4x);

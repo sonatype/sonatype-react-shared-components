@@ -13,7 +13,7 @@
 }
 
 .nx-body {
-  background-color: var(--nx-color-background-site);
+  background-color: var(--nx-color-site-background);
   height: 100%;
   margin: 0;
   padding: 0;
@@ -64,7 +64,7 @@
 .nx-page-sidebar {
   @include container-vertical;
 
-  background-color: var(--nx-color-background-site);
+  background-color: var(--nx-color-site-background);
   box-sizing: border-box;
 
   // sizing properties for when in .nx-page-sidebar

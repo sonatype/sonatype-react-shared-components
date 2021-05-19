@@ -25,7 +25,7 @@
     cursor: pointer;
 
     .nx-radio-checkbox__control {
-      border-color: var(--nx-color-border-form-element);
+      border-color: var(--nx-color-form-element-border);
       stroke: $nx-grey-1100;
     }
   }
@@ -39,7 +39,7 @@
 
     &:hover {
       .nx-radio-checkbox__control {
-        border-color: var(--nx-color-border-form-element);
+        border-color: var(--nx-color-form-element-border);
         filter: none;
         stroke: $nx-grey-1100;
       }
@@ -87,13 +87,13 @@ svg.nx-radio-checkbox__control {
     cursor: default;
 
     .nx-radio-checkbox__control {
-      background-color:var(--nx-color-background-disabled);
+      background-color:var(--nx-interactive-background-disabled);
       border-color: var(--nx-border-color-disabled);
     }
 
     svg.nx-radio-checkbox__control {
       background: none;
-      fill: var(--nx-color-background-disabled);
+      fill: var(--nx-interactive-background-disabled);
       stroke: var(--nx-border-color-disabled);
     }
   }

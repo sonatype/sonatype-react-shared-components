@@ -27,7 +27,7 @@
 
     align-items: first baseline;
     border: 1px solid transparent;
-    border-top-color: var(--nx-color-border-subsection);
+    border-top-color: var(--nx-color-subsection-border);
     box-sizing: border-box;
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -177,17 +177,17 @@
     &, > .nx-list__link {
       &.selected {
         &, &:hover {
-          background-color: var(--nx-color-background-selected);
+          background-color: var(--nx-color-interactive-background-selected);
         }
       }
 
       &:hover {
-        background-color: var(--nx-color-background-hover);
+        background-color: var(--nx-color-interactive-background-hover);
         cursor: pointer;
       }
 
       &:active {
-        background-color: var(--nx-color-background-active);
+        background-color: var(--nx-color-interactive-background-active);
       }
 
       &:focus {

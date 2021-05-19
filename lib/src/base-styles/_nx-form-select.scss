@@ -23,7 +23,7 @@
   width: var(--nx-width-form-element-normal);
 
   &:hover {
-    border-color: var(--nx-color-border-form-element);
+    border-color: var(--nx-color-form-element-border);
   }
 
   &:focus {
@@ -33,7 +33,7 @@
   }
 
   &.disabled {
-    background-color: var(--nx-color-background-disabled);
+    background-color: var(--nx-interactive-background-disabled);
     border-color: var(--nx-border-color-disabled);
   }
 }
