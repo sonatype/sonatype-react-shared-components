@@ -141,6 +141,12 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
     display: none;
   }
 
+  // used for the footer - hidden content still takes up space when sidebar is collapsed
+  .nx-global-sidebar__hide-when-collapsed {
+    visibility: hidden;
+    white-space: nowrap;
+  }
+
   .nx-global-sidebar__header {
     justify-content: center;
   }

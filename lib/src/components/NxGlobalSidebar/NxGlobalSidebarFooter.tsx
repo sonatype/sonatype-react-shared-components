@@ -40,19 +40,19 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
       }
 
       { releaseNumber &&
-        <div className="nx-global-sidebar__release nx-global-sidebar__expanded-content">
+        <div className="nx-global-sidebar__release nx-global-sidebar__hide-when-collapsed">
           {releaseNumber || undefined}
         </div>
       }
 
       { productTagLine &&
-        <div className="nx-global-sidebar__product-name nx-global-sidebar__expanded-content">
+        <div className="nx-global-sidebar__product-name nx-global-sidebar__hide-when-collapsed">
           {productTagLine || undefined}
         </div>
       }
 
       { showCreatedBy &&
-        <div className="nx-global-sidebar__created-by nx-global-sidebar__expanded-content">
+        <div className="nx-global-sidebar__created-by nx-global-sidebar__hide-when-collapsed">
           Created by Sonatype
         </div>
       }
