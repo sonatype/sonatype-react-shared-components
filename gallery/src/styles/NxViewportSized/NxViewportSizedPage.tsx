@@ -6,8 +6,18 @@
  */
 import React from 'react';
 import CodeExample from '../../CodeExample';
-import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxWarningAlert, NxInfoAlert, NxCode, NxStatefulAccordion, NxAccordion }
-  from '@sonatype/react-shared-components';
+import {
+  NxTableHead,
+  NxTableRow,
+  NxTableCell,
+  NxTable,
+  NxTableBody,
+  NxWarningAlert,
+  NxInfoAlert,
+  NxCode,
+  NxStatefulAccordion,
+  NxAccordion
+} from '@sonatype/react-shared-components';
 
 const NxViewportSizedExample = require('./NxViewportSizedExample.tsx?raw'),
     NxViewportSizedExpandingExample = require('./NxViewportSizedExpandingExample.tsx?raw'),

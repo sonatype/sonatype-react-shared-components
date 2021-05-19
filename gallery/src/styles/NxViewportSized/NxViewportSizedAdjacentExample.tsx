@@ -22,7 +22,7 @@ export default function NxViewportSizedScrollableExample() {
         </div>
       </div>
       <div className="nx-viewport-sized__container nx-viewport-sized__container--adjacent">
-        <ul className="nx-list nx-list--clickable nx-scrollable nx-viewport-sized__scrollable gallery-viewport-sized-list">
+        <ul className="nx-list nx-list--clickable nx-scrollable nx-viewport-sized__scrollable gallery-viewport-list">
           <li className="nx-list__item selected">
             <span className="nx-list__text">English</span>
           </li>
