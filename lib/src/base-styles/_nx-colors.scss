@@ -5,21 +5,25 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 :root {
-  --nx-color-border-default: #{$nx-indigo-100};
-  --nx-color-border-subsection: #{$nx-grey-200};
-  --nx-color-border-form-element: #{$nx-grey-1100};
-  --nx-color-border-form-element-pristine: #{$nx-indigo-100};
-  --nx-color-border-disabled: #{$nx-grey-500};
-  --nx-color-border-focus: #{$nx-teal-300};
+  --nx-color-border: #{$nx-indigo-100};
 
-  --nx-color-shadow-focus: #{transparentize($nx-teal-300, 0.7)};
+  --nx-color-subsection-border: #{$nx-grey-200};
 
-  --nx-color-background-component: #{$nx-white};
-  --nx-color-background-site: #{$nx-grey-50};
-  --nx-color-background-selected: #{$nx-blue-200};
-  --nx-color-background-active: #{$nx-blue-200};
-  --nx-color-background-hover: #{$nx-grey-100};
-  --nx-color-background-disabled: #{$nx-grey-200};
+  --nx-color-component-background: #{$nx-white};
+
+  --nx-color-site-background: #{$nx-grey-50};
+
+  --nx-color-form-element-border: #{$nx-grey-1100};
+  --nx-color-form-element-border-pristine: #{$nx-indigo-100};
+
+  --nx-color-interactive-background-selected: #{$nx-blue-200};
+  --nx-color-interactive-background-active: #{$nx-blue-200};
+  --nx-color-interactive-background-hover: #{$nx-grey-100};
+  --nx-color-interactive-background-disabled: #{$nx-grey-200};
+  --nx-color-interactive-border-disabled: #{$nx-grey-500};
+  --nx-color-interactive-border-focus: #{$nx-teal-300};
+  --nx-color-interactive-box-shadow-focus: #{transparentize($nx-teal-300, 0.7)};
+  --nx-color-interactive-shadow-focus: #{transparentize($nx-teal-300, 0.7)};
 
   --nx-color-text-dark: #{$nx-grey-1100};
   --nx-color-text: #{$nx-grey-900};
