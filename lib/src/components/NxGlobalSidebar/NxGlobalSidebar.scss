@@ -163,7 +163,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 
   flex-grow: 1;
   padding: $nx-spacing-md $nx-global-sidebar-left-right-spacing;
-  max-height: 100%;
+  max-height: unset;
 
   + .nx-global-sidebar__footer {
     border-top: 1px solid $nx-global-sidebar-separator-color;
