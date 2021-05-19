@@ -42,8 +42,8 @@
   --nx-border-default: 1px solid var(--nx-color-border-default);
   --nx-border-subsection: 1px solid var(--nx-color-border-subsection);
 
-  --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-box-shadow-focus);
+  --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-shadow-focus);
 
   // similar to above, but for use in drop-shadow filters rather than box-shadow properties
-  --nx-drop-shadow-focus: 0 0 3px var(--nx-color-box-shadow-focus);
+  --nx-drop-shadow-focus: 0 0 3px var(--nx-color-shadow-focus);
 }
