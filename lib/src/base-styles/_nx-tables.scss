@@ -32,12 +32,10 @@
 
       &:first-child {
         border-left-style: solid;
-        padding-left: $nx-spacing-md - $border-width;
       }
 
       &:last-child {
         border-right-style: solid;
-        padding-right: $nx-spacing-md - $border-width;
       }
 
       // Used for table cells container meta-information such as the fact that the table is empty, or
@@ -125,6 +123,7 @@
     width: calc(100% + 0.9999px);
 
     > thead > :first-child {
+      
       > .nx-cell {
         &:first-child, &:last-child {
           border-radius: 0;
@@ -200,6 +199,14 @@
   min-height: $nx-table-cell-min-height;
   padding: $nx-table-cell-vertical-padding $nx-spacing-sm;
   vertical-align: top;
+
+  &:first-child {
+    padding-left: $nx-spacing-md - 1px;
+  }
+
+  &:last-child {
+    padding-right: $nx-spacing-md - 1px;
+  }
 
   > .nx-btn-bar {
     // buttons should be 8px from row edges even though row padding is 12px
