@@ -38,7 +38,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   display: flex;
   flex-direction: column;
   grid-area: global-sidebar;
-  padding: $nx-spacing-xl 0 $nx-spacing-l 0;
+  padding: $nx-spacing-xl 0 $nx-spacing-xxl 0;
   width: $nx-global-sidebar-width-open;
 
   .nx-text-link, .nx-tree-view__trigger, .nx-tree-view__child {
@@ -176,8 +176,12 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   display: flex;
   flex-direction: column;
   margin-top: auto;
-  padding: $nx-spacing-xxl $nx-spacing-l $nx-spacing-l $nx-spacing-l;
+  padding: $nx-spacing-xxl $nx-spacing-l 0 $nx-spacing-l;
   text-align: center;
+
+  &:empty {
+    padding-top: 0;
+  }
 }
 
 .nx-global-sidebar__support {
