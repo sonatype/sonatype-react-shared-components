@@ -198,16 +198,13 @@ export default function NxGlobalSidebarPage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>releaseText</NxTable.Cell>
-                <NxTable.Cell>String</NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>Text that appears before the release number.</NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
                 <NxTable.Cell>releaseNumber</NxTable.Cell>
                 <NxTable.Cell>String</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>A release number.</NxTable.Cell>
+                <NxTable.Cell>
+                  Text that indicates what version of the software is currently being used. You may use just a version
+                  number or a mix of text and a number, e.g. "Release 3.1.4".
+                </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
                 <NxTable.Cell>productTagLine</NxTable.Cell>
@@ -221,17 +218,9 @@ export default function NxGlobalSidebarPage() {
               <NxTable.Row>
                 <NxTable.Cell>showCreatedBy</NxTable.Cell>
                 <NxTable.Cell>Boolean</NxTable.Cell>
-                <NxTable.Cell>Yes</NxTable.Cell>
-                <NxTable.Cell>
-                  If true the "Created by Sonatype" tagline is displayed unless alternate text is provided below.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell>createdByText</NxTable.Cell>
-                <NxTable.Cell>String</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  Used to provide text that overrides the default "Created by Sonatype" tagline.
+                  The "Created by Sonatype" tagline is displayed unless this value is set to "false".
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>

@@ -51,7 +51,7 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
         </div>
       }
 
-      { showCreatedBy &&
+      { showCreatedBy !== false &&
         <div className="nx-global-sidebar__created-by nx-global-sidebar__hide-when-collapsed">
           Created by Sonatype
         </div>

@@ -59,7 +59,7 @@ export interface NxGlobalSidebarFooterProps {
   supportLink?: string | null;
   releaseNumber?: string | null;
   productTagLine?: string | null;
-  showCreatedBy: boolean;
+  showCreatedBy?: boolean | null;
   children?: ReactNode | null;
   className?: string | null;
 }
@@ -69,7 +69,7 @@ export const nxGlobalSidebarFooterPropTypes: ValidationMap<NxGlobalSidebarFooter
   supportLink: PropTypes.string,
   releaseNumber: PropTypes.string,
   productTagLine: PropTypes.string,
-  showCreatedBy: PropTypes.bool.isRequired,
+  showCreatedBy: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string
 };
