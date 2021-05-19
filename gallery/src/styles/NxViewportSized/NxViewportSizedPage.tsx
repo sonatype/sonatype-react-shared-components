@@ -6,13 +6,13 @@
  */
 import React from 'react';
 import CodeExample from '../../CodeExample';
-import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxWarningAlert, NxInfoAlert }
+import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxWarningAlert, NxInfoAlert, NxCode, NxStatefulAccordion, NxAccordion }
   from '@sonatype/react-shared-components';
 
-const NxViewportSizedExample =
-      require('./NxViewportSizedExample.tsx?raw'),
-    NxViewportSizedExpandingExample =
-      require('./NxViewportSizedExpandingExample.tsx?raw');
+const NxViewportSizedExample = require('./NxViewportSizedExample.tsx?raw'),
+    NxViewportSizedExpandingExample = require('./NxViewportSizedExpandingExample.tsx?raw'),
+    NxViewportSizedAdjacentExample = require('./NxViewportSizedAdjacentExample.tsx?raw'),
+    NxViewportSizedAdjacentStyles = require('./NxViewportSizedAdjacentExample.scss?raw');
 
 export default function NxViewportSizedPage() {
   return (
@@ -117,6 +117,16 @@ export default function NxViewportSizedPage() {
                 </NxTableCell>
               </NxTableRow>
               <NxTableRow>
+                <NxTableCell><NxCode>nx-viewport-sized__container--adjacent</NxCode></NxTableCell>
+                <NxTableCell>Modifier of <NxCode>nx-viewport-sized__container</NxCode></NxTableCell>
+                <NxTableCell>
+                  This class causes its children to be laid out adjacently in the horizontal direction while
+                  still carrying down the sizing context necessary for those children or their descendants to size
+                  to the viewport. It is expected that every child of this element will be either
+                  an <NxCode>nx-viewport-sized__container</NxCode> or an <NxCode>nx-viewport-sized__scrollable</NxCode>.
+                </NxTableCell>
+              </NxTableRow>
+              <NxTableRow>
                 <NxTableCell><code className="nx-code">nx-viewport-sized__scrollable</code></NxTableCell>
                 <NxTableCell>
                   The <code className="nx-code">.nx-scrollable</code> that is intended to adjust to the size of
@@ -175,7 +185,14 @@ export default function NxViewportSizedPage() {
               Click here to navigate to the live example.
             </a>
           </p>
-          <CodeExample content={NxViewportSizedExpandingExample} />
+        </div>
+        <div className="nx-tile-content nx-tile-content--accordion-container">
+          <NxStatefulAccordion>
+            <NxAccordion.Header>
+              <h2 className="nx-accordion__header-title">Code Examples</h2>
+            </NxAccordion.Header>
+            <CodeExample content={NxViewportSizedExpandingExample} />
+          </NxStatefulAccordion>
         </div>
       </section>
       <section className="nx-tile">
@@ -198,7 +215,46 @@ export default function NxViewportSizedPage() {
               Click here to navigate to the live example.
             </a>
           </p>
-          <CodeExample content={NxViewportSizedExample} />
+        </div>
+        <div className="nx-tile-content nx-tile-content--accordion-container">
+          <NxStatefulAccordion>
+            <NxAccordion.Header>
+              <h2 className="nx-accordion__header-title">Code Examples</h2>
+            </NxAccordion.Header>
+            <CodeExample content={NxViewportSizedExample} />
+          </NxStatefulAccordion>
+        </div>
+      </section>
+      <section className="nx-tile">
+        <header className="nx-tile-header">
+          <div className="nx-tile-header__title">
+            <h2 className="nx-h2">Adjacent Scrollables Example</h2>
+          </div>
+        </header>
+        <div className="nx-tile-content">
+          <p className="nx-p">
+            In this example, two adjacent scrollable elements are present.{' '}
+            <NxCode>.nx-viewport-size__container--adjacent</NxCode> is used on the closest common ancestor of the
+            two scrollables in order to facilitate this.
+          </p>
+          <p className="nx-p">
+            In this situation, widths and spacing between the adjacent children will often be usage-specific,
+            requiring custom styles as demonstrated here.
+          </p>
+          <p className="nx-p">
+            <a className="nx-text-link" href="#/NxViewportSizedAdjacentExample">
+              Click here to navigate to the live example.
+            </a>
+          </p>
+        </div>
+        <div className="nx-tile-content nx-tile-content--accordion-container">
+          <NxStatefulAccordion>
+            <NxAccordion.Header>
+              <h2 className="nx-accordion__header-title">Code Examples</h2>
+            </NxAccordion.Header>
+            <CodeExample content={NxViewportSizedAdjacentStyles} language="scss" />
+            <CodeExample content={NxViewportSizedAdjacentExample} />
+          </NxStatefulAccordion>
         </div>
       </section>
     </>
