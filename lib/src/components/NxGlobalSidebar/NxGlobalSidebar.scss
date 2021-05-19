@@ -12,6 +12,7 @@
 $nx-global-sidebar-width-open: 250px;
 $nx-global-sidebar-width-closed: 72px;
 $nx-global-sidebar-logo-height: 34px;
+$nx-global-sidebar-left-right-spacing: $nx-spacing-l;
 
 $nx-global-sidebar-text-color: $nx-white;
 $nx-global-sidebar-background-color: $nx-blue-1000;
@@ -46,7 +47,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   display: flex;
   height: $nx-global-sidebar-logo-height;
   margin-bottom: $nx-spacing-xl;
-  padding: 0 $nx-spacing-l;
+  padding: 0 $nx-global-sidebar-left-right-spacing;
 }
 
 .nx-global-sidebar__toggle {
@@ -92,7 +93,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 
   border: 1px solid transparent;
   display: block;
-  padding: $nx-spacing-xxs $nx-spacing-l;
+  padding: $nx-spacing-xxs $nx-global-sidebar-left-right-spacing;
 
   .nx-icon {
     margin: 0;
@@ -161,7 +162,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   @include container-vertical;
 
   flex-grow: 1;
-  padding: $nx-spacing-md $nx-spacing-l;
+  padding: $nx-spacing-md $nx-global-sidebar-left-right-spacing;
   max-height: 100%;
 
   + .nx-global-sidebar__footer {
@@ -177,7 +178,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   display: flex;
   flex-direction: column;
   margin-top: auto;
-  padding: $nx-spacing-xxl $nx-spacing-l 0 $nx-spacing-l;
+  padding: $nx-spacing-xxl $nx-global-sidebar-left-right-spacing 0 $nx-global-sidebar-left-right-spacing;
   text-align: center;
 
   &:empty {
