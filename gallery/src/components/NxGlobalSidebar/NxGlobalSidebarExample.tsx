@@ -49,8 +49,7 @@ export default function NxGlobalSidebarExample() {
         </NxGlobalSidebarNavigation>
         <NxGlobalSidebarFooter supportText="Support for RSC"
                                supportLink="https://github.com/sonatype/sonatype-react-shared-components"
-                               releaseText="React Shared Components"
-                               releaseNumber="3.1.4"
+                               releaseNumber="Release 3.1.4"
                                productTagLine="Powered by PLAID VILLAIN"
                                showCreatedBy={true}>
         </NxGlobalSidebarFooter>
