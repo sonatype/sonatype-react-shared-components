@@ -20,7 +20,6 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
     className,
     supportText,
     supportLink,
-    releaseText,
     releaseNumber,
     productTagLine,
     showCreatedBy,
@@ -40,12 +39,9 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSid
         </div>
       }
 
-      { [releaseText || releaseNumber] &&
-        <div className="nx-global-sidebar__release">
-          <span className="nx-global-sidebar__release-text nx-global-sidebar__expanded-content">
-            {releaseText || undefined}
-          </span>{' '}
-          <span className="nx-global-sidebar__release-number">{releaseNumber || undefined}</span>
+      { releaseNumber &&
+        <div className="nx-global-sidebar__release nx-global-sidebar__expanded-content">
+          {releaseNumber || undefined}
         </div>
       }
 
