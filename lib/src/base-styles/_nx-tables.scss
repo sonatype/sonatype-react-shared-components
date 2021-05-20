@@ -203,11 +203,11 @@
   vertical-align: top;
 
   &:first-child {
-    padding-left: $nx-spacing-md;
+    padding-left: var(--nx-spacing-4x);
   }
 
   &:last-child {
-    padding-right: $nx-spacing-md;
+    padding-right: var(--nx-spacing-4x);
   }
 
   > .nx-btn-bar {
