@@ -57,7 +57,7 @@ export const nxGlobalSidebarNavigationLinkPropTypes: ValidationMap<NxGlobalSideb
 export interface NxGlobalSidebarFooterProps {
   supportText?: string | null;
   supportLink?: string | null;
-  releaseNumber?: string | null;
+  releaseText?: string | null;
   productTagLine?: string | null;
   showCreatedBy?: boolean | null;
   className?: string | null;
@@ -66,7 +66,7 @@ export interface NxGlobalSidebarFooterProps {
 export const nxGlobalSidebarFooterPropTypes: ValidationMap<NxGlobalSidebarFooterProps> = {
   supportText: PropTypes.string,
   supportLink: PropTypes.string,
-  releaseNumber: PropTypes.string,
+  releaseText: PropTypes.string,
   productTagLine: PropTypes.string,
   showCreatedBy: PropTypes.bool,
   className: PropTypes.string

@@ -103,7 +103,7 @@ export default function NxGlobalSidebarFooterScrollingExample() {
         </section>
         <NxGlobalSidebarFooter supportText="Support for RSC"
                                supportLink="https://github.com/sonatype/sonatype-react-shared-components"
-                               releaseNumber="3.1.4"
+                               releaseText="3.1.4"
                                showCreatedBy={false}>
         </NxGlobalSidebarFooter>
       </NxGlobalSidebar>

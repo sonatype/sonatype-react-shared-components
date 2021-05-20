@@ -20,7 +20,7 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxGlobalSidebar
     className,
     supportText,
     supportLink,
-    releaseNumber,
+    releaseText,
     productTagLine,
     showCreatedBy,
     ...otherProps } = props;
@@ -39,9 +39,9 @@ const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxGlobalSidebar
         </div>
       }
 
-      { releaseNumber &&
+      { releaseText &&
         <div className="nx-global-sidebar__release nx-global-sidebar__hide-when-collapsed">
-          {releaseNumber || undefined}
+          {releaseText || undefined}
         </div>
       }
 

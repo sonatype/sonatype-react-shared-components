@@ -53,7 +53,7 @@ export default function NxGlobalSidebarPage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>releaseNumber</NxTable.Cell>
+                <NxTable.Cell>releaseText</NxTable.Cell>
                 <NxTable.Cell>String</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
