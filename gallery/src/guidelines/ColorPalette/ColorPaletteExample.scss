@@ -23,7 +23,7 @@
   .nx-card__content {
     display: grid;
     gap: 0 var(--nx-spacing-6x);
-    grid-template-columns: auto minmax(max-content, 1fr) 1fr;
+    grid-template-columns: auto minmax(min-content, 1fr) 1fr;
     align-content: start;
 
     > .gallery-swatch {
@@ -49,4 +49,8 @@
 
 .gallery-swatch__variable, .gallery-swatch__hex {
   justify-self: center;
+}
+
+.gallery-swatch__hex {
+  white-space: normal;
 }
