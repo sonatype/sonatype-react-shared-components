@@ -199,8 +199,16 @@
   @include container-horizontal;
 
   min-height: $nx-table-cell-min-height;
-  padding: $nx-table-cell-vertical-padding var(--nx-spacing-4x);
+  padding: $nx-table-cell-vertical-padding var(--nx-spacing-3x);
   vertical-align: top;
+
+  &:first-child {
+    padding-left: $nx-spacing-md;
+  }
+
+  &:last-child {
+    padding-right: $nx-spacing-md;
+  }
 
   > .nx-btn-bar {
     // buttons should be 8px from row edges even though row padding is 12px
@@ -269,6 +277,8 @@
 .nx-table-row--filter-header > .nx-cell--header {
   background-color: var(--nx-color-background-component);
   border-bottom: var(--nx-border-default);
+  padding-top: var(--nx-spacing-4x);
+  padding-bottom: var(--nx-spacing-4x);
 }
 
 .nx-cell__sort-icons {

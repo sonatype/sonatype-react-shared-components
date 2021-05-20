@@ -18,7 +18,7 @@
   $body-row-height: $nx-table-cell-min-height;
   $header-row-height: $nx-table-cell-header-height;
 
-  $header-filter-row-height: calc(#{$text-input-height} + (#{$nx-table-cell-vertical-padding} * 2) + 1px);
+  $header-filter-row-height: calc(#{$text-input-height} + (var(--nx-spacing-4x) * 2) + 1px);
   $footer-height: calc(#{$nx-pagination-button-height} + (#{$nx-table-footer-vertical-padding} * 2) + 1px);
 
   @return calc(#{
