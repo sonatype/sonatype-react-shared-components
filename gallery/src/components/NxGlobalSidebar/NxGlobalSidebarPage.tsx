@@ -197,7 +197,9 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell><NxCode>nx-global-sidebar__other-content</NxCode></NxTable.Cell>
                 <NxTable.Cell>element</NxTable.Cell>
                 <NxTable.Cell>
-                  A simple container for content that will appears below the navigation and above the footer.
+                  A simple container for content that will appears below the navigation and above the footer. If you
+                  want this content area to be scrollable (which is very strongly suggested) you should also apply
+                  {' '}<NxCode>.nx-scrollable</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
