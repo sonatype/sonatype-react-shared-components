@@ -29,6 +29,12 @@ $nx-tile-padding: $nx-spacing-l;
     // use margin for sides so the top border ends in the right places
     margin: $nx-spacing-xl $nx-tile-padding 0 $nx-tile-padding;
   }
+
+  // When a tile contains an NxForm that is in an error state, an nx-alert gets rendered as the tile's immediate child
+  > .nx-alert {
+    margin-left: $nx-tile-padding;
+    margin-right: $nx-tile-padding;
+  }
 }
 
 // Tile headers
