@@ -3,15 +3,6 @@
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
- *
- * supportText: 'Support for RSC',
-        supportLink: '#supporturl',
-        releaseText: 'React Shared Components',
-        releaseNumber: '3.1.4',
-        productTagLine: 'Powered by PLAID VILLAIN',
-        showCreatedBy: true
- *
- *
  */
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
@@ -33,7 +24,8 @@ describe('NxGlobalSidebarFooter', function() {
     const supportEmpty = getShallowComponent().find('div.nx-global-sidebar__support'),
         support = getShallowComponent({ supportText: 'Support for RSC', supportLink: '#supporturl' })
             .find('div.nx-global-sidebar__support'),
-        supportLink = getShallowComponent().find('div.nx-global-sidebar__support').find(NxTextLink);
+        supportLink = getShallowComponent({ supportText: 'Support for RSC', supportLink: '#supporturl' })
+            .find('div.nx-global-sidebar__support').find(NxTextLink);
 
     expect(supportEmpty).not.toExist();
     expect(support).toContainMatchingElement('span.nx-global-sidebar__support-text');
@@ -60,10 +52,10 @@ describe('NxGlobalSidebarFooter', function() {
   });
 
   it('renders the Created By text by default and does not render when set to false', function() {
-    const createdTrue = getShallowComponent().find('div.nx-global-sidebar__created-by'),
-        createdFalse = getShallowComponent({ showCreatedBy: false }).find('div.nx-global-sidebar__created-by');
+    const createdByTrue = getShallowComponent().find('div.nx-global-sidebar__created-by'),
+        createdByFalse = getShallowComponent({ showCreatedBy: false }).find('div.nx-global-sidebar__created-by');
 
-    expect(createdTrue).toHaveText('Created by Sonatype');
-    expect(createdFalse).not.toExist;
+    expect(createdByTrue).toHaveText('Created by Sonatype');
+    expect(createdByFalse).not.toExist;
   });
 });
