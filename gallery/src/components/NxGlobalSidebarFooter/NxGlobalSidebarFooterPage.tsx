@@ -67,7 +67,7 @@ export default function NxGlobalSidebarFooterPage() {
                 <NxTable.Cell>String</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  This text is meant to indicate when a product is part of a suite or family of products for
+                  This text is meant to indicate when a product is part of a suite or family of products, for
                   example: "Powered by Insight".
                 </NxTable.Cell>
               </NxTable.Row>
