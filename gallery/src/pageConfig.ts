@@ -105,6 +105,7 @@ import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPag
 import NxStatefulGlobalSidebarPage from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarPage';
 import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
 import SelectableColorsPage from './styles/SelectableColors/SelectableColorsPage';
+import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTilePage';
 import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
 
 const pageConfig: PageConfig = {
@@ -207,7 +208,8 @@ const pageConfig: PageConfig = {
   },
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
-    'Page Layout': PageLayoutPage
+    'Page Layout': PageLayoutPage,
+    'Read-Only Grid Tile Layout': NxReadOnlyGridTilePage
   },
   'JavaScript & TypeScript Utilities': {
     'TooltipConfigProps': TooltipConfigPropsPage,
