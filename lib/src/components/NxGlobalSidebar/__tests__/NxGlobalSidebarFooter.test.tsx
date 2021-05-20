@@ -3,6 +3,15 @@
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ *
+ * supportText: 'Support for RSC',
+        supportLink: '#supporturl',
+        releaseText: 'React Shared Components',
+        releaseNumber: '3.1.4',
+        productTagLine: 'Powered by PLAID VILLAIN',
+        showCreatedBy: true
+ *
+ *
  */
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
@@ -12,45 +21,49 @@ import NxGlobalSidebarFooter, { NxGlobalSidebarFooterProps as Props }
 import NxTextLink from '../../NxTextLink/NxTextLink';
 
 describe('NxGlobalSidebarFooter', function() {
-  const minimalProps: Props = {
-        supportText: 'Support for RSC',
-        supportLink: '#supporturl',
-        releaseText: 'React Shared Components',
-        releaseNumber: '3.1.4',
-        productTagLine: 'Powered by PLAID VILLAIN',
-        showCreatedBy: true
-      },
+  const minimalProps: Props = {},
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxGlobalSidebarFooter, minimalProps);
 
-  it('renders an <footer> with nx-global-sidebar__footer class', function() {
-    expect(getShallowComponent()).toMatchSelector('footer.nx-global-sidebar__footer');
+  it('renders an <footer> with nx-global-sidebar__footer class and those passed as props', function() {
+    expect(getShallowComponent({ className: 'test-class' }))
+        .toMatchSelector('footer.nx-global-sidebar__footer.test-class');
   });
 
-  it('renders the Support div with a link with the passed href and text', function() {
-    const support = getShallowComponent().find('div.nx-global-sidebar__support'),
+  it('renders the Support div with a link with the passed href and text and does not render when empty', function() {
+    const supportEmpty = getShallowComponent().find('div.nx-global-sidebar__support'),
+        support = getShallowComponent({ supportText: 'Support for RSC', supportLink: '#supporturl' })
+            .find('div.nx-global-sidebar__support'),
         supportLink = getShallowComponent().find('div.nx-global-sidebar__support').find(NxTextLink);
 
+    expect(supportEmpty).not.toExist();
     expect(support).toContainMatchingElement('span.nx-global-sidebar__support-text');
     expect(support.find('span.nx-global-sidebar__support-text')).toHaveText('Support for RSC');
     expect(supportLink).toHaveProp('href', '#supporturl');
   });
 
-  it('renders the Release div with a text and version number', function() {
-    const support = getShallowComponent().find('div.nx-global-sidebar__release');
+  it('renders the Release div with a text and version number and does not render when empty', function() {
+    const releaseEmpty = getShallowComponent().find('div.nx-global-sidebar__release'),
+        release = getShallowComponent({ releaseText: 'React Shared Components: 3.1.4' })
+            .find('div.nx-global-sidebar__release');
 
-    expect(support.find('span.nx-global-sidebar__release-text')).toHaveText('React Shared Components');
-    expect(support.find('span.nx-global-sidebar__release-number')).toHaveText('3.1.4');
+    expect(releaseEmpty).not.toExist();
+    expect(release.find('.nx-global-sidebar__release')).toHaveText('React Shared Components: 3.1.4');
   });
 
-  it('renders the Powered By div with text', function() {
-    const powered = getShallowComponent().find('div.nx-global-sidebar__product-name');
+  it('renders the Powered By div with text and does not render when empty', function() {
+    const poweredEmpty = getShallowComponent().find('div.nx-global-sidebar__product-name'),
+        powered = getShallowComponent({ productTagLine: 'Powered by PLAID VILLAIN' })
+            .find('div.nx-global-sidebar__product-name');
 
+    expect(poweredEmpty).not.toExist();
     expect(powered).toHaveText('Powered by PLAID VILLAIN');
   });
 
-  it('renders the Created By div', function() {
-    const created = getShallowComponent().find('div.nx-global-sidebar__created-by');
+  it('renders the Created By text by default and does not render when set to false', function() {
+    const createdTrue = getShallowComponent().find('div.nx-global-sidebar__created-by'),
+        createdFalse = getShallowComponent({ showCreatedBy: false }).find('div.nx-global-sidebar__created-by');
 
-    expect(created).toHaveText('Created by Sonatype');
+    expect(createdTrue).toHaveText('Created by Sonatype');
+    expect(createdFalse).not.toExist;
   });
 });
