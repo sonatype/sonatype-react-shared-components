@@ -38,6 +38,8 @@ import NxSystemNoticeMultipleExample from './styles/NxSystemNotice/NxSystemNotic
 import NxGlobalSidebarFooterExample from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterExample';
 import NxGlobalSidebarFooterMinimalExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterMinimalExample';
+import NxGlobalSidebarFooterEmptyExample
+  from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterEmptyExample';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
@@ -129,6 +131,11 @@ function Application() {
         <Route exact path="/NxGlobalSidebarFooterMinimalExample">
           <SectionScrollingWrapper>
             <NxGlobalSidebarFooterMinimalExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxGlobalSidebarFooterEmptyExample">
+          <SectionScrollingWrapper>
+            <NxGlobalSidebarFooterEmptyExample />
           </SectionScrollingWrapper>
         </Route>
         <Route>
