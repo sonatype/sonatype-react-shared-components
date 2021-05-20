@@ -15,7 +15,7 @@ import { NxGlobalSidebarFooterProps as Props, nxGlobalSidebarFooterPropTypes } f
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 export { NxGlobalSidebarFooterProps } from './types';
 
-const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxNavigationSidebarLinks(props) {
+const NxGlobalSidebarFooter: FunctionComponent<Props> = function NxGlobalSidebarFooter(props) {
   const {
     className,
     supportText,
