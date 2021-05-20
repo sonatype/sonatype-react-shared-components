@@ -168,66 +168,6 @@ export default function NxGlobalSidebarPage() {
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <h3 className="nx-h3"><NxCode>NxGlobalSidebarFooter</NxCode> Props</h3>
-          </NxTile.SubsectionHeader>
-          <NxTable>
-            <NxTable.Head>
-              <NxTable.Row>
-                <NxTable.Cell>Prop</NxTable.Cell>
-                <NxTable.Cell>Type</NxTable.Cell>
-                <NxTable.Cell>Required</NxTable.Cell>
-                <NxTable.Cell>Details</NxTable.Cell>
-              </NxTable.Row>
-            </NxTable.Head>
-            <NxTable.Body>
-              <NxTable.Row>
-                <NxTable.Cell>supportText</NxTable.Cell>
-                <NxTable.Cell>string</NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>
-                  Alternate text that should appear in the support link, by default the text reads "Help and Support".
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell>supportLink</NxTable.Cell>
-                <NxTable.Cell>string</NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>
-                  URL that points to the help or support documents for this product. This prop is required for the
-                  support text to appear.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell>releaseNumber</NxTable.Cell>
-                <NxTable.Cell>String</NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>
-                  Text that indicates what version of the software is currently being used. You may use just a version
-                  number or a mix of text and a number, e.g. "Release 3.1.4".
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell>productTagLine</NxTable.Cell>
-                <NxTable.Cell>String</NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>
-                  This text is meant to indicate when a product is part of a suite or family of products for
-                  example: "Powered by Insight".
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell>showCreatedBy</NxTable.Cell>
-                <NxTable.Cell>Boolean</NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>
-                  The "Created by Sonatype" tagline is displayed unless this value is set to "false".
-                </NxTable.Cell>
-              </NxTable.Row>
-            </NxTable.Body>
-          </NxTable>
-        </NxTile.Subsection>
-        <NxTile.Subsection>
-          <NxTile.SubsectionHeader>
             <NxH3>CSS Classes</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>The following CSS classes are available for use on child elements.</NxP>
@@ -262,7 +202,7 @@ export default function NxGlobalSidebarPage() {
       <NxTile>
         <NxTile.Header>
           <NxTile.HeaderTitle>
-            <NxH2>Basic Global Sidebar Example with Nav and a Footer</NxH2>
+            <NxH2>Basic Global Sidebar Example with Nav and Footer</NxH2>
           </NxTile.HeaderTitle>
         </NxTile.Header>
         <NxTile.Content>
@@ -277,7 +217,7 @@ export default function NxGlobalSidebarPage() {
       <NxTile>
         <NxTile.Header>
           <NxTile.HeaderTitle>
-            <NxH2>Global Sidebar Example with Nav, Extra Content, and a Footer</NxH2>
+            <NxH2>Global Sidebar Example with Nav, Extra Content, and Footer</NxH2>
           </NxTile.HeaderTitle>
         </NxTile.Header>
         <NxTile.Content>
