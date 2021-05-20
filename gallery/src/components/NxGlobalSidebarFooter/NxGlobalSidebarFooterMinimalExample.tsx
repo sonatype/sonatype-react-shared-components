@@ -34,12 +34,22 @@ export default function NxGlobalSidebarFooterExample() {
                                          text="NxGlobalSidebarFooter"
                                          href="#/pages/NxGlobalSidebarFooter"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/NxLoadError"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxLoadWrapper" href="#/pages/NxLoadWrapper"/>
+          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
+                                         text="NxLoadingSpinner"
+                                         href="#/pages/NxLoadingSpinner"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxModal" href="#/pages/NxModal"/>
+          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
+                                         text="NxNexusPageHeader"
+                                         href="#/pages/NxNexusPageHeader"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/NxPageHeader"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/NxPageHeader"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/NxPageHeader"/>
+          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
+                                         text="NxPagination"
+                                         href="#/pages/NxPagination"/>
         </NxGlobalSidebarNavigation>
-        <NxGlobalSidebarFooter supportText="Support for RSC"
-                               supportLink="https://github.com/sonatype/sonatype-react-shared-components"
-                               releaseText="Release 3.1.4"
-                               productTagLine="Powered by PLAID VILLAIN">
-        </NxGlobalSidebarFooter>
+        <NxGlobalSidebarFooter/>
       </NxGlobalSidebar>
       <NxPageMain>Page content</NxPageMain>
     </>

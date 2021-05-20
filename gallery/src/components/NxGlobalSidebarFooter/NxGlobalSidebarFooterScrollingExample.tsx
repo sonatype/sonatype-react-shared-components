@@ -38,7 +38,9 @@ export default function NxGlobalSidebarFooterScrollingExample() {
                        logoAltText="RSC Plaid Villain"
                        logoLink="#">
         <NxGlobalSidebarNavigation>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
+          <NxGlobalSidebarNavigationLink icon={faLink}
+                                         text="NxGlobalSidebarFooter"
+                                         href="#/pages/NxGlobalSidebarFooter"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/NxLoadError"/>
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxLoadWrapper" href="#/pages/NxLoadWrapper"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
@@ -103,7 +105,8 @@ export default function NxGlobalSidebarFooterScrollingExample() {
         </section>
         <NxGlobalSidebarFooter supportText="Support for RSC"
                                supportLink="https://github.com/sonatype/sonatype-react-shared-components"
-                               releaseText="3.1.4"
+                               releaseText="Release 3.1.4"
+                               productTagLine="Powered by PLAID VILLAIN"
                                showCreatedBy={false}>
         </NxGlobalSidebarFooter>
       </NxGlobalSidebar>

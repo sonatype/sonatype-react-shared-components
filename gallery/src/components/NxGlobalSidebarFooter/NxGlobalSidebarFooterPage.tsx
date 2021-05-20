@@ -10,7 +10,8 @@ import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3 } from '@sonatype/react-shared-components';
 
 const NxGlobalSidebarFooterExample = require('./NxGlobalSidebarFooterExample.tsx?raw'),
-    NxGlobalSidebarFooterScrollingExample = require('./NxGlobalSidebarFooterScrollingExample.tsx?raw');
+    NxGlobalSidebarFooterScrollingExample = require('./NxGlobalSidebarFooterScrollingExample.tsx?raw'),
+    NxGlobalSidebarFooterMinimalExample = require('./NxGlobalSidebarFooterMinimalExample.tsx?raw');
 
 export default function NxGlobalSidebarPage() {
   return (
@@ -85,7 +86,7 @@ export default function NxGlobalSidebarPage() {
       <NxTile>
         <NxTile.Header>
           <NxTile.HeaderTitle>
-            <NxH2>Basic Global Sidebar Example with Nav and a Footer</NxH2>
+            <NxH2>Basic Global Sidebar Footer Example</NxH2>
           </NxTile.HeaderTitle>
         </NxTile.Header>
         <NxTile.Content>
@@ -101,6 +102,10 @@ export default function NxGlobalSidebarPage() {
         <NxTile.Header>
           <NxTile.HeaderTitle>
             <NxH2>Global Sidebar Example with Nav, Extra Content, and a Footer</NxH2>
+            <NxP>
+              This examples shows 10 nav items (the maximum), a middle content area with enough content to trigger
+              scrolling, and all footer options enabled.
+            </NxP>
           </NxTile.HeaderTitle>
         </NxTile.Header>
         <NxTile.Content>
@@ -110,6 +115,22 @@ export default function NxGlobalSidebarPage() {
             </a>
           </NxP>
           <CodeExample content={NxGlobalSidebarFooterScrollingExample} />
+        </NxTile.Content>
+      </NxTile>
+      <NxTile>
+        <NxTile.Header>
+          <NxTile.HeaderTitle>
+            <NxH2>Minimal Global Sidebar Example</NxH2>
+            <NxP>In it's most minimal layout the footer shows only the "Created by Sonatype" text.</NxP>
+          </NxTile.HeaderTitle>
+        </NxTile.Header>
+        <NxTile.Content>
+          <NxP>
+            <a className="nx-text-link" href="#/NxGlobalSidebarFooterMinimalExample">
+              Click here to navigate to the live example.
+            </a>
+          </NxP>
+          <CodeExample content={NxGlobalSidebarFooterMinimalExample} />
         </NxTile.Content>
       </NxTile>
     </>
