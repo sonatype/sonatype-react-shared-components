@@ -126,11 +126,6 @@ function Application() {
             <NxGlobalSidebarFooterExample />
           </SectionScrollingWrapper>
         </Route>
-        <Route exact path="/NxGlobalSidebarFooterScrollingExample">
-          <SectionScrollingWrapper>
-            <NxGlobalSidebarFooterScrollingExample />
-          </SectionScrollingWrapper>
-        </Route>
         <Route exact path="/NxGlobalSidebarFooterMinimalExample">
           <SectionScrollingWrapper>
             <NxGlobalSidebarFooterMinimalExample />
