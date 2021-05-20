@@ -79,6 +79,22 @@ export default function NxGlobalSidebarPage() {
                   The "Created by Sonatype" tagline is displayed unless this value is set to "false".
                 </NxTable.Cell>
               </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>
+                  <a target="_blank"
+                     rel="noopener"
+                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                    HTML div Attributes
+                  </a>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>N/A</NxTable.Cell>
+                <NxTable.Cell>
+                  NxGlobalSidebarFooter supports any HTML attribute that's normally supported
+                  by <code className="nx-code">&lt;div&gt;</code>.
+                </NxTable.Cell>
+              </NxTable.Row>
             </NxTable.Body>
           </NxTable>
         </NxTile.Subsection>
