@@ -20,6 +20,11 @@ describe('NxGlobalSidebarFooter', function() {
         .toMatchSelector('footer.nx-global-sidebar__footer.test-class');
   });
 
+  it('passes additional attributes to <footer>', function() {
+    expect(getShallowComponent({ id: 'test-id' })).toHaveProp('id', 'test-id');
+    expect(getShallowComponent({ lang: 'en-ca' })).toHaveProp('lang', 'en-ca');
+  });
+
   it('renders the Support div with a link with the passed href and text and does not render when empty', function() {
     const supportEmpty = getShallowComponent().find('div.nx-global-sidebar__support'),
         support = getShallowComponent({ supportText: 'Support for RSC', supportLink: '#supporturl' })
