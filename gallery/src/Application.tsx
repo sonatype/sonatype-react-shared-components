@@ -36,8 +36,6 @@ import NxSystemNoticeGlobalSidebarExample from './styles/NxSystemNotice/NxSystem
 import NxSystemNoticeTraditionalPageExample from './styles/NxSystemNotice/NxSystemNoticeTraditionalPageExample';
 import NxSystemNoticeMultipleExample from './styles/NxSystemNotice/NxSystemNoticeMultipleExample';
 import NxGlobalSidebarFooterExample from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterExample';
-import NxGlobalSidebarFooterScrollingExample
-  from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterScrollingExample';
 import NxGlobalSidebarFooterMinimalExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterMinimalExample';
 

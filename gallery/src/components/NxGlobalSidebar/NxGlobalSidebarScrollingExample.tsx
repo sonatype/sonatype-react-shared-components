@@ -93,11 +93,18 @@ export default function NxGlobalSidebarExample() {
                 <NxRadio name="test-radio" value="baz" isChecked={true}>Baz</NxRadio>
               </NxTreeViewChild>
             </NxTreeView>
+            <NxP>
+              dolphin -space cardboard claymore mine kanji network footage shrine girl market pre- sentient systemic.
+              otaku narrative spook faded spook courier smart- construct vinyl bomb woman numinous beef noodles. San
+              Francisco post- j-pop systemic monofilament free-market A.I. Legba receding bomb beef noodles boy
+              papier-mache.
+            </NxP>
           </div>
         </section>
         <NxGlobalSidebarFooter supportText="Support for RSC"
                                supportLink="https://github.com/sonatype/sonatype-react-shared-components"
                                releaseText="3.1.4"
+                               productTagLine="Powered by PLAID VILLAIN"
                                showCreatedBy={false}>
         </NxGlobalSidebarFooter>
       </NxGlobalSidebar>
