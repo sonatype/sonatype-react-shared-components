@@ -11,7 +11,7 @@
 
 .nx-read-only--grid {
   display: grid;
-  gap: var(--nx-spacing-8x) 80px;
+  gap: var(--nx-spacing-8x) var(--nx-spacing-20x);
   margin: var(--nx-spacing-8x) 0;
   justify-content: start;
 }
