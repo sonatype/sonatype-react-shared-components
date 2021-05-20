@@ -24,8 +24,7 @@ describe('NxGlobalSidebarFooter', function() {
     const supportEmpty = getShallowComponent().find('div.nx-global-sidebar__support'),
         support = getShallowComponent({ supportText: 'Support for RSC', supportLink: '#supporturl' })
             .find('div.nx-global-sidebar__support'),
-        supportLink = getShallowComponent({ supportText: 'Support for RSC', supportLink: '#supporturl' })
-            .find('div.nx-global-sidebar__support').find(NxTextLink);
+        supportLink = support.find(NxTextLink);
 
     expect(supportEmpty).not.toExist();
     expect(support).toContainMatchingElement('span.nx-global-sidebar__support-text');
