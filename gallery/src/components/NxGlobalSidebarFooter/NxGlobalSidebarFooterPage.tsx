@@ -13,7 +13,7 @@ const NxGlobalSidebarFooterExample = require('./NxGlobalSidebarFooterExample.tsx
     NxGlobalSidebarFooterScrollingExample = require('./NxGlobalSidebarFooterScrollingExample.tsx?raw'),
     NxGlobalSidebarFooterMinimalExample = require('./NxGlobalSidebarFooterMinimalExample.tsx?raw');
 
-export default function NxGlobalSidebarPage() {
+export default function NxGlobalSidebarFooterPage() {
   return (
     <>
       <GalleryDescriptionTile>
