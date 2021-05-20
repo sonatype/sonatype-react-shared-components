@@ -29,8 +29,7 @@ describe('NxGlobalSidebarFooter', function() {
     const supportEmpty = getShallowComponent().find('div.nx-global-sidebar__support'),
         support = getShallowComponent({ supportText: 'Support for RSC', supportLink: '#supporturl' })
             .find('div.nx-global-sidebar__support'),
-        supportLink = getShallowComponent({ supportText: 'Support for RSC', supportLink: '#supporturl' })
-            .find('div.nx-global-sidebar__support').find(NxTextLink);
+        supportLink = support.find(NxTextLink);
 
     expect(supportEmpty).not.toExist();
     expect(support).toContainMatchingElement('span.nx-global-sidebar__support-text');
@@ -44,7 +43,7 @@ describe('NxGlobalSidebarFooter', function() {
             .find('div.nx-global-sidebar__release');
 
     expect(releaseEmpty).not.toExist();
-    expect(release.find('.nx-global-sidebar__release')).toHaveText('React Shared Components: 3.1.4');
+    expect(release).toHaveText('React Shared Components: 3.1.4');
   });
 
   it('renders the Powered By div with text and does not render when empty', function() {
