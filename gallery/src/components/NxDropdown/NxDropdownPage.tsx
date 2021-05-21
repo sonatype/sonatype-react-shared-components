@@ -136,7 +136,7 @@ const NxDropdownPage = () =>
               <td className="nx-cell">
                 <a target="_blank"
                    rel="noopener"
-                   href="https://developer.mozilla.org/en/docs/Web/HTML/Elemento/div">
+                   href="https://developer.mozilla.org/es/docs/Web/HTML/Elemento/div">
                   HTML div Attributes
                 </a>
               </td>
