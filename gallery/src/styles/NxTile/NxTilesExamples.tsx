@@ -8,6 +8,7 @@ import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTileFormExample from './NxTileFormExample';
+import NxTileFormErrorExample from './NxTileFormErrorExample';
 import NxTileDropdownActionsExample from './NxTileDropdownActionsExample';
 import NxTileAccordionExample from './NxTileAccordionExample';
 import NxTilePolicyViolationIndicatorExample from './NxTilePolicyViolationIndicatorExample';
@@ -18,6 +19,7 @@ const NxSimpleTileCode = require('./NxSimpleTileExample.html'),
     NxTileWithSubtitleCode = require('./NxTileWithSubtitleExample.html'),
     NxTileSubsectionCode = require('./NxTileSubsectionExample.html'),
     NxTileFormCode = require('./NxTileFormExample.tsx?raw'),
+    NxTileFormErrorCode = require('./NxTileFormErrorExample.tsx?raw'),
     NxTileDropdownActionsCode = require('./NxTileDropdownActionsExample?raw'),
     NxTileAccordionCode = require('./NxTileAccordionExample?raw'),
     NxTileGridCode = require('./NxTileGridExample.html'),
@@ -65,6 +67,15 @@ const NxTilesExamples = () =>
                         liveExample={NxTileFormExample}
                         codeExamples={NxTileFormCode}>
       An example of an <code className="nx-code">nx-tile</code> which solely contains a form.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Tile with form error"
+                        id="nx-tile-form-error-example"
+                        defaultCheckeredBackground={true}
+                        liveExample={NxTileFormErrorExample}
+                        codeExamples={NxTileFormErrorCode}>
+      An example of an <code className="nx-code">nx-tile</code> which contains an <NxCode>NxForm</NxCode> that
+      is in an error state.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Tile with an NxDropdown in the actions buttons area"

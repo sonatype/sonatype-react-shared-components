@@ -18,7 +18,8 @@ describe('nx-tile', function() {
       subsectionsTileSelector = '#nx-tile-subsections-example .nx-tile',
       dropdownActionMenuTileSelector = '#nx-tile-dropdown-actions-example .nx-tile';
       accordionTileSelector = '#nx-tile-accordion-example .gallery-example-live';
-      policyViolationIndicatorTileSelector = '#nx-tile-policy-violation-indicator-example .gallery-example-live';
+      policyViolationIndicatorTileSelector = '#nx-tile-policy-violation-indicator-example .gallery-example-live',
+      alertChildTileSelector = '#nx-tile-form-error-example .gallery-example-live';
 
   describe('Simple nx-tile', function() {
     it('looks right', simpleTest(simpleTileSelector));
@@ -68,5 +69,9 @@ describe('nx-tile', function() {
 
   describe('nx-tile with policy violation indicator', function() {
     it('looks right', simpleTest(policyViolationIndicatorTileSelector));
+  });
+
+  describe('nx-tile with alert as only child', function() {
+    it('looks right', simpleTest(alertChildTileSelector));
   });
 });
