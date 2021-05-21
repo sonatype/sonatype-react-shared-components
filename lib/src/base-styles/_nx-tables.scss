@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 .nx-table {
-  background-color: var(--nx-color-background-component);
+  background-color: var(--nx-color-component-background);
   border-spacing: 0;
   border: var(--nx-border-default);
   border-radius: var(--nx-border-radius);
@@ -94,7 +94,7 @@
 }
 
 .nx-table-container {
-  background-color: var(--nx-color-background-component);
+  background-color: var(--nx-color-component-background);
   border: var(--nx-border-default);
   border-radius: var(--nx-border-radius);
   box-sizing: content-box;
@@ -162,7 +162,7 @@
 .nx-table-container__footer {
   @include container-vertical;
 
-  background-color: var(--nx-color-background-component);
+  background-color: var(--nx-color-component-background);
   border-top: var(--nx-border-default);
   margin-top: auto;
 
@@ -275,7 +275,7 @@
 }
 
 .nx-table-row--filter-header > .nx-cell--header {
-  background-color: var(--nx-color-background-component);
+  background-color: var(--nx-color-component-background);
   border-bottom: var(--nx-border-default);
   padding-top: var(--nx-spacing-4x);
   padding-bottom: var(--nx-spacing-4x);
