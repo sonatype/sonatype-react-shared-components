@@ -21,7 +21,7 @@
   @include container-vertical;
   @include semi-bold();
 
-  background-color: var(--nx-color-background-component);
+  background-color: var(--nx-color-component-background);
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   margin: 0;
