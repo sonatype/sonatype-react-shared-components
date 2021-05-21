@@ -26,6 +26,8 @@ import NxLoadWrapperPageLevelExample from './components/NxLoadWrapper/NxLoadWrap
 import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExample';
 import NxViewportSizedExpandingExample
   from './styles/NxViewportSized/NxViewportSizedExpandingExample';
+import NxViewportSizedAdjacentExample
+  from './styles/NxViewportSized/NxViewportSizedAdjacentExample';
 import SectionScrollingWrapper from './styles/NxViewportSized/SectionScrollingWrapper';
 import NxGlobalHeaderFullExample from './styles/NxGlobalHeader/NxGlobalHeaderFullExample';
 import NxGlobalHeaderNoBackButtonExample from './styles/NxGlobalHeader/NxGlobalHeaderNoBackButtonExample';
@@ -136,6 +138,11 @@ function Application() {
                   <Route exact path="/NxViewportSizedExpandingExample">
                     <SectionScrollingWrapper>
                       <NxViewportSizedExpandingExample />
+                    </SectionScrollingWrapper>
+                  </Route>
+                  <Route exact path="/NxViewportSizedAdjacentExample">
+                    <SectionScrollingWrapper>
+                      <NxViewportSizedAdjacentExample />
                     </SectionScrollingWrapper>
                   </Route>
                   <Redirect to="/" />

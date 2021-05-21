@@ -16,7 +16,9 @@ import { any } from 'ramda';
 export { OverflowTooltipProps };
 
 function isOverflowing(el: Element) {
-  return el.clientWidth < el.scrollWidth;
+  // inline elements always report 0 clientWidth in standards-compliant browsers. At the same time, inline elements
+  // cannot (themselves) overflow.
+  return el.clientWidth < el.scrollWidth && getComputedStyle(el).display !== 'inline';
 }
 
 function selfOrChildrenOverflowing(el: Element): boolean {
