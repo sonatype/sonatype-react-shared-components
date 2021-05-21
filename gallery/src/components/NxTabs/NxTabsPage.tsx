@@ -13,7 +13,8 @@ import {
   NxTableBody,
   NxTableCell,
   NxTableHead,
-  NxTableRow
+  NxTableRow,
+  NxCode
 } from '@sonatype/react-shared-components';
 
 import NxTabsTileHeaderExample from './NxTabsTileHeaderExample';
@@ -74,18 +75,20 @@ export default function NxTabsPage() {
                 </NxTableCell>
               </NxTableRow>
               <NxTableRow>
-                <NxTableCell>div, ul, li HTML Attributes</NxTableCell>
+                <NxTableCell>
+                  <NxCode>&lt;div&gt;</NxCode>, <NxCode>&lt;ul&gt;</NxCode>, <NxCode>&lt;li&gt;</NxCode> HTML Attributes
+                </NxTableCell>
                 <NxTableCell>
                   <a target="_blank"
                      rel="noopener"
                      href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                     HTML div Attributes
-                  </a>
+                  </a><br/>
                   <a target="_blank"
                      rel="noopener"
                      href="https://developer.mozilla.org/en/docs/Web/HTML/Element/ul">
                     HTML ul Attributes
-                  </a>
+                  </a><br/>
                   <a target="_blank"
                      rel="noopener"
                      href="https://developer.mozilla.org/en/docs/Web/HTML/Element/li">

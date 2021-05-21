@@ -79,7 +79,7 @@ const NxColorPickerPage = () =>
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell>HTML fieldset Attributes</NxTableCell>
+            <NxTableCell>HTML <code className="nx-code">&lt;fieldset&gt;</code> Attributes</NxTableCell>
             <NxTableCell>
               <a className="nx-text-link"
                  target="_blank"
@@ -92,7 +92,7 @@ const NxColorPickerPage = () =>
             <NxTableCell></NxTableCell>
             <NxTableCell>
               NxColorPicker supports any html attribute that's normally supported by
-              {' '}<code className="nx-code">fieldset</code> elements.
+              {' '}<code className="nx-code">&lt;fieldset&gt;</code> elements.
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>

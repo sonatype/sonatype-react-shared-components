@@ -75,7 +75,7 @@ const NxFilterInputPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">Input HTML Attributes</td>
+            <td className="nx-cell">HTML <code className="nx-code">&lt;input&gt;</code> Attributes</td>
             <td className="nx-cell">
               <a target="_blank"
                  rel="noopener"

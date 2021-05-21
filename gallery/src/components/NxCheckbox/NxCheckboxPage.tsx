@@ -81,7 +81,7 @@ const NxCheckboxPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">Label HTML Attributes</td>
+            <td className="nx-cell">HTML <code className="nx-code">&lt;label&gt;</code> Attributes</td>
             <td className="nx-cell">
               <a target="_blank"
                  rel="noopener"

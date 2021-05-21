@@ -72,18 +72,6 @@ const NxTogglePage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">Label HTML Attributes</td>
-            <td className="nx-cell">
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
-                HTML Attributes
-              </a>
-            </td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">NxToggle supports any html attribute that's normally supported by Label element</td>
-          </tr>
-          <tr className="nx-table-row">
             <td className="nx-cell">HTML <code className="nx-code">&lt;label&gt;</code> Attributes</td>
             <td className="nx-cell">
               <a target="_blank"

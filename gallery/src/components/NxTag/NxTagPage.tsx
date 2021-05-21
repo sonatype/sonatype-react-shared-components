@@ -50,7 +50,7 @@ const NxTagPage = () =>
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell>HTML div Attributes</NxTableCell>
+            <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
             <NxTableCell>
               <a target="_blank"
                  rel="noopener"
@@ -62,7 +62,7 @@ const NxTagPage = () =>
             <NxTableCell></NxTableCell>
             <NxTableCell>
               NxTag supports any html attribute that's normally supported by
-              {' '}<code className="nx-code">div</code> elements.
+              {' '}<code className="nx-code">&lt;div&gt;</code> elements.
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>

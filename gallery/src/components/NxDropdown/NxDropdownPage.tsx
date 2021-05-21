@@ -132,7 +132,7 @@ const NxDropdownPage = () =>
               </td>
             </tr>
             <tr className="nx-table-row">
-              <td className="nx-cell">HTML div Attributes</td>
+              <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
               <td className="nx-cell">
                 <a target="_blank"
                    rel="noopener"
@@ -143,7 +143,7 @@ const NxDropdownPage = () =>
               <td className="nx-cell">No</td>
               <td className="nx-cell">
                 NxDropdown supports any html attribute that's normally supported by
-                {' '}<code className="nx-code">div</code> elements.
+                {' '}<code className="nx-code">&lt;div&gt;</code> elements.
               </td>
             </tr>
           </tbody>

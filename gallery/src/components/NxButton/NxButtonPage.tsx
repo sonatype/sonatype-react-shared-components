@@ -14,7 +14,7 @@ import NxButtonTertiaryExample from './NxButtonTertiaryExample';
 import NxButtonErrorExample from './NxButtonErrorExample';
 import NxButtonIconExample from './NxButtonIconExample';
 import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxCode } from '@sonatype/react-shared-components';
 
 const NxButtonDefaultCode = require('./NxButtonDefaultExample?raw'),
     nxButtonPrimaryCode = require('./NxButtonPrimaryExample?raw'),
@@ -63,17 +63,19 @@ export default function NxButtonPage() {
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell>Button HTML Attributes</NxTableCell>
+              <NxTableCell>HTML <NxCode>&lt;button&gt;</NxCode> Attributes</NxTableCell>
               <NxTableCell>
                 <a target="_blank"
                    rel="noopener"
-                   href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
-                  HTML Attributes
+                   href="https://developer.mozilla.org/en/docs/Web/HTML/Element/button">
+                  HTML button Attributes
                 </a>
               </NxTableCell>
               <NxTableCell>No</NxTableCell>
+              <NxTableCell></NxTableCell>
               <NxTableCell>
-                NxButton supports any html attribute that's normally supported by the Button element
+                <NxCode>NxButton</NxCode> supports any html attribute that's normally supported by the
+                {' '}<NxCode>&lt;button&gt;</NxCode> element.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>

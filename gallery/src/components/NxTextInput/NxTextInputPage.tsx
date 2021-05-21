@@ -113,7 +113,10 @@ const NxTextInputPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">Input HTML Attributes | Textarea HTML Attributes</td>
+            <td className="nx-cell">
+              HTML <code className="nx-code">&lt;input&gt;</code> Attributes |
+              HTML <code className="nx-code">&lt;textarea&gt;</code> Attributes
+            </td>
             <td className="nx-cell">
               <a target="_blank"
                  rel="noopener"
@@ -123,8 +126,9 @@ const NxTextInputPage = () =>
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              NxTextInput supports any html attribute that's normally supported by either HTML Inputs or HTML
-              Textareas. The only notable exceptions are:
+              NxTextInput supports any html attribute that's normally supported by either HTML
+              <code className="nx-code">&lt;input&gt;</code> or HTML
+              <code className="nx-code">&lt;textarea&gt;</code>. The only notable exceptions are:
               <ul className="nx-list nx-list--bulleted">
                 <li className="nx-list__item">
                   <code className="nx-code">defaultValue</code> which is left out because it creates what's commonly

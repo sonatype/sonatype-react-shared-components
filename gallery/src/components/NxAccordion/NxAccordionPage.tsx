@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxInfoAlert }
+import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxInfoAlert, NxCode }
   from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -72,7 +72,7 @@ const NxAccordionPage = () =>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell>Details HTML Attributes</NxTableCell>
+              <NxTableCell>HTML <NxCode>&lt;details&gt;</NxCode> Attributes</NxTableCell>
               <NxTableCell>
                 <a target="_blank"
                    rel="noopener"
@@ -82,7 +82,8 @@ const NxAccordionPage = () =>
               </NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
-                NxAccordion supports any html attribute that's normally supported by the Details element
+                NxAccordion supports any html attribute that's normally supported by the
+                {' '}<NxCode>&lt;details&gt;</NxCode> element
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
