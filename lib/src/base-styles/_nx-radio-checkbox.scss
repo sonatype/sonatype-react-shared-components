@@ -32,8 +32,8 @@
 
   &:focus-within {
     .nx-radio-checkbox__control {
-      border-color: var(--nx-color-border-focus);
-      stroke: var(--nx-color-border-focus);
+      border-color: var(--nx-color-interactive-border-focus);
+      stroke: var(--nx-color-interactive-border-focus);
       filter: drop-shadow(var(--nx-drop-shadow-focus));
     }
 
@@ -87,13 +87,13 @@ svg.nx-radio-checkbox__control {
     cursor: default;
 
     .nx-radio-checkbox__control {
-      background-color:var(--nx-interactive-background-disabled);
+      background-color:var(--nx-color-interactive-background-disabled);
       border-color: var(--nx-border-color-disabled);
     }
 
     svg.nx-radio-checkbox__control {
       background: none;
-      fill: var(--nx-interactive-background-disabled);
+      fill: var(--nx-color-interactive-background-disabled);
       stroke: var(--nx-border-color-disabled);
     }
   }
@@ -110,7 +110,7 @@ svg.nx-radio-checkbox__control {
   &:focus {
     // less-nice IE11 focus style because IE11 doesn't support :focus-within
     margin-right: var(--nx-spacing-base);
-    outline: 1px solid var(--nx-color-border-focus);
+    outline: 1px solid var(--nx-color-interactive-border-focus);
     opacity: 1;
     position: static;
     vertical-align: 5px;

@@ -13,7 +13,7 @@
   &, &.pristine, &.pristine.valid {
     &:focus-within {
       .nx-text-input__box {
-        border-color: var(--nx-color-border-focus);
+        border-color: var(--nx-color-interactive-border-focus);
         box-shadow: var(--nx-box-shadow-focus);
       }
     }
@@ -44,7 +44,7 @@
   &.disabled {
     &, &.valid, &.invalid, &.pristine {
       .nx-text-input__box {
-        background-color: var(--nx-interactive-background-disabled);
+        background-color: var(--nx-color-interactive-background-disabled);
         border-color: var(--nx-border-color-disabled);
       }
 

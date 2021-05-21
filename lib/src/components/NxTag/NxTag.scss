@@ -40,7 +40,7 @@ $nx-tag-default-light: #e7eaf9;
   background-color: var(--nx-selectable-color-light, #{$nx-tag-default-light});
 
   &:focus {
-    border: 1px solid var(--nx-color-border-focus);
+    border: 1px solid var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
     outline: none;
   }
@@ -54,7 +54,7 @@ $nx-tag-default-light: #e7eaf9;
   background-color: var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
 
   &:focus {
-    border: 1px solid var(--nx-color-border-focus);
+    border: 1px solid var(--nx-color-interactive-border-focus);
   }
 }
 

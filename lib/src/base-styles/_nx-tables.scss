@@ -86,7 +86,7 @@
         outline: none;
 
         > .nx-cell {
-          border-color: var(--nx-color-border-focus);
+          border-color: var(--nx-color-interactive-border-focus);
         }
       }
     }
@@ -242,7 +242,7 @@
   vertical-align: middle;
 
   &:focus {
-    outline: 1px solid var(--nx-color-border-focus);
+    outline: 1px solid var(--nx-color-interactive-border-focus);
     outline-offset: -1px;
     box-shadow: var(--nx-box-shadow-focus);
   }

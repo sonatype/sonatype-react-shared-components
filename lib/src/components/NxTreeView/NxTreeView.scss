@@ -78,8 +78,8 @@ $twisty-proportion-difference: 2px;
     outline: none;
 
     .nx-tree-view__twisty {
-      filter: drop-shadow(0 0 3px rgba(var(--nx-color-border-focus), 0.3));
-      stroke: var(--nx-color-border-focus);
+      filter: drop-shadow(0 0 3px rgba(var(--nx-color-interactive-border-focus), 0.3));
+      stroke: var(--nx-color-interactive-border-focus);
 
       // This is intepreted in the SVG's coordinate space. The svg has a viewbox height of 512 and an on-page
       // height of 22px so this computes to 1 on-page pixel
@@ -167,7 +167,7 @@ button, a {
     }
 
     &:focus {
-      border-color: var(--nx-color-border-focus);
+      border-color: var(--nx-color-interactive-border-focus);
       box-shadow: var(--nx-box-shadow-focus);
       outline: none;
     }

@@ -7,7 +7,7 @@
 %nx-btn--disabled {
   &.disabled, &[disabled] {
     &, &:hover, &:focus {
-      background-color: var(--nx-interactive-background-disabled);
+      background-color: var(--nx-color-interactive-background-disabled);
       border-color: var(--nx-border-color-disabled);
       color: var(--nx-color-text-disabled);
       cursor: default;
@@ -37,7 +37,7 @@
   }
 
   &:focus {
-    border: 1px solid var(--nx-color-border-focus);
+    border: 1px solid var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
     outline: 0;
   }
@@ -106,7 +106,7 @@
 
   &:focus {
     background-color: $nx-red-800;
-    border-color: var(--nx-color-border-focus);
+    border-color: var(--nx-color-interactive-border-focus);
   }
 
   &:active {
