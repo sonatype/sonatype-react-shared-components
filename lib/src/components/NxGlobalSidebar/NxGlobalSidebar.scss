@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
 @import '../../scss-shared/nx-button-helpers';
@@ -20,7 +19,7 @@ $nx-global-sidebar-active-color: $nx-indigo-400;
 $nx-global-sidebar-selected-color: $nx-indigo-800;
 $nx-global-sidebar-hover-color: $nx-indigo-600;
 
-$nx-global-sidebar-focus-border: 1px solid $nx-focus-border-color;
+$nx-global-sidebar-focus-border: 1px solid var(--nx-color-interactive-border-focus);
 
 $nx-global-sidebar-separator-color: $nx-grey-900;
 
@@ -33,7 +32,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   display: flex;
   flex-direction: column;
   grid-area: global-sidebar;
-  padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-l $nx-spacing-l;
+  padding: var(--nx-spacing-8x) var(--nx-spacing-6x) var(--nx-spacing-6x) var(--nx-spacing-6x);
   width: $nx-global-sidebar-width-open;
 
   .nx-text-link {
@@ -45,7 +44,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   align-items: center;
   display: flex;
   height: $nx-global-sidebar-logo-height;
-  margin-bottom: $nx-spacing-xl;
+  margin-bottom: var(--nx-spacing-8x);
 }
 
 .nx-global-sidebar__toggle {
@@ -57,7 +56,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   margin: 0;
 
   &:focus {
-    border-color: $nx-focus-border-color;
+    border-color: var(--nx-color-interactive-border-focus);
   }
 
   &:active {
@@ -81,8 +80,8 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 .nx-global-sidebar__navigation {
   border-bottom: 1px solid $nx-global-sidebar-separator-color;
   flex: none;
-  margin: 0 -#{$nx-spacing-l} $nx-spacing-md -#{$nx-spacing-l};
-  padding-bottom: $nx-spacing-xxl;
+  margin: 0 calc(0px - var(--nx-spacing-6x)) var(--nx-spacing-4x) calc(0px - var(--nx-spacing-6x));
+  padding-bottom: var(--nx-spacing-12x);
 }
 
 .nx-global-sidebar__navigation-link {
@@ -91,15 +90,15 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 
   border: 1px solid transparent;
   display: block;
-  padding: $nx-spacing-xxs $nx-spacing-l;
+  padding: var(--nx-spacing-base) var(--nx-spacing-6x);
 
   .nx-icon {
     margin: 0;
   }
 
   &:focus {
-    border-color: $nx-focus-border-color;
-    box-shadow: $nx-focus-box-shadow;
+    border-color: var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
     outline: none;
   }
 
@@ -118,7 +117,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-global-sidebar__navigation-text {
-  margin-left: $nx-spacing-xs;
+  margin-left: var(--nx-spacing-2x);
 }
 
 .nx-global-sidebar.open {

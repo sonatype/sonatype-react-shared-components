@@ -4,18 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
 @import '../../scss-shared/nx-text-helpers';
 
 .nx-tabs {
-  margin: $nx-spacing-md 0 $nx-spacing-l 0;
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
 }
 
 .nx-tab-list {
   @include container-horizontal;
 
-  border-bottom: $nx-border-default;
+  border-bottom: var(--nx-border-default);
   display: flex;
   margin: 0;
   padding: 0;
@@ -23,7 +22,7 @@
 
 .nx-tab-panel {
   @include container-vertical;
-  padding-top: $nx-spacing-l;
+  padding-top: var(--nx-spacing-6x);
 }
 
 .nx-tab {
@@ -35,9 +34,9 @@
   display: inline-block;
   flex-shrink: 1;
   list-style: none;
-  margin: 0 $nx-spacing-md -1px 0;
+  margin: 0 var(--nx-spacing-4x) -1px 0;
   // subtract border thickness for consistent spacing
-  padding: $nx-spacing-md $nx-spacing-l ($nx-spacing-md - 2px) $nx-spacing-l;
+  padding: var(--nx-spacing-4x) var(--nx-spacing-6x) calc(var(--nx-spacing-4x) - 2px) var(--nx-spacing-6x);
   text-align: center;
   min-width: 80px;
   max-width: 240px;
@@ -55,9 +54,9 @@
 
   &:focus {
     border-bottom-width: 1px;
-    box-shadow: $nx-focus-box-shadow;
+    box-shadow: var(--nx-box-shadow-focus);
     margin-bottom: 0;
-    outline: solid 1px $nx-focus-border-color;
+    outline: solid 1px var(--nx-color-interactive-border-focus);
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width

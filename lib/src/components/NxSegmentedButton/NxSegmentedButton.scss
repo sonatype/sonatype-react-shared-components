@@ -4,12 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-colors';
 
 .nx-segmented-btn {
   display: inline-flex;
 
-  margin: 0 $nx-spacing-l;
+  margin: 0 var(--nx-spacing-6x);
   position: relative;
 
   .nx-dropdown-menu {
@@ -44,8 +44,8 @@
   // lock the line-height here so that it is not affected by the font-size increase on the icon
   line-height: 1em;
   margin: 0;
-  padding-left: $nx-spacing-sm;
-  padding-right: $nx-spacing-sm;
+  padding-left: var(--nx-spacing-3x);
+  padding-right: var(--nx-spacing-3x);
 
   > .nx-icon {
     font-size: 1.5em;
@@ -61,7 +61,7 @@
     }
 
     &:focus {
-      border-right-color: $nx-focus-border-color;
+      border-right-color: var(--nx-color-interactive-border-focus);
     }
 
     // get fancy to prevent mitred corners on the inner border
@@ -70,9 +70,9 @@
       border-bottom-style: none;
       border-left-style: none;
 
-      padding-top: $nx-spacing-xs + 1px;
-      padding-bottom: $nx-spacing-xs + 1px;
-      padding-left: $nx-spacing-l + 1px;
+      padding-top: calc(var(--nx-spacing-2x) + 1px);
+      padding-bottom: calc(var(--nx-spacing-2x) + 1px);
+      padding-left: calc(var(--nx-spacing-6x) + 1px);
     }
   }
 
@@ -84,7 +84,7 @@
     }
 
     &:focus {
-      border-left-color: $nx-focus-border-color;
+      border-left-color: var(--nx-color-interactive-border-focus);
     }
 
     // get fancy to prevent mitred corners on the inner border
@@ -93,9 +93,9 @@
       border-right-style: none;
       border-bottom-style: none;
 
-      padding-top: $nx-spacing-xs + 1px;
-      padding-right: $nx-spacing-sm + 1px;
-      padding-bottom: $nx-spacing-xs + 1px;
+      padding-top: calc(var(--nx-spacing-2x) + 1px);
+      padding-right: calc(var(--nx-spacing-3x) + 1px);
+      padding-bottom: calc(var(--nx-spacing-2x) + 1px);
     }
   }
 }

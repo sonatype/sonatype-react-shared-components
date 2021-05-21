@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '~@sonatype/react-shared-components/scss-shared/nx-variables';
 @import '~@sonatype/react-shared-components/scss-shared/nx-text-helpers';
 
 .gallery-card-swatch {
@@ -37,7 +36,7 @@
 .gallery-swatch__thumb {
   flex-shrink: 0;
   height: 64px;
-  margin-right: $nx-spacing-l;
+  margin-right: var(--nx-spacing-6x);
   width: 64px;
 }
 
@@ -51,5 +50,5 @@
 
 .gallery-swatch__hex {
   flex-basis: 7ch;
-  margin-right: $nx-spacing-l;
+  margin-right: var(--nx-spacing-6x);
 }

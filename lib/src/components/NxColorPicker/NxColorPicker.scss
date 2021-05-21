@@ -4,14 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import "../../scss-shared/nx-variables";
+@import '../../scss-shared/nx-colors';
 @import "../../scss-shared/nx-container-helpers";
 
 .nx-color-picker {
   @include container-horizontal;
 
   .nx-legend__text {
-    margin-bottom: $nx-spacing-xxs;
+    margin-bottom: var(--nx-spacing-base);
   }
 }
 
@@ -25,8 +25,8 @@
   border: 1px solid transparent;
   cursor: pointer;
   display: inline-block;
-  padding: $nx-spacing-xxs - 1px;
-  margin-right: $nx-spacing-xs;
+  padding: calc(var(--nx-spacing-base) - 1px);
+  margin-right: var(--nx-spacing-2x);
 
   height: $size;
   width: $size;
@@ -36,12 +36,12 @@
   }
 
   &:focus-within {
-    border-color: $nx-focus-border-color;
-    box-shadow: $nx-focus-box-shadow;
+    border-color: var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
   }
 
   &:hover {
-    border-color: $nx-form-element-border-color;
+    border-color: var(--nx-color-form-element-border);
   }
 }
 

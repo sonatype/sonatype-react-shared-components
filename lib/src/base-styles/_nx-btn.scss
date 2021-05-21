@@ -7,9 +7,9 @@
 %nx-btn--disabled {
   &.disabled, &[disabled] {
     &, &:hover, &:focus {
-      background-color:$nx-disabled-background;
-      border-color: $nx-disabled-border;
-      color: $nx-text-color-disabled;
+      background-color: var(--nx-color-interactive-background-disabled);
+      border-color: var(--nx-border-color-disabled);
+      color: var(--nx-color-text-disabled);
       cursor: default;
     }
   }
@@ -26,10 +26,10 @@
   color: $nx-blue-600;
   cursor: pointer;
   display: inline-block;
-  font-size: $nx-font-size;
-  line-height: $nx-line-height;
-  margin: 0 $nx-spacing-l;
-  padding: $nx-spacing-xs $nx-spacing-l;
+  font-size: var(--nx-font-size);
+  line-height: var(--nx-line-height);
+  margin: 0 var(--nx-spacing-6x);
+  padding: var(--nx-spacing-2x) var(--nx-spacing-6x);
   text-align: center;
 
   &:hover {
@@ -37,8 +37,8 @@
   }
 
   &:focus {
-    border: 1px solid $nx-focus-border-color;
-    box-shadow: $nx-focus-box-shadow;
+    border: 1px solid var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
     outline: 0;
   }
 
@@ -74,7 +74,7 @@
 
   background-color: transparent;
   border-color: $nx-indigo-100;
-  color: $nx-text-color-dark;
+  color: var(--nx-color-text-dark);
 
   &:hover {
     background-color: transparent;
@@ -106,7 +106,7 @@
 
   &:focus {
     background-color: $nx-red-800;
-    border-color: $nx-focus-border-color;
+    border-color: var(--nx-color-interactive-border-focus);
   }
 
   &:active {
@@ -130,7 +130,7 @@
   padding-right: 0;
 
   // essentially, calculate the width the same way that the height is calculated (line height plus padding and border)
-  width: calc(1em * #{$nx-line-height} + 2 * #{$nx-spacing-xs} + 2px);
+  width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-2x) + 2px);
 
   .nx-icon {
     height: 1em;

@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
- @import '../../scss-shared/nx-variables';
  @import '../../scss-shared/nx-text-helpers';
  @import '../../scss-shared/nx-container-helpers';
 
@@ -21,14 +20,14 @@ $nx-tag-default-light: #e7eaf9;
   border: 1px solid var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
   border-radius: 16px;
   box-sizing: border-box;
-  color: $nx-text-color-dark;
+  color: var(--nx-color-text-dark);
   cursor: default;
   display: inline-flex;
-  font-size: $nx-font-size-s;
+  font-size: var(--nx-font-size-s);
   height: 32px;
   line-height: 30px;
-  margin: 0 $nx-spacing-xs $nx-spacing-xs 0;
-  padding: 0 $nx-spacing-md 0 $nx-spacing-md;
+  margin: 0 var(--nx-spacing-2x) var(--nx-spacing-2x) 0;
+  padding: 0 var(--nx-spacing-4x) 0 var(--nx-spacing-4x);
   user-select: none;
   // Uppercase Min so SCSS ignores it and uses CSS min, not SCSS min
   max-width: Min(100%, 320px);
@@ -36,13 +35,13 @@ $nx-tag-default-light: #e7eaf9;
 
 .nx-tag--selectable {
   cursor: pointer;
-  padding-right: $nx-spacing-xs;
+  padding-right: var(--nx-spacing-2x);
 
   background-color: var(--nx-selectable-color-light, #{$nx-tag-default-light});
 
   &:focus {
-    border: 1px solid $nx-focus-border-color;
-    box-shadow: $nx-focus-box-shadow;
+    border: 1px solid var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
     outline: none;
   }
 
@@ -55,7 +54,7 @@ $nx-tag-default-light: #e7eaf9;
   background-color: var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
 
   &:focus {
-    border: 1px solid $nx-focus-border-color;
+    border: 1px solid var(--nx-color-interactive-border-focus);
   }
 }
 
@@ -64,5 +63,5 @@ $nx-tag-default-light: #e7eaf9;
 }
 
 .nx-tag__action {
-  margin-left: $nx-spacing-md;
+  margin-left: var(--nx-spacing-4x);
 }

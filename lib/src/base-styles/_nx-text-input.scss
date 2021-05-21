@@ -8,19 +8,19 @@
   display: inline-block;
   position: relative;
 
-  width: $nx-form-element-width-normal;
+  width: var(--nx-width-form-element-normal);
 
   &, &.pristine, &.pristine.valid {
     &:focus-within {
       .nx-text-input__box {
-        border-color: $nx-focus-border-color;
-        box-shadow: $nx-focus-box-shadow;
+        border-color: var(--nx-color-interactive-border-focus);
+        box-shadow: var(--nx-box-shadow-focus);
       }
     }
 
     &:hover {
       .nx-text-input__box {
-        border-color: $nx-form-element-border-color;
+        border-color: var(--nx-color-form-element-border);
       }
     }
   }
@@ -44,8 +44,8 @@
   &.disabled {
     &, &.valid, &.invalid, &.pristine {
       .nx-text-input__box {
-        background-color:$nx-disabled-background;
-        border-color: $nx-disabled-border;
+        background-color: var(--nx-color-interactive-background-disabled);
+        border-color: var(--nx-border-color-disabled);
       }
 
       .nx-text-input__invalid-message {
@@ -64,10 +64,10 @@
 
   align-items: center;
   background-color: $nx-white;
-  border: 1px solid $nx-form-element-border-color;
-  border-radius: $nx-border-radius;
+  border: 1px solid var(--nx-color-form-element-border);
+  border-radius: var(--nx-border-radius);
   display: flex;
-  padding: $nx-spacing-xs $nx-spacing-md;
+  padding: var(--nx-spacing-2x) var(--nx-spacing-4x);
 
   .nx-icon {
     margin-right: 0;
@@ -75,7 +75,7 @@
     + .nx-icon {
       // normally .nx-icon + .nx-icon removes the left margin so that it doesn't double up between icons.
       // In this case though the first icon isn't visible so we don't want that
-      margin-left: $nx-spacing-xs;
+      margin-left: var(--nx-spacing-2x);
     }
   }
 }
@@ -83,10 +83,10 @@
 .nx-text-input__input {
   background-color: transparent;
   border: none;
-  color: $nx-text-color;
+  color: var(--nx-color-text);
   flex-grow: 1;
-  font-size: $nx-font-size;
-  line-height: $nx-line-height;
+  font-size: var(--nx-font-size);
+  line-height: var(--nx-line-height);
   padding: 0;
 
   &:focus {
@@ -99,7 +99,7 @@
 }
 
 .nx-text-input--long {
-  width: $nx-form-element-width-wide;
+  width: var(--nx-width-form-element-wide);
 }
 
 .nx-text-input--textarea {

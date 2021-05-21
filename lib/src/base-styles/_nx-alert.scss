@@ -13,13 +13,13 @@
 
   align-items: first baseline;
   background-color: $nx-white;
-  border: $nx-border-darker;
-  border-radius: $nx-border-radius;
+  border: 1px solid $nx-grey-1100;
+  border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   display: flex;
   margin: 16px auto 24px auto;
   max-width: 950px;
-  padding: $nx-spacing-md;
+  padding: var(--nx-spacing-4x);
   text-align: initial;
 
   > .nx-icon {
@@ -28,7 +28,7 @@
     bottom: -0.125em;
     flex-shrink: 0;
     height: 1em;
-    margin-right: $nx-spacing-md;
+    margin-right: var(--nx-spacing-4x);
     position: relative;
   }
 

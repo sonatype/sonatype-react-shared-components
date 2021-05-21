@@ -14,16 +14,16 @@ $nx-scrollable-default-height: 400px;
 .nx-text-link {
   @include container-horizontal;
 
-  color: $nx-link-color;
+  color: var(--nx-color-link);
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
-    color: $nx-link-color-hover;
+    color: var(--nx-color-link-hover);
   }
 
   &:active {
-    color: $nx-link-color-active;
+    color: var(--nx-color-link-active);
   }
 }
 
@@ -40,16 +40,6 @@ $nx-scrollable-default-height: 400px;
 
 .nx-pull-right {
   float: right;
-}
-
-.nx-error {
-  background-color: $nx-red-25;
-  border: $nx-border-error;
-  color: $nx-text-color-error;
-
-  .fa, .svg-inline--fa {
-    margin-right: 8px;
-  }
 }
 
 .nx-scrollable {
@@ -73,17 +63,4 @@ $nx-scrollable-default-height: 400px;
 
 .nx-blockquote {
   @extend %nx-blockquote;
-}
-
-// global CSS variables/custom properties
-:root {
-  // page dimensions
-  --page-width-max: 1600px;
-  --page-width-min: 1366px;
-  --content-width-proportion: 0.76;
-  --content-width: calc(100% * var(--content-width-proportion));
-  --sidebar-width: calc(100% - var(--content-width));
-  --scrollbar-width: 15px;
-
-  --nx-component-background-color: #{$nx-white};
 }

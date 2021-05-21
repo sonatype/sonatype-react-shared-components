@@ -14,30 +14,30 @@
   background-size: 12px;
   background-position: calc(100% - 16px) 16px;
   background-repeat: no-repeat;
-  border: $nx-border-default;
-  border-radius: $nx-border-radius;
-  color: $nx-text-color;
-  font-size: $nx-font-size;
-  line-height: $nx-line-height;
-  padding: $nx-spacing-xs $nx-spacing-md;
-  width: $nx-form-element-width-normal;
+  border: var(--nx-border-default);
+  border-radius: var(--nx-border-radius);
+  color: var(--nx-color-text);
+  font-size: var(--nx-font-size);
+  line-height: var(--nx-line-height);
+  padding: var(--nx-spacing-2x) var(--nx-spacing-4x);
+  width: var(--nx-width-form-element-normal);
 
   &:hover {
-    border-color: $nx-form-element-border-color;
+    border-color: var(--nx-color-form-element-border);
   }
 
   &:focus {
-    box-shadow: $nx-focus-box-shadow;
-    border-color: $nx-focus-border-color;
+    box-shadow: var(--nx-box-shadow-focus);
+    border-color: var(--nx-color-interactive-border-focus);
     outline: none;
   }
 
   &.disabled {
-    background-color:$nx-disabled-background;
-    border-color: $nx-disabled-border;
+    background-color: var(--nx-color-interactive-background-disabled);
+    border-color: var(--nx-border-color-disabled);
   }
 }
 
 .nx-form-select--long {
-  width: $nx-form-element-width-wide;
+  width: var(--nx-width-form-element-wide);
 }

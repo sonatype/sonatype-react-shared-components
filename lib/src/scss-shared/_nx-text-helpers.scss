@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import 'nx-variables';
+@import 'nx-colors';
 @import 'nx-container-helpers';
 
 @mixin nx-font-family() {
@@ -75,8 +75,8 @@
 %nx-code {
   @include monospace();
   background-color: $nx-grey-50;
-  border: $nx-border;
-  border-radius: $nx-border-radius;
+  border: 1px solid $nx-grey-200;
+  border-radius: var(--nx-border-radius);
   color: $nx-red-800;
   padding: 1px 4px;
   white-space: nowrap;
@@ -87,10 +87,10 @@
   background-color: $nx-white;
   border: 1px solid $nx-grey-900;
   border-left-width: 8px;
-  border-radius: $nx-border-radius;
-  font-size: $nx-font-size;
-  margin: $nx-spacing-md 0 $nx-spacing-l 0;
-  padding: $nx-spacing-md;
+  border-radius: var(--nx-border-radius);
+  font-size: var(--nx-font-size);
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
+  padding: var(--nx-spacing-4x);
   white-space: pre-wrap;
 
   // "code" used below to support Markdown text in NxVulnerabilityDetails
@@ -107,9 +107,9 @@
 %nx-blockquote {
   @include container-vertical();
   background-color: $nx-grey-50;
-  border: $nx-border-default;
+  border: var(--nx-border-default);
   border-left-width: 8px;
-  border-radius: $nx-border-radius;
-  margin: $nx-spacing-md 0 $nx-spacing-l 0;
-  padding: $nx-spacing-l;
+  border-radius: var(--nx-border-radius);
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
+  padding: var(--nx-spacing-6x);
 }

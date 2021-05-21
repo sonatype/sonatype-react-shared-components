@@ -4,8 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import "~@sonatype/react-shared-components/scss-shared/nx-variables";
-
 .gallery-example-candy {
   // The values of these custom properties depend on which .nx-selectable-color--… class is applied
   background-color: var(--nx-selectable-color-dark);
@@ -16,6 +14,6 @@
   height: 16px;
   width: 24px;
   line-height: 14px;
-  margin-right: $nx-spacing-md;
+  margin-right: var(--nx-spacing-4x);
   text-align: center;
 }

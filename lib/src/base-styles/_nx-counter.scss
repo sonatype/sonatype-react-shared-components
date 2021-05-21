@@ -10,12 +10,12 @@
   background-color: $nx-white;
   border: 1px solid $nx-blue-1000;
   border-radius: 12px;
-  color: $nx-text-color-dark;
+  color: var(--nx-color-text-dark);
   display: inline-block;
   font-size: 14px;
-  line-height: $nx-line-height;
-  margin-left: $nx-spacing-l;
-  padding: 1px ($nx-spacing-xs - 1px);
+  line-height: var(--nx-line-height);
+  margin-left: var(--nx-spacing-6x);
+  padding: 1px calc(var(--nx-spacing-2x) - 1px);
   text-align: center;
   min-width: 8px;
 

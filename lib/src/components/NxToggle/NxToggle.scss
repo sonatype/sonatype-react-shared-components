@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
 
 // In safari, the width: 0 and -moz-appearance settings fail to hide the <input>.
@@ -14,13 +13,13 @@ $nx-toggle-input-hide-hack-spacing: 5px;
 
 .nx-toggle {
   display: flex;
-  margin: $nx-spacing-md 0;
+  margin: var(--nx-spacing-4x) 0;
   overflow-wrap: anywhere;
-  max-width: $nx-form-element-width-wide;
+  max-width: var(--nx-width-form-element-wide);
 
   &.nx-toggle--disabled {
     &, &:hover {
-      color: $nx-text-color-disabled;
+      color: var(--nx-color-text-disabled);
       cursor: default;
 
       .nx-toggle__control {
@@ -35,8 +34,8 @@ $nx-toggle-input-hide-hack-spacing: 5px;
 
   &:focus-within {
     .nx-toggle__control {
-      border-color: $nx-focus-border-color;
-      filter: drop-shadow(0 0 3px rgba($nx-focus-border-color, 0.4));
+      border-color: var(--nx-color-interactive-border-focus);
+      filter: drop-shadow(var(--nx-drop-shadow-focus));
 
       &:hover {
         border-color: $nx-grey-1100;
@@ -54,7 +53,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
 }
 
 .nx-toggle__input {
-  margin: 0 0 0 ($nx-spacing-l + $nx-toggle-input-hide-hack-spacing);
+  margin: 0 0 0 calc(var(--nx-spacing-6x) + #{$nx-toggle-input-hide-hack-spacing});
   width: 0;
   -moz-appearance: none;
 
@@ -83,7 +82,7 @@ $nx-toggle-input-hide-hack-spacing: 5px;
   flex: none;
   height: 24px;
   margin-left: -$nx-toggle-input-hide-hack-spacing;
-  padding: $nx-spacing-xxs - 1px;
+  padding: calc(var(--nx-spacing-base) - 1px);
   width: 44px;
 }
 
