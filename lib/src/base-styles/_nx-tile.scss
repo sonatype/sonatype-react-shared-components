@@ -115,7 +115,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 
   &:last-child {
     padding-bottom: var(--nx-spacing-4x);
-    margin-bottom: calc(0 - var(--nx-tile-padding));
+    margin-bottom: calc(0px - var(--nx-tile-padding));
   }
 }
 
