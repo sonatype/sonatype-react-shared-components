@@ -74,11 +74,9 @@ const NxAccordionPage = () =>
             <NxTableRow>
               <NxTableCell>HTML <NxCode>&lt;details&gt;</NxCode> Attributes</NxTableCell>
               <NxTableCell>
-                <a target="_blank"
-                   rel="noopener"
-                   href="https://developer.mozilla.org/en/docs/Web/HTML/Element/details">
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/details">
                   HTML details Attributes
-                </a>
+                </NxTextLink>
               </NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
