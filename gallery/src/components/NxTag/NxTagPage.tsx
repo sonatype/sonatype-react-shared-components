@@ -53,7 +53,7 @@ const NxTagPage = () =>
           <NxTableRow>
             <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
             <NxTableCell>
-              <NxTextLink external href="https://developer.mozilla.org/es/docs/Web/HTML/Elemento/div">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Elemento/div">
                 HTML div Attributes
               </NxTextLink>
             </NxTableCell>

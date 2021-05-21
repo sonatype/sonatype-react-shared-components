@@ -72,7 +72,7 @@ const NxStatefulDropdownPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
             <td className="nx-cell">
-              <NxTextLink external href="https://developer.mozilla.org/es/docs/Web/HTML/Elemento/div">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Elemento/div">
                 HTML div Attributes
               </NxTextLink>
             </td>
