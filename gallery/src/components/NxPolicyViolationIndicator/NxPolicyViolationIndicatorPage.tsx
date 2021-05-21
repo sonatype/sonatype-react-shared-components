@@ -65,7 +65,6 @@ const NxPolicyViolationIndicatorPage = () =>
               </a>
             </td>
             <td className="nx-cell">No</td>
-            <td className="nx-cell">N/A</td>
             <td className="nx-cell">
               NxPolicyViolationIndicator supports any HTML attribute that's normally supported
               by <code className="nx-code">&lt;div&gt;</code>.
