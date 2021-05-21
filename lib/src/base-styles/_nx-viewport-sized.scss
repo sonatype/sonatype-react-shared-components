@@ -24,6 +24,17 @@
   flex-direction: column;
 }
 
+.nx-viewport-sized__container--adjacent {
+  align-items: stretch;
+  flex-direction: row;
+
+  > * {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: auto;
+  }
+}
+
 .nx-viewport-sized__container, .nx-viewport-sized__scrollable {
   flex: auto;
   min-height: 0;

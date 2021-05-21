@@ -23,11 +23,17 @@ $nx-tile-padding: $nx-spacing-l;
   background-color: var(--nx-component-background-color);
   border-radius: $nx-border-radius;
   margin: $nx-spacing-xs 0 $nx-spacing-md 0;
+  padding: $nx-tile-padding 0;
 
   > .nx-footer, > .nx-form > .nx-footer {
     // use margin for sides so the top border ends in the right places
     margin: $nx-spacing-xl $nx-tile-padding 0 $nx-tile-padding;
-    padding-bottom: $nx-spacing-l;
+  }
+
+  // When a tile contains an NxForm that is in an error state, an nx-alert gets rendered as the tile's immediate child
+  > .nx-alert {
+    margin-left: $nx-tile-padding;
+    margin-right: $nx-tile-padding;
   }
 }
 
@@ -39,7 +45,7 @@ $nx-tile-padding: $nx-spacing-l;
   row-gap: $nx-spacing-xs;
   grid-template-columns: auto 1fr auto;
   min-height: $nx-tile-header-height;
-  padding: $nx-tile-padding $nx-tile-padding 0 $nx-tile-padding;
+  padding: 0 $nx-tile-padding 0 $nx-tile-padding;
 
   + .nx-tile-content {
     padding-top: $nx-spacing-md;
@@ -100,11 +106,7 @@ $nx-tile-padding: $nx-spacing-l;
 .nx-tile-content {
   @include container-vertical;
 
-  padding: $nx-tile-padding $nx-tile-padding 0 $nx-tile-padding;
-
-  &:last-child {
-    padding-bottom: $nx-tile-padding;
-  }
+  padding: 0 $nx-tile-padding 0 $nx-tile-padding;
 }
 
 .nx-tile-content--accordion-container {
@@ -114,6 +116,7 @@ $nx-tile-padding: $nx-spacing-l;
 
   &:last-child {
     padding-bottom: $nx-spacing-md;
+    margin-bottom: -$nx-tile-padding;
   }
 }
 
