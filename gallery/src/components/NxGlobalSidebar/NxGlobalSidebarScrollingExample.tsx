@@ -23,9 +23,9 @@ import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@for
 
 const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 
-export default function NxGlobalSidebarExample() {
-  const [sidebarOpen, onToggleCollapse] = useToggle(true);
-  const [is1Open, onToggle1Collapse] = useToggle(false),
+export default function NxGlobalSidebarScrollingExample() {
+  const [sidebarOpen, onToggleCollapse] = useToggle(true),
+      [is1Open, onToggle1Collapse] = useToggle(false),
       [is2Open, onToggle2Collapse] = useToggle(false);
 
   return (
@@ -104,8 +104,7 @@ export default function NxGlobalSidebarExample() {
         <NxGlobalSidebarFooter supportText="Support for RSC"
                                supportLink="https://github.com/sonatype/sonatype-react-shared-components"
                                releaseText="3.1.4"
-                               productTagLine="Powered by PLAID VILLAIN">
-        </NxGlobalSidebarFooter>
+                               productTagLine="Powered by PLAID VILLAIN" />
       </NxGlobalSidebar>
       <NxPageMain>Page content</NxPageMain>
     </>
