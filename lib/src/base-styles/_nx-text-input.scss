@@ -63,7 +63,7 @@
   @include container-horizontal;
 
   align-items: center;
-  background-color: $nx-white;
+  background-color: var(--nx-swatch-white);
   border: 1px solid var(--nx-color-border-form-element);
   border-radius: var(--nx-border-radius);
   display: flex;
