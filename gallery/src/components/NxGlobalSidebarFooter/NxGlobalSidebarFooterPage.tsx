@@ -57,8 +57,9 @@ export default function NxGlobalSidebarFooterPage() {
                 <NxTable.Cell>String</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  Text that indicates what version of the software is currently being used. You may use just a version
-                  number or a mix of text and a number, e.g. "Firewall v2.3", "Release 3.1.4" or even just "4.5.1".
+                  Text that indicates what version of the software is currently being used. Most typically this would
+                  take the form of a product name and a version number: "Firewall v2.3", but could also be generic text
+                  and a number: "Release 3.1.4" or even just a number: "4.5.1".
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
