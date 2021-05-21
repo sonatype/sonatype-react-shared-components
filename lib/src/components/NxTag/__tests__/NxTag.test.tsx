@@ -43,7 +43,7 @@ describe('NxTag', function() {
 
   it('sets the color class using the color if it is provided', function() {
     const colorComponent = getShallowComponent({ color: 'orange' });
-    expect(colorComponent.find('.nx-tag--orange')).toExist();
+    expect(colorComponent.find('.nx-selectable-color--orange')).toExist();
     expect(colorComponent.find('.nx-tag--default')).not.toExist();
   });
 

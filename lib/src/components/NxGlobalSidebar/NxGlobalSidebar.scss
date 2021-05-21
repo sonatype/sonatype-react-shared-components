@@ -19,7 +19,7 @@ $nx-global-sidebar-active-color: var(--nx-swatch-indigo-70);
 $nx-global-sidebar-selected-color: var(--nx-swatch-indigo-30);
 $nx-global-sidebar-hover-color: var(--nx-swatch-indigo-50);
 
-$nx-global-sidebar-focus-border: 1px solid var(--nx-color-border-focus);
+$nx-global-sidebar-focus-border: 1px solid var(--nx-color-interactive-border-focus);
 
 $nx-global-sidebar-separator-color: var(--nx-swatch-grey-10);
 
@@ -56,7 +56,7 @@ $nx-global-sidebar-separator-color: var(--nx-swatch-grey-10);
   margin: 0;
 
   &:focus {
-    border-color: var(--nx-color-border-focus);
+    border-color: var(--nx-color-interactive-border-focus);
   }
 
   &:active {
@@ -97,7 +97,7 @@ $nx-global-sidebar-separator-color: var(--nx-swatch-grey-10);
   }
 
   &:focus {
-    border-color: var(--nx-color-border-focus);
+    border-color: var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
     outline: none;
   }

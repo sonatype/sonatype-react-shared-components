@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 .nx-table {
-  background-color: var(--nx-color-background-component);
+  background-color: var(--nx-color-component-background);
   border-spacing: 0;
   border: var(--nx-border-default);
   border-radius: var(--nx-border-radius);
@@ -23,7 +23,7 @@
       border-style: none;
 
       border-bottom-style: solid;
-      border-bottom-color: var(--nx-color-border-subsection);
+      border-bottom-color: var(--nx-color-subsection-border);
       border-top-style: solid;
 
       // we want the perceived padding to be the standard spacing size. As the top border is generally invisible,
@@ -71,13 +71,13 @@
     &.nx-clickable {
       &:hover {
         > .nx-cell {
-          background-color: var(--nx-color-background-hover);
+          background-color: var(--nx-color-interactive-background-hover);
         }
       }
 
       &.selected {
         > .nx-cell {
-          background-color: var(--nx-color-background-selected);
+          background-color: var(--nx-color-interactive-background-selected);
         }
       }
 
@@ -92,7 +92,7 @@
         outline: none;
 
         > .nx-cell {
-          border-color: var(--nx-color-border-focus);
+          border-color: var(--nx-color-interactive-border-focus);
         }
       }
     }
@@ -100,7 +100,7 @@
 }
 
 .nx-table-container {
-  background-color: var(--nx-color-background-component);
+  background-color: var(--nx-color-component-background);
   border: var(--nx-border-default);
   border-radius: var(--nx-border-radius);
   box-sizing: content-box;
@@ -168,7 +168,7 @@
 .nx-table-container__footer {
   @include container-vertical;
 
-  background-color: var(--nx-color-background-component);
+  background-color: var(--nx-color-component-background);
   border-top: var(--nx-border-default);
   margin-top: auto;
 
@@ -205,8 +205,16 @@
   @include container-horizontal;
 
   min-height: $nx-table-cell-min-height;
-  padding: $nx-table-cell-vertical-padding var(--nx-spacing-4x);
+  padding: $nx-table-cell-vertical-padding var(--nx-spacing-3x);
   vertical-align: top;
+
+  &:first-child {
+    padding-left: var(--nx-spacing-4x);
+  }
+
+  &:last-child {
+    padding-right: var(--nx-spacing-4x);
+  }
 
   > .nx-btn-bar {
     // buttons should be 8px from row edges even though row padding is 12px
@@ -240,7 +248,7 @@
   vertical-align: middle;
 
   &:focus {
-    outline: 1px solid var(--nx-color-border-focus);
+    outline: 1px solid var(--nx-color-interactive-border-focus);
     outline-offset: -1px;
     box-shadow: var(--nx-box-shadow-focus);
   }
@@ -273,8 +281,10 @@
 }
 
 .nx-table-row--filter-header > .nx-cell--header {
-  background-color: var(--nx-color-background-component);
+  background-color: var(--nx-color-component-background);
   border-bottom: var(--nx-border-default);
+  padding-top: var(--nx-spacing-4x);
+  padding-bottom: var(--nx-spacing-4x);
 }
 
 .nx-cell__sort-icons {

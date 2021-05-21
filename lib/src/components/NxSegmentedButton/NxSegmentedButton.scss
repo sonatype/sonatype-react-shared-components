@@ -61,7 +61,7 @@
     }
 
     &:focus {
-      border-right-color: var(--nx-color-border-focus);
+      border-right-color: var(--nx-color-interactive-border-focus);
     }
 
     // get fancy to prevent mitred corners on the inner border
@@ -84,7 +84,7 @@
     }
 
     &:focus {
-      border-left-color: var(--nx-color-border-focus);
+      border-left-color: var(--nx-color-interactive-border-focus);
     }
 
     // get fancy to prevent mitred corners on the inner border

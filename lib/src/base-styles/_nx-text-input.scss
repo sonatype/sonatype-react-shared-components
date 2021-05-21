@@ -13,14 +13,14 @@
   &, &.pristine, &.pristine.valid {
     &:focus-within {
       .nx-text-input__box {
-        border-color: var(--nx-color-border-focus);
+        border-color: var(--nx-color-interactive-border-focus);
         box-shadow: var(--nx-box-shadow-focus);
       }
     }
 
     &:hover {
       .nx-text-input__box {
-        border-color: var(--nx-color-border-form-element);
+        border-color: var(--nx-color-form-element-border);
       }
     }
   }
@@ -44,8 +44,8 @@
   &.disabled {
     &, &.valid, &.invalid, &.pristine {
       .nx-text-input__box {
-        background-color: var(--nx-color-background-disabled);
-        border-color: var(--nx-color-border-disabled);
+        background-color: var(--nx-color-interactive-background-disabled);
+        border-color: var(--nx-color-interactive-border-disabled);
       }
 
       .nx-text-input__invalid-message {
@@ -63,7 +63,7 @@
   @include container-horizontal;
 
   align-items: center;
-  background-color: var(--nx-swatch-white);
+  background-color: $nx-white;
   border: 1px solid var(--nx-color-border-form-element);
   border-radius: var(--nx-border-radius);
   display: flex;

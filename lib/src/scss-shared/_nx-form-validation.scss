@@ -28,7 +28,7 @@
 
 @mixin pristine() {
   .nx-text-input__box {
-    border-color: var(--nx-color-border-form-element-pristine);
+    border-color: var(--nx-color-form-element-border-pristine);
   }
 
   .nx-icon--invalid, .nx-icon--valid {

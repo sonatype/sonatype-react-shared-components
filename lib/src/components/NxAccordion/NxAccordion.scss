@@ -9,7 +9,7 @@
 @import '../../scss-shared/nx-button-helpers';
 
 .nx-accordion {
-  background: var(--nx-color-background-component);
+  background: var(--nx-color-component-background);
   border-radius: var(--nx-border-radius);
   margin: var(--nx-spacing-4x) 0;
 }
@@ -47,9 +47,9 @@
     outline: none;
 
     > .nx-accordion__summary-wrapper {
-      outline: 1px solid var(--nx-color-border-focus);
+      outline: 1px solid var(--nx-color-interactive-border-focus);
       outline-offset: -1px;
-      box-shadow: var(---nx-box-shadow-focus);
+      box-shadow: var(--nx-box-shadow-focus);
     }
   }
 }

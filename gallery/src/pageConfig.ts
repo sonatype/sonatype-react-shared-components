@@ -104,6 +104,8 @@ import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPag
 import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPage';
 import NxStatefulGlobalSidebarPage from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarPage';
 import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
+import SelectableColorsPage from './styles/SelectableColors/SelectableColorsPage';
+import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTilePage';
 import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
 
 const pageConfig: PageConfig = {
@@ -201,11 +203,13 @@ const pageConfig: PageConfig = {
     'nx-container-helpers': NxContainerHelpersPage,
     'nx-scrollable': NxScrollablePage,
     'nx-truncate-ellipsis': NxTruncatePage,
-    'nx-viewport-sized': NxViewportSizedPage
+    'nx-viewport-sized': NxViewportSizedPage,
+    'Selectable Colors': SelectableColorsPage
   },
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
-    'Page Layout': PageLayoutPage
+    'Page Layout': PageLayoutPage,
+    'Read-Only Grid Tile Layout': NxReadOnlyGridTilePage
   },
   'JavaScript & TypeScript Utilities': {
     'TooltipConfigProps': TooltipConfigPropsPage,

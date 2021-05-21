@@ -27,7 +27,7 @@
 
   &:focus {
     box-shadow: var(--nx-box-shadow-focus);
-    outline: 1px solid var(--nx-color-border-focus);
+    outline: 1px solid var(--nx-color-interactive-border-focus);
     outline-offset: -1px;
   }
 }
@@ -53,7 +53,7 @@
   &.selected {
     background-color: var(--nx-swatch-indigo-10);
     border-color: var(--nx-swatch-indigo-10);
-    color: var(--nx-color-background-component);
+    color: var(--nx-color-component-background);
     cursor: default;
   }
 }

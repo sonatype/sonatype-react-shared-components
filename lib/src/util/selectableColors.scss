@@ -1,0 +1,52 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../scss-shared/nx-color-swatches';
+
+.nx-selectable-color--light-blue {
+  --nx-selectable-color-dark: #{$nx-blue-200};
+  --nx-selectable-color-light: #{$nx-blue-50};
+}
+
+.nx-selectable-color--purple {
+  --nx-selectable-color-dark: #{$nx-purple-200};
+  --nx-selectable-color-light: #{$nx-purple-50};
+}
+
+.nx-selectable-color--pink {
+  --nx-selectable-color-dark: #{$nx-pink-300};
+  --nx-selectable-color-light: #{$nx-pink-50};
+}
+
+.nx-selectable-color--blue {
+  --nx-selectable-color-dark: #{$nx-teal-400};
+  --nx-selectable-color-light: #{$nx-teal-50};
+}
+
+.nx-selectable-color--red {
+  --nx-selectable-color-dark: #{$nx-red-300};
+  --nx-selectable-color-light: #{$nx-red-50};
+}
+
+.nx-selectable-color--green {
+  --nx-selectable-color-dark: #{$nx-turquoise-600};
+  --nx-selectable-color-light: #{$nx-turquoise-50};
+}
+
+.nx-selectable-color--orange {
+  --nx-selectable-color-dark: #{$nx-orange-700};
+  --nx-selectable-color-light: #{$nx-orange-50};
+}
+
+.nx-selectable-color--yellow {
+  --nx-selectable-color-dark: #{$nx-yellow-700};
+  --nx-selectable-color-light: #{$nx-yellow-50};
+}
+
+.nx-selectable-color--lime {
+  --nx-selectable-color-dark: #{$nx-green-200};
+  --nx-selectable-color-light: #{$nx-green-50};
+}

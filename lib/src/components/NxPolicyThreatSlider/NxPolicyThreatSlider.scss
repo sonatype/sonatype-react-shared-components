@@ -60,7 +60,7 @@
     }
 
     &:focus {
-      border-color: var(--nx-color-border-focus);
+      border-color: var(--nx-color-interactive-border-focus);
       box-shadow: var(--nx-box-shadow-focus);
     }
 
@@ -103,8 +103,8 @@
   }
 
   .Mui-disabled .nx-policy-threat-slider__value-label .MuiSlider-thumb {
-    border-color: var(--nx-color-border-disabled);
-    background-color: var(--nx-color-background-disabled);
+    border-color: var(--nx-color-interactive-border-disabled);
+    background-color: var(--nx-color-interactive-background-disabled);
     color: var(--nx-color-text-disabled);
   }
 

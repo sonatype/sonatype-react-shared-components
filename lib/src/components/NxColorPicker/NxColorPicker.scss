@@ -19,6 +19,7 @@
   $size: 32px;
 
   background-clip: content-box;
+  background-color: var(--nx-selectable-color-dark);
   border-radius: $size / 2;
   box-sizing: border-box;
   border: 1px solid transparent;
@@ -35,18 +36,12 @@
   }
 
   &:focus-within {
-    border-color: var(--nx-color-border-focus);
+    border-color: var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
   }
 
   &:hover {
-    border-color: var(--nx-color-border-form-element);
-  }
-}
-
-@each $color-name, $color-codes in $nx-selectable-colors {
-  .nx-color-picker__color--#{$color-name} {
-    background-color: nth($color-codes, 1);
+    border-color: var(--nx-color-form-element-border);
   }
 }
 

@@ -5,21 +5,24 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 :root {
-  --nx-color-border-default: var(--nx-swatch-indigo-90);
-  --nx-color-border-subsection: var(--nx-swatch-indigo-90);
-  --nx-color-border-form-element: var(--nx-swatch-grey-05);
-  --nx-color-border-form-element-pristine: var(--nx-swatch-indigo-95);
-  --nx-color-border-disabled: var(--nx-swatch-grey-60);
-  --nx-color-border-focus: var(--nx-swatch-teal-45);
+  --nx-color-border: var(--nx-swatch-indigo-90);
 
-  --nx-color-box-shadow-focus: hsla(var(--nx-swatch-teal-hs), 65%, 0.3);
+  --nx-color-subsection-border: var(--nx-swatch-indigo-90);
 
-  --nx-color-background-component: var(--nx-swatch-white);
-  --nx-color-background-site: var(--nx-swatch-indigo-97);
-  --nx-color-background-selected: var(--nx-swatch-blue-90);
-  --nx-color-background-active: var(--nx-swatch-blue-95);
-  --nx-color-background-hover: var(--nx-swatch-indigo-95);
-  --nx-color-background-disabled: var(--nx-swatch-grey-95);
+  --nx-color-component-background: var(--nx-swatch-white);
+
+  --nx-color-site-background: var(--nx-swatch-indigo-97);
+
+  --nx-color-form-element-border: var(--nx-swatch-grey-05);
+  --nx-color-form-element-border-pristine: var(--nx-swatch-indigo-95);
+
+  --nx-color-interactive-background-selected: var(--nx-swatch-blue-90);
+  --nx-color-interactive-background-active: var(--nx-swatch-blue-95);
+  --nx-color-interactive-background-hover: var(--nx-swatch-indigo-95);
+  --nx-color-interactive-background-disabled: var(--nx-swatch-grey-95);
+  --nx-color-interactive-border-disabled: var(--nx-swatch-grey-60);
+  --nx-color-interactive-border-focus: var(--nx-swatch-teal-45);
+  --nx-color-interactive-shadow-focus: hsla(var(--nx-swatch-teal-hs), 65%, 0.3);
 
   --nx-color-text-dark: var(--nx-swatch-grey-05);
   --nx-color-text: var(--nx-swatch-grey-10);

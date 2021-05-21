@@ -23,6 +23,7 @@
   --nx-spacing-8x: calc(var(--nx-spacing-base) * 8); // formerly nx-spacing-xl
   --nx-spacing-12x: calc(var(--nx-spacing-base) * 12); // formerly nx-spacing-xxl
   --nx-spacing-16x: calc(var(--nx-spacing-base) * 16); // formerly nx-spacing-xxxl
+  --nx-spacing-20x: calc(var(--nx-spacing-base) * 20);
 
   --nx-font-size: 16px;
   --nx-font-size-s: 14px;
@@ -39,11 +40,11 @@
 
   --nx-border-radius: 6px;
 
-  --nx-border-default: 1px solid var(--nx-color-border-default);
-  --nx-border-subsection: 1px solid var(--nx-color-border-subsection);
+  --nx-border-default: 1px solid var(--nx-color-border);
+  --nx-border-subsection: 1px solid var(--nx-color-subsection-border);
 
-  --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-box-shadow-focus);
+  --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-interactive-shadow-focus);
 
   // similar to above, but for use in drop-shadow filters rather than box-shadow properties
-  --nx-drop-shadow-focus: 0 0 3px var(--nx-color-box-shadow-focus);
+  --nx-drop-shadow-focus: 0 0 3px var(--nx-color-interactive-shadow-focus);
 }

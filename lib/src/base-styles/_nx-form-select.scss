@@ -23,18 +23,18 @@
   width: var(--nx-width-form-element-normal);
 
   &:hover {
-    border-color: var(--nx-color-border-form-element);
+    border-color: var(--nx-color-form-element-border);
   }
 
   &:focus {
     box-shadow: var(--nx-box-shadow-focus);
-    border-color: var(--nx-color-border-focus);
+    border-color: var(--nx-color-interactive-border-focus);
     outline: none;
   }
 
   &.disabled {
-    background-color: var(--nx-color-background-disabled);
-    border-color: var(--nx-color-border-disabled);
+    background-color: var(--nx-color-interactive-background-disabled);
+    border-color: var(--nx-color-interactive-border-disabled);
   }
 }
 
