@@ -8,7 +8,7 @@
   &.disabled, &[disabled] {
     &, &:hover, &:focus {
       background-color: var(--nx-color-interactive-background-disabled);
-      border-color: var(--nx-border-color-disabled);
+      border-color: var(--nx-color-interactive-border-disabled);
       color: var(--nx-color-text-disabled);
       cursor: default;
     }
