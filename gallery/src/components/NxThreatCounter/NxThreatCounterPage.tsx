@@ -70,6 +70,21 @@ const NxThreatCounterPage = () =>
               options are <code className="nx-code">column</code> and <code className="nx-code">grid</code>.
             </td>
           </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">HTML <code className="nx-code">&lt;dl&gt;</code> Attributes</td>
+            <td className="nx-cell">
+              <a target="_blank"
+                 rel="noopener"
+                 href="https://developer.mozilla.org/en/docs/Web/HTML/Element/dl">
+                HTML dl Attributes
+              </a>
+            </td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              <code className="nx-code">NxPagination</code> supports any HTML attribute that's normally
+              supported by <code className="nx-code">&lt;d&gt;</code> elements.
+            </td>
+          </tr>
         </tbody>
       </table>
     </GalleryDescriptionTile>

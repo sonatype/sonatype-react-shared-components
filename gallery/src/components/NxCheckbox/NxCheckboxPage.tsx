@@ -19,10 +19,6 @@ const NxCheckboxPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">Custom checkbox input.</p>
       <p className="nx-p">Child VDOM will be used as a label following the checkbox button itself.</p>
-      <p className="nx-p">
-        NxCheckbox can receive any attribute that would be valid on an
-        HTML <code className="nx-code">&lt;label&gt;</code> as well as the following prop
-      </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -82,6 +78,21 @@ const NxCheckboxPage = () =>
                  className="nx-text-link">
                 phrasing content
               </a>
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">Label HTML Attributes</td>
+            <td className="nx-cell">
+              <a target="_blank"
+                 rel="noopener"
+                 href="https://developer.mozilla.org/en/docs/Web/HTML/Element/label">
+                HTML label Attributes
+              </a>
+            </td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              NxCheckbox supports any html attribute that's normally supported by the
+              <code className="nx-code">label</code> element.
             </td>
           </tr>
         </tbody>

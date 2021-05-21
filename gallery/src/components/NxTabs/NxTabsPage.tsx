@@ -45,7 +45,6 @@ export default function NxTabsPage() {
             The top-level container for tabbed navigation.
             It can have <code className="nx-code">&lt;NxTabList&gt;</code> and
             {' '}<code className="nx-code">&lt;NxTabPanel&gt;</code> components as children.
-            Support native <code className="nx-code">&lt;div&gt;</code> attributes as well as the following props:
           </p>
 
           <NxTable className="nx-table--gallery-props">
@@ -74,6 +73,30 @@ export default function NxTabsPage() {
                   Called with the index of the newly selected tab when the currently selected tab changes.
                 </NxTableCell>
               </NxTableRow>
+              <NxTableRow>
+                <NxTableCell>div, ul, li HTML Attributes</NxTableCell>
+                <NxTableCell>
+                  <a target="_blank"
+                     rel="noopener"
+                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                    HTML div Attributes
+                  </a>
+                  <a target="_blank"
+                     rel="noopener"
+                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/ul">
+                    HTML ul Attributes
+                  </a>
+                  <a target="_blank"
+                     rel="noopener"
+                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/li">
+                    HTML li Attributes
+                  </a>
+                </NxTableCell>
+                <NxTableCell>No</NxTableCell>
+                <NxTableCell>
+                  NxTab supports any html attributes that are normally supported by the div, ul, and li elements.
+                </NxTableCell>
+              </NxTableRow>
             </NxTableBody>
           </NxTable>
         </section>
@@ -85,7 +108,7 @@ export default function NxTabsPage() {
 
           <p className="nx-p">
             The parent container for the <code className="nx-code">&lt;NxTab&gt;</code> components.
-            Passes through all attributes to an underlying ul element.
+            Passes through all attributes to an underlying <code className="nx-code">ul</code> element.
           </p>
         </section>
 

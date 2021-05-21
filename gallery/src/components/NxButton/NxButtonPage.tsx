@@ -30,8 +30,7 @@ export default function NxButtonPage() {
         <p className="nx-p">
           <code className="nx-code">NxButton</code> is a react wrapper around
           HTML <code className="nx-code">&lt;button&gt;</code> elements using
-          the <code className="nx-code">.nx-btn</code> CSS class. It accepts
-          any <code className="nx-code">&lt;button&gt;</code> attribute as well as the following props:
+          the <code className="nx-code">.nx-btn</code> CSS class.
         </p>
         <NxTable>
           <NxTableHead>
@@ -61,6 +60,20 @@ export default function NxButtonPage() {
                 for buttons that include text content, but icon-only buttons should use this to make the button's
                 meaning clear in all contexts. Omitting this prop when using an icon-only button is deprecated and will
                 become unsupported in a future release.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>Button HTML Attributes</NxTableCell>
+              <NxTableCell>
+                <a target="_blank"
+                   rel="noopener"
+                   href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
+                  HTML Attributes
+                </a>
+              </NxTableCell>
+              <NxTableCell>No</NxTableCell>
+              <NxTableCell>
+                NxButton supports any html attribute that's normally supported by the Button element
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
