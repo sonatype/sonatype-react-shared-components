@@ -210,6 +210,8 @@ export { default as NxGlobalSidebarNavigationLink, NxGlobalSidebarNavigationLink
   from './components/NxGlobalSidebar/NxGlobalSidebarNavigationLink';
 export { default as NxStatefulGlobalSidebar, Props as NxStatefulGlobalSidebarProps }
   from './components/NxGlobalSidebar/stateful/NxStatefulGlobalSidebar';
+export { default as NxGlobalSidebarFooter, NxGlobalSidebarFooterProps }
+  from './components/NxGlobalSidebar/NxGlobalSidebarFooter';
 
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
 
