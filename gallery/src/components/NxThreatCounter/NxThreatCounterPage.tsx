@@ -80,7 +80,7 @@ const NxThreatCounterPage = () =>
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              <code className="nx-code">NxPagination</code> supports any HTML attribute that's normally
+              <code className="nx-code">NxThreatCounter</code> supports any HTML attribute that's normally
               supported by <code className="nx-code">&lt;dl&gt;</code> elements.
             </td>
           </tr>
