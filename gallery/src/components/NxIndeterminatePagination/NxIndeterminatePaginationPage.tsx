@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxIndeterminatePaginationExample from './NxIndeterminatePaginationExample';
 
@@ -50,11 +51,9 @@ const NxIndeterminatePaginationPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
             <td className="nx-cell">
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                 HTML div Attributes
-              </a>
+              </NxTextLink>
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">

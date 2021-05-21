@@ -10,7 +10,8 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxTagExample from './NxTagExample';
 import NxSelectableTagExample from './NxSelectableTagExample';
 import NxTagNarrowExample from './NxTagNarrowExample';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxTextLink }
+  from '@sonatype/react-shared-components';
 
 const NxTagExampleCode = require('./NxTagExample?raw');
 const NxSelectableTagExampleCode = require('./NxSelectableTagExample?raw');
@@ -52,11 +53,9 @@ const NxTagPage = () =>
           <NxTableRow>
             <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
             <NxTableCell>
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://developer.mozilla.org/es/docs/Web/HTML/Elemento/div">
+              <NxTextLink external href="https://developer.mozilla.org/es/docs/Web/HTML/Elemento/div">
                 HTML div Attributes
-              </a>
+              </NxTextLink>
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>

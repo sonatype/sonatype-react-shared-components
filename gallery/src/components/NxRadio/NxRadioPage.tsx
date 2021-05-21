@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxRadioExample from './NxRadioExample';
 import NxRadioNowrapExample from './NxRadioNowrapExample';
@@ -99,11 +100,9 @@ const NxRadioPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell">HTML <code className="nx-code">&lt;label&gt;</code> Attributes</td>
             <td className="nx-cell">
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
+              <NxTextLink external href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
                 HTML Attributes
-              </a>
+              </NxTextLink>
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">

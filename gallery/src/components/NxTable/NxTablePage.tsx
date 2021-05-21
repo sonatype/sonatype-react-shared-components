@@ -8,7 +8,7 @@ import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
-import { NxTable, NxTile, NxH3, NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxTable, NxTile, NxH3, NxP, NxCode, NxTextLink } from '@sonatype/react-shared-components';
 
 import NxTableSimpleExample from './NxTableSimpleExample';
 import NxTableClickableExample from './NxTableClickableExample';
@@ -76,11 +76,9 @@ export default function NxTablePage() {
               <NxTable.Row>
                 <NxTable.Cell>HTML <code className="nx-code">&lt;table&gt;</code> Attributes</NxTable.Cell>
                 <NxTable.Cell>
-                  <a target="_blank"
-                     rel="noopener"
-                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/table">
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/table">
                     HTML table Attributes
-                  </a>
+                  </NxTextLink>
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
@@ -113,11 +111,9 @@ export default function NxTablePage() {
               <NxTable.Row>
                 <NxTable.Cell>HTML <code className="nx-code">&lt;thead&gt;</code> Attributes</NxTable.Cell>
                 <NxTable.Cell>
-                  <a target="_blank"
-                     rel="noopener"
-                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/thead">
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/thead">
                     HTML thead Attributes
-                  </a>
+                  </NxTextLink>
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
@@ -182,11 +178,9 @@ export default function NxTablePage() {
               <NxTable.Row>
                 <NxTable.Cell>HTML <code className="nx-code">&lt;tbody&gt;</code> Attributes</NxTable.Cell>
                 <NxTable.Cell>
-                  <a target="_blank"
-                     rel="noopener"
-                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/tbody">
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/tbody">
                     HTML tbody Attributes
-                  </a>
+                  </NxTextLink>
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
@@ -249,11 +243,9 @@ export default function NxTablePage() {
               <NxTable.Row>
                 <NxTable.Cell>HTML <code className="nx-code">&lt;tr&gt;</code> Attributes</NxTable.Cell>
                 <NxTable.Cell>
-                  <a target="_blank"
-                     rel="noopener"
-                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/tr">
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/tr">
                     HTML tr Attributes
-                  </a>
+                  </NxTextLink>
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
@@ -351,11 +343,9 @@ export default function NxTablePage() {
               <NxTable.Row>
                 <NxTable.Cell>HTML <code className="nx-code">&lt;td&gt;</code> Attributes</NxTable.Cell>
                 <NxTable.Cell>
-                  <a target="_blank"
-                     rel="noopener"
-                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/td">
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/td">
                     HTML td Attributes
-                  </a>
+                  </NxTextLink>
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>

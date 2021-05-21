@@ -6,7 +6,8 @@
  */
 import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxTextLink }
+  from '@sonatype/react-shared-components';
 
 import NxFieldsetExample from './NxFieldsetExample';
 import NxFieldsetRequiredExample from './NxFieldsetRequiredExample';
@@ -82,11 +83,9 @@ const NxFieldsetPage = () =>
           <NxTableRow>
             <NxTableCell>HTML <code className="nx-code">&lt;fieldset&gt;</code> Attributes</NxTableCell>
             <NxTableCell>
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://developer.mozilla.org/en/docs/Web/HTML/Element/fieldset">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/fieldset">
                 HTML fieldset Attributes
-              </a>
+              </NxTextLink>
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell>N/A</NxTableCell>

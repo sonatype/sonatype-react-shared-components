@@ -6,7 +6,8 @@
  */
 import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxTextLink }
+  from '@sonatype/react-shared-components';
 
 import NxFormGroupExample from './NxFormGroupExample';
 import NxFormGroupRequiredExample from './NxFormGroupRequiredExample';
@@ -85,11 +86,9 @@ const NxFormGroupPage = () =>
           <NxTableRow>
             <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
             <NxTableCell>
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                 HTML div Attributes
-              </a>
+              </NxTextLink>
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell>N/A</NxTableCell>

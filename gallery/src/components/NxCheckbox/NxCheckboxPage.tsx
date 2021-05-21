@@ -7,6 +7,7 @@
 import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxCheckboxExample from './NxCheckboxExample';
 import NxCheckboxNowrapExample from './NxCheckboxNowrapExample';
@@ -74,20 +75,18 @@ const NxCheckboxPage = () =>
             <td className="nx-cell">
               VDOM rendered as a label. Should be
               {' '}
-              <a href="https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content"
-                 className="nx-text-link">
+              <NxTextLink external
+                          href="https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content">
                 phrasing content
-              </a>
+              </NxTextLink>
             </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">HTML <code className="nx-code">&lt;label&gt;</code> Attributes</td>
             <td className="nx-cell">
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://developer.mozilla.org/en/docs/Web/HTML/Element/label">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/label">
                 HTML label Attributes
-              </a>
+              </NxTextLink>
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">

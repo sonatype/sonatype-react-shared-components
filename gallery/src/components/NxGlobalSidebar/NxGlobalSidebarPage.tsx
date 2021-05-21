@@ -7,7 +7,8 @@
 import React from 'react';
 import CodeExample from '../../CodeExample';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxWarningAlert } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxWarningAlert, NxTextLink }
+  from '@sonatype/react-shared-components';
 
 import './NxGlobalSidebarPage.scss';
 
@@ -107,11 +108,9 @@ export default function NxGlobalSidebarPage() {
               <NxTable.Row>
                 <NxTable.Cell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTable.Cell>
                 <NxTable.Cell>
-                  <a target="_blank"
-                     rel="noopener"
-                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                     HTML div Attributes
-                  </a>
+                  </NxTextLink>
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
@@ -142,11 +141,9 @@ export default function NxGlobalSidebarPage() {
               <NxTable.Row>
                 <NxTable.Cell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTable.Cell>
                 <NxTable.Cell>
-                  <a target="_blank"
-                     rel="noopener"
-                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                     HTML div Attributes
-                  </a>
+                  </NxTextLink>
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
@@ -200,11 +197,9 @@ export default function NxGlobalSidebarPage() {
               <NxTable.Row>
                 <NxTable.Cell>HTML <code className="nx-code">&lt;a&gt;</code> Attributes</NxTable.Cell>
                 <NxTable.Cell>
-                  <a target="_blank"
-                     rel="noopener"
-                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/a">
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/a">
                     HTML a Attributes
-                  </a>
+                  </NxTextLink>
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>

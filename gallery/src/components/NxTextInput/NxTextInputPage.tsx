@@ -15,6 +15,7 @@ import NxTextInputTextAreaExample from './NxTextInputTextAreaExample';
 import NxTextInputTextAreaValidationExample from './NxTextInputTextAreaValidationExample';
 import NxTextInputLongExample from './NxTextInputLongExample';
 import NxTextInputDisabledExample from './NxTextInputDisabledExample';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 const simpleSourceCode = require('./NxTextInputSimpleExample?raw');
 const validationSourceCode = require('./NxTextInputValidationExample?raw');
@@ -104,11 +105,9 @@ const NxTextInputPage = () =>
               <p className="nx-p">
                 The value given to the callback will be that of the key name, as described in the spec
                 for{' '}
-                <a target="_blank"
-                   rel="noopener"
-                   href="https://www.w3.org/TR/uievents-key/#named-key-attribute-values">
+                <NxTextLink external href="https://www.w3.org/TR/uievents-key/#named-key-attribute-values">
                   named keys
-                </a>
+                </NxTextLink>
               </p>
             </td>
           </tr>
@@ -118,11 +117,9 @@ const NxTextInputPage = () =>
               HTML <code className="nx-code">&lt;textarea&gt;</code> Attributes
             </td>
             <td className="nx-cell">
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
+              <NxTextLink external href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
                 HTML Attributes
-              </a>
+              </NxTextLink>
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
@@ -133,11 +130,9 @@ const NxTextInputPage = () =>
                 <li className="nx-list__item">
                   <code className="nx-code">defaultValue</code> which is left out because it creates what's commonly
                   known as{' '}
-                  <a target="_blank"
-                     rel="noopener"
-                     href="https://reactjs.org/docs/uncontrolled-components.html">
+                  <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
                     uncontrolled inputs
-                  </a>
+                  </NxTextLink>
                 </li>
                 <li className="nx-list__item">
                   The attributes specified above, whose types are as defined here and not as specified in the
