@@ -22,11 +22,11 @@ $nx-toggle-input-hide-hack-spacing: 5px;
       cursor: default;
 
       .nx-toggle__control {
-        background-color: var(--nx-color-background-disabled);
-        border-color: var(--nx-color-border-disabled);
+        background-color: var(--nx-color-interactive-background-disabled);
+        border-color: var(--nx-color-interactive-border-disabled);
       }
       .nx-toggle__indicator {
-        background-color: var(--nx-color-border-disabled);
+        background-color: var(--nx-color-interactive-border-disabled);
       }
     }
   }
