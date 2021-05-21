@@ -17,7 +17,7 @@ import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@for
 
 const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 
-export default function NxGlobalSidebarFooterExample() {
+export default function NxGlobalSidebarFooterEmptyExample() {
   const [sidebarOpen, onToggleCollapse] = useToggle(true);
 
   return (
