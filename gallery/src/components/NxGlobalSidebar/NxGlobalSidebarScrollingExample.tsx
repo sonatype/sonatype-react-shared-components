@@ -24,8 +24,8 @@ import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@for
 const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 
 export default function NxGlobalSidebarScrollingExample() {
-  const [sidebarOpen, onToggleCollapse] = useToggle(true);
-  const [is1Open, onToggle1Collapse] = useToggle(false),
+  const [sidebarOpen, onToggleCollapse] = useToggle(true),
+      [is1Open, onToggle1Collapse] = useToggle(false),
       [is2Open, onToggle2Collapse] = useToggle(false);
 
   return (
