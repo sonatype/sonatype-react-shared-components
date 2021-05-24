@@ -20,6 +20,7 @@ import GalleryNav from './GalleryNav';
 import Home from './pages/Home';
 import handleQueryParams from './handleQueryParams';
 
+import PageLayoutExamples from './styles/PageLayout/PageLayoutExamples';
 import NxGlobalSidebarExample from './components/NxGlobalSidebar/NxGlobalSidebarExample';
 import NxGlobalSidebarScrollingExample from './components/NxGlobalSidebar/NxGlobalSidebarScrollingExample';
 import NxStatefulGlobalSidebarExample from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarExample';
@@ -77,6 +78,9 @@ function Application() {
   return (
     <Router>
       <Switch>
+        <Route path="/pageLayouts">
+          <PageLayoutExamples />
+        </Route>
         <Route exact path="/NxGlobalSidebarExample">
           <SectionScrollingWrapper>
             <NxGlobalSidebarExample />
