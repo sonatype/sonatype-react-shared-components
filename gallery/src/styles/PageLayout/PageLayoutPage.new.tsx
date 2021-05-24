@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxTile, NxCode, NxH2, NxTable, NxTextLink, NxH3, NxInfoAlert } from '@sonatype/react-shared-components';
+import { NxP, NxTile, NxCode, NxH2, NxTable, NxTextLink, NxH3, NxInfoAlert, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -19,7 +19,7 @@ const PageLayoutPage = () =>
         based layouts. Within these two categories there are a fairly wide variety of options and optional sections
         of the UI which make for a confusingly high number of possibilities. The purpose of this documentation
         page is to describe all supported combinations, highlighting which are deprecated and which are up-to-date.
-        Live examples of each possiblity are provided.
+        Live examples of each possibility are provided.
       </NxP>
       <NxP>
         All RSC page layouts are designed to operate in a minimum viewport size of 1366px x 768px. If the viewport
@@ -28,31 +28,248 @@ const PageLayoutPage = () =>
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
-          <NxH3>Highest-level elements</NxH3>
+          <NxH3>Page Layout Classes</NxH3>
         </NxTile.SubsectionHeader>
-        <NxP>
-          All RSC page layouts start with certain common elements and classes. First, the
-          ever-present <NxCode>&lt;html&gt;</NxCode> and <NxCode>&lt;body&gt;</NxCode> elements should be given class
-          names of <NxCode>nx-html</NxCode> and <NxCode>nx-body</NxCode> respectively. In addition,
-          the <NxCode>&lt;body&gt;</NxCode> should have a single statically-positioned child element, typically
-          a <NxCode>&lt;div&gt;</NxCode>, with a class name of <NxCode>nx-page</NxCode>.
-          This <NxCode>.nx-page</NxCode> element is typically the root of the React application - the element
-          written directly into the HTML file served from the server, upon which <NxCode>ReactDOM.render</NxCode> is
-          called in order to insert the dynamic application UI. It is permissible for
-          the <NxCode>&lt;body&gt;</NxCode> to include other, absolutely-positioned content
-          alongside <NxCode>.nx-page</NxCode>, as is often inserted by third-party libraries for modals, tooltips, etc.
-        </NxP>
+        <NxTable className="gallery-documentation-table">
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Class Name</NxTable.Cell>
+              <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Convenience Component</NxTable.Cell>
+              <NxTable.Cell>Description</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-html</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>&lt;html&gt;</NxCode> element</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                When using RSC page layout styles, this class must always be applied to
+                the <NxCode>&lt;html&gt;</NxCode> element. Note that it is however possible to use individual RSC
+                components on pages that do not use an RSC page layout/that do not use this class.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-html--page-scrolling</NxCode></NxTable.Cell>
+              <NxTable.Cell>Modifier of <NxCode>.nx-html</NxCode></NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                By default, RSC page layouts operate in "section scrolling" mode. The legacy RSC page layouts
+                can be switched into "page scrolling" mode by including this modifier on
+                the <NxCode>&lt;html&gt;</NxCode> element (see below for a more detailed explanation of the scrolling
+                modes). This is not supported on global sidebar page layouts.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-body</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>&lt;body&gt;</NxCode> element</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                When using RSC page layout styles, this class must always be applied to
+                the <NxCode>&lt;body&gt;</NxCode> element. Note that it is however possible to use individual RSC
+                components on pages that do not use an RSC page layout/that do not use this class.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-page</NxCode></NxTable.Cell>
+              <NxTable.Cell>Sole statically positioned child of <NxCode>&lt;body&gt;</NxCode></NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                When using RSC page layout styles, this class must always be applied to
+                an element that is the immediate descendant of the <NxCode>&lt;body&gt;</NxCode>. The element bearing
+                this class should be the only statically positioned child of the <NxCode>&lt;body&gt;</NxCode>, though
+                it may have absolutely-positioned siblings. This is typically the element where the root of the React
+                application is established via a call to <NxCode>ReactDOM.render</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-page-content</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Child of <NxCode>.nx-page</NxCode>, following the page header and/or system notices
+              </NxTable.Cell>
+              <NxTable.Cell>In legacy layouts</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                In legacy RSC page layouts, the sidebar and main content area are wrapped by this element which enforces
+                the 1600px maximum width and content centering.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-page-content--full-width</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Modifier of <NxCode>.nx-page-content</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                <NxWarningAlert>
+                  Deprecated: in Global Sidebar page layouts, the <NxCode>.nx-page-main</NxCode>{' '}
+                  and <NxCode>.nx-page-sidebar</NxCode> elements <em>may</em> be wrapped in an element bearing both
+                  the <NxCode>nx-page-content</NxCode> and <NxCode>nx-page-content--full-width</NxCode> classes.
+                  However, the preferred approach in those layouts is simply to omit
+                  the <NxCode>.nx-page-content</NxCode> element entirely.
+                </NxWarningAlert>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-page-sidebar</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                <NxP>
+                  In legacy page layouts: First child of <NxCode>.nx-page-content</NxCode>.
+                </NxP>
+                <NxP>
+                  In Global Sidebar page layouts: child of <NxCode>.nx-page</NxCode>.
+                </NxP>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell><NxCode>NxPageSidebar</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                <NxP>
+                  In legacy page layouts, this optional sidebar sits adjacent to the main content area within the 1600px
+                  maximum width. It may contain content such as filter controls, feature-specific navigation, or global
+                  application navigation as it does here in the RSC Gallery.
+                </NxP>
+                <NxP>
+                  This element is also supported in Global Sidebar page layouts, primarily to aid in migration of
+                  applications that are transitioning from the legacy layouts. Note that it should be used
+                  sparingly/temporarily in Global Sidebar page layouts due to the fact that it is <em>in addition</em> to
+                  the actual global sidebar, and thus results in there being two sidebars visible simultaneously.
+                </NxP>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-page-main</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                <NxP>
+                  In legacy page layouts: Second child of <NxCode>.nx-page-content</NxCode>.
+                </NxP>
+                <NxP>
+                  In Global Sidebar page layouts: child of <NxCode>.nx-page</NxCode>.
+                </NxP>
+              </NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell><NxCode>NxPageMain</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                The main content area of the page which takes up the majority of the viewport space and which typically
+                contains an <NxCode>.nx-page-title</NxCode>, <NxCode>.nx-tile</NxCode>s, etc.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
         <NxInfoAlert>
           In all of the examples linked below, the DOM structure represented in the JSX is rendered as immediate
           children of the <NxCode>.nx-page</NxCode> element.
         </NxInfoAlert>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Related Components and Classes</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          These components and classes which are documented elsewhere in the Gallery are intended to be used as direct
+          children of <NxCode>.nx-page</NxCode>.
+        </NxP>
+        <NxTable className="gallery-documentation-table">
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Item</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Layout Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Description</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>
+                <NxTextLink href="#/pages/NxPageHeader"><NxCode>NxPageHeader</NxCode></NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>Component</NxTable.Cell>
+              <NxTable.Cell>Legacy</NxTable.Cell>
+              <NxTable.Cell>Yes or use alternate</NxTable.Cell>
+              <NxTable.Cell>The page header in legacy page layouts</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>
+                <NxTextLink href="#/pages/NxNexusPageHeader"><NxCode>NxNexusPageHeader</NxCode></NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>Component</NxTable.Cell>
+              <NxTable.Cell>Legacy</NxTable.Cell>
+              <NxTable.Cell>Yes or use alternate</NxTable.Cell>
+              <NxTable.Cell>An alternative page header intended for Sonatype's "nexus branded" products</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>
+                <NxTextLink href="#/pages/nx-system-notice"><NxCode>.nx-system-notice</NxCode></NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Any</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                A globally-visible system notice. Anchored to the viewport, this element appears below the page
+                header in legacy page layouts, and adjacent to the global sidebar along the top of the viewport in
+                Global Sidebar layouts.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>
+                <NxTextLink href="#/pages/nx-system-notice"><NxCode>.nx-system-notice-container</NxCode></NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Any</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                When multiple system notices are desired, wrap them in this class. See the{' '}
+                <NxTextLink href="#/pages/nx-system-notice">
+                  <NxCode>nx-system-notice</NxCode> documentation
+                </NxTextLink>
+                {' '}for details
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>
+                <NxTextLink href="#/pages/NxGlobalSidebar"><NxCode>NxGlobalSidebar</NxCode></NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>Component</NxTable.Cell>
+              <NxTable.Cell>Global Sidebar</NxTable.Cell>
+              <NxTable.Cell>Yes or use alternate</NxTable.Cell>
+              <NxTable.Cell>The global sidebar of "Global Sidebar layouts"</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>
+                <NxTextLink href="#/pages/NxStatefulGlobalSidebar"><NxCode>NxStatefulGlobalSidebar</NxCode></NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>Component</NxTable.Cell>
+              <NxTable.Cell>Global Sidebar</NxTable.Cell>
+              <NxTable.Cell>Yes or use alternate</NxTable.Cell>
+              <NxTable.Cell>
+                A wrapper for <NxCode>NxGlobalSidebar</NxCode> that automatically handles the collapse/expand state.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>
+                <NxTextLink href="#/pages/nx-global-header"><NxCode>nx-global-header</NxCode></NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Global Sidebar</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>The page header for use alongside the global sidebar</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <NxTile>
       <NxTile.Header>
         <NxTile.HeaderTitle>
-          <NxH2>Legacy Page Header Layouts</NxH2>
+          <NxH2>Legacy Page Layouts</NxH2>
         </NxTile.HeaderTitle>
       </NxTile.Header>
       <NxTile.Content>
@@ -65,26 +282,24 @@ const PageLayoutPage = () =>
         </NxP>
         <NxP>
           These legacy layouts support two types of scrolling: page scroll and section scrolling. Typically, a given
-          application will only use one of these modes or the other, globally. Section scrolling, the default, causes
-          the application overall to size to the viewport, with the page header and system notices statically at the
-          top, and the content area and sidebar scrolling if necessary, independently of each other. Page scrolling
+          application will only use one of these modes or the other, globally. Section scrolling (the default) causes
+          the application overall to size to the viewport with the page header and system notices statically at the
+          top, and the content area and sidebar scrolling if necessary independently of each other. Page scrolling
           on the other hand sizes the application overall based on its content, overflowing the viewport if necessary
           and allowing the viewport-level scrollbar to activate in order to scroll the content. In this mode, the page
           header and system notices are "sticky" and remain in their positions relative to the viewport while the
           rest of the content scrolls underneath them. Note that page scrolling is activated via a modifier class on
-          the <NxCode>&lt;html&gt;</NxCode> element: <NxCode>nx-html--page-scrolling</NxCode>. In the examples below
-          you will notice that the page scrolling and section scrolling pairs are identical within the example itself;
-          only the addition of this class name (which is outside of the example proper, unfortunately) distinguishes
-          them.
+          the <NxCode>&lt;html&gt;</NxCode> element: <NxCode>nx-html--page-scrolling</NxCode>. Below, you will notice
+          that each page scrolling example is identical to its section scrolling counterpart.  Only the addition of
+          this class name (which is outside of the example proper, unfortunately) distinguishes them.
         </NxP>
         <NxP>
           Between the two optional elements (the sidebar and the system notices) and the scrolling option, there are
           eight different legacy page layouts. They are each demonstrated below. Note that in all cases, the main
-          content (<NxCode>.nx-page-main</NxCode>) and the sidebar are wrapped in an <NxCode>.nx-page-content</NxCode>)
-          element.
-          This facilitates the max width behavior.
+          content and the sidebar are wrapped in an <NxCode>.nx-page-content</NxCode> element.  This facilitates the
+          max-width behavior.
         </NxP>
-        <NxTable>
+        <NxTable className="gallery-documentation-table">
           <NxTable.Head>
             <NxTable.Row>
               <NxTable.Cell />
@@ -165,15 +380,9 @@ const PageLayoutPage = () =>
         </NxP>
         <NxP>
           Between the three optional elements – the header, system notices, and inner sidebar, there are
-          eight different global sidebar page layouts. They are each demonstrated below. Note that
-          the <NxCode>.nx-page-content</NxCode> element present in the legacy layouts is <em>not</em> present in these
-          layouts since the content width does not need to be constrained aside from the limitations imposed by the
-          viewport. Note that as another option, instead of removing
-          the <NxCode>.nx-page-content</NxCode> element, that element can be given
-          an <NxCode>.nx-page-content--full-width</NxCode> class which will have the same effect. That class is deprecated
-          and only available in order to ease migration.
+          eight different global sidebar page layouts. They are each demonstrated below.
         </NxP>
-        <NxTable>
+        <NxTable className="gallery-documentation-table">
           <NxTable.Head>
             <NxTable.Row>
               <NxTable.Cell />
