@@ -46,17 +46,17 @@ const pageScrollingPages = [
 const PageLayoutExamples = () =>
   <Switch>
     {pageScrollingPages.map(PageComponent =>
-      <Route exact path={`/pageLayouts/pageScrolling/${PageComponent.name}`}>
+      <Route key={PageComponent.name} exact path={`/pageLayouts/pageScrolling/${PageComponent.name}`}>
         <PageComponent />
       </Route>
     )}
     {sectionScrollingPages.map(PageComponent =>
-      <Route exact path={`/pageLayouts/${PageComponent.name}`}>
+      <Route key={PageComponent.name} exact path={`/pageLayouts/${PageComponent.name}`}>
         <SectionScrollingWrapper>
           <PageComponent />
         </SectionScrollingWrapper>
       </Route>
     )}
-  </Switch>
+  </Switch>;
 
 export default PageLayoutExamples;
