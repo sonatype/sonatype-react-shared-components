@@ -5,7 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxTile, NxCode, NxH2, NxTable, NxTextLink, NxH3, NxInfoAlert, NxWarningAlert } from '@sonatype/react-shared-components';
+import { NxP, NxTile, NxCode, NxH2, NxTable, NxTextLink, NxH3, NxInfoAlert, NxWarningAlert }
+  from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -138,8 +139,9 @@ const PageLayoutPage = () =>
                 <NxP>
                   This element is also supported in Global Sidebar page layouts, primarily to aid in migration of
                   applications that are transitioning from the legacy layouts. Note that it should be used
-                  sparingly/temporarily in Global Sidebar page layouts due to the fact that it is <em>in addition</em> to
-                  the actual global sidebar, and thus results in there being two sidebars visible simultaneously.
+                  sparingly/temporarily in Global Sidebar page layouts due to the fact that it
+                  is <em>in addition</em> to the actual global sidebar, and thus results in there being two sidebars
+                  visible simultaneously.
                 </NxP>
               </NxTable.Cell>
             </NxTable.Row>
@@ -368,10 +370,11 @@ const PageLayoutPage = () =>
           In the global sidebar layouts, page content spans the full width of the viewport rather than being constrained
           to 1600px. The global sidebar spans the full height of the viewport. Adjacent to the global sidebar, a
           simpler page header typically runs along the top of the viewport, though it is optional in order to ease
-          migration of existing apps. If system notices are present, they appear above this header (though still adjacent
-          to the global sidebar). Beneath the header is the main content area, and optionally an additional sidebar
-          analogous to the sidebar from the legacy layouts. New pages should generally avoid using this sidebar (since
-          it is in addition to the global sidebar) however it is allowed for the sake of migration of existing apps.
+          migration of existing apps. If system notices are present, they appear above this header (though still
+          adjacent to the global sidebar). Beneath the header is the main content area, and optionally an additional
+          sidebar analogous to the sidebar from the legacy layouts. New pages should generally avoid using this sidebar
+          (since it is in addition to the global sidebar) however it is allowed for the sake of migration of existing
+          apps.
         </NxP>
         <NxP>
           The global sidebar page layouts only support "section scrolling". Specifically, the main content area and
