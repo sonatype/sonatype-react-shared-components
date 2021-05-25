@@ -9,7 +9,7 @@ import * as PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import Close from '../../icons/Close';
-import NxButton from '../NxButton/NxButton';
+import { includesDisabledClass } from '../../util/classUtil';
 
 import './NxCloseButton.scss';
 
@@ -19,7 +19,8 @@ const NxCloseButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLBut
 
       // NOTE: not using NxButton because we don't want the tooltip that icon-only NxButtons require
       return (
-        <button ref={ref}
+        <button aria-disabled={includesDisabledClass(className)}
+                ref={ref}
                 type="button"
                 className={btnClasses}
                 aria-label="Close"
