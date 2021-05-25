@@ -10,22 +10,26 @@ import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxWarningAlert, NxTextLink }
   from '@sonatype/react-shared-components';
 
-import './NxGlobalSidebarPage.scss';
-
-const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw');
+const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw'),
+    NxGlobalSidebarScrollingExample = require('./NxGlobalSidebarScrollingExample.tsx?raw');
 
 export default function NxGlobalSidebarPage() {
   return (
     <>
       <GalleryDescriptionTile>
         <NxP>
-          <NxCode>NxGlobalSidebar</NxCode> is a collapsible page level sidebar. It has two main sections:
+          <NxCode>NxGlobalSidebar</NxCode> is a collapsible page level sidebar. It has three main sections:
         </NxP>
         <ul className="nx-list nx-list--bulleted">
           <li className="nx-list__item">A header which contains branding as well as the open/close toggle</li>
           <li className="nx-list__item">
             A navigation link section which display an icon plus text in the open state and an icon in the closed
             state
+          </li>
+          <li className="nx-list-item">
+            A footer which contains meta-information about the application. Refer to the
+            {' '}<a className="nx-text-link" href="#/Pages/NxGlobalSidebarFooter">NxGlobalSidebarFooter</a> page for its
+            documentation.
           </li>
         </ul>
         <NxP>
@@ -128,6 +132,10 @@ export default function NxGlobalSidebarPage() {
           <NxP>
             <NxCode>NxGlobalSidebarNavigation</NxCode> is a container for navigation links.
           </NxP>
+          <NxWarningAlert>
+            Note that the number of navigation links must be kept to 10 or less in order to ensure that there is enough
+            space for both the navigation and footer areas in smaller viewports.
+          </NxWarningAlert>
           <NxTable>
             <NxTable.Head>
               <NxTable.Row>
@@ -232,6 +240,15 @@ export default function NxGlobalSidebarPage() {
                   expanded view, but will not be displayed in the collapsed view.
                 </NxTable.Cell>
               </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell><NxCode>nx-global-sidebar__other-content</NxCode></NxTable.Cell>
+                <NxTable.Cell>element</NxTable.Cell>
+                <NxTable.Cell>
+                  A simple container for content that will appears below the navigation and above the footer. If you
+                  want this content area to be scrollable (which is very strongly suggested) you should also apply
+                  {' '}<NxCode>.nx-scrollable</NxCode>.
+                </NxTable.Cell>
+              </NxTable.Row>
             </NxTable.Body>
           </NxTable>
         </NxTile.Subsection>
@@ -239,7 +256,7 @@ export default function NxGlobalSidebarPage() {
       <NxTile>
         <NxTile.Header>
           <NxTile.HeaderTitle>
-            <NxH2>Basic Global Sidebar Example with Nav</NxH2>
+            <NxH2>Basic Global Sidebar Example with Nav and Footer</NxH2>
           </NxTile.HeaderTitle>
         </NxTile.Header>
         <NxTile.Content>
@@ -249,6 +266,25 @@ export default function NxGlobalSidebarPage() {
             </a>
           </NxP>
           <CodeExample content={NxGlobalSidebarExample} />
+        </NxTile.Content>
+      </NxTile>
+      <NxTile>
+        <NxTile.Header>
+          <NxTile.HeaderTitle>
+            <NxH2>Global Sidebar Example with Nav, Extra Content, and Footer</NxH2>
+          </NxTile.HeaderTitle>
+        </NxTile.Header>
+        <NxTile.Content>
+          <NxP>
+            This examples shows 10 nav items (the maximum), a middle content area with enough content to trigger
+            scrolling, and all footer options enabled.
+          </NxP>
+          <NxP>
+            <a className="nx-text-link" href="#/NxGlobalSidebarScrollingExample">
+              Click here to navigate to the live example.
+            </a>
+          </NxP>
+          <CodeExample content={NxGlobalSidebarScrollingExample} />
         </NxTile.Content>
       </NxTile>
     </>
