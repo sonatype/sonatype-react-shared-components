@@ -52,7 +52,7 @@ import NxFilterInputPage from './components/NxFilterInput/NxFilterInputPage';
 import NxPolicyThreatSliderPage from './components/NxPolicyThreatSlider/NxPolicyThreatSliderPage';
 import NxDropdownPage from './components/NxDropdown/NxDropdownPage';
 import FormValidationPage from './guidelines/FormValidation/FormValidationPage';
-import PageLayoutPage from './styles/PageLayout/PageLayoutPage.new';
+import PageLayoutPage from './styles/PageLayout/PageLayoutPage';
 import NxStatefulDropdownPage from './components/NxStatefulDropdown/NxStatefulDropdownPage';
 import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCheckboxPage';
 import ContributingPage from './pages/Contributing';
