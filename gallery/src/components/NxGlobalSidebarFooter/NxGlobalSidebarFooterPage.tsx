@@ -87,7 +87,6 @@ export default function NxGlobalSidebarFooterPage() {
                   </NxTextLink>
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>N/A</NxTable.Cell>
                 <NxTable.Cell>
                   NxGlobalSidebarFooter supports any HTML attribute that's normally supported
                   by <code className="nx-code">&lt;div&gt;</code>.
