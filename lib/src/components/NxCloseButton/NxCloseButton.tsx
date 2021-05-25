@@ -15,17 +15,17 @@ import './NxCloseButton.scss';
 
 const NxCloseButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLButtonElement>>(
     function NxCloseButton({ className, ...otherProps }, ref) {
-      const btnClasses = classnames('nx-btn--close', className);
+      const btnClasses = classnames('nx-btn nx-btn--icon-only nx-btn--close', className);
 
+      // NOTE: not using NxButton because we don't want the tooltip that icon-only NxButtons require
       return (
-        <NxButton ref={ref}
-                  type="button"
-                  className={btnClasses}
-                  variant="icon-only"
-                  aria-label="Close"
-                  { ...otherProps }>
+        <button ref={ref}
+                type="button"
+                className={btnClasses}
+                aria-label="Close"
+                { ...otherProps }>
           <Close/>
-        </NxButton>
+        </button>
       );
     }
 );
