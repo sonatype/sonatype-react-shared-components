@@ -5,17 +5,17 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { forwardRef } from 'react';
-import { includes } from 'ramda';
 import classnames from 'classnames';
 
 import {Props, propTypes} from './types';
 import NxTooltip from '../NxTooltip/NxTooltip';
+import { includesDisabledClass } from '../../util/classUtil';
 
 const NxButton = forwardRef<HTMLButtonElement, Props>(
     function NxButton({ variant, className, children, title, ...attrs }, ref) {
       const classNames = classnames(className, 'nx-btn', `nx-btn--${variant || 'secondary'}`),
           btn = (
-            <button aria-disabled={includes('disabled', classNames) ? true : undefined}
+            <button aria-disabled={includesDisabledClass(className)}
                     ref={ref}
                     className={classNames}
                     {...attrs}>
