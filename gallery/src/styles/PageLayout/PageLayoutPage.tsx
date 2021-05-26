@@ -291,14 +291,14 @@ const PageLayoutPage = () =>
           and allowing the viewport-level scrollbar to activate in order to scroll the content. In this mode, the page
           header and system notices are "sticky" and remain in their positions relative to the viewport while the
           rest of the content scrolls underneath them. Note that page scrolling is activated via a modifier class on
-          the <NxCode>&lt;html&gt;</NxCode> element: <NxCode>nx-html--page-scrolling</NxCode>. Below, you will notice
-          that each page scrolling example is identical to its section scrolling counterpart.  Only the addition of
-          this class name (which is outside of the example proper, unfortunately) distinguishes them.
+          the <NxCode>&lt;html&gt;</NxCode> element: <NxCode>nx-html--page-scrolling</NxCode>. In the examples below
+          you will notice that each page scrolling example is identical to its section scrolling counterpart. Only
+          the addition of this class name (which is outside of the example proper, unfortunately) distinguishes them.
         </NxP>
         <NxP>
           Between the two optional elements (the sidebar and the system notices) and the scrolling option, there are
-          eight different legacy page layouts. They are each demonstrated below. Note that in all cases, the main
-          content and the sidebar are wrapped in an <NxCode>.nx-page-content</NxCode> element.  This facilitates the
+          eight different legacy page layouts. They are each demonstrated below. Note that in all cases the main
+          content and the sidebar are wrapped in an <NxCode>.nx-page-content</NxCode> element. This facilitates the
           max-width behavior.
         </NxP>
         <NxTable className="gallery-documentation-table">
@@ -368,21 +368,21 @@ const PageLayoutPage = () =>
           Recent Sonatype application designs have moved from having a global page header to having a global sidebar.
           This calls for a completely separate set of layouts using some of the same components as the legacy layouts.
           In the global sidebar layouts, page content spans the full width of the viewport rather than being constrained
-          to 1600px. The global sidebar spans the full height of the viewport. Adjacent to the global sidebar, a
+          to 1600px. The global sidebar spans the full height of the viewport. Adjacent to the global sidebar a
           simpler page header typically runs along the top of the viewport, though it is optional in order to ease
-          migration of existing apps. If system notices are present, they appear above this header (though still
-          adjacent to the global sidebar). Beneath the header is the main content area, and optionally an additional
+          migration of existing apps. If system notices are present they appear above this header (though still
+          adjacent to the global sidebar). Beneath the header is the main content area and optionally an additional
           sidebar analogous to the sidebar from the legacy layouts. New pages should generally avoid using this sidebar
           (since it is in addition to the global sidebar) however it is allowed for the sake of migration of existing
           apps.
         </NxP>
         <NxP>
-          The global sidebar page layouts only support "section scrolling". Specifically, the main content area and
+          The global sidebar page layouts only support "section scrolling". Specifically the main content area and
           the non-global sidebar may scroll independently of each other while all other parts of the layout stay static
           to the viewport.
         </NxP>
         <NxP>
-          Between the three optional elements – the header, system notices, and inner sidebar, there are
+          Between the three optional elements – the header, system notices, and inner sidebar – there are
           eight different global sidebar page layouts. They are each demonstrated below.
         </NxP>
         <NxTable className="gallery-documentation-table">
