@@ -107,6 +107,7 @@ import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
 import SelectableColorsPage from './styles/SelectableColors/SelectableColorsPage';
 import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTilePage';
 import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
+import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -133,6 +134,7 @@ const pageConfig: PageConfig = {
     NxFormGroup: NxFormGroupPage,
     NxGlobalSidebar: NxGlobalSidebarPage,
     NxStatefulGlobalSidebar: NxStatefulGlobalSidebarPage,
+    NxGlobalSidebarFooter: NxGlobalSidebarFooterPage,
     NxLoadError: NxLoadErrorPage,
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,

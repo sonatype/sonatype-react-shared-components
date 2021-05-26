@@ -11,6 +11,7 @@
 $nx-global-sidebar-width-open: 250px;
 $nx-global-sidebar-width-closed: 72px;
 $nx-global-sidebar-logo-height: 34px;
+$nx-global-sidebar-left-right-spacing: var(--nx-spacing-6x);
 
 $nx-global-sidebar-text-color: $nx-white;
 $nx-global-sidebar-background-color: $nx-blue-1000;
@@ -32,10 +33,10 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   display: flex;
   flex-direction: column;
   grid-area: global-sidebar;
-  padding: var(--nx-spacing-8x) var(--nx-spacing-6x) var(--nx-spacing-6x) var(--nx-spacing-6x);
+  padding: var(--nx-spacing-8x) 0 var(--nx-spacing-12x) 0;
   width: $nx-global-sidebar-width-open;
 
-  .nx-text-link {
+  .nx-text-link, .nx-tree-view__trigger, .nx-tree-view__child {
     color: $nx-global-sidebar-text-color;
   }
 }
@@ -45,6 +46,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   display: flex;
   height: $nx-global-sidebar-logo-height;
   margin-bottom: var(--nx-spacing-8x);
+  padding: 0 $nx-global-sidebar-left-right-spacing;
 }
 
 .nx-global-sidebar__toggle {
@@ -80,7 +82,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 .nx-global-sidebar__navigation {
   border-bottom: 1px solid $nx-global-sidebar-separator-color;
   flex: none;
-  margin: 0 calc(0px - var(--nx-spacing-6x)) var(--nx-spacing-4x) calc(0px - var(--nx-spacing-6x));
+  margin: 0;
   padding-bottom: var(--nx-spacing-12x);
 }
 
@@ -90,7 +92,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 
   border: 1px solid transparent;
   display: block;
-  padding: var(--nx-spacing-base) var(--nx-spacing-6x);
+  padding: var(--nx-spacing-base) $nx-global-sidebar-left-right-spacing;
 
   .nx-icon {
     margin: 0;
@@ -134,6 +136,12 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
     display: none;
   }
 
+  // used for the footer - hidden content still takes up space when sidebar is collapsed
+  .nx-global-sidebar__hide-when-collapsed {
+    visibility: hidden;
+    white-space: nowrap;
+  }
+
   .nx-global-sidebar__header {
     justify-content: center;
   }
@@ -147,4 +155,59 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
     display: inline-block;
     visibility: hidden;
   }
+}
+
+.nx-global-sidebar__other-content {
+  @include container-vertical;
+
+  flex-grow: 1;
+  padding: var(--nx-spacing-4x) $nx-global-sidebar-left-right-spacing;
+  max-height: unset;
+
+  + .nx-global-sidebar__footer {
+    border-top: 1px solid $nx-global-sidebar-separator-color;
+    margin-top: 0;
+  }
+}
+
+.nx-global-sidebar__footer {
+  @include container-vertical;
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  padding: var(--nx-spacing-12x) $nx-global-sidebar-left-right-spacing 0 $nx-global-sidebar-left-right-spacing;
+  text-align: center;
+
+  &:empty {
+    padding-top: 0;
+  }
+}
+
+.nx-global-sidebar__support {
+  margin-bottom: var(--nx-spacing-12x);
+
+  .nx-text-link {
+    align-items: center;
+    display: flex;
+  }
+}
+
+.nx-global-sidebar__support-text {
+  font-size: var(--nx-font-size-s);
+}
+
+.nx-global-sidebar__release {
+  font-size: var(--nx-font-size-xs);
+  margin-bottom: var(--nx-spacing-8x);
+}
+
+.nx-global-sidebar__product-name {
+  font-size: var(--nx-font-size-xs);
+  margin-bottom: var(--nx-spacing-2x);
+}
+
+.nx-global-sidebar__created-by {
+  font-size: var(--nx-font-size-xs);
 }
