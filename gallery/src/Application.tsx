@@ -21,11 +21,14 @@ import Home from './pages/Home';
 import handleQueryParams from './handleQueryParams';
 
 import NxGlobalSidebarExample from './components/NxGlobalSidebar/NxGlobalSidebarExample';
+import NxGlobalSidebarScrollingExample from './components/NxGlobalSidebar/NxGlobalSidebarScrollingExample';
 import NxStatefulGlobalSidebarExample from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarExample';
 import NxLoadWrapperPageLevelExample from './components/NxLoadWrapper/NxLoadWrapperPageLevelExample';
 import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExample';
 import NxViewportSizedExpandingExample
   from './styles/NxViewportSized/NxViewportSizedExpandingExample';
+import NxViewportSizedAdjacentExample
+  from './styles/NxViewportSized/NxViewportSizedAdjacentExample';
 import SectionScrollingWrapper from './styles/NxViewportSized/SectionScrollingWrapper';
 import NxGlobalHeaderFullExample from './styles/NxGlobalHeader/NxGlobalHeaderFullExample';
 import NxGlobalHeaderNoBackButtonExample from './styles/NxGlobalHeader/NxGlobalHeaderNoBackButtonExample';
@@ -34,6 +37,11 @@ import NxGlobalHeaderEmptyExample from './styles/NxGlobalHeader/NxGlobalHeaderEm
 import NxSystemNoticeGlobalSidebarExample from './styles/NxSystemNotice/NxSystemNoticeGlobalSidebarExample';
 import NxSystemNoticeTraditionalPageExample from './styles/NxSystemNotice/NxSystemNoticeTraditionalPageExample';
 import NxSystemNoticeMultipleExample from './styles/NxSystemNotice/NxSystemNoticeMultipleExample';
+import NxGlobalSidebarFooterExample from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterExample';
+import NxGlobalSidebarFooterMinimalExample
+  from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterMinimalExample';
+import NxGlobalSidebarFooterEmptyExample
+  from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterEmptyExample';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
@@ -74,6 +82,11 @@ function Application() {
             <NxGlobalSidebarExample />
           </SectionScrollingWrapper>
         </Route>
+        <Route exact path="/NxGlobalSidebarScrollingExample">
+          <SectionScrollingWrapper>
+            <NxGlobalSidebarScrollingExample />
+          </SectionScrollingWrapper>
+        </Route>
         <Route exact path="/NxStatefulGlobalSidebarExample">
           <SectionScrollingWrapper>
             <NxStatefulGlobalSidebarExample />
@@ -112,6 +125,21 @@ function Application() {
             <NxSystemNoticeMultipleExample />
           </SectionScrollingWrapper>
         </Route>
+        <Route exact path="/NxGlobalSidebarFooterExample">
+          <SectionScrollingWrapper>
+            <NxGlobalSidebarFooterExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxGlobalSidebarFooterMinimalExample">
+          <SectionScrollingWrapper>
+            <NxGlobalSidebarFooterMinimalExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxGlobalSidebarFooterEmptyExample">
+          <SectionScrollingWrapper>
+            <NxGlobalSidebarFooterEmptyExample />
+          </SectionScrollingWrapper>
+        </Route>
         <Route>
           <PageHeader />
           <div className="nx-page-content">
@@ -136,6 +164,11 @@ function Application() {
                   <Route exact path="/NxViewportSizedExpandingExample">
                     <SectionScrollingWrapper>
                       <NxViewportSizedExpandingExample />
+                    </SectionScrollingWrapper>
+                  </Route>
+                  <Route exact path="/NxViewportSizedAdjacentExample">
+                    <SectionScrollingWrapper>
+                      <NxViewportSizedAdjacentExample />
                     </SectionScrollingWrapper>
                   </Route>
                   <Redirect to="/" />

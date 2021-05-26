@@ -53,3 +53,19 @@ export const nxGlobalSidebarNavigationLinkPropTypes: ValidationMap<NxGlobalSideb
   text: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired
 };
+
+export interface NxGlobalSidebarFooterProps extends HTMLAttributes<HTMLDivElement> {
+  supportText?: string | null;
+  supportLink?: string | null;
+  releaseText?: string | null;
+  productTagLine?: string | null;
+  showCreatedBy?: boolean | null;
+}
+
+export const nxGlobalSidebarFooterPropTypes: ValidationMap<NxGlobalSidebarFooterProps> = {
+  supportText: PropTypes.string,
+  supportLink: PropTypes.string,
+  releaseText: PropTypes.string,
+  productTagLine: PropTypes.string,
+  showCreatedBy: PropTypes.bool
+};

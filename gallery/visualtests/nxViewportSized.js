@@ -14,4 +14,9 @@ describe('nx-viewport-sized', function() {
     await browser.url('#/NxViewportSizedExpandingExample');
     await browser.eyesSnapshot(null);
   });
+
+  it('looks right with adjacent scrollables content', async function() {
+    await browser.url('#/NxViewportSizedAdjacentExample');
+    await browser.eyesSnapshot(null);
+  });
 });
