@@ -12,7 +12,8 @@ import NxSegmentedButtonPrimaryExample from './NxSegmentedButtonPrimaryExample';
 import NxSegmentedButtonSecondaryExample from './NxSegmentedButtonSecondaryExample';
 import NxSegmentedButtonTertiaryExample from './NxSegmentedButtonTertiaryExample';
 import NxSegmentedButtonCloseHandlerExample from './NxSegmentedButtonCloseHandlerExample';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxTextLink }
+  from '@sonatype/react-shared-components';
 
 const nxSegmentedButtonPrimaryCode = require('./NxSegmentedButtonPrimaryExample?raw'),
     nxSegmentedButtonSecondaryCode = require('./NxSegmentedButtonSecondaryExample?raw'),
@@ -131,11 +132,9 @@ export default function NxSegmentedButtonPage() {
             <NxTableRow>
               <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
               <NxTableCell>
-                <a target="_blank"
-                   rel="noopener"
-                   href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                   HTML div Attributes
-                </a>
+                </NxTextLink>
               </NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>N/A</NxTableCell>

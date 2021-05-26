@@ -14,7 +14,8 @@ import NxButtonTertiaryExample from './NxButtonTertiaryExample';
 import NxButtonErrorExample from './NxButtonErrorExample';
 import NxButtonIconExample from './NxButtonIconExample';
 import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxCode } from '@sonatype/react-shared-components';
+import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxCode, NxTextLink }
+  from '@sonatype/react-shared-components';
 
 const NxButtonDefaultCode = require('./NxButtonDefaultExample?raw'),
     nxButtonPrimaryCode = require('./NxButtonPrimaryExample?raw'),
@@ -65,11 +66,9 @@ export default function NxButtonPage() {
             <NxTableRow>
               <NxTableCell>HTML <NxCode>&lt;button&gt;</NxCode> Attributes</NxTableCell>
               <NxTableCell>
-                <a target="_blank"
-                   rel="noopener"
-                   href="https://developer.mozilla.org/en/docs/Web/HTML/Element/button">
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/button">
                   HTML button Attributes
-                </a>
+                </NxTextLink>
               </NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell></NxTableCell>

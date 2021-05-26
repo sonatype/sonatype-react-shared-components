@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert, NxCode, NxP } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxModalSimpleExample from './NxModalSimpleExample';
@@ -78,11 +78,9 @@ export default function NxModalPage() {
             <tr className="nx-table-row">
               <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
               <td className="nx-cell">
-                <a target="_blank"
-                   rel="noopener"
-                   href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
+                <NxTextLink external href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
                   HTML Attributes
-                </a>
+                </NxTextLink>
               </td>
               <td className="nx-cell">No</td>
               <td className="nx-cell"></td>

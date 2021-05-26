@@ -46,7 +46,7 @@ export default function NxTabsPage() {
             It can have <code className="nx-code">&lt;NxTabList&gt;</code> and
             {' '}<code className="nx-code">&lt;NxTabPanel&gt;</code> components as children.
           </p>
-          <NxTable className="nx-table--gallery-props">
+          <NxTable>
             <NxTableHead>
               <NxTableRow>
                 <NxTableCell>Prop</NxTableCell>
@@ -84,7 +84,7 @@ export default function NxTabsPage() {
             The parent container for the <code className="nx-code">&lt;NxTab&gt;</code> components.
             Passes through all attributes to an underlying <code className="nx-code">ul</code> element.
           </p>
-          <NxTable className="nx-table--gallery-props">
+          <NxTable>
             <NxTableHead>
               <NxTableRow>
                 <NxTableCell>Prop</NxTableCell>
@@ -123,7 +123,7 @@ export default function NxTabsPage() {
             There should be one of these for each <code className="nx-code">NxTabPanel</code> component.
             Passes through all attributes to an underlying li element.
           </p>
-          <NxTable className="nx-table--gallery-props">
+          <NxTable>
             <NxTableHead>
               <NxTableRow>
                 <NxTableCell>Prop</NxTableCell>
@@ -162,7 +162,7 @@ export default function NxTabsPage() {
             There should be one of these for each <code className="nx-code">NxTab</code> component.
             Passes through all attributes to an underlying div element.
           </p>
-          <NxTable className="nx-table--gallery-props">
+          <NxTable>
             <NxTableHead>
               <NxTableRow>
                 <NxTableCell>Prop</NxTableCell>
