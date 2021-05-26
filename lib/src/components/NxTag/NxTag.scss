@@ -7,8 +7,8 @@
  @import '../../scss-shared/nx-text-helpers';
  @import '../../scss-shared/nx-container-helpers';
 
-$nx-tag-default-dark: #bbc5f6;
-$nx-tag-default-light: #e7eaf9;
+$nx-tag-default-dark: var(--nx-swatch-indigo-80);
+$nx-tag-default-light: var(--nx-swatch-indigo-95);
 
 .nx-tag {
   @include semi-bold;
