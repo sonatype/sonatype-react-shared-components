@@ -367,7 +367,7 @@ const PageLayoutPage = () =>
         <NxP>
           Recent Sonatype application designs have moved from having a global page header to having a global sidebar.
           This calls for a completely separate set of layouts using some of the same components as the legacy layouts.
-          In the global sidebar layouts, page content spans the full width of the viewport rather than being constrained
+          In the global sidebar layouts page content spans the full width of the viewport rather than being constrained
           to 1600px. The global sidebar spans the full height of the viewport. Adjacent to the global sidebar a
           simpler page header typically runs along the top of the viewport, though it is optional in order to ease
           migration of existing apps. If system notices are present they appear above this header (though still
