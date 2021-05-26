@@ -40,7 +40,7 @@ export default function GlobalSidebarHeaderSidebarLayout() {
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxGlobalHeader>
-        <NxBackButton href="/page/Page%20Layout" />
+        <NxBackButton href="#/pages/Page%20Layout" />
       </NxGlobalHeader>
       <NxPageSidebar>
         <NxP>

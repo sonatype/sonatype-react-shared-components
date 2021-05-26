@@ -41,7 +41,7 @@ export default function GlobalSidebarHeaderSystemNoticeLayout() {
       </NxStatefulGlobalSidebar>
       <NxSystemNotice>This is a System Notice</NxSystemNotice>
       <NxGlobalHeader>
-        <NxBackButton href="/page/Page%20Layout" />
+        <NxBackButton href="#/pages/Page%20Layout" />
       </NxGlobalHeader>
       <NxPageMain>
         <NxTile>
