@@ -12,8 +12,8 @@
   @include container-vertical;
 
   align-items: first baseline;
-  background-color: $nx-white;
-  border: 1px solid $nx-grey-1100;
+  background-color: var(--nx-swatch-white);
+  border: 1px solid var(--nx-swatch-grey-05);
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   display: flex;
@@ -50,37 +50,37 @@
 }
 
 .nx-alert--warning {
-  background-color: $nx-orange-50;
-  border-color: $nx-orange-900;
+  background-color: var(--nx-swatch-orange-90);
+  border-color: var(--nx-swatch-orange-45);
 
   > .nx-icon {
-    color: $nx-orange-900;
+    color: var(--nx-swatch-orange-45);
   }
 }
 
 .nx-alert--error {
-  background-color: $nx-red-25;
-  border-color: $nx-red-800;
+  background-color: var(--nx-swatch-red-95);
+  border-color: var(--nx-swatch-red-45);
 
   > .nx-icon {
-    color: $nx-red-800;
+    color: var(--nx-swatch-red-45);
   }
 }
 
 .nx-alert--info {
-  background-color: $nx-blue-50;
-  border-color: $nx-blue-600;
+  background-color: var(--nx-swatch-blue-95);
+  border-color: var(--nx-swatch-blue-40);
 
   > .nx-icon {
-    color: $nx-blue-600;
+    color: var(--nx-swatch-blue-40);
   }
 }
 
 .nx-alert--success {
-  background-color: $nx-green-5;
-  border-color: $nx-green-700;
+  background-color: var(--nx-swatch-green-95);
+  border-color: var(--nx-swatch-green-30);
 
   > .nx-icon {
-    color: $nx-green-700;
+    color: var(--nx-swatch-green-30);
   }
 }

@@ -28,7 +28,7 @@
   &.invalid {
     &:focus-within, &:hover {
       .nx-text-input__box {
-        border-color: $nx-red-800;
+        border-color: var(--nx-swatch-red-45);
       }
     }
   }
@@ -36,7 +36,7 @@
   &.valid {
     &:focus-within, &:hover {
       .nx-text-input__box {
-        border-color: $nx-green-700;
+        border-color: var(--nx-swatch-green-30);
       }
     }
   }
@@ -63,7 +63,7 @@
   @include container-horizontal;
 
   align-items: center;
-  background-color: $nx-white;
+  background-color: var(--nx-swatch-white);
   border: 1px solid var(--nx-color-form-element-border);
   border-radius: var(--nx-border-radius);
   display: flex;
@@ -94,7 +94,7 @@
   }
 
   &::placeholder {
-    color: $nx-grey-500;
+    color: var(--nx-swatch-grey-50);
   }
 }
 

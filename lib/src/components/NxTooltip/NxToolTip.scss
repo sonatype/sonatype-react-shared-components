@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-colors';
 @import '../../scss-shared/nx-text-helpers';
 
 .nx-tooltip {
@@ -13,7 +12,7 @@
     @include semi-bold;
 
     box-sizing: border-box;
-    background-color: $nx-grey-1000;
+    background-color: var(--nx-swatch-grey-05);
     border-radius: var(--nx-border-radius);
     font-size: var(--nx-font-size-s);
     line-height: var(--nx-line-height);

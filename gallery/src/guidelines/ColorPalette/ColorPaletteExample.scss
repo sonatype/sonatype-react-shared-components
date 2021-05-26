@@ -6,22 +6,28 @@
  */
 @import '~@sonatype/react-shared-components/scss-shared/nx-text-helpers';
 
+.gallery-card-swatch-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .gallery-card-swatch {
   display: flex;
   flex-grow: 1;
-  max-width: 380px;
+  max-width: unset;
 
   .nx-h3 {
     text-transform: capitalize;
   }
 
   .nx-card__content {
-    align-items: stretch;
-    gap: 0;
+    display: grid;
+    gap: 0 var(--nx-spacing-6x);
+    grid-template-columns: auto minmax(min-content, 1fr) 1fr;
+    align-content: start;
 
-    // override Safari rule from .nx-card
     > .gallery-swatch {
-      margin-bottom: 0;
+      display: contents;
     }
   }
 }
@@ -34,21 +40,17 @@
 }
 
 .gallery-swatch__thumb {
+  --shadow-color: hsla(var(--nx-swatch-grey-hs), 10%, 10%);
+  box-shadow: 0 0 3px 1px var(--shadow-color);
   flex-shrink: 0;
   height: 64px;
-  margin-right: var(--nx-spacing-6x);
   width: 64px;
 }
 
 .gallery-swatch__variable, .gallery-swatch__hex {
-  @include semi-bold();
-}
-
-.gallery-swatch__variable {
-  flex-grow: 1;
+  justify-self: center;
 }
 
 .gallery-swatch__hex {
-  flex-basis: 7ch;
-  margin-right: var(--nx-spacing-6x);
+  white-space: normal;
 }

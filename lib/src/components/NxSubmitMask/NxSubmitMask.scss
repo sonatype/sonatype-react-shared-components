@@ -33,6 +33,6 @@
 
 .nx-submit-mask--success {
   .nx-submit-mask__message {
-    color: $nx-green-700;
+    color: var(--nx-swatch-green-30);
   }
 }

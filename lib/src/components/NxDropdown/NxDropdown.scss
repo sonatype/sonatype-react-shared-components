@@ -35,7 +35,7 @@ $nx-dropdown-width: 250px;
 
   .nx-icon {
     align-self: center;
-    color: $nx-black;
+    color: var(--nx-swatch-black);
   }
 
   &.disabled {
@@ -45,14 +45,14 @@ $nx-dropdown-width: 250px;
   }
 
   &.open {
-    border-color: $nx-blue-600;
+    border-color: var(--nx-swatch-blue-40);
   }
 }
 
 .nx-dropdown-menu {
   @include container-vertical();
 
-  background: $nx-white;
+  background: var(--nx-swatch-white);
   border-radius: var(--nx-border-radius);
   box-shadow: 0 2px 12px 0 rgba(74, 77, 113, 0.2),
               0 1px 2px 0 rgba(91, 95, 141, 0.2),
@@ -131,7 +131,7 @@ $nx-dropdown-width: 250px;
 }
 
 .nx-dropdown--divider {
-  background-color: $nx-grey-300;
+  background-color: var(--nx-swatch-grey-70);
   height: 1px;
   margin: 9px 1px;
 }

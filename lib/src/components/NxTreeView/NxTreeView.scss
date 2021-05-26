@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-colors';
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
 
@@ -40,7 +39,7 @@ $twisty-proportion-difference: 2px;
 
 .nx-tree-view--disabled {
   .nx-tree-view__trigger, .nx-tree-view__child {
-    color: $nx-grey-300;
+    color: var(--nx-swatch-grey-70);
     cursor: default;
   }
 }
@@ -78,7 +77,7 @@ $twisty-proportion-difference: 2px;
     outline: none;
 
     .nx-tree-view__twisty {
-      filter: drop-shadow(0 0 3px rgba(var(--nx-color-interactive-border-focus), 0.3));
+      filter: drop-shadow(var(--nx-drop-shadow-focus));
       stroke: var(--nx-color-interactive-border-focus);
 
       // This is intepreted in the SVG's coordinate space. The svg has a viewbox height of 512 and an on-page
@@ -158,11 +157,11 @@ button, a {
     width: 100%;
 
     &:hover {
-      background-color: $nx-grey-100;
+      background-color: var(--nx-swatch-indigo-95);
     }
 
     &.selected {
-      background-color: $nx-blue-200;
+      background-color: var(--nx-swatch-blue-90);
       font-weight: 600;
     }
 
@@ -179,12 +178,12 @@ button, a {
   button, a {
     &.nx-tree-view__child {
       &:hover {
-        background-color: $nx-indigo-100;
+        background-color: var(--nx-swatch-indigo-90);
       }
 
       &.selected {
-        background-color: $nx-blue-1000;
-        color: $nx-white;
+        background-color: var(--nx-swatch-blue-10);
+        color: var(--nx-swatch-white);
       }
     }
   }

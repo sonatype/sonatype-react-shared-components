@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-colors';
 
 .nx-checkbox__box {
   border-radius: 2px;
@@ -14,7 +13,7 @@
   width: 16px;
 
   .fa-check {
-    color: $nx-white;
+    color: var(--nx-swatch-white);
     font-size: var(--nx-font-size-s);
     vertical-align: 4px;
   }

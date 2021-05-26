@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-colors';
 
 .nx-segmented-btn {
   display: inline-flex;
@@ -54,10 +53,10 @@
 
 .nx-btn--primary:not([disabled]) {
   &.nx-segmented-btn__main-btn {
-    border-right-color: $nx-blue-400;
+    border-right-color: var(--nx-swatch-blue-60);
 
     &:hover {
-      border-right-color: $nx-blue-900;
+      border-right-color: var(--nx-swatch-blue-10);
     }
 
     &:focus {
@@ -77,10 +76,10 @@
   }
 
   &.nx-segmented-btn__dropdown-btn {
-    border-left-color: $nx-blue-400;
+    border-left-color: var(--nx-swatch-blue-60);
 
     &:hover {
-      border-left-color: $nx-blue-900;
+      border-left-color: var(--nx-swatch-blue-10);
     }
 
     &:focus {
@@ -103,15 +102,15 @@
 .nx-segmented-btn--open {
   > .nx-segmented-btn__dropdown-btn {
     &.nx-btn--primary {
-      background-color: $nx-blue-400;
+      background-color: var(--nx-swatch-blue-60);
     }
 
     &.nx-btn--secondary {
-      background-color: $nx-blue-100;
+      background-color: var(--nx-swatch-blue-90);
     }
 
     &.nx-btn--tertiary {
-      background-color: $nx-grey-100;
+      background-color: var(--nx-swatch-grey-90);
     }
   }
 }
