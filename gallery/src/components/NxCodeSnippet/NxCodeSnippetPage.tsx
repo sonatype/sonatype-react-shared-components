@@ -11,7 +11,8 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxCodeSnippetExample from './NxCodeSnippetExample';
 import NxCodeSnippetComplexExample from './NxCodeSnippetComplexExample';
 
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxTextLink }
+  from '@sonatype/react-shared-components';
 
 const nxCodeSnippetCode = require('./NxCodeSnippetExample?raw'),
     nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw');
@@ -67,11 +68,9 @@ export default function NxCodeSnippetPage() {
                 A callback which fires after the copy initiated by the Copy to Clipboard button completes.
                 Note that copies initiated in other ways (e.g. Ctrl-C) do not trigger this callback.
                 See also the{' '}
-                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/copy_event"
-                   target="_blank"
-                   rel="noopener">
+                <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/API/Element/copy_event">
                   native copy event
-                </a>
+                </NxTextLink>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
