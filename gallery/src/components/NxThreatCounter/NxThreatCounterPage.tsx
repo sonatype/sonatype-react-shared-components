@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxThreatCounterExample from './NxThreatCounterExample';
 import NxThreatCounterColumnExample from './NxThreatCounterColumnExample';
@@ -68,6 +69,19 @@ const NxThreatCounterPage = () =>
             <td className="nx-cell">
               Sets the layout of the counters. If no value is provided then "row" layout will be specified. The other
               options are <code className="nx-code">column</code> and <code className="nx-code">grid</code>.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">HTML <code className="nx-code">&lt;dl&gt;</code> Attributes</td>
+            <td className="nx-cell">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/dl">
+                HTML dl Attributes
+              </NxTextLink>
+            </td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              <code className="nx-code">NxThreatCounter</code> supports any HTML attribute that's normally
+              supported by <code className="nx-code">&lt;dl&gt;</code> elements.
             </td>
           </tr>
         </tbody>

@@ -8,7 +8,7 @@ import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
-import { NxTable, NxTile, NxH3, NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxTable, NxTile, NxH3, NxP, NxCode, NxTextLink } from '@sonatype/react-shared-components';
 
 import NxTableSimpleExample from './NxTableSimpleExample';
 import NxTableClickableExample from './NxTableClickableExample';
@@ -61,9 +61,33 @@ export default function NxTablePage() {
           <p className="nx-p">
             The top-level component to use when displaying tables of data.
             It can have <code className="nx-code">NxTable.Head</code> and
-            {' '}<code className="nx-code">NxTable.Body</code> components as children. It can receive any attribute
-            that would be valid on a <code className="nx-code">&lt;table&gt;</code>.
+            {' '}<code className="nx-code">NxTable.Body</code> components as children.
           </p>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Prop</NxTable.Cell>
+                <NxTable.Cell>Type</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Details</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>HTML <code className="nx-code">&lt;table&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/table">
+                    HTML table Attributes
+                  </NxTextLink>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  <code className="nx-code">NxTable</code> supports any HTML attribute that's normally
+                  supported by <code className="nx-code">&lt;table&gt;</code>.
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
+          </NxTable>
         </section>
 
         <section className="nx-tile-subsection">
@@ -72,9 +96,33 @@ export default function NxTablePage() {
           </header>
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;thead&gt;</code> element.
-            The <code className="nx-code">NxTable.Row</code> component is the only valid child. This component can
-            receive any attribute that would be valid on a <code className="nx-code">&lt;thead&gt;</code>.
+            The <code className="nx-code">NxTable.Row</code> component is the only valid child.
           </p>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Prop</NxTable.Cell>
+                <NxTable.Cell>Type</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Details</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>HTML <code className="nx-code">&lt;thead&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/thead">
+                    HTML thead Attributes
+                  </NxTextLink>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  <code className="nx-code">NxTable.Head</code> supports any HTML attribute that's normally
+                  supported by <code className="nx-code">&lt;thead&gt;</code>.
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
+          </NxTable>
         </section>
 
         <section className="nx-tile-subsection">
@@ -83,9 +131,7 @@ export default function NxTablePage() {
           </header>
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;tbody&gt;</code> element.
-            It should have <code className="nx-code">NxTable.Row</code> for children. This component can
-            receive any attribute that would be valid on a <code className="nx-code">&lt;tbody&gt;</code> as well as the
-            following props:
+            It should have <code className="nx-code">NxTable.Row</code> for children.
           </p>
           <NxTable>
             <NxTable.Head>
@@ -129,6 +175,19 @@ export default function NxTablePage() {
                   In essence, the best practice is to specify this prop on all tables which <em>may</em> be empty.
                 </NxTable.Cell>
               </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>HTML <code className="nx-code">&lt;tbody&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/tbody">
+                    HTML tbody Attributes
+                  </NxTextLink>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  <code className="nx-code">NxTable.Body</code> supports any HTML attribute that's normally
+                  supported by <code className="nx-code">&lt;tbody&gt;</code>.
+                </NxTable.Cell>
+              </NxTable.Row>
             </NxTable.Body>
           </NxTable>
         </section>
@@ -139,9 +198,7 @@ export default function NxTablePage() {
           </header>
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;tr&gt;</code> element.
-            It should have <code className="nx-code">NxTable.Cell</code> for children. This component can
-            receive any attribute that would be valid on a <code className="nx-code">&lt;tr&gt;</code> as well as the
-            following props:
+            It should have <code className="nx-code">NxTable.Cell</code> for children.
           </p>
           <NxTable>
             <NxTable.Head>
@@ -183,6 +240,19 @@ export default function NxTablePage() {
                   content of all cells in the row will be used as the label.
                 </NxTable.Cell>
               </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>HTML <code className="nx-code">&lt;tr&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/tr">
+                    HTML tr Attributes
+                  </NxTextLink>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  <code className="nx-code">NxTable.Row</code> supports any HTML attribute that's normally
+                  supported by <code className="nx-code">&lt;tr&gt;</code>.
+                </NxTable.Cell>
+              </NxTable.Row>
             </NxTable.Body>
           </NxTable>
         </section>
@@ -193,9 +263,7 @@ export default function NxTablePage() {
           </header>
           <p className="nx-p">
             Equivalent to the <code className="nx-code">&lt;th&gt;</code> or
-            {' '}<code className="nx-code">&lt;td&gt;</code> element. This component can
-            receive any attribute that would be valid on a <code className="nx-code">&lt;td&gt;</code> as well as the
-            following:
+            {' '}<code className="nx-code">&lt;td&gt;</code> element.
           </p>
 
           <NxTable>
@@ -270,6 +338,19 @@ export default function NxTablePage() {
                   will be wrapped in a button for accessibility purposes, with the button's accessible name set by
                   the row's <NxCode>clickAccessibleLabel</NxCode> prop or generated from the text contents of the
                   rest of the row.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>HTML <code className="nx-code">&lt;td&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/td">
+                    HTML td Attributes
+                  </NxTextLink>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  <code className="nx-code">NxTable.Cell</code> supports any HTML attribute that's normally
+                  supported by <code className="nx-code">&lt;td&gt;</code>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>

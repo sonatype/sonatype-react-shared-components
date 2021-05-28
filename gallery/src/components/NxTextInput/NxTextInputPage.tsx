@@ -15,6 +15,7 @@ import NxTextInputTextAreaExample from './NxTextInputTextAreaExample';
 import NxTextInputTextAreaValidationExample from './NxTextInputTextAreaValidationExample';
 import NxTextInputLongExample from './NxTextInputLongExample';
 import NxTextInputDisabledExample from './NxTextInputDisabledExample';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 const simpleSourceCode = require('./NxTextInputSimpleExample?raw');
 const validationSourceCode = require('./NxTextInputValidationExample?raw');
@@ -104,36 +105,34 @@ const NxTextInputPage = () =>
               <p className="nx-p">
                 The value given to the callback will be that of the key name, as described in the spec
                 for{' '}
-                <a target="_blank"
-                   rel="noopener"
-                   href="https://www.w3.org/TR/uievents-key/#named-key-attribute-values">
+                <NxTextLink external href="https://www.w3.org/TR/uievents-key/#named-key-attribute-values">
                   named keys
-                </a>
+                </NxTextLink>
               </p>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">Input HTML Attributes | Textarea HTML Attributes</td>
             <td className="nx-cell">
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
+              HTML <code className="nx-code">&lt;input&gt;</code> Attributes |
+              HTML <code className="nx-code">&lt;textarea&gt;</code> Attributes
+            </td>
+            <td className="nx-cell">
+              <NxTextLink external href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
                 HTML Attributes
-              </a>
+              </NxTextLink>
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              NxTextInput supports any html attribute that's normally supported by either HTML Inputs or HTML
-              Textareas. The only notable exceptions are:
+              NxTextInput supports any html attribute that's normally supported by either HTML
+              <code className="nx-code">&lt;input&gt;</code> or HTML
+              <code className="nx-code">&lt;textarea&gt;</code>. The only notable exceptions are:
               <ul className="nx-list nx-list--bulleted">
                 <li className="nx-list__item">
                   <code className="nx-code">defaultValue</code> which is left out because it creates what's commonly
                   known as{' '}
-                  <a target="_blank"
-                     rel="noopener"
-                     href="https://reactjs.org/docs/uncontrolled-components.html">
+                  <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
                     uncontrolled inputs
-                  </a>
+                  </NxTextLink>
                 </li>
                 <li className="nx-list__item">
                   The attributes specified above, whose types are as defined here and not as specified in the

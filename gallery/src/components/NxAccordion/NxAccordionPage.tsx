@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxInfoAlert }
+import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxInfoAlert, NxCode, NxTextLink }
   from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -36,10 +36,6 @@ const NxAccordionPage = () =>
         <header className="nx-tile-subsection__header">
           <h3 className="nx-h3">NxAccordion</h3>
         </header>
-        <p className="nx-p">
-          In addition to all standard HTML <code className="nx-code">&lt;details&gt;</code> attributes,{' '}
-          <code className="nx-code">NxAccordion</code> can receive the following props:
-        </p>
         <NxTable>
           <NxTableHead>
             <NxTableRow>
@@ -73,6 +69,19 @@ const NxAccordionPage = () =>
               <NxTableCell>
                 Whether or not the accordion should be rendered "open" with its full content visible, as
                 opposed to collapsed.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>HTML <NxCode>&lt;details&gt;</NxCode> Attributes</NxTableCell>
+              <NxTableCell>
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/details">
+                  HTML details Attributes
+                </NxTextLink>
+              </NxTableCell>
+              <NxTableCell>No</NxTableCell>
+              <NxTableCell>
+                NxAccordion supports any html attribute that's normally supported by the
+                {' '}<NxCode>&lt;details&gt;</NxCode> element
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
