@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-$main-header-height: 72px;
+@import '../scss-shared/nx-header-variables';
+
 $main-header-background: var(--nx-swatch-white);
 $main-header-product-height: 52px;
 $main-header-product-title-row-height: 2fr;
@@ -20,7 +21,7 @@ $main-header-product-version-row-height: 1fr;
   background-color: $main-header-background;
   border-bottom: 1px solid var(--nx-swatch-grey-90);
   grid-area: old-header; // see nx-page's grid template
-  height: $main-header-height;
+  height: $nx-main-header-height;
 }
 
 .nx-page-header__inner {
@@ -29,7 +30,7 @@ $main-header-product-version-row-height: 1fr;
   align-items: center;
   box-sizing: border-box;
   display: flex;
-  height: $main-header-height;
+  height: $nx-main-header-height;
   margin: 0 auto;
   padding: 0 var(--nx-spacing-6x);
   width: 100%;
@@ -92,7 +93,7 @@ $main-header-product-version-row-height: 1fr;
   align-items: center;
   box-sizing: border-box;
   display: flex;
-  height: $main-header-height - 6px; // aids vertical alignment of contents
+  height: $nx-main-header-height - 6px; // aids vertical alignment of contents
   margin-bottom: 6px;
   text-decoration: none;
 }
