@@ -91,12 +91,9 @@ export default function NxCodeSnippetPage() {
             <NxTableRow>
               <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
               <NxTableCell>
-                <a className="nx-text-link"
-                   target="_blank"
-                   rel="noopener"
-                   href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                   HTML div Attributes
-                </a>
+                </NxTextLink>
               </NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>N/A</NxTableCell>
