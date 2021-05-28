@@ -14,7 +14,7 @@
     "title sub-title actions"
     "description description description"
     "tags tags tags";
-  margin: 0 0 $nx-spacing-l 0;
+  margin: 0 0 var(--nx-spacing-6x) 0;
 
   .nx-h1 {
     grid-area: title;
@@ -26,7 +26,7 @@
 
   .nx-btn-bar {
     grid-area: actions;
-    margin: 0 0 0 $nx-spacing-l;
+    margin: 0 0 0 var(--nx-spacing-6x);
   }
 }
 
@@ -36,19 +36,19 @@
 
 .nx-page-title__sub-title {
   @include nx-truncate-ellipsis;
-  border-left: $nx-border-default;
-  margin: 0 0 0 $nx-spacing-md;
-  padding-left: $nx-spacing-md;
+  border-left: var(--nx-border-default);
+  margin: 0 0 0 var(--nx-spacing-4x);
+  padding-left: var(--nx-spacing-4x);
   min-width: 150px;
 }
 
 .nx-page-title__description {
   @include container-vertical;
   grid-area: description;
-  margin-top: $nx-spacing-xs;
+  margin-top: var(--nx-spacing-2x);
 
   + .nx-page-title__tags {
-    margin-top: $nx-spacing-md;
+    margin-top: var(--nx-spacing-4x);
   }
 }
 
@@ -58,8 +58,8 @@
   display: flex;
   flex-wrap: wrap;
   grid-area: tags;
-  row-gap: $nx-spacing-xs;
-  margin-top: $nx-spacing-xs;
+  row-gap: var(--nx-spacing-2x);
+  margin-top: var(--nx-spacing-2x);
 
   // required due to specificity, removes bottom margin from children of nx-page-title__tags
   > :nth-child(1n) {
@@ -68,7 +68,7 @@
 
   .nx-policy-violation-indicator {
     + .nx-threat-counter-container, + .nx-tag {
-      margin-left: $nx-spacing-xs;
+      margin-left: var(--nx-spacing-2x);
     }
   }
   
@@ -76,7 +76,7 @@
     margin-top: 0;
   
     + .nx-tag {
-      margin-left: $nx-spacing-l;
+      margin-left: var(--nx-spacing-6x);
     }
   }
 }

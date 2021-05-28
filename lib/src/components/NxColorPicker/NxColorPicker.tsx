@@ -37,7 +37,7 @@ const humanReadable: (c: SelectableColor) => string = pipe(
 
 function ColorRadio({ pickerLabel, color, value, onChange, name }: ColorRadioProps) {
   const selected = value === color,
-      classes = classnames('nx-color-picker__color', `nx-color-picker__color--${color}`, { selected }),
+      classes = classnames('nx-color-picker__color', `nx-selectable-color--${color}`, { selected }),
       humanReadableColor = useMemo(() => humanReadable(color), [color]),
       label = `${pickerLabel} ${humanReadableColor}`;
 

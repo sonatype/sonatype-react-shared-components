@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
 
 .nx-threat-counter {
@@ -12,15 +11,15 @@
   box-sizing: content-box;
   border: 1px solid;
   border-left-width: 8px;
-  border-radius: $nx-border-radius;
+  border-radius: var(--nx-border-radius);
   display: inline-flex;
   flex-direction: row-reverse;
-  font-size: $nx-font-size-s;
+  font-size: var(--nx-font-size-s);
   justify-content: flex-end;
   height: 30px;
   margin: 0;
-  padding-right: $nx-spacing-md;
-  padding-left: $nx-spacing-md;
+  padding-right: var(--nx-spacing-4x);
+  padding-left: var(--nx-spacing-4x);
 }
 
 .nx-threat-counter__count {
@@ -30,31 +29,31 @@
 
 .nx-threat-counter__text {
   @include semi-bold();
-  margin-left: $nx-spacing-xs;
+  margin-left: var(--nx-spacing-2x);
   text-transform: uppercase;
 }
 
 .nx-threat-counter--critical {
-  border-color: $nx-threat-color-critical;
+  border-color: var(--nx-color-threat-critical);
 }
 
 .nx-threat-counter--severe {
-  border-color: $nx-threat-color-severe;
+  border-color: var(--nx-color-threat-severe);
 }
 
 .nx-threat-counter--moderate {
-  border-color: $nx-threat-color-moderate;
+  border-color: var(--nx-color-threat-moderate);
 }
 
 .nx-threat-counter--low {
-  border-color: $nx-threat-color-low;
+  border-color: var(--nx-color-threat-low);
 }
 
 .nx-threat-counter-container {
   display: inline-grid;
-  gap: $nx-spacing-md;
+  gap: var(--nx-spacing-4x);
   grid-template-columns: auto auto auto auto;
-  margin: $nx-spacing-md 0 $nx-spacing-l 0;
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
 }
 
 .nx-threat-counter-container--column {

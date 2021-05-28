@@ -4,22 +4,20 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-$nx-grid-border: $nx-border;
-
 .nx-grid-row {
   display: flex;
-  margin-top: $nx-spacing-l;
-  margin-bottom: $nx-spacing-l;
+  margin-top: var(--nx-spacing-6x);
+  margin-bottom: var(--nx-spacing-6x);
 }
 
 .nx-grid-col {
   @include container-vertical;
 
-  border-left: $nx-grid-border;
+  border-left: var(--nx-border-subsection);
   box-sizing: border-box;
   flex: 1 0;
   overflow-x: hidden;
-  padding: 0 $nx-spacing-xxl;
+  padding: 0 var(--nx-spacing-12x);
 
   overflow-wrap: break-word;
 
@@ -41,15 +39,15 @@ $nx-grid-border: $nx-border;
 
 .nx-grid-h-keyline {
   border: none;
-  border-top: $nx-grid-border;
-  margin-top: $nx-spacing-l;
-  margin-bottom: $nx-spacing-l;
+  border-top: var(--nx-border-subsection);
+  margin-top: var(--nx-spacing-6x);
+  margin-bottom: var(--nx-spacing-6x);
 }
 
 // Grid headers
 .nx-grid-header {
   @include container-vertical;
-  margin-bottom: $nx-spacing-md;
+  margin-bottom: var(--nx-spacing-4x);
 }
 
 .nx-grid-header__title {
@@ -60,6 +58,6 @@ $nx-grid-border: $nx-border;
 .nx-grid-col__section {
   @include container-vertical;
 
-  margin-top: $nx-spacing-l;
-  margin-bottom: $nx-spacing-l;
+  margin-top: var(--nx-spacing-6x);
+  margin-bottom: var(--nx-spacing-6x);
 }
