@@ -7,7 +7,8 @@
 import React from 'react';
 import CodeExample from '../../CodeExample';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxWarningAlert } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxWarningAlert, NxTextLink }
+  from '@sonatype/react-shared-components';
 
 const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw'),
     NxGlobalSidebarScrollingExample = require('./NxGlobalSidebarScrollingExample.tsx?raw');
@@ -108,6 +109,19 @@ export default function NxGlobalSidebarPage() {
                   When the logo is clicked it navigates to a page (typically Home) specified here.
                 </NxTable.Cell>
               </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                    HTML div Attributes
+                  </NxTextLink>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  <code className="nx-code">NxGlobalSidebar</code> supports any HTML attribute that's normally
+                  supported by <code className="nx-code">&lt;div&gt;</code>.
+                </NxTable.Cell>
+              </NxTable.Row>
             </NxTable.Body>
           </NxTable>
         </NxTile.Subsection>
@@ -117,21 +131,41 @@ export default function NxGlobalSidebarPage() {
           </NxTile.SubsectionHeader>
           <NxP>
             <NxCode>NxGlobalSidebarNavigation</NxCode> is a container for navigation links.
-            It accepts all standard <NxCode>&lt;div&gt;</NxCode> HTML attributes.
           </NxP>
           <NxWarningAlert>
             Note that the number of navigation links must be kept to 10 or less in order to ensure that there is enough
             space for both the navigation and footer areas in smaller viewports.
           </NxWarningAlert>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Prop</NxTable.Cell>
+                <NxTable.Cell>Type</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Details</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                    HTML div Attributes
+                  </NxTextLink>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  <code className="nx-code">NxGlobalSidebar</code> supports any HTML attribute that's normally
+                  supported by <code className="nx-code">&lt;div&gt;</code>.
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
+          </NxTable>
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
             <h3 className="nx-h3"><NxCode>NxGlobalSidebarNavigationLink</NxCode> Props</h3>
           </NxTile.SubsectionHeader>
-          <NxP>
-            In addition to all standard <NxCode>&lt;a&gt;</NxCode> HTML attributes,
-            <NxCode>NxGlobalSidebarNavigationLink</NxCode> can receive the following props:
-          </NxP>
           <NxTable>
             <NxTable.Head>
               <NxTable.Row>
@@ -167,6 +201,19 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>string</NxTable.Cell>
                 <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell>URL</NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>HTML <code className="nx-code">&lt;a&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/a">
+                    HTML a Attributes
+                  </NxTextLink>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  <code className="nx-code">NxGlobalSidebarNavigationLink</code> supports any HTML attribute that's
+                  normally supported by <code className="nx-code">&lt;a&gt;</code>.
+                </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
           </NxTable>

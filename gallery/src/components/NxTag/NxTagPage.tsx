@@ -10,7 +10,8 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxTagExample from './NxTagExample';
 import NxSelectableTagExample from './NxSelectableTagExample';
 import NxTagNarrowExample from './NxTagNarrowExample';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxTextLink }
+  from '@sonatype/react-shared-components';
 
 const NxTagExampleCode = require('./NxTagExample?raw');
 const NxSelectableTagExampleCode = require('./NxSelectableTagExample?raw');
@@ -50,19 +51,17 @@ const NxTagPage = () =>
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell>HTML div Attributes</NxTableCell>
+            <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
             <NxTableCell>
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://developer.mozilla.org/es/docs/Web/HTML/Elemento/div">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/element/div">
                 HTML div Attributes
-              </a>
+              </NxTextLink>
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
             <NxTableCell>
               NxTag supports any html attribute that's normally supported by
-              {' '}<code className="nx-code">div</code> elements.
+              {' '}<code className="nx-code">&lt;div&gt;</code> elements.
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>

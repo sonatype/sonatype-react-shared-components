@@ -7,7 +7,7 @@
 import React from 'react';
 import CodeExample from '../../CodeExample';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3 } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxTextLink } from '@sonatype/react-shared-components';
 
 const NxGlobalSidebarFooterExample = require('./NxGlobalSidebarFooterExample.tsx?raw'),
     NxGlobalSidebarFooterMinimalExample = require('./NxGlobalSidebarFooterMinimalExample.tsx?raw');
@@ -82,11 +82,9 @@ export default function NxGlobalSidebarFooterPage() {
               <NxTable.Row>
                 <NxTable.Cell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTable.Cell>
                 <NxTable.Cell>
-                  <a target="_blank"
-                     rel="noopener"
-                     href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                     HTML div Attributes
-                  </a>
+                  </NxTextLink>
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
@@ -106,9 +104,9 @@ export default function NxGlobalSidebarFooterPage() {
         </NxTile.Header>
         <NxTile.Content>
           <NxP>
-            <a className="nx-text-link" href="#/NxGlobalSidebarFooterExample">
+            <NxTextLink href="#/NxGlobalSidebarFooterExample">
               Click here to navigate to the live example.
-            </a>
+            </NxTextLink>
           </NxP>
           <CodeExample content={NxGlobalSidebarFooterExample} />
         </NxTile.Content>
@@ -122,9 +120,9 @@ export default function NxGlobalSidebarFooterPage() {
         </NxTile.Header>
         <NxTile.Content>
           <NxP>
-            <a className="nx-text-link" href="#/NxGlobalSidebarFooterMinimalExample">
+            <NxTextLink href="#/NxGlobalSidebarFooterMinimalExample">
               Click here to navigate to the live example.
-            </a>
+            </NxTextLink>
           </NxP>
           <CodeExample content={NxGlobalSidebarFooterMinimalExample} />
         </NxTile.Content>

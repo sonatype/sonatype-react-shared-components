@@ -9,7 +9,8 @@ import React from 'react';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxStatefulSegmentedButtonExample from './NxStatefulSegmentedButtonExample';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxTextLink }
+  from '@sonatype/react-shared-components';
 
 const nxStatefulSegmentedButtonCode = require('./NxStatefulSegmentedButtonExample?raw');
 
@@ -75,11 +76,9 @@ export default function NxStatefulSegmentedButtonPage() {
             <NxTableRow>
               <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
               <NxTableCell>
-                <a target="_blank"
-                   rel="noopener"
-                   href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                   HTML div Attributes
-                </a>
+                </NxTextLink>
               </NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>N/A</NxTableCell>

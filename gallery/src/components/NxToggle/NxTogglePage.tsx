@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
@@ -21,10 +22,6 @@ const NxTogglePage = () =>
         Custom toggle control, which uses a hidden checkbox input for its on/checked &amp; off/unselected states.
       </p>
       <p className="nx-p">Child VDOM will be used as a label preceeding the toggle control.</p>
-      <p className="nx-p">
-        NxToggle can receive any attribute that would be valid on an
-        HTML <code className="nx-code">&lt;label&gt;</code> as well as the following props:
-      </p>
       <table className="nx-table">
         <thead>
           <tr className="nx-table-row">
@@ -69,10 +66,23 @@ const NxTogglePage = () =>
             <td className="nx-cell">
               VDOM rendered as a label. Should be
               {' '}
-              <a href="https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content"
-                 className="nx-text-link">
+              <NxTextLink external
+                          href="https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content">
                 phrasing content
-              </a>
+              </NxTextLink>
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">HTML <code className="nx-code">&lt;label&gt;</code> Attributes</td>
+            <td className="nx-cell">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/label">
+                HTML label Attributes
+              </NxTextLink>
+            </td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              <code className="nx-code">NxToggle</code> supports any HTML attribute that's normally
+              supported by <code className="nx-code">&lt;label&gt;</code> elements.
             </td>
           </tr>
         </tbody>

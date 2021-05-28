@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert, NxCode, NxP } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxModalSimpleExample from './NxModalSimpleExample';
@@ -32,6 +32,65 @@ export default function NxModalPage() {
           <code className="nx-code">NxModal</code> is the preferred way to handle modals. It creates a foreground modal
           window along with a backdrop mask over the rest of the page.
         </NxP>
+        <h3>Props</h3>
+        <table className="nx-table">
+          <thead>
+            <tr className="nx-table-row">
+              <th className="nx-cell nx-cell--header">Prop</th>
+              <th className="nx-cell nx-cell--header">Type</th>
+              <th className="nx-cell nx-cell--header">Required</th>
+              <th className="nx-cell nx-cell--header">Default</th>
+              <th className="nx-cell nx-cell--header">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="nx-table-row">
+              <td className="nx-cell">className</td>
+              <td className="nx-cell">string</td>
+              <td className="nx-cell">No</td>
+              <td className="nx-cell"></td>
+              <td className="nx-cell">
+                Any <code className="nx-code">className</code> attributes passed in on
+                the <code className="nx-code">NxModal</code> element will be added to
+                the <code className="nx-code">nx-modal</code> class on the modal div.
+              </td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell">onClose</td>
+              <td className="nx-cell">Function (() =&gt; void)</td>
+              <td className="nx-cell">Yes</td>
+              <td className="nx-cell"></td>
+              <td className="nx-cell">
+                The function to be called to close the modal when pressing
+                the <code className="nx-code">Escape</code> key.
+              </td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell">variant</td>
+              <td className="nx-cell">"wide" | "narrow" | "normal"</td>
+              <td className="nx-cell">No</td>
+              <td className="nx-cell">"normal"</td>
+              <td className="nx-cell">
+                This prop specifies a style variant for the modal. Currently, variants only differ in width.
+                "wide" modals are 1000px wide, "normal" modals are 800px wide, and "narrow" modals are 600px wide.
+              </td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
+              <td className="nx-cell">
+                <NxTextLink external href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
+                  HTML Attributes
+                </NxTextLink>
+              </td>
+              <td className="nx-cell">No</td>
+              <td className="nx-cell"></td>
+              <td className="nx-cell">
+                NxModal supports any html attribute that's normally supported by
+                {' '}<code className="nx-code">&lt;div&gt;</code> elements.
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <h3>Modal Style Classes</h3>
         <table className="nx-table nx-table--gallery-props">
           <thead>
@@ -82,64 +141,6 @@ export default function NxModalPage() {
                 you want to use tabs within an <code className="nx-code">NxModal</code> as the sole contents of
                 the modal body. The modifier keeps the tabs "sticky" while allowing the tab content to scroll.
               </td>
-            </tr>
-          </tbody>
-        </table>
-        <h3>Props</h3>
-        <table className="nx-table nx-table--gallery-props">
-          <thead>
-            <tr className="nx-table-row">
-              <th className="nx-cell nx-cell--header">Prop</th>
-              <th className="nx-cell nx-cell--header">Type</th>
-              <th className="nx-cell nx-cell--header">Required</th>
-              <th className="nx-cell nx-cell--header">Default</th>
-              <th className="nx-cell nx-cell--header">Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="nx-table-row">
-              <td className="nx-cell">className</td>
-              <td className="nx-cell">string</td>
-              <td className="nx-cell">No</td>
-              <td className="nx-cell"></td>
-              <td className="nx-cell">
-                Any <code className="nx-code">className</code> attributes passed in on
-                the <code className="nx-code">NxModal</code> element will be added to
-                the <code className="nx-code">nx-modal</code> class on the modal div.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell">onClose</td>
-              <td className="nx-cell">Function (() =&gt; void)</td>
-              <td className="nx-cell">Yes</td>
-              <td className="nx-cell"></td>
-              <td className="nx-cell">
-                The function to be called to close the modal when pressing
-                the <code className="nx-code">Escape</code> key.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell">variant</td>
-              <td className="nx-cell">"wide" | "narrow" | "normal"</td>
-              <td className="nx-cell">No</td>
-              <td className="nx-cell">"normal"</td>
-              <td className="nx-cell">
-                This prop specifies a style variant for the modal. Currently, variants only differ in width.
-                "wide" modals are 1000px wide, "normal" modals are 800px wide, and "narrow" modals are 600px wide.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell">Div HTML Attributes</td>
-              <td className="nx-cell">
-                <a target="_blank"
-                   rel="noopener"
-                   href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
-                  HTML Attributes
-                </a>
-              </td>
-              <td className="nx-cell">No</td>
-              <td className="nx-cell"></td>
-              <td className="nx-cell">NxModal supports any html attribute that's normally supported by Div elements</td>
             </tr>
           </tbody>
         </table>
