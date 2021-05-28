@@ -114,13 +114,12 @@
 }
 
 .nx-h4 {
-  @include bold();
+  @include semi-bold();
   @include container-horizontal;
   @extend %nx-heading;
 
   font-size: var(--nx-font-size-heading-4);
   margin-bottom: var(--nx-spacing-2x);
-  text-transform: uppercase;
 }
 
 .nx-p {

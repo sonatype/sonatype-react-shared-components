@@ -74,11 +74,10 @@
 
 .nx-sub-label {
   @include container-horizontal;
-  @include semi-bold();
 
-  color: var(--nx-color-text-dark);
-  font-size: var(--nx-font-size-s);
   display: block;
+  font-size: var(--nx-font-size-s);
+  font-style: italic;
   margin-bottom: var(--nx-spacing-4x);
 }
 
