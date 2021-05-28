@@ -7,10 +7,6 @@
 $nx-tile-header-height: 24px; // Minimum height
 $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right actions
 
-// the "padding" around the inside edge of the nx-tile, which must be implemented using padding/margin
-// on children since nx-tile-content--accordion-container is supposed to go all the way to the edges
-$nx-tile-padding: $nx-spacing-l;
-
 /*
   #Name-spaced Tile System
 */
@@ -20,20 +16,24 @@ $nx-tile-padding: $nx-spacing-l;
 .nx-tile {
   @include container-vertical;
 
-  background-color: var(--nx-component-background-color);
-  border-radius: $nx-border-radius;
-  margin: $nx-spacing-xs 0 $nx-spacing-md 0;
-  padding: $nx-tile-padding 0;
+  // the "padding" around the inside edge of the nx-tile, which must be implemented using padding/margin
+  // on children since nx-tile-content--accordion-container is supposed to go all the way to the edges
+  --nx-tile-padding: var(--nx-spacing-6x);
+
+  background-color: var(--nx-color-component-background);
+  border-radius: var(--nx-border-radius);
+  margin: var(--nx-spacing-2x) 0 var(--nx-spacing-4x) 0;
+  padding: var(--nx-tile-padding) 0;
 
   > .nx-footer, > .nx-form > .nx-footer {
     // use margin for sides so the top border ends in the right places
-    margin: $nx-spacing-xl $nx-tile-padding 0 $nx-tile-padding;
+    margin: var(--nx-spacing-8x) var(--nx-tile-padding) 0 var(--nx-tile-padding);
   }
 
   // When a tile contains an NxForm that is in an error state, an nx-alert gets rendered as the tile's immediate child
   > .nx-alert {
-    margin-left: $nx-tile-padding;
-    margin-right: $nx-tile-padding;
+    margin-left: var(--nx-tile-padding);
+    margin-right: var(--nx-tile-padding);
   }
 }
 
@@ -42,13 +42,13 @@ $nx-tile-padding: $nx-spacing-l;
 .nx-tile-header {
   align-items: center;
   display: grid;
-  row-gap: $nx-spacing-xs;
+  row-gap: var(--nx-spacing-2x);
   grid-template-columns: auto 1fr auto;
   min-height: $nx-tile-header-height;
-  padding: 0 $nx-tile-padding 0 $nx-tile-padding;
+  padding: 0 var(--nx-tile-padding) 0 var(--nx-tile-padding);
 
   + .nx-tile-content {
-    padding-top: $nx-spacing-md;
+    padding-top: var(--nx-spacing-4x);
   }
 }
 
@@ -73,9 +73,8 @@ $nx-tile-padding: $nx-spacing-l;
   grid-row-start: 2;
   grid-row-end: 2;
 
-  color: $nx-heading-color;
-  font-size: $nx-font-size-heading-level-3;
-  max-width: $nx-paragraph-width-maximum;
+  color: var(--nx-color-text-dark);
+  font-size: var(--nx-font-size-heading-3);
 }
 
 .nx-tile__actions {
@@ -85,7 +84,7 @@ $nx-tile-padding: $nx-spacing-l;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 1;
-  margin-left: $nx-spacing-l;
+  margin-left: var(--nx-spacing-6x);
   text-align: right;
 }
 
@@ -96,7 +95,7 @@ $nx-tile-padding: $nx-spacing-l;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 1;
-  margin-left: $nx-spacing-md;
+  margin-left: var(--nx-spacing-4x);
 
   .nx-policy-violation-indicator {
     margin: 0;
@@ -106,34 +105,34 @@ $nx-tile-padding: $nx-spacing-l;
 .nx-tile-content {
   @include container-vertical;
 
-  padding: 0 $nx-tile-padding 0 $nx-tile-padding;
+  padding: 0 var(--nx-tile-padding) 0 var(--nx-tile-padding);
 }
 
 .nx-tile-content--accordion-container {
-  background-color: $nx-indigo-50;
-  margin-top: $nx-spacing-md;
-  padding: $nx-spacing-md;
+  background-color: var(--nx-swatch-indigo-95);
+  margin-top: var(--nx-spacing-4x);
+  padding: var(--nx-spacing-4x);
 
   &:last-child {
-    padding-bottom: $nx-spacing-md;
-    margin-bottom: -$nx-tile-padding;
+    padding-bottom: var(--nx-spacing-4x);
+    margin-bottom: calc(0px - var(--nx-tile-padding));
   }
 }
 
 // On pages with tiles with multiple sections these are lighter weight titles
 .nx-tile-subsection {
   @include container-vertical;
-  margin-top: $nx-spacing-xl;
+  margin-top: var(--nx-spacing-8x);
 
   &:first-of-type {
-    border-top: 1px solid #b7bfdb;
-    margin-top: $nx-spacing-l;
-    padding-top: $nx-spacing-l;
+    border-top: var(--nx-border-subsection);
+    margin-top: var(--nx-spacing-6x);
+    padding-top: var(--nx-spacing-6x);
   }
 
   .nx-tile-subsection__header {
     @include container-vertical;
 
-    margin-bottom: $nx-spacing-md;
+    margin-bottom: var(--nx-spacing-4x);
   }
 }

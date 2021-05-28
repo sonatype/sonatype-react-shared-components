@@ -1,0 +1,50 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+:root {
+  // page dimensions
+  --nx-width-page-max: 1600px;
+  --nx-width-page-min: 1366px;
+  --nx-width-content-proportion: 0.76;
+  --nx-width-content: calc(100% * var(--nx-width-content-proportion));
+  --nx-width-sidebar: calc(100% - var(--nx-width-content));
+  --nx-width-scrollbar: 15px;
+  --nx-width-form-element-normal: 300px;
+  --nx-width-form-element-wide: 624px;
+
+  --nx-spacing-base: 4px; // formerly nx-spacing-xxs
+  --nx-spacing-2x: calc(var(--nx-spacing-base) * 2); // formerly nx-spacing-xs
+  --nx-spacing-3x: calc(var(--nx-spacing-base) * 3); // formerly nx-spacing-sm
+  --nx-spacing-4x: calc(var(--nx-spacing-base) * 4); // formerly nx-spacing-md
+  --nx-spacing-6x: calc(var(--nx-spacing-base) * 6); // formerly nx-spacing-l
+  --nx-spacing-8x: calc(var(--nx-spacing-base) * 8); // formerly nx-spacing-xl
+  --nx-spacing-12x: calc(var(--nx-spacing-base) * 12); // formerly nx-spacing-xxl
+  --nx-spacing-16x: calc(var(--nx-spacing-base) * 16); // formerly nx-spacing-xxxl
+  --nx-spacing-20x: calc(var(--nx-spacing-base) * 20);
+
+  --nx-font-size: 16px;
+  --nx-font-size-s: 14px;
+  --nx-font-size-xs: 12px;
+  --nx-font-size-heading-1: 32px;
+  --nx-font-size-heading-2: 22px;
+  --nx-font-size-heading-3: 16px;
+  --nx-font-size-heading-4: 14px;
+
+  --nx-line-height: 1.5;
+
+  --nx-z-index-submit-mask: 10;
+  --nx-z-index-modal-backdrop: 1050;
+
+  --nx-border-radius: 6px;
+
+  --nx-border-default: 1px solid var(--nx-color-border);
+  --nx-border-subsection: 1px solid var(--nx-color-subsection-border);
+
+  --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-interactive-shadow-focus);
+
+  // similar to above, but for use in drop-shadow filters rather than box-shadow properties
+  --nx-drop-shadow-focus: 0 0 3px var(--nx-color-interactive-shadow-focus);
+}

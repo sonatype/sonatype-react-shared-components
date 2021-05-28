@@ -4,24 +4,23 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/_nx-mask-helpers';
 
-// the "padding" around the interior of nx-modal. In order to get borders and scrollbars to appear
-// in the desired locations, this can't actually be implemented as padding on .nx-modal, but must instead be
-// a mix of padding and margin on the .nx-modal, .nx-modal-header, .nx-modal-content, and .nx-footer elements
-$nx-modal-padding: $nx-spacing-l;
-
 .nx-modal {
   @include container-vertical;
 
-  border-radius: $nx-border-radius;
+  // the "padding" around the interior of nx-modal. In order to get borders and scrollbars to appear
+  // in the desired locations, this can't actually be implemented as padding on .nx-modal, but must instead be
+  // a mix of padding and margin on the .nx-modal, .nx-modal-header, .nx-modal-content, and .nx-footer elements
+  --nx-modal-padding: var(--nx-spacing-6x);
+
+  border-radius: var(--nx-border-radius);
   box-sizing: border-box;
-  background-color: var(--nx-component-background-color);
+  background-color: var(--nx-color-component-background);
   margin: 100px 0;
-  padding: $nx-modal-padding;
+  padding: var(--nx-modal-padding);
   width: 800px;
 
   &, > .nx-form {
@@ -34,8 +33,8 @@ $nx-modal-padding: $nx-spacing-l;
 
   > .nx-form {
     // nx-form should take up the entire modal area so the children layout consistently
-    margin: -$nx-modal-padding;
-    padding: $nx-modal-padding;
+    margin: calc(0px - var(--nx-modal-padding));
+    padding: var(--nx-modal-padding);
   }
 
   .nx-footer {
@@ -54,8 +53,8 @@ $nx-modal-padding: $nx-spacing-l;
 .nx-modal-header {
   @include container-vertical;
 
-  border-bottom: $nx-border-default;
-  padding-bottom: $nx-spacing-l;
+  border-bottom: var(--nx-border-default);
+  padding-bottom: var(--nx-spacing-6x);
 
   .nx-h2 {
     @include nx-truncate-ellipsis;
@@ -63,7 +62,7 @@ $nx-modal-padding: $nx-spacing-l;
 }
 
 .nx-modal-backdrop {
-  @include background-mask($nx-modal-backdrop-z-index);
+  @include background-mask(var(--nx-z-index-modal-backdrop));
 
   // undo styles that chrome applies to <dialog> elements
   border: initial;
@@ -82,8 +81,8 @@ $nx-modal-padding: $nx-spacing-l;
 
   // we want the content area scrollbar to be at the right edge of the modal, so use negative margin
   // to bump the content area over the right padding and then give that padding to the content area itself
-  margin-right: -$nx-modal-padding;
-  padding: $nx-spacing-l $nx-modal-padding $nx-spacing-xl 0;
+  margin-right: calc(0px - var(--nx-modal-padding));
+  padding: var(--nx-spacing-6x) var(--nx-modal-padding) var(--nx-spacing-8x) 0;
   overflow-y: auto;
 }
 
@@ -106,6 +105,6 @@ $nx-modal-padding: $nx-spacing-l;
   .nx-tab-panel {
     flex-shrink: 1;
     overflow-y: auto;
-    padding-bottom: $nx-spacing-l;
+    padding-bottom: var(--nx-spacing-6x);
   }
 }

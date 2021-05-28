@@ -12,10 +12,10 @@
   @include nx-truncate-ellipsis;
   @include container-horizontal;
 
-  background-color: $nx-indigo-50;
-  padding: $nx-spacing-sm $nx-spacing-l;
+  background-color: var(--nx-swatch-indigo-90);
+  padding: var(--nx-spacing-3x) var(--nx-spacing-6x);
 }
 
 .nx-system-notice--alert {
-  background-color: $nx-orange-50;
+  background-color: var(--nx-swatch-orange-95);
 }

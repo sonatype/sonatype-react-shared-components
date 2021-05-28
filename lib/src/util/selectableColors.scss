@@ -1,0 +1,50 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+.nx-selectable-color--light-blue {
+  --nx-selectable-color-dark: var(--nx-swatch-blue-80);
+  --nx-selectable-color-light: var(--nx-swatch-blue-95);
+}
+
+.nx-selectable-color--purple {
+  --nx-selectable-color-dark: var(--nx-swatch-purple-80);
+  --nx-selectable-color-light: var(--nx-swatch-purple-95);
+}
+
+.nx-selectable-color--pink {
+  --nx-selectable-color-dark: var(--nx-swatch-pink-70);
+  --nx-selectable-color-light: var(--nx-swatch-pink-95);
+}
+
+.nx-selectable-color--blue {
+  --nx-selectable-color-dark: var(--nx-swatch-teal-60);
+  --nx-selectable-color-light: var(--nx-swatch-teal-90);
+}
+
+.nx-selectable-color--red {
+  --nx-selectable-color-dark: var(--nx-swatch-red-70);
+  --nx-selectable-color-light: var(--nx-swatch-red-90);
+}
+
+.nx-selectable-color--green {
+  --nx-selectable-color-dark: var(--nx-swatch-turquoise-40);
+  --nx-selectable-color-light: var(--nx-swatch-turquoise-95);
+}
+
+.nx-selectable-color--orange {
+  --nx-selectable-color-dark: var(--nx-swatch-orange-55);
+  --nx-selectable-color-light: var(--nx-swatch-orange-90);
+}
+
+.nx-selectable-color--yellow {
+  --nx-selectable-color-dark: var(--nx-swatch-yellow-65);
+  --nx-selectable-color-light: var(--nx-swatch-yellow-95);
+}
+
+.nx-selectable-color--lime {
+  --nx-selectable-color-dark: var(--nx-swatch-green-80);
+  --nx-selectable-color-light: var(--nx-swatch-green-95);
+}
