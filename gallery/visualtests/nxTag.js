@@ -14,7 +14,7 @@ describe('NxTag', function() {
 
   describe('Basic NxTag', function() {
     const selector = '#nx-tag-example .gallery-example-live',
-      tagSelector = `${selector} .nx-tag--pink`,
+      tagSelector = `${selector} .nx-selectable-color--pink`,
 
       // expected distance from top of element to the top of its tooltip
       tooltipHeightOffset = 21;

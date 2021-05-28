@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
 @import '../../scss-shared/nx-button-helpers';
@@ -12,18 +11,18 @@
 $nx-global-sidebar-width-open: 250px;
 $nx-global-sidebar-width-closed: 72px;
 $nx-global-sidebar-logo-height: 34px;
-$nx-global-sidebar-left-right-spacing: $nx-spacing-l;
+$nx-global-sidebar-left-right-spacing: var(--nx-spacing-6x);
 
-$nx-global-sidebar-text-color: $nx-white;
-$nx-global-sidebar-background-color: $nx-blue-1000;
+$nx-global-sidebar-text-color: var(--nx-swatch-white);
+$nx-global-sidebar-background-color: var(--nx-swatch-blue-10);
 
-$nx-global-sidebar-active-color: $nx-indigo-400;
-$nx-global-sidebar-selected-color: $nx-indigo-800;
-$nx-global-sidebar-hover-color: $nx-indigo-600;
+$nx-global-sidebar-active-color: var(--nx-swatch-indigo-70);
+$nx-global-sidebar-selected-color: var(--nx-swatch-indigo-30);
+$nx-global-sidebar-hover-color: var(--nx-swatch-indigo-50);
 
-$nx-global-sidebar-focus-border: 1px solid $nx-focus-border-color;
+$nx-global-sidebar-focus-border: 1px solid var(--nx-color-interactive-border-focus);
 
-$nx-global-sidebar-separator-color: $nx-grey-900;
+$nx-global-sidebar-separator-color: var(--nx-swatch-indigo-40);
 
 .nx-global-sidebar {
   @include container-vertical;
@@ -34,7 +33,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   display: flex;
   flex-direction: column;
   grid-area: global-sidebar;
-  padding: $nx-spacing-xl 0 $nx-spacing-xxl 0;
+  padding: var(--nx-spacing-8x) 0 var(--nx-spacing-12x) 0;
   width: $nx-global-sidebar-width-open;
 
   .nx-text-link, .nx-tree-view__trigger, .nx-tree-view__child {
@@ -46,7 +45,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   align-items: center;
   display: flex;
   height: $nx-global-sidebar-logo-height;
-  margin-bottom: $nx-spacing-xl;
+  margin-bottom: var(--nx-spacing-8x);
   padding: 0 $nx-global-sidebar-left-right-spacing;
 }
 
@@ -59,7 +58,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   margin: 0;
 
   &:focus {
-    border-color: $nx-focus-border-color;
+    border-color: var(--nx-color-interactive-border-focus);
   }
 
   &:active {
@@ -84,7 +83,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   border-bottom: 1px solid $nx-global-sidebar-separator-color;
   flex: none;
   margin: 0;
-  padding-bottom: $nx-spacing-xxl;
+  padding-bottom: var(--nx-spacing-12x);
 }
 
 .nx-global-sidebar__navigation-link {
@@ -93,15 +92,15 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 
   border: 1px solid transparent;
   display: block;
-  padding: $nx-spacing-xxs $nx-global-sidebar-left-right-spacing;
+  padding: var(--nx-spacing-base) $nx-global-sidebar-left-right-spacing;
 
   .nx-icon {
     margin: 0;
   }
 
   &:focus {
-    border-color: $nx-focus-border-color;
-    box-shadow: $nx-focus-box-shadow;
+    border-color: var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
     outline: none;
   }
 
@@ -120,7 +119,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-global-sidebar__navigation-text {
-  margin-left: $nx-spacing-xs;
+  margin-left: var(--nx-spacing-2x);
 }
 
 .nx-global-sidebar.open {
@@ -162,7 +161,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   @include container-vertical;
 
   flex-grow: 1;
-  padding: $nx-spacing-md $nx-global-sidebar-left-right-spacing;
+  padding: var(--nx-spacing-4x) $nx-global-sidebar-left-right-spacing;
   max-height: unset;
 
   + .nx-global-sidebar__footer {
@@ -178,7 +177,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
   display: flex;
   flex-direction: column;
   margin-top: auto;
-  padding: $nx-spacing-xxl $nx-global-sidebar-left-right-spacing 0 $nx-global-sidebar-left-right-spacing;
+  padding: var(--nx-spacing-12x) $nx-global-sidebar-left-right-spacing 0 $nx-global-sidebar-left-right-spacing;
   text-align: center;
 
   &:empty {
@@ -187,7 +186,7 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-global-sidebar__support {
-  margin-bottom: $nx-spacing-xxl;
+  margin-bottom: var(--nx-spacing-12x);
 
   .nx-text-link {
     align-items: center;
@@ -196,19 +195,19 @@ $nx-global-sidebar-separator-color: $nx-grey-900;
 }
 
 .nx-global-sidebar__support-text {
-  font-size: $nx-font-size-s;
+  font-size: var(--nx-font-size-s);
 }
 
 .nx-global-sidebar__release {
-  font-size: $nx-font-size-xs;
-  margin-bottom: $nx-spacing-xl;
+  font-size: var(--nx-font-size-xs);
+  margin-bottom: var(--nx-spacing-8x);
 }
 
 .nx-global-sidebar__product-name {
-  font-size: $nx-font-size-xs;
-  margin-bottom: $nx-spacing-xs;
+  font-size: var(--nx-font-size-xs);
+  margin-bottom: var(--nx-spacing-2x);
 }
 
 .nx-global-sidebar__created-by {
-  font-size: $nx-font-size-xs;
+  font-size: var(--nx-font-size-xs);
 }

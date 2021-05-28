@@ -25,6 +25,7 @@ describe('NxToggle', function() {
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
+      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
 
       try {
         await browser.eyesRegionSnapshot(null, Target.region(targetElement));

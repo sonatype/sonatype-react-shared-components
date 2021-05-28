@@ -5,8 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 .nx-list {
-  border-top: $nx-border-default;
-  margin: $nx-spacing-md 0 $nx-flow-content-spacing 0;
+  border-top: var(--nx-border-default);
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
   padding: 0;
 
   &, > ul, > ol {
@@ -14,7 +14,7 @@
   }
 
   > ul, > ol {
-    margin-top: $nx-spacing-sm;
+    margin-top: var(--nx-spacing-3x);
     padding: 0;
   }
 }
@@ -23,9 +23,11 @@
   &, > .nx-list__link {
     @include container-horizontal;
 
+    --nx-padding-without-border: calc(var(--nx-spacing-4x) - 1px);
+
     align-items: first baseline;
     border: 1px solid transparent;
-    border-top-color: $nx-grey-200;
+    border-top-color: var(--nx-color-subsection-border);
     box-sizing: border-box;
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -35,7 +37,8 @@
       ". list-sub-text actions";
     margin: 0;
     // 1px of padding subtracted to account for the transparent border
-    padding: $nx-spacing-md ($nx-spacing-md - 1px) ($nx-spacing-md - 1px) ($nx-spacing-md - 1px);
+    padding: var(--nx-spacing-4x) var(--nx-padding-without-border)
+      var(--nx-padding-without-border) var(--nx-padding-without-border);
   }
 
   &:first-child {
@@ -43,7 +46,7 @@
   }
 
   &.disabled {
-    color: $nx-text-color-disabled;
+    color: var(--nx-color-text-disabled);
     cursor: default;
   }
 
@@ -70,13 +73,13 @@
   display: block;
   grid-area: list-text;
   margin: 0;
-  padding-right: $nx-spacing-l;
+  padding-right: var(--nx-spacing-6x);
 
   &.nx-truncate-ellipsis {
     // Something about the grid layout gets confused due to overflow: hidden on this element
     // and adds vertical space to the second row of the grid.
     // Experimentally, setting an explicit height here fixes that.
-    height: $nx-line-height * 1em;
+    height: calc(var(--nx-line-height) * 1em);
   }
 }
 
@@ -86,7 +89,7 @@
   display: block;
   grid-area: list-sub-text;
   // top margin is measured down from the top of the objects grid row
-  margin: $nx-spacing-md 0 0 0;
+  margin: var(--nx-spacing-4x) 0 0 0;
 }
 
 .nx-list__item--empty {
@@ -113,7 +116,7 @@
 
 .nx-list--bulleted {
   border-top: none;
-  margin: $nx-spacing-md 0 $nx-spacing-l 0;
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
   padding: 0 0 0 26px;
 
   .nx-list__item {
@@ -174,33 +177,33 @@
     &, > .nx-list__link {
       &.selected {
         &, &:hover {
-          background-color: $nx-selected-background;
+          background-color: var(--nx-color-interactive-background-selected);
         }
       }
 
       &:hover {
-        background-color: $nx-hover-background;
+        background-color: var(--nx-color-interactive-background-hover);
         cursor: pointer;
       }
 
       &:active {
-        background-color: $nx-active-background;
+        background-color: var(--nx-color-interactive-background-active);
       }
 
       &:focus {
-        box-shadow: $nx-focus-box-shadow;
-        border-color: $nx-focus-border-color;
+        box-shadow: var(--nx-box-shadow-focus);
+        border-color: var(--nx-color-interactive-border-focus);
         outline: none;
       }
 
       &.nx-list__item--empty {
         @include regular();
 
-        color: $nx-text-color;
+        color: var(--nx-color-text);
       }
 
       &.disabled {
-        color: $nx-text-color-disabled;
+        color: var(--nx-color-text-disabled);
 
         &:hover {
           background-color: transparent;
@@ -214,7 +217,7 @@
 
       > .nx-chevron {
         align-self: center;
-        color: $nx-text-color-dark;
+        color: var(--nx-color-text-dark);
         grid-area: actions;
 
         // custom sizing for the icon, brings it up to 13px
@@ -229,7 +232,7 @@
 
   grid-area: actions;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
-  margin: -4px 0 -4px $nx-spacing-md;
+  margin: -4px 0 -4px var(--nx-spacing-4x);
 
   .nx-btn {
     margin: 0;
@@ -249,7 +252,7 @@
     display: flex;
   }
 
-  border-bottom: 1px solid $nx-grey-200;
+  border-bottom: var(--nx-border-subsection);
 }
 
 .nx-list__term {
@@ -262,5 +265,5 @@
 .nx-list__description {
   @include container-vertical;
 
-  margin-left: $nx-spacing-l;
+  margin-left: var(--nx-spacing-6x);
 }

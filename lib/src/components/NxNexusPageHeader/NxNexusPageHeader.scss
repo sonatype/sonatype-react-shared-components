@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-container-helpers';
 @import '../../scss-shared/nx-text-helpers';
 
@@ -55,7 +54,7 @@
   .nx-product__brand {
     @include bold();
 
-    color: $nx-text-color-dark;
+    color: var(--nx-color-text-dark);
   }
 
   .nx-product__name {
@@ -73,29 +72,29 @@
     align-self: start;
     grid-area: bottom-row;
 
-    color: $nx-text-color;
-    font-size: $nx-font-size-xs;
+    color: var(--nx-color-text);
+    font-size: var(--nx-font-size-xs);
   }
 
   .nx-product__meta {
-    margin: 0 0 0 $nx-spacing-xs;
+    margin: 0 0 0 var(--nx-spacing-2x);
 
     &::before {
       content: "|";
-      margin-right: $nx-spacing-xs;
+      margin-right: var(--nx-spacing-2x);
     }
   }
 
   .nx-page-header__links {
-    padding-top: $nx-spacing-xs;
+    padding-top: var(--nx-spacing-2x);
   }
 
   .nx-page-header__link {
-    color: $nx-text-color-dark;
-    padding-bottom: $nx-spacing-xs;
+    color: var(--nx-color-text-dark);
+    padding-bottom: var(--nx-spacing-2x);
 
     &:active, &.nx-page-header__link--current {
-      border-bottom-color:$nx-teal-400;
+      border-bottom-color:var(--nx-swatch-teal-60);
     }
   }
 
@@ -107,6 +106,6 @@
 
   .nx-page-header__extra-content-divider {
     align-self: stretch;
-    border-left: 1px solid $nx-grey-200;
+    border-left: var(--nx-border-subsection);
   }
 }

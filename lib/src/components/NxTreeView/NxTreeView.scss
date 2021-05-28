@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
 
@@ -19,7 +18,7 @@ $twisty-proportion-difference: 2px;
 */
 .nx-tree-view {
   box-sizing: border-box;
-  margin: $nx-spacing-md 0;
+  margin: var(--nx-spacing-4x) 0;
 
   // Design specifies 300px wide not including the caret and its padding (which are themselves 30px)
   max-width: 330px;
@@ -40,7 +39,7 @@ $twisty-proportion-difference: 2px;
 
 .nx-tree-view--disabled {
   .nx-tree-view__trigger, .nx-tree-view__child {
-    color: $nx-grey-300;
+    color: var(--nx-swatch-grey-70);
     cursor: default;
   }
 }
@@ -61,7 +60,7 @@ $twisty-proportion-difference: 2px;
   background: none;
   border: none;
   box-sizing: border-box;
-  color: $nx-text-color-dark;
+  color: var(--nx-color-text-dark);
   cursor: pointer;
   display: flex;
   font: inherit;
@@ -78,8 +77,8 @@ $twisty-proportion-difference: 2px;
     outline: none;
 
     .nx-tree-view__twisty {
-      filter: drop-shadow(0 0 3px transparentize($nx-focus-border-color, 0.7));
-      stroke: $nx-focus-border-color;
+      filter: drop-shadow(var(--nx-drop-shadow-focus));
+      stroke: var(--nx-color-interactive-border-focus);
 
       // This is intepreted in the SVG's coordinate space. The svg has a viewbox height of 512 and an on-page
       // height of 22px so this computes to 1 on-page pixel
@@ -117,23 +116,23 @@ $twisty-proportion-difference: 2px;
 }
 
 .nx-tree-view__children {
-  margin-top: $nx-spacing-xxs;
+  margin-top: var(--nx-spacing-base);
 }
 
 .nx-tree-view__child {
   border: 1px solid transparent;
-  border-radius: $nx-border-radius;
+  border-radius: var(--nx-border-radius);
   box-sizing: border-box;
-  color: $nx-text-color;
+  color: var(--nx-color-text);
   display: block;
   overflow: hidden;
 
   // subtract 1 from all sides to make room for focus border
   padding:
-    ($nx-spacing-xxs - 1)
-    ($nx-spacing-l - 1)
-    ($nx-spacing-xxs - 1)
-    ($nx-spacing-l + 2 * $twisty-proportion-difference - 1);
+    calc(var(--nx-spacing-base) - 1px)
+    calc(var(--nx-spacing-6x) - 1px)
+    calc(var(--nx-spacing-base) - 1px)
+    calc(var(--nx-spacing-6x) + 2 * #{$twisty-proportion-difference} - 1px);
 
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -143,7 +142,8 @@ $twisty-proportion-difference: 2px;
     border: none;
     display: flex;
     margin: 0;
-    padding: $nx-spacing-xxs 0 $nx-spacing-xxs ($nx-spacing-md + 2 * $twisty-proportion-difference);
+    padding: var(--nx-spacing-base) 0 var(--nx-spacing-base)
+      calc(var(--nx-spacing-4x) + 2 * #{$twisty-proportion-difference});
   }
 }
 
@@ -157,17 +157,17 @@ button, a {
     width: 100%;
 
     &:hover {
-      background-color: $nx-grey-100;
+      background-color: var(--nx-swatch-indigo-95);
     }
 
     &.selected {
-      background-color: $nx-blue-200;
+      background-color: var(--nx-swatch-blue-90);
       font-weight: 600;
     }
 
     &:focus {
-      border-color: $nx-focus-border-color;
-      box-shadow: $nx-focus-box-shadow;
+      border-color: var(--nx-color-interactive-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
       outline: none;
     }
   }
@@ -178,12 +178,12 @@ button, a {
   button, a {
     &.nx-tree-view__child {
       &:hover {
-        background-color: $nx-indigo-100;
+        background-color: var(--nx-swatch-indigo-90);
       }
 
       &.selected {
-        background-color: $nx-blue-1000;
-        color: $nx-white;
+        background-color: var(--nx-swatch-blue-10);
+        color: var(--nx-swatch-white);
       }
     }
   }

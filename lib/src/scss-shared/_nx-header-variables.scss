@@ -4,14 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-container-helpers';
 
-.nx-back-button {
-  font-size: var(--nx-font-size-s);
-  margin-top: var(--nx-spacing-6x);
-  margin-bottom: var(--nx-spacing-6x);
-
-  .nx-text-link {
-    @include container-horizontal;
-  }
-}
+// needed both within the main-header and for the sticky positioning of the system notice
+$nx-main-header-height: 72px;

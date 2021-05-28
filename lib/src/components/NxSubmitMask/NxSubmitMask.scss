@@ -4,13 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/_nx-variables';
 @import '../../scss-shared/_nx-container-helpers';
 @import '../../scss-shared/_nx-text-helpers';
 @import '../../scss-shared/_nx-mask-helpers';
 
 .nx-submit-mask {
-  @include background-mask($nx-submit-mask-z-index);
+  @include background-mask(var(--nx-z-index-submit-mask));
 
   .nx-submit-mask__message {
     margin-top: 200px;
@@ -22,11 +21,11 @@
   @include container-vertical;
   @include semi-bold();
 
-  background-color: var(--nx-component-background-color);
-  border-radius: $nx-border-radius;
+  background-color: var(--nx-color-component-background);
+  border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   margin: 0;
-  padding: $nx-spacing-l;
+  padding: var(--nx-spacing-6x);
   text-align: center;
   min-width: 124px;
   max-width: 250px;
@@ -34,6 +33,6 @@
 
 .nx-submit-mask--success {
   .nx-submit-mask__message {
-    color: $nx-green-700;
+    color: var(--nx-swatch-green-30);
   }
 }

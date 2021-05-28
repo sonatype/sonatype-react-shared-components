@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
 
 .nx-policy-threat-slider {
   $rail-height: 8px;
@@ -15,7 +14,7 @@
 
   // flex so line-height doesn't get involved in the element overall height
   display: inline-flex;
-  margin: $nx-spacing-xs 0;
+  margin: var(--nx-spacing-2x) 0;
 
   // the .MuiSlider-thumb elements actually stick out of the sides of the .MuiSlider-root at their min and max
   // positions.  This padding ensures that they don't stick out of the overall box for this component
@@ -40,11 +39,11 @@
   &, .Mui-disabled {
     .MuiSlider-thumb {
       box-sizing: border-box;
-      background-color: $nx-white;
+      background-color: var(--nx-swatch-white);
       border: 2px solid;
-      border-radius: $nx-border-radius;
-      color: $nx-text-color-dark;
-      font-size: $nx-font-size-s;
+      border-radius: var(--nx-border-radius);
+      color: var(--nx-color-text-dark);
+      font-size: var(--nx-font-size-s);
       font-weight: bold;
       height: $thumb-size;
       width: $thumb-size;
@@ -60,8 +59,8 @@
     }
 
     &:focus {
-      border-color: $nx-focus-border-color;
-      box-shadow: $nx-focus-box-shadow;
+      border-color: var(--nx-color-interactive-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
     }
 
     // this class seems to be applied, perhaps incorrectly,
@@ -74,38 +73,38 @@
 
   .nx-policy-threat-slider__value-label--none {
     .MuiSlider-thumb:not(:focus) {
-      border-color: $nx-threat-color-none;
+      border-color: var(--nx-color-threat-none);
     }
   }
 
   .nx-policy-threat-slider__value-label--low {
     .MuiSlider-thumb:not(:focus) {
-      border-color: $nx-threat-color-low;
+      border-color: var(--nx-color-threat-low);
     }
   }
 
   .nx-policy-threat-slider__value-label--moderate {
     .MuiSlider-thumb:not(:focus) {
-      border-color: $nx-threat-color-moderate;
+      border-color: var(--nx-color-threat-moderate);
     }
   }
 
   .nx-policy-threat-slider__value-label--severe {
     .MuiSlider-thumb:not(:focus) {
-      border-color: $nx-threat-color-severe;
+      border-color: var(--nx-color-threat-severe);
     }
   }
 
   .nx-policy-threat-slider__value-label--critical {
     .MuiSlider-thumb:not(:focus) {
-      border-color: $nx-threat-color-critical;
+      border-color: var(--nx-color-threat-critical);
     }
   }
 
   .Mui-disabled .nx-policy-threat-slider__value-label .MuiSlider-thumb {
-    border-color: $nx-disabled-border;
-    background-color: $nx-disabled-background;
-    color: $nx-text-color-disabled;
+    border-color: var(--nx-color-interactive-border-disabled);
+    background-color: var(--nx-color-interactive-background-disabled);
+    color: var(--nx-color-text-disabled);
   }
 
   .MuiSlider-mark {
@@ -115,7 +114,7 @@
 
     // threat level 0
     border-radius: $border-radius 0 0 $border-radius;
-    color: $nx-threat-color-none;
+    color: var(--nx-color-threat-none);
 
     // the first mark only goes from 0 - 0.5, so is only 5% wide.
     // The rest (except the last) each go from (n - 0.5) to (n + 0.5), so are 10% wide with a -5% left margin.
@@ -132,18 +131,18 @@
       width: 10%;
 
       // threat level 1
-      color: $nx-threat-color-low;
+      color: var(--nx-color-threat-low);
 
       ~ .MuiSlider-mark {
         // threat level 2
-        color: $nx-threat-color-moderate;
+        color: var(--nx-color-threat-moderate);
 
         ~ .MuiSlider-mark {
           // threat level 3
 
           ~ .MuiSlider-mark {
             // threat level 4
-            color: $nx-threat-color-severe;
+            color: var(--nx-color-threat-severe);
 
             ~ .MuiSlider-mark {
               // threat level 5
@@ -156,7 +155,7 @@
 
                   ~ .MuiSlider-mark {
                     // threat level 8
-                    color: $nx-threat-color-critical;
+                    color: var(--nx-color-threat-critical);
 
                     ~ .MuiSlider-mark {
                       // threat level 9

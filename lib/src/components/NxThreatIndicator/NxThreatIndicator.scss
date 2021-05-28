@@ -4,14 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
 
 // eyeballed, assumes $nx-font-size surrounding text
 $nx-threat-indicator-vertical-alignment: -0.1em;
 
 .nx-threat-indicator {
-  font-size: $nx-font-size-s;
-  margin: 0 $nx-spacing-xs;
+  font-size: var(--nx-font-size-s);
+  margin: 0 var(--nx-spacing-2x);
   vertical-align: $nx-threat-indicator-vertical-alignment;
 }
 
@@ -27,25 +26,25 @@ $nx-threat-indicator-vertical-alignment: -0.1em;
 }
 
 .nx-threat-indicator--unspecified {
-  color: $nx-threat-color-unspecified;
+  color: var(--nx-color-threat-unspecified);
 }
 
 .nx-threat-indicator--none {
-  color: $nx-threat-color-none;
+  color: var(--nx-color-threat-none);
 }
 
 .nx-threat-indicator--low {
-  color: $nx-threat-color-low;
+  color: var(--nx-color-threat-low);
 }
 
 .nx-threat-indicator--moderate {
-  color: $nx-threat-color-moderate;
+  color: var(--nx-color-threat-moderate);
 }
 
 .nx-threat-indicator--severe {
-  color: $nx-threat-color-severe;
+  color: var(--nx-color-threat-severe);
 }
 
 .nx-threat-indicator--critical {
-  color: $nx-threat-color-critical;
+  color: var(--nx-color-threat-critical);
 }

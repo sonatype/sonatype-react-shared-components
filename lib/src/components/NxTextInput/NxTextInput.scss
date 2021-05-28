@@ -7,18 +7,18 @@
 @import '../../scss-shared/_nx-form-validation.scss';
 
 .nx-text-input {
-  margin-bottom: $nx-spacing-xl;
+  margin-bottom: var(--nx-spacing-8x);
 
   .nx-icon--invalid, .nx-icon--valid {
     display: none;
   }
 
   .nx-icon--invalid {
-    color: $nx-red-800;
+    color: var(--nx-color-validation-invalid);
   }
 
   .nx-icon--valid {
-    color: $nx-green-700;
+    color: var(--nx-color-validation-valid);
   }
 
   &.invalid {
@@ -35,10 +35,10 @@
 }
 
 .nx-text-input__invalid-message {
-  color: $nx-red-800;
-  font-size: $nx-font-size-xs;
+  color: var(--nx-color-validation-invalid);
+  font-size: var(--nx-font-size-xs);
   line-height: 16px;
-  margin-top: $nx-spacing-xs;
+  margin-top: var(--nx-spacing-2x);
   // this positions the invalid message inside the bottom padding of .nx-form-group which allows
   // us to maintain consistent spacing whether there is validation or not
   position: absolute;
