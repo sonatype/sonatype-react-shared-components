@@ -33,7 +33,7 @@ export default function NxModalPage() {
           window along with a backdrop mask over the rest of the page.
         </NxP>
         <h3>Props</h3>
-        <table className="nx-table nx-table--gallery-props">
+        <table className="nx-table">
           <thead>
             <tr className="nx-table-row">
               <th className="nx-cell nx-cell--header">Prop</th>
