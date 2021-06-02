@@ -111,7 +111,10 @@ $twisty-proportion-difference: 2px;
   }
 
   > .nx-counter {
+    @include nx-truncate-ellipsis;
+    box-sizing: border-box;
     flex-shrink: 0;
+    max-width: 110px;
   }
 }
 
