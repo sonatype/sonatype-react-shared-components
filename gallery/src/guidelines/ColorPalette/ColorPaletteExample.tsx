@@ -48,12 +48,15 @@ function fetchSwatches(): Record<string, string[]> {
 const bodyStyles = getComputedStyle(document.body);
 
 export default function ColorPaletteExample() {
-  const [swatches, setSwatches] = useState<Record<string, string[]>>({});
+  const [swatches, setSwatches] = useState<Record<string, string[]>>({}),
+      loadSwatches = () => setSwatches(fetchSwatches());
 
   useEffect(() => {
-    const listener = () => setSwatches(fetchSwatches());
-    window.addEventListener('load', listener);
-    return () => window.removeEventListener('load', listener);
+    loadSwatches();
+
+    // listen for when the page finishes loading, in case the stylesheets aren't all present yet
+    window.addEventListener('load', loadSwatches);
+    return () => window.removeEventListener('load', loadSwatches);
   }, []);
 
   return (
