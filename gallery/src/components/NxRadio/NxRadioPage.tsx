@@ -100,7 +100,7 @@ const NxRadioPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell">HTML <code className="nx-code">&lt;label&gt;</code> Attributes</td>
             <td className="nx-cell">
-              <NxTextLink external href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/label">
                 HTML Attributes
               </NxTextLink>
             </td>
