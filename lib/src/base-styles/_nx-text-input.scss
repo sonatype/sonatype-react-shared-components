@@ -9,6 +9,7 @@
   position: relative;
 
   width: var(--nx-width-form-element-normal);
+  max-width: 100%;
 
   &, &.pristine, &.pristine.valid {
     &:focus-within {
