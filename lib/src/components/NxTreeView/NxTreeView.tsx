@@ -50,7 +50,7 @@ const NxTreeView: FunctionComponent<Props> =
           triggerTooltipProps ? (
             // div necessary to avoid error message when tooltip is on disabled button
             <NxTooltip { ...triggerTooltipProps } >
-              <div>
+              <div className="nx-tree-view__tooltip">
                 {trigger}
               </div>
             </NxTooltip>
