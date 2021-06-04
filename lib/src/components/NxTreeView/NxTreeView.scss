@@ -18,14 +18,14 @@ $twisty-proportion-difference: 2px;
 */
 .nx-tree-view {
   box-sizing: border-box;
-  margin: var(--nx-spacing-4x) -8px;
+  margin: var(--nx-spacing-4x) calc(0px - var(--nx-spacing-2x));
 
   // Design specifies 300px wide not including the caret and its padding (which are themselves 30px)
   max-width: 330px;
 }
 
 .nx-tree-view--expanded {
-  > .nx-tree-view__trigger, > .nx-tree-view__tooltip > .nx-tree-view__trigger {
+  > .nx-tree-view__trigger, > .nx-tree-view__tooltip-wrapper > .nx-tree-view__trigger {
     > .nx-tree-view__twisty {
       transform: rotate(90deg);
       padding: 0 $twisty-proportion-difference;
