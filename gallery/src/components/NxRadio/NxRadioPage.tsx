@@ -101,7 +101,7 @@ const NxRadioPage = () =>
             <td className="nx-cell">HTML <code className="nx-code">&lt;label&gt;</code> Attributes</td>
             <td className="nx-cell">
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/label">
-                HTML Attributes
+                HTML Label Attributes
               </NxTextLink>
             </td>
             <td className="nx-cell">No</td>
