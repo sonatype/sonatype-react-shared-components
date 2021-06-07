@@ -19,7 +19,7 @@ $twisty-proportion-difference: 2px;
 .nx-tree-view {
   box-sizing: border-box;
   // left gets 7px which keeps the caret from overhanging the container
-  margin: var(--nx-spacing-4x) calc(0px - var(--nx-spacing-2x)) var(--nx-spacing-4x) calc(1px - var(--nx-spacing-2x));
+  margin: var(--nx-spacing-4x) calc(0px - var(--nx-spacing-2x)) var(--nx-spacing-4x) calc(#{$twisty-proportion-difference / 2} - var(--nx-spacing-2x));
 
   // Design specifies 360px max-width plus 16px of l/r negative margin
   max-width: 360px;
