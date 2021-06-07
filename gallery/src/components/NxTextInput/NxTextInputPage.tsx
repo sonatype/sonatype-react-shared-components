@@ -117,8 +117,11 @@ const NxTextInputPage = () =>
               HTML <code className="nx-code">&lt;textarea&gt;</code> Attributes
             </td>
             <td className="nx-cell">
-              <NxTextLink external href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
-                HTML Attributes
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/input">
+                Input Attributes
+              </NxTextLink>
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/textarea">
+                Textarea Attributes
               </NxTextLink>
             </td>
             <td className="nx-cell">No</td>
