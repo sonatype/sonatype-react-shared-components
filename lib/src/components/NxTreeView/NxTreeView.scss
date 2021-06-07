@@ -11,7 +11,7 @@
 // on the layout of surrounding elements.  However, we _want_ its rotation to affect the layout of surrounding
 // elements such that the title is always 8px from the nearest visible point on the caret. This variable
 // represents the distance necessary to make that happen
-$twisty-proportion-difference: 2px;
+$twisty-proportion-difference: 2.75px;
 
 /*
   #Tree view
@@ -19,7 +19,7 @@ $twisty-proportion-difference: 2px;
 .nx-tree-view {
   box-sizing: border-box;
   // left gets 7px which keeps the caret from overhanging the container
-  margin: var(--nx-spacing-4x) calc(0px - var(--nx-spacing-2x)) var(--nx-spacing-4x) calc(#{$twisty-proportion-difference / 2} - var(--nx-spacing-2x));
+  margin: var(--nx-spacing-4x) calc(0px - var(--nx-spacing-2x));
 
   // Design specifies 360px max-width plus 16px of l/r negative margin
   max-width: 360px;
