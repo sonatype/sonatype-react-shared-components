@@ -102,9 +102,3 @@ $nx-toggle-control-width: 44px;
 .nx-legend + .nx-toggle {
   margin-top: 0;
 }
-
-.nx-toggle--no-gap {
-  .nx-toggle__content {
-    flex-grow: 0;
-  }
-}
