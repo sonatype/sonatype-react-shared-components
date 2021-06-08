@@ -16,7 +16,7 @@ $nx-toggle-control-width: 44px;
 .nx-toggle {
   column-gap: 16px;
   display: grid;
-  grid-template-areas: "toggle text";
+  grid-template-areas: "toggle content";
   grid-template-columns: $nx-toggle-control-width 1fr;
   margin: var(--nx-spacing-4x) 0;
   overflow-wrap: anywhere;
@@ -75,7 +75,7 @@ $nx-toggle-control-width: 44px;
 }
 
 .nx-toggle__content {
-  grid-area: text;
+  grid-area: content;
 }
 
 .nx-toggle__control {
