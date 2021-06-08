@@ -84,8 +84,4 @@ describe('NxToggle', function() {
     it('looks disabled by default', simpleTest(disabledSelector));
     it('looks disabled when hovered', hoverTest(disabledSelector));
   });
-
-  describe('Gapless NxToggle', function() {
-    it('looks correct', simpleTest(gaplessSelector));
-  });
 });
