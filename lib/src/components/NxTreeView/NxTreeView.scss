@@ -70,7 +70,7 @@ $twisty-proportion-difference: 2.75px;
   font-weight: 600;
   text-align: left;
   // subtract 1 from all sides to make room for focus border
-  padding: calc(var(--nx-spacing-base) - 1px) calc(var(--nx-spacing-2x) - 1px );
+  padding: calc(var(--nx-spacing-base) - 1px) calc(var(--nx-spacing-2x) - 1px);
   width: 100%;
 
   &:hover, &:focus {
