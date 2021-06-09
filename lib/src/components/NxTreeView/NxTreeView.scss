@@ -11,23 +11,25 @@
 // on the layout of surrounding elements.  However, we _want_ its rotation to affect the layout of surrounding
 // elements such that the title is always 8px from the nearest visible point on the caret. This variable
 // represents the distance necessary to make that happen
-$twisty-proportion-difference: 2px;
+$twisty-proportion-difference: 2.75px;
 
 /*
   #Tree view
 */
 .nx-tree-view {
   box-sizing: border-box;
-  margin: var(--nx-spacing-4x) 0;
+  margin: var(--nx-spacing-2x) calc(0px - var(--nx-spacing-2x));
 
-  // Design specifies 300px wide not including the caret and its padding (which are themselves 30px)
-  max-width: 330px;
+  // Design specifies 360px max-width plus 16px of l/r negative margin
+  max-width: 360px;
 }
 
 .nx-tree-view--expanded {
-  > .nx-tree-view__trigger > .nx-tree-view__twisty {
-    transform: rotate(90deg);
-    padding: 0 $twisty-proportion-difference;
+  > .nx-tree-view__trigger, > .nx-tree-view__tooltip-wrapper > .nx-tree-view__trigger {
+    > .nx-tree-view__twisty {
+      transform: rotate(90deg);
+      padding: 0 $twisty-proportion-difference;
+    }
   }
 }
 
@@ -58,7 +60,8 @@ $twisty-proportion-difference: 2px;
   @include container-horizontal;
   align-items: center;
   background: none;
-  border: none;
+  border: 1px solid transparent;
+  border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   color: var(--nx-color-text-dark);
   cursor: pointer;
@@ -66,7 +69,8 @@ $twisty-proportion-difference: 2px;
   font: inherit;
   font-weight: 600;
   text-align: left;
-  padding: 0;
+  // subtract 1 from all sides to make room for focus border
+  padding: calc(var(--nx-spacing-base) - 1px) calc(var(--nx-spacing-2x) - 1px);
   width: 100%;
 
   &:hover, &:focus {
@@ -74,16 +78,9 @@ $twisty-proportion-difference: 2px;
   }
 
   &:focus {
+    border-color: var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
     outline: none;
-
-    .nx-tree-view__twisty {
-      filter: drop-shadow(var(--nx-drop-shadow-focus));
-      stroke: var(--nx-color-interactive-border-focus);
-
-      // This is intepreted in the SVG's coordinate space. The svg has a viewbox height of 512 and an on-page
-      // height of 22px so this computes to 1 on-page pixel
-      stroke-width: calc(512px / 22);
-    }
   }
 }
 
@@ -135,7 +132,7 @@ $twisty-proportion-difference: 2px;
     calc(var(--nx-spacing-base) - 1px)
     calc(var(--nx-spacing-6x) - 1px)
     calc(var(--nx-spacing-base) - 1px)
-    calc(var(--nx-spacing-6x) + 2 * #{$twisty-proportion-difference} - 1px);
+    calc(var(--nx-spacing-8x) + 2 * #{$twisty-proportion-difference} - 1px);
 
   text-overflow: ellipsis;
   white-space: nowrap;
