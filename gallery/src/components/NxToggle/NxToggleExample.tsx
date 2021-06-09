@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { NxToggle, useToggle } from '@sonatype/react-shared-components';
+import { NxToggle, useToggle, NxP } from '@sonatype/react-shared-components';
 
 function NxToggleExample() {
   const [isWarpOn, toggleWarp] = useToggle(false),
@@ -36,9 +36,9 @@ function NxToggleExample() {
                 isChecked={isDisabled}>
         This toggle is disabled
       </NxToggle>
-      <p>
+      <NxP>
         {isWarpOn && 'Warp drive started'} {isKrakenOut && ' The Kraken is out!'} {isShapes && ' Shapes are allowed'}
-      </p>
+      </NxP>
     </>
   );
 }
