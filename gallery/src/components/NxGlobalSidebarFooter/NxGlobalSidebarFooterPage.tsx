@@ -37,10 +37,11 @@ export default function NxGlobalSidebarFooterPage() {
             <NxTable.Body>
               <NxTable.Row>
                 <NxTable.Cell>supportText</NxTable.Cell>
-                <NxTable.Cell>string</NxTable.Cell>
+                <NxTable.Cell>JSX | string</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  Alternate text that should appear in the support link, by default the text reads "Help and Support".
+                  Alternate text content that should appear in the support link, by default the text reads
+                  "Help and Support".
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -54,17 +55,18 @@ export default function NxGlobalSidebarFooterPage() {
               </NxTable.Row>
               <NxTable.Row>
                 <NxTable.Cell>releaseText</NxTable.Cell>
-                <NxTable.Cell>String</NxTable.Cell>
+                <NxTable.Cell>JSX | string</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
                   Text that indicates what version of the software is currently being used. Most typically this would
                   take the form of a product name and a version number: "Firewall v2.3", but could also be generic text
-                  and a number: "Release 3.1.4" or even just a number: "4.5.1".
+                  and a number: "Release 3.1.4" or even just a number: "4.5.1". This prop can take JSX rather than a
+                  plain string in order to allow for greater styling customization.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
                 <NxTable.Cell>productTagLine</NxTable.Cell>
-                <NxTable.Cell>String</NxTable.Cell>
+                <NxTable.Cell>JSX | string</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
                   This text is meant to indicate when a product is part of a suite or family of products, for
