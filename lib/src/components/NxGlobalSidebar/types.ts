@@ -55,17 +55,17 @@ export const nxGlobalSidebarNavigationLinkPropTypes: ValidationMap<NxGlobalSideb
 };
 
 export interface NxGlobalSidebarFooterProps extends HTMLAttributes<HTMLDivElement> {
-  supportText?: string | null;
+  supportText?: ReactNode | null;
   supportLink?: string | null;
-  releaseText?: string | null;
-  productTagLine?: string | null;
+  releaseText?: ReactNode | null;
+  productTagLine?: ReactNode | null;
   showCreatedBy?: boolean | null;
 }
 
 export const nxGlobalSidebarFooterPropTypes: ValidationMap<NxGlobalSidebarFooterProps> = {
-  supportText: PropTypes.string,
+  supportText: PropTypes.node,
   supportLink: PropTypes.string,
-  releaseText: PropTypes.string,
-  productTagLine: PropTypes.string,
+  releaseText: PropTypes.node,
+  productTagLine: PropTypes.node,
   showCreatedBy: PropTypes.bool
 };

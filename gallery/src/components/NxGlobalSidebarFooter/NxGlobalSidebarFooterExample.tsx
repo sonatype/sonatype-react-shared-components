@@ -18,7 +18,8 @@ import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@for
 const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 
 export default function NxGlobalSidebarFooterExample() {
-  const [sidebarOpen, onToggleCollapse] = useToggle(true);
+  const [sidebarOpen, onToggleCollapse] = useToggle(true),
+      releaseText = <>React <em>Shared</em> Components 3.1.4</>;
 
   return (
     <>
@@ -37,7 +38,7 @@ export default function NxGlobalSidebarFooterExample() {
         </NxGlobalSidebarNavigation>
         <NxGlobalSidebarFooter supportText="Support for RSC"
                                supportLink="https://github.com/sonatype/sonatype-react-shared-components"
-                               releaseText="React Shared Components 3.1.4"
+                               releaseText={releaseText}
                                productTagLine="Powered by PLAID VILLAIN" />
       </NxGlobalSidebar>
       <NxPageMain>Page content</NxPageMain>
