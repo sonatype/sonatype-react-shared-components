@@ -6,13 +6,11 @@
  */
 @import '../../scss-shared/nx-text-helpers';
 
-$nx-toggle-control-width: 44px;
-
 .nx-toggle {
   column-gap: 16px;
   display: grid;
   grid-template-areas: "toggle content";
-  grid-template-columns: $nx-toggle-control-width 1fr;
+  grid-template-columns: auto 1fr;
   margin: var(--nx-spacing-4x) 0;
   overflow-wrap: anywhere;
   max-width: var(--nx-width-form-element-wide);
@@ -84,7 +82,7 @@ $nx-toggle-control-width: 44px;
   grid-area: toggle;
   height: 24px;
   padding: calc(var(--nx-spacing-base) - 1px);
-  width: $nx-toggle-control-width;
+  width: 44px;
 }
 
 .nx-toggle__indicator {
