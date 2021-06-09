@@ -6,11 +6,6 @@
  */
 @import '../../scss-shared/nx-text-helpers';
 
-// In safari, the width: 0 and -moz-appearance settings fail to hide the <input>.
-// So instead, we use negative margin on the checkbox and offsetting positive margin on the toggle to hide
-// the <input> under the toggle
-$nx-toggle-input-hide-hack-spacing: var(--nx-spacing-2x);
-
 $nx-toggle-control-width: 44px;
 
 .nx-toggle {
@@ -56,6 +51,8 @@ $nx-toggle-control-width: 44px;
   }
 }
 
+// In safari, the width: 0 and -moz-appearance settings fail to hide the <input>.
+// So instead we use margin on the checkbox to hide the <input> under the toggle.
 .nx-toggle__input {
   grid-area: toggle;
   margin: 0 0 0 var(--nx-spacing-3x);
