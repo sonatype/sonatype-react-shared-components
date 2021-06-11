@@ -20,22 +20,22 @@ const NxListClickableExample = () =>
       <button className="nx-list__btn">
         <span className="nx-list__text nx-truncate-ellipsis">
           This list item should be truncated at the right end edge. youtube weathered network network systemic
-          systema claymore mine voodoo god garage monofilament realism order-flow corporation car footage vinyl.
+          systema claymore mine voodoo
         </span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </button>
     </li>
     <li className="nx-list__item nx-list__item--link selected" aria-selected="true">
       <button className="nx-list__btn">
-        <span className="nx-list__text">Third element</span>
+        <span className="nx-list__text">Action 3</span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </button>
     </li>
     <li className="nx-list__item nx-list__item--link">
-      <button className="nx-list__btn selected">
+      <button className="nx-list__btn selected" aria-pressed="true">
         <span className="nx-list__text">Action 4</span>
         <span className="nx-list__subtext">
-          This list item is selected This is a fourth line.
+          This list item demonstrates the selected styles
         </span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </button>
