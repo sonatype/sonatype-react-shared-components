@@ -1,21 +1,29 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-colors';
+@import '../../scss-shared/nx-text-helpers';
 
 .nx-tooltip {
-  &.MuiTooltip-tooltipPlacementTop, &.MuiTooltip-tooltipPlacementBottom {
-    margin: 6px 0;
-  }
-  &.MuiTooltip-tooltipPlacementRight, &.MuiTooltip-tooltipPlacementLeft {
-    margin: 0 6px;
+  // for specificity
+  &.MuiTooltip-tooltip {
+    @include semi-bold;
+
+    box-sizing: border-box;
+    background-color: var(--nx-swatch-grey-05);
+    border-radius: var(--nx-border-radius);
+    font-size: var(--nx-font-size-s);
+    line-height: var(--nx-line-height);
+    max-width: 600px;
+    padding: var(--nx-spacing-2x) var(--nx-spacing-4x);
   }
 
-  &.nx-tooltip--validation-error {
-    color: $nx-text-color-error;
-    background-color: $nx-fail-color-bg;
+  &.MuiTooltip-tooltipPlacementTop, &.MuiTooltip-tooltipPlacementBottom {
+    margin: var(--nx-spacing-2x) 0;
+  }
+  &.MuiTooltip-tooltipPlacementRight, &.MuiTooltip-tooltipPlacementLeft {
+    margin: 0 var(--nx-spacing-2x);
   }
 }

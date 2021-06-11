@@ -6,13 +6,13 @@
  */
 import React, { FunctionComponent, ReactElement } from 'react';
 import * as PropTypes from 'prop-types';
-import SyntaxHighlighter from 'react-syntax-highlighter/prism';
-import { atomDark } from 'react-syntax-highlighter/dist/styles/prism';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export interface Props {
   content: string;
   language?: string | null;
-};
+}
 
 const propTypes: PropTypes.ValidationMap<Props> = {
   content: PropTypes.string.isRequired,

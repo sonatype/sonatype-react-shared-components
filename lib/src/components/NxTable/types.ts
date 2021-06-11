@@ -29,7 +29,7 @@ export const nxTableBodyPropTypes: PropTypes.ValidationMap<NxTableBodyProps> = {
 };
 
 export type NxTableCellProps =
-    (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<HTMLTableHeaderCellElement>) & {
+    (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<HTMLTableCellElement>) & {
       metaInfo?: boolean | null;
       isNumeric?: boolean | null;
       isSortable?: boolean | null;
@@ -60,11 +60,13 @@ export type NxTableRowProps = HTMLAttributes<HTMLTableRowElement> & {
   isFilterHeader?: boolean | null;
   isClickable?: boolean | null;
   selected?: boolean | null;
+  clickAccessibleLabel?: string | null;
 };
 
 export const nxTableRowPropTypes: PropTypes.ValidationMap<NxTableRowProps> = {
   isFilterHeader: PropTypes.bool,
   isClickable: PropTypes.bool,
   selected: PropTypes.bool,
+  clickAccessibleLabel: PropTypes.string,
   children: PropTypes.node
 };

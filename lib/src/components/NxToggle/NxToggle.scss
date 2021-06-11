@@ -1,0 +1,99 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-text-helpers';
+
+.nx-toggle {
+  column-gap: 16px;
+  display: grid;
+  grid-template-areas: "toggle content";
+  grid-template-columns: auto 1fr;
+  margin: var(--nx-spacing-4x) 0;
+  overflow-wrap: anywhere;
+  max-width: var(--nx-width-form-element-wide);
+
+  &.nx-toggle--disabled {
+    &, &:hover {
+      cursor: default;
+
+      .nx-toggle__control {
+        background-color: var(--nx-color-interactive-background-disabled);
+        border-color: var(--nx-color-interactive-border-disabled);
+      }
+      .nx-toggle__indicator {
+        background-color: var(--nx-color-interactive-border-disabled);
+      }
+    }
+  }
+
+  &:focus-within {
+    .nx-toggle__control {
+      border-color: var(--nx-color-interactive-border-focus);
+      filter: drop-shadow(var(--nx-drop-shadow-focus));
+
+      &:hover {
+        border-color: var(--nx-swatch-grey-05);
+      }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .nx-toggle__control {
+      border-color: var(--nx-swatch-grey-05);
+    }
+  }
+}
+
+// In safari, the width: 0 and -moz-appearance settings fail to hide the <input>.
+// So instead we use margin on the checkbox to hide the <input> under the toggle.
+.nx-toggle__input {
+  grid-area: toggle;
+  margin: 0 0 0 var(--nx-spacing-3x);
+  width: 0;
+  -moz-appearance: none;
+
+  &:checked {
+    + .nx-toggle__control {
+      background-color: var(--nx-swatch-blue-40);
+
+      .nx-toggle__indicator {
+        background-color: var(--nx-swatch-white);
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+.nx-toggle__content {
+  grid-area: content;
+}
+
+.nx-toggle__control {
+  background-color: var(--nx-swatch-white);
+  border: 1px solid var(--nx-swatch-blue-40);
+  border-radius: 12px;
+  box-sizing: border-box;
+  display: flex;
+  grid-area: toggle;
+  height: 24px;
+  padding: calc(var(--nx-spacing-base) - 1px);
+  width: 44px;
+}
+
+.nx-toggle__indicator {
+  background-color: var(--nx-swatch-blue-40);
+  border-radius: 8px;
+  height: 16px;
+  margin-left: 0;
+  width: 16px;
+  transition: margin-left 0.35s;
+}
+
+.nx-legend + .nx-toggle {
+  margin-top: 0;
+}

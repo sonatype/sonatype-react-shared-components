@@ -7,8 +7,9 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxCode } from '@sonatype/react-shared-components';
 
-const nxCodeExampleCode = require('!!raw-loader!./NxCodeExample.html').default;
+const nxCodeExampleCode = require('./NxCodeExample.html');
 
 const NxCodePage = () => {
   return (
@@ -17,7 +18,8 @@ const NxCodePage = () => {
         <p className="nx-p">
           Using the <code className="nx-code">&lt;code&gt;</code> HTML tag with the
           <code className="nx-code">.nx-code</code> className applies a monospace font and other styling to make your
-          code snippets stand out.
+          code snippets stand out. When working in React, the <NxCode>NxCode</NxCode> component is available for
+          a more convenient way to apply these styles.
         </p>
         <p className="nx-p">
           <code className="nx-code">.nx-code</code> is used extensively throughout the RSC Gallery.

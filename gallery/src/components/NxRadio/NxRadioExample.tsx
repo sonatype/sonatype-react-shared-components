@@ -6,21 +6,14 @@
  */
 import React, { useState } from 'react';
 
-import { NxRadio } from '@sonatype/react-shared-components';
+import { NxRadio, NxFieldset } from '@sonatype/react-shared-components';
 
 export default function NxRadioExample() {
   const [color, setColor] = useState<string | null>(null);
 
-  /**
-   * TS+React freak out when they see a possible `null` being used in
-   * a `style` tag – so we give it a default.
-   */
-  const appliedColor = color || 'black';
-
   return (
     <>
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend" style={{color: appliedColor}}>Selected Color: {color}</legend>
+      <NxFieldset label={`Selected Color: ${color}`}>
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
@@ -45,7 +38,7 @@ export default function NxRadioExample() {
           Blue - but a very long and verbose blue that makes for a long label, so long that it should trigger ellipsis
           truncation if I have counted my characters closely enough
         </NxRadio>
-      </fieldset>
+      </NxFieldset>
     </>
   );
 }

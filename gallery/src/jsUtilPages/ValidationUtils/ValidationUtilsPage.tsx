@@ -7,9 +7,10 @@
 import React from 'react';
 import { GalleryExampleTile, GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
-const validationErrorsExampleCode = require('!!raw-loader!./ValidationErrorsExample').default,
-    hasValidationErrorsExampleCode = require('!!raw-loader!./HasValidationErrorsExample').default,
-    getFirstValidationErrorExampleCode = require('!!raw-loader!./GetFirstValidationErrorExample').default;
+const validationErrorsExampleCode = require('./ValidationErrorsExample?raw'),
+    hasValidationErrorsExampleCode = require('./HasValidationErrorsExample?raw'),
+    getFirstValidationErrorExampleCode = require('./GetFirstValidationErrorExample?raw'),
+    combineValidationErrorsExampleCode = require('./CombineValidationErrorsExample?raw');
 
 const ValidationUtilsPage = () =>
   <>
@@ -45,6 +46,14 @@ const ValidationUtilsPage = () =>
       the given <code className="nx-code">ValidationErrors</code> or null if none are present.
       This is the logic that <code className="nx-code">NxTextInput</code> follows internally to
       select which validation error message to display.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="combineValidationErrors"
+                        codeExamples={combineValidationErrorsExampleCode}>
+      <code className="nx-code">combineValidationErrors</code> takes a series
+      of <code className="nx-code">ValidationErrors</code> objects as arguments and returns a
+      single <code className="nx-code">ValidationErrors</code> object containing all of the errors in those
+      arguments, in the same order.
     </GalleryExampleTile>
   </>;
 

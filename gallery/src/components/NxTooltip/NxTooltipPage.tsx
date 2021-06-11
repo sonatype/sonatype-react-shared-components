@@ -10,9 +10,11 @@ import { NxInfoAlert } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxTooltipExample from './NxTooltipExample';
+import NxTooltipWrappingExample from './NxTooltipWrappingExample';
 
-const tooltipsExampleCode = require('!!raw-loader!./NxTooltipExample').default,
-    tooltipsExampleStyles = require('!!raw-loader!./NxTooltipExample.scss').default;
+const tooltipsExampleCode = require('./NxTooltipExample?raw'),
+    wrappingTooltipsExampleCode = require('./NxTooltipWrappingExample?raw'),
+    tooltipsExampleStyles = require('./NxTooltipExample.scss?raw');
 
 export default function NxTooltipPage() {
   const codeExamples = [tooltipsExampleCode, { content: tooltipsExampleStyles, language: 'scss' }];
@@ -88,6 +90,11 @@ export default function NxTooltipPage() {
                           liveExample={NxTooltipExample}>
         This example demonstrates a series of components with tooltips using various
         configuration options.
+      </GalleryExampleTile>
+      <GalleryExampleTile title="Wrapping Example"
+                          codeExamples={wrappingTooltipsExampleCode}
+                          liveExample={NxTooltipWrappingExample}>
+        This example demonstrates a tooltip who's content is long enough to wrap. Wrapping occurs at 600px.
       </GalleryExampleTile>
     </>
   );

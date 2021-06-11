@@ -7,10 +7,11 @@
 import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxStatefulDropdownExample from './NxStatefulDropdownExample';
 
-const nxStatefulDropdownExampleCode = require('!!raw-loader!./NxStatefulDropdownExample').default;
+const nxStatefulDropdownExampleCode = require('./NxStatefulDropdownExample?raw');
 
 const NxStatefulDropdownPage = () =>
   <>
@@ -69,18 +70,16 @@ const NxStatefulDropdownPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">HTML div Attributes</td>
+            <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
             <td className="nx-cell">
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://developer.mozilla.org/es/docs/Web/HTML/Elemento/div">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/element/div">
                 HTML div Attributes
-              </a>
+              </NxTextLink>
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               NxStatefulDropdown supports any html attribute that's normally supported by
-              {' '}<code className="nx-code">div</code> elements.
+              {' '}<code className="nx-code">&lt;div&gt;</code> elements.
             </td>
           </tr>
         </tbody>

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
 import classnames from 'classnames';
 import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
 
@@ -14,6 +14,8 @@ import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
 import './NxDropdown.scss';
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+import useDropdownEvents from '../../util/useDropdownEvents';
 
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   const {
@@ -21,18 +23,31 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
     label,
     className,
     isOpen,
-    onToggleCollapse,
     disabled,
     children,
     toggleTooltip,
+    onToggleCollapse: externalOnToggleCollapse,
+    onKeyDown: externalOnKeyDown,
+    onCloseClick,
+    onCloseKeyDown,
     ...attrs
   } = props;
+
+  const { onKeyDown, onToggleCollapse } =
+      useDropdownEvents(isOpen, disabled, externalOnToggleCollapse, onCloseClick, onCloseKeyDown, externalOnKeyDown);
 
   const buttonClasses = classnames('nx-dropdown__toggle', { disabled, open: isOpen });
 
   const classes = classnames('nx-dropdown', className);
 
   const toggleTooltipProps = toggleTooltip && wrapTooltipProps(toggleTooltip);
+
+  // Wrap .nx-dropdown-button and .nx-dropdown-link children in overflow tooltips
+  const wrappedChildren = children && React.Children.map<ReactElement, ReactElement>(children, child => (
+    /(\s|^)nx-dropdown-(button|link)(\s|$)/.test(child.props.className) ?
+      <NxOverflowTooltip>{child}</NxOverflowTooltip> :
+      child
+  ));
 
   const toggle = (
     <NxButton type="button"
@@ -47,12 +62,12 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   );
 
   return (
-    <div className={classes} {...attrs}>
+    <div className={classes} onKeyDown={onKeyDown} {...attrs}>
       { toggleTooltipProps ? <NxTooltip { ...toggleTooltipProps } >{toggle}</NxTooltip> : toggle }
 
       { isOpen &&
         <div className="nx-dropdown-menu">
-          {children}
+          {wrappedChildren}
         </div>
       }
     </div>

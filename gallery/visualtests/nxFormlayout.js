@@ -21,4 +21,24 @@ describe('nx-form', function() {
   describe('nx-form horizontal layout', function() {
     it('looks right', simpleTest(horizontablFormSelector));
   });
+
+  describe('nx-form-group deprecated layout', function() {
+    beforeEach(async function() {
+      await browser.url('#/pages/nx-form-group');
+    });
+
+    const selector = '#nx-form-group-deprecated-example .nx-form-group';
+
+    it('looks right', simpleTest(selector));
+  });
+
+  describe('nx-fieldset deprecated layout', function() {
+    beforeEach(async function() {
+      await browser.url('#/pages/nx-fieldset');
+    });
+
+    const selector = '#nx-fieldset-deprecated-example .nx-fieldset';
+
+    it('looks right', simpleTest(selector));
+  });
 });

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
@@ -7,18 +7,18 @@
 @import '../../scss-shared/_nx-form-validation.scss';
 
 .nx-text-input {
-  margin-bottom: $nx-spacing-xl;
+  margin-bottom: var(--nx-spacing-8x);
 
   .nx-icon--invalid, .nx-icon--valid {
     display: none;
   }
 
   .nx-icon--invalid {
-    color: #cd0028;
+    color: var(--nx-color-validation-invalid);
   }
 
   .nx-icon--valid {
-    color: #007623;
+    color: var(--nx-color-validation-valid);
   }
 
   &.invalid {
@@ -35,10 +35,10 @@
 }
 
 .nx-text-input__invalid-message {
-  color: #cd0028;
-  font-size: $nx-font-size-xs;
+  color: var(--nx-color-validation-invalid);
+  font-size: var(--nx-font-size-xs);
   line-height: 16px;
-  margin-top: $nx-spacing-xs;
+  margin-top: var(--nx-spacing-2x);
   // this positions the invalid message inside the bottom padding of .nx-form-group which allows
   // us to maintain consistent spacing whether there is validation or not
   position: absolute;

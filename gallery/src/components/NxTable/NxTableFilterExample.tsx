@@ -6,14 +6,7 @@
  */
 import React, {useState} from 'react';
 
-import {
-  NxTable,
-  NxTableBody,
-  NxTableCell,
-  NxTableHead,
-  NxTableRow,
-  NxFilterInput
-} from '@sonatype/react-shared-components';
+import { NxTable, NxFilterInput } from '@sonatype/react-shared-components';
 import { toLower, uniq } from 'ramda';
 
 const tableData = [
@@ -28,7 +21,7 @@ const tableData = [
   {name: 'Maria', country: 'Spain'}
 ];
 
-interface Row { name: string; country: string };
+interface Row { name: string; country: string }
 
 const NxTableFilterExample = () => {
 
@@ -70,20 +63,20 @@ const NxTableFilterExample = () => {
   };
 
   return (
-    <div className="nx-scrollable nx-scrollable--table-container">
-      <NxTable className="nx-table nx-table--scrollable">
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Name</NxTableCell>
-            <NxTableCell>Country</NxTableCell>
-          </NxTableRow>
-          <NxTableRow isFilterHeader>
-            <NxTableCell>
+    <div className="nx-scrollable nx-table-container">
+      <NxTable className="nx-table">
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Name</NxTable.Cell>
+            <NxTable.Cell>Country</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row isFilterHeader>
+            <NxTable.Cell>
               <NxFilterInput placeholder="Type a name"
                              onChange={onFilterNameChange}
                              value={nameFilter}/>
-            </NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+            <NxTable.Cell>
               <NxFilterInput placeholder="Select a country"
                              list={listId}
                              onChange={onFilterCountryChange}
@@ -95,17 +88,17 @@ const NxTableFilterExample = () => {
                   ))
                 }
               </datalist>
-            </NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody emptyMessage="No data">
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body emptyMessage="No data">
           {rows.map((row: Row) =>
-            <NxTableRow key={row.name.concat(row.country)}>
-              <NxTableCell>{row.name}</NxTableCell>
-              <NxTableCell>{row.country}</NxTableCell>
-            </NxTableRow>
+            <NxTable.Row key={row.name.concat(row.country)}>
+              <NxTable.Cell>{row.name}</NxTable.Cell>
+              <NxTable.Cell>{row.country}</NxTable.Cell>
+            </NxTable.Row>
           )}
-        </NxTableBody>
+        </NxTable.Body>
       </NxTable>
     </div>
   );

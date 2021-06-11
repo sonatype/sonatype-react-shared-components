@@ -111,7 +111,9 @@ describe('NxStatefulDropdown', () => {
         </div>,
         { attachTo: container }
       );
+    });
 
+    act(() => {
       // Jest/JSDom need actual events to be able to trigger effects properly
       // See https://stackoverflow.com/questions/27557624/simulating-click-on-document-reactjs-jsdom
       element.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', {
@@ -151,7 +153,9 @@ describe('NxStatefulDropdown', () => {
         </NxStatefulDropdown>,
         { attachTo: container }
       );
+    });
 
+    act(() => {
       element.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));

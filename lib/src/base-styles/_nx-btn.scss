@@ -1,16 +1,15 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-
 %nx-btn--disabled {
   &.disabled, &[disabled] {
     &, &:hover, &:focus {
-      background-color: #e9e9e9;
-      border-color: #949494;
-      color: #949494;
+      background-color: var(--nx-color-interactive-background-disabled);
+      border-color: var(--nx-color-interactive-border-disabled);
+      color: var(--nx-color-text-disabled);
       cursor: default;
     }
   }
@@ -21,32 +20,34 @@
   @include container-horizontal;
   @extend %nx-btn--disabled;
 
-  background-color: $nx-white;
-  border: 1px solid $nx-blue-600;
+  background-color: var(--nx-swatch-white);
+  border: 1px solid var(--nx-swatch-blue-40);
   border-radius: 6px;
-  color: $nx-blue-600;
+  color: var(--nx-swatch-blue-40);
   cursor: pointer;
   display: inline-block;
-  font-size: $nx-font-size;
-  line-height: $nx-line-height;
-  margin: 0 $nx-spacing-l;
-  padding: $nx-spacing-xs $nx-spacing-l;
+  font-size: var(--nx-font-size);
+  line-height: var(--nx-line-height);
+  margin: 0 var(--nx-spacing-6x);
+  padding: var(--nx-spacing-2x) var(--nx-spacing-6x);
   text-align: center;
 
   &:hover {
-    background-color: $nx-blue-300;
+    background-color: var(--nx-swatch-blue-90);
   }
 
   &:focus {
-    border: 1px solid #02a6d9;
-    box-shadow: $nx-focus-box-shadow;
+    border: 1px solid var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
     outline: 0;
   }
 
   &:active {
-    background-color: $nx-blue-100;
+    background-color: var(--nx-swatch-blue-90);
   }
+}
 
+.nx-btn, .nx-segmented-btn {
   + .nx-btn {
     margin-left: 0;
   }
@@ -55,16 +56,16 @@
 .nx-btn--primary {
   @extend %nx-btn--disabled;
 
-  background-color: $nx-blue-600;
-  border-color: $nx-blue-600;
-  color: $nx-white;
+  background-color: var(--nx-swatch-blue-40);
+  border-color: transparent;
+  color: var(--nx-swatch-white);
 
   &:hover {
-    background-color: $nx-blue-800;
+    background-color: var(--nx-swatch-blue-20);
   }
 
   &:active {
-    background-color:  $nx-blue-400;
+    background-color:  var(--nx-swatch-blue-60);
   }
 }
 
@@ -72,12 +73,12 @@
   @extend %nx-btn--disabled;
 
   background-color: transparent;
-  border-color: #d1d6f0;
-  color: #2c2c2c;
+  border-color: var(--nx-swatch-indigo-90);
+  color: var(--nx-color-text-dark);
 
   &:hover {
     background-color: transparent;
-    border-color: #2c2c2c;
+    border-color: var(--nx-swatch-grey-05);
   }
 
   &:focus {
@@ -85,36 +86,36 @@
   }
 
   &:active {
-    background-color: #f1f3fa;
-    border-color: #2c2c2c;
+    background-color: var(--nx-swatch-grey-95);
+    border-color: var(--nx-swatch-grey-05);
   }
 }
 
 .nx-btn--error {
   @extend %nx-btn--disabled;
 
-  background-color: #cd0028;
-  border-color: #cd0028;
-  color: $nx-off-white;
+  background-color: var(--nx-swatch-red-45);
+  border-color: var(--nx-swatch-red-45);
+  color: var(--nx-swatch-white);
 
   &:hover, &:focus, &:active {
-    background-color: #a80222;
-    border-color: #a80222;
-    color: $nx-off-white;
+    background-color: var(--nx-swatch-red-30);
+    border-color: var(--nx-swatch-red-30);
+    color: var(--nx-swatch-white);
   }
 
   &:focus {
-    background-color: #cd0028;
-    border-color: #43cbf5;
+    background-color: var(--nx-swatch-red-45);
+    border-color: var(--nx-color-interactive-border-focus);
   }
 
   &:active {
-    background-color: #fc496c;
-    border-color: #fc496c;
+    background-color: var(--nx-swatch-red-60);
+    border-color: var(--nx-swatch-red-60);
   }
 
   .nx-icon {
-    color: $nx-white;
+    color: var(--nx-swatch-white);
     height: 16px;
   }
 }
@@ -123,10 +124,13 @@
   @extend .nx-btn--tertiary;
 
   border-color: transparent;
-  height: 32px;
-  padding: 0;
-  width: 32px;
-  min-width: 0;
+
+  // icon width can vary, just don't bother with padding in this direction and let the centering work it out
+  padding-left: 0;
+  padding-right: 0;
+
+  // essentially, calculate the width the same way that the height is calculated (line height plus padding and border)
+  width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-2x) + 2px);
 
   .nx-icon {
     height: 1em;

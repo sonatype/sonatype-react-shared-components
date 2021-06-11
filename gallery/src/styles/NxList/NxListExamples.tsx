@@ -8,18 +8,21 @@ import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxListClickableExample from './NxListClickableExample';
+import NxListClickableLinksExample from './NxListClickableLinksExample';
 import NxListWithActionsExample from './NxListWithActionsExample';
 import NxListErrorExample from './NxListErrorStateExample';
 import NxListLoadingExample from './NxListLoadingExample';
 
-const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').default,
-    NxListClickableCode = require('!!raw-loader!./NxListClickableExample').default,
-    NxListMultiLineCode = require('!!raw-loader!./NxListMultiLineExample.html').default,
-    NxListBulletedCode = require('!!raw-loader!./NxListBulletedExample.html').default,
-    NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.tsx').default,
-    NxListEmptyCode = require('!!raw-loader!./NxListEmptyExample.html').default,
-    NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.tsx').default,
-    NxListLoadingCode = require('!!raw-loader!./NxListLoadingExample.tsx').default;
+const NxListSimpleCode = require('./NxListDefaultExample.html'),
+    NxListClickableCode = require('./NxListClickableExample?raw'),
+    NxListClickableLinksCode = require('./NxListClickableLinksExample?raw'),
+    NxListMultiLineCode = require('./NxListMultiLineExample.html'),
+    NxListBulletedCode = require('./NxListBulletedExample.html'),
+    NxListWithActionsCode = require('./NxListWithActionsExample.tsx?raw'),
+    NxListEmptyCode = require('./NxListEmptyExample.html'),
+    NxListErrorStateCode = require('./NxListErrorStateExample.tsx?raw'),
+    NxListLoadingCode = require('./NxListLoadingExample.tsx?raw'),
+    NxListDescriptionCode = require('./NxListDescriptionExample.html');
 
 const NxListsExamples = () =>
   <>
@@ -35,6 +38,14 @@ const NxListsExamples = () =>
                         liveExample={NxListClickableExample}
                         codeExamples={NxListClickableCode}>
       An <code className="nx-code">nx-list</code> demonstrating clickable, selection, and disabled styles.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Clickable List Links Example"
+                        id="nx-list-clickable-links-example"
+                        liveExample={NxListClickableLinksExample}
+                        codeExamples={NxListClickableLinksCode}>
+      An <code className="nx-code">nx-list</code> demonstrating clickable and selection styles where the
+      clickable aspects of the list items are defined using <code className="nx-code">&lt;a&gt;</code> tags.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Bulleted List Example"
@@ -81,6 +92,14 @@ const NxListsExamples = () =>
                         codeExamples={NxListLoadingCode}>
       A demonstration of the expected styling and placement for a loading indicator
       within <code className="nx-code">nx-list</code>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxList description list example"
+                        id="nx-list-description-example"
+                        htmlExample={NxListDescriptionCode}
+                        codeExamples={NxListDescriptionCode}>
+      Basic <code className="nx-code">nx-list--description</code> with a heading. Wrapping is demonstrated in both
+      the terms and the descriptions.
     </GalleryExampleTile>
   </>;
 

@@ -18,7 +18,7 @@ import {
 
 import NxStatefulTabsSimpleExample from './NxStatefulTabsSimpleExample';
 
-const NxStatefulTabsSimpleCode = require('!!raw-loader!./NxStatefulTabsSimpleExample').default;
+const NxStatefulTabsSimpleCode = require('./NxStatefulTabsSimpleExample?raw');
 
 export default function NxStatefulTabsPage() {
   return (

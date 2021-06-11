@@ -7,19 +7,23 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxRadioExample from './NxRadioExample';
 import NxRadioNowrapExample from './NxRadioNowrapExample';
 
-const exampleCode = require('!!raw-loader!./NxRadioExample').default;
-const nowrapExampleCode = require('!!raw-loader!./NxRadioNowrapExample').default;
+const exampleCode = require('./NxRadioExample?raw');
+const nowrapExampleCode = require('./NxRadioNowrapExample?raw');
 
 const NxRadioPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">Custom Radio input.</p>
       <p className="nx-p">Child VDOM will be used as a label following the radio button itself.</p>
-      <p className="nx-p">Props:</p>
+      <p className="nx-p">
+        NxRadio can receive any attribute that would be valid on an
+        HTML <code className="nx-code">&lt;label&gt;</code> as well as the following props:
+      </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -50,7 +54,7 @@ const NxRadioPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function ((currentValue: string) => void)</td>
+            <td className="nx-cell">Function ((currentValue: string) =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">A callback for when the radio is selected. The value is passed as an argument.</td>
           </tr>
@@ -83,16 +87,28 @@ const NxRadioPage = () =>
             <td className="nx-cell">An id attribute to be added to the radio input</td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">Label HTML Attributes</td>
+            <td className="nx-cell">overflowTooltip</td>
+            <td className="nx-cell">boolean</td>
+            <td className="nx-cell">No</td>
             <td className="nx-cell">
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
-                HTML Attributes
-              </a>
+              Whether the radio label content should be wrapped in
+              an <code className="nx-code">NxOverflowTooltip</code>. Defaults to true. Set this to false when
+              the <code className="nx-code">NxRadio</code> is being wrapped in a tooltip externally, to prevent
+              multiple overlapping tooltips from appearing.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">HTML <code className="nx-code">&lt;label&gt;</code> Attributes</td>
+            <td className="nx-cell">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/label">
+                HTML Label Attributes
+              </NxTextLink>
             </td>
             <td className="nx-cell">No</td>
-            <td className="nx-cell">NxRadio supports any html attribute that's normally supported by Label element</td>
+            <td className="nx-cell">
+              NxRadio supports any html attribute that's normally supported by
+              {' '}<code className="nx-code">&lt;label&gt;</code> elements.
+            </td>
           </tr>
         </tbody>
       </table>

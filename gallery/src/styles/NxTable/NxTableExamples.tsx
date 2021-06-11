@@ -5,10 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTableClickableExample from './NxTableClickableExample';
+import NxTableIconButtonExample from './NxTableIconButtonExample';
 import NxTableErrorExample from './NxTableErrorStateExample';
 import NxTableFixedLayoutExample from './NxTableFixedLayoutExample';
 import NxTableSortableExample from './NxTableSortableExample';
@@ -17,18 +19,17 @@ import NxTableFilterExample from './NxTableFilterExample';
 import './NxTableTruncationAndWrappingExample.scss';
 import './NxTableFixedLayoutExample.scss';
 
-const NxTableSimpleCode = require('!!raw-loader!./NxTableDefaultExample.html').default,
-    NxTableClickableCode = require('!!raw-loader!./NxTableClickableExample').default,
-    NxTableEmptyCode = require('!!raw-loader!./NxTableEmptyExample.html').default,
-    NxTableErrorStateCode = require('!!raw-loader!./NxTableErrorStateExample').default,
-    NxTableScrollingCode = require('!!raw-loader!./NxTableScrollingExample.html').default,
-    NxTableUnfilledScrollContainerCode = require('!!raw-loader!./NxTableUnfilledScrollContainerExample.html').default,
-    NxTableTruncationAndWrappingCode = require('!!raw-loader!./NxTableTruncationAndWrappingExample.html').default,
-    NxTableFixedLayoutCode = require('!!raw-loader!./NxTableFixedLayoutExample').default,
-    NxTableTruncationAndWrappingScss = require('!!raw-loader!./NxTableTruncationAndWrappingExample.scss').default,
-    NxTableFixedLayoutScss = require('!!raw-loader!./NxTableFixedLayoutExample.scss').default,
-    NxTableFilterCode = require('!!raw-loader!./NxTableFilterExample').default,
-    NxTableSortableCode = require('!!raw-loader!./NxTableSortableExample').default;
+const NxTableSimpleCode = require('./NxTableDefaultExample.html'),
+    NxTableClickableCode = require('./NxTableClickableExample?raw'),
+    NxTableIconButtonCode = require('./NxTableIconButtonExample?raw'),
+    NxTableEmptyCode = require('./NxTableEmptyExample.html'),
+    NxTableErrorStateCode = require('./NxTableErrorStateExample?raw'),
+    NxTableTruncationAndWrappingCode = require('./NxTableTruncationAndWrappingExample.html'),
+    NxTableFixedLayoutCode = require('./NxTableFixedLayoutExample?raw'),
+    NxTableTruncationAndWrappingScss = require('./NxTableTruncationAndWrappingExample.scss?raw'),
+    NxTableFixedLayoutScss = require('./NxTableFixedLayoutExample.scss?raw'),
+    NxTableFilterCode = require('./NxTableFilterExample?raw'),
+    NxTableSortableCode = require('./NxTableSortableExample?raw');
 
 const truncationAndWrappingCodeExamples = [
       NxTableTruncationAndWrappingCode,
@@ -86,39 +87,30 @@ const NxTablesExamples = () =>
       contents failed to load.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Table Scrolling Example"
-                        id="nx-table-scrolling-example"
-                        htmlExample={NxTableScrollingCode}
-                        codeExamples={NxTableScrollingCode}>
-      A demonstration of a table that scrolls due to the presence of a height-constrained, scrolling wrapper element.
-      The headers stay stationary as the rows scroll. All tables that scroll "by themselves" (as opposed to being
-      part of some broader section of the page that scrolls) should be implemented in this manner in order to get
-      the sticky header behavior. For scrollable containers which, on the other hand, contain more content in addition
-      to a table, sticky headers should not be used and therefore
-      the <code className="nx-code">nx-table--scrollable</code> class should not be used on the table.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="NX Table Unfilled Scroll Container Example"
-                        id="nx-table-unfilled-scroll-container-example"
-                        htmlExample={NxTableUnfilledScrollContainerCode}
-                        codeExamples={NxTableUnfilledScrollContainerCode}>
-      This example demonstrates what happens when a table is set up to enable scrolling, but does not have enough
-      content to cause scrolling.
-    </GalleryExampleTile>
-
     <GalleryExampleTile title="NX Table with Sortable Rows Example"
                         liveExample={NxTableSortableExample}
                         codeExamples={NxTableSortableCode}>
-          A demonstration of a <code className="nx-code">nx-table</code> used for columns that can be sorted.
-        In this example the interactivity to sort columns is not wired up.
+      A demonstration of a <code className="nx-code">nx-table</code> used for columns that can be sorted.
+      In this example the interactivity to sort columns is not wired up. Note
+      the <NxCode>&lt;button&gt;</NxCode> surrounding the sort header contents.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Table with Filter Rows Example"
                         liveExample={NxTableFilterExample}
                         codeExamples={NxTableFilterCode}>
-        A demonstration of a <code className="nx-code">nx-table</code> with a header
-        cell that contains a filter. Rows can be filtered depending on the text provided in the input.
-        In this example the interactivity to filter content is not wired up.
+      A demonstration of a <code className="nx-code">nx-table</code> with a header
+      cell that contains a filter. Rows can be filtered depending on the text provided in the input.
+      In this example the interactivity to filter content is not wired up. Note
+      the <NxCode>&lt;button&gt;</NxCode> surrounding the chevron cell contents.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Table with Icon Buttons Example"
+                        id="nx-table-icon-buttons-example"
+                        liveExample={NxTableIconButtonExample}
+                        codeExamples={NxTableIconButtonCode}>
+      A demonstration of an <NxCode>nx-table</NxCode> with icon-only buttons in both the filter row
+      and the content rows. Note that the buttons in the filter row are the standard height while the buttons in the
+      content rows are smaller. The default styles only support these sorts of buttons in the rightmost column.
     </GalleryExampleTile>
   </>;
 

@@ -7,13 +7,15 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
+
 import NxBinaryDonutChartMinimalExample from './NxBinaryDonutChartMinimalExample';
 import NxBinaryDonutChartNoHoleExample from './NxBinaryDonutChartNoHoleExample';
 import NxBinaryDonutChartLargeHoleExample from './NxBinaryDonutChartLargeHoleExample';
 
-const nxBinaryDonutChartMinimalExampleCode = require('!!raw-loader!./NxBinaryDonutChartMinimalExample').default;
-const nxBinaryDonutChartNoHoleExample = require('!!raw-loader!./NxBinaryDonutChartNoHoleExample').default;
-const nxBinaryDonutChartLargeHoleExample = require('!!raw-loader!./NxBinaryDonutChartLargeHoleExample').default;
+const nxBinaryDonutChartMinimalExampleCode = require('./NxBinaryDonutChartMinimalExample?raw');
+const nxBinaryDonutChartNoHoleExample = require('./NxBinaryDonutChartNoHoleExample?raw');
+const nxBinaryDonutChartLargeHoleExample = require('./NxBinaryDonutChartLargeHoleExample?raw');
 
 const NxBinaryDonutChartPage = () =>
   <>
@@ -48,6 +50,31 @@ const NxBinaryDonutChartPage = () =>
               The size of the hole in the donut, as a percentage of the donut's overall size.  The default value is 50.
             </td>
           </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">aria-label</td>
+            <td className="nx-cell">string</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              If the chart is not accompanied by visible text content that contains the same information that the chart
+              conveys, then the chart should have an <code className="nx-code">aria-label</code> attribute giving it
+              an accessible name which adequately describes its information for non-visual users. If the chart is
+              accompanied by a text description however, such a label would be redundant and the chart is considered
+              a presentational element.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">SVG <code className="nx-code">&lt;svg&gt;</code> Attributes</td>
+            <td className="nx-cell">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/SVG/Element/svg">
+                SVG Attributes
+              </NxTextLink>
+            </td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              NxBinaryDonutChart supports any SVG attribute that's normally supported
+              by <code className="nx-code">&lt;svg&gt;</code>.
+            </td>
+          </tr>
         </tbody>
       </table>
     </GalleryDescriptionTile>
@@ -56,21 +83,23 @@ const NxBinaryDonutChartPage = () =>
                         id="nx-binary-donut-chart-minimal-examples"
                         codeExamples={nxBinaryDonutChartMinimalExampleCode}
                         liveExample={NxBinaryDonutChartMinimalExample}>
-        Minimal examples of <code className="nx-code">NxBinaryDonutChart</code>s with different values.
+      Minimal examples of <code className="nx-code">NxBinaryDonutChart</code>s with different values.
+      Some of these charts demonstrate the usage of <code className="nx-code">aria-label</code> to describe the
+      chart contents.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with no Hole"
                         id="nx-binary-donut-chart-no-hole-example"
                         codeExamples={nxBinaryDonutChartNoHoleExample}
                         liveExample={NxBinaryDonutChartNoHoleExample}>
-        An example of a <code className="nx-code">NxBinaryDonutChart</code> without a hole i.e. a pie chart.
+      An example of a <code className="nx-code">NxBinaryDonutChart</code> without a hole i.e. a pie chart.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with a Large Hole"
                         id="nx-binary-donut-chart-large-hole-example"
                         codeExamples={nxBinaryDonutChartLargeHoleExample}
                         liveExample={NxBinaryDonutChartLargeHoleExample}>
-        An example of a <code className="nx-code">NxBinaryDonutChart</code> with a large hole.
+      An example of a <code className="nx-code">NxBinaryDonutChart</code> with a large hole.
     </GalleryExampleTile>
   </>;
 

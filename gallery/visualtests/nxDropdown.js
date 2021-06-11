@@ -27,9 +27,7 @@ describe('NxDropdown', function() {
     beforeEach(async function() {
       const button = await browser.$(defaultSelector + ' .nx-dropdown__toggle');
 
-      // for some weird reason the test infra requires you to click it twice
       await button.scrollIntoView({ block: 'center' });
-      await button.click();
       await button.click();
     });
 
@@ -123,7 +121,7 @@ describe('NxDropdown', function() {
       await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
 
       const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 179);
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 218);
 
       await browser.eyesRegionSnapshot(null, Target.region(region));
     });

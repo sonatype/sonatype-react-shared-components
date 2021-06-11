@@ -11,9 +11,9 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxStatefulTreeViewMultiSelectExample from './NxStatefulTreeViewMultiSelectExample';
 import NxStatefulTreeViewMultiSelectDisabledExample from './NxStatefulTreeViewMultiSelectDisabledExample';
 
-const nxStatefulTreeViewMultiSelectExampleCode = require('!!raw-loader!./NxStatefulTreeViewMultiSelectExample').default,
+const nxStatefulTreeViewMultiSelectExampleCode = require('./NxStatefulTreeViewMultiSelectExample?raw'),
     nxStatefulTreeViewMultiSelectDisabledExampleCode =
-        require('!!raw-loader!./NxStatefulTreeViewMultiSelectDisabledExample').default;
+        require('./NxStatefulTreeViewMultiSelectDisabledExample?raw');
 
 const NxStatefulTreeViewMultiSelectPage = () =>
   <>
@@ -132,7 +132,8 @@ const NxStatefulTreeViewMultiSelectPage = () =>
             <td className="nx-cell">Function</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Callback to generate tooltip text for each option. Called with the option object.
+              Callback to generate tooltip text for each option. Called with the option object. If not supplied, the
+              default overflow tooltip behavior of the checkboxes will be active.
             </td>
           </tr>
           <tr className="nx-table-row">

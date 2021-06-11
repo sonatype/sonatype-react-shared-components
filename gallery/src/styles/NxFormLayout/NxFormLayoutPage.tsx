@@ -12,9 +12,9 @@ import NxFormLayoutExample from './NxFormLayoutExample';
 import NxFormHorizontalLayoutExample from './NxFormHorizontalLayoutExample';
 import NxFormInlineLayoutExample from './NxFormInlineLayoutExample';
 
-const NxFormLayoutCode = require('!!raw-loader!./NxFormLayoutExample').default;
-const NxFormHorizontalLayoutCode = require('!!raw-loader!./NxFormHorizontalLayoutExample').default;
-const NxFormInlineLayoutCode = require('!!raw-loader!./NxFormInlineLayoutExample').default;
+const NxFormLayoutCode = require('./NxFormLayoutExample?raw');
+const NxFormHorizontalLayoutCode = require('./NxFormHorizontalLayoutExample?raw');
+const NxFormInlineLayoutCode = require('./NxFormInlineLayoutExample?raw');
 
 const NxFormLayoutPage = () =>
   <>
@@ -48,7 +48,10 @@ const NxFormLayoutPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-form-group</code></td>
             <td className="nx-cell">Element</td>
-            <td className="nx-cell">Basic container for form elements.</td>
+            <td className="nx-cell">
+              Basic container for form elements. Typically it is best to use
+              the <code className="nx-code">NxFormGroup</code> react component instead of using this class directly.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-form-row</code></td>
@@ -61,7 +64,14 @@ const NxFormLayoutPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-label</code></td>
             <td className="nx-cell">Element</td>
-            <td className="nx-cell">Standard class for <code className="nx-code">&lt;label&gt;</code> elements.</td>
+            <td className="nx-cell">
+              Standard class for <code className="nx-code">&lt;label&gt;</code> elements. This element may either be
+              wrapped around the form field and sublabel, or precede them and use
+              the <code className="nx-code">for</code> attribute (<code className="nx-code">htmlFor</code> is react).
+              When the sublabel is present, the label <em>should</em> be set up as a
+              preceding element for accessibility reasons. Using the <code className="nx-code">NxFormGroup</code>
+              react component handles all of this for you and is recommended.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-label--optional</code></td>
@@ -76,9 +86,12 @@ const NxFormLayoutPage = () =>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
               Used when you want text below the standard <code className="nx-code">&lt;label&gt;</code> text.
-              <code className="nx-code">.nx-sub-label</code> is meant to be applied to a
-              <code className="nx-code">&lt;span&gt;</code> located within
-              <code className="nx-code">&lt;label&gt;</code>.
+              <code className="nx-code">.nx-sub-label</code> is meant to be applied to a{' '}
+              <code className="nx-code">&lt;span&gt;</code> located after the{' '}
+              <code className="nx-code">&lt;label&gt;</code>, though for backwards compatibility placing it within
+              the <code className="nx-code">&lt;label&gt;</code> is also supported. The sublabel <em>should</em> be
+              referenced as the accessibility description (i.e.
+              using <code className="nx-code">aria-describedby</code>) on the form field.
             </td>
           </tr>
           <tr className="nx-table-row">

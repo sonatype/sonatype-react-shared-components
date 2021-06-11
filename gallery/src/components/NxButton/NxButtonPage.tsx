@@ -14,24 +14,71 @@ import NxButtonTertiaryExample from './NxButtonTertiaryExample';
 import NxButtonErrorExample from './NxButtonErrorExample';
 import NxButtonIconExample from './NxButtonIconExample';
 import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
+import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxCode, NxTextLink }
+  from '@sonatype/react-shared-components';
 
-const NxButtonDefaultCode = require('!!raw-loader!./NxButtonDefaultExample').default,
-    nxButtonPrimaryCode = require('!!raw-loader!./NxButtonPrimaryExample').default,
-    nxButtonTertiaryCode = require('!!raw-loader!./NxButtonTertiaryExample').default,
-    nxButtonErrorCode = require('!!raw-loader!./NxButtonErrorExample').default,
-    nxButtonIconCode = require('!!raw-loader!./NxButtonIconExample').default,
-    nxButtonIconOnlyCode = require('!!raw-loader!./NxButtonIconOnlyExample').default;
+const NxButtonDefaultCode = require('./NxButtonDefaultExample?raw'),
+    nxButtonPrimaryCode = require('./NxButtonPrimaryExample?raw'),
+    nxButtonTertiaryCode = require('./NxButtonTertiaryExample?raw'),
+    nxButtonErrorCode = require('./NxButtonErrorExample?raw'),
+    nxButtonIconCode = require('./NxButtonIconExample?raw'),
+    nxButtonIconOnlyCode = require('./NxButtonIconOnlyExample?raw');
 
 export default function NxButtonPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p"><code className="nx-code">.nx-btn</code> is the standard class for all buttons.</p>
         <p className="nx-p">
-          When a button is not contained in a <code className="nx-code">footer</code>, then an enclosing
-          <code className="nx-code">.nx-btn-bar</code> is generally required to ensure that the buttons are spaced
-          appropriately from other content.
+          <code className="nx-code">NxButton</code> is a react wrapper around
+          HTML <code className="nx-code">&lt;button&gt;</code> elements using
+          the <code className="nx-code">.nx-btn</code> CSS class.
         </p>
+        <NxTable>
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Prop</NxTableCell>
+              <NxTableCell>Type</NxTableCell>
+              <NxTableCell>Required</NxTableCell>
+              <NxTableCell>Default</NxTableCell>
+              <NxTableCell>Details</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody>
+            <NxTableRow>
+              <NxTableCell>variant</NxTableCell>
+              <NxTableCell>'primary' | 'secondary' | 'tertiary' | 'icon-only' | 'error'</NxTableCell>
+              <NxTableCell>No</NxTableCell>
+              <NxTableCell>secondary</NxTableCell>
+              <NxTableCell>The variant of button. See examples of each variant below.</NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>title</NxTableCell>
+              <NxTableCell>string</NxTableCell>
+              <NxTableCell>Required on icon-only buttons</NxTableCell>
+              <NxTableCell>Empty</NxTableCell>
+              <NxTableCell>
+                A string to render as a tooltip and accessibility label for the button. This is generally not necessary
+                for buttons that include text content, but icon-only buttons should use this to make the button's
+                meaning clear in all contexts. Omitting this prop when using an icon-only button is deprecated and will
+                become unsupported in a future release.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>HTML <NxCode>&lt;button&gt;</NxCode> Attributes</NxTableCell>
+              <NxTableCell>
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/button">
+                  HTML button Attributes
+                </NxTextLink>
+              </NxTableCell>
+              <NxTableCell>No</NxTableCell>
+              <NxTableCell></NxTableCell>
+              <NxTableCell>
+                <NxCode>NxButton</NxCode> supports any html attribute that's normally supported by the
+                {' '}<NxCode>&lt;button&gt;</NxCode> element.
+              </NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Secondary (Default)"
@@ -39,7 +86,8 @@ export default function NxButtonPage() {
                           liveExample={NxButtonDefaultExample}
                           codeExamples={NxButtonDefaultCode}>
         An example of an <code className="nx-code">NxButton</code> using the default styling, also known as the
-        "secondary" styling, along with some other inline content and some disabled buttons.
+        "secondary" styling, along with some other inline content and some disabled buttons. Disabling by class will
+        add aria-disabled=true to the button.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Primary"
@@ -74,7 +122,8 @@ export default function NxButtonPage() {
                           id="nx-button-icon-only-example"
                           liveExample={NxButtonIconOnlyExample}
                           codeExamples={nxButtonIconOnlyCode}>
-        An example of a button containing only an icon.
+        An example of a button containing only an icon. For accessibility purposes it is important to use the
+        title prop for a screen reader to interpret the content correctly.
       </GalleryExampleTile>
     </>
   );

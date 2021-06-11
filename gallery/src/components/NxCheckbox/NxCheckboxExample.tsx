@@ -4,27 +4,18 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { NxCheckbox } from '@sonatype/react-shared-components';
+import { NxCheckbox, NxFieldset, useToggle } from '@sonatype/react-shared-components';
 
 function NxCheckboxExample() {
-  // this example uses the `useState` hook for succinctness, but you could also manage the state manually
-  // in a class component
-  const [isRed, setIsRed] = useState(false),
-      [isBlue, setIsBlue] = useState(false),
-      [isGreen, setIsGreen] = useState(false),
-      [isDisabled, setIsDisabled] = useState(false),
-      toggleRed = () => setIsRed(!isRed),
-      toggleBlue = () => setIsBlue(!isBlue),
-      toggleGreen = () => setIsGreen(!isGreen),
-      toggleDisabled = () => setIsDisabled(!isDisabled);
+  const [isRed, toggleRed] = useToggle(false),
+      [isBlue, toggleBlue] = useToggle(false),
+      [isGreen, toggleGreen] = useToggle(false),
+      [isDisabled, toggleDisabled] = useToggle(false);
 
   return (
-    <fieldset className="nx-fieldset">
-      <legend className="nx-label">
-        Selected colours: {isRed && 'Red'} {isBlue && 'Blue'} {isGreen && 'Green'}
-      </legend>
+    <NxFieldset label={`Selected colours: ${isRed && 'Red'} ${isBlue && 'Blue'} ${isGreen && 'Green'}`}>
       <NxCheckbox checkboxId="subscribe-check" onChange={toggleRed} isChecked={isRed}>
         Red
       </NxCheckbox>
@@ -43,7 +34,7 @@ function NxCheckboxExample() {
                   isChecked={isDisabled}>
         disabled
       </NxCheckbox>
-    </fieldset>
+    </NxFieldset>
   );
 }
 

@@ -25,6 +25,7 @@ describe('NxTooltip', function() {
     expect(component).toMatchSelector(Tooltip);
     expect(component).toHaveProp('children', minimalProps.children);
     expect(component).toHaveProp('title', minimalProps.title);
+    expect(component).toHaveProp('aria-label', minimalProps.title);
     expect(component).toHaveProp('open', false);
     expect(component).toHaveProp('onOpen', onOpen);
     expect(component).toHaveProp('onClose', onClose);
@@ -44,6 +45,7 @@ describe('NxTooltip', function() {
     expect(component).toHaveProp('onOpen', undefined);
     expect(component).toHaveProp('onClose', undefined);
     expect(component).toHaveProp('title', '');
+    expect(component).toHaveProp('aria-label', '');
   });
 
   it('passes "nx-tooltip" as the `tooltip` property on the `classes` prop of the Tooltip', function() {

@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import NxCheckbox, { Props } from '../NxCheckbox';
+import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 
 describe('NxCheckbox', function() {
   const simpleProps: Props = {
@@ -37,6 +38,13 @@ describe('NxCheckbox', function() {
 
     // space is nbsp for empty box
     expect(shallowRender).toHaveText(' ');
+  });
+
+  it('adds classes specified with the className prop', function() {
+    const component = getShallowComponent({ className: 'foo' });
+
+    expect(component).toHaveClassName('foo');
+    expect(component).toHaveClassName('nx-checkbox');
   });
 
   it('renders a faCheck FontAwesomeIcon inside the box when checked', function() {
@@ -78,6 +86,31 @@ describe('NxCheckbox', function() {
   it('does not render the .nx-checkbox__content element if there are no children', function() {
     expect(getShallowComponent()).not.toContainMatchingElement('.nx-checkbox__content');
   });
+
+  it('wraps the .nx-checkbox__content element in an NxOverflowTooltip unless overflowTooltip is set to false',
+      function() {
+        expect(getShallowComponent()).not.toContainMatchingElement(NxOverflowTooltip);
+
+        expect(getShallowComponent({ children: <div/> })).toContainMatchingElement(NxOverflowTooltip);
+        expect(getShallowComponent({ children: <div/> }).find(NxOverflowTooltip))
+            .toContainMatchingElement('.nx-checkbox__content');
+
+        expect(getShallowComponent({ children: <div/>, overflowTooltip: true }))
+            .toContainMatchingElement(NxOverflowTooltip);
+        expect(getShallowComponent({ children: <div/>, overflowTooltip: true }).find(NxOverflowTooltip))
+            .toContainMatchingElement('.nx-checkbox__content');
+
+        expect(getShallowComponent({ children: <div/>, overflowTooltip: null }))
+            .toContainMatchingElement(NxOverflowTooltip);
+        expect(getShallowComponent({ children: <div/>, overflowTooltip: null }).find(NxOverflowTooltip))
+            .toContainMatchingElement('.nx-checkbox__content');
+
+        expect(getShallowComponent({ children: <div/>, overflowTooltip: false }))
+            .not.toContainMatchingElement(NxOverflowTooltip);
+        expect(getShallowComponent({ children: <div/>, overflowTooltip: false }))
+            .toContainMatchingElement('.nx-checkbox__content');
+      }
+  );
 
   it('disables the input iff disabled is set', function() {
     expect(getShallowComponent().find('input')).toHaveProp('disabled', false);

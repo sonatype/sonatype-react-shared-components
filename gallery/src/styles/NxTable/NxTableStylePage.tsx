@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxFontAwesomeIcon, NxWarningAlert } from '@sonatype/react-shared-components';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
@@ -53,6 +53,10 @@ const NxTableStylePage = () =>
             <td className="nx-cell"><code className="nx-code">.nx-table--scrollable</code></td>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-table</code></td>
             <td className="nx-cell">
+              <NxWarningAlert>
+                Deprecated. Use an <code className="nx-code">.nx-table-container.nx-scrollable</code> wrapper
+                around a plain <code className="nx-code">.nx-table</code> instead.
+              </NxWarningAlert>
               When a table which scrolls in of itself is desired, wrap the table in
               an <code className="nx-code">.nx-scrollable</code> wrapper and give it a class
               of <code className="nx-code">.nx-table--scrollable</code>.
@@ -134,6 +138,42 @@ const NxTableStylePage = () =>
               side of clickable table rows. It creates a column of the appropriate width for the icon. It
               is <em>not</em> necessary to additional use <code className="nx-code">.nx-cell--icon</code> on these
               cells.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">
+              <code className="nx-code">.nx-cell--filter-header</code>
+            </td>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
+            <td className="nx-cell">
+              Used for style table header cells with a filter
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">
+              <code className="nx-code">.nx-cell__sort-btn</code>
+            </td>
+            <td className="nx-cell">
+              Child of <code className="nx-code">.nx-cell--header</code> wrapping all other content
+            </td>
+            <td className="nx-cell">
+              For a header cell that contains sort icons, the cell should contain a button with this class
+              which then contains the actual cell header text and sort icons. This improves accessibility of the
+              sorting feature. The button should have an accessible name which describes the header name and the
+              current sort direction of this column.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">
+              <code className="nx-code">.nx-cell__chevron-btn</code>
+            </td>
+            <td className="nx-cell">
+              Child of <code className="nx-code">.nx-cell--chevron</code> which then wraps the actual chevron icon
+            </td>
+            <td className="nx-cell">
+              In order to make clickable rows accessible, the chevron icon should be contained within a button
+              bearing this class. The button should additionally have an accessible name which describes the row,
+              typically by including its full text content.
             </td>
           </tr>
           <tr className="nx-table-row">

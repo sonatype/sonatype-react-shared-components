@@ -1,12 +1,12 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@import '../scss-shared/nx-header-variables';
 
-$main-header-background: $nx-off-white;
-$main-header-color: $nx-off-black;
+$main-header-background: var(--nx-swatch-white);
 $main-header-product-height: 52px;
 $main-header-product-title-row-height: 2fr;
 $main-header-product-version-row-height: 1fr;
@@ -16,11 +16,12 @@ $main-header-product-version-row-height: 1fr;
 */
 
 .nx-page-header {
+  box-sizing: content-box;
+
   background-color: $main-header-background;
-  border-bottom: 1px solid $nx-header-border;
-  flex-shrink: 0; // needed for IE11
+  border-bottom: 1px solid var(--nx-swatch-grey-90);
+  grid-area: old-header; // see nx-page's grid template
   height: $nx-main-header-height;
-  width: 100%;
 }
 
 .nx-page-header__inner {
@@ -31,24 +32,24 @@ $main-header-product-version-row-height: 1fr;
   display: flex;
   height: $nx-main-header-height;
   margin: 0 auto;
-  padding: 0 $nx-spacing-l;
+  padding: 0 var(--nx-spacing-6x);
   width: 100%;
-  max-width: $nx-page-width-max;
+  max-width: var(--nx-width-page-max);
 }
 
 .nx-page-header__links {
   @include container-horizontal;
-  margin: 0 $nx-spacing-xxxl;
+  margin: 0 var(--nx-spacing-16x);
 }
 
 .nx-page-header__link {
   border-bottom: 2px solid transparent;
 
-  color: #515151;
+  color: var(--nx-swatch-grey-10);
   display: inline-block;
-  font-size: $nx-font-size-s;
-  margin-right: $nx-spacing-l;
-  padding-bottom: $nx-spacing-xxs;
+  font-size: var(--nx-font-size-s);
+  margin-right: var(--nx-spacing-6x);
+  padding-bottom: var(--nx-spacing-base);
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -64,7 +65,7 @@ $main-header-product-version-row-height: 1fr;
   }
 
   &:active, &.nx-page-header__link--current {
-    border-bottom-color: #0000cc;
+    border-bottom-color: var(--nx-swatch-teal-60);
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
@@ -82,6 +83,10 @@ $main-header-product-version-row-height: 1fr;
   @include container-horizontal;
 
   margin-left: auto;
+
+  .nx-btn--icon-only {
+    @include nx-small-icon-btn;
+  }
 }
 
 .nx-product {
@@ -97,7 +102,7 @@ $main-header-product-version-row-height: 1fr;
   display: block;
 }
 
-.nx-product__wordmark {
+.nx-product__logo-image {
   display: inline-block;
   height: 21px;
   margin-top: 13px; // fix vertical centering
@@ -106,23 +111,23 @@ $main-header-product-version-row-height: 1fr;
 .nx-product__name {
   display: inline-block;
   font-size: 26px;
-  margin-left: $nx-spacing-sm;
+  margin-left: var(--nx-spacing-3x);
   text-transform: lowercase;
   white-space: nowrap;
 
   &::before {
-    color: #000;
+    color: var(--nx-swatch-black);
     content: "|";
     display: inline-block;
     font-size: 21px;
-    margin-right: $nx-spacing-sm;
+    margin-right: var(--nx-spacing-3x);
   }
 }
 
 .nx-product__version {
-  color: #545454;
+  color: var(--nx-swatch-grey-10);
   display: inline-block;
   font-size: 12px;
   margin-top: 8px; // move version down to match product name baseline
-  margin-left: $nx-spacing-sm;
+  margin-left: var(--nx-spacing-3x);
 }

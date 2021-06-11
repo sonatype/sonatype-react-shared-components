@@ -11,7 +11,7 @@ import { NxTreeView, NxTreeViewChild } from '@sonatype/react-shared-components';
 function NxTreeViewDisabledExample() {
 
   return (
-    <NxTreeView isOpen={true} disabled={true} triggerContent="Disabled">
+    <NxTreeView isOpen={true} disabled={true} triggerContent="All Items">
       <NxTreeViewChild>Test1</NxTreeViewChild>
       <NxTreeViewChild>Test2</NxTreeViewChild>
       <NxTreeViewChild>Test3</NxTreeViewChild>

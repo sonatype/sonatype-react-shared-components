@@ -1,0 +1,50 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import "../../scss-shared/nx-container-helpers";
+
+.nx-color-picker {
+  @include container-horizontal;
+
+  .nx-legend__text {
+    margin-bottom: var(--nx-spacing-base);
+  }
+}
+
+.nx-color-picker__color {
+  $size: 32px;
+
+  background-clip: content-box;
+  background-color: var(--nx-selectable-color-dark);
+  border-radius: $size / 2;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-block;
+  padding: calc(var(--nx-spacing-base) - 1px);
+  margin-right: var(--nx-spacing-2x);
+
+  height: $size;
+  width: $size;
+
+  &.selected {
+    border-color: var(--nx-swatch-teal-60);
+  }
+
+  &:focus-within {
+    border-color: var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
+  }
+
+  &:hover {
+    border-color: var(--nx-color-form-element-border);
+  }
+}
+
+.nx-color-picker__input {
+  cursor: pointer;
+  opacity: 0;
+}

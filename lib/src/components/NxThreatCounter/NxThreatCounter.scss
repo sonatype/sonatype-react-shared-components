@@ -1,0 +1,65 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-text-helpers';
+
+.nx-threat-counter {
+  align-items: center;
+  box-sizing: content-box;
+  border: 1px solid;
+  border-left-width: 8px;
+  border-radius: var(--nx-border-radius);
+  display: inline-flex;
+  flex-direction: row-reverse;
+  font-size: var(--nx-font-size-s);
+  justify-content: flex-end;
+  height: 30px;
+  margin: 0;
+  padding-right: var(--nx-spacing-4x);
+  padding-left: var(--nx-spacing-4x);
+}
+
+.nx-threat-counter__count {
+  @include bold();
+  margin: 0;
+}
+
+.nx-threat-counter__text {
+  @include semi-bold();
+  margin-left: var(--nx-spacing-2x);
+  text-transform: uppercase;
+}
+
+.nx-threat-counter--critical {
+  border-color: var(--nx-color-threat-critical);
+}
+
+.nx-threat-counter--severe {
+  border-color: var(--nx-color-threat-severe);
+}
+
+.nx-threat-counter--moderate {
+  border-color: var(--nx-color-threat-moderate);
+}
+
+.nx-threat-counter--low {
+  border-color: var(--nx-color-threat-low);
+}
+
+.nx-threat-counter-container {
+  display: inline-grid;
+  gap: var(--nx-spacing-4x);
+  grid-template-columns: auto auto auto auto;
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
+}
+
+.nx-threat-counter-container--column {
+  grid-template-columns: auto;
+}
+
+.nx-threat-counter-container--grid {
+  grid-template-columns: auto auto;
+}

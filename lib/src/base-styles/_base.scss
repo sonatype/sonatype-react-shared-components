@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
@@ -15,11 +15,22 @@
 // as an example of the syntax
 //@import '~normalize.css';
 
+// Within the base styles, the scss-shared content should only be imported once - right here
+@import '../scss-shared/nx-table-variables';
+@import '../scss-shared/nx-container-helpers';
+@import '../scss-shared/nx-text-helpers';
+@import '../scss-shared/nx-flexbox-helpers';
+@import '../scss-shared/nx-button-helpers';
+
+@import 'nx-variables';
+@import 'nx-colors';
+@import 'nx-color-swatches';
 @import 'nx-globals';
 @import 'nx-typography';
 
 @import 'nx-page-header';
 @import 'nx-page-layout';
+@import 'nx-global-header';
 @import 'nx-page';
 @import 'nx-footer';
 @import 'nx-tile';
@@ -37,3 +48,7 @@
 @import 'nx-radio-checkbox';
 @import 'nx-card';
 @import 'nx-pagination';
+@import 'nx-form-select';
+@import 'nx-viewport-sized';
+@import 'nx-read-only';
+@import 'nx-system-notice';

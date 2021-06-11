@@ -15,14 +15,15 @@ import NxTextInputTextAreaExample from './NxTextInputTextAreaExample';
 import NxTextInputTextAreaValidationExample from './NxTextInputTextAreaValidationExample';
 import NxTextInputLongExample from './NxTextInputLongExample';
 import NxTextInputDisabledExample from './NxTextInputDisabledExample';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
-const simpleSourceCode = require('!!raw-loader!./NxTextInputSimpleExample').default;
-const validationSourceCode = require('!!raw-loader!./NxTextInputValidationExample').default;
-const passwordSourceCode = require('!!raw-loader!./NxTextInputPasswordExample').default;
-const textAreaSourceCode = require('!!raw-loader!./NxTextInputTextAreaExample').default;
-const textAreaValidationSourceCode = require('!!raw-loader!./NxTextInputTextAreaValidationExample').default;
-const longSourceCode = require('!!raw-loader!./NxTextInputLongExample').default;
-const disabledSourceCode = require('!!raw-loader!./NxTextInputDisabledExample').default;
+const simpleSourceCode = require('./NxTextInputSimpleExample?raw');
+const validationSourceCode = require('./NxTextInputValidationExample?raw');
+const passwordSourceCode = require('./NxTextInputPasswordExample?raw');
+const textAreaSourceCode = require('./NxTextInputTextAreaExample?raw');
+const textAreaValidationSourceCode = require('./NxTextInputTextAreaValidationExample?raw');
+const longSourceCode = require('./NxTextInputLongExample?raw');
+const disabledSourceCode = require('./NxTextInputDisabledExample?raw');
 
 const NxTextInputPage = () =>
   <>
@@ -86,7 +87,7 @@ const NxTextInputPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function ((string) => void)</td>
+            <td className="nx-cell">Function ((string) =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               A callback for when the user changes the value of the text box (e.g. by typing a letter)
@@ -94,7 +95,7 @@ const NxTextInputPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onKeyPress</td>
-            <td className="nx-cell">Function ((string) => void)</td>
+            <td className="nx-cell">Function ((string) =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
               <p className="nx-p">
@@ -104,36 +105,37 @@ const NxTextInputPage = () =>
               <p className="nx-p">
                 The value given to the callback will be that of the key name, as described in the spec
                 for{' '}
-                <a target="_blank"
-                   rel="noopener"
-                   href="https://www.w3.org/TR/uievents-key/#named-key-attribute-values">
+                <NxTextLink external href="https://www.w3.org/TR/uievents-key/#named-key-attribute-values">
                   named keys
-                </a>
+                </NxTextLink>
               </p>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">Input HTML Attributes | Textarea HTML Attributes</td>
             <td className="nx-cell">
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
-                HTML Attributes
-              </a>
+              HTML <code className="nx-code">&lt;input&gt;</code> Attributes |
+              HTML <code className="nx-code">&lt;textarea&gt;</code> Attributes
+            </td>
+            <td className="nx-cell">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/input">
+                Input Attributes
+              </NxTextLink>
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/textarea">
+                Textarea Attributes
+              </NxTextLink>
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              NxTextInput supports any html attribute that's normally supported by either HTML Inputs or HTML
-              Textareas. The only notable exceptions are:
+              NxTextInput supports any html attribute that's normally supported by either HTML
+              <code className="nx-code">&lt;input&gt;</code> or HTML
+              <code className="nx-code">&lt;textarea&gt;</code>. The only notable exceptions are:
               <ul className="nx-list nx-list--bulleted">
                 <li className="nx-list__item">
                   <code className="nx-code">defaultValue</code> which is left out because it creates what's commonly
                   known as{' '}
-                  <a target="_blank"
-                     rel="noopener"
-                     href="https://reactjs.org/docs/uncontrolled-components.html">
+                  <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
                     uncontrolled inputs
-                  </a>
+                  </NxTextLink>
                 </li>
                 <li className="nx-list__item">
                   The attributes specified above, whose types are as defined here and not as specified in the
@@ -146,7 +148,7 @@ const NxTextInputPage = () =>
       </table>
       <h3>State Helpers</h3>
       <p className="nx-p">
-        <code className="nx-code">@sonatype/react-shared-components/components/NxTextInput/stateHelpers.ts</code>{' '}
+        The <code className="nx-code">nxTextInputStateHelpers</code>{' '}
         includes the following recommended state helper functions, which each return an object containining the
         "stateful" parts of the NxTextInput props{' '}
         (<code className="nx-code">value</code>, <code className="nx-code">isPristine</code>, and{' '}

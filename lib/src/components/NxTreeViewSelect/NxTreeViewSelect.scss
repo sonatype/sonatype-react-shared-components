@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
@@ -6,10 +6,10 @@
  */
 .nx-tree-view--select {
   .nx-filter-input {
+    box-sizing: border-box;
     display: block;
-    margin-bottom: 12px;
-    margin-right: 10px;
-    padding-left: 26px;
+    margin: var(--nx-spacing-4x) 0;
+    width: 100%;
 
     input {
       $input-prepend-width: 27px;
@@ -18,10 +18,5 @@
       $filter-input-offset: $input-prepend-width + $input-padding * 2 + $input-border;
       width: calc(100% - #{$filter-input-offset});
     }
-  }
-
-  .nx-tree-view__child {
-    height: auto;
-    line-height: 1.5;
   }
 }

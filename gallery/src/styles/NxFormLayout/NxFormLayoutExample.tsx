@@ -6,71 +6,76 @@
  */
 import React, { FormEvent, useState } from 'react';
 
-import { NxCheckbox } from '@sonatype/react-shared-components';
-import { NxRadio } from '@sonatype/react-shared-components';
-import { NxStatefulTextInput } from '@sonatype/react-shared-components';
-import { NxButton } from '@sonatype/react-shared-components';
+import {
+  NxCheckbox,
+  NxRadio,
+  NxStatefulTextInput,
+  NxButton,
+  NxFontAwesomeIcon,
+  NxToggle,
+  NxFormGroup,
+  NxFieldset,
+  useToggle,
+  NxColorPicker,
+  SelectableColor,
+  NxInfoAlert
+} from '@sonatype/react-shared-components';
+
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
     return val.length ? null : 'Must be non-empty';
   }
 
-  const [isRed, setIsRed] = useState(false),
-      [isBlue, setIsBlue] = useState(false),
-      [isGreen, setIsGreen] = useState(false),
-      toggleRed = () => setIsRed(!isRed),
-      toggleBlue = () => setIsBlue(!isBlue),
-      toggleGreen = () => setIsGreen(!isGreen);
+  const [selectVal, setSelectVal] = useState('');
+
+  function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
+    setSelectVal(evt.currentTarget.value);
+  }
+
+  const [isRed, toggleRed] = useToggle(false),
+      [isBlue, toggleBlue] = useToggle(false),
+      [isGreen, toggleGreen] = useToggle(false);
 
   const [color, setColor] = useState<string | null>(null);
+
+  const [isWarpOn, toggleWarp] = useToggle(false),
+      [isKrakenOut, toggleKraken] = useToggle(false),
+      [isShapes, toggleShapes] = useToggle(false);
+
+  const [tagColor, setTagColor] = useState<SelectableColor | null>(null);
 
   function onSubmit(evt: FormEvent) {
     evt.preventDefault();
     alert('Submitted!');
   }
 
+  const hostnameSublabel = (
+    <>
+      <NxFontAwesomeIcon icon={faCalendar}/>
+      <span id="long-field-sublabel">The field element below is wider than the default.</span>
+    </>
+  );
+
   return (
     <form className="nx-form" onSubmit={onSubmit}>
-      <div className="nx-form-group">
-        <label className="nx-label">
-          <span className="nx-label__text">Label</span>
-          <NxStatefulTextInput validator={validator}/>
-        </label>
-      </div>
-      <div className="nx-form-group">
-        <label className="nx-label nx-label--optional">
-          <span className="nx-label__text">Label</span>
-          <NxStatefulTextInput/>
-        </label>
-      </div>
-      <div className="nx-form-group">
-        <label className="nx-label nx-label--optional">
-          <span className="nx-label__text">Long field</span>
-          <span className="nx-sub-label">
-            <NxFontAwesomeIcon icon={faCalendar}/>
-            <span>This is a sub-label. The field element below is wider than the default.</span>
-          </span>
-          <NxStatefulTextInput className="nx-text-input--long"/>
-        </label>
-      </div>
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend">
-          <span className="nx-legend__text">
-            Checkboxes
-          </span>
-        </legend>
+      <NxInfoAlert>This is a sample alert message</NxInfoAlert>
+      <NxFormGroup label="A Field to Fill in" isRequired>
+        <NxStatefulTextInput aria-required={true} validator={validator}/>
+      </NxFormGroup>
+      <NxFormGroup label="Username">
+        <NxStatefulTextInput />
+      </NxFormGroup>
+      <NxFormGroup label="Hostname" sublabel={hostnameSublabel}>
+        <NxStatefulTextInput className="nx-text-input--long"/>
+      </NxFormGroup>
+      <NxFieldset label="Colors" isRequired>
         <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
         <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
         <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
-      </fieldset>
-      <fieldset className="nx-fieldset">
-        <legend className="nx-legend nx-legend--optional">
-          <span className="nx-legend__text">Radio buttons</span>
-          <span className="nx-sub-label">Sub-label</span>
-        </legend>
+      </NxFieldset>
+      <NxFieldset label="Primary Color" sublabel="Pick a single color">
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
@@ -89,13 +94,35 @@ export default function NxFormLayoutExample() {
         <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'}>
           Blue
         </NxRadio>
-      </fieldset>
-      <div className="nx-form-group">
-        <label className="nx-label">
-          <span className="nx-label__text">Textarea</span>
-          <NxStatefulTextInput type="textarea" placeholder="placeholder"/>
-        </label>
-      </div>
+      </NxFieldset>
+      <NxFormGroup label="Select" isRequired>
+        <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
+          <option value="">Select an option</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+          <option value="option4">Option 4</option>
+          <option value="option5">Option 5</option>
+        </select>
+      </NxFormGroup>
+      <NxFieldset label="Enable features" isRequired>
+        <div className="nx-sub-label">
+          In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
+        </div>
+        <NxToggle inputId="subscribe-check" onChange={toggleWarp} isChecked={isWarpOn}>
+          Enable Warp Drive
+        </NxToggle>
+        <NxToggle inputId="no-label-check" onChange={toggleKraken} isChecked={isKrakenOut}>
+          Release the Kraken!
+        </NxToggle>
+        <NxToggle inputId="children-check" onChange={toggleShapes} isChecked={isShapes}>
+          Allow shapes
+        </NxToggle>
+      </NxFieldset>
+      <NxFormGroup label="Comments" isRequired>
+        <NxStatefulTextInput type="textarea" placeholder="placeholder" aria-required={true}/>
+      </NxFormGroup>
+      <NxColorPicker label="Tag Color" isRequired value={tagColor} onChange={setTagColor} />
       <footer className="nx-footer">
         <div className="nx-btn-bar">
           <NxButton type="button">Cancel</NxButton>

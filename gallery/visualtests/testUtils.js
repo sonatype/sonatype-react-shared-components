@@ -36,11 +36,19 @@ module.exports = {
 
       // make sure mouse is not on element
       await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
-      await browser.execute(function(el) {
-        el.focus();
-      }, focusElement);
 
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      try {
+        await browser.execute(function(el) {
+          el.focus();
+        }, focusElement);
+
+        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      }
+      finally {
+        await browser.execute(function(el) {
+          el.blur();
+        }, focusElement);
+      }
     };
   },
 
@@ -88,6 +96,13 @@ module.exports = {
       }
       finally {
         browser.releaseActions();
+
+        await browser.pause(1000);
+
+        // some button examples have click handlers that fire alert dialogs
+        if (await browser.isAlertOpen()) {
+          await browser.acceptAlert();
+        }
       }
     };
   },

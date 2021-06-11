@@ -11,9 +11,9 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxStatefulTreeViewRadioSelectExample from './NxStatefulTreeViewRadioSelectExample';
 import NxStatefulTreeViewRadioSelectDisabledExample from './NxStatefulTreeViewRadioSelectDisabledExample';
 
-const nxStatefulTreeViewRadioSelectExampleCode = require('!!raw-loader!./NxStatefulTreeViewRadioSelectExample').default,
+const nxStatefulTreeViewRadioSelectExampleCode = require('./NxStatefulTreeViewRadioSelectExample?raw'),
     nxStatefulTreeViewRadioSelectDisabledExampleCode =
-        require('!!raw-loader!./NxStatefulTreeViewRadioSelectDisabledExample').default;
+        require('./NxStatefulTreeViewRadioSelectDisabledExample?raw');
 
 const NxStatefulTreeViewRadioSelectPage = () =>
   <>
@@ -128,7 +128,8 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <td className="nx-cell">Function</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Callback to generate tooltip text for each option. Called with the option object.
+              Callback to generate tooltip text for each option. Called with the option object. If not supplied, the
+              default overflow tooltip behavior of the checkboxes will be active.
             </td>
           </tr>
           <tr className="nx-table-row">

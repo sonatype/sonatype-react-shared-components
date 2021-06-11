@@ -14,7 +14,12 @@ export { default as NxLoadingSpinner } from './components/NxLoadingSpinner/NxLoa
 export { default as NxLoadError, Props as NxLoadErrorProps } from './components/NxLoadError/NxLoadError';
 export { default as NxLoadWrapper, Props as NxLoadWrapperProps } from './components/NxLoadWrapper/NxLoadWrapper';
 export { default as NxModal, Props as NxModalProps } from './components/NxModal/NxModal';
-export { default as NxTextInput, Props as NxTextInputProps } from './components/NxTextInput/NxTextInput';
+export { default as NxTextInput, PublicProps as NxTextInputProps, StateProps as NxTextInputStateProps }
+  from './components/NxTextInput/NxTextInput';
+
+import * as nxTextInputStateHelpers from './components/NxTextInput/stateHelpers';
+export { nxTextInputStateHelpers };
+
 export {
   default as NxAlert,
   NxWarningAlert,
@@ -54,6 +59,8 @@ export { default as NxStatefulSubmitMask }
   from './components/NxSubmitMask/stateful/NxStatefulSubmitMask';
 
 export { default as NxTable, NxTableProps } from './components/NxTable/NxTable';
+
+// deprecated, use NxTable.Body etc now
 export { default as NxTableBody, NxTableBodyProps } from './components/NxTable/NxTableBody';
 export { default as NxTableCell, NxTableCellProps } from './components/NxTable/NxTableCell';
 export { default as NxTableHead, NxTableHeadProps } from './components/NxTable/NxTableHead';
@@ -68,11 +75,15 @@ export { default as NxTabPanel, NxTabPanelProps } from './components/NxTabs/NxTa
 export {
   default as NxTreeView,
   NxTreeViewChild,
-  Props as NxTreeViewProps
+  Props as NxTreeViewProps,
+  NxTreeViewChildProps
 } from './components/NxTreeView/NxTreeView';
 
 export { default as NxTooltip, Props as NxTooltipProps, TooltipPlacement as NxTooltipPlacement }
   from './components/NxTooltip/NxTooltip';
+
+export { default as NxOverflowTooltip, OverflowTooltipProps as NxOverflowTooltipProps }
+  from './components/NxTooltip/NxOverflowTooltip';
 
 export {
   default as NxTreeViewRadioSelect,
@@ -130,6 +141,10 @@ export {
   default as NxPageHeader,
   Props as NxPageHeaderProps
 } from './components/NxPageHeader/NxPageHeader';
+export {
+  default as NxForm,
+  Props as NxFormProps
+} from './components/NxForm/NxForm';
 
 export * from './util/threatLevels';
 export * from './util/validationUtil';
@@ -139,6 +154,74 @@ export {
   Props as NxBinaryDonutChartProps
 } from './components/NxBinaryDonutChart/NxBinaryDonutChart';
 
+export {
+  default as NxAccordion,
+  Props as NxAccordionProps,
+  HeaderProps as NxAccordionHeaderProps
+} from './components/NxAccordion/NxAccordion';
+
+export {
+  default as NxStatefulAccordion,
+  Props as NxStatefulAccordionProps
+} from './components/NxAccordion/stateful/NxStatefulAccordion';
+
+export {
+  default as NxNexusPageHeader,
+  Props as NxNexusPageHeaderProps
+} from './components/NxNexusPageHeader/NxNexusPageHeader';
+
 export { default as NxPagination, Props as NxPaginationProps } from './components/NxPagination/NxPagination';
 export { default as NxIndeterminatePagination, Props as NxIndeterminatePaginationProps }
   from './components/NxIndeterminatePagination/NxIndeterminatePagination';
+
+export { default as NxPolicyViolationIndicator, Props as NxPolicyViolationIndicatorProps }
+  from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicator';
+
+export { default as NxFormGroup, Props as NxFormGroupProps } from './components/NxFormGroup/NxFormGroup';
+export { default as NxFieldset, Props as NxFieldsetProps } from './components/NxFieldset/NxFieldset';
+
+export { default as NxToggle, Props as NxToggleProps } from './components/NxToggle/NxToggle';
+export { default as NxStatefulToggle, Props as NxStatefulToggleProps }
+  from './components/NxToggle/stateful/NxStatefulToggle';
+
+export { default as NxSegmentedButton, Props as NxSegmentedButtonProps }
+  from './components/NxSegmentedButton/NxSegmentedButton';
+
+export { default as NxStatefulSegmentedButton, Props as NxStatefulSegmentedButtonProps }
+  from './components/NxSegmentedButton/stateful/NxStatefulSegmentedButton';
+
+export { default as NxTag, NxSelectableTag, PublicProps as NxTagProps, SelectableProps as NxSelectableTagProps }
+  from './components/NxTag/NxTag';
+
+export { selectableColors, selectableColorClasses, SelectableColor } from './util/selectableColors';
+
+// deprecated
+export { selectableColors as NX_TAG_COLORS, SelectableColor as NX_TAG_COLORS_TYPE } from './util/selectableColors';
+
+export { default as NxCodeSnippet, Props as NxCodeSnippetProps } from './components/NxCodeSnippet/NxCodeSnippet';
+
+export { default as useToggle } from './util/useToggle';
+
+export { default as NxGlobalSidebar, Props as NxGlobalSidebarProps }
+  from './components/NxGlobalSidebar/NxGlobalSidebar';
+export { default as NxGlobalSidebarNavigation, NxGlobalSidebarNavigationProps }
+  from './components/NxGlobalSidebar/NxGlobalSidebarNavigation';
+export { default as NxGlobalSidebarNavigationLink, NxGlobalSidebarNavigationLinkProps }
+  from './components/NxGlobalSidebar/NxGlobalSidebarNavigationLink';
+export { default as NxStatefulGlobalSidebar, Props as NxStatefulGlobalSidebarProps }
+  from './components/NxGlobalSidebar/stateful/NxStatefulGlobalSidebar';
+export { default as NxGlobalSidebarFooter, NxGlobalSidebarFooterProps }
+  from './components/NxGlobalSidebar/NxGlobalSidebarFooter';
+
+export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
+
+export { default as withClass } from './util/withClass';
+
+export * from './components/SimpleComponents';
+
+export * from './util/idUtil';
+
+export { default as NxTextLink, Props as NxTextLinkProps } from './components/NxTextLink/NxTextLink';
+
+export { default as NxThreatCounter, Props as NxThreatCounterProps }
+  from './components/NxThreatCounter/NxThreatCounter';

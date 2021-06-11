@@ -10,8 +10,8 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxTruncateExample from './NxTruncateExample';
 
-const nxTruncateExampleCode = require('!!raw-loader!./NxTruncateExample').default,
-    nxTruncateExampleSCSS = require('!!raw-loader!./NxTruncateExample.scss').default;
+const nxTruncateExampleCode = require('./NxTruncateExample?raw'),
+    nxTruncateExampleSCSS = require('./NxTruncateExample.scss?raw');
 
 const NxTruncatePage = () => {
   const codeExamples = [

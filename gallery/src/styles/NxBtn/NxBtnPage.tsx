@@ -7,12 +7,13 @@
 import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
+import { NxCode } from '@sonatype/react-shared-components';
 
-const nxBtnPrimaryCode = require('!!raw-loader!./NxBtnPrimaryExample.html').default,
-    nxBtnDefaultCode = require('!!raw-loader!./NxBtnDefaultExample.html').default,
-    nxBtnTertiaryCode = require('!!raw-loader!./NxBtnTertiaryExample.html').default,
-    nxBtnErrorCode = require('!!raw-loader!./NxBtnErrorExample.html').default,
-    nxBtnIconCode = require('!!raw-loader!./NxBtnIconExample.html').default;
+const nxBtnPrimaryCode = require('./NxBtnPrimaryExample.html'),
+    nxBtnDefaultCode = require('./NxBtnDefaultExample.html'),
+    nxBtnTertiaryCode = require('./NxBtnTertiaryExample.html'),
+    nxBtnErrorCode = require('./NxBtnErrorExample.html'),
+    nxBtnIconCode = require('./NxBtnIconExample.html');
 
 const NxBtnPage = () =>
   <>
@@ -22,6 +23,10 @@ const NxBtnPage = () =>
         When a button is not contained in a <code className="nx-code">footer</code>, then an enclosing
         <code className="nx-code">.nx-btn-bar</code> is generally required to ensure that the buttons are spaced
         appropriately from other content.
+      </p>
+      <p className="nx-p">
+        When working in React, it is recommended to use the <NxCode>NxButton</NxCode> component which provides a more
+        convenient way to use these styles.
       </p>
     </GalleryDescriptionTile>
 

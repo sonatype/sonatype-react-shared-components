@@ -12,4 +12,4 @@ export default function NxStatefulTextInputDisabledExample() {
   return (
     <NxStatefulTextInput disabled />
   );
-};
+}

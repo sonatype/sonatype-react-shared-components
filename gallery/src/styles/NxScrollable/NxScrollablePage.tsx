@@ -8,7 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxScrollableExampleCode = require('!!raw-loader!./NxScrollableExample.html').default;
+const nxScrollableExampleCode = require('./NxScrollableExample.html');
 
 const NxScrollablePage = () =>
   <>

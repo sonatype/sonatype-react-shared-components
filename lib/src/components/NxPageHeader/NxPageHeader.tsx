@@ -5,50 +5,28 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import classnames from 'classnames';
 
-import { HeaderLinkProps, Props, propTypes } from './types';
+import AbstractNxPageHeader from '../AbstractNxPageHeader/AbstractNxPageHeader';
+import { Props, ProductInfo, propTypes } from './types';
 
 export { Props };
 
 const logoImg = require('../../assets/img/sonatype-logo-with-hexagon.png');
 
-function HeaderLink({ name, href, current }: HeaderLinkProps) {
-  const classes = classnames('nx-page-header__link', {
-    'nx-page-header__link--current': current
-  });
-
+function HeaderProductInfo({ name, version }: ProductInfo) {
   return (
-    <a className={classes} href={href} data-text={name}>{name}</a>
+    <>
+      <div className="nx-product__name">{name}</div>
+      { version && <div className="nx-product__version">Version: {version}</div> }
+    </>
   );
 }
 
-// visible for testing
-export { HeaderLinkProps, HeaderLink };
+export default function NxPageHeader({ productInfo, ...otherProps }: Props) {
+  const logo = <img src={logoImg} className="nx-product__logo-image" alt="Sonatype"/>,
+      productInfoContent = productInfo ? <HeaderProductInfo { ...productInfo } /> : null;
 
-export default function NxPageHeader({ links, homeLink, productInfo, children }: Props) {
-  const logoEl = <img src={logoImg} className="nx-product__wordmark" alt="Sonatype"/>,
-      linkEls = links && links.map(link => <HeaderLink key={link.name} { ...link } />);
-
-  return (
-    <header className="nx-page-header">
-      <div className="nx-page-header__inner">
-        <div className="nx-product">
-          <div className="nx-product__branding">
-            { homeLink ? <a className="nx-product__home-link" href={homeLink}>{logoEl}</a> : logoEl }
-          </div>
-          { productInfo &&
-            <>
-              <div className="nx-product__name">{productInfo.name}</div>
-              { productInfo.version && <div className="nx-product__version">Version: {productInfo.version}</div> }
-            </>
-          }
-        </div>
-        { linkEls && <div className="nx-page-header__links">{linkEls}</div> }
-        { children && <div className="nx-page-header__extra-content">{children}</div> }
-      </div>
-    </header>
-  );
+  return <AbstractNxPageHeader { ...otherProps } { ...{ logo, productInfoContent } } />;
 }
 
 NxPageHeader.propTypes = propTypes;

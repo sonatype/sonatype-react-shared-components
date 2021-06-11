@@ -8,9 +8,9 @@ import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const threatLevelNumberExampleCode = require('!!raw-loader!./ThreatLevelNumberExample').default,
-    threatLevelCategoryExampleCode = require('!!raw-loader!./ThreatLevelCategoryExample').default,
-    categoryByPolicyThreatLevelExampleCode = require('!!raw-loader!./CategoryByPolicyThreatLevelExample').default;
+const threatLevelNumberExampleCode = require('./ThreatLevelNumberExample?raw'),
+    threatLevelCategoryExampleCode = require('./ThreatLevelCategoryExample?raw'),
+    categoryByPolicyThreatLevelExampleCode = require('./CategoryByPolicyThreatLevelExample?raw');
 
 const PolicyThreatLevelUtilsPage = () =>
   <>

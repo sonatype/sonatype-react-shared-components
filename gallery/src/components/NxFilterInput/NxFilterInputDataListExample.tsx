@@ -14,7 +14,7 @@ const NxFilterInputDataListExample = () => {
   return (
     <>
       <NxFilterInput placeholder="Choose browser"
-                     inputId="filter-datalist"
+                     id="filter-datalist"
                      onChange={changeValue}
                      value={value}
                      list="browsers" />

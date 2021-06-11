@@ -7,6 +7,7 @@
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
+import { textContent } from '../../util/childUtil';
 
 import { Props, propTypes, TooltipPlacement } from './types';
 export { Props, propTypes, TooltipPlacement } from './types';
@@ -46,8 +47,9 @@ function fixOptional(props: Props): TooltipProps {
 const NxTooltip: FunctionComponent<Props> =
     function NxTooltip({ className, ...otherProps }) {
       const tooltipClassName = classnames('nx-tooltip', className);
+      const ariaLabel = textContent(otherProps.title);
 
-      return <Tooltip { ...fixOptional(otherProps) } classes={{ tooltip: tooltipClassName }} />;
+      return <Tooltip aria-label={ariaLabel} { ...fixOptional(otherProps) } classes={{ tooltip: tooltipClassName }} />;
     };
 
 NxTooltip.propTypes = propTypes;

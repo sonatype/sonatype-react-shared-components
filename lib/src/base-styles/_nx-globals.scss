@@ -1,13 +1,10 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../scss-shared/nx-container-helpers';
-@import '../scss-shared/nx-variables';
-@import '../scss-shared/nx-text-helpers';
-@import '../scss-shared/nx-flexbox-helpers';
 
 $nx-scrollable-default-height: 400px;
 
@@ -15,16 +12,18 @@ $nx-scrollable-default-height: 400px;
   #Basic links
 */
 .nx-text-link {
-  color: $nx-link-color;
+  @include container-horizontal;
+
+  color: var(--nx-color-link);
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
-    color: $nx-link-color-hover;
+    color: var(--nx-color-link-hover);
   }
 
   &:active {
-    color: $nx-link-color-active;
+    color: var(--nx-color-link-active);
   }
 }
 
@@ -43,24 +42,9 @@ $nx-scrollable-default-height: 400px;
   float: right;
 }
 
-.nx-error {
-  background-color: $nx-fail-color-bg;
-  border: $nx-border-error;
-  color: $nx-text-color-error;
-
-  .fa, .svg-inline--fa {
-    margin-right: 8px;
-  }
-}
-
 .nx-scrollable {
   @include container-vertical;
   @include vertically-scrollable($nx-scrollable-default-height);
-}
-
-.nx-scrollable--table-container {
-  border: 1px solid #d1d6f0;
-  border-radius: $nx-border-radius;
 }
 
 .nx-truncate-ellipsis {
@@ -71,4 +55,12 @@ $nx-scrollable-default-height: 400px;
 
 .nx-code {
   @extend %nx-code;
+}
+
+.nx-pre {
+  @extend %nx-pre;
+}
+
+.nx-blockquote {
+  @extend %nx-blockquote;
 }

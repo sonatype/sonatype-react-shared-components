@@ -40,7 +40,7 @@ const AdditionalResources = () =>
         <a rel="noreferrer"
            href="https://www.pluralsight.com/paths/react"
            target="_blank">
-             Pluralsight React Path
+          Pluralsight React Path
         </a>
         {' '}(beginner to advanced)
       </li>
@@ -48,7 +48,7 @@ const AdditionalResources = () =>
         <a rel="noreferrer"
            href="https://reactforbeginners.com/"
            target="_blank">
-             React for beginners
+          React for beginners
         </a>
       </li>
     </ul>

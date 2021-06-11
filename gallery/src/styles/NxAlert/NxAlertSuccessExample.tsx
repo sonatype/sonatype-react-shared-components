@@ -9,8 +9,8 @@ import { NxFontAwesomeIcon, NxCloseButton } from '@sonatype/react-shared-compone
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 const NxAlertErrorExample = () =>
-  <div className="nx-alert nx-alert--success">
-    <NxFontAwesomeIcon icon={faCheckCircle}/>
+  <div className="nx-alert nx-alert--success" role="status">
+    <NxFontAwesomeIcon icon={faCheckCircle} aria-label="success" aria-hidden={false} />
     <span><strong>Success!</strong> This was a triumph! A great success!</span>
     <NxCloseButton />
   </div>;

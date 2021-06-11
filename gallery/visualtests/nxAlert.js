@@ -37,4 +37,17 @@ describe('NxAlert', function() {
   describe('NxWarningAlert', function() {
     it('looks right', simpleTest(warningSelector));
   });
+
+  describe('Page-level NxAlert', function() {
+    beforeEach(async function() {
+      await browser.url('#/PageLevelAlertExample');
+    });
+
+    it('looks right using page-scrolling', simpleTest('.nx-alert'));
+
+    it('looks right using section scrolling', async function() {
+      await browser.url('#/PageLevelAlertExample?disablePageScrolling=true');
+      await simpleTest('.nx-alert')();
+    });
+  });
 });

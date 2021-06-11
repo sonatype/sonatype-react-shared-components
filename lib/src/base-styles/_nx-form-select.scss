@@ -1,0 +1,43 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+.nx-form-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--nx-swatch-white) url("data:image/svg+xml;utf8, \
+    <svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%232c2c2c'> \
+    <polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
+  background-size: 12px;
+  background-position: calc(100% - 16px) 16px;
+  background-repeat: no-repeat;
+  border: var(--nx-border-default);
+  border-radius: var(--nx-border-radius);
+  color: var(--nx-color-text);
+  font-size: var(--nx-font-size);
+  line-height: var(--nx-line-height);
+  padding: var(--nx-spacing-2x) var(--nx-spacing-4x);
+  width: var(--nx-width-form-element-normal);
+
+  &:hover {
+    border-color: var(--nx-color-form-element-border);
+  }
+
+  &:focus {
+    box-shadow: var(--nx-box-shadow-focus);
+    border-color: var(--nx-color-interactive-border-focus);
+    outline: none;
+  }
+
+  &.disabled {
+    background-color: var(--nx-color-interactive-background-disabled);
+    border-color: var(--nx-color-interactive-border-disabled);
+  }
+}
+
+.nx-form-select--long {
+  width: var(--nx-width-form-element-wide);
+}

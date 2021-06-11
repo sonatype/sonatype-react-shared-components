@@ -1,23 +1,16 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-
- /*
-  #Tables
-*/
-
-// table cell header
-$nx-table-cell-header-height: 48px;
-
 .nx-table {
+  background-color: var(--nx-color-component-background);
   border-spacing: 0;
-  border: 1px solid #d1d6f0;
-  border-radius: $nx-border-radius;
+  border: var(--nx-border-default);
+  border-radius: var(--nx-border-radius);
   display: table;
-  margin: $nx-spacing-sm 0 $nx-spacing-l 0;
+  margin: var(--nx-spacing-3x) 0 var(--nx-spacing-6x) 0;
   overflow: hidden;
   width: 100%;
 
@@ -30,28 +23,28 @@ $nx-table-cell-header-height: 48px;
       border-style: none;
 
       border-bottom-style: solid;
-      border-bottom-color: #e9e9e9;
+      border-bottom-color: var(--nx-color-subsection-border);
       border-top-style: solid;
 
       // we want the perceived padding to be the standard spacing size. As the top border is generally invisible,
       // it should be counted as padding from that perspective
-      padding-top: $nx-spacing-sm - $border-width;
+      padding-top: calc(var(--nx-spacing-3x) - #{$border-width});
 
       &:first-child {
         border-left-style: solid;
-        padding-left: $nx-spacing-md - $border-width;
+        padding-left: calc(var(--nx-spacing-4x) - #{$border-width});
       }
 
       &:last-child {
         border-right-style: solid;
-        padding-right: $nx-spacing-md - $border-width;
+        padding-right: calc(var(--nx-spacing-4x) - #{$border-width});
       }
 
       // Used for table cells container meta-information such as the fact that the table is empty, or
       // that the data is loading. These cells are expected to take up the entire row using colspan attributes
       &.nx-cell--meta-info {
-        padding-top: $nx-spacing-md - 1px;
-        padding-bottom: $nx-spacing-md;
+        padding-top: calc(var(--nx-spacing-4x) - 1px);
+        padding-bottom: var(--nx-spacing-4x);
         text-align: center;
 
         > * {
@@ -67,76 +60,139 @@ $nx-table-cell-header-height: 48px;
       }
 
       > :first-child {
-        border-bottom-left-radius: $nx-border-radius;
+        border-bottom-left-radius: var(--nx-border-radius);
       }
 
       > :last-child {
-        border-bottom-right-radius: $nx-border-radius;
+        border-bottom-right-radius: var(--nx-border-radius);
       }
     }
 
     &.nx-clickable {
       &:hover {
         > .nx-cell {
-          background-color: $nx-hover-background;
+          background-color: var(--nx-color-interactive-background-hover);
         }
       }
 
-      &.selected, &:active {
+      &.selected {
         > .nx-cell {
-          background-color: $nx-selected-background;
+          background-color: var(--nx-color-interactive-background-selected);
         }
       }
 
-      &:focus {
-        box-shadow: $nx-focus-box-shadow;
+      &:active {
+        > .nx-cell {
+          background-color: var(--nx-color-interactive-background-active);
+        }
+      }
+
+      &:focus-within {
+        box-shadow: var(--nx-box-shadow-focus);
         outline: none;
 
         > .nx-cell {
-          border-color: #02a6d9;
+          border-color: var(--nx-color-interactive-border-focus);
         }
       }
     }
   }
 }
 
-.nx-table--scrollable {
-  border-style: none;
-  border-radius: 0;
-  overflow: visible;
+.nx-table-container {
+  background-color: var(--nx-color-component-background);
+  border: var(--nx-border-default);
+  border-radius: var(--nx-border-radius);
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
-  // In Chrome (at least), tables are forced to have a whole number of pixels for their width. This means that
-  // if a container has a fractional number of pixels width, the table width will be truncated down and a visible
-  // gap will appear.  This calc ensures that when in a fractional-width container, the table will get an extra
-  // pixel of width
-  width: calc(100% + 0.9999px);
-
-  > thead > :first-child, > tbody > :last-child, {
-    > .nx-cell {
-      &:first-child, &:last-child {
-        border-radius: 0;
-      }
-    }
-  }
-
-  // create a stacking context so the headers don't appear over other content outside the table
+  // create a stacking context so the sticky content doesn't appear over other content outside the container
   position: relative;
   z-index: 0;
 
-  .nx-cell--header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+  // for specificity
+  &.nx-scrollable {
+    overflow-y: auto;
+  }
+
+  // NOTE: these styles used to be on .nx-table--scrollable
+  > .nx-table {
+    border-style: none;
+    border-radius: 0;
+    margin: 0;
+    overflow: visible;
+
+    // In Chrome (at least), tables are forced to have a whole number of pixels for their width. This means that
+    // if a container has a fractional number of pixels width, the table width will be truncated down and a visible
+    // gap will appear.  This calc ensures that when in a fractional-width container, the table will get an extra
+    // pixel of width
+    width: calc(100% + 0.9999px);
+
+    > thead > :first-child {
+      > .nx-cell {
+        &:first-child, &:last-child {
+          border-radius: 0;
+        }
+      }
+    }
+
+    > tbody > :last-child {
+      > .nx-cell {
+        &:first-child, &:last-child {
+          border-radius: 0;
+        }
+
+        border-bottom-style: solid;
+      }
+    }
+
+    .nx-cell--header {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    &:last-child > tbody > :last-child > .nx-cell {
+      border-bottom-style: none;
+    }
   }
 }
 
-.nx-table-row--filter-header {
-  > .nx-cell--header {
-    top: $nx-table-cell-header-height;
-  }
+// deprecated
+.nx-scrollable--table-container {
+  @extend .nx-table-container;
+}
 
-  .nx-filter-input {
-    width: 250px;
+.nx-table-container__footer {
+  @include container-vertical;
+
+  background-color: var(--nx-color-component-background);
+  border-top: var(--nx-border-default);
+  margin-top: auto;
+
+  // when following a table with no space between, merge the table's bottom border and the pagination's top border
+  transform: translateY(-1px);
+
+  // subtract 1 from bottom padding to counteract the translateY above
+  padding: $nx-table-footer-vertical-padding var(--nx-spacing-6x)
+    calc(#{$nx-table-footer-vertical-padding} - 1px) var(--nx-spacing-6x);
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+}
+
+// nested and located this far down the file for specificity reasons
+.nx-table {
+  .nx-table-row--filter-header {
+    > .nx-cell--header {
+      top: $nx-table-cell-header-height;
+    }
+
+    .nx-filter-input {
+      width: 250px;
+    }
   }
 }
 
@@ -148,8 +204,29 @@ $nx-table-cell-header-height: 48px;
   @include container-vertical;
   @include container-horizontal;
 
-  padding: $nx-spacing-sm $nx-spacing-md;
+  min-height: $nx-table-cell-min-height;
+  padding: $nx-table-cell-vertical-padding var(--nx-spacing-3x);
   vertical-align: top;
+
+  &:first-child {
+    padding-left: var(--nx-spacing-4x);
+  }
+
+  &:last-child {
+    padding-right: var(--nx-spacing-4x);
+  }
+
+  > .nx-btn-bar {
+    // buttons should be 8px from row edges even though row padding is 12px
+    margin-top: calc(0px - var(--nx-spacing-base));
+    margin-bottom: calc(0px - var(--nx-spacing-base));
+  }
+
+  &:not(.nx-cell--header) > .nx-btn-bar {
+    .nx-btn--icon-only {
+      @include nx-small-icon-btn;
+    }
+  }
 }
 
 .nx-cell--label {
@@ -158,17 +235,23 @@ $nx-table-cell-header-height: 48px;
 
 .nx-cell--header {
   @include bold;
-  background-color: #bbc1de;
+  background-color: var(--nx-swatch-indigo-80);
   border-top: none;
   box-sizing: border-box;
 
-  color: $nx-text-color-dark;
-  font-size: $nx-font-size-s;
+  color: var(--nx-color-text-dark);
+  font-size: var(--nx-font-size-s);
   height: $nx-table-cell-header-height;
   text-align: left;
   text-transform: uppercase;
   white-space: nowrap;
   vertical-align: middle;
+
+  &:focus {
+    outline: 1px solid var(--nx-color-interactive-border-focus);
+    outline-offset: -1px;
+    box-shadow: var(--nx-box-shadow-focus);
+  }
 }
 
 // columns whose content is numerical
@@ -178,7 +261,7 @@ $nx-table-cell-header-height: 48px;
 
 
 .nx-cell--icon {
-  color: #2c2c2c;
+  color: var(--nx-color-text-dark);
   text-align: center;
 }
 
@@ -198,20 +281,44 @@ $nx-table-cell-header-height: 48px;
 }
 
 .nx-table-row--filter-header > .nx-cell--header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #d1d6f0;
+  background-color: var(--nx-color-component-background);
+  border-bottom: var(--nx-border-default);
+  padding-top: var(--nx-spacing-4x);
+  padding-bottom: var(--nx-spacing-4x);
 }
 
 .nx-cell__sort-icons {
   cursor: pointer;
   font-size: 16px;
-  margin-left: $nx-spacing-xxs;
+  margin-left: var(--nx-spacing-base);
 
   > :first-child path {
-    color: #fff;
+    color: var(--nx-swatch-white);
   }
 
   > :nth-child(2) path {
-    color: $nx-blue-600;
+    color: var(--nx-swatch-blue-40);
+  }
+}
+
+.nx-cell__sort-btn, .nx-cell__chevron-btn {
+  @include container-horizontal;
+
+  width: calc(100% + 2 * var(--nx-spacing-4x));
+  text-align: left;
+  text-transform: uppercase;
+
+  &, &:hover, &:active, &:focus {
+    border: none;
+    background: none;
+    font: inherit;
+    outline: none;
+  }
+
+  // first and last child selectors necessary for specificity
+  &, &:first-child, &:last-child {
+    // make button take up entire header including its padding box
+    margin: calc(0px - var(--nx-spacing-3x)) calc(0px - var(--nx-spacing-4x));
+    padding: var(--nx-spacing-3x) var(--nx-spacing-4x);
   }
 }

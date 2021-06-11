@@ -9,10 +9,13 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTreeViewMultiSelectExample from './NxTreeViewMultiSelectExample';
+import NxTreeViewMultiSelectCustomTooltipExample from './NxTreeViewMultiSelectCustomTooltipExample';
 import NxTreeViewMultiSelectDisabledExample from './NxTreeViewMultiSelectDisabledExample';
 
-const nxTreeViewMultiSelectExampleCode = require('!!raw-loader!./NxTreeViewMultiSelectExample').default,
-    nxTreeViewMultiSelectDisabledExampleCode = require('!!raw-loader!./NxTreeViewMultiSelectDisabledExample').default;
+const nxTreeViewMultiSelectExampleCode = require('./NxTreeViewMultiSelectExample?raw'),
+    nxTreeViewMultiSelectDisabledExampleCode = require('./NxTreeViewMultiSelectDisabledExample?raw'),
+    nxTreeViewMultiSelectCustomTooltipExampleCode =
+        require('./NxTreeViewMultiSelectCustomTooltipExample?raw');
 
 const NxTreeViewMultiSelectPage = () =>
   <>
@@ -139,7 +142,8 @@ const NxTreeViewMultiSelectPage = () =>
             <td className="nx-cell">Function</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Callback to generate tooltip text for each option. Called with the option object.
+              Callback to generate tooltip text for each option. Called with the option object. If not supplied, the
+              default overflow tooltip behavior of the checkboxes will be active.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -180,7 +184,8 @@ const NxTreeViewMultiSelectPage = () =>
             <td className="nx-cell">string</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Placeholder to be used in filter text input.
+              Placeholder to be used in filter text input. Defaults to "filter" but recommended to
+              be something clearer for screenreading purposes.
             </td>
           </tr>
           <tr className="nx-table-row">
@@ -199,7 +204,16 @@ const NxTreeViewMultiSelectPage = () =>
                         id="nx-tree-view-multi-select-example"
                         liveExample={NxTreeViewMultiSelectExample}
                         codeExamples={nxTreeViewMultiSelectExampleCode}>
-      Basic example of a <code className="nx-code">NxTreeViewMultiSelect</code>.
+      Basic example of a <code className="nx-code">NxTreeViewMultiSelect</code>. Note that the overflowing label gets
+      a tooltip.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxTreeViewMultiSelect Custom Tooltip Example"
+                        id="nx-tree-view-multi-select-custom-tooltip-example"
+                        liveExample={NxTreeViewMultiSelectCustomTooltipExample}
+                        codeExamples={nxTreeViewMultiSelectCustomTooltipExampleCode}>
+      Example of an <code className="nx-code">NxTreeViewMultiSelect</code> which generates a tooltip for each option
+      based on a custom field.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeViewMultiSelect Disabled Example With Tooltip"

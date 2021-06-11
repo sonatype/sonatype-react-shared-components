@@ -10,7 +10,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import TooltipConfigPropsDropdownExample from './TooltipConfigPropsDropdownExample';
 
-const tooltipConfigPropsDropdownExampleCode = require('!!raw-loader!./TooltipConfigPropsDropdownExample').default;
+const tooltipConfigPropsDropdownExampleCode = require('./TooltipConfigPropsDropdownExample?raw');
 
 const TooltipConfigPropsPage = () =>
   <>

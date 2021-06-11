@@ -10,18 +10,108 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 describe('NxTreeView', function() {
   beforeEach(async function() {
     await browser.url('#/pages/NxTreeView');
+    await browser.refresh();
   });
 
   const selector = '#nx-tree-view-example .nx-tree-view:nth-child(3)',
-      disabledTreeViewSelector = '#nx-tree-view-disabled-example .nx-tree-view';
+      disabledTreeViewSelector = '#nx-tree-view-disabled-example .nx-tree-view',
+      clickableTreeViewSelector = '#nx-tree-view-clickable-example .nx-tree-view',
+      clickableTreeViewSidebarSelector = '#nx-tree-view-clickable-sidebar-example .nx-tree-view',
+      checkboxTreeViewSelector = '#nx-tree-view-checkbox-example .gallery-example-live',
+      nestedTreeViewExampleSelector = '#nx-tree-view-nested-example .gallery-example-live',
+      nestedTreeViewSelector = `${nestedTreeViewExampleSelector} > .nx-tree-view`,
+      nestedTreeViewParentSelector = `${nestedTreeViewSelector} > .nx-tree-view__trigger`,
+      nestedTreeViewChildSelector = `${nestedTreeViewSelector} .nx-tree-view .nx-tree-view__trigger`,
+      emptyTreeViewSelector = '#nx-tree-view-empty-example .nx-tree-view';
 
-  it('looks right collapsed', simpleTest(selector));
-  it('looks right expanded', async function() {
+  async function expandTreeView(selector) {
     const targetElement = await browser.$(selector);
     await targetElement.click();
+  }
 
-    await simpleTest(selector)();
+  function simpleExpandedTest(selector) {
+    return async function() {
+      await expandTreeView(selector);
+      await simpleTest(selector)();
+    };
+  }
+
+  function hoverExpandedTest(selector) {
+    const hoverSelector = `${selector} .nx-tree-view__child:first-child`;
+
+    return async function() {
+      await expandTreeView(selector);
+      await hoverTest(selector, hoverSelector)();
+    }
+  }
+
+  function focusExpandedTest(selector) {
+    const focusSelector = `${selector} .nx-tree-view__child:first-child`;
+
+    return async function() {
+      await expandTreeView(selector);
+      await focusTest(selector, focusSelector)();
+    }
+  }
+
+  function focusAndHoverExpandedTest(selector) {
+    const focusSelector = `${selector} .nx-tree-view__child:first-child`;
+
+    return async function() {
+      await expandTreeView(selector);
+      await focusAndHoverTest(selector, focusSelector)();
+    }
+  }
+
+  it('looks right collapsed', simpleTest(selector));
+  it('looks right expanded', simpleExpandedTest(selector));
+
+  describe('NxTreeView with clickable children', function() {
+    it('looks right collapsed', simpleTest(clickableTreeViewSelector));
+    it('looks right expanded', simpleExpandedTest(clickableTreeViewSelector));
+    it('has items that look right on hover', hoverExpandedTest(clickableTreeViewSelector));
+    it('has items that look right on focus', focusExpandedTest(clickableTreeViewSelector));
+    it('has items that look right on focus and hover', focusAndHoverExpandedTest(clickableTreeViewSelector));
   });
 
-  it('looks right when disabled', simpleTest(disabledTreeViewSelector));
+  describe('NxTreeView with clickable children in sidebar', function() {
+    it('looks right collapsed', simpleTest(clickableTreeViewSidebarSelector));
+    it('looks right expanded', simpleExpandedTest(clickableTreeViewSidebarSelector));
+    it('has items that look right on hover', hoverExpandedTest(clickableTreeViewSidebarSelector));
+    it('has items that look right on focus', focusExpandedTest(clickableTreeViewSidebarSelector));
+    it('has items that look right on focus and hover', focusAndHoverExpandedTest(clickableTreeViewSidebarSelector));
+  });
+
+  describe('NxTreeView with checkbox/radio children', function() {
+    it('looks right collapsed', simpleTest(checkboxTreeViewSelector));
+    it('looks right expanded', simpleExpandedTest(checkboxTreeViewSelector));
+  });
+
+  describe('NxTreeView nesting', function() {
+    it('looks right with top level expanded', simpleExpandedTest(nestedTreeViewSelector));
+
+    it('looks right with child expanded', async function() {
+      const parentToggle = await browser.$(nestedTreeViewParentSelector);
+
+      await parentToggle.click();
+      await expandTreeView(nestedTreeViewChildSelector);
+      await parentToggle.click();
+
+      await simpleTest(nestedTreeViewSelector)();
+    });
+
+    it('looks right with both expanded', async function () {
+      await expandTreeView(nestedTreeViewParentSelector);
+      await expandTreeView(nestedTreeViewChildSelector);
+      await simpleTest(nestedTreeViewSelector)();
+    });
+  });
+
+  describe('Empty NxTreeView', function() {
+    it('looks right', simpleTest(emptyTreeViewSelector));
+  });
+
+  describe('Disabled NxTreeView', function() {
+    it('looks right', simpleTest(disabledTreeViewSelector));
+  });
 });

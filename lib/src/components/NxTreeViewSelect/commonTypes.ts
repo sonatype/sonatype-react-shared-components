@@ -14,8 +14,8 @@ export interface Option {
   name: string;
 }
 
-export interface CommonProps {
-  options: Option[];
+export interface CommonProps<T extends Option = Option> {
+  options: T[];
   name: string;
   children: ReactNode;
   id?: string | null;
@@ -23,11 +23,11 @@ export interface CommonProps {
   onToggleCollapse?: (() => void) | null;
   disabled?: boolean | null;
   disabledTooltip?: string | null;
-  optionTooltipGenerator?: ((option: Option) => string) | null;
+  optionTooltipGenerator?: ((option: T) => string) | null;
   tooltipModifierClass?: string | null;
   onFilterChange?: ((filter: string) => void) | null;
   filter?: string | null;
-  filteredOptions?: Option[] | null;
+  filteredOptions?: T[] | null;
   filterPlaceholder?: string | null;
   filterThreshold?: number | null;
 }

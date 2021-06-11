@@ -13,10 +13,10 @@ import NxLoadErrorNoCloseExample from './NxLoadErrorNoCloseExample';
 import NxLoadErrorRetryExample from './NxLoadErrorRetryExample';
 import NxLoadErrorRetryLongMessageExample from './NxLoadErrorRetryLongMessageExample';
 
-const simpleSourceCode = require('!!raw-loader!./NxLoadErrorSimpleExample').default;
-const noCloseSourceCode = require('!!raw-loader!./NxLoadErrorNoCloseExample').default;
-const retrySourceCode = require('!!raw-loader!./NxLoadErrorRetryExample').default;
-const retryLongMessageSourceCode = require('!!raw-loader!./NxLoadErrorRetryExample').default;
+const simpleSourceCode = require('./NxLoadErrorSimpleExample?raw');
+const noCloseSourceCode = require('./NxLoadErrorNoCloseExample?raw');
+const retrySourceCode = require('./NxLoadErrorRetryExample?raw');
+const retryLongMessageSourceCode = require('./NxLoadErrorRetryExample?raw');
 
 const NxLoadErrorPage = () =>
   <>

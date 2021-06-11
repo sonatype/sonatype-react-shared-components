@@ -6,10 +6,10 @@
  */
 import React, { FunctionComponent } from 'react';
 import { Slider } from '@material-ui/core';
-import { ValueLabelProps } from '@material-ui/core/Slider';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxPolicyThreatSlider, { Props } from '../NxPolicyThreatSlider';
+import { LabelDisplayProps } from '../types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 describe('NxPolicyThreatSlider', function() {
@@ -44,8 +44,8 @@ describe('NxPolicyThreatSlider', function() {
 
   describe('NxPolicyThreatSliderValueLabelDisplay', function() {
     const NxPolicyThreatSliderValueLabelDisplay = getSlider().find(Slider).prop('ValueLabelComponent') as
-          FunctionComponent<ValueLabelProps>,
-        minimalProps: ValueLabelProps = {
+          FunctionComponent<LabelDisplayProps>,
+        minimalProps: LabelDisplayProps = {
           value: 0,
           open: false,
           children: <div className="foo" />
@@ -92,6 +92,13 @@ describe('NxPolicyThreatSlider', function() {
 
       expect(valueText).toContain('5');
       expect(valueText).toContain('severe');
+    });
+
+    it('sets the aria-disabled of its child based on its disabled prop', function() {
+      expect(getValueLabelDisplay({ value: 5 }).find('.foo')).toHaveProp('aria-disabled', undefined);
+      expect(getValueLabelDisplay({ value: 5, disabled: null }).find('.foo')).toHaveProp('aria-disabled', null);
+      expect(getValueLabelDisplay({ value: 5, disabled: false }).find('.foo')).toHaveProp('aria-disabled', false);
+      expect(getValueLabelDisplay({ value: 5, disabled: true }).find('.foo')).toHaveProp('aria-disabled', true);
     });
 
     it('passes other props except open, valueLabelFormat, and valueLabelDisplay to the span', function() {

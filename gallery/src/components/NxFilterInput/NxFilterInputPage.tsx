@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxFilterInputFullExample from './NxFilterInputFullExample';
 import NxFilterInputDisabledExample from './NxFilterInputDisabledExample';
@@ -14,9 +15,9 @@ import NxFilterInputDataListExample from './NxFilterInputDataListExample';
 
 import './NxFilterInputPage.scss';
 
-const nxFilterInputFullExampleCode = require('!!raw-loader!./NxFilterInputFullExample').default,
-    nxFilterInputDisabledExampleCode = require('!!raw-loader!./NxFilterInputDisabledExample').default,
-    nxFilterInputDataListExampleCode = require('!!raw-loader!./NxFilterInputDataListExample').default;
+const nxFilterInputFullExampleCode = require('./NxFilterInputFullExample?raw'),
+    nxFilterInputDisabledExampleCode = require('./NxFilterInputDisabledExample?raw'),
+    nxFilterInputDataListExampleCode = require('./NxFilterInputDataListExample?raw');
 
 const NxFilterInputPage = () =>
   <>
@@ -26,6 +27,10 @@ const NxFilterInputPage = () =>
       </p>
 
       <h3>NxFilterInput Props</h3>
+      <p className="nx-p">
+        <code className="nx-code">NxFilterInput</code> receives a subset of the props that are valid on NxTextInput,
+        as described below.
+      </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -40,33 +45,58 @@ const NxFilterInputPage = () =>
             <td className="nx-cell">value</td>
             <td className="nx-cell">string</td>
             <td className="nx-cell">Yes</td>
-            <td className="nx-cell">Value to render in the input</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">placeholder</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">Placeholder to render in the input</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">className</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">Classes to apply to the element</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">inputId</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">Id to assign to the input part of this component</td>
+            <td className="nx-cell">The value rendered in the text input</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function</td>
+            <td className="nx-cell">Function ((string) =&gt; void)</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              Function that will be called whenever a change occurs; it will receive the
-              updated value (<code className="nx-code">string</code>) of the input.
+              A callback for when the user changes the value of the text box (e.g. by typing a letter)
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">onKeyPress</td>
+            <td className="nx-cell">Function ((string) =&gt; void)</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              <p className="nx-p">
+                A callback for when the user presses a key that doesn't necessarily change the input value
+                (e.g. by hitting enter)
+              </p>
+              <p className="nx-p">
+                The value given to the callback will be that of the key name, as described in the spec
+                for{' '}
+                <NxTextLink external href="https://www.w3.org/TR/uievents-key/#named-key-attribute-values">
+                  named keys
+                </NxTextLink>
+              </p>
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">HTML <code className="nx-code">&lt;input&gt;</code> Attributes</td>
+            <td className="nx-cell">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/input">
+                Input Attributes
+              </NxTextLink>
+            </td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              NxFilterInput supports any html attribute that's normally supported by HTML Inputs. The only notable
+              exceptions are:
+              <ul className="nx-list nx-list--bulleted">
+                <li className="nx-list__item">
+                  <code className="nx-code">defaultValue</code> which is left out because it creates what's commonly
+                  known as{' '}
+                  <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
+                    uncontrolled inputs
+                  </NxTextLink>
+                </li>
+                <li className="nx-list__item">
+                  The attributes specified above, whose types are as defined here and not as specified in the
+                  react propTypes.
+                </li>
+              </ul>
             </td>
           </tr>
         </tbody>

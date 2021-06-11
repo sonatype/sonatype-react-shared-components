@@ -8,16 +8,26 @@ import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 
 import {Props, propTypes} from './types';
+import NxTooltip from '../NxTooltip/NxTooltip';
+import { includesDisabledClass } from '../../util/classUtil';
 
 const NxButton = forwardRef<HTMLButtonElement, Props>(
-    function NxButton({variant, inline, className, children, ...attrs}, ref) {
-      const classNames = classnames('nx-btn', className, {
-        // secondary is the default, its styles are directly on `nx-btn`
-        [`nx-btn--${variant}`]: variant && variant !== 'secondary',
-        'nx-btn--inline': inline
-      });
+    function NxButton({ variant, className, children, title, ...attrs }, ref) {
+      const classNames = classnames(className, 'nx-btn', `nx-btn--${variant || 'secondary'}`),
+          btn = (
+            <button aria-disabled={includesDisabledClass(className)}
+                    ref={ref}
+                    className={classNames}
+                    {...attrs}>
+              {children}
+            </button>
+          );
 
-      return <button ref={ref} className={classNames} {...attrs}>{children}</button>;
+      if (variant === 'icon-only' && !title) {
+        console.warn('Using icon-only buttons without the title prop is deprecated');
+      }
+
+      return title ? <NxTooltip title={title}>{btn}</NxTooltip> : btn;
     }
 );
 

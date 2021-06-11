@@ -13,10 +13,10 @@ import NxThreatIndicatorByPolicyNumberExample from './NxThreatIndicatorByPolicyN
 import NxThreatIndicatorListExample from './NxThreatIndicatorListExample';
 import NxThreatIndicatorTableExample from './NxThreatIndicatorTableExample';
 
-const nxThreatIndicatorByCategoryCode = require('!!raw-loader!./NxThreatIndicatorByCategoryExample').default,
-    nxThreatIndicatorByPolicyNumberCode = require('!!raw-loader!./NxThreatIndicatorByPolicyNumberExample').default,
-    nxThreatIndicatorListCode = require('!!raw-loader!./NxThreatIndicatorListExample').default,
-    nxThreatIndicatorTableCode = require('!!raw-loader!./NxThreatIndicatorTableExample').default;
+const nxThreatIndicatorByCategoryCode = require('./NxThreatIndicatorByCategoryExample?raw'),
+    nxThreatIndicatorByPolicyNumberCode = require('./NxThreatIndicatorByPolicyNumberExample?raw'),
+    nxThreatIndicatorListCode = require('./NxThreatIndicatorListExample?raw'),
+    nxThreatIndicatorTableCode = require('./NxThreatIndicatorTableExample?raw');
 
 const NxThreatIndicatorPage = () =>
   <>

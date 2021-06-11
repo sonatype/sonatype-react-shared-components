@@ -134,11 +134,11 @@ describe('NxTextInput', function() {
   });
 
   describe('Long NxTextInput', function() {
-    it('looks right', simpleTest(textareaComponentSelector));
+    it('looks right', simpleTest(longComponentSelector));
   });
 
   describe('Long textarea NxTextInput', function() {
-    it('looks right', simpleTest(textareaComponentSelector));
+    it('looks right', simpleTest(longTextareaComponentSelector));
   });
 
   describe('Disabled NxTextInput', function() {

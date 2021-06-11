@@ -16,8 +16,11 @@ describe('NxTextInput state helpers', function() {
       expect(initialState('foo').value).toBe('foo');
     });
 
-    it('produces a StateProps with no validationErrors', function() {
-      expect(initialState('').validationErrors).toBeUndefined();
+    it('produces a StateProps with validationErrors from the given validator', function() {
+      const validator = () => 'Invalid';
+
+      expect(initialState('').validationErrors).toBeNull();
+      expect(initialState('', validator).validationErrors).toBe('Invalid');
     });
 
     it('produces a StateProps with a trimmedValue resulting from trimming the specified value', function() {

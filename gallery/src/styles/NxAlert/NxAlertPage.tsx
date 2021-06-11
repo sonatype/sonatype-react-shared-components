@@ -13,10 +13,10 @@ import NxAlertSuccessExample from './NxAlertSuccessExample';
 import NxAlertWarningExample from './NxAlertWarningExample';
 import NxAlertErrorExample from './NxAlertErrorExample';
 
-const nxAlertInfoCode = require('!!raw-loader!./NxAlertInfoExample').default,
-    nxAlertSuccessCode = require('!!raw-loader!./NxAlertSuccessExample').default,
-    nxAlertWarningCode = require('!!raw-loader!./NxAlertWarningExample').default,
-    nxAlertErrorCode = require('!!raw-loader!./NxAlertErrorExample').default;
+const nxAlertInfoCode = require('./NxAlertInfoExample?raw'),
+    nxAlertSuccessCode = require('./NxAlertSuccessExample?raw'),
+    nxAlertWarningCode = require('./NxAlertWarningExample?raw'),
+    nxAlertErrorCode = require('./NxAlertErrorExample?raw');
 
 const NxAlertPage = () =>
   <>

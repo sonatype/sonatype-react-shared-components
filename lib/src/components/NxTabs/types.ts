@@ -12,7 +12,7 @@ export interface TabContextType {
   rootId: string;
   index: number;
   onTabSelect: (index: number) => void;
-};
+}
 
 export type NxTabsProps = HTMLAttributes<HTMLDivElement> & {
   activeTab?: number | null ;

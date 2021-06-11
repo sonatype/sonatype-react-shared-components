@@ -78,13 +78,15 @@ describe('NxStatefulTextInput', function() {
 
   it('runs user value changes through the validator and passes the resulting validationErrors to NxTextInput',
       function() {
-        const validationErrors = ['foo is bad', 'expected bar'],
-            validator = jest.fn().mockReturnValue(validationErrors),
+        const initialValidationErrors = 'must not be empty',
+            validationErrors = ['foo is bad', 'expected bar'],
+            validator = jest.fn()
+                .mockReturnValueOnce(initialValidationErrors)
+                .mockReturnValueOnce(validationErrors),
             component = getShallowComponent({ validator });
 
-        // don't bother validating defaultValue
-        expect(validator).not.toHaveBeenCalled();
-        expect(component).not.toHaveProp('validationErrors');
+        expect(validator).toHaveBeenCalledWith('');
+        expect(component).toHaveProp('validationErrors', initialValidationErrors);
 
         component.prop('onChange')('bar');
         component.update();
@@ -97,7 +99,7 @@ describe('NxStatefulTextInput', function() {
   it('passes no validationErrors if no validator is specified', function() {
     const component = getShallowComponent();
 
-    expect(component).not.toHaveProp('validationErrors');
+    expect(component).toHaveProp('validationErrors', null);
 
     component.prop('onChange')('bar');
     component.update();

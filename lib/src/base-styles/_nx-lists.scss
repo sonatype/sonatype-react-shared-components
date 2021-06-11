@@ -1,13 +1,12 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-
 .nx-list {
-  border-top: 1px solid #d1d6f0;
-  margin: $nx-spacing-md 0 $nx-flow-content-spacing 0;
+  border-top: var(--nx-border-default);
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
   padding: 0;
 
   &, > ul, > ol {
@@ -15,46 +14,56 @@
   }
 
   > ul, > ol {
-    margin-top: $nx-spacing-sm;
+    margin-top: var(--nx-spacing-3x);
     padding: 0;
   }
 }
 
 .nx-list__item {
-  @include container-horizontal;
+  &, > .nx-list__link {
+    @include container-horizontal;
 
-  align-items: first baseline;
-  border: 1px solid transparent;
-  border-top-color: #e9e9e9;
-  box-sizing: border-box;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto 1fr auto;
-  grid-template-columns: auto 1fr auto;
-  -ms-grid-rows: auto auto;
-  grid-template-areas:
-    "indicator list-text actions"
-    ". list-sub-text actions";
-  margin: 0;
-  // 1px of padding subtracted to account for the transparent border
-  padding: $nx-spacing-md ($nx-spacing-md - 1px) ($nx-spacing-md - 1px) ($nx-spacing-md - 1px);
+    --nx-padding-without-border: calc(var(--nx-spacing-4x) - 1px);
+
+    align-items: first baseline;
+    border: 1px solid transparent;
+    border-top-color: var(--nx-color-subsection-border);
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "indicator list-text actions"
+      ". list-sub-text actions";
+    margin: 0;
+    // 1px of padding subtracted to account for the transparent border
+    padding: var(--nx-spacing-4x) var(--nx-padding-without-border)
+      var(--nx-padding-without-border) var(--nx-padding-without-border);
+  }
 
   &:first-child {
     border-top: none;
   }
 
   &.disabled {
-    color: $nx-text-color-disabled;
+    color: var(--nx-color-text-disabled);
     cursor: default;
   }
 
   > .nx-loading-spinner {
-    -ms-grid-row: 1;
-    -ms-grid-column: 2;
     grid-area: list-text;
     margin: 0;
     text-align: center;
   }
+}
+
+.nx-list__item--link {
+  display: contents;
+}
+
+.nx-list__link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .nx-list__text {
@@ -62,22 +71,25 @@
   @include container-horizontal;
 
   display: block;
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
   grid-area: list-text;
   margin: 0;
-  padding-right: $nx-spacing-l;
+  padding-right: var(--nx-spacing-6x);
+
+  &.nx-truncate-ellipsis {
+    // Something about the grid layout gets confused due to overflow: hidden on this element
+    // and adds vertical space to the second row of the grid.
+    // Experimentally, setting an explicit height here fixes that.
+    height: calc(var(--nx-line-height) * 1em);
+  }
 }
 
 .nx-list__subtext {
   @include regular();
 
   display: block;
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
   grid-area: list-sub-text;
   // top margin is measured down from the top of the objects grid row
-  margin: $nx-spacing-md 0 0 0;
+  margin: var(--nx-spacing-4x) 0 0 0;
 }
 
 .nx-list__item--empty {
@@ -104,7 +116,7 @@
 
 .nx-list--bulleted {
   border-top: none;
-  margin: $nx-spacing-md 0 $nx-spacing-l 0;
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
   padding: 0 0 0 26px;
 
   .nx-list__item {
@@ -161,57 +173,56 @@
  */
 .nx-list--clickable {
   .nx-list__item {
-    &.selected {
-      &, &:hover {
-        background-color: $nx-selected-background;
+
+    &, > .nx-list__link {
+      &.selected {
+        &, &:hover {
+          background-color: var(--nx-color-interactive-background-selected);
+        }
       }
-    }
-
-    &:hover {
-      background-color: $nx-hover-background;
-      cursor: pointer;
-    }
-
-    &:active {
-      background-color: $nx-active-background;
-    }
-
-    &:focus {
-      box-shadow: $nx-focus-box-shadow;
-      border-color: #02a6d9;
-      outline: none;
-    }
-
-    &.nx-list__item--empty {
-      @include regular();
-
-      color: $nx-text-color;
-    }
-
-    &.disabled {
-      color: $nx-text-color-disabled;
 
       &:hover {
-        background-color: transparent;
-        cursor: default;
+        background-color: var(--nx-color-interactive-background-hover);
+        cursor: pointer;
+      }
+
+      &:active {
+        background-color: var(--nx-color-interactive-background-active);
+      }
+
+      &:focus {
+        box-shadow: var(--nx-box-shadow-focus);
+        border-color: var(--nx-color-interactive-border-focus);
+        outline: none;
+      }
+
+      &.nx-list__item--empty {
+        @include regular();
+
+        color: var(--nx-color-text);
+      }
+
+      &.disabled {
+        color: var(--nx-color-text-disabled);
+
+        &:hover {
+          background-color: transparent;
+          cursor: default;
+        }
+
+        > .nx-chevron {
+          display: none;
+        }
       }
 
       > .nx-chevron {
-        display: none;
+        align-self: center;
+        color: var(--nx-color-text-dark);
+        grid-area: actions;
+
+        // custom sizing for the icon, brings it up to 13px
+        font-size: 21px;
       }
-    }
-
-    > .nx-chevron {
-      align-self: center;
-      -ms-grid-row-align: center;
-      color: #2c2c2c;
-      -ms-grid-row: 1;
-      -ms-grid-row-span: 2;
-      -ms-grid-column: 3;
-      grid-area: actions;
-
-      // custom sizing for the icon, brings it up to 13px
-      font-size: 21px;
     }
   }
 }
@@ -219,11 +230,9 @@
 .nx-list__actions {
   @include container-horizontal;
 
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
   grid-area: actions;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
-  margin: -4px 0 -4px $nx-spacing-md;
+  margin: -4px 0 -4px var(--nx-spacing-4x);
 
   .nx-btn {
     margin: 0;
@@ -232,4 +241,29 @@
       margin-left: 8px;
     }
   }
+
+  .nx-btn--icon-only {
+    @include nx-small-icon-btn;
+  }
+}
+
+.nx-list--description-list {
+  .nx-list__item {
+    display: flex;
+  }
+
+  border-bottom: var(--nx-border-subsection);
+}
+
+.nx-list__term {
+  flex: none;
+  font-weight: 600;
+  overflow-wrap: break-word;
+  width: 250px;
+}
+
+.nx-list__description {
+  @include container-vertical;
+
+  margin-left: var(--nx-spacing-6x);
 }

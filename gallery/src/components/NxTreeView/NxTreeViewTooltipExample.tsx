@@ -4,15 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { NxTreeView, NxTreeViewChild, TooltipConfigProps } from '@sonatype/react-shared-components';
+import { NxTreeView, NxTreeViewChild, TooltipConfigProps, useToggle } from '@sonatype/react-shared-components';
 
-function NxTreeViewExample() {
-  // this example uses the `useState` hook for succinctness, but you could also manage the state manually
-  // in a class component
-  const [toggleCheck, setToggleCheck] = useState(false),
-      onToggleCollapse = () => setToggleCheck(!toggleCheck),
+function NxTreeViewTooltipExample() {
+  const [toggle1Check, onToggle1Collapse] = useToggle(false),
+      [toggle2Check, onToggle2Collapse] = useToggle(false),
       complexTooltipConfig: TooltipConfigProps = {
         placement: 'left',
         title: <em>Complicated</em>
@@ -20,8 +18,8 @@ function NxTreeViewExample() {
 
   return (
     <>
-      <NxTreeView onToggleCollapse={onToggleCollapse}
-                  isOpen={toggleCheck}
+      <NxTreeView onToggleCollapse={onToggle1Collapse}
+                  isOpen={toggle1Check}
                   triggerTooltip="Tooltip!"
                   triggerContent="Tooltip configured by string">
         <NxTreeViewChild>Test1</NxTreeViewChild>
@@ -29,8 +27,8 @@ function NxTreeViewExample() {
         <NxTreeViewChild>Test3</NxTreeViewChild>
         <NxTreeViewChild>Test4</NxTreeViewChild>
       </NxTreeView>
-      <NxTreeView onToggleCollapse={onToggleCollapse}
-                  isOpen={toggleCheck}
+      <NxTreeView onToggleCollapse={onToggle2Collapse}
+                  isOpen={toggle2Check}
                   triggerTooltip={complexTooltipConfig}
                   triggerContent="Complex tooltip configuration">
         <NxTreeViewChild>Test1</NxTreeViewChild>
@@ -42,4 +40,4 @@ function NxTreeViewExample() {
   );
 }
 
-export default NxTreeViewExample;
+export default NxTreeViewTooltipExample;

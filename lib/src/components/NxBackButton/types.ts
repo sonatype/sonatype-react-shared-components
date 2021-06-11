@@ -10,7 +10,7 @@ export interface Props {
   targetPageTitle?: string | null;
   text?: string | null;
   href: string;
-};
+}
 
 export const propTypes = {
   targetPageTitle: PropTypes.string,

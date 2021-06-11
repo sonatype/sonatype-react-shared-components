@@ -14,11 +14,11 @@ import NxStatefulWarningAlertExample from './NxStatefulWarningAlertExample';
 import NxStatefulInfoAlertExample from './NxStatefulInfoAlertExample';
 import NxStatefulSuccessAlertExample from './NxStatefulSuccessAlertExample';
 
-const nxStatefulErrorAlertExampleCode = require('!!raw-loader!./NxStatefulErrorAlertExample').default,
-    nxStatefulInfoAlertExampleCode = require('!!raw-loader!./NxStatefulInfoAlertExample').default,
-    nxStatefulSuccessAlertExampleCode = require('!!raw-loader!./NxStatefulSuccessAlertExample').default,
-    nxStatefulWarningAlertExampleCode = require('!!raw-loader!./NxStatefulWarningAlertExample').default,
-    nxStatefulAlertExampleCode = require('!!raw-loader!./NxStatefulAlertExample').default;
+const nxStatefulErrorAlertExampleCode = require('./NxStatefulErrorAlertExample?raw'),
+    nxStatefulInfoAlertExampleCode = require('./NxStatefulInfoAlertExample?raw'),
+    nxStatefulSuccessAlertExampleCode = require('./NxStatefulSuccessAlertExample?raw'),
+    nxStatefulWarningAlertExampleCode = require('./NxStatefulWarningAlertExample?raw'),
+    nxStatefulAlertExampleCode = require('./NxStatefulAlertExample?raw');
 
 const NxStatefulAlertPage = () =>
   <>

@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
 import { faCheck, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
@@ -27,7 +28,7 @@ describe('NxTextInput', function() {
     expect(getShallowComponent()).toContainMatchingElement('.nx-text-input__box .nx-icon--invalid');
   });
 
-  it('contains the first validation message', function() {
+  it('contains the first validation message if isPristine is not true', function() {
     const validationErrorProps = { validatable: true, validationErrors: 'foo' },
         multiErrorValidationProps = { validatable: true, validationErrors: ['asdf', 'foo'] };
 
@@ -39,6 +40,26 @@ describe('NxTextInput', function() {
 
     expect(getShallowComponent(multiErrorValidationProps).find('.nx-text-input__invalid-message'))
         .toHaveText('asdf');
+
+    expect(getShallowComponent({ ...validationErrorProps, isPristine: true }).find('.nx-text-input__invalid-message'))
+        .toHaveText('');
+  });
+
+  it('places the alert role on the invalid message and references it as aria-errormessage', function() {
+    const component = getShallowComponent(),
+        invalidMessage = component.find('.nx-text-input__invalid-message'),
+        invalidMessageId = invalidMessage.prop('id');
+
+    expect(invalidMessage).toHaveProp('role', 'alert');
+    expect(invalidMessageId).toBeTruthy();
+    expect(component.find('.nx-text-input__input')).toHaveProp('aria-errormessage', invalidMessageId);
+  });
+
+  it('sets aria-invalid to true iff it is validatable and has validation errors', function() {
+    expect(getShallowComponent().find('input')).not.toHaveProp('aria-invalid', true);
+    expect(getShallowComponent({ validatable: true }).find('input')).not.toHaveProp('aria-invalid', true);
+    expect(getShallowComponent({ validatable: true, validationErrors: 'foo' }).find('input'))
+        .toHaveProp('aria-invalid', true);
   });
 
   it('renders a text input by default', function() {
@@ -85,7 +106,7 @@ describe('NxTextInput', function() {
   describe('when validatable is true', function() {
     const validatable = { validatable: true };
 
-    it('sets the invalid className if there are validationErrors', function() {
+    it('sets the invalid className if there are validationErrors and isPristine is not true', function() {
       expect(getShallowComponent({ ...validatable, validationErrors: 'bad' })).toHaveClassName('invalid');
       expect(getShallowComponent({ ...validatable, validationErrors: ['baaad', 'asdf'] })).toHaveClassName('invalid');
 
@@ -102,6 +123,17 @@ describe('NxTextInput', function() {
       expect(getShallowComponent({ ...validatable })).not.toHaveClassName('invalid');
       expect(getShallowComponent({ ...validatable, validationErrors: null })).not.toHaveClassName('invalid');
       expect(getShallowComponent({ ...validatable, validationErrors: [] })).not.toHaveClassName('invalid');
+    });
+
+    it('does not set the valid or invalid classes if isPristine is true', function() {
+      expect(getShallowComponent({ ...validatable, isPristine: true, validationErrors: ['baaad', 'asdf'] }))
+          .not.toHaveClassName('invalid');
+
+      expect(getShallowComponent({ ...validatable, isPristine: true })).not.toHaveClassName('valid');
+      expect(getShallowComponent({ ...validatable, isPristine: true, validationErrors: null }))
+          .not.toHaveClassName('valid');
+      expect(getShallowComponent({ ...validatable, isPristine: true, validationErrors: [] }))
+          .not.toHaveClassName('valid');
     });
   });
 
@@ -159,5 +191,12 @@ describe('NxTextInput', function() {
     element.simulate('keyPress', { key: 'a' });
 
     expect(onKeyPress).toHaveBeenCalledWith('a');
+  });
+
+  it('renders the prefixContent just before the input element', function() {
+    const component = getShallowComponent({ prefixContent: <span className="foo"/> });
+
+    expect(component.find('.nx-text-input__box > .foo')).toExist();
+    expect(component.find('.nx-text-input__box > .foo + .nx-text-input__input')).toExist();
   });
 });

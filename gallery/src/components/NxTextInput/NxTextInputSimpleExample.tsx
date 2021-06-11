@@ -6,11 +6,14 @@
  */
 import React, { useState } from 'react';
 
-import { NxTextInput } from '@sonatype/react-shared-components';
-import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
+import { NxTextInput, NxTextInputStateProps, nxTextInputStateHelpers } from '@sonatype/react-shared-components';
+
+const { initialState, userInput } = nxTextInputStateHelpers;
 
 export default function NxTextInputSimpleExample() {
-  const [state, setState] = useState(initialState(''));
+  // Note that NxTextInputStateProps is the TypeScript type for the state helper function return types.
+  // The explicity type parameter isn't necessary here, it's only present to demonstrate that type.
+  const [state, setState] = useState<NxTextInputStateProps>(initialState(''));
 
   function onChange(val: string) {
     setState(userInput(null, val));
@@ -23,4 +26,4 @@ export default function NxTextInputSimpleExample() {
   return (
     <NxTextInput { ...state } onChange={onChange} onKeyPress={onKeyPress} />
   );
-};
+}

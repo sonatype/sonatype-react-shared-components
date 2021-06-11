@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
@@ -7,26 +7,76 @@
 .nx-page-title {
   @include container-horizontal;
   @include container-vertical;
-  margin: 0 0 16px 0;
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "title sub-title actions"
+    "description description description"
+    "tags tags tags";
+  margin: 0 0 var(--nx-spacing-6x) 0;
 
   .nx-h1 {
-    display: inline-block;
+    grid-area: title;
     margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
-    vertical-align: middle;
     white-space: nowrap;
-    max-width: $nx-paragraph-width-maximum;
+  }
+
+  .nx-btn-bar {
+    grid-area: actions;
+    margin: 0 0 0 var(--nx-spacing-6x);
   }
 }
 
-.nx-page-title__page-icon {
-  display: inline-block;
-  vertical-align: middle;
+.nx-page-title__headings {
+  display: contents;
+}
+
+.nx-page-title__sub-title {
+  @include nx-truncate-ellipsis;
+  border-left: var(--nx-border-default);
+  margin: 0 0 0 var(--nx-spacing-4x);
+  padding-left: var(--nx-spacing-4x);
+  min-width: 150px;
 }
 
 .nx-page-title__description {
   @include container-vertical;
-  margin: 8px 0 0 0;
-  max-width: $nx-paragraph-width-maximum;
+  grid-area: description;
+  margin-top: var(--nx-spacing-2x);
+
+  + .nx-page-title__tags {
+    margin-top: var(--nx-spacing-4x);
+  }
+}
+
+.nx-page-title__tags {
+  @include container-horizontal;
+
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: tags;
+  row-gap: var(--nx-spacing-2x);
+  margin-top: var(--nx-spacing-2x);
+
+  // required due to specificity, removes bottom margin from children of nx-page-title__tags
+  > :nth-child(1n) {
+    margin-bottom: 0;
+  }
+
+  .nx-policy-violation-indicator {
+    + .nx-threat-counter-container, + .nx-tag {
+      margin-left: var(--nx-spacing-2x);
+    }
+  }
+  
+  .nx-threat-counter-container {
+    margin-top: 0;
+  
+    + .nx-tag {
+      margin-left: var(--nx-spacing-6x);
+    }
+  }
 }

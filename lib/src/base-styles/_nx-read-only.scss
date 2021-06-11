@@ -1,0 +1,30 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+.nx-read-only {
+  @include container-vertical;
+  margin: 0 0 var(--nx-spacing-8x) 0;
+}
+
+.nx-read-only--grid {
+  display: grid;
+  gap: var(--nx-spacing-8x) var(--nx-spacing-20x);
+  margin: var(--nx-spacing-8x) 0;
+  justify-content: start;
+}
+
+.nx-read-only__item {
+  @include container-vertical;
+}
+
+.nx-read-only__label {
+  @include bold();
+  margin: var(--nx-spacing-8x) 0 var(--nx-spacing-4x) 0;
+}
+
+.nx-read-only__data {
+  margin: 0 0 var(--nx-spacing-2x) 0;
+}

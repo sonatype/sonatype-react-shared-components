@@ -1,13 +1,11 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-
 $nx-tile-header-height: 24px; // Minimum height
 $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right actions
-$nx-tile-background-color: $nx-white;
 
 /*
   #Name-spaced Tile System
@@ -18,42 +16,24 @@ $nx-tile-background-color: $nx-white;
 .nx-tile {
   @include container-vertical;
 
-  background-color: $nx-tile-background-color;
-  border-radius: $nx-border-radius;
-  margin: $nx-spacing-xs 0 $nx-spacing-md 0;
-  padding: $nx-spacing-l;
-}
+  // the "padding" around the inside edge of the nx-tile, which must be implemented using padding/margin
+  // on children since nx-tile-content--accordion-container is supposed to go all the way to the edges
+  --nx-tile-padding: var(--nx-spacing-6x);
 
-// Special tile for containing grids
-.nx-tile--grid-tile {
-  .nx-tile-header {
-    margin-bottom: 0;
+  background-color: var(--nx-color-component-background);
+  border-radius: var(--nx-border-radius);
+  margin: var(--nx-spacing-2x) 0 var(--nx-spacing-4x) 0;
+  padding: var(--nx-tile-padding) 0;
+
+  > .nx-footer, > .nx-form > .nx-footer {
+    // use margin for sides so the top border ends in the right places
+    margin: var(--nx-spacing-8x) var(--nx-tile-padding) 0 var(--nx-tile-padding);
   }
 
-  .nx-footer {
-    margin-top: 0;
-  }
-}
-
-// Tile for scrolling content
-.nx-tile-scroll-container {
-  margin: 0 8px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-top: 8px;
-  position: relative; //required for scrollspy
-  width: calc(100% - 16px);
-  z-index: $nx-tile-scroll-container-z-index;
-
-  .nx-tile {
-    margin: 0 0 8px 0;
-  }
-}
-
-// used when a <form> is the first element in an nx-tile
-.nx-tile--form-tile {
-  .nx-tile-header {
-    margin-bottom: 6px;
+  // When a tile contains an NxForm that is in an error state, an nx-alert gets rendered as the tile's immediate child
+  > .nx-alert {
+    margin-left: var(--nx-tile-padding);
+    margin-right: var(--nx-tile-padding);
   }
 }
 
@@ -62,11 +42,14 @@ $nx-tile-background-color: $nx-white;
 .nx-tile-header {
   align-items: center;
   display: grid;
-  display: -ms-grid;
-  grid-template-columns: 1fr auto;
-  -ms-grid-columns: 1fr auto;
+  row-gap: var(--nx-spacing-2x);
+  grid-template-columns: auto 1fr auto;
   min-height: $nx-tile-header-height;
-  margin-bottom: $nx-spacing-md;
+  padding: 0 var(--nx-tile-padding) 0 var(--nx-tile-padding);
+
+  + .nx-tile-content {
+    padding-top: var(--nx-spacing-4x);
+  }
 }
 
 .nx-tile-header__title {
@@ -75,8 +58,6 @@ $nx-tile-background-color: $nx-white;
   grid-column-end: 1;
   grid-row-start: 1;
   grid-row-end: 1;
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
 
   h1, h2 {
     @include nx-truncate-ellipsis;
@@ -84,71 +65,74 @@ $nx-tile-background-color: $nx-white;
   }
 }
 
-.nx-tile-header__icon {
-  display: block;
-  float: left;
-  font-size: 30px;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
 .nx-tile-header__subtitle {
   @include semi-bold();
 
   grid-column-start: 1;
-  grid-column-end: 2;
+  grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 2;
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
 
-  color: $nx-heading-color;
-  font-size: $nx-font-size-heading-level-3;
-  max-width: $nx-paragraph-width-maximum;
+  color: var(--nx-color-text-dark);
+  font-size: var(--nx-font-size-heading-3);
 }
 
 .nx-tile__actions {
+  @include container-horizontal;
+
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  margin-left: var(--nx-spacing-6x);
+  text-align: right;
+}
+
+.nx-tile__tags {
   @include container-horizontal;
 
   grid-column-start: 2;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 1;
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  margin-left: $nx-spacing-l;
-  text-align: right;
+  margin-left: var(--nx-spacing-4x);
+
+  .nx-policy-violation-indicator {
+    margin: 0;
+  }
 }
 
 .nx-tile-content {
   @include container-vertical;
 
-  clear: both;
+  padding: 0 var(--nx-tile-padding) 0 var(--nx-tile-padding);
+}
+
+.nx-tile-content--accordion-container {
+  background-color: var(--nx-swatch-indigo-95);
+  margin-top: var(--nx-spacing-4x);
+  padding: var(--nx-spacing-4x);
+
+  &:last-child {
+    padding-bottom: var(--nx-spacing-4x);
+    margin-bottom: calc(0px - var(--nx-tile-padding));
+  }
 }
 
 // On pages with tiles with multiple sections these are lighter weight titles
 .nx-tile-subsection {
   @include container-vertical;
-  margin-top: $nx-spacing-xl;
+  margin-top: var(--nx-spacing-8x);
 
   &:first-of-type {
-    border-top: 1px solid #b7bfdb;
-    margin-top: $nx-spacing-l;
-    padding-top: $nx-spacing-l;
+    border-top: var(--nx-border-subsection);
+    margin-top: var(--nx-spacing-6x);
+    padding-top: var(--nx-spacing-6x);
   }
 
   .nx-tile-subsection__header {
     @include container-vertical;
 
-    margin-bottom: $nx-spacing-md;
+    margin-bottom: var(--nx-spacing-4x);
   }
-}
-
-// A tile at the top of the page, usually contains a nav bar with scrolling buttons
-.nx-tile--top-tile {
-  box-shadow: 0px 5px 6px 0px $nx-grey-1;
-  margin-bottom: 0;
-  position: relative;
-  z-index: $nx-tile-scroll-container-z-index + 1;
 }

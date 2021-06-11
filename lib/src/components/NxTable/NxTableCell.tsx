@@ -12,14 +12,16 @@ import {ensureElement} from '../../util/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { NxTableCellProps, nxTableCellPropTypes } from './types';
-import { HeaderContext } from './contexts';
+import { HeaderContext, RowContext } from './contexts';
+import NxTooltip from '../NxTooltip/NxTooltip';
+import { textContent } from '../../util/childUtil';
 export { NxTableCellProps };
 
 const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   const {
         metaInfo = false,
         isNumeric = false,
-        isSortable = false,
+        isSortable: isSortableProp = false,
         hasIcon = false,
         chevron = false,
         sortDir,
@@ -27,7 +29,9 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
         children,
         ...attrs
       } = props,
-      isHeader = useContext(HeaderContext);
+      isHeader = useContext(HeaderContext),
+      rowTextContent = useContext(RowContext),
+      isSortable = isSortableProp && isHeader && !chevron;
 
   const classes = classnames('nx-cell', className, {
     'nx-cell--header': isHeader,
@@ -39,36 +43,60 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   });
 
   let maskedSort;
-  if (sortDir === 'asc') {
-    maskedSort = (
-      <>
-        <NxFontAwesomeIcon icon={faSortDown} />
-        <NxFontAwesomeIcon icon={faSortUp} />
-      </>
-    );
-  }
-  else if (sortDir === 'desc') {
-    maskedSort = (
-      <>
-        <NxFontAwesomeIcon icon={faSortUp} />
-        <NxFontAwesomeIcon icon={faSortDown} />
-      </>
-    );
-  }
-  else {
-    maskedSort = <NxFontAwesomeIcon icon={faSort} />;
+  let ariaSort: 'ascending' | 'descending' | 'none' | undefined;
+  let ariaLabel;
+  if (isSortable) {
+    const text = textContent(children);
+    if (sortDir === 'asc') {
+      ariaSort = 'ascending';
+      ariaLabel = `${text} ${ariaSort}`;
+      maskedSort = (
+        <>
+          <NxFontAwesomeIcon icon={faSortDown} />
+          <NxFontAwesomeIcon icon={faSortUp} />
+        </>
+      );
+    }
+    else if (sortDir === 'desc') {
+      ariaSort = 'descending';
+      ariaLabel = `${text} ${ariaSort}`;
+      maskedSort = (
+        <>
+          <NxFontAwesomeIcon icon={faSortUp} />
+          <NxFontAwesomeIcon icon={faSortDown} />
+        </>
+      );
+    }
+    else {
+      ariaSort = 'none';
+      ariaLabel = `${text} unsorted`;
+      maskedSort = <NxFontAwesomeIcon icon={faSort} />;
+    }
   }
 
   const Tag = isHeader ? 'th' : 'td';
 
+  const chevronCellContents = isHeader ? null : (
+    <button type="button" className="nx-cell__chevron-btn" aria-label={rowTextContent}>
+      <NxFontAwesomeIcon icon={faChevronRight}/>
+    </button>
+  );
+
+  const cellSortingContents = (
+    <NxTooltip title={ariaLabel}>
+      <button type="button" className="nx-cell__sort-btn">
+        {ensureElement(children)}
+        <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>
+      </button>
+    </NxTooltip>
+  );
+
   return (
-    <Tag className={classes} {...attrs}>
-      { (chevron && !isHeader) ?
-        <NxFontAwesomeIcon icon={faChevronRight}/> :
-        <>
-          {ensureElement(children)}
-          {isSortable && <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>}
-        </>
+    <Tag className={classes} aria-sort={ariaSort} {...attrs}>
+      {
+        isSortable ? cellSortingContents :
+        chevron ? chevronCellContents :
+        children
       }
     </Tag>
   );

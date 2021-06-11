@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { simpleTest } = require('./testUtils');
+const { simpleTest, simpleTestLongElement } = require('./testUtils');
 
 describe('nx-tile', function() {
   beforeEach(async function() {
@@ -17,6 +17,9 @@ describe('nx-tile', function() {
       subtitleTileSelector = '#nx-tile-subtitle-example .nx-tile',
       subsectionsTileSelector = '#nx-tile-subsections-example .nx-tile',
       dropdownActionMenuTileSelector = '#nx-tile-dropdown-actions-example .nx-tile';
+      accordionTileSelector = '#nx-tile-accordion-example .gallery-example-live';
+      policyViolationIndicatorTileSelector = '#nx-tile-policy-violation-indicator-example .gallery-example-live',
+      alertChildTileSelector = '#nx-tile-form-error-example .gallery-example-live';
 
   describe('Simple nx-tile', function() {
     it('looks right', simpleTest(simpleTileSelector));
@@ -49,5 +52,26 @@ describe('nx-tile', function() {
 
       await browser.eyesRegionSnapshot(null, Target.region(screenshotRegion));
     });
+  });
+
+  describe('nx-tile with accordions', function() {
+    it('looks right', async function() {
+      const accordionSelector = `${accordionTileSelector} .nx-accordion`,
+          accordionEl = await browser.$(accordionSelector);
+
+      // open an accordion just to make sure the tile expands accordingly
+      await accordionEl.scrollIntoView({ block: 'center' });
+      await accordionEl.click();
+
+      await simpleTestLongElement(accordionTileSelector)();
+    });
+  });
+
+  describe('nx-tile with policy violation indicator', function() {
+    it('looks right', simpleTest(policyViolationIndicatorTileSelector));
+  });
+
+  describe('nx-tile with alert as only child', function() {
+    it('looks right', simpleTest(alertChildTileSelector));
   });
 });

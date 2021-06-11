@@ -6,8 +6,9 @@
  */
 import React, { useState } from 'react';
 
-import { NxTextInput } from '@sonatype/react-shared-components';
-import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
+import { NxTextInput, nxTextInputStateHelpers } from '@sonatype/react-shared-components';
+
+const { initialState, userInput } = nxTextInputStateHelpers;
 
 // exactly the same as NxTextInputSimpleExample, except for type="password"
 export default function NxTextInputPasswordExample() {
@@ -20,4 +21,4 @@ export default function NxTextInputPasswordExample() {
   return (
     <NxTextInput type="password" placeholder="Enter password" onChange={onChange} { ...state }/>
   );
-};
+}

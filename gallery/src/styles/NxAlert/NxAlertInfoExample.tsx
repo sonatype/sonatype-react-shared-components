@@ -9,8 +9,8 @@ import { NxFontAwesomeIcon, NxCloseButton } from '@sonatype/react-shared-compone
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const NxAlertInfoExample = () =>
-  <div className="nx-alert nx-alert--info">
-    <NxFontAwesomeIcon icon={faInfoCircle}/>
+  <div className="nx-alert nx-alert--info" aria-atomic={true}>
+    <NxFontAwesomeIcon icon={faInfoCircle} aria-label="information" aria-hidden={false} />
     <span>Information! I am an informational alert! Be informed!</span>
     <NxCloseButton />
   </div>;

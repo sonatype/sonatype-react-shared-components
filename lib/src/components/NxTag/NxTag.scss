@@ -1,0 +1,67 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+ @import '../../scss-shared/nx-text-helpers';
+ @import '../../scss-shared/nx-container-helpers';
+
+$nx-tag-default-dark: var(--nx-swatch-indigo-80);
+$nx-tag-default-light: var(--nx-swatch-indigo-95);
+
+.nx-tag {
+  @include semi-bold;
+  @include container-horizontal;
+  @include nx-truncate-ellipsis;
+
+  align-items: center;
+  background-color: var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
+  border: 1px solid var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
+  border-radius: 16px;
+  box-sizing: border-box;
+  color: var(--nx-color-text-dark);
+  cursor: default;
+  display: inline-flex;
+  font-size: var(--nx-font-size-s);
+  height: 32px;
+  line-height: 30px;
+  margin: 0 var(--nx-spacing-2x) var(--nx-spacing-2x) 0;
+  padding: 0 var(--nx-spacing-4x) 0 var(--nx-spacing-4x);
+  user-select: none;
+  // Uppercase Min so SCSS ignores it and uses CSS min, not SCSS min
+  max-width: Min(100%, 320px);
+}
+
+.nx-tag--selectable {
+  cursor: pointer;
+  padding-right: var(--nx-spacing-2x);
+
+  background-color: var(--nx-selectable-color-light, #{$nx-tag-default-light});
+
+  &:focus {
+    border: 1px solid var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
+    outline: none;
+  }
+
+  &:hover {
+    border-color: var(--nx-swatch-grey-10);
+  }
+}
+
+.nx-tag--selected {
+  background-color: var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
+
+  &:focus {
+    border: 1px solid var(--nx-color-interactive-border-focus);
+  }
+}
+
+.nx-tag__text {
+  @include nx-truncate-ellipsis;
+}
+
+.nx-tag__action {
+  margin-left: var(--nx-spacing-4x);
+}

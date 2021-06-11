@@ -1,0 +1,45 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+:root {
+  --nx-color-border: var(--nx-swatch-indigo-90);
+
+  --nx-color-subsection-border: var(--nx-swatch-indigo-90);
+
+  --nx-color-component-background: var(--nx-swatch-white);
+
+  --nx-color-site-background: var(--nx-swatch-indigo-97);
+
+  --nx-color-form-element-border: var(--nx-swatch-grey-05);
+  --nx-color-form-element-border-pristine: var(--nx-swatch-indigo-95);
+
+  --nx-color-interactive-background-selected: var(--nx-swatch-blue-90);
+  --nx-color-interactive-background-active: var(--nx-swatch-blue-95);
+  --nx-color-interactive-background-hover: var(--nx-swatch-indigo-95);
+  --nx-color-interactive-background-disabled: var(--nx-swatch-grey-95);
+  --nx-color-interactive-border-disabled: var(--nx-swatch-grey-60);
+  --nx-color-interactive-border-focus: var(--nx-swatch-teal-45);
+  --nx-color-interactive-shadow-focus: hsla(var(--nx-swatch-teal-hs), 65%, 0.3);
+
+  --nx-color-text-dark: var(--nx-swatch-grey-05);
+  --nx-color-text: var(--nx-swatch-grey-10);
+  --nx-color-text-disabled: var(--nx-color-interactive-border-disabled); // match disabled text and border
+
+  --nx-color-link: var(--nx-swatch-blue-40);
+  --nx-color-link-active: var(--nx-swatch-blue-60);
+  --nx-color-link-hover: var(--nx-swatch-blue-20);
+  --nx-color-link-disabled: var(--nx-color-text-disabled);
+
+  --nx-color-threat-unspecified: var(--nx-swatch-indigo-95);
+  --nx-color-threat-none: var(--nx-swatch-blue-70);
+  --nx-color-threat-low: var(--nx-swatch-blue-40);
+  --nx-color-threat-moderate: var(--nx-swatch-yellow-65);
+  --nx-color-threat-severe: var(--nx-swatch-orange-55);
+  --nx-color-threat-critical: var(--nx-swatch-red-45);
+
+  --nx-color-validation-valid: var(--nx-swatch-green-30);
+  --nx-color-validation-invalid: var(--nx-swatch-red-45);
+}

@@ -9,14 +9,14 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import NxCloseButtonExample from './NxCloseButtonExample';
 
-const nxCloseButtonExampleCode = require('!!raw-loader!./NxCloseButtonExample').default;
+const nxCloseButtonExampleCode = require('./NxCloseButtonExample?raw');
 
 const NxCloseButtonPage = () =>
   <>
     <GalleryDescriptionTile>
       <p className="nx-p">
         <code className="nx-code">NxCloseButton</code> represents a standard "×" close button for use on modals,
-        alerts, etc.
+        alerts, etc. It supports all attributes supported by HTML <code className="nx-code">&lt;button&gt;</code>s.
       </p>
     </GalleryDescriptionTile>
 

@@ -4,26 +4,23 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
 import {faCube} from '@fortawesome/free-solid-svg-icons';
 
-import { NxTreeView, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxTreeView, NxFontAwesomeIcon, useToggle } from '@sonatype/react-shared-components';
 
-function NxTreeViewExample() {
-  // this example uses the `useState` hook for succinctness, but you could also manage the state manually
-  // in a class component
-  const [toggleCheck, setToggleCheck] = useState(false),
-      onToggleCollapse = () => setToggleCheck(!toggleCheck);
+function NxTreeViewEmptyExample() {
+  const [toggleCheck, onToggleCollapse] = useToggle(false);
 
   return (
     <NxTreeView onToggleCollapse={onToggleCollapse}
                 isOpen={toggleCheck}
                 triggerContent={
-                  <><NxFontAwesomeIcon icon={faCube}/><span>No children</span></>
+                  <><NxFontAwesomeIcon icon={faCube}/><span>All Items</span></>
                 }>
     </NxTreeView>
   );
 }
 
-export default NxTreeViewExample;
+export default NxTreeViewEmptyExample;

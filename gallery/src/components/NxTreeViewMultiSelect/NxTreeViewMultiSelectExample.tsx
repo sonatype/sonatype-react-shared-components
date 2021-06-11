@@ -8,7 +8,8 @@ import React, { useState } from 'react';
 import {contains, toLower} from 'ramda';
 import { faBicycle } from '@fortawesome/free-solid-svg-icons';
 
-import {NxTreeViewMultiSelect, NxFontAwesomeIcon, NxTreeViewMultiSelectOption} from '@sonatype/react-shared-components';
+import {NxFontAwesomeIcon, NxTreeViewMultiSelectOption, NxTreeViewMultiSelect, useToggle}
+  from '@sonatype/react-shared-components';
 
 const NxTreeViewMultiSelectExample = () => {
   const options = [
@@ -22,6 +23,9 @@ const NxTreeViewMultiSelectExample = () => {
       id: 'skate',
       name: 'Skateboard'
     }, {
+      id: 'longboard',
+      name: 'Loooooooooooooooooooooooooooooooooongboard'
+    }, {
       id: 'moped',
       name: 'Moped'
     }, {
@@ -30,10 +34,7 @@ const NxTreeViewMultiSelectExample = () => {
     }
   ];
 
-  const [isOpen, toggleOpen] = useState(true),
-      onToggleCollapse = () => {
-        toggleOpen(!isOpen);
-      };
+  const [isOpen, onToggleCollapse] = useToggle(true);
 
   const [selection, onSelectionChange] = useState<Set<string | null>>(new Set(['motorcycle']));
 
@@ -49,11 +50,10 @@ const NxTreeViewMultiSelectExample = () => {
                            isOpen={isOpen}
                            onToggleCollapse={onToggleCollapse}
                            options={options}
-                           optionTooltipGenerator={option => option.name}
                            selectedIds={selection}
                            onChange={onSelectionChange}
                            filter={filter}
-                           filterPlaceholder="vehicle name"
+                           filterPlaceholder="filter vehicle name"
                            filterThreshold={3}
                            onFilterChange={setFilter}
                            filteredOptions={options.filter(filterPredicate)}>

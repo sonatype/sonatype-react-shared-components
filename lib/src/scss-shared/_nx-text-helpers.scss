@@ -1,10 +1,10 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import 'nx-variables';
+@import 'nx-container-helpers';
 
 @mixin nx-font-family() {
   font-family: Open Sans, sans-serif;
@@ -15,8 +15,19 @@
   font-weight: normal;
 }
 
+@mixin italic() {
+  @include nx-font-family;
+  font-style: italic;
+}
+
 @mixin bold() {
   @include nx-font-family;
+  font-weight: bold;
+}
+
+@mixin bold-italic() {
+  @include nx-font-family;
+  font-style: italic;
   font-weight: bold;
 }
 
@@ -25,10 +36,20 @@
   font-weight: 600;
 }
 
+@mixin semi-bold-italic() {
+  @include nx-font-family;
+  font-style: italic;
+  font-weight: 600;
+}
+
 @mixin nx-truncate-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+@mixin monospace() {
+  font-family: Courier Prime, monospace;
 }
 
 // for specificity reasons this should be called using a custom class on the <body> tag
@@ -51,31 +72,43 @@
 }
 
 %nx-code {
-  background-color: $nx-grey-1;
-  border: $nx-border;
-  border-radius: $nx-border-radius;
-  color: #cd0028;
-  font-family: monospace;
+  @include monospace();
+  background-color: var(--nx-swatch-grey-95);
+  border: 1px solid var(--nx-swatch-grey-90);
+  border-radius: var(--nx-border-radius);
+  color: var(--nx-swatch-red-45);
   padding: 1px 4px;
   white-space: nowrap;
 }
 
 %nx-pre {
-  background-color: #fff;
-  border: 1px solid #474747;
+  @include monospace();
+  background-color: var(--nx-swatch-white);
+  border: 1px solid var(--nx-swatch-grey-10);
   border-left-width: 8px;
-  border-radius: $nx-border-radius;
-  font-size: $nx-font-size;
-  margin: 0 0 $nx-spacing-l 0;
-  padding: $nx-spacing-md;
+  border-radius: var(--nx-border-radius);
+  font-size: var(--nx-font-size);
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
+  padding: var(--nx-spacing-4x);
   white-space: pre-wrap;
 
   // "code" used below to support Markdown text in NxVulnerabilityDetails
   code, .nx-code {
+    @include monospace();
     background-color: inherit;
     border: 0;
     color: inherit;
     padding: 0;
     white-space: inherit;
   }
+}
+
+%nx-blockquote {
+  @include container-vertical();
+  background-color: var(--nx-swatch-indigo-95);
+  border: var(--nx-border-default);
+  border-left-width: 8px;
+  border-radius: var(--nx-border-radius);
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
+  padding: var(--nx-spacing-6x);
 }

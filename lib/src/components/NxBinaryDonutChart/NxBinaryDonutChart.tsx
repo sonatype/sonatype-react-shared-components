@@ -27,19 +27,20 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
 
       // Add 0.5π because we want the angle from the top of the circle, not the right
       const arcEndAngle = (Math.PI / 2) + (2 * Math.PI * (percent / 100));
-      const arcEndX = r * Math.cos(arcEndAngle);
-      // Multiply by -1 because the y values increases going downwards on the screen, not upwards
+      // Multiply by -1 to fill clockwise not counter-clockwise
+      const arcEndX = -1 * r * Math.cos(arcEndAngle);
+      // Multiply by -1 because the y value increases going downwards on the screen, not upwards
       const arcEndY = -1 * r * Math.sin(arcEndAngle);
       const largeArc = percent > 50 ? 1 : 0;
 
       return (
-        <svg ref={ref} viewBox="-100 -100 200 200" className={donutClasses} {...svgAttrs}>
+        <svg ref={ref} viewBox="-100 -100 200 200" role="img" className={donutClasses} {...svgAttrs}>
           { percent < 100 &&
             <circle className="nx-binary-donut-chart__background" strokeWidth={strokeWidth} r={r}/>
           }
           { percent > 0 && percent < 100 &&
             <path className="nx-binary-donut-chart__arc"
-                  d={`M 0 ${-r} A ${r} ${r} 0 ${largeArc} 0 ${arcEndX} ${arcEndY}`}
+                  d={`M 0 ${-r} A ${r} ${r} 0 ${largeArc} 1 ${arcEndX} ${arcEndY}`}
                   strokeWidth={strokeWidth}/>
           }
           { percent >= 100 &&

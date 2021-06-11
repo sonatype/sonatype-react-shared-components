@@ -4,13 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { NxDropdown } from '@sonatype/react-shared-components';
+import { NxDropdown, useToggle } from '@sonatype/react-shared-components';
 
 function NxDropdownNavigationExample() {
-  const [isOpen, toggleOpen] = useState(false),
-      onToggleCollapse = () => { toggleOpen(!isOpen); },
+  const [isOpen, onToggleCollapse] = useToggle(false),
       onClick = () => { alert('click'); };
 
   return (
