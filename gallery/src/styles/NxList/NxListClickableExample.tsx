@@ -9,14 +9,14 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 const NxListClickableExample = () =>
-  <ul className="nx-list nx-list--clickable" role="list">
-    <li className="nx-list__item nx-list__item--link" tabIndex={0}>
+  <ul className="nx-list nx-list--clickable">
+    <li className="nx-list__item nx-list__item--link">
       <button className="nx-list__btn">
         <span className="nx-list__text">Action 1</span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </button>
     </li>
-    <li className="nx-list__item nx-list__item--link" tabIndex={0}>
+    <li className="nx-list__item nx-list__item--link">
       <button className="nx-list__btn">
         <span className="nx-list__text nx-truncate-ellipsis">
           This list item should be truncated at the right end edge. youtube weathered network network systemic
@@ -25,17 +25,17 @@ const NxListClickableExample = () =>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </button>
     </li>
-    <li className="nx-list__item nx-list__item--link selected" tabIndex={0} aria-selected="true" aria-current="true">
+    <li className="nx-list__item nx-list__item--link selected" aria-selected="true">
       <button className="nx-list__btn">
-        <span className="nx-list__text">This list item is selected</span>
+        <span className="nx-list__text">Third element</span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </button>
     </li>
-    <li className="nx-list__item nx-list__item--link" tabIndex={0}>
+    <li className="nx-list__item nx-list__item--link">
       <button className="nx-list__btn selected">
         <span className="nx-list__text">Action 4</span>
         <span className="nx-list__subtext">
-          This is a fourth line. It includes text that might relate to the top line or might not.
+          This list item is selected This is a fourth line.
         </span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </button>

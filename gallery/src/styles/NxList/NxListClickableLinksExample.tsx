@@ -9,7 +9,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 const NxListClickableLinksExample = () =>
-  <ul className="nx-list nx-list--clickable" role="list">
+  <ul className="nx-list nx-list--clickable">
     <li className="nx-list__item nx-list__item--link">
       <a href="#/pages/nx-list" className="nx-list__link">
         <span className="nx-list__text">nx-list page</span>
