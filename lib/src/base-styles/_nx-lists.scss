@@ -20,7 +20,7 @@
 }
 
 .nx-list__item {
-  &, > .nx-list__link {
+  &, > .nx-list__link, & > .nx-list__btn {
     @include container-horizontal;
 
     --nx-padding-without-border: calc(var(--nx-spacing-4x) - 1px);
@@ -173,8 +173,7 @@
  */
 .nx-list--clickable {
   .nx-list__item {
-
-    &, > .nx-list__link {
+    &, > .nx-list__link, > .nx-list__btn {
       &.selected {
         &, &:hover {
           background-color: var(--nx-color-interactive-background-selected);
@@ -224,6 +223,19 @@
         font-size: 21px;
       }
     }
+  }
+}
+
+.nx-list__btn {
+  @include container-horizontal;
+
+  text-align: left;
+  width: 100%;
+
+  &, &:hover, &:active, &:focus {
+    background: none;
+    font: inherit;
+    outline: none;
   }
 }
 
