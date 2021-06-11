@@ -13,6 +13,8 @@ import './NxModal.scss';
 
 const currentModalCloseHandlers: CloseHandler[] = [];
 
+export const NxModalContext = React.createContext<HTMLDialogElement | null>(null);
+
 const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, ...attrs}) => {
   const modalClasses = classnames('nx-modal', className, {
         'nx-modal--wide': variant === 'wide',
@@ -65,11 +67,16 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, .
   }, []);
 
   return (
-    // Note: role="dialog" should be redundant but I think some screenreaders (ChromeVox) don't know
-    // what a <dialog> is.  It makes a difference there.
-    <dialog ref={dialogRef} role={role || 'dialog'} aria-modal="true" className="nx-modal-backdrop">
-      <div className={modalClasses} {...attrs} />
-    </dialog>
+    // Provide the dialog element to descendants so that tooltips can attach to it instead of the body,
+    // which is necessary so that they end up in the top layer rather than behind the modal
+    <NxModalContext.Provider value={dialogRef.current}>
+      {/* Note: role="dialog" should be redundant but I think some screenreaders (ChromeVox) don't know
+        * what a <dialog> is.  It makes a difference there.
+        */}
+      <dialog ref={dialogRef} role={role || 'dialog'} aria-modal="true" className="nx-modal-backdrop">
+        <div className={modalClasses} {...attrs} />
+      </dialog>
+    </NxModalContext.Provider>
   );
 };
 
