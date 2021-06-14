@@ -6,14 +6,18 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxFontAwesomeIcon, NxButton, NxStatefulTextInput, NxFormGroup, NxForm}
+import {NxModal, NxFontAwesomeIcon, NxButton, NxTextInput, NxFormGroup, NxForm, nxTextInputStateHelpers}
   from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
 export default function NxModalFormExample() {
   const [showModal, setShowModal] = useState(false),
       [loading, setLoading] = useState(true),
-      modalCloseHandler = () => setShowModal(false);
+      [usernameState, setUsernameState] = useState(nxTextInputStateHelpers.initialState('')),
+      [passwordState, setPasswordState] = useState(nxTextInputStateHelpers.initialState('')),
+      modalCloseHandler = () => setShowModal(false),
+      validationErrors = usernameState.trimmedValue === '' || passwordState.trimmedValue === '' ?
+        'Missing required field' : null;
 
   function openModal() {
     setShowModal(true);
@@ -21,6 +25,14 @@ export default function NxModalFormExample() {
     setTimeout(function() {
       setLoading(false);
     }, 1000);
+  }
+
+  function onUsernameChange(val: string) {
+    setUsernameState(nxTextInputStateHelpers.userInput(null, val));
+  }
+
+  function onPasswordChange(val: string) {
+    setPasswordState(nxTextInputStateHelpers.userInput(null, val));
   }
 
   return (
@@ -31,6 +43,7 @@ export default function NxModalFormExample() {
           <NxForm className="nx-form"
                   onSubmit={modalCloseHandler}
                   onCancel={modalCloseHandler}
+                  validationErrors={validationErrors}
                   additionalFooterBtns={
                     <NxButton type="button" onClick={modalCloseHandler} variant="tertiary">
                       Tertiary
@@ -46,10 +59,17 @@ export default function NxModalFormExample() {
             </header>
             <div className="nx-modal-content">
               <NxFormGroup label="Username" isRequired>
-                <NxStatefulTextInput aria-required={true} placeholder="Username"/>
+                <NxTextInput aria-required={true}
+                             placeholder="Username"
+                             onChange={onUsernameChange}
+                             { ...usernameState } />
               </NxFormGroup>
               <NxFormGroup label="Password" isRequired>
-                <NxStatefulTextInput type="password" aria-required={true} placeholder="Password"/>
+                <NxTextInput type="password"
+                             aria-required={true}
+                             placeholder="Password"
+                             onChange={onPasswordChange}
+                             { ...passwordState } />
               </NxFormGroup>
             </div>
           </NxForm>
