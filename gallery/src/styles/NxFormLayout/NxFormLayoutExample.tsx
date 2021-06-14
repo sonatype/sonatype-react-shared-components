@@ -17,7 +17,8 @@ import {
   NxFieldset,
   useToggle,
   NxColorPicker,
-  SelectableColor
+  SelectableColor,
+  NxInfoAlert
 } from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
@@ -59,6 +60,7 @@ export default function NxFormLayoutExample() {
 
   return (
     <form className="nx-form" onSubmit={onSubmit}>
+      <NxInfoAlert>This is a sample alert message</NxInfoAlert>
       <NxFormGroup label="A Field to Fill in" isRequired>
         <NxStatefulTextInput aria-required={true} validator={validator}/>
       </NxFormGroup>

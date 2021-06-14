@@ -4,11 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useContext } from 'react';
 import classnames from 'classnames';
 import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
 import { textContent } from '../../util/childUtil';
 
+import { NxModalContext } from '../NxModal/NxModal';
 import { Props, propTypes, TooltipPlacement } from './types';
 export { Props, propTypes, TooltipPlacement } from './types';
 
@@ -48,8 +49,12 @@ const NxTooltip: FunctionComponent<Props> =
     function NxTooltip({ className, ...otherProps }) {
       const tooltipClassName = classnames('nx-tooltip', className);
       const ariaLabel = textContent(otherProps.title);
+      const parentModal = useContext(NxModalContext);
 
-      return <Tooltip aria-label={ariaLabel} { ...fixOptional(otherProps) } classes={{ tooltip: tooltipClassName }} />;
+      return <Tooltip aria-label={ariaLabel}
+                      { ...fixOptional(otherProps) }
+                      classes={{ tooltip: tooltipClassName }}
+                      PopperProps={{ container: parentModal }} />;
     };
 
 NxTooltip.propTypes = propTypes;

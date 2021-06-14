@@ -72,6 +72,9 @@
   height: initial;
   margin: initial;
   padding: initial;
+
+  // prevent brief flash of scrollbar as tooltips disappear
+  overflow: hidden;
 }
 
 .nx-modal-content {
