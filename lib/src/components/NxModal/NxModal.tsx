@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {FunctionComponent, useEffect, useRef} from 'react';
+import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import classnames from 'classnames';
 
 import {CloseHandler, Props, propTypes} from './types';
@@ -20,7 +20,12 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, .
         'nx-modal--wide': variant === 'wide',
         'nx-modal--narrow': variant === 'narrow'
       }),
-      dialogRef = useRef<HTMLDialogElement>(null);
+      dialogRef = useRef<HTMLDialogElement>(null),
+
+      // The dialogRef value needs to get passed down in a context. But the context needs to know when the ref
+      // value has updated, and refs aren't tracked like state values. So we have to copy the ref value into a state
+      // value in order for it to be tracked.
+      [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
 
   const modalCloseListener = ({ key }: KeyboardEvent) => {
     const isKeyPressedEscape = key === 'Escape' || key === 'Esc';
@@ -48,6 +53,8 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, .
   }, [onClose]);
 
   useEffect(function() {
+    setDialogRefState(dialogRef.current);
+
     if (dialogRef.current) {
       const el = dialogRef.current;
 
@@ -69,7 +76,7 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, .
   return (
     // Provide the dialog element to descendants so that tooltips can attach to it instead of the body,
     // which is necessary so that they end up in the top layer rather than behind the modal
-    <NxModalContext.Provider value={dialogRef.current}>
+    <NxModalContext.Provider value={dialogRefState}>
       {/* Note: role="dialog" should be redundant but I think some screenreaders (ChromeVox) don't know
         * what a <dialog> is.  It makes a difference there.
         */}
