@@ -10,7 +10,8 @@ describe('NxAlert', function() {
   });
 
   const simpleExampleSelector = '#nx-modal-simple-example',
-      formExampleSelector = '#nx-modal-form-with-alert-example',
+      formWithAlertExampleSelector = '#nx-modal-form-with-alert-example',
+      formExampleSelector = '#nx-modal-form-example',
       narrowExampleSelector = '#nx-modal-narrow-example',
       wideExampleSelector = '#nx-modal-wide-example',
       stackedExampleSelector = '#nx-modal-stacked-example';
@@ -43,7 +44,34 @@ describe('NxAlert', function() {
   });
 
   describe('Form NxModal', function() {
-    it('looks right', simpleModalTest(formExampleSelector));
+    it('looks right', simpleModalTest(formWithAlertExampleSelector));
+    it('shows the tooltip in front of the modal', async function() {
+      const openModalBtnSelector = `${formExampleSelector} button`,
+          submitBtnSelector =
+              `${formExampleSelector} .nx-footer .nx-btn-bar .nx-form__submit-btn`,
+          cancelBtnSelector =
+              `${formExampleSelector} .nx-footer .nx-btn-bar .nx-form__cancel-btn`;
+
+      const openModalBtn = await browser.$(openModalBtnSelector);
+
+      await openModalBtn.scrollIntoView({ block: 'center' });
+      await openModalBtn.click();
+
+      const submitBtn = await browser.$(submitBtnSelector);
+      const cancelBtn = await browser.$(cancelBtnSelector);
+
+      // this modal has a loading form built in so we need to wait for it to load
+      await submitBtn.waitForDisplayed();
+      await submitBtn.moveTo();
+
+      try {
+        // take image of entire viewport in order to capture the backdrop color
+        await browser.eyesSnapshot(null);
+      }
+      finally {
+        await cancelBtn.click();
+      }
+    });
   });
 
   describe('Narrow NxModal', function() {
