@@ -9,7 +9,7 @@ import { map } from 'ramda';
 import './selectableColors.scss';
 
 export const selectableColors =
-    ['light-blue', 'purple', 'pink', 'blue', 'red', 'green', 'orange', 'yellow', 'lime'] as const;
+    ['light-blue', 'purple', 'pink', 'blue', 'red', 'green', 'orange', 'yellow', 'lime', 'indigo'] as const;
 
 export const selectableColorClasses: readonly string[] =
     map(color => `nx-selectable-color--${color}`, selectableColors);
