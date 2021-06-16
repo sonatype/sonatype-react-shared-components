@@ -19,8 +19,8 @@ const NxTag: FunctionComponent<Props> =
     function NxTag(props) {
       const { children, className, selectedIcons, color, ...attrs } = props,
           tagClasses = classnames('nx-tag', className, {
-            [`nx-selectable-color--${color}`]: color,
-            'nx-tag--default': !color
+            'nx-selectable-color--indigo': !color, // the default
+            [`nx-selectable-color--${color}`]: color
           });
 
       return (
