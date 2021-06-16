@@ -14,10 +14,17 @@ import {
   NxGlobalSidebarNavigationLink,
   NxLoadWrapper,
   NxGlobalHeader,
-  NxBackButton
+  NxBackButton,
+  NxTile,
+  NxH2,
+  NxPageSidebar,
+  NxP
 } from '@sonatype/react-shared-components';
 
+import CodeExample from '../../CodeExample';
+
 const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
+const exampleCode = require('./GlobalSidebarHeaderSystemNoticeLoadWrapperLayout?raw');
 
 export default function GlobalSidebarHeaderSystemNoticeLoadWrapperLayout() {
   const [loading, setLoading] = useState(true),
@@ -26,7 +33,7 @@ export default function GlobalSidebarHeaderSystemNoticeLoadWrapperLayout() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
-      setError('This is an example error');
+      setError('This is an example error. Click Retry to clear the error and see the example source code.');
     }, 3000);
 
     return () => {
@@ -52,8 +59,29 @@ export default function GlobalSidebarHeaderSystemNoticeLoadWrapperLayout() {
       <NxGlobalHeader>
         <NxBackButton href="#/pages/Page%20Layout" />
       </NxGlobalHeader>
-      <NxLoadWrapper loading={loading} retryHandler={() => {}} error={error}>
-        <NxPageMain/>
+      <NxLoadWrapper loading={loading} retryHandler={() => { setError(null); }} error={error}>
+        <NxPageSidebar>
+          <NxP>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum augue ut mi facilisis commodo. Sed
+            quis faucibus metus. Duis volutpat nisl et risus pellentesque euismod. Praesent iaculis ipsum et iaculis
+            sollicitudin. Fusce maximus, ex vehicula pellentesque congue, dolor leo auctor velit, at rutrum dui erat
+            in lorem. Maecenas nec urna dapibus, porttitor orci nec, congue erat. In mollis, enim ac lobortis
+            faucibus, lectus ligula aliquam velit, id imperdiet dui justo nec justo. Nunc porta sapien quis nisi
+            ullamcorper auctor.
+          </NxP>
+        </NxPageSidebar>
+        <NxPageMain>
+          <NxTile>
+            <NxTile.Header>
+              <NxTile.HeaderTitle>
+                <NxH2>This Example's Code</NxH2>
+              </NxTile.HeaderTitle>
+            </NxTile.Header>
+            <NxTile.Content>
+              <CodeExample content={exampleCode} />
+            </NxTile.Content>
+          </NxTile>
+        </NxPageMain>
       </NxLoadWrapper>
     </>
   );
