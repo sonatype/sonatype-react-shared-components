@@ -35,7 +35,7 @@ export default function NxFormLayoutExample() {
   }
 
   return (
-    <form className="nx-form" onSubmit={onSubmit}>
+    <form className="nx-form" onSubmit={onSubmit} aria-label="Horizontal Layout Example">
       <div className="nx-form-row">
         <NxFormGroup label="Username" isRequired>
           <NxStatefulTextInput aria-required={true} validator={validator}/>

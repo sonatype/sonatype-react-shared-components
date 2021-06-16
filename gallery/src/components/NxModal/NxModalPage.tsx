@@ -178,6 +178,7 @@ export default function NxModalPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with form"
+                          id="nx-modal-form-example"
                           liveExample={NxModalFormExample}
                           codeExamples={NxModalFormSourceCode}>
         <code className="nx-code">NxModal</code> also supports inclusion and styling of form elements.

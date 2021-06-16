@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxFormLayoutExample from './NxFormLayoutExample';
 import NxFormHorizontalLayoutExample from './NxFormHorizontalLayoutExample';
@@ -128,6 +129,19 @@ const NxFormLayoutPage = () =>
           </tr>
         </tbody>
       </table>
+      <section className="nx-tile__subsection">
+        <h2 className="nx-h2">&lt;form&gt; Accessibility</h2>
+        <p className="nx-p">
+          Larger forms should be identified using either the <code className="nx-code">aria-label</code>
+          {' '}attribute to provide a descriptive title, or the <code className="nx-code">aria-labelledby</code>
+          {' '}attribute when existing text is available. Doing so will include the
+          {' '}<code className="nx-code">&lt;form&gt;</code> element in the{' '}
+          <NxTextLink href="https://www.w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html" external>
+            landmark
+          </NxTextLink>
+          {' '}structure, and will be identified by screen readers.
+        </p>
+      </section>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
