@@ -133,7 +133,7 @@ const NxFormLayoutPage = () =>
         <h2 className="nx-h2">&lt;form&gt; Accessibility</h2>
         <p className="nx-p">
           Larger forms should be identified using either the <code className="nx-code">aria-label</code>
-          {' '}attribute to provide a descriptive title, or the <code className="nx-code">aria-labelled-by</code>
+          {' '}attribute to provide a descriptive title, or the <code className="nx-code">aria-labelledby</code>
           {' '}attribute when existing text is available. Doing so will include the
           {' '}<code className="nx-code">&lt;form&gt;</code> element in the{' '}
           <NxTextLink href="https://www.w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html" external>
