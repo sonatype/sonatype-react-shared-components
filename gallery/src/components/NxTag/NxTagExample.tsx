@@ -11,6 +11,7 @@ function NxTagExample() {
   return (
     <>
       <NxTag>Default</NxTag>
+      <NxTag color="indigo">Indigo (same as default)</NxTag>
       <NxTag color="purple">Purple</NxTag>
       <NxTag color="light-blue">Light Blue</NxTag>
       <NxTag color="pink">Pink - demonstrate that the tag overflows at 320px</NxTag>
