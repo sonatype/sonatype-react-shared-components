@@ -10,13 +10,13 @@ import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 const NxListClickableLinksExample = () =>
   <ul className="nx-list nx-list--clickable">
-    <li className="nx-list__item nx-list__item--link">
+    <li className="nx-list__item nx-list__item--clickable">
       <a href="#/pages/nx-list" className="nx-list__link">
         <span className="nx-list__text">nx-list page</span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </a>
     </li>
-    <li className="nx-list__item nx-list__item--link">
+    <li className="nx-list__item nx-list__item--clickable">
       <a href="#/pages/nx-table" className="nx-list__link selected">
         <span className="nx-list__text nx-truncate-ellipsis">
           nx-table page. This list item should be truncated at the right end edge. youtube weathered network
@@ -26,20 +26,20 @@ const NxListClickableLinksExample = () =>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </a>
     </li>
-    <li className="nx-list__item nx-list__item--link">
+    <li className="nx-list__item nx-list__item--clickable">
       <a href="#/pages/nx-tile" className="nx-list__link">
         <span className="nx-list__text">nx-tile page</span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </a>
     </li>
-    <li className="nx-list__item nx-list__item--link">
+    <li className="nx-list__item nx-list__item--clickable">
       <a href="#/pages/nx-alert" className="nx-list__link">
         <span className="nx-list__text">nx-alert page</span>
         <span className="nx-list__subtext">This row is a link to the nx-alert page</span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </a>
     </li>
-    <li className="nx-list__item nx-list__item--link" aria-disabled="true">
+    <li className="nx-list__item nx-list__item--clickable" aria-disabled="true">
       <a href="#/pages/nx-alert" className="nx-list__link disabled">
         <span className="nx-list__text">This list item is disabled</span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
