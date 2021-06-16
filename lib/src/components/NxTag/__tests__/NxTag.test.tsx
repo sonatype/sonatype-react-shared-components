@@ -37,14 +37,13 @@ describe('NxTag', function() {
     // expect(tagChildren.children().at(1)).toMatchSelector('span');
   });
 
-  it('sets the nx-tag--default class if no color prop is passed', function() {
-    expect(getShallowComponent().find('.nx-tag--default')).toExist();
+  it('sets the nx-selectable-color--indigo class if no color prop is passed', function() {
+    expect(getShallowComponent().find('.nx-selectable-color--indigo')).toExist();
   });
 
   it('sets the color class using the color if it is provided', function() {
     const colorComponent = getShallowComponent({ color: 'orange' });
     expect(colorComponent.find('.nx-selectable-color--orange')).toExist();
-    expect(colorComponent.find('.nx-tag--default')).not.toExist();
   });
 
   it('checks the children appear in the correct order, text then the icon', function() {
