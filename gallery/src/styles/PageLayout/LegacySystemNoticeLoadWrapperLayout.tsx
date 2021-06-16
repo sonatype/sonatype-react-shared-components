@@ -5,7 +5,16 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useEffect, useState } from 'react';
-import { NxPageHeader, NxSystemNotice, NxPageMain, NxLoadWrapper, NxTile, NxH2, NxPageSidebar, NxP } from '@sonatype/react-shared-components';
+import {
+  NxPageHeader,
+  NxSystemNotice,
+  NxPageMain,
+  NxLoadWrapper,
+  NxTile,
+  NxH2,
+  NxPageSidebar,
+  NxP
+} from '@sonatype/react-shared-components';
 
 import CodeExample from '../../CodeExample';
 
