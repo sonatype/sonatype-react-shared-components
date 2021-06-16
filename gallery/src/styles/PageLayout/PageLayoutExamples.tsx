@@ -25,6 +25,8 @@ import GlobalSidebarLayout from './GlobalSidebarLayout';
 import LegacyLoadWrapperLayout from './LegacyLoadWrapperLayout';
 import GlobalSidebarSystemNoticeLoadWrapperLayout from './GlobalSidebarSystemNoticeLoadWrapperLayout';
 import GlobalSidebarLoadWrapperLayout from './GlobalSidebarLoadWrapperLayout';
+import GlobalSidebarHeaderSystemNoticeLoadWrapperLayout from './GlobalSidebarHeaderSystemNoticeLoadWrapperLayout';
+import GlobalSidebarHeaderLoadWrapperLayout from './GlobalSidebarHeaderLoadWrapperLayout';
 
 const pageScrollingPages = [
       LegacySidebarSystemNoticeLayout,
@@ -50,7 +52,9 @@ const pageScrollingPages = [
       GlobalSidebarSystemNoticeLayout,
       GlobalSidebarLayout,
       GlobalSidebarSystemNoticeLoadWrapperLayout,
-      GlobalSidebarLoadWrapperLayout
+      GlobalSidebarLoadWrapperLayout,
+      GlobalSidebarHeaderSystemNoticeLoadWrapperLayout,
+      GlobalSidebarHeaderLoadWrapperLayout
     ];
 
 const PageLayoutExamples = () =>
