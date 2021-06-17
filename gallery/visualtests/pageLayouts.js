@@ -56,15 +56,13 @@ describe('Page Layout', function() {
     describe('NxLoadWrapper in Legacy Page Layout', function() {
       it('looks right with section scrolling', testLoadWrapper('#/pageLayouts/LegacyLoadWrapperLayout'));
 
-      it('looks right with system notice, and page scrolling',
-          testLoadWrapper('#/pageLayouts/pageScrolling/LegacySystemNoticeLoadWrapperLayout'));
-
-      it('looks right with page scrolling', testLoadWrapper('#/pageLayouts/pageScrolling/LegacyLoadWrapperLayout'));
-
       it('looks right with system notice, and section scrolling',
           testLoadWrapper('#/pageLayouts/LegacySystemNoticeLoadWrapperLayout'));
 
-      it('looks right with section scrolling', testLoadWrapper('#/pageLayouts/LegacyLoadWrapperLayout'));
+      it('looks right with page scrolling', testLoadWrapper('#/pageLayouts/pageScrolling/LegacyLoadWrapperLayout'));
+
+      it('looks right with system notice, and page scrolling',
+          testLoadWrapper('#/pageLayouts/pageScrolling/LegacySystemNoticeLoadWrapperLayout'));
     });
   });
 
