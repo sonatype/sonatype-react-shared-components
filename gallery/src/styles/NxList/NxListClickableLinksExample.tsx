@@ -17,7 +17,7 @@ const NxListClickableLinksExample = () =>
       </a>
     </li>
     <li className="nx-list__item nx-list__item--clickable">
-      <a href="#/pages/nx-table" className="nx-list__link selected">
+      <a href="#/pages/nx-table" className="nx-list__link selected" aria-selected="true">
         <span className="nx-list__text nx-truncate-ellipsis">
           nx-table page. This list item should be truncated at the right end edge. youtube weathered network
           network systemic systema claymore mine voodoo god garage monofilament realism order-flow corporation car
