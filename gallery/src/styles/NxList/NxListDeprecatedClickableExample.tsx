@@ -25,7 +25,7 @@ const NxListClickableExample = () =>
       <span className="nx-list__text">Action 3</span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>
-    <li className="nx-list__item">
+    <li className="nx-list__item" aria-selected="true">
       <span className="nx-list__text">Action 4</span>
       <span className="nx-list__subtext">
         This list item demonstrates the selected styles
