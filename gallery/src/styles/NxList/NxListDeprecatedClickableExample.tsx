@@ -21,18 +21,18 @@ const NxListClickableExample = () =>
       </span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>
-    <li className="nx-list__item selected" aria-selected="true">
+    <li className="nx-list__item selected">
       <span className="nx-list__text">Action 3</span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>
-    <li className="nx-list__item" aria-selected="true">
+    <li className="nx-list__item">
       <span className="nx-list__text">Action 4</span>
       <span className="nx-list__subtext">
         This list item demonstrates the selected styles
       </span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>
-    <li className="nx-list__item" aria-disabled="true">
+    <li className="nx-list__item">
       <span className="nx-list__text">This list item is disabled</span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>
