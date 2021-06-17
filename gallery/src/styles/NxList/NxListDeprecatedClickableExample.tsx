@@ -38,4 +38,4 @@ const NxListDeprecatedClickableExample = () =>
     </li>
   </ul>;
 
-export default NxListClickableExample;
+export default NxListDeprecatedClickableExample;
