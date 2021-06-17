@@ -187,6 +187,7 @@
 
       &:active {
         background-color: var(--nx-color-interactive-background-active);
+        color: inherit;
       }
 
       &:focus {
@@ -223,11 +224,11 @@
         font-size: 21px;
       }
     }
-  }
 
-  &:first-child {
-    &, > .nx-list__link, > .nx-list__btn {
-      border-top: none;
+    &:first-child {
+      &, > .nx-list__link, > .nx-list__btn {
+        border-top: none;
+      }
     }
   }
 }
