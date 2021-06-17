@@ -48,3 +48,8 @@
   --nx-selectable-color-dark: var(--nx-swatch-green-80);
   --nx-selectable-color-light: var(--nx-swatch-green-95);
 }
+
+.nx-selectable-color--indigo {
+  --nx-selectable-color-dark: var(--nx-swatch-indigo-80);
+  --nx-selectable-color-light: var(--nx-swatch-indigo-95);
+}

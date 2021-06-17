@@ -7,17 +7,14 @@
  @import '../../scss-shared/nx-text-helpers';
  @import '../../scss-shared/nx-container-helpers';
 
-$nx-tag-default-dark: var(--nx-swatch-indigo-80);
-$nx-tag-default-light: var(--nx-swatch-indigo-95);
-
 .nx-tag {
   @include semi-bold;
   @include container-horizontal;
   @include nx-truncate-ellipsis;
 
   align-items: center;
-  background-color: var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
-  border: 1px solid var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
+  background-color: var(--nx-selectable-color-dark);
+  border: 1px solid var(--nx-selectable-color-dark);
   border-radius: 16px;
   box-sizing: border-box;
   color: var(--nx-color-text-dark);
@@ -37,7 +34,7 @@ $nx-tag-default-light: var(--nx-swatch-indigo-95);
   cursor: pointer;
   padding-right: var(--nx-spacing-2x);
 
-  background-color: var(--nx-selectable-color-light, #{$nx-tag-default-light});
+  background-color: var(--nx-selectable-color-light);
 
   &:focus {
     border: 1px solid var(--nx-color-interactive-border-focus);
@@ -51,7 +48,7 @@ $nx-tag-default-light: var(--nx-swatch-indigo-95);
 }
 
 .nx-tag--selected {
-  background-color: var(--nx-selectable-color-dark, #{$nx-tag-default-dark});
+  background-color: var(--nx-selectable-color-dark);
 
   &:focus {
     border: 1px solid var(--nx-color-interactive-border-focus);
