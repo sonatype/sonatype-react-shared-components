@@ -132,6 +132,8 @@ const NxListPage = () =>
               Applied to <code className="nx-code">.nx-list__item</code> this allows for the correct styling of
               clickable lists. Ensure that the <code className="nx-code">.nx-list</code> modifier
               {' '}<code className="nx-code">.nx-list--clickable</code> is also used.
+              {' '}<code className="nx-code">.nx-list__item--clickable</code> should contain a single button or link as
+              children, see below for classes and convenience components.
             </td>
           </tr>
           <tr className="nx-table-row">
