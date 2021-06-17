@@ -32,7 +32,7 @@ const NxListClickableExample = () =>
       </button>
     </li>
     <li className="nx-list__item nx-list__item--clickable">
-      <button className="nx-list__btn selected" aria-current="true">
+      <button className="nx-list__btn selected" aria-selected="true">
         <span className="nx-list__text">Action 4</span>
         <span className="nx-list__subtext">
           This list item demonstrates the selected styles
