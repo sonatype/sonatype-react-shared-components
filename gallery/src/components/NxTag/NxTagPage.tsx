@@ -41,10 +41,13 @@ const NxTagPage = () =>
           <NxTableRow>
             <NxTableCell>color</NxTableCell>
             <NxTableCell>
-              'light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime'
+              <NxTextLink href="#/pages/Selectable Colors">SelectableColor</NxTextLink>
+              <br/>
+              ('light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime' | 'indigo')
+
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
-            <NxTableCell></NxTableCell>
+            <NxTableCell>indigo</NxTableCell>
             <NxTableCell>
               If no <code className="nx-code">color</code> is specified then the default (dark grey/blue with a lighter
               grey/blue unselected state) colors are used.

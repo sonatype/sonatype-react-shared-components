@@ -44,7 +44,7 @@ describe('NxColorPicker', function() {
         const component = getMounted(),
             labels = component.find('label.nx-color-picker__color');
 
-        expect(labels).toHaveLength(9);
+        expect(labels).toHaveLength(10);
 
         labels.forEach(function(label) {
           expect(label).toContainMatchingElement('input.nx-color-picker__input');
@@ -72,7 +72,7 @@ describe('NxColorPicker', function() {
     const component = getMounted(),
         tooltips = component.find(NxTooltip);
 
-    expect(tooltips).toHaveLength(9);
+    expect(tooltips).toHaveLength(10);
 
     expect(tooltips.filterWhere(tooltip => tooltip.prop('title') === 'Light Blue'))
         .toContainMatchingElement('label.nx-selectable-color--light-blue');
