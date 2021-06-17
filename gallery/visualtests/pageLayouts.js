@@ -6,6 +6,17 @@
  */
 describe('Page Layout', function() {
 
+  function testLoadWrapper(url) {
+    return async () => {
+      await browser.url(url);
+      await browser.eyesSnapshot('loading');
+
+      const alertEl = await browser.$('.nx-alert');
+      await alertEl.waitForDisplayed();
+      await browser.eyesSnapshot('error');
+    };
+  }
+
   describe('Legacy Page Layout', function() {
     it('looks right with sidebar, system notice, and page scrolling', async function() {
       await browser.url('#/pageLayouts/pageScrolling/LegacySidebarSystemNoticeLayout');
@@ -42,9 +53,16 @@ describe('Page Layout', function() {
       await browser.eyesSnapshot(null);
     });
 
-    it('looks right with section scrolling', async function() {
-      await browser.url('#/pageLayouts/LegacyLayout');
-      await browser.eyesSnapshot(null);
+    describe('NxLoadWrapper in Legacy Page Layout', function() {
+      it('looks right with section scrolling', testLoadWrapper('#/pageLayouts/LegacyLoadWrapperLayout'));
+
+      it('looks right with system notice, and section scrolling',
+          testLoadWrapper('#/pageLayouts/LegacySystemNoticeLoadWrapperLayout'));
+
+      it('looks right with page scrolling', testLoadWrapper('#/pageLayouts/pageScrolling/LegacyLoadWrapperLayout'));
+
+      it('looks right with system notice, and page scrolling',
+          testLoadWrapper('#/pageLayouts/pageScrolling/LegacySystemNoticeLoadWrapperLayout'));
     });
   });
 
@@ -87,6 +105,17 @@ describe('Page Layout', function() {
     it('looks right with min content', async function() {
       await browser.url('#/pageLayouts/GlobalSidebarLayout');
       await browser.eyesSnapshot(null);
+    });
+
+    describe('NxLoadWrapper in Global sidebar page layout', function() {
+      it('looks right with system notice, and header',
+          testLoadWrapper('#/pageLayouts/GlobalSidebarHeaderSystemNoticeLoadWrapperLayout'));
+
+      it('looks right with header', testLoadWrapper('#/pageLayouts/GlobalSidebarHeaderLoadWrapperLayout'));
+
+      it('looks right with system notice', testLoadWrapper('#/pageLayouts/GlobalSidebarSystemNoticeLoadWrapperLayout'));
+
+      it('looks right with min content', testLoadWrapper('#/pageLayouts/GlobalSidebarLoadWrapperLayout'));
     });
   });
 });

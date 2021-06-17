@@ -5,16 +5,15 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxTextLink, NxP, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxLoadWrapperErrorRetryExample from './NxLoadWrapperErrorRetryExample';
 import NxLoadWrapperLoadingExample from './NxLoadWrapperLoadingExample';
 import NxLoadWrapperChildrenExample from './NxLoadWrapperChildrenExample';
-import CodeExample from '../../CodeExample';
 
 const childrenSourceCode = require('./NxLoadWrapperChildrenExample?raw');
-const pageLevelSourceCode = require('./NxLoadWrapperPageLevelExample?raw');
 const loadingSourceCode = require('./NxLoadWrapperLoadingExample?raw');
 const errorRetrySourceCode = require('./NxLoadWrapperErrorRetryExample?raw');
 
@@ -68,6 +67,13 @@ const NxLoadWrapperPage = () =>
           </tr>
         </tbody>
       </table>
+      <NxP>
+        <NxCode>NxLoadWrapper</NxCode> is most often used inside of <NxCode>.nx-page-main</NxCode> or one of its
+        descendants. However there are cases where it makes sense to use it at a higher level in order to control
+        the display of both <NxCode>.nx-page-main</NxCode> and <NxCode>.nx-page-sidebar</NxCode> simultaneously.
+        For examples of ths situation, see
+        the <NxTextLink href="#/pages/Page Layout">Page Layout documentation</NxTextLink>.
+      </NxP>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Renders children when not loading or in error"
@@ -92,36 +98,6 @@ const NxLoadWrapperPage = () =>
       is set along with a <code className="nx-code">retryHandler</code>, and thus
       an <code className="nx-code">NxErrorAlert</code> is rendered.
     </GalleryExampleTile>
-
-    <section className="nx-tile">
-      <header className="nx-tile-header">
-        <div className="nx-tile-header__title">
-          <h2 className="nx-h2"><code className="nx-code">NxLoadWrapper</code> at the page level</h2>
-        </div>
-      </header>
-      <div className="nx-tile-content">
-        <p className="nx-p">
-          It is frequently the case that the entire content of the page should be wrapped in
-          an <code className="nx-code">NxLoadWrapper</code>.
-          That is, that a page which would typically include
-          an <code className="nx-code">.nx-page-main</code> and perhaps
-          an <code className="nx-code">.nx-page-sidebar</code> should instead include only an error alert in the
-          event that the data for the page fails to load, or the user does not have permission to access that page,
-          or some similar error condition. The RSC styles have specific support for this case:
-          an <code className="nx-code">.nx-alert</code> that is the only child of
-          the <code className="nx-code">.nx-page-content</code> element will correctly center itself on the page.
-          Thus, <code className="nx-code">NxLoadWrapper</code> can be used to wrap
-          the <code className="nx-code">.nx-page-main</code> and
-          (optional) <code className="nx-code">.nx-page-sidebar</code> elements. See the example below:
-        </p>
-        <p className="nx-p">
-          <a className="nx-text-link" href="#/PageLevelAlertExample">
-            Click here to navigate to the live example.
-          </a>
-        </p>
-        <CodeExample content={pageLevelSourceCode} />
-      </div>
-    </section>
   </>;
 
 export default NxLoadWrapperPage;
