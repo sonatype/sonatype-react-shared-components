@@ -108,7 +108,7 @@ const NxListsExamples = () =>
                         id="nx-list-deprecated-clickable-example"
                         liveExample={NxListDeprecatedClickableExample}
                         codeExamples={NxListDeprecatedClickableCode}>
-      This method of created clickable lists is deprecated. It is strongly recommended that one of the above clickable
+      This method of creating clickable lists is deprecated. It is strongly recommended that one of the above clickable
       lists using <code className="nx-code">&lt;button&gt;</code> or <code className="nx-code">&lt;a&gt;</code> be
       used for accessibility reasons.
     </GalleryExampleTile>
