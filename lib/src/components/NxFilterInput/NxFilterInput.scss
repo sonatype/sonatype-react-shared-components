@@ -29,11 +29,4 @@
     margin-left: 0;
     margin-right: 8px;
   }
-
-  // the baseline of the text input ends up being the baseline of the box's first flex child. The filter icon
-  // has a different baseline than the text, screwing up the input's overall baseline when it is first. So we
-  // stick this zero-width space before it.
-  .nx-text-input__box::before {
-    content: '\200B';
-  }
 }
