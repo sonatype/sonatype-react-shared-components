@@ -40,8 +40,8 @@ const NxListClickableExample = () =>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </button>
     </li>
-    <li className="nx-list__item nx-list__item--clickable" aria-disabled="true">
-      <button className="nx-list__btn disabled">
+    <li className="nx-list__item nx-list__item--clickable">
+      <button className="nx-list__btn" disabled>
         <span className="nx-list__text">This list item is disabled</span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </button>

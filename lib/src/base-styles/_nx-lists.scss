@@ -201,7 +201,7 @@
         color: var(--nx-color-text);
       }
 
-      &.disabled {
+      &.disabled, &[disabled] {
         color: var(--nx-color-text-disabled);
 
         &:hover {
