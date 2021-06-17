@@ -136,18 +136,20 @@ const NxListPage = () =>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-list__btn</code></td>
-            <td className="nx-cell"/>
+            <td className="nx-cell"><code className="nx-code">NxList.Button</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              Applied to an <code className="nx-code">&lt;button&gt;</code> used in a clickable list.
+              Applied to an <code className="nx-code">&lt;button&gt;</code> used in a clickable list. Requires
+              {' '}<code className="nx-code">.nx-list__item--clickable</code> on its parent.
             </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-list__link</code></td>
-            <td className="nx-cell"/>
+            <td className="nx-cell"><code className="nx-code">NxList.Link</code></td>
             <td className="nx-cell">Element</td>
             <td className="nx-cell">
-              Applied to an <code className="nx-code">&lt;a&gt;</code> used in a clickable link list.
+              Applied to an <code className="nx-code">&lt;a&gt;</code> used in a clickable link list. Requires
+              {' '}<code className="nx-code">.nx-list__item--clickable</code> on its parent.
             </td>
           </tr>
         </tbody>
