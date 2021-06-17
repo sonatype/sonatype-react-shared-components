@@ -21,7 +21,8 @@ describe('nx-list', function() {
       emptySelector = '#nx-list-empty-example .nx-list',
       errorSelector = '#nx-list-error-example .nx-list',
       loadingSelector = '#nx-list-loading-example .nx-list',
-      descriptionSelector = '#nx-list-description-example .nx-list';
+      descriptionSelector = '#nx-list-description-example .nx-list',
+      deprecatedSelector = '#nx-list-deprecated-clickable-example .nx-list';
 
   describe('Simple nx-list', function() {
     it('looks right', simpleTest(simpleSelector));
@@ -37,6 +38,10 @@ describe('nx-list', function() {
 
   describe('Bulleted nx-list', function() {
     it('looks right', simpleTest(bulletedSelector));
+  });
+
+  describe('Definition list', function() {
+    it('looks right', simpleTest(definitionListSelector));
   });
 
   describe('nx-list with actions', function() {
@@ -61,5 +66,9 @@ describe('nx-list', function() {
 
   describe('Description nx-list', function() {
     it('looks right', simpleTest(descriptionSelector));
+  });
+
+  describe('Deprecated clickable list', function() {
+    it('looks right', simpleTest(deprecatedSelector));
   });
 });
