@@ -224,6 +224,12 @@
       }
     }
   }
+
+  &:first-child {
+    &, > .nx-list__link, > .nx-list__btn {
+      border-top: none;
+    }
+  }
 }
 
 .nx-list__btn {
