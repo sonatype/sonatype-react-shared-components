@@ -12,6 +12,7 @@ import SectionScrollingWrapper from '../NxViewportSized/SectionScrollingWrapper'
 import LegacySidebarSystemNoticeLayout from './LegacySidebarSystemNoticeLayout';
 import LegacySidebarLayout from './LegacySidebarLayout';
 import LegacySystemNoticeLayout from './LegacySystemNoticeLayout';
+import LegacySystemNoticeLoadWrapperLayout from './LegacySystemNoticeLoadWrapperLayout';
 import LegacyLayout from './LegacyLayout';
 import GlobalSidebarHeaderSystemNoticeSidebarLayout from './GlobalSidebarHeaderSystemNoticeSidebarLayout';
 import GlobalSidebarHeaderSidebarLayout from './GlobalSidebarHeaderSidebarLayout';
@@ -21,18 +22,27 @@ import GlobalSidebarSystemNoticeSidebarLayout from './GlobalSidebarSystemNoticeS
 import GlobalSidebarSidebarLayout from './GlobalSidebarSidebarLayout';
 import GlobalSidebarSystemNoticeLayout from './GlobalSidebarSystemNoticeLayout';
 import GlobalSidebarLayout from './GlobalSidebarLayout';
+import LegacyLoadWrapperLayout from './LegacyLoadWrapperLayout';
+import GlobalSidebarSystemNoticeLoadWrapperLayout from './GlobalSidebarSystemNoticeLoadWrapperLayout';
+import GlobalSidebarLoadWrapperLayout from './GlobalSidebarLoadWrapperLayout';
+import GlobalSidebarHeaderSystemNoticeLoadWrapperLayout from './GlobalSidebarHeaderSystemNoticeLoadWrapperLayout';
+import GlobalSidebarHeaderLoadWrapperLayout from './GlobalSidebarHeaderLoadWrapperLayout';
 
 const pageScrollingPages = [
       LegacySidebarSystemNoticeLayout,
       LegacySidebarLayout,
       LegacySystemNoticeLayout,
-      LegacyLayout
+      LegacyLayout,
+      LegacySystemNoticeLoadWrapperLayout,
+      LegacyLoadWrapperLayout
     ],
     sectionScrollingPages = [
       LegacySidebarSystemNoticeLayout,
       LegacySidebarLayout,
       LegacySystemNoticeLayout,
       LegacyLayout,
+      LegacySystemNoticeLoadWrapperLayout,
+      LegacyLoadWrapperLayout,
       GlobalSidebarHeaderSystemNoticeSidebarLayout,
       GlobalSidebarHeaderSidebarLayout,
       GlobalSidebarHeaderSystemNoticeLayout,
@@ -40,7 +50,11 @@ const pageScrollingPages = [
       GlobalSidebarSystemNoticeSidebarLayout,
       GlobalSidebarSidebarLayout,
       GlobalSidebarSystemNoticeLayout,
-      GlobalSidebarLayout
+      GlobalSidebarLayout,
+      GlobalSidebarSystemNoticeLoadWrapperLayout,
+      GlobalSidebarLoadWrapperLayout,
+      GlobalSidebarHeaderSystemNoticeLoadWrapperLayout,
+      GlobalSidebarHeaderLoadWrapperLayout
     ];
 
 const PageLayoutExamples = () =>

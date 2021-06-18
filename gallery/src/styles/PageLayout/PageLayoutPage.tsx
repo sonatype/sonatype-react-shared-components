@@ -149,7 +149,7 @@ const PageLayoutPage = () =>
               <NxTable.Cell><NxCode>nx-page-main</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 <NxP>
-                  In legacy page layouts: Second child of <NxCode>.nx-page-content</NxCode>.
+                  In legacy page layouts: Only child or second child of <NxCode>.nx-page-content</NxCode>.
                 </NxP>
                 <NxP>
                   In Global Sidebar page layouts: child of <NxCode>.nx-page</NxCode>.
@@ -263,6 +263,24 @@ const PageLayoutPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>The page header for use alongside the global sidebar</NxTable.Cell>
             </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>
+                <NxTextLink href="#/pages/NxLoadWrapper"><NxCode>NxLoadWrapper</NxCode></NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>Component</NxTable.Cell>
+              <NxTable.Cell>Any</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                On pages which include both an <NxCode>.nx-page-sidebar</NxCode> and an <NxCode>.nx-page-main</NxCode>,
+                it is sometimes desired to control the display of both of those components with a wrapping
+                <NxCode>NxLoadWrapper</NxCode> – that is, to show neither the sidebar nor the main content until/unless
+                the loading managed by the wrapper completes successfully. One consequence of this is that the
+                <NxCode>.nx-alert</NxCode> and <NxCode>NxLoadingSpinner</NxCode> that the <NxCode>NxLoadWrapper</NxCode>
+                can display end up rendered as direct children of <NxCode>.nx-page</NxCode>{' '}
+                or <NxCode>.nx-page-content</NxCode>. Thus special considerations have to be made to ensure that they
+                lay out correctly.
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
@@ -307,6 +325,7 @@ const PageLayoutPage = () =>
               <NxTable.Cell />
               <NxTable.Cell>With Sidebar</NxTable.Cell>
               <NxTable.Cell>Without Sidebar</NxTable.Cell>
+              <NxTable.Cell>NxLoadWrapper special states</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Head>
           <NxTable.Body>
@@ -330,6 +349,15 @@ const PageLayoutPage = () =>
                   Without System Notice
                 </NxTextLink>
               </NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink href="#/pageLayouts/pageScrolling/LegacySystemNoticeLoadWrapperLayout">
+                  With System Notice
+                </NxTextLink>
+                <br/>
+                <NxTextLink href="#/pageLayouts/pageScrolling/LegacyLoadWrapperLayout">
+                  Without System Notice
+                </NxTextLink>
+              </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>Section Scrolling</NxTable.Cell>
@@ -348,6 +376,15 @@ const PageLayoutPage = () =>
                 </NxTextLink>
                 <br/>
                 <NxTextLink href="#/pageLayouts/LegacyLayout">
+                  Without System Notice
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink href="#/pageLayouts/LegacySystemNoticeLoadWrapperLayout">
+                  With System Notice
+                </NxTextLink>
+                <br/>
+                <NxTextLink href="#/pageLayouts/LegacyLoadWrapperLayout">
                   Without System Notice
                 </NxTextLink>
               </NxTable.Cell>
@@ -391,6 +428,7 @@ const PageLayoutPage = () =>
               <NxTable.Cell />
               <NxTable.Cell>With Inner Sidebar</NxTable.Cell>
               <NxTable.Cell>Without Inner Sidebar</NxTable.Cell>
+              <NxTable.Cell>NxLoadWrapper special states</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Head>
           <NxTable.Body>
@@ -414,6 +452,15 @@ const PageLayoutPage = () =>
                   Without System Notice
                 </NxTextLink>
               </NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink href="#/pageLayouts/GlobalSidebarHeaderSystemNoticeLoadWrapperLayout">
+                  With System Notice
+                </NxTextLink>
+                <br/>
+                <NxTextLink href="#/pageLayouts/GlobalSidebarHeaderLoadWrapperLayout">
+                  Without System Notice
+                </NxTextLink>
+              </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>Without Header</NxTable.Cell>
@@ -432,6 +479,15 @@ const PageLayoutPage = () =>
                 </NxTextLink>
                 <br/>
                 <NxTextLink href="#/pageLayouts/GlobalSidebarLayout">
+                  Without System Notice
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink href="#/pageLayouts/GlobalSidebarSystemNoticeLoadWrapperLayout">
+                  With System Notice
+                </NxTextLink>
+                <br/>
+                <NxTextLink href="#/pageLayouts/GlobalSidebarLoadWrapperLayout">
                   Without System Notice
                 </NxTextLink>
               </NxTable.Cell>
