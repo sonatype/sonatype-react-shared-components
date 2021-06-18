@@ -13,7 +13,8 @@ describe('NxThreatCounter', function() {
         criticalCount: 66,
         severeCount: 55,
         moderateCount: 44,
-        lowCount: 33
+        lowCount: 33,
+        noneCount: 22
       },
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxThreatCounter, minimalProps);
 
@@ -26,28 +27,33 @@ describe('NxThreatCounter', function() {
     expect(getShallowComponent().find('.nx-threat-counter--severe')).toExist();
     expect(getShallowComponent().find('.nx-threat-counter--moderate')).toExist();
     expect(getShallowComponent().find('.nx-threat-counter--low')).toExist();
+    expect(getShallowComponent().find('.nx-threat-counter--none')).toExist();
   });
 
   it('renders all of the values set in minimalProps', function() {
     const checkCritical = getShallowComponent().find('.nx-threat-counter--critical'),
         checkSevere = getShallowComponent().find('.nx-threat-counter--severe'),
         checkModerate = getShallowComponent().find('.nx-threat-counter--moderate'),
-        checkLow = getShallowComponent().find('.nx-threat-counter--low');
+        checkLow = getShallowComponent().find('.nx-threat-counter--low'),
+        checkNone = getShallowComponent().find('.nx-threat-counter--none');
     expect(checkCritical.find('.nx-threat-counter__count')).toHaveText('66');
     expect(checkSevere.find('.nx-threat-counter__count')).toHaveText('55');
     expect(checkModerate.find('.nx-threat-counter__count')).toHaveText('44');
     expect(checkLow.find('.nx-threat-counter__count')).toHaveText('33');
+    expect(checkNone.find('.nx-threat-counter__count')).toHaveText('22');
   });
 
   it('renders the correct label for each indicator', function() {
     const checkCriticalText = getShallowComponent().find('.nx-threat-counter--critical'),
         checkSevereText = getShallowComponent().find('.nx-threat-counter--severe'),
         checkModerateText = getShallowComponent().find('.nx-threat-counter--moderate'),
-        checkLowText = getShallowComponent().find('.nx-threat-counter--low');
+        checkLowText = getShallowComponent().find('.nx-threat-counter--low'),
+        checkNoneText = getShallowComponent().find('.nx-threat-counter--none');
     expect(checkCriticalText.find('.nx-threat-counter__text')).toHaveText('Critical');
     expect(checkSevereText.find('.nx-threat-counter__text')).toHaveText('Severe');
     expect(checkModerateText.find('.nx-threat-counter__text')).toHaveText('Moderate');
     expect(checkLowText.find('.nx-threat-counter__text')).toHaveText('Low');
+    expect(checkNoneText.find('.nx-threat-counter__text')).toHaveText('None');
   });
 
   it('correctly assigns supplied class', function() {

@@ -22,7 +22,7 @@ const NxThreatCounterPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">
         Component for a series of small counters which display a number representing a count of threats/violations,
-        and a short pre-set text string which displays the severity (critical, severe, moderate, and low).
+        and a short pre-set text string which displays the severity (critical, severe, moderate, low, and none).
       </p>
       <p className="nx-p">
         Three basic layouts have been demonstrated below. It is expected that one of these should satisfy any
@@ -61,6 +61,12 @@ const NxThreatCounterPage = () =>
             <td className="nx-cell">number</td>
             <td className="nx-cell">Yes</td>
             <td className="nx-cell">A numerical value, the number of low threats.</td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">noneCount</td>
+            <td className="nx-cell">number</td>
+            <td className="nx-cell">Yes</td>
+            <td className="nx-cell">A numerical value, the number of none threats.</td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">layout</td>

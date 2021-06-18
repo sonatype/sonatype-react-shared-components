@@ -13,7 +13,7 @@ export { Props } from './types';
 import './NxThreatCounter.scss';
 
 export default function NxThreatCounter({
-  criticalCount, severeCount, moderateCount, lowCount, layout, className, ...attrs }: Props) {
+  criticalCount, severeCount, moderateCount, lowCount, noneCount, layout, className, ...attrs }: Props) {
 
   const layoutClasses = classnames('nx-threat-counter-container', className, {
     [`nx-threat-counter-container--${layout}`]: layout
@@ -36,6 +36,10 @@ export default function NxThreatCounter({
       <div className="nx-threat-counter nx-threat-counter--low">
         <dt className="nx-threat-counter__text">Low</dt>
         <dd className="nx-threat-counter__count">{lowCount}</dd>
+      </div>
+      <div className="nx-threat-counter nx-threat-counter--none">
+        <dt className="nx-threat-counter__text">None</dt>
+        <dd className="nx-threat-counter__count">{noneCount}</dd>
       </div>
     </dl>
   );
