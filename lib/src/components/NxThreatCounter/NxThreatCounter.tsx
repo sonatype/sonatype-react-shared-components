@@ -19,28 +19,41 @@ export default function NxThreatCounter({
     [`nx-threat-counter-container--${layout}`]: layout
   });
 
+  if (typeof criticalCount !== 'number' &&
+      typeof severeCount !== 'number' &&
+      typeof moderateCount !== 'number' &&
+      typeof lowCount !== 'number' &&
+      typeof noneCount !== 'number') {
+    return null;
+  }
+
   return (
     <dl className={layoutClasses} {...attrs}>
+      {typeof criticalCount === 'number' &&
       <div className="nx-threat-counter nx-threat-counter--critical">
         <dt className="nx-threat-counter__text">Critical</dt>
         <dd className="nx-threat-counter__count">{criticalCount}</dd>
-      </div>
+      </div>}
+      {typeof severeCount === 'number' &&
       <div className="nx-threat-counter nx-threat-counter--severe">
         <dt className="nx-threat-counter__text">Severe</dt>
         <dd className="nx-threat-counter__count">{severeCount}</dd>
-      </div>
+      </div>}
+      {typeof moderateCount === 'number' &&
       <div className="nx-threat-counter nx-threat-counter--moderate">
         <dt className="nx-threat-counter__text">Moderate</dt>
         <dd className="nx-threat-counter__count">{moderateCount}</dd>
-      </div>
+      </div>}
+      {typeof lowCount === 'number' &&
       <div className="nx-threat-counter nx-threat-counter--low">
         <dt className="nx-threat-counter__text">Low</dt>
         <dd className="nx-threat-counter__count">{lowCount}</dd>
-      </div>
+      </div>}
+      {typeof noneCount === 'number' &&
       <div className="nx-threat-counter nx-threat-counter--none">
         <dt className="nx-threat-counter__text">None</dt>
         <dd className="nx-threat-counter__count">{noneCount}</dd>
-      </div>
+      </div>}
     </dl>
   );
 }

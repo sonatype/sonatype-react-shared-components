@@ -7,6 +7,7 @@
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
 import NxThreatCounter, { Props } from '../NxThreatCounter';
+import {capitalize} from '@material-ui/core';
 
 describe('NxThreatCounter', function() {
   const minimalProps = {
@@ -16,13 +17,58 @@ describe('NxThreatCounter', function() {
         lowCount: 33,
         noneCount: 22
       },
+      names = ['critical', 'severe', 'moderate', 'low', 'none'],
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxThreatCounter, minimalProps);
+
+  const getCounts = (value: number | null | undefined) => {
+    const props: {[index: string]:number | null | undefined} = {
+      criticalCount: value,
+      severeCount: value,
+      moderateCount: value,
+      lowCount: value,
+      noneCount: value
+    };
+    return props;
+  };
+
+  it('renders nothing if all five indicators are undefined', function() {
+    const component = getShallowComponent(getCounts(undefined));
+    expect(component).toBeEmptyRender();
+  });
+
+  it('renders nothing if all five indicators are null', function() {
+    const component = getShallowComponent(getCounts(null));
+    expect(component).toBeEmptyRender();
+  });
 
   it('renders the container with the expected default classes', function() {
     expect(getShallowComponent().find('.nx-threat-counter-container')).toExist();
   });
 
-  it('renders all four indicators', function() {
+  const checkEachCountRendersAlone = (value: null | undefined) => {
+    names.forEach(name => {
+      const props = getCounts(value);
+      const countName = name + 'Count';
+      props[countName] = 0;
+      const container = getShallowComponent(props).find('.nx-threat-counter-container');
+      expect(container).toExist();
+      const counts = container.find('div');
+      expect(counts.length).toBe(1);
+      const count = counts.at(0);
+      expect(count.find('.nx-threat-counter__count')).toHaveText('0');
+      expect(count.find('.nx-threat-counter__text')).toHaveText(capitalize(name));
+    });
+  };
+
+  it('renders only one indicator if the others are undefined', function() {
+    checkEachCountRendersAlone(undefined);
+  });
+
+  it('renders only one indicator if the others are null', function() {
+    checkEachCountRendersAlone(null);
+  });
+
+  it('renders all five indicators', function() {
     expect(getShallowComponent().find('.nx-threat-counter--critical')).toExist();
     expect(getShallowComponent().find('.nx-threat-counter--severe')).toExist();
     expect(getShallowComponent().find('.nx-threat-counter--moderate')).toExist();

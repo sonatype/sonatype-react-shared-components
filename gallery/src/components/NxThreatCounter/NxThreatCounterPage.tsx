@@ -25,6 +25,9 @@ const NxThreatCounterPage = () =>
         and a short pre-set text string which displays the severity (critical, severe, moderate, low, and none).
       </p>
       <p className="nx-p">
+        Each count is optional. If no counts are provided, then nothing will be rendered.
+      </p>
+      <p className="nx-p">
         Three basic layouts have been demonstrated below. It is expected that one of these should satisfy any
         requirement.
       </p>
@@ -41,32 +44,42 @@ const NxThreatCounterPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell">criticalCount</td>
             <td className="nx-cell">number</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">A numerical value, the number of critical threats.</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              A numerical value, the number of critical threats. If no value is provided, then the count will be hidden.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">severeCount</td>
             <td className="nx-cell">number</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">A numerical value, the number of severe threats.</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              A numerical value, the number of severe threats. If no value is provided, then the count will be hidden.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">moderateCount</td>
             <td className="nx-cell">number</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">A numerical value, the number of moderate threats.</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              A numerical value, the number of moderate threats. If no value is provided, then the count will be hidden.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">lowCount</td>
             <td className="nx-cell">number</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">A numerical value, the number of low threats.</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              A numerical value, the number of low threats. If no value is provided, then the count will be hidden.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">noneCount</td>
             <td className="nx-cell">number</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">A numerical value, the number of none threats.</td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              A numerical value, the number of none threats. If no value is provided, then the count will be hidden.
+            </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell">layout</td>
@@ -112,7 +125,7 @@ const NxThreatCounterPage = () =>
                         id="nx-threat-counter-grid"
                         liveExample={NxThreatCounterGridExample}
                         codeExamples={NxThreatCounterGridCode}>
-      <code className="nx-code">nx-threat-counter</code>s in a 2x2 "grid" layout.
+      <code className="nx-code">nx-threat-counter</code>s in a 2x2 "grid" layout with "None" hidden.
     </GalleryExampleTile>
   </>;
 
