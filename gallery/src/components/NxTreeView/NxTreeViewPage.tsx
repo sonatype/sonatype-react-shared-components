@@ -147,7 +147,7 @@ const NxTreeViewPage = () =>
                         liveExample={NxTreeViewExample}
                         codeExamples={nxTreeViewCode}>
       A basic example of an <code className="nx-code">NxTreeView</code> with the corresponding logic necessary to
-      track its collapse/expand state.
+      track its collapse/expand state. The trigger content is long to demonstrate ellipsis truncation.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeView Example with trigger tooltip"
