@@ -58,6 +58,10 @@
       }
     }
   }
+
+  + .nx-text-input {
+    margin-left: var(--nx-spacing-4x);
+  }
 }
 
 .nx-text-input__box {
@@ -78,6 +82,14 @@
       // In this case though the first icon isn't visible so we don't want that
       margin-left: var(--nx-spacing-2x);
     }
+  }
+
+  // the baseline of the text input ends up being the baseline of the box's first flex child. The NxFilterInput
+  // filter icon has a different baseline than the text, screwing up the input's overall baseline when it is first.
+  // So we stick this zero-width space before it. Additionally in safari the alignment of any empty text
+  // input is borked without this
+  &::before {
+    content: '\200B';
   }
 }
 
