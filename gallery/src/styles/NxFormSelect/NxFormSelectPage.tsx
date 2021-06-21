@@ -57,7 +57,8 @@ const NxFormSelectPage = () =>
                         id="nx-form-select-disabled-example"
                         codeExamples={disabledSourceCode}
                         liveExample={NxFormSelectDisabledExample}>
-      Demonstrates a form <code className="nx-code">&lt;select&gt;</code> disabled state.
+      Demonstrates a form <code className="nx-code">&lt;select&gt;</code> disabled state. Note that disabling
+      is only supported via attribute, not class name.
     </GalleryExampleTile>
   </>;
 
