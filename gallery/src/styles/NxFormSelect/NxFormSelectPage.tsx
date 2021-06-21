@@ -12,7 +12,8 @@ import NxFormSelectExample from './NxFormSelectExample';
 import NxFormSelectDisabledExample from './NxFormSelectDisabledExample';
 import { NxCode } from '@sonatype/react-shared-components';
 
-const sourceCode = require('./NxFormSelectExample?raw');
+const sourceCode = require('./NxFormSelectExample?raw'),
+    disabledSourceCode = require('./NxFormSelectDisabledExample?raw');
 
 const NxFormSelectPage = () =>
   <>
@@ -54,7 +55,7 @@ const NxFormSelectPage = () =>
     </GalleryExampleTile>
     <GalleryExampleTile title="Form Select Disabled Example"
                         id="nx-form-select-disabled-example"
-                        codeExamples={sourceCode}
+                        codeExamples={disabledSourceCode}
                         liveExample={NxFormSelectDisabledExample}>
       Demonstrates a form <code className="nx-code">&lt;select&gt;</code> disabled state.
     </GalleryExampleTile>
