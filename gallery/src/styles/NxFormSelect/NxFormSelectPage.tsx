@@ -9,13 +9,11 @@ import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxFormSelectExample from './NxFormSelectExample';
-import NxFormSelectDisabledAttrExample from './NxFormSelectDisabledAttrExample';
-import NxFormSelectDisabledClassExample from './NxFormSelectDisabledClassExample';
+import NxFormSelectDisabledExample from './NxFormSelectDisabledExample';
 import { NxCode } from '@sonatype/react-shared-components';
 
 const sourceCode = require('./NxFormSelectExample?raw'),
-    disabledAttrSourceCode = require('./NxFormSelectDisabledAttrExample?raw'),
-    disabledClassSourceCode = require('./NxFormSelectDisabledClassExample?raw');
+    disabledSourceCode = require('./NxFormSelectDisabledExample?raw');
 
 const NxFormSelectPage = () =>
   <>
@@ -55,17 +53,12 @@ const NxFormSelectPage = () =>
                         liveExample={NxFormSelectExample}>
       Demonstrates a form <code className="nx-code">&lt;select&gt;</code> active state.
     </GalleryExampleTile>
-    <GalleryExampleTile title="Form Select Disabled by Attribute Example"
-                        id="nx-form-select-disabled-attr-example"
-                        codeExamples={disabledAttrSourceCode}
-                        liveExample={NxFormSelectDisabledAttrExample}>
-      Demonstrates a disabled <NxCode>nx-form-select</NxCode> using the HTML <NxCode>disabled</NxCode> attribute.
-    </GalleryExampleTile>
-    <GalleryExampleTile title="Form Select Disabled by Class Example"
-                        id="nx-form-select-disabled-class-example"
-                        codeExamples={disabledClassSourceCode}
-                        liveExample={NxFormSelectDisabledClassExample}>
-      Demonstrates a disabled <NxCode>nx-form-select</NxCode> using the HTML <NxCode>disabled</NxCode> attribute.
+    <GalleryExampleTile title="Form Select Disabled Example"
+                        id="nx-form-select-disabled-example"
+                        codeExamples={disabledSourceCode}
+                        liveExample={NxFormSelectDisabledExample}>
+      Demonstrates two disabled <NxCode>nx-form-select</NxCode>s, one disabled using the attribute and the
+      other disabled using the class.
     </GalleryExampleTile>
   </>;
 
