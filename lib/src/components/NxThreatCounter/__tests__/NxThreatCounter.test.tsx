@@ -7,7 +7,6 @@
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
 import NxThreatCounter, { Props } from '../NxThreatCounter';
-import {capitalize} from '@material-ui/core';
 
 describe('NxThreatCounter', function() {
   const minimalProps = {
@@ -17,7 +16,6 @@ describe('NxThreatCounter', function() {
         lowCount: 33,
         noneCount: 22
       },
-      names = ['critical', 'severe', 'moderate', 'low', 'none'],
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxThreatCounter, minimalProps);
 
   const getCounts = (value?: number | null) => {
@@ -45,10 +43,17 @@ describe('NxThreatCounter', function() {
     expect(getShallowComponent().find('.nx-threat-counter-container')).toExist();
   });
 
-  const checkEachCountRendersAlone = (value: null | undefined) => {
-    names.forEach(name => {
+  const checkEachCountRendersAlone = (value?: null) => {
+    const expectedCountsData = [
+      {propName: 'criticalCount', text: 'Critical'},
+      {propName: 'severeCount', text: 'Severe'},
+      {propName: 'moderateCount', text: 'Moderate'},
+      {propName: 'lowCount', text: 'Low'},
+      {propName: 'noneCount', text: 'None'}
+    ];
+    expectedCountsData.forEach(expectedCountData => {
       const props = getCounts(value);
-      const countName = name + 'Count';
+      const countName = expectedCountData.propName;
       props[countName] = 0;
       const container = getShallowComponent(props).find('.nx-threat-counter-container');
       expect(container).toExist();
@@ -56,7 +61,7 @@ describe('NxThreatCounter', function() {
       expect(counts.length).toBe(1);
       const count = counts.at(0);
       expect(count.find('.nx-threat-counter__count')).toHaveText('0');
-      expect(count.find('.nx-threat-counter__text')).toHaveText(capitalize(name));
+      expect(count.find('.nx-threat-counter__text')).toHaveText(expectedCountData.text);
     });
   };
 
