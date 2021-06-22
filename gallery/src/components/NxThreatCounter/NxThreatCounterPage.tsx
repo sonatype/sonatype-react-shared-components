@@ -113,7 +113,7 @@ const NxThreatCounterPage = () =>
                         id="nx-threat-counter-row"
                         liveExample={NxThreatCounterExample}
                         codeExamples={NxThreatCounterCode}>
-      <code className="nx-code">nx-threat-counter</code>s in the default layout.
+      <code className="nx-code">nx-threat-counter</code>s in the default (row) layout.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxThreatCounter Column Example"
@@ -127,7 +127,7 @@ const NxThreatCounterPage = () =>
                         id="nx-threat-counter-grid"
                         liveExample={NxThreatCounterGridExample}
                         codeExamples={NxThreatCounterGridCode}>
-      <code className="nx-code">nx-threat-counter</code>s in a 2x2 "grid" layout.
+      <code className="nx-code">nx-threat-counter</code>s in a "grid" layout.
     </GalleryExampleTile>
   </>;
 
