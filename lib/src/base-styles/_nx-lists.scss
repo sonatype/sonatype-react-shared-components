@@ -59,7 +59,6 @@
 
 .nx-list__link {
   text-decoration: none;
-  color: inherit;
 }
 
 .nx-list__text {
@@ -177,6 +176,8 @@
 .nx-list--clickable .nx-list__item // deprecated
 {
   &, > .nx-list__link, > .nx-list__btn {
+    color: inherit;
+
     &.selected {
       &, &:hover {
         background-color: var(--nx-color-interactive-background-selected);
@@ -190,7 +191,6 @@
 
     &:active {
       background-color: var(--nx-color-interactive-background-active);
-      color: inherit;
     }
 
     &:focus {
