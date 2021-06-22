@@ -25,7 +25,8 @@ const NxThreatCounterPage = () =>
         and a short pre-set text string which displays the severity (critical, severe, moderate, low, and none).
       </p>
       <p className="nx-p">
-        Each count is optional. If no value is provided for a given count, then the indicator for that severity level will not be rendered.
+        Each count is optional. If no value is provided for a given count, then the indicator for that severity level
+        will not be rendered.
       </p>
       <p className="nx-p">
         Three basic layouts have been demonstrated below. It is expected that one of these should satisfy any
@@ -78,7 +79,8 @@ const NxThreatCounterPage = () =>
             <td className="nx-cell">number</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              A numerical value, the number of counted items posing no threat. If no value is provided, then the count will be hidden.
+              A numerical value, the number of counted items posing no threat. If no value is provided, then the count
+              will be hidden.
             </td>
           </tr>
           <tr className="nx-table-row">
