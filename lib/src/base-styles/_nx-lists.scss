@@ -173,7 +173,7 @@
 }
 
 .nx-list__item--clickable, // preferred
-.nx-list__item--link,
+.nx-list__item--link, // deprecated
 .nx-list--clickable .nx-list__item // deprecated
 {
   &, > .nx-list__link, > .nx-list__btn {
