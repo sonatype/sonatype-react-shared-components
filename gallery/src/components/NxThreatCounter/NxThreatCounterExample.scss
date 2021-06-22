@@ -18,3 +18,11 @@
   flex-direction: row;
   gap: calc(var(--nx-spacing-6x) + var(--nx-spacing-4x));
 }
+
+.gallery-threat-counter-grid-example {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: calc(var(--nx-spacing-6x) + var(--nx-spacing-4x));
+}

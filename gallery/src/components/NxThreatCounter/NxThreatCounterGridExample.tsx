@@ -9,11 +9,38 @@ import { NxThreatCounter } from '@sonatype/react-shared-components';
 
 function NxThreatCounterExample() {
   return (
-    <NxThreatCounter criticalCount={415}
-                     severeCount={24}
-                     moderateCount={12}
-                     lowCount={9945}
-                     layout="grid"/>
+    <div className="gallery-threat-counter-grid-example">
+      <span>
+        <NxThreatCounter criticalCount={415}
+                         severeCount={24}
+                         moderateCount={12}
+                         lowCount={9945}
+                         noneCount={4}
+                         layout="grid"/>
+      </span>
+      <span>
+        <NxThreatCounter criticalCount={415}
+                         severeCount={24}
+                         moderateCount={12}
+                         lowCount={9945}
+                         layout="grid"/>
+      </span>
+      <span>
+        <NxThreatCounter criticalCount={415}
+                         severeCount={24}
+                         moderateCount={12}
+                         layout="grid"/>
+      </span>
+      <span>
+        <NxThreatCounter criticalCount={415}
+                         severeCount={24}
+                         layout="grid"/>
+      </span>
+      <span>
+        <NxThreatCounter criticalCount={415}
+                         layout="grid"/>
+      </span>
+    </div>
   );
 }
 

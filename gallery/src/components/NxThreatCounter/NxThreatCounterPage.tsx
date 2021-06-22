@@ -127,7 +127,7 @@ const NxThreatCounterPage = () =>
                         id="nx-threat-counter-grid"
                         liveExample={NxThreatCounterGridExample}
                         codeExamples={NxThreatCounterGridCode}>
-      <code className="nx-code">nx-threat-counter</code>s in a 2x2 "grid" layout with "None" hidden.
+      <code className="nx-code">nx-threat-counter</code>s in a 2x2 "grid" layout.
     </GalleryExampleTile>
   </>;
 
