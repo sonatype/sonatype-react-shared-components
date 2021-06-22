@@ -6,15 +6,32 @@
  */
 import React from 'react';
 import { NxThreatCounter } from '@sonatype/react-shared-components';
+import './NxThreatCounterExample.scss';
 
 function NxThreatCounterExample() {
   return (
-    <NxThreatCounter criticalCount={45}
-                     severeCount={24}
-                     moderateCount={1222}
-                     lowCount={45}
-                     noneCount={4}
-                     layout="column"/>
+    <div className="gallery-threat-counter-column-example">
+      <NxThreatCounter criticalCount={45}
+                       severeCount={24}
+                       moderateCount={1222}
+                       lowCount={45}
+                       noneCount={4}
+                       layout="column"/>
+      <NxThreatCounter criticalCount={45}
+                       severeCount={24}
+                       moderateCount={1222}
+                       lowCount={45}
+                       layout="column"/>
+      <NxThreatCounter criticalCount={45}
+                       severeCount={24}
+                       moderateCount={1222}
+                       layout="column"/>
+      <NxThreatCounter criticalCount={45}
+                       severeCount={24}
+                       layout="column"/>
+      <NxThreatCounter criticalCount={45}
+                       layout="column"/>
+    </div>
   );
 }
 
