@@ -78,7 +78,7 @@ const NxThreatCounterPage = () =>
             <td className="nx-cell">number</td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">
-              A numerical value, the number of none threats. If no value is provided, then the count will be hidden.
+              A numerical value, the number of counted items posing no threat. If no value is provided, then the count will be hidden.
             </td>
           </tr>
           <tr className="nx-table-row">
