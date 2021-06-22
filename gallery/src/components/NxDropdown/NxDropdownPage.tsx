@@ -213,7 +213,7 @@ const NxDropdownPage = () =>
                 An additional icon-only button which can appear on the right side of a menu row
               </NxTableCell>
               <NxTableCell>
-                Sometimes it is desireable to add a icon-only button to a menu row which performs an action distinct
+                Sometimes it is desirable to add a icon-only button to a menu row which performs an action distinct
                 from clicking on the row itself - for instance, a trashcan button which deletes the row. For this
                 scenario, the icon button, a sibling of the main row button, must include this class and
                 the <code className="nx-code">nx-dropdown-button-container</code> and{' '}
@@ -294,7 +294,7 @@ const NxDropdownPage = () =>
       and <code className="nx-code">onCloseKeyDown</code> props. These props can be used to disable the
       close-on-click and close-on-ESC behaviors that the dropdown has by default, by
       calling <code className="nx-code">preventDefault()</code> on the event. This example demonstrates both props
-      simulataneously, but either can be used independently if desired.
+      simultaneously, but either can be used independently if desired.
     </GalleryExampleTile>
   </>;
 
