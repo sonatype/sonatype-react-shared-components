@@ -24,6 +24,7 @@ export default function NxThreatCounter({
       typeof moderateCount !== 'number' &&
       typeof lowCount !== 'number' &&
       typeof noneCount !== 'number') {
+    console.warn('No counts have been provided and so nothing will be rendered.');
     return null;
   }
 
