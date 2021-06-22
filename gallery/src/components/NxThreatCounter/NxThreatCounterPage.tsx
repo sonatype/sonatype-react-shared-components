@@ -25,7 +25,7 @@ const NxThreatCounterPage = () =>
         and a short pre-set text string which displays the severity (critical, severe, moderate, low, and none).
       </p>
       <p className="nx-p">
-        Each count is optional. If no counts are provided, then nothing will be rendered.
+        Each count is optional. If no value is provided for a given count, then the indicator for that severity level will not be rendered.
       </p>
       <p className="nx-p">
         Three basic layouts have been demonstrated below. It is expected that one of these should satisfy any
