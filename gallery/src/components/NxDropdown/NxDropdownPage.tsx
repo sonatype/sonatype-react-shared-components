@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxTextLink }
+import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxTextLink, NxCode, NxWarningAlert }
   from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
@@ -53,6 +53,21 @@ const NxDropdownPage = () =>
               <td className="nx-cell">string | VDOM</td>
               <td className="nx-cell">Yes</td>
               <td className="nx-cell">Content to render in the dropdown's button</td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell">children</td>
+              <td className="nx-cell">ReactElement | ReactElement[]</td>
+              <td className="nx-cell">No</td>
+              <td className="nx-cell">
+                The items to render within the dropdown list, including all <NxCode>.nx-dropdown-button</NxCode>s and
+                {' '}<NxCode>.nx-dropdown-link</NxCode>s.
+                <NxWarningAlert>
+                  Note: All <NxCode>.nx-dropdown-button</NxCode>s and {' '}<NxCode>.nx-dropdown-link</NxCode>s must
+                  be present as direct, immediate children of the <NxCode>NxDropdown</NxCode>, in order for the tooltip
+                  wrapping logic to work. These children may not be wrapped in other intermediate react components,
+                  fragments, or even nested arrays.
+                </NxWarningAlert>
+              </td>
             </tr>
             <tr className="nx-table-row">
               <td className="nx-cell">isOpen</td>
