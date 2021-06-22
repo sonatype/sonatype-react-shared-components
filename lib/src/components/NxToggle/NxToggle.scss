@@ -66,6 +66,17 @@
         margin-left: 20px;
       }
     }
+
+    &:disabled {
+      + .nx-toggle__control {
+        background-color: var(--nx-color-interactive-background-disabled);
+        border-color: var(--nx-color-interactive-border-disabled);
+        
+        .nx-toggle__indicator {
+          background-color: var(--nx-color-interactive-border-disabled);
+        }
+      }
+    }
   }
 }
 
