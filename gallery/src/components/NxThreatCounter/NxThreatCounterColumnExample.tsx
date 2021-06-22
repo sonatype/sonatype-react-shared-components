@@ -11,26 +11,36 @@ import './NxThreatCounterExample.scss';
 function NxThreatCounterExample() {
   return (
     <div className="gallery-threat-counter-column-example">
-      <NxThreatCounter criticalCount={45}
-                       severeCount={24}
-                       moderateCount={1222}
-                       lowCount={45}
-                       noneCount={4}
-                       layout="column"/>
-      <NxThreatCounter criticalCount={45}
-                       severeCount={24}
-                       moderateCount={1222}
-                       lowCount={45}
-                       layout="column"/>
-      <NxThreatCounter criticalCount={45}
-                       severeCount={24}
-                       moderateCount={1222}
-                       layout="column"/>
-      <NxThreatCounter criticalCount={45}
-                       severeCount={24}
-                       layout="column"/>
-      <NxThreatCounter criticalCount={45}
-                       layout="column"/>
+      <span>
+        <NxThreatCounter criticalCount={45}
+                         severeCount={24}
+                         moderateCount={1222}
+                         lowCount={45}
+                         noneCount={4}
+                         layout="column"/>
+      </span>
+      <span>
+        <NxThreatCounter criticalCount={45}
+                         severeCount={24}
+                         moderateCount={1222}
+                         lowCount={45}
+                         layout="column"/>
+      </span>
+      <span>
+        <NxThreatCounter criticalCount={45}
+                         severeCount={24}
+                         moderateCount={1222}
+                         layout="column"/>
+      </span>
+      <span>
+        <NxThreatCounter criticalCount={45}
+                         severeCount={24}
+                         layout="column"/>
+      </span>
+      <span>
+        <NxThreatCounter criticalCount={45}
+                         layout="column"/>
+      </span>
     </div>
   );
 }
