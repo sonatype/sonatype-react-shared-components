@@ -20,7 +20,7 @@ describe('NxThreatCounter', function() {
       names = ['critical', 'severe', 'moderate', 'low', 'none'],
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxThreatCounter, minimalProps);
 
-  const getCounts = (value: number | null | undefined) => {
+  const getCounts = (value?: number | null) => {
     const props: {[index: string]:number | null | undefined} = {
       criticalCount: value,
       severeCount: value,

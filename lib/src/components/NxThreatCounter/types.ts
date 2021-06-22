@@ -8,13 +8,13 @@ import { HTMLAttributes, ValidationMap } from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface Props extends Omit<HTMLAttributes<HTMLDListElement>, 'className' | 'children'> {
-  criticalCount?: number | null | undefined;
-  severeCount?: number | null | undefined;
-  moderateCount?: number | null | undefined;
-  lowCount?: number | null | undefined;
-  noneCount?: number | null | undefined;
-  layout?: string | null | undefined;
-  className?: string | null | undefined;
+  criticalCount?: number | null;
+  severeCount?: number | null;
+  moderateCount?: number | null;
+  lowCount?: number | null;
+  noneCount?: number | null;
+  layout?: string | null;
+  className?: string | null;
 }
 
 export const propTypes: ValidationMap<Props> = {
