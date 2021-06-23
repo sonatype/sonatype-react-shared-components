@@ -16,6 +16,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 export { Props, NxTreeViewChildProps } from './types';
 
 import './NxTreeView.scss';
+import { ensureElement } from '../../util/reactUtil';
 
 const NxTreeView: FunctionComponent<Props> =
   function NxTreeView(props) {
@@ -38,7 +39,7 @@ const NxTreeView: FunctionComponent<Props> =
                   disabled={disabled || isEmpty || undefined}>
             <NxFontAwesomeIcon className="nx-tree-view__twisty" icon={faCaretRight} />
             <span className="nx-tree-view__text">
-              {triggerContent}
+              {ensureElement(triggerContent)}
             </span>
           </button>
         ),
