@@ -123,7 +123,7 @@ const NxThreatCounterPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxThreatCounter Small Default Example"
-                        id="nx-threat-counter-row"
+                        id="nx-threat-counter-small-row"
                         liveExample={NxThreatCounterSmallExample}
                         codeExamples={NxThreatCounterSmallCode}>
       <code className="nx-code">nx-threat-counter</code>s in the default (row) layout with only two counts.
@@ -137,7 +137,7 @@ const NxThreatCounterPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxThreatCounter Small Column Example"
-                        id="nx-threat-counter-column"
+                        id="nx-threat-counter-small-column"
                         liveExample={NxThreatCounterSmallColumnExample}
                         codeExamples={NxThreatCounterSmallColumnCode}>
       <code className="nx-code">nx-threat-counter</code>s in column layout with only two counts.
@@ -151,7 +151,7 @@ const NxThreatCounterPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxThreatCounter Small Grid Example"
-                        id="nx-threat-counter-grid"
+                        id="nx-threat-counter-small-grid"
                         liveExample={NxThreatCounterSmallGridExample}
                         codeExamples={NxThreatCounterSmallGridCode}>
       <code className="nx-code">nx-threat-counter</code>s in a 1x2 "grid" layout.

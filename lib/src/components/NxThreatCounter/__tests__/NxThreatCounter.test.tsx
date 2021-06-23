@@ -9,23 +9,11 @@ import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxThreatCounter, { Props } from '../NxThreatCounter';
 
 describe('NxThreatCounter', function() {
-  const minimalProps = {
-        criticalCount: 66,
-        severeCount: 55,
-        moderateCount: 44,
-        lowCount: 33,
-        noneCount: 22
-      },
+  const minimalProps = {},
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxThreatCounter, minimalProps);
 
   it('renders nothing if all five indicators are undefined', function() {
-    const component = getShallowComponent({
-      criticalCount: undefined,
-      severeCount: undefined,
-      moderateCount: undefined,
-      lowCount: undefined,
-      noneCount: undefined
-    });
+    const component = getShallowComponent();
     expect(component).toBeEmptyRender();
   });
 
@@ -41,17 +29,11 @@ describe('NxThreatCounter', function() {
   });
 
   it('renders the container with the expected default classes', function() {
-    expect(getShallowComponent().find('.nx-threat-counter-container')).toExist();
+    expect(getShallowComponent({criticalCount: 0}).find('.nx-threat-counter-container')).toExist();
   });
 
   it('renders an .nx-threat-counter--critical when criticalCount is specified', function() {
-    const component = getShallowComponent({
-      criticalCount: 0,
-      severeCount: undefined,
-      moderateCount: undefined,
-      lowCount: undefined,
-      noneCount: undefined
-    });
+    const component = getShallowComponent({criticalCount: 0});
     const container = component.find('.nx-threat-counter-container');
     expect(container).toExist();
     expect(container.find('div').length).toBe(1);
@@ -61,13 +43,7 @@ describe('NxThreatCounter', function() {
   });
 
   it('renders an .nx-threat-counter--severe when severeCount is specified', function() {
-    const component = getShallowComponent({
-      criticalCount: undefined,
-      severeCount: 0,
-      moderateCount: undefined,
-      lowCount: undefined,
-      noneCount: undefined
-    });
+    const component = getShallowComponent({severeCount: 0});
     const container = component.find('.nx-threat-counter-container');
     expect(container).toExist();
     expect(container.find('div').length).toBe(1);
@@ -77,13 +53,7 @@ describe('NxThreatCounter', function() {
   });
 
   it('renders an .nx-threat-counter--moderate when moderateCount is specified', function() {
-    const component = getShallowComponent({
-      criticalCount: undefined,
-      severeCount: undefined,
-      moderateCount: 0,
-      lowCount: undefined,
-      noneCount: undefined
-    });
+    const component = getShallowComponent({moderateCount: 0});
     const container = component.find('.nx-threat-counter-container');
     expect(container).toExist();
     expect(container.find('div').length).toBe(1);
@@ -93,13 +63,7 @@ describe('NxThreatCounter', function() {
   });
 
   it('renders an .nx-threat-counter--low when lowCount is specified', function() {
-    const component = getShallowComponent({
-      criticalCount: undefined,
-      severeCount: undefined,
-      moderateCount: undefined,
-      lowCount: 0,
-      noneCount: undefined
-    });
+    const component = getShallowComponent({lowCount: 0});
     const container = component.find('.nx-threat-counter-container');
     expect(container).toExist();
     expect(container.find('div').length).toBe(1);
@@ -109,13 +73,7 @@ describe('NxThreatCounter', function() {
   });
 
   it('renders an .nx-threat-counter--none when noneCount is specified', function() {
-    const component = getShallowComponent({
-      criticalCount: undefined,
-      severeCount: undefined,
-      moderateCount: undefined,
-      lowCount: undefined,
-      noneCount: 0
-    });
+    const component = getShallowComponent({noneCount: 0});
     const container = component.find('.nx-threat-counter-container');
     expect(container).toExist();
     expect(container.find('div').length).toBe(1);
@@ -125,57 +83,48 @@ describe('NxThreatCounter', function() {
   });
 
   it('renders all five indicators', function() {
-    expect(getShallowComponent().find('.nx-threat-counter--critical')).toExist();
-    expect(getShallowComponent().find('.nx-threat-counter--severe')).toExist();
-    expect(getShallowComponent().find('.nx-threat-counter--moderate')).toExist();
-    expect(getShallowComponent().find('.nx-threat-counter--low')).toExist();
-    expect(getShallowComponent().find('.nx-threat-counter--none')).toExist();
-  });
-
-  it('renders all of the values set in minimalProps', function() {
-    const checkCritical = getShallowComponent().find('.nx-threat-counter--critical'),
-        checkSevere = getShallowComponent().find('.nx-threat-counter--severe'),
-        checkModerate = getShallowComponent().find('.nx-threat-counter--moderate'),
-        checkLow = getShallowComponent().find('.nx-threat-counter--low'),
-        checkNone = getShallowComponent().find('.nx-threat-counter--none');
-    expect(checkCritical.find('.nx-threat-counter__count')).toHaveText('66');
-    expect(checkSevere.find('.nx-threat-counter__count')).toHaveText('55');
-    expect(checkModerate.find('.nx-threat-counter__count')).toHaveText('44');
-    expect(checkLow.find('.nx-threat-counter__count')).toHaveText('33');
-    expect(checkNone.find('.nx-threat-counter__count')).toHaveText('22');
-  });
-
-  it('renders the correct label for each indicator', function() {
-    const checkCriticalText = getShallowComponent().find('.nx-threat-counter--critical'),
-        checkSevereText = getShallowComponent().find('.nx-threat-counter--severe'),
-        checkModerateText = getShallowComponent().find('.nx-threat-counter--moderate'),
-        checkLowText = getShallowComponent().find('.nx-threat-counter--low'),
-        checkNoneText = getShallowComponent().find('.nx-threat-counter--none');
-    expect(checkCriticalText.find('.nx-threat-counter__text')).toHaveText('Critical');
-    expect(checkSevereText.find('.nx-threat-counter__text')).toHaveText('Severe');
-    expect(checkModerateText.find('.nx-threat-counter__text')).toHaveText('Moderate');
-    expect(checkLowText.find('.nx-threat-counter__text')).toHaveText('Low');
-    expect(checkNoneText.find('.nx-threat-counter__text')).toHaveText('None');
+    const component = getShallowComponent({
+      criticalCount: 66,
+      severeCount: 55,
+      moderateCount: 44,
+      lowCount: 33,
+      noneCount: 22
+    });
+    const criticalCount = component.find('.nx-threat-counter--critical'),
+        severeCount = component.find('.nx-threat-counter--severe'),
+        moderateCount = component.find('.nx-threat-counter--moderate'),
+        lowCount = component.find('.nx-threat-counter--low'),
+        noneCount = component.find('.nx-threat-counter--none');
+    expect(criticalCount.find('.nx-threat-counter__count')).toHaveText('66');
+    expect(criticalCount.find('.nx-threat-counter__text')).toHaveText('Critical');
+    expect(severeCount.find('.nx-threat-counter__count')).toHaveText('55');
+    expect(severeCount.find('.nx-threat-counter__text')).toHaveText('Severe');
+    expect(moderateCount.find('.nx-threat-counter__count')).toHaveText('44');
+    expect(moderateCount.find('.nx-threat-counter__text')).toHaveText('Moderate');
+    expect(lowCount.find('.nx-threat-counter__count')).toHaveText('33');
+    expect(lowCount.find('.nx-threat-counter__text')).toHaveText('Low');
+    expect(noneCount.find('.nx-threat-counter__count')).toHaveText('22');
+    expect(noneCount.find('.nx-threat-counter__text')).toHaveText('None');
   });
 
   it('correctly assigns supplied class', function() {
-    const classComponent = getShallowComponent({ className: 'test-class' });
+    const classComponent = getShallowComponent({ criticalCount: 0, className: 'test-class' });
     expect(classComponent.find('.nx-threat-counter-container')).toHaveClassName('test-class');
   });
 
   it('correctly assigns supplied id', function() {
-    const idComponent = getShallowComponent({ id: 'test-id' });
+    const idComponent = getShallowComponent({ criticalCount: 0, id: 'test-id' });
     expect(idComponent.find('.nx-threat-counter-container')).toHaveProp('id', 'test-id');
   });
 
   it('correctly applies the column modifier', function() {
-    const idComponent = getShallowComponent({ layout: 'column' });
+    const idComponent = getShallowComponent({ criticalCount: 0, layout: 'column' });
     expect(idComponent.find('.nx-threat-counter-container'))
         .toHaveClassName('nx-threat-counter-container--column');
   });
 
   it('correctly applies the grid modifier', function() {
-    const idComponent = getShallowComponent({ layout: 'grid' });
+    const idComponent = getShallowComponent({ criticalCount: 0, layout: 'grid' });
     expect(idComponent.find('.nx-threat-counter-container'))
         .toHaveClassName('nx-threat-counter-container--grid');
   });
