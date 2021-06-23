@@ -10,12 +10,18 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxThreatCounterExample from './NxThreatCounterExample';
+import NxThreatCounterSmallExample from './NxThreatCounterSmallExample';
 import NxThreatCounterColumnExample from './NxThreatCounterColumnExample';
+import NxThreatCounterSmallColumnExample from './NxThreatCounterSmallColumnExample';
 import NxThreatCounterGridExample from './NxThreatCounterGridExample';
+import NxThreatCounterSmallGridExample from './NxThreatCounterSmallGridExample';
 
 const NxThreatCounterCode = require('./NxThreatCounterExample?raw'),
+    NxThreatCounterSmallCode = require('./NxThreatCounterSmallExample?raw'),
     NxThreatCounterColumnCode = require('./NxThreatCounterColumnExample?raw'),
-    NxThreatCounterGridCode = require('./NxThreatCounterGridExample?raw');
+    NxThreatCounterSmallColumnCode = require('./NxThreatCounterSmallColumnExample?raw'),
+    NxThreatCounterGridCode = require('./NxThreatCounterGridExample?raw'),
+    NxThreatCounterSmallGridCode = require('./NxThreatCounterSmallGridExample?raw');
 
 const NxThreatCounterPage = () =>
   <>
@@ -116,6 +122,13 @@ const NxThreatCounterPage = () =>
       <code className="nx-code">nx-threat-counter</code>s in the default (row) layout.
     </GalleryExampleTile>
 
+    <GalleryExampleTile title="NxThreatCounter Small Default Example"
+                        id="nx-threat-counter-row"
+                        liveExample={NxThreatCounterSmallExample}
+                        codeExamples={NxThreatCounterSmallCode}>
+      <code className="nx-code">nx-threat-counter</code>s in the default (row) layout with only two counts.
+    </GalleryExampleTile>
+
     <GalleryExampleTile title="NxThreatCounter Column Example"
                         id="nx-threat-counter-column"
                         liveExample={NxThreatCounterColumnExample}
@@ -123,11 +136,25 @@ const NxThreatCounterPage = () =>
       <code className="nx-code">nx-threat-counter</code>s in column layout.
     </GalleryExampleTile>
 
+    <GalleryExampleTile title="NxThreatCounter Small Column Example"
+                        id="nx-threat-counter-column"
+                        liveExample={NxThreatCounterSmallColumnExample}
+                        codeExamples={NxThreatCounterSmallColumnCode}>
+      <code className="nx-code">nx-threat-counter</code>s in column layout with only two counts.
+    </GalleryExampleTile>
+
     <GalleryExampleTile title="NxThreatCounter Grid Example"
                         id="nx-threat-counter-grid"
                         liveExample={NxThreatCounterGridExample}
                         codeExamples={NxThreatCounterGridCode}>
-      <code className="nx-code">nx-threat-counter</code>s in a "grid" layout.
+      <code className="nx-code">nx-threat-counter</code>s in a 3x2 "grid" layout.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxThreatCounter Small Grid Example"
+                        id="nx-threat-counter-grid"
+                        liveExample={NxThreatCounterSmallGridExample}
+                        codeExamples={NxThreatCounterSmallGridCode}>
+      <code className="nx-code">nx-threat-counter</code>s in a 1x2 "grid" layout.
     </GalleryExampleTile>
   </>;
 
