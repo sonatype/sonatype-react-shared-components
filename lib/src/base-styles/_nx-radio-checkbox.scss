@@ -137,26 +137,5 @@ svg.nx-radio-checkbox__control {
         stroke: var(--nx-swatch-blue-40);
       }
     }
-
-    &:disabled{
-      + .nx-radio-checkbox__control {
-        &.nx-checkbox__box {
-          background-color:var(--nx-color-interactive-background-disabled);
-          border-color: var(--nx-color-interactive-border-disabled);
-
-          .fa-check {
-            color: var(--nx-color-interactive-border-disabled);
-          }
-        }
-
-        &.nx-radio__circle {
-          stroke: var(--nx-color-interactive-border-disabled);
-          .nx-radio__inner-circle {
-            stroke: var(--nx-color-interactive-background-disabled);
-            fill: var(--nx-color-interactive-border-disabled);
-          }
-        }
-      }
-    }
   }
 }

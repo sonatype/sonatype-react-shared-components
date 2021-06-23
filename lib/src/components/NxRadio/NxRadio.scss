@@ -18,3 +18,14 @@
 .nx-radio__input:checked + .nx-radio__circle .nx-radio__outer-circle {
   fill: none;
 }
+
+.nx-radio-checkbox__input:checked:disabled {
+  + .nx-radio-checkbox__control.nx-radio__circle {
+    stroke: var(--nx-color-interactive-border-disabled);
+  }
+  
+  + .nx-radio-checkbox__control.nx-radio__circle .nx-radio__inner-circle {
+    stroke: var(--nx-color-interactive-background-disabled);
+    fill: var(--nx-color-text-disabled);
+  }
+}
