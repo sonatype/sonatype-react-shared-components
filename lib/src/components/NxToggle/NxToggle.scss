@@ -19,11 +19,11 @@
     &, &:hover {
       cursor: default;
 
-      .nx-toggle__control {
+      .nx-toggle__control, .nx-toggle__input:checked + .nx-toggle__control {
         background-color: var(--nx-color-interactive-background-disabled);
         border-color: var(--nx-color-interactive-border-disabled);
       }
-      .nx-toggle__indicator {
+      .nx-toggle__indicator, .nx-toggle__input:checked + .nx-toggle__control .nx-toggle__indicator {
         background-color: var(--nx-color-interactive-border-disabled);
       }
     }
@@ -64,17 +64,6 @@
       .nx-toggle__indicator {
         background-color: var(--nx-swatch-white);
         margin-left: 20px;
-      }
-    }
-
-    &:disabled {
-      + .nx-toggle__control {
-        background-color: var(--nx-color-interactive-background-disabled);
-        border-color: var(--nx-color-interactive-border-disabled);
-        
-        .nx-toggle__indicator {
-          background-color: var(--nx-color-interactive-border-disabled);
-        }
       }
     }
   }
