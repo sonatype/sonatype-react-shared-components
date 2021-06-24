@@ -16,7 +16,7 @@ describe('NxThreatCounter', function() {
       columnExampleSelector = '#nx-threat-counter-column .gallery-example-live',
       smallColumnExampleSelector = '#nx-threat-counter-small-column .gallery-example-live',
       gridExampleSelector = '#nx-threat-counter-grid .gallery-example-live',
-      smallGridExampleSelector = '#nx-threat-counter-grid .gallery-example-live';
+      smallGridExampleSelector = '#nx-threat-counter-small-grid .gallery-example-live';
 
   it('row layout looks correct', simpleTest(rowExampleSelector));
   it('small row layout looks correct', simpleTest(smallRowExampleSelector));
