@@ -121,7 +121,7 @@ const NxRadioPage = () =>
                         codeExamples={exampleCode}
                         liveExample={NxRadioExample}>
       This example shows a series of radios in a typical vertical layout with
-      different label content. 
+      different label content.
       These radios together operate as a single form control: only one value within the group
       can be selected at a time.
     </GalleryExampleTile>
