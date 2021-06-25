@@ -215,7 +215,7 @@ const NxDropdownPage = () =>
               <NxTableCell>
                 Sometimes it is desirable to add a icon-only button to a menu row which performs an action distinct
                 from clicking on the row itself - for instance, a trashcan button which deletes the row. For this
-                scenario, the icon button, a sibling of the main row button, must include this class and{' '}
+                scenario, the icon button, a preceding sibling of the main row button, must include this class and{' '}
                 <code className="nx-code">nx-dropdown-button-content</code> must be used in conjunction.
               </NxTableCell>
             </NxTableRow>
