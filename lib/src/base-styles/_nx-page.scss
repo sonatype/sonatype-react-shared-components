@@ -71,10 +71,14 @@
       margin-left: var(--nx-spacing-2x);
     }
   }
-  
+
   .nx-threat-counter-container {
     margin-top: 0;
-  
+    display: contents;
+    .nx-threat-counter {
+      margin: 0 var(--nx-spacing-4x) var(--nx-spacing-2x) 0;
+    }
+
     + .nx-tag {
       margin-left: var(--nx-spacing-6x);
     }
