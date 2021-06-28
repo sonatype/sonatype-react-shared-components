@@ -11,9 +11,11 @@ import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxRadioExample from './NxRadioExample';
 import NxRadioNowrapExample from './NxRadioNowrapExample';
+import NxRadioDisabledExample from './NxRadioDisabledExample';
 
 const exampleCode = require('./NxRadioExample?raw');
 const nowrapExampleCode = require('./NxRadioNowrapExample?raw');
+const disabledExampleCode = require('./NxRadioDisabledExample?raw');
 
 const NxRadioPage = () =>
   <>
@@ -119,9 +121,17 @@ const NxRadioPage = () =>
                         codeExamples={exampleCode}
                         liveExample={NxRadioExample}>
       This example shows a series of radios in a typical vertical layout with
-      different label content. Note that one of the radios is disabled.
+      different label content.
       These radios together operate as a single form control: only one value within the group
       can be selected at a time.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Radio Disabled Example"
+                        id="nx-radio-disabled-example"
+                        codeExamples={disabledExampleCode}
+                        liveExample={NxRadioDisabledExample}>
+      This example shows radios that are disabled.
+      Disabled radios can either be checked or unchecked.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Radio label does not wrap"

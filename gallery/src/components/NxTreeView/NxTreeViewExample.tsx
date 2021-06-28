@@ -15,7 +15,7 @@ function NxTreeViewExample() {
     <NxTreeView id="example-nx-tree-view"
                 onToggleCollapse={onToggleCollapse}
                 isOpen={toggleCheck}
-                triggerContent="Organization">
+                triggerContent="Organization - an extra long example that should cause truncation">
       <NxTreeViewChild>Test1</NxTreeViewChild>
       <NxTreeViewChild>Test2</NxTreeViewChild>
       <NxTreeViewChild>Test3 - an extra long example that should cause truncation</NxTreeViewChild>

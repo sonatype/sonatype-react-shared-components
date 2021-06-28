@@ -36,6 +36,12 @@ function NxToggleExample() {
                 isChecked={isDisabled}>
         This toggle is disabled
       </NxToggle>
+      <NxToggle inputId="disabled-checked"
+                disabled={true}
+                onChange={toggleDisabled}
+                isChecked={!isDisabled}>
+        This toggle is disabled and checked
+      </NxToggle>
       <NxP>
         {isWarpOn && 'Warp drive started'} {isKrakenOut && ' The Kraken is out!'} {isShapes && ' Shapes are allowed'}
       </NxP>
