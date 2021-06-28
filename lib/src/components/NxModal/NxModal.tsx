@@ -27,6 +27,18 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, .
       // value in order for it to be tracked.
       [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
 
+  /**
+   * In browsers without native support for HTMLDialogElement cancel events, listen for keydown on the dialog
+   * and emulate it.
+   */
+  function documentKeydownListener(evt: KeyboardEvent) {
+    if (evt.key === 'Escape' || evt.key === 'Esc') {
+      if (onClose) {
+        onClose();
+      }
+    }
+  }
+
   useEffect(function() {
     /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
     const el = dialogRef.current!;
@@ -52,10 +64,16 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, .
   useEffect(function() {
     const dialog = dialogRef.current;
 
-    if (hasNativeModalSupport && dialog) {
-      dialog.addEventListener('cancel', onClose);
+    if (dialog) {
+      if (hasNativeModalSupport) {
+        dialog.addEventListener('cancel', onClose);
 
-      return () => { dialog.removeEventListener('cancel', onClose); };
+        return () => { dialog.removeEventListener('cancel', onClose); };
+      }
+      else {
+        dialog.addEventListener('keydown', documentKeydownListener);
+        return () => { dialog.removeEventListener('keydown', documentKeydownListener); };
+      }
     }
     else {
       return undefined;
