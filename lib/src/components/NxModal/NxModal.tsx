@@ -28,7 +28,7 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, .
       [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
 
   useEffect(function() {
-    /* eslint-ignore @typescript-eslint/no-non-null-assertion */
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
     const el = dialogRef.current!;
 
     setDialogRefState(el);
