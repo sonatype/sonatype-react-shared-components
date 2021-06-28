@@ -41,6 +41,10 @@ export default function useDropdownEvents(
 
       if (!event.defaultPrevented) {
         externalOnToggleCollapse();
+
+        // try to prevent the ESC from triggering multiple things, for instance closing a surrounding modal
+        // in addition to the dropdown
+        event.preventDefault();
       }
     }
 
