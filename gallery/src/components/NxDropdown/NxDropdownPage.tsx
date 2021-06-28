@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxTextLink }
+import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxTextLink, NxCode, NxWarningAlert }
   from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
@@ -53,6 +53,21 @@ const NxDropdownPage = () =>
               <td className="nx-cell">string | VDOM</td>
               <td className="nx-cell">Yes</td>
               <td className="nx-cell">Content to render in the dropdown's button</td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell">children</td>
+              <td className="nx-cell">ReactElement | ReactElement[]</td>
+              <td className="nx-cell">No</td>
+              <td className="nx-cell">
+                The items to render within the dropdown list, including all <NxCode>.nx-dropdown-button</NxCode>s and
+                {' '}<NxCode>.nx-dropdown-link</NxCode>s.
+                <NxWarningAlert>
+                  Note: All <NxCode>.nx-dropdown-button</NxCode>s and {' '}<NxCode>.nx-dropdown-link</NxCode>s must
+                  be present as direct, immediate children of the <NxCode>NxDropdown</NxCode>, in order for the tooltip
+                  wrapping logic to work. These children may not be wrapped in other intermediate react components,
+                  fragments, or even nested arrays.
+                </NxWarningAlert>
+              </td>
             </tr>
             <tr className="nx-table-row">
               <td className="nx-cell">isOpen</td>
@@ -198,10 +213,9 @@ const NxDropdownPage = () =>
                 An additional icon-only button which can appear on the right side of a menu row
               </NxTableCell>
               <NxTableCell>
-                Sometimes it is desireable to add a icon-only button to a menu row which performs an action distinct
+                Sometimes it is desirable to add a icon-only button to a menu row which performs an action distinct
                 from clicking on the row itself - for instance, a trashcan button which deletes the row. For this
-                scenario, the icon button, a sibling of the main row button, must include this class and
-                the <code className="nx-code">nx-dropdown-button-container</code> and{' '}
+                scenario, the icon button, a preceding sibling of the main row button, must include this class and{' '}
                 <code className="nx-code">nx-dropdown-button-content</code> must be used in conjunction.
               </NxTableCell>
             </NxTableRow>
@@ -279,7 +293,7 @@ const NxDropdownPage = () =>
       and <code className="nx-code">onCloseKeyDown</code> props. These props can be used to disable the
       close-on-click and close-on-ESC behaviors that the dropdown has by default, by
       calling <code className="nx-code">preventDefault()</code> on the event. This example demonstrates both props
-      simulataneously, but either can be used independently if desired.
+      simultaneously, but either can be used independently if desired.
     </GalleryExampleTile>
   </>;
 
