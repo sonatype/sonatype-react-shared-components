@@ -34,6 +34,12 @@ function NxCheckboxExample() {
                   isChecked={isDisabled}>
         disabled
       </NxCheckbox>
+      <NxCheckbox checkboxId="disabled-checked"
+                  disabled={true}
+                  onChange={toggleDisabled}
+                  isChecked={!isDisabled}>
+        disabled + checked
+      </NxCheckbox>
     </NxFieldset>
   );
 }

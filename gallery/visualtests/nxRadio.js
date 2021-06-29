@@ -12,9 +12,10 @@ describe('NxRadio', function() {
     await browser.url('#/pages/NxRadio');
   });
 
-  const selector = '#nx-radio-example .gallery-example-live label:nth-of-type(4)',
+  const selector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
       otherRadioSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(1)',
-      disabledSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(2)';
+      disabledSelector = '#nx-radio-disabled-example .gallery-example-live label:nth-of-type(1)',
+      disabledCheckedSelector = '#nx-radio-disabled-example .gallery-example-live label:nth-of-type(2)';
 
   describe('Default NxRadio', function() {
 
@@ -84,5 +85,10 @@ describe('NxRadio', function() {
   describe('Attribute-Disabled NxRadio', function() {
     it('looks disabled by default', simpleTest(disabledSelector));
     it('looks disabled when hovered', hoverTest(disabledSelector));
+  });
+
+  describe('Attribute-Disabled-Checked NxRadio', function() {
+    it('looks disabled by default', simpleTest(disabledCheckedSelector));
+    it('looks disabled when hovered', hoverTest(disabledCheckedSelector));
   });
 });
