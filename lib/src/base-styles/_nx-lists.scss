@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 .nx-list {
-  border-top: var(--nx-border-default);
   margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
   padding: 0;
 
@@ -20,14 +19,14 @@
 }
 
 .nx-list__item {
-  &, > .nx-list__link {
+  &, > .nx-list__link, & > .nx-list__btn {
     @include container-horizontal;
 
     --nx-padding-without-border: calc(var(--nx-spacing-4x) - 1px);
 
     align-items: first baseline;
     border: 1px solid transparent;
-    border-top-color: var(--nx-color-subsection-border);
+    border-top-color: var(--nx-swatch-indigo-95);
     box-sizing: border-box;
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -42,7 +41,9 @@
   }
 
   &:first-child {
-    border-top: none;
+    &, > .nx-list__link, & > .nx-list__btn {
+      border-top: var(--nx-border-default);
+    }
   }
 
   &.disabled {
@@ -57,13 +58,8 @@
   }
 }
 
-.nx-list__item--link {
-  display: contents;
-}
-
 .nx-list__link {
   text-decoration: none;
-  color: inherit;
 }
 
 .nx-list__text {
@@ -171,59 +167,79 @@
 /*
  * Action or Clickable Lists
  */
-.nx-list--clickable {
-  .nx-list__item {
 
-    &, > .nx-list__link {
-      &.selected {
-        &, &:hover {
-          background-color: var(--nx-color-interactive-background-selected);
-        }
+.nx-list__item--link, .nx-list__item--clickable {
+  display: contents;
+}
+
+.nx-list__item--clickable, // preferred
+.nx-list__item--link, // deprecated
+.nx-list--clickable .nx-list__item // deprecated
+{
+  &, > .nx-list__link, > .nx-list__btn {
+    color: inherit;
+
+    &.selected {
+      &, &:hover {
+        background-color: var(--nx-color-interactive-background-selected);
       }
+    }
+
+    &:hover {
+      background-color: var(--nx-color-interactive-background-hover);
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: var(--nx-color-interactive-background-active);
+    }
+
+    &:focus {
+      box-shadow: var(--nx-box-shadow-focus);
+      border-color: var(--nx-color-interactive-border-focus);
+      outline: none;
+    }
+
+    &.nx-list__item--empty {
+      @include regular();
+
+      color: var(--nx-color-text);
+    }
+
+    &.disabled, &[disabled] {
+      color: var(--nx-color-text-disabled);
 
       &:hover {
-        background-color: var(--nx-color-interactive-background-hover);
-        cursor: pointer;
-      }
-
-      &:active {
-        background-color: var(--nx-color-interactive-background-active);
-      }
-
-      &:focus {
-        box-shadow: var(--nx-box-shadow-focus);
-        border-color: var(--nx-color-interactive-border-focus);
-        outline: none;
-      }
-
-      &.nx-list__item--empty {
-        @include regular();
-
-        color: var(--nx-color-text);
-      }
-
-      &.disabled {
-        color: var(--nx-color-text-disabled);
-
-        &:hover {
-          background-color: transparent;
-          cursor: default;
-        }
-
-        > .nx-chevron {
-          display: none;
-        }
+        background-color: transparent;
+        cursor: default;
       }
 
       > .nx-chevron {
-        align-self: center;
-        color: var(--nx-color-text-dark);
-        grid-area: actions;
-
-        // custom sizing for the icon, brings it up to 13px
-        font-size: 21px;
+        display: none;
       }
     }
+
+    > .nx-chevron {
+      align-self: center;
+      color: var(--nx-color-text-dark);
+      grid-area: actions;
+
+      // custom sizing for the icon, brings it up to 13px
+      font-size: 21px;
+    }
+  }
+}
+
+.nx-list__btn {
+  @include container-horizontal;
+
+  text-align: left;
+  width: 100%;
+
+  &, &:hover, &:active, &:focus {
+    background: none;
+    font: inherit;
+    outline: none;
   }
 }
 
