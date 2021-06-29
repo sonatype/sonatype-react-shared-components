@@ -70,6 +70,14 @@
     + .nx-tag {
       margin-left: var(--nx-spacing-2x);
     }
+
+    + .nx-threat-counter-container {
+      .nx-threat-counter {
+        &:first-child {
+          margin-left: var(--nx-spacing-2x);
+        }
+      }
+    }
   }
 
   .nx-threat-counter-container {
