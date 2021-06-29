@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
+import React, {FunctionComponent, KeyboardEvent, useEffect, useRef, useState} from 'react';
 import classnames from 'classnames';
 
 import {Props, propTypes} from './types';
@@ -27,13 +27,18 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
       // value in order for it to be tracked.
       [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
 
-  function dialogKeydownListener(evt: KeyboardEvent) {
+  function dialogKeydownListener(evt: KeyboardEvent<HTMLDialogElement>) {
     if (evt.key === 'Escape' || evt.key === 'Esc') {
       // prevent visibility of the keydown outside of the modal, so that global ESC listeners on the
       // document don't pick it up
       evt.stopPropagation();
 
-      if (!hasNativeModalSupport && onCancel) {
+      // prevent visibility to manually-registered native event listeners on the document too.
+      // NOTE: this only works on listeners added after this one, which is believed to include any
+      // registered in useEffect calls on components rendered simultaneously with the modal
+      evt.nativeEvent.stopImmediatePropagation();
+
+      if (!hasNativeModalSupport && onCancel && !evt.defaultPrevented) {
         // emulate cancel-on-esc behavior in browsers which don't do it natively
         onCancel(new Event('cancel'));
       }
@@ -74,14 +79,10 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
         dialog.addEventListener('cancel', onCancel!);
       }
 
-      dialog.addEventListener('keydown', dialogKeydownListener);
-
       return () => {
         if (hasNativeModalSupport) {
           dialog.removeEventListener('cancel', onCancel!);
         }
-
-        dialog.removeEventListener('keydown', dialogKeydownListener);
       };
     }
     else {
@@ -99,7 +100,12 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
         * The tabindex is for the sake of browsers which don't support dialog. In those browsers we try to
         * focus the dialog element itself when it opens which can't be done if it doesn't have a tab index
         */}
-      <dialog ref={dialogRef} role={role || 'dialog'} aria-modal="true" className="nx-modal-backdrop" tabIndex={-1}>
+      <dialog ref={dialogRef}
+              role={role || 'dialog'}
+              aria-modal="true"
+              className="nx-modal-backdrop"
+              tabIndex={-1}
+              onKeyDown={dialogKeydownListener}>
         <div className={modalClasses} {...attrs} />
       </dialog>
     </NxModalContext.Provider>
