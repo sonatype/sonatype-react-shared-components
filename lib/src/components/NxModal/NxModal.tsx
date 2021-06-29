@@ -58,6 +58,10 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
     if (hasNativeModalSupport) {
       el.showModal();
     }
+    else {
+      // without native support we don't trap focus in the modal, but we can at least start it off there
+      el.focus();
+    }
   }, []);
 
   // listen to the native HTMLDialogElement cancel event which supporting browsers fire when the modal is closed
@@ -91,8 +95,11 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
     <NxModalContext.Provider value={dialogRefState}>
       {/* Note: role="dialog" should be redundant but I think some screenreaders (ChromeVox) don't know
         * what a <dialog> is.  It makes a difference there.
+        *
+        * The tabindex is for the sake of browsers which don't support dialog. In those browsers we try to
+        * focus the dialog element itself when it opens which can't be done if it doesn't have a tab index
         */}
-      <dialog ref={dialogRef} role={role || 'dialog'} aria-modal="true" className="nx-modal-backdrop">
+      <dialog ref={dialogRef} role={role || 'dialog'} aria-modal="true" className="nx-modal-backdrop" tabIndex={-1}>
         <div className={modalClasses} {...attrs} />
       </dialog>
     </NxModalContext.Provider>
