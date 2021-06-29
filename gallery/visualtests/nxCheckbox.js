@@ -19,7 +19,7 @@ describe('NxCheckbox', function() {
     it('has a light grey border and white background by default', simpleTest(selector));
     it('has a black border when hovered', hoverTest(selector));
 
-    it('has a blue background and white checkmark when clicked', async function() {
+    it('has a blue background and white checkmark and a light blue outer border when clicked', async function() {
       const targetElement = await browser.$(selector);
 
       await targetElement.scrollIntoView({ block: 'center' });
@@ -34,7 +34,8 @@ describe('NxCheckbox', function() {
       }
     });
 
-    it('has a blue background, white checkmark, and glow when clicked and focused', async function() {
+    it(`has a blue background, white checkmark, a light blue outer border,
+      and glow when clicked and focused`, async function() {
       const focusSelector = `${selector} input`,
           [targetElement, focusElement] = await Promise.all([browser.$(selector), browser.$(focusSelector)]);
 
@@ -54,7 +55,8 @@ describe('NxCheckbox', function() {
       }
     });
 
-    it('has a blue background and white checkmark when clicked, focused, and hovered', async function() {
+    it(`has a blue background and white checkmark with a light blue outer border
+      when clicked, focused, and hovered`, async function() {
       const focusSelector = `${selector} input`,
           [targetElement, focusElement] = await Promise.all([browser.$(selector), browser.$(focusSelector)]);
 
@@ -74,8 +76,8 @@ describe('NxCheckbox', function() {
       }
     });
 
-    it('has a light blue border and glow when focused', focusTest(selector));
-    it('has a dark border when focused and hovered', focusAndHoverTest(selector));
+    it('has a light blue outer border and glow when focused', focusTest(selector));
+    it('has a light blue outer border and a dark border when focused and hovered', focusAndHoverTest(selector));
   });
 
   describe('Attribute-Disabled NxCheckbox', function() {
