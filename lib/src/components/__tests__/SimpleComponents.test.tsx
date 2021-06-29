@@ -298,6 +298,18 @@ describe('NxList.Description', function() {
   });
 });
 
+describe('NxList.Button', function() {
+  it('makes a <button> tag with an nx-list__btn class', function() {
+    expect(shallow(<NxList.Button/>)).toMatchSelector('button.nx-list__btn');
+  });
+});
+
+describe('NxList.Link', function() {
+  it('makes a <a> tag with an nx-list__Link class', function() {
+    expect(shallow(<NxList.Link/>)).toMatchSelector('a.nx-list__link');
+  });
+});
+
 describe('NxPageTitle', function() {
   it('makes a <div> tag with an nx-page-title class', function() {
     expect(shallow(<NxPageTitle/>)).toMatchSelector('div.nx-page-title');
