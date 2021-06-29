@@ -10,8 +10,6 @@
 
 $nx-global-sidebar-width-open: 250px;
 $nx-global-sidebar-width-closed: 72px;
-
-$nx-global-sidebar-width-closed: 70px;
 $nx-global-sidebar-logo-height: 34px;
 $nx-global-sidebar-left-right-spacing: var(--nx-spacing-6x);
 
@@ -95,7 +93,9 @@ $nx-global-sidebar-separator-color: var(--nx-swatch-indigo-40);
   border: 1px solid transparent;
   display: block;
   padding: var(--nx-spacing-base)
-           $nx-global-sidebar-left-right-spacing;
+           $nx-global-sidebar-left-right-spacing
+           var(--nx-spacing-base)
+           calc(#{$nx-global-sidebar-left-right-spacing} + 1px);
 
   .nx-icon {
     margin: 0;
