@@ -31,3 +31,9 @@
     }
   }
 }
+
+.nx-radio {
+  &::after{
+    border-radius: 12px;
+  }
+}
