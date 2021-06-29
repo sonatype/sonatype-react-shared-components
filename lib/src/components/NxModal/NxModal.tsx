@@ -15,7 +15,7 @@ export const NxModalContext = React.createContext<HTMLDialogElement | null>(null
 
 const hasNativeModalSupport = !!(window.HTMLDialogElement && window.HTMLDialogElement.prototype.showModal);
 
-const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, ...attrs}) => {
+const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onClose, variant, role, ...attrs }) => {
   const modalClasses = classnames('nx-modal', className, {
         'nx-modal--wide': variant === 'wide',
         'nx-modal--narrow': variant === 'narrow'
@@ -27,14 +27,11 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, .
       // value in order for it to be tracked.
       [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
 
-  /**
-   * In browsers without native support for HTMLDialogElement cancel events, listen for keydown on the dialog
-   * and emulate it.
-   */
-  function documentKeydownListener(evt: KeyboardEvent) {
+  function dialogKeydownListener(evt: KeyboardEvent) {
     if (evt.key === 'Escape' || evt.key === 'Esc') {
-      if (onClose) {
-        onClose();
+      if (!hasNativeModalSupport && onCancel) {
+        // emulate cancel-on-esc behavior in browsers which don't do it natively
+        onCancel(new Event('cancel'));
       }
     }
   }
@@ -66,19 +63,23 @@ const NxModal: FunctionComponent<Props> = ({className, onClose, variant, role, .
 
     if (dialog) {
       if (hasNativeModalSupport) {
-        dialog.addEventListener('cancel', onClose);
+        dialog.addEventListener('cancel', onCancel!);
+      }
 
-        return () => { dialog.removeEventListener('cancel', onClose); };
-      }
-      else {
-        dialog.addEventListener('keydown', documentKeydownListener);
-        return () => { dialog.removeEventListener('keydown', documentKeydownListener); };
-      }
+      dialog.addEventListener('keydown', dialogKeydownListener);
+
+      return () => {
+        if (hasNativeModalSupport) {
+          dialog.removeEventListener('cancel', onCancel!);
+        }
+
+        dialog.removeEventListener('keydown', dialogKeydownListener);
+      };
     }
     else {
       return undefined;
     }
-  }, [onClose]);
+  }, [onCancel]);
 
   return (
     // Provide the dialog element to descendants so that tooltips can attach to it instead of the body,
