@@ -29,6 +29,10 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
 
   function dialogKeydownListener(evt: KeyboardEvent) {
     if (evt.key === 'Escape' || evt.key === 'Esc') {
+      // prevent visibility of the keydown outside of the modal, so that global ESC listeners on the
+      // document don't pick it up
+      evt.stopPropagation();
+
       if (!hasNativeModalSupport && onCancel) {
         // emulate cancel-on-esc behavior in browsers which don't do it natively
         onCancel(new Event('cancel'));
