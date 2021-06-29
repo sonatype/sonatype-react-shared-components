@@ -24,13 +24,13 @@
 
   &::after {
     border: 1px solid var(--nx-color-interactive-border-focus);
-    filter: drop-shadow(var(--nx-drop-shadow-focus));
     content: '';
-    width: 22px;
+    display: none;
+    filter: drop-shadow(var(--nx-drop-shadow-focus));
     height: 22px;
     position:absolute;
     left: -4px;
-    display: none;
+    width: 22px;
   }
 
   &:hover {
