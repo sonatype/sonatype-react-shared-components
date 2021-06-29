@@ -57,7 +57,8 @@ function NxPageTitleEverythingExample() {
         <NxThreatCounter criticalCount={45}
                          severeCount={21114}
                          moderateCount={12}
-                         lowCount={45}/>
+                         lowCount={45}
+                         noneCount={21}/>
         <NxTag>Default</NxTag>
         <NxTag color="purple">Purple</NxTag>
         <NxTag color="light-blue">Light Blue</NxTag>

@@ -124,6 +124,34 @@ const NxListPage = () =>
               would only be a single list item which contains the error alert.
             </td>
           </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list__item--clickable</code></td>
+            <td className="nx-cell"/>
+            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list__item</code></td>
+            <td className="nx-cell">
+              Applied to <code className="nx-code">.nx-list__item</code> this allows for the correct styling of
+              clickable lists. Ensure that the <code className="nx-code">.nx-list</code> modifier
+              {' '}<code className="nx-code">.nx-list--clickable</code> is also used.
+              {' '}<code className="nx-code">.nx-list__item--clickable</code> should contain a single button or link as
+              children, see below for classes and convenience components.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list__btn</code></td>
+            <td className="nx-cell"/>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">
+              Applied to an <code className="nx-code">&lt;button&gt;</code> used in a clickable list.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-list__link</code></td>
+            <td className="nx-cell"/>
+            <td className="nx-cell">Element</td>
+            <td className="nx-cell">
+              Applied to an <code className="nx-code">&lt;a&gt;</code> used in a clickable link list.
+            </td>
+          </tr>
         </tbody>
       </table>
       <section className="nx-tile-subsection">

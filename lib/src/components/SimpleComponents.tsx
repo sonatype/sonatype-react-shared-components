@@ -60,7 +60,9 @@ export const NxList = Object.assign(withClass('ul', 'nx-list'), {
   Subtext: withClass('span', 'nx-list__subtext'),
   Actions: withClass('div', 'nx-list__actions'),
   DescriptionTerm: withClass('dt', 'nx-list__term'),
-  Description: withClass('dd', 'nx-list__description')
+  Description: withClass('dd', 'nx-list__description'),
+  Link: withClass('a', 'nx-list__link'),
+  Button: withClass('button', 'nx-list__btn')
 });
 
 export const NxPageTitle = Object.assign(withClass('div', 'nx-page-title'), {
