@@ -47,7 +47,12 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
 
   useEffect(function() {
     /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-    const el = dialogRef.current!;
+    const el = dialogRef.current!,
+
+        // HTML <dialog> elements are supposed to remember what element was focused before they were opened,
+        // and restore focus to that element when they are closed. No browsers appear to implement this currently,
+        // so we do it ourselves
+        previouslyFocusedEl = document.activeElement;
 
     setDialogRefState(el);
 
@@ -67,6 +72,12 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
       // without native support we don't trap focus in the modal, but we can at least start it off there
       el.focus();
     }
+
+    return () => {
+      if (previouslyFocusedEl && previouslyFocusedEl instanceof HTMLElement) {
+        previouslyFocusedEl.focus();
+      }
+    };
   }, []);
 
   // listen to the native HTMLDialogElement cancel event which supporting browsers fire when the modal is closed
@@ -74,16 +85,11 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
   useEffect(function() {
     const dialog = dialogRef.current;
 
-    if (dialog) {
-      if (hasNativeModalSupport) {
-        dialog.addEventListener('cancel', onCancel!);
-      }
-
-      return () => {
-        if (hasNativeModalSupport) {
-          dialog.removeEventListener('cancel', onCancel!);
-        }
-      };
+    if (dialog && hasNativeModalSupport) {
+      /* eslint-disable @typescript-eslint/no-non-null-assertion */
+      dialog.addEventListener('cancel', onCancel!);
+      return () => { dialog.removeEventListener('cancel', onCancel!); };
+      /* eslint-enable @typescript-eslint/no-non-null-assertion */
     }
     else {
       return undefined;
