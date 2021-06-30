@@ -24,6 +24,9 @@ describe('NxCheckbox', function() {
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
+      await browser.execute(function(el) {
+        el.blur();
+      }, targetElement);
 
       try {
         await browser.eyesRegionSnapshot(null, Target.region(targetElement));
