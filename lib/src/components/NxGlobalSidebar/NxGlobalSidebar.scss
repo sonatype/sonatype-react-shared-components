@@ -92,7 +92,12 @@ $nx-global-sidebar-separator-color: var(--nx-swatch-indigo-40);
 
   border: 1px solid transparent;
   display: block;
-  padding: var(--nx-spacing-base) $nx-global-sidebar-left-right-spacing;
+  padding: var(--nx-spacing-base)
+           $nx-global-sidebar-left-right-spacing
+           var(--nx-spacing-base)
+           // We need to add an extra pixel to the left to properly centre
+           // the icons when the sidebar is collapsed
+           calc(#{$nx-global-sidebar-left-right-spacing} + 1px);
 
   .nx-icon {
     margin: 0;
@@ -147,13 +152,18 @@ $nx-global-sidebar-separator-color: var(--nx-swatch-indigo-40);
   }
 
   .nx-global-sidebar__navigation-link {
-    text-align: center;
     text-overflow: revert;
   }
 
   .nx-global-sidebar__navigation-text {
     display: inline-block;
     visibility: hidden;
+  }
+
+  .nx-global-sidebar__support {
+    .nx-icon {
+      margin: 0;
+    }
   }
 }
 
