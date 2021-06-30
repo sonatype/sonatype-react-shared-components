@@ -23,14 +23,7 @@
   position: relative;
 
   &::after {
-    border: 1px solid var(--nx-color-interactive-border-focus);
-    box-shadow: var(--nx-box-shadow-focus);
-    content: '';
     display: none;
-    height: 22px;
-    position:absolute;
-    left: -4px;
-    width: 22px;
   }
 
   &:hover {
@@ -44,7 +37,11 @@
 
   &:focus-within {
     &::after {
+      border: 1px solid var(--nx-color-interactive-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
+      content: '';
       display: block;
+      position: absolute;
     }
 
     .nx-radio-checkbox__control {

@@ -32,8 +32,11 @@
   }
 }
 
-.nx-radio {
+.nx-radio:focus-within {
   &::after{
     border-radius: 12px;
+    height: 22px;
+    left: -4px;
+    width: 22px;
   }
 }
