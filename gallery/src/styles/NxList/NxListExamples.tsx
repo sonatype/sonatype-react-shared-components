@@ -12,6 +12,7 @@ import NxListClickableLinksExample from './NxListClickableLinksExample';
 import NxListWithActionsExample from './NxListWithActionsExample';
 import NxListErrorExample from './NxListErrorStateExample';
 import NxListLoadingExample from './NxListLoadingExample';
+import NxListDeprecatedClickableExample from './NxListDeprecatedClickableExample';
 
 const NxListSimpleCode = require('./NxListDefaultExample.html'),
     NxListClickableCode = require('./NxListClickableExample?raw'),
@@ -22,7 +23,8 @@ const NxListSimpleCode = require('./NxListDefaultExample.html'),
     NxListEmptyCode = require('./NxListEmptyExample.html'),
     NxListErrorStateCode = require('./NxListErrorStateExample.tsx?raw'),
     NxListLoadingCode = require('./NxListLoadingExample.tsx?raw'),
-    NxListDescriptionCode = require('./NxListDescriptionExample.html');
+    NxListDescriptionCode = require('./NxListDescriptionExample.html'),
+    NxListDeprecatedClickableCode = require('./NxListDeprecatedClickableExample?raw');
 
 const NxListsExamples = () =>
   <>
@@ -100,6 +102,15 @@ const NxListsExamples = () =>
                         codeExamples={NxListDescriptionCode}>
       Basic <code className="nx-code">nx-list--description</code> with a heading. Wrapping is demonstrated in both
       the terms and the descriptions.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Deprecated NX Clickable List Example"
+                        id="nx-list-deprecated-clickable-example"
+                        liveExample={NxListDeprecatedClickableExample}
+                        codeExamples={NxListDeprecatedClickableCode}>
+      This method of creating clickable lists is deprecated. It is strongly recommended that one of the above clickable
+      lists using <code className="nx-code">&lt;button&gt;</code> or <code className="nx-code">&lt;a&gt;</code> be
+      used for accessibility reasons.
     </GalleryExampleTile>
   </>;
 

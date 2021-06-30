@@ -12,10 +12,16 @@ describe('NxThreatCounter', function() {
   });
 
   const rowExampleSelector = '#nx-threat-counter-row .gallery-example-live',
+      smallRowExampleSelector = '#nx-threat-counter-small-row .gallery-example-live',
       columnExampleSelector = '#nx-threat-counter-column .gallery-example-live',
-      gridExampleSelector = '#nx-threat-counter-grid .gallery-example-live';
+      smallColumnExampleSelector = '#nx-threat-counter-small-column .gallery-example-live',
+      gridExampleSelector = '#nx-threat-counter-grid .gallery-example-live',
+      smallGridExampleSelector = '#nx-threat-counter-small-grid .gallery-example-live';
 
   it('row layout looks correct', simpleTest(rowExampleSelector));
+  it('small row layout looks correct', simpleTest(smallRowExampleSelector));
   it('column layout looks correct', simpleTest(columnExampleSelector));
+  it('small column layout looks correct', simpleTest(smallColumnExampleSelector));
   it('grid layout looks correct', simpleTest(gridExampleSelector));
+  it('small grid layout looks correct', simpleTest(smallGridExampleSelector));
 });
