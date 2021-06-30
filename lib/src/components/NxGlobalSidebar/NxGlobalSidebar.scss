@@ -95,6 +95,8 @@ $nx-global-sidebar-separator-color: var(--nx-swatch-indigo-40);
   padding: var(--nx-spacing-base)
            $nx-global-sidebar-left-right-spacing
            var(--nx-spacing-base)
+           // We need to add an extra pixel to the left to properly centre
+           // the icons when the sidebar is collapsed
            calc(#{$nx-global-sidebar-left-right-spacing} + 1px);
 
   .nx-icon {
