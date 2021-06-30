@@ -19,7 +19,7 @@ describe('NxCheckbox', function() {
     it('has a light grey border and white background by default', simpleTest(selector));
     it('has a black border when hovered', hoverTest(selector));
 
-    it('has a blue background and white checkmark and a light blue outer border when clicked', async function() {
+    it('has a blue background and white checkmark when clicked', async function() {
       const targetElement = await browser.$(selector);
 
       await targetElement.scrollIntoView({ block: 'center' });

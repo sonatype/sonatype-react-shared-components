@@ -21,7 +21,7 @@ describe('NxRadio', function() {
 
     it('has a light grey border and white background by default', simpleTest(selector));
     it('has a black border when hovered', hoverTest(selector));
-    it('has a thick blue border and white background with a light blue outer border when clicked', async function() {
+    it('has a thick blue border and white background when clicked', async function() {
       const [targetElement, otherElement] = await Promise.all([browser.$(selector), browser.$(otherRadioSelector)]);
 
       await targetElement.scrollIntoView({ block: 'center' });
