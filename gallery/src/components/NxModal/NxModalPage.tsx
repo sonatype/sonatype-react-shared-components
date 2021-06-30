@@ -15,6 +15,7 @@ import NxModalStackedExample from './NxModalStackedExample';
 import NxModalFormErrorExample from './NxModalFormErrorExample';
 import NxModalExtraWideExample from './NxModalExtraWideExample';
 import NxModalNarrowExample from './NxModalNarrowExample';
+import NxModalEscExample from './NxModalEscExample';
 
 const NxModalSimpleSourceCode = require('./NxModalSimpleExample?raw');
 const NxModalAlertSourceCode = require('./NxModalAlertExample?raw');
@@ -23,6 +24,7 @@ const NxModalStackedSourceCode = require('./NxModalStackedExample?raw');
 const NxModalFormErrorSourceCode = require('./NxModalFormErrorExample?raw');
 const NxModalExtraWideSourceCode = require('./NxModalExtraWideExample?raw');
 const NxModalNarrowSourceCode = require('./NxModalNarrowExample?raw');
+const NxModalEscSourceCode = require('./NxModalEscExample?raw');
 
 export default function NxModalPage() {
   return (
@@ -207,6 +209,17 @@ export default function NxModalPage() {
                           codeExamples={NxModalStackedSourceCode}>
         <code className="nx-code">NxModal</code> also supports stacked or nested modals. A second modal can be
         generated from inside of an <code className="nx-code">NxModal</code>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxModal example with other ESC-controller elements"
+                          id="nx-modal-esc-example"
+                          liveExample={NxModalEscExample}
+                          codeExamples={NxModalEscSourceCode}>
+        <NxCode>NxModal</NxCode> can be used in conjunction with other components that can be closed via the ESC key,
+        such as dropdowns. This example demonstrates a convoluted combination of 2 modals, a dropdown, and a custom
+        component all working together such that pressing ESC only closes one of them at a time. Note
+        that <NxCode>NxDropdown</NxCode> is designed so that pressing ESC when it is open only closes it if it is
+        focused.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with form"
