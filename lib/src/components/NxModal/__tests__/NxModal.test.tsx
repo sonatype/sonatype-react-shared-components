@@ -170,4 +170,33 @@ describe('NxModal', function() {
 
     expect(tooltip.prop('PopperProps')!.container).toBe(nxModal.getDOMNode());
   });
+
+  it('moves focus back to the previously focused element when closed', function() {
+    function Fixture({ modalOpen }: { modalOpen: boolean }) {
+      return (
+        <>
+          <button id="test-btn">Test</button>
+          { modalOpen && <NxModal onCancel={jest.fn()}><button id="cancel-btn">Close</button></NxModal> }
+        </>
+      );
+    }
+
+    const container = document.createElement('div');
+    document.body.append(container);
+
+    const component = mount(<Fixture modalOpen={false} />, { attachTo: container }),
+        externalBtn = component.find('#test-btn').getDOMNode() as HTMLElement;
+
+    externalBtn.focus();
+    expect(component).not.toContainMatchingElement(NxModal);
+    expect(document.activeElement).toBe(externalBtn);
+
+    component.setProps({ modalOpen: true });
+    expect(component).toContainMatchingElement(NxModal);
+    expect(document.activeElement).toBe(component.find(NxModal).getDOMNode());
+
+    component.setProps({ modalOpen: false });
+    expect(component).not.toContainMatchingElement(NxModal);
+    expect(document.activeElement).toBe(externalBtn);
+  });
 });
