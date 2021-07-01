@@ -22,10 +22,6 @@
   max-width: max-content;
   position: relative;
 
-  &::after {
-    display: none;
-  }
-
   &:hover {
     cursor: pointer;
 
