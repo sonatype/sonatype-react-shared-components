@@ -14,12 +14,12 @@ import './NxDropdownMenu.scss';
  * This component is not currently intended for public export. It is a helper for NxDropdown and NxSegmentedButton
  * so they can reset focus when they close
  */
+/* eslint-disable-next-line react/prop-types */
 const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu({ children, onClosing }, ref) {
   // onClosing must execute when this element is being removed but BEFORE it actually gets removed from the DOM
   useLayoutEffect(() => onClosing, []);
 
   return <div ref={ref} className="nx-dropdown-menu">{children}</div>;
 });
-
 
 export default NxDropdownMenu;
