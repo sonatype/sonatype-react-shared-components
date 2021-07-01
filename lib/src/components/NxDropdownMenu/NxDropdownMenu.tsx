@@ -10,6 +10,8 @@ import { Props } from './types';
 
 import './NxDropdownMenu.scss';
 
+export { Props };
+
 /**
  * This component is not currently intended for public export. It is a helper for NxDropdown and NxSegmentedButton
  * so they can reset focus when they close

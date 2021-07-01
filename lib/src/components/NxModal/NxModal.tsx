@@ -40,7 +40,7 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
 
       if (!hasNativeModalSupport && onCancel && !evt.defaultPrevented) {
         // emulate cancel-on-esc behavior in browsers which don't do it natively
-        onCancel(new Event('cancel'));
+        onCancel(new Event('cancel', { cancelable: true }));
       }
     }
   }

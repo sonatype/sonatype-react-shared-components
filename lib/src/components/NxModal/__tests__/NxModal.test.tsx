@@ -5,8 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import {mount, ReactWrapper} from 'enzyme';
-import {act} from 'react-dom/test-utils';
+import {mount} from 'enzyme';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxModal, {Props, NxModalContext} from '../NxModal';
@@ -75,15 +74,12 @@ describe('NxModal', function() {
 
   describe('NxModal event listener support', () => {
     let containerMainModal: HTMLDivElement | null;
-    let containerSecondaryModal: HTMLDivElement | null;
 
     beforeEach(function () {
       // Rendering containerMainModal for the component in test.
       containerMainModal = document.createElement('div');
-      containerSecondaryModal = document.createElement('div');
 
       document.body.appendChild(containerMainModal);
-      document.body.appendChild(containerSecondaryModal);
     });
 
     afterEach(function () {
@@ -91,117 +87,71 @@ describe('NxModal', function() {
         document.body.removeChild(containerMainModal);
         containerMainModal = null;
       }
+    });
 
-      if (containerSecondaryModal) {
-        document.body.removeChild(containerSecondaryModal);
-        containerSecondaryModal = null;
+    const createEvent = (key = 'Escape') => ({
+      key,
+      stopPropagation: jest.fn(),
+      nativeEvent: {
+        stopImmediatePropagation: jest.fn()
       }
     });
 
-    it('executes onClose method when pressing ESC key', function () {
+    it('executes onClose method with a cancel event when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const nxModal = <NxModal id="first-modal-id" onClose={mockCallBack}/>;
+      const component = getModal({ onClose: mockCallBack });
 
-      act(() => {
-        mount(nxModal, {attachTo: containerMainModal});
-      });
-
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+      expect(mockCallBack).not.toHaveBeenCalled();
+      component.simulate('keyDown', createEvent());
       expect(mockCallBack).toHaveBeenCalledTimes(1);
+      expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
     });
 
-    it('executes onClose method when pressing ESC key on IE11', function () {
+    it('executes onCancel method with a cancel event when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const nxModal = <NxModal id="first-modal-id" onClose={mockCallBack}/>;
+      const component = getModal({ onCancel: mockCallBack });
 
-      act(() => {
-        mount(nxModal, {attachTo: containerMainModal});
-      });
-
-      const ieEscapeKey = 'Esc';
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: ieEscapeKey}));
+      expect(mockCallBack).not.toHaveBeenCalled();
+      component.simulate('keyDown', createEvent());
       expect(mockCallBack).toHaveBeenCalledTimes(1);
+      expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
     });
 
     it('executes onClose method ONLY when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const nxModal = <NxModal id="first-modal-id" onClose={mockCallBack}/>;
+      const component = getModal({ onClose: mockCallBack });
 
-      act(() => {
-        mount(nxModal, {attachTo: containerMainModal});
-      });
-
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Tab'}));
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'q'}));
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Q'}));
+      component.simulate('keyDown', createEvent('Tab'));
+      component.simulate('keyDown', createEvent('Enter'));
+      component.simulate('keyDown', createEvent('q'));
+      component.simulate('keyDown', createEvent('Q'));
       expect(mockCallBack).not.toHaveBeenCalled();
     });
 
-    it('executes onClose method for each modal that has been opened, preserving order call', function () {
-      const firstMockCallBack = jest.fn();
-      const secondMockCallBack = jest.fn();
-      const firstNxModal = <NxModal id="first-modal-id" onClose={firstMockCallBack}/>;
-      const secondNxModal = <NxModal id="second-modal-id" onClose={secondMockCallBack}/>;
+    it('executes onCancel method ONLY when pressing ESC key', function () {
+      const mockCallBack = jest.fn();
+      const component = getModal({ onCancel: mockCallBack });
 
-      let secondModalWrapper: ReactWrapper | null = null;
-      let firstModalWrapper: ReactWrapper | null = null;
-      act(() => {
-        firstModalWrapper = mount(firstNxModal, {attachTo: containerMainModal});
-        secondModalWrapper = mount(secondNxModal, {attachTo: containerSecondaryModal});
-      });
-
-      // "Close" the second modal
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      expect(secondMockCallBack).toHaveBeenCalledTimes(1);
-      expect(firstMockCallBack).not.toHaveBeenCalled();
-
-      // Unmount and remount the modal to ensure listener order is preserved if new modals are opened
-      act(() => {
-        secondModalWrapper!.unmount();
-        secondModalWrapper = mount(secondNxModal, {attachTo: containerSecondaryModal});
-      });
-      // "Close" the second modal again
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      expect(secondMockCallBack).toHaveBeenCalledTimes(2);
-      expect(firstMockCallBack).not.toHaveBeenCalled();
-
-      // Unmount the second modal to remove it's listener from available listeners to execute
-      act(() => {
-        secondModalWrapper!.unmount();
-      });
-      // "Close" the first modal
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      expect(secondMockCallBack).toHaveBeenCalledTimes(2);
-      expect(firstMockCallBack).toHaveBeenCalledTimes(1);
-
-      // Unmount the first modal to remove it's listener from available listeners to execute
-      act(() => {
-        firstModalWrapper!.unmount();
-      });
-      // Ensure there are no more calls to the registered close handlers with new keypresses
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      expect(secondMockCallBack).toHaveBeenCalledTimes(2);
-      expect(firstMockCallBack).toHaveBeenCalledTimes(1);
+      component.simulate('keyDown', createEvent('Tab'));
+      component.simulate('keyDown', createEvent('Enter'));
+      component.simulate('keyDown', createEvent('q'));
+      component.simulate('keyDown', createEvent('Q'));
+      expect(mockCallBack).not.toHaveBeenCalled();
     });
 
-    it('executes only the most recent onClose callback if it has been updated', function() {
-      const mockCallBack1 = jest.fn(),
-          mockCallBack2 = jest.fn();
+    it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', function() {
+      const component = getModal({ onClose: jest.fn() }),
+          escEvent = createEvent(),
+          otherEvent = createEvent('q');
 
-      let nxModal: ReactWrapper;
+      component.simulate('keyDown', escEvent);
+      component.simulate('keyDown', otherEvent);
 
-      act(() => {
-        nxModal = mount(<NxModal id="first-modal-id" onClose={mockCallBack1}/>, {attachTo: containerMainModal});
-      });
+      expect(escEvent.stopPropagation).toHaveBeenCalled();
+      expect(escEvent.nativeEvent.stopImmediatePropagation).toHaveBeenCalled();
 
-      act(() => {
-        nxModal.setProps({ onClose: mockCallBack2 });
-      });
-
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      expect(mockCallBack2).toHaveBeenCalledTimes(1);
-      expect(mockCallBack1).not.toHaveBeenCalled();
+      expect(otherEvent.stopPropagation).not.toHaveBeenCalled();
+      expect(otherEvent.nativeEvent.stopImmediatePropagation).not.toHaveBeenCalled();
     });
   });
 
