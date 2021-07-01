@@ -27,7 +27,10 @@ export default function NxModalStackedExample() {
 
   return (
     <>
-      <NxButton onClick={() => setShowCustomComponent(true)}>Open Custom Expandable Panel</NxButton>
+      <NxButton id="esc-example-initial-btn"
+                onClick={() => setShowCustomComponent(true)}>
+        Open Custom Expandable Panel
+      </NxButton>
       {showCustomComponent &&
         <div className="gallery-custom-expandable">
           <NxP>Press ESC anywhere on the page to close me!</NxP>
@@ -35,7 +38,7 @@ export default function NxModalStackedExample() {
         </div>
       }
       {showModal &&
-        <NxModal id="nx-modal-stacked-example" onCancel={modal1CancelHandler}>
+        <NxModal id="nx-modal-esc-example-modal" onCancel={modal1CancelHandler}>
           <header className="nx-modal-header">
             <h2 className="nx-h2">
               <NxFontAwesomeIcon icon={faAngry} />
@@ -63,7 +66,7 @@ export default function NxModalStackedExample() {
         </NxModal>
       }
       {showModal2 &&
-        <NxModal id="nx-modal-stacked-example2" onCancel={modal2CancelHandler}>
+        <NxModal id="nx-modal-esc-example-modal2" onCancel={modal2CancelHandler}>
           <header className="nx-modal-header">
             <h2 className="nx-h2">
               <NxFontAwesomeIcon icon={faAngry} />
