@@ -20,13 +20,14 @@ describe('NxCheckbox', function() {
     it('has a black border when hovered', hoverTest(selector));
 
     it('has a blue background and white checkmark when clicked', async function() {
-      const targetElement = await browser.$(selector);
+      const blurSelector = `${selector} input`,
+          [targetElement, blurElement] = await Promise.all([browser.$(selector), browser.$(blurSelector)]);
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
       await browser.execute(function(el) {
         el.blur();
-      }, targetElement);
+      }, blurElement);
 
       try {
         await browser.eyesRegionSnapshot(null, Target.region(targetElement));

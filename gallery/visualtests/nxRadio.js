@@ -22,13 +22,16 @@ describe('NxRadio', function() {
     it('has a light grey border and white background by default', simpleTest(selector));
     it('has a black border when hovered', hoverTest(selector));
     it('has a thick blue border and white background when clicked', async function() {
-      const [targetElement, otherElement] = await Promise.all([browser.$(selector), browser.$(otherRadioSelector)]);
+
+      const blurSelector = `${selector} input`,
+        [targetElement, otherElement, blurElement] = await Promise.all([browser.$(selector),
+          browser.$(otherRadioSelector), browser.$(blurSelector)]);
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
       await browser.execute(function(el) {
         el.blur();
-      }, targetElement);
+      }, blurElement);
 
       try {
         await browser.eyesRegionSnapshot(null, Target.region(targetElement));
