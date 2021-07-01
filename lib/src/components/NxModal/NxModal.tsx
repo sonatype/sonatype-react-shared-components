@@ -29,18 +29,25 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
 
   function dialogKeydownListener(evt: KeyboardEvent<HTMLDialogElement>) {
     if (evt.key === 'Escape' || evt.key === 'Esc') {
-      // prevent visibility of the keydown outside of the modal, so that global ESC listeners on the
-      // document don't pick it up
-      evt.stopPropagation();
+      // HACK for backwards compatibility: it is known that some downstream uses of NxModal do not provide
+      // the onCancel/onClose handler despite it being required. It is also known that these downstream uses
+      // have some logic which globally manages ESC handlers for a variety of things including modals. To keep that
+      // working, only stopPropagation if the onCancel callback is defined. If it isn't defined, tenuously assume
+      // that the ESC handling is implemented externall and do nothing here.
+      if (onCancel) {
+        // prevent visibility of the keydown outside of the modal, so that global ESC listeners on the
+        // document don't pick it up
+        evt.stopPropagation();
 
-      // prevent visibility to manually-registered native event listeners on the document too.
-      // NOTE: this only works on listeners added after this one, which is believed to include any
-      // registered in useEffect calls on components rendered simultaneously with the modal
-      evt.nativeEvent.stopImmediatePropagation();
+        // prevent visibility to manually-registered native event listeners on the document too.
+        // NOTE: this only works on listeners added after this one, which is believed to include any
+        // registered in useEffect calls on components rendered simultaneously with the modal
+        evt.nativeEvent.stopImmediatePropagation();
 
-      if (!hasNativeModalSupport && onCancel && !evt.defaultPrevented) {
-        // emulate cancel-on-esc behavior in browsers which don't do it natively
-        onCancel(new Event('cancel', { cancelable: true }));
+        if (!hasNativeModalSupport && !evt.defaultPrevented) {
+          // emulate cancel-on-esc behavior in browsers which don't do it natively
+          onCancel(new Event('cancel', { cancelable: true }));
+        }
       }
     }
   }
