@@ -23,7 +23,7 @@ const PropertyDocItem = ({ propertyVar, children }: { propertyVar: string, child
   <NxList.Item>
     <NxList.DescriptionTerm><NxCode>{propertyVar}</NxCode></NxList.DescriptionTerm>
     <NxList.Description>{children}</NxList.Description>
-  </NxList.Item>
+  </NxList.Item>;
 
 const ColorDocRow = ({ colorVar, children }: { colorVar: string, children: ReactNode }) =>
   <NxTable.Row>
@@ -32,7 +32,7 @@ const ColorDocRow = ({ colorVar, children }: { colorVar: string, children: React
     <NxTable.Cell>
       <div className="gallery-color-sample" style={{ background: `var(${colorVar})` }} />
     </NxTable.Cell>
-  </NxTable.Row>
+  </NxTable.Row>;
 
 const CssVariablesPage = () =>
   <>
@@ -94,7 +94,7 @@ const CssVariablesPage = () =>
         <PropertyDocItem propertyVar="--nx-width-content-proportion">
           The proportion of horizontal space alloted to the main content area when an adjacent sidebar is present
           in Legacy Page Header based page layouts (and accordingly, the complement of the proportion alloted
-              to the sidebar itself). This value is a unitless number between zero and one and is thus not suitable
+          to the sidebar itself). This value is a unitless number between zero and one and is thus not suitable
           for use as a <NxCode>width</NxCode> value by itself. Rather, it is intended to be used in dynamic
           calculations of widths (e.g. CSS <NxCode>calc()</NxCode> functions).
         </PropertyDocItem>
