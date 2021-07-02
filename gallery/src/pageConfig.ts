@@ -108,6 +108,7 @@ import SelectableColorsPage from './styles/SelectableColors/SelectableColorsPage
 import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTilePage';
 import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
 import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterPage';
+import CssVariablesPage from './styles/CssVariables/CssVariablesPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -206,7 +207,8 @@ const pageConfig: PageConfig = {
     'nx-scrollable': NxScrollablePage,
     'nx-truncate-ellipsis': NxTruncatePage,
     'nx-viewport-sized': NxViewportSizedPage,
-    'Selectable Colors': SelectableColorsPage
+    'Selectable Colors': SelectableColorsPage,
+    'Style Variables': CssVariablesPage
   },
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
