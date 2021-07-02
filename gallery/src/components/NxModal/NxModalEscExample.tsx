@@ -17,12 +17,15 @@ export default function NxModalStackedExample() {
       modal1CancelHandler = () => setShowModal(false),
       modal2CancelHandler = () => setShowModal2(false);
 
+  function customComponentKeydownListener(evt: KeyboardEvent) {
+    if (evt.key === 'Escape' || evt.key === 'Esc') {
+      setShowCustomComponent(false);
+    }
+  }
+
   useEffect(() => {
-    document.addEventListener('keydown', (evt) => {
-      if (evt.key === 'Escape' || evt.key === 'Esc') {
-        setShowCustomComponent(false);
-      }
-    });
+    document.addEventListener('keydown', customComponentKeydownListener);
+    return () => { document.removeEventListener('keydown', customComponentKeydownListener); };
   }, []);
 
   return (
