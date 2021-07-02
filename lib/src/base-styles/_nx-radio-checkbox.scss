@@ -40,10 +40,6 @@
       position: absolute;
     }
 
-    .nx-radio-checkbox__control {
-      filter: drop-shadow(var(--nx-drop-shadow-focus));
-    }
-
     &:hover {
       .nx-radio-checkbox__control {
         border-color: var(--nx-color-form-element-border);
