@@ -1,12 +1,12 @@
 {
   "name": "@sonatype/react-shared-components-gallery",
-  "version": "7.2.1",
+  "version": "7.2.2",
   "description": "Gallery application to demonstrate usage and look of Sonatype shared UI components",
   "main": "src/main.ts",
   "scripts": {
     "start": "npm-run-all lint webpack-dev-server",
     "build": "npm-run-all lint webpack copy-assets",
-    "copy-assets": "cpx \"src/index.html\" dist",
+    "copy-assets": "cpx \"{src/index.html,src/assets/images/favicon*}\" dist",
     "lint": "eslint 'src/**/*.{js,ts}{,x}'",
     "webpack": "webpack --env production --mode=production",
     "webpack-dev-server": "webpack serve",
