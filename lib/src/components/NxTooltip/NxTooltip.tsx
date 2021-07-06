@@ -37,7 +37,7 @@ function fixOptional(props: Omit<Props, 'title'>): Omit<TooltipProps, 'title'> {
     onOpen: props.onOpen || undefined,
     onClose: props.onClose || undefined,
     open: props.open === null ? undefined : props.open,
-    placement: convertPlacement(props.placement),
+    placement: convertPlacement(props.placement)
   };
 }
 
