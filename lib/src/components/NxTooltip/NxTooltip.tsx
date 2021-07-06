@@ -54,7 +54,7 @@ const NxTooltip: FunctionComponent<Props> =
       // and disappears, causing the tooltip to blip up to the corner of the screen as it disappears (and likely
       // causing other subtle bugs). This does not seem to happen if the tooltip title is JSX, so here we just make
       // sure that it always is
-      const tooltipTitle = typeof title === 'string' ? <>{title}</> : (title || '');
+      const tooltipTitle = (typeof title === 'string' && title.length) ? <>{title}</> : (title || '');
 
       return <Tooltip aria-label={ariaLabel}
                       { ...fixOptional(otherProps) }
