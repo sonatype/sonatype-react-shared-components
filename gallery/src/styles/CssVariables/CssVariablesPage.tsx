@@ -341,7 +341,7 @@ const CssVariablesPage = () => {
           CSS variables. For instance, arbitrary text could be included as the property value and then extracted via
           JavaScript using the CSSOM APIs. In an extreme example from the spec, the value of a custom property could
           even be a snippet of JavaScript code which a script extracts and evals!{' '}
-          <small className="gallery-small-parenthetical">(What a horrible idea)</small>
+          <small className="gallery-small-parenthetical">(What a horrible idea, don't do this.)</small>
         </NxP>
       </GalleryTile>
     </>
