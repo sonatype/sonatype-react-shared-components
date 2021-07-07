@@ -1,0 +1,23 @@
+/*
+ * Copyright (c) 2020-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+// For dynamically calculating focus border styles
+// based on height, width and focus border offset
+// Calculations based on a 1px border
+
+// NxRadio and NxCheckbox require the left property for correct positioning of focus border
+@mixin nx-radio-checkbox-focus-border($height, $width, $offset) {
+    height: calc(#{$height} + #{$offset});
+    left: calc(-1px - #{$offset}/2);
+    width: calc(#{$width} + #{$offset});
+}
+
+// NxToggle requires an additional top property for correct positioning of focus border
+@mixin nx-toggle-focus-border($height, $width, $offset) {
+    @include nx-radio-checkbox-focus-border($height, $width, $offset);
+    top: calc(-1px - #{$offset}/2);
+}

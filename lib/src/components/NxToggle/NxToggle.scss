@@ -5,6 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../../scss-shared/nx-text-helpers';
+@import '../../scss-shared/_nx-focus-border-helpers';
+
+$nx-toggle__control-height: 24px;
+$nx-toggle__control-width: 44px;
+$nx-toggle-focus-border-offset: 6px;
 
 .nx-toggle {
   column-gap: 16px;
@@ -37,16 +42,13 @@
       }
 
       &::after{
+        @include nx-toggle-focus-border($nx-toggle__control-height, $nx-toggle__control-width, $nx-toggle-focus-border-offset);
         border: 1px solid var(--nx-color-interactive-border-focus);
         border-radius: 16px;
         box-shadow: var(--nx-box-shadow-focus);
         content: '';
         display: block;
-        height: 30px;
-        position:absolute;
-        left: -4px;
-        top: -4px;
-        width: 50px;
+        position: absolute;
       }
     }
   }
@@ -91,9 +93,9 @@
   box-sizing: border-box;
   display: flex;
   grid-area: toggle;
-  height: 24px;
+  height: $nx-toggle__control-height;
   padding: calc(var(--nx-spacing-base) - 1px);
-  width: 44px;
+  width: $nx-toggle__control-width;
 }
 
 .nx-toggle__indicator {
