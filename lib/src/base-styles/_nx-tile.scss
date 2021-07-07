@@ -75,6 +75,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 
   color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-heading-3);
+  max-width: var(--nx-width-text-wrapping);
 }
 
 .nx-tile__actions {
