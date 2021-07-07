@@ -26,7 +26,7 @@ describe('NxOverflowTooltip', function() {
       dynamicExampleTextInputSelector = `${dynamicExampleSelector} .nx-text-input input`,
       dynamicExampleTooltipTargetSelector = `${dynamicExampleSelector} .gallery-example-live .nx-p`,
       tooltipSelector = '.nx-tooltip';
-      maxBeforeOverflowStr = 'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
+      maxBeforeOverflowStr = 'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
       descendantOverflowItemSelector = `${descendantOverflowListSelector} .nx-list__item:nth-child(2)`;
 
   async function openDropdownAndHoverButton(btnSelector) {
