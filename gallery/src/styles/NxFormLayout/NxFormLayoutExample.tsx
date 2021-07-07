@@ -105,9 +105,12 @@ export default function NxFormLayoutExample() {
           <option value="option5">Option 5</option>
         </select>
       </NxFormGroup>
-      <NxFieldset label="Enable features" isRequired>
+      <NxFieldset label="Enable features - this text is extra long to demonstrate wrapping, how much wood would
+                         a woodchuck chuck"
+                  isRequired>
         <div className="nx-sub-label">
-          In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
+          In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code> - this text is
+          extra long to demonstrate wrapping, how much wood would a woodchuck chuck
         </div>
         <NxToggle inputId="subscribe-check" onChange={toggleWarp} isChecked={isWarpOn}>
           Enable Warp Drive
