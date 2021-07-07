@@ -14,6 +14,7 @@
   margin: var(--nx-spacing-4x) 0;
   overflow-wrap: anywhere;
   max-width: var(--nx-width-form-element-wide);
+  position: relative;
 
   &.nx-toggle--disabled {
     &, &:hover {
@@ -31,11 +32,21 @@
 
   &:focus-within {
     .nx-toggle__control {
-      border-color: var(--nx-color-interactive-border-focus);
-      filter: drop-shadow(var(--nx-drop-shadow-focus));
-
       &:hover {
         border-color: var(--nx-swatch-grey-05);
+      }
+
+      &::after{
+        border: 1px solid var(--nx-color-interactive-border-focus);
+        border-radius: 16px;
+        box-shadow: var(--nx-box-shadow-focus);
+        content: '';
+        display: block;
+        height: 30px;
+        position:absolute;
+        left: -4px;
+        top: -4px;
+        width: 50px;
       }
     }
   }
