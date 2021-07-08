@@ -102,6 +102,7 @@
 
   .nx-list__text {
     @include regular();
+    max-width: unset;
   }
 }
 
