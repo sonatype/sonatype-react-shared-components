@@ -5,19 +5,19 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-// For dynamically calculating focus border styles
-// based on height, width and focus border offset
-// Calculations based on a 1px border
+// For dynamically calculating focus border styles based on height and width
+// Border size is 1px border and 6px here represents total space in each axis
+// between border and control elements. Values are based on RSC design spec.
 
 // NxRadio and NxCheckbox require the left property for correct positioning of focus border
-@mixin nx-radio-checkbox-focus-border($height, $width, $offset) {
-    height: calc(#{$height} + #{$offset});
-    left: calc(-1px - #{$offset}/2);
-    width: calc(#{$width} + #{$offset});
+@mixin nx-radio-checkbox-focus-border($height, $width) {
+    height: calc(#{$height} + 6px);
+    left: -4px;
+    width: calc(#{$width} + 6px);
 }
 
 // NxToggle requires an additional top property for correct positioning of focus border
-@mixin nx-toggle-focus-border($height, $width, $offset) {
-    @include nx-radio-checkbox-focus-border($height, $width, $offset);
-    top: calc(-1px - #{$offset}/2);
+@mixin nx-toggle-focus-border($height, $width) {
+    @include nx-radio-checkbox-focus-border($height, $width);
+    top: -4px;
 }

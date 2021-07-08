@@ -8,7 +8,6 @@
 
 $nx-checkbox__box-height: 16px;
 $nx-checkbox__box-width: 16px;
-$nx-checkbox-focus-border-offset: 6px;
 
 .nx-checkbox__box {
   border-radius: 2px;
@@ -37,7 +36,7 @@ $nx-checkbox-focus-border-offset: 6px;
 
 .nx-checkbox:focus-within {
   &::after{
-    @include nx-radio-checkbox-focus-border($nx-checkbox__box-height, $nx-checkbox__box-width, $nx-checkbox-focus-border-offset);
+    @include nx-radio-checkbox-focus-border($nx-checkbox__box-height, $nx-checkbox__box-width);
     border-radius: 4px;
   }
 }

@@ -9,7 +9,6 @@
 
 $nx-toggle__control-height: 24px;
 $nx-toggle__control-width: 44px;
-$nx-toggle-focus-border-offset: 6px;
 
 .nx-toggle {
   column-gap: 16px;
@@ -42,7 +41,7 @@ $nx-toggle-focus-border-offset: 6px;
       }
 
       &::after{
-        @include nx-toggle-focus-border($nx-toggle__control-height, $nx-toggle__control-width, $nx-toggle-focus-border-offset);
+        @include nx-toggle-focus-border($nx-toggle__control-height, $nx-toggle__control-width);
         border: 1px solid var(--nx-color-interactive-border-focus);
         border-radius: 16px;
         box-shadow: var(--nx-box-shadow-focus);

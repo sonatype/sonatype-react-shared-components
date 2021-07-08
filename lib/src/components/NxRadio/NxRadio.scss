@@ -8,7 +8,6 @@
 
 $nx-radio__circle-height: 16px;
 $nx-radio__circle-width: 16px;
-$nx-radio-focus-border-offset: 6px;
 
 .nx-radio__circle {
   height: $nx-radio__circle-height;
@@ -39,7 +38,7 @@ $nx-radio-focus-border-offset: 6px;
 
 .nx-radio:focus-within {
   &::after{
-    @include nx-radio-checkbox-focus-border($nx-radio__circle-height, $nx-radio__circle-width, $nx-radio-focus-border-offset);
+    @include nx-radio-checkbox-focus-border($nx-radio__circle-height, $nx-radio__circle-width);
     border-radius: 12px;
   }
 }
