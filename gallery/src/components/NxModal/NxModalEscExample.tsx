@@ -12,9 +12,12 @@ import {faAngry} from '@fortawesome/free-solid-svg-icons';
 export default function NxModalStackedExample() {
   const [showModal, setShowModal] = useState(false),
       [showModal2, setShowModal2] = useState(false),
-      [showDropdown, toggleDropdown] = useToggle(false),
+      [showDropdown, toggleDropdown, setShowDropdown] = useToggle(false),
       [showCustomComponent, setShowCustomComponent] = useState(false),
-      modal1CancelHandler = () => setShowModal(false),
+      modal1CancelHandler = () => {
+        setShowModal(false);
+        setShowDropdown(false);
+      },
       modal2CancelHandler = () => setShowModal2(false);
 
   function customComponentKeydownListener(evt: KeyboardEvent) {
