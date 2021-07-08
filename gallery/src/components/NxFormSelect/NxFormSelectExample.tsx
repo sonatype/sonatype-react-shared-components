@@ -8,10 +8,10 @@ import React, { FormEvent } from 'react';
 import { NxFormSelect, nxFormSelectStateHelpers } from '@sonatype/react-shared-components';
 
 const NxFormSelectExample = () => {
-  const [selectState, setSelectValue] = nxFormSelectStateHelpers.useNxFormSelectState('1');
+  const [selectState, setSelectValue] = nxFormSelectStateHelpers.useNxFormSelectState<number>(1);
 
   function onChange(evt: FormEvent<HTMLSelectElement>) {
-    setSelectValue(evt.currentTarget.value);
+    setSelectValue(parseInt(evt.currentTarget.value));
   }
 
   return (

@@ -8,7 +8,7 @@ import * as PropTypes from 'prop-types';
 import { SelectHTMLAttributes } from 'react';
 
 export interface StateProps {
-  value: string;
+  value: string | number;
   isPristine: boolean;
 }
 

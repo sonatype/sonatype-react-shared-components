@@ -11,7 +11,7 @@ import { StateProps } from './types';
 /**
  * @return an initialized state with the specified value and isPristine set to true.
  */
-export function initialState(value: string): StateProps {
+export function initialState<T extends string | number>(value: T): StateProps {
   return { isPristine: true, value };
 }
 
@@ -19,9 +19,8 @@ export function initialState(value: string): StateProps {
  * @return a state useful once a user has adjusted the value of a form select: one with the specified value and
  * isPristine set to false.
  */
-export function userInput(newValue: string): StateProps {
+export function userInput<T extends string | number>(newValue: T): StateProps {
   return { isPristine: false, value: newValue };
-
 }
 
 /**
@@ -33,7 +32,7 @@ export function userInput(newValue: string): StateProps {
  *   A updater function that takes a new value and initiates a new render with that value, similarly to the
  *   second return value of React's `useState` hook
  */
-export function useNxFormSelectState(initialValue: string): [StateProps, (v: string) => void] {
+export function useNxFormSelectState<T extends string | number>(initialValue: T): [StateProps, (v: T) => void] {
   const [state, setState] = useState(initialState(initialValue));
 
   return [
