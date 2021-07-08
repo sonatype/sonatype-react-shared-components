@@ -290,4 +290,5 @@
   @include container-vertical;
 
   margin-left: var(--nx-spacing-6x);
+  max-width: var(--nx-width-text-wrapping);
 }
