@@ -22,6 +22,10 @@ import { KeyboardEventHandler, useEffect, useRef } from 'react';
  * @return Object containing the following:
  * onKeyDown function to set on the dropdown to handle ESC keypresses within it
  * onToggleCollapse function to set as the click handler on the dropdown toggle
+ * menuRef A ref that should be attached to the NxDropdownMenu
+ * toggleRef A ref that should be attached to the dropdown toggle button
+ * onMenuClosing A callback that should be executed when the dropdown menu is closing but before it is removed
+ * from DOM. e.g. to be attached to NxDropdownMenu.onClosing.
  */
 export default function useDropdownEvents(
   isOpen: boolean,
@@ -31,7 +35,9 @@ export default function useDropdownEvents(
   externalOnCloseKeyDown?: KeyboardEventHandler | null,
   externalOnKeyDown?: KeyboardEventHandler
 ) {
-  const isToggling = useRef(false);
+  const isToggling = useRef(false),
+      menuRef = useRef<HTMLDivElement>(null),
+      toggleRef = useRef<HTMLButtonElement>(null);
 
   const onKeyDown: KeyboardEventHandler = event => {
     if (isOpen && !disabled && event.key === 'Escape' && externalOnToggleCollapse) {
@@ -41,6 +47,10 @@ export default function useDropdownEvents(
 
       if (!event.defaultPrevented) {
         externalOnToggleCollapse();
+
+        // try to prevent the ESC from triggering multiple things, for instance closing a surrounding modal
+        // in addition to the dropdown
+        event.preventDefault();
       }
     }
 
@@ -98,5 +108,19 @@ export default function useDropdownEvents(
     }
   }, [disabled, isOpen]);
 
-  return { onKeyDown, onToggleCollapse };
+  // When the dropdown is closed while focus is within it, set focus back to the dropdown toggle. Otherwise
+  // it goes back to the <body> which is less helpful especially when within a modal
+  function onMenuClosing() {
+    /* eslint-disable @typescript-eslint/no-non-null-assertion */
+    const focusedEl = document.activeElement,
+        menuEl = menuRef.current,
+        toggleEl = toggleRef.current;
+
+    if (menuEl && menuEl.contains(focusedEl)) {
+      toggleEl!.focus();
+    }
+    /* eslint-enable @typescript-eslint/no-non-null-assertion */
+  }
+
+  return { onKeyDown, onToggleCollapse, menuRef, toggleRef, onMenuClosing };
 }

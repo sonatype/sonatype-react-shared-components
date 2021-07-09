@@ -17,7 +17,7 @@ export default function NxModalSimpleExample() {
     <>
       <NxButton onClick={() => setShowModal(true)}>Open Modal</NxButton>
       { showModal &&
-        <NxModal id="nx-modal-simple-example" onClose={modalCloseHandler}>
+        <NxModal id="nx-modal-simple-example" onCancel={modalCloseHandler}>
           <header className="nx-modal-header">
             <h2 className="nx-h2">
               <NxFontAwesomeIcon icon={faAngry} />
