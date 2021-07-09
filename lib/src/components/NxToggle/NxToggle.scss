@@ -7,8 +7,8 @@
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-focus-border-helpers';
 
-$nx-toggle__control-height: 24px;
-$nx-toggle__control-width: 44px;
+$nx-toggle-height: 24px;
+$nx-toggle-width: 44px;
 
 .nx-toggle {
   column-gap: 16px;
@@ -41,7 +41,7 @@ $nx-toggle__control-width: 44px;
       }
 
       &::after{
-        @include nx-toggle-focus-border($nx-toggle__control-height, $nx-toggle__control-width);
+        @include nx-toggle-focus-border($nx-toggle-height, $nx-toggle-width);
         border: 1px solid var(--nx-color-interactive-border-focus);
         border-radius: 16px;
         box-shadow: var(--nx-box-shadow-focus);
@@ -92,9 +92,9 @@ $nx-toggle__control-width: 44px;
   box-sizing: border-box;
   display: flex;
   grid-area: toggle;
-  height: $nx-toggle__control-height;
+  height: $nx-toggle-height;
   padding: calc(var(--nx-spacing-base) - 1px);
-  width: $nx-toggle__control-width;
+  width: $nx-toggle-width;
 }
 
 .nx-toggle__indicator {

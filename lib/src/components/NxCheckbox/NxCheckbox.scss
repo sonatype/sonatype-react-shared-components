@@ -6,15 +6,15 @@
  */
 @import '../../scss-shared/nx-focus-border-helpers';
 
-$nx-checkbox__box-height: 16px;
-$nx-checkbox__box-width: 16px;
+$nx-checkbox-height: 16px;
+$nx-checkbox-width: 16px;
 
 .nx-checkbox__box {
   border-radius: 2px;
   box-sizing: border-box;
-  height: $nx-checkbox__box-height;
+  height: $nx-checkbox-height;
   position: relative;
-  width: $nx-checkbox__box-width;
+  width: $nx-checkbox-width;
 
   .fa-check {
     color: var(--nx-swatch-white);
@@ -36,7 +36,7 @@ $nx-checkbox__box-width: 16px;
 
 .nx-checkbox:focus-within {
   &::after{
-    @include nx-radio-checkbox-focus-border($nx-checkbox__box-height, $nx-checkbox__box-width);
+    @include nx-radio-checkbox-focus-border($nx-checkbox-height, $nx-checkbox-width);
     border-radius: 4px;
   }
 }

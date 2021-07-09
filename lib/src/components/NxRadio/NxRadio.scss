@@ -4,14 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
- @import '../../scss-shared/nx-focus-border-helpers';
+@import '../../scss-shared/nx-focus-border-helpers';
 
-$nx-radio__circle-height: 16px;
-$nx-radio__circle-width: 16px;
+$nx-radio-height: 16px;
+$nx-radio-width: 16px;
 
 .nx-radio__circle {
-  height: $nx-radio__circle-height;
-  width: $nx-radio__circle-width;
+  height: $nx-radio-height;
+  width: $nx-radio-width;
 }
 
 .nx-radio__inner-circle {
@@ -38,7 +38,7 @@ $nx-radio__circle-width: 16px;
 
 .nx-radio:focus-within {
   &::after{
-    @include nx-radio-checkbox-focus-border($nx-radio__circle-height, $nx-radio__circle-width);
+    @include nx-radio-checkbox-focus-border($nx-radio-height, $nx-radio-width);
     border-radius: 12px;
   }
 }
