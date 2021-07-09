@@ -40,6 +40,7 @@
   margin: 0 0 0 var(--nx-spacing-4x);
   padding-left: var(--nx-spacing-4x);
   min-width: 150px;
+  max-width: unset;
 }
 
 .nx-page-title__description {

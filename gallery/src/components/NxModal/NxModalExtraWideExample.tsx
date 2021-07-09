@@ -18,7 +18,7 @@ export default function NxModalExtraWideExample() {
       {showModal &&
       <NxModal id="nx-modal-wide-example" variant="wide" onClose={modalCloseHandler}>
         <header className="nx-modal-header">
-          <h3 className="nx-h3">Vulnerability Information</h3>
+          <h2 className="nx-h2">Vulnerability Information</h2>
         </header>
         <div className="nx-modal-content">
           <p className="nx-p">This is some content inside a wider modal.</p>

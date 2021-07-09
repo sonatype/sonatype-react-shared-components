@@ -58,6 +58,7 @@
 
   .nx-h2 {
     @include nx-truncate-ellipsis;
+    max-width: unset;
   }
 }
 
