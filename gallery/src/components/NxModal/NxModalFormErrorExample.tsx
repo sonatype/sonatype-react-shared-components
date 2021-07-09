@@ -26,7 +26,7 @@ export default function NxModalFormErrorExample() {
     <>
       <NxButton onClick={() => setShowModal(true)}>Open Modal with Form and Error Styling</NxButton>
       {showModal &&
-        <NxModal id="nx-modal-form-error-example" onClose={modalCloseHandler}>
+        <NxModal id="nx-modal-form-error-example" onCancel={modalCloseHandler}>
           <NxForm className="nx-form"
                   onSubmit={modalCloseHandler}
                   onCancel={modalCloseHandler}

@@ -19,7 +19,7 @@ export default function NxModalStackedExample() {
     <>
       <NxButton onClick={() => setShowModal(true)}>Open modal with stacked example</NxButton>
       {showModal &&
-        <NxModal id="nx-modal-stacked-example" onClose={modal1CloseHandler}>
+        <NxModal id="nx-modal-stacked-example" onCancel={modal1CloseHandler}>
           <header className="nx-modal-header">
             <h2 className="nx-h2">
               <NxFontAwesomeIcon icon={faAngry} />
@@ -43,7 +43,7 @@ export default function NxModalStackedExample() {
         </NxModal>
       }
       {showModal2 &&
-        <NxModal id="nx-modal-stacked-example2" onClose={modal2CloseHandler}>
+        <NxModal id="nx-modal-stacked-example2" onCancel={modal2CloseHandler}>
           <header className="nx-modal-header">
             <h2 className="nx-h2">
               <NxFontAwesomeIcon icon={faAngry} />
