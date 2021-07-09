@@ -96,7 +96,7 @@ import NxTagPage from './components/NxTag/NxTagPage';
 import NxCodeSnippetPage from './components/NxCodeSnippet/NxCodeSnippetPage';
 import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
 import NxColorPickerPage from './components/NxColorPicker/NxColorPickerPage';
-import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
+import ColorPalettePage from './styles/ColorPalette/ColorPalettePage';
 import IdUtilPage from './jsUtilPages/IdUtil/IdUtilPage';
 import WithClassPage from './jsUtilPages/WithClass/WithClassPage';
 import NxTextLinkPage from './components/NxTextLink/NxTextLinkPage';
@@ -108,6 +108,7 @@ import SelectableColorsPage from './styles/SelectableColors/SelectableColorsPage
 import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTilePage';
 import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
 import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterPage';
+import CssVariablesPage from './styles/CssVariables/CssVariablesPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -170,7 +171,6 @@ const pageConfig: PageConfig = {
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,
-    'Color Palettes': ColorPalettePage,
     'Contributing to the Gallery': ContributingPage,
     'font-size and line-height': FontSizePage,
     'Form Validation Guidelines': FormValidationPage,
@@ -200,13 +200,15 @@ const pageConfig: PageConfig = {
     'nx-tile': NxTilePage
   },
   'Styles - Mixins & Helpers': {
+    'Color Palettes': ColorPalettePage,
     'Custom app font size': NxFontSizePage,
     'nx-clickable': NxClickablePage,
     'nx-container-helpers': NxContainerHelpersPage,
     'nx-scrollable': NxScrollablePage,
     'nx-truncate-ellipsis': NxTruncatePage,
     'nx-viewport-sized': NxViewportSizedPage,
-    'Selectable Colors': SelectableColorsPage
+    'Selectable Colors': SelectableColorsPage,
+    'Style Variables': CssVariablesPage
   },
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,

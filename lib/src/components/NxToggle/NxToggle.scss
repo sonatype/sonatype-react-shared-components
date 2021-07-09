@@ -5,6 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @import '../../scss-shared/nx-text-helpers';
+@import '../../scss-shared/nx-focus-border-helpers';
+
+$nx-toggle-height: 24px;
+$nx-toggle-width: 44px;
 
 .nx-toggle {
   column-gap: 16px;
@@ -14,6 +18,7 @@
   margin: var(--nx-spacing-4x) 0;
   overflow-wrap: anywhere;
   max-width: var(--nx-width-form-element-wide);
+  position: relative;
 
   &.nx-toggle--disabled {
     &, &:hover {
@@ -31,11 +36,21 @@
 
   &:focus-within {
     .nx-toggle__control {
-      border-color: var(--nx-color-interactive-border-focus);
-      filter: drop-shadow(var(--nx-drop-shadow-focus));
-
       &:hover {
         border-color: var(--nx-swatch-grey-05);
+      }
+
+      &::after{
+        border: 1px solid var(--nx-color-interactive-border-focus);
+        border-radius: 16px;
+        box-shadow: var(--nx-box-shadow-focus);
+        content: '';
+        display: block;
+        height: calc(#{$nx-toggle-height} + 6px);
+        position: absolute;
+        left: -4px;
+        top: -4px;
+        width: calc(#{$nx-toggle-width} + 6px);
       }
     }
   }
@@ -80,9 +95,9 @@
   box-sizing: border-box;
   display: flex;
   grid-area: toggle;
-  height: 24px;
+  height: $nx-toggle-height;
   padding: calc(var(--nx-spacing-base) - 1px);
-  width: 44px;
+  width: $nx-toggle-width;
 }
 
 .nx-toggle__indicator {

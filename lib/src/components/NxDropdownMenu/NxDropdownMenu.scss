@@ -1,0 +1,28 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-dropdown-variables';
+@import '../../scss-shared/nx-container-helpers';
+
+.nx-dropdown-menu {
+  @include container-vertical();
+
+  background: var(--nx-swatch-white);
+  border-radius: var(--nx-border-radius);
+  box-shadow: 0 2px 12px 0 rgba(74, 77, 113, 0.2),
+              0 1px 2px 0 rgba(91, 95, 141, 0.2),
+              0 1px 1px 0 rgba(124, 128, 179, 0.2);
+  box-sizing: border-box;
+  display: block;
+  max-height: 328px;
+  margin: var(--nx-spacing-base) 0 0 0;
+  overflow-y: auto;
+  padding: var(--nx-spacing-base) 0;
+  position: absolute;
+  top: 100%;
+  width: $nx-dropdown-width;
+  z-index: 1;
+}
