@@ -41,13 +41,16 @@ $nx-toggle-width: 44px;
       }
 
       &::after{
-        @include nx-toggle-focus-border($nx-toggle-height, $nx-toggle-width);
         border: 1px solid var(--nx-color-interactive-border-focus);
         border-radius: 16px;
         box-shadow: var(--nx-box-shadow-focus);
         content: '';
         display: block;
+        height: calc(#{$nx-toggle-height} + 6px);
         position: absolute;
+        left: -4px;
+        top: -4px;
+        width: calc(#{$nx-toggle-width} + 6px);
       }
     }
   }

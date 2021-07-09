@@ -15,9 +15,3 @@
     left: -4px;
     width: calc(#{$width} + 6px);
 }
-
-// NxToggle requires an additional top property for correct positioning of focus border
-@mixin nx-toggle-focus-border($height, $width) {
-    @include nx-radio-checkbox-focus-border($height, $width);
-    top: -4px;
-}
