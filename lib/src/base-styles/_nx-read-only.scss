@@ -14,6 +14,10 @@
   gap: var(--nx-spacing-8x) var(--nx-spacing-20x);
   margin: var(--nx-spacing-8x) 0;
   justify-content: start;
+
+  .nx-read-only__data, .nx-read-only__label {
+    max-width: unset;
+  }
 }
 
 .nx-read-only__item {
