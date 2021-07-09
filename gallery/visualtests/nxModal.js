@@ -7,6 +7,7 @@
 describe('NxAlert', function() {
   beforeEach(async function() {
     await browser.url('#/pages/NxModal');
+    await browser.refresh();
   });
 
   const simpleExampleSelector = '#nx-modal-simple-example',
@@ -14,7 +15,8 @@ describe('NxAlert', function() {
       formExampleSelector = '#nx-modal-form-example',
       narrowExampleSelector = '#nx-modal-narrow-example',
       wideExampleSelector = '#nx-modal-wide-example',
-      stackedExampleSelector = '#nx-modal-stacked-example';
+      stackedExampleSelector = '#nx-modal-stacked-example',
+      escClosingExampleSelector = '#nx-modal-esc-example';
 
   function simpleModalTest(exampleSelector) {
     return async function() {
@@ -29,13 +31,8 @@ describe('NxAlert', function() {
 
       const closeModalBtn = await browser.$(closeModalBtnSelector);
 
-      try {
-        // take image of entire viewport in order to capture the backdrop color
-        await browser.eyesSnapshot(null);
-      }
-      finally {
-        await closeModalBtn.click();
-      }
+      // take image of entire viewport in order to capture the backdrop color
+      await browser.eyesSnapshot(null);
     }
   }
 
@@ -64,13 +61,8 @@ describe('NxAlert', function() {
       await submitBtn.waitForDisplayed();
       await submitBtn.moveTo();
 
-      try {
-        // take image of entire viewport in order to capture the backdrop color
-        await browser.eyesSnapshot(null);
-      }
-      finally {
-        await cancelBtn.click();
-      }
+      // take image of entire viewport in order to capture the backdrop color
+      await browser.eyesSnapshot(null);
     });
   });
 
@@ -99,24 +91,76 @@ describe('NxAlert', function() {
 
       const closeFirstModalBtn = await browser.$(closeFirstModalBtnSelector);
 
-      try {
       const openSecondModalBtn = await browser.$(openSecondModalBtnSelector);
 
       await openSecondModalBtn.click();
 
       const closeSecondModalBtn = await browser.$(closeSecondModalBtnSelector);
 
-        try {
-          // take image of entire viewport in order to capture the backdrop color
-          await browser.eyesSnapshot(null);
-        }
-        finally {
-          await closeSecondModalBtn.click();
-        }
-      }
-      finally {
-        await closeFirstModalBtn.click();
-      }
+      // take image of entire viewport in order to capture the backdrop color
+      await browser.eyesSnapshot(null);
+    });
+  });
+
+  describe('NxModal + NxDropdown ESC Closing behavior', function() {
+    it('closes one layer per ESC press', async function() {
+      const [
+        initialBtn,
+        customPanel,
+        customPanelBtn,
+        dropdownToggle,
+        dropdownMenu,
+        dropdownBtn,
+        modal1,
+        modal1CloseBtn,
+        modal2,
+        modal2CloseBtn
+      ] = await Promise.all([
+        browser.$(`${escClosingExampleSelector} #esc-example-initial-btn`),
+        browser.$(`${escClosingExampleSelector} .gallery-custom-expandable`),
+        browser.$(`${escClosingExampleSelector} .gallery-custom-expandable button`),
+        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown__toggle`),
+        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-menu`),
+        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-button`),
+        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal`),
+        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-footer .nx-btn`),
+        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal2`),
+        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal2 .nx-footer .nx-btn`)
+      ]);
+
+      await initialBtn.click();
+      await customPanel.waitForDisplayed();
+      await customPanelBtn.click();
+      await modal1.waitForDisplayed();
+      await dropdownToggle.click();
+      await dropdownBtn.waitForDisplayed();
+      await dropdownBtn.click();
+      await modal2.waitForDisplayed();
+
+      expect(await modal2CloseBtn.isFocused()).toBe(true);
+
+      // close second modal
+      await browser.keys('Escape');
+
+      expect(await modal2.isDisplayed()).toBe(false);
+      expect(await dropdownBtn.isFocused()).toBe(true);
+
+      // close dropdown menu
+      await browser.keys('Escape');
+
+      expect(await dropdownMenu.isDisplayed()).toBe(false);
+      expect(await dropdownToggle.isFocused()).toBe(true);
+
+      // close first modal
+      await browser.keys('Escape');
+
+      expect(await modal1.isDisplayed()).toBe(false);
+      expect(await customPanelBtn.isFocused()).toBe(true);
+
+      // close custom panel
+      await browser.keys('Escape');
+
+      expect(await customPanel.isDisplayed()).toBe(false);
     });
   });
 });

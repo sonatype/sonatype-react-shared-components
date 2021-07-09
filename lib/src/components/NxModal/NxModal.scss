@@ -76,6 +76,11 @@
 
   // prevent brief flash of scrollbar as tooltips disappear
   overflow: hidden;
+
+  &::backdrop {
+    // chrome tries to add its own subtle mask here which doubles up with our own
+    display: none;
+  }
 }
 
 .nx-modal-content {

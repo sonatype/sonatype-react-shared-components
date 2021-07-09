@@ -39,7 +39,7 @@ export default function NxModalFormExample() {
     <>
       <NxButton onClick={openModal}>Open Modal with Form</NxButton>
       {showModal &&
-        <NxModal id="nx-modal-form-example" onClose={modalCloseHandler}>
+        <NxModal id="nx-modal-form-example" onCancel={modalCloseHandler}>
           <NxForm className="nx-form"
                   onSubmit={modalCloseHandler}
                   onCancel={modalCloseHandler}
