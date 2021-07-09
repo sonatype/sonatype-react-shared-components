@@ -26,13 +26,17 @@
   background-size: 12px;
   background-position: calc(100% - 16px) 16px;
   background-repeat: no-repeat;
-  border: var(--nx-border-default);
+  border: 1px solid var(--nx-color-form-element-border);
   border-radius: var(--nx-border-radius);
   color: var(--nx-color-text);
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
   padding: var(--nx-spacing-2x) var(--nx-spacing-4x);
   width: var(--nx-width-form-element-normal);
+
+  &.pristine {
+    border-color: var(--nx-color-form-element-border-pristine);
+  }
 
   &:hover {
     border-color: var(--nx-color-form-element-border);

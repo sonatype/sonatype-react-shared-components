@@ -48,7 +48,6 @@ const NxFormSelectPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Form Select Example"
-                        id="nx-form-select-example"
                         codeExamples={sourceCode}
                         liveExample={NxFormSelectExample}>
       Demonstrates a form <code className="nx-code">&lt;select&gt;</code> active state.

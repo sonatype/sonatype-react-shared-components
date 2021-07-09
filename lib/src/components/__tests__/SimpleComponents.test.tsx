@@ -15,7 +15,6 @@ import {
   NxFooter,
   NxButtonBar,
   NxCounter,
-  NxFormSelect,
   NxThreatNumber,
   NxPageMain,
   NxPageSidebar,
@@ -73,12 +72,6 @@ describe('NxButtonBar', function() {
 describe('NxCounter', function() {
   it('makes a <span> tag with an nx-counter class', function() {
     expect(shallow(<NxCounter/>)).toMatchSelector('span.nx-counter');
-  });
-});
-
-describe('NxFormSelect', function() {
-  it('makes a <select> tag with an nx-form-select class', function() {
-    expect(shallow(<NxFormSelect/>)).toMatchSelector('select.nx-form-select');
   });
 });
 
