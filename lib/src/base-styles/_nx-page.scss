@@ -46,6 +46,7 @@
   @include container-vertical;
   grid-area: description;
   margin-top: var(--nx-spacing-2x);
+  max-width: var(--nx-width-text-wrapping);
 
   + .nx-page-title__tags {
     margin-top: var(--nx-spacing-4x);
