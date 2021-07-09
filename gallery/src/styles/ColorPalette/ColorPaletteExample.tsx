@@ -69,7 +69,7 @@ export default function ColorPaletteExample() {
           <div className="nx-card__content">
             {colorVars.map(colorVar =>
               <div className="gallery-swatch" key={colorVar}>
-                <div className="gallery-swatch__thumb" style={{backgroundColor: `var(${colorVar})`}}></div>
+                <div className="gallery-color-sample" style={{backgroundColor: `var(${colorVar})`}}></div>
                 <NxCode className="gallery-swatch__hex">
                   {bodyStyles.getPropertyValue(colorVar)}
                 </NxCode>
@@ -88,14 +88,14 @@ export default function ColorPaletteExample() {
         </NxCard.Header>
         <NxCard.Content>
           <div className="gallery-swatch">
-            <div className="gallery-swatch__thumb" style={{backgroundColor: 'var(--nx-swatch-black)'}} />
+            <div className="gallery-color-sample" style={{backgroundColor: 'var(--nx-swatch-black)'}} />
             <NxCode className="gallery-swatch__hex">
               {bodyStyles.getPropertyValue('--nx-swatch-black')}
             </NxCode>
             <NxCode className="gallery-swatch__variable">--nx-swatch-black</NxCode>
           </div>
           <div className="gallery-swatch">
-            <div className="gallery-swatch__thumb" style={{backgroundColor: 'var(--nx-swatch-white)'}} />
+            <div className="gallery-color-sample" style={{backgroundColor: 'var(--nx-swatch-white)'}} />
             <NxCode className="gallery-swatch__hex">
               {bodyStyles.getPropertyValue('--nx-swatch-white')}
             </NxCode>
