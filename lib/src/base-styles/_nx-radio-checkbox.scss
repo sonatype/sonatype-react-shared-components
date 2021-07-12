@@ -32,10 +32,7 @@
   }
 
   &:focus-within {
-    // For radios, .nx-radio-checkbox__control is added to an <svg>
-    // Since <svg> does not support pseudoelements, it is instead added to
-    // an additional <span> with the class nx-radio__focus
-    .nx-radio-checkbox__control, .nx-radio__focus {
+    .nx-checkbox__box, .nx-radio__focus {
       position: relative;
       &::after {
         border: 1px solid var(--nx-color-interactive-border-focus);
