@@ -90,7 +90,8 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
           }
 
           return (
-            <NxButton onClick={selected ? undefined : handleBtnClick(num)}
+            <NxButton type="button"
+                      onClick={selected ? undefined : handleBtnClick(num)}
                       key={num}
                       className={classes}
                       aria-current={selected && 'page'}
@@ -108,7 +109,8 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
            { ...attrs }>
         { !onFirstPage &&
           // Left arrow - back one page
-          <NxButton aria-label="goto previous page"
+          <NxButton type="button"
+                    aria-label="goto previous page"
                     onClick={handleBtnClick(currentPage - 1)}
                     variant="tertiary">
             <NxFontAwesomeIcon icon={faCaretLeft} />
@@ -117,7 +119,8 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
 
         { !!numPagesBelowRange &&
           // First page express
-          <NxButton aria-label="goto first page"
+          <NxButton type="button"
+                    aria-label="goto first page"
                     className={getBtnClasses()}
                     onClick={handleBtnClick(0)}>
             1
@@ -126,7 +129,8 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
 
         { numPagesBelowRange > 1 &&
           // Left '...' - back one page group
-          <NxButton aria-label={`goto page ${currentPageRangeStart}`}
+          <NxButton type="button"
+                    aria-label={`goto page ${currentPageRangeStart}`}
                     className={getBtnClasses()}
                     onClick={handleBtnClick(currentPageRangeStart - 1)}>
             …
@@ -139,7 +143,8 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
 
         { numPagesAboveRange > 1 &&
           // Rigth '...' - forward one page group
-          <NxButton aria-label={`goto page ${currentPageRangeEnd + 1}`}
+          <NxButton type="button"
+                    aria-label={`goto page ${currentPageRangeEnd + 1}`}
                     className={getBtnClasses()}
                     onClick={handleBtnClick(currentPageRangeEnd)}>
             …
@@ -148,7 +153,8 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
 
         { !!numPagesAboveRange &&
           // Last page express
-          <NxButton className={getBtnClasses(onLastPage)}
+          <NxButton type="button"
+                    className={getBtnClasses(onLastPage)}
                     onClick={handleBtnClick(pageCount - 1)}
                     aria-label="goto last page">
             {pageCount}
@@ -157,7 +163,8 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
 
         { !onLastPage &&
           // Right arrow - forward one page
-          <NxButton aria-label="goto next page"
+          <NxButton type="button"
+                    aria-label="goto next page"
                     onClick={handleBtnClick(currentPage + 1)}
                     variant="tertiary">
             <NxFontAwesomeIcon icon={faCaretRight} />
