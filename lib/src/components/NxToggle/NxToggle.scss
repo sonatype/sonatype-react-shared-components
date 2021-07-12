@@ -71,7 +71,7 @@ $nx-toggle-width: 44px;
   margin: 0 0 0 var(--nx-spacing-3x);
   width: 0;
   -moz-appearance: none;
-  outline: 0;
+  outline: none;
 
   &:checked {
     + .nx-toggle__control {
