@@ -47,6 +47,7 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
             { isChecked && <circle r="6" strokeWidth="4" className="nx-radio__inner-circle"/> }
             <circle r="7.5" strokeWidth="1" className="nx-radio__outer-circle"/>
           </svg>
+          <span className="nx-radio__focus"></span>
           { content &&
             (overflowTooltip !== false ? <NxOverflowTooltip>{content}</NxOverflowTooltip> : content)
           }

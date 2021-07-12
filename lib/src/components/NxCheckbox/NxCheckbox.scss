@@ -16,6 +16,14 @@ $nx-checkbox-width: 16px;
   position: relative;
   width: $nx-checkbox-width;
 
+  // Pseudoelemtn style is for the focus border
+  &::after{
+    @include nx-radio-checkbox-focus-border($nx-checkbox-height, $nx-checkbox-width);
+    left: -5px;
+    top: -5px;
+    border-radius: 4px;
+  }
+
   .fa-check {
     color: var(--nx-swatch-white);
     font-size: var(--nx-font-size-s);
@@ -31,12 +39,5 @@ $nx-checkbox-width: 16px;
     .fa-check {
       color: var(--nx-color-text-disabled);
     }
-  }
-}
-
-.nx-checkbox:focus-within {
-  &::after{
-    @include nx-radio-checkbox-focus-border($nx-checkbox-height, $nx-checkbox-width);
-    border-radius: 4px;
   }
 }

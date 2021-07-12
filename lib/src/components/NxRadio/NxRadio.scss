@@ -36,9 +36,12 @@ $nx-radio-width: 16px;
   }
 }
 
-.nx-radio:focus-within {
+// Pseudoelement style is for the focus border
+.nx-radio__focus {
   &::after{
     @include nx-radio-checkbox-focus-border($nx-radio-height, $nx-radio-width);
+    left: -28px;
+    top: -12px;
     border-radius: 12px;
   }
 }
