@@ -40,12 +40,14 @@
   margin: 0 0 0 var(--nx-spacing-4x);
   padding-left: var(--nx-spacing-4x);
   min-width: 150px;
+  max-width: unset;
 }
 
 .nx-page-title__description {
   @include container-vertical;
   grid-area: description;
   margin-top: var(--nx-spacing-2x);
+  max-width: var(--nx-width-text-wrapping);
 
   + .nx-page-title__tags {
     margin-top: var(--nx-spacing-4x);
