@@ -107,6 +107,18 @@ describe('NxSegmentedButton', function() {
     expect(onClick).toHaveBeenCalled();
   });
 
+  it('passes the type to the main btn', function() {
+    expect(getShallow().find('.nx-segmented-btn__main-btn')).toHaveProp('type', undefined);
+    expect(getShallow({ type: 'button' }).find('.nx-segmented-btn__main-btn')).toHaveProp('type', 'button');
+    expect(getShallow({ type: 'submit' }).find('.nx-segmented-btn__main-btn')).toHaveProp('type', 'submit');
+  });
+
+  it('sets type="button" on the dropdown button', function() {
+    expect(getShallow().find('.nx-segmented-btn__dropdown-btn')).toHaveProp('type', 'button');
+    expect(getShallow({ type: 'button' }).find('.nx-segmented-btn__dropdown-btn')).toHaveProp('type', 'button');
+    expect(getShallow({ type: 'submit' }).find('.nx-segmented-btn__dropdown-btn')).toHaveProp('type', 'button');
+  });
+
   it('calls onToggleOpen once when clicking to open the dropdown', function() {
     const onToggleOpen = jest.fn(),
         component = getMounted({ onToggleOpen }, { attachTo: container });

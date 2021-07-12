@@ -52,6 +52,14 @@ describe('NxIndeterminatePagination', function() {
     expect(component).toHaveProp('spellCheck', true);
   });
 
+  it('puts type="button" on both buttons', function() {
+    const buttons = getShallowComponent().find(NxButton);
+
+    buttons.forEach(btn => {
+      expect(btn).toHaveProp('type', 'button');
+    });
+  });
+
   it('fires onPrevPageSelect when the back button is clicked', function() {
     const prevHandler = jest.fn(),
         nextHandler = jest.fn(),
