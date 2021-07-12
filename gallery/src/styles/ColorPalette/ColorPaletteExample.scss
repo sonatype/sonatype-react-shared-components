@@ -39,14 +39,6 @@
   text-align: left;
 }
 
-.gallery-swatch__thumb {
-  --shadow-color: hsla(var(--nx-swatch-grey-hs), 10%, 10%);
-  box-shadow: 0 0 3px 1px var(--shadow-color);
-  flex-shrink: 0;
-  height: 64px;
-  width: 64px;
-}
-
 .gallery-swatch__variable, .gallery-swatch__hex {
   justify-self: center;
 }
