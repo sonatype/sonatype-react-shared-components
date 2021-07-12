@@ -16,12 +16,13 @@ $nx-checkbox-width: 16px;
   position: relative;
   width: $nx-checkbox-width;
 
-  // Pseudoelemtn style is for the focus border
+  // Pseudo-element style is for the focus border
   &::after{
     @include nx-radio-checkbox-focus-border($nx-checkbox-height, $nx-checkbox-width);
+
+    border-radius: 4px;
     left: -5px;
     top: -5px;
-    border-radius: 4px;
   }
 
   .fa-check {
