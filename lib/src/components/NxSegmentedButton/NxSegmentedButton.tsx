@@ -28,6 +28,7 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
             onClick,
             children,
             isOpen,
+            type,
             onToggleOpen: externalOnToggleCollapse,
             onKeyDown: externalOnKeyDown,
             onCloseClick,
@@ -46,13 +47,15 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
 
       return (
         <div ref={ref} className={classes} onKeyDown={onKeyDown} { ...attrs }>
-          <NxButton variant={variant}
+          <NxButton type={type || undefined}
+                    variant={variant}
                     className="nx-segmented-btn__main-btn"
                     onClick={onClick}
                     disabled={disabled || undefined}>
             {buttonContent}
           </NxButton>
           <NxButton ref={toggleRef}
+                    type="button"
                     variant={variant}
                     className="nx-segmented-btn__dropdown-btn"
                     onClick={onToggleCollapse}

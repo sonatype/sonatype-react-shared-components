@@ -431,4 +431,12 @@ describe('NxPagination', function() {
       });
     });
   });
+
+  it('puts type="button" on all buttons', function() {
+    const buttons = getShallowComponent({ pageCount: 50, currentPage: 24 }).children();
+
+    buttons.forEach(btn => {
+      expect(btn).toHaveProp('type', 'button');
+    });
+  });
 });
