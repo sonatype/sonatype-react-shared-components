@@ -6,9 +6,14 @@
  */
 import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile, GalleryTile } from '../gallery-components/GalleryTiles';
-import ReactVisSimpleExample from './ReactVisSimpleExample';
+import ReactVisLineGraphExample from './ReactVisLineGraphExample';
+import ReactVisBarGraphExample from './ReactVisBarGraphExample';
+import ReactVisDonutChartExample from './ReactVisDonutChartExample';
 
-const reactVisSimpleExampleCode = require('./ReactVisSimpleExample?raw');
+const reactVisLineGraphExampleCode = require('./ReactVisLineGraphExample?raw'),
+    reactVisBarGraphExampleCode = require('./ReactVisBarGraphExample?raw'),
+    reactVisDonutChartExampleCode = require('./ReactVisDonutChartExample?raw')
+;
 
 const ReactVisPage = () =>
   <>
@@ -29,6 +34,7 @@ const ReactVisPage = () =>
       <p className="nx-p">
         <code className="nx-code">{'<XYPlot height={300} width = {300} />'}</code>
       </p>
+
       <h3 className="nx-h3">Ordering</h3>
       <p className="nx-p">
         Similar to traditional React, order matters as components are drawn in order. For example, placing
@@ -36,12 +42,35 @@ const ReactVisPage = () =>
         <code className="nx-code">{'<LineSeries data={data} />'}</code> will draw the chart on top of the gridlines.
       </p>
 
+      <h3 className="nx-h3">Data</h3>
+      <p className="nx-p">
+        React-vis charts are made up of chart components, like
+        <code className="nx-code">{'<LineSeries />, <VerticalBarSeries />, <HorizontalBarSeries />'}</code> etc.
+        Each of these components require a <code className="nx-code">data</code> prop through which we pass an
+        array of objects.
+      </p>
+      <p className="nx-p">
+        These properties correspond to various visual characteristics of the corresponding marks. For example, x and y,
+        which are required for most series types, affect the position of each mark.
+      </p>
     </GalleryTile>
 
-    <GalleryExampleTile title="React-Vis Example"
-                        id="nx-alert-custom-example"
-                        liveExample={ReactVisSimpleExample}
-                        codeExamples={reactVisSimpleExampleCode}>
+    <GalleryExampleTile title="React-vis Line Graph Example"
+                        id="react-vis-line-graph-example"
+                        liveExample={ReactVisLineGraphExample}
+                        codeExamples={reactVisLineGraphExampleCode}>
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="React-vis Bar Graph Example"
+                        id="react-vis-bar-graph-example"
+                        liveExample={ReactVisBarGraphExample}
+                        codeExamples={reactVisBarGraphExampleCode}>
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="React-vis Donut Chart Example"
+                        id="react-vis-donut-chart-example"
+                        liveExample={ReactVisDonutChartExample}
+                        codeExamples={reactVisDonutChartExampleCode}>
     </GalleryExampleTile>
   </>;
 

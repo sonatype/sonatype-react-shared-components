@@ -8,7 +8,7 @@ import React from 'react';
 import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries } from 'react-vis';
 import './ReactVis.scss';
 
-export default function ReactVisSimpleExample() {
+export default function ReactVisLineGraphExample() {
   const data = [
     {x: 0, y: 8},
     {x: 1, y: 5},
