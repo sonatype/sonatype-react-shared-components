@@ -109,6 +109,7 @@ import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTi
 import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
 import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterPage';
 import CssVariablesPage from './styles/CssVariables/CssVariablesPage';
+import ReactVisPage from './misc/ReactVisPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -168,6 +169,9 @@ const pageConfig: PageConfig = {
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage
+  },
+  'Misc': {
+    'React-Vis Library': ReactVisPage
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,
