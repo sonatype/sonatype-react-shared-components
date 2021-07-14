@@ -178,13 +178,23 @@ export default function NxModalPage() {
             </tr>
           </tbody>
         </table>
+        <NxInfoAlert>
+          Note: Placing content into the modal which exceeds its horizontal bounds is not supported. The resulting
+          layout is unspecified.
+        </NxInfoAlert>
         <h3>Accessibility</h3>
         <p className="nx-p">
-          Elements with the <code className="nx-code">dialog</code> roles are supposed to have a label specified by the
-          {' '}<code className="nx-code">aria-label</code> or <code className="nx-code">aria-labelledby</code>
-          attributes. Typically the label would be the same as the modal header text and so
-          {' '}<code className="nx-code">aria-labelledby</code> is the DRYer atribute, but either can work.
+          Elements with the <code className="nx-code">dialog</code> role are supposed to have a label specified by the
+          {' '}<code className="nx-code">aria-labelledby</code> or <code className="nx-code">aria-label</code>
+          {' '}attribute. Because the value of <code className="nx-code">aria-labelledby</code> or
+          {' '}<code className="nx-code">aria-label</code> is typically the same as the modal header text
+          {' '}<code className="nx-code">aria-labelledby</code> is the DRYer attribute.
         </p>
+        <NxWarningAlert>
+          Note: While the use of <code className="nx-code">aria-labelledby</code>
+          {' '}(or <code className="nx-code">aria-label</code>) is not required by the component it should be
+          considered mandatory in order to comply with accessibility guidelines.
+        </NxWarningAlert>
         <table className="nx-table nx-table--gallery-props">
           <thead>
             <tr className="nx-table-row nx-table-row--header">
@@ -194,26 +204,22 @@ export default function NxModalPage() {
           </thead>
           <tbody>
             <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">aria-label</code></td>
-              <td className="nx-cell">
-                When the <code className="nx-code">aria-label</code> attribute is used the text is added directly to the
-                attribute.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
               <td className="nx-cell"><code className="nx-code">aria-labelledby</code></td>
               <td className="nx-cell">
                 When the <code className="nx-code">aria-labelledby</code> attribute is used an ID is applied to the
-                HTML element that will be providing the label information (typically the modal title), the ID is
-                referened by <code className="nx-code">aria-labelledby</code>.
+                HTML element that will be providing the label information (typically the modal title H3), the ID is
+                referenced by <code className="nx-code">aria-labelledby</code>. See examples below.
+              </td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell"><code className="nx-code">aria-label</code></td>
+              <td className="nx-cell">
+                When the <code className="nx-code">aria-label</code> attribute is used the text is added directly to the
+                attribute. See the NxModal Example with NxAlert example below.
               </td>
             </tr>
           </tbody>
         </table>
-        <NxInfoAlert>
-          Note: Placing content into the modal which exceeds its horizontal bounds is not supported. The resulting
-          layout is unspecified.
-        </NxInfoAlert>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple NxModal Example"
