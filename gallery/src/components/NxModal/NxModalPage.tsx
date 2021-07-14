@@ -178,6 +178,38 @@ export default function NxModalPage() {
             </tr>
           </tbody>
         </table>
+        <h3>Accessibility</h3>
+        <p className="nx-p">
+          Elements with the <code className="nx-code">dialog</code> roles are supposed to have a label specified by the
+          {' '}<code className="nx-code">aria-label</code> or <code className="nx-code">aria-labelledby</code>
+          attributes. Typically the label would be the same as the modal header text and so
+          {' '}<code className="nx-code">aria-labelledby</code> is the DRYer atribute, but either can work.
+        </p>
+        <table className="nx-table nx-table--gallery-props">
+          <thead>
+            <tr className="nx-table-row nx-table-row--header">
+              <th className="nx-cell nx-cell--header">Attribute</th>
+              <th className="nx-cell nx-cell--header">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="nx-table-row">
+              <td className="nx-cell"><code className="nx-code">aria-label</code></td>
+              <td className="nx-cell">
+                When the <code className="nx-code">aria-label</code> attribute is used the text is added directly to the
+                attribute.
+              </td>
+            </tr>
+            <tr className="nx-table-row">
+              <td className="nx-cell"><code className="nx-code">aria-labelledby</code></td>
+              <td className="nx-cell">
+                When the <code className="nx-code">aria-labelledby</code> attribute is used an ID is applied to the
+                HTML element that will be providing the label information (typically the modal title), the ID is
+                referened by <code className="nx-code">aria-labelledby</code>.
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <NxInfoAlert>
           Note: Placing content into the modal which exceeds its horizontal bounds is not supported. The resulting
           layout is unspecified.
@@ -191,6 +223,7 @@ export default function NxModalPage() {
         A basic example of an <code className="nx-code">NxModal</code>. Click the button to open the modal. Note that
         this modal has sufficient content to induce scrolling (on most monitors). You will see in other examples that
         when modals have smaller contents, the scrollbar does not appear and the modal content area shrinks to fit.
+        This example uses <code className="nx-code">aria-labelledby</code>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with NxAlert"
@@ -201,6 +234,7 @@ export default function NxModalPage() {
         in this scenario is <NxCode>alertdialog</NxCode>.  Note that this is actually the only role you'd ever want to
         explicitly add to an <NxCode>NxModal</NxCode>. In non-alert cases, <NxCode>NxModal</NxCode> takes on the
         semantics of the <NxCode>dialog</NxCode> role as one would expect.
+        This example uses <code className="nx-code">aria-label</code>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal with stacked modal example"
@@ -209,6 +243,7 @@ export default function NxModalPage() {
                           codeExamples={NxModalStackedSourceCode}>
         <code className="nx-code">NxModal</code> also supports stacked or nested modals. A second modal can be
         generated from inside of an <code className="nx-code">NxModal</code>.
+        This example uses <code className="nx-code">aria-labelledby</code>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal example with other ESC-controller elements"
@@ -220,6 +255,7 @@ export default function NxModalPage() {
         component all working together such that pressing ESC only closes one of them at a time. Note
         that <NxCode>NxDropdown</NxCode> is designed so that pressing ESC when it is open only closes it if it is
         focused.
+        This example uses <code className="nx-code">aria-labelledby</code>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with form"
@@ -227,6 +263,7 @@ export default function NxModalPage() {
                           liveExample={NxModalFormExample}
                           codeExamples={NxModalFormSourceCode}>
         <code className="nx-code">NxModal</code> also supports inclusion and styling of form elements.
+        This example uses <code className="nx-code">aria-labelledby</code>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with form and error styling"
@@ -235,7 +272,8 @@ export default function NxModalPage() {
                           codeExamples={NxModalFormErrorSourceCode}>
         This <code className="nx-code">NxModal</code> also contains a form, but additionally demonstrates the typical
         way that an error upon the submission of said form would be handled: with
-        an <code className="nx-code">NxErrorAlert</code> in the footer
+        an <code className="nx-code">NxErrorAlert</code> in the footer.
+        This example uses <code className="nx-code">aria-labelledby</code>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Wide NxModal Example"
@@ -244,6 +282,7 @@ export default function NxModalPage() {
                           codeExamples={NxModalExtraWideSourceCode}>
         A demonstration of the <code className="nx-code">wide</code> styles
         for <code className="nx-code">NxModal</code>.
+        This example uses <code className="nx-code">aria-labelledby</code>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Narrow NxModal Example"
@@ -252,6 +291,7 @@ export default function NxModalPage() {
                           codeExamples={NxModalNarrowSourceCode}>
         A demonstration of the <code className="nx-code">narrow</code> styles
         for <code className="nx-code">NxModal</code>.
+        This example uses <code className="nx-code">aria-labelledby</code>.
       </GalleryExampleTile>
     </>
   );

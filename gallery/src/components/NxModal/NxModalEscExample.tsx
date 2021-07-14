@@ -44,9 +44,9 @@ export default function NxModalStackedExample() {
         </div>
       }
       {showModal &&
-        <NxModal id="nx-modal-esc-example-modal" onCancel={modal1CancelHandler}>
+        <NxModal id="nx-modal-esc-example-modal" onCancel={modal1CancelHandler} aria-labelledby="modal-esc-header">
           <header className="nx-modal-header">
-            <h2 className="nx-h2">
+            <h2 className="nx-h2" id="modal-esc-header">
               <NxFontAwesomeIcon icon={faAngry} />
               <span>NxModal with a dropdown that opens another modal</span>
             </h2>

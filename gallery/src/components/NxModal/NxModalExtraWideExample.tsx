@@ -16,8 +16,11 @@ export default function NxModalExtraWideExample() {
     <>
       <NxButton onClick={() => setShowModal(true)}>Open wide modal</NxButton>
       {showModal &&
-      <NxModal id="nx-modal-wide-example" variant="wide" onCancel={modalCloseHandler}>
-        <header className="nx-modal-header">
+      <NxModal id="nx-modal-wide-example"
+               variant="wide"
+               onCancel={modalCloseHandler}
+               aria-labelledby="modal-wide-header">
+        <header className="nx-modal-header" id="modal-wide-header">
           <h2 className="nx-h2">Vulnerability Information</h2>
         </header>
         <div className="nx-modal-content">

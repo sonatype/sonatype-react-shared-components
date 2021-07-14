@@ -17,9 +17,12 @@ export default function NxModalSimpleExample() {
     <>
       <NxButton onClick={() => setShowModal(true)}>Open Modal</NxButton>
       { showModal &&
-        <NxModal variant="narrow" id="nx-modal-narrow-example" onCancel={modalCloseHandler}>
+        <NxModal variant="narrow"
+                 id="nx-modal-narrow-example"
+                 onCancel={modalCloseHandler}
+                 aria-labelledby="modal-narrow-header">
           <header className="nx-modal-header">
-            <h2 className="nx-h2">
+            <h2 className="nx-h2" id="modal-narrow-header">
               <NxFontAwesomeIcon icon={faAngry} />
               <span>
                 Example NxModal header - this header is long to demonstrate the truncation that all modal headers
