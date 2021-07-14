@@ -32,12 +32,15 @@
   }
 
   &:focus-within {
-    &::after {
-      border: 1px solid var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
-      content: '';
-      display: block;
-      position: absolute;
+    .nx-checkbox__box, .nx-radio__focus {
+      position: relative;
+      &::after {
+        border: 1px solid var(--nx-color-interactive-border-focus);
+        box-shadow: var(--nx-box-shadow-focus);
+        content: '';
+        display: block;
+        position: absolute;
+      }
     }
 
     &:hover {
