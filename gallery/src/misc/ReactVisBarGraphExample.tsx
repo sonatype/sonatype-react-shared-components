@@ -53,7 +53,7 @@ export default function ReactVisBarGraphExample() {
               <HorizontalGridLines />
               <VerticalBarSeries data={chartData} barWidth={0.3}/>
               <XAxis />
-              <YAxis tickFormat={val => `$${val}`} tickSize={4} marginRight={10} title="Revenue (in millions)"/>
+              <YAxis tickFormat={val => `$${val}`} title="Revenue (in millions)"/>
             </XYPlot>
           }
           <NxButton onClick={updateData}>Update Data</NxButton>
