@@ -6,40 +6,40 @@
  */
 import { NxButton, NxLoadingSpinner } from '@sonatype/react-shared-components';
 import React, { useEffect, useState } from 'react';
-import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, VerticalBarSeries, Hint } from 'react-vis';
+import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, VerticalBarSeries } from 'react-vis';
+import { randomNumberGenerator } from '../util/jsUtil';
 import './ReactVis.scss';
 
+interface ChartData {
+  x: string,
+  y: number
+}
+
 export default function ReactVisBarGraphExample() {
-  const data = [
+  const data: ChartData[] = [
     {x: 'Q1', y: 2.8},
     {x: 'Q2', y: 3.2},
     {x: 'Q3', y: 2.5},
     {x: 'Q4', y: 3.5}
   ];
 
-  const [chartData, setChartData] = useState(data);
+  const [chartData, setChartData] = useState<ChartData[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Mock API call
+  // Simulate an async data load task
   useEffect(() => {
-    setChartData(data);
     setTimeout(() => {
+      setChartData(data);
       setIsLoading(false);
     }, 3000);
   }, []);
 
   const updateData = () => {
-    const tempData = [];
+    const tempData: ChartData[] = [];
     for (let i = 1; i < 5; i++) {
-      tempData.push({x: `Q${i}`, y: randomGenerator(0, 5, 1)});
+      tempData.push({x: `Q${i}`, y: randomNumberGenerator(0, 5, 1)});
     }
     setChartData(tempData);
-  };
-
-  const randomGenerator = (min: number, max: number, decimalPlaces: number) => {
-    const rand = Math.random() * (max - min) + min;
-    const power = Math.pow(10, decimalPlaces);
-    return Math.floor(rand * power) / power;
   };
 
   return (
@@ -47,14 +47,15 @@ export default function ReactVisBarGraphExample() {
       {
         isLoading ? <NxLoadingSpinner /> :
         <>
-          <XYPlot xType="ordinal" width={600} height={300} animation>
-            <VerticalGridLines />
-            <HorizontalGridLines />
-            <VerticalBarSeries data={chartData} barWidth={0.3}/>
-            <XAxis />
-            <YAxis tickFormat={val => `$${val}`} tickSize={4} marginRight={10} title="Revenue (in millions)"/>
-            <Hint />
-          </XYPlot>
+          {chartData &&
+            <XYPlot xType="ordinal" width={600} height={300} animation>
+              <VerticalGridLines />
+              <HorizontalGridLines />
+              <VerticalBarSeries data={chartData} barWidth={0.3}/>
+              <XAxis />
+              <YAxis tickFormat={val => `$${val}`} tickSize={4} marginRight={10} title="Revenue (in millions)"/>
+            </XYPlot>
+          }
           <NxButton onClick={updateData}>Update Data</NxButton>
         </>
       }

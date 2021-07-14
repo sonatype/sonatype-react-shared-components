@@ -28,7 +28,8 @@ const ReactVisPage = () =>
     <GalleryTile title="React-vis Basics" >
       <h3 className="nx-h3">XYPlot</h3>
       <p className="nx-p">
-        Every chart that react-vis generates is inside a parent component called <code className="nx-code">XYPlot</code>
+        Every series chart that react-vis generates (excludes RadialChart, Sankey, Sunburst and Treemap)
+        is inside a parent component called <code className="nx-code">XYPlot</code>
         that requires two props: <code className="nx-code">height</code> and <code className="nx-code">width</code>.
       </p>
       <p className="nx-p">
