@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components",
-  "version": "7.4.2",
+  "version": "7.5.0",
   "description": "Sonatype shared UI components and utilities written in React",
   "main": "index.js",
   "repository": {
@@ -81,8 +81,7 @@
     "classnames": "^2.2.6",
     "fuse.js": "^6.4.6",
     "prop-types": "^15.7.2",
-    "ramda": "^0.27.1",
-    "react-vis": "^1.11.7"
+    "ramda": "^0.27.1"
   },
   "peerDependencies": {
     "react": "^16.10.1",

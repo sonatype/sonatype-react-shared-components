@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components-gallery",
-  "version": "7.4.2",
+  "version": "7.5.0",
   "description": "Gallery application to demonstrate usage and look of Sonatype shared UI components",
   "main": "src/main.ts",
   "scripts": {
@@ -29,6 +29,7 @@
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-syntax-highlighter": "^13.5.0",
+    "@types/react-vis": "^1.11.7",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
     "@wdio/cli": "^6.12.1",
@@ -60,7 +61,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@sonatype/react-shared-components": "link:../lib/dist",
-    "@types/react-vis": "^1.11.7",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "core-js": "^3.8.3",
