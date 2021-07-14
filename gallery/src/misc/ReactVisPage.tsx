@@ -55,19 +55,19 @@ const ReactVisPage = () =>
       </p>
     </GalleryTile>
 
-    <GalleryExampleTile title="React-vis Line Graph Example"
+    <GalleryExampleTile title="Line Graph Example"
                         id="react-vis-line-graph-example"
                         liveExample={ReactVisLineGraphExample}
                         codeExamples={reactVisLineGraphExampleCode}>
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="React-vis Bar Graph Example"
+    <GalleryExampleTile title="Bar Graph Example"
                         id="react-vis-bar-graph-example"
                         liveExample={ReactVisBarGraphExample}
                         codeExamples={reactVisBarGraphExampleCode}>
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="React-vis Donut Chart Example"
+    <GalleryExampleTile title="Donut Chart Example"
                         id="react-vis-donut-chart-example"
                         liveExample={ReactVisDonutChartExample}
                         codeExamples={reactVisDonutChartExampleCode}>
