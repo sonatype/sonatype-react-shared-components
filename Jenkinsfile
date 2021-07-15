@@ -8,7 +8,7 @@
 
 def seleniumHubDockerImage = 'docker-all.repo.sonatype.com/selenium/hub'
 def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/node-chrome'
-def seleniumDockerVersion = '4.0.0'
+def seleniumDockerVersion = '3.141.59-20210713'
 def numSeleniumContainers = 10;
 
 dockerizedBuildPipeline(
