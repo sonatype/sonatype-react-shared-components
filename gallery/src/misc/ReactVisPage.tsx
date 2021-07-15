@@ -28,7 +28,7 @@ const ReactVisPage = () =>
       <h3 className="nx-h2">React-vis Basics</h3>
       <h3 className="nx-h3">XYPlot</h3>
       <p className="nx-p">
-        Every series chart that react-vis generates (excludes RadialChart, Sankey, Sunburst and Treemap)
+        Every series chart that React-vis generates (excludes RadialChart, Sankey, Sunburst and Treemap)
         is inside a parent component called <code className="nx-code">XYPlot</code>
         that requires two props: <code className="nx-code">height</code> and <code className="nx-code">width</code>.
       </p>
@@ -68,7 +68,7 @@ const ReactVisPage = () =>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
                 React-vis utilizes the react-motion animation system that accepts three types of values.
-                boolean: if <code className="nx-code">true</code> is present then react-vis will use the no-wobble
+                boolean: if <code className="nx-code">true</code> is present then React-vis will use the no-wobble
                 preset. string: available choices include noWobble, gentle, wobbly, and stiff.
                 object: expects an object formatting like
                 <code className="nx-code">{'{damping: NUMBER, stiffness: NUMBER}'}</code>
@@ -126,6 +126,42 @@ const ReactVisPage = () =>
               <NxTableCell>
                 How far the labels should be from the center of the chart as a function of the radius of the chart.
                 If not specified, the default value of 1.1 is used (slightly outside of the chart).
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>onMouseLeave</NxTableCell>
+              <NxTableCell>function</NxTableCell>
+              <NxTableCell>no</NxTableCell>
+              <NxTableCell>
+                This event handler is triggered whenever the mouse of the user exits the plot area.
+                It passes a mouse event.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>onNearestXY</NxTableCell>
+              <NxTableCell>function</NxTableCell>
+              <NxTableCell>no</NxTableCell>
+              <NxTableCell>
+                This handler fires when the user moves their mouse or touch point somewhere on the plot.
+                It returns the datapoint corresponding to the mark closest to the cursor or touch point.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>onValueMouseOver</NxTableCell>
+              <NxTableCell>function</NxTableCell>
+              <NxTableCell>no</NxTableCell>
+              <NxTableCell>
+                This handler is triggered either when the user's mouse enters a mark. The handler passes two arguments,
+                the corresponding datapoint and the actual event.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>onValueMouseOut</NxTableCell>
+              <NxTableCell>function</NxTableCell>
+              <NxTableCell>no</NxTableCell>
+              <NxTableCell>
+                This handler is triggered either when the user's mouse leaves a mark. The handler passes two arguments,
+                the corresponding datapoint and the actual event.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>

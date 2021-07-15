@@ -6,25 +6,22 @@
  */
 import { NxButton, NxLoadingSpinner } from '@sonatype/react-shared-components';
 import React, { useEffect, useState } from 'react';
-import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, VerticalBarSeries } from 'react-vis';
+import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, VerticalBarSeries,
+  Hint, VerticalBarSeriesPoint } from 'react-vis';
 import { randomNumberGenerator } from '../util/jsUtil';
 import './ReactVis.scss';
 
-interface ChartData {
-  x: string,
-  y: number
-}
-
 export default function ReactVisBarGraphExample() {
-  const data: ChartData[] = [
+  const data: VerticalBarSeriesPoint[] = [
     {x: 'Q1', y: 2.8},
     {x: 'Q2', y: 3.2},
     {x: 'Q3', y: 2.5},
     {x: 'Q4', y: 3.5}
   ];
 
-  const [chartData, setChartData] = useState<ChartData[] | null>(null);
+  const [chartData, setChartData] = useState<VerticalBarSeriesPoint[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [hintValue, setHintValue] = useState<VerticalBarSeriesPoint | null>(null);
 
   // Simulate an async data load task
   useEffect(() => {
@@ -35,11 +32,12 @@ export default function ReactVisBarGraphExample() {
   }, []);
 
   const updateData = () => {
-    const tempData: ChartData[] = [];
+    const tempData: VerticalBarSeriesPoint[] = [];
     for (let i = 1; i < 5; i++) {
       tempData.push({x: `Q${i}`, y: randomNumberGenerator(0, 5, 1)});
     }
     setChartData(tempData);
+    setHintValue(null);
   };
 
   return (
@@ -47,11 +45,16 @@ export default function ReactVisBarGraphExample() {
       {
         isLoading ? <NxLoadingSpinner /> :
         <>
-          {chartData &&
-            <XYPlot xType="ordinal" width={600} height={300} animation>
+          {
+            chartData &&
+            <XYPlot xType="ordinal" width={600} height={300} animation onMouseLeave={() => setHintValue(null)}>
               <VerticalGridLines />
               <HorizontalGridLines />
-              <VerticalBarSeries data={chartData} barWidth={0.3}/>
+              <VerticalBarSeries data={chartData}
+                                 barWidth={0.3}
+                                 onNearestXY={v => setHintValue(v)}
+              />
+              {hintValue && <Hint value={hintValue} />}
               <XAxis />
               <YAxis tickFormat={val => `$${val}`} title="Revenue (in millions)"/>
             </XYPlot>

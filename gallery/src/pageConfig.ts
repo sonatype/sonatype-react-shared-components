@@ -170,8 +170,8 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
-  'Misc': {
-    'React-Vis Library': ReactVisPage
+  'Data Visualization Library': {
+    'React-vis': ReactVisPage
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,

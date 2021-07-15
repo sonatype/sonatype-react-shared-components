@@ -7,25 +7,20 @@
 /* eslint-disable no-console */
 import { NxButton, NxLoadingSpinner } from '@sonatype/react-shared-components';
 import React, { useEffect, useState } from 'react';
-import { RadialChart } from 'react-vis';
+import { Hint, RadialChart, RadialChartPoint } from 'react-vis';
 import { randomNumberGenerator } from '../util/jsUtil';
 import './ReactVis.scss';
 
-interface ChartData {
-  angle: number,
-  color: string,
-  label: string
-}
-
 export default function ReactVisDonutChartExample() {
-  const data: ChartData[] = [
-    {angle: 1, color: 'red', label: 'Severe'},
-    {angle: 5, color: 'yellow', label: 'Moderate'},
-    {angle: 2, color: 'green', label: 'Low'}
+  const data: RadialChartPoint[] = [
+    {angle: 1, color: 'red', label: 'Severe', subLabel: '1'},
+    {angle: 5, color: 'yellow', label: 'Moderate', subLabel: '5'},
+    {angle: 2, color: 'green', label: 'Low', subLabel: '2'}
   ];
 
-  const [chartData, setChartData] = useState<ChartData[] | null>(null);
+  const [chartData, setChartData] = useState<RadialChartPoint[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [hintValue, setHintValue] = useState<RadialChartPoint | null>(null);
 
   // Simulate an async data load task
   useEffect(() => {
@@ -35,12 +30,17 @@ export default function ReactVisDonutChartExample() {
     }, 3000);
   }, []);
 
+  //Creates random datapoints
   const updateData = () => {
-    const tempData: ChartData[] = [];
-    tempData.push({angle: randomNumberGenerator(1, 5, 0), color: 'red', label: 'Severe'});
-    tempData.push({angle: randomNumberGenerator(1, 5, 0), color: 'green', label: 'None'});
-    tempData.push({angle: randomNumberGenerator(1, 5, 0), color: 'yellow', label: 'Moderate'});
+    const tempData: RadialChartPoint[] = [];
+    let randomNum = randomNumberGenerator(1, 10, 0);
+    tempData.push({angle: randomNum, color: 'red', label: 'Severe', subLabel: String(randomNum)});
+    randomNum = randomNumberGenerator(1, 10, 0);
+    tempData.push({angle: randomNum, color: 'green', label: 'Low', subLabel: String(randomNum)});
+    randomNum = randomNumberGenerator(1, 10, 0);
+    tempData.push({angle: randomNum, color: 'yellow', label: 'Moderate', subLabel: String(randomNum)});
     setChartData(tempData);
+    setHintValue(null);
   };
 
   return (
@@ -48,7 +48,8 @@ export default function ReactVisDonutChartExample() {
       {
         isLoading ? <NxLoadingSpinner /> :
         <>
-          {chartData &&
+          {
+            chartData &&
             <RadialChart animation
                          data={chartData}
                          height={400}
@@ -56,9 +57,22 @@ export default function ReactVisDonutChartExample() {
                          innerRadius={100}
                          radius={140}
                          showLabels
+                         padAngle={0.05}
                          colorType="literal"
                          labelsRadiusMultiplier={1.25}
-            />
+                         onValueMouseOver={val => setHintValue(val)}
+                         onValueMouseOut={() => setHintValue(null)}
+            >
+              {
+                hintValue &&
+                //Illustrates how Hints are stylistically customizable
+                <Hint value={hintValue}>
+                  <p className="nx-donut-hint">
+                    {hintValue.label}: {hintValue.subLabel}
+                  </p>
+                </Hint>
+              }
+            </RadialChart>
           }
           <NxButton onClick={updateData}>Update Data</NxButton>
         </>
