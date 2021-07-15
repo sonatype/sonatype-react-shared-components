@@ -9,11 +9,13 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../gallery-component
 import ReactVisLineGraphExample from './ReactVisLineGraphExample';
 import ReactVisBarGraphExample from './ReactVisBarGraphExample';
 import ReactVisDonutChartExample from './ReactVisDonutChartExample';
+import ReactVisStackedGraphExample from './ReactVisStackedGraphExample';
 import { NxTable, NxTableBody, NxTableCell, NxTableHead, NxTableRow } from '@sonatype/react-shared-components';
 
 const reactVisLineGraphExampleCode = require('./ReactVisLineGraphExample?raw'),
     reactVisBarGraphExampleCode = require('./ReactVisBarGraphExample?raw'),
-    reactVisDonutChartExampleCode = require('./ReactVisDonutChartExample?raw')
+    reactVisDonutChartExampleCode = require('./ReactVisDonutChartExample?raw'),
+    reactVisStackedGraphExampleCode = require('./ReactVisStackedGraphExample?raw')
 ;
 
 const ReactVisPage = () =>
@@ -235,6 +237,12 @@ const ReactVisPage = () =>
                         id="react-vis-donut-chart-example"
                         liveExample={ReactVisDonutChartExample}
                         codeExamples={reactVisDonutChartExampleCode}>
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Stacked Graph Example"
+                        id="react-vis-stacked-graph-example"
+                        liveExample={ReactVisStackedGraphExample}
+                        codeExamples={reactVisStackedGraphExampleCode}>
     </GalleryExampleTile>
   </>;
 
