@@ -833,6 +833,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-vis@^1.11.7":
+  version "1.11.7"
+  resolved "https://registry.npmjs.org/@types/react-vis/-/react-vis-1.11.7.tgz#da23b8fb833a962e8a0db39668438a43e9a7e05d"
+  integrity sha512-X0+xpR+koVXxmh68TlGSkIuXNL7DwqL+IvjtQvdJi7Vg9OokqBMU/EyuaFOUpN5awMXB7DDT/2WxC2epG+nW7Q==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16", "@types/react@^16.0.0":
   version "16.14.3"
   resolved "https://registry.npmjs.org/@types/react/-/react-16.14.3.tgz#f5210f5deecf35d8794845549c93c2c3ad63aa9c"
