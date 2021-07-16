@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { NxButton, NxLoadingSpinner } from '@sonatype/react-shared-components';
+import { NxButton, NxLoadingSpinner, selectableColors } from '@sonatype/react-shared-components';
 import React, { useEffect, useState } from 'react';
 import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries,
   Hint, LineSeriesPoint, MarkSeries, MarkSeriesPoint } from 'react-vis';
@@ -76,8 +76,8 @@ export default function ReactVisLineGraphExample() {
               <YAxis/>
               <HorizontalGridLines />
               <VerticalGridLines />
-              <LineSeries data={chartData}/>
-              <LineSeries data={chartData1}/>
+              <LineSeries data={chartData} stroke={selectableColors[0]}/>
+              <LineSeries data={chartData1} stroke={selectableColors[1]}/>
               <MarkSeries data={[...chartData, ...chartData1]} onNearestXY={v => setHintValue(v)}/>
               {hintValue && <Hint value={hintValue} />}
             </XYPlot>

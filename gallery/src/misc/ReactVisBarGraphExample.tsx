@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { NxButton, NxLoadingSpinner } from '@sonatype/react-shared-components';
+import { NxButton, NxLoadingSpinner, selectableColors } from '@sonatype/react-shared-components';
 import React, { useEffect, useState } from 'react';
 import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, VerticalBarSeries,
   Hint, VerticalBarSeriesPoint } from 'react-vis';
@@ -53,6 +53,7 @@ export default function ReactVisBarGraphExample() {
               <VerticalBarSeries data={chartData}
                                  barWidth={0.3}
                                  onNearestXY={v => setHintValue(v)}
+                                 color={selectableColors[5]}
               />
               {hintValue && <Hint value={hintValue} />}
               <XAxis />

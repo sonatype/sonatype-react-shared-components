@@ -10,7 +10,8 @@ import ReactVisLineGraphExample from './ReactVisLineGraphExample';
 import ReactVisBarGraphExample from './ReactVisBarGraphExample';
 import ReactVisDonutChartExample from './ReactVisDonutChartExample';
 import ReactVisStackedGraphExample from './ReactVisStackedGraphExample';
-import { NxTable, NxTableBody, NxTableCell, NxTableHead, NxTableRow } from '@sonatype/react-shared-components';
+import { NxTable, NxTableBody, NxTableCell, NxTableHead, NxTableRow,
+  NxWarningAlert } from '@sonatype/react-shared-components';
 
 const reactVisLineGraphExampleCode = require('./ReactVisLineGraphExample?raw'),
     reactVisBarGraphExampleCode = require('./ReactVisBarGraphExample?raw'),
@@ -44,6 +45,44 @@ const ReactVisPage = () =>
         <code className="nx-code">{'<VerticalGridLines />'}</code> before
         <code className="nx-code">{'<LineSeries data={data} />'}</code> will draw the chart on top of the gridlines.
       </p>
+
+      <h3 className="nx-h3">Colors</h3>
+      <p className="nx-p">
+        Colors can be set in many ways in React-vis. Without even providing any specific color values,
+        React-vis generates default colors that look good on charts.
+      </p>
+
+      <p className="nx-p">
+        <code className="nx-code">{'<LineSeries />'}</code> charts use the <code className="nx-code">stroke</code>
+        {' '} prop to determine colors of the lines.
+      </p>
+
+      <p className="nx-p">
+        <code className="nx-code">{'<BarSeries />'}</code> charts use the <code className="nx-code">color</code>
+        {' '} prop to determine colors of the bars.
+      </p>
+
+      <p className="nx-p">
+        <code className="nx-code">{'<RadialChart />'}</code> uses the <code className="nx-code">color</code>
+        {' '} property on the <code className="nx-code">data</code> object to determine colors of the bars.
+      </p>
+
+      <p className="nx-p">
+        RSC's <code className="nx-code">{'selectableColors'}</code> array can be used seamlessly to provide
+        pre-approved colors to color the charts. Usage is quite simple. Simply import the
+        <code className="nx-code">{'selectableColors'}</code> array and pass it on the
+        <code className="nx-code">stroke</code> or the <code className="nx-code">color</code> prop. An example
+        of passing the color to be purple (<code className="nx-code">selectableColors[0]</code>) is shown below.
+      </p>
+
+      <p className="nx-p">
+        <code className="nx-code">{'<LineSeries data={chartData} stroke={selectableColors[0]}/>'}</code>
+      </p>
+
+      <NxWarningAlert>
+        Although React-vis supports custom colors, it is highly recommended to follow RSC design guidelines
+        for colors. Please check the Color Palettes and Selectable Colors section for approved colors.
+      </NxWarningAlert>
 
       <section className="nx-tile-subsection">
         <header className="nx-tile-subsection__header">
@@ -86,11 +125,19 @@ const ReactVisPage = () =>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell>colorType</NxTableCell>
+              <NxTableCell>color</NxTableCell>
               <NxTableCell>string</NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
                 Assigns the specified color to the series.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>colorType</NxTableCell>
+              <NxTableCell>string</NxTableCell>
+              <NxTableCell>No</NxTableCell>
+              <NxTableCell>
+                Override to let React-vis know that the colors provided are literal color values
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
@@ -180,6 +227,14 @@ const ReactVisPage = () =>
               <NxTableCell>no</NxTableCell>
               <NxTableCell>
                 Whether or not to show the labels specified in the data
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>stroke</NxTableCell>
+              <NxTableCell>string</NxTableCell>
+              <NxTableCell>no</NxTableCell>
+              <NxTableCell>
+                In LineSeries, stroke is used instead of color to specify the color of the lines.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
