@@ -4,12 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { NxButton, NxLoadingSpinner, selectableColors } from '@sonatype/react-shared-components';
 import React, { useEffect, useState } from 'react';
+import { NxButton, NxLoadingSpinner, selectableColors } from '@sonatype/react-shared-components';
 import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, VerticalBarSeries,
   Hint, VerticalBarSeriesPoint } from 'react-vis';
-import { randomNumberGenerator } from '../util/jsUtil';
-import './ReactVis.scss';
+import { randomNumberGenerator } from '../../util/jsUtil';
+import '../ReactVis.scss';
 
 export default function ReactVisBarGraphExample() {
   const data: VerticalBarSeriesPoint[] = [
@@ -19,8 +19,8 @@ export default function ReactVisBarGraphExample() {
     {x: 'Q4', y: 3.5}
   ];
 
-  const [chartData, setChartData] = useState<VerticalBarSeriesPoint[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [chartData, setChartData] = useState<VerticalBarSeriesPoint[] | null>(null);
   const [hintValue, setHintValue] = useState<VerticalBarSeriesPoint | null>(null);
 
   // Simulate an async data load task
@@ -28,9 +28,10 @@ export default function ReactVisBarGraphExample() {
     setTimeout(() => {
       setChartData(data);
       setIsLoading(false);
-    }, 3000);
+    }, 1000);
   }, []);
 
+  // Simulate new data load on button click
   const updateData = () => {
     const tempData: VerticalBarSeriesPoint[] = [];
     for (let i = 1; i < 5; i++) {

@@ -4,12 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { NxButton, NxLoadingSpinner, selectableColors } from '@sonatype/react-shared-components';
 import React, { useEffect, useState } from 'react';
+import { NxButton, NxLoadingSpinner, selectableColors } from '@sonatype/react-shared-components';
 import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries,
   Hint, LineSeriesPoint } from 'react-vis';
-import { randomNumberGenerator } from '../util/jsUtil';
-import './ReactVis.scss';
+import { randomNumberGenerator } from '../../util/jsUtil';
+import '../ReactVis.scss';
 
 export default function ReactVisLineGraphExample() {
   const data: LineSeriesPoint[] = [
@@ -25,8 +25,8 @@ export default function ReactVisLineGraphExample() {
     {x: 9, y: 0}
   ];
 
-  const [chartData, setChartData] = useState<LineSeriesPoint[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [chartData, setChartData] = useState<LineSeriesPoint[] | null>(null);
   const [hintValue, setHintValue] = useState<LineSeriesPoint | null>(null);
 
   // Simulate an async data load task
@@ -34,9 +34,10 @@ export default function ReactVisLineGraphExample() {
     setTimeout(() => {
       setChartData(data);
       setIsLoading(false);
-    }, 3000);
+    }, 1000);
   }, []);
 
+  // Simulate new data load on button click
   const updateData = () => {
     const tempData: LineSeriesPoint[] = [];
     for (let i = 0; i < 9; i++) {

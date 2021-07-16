@@ -4,12 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { NxButton, NxLoadingSpinner, selectableColors } from '@sonatype/react-shared-components';
 import React, { useEffect, useState } from 'react';
+import { NxButton, NxLoadingSpinner, selectableColors } from '@sonatype/react-shared-components';
 import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries,
   Hint, LineSeriesPoint, MarkSeries, MarkSeriesPoint } from 'react-vis';
-import { randomNumberGenerator } from '../util/jsUtil';
-import './ReactVis.scss';
+import { randomNumberGenerator } from '../../util/jsUtil';
+import '../ReactVis.scss';
 
 export default function ReactVisLineGraphExample() {
   const data: LineSeriesPoint[] = [
@@ -49,9 +49,10 @@ export default function ReactVisLineGraphExample() {
       setChartData(data);
       setChartData1(data1);
       setIsLoading(false);
-    }, 3000);
+    }, 1000);
   }, []);
 
+  // Simulate new data load on button click
   const updateData = () => {
     const tempData: LineSeriesPoint[] = [];
     const tempData1: LineSeriesPoint[] = [];

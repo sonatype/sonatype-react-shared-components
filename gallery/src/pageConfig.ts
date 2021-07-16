@@ -109,7 +109,11 @@ import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTi
 import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
 import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterPage';
 import CssVariablesPage from './styles/CssVariables/CssVariablesPage';
-import ReactVisPage from './misc/ReactVisPage';
+import ReactVisPage from './data-visualization/ReactVisPage';
+import ReactVisLineGraphPage from './data-visualization/ReactVisLineGraphPage';
+import ReactVisBarGraphPage from './data-visualization/ReactVisBarGraphPage';
+import ReactVisDonutChartPage from './data-visualization/ReactVisDonutChartPage';
+import ReactVisStackedGraphPage from './data-visualization/ReactVisStackedGraphPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -170,9 +174,6 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
-  'Data Visualization Library': {
-    'React-vis': ReactVisPage
-  },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,
     'Contributing to the Gallery': ContributingPage,
@@ -226,6 +227,13 @@ const pageConfig: PageConfig = {
     'useToggle': UseTogglePage,
     'ID Utils': IdUtilPage,
     'withClass Higher-Order Component': WithClassPage
+  },
+  'Data Visualization': {
+    'React-vis': ReactVisPage,
+    'Line Graph': ReactVisLineGraphPage,
+    'Bar Graph': ReactVisBarGraphPage,
+    'Donut Chart': ReactVisDonutChartPage,
+    'Stacked Graph': ReactVisStackedGraphPage
   }
 };
 
