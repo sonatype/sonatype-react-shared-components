@@ -109,6 +109,7 @@ import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTi
 import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
 import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterPage';
 import CssVariablesPage from './styles/CssVariables/CssVariablesPage';
+import AccessibilityPage from './pages/Accessibility';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -170,6 +171,7 @@ const pageConfig: PageConfig = {
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
   'Guidelines': {
+    'Accessibility': AccessibilityPage,
     'Additional Resources': AdditionalResourcePage,
     'Contributing to the Gallery': ContributingPage,
     'font-size and line-height': FontSizePage,
