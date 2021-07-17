@@ -11,7 +11,7 @@ import { Props, ProductInfo, propTypes } from './types';
 
 export { Props };
 
-const logoImg = require('../../assets/img/sonatype-logo-with-hexagon.png');
+const defaultLogo = require('../../assets/img/sonatype-logo-with-hexagon.png');
 
 function HeaderProductInfo({ name, version }: ProductInfo) {
   return (
@@ -22,8 +22,8 @@ function HeaderProductInfo({ name, version }: ProductInfo) {
   );
 }
 
-export default function NxPageHeader({ productInfo, ...otherProps }: Props) {
-  const logo = <img src={logoImg} className="nx-product__logo-image" alt="Sonatype"/>,
+export default function NxPageHeader({ productInfo, logoPath, alt, ...otherProps }: Props) {
+  const logo = <img src={logoPath || defaultLogo} className="nx-product__logo-image" alt={alt || "Sonatype"}/>,
       productInfoContent = productInfo ? <HeaderProductInfo { ...productInfo } /> : null;
 
   return <AbstractNxPageHeader { ...otherProps } { ...{ logo, productInfoContent } } />;
