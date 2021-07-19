@@ -92,6 +92,14 @@
   width: 64px;
 }
 
+.gallery-color-sample__selectable-light {
+  background-color: var(--nx-selectable-color-light);
+}
+
+.gallery-color-sample__selectable-dark {
+  background-color: var(--nx-selectable-color-dark);
+}
+
 .gallery-small-parenthetical {
   font-size: var(--nx-font-size-xs);
 }
