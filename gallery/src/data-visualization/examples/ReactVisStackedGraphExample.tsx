@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
-import { selectableColors } from '@sonatype/react-shared-components';
+import { selectableColorClasses } from '@sonatype/react-shared-components';
 import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries,
   Hint, LineSeriesPoint, MarkSeries, MarkSeriesPoint } from 'react-vis';
 import '../ReactVis.scss';
@@ -40,14 +40,24 @@ export default function ReactVisLineGraphExample() {
   const [hintValue, setHintValue] = useState<MarkSeriesPoint | null>(null);
 
   return (
-    <XYPlot width={400} height={300} animation onMouseLeave={() => setHintValue(null)}>
+    <XYPlot width={400} height={300} onMouseLeave={() => setHintValue(null)}>
       <XAxis/>
       <YAxis/>
       <HorizontalGridLines />
       <VerticalGridLines />
-      <LineSeries data={data} stroke={selectableColors[0]}/>
-      <LineSeries data={data1} stroke={selectableColors[1]}/>
-      <MarkSeries data={[...data, ...data1]} onNearestXY={v => setHintValue(v)}/>
+      <LineSeries data={data}
+                  className={`${selectableColorClasses[4]}`}
+                  stroke="var(--nx-selectable-color-dark)"
+      />
+      <LineSeries data={data1}
+                  className={`${selectableColorClasses[7]}`}
+                  stroke="var(--nx-selectable-color-dark)"
+      />
+      <MarkSeries data={[...data, ...data1]}
+                  onNearestXY={v => setHintValue(v)}
+                  className={`${selectableColorClasses[2]}`}
+                  color="var(--nx-selectable-color-dark)"
+      />
       {hintValue && <Hint value={hintValue} />}
     </XYPlot>
   );

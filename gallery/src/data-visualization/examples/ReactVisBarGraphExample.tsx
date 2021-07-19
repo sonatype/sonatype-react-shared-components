@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
-import { selectableColors } from '@sonatype/react-shared-components';
+import { selectableColorClasses } from '@sonatype/react-shared-components';
 import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, VerticalBarSeries,
   Hint, VerticalBarSeriesPoint } from 'react-vis';
 import '../ReactVis.scss';
@@ -21,13 +21,14 @@ export default function ReactVisBarGraphExample() {
   const [hintValue, setHintValue] = useState<VerticalBarSeriesPoint | null>(null);
 
   return (
-    <XYPlot xType="ordinal" width={600} height={300} animation onMouseLeave={() => setHintValue(null)}>
+    <XYPlot xType="ordinal" width={600} height={300} onMouseLeave={() => setHintValue(null)}>
       <VerticalGridLines />
       <HorizontalGridLines />
       <VerticalBarSeries data={data}
                          barWidth={0.3}
-                         onNearestXY={v => setHintValue(v)}
-                         color={selectableColors[5]}
+                         onNearestX={v => setHintValue(v)}
+                         className={selectableColorClasses[2]}
+                         color="var(--nx-selectable-color-dark)"
       />
       {hintValue && <Hint value={hintValue} />}
       <XAxis />

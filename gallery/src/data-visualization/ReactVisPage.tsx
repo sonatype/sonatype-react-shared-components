@@ -84,17 +84,6 @@ const ReactVisPage = () =>
           </NxTableHead>
           <NxTableBody>
             <NxTableRow>
-              <NxTableCell>animation</NxTableCell>
-              <NxTableCell>boolean/string/object</NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell>
-                React-vis utilizes the react-motion animation system that accepts three types of values.
-                boolean: if <NxCode>true</NxCode> is present then React-vis will use the no-wobble
-                preset. string: available choices include noWobble, gentle, wobbly, and stiff.
-                object: expects an object formatting like <NxCode>{'{damping: NUMBER, stiffness: NUMBER}'}</NxCode>.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
               <NxTableCell>data</NxTableCell>
               <NxTableCell>object array</NxTableCell>
               <NxTableCell>Yes</NxTableCell>

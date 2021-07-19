@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
-import { selectableColors } from '@sonatype/react-shared-components';
+import { selectableColorClasses } from '@sonatype/react-shared-components';
 import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries,
   Hint, LineSeriesPoint } from 'react-vis';
 import '../ReactVis.scss';
@@ -27,12 +27,16 @@ export default function ReactVisLineGraphExample() {
   const [hintValue, setHintValue] = useState<LineSeriesPoint | null>(null);
 
   return (
-    <XYPlot width={400} height={300} animation onMouseLeave={() => setHintValue(null)}>
+    <XYPlot width={400} height={300} onMouseLeave={() => setHintValue(null)}>
       <XAxis/>
       <YAxis/>
       <HorizontalGridLines />
       <VerticalGridLines />
-      <LineSeries data={data} onNearestXY={v => setHintValue(v)} stroke={selectableColors[1]}/>
+      <LineSeries data={data}
+                  onNearestX={v => setHintValue(v)}
+                  className={selectableColorClasses[0]}
+                  stroke="var(--nx-selectable-color-dark)"
+      />
       {hintValue && <Hint value={hintValue} />}
     </XYPlot>
   );

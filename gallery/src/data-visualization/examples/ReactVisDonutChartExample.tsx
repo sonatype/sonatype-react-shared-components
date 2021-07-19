@@ -5,22 +5,37 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
-import { selectableColors } from '@sonatype/react-shared-components';
+import { selectableColorClasses } from '@sonatype/react-shared-components';
 import { Hint, RadialChart, RadialChartPoint } from 'react-vis';
 import '../ReactVis.scss';
 
 export default function ReactVisDonutChartExample() {
   const data: RadialChartPoint[] = [
-    {angle: 1, color: selectableColors[3], label: 'Severe', subLabel: '1'},
-    {angle: 5, color: selectableColors[6], label: 'Moderate', subLabel: '5'},
-    {angle: 2, color: selectableColors[4], label: 'Low', subLabel: '2'}
+    {
+      angle: 1,
+      className: selectableColorClasses[3],
+      color: 'var(--nx-selectable-color-dark)',
+      label: 'Severe',
+      subLabel: '1'
+    },
+    { angle: 5,
+      className: selectableColorClasses[6],
+      color: 'var(--nx-selectable-color-dark)',
+      label: 'Moderate',
+      subLabel: '5'
+    },
+    { angle: 2,
+      className: selectableColorClasses[7],
+      color: 'var(--nx-selectable-color-dark)',
+      label: 'Low',
+      subLabel: '2'
+    }
   ];
 
   const [hintValue, setHintValue] = useState<RadialChartPoint | null>(null);
 
   return (
-    <RadialChart animation
-                 data={data}
+    <RadialChart data={data}
                  height={400}
                  width={400}
                  innerRadius={100}
