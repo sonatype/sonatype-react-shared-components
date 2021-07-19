@@ -104,7 +104,7 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
     }
   }, [onCancel]);
 
-  const ariaLabelAttrNames = ['aria-label', 'aria-labelledby'],
+  const ariaLabelAttrNames = ['aria-label', 'aria-labelledby'] as const,
       ariaLabels = pick(ariaLabelAttrNames, attrs),
       attrsWithoutLabels = omit(ariaLabelAttrNames, attrs);
 
