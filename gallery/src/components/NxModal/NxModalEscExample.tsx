@@ -72,9 +72,9 @@ export default function NxModalStackedExample() {
         </NxModal>
       }
       {showModal2 &&
-        <NxModal id="nx-modal-esc-example-modal2" onCancel={modal2CancelHandler}>
+        <NxModal id="nx-modal-esc-example-modal2" onCancel={modal2CancelHandler} aria-labelledby="modal-esc-header2">
           <header className="nx-modal-header">
-            <h2 className="nx-h2">
+            <h2 className="nx-h2" id="modal-esc-header2">
               <NxFontAwesomeIcon icon={faAngry} />
               <span>NxModal stacked example</span>
             </h2>
