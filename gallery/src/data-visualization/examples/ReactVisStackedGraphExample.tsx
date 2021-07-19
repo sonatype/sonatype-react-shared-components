@@ -4,11 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useEffect, useState } from 'react';
-import { NxButton, NxLoadingSpinner, selectableColors } from '@sonatype/react-shared-components';
+import React, { useState } from 'react';
+import { selectableColors } from '@sonatype/react-shared-components';
 import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries,
   Hint, LineSeriesPoint, MarkSeries, MarkSeriesPoint } from 'react-vis';
-import { randomNumberGenerator } from '../../util/jsUtil';
 import '../ReactVis.scss';
 
 export default function ReactVisLineGraphExample() {
@@ -38,54 +37,18 @@ export default function ReactVisLineGraphExample() {
     {x: 9, y: 7}
   ];
 
-  const [chartData, setChartData] = useState<LineSeriesPoint[] | null>(null);
-  const [chartData1, setChartData1] = useState<LineSeriesPoint[] | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [hintValue, setHintValue] = useState<MarkSeriesPoint | null>(null);
 
-  // Simulate an async data load task
-  useEffect(() => {
-    setTimeout(() => {
-      setChartData(data);
-      setChartData1(data1);
-      setIsLoading(false);
-    }, 1000);
-  }, []);
-
-  // Simulate new data load on button click
-  const updateData = () => {
-    const tempData: LineSeriesPoint[] = [];
-    const tempData1: LineSeriesPoint[] = [];
-    for (let i = 0; i < 9; i++) {
-      tempData.push({x: i, y: randomNumberGenerator(0, 10, 1)});
-      tempData1.push({x: i, y: randomNumberGenerator(0, 10, 1)});
-    }
-    setChartData(tempData);
-    setChartData1(tempData1);
-    setHintValue(null);
-  };
-
   return (
-    <>
-      {
-        isLoading ? <NxLoadingSpinner /> :
-        <>
-          {
-            chartData && chartData1 &&
-            <XYPlot width={400} height={300} animation onMouseLeave={() => setHintValue(null)}>
-              <XAxis/>
-              <YAxis/>
-              <HorizontalGridLines />
-              <VerticalGridLines />
-              <LineSeries data={chartData} stroke={selectableColors[0]}/>
-              <LineSeries data={chartData1} stroke={selectableColors[1]}/>
-              <MarkSeries data={[...chartData, ...chartData1]} onNearestXY={v => setHintValue(v)}/>
-              {hintValue && <Hint value={hintValue} />}
-            </XYPlot>
-          }
-          <NxButton onClick={updateData}>Update Data</NxButton>
-        </>
-      }
-    </>
+    <XYPlot width={400} height={300} animation onMouseLeave={() => setHintValue(null)}>
+      <XAxis/>
+      <YAxis/>
+      <HorizontalGridLines />
+      <VerticalGridLines />
+      <LineSeries data={data} stroke={selectableColors[0]}/>
+      <LineSeries data={data1} stroke={selectableColors[1]}/>
+      <MarkSeries data={[...data, ...data1]} onNearestXY={v => setHintValue(v)}/>
+      {hintValue && <Hint value={hintValue} />}
+    </XYPlot>
   );
 }

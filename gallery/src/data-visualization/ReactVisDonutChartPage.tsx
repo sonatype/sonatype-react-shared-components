@@ -20,7 +20,7 @@ const ReactVisDonutChartPage = () =>
         and donut charts are supported by React-vis.
       </NxP>
       <NxP>
-        The following documentation only contains basics on how to get started with creating basic donut charts. <br />
+        The following documentation only contains basics on how to get started with creating basic donut charts.
         For more details, please see the
         <NxTextLink href="https://uber.github.io/react-vis/documentation/other-charts/radial-chart">
           {' official API documentation.'}
@@ -171,9 +171,7 @@ const ReactVisDonutChartPage = () =>
                         liveExample={ReactVisDonutChartExample}
                         codeExamples={reactVisDonutChartExampleCode}>
       The following example demonstrates how to generate a simple donut chart
-      using <NxCode>{'<RadialChart />'}</NxCode> <br />
-      The example also simulates an async data load task. Clicking on the Update Data button demonstrates how
-      React-vis seamlessly renders new data-points on the chart based on new data load.
+      using <NxCode>{'<RadialChart />'}</NxCode>.
     </GalleryExampleTile>
   </>;
 

@@ -4,11 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useEffect, useState } from 'react';
-import { NxButton, NxLoadingSpinner, selectableColors } from '@sonatype/react-shared-components';
+import React, { useState } from 'react';
+import { selectableColors } from '@sonatype/react-shared-components';
 import { XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries,
   Hint, LineSeriesPoint } from 'react-vis';
-import { randomNumberGenerator } from '../../util/jsUtil';
 import '../ReactVis.scss';
 
 export default function ReactVisLineGraphExample() {
@@ -25,47 +24,16 @@ export default function ReactVisLineGraphExample() {
     {x: 9, y: 0}
   ];
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [chartData, setChartData] = useState<LineSeriesPoint[] | null>(null);
   const [hintValue, setHintValue] = useState<LineSeriesPoint | null>(null);
 
-  // Simulate an async data load task
-  useEffect(() => {
-    setTimeout(() => {
-      setChartData(data);
-      setIsLoading(false);
-    }, 1000);
-  }, []);
-
-  // Simulate new data load on button click
-  const updateData = () => {
-    const tempData: LineSeriesPoint[] = [];
-    for (let i = 0; i < 9; i++) {
-      tempData.push({x: i, y: randomNumberGenerator(0, 10, 1)});
-    }
-    setChartData(tempData);
-    setHintValue(null);
-  };
-
   return (
-    <>
-      {
-        isLoading ? <NxLoadingSpinner /> :
-        <>
-          {
-            chartData &&
-            <XYPlot width={400} height={300} animation onMouseLeave={() => setHintValue(null)}>
-              <XAxis/>
-              <YAxis/>
-              <HorizontalGridLines />
-              <VerticalGridLines />
-              <LineSeries data={chartData} onNearestXY={v => setHintValue(v)} stroke={selectableColors[1]}/>
-              {hintValue && <Hint value={hintValue} />}
-            </XYPlot>
-          }
-          <NxButton onClick={updateData}>Update Data</NxButton>
-        </>
-      }
-    </>
+    <XYPlot width={400} height={300} animation onMouseLeave={() => setHintValue(null)}>
+      <XAxis/>
+      <YAxis/>
+      <HorizontalGridLines />
+      <VerticalGridLines />
+      <LineSeries data={data} onNearestXY={v => setHintValue(v)} stroke={selectableColors[1]}/>
+      {hintValue && <Hint value={hintValue} />}
+    </XYPlot>
   );
 }

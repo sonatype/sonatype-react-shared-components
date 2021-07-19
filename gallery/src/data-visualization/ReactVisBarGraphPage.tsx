@@ -21,7 +21,7 @@ const ReactVisBarGraphPage = () =>
         horizontal bar graphs are supported by React-vis.
       </NxP>
       <NxP>
-        The following documentation only contains basics on how to get started with creating basic bar graphs. <br />
+        The following documentation only contains basics on how to get started with creating basic bar graphs.
         For more details, please see the
         <NxTextLink href="https://uber.github.io/react-vis/documentation/series-reference/bar-series">
           {' official API documentation.'}
@@ -104,7 +104,7 @@ const ReactVisBarGraphPage = () =>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
                 Format function for the tick label. Typically used to transform ticks to show addtional information.
-                For example, <NxCode>{'tickFormat={val => `$${val}`}'}</NxCode>adds a $ before
+                For example, <NxCode>{'tickFormat={val => `$${val}`}'}</NxCode> adds a $ before
                 the tick label.
               </NxTableCell>
             </NxTableRow>
@@ -126,9 +126,7 @@ const ReactVisBarGraphPage = () =>
                         liveExample={ReactVisBarGraphExample}
                         codeExamples={reactVisBarGraphExampleCode}>
       The following example demonstrates how to generate a simple vertical bar graph
-      using <NxCode>{'<VerticalBarSeries />'}</NxCode><br />
-      The example also simulates an async data load task. Clicking on the Update Data button demonstrates how
-      React-vis seamlessly renders new data-points on the chart based on new data load.
+      using <NxCode>{'<VerticalBarSeries />'}</NxCode>.
     </GalleryExampleTile>
   </>;
 

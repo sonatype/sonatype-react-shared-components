@@ -19,6 +19,7 @@ const ReactVisLineGraphPage = () =>
         Line graphs are part of  <NxCode>{'<LineSeries />'}</NxCode> in React-vis.
       </NxP>
       <NxP>
+        The following documentation only contains basics on how to get started with creating basic line graphs.
         For more details, please see the
         <NxTextLink href="https://uber.github.io/react-vis/documentation/series-reference/line-series">
           {' official API documentation.'}
@@ -92,9 +93,7 @@ const ReactVisLineGraphPage = () =>
                         liveExample={ReactVisLineGraphExample}
                         codeExamples={reactVisLineGraphExampleCode}>
       The following example demonstrates how to generate a simple line graph
-      using <NxCode>{'<LineSeries />'}</NxCode> <br />
-      The example also simulates an async data load task. Clicking on the Update Data button demonstrates how
-      React-vis seamlessly renders new data-points on the chart based on new data load.
+      using <NxCode>{'<LineSeries />'}</NxCode>.
     </GalleryExampleTile>
   </>;
 

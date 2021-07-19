@@ -25,9 +25,6 @@ const ReactVisStackedGraphPage = () =>
                         codeExamples={reactVisStackedGraphExampleCode}>
       The following example demonstrates how to stack two line graphs using
       two <NxCode>{'<LineSeries />'}</NxCode> graphs and a <NxCode>{'<MarkSeries />'}</NxCode> graph.
-      <br />
-      The example also simulates an async data load task. Clicking on the Update Data button demonstrates how
-      React-vis seamlessly renders new data-points on the chart based on new data load.
     </GalleryExampleTile>
   </>;
 
