@@ -88,6 +88,10 @@ describe('NxTreeView', function() {
       expect(getShallowTrigger()).toMatchSelector('button');
     });
 
+    it('has type="button"', function() {
+      expect(getShallowTrigger()).toHaveProp('type', 'button');
+    });
+
     it('references the treeview using aria-controls', function() {
       const explicitIdTreeView = getShallowComponent({ id: 'foo' }),
           autoIdTreeView = getShallowComponent(),

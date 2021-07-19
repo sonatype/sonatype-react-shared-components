@@ -13,6 +13,8 @@ import NxOverflowTooltipDescendantExample from './NxOverflowTooltipDescendantExa
 import NxOverflowTooltipDynamicExample from './NxOverflowTooltipDynamicExample';
 import { NxWarningAlert } from '@sonatype/react-shared-components';
 
+import './NxOverflowTooltipExample.scss';
+
 const overflowTooltipsExampleCode = require('./NxOverflowTooltipExample?raw');
 const overflowTooltipsDescendantExampleCode = require('./NxOverflowTooltipDescendantExample?raw');
 const overflowTooltipsDynamicExampleCode = require('./NxOverflowTooltipDynamicExample?raw');
