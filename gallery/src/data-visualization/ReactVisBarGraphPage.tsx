@@ -7,35 +7,37 @@
 import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../gallery-components/GalleryTiles';
 import ReactVisBarGraphExample from './examples/ReactVisBarGraphExample';
-import { NxTable, NxTableBody, NxTableCell, NxTableHead, NxTableRow } from '@sonatype/react-shared-components';
+import { NxCode, NxH3, NxP, NxTable, NxTableBody, NxTableCell, NxTableHead,
+  NxTableRow,
+  NxTextLink} from '@sonatype/react-shared-components';
 
 const reactVisBarGraphExampleCode = require('./examples/ReactVisBarGraphExample?raw');
 
 const ReactVisBarGraphPage = () =>
   <>
     <GalleryDescriptionTile >
-      <p className="nx-p">
-        Bar graphs are part of <code className="nx-code">{'<BarSeries />'}</code> in React-vis. Both vertical and
+      <NxP>
+        Bar graphs are part of <NxCode>{'<BarSeries />'}</NxCode> in React-vis. Both vertical and
         horizontal bar graphs are supported by React-vis.
-      </p>
-      <p className="nx-p">
+      </NxP>
+      <NxP>
         The following documentation only contains basics on how to get started with creating basic bar graphs. <br />
-        For the full, official API documentation, please click {' '}
-        <a href="https://uber.github.io/react-vis/documentation/series-reference/bar-series" target="_blank">here.</a>
-      </p>
+        For more details, please see the
+        <NxTextLink href="https://uber.github.io/react-vis/documentation/series-reference/bar-series">
+          {' official API documentation.'}
+        </NxTextLink>
+      </NxP>
 
       <section className="nx-tile-subsection">
         <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">Data Format Reference</h3>
+          <NxH3 className="nx-h3">Data Format Reference</NxH3>
         </header>
-
-        <p className="nx-p">
-          Data points for vertical bar graphs utilize the <code className="nx-code">VerticalBarSeriesPoint</code>
+        <NxP>
+          Data points for vertical bar graphs utilize the <NxCode>VerticalBarSeriesPoint</NxCode>
           {' '} interface.
-          Data points for horizontal bar graphs utilize the <code className="nx-code">HorizontalBarSeriesPoint</code>
+          Data points for horizontal bar graphs utilize the <NxCode>HorizontalBarSeriesPoint</NxCode>
           {' '} interface.
-        </p>
-
+        </NxP>
         <NxTable>
           <NxTableHead>
             <NxTableRow>
@@ -67,7 +69,7 @@ const ReactVisBarGraphPage = () =>
       </section>
       <section className="nx-tile-subsection">
         <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">Basic API Reference</h3>
+          <NxH3 className="nx-h3">Basic API Reference</NxH3>
         </header>
         <NxTable>
           <NxTableHead>
@@ -97,20 +99,12 @@ const ReactVisBarGraphPage = () =>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell>stroke</NxTableCell>
-              <NxTableCell>string</NxTableCell>
-              <NxTableCell>no</NxTableCell>
-              <NxTableCell>
-                In LineSeries, stroke is used instead of color to specify the color of the lines.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
               <NxTableCell>tickFormat</NxTableCell>
               <NxTableCell>function</NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
                 Format function for the tick label. Typically used to transform ticks to show addtional information.
-                For example, <code className="nx-code">{'tickFormat={val => `$${val}`}'}</code> adds a $ before
+                For example, <NxCode>{'tickFormat={val => `$${val}`}'}</NxCode>adds a $ before
                 the tick label.
               </NxTableCell>
             </NxTableRow>
@@ -119,7 +113,7 @@ const ReactVisBarGraphPage = () =>
               <NxTableCell>string</NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
-                Shows the title for the axis.
+                Shows the title for the respective axis for which the prop is provided.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
@@ -131,8 +125,8 @@ const ReactVisBarGraphPage = () =>
                         id="react-vis-bar-graph-example"
                         liveExample={ReactVisBarGraphExample}
                         codeExamples={reactVisBarGraphExampleCode}>
-      The following example demonstrates how to generate a simple vertical bar graph using
-      {' '} <code className="nx-code">{'<VerticalBarSeries />'}</code> <br />
+      The following example demonstrates how to generate a simple vertical bar graph
+      using <NxCode>{'<VerticalBarSeries />'}</NxCode><br />
       The example also simulates an async data load task. Clicking on the Update Data button demonstrates how
       React-vis seamlessly renders new data-points on the chart based on new data load.
     </GalleryExampleTile>

@@ -6,74 +6,73 @@
  */
 import React from 'react';
 import { GalleryDescriptionTile } from '../gallery-components/GalleryTiles';
-import { NxTable, NxTableBody, NxTableCell, NxTableHead, NxTableRow,
-  NxWarningAlert } from '@sonatype/react-shared-components';
+import { NxCode, NxH2, NxH3, NxP, NxTable, NxTableBody, NxTableCell, NxTableHead, NxTableRow,
+  NxTextLink, NxWarningAlert } from '@sonatype/react-shared-components';
 
 const ReactVisPage = () =>
   <>
     <GalleryDescriptionTile >
-      <p className="nx-p">
+      <NxP>
         React-vis is a React-based data visualization library. It is highly customizable, easy-to-use, and very
         React-friendly. The library is composed of React components that are used to render common data visualization
         charts like line/area/bar charts, scatterplots, pie and donut charts etc.
-      </p>
-      <h3 className="nx-h2">React-vis Basics</h3>
-      <h3 className="nx-h3">XYPlot</h3>
-      <p className="nx-p">
+      </NxP>
+      <NxH2>React-vis Basics</NxH2>
+      <NxH3>XYPlot</NxH3>
+      <NxP>
         Every series chart that React-vis generates (excludes RadialChart, Sankey, Sunburst and Treemap)
-        is inside a parent component called <code className="nx-code">XYPlot</code>
-        that requires two props: <code className="nx-code">height</code> and <code className="nx-code">width</code>.
-      </p>
-      <p className="nx-p">
-        <code className="nx-code">{'<XYPlot height={300} width = {300} />'}</code>
-      </p>
-      <h3 className="nx-h3">Ordering</h3>
-      <p className="nx-p">
-        Similar to traditional React, order matters as components are drawn in order. For example, placing
-        <code className="nx-code">{'<VerticalGridLines />'}</code> before
-        <code className="nx-code">{'<LineSeries data={data} />'}</code> will draw the chart on top of the gridlines.
-      </p>
-      <h3 className="nx-h3">Colors</h3>
-      <p className="nx-p">
-        Colors are assigned to charts by passing in the <code className="nx-code">color</code> or the
-        <code className="nx-code">stroke</code> prop depending on the type of chart being used.
-      </p>
-      <p className="nx-p">
-        <code className="nx-code">{'<LineSeries />'}</code> charts use the <code className="nx-code">stroke</code>
-        {' '} prop to determine colors of the lines.
-      </p>
-      <p className="nx-p">
-        <code className="nx-code">{'<BarSeries />'}</code> charts use the <code className="nx-code">color</code>
-        {' '} prop to determine colors of the bars.
-      </p>
-      <p className="nx-p">
-        <code className="nx-code">{'<RadialChart />'}</code> uses the <code className="nx-code">color</code>
-        {' '} property on the <code className="nx-code">data</code> object to determine colors of the bars.
-      </p>
-      <p className="nx-p">
-        RSC's <code className="nx-code">{'selectableColors'}</code> array provides a seamlessly way of
-        assigning colors based on RSC color guidelines. Usage is quite simple. Simply import the
-        <code className="nx-code">{'selectableColors'}</code> array and pass it on the
-        <code className="nx-code">stroke</code> or the <code className="nx-code">color</code> prop. An example
-        of using the color purple (<code className="nx-code">selectableColors[0]</code>) is shown below:
-      </p>
-      <p className="nx-p">
-        <code className="nx-code">{'<LineSeries data={chartData} stroke={selectableColors[0]}/>'}</code>
-      </p>
+        is inside a parent component called <NxCode>XYPlot</NxCode> that
+        requires two props: <NxCode>height</NxCode> and <NxCode>width</NxCode>.
+      </NxP>
+      <NxH3>Ordering</NxH3>
+      <NxP>
+        Similar to traditional React, order matters as components are drawn in order. For example,
+        placing <NxCode>{'<VerticalGridLines />'}</NxCode> before <NxCode>{'<LineSeries data={data} />'}</NxCode> will
+        draw the chart on top of the gridlines.
+      </NxP>
+      <NxH3>Colors</NxH3>
+      <NxP>
+        Colors are assigned to charts by passing in the <NxCode>color</NxCode> or
+        the <NxCode>stroke</NxCode> prop depending on the type of chart being used.
+      </NxP>
+      <NxP>
+        <NxCode>{'<LineSeries />'}</NxCode> charts use the <NxCode>stroke</NxCode> prop
+        to determine colors of the lines.
+      </NxP>
+      <NxP>
+        <NxCode>{'<BarSeries />'}</NxCode> charts use the <NxCode>color</NxCode> prop to
+        determine colors of the bars.
+      </NxP>
+      <NxP>
+        <NxCode>{'<RadialChart />'}</NxCode> uses the <NxCode>color</NxCode> property on
+        the <NxCode>data</NxCode> object to determine colors of the bars.
+      </NxP>
+      <NxP>
+        RSC's <NxCode>{'selectableColors'}</NxCode> array provides a seamlessly way of
+        assigning colors based on RSC color guidelines. Usage is quite simple. Simply import
+        the <NxCode>{'selectableColors'}</NxCode> array and pass it on the <NxCode>stroke</NxCode> or
+        the <NxCode>color</NxCode> prop. An example of using the color
+        purple (<NxCode>selectableColors[0]</NxCode>) is shown below:
+      </NxP>
+      <NxP>
+        <NxCode>{'<LineSeries data={chartData} stroke={selectableColors[0]}/>'}</NxCode>
+      </NxP>
       <NxWarningAlert>
-        When assigning colors to charts, it is critical to choose colors from RSC's
-        {' '} <code className="nx-code">{'selectableColors'}</code> array.
-        For more details on colors, please check the Color Palettes and Selectable Colors section.
+        When assigning colors to charts, it is recommended to choose colors from
+        RSC's <NxCode>{'selectableColors'}</NxCode> array. For more details on colors, please
+        check the Color Palettes and Selectable Colors section.
       </NxWarningAlert>
       <section className="nx-tile-subsection">
         <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">Basic API Reference</h3>
+          <NxH3>Basic API Reference</NxH3>
         </header>
-        <p className="nx-p">
-          Note: The following table only describles the props used for examples on this page.
-          For the full official API documentation, please click {' '}
-          <a href="https://uber.github.io/react-vis/documentation/welcome-to-react-vis" target="_blank">here.</a>
-        </p>
+        <NxP>
+          Note: The following table only describles the props used for the React-vis examples on the gallery page.
+          For more details, please see the
+          <NxTextLink href="https://uber.github.io/react-vis/documentation/welcome-to-react-vis">
+            {' official API documentation.'}
+          </NxTextLink>
+        </NxP>
         <NxTable>
           <NxTableHead>
             <NxTableRow>
@@ -90,10 +89,9 @@ const ReactVisPage = () =>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
                 React-vis utilizes the react-motion animation system that accepts three types of values.
-                boolean: if <code className="nx-code">true</code> is present then React-vis will use the no-wobble
+                boolean: if <NxCode>true</NxCode> is present then React-vis will use the no-wobble
                 preset. string: available choices include noWobble, gentle, wobbly, and stiff.
-                object: expects an object formatting like
-                <code className="nx-code">{'{damping: NUMBER, stiffness: NUMBER}'}</code>
+                object: expects an object formatting like <NxCode>{'{damping: NUMBER, stiffness: NUMBER}'}</NxCode>.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
@@ -101,7 +99,7 @@ const ReactVisPage = () =>
               <NxTableCell>object array</NxTableCell>
               <NxTableCell>Yes</NxTableCell>
               <NxTableCell>
-                Each react-vis char components require a   property, through which
+                Each react-vis chart components require a property, through which
                 we pass an array of objects. These properties correspond to various visual characteristics of the
                 corresponding marks. For example, x and y, which are required for most series types, affect the position
                 of each mark.

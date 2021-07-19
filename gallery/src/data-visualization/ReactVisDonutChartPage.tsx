@@ -7,33 +7,33 @@
 import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../gallery-components/GalleryTiles';
 import ReactVisDonutChartExample from './examples/ReactVisDonutChartExample';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody,
+  NxP, NxCode, NxH3, NxTextLink } from '@sonatype/react-shared-components';
 
 const reactVisDonutChartExampleCode = require('./examples/ReactVisDonutChartExample?raw');
 
 const ReactVisDonutChartPage = () =>
   <>
     <GalleryDescriptionTile >
-      <p className="nx-p">
-        Donut charts are a type of <code className="nx-code">{'<RadialChart />'}</code> in React-vis. Both pie charts
+      <NxP>
+        Donut charts are a type of <NxCode>{'<RadialChart />'}</NxCode> in React-vis. Both pie charts
         and donut charts are supported by React-vis.
-      </p>
-      <p className="nx-p">
+      </NxP>
+      <NxP>
         The following documentation only contains basics on how to get started with creating basic donut charts. <br />
-        For the full, official API documentation, please click {' '}
-        <a href="https://uber.github.io/react-vis/documentation/other-charts/radial-chart" target="_blank">here.</a>
-      </p>
+        For more details, please see the
+        <NxTextLink href="https://uber.github.io/react-vis/documentation/other-charts/radial-chart">
+          {' official API documentation.'}
+        </NxTextLink>
+      </NxP>
 
       <section className="nx-tile-subsection">
         <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">Data Format Reference</h3>
+          <NxH3 className="nx-h3">Data Format Reference</NxH3>
         </header>
-
-        <p className="nx-p">
-          Data points for donut charts utilize the <code className="nx-code">RadialChartPoint</code>
-          {' '} interface.
-        </p>
-
+        <NxP>
+          Data points for donut charts utilize the <NxCode>RadialChartPoint</NxCode> interface.
+        </NxP>
         <NxTable>
           <NxTableHead>
             <NxTableRow>
@@ -81,7 +81,7 @@ const ReactVisDonutChartPage = () =>
       </section>
       <section className="nx-tile-subsection">
         <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">Basic API Reference</h3>
+          <NxH3 className="nx-h3">Basic API Reference</NxH3>
         </header>
         <NxTable>
           <NxTableHead>
@@ -170,8 +170,8 @@ const ReactVisDonutChartPage = () =>
                         id="react-vis-bar-graph-example"
                         liveExample={ReactVisDonutChartExample}
                         codeExamples={reactVisDonutChartExampleCode}>
-      The following example demonstrates how to generate a simple donut chart using
-      {' '} <code className="nx-code">{'<RadialChart />'}</code> <br />
+      The following example demonstrates how to generate a simple donut chart
+      using <NxCode>{'<RadialChart />'}</NxCode> <br />
       The example also simulates an async data load task. Clicking on the Update Data button demonstrates how
       React-vis seamlessly renders new data-points on the chart based on new data load.
     </GalleryExampleTile>
