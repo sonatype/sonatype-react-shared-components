@@ -184,11 +184,12 @@ export default function NxModalPage() {
         </NxInfoAlert>
         <h3>Accessibility</h3>
         <p className="nx-p">
-          Elements with the <code className="nx-code">dialog</code> role are supposed to have a label specified by the
-          {' '}<code className="nx-code">aria-labelledby</code> or <code className="nx-code">aria-label</code>
-          {' '}attribute. Because the value of <code className="nx-code">aria-labelledby</code> or
-          {' '}<code className="nx-code">aria-label</code> is typically the same as the modal header text
-          {' '}<code className="nx-code">aria-labelledby</code> is the DRYer attribute.
+          <code className="nx-code">NxModal</code> uses the <code className="nx-code">dialog</code> role and needs
+          to have a label specified by the <code className="nx-code">aria-labelledby</code> or
+          {' '}<code className="nx-code">aria-label</code> attribute. Because the value
+          of <code className="nx-code">aria-labelledby</code> or <code className="nx-code">aria-label</code> is
+          typically the same as the modal header text <code className="nx-code">aria-labelledby</code> is the DRYer
+          attribute.
         </p>
         <NxWarningAlert>
           Note: While the use of <code className="nx-code">aria-labelledby</code>
