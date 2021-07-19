@@ -124,8 +124,8 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
               className="nx-modal-backdrop"
               tabIndex={-1}
               onKeyDown={dialogKeydownListener}
-              aria-labelledby={ariaLabels}>
-        <div className={modalClasses} {...attrs} />
+              {...ariaLabels}>
+        <div className={modalClasses} {...attrsWithoutLabels}/>
       </dialog>
     </NxModalContext.Provider>
   );
