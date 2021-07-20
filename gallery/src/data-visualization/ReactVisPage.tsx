@@ -51,16 +51,25 @@ const ReactVisPage = () =>
         RSC's <NxCode>{'selectableColorClasses'}</NxCode> provides a seamlessly way of
         assigning colors based on RSC color guidelines. Usage is quite simple. Simply import
         the <NxCode>{'selectableColorClasses'}</NxCode> array and provide the desired color
-        to the <NxCode>className</NxCode> prop. Then, simply provide the dark or the light variant
-        CSS variable, i.e. <NxCode>var(--nx-selectable-color-dark)</NxCode> or
-        <NxCode>var(--nx-selectable-color-light)</NxCode> to the <NxCode>color</NxCode> or
-        the <NxCode>stroke</NxCode> prop. An example of using the color Purple is shown below:
+        to the <NxCode>className</NxCode> prop along with the dark or the light variant of the color chosen.
+        An example of using the color Purple is shown below:
       </NxP>
       <NxP>
-        <NxCode>{`<LineSeries data={chartData}
-          className={selectableColorClasses[0]}
-          stroke="var(--nx-selectable-color-dark)" />`}
-        </NxCode>
+        For specifying colors to shape based graphs
+        like <NxCode>{'<BarSeries />, <MarkSeries /> or <RadialChart />'}</NxCode>, please provide
+        the <NxCode>{'nx-graph-shape-fill-dark'}</NxCode> or <NxCode>{'nx-graph-shape-fill-light'}</NxCode> class
+        to the <NxCode>className</NxCode> prop. For example, to fill a bar graph with the color purple:
+      </NxP>
+      <NxP>
+        <NxCode>{'<VerticalBarSeries className={`nx-graph-shape-fill-dark ${selectableColorClasses[0]}`}'}</NxCode>
+      </NxP>
+      <NxP>
+        For specifying colors to line based graphs like <NxCode>{'<LineSeries />'}</NxCode>, please provide
+        the <NxCode>{'nx-graph-line-fill-dark'}</NxCode> or <NxCode>{'nx-graph-line-fill-light'}</NxCode> class
+        to the <NxCode>className</NxCode> prop. For example, to fill a line graph with the color purple:
+      </NxP>
+      <NxP>
+        <NxCode>{'<LineSeries className={`nx-graph-line-fill-dark ${selectableColorClasses[0]}`}'}</NxCode>
       </NxP>
       <NxWarningAlert>
         When assigning colors to charts, it is recommended to choose colors from

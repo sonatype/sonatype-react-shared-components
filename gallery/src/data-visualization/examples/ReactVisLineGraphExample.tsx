@@ -34,8 +34,7 @@ export default function ReactVisLineGraphExample() {
       <VerticalGridLines />
       <LineSeries data={data}
                   onNearestX={v => setHintValue(v)}
-                  className={selectableColorClasses[0]}
-                  stroke="var(--nx-selectable-color-dark)"
+                  className={`nx-graph-line-fill-dark ${selectableColorClasses[0]}`}
       />
       {hintValue && <Hint value={hintValue} />}
     </XYPlot>

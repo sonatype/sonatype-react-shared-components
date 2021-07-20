@@ -6,3 +6,27 @@
   color: white;
   padding: 8px;
 }
+
+.nx-graph-shape-fill-dark {
+  fill: var(--nx-selectable-color-dark);
+  rect, circle {
+    fill: var(--nx-selectable-color-dark) !important;
+    stroke: var(--nx-selectable-color-dark) !important;
+  }
+}
+
+.nx-graph-shape-fill-light {
+  fill: var(--nx-selectable-color-light);
+  rect, circle {
+    fill: var(--nx-selectable-color-light) !important;
+    stroke: var(--nx-selectable-color-light) !important;
+  }
+}
+
+.nx-graph-line-fill-dark {
+  stroke: var(--nx-selectable-color-dark) !important;
+}
+
+.nx-graph-line-fill-light {
+  stroke: var(--nx-selectable-color-light) !important;
+}

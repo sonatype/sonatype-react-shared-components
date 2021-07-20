@@ -13,20 +13,17 @@ export default function ReactVisDonutChartExample() {
   const data: RadialChartPoint[] = [
     {
       angle: 1,
-      className: selectableColorClasses[3],
-      color: 'var(--nx-selectable-color-dark)',
+      className: `nx-graph-shape-fill-dark ${selectableColorClasses[3]}`,
       label: 'Severe',
       subLabel: '1'
     },
     { angle: 5,
-      className: selectableColorClasses[6],
-      color: 'var(--nx-selectable-color-dark)',
+      className: `nx-graph-shape-fill-dark ${selectableColorClasses[6]}`,
       label: 'Moderate',
       subLabel: '5'
     },
     { angle: 2,
-      className: selectableColorClasses[7],
-      color: 'var(--nx-selectable-color-dark)',
+      className: `nx-graph-shape-fill-dark ${selectableColorClasses[7]}`,
       label: 'Low',
       subLabel: '2'
     }

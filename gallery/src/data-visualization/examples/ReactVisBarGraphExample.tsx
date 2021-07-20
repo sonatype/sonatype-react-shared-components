@@ -27,8 +27,7 @@ export default function ReactVisBarGraphExample() {
       <VerticalBarSeries data={data}
                          barWidth={0.3}
                          onNearestX={v => setHintValue(v)}
-                         className={selectableColorClasses[2]}
-                         color="var(--nx-selectable-color-dark)"
+                         className={`nx-graph-shape-fill-dark ${selectableColorClasses[0]}`}
       />
       {hintValue && <Hint value={hintValue} />}
       <XAxis />
