@@ -48,18 +48,23 @@ const ReactVisPage = () =>
         the <NxCode>data</NxCode> object to determine colors of the bars.
       </NxP>
       <NxP>
-        RSC's <NxCode>{'selectableColors'}</NxCode> array provides a seamlessly way of
+        RSC's <NxCode>{'selectableColorClasses'}</NxCode> provides a seamlessly way of
         assigning colors based on RSC color guidelines. Usage is quite simple. Simply import
-        the <NxCode>{'selectableColors'}</NxCode> array and pass it on the <NxCode>stroke</NxCode> or
-        the <NxCode>color</NxCode> prop. An example of using the color
-        purple (<NxCode>selectableColors[0]</NxCode>) is shown below:
+        the <NxCode>{'selectableColorClasses'}</NxCode> array and provide the desired color
+        to the <NxCode>className</NxCode> prop. Then, simply provide the dark or the light variant
+        CSS variable, i.e. <NxCode>var(--nx-selectable-color-dark)</NxCode> or
+        <NxCode>var(--nx-selectable-color-light)</NxCode> to the <NxCode>color</NxCode> or
+        the <NxCode>stroke</NxCode> prop. An example of using the color Purple is shown below:
       </NxP>
       <NxP>
-        <NxCode>{'<LineSeries data={chartData} stroke={selectableColors[0]}/>'}</NxCode>
+        <NxCode>{`<LineSeries data={chartData}
+          className={selectableColorClasses[0]}
+          stroke="var(--nx-selectable-color-dark)" />`}
+        </NxCode>
       </NxP>
       <NxWarningAlert>
         When assigning colors to charts, it is recommended to choose colors from
-        RSC's <NxCode>{'selectableColors'}</NxCode> array. For more details on colors, please
+        RSC's <NxCode>{'selectableColorClasses'}</NxCode> array. For more details on colors, please
         check the Color Palettes and Selectable Colors section.
       </NxWarningAlert>
       <section className="nx-tile-subsection">
