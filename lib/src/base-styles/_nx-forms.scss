@@ -39,6 +39,7 @@
 .nx-label, .nx-legend {
   display: block;
   padding: 0;
+  max-width: var(--nx-width-text-wrapping);
 
   .nx-text-input, .nx-textarea {
     display: block;
@@ -79,6 +80,7 @@
   font-size: var(--nx-font-size-s);
   font-style: italic;
   margin-bottom: var(--nx-spacing-4x);
+  max-width: var(--nx-width-text-wrapping);
 }
 
 // Defining labels for groups of radio buttons or checkboxes is tricky - each individual radio has a <label>

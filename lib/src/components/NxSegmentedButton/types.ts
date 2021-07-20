@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import React, { ReactElement, HTMLAttributes, ReactNode, KeyboardEventHandler } from 'react';
+import React, { ReactElement, HTMLAttributes, ReactNode, KeyboardEventHandler, ButtonHTMLAttributes } from 'react';
 import { without } from 'ramda';
 
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../NxButton/types';
@@ -29,6 +29,7 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
   onCloseKeyDown?: KeyboardEventHandler | null;
   onCloseClick?: ((e: MouseEvent) => void) | null;
   disabled?: boolean | null;
+  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {

@@ -84,6 +84,26 @@
   }
 }
 
+.gallery-color-sample {
+  --shadow-color: hsla(var(--nx-swatch-grey-hs), 10%, 10%);
+  box-shadow: 0 0 3px 1px var(--shadow-color);
+  flex-shrink: 0;
+  height: 64px;
+  width: 64px;
+}
+
+.gallery-color-sample__selectable-light {
+  background-color: var(--nx-selectable-color-light);
+}
+
+.gallery-color-sample__selectable-dark {
+  background-color: var(--nx-selectable-color-dark);
+}
+
+.gallery-small-parenthetical {
+  font-size: var(--nx-font-size-xs);
+}
+
 // This media query selects IE11
 @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
   // hide checkered background checkbox in IE since the background doesn't work there (and we don't care to support

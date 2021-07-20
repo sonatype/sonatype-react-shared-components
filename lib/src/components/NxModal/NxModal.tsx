@@ -6,6 +6,7 @@
  */
 import React, {FunctionComponent, KeyboardEvent, useEffect, useRef, useState} from 'react';
 import classnames from 'classnames';
+import { pick, omit } from 'ramda';
 
 import {Props, propTypes} from './types';
 
@@ -103,6 +104,10 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
     }
   }, [onCancel]);
 
+  const ariaLabelAttrNames = ['aria-label', 'aria-labelledby'] as const,
+      ariaLabels = pick(ariaLabelAttrNames, attrs),
+      attrsWithoutLabels = omit(ariaLabelAttrNames, attrs);
+
   return (
     // Provide the dialog element to descendants so that tooltips can attach to it instead of the body,
     // which is necessary so that they end up in the top layer rather than behind the modal
@@ -118,8 +123,9 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
               aria-modal="true"
               className="nx-modal-backdrop"
               tabIndex={-1}
-              onKeyDown={dialogKeydownListener}>
-        <div className={modalClasses} {...attrs} />
+              onKeyDown={dialogKeydownListener}
+              {...ariaLabels}>
+        <div className={modalClasses} {...attrsWithoutLabels}/>
       </dialog>
     </NxModalContext.Provider>
   );
