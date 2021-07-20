@@ -6,8 +6,18 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxFontAwesomeIcon, NxButton, NxTextInput, NxFormGroup, NxForm, nxTextInputStateHelpers}
-  from '@sonatype/react-shared-components';
+import {
+  NxModal,
+  NxFontAwesomeIcon,
+  NxButton,
+  NxTextInput,
+  NxFormGroup,
+  NxForm,
+  nxTextInputStateHelpers,
+  NxFieldset,
+  NxCheckbox,
+  useToggle
+} from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
 export default function NxModalFormExample() {
@@ -15,6 +25,9 @@ export default function NxModalFormExample() {
       [loading, setLoading] = useState(true),
       [usernameState, setUsernameState] = useState(nxTextInputStateHelpers.initialState('')),
       [passwordState, setPasswordState] = useState(nxTextInputStateHelpers.initialState('')),
+      [isRed, toggleRed] = useToggle(false),
+      [isBlue, toggleBlue] = useToggle(false),
+      [isGreen, toggleGreen] = useToggle(false),
       modalCloseHandler = () => setShowModal(false),
       validationErrors = usernameState.trimmedValue === '' || passwordState.trimmedValue === '' ?
         'Missing required field' : null;
@@ -71,6 +84,11 @@ export default function NxModalFormExample() {
                              onChange={onPasswordChange}
                              { ...passwordState } />
               </NxFormGroup>
+              <NxFieldset label="Colors" isRequired>
+                <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
+                <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
+                <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
+              </NxFieldset>
             </div>
           </NxForm>
         </NxModal>
