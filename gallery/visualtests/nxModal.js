@@ -4,7 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-describe('NxAlert', function() {
+const { Target } = require('@applitools/eyes-webdriverio');
+
+describe('NxModal', function() {
   beforeEach(async function() {
     await browser.url('#/pages/NxModal');
     await browser.refresh();
@@ -68,14 +70,17 @@ describe('NxAlert', function() {
     it('does not cut off overflowing focus borders in the content area', async function() {
       const openModalBtnSelector = `${formExampleSelector} button`,
           modalSelector = `${formExampleSelector} .nx-modal`,
-          checkboxSelector = `${formExampleSelector} fieldset .nx-checkbox:first-child`;
+          checkboxSelector = `${formExampleSelector} fieldset .nx-checkbox:first-of-type`;
 
-      const [openModalBtn, modal, checkbox] =
-          await Promise.all([browser.$(openModalBtnSelector), browser.$(modalSelector), browser.$(checkboxSelector)]);
+      const openModalBtn = await browser.$(openModalBtnSelector);
 
       await openModalBtn.scrollIntoView({ block: 'center' });
       await openModalBtn.click();
 
+      const [modal, checkbox] = await Promise.all([browser.$(modalSelector), browser.$(checkboxSelector)]);
+
+      // wait for load to finish
+      await checkbox.waitForDisplayed();
       await browser.execute(el => {
         el.focus();
       }, checkbox);
