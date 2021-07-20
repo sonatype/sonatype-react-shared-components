@@ -33,10 +33,8 @@ const ReactVisBarGraphPage = () =>
           <NxH3 className="nx-h3">Data Format Reference</NxH3>
         </header>
         <NxP>
-          Data points for vertical bar graphs utilize the <NxCode>VerticalBarSeriesPoint</NxCode>
-          {' '} interface.
-          Data points for horizontal bar graphs utilize the <NxCode>HorizontalBarSeriesPoint</NxCode>
-          {' '} interface.
+          Data points for vertical bar graphs utilize the <NxCode>VerticalBarSeriesPoint</NxCode> interface.
+          Data points for horizontal bar graphs utilize the <NxCode>HorizontalBarSeriesPoint</NxCode> interface.
         </NxP>
         <NxTable>
           <NxTableHead>
@@ -53,7 +51,8 @@ const ReactVisBarGraphPage = () =>
               <NxTableCell>VerticalBarSeries: string/number <br /> HorizontalBarSeries: number</NxTableCell>
               <NxTableCell>yes</NxTableCell>
               <NxTableCell>
-                The x position in coordinates of the box to be used.
+                The x position in coordinates of the box to be used. In VerticalBarSeries, if the value provided
+                is a string, this quantity is treated as a category for the x-axis.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
@@ -61,7 +60,8 @@ const ReactVisBarGraphPage = () =>
               <NxTableCell>VerticalBarSeries: number <br /> HorizontalBarSeries: string/number</NxTableCell>
               <NxTableCell>yes</NxTableCell>
               <NxTableCell>
-                The y position in coordinates of the box to be used.
+                The y position in coordinates of the box to be used. In HorizontalBarSeries, if the value provided
+                is a string, this quantity is treated as a category for the y-axis.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
@@ -83,7 +83,7 @@ const ReactVisBarGraphPage = () =>
           <NxTableBody>
             <NxTableRow>
               <NxTableCell>barWidth</NxTableCell>
-              <NxTableCell>number/string/object</NxTableCell>
+              <NxTableCell>number</NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
                 The percentage for which each bar fills the designated bucket. 1.0 means that the bar fills the whole
@@ -103,9 +103,9 @@ const ReactVisBarGraphPage = () =>
               <NxTableCell>function</NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
-                Format function for the tick label. Typically used to transform ticks to show addtional information.
-                For example, <NxCode>{'tickFormat={val => `$${val}`}'}</NxCode> adds a $ before
-                the tick label.
+                Ticks are the values used to show specific points on the axes. This function is typically used to
+                transform the labels for the ticks to show addtional information.
+                For example, <NxCode>{'tickFormat={val => `$${val}`}'}</NxCode> adds a $ before the tick label.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>

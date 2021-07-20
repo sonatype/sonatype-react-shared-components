@@ -98,7 +98,9 @@ const ReactVisDonutChartPage = () =>
               <NxTableCell>string</NxTableCell>
               <NxTableCell>No</NxTableCell>
               <NxTableCell>
-                Override to let React-vis know that the colors provided are literal color values
+                By default the color is interpreted as number to be scaled to a color range.
+                By providing the prop <NxCode>colorType="literal"</NxCode> overrides to let React-vis
+                know that the colors provided are literal color values.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
@@ -124,7 +126,7 @@ const ReactVisDonutChartPage = () =>
               <NxTableCell>function</NxTableCell>
               <NxTableCell>no</NxTableCell>
               <NxTableCell>
-                This handler is triggered either when the user's mouse leaves a mark. The handler passes two arguments,
+                This handler is triggered when the user's mouse leaves a mark. The handler passes two arguments,
                 the corresponding datapoint and the actual event.
               </NxTableCell>
             </NxTableRow>
@@ -150,7 +152,7 @@ const ReactVisDonutChartPage = () =>
               <NxTableCell>number</NxTableCell>
               <NxTableCell>no</NxTableCell>
               <NxTableCell>
-                The distance between the origin and the outside of the arc. This values is scaled linearly by default
+                The distance between the origin and the outside of the arc. This values is scaled linearly by default.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
