@@ -85,7 +85,7 @@ describe('NxModal', function() {
         el.focus();
       }, checkbox);
 
-      await browser.eyesRegionSnapshot(null, Target.region(modal));
+      await browser.eyesSnapshot(null);
     });
   });
 
