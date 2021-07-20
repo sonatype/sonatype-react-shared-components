@@ -181,6 +181,9 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-border-default">
             Standard border styles for higher-level elements.
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-secondary">
+            Lighter border styles generally used inside components, or after a default border.
+          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-subsection">
             Standard border styles for lower-level elements such as tile subsections.
           </PropertyDocItem>
@@ -210,6 +213,9 @@ const CssVariablesPage = () => {
           <NxTable.Body>
             <ColorDocRow colorVar="--nx-color-border">
               Color for standard higher-level borders
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-border-secondary">
+              Color for lighter borders
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-subsection-border">
               Color for standard lower-level borders such as those of tile subsections
