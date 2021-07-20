@@ -64,6 +64,24 @@ describe('NxAlert', function() {
       // take image of entire viewport in order to capture the backdrop color
       await browser.eyesSnapshot(null);
     });
+
+    it('does not cut off overflowing focus borders in the content area', async function() {
+      const openModalBtnSelector = `${formExampleSelector} button`,
+          modalSelector = `${formExampleSelector} .nx-modal`,
+          checkboxSelector = `${formExampleSelector} fieldset .nx-checkbox:first-child`;
+
+      const [openModalBtn, modal, checkbox] =
+          await Promise.all([browser.$(openModalBtnSelector), browser.$(modalSelector), browser.$(checkboxSelector)]);
+
+      await openModalBtn.scrollIntoView({ block: 'center' });
+      await openModalBtn.click();
+
+      await browser.execute(el => {
+        el.focus();
+      }, checkbox);
+
+      await browser.eyesRegionSnapshot(null, Target.region(modal));
+    });
   });
 
   describe('Narrow NxModal', function() {
