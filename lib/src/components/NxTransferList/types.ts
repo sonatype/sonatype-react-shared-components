@@ -4,23 +4,24 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { FieldsetHTMLAttributes, ReactNode } from 'react';
+import { ReactNode, HTMLAttributes } from 'react';
 
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
 
-export interface DataItem<T extends string | number> {
+export type FilterFn<T extends string | number = string> = (d: DataItem<T>[]) => DataItem<T>[];
+
+export interface DataItem<T extends string | number = string> {
   id: T;
-  displayText: string;
+  displayName: string;
 }
 
-export interface TransferListItemProps<T extends string | number> extends DataItem<T> {
+export interface TransferListItemProps<T extends string | number = string> extends DataItem<T> {
   checked: boolean;
   onChange: (checked: boolean, id: T) => void
 }
 
-export interface Props<T extends string | number>
-  extends Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 'children' | 'onChange'> {
-  label?: ReactNode;
+export interface Props<T extends string | number = string>
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onChange'> {
   allItems: DataItem<T>[];
   selectedItems: Set<T>;
   availableItemsLabel?: ReactNode;
@@ -28,7 +29,8 @@ export interface Props<T extends string | number>
   showMoveAll?: boolean | null;
   availableItemsFilter: string;
   selectedItemsFilter: string;
-  onAvailableItemsFilterChange?: NxFilterInputProps['onChange'];
-  onSelectedItemsFilterChange?: NxFilterInputProps['onChange'];
+  onAvailableItemsFilterChange: NxFilterInputProps['onChange'];
+  onSelectedItemsFilterChange: NxFilterInputProps['onChange'];
   onChange: (newSelected: Set<T>) => void;
+  filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
 }

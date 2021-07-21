@@ -8,15 +8,15 @@ import React, { FormEvent, useMemo } from 'react';
 import classnames from 'classnames';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
-import { Props, TransferListItemProps } from './types';
+import { Props, TransferListItemProps, DataItem, FilterFn } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { into, compose, toLower, filter, includes, groupBy, map } from 'ramda';
+import { toLower, filter, includes, groupBy, partial, identity, prop, pipe } from 'ramda';
 
 export { Props, DataItem } from './types';
 
 function TransferListItem<T extends string | number>(props: TransferListItemProps<T>) {
-  const { checked, id, displayText, onChange: onChangeProp } = props;
+  const { checked, id, displayName, onChange: onChangeProp } = props;
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
     onChangeProp(!evt.currentTarget.checked, id);
@@ -26,14 +26,13 @@ function TransferListItem<T extends string | number>(props: TransferListItemProp
     <label className="nx-transfer-list__item">
       <input type="checkbox" checked={checked} onChange={onChange} />
       <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} className="nx-transfer-list__selection-icon" />
-      <span className="nx-transfer-list__item-text">{displayText}</span>
+      <span className="nx-transfer-list__item-text">{displayName}</span>
     </label>
   );
 }
 
 export default function NxTransferList<T extends string | number>(props: Props<T>) {
   const {
-    label,
     allItems,
     selectedItems,
     availableItemsLabel,
@@ -45,19 +44,35 @@ export default function NxTransferList<T extends string | number>(props: Props<T
     onSelectedItemsFilterChange,
     className: classNameProp,
     onChange: onChangeProp,
+    filterFn,
     ...attrs
   } = props;
 
   const groupedItems = useMemo(() => groupBy(item => selectedItems.has(item.id) ? 'selected' : 'available', allItems),
           [allItems, selectedItems]),
-      availableItemsFilterLowercase = availableItemsFilter.toLowerCase(),
-      selectedItemsFilterLowercase = selectedItemsFilter.toLowerCase(),
-      availableItemsTransducer =
-          compose<string[], string[], string[]>(map(toLower), filter(includes(availableItemsFilterLowercase))),
-      selectedItemsTransducer =
-          compose<string[], string[], string[]>(map(toLower), filter(includes(selectedItemsFilterLowercase))),
-      visibleAvailableItems = into([], availableItemsTransducer, groupedItems.available),
-      visibleSelectedItems = into([], selectedItemsTransducer, groupedItems.selected);
+
+      // given filter text, returns a function which checks whether a displayName matches the filter
+      mkDisplayNameFilterFn: (filterText: string) => (name: string) => boolean =
+        filterText => filterFn ? partial(filterFn, [filterText]) : pipe(toLower, includes(toLower(filterText))),
+
+      // given filter text, returns a function that filters a list of items based on that filter text
+      mkFilter = (filterText: string) => filter<DataItem<T>>(
+        pipe(prop('displayName'), mkDisplayNameFilterFn(filterText))
+      ),
+
+      // The functions to filter each group of inputs
+      availableItemsFilterFn: FilterFn<T> = availableItemsFilter ? mkFilter(availableItemsFilter) : identity,
+      selectedItemsFilterFn: FilterFn<T> = selectedItemsFilter ? mkFilter(selectedItemsFilter) : identity,
+
+      // Do the actual filtering, but memoize it since it could be expensive
+      visibleAvailableItems = useMemo(
+          () => availableItemsFilterFn(groupedItems.available) || [],
+          [allItems, selectedItems, availableItemsFilter, filterFn]
+      ),
+      visibleSelectedItems = useMemo(
+          () => selectedItemsFilterFn(groupedItems.selected) || [],
+          [allItems, selectedItems, selectedItemsFilter, filterFn]
+      );
 
   const availableCount = allItems.length - selectedItems.size,
       selectedCount = selectedItems.size;
@@ -84,12 +99,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
   }
 
   return (
-    <fieldset className={classnames('nx-transfer-list', classNameProp)} { ...attrs }>
-      { label &&
-        <legend className="nx-legend">
-          <span className="nx-legend__text">{label}</span>
-        </legend>
-      }
+    <div className={classnames('nx-transfer-list', classNameProp)} { ...attrs }>
       <div className="nx-transfer-list__half">
         <h6 className="nx-transfer-list__half-header">{availableItemsLabel}</h6>
         <div className="nx-transfer-list__control-box">
@@ -130,6 +140,6 @@ export default function NxTransferList<T extends string | number>(props: Props<T
           </div>
         </div>
       </div>
-    </fieldset>
+    </div>
   );
 }
