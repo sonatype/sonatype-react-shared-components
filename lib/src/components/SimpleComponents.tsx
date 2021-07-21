@@ -15,7 +15,6 @@ export const NxPre = withClass('pre', 'nx-pre');
 export const NxFooter = withClass('footer', 'nx-footer');
 export const NxButtonBar = withClass('div', 'nx-btn-bar');
 export const NxCounter = withClass('span', 'nx-counter');
-export const NxFormSelect = withClass('select', 'nx-form-select');
 export const NxThreatNumber = withClass('span', 'nx-threat-number');
 export const NxPageMain = withClass('main', 'nx-page-main');
 export const NxPageSidebar = withClass('aside', 'nx-page-sidebar');
