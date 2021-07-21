@@ -5,7 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxCode, NxH3, NxTile } from '@sonatype/react-shared-components';
+import { zip } from 'ramda';
+import { NxP, NxCode, NxH3, NxTile, NxTable, selectableColors, selectableColorClasses }
+  from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -18,6 +20,17 @@ const selectableColorNxTagExampleCode = require('./SelectableColorNxTagExample?r
 
 const customExampleCode =
     [selectableColorCustomExampleCode, { content: selectableColorCustomExampleStyles, language: 'scss' }];
+
+const ColorDocRow = ({ name, className }: { name: string, className: string }) =>
+  <NxTable.Row className={className}>
+    <NxTable.Cell><NxCode>{name}</NxCode></NxTable.Cell>
+    <NxTable.Cell>
+      <div className="gallery-color-sample gallery-color-sample__selectable-light" />
+    </NxTable.Cell>
+    <NxTable.Cell>
+      <div className="gallery-color-sample gallery-color-sample__selectable-dark" />
+    </NxTable.Cell>
+  </NxTable.Row>;
 
 const SelectableColorsPage = () =>
   <>
@@ -82,6 +95,27 @@ const SelectableColorsPage = () =>
           a TypeScript type union named <NxCode>SelectableColor</NxCode>. You may notices this type is
           used on the <NxCode>color</NxCode> prop of <NxCode>NxTag</NxCode>, for instance.
         </NxP>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Selectable Color Names and Values</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Color Name</NxTable.Cell>
+              <NxTable.Cell>Light</NxTable.Cell>
+              <NxTable.Cell>Dark</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            {
+              zip(selectableColors, selectableColorClasses).map(([color, cls]) =>
+                <ColorDocRow key={color} name={color} className={cls} />
+              )
+            }
+          </NxTable.Body>
+        </NxTable>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
