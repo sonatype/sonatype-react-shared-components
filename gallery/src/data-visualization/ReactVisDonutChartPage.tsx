@@ -96,11 +96,30 @@ const ReactVisDonutChartPage = () =>
             <NxTableRow>
               <NxTableCell>colorType</NxTableCell>
               <NxTableCell>string</NxTableCell>
-              <NxTableCell>No</NxTableCell>
+              <NxTableCell>no</NxTableCell>
               <NxTableCell>
                 By default the color is interpreted as number to be scaled to a color range.
                 By providing the prop <NxCode>colorType="literal"</NxCode> overrides to let React-vis
                 know that the colors provided are literal color values.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>data</NxTableCell>
+              <NxTableCell>object array</NxTableCell>
+              <NxTableCell>yes</NxTableCell>
+              <NxTableCell>
+                Each react-vis chart components require a property, through which
+                we pass an array of objects. These properties correspond to various visual characteristics of the
+                corresponding marks. For example, x and y, which are required for most series types, affect the position
+                of each mark.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>height</NxTableCell>
+              <NxTableCell>number</NxTableCell>
+              <NxTableCell>yes</NxTableCell>
+              <NxTableCell>
+                The height of the chart to be generated.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
@@ -122,6 +141,15 @@ const ReactVisDonutChartPage = () =>
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
+              <NxTableCell>labelsStyle</NxTableCell>
+              <NxTableCell>object</NxTableCell>
+              <NxTableCell>no</NxTableCell>
+              <NxTableCell>
+                A style object specifically for the labels. Note that the property is labelsStyle (labels plural,
+                not labelStyle).
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
               <NxTableCell>onValueMouseOut</NxTableCell>
               <NxTableCell>function</NxTableCell>
               <NxTableCell>no</NxTableCell>
@@ -135,7 +163,7 @@ const ReactVisDonutChartPage = () =>
               <NxTableCell>function</NxTableCell>
               <NxTableCell>no</NxTableCell>
               <NxTableCell>
-                This handler is triggered either when the user's mouse enters a mark. The handler passes two arguments,
+                This handler is triggered when the user's mouse enters a mark. The handler passes two arguments,
                 the corresponding datapoint and the actual event.
               </NxTableCell>
             </NxTableRow>
@@ -152,7 +180,8 @@ const ReactVisDonutChartPage = () =>
               <NxTableCell>number</NxTableCell>
               <NxTableCell>no</NxTableCell>
               <NxTableCell>
-                The distance between the origin and the outside of the arc. This values is scaled linearly by default.
+                The distance between the origin and the outside of the arc. This value is scaled linearly by default.
+                If radius is not set, a pie chart is generated instead of a donut chart.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
@@ -161,6 +190,14 @@ const ReactVisDonutChartPage = () =>
               <NxTableCell>no</NxTableCell>
               <NxTableCell>
                 Whether or not to show the labels specified in the data
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>width</NxTableCell>
+              <NxTableCell>number</NxTableCell>
+              <NxTableCell>yes</NxTableCell>
+              <NxTableCell>
+                The width of the chart to be generated.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>

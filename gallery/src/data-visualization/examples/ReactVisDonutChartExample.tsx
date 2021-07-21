@@ -40,6 +40,7 @@ export default function ReactVisDonutChartExample() {
                  showLabels
                  padAngle={0.05}
                  colorType="literal"
+                 labelsStyle={{fontSize: 12}}
                  labelsRadiusMultiplier={1.25}
                  onValueMouseOver={val => setHintValue(val)}
                  onValueMouseOut={() => setHintValue(null)}
@@ -50,6 +51,7 @@ export default function ReactVisDonutChartExample() {
         <Hint value={hintValue}>
           <p className="nx-donut-hint">
             {hintValue.label}: {hintValue.subLabel}
+            {hintValue.subLabel && parseInt(hintValue.subLabel) > 1 ? ' issues' : 'issue'}
           </p>
         </Hint>
       }

@@ -6,8 +6,8 @@
  */
 import React from 'react';
 import { GalleryDescriptionTile } from '../gallery-components/GalleryTiles';
-import { NxCode, NxH2, NxH3, NxP, NxTable, NxTableBody, NxTableCell, NxTableHead, NxTableRow,
-  NxTextLink, NxWarningAlert } from '@sonatype/react-shared-components';
+import { NxCode, NxH2, NxH3, NxP, NxTextLink, NxWarningAlert } from '@sonatype/react-shared-components';
+import { Link } from 'react-router-dom';
 
 const ReactVisPage = () =>
   <>
@@ -32,119 +32,51 @@ const ReactVisPage = () =>
       </NxP>
       <NxH3>Colors</NxH3>
       <NxP>
-        Colors are assigned to charts by passing in the <NxCode>color</NxCode> or
-        the <NxCode>stroke</NxCode> prop depending on the type of chart being used.
-      </NxP>
-      <NxP>
-        <NxCode>{'<LineSeries />'}</NxCode> charts use the <NxCode>stroke</NxCode> prop
-        to determine colors of the lines.
-      </NxP>
-      <NxP>
-        <NxCode>{'<BarSeries />'}</NxCode> charts use the <NxCode>color</NxCode> prop to
-        determine colors of the bars.
-      </NxP>
-      <NxP>
-        <NxCode>{'<RadialChart />'}</NxCode> uses the <NxCode>color</NxCode> property on
-        the <NxCode>data</NxCode> object to determine colors of the bars.
-      </NxP>
-      <NxP>
-        RSC's <NxCode>{'selectableColorClasses'}</NxCode> provides a seamlessly way of
-        assigning colors based on RSC color guidelines. Usage is quite simple. Simply import
+        RSC's <NxCode>{'selectableColorClasses'}</NxCode> provides a seamlessly way of assigning colors based on RSC
+        guidelines to react-vis charts. Usage is quite simple. Simply import
         the <NxCode>{'selectableColorClasses'}</NxCode> array and provide the desired color
         to the <NxCode>className</NxCode> prop along with the dark or the light variant of the color chosen.
-        An example of using the color Purple is shown below:
+        Details on the available colors and usage are located
+        in the <Link to="/pages/Selectable%20Colors">Selectable Colors</Link> section.
       </NxP>
       <NxP>
         For specifying colors to shape based graphs
-        like <NxCode>{'<BarSeries />, <MarkSeries /> or <RadialChart />'}</NxCode>, please provide
+        like the <NxCode>{'<BarSeries />'}</NxCode>, <NxCode>{'<MarkSeries />'}</NxCode> or
+        the <NxCode>{'<RadialChart />'}</NxCode> charts, please provide
         the <NxCode>{'nx-graph-shape-fill-dark'}</NxCode> or <NxCode>{'nx-graph-shape-fill-light'}</NxCode> class
-        to the <NxCode>className</NxCode> prop. For example, to fill a bar graph with the color purple:
+        to the <NxCode>className</NxCode> prop. For example, to use the dark variant of the color purple on a bar graph:
       </NxP>
       <NxP>
         <NxCode>{'<VerticalBarSeries className={`nx-graph-shape-fill-dark ${selectableColorClasses[0]}`}'}</NxCode>
       </NxP>
       <NxP>
-        For specifying colors to line based graphs like <NxCode>{'<LineSeries />'}</NxCode>, please provide
-        the <NxCode>{'nx-graph-line-fill-dark'}</NxCode> or <NxCode>{'nx-graph-line-fill-light'}</NxCode> class
-        to the <NxCode>className</NxCode> prop. For example, to fill a line graph with the color purple:
+        For specifying colors to line based graphs like <NxCode>{'<LineSeries />'}</NxCode> charts, please provide
+        the <NxCode>{'nx-graph-line-fill-dark'}</NxCode> or <NxCode>{'nx-graph-line-fill-light'}</NxCode> class to
+        the <NxCode>className</NxCode> prop. For example, to use the light variant of the color blue on a line graph:
       </NxP>
       <NxP>
-        <NxCode>{'<LineSeries className={`nx-graph-line-fill-dark ${selectableColorClasses[0]}`}'}</NxCode>
+        <NxCode>{'<LineSeries className={`nx-graph-line-fill-light ${selectableColorClasses[2]}`}'}</NxCode>
       </NxP>
       <NxWarningAlert>
         When assigning colors to charts, it is recommended to choose colors from
-        RSC's <NxCode>{'selectableColorClasses'}</NxCode> array. For more details on colors, please
-        check the Color Palettes and Selectable Colors section.
+        RSC's <NxCode>{'selectableColorClasses'}</NxCode> array. For more usage details on colors, please
+        check the <Link to="/pages/Selectable%20Colors">Selectable Colors</Link> section.
       </NxWarningAlert>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
-          <NxH3>Basic API Reference</NxH3>
-        </header>
-        <NxP>
-          Note: The following table only describles the props used for the React-vis examples on the gallery page.
-          For more details, please see the
-          <NxTextLink href="https://uber.github.io/react-vis/documentation/welcome-to-react-vis">
-            {' official API documentation.'}
-          </NxTextLink>
-        </NxP>
-        <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Name</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Description</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>data</NxTableCell>
-              <NxTableCell>object array</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell>
-                Each react-vis chart components require a property, through which
-                we pass an array of objects. These properties correspond to various visual characteristics of the
-                corresponding marks. For example, x and y, which are required for most series types, affect the position
-                of each mark.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>height</NxTableCell>
-              <NxTableCell>number</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell>
-                The height of the chart to be generated.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>onMouseLeave</NxTableCell>
-              <NxTableCell>function</NxTableCell>
-              <NxTableCell>no</NxTableCell>
-              <NxTableCell>
-                This event handler is triggered whenever the mouse of the user exits the plot area.
-                It passes a mouse event.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>onNearestXY</NxTableCell>
-              <NxTableCell>function</NxTableCell>
-              <NxTableCell>no</NxTableCell>
-              <NxTableCell>
-                This handler fires when the user moves their mouse or touch point somewhere on the plot.
-                It returns the datapoint corresponding to the mark closest to the cursor or touch point.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>width</NxTableCell>
-              <NxTableCell>number</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell>
-                The width of the chart to be generated.
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
-        </NxTable>
-      </section>
+      <NxH3>Examples</NxH3>
+      <NxP>
+        A few examples of generating commonly used graphs have been included for your reference. The examples
+        include a <Link to="/pages/Line%20Graph#">Line Graph</Link>, <Link to="/pages/Bar%20Graph">Bar Graph</Link>,
+        {' '}<Link to="/pages/Donut%20Chart">Donut Chart</Link>,
+        and a <Link to="/pages/Stacked%20Graph">Stacked Graph</Link>.
+      </NxP>
+      <NxH3>API Reference</NxH3>
+      <NxP>
+        The example pages contain basic API and data format references for generating the corresponding charts.
+        For more details, please see the
+        <NxTextLink href="https://uber.github.io/react-vis/documentation/welcome-to-react-vis">
+          {' official API documentation.'}
+        </NxTextLink>
+      </NxP>
     </GalleryDescriptionTile>
   </>;
 

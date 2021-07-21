@@ -26,8 +26,8 @@ export default function ReactVisBarGraphExample() {
       <HorizontalGridLines />
       <VerticalBarSeries data={data}
                          barWidth={0.3}
-                         onNearestX={v => setHintValue(v)}
                          className={`nx-graph-shape-fill-dark ${selectableColorClasses[0]}`}
+                         onNearestX={v => setHintValue(v)}
       />
       {hintValue && <Hint value={hintValue} />}
       <XAxis />

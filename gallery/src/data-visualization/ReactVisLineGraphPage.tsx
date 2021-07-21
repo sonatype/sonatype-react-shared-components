@@ -76,11 +76,60 @@ const ReactVisLineGraphPage = () =>
           </NxTableHead>
           <NxTableBody>
             <NxTableRow>
-              <NxTableCell>stroke</NxTableCell>
+              <NxTableCell>className</NxTableCell>
               <NxTableCell>string</NxTableCell>
               <NxTableCell>no</NxTableCell>
               <NxTableCell>
-                In LineSeries, stroke is used instead of color to specify the color of the lines.
+                DOM classNames to be added to the wrapper component.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>data</NxTableCell>
+              <NxTableCell>object array</NxTableCell>
+              <NxTableCell>yes</NxTableCell>
+              <NxTableCell>
+                Each react-vis chart components require a property, through which
+                we pass an array of objects. These properties correspond to various visual characteristics of the
+                corresponding marks. For example, x and y, which are required for most series types, affect the position
+                of each mark.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>height</NxTableCell>
+              <NxTableCell>number</NxTableCell>
+              <NxTableCell>yes</NxTableCell>
+              <NxTableCell>
+                The height of the chart to be generated.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>onMouseLeave</NxTableCell>
+              <NxTableCell>function</NxTableCell>
+              <NxTableCell>no</NxTableCell>
+              <NxTableCell>
+                This event handler is triggered whenever the mouse of the user exits the plot area.
+                It passes a mouse event.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>onNearestX</NxTableCell>
+              <NxTableCell>function</NxTableCell>
+              <NxTableCell>no</NxTableCell>
+              <NxTableCell>
+                This handler fires when the user moves their mouse or touches point somewhere on the plot.
+                The handler fires a function that takes two arguments: the datapoint with the x value closest to the
+                cursor or touch point, and a second object containing: the <NxCode>innerX</NxCode> value (x
+                coordinates of the cursor relative to the left of the plot), <NxCode>index</NxCode> (position
+                of this datapoint in the dataset, where 0 is the first datapoint, 1 is the second, etc)
+                plus the actual event as <NxCode>event</NxCode>.
+              </NxTableCell>
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>width</NxTableCell>
+              <NxTableCell>number</NxTableCell>
+              <NxTableCell>yes</NxTableCell>
+              <NxTableCell>
+                The width of the chart to be generated.
               </NxTableCell>
             </NxTableRow>
           </NxTableBody>
