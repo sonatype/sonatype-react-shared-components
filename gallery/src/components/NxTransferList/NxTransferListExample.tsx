@@ -1,0 +1,125 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+import React, { useState } from 'react';
+import { NxTransferList } from '@sonatype/react-shared-components';
+
+const items = [
+  { id: 1, displayName: 'Item 1' },
+  { id: 2, displayName: 'Item 2' },
+  { id: 3, displayName: 'Item 3' },
+  { id: 4, displayName: 'Item 4' },
+  { id: 5, displayName: 'Item 5' },
+  { id: 6, displayName: 'Item 6' },
+  { id: 7, displayName: 'Item 7' },
+  { id: 8, displayName: 'Item 8' },
+  { id: 9, displayName: 'Item 9' },
+  { id: 10, displayName: 'Item 10' },
+  { id: 11, displayName: 'Item 11' },
+  { id: 12, displayName: 'Item 12' },
+  { id: 13, displayName: 'Item 13' },
+  { id: 14, displayName: 'Item 14' },
+  { id: 15, displayName: 'Item 15' },
+  { id: 16, displayName: 'Item 16' },
+  { id: 17, displayName: 'Item 17' },
+  { id: 18, displayName: 'Item 18' },
+  { id: 19, displayName: 'Item 19' },
+  { id: 20, displayName: 'Item 20' },
+  { id: 21, displayName: 'Item 21' },
+  { id: 22, displayName: 'Item 22' },
+  { id: 23, displayName: 'Item 23' },
+  { id: 24, displayName: 'Item 24' },
+  { id: 25, displayName: 'Item 25' },
+  { id: 26, displayName: 'Item 26' },
+  { id: 27, displayName: 'Item 27' },
+  { id: 28, displayName: 'Item 28' },
+  { id: 29, displayName: 'Item 29' },
+  { id: 30, displayName: 'Item 30' },
+  { id: 31, displayName: 'Item 31' },
+  { id: 32, displayName: 'Item 32' },
+  { id: 33, displayName: 'Item 33' },
+  { id: 34, displayName: 'Item 34' },
+  { id: 35, displayName: 'Item 35' },
+  { id: 36, displayName: 'Item 36' },
+  { id: 37, displayName: 'Item 37' },
+  { id: 38, displayName: 'Item 38' },
+  { id: 39, displayName: 'Item 39' },
+  { id: 40, displayName: 'Item 40' },
+  { id: 41, displayName: 'Item 41' },
+  { id: 42, displayName: 'Item 42' },
+  { id: 43, displayName: 'Item 43' },
+  { id: 44, displayName: 'Item 44' },
+  { id: 45, displayName: 'Item 45' },
+  { id: 46, displayName: 'Item 46' },
+  { id: 47, displayName: 'Item 47' },
+  { id: 48, displayName: 'Item 48' },
+  { id: 49, displayName: 'Item 49' },
+  { id: 50, displayName: 'Item 50' },
+  { id: 51, displayName: 'Item 51' },
+  { id: 52, displayName: 'Item 52' },
+  { id: 53, displayName: 'Item 53' },
+  { id: 54, displayName: 'Item 54' },
+  { id: 55, displayName: 'Item 55' },
+  { id: 56, displayName: 'Item 56' },
+  { id: 57, displayName: 'Item 57' },
+  { id: 58, displayName: 'Item 58' },
+  { id: 59, displayName: 'Item 59' },
+  { id: 60, displayName: 'Item 60' },
+  { id: 61, displayName: 'Item 61' },
+  { id: 62, displayName: 'Item 62' },
+  { id: 63, displayName: 'Item 63' },
+  { id: 64, displayName: 'Item 64' },
+  { id: 65, displayName: 'Item 65' },
+  { id: 66, displayName: 'Item 66' },
+  { id: 67, displayName: 'Item 67' },
+  { id: 68, displayName: 'Item 68' },
+  { id: 69, displayName: 'Item 69' },
+  { id: 70, displayName: 'Item 70' },
+  { id: 71, displayName: 'Item 71' },
+  { id: 72, displayName: 'Item 72' },
+  { id: 73, displayName: 'Item 73' },
+  { id: 74, displayName: 'Item 74' },
+  { id: 75, displayName: 'Item 75' },
+  { id: 76, displayName: 'Item 76' },
+  { id: 77, displayName: 'Item 77' },
+  { id: 78, displayName: 'Item 78' },
+  { id: 79, displayName: 'Item 79' },
+  { id: 80, displayName: 'Item 80' },
+  { id: 81, displayName: 'Item 81' },
+  { id: 82, displayName: 'Item 82' },
+  { id: 83, displayName: 'Item 83' },
+  { id: 84, displayName: 'Item 84' },
+  { id: 85, displayName: 'Item 85' },
+  { id: 86, displayName: 'Item 86' },
+  { id: 87, displayName: 'Item 87' },
+  { id: 88, displayName: 'Item 88' },
+  { id: 89, displayName: 'Item 89' },
+  { id: 90, displayName: 'Item 90' },
+  { id: 91, displayName: 'Item 91' },
+  { id: 92, displayName: 'Item 92' },
+  { id: 93, displayName: 'Item 93' },
+  { id: 94, displayName: 'Item 94' },
+  { id: 95, displayName: 'Item 95' },
+  { id: 96, displayName: 'Item 96' },
+  { id: 97, displayName: 'Item 97' },
+  { id: 98, displayName: 'Item 98' },
+  { id: 99, displayName: 'Item 99' },
+  { id: 100, displayName: 'Item 100' }
+];
+
+export default function NxTransferListExample() {
+  const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set()),
+      [availableItemsFilter, setAvailableItemsFilter] = useState(''),
+      [selectedItemsFilter, setSelectedItemsFilter] = useState('');
+
+  return <NxTransferList allItems={items}
+                         selectedItems={selectedItems}
+                         availableItemsFilter={availableItemsFilter}
+                         selectedItemsFilter={selectedItemsFilter}
+                         onAvailableItemsFilterChange={setAvailableItemsFilter}
+                         onSelectedItemsFilterChange={setSelectedItemsFilter}
+                         onChange={setSelectedItems} />;
+}
