@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 // import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { NxListV2 } from '@sonatype/react-shared-components';
 import React from 'react';
 
@@ -22,8 +23,8 @@ function NxListExample() {
         <NxListV2.Subtext>This is some sub-text to demonstrate spacing point bridge kanji San Francisco
           render-farm chrome human paranoid San Francisco skyscraper convenience store
         </NxListV2.Subtext>
-        <NxListV2.Action title="Edit" />
-        <NxListV2.Action title="Trash" />
+        <NxListV2.Action title="Edit" icon={faEdit}/>
+        <NxListV2.Action title="Trash" icon={faTrash}/>
       </NxListV2.Item>
       <NxListV2.Item>
         <NxListV2.Text>Text1</NxListV2.Text>

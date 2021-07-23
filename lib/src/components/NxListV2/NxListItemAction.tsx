@@ -8,14 +8,13 @@ import React from 'react';
 import {NxListItemActionProps} from './types';
 import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const NxListItemAction = (props: NxListItemActionProps) => {
-  const { title} = props;
+  const { title, icon } = props;
   return (
     <>
       <NxButton title={title} variant="icon-only">
-        <NxFontAwesomeIcon icon={faEdit} />
+        {icon && <NxFontAwesomeIcon icon={icon} />}
       </NxButton>
     </>
   );
