@@ -65,3 +65,25 @@ export function textContent(children: ReactNode): string {
     return text + textContent(child);
   }, '');
 }
+
+/**
+ * Splits out the first child that matches the type from the rest of the children.
+ * @param type the component type to find
+ * @param children the children to search
+ * @returns A list containing all matched children in the same order they were originally.
+ */
+export function matchingChildren(type: ComponentType, children: ReactNode): [ReactNode[], ReactNode[]] {
+  const matchingChildren: ReactNode[] = [];
+  const nonMatchingChildren: ReactNode[] = [];
+
+  React.Children.forEach(children, child => {
+    if (React.isValidElement(child) && child.type === type) {
+      matchingChildren.push(child);
+    }
+    else {
+      nonMatchingChildren.push(child);
+    }
+  });
+
+  return [matchingChildren, nonMatchingChildren];
+}

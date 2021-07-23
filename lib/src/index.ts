@@ -230,3 +230,5 @@ export { default as NxFormSelect, Props as NxFormSelectProps } from './component
 import * as nxFormSelectStateHelpers from './components/NxFormSelect/stateHelpers';
 export { nxFormSelectStateHelpers };
 
+export { default as NxListV2, NxListProps } from './components/NxListV2/NxListV2';
+export { default as NxListItem, NxListItemProps } from './components/NxListV2/NxListItemV2';
