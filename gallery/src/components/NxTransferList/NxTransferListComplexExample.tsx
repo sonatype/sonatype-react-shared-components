@@ -11,7 +11,14 @@ import { map, range } from 'ramda';
 const items = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
 
 function regexpFilter(filterStr: string, itemDisplayName: string) {
-  const regex = new RegExp(filterStr);
+  let regex;
+  try {
+    regex = new RegExp(filterStr);
+  }
+  catch (e) {
+    // string is not a valid regex, don't filter anything.
+    return true;
+  }
 
   return regex.test(itemDisplayName);
 }
