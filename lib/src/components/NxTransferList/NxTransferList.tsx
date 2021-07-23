@@ -21,7 +21,8 @@ function TransferListItem<T extends string | number>(props: TransferListItemProp
   const { checked, id, displayName, onChange: onChangeProp } = props;
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
-    onChangeProp(!evt.currentTarget.checked, id);
+    // NOTE: the `checked` property on the DOM node will have the new value, not the old
+    onChangeProp(evt.currentTarget.checked, id);
   }
 
   return (
