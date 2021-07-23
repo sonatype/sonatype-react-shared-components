@@ -54,26 +54,28 @@ export default function NxTransferList<T extends string | number>(props: Props<T
   const groupedItems = useMemo(() => groupBy(item => selectedItems.has(item.id) ? 'selected' : 'available', allItems),
           [allItems, selectedItems]),
 
-      // given filter text, returns a function which checks whether a displayName matches the filter
-      mkDisplayNameFilterFn: (filterText: string) => (name: string) => boolean =
-        filterText => filterFn ? partial(filterFn, [filterText]) : pipe(toLower, includes(toLower(filterText))),
+      // given filter text, returns a function which checks whether a displayName matches the filter.
+      // This returned function will either be the provided `filterFn` (partially applied over the current filter text),
+      // or a case-insensitive substring match
+      mkDisplayNameFilter = (filterText: string) =>
+          filterFn ? partial(filterFn, [filterText]) : pipe(toLower, includes(toLower(filterText))),
 
-      // given filter text, returns a function that filters a list of items based on that filter text
-      mkFilter = (filterText: string) => filter<DataItem<T>>(
-        pipe(prop('displayName'), mkDisplayNameFilterFn(filterText))
+      // Given filter text, return a function that filters a list of items
+      mkListFilter = (filterText: string) => filter<DataItem<T>>(
+          pipe(prop('displayName'), mkDisplayNameFilter(filterText))
       ),
 
       // The functions to filter each group of inputs
-      availableItemsFilterFn: FilterFn<T> = availableItemsFilter ? mkFilter(availableItemsFilter) : identity,
-      selectedItemsFilterFn: FilterFn<T> = selectedItemsFilter ? mkFilter(selectedItemsFilter) : identity,
+      availableItemsFilterFn: FilterFn<T> = availableItemsFilter ? mkListFilter(availableItemsFilter) : identity,
+      selectedItemsFilterFn: FilterFn<T> = selectedItemsFilter ? mkListFilter(selectedItemsFilter) : identity,
 
       // Do the actual filtering, but memoize it since it could be expensive
       visibleAvailableItems = useMemo(
-          () => availableItemsFilterFn(groupedItems.available) || [],
+          () => availableItemsFilterFn(groupedItems.available || []),
           [allItems, selectedItems, availableItemsFilter, filterFn]
       ),
       visibleSelectedItems = useMemo(
-          () => selectedItemsFilterFn(groupedItems.selected) || [],
+          () => selectedItemsFilterFn(groupedItems.selected || []),
           [allItems, selectedItems, selectedItemsFilter, filterFn]
       );
 
