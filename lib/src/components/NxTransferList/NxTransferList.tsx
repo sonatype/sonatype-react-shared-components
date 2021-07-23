@@ -114,7 +114,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
           { showMoveAll &&
             <button type="button" className="nx-transfer-list__move-all" onClick={onSelectAll}>
               <NxFontAwesomeIcon icon={faPlusCircle} className="nx-transfer-list__selection-icon" />
-              Transfer All
+              <span>Transfer All</span>
             </button>
           }
           <div className="nx-transfer-list__item-list">
@@ -136,7 +136,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
           { showMoveAll &&
             <button type="button" className="nx-transfer-list__move-all" onClick={onUnselectAll}>
               <NxFontAwesomeIcon icon={faTimesCircle} className="nx-transfer-list__selection-icon" />
-              Remove All
+              <span>Remove All</span>
             </button>
           }
           <div className="nx-transfer-list__item-list">

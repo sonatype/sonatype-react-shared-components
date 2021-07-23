@@ -38,7 +38,27 @@ $nx-transfer-list-visible-item-count: 10;
 }
 
 .nx-transfer-list__move-all {
-  margin-top: var(--nx-spacing-4x);
+  @include container-horizontal;
+
+  background: initial;
+  border: initial;
+  color: var(--nx-color-link);
+  cursor: pointer;
+  font: inherit;
+  margin: var(--nx-spacing-4x) $nx-transfer-list-control-box-side-padding 0 $nx-transfer-list-control-box-side-padding;
+  padding: 0;
+
+  &:hover {
+    color: var(--nx-color-link-hover);
+  }
+
+  &:hover {
+    color: var(--nx-color-link-hover);
+  }
+
+  &:active {
+    color: var(--nx-color-link-active);
+  }
 
   + .nx-transfer-list__item-list {
     margin-top: var(--nx-spacing-4x);
