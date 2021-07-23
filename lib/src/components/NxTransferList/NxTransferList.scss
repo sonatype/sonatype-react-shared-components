@@ -1,0 +1,110 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-container-helpers';
+@import '../../scss-shared/nx-text-helpers';
+
+// the padding on the sides of each transfer list control box
+$nx-transfer-list-control-box-side-padding: var(--nx-spacing-6x);
+$nx-transfer-list-item-vertical-padding: var(--nx-spacing-2x);
+$nx-transfer-list-item-vertical-margin: var(--nx-spacing-2x);
+$nx-transfer-list-visible-item-count: 10;
+
+.nx-transfer-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--nx-spacing-6x);
+  width: 720px;
+  min-width: 720px;
+
+}
+
+.nx-transfer-list__half-header {
+  font-size: var(--nx-font-size);
+  font-weight: bold;
+  margin-bottom: var(--nx-spacing-2x);
+}
+
+.nx-transfer-list__control-box {
+  border: var(--nx-border-default);
+  border-radius: var(--nx-border-radius);
+}
+
+.nx-transfer-list__filter {
+  margin: var(--nx-spacing-6x) $nx-transfer-list-control-box-side-padding 0 $nx-transfer-list-control-box-side-padding;
+}
+
+.nx-transfer-list__move-all {
+  margin-top: var(--nx-spacing-4x);
+
+  + .nx-transfer-list__item-list {
+    margin-top: var(--nx-spacing-4x);
+  }
+}
+
+.nx-transfer-list__item-list {
+  $item-height: '(1em * var(--nx-line-height) + 2 * #{$nx-transfer-list-item-vertical-padding})';
+
+  @include container-vertical;
+
+  background-color: var(--nx-swatch-indigo-97);
+  border-top: var(--nx-border-default);
+  border-bottom: var(--nx-border-default);
+
+  box-sizing: content-box;
+
+  // Should be exactly tall enough to show 10 items, taking into account the margin between them
+  height: calc(
+    #{$nx-transfer-list-visible-item-count} * #{$item-height} +
+    #{$nx-transfer-list-visible-item-count - 1} * #{$nx-transfer-list-item-vertical-margin}
+  );
+
+
+  overflow-y: auto;
+  padding: var(--nx-spacing-6x) $nx-transfer-list-control-box-side-padding;
+  margin-top: var(--nx-spacing-6x);
+}
+
+.nx-transfer-list__item {
+  @include container-horizontal;
+
+  background-color: var(--nx-swatch-white);
+  border: var(--nx-border-default);
+  border-radius: var(--nx-border-radius);
+  cursor: pointer;
+  display: block;
+  margin: var(--nx-spacing-2x) 0;
+  padding: var(--nx-spacing-2x);
+
+  &:hover {
+    border-color: var(--nx-color-form-element-border);
+  }
+
+  &:focus-within {
+    border-color: var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
+  }
+
+  &:active {
+    background-color: transparent;
+    border-color: var(--nx-color-form-element-border);
+  }
+}
+
+.nx-transfer-list__checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.nx-transfer-list__item-text {
+  @include nx-truncate-ellipsis;
+}
+
+.nx-transfer-list__footer {
+  font-size: var(--nx-font-size-s);
+  padding: var(--nx-spacing-base) $nx-transfer-list-control-box-side-padding;
+}

@@ -15,6 +15,8 @@ import { toLower, filter, includes, groupBy, partial, identity, prop, pipe } fro
 
 export { Props, DataItem } from './types';
 
+import './NxTransferList.scss';
+
 function TransferListItem<T extends string | number>(props: TransferListItemProps<T>) {
   const { checked, id, displayName, onChange: onChangeProp } = props;
 
@@ -24,7 +26,7 @@ function TransferListItem<T extends string | number>(props: TransferListItemProp
 
   return (
     <label className="nx-transfer-list__item">
-      <input type="checkbox" checked={checked} onChange={onChange} />
+      <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
       <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} className="nx-transfer-list__selection-icon" />
       <span className="nx-transfer-list__item-text">{displayName}</span>
     </label>
@@ -101,11 +103,13 @@ export default function NxTransferList<T extends string | number>(props: Props<T
   return (
     <div className={classnames('nx-transfer-list', classNameProp)} { ...attrs }>
       <div className="nx-transfer-list__half">
-        <h6 className="nx-transfer-list__half-header">{availableItemsLabel}</h6>
+        <h5 className="nx-transfer-list__half-header">{availableItemsLabel || 'Available Items'}</h5>
         <div className="nx-transfer-list__control-box">
-          <NxFilterInput value={availableItemsFilter} onChange={onAvailableItemsFilterChange} />
+          <NxFilterInput className="nx-transfer-list__filter"
+                         value={availableItemsFilter}
+                         onChange={onAvailableItemsFilterChange} />
           { showMoveAll &&
-            <button type="button" className="nx-transfer-list_move-all" onClick={onSelectAll}>
+            <button type="button" className="nx-transfer-list__move-all" onClick={onSelectAll}>
               <NxFontAwesomeIcon icon={faPlusCircle} className="nx-transfer-list__selection-icon" />
               Transfer All
             </button>
@@ -121,11 +125,13 @@ export default function NxTransferList<T extends string | number>(props: Props<T
         </div>
       </div>
       <div className="nx-transfer-list__half">
-        <h6 className="nx-transfer-list__half-header">{selectedItemsLabel}</h6>
+        <h5 className="nx-transfer-list__half-header">{selectedItemsLabel || 'Transferred Items'}</h5>
         <div className="nx-transfer-list__control-box">
-          <NxFilterInput value={selectedItemsFilter} onChange={onSelectedItemsFilterChange} />
+          <NxFilterInput className="nx-transfer-list__filter"
+                         value={selectedItemsFilter}
+                         onChange={onSelectedItemsFilterChange} />
           { showMoveAll &&
-            <button type="button" className="nx-transfer-list_move-all" onClick={onUnselectAll}>
+            <button type="button" className="nx-transfer-list__move-all" onClick={onUnselectAll}>
               <NxFontAwesomeIcon icon={faTimesCircle} className="nx-transfer-list__selection-icon" />
               Remove All
             </button>
