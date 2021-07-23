@@ -27,8 +27,8 @@ function TransferListItem<T extends string | number>(props: TransferListItemProp
 
   return (
     <label className="nx-transfer-list__item">
-      <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
       <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} className="nx-transfer-list__selection-icon" />
+      <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
       <span className="nx-transfer-list__item-text">{displayName}</span>
     </label>
   );
