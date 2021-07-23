@@ -10,8 +10,10 @@ import { NxCode, NxTable, NxP, NxTextLink, NxTile, NxH3 } from '@sonatype/react-
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTransferListExample from './NxTransferListExample';
+import NxTransferListComplexExample from './NxTransferListComplexExample';
 
-const nxTransferListExample = require('./NxTransferListExample?raw');
+const nxTransferListExample = require('./NxTransferListExample?raw'),
+    nxTransferListComplexExample = require('./NxTransferListComplexExample?raw');
 
 const NxTransferListPage = () =>
   <>
@@ -213,6 +215,14 @@ const NxTransferListPage = () =>
                         codeExamples={nxTransferListExample}
                         liveExample={NxTransferListExample}>
       Demonstrates an <NxCode>NxTransferList</NxCode> with minimal options.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Complex Example"
+                        id="nx-transfer-list-complex-example"
+                        codeExamples={nxTransferListComplexExample}
+                        liveExample={NxTransferListComplexExample}>
+      Demonstrates an <NxCode>NxTransferList</NxCode> with the "move all" buttons enabled and a
+      custom regex-based <NxCode>filterFn</NxCode> defined.
     </GalleryExampleTile>
   </>;
 

@@ -10,6 +10,12 @@ import { map, range } from 'ramda';
 
 const items = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
 
+function regexpFilter(filterStr: string, itemDisplayName: string) {
+  const regex = new RegExp(filterStr);
+
+  return regex.test(itemDisplayName);
+}
+
 export default function NxTransferListExample() {
   const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set()),
       [availableItemsFilter, setAvailableItemsFilter] = useState(''),
@@ -21,5 +27,7 @@ export default function NxTransferListExample() {
                          selectedItemsFilter={selectedItemsFilter}
                          onAvailableItemsFilterChange={setAvailableItemsFilter}
                          onSelectedItemsFilterChange={setSelectedItemsFilter}
-                         onChange={setSelectedItems} />;
+                         onChange={setSelectedItems}
+                         filterFn={regexpFilter}
+                         showMoveAll />;
 }
