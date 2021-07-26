@@ -20,10 +20,14 @@ import {
   SelectableColor,
   NxInfoAlert,
   NxFormSelect,
-  nxFormSelectStateHelpers
+  nxFormSelectStateHelpers,
+  NxTransferList
 } from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { map, range } from 'ramda';
+
+const transferListItems = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
@@ -47,6 +51,10 @@ export default function NxFormLayoutExample() {
       [isShapes, toggleShapes] = useToggle(false);
 
   const [tagColor, setTagColor] = useState<SelectableColor | null>(null);
+
+  const [selectedTransferItems, setSelectedTransferItems] = useState<Set<number>>(new Set()),
+      [availableTransferItemsFilter, setAvailableTransferItemsFilter] = useState(''),
+      [selectedTransferItemsFilter, setSelectedTransferItemsFilter] = useState('');
 
   function onSubmit(evt: FormEvent) {
     evt.preventDefault();
@@ -128,6 +136,15 @@ export default function NxFormLayoutExample() {
         <NxStatefulTextInput type="textarea" placeholder="placeholder" aria-required={true}/>
       </NxFormGroup>
       <NxColorPicker label="Tag Color" isRequired value={tagColor} onChange={setTagColor} />
+      <NxFieldset label="Numbered Items">
+        <NxTransferList allItems={transferListItems}
+                               selectedItems={selectedTransferItems}
+                               availableItemsFilter={availableTransferItemsFilter}
+                               selectedItemsFilter={selectedTransferItemsFilter}
+                               onAvailableItemsFilterChange={setAvailableTransferItemsFilter}
+                               onSelectedItemsFilterChange={setSelectedTransferItemsFilter}
+                               onChange={setSelectedTransferItems} />
+      </NxFieldset>
       <footer className="nx-footer">
         <div className="nx-btn-bar">
           <NxButton type="button">Cancel</NxButton>
