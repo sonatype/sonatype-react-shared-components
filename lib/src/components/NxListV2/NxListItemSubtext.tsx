@@ -8,8 +8,8 @@ import React from 'react';
 import {NxListItemSubtextProps} from './types';
 
 const NxListItemSubtext = (props: NxListItemSubtextProps) => {
-  const { children } = props;
-  return <span className="nx-list__subtext">{children}</span>;
+  const { children, truncate } = props;
+  return <span className={`nx-list__subtext ${truncate && 'nx-truncate-ellipsis'}`}>{children}</span>;
 };
 
 export default NxListItemSubtext;

@@ -45,23 +45,27 @@ export const nxListTitlePropTypes: WeakValidationMap<NxListTitleProps> = {
 };
 
 export type NxListItemTextProps = {
-  children?: ReactNode
+  children?: ReactNode,
+  truncate?: boolean
 };
 
 export const nxListItemTextProps: WeakValidationMap<NxListItemTextProps> = {
   children: PropTypes.oneOfType([
     PropTypes.element.isRequired
-  ])
+  ]),
+  truncate: PropTypes.bool
 };
 
 export type NxListItemSubtextProps = {
-  children?: ReactNode
+  children?: ReactNode,
+  truncate?: boolean
 };
 
 export const nxListItemSubtextPropTypes: WeakValidationMap<NxListItemSubtextProps> = {
   children: PropTypes.oneOfType([
     PropTypes.element.isRequired
-  ])
+  ]),
+  truncate: PropTypes.bool
 };
 
 export type NxListItemActionProps = {

@@ -6,13 +6,12 @@
  */
 import React from 'react';
 import classnames from 'classnames';
-
 import { NxListProps, nxListPropTypes, NxListTitleProps } from './types';
-import NxListItemV2 from './NxListItemV2';
 import { splitOutFirst } from '../../util/childUtil';
 import NxListItemText from './NxListItemText';
 import NxListItemSubtext from './NxListItemSubtext';
 import NxListItemAction from './NxListItemAction';
+import NxListItem from './NxListItem';
 
 const NxListTitle = (props: NxListTitleProps) => {
   const { children } = props;
@@ -35,14 +34,19 @@ const NxListV2 = (props: NxListProps) => {
       {title}
       <ul className={classNames}
           {...attrs}>
-        {otherChildren}
+        {
+          React.Children.count(otherChildren) ? otherChildren :
+          <li className="nx-list__item nx-list__item--empty">
+            <span className="nx-list__text">This list is empty</span>
+          </li>
+        }
       </ul>
     </>
   );
 };
 
 NxListV2.propTypes = nxListPropTypes;
-NxListV2.Item = NxListItemV2;
+NxListV2.Item = NxListItem;
 NxListV2.Text = NxListItemText;
 NxListV2.Subtext = NxListItemSubtext;
 NxListV2.Action = NxListItemAction;

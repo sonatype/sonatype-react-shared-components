@@ -231,4 +231,3 @@ import * as nxFormSelectStateHelpers from './components/NxFormSelect/stateHelper
 export { nxFormSelectStateHelpers };
 
 export { default as NxListV2, NxListProps } from './components/NxListV2/NxListV2';
-export { default as NxListItem, NxListItemProps } from './components/NxListV2/NxListItemV2';

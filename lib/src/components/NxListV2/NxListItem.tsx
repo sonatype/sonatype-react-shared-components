@@ -14,8 +14,8 @@ import NxListItemText from './NxListItemText';
 import NxListItemSubtext from './NxListItemSubtext';
 import NxListItemAction from './NxListItemAction';
 
-const NxListItemV2 = forwardRef<HTMLLIElement, NxListItemProps>(
-    function NxList({ className, children, clickable, ...attrs }, ref) {
+const NxListItem = forwardRef<HTMLLIElement, NxListItemProps>(
+    function NxListItem({ className, children, clickable, ...attrs }, ref) {
       const [nxListItemText, childrenBesidesNxListItemText] = splitOutFirst(NxListItemText, children);
       const [nxListItemSubText, childrenBesidesNxListItemSubText]
       = splitOutFirst(NxListItemSubtext, childrenBesidesNxListItemText);
@@ -44,14 +44,13 @@ const NxListItemV2 = forwardRef<HTMLLIElement, NxListItemProps>(
                   }
                   </>
               }
-
             </li>
           );
       return listItem;
     }
 );
 
-NxListItemV2.propTypes = nxListItemPropTypes;
+NxListItem.propTypes = nxListItemPropTypes;
 
-export default NxListItemV2;
+export default NxListItem;
 export {NxListItemProps, nxListItemPropTypes} from './types';
