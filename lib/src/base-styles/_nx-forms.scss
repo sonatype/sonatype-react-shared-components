@@ -39,6 +39,7 @@
 .nx-label, .nx-legend {
   display: block;
   padding: 0;
+  margin-bottom: var(--nx-spacing-2x);
   max-width: var(--nx-width-text-wrapping);
 
   .nx-text-input, .nx-textarea {
@@ -58,7 +59,6 @@
   color: var(--nx-color-text-dark);
   cursor: default;
   display: block;
-  margin-bottom: var(--nx-spacing-2x);
 }
 
 .nx-label--optional, .nx-legend--optional {
