@@ -27,7 +27,7 @@ const NxTransferListPage = () =>
       <NxP>
         Both columns are independently filterable in order to allow the user to find items within large data sets.
         Optional buttons to move all currently visible items from one column to the other are available as well.
-        At the bottom of the component, counts of the available and selected ("transferred") items are visible
+        At the bottom of the component, counts of the available and selected ("transferred") items are visible.
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
