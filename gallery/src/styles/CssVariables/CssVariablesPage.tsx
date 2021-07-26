@@ -214,9 +214,6 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-border-secondary">
               Color for lighter borders
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-subsection-border">
-              Color for standard lower-level borders such as those of tile subsections
-            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-component-background">
               The background color of most RSC components including tiles and form fields. Note that many RSC
               components simply have transparent backgrounds. For those that have an actual color however, it is
