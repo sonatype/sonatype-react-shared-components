@@ -182,10 +182,7 @@ const CssVariablesPage = () => {
             Standard border styles for higher-level elements.
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-secondary">
-            Lighter border styles generally used inside components, or after a default border.
-          </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-border-subsection">
-            Standard border styles for lower-level elements such as tile subsections.
+            Secondary border styles generally used inside components, or after a default border.
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-box-shadow-focus">
             The standard box-shadow to apply to focused elements in addition to a border or outline.
