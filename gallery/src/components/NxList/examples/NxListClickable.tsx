@@ -25,7 +25,7 @@ function NxListClickable() {
         <NxListV2.Text>Action 4</NxListV2.Text>
         <NxListV2.Subtext>This list item demonstrates the selected styles</NxListV2.Subtext>
       </NxListV2.Button>
-      <NxListV2.Button>
+      <NxListV2.Button disabled>
         <NxListV2.Text>This list item is disabled</NxListV2.Text>
       </NxListV2.Button>
     </NxListV2>

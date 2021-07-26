@@ -67,26 +67,26 @@ export const nxListActionPropTypes: WeakValidationMap<NxListActionProps> = {
 
 export type NxListButtonProps = {
   children?: ReactNode,
+  disabled?: boolean,
   selected?: boolean
 };
 
 export const nxListButtonPropTypes: WeakValidationMap<NxListButtonProps> = {
-  children: PropTypes.oneOfType([
-    PropTypes.element.isRequired
-  ]),
+  children: PropTypes.element.isRequired,
+  disabled: PropTypes.bool,
   selected: PropTypes.bool
 };
 
 export type NxListLinkProps = {
   children?: ReactNode,
+  disabled?: boolean,
   href: string,
   selected?: boolean
 };
 
 export const nxListLinkPropTypes: WeakValidationMap<NxListLinkProps> = {
-  children: PropTypes.oneOfType([
-    PropTypes.element.isRequired
-  ]),
+  children: PropTypes.element.isRequired,
+  disabled: PropTypes.bool,
   href: PropTypes.string.isRequired,
   selected: PropTypes.bool
 };

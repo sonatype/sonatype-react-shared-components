@@ -10,10 +10,13 @@ import { NxFontAwesomeIcon } from '../..';
 import {NxListButtonProps, nxListItemPropTypes} from './types';
 
 const NxListButton = forwardRef<HTMLButtonElement, NxListButtonProps>(
-    function nxListButton({ children, selected}, ref) {
+    function nxListButton({ children, disabled, selected}, ref) {
       return (
         <li className='nx-list__item nx-list__item--clickable'>
-          <button ref={ref} className={`nx-list__btn ${selected ? 'selected' : ''}`}>
+          <button ref={ref}
+                  className={`nx-list__btn ${selected ? 'selected' : ''}`}
+                  disabled={disabled}
+          >
             {children}
             <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
           </button>

@@ -10,10 +10,12 @@ import { NxFontAwesomeIcon } from '../..';
 import {NxListLinkProps, nxListItemPropTypes} from './types';
 
 const NxListLink = forwardRef<HTMLAnchorElement, NxListLinkProps>(
-    function nxListLink({ children, href, selected}, ref) {
+    function nxListLink({ children, disabled, href, selected}, ref) {
       return (
         <li className='nx-list__item nx-list__item--clickable'>
-          <a ref={ref} href={href} className={`nx-list__link ${selected ? 'selected' : ''}`}>
+          <a ref={ref}
+             href={href}
+             className={`nx-list__link ${selected ? 'selected' : ''} ${disabled ? 'disabled' : ''}`}>
             {children}
             <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
           </a>

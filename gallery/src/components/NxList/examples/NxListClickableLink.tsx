@@ -25,7 +25,7 @@ function NxListClickableLink() {
       <NxListV2.Link href="#/pages/NxAlert">
         <NxListV2.Text>NxAlert page</NxListV2.Text>
       </NxListV2.Link>
-      <NxListV2.Link href="#/pages/NxAccordion">
+      <NxListV2.Link href="#/pages/NxAccordion" disabled>
         <NxListV2.Text>This list item is disabled</NxListV2.Text>
       </NxListV2.Link>
     </NxListV2>
