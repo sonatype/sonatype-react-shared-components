@@ -51,9 +51,11 @@ $nx-label-bottom-spacing: var(--nx-spacing-2x);
   }
 }
 
-// hack to get Safari to recognize the legend's text margins
 .nx-legend {
-  -webkit-margin-collapse: separate;
+  .nx-sub-label {
+    // for deprecated nx-fieldset layouts where the sublabel is within the legend
+    margin-bottom: var(--nx-spacing-2x);
+  }
 }
 
 .nx-label__text, .nx-legend__text {
