@@ -14,6 +14,8 @@ import NxListAction from './NxListAction';
 import NxListButton from './NxListButton';
 import NxListLink from './NxListLink';
 import NxListItem from './NxListItem';
+import NxListError from './NxListError';
+import NxListLoading from './NxListLoading';
 
 const NxListTitle = (props: NxListTitleProps) => {
   const { children } = props;
@@ -55,6 +57,8 @@ NxListV2.Action = NxListAction;
 NxListV2.Title = NxListTitle;
 NxListV2.Button = NxListButton;
 NxListV2.Link = NxListLink;
+NxListV2.Error = NxListError;
+NxListV2.Loading = NxListLoading;
 
 export default NxListV2;
 export {NxListProps, nxListPropTypes} from './types';

@@ -47,10 +47,7 @@ export type NxListTextProps = {
   truncate?: boolean
 };
 
-export const nxListTextProps: WeakValidationMap<NxListTextProps> = {
-  children: PropTypes.oneOfType([
-    PropTypes.element.isRequired
-  ]),
+export const nxListTextPropTypes: WeakValidationMap<NxListTextProps> = {
   truncate: PropTypes.bool
 };
 
@@ -60,9 +57,6 @@ export type NxListSubtextProps = {
 };
 
 export const nxListSubtextPropTypes: WeakValidationMap<NxListSubtextProps> = {
-  children: PropTypes.oneOfType([
-    PropTypes.element.isRequired
-  ]),
   truncate: PropTypes.bool
 };
 
@@ -102,4 +96,14 @@ export const nxListLinkPropTypes: WeakValidationMap<NxListLinkProps> = {
   ]),
   href: PropTypes.string.isRequired,
   selected: PropTypes.bool
+};
+
+export type NxListErrorProps = {
+  errorMessage: string,
+  onClick: (() => void) | null;
+};
+
+export const nxListErrorPropTypes: WeakValidationMap<NxListErrorProps> = {
+  errorMessage: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 };
