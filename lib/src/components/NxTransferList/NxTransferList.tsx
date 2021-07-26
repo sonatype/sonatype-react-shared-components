@@ -16,6 +16,7 @@ import { toLower, filter, includes, groupBy, partial, identity, prop, pipe } fro
 export { Props, DataItem } from './types';
 
 import './NxTransferList.scss';
+import NxFieldset from '../NxFieldset/NxFieldset';
 
 function TransferListItem<T extends string | number>(props: TransferListItemProps<T>) {
   const { checked, id, displayName, onChange: onChangeProp } = props;
@@ -105,8 +106,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
 
   return (
     <div className={classnames('nx-transfer-list', classNameProp)} { ...attrs }>
-      <div className="nx-transfer-list__half">
-        <h5 className="nx-transfer-list__half-header">{availableItemsLabel || 'Available Items'}</h5>
+      <NxFieldset className="nx-transfer-list__half" label={availableItemsLabel || 'Available Items'}>
         <div className="nx-transfer-list__control-box">
           <NxFilterInput className="nx-transfer-list__filter"
                          value={availableItemsFilter}
@@ -126,9 +126,8 @@ export default function NxTransferList<T extends string | number>(props: Props<T
             {availableCount} items available
           </div>
         </div>
-      </div>
-      <div className="nx-transfer-list__half">
-        <h5 className="nx-transfer-list__half-header">{selectedItemsLabel || 'Transferred Items'}</h5>
+      </NxFieldset>
+      <NxFieldset className="nx-transfer-list__half" label={selectedItemsLabel || 'Transferred Items'}>
         <div className="nx-transfer-list__control-box">
           <NxFilterInput className="nx-transfer-list__filter"
                          value={selectedItemsFilter}
@@ -148,7 +147,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
             {selectedCount} items transferred
           </div>
         </div>
-      </div>
+      </NxFieldset>
     </div>
   );
 }
