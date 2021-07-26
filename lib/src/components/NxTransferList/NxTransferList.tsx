@@ -58,7 +58,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
       // This returned function will either be the provided `filterFn` (partially applied over the current filter text),
       // or a case-insensitive substring match
       mkDisplayNameFilter = (filterText: string) =>
-          filterFn ? partial(filterFn, [filterText]) : pipe(toLower, includes(toLower(filterText))),
+        filterFn ? partial(filterFn, [filterText]) : pipe(toLower, includes(toLower(filterText))),
 
       // Given filter text, return a function that filters a list of items
       mkListFilter = (filterText: string) => filter<DataItem<T>>(
