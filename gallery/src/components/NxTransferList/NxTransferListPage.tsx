@@ -11,9 +11,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxTransferListExample from './NxTransferListExample';
 import NxTransferListComplexExample from './NxTransferListComplexExample';
+import NxTransferListFullWidthExample from './NxTransferListFullWidthExample';
 
 const nxTransferListExample = require('./NxTransferListExample?raw'),
-    nxTransferListComplexExample = require('./NxTransferListComplexExample?raw');
+    nxTransferListComplexExample = require('./NxTransferListComplexExample?raw'),
+    nxTransferListFullWidthExample = require('./NxTransferListFullWidthExample?raw');
 
 const NxTransferListPage = () =>
   <>
@@ -218,6 +220,28 @@ const NxTransferListPage = () =>
       </NxTile.Subsection>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
+          <NxH3>Utility Classes</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Description</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-transfer-list--full-width</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                The transfer list will expand to fit the width of its container rather than being constrained to a
+                static width as it is by default.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>Usage Notes</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
@@ -241,6 +265,13 @@ const NxTransferListPage = () =>
                         liveExample={NxTransferListComplexExample}>
       Demonstrates an <NxCode>NxTransferList</NxCode> with the "move all" buttons enabled and a
       custom regex-based <NxCode>filterFn</NxCode> defined.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Full Width Example"
+                        id="nx-transfer-list-full-width-example"
+                        codeExamples={nxTransferListFullWidthExample}
+                        liveExample={NxTransferListFullWidthExample}>
+      Demonstrates an <NxCode>NxTransferList</NxCode> with the "full width" modifier class.
     </GalleryExampleTile>
   </>;
 

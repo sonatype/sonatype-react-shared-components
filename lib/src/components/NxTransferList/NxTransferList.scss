@@ -27,6 +27,10 @@ $nx-transfer-list-visible-item-count: 10;
   }
 }
 
+.nx-transfer-list--full-width {
+  width: auto;
+}
+
 .nx-transfer-list__half-header {
   font-size: var(--nx-font-size);
   font-weight: bold;
@@ -40,6 +44,7 @@ $nx-transfer-list-visible-item-count: 10;
 
 .nx-transfer-list__filter {
   margin: var(--nx-spacing-6x) $nx-transfer-list-control-box-side-padding 0 $nx-transfer-list-control-box-side-padding;
+  width: auto;
 }
 
 .nx-transfer-list__move-all {
