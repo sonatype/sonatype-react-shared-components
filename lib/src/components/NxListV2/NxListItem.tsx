@@ -7,42 +7,26 @@
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 import {NxListItemProps, nxListItemPropTypes} from './types';
-import { NxFontAwesomeIcon } from '../..';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { matchingChildren, splitOutFirst } from '../../util/childUtil';
-import NxListItemText from './NxListItemText';
-import NxListItemSubtext from './NxListItemSubtext';
-import NxListItemAction from './NxListItemAction';
+import { matchingChildren } from '../../util/childUtil';
+import NxListItemAction from './NxListAction';
 
 const NxListItem = forwardRef<HTMLLIElement, NxListItemProps>(
-    function NxListItem({ className, children, clickable, ...attrs }, ref) {
-      const [nxListItemText, childrenBesidesNxListItemText] = splitOutFirst(NxListItemText, children);
-      const [nxListItemSubText, childrenBesidesNxListItemSubText]
-      = splitOutFirst(NxListItemSubtext, childrenBesidesNxListItemText);
-      const [nxListItemAction, allOther] = matchingChildren(NxListItemAction, childrenBesidesNxListItemSubText);
-
-      const classNames = classnames(className, 'nx-list__item',
-              {'nx-list__item--clickable': clickable}),
+    function NxListItem({ className, children, ...attrs }, ref) {
+      const [nxListItemAction, childrenBesidesNxListItemAction]
+        = matchingChildren(NxListItemAction, children);
+      const classNames = classnames(className, 'nx-list__item'),
           listItem = (
             <li ref={ref}
                 className={classNames}
                 {...attrs}>
               {
-                clickable ?
-                  <button className="nx-list__btn">
-                    {nxListItemText}
-                    {nxListItemSubText}
-                    <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
-                  </button> :
+                nxListItemAction && nxListItemAction.length > 0 ?
                   <>
-                    {nxListItemText}
-                    {nxListItemSubText}
-                    {nxListItemAction && nxListItemAction.length > 0 ?
-                      <div className="nx-list__actions">
-                        {nxListItemAction.map(child => child)}
-                      </div> : allOther
-                  }
-                  </>
+                    {childrenBesidesNxListItemAction}
+                    <div className="nx-list__actions">
+                      {nxListItemAction.map(child => child)}
+                    </div>
+                  </> : children
               }
             </li>
           );
@@ -53,4 +37,3 @@ const NxListItem = forwardRef<HTMLLIElement, NxListItemProps>(
 NxListItem.propTypes = nxListItemPropTypes;
 
 export default NxListItem;
-export {NxListItemProps, nxListItemPropTypes} from './types';

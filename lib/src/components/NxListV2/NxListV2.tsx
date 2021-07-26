@@ -8,9 +8,11 @@ import React from 'react';
 import classnames from 'classnames';
 import { NxListProps, nxListPropTypes, NxListTitleProps } from './types';
 import { splitOutFirst } from '../../util/childUtil';
-import NxListItemText from './NxListItemText';
-import NxListItemSubtext from './NxListItemSubtext';
-import NxListItemAction from './NxListItemAction';
+import NxListText from './NxListText';
+import NxListSubtext from './NxListSubtext';
+import NxListAction from './NxListAction';
+import NxListButton from './NxListButton';
+import NxListLink from './NxListLink';
 import NxListItem from './NxListItem';
 
 const NxListTitle = (props: NxListTitleProps) => {
@@ -47,10 +49,12 @@ const NxListV2 = (props: NxListProps) => {
 
 NxListV2.propTypes = nxListPropTypes;
 NxListV2.Item = NxListItem;
-NxListV2.Text = NxListItemText;
-NxListV2.Subtext = NxListItemSubtext;
-NxListV2.Action = NxListItemAction;
+NxListV2.Text = NxListText;
+NxListV2.Subtext = NxListSubtext;
+NxListV2.Action = NxListAction;
 NxListV2.Title = NxListTitle;
+NxListV2.Button = NxListButton;
+NxListV2.Link = NxListLink;
 
 export default NxListV2;
 export {NxListProps, nxListPropTypes} from './types';

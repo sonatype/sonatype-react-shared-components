@@ -5,11 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import {NxListItemActionProps} from './types';
+import {NxListActionProps, nxListActionPropTypes} from './types';
 import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-const NxListItemAction = (props: NxListItemActionProps) => {
+const NxListAction = (props: NxListActionProps) => {
   const { title, icon } = props;
   return (
     <>
@@ -20,4 +20,6 @@ const NxListItemAction = (props: NxListItemActionProps) => {
   );
 };
 
-export default NxListItemAction;
+NxListAction.propTypes = nxListActionPropTypes;
+
+export default NxListAction;

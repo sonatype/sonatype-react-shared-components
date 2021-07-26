@@ -25,12 +25,10 @@ export const nxListPropTypes: WeakValidationMap<NxListProps> = {
 };
 
 export type NxListItemProps = LiHTMLAttributes<HTMLLIElement> & {
-  clickable?: boolean;
   selected?: boolean;
 };
 
 export const nxListItemPropTypes: WeakValidationMap<NxListItemProps> = {
-  clickable: PropTypes.bool,
   selected: PropTypes.bool
 };
 
@@ -44,38 +42,64 @@ export const nxListTitlePropTypes: WeakValidationMap<NxListTitleProps> = {
   ])
 };
 
-export type NxListItemTextProps = {
+export type NxListTextProps = {
   children?: ReactNode,
   truncate?: boolean
 };
 
-export const nxListItemTextProps: WeakValidationMap<NxListItemTextProps> = {
+export const nxListTextProps: WeakValidationMap<NxListTextProps> = {
   children: PropTypes.oneOfType([
     PropTypes.element.isRequired
   ]),
   truncate: PropTypes.bool
 };
 
-export type NxListItemSubtextProps = {
+export type NxListSubtextProps = {
   children?: ReactNode,
   truncate?: boolean
 };
 
-export const nxListItemSubtextPropTypes: WeakValidationMap<NxListItemSubtextProps> = {
+export const nxListSubtextPropTypes: WeakValidationMap<NxListSubtextProps> = {
   children: PropTypes.oneOfType([
     PropTypes.element.isRequired
   ]),
   truncate: PropTypes.bool
 };
 
-export type NxListItemActionProps = {
+export type NxListActionProps = {
   title?: string,
   icon?: IconDefinition,
   children?: ReactNode;
 };
 
-export const nxListItemActionProps: WeakValidationMap<NxListItemActionProps> = {
+export const nxListActionPropTypes: WeakValidationMap<NxListActionProps> = {
   title: PropTypes.string,
   icon: PropTypes.any,
   children: PropTypes.node
+};
+
+export type NxListButtonProps = {
+  children?: ReactNode,
+  selected?: boolean
+};
+
+export const nxListButtonPropTypes: WeakValidationMap<NxListButtonProps> = {
+  children: PropTypes.oneOfType([
+    PropTypes.element.isRequired
+  ]),
+  selected: PropTypes.bool
+};
+
+export type NxListLinkProps = {
+  children?: ReactNode,
+  href: string,
+  selected?: boolean
+};
+
+export const nxListLinkPropTypes: WeakValidationMap<NxListLinkProps> = {
+  children: PropTypes.oneOfType([
+    PropTypes.element.isRequired
+  ]),
+  href: PropTypes.string.isRequired,
+  selected: PropTypes.bool
 };
