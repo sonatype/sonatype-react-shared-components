@@ -17,6 +17,7 @@ $nx-transfer-list-visible-item-count: 10;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--nx-spacing-6x);
+  margin-top: var(--nx-spacing-2x);
   width: 720px;
   min-width: 720px;
 
@@ -25,7 +26,7 @@ $nx-transfer-list-visible-item-count: 10;
 .nx-transfer-list__half-header {
   font-size: var(--nx-font-size);
   font-weight: bold;
-  margin-bottom: var(--nx-spacing-2x);
+  margin: 0 0 var(--nx-spacing-2x) 0;
 }
 
 .nx-transfer-list__control-box {
