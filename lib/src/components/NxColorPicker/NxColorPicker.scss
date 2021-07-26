@@ -9,7 +9,7 @@
 .nx-color-picker {
   @include container-horizontal;
 
-  .nx-legend__text {
+  .nx-legend {
     margin-bottom: var(--nx-spacing-base);
   }
 }

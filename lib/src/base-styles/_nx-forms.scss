@@ -36,10 +36,14 @@
 
 // labels
 
+// Space between the label and the form field. In modern layouts, this is applied to the label itself. In deprecated
+// layouts, it is applied to the .nx-label__text
+$nx-label-bottom-spacing: var(--nx-spacing-2x);
+
 .nx-label, .nx-legend {
   display: block;
   padding: 0;
-  margin-bottom: var(--nx-spacing-2x);
+  margin-bottom: $nx-label-bottom-spacing;
   max-width: var(--nx-width-text-wrapping);
 
   .nx-text-input, .nx-textarea {
@@ -58,7 +62,14 @@
 
   color: var(--nx-color-text-dark);
   cursor: default;
+
+  // for deprecated layouts. Cancelled out for modern layouts via the last-child block below
+  margin-bottom: $nx-label-bottom-spacing;
   display: block;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .nx-label--optional, .nx-legend--optional {
