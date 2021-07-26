@@ -85,6 +85,24 @@ const NxTransferListPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell><NxCode>availableItemsCountFormatter</NxCode></NxTable.Cell>
+              <NxTable.Cell>Function</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>"x items available"</NxTable.Cell>
+              <NxTable.Cell>
+                A function which returns the string used to display the count of available items to the user
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>selectedItemsCountFormatter</NxCode></NxTable.Cell>
+              <NxTable.Cell>Function</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>"x items transferred"</NxTable.Cell>
+              <NxTable.Cell>
+                A function which returns the string used to display the count of selected items to the user
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell><NxCode>showMoveAll</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>

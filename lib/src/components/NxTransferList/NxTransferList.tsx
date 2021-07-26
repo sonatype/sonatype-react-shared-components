@@ -34,6 +34,10 @@ function TransferListItem<T extends string | number>(props: TransferListItemProp
   );
 }
 
+const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${n === 1 ? '' : 's'} ${kind}`,
+    defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
+    defaultSelectedItemsCountFormatter = defaultItemsCountFormatter('transferred');
+
 export default function NxTransferList<T extends string | number>(props: Props<T>) {
   const {
     allItems,
@@ -43,6 +47,8 @@ export default function NxTransferList<T extends string | number>(props: Props<T
     showMoveAll,
     availableItemsFilter,
     selectedItemsFilter,
+    availableItemsCountFormatter: availableItemsCountFormatterProp,
+    selectedItemsCountFormatter: selectedItemsCountFormatterProp,
     onAvailableItemsFilterChange,
     onSelectedItemsFilterChange,
     className: classNameProp,
@@ -50,6 +56,9 @@ export default function NxTransferList<T extends string | number>(props: Props<T
     filterFn,
     ...attrs
   } = props;
+
+  const availableItemsCountFormatter = availableItemsCountFormatterProp || defaultAvailableItemsCountFormatter,
+      selectedItemsCountFormatter = selectedItemsCountFormatterProp || defaultSelectedItemsCountFormatter;
 
   const groupedItems = useMemo(() => groupBy(item => selectedItems.has(item.id) ? 'selected' : 'available', allItems),
           [allItems, selectedItems]),
@@ -123,7 +132,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
             }
           </div>
           <div className="nx-transfer-list__footer">
-            {availableCount} items available
+            {availableItemsCountFormatter(availableCount)}
           </div>
         </div>
       </div>
@@ -145,7 +154,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
             }
           </div>
           <div className="nx-transfer-list__footer">
-            {selectedCount} items transferred
+            {selectedItemsCountFormatter(selectedCount)}
           </div>
         </div>
       </div>

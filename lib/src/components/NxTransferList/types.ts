@@ -26,6 +26,8 @@ export interface Props<T extends string | number = string>
   selectedItems: Set<T>;
   availableItemsLabel?: ReactNode;
   selectedItemsLabel?: ReactNode;
+  availableItemsCountFormatter?: (n: number) => string,
+  selectedItemsCountFormatter?: (n: number) => string,
   showMoveAll?: boolean | null;
   availableItemsFilter: string;
   selectedItemsFilter: string;

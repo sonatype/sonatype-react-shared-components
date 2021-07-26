@@ -23,6 +23,9 @@ function regexpFilter(filterStr: string, itemDisplayName: string) {
   return regex.test(itemDisplayName);
 }
 
+const availableItemsCountFormatter = (n: number) => `${n} items you don't want`,
+    selectedItemsCountFormatter = (n: number) => `${n} items you do want`;
+
 export default function NxTransferListExample() {
   const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set()),
       [availableItemsFilter, setAvailableItemsFilter] = useState(''),
@@ -32,6 +35,8 @@ export default function NxTransferListExample() {
                          selectedItems={selectedItems}
                          availableItemsFilter={availableItemsFilter}
                          selectedItemsFilter={selectedItemsFilter}
+                         availableItemsCountFormatter={availableItemsCountFormatter}
+                         selectedItemsCountFormatter={selectedItemsCountFormatter}
                          onAvailableItemsFilterChange={setAvailableItemsFilter}
                          onSelectedItemsFilterChange={setSelectedItemsFilter}
                          onChange={setSelectedItems}
