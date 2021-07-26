@@ -6,17 +6,13 @@
  */
 import React from 'react';
 import {NxListActionProps, nxListActionPropTypes} from './types';
-import NxButton from '../NxButton/NxButton';
-import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 const NxListAction = (props: NxListActionProps) => {
-  const { title, icon } = props;
+  const { children } = props;
   return (
-    <>
-      <NxButton title={title} variant="icon-only">
-        {icon && <NxFontAwesomeIcon icon={icon} />}
-      </NxButton>
-    </>
+    <div className="nx-list__actions">
+      {children}
+    </div>
   );
 };
 

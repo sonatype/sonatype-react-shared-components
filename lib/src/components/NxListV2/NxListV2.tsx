@@ -10,7 +10,7 @@ import { NxListProps, nxListPropTypes, NxListTitleProps } from './types';
 import { splitOutFirst } from '../../util/childUtil';
 import NxListText from './NxListText';
 import NxListSubtext from './NxListSubtext';
-import NxListAction from './NxListAction';
+import NxListActions from './NxListActions';
 import NxListButton from './NxListButton';
 import NxListLink from './NxListLink';
 import NxListItem from './NxListItem';
@@ -31,8 +31,8 @@ const NxListV2 = (props: NxListProps) => {
   const classNames = classnames(className, 'nx-list',
       {'nx-list--bulleted': bulleted},
   );
-  // const [title, otherChildren] = splitOutFirst(NxListTitle, children);
   const [title, otherChildren] = splitOutFirst(NxListTitle, children);
+
   return (
     <>
       {title}
@@ -53,7 +53,7 @@ NxListV2.propTypes = nxListPropTypes;
 NxListV2.Item = NxListItem;
 NxListV2.Text = NxListText;
 NxListV2.Subtext = NxListSubtext;
-NxListV2.Action = NxListAction;
+NxListV2.Actions = NxListActions;
 NxListV2.Title = NxListTitle;
 NxListV2.Button = NxListButton;
 NxListV2.Link = NxListLink;

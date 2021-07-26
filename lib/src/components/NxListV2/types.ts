@@ -7,7 +7,6 @@
 import { HTMLAttributes, LiHTMLAttributes, WeakValidationMap, ReactElement, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 export type NxListProps = HTMLAttributes<HTMLUListElement> & {
   bulleted?: boolean;
@@ -37,9 +36,7 @@ export type NxListTitleProps = {
 };
 
 export const nxListTitlePropTypes: WeakValidationMap<NxListTitleProps> = {
-  children: PropTypes.oneOfType([
-    PropTypes.element.isRequired
-  ])
+  children: PropTypes.element
 };
 
 export type NxListTextProps = {
@@ -61,14 +58,10 @@ export const nxListSubtextPropTypes: WeakValidationMap<NxListSubtextProps> = {
 };
 
 export type NxListActionProps = {
-  title?: string,
-  icon?: IconDefinition,
   children?: ReactNode;
 };
 
 export const nxListActionPropTypes: WeakValidationMap<NxListActionProps> = {
-  title: PropTypes.string,
-  icon: PropTypes.any,
   children: PropTypes.node
 };
 
