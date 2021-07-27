@@ -5,165 +5,138 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert, NxTable, NxTableBody, NxTableCell,
-  NxTableHead, NxTableRow } from '@sonatype/react-shared-components';
-
+import { NxInfoAlert, NxP, NxTable, NxTableBody, NxTableCell,
+  NxTableHead, NxTableRow, NxCode, NxListV2 } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile} from '../../gallery-components/GalleryTiles';
-
 import NxListsExamples from './NxListExamples';
 
 const NxAlertPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">Lists take many forms:</p>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item">Simple data lists</li>
-        <li className="nx-list__item">Lists with clickable list items</li>
-        <li className="nx-list__item">Lists with bullets</li>
-        <li className="nx-list__item">Lists with actions</li>
-        <li className="nx-list__item">Lists with items that have multiple lines of text</li>
-      </ul>
-      <p className="nx-p">Lists can also have modified states depending on their content:</p>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item">Lists with no data</li>
-        <li className="nx-list__item">Error states</li>
-      </ul>
-      <p className="nx-p">
-        The basic layout is a <code className="nx-code">&lt;ul&gt;</code>. If the list has a title a simple heading
-        such as <code className="nx-code">&lt;h3 className="nx-h3"&gt;</code> should be used before the &lt;ul&gt;.
-      </p>
-      <p className="nx-p">
-        There are also lists that are "clickable", the list items in these lists indicate hover and click states and
-        when clicked an event occurs - usually navigation. Clickable lists have hover and disabled states. They share
+      <NxP>Lists take many forms:</NxP>
+      <NxListV2 bulleted>
+        <NxListV2.Item>Simple data lists</NxListV2.Item>
+        <NxListV2.Item>Lists with clickable list items</NxListV2.Item>
+        <NxListV2.Item>Lists with bullets</NxListV2.Item>
+        <NxListV2.Item>Lists with actions</NxListV2.Item>
+        <NxListV2.Item>Lists with items that have multiple lines of text</NxListV2.Item>
+      </NxListV2>
+      <NxP>Lists can also have modified states depending on their content:</NxP>
+      <NxListV2 bulleted>
+        <NxListV2.Item>Lists with no data</NxListV2.Item>
+        <NxListV2.Item>Error states</NxListV2.Item>
+      </NxListV2>
+      <NxP>
+        There are also lists that are "clickable". The list items in these lists indicate hover and click states and
+        when clicked, an event occurs - usually navigation. Clickable lists have hover and disabled states. They share
         error and empty states with default lists.
-      </p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Class</th>
-            <th className="nx-cell nx-cell--header">Convenience Component</th>
-            <th className="nx-cell nx-cell--header">Location</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list</code></td>
-            <td className="nx-cell"><code className="nx-code">NxList</code></td>
-            <td className="nx-cell">Top-Level <code className="nx-code">&lt;ul&gt;</code></td>
-            <td className="nx-cell">The parent list class. It has no bullets.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list--clickable</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list</code></td>
-            <td className="nx-cell">
-              This modifier causes list items to respond to hover events. There is normally a chevron icon on the
-              right to make it clear to the user that clicking will navigate away from the page.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list--bulleted</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list</code></td>
-            <td className="nx-cell">If you need a list with bullets.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list__item</code></td>
-            <td className="nx-cell"><code className="nx-code">NxList.Item</code></td>
-            <td className="nx-cell">The <code className="nx-code">&lt;li&gt;</code> elements within the list</td>
-            <td className="nx-cell">
-              This class should be present on all list items within an <code className="nx-code">nx-list</code>.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.selected</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">
-              Utility class that goes along with <code className="nx-code">.nx-list__item</code>
-            </td>
-            <td className="nx-cell">
-              Use the <code className="nx-code">selected</code> class alongside
-              <code className="nx-code">.nx-list__item</code> when a clickable list item is selected
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list__text</code></td>
-            <td className="nx-cell"><code className="nx-code">NxList.Text</code></td>
-            <td className="nx-cell">Element within <code className="nx-code">&lt;li&gt;</code></td>
-            <td className="nx-cell">
+      </NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Component</NxTable.Cell>
+            <NxTable.Cell>Location</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>NxList</NxCode></NxTable.Cell>
+            <NxTable.Cell>Parent; Top-Level</NxTable.Cell>
+            <NxTable.Cell>This is the parent list class. By default, it has no bullets. In order to have a
+              bulleted list, the prop <NxCode>bulleted</NxCode> can be provided.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>NxList.Title</NxCode></NxTable.Cell>
+            <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              This is the title of the list.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>NxList.Item</NxCode></NxTable.Cell>
+            <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              This is the standard list element that is not clickable, does not respond to hover events, and
+              does not have selected and disabled states.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>NxList.Button</NxCode></NxTable.Cell>
+            <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              This list element that is clickable, responds to hover events, and has selected and disabled states.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>NxList.Link</NxCode></NxTable.Cell>
+            <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              This list element behaves as a link, i.e. an <NxCode>{'<a>'}</NxCode> tag, and requires
+              a <NxCode>{'href'}</NxCode> prop. This element is also clickable, responds to hover events,
+              and has selected and disabled states.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>NxList.Text</NxCode></NxTable.Cell>
+            <NxTable.Cell>Within <NxCode>NxList.Item</NxCode>, <NxCode>NxList.Button</NxCode>,
+              or <NxCode>NxList.Link</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>
               The primary text content of the list item, displayed in a heavier font weight.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list__subtext</code></td>
-            <td className="nx-cell"><code className="nx-code">NxList.Subtext</code></td>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">
-              When you want a separate section of non-bolded text below the main list item text use
-              a <code className="nx-code">&lt;span&gt;</code> with <code className="nx-code">.nx-list__subtext</code>.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list__actions</code></td>
-            <td className="nx-cell"><code className="nx-code">NxList.Actions</code></td>
-            <td className="nx-cell">A container for buttons inside list items</td>
-            <td className="nx-cell">Use this when you want to have a button on the far right.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list__item--empty</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list__item</code></td>
-            <td className="nx-cell">Used when there are no list items returned.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">nx-list__item--error</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list__item</code></td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>NxList.Subtext</NxCode></NxTable.Cell>
+            <NxTable.Cell>Within <NxCode>NxList.Item</NxCode>, <NxCode>NxList.Button</NxCode>,
+              or <NxCode>NxList.Link</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>
+              The secondary text content of the list item displayed as non-bolded text.
+              The subtext is displayed below the bolded, main list item text.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>NxList.Actions</NxCode></NxTable.Cell>
+            <NxTable.Cell>Within <NxCode>NxList.Item</NxCode></NxTable.Cell>
+            <NxTable.Cell>A container for buttons inside list items. Use this when you want to have
+              a button/buttons on the far right.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>NxList.Empty</NxCode></NxTable.Cell>
+            <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
+            <NxTable.Cell>Used when there are no list items returned. In this case it's expected that there
+              would only be a single list item which contains the empty element.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>NxList.Error</NxCode></NxTable.Cell>
+            <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
+            <NxTable.Cell>
               This is added to a list item when the list is in an error state. In this case it's expected that there
-              would only be a single list item which contains the error alert.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list__item--clickable</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-list__item</code></td>
-            <td className="nx-cell">
-              Applied to <code className="nx-code">.nx-list__item</code> this allows for the correct styling of
-              clickable lists. Ensure that the <code className="nx-code">.nx-list</code> modifier
-              {' '}<code className="nx-code">.nx-list--clickable</code> is also used.
-              {' '}<code className="nx-code">.nx-list__item--clickable</code> should contain a single button or link as
-              children, see below for classes and convenience components.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list__btn</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">
-              Applied to an <code className="nx-code">&lt;button&gt;</code> used in a clickable list.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-list__link</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">
-              Applied to an <code className="nx-code">&lt;a&gt;</code> used in a clickable link list.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              would only be a single list item which contains the error element.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>NxList.Loading</NxCode></NxTable.Cell>
+            <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
+            <NxTable.Cell>Used when list items are being loaded. In this case, it's expected that there
+              would only be a single list item which contains the loading element.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
       <section className="nx-tile-subsection">
         <header className="nx-tile-subsection__title">
           <h3 className="nx-h3">Description Lists</h3>
         </header>
-        <p className="nx-p">
-          In addition to ordered and unordered lists, <code className="nx-code">nx-list</code> also supports the
+        <NxP>
+          In addition to ordered and unordered lists, <NxCode>nx-list</NxCode> also supports the
           styling of description lists using the following classes. Terms and descriptions are laid out side-by-side
           in rows. Currently only one description per term, and one term per description, are supported – not multiple.
-        </p>
+        </NxP>
         <NxTable>
           <NxTableHead>
             <NxTableRow>
@@ -175,36 +148,36 @@ const NxAlertPage = () =>
           </NxTableHead>
           <NxTableBody>
             <NxTableRow>
-              <NxTableCell><code className="nx-code">.nx-list--description-list</code></NxTableCell>
+              <NxTableCell><NxCode>.nx-list--description-list</NxCode></NxTableCell>
               <NxTableCell/>
               <NxTableCell>
-                <code className="nx-code">&lt;dl&gt;</code> which also
-                has <code className="nx-code">.nx-list</code>.
+                <NxCode>&lt;dl&gt;</NxCode> which also
+                has <NxCode>.nx-list</NxCode>.
               </NxTableCell>
               <NxTableCell>Root class to apply RSC description list styles</NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell><code className="nx-code">.nx-list__item</code></NxTableCell>
-              <NxTableCell><code className="nx-code">NxList.Item</code></NxTableCell>
+              <NxTableCell><NxCode>.nx-list__item</NxCode></NxTableCell>
+              <NxTableCell><NxCode>NxList.Item</NxCode></NxTableCell>
               <NxTableCell>
-                <code className="nx-code">&lt;div&gt;</code> wrapping <code className="nx-code">&lt;dt&gt;</code>{' '}
-                and <code className="nx-code">&lt;dd&gt;</code> elements
+                <NxCode>&lt;div&gt;</NxCode> wrapping <NxCode>&lt;dt&gt;</NxCode>{' '}
+                and <NxCode>&lt;dd&gt;</NxCode> elements
               </NxTableCell>
               <NxTableCell>
-                Each <code className="nx-code">&lt;dt&gt;</code>/<code className="nx-code">&lt;dd&gt;</code> pairing
+                Each <NxCode>&lt;dt&gt;</NxCode>/<NxCode>&lt;dd&gt;</NxCode> pairing
                 should be wrapped in a div which is styled similarly to an item row in a normal nx-list.
               </NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell><code className="nx-code">.nx-list__term</code></NxTableCell>
-              <NxTableCell><code className="nx-code">NxList.Term</code></NxTableCell>
-              <NxTableCell><code className="nx-code">&lt;dt&gt;</code></NxTableCell>
+              <NxTableCell><NxCode>.nx-list__term</NxCode></NxTableCell>
+              <NxTableCell><NxCode>NxList.Term</NxCode></NxTableCell>
+              <NxTableCell><NxCode>&lt;dt&gt;</NxCode></NxTableCell>
               <NxTableCell>Styles the description term elements</NxTableCell>
             </NxTableRow>
             <NxTableRow>
-              <NxTableCell><code className="nx-code">.nx-list__description</code></NxTableCell>
-              <NxTableCell><code className="nx-code">NxList.Description</code></NxTableCell>
-              <NxTableCell><code className="nx-code">&lt;dd&gt;</code></NxTableCell>
+              <NxTableCell><NxCode>.nx-list__description</NxCode></NxTableCell>
+              <NxTableCell><NxCode>NxList.Description</NxCode></NxTableCell>
+              <NxTableCell><NxCode>&lt;dd&gt;</NxCode></NxTableCell>
               <NxTableCell>Styles the description elements</NxTableCell>
             </NxTableRow>
           </NxTableBody>
@@ -212,18 +185,10 @@ const NxAlertPage = () =>
       </section>
       <NxInfoAlert>
         Note that some of these examples are shown in React as they includes specific icons. When working in
-        React, <code className="nx-code">NxFontAwesomeIcon</code> should be used as shown to get these icons.
+        React, <NxCode>NxFontAwesomeIcon</NxCode> should be used as shown to get these icons.
         When not working in React, check the FontAwesome 5 documentation for alternative ways to include the icons.
       </NxInfoAlert>
     </GalleryDescriptionTile>
-
-    {/* <GalleryExampleTile title="Alert Example"
-                        id="nx-alert-custom-example"
-                        liveExample={NxListExample}
-                        codeExamples={NxListExampleCode}>
-      An example of a NxList.
-    </GalleryExampleTile> */}
-
     <NxListsExamples />
   </>;
 

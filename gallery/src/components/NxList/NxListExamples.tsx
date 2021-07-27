@@ -49,7 +49,7 @@ const NxListsExamples = () =>
                         liveExample={NxListClickableLinkExample}
                         codeExamples={NxListClickableLinkExampleCode}>
       An <NxCode>NxList</NxCode> demonstrating clickable and selection styles where the
-      clickable aspects of the list items are defined using <NxCode>&lt;a&gt;</NxCode> tags.
+      clickable aspects of the list items are links to a URL.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Bulleted List Example"
@@ -79,14 +79,14 @@ const NxListsExamples = () =>
                         id="nx-list-empty-example"
                         liveExample={NxListEmptyExample}
                         codeExamples={NxListEmptyExampleCode}>
-      A demonstration of the expected styling and content for an empty <NxCode>NxList</NxCode>.
+      A demonstration of the usage and display of an empty <NxCode>NxList</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List with Error Message Example"
                         id="nx-list-error-example"
                         liveExample={NxListErrorExample}
                         codeExamples={NxListErrorExampleCode}>
-      A demonstration of the expected styling and content for an <NxCode>NxList</NxCode> whose content
+      A demonstration of the usage and display of an <NxCode>NxList</NxCode> whose content
       failed to load.
     </GalleryExampleTile>
 
@@ -94,8 +94,7 @@ const NxListsExamples = () =>
                         id="nx-list-loading-example"
                         liveExample={NxListLoadingExample}
                         codeExamples={NxListLoadingExampleCode}>
-      A demonstration of the expected styling and placement for a loading indicator
-      within <NxCode>NxList</NxCode>.
+      A demonstration of the usage and display of an <NxCode>NxList</NxCode> whose list items are loading.
     </GalleryExampleTile>
 
   </>;

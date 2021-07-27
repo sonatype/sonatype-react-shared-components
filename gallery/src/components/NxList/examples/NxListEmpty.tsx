@@ -8,7 +8,11 @@ import React from 'react';
 import { NxListV2 } from '@sonatype/react-shared-components';
 
 function NxListEmpty() {
-  return <NxListV2></NxListV2>;
+  return (
+    <NxListV2>
+      <NxListV2.Empty />
+    </NxListV2>
+  );
 }
 
 export default NxListEmpty;
