@@ -7,7 +7,7 @@
 import React, { forwardRef } from 'react';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NxFontAwesomeIcon } from '../..';
-import {NxListLinkProps, nxListItemPropTypes} from './types';
+import {NxListLinkProps, nxListLinkPropTypes} from './types';
 
 const NxListLink = forwardRef<HTMLAnchorElement, NxListLinkProps>(
     function nxListLink({ children, disabled, href, selected}, ref) {
@@ -24,6 +24,6 @@ const NxListLink = forwardRef<HTMLAnchorElement, NxListLinkProps>(
     }
 );
 
-NxListLink.propTypes = nxListItemPropTypes;
+NxListLink.propTypes = nxListLinkPropTypes;
 
 export default NxListLink;

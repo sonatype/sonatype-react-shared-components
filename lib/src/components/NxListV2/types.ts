@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, LiHTMLAttributes, WeakValidationMap, ReactElement, ReactNode } from 'react';
+import { HTMLAttributes, LiHTMLAttributes, WeakValidationMap, ReactElement,
+  ReactNode, ButtonHTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
 export type NxListProps = HTMLAttributes<HTMLUListElement> & {
@@ -64,7 +65,7 @@ export const nxListActionPropTypes: WeakValidationMap<NxListActionProps> = {
   children: PropTypes.node
 };
 
-export type NxListButtonProps = {
+export type NxListButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &{
   children?: ReactNode,
   disabled?: boolean,
   selected?: boolean
@@ -92,7 +93,7 @@ export const nxListLinkPropTypes: WeakValidationMap<NxListLinkProps> = {
 
 export type NxListErrorProps = {
   errorMessage: string,
-  onClick: (() => void) | null;
+  onClick: () => void
 };
 
 export const nxListErrorPropTypes: WeakValidationMap<NxListErrorProps> = {
