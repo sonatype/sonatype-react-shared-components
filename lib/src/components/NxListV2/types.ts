@@ -6,12 +6,10 @@
  */
 import { HTMLAttributes, LiHTMLAttributes, WeakValidationMap, ReactElement, ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
 
 export type NxListProps = HTMLAttributes<HTMLUListElement> & {
   bulleted?: boolean;
   children?: ReactElement | ReactElement[] | null | ReactNode;
-  toggleTooltip?: TooltipConfigProps | string | null;
 };
 
 export const nxListPropTypes: WeakValidationMap<NxListProps> = {
@@ -19,8 +17,7 @@ export const nxListPropTypes: WeakValidationMap<NxListProps> = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
     PropTypes.element.isRequired
-  ]),
-  toggleTooltip: PropTypes.oneOfType([tooltipPropTypesShape, PropTypes.string])
+  ])
 };
 
 export type NxListItemProps = LiHTMLAttributes<HTMLLIElement> & {
@@ -45,6 +42,7 @@ export type NxListTextProps = {
 };
 
 export const nxListTextPropTypes: WeakValidationMap<NxListTextProps> = {
+  children: PropTypes.node,
   truncate: PropTypes.bool
 };
 
@@ -54,6 +52,7 @@ export type NxListSubtextProps = {
 };
 
 export const nxListSubtextPropTypes: WeakValidationMap<NxListSubtextProps> = {
+  children: PropTypes.node,
   truncate: PropTypes.bool
 };
 
@@ -72,7 +71,7 @@ export type NxListButtonProps = {
 };
 
 export const nxListButtonPropTypes: WeakValidationMap<NxListButtonProps> = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   disabled: PropTypes.bool,
   selected: PropTypes.bool
 };
@@ -85,7 +84,7 @@ export type NxListLinkProps = {
 };
 
 export const nxListLinkPropTypes: WeakValidationMap<NxListLinkProps> = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   disabled: PropTypes.bool,
   href: PropTypes.string.isRequired,
   selected: PropTypes.bool

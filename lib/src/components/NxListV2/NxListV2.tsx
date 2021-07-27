@@ -16,6 +16,7 @@ import NxListLink from './NxListLink';
 import NxListItem from './NxListItem';
 import NxListError from './NxListError';
 import NxListLoading from './NxListLoading';
+import NxListEmpty from './NxListEmpty';
 
 const NxListTitle = (props: NxListTitleProps) => {
   const { children } = props;
@@ -38,12 +39,7 @@ const NxListV2 = (props: NxListProps) => {
       {title}
       <ul className={classNames}
           {...attrs}>
-        {
-          React.Children.count(otherChildren) ? otherChildren :
-          <li className="nx-list__item nx-list__item--empty">
-            <span className="nx-list__text">This list is empty</span>
-          </li>
-        }
+        {otherChildren}
       </ul>
     </>
   );
@@ -58,6 +54,7 @@ NxListV2.Title = NxListTitle;
 NxListV2.Button = NxListButton;
 NxListV2.Link = NxListLink;
 NxListV2.Error = NxListError;
+NxListV2.Empty = NxListEmpty;
 NxListV2.Loading = NxListLoading;
 
 export default NxListV2;
