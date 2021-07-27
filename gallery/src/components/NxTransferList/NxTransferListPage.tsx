@@ -119,7 +119,8 @@ const NxTransferListPage = () =>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                The current filter value for the Available (unselected) items
+                The current filter value for the Available (unselected) items. Impacts both which items are visible
+                and which items are moved by the "Transfer All" button.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -128,7 +129,8 @@ const NxTransferListPage = () =>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                The current filter value for the Selected (transferred) items
+                The current filter value for the Selected (transferred) items. Impacts both which items are visible
+                and which items are moved by the "Remove All" button.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
