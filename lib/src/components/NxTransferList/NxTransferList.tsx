@@ -101,16 +101,21 @@ export default function NxTransferList<T extends string | number>(props: Props<T
   }
 
   function onSelectAll() {
-    const allIds = new Set<T>();
-    for (const item of allItems) {
-      allIds.add(item.id);
+    const newSelectedItems = new Set<T>(selectedItems);
+    for (const item of visibleAvailableItems) {
+      newSelectedItems.add(item.id);
     }
 
-    onChangeProp(allIds);
+    onChangeProp(newSelectedItems);
   }
 
   function onUnselectAll() {
-    onChangeProp(new Set<T>());
+    const newSelectedItems = new Set<T>(selectedItems);
+    for (const item of visibleSelectedItems) {
+      newSelectedItems.delete(item.id);
+    }
+
+    onChangeProp(newSelectedItems);
   }
 
   return (
