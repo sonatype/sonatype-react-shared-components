@@ -20,7 +20,7 @@ export interface TransferListItemProps<T extends string | number = string> exten
   onChange: (checked: boolean, id: T) => void
 }
 
-export interface Props<T extends string | number = string>
+export interface StatefulProps<T extends string | number = string>
   extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onChange'> {
   allItems: DataItem<T>[];
   selectedItems: Set<T>;
@@ -29,10 +29,13 @@ export interface Props<T extends string | number = string>
   availableItemsCountFormatter?: (n: number) => string,
   selectedItemsCountFormatter?: (n: number) => string,
   showMoveAll?: boolean | null;
+  onChange: (newSelected: Set<T>) => void;
+  filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
+}
+
+export interface Props<T extends string | number = string> extends StatefulProps<T> {
   availableItemsFilter: string;
   selectedItemsFilter: string;
   onAvailableItemsFilterChange: NxFilterInputProps['onChange'];
   onSelectedItemsFilterChange: NxFilterInputProps['onChange'];
-  onChange: (newSelected: Set<T>) => void;
-  filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
 }

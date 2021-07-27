@@ -232,3 +232,6 @@ export { nxFormSelectStateHelpers };
 
 export { default as NxTransferList, Props as NxTransferListProps, DataItem as NxTransferListDataItem }
   from './components/NxTransferList/NxTransferList';
+
+export { default as NxStatefulTransferList, Props as NxStatefulTransferListProps }
+  from './components/NxTransferList/stateful/NxStatefulTransferList';
