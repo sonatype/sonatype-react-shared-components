@@ -111,6 +111,7 @@ import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlob
 import NxFormSelectComponentPage from './components/NxFormSelect/NxFormSelectPage';
 import CssVariablesPage from './styles/CssVariables/CssVariablesPage';
 import NxTransferListPage from './components/NxTransferList/NxTransferListPage';
+import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxStatefulTransferListPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -166,6 +167,7 @@ const pageConfig: PageConfig = {
     NxTooltip: NxTooltipPage,
     NxOverflowTooltip: NxOverflowTooltipPage,
     NxTransferList: NxTransferListPage,
+    NxStatefulTransferList: NxStatefulTransferListPage,
     NxTreeView: NxTreeViewPage,
     NxTreeViewMultiSelect: NxTreeViewMultiSelect,
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
