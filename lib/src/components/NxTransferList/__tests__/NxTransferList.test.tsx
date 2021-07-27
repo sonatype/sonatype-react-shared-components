@@ -6,6 +6,7 @@
  */
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { ReactWrapper } from 'enzyme';
+import { pipe, includes, always } from 'ramda';
 
 import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
 
@@ -154,7 +155,58 @@ describe('NxTransferList', function() {
       expect(icon).toHaveProp('icon', faTimesCircle);
     });
 
-    it('fires onChange with a set containing all ids when Transfer All is clicked', function() {
+    it('fires onChange with a set containing all ids when Transfer All is clicked and no available item filter is set',
+        function() {
+          const onChange = jest.fn(),
+              allItems = [{
+                id: 1,
+                displayName: 'foo'
+              }, {
+                id: 2,
+                displayName: 'bar'
+              }],
+              selectedItems = new Set([2]),
+              component = getShallow({ showMoveAll: true, allItems, selectedItems, onChange }),
+              transferAllBtn = component.find('.nx-transfer-list__move-all').at(0);
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          transferAllBtn.simulate('click');
+
+          expect(onChange).toHaveBeenCalled();
+          expect(onChange.mock.calls[0][0]).toEqual(new Set([1, 2]));
+
+          expect(selectedItems).toEqual(new Set([2]));
+        }
+    );
+
+    it('fires onChange with an empty set when Remove All is clicked and no selected item filter is set', 
+        function() {
+          const onChange = jest.fn(),
+              allItems = [{
+                id: 1,
+                displayName: 'foo'
+              }, {
+                id: 2,
+                displayName: 'bar'
+              }],
+              selectedItems = new Set([2]),
+              component = getShallow({ showMoveAll: true, allItems, selectedItems, onChange }),
+              removeAllBtn = component.find('.nx-transfer-list__move-all').at(1);
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          removeAllBtn.simulate('click');
+
+          expect(onChange).toHaveBeenCalled();
+          expect(onChange.mock.calls[0][0]).toEqual(new Set());
+
+          expect(selectedItems).toEqual(new Set([2]));
+        }
+    );
+
+    it('fires onChange with a set containing all previously selected ids and all ids matching the current ' +
+        'availableItemsFilter when set', function() {
       const onChange = jest.fn(),
           allItems = [{
             id: 1,
@@ -162,9 +214,18 @@ describe('NxTransferList', function() {
           }, {
             id: 2,
             displayName: 'bar'
+          }, {
+            id: 3,
+            displayName: 'baz'
           }],
           selectedItems = new Set([2]),
-          component = getShallow({ showMoveAll: true, allItems, selectedItems, onChange }),
+          component = getShallow({
+            showMoveAll: true,
+            availableItemsFilter: 'fo',
+            allItems,
+            selectedItems,
+            onChange
+          }),
           transferAllBtn = component.find('.nx-transfer-list__move-all').at(0);
 
       expect(onChange).not.toHaveBeenCalled();
@@ -172,12 +233,13 @@ describe('NxTransferList', function() {
       transferAllBtn.simulate('click');
 
       expect(onChange).toHaveBeenCalled();
-      expect(onChange.mock.calls[0][0]).toEqual(new Set([1, 2]));
+      expect(onChange.mock.calls[0][0]).toEqual(new Set([1, 2])); // not 3
 
       expect(selectedItems).toEqual(new Set([2]));
     });
 
-    it('fires onChange with an empty set when Remove All is clicked', function() {
+    it('fires onChange with a set containing only those ids which were previously selected and which do not ' +
+        'match the selectedItemsFilter when set', function() {
       const onChange = jest.fn(),
           allItems = [{
             id: 1,
@@ -185,19 +247,28 @@ describe('NxTransferList', function() {
           }, {
             id: 2,
             displayName: 'bar'
+          }, {
+            id: 3,
+            displayName: 'baz'
           }],
-          selectedItems = new Set([2]),
-          component = getShallow({ showMoveAll: true, allItems, selectedItems, onChange }),
-          removeAllBtn = component.find('.nx-transfer-list__move-all').at(1);
+          selectedItems = new Set([1, 2]),
+          component = getShallow({
+            showMoveAll: true,
+            selectedItemsFilter: 'fo',
+            allItems,
+            selectedItems,
+            onChange
+          }),
+          transferAllBtn = component.find('.nx-transfer-list__move-all').at(1);
 
       expect(onChange).not.toHaveBeenCalled();
 
-      removeAllBtn.simulate('click');
+      transferAllBtn.simulate('click');
 
       expect(onChange).toHaveBeenCalled();
-      expect(onChange.mock.calls[0][0]).toEqual(new Set());
+      expect(onChange.mock.calls[0][0]).toEqual(new Set([2]));
 
-      expect(selectedItems).toEqual(new Set([2]));
+      expect(selectedItems).toEqual(new Set([1, 2]));
     });
   });
 
@@ -334,5 +405,185 @@ describe('NxTransferList', function() {
       // ensure original set was not mutated
       expect(selectedItems).toEqual(new Set([2, 4]));
     });
+  });
+
+  describe('filtering', function() {
+    const allItems = [{
+          id: 1,
+          displayName: 'foo'
+        }, {
+          id: 2,
+          displayName: 'Foo'
+        }, {
+          id: 3,
+          displayName: 'bar'
+        }, {
+          id: 4,
+          displayName: 'foo'
+        }, {
+          id: 5,
+          displayName: 'Foo'
+        }, {
+          id: 6,
+          displayName: 'bar'
+        }],
+        selectedItems = new Set([4, 5, 6]);
+
+    const getComponent = (moreProps: Partial<Props<number>>) => getMounted({ allItems, selectedItems, ...moreProps }),
+        getAvailable = pipe(
+          getComponent,
+          c => c.find('fieldset.nx-transfer-list__half').at(0).find('label.nx-transfer-list__item')
+        ),
+        getSelected = pipe(
+          getComponent,
+          c => c.find('fieldset.nx-transfer-list__half').at(1).find('label.nx-transfer-list__item')
+        );
+
+
+    it('renders only available items which contain the availableItemsFilter case-insensitively', function() {
+      const availableItems = getAvailable({ availableItemsFilter: 'fo', selectedItemsFilter: 'b' });
+
+      expect(availableItems.length).toBe(2);
+
+      expect(availableItems.filterWhere(i => i.text().includes('foo'))).toExist();
+      expect(availableItems.filterWhere(i => i.text().includes('Foo'))).toExist();
+      expect(availableItems.filterWhere(i => i.text().includes('bar'))).not.toExist();
+    });
+
+    it('renders only selected items which contain the selectedItemsFilter case-insensitively', function() {
+      const selectedItems = getSelected({ selectedItemsFilter: 'fo', availableItemsFilter: 'b' });
+
+      expect(selectedItems.length).toBe(2);
+
+      expect(selectedItems.filterWhere(i => i.text().includes('foo'))).toExist();
+      expect(selectedItems.filterWhere(i => i.text().includes('Foo'))).toExist();
+      expect(selectedItems.filterWhere(i => i.text().includes('bar'))).not.toExist();
+    });
+
+    it('renders only available items that match the availableItemsFilter according to the filterFn when specified',
+          function() {
+            const availableItems = getAvailable({
+              availableItemsFilter: 'fo',
+              selectedItemsFilter: 'b',
+              filterFn: includes // case sensitive inclusion
+            });
+
+            expect(availableItems.length).toBe(1);
+
+            expect(availableItems.filterWhere(i => i.text().includes('foo'))).toExist();
+            expect(availableItems.filterWhere(i => i.text().includes('bar'))).not.toExist();
+          }
+    );
+
+    it('renders only selected items that match the selectedItemsFilter according to the filterFn when specified',
+          function() {
+            const selectedItems = getSelected({
+              selectedItemsFilter: 'fo',
+              availableItemsFilter: 'b',
+              filterFn: includes // case sensitive inclusion
+            });
+
+            expect(selectedItems.length).toBe(1);
+
+            expect(selectedItems.filterWhere(i => i.text().includes('bar'))).not.toExist();
+            expect(selectedItems.filterWhere(i => i.text().includes('foo'))).toExist();
+          }
+    );
+  });
+
+  describe('footers', function() {
+    it('renders an nx-transfer-list__footer for the available items', function() {
+      const oneAvailable = getShallow({ allItems: [{ id: 1, displayName: 'foo' }] }),
+          zeroAvailable = getShallow({ allItems: [{ id: 1, displayName: 'foo' }], selectedItems: new Set([1]) }),
+          threeAvailable = getShallow({
+            allItems: [{ id: 1, displayName: 'foo' }, { id: 2, displayName: 'bar' }, { id: 3, displayName: 'baz' }]
+          }),
+          oneAvailableFooter = oneAvailable.find('.nx-transfer-list__half').at(0).find('.nx-transfer-list__footer'),
+          zeroAvailableFooter = zeroAvailable.find('.nx-transfer-list__half').at(0).find('.nx-transfer-list__footer'),
+          threeAvailableFooter = threeAvailable.find('.nx-transfer-list__half').at(0).find('.nx-transfer-list__footer');
+
+      expect(oneAvailableFooter).toHaveText('1 item available');
+      expect(zeroAvailableFooter).toHaveText('0 items available');
+      expect(threeAvailableFooter).toHaveText('3 items available');
+    });
+
+    it('renders an nx-transfer-list__footer for the selected items', function() {
+      const zeroSelected = getShallow(),
+          oneSelected = getShallow({ allItems: [{ id: 1, displayName: 'foo' }], selectedItems: new Set([1]) }),
+          threeSelected = getShallow({
+            allItems: [{ id: 1, displayName: 'foo' }, { id: 2, displayName: 'bar' }, { id: 3, displayName: 'baz' }],
+            selectedItems: new Set([1, 2, 3])
+          }),
+          oneSelectedFooter = oneSelected.find('.nx-transfer-list__half').at(1).find('.nx-transfer-list__footer'),
+          zeroSelectedFooter = zeroSelected.find('.nx-transfer-list__half').at(1).find('.nx-transfer-list__footer'),
+          threeSelectedFooter = threeSelected.find('.nx-transfer-list__half').at(1).find('.nx-transfer-list__footer');
+
+      expect(oneSelectedFooter).toHaveText('1 item transferred');
+      expect(zeroSelectedFooter).toHaveText('0 items transferred');
+      expect(threeSelectedFooter).toHaveText('3 items transferred');
+    });
+
+    it('renders an nx-transfer-list__footer for the available items using availableItemsCountFormatter if specified',
+        function() {
+          const availableItemsCountFormatter = (n: number) => `To ${n} and beyond!`,
+              selectedItemsCountFormatter = always('moo'); // ensure this isn't used for these
+
+          const oneAvailable = getShallow({
+                allItems: [{ id: 1, displayName: 'foo' }],
+                availableItemsCountFormatter,
+                selectedItemsCountFormatter
+              }),
+              zeroAvailable = getShallow({
+                allItems: [{ id: 1, displayName: 'foo' }],
+                selectedItems: new Set([1]),
+                availableItemsCountFormatter,
+                selectedItemsCountFormatter
+              }),
+              threeAvailable = getShallow({
+                allItems: [{ id: 1, displayName: 'foo' }, { id: 2, displayName: 'bar' }, { id: 3, displayName: 'baz' }],
+                availableItemsCountFormatter,
+                selectedItemsCountFormatter
+              }),
+              oneAvailableFooter = oneAvailable.find('.nx-transfer-list__half').at(0).find('.nx-transfer-list__footer'),
+              zeroAvailableFooter = zeroAvailable.find('.nx-transfer-list__half').at(0).find('.nx-transfer-list__footer'),
+              threeAvailableFooter = threeAvailable.find('.nx-transfer-list__half').at(0).find('.nx-transfer-list__footer');
+
+          expect(oneAvailableFooter).toHaveText('To 1 and beyond!');
+          expect(zeroAvailableFooter).toHaveText('To 0 and beyond!');
+          expect(threeAvailableFooter).toHaveText('To 3 and beyond!');
+        }
+    );
+
+    it('renders an nx-transfer-list__footer for the selected items using selectedItemsCountFormatter if specified',
+        function() {
+          const selectedItemsCountFormatter = (n: number) => `To ${n} and beyond!`,
+              availableItemsCountFormatter = always('moo'); // ensure this isn't used for these
+
+          const oneSelected = getShallow({
+                allItems: [{ id: 1, displayName: 'foo' }],
+                selectedItems: new Set([1]),
+                availableItemsCountFormatter,
+                selectedItemsCountFormatter
+              }),
+              zeroSelected = getShallow({
+                allItems: [{ id: 1, displayName: 'foo' }],
+                availableItemsCountFormatter,
+                selectedItemsCountFormatter
+              }),
+              threeSelected = getShallow({
+                allItems: [{ id: 1, displayName: 'foo' }, { id: 2, displayName: 'bar' }, { id: 3, displayName: 'baz' }],
+                selectedItems: new Set([1, 2, 3]),
+                availableItemsCountFormatter,
+                selectedItemsCountFormatter
+              }),
+              oneSelectedFooter = oneSelected.find('.nx-transfer-list__half').at(1).find('.nx-transfer-list__footer'),
+              zeroSelectedFooter = zeroSelected.find('.nx-transfer-list__half').at(1).find('.nx-transfer-list__footer'),
+              threeSelectedFooter = threeSelected.find('.nx-transfer-list__half').at(1).find('.nx-transfer-list__footer');
+
+          expect(oneSelectedFooter).toHaveText('To 1 and beyond!');
+          expect(zeroSelectedFooter).toHaveText('To 0 and beyond!');
+          expect(threeSelectedFooter).toHaveText('To 3 and beyond!');
+        }
+    );
   });
 });
