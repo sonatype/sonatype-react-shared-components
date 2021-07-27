@@ -182,7 +182,12 @@ const CssVariablesPage = () => {
             Standard border styles for higher-level elements.
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-secondary">
-            Secondary border styles generally used inside components, or after a default border.
+            Secondary border styles generally used inside components or after a default border.
+          </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-subsection">
+            <NxWarningAlert>
+              Deprecated. Standard border styles for lower-level elements such as tile subsections.
+            </NxWarningAlert>
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-box-shadow-focus">
             The standard box-shadow to apply to focused elements in addition to a border or outline.
@@ -213,6 +218,11 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-border-secondary">
               Color for secondary borders
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-border-subsection">
+              <NxWarningAlert>
+                Deprecated. Standard border styles for lower-level elements such as tile subsections.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-component-background">
               The background color of most RSC components including tiles and form fields. Note that many RSC
