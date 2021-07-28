@@ -111,6 +111,7 @@ import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlob
 import NxFormSelectComponentPage from './components/NxFormSelect/NxFormSelectPage';
 import CssVariablesPage from './styles/CssVariables/CssVariablesPage';
 import NxPPage from './styles/NxP/NxPPage';
+import NxHPage from './styles/NxH/NxHPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -189,6 +190,7 @@ const pageConfig: PageConfig = {
     'nx-fieldset': NxFieldsetStylePage,
     'nx-form-group': NxFormGroupStylePage,
     'nx-form-select': NxFormSelectPage,
+    'nx-h*': NxHPage,
     'nx-global-header': NxGlobalHeaderPage,
     'nx-grid': NxGridPage,
     'nx-icon': NxIconPage,
