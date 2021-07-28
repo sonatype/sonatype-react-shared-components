@@ -66,10 +66,6 @@ $nx-transfer-list-visible-item-count: 10;
     color: var(--nx-color-link-hover);
   }
 
-  &:hover {
-    color: var(--nx-color-link-hover);
-  }
-
   &:active {
     color: var(--nx-color-link-active);
   }
@@ -114,13 +110,13 @@ $nx-transfer-list-visible-item-count: 10;
   margin: var(--nx-spacing-2x) 0;
   padding: var(--nx-spacing-2x);
 
-  &:hover {
-    border-color: var(--nx-color-form-element-border);
-  }
-
   &:focus-within {
     border-color: var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
+  }
+
+  &:hover {
+    border-color: var(--nx-color-form-element-border);
   }
 
   &:active {
