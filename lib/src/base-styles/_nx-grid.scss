@@ -13,7 +13,7 @@
 .nx-grid-col {
   @include container-vertical;
 
-  border-left: var(--nx-border-subsection);
+  border-left: var(--nx-border-default);
   box-sizing: border-box;
   flex: 1 0;
   overflow-x: hidden;
@@ -39,7 +39,7 @@
 
 .nx-grid-h-keyline {
   border: none;
-  border-top: var(--nx-border-subsection);
+  border-top: var(--nx-border-default);
   margin-top: var(--nx-spacing-6x);
   margin-bottom: var(--nx-spacing-6x);
 }
