@@ -28,7 +28,7 @@ describe('NxTransferList', function() {
   it('handles overflowing content with a tooltip', async function() {
     const [list, firstItem] = await Promise.all([browser.$(simpleListSelector), browser.$(firstItemSelector)]);
 
-    await firstItem.scrollIntoView({ block: 'center' });
+    await list.scrollIntoView({ block: 'center' });
     await firstItem.moveTo();
 
     const tooltip = await browser.$('.nx-tooltip');
