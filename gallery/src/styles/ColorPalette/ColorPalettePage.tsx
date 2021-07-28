@@ -8,6 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import ColorPaletteExample from './ColorPaletteExample';
+import { NxWarningAlert } from '@sonatype/react-shared-components';
 
 const ColorPalettePage = () =>
   <>
@@ -22,6 +23,9 @@ const ColorPalettePage = () =>
         CSS custom properties declared within the RSC base styles. The swatches below show all of the colors
         available in RSC along with their hex value and corresponding RSC variable.
       </p>
+      <NxWarningAlert>
+        The lime swatch is deprecated and is currently an alias for the green swatch.
+      </NxWarningAlert>
       <section className="nx-tile-subsection">
         <header className="nx-tile-subsection__header">
           <h3 className="nx-h3">Using Colors</h3>
