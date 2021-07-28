@@ -7,16 +7,17 @@
 import React, { FormEvent, useMemo } from 'react';
 import classnames from 'classnames';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { toLower, filter, includes, groupBy, partial, identity, prop, pipe } from 'ramda';
 
 import { Props, TransferListItemProps, DataItem, FilterFn } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { toLower, filter, includes, groupBy, partial, identity, prop, pipe } from 'ramda';
+import NxFieldset from '../NxFieldset/NxFieldset';
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
 export { Props, DataItem } from './types';
 
 import './NxTransferList.scss';
-import NxFieldset from '../NxFieldset/NxFieldset';
 
 function TransferListItem<T extends string | number>(props: TransferListItemProps<T>) {
   const { checked, id, displayName, onChange: onChangeProp } = props;
@@ -27,11 +28,13 @@ function TransferListItem<T extends string | number>(props: TransferListItemProp
   }
 
   return (
-    <label className="nx-transfer-list__item">
-      <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
-      <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
-      <span>{displayName}</span>
-    </label>
+    <NxOverflowTooltip>
+      <label className="nx-transfer-list__item">
+        <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
+        <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
+        <span>{displayName}</span>
+      </label>
+    </NxOverflowTooltip>
   );
 }
 
