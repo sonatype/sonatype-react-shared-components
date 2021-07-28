@@ -16,6 +16,7 @@ import NxListMultiLineExample from './examples/NxListMultiLine';
 import NxListEmptyExample from './examples/NxListEmpty';
 import NxListErrorExample from './examples/NxListError';
 import NxListLoadingExample from './examples/NxListLoading';
+import NxListDescriptionExample from './examples/NxListDescription';
 import { NxCode } from '@sonatype/react-shared-components';
 
 const NxListSimpleExampleCode = require('./examples/NxListSimple?raw'),
@@ -26,8 +27,8 @@ const NxListSimpleExampleCode = require('./examples/NxListSimple?raw'),
     NxListMultiLineExampleCode = require('./examples/NxListMultiLine?raw'),
     NxListEmptyExampleCode = require('./examples/NxListEmpty?raw'),
     NxListErrorExampleCode = require('./examples/NxListError?raw'),
-    NxListLoadingExampleCode = require('./examples/NxListLoading?raw');
-
+    NxListLoadingExampleCode = require('./examples/NxListLoading?raw'),
+    NxListDescriptionExampleCode = require('./examples/NxListDescription?raw');
 const NxListsExamples = () =>
   <>
     <GalleryExampleTile title="NxList Simple List Example"
@@ -44,7 +45,7 @@ const NxListsExamples = () =>
       An <NxCode>NxList</NxCode> demonstrating clickable, selection, and disabled styles.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Clickable List Links Example"
+    <GalleryExampleTile title="NxList Clickable Link Example"
                         id="nx-list-clickable-links-example"
                         liveExample={NxListClickableLinkExample}
                         codeExamples={NxListClickableLinkExampleCode}>
@@ -52,7 +53,7 @@ const NxListsExamples = () =>
       clickable aspects of the list items are links to a URL.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Bulleted List Example"
+    <GalleryExampleTile title="NxList Bulleted List Example"
                         id="nx-list-bulleted-example"
                         liveExample={NxListBulletedExample}
                         codeExamples={NxListBulletedExampleCode}>
@@ -60,14 +61,14 @@ const NxListsExamples = () =>
       default <NxCode>&lt;ul&gt;</NxCode> styling. These can be nested.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX List with Actions Example"
+    <GalleryExampleTile title="NxList with Actions Example"
                         id="nx-list-actions-example"
                         liveExample={NxListActionsExample}
                         codeExamples={NxListActionsExampleCode}>
       An <NxCode>NxList</NxCode> with icon buttons for initiation actions.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Multi-line Example"
+    <GalleryExampleTile title="NxList Multi-line Example"
                         id="nx-list-multi-line-example"
                         liveExample={NxListMultiLineExample}
                         codeExamples={NxListMultiLineExampleCode}>
@@ -75,14 +76,14 @@ const NxListsExamples = () =>
       on <NxCode>NxList.Text</NxCode> and <NxCode>NxList.Subtext</NxCode>.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX List Empty Example"
+    <GalleryExampleTile title="NxList Empty Example"
                         id="nx-list-empty-example"
                         liveExample={NxListEmptyExample}
                         codeExamples={NxListEmptyExampleCode}>
       A demonstration of the usage and display of an empty <NxCode>NxList</NxCode>.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX List with Error Message Example"
+    <GalleryExampleTile title="NxList with Error Message Example"
                         id="nx-list-error-example"
                         liveExample={NxListErrorExample}
                         codeExamples={NxListErrorExampleCode}>
@@ -90,11 +91,19 @@ const NxListsExamples = () =>
       failed to load.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX List demonstrating loading indicator"
+    <GalleryExampleTile title="NxList with Loading Indicator Example"
                         id="nx-list-loading-example"
                         liveExample={NxListLoadingExample}
                         codeExamples={NxListLoadingExampleCode}>
       A demonstration of the usage and display of an <NxCode>NxList</NxCode> whose list items are loading.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxList description list example"
+                        id="nx-list-description-example"
+                        liveExample={NxListDescriptionExample}
+                        codeExamples={NxListDescriptionExampleCode}>
+      Basic <NxCode>nx-list--description</NxCode> with a heading. Wrapping is demonstrated in both
+      the terms and the descriptions.
     </GalleryExampleTile>
 
   </>;
