@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-import { ReactWrapper } from 'enzyme';
+import { ReactWrapper, ShallowWrapper } from 'enzyme';
 import { pipe, includes, always } from 'ramda';
 
 import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
@@ -180,7 +180,7 @@ describe('NxTransferList', function() {
         }
     );
 
-    it('fires onChange with an empty set when Remove All is clicked and no selected item filter is set', 
+    it('fires onChange with an empty set when Remove All is clicked and no selected item filter is set',
         function() {
           const onChange = jest.fn(),
               allItems = [{
@@ -431,14 +431,13 @@ describe('NxTransferList', function() {
 
     const getComponent = (moreProps: Partial<Props<number>>) => getMounted({ allItems, selectedItems, ...moreProps }),
         getAvailable = pipe(
-          getComponent,
-          c => c.find('fieldset.nx-transfer-list__half').at(0).find('label.nx-transfer-list__item')
+            getComponent,
+            c => c.find('fieldset.nx-transfer-list__half').at(0).find('label.nx-transfer-list__item')
         ),
         getSelected = pipe(
-          getComponent,
-          c => c.find('fieldset.nx-transfer-list__half').at(1).find('label.nx-transfer-list__item')
+            getComponent,
+            c => c.find('fieldset.nx-transfer-list__half').at(1).find('label.nx-transfer-list__item')
         );
-
 
     it('renders only available items which contain the availableItemsFilter case-insensitively', function() {
       const availableItems = getAvailable({ availableItemsFilter: 'fo', selectedItemsFilter: 'b' });
@@ -461,33 +460,33 @@ describe('NxTransferList', function() {
     });
 
     it('renders only available items that match the availableItemsFilter according to the filterFn when specified',
-          function() {
-            const availableItems = getAvailable({
-              availableItemsFilter: 'fo',
-              selectedItemsFilter: 'b',
-              filterFn: includes // case sensitive inclusion
-            });
+        function() {
+          const availableItems = getAvailable({
+            availableItemsFilter: 'fo',
+            selectedItemsFilter: 'b',
+            filterFn: includes // case sensitive inclusion
+          });
 
-            expect(availableItems.length).toBe(1);
+          expect(availableItems.length).toBe(1);
 
-            expect(availableItems.filterWhere(i => i.text().includes('foo'))).toExist();
-            expect(availableItems.filterWhere(i => i.text().includes('bar'))).not.toExist();
-          }
+          expect(availableItems.filterWhere(i => i.text().includes('foo'))).toExist();
+          expect(availableItems.filterWhere(i => i.text().includes('bar'))).not.toExist();
+        }
     );
 
     it('renders only selected items that match the selectedItemsFilter according to the filterFn when specified',
-          function() {
-            const selectedItems = getSelected({
-              selectedItemsFilter: 'fo',
-              availableItemsFilter: 'b',
-              filterFn: includes // case sensitive inclusion
-            });
+        function() {
+          const selectedItems = getSelected({
+            selectedItemsFilter: 'fo',
+            availableItemsFilter: 'b',
+            filterFn: includes // case sensitive inclusion
+          });
 
-            expect(selectedItems.length).toBe(1);
+          expect(selectedItems.length).toBe(1);
 
-            expect(selectedItems.filterWhere(i => i.text().includes('bar'))).not.toExist();
-            expect(selectedItems.filterWhere(i => i.text().includes('foo'))).toExist();
-          }
+          expect(selectedItems.filterWhere(i => i.text().includes('bar'))).not.toExist();
+          expect(selectedItems.filterWhere(i => i.text().includes('foo'))).toExist();
+        }
     );
   });
 
@@ -528,6 +527,9 @@ describe('NxTransferList', function() {
           const availableItemsCountFormatter = (n: number) => `To ${n} and beyond!`,
               selectedItemsCountFormatter = always('moo'); // ensure this isn't used for these
 
+          const getAvailableFooter = (c: ShallowWrapper) =>
+            c.find('.nx-transfer-list__half').at(0).find('.nx-transfer-list__footer');
+
           const oneAvailable = getShallow({
                 allItems: [{ id: 1, displayName: 'foo' }],
                 availableItemsCountFormatter,
@@ -544,9 +546,9 @@ describe('NxTransferList', function() {
                 availableItemsCountFormatter,
                 selectedItemsCountFormatter
               }),
-              oneAvailableFooter = oneAvailable.find('.nx-transfer-list__half').at(0).find('.nx-transfer-list__footer'),
-              zeroAvailableFooter = zeroAvailable.find('.nx-transfer-list__half').at(0).find('.nx-transfer-list__footer'),
-              threeAvailableFooter = threeAvailable.find('.nx-transfer-list__half').at(0).find('.nx-transfer-list__footer');
+              oneAvailableFooter = getAvailableFooter(oneAvailable),
+              zeroAvailableFooter = getAvailableFooter(zeroAvailable),
+              threeAvailableFooter = getAvailableFooter(threeAvailable);
 
           expect(oneAvailableFooter).toHaveText('To 1 and beyond!');
           expect(zeroAvailableFooter).toHaveText('To 0 and beyond!');
@@ -558,6 +560,9 @@ describe('NxTransferList', function() {
         function() {
           const selectedItemsCountFormatter = (n: number) => `To ${n} and beyond!`,
               availableItemsCountFormatter = always('moo'); // ensure this isn't used for these
+
+          const getSelectedFooter = (c: ShallowWrapper) =>
+            c.find('.nx-transfer-list__half').at(1).find('.nx-transfer-list__footer');
 
           const oneSelected = getShallow({
                 allItems: [{ id: 1, displayName: 'foo' }],
@@ -576,9 +581,9 @@ describe('NxTransferList', function() {
                 availableItemsCountFormatter,
                 selectedItemsCountFormatter
               }),
-              oneSelectedFooter = oneSelected.find('.nx-transfer-list__half').at(1).find('.nx-transfer-list__footer'),
-              zeroSelectedFooter = zeroSelected.find('.nx-transfer-list__half').at(1).find('.nx-transfer-list__footer'),
-              threeSelectedFooter = threeSelected.find('.nx-transfer-list__half').at(1).find('.nx-transfer-list__footer');
+              oneSelectedFooter = getSelectedFooter(oneSelected),
+              zeroSelectedFooter = getSelectedFooter(zeroSelected),
+              threeSelectedFooter = getSelectedFooter(threeSelected);
 
           expect(oneSelectedFooter).toHaveText('To 1 and beyond!');
           expect(zeroSelectedFooter).toHaveText('To 0 and beyond!');
