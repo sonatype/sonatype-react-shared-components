@@ -15,8 +15,9 @@ describe('NxTransferList', function() {
   const simpleListSelector = '#nx-transfer-list-minimal-example .nx-transfer-list',
       complexListSelector = '#nx-transfer-list-complex-example .nx-transfer-list',
       fullWidthListSelector = '#nx-transfer-list-full-width-example .nx-transfer-list',
-      firstItemSelector =
-        `${simpleListSelector} .nx-transfer-list__half:first-child .nx-transfer-list__item:first-child`,
+      itemsSelector = `${simpleListSelector} .nx-transfer-list__half:first-child .nx-transfer-list__item`,
+      firstItemSelector = `${itemsSelector}:first-child`,
+      secondItemSelector = `${itemsSelector}:nth-child(2)`,
       transferAllSelector =
         `${complexListSelector} .nx-transfer-list__half:first-child .nx-transfer-list__move-all`;
 
@@ -26,6 +27,7 @@ describe('NxTransferList', function() {
   it('handles overflowing content with a tooltip', async function() {
     const firstItem = await browser.$(firstItemSelector);
 
+    await firstItem.scrollIntoView({ block: 'center' });
     await firstItem.moveTo();
 
     const tooltip = await browser.$('.nx-tooltip');
@@ -34,11 +36,11 @@ describe('NxTransferList', function() {
     await browser.eyesRegionSnapshot(simpleListSelector);
   });
 
-  it('puts a dark border on hovered items', hoverTest(simpleListSelector, firstItemSelector));
-  it('puts a blue border and glow on focused items', focusTest(simpleListSelector, firstItemSelector));
+  it('puts a dark border on hovered items', hoverTest(simpleListSelector, secondItemSelector));
+  it('puts a blue border and glow on focused items', focusTest(simpleListSelector, secondItemSelector));
   it('puts a dark border and blue glow on focused+hovered items',
-      focusAndHoverTest(simpleListSelector, firstItemSelector));
-  it('puts a grey background on clicked items', clickTest(simpleListSelector, firstItemSelector));
+      focusAndHoverTest(simpleListSelector, secondItemSelector));
+  it('puts a grey background on clicked items', clickTest(simpleListSelector, secondItemSelector));
 
   it('makes the move all button dark blue when hovered', hoverTest(complexListSelector, transferAllSelector));
   it('makes the move all button light blue when clicked', clickTest(complexListSelector, transferAllSelector));
