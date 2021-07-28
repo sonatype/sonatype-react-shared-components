@@ -37,11 +37,13 @@ const NxHPage = () => {
                           codeExamples={nxH2ExampleCode}
                           htmlExample={nxH2ExampleCode}>
         An example of an H2 with RSC styling.
-      </GalleryExampleTile><GalleryExampleTile title="H3 Example"
+      </GalleryExampleTile>
+      <GalleryExampleTile title="H3 Example"
                           codeExamples={nxH3ExampleCode}
                           htmlExample={nxH3ExampleCode}>
         An example of an H3 with RSC styling.
-      </GalleryExampleTile><GalleryExampleTile title="H4 Example"
+      </GalleryExampleTile>
+      <GalleryExampleTile title="H4 Example"
                           codeExamples={nxH4ExampleCode}
                           htmlExample={nxH4ExampleCode}>
         An example of an H4 with RSC styling.
