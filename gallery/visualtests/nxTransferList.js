@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+const { Target } = require('@applitools/eyes-webdriverio');
 const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 
 describe('NxTransferList', function() {
@@ -25,7 +26,7 @@ describe('NxTransferList', function() {
   it('looks right with complex options', simpleTest(complexListSelector));
   it('expands to full width with the appropriate class', simpleTest(fullWidthListSelector));
   it('handles overflowing content with a tooltip', async function() {
-    const firstItem = await browser.$(firstItemSelector);
+    const [list, firstItem] = await Promise.all([browser.$(simpleListSelector), browser.$(firstItemSelector)]);
 
     await firstItem.scrollIntoView({ block: 'center' });
     await firstItem.moveTo();
@@ -33,7 +34,7 @@ describe('NxTransferList', function() {
     const tooltip = await browser.$('.nx-tooltip');
     await tooltip.waitForDisplayed();
 
-    await browser.eyesRegionSnapshot(simpleListSelector);
+    await browser.eyesRegionSnapshot(null, Target.region(list));
   });
 
   it('puts a dark border on hovered items', hoverTest(simpleListSelector, secondItemSelector));
