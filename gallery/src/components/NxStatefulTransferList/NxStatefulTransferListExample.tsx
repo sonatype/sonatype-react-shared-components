@@ -6,10 +6,9 @@
  */
 import React, { useState } from 'react';
 import { NxStatefulTransferList } from '@sonatype/react-shared-components';
-import { map, range, append } from 'ramda';
+import { map, range } from 'ramda';
 
-const items = append({ id: 101, displayName: 'Loooooooooooooooooooooooooong Name' },
-    map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101)));
+const items = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
 
 export default function NxStatefulTransferListExample() {
   const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set());
