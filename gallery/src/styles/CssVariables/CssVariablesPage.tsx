@@ -221,7 +221,7 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-border-subsection">
               <NxWarningAlert>
-                Deprecated. Standard border styles for lower-level elements such as tile subsections.
+                Deprecated. Standard border color for lower-level elements such as tile subsections.
               </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-component-background">
