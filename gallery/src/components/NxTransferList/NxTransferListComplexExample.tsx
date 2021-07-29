@@ -33,6 +33,8 @@ export default function NxTransferListExample() {
 
   return <NxTransferList allItems={items}
                          selectedItems={selectedItems}
+                         availableItemsLabel="Unwanted"
+                         selectedItemsLabel="Wanted"
                          availableItemsFilter={availableItemsFilter}
                          selectedItemsFilter={selectedItemsFilter}
                          availableItemsCountFormatter={availableItemsCountFormatter}
