@@ -8,14 +8,20 @@ import React, { forwardRef } from 'react';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NxFontAwesomeIcon } from '../..';
 import {NxListLinkProps, nxListLinkPropTypes} from './types';
+import classnames from 'classnames';
+import { includesDisabledClass } from '../../util/classUtil';
 
 const NxListLink = forwardRef<HTMLAnchorElement, NxListLinkProps>(
-    function nxListLink({ children, disabled, href, selected}, ref) {
+    function nxListLink({ children, className, disabled, href, selected, ...attrs}, ref) {
+      const aClassNames = classnames('nx-list__link', className, {'selected': selected}, {'disabled': disabled});
       return (
         <li className='nx-list__item nx-list__item--clickable'>
-          <a ref={ref}
+          <a aria-disabled={includesDisabledClass(aClassNames)}
+             ref={ref}
              href={href}
-             className={`nx-list__link ${selected ? 'selected' : ''} ${disabled ? 'disabled' : ''}`}>
+             {...attrs}
+             className={aClassNames}
+          >
             {children}
             <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
           </a>

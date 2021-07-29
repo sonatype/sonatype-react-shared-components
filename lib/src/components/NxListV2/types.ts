@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { HTMLAttributes, LiHTMLAttributes, WeakValidationMap, ReactElement,
-  ReactNode, ButtonHTMLAttributes } from 'react';
+  ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
 export type NxListProps = HTMLAttributes<HTMLUListElement> & {
@@ -65,7 +65,7 @@ export const nxListActionPropTypes: WeakValidationMap<NxListActionProps> = {
   children: PropTypes.node
 };
 
-export type NxListButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &{
+export type NxListButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: ReactNode,
   disabled?: boolean,
   selected?: boolean
@@ -77,7 +77,7 @@ export const nxListButtonPropTypes: WeakValidationMap<NxListButtonProps> = {
   selected: PropTypes.bool
 };
 
-export type NxListLinkProps = {
+export type NxListLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   children?: ReactNode,
   disabled?: boolean,
   href: string,

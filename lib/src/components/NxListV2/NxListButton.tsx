@@ -5,16 +5,20 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import classnames from 'classnames';
 import React, { forwardRef } from 'react';
 import { NxFontAwesomeIcon } from '../..';
 import {NxListButtonProps, nxListButtonPropTypes} from './types';
+import { includesDisabledClass } from '../../util/classUtil';
 
 const NxListButton = forwardRef<HTMLButtonElement, NxListButtonProps>(
-    function nxListButton({ children, disabled, selected, ...attrs}, ref) {
+    function nxListButton({ children, className, disabled, selected, ...attrs}, ref) {
+      const buttonClassNames = classnames('nx-list__btn', className, {'selected': selected}, {'disabled': disabled});
       return (
         <li className='nx-list__item nx-list__item--clickable'>
-          <button ref={ref}
-                  className={`nx-list__btn ${selected ? 'selected' : ''}`}
+          <button aria-disabled={includesDisabledClass(buttonClassNames)}
+                  ref={ref}
+                  className={buttonClassNames}
                   disabled={disabled}
                   {...attrs}
           >

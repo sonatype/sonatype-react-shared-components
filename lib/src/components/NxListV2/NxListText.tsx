@@ -5,11 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import classnames from 'classnames';
 import {NxListTextProps, nxListTextPropTypes} from './types';
 
 const NxListText = (props: NxListTextProps) => {
   const { children, truncate } = props;
-  return <span className={`nx-list__text ${truncate ? 'nx-truncate-ellipsis' : ''}`}>{children}</span>;
+  const className = classnames('nx-list__text', {'nx-truncate-ellipsis': truncate});
+  return <span className={className}>{children}</span>;
 };
 
 NxListText.propTypes = nxListTextPropTypes;
