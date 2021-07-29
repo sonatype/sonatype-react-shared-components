@@ -17,7 +17,7 @@ const NxPPage = () => {
       <GalleryDescriptionTile>
         <NxP>
           Using the <NxCode>&lt;p&gt;</NxCode> HTML tag with the
-          <NxCode>.nx-code</NxCode> className applies standard RSC typography, margin and maximum width styles
+          <NxCode>.nx-p</NxCode> className applies standard RSC typography, margin and maximum width styles
           for paragraph text. When working in React, the <NxCode>NxP</NxCode> component is available for
           a more convenient way to apply these styles.
         </NxP>
