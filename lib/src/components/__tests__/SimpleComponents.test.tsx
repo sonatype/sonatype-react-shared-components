@@ -25,7 +25,6 @@ import {
   NxTile,
   NxCard,
   NxGrid,
-  NxList,
   NxPageTitle,
   NxReadOnly,
   NxTableContainer,
@@ -246,60 +245,6 @@ describe('NxGrid.Header', function() {
 describe('NxGrid.HeaderHrule', function() {
   it('makes a <hr> tag with an nx-grid-header__hrule class', function() {
     expect(shallow(<NxGrid.HeaderHrule/>)).toMatchSelector('hr.nx-grid-header__hrule');
-  });
-});
-
-describe('NxList', function() {
-  it('makes a <ul> tag with an nx-list class', function() {
-    expect(shallow(<NxList/>)).toMatchSelector('ul.nx-list');
-  });
-});
-
-describe('NxList.Item', function() {
-  it('makes a <li> tag with an nx-list__item class', function() {
-    expect(shallow(<NxList.Item/>)).toMatchSelector('li.nx-list__item');
-  });
-});
-
-describe('NxList.Text', function() {
-  it('makes a <span> tag with an nx-list__text class', function() {
-    expect(shallow(<NxList.Text/>)).toMatchSelector('span.nx-list__text');
-  });
-});
-
-describe('NxList.Subtext', function() {
-  it('makes a <span> tag with an nx-list__subtext class', function() {
-    expect(shallow(<NxList.Subtext/>)).toMatchSelector('span.nx-list__subtext');
-  });
-});
-
-describe('NxList.Actions', function() {
-  it('makes a <div> tag with an nx-list__actions class', function() {
-    expect(shallow(<NxList.Actions/>)).toMatchSelector('div.nx-list__actions');
-  });
-});
-
-describe('NxList.DescriptionTerm', function() {
-  it('makes a <dt> tag with an nx-list__term class', function() {
-    expect(shallow(<NxList.DescriptionTerm/>)).toMatchSelector('dt.nx-list__term');
-  });
-});
-
-describe('NxList.Description', function() {
-  it('makes a <dd> tag with an nx-list__description class', function() {
-    expect(shallow(<NxList.Description/>)).toMatchSelector('dd.nx-list__description');
-  });
-});
-
-describe('NxList.Button', function() {
-  it('makes a <button> tag with an nx-list__btn class', function() {
-    expect(shallow(<NxList.Button/>)).toMatchSelector('button.nx-list__btn');
-  });
-});
-
-describe('NxList.Link', function() {
-  it('makes a <a> tag with an nx-list__Link class', function() {
-    expect(shallow(<NxList.Link/>)).toMatchSelector('a.nx-list__link');
   });
 });
 
