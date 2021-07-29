@@ -8,7 +8,7 @@
 @import '../../scss-shared/nx-text-helpers';
 
 // the padding on the sides of each transfer list control box
-$nx-transfer-list-control-box-side-padding: var(--nx-spacing-6x);
+$nx-transfer-list-control-box-side-spacing: var(--nx-spacing-6x);
 $nx-transfer-list-item-vertical-padding: var(--nx-spacing-2x);
 $nx-transfer-list-item-vertical-margin: var(--nx-spacing-2x);
 $nx-transfer-list-visible-item-count: 10;
@@ -50,7 +50,7 @@ $nx-transfer-list-visible-item-count: 10;
 }
 
 .nx-transfer-list__filter {
-  margin: var(--nx-spacing-6x) $nx-transfer-list-control-box-side-padding 0 $nx-transfer-list-control-box-side-padding;
+  margin: var(--nx-spacing-6x) $nx-transfer-list-control-box-side-spacing 0 $nx-transfer-list-control-box-side-spacing;
   width: auto;
 }
 
@@ -63,7 +63,7 @@ $nx-transfer-list-visible-item-count: 10;
   color: var(--nx-color-link);
   cursor: pointer;
   font: inherit;
-  margin: var(--nx-spacing-4x) $nx-transfer-list-control-box-side-padding 0 $nx-transfer-list-control-box-side-padding;
+  margin: var(--nx-spacing-4x) $nx-transfer-list-control-box-side-spacing 0 $nx-transfer-list-control-box-side-spacing;
   padding: 0;
 
   &:hover {
@@ -98,7 +98,7 @@ $nx-transfer-list-visible-item-count: 10;
 
 
   overflow-y: auto;
-  padding: var(--nx-spacing-6x) $nx-transfer-list-control-box-side-padding;
+  padding: var(--nx-spacing-6x) $nx-transfer-list-control-box-side-spacing;
   margin-top: var(--nx-spacing-6x);
 }
 
@@ -138,5 +138,5 @@ $nx-transfer-list-visible-item-count: 10;
 
 .nx-transfer-list__footer {
   font-size: var(--nx-font-size-s);
-  padding: var(--nx-spacing-base) $nx-transfer-list-control-box-side-padding;
+  padding: var(--nx-spacing-base) $nx-transfer-list-control-box-side-spacing;
 }
