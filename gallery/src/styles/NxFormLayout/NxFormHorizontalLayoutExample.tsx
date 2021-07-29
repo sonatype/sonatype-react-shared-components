@@ -6,7 +6,8 @@
  */
 import React, { FormEvent, useState } from 'react';
 
-import { NxCheckbox, NxFormGroup, NxFieldset, useToggle } from '@sonatype/react-shared-components';
+import { NxCheckbox, NxFormGroup, NxFieldset, useToggle, NxFormSelect, nxFormSelectStateHelpers }
+  from '@sonatype/react-shared-components';
 import { NxRadio } from '@sonatype/react-shared-components';
 import { NxButton } from '@sonatype/react-shared-components';
 import { NxStatefulTextInput } from '@sonatype/react-shared-components';
@@ -17,7 +18,7 @@ export default function NxFormLayoutExample() {
     return val.length ? null : 'Must be non-empty';
   }
 
-  const [selectVal, setSelectVal] = useState('');
+  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('');
 
   function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
     setSelectVal(evt.currentTarget.value);
@@ -49,14 +50,14 @@ export default function NxFormLayoutExample() {
           <NxStatefulTextInput/>
         </NxFormGroup>
         <NxFormGroup label="Label" isRequired>
-          <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
+          <NxFormSelect { ...selectState } onChange={onSelectChange}>
             <option value="">Select an option</option>
             <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>
             <option value="option3">Option 3</option>
             <option value="option4">Option 4</option>
             <option value="option5">Option 5</option>
-          </select>
+          </NxFormSelect>
         </NxFormGroup>
       </div>
       <NxFieldset label="Colors" isRequired>

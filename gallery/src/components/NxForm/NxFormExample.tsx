@@ -6,8 +6,18 @@
  */
 import React, { useState, useEffect, FormEvent } from 'react';
 
-import { NxCheckbox, NxForm, NxRadio, NxFormGroup, NxTextInput, nxTextInputStateHelpers, NxFieldset, useToggle }
-  from '@sonatype/react-shared-components';
+import {
+  NxCheckbox,
+  NxForm,
+  NxRadio,
+  NxFormGroup,
+  NxTextInput,
+  nxTextInputStateHelpers,
+  NxFieldset,
+  useToggle,
+  NxFormSelect,
+  nxFormSelectStateHelpers
+} from '@sonatype/react-shared-components';
 import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
 import { combineValidationErrors, hasValidationErrors } from '@sonatype/react-shared-components/util/validationUtil';
 
@@ -18,7 +28,7 @@ export default function NxFormExample() {
     return val.length ? null : 'Must be non-empty';
   }
 
-  const [selectVal, setSelectVal] = useState('');
+  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('');
 
   function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
     setSelectVal(evt.currentTarget.value);
@@ -131,14 +141,14 @@ export default function NxFormExample() {
         </NxRadio>
       </NxFieldset>
       <NxFormGroup label="Select">
-        <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
+        <NxFormSelect { ...selectState } onChange={onSelectChange}>
           <option value="">Select an option</option>
           <option value="option1">Option 1</option>
           <option value="option2">Option 2</option>
           <option value="option3">Option 3</option>
           <option value="option4">Option 4</option>
           <option value="option5">Option 5</option>
-        </select>
+        </NxFormSelect>
       </NxFormGroup>
     </NxForm>
   );

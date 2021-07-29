@@ -18,7 +18,9 @@ import {
   useToggle,
   NxColorPicker,
   SelectableColor,
-  NxInfoAlert
+  NxInfoAlert,
+  NxFormSelect,
+  nxFormSelectStateHelpers
 } from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
@@ -28,7 +30,7 @@ export default function NxFormLayoutExample() {
     return val.length ? null : 'Must be non-empty';
   }
 
-  const [selectVal, setSelectVal] = useState('');
+  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('');
 
   function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
     setSelectVal(evt.currentTarget.value);
@@ -96,14 +98,14 @@ export default function NxFormLayoutExample() {
         </NxRadio>
       </NxFieldset>
       <NxFormGroup label="Select" isRequired>
-        <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
+        <NxFormSelect { ...selectState } onChange={onSelectChange}>
           <option value="">Select an option</option>
           <option value="option1">Option 1</option>
           <option value="option2">Option 2</option>
           <option value="option3">Option 3</option>
           <option value="option4">Option 4</option>
           <option value="option5">Option 5</option>
-        </select>
+        </NxFormSelect>
       </NxFormGroup>
       <NxFieldset label="Enable features - this text is extra long to demonstrate wrapping, how much wood would
                          a woodchuck chuck"
