@@ -219,7 +219,7 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-border-secondary">
               Color for secondary borders
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-border-subsection">
+            <ColorDocRow colorVar="--nx-color-subsection-border">
               <NxWarningAlert>
                 Deprecated. Standard border color for lower-level elements such as tile subsections.
               </NxWarningAlert>
