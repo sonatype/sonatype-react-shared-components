@@ -5,30 +5,30 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxListV2 } from '@sonatype/react-shared-components';
+import { NxList } from '@sonatype/react-shared-components';
 
 function NxListClickable() {
   return (
-    <NxListV2>
-      <NxListV2.Button>
-        <NxListV2.Text>Action 1</NxListV2.Text>
-      </NxListV2.Button>
-      <NxListV2.Button>
-        <NxListV2.Text truncate>This list item should be truncated at the right end edge. youtube weathered
+    <NxList>
+      <NxList.Button>
+        <NxList.Text>Action 1</NxList.Text>
+      </NxList.Button>
+      <NxList.Button>
+        <NxList.Text truncate>This list item should be truncated at the right end edge. youtube weathered
           network network systemic systema claymore mine voodoo
-        </NxListV2.Text>
-      </NxListV2.Button>
-      <NxListV2.Button>
-        <NxListV2.Text>Action 3</NxListV2.Text>
-      </NxListV2.Button>
-      <NxListV2.Button selected>
-        <NxListV2.Text>Action 4</NxListV2.Text>
-        <NxListV2.Subtext>This list item demonstrates the selected styles</NxListV2.Subtext>
-      </NxListV2.Button>
-      <NxListV2.Button disabled>
-        <NxListV2.Text>This list item is disabled</NxListV2.Text>
-      </NxListV2.Button>
-    </NxListV2>
+        </NxList.Text>
+      </NxList.Button>
+      <NxList.Button>
+        <NxList.Text>Action 3</NxList.Text>
+      </NxList.Button>
+      <NxList.Button selected>
+        <NxList.Text>Action 4</NxList.Text>
+        <NxList.Subtext>This list item demonstrates the selected styles</NxList.Subtext>
+      </NxList.Button>
+      <NxList.Button disabled>
+        <NxList.Text>This list item is disabled</NxList.Text>
+      </NxList.Button>
+    </NxList>
   );
 }
 

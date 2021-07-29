@@ -47,10 +47,7 @@ export const nxListTextPropTypes: WeakValidationMap<NxListTextProps> = {
   truncate: PropTypes.bool
 };
 
-export type NxListSubtextProps = {
-  children?: ReactNode,
-  truncate?: boolean
-};
+export type NxListSubtextProps = NxListTextProps;
 
 export const nxListSubtextPropTypes: WeakValidationMap<NxListSubtextProps> = {
   children: PropTypes.node,
@@ -99,4 +96,18 @@ export type NxListErrorProps = {
 export const nxListErrorPropTypes: WeakValidationMap<NxListErrorProps> = {
   errorMessage: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
+};
+
+export type NxListDescriptionTermProps = {
+  children?: ReactNode
+};
+
+export const nxListDescriptionTermPropTypes: WeakValidationMap<NxListDescriptionTermProps> = {
+  children: PropTypes.node
+};
+
+export type NxListDescriptionProps = NxListDescriptionTermProps;
+
+export const nxListDescriptionPropTypes: WeakValidationMap<NxListDescriptionProps> = {
+  children: PropTypes.node
 };

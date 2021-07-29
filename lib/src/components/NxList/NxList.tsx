@@ -17,6 +17,8 @@ import NxListItem from './NxListItem';
 import NxListError from './NxListError';
 import NxListLoading from './NxListLoading';
 import NxListEmpty from './NxListEmpty';
+import NxListDescriptionTerm from './NxListDescriptionTerm';
+import NxListDescription from './NxListDescription';
 
 const NxListTitle = (props: NxListTitleProps) => {
   const { children } = props;
@@ -27,7 +29,7 @@ const NxListTitle = (props: NxListTitleProps) => {
   );
 };
 
-const NxListV2 = (props: NxListProps) => {
+const NxList = (props: NxListProps) => {
   const {className, children, bulleted, ...attrs } = props;
   const classNames = classnames(className, 'nx-list',
       {'nx-list--bulleted': bulleted},
@@ -45,17 +47,19 @@ const NxListV2 = (props: NxListProps) => {
   );
 };
 
-NxListV2.propTypes = nxListPropTypes;
-NxListV2.Item = NxListItem;
-NxListV2.Text = NxListText;
-NxListV2.Subtext = NxListSubtext;
-NxListV2.Actions = NxListActions;
-NxListV2.Title = NxListTitle;
-NxListV2.Button = NxListButton;
-NxListV2.Link = NxListLink;
-NxListV2.Error = NxListError;
-NxListV2.Empty = NxListEmpty;
-NxListV2.Loading = NxListLoading;
+NxList.propTypes = nxListPropTypes;
+NxList.Item = NxListItem;
+NxList.Text = NxListText;
+NxList.Subtext = NxListSubtext;
+NxList.Actions = NxListActions;
+NxList.Title = NxListTitle;
+NxList.Button = NxListButton;
+NxList.Link = NxListLink;
+NxList.Error = NxListError;
+NxList.Empty = NxListEmpty;
+NxList.Loading = NxListLoading;
+NxList.DescriptionTerm = NxListDescriptionTerm;
+NxList.Description = NxListDescription;
 
-export default NxListV2;
+export default NxList;
 export {NxListProps, nxListPropTypes} from './types';

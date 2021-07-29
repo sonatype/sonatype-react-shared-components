@@ -5,36 +5,36 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxListV2 } from '@sonatype/react-shared-components';
+import { NxList } from '@sonatype/react-shared-components';
 
 function NxListSimple() {
   return (
-    <NxListV2>
-      <NxListV2.Item>
-        <NxListV2.Text>Text wrapping - text that is very long and will wrap onto the next line, standard list
+    <NxList>
+      <NxList.Item>
+        <NxList.Text>Text wrapping - text that is very long and will wrap onto the next line, standard list
           item text that is very long and will wrap onto the next line
-        </NxListV2.Text>
-      </NxListV2.Item>
-      <NxListV2.Item>
-        <NxListV2.Text truncate>Text truncation - Add <NxCode>.nx-truncate-ellipsis</NxCode> to
-          <NxCode>.nx-list__item</NxCode> to cause the text to truncate at the right edge of the list item.
-        </NxListV2.Text>
-      </NxListV2.Item>
-      <NxListV2.Item>
-        <NxListV2.Text>Subtext wrapping</NxListV2.Text>
-        <NxListV2.Subtext> A long line of subtext that wraps. Add <NxCode>.nx-truncate-ellipsis</NxCode> to
-          the <NxCode>&lt;p&gt;</NxCode> tag if you don't want the text to wrap. More text to trigger the
-          wrapping
-        </NxListV2.Subtext>
-      </NxListV2.Item>
-      <NxListV2.Item>
-        <NxListV2.Text>Subtext truncation</NxListV2.Text>
-        <NxListV2.Subtext truncate>Add <NxCode>.nx-truncate-ellipsis</NxCode> to <NxCode>.nx-list__subtext</NxCode> to
-          cause the text to truncate at the right edge of the list item nodal point bridge kanji San Francisco
-          render-farm knife nodality neon receding grenade
-        </NxListV2.Subtext>
-      </NxListV2.Item>
-    </NxListV2>
+        </NxList.Text>
+      </NxList.Item>
+      <NxList.Item>
+        <NxList.Text truncate>Text truncation - as you can see, this is a pretty long text, but is elegantly
+          truncated so that the ellipses appear. If you are wondering what the ellipses mean, they are the
+          tiny dots that are displayed at the end.
+        </NxList.Text>
+      </NxList.Item>
+      <NxList.Item>
+        <NxList.Text>Subtext wrapping</NxList.Text>
+        <NxList.Subtext> A long line of subtext that wraps. as you can see, this is a pretty long text, and can be
+          truncated, but let's keep this here for now.
+        </NxList.Subtext>
+      </NxList.Item>
+      <NxList.Item>
+        <NxList.Text>Subtext truncation</NxList.Text>
+        <NxList.Subtext truncate>Truncation cause the text to truncate at the right edge of the list item.
+          The ellipses are elegantly placed to display the truncation as well. For more information on how this works,
+          please contact the RSC team.
+        </NxList.Subtext>
+      </NxList.Item>
+    </NxList>
   );
 }
 

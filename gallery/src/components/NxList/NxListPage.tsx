@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxCode, NxListV2, NxTextLink, NxInfoAlert, NxTable } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxList, NxTextLink, NxTable } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile} from '../../gallery-components/GalleryTiles';
 import NxListsExamples from './NxListExamples';
 
@@ -13,22 +13,32 @@ const NxAlertPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>Lists take many forms:</NxP>
-      <NxListV2 bulleted>
-        <NxListV2.Item>Simple data lists</NxListV2.Item>
-        <NxListV2.Item>Lists with clickable list items</NxListV2.Item>
-        <NxListV2.Item>Lists with bullets</NxListV2.Item>
-        <NxListV2.Item>Lists with actions</NxListV2.Item>
-        <NxListV2.Item>Lists with items that have multiple lines of text</NxListV2.Item>
-      </NxListV2>
+      <NxList bulleted>
+        <NxList.Item>Simple data lists</NxList.Item>
+        <NxList.Item>Lists with clickable list items</NxList.Item>
+        <NxList.Item>Lists with bullets</NxList.Item>
+        <NxList.Item>Lists with actions</NxList.Item>
+        <NxList.Item>Lists with items that have multiple lines of text</NxList.Item>
+      </NxList>
       <NxP>Lists can also have modified states depending on their content:</NxP>
-      <NxListV2 bulleted>
-        <NxListV2.Item>Lists with no data</NxListV2.Item>
-        <NxListV2.Item>Error states</NxListV2.Item>
-      </NxListV2>
+      <NxList bulleted>
+        <NxList.Item>Lists with no data</NxList.Item>
+        <NxList.Item>Error states</NxList.Item>
+      </NxList>
       <NxP>
         There are also lists that are "clickable". The list items in these lists indicate hover and click states and
         when clicked, an event occurs - usually navigation. Clickable lists have hover and disabled states. They share
         error and empty states with default lists.
+      </NxP>
+
+      <header className="nx-tile-subsection__title">
+        <h3 className="nx-h3">Description Lists</h3>
+      </header>
+      <NxP>
+        In addition to ordered and unordered lists, <NxCode>NxList</NxCode> also supports the
+        styling of description lists using <NxCode>NxList.DescriptionTerm</NxCode> and
+        <NxCode>NxList.Description</NxCode>. Terms and descriptions are laid out side-by-side
+        in rows. Currently only one description per term, and one term per description, are supported – not multiple.
       </NxP>
 
       <section className="nx-tile-subsection">
@@ -98,6 +108,19 @@ const NxAlertPage = () =>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>no</NxTable.Cell>
               <NxTable.Cell>Whether the list item should be rendered as disabled or not.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell> </NxTable.Cell>
+              <NxTable.Cell>HTML <NxCode>{'<a>'}</NxCode> attributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" external>
+                  HTML anchor attributes
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>NxList.Link supports any HTML attribute that's normally supported
+                by <NxCode>{'<a>'}</NxCode>.
+              </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>NxList.Text</NxTable.Cell>
@@ -237,70 +260,23 @@ const NxAlertPage = () =>
                 would only be a single list item which contains the loading element.
               </NxTable.Cell>
             </NxTable.Row>
-          </NxTable.Body>
-        </NxTable>
-      </section>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__title">
-          <h3 className="nx-h3">Description Lists</h3>
-        </header>
-        <p className="nx-p">
-          In addition to ordered and unordered lists, <NxCode>NxList</NxCode> also supports the
-          styling of description lists using the following classes. Terms and descriptions are laid out side-by-side
-          in rows. Currently only one description per term, and one term per description, are supported – not multiple.
-        </p>
-        <NxTable>
-          <NxTable.Head>
             <NxTable.Row>
-              <NxTable.Cell>Class</NxTable.Cell>
-              <NxTable.Cell>Convenience Component</NxTable.Cell>
-              <NxTable.Cell>Location</NxTable.Cell>
-              <NxTable.Cell>Details</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Head>
-          <NxTable.Body>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>.nx-list--description-list</NxCode></NxTable.Cell>
-              <NxTable.Cell/>
-              <NxTable.Cell>
-                <NxCode>&lt;dl&gt;</NxCode> which also
-                has <NxCode>.nx-list</NxCode>.
-              </NxTable.Cell>
-              <NxTable.Cell>Root class to apply RSC description list styles</NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>.nx-list__item</NxCode></NxTable.Cell>
-              <NxTable.Cell><NxCode>NxList.Item</NxCode></NxTable.Cell>
-              <NxTable.Cell>
-                <NxCode>&lt;div&gt;</NxCode> wrapping <NxCode>&lt;dt&gt;</NxCode>{' '}
-                and <NxCode>&lt;dd&gt;</NxCode> elements
-              </NxTable.Cell>
-              <NxTable.Cell>
-                Each <NxCode>&lt;dt&gt;</NxCode>/<NxCode>&lt;dd&gt;</NxCode> pairing
-                should be wrapped in a div which is styled similarly to an item row in a normal nx-list.
+              <NxTable.Cell><NxCode>NxList.DescriptionTerm</NxCode></NxTable.Cell>
+              <NxTable.Cell>Within <NxCode>NxList.Item</NxCode></NxTable.Cell>
+              <NxTable.Cell>The content for the first column in a description list.
+                Used for displaying the term element in a description list.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>.nx-list__term</NxCode></NxTable.Cell>
-              <NxTable.Cell><NxCode>NxList.Term</NxCode></NxTable.Cell>
-              <NxTable.Cell><NxCode>&lt;dt&gt;</NxCode></NxTable.Cell>
-              <NxTable.Cell>Styles the description term elements</NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>.nx-list__description</NxCode></NxTable.Cell>
               <NxTable.Cell><NxCode>NxList.Description</NxCode></NxTable.Cell>
-              <NxTable.Cell><NxCode>&lt;dd&gt;</NxCode></NxTable.Cell>
-              <NxTable.Cell>Styles the description elements</NxTable.Cell>
+              <NxTable.Cell>Within <NxCode>NxList.Item</NxCode></NxTable.Cell>
+              <NxTable.Cell>The content for the second column in a description list.
+                Used for displaying the term's description in a description list.
+              </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </section>
-      <NxInfoAlert>
-        Note that some of these examples are shown in React as they includes specific icons. When working in
-        React, <NxCode>NxFontAwesomeIcon</NxCode> should be used as shown to get these icons.
-        When not working in React, check the FontAwesome 5 documentation for alternative ways to include the icons.
-      </NxInfoAlert>
-
     </GalleryDescriptionTile>
     <NxListsExamples />
   </>;

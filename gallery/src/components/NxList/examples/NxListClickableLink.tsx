@@ -5,30 +5,30 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxListV2 } from '@sonatype/react-shared-components';
+import { NxList } from '@sonatype/react-shared-components';
 
 function NxListClickableLink() {
   return (
-    <NxListV2>
-      <NxListV2.Link href="#/pages/NxList">
-        <NxListV2.Text>NxList page</NxListV2.Text>
-      </NxListV2.Link>
-      <NxListV2.Link href="#/pages/NxTable" selected>
-        <NxListV2.Text truncate>NxTable page. This list item should be truncated at the right end edge.
+    <NxList>
+      <NxList.Link href="#/pages/NxList">
+        <NxList.Text>NxList page</NxList.Text>
+      </NxList.Link>
+      <NxList.Link href="#/pages/NxTable" selected>
+        <NxList.Text truncate>NxTable page. This list item should be truncated at the right end edge.
           youtube weathered network network systemic systema claymore mine voodoo god garage monofilament
           realism order-flow corporation car footage vinyl.
-        </NxListV2.Text>
-      </NxListV2.Link>
-      <NxListV2.Link href="#/pages/NxButton">
-        <NxListV2.Text>NxButton page</NxListV2.Text>
-      </NxListV2.Link>
-      <NxListV2.Link href="#/pages/NxAlert">
-        <NxListV2.Text>NxAlert page</NxListV2.Text>
-      </NxListV2.Link>
-      <NxListV2.Link href="#/pages/NxAccordion" disabled>
-        <NxListV2.Text>This list item is disabled</NxListV2.Text>
-      </NxListV2.Link>
-    </NxListV2>
+        </NxList.Text>
+      </NxList.Link>
+      <NxList.Link href="#/pages/NxButton">
+        <NxList.Text>NxButton page</NxList.Text>
+      </NxList.Link>
+      <NxList.Link href="#/pages/NxAlert">
+        <NxList.Text>NxAlert page</NxList.Text>
+      </NxList.Link>
+      <NxList.Link href="#/pages/NxAccordion" disabled>
+        <NxList.Text>This list item is disabled</NxList.Text>
+      </NxList.Link>
+    </NxList>
   );
 }
 

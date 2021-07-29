@@ -98,14 +98,13 @@ const NxListsExamples = () =>
       A demonstration of the usage and display of an <NxCode>NxList</NxCode> whose list items are loading.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NxList description list example"
+    <GalleryExampleTile title="NxList Description List Example"
                         id="nx-list-description-example"
                         liveExample={NxListDescriptionExample}
                         codeExamples={NxListDescriptionExampleCode}>
-      Basic <NxCode>nx-list--description</NxCode> with a heading. Wrapping is demonstrated in both
+      Basic description list with a heading. Wrapping is demonstrated in both
       the terms and the descriptions.
     </GalleryExampleTile>
-
   </>;
 
 export default NxListsExamples;
