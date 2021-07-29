@@ -42,8 +42,11 @@ $nx-transfer-list-visible-item-count: 10;
 }
 
 .nx-transfer-list__control-box {
+  align-items: stretch;
   border: var(--nx-border-default);
   border-radius: var(--nx-border-radius);
+  display: flex;
+  flex-direction: column;
 }
 
 .nx-transfer-list__filter {
@@ -54,6 +57,7 @@ $nx-transfer-list-visible-item-count: 10;
 .nx-transfer-list__move-all {
   @include container-horizontal;
 
+  align-self: start;
   background: initial;
   border: initial;
   color: var(--nx-color-link);
