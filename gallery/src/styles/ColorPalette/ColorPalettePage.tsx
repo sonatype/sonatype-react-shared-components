@@ -24,7 +24,7 @@ const ColorPalettePage = () =>
         available in RSC along with their hex value and corresponding RSC variable.
       </p>
       <NxWarningAlert>
-        The lime swatch is deprecated and is currently an alias for the green swatch.
+        The lime palette is deprecated and is currently an alias for the green palette.
       </NxWarningAlert>
       <section className="nx-tile-subsection">
         <header className="nx-tile-subsection__header">
