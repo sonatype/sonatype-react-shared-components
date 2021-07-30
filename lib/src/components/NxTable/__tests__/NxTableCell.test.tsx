@@ -131,6 +131,17 @@ describe('NxTableCell', function () {
             .toHaveProp('title', 'foo descending');
       });
 
+      it('adds an aria-label to the button matching the tooltip', function() {
+        expect(getMountedHeaderComponent({ isSortable: true, children: 'foo' }).find('button'))
+            .toHaveProp('aria-label', 'foo unsorted');
+
+        expect(getMountedHeaderComponent({ isSortable: true, children: 'foo', sortDir: 'asc' }).find('button'))
+            .toHaveProp('aria-label', 'foo ascending');
+
+        expect(getMountedHeaderComponent({ isSortable: true, children: 'foo', sortDir: 'desc' }).find('button'))
+            .toHaveProp('aria-label', 'foo descending');
+      });
+
       it('wraps the cell contents in a button within the tooltip with the nx-cell__sort-btn class', function() {
         const tooltip = getMountedHeaderComponent({ isSortable: true, children: 'foo' }).children(),
             button = tooltip.find('button');
