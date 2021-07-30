@@ -62,7 +62,7 @@ const NxAlertPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell>NxList.Button</NxTable.Cell>
+              <NxTable.Cell>NxList.ButtonItem</NxTable.Cell>
               <NxTable.Cell>selected</NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>no</NxTable.Cell>
@@ -84,12 +84,12 @@ const NxAlertPage = () =>
                 </NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>NxList.Button supports any HTML attribute that's normally supported
+              <NxTable.Cell>NxList.ButtonItem supports any HTML attribute that's normally supported
                 by <NxCode>{'<button>'}</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell>NxList.Link</NxTable.Cell>
+              <NxTable.Cell>NxList.LinkItem</NxTable.Cell>
               <NxTable.Cell>href</NxTable.Cell>
               <NxTable.Cell>string</NxTable.Cell>
               <NxTable.Cell>yes</NxTable.Cell>
@@ -118,7 +118,7 @@ const NxAlertPage = () =>
                 </NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>NxList.Link supports any HTML attribute that's normally supported
+              <NxTable.Cell>NxList.LinkItem supports any HTML attribute that's normally supported
                 by <NxCode>{'<a>'}</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
@@ -190,14 +190,14 @@ const NxAlertPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>NxList.Button</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>NxList.ButtonItem</NxCode></NxTable.Cell>
               <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 This list element that is clickable, responds to hover events, and has selected and disabled states.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>NxList.Link</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>NxList.LinkItem</NxCode></NxTable.Cell>
               <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 This list element behaves as a link, i.e. an <NxCode>{'<a>'}</NxCode> tag, and requires
@@ -207,8 +207,8 @@ const NxAlertPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxList.Text</NxCode></NxTable.Cell>
-              <NxTable.Cell>Within <NxCode>NxList.Item</NxCode>, <NxCode>NxList.Button</NxCode>,
-                or <NxCode>NxList.Link</NxCode>
+              <NxTable.Cell>Within <NxCode>NxList.Item</NxCode>, <NxCode>NxList.ButtonItem</NxCode>,
+                or <NxCode>NxList.LinkItem</NxCode>
               </NxTable.Cell>
               <NxTable.Cell>
                 The primary text content of the list item, displayed in a heavier font weight.
@@ -216,8 +216,8 @@ const NxAlertPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxList.Subtext</NxCode></NxTable.Cell>
-              <NxTable.Cell>Within <NxCode>NxList.Item</NxCode>, <NxCode>NxList.Button</NxCode>,
-                or <NxCode>NxList.Link</NxCode>
+              <NxTable.Cell>Within <NxCode>NxList.Item</NxCode>, <NxCode>NxList.ButtonItem</NxCode>,
+                or <NxCode>NxList.LinkItem</NxCode>
               </NxTable.Cell>
               <NxTable.Cell>
                 The secondary text content of the list item displayed as non-bolded text.

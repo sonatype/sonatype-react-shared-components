@@ -10,24 +10,24 @@ import { NxList } from '@sonatype/react-shared-components';
 function NxListClickable() {
   return (
     <NxList>
-      <NxList.Button>
+      <NxList.ButtonItem>
         <NxList.Text>Action 1</NxList.Text>
-      </NxList.Button>
-      <NxList.Button>
+      </NxList.ButtonItem>
+      <NxList.ButtonItem>
         <NxList.Text truncate>This list item should be truncated at the right end edge. youtube weathered
           network network systemic systema claymore mine voodoo
         </NxList.Text>
-      </NxList.Button>
-      <NxList.Button>
+      </NxList.ButtonItem>
+      <NxList.ButtonItem>
         <NxList.Text>Action 3</NxList.Text>
-      </NxList.Button>
-      <NxList.Button selected>
+      </NxList.ButtonItem>
+      <NxList.ButtonItem selected>
         <NxList.Text>Action 4</NxList.Text>
         <NxList.Subtext>This list item demonstrates the selected styles</NxList.Subtext>
-      </NxList.Button>
-      <NxList.Button disabled>
+      </NxList.ButtonItem>
+      <NxList.ButtonItem disabled>
         <NxList.Text>This list item is disabled</NxList.Text>
-      </NxList.Button>
+      </NxList.ButtonItem>
     </NxList>
   );
 }

@@ -68,65 +68,65 @@ describe('NxList', function() {
 
   it('renders a clickable list whose list item element has prop disabled and is disabled', function() {
     const children = [
-      <NxList.Button key="1" disabled>
+      <NxList.ButtonItem key="1" disabled>
         <NxList.Text>Item 1</NxList.Text>
-      </NxList.Button>
+      </NxList.ButtonItem>
     ];
 
     const contentEl = getNxList({children}).find('ul');
-    expect(contentEl.find(NxList.Button)).toExist();
-    expect(contentEl).toContainMatchingElements(1, NxList.Button);
+    expect(contentEl.find(NxList.ButtonItem)).toExist();
+    expect(contentEl).toContainMatchingElements(1, NxList.ButtonItem);
     expect(contentEl).toContainMatchingElements(1, NxList.Text);
-    expect(contentEl.find(NxList.Button)).toHaveProp('disabled');
-    expect(contentEl.find(NxList.Button)).toBeDisabled();
+    expect(contentEl.find(NxList.ButtonItem)).toHaveProp('disabled');
+    expect(contentEl.find(NxList.ButtonItem)).toBeDisabled();
   });
 
   it('renders a clickable list whose list item element has prop selected and is selected', function() {
     const children = [
-      <NxList.Button key="1" selected>
+      <NxList.ButtonItem key="1" selected>
         <NxList.Text>Item 1</NxList.Text>
-      </NxList.Button>
+      </NxList.ButtonItem>
     ];
 
     const contentEl = getNxList({children}).find('ul');
-    expect(contentEl.find(NxList.Button)).toExist();
-    expect(contentEl).toContainMatchingElements(1, NxList.Button);
+    expect(contentEl.find(NxList.ButtonItem)).toExist();
+    expect(contentEl).toContainMatchingElements(1, NxList.ButtonItem);
     expect(contentEl).toContainMatchingElements(1, NxList.Text);
-    expect(contentEl.find(NxList.Button)).toHaveProp('selected');
-    expect(contentEl.find(NxList.Button).shallow().setProps({selected: true}).find('button'))
+    expect(contentEl.find(NxList.ButtonItem)).toHaveProp('selected');
+    expect(contentEl.find(NxList.ButtonItem).shallow().setProps({selected: true}).find('button'))
     .toHaveClassName('selected');
   });
 
   it('renders a clickable link whose list item element has prop disabled and is disabled', function() {
     const children = [
-      <NxList.Link key="1" href="www.sonatype.com" disabled>
+      <NxList.LinkItem key="1" href="www.sonatype.com" disabled>
         <NxList.Text>Item 1</NxList.Text>
-      </NxList.Link>
+      </NxList.LinkItem>
     ];
 
     const contentEl = getNxList({children}).find('ul');
-    expect(contentEl.find(NxList.Link)).toExist();
-    expect(contentEl).toContainMatchingElements(1, NxList.Link);
+    expect(contentEl.find(NxList.LinkItem)).toExist();
+    expect(contentEl).toContainMatchingElements(1, NxList.LinkItem);
     expect(contentEl).toContainMatchingElements(1, NxList.Text);
-    expect(contentEl.find(NxList.Link)).toHaveProp('href');
-    expect(contentEl.find(NxList.Link)).toHaveProp('disabled');
-    expect(contentEl.find(NxList.Link)).toBeDisabled();
+    expect(contentEl.find(NxList.LinkItem)).toHaveProp('href');
+    expect(contentEl.find(NxList.LinkItem)).toHaveProp('disabled');
+    expect(contentEl.find(NxList.LinkItem)).toBeDisabled();
   });
 
   it('renders a clickable link whose list item element has prop selected and is selected', function() {
     const children = [
-      <NxList.Link key="1" href="www.sonatype.com" selected>
+      <NxList.LinkItem key="1" href="www.sonatype.com" selected>
         <NxList.Text>Item 1</NxList.Text>
-      </NxList.Link>
+      </NxList.LinkItem>
     ];
 
     const contentEl = getNxList({children}).find('ul');
-    expect(contentEl.find(NxList.Link)).toExist();
-    expect(contentEl).toContainMatchingElements(1, NxList.Link);
+    expect(contentEl.find(NxList.LinkItem)).toExist();
+    expect(contentEl).toContainMatchingElements(1, NxList.LinkItem);
     expect(contentEl).toContainMatchingElements(1, NxList.Text);
-    expect(contentEl.find(NxList.Link)).toHaveProp('href');
-    expect(contentEl.find(NxList.Link)).toHaveProp('selected');
-    expect(contentEl.find(NxList.Link).shallow().setProps({selected: true, href: 'www.sonatype.com'})
+    expect(contentEl.find(NxList.LinkItem)).toHaveProp('href');
+    expect(contentEl.find(NxList.LinkItem)).toHaveProp('selected');
+    expect(contentEl.find(NxList.LinkItem).shallow().setProps({selected: true, href: 'www.sonatype.com'})
         .find('a')).toHaveClassName('selected');
   });
 

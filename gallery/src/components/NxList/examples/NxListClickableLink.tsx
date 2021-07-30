@@ -10,24 +10,24 @@ import { NxList } from '@sonatype/react-shared-components';
 function NxListClickableLink() {
   return (
     <NxList>
-      <NxList.Link href="#/pages/NxList">
+      <NxList.LinkItem href="#/pages/NxList">
         <NxList.Text>NxList page</NxList.Text>
-      </NxList.Link>
-      <NxList.Link href="#/pages/NxTable" selected>
+      </NxList.LinkItem>
+      <NxList.LinkItem href="#/pages/NxTable" selected>
         <NxList.Text truncate>NxTable page. This list item should be truncated at the right end edge.
           youtube weathered network network systemic systema claymore mine voodoo god garage monofilament
           realism order-flow corporation car footage vinyl.
         </NxList.Text>
-      </NxList.Link>
-      <NxList.Link href="#/pages/NxButton">
+      </NxList.LinkItem>
+      <NxList.LinkItem href="#/pages/NxButton">
         <NxList.Text>NxButton page</NxList.Text>
-      </NxList.Link>
-      <NxList.Link href="#/pages/NxAlert">
+      </NxList.LinkItem>
+      <NxList.LinkItem href="#/pages/NxAlert">
         <NxList.Text>NxAlert page</NxList.Text>
-      </NxList.Link>
-      <NxList.Link href="#/pages/NxAccordion" disabled>
+      </NxList.LinkItem>
+      <NxList.LinkItem href="#/pages/NxAccordion" disabled>
         <NxList.Text>This list item is disabled</NxList.Text>
-      </NxList.Link>
+      </NxList.LinkItem>
     </NxList>
   );
 }

@@ -7,12 +7,12 @@
 import React, { forwardRef } from 'react';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NxFontAwesomeIcon } from '../..';
-import {NxListLinkProps, nxListLinkPropTypes} from './types';
+import {NxListLinkItemProps, nxListLinkItemPropTypes} from './types';
 import classnames from 'classnames';
 import { includesDisabledClass } from '../../util/classUtil';
 
-const NxListLink = forwardRef<HTMLAnchorElement, NxListLinkProps>(
-    function nxListLink({ children, className, disabled, href, selected, ...attrs}, ref) {
+const NxListLinkItem = forwardRef<HTMLAnchorElement, NxListLinkItemProps>(
+    function nxListLinkItem({ children, className, disabled, href, selected, ...attrs}, ref) {
       const aClassNames = classnames('nx-list__link', className, {'selected': selected}, {'disabled': disabled});
       return (
         <li className='nx-list__item nx-list__item--clickable'>
@@ -30,6 +30,6 @@ const NxListLink = forwardRef<HTMLAnchorElement, NxListLinkProps>(
     }
 );
 
-NxListLink.propTypes = nxListLinkPropTypes;
+NxListLinkItem.propTypes = nxListLinkItemPropTypes;
 
-export default NxListLink;
+export default NxListLinkItem;

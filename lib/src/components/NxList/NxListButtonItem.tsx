@@ -8,11 +8,11 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import React, { forwardRef } from 'react';
 import { NxFontAwesomeIcon } from '../..';
-import {NxListButtonProps, nxListButtonPropTypes} from './types';
+import {NxListButtonItemProps, nxListButtonItemPropTypes} from './types';
 import { includesDisabledClass } from '../../util/classUtil';
 
-const NxListButton = forwardRef<HTMLButtonElement, NxListButtonProps>(
-    function nxListButton({ children, className, disabled, selected, ...attrs}, ref) {
+const NxListButtonItem = forwardRef<HTMLButtonElement, NxListButtonItemProps>(
+    function nxListButtonItem({ children, className, disabled, selected, ...attrs}, ref) {
       const buttonClassNames = classnames('nx-list__btn', className, {'selected': selected}, {'disabled': disabled});
       return (
         <li className='nx-list__item nx-list__item--clickable'>
@@ -30,6 +30,6 @@ const NxListButton = forwardRef<HTMLButtonElement, NxListButtonProps>(
     }
 );
 
-NxListButton.propTypes = nxListButtonPropTypes;
+NxListButtonItem.propTypes = nxListButtonItemPropTypes;
 
-export default NxListButton;
+export default NxListButtonItem;
