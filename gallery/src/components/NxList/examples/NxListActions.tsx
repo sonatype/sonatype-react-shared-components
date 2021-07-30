@@ -18,7 +18,8 @@ function NxListActions() {
         </NxList.Actions>
       </NxList.Item>
       <NxList.Item>
-        <NxList.Text>List item deliberately made very long so that the text will wrap before it gets
+        <NxList.Text>
+          List item deliberately made very long so that the text will wrap before it gets
           to the action buttons nodal point bridge kanji San Francisco render-farm chrome human paranoid
           San Francisco skyscraper convenience store
         </NxList.Text>

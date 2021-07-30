@@ -7,7 +7,7 @@
 import React from 'react';
 import { NxList } from '@sonatype/react-shared-components';
 
-function NxListSimple() {
+function NxListMultiLine() {
   return (
     <NxList>
       <NxList.Item>
