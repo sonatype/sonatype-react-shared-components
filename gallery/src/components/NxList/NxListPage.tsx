@@ -162,7 +162,8 @@ const NxAlertPage = () =>
         <header className="nx-tile-subsection__title">
           <h3 className="nx-h3">Component Breakdown</h3>
         </header>
-        <NxP><NxCode>NxList</NxCode> comprises of several children components.
+        <NxP>
+          <NxCode>NxList</NxCode> comprises of several children components.
           A reference of each component and where they must be placed is as follows:
         </NxP>
         <NxTable>
