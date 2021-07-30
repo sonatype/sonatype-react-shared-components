@@ -9,8 +9,7 @@ import { NxList } from '@sonatype/react-shared-components';
 
 function NxListLoading() {
   return (
-    <NxList>
-      <NxList.Loading />
+    <NxList isLoading>
     </NxList>
   );
 }

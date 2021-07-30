@@ -4,21 +4,26 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, LiHTMLAttributes, WeakValidationMap, ReactElement,
+import { HTMLAttributes, LiHTMLAttributes, WeakValidationMap,
   ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
 export type NxListProps = HTMLAttributes<HTMLUListElement> & {
   bulleted?: boolean;
-  children?: ReactElement | ReactElement[] | null | ReactNode;
+  children?: ReactNode;
+  emptyMessage?: ReactNode;
+  error?: string;
+  isLoading?: boolean;
+  retryHandler?: () => void;
 };
 
 export const nxListPropTypes: WeakValidationMap<NxListProps> = {
   bulleted: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
-    PropTypes.element.isRequired
-  ])
+  children: PropTypes.node,
+  emptyMessage: PropTypes.node,
+  error: PropTypes.string,
+  isLoading: PropTypes.bool,
+  retryHandler: PropTypes.func
 };
 
 export type NxListItemProps = LiHTMLAttributes<HTMLLIElement> & {
@@ -78,16 +83,6 @@ export const nxListLinkItemPropTypes: WeakValidationMap<NxListLinkItemProps> = {
   disabled: PropTypes.bool,
   href: PropTypes.string.isRequired,
   selected: PropTypes.bool
-};
-
-export type NxListErrorProps = {
-  errorMessage: string,
-  onClick: () => void
-};
-
-export const nxListErrorPropTypes: WeakValidationMap<NxListErrorProps> = {
-  errorMessage: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
 };
 
 export type NxListDescriptionTermProps = {

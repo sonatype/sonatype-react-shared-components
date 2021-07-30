@@ -5,13 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxList } from '@sonatype/react-shared-components';
+import { NxH3, NxList } from '@sonatype/react-shared-components';
 
 function NxListEmpty() {
   return (
-    <NxList>
-      <NxList.Empty />
+    <NxList emptyMessage="This is an empty list text, and can be customized.">
+      <NxH3>Empty List Example</NxH3>
     </NxList>
+
   );
 }
 
