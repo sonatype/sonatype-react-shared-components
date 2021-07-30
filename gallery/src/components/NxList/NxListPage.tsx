@@ -182,13 +182,6 @@ const NxAlertPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>NxList.Title</NxCode></NxTable.Cell>
-              <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
-              <NxTable.Cell>
-                This is the title of the list.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
               <NxTable.Cell><NxCode>NxList.Item</NxCode></NxTable.Cell>
               <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
               <NxTable.Cell>

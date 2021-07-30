@@ -6,8 +6,7 @@
  */
 import React from 'react';
 import classnames from 'classnames';
-import { NxListProps, nxListPropTypes, NxListTitleProps } from './types';
-import { splitOutFirst } from '../../util/childUtil';
+import { NxListProps, nxListPropTypes } from './types';
 import NxListText from './NxListText';
 import NxListSubtext from './NxListSubtext';
 import NxListActions from './NxListActions';
@@ -20,30 +19,16 @@ import NxListEmpty from './NxListEmpty';
 import NxListDescriptionTerm from './NxListDescriptionTerm';
 import NxListDescription from './NxListDescription';
 
-const NxListTitle = (props: NxListTitleProps) => {
-  const { children } = props;
-  return (
-    <h3 className="nx-h3">
-      {children}
-    </h3>
-  );
-};
-
 const NxList = (props: NxListProps) => {
   const {className, children, bulleted, ...attrs } = props;
   const classNames = classnames(className, 'nx-list',
       {'nx-list--bulleted': bulleted},
   );
-  const [title, otherChildren] = splitOutFirst(NxListTitle, children);
 
   return (
-    <>
-      {title}
-      <ul className={classNames}
-          {...attrs}>
-        {otherChildren}
-      </ul>
-    </>
+    <ul className={classNames} {...attrs}>
+      {children}
+    </ul>
   );
 };
 
@@ -52,7 +37,6 @@ NxList.Item = NxListItem;
 NxList.Text = NxListText;
 NxList.Subtext = NxListSubtext;
 NxList.Actions = NxListActions;
-NxList.Title = NxListTitle;
 NxList.Button = NxListButton;
 NxList.Link = NxListLink;
 NxList.Error = NxListError;

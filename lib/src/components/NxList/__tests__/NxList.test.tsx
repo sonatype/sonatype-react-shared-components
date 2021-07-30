@@ -6,7 +6,7 @@
  */
 import { shallow } from 'enzyme';
 import React from 'react';
-import { NxLoadingSpinner } from '../../..';
+import { NxH3, NxLoadingSpinner } from '../../..';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxList from '../NxList';
 import { NxListProps } from '../types';
@@ -58,12 +58,12 @@ describe('NxList', function() {
   it('renders a simple list with a title', function() {
     const title = 'Simple Title';
     const children = [
-      <NxList.Title key="1">{title}</NxList.Title>
+      <NxH3 key="1">{title}</NxH3>
     ];
 
-    const contentEl = getNxList({children});
-    expect(contentEl.find('NxListTitle')).toExist();
-    expect(contentEl.find('NxListTitle')).toHaveHTML(`<h3 class="nx-h3">${title}</h3>`);
+    const contentEl = getNxList({children}).find('ul');
+    expect(contentEl.find(NxH3)).toExist();
+    expect(contentEl.find(NxH3).shallow()).toHaveHTML(`<h3 class="nx-h3">${title}</h3>`);
   });
 
   it('renders a clickable list whose list item element has prop disabled and is disabled', function() {

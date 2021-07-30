@@ -29,14 +29,6 @@ export const nxListItemPropTypes: WeakValidationMap<NxListItemProps> = {
   selected: PropTypes.bool
 };
 
-export type NxListTitleProps = {
-  children?: ReactNode
-};
-
-export const nxListTitlePropTypes: WeakValidationMap<NxListTitleProps> = {
-  children: PropTypes.element
-};
-
 export type NxListTextProps = {
   children?: ReactNode,
   truncate?: boolean

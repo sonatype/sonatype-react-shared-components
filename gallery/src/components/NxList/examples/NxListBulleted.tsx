@@ -5,12 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxList } from '@sonatype/react-shared-components';
+import { NxH3, NxList } from '@sonatype/react-shared-components';
 
 function NxListBulleted() {
   return (
     <NxList bulleted>
-      <NxList.Title>Bulleted lists with a heading</NxList.Title>
+      <NxH3>Bulleted lists with a heading</NxH3>
       <NxList.Item>
         <NxList.Text>Item 1</NxList.Text>
       </NxList.Item>
