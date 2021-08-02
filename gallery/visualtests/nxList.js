@@ -6,21 +6,23 @@
  */
 const { hoverTest, simpleTest } = require('./testUtils');
 
-describe('NxList', function() {
+describe('nx-list', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxList');
+    await browser.url('#/pages/nx-list');
   });
 
   const simpleSelector = '#nx-list-simple-example .gallery-example-live',
-      clickableSelector = '#nx-list-clickable-example .gallery-example-live',
-      clickableLinksSelector = '#nx-list-clickable-links-example .gallery-example-live',
+      clickableSelector = '#nx-list-clickable-example .nx-list',
+      clickableLinksSelector = '#nx-list-clickable-links-example .nx-list',
       bulletedSelector = '#nx-list-bulleted-example .gallery-example-live',
-      actionsSelector = '#nx-list-actions-example .gallery-example-live',
-      multiLineSelector = '#nx-list-multi-line-example .gallery-example-live',
-      emptySelector = '#nx-list-empty-example .gallery-example-live',
-      errorSelector = '#nx-list-error-example .gallery-example-live',
-      loadingSelector = '#nx-list-loading-example .gallery-example-live',
-      descriptionSelector = '#nx-list-description-example .gallery-example-live';
+      definitionListSelector = '#nx-list-definition-example .nx-list',
+      actionsSelector = '#nx-list-actions-example .nx-list',
+      multiLineSelector = '#nx-list-multi-line-example .nx-list',
+      emptySelector = '#nx-list-empty-example .nx-list',
+      errorSelector = '#nx-list-error-example .nx-list',
+      loadingSelector = '#nx-list-loading-example .nx-list',
+      descriptionSelector = '#nx-list-description-example .nx-list',
+      deprecatedSelector = '#nx-list-deprecated-clickable-example .nx-list';
 
   describe('Simple nx-list', function() {
     it('looks right', simpleTest(simpleSelector));
@@ -36,6 +38,10 @@ describe('NxList', function() {
 
   describe('Bulleted nx-list', function() {
     it('looks right', simpleTest(bulletedSelector));
+  });
+
+  describe('Definition list', function() {
+    it('looks right', simpleTest(definitionListSelector));
   });
 
   describe('nx-list with actions', function() {
@@ -62,4 +68,7 @@ describe('NxList', function() {
     it('looks right', simpleTest(descriptionSelector));
   });
 
+  describe('Deprecated clickable list', function() {
+    it('looks right', simpleTest(deprecatedSelector));
+  });
 });
