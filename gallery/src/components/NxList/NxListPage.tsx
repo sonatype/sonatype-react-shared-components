@@ -5,163 +5,32 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxCode, NxList, NxTextLink, NxTable } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxTextLink, NxTable, NxH3, NxInfoAlert, NxTile } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile} from '../../gallery-components/GalleryTiles';
 import NxListsExamples from './NxListExamples';
 
-const NxAlertPage = () =>
+const NxListPage = () =>
   <>
     <GalleryDescriptionTile>
-      <NxP>Lists take many forms:</NxP>
-      <NxList bulleted>
-        <NxList.Item>Simple data lists</NxList.Item>
-        <NxList.Item>Lists with clickable list items</NxList.Item>
-        <NxList.Item>Lists with bullets</NxList.Item>
-        <NxList.Item>Lists with actions</NxList.Item>
-        <NxList.Item>Lists with items that have multiple lines of text</NxList.Item>
-      </NxList>
-      <NxP>Lists can also have modified states depending on their content:</NxP>
-      <NxList bulleted>
-        <NxList.Item>Lists with no data</NxList.Item>
-        <NxList.Item>Error states</NxList.Item>
-      </NxList>
       <NxP>
-        There are also lists that are "clickable". The list items in these lists indicate hover and click states and
-        when clicked, an event occurs - usually navigation. Clickable lists have hover and disabled states. They share
-        error and empty states with default lists.
+        <NxCode>NxList</NxCode> encapsulates the styles defined in the <NxCode>nx-list</NxCode> style page into
+        simple React components. In addition, <NxCode>NxList</NxCode> also contains children components that make
+        it easy to customize lists. With the help of these components, it is quite simple to create lists that have
+        clickable buttons, links, action buttons, multiple lines of text, and even lists with empty and error states.
       </NxP>
 
-      <header className="nx-tile-subsection__title">
-        <h3 className="nx-h3">Description Lists</h3>
-      </header>
+      <NxH3>Description Lists</NxH3>
       <NxP>
-        In addition to ordered and unordered lists, <NxCode>NxList</NxCode> also supports the
-        styling of description lists using <NxCode>NxList.DescriptionTerm</NxCode> and
-        <NxCode>NxList.Description</NxCode>. Terms and descriptions are laid out side-by-side
-        in rows. Currently only one description per term, and one term per description, are supported – not multiple.
+        <NxCode>NxList</NxCode> also supports the styling of description lists
+        using <NxCode>NxList.DescriptionTerm</NxCode> and <NxCode>NxList.Description</NxCode>. Terms and descriptions
+        are laid out side-by-side in rows. Currently only one description per term, and one term per description, are
+        supported – not multiple.
       </NxP>
 
-      <section className="nx-tile-subsection">
-        <NxTable>
-          <NxTable.Head>
-            <NxTable.Row>
-              <NxTable.Cell>component</NxTable.Cell>
-              <NxTable.Cell>prop</NxTable.Cell>
-              <NxTable.Cell>type</NxTable.Cell>
-              <NxTable.Cell>required</NxTable.Cell>
-              <NxTable.Cell>details</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Head>
-          <NxTable.Body>
-            <NxTable.Row>
-              <NxTable.Cell>NxList</NxTable.Cell>
-              <NxTable.Cell>bulleted</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>Used to show a bulleted list.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>NxList.ButtonItem</NxTable.Cell>
-              <NxTable.Cell>selected</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>Highlights the row to show that the list item is selected.</NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell> </NxTable.Cell>
-              <NxTable.Cell>disabled</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>Whether the list item should be rendered as disabled or not.</NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell> </NxTable.Cell>
-              <NxTable.Cell>HTML <NxCode>{'<button>'}</NxCode> attributes</NxTable.Cell>
-              <NxTable.Cell>
-                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button" external>
-                  HTML button attributes
-                </NxTextLink>
-              </NxTable.Cell>
-              <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>NxList.ButtonItem supports any HTML attribute that's normally supported
-                by <NxCode>{'<button>'}</NxCode>.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>NxList.LinkItem</NxTable.Cell>
-              <NxTable.Cell>href</NxTable.Cell>
-              <NxTable.Cell>string</NxTable.Cell>
-              <NxTable.Cell>yes</NxTable.Cell>
-              <NxTable.Cell>Link to the URL provided.</NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell> </NxTable.Cell>
-              <NxTable.Cell>selected</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>Highlights the row to show that the list item is selected.</NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell> </NxTable.Cell>
-              <NxTable.Cell>disabled</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>Whether the list item should be rendered as disabled or not.</NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell> </NxTable.Cell>
-              <NxTable.Cell>HTML <NxCode>{'<a>'}</NxCode> attributes</NxTable.Cell>
-              <NxTable.Cell>
-                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" external>
-                  HTML anchor attributes
-                </NxTextLink>
-              </NxTable.Cell>
-              <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>NxList.LinkItem supports any HTML attribute that's normally supported
-                by <NxCode>{'<a>'}</NxCode>.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>NxList.Text</NxTable.Cell>
-              <NxTable.Cell>truncate</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>Whether the list item text should be truncated. Displays ellipses
-                to cut off text.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>NxList.Subtext</NxTable.Cell>
-              <NxTable.Cell>truncate</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>Whether the list item text should be truncated. Displays ellipses
-                to cut off subtext.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>NxList.Error</NxTable.Cell>
-              <NxTable.Cell>errorMessage</NxTable.Cell>
-              <NxTable.Cell>string</NxTable.Cell>
-              <NxTable.Cell>yes</NxTable.Cell>
-              <NxTable.Cell>Error message to display.</NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell> </NxTable.Cell>
-              <NxTable.Cell>onClick</NxTable.Cell>
-              <NxTable.Cell>function</NxTable.Cell>
-              <NxTable.Cell>yes</NxTable.Cell>
-              <NxTable.Cell>Function for retry.</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Body>
-        </NxTable>
-      </section>
-
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__title">
-          <h3 className="nx-h3">Component Breakdown</h3>
-        </header>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Component Description and Herirarchy</NxH3>
+        </NxTile.SubsectionHeader>
         <NxP>
           <NxCode>NxList</NxCode> comprises of several children components.
           A reference of each component and where they must be placed is as follows:
@@ -178,8 +47,7 @@ const NxAlertPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxList</NxCode></NxTable.Cell>
               <NxTable.Cell>Parent; Top-Level</NxTable.Cell>
-              <NxTable.Cell>This is the parent list class. By default, it has no bullets. In order to have a
-                bulleted list, the prop <NxCode>bulleted</NxCode> can be provided.
+              <NxTable.Cell>This is the parent list class.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -194,15 +62,15 @@ const NxAlertPage = () =>
               <NxTable.Cell><NxCode>NxList.ButtonItem</NxCode></NxTable.Cell>
               <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
               <NxTable.Cell>
-                This list element that is clickable, responds to hover events, and has selected and disabled states.
+                This list element that behaves as a button, and is clickable, responds to hover events, and has
+                selected and disabled states.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxList.LinkItem</NxCode></NxTable.Cell>
               <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
               <NxTable.Cell>
-                This list element behaves as a link, i.e. an <NxCode>{'<a>'}</NxCode> tag, and requires
-                a <NxCode>{'href'}</NxCode> prop. This element is also clickable, responds to hover events,
+                This list element behaves as a link, and is clickable, responds to hover events,
                 and has selected and disabled states.
               </NxTable.Cell>
             </NxTable.Row>
@@ -228,30 +96,9 @@ const NxAlertPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxList.Actions</NxCode></NxTable.Cell>
               <NxTable.Cell>Within <NxCode>NxList.Item</NxCode></NxTable.Cell>
-              <NxTable.Cell>A container for buttons inside list items. Use this when you want to have
-                a button/buttons on the far right.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>NxList.Empty</NxCode></NxTable.Cell>
-              <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
-              <NxTable.Cell>Used when there are no list items returned. In this case it's expected that there
-                would only be a single list item which contains the empty element.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>NxList.Error</NxCode></NxTable.Cell>
-              <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
               <NxTable.Cell>
-                This is added to a list item when the list is in an error state. In this case it's expected that there
-                would only be a single list item which contains the error element.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>NxList.Loading</NxCode></NxTable.Cell>
-              <NxTable.Cell>Within <NxCode>NxList</NxCode></NxTable.Cell>
-              <NxTable.Cell>Used when list items are being loaded. In this case, it's expected that there
-                would only be a single list item which contains the loading element.
+                A container for buttons inside list items. Use this when you want to have
+                a button/buttons on the far right.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -270,9 +117,174 @@ const NxAlertPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
-      </section>
+      </NxTile.Subsection>
+
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxList</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          This is the parent list class. By default, <NxCode>NxList</NxCode> has no bullets.
+        </NxP>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>prop</NxTable.Cell>
+              <NxTable.Cell>type</NxTable.Cell>
+              <NxTable.Cell>required</NxTable.Cell>
+              <NxTable.Cell>details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>bulleted</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>Used to show a bulleted list.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>emptyMessage</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>
+                Used to show a message when the list is otherwise empty (i.e. when it has no externally specified
+                list items, is not loading, and is not in an error state.
+                If nothing is specified and the list is empty, a default message of "This list is empty." is displayed.
+                If the list is not empty, this prop may be specified, having no effect. In essence, the best practice
+                is to specify this prop on all lists which may be empty.
+                <NxInfoAlert>
+                  Note: In cases of lists with a title, although the list's title (recommended to use
+                  an <NxCode>NxH3</NxCode>) is a child of NxList, the list still displays the empty message. The empty
+                  message is displayed only if no children (besides <NxCode>NxH3</NxCode>) of NxList exist.
+                </NxInfoAlert>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>error</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>Used to show an error message instead of the list content.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>isLoading</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>Used to show a loading spinner instead of the list content.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>retryHandler</NxTable.Cell>
+              <NxTable.Cell>function</NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>
+                Used to provide the handler for the Retry button that appears when the error state is active.
+                Required when error is present.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxList.ButtonItem</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          This list element is clickable, responds to hover events, and has selected and disabled states.
+        </NxP>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>prop</NxTable.Cell>
+              <NxTable.Cell>type</NxTable.Cell>
+              <NxTable.Cell>required</NxTable.Cell>
+              <NxTable.Cell>details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>selected</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>Highlights the row to show that the list item is selected.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>disabled</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>Whether the list item should be rendered as disabled or not.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>{'<button>'}</NxCode> attributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button" external>
+                  HTML button attributes
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxList.ButtonItem</NxCode> supports any HTML attribute that's normally supported
+                by <NxCode>{'<button>'}</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxList.LinkItem</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          This list element behaves as a link, i.e. an <NxCode>{'<a>'}</NxCode> tag, and requires
+          a <NxCode>{'href'}</NxCode> prop. This element is also clickable, responds to hover events,
+          and has selected and disabled states.
+        </NxP>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>prop</NxTable.Cell>
+              <NxTable.Cell>type</NxTable.Cell>
+              <NxTable.Cell>required</NxTable.Cell>
+              <NxTable.Cell>details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>href</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>yes</NxTable.Cell>
+              <NxTable.Cell>Link to the URL provided.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>selected</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>Highlights the row to show that the list item is selected.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>disabled</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>Whether the list item should be rendered as disabled or not.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>{'<a>'}</NxCode> attributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" external>
+                  HTML anchor attributes
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxList.LinkItem</NxCode> supports any HTML attribute that's normally supported
+                by <NxCode>{'<a>'}</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
     <NxListsExamples />
   </>;
 
-export default NxAlertPage;
+export default NxListPage;

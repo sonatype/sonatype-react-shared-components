@@ -38,4 +38,4 @@ function NxListMultiLine() {
   );
 }
 
-export default NxListSimple;
+export default NxListMultiLine;
