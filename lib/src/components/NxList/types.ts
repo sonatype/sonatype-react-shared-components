@@ -4,20 +4,20 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, LiHTMLAttributes, WeakValidationMap,
+import { HTMLAttributes, LiHTMLAttributes, ValidationMap,
   ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
-export type NxListProps = HTMLAttributes<HTMLUListElement> & {
-  bulleted?: boolean;
-  children?: ReactNode;
-  emptyMessage?: ReactNode;
-  error?: string;
-  isLoading?: boolean;
-  retryHandler?: () => void;
-};
+export interface NxListProps extends HTMLAttributes<HTMLUListElement> {
+  bulleted?: boolean | null;
+  children?: ReactNode | null;
+  emptyMessage?: ReactNode | null;
+  error?: string | null;
+  isLoading?: boolean | null;
+  retryHandler?: (() => void) | null;
+}
 
-export const nxListPropTypes: WeakValidationMap<NxListProps> = {
+export const nxListPropTypes: ValidationMap<NxListProps> = {
   bulleted: PropTypes.bool,
   children: PropTypes.node,
   emptyMessage: PropTypes.node,
@@ -26,75 +26,76 @@ export const nxListPropTypes: WeakValidationMap<NxListProps> = {
   retryHandler: PropTypes.func
 };
 
-export type NxListItemProps = LiHTMLAttributes<HTMLLIElement> & {
-  selected?: boolean;
-};
+export interface NxListItemProps extends LiHTMLAttributes<HTMLLIElement> {
+  selected?: boolean | null;
+}
 
-export const nxListItemPropTypes: WeakValidationMap<NxListItemProps> = {
+export const nxListItemPropTypes: ValidationMap<NxListItemProps> = {
   selected: PropTypes.bool
 };
 
-export type NxListTextProps = {
-  children?: ReactNode,
-  truncate?: boolean
-};
+export interface NxListTextProps {
+  children?: ReactNode | null,
+  className?: string | null
+}
 
-export const nxListTextPropTypes: WeakValidationMap<NxListTextProps> = {
+export const nxListTextPropTypes: ValidationMap<NxListTextProps> = {
   children: PropTypes.node,
-  truncate: PropTypes.bool
+  className: PropTypes.string
 };
 
-export type NxListSubtextProps = NxListTextProps;
+export interface NxListSubtextProps {
+  children?: ReactNode | null,
+  className?: string | null
+}
 
-export const nxListSubtextPropTypes: WeakValidationMap<NxListSubtextProps> = {
+export const nxListSubtextPropTypes: ValidationMap<NxListSubtextProps> = {
   children: PropTypes.node,
-  truncate: PropTypes.bool
+  className: PropTypes.string
 };
 
-export type NxListActionProps = {
-  children?: ReactNode;
-};
+export interface NxListActionProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode | null;
+}
 
-export const nxListActionPropTypes: WeakValidationMap<NxListActionProps> = {
+export const nxListActionPropTypes: ValidationMap<NxListActionProps> = {
   children: PropTypes.node
 };
 
-export type NxListButtonItemProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  children?: ReactNode,
-  disabled?: boolean,
-  selected?: boolean
+export interface NxListButtonItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children?: ReactNode | null,
+  selected?: boolean | null
+}
+
+export const nxListButtonItemPropTypes: ValidationMap<NxListButtonItemProps> = {
+  children: PropTypes.node.isRequired,
+  selected: PropTypes.bool
 };
 
-export const nxListButtonItemPropTypes: WeakValidationMap<NxListButtonItemProps> = {
+export interface NxListLinkItemProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  children?: ReactNode | null,
+  disabled?: boolean | null,
+  selected?: boolean | null
+}
+
+export const nxListLinkItemPropTypes: ValidationMap<NxListLinkItemProps> = {
   children: PropTypes.node.isRequired,
   disabled: PropTypes.bool,
   selected: PropTypes.bool
 };
 
-export type NxListLinkItemProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
-  children?: ReactNode,
-  disabled?: boolean,
-  href: string,
-  selected?: boolean
-};
+export interface NxListDescriptionTermProps {
+  children?: ReactNode | null
+}
 
-export const nxListLinkItemPropTypes: WeakValidationMap<NxListLinkItemProps> = {
-  children: PropTypes.node.isRequired,
-  disabled: PropTypes.bool,
-  href: PropTypes.string.isRequired,
-  selected: PropTypes.bool
-};
-
-export type NxListDescriptionTermProps = {
-  children?: ReactNode
-};
-
-export const nxListDescriptionTermPropTypes: WeakValidationMap<NxListDescriptionTermProps> = {
+export const nxListDescriptionTermPropTypes: ValidationMap<NxListDescriptionTermProps> = {
   children: PropTypes.node
 };
 
-export type NxListDescriptionProps = NxListDescriptionTermProps;
+export interface NxListDescriptionProps {
+  children?: ReactNode | null
+}
 
-export const nxListDescriptionPropTypes: WeakValidationMap<NxListDescriptionProps> = {
+export const nxListDescriptionPropTypes: ValidationMap<NxListDescriptionProps> = {
   children: PropTypes.node
 };
