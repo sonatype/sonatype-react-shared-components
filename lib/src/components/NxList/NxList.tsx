@@ -34,23 +34,34 @@ const NxList = (props: NxListProps) => {
     if (ulRef.current) {
       const listItems = ulRef.current.children;
 
-      // NxH3 is treated as a 'non-child' as we still would want to show a title for an empty list.
-      if (!listItems.length
-        || (listItems.length === 1 && listItems.item(0) !== emptyListRef.current)
-        || (listItems.length === 2 && (listItems.item(0) !== emptyListRef.current
-            && listItems.item(1) === emptyListRef.current)
-        )
-      ) {
+      //If there are no children, simply set isEmpty to true and return.
+      if (listItems.length === 0) {
         setIsEmpty(true);
+        return;
+      }
+
+      //NxH3 is treated as a 'non-child' as we still would want to show a title for an empty list.
+      if (!title) {
+        setIsEmpty(!listItems.length || (listItems.length === 1 && listItems.item(0) === emptyListRef.current));
       }
       else {
-        setIsEmpty(false);
+        setIsEmpty((listItems.length === 1 && listItems.item(0)?.tagName === 'H3')
+          || (listItems.length === 2 && (listItems.item(0)?.tagName === 'H3'
+              && listItems.item(1) === emptyListRef.current))
+        );
       }
     }
   }, []);
 
   useEffect(updateIsEmpty, []);
+  // eslint-disable-next-line no-console
   useMutationObserver(ulRef, updateIsEmpty, mutationObserverConfig);
+
+  if (isEmpty && !isLoading && !error) {
+    if (!emptyMessage) {
+      console.warn('emptyMessage is required when no list items are to be rendered');
+    }
+  }
 
   const nxListEmpty = (
     <li ref={emptyListRef} className="nx-list__item nx-list__item--empty">
