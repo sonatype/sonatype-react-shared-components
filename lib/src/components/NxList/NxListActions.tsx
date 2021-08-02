@@ -5,12 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import classnames from 'classnames';
 import {NxListActionProps, nxListActionPropTypes} from './types';
 
 const NxListAction = (props: NxListActionProps) => {
-  const { children } = props;
+  const { children, className, ...attrs } = props;
+  const actionClassNames = classnames(className, 'nx-list__actions');
   return (
-    <div className="nx-list__actions">
+    <div className={actionClassNames} {...attrs}>
       {children}
     </div>
   );
