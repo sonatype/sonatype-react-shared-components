@@ -9,9 +9,9 @@ import classnames from 'classnames';
 import {NxListTextProps, nxListTextPropTypes} from './types';
 
 const NxListText = (props: NxListTextProps) => {
-  const { children, truncate } = props;
-  const className = classnames('nx-list__text', {'nx-truncate-ellipsis': truncate});
-  return <span className={className}>{children}</span>;
+  const { children, className } = props;
+  const classes = classnames('nx-list__text', className);
+  return <span className={classes}>{children}</span>;
 };
 
 NxListText.propTypes = nxListTextPropTypes;

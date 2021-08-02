@@ -9,9 +9,9 @@ import React from 'react';
 import {NxListSubtextProps, nxListSubtextPropTypes} from './types';
 
 const NxListSubtext = (props: NxListSubtextProps) => {
-  const { children, truncate } = props;
-  const className = classnames('nx-list__subtext', {'nx-truncate-ellipsis': truncate});
-  return <span className={className}>{children}</span>;
+  const { children, className } = props;
+  const classes = classnames('nx-list__subtext', className);
+  return <span className={classes}>{children}</span>;
 };
 
 NxListSubtext.propTypes = nxListSubtextPropTypes;
