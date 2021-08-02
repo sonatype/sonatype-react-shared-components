@@ -16,9 +16,9 @@ function NxListMultiLine() {
         </NxList.Text>
       </NxList.Item>
       <NxList.Item>
-        <NxList.Text truncate>Text truncation - as you can see, this is a pretty long text, but is elegantly
-          truncated so that the ellipses appear. If you are wondering what the ellipses mean, they are the
-          tiny dots that are displayed at the end.
+        <NxList.Text className="nx-truncate-ellipsis">Text truncation - as you can see, this is a pretty long text,
+          but is elegantly truncated so that the ellipses appear. If you are wondering what the ellipses mean, they
+          are the tiny dots that are displayed at the end.
         </NxList.Text>
       </NxList.Item>
       <NxList.Item>
@@ -29,9 +29,9 @@ function NxListMultiLine() {
       </NxList.Item>
       <NxList.Item>
         <NxList.Text>Subtext truncation</NxList.Text>
-        <NxList.Subtext truncate>Truncation cause the text to truncate at the right edge of the list item.
-          The ellipses are elegantly placed to display the truncation as well. For more information on how this works,
-          please contact the RSC team.
+        <NxList.Subtext className="nx-truncate-ellipsis">Truncation cause the text to truncate at the right edge of
+          the list item. The ellipses are elegantly placed to display the truncation as well. For more information
+          on how this works, please contact the RSC team.
         </NxList.Subtext>
       </NxList.Item>
     </NxList>

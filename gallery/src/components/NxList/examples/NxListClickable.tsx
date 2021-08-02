@@ -14,8 +14,8 @@ function NxListClickable() {
         <NxList.Text>Action 1</NxList.Text>
       </NxList.ButtonItem>
       <NxList.ButtonItem>
-        <NxList.Text truncate>This list item should be truncated at the right end edge. youtube weathered
-          network network systemic systema claymore mine voodoo
+        <NxList.Text className="nx-truncate-ellipsis">This list item should be truncated at the right end edge.
+          youtube weathered network network systemic systema claymore mine voodoo
         </NxList.Text>
       </NxList.ButtonItem>
       <NxList.ButtonItem>
