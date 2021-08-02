@@ -4,35 +4,63 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { shallow } from 'enzyme';
-import React from 'react';
-import { NxH3, NxLoadingSpinner } from '../../..';
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import React, { ReactElement } from 'react';
+import { NxH3, NxLoadError, NxLoadingSpinner } from '../../..';
 import NxList from '../NxList';
 import { NxListProps } from '../types';
+import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import { act } from 'react-dom/test-utils';
+import { mount, ReactWrapper } from 'enzyme';
 
 describe('NxList', function() {
+
+  let mountContainers: HTMLElement[] = [];
+
+  function getMountContainer() {
+    const newContainer = document.createElement('div');
+    mountContainers.push(newContainer);
+    document.body.append(newContainer);
+
+    return newContainer;
+  }
+
+  // create a mounted wrapper that is attached to the document, and deal with the timing complexities
+  // triggered by NxTableBody's MutationObserver usage
+  async function mountAttached(jsx: ReactElement) {
+    let retval: ReactWrapper;
+    await act(async () => {
+      retval = mount(jsx, { attachTo: getMountContainer() });
+    });
+    retval!.update();
+
+    return retval!;
+  }
+
+  afterEach(function() {
+    mountContainers.forEach(container => document.body.removeChild(container));
+    mountContainers = [];
+  });
+
   const minimalProps: NxListProps = {};
-  const getNxList = enzymeUtils.getShallowComponent<NxListProps>(NxList, minimalProps);
+  const getShallow = getShallowComponent(NxList, minimalProps);
+  // const getMounted = getMountedComponent(NxList, minimalProps);
 
   it('renders a list', function() {
-    const nxList = getNxList();
-    expect(nxList.find('ul')).toMatchSelector('.nx-list');
+    const nxList = getShallow();
+    expect(nxList).toMatchSelector('.nx-list');
   });
 
   it('renders the classNames given to it', function() {
     const extendedProps: Partial<NxListProps> = {
       className: 'test-classname ufo'
     };
-    const nxList = getNxList(extendedProps);
-    expect(nxList.find('ul')).toMatchSelector('.nx-list.test-classname.ufo');
+    const nxList = getShallow(extendedProps);
+    expect(nxList).toMatchSelector('.nx-list.test-classname.ufo');
   });
 
   it('passes props to the parent component and renders bulleted list', function() {
-    const contentEl = shallow(
-      <NxList bulleted></NxList>
-    );
-    expect(contentEl.find('ul')).toHaveClassName('nx-list--bulleted');
+    const contentEl = getShallow({bulleted: true})
+    expect(contentEl).toHaveClassName('nx-list--bulleted');
   });
 
   it('renders the children in an .nx-list__item', function() {
@@ -47,7 +75,7 @@ describe('NxList', function() {
       </NxList.Item>
     ];
 
-    const contentEl = getNxList({children}).find('ul');
+    const contentEl = getShallow({children});
     expect(contentEl).toExist();
     expect(contentEl).toContainMatchingElements(2, NxList.Item);
     contentEl.find('li').forEach((e) => {
@@ -61,130 +89,146 @@ describe('NxList', function() {
       <NxH3 key="1">{title}</NxH3>
     ];
 
-    const contentEl = getNxList({children}).find('ul');
+    const contentEl = getShallow({children});
     expect(contentEl.find(NxH3)).toExist();
     expect(contentEl.find(NxH3).shallow()).toHaveHTML(`<h3 class="nx-h3">${title}</h3>`);
   });
 
-  it('renders a clickable list whose list item element has prop disabled and is disabled', function() {
-    const children = [
-      <NxList.ButtonItem key="1" disabled>
-        <NxList.Text>Item 1</NxList.Text>
-      </NxList.ButtonItem>
-    ];
+  it('shows the emptyMessage when there are no children', async function() {
+    const component = await mountAttached(
+      <NxList emptyMessage="Empty message">
+      </NxList>
+    );
 
-    const contentEl = getNxList({children}).find('ul');
-    expect(contentEl.find(NxList.ButtonItem)).toExist();
-    expect(contentEl).toContainMatchingElements(1, NxList.ButtonItem);
-    expect(contentEl).toContainMatchingElements(1, NxList.Text);
-    expect(contentEl.find(NxList.ButtonItem)).toHaveProp('disabled');
-    expect(contentEl.find(NxList.ButtonItem)).toBeDisabled();
+    expect(component.find('span')).toHaveText('Empty message');
   });
 
-  it('renders a clickable list whose list item element has prop selected and is selected', function() {
-    const children = [
-      <NxList.ButtonItem key="1" selected>
-        <NxList.Text>Item 1</NxList.Text>
-      </NxList.ButtonItem>
-    ];
+  it('shows the emptyMessage when the children are removed after the existing', async function() {
+    const component = await mountAttached(
+      <NxList emptyMessage="Empty message">
+        <NxList.Item>
+          <NxList.Text>Test 1</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Test 2</NxList.Text>
+        </NxList.Item>
+      </NxList>
+    );
 
-    const contentEl = getNxList({children}).find('ul');
-    expect(contentEl.find(NxList.ButtonItem)).toExist();
-    expect(contentEl).toContainMatchingElements(1, NxList.ButtonItem);
-    expect(contentEl).toContainMatchingElements(1, NxList.Text);
-    expect(contentEl.find(NxList.ButtonItem)).toHaveProp('selected');
-    expect(contentEl.find(NxList.ButtonItem).shallow().setProps({selected: true}).find('button'))
-    .toHaveClassName('selected');
+    await act(async () => {
+      component.setProps({ children: [] });
+    });
+    component.update();
+
+    expect(component.find('span')).toHaveText('Empty message');
   });
 
-  it('renders a clickable link whose list item element has prop disabled and is disabled', function() {
-    const children = [
-      <NxList.LinkItem key="1" href="www.sonatype.com" disabled>
-        <NxList.Text>Item 1</NxList.Text>
-      </NxList.LinkItem>
-    ];
+  it('shows the emptyMessage when there are no children, no error, and not loading', async function() {
 
-    const contentEl = getNxList({children}).find('ul');
-    expect(contentEl.find(NxList.LinkItem)).toExist();
-    expect(contentEl).toContainMatchingElements(1, NxList.LinkItem);
-    expect(contentEl).toContainMatchingElements(1, NxList.Text);
-    expect(contentEl.find(NxList.LinkItem)).toHaveProp('href');
-    expect(contentEl.find(NxList.LinkItem)).toHaveProp('disabled');
-    expect(contentEl.find(NxList.LinkItem)).toBeDisabled();
+    const trulyEmptyComponent = await mountAttached(<NxList emptyMessage="Empty message"></NxList>),
+        emptyListComponent = await mountAttached(<NxList emptyMessage="Empty message">{[]}</NxList>);
+
+    // the enzyme wrapper contains the <NxTableBody> as its top element, the native el is one level down
+    expect(trulyEmptyComponent.children()).toMatchSelector('ul');
+    expect(trulyEmptyComponent).toContainExactlyOneMatchingElement('li.nx-list__item');
+    expect(trulyEmptyComponent.find('span')).toHaveText('Empty message');
+
+    expect(emptyListComponent.children()).toMatchSelector('ul');
+    expect(emptyListComponent).toContainExactlyOneMatchingElement('li.nx-list__item');
+    expect(emptyListComponent.find('span')).toHaveText('Empty message');
   });
 
-  it('renders a clickable link whose list item element has prop selected and is selected', function() {
-    const children = [
-      <NxList.LinkItem key="1" href="www.sonatype.com" selected>
-        <NxList.Text>Item 1</NxList.Text>
-      </NxList.LinkItem>
-    ];
+  it('does not show the emptyMessage when there are children', async function() {
+    const component = await mountAttached(
+      <NxList emptyMessage="Empty message">
+        <NxList.Item>
+          <NxList.Text>Foo</NxList.Text>
+        </NxList.Item>
+      </NxList>
+    );
 
-    const contentEl = getNxList({children}).find('ul');
-    expect(contentEl.find(NxList.LinkItem)).toExist();
-    expect(contentEl).toContainMatchingElements(1, NxList.LinkItem);
-    expect(contentEl).toContainMatchingElements(1, NxList.Text);
-    expect(contentEl.find(NxList.LinkItem)).toHaveProp('href');
-    expect(contentEl.find(NxList.LinkItem)).toHaveProp('selected');
-    expect(contentEl.find(NxList.LinkItem).shallow().setProps({selected: true, href: 'www.sonatype.com'})
-        .find('a')).toHaveClassName('selected');
+    expect(component).not.toHaveText('Empty message');
   });
 
-  it('renders an empty list', function() {
-    const children = [
-      <NxList.Empty key="1" />
-    ];
+  it('does not show the emptyMessage when isLoading', async function() {
+    const component = await mountAttached(<NxList emptyMessage="Empty message" isLoading />);
 
-    const contentEl = getNxList({children}).find('ul');
-    expect(contentEl.find(NxList.Empty)).toExist();
-    expect(contentEl).toContainExactlyOneMatchingElement(NxList.Empty);
-    expect(contentEl.find(NxList.Empty).shallow()).toMatchSelector('li.nx-list__item');
-    expect(contentEl.find(NxList.Empty).shallow()).toHaveClassName('nx-list__item nx-list__item--empty');
-    expect(contentEl.find(NxList.Empty).shallow().find('span')).toMatchSelector('span.nx-list__text');
-    expect(contentEl.find(NxList.Empty).shallow().find('span')).toHaveText('This list is empty.');
+    expect(component).not.toHaveText('Empty message');
   });
 
-  it('renders a list with an error message', function() {
-    const errorMessage = 'Error';
-    const onClick = () => alert('hi');
+  it('does not show the emptyMessage when in error', async function() {
+    const component = await mountAttached(
+      <NxList emptyMessage="Empty message" error="Errr" retryHandler={() => {}}>
+      </NxList>
+    );
 
-    const children = [
-      <NxList.Error key="1" onClick={onClick} errorMessage={errorMessage}/>
-    ];
-
-    const contentEl = getNxList({children}).find('ul');
-    expect(contentEl.find(NxList.Error)).toExist();
-    expect(contentEl).toContainExactlyOneMatchingElement(NxList.Error);
-    expect(contentEl.find(NxList.Error)).toHaveProp('onClick', onClick);
-    expect(contentEl.find(NxList.Error)).toHaveProp('errorMessage', errorMessage);
-    expect(contentEl.find(NxList.Error).shallow()).toMatchSelector('li.nx-list__item');
-    expect(contentEl.find(NxList.Error).shallow()).toHaveClassName('nx-list__item nx-list__item--error');
+    expect(component).not.toHaveText('Empty message');
   });
 
-  it('renders a list with a loading indicator', function() {
-    const children = [
-      <NxList.Loading key="1"/>
-    ];
+  it('removes the emptyMessage when children are added', async function() {
+    const component = await mountAttached(
+      <NxList emptyMessage="Empty message"></NxList>
+    );
 
-    const contentEl = getNxList({children}).find('ul');
-    expect(contentEl.find(NxList.Loading)).toExist();
-    expect(contentEl).toContainExactlyOneMatchingElement(NxList.Loading);
-    expect(contentEl.find(NxList.Loading).shallow()).toMatchSelector('li.nx-list__item');
-    expect(contentEl.find(NxList.Loading).shallow().find('li')).toContainReact(<NxLoadingSpinner />);
+    await act(async () => {
+      component.setProps({
+        children: (
+          <>
+            <NxList.Item>
+              <NxList.Text>Foo</NxList.Text>
+            </NxList.Item>
+            <NxList.Item>
+              <NxList.Text>Bar</NxList.Text>
+            </NxList.Item>
+          </>
+        )
+      });
+    });
+    component.update();
+
+    expect(component.find('li').length).toBe(2);
+    expect(component).not.toIncludeText('Empty message');
   });
 
-  it('renders a description list', function() {
-    const children = [
-      <NxList.Item key="1">
-        <NxList.DescriptionTerm>Description Term 1</NxList.DescriptionTerm>
-        <NxList.Description>Description 1</NxList.Description>
-      </NxList.Item>
-    ];
+  it('renders an empty list', async function() {
+    const component = await mountAttached(
+      <NxList emptyMessage="Empty message"></NxList>
+    );
 
-    const contentEl = getNxList({children}).find('ul');
-    expect(contentEl).toContainMatchingElements(1, NxList.DescriptionTerm);
-    expect(contentEl).toContainMatchingElements(1, NxList.Description);
-    expect(contentEl.find(NxList.DescriptionTerm).shallow()).toMatchSelector('dt.nx-list__term');
-    expect(contentEl.find(NxList.Description).shallow()).toMatchSelector('dd.nx-list__description');
+    expect(component.find('li').length).toBe(1);
+    expect(component).toIncludeText('Empty message');
+  });
+
+  it('shows the loading spinner when isLoading is set', function() {
+    const component = getShallow({isLoading: true});
+
+    expect(component.children()).toMatchSelector('li');
+    expect(component).toContainExactlyOneMatchingElement('li.nx-list__item');
+    expect(component.find('li').children()).toMatchSelector(NxLoadingSpinner);
+  });
+
+  it('shows the error when error is set', async function() {
+    const retryHandler = jest.fn(),
+        component = getShallow({error: 'Error message', retryHandler: retryHandler});
+
+    expect(component.children()).toMatchSelector('li');
+    expect(component).toContainExactlyOneMatchingElement('li.nx-list__item');
+    expect(component.find('li').children()).toMatchSelector(NxLoadError);
+    expect(component.find(NxLoadError)).toHaveProp('error', 'Error message');
+    expect(component.find(NxLoadError)).toHaveProp('retryHandler', retryHandler);
+  });
+
+  it('does not show the emptyMessage when isLoading', async function() {
+    const component = await mountAttached(<NxList emptyMessage="Empty message" isLoading />);
+    expect(component).not.toHaveText('Empty message');
+  });
+
+  it('does not show the emptyMessage when in error', async function() {
+    const component = await mountAttached(
+      <NxList emptyMessage="Empty message" error="Errr" retryHandler={() => {}}>
+      </NxList>
+    );
+
+    expect(component).not.toHaveText('Empty message');
   });
 });
