@@ -13,7 +13,7 @@ import { includesDisabledClass } from '../../util/classUtil';
 
 const NxListLinkItem = forwardRef<HTMLAnchorElement, NxListLinkItemProps>(
     function nxListLinkItem({ children, className, disabled, href, selected, ...attrs}, ref) {
-      const aClassNames = classnames('nx-list__link', className, {'selected': selected}, {'disabled': disabled});
+      const aClassNames = classnames('nx-list__link', className, {selected, disabled});
       return (
         <li className='nx-list__item nx-list__item--clickable'>
           <a aria-disabled={includesDisabledClass(aClassNames)}

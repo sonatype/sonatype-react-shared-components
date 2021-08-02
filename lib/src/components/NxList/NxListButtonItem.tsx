@@ -13,7 +13,7 @@ import { includesDisabledClass } from '../../util/classUtil';
 
 const NxListButtonItem = forwardRef<HTMLButtonElement, NxListButtonItemProps>(
     function nxListButtonItem({ children, className, disabled, selected, ...attrs}, ref) {
-      const buttonClassNames = classnames('nx-list__btn', className, {'selected': selected}, {'disabled': disabled});
+      const buttonClassNames = classnames('nx-list__btn', className, { selected, disabled });
       return (
         <li className='nx-list__item nx-list__item--clickable'>
           <button aria-disabled={includesDisabledClass(buttonClassNames)}
