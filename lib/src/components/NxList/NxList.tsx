@@ -4,9 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
-import { NxListProps, nxListPropTypes } from './types';
 import NxListText from './NxListText';
 import NxListSubtext from './NxListSubtext';
 import NxListActions from './NxListActions';
@@ -17,17 +16,18 @@ import NxListDescriptionTerm from './NxListDescriptionTerm';
 import NxListDescription from './NxListDescription';
 import { NxH3 } from '../SimpleComponents';
 import { splitOutFirst } from '../../util/childUtil';
-import { NxLoadError, NxLoadingSpinner } from '../..';
+import { NxListProps, NxLoadError, NxLoadingSpinner } from '../..';
 import useMutationObserver from '@rooks/use-mutation-observer';
+import { NxListComponent, nxListPropTypes } from './types';
 
 const mutationObserverConfig = { subtree: false, childList: true, attributes: false, characterData: false };
 
-const NxList = (props: NxListProps) => {
+const NxList = forwardRef<HTMLUListElement, NxListProps>((props: NxListProps, ref) => {
   const {className, children, bulleted, emptyMessage, isLoading = false, error, retryHandler, ...attrs } = props;
   const classNames = classnames(className, 'nx-list', {'nx-list--bulleted': bulleted});
   const [title, otherChildren] = splitOutFirst(NxH3, children);
   const [isEmpty, setIsEmpty] = useState(false);
-  const ulRef = useRef<HTMLUListElement>(null);
+  const ulRef = useRef<HTMLUListElement | null>(null);
   const emptyListRef = useRef<HTMLLIElement>(null);
 
   const updateIsEmpty = useCallback(function updateIsEmpty() {
@@ -82,8 +82,21 @@ const NxList = (props: NxListProps) => {
     </li>
   );
 
+  // Using ref.current in forwardRef see:
+  // https://stackoverflow.com/questions/62238716/using-ref-current-in-react-forwardref
   return (
-    <ul ref={ulRef} className={classNames} {...attrs}>
+    <ul ref={(node) => {
+      ulRef.current = node;
+      if (typeof ref === 'function') {
+        ref(node);
+      }
+      else if (ref) {
+        (ref as MutableRefObject<HTMLUListElement | null>).current = node;
+      }
+    }}
+        className={classNames}
+        {...attrs}
+    >
       {title}
       {isLoading && nxListLoading}
       {!!error && !isLoading && nxListError}
@@ -91,7 +104,7 @@ const NxList = (props: NxListProps) => {
       {!(isLoading || error) && isEmpty && nxListEmpty}
     </ul>
   );
-};
+}) as NxListComponent;
 
 NxList.propTypes = nxListPropTypes;
 NxList.Item = NxListItem;

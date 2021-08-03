@@ -4,9 +4,21 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, LiHTMLAttributes, ValidationMap,
+import { ForwardRefExoticComponent, RefAttributes, HTMLAttributes, LiHTMLAttributes, ValidationMap,
   ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
+
+export interface NxListComponent
+  extends ForwardRefExoticComponent<NxListProps & RefAttributes<HTMLUListElement>> {
+  Item: ForwardRefExoticComponent<NxListItemProps & RefAttributes<HTMLLIElement>>;
+  Text: ForwardRefExoticComponent<NxListTextProps & RefAttributes<HTMLSpanElement>>;
+  Subtext: ForwardRefExoticComponent<NxListSubtextProps & RefAttributes<HTMLSpanElement>>;
+  Actions: ForwardRefExoticComponent<NxListActionProps & RefAttributes<HTMLDivElement>>;
+  ButtonItem: ForwardRefExoticComponent<NxListButtonItemProps & RefAttributes<HTMLButtonElement>>;
+  LinkItem: ForwardRefExoticComponent<NxListLinkItemProps & RefAttributes<HTMLAnchorElement>>;
+  DescriptionTerm: ForwardRefExoticComponent<NxListDescriptionTermProps & RefAttributes<HTMLElement>>;
+  Description: ForwardRefExoticComponent<NxListDescriptionProps & RefAttributes<HTMLElement>>;
+}
 
 export interface NxListProps extends HTMLAttributes<HTMLUListElement> {
   bulleted?: boolean | null;
