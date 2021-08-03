@@ -6,33 +6,57 @@
  */
 import React from 'react';
 import {GalleryTile} from '../gallery-components/GalleryTiles';
-import { NxP, NxCode, NxH3, NxList } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxH3, NxList, NxTextLink } from '@sonatype/react-shared-components';
 
 const Accessibility = () =>
   <GalleryTile title="Accessibility">
     <NxP>
-      Starting with semantic HTML, correct use of <NxCode>aria</NxCode> tags, and testing in VoiceOver and ChromeVox
-      accessibility is built into the Shared Components.
+      Accessibility (A11y) means ensuring that our applications are usable by everybody. We do this in a variety of
+      different ways. We make sure that our designs are clear and that they follow accessibility guidelines for
+      contrast and readability. Our components are written with semantic HTML, correct use of <NxCode>aria</NxCode>
+      tags, and testing in VoiceOver and ChromeVox accessibility is built into the Shared Components. However there is
+      still work that needs to be done to make sure that the application as a whole is accessible.
     </NxP>
 
     <NxH3 className="nx-tile__section-header">Making your pages accessible</NxH3>
     <NxP>
-      Ensuring you use the components in an accessible manner is important, here are a fe tips to help you make your
+      Ensuring you use the components in an accessible manner is important, here are a few tips to help you make your
       pages accessible.
     </NxP>
 
-    <NxList>
+    <NxList className="nx-list--bulleted">
       <NxList.Item>Tab order is important. Make sure that the tab order of the page is logical.</NxList.Item>
+      <NxList.Item>Related to the above, does the keyboard focus order follow the visual layout?</NxList.Item>
+      <NxList.Item>Unique title element for each page or view?</NxList.Item>
+      <NxList.Item>Do all images and visual graphs have alt text?</NxList.Item>
       <NxList.Item>
         Make sure that you take advantage of the props and attributes that have been added to the components to improve
-        their accessibility.
+        their accessibility. Many component documentation pages have an Accessibility section with extra information.
       </NxList.Item>
       <NxList.Item>
-        Semantic HTML is a critical aspect of accessibility. Headings should always use the correct
+        <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics">
+          Semantic HTML
+        </NxTextLink>
+        {' '}is a critical aspect of accessibility. Headings should always use the correct
         {' '}<NxCode>&lt;h#&gt;</NxCode> tag, paragraphs should be wrapped in <NxCode>&lt;p&gt;</NxCode> tags, etc.
       </NxList.Item>
-      <NxList.Item></NxList.Item>
-      <NxList.Item></NxList.Item>
+      <NxList.Item>
+        All form elements should have a label.
+      </NxList.Item>
+      <NxList.Item>Have you checked your page in ChromeVox or VoiceOver?</NxList.Item>
+    </NxList>
+
+    <NxH3 className="nx-tile__section-header">
+      Accessibility Resources
+    </NxH3>
+
+    <NxList className="nx-list--bulleted">
+      <NxList.Item>
+        <NxTextLink>https://docs.sonatype.com/display/ENG/Accessibility+Best+Practices</NxTextLink>
+      </NxList.Item>
+      <NxList.Item>
+        <NxTextLink>https://developer.mozilla.org/en-US/docs/Web/Accessibility</NxTextLink>
+      </NxList.Item>
     </NxList>
 
     <NxH3 className="nx-tile__section-header">
