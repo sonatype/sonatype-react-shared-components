@@ -25,7 +25,7 @@ describe('NxList', function() {
   }
 
   // create a mounted wrapper that is attached to the document, and deal with the timing complexities
-  // triggered by NxTableBody's MutationObserver usage
+  // triggered by NxList's MutationObserver usage
   async function mountAttached(jsx: ReactElement) {
     let retval: ReactWrapper;
     await act(async () => {
@@ -174,10 +174,10 @@ describe('NxList', function() {
       component.setProps({
         children: (
           <>
-            <NxList.Item>
+            <NxList.Item key="1">
               <NxList.Text>Foo</NxList.Text>
             </NxList.Item>
-            <NxList.Item>
+            <NxList.Item key="2">
               <NxList.Text>Bar</NxList.Text>
             </NxList.Item>
           </>
