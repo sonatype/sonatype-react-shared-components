@@ -34,24 +34,20 @@ export const nxListItemPropTypes: ValidationMap<NxListItemProps> = {
   selected: PropTypes.bool
 };
 
-export interface NxListTextProps {
-  children?: ReactNode | null,
-  className?: string | null
+export interface NxListTextProps extends HTMLAttributes<HTMLSpanElement> {
+  children?: ReactNode | null;
 }
 
 export const nxListTextPropTypes: ValidationMap<NxListTextProps> = {
-  children: PropTypes.node,
-  className: PropTypes.string
+  children: PropTypes.node
 };
 
-export interface NxListSubtextProps {
-  children?: ReactNode | null,
-  className?: string | null
+export interface NxListSubtextProps extends HTMLAttributes<HTMLSpanElement> {
+  children?: ReactNode | null;
 }
 
 export const nxListSubtextPropTypes: ValidationMap<NxListSubtextProps> = {
-  children: PropTypes.node,
-  className: PropTypes.string
+  children: PropTypes.node
 };
 
 export interface NxListActionProps extends HTMLAttributes<HTMLDivElement> {
@@ -84,7 +80,7 @@ export const nxListLinkItemPropTypes: ValidationMap<NxListLinkItemProps> = {
   selected: PropTypes.bool
 };
 
-export interface NxListDescriptionTermProps {
+export interface NxListDescriptionTermProps extends HTMLAttributes<HTMLElement> {
   children?: ReactNode | null
 }
 
@@ -92,7 +88,7 @@ export const nxListDescriptionTermPropTypes: ValidationMap<NxListDescriptionTerm
   children: PropTypes.node
 };
 
-export interface NxListDescriptionProps {
+export interface NxListDescriptionProps extends HTMLAttributes<HTMLElement> {
   children?: ReactNode | null
 }
 

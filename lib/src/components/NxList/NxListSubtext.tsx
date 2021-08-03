@@ -4,15 +4,19 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React, { forwardRef } from 'react';
 import classnames from 'classnames';
-import React from 'react';
 import {NxListSubtextProps, nxListSubtextPropTypes} from './types';
 
-const NxListSubtext = (props: NxListSubtextProps) => {
-  const { children, className } = props;
+const NxListSubtext = forwardRef<HTMLSpanElement, NxListSubtextProps>((props: NxListSubtextProps, ref) => {
+  const { children, className, ...attrs } = props;
   const classes = classnames('nx-list__subtext', className);
-  return <span className={classes}>{children}</span>;
-};
+  return (
+    <span ref={ref} className={classes} {...attrs}>
+      {children}
+    </span>
+  );
+});
 
 NxListSubtext.propTypes = nxListSubtextPropTypes;
 

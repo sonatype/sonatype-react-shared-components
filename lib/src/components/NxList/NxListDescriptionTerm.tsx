@@ -4,13 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import classnames from 'classnames';
+import React, { forwardRef } from 'react';
 import {NxListDescriptionTermProps, nxListDescriptionTermPropTypes} from './types';
 
-const NxListDescriptionTerm = (props: NxListDescriptionTermProps) => {
-  const { children } = props;
-  return <dt className="nx-list__term">{children}</dt>;
-};
+const NxListDescriptionTerm = forwardRef<HTMLElement, NxListDescriptionTermProps>(
+    (props: NxListDescriptionTermProps, ref) => {
+      const { children, className, ...attrs} = props;
+      const dtClassName = classnames('nx-list__term', className);
+      return <dt ref={ref} className={dtClassName} {...attrs}>{children}</dt>;
+    });
 
 NxListDescriptionTerm.propTypes = nxListDescriptionTermPropTypes;
 

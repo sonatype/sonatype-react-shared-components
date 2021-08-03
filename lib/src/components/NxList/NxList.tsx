@@ -54,7 +54,6 @@ const NxList = (props: NxListProps) => {
   }, []);
 
   useEffect(updateIsEmpty, []);
-  // eslint-disable-next-line no-console
   useMutationObserver(ulRef, updateIsEmpty, mutationObserverConfig);
 
   if (isEmpty && !isLoading && !error) {
@@ -101,8 +100,6 @@ NxList.Subtext = NxListSubtext;
 NxList.Actions = NxListActions;
 NxList.ButtonItem = NxListButtonItem;
 NxList.LinkItem = NxListLinkItem;
-// NxList.Error = NxListError;
-// NxList.Loading = NxListLoading;
 NxList.DescriptionTerm = NxListDescriptionTerm;
 NxList.Description = NxListDescription;
 
