@@ -25,7 +25,7 @@ const NxBtnPage = () =>
       </p>
       <p className="nx-p">
         When working in React, it is recommended to use the <NxCode>NxButton</NxCode> component which provides a more
-        convenient way to use these styles. For the button bar, there is an <NxCode>NxBtnBar</NxCode> convenience
+        convenient way to use these styles. For the button bar, there is an <NxCode>NxButtonBar</NxCode> convenience
         component.
       </p>
       <NxTile.Subsection>
