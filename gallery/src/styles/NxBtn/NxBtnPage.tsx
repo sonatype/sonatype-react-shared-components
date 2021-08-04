@@ -81,7 +81,8 @@ const NxBtnPage = () =>
               <NxTable.Cell>
                 Buttons may be disabled either via attribute or via this class. The attribute should be preferred, but
                 the class may be used when mouse events are still desired on the button – buttons disabled via the
-                attribute do not fire mouse events.
+                attribute do not fire mouse events. When using this class, also use the <NxCode>aria-disabled</NxCode>
+                attribute for accessibility.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
