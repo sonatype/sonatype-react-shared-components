@@ -126,6 +126,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
       <NxFieldset className="nx-transfer-list__half" label={availableItemsLabel || 'Available Items'}>
         <div className="nx-transfer-list__control-box">
           <NxFilterInput className="nx-transfer-list__filter"
+                         placeholder="Filter"
                          value={availableItemsFilter}
                          onChange={onAvailableItemsFilterChange} />
           { showMoveAll &&
@@ -147,6 +148,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
       <NxFieldset className="nx-transfer-list__half" label={selectedItemsLabel || 'Transferred Items'}>
         <div className="nx-transfer-list__control-box">
           <NxFilterInput className="nx-transfer-list__filter"
+                         placeholder="Filter"
                          value={selectedItemsFilter}
                          onChange={onSelectedItemsFilterChange} />
           { showMoveAll &&
