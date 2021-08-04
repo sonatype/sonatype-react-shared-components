@@ -14,7 +14,7 @@ import NxButtonTertiaryExample from './NxButtonTertiaryExample';
 import NxButtonErrorExample from './NxButtonErrorExample';
 import NxButtonIconExample from './NxButtonIconExample';
 import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxCode, NxTextLink }
+import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxCode, NxTextLink, NxP }
   from '@sonatype/react-shared-components';
 
 const NxButtonDefaultCode = require('./NxButtonDefaultExample?raw'),
@@ -79,6 +79,11 @@ export default function NxButtonPage() {
             </NxTableRow>
           </NxTableBody>
         </NxTable>
+        <NxP>
+          <NxCode>NxButton</NxCode>s are often used within an <NxCode>NxBtnBar</NxCode> wrapper. See the
+          documentation of the <NxTextLink href="#/pages/nx-btn">raw <NxCode>nx-btn</NxCode> styles</NxTextLink> for
+          details.
+        </NxP>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Secondary (Default)"
