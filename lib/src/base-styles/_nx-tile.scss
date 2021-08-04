@@ -30,8 +30,9 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
     margin: var(--nx-spacing-8x) var(--nx-tile-padding) 0 var(--nx-tile-padding);
   }
 
-  // When a tile contains an NxForm that is in an error state, an nx-alert gets rendered as the tile's immediate child
-  > .nx-alert {
+  // When a tile contains an NxForm that is in an error or loading state, an nx-alert (error state) or
+  // nx-loading-spinner (loading state) are rendered as the tile's immediate child
+  > .nx-alert, > .nx-loading-spinner {
     margin-left: var(--nx-tile-padding);
     margin-right: var(--nx-tile-padding);
   }
