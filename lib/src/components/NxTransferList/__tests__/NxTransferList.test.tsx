@@ -82,8 +82,10 @@ describe('NxTransferList', function() {
 
     expect(availableFilter).toExist();
     expect(availableFilter).toHaveClassName('nx-transfer-list__filter');
+    expect(availableFilter).toHaveProp('placeholder', 'Filter');
     expect(selectedFilter).toExist();
     expect(selectedFilter).toHaveClassName('nx-transfer-list__filter');
+    expect(selectedFilter).toHaveProp('placeholder', 'Filter');
   });
 
   it('sets the value of the available filter from availableItemsFilter', function() {
