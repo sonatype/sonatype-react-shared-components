@@ -8,6 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxTilesExamples from './NxTilesExamples';
+import { NxCode } from '@sonatype/react-shared-components';
 
 const NxTilePage = () =>
   <>
@@ -47,19 +48,35 @@ const NxTilePage = () =>
             <td className="nx-cell">Used for tile titles, it has title and optional sub-title elements.</td>
           </tr>
           <tr className="nx-table-row">
+            <td className="nx-cell"><code className="nx-code">.nx-tile-header__headings</code></td>
+            <td className="nx-cell"><code className="nx-code">NxTile.Headings</code></td>
+            <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile-header</code></td>
+            <td className="nx-cell">
+              If there is a sub-title then the <NxCode>h2.nx-tile-header__title</NxCode> &amp;
+              {' '}<NxCode>h3.nx-tile-header__subtitle</NxCode> should both be wrapped in a containing
+              {' '}<code className="nx-code">&lt;hgroup&gt;</code> with this class. If there
+              is only an <code className="nx-code">.nx-tile-header__title</code> then this element and its class are
+              optional.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile-header__title</code></td>
             <td className="nx-cell"><code className="nx-code">NxTile.HeaderTitle</code></td>
             <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile-header</code></td>
             <td className="nx-cell">
               Used for the main title inside an <code className="nx-code">.nx-tile-header</code>.
+              In the event there's a <code className="nx-code">.nx-tile-header__subtitle</code> this should be
+              used inside a <code className="nx-code">.nx-tile-header__headings</code> (see above).
             </td>
           </tr>
           <tr className="nx-table-row">
             <td className="nx-cell"><code className="nx-code">.nx-tile-header__subtitle</code></td>
             <td className="nx-cell"><code className="nx-code">NxTile.HeaderSubtitle</code></td>
-            <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile-header</code></td>
+            <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile-header__headings</code></td>
             <td className="nx-cell">
-              Used for the subtitle inside an <code className="nx-code">.nx-tile-header</code>.
+              If there is sub-title text it should be wrapped in a containing
+              {' '}<code className="nx-code">&lt;H3&gt;</code> with this class. It should be used inside of
+              a <code className="nx-code">.nx-tile-header__headings</code> (see above).
             </td>
           </tr>
           <tr className="nx-table-row">
