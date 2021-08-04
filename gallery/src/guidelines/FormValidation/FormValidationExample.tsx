@@ -53,7 +53,7 @@ export default function FormValidationExample() {
 
   return (
     <form className="nx-form" onSubmit={onSubmit}>
-      <NxFormGroup label="Text input 1">
+      <NxFormGroup label="Text input 1" isRequired>
         <NxTextInput { ...textInput1State }
                      validatable={true}
                      onChange={setTextInput(setTextInput1State, nonEmptyValidator)}/>
@@ -61,7 +61,7 @@ export default function FormValidationExample() {
       <NxFormGroup label="Text input 2">
         <NxTextInput { ...textInput2State } onChange={setTextInput(setTextInput2State)}/>
       </NxFormGroup>
-      <NxFormGroup label="Text input 3">
+      <NxFormGroup label="Text input 3" isRequired>
         <NxTextInput { ...textInput3State }
                      validatable={true}
                      onChange={setTextInput(setTextInput3State, combinedValidator)}/>
