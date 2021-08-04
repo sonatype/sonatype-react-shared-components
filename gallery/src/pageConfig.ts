@@ -110,6 +110,8 @@ import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
 import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterPage';
 import NxFormSelectComponentPage from './components/NxFormSelect/NxFormSelectPage';
 import CssVariablesPage from './styles/CssVariables/CssVariablesPage';
+import NxPPage from './styles/NxP/NxPPage';
+import NxHPage from './styles/NxH/NxHPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -188,10 +190,12 @@ const pageConfig: PageConfig = {
     'nx-fieldset': NxFieldsetStylePage,
     'nx-form-group': NxFormGroupStylePage,
     'nx-form-select': NxFormSelectPage,
+    'nx-h*': NxHPage,
     'nx-global-header': NxGlobalHeaderPage,
     'nx-grid': NxGridPage,
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
+    'nx-p': NxPPage,
     'nx-page-title': NxPageTitlePage,
     'nx-pre': NxPrePage,
     'nx-read-only': NxReadOnlyPage,
