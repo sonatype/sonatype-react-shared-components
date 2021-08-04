@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { NxButton } from '@sonatype/react-shared-components';
+import { NxButton, NxButtonBar } from '@sonatype/react-shared-components';
 
 const NxButtonDefaultExample = () =>
   <>
@@ -14,12 +14,12 @@ const NxButtonDefaultExample = () =>
       Some preceding content.  nx-btn-bar ensures that the buttons are spaced appropriately from
       adjacent block elements such as this
     </div>
-    <div className="nx-btn-bar">
+    <NxButtonBar>
       <NxButton>Button</NxButton>
       <span>Some other inline content.</span>
       <NxButton className="disabled">Disabled by class</NxButton>
       <NxButton disabled>Disabled by attribute</NxButton>
-    </div>
+    </NxButtonBar>
   </>;
 
 export default NxButtonDefaultExample;
