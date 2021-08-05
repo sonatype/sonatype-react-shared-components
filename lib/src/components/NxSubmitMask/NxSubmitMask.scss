@@ -4,9 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/_nx-container-helpers';
-@import '../../scss-shared/_nx-text-helpers';
-@import '../../scss-shared/_nx-mask-helpers';
+@use '../../scss-shared/_nx-container-helpers';
+@use '../../scss-shared/_nx-text-helpers';
+@use '../../scss-shared/_nx-mask-helpers';
 
 .nx-submit-mask {
   @include background-mask(var(--nx-z-index-submit-mask));

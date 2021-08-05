@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-container-helpers';
 
 $nx-scrollable-default-height: 400px;
 
@@ -12,7 +12,7 @@ $nx-scrollable-default-height: 400px;
   #Basic links
 */
 .nx-text-link {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   color: var(--nx-color-link);
   cursor: pointer;
@@ -43,8 +43,8 @@ $nx-scrollable-default-height: 400px;
 }
 
 .nx-scrollable {
-  @include container-vertical;
-  @include vertically-scrollable($nx-scrollable-default-height);
+  @include nx-container-helpers.container-vertical;
+  @include nx-container-helpers.vertically-scrollable($nx-scrollable-default-height);
 }
 
 .nx-truncate-ellipsis {

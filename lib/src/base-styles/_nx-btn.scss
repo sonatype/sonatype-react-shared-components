@@ -4,6 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+
 %nx-btn--disabled {
   &.disabled, &[disabled] {
     &, &:hover, &:focus {
@@ -16,8 +19,8 @@
 }
 
 .nx-btn {
-  @include semi-bold();
-  @include container-horizontal;
+  @include nx-text-helpers.semi-bold();
+  @include nx-container-helpers.container-horizontal;
   @extend %nx-btn--disabled;
 
   background-color: var(--nx-swatch-white);

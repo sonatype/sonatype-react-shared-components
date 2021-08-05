@@ -4,7 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/nx-header-variables';
+@use '../scss-shared/nx-header-variables';
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-button-helpers';
 
 $main-header-background: var(--nx-swatch-white);
 $main-header-product-height: 52px;
@@ -21,16 +23,16 @@ $main-header-product-version-row-height: 1fr;
   background-color: $main-header-background;
   border-bottom: 1px solid var(--nx-swatch-grey-90);
   grid-area: old-header; // see nx-page's grid template
-  height: $nx-main-header-height;
+  height: nx-header-variables.$main-header-height;
 }
 
 .nx-page-header__inner {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   align-items: center;
   box-sizing: border-box;
   display: flex;
-  height: $nx-main-header-height;
+  height: nx-header-variables.$main-header-height;
   margin: 0 auto;
   padding: 0 var(--nx-spacing-6x);
   width: 100%;
@@ -38,7 +40,7 @@ $main-header-product-version-row-height: 1fr;
 }
 
 .nx-page-header__links {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
   margin: 0 var(--nx-spacing-16x);
 }
 
@@ -80,12 +82,12 @@ $main-header-product-version-row-height: 1fr;
 }
 
 .nx-page-header__extra-content {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   margin-left: auto;
 
   .nx-btn--icon-only {
-    @include nx-small-icon-btn;
+    @include nx-button-helpers.nx-small-icon-btn;
   }
 }
 
@@ -93,7 +95,7 @@ $main-header-product-version-row-height: 1fr;
   align-items: center;
   box-sizing: border-box;
   display: flex;
-  height: $nx-main-header-height - 6px; // aids vertical alignment of contents
+  height: nx-header-variables.$main-header-height - 6px; // aids vertical alignment of contents
   margin-bottom: 6px;
   text-decoration: none;
 }

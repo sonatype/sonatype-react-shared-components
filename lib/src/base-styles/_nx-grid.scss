@@ -4,6 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-flexbox-helpers';
+
 .nx-grid-row {
   display: flex;
   margin-top: var(--nx-spacing-6x);
@@ -11,7 +14,7 @@
 }
 
 .nx-grid-col {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   border-left: var(--nx-border-default);
   box-sizing: border-box;
@@ -33,7 +36,7 @@
 
 @each $percent in (25, 50, 75, 33, 67) {
   .nx-grid-col--#{$percent} {
-    @include nx-grid-col-width(#{$percent + '%'});
+    @include nx-flexbox-helpers.nx-grid-col-width(#{$percent + '%'});
   }
 }
 
@@ -46,17 +49,17 @@
 
 // Grid headers
 .nx-grid-header {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
   margin-bottom: var(--nx-spacing-4x);
 }
 
 .nx-grid-header__title {
   @extend .nx-truncate-ellipsis;
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-grid-col__section {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   margin-top: var(--nx-spacing-6x);
   margin-bottom: var(--nx-spacing-6x);

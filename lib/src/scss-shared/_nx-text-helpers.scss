@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import 'nx-container-helpers';
+@use 'nx-container-helpers';
 
 @mixin nx-font-family() {
   font-family: Open Sans, sans-serif;
@@ -42,7 +42,7 @@
   font-weight: 600;
 }
 
-@mixin nx-truncate-ellipsis {
+@mixin truncate-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -105,7 +105,7 @@
 }
 
 %nx-blockquote {
-  @include container-vertical();
+  @include nx-container-helpers.container-vertical();
   background-color: var(--nx-swatch-indigo-95);
   border: var(--nx-border-default);
   border-left-width: 8px;

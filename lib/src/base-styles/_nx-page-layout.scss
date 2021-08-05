@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/nx-header-variables';
+@use '../scss-shared/nx-header-variables';
+@use '../scss-shared/nx-container-helpers';
 
 /*
   #Layout
@@ -39,7 +40,7 @@
 }
 
 .nx-page-content {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   justify-self: center;
   box-sizing: border-box;
@@ -71,7 +72,7 @@
 }
 
 .nx-page-sidebar {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   background-color: var(--nx-color-site-background);
   box-sizing: border-box;
@@ -95,7 +96,7 @@
 }
 
 .nx-page-main {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   box-sizing: border-box;
   flex: auto;
@@ -129,7 +130,7 @@
   }
 
   .nx-system-notice, .nx-system-notice-container {
-    top: $nx-main-header-height;
+    top: nx-header-variables.$main-header-height;
   }
 
   .nx-page-content {

@@ -4,6 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-button-helpers';
+
 .nx-list {
   margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
   padding: 0;
@@ -20,7 +24,7 @@
 
 .nx-list__item {
   &, > .nx-list__link, & > .nx-list__btn {
-    @include container-horizontal;
+    @include nx-container-helpers.container-horizontal;
 
     --nx-padding-without-border: calc(var(--nx-spacing-4x) - 1px);
 
@@ -63,8 +67,8 @@
 }
 
 .nx-list__text {
-  @include semi-bold();
-  @include container-horizontal;
+  @include nx-text-helpers.semi-bold;
+  @include nx-container-helpers.container-horizontal;
 
   display: block;
   grid-area: list-text;
@@ -83,7 +87,7 @@
 }
 
 .nx-list__subtext {
-  @include regular();
+  @include nx-text-helpers.regular;
 
   display: block;
   grid-area: list-sub-text;
@@ -101,13 +105,13 @@
   text-align: center;
 
   .nx-list__text {
-    @include regular();
+    @include nx-text-helpers.regular;
     max-width: unset;
   }
 }
 
 .nx-list__item--error {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   display: list-item;
   padding-left: 0;
@@ -157,7 +161,7 @@
       }
 
       .nx-list__text {
-        @include regular();
+        @include nx-text-helpers.regular;
       }
 
       .nx-list__item {
@@ -210,7 +214,7 @@
     }
 
     &.nx-list__item--empty {
-      @include regular();
+      @include nx-text-helpers.regular;
 
       color: var(--nx-color-text);
     }
@@ -240,7 +244,7 @@
 }
 
 .nx-list__btn {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   text-align: left;
   width: 100%;
@@ -268,7 +272,7 @@
   }
 
   .nx-btn--icon-only {
-    @include nx-small-icon-btn;
+    @include nx-button-helpers.nx-small-icon-btn;
   }
 }
 
@@ -288,7 +292,7 @@
 }
 
 .nx-list__description {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   margin-left: var(--nx-spacing-6x);
   max-width: var(--nx-width-text-wrapping);

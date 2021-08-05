@@ -4,6 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+
 .nx-table {
   background-color: var(--nx-color-component-background);
   border-spacing: 0;
@@ -166,7 +169,7 @@
 }
 
 .nx-table-container__footer {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   background-color: var(--nx-color-component-background);
   border-top: var(--nx-border-default);
@@ -201,8 +204,8 @@
 }
 
 .nx-cell {
-  @include container-vertical;
-  @include container-horizontal;
+  @include nx-container-helpers.container-vertical;
+  @include nx-container-helpers.container-horizontal;
 
   min-height: $nx-table-cell-min-height;
   padding: $nx-table-cell-vertical-padding var(--nx-spacing-3x);
@@ -230,11 +233,11 @@
 }
 
 .nx-cell--label {
-  @include semi-bold();
+  @include nx-text-helpers.semi-bold;
 }
 
 .nx-cell--header {
-  @include bold;
+  @include nx-text-helpers.bold;
   background-color: var(--nx-swatch-indigo-80);
   border-top: none;
   box-sizing: border-box;
@@ -302,7 +305,7 @@
 }
 
 .nx-cell__sort-btn, .nx-cell__chevron-btn {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   width: calc(100% + 2 * var(--nx-spacing-4x));
   text-align: left;

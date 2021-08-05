@@ -4,8 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-text-helpers';
+
 .nx-counter {
-  @include semi-bold();
+  @include nx-text-helpers.semi-bold();
 
   background-color: var(--nx-swatch-white);
   border: 1px solid var(--nx-swatch-blue-10);
