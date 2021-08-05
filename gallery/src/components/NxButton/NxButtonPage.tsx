@@ -28,11 +28,11 @@ export default function NxButtonPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
-          <code className="nx-code">NxButton</code> is a react wrapper around
-          HTML <code className="nx-code">&lt;button&gt;</code> elements using
-          the <code className="nx-code">.nx-btn</code> CSS class.
-        </p>
+        <NxP>
+          <NxCode>NxButton</NxCode> is a react wrapper around
+          HTML <NxCode>&lt;button&gt;</NxCode> elements using
+          the <NxCode>.nx-btn</NxCode> CSS class.
+        </NxP>
         <NxTable>
           <NxTableHead>
             <NxTableRow>
@@ -90,7 +90,7 @@ export default function NxButtonPage() {
                           id="nx-button-default-example"
                           liveExample={NxButtonDefaultExample}
                           codeExamples={NxButtonDefaultCode}>
-        An example of an <code className="nx-code">NxButton</code> using the default styling, also known as the
+        An example of an <NxCode>NxButton</NxCode> using the default styling, also known as the
         "secondary" styling, along with some other inline content and some disabled buttons. Disabling by class will
         add aria-disabled=true to the button.
       </GalleryExampleTile>
@@ -113,7 +113,7 @@ export default function NxButtonPage() {
                           id="nx-button-error-example"
                           liveExample={NxButtonErrorExample}
                           codeExamples={nxButtonErrorCode}>
-        An example using the "error" button styles. Commonly seen in <code className="nx-code">NxErrorAlert</code>s.
+        An example using the "error" button styles. Commonly seen in <NxCode>NxErrorAlert</NxCode>s.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Using icons in buttons"
