@@ -8,21 +8,20 @@ import React from 'react';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import ColorPaletteExample from './ColorPaletteExample';
-import { NxWarningAlert } from '@sonatype/react-shared-components';
+import { NxWarningAlert, NxP, NxCode } from '@sonatype/react-shared-components';
 
 const ColorPalettePage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         The design group has created a palette of colors for use in RSC. The colors are organized into swatches
         which each have a consistent hue (red, green, blue, etc) and saturation. Within a swatch the various colors vary
         by lightness, and are named based on their lightness value in the HSL color scheme. Thus darker colors
         have lower values, and lighter colors have higher values. For example the darkest red is
-        {' '}<code className="nx-code">--nx-swatch-red-10</code> and the lightest is
-        {' '}<code className="nx-code">--nx-swatch-red-95</code>. All of the color swatch values are available as
-        CSS custom properties declared within the RSC base styles. The swatches below show all of the colors
-        available in RSC along with their hex value and corresponding RSC variable.
-      </p>
+        {' '}<NxCode>--nx-swatch-red-10</NxCode> and the lightest is <NxCode>--nx-swatch-red-95</NxCode>. All of the
+        color swatch values are available as CSS custom properties declared within the RSC base styles. The swatches
+        below show all of the colors available in RSC along with their hex value and corresponding RSC variable.
+      </NxP>
       <NxWarningAlert>
         The lime palette is deprecated and is currently an alias for the green palette.
       </NxWarningAlert>
@@ -30,12 +29,12 @@ const ColorPalettePage = () =>
         <header className="nx-tile-subsection__header">
           <h3 className="nx-h3">Using Colors</h3>
         </header>
-        <p className="nx-p">
+        <NxP>
           It is expected that designers and consumers of the RSC will limit themselves to using the colors that have
           been made available in the swatch custom CSS properties. It is preferable to use the
           {' '}custom property rather than hardcoding the color value. Doing so makes it easier
           to replace colors in the future if the palette changes.
-        </p>
+        </NxP>
       </section>
     </GalleryDescriptionTile>
 

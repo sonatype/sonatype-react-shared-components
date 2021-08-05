@@ -7,10 +7,10 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxP, NxCode, NxTable } from '@sonatype/react-shared-components';
 
 import NxFormSelectExample from './NxFormSelectExample';
 import NxFormSelectDisabledExample from './NxFormSelectDisabledExample';
-import { NxCode } from '@sonatype/react-shared-components';
 
 const sourceCode = require('./NxFormSelectExample?raw'),
     disabledSourceCode = require('./NxFormSelectDisabledExample?raw');
@@ -18,45 +18,45 @@ const sourceCode = require('./NxFormSelectExample?raw'),
 const NxFormSelectPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         Basic styles for Sonatype form select inputs. There isn't very much styling available for the
-        <code className="nx-code">&lt;select&gt;</code> tag. As such we've just implemented the basic borders, font,
+        <NxCode>&lt;select&gt;</NxCode> tag. As such we've just implemented the basic borders, font,
         and padding as well as disabled and focus styles. An <NxCode>NxFormSelect</NxCode> convenience component is
         also available.
-      </p>
-      <p className="nx-p">Classes:</p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Class</th>
-            <th className="nx-cell nx-cell--header">Location</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-form-select</code></td>
-            <td className="nx-cell">
+      </NxP>
+      <NxP>Classes:</NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Class</NxTable.Cell>
+            <NxTable.Cell>Location</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-form-select</NxCode></NxTable.Cell>
+            <NxTable.Cell>
               Base class
-            </td>
-            <td className="nx-cell">
-              Base class for a form <code className="nx-code">&lt;select&gt;</code>.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </NxTable.Cell>
+            <NxTable.Cell>
+              Base class for a form <NxCode>&lt;select&gt;</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Form Select Example"
                         codeExamples={sourceCode}
                         liveExample={NxFormSelectExample}>
-      Demonstrates a form <code className="nx-code">&lt;select&gt;</code> active state.
+      Demonstrates a form <NxCode>&lt;select&gt;</NxCode> active state.
     </GalleryExampleTile>
     <GalleryExampleTile title="Form Select Disabled Example"
                         id="nx-form-select-disabled-example"
                         codeExamples={disabledSourceCode}
                         liveExample={NxFormSelectDisabledExample}>
-      Demonstrates a form <code className="nx-code">&lt;select&gt;</code> disabled state. Note that disabling
+      Demonstrates a form <NxCode>&lt;select&gt;</NxCode> disabled state. Note that disabling
       is only supported via attribute, not class name.
     </GalleryExampleTile>
   </>;

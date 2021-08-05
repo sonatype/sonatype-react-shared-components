@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxP, NxCode } from '@sonatype/react-shared-components';
 
 import NxClickableExample from './NxClickableExample';
 
@@ -16,13 +17,13 @@ const NxClickablePage = () => {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
-          The <code className="nx-code">.nx-clickable</code> helper class allows you to quickly and easily
+        <NxP>
+          The <NxCode>.nx-clickable</NxCode> helper class allows you to quickly and easily
           indicate when a part of the UI is clickable when it might not be obvious to the user. It does this by
           simply changing the cursor to a pointer. It's intended to be used on UI elements like table rows.
-          It is recommended that <code className="nx-code">.nx-clickable</code> be just one of the
+          It is recommended that <NxCode>.nx-clickable</NxCode> be just one of the
           visual cues provided in the UI.
-        </p>
+        </NxP>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
                           codeExamples={nxClickableExampleCode}
