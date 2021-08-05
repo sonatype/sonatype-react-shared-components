@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTable, NxWarningAlert, NxTextLink, NxP, NxCode, NxH3 } from '@sonatype/react-shared-components';
+import { NxTable, NxWarningAlert, NxTextLink, NxP, NxCode, NxH3, NxTile } from '@sonatype/react-shared-components';
 
 import NxFormExample from './NxFormExample';
 import NxFormCustomizedExample from './NxFormCustomizedExample';
@@ -237,15 +237,15 @@ const NxFormPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>NxForm Submit and Cancel Button Classes</NxH3>
-        </header>
+        </NxTile.SubsectionHeader>
         <NxP>
           In order to differentiate them from other buttons that might be on the page the
           <NxCode>NxForm</NxCode> cancel and submit buttons have custom classes.
         </NxP>
-        <NxTable className="nx-table--gallery-props">
+        <NxTable>
           <NxTable.Head>
             <NxTable.Row>
               <NxTable.Cell>Class</NxTable.Cell>
@@ -274,7 +274,7 @@ const NxFormPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
-      </section>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Asynchronous Example"

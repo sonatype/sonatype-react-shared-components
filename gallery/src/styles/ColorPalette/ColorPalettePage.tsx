@@ -8,7 +8,7 @@ import React from 'react';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import ColorPaletteExample from './ColorPaletteExample';
-import { NxWarningAlert, NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxWarningAlert, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
 
 const ColorPalettePage = () =>
   <>
@@ -25,17 +25,17 @@ const ColorPalettePage = () =>
       <NxWarningAlert>
         The lime palette is deprecated and is currently an alias for the green palette.
       </NxWarningAlert>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">Using Colors</h3>
-        </header>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Using Colors</NxH3>
+        </NxTile.SubsectionHeader>
         <NxP>
           It is expected that designers and consumers of the RSC will limit themselves to using the colors that have
           been made available in the swatch custom CSS properties. It is preferable to use the
           {' '}custom property rather than hardcoding the color value. Doing so makes it easier
           to replace colors in the future if the palette changes.
         </NxP>
-      </section>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <ColorPaletteExample/>

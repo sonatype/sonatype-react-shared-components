@@ -54,10 +54,10 @@ export default function NxTablePage() {
           A set of React components which encapsulate and assist with the styles for HTML tables.
         </NxP>
 
-        <section className="nx-tile-subsection">
-          <header className="nx-tile-subsection__header">
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
             <NxH3>NxTable</NxH3>
-          </header>
+          </NxTile.SubsectionHeader>
           <NxP>
             The top-level component to use when displaying tables of data.
             It can have <NxCode>NxTable.Head</NxCode> and
@@ -88,12 +88,12 @@ export default function NxTablePage() {
               </NxTable.Row>
             </NxTable.Body>
           </NxTable>
-        </section>
+        </NxTile.Subsection>
 
-        <section className="nx-tile-subsection">
-          <header className="nx-tile-subsection__header">
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
             <NxH3>NxTable.Head</NxH3>
-          </header>
+          </NxTile.SubsectionHeader>
           <NxP>
             Equivalent to the <NxCode>&lt;thead&gt;</NxCode> element.
             The <NxCode>NxTable.Row</NxCode> component is the only valid child.
@@ -123,12 +123,12 @@ export default function NxTablePage() {
               </NxTable.Row>
             </NxTable.Body>
           </NxTable>
-        </section>
+        </NxTile.Subsection>
 
-        <section className="nx-tile-subsection">
-          <header className="nx-tile-subsection__header">
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
             <NxH3>NxTable.Body</NxH3>
-          </header>
+          </NxTile.SubsectionHeader>
           <NxP>
             Equivalent to the <NxCode>&lt;tbody&gt;</NxCode> element.
             It should have <NxCode>NxTable.Row</NxCode> for children.
@@ -190,12 +190,12 @@ export default function NxTablePage() {
               </NxTable.Row>
             </NxTable.Body>
           </NxTable>
-        </section>
+        </NxTile.Subsection>
 
-        <section className="nx-tile-subsection">
-          <header className="nx-tile-subsection__header">
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
             <NxH3>NxTable.Row</NxH3>
-          </header>
+          </NxTile.SubsectionHeader>
           <NxP>
             Equivalent to the <NxCode>&lt;tr&gt;</NxCode> element.
             It should have <NxCode>NxTable.Cell</NxCode> for children.
@@ -255,12 +255,12 @@ export default function NxTablePage() {
               </NxTable.Row>
             </NxTable.Body>
           </NxTable>
-        </section>
+        </NxTile.Subsection>
 
-        <section className="nx-tile-subsection">
-          <header className="nx-tile-subsection__header">
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
             <NxH3>NxTable.Cell</NxH3>
-          </header>
+          </NxTile.SubsectionHeader>
           <NxP>
             Equivalent to the <NxCode>&lt;th&gt;</NxCode> or
             {' '}<NxCode>&lt;td&gt;</NxCode> element.
@@ -355,7 +355,7 @@ export default function NxTablePage() {
               </NxTable.Row>
             </NxTable.Body>
           </NxTable>
-        </section>
+        </NxTile.Subsection>
 
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
@@ -371,10 +371,10 @@ export default function NxTablePage() {
           </NxP>
         </NxTile.Subsection>
 
-        <section className="nx-tile-subsection">
-          <header className="nx-tile-subsection__header">
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
             <NxH3>SCSS Helper Functions</NxH3>
-          </header>
+          </NxTile.SubsectionHeader>
           <NxP>
             When constructing a table of paginated data, it is often the case that the table is intended to be exactly
             tall enough to contain one full page's worth of rows, even when on the last page, which may contain fewer
@@ -426,7 +426,7 @@ export default function NxTablePage() {
               </NxTable.Row>
             </NxTable.Body>
           </NxTable>
-        </section>
+        </NxTile.Subsection>
 
         <NxP>
           For guidance on the construction of a scrolling table, see the scrolling example on

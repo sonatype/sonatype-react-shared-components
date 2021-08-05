@@ -5,10 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxInfoAlert, NxCode, NxTextLink, NxP, NxH3 }
-  from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTable, NxInfoAlert, NxCode, NxTextLink, NxP, NxH3, NxTile } from '@sonatype/react-shared-components';
 
 import NxAccordionSimpleExample from './NxAccordionExample';
 import NxAccordionComplexExample from './NxAccordionComplexExample';
@@ -32,10 +31,10 @@ const NxAccordionPage = () =>
         Note that this component is stateless – its open state must be tracked externally.
         See <NxCode>NxStatefulAccordion</NxCode> for a version which tracks its own open state.
       </NxP>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>NxAccordion</NxH3>
-        </header>
+        </NxTile.SubsectionHeader>
         <NxTable>
           <NxTable.Head>
             <NxTable.Row>
@@ -86,20 +85,20 @@ const NxAccordionPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
-      </section>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>NxAccordion.Header</NxH3>
-        </header>
+        </NxTile.SubsectionHeader>
         <NxP>
           <NxCode>NxAccordion.Header</NxCode> can receive standard
           HTML <NxCode>&lt;summary&gt;</NxCode> attributes.
         </NxP>
-      </section>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>Helper Classes</NxH3>
-        </header>
+        </NxTile.SubsectionHeader>
         <NxP>The following CSS classes are available for use on child elements.</NxP>
         <NxTable>
           <NxTable.Head>
@@ -147,7 +146,7 @@ const NxAccordionPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
-      </section>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"

@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxTable, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
 
 import NxTreeViewExample from './NxTreeViewExample';
 import NxTreeViewTooltipExample from './NxTreeViewTooltipExample';
@@ -107,10 +107,10 @@ const NxTreeViewPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">Children</h3>
-        </header>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Children</NxH3>
+        </NxTile.SubsectionHeader>
         <NxP>
           The "children" of an <NxCode>NxTreeView</NxCode> are the elements which appear when the
           tree view is expanded. All tree view children should be wrapped
@@ -141,7 +141,7 @@ const NxTreeViewPage = () =>
             </span>
           </li>
         </ul>
-      </section>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="NxTreeView Basic Example"

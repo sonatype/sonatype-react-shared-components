@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert, NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxTable, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxListExamples from './NxListExamples';
@@ -153,10 +153,10 @@ const NxListPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__title">
-          <h3 className="nx-h3">Description Lists</h3>
-        </header>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Description Lists</NxH3>
+        </NxTile.SubsectionHeader>
         <NxP>
           In addition to ordered and unordered lists, <NxCode>nx-list</NxCode> also supports the
           styling of description lists using the following classes. Terms and descriptions are laid out side-by-side
@@ -207,7 +207,7 @@ const NxListPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
-      </section>
+      </NxTile.Subsection>
       <NxInfoAlert>
         Note that some of these examples are shown in React as they includes specific icons. When working in
         React, <NxCode>NxFontAwesomeIcon</NxCode> should be used as shown to get these icons.

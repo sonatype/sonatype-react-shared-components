@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTextLink, NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxTextLink, NxTable, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
 
 import NxFormLayoutExample from './NxFormLayoutExample';
 import NxFormHorizontalLayoutExample from './NxFormHorizontalLayoutExample';
@@ -129,8 +129,10 @@ const NxFormLayoutPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
-      <section className="nx-tile__subsection">
-        <h2 className="nx-h2">&lt;form&gt; Accessibility</h2>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>&lt;form&gt; Accessibility</NxH3>
+        </NxTile.SubsectionHeader>
         <NxP>
           Larger forms should be identified using either the <NxCode>aria-label</NxCode>
           {' '}attribute to provide a descriptive title, or the <NxCode>aria-labelledby</NxCode>
@@ -141,7 +143,7 @@ const NxFormLayoutPage = () =>
           </NxTextLink>
           {' '}structure, and will be identified by screen readers.
         </NxP>
-      </section>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"

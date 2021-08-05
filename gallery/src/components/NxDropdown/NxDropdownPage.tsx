@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTextLink, NxCode, NxWarningAlert, NxH3, NxP } from '@sonatype/react-shared-components';
+import { NxTable, NxTextLink, NxCode, NxWarningAlert, NxH3, NxP, NxTile } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
@@ -33,10 +33,10 @@ const NxDropdownPage = () =>
         action-triggering buttons.  It is <em>not</em> a form select field. By default the dropdown can display
         a maximum of 10 items before it scrolls the contents of the dropdown menu.
       </NxP>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>Props:</NxH3>
-        </header>
+        </NxTile.SubsectionHeader>
         <NxTable>
           <NxTable.Head>
             <NxTable.Row>
@@ -161,24 +161,26 @@ const NxDropdownPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
-      </section>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
+      </NxTile.Subsection>
+
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>Auxiliary Components</NxH3>
-        </header>
+        </NxTile.SubsectionHeader>
         <NxP>
           An auxiliary component called <NxCode>NxDropdownDivider</NxCode> is available
           to be used as separator between child elements.
         </NxP>
-      </section>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
+      </NxTile.Subsection>
+
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>Dropdown Menu Content Classes</NxH3>
-        </header>
+        </NxTile.SubsectionHeader>
         <NxP>
           The following CSS classes are provided which must be used for the contents of the dropdown menu.
         </NxP>
-        <NxTable className="nx-table--gallery-props">
+        <NxTable>
           <NxTable.Head>
             <NxTable.Row>
               <NxTable.Cell>Class</NxTable.Cell>
@@ -232,7 +234,7 @@ const NxDropdownPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
-      </section>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Navigation Example"

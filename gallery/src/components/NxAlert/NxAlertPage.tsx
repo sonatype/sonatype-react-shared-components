@@ -5,8 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxH3 } from '@sonatype/react-shared-components';
+
 import {GalleryDescriptionTile, GalleryExampleTile, GalleryTile} from '../../gallery-components/GalleryTiles';
+import { NxTable, NxCode, NxP, NxH3, NxTile } from '@sonatype/react-shared-components';
 
 import NxAlertExample from './NxAlertExample';
 import NxErrorAlertExample from './NxErrorAlertExample';
@@ -87,10 +88,10 @@ const NxAlertPage = () =>
         Accepts any prop that is valid on a div as well as the <NxCode>onClose</NxCode> prop
         described above.
       </NxP>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>Accessibility Considerations</NxH3>
-        </header>
+        </NxTile.SubsectionHeader>
         <NxP>
           Different types of alerts use
           different <a target="_blank" rel="noreferrer" href="https://www.w3.org/WAI/PF/aria/roles">ARIA roles</a>.{' '}
@@ -103,7 +104,7 @@ const NxAlertPage = () =>
           the <NxCode>status</NxCode> or <NxCode>alert</NxCode> role.
           The roles which are provided by default may be overridden by the caller.
         </NxP>
-      </section>
+      </NxTile.Subsection>
     </GalleryTile>
 
     <GalleryExampleTile title="Success Alert Example"
