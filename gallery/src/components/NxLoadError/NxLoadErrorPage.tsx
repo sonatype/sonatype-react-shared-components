@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import NxLoadErrorSimpleExample from './NxLoadErrorSimpleExample';
 import NxLoadErrorNoCloseExample from './NxLoadErrorNoCloseExample';
@@ -21,55 +22,55 @@ const retryLongMessageSourceCode = require('./NxLoadErrorRetryExample?raw');
 const NxLoadErrorPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">Error message with optional Retry button</p>
-      <p className="nx-p">Props:</p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">error</td>
-            <td className="nx-cell">string | JSX</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+      <NxP>Error message with optional Retry button</NxP>
+      <NxP>Props:</NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>error</NxTable.Cell>
+            <NxTable.Cell>string | JSX</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A message that represents an error that occurred.  If null or undefined, NxLoadError will not render
               anything
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">titleMessage</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>titleMessage</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A message to display before the error output. Defaults to 'An error occurred loading data.'
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">retryHandler</td>
-            <td className="nx-cell">Function</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>retryHandler</NxTable.Cell>
+            <NxTable.Cell>Function</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               If this is defined, a Retry button will be rendered which executes this function when clicked
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">onClose</td>
-            <td className="nx-cell">Function</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>onClose</NxTable.Cell>
+            <NxTable.Cell>Function</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A handler that dismisses the alert when called.
-              See <a href="#/page/NxAlert"><code className="nx-code">NxAlert</code></a> for details. This never
-              be specified at the same time as <code className="nx-code">retryHandler</code>.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              See <NxTextLink href="#/page/NxAlert"><NxCode>NxAlert</NxCode></NxTextLink> for details. This never
+              be specified at the same time as <NxCode>retryHandler</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Standard Example with Retry Button"
@@ -77,16 +78,16 @@ const NxLoadErrorPage = () =>
                         codeExamples={retrySourceCode}
                         liveExample={NxLoadErrorRetryExample}>
       In this example, the error is cleared on retry. Note that
-      the <code className="nx-code">NxLoadError</code> component
+      the <NxCode>NxLoadError</NxCode> component
       disappears when that happens. This is the most common usage
-      of <code className="nx-code">NxLoadError</code>.
+      of <NxCode>NxLoadError</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Close Button"
                         codeExamples={simpleSourceCode}
                         liveExample={NxLoadErrorSimpleExample}>
-      This example demonstrates a basic <code className="nx-code">NxLoadError</code> for cases where a Retry action
-      does not make sense. In most cases, when an <code className="nx-code">NxLoadError</code> does
+      This example demonstrates a basic <NxCode>NxLoadError</NxCode> for cases where a Retry action
+      does not make sense. In most cases, when an <NxCode>NxLoadError</NxCode> does
       not have a Retry button, it should have a Close button. Additionally, this example demonstrates that the
       error message may be JSX as opposed to just a simple string
     </GalleryExampleTile>
@@ -94,11 +95,11 @@ const NxLoadErrorPage = () =>
     <GalleryExampleTile title="Example without Close Button"
                         codeExamples={noCloseSourceCode}
                         liveExample={NxLoadErrorNoCloseExample}>
-      This example demonstrates an <code className="nx-code">NxLoadError</code> which has neither a Retry button nor a
+      This example demonstrates an <NxCode>NxLoadError</NxCode> which has neither a Retry button nor a
       Close button. This arrangement should only be used for cases where both of the following are true:
       <ol>
         <li>
-          The <code className="nx-code">NxLoadError</code> is the only component within the main area of the page.
+          The <NxCode>NxLoadError</NxCode> is the only component within the main area of the page.
         </li>
         <li>
           Retrying the load would not help.

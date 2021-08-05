@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-
+import { NxCode, NxP } from '@sonatype/react-shared-components';
 import NxStatefulAccordionExample from './NxStatefulAccordionExample';
 
 const NxStatefulAccordionCode = require('./NxStatefulAccordionExample?raw');
@@ -15,20 +15,20 @@ const NxStatefulAccordionCode = require('./NxStatefulAccordionExample?raw');
 const NxStatefulAccordionPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
-        <code className="nx-code">NxStatefulAccordion</code> is a wrapper
-        around <code className="nx-code">NxAccordion</code> which tracks its own toggle state. It accepts
-        the same props as <code className="nx-code">NxAccordion</code>, except that instead
-        of <code className="nx-code">open</code>, it accepts <code className="nx-code">defaultOpen</code> which
+      <NxP>
+        <NxCode>NxStatefulAccordion</NxCode> is a wrapper
+        around <NxCode>NxAccordion</NxCode> which tracks its own toggle state. It accepts
+        the same props as <NxCode>NxAccordion</NxCode>, except that instead
+        of <NxCode>open</NxCode>, it accepts <NxCode>defaultOpen</NxCode> which
         provides the initial toggle state.
-      </p>
+      </NxP>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Example"
                         defaultCheckeredBackground={true}
                         liveExample={NxStatefulAccordionExample}
                         codeExamples={NxStatefulAccordionCode}>
-      A simple example of an <code className="nx-code">NxStatefulAccordion</code> that is initially open.
+      A simple example of an <NxCode>NxStatefulAccordion</NxCode> that is initially open.
     </GalleryExampleTile>
   </>;
 

@@ -7,7 +7,7 @@
 import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
-import { NxTextLink } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import NxStatefulDropdownExample from './NxStatefulDropdownExample';
 
@@ -16,74 +16,74 @@ const nxStatefulDropdownExampleCode = require('./NxStatefulDropdownExample?raw')
 const NxStatefulDropdownPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">Dropdown component.</p>
-      <p className="nx-p">Props:</p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">label</td>
-            <td className="nx-cell">string | VDOM</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">Content to render in the dropdown's button</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">variant</td>
-            <td className="nx-cell">"primary" | "secondary" | "tertiary"</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+      <NxP>Dropdown component.</NxP>
+      <NxP>Props:</NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>label</NxTable.Cell>
+            <NxTable.Cell>string | VDOM</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>Content to render in the dropdown's button</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>variant</NxTable.Cell>
+            <NxTable.Cell>"primary" | "secondary" | "tertiary"</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               What type of button to render for the dropdown.
-              Defaults to <code className="nx-code">"tertiary"</code>
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">className</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">Extra classes to apply to the component</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">disabled</td>
-            <td className="nx-cell">boolean</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+              Defaults to <NxCode>"tertiary"</NxCode>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>className</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>Extra classes to apply to the component</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>disabled</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Controls if the component should be rendered as disabled.
-              Defaults to <code className="nx-code">false</code>
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">toggleTooltip</td>
-            <td className="nx-cell">string | NxTooltip Props</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+              Defaults to <NxCode>false</NxCode>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>toggleTooltip</NxTable.Cell>
+            <NxTable.Cell>string | NxTooltip Props</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               If present, describes a tooltip to be placed on the dropdown's toggle element. There are two ways
               to specify the tooltip: the simpler way is to simply specify the tooltip text as a string. If control
               of more complex tooltip options is desired, an object can be passed which will serve as the props for
               NxTooltip
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
+            <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/element/div">
                 HTML div Attributes
               </NxTextLink>
-            </td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               NxStatefulDropdown supports any html attribute that's normally supported by
-              {' '}<code className="nx-code">&lt;div&gt;</code> elements.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              {' '}<NxCode>&lt;div&gt;</NxCode> elements.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"

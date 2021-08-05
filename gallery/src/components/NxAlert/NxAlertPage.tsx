@@ -5,8 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxCode, NxP }
-  from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxH3 } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile, GalleryExampleTile, GalleryTile} from '../../gallery-components/GalleryTiles';
 
 import NxAlertExample from './NxAlertExample';
@@ -28,38 +27,38 @@ const NxAlertPage = () =>
       <NxP>Handy for DIY alert variations</NxP>
       <NxP>Accepts any prop that is valid on a div as well as the following:</NxP>
       <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Prop</NxTableCell>
-            <NxTableCell>Type</NxTableCell>
-            <NxTableCell>Required</NxTableCell>
-            <NxTableCell>Details</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody>
-          <NxTableRow>
-            <NxTableCell>icon</NxTableCell>
-            <NxTableCell>FontAwesome's Icons</NxTableCell>
-            <NxTableCell>Yes</NxTableCell>
-            <NxTableCell>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>icon</NxTable.Cell>
+            <NxTable.Cell>FontAwesome's Icons</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>
               A FontAwesome icon to use in the alert message
-            </NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>iconLabel</NxTableCell>
-            <NxTableCell>string</NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>iconLabel</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Brief descriptive text to apply to the icon using
               the <NxCode>aria-label</NxCode> attribute. Optional for backwards compatibility, but
               strongly recommended.
-            </NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>onClose</NxTableCell>
-            <NxTableCell>Function</NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>onClose</NxTable.Cell>
+            <NxTable.Cell>Function</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A handler that dismisses the alert when called. If this prop is present, a close button will be rendered
               at the right-hand side of the alert. When that button is clicked, this callback will be fired. Note that
               while this callback (and button) are optional, our UX patterns call for almost all alerts to be
@@ -68,9 +67,9 @@ const NxAlertPage = () =>
               A "Retry" button would be an example of such an alternative mechanism. Conversely, in the
               case where such an alternative mechanism is present, the <NxCode>onClose</NxCode>
               callback <em>should not</em> be provided.
-            </NxTableCell>
-          </NxTableRow>
-        </NxTableBody>
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>
 
@@ -90,7 +89,7 @@ const NxAlertPage = () =>
       </NxP>
       <section className="nx-tile-subsection">
         <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">Accessibility Considerations</h3>
+          <NxH3>Accessibility Considerations</NxH3>
         </header>
         <NxP>
           Different types of alerts use

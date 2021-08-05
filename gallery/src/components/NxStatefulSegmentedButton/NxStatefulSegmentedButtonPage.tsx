@@ -7,10 +7,9 @@
 import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
+import { NxTable, NxTextLink, NxP, NxCode } from '@sonatype/react-shared-components';
 
 import NxStatefulSegmentedButtonExample from './NxStatefulSegmentedButtonExample';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxTextLink }
-  from '@sonatype/react-shared-components';
 
 const nxStatefulSegmentedButtonCode = require('./NxStatefulSegmentedButtonExample?raw');
 
@@ -18,83 +17,83 @@ export default function NxStatefulSegmentedButtonPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
+        <NxP>
           Stateful variant of NxSegmentedButton which manages the dropdown open/close state and events internally.
-        </p>
+        </NxP>
         <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Prop</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Default</NxTableCell>
-              <NxTableCell>Details</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>variant</NxTableCell>
-              <NxTableCell>'primary' | 'secondary' | 'tertiary'</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell></NxTableCell>
-              <NxTableCell>The variant of button. See examples of each variant below.</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>buttonContent</NxTableCell>
-              <NxTableCell>ReactNode</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell></NxTableCell>
-              <NxTableCell>The content to display within the main button segment.</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>children</NxTableCell>
-              <NxTableCell>ReactElement | ReactElement[]</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell></NxTableCell>
-              <NxTableCell>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Prop</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Default</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>variant</NxTable.Cell>
+              <NxTable.Cell>'primary' | 'secondary' | 'tertiary'</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>The variant of button. See examples of each variant below.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>buttonContent</NxTable.Cell>
+              <NxTable.Cell>ReactNode</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>The content to display within the main button segment.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>children</NxTable.Cell>
+              <NxTable.Cell>ReactElement | ReactElement[]</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
                 The items to display within the dropdown menu. Anything that can appear
-                within an <code className="nx-code">NxDropdown</code> is supported.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>onClick</NxTableCell>
-              <NxTableCell>Function</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell></NxTableCell>
-              <NxTableCell>
+                within an <NxCode>NxDropdown</NxCode> is supported.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>onClick</NxTable.Cell>
+              <NxTable.Cell>Function</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
                 Click handler for the main segment of the button. Does not fire in response to dropdown interactions.
                 Receives the click event as a parameter.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>disabled</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>Disables both segments of the button when true.</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
-              <NxTableCell>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>disabled</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>Disables both segments of the button when true.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
+              <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                   HTML div Attributes
                 </NxTextLink>
-              </NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell>N/A</NxTableCell>
-              <NxTableCell>
-                <code className="nx-code">NxSegmentedButton</code> supports any HTML attribute that's normally
-                supported by <code className="nx-code">&lt;div&gt;</code>.
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>N/A</NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxSegmentedButton</NxCode> supports any HTML attribute that's normally
+                supported by <NxCode>&lt;div&gt;</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
         </NxTable>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Example"
                           liveExample={NxStatefulSegmentedButtonExample}
                           codeExamples={nxStatefulSegmentedButtonCode}>
-        Example of an <code className="nx-code">NxStatefulSegmentedButton</code>.
+        Example of an <NxCode>NxStatefulSegmentedButton</NxCode>.
       </GalleryExampleTile>
     </>
   );

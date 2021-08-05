@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-
+import { NxP } from '@sonatype/react-shared-components';
 import NxLoadingSpinnerExample from './NxLoadingSpinnerExample';
 
 const sourceCode = require('./NxLoadingSpinnerExample?raw');
@@ -15,8 +15,8 @@ const sourceCode = require('./NxLoadingSpinnerExample?raw');
 const NxLoadingSpinnerPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">Loading Spinner with caption</p>
-      <p className="nx-p">Props: none</p>
+      <NxP>Loading Spinner with caption</NxP>
+      <NxP>Props: none</NxP>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="General Example"
                         codeExamples={sourceCode}

@@ -5,8 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxCode, NxP }
-  from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP } from '@sonatype/react-shared-components';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxBackButtonSimpleExample from './NxBackButtonSimpleExample';
@@ -23,34 +22,34 @@ const NxBackButtonPage = () =>
       <NxP>A standard UI element for navigating back to a previous page</NxP>
       <NxP>Props:</NxP>
       <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Prop</NxTableCell>
-            <NxTableCell>Type</NxTableCell>
-            <NxTableCell>Required</NxTableCell>
-            <NxTableCell>Details</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody>
-          <NxTableRow>
-            <NxTableCell>targetPageTitle</NxTableCell>
-            <NxTableCell>string</NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>The name of the page to navigate to</NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>text</NxTableCell>
-            <NxTableCell>string</NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>Optional custom text to override the back button's default text logic</NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>href</NxTableCell>
-            <NxTableCell>URL</NxTableCell>
-            <NxTableCell>Yes</NxTableCell>
-            <NxTableCell>The URL to navigate to when the back button is clicked</NxTableCell>
-          </NxTableRow>
-        </NxTableBody>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>targetPageTitle</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>The name of the page to navigate to</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>text</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>Optional custom text to override the back button's default text logic</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>href</NxTable.Cell>
+            <NxTable.Cell>URL</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>The URL to navigate to when the back button is clicked</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>
 

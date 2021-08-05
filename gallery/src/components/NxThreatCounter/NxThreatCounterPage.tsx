@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTextLink } from '@sonatype/react-shared-components';
+import { NxTextLink, NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
 
 import NxThreatCounterExample from './NxThreatCounterExample';
 import NxThreatCounterSmallExample from './NxThreatCounterSmallExample';
@@ -26,135 +26,135 @@ const NxThreatCounterCode = require('./NxThreatCounterExample?raw'),
 const NxThreatCounterPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         Component for a series of small counters which display a number representing a count of threats/violations,
         and a short pre-set text string which displays the severity (critical, severe, moderate, low, and none).
-      </p>
-      <p className="nx-p">
+      </NxP>
+      <NxP>
         Each count is optional. If no value is provided for a given count, then the indicator for that severity level
         will not be rendered.
-      </p>
-      <p className="nx-p">
+      </NxP>
+      <NxP>
         Three basic layouts have been demonstrated below. It is expected that one of these should satisfy any
         requirement.
-      </p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">criticalCount</td>
-            <td className="nx-cell">number</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+      </NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>criticalCount</NxTable.Cell>
+            <NxTable.Cell>number</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A numerical value, the number of critical threats. If no value is provided, then the count will be hidden.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">severeCount</td>
-            <td className="nx-cell">number</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>severeCount</NxTable.Cell>
+            <NxTable.Cell>number</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A numerical value, the number of severe threats. If no value is provided, then the count will be hidden.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">moderateCount</td>
-            <td className="nx-cell">number</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>moderateCount</NxTable.Cell>
+            <NxTable.Cell>number</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A numerical value, the number of moderate threats. If no value is provided, then the count will be hidden.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">lowCount</td>
-            <td className="nx-cell">number</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>lowCount</NxTable.Cell>
+            <NxTable.Cell>number</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A numerical value, the number of low threats. If no value is provided, then the count will be hidden.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">noneCount</td>
-            <td className="nx-cell">number</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>noneCount</NxTable.Cell>
+            <NxTable.Cell>number</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A numerical value, the number of counted items posing no threat. If no value is provided, then the count
               will be hidden.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">layout</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>layout</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Sets the layout of the counters. If no value is provided then "row" layout will be specified. The other
-              options are <code className="nx-code">column</code> and <code className="nx-code">grid</code>.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">HTML <code className="nx-code">&lt;dl&gt;</code> Attributes</td>
-            <td className="nx-cell">
+              options are <NxCode>column</NxCode> and <NxCode>grid</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>HTML <NxCode>&lt;dl&gt;</NxCode> Attributes</NxTable.Cell>
+            <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/dl">
                 HTML dl Attributes
               </NxTextLink>
-            </td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
-              <code className="nx-code">NxThreatCounter</code> supports any HTML attribute that's normally
-              supported by <code className="nx-code">&lt;dl&gt;</code> elements.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              <NxCode>NxThreatCounter</NxCode> supports any HTML attribute that's normally
+              supported by <NxCode>&lt;dl&gt;</NxCode> elements.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="NxThreatCounter Default Example"
                         id="nx-threat-counter-row"
                         liveExample={NxThreatCounterExample}
                         codeExamples={NxThreatCounterCode}>
-      <code className="nx-code">nx-threat-counter</code>s in the default (row) layout.
+      <NxCode>nx-threat-counter</NxCode>s in the default (row) layout.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxThreatCounter Small Default Example"
                         id="nx-threat-counter-small-row"
                         liveExample={NxThreatCounterSmallExample}
                         codeExamples={NxThreatCounterSmallCode}>
-      <code className="nx-code">nx-threat-counter</code>s in the default (row) layout with only two counts.
+      <NxCode>nx-threat-counter</NxCode>s in the default (row) layout with only two counts.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxThreatCounter Column Example"
                         id="nx-threat-counter-column"
                         liveExample={NxThreatCounterColumnExample}
                         codeExamples={NxThreatCounterColumnCode}>
-      <code className="nx-code">nx-threat-counter</code>s in column layout.
+      <NxCode>nx-threat-counter</NxCode>s in column layout.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxThreatCounter Small Column Example"
                         id="nx-threat-counter-small-column"
                         liveExample={NxThreatCounterSmallColumnExample}
                         codeExamples={NxThreatCounterSmallColumnCode}>
-      <code className="nx-code">nx-threat-counter</code>s in column layout with only two counts.
+      <NxCode>nx-threat-counter</NxCode>s in column layout with only two counts.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxThreatCounter Grid Example"
                         id="nx-threat-counter-grid"
                         liveExample={NxThreatCounterGridExample}
                         codeExamples={NxThreatCounterGridCode}>
-      <code className="nx-code">nx-threat-counter</code>s in a 3x2 "grid" layout.
+      <NxCode>nx-threat-counter</NxCode>s in a 3x2 "grid" layout.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxThreatCounter Small Grid Example"
                         id="nx-threat-counter-small-grid"
                         liveExample={NxThreatCounterSmallGridExample}
                         codeExamples={NxThreatCounterSmallGridCode}>
-      <code className="nx-code">nx-threat-counter</code>s in a 1x2 "grid" layout.
+      <NxCode>nx-threat-counter</NxCode>s in a 1x2 "grid" layout.
     </GalleryExampleTile>
   </>;
 

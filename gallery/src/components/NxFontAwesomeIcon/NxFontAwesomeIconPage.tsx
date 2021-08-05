@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxH3, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import NxFontAwesomeIconExample from './NxFontAwesomeIconExample';
 
@@ -22,34 +23,36 @@ const NxFontAwesomeIconPage = () => {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
-          <code className="nx-code">NxFontAwesomeIcon</code> is a wrapper around
-          the <code className="nx-code">FontAwesomeIcon</code> component. It passes through its props
-          to <code className="nx-code">FontAwesomeIcon</code> and adds the <code className="nx-code">.nx-icon</code> CSS
+        <NxP>
+          <NxCode>NxFontAwesomeIcon</NxCode> is a wrapper around
+          the <NxCode>FontAwesomeIcon</NxCode> component. It passes through its props
+          to <NxCode>FontAwesomeIcon</NxCode> and adds the <NxCode>.nx-icon</NxCode> CSS
           class.
-        </p>
-        <p className="nx-p">
-          See the <code className="nx-code">FontAwesomeIcon</code>{' '}
-          <a href="https://github.com/FortAwesome/react-fontawesome#features" target="_blank">documentation</a>
+        </NxP>
+        <NxP>
+          See the <NxCode>FontAwesomeIcon</NxCode>{' '}
+          <NxTextLink href="https://github.com/FortAwesome/react-fontawesome#features" target="_blank">
+            documentation
+          </NxTextLink>
           {' '}for details on available props
-        </p>
-        <h3 className="nx-h3">Accessibility</h3>
-        <p className="nx-p">
-          <code className="nx-code">FontAwesomeIcon</code> has a <code className="nx-code">title</code> prop which
-          sets up a <code className="nx-code">&lt;title&gt;</code> element within the rendered SVG and configures it
+        </NxP>
+        <NxH3>Accessibility</NxH3>
+        <NxP>
+          <NxCode>FontAwesomeIcon</NxCode> has a <NxCode>title</NxCode> prop which
+          sets up a <NxCode>&lt;title&gt;</NxCode> element within the rendered SVG and configures it
           as the accessible name for the icon. Use this attribute when an icon itself needs to be read by a
           screenreader. Note however that this will also create a native tooltip with the title, which is not ideal
-          due to our preference for <code className="nx-code">NxTooltip</code>. This technique should therefore be
+          due to our preference for <NxCode>NxTooltip</NxCode>. This technique should therefore be
           used sparingly, and labels on parent elements should be preferred where appropriate. For instance,
           the accessible name for an icon-only button should be placed on the button itself, not on the icon.
-          See the <a href="#/pages/NxButton"><code className="nx-code">NxButton</code></a> page for an example.
-        </p>
-        <p className="nx-p">
+          See the <NxTextLink href="#/pages/NxButton"><NxCode>NxButton</NxCode></NxTextLink> page for an example.
+        </NxP>
+        <NxP>
           If you are in doubt about whether an icon should be made accessible consider whether the user could perform
           their given task, or understand an explanation if that icon was not there. Take care that adding an
-          {' '}<code className="nx-code">aria-label</code> does not cause repetition in text read by assistive
+          {' '}<NxCode>aria-label</NxCode> does not cause repetition in text read by assistive
           technologies.
-        </p>
+        </NxP>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
                           codeExamples={codeExamples}

@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTextLink } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import NxPolicyViolationIndicatorByCategoryExample from './NxPolicyViolationIndicatorByCategoryExample';
 import NxPolicyViolationIndicatorByPolicyNumberExample from './NxPolicyViolationIndicatorByPolicyNumberExample';
@@ -20,107 +20,107 @@ const nxPolicyViolationIndicatorByCategoryCode =
 const NxPolicyViolationIndicatorPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
-        <code className="nx-code">NxPolicyViolationIndicator</code> is an element used to indicate IQ policy threat
+      <NxP>
+        <NxCode>NxPolicyViolationIndicator</NxCode> is an element used to indicate IQ policy threat
         level via color and text.
-      </p>
-      <p className="nx-p">
+      </NxP>
+      <NxP>
         There are two scales to choose from: threat level by category, and threat
         level by number. When using this component, it is expected that just one of the props will be passed. If both
-        are passed, <code className="nx-code">threatLevelCategory</code> takes precedence. If neither are passed,
-        the <code className="nx-code">unspecified</code> category is used.
-      </p>
-      <p className="nx-p">
+        are passed, <NxCode>threatLevelCategory</NxCode> takes precedence. If neither are passed,
+        the <NxCode>unspecified</NxCode> category is used.
+      </NxP>
+      <NxP>
         The text that appears inside the component can be specified by the user, or if no text is supplied the threat
         category will appear.
-      </p>
-      <table className="nx-table">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">threatLevelCategory</td>
-            <td className="nx-cell">One of 'unspecified', 'none', 'low', 'moderate', 'severe', or 'critical'</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">A Threat Level Category off of which to base the indicator color</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">policyThreatLevel</td>
-            <td className="nx-cell">number (0 - 10 inclusive)</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">A Policy Threat Level Number off of which to base the indicator color</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
-            <td className="nx-cell">
+      </NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>threatLevelCategory</NxTable.Cell>
+            <NxTable.Cell>One of 'unspecified', 'none', 'low', 'moderate', 'severe', or 'critical'</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>A Threat Level Category off of which to base the indicator color</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>policyThreatLevel</NxTable.Cell>
+            <NxTable.Cell>number (0 - 10 inclusive)</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>A Policy Threat Level Number off of which to base the indicator color</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
+            <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                 HTML div Attributes
               </NxTextLink>
-            </td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               NxPolicyViolationIndicator supports any HTML attribute that's normally supported
-              by <code className="nx-code">&lt;div&gt;</code>.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              by <NxCode>&lt;div&gt;</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
 
-      <p className="nx-p">
+      <NxP>
         The following table shows the mapping between threat level number and threat level category.
-      </p>
-      <table className="nx-table">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Threat Level Number</th>
-            <th className="nx-cell nx-cell--header">Threat Level Category</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">0</td>
-            <td className="nx-cell">none</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">1</td>
-            <td className="nx-cell">low</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">2 - 3</td>
-            <td className="nx-cell">moderate</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">4 - 7</td>
-            <td className="nx-cell">severe</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">8 - 10</td>
-            <td className="nx-cell">critical</td>
-          </tr>
-        </tbody>
-      </table>
+      </NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Threat Level Number</NxTable.Cell>
+            <NxTable.Cell>Threat Level Category</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>0</NxTable.Cell>
+            <NxTable.Cell>none</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>1</NxTable.Cell>
+            <NxTable.Cell>low</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>2 - 3</NxTable.Cell>
+            <NxTable.Cell>moderate</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>4 - 7</NxTable.Cell>
+            <NxTable.Cell>severe</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>8 - 10</NxTable.Cell>
+            <NxTable.Cell>critical</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Policy Violation Indicators by Category"
                         id="nx-policy-violation-indicator-category-example"
                         liveExample={NxPolicyViolationIndicatorByCategoryExample}
                         codeExamples={nxPolicyViolationIndicatorByCategoryCode}>
-      Examples of <code className="nx-code">NxPolicyViolationIndicator</code> displaying each of the available
-      <code className="nx-code">threatLevelCategory</code> values with user specified text.
+      Examples of <NxCode>NxPolicyViolationIndicator</NxCode> displaying each of the available
+      <NxCode>threatLevelCategory</NxCode> values with user specified text.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Policy Violation Indicators by Policy Number"
                         id="nx-policy-violation-indicator-number-example"
                         liveExample={NxPolicyViolationIndicatorByPolicyNumberExample}
                         codeExamples={nxPolicyViolationIndicatorByPolicyNumberCode}>
-      Examples of <code className="nx-code">NxPolicyViolationIndicator</code> where the colours are specified by
-      the <code className="nx-code">policyThreatNumber</code> value and the text shown is the default category label.
+      Examples of <NxCode>NxPolicyViolationIndicator</NxCode> where the colours are specified by
+      the <NxCode>policyThreatNumber</NxCode> value and the text shown is the default category label.
     </GalleryExampleTile>
   </>;
 

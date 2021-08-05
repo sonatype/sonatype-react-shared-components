@@ -10,8 +10,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxTagExample from './NxTagExample';
 import NxSelectableTagExample from './NxSelectableTagExample';
 import NxTagNarrowExample from './NxTagNarrowExample';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxTextLink }
-  from '@sonatype/react-shared-components';
+import { NxTable, NxTextLink, NxP, NxCode, NxH3 } from '@sonatype/react-shared-components';
 
 const NxTagExampleCode = require('./NxTagExample?raw');
 const NxSelectableTagExampleCode = require('./NxSelectableTagExample?raw');
@@ -20,91 +19,91 @@ const NxTagNarrowExampleCode = require('./NxTagNarrowExample?raw');
 const NxTagPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
-        There are two types of <code className="nx-code">NxTag</code>. The basic tags have a single state.
-        <code className="nx-code">NxSelectableTag</code> can be selected and deselected. It is up to the consumer
+      <NxP>
+        There are two types of <NxCode>NxTag</NxCode>. The basic tags have a single state.
+        <NxCode>NxSelectableTag</NxCode> can be selected and deselected. It is up to the consumer
         what that means in the context of the UI. The are many colors provided
-        for <code className="nx-code">NxTag</code> which can be specified via props.
-      </p>
-      <h3 className="nx-h3">Common Props</h3>
+        for <NxCode>NxTag</NxCode> which can be specified via props.
+      </NxP>
+      <NxH3>Common Props</NxH3>
       <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Prop</NxTableCell>
-            <NxTableCell>Type</NxTableCell>
-            <NxTableCell>Required</NxTableCell>
-            <NxTableCell>Default</NxTableCell>
-            <NxTableCell>Details</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody>
-          <NxTableRow>
-            <NxTableCell>color</NxTableCell>
-            <NxTableCell>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Default</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>color</NxTable.Cell>
+            <NxTable.Cell>
               <NxTextLink href="#/pages/Selectable Colors">SelectableColor</NxTextLink>
               <br/>
               ('light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime' | 'indigo')
 
-            </NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>indigo</NxTableCell>
-            <NxTableCell>
-              If no <code className="nx-code">color</code> is specified then the default (dark grey/blue with a lighter
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>indigo</NxTable.Cell>
+            <NxTable.Cell>
+              If no <NxCode>color</NxCode> is specified then the default (dark grey/blue with a lighter
               grey/blue unselected state) colors are used.
-            </NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
+            <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/element/div">
                 HTML div Attributes
               </NxTextLink>
-            </NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell></NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell></NxTable.Cell>
+            <NxTable.Cell>
               NxTag supports any html attribute that's normally supported by
-              {' '}<code className="nx-code">&lt;div&gt;</code> elements.
-            </NxTableCell>
-          </NxTableRow>
-        </NxTableBody>
+              {' '}<NxCode>&lt;div&gt;</NxCode> elements.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
       </NxTable>
-      <h3 className="nx-h3">Selectable Tag Props</h3>
+      <NxH3>Selectable Tag Props</NxH3>
       <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Prop</NxTableCell>
-            <NxTableCell>Type</NxTableCell>
-            <NxTableCell>Required</NxTableCell>
-            <NxTableCell>Default</NxTableCell>
-            <NxTableCell>Details</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody>
-          <NxTableRow>
-            <NxTableCell>onSelect</NxTableCell>
-            <NxTableCell>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Default</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>onSelect</NxTable.Cell>
+            <NxTable.Cell>
               Function
-            </NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell></NxTableCell>
-            <NxTableCell>
-              Callback that changes the value of <code className="nx-code">selected</code> below between true
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell></NxTable.Cell>
+            <NxTable.Cell>
+              Callback that changes the value of <NxCode>selected</NxCode> below between true
               (selected) and false (unselected).
-            </NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>selected</NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>selected</NxTable.Cell>
+            <NxTable.Cell>
               Boolean
-            </NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell></NxTableCell>
-            <NxTableCell>
-              Boolean for the selected/unselected state of a <code className="nx-code">NxSelectableTag</code>
-            </NxTableCell>
-          </NxTableRow>
-        </NxTableBody>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell></NxTable.Cell>
+            <NxTable.Cell>
+              Boolean for the selected/unselected state of a <NxCode>NxSelectableTag</NxCode>
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>
 

@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTextLink } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import NxIndeterminatePaginationExample from './NxIndeterminatePaginationExample';
 
@@ -16,53 +16,53 @@ const nxIndeterminatePaginationCode = require('./NxIndeterminatePaginationExampl
 const NxIndeterminatePaginationPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         A pagination control for use in cases where the current page number and total number of pages is indeterminate.
         This component simply allows the user to navigate to the next and previous pages.
-      </p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">onPrevPageSelect</code></td>
-            <td className="nx-cell">Function</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">
+      </NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>onPrevPageSelect</NxCode></NxTable.Cell>
+            <NxTable.Cell>Function</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>
               The callback handler for when the previous page button is clicked. The mouse event is passed as
               an argument.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">onNextPageSelect</code></td>
-            <td className="nx-cell">Function</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>onNextPageSelect</NxCode></NxTable.Cell>
+            <NxTable.Cell>Function</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>
               The callback handler for when the next page button is clicked. The mouse event is passed as
               an argument.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
+            <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                 HTML div Attributes
               </NxTextLink>
-            </td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
-              <code className="nx-code">NxIndeterminatePagination</code> supports any HTML attribute that's normally
-              supported by <code className="nx-code">&lt;div&gt;</code> elements.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              <NxCode>NxIndeterminatePagination</NxCode> supports any HTML attribute that's normally
+              supported by <NxCode>&lt;div&gt;</NxCode> elements.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
 
     </GalleryDescriptionTile>
 
@@ -70,7 +70,7 @@ const NxIndeterminatePaginationPage = () =>
                         id="nx-indeterminate-pagination-example"
                         liveExample={NxIndeterminatePaginationExample}
                         codeExamples={nxIndeterminatePaginationCode}>
-      An <code className="nx-code">NxIndeterminatePagination</code> component.
+      An <NxCode>NxIndeterminatePagination</NxCode> component.
     </GalleryExampleTile>
   </>;
 

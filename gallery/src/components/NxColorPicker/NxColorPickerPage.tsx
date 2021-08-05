@@ -5,8 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxTextLink }
-  from '@sonatype/react-shared-components';
+import { NxTable, NxTextLink, NxP, NxCode } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 import NxColorPickerExample from './NxColorPickerExample';
@@ -16,89 +15,91 @@ const NxColorPickerExampleCode = require('./NxColorPickerExample?raw');
 const NxColorPickerPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
-        <code className="nx-code">NxColorPicker</code> allows the user to select from a set of nine colors. A typical
-        use case would be to select the color to be associated with a colored <code className="nx-code">NxTag</code>.
-      </p>
-      <p className="nx-p">
-        The colors available in <code className="nx-code">NxColorPicker</code> match those supported
-        by <code className="nx-code">NxTag</code>. The list of these colors is available programmatically via
-        RSC's <code className="nx-code">selectableColors</code> export. Additionally, a TypeScript type union
-        respresenting the color choices is available as <code className="nx-code">SelectableColor</code>.
-      </p>
+      <NxP>
+        <NxCode>NxColorPicker</NxCode> allows the user to select from a set of nine colors. A typical
+        use case would be to select the color to be associated with a colored <NxCode>NxTag</NxCode>.
+      </NxP>
+      <NxP>
+        The colors available in <NxCode>NxColorPicker</NxCode> match those supported
+        by <NxCode>NxTag</NxCode>. The list of these colors is available programmatically via
+        RSC's <NxCode>selectableColors</NxCode> export. Additionally, a TypeScript type union
+        respresenting the color choices is available as <NxCode>SelectableColor</NxCode>.
+      </NxP>
       <h3 className="nx-h3">Props</h3>
       <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Prop</NxTableCell>
-            <NxTableCell>Type</NxTableCell>
-            <NxTableCell>Required</NxTableCell>
-            <NxTableCell>Default</NxTableCell>
-            <NxTableCell>Details</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody>
-          <NxTableRow>
-            <NxTableCell>label</NxTableCell>
-            <NxTableCell>string | ReactNode</NxTableCell>
-            <NxTableCell>Yes</NxTableCell>
-            <NxTableCell>N/A</NxTableCell>
-            <NxTableCell>JSX content to render as the label for the picker. Must not be null or undefined.</NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>isRequired</NxTableCell>
-            <NxTableCell>boolean</NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>false</NxTableCell>
-            <NxTableCell>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Default</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>label</NxTable.Cell>
+            <NxTable.Cell>string | ReactNode</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>N/A</NxTable.Cell>
+            <NxTable.Cell>
+              JSX content to render as the label for the picker. Must not be null or undefined.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>isRequired</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>false</NxTable.Cell>
+            <NxTable.Cell>
               Sets whether the optional flag should be displayed next to the picker label – the flag is present
-              by default and setting <code className="nx-code">isRequired</code> to true removes the flag.
-            </NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>value</NxTableCell>
-            <NxTableCell>
+              by default and setting <NxCode>isRequired</NxCode> to true removes the flag.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>value</NxTable.Cell>
+            <NxTable.Cell>
               SelectableColor
               ('light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime')
-            </NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell></NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell></NxTable.Cell>
+            <NxTable.Cell>
               The currently selected color, or null or undefined if no color is currently selected.
-            </NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>onChange</NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>onChange</NxTable.Cell>
+            <NxTable.Cell>
               Function
-            </NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell></NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell></NxTable.Cell>
+            <NxTable.Cell>
               A callback function to execute whenever the user updates their selection. Receives the name of the
               selected color as an argument.
-            </NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>HTML <code className="nx-code">&lt;fieldset&gt;</code> Attributes</NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>HTML <NxCode>&lt;fieldset&gt;</NxCode> Attributes</NxTable.Cell>
+            <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/fieldset">
                 HTML fieldset Attributes
               </NxTextLink>
-            </NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell></NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell></NxTable.Cell>
+            <NxTable.Cell>
               NxColorPicker supports any html attribute that's normally supported by
-              {' '}<code className="nx-code">&lt;fieldset&gt;</code> elements.
-            </NxTableCell>
-          </NxTableRow>
-        </NxTableBody>
+              {' '}<NxCode>&lt;fieldset&gt;</NxCode> elements.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Example" liveExample={NxColorPickerExample} codeExamples={NxColorPickerExampleCode}>
-      An example of an <code className="nx-code">NxColorPicker</code>
+      An example of an <NxCode>NxColorPicker</NxCode>
     </GalleryExampleTile>
   </>;
 

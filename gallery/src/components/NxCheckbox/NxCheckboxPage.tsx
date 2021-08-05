@@ -7,7 +7,7 @@
 import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
-import { NxTextLink } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import NxCheckboxExample from './NxCheckboxExample';
 import NxCheckboxNowrapExample from './NxCheckboxNowrapExample';
@@ -18,84 +18,84 @@ const nowrapExampleCode = require('./NxCheckboxNowrapExample?raw');
 const NxCheckboxPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">Custom checkbox input.</p>
-      <p className="nx-p">Child VDOM will be used as a label following the checkbox button itself.</p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">checkboxId</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">An id to identify the checkbox</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">isChecked</td>
-            <td className="nx-cell">boolean</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">Whether the checkbox should be rendered as checked or unchecked</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function (() =&gt; void)</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">A callback for when the checkbox is toggled</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">disabled</td>
-            <td className="nx-cell">boolean</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+      <NxP>Custom checkbox input.</NxP>
+      <NxP>Child VDOM will be used as a label following the checkbox button itself.</NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>checkboxId</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>An id to identify the checkbox</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>isChecked</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>Whether the checkbox should be rendered as checked or unchecked</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>onChange</NxTable.Cell>
+            <NxTable.Cell>Function (() =&gt; void)</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>A callback for when the checkbox is toggled</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>disabled</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Whether the checkbox should be rendered as disabled or not.  When disabled, the onChange callback will
               not fire.  Defaults to false
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">overflowTooltip</td>
-            <td className="nx-cell">boolean</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>overflowTooltip</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Whether the checkbox label content should be wrapped in
-              an <code className="nx-code">NxOverflowTooltip</code>. Defaults to true. Set this to false when
-              the <code className="nx-code">NxCheckbox</code> is being wrapped in a tooltip externally, to prevent
+              an <NxCode>NxOverflowTooltip</NxCode>. Defaults to true. Set this to false when
+              the <NxCode>NxCheckbox</NxCode> is being wrapped in a tooltip externally, to prevent
               multiple overlapping tooltips from appearing.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">children</td>
-            <td className="nx-cell">Virtual DOM</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>children</NxTable.Cell>
+            <NxTable.Cell>Virtual DOM</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               VDOM rendered as a label. Should be
               {' '}
               <NxTextLink external
                           href="https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content">
                 phrasing content
               </NxTextLink>
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">HTML <code className="nx-code">&lt;label&gt;</code> Attributes</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>HTML <NxCode>&lt;label&gt;</NxCode> Attributes</NxTable.Cell>
+            <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/label">
                 HTML label Attributes
               </NxTextLink>
-            </td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               NxCheckbox supports any html attribute that's normally supported by the
-              <code className="nx-code">label</code> element.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <NxCode>label</NxCode> element.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"

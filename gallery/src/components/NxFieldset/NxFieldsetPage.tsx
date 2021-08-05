@@ -6,8 +6,7 @@
  */
 import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxTextLink }
-  from '@sonatype/react-shared-components';
+import { NxTable, NxTextLink, NxP, NxCode } from '@sonatype/react-shared-components';
 
 import NxFieldsetExample from './NxFieldsetExample';
 import NxFieldsetRequiredExample from './NxFieldsetRequiredExample';
@@ -22,101 +21,103 @@ const nxFieldsetExampleCode = require('./NxFieldsetExample?raw'),
 const NxFieldsetPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
-        An <code className="nx-code">NxFieldset</code> is a wrapper around a collection of checkboxes, radios, or
+      <NxP>
+        An <NxCode>NxFieldset</NxCode> is a wrapper around a collection of checkboxes, radios, or
         similar form elements which should be displayed to the user as a group with an overall label. When used
-        with <code className="nx-code">NxCheckbox</code> or <code className="nx-code">NxRadio</code>, all inputs
+        with <NxCode>NxCheckbox</NxCode> or <NxCode>NxRadio</NxCode>, all inputs
         contained within a single NxFieldset should represent different options/values of the same field.
-      </p>
-      <p className="nx-p">
-        Form fields which have their own individual label styled using <code className="nx-code">.nx-label</code>{' '}
-        (including those wrapped in <code className="nx-code">NxFormGroup</code>) should not be wrapped
-        in <code className="nx-code">NxFieldset</code> as the label styles between the two are intended to be identical
+      </NxP>
+      <NxP>
+        Form fields which have their own individual label styled using <NxCode>.nx-label</NxCode>{' '}
+        (including those wrapped in <NxCode>NxFormGroup</NxCode>) should not be wrapped
+        in <NxCode>NxFieldset</NxCode> as the label styles between the two are intended to be identical
         and not hierarchical.
-      </p>
+      </NxP>
       <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Prop</NxTableCell>
-            <NxTableCell>Type</NxTableCell>
-            <NxTableCell>Required</NxTableCell>
-            <NxTableCell>Default</NxTableCell>
-            <NxTableCell>Details</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody>
-          <NxTableRow>
-            <NxTableCell>label</NxTableCell>
-            <NxTableCell>string | ReactNode</NxTableCell>
-            <NxTableCell>Yes</NxTableCell>
-            <NxTableCell>N/A</NxTableCell>
-            <NxTableCell>JSX content to render as the label for the group. Must not be null or undefined.</NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>sublabel</NxTableCell>
-            <NxTableCell>string | ReactNode</NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>empty</NxTableCell>
-            <NxTableCell>JSX content to render as the sublabel for the group.</NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>isRequired</NxTableCell>
-            <NxTableCell>boolean</NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>false</NxTableCell>
-            <NxTableCell>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Default</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>label</NxTable.Cell>
+            <NxTable.Cell>string | ReactNode</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>N/A</NxTable.Cell>
+            <NxTable.Cell>
+              JSX content to render as the label for the group. Must not be null or undefined.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>sublabel</NxTable.Cell>
+            <NxTable.Cell>string | ReactNode</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>empty</NxTable.Cell>
+            <NxTable.Cell>JSX content to render as the sublabel for the group.</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>isRequired</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>false</NxTable.Cell>
+            <NxTable.Cell>
               Sets whether the input should display the optional flag – the flag is present by default and
-              setting <code className="nx-code">isRequired</code> to true removes the flag.
-            </NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>children</NxTableCell>
-            <NxTableCell>ReactNode</NxTableCell>
-            <NxTableCell>Yes</NxTableCell>
-            <NxTableCell>N/A</NxTableCell>
-            <NxTableCell>
+              setting <NxCode>isRequired</NxCode> to true removes the flag.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>children</NxTable.Cell>
+            <NxTable.Cell>ReactNode</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>N/A</NxTable.Cell>
+            <NxTable.Cell>
               The child form elements to render within the fieldset – often a series
-              of <code className="nx-code">NxRadio</code> or <code className="nx-code">NxCheckbox</code> components
+              of <NxCode>NxRadio</NxCode> or <NxCode>NxCheckbox</NxCode> components
               which represent different options for the same field.
-            </NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>HTML <code className="nx-code">&lt;fieldset&gt;</code> Attributes</NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>HTML <NxCode>&lt;fieldset&gt;</NxCode> Attributes</NxTable.Cell>
+            <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/fieldset">
                 HTML fieldset Attributes
               </NxTextLink>
-            </NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>N/A</NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>N/A</NxTable.Cell>
+            <NxTable.Cell>
               NxFieldset supports any HTML attribute that's normally supported
-              by <code className="nx-code">&lt;fieldset&gt;</code>.
-            </NxTableCell>
-          </NxTableRow>
-        </NxTableBody>
+              by <NxCode>&lt;fieldset&gt;</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Basic Example"
                         liveExample={NxFieldsetExample}
                         codeExamples={nxFieldsetExampleCode}>
-      A basic example of an <code className="nx-code">NxFieldset</code> wrapping
-      some <code className="nx-code">NxCheckbox</code>s.
+      A basic example of an <NxCode>NxFieldset</NxCode> wrapping
+      some <NxCode>NxCheckbox</NxCode>s.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Required Example"
                         liveExample={NxFieldsetRequiredExample}
                         codeExamples={nxFieldsetRequiredExampleCode}>
-      An example of an <code className="nx-code">NxFieldset</code> wrapping
-      some <code className="nx-code">NxRadio</code>s which uses the isRequired flag to remove the "Optional"
+      An example of an <NxCode>NxFieldset</NxCode> wrapping
+      some <NxCode>NxRadio</NxCode>s which uses the isRequired flag to remove the "Optional"
       indicator.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Sublabel Example"
                         liveExample={NxFieldsetSublabelExample}
                         codeExamples={nxFieldsetSublabelExampleCode}>
-      An example of an <code className="nx-code">NxFieldset</code> which includes a sublabel.
+      An example of an <NxCode>NxFieldset</NxCode> which includes a sublabel.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Rich Label Content Example"

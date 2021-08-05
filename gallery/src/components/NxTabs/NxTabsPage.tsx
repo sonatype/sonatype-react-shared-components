@@ -7,16 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-
-import {
-  NxTable,
-  NxTableBody,
-  NxTableCell,
-  NxTableHead,
-  NxTableRow,
-  NxCode,
-  NxTextLink
-} from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxTextLink, NxP, NxTile, NxH3 } from '@sonatype/react-shared-components';
 
 import NxTabsTileHeaderExample from './NxTabsTileHeaderExample';
 import NxTabsOutsideTileExample from './NxTabsOutsideTileExample';
@@ -34,178 +25,178 @@ export default function NxTabsPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
+        <NxP>
           A set of accessible tab components which must be used together.
-        </p>
-        <section className="nx-tile-subsection">
-          <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTabs</h3>
-          </header>
-          <p className="nx-p">
+        </NxP>
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
+            <NxH3>NxTabs</NxH3>
+          </NxTile.SubsectionHeader>
+          <NxP>
             The top-level container for tabbed navigation.
-            It can have <code className="nx-code">&lt;NxTabList&gt;</code> and
-            {' '}<code className="nx-code">&lt;NxTabPanel&gt;</code> components as children.
-          </p>
+            It can have <NxCode>&lt;NxTabList&gt;</NxCode> and
+            {' '}<NxCode>&lt;NxTabPanel&gt;</NxCode> components as children.
+          </NxP>
           <NxTable>
-            <NxTableHead>
-              <NxTableRow>
-                <NxTableCell>Prop</NxTableCell>
-                <NxTableCell>Type</NxTableCell>
-                <NxTableCell>Required</NxTableCell>
-                <NxTableCell>Details</NxTableCell>
-              </NxTableRow>
-            </NxTableHead>
-            <NxTableBody>
-              <NxTableRow>
-                <NxTableCell>activeTab</NxTableCell>
-                <NxTableCell>number</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Prop</NxTable.Cell>
+                <NxTable.Cell>Type</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Details</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>activeTab</NxTable.Cell>
+                <NxTable.Cell>number</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
                   The index of the active tab. If not set no tab contents will be shown.
-                </NxTableCell>
-              </NxTableRow>
-              <NxTableRow>
-                <NxTableCell>onTabSelect</NxTableCell>
-                <NxTableCell>function(number)</NxTableCell>
-                <NxTableCell>false</NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>onTabSelect</NxTable.Cell>
+                <NxTable.Cell>function(number)</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
                   Called with the index of the newly selected tab when the currently selected tab changes.
-                </NxTableCell>
-              </NxTableRow>
-            </NxTableBody>
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
           </NxTable>
-        </section>
+        </NxTile.Subsection>
 
-        <section className="nx-tile-subsection">
-          <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTabList</h3>
-          </header>
-          <p className="nx-p">
-            The parent container for the <code className="nx-code">&lt;NxTab&gt;</code> components.
-            Passes through all attributes to an underlying <code className="nx-code">ul</code> element.
-          </p>
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
+            <NxH3>NxTabList</NxH3>
+          </NxTile.SubsectionHeader>
+          <NxP>
+            The parent container for the <NxCode>&lt;NxTab&gt;</NxCode> components.
+            Passes through all attributes to an underlying <NxCode>ul</NxCode> element.
+          </NxP>
           <NxTable>
-            <NxTableHead>
-              <NxTableRow>
-                <NxTableCell>Prop</NxTableCell>
-                <NxTableCell>Type</NxTableCell>
-                <NxTableCell>Required</NxTableCell>
-                <NxTableCell>Details</NxTableCell>
-              </NxTableRow>
-            </NxTableHead>
-            <NxTableBody>
-              <NxTableRow>
-                <NxTableCell>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Prop</NxTable.Cell>
+                <NxTable.Cell>Type</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Details</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>
                   HTML <NxCode>&lt;ul&gt;</NxCode> Attributes
-                </NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+                <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/ul">
                     HTML ul Attributes
                   </NxTextLink><br/>
-                </NxTableCell>
-                <NxTableCell>No</NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
                   <NxCode>NxTabList</NxCode> supports any html attributes that are normally supported by the
                   {' '}<NxCode>&lt;ul&gt;</NxCode> element.
-                </NxTableCell>
-              </NxTableRow>
-            </NxTableBody>
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
           </NxTable>
-        </section>
+        </NxTile.Subsection>
 
-        <section className="nx-tile-subsection">
-          <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTab</h3>
-          </header>
-          <p className="nx-p">
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
+            <NxH3>NxTab</NxH3>
+          </NxTile.SubsectionHeader>
+          <NxP>
             The component the user selects to switch tabs.
-            The index prop is automatically configured by the <code className="nx-code">NxTabs</code> component.
-            There should be one of these for each <code className="nx-code">NxTabPanel</code> component.
+            The index prop is automatically configured by the <NxCode>NxTabs</NxCode> component.
+            There should be one of these for each <NxCode>NxTabPanel</NxCode> component.
             Passes through all attributes to an underlying li element.
-          </p>
+          </NxP>
           <NxTable>
-            <NxTableHead>
-              <NxTableRow>
-                <NxTableCell>Prop</NxTableCell>
-                <NxTableCell>Type</NxTableCell>
-                <NxTableCell>Required</NxTableCell>
-                <NxTableCell>Details</NxTableCell>
-              </NxTableRow>
-            </NxTableHead>
-            <NxTableBody>
-              <NxTableRow>
-                <NxTableCell>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Prop</NxTable.Cell>
+                <NxTable.Cell>Type</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Details</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>
                   HTML <NxCode>&lt;li&gt;</NxCode> Attributes
-                </NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+                <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/li">
                     HTML li Attributes
                   </NxTextLink>
-                </NxTableCell>
-                <NxTableCell>No</NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
                   <NxCode>NxTab</NxCode> supports any html attributes that are normally supported by the
                   {' '}<NxCode>&lt;li&gt;</NxCode> element.
-                </NxTableCell>
-              </NxTableRow>
-            </NxTableBody>
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
           </NxTable>
-        </section>
+        </NxTile.Subsection>
 
-        <section className="nx-tile-subsection">
-          <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTabPanel</h3>
-          </header>
-          <p className="nx-p">
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
+            <NxH3>NxTabPanel</NxH3>
+          </NxTile.SubsectionHeader>
+          <NxP>
             Container component for the tab contents.
-            The index prop is automatically configured by the <code className="nx-code">NxTabs</code> component.
-            There should be one of these for each <code className="nx-code">NxTab</code> component.
+            The index prop is automatically configured by the <NxCode>NxTabs</NxCode> component.
+            There should be one of these for each <NxCode>NxTab</NxCode> component.
             Passes through all attributes to an underlying div element.
-          </p>
+          </NxP>
           <NxTable>
-            <NxTableHead>
-              <NxTableRow>
-                <NxTableCell>Prop</NxTableCell>
-                <NxTableCell>Type</NxTableCell>
-                <NxTableCell>Required</NxTableCell>
-                <NxTableCell>Details</NxTableCell>
-              </NxTableRow>
-            </NxTableHead>
-            <NxTableBody>
-              <NxTableRow>
-                <NxTableCell>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Prop</NxTable.Cell>
+                <NxTable.Cell>Type</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Details</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>
                   HTML <NxCode>&lt;div&gt;</NxCode> Attributes
-                </NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+                <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                     HTML div Attributes
                   </NxTextLink>
-                </NxTableCell>
-                <NxTableCell>No</NxTableCell>
-                <NxTableCell>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
                   <NxCode>NxTabPanel</NxCode> supports any html attributes that are normally supported by the
                   {' '}<NxCode>&lt;div&gt;</NxCode> element.
-                </NxTableCell>
-              </NxTableRow>
-            </NxTableBody>
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
           </NxTable>
-        </section>
+        </NxTile.Subsection>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="NxTabs in NxTile Example"
                           id="nx-tab-tile-example"
                           defaultCheckeredBackground={true}
                           liveExample={NxTabsTileHeaderExample}
                           codeExamples={NxTabsTileHeaderExampleCode}>
-        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
-        {' '}<code className="nx-code">NxTile</code>.
+        A basic example of how to use the <NxCode>NxTabs</NxCode> family of components in an
+        {' '}<NxCode>NxTile</NxCode>.
       </GalleryExampleTile>
       <GalleryExampleTile title="NxTabs in NxTile with no header Example"
                           id="nx-tab-tile-no-header-example"
                           defaultCheckeredBackground={true}
                           liveExample={NxTabsTileNoHeaderExample}
                           codeExamples={NxTabsTileNoHeaderExampleCode}>
-        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
-        {' '}<code className="nx-code">NxTile</code> where there is no tile header and the tabs are top most within
+        A basic example of how to use the <NxCode>NxTabs</NxCode> family of components in an
+        {' '}<NxCode>NxTile</NxCode> where there is no tile header and the tabs are top most within
         the tile.
       </GalleryExampleTile>
       <GalleryExampleTile title="NxTabs outside of NxTile Example"
@@ -213,22 +204,22 @@ export default function NxTabsPage() {
                           defaultCheckeredBackground={true}
                           liveExample={NxTabsOutsideTileExample}
                           codeExamples={NxTabsOutsideTileExampleCode}>
-        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components at the page
+        A basic example of how to use the <NxCode>NxTabs</NxCode> family of components at the page
         level, outside of tiles or tables.
       </GalleryExampleTile>
       <GalleryExampleTile title="NxTabs in NxModal Example"
                           id="nx-tab-modal-example"
                           liveExample={NxTabsModalExample}
                           codeExamples={NxTabsModalExampleCode}>
-        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
-        {' '}<code className="nx-code">NxModal</code>.
+        A basic example of how to use the <NxCode>NxTabs</NxCode> family of components in an
+        {' '}<NxCode>NxModal</NxCode>.
       </GalleryExampleTile>
       <GalleryExampleTile title="NxTabs in NxModal with No Header Example"
                           id="nx-tab-modal-no-header-example"
                           liveExample={NxTabsModalNoHeaderExample}
                           codeExamples={NxTabsModalNoHeaderExampleCode}>
-        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components in an
-        {' '}<code className="nx-code">NxModal</code> with no modal header.
+        A basic example of how to use the <NxCode>NxTabs</NxCode> family of components in an
+        {' '}<NxCode>NxModal</NxCode> with no modal header.
       </GalleryExampleTile>
     </>
   );

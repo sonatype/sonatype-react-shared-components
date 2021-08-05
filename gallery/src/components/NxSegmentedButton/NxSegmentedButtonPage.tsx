@@ -7,13 +7,12 @@
 import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
+import { NxTable, NxTextLink, NxP, NxCode } from '@sonatype/react-shared-components';
 
 import NxSegmentedButtonPrimaryExample from './NxSegmentedButtonPrimaryExample';
 import NxSegmentedButtonSecondaryExample from './NxSegmentedButtonSecondaryExample';
 import NxSegmentedButtonTertiaryExample from './NxSegmentedButtonTertiaryExample';
 import NxSegmentedButtonCloseHandlerExample from './NxSegmentedButtonCloseHandlerExample';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxTextLink }
-  from '@sonatype/react-shared-components';
 
 const nxSegmentedButtonPrimaryCode = require('./NxSegmentedButtonPrimaryExample?raw'),
     nxSegmentedButtonSecondaryCode = require('./NxSegmentedButtonSecondaryExample?raw'),
@@ -24,126 +23,126 @@ export default function NxSegmentedButtonPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
-          <code className="nx-code">NxSegmentedButton</code> renders a "segmented" or "split" button - one which
+        <NxP>
+          <NxCode>NxSegmentedButton</NxCode> renders a "segmented" or "split" button - one which
           contains the usual button behavior but in addition has a separate section on the right-hand end which
           opens a dropdown menu.
-        </p>
+        </NxP>
         <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Prop</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Default</NxTableCell>
-              <NxTableCell>Details</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>variant</NxTableCell>
-              <NxTableCell>'primary' | 'secondary' | 'tertiary'</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell></NxTableCell>
-              <NxTableCell>The variant of button. See examples of each variant below.</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>buttonContent</NxTableCell>
-              <NxTableCell>ReactNode</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell></NxTableCell>
-              <NxTableCell>The content to display within the main button segment.</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>children</NxTableCell>
-              <NxTableCell>ReactElement | ReactElement[]</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell></NxTableCell>
-              <NxTableCell>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Prop</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Default</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>variant</NxTable.Cell>
+              <NxTable.Cell>'primary' | 'secondary' | 'tertiary'</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>The variant of button. See examples of each variant below.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>buttonContent</NxTable.Cell>
+              <NxTable.Cell>ReactNode</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>The content to display within the main button segment.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>children</NxTable.Cell>
+              <NxTable.Cell>ReactElement | ReactElement[]</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
                 The items to display within the dropdown menu. Anything that can appear
-                within an <code className="nx-code">NxDropdown</code> is supported.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>isOpen</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell></NxTableCell>
-              <NxTableCell>Set to true to have the dropdown menu rendered as open.</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>onToggleOpen</NxTableCell>
-              <NxTableCell>Function</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell></NxTableCell>
-              <NxTableCell>
+                within an <NxCode>NxDropdown</NxCode> is supported.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>isOpen</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>Set to true to have the dropdown menu rendered as open.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>onToggleOpen</NxTable.Cell>
+              <NxTable.Cell>Function</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
                 Callback function called when the dropdown toggle segment of the button is activated.
                 This activation occurs when the dropdown button
                 is clicked and also, if the dropdown is currently open, whenever a click occurs anywhere on the
                 screen and any time the ESC key is pressed while focus is within the dropdown.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>onClick</NxTableCell>
-              <NxTableCell>Function</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell></NxTableCell>
-              <NxTableCell>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>onClick</NxTable.Cell>
+              <NxTable.Cell>Function</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
                 Click handler for the main segment of the button. Does not fire in response to dropdown interactions.
                 Receives the click event as a parameter.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>disabled</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>Disables both segments of the button when true.</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>onCloseClick</NxTableCell>
-              <NxTableCell>Function (MouseEvent =&lt; void)</NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell/>
-              <NxTableCell>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>disabled</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>Disables both segments of the button when true.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>onCloseClick</NxTable.Cell>
+              <NxTable.Cell>Function (MouseEvent =&lt; void)</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell/>
+              <NxTable.Cell>
                 A callback function to execute when a click is detected anywhere on the document which would by
                 default close this dropdown (i.e. any click while the dropdown is open). This callback is dispatched
                 before the dropdown is closed and is provided with a proxy of the <em>native</em> MouseEvent object.
-                Calling <code className="nx-code">preventDefault</code> on this MouseEvent will cause the dropdown
+                Calling <NxCode>preventDefault</NxCode> on this MouseEvent will cause the dropdown
                 not to close. Note however that the event is proxied in such a way that
-                calling <code className="nx-code">preventDefault</code> <em>will not</em> have any other
-                effects – that is, the true native MouseEvent's <code className="nx-code">defaultPrevented</code> flag
+                calling <NxCode>preventDefault</NxCode> <em>will not</em> have any other
+                effects – that is, the true native MouseEvent's <NxCode>defaultPrevented</NxCode> flag
                 will be untouched, and only the logic within the dropdown will be affected.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>onCloseKeyDown</NxTableCell>
-              <NxTableCell>Function (KeyboardEvent =&lt; void)</NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell/>
-              <NxTableCell>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>onCloseKeyDown</NxTable.Cell>
+              <NxTable.Cell>Function (KeyboardEvent =&lt; void)</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell/>
+              <NxTable.Cell>
                 A callback function to execute when a key press is detected which would by
                 default close this dropdown (i.e. an ESC keypress occurring within the dropdown while it is open).
                 This callback is dispatched before the dropdown is closed and is provided with the React KeyboardEvent
-                object.  Calling <code className="nx-code">preventDefault</code> on this event object will cause the
+                object.  Calling <NxCode>preventDefault</NxCode> on this event object will cause the
                 dropdown not to close.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
-              <NxTableCell>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
+              <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                   HTML div Attributes
                 </NxTextLink>
-              </NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell>N/A</NxTableCell>
-              <NxTableCell>
-                <code className="nx-code">NxSegmentedButton</code> supports any HTML attribute that's normally
-                supported by <code className="nx-code">&lt;div&gt;</code>.
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>N/A</NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxSegmentedButton</NxCode> supports any HTML attribute that's normally
+                supported by <NxCode>&lt;div&gt;</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
         </NxTable>
       </GalleryDescriptionTile>
 
@@ -151,8 +150,8 @@ export default function NxSegmentedButtonPage() {
                           id="nx-segmented-button-primary-example"
                           liveExample={NxSegmentedButtonPrimaryExample}
                           codeExamples={nxSegmentedButtonPrimaryCode}>
-        An <code className="nx-code">NxSegmentedButton</code> using primary styling, a disabled
-        primary-styled <code className="nx-code">NxSegmentedButton</code>, and a normal button to demonstrate
+        An <NxCode>NxSegmentedButton</NxCode> using primary styling, a disabled
+        primary-styled <NxCode>NxSegmentedButton</NxCode>, and a normal button to demonstrate
         alignment.
       </GalleryExampleTile>
 
@@ -160,8 +159,8 @@ export default function NxSegmentedButtonPage() {
                           id="nx-segmented-button-secondary-example"
                           liveExample={NxSegmentedButtonSecondaryExample}
                           codeExamples={nxSegmentedButtonSecondaryCode}>
-        An <code className="nx-code">NxSegmentedButton</code> using secondary styling, a disabled
-        secondary-styled <code className="nx-code">NxSegmentedButton</code>, and a normal button to demonstrate
+        An <NxCode>NxSegmentedButton</NxCode> using secondary styling, a disabled
+        secondary-styled <NxCode>NxSegmentedButton</NxCode>, and a normal button to demonstrate
         alignment.
       </GalleryExampleTile>
 
@@ -169,18 +168,18 @@ export default function NxSegmentedButtonPage() {
                           id="nx-segmented-button-tertiary-example"
                           liveExample={NxSegmentedButtonTertiaryExample}
                           codeExamples={nxSegmentedButtonTertiaryCode}>
-        An <code className="nx-code">NxSegmentedButton</code> using secondary styling, a disabled
-        secondary-styled <code className="nx-code">NxSegmentedButton</code>, and a normal button to demonstrate
+        An <NxCode>NxSegmentedButton</NxCode> using secondary styling, a disabled
+        secondary-styled <NxCode>NxSegmentedButton</NxCode>, and a normal button to demonstrate
         alignment.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Example with disabled close handlers"
                           liveExample={NxSegmentedButtonCloseHandlerExample}
                           codeExamples={nxSegmentedButtonCloseHandlerExampleCode}>
-        This example demonstrates the usage of the <code className="nx-code">onCloseClick</code>{' '}
-        and <code className="nx-code">onCloseKeyDown</code> props. These props can be used to disable the
+        This example demonstrates the usage of the <NxCode>onCloseClick</NxCode>{' '}
+        and <NxCode>onCloseKeyDown</NxCode> props. These props can be used to disable the
         close-on-click and close-on-ESC behaviors that the dropdown has by default, by
-        calling <code className="nx-code">preventDefault()</code> on the event. This example demonstrates both props
+        calling <NxCode>preventDefault()</NxCode> on the event. This example demonstrates both props
         simulataneously, but either can be used independently if desired.
       </GalleryExampleTile>
     </>

@@ -50,19 +50,19 @@ export default function NxTablePage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
+        <NxP>
           A set of React components which encapsulate and assist with the styles for HTML tables.
-        </p>
+        </NxP>
 
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTable</h3>
+            <NxH3>NxTable</NxH3>
           </header>
-          <p className="nx-p">
+          <NxP>
             The top-level component to use when displaying tables of data.
-            It can have <code className="nx-code">NxTable.Head</code> and
-            {' '}<code className="nx-code">NxTable.Body</code> components as children.
-          </p>
+            It can have <NxCode>NxTable.Head</NxCode> and
+            {' '}<NxCode>NxTable.Body</NxCode> components as children.
+          </NxP>
           <NxTable>
             <NxTable.Head>
               <NxTable.Row>
@@ -74,7 +74,7 @@ export default function NxTablePage() {
             </NxTable.Head>
             <NxTable.Body>
               <NxTable.Row>
-                <NxTable.Cell>HTML <code className="nx-code">&lt;table&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>HTML <NxCode>&lt;table&gt;</NxCode> Attributes</NxTable.Cell>
                 <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/table">
                     HTML table Attributes
@@ -82,8 +82,8 @@ export default function NxTablePage() {
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  <code className="nx-code">NxTable</code> supports any HTML attribute that's normally
-                  supported by <code className="nx-code">&lt;table&gt;</code>.
+                  <NxCode>NxTable</NxCode> supports any HTML attribute that's normally
+                  supported by <NxCode>&lt;table&gt;</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
@@ -92,12 +92,12 @@ export default function NxTablePage() {
 
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTable.Head</h3>
+            <NxH3>NxTable.Head</NxH3>
           </header>
-          <p className="nx-p">
-            Equivalent to the <code className="nx-code">&lt;thead&gt;</code> element.
-            The <code className="nx-code">NxTable.Row</code> component is the only valid child.
-          </p>
+          <NxP>
+            Equivalent to the <NxCode>&lt;thead&gt;</NxCode> element.
+            The <NxCode>NxTable.Row</NxCode> component is the only valid child.
+          </NxP>
           <NxTable>
             <NxTable.Head>
               <NxTable.Row>
@@ -109,7 +109,7 @@ export default function NxTablePage() {
             </NxTable.Head>
             <NxTable.Body>
               <NxTable.Row>
-                <NxTable.Cell>HTML <code className="nx-code">&lt;thead&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>HTML <NxCode>&lt;thead&gt;</NxCode> Attributes</NxTable.Cell>
                 <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/thead">
                     HTML thead Attributes
@@ -117,8 +117,8 @@ export default function NxTablePage() {
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  <code className="nx-code">NxTable.Head</code> supports any HTML attribute that's normally
-                  supported by <code className="nx-code">&lt;thead&gt;</code>.
+                  <NxCode>NxTable.Head</NxCode> supports any HTML attribute that's normally
+                  supported by <NxCode>&lt;thead&gt;</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
@@ -127,12 +127,12 @@ export default function NxTablePage() {
 
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTable.Body</h3>
+            <NxH3>NxTable.Body</NxH3>
           </header>
-          <p className="nx-p">
-            Equivalent to the <code className="nx-code">&lt;tbody&gt;</code> element.
-            It should have <code className="nx-code">NxTable.Row</code> for children.
-          </p>
+          <NxP>
+            Equivalent to the <NxCode>&lt;tbody&gt;</NxCode> element.
+            It should have <NxCode>NxTable.Row</NxCode> for children.
+          </NxP>
           <NxTable>
             <NxTable.Head>
               <NxTable.Row>
@@ -161,7 +161,7 @@ export default function NxTablePage() {
                 <NxTable.Cell>false</NxTable.Cell>
                 <NxTable.Cell>
                   Used to provide the handler for the Retry button that appears when the error state is active.
-                  Required when <code className="nx-code">error</code> is present.
+                  Required when <NxCode>error</NxCode> is present.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -176,7 +176,7 @@ export default function NxTablePage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>HTML <code className="nx-code">&lt;tbody&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>HTML <NxCode>&lt;tbody&gt;</NxCode> Attributes</NxTable.Cell>
                 <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/tbody">
                     HTML tbody Attributes
@@ -184,8 +184,8 @@ export default function NxTablePage() {
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  <code className="nx-code">NxTable.Body</code> supports any HTML attribute that's normally
-                  supported by <code className="nx-code">&lt;tbody&gt;</code>.
+                  <NxCode>NxTable.Body</NxCode> supports any HTML attribute that's normally
+                  supported by <NxCode>&lt;tbody&gt;</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
@@ -194,12 +194,12 @@ export default function NxTablePage() {
 
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTable.Row</h3>
+            <NxH3>NxTable.Row</NxH3>
           </header>
-          <p className="nx-p">
-            Equivalent to the <code className="nx-code">&lt;tr&gt;</code> element.
-            It should have <code className="nx-code">NxTable.Cell</code> for children.
-          </p>
+          <NxP>
+            Equivalent to the <NxCode>&lt;tr&gt;</NxCode> element.
+            It should have <NxCode>NxTable.Cell</NxCode> for children.
+          </NxP>
           <NxTable>
             <NxTable.Head>
               <NxTable.Row>
@@ -241,7 +241,7 @@ export default function NxTablePage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>HTML <code className="nx-code">&lt;tr&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>HTML <NxCode>&lt;tr&gt;</NxCode> Attributes</NxTable.Cell>
                 <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/tr">
                     HTML tr Attributes
@@ -249,8 +249,8 @@ export default function NxTablePage() {
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  <code className="nx-code">NxTable.Row</code> supports any HTML attribute that's normally
-                  supported by <code className="nx-code">&lt;tr&gt;</code>.
+                  <NxCode>NxTable.Row</NxCode> supports any HTML attribute that's normally
+                  supported by <NxCode>&lt;tr&gt;</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
@@ -259,12 +259,12 @@ export default function NxTablePage() {
 
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">NxTable.Cell</h3>
+            <NxH3>NxTable.Cell</NxH3>
           </header>
-          <p className="nx-p">
-            Equivalent to the <code className="nx-code">&lt;th&gt;</code> or
-            {' '}<code className="nx-code">&lt;td&gt;</code> element.
-          </p>
+          <NxP>
+            Equivalent to the <NxCode>&lt;th&gt;</NxCode> or
+            {' '}<NxCode>&lt;td&gt;</NxCode> element.
+          </NxP>
 
           <NxTable>
             <NxTable.Head>
@@ -281,15 +281,15 @@ export default function NxTablePage() {
                 <NxTable.Cell>boolean</NxTable.Cell>
                 <NxTable.Cell>false</NxTable.Cell>
                 <NxTable.Cell>
-                  Sets the <code className="nx-code">.nx-cell--meta-info</code> class on the cell. This class is
+                  Sets the <NxCode>.nx-cell--meta-info</NxCode> class on the cell. This class is
                   applied to table cells that provide meta-information about the table data, such as loading, error,
                   and empty table states. For those three states, the caller of
-                  the <code className="nx-code">NxTable</code> react component does not manage the table cells
-                  directly (instead using the appropriate props on <code className="nx-code">NxTable.Body</code>), and
+                  the <NxCode>NxTable</NxCode> react component does not manage the table cells
+                  directly (instead using the appropriate props on <NxCode>NxTable.Body</NxCode>), and
                   therefore does not need to use this prop. However, the prop is available for any
                   other meta-info states that the caller might wish to convey. The intended usage is that a cell
                   using this prop would be the only cell in the only row in the table body, and would have
-                  a <code className="nx-code">colspan</code> attribute causing it to span all the way across the
+                  a <NxCode>colspan</NxCode> attribute causing it to span all the way across the
                   table.
                 </NxTable.Cell>
               </NxTable.Row>
@@ -314,8 +314,8 @@ export default function NxTablePage() {
                 <NxTable.Cell>
                   Used to indicate the sorting direction applied.
                   A null value indicates the column is not yet sorted.
-                  This should only be used for <code className="nx-code">NxTable.Cell</code> components
-                  in the <code className="nx-code">NxTable.Head</code>
+                  This should only be used for <NxCode>NxTable.Cell</NxCode> components
+                  in the <NxCode>NxTable.Head</NxCode>
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -324,7 +324,7 @@ export default function NxTablePage() {
                 <NxTable.Cell>false</NxTable.Cell>
                 <NxTable.Cell>
                   Used to indicate a column whose data cells contain only one or
-                  more <code className="nx-code">NxFontAwesomeIcon</code>s
+                  more <NxCode>NxFontAwesomeIcon</NxCode>s
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -333,15 +333,15 @@ export default function NxTablePage() {
                 <NxTable.Cell>false</NxTable.Cell>
                 <NxTable.Cell>
                   Desginates a cell that should contain only the right-facing chevron icon used at that end of
-                  clickable table cells. <code className="nx-code">NxTable.Cell</code>s with this prop set will
-                  self-populate with the icon, and do not take <code className="nx-code">children</code>. The icon
+                  clickable table cells. <NxCode>NxTable.Cell</NxCode>s with this prop set will
+                  self-populate with the icon, and do not take <NxCode>children</NxCode>. The icon
                   will be wrapped in a button for accessibility purposes, with the button's accessible name set by
                   the row's <NxCode>clickAccessibleLabel</NxCode> prop or generated from the text contents of the
                   rest of the row.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>HTML <code className="nx-code">&lt;td&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>HTML <NxCode>&lt;td&gt;</NxCode> Attributes</NxTable.Cell>
                 <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/td">
                     HTML td Attributes
@@ -349,8 +349,8 @@ export default function NxTablePage() {
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  <code className="nx-code">NxTable.Cell</code> supports any HTML attribute that's normally
-                  supported by <code className="nx-code">&lt;td&gt;</code>.
+                  <NxCode>NxTable.Cell</NxCode> supports any HTML attribute that's normally
+                  supported by <NxCode>&lt;td&gt;</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
@@ -365,28 +365,28 @@ export default function NxTablePage() {
             As seen above, the various child components of <NxCode>NxTable</NxCode> are attached as properties on the
             <NxCode>NxTable</NxCode> object and typically accessed using JavaScript dot notation. In previous versions
             of RSC, this was not the case and the subobjects were instead exposed as top level exports with names along
-            the lines of <NxCode>NxTableRow</NxCode>, <NxCode>NxTableCell</NxCode>, and so on. These old names are still
-            exported by RSC for backwards compatibility, but are deprecated and may be removed in a future major version
-            release.
+            the lines of <NxCode>NxTable.Row</NxCode>, <NxCode>NxTable.Cell</NxCode>, and so on. These old names are
+            still exported by RSC for backwards compatibility, but are deprecated and may be removed in a future major
+            version release.
           </NxP>
         </NxTile.Subsection>
 
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
-            <h3 className="nx-h3">SCSS Helper Functions</h3>
+            <NxH3>SCSS Helper Functions</NxH3>
           </header>
-          <p className="nx-p">
+          <NxP>
             When constructing a table of paginated data, it is often the case that the table is intended to be exactly
             tall enough to contain one full page's worth of rows, even when on the last page, which may contain fewer
             rows. Achieving this effect requires setting an explicit height on the table container element that is
             equal to the height that it would implicitly get when full. Calculating this height however is
             somewhat complex, requiring summing up the heights of the various table elements in play. Therefore
             RSC provides a SCSS helper function which will return the height of
-            the <code className="nx-code">.nx-table-container</code>'s content box for a paginated table with the
+            the <NxCode>.nx-table-container</NxCode>'s content box for a paginated table with the
             given parameters. The function, located in
-            the <code className="nx-code">scss-shared/_nx-table-helpers.scss</code> file, is named
-            <code className="nx-code">pagination-table-height</code>. See the description of its parameters below.
-          </p>
+            the <NxCode>scss-shared/_nx-table-helpers.scss</NxCode> file, is named
+            <NxCode>pagination-table-height</NxCode>. See the description of its parameters below.
+          </NxP>
           <NxTable>
             <NxTable.Head>
               <NxTable.Row>
@@ -398,7 +398,7 @@ export default function NxTablePage() {
             </NxTable.Head>
             <NxTable.Body>
               <NxTable.Row>
-                <NxTable.Cell><code className="nx-code">$body-row-count</code></NxTable.Cell>
+                <NxTable.Cell><NxCode>$body-row-count</NxCode></NxTable.Cell>
                 <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell>N/A</NxTable.Cell>
                 <NxTable.Cell>
@@ -408,7 +408,7 @@ export default function NxTablePage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell><code className="nx-code">$header-filter-row-count</code></NxTable.Cell>
+                <NxTable.Cell><NxCode>$header-filter-row-count</NxCode></NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>0</NxTable.Cell>
                 <NxTable.Cell>
@@ -416,7 +416,7 @@ export default function NxTablePage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell><code className="nx-code">$header-row-count</code></NxTable.Cell>
+                <NxTable.Cell><NxCode>$header-row-count</NxCode></NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>1</NxTable.Cell>
                 <NxTable.Cell>
@@ -428,16 +428,16 @@ export default function NxTablePage() {
           </NxTable>
         </section>
 
-        <p className="nx-p">
+        <NxP>
           For guidance on the construction of a scrolling table, see the scrolling example on
-          the <code className="nx-code">nx-table-container</code> HTML element page.
-        </p>
+          the <NxCode>nx-table-container</NxCode> HTML element page.
+        </NxP>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple Example"
                           liveExample={NxTableSimpleExample}
                           codeExamples={tableSimpleExampleCode}>
-        A basic example of <code className="nx-code">NxTable</code>.
+        A basic example of <NxCode>NxTable</NxCode>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Clickable Row Example"
@@ -469,7 +469,7 @@ export default function NxTablePage() {
                           id="nx-table-pagination-example"
                           liveExample={NxTablePaginationExample}
                           codeExamples={paginationCodeExamples}>
-        An example of a table with an <code className="nx-code">NxPagination</code> component in the footer to control
+        An example of a table with an <NxCode>NxPagination</NxCode> component in the footer to control
         paging.
       </GalleryExampleTile>
 
@@ -477,37 +477,37 @@ export default function NxTablePage() {
                           id="nx-table-pagination-filter-example"
                           liveExample={NxTablePaginationFilterExample}
                           codeExamples={paginationFilterCodeExamples}>
-        An example of a table with an <code className="nx-code">NxPagination</code> component in the footer to control
+        An example of a table with an <NxCode>NxPagination</NxCode> component in the footer to control
         paging as well as a row of filter headers. Demonstrates the use of
-        the <code className="nx-code">pagination-table-height</code> SCSS function when a filter row is present.
+        the <NxCode>pagination-table-height</NxCode> SCSS function when a filter row is present.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Loading Example"
                           id="nx-table-loading-example"
                           liveExample={NxTableLoadingExample}
                           codeExamples={tableLoadingExample}>
-        An example of how <code className="nx-code">NxTable</code> should be used while its data is loading.
+        An example of how <NxCode>NxTable</NxCode> should be used while its data is loading.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Error Example"
                           id="nx-table-error-example"
                           liveExample={NxTableErrorExample}
                           codeExamples={tableErrorExample}>
-        An example of how <code className="nx-code">NxTable</code> should be used to indicate that there was an error
+        An example of how <NxCode>NxTable</NxCode> should be used to indicate that there was an error
         loading its data.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Empty Example"
                           liveExample={NxTableEmptyExample}
                           codeExamples={tableEmptyExample}>
-        An example of how <code className="nx-code">NxTable</code> should be used to indicate that there is no data
+        An example of how <NxCode>NxTable</NxCode> should be used to indicate that there is no data
         to be seen.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Custom Meta-Info Example"
                           liveExample={NxTableMetaInfoExample}
                           codeExamples={tableMetaInfoExample}>
-        An example of how <code className="nx-code">NxTable</code> should be used with a custom meta-info situation.
+        An example of how <NxCode>NxTable</NxCode> should be used with a custom meta-info situation.
       </GalleryExampleTile>
     </>
   );

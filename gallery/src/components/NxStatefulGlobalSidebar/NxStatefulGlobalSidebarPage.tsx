@@ -7,7 +7,7 @@
 import React from 'react';
 import CodeExample from '../../CodeExample';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { NxP, NxCode, NxTable, NxTile, NxH2 } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxH3, NxH2, NxTile, NxTextLink } from '@sonatype/react-shared-components';
 
 import './NxStatefulGlobalSidebarPage.scss';
 
@@ -19,12 +19,12 @@ export default function NxStatefulGlobalSidebarPage() {
       <GalleryDescriptionTile>
         <NxP>
           <NxCode>NxStatefulGlobalSidebar</NxCode> is the stateful version of <NxCode>NxGlobalSidebar</NxCode>. Please
-          {' '}<a className="nx-text-link" href="#/Pages/NxGlobalSidebar">refer to that component</a> for shared
+          {' '}<NxTextLink href="#/Pages/NxGlobalSidebar">refer to that component</NxTextLink> for shared
           props and documentation.
         </NxP>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <h3 className="nx-h3"><NxCode>NxStatefulGlobalSidebar</NxCode> Props</h3>
+            <NxH3><NxCode>NxStatefulGlobalSidebar</NxCode> Props</NxH3>
           </NxTile.SubsectionHeader>
           <NxTable>
             <NxTable.Head>
@@ -57,9 +57,9 @@ export default function NxStatefulGlobalSidebarPage() {
         </NxTile.Header>
         <NxTile.Content>
           <NxP>
-            <a className="nx-text-link" href="#/NxStatefulGlobalSidebarExample">
+            <NxTextLink href="#/NxStatefulGlobalSidebarExample">
               Click here to navigate to the live example.
-            </a>
+            </NxTextLink>
           </NxP>
           <CodeExample content={NxStatefulGlobalSidebarExample} />
         </NxTile.Content>

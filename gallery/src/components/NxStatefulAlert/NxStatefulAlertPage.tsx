@@ -7,6 +7,7 @@
 import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile, GalleryTile} from '../../gallery-components/GalleryTiles';
+import { NxTable, NxP } from '@sonatype/react-shared-components';
 
 import NxStatefulAlertExample from './NxStatefulAlertExample';
 import NxStatefulErrorAlertExample from './NxStatefulErrorAlertExample';
@@ -23,31 +24,31 @@ const nxStatefulErrorAlertExampleCode = require('./NxStatefulErrorAlertExample?r
 const NxStatefulAlertPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         A Stateful version of generic alert that tracks its own dismissal state. It contains preconfigured variations
         for the info, warning, error, and success styles.
-      </p>
-      <p className="nx-p">Accepts any prop that is valid on a div as well as the following:</p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">icon</td>
-            <td className="nx-cell">FontAwesome's Icons</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">
+      </NxP>
+      <NxP>Accepts any prop that is valid on a div as well as the following:</NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>icon</NxTable.Cell>
+            <NxTable.Cell>FontAwesome's Icons</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>
               A FontAwesome icon to use in the alert message
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Alert Example"
@@ -58,11 +59,9 @@ const NxStatefulAlertPage = () =>
     </GalleryExampleTile>
 
     <GalleryTile title="NxStatefulErrorAlert, etc.">
-      <p className="nx-p">Standard sonatype alerts.</p>
-      <p className="nx-p">They come in four variations: Error, Info, Warning, and Success.</p>
-      <p className="nx-p">
-        Accepts any prop that is valid on a div.
-      </p>
+      <NxP>Standard sonatype alerts.</NxP>
+      <NxP>They come in four variations: Error, Info, Warning, and Success.</NxP>
+      <NxP>Accepts any prop that is valid on a div.</NxP>
     </GalleryTile>
 
     <GalleryExampleTile title="Success Alert Example"

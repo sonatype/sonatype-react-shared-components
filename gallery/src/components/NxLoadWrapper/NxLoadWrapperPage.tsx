@@ -5,9 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTextLink, NxP, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import NxLoadWrapperErrorRetryExample from './NxLoadWrapperErrorRetryExample';
 import NxLoadWrapperLoadingExample from './NxLoadWrapperLoadingExample';
@@ -20,53 +20,53 @@ const errorRetrySourceCode = require('./NxLoadWrapperErrorRetryExample?raw');
 const NxLoadWrapperPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         A component that will display either a loading spinner, an error message, or the specified child VDOM
-      </p>
-      <p className="nx-p">Props:</p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">error</td>
-            <td className="nx-cell">string | JSX</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+      </NxP>
+      <NxP>Props:</NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>error</NxTable.Cell>
+            <NxTable.Cell>string | JSX</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A message that represents an error that occurred.  If defined, will be rendered via NxLoadError
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">loading</td>
-            <td className="nx-cell">boolean</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>loading</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               If true, and error is unset, a loading spinner will be rendered via NxLoadingSpinner
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">children</td>
-            <td className="nx-cell">VDOM</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">VDOM to render if loading is false and error is not set</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">retryHandler</td>
-            <td className="nx-cell">Function</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">
-              A Retry button will be rendered in the <code className="nx-code">NxLoadError</code> which
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>children</NxTable.Cell>
+            <NxTable.Cell>VDOM</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>VDOM to render if loading is false and error is not set</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>retryHandler</NxTable.Cell>
+            <NxTable.Cell>Function</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>
+              A Retry button will be rendered in the <NxCode>NxLoadError</NxCode> which
               executes this function when clicked.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
       <NxP>
         <NxCode>NxLoadWrapper</NxCode> is most often used inside of <NxCode>.nx-page-main</NxCode> or one of its
         descendants. However there are cases where it makes sense to use it at a higher level in order to control
@@ -79,24 +79,24 @@ const NxLoadWrapperPage = () =>
     <GalleryExampleTile title="Renders children when not loading or in error"
                         liveExample={NxLoadWrapperChildrenExample}
                         codeExamples={childrenSourceCode}>
-      An <code className="nx-code">NxLoadWrapper</code> in which
-      neither <code className="nx-code">loading</code> nor <code className="nx-code">error</code> are
+      An <NxCode>NxLoadWrapper</NxCode> in which
+      neither <NxCode>loading</NxCode> nor <NxCode>error</NxCode> are
       set. As a result, the children are rendered.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Loading"
                         liveExample={NxLoadWrapperLoadingExample}
                         codeExamples={loadingSourceCode}>
-      An <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">loading</code> flag is
+      An <NxCode>NxLoadWrapper</NxCode> in which the <NxCode>loading</NxCode> flag is
       set, and thus the loading spinner is visible.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Error with retry button"
                         liveExample={NxLoadWrapperErrorRetryExample}
                         codeExamples={errorRetrySourceCode}>
-      An <code className="nx-code">NxLoadWrapper</code> in which the <code className="nx-code">error</code> property
-      is set along with a <code className="nx-code">retryHandler</code>, and thus
-      an <code className="nx-code">NxErrorAlert</code> is rendered.
+      An <NxCode>NxLoadWrapper</NxCode> in which the <NxCode>error</NxCode> property
+      is set along with a <NxCode>retryHandler</NxCode>, and thus
+      an <NxCode>NxErrorAlert</NxCode> is rendered.
     </GalleryExampleTile>
   </>;
 

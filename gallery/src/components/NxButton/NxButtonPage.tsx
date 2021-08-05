@@ -14,8 +14,7 @@ import NxButtonTertiaryExample from './NxButtonTertiaryExample';
 import NxButtonErrorExample from './NxButtonErrorExample';
 import NxButtonIconExample from './NxButtonIconExample';
 import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxCode, NxTextLink, NxP }
-  from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxTextLink, NxP } from '@sonatype/react-shared-components';
 
 const NxButtonDefaultCode = require('./NxButtonDefaultExample?raw'),
     nxButtonPrimaryCode = require('./NxButtonPrimaryExample?raw'),
@@ -34,50 +33,50 @@ export default function NxButtonPage() {
           the <NxCode>.nx-btn</NxCode> CSS class.
         </NxP>
         <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Prop</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Default</NxTableCell>
-              <NxTableCell>Details</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>variant</NxTableCell>
-              <NxTableCell>'primary' | 'secondary' | 'tertiary' | 'icon-only' | 'error'</NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell>secondary</NxTableCell>
-              <NxTableCell>The variant of button. See examples of each variant below.</NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>title</NxTableCell>
-              <NxTableCell>string</NxTableCell>
-              <NxTableCell>Required on icon-only buttons</NxTableCell>
-              <NxTableCell>Empty</NxTableCell>
-              <NxTableCell>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Prop</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Default</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>variant</NxTable.Cell>
+              <NxTable.Cell>'primary' | 'secondary' | 'tertiary' | 'icon-only' | 'error'</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>secondary</NxTable.Cell>
+              <NxTable.Cell>The variant of button. See examples of each variant below.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>title</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>Required on icon-only buttons</NxTable.Cell>
+              <NxTable.Cell>Empty</NxTable.Cell>
+              <NxTable.Cell>
                 A string to render as a tooltip and accessibility label for the button. This is generally not necessary
                 for buttons that include text content, but icon-only buttons should use this to make the button's
                 meaning clear in all contexts. Omitting this prop when using an icon-only button is deprecated and will
                 become unsupported in a future release.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>HTML <NxCode>&lt;button&gt;</NxCode> Attributes</NxTableCell>
-              <NxTableCell>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>&lt;button&gt;</NxCode> Attributes</NxTable.Cell>
+              <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/button">
                   HTML button Attributes
                 </NxTextLink>
-              </NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell></NxTableCell>
-              <NxTableCell>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
                 <NxCode>NxButton</NxCode> supports any html attribute that's normally supported by the
                 {' '}<NxCode>&lt;button&gt;</NxCode> element.
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
         </NxTable>
         <NxP>
           <NxCode>NxButton</NxCode>s are often used within an <NxCode>NxButtonBar</NxCode> wrapper. See the

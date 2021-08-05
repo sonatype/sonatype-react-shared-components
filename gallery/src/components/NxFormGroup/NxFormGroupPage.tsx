@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxTextLink }
+import { NxTable, NxTextLink, NxP, NxCode }
   from '@sonatype/react-shared-components';
 
 import NxFormGroupExample from './NxFormGroupExample';
@@ -24,105 +24,107 @@ const nxFormGroupExampleCode = require('./NxFormGroupExample?raw'),
 const NxFormGroupPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
-        An <code className="nx-code">NxFormGroup</code> is a wrapper around a form field which provides the labels
-        and overall spacing. Most commonly, <code className="nx-code">NxFormGroup</code> wraps
-        an <code className="nx-code">NxTextInput</code>, but it may wrap other content such as
-        a <code className="nx-code">&lt;select&gt;</code>. It <em>should not</em> be used to wrap radio
+      <NxP>
+        An <NxCode>NxFormGroup</NxCode> is a wrapper around a form field which provides the labels
+        and overall spacing. Most commonly, <NxCode>NxFormGroup</NxCode> wraps
+        an <NxCode>NxTextInput</NxCode>, but it may wrap other content such as
+        a <NxCode>&lt;select&gt;</NxCode>. It <em>should not</em> be used to wrap radio
         and checkbox groups, as those are best encapsulated
-        in <code className="nx-code">&lt;fieldset&gt;</code> elements.
-      </p>
+        in <NxCode>&lt;fieldset&gt;</NxCode> elements.
+      </NxP>
       <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Prop</NxTableCell>
-            <NxTableCell>Type</NxTableCell>
-            <NxTableCell>Required</NxTableCell>
-            <NxTableCell>Default</NxTableCell>
-            <NxTableCell>Details</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody>
-          <NxTableRow>
-            <NxTableCell>label</NxTableCell>
-            <NxTableCell>string | ReactNode</NxTableCell>
-            <NxTableCell>Yes</NxTableCell>
-            <NxTableCell>N/A</NxTableCell>
-            <NxTableCell>JSX content to render as the label for the group. Must not be null or undefined.</NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>sublabel</NxTableCell>
-            <NxTableCell>string | ReactNode</NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>empty</NxTableCell>
-            <NxTableCell>JSX content to render as the sublabel for the group.</NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>isRequired</NxTableCell>
-            <NxTableCell>boolean</NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>false</NxTableCell>
-            <NxTableCell>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Default</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>label</NxTable.Cell>
+            <NxTable.Cell>string | ReactNode</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>N/A</NxTable.Cell>
+            <NxTable.Cell>
+              JSX content to render as the label for the group. Must not be null or undefined.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>sublabel</NxTable.Cell>
+            <NxTable.Cell>string | ReactNode</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>empty</NxTable.Cell>
+            <NxTable.Cell>JSX content to render as the sublabel for the group.</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>isRequired</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>false</NxTable.Cell>
+            <NxTable.Cell>
               Sets whether the input should display the optional flag – the flag is present by default and
-              setting <code className="nx-code">isRequired</code> to true removes the flag.
-            </NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>children</NxTableCell>
-            <NxTableCell>A single ReactElement which can take an id as a prop</NxTableCell>
-            <NxTableCell>Yes</NxTableCell>
-            <NxTableCell>N/A</NxTableCell>
-            <NxTableCell>
+              setting <NxCode>isRequired</NxCode> to true removes the flag.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>children</NxTable.Cell>
+            <NxTable.Cell>A single ReactElement which can take an id as a prop</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>N/A</NxTable.Cell>
+            <NxTable.Cell>
               The form element that this group wraps and labels. For accessibility reasons, it
-              must be able to receive <code className="nx-code">id</code> and{' '}
-              <code className="nx-code">aria-describedby</code> props which must ultimately get rendered onto the
+              must be able to receive <NxCode>id</NxCode> and{' '}
+              <NxCode>aria-describedby</NxCode> props which must ultimately get rendered onto the
               native input element. If these props are already present, their values
-              will be respected. Otherwise, the <code className="nx-code">NxFormGroup</code> will clone and
+              will be respected. Otherwise, the <NxCode>NxFormGroup</NxCode> will clone and
               augment the child JSX node with autogenerated values for the props.
-              If <code className="nx-code">aria-describedby</code> is provided, the autogenerated id of the sublabel
+              If <NxCode>aria-describedby</NxCode> is provided, the autogenerated id of the sublabel
               will be appended to the existing values.
-            </NxTableCell>
-          </NxTableRow>
-          <NxTableRow>
-            <NxTableCell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
+            <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                 HTML div Attributes
               </NxTextLink>
-            </NxTableCell>
-            <NxTableCell>No</NxTableCell>
-            <NxTableCell>N/A</NxTableCell>
-            <NxTableCell>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>N/A</NxTable.Cell>
+            <NxTable.Cell>
               NxFormGroup supports any HTML attribute that's normally supported
-              by <code className="nx-code">&lt;div&gt;</code>.
-            </NxTableCell>
-          </NxTableRow>
-        </NxTableBody>
+              by <NxCode>&lt;div&gt;</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Basic Example"
                         liveExample={NxFormGroupExample}
                         codeExamples={nxFormGroupExampleCode}>
-      A basic example of an <code className="nx-code">NxFormGroup</code> wrapping
-      an <code className="nx-code">NxTextInput</code>.
+      A basic example of an <NxCode>NxFormGroup</NxCode> wrapping
+      an <NxCode>NxTextInput</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Required Example"
                         liveExample={NxFormGroupRequiredExample}
                         codeExamples={nxFormGroupRequiredExampleCode}>
-      An example of an <code className="nx-code">NxFormGroup</code> wrapping
-      an <code className="nx-code">NxTextInput</code> which uses the isRequired flag to remove the "Optional"
+      An example of an <NxCode>NxFormGroup</NxCode> wrapping
+      an <NxCode>NxTextInput</NxCode> which uses the isRequired flag to remove the "Optional"
       indicator.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Sublabel Example"
                         liveExample={NxFormGroupSublabelExample}
                         codeExamples={nxFormGroupSublabelExampleCode}>
-      An example of an <code className="nx-code">NxFormGroup</code> which includes a sublabel. This example also
-      shows that <code className="nx-code">NxFormGroup</code> can wrap a
-      {' '}<code className="nx-code">&lt;select&gt;</code> in addition to
-      an <code className="nx-code">NxTextInput</code>.
+      An example of an <NxCode>NxFormGroup</NxCode> which includes a sublabel. This example also
+      shows that <NxCode>NxFormGroup</NxCode> can wrap a
+      {' '}<NxCode>&lt;select&gt;</NxCode> in addition to
+      an <NxCode>NxTextInput</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Rich Label Content Example"
