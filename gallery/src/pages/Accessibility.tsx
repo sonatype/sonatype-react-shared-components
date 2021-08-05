@@ -11,11 +11,17 @@ import { NxP, NxCode, NxH3, NxList, NxTextLink } from '@sonatype/react-shared-co
 const Accessibility = () =>
   <GalleryTile title="Accessibility">
     <NxP>
-      Accessibility (A11y) means ensuring that our applications are usable by everybody. We do this in a variety of
+      Accessibility (a11y) means ensuring that our applications are usable by everybody. We do this in a variety of
       different ways. We make sure that our designs are clear and that they follow accessibility guidelines for
       contrast and readability. Our components are written with semantic HTML, correct use of <NxCode>aria</NxCode>
       tags, and testing in VoiceOver and ChromeVox accessibility is built into the Shared Components. However there is
       still work that needs to be done to make sure that the application as a whole is accessible.
+    </NxP>
+    <NxP>
+      It's important to note that accessibility is an ongoing process. We do not consider this work to be complete by
+      any measure. Unfortunately the standards and documentation are sometimes lacking (or even contradictory) often
+      making compliance a moving target. Additionally different browsers and screen readers behave in different ways so
+      something that works in ChromeVox might not work in VoiceOver.
     </NxP>
 
     <NxH3 className="nx-tile__section-header">Making your pages accessible</NxH3>
@@ -43,7 +49,7 @@ const Accessibility = () =>
       <NxList.Item>
         All form elements should have a label.
       </NxList.Item>
-      <NxList.Item>Have you checked your page in ChromeVox or VoiceOver?</NxList.Item>
+      <NxList.Item>Have you checked your page in ChromeVox and/or VoiceOver?</NxList.Item>
     </NxList>
 
     <NxH3 className="nx-tile__section-header">
@@ -52,10 +58,19 @@ const Accessibility = () =>
 
     <NxList className="nx-list--bulleted">
       <NxList.Item>
-        <NxTextLink>https://docs.sonatype.com/display/ENG/Accessibility+Best+Practices</NxTextLink>
+        <NxTextLink href="https://docs.sonatype.com/display/ENG/Accessibility+Best+Practices">
+          Sonatype's Accessibility Best Practices
+        </NxTextLink>
       </NxList.Item>
       <NxList.Item>
-        <NxTextLink>https://developer.mozilla.org/en-US/docs/Web/Accessibility</NxTextLink>
+        <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">
+          MDN accessibility page
+        </NxTextLink>
+      </NxList.Item>
+      <NxList.Item>
+        <NxTextLink href="https://www.w3.org/standards/webdesign/accessibility">
+          W3C accessibility page
+        </NxTextLink>
       </NxList.Item>
     </NxList>
 
