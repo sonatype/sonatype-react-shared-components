@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use 'sass:math';
 @import "../../scss-shared/nx-container-helpers";
 
 .nx-color-picker {
@@ -19,7 +20,7 @@
 
   background-clip: content-box;
   background-color: var(--nx-selectable-color-dark);
-  border-radius: $size / 2;
+  border-radius: math.div($size, 2);
   box-sizing: border-box;
   border: 1px solid transparent;
   cursor: pointer;
