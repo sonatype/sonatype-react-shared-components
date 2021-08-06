@@ -64,7 +64,10 @@ const Accessibility = () =>
         <NxList.Item>
           All form elements should have a label.
         </NxList.Item>
-        <NxList.Item>Have you checked your page in ChromeVox and/or VoiceOver?</NxList.Item>
+        <NxList.Item>
+          Have you checked your page in ChromeVox and/or VoiceOver? Can you navigate and use the page without looking
+          at the browser viewport?
+        </NxList.Item>
       </NxList>
     </NxTile.Subsection>
 
