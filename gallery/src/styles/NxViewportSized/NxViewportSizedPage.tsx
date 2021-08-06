@@ -14,7 +14,9 @@ import {
   NxStatefulAccordion,
   NxAccordion,
   NxP,
-  NxTextLink
+  NxTextLink,
+  NxTile,
+  NxH2
 } from '@sonatype/react-shared-components';
 
 const NxViewportSizedExample = require('./NxViewportSizedExample.tsx?raw'),
@@ -25,13 +27,13 @@ const NxViewportSizedExample = require('./NxViewportSizedExample.tsx?raw'),
 export default function NxViewportSizedPage() {
   return (
     <>
-      <section className="nx-tile">
-        <header className="nx-tile-header">
-          <div className="nx-tile-header__title">
-            <h2 className="nx-h2">Description</h2>
-          </div>
-        </header>
-        <div className="nx-tile-content">
+      <NxTile>
+        <NxTile.Header>
+          <NxTile.HeaderTitle>
+            <NxH2>Description</NxH2>
+          </NxTile.HeaderTitle>
+        </NxTile.Header>
+        <NxTile.Content>
           <NxP>
             In applications that do not use full-page scrolling, there are often pages where it is desired for
             the page content to fit the viewport height, and for one element in particular to shrink and/or expand
@@ -170,15 +172,15 @@ export default function NxViewportSizedPage() {
             and without the <NxCode>nx-viewport-sized</NxCode> family of classes, and to make manual
             adjustments if necessary.
           </NxWarningAlert>
-        </div>
-      </section>
-      <section className="nx-tile">
-        <header className="nx-tile-header">
-          <div className="nx-tile-header__title">
-            <h2 className="nx-h2">Expanding Example</h2>
-          </div>
-        </header>
-        <div className="nx-tile-content">
+        </NxTile.Content>
+      </NxTile>
+      <NxTile>
+        <NxTile.Header>
+          <NxTile.HeaderTitle>
+            <NxH2>Expanding Example</NxH2>
+          </NxTile.HeaderTitle>
+        </NxTile.Header>
+        <NxTile.Content>
           <NxP>
             In this example, the dynamic element is a small table whose scroll container expands to fill the
             available space in the page.
@@ -193,23 +195,23 @@ export default function NxViewportSizedPage() {
               Click here to navigate to the live example.
             </NxTextLink>
           </NxP>
-        </div>
-        <div className="nx-tile-content nx-tile-content--accordion-container">
+        </NxTile.Content>
+        <NxTile.Content className="nx-tile-content--accordion-container">
           <NxStatefulAccordion>
             <NxAccordion.Header>
               <h2 className="nx-accordion__header-title">Code Examples</h2>
             </NxAccordion.Header>
             <CodeExample content={NxViewportSizedExpandingExample} />
           </NxStatefulAccordion>
-        </div>
-      </section>
-      <section className="nx-tile">
-        <header className="nx-tile-header">
-          <div className="nx-tile-header__title">
-            <h2 className="nx-h2">Shrinking Example</h2>
-          </div>
-        </header>
-        <div className="nx-tile-content">
+        </NxTile.Content>
+      </NxTile>
+      <NxTile>
+        <NxTile.Header>
+          <NxTile.HeaderTitle>
+            <NxH2>Shrinking Example</NxH2>
+          </NxTile.HeaderTitle>
+        </NxTile.Header>
+        <NxTile.Content>
           <NxP>
             In this example, the dynamic element is a large table whose scroll container shrinks to fit into the page.
           </NxP>
@@ -223,23 +225,23 @@ export default function NxViewportSizedPage() {
               Click here to navigate to the live example.
             </NxTextLink>
           </NxP>
-        </div>
-        <div className="nx-tile-content nx-tile-content--accordion-container">
+        </NxTile.Content>
+        <NxTile.Content className="nx-tile-content--accordion-container">
           <NxStatefulAccordion>
             <NxAccordion.Header>
               <h2 className="nx-accordion__header-title">Code Examples</h2>
             </NxAccordion.Header>
             <CodeExample content={NxViewportSizedExample} />
           </NxStatefulAccordion>
-        </div>
-      </section>
-      <section className="nx-tile">
-        <header className="nx-tile-header">
-          <div className="nx-tile-header__title">
-            <h2 className="nx-h2">Adjacent Scrollables Example</h2>
-          </div>
-        </header>
-        <div className="nx-tile-content">
+        </NxTile.Content>
+      </NxTile>
+      <NxTile>
+        <NxTile.Header>
+          <NxTile.HeaderTitle>
+            <NxH2>Adjacent Scrollables Example</NxH2>
+          </NxTile.HeaderTitle>
+        </NxTile.Header>
+        <NxTile.Content>
           <NxP>
             In this example, two adjacent scrollable elements are present.{' '}
             <NxCode>.nx-viewport-size__container--adjacent</NxCode> is used on the closest common ancestor of the
@@ -254,8 +256,8 @@ export default function NxViewportSizedPage() {
               Click here to navigate to the live example.
             </NxTextLink>
           </NxP>
-        </div>
-        <div className="nx-tile-content nx-tile-content--accordion-container">
+        </NxTile.Content>
+        <NxTile.Content className="nx-tile-content--accordion-container">
           <NxStatefulAccordion>
             <NxAccordion.Header>
               <h2 className="nx-accordion__header-title">Code Examples</h2>
@@ -263,8 +265,8 @@ export default function NxViewportSizedPage() {
             <CodeExample content={NxViewportSizedAdjacentStyles} language="scss" />
             <CodeExample content={NxViewportSizedAdjacentExample} />
           </NxStatefulAccordion>
-        </div>
-      </section>
+        </NxTile.Content>
+      </NxTile>
     </>
   );
 }
