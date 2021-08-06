@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxH3, NxH4, NxTextLink } from '@sonatype/react-shared-components';
 
 import CodeExample from '../../CodeExample';
 import FontLayoutExample from './FontLayoutExample';
@@ -46,7 +46,7 @@ const FontSizePage = () =>
     </NxP>
 
     <section>
-      <h3 className="nx-h3">Vocabulary</h3>
+      <NxH3>Vocabulary</NxH3>
       <ul className="nx-list">
         <li className="nx-list__item">
           <span className="nx-list__text">Glyph:</span>
@@ -71,7 +71,7 @@ const FontSizePage = () =>
     </section>
 
     <section>
-      <h3 className="nx-h3">Boxes</h3>
+      <NxH3>Boxes</NxH3>
       <NxP>
         There are a number of boxes which get sized and positioned as the layout of inline text is determined.
         Some of these are familiar to any HTML/CSS developer, but others are lower level concepts that get into
@@ -80,7 +80,7 @@ const FontSizePage = () =>
       </NxP>
 
       <section>
-        <h4 className="nx-h4">Font Em-Square</h4>
+        <NxH4>Font Em-Square</NxH4>
         <NxP>
           Font glyphs are defined in a unitless coordinate space known as the em-square. The font defines
           this coordinate space using two values: the Ascent and the Descent. The Ascent gives the extent of the box
@@ -114,7 +114,7 @@ const FontSizePage = () =>
       </section>
 
       <section>
-        <h4 className="nx-h4">Text Node Content Area</h4>
+        <NxH4>Text Node Content Area</NxH4>
         <NxP>
           As we've established, <NxCode>font-size</NxCode> sets the height of the em-square, a box
           that is at a lower level than the HTML/CSS model. So what about HTML nodes and elements, what sets their
@@ -153,7 +153,7 @@ const FontSizePage = () =>
       </section>
 
       <section>
-        <h4 className="nx-h4">Line Boxes</h4>
+        <NxH4>Line Boxes</NxH4>
         <NxP>
           In HTML/CSS, inline elements are contained within block elements, in which the inline elements get laid
           out into a series of line boxes. The line boxes are a layout detail and not a manipulatable part of
@@ -212,7 +212,7 @@ const FontSizePage = () =>
       </section>
 
       <section>
-        <h4 className="nx-h4">Block Elements</h4>
+        <NxH4>Block Elements</NxH4>
         <NxP>
           Block Elements are more firmly within the realm of CSS itself and more directly controlled by CSS
           properties such as <NxCode>height</NxCode> and <NxCode>width</NxCode>,
@@ -230,7 +230,7 @@ const FontSizePage = () =>
     </section>
 
     <section>
-      <h3 className="nx-h3">Additional Nuances</h3>
+      <NxH3>Additional Nuances</NxH3>
       <NxP>
         Here is an incomplete list of additional nuances to consider when dealing with inline formatting
       </NxP>
@@ -248,7 +248,7 @@ const FontSizePage = () =>
           inline-block elements use the baseline of their last line box as their baseline, unless they have no text
           content or have <NxCode>overflow</NxCode> set to something other
           than <NxCode>visible</NxCode>. In these cases the baseline is the bottom margin
-          edge. <a href={css2SpecUrl}>[3]</a>
+          edge. <NxTextLink external href={css2SpecUrl}>[3]</NxTextLink>
         </li>
         <li className="nx-list__item">
           Things get more complicated when a line box includes inline elements of multiple heights. In this
@@ -265,7 +265,7 @@ const FontSizePage = () =>
         <li className="nx-list__item">
           Due to the off-center nature of the baseline, vertical-alignment of elements of different font sizes is
           extremely, unavoidably counterintuitive. See the examples in the vertical alignment section
-          of <a href={firstReferenceUrl}>[1]</a>
+          of <NxTextLink external href={firstReferenceUrl}>[1]</NxTextLink>
         </li>
         <li className="nx-list__item">
           <NxP>
@@ -307,22 +307,24 @@ const FontSizePage = () =>
     </section>
 
     <section>
-      <h3 className="nx-h3">References, further reading</h3>
+      <NxH3>References, further reading</NxH3>
       <NxP>
         The first reference here is particularly valuable, and is where the bulk of the knowledge on this page come
         from.
       </NxP>
       <ol>
         <li>
-          <a id="font-size-ref-1" href={firstReferenceUrl}>
+          <NxTextLink external id="font-size-ref-1" href={firstReferenceUrl}>
             Deep dive CSS: font metrics, line-height and vertical-align
-          </a>
+          </NxTextLink>
         </li>
         <li>
-          <a href="https://glyphsapp.com/tutorials/vertical-metrics">Vertical Metrics - Glyphs</a>
+          <NxTextLink external href="https://glyphsapp.com/tutorials/vertical-metrics">
+            Vertical Metrics - Glyphs
+          </NxTextLink>
         </li>
         <li>
-          <a href={css2SpecUrl}>Line Height Calculatons: CSS 2.1 Spec</a>
+          <NxTextLink external href={css2SpecUrl}>Line Height Calculatons: CSS 2.1 Spec</NxTextLink>
         </li>
       </ol>
     </section>

@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { GalleryExampleTile, GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxTextLink } from '@sonatype/react-shared-components';
 
 const validationErrorsExampleCode = require('./ValidationErrorsExample?raw'),
     hasValidationErrorsExampleCode = require('./HasValidationErrorsExample?raw'),
@@ -20,10 +20,10 @@ const ValidationUtilsPage = () =>
         Some of the form-related components provided by RSC, such as <NxCode>NxTextInput</NxCode>,
         have support for validation logic. Typically, when building a form using these components, it is desired to
         have certain form-level logic based around the validation status of the form's fields. For instance, the
-        form's "Submit" button might be disabled when a field is invalid. To assist with this sort of pattern,
-        RSC provides a few helper functions and types around the validation related data types that the form fields
-        rely on. See the <a href="#/pages/Form%20Validation%20Guidelines">Form Validation Example</a> as a
-        demonstration of some of these types and functions in use.
+        form's "Submit" button might be disabled when a field is invalid. To assist with this sort of pattern, RSC
+        provides a few helper functions and types around the validation related data types that the form fields rely
+        on. See the <NxTextLink href="#/pages/Form%20Validation%20Guidelines">Form Validation Example</NxTextLink> as
+        a demonstration of some of these types and functions in use.
       </NxP>
     </GalleryDescriptionTile>
 
