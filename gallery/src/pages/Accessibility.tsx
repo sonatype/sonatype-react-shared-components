@@ -62,7 +62,9 @@ const Accessibility = () =>
           {' '}<NxCode>&lt;h#&gt;</NxCode> tag, paragraphs should be wrapped in <NxCode>&lt;p&gt;</NxCode> tags, etc.
         </NxList.Item>
         <NxList.Item>
-          All form elements should have a label.
+          Generally speaking all form inputs within a form should have a label. Many RSC components (like
+          <NxCode>NxFormGroup</NxCode>) will automatically create labels for you so make sure you read the
+          documentation.
         </NxList.Item>
         <NxList.Item>
           Have you checked your page in ChromeVox and/or VoiceOver? Can you navigate and use the page without looking
