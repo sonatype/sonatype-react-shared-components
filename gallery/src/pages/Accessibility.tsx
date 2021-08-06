@@ -59,7 +59,10 @@ const Accessibility = () =>
             Semantic HTML
           </NxTextLink>
           {' '}is a critical aspect of accessibility. Headings should always use the correct
-          {' '}<NxCode>&lt;h#&gt;</NxCode> tag, paragraphs should be wrapped in <NxCode>&lt;p&gt;</NxCode> tags, etc.
+          {' '}<NxCode>&lt;h#&gt;</NxCode> tag, paragraphs should be wrapped in <NxCode>&lt;p&gt;</NxCode> tags, before
+          you wrap that block of content in a <NxCode>&lt;div&gt;</NxCode> consider if it would be better to use a {' '}
+          <NxCode>&lt;section&gt;</NxCode>. Tables should be used for data not layout. If in doubt please don't
+          hesitate to ask in #react-components.
         </NxList.Item>
         <NxList.Item>
           Generally speaking all form inputs within a form should have a label. Many RSC components (like
