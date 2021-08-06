@@ -45,7 +45,10 @@ const Accessibility = () =>
           {' '}<NxCode>tabindex="3"</NxCode> which can change the tab order should be avoided.
         </NxList.Item>
         <NxList.Item>Unique title element for each page or view?</NxList.Item>
-        <NxList.Item>Do all images and visual graphs have alt text?</NxList.Item>
+        <NxList.Item>
+          Do all images and visual graphs have
+          {' '}<NxTextLink external href="https://html.spec.whatwg.org/multipage/images.html#alt">alt text</NxTextLink>?
+        </NxList.Item>
         <NxList.Item>
           Make sure that you take advantage of the props and attributes that have been added to the components to
           improve their accessibility. Many component documentation pages have an Accessibility section with extra
