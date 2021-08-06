@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import {GalleryTile} from '../gallery-components/GalleryTiles';
-import { NxP, NxCode, NxH3, NxList, NxTextLink, NxTile } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxH3, NxList, NxTextLink, NxTile, NxWarningAlert } from '@sonatype/react-shared-components';
 
 const Accessibility = () =>
   <GalleryTile title="Accessibility">
@@ -41,8 +41,10 @@ const Accessibility = () =>
           </NxTextLink>
           {' '}HTML attribute to add items to the tab order (or remove them if necessary).
           At its simplest <NxCode>tabindex="-1"</NxCode> removes an object from the tab order,
-          {' '}<NxCode>tabindex="0"</NxCode> adds something to the tab order, and positive integers like
-          {' '}<NxCode>tabindex="3"</NxCode> which can change the tab order should be avoided.
+          {' '}<NxCode>tabindex="0"</NxCode> adds something to the tab order.
+          <NxWarningAlert>
+            Positive integers like <NxCode>tabindex="3"</NxCode> which can change the tab order should be avoided.
+          </NxWarningAlert>
         </NxList.Item>
         <NxList.Item>Unique title element for each page or view?</NxList.Item>
         <NxList.Item>
@@ -71,7 +73,7 @@ const Accessibility = () =>
         </NxList.Item>
         <NxList.Item>
           Have you checked your page in ChromeVox and/or VoiceOver? Can you navigate and use the page without looking
-          at the browser viewport? 
+          at the browser viewport?
         </NxList.Item>
         <NxList.Item>
           The Plaid team is currently evaluating automated accessibility testing tools but one free tool which can
