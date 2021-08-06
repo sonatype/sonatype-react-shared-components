@@ -86,17 +86,17 @@ const Accessibility = () =>
       </NxTile.SubsectionHeader>
       <NxList className="nx-list--bulleted">
         <NxList.Item>
-          <NxTextLink href="https://docs.sonatype.com/display/ENG/Accessibility+Best+Practices">
+          <NxTextLink external href="https://docs.sonatype.com/display/ENG/Accessibility+Best+Practices">
             Sonatype's Accessibility Best Practices
           </NxTextLink>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">
+          <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">
             MDN accessibility page
           </NxTextLink>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink href="https://www.w3.org/standards/webdesign/accessibility">
+          <NxTextLink external href="https://www.w3.org/standards/webdesign/accessibility">
             W3C accessibility page
           </NxTextLink>
         </NxList.Item>
