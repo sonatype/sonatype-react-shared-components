@@ -89,7 +89,7 @@ const NxTilePage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-tile-content--accordion-container</code></td>
+            <td className="nx-cell"><code className="nx-code">.nx-tile-content--<br/>accordion-container</code></td>
             <td className="nx-cell"/>
             <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile-content</code></td>
             <td className="nx-cell">
