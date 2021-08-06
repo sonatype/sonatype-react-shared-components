@@ -7,13 +7,13 @@
 import React from 'react';
 import {faExclamationTriangle, faEdit, faSave} from '@fortawesome/free-solid-svg-icons';
 
-import { NxButton, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxButton, NxFontAwesomeIcon, NxButtonBar } from '@sonatype/react-shared-components';
 
 const NxButtonIconOnlyExample = () =>
-  <div className="nx-btn-bar">
+  <NxButtonBar>
     <NxButton title="Alert" variant="icon-only"><NxFontAwesomeIcon icon={faExclamationTriangle}/></NxButton>
     <NxButton variant="icon-only" title="Edit"><NxFontAwesomeIcon icon={faEdit}/></NxButton>
     <NxButton variant="icon-only" title="Save"><NxFontAwesomeIcon icon={faSave}/></NxButton>
-  </div>;
+  </NxButtonBar>;
 
 export default NxButtonIconOnlyExample;
