@@ -110,6 +110,8 @@ import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
 import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterPage';
 import NxFormSelectComponentPage from './components/NxFormSelect/NxFormSelectPage';
 import CssVariablesPage from './styles/CssVariables/CssVariablesPage';
+import NxTransferListPage from './components/NxTransferList/NxTransferListPage';
+import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxStatefulTransferListPage';
 import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
@@ -167,6 +169,8 @@ const pageConfig: PageConfig = {
     NxStatefulToggle: NxStatefulTogglePage,
     NxTooltip: NxTooltipPage,
     NxOverflowTooltip: NxOverflowTooltipPage,
+    NxTransferList: NxTransferListPage,
+    NxStatefulTransferList: NxStatefulTransferListPage,
     NxTreeView: NxTreeViewPage,
     NxTreeViewMultiSelect: NxTreeViewMultiSelect,
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
