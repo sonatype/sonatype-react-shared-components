@@ -13,9 +13,9 @@ const Accessibility = () =>
     <NxP>
       Accessibility (a11y) means ensuring that our applications are usable by everybody. We do this in a variety of
       different ways. We make sure that our designs are clear and that they follow accessibility guidelines for
-      contrast and readability. Our components are written with semantic HTML, correct use of <NxCode>aria</NxCode>{' '}
-      attributes, and testing in VoiceOver and ChromeVox accessibility is built into the Shared Components. However there is
-      still work that needs to be done to make sure that the application as a whole is accessible.
+      contrast and readability. Our components are written with semantic HTML, correct use of <NxCode>ARIA</NxCode>{' '}
+      attributes, and testing in VoiceOver and ChromeVox accessibility is built into the Shared Components. However
+      there is still work that needs to be done to make sure that the application as a whole is accessible.
     </NxP>
     <NxP>
       It's important to note that accessibility is an ongoing process. We do not consider this work to be complete by
