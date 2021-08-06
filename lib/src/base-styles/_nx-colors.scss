@@ -6,8 +6,7 @@
  */
 :root {
   --nx-color-border: var(--nx-swatch-indigo-90);
-
-  --nx-color-subsection-border: var(--nx-swatch-indigo-90);
+  --nx-color-border-secondary: var(--nx-swatch-indigo-95);
 
   --nx-color-component-background: var(--nx-swatch-white);
 
@@ -25,7 +24,7 @@
   --nx-color-interactive-shadow-focus: hsla(var(--nx-swatch-teal-hs), 65%, 0.3);
 
   --nx-color-text-dark: var(--nx-swatch-grey-05);
-  --nx-color-text: var(--nx-swatch-grey-10);
+  --nx-color-text: var(--nx-swatch-grey-30);
   --nx-color-text-disabled: var(--nx-color-interactive-border-disabled); // match disabled text and border
 
   --nx-color-link: var(--nx-swatch-blue-40);
@@ -42,4 +41,7 @@
 
   --nx-color-validation-valid: var(--nx-swatch-green-30);
   --nx-color-validation-invalid: var(--nx-swatch-red-45);
+
+  // Deprecated variables
+  --nx-color-subsection-border: var(--nx-color-border);
 }
