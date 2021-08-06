@@ -34,7 +34,16 @@ const Accessibility = () =>
       </NxP>
 
       <NxList className="nx-list--bulleted">
-        <NxList.Item>Tab order is important. Make sure that the tab order of the page is logical.</NxList.Item>
+        <NxList.Item>
+          Tab order is important. Make sure that the tab order of the page is logical. You can use the{' '}
+          <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex">
+            tabindex
+          </NxTextLink>
+          {' '}HTML attribute to add items to the tab order (or remove them if necessary).
+          At its simplest <NxCode>tabindex="-1"</NxCode> removes an object from the tab order,
+          {' '}<NxCode>tabindex="0"</NxCode> adds something to the tab order, and positive integers like
+          {' '}<NxCode>tabindex="3"</NxCode> which can change the tab order should be avoided.
+        </NxList.Item>
         <NxList.Item>Unique title element for each page or view?</NxList.Item>
         <NxList.Item>Do all images and visual graphs have alt text?</NxList.Item>
         <NxList.Item>
