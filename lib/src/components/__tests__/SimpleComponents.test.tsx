@@ -137,7 +137,7 @@ describe('NxTile.HeaderTitle', function() {
 
 describe('NxTile.Headings', function() {
   it('makes a <hgroup> tag with an nx-tile-header__headings class', function() {
-    expect(shallow(<NxTile.Headings/>)).toMatchSelector('div.nx-tile-header__headings');
+    expect(shallow(<NxTile.Headings/>)).toMatchSelector('hgroup.nx-tile-header__headings');
   });
 });
 
