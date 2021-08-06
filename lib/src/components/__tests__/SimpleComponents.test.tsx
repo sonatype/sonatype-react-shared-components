@@ -135,9 +135,15 @@ describe('NxTile.HeaderTitle', function() {
   });
 });
 
+describe('NxTile.Headings', function() {
+  it('makes a <hgroup> tag with an nx-tile-header__headings class', function() {
+    expect(shallow(<NxTile.Headings/>)).toMatchSelector('div.nx-tile-header__headings');
+  });
+});
+
 describe('NxTile.HeaderSubtitle', function() {
-  it('makes a <div> tag with an nx-tile-header__subtitle class', function() {
-    expect(shallow(<NxTile.HeaderSubtitle/>)).toMatchSelector('div.nx-tile-header__subtitle');
+  it('makes a <h3> tag with an nx-tile-header__subtitle class', function() {
+    expect(shallow(<NxTile.HeaderSubtitle/>)).toMatchSelector('h3.nx-tile-header__subtitle');
   });
 });
 

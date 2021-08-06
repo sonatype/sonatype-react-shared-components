@@ -26,7 +26,7 @@ export const NxH4 = withClass('h4', 'nx-h4');
 
 export const NxTile = Object.assign(withClass('section', 'nx-tile'), {
   Header: withClass('header', 'nx-tile-header'),
-  Headings: withClass('hgroup', 'nx-tile-headings'),
+  Headings: withClass('hgroup', 'nx-tile-header__headings'),
   HeaderTitle: withClass('div', 'nx-tile-header__title'),
   HeaderSubtitle: withClass('h3', 'nx-tile-header__subtitle'),
   HeaderActions: withClass('div', 'nx-tile__actions'),
