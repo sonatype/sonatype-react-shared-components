@@ -66,7 +66,11 @@ const Accessibility = () =>
         </NxList.Item>
         <NxList.Item>
           Have you checked your page in ChromeVox and/or VoiceOver? Can you navigate and use the page without looking
-          at the browser viewport?
+          at the browser viewport? 
+        </NxList.Item>
+        <NxList.Item>
+          The Plaid team is currently evaluating automated accessibility testing tools but one free tool which can
+          provide some insight is the Lighthouse tool in Chrome's Developer Tools.
         </NxList.Item>
       </NxList>
     </NxTile.Subsection>
