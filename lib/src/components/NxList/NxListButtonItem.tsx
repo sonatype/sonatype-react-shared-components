@@ -11,16 +11,17 @@ import { NxFontAwesomeIcon } from '../..';
 import {NxListButtonItemProps, nxListButtonItemPropTypes} from './types';
 import { includesDisabledClass } from '../../util/classUtil';
 
-const NxListButtonItem = forwardRef<HTMLButtonElement, NxListButtonItemProps>(
-    function nxListButtonItem({ children, className, disabled, selected, ...attrs}, ref) {
-      const buttonClassNames = classnames('nx-list__btn', className, { selected, disabled });
+const NxListButtonItem = forwardRef<HTMLLIElement, NxListButtonItemProps>(
+    function nxListButtonItem({ children, className, disabled, selected, buttonClassName,
+      buttonAttributes, ...attrs }, ref) {
+      const liClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className);
+      const buttonClassNames = classnames('nx-list__btn', buttonClassName, { selected, disabled });
       return (
-        <li className='nx-list__item nx-list__item--clickable'>
+        <li ref={ref} className={liClassNames} {...attrs}>
           <button aria-disabled={includesDisabledClass(buttonClassNames)}
-                  ref={ref}
                   className={buttonClassNames}
-                  disabled={disabled}
-                  {...attrs}
+                  disabled={disabled ? true : false}
+                  {...buttonAttributes}
           >
             {children}
             <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />

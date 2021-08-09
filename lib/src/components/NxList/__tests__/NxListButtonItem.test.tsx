@@ -17,12 +17,12 @@ describe('NxListButtonItem', function() {
 
   it('renders the classNames given to it', function() {
     const children = [
-      <NxList.Text key="1">Test Item 1 Text</NxList.Text>,
+      <NxList.Text key="1">Test Item 1 Text</NxList.Text>
     ];
-    const contentEl = getShallow({children, className: 'customClassName'});
+    const contentEl = getShallow({children, className: 'customClassLi', buttonClassName: 'customClassBtn'});
     expect(contentEl).toExist();
-    expect(contentEl.find('li')).toMatchSelector('.nx-list__item.nx-list__item--clickable');
-    expect(contentEl.find('button')).toMatchSelector('.nx-list__btn.customClassName');
+    expect(contentEl.find('li')).toMatchSelector('.nx-list__item.nx-list__item--clickable.customClassLi');
+    expect(contentEl.find('button')).toMatchSelector('.nx-list__btn.customClassBtn');
   });
 
   it('renders a clickable list whose list item element has prop disabled and is disabled', function() {

@@ -11,16 +11,17 @@ import {NxListLinkItemProps, nxListLinkItemPropTypes} from './types';
 import classnames from 'classnames';
 import { includesDisabledClass } from '../../util/classUtil';
 
-const NxListLinkItem = forwardRef<HTMLAnchorElement, NxListLinkItemProps>(
-    function nxListLinkItem({ children, className, disabled, href, selected, ...attrs}, ref) {
-      const aClassNames = classnames('nx-list__link', className, {selected, disabled});
+const NxListLinkItem = forwardRef<HTMLLIElement, NxListLinkItemProps>(
+    function nxListLinkItem({ children, className, disabled, href, selected, anchorClassName,
+      anchorAttributes, ...attrs}, ref) {
+      const liClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className);
+      const aClassNames = classnames('nx-list__link', anchorClassName, {selected, disabled});
       return (
-        <li className='nx-list__item nx-list__item--clickable'>
+        <li ref={ref} className={liClassNames} {...attrs}>
           <a aria-disabled={includesDisabledClass(aClassNames)}
-             ref={ref}
-             href={href}
-             {...attrs}
              className={aClassNames}
+             href={href}
+             {...anchorAttributes}
           >
             {children}
             <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />

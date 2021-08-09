@@ -214,16 +214,51 @@ const NxListPage = () =>
               <NxTable.Cell>Whether the list item should be rendered as disabled or not.</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell>HTML <NxCode>{'<button>'}</NxCode> attributes</NxTable.Cell>
+              <NxTable.Cell>className</NxTable.Cell>
               <NxTable.Cell>
-                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button" external>
-                  HTML button attributes
+                string
+              </NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>
+                Class names to be applied to the underlying <NxCode>li</NxCode> element.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>{'<li>'}</NxCode> attributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li" external>
+                  HTML Li attributes
                 </NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>no</NxTable.Cell>
               <NxTable.Cell>
                 <NxCode>NxList.ButtonItem</NxCode> supports any HTML attribute that's normally supported
-                by <NxCode>{'<button>'}</NxCode>.
+                by <NxCode>{'<li>'}</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>buttonClassName</NxTable.Cell>
+              <NxTable.Cell>
+                string
+              </NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>
+                Class names to be applied to the underlying <NxCode>button</NxCode> element.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>buttonAttributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button" external>
+                  HTML button attributes
+                </NxTextLink> wrapped in an object.
+              </NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxList.ButtonItem</NxCode> also supports any HTML attribute that's normally supported
+                by <NxCode>{'<button>'}</NxCode>. To apply such attributes, simply wrap them in an object and
+                provide the object in the <NxCode>buttonAttributes</NxCode> prop. For example:
+                <NxP><NxCode>{'buttonAttributes={{value: "testvalue", onClick: () => alert("hi")}}'}</NxCode></NxP>
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
@@ -268,16 +303,51 @@ const NxListPage = () =>
               <NxTable.Cell>Whether the list item should be rendered as disabled or not.</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell>HTML <NxCode>{'<a>'}</NxCode> attributes</NxTable.Cell>
+              <NxTable.Cell>className</NxTable.Cell>
               <NxTable.Cell>
-                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" external>
-                  HTML anchor attributes
+                string
+              </NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>
+                Class names to be applied to the underlying <NxCode>li</NxCode> element.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>{'<li>'}</NxCode> attributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li" external>
+                  HTML Li attributes
                 </NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>no</NxTable.Cell>
               <NxTable.Cell>
                 <NxCode>NxList.LinkItem</NxCode> supports any HTML attribute that's normally supported
-                by <NxCode>{'<a>'}</NxCode>.
+                by <NxCode>{'<li>'}</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>anchorClassName</NxTable.Cell>
+              <NxTable.Cell>
+                string
+              </NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>
+                Class names to be applied to the underlying <NxCode>{'<a>'}</NxCode> element.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>anchorAttributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" external>
+                  HTML anchor attributes
+                </NxTextLink> wrapped in an object.
+              </NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxList.LinkItem</NxCode> also supports any HTML attribute that's normally supported
+                by <NxCode>{'<a>'}</NxCode>. To apply such attributes, simply wrap them in an object and
+                provide the object in the <NxCode>anchorAttributes</NxCode> prop. For example:
+                <NxP><NxCode>{'anchorAttributes={{hrefLang: "en", referralPolicy: "origin"}}'}</NxCode></NxP>
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>

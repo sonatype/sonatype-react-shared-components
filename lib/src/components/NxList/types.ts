@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { ForwardRefExoticComponent, RefAttributes, HTMLAttributes, LiHTMLAttributes, ValidationMap,
-  ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
+  ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes} from 'react';
 import PropTypes from 'prop-types';
 
 export interface NxListComponent
@@ -14,8 +14,8 @@ export interface NxListComponent
   Text: ForwardRefExoticComponent<NxListTextProps & RefAttributes<HTMLSpanElement>>;
   Subtext: ForwardRefExoticComponent<NxListSubtextProps & RefAttributes<HTMLSpanElement>>;
   Actions: ForwardRefExoticComponent<NxListActionProps & RefAttributes<HTMLDivElement>>;
-  ButtonItem: ForwardRefExoticComponent<NxListButtonItemProps & RefAttributes<HTMLButtonElement>>;
-  LinkItem: ForwardRefExoticComponent<NxListLinkItemProps & RefAttributes<HTMLAnchorElement>>;
+  ButtonItem: ForwardRefExoticComponent<NxListButtonItemProps & RefAttributes<HTMLLIElement>>;
+  LinkItem: ForwardRefExoticComponent<NxListLinkItemProps & RefAttributes<HTMLLIElement>>;
   DescriptionTerm: ForwardRefExoticComponent<NxListDescriptionTermProps & RefAttributes<HTMLElement>>;
   Description: ForwardRefExoticComponent<NxListDescriptionProps & RefAttributes<HTMLElement>>;
 }
@@ -70,26 +70,35 @@ export const nxListActionPropTypes: ValidationMap<NxListActionProps> = {
   children: PropTypes.node
 };
 
-export interface NxListButtonItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface NxListButtonItemProps extends LiHTMLAttributes<HTMLLIElement> {
   children?: ReactNode | null,
-  selected?: boolean | null
+  selected?: boolean | null,
+  disabled?: boolean | null,
+  buttonClassName?: string | null,
+  buttonAttributes?: ButtonHTMLAttributes<HTMLButtonElement> | null,
 }
 
 export const nxListButtonItemPropTypes: ValidationMap<NxListButtonItemProps> = {
   children: PropTypes.node.isRequired,
-  selected: PropTypes.bool
+  selected: PropTypes.bool,
+  disabled: PropTypes.bool,
+  buttonClassName: PropTypes.string
 };
 
-export interface NxListLinkItemProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface NxListLinkItemProps extends LiHTMLAttributes<HTMLLIElement> {
   children?: ReactNode | null,
   disabled?: boolean | null,
-  selected?: boolean | null
+  selected?: boolean | null,
+  href: string,
+  anchorClassName?: string | null,
+  anchorAttributes?: AnchorHTMLAttributes<HTMLAnchorElement> | null,
 }
 
 export const nxListLinkItemPropTypes: ValidationMap<NxListLinkItemProps> = {
   children: PropTypes.node.isRequired,
   disabled: PropTypes.bool,
-  selected: PropTypes.bool
+  selected: PropTypes.bool,
+  href: PropTypes.string.isRequired
 };
 
 export interface NxListDescriptionTermProps extends HTMLAttributes<HTMLElement> {

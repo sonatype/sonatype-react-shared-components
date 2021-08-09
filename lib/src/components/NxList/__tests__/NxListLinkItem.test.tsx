@@ -11,7 +11,7 @@ import { getMountedComponent, getShallowComponent } from '../../../__testutils__
 
 describe('NxListLinkItem', function() {
 
-  const minimalProps: NxListLinkItemProps = {};
+  const minimalProps: NxListLinkItemProps = { href: 'www.sonatype.com' };
   const getShallow = getShallowComponent(NxList.LinkItem, minimalProps);
   const getMounted = getMountedComponent(NxList.LinkItem, minimalProps);
 
@@ -19,17 +19,17 @@ describe('NxListLinkItem', function() {
     const children = [
       <NxList.Text key="1">Test Item 1 Text</NxList.Text>
     ];
-    const contentEl = getShallow({children, className: 'customClassName'});
+    const contentEl = getShallow({children, className: 'customClassLi', anchorClassName: 'customClassAnchor'});
     expect(contentEl).toExist();
-    expect(contentEl.find('li')).toMatchSelector('.nx-list__item.nx-list__item--clickable');
-    expect(contentEl.find('a')).toMatchSelector('.nx-list__link.customClassName');
+    expect(contentEl.find('li')).toMatchSelector('.nx-list__item.nx-list__item--clickable.customClassLi');
+    expect(contentEl.find('a')).toMatchSelector('.nx-list__link.customClassAnchor');
   });
 
   it('renders a clickable link whose list item element has prop disabled and is disabled', function() {
     const children = [
       <NxList.Text key="1">Test Item 1 Text</NxList.Text>
     ];
-    const contentEl = getMounted({children, href: 'www.sonatype.com', disabled: true});
+    const contentEl = getMounted({children, disabled: true});
     expect(contentEl).toExist();
     expect(contentEl).toHaveProp('href');
     expect(contentEl).toHaveProp('disabled');
@@ -40,7 +40,7 @@ describe('NxListLinkItem', function() {
     const children = [
       <NxList.Text key="1">Test Item 1 Text</NxList.Text>
     ];
-    const contentEl = getMounted({children, href: 'www.sonatype.com', selected: true});
+    const contentEl = getMounted({children, selected: true});
     expect(contentEl).toExist();
     expect(contentEl).toHaveProp('href');
     expect(contentEl.find('a')).toHaveClassName('selected');
