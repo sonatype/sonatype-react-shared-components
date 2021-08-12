@@ -29,7 +29,7 @@ const NxListPage = () =>
 
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
-          <NxH3>Component Description and Herirarchy</NxH3>
+          <NxH3>Component Description and Hierarchy</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
           <NxCode>NxList</NxCode> comprises of several children components.
