@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use 'sass:math';
 @import '~@sonatype/react-shared-components/scss-shared/nx-text-helpers';
 @import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 @import '~@sonatype/react-shared-components/scss-shared/nx-flexbox-helpers';
@@ -34,7 +35,7 @@
     $checker-bg-color: #f9f9f9;
     $checker-dimensions: $checker-size $checker-size;
     $checker-layer-1-position: top left;
-    $checker-layer-2-position: #{$checker-size / 2} #{$checker-size / 2};
+    $checker-layer-2-position: #{math.div($checker-size, 2)} #{math.div($checker-size, 2)};
     $checker-gradient: linear-gradient(to top right, $checker-color 25%, transparent 25% 75%, $checker-color 75%);
 
     // IE fallback
