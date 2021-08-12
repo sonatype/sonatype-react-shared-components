@@ -27,7 +27,8 @@ function NxListBulleted() {
             <NxList.Text>Item 3</NxList.Text>
             <NxList bulleted>
               <NxList.Item>
-                <NxList.Text>Item 1 this list items is also long enough that it wraps,
+                <NxList.Text>
+                  Item 1 this list items is also long enough that it wraps,
                   or at least it should if I have typed enough text, how much wood would a
                   woodchuck chuck
                 </NxList.Text>
