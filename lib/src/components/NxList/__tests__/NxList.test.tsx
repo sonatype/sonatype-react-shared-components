@@ -127,7 +127,7 @@ describe('NxList', function() {
     const trulyEmptyComponent = await mountAttached(<NxList emptyMessage="Empty message"></NxList>),
         emptyListComponent = await mountAttached(<NxList emptyMessage="Empty message">{[]}</NxList>);
 
-    // the enzyme wrapper contains the <NxTableBody> as its top element, the native el is one level down
+    // the enzyme wrapper contains the <NxList> as its top element, the native el is one level down
     expect(trulyEmptyComponent.children()).toMatchSelector('ul');
     expect(trulyEmptyComponent).toContainExactlyOneMatchingElement('li.nx-list__item');
     expect(trulyEmptyComponent.find('span')).toHaveText('Empty message');
