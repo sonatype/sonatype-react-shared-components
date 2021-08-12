@@ -22,8 +22,8 @@ export interface NxListComponent
 
 export interface NxListProps extends HTMLAttributes<HTMLUListElement> {
   bulleted?: boolean | null;
-  children?: ReactNode | null;
-  emptyMessage?: ReactNode | null;
+  children?: ReactNode;
+  emptyMessage?: ReactNode;
   error?: string | null;
   isLoading?: boolean | null;
   retryHandler?: (() => void) | null;
@@ -47,7 +47,7 @@ export const nxListItemPropTypes: ValidationMap<NxListItemProps> = {
 };
 
 export interface NxListTextProps extends HTMLAttributes<HTMLSpanElement> {
-  children?: ReactNode | null;
+  children?: ReactNode;
 }
 
 export const nxListTextPropTypes: ValidationMap<NxListTextProps> = {
@@ -55,7 +55,7 @@ export const nxListTextPropTypes: ValidationMap<NxListTextProps> = {
 };
 
 export interface NxListSubtextProps extends HTMLAttributes<HTMLSpanElement> {
-  children?: ReactNode | null;
+  children?: ReactNode;
 }
 
 export const nxListSubtextPropTypes: ValidationMap<NxListSubtextProps> = {
@@ -63,7 +63,7 @@ export const nxListSubtextPropTypes: ValidationMap<NxListSubtextProps> = {
 };
 
 export interface NxListActionProps extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactNode | null;
+  children?: ReactNode;
 }
 
 export const nxListActionPropTypes: ValidationMap<NxListActionProps> = {
@@ -71,7 +71,7 @@ export const nxListActionPropTypes: ValidationMap<NxListActionProps> = {
 };
 
 export interface NxListButtonItemProps extends LiHTMLAttributes<HTMLLIElement> {
-  children?: ReactNode | null,
+  children?: ReactNode,
   selected?: boolean | null,
   disabled?: boolean | null,
   buttonClassName?: string | null,
@@ -86,7 +86,7 @@ export const nxListButtonItemPropTypes: ValidationMap<NxListButtonItemProps> = {
 };
 
 export interface NxListLinkItemProps extends LiHTMLAttributes<HTMLLIElement> {
-  children?: ReactNode | null,
+  children?: ReactNode,
   disabled?: boolean | null,
   selected?: boolean | null,
   href: string,
