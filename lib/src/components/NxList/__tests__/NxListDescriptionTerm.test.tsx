@@ -5,12 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import NxList from '../NxList';
-import { NxListDescriptionTermProps } from '../types';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 
 describe('NxListDescriptionTerm', function() {
 
-  const minimalProps: NxListDescriptionTermProps = {};
+  const minimalProps = {};
   const getShallow = getShallowComponent(NxList.DescriptionTerm, minimalProps);
 
   it('renders children correctly', function() {

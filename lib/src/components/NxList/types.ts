@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { ForwardRefExoticComponent, RefAttributes, HTMLAttributes, LiHTMLAttributes, ValidationMap,
-  ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes} from 'react';
+  ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes, DetailedHTMLProps, FunctionComponent} from 'react';
 import PropTypes from 'prop-types';
 
 export interface NxListComponent
@@ -16,8 +16,8 @@ export interface NxListComponent
   Actions: ForwardRefExoticComponent<NxListActionProps & RefAttributes<HTMLDivElement>>;
   ButtonItem: ForwardRefExoticComponent<NxListButtonItemProps & RefAttributes<HTMLLIElement>>;
   LinkItem: ForwardRefExoticComponent<NxListLinkItemProps & RefAttributes<HTMLLIElement>>;
-  DescriptionTerm: ForwardRefExoticComponent<NxListDescriptionTermProps & RefAttributes<HTMLElement>>;
-  Description: ForwardRefExoticComponent<NxListDescriptionProps & RefAttributes<HTMLElement>>;
+  DescriptionTerm: FunctionComponent<DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>>;
+  Description: FunctionComponent<DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>>;
 }
 
 export interface NxListProps extends HTMLAttributes<HTMLUListElement> {
@@ -99,20 +99,4 @@ export const nxListLinkItemPropTypes: ValidationMap<NxListLinkItemProps> = {
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
   href: PropTypes.string.isRequired
-};
-
-export interface NxListDescriptionTermProps extends HTMLAttributes<HTMLElement> {
-  children?: ReactNode | null
-}
-
-export const nxListDescriptionTermPropTypes: ValidationMap<NxListDescriptionTermProps> = {
-  children: PropTypes.node
-};
-
-export interface NxListDescriptionProps extends HTMLAttributes<HTMLElement> {
-  children?: ReactNode | null
-}
-
-export const nxListDescriptionPropTypes: ValidationMap<NxListDescriptionProps> = {
-  children: PropTypes.node
 };
