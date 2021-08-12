@@ -15,7 +15,6 @@ describe('nx-list', function() {
       clickableSelector = '#nx-list-clickable-example .nx-list',
       clickableLinksSelector = '#nx-list-clickable-links-example .nx-list',
       bulletedSelector = '#nx-list-bulleted-example .gallery-example-live',
-      definitionListSelector = '#nx-list-definition-example .nx-list',
       actionsSelector = '#nx-list-actions-example .nx-list',
       multiLineSelector = '#nx-list-multi-line-example .nx-list',
       emptySelector = '#nx-list-empty-example .nx-list',
@@ -38,10 +37,6 @@ describe('nx-list', function() {
 
   describe('Bulleted nx-list', function() {
     it('looks right', simpleTest(bulletedSelector));
-  });
-
-  describe('Definition list', function() {
-    it('looks right', simpleTest(definitionListSelector));
   });
 
   describe('nx-list with actions', function() {
