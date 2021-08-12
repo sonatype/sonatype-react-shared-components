@@ -32,7 +32,7 @@ const NxListPage = () =>
           <NxH3>Component Description and Hierarchy</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
-          <NxCode>NxList</NxCode> comprises of several children components.
+          <NxCode>NxList</NxCode> is comprised of several child components.
           A reference of each component and where they must be placed is as follows:
         </NxP>
         <NxTable>
