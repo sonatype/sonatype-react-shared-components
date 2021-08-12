@@ -6,6 +6,13 @@
  */
 import React, { forwardRef, MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
+import useMutationObserver from '@rooks/use-mutation-observer';
+
+import { NxH3 } from '../SimpleComponents';
+import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
+import NxLoadError from '../NxLoadError/NxLoadError';
+import { splitOutFirst } from '../../util/childUtil';
+
 import NxListText from './NxListText';
 import NxListSubtext from './NxListSubtext';
 import NxListActions from './NxListActions';
@@ -14,11 +21,7 @@ import NxListLinkItem from './NxListLinkItem';
 import NxListItem from './NxListItem';
 import NxListDescriptionTerm from './NxListDescriptionTerm';
 import NxListDescription from './NxListDescription';
-import { NxH3 } from '../SimpleComponents';
-import { splitOutFirst } from '../../util/childUtil';
-import { NxListProps, NxLoadError, NxLoadingSpinner } from '../..';
-import useMutationObserver from '@rooks/use-mutation-observer';
-import { NxListComponent, nxListPropTypes } from './types';
+import { NxListProps, NxListComponent, nxListPropTypes } from './types';
 
 const mutationObserverConfig = { subtree: false, childList: true, attributes: false, characterData: false };
 
