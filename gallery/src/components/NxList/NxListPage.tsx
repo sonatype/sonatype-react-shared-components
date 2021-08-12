@@ -19,13 +19,17 @@ const NxListPage = () =>
         clickable buttons, links, action buttons, multiple lines of text, and even lists with empty and error states.
       </NxP>
 
-      <NxH3>Description Lists</NxH3>
-      <NxP>
-        <NxCode>NxList</NxCode> also supports the styling of description lists
-        using <NxCode>NxList.DescriptionTerm</NxCode> and <NxCode>NxList.Description</NxCode>. Terms and descriptions
-        are laid out side-by-side in rows. Currently only one description per term, and one term per description, are
-        supported – not multiple.
-      </NxP>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Description Lists</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          <NxCode>NxList</NxCode> also supports the styling of description lists
+          using <NxCode>NxList.DescriptionTerm</NxCode> and <NxCode>NxList.Description</NxCode>. Terms and descriptions
+          are laid out side-by-side in rows. Currently only one description per term, and one term per description, are
+          supported – not multiple.
+        </NxP>
+      </NxTile.Subsection>
 
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
