@@ -10,7 +10,7 @@ import NxList from '../NxList';
 import { NxListProps } from '../types';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import { act } from 'react-dom/test-utils';
-import { mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 
 describe('NxList', function() {
 
@@ -57,31 +57,15 @@ describe('NxList', function() {
     expect(nxList).toMatchSelector('.nx-list.test-classname.ufo');
   });
 
-  it('passes props to the parent component and renders bulleted list', function() {
-    const contentEl = getShallow({bulleted: true})
+  it('passes props to NxList correctly', function() {
+    const contentEl = shallow(<div><NxList bulleted></NxList></div>);
+    expect(contentEl.find(NxList)).toHaveProp('bulleted', true);
+  });
+
+  it('renders a bulleted list correctly', function() {
+    const contentEl = getShallow({bulleted: true});
     expect(contentEl).toHaveClassName('nx-list--bulleted');
   });
-
-  it('renders the children in an .nx-list__item', function() {
-    const children = [
-      <NxList.Item key="1">
-        <NxList.Text>Test Item 1 Text</NxList.Text>
-        <NxList.Subtext>Test Item 1 Subtext</NxList.Subtext>
-      </NxList.Item>,
-      <NxList.Item key="2">
-        <NxList.Text>Test Item 2 Text</NxList.Text>
-        <NxList.Subtext>Test Item 2 Subtext</NxList.Subtext>
-      </NxList.Item>
-    ];
-
-    const contentEl = getShallow({children});
-    expect(contentEl).toExist();
-    expect(contentEl).toContainMatchingElements(2, NxList.Item);
-    contentEl.find('li').forEach((e) => {
-      expect(e.hasClass('nx-list__item'));
-    });
-  });
-
   it('shows the emptyMessage when there are no children', async function() {
     const component = await mountAttached(
       <NxList emptyMessage="Empty message">
