@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxCode, NxTextLink, NxTable, NxH3, NxInfoAlert, NxTile } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxTextLink, NxTable, NxH3, NxTile } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile} from '../../gallery-components/GalleryTiles';
 import NxListsExamples from './NxListExamples';
 
@@ -158,11 +158,6 @@ const NxListPage = () =>
                 If nothing is specified and the list is empty, a default message of "This list is empty." is displayed.
                 If the list is not empty, this prop may be specified, having no effect. In essence, the best practice
                 is to specify this prop on all lists which may be empty.
-                <NxInfoAlert>
-                  Note: In cases of lists with a title, although the list's title (recommended to use
-                  an <NxCode>NxH3</NxCode>) is a child of NxList, the list still displays the empty message. The empty
-                  message is displayed only if no children (besides <NxCode>NxH3</NxCode>) of NxList exist.
-                </NxInfoAlert>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>

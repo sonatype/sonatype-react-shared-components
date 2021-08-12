@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { ReactElement } from 'react';
-import { NxH3, NxLoadError, NxLoadingSpinner } from '../../..';
+import { NxLoadError, NxLoadingSpinner } from '../../..';
 import NxList from '../NxList';
 import { NxListProps } from '../types';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
@@ -80,17 +80,6 @@ describe('NxList', function() {
     contentEl.find('li').forEach((e) => {
       expect(e.hasClass('nx-list__item'));
     });
-  });
-
-  it('renders a simple list with a title', function() {
-    const title = 'Simple Title';
-    const children = [
-      <NxH3 key="1">{title}</NxH3>
-    ];
-
-    const contentEl = getShallow({children});
-    expect(contentEl.find(NxH3)).toExist();
-    expect(contentEl.find(NxH3).shallow()).toHaveHTML(`<h3 class="nx-h3">${title}</h3>`);
   });
 
   it('shows the emptyMessage when there are no children', async function() {

@@ -5,12 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxH3, NxList } from '@sonatype/react-shared-components';
+import { NxList } from '@sonatype/react-shared-components';
 
 function NxListSimple() {
   return (
     <NxList>
-      <NxH3>List heading</NxH3>
       <NxList.Item>
         <NxList.Text>Item 1</NxList.Text>
       </NxList.Item>

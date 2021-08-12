@@ -4,16 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useRef } from 'react';
 import classnames from 'classnames';
-import useMutationObserver from '@rooks/use-mutation-observer';
 import useMergedRef from '@react-hook/merged-ref';
 import withClass from '../../util/withClass';
 
-import { NxH3 } from '../SimpleComponents';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import NxLoadError from '../NxLoadError/NxLoadError';
-import { splitOutFirst } from '../../util/childUtil';
 
 import NxListText from './NxListText';
 import NxListSubtext from './NxListSubtext';
@@ -22,43 +19,16 @@ import NxListButtonItem from './NxListButtonItem';
 import NxListLinkItem from './NxListLinkItem';
 import NxListItem from './NxListItem';
 import { NxListProps, NxListComponent, nxListPropTypes } from './types';
+import useEmptyComponent from '../../util/useEmptyComponent';
 
-const mutationObserverConfig = { subtree: false, childList: true, attributes: false, characterData: false };
 
 const NxList = forwardRef<HTMLUListElement, NxListProps>((props: NxListProps, externalRef) => {
   const {className, children, bulleted, emptyMessage, isLoading = false, error, retryHandler, ...attrs } = props;
   const classNames = classnames(className, 'nx-list', {'nx-list--bulleted': bulleted});
-  const [title, otherChildren] = splitOutFirst(NxH3, children);
-  const [isEmpty, setIsEmpty] = useState(false);
   const ulRef = useRef<HTMLUListElement | null>(null);
   const emptyListRef = useRef<HTMLLIElement>(null);
   const ref = useMergedRef(ulRef, externalRef);
-
-  const updateIsEmpty = useCallback(function updateIsEmpty() {
-    if (ulRef.current) {
-      const listItems = ulRef.current.children;
-
-      //If there are no children, simply set isEmpty to true and return.
-      if (listItems.length === 0) {
-        setIsEmpty(true);
-        return;
-      }
-
-      //NxH3 is treated as a 'non-child' as we still would want to show a title for an empty list.
-      if (!title) {
-        setIsEmpty(!listItems.length || (listItems.length === 1 && listItems.item(0) === emptyListRef.current));
-      }
-      else {
-        setIsEmpty((listItems.length === 1 && listItems.item(0)?.tagName === 'H3')
-          || (listItems.length === 2 && (listItems.item(0)?.tagName === 'H3'
-              && listItems.item(1) === emptyListRef.current))
-        );
-      }
-    }
-  }, []);
-
-  useEffect(updateIsEmpty, []);
-  useMutationObserver(ulRef, updateIsEmpty, mutationObserverConfig);
+  const isEmpty = useEmptyComponent(false, ulRef, emptyListRef);
 
   if (isEmpty && !isLoading && !error) {
     if (!emptyMessage) {
@@ -91,10 +61,9 @@ const NxList = forwardRef<HTMLUListElement, NxListProps>((props: NxListProps, ex
         className={classNames}
         {...attrs}
     >
-      {title}
       {isLoading && nxListLoading}
       {!!error && !isLoading && nxListError}
-      {!isLoading && !error && otherChildren}
+      {!isLoading && !error && children}
       {!(isLoading || error) && isEmpty && nxListEmpty}
     </ul>
   );
