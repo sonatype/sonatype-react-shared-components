@@ -12,7 +12,6 @@ import NxListClickableExample from './examples/NxListClickable';
 import NxListClickableLinkExample from './examples/NxListClickableLink';
 import NxListBulletedExample from './examples/NxListBulleted';
 import NxListActionsExample from './examples/NxListActions';
-import NxListMultiLineExample from './examples/NxListMultiLine';
 import NxListEmptyExample from './examples/NxListEmpty';
 import NxListErrorExample from './examples/NxListError';
 import NxListLoadingExample from './examples/NxListLoading';
@@ -24,7 +23,6 @@ const NxListSimpleExampleCode = require('./examples/NxListSimple?raw'),
     NxListClickableLinkExampleCode = require('./examples/NxListClickableLink?raw'),
     NxListBulletedExampleCode = require('./examples/NxListBulleted?raw'),
     NxListActionsExampleCode = require('./examples/NxListActions?raw'),
-    NxListMultiLineExampleCode = require('./examples/NxListMultiLine?raw'),
     NxListEmptyExampleCode = require('./examples/NxListEmpty?raw'),
     NxListErrorExampleCode = require('./examples/NxListError?raw'),
     NxListLoadingExampleCode = require('./examples/NxListLoading?raw'),
@@ -67,14 +65,6 @@ const NxListsExamples = () =>
                         liveExample={NxListActionsExample}
                         codeExamples={NxListActionsExampleCode}>
       An <NxCode>NxList</NxCode> with icon buttons for initiation actions.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Multi-line Example"
-                        id="nx-list-multi-line-example"
-                        liveExample={NxListMultiLineExample}
-                        codeExamples={NxListMultiLineExampleCode}>
-      Examples of list items that wrap and truncate, some examples demonstrating wrapping and truncation
-      on <NxCode>NxList.Text</NxCode> and <NxCode>NxList.Subtext</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Empty Example"
