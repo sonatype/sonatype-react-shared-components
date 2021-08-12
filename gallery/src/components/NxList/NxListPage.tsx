@@ -104,7 +104,8 @@ const NxListPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxList.DescriptionTerm</NxCode></NxTable.Cell>
               <NxTable.Cell>Within <NxCode>NxList.Item</NxCode></NxTable.Cell>
-              <NxTable.Cell>The content for the first column in a description list.
+              <NxTable.Cell>
+                The content for the first column in a description list.
                 Used for displaying the term element in a description list.
               </NxTable.Cell>
             </NxTable.Row>
