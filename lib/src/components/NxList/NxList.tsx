@@ -6,18 +6,22 @@
  */
 import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
+import useMutationObserver from '@rooks/use-mutation-observer';
+import useMergedRef from '@react-hook/merged-ref';
+import withClass from '../../util/withClass';
+
+import { NxH3 } from '../SimpleComponents';
+import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
+import NxLoadError from '../NxLoadError/NxLoadError';
+import { splitOutFirst } from '../../util/childUtil';
+
 import NxListText from './NxListText';
 import NxListSubtext from './NxListSubtext';
 import NxListActions from './NxListActions';
 import NxListButtonItem from './NxListButtonItem';
 import NxListLinkItem from './NxListLinkItem';
 import NxListItem from './NxListItem';
-import { NxH3 } from '../SimpleComponents';
-import { splitOutFirst } from '../../util/childUtil';
-import { NxListProps, NxLoadError, NxLoadingSpinner, withClass } from '../..';
-import useMutationObserver from '@rooks/use-mutation-observer';
-import { NxListComponent, nxListPropTypes } from './types';
-import useMergedRef from '@react-hook/merged-ref';
+import { NxListProps, NxListComponent, nxListPropTypes } from './types';
 
 const mutationObserverConfig = { subtree: false, childList: true, attributes: false, characterData: false };
 
@@ -82,8 +86,6 @@ const NxList = forwardRef<HTMLUListElement, NxListProps>((props: NxListProps, ex
     </li>
   );
 
-  // Using ref.current in forwardRef see:
-  // https://stackoverflow.com/questions/62238716/using-ref-current-in-react-forwardref
   return (
     <ul ref={ref}
         className={classNames}

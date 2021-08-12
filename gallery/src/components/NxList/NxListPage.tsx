@@ -33,10 +33,10 @@ const NxListPage = () =>
 
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
-          <NxH3>Component Description and Herirarchy</NxH3>
+          <NxH3>Component Description and Hierarchy</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
-          <NxCode>NxList</NxCode> comprises of several children components.
+          <NxCode>NxList</NxCode> is comprised of several child components.
           A reference of each component and where they must be placed is as follows:
         </NxP>
         <NxTable>
@@ -108,14 +108,16 @@ const NxListPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxList.DescriptionTerm</NxCode></NxTable.Cell>
               <NxTable.Cell>Within <NxCode>NxList.Item</NxCode></NxTable.Cell>
-              <NxTable.Cell>The content for the first column in a description list.
+              <NxTable.Cell>
+                The content for the first column in a description list.
                 Used for displaying the term element in a description list.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxList.Description</NxCode></NxTable.Cell>
               <NxTable.Cell>Within <NxCode>NxList.Item</NxCode></NxTable.Cell>
-              <NxTable.Cell>The content for the second column in a description list.
+              <NxTable.Cell>
+                The content for the second column in a description list.
                 Used for displaying the term's description in a description list.
               </NxTable.Cell>
             </NxTable.Row>

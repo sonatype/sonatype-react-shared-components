@@ -14,7 +14,8 @@ function NxListClickableLink() {
         <NxList.Text>NxList page</NxList.Text>
       </NxList.LinkItem>
       <NxList.LinkItem href="#/pages/NxTable" selected>
-        <NxList.Text className="nx-truncate-ellipsis">NxTable page. This list item should be truncated at the
+        <NxList.Text className="nx-truncate-ellipsis">
+          NxTable page. This list item should be truncated at the
           right end edge. youtube weathered network network systemic systema claymore mine voodoo god garage
           monofilament realism order-flow corporation car footage vinyl.
         </NxList.Text>
