@@ -43,7 +43,6 @@ describe('NxList', function() {
 
   const minimalProps: NxListProps = {};
   const getShallow = getShallowComponent(NxList, minimalProps);
-  // const getMounted = getMountedComponent(NxList, minimalProps);
 
   it('renders a list', function() {
     const nxList = getShallow();
