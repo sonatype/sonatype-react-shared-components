@@ -15,7 +15,18 @@ describe('NxListButtonItem', function() {
   const getShallow = getShallowComponent(NxList.ButtonItem, minimalProps);
   const getMounted = getMountedComponent(NxList.ButtonItem, minimalProps);
 
-  it('renders the classNames given to it', function() {
+  it('renders a correctly structured element - a button within an li', function() {
+    const children = [
+      <NxList.Text key="1">Test Item 1 Text</NxList.Text>
+    ];
+    const contentEl = getShallow({children});
+    expect(contentEl).toExist();
+    expect(contentEl.find('li')).toMatchSelector('.nx-list__item.nx-list__item--clickable');
+    expect(contentEl.find('button')).toMatchSelector('.nx-list__btn');
+    expect(contentEl.find('button').parent().is('li'));
+  });
+
+  it('renders the classNames given to both the li and the button', function() {
     const children = [
       <NxList.Text key="1">Test Item 1 Text</NxList.Text>
     ];

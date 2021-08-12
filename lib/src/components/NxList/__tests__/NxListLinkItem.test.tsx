@@ -15,7 +15,18 @@ describe('NxListLinkItem', function() {
   const getShallow = getShallowComponent(NxList.LinkItem, minimalProps);
   const getMounted = getMountedComponent(NxList.LinkItem, minimalProps);
 
-  it('renders the classNames given to it', function() {
+  it('renders a correctly structured element - an a within an li', function() {
+    const children = [
+      <NxList.Text key="1">Test Item 1 Text</NxList.Text>
+    ];
+    const contentEl = getShallow({children});
+    expect(contentEl).toExist();
+    expect(contentEl.find('li')).toMatchSelector('.nx-list__item.nx-list__item--clickable');
+    expect(contentEl.find('a')).toMatchSelector('.nx-list__link');
+    expect(contentEl.find('a').parent().is('li'));
+  });
+
+  it('renders the classNames given to both the li and the a', function() {
     const children = [
       <NxList.Text key="1">Test Item 1 Text</NxList.Text>
     ];
