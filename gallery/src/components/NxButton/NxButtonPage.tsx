@@ -14,7 +14,8 @@ import NxButtonTertiaryExample from './NxButtonTertiaryExample';
 import NxButtonErrorExample from './NxButtonErrorExample';
 import NxButtonIconExample from './NxButtonIconExample';
 import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxCode, NxTextLink, NxP }
+  from '@sonatype/react-shared-components';
 
 const NxButtonDefaultCode = require('./NxButtonDefaultExample?raw'),
     nxButtonPrimaryCode = require('./NxButtonPrimaryExample?raw'),
@@ -30,8 +31,7 @@ export default function NxButtonPage() {
         <p className="nx-p">
           <code className="nx-code">NxButton</code> is a react wrapper around
           HTML <code className="nx-code">&lt;button&gt;</code> elements using
-          the <code className="nx-code">.nx-btn</code> CSS class. It accepts
-          any <code className="nx-code">&lt;button&gt;</code> attribute as well as the following props:
+          the <code className="nx-code">.nx-btn</code> CSS class.
         </p>
         <NxTable>
           <NxTableHead>
@@ -63,8 +63,27 @@ export default function NxButtonPage() {
                 become unsupported in a future release.
               </NxTableCell>
             </NxTableRow>
+            <NxTableRow>
+              <NxTableCell>HTML <NxCode>&lt;button&gt;</NxCode> Attributes</NxTableCell>
+              <NxTableCell>
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/button">
+                  HTML button Attributes
+                </NxTextLink>
+              </NxTableCell>
+              <NxTableCell>No</NxTableCell>
+              <NxTableCell></NxTableCell>
+              <NxTableCell>
+                <NxCode>NxButton</NxCode> supports any html attribute that's normally supported by the
+                {' '}<NxCode>&lt;button&gt;</NxCode> element.
+              </NxTableCell>
+            </NxTableRow>
           </NxTableBody>
         </NxTable>
+        <NxP>
+          <NxCode>NxButton</NxCode>s are often used within an <NxCode>NxButtonBar</NxCode> wrapper. See the
+          documentation of the <NxTextLink href="#/pages/nx-btn">raw <NxCode>nx-btn</NxCode> styles</NxTextLink> for
+          details.
+        </NxP>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Secondary (Default)"

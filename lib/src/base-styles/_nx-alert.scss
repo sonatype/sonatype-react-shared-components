@@ -12,15 +12,16 @@
   @include container-vertical;
 
   align-items: first baseline;
-  background-color: $nx-white;
-  border: $nx-border-darker;
-  border-radius: $nx-border-radius;
+  background-color: var(--nx-swatch-white);
+  border: 1px solid var(--nx-swatch-grey-05);
+  border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   display: flex;
-  margin: 16px auto 24px auto;
+  margin: 16px 0 24px 0;
   max-width: 950px;
-  padding: $nx-spacing-md;
+  padding: var(--nx-spacing-4x);
   text-align: initial;
+  max-width: var(--nx-width-text-wrapping);
 
   > .nx-icon {
     // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
@@ -28,7 +29,7 @@
     bottom: -0.125em;
     flex-shrink: 0;
     height: 1em;
-    margin-right: $nx-spacing-md;
+    margin-right: var(--nx-spacing-4x);
     position: relative;
   }
 
@@ -50,37 +51,44 @@
 }
 
 .nx-alert--warning {
-  background-color: $nx-orange-50;
-  border-color: $nx-orange-900;
+  background-color: var(--nx-swatch-orange-90);
+  border-color: var(--nx-swatch-orange-50);
 
   > .nx-icon {
-    color: $nx-orange-900;
+    color: var(--nx-swatch-orange-50);
   }
 }
 
 .nx-alert--error {
-  background-color: $nx-red-25;
-  border-color: $nx-red-800;
+  background-color: var(--nx-swatch-red-95);
+  border-color: var(--nx-swatch-red-40);
 
   > .nx-icon {
-    color: $nx-red-800;
+    color: var(--nx-swatch-red-40);
   }
 }
 
 .nx-alert--info {
-  background-color: $nx-blue-50;
-  border-color: $nx-blue-600;
+  background-color: var(--nx-swatch-blue-95);
+  border-color: var(--nx-swatch-blue-40);
 
   > .nx-icon {
-    color: $nx-blue-600;
+    color: var(--nx-swatch-blue-40);
   }
 }
 
 .nx-alert--success {
-  background-color: $nx-green-5;
-  border-color: $nx-green-700;
+  background-color: var(--nx-swatch-green-95);
+  border-color: var(--nx-swatch-green-25);
 
   > .nx-icon {
-    color: $nx-green-700;
+    color: var(--nx-swatch-green-25);
+  }
+}
+
+footer, .nx-footer {
+  .nx-alert {
+    margin-left: auto;
+    margin-right: auto;
   }
 }

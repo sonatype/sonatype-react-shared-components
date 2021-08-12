@@ -6,14 +6,31 @@
  */
 .nx-read-only {
   @include container-vertical;
-  margin: 0 0 $nx-spacing-xl 0;
+  margin: 0 0 var(--nx-spacing-8x) 0;
+}
+
+.nx-read-only--grid {
+  display: grid;
+  gap: var(--nx-spacing-8x) var(--nx-spacing-20x);
+  margin: var(--nx-spacing-8x) 0;
+  justify-content: start;
+
+  .nx-read-only__data, .nx-read-only__label {
+    max-width: unset;
+  }
+}
+
+.nx-read-only__item {
+  @include container-vertical;
 }
 
 .nx-read-only__label {
   @include bold();
-  margin: $nx-spacing-xl 0 $nx-spacing-md 0;
+  margin: var(--nx-spacing-8x) 0 var(--nx-spacing-4x) 0;
+  max-width: var(--nx-width-text-wrapping);
 }
 
 .nx-read-only__data {
-  margin: 0 0 $nx-spacing-xs 0;
+  margin: 0 0 var(--nx-spacing-2x) 0;
+  max-width: var(--nx-width-text-wrapping);
 }

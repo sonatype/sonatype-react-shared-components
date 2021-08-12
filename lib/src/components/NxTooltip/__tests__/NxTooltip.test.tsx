@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Tooltip } from '@material-ui/core';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
@@ -24,7 +24,6 @@ describe('NxTooltip', function() {
 
     expect(component).toMatchSelector(Tooltip);
     expect(component).toHaveProp('children', minimalProps.children);
-    expect(component).toHaveProp('title', minimalProps.title);
     expect(component).toHaveProp('aria-label', minimalProps.title);
     expect(component).toHaveProp('open', false);
     expect(component).toHaveProp('onOpen', onOpen);
@@ -46,6 +45,26 @@ describe('NxTooltip', function() {
     expect(component).toHaveProp('onClose', undefined);
     expect(component).toHaveProp('title', '');
     expect(component).toHaveProp('aria-label', '');
+  });
+
+  it('wraps the title in a JSX fragment if it is a non-empty string', function() {
+    const component = getNxTooltip();
+
+    expect(component.prop('title').type).toBe(Fragment);
+    expect(component.prop('title').props.children).toBe(minimalProps.title);
+  });
+
+  it('passes through empty string titles', function() {
+    const component = getNxTooltip({ title: '' });
+
+    expect(component.prop('title')).toBe('');
+  });
+
+  it('passes through JSX titles', function() {
+    const title = <div className="foo" />,
+        component = getNxTooltip({ title });
+
+    expect(component.prop('title')).toBe(title);
   });
 
   it('passes "nx-tooltip" as the `tooltip` property on the `classes` prop of the Tooltip', function() {

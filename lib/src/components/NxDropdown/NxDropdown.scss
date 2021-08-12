@@ -4,12 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
 @import '../../scss-shared/nx-text-helpers';
 @import '../../scss-shared/nx-container-helpers';
 @import '../../scss-shared/nx-button-helpers';
-
-$nx-dropdown-width: 250px;
+@import '../../scss-shared/nx-dropdown-variables';
 
 .nx-dropdown {
   display: inline-block;
@@ -18,13 +16,13 @@ $nx-dropdown-width: 250px;
 }
 
 .nx-dropdown__toggle {
-  color: $nx-text-color;
+  color: var(--nx-color-text);
   display: flex;
   margin: 0;
   outline: none;
   text-align: left;
-  padding-right: $nx-spacing-md;
-  padding-left: $nx-spacing-md;
+  padding-right: var(--nx-spacing-4x);
+  padding-left: var(--nx-spacing-4x);
   width: $nx-dropdown-width;
 
   .nx-dropdown__toggle-label {
@@ -36,39 +34,18 @@ $nx-dropdown-width: 250px;
 
   .nx-icon {
     align-self: center;
-    color: $nx-black;
+    color: var(--nx-swatch-black);
   }
 
   &.disabled {
     .nx-icon {
-      color: $nx-text-color-disabled;
+      color: var(--nx-color-text-disabled);
     }
   }
 
   &.open {
-    border-color: $nx-blue-600;
+    border-color: var(--nx-swatch-blue-40);
   }
-}
-
-.nx-dropdown-menu {
-  @include container-vertical();
-
-  background: $nx-white;
-  border: $nx-border-dark;
-  border-radius: $nx-border-radius;
-  box-shadow: 0 2px 12px 0 rgba(74, 77, 113, 0.2),
-              0 1px 2px 0 rgba(91, 95, 141, 0.2),
-              0 1px 1px 0 rgba(124, 128, 179, 0.2);
-  box-sizing: border-box;
-  display: block;
-  max-height: 328px;
-  margin: $nx-spacing-xxs 0 0 0;
-  overflow-y: auto;
-  padding: $nx-spacing-xxs 0;
-  position: absolute;
-  top: 100%;
-  width: $nx-dropdown-width;
-  z-index: 1;
 }
 
 .nx-dropdown-link, .nx-dropdown-button {
@@ -82,9 +59,9 @@ $nx-dropdown-width: 250px;
   border: none;
   cursor: pointer;
   display: block;
-  font-size: $nx-font-size;
-  line-height: $nx-line-height;
-  padding: $nx-spacing-xxs $nx-spacing-md;
+  font-size: var(--nx-font-size);
+  line-height: var(--nx-line-height);
+  padding: var(--nx-spacing-base) var(--nx-spacing-4x);
   text-decoration: none;
 }
 
@@ -92,23 +69,23 @@ $nx-dropdown-width: 250px;
   background-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
-  color: $nx-text-color;
+  color: var(--nx-color-text);
   outline: none;
   text-align: left;
   width: 100%;
 
   &:hover, &:focus {
-    background-color: $nx-hover-background;
+    background-color: var(--nx-color-interactive-background-hover);
   }
 
   &:active {
-    background-color:$nx-active-background;
+    background-color: var(--nx-color-interactive-background-active);
   }
 
   &.disabled {
     &, &:hover, &:focus {
       background-color: transparent;
-      color: $nx-text-color-disabled;
+      color: var(--nx-color-text-disabled);
       cursor: default;
       text-decoration: none;
     }
@@ -116,16 +93,16 @@ $nx-dropdown-width: 250px;
 }
 
 .nx-dropdown-link {
-  color: $nx-link-color;
+  color: var(--nx-color-link);
 
   &:hover, &:focus {
-    color: $nx-link-color-hover;
+    color: var(--nx-color-link-hover);
     text-decoration: underline;
   }
 
   &.disabled {
     &, &:hover, &:focus {
-      color: $nx-link-color-disabled;
+      color: var(--nx-color-link-disabled);
       cursor: default;
       text-decoration: none;
     }
@@ -133,7 +110,7 @@ $nx-dropdown-width: 250px;
 }
 
 .nx-dropdown--divider {
-  background-color: $nx-grey-300;
+  background-color: var(--nx-swatch-grey-70);
   height: 1px;
   margin: 9px 1px;
 }
@@ -142,18 +119,18 @@ $nx-dropdown-width: 250px;
 .nx-dropdown-button-content {
   @include nx-truncate-ellipsis;
   display: block;
-  line-height: $nx-spacing-xl;
+  line-height: var(--nx-spacing-8x);
 }
 
 .nx-dropdown-right-button {
   @include nx-small-icon-btn;
   float: right;
-  margin-right: $nx-spacing-xs;
-  margin-left: $nx-spacing-l;
+  margin-right: var(--nx-spacing-2x);
+  margin-left: var(--nx-spacing-6x);
 
   // take off a px to make room for the button border
-  margin-top: $nx-spacing-xxs - 1px;
-  margin-bottom: $nx-spacing-xxs - 1px;
+  margin-top: calc(var(--nx-spacing-base) - 1px);
+  margin-bottom: calc(var(--nx-spacing-base) - 1px);
 
   + .nx-dropdown-button {
     display: block;

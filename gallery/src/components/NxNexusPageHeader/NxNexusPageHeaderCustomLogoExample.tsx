@@ -8,7 +8,7 @@ import React from 'react';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { NxButton, NxNexusPageHeader, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
-const customLogo = require('../../resources/logos/logo_nexus_sonatype_teal.svg');
+const customLogo = require('../../assets/images/logo_nexus_sonatype_teal.svg');
 
 const NxNexusPageHeaderExample = () => {
   const links = [{

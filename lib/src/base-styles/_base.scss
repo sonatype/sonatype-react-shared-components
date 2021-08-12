@@ -16,17 +16,21 @@
 //@import '~normalize.css';
 
 // Within the base styles, the scss-shared content should only be imported once - right here
-@import '../scss-shared/nx-variables';
+@import '../scss-shared/nx-table-variables';
 @import '../scss-shared/nx-container-helpers';
 @import '../scss-shared/nx-text-helpers';
 @import '../scss-shared/nx-flexbox-helpers';
 @import '../scss-shared/nx-button-helpers';
 
+@import 'nx-variables';
+@import 'nx-colors';
+@import 'nx-color-swatches';
 @import 'nx-globals';
 @import 'nx-typography';
 
 @import 'nx-page-header';
 @import 'nx-page-layout';
+@import 'nx-global-header';
 @import 'nx-page';
 @import 'nx-footer';
 @import 'nx-tile';
@@ -47,3 +51,4 @@
 @import 'nx-form-select';
 @import 'nx-viewport-sized';
 @import 'nx-read-only';
+@import 'nx-system-notice';

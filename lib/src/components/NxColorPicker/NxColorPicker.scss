@@ -4,14 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import "../../scss-shared/nx-variables";
 @import "../../scss-shared/nx-container-helpers";
 
 .nx-color-picker {
   @include container-horizontal;
 
   .nx-legend__text {
-    margin-bottom: $nx-spacing-xxs;
+    margin-bottom: var(--nx-spacing-base);
   }
 }
 
@@ -19,34 +18,29 @@
   $size: 32px;
 
   background-clip: content-box;
+  background-color: var(--nx-selectable-color-dark);
   border-radius: $size / 2;
   box-sizing: border-box;
   border: 1px solid transparent;
   cursor: pointer;
   display: inline-block;
-  padding: $nx-spacing-xxs - 1px;
-  margin-right: $nx-spacing-xs;
+  padding: calc(var(--nx-spacing-base) - 1px);
+  margin-right: var(--nx-spacing-2x);
 
   height: $size;
   width: $size;
 
   &.selected {
-    border-color: $nx-teal-400;
+    border-color: var(--nx-swatch-teal-60);
   }
 
   &:focus-within {
-    border-color: $nx-focus-border-color;
-    box-shadow: $nx-focus-box-shadow;
+    border-color: var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
   }
 
   &:hover {
-    border-color: $nx-form-element-border-color;
-  }
-}
-
-@each $color-name, $color-codes in $nx-selectable-colors {
-  .nx-color-picker__color--#{$color-name} {
-    background-color: nth($color-codes, 1);
+    border-color: var(--nx-color-form-element-border);
   }
 }
 

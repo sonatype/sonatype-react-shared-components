@@ -21,7 +21,6 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
 
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
-          { children && <span className="nx-toggle__content">{children}</span> }
           <input type="checkbox"
                  id={inputId || undefined}
                  className="nx-toggle__input"
@@ -30,6 +29,7 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
                  readOnly={!onChange}
                  onChange={onChange || undefined}/>
           <div className="nx-toggle__control"><div className="nx-toggle__indicator"/></div>
+          { children && <span className="nx-toggle__content">{children}</span> }
         </label>
       );
     }

@@ -16,6 +16,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 export { Props, NxTreeViewChildProps } from './types';
 
 import './NxTreeView.scss';
+import { ensureElement } from '../../util/reactUtil';
 
 const NxTreeView: FunctionComponent<Props> =
   function NxTreeView(props) {
@@ -31,14 +32,15 @@ const NxTreeView: FunctionComponent<Props> =
         }),
         treeViewId = useMemo(() => id || getUniqueId('nx-tree-view'), [id]),
         trigger = (
-          <button className="nx-tree-view__trigger"
+          <button type="button"
+                  className="nx-tree-view__trigger"
                   onClick={onToggleCollapse || undefined}
                   aria-controls={treeViewId}
                   aria-expanded={isExpanded}
                   disabled={disabled || isEmpty || undefined}>
             <NxFontAwesomeIcon className="nx-tree-view__twisty" icon={faCaretRight} />
             <span className="nx-tree-view__text">
-              {triggerContent}
+              {ensureElement(triggerContent)}
             </span>
           </button>
         ),
@@ -46,7 +48,16 @@ const NxTreeView: FunctionComponent<Props> =
 
     return (
       <div className={treeViewClasses} id={treeViewId} role="tree">
-        { triggerTooltipProps ? <NxTooltip { ...triggerTooltipProps } >{trigger}</NxTooltip> : trigger }
+        {
+          triggerTooltipProps ? (
+            // div necessary to avoid error message when tooltip is on disabled button
+            <NxTooltip { ...triggerTooltipProps } >
+              <div className="nx-tree-view__tooltip-wrapper">
+                {trigger}
+              </div>
+            </NxTooltip>
+          ) : trigger
+        }
         <div className="nx-tree-view__children" role="group">
           {children}
         </div>

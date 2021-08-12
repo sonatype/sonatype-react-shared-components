@@ -26,13 +26,15 @@ export default function NxModalFormErrorExample() {
     <>
       <NxButton onClick={() => setShowModal(true)}>Open Modal with Form and Error Styling</NxButton>
       {showModal &&
-        <NxModal id="nx-modal-form-error-example" onClose={modalCloseHandler}>
+        <NxModal id="nx-modal-form-error-example"
+                 onCancel={modalCloseHandler}
+                 aria-labelledby="modal-form-error-header">
           <NxForm className="nx-form"
                   onSubmit={modalCloseHandler}
                   onCancel={modalCloseHandler}
                   submitError={error}>
             <header className="nx-modal-header">
-              <h2 className="nx-h2">
+              <h2 className="nx-h2" id="modal-form-error-header">
                 <NxFontAwesomeIcon icon={faAngry} />
                 <span>Example NxModal header with form content and error styling</span>
               </h2>

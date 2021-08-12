@@ -5,49 +5,54 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 .nx-radio-checkbox {
+  $max-width: 562px;
+
   @include container-horizontal;
   @include regular();
 
   align-items: center;
   display: flex;
-  margin-bottom: $nx-spacing-xs;
+  margin-bottom: var(--nx-spacing-2x);
   white-space: nowrap;
 
-  // fallback for IE11, which understands neither min nor max-content
-  width: $nx-form-label-width-maximum;
-
-  // We have three upper bounds on the width of the element: $nx-form-label-width-maximum, the available space
+  // We have three upper bounds on the width of the element: $max-width, the available space
   // in the container, and the actual content width. The latter being needed so the click target doesn't extend beyond
   // the end of the text
-  width: calc(min(#{$nx-form-label-width-maximum}, 100%));
+  width: calc(min(#{$max-width}, 100%));
   max-width: max-content;
+  position: relative;
 
   &:hover {
     cursor: pointer;
 
     .nx-radio-checkbox__control {
-      border-color: $nx-form-element-border-color;
-      stroke: $nx-grey-1100;
+      border-color: var(--nx-color-form-element-border);
+      stroke: var(--nx-swatch-grey-05);
     }
   }
 
   &:focus-within {
-    .nx-radio-checkbox__control {
-      border-color: $nx-focus-border-color;
-      stroke: $nx-focus-border-color;
-      filter: drop-shadow(0 0 3px rgba($nx-focus-border-color, 0.4));
+    .nx-checkbox__box, .nx-radio__focus {
+      position: relative;
+      &::after {
+        border: 1px solid var(--nx-color-interactive-border-focus);
+        box-shadow: var(--nx-box-shadow-focus);
+        content: '';
+        display: block;
+        position: absolute;
+      }
     }
 
     &:hover {
       .nx-radio-checkbox__control {
-        border-color: $nx-form-element-border-color;
+        border-color: var(--nx-color-form-element-border);
         filter: none;
-        stroke: $nx-grey-1100;
+        stroke: var(--nx-swatch-grey-05);
       }
 
       .nx-radio-checkbox__input:checked + .nx-radio-checkbox__control {
-        border-color: $nx-blue-600;
-        stroke: $nx-blue-600;
+        border-color: var(--nx-swatch-blue-40);
+        stroke: var(--nx-swatch-blue-40);
         filter: none;
       }
     }
@@ -65,17 +70,17 @@
 }
 
 .nx-radio-checkbox__control {
-  background-color: $nx-white;
-  border: $nx-border-default;
+  background-color: var(--nx-swatch-white);
+  border: var(--nx-border-default);
   flex-shrink: 0;
-  margin-right: $nx-spacing-xs;
+  margin-right: var(--nx-spacing-2x);
 }
 
 svg.nx-radio-checkbox__control {
   border-style: none;
   background: none;
-  fill: $nx-white;
-  stroke: $nx-indigo-100;
+  fill: var(--nx-swatch-white);
+  stroke: var(--nx-swatch-indigo-95);
 }
 
 .nx-radio-checkbox__content {
@@ -88,30 +93,27 @@ svg.nx-radio-checkbox__control {
     cursor: default;
 
     .nx-radio-checkbox__control {
-      background-color:$nx-disabled-background;
-      border-color: $nx-disabled-border;
+      background-color:var(--nx-color-interactive-background-disabled);
+      border-color: var(--nx-color-interactive-border-disabled);
     }
 
     svg.nx-radio-checkbox__control {
       background: none;
-      fill:$nx-disabled-background;
-      stroke: $nx-disabled-border;
+      fill: var(--nx-color-interactive-background-disabled);
+      stroke: var(--nx-color-interactive-border-disabled);
     }
   }
 }
 
 .nx-radio-checkbox__input {
   margin: 0;
-  width: 0;
-
-  // in FF, the checkboxes don't respect the width: 0 and we need this in order to hide them
-  // Fix discovered via the title of https://bugzilla.mozilla.org/show_bug.cgi?id=605985
   -moz-appearance: none;
+  -webkit-appearance: none;
 
   &:focus {
     // less-nice IE11 focus style because IE11 doesn't support :focus-within
-    margin-right: $nx-spacing-xxs;
-    outline: 1px solid $nx-focus-border-color;
+    margin-right: var(--nx-spacing-base);
+    outline: 1px solid var(--nx-color-interactive-border-focus);
     opacity: 1;
     position: static;
     vertical-align: 5px;
@@ -121,21 +123,21 @@ svg.nx-radio-checkbox__control {
 
   &:checked {
     + .nx-radio-checkbox__control {
-      background-color: $nx-blue-600;
-      border-color: $nx-blue-600;
+      background-color: var(--nx-swatch-blue-40);
+      border-color: var(--nx-swatch-blue-40);
 
       &:hover {
-        border-color: $nx-blue-600;
+        border-color: var(--nx-swatch-blue-40);
       }
     }
 
     + svg.nx-radio-checkbox__control {
       background: none;
-      fill: $nx-blue-600;
-      stroke: $nx-blue-600;
+      fill: var(--nx-swatch-blue-40);
+      stroke: var(--nx-swatch-blue-40);
 
       &:hover {
-        stroke: $nx-blue-600;
+        stroke: var(--nx-swatch-blue-40);
       }
     }
   }

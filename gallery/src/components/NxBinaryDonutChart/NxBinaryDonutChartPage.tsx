@@ -7,6 +7,8 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
+
 import NxBinaryDonutChartMinimalExample from './NxBinaryDonutChartMinimalExample';
 import NxBinaryDonutChartNoHoleExample from './NxBinaryDonutChartNoHoleExample';
 import NxBinaryDonutChartLargeHoleExample from './NxBinaryDonutChartLargeHoleExample';
@@ -63,11 +65,9 @@ const NxBinaryDonutChartPage = () =>
           <tr className="nx-table-row">
             <td className="nx-cell">SVG <code className="nx-code">&lt;svg&gt;</code> Attributes</td>
             <td className="nx-cell">
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://developer.mozilla.org/en/docs/Web/SVG/Element/svg">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/SVG/Element/svg">
                 SVG Attributes
-              </a>
+              </NxTextLink>
             </td>
             <td className="nx-cell">No</td>
             <td className="nx-cell">

@@ -7,12 +7,15 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxRadioExample from './NxRadioExample';
 import NxRadioNowrapExample from './NxRadioNowrapExample';
+import NxRadioDisabledExample from './NxRadioDisabledExample';
 
 const exampleCode = require('./NxRadioExample?raw');
 const nowrapExampleCode = require('./NxRadioNowrapExample?raw');
+const disabledExampleCode = require('./NxRadioDisabledExample?raw');
 
 const NxRadioPage = () =>
   <>
@@ -97,16 +100,17 @@ const NxRadioPage = () =>
             </td>
           </tr>
           <tr className="nx-table-row">
-            <td className="nx-cell">Label HTML Attributes</td>
+            <td className="nx-cell">HTML <code className="nx-code">&lt;label&gt;</code> Attributes</td>
             <td className="nx-cell">
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
-                HTML Attributes
-              </a>
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/label">
+                HTML Label Attributes
+              </NxTextLink>
             </td>
             <td className="nx-cell">No</td>
-            <td className="nx-cell">NxRadio supports any html attribute that's normally supported by Label element</td>
+            <td className="nx-cell">
+              NxRadio supports any html attribute that's normally supported by
+              {' '}<code className="nx-code">&lt;label&gt;</code> elements.
+            </td>
           </tr>
         </tbody>
       </table>
@@ -117,9 +121,17 @@ const NxRadioPage = () =>
                         codeExamples={exampleCode}
                         liveExample={NxRadioExample}>
       This example shows a series of radios in a typical vertical layout with
-      different label content. Note that one of the radios is disabled.
+      different label content.
       These radios together operate as a single form control: only one value within the group
       can be selected at a time.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Radio Disabled Example"
+                        id="nx-radio-disabled-example"
+                        codeExamples={disabledExampleCode}
+                        liveExample={NxRadioDisabledExample}>
+      This example shows radios that are disabled.
+      Disabled radios can either be checked or unchecked.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Radio label does not wrap"

@@ -7,6 +7,7 @@
 import React from 'react';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxCheckboxExample from './NxCheckboxExample';
 import NxCheckboxNowrapExample from './NxCheckboxNowrapExample';
@@ -19,10 +20,6 @@ const NxCheckboxPage = () =>
     <GalleryDescriptionTile>
       <p className="nx-p">Custom checkbox input.</p>
       <p className="nx-p">Child VDOM will be used as a label following the checkbox button itself.</p>
-      <p className="nx-p">
-        NxCheckbox can receive any attribute that would be valid on an
-        HTML <code className="nx-code">&lt;label&gt;</code> as well as the following prop
-      </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -78,10 +75,23 @@ const NxCheckboxPage = () =>
             <td className="nx-cell">
               VDOM rendered as a label. Should be
               {' '}
-              <a href="https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content"
-                 className="nx-text-link">
+              <NxTextLink external
+                          href="https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content">
                 phrasing content
-              </a>
+              </NxTextLink>
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">HTML <code className="nx-code">&lt;label&gt;</code> Attributes</td>
+            <td className="nx-cell">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/label">
+                HTML label Attributes
+              </NxTextLink>
+            </td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              NxCheckbox supports any html attribute that's normally supported by the
+              <code className="nx-code">label</code> element.
             </td>
           </tr>
         </tbody>

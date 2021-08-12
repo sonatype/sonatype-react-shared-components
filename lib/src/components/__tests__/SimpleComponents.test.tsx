@@ -15,7 +15,6 @@ import {
   NxFooter,
   NxButtonBar,
   NxCounter,
-  NxFormSelect,
   NxThreatNumber,
   NxPageMain,
   NxPageSidebar,
@@ -29,7 +28,9 @@ import {
   NxList,
   NxPageTitle,
   NxReadOnly,
-  NxTableContainer
+  NxTableContainer,
+  NxGlobalHeader,
+  NxSystemNotice
 } from '../SimpleComponents';
 
 describe('NxP', function() {
@@ -71,12 +72,6 @@ describe('NxButtonBar', function() {
 describe('NxCounter', function() {
   it('makes a <span> tag with an nx-counter class', function() {
     expect(shallow(<NxCounter/>)).toMatchSelector('span.nx-counter');
-  });
-});
-
-describe('NxFormSelect', function() {
-  it('makes a <select> tag with an nx-form-select class', function() {
-    expect(shallow(<NxFormSelect/>)).toMatchSelector('select.nx-form-select');
   });
 });
 
@@ -140,9 +135,15 @@ describe('NxTile.HeaderTitle', function() {
   });
 });
 
+describe('NxTile.Headings', function() {
+  it('makes a <hgroup> tag with an nx-tile-header__headings class', function() {
+    expect(shallow(<NxTile.Headings/>)).toMatchSelector('hgroup.nx-tile-header__headings');
+  });
+});
+
 describe('NxTile.HeaderSubtitle', function() {
-  it('makes a <div> tag with an nx-tile-header__subtitle class', function() {
-    expect(shallow(<NxTile.HeaderSubtitle/>)).toMatchSelector('div.nx-tile-header__subtitle');
+  it('makes a <h3> tag with an nx-tile-header__subtitle class', function() {
+    expect(shallow(<NxTile.HeaderSubtitle/>)).toMatchSelector('h3.nx-tile-header__subtitle');
   });
 });
 
@@ -225,8 +226,14 @@ describe('NxGrid.Row', function() {
 });
 
 describe('NxGrid.Column', function() {
-  it('makes a <div> tag with an nx-grid-column class', function() {
-    expect(shallow(<NxGrid.Column/>)).toMatchSelector('div.nx-grid-col');
+  it('makes a <section> tag with an nx-grid-column class', function() {
+    expect(shallow(<NxGrid.Column/>)).toMatchSelector('section.nx-grid-col');
+  });
+});
+
+describe('NxGrid.ColumnSection', function() {
+  it('makes a <section> tag with an nx-grid-column__section class', function() {
+    expect(shallow(<NxGrid.ColumnSection/>)).toMatchSelector('section.nx-grid-col__section');
   });
 });
 
@@ -290,6 +297,18 @@ describe('NxList.Description', function() {
   });
 });
 
+describe('NxList.Button', function() {
+  it('makes a <button> tag with an nx-list__btn class', function() {
+    expect(shallow(<NxList.Button/>)).toMatchSelector('button.nx-list__btn');
+  });
+});
+
+describe('NxList.Link', function() {
+  it('makes a <a> tag with an nx-list__Link class', function() {
+    expect(shallow(<NxList.Link/>)).toMatchSelector('a.nx-list__link');
+  });
+});
+
 describe('NxPageTitle', function() {
   it('makes a <div> tag with an nx-page-title class', function() {
     expect(shallow(<NxPageTitle/>)).toMatchSelector('div.nx-page-title');
@@ -338,6 +357,12 @@ describe('NxReadOnly.Data', function() {
   });
 });
 
+describe('NxReadOnly.Item', function() {
+  it('makes a <div> tag with an nx-read-only__item class', function() {
+    expect(shallow(<NxReadOnly.Item/>)).toMatchSelector('div.nx-read-only__item');
+  });
+});
+
 describe('NxTableContainer', function() {
   it('makes a <div> tag with an nx-table-container class', function() {
     expect(shallow(<NxTableContainer/>)).toMatchSelector('div.nx-table-container');
@@ -347,5 +372,29 @@ describe('NxTableContainer', function() {
 describe('NxTableContainer.Footer', function() {
   it('makes a <div> tag with an nx-table-container__footer class', function() {
     expect(shallow(<NxTableContainer.Footer/>)).toMatchSelector('div.nx-table-container__footer');
+  });
+});
+
+describe('NxGlobalHeader', function() {
+  it('makes an <aside> with an nx-global-header class', function() {
+    expect(shallow(<NxGlobalHeader/>)).toMatchSelector('aside.nx-global-header');
+  });
+});
+
+describe('NxGlobalHeader.Actions', function() {
+  it('makes an <div> with an nx-global-header__actions class', function() {
+    expect(shallow(<NxGlobalHeader.Actions/>)).toMatchSelector('div.nx-global-header__actions');
+  });
+});
+
+describe('NxSystemNotice', function() {
+  it('makes an <div> with an nx-system-notice class', function() {
+    expect(shallow(<NxSystemNotice/>)).toMatchSelector('div.nx-system-notice');
+  });
+});
+
+describe('NxSystemNotice.Container', function() {
+  it('makes an <div> with an nx-system-notice-container class', function() {
+    expect(shallow(<NxSystemNotice.Container/>)).toMatchSelector('div.nx-system-notice-container');
   });
 });

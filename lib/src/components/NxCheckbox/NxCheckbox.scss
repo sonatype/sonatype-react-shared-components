@@ -4,18 +4,41 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
+@import '../../scss-shared/nx-focus-border-helpers';
+
+$nx-checkbox-height: 16px;
+$nx-checkbox-width: 16px;
 
 .nx-checkbox__box {
   border-radius: 2px;
   box-sizing: border-box;
-  height: 16px;
+  height: $nx-checkbox-height;
   position: relative;
-  width: 16px;
+  width: $nx-checkbox-width;
+
+  // Pseudo-element style is for the focus border
+  &::after{
+    @include nx-radio-checkbox-focus-border($nx-checkbox-height, $nx-checkbox-width);
+
+    border-radius: 4px;
+    left: -5px;
+    top: -5px;
+  }
 
   .fa-check {
-    color: $nx-white;
-    font-size: $nx-font-size-s;
+    color: var(--nx-swatch-white);
+    font-size: var(--nx-font-size-s);
     vertical-align: 4px;
+  }
+}
+
+.nx-checkbox__input:checked:disabled {
+  + .nx-checkbox__box {
+    background-color:var(--nx-color-interactive-background-disabled);
+    border-color: var(--nx-color-interactive-border-disabled);
+
+    .fa-check {
+      color: var(--nx-color-text-disabled);
+    }
   }
 }

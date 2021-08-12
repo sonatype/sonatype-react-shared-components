@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxWarningAlert }
+import { NxTableHead, NxTableRow, NxTableCell, NxTable, NxTableBody, NxWarningAlert, NxTextLink }
   from '@sonatype/react-shared-components';
 
 import NxFormExample from './NxFormExample';
@@ -79,9 +79,9 @@ const NxFormPage = () =>
             <NxTableCell>
               When this prop is defined, it indicates that some asynchronous, retryable data load must happen
               before the form can be displayed. The form is wrapped in an{' '}
-              <a className="nx-text-link" href="#/pages/NxLoadWrapper">
+              <NxTextLink href="#/pages/NxLoadWrapper">
                 <code className="nx-code">NxLoadWrapper</code>
-              </a>
+              </NxTextLink>
               {' '}and this function is wired up to the retry button on the load error alert. Note that the
               initial load of the form data is expected to be triggered externally{' '}
               – <code className="nx-code">NxForm</code> only calls this function in response to the Retry button.
@@ -225,11 +225,9 @@ const NxFormPage = () =>
           <NxTableRow>
             <NxTableCell>HTML <code className="nx-code">&lt;form&gt;</code> Attributes</NxTableCell>
             <NxTableCell>
-              <a target="_blank"
-                 rel="noopener"
-                 href="https://developer.mozilla.org/en/docs/Web/HTML/Element/form">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/form">
                 HTML form Attributes
-              </a>
+              </NxTextLink>
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell>N/A</NxTableCell>

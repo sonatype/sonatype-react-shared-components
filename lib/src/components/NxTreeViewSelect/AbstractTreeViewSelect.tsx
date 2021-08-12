@@ -88,7 +88,7 @@ function AbstractTreeViewSelect<T extends Option>(props: Props<T>) {
 
   const filterContent = onFilterChange && options.length > filterThreshold && (
     <NxFilterInput disabled={disabled}
-                   placeholder={filterPlaceholder || ''}
+                   placeholder={filterPlaceholder || 'filter'}
                    id={generateId(name, 'filter-input')}
                    onChange={onFilterChange}
                    value={filter || ''}/>

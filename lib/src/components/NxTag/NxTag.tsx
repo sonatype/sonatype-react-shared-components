@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import './NxTag.scss';
+import '../../util/selectableColors.scss';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import { Props, propTypes, SelectableProps, selectablePropTypes } from './types';
@@ -18,8 +19,8 @@ const NxTag: FunctionComponent<Props> =
     function NxTag(props) {
       const { children, className, selectedIcons, color, ...attrs } = props,
           tagClasses = classnames('nx-tag', className, {
-            [`nx-tag--${color}`]: color,
-            'nx-tag--default': !color
+            'nx-selectable-color--indigo': !color, // the default
+            [`nx-selectable-color--${color}`]: color
           });
 
       return (

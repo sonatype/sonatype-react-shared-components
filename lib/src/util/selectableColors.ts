@@ -4,7 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import { map } from 'ramda';
+
+import './selectableColors.scss';
+
 export const selectableColors =
-    ['light-blue', 'purple', 'pink', 'blue', 'red', 'green', 'orange', 'yellow', 'lime'] as const;
+    ['purple', 'pink', 'blue', 'red', 'green', 'orange', 'yellow', 'lime', 'light-blue', 'indigo'] as const;
+
+export const selectableColorClasses: readonly string[] =
+    map(color => `nx-selectable-color--${color}`, selectableColors);
 
 export type SelectableColor = (typeof selectableColors)[number];

@@ -193,7 +193,7 @@ export { default as NxStatefulSegmentedButton, Props as NxStatefulSegmentedButto
 export { default as NxTag, NxSelectableTag, PublicProps as NxTagProps, SelectableProps as NxSelectableTagProps }
   from './components/NxTag/NxTag';
 
-export { selectableColors, SelectableColor } from './util/selectableColors';
+export { selectableColors, selectableColorClasses, SelectableColor } from './util/selectableColors';
 
 // deprecated
 export { selectableColors as NX_TAG_COLORS, SelectableColor as NX_TAG_COLORS_TYPE } from './util/selectableColors';
@@ -210,6 +210,8 @@ export { default as NxGlobalSidebarNavigationLink, NxGlobalSidebarNavigationLink
   from './components/NxGlobalSidebar/NxGlobalSidebarNavigationLink';
 export { default as NxStatefulGlobalSidebar, Props as NxStatefulGlobalSidebarProps }
   from './components/NxGlobalSidebar/stateful/NxStatefulGlobalSidebar';
+export { default as NxGlobalSidebarFooter, NxGlobalSidebarFooterProps }
+  from './components/NxGlobalSidebar/NxGlobalSidebarFooter';
 
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
 
@@ -223,3 +225,13 @@ export { default as NxTextLink, Props as NxTextLinkProps } from './components/Nx
 
 export { default as NxThreatCounter, Props as NxThreatCounterProps }
   from './components/NxThreatCounter/NxThreatCounter';
+
+export { default as NxFormSelect, Props as NxFormSelectProps } from './components/NxFormSelect/NxFormSelect';
+import * as nxFormSelectStateHelpers from './components/NxFormSelect/stateHelpers';
+export { nxFormSelectStateHelpers };
+
+export { default as NxTransferList, Props as NxTransferListProps, DataItem as NxTransferListDataItem }
+  from './components/NxTransferList/NxTransferList';
+
+export { default as NxStatefulTransferList, Props as NxStatefulTransferListProps }
+  from './components/NxTransferList/stateful/NxStatefulTransferList';

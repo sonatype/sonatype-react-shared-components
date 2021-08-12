@@ -96,11 +96,24 @@ import NxTagPage from './components/NxTag/NxTagPage';
 import NxCodeSnippetPage from './components/NxCodeSnippet/NxCodeSnippetPage';
 import UseTogglePage from './jsUtilPages/UseToggle/UseTogglePage';
 import NxColorPickerPage from './components/NxColorPicker/NxColorPickerPage';
-import ColorPalettePage from './guidelines/ColorPalette/ColorPalettePage';
+import ColorPalettePage from './styles/ColorPalette/ColorPalettePage';
 import IdUtilPage from './jsUtilPages/IdUtil/IdUtilPage';
 import WithClassPage from './jsUtilPages/WithClass/WithClassPage';
 import NxTextLinkPage from './components/NxTextLink/NxTextLinkPage';
 import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPage';
+import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPage';
+import NxStatefulGlobalSidebarPage from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarPage';
+import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
+import SelectableColorsPage from './styles/SelectableColors/SelectableColorsPage';
+import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTilePage';
+import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
+import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterPage';
+import NxFormSelectComponentPage from './components/NxFormSelect/NxFormSelectPage';
+import CssVariablesPage from './styles/CssVariables/CssVariablesPage';
+import NxTransferListPage from './components/NxTransferList/NxTransferListPage';
+import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxStatefulTransferListPage';
+import NxPPage from './styles/NxP/NxPPage';
+import NxHPage from './styles/NxH/NxHPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -125,6 +138,10 @@ const pageConfig: PageConfig = {
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
     NxForm: NxFormPage,
     NxFormGroup: NxFormGroupPage,
+    NxFormSelect: NxFormSelectComponentPage,
+    NxGlobalSidebar: NxGlobalSidebarPage,
+    NxStatefulGlobalSidebar: NxStatefulGlobalSidebarPage,
+    NxGlobalSidebarFooter: NxGlobalSidebarFooterPage,
     NxLoadError: NxLoadErrorPage,
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,
@@ -151,6 +168,8 @@ const pageConfig: PageConfig = {
     NxStatefulToggle: NxStatefulTogglePage,
     NxTooltip: NxTooltipPage,
     NxOverflowTooltip: NxOverflowTooltipPage,
+    NxTransferList: NxTransferListPage,
+    NxStatefulTransferList: NxStatefulTransferListPage,
     NxTreeView: NxTreeViewPage,
     NxTreeViewMultiSelect: NxTreeViewMultiSelect,
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
@@ -160,7 +179,6 @@ const pageConfig: PageConfig = {
   },
   'Guidelines': {
     'Additional Resources': AdditionalResourcePage,
-    'Color Palettes': ColorPalettePage,
     'Contributing to the Gallery': ContributingPage,
     'font-size and line-height': FontSizePage,
     'Form Validation Guidelines': FormValidationPage,
@@ -176,28 +194,36 @@ const pageConfig: PageConfig = {
     'nx-fieldset': NxFieldsetStylePage,
     'nx-form-group': NxFormGroupStylePage,
     'nx-form-select': NxFormSelectPage,
+    'nx-h*': NxHPage,
+    'nx-global-header': NxGlobalHeaderPage,
     'nx-grid': NxGridPage,
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
+    'nx-p': NxPPage,
     'nx-page-title': NxPageTitlePage,
     'nx-pre': NxPrePage,
     'nx-read-only': NxReadOnlyPage,
+    'nx-system-notice': NxSystemNoticePage,
     'nx-table': NxTableStylePage,
     'nx-table-container': NxTableContainerPage,
     'nx-threat-number': NxThreatNumberPage,
     'nx-tile': NxTilePage
   },
   'Styles - Mixins & Helpers': {
+    'Color Palettes': ColorPalettePage,
     'Custom app font size': NxFontSizePage,
     'nx-clickable': NxClickablePage,
     'nx-container-helpers': NxContainerHelpersPage,
     'nx-scrollable': NxScrollablePage,
     'nx-truncate-ellipsis': NxTruncatePage,
-    'nx-viewport-sized': NxViewportSizedPage
+    'nx-viewport-sized': NxViewportSizedPage,
+    'Selectable Colors': SelectableColorsPage,
+    'Style Variables': CssVariablesPage
   },
   'Layout Examples': {
     'Form Layout Styles': NxFormLayoutPage,
-    'Page Layout': PageLayoutPage
+    'Page Layout': PageLayoutPage,
+    'Read-Only Grid Tile Layout': NxReadOnlyGridTilePage
   },
   'JavaScript & TypeScript Utilities': {
     'TooltipConfigProps': TooltipConfigPropsPage,

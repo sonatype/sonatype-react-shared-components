@@ -8,17 +8,21 @@ import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTileFormExample from './NxTileFormExample';
+import NxTileFormErrorExample from './NxTileFormErrorExample';
 import NxTileDropdownActionsExample from './NxTileDropdownActionsExample';
 import NxTileAccordionExample from './NxTileAccordionExample';
 import NxTilePolicyViolationIndicatorExample from './NxTilePolicyViolationIndicatorExample';
+import { NxCode } from '@sonatype/react-shared-components';
 
 const NxSimpleTileCode = require('./NxSimpleTileExample.html'),
     NxTileWithActionsCode = require('./NxTileWithActionsExample.html'),
     NxTileWithSubtitleCode = require('./NxTileWithSubtitleExample.html'),
     NxTileSubsectionCode = require('./NxTileSubsectionExample.html'),
     NxTileFormCode = require('./NxTileFormExample.tsx?raw'),
+    NxTileFormErrorCode = require('./NxTileFormErrorExample.tsx?raw'),
     NxTileDropdownActionsCode = require('./NxTileDropdownActionsExample?raw'),
     NxTileAccordionCode = require('./NxTileAccordionExample?raw'),
+    NxTileGridCode = require('./NxTileGridExample.html'),
     NxTilePolicyViolationIndicatorCode = require('./NxTilePolicyViolationIndicatorExample?raw');
 
 const NxTilesExamples = () =>
@@ -65,6 +69,15 @@ const NxTilesExamples = () =>
       An example of an <code className="nx-code">nx-tile</code> which solely contains a form.
     </GalleryExampleTile>
 
+    <GalleryExampleTile title="NX Tile with form error"
+                        id="nx-tile-form-error-example"
+                        defaultCheckeredBackground={true}
+                        liveExample={NxTileFormErrorExample}
+                        codeExamples={NxTileFormErrorCode}>
+      An example of an <code className="nx-code">nx-tile</code> which contains an <NxCode>NxForm</NxCode> that
+      is in an error state.
+    </GalleryExampleTile>
+
     <GalleryExampleTile title="NX Tile with an NxDropdown in the actions buttons area"
                         id="nx-tile-dropdown-actions-example"
                         defaultCheckeredBackground={true}
@@ -90,6 +103,15 @@ const NxTilesExamples = () =>
                         codeExamples={NxTilePolicyViolationIndicatorCode}>
       An example of a tile with <code className="nx-code">NxPolicyViolationIndicator</code>{' '}
       in the header.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Tile with grid"
+                        id="nx-tile-grid-example"
+                        defaultCheckeredBackground={true}
+                        htmlExample={NxTileGridCode}
+                        codeExamples={NxTileGridCode}>
+      An example of a tile with an <NxCode>nx-grid</NxCode> as the content, demonstrating that the spacing comes
+      out as expected.
     </GalleryExampleTile>
   </>;
 

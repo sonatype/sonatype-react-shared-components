@@ -17,17 +17,24 @@ import {
   NxFieldset,
   useToggle,
   NxColorPicker,
-  SelectableColor
+  SelectableColor,
+  NxInfoAlert,
+  NxFormSelect,
+  nxFormSelectStateHelpers,
+  NxTransferList
 } from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { map, range } from 'ramda';
+
+const transferListItems = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
     return val.length ? null : 'Must be non-empty';
   }
 
-  const [selectVal, setSelectVal] = useState('');
+  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('');
 
   function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
     setSelectVal(evt.currentTarget.value);
@@ -45,6 +52,10 @@ export default function NxFormLayoutExample() {
 
   const [tagColor, setTagColor] = useState<SelectableColor | null>(null);
 
+  const [selectedTransferItems, setSelectedTransferItems] = useState<Set<number>>(new Set()),
+      [availableTransferItemsFilter, setAvailableTransferItemsFilter] = useState(''),
+      [selectedTransferItemsFilter, setSelectedTransferItemsFilter] = useState('');
+
   function onSubmit(evt: FormEvent) {
     evt.preventDefault();
     alert('Submitted!');
@@ -58,7 +69,8 @@ export default function NxFormLayoutExample() {
   );
 
   return (
-    <form className="nx-form" onSubmit={onSubmit}>
+    <form className="nx-form" onSubmit={onSubmit} aria-label="Default Form Layout Example">
+      <NxInfoAlert>This is a sample alert message</NxInfoAlert>
       <NxFormGroup label="A Field to Fill in" isRequired>
         <NxStatefulTextInput aria-required={true} validator={validator}/>
       </NxFormGroup>
@@ -94,18 +106,21 @@ export default function NxFormLayoutExample() {
         </NxRadio>
       </NxFieldset>
       <NxFormGroup label="Select" isRequired>
-        <select className="nx-form-select" value={selectVal} onChange={onSelectChange}>
+        <NxFormSelect { ...selectState } onChange={onSelectChange}>
           <option value="">Select an option</option>
           <option value="option1">Option 1</option>
           <option value="option2">Option 2</option>
           <option value="option3">Option 3</option>
           <option value="option4">Option 4</option>
           <option value="option5">Option 5</option>
-        </select>
+        </NxFormSelect>
       </NxFormGroup>
-      <NxFieldset label="Enable features" isRequired>
+      <NxFieldset label="Enable features - this text is extra long to demonstrate wrapping, how much wood would
+                         a woodchuck chuck"
+                  isRequired>
         <div className="nx-sub-label">
-          In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code>
+          In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code> - this text is
+          extra long to demonstrate wrapping, how much wood would a woodchuck chuck
         </div>
         <NxToggle inputId="subscribe-check" onChange={toggleWarp} isChecked={isWarpOn}>
           Enable Warp Drive
@@ -121,6 +136,15 @@ export default function NxFormLayoutExample() {
         <NxStatefulTextInput type="textarea" placeholder="placeholder" aria-required={true}/>
       </NxFormGroup>
       <NxColorPicker label="Tag Color" isRequired value={tagColor} onChange={setTagColor} />
+      <NxFieldset label="Numbered Items">
+        <NxTransferList allItems={transferListItems}
+                        selectedItems={selectedTransferItems}
+                        availableItemsFilter={availableTransferItemsFilter}
+                        selectedItemsFilter={selectedTransferItemsFilter}
+                        onAvailableItemsFilterChange={setAvailableTransferItemsFilter}
+                        onSelectedItemsFilterChange={setSelectedTransferItemsFilter}
+                        onChange={setSelectedTransferItems} />
+      </NxFieldset>
       <footer className="nx-footer">
         <div className="nx-btn-bar">
           <NxButton type="button">Cancel</NxButton>

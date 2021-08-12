@@ -15,6 +15,7 @@ import NxButton from '../../NxButton/NxButton';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
+import NxDropdownMenu from '../../NxDropdownMenu/NxDropdownMenu';
 
 describe('NxSegmentedButton', function() {
   let container: HTMLDivElement | null;
@@ -106,6 +107,18 @@ describe('NxSegmentedButton', function() {
     expect(onClick).toHaveBeenCalled();
   });
 
+  it('passes the type to the main btn', function() {
+    expect(getShallow().find('.nx-segmented-btn__main-btn')).toHaveProp('type', undefined);
+    expect(getShallow({ type: 'button' }).find('.nx-segmented-btn__main-btn')).toHaveProp('type', 'button');
+    expect(getShallow({ type: 'submit' }).find('.nx-segmented-btn__main-btn')).toHaveProp('type', 'submit');
+  });
+
+  it('sets type="button" on the dropdown button', function() {
+    expect(getShallow().find('.nx-segmented-btn__dropdown-btn')).toHaveProp('type', 'button');
+    expect(getShallow({ type: 'button' }).find('.nx-segmented-btn__dropdown-btn')).toHaveProp('type', 'button');
+    expect(getShallow({ type: 'submit' }).find('.nx-segmented-btn__dropdown-btn')).toHaveProp('type', 'button');
+  });
+
   it('calls onToggleOpen once when clicking to open the dropdown', function() {
     const onToggleOpen = jest.fn(),
         component = getMounted({ onToggleOpen }, { attachTo: container });
@@ -179,9 +192,9 @@ describe('NxSegmentedButton', function() {
     );
   });
 
-  it('renders an nx-dropdown-menu iff isOpen is set', function() {
-    expect(getShallow()).not.toContainMatchingElement('.nx-dropdown-menu');
-    expect(getShallow({ isOpen: true })).toContainMatchingElement('.nx-dropdown-menu');
+  it('renders an NxDropdownMenu iff isOpen is set', function() {
+    expect(getShallow()).not.toContainMatchingElement(NxDropdownMenu);
+    expect(getShallow({ isOpen: true })).toContainMatchingElement(NxDropdownMenu);
   });
 
   it('wraps each child in an NxOverflowTooltip and renders them within the nx-dropdown-menu', function() {
@@ -192,13 +205,13 @@ describe('NxSegmentedButton', function() {
     expect(closedComp).not.toContainMatchingElement('.foo');
     expect(closedComp).not.toContainMatchingElement('.bar');
 
-    expect(openComp.find('.nx-dropdown-menu')).toContainReact(
+    expect(openComp.find(NxDropdownMenu)).toContainReact(
       <NxOverflowTooltip>
         <span className="foo" />
       </NxOverflowTooltip>
     );
 
-    expect(openComp.find('.nx-dropdown-menu')).toContainReact(
+    expect(openComp.find(NxDropdownMenu)).toContainReact(
       <NxOverflowTooltip>
         <span className="bar" />
       </NxOverflowTooltip>
@@ -254,8 +267,20 @@ describe('NxSegmentedButton', function() {
     const onToggleOpen = jest.fn(),
         component = getShallow({ onToggleOpen, isOpen: true });
 
-    component.simulate('keyDown', { key: 'Escape' });
+    component.simulate('keyDown', { key: 'Escape', preventDefault: jest.fn() });
     expect(onToggleOpen).toHaveBeenCalled();
+  });
+
+  it('calls preventDefault on Escape keydown', function() {
+    const component = getShallow({ onToggleOpen: jest.fn(), isOpen: true }),
+        escPreventDefault = jest.fn(),
+        otherPreventDefault = jest.fn();
+
+    component.simulate('keyDown', { key: 'Escape', preventDefault: escPreventDefault });
+    component.simulate('keyDown', { key: 'Q', preventDefault: otherPreventDefault });
+
+    expect(escPreventDefault).toHaveBeenCalled();
+    expect(otherPreventDefault).not.toHaveBeenCalled();
   });
 
   it('does not call onToggleOpen if ESC is pressed within the component when the dropdown is closed', function() {
@@ -331,5 +356,20 @@ describe('NxSegmentedButton', function() {
     });
     component!.update();
     expect(onToggleOpen).toHaveBeenCalledTimes(1);
+  });
+
+  it('moves focus to the dropdown toggle button if a menu item is focused when the dropdown is closed', function() {
+    const component = getMounted({
+          children: <button className="nx-dropdown-button">Foo</button>,
+          isOpen: true
+        }, { attachTo: container }),
+        menuBtn = component.find('button.nx-dropdown-button').getDOMNode() as HTMLElement,
+        toggleBtn = component.find('button.nx-segmented-btn__dropdown-btn').getDOMNode();
+
+    menuBtn.focus();
+    expect(document.activeElement).toBe(menuBtn);
+
+    component.setProps({ isOpen: false });
+    expect(document.activeElement).toBe(toggleBtn);
   });
 });

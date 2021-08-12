@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxPaginationExample from './NxPaginationExample';
 import NxPaginationEmptyExample from './NxPaginationEmptyExample';
@@ -69,10 +70,6 @@ const NxPaginationPage = () =>
           </span>
         </li>
       </ul>
-      <p className="nx-p">
-        In addition to all native attributes allowed on a <code className="nx-code">div</code>, the following props
-        are supported.
-      </p>
       <table className="nx-table nx-table--gallery-props">
         <thead>
           <tr className="nx-table-row">
@@ -108,6 +105,19 @@ const NxPaginationPage = () =>
               Handler function which gets called whenever the user selects a different page. Receives the selected
               page as its first argument (using zero-based counting), and the button's click event as its
               second argument.
+            </td>
+          </tr>
+          <tr className="nx-table-row">
+            <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
+            <td className="nx-cell">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                HTML div Attributes
+              </NxTextLink>
+            </td>
+            <td className="nx-cell">No</td>
+            <td className="nx-cell">
+              <code className="nx-code">NxPagination</code> supports any HTML attribute that's normally
+              supported by <code className="nx-code">&lt;div&gt;</code> elements.
             </td>
           </tr>
         </tbody>

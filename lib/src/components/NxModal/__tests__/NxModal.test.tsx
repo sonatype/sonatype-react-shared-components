@@ -5,11 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import {mount, ReactWrapper} from 'enzyme';
-import {act} from 'react-dom/test-utils';
+import {mount} from 'enzyme';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import NxModal, {Props} from '../NxModal';
+import NxModal, {Props, NxModalContext} from '../NxModal';
+import NxTooltip from '../../NxTooltip/NxTooltip';
+import NxButton from '../../NxButton/NxButton';
+import { Tooltip } from '@material-ui/core';
 
 describe('NxModal', function() {
   const dummyCloseHandler = jest.fn();
@@ -18,66 +20,66 @@ describe('NxModal', function() {
     onClose: dummyCloseHandler
   };
 
-  const getShallow = getShallowComponent(NxModal, minimalProps);
+  const getShallow = getShallowComponent(NxModal, minimalProps),
+      getModal = (props?: Partial<Props>) => getShallow(props).children();
 
-  it('renders an nx-modal-backdrop <dialog> containing an nx-modal <div>', function () {
-    const nxModal = getShallow();
+  it('renders a context provider around an nx-modal-backdrop <dialog> containing an nx-modal <div>', function () {
+    const contextProvider = getShallow(),
+        nxModal = contextProvider.children();
 
+    expect(contextProvider).toMatchSelector(NxModalContext.Provider);
     expect(nxModal).toMatchSelector('dialog.nx-modal-backdrop');
     expect(nxModal.children()).toMatchSelector('div.nx-modal');
   });
 
   it('renders children nodes within the modal', function() {
-    const nxModal = getShallow({ children: <div className="bar"/> });
+    const nxModal = getModal({ children: <div className="bar"/> });
 
     expect(nxModal.find('.nx-modal')).toContainMatchingElement('div.bar');
   });
 
   it('merges any passed in className to the nx-modal div', function() {
-    const nxModal = getShallow({ className: 'test' });
+    const nxModal = getModal({ className: 'test' });
 
     const nxModalDiv = nxModal.find('.nx-modal');
     expect(nxModalDiv).toHaveClassName('test');
   });
 
   it('includes any passed in attributes to the nx-modal div', function() {
-    const nxModal = getShallow({ id: 'modal-id', lang: 'en_US' });
+    const nxModal = getModal({ id: 'modal-id', lang: 'en_US' });
 
     expect(nxModal.find('.nx-modal').prop('id')).toEqual('modal-id');
     expect(nxModal.find('.nx-modal').prop('lang')).toEqual('en_US');
   });
 
   it('sets the dialog role on the backdrop by default', function() {
-    expect(getShallow()).toHaveProp('role', 'dialog');
+    expect(getModal()).toHaveProp('role', 'dialog');
   });
 
   it('sets the specified role on the backdrop', function() {
-    expect(getShallow({ role: 'asdf' })).toHaveProp('role', 'asdf');
+    expect(getModal({ role: 'asdf' })).toHaveProp('role', 'asdf');
   });
 
   it('adds the nx-modal--wide class when the wide variant is specified', function() {
-    const nxModal = getShallow({ variant: 'wide' });
+    const nxModal = getModal({ variant: 'wide' });
 
     expect(nxModal.find('.nx-modal')).toHaveClassName('nx-modal--wide');
   });
 
   it('adds the nx-modal--narrow class when the narrow variant is specified', function() {
-    const nxModal = getShallow({ variant: 'narrow' });
+    const nxModal = getModal({ variant: 'narrow' });
 
     expect(nxModal.find('.nx-modal')).toHaveClassName('nx-modal--narrow');
   });
 
   describe('NxModal event listener support', () => {
     let containerMainModal: HTMLDivElement | null;
-    let containerSecondaryModal: HTMLDivElement | null;
 
     beforeEach(function () {
       // Rendering containerMainModal for the component in test.
       containerMainModal = document.createElement('div');
-      containerSecondaryModal = document.createElement('div');
 
       document.body.appendChild(containerMainModal);
-      document.body.appendChild(containerSecondaryModal);
     });
 
     afterEach(function () {
@@ -85,117 +87,116 @@ describe('NxModal', function() {
         document.body.removeChild(containerMainModal);
         containerMainModal = null;
       }
+    });
 
-      if (containerSecondaryModal) {
-        document.body.removeChild(containerSecondaryModal);
-        containerSecondaryModal = null;
+    const createEvent = (key = 'Escape') => ({
+      key,
+      stopPropagation: jest.fn(),
+      nativeEvent: {
+        stopImmediatePropagation: jest.fn()
       }
     });
 
-    it('executes onClose method when pressing ESC key', function () {
+    it('executes onClose method with a cancel event when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const nxModal = <NxModal id="first-modal-id" onClose={mockCallBack}/>;
+      const component = getModal({ onClose: mockCallBack });
 
-      act(() => {
-        mount(nxModal, {attachTo: containerMainModal});
-      });
-
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+      expect(mockCallBack).not.toHaveBeenCalled();
+      component.simulate('keyDown', createEvent());
       expect(mockCallBack).toHaveBeenCalledTimes(1);
+      expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
     });
 
-    it('executes onClose method when pressing ESC key on IE11', function () {
+    it('executes onCancel method with a cancel event when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const nxModal = <NxModal id="first-modal-id" onClose={mockCallBack}/>;
+      const component = getModal({ onCancel: mockCallBack });
 
-      act(() => {
-        mount(nxModal, {attachTo: containerMainModal});
-      });
-
-      const ieEscapeKey = 'Esc';
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: ieEscapeKey}));
+      expect(mockCallBack).not.toHaveBeenCalled();
+      component.simulate('keyDown', createEvent());
       expect(mockCallBack).toHaveBeenCalledTimes(1);
+      expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
     });
 
     it('executes onClose method ONLY when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const nxModal = <NxModal id="first-modal-id" onClose={mockCallBack}/>;
+      const component = getModal({ onClose: mockCallBack });
 
-      act(() => {
-        mount(nxModal, {attachTo: containerMainModal});
-      });
-
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Tab'}));
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'q'}));
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Q'}));
+      component.simulate('keyDown', createEvent('Tab'));
+      component.simulate('keyDown', createEvent('Enter'));
+      component.simulate('keyDown', createEvent('q'));
+      component.simulate('keyDown', createEvent('Q'));
       expect(mockCallBack).not.toHaveBeenCalled();
     });
 
-    it('executes onClose method for each modal that has been opened, preserving order call', function () {
-      const firstMockCallBack = jest.fn();
-      const secondMockCallBack = jest.fn();
-      const firstNxModal = <NxModal id="first-modal-id" onClose={firstMockCallBack}/>;
-      const secondNxModal = <NxModal id="second-modal-id" onClose={secondMockCallBack}/>;
+    it('executes onCancel method ONLY when pressing ESC key', function () {
+      const mockCallBack = jest.fn();
+      const component = getModal({ onCancel: mockCallBack });
 
-      let secondModalWrapper: ReactWrapper | null = null;
-      let firstModalWrapper: ReactWrapper | null = null;
-      act(() => {
-        firstModalWrapper = mount(firstNxModal, {attachTo: containerMainModal});
-        secondModalWrapper = mount(secondNxModal, {attachTo: containerSecondaryModal});
-      });
-
-      // "Close" the second modal
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      expect(secondMockCallBack).toHaveBeenCalledTimes(1);
-      expect(firstMockCallBack).not.toHaveBeenCalled();
-
-      // Unmount and remount the modal to ensure listener order is preserved if new modals are opened
-      act(() => {
-        secondModalWrapper!.unmount();
-        secondModalWrapper = mount(secondNxModal, {attachTo: containerSecondaryModal});
-      });
-      // "Close" the second modal again
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      expect(secondMockCallBack).toHaveBeenCalledTimes(2);
-      expect(firstMockCallBack).not.toHaveBeenCalled();
-
-      // Unmount the second modal to remove it's listener from available listeners to execute
-      act(() => {
-        secondModalWrapper!.unmount();
-      });
-      // "Close" the first modal
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      expect(secondMockCallBack).toHaveBeenCalledTimes(2);
-      expect(firstMockCallBack).toHaveBeenCalledTimes(1);
-
-      // Unmount the first modal to remove it's listener from available listeners to execute
-      act(() => {
-        firstModalWrapper!.unmount();
-      });
-      // Ensure there are no more calls to the registered close handlers with new keypresses
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      expect(secondMockCallBack).toHaveBeenCalledTimes(2);
-      expect(firstMockCallBack).toHaveBeenCalledTimes(1);
+      component.simulate('keyDown', createEvent('Tab'));
+      component.simulate('keyDown', createEvent('Enter'));
+      component.simulate('keyDown', createEvent('q'));
+      component.simulate('keyDown', createEvent('Q'));
+      expect(mockCallBack).not.toHaveBeenCalled();
     });
 
-    it('executes only the most recent onClose callback if it has been updated', function() {
-      const mockCallBack1 = jest.fn(),
-          mockCallBack2 = jest.fn();
+    it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', function() {
+      const component = getModal({ onClose: jest.fn() }),
+          escEvent = createEvent(),
+          otherEvent = createEvent('q');
 
-      let nxModal: ReactWrapper;
+      component.simulate('keyDown', escEvent);
+      component.simulate('keyDown', otherEvent);
 
-      act(() => {
-        nxModal = mount(<NxModal id="first-modal-id" onClose={mockCallBack1}/>, {attachTo: containerMainModal});
-      });
+      expect(escEvent.stopPropagation).toHaveBeenCalled();
+      expect(escEvent.nativeEvent.stopImmediatePropagation).toHaveBeenCalled();
 
-      act(() => {
-        nxModal.setProps({ onClose: mockCallBack2 });
-      });
-
-      document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-      expect(mockCallBack2).toHaveBeenCalledTimes(1);
-      expect(mockCallBack1).not.toHaveBeenCalled();
+      expect(otherEvent.stopPropagation).not.toHaveBeenCalled();
+      expect(otherEvent.nativeEvent.stopImmediatePropagation).not.toHaveBeenCalled();
     });
+  });
+
+  it('renders descendant tooltips attached to the backdrop rather than the document body', function() {
+    const nxModal = mount(
+      <NxModal onClose={() => {}}>
+        <div id="test-div">
+          <NxTooltip title="foo">
+            <NxButton>Foo</NxButton>
+          </NxTooltip>
+        </div>
+      </NxModal>
+    );
+
+    const tooltip = nxModal.find(Tooltip).at(0);
+
+    expect(tooltip.prop('PopperProps')!.container).toBe(nxModal.getDOMNode());
+  });
+
+  it('moves focus back to the previously focused element when closed', function() {
+    function Fixture({ modalOpen }: { modalOpen: boolean }) {
+      return (
+        <>
+          <button id="test-btn">Test</button>
+          { modalOpen && <NxModal onCancel={jest.fn()}><button id="cancel-btn">Close</button></NxModal> }
+        </>
+      );
+    }
+
+    const container = document.createElement('div');
+    document.body.append(container);
+
+    const component = mount(<Fixture modalOpen={false} />, { attachTo: container }),
+        externalBtn = component.find('#test-btn').getDOMNode() as HTMLElement;
+
+    externalBtn.focus();
+    expect(component).not.toContainMatchingElement(NxModal);
+    expect(document.activeElement).toBe(externalBtn);
+
+    component.setProps({ modalOpen: true });
+    expect(component).toContainMatchingElement(NxModal);
+    expect(document.activeElement).toBe(component.find(NxModal).getDOMNode());
+
+    component.setProps({ modalOpen: false });
+    expect(component).not.toContainMatchingElement(NxModal);
+    expect(document.activeElement).toBe(externalBtn);
   });
 });

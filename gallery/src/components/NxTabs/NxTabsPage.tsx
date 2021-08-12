@@ -13,7 +13,9 @@ import {
   NxTableBody,
   NxTableCell,
   NxTableHead,
-  NxTableRow
+  NxTableRow,
+  NxCode,
+  NxTextLink
 } from '@sonatype/react-shared-components';
 
 import NxTabsTileHeaderExample from './NxTabsTileHeaderExample';
@@ -35,20 +37,16 @@ export default function NxTabsPage() {
         <p className="nx-p">
           A set of accessible tab components which must be used together.
         </p>
-
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
             <h3 className="nx-h3">NxTabs</h3>
           </header>
-
           <p className="nx-p">
             The top-level container for tabbed navigation.
             It can have <code className="nx-code">&lt;NxTabList&gt;</code> and
             {' '}<code className="nx-code">&lt;NxTabPanel&gt;</code> components as children.
-            Support native <code className="nx-code">&lt;div&gt;</code> attributes as well as the following props:
           </p>
-
-          <NxTable className="nx-table--gallery-props">
+          <NxTable>
             <NxTableHead>
               <NxTableRow>
                 <NxTableCell>Prop</NxTableCell>
@@ -82,37 +80,115 @@ export default function NxTabsPage() {
           <header className="nx-tile-subsection__header">
             <h3 className="nx-h3">NxTabList</h3>
           </header>
-
           <p className="nx-p">
             The parent container for the <code className="nx-code">&lt;NxTab&gt;</code> components.
-            Passes through all attributes to an underlying ul element.
+            Passes through all attributes to an underlying <code className="nx-code">ul</code> element.
           </p>
+          <NxTable>
+            <NxTableHead>
+              <NxTableRow>
+                <NxTableCell>Prop</NxTableCell>
+                <NxTableCell>Type</NxTableCell>
+                <NxTableCell>Required</NxTableCell>
+                <NxTableCell>Details</NxTableCell>
+              </NxTableRow>
+            </NxTableHead>
+            <NxTableBody>
+              <NxTableRow>
+                <NxTableCell>
+                  HTML <NxCode>&lt;ul&gt;</NxCode> Attributes
+                </NxTableCell>
+                <NxTableCell>
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/ul">
+                    HTML ul Attributes
+                  </NxTextLink><br/>
+                </NxTableCell>
+                <NxTableCell>No</NxTableCell>
+                <NxTableCell>
+                  <NxCode>NxTabList</NxCode> supports any html attributes that are normally supported by the
+                  {' '}<NxCode>&lt;ul&gt;</NxCode> element.
+                </NxTableCell>
+              </NxTableRow>
+            </NxTableBody>
+          </NxTable>
         </section>
 
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
             <h3 className="nx-h3">NxTab</h3>
           </header>
-
           <p className="nx-p">
             The component the user selects to switch tabs.
             The index prop is automatically configured by the <code className="nx-code">NxTabs</code> component.
             There should be one of these for each <code className="nx-code">NxTabPanel</code> component.
             Passes through all attributes to an underlying li element.
           </p>
+          <NxTable>
+            <NxTableHead>
+              <NxTableRow>
+                <NxTableCell>Prop</NxTableCell>
+                <NxTableCell>Type</NxTableCell>
+                <NxTableCell>Required</NxTableCell>
+                <NxTableCell>Details</NxTableCell>
+              </NxTableRow>
+            </NxTableHead>
+            <NxTableBody>
+              <NxTableRow>
+                <NxTableCell>
+                  HTML <NxCode>&lt;li&gt;</NxCode> Attributes
+                </NxTableCell>
+                <NxTableCell>
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/li">
+                    HTML li Attributes
+                  </NxTextLink>
+                </NxTableCell>
+                <NxTableCell>No</NxTableCell>
+                <NxTableCell>
+                  <NxCode>NxTab</NxCode> supports any html attributes that are normally supported by the
+                  {' '}<NxCode>&lt;li&gt;</NxCode> element.
+                </NxTableCell>
+              </NxTableRow>
+            </NxTableBody>
+          </NxTable>
         </section>
 
         <section className="nx-tile-subsection">
           <header className="nx-tile-subsection__header">
             <h3 className="nx-h3">NxTabPanel</h3>
           </header>
-
           <p className="nx-p">
             Container component for the tab contents.
             The index prop is automatically configured by the <code className="nx-code">NxTabs</code> component.
             There should be one of these for each <code className="nx-code">NxTab</code> component.
             Passes through all attributes to an underlying div element.
           </p>
+          <NxTable>
+            <NxTableHead>
+              <NxTableRow>
+                <NxTableCell>Prop</NxTableCell>
+                <NxTableCell>Type</NxTableCell>
+                <NxTableCell>Required</NxTableCell>
+                <NxTableCell>Details</NxTableCell>
+              </NxTableRow>
+            </NxTableHead>
+            <NxTableBody>
+              <NxTableRow>
+                <NxTableCell>
+                  HTML <NxCode>&lt;div&gt;</NxCode> Attributes
+                </NxTableCell>
+                <NxTableCell>
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                    HTML div Attributes
+                  </NxTextLink>
+                </NxTableCell>
+                <NxTableCell>No</NxTableCell>
+                <NxTableCell>
+                  <NxCode>NxTabPanel</NxCode> supports any html attributes that are normally supported by the
+                  {' '}<NxCode>&lt;div&gt;</NxCode> element.
+                </NxTableCell>
+              </NxTableRow>
+            </NxTableBody>
+          </NxTable>
         </section>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="NxTabs in NxTile Example"

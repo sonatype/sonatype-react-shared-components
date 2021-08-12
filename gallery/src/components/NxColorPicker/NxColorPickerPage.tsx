@@ -5,7 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody } from '@sonatype/react-shared-components';
+import { NxTable, NxTableHead, NxTableCell, NxTableRow, NxTableBody, NxTextLink }
+  from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 import NxColorPickerExample from './NxColorPickerExample';
@@ -79,20 +80,17 @@ const NxColorPickerPage = () =>
             </NxTableCell>
           </NxTableRow>
           <NxTableRow>
-            <NxTableCell>HTML fieldset Attributes</NxTableCell>
+            <NxTableCell>HTML <code className="nx-code">&lt;fieldset&gt;</code> Attributes</NxTableCell>
             <NxTableCell>
-              <a className="nx-text-link"
-                 target="_blank"
-                 rel="noopener"
-                 href="https://developer.mozilla.org/en/docs/Web/HTML/Element/fieldset">
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/fieldset">
                 HTML fieldset Attributes
-              </a>
+              </NxTextLink>
             </NxTableCell>
             <NxTableCell>No</NxTableCell>
             <NxTableCell></NxTableCell>
             <NxTableCell>
               NxColorPicker supports any html attribute that's normally supported by
-              {' '}<code className="nx-code">fieldset</code> elements.
+              {' '}<code className="nx-code">&lt;fieldset&gt;</code> elements.
             </NxTableCell>
           </NxTableRow>
         </NxTableBody>
