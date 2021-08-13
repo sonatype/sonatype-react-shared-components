@@ -12,7 +12,7 @@ import {NxListButtonItemProps, nxListButtonItemPropTypes} from './types';
 import { includesDisabledClass } from '../../util/classUtil';
 
 const NxListButtonItem = forwardRef<HTMLLIElement, NxListButtonItemProps>(
-    function nxListButtonItem({ children, className, disabled, selected, buttonClassName,
+    function NxListButtonItem({ children, className, disabled, selected, buttonClassName,
       buttonAttributes, ...attrs }, ref) {
       const liClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className);
       const buttonClassNames = classnames('nx-list__btn', buttonClassName, { selected, disabled });
