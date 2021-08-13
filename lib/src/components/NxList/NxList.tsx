@@ -12,12 +12,8 @@ import withClass from '../../util/withClass';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import NxLoadError from '../NxLoadError/NxLoadError';
 
-import NxListText from './NxListText';
-import NxListSubtext from './NxListSubtext';
-import NxListActions from './NxListActions';
 import NxListButtonItem from './NxListButtonItem';
 import NxListLinkItem from './NxListLinkItem';
-import NxListItem from './NxListItem';
 import { NxListProps, nxListPropTypes } from './types';
 import useEmptyComponent from '../../util/useEmptyComponent';
 
@@ -69,10 +65,10 @@ const NxList = Object.assign(
       );
     }),
     {
-      Item: NxListItem,
-      Text: NxListText,
-      Subtext: NxListSubtext,
-      Actions: NxListActions,
+      Item: withClass('li', 'nx-list__item'),
+      Text: withClass('span', 'nx-list__text'),
+      Subtext: withClass('span', 'nx-list__subtext'),
+      Actions: withClass('div', 'nx-list__actions'),
       ButtonItem: NxListButtonItem,
       LinkItem: NxListLinkItem,
       DescriptionTerm: withClass('dt', 'nx-list__term'),

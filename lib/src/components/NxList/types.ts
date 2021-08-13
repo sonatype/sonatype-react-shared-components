@@ -32,38 +32,6 @@ export const nxListPropTypes: ValidationMap<NxListProps> = {
   retryHandler: PropTypes.func
 };
 
-export interface NxListItemProps extends LiHTMLAttributes<HTMLLIElement> {
-  selected?: boolean | null;
-}
-
-export const nxListItemPropTypes: ValidationMap<NxListItemProps> = {
-  selected: PropTypes.bool
-};
-
-export interface NxListTextProps extends HTMLAttributes<HTMLSpanElement> {
-  children?: ReactNode;
-}
-
-export const nxListTextPropTypes: ValidationMap<NxListTextProps> = {
-  children: PropTypes.node
-};
-
-export interface NxListSubtextProps extends HTMLAttributes<HTMLSpanElement> {
-  children?: ReactNode;
-}
-
-export const nxListSubtextPropTypes: ValidationMap<NxListSubtextProps> = {
-  children: PropTypes.node
-};
-
-export interface NxListActionProps extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactNode;
-}
-
-export const nxListActionPropTypes: ValidationMap<NxListActionProps> = {
-  children: PropTypes.node
-};
-
 export interface NxListButtonItemProps extends LiHTMLAttributes<HTMLLIElement> {
   children?: ReactNode,
   selected?: boolean | null,
