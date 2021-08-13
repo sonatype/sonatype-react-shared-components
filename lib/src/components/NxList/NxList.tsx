@@ -39,7 +39,7 @@ const NxList = forwardRef<HTMLUListElement, NxListProps>(function NxList(props: 
   const nxListEmpty = (
     <li ref={emptyListRef} className="nx-list__item nx-list__item--empty">
       <span className="nx-list__text">
-        {emptyMessage ? emptyMessage : 'This list is empty.'}
+        {emptyMessage || 'This list is empty.'}
       </span>
     </li>
   );
