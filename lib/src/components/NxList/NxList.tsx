@@ -22,7 +22,7 @@ import { NxListProps, NxListComponent, nxListPropTypes } from './types';
 import useEmptyComponent from '../../util/useEmptyComponent';
 
 
-const NxList = forwardRef<HTMLUListElement, NxListProps>((props: NxListProps, externalRef) => {
+const NxList = forwardRef<HTMLUListElement, NxListProps>(function NxList(props: NxListProps, externalRef) {
   const {className, children, bulleted, emptyMessage, isLoading = false, error, retryHandler, ...attrs } = props;
   const classNames = classnames(className, 'nx-list', {'nx-list--bulleted': bulleted});
   const ulRef = useRef<HTMLUListElement | null>(null);
