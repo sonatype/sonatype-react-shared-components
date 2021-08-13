@@ -5,30 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import {
-  ForwardRefExoticComponent,
-  RefAttributes,
   HTMLAttributes,
   LiHTMLAttributes,
   ValidationMap,
   ReactNode,
   ButtonHTMLAttributes,
-  AnchorHTMLAttributes,
-  DetailedHTMLProps,
-  FunctionComponent
+  AnchorHTMLAttributes
 } from 'react';
 import PropTypes from 'prop-types';
-
-export interface NxListComponent
-  extends ForwardRefExoticComponent<NxListProps & RefAttributes<HTMLUListElement>> {
-  Item: ForwardRefExoticComponent<NxListItemProps & RefAttributes<HTMLLIElement>>;
-  Text: ForwardRefExoticComponent<NxListTextProps & RefAttributes<HTMLSpanElement>>;
-  Subtext: ForwardRefExoticComponent<NxListSubtextProps & RefAttributes<HTMLSpanElement>>;
-  Actions: ForwardRefExoticComponent<NxListActionProps & RefAttributes<HTMLDivElement>>;
-  ButtonItem: ForwardRefExoticComponent<NxListButtonItemProps & RefAttributes<HTMLLIElement>>;
-  LinkItem: ForwardRefExoticComponent<NxListLinkItemProps & RefAttributes<HTMLLIElement>>;
-  DescriptionTerm: FunctionComponent<DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>>;
-  Description: FunctionComponent<DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>>;
-}
 
 export interface NxListProps extends HTMLAttributes<HTMLUListElement> {
   bulleted?: boolean | null;

@@ -18,66 +18,69 @@ import NxListActions from './NxListActions';
 import NxListButtonItem from './NxListButtonItem';
 import NxListLinkItem from './NxListLinkItem';
 import NxListItem from './NxListItem';
-import { NxListProps, NxListComponent, nxListPropTypes } from './types';
+import { NxListProps, nxListPropTypes } from './types';
 import useEmptyComponent from '../../util/useEmptyComponent';
 
+const NxList = Object.assign(
+    forwardRef<HTMLUListElement, NxListProps>(function NxList(props: NxListProps, externalRef) {
+      const {className, children, bulleted, emptyMessage, isLoading = false, error, retryHandler, ...attrs} = props;
+      const classNames = classnames(className, 'nx-list', {'nx-list--bulleted': bulleted});
+      const ulRef = useRef<HTMLUListElement | null>(null);
+      const emptyListRef = useRef<HTMLLIElement>(null);
+      const ref = useMergedRef(ulRef, externalRef);
+      const isEmpty = useEmptyComponent(false, ulRef, emptyListRef);
 
-const NxList = forwardRef<HTMLUListElement, NxListProps>(function NxList(props: NxListProps, externalRef) {
-  const {className, children, bulleted, emptyMessage, isLoading = false, error, retryHandler, ...attrs } = props;
-  const classNames = classnames(className, 'nx-list', {'nx-list--bulleted': bulleted});
-  const ulRef = useRef<HTMLUListElement | null>(null);
-  const emptyListRef = useRef<HTMLLIElement>(null);
-  const ref = useMergedRef(ulRef, externalRef);
-  const isEmpty = useEmptyComponent(false, ulRef, emptyListRef);
+      if (isEmpty && !isLoading && !error) {
+        if (!emptyMessage) {
+          console.warn('emptyMessage is required when no list items are to be rendered');
+        }
+      }
 
-  if (isEmpty && !isLoading && !error) {
-    if (!emptyMessage) {
-      console.warn('emptyMessage is required when no list items are to be rendered');
+      const nxListEmpty = (
+        <li ref={emptyListRef} className="nx-list__item nx-list__item--empty">
+          <span className="nx-list__text">
+            {emptyMessage || 'This list is empty.'}
+          </span>
+        </li>
+      );
+
+      const nxListLoading = (
+        <li className="nx-list__item">
+          <NxLoadingSpinner />
+        </li>
+      );
+
+      const nxListError = (
+        <li className="nx-list__item nx-list__item--error">
+          <NxLoadError error={error} retryHandler={retryHandler} />
+        </li>
+      );
+
+      return (
+        <ul ref={ref}
+            className={classNames}
+            {...attrs}
+        >
+          {isLoading && nxListLoading}
+          {!!error && !isLoading && nxListError}
+          {!isLoading && !error && children}
+          {!(isLoading || error) && isEmpty && nxListEmpty}
+        </ul>
+      );
+    }),
+    {
+      Item: NxListItem,
+      Text: NxListText,
+      Subtext: NxListSubtext,
+      Actions: NxListActions,
+      ButtonItem: NxListButtonItem,
+      LinkItem: NxListLinkItem,
+      DescriptionTerm: withClass('dt', 'nx-list__term'),
+      Description: withClass('dd', 'nx-list__description')
     }
-  }
-
-  const nxListEmpty = (
-    <li ref={emptyListRef} className="nx-list__item nx-list__item--empty">
-      <span className="nx-list__text">
-        {emptyMessage || 'This list is empty.'}
-      </span>
-    </li>
-  );
-
-  const nxListLoading = (
-    <li className='nx-list__item'>
-      <NxLoadingSpinner />
-    </li>
-  );
-
-  const nxListError = (
-    <li className='nx-list__item nx-list__item--error'>
-      <NxLoadError error={error} retryHandler={retryHandler} />
-    </li>
-  );
-
-  return (
-    <ul ref={ref}
-        className={classNames}
-        {...attrs}
-    >
-      {isLoading && nxListLoading}
-      {!!error && !isLoading && nxListError}
-      {!isLoading && !error && children}
-      {!(isLoading || error) && isEmpty && nxListEmpty}
-    </ul>
-  );
-}) as NxListComponent;
+);
 
 NxList.propTypes = nxListPropTypes;
-NxList.Item = NxListItem;
-NxList.Text = NxListText;
-NxList.Subtext = NxListSubtext;
-NxList.Actions = NxListActions;
-NxList.ButtonItem = NxListButtonItem;
-NxList.LinkItem = NxListLinkItem;
-NxList.DescriptionTerm = withClass('dt', 'nx-list__term');
-NxList.Description = withClass('dd', 'nx-list__description');
 
 export default NxList;
 export {NxListProps, nxListPropTypes} from './types';
