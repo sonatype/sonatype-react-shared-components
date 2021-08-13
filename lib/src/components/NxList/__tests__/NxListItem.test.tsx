@@ -7,23 +7,28 @@
 import React from 'react';
 import NxList from '../NxList';
 import { NxListItemProps } from '../types';
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
 
 describe('NxListItem', function() {
 
   const minimalProps: NxListItemProps = {};
   const getShallow = getShallowComponent(NxList.Item, minimalProps);
+  const getMounted = getMountedComponent(NxList.Item, minimalProps);
 
   it('renders the children in an .nx-list__item', function() {
     const children = [
       <NxList.Text key="1">Test Item 1 Text</NxList.Text>,
       <NxList.Subtext key="2">Test Item 1 Subtext</NxList.Subtext>
     ];
-    const contentEl = getShallow({children});
+    const contentEl = getMounted({children});
     expect(contentEl).toExist();
-    contentEl.find('li').forEach((e) => {
-      expect(e.hasClass('nx-list__item'));
-    });
+    expect(contentEl.hasClass('nx-list__item'));
+    expect(contentEl).toContainMatchingElements(2, 'span');
+    expect(contentEl.find('span').at(0)).toHaveText('Test Item 1 Text');
+    expect(contentEl.find('span').at(0)).toHaveClassName('nx-list__text');
+    expect(contentEl.find('span').at(1)).toHaveText('Test Item 1 Subtext');
+    expect(contentEl.find('span').at(1)).toHaveClassName('nx-list__subtext');
+
   });
 
   it('renders the classNames given to it', function() {

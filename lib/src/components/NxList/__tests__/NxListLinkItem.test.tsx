@@ -56,4 +56,17 @@ describe('NxListLinkItem', function() {
     expect(contentEl).toHaveProp('href');
     expect(contentEl.find('a')).toHaveClassName('selected');
   });
+
+  it('renders children correctly', function() {
+    const children = [
+      <NxList.Text key="1">Test Item 1 Text</NxList.Text>,
+      <NxList.Subtext key="2">Test Item 1 Subtext</NxList.Subtext>
+    ];
+    const contentEl = getMounted({children});
+    expect(contentEl).toExist();
+    expect(contentEl.find('span').at(0)).toMatchSelector('span.nx-list__text');
+    expect(contentEl.find('span').at(0)).toHaveText('Test Item 1 Text');
+    expect(contentEl.find('span').at(1)).toMatchSelector('span.nx-list__subtext');
+    expect(contentEl.find('span').at(0)).toHaveText('Test Item 1 Text');
+  });
 });

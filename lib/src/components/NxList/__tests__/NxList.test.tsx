@@ -8,9 +8,9 @@ import React, { ReactElement } from 'react';
 import { NxLoadError, NxLoadingSpinner } from '../../..';
 import NxList from '../NxList';
 import { NxListProps } from '../types';
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import { act } from 'react-dom/test-utils';
-import { mount, ReactWrapper, shallow } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 
 describe('NxList', function() {
 
@@ -43,6 +43,7 @@ describe('NxList', function() {
 
   const minimalProps: NxListProps = {};
   const getShallow = getShallowComponent(NxList, minimalProps);
+  const getMounted = getMountedComponent(NxList, minimalProps);
 
   it('renders a list', function() {
     const nxList = getShallow();
@@ -55,11 +56,6 @@ describe('NxList', function() {
     };
     const nxList = getShallow(extendedProps);
     expect(nxList).toMatchSelector('.nx-list.test-classname.ufo');
-  });
-
-  it('passes props to NxList correctly', function() {
-    const contentEl = shallow(<div><NxList bulleted></NxList></div>);
-    expect(contentEl.find(NxList)).toHaveProp('bulleted', true);
   });
 
   it('renders a bulleted list correctly', function() {
@@ -190,17 +186,47 @@ describe('NxList', function() {
     expect(component.find(NxLoadError)).toHaveProp('retryHandler', retryHandler);
   });
 
-  it('does not show the emptyMessage when isLoading', async function() {
-    const component = await mountAttached(<NxList emptyMessage="Empty message" isLoading />);
-    expect(component).not.toHaveText('Empty message');
-  });
+  it('renders children correctly', async function() {
+    const children = [
+      <NxList.Item key="1">
+        <NxList.Text>Test Text</NxList.Text>
+        <NxList.Subtext>Test Subtext</NxList.Subtext>
+      </NxList.Item>,
+      <NxList.ButtonItem key="3">
+        <NxList.Text>Test2 ButtonItem Text</NxList.Text>
+        <NxList.Subtext>Test2 ButtonItem Subtext</NxList.Subtext>
+      </NxList.ButtonItem>,
+      <NxList.LinkItem key="4" href="www.sonatype.com">
+        <NxList.Text>Test2 LinkItem Text</NxList.Text>
+        <NxList.Subtext>Test2 LinkItem Subtext</NxList.Subtext>
+      </NxList.LinkItem>
+    ];
 
-  it('does not show the emptyMessage when in error', async function() {
-    const component = await mountAttached(
-      <NxList emptyMessage="Empty message" error="Errr" retryHandler={() => {}}>
-      </NxList>
-    );
+    const contentEl = getMounted({children});
+    expect(contentEl).toExist();
+    expect(contentEl).toContainMatchingElements(3, 'li');
+    expect(contentEl).toContainMatchingElements(1, 'button');
+    expect(contentEl).toContainMatchingElements(1, 'a');
 
-    expect(component).not.toHaveText('Empty message');
+    expect(contentEl.find('li').at(0)).toHaveClassName('nx-list__item');
+    expect(contentEl.find('li').at(0).find('span').at(0)).toHaveClassName('nx-list__text');
+    expect(contentEl.find('li').at(0).find('span').at(0)).toHaveText('Test Text');
+    expect(contentEl.find('li').at(0).find('span').at(1)).toHaveClassName('nx-list__subtext');
+    expect(contentEl.find('li').at(0).find('span').at(1)).toHaveText('Test Subtext');
+
+    expect(contentEl.find('li').at(1)).toHaveClassName('nx-list__item nx-list__item--clickable');
+    expect(contentEl.find('li').at(1).find('button')).toHaveClassName('nx-list__btn');
+    expect(contentEl.find('li').at(1).find('button').find('span').at(0)).toHaveClassName('nx-list__text');
+    expect(contentEl.find('li').at(1).find('button').find('span').at(0)).toHaveText('Test2 ButtonItem Text');
+    expect(contentEl.find('li').at(1).find('button').find('span').at(1)).toHaveClassName('nx-list__subtext');
+    expect(contentEl.find('li').at(1).find('button').find('span').at(1)).toHaveText('Test2 ButtonItem Subtext');
+
+    expect(contentEl.find('li').at(2)).toHaveClassName('nx-list__item nx-list__item--clickable');
+    expect(contentEl.find('li').at(2).find('a')).toHaveClassName('nx-list__link');
+    expect(contentEl.find('li').at(2).find('a').find('span').at(0)).toHaveClassName('nx-list__text');
+    expect(contentEl.find('li').at(2).find('a').find('span').at(0)).toHaveText('Test2 LinkItem Text');
+    expect(contentEl.find('li').at(2).find('a').find('span').at(1)).toHaveClassName('nx-list__subtext');
+    expect(contentEl.find('li').at(2).find('a').find('span').at(1)).toHaveText('Test2 LinkItem Subtext');
+
   });
 });
