@@ -32,11 +32,13 @@ function NxListActions() {
         </NxList.Actions>
       </NxList.Item>
       <NxList.Item>
-        <NxList.Text className="nx-truncate-ellipsis">List item deliberately made very long so that the text
+        <NxList.Text className="nx-truncate-ellipsis">
+          List item deliberately made very long so that the text
           will wrap before it gets to the action buttons nodal point bridge kanji San Francisco render-farm chrome
           human paranoid San Francisco skyscraper convenience store
         </NxList.Text>
-        <NxList.Subtext className="nx-truncate-ellipsis">This is some sub-text to demonstrate spacing point bridge
+        <NxList.Subtext className="nx-truncate-ellipsis">
+          This is some sub-text to demonstrate spacing point bridge
           render-farm chrome human paranoid San Francisco skyscraper convenience store. This is just to test the
           truncation class.
         </NxList.Subtext>

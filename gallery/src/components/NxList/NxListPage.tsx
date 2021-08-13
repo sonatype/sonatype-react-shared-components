@@ -80,7 +80,8 @@ const NxListPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxList.Text</NxCode></NxTable.Cell>
-              <NxTable.Cell>Within <NxCode>NxList.Item</NxCode>, <NxCode>NxList.ButtonItem</NxCode>,
+              <NxTable.Cell>
+                Within <NxCode>NxList.Item</NxCode>, <NxCode>NxList.ButtonItem</NxCode>,
                 or <NxCode>NxList.LinkItem</NxCode>
               </NxTable.Cell>
               <NxTable.Cell>
@@ -89,7 +90,8 @@ const NxListPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxList.Subtext</NxCode></NxTable.Cell>
-              <NxTable.Cell>Within <NxCode>NxList.Item</NxCode>, <NxCode>NxList.ButtonItem</NxCode>,
+              <NxTable.Cell>
+                Within <NxCode>NxList.Item</NxCode>, <NxCode>NxList.ButtonItem</NxCode>,
                 or <NxCode>NxList.LinkItem</NxCode>
               </NxTable.Cell>
               <NxTable.Cell>

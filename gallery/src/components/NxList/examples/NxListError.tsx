@@ -9,8 +9,7 @@ import { NxList } from '@sonatype/react-shared-components';
 
 function NxListError() {
   return (
-    <NxList error="Error" retryHandler={() => alert('Error.')}>
-    </NxList>
+    <NxList error="Error" retryHandler={() => alert('Error.')}></NxList>
   );
 }
 
