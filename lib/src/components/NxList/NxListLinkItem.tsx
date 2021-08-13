@@ -5,11 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { forwardRef } from 'react';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { NxFontAwesomeIcon } from '../..';
-import {NxListLinkItemProps, nxListLinkItemPropTypes} from './types';
 import classnames from 'classnames';
 import { includesDisabledClass } from '../../util/classUtil';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { NxFontAwesomeIcon } from '../..';
+import { NxListLinkItemProps, nxListLinkItemPropTypes } from './types';
 
 const NxListLinkItem = forwardRef<HTMLLIElement, NxListLinkItemProps>(
     function nxListLinkItem({ children, className, disabled, href, selected, anchorClassName,

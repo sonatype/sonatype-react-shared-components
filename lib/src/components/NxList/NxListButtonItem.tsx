@@ -4,12 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import classnames from 'classnames';
 import React, { forwardRef } from 'react';
-import { NxFontAwesomeIcon } from '../..';
-import {NxListButtonItemProps, nxListButtonItemPropTypes} from './types';
+import classnames from 'classnames';
 import { includesDisabledClass } from '../../util/classUtil';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { NxFontAwesomeIcon } from '../..';
+import { NxListButtonItemProps, nxListButtonItemPropTypes } from './types';
 
 const NxListButtonItem = forwardRef<HTMLLIElement, NxListButtonItemProps>(
     function NxListButtonItem({ children, className, disabled, selected, buttonClassName,
