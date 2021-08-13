@@ -162,7 +162,7 @@ describe('NxForm', function() {
                 invalidComponentTooltip = invalidComponent.find('.nx-form__submit-btn');
 
             expect(validComponentTooltip).toHaveProp('aria-label', undefined);
-            expect(invalidComponentTooltip).toHaveProp('title', 'Submit disabled: Broken');
+            expect(invalidComponentTooltip).toHaveProp('aria-label', 'Submit disabled: Broken');
           }
       );
 
