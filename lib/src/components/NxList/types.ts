@@ -4,8 +4,18 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ForwardRefExoticComponent, RefAttributes, HTMLAttributes, LiHTMLAttributes, ValidationMap,
-  ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes, DetailedHTMLProps, FunctionComponent} from 'react';
+import {
+  ForwardRefExoticComponent,
+  RefAttributes,
+  HTMLAttributes,
+  LiHTMLAttributes,
+  ValidationMap,
+  ReactNode,
+  ButtonHTMLAttributes,
+  AnchorHTMLAttributes,
+  DetailedHTMLProps,
+  FunctionComponent
+} from 'react';
 import PropTypes from 'prop-types';
 
 export interface NxListComponent
