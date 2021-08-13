@@ -53,10 +53,7 @@ const NxList = Object.assign(
       );
 
       return (
-        <ul ref={ref}
-            className={classNames}
-            {...attrs}
-        >
+        <ul ref={ref} className={classNames} {...attrs}>
           {isLoading && nxListLoading}
           {!!error && !isLoading && nxListError}
           {!isLoading && !error && children}
