@@ -24,7 +24,7 @@ const NxList = Object.assign(
       const ulRef = useRef<HTMLUListElement | null>(null);
       const emptyListRef = useRef<HTMLLIElement>(null);
       const ref = useMergedRef(ulRef, externalRef);
-      const isEmpty = useEmptyComponent(false, ulRef, emptyListRef);
+      const isEmpty = useEmptyComponent(ulRef, emptyListRef);
 
       if (isEmpty && !isLoading && !error) {
         if (!emptyMessage) {

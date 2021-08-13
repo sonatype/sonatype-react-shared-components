@@ -7,16 +7,18 @@ const mutationObserverConfig = { subtree: false, childList: true, attributes: fa
  * Convenience hook that shows if a component is empty or not.
  * This custom hook implements the useMutationObserver hook to check if there is a change in
  * the parent component's children.
+ * @param parentRef the ref to the parent element that the mutationObserver will observe for children changes.
+ * @param emptyChildRef a ref to the element rendered into the list when it is empty, typically a message telling the
+ * the user that there is no data. This is needed so that the hook can avoid counting the empty message itself when
+ * determining component emptiness.
  * @return a boolean if the component is empty.
- * Note: elements within the parent component that are mapped as emptyChildRef are
- * effectively ignored.
  */
+
 const useEmptyComponent = (
-  initialValue: boolean,
   parentRef: RefObject<HTMLElement>,
   emptyChildRef: RefObject<HTMLElement>
 ) => {
-  const [isEmpty, setIsEmpty] = useState(initialValue);
+  const [isEmpty, setIsEmpty] = useState(false);
 
   // use useCallback to memoize updateIsEmpty so that useMutationObserver isn't detaching
   // and re-attaching the MutationObserver on every single render
