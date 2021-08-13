@@ -115,13 +115,13 @@ describe('NxList', function() {
       </NxList>
     );
 
-    expect(component).not.toHaveText('Empty message');
+    expect(component).not.toIncludeText('Empty message');
   });
 
   it('does not show the emptyMessage when isLoading', async function() {
     const component = await mountAttached(<NxList emptyMessage="Empty message" isLoading />);
 
-    expect(component).not.toHaveText('Empty message');
+    expect(component).not.toIncludeText('Empty message');
   });
 
   it('does not show the emptyMessage when in error', async function() {
@@ -130,7 +130,7 @@ describe('NxList', function() {
       </NxList>
     );
 
-    expect(component).not.toHaveText('Empty message');
+    expect(component).not.toIncludeText('Empty message');
   });
 
   it('removes the emptyMessage when children are added', async function() {
