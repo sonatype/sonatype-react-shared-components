@@ -5,10 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import CodeExample from '../../CodeExample';
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { NxTable, NxCode, NxP, NxH3, NxH2, NxTile, NxTextLink } from '@sonatype/react-shared-components';
 
+import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
+
+import CodeExample from '../../CodeExample';
 import './NxStatefulGlobalSidebarPage.scss';
 
 const NxStatefulGlobalSidebarExample = require('./NxStatefulGlobalSidebarExample.tsx?raw');

@@ -5,8 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-
 import { NxTable, NxTile, NxH3, NxP, NxCode, NxTextLink } from '@sonatype/react-shared-components';
+
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxTableSimpleExample from './NxTableSimpleExample';

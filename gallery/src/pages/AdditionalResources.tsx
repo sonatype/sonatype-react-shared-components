@@ -5,8 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-
 import { NxP, NxTile, NxH3, NxTextLink } from '@sonatype/react-shared-components';
+
 import {GalleryTile} from '../gallery-components/GalleryTiles';
 
 const AdditionalResources = () =>
