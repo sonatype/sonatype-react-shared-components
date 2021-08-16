@@ -6,8 +6,9 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import { NxP, NxCode } from '@sonatype/react-shared-components';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+
 import './NxFontSizeScssExample.scss';
 
 const nxFontSizeHtmlExampleCode = require('./NxFontSizeHtmlExample.html');

@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+
 import {
   NxTable,
   NxInfoAlert,
@@ -14,8 +15,8 @@ import {
   NxWarningAlert,
   NxH3
 } from '@sonatype/react-shared-components';
-
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+
 import NxModalSimpleExample from './NxModalSimpleExample';
 import NxModalAlertExample from './NxModalAlertExample';
 import NxModalFormExample from './NxModalFormExample';

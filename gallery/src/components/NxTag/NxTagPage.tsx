@@ -6,11 +6,12 @@
  */
 import React from 'react';
 
+import { NxTable, NxTextLink, NxP, NxCode, NxH3 } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
+
 import NxTagExample from './NxTagExample';
 import NxSelectableTagExample from './NxSelectableTagExample';
 import NxTagNarrowExample from './NxTagNarrowExample';
-import { NxTable, NxTextLink, NxP, NxCode, NxH3 } from '@sonatype/react-shared-components';
 
 const NxTagExampleCode = require('./NxTagExample?raw');
 const NxSelectableTagExampleCode = require('./NxSelectableTagExample?raw');

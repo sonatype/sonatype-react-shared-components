@@ -6,8 +6,8 @@
  */
 import React, { ReactNode, useEffect, useState } from 'react';
 
-import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
 import { NxTextLink, NxP, NxCode, NxList, NxWarningAlert, NxTable } from '@sonatype/react-shared-components';
+import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
 
 import './CssVariablesPage.scss';
 

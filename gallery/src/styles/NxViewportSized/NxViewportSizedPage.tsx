@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import CodeExample from '../../CodeExample';
+
 import {
   NxTable,
   NxWarningAlert,
@@ -18,6 +18,7 @@ import {
   NxTile,
   NxH2
 } from '@sonatype/react-shared-components';
+import CodeExample from '../../CodeExample';
 
 const NxViewportSizedExample = require('./NxViewportSizedExample.tsx?raw'),
     NxViewportSizedExpandingExample = require('./NxViewportSizedExpandingExample.tsx?raw'),

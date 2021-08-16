@@ -5,9 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+
 import CodeExample from '../../CodeExample';
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxTextLink } from '@sonatype/react-shared-components';
+import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
 const NxGlobalSidebarFooterExample = require('./NxGlobalSidebarFooterExample.tsx?raw'),
     NxGlobalSidebarFooterMinimalExample = require('./NxGlobalSidebarFooterMinimalExample.tsx?raw');

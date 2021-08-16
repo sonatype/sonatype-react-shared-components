@@ -5,13 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
+
+import { NxCode, NxP, NxTextLink, NxWarningAlert } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxOverflowTooltipExample from './NxOverflowTooltipExample';
 import NxOverflowTooltipDescendantExample from './NxOverflowTooltipDescendantExample';
 import NxOverflowTooltipDynamicExample from './NxOverflowTooltipDynamicExample';
-import { NxWarningAlert } from '@sonatype/react-shared-components';
 
 import './NxOverflowTooltipExample.scss';
 

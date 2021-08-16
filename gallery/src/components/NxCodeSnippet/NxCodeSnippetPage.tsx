@@ -6,12 +6,11 @@
  */
 import React from 'react';
 
+import { NxTable, NxTextLink, NxP, NxCode } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxCodeSnippetExample from './NxCodeSnippetExample';
 import NxCodeSnippetComplexExample from './NxCodeSnippetComplexExample';
-
-import { NxTable, NxTextLink, NxP, NxCode } from '@sonatype/react-shared-components';
 
 const nxCodeSnippetCode = require('./NxCodeSnippetExample?raw'),
     nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw');

@@ -6,8 +6,9 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import { NxCode, NxP } from '@sonatype/react-shared-components';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+
 import NxStatefulAccordionExample from './NxStatefulAccordionExample';
 
 const NxStatefulAccordionCode = require('./NxStatefulAccordionExample?raw');

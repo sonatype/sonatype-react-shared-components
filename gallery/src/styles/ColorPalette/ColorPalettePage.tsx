@@ -6,9 +6,10 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import ColorPaletteExample from './ColorPaletteExample';
 import { NxWarningAlert, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
+import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
+
+import ColorPaletteExample from './ColorPaletteExample';
 
 const ColorPalettePage = () =>
   <>

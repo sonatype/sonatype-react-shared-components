@@ -6,8 +6,9 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import { NxP } from '@sonatype/react-shared-components';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+
 import NxLoadingSpinnerExample from './NxLoadingSpinnerExample';
 
 const sourceCode = require('./NxLoadingSpinnerExample?raw');

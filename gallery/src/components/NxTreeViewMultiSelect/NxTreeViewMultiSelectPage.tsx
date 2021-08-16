@@ -6,8 +6,8 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import { NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTreeViewMultiSelectExample from './NxTreeViewMultiSelectExample';
 import NxTreeViewMultiSelectCustomTooltipExample from './NxTreeViewMultiSelectCustomTooltipExample';

@@ -6,8 +6,8 @@
  */
 import React from 'react';
 
-import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 import { NxCode, NxTable, NxTile, NxH3, NxP } from '@sonatype/react-shared-components';
+import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 const nxBtnPrimaryCode = require('./NxBtnPrimaryExample.html'),
     nxBtnDefaultCode = require('./NxBtnDefaultExample.html'),

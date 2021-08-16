@@ -6,8 +6,8 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import { NxTable, NxCode, NxP, NxH3, NxTextLink } from '@sonatype/react-shared-components';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxNexusPageHeaderExample from './NxNexusPageHeaderExample';
 import NxNexusPageHeaderCustomLogoExample from './NxNexusPageHeaderCustomLogoExample';

@@ -6,8 +6,8 @@
  */
 import React from 'react';
 
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
+import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
 import NxTilesExamples from './NxTilesExamples';
 

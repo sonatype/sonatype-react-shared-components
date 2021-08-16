@@ -6,6 +6,7 @@
  */
 import React from 'react';
 
+import { NxTable, NxCode, NxTextLink, NxP } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxButtonDefaultExample from './NxButtonDefaultExample';
@@ -14,7 +15,6 @@ import NxButtonTertiaryExample from './NxButtonTertiaryExample';
 import NxButtonErrorExample from './NxButtonErrorExample';
 import NxButtonIconExample from './NxButtonIconExample';
 import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
-import { NxTable, NxCode, NxTextLink, NxP } from '@sonatype/react-shared-components';
 
 const NxButtonDefaultCode = require('./NxButtonDefaultExample?raw'),
     nxButtonPrimaryCode = require('./NxButtonPrimaryExample?raw'),

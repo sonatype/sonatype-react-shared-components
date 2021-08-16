@@ -8,6 +8,7 @@ import React from 'react';
 
 import { NxCode, NxP } from '@sonatype/react-shared-components';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+
 import NxCloseButtonExample from './NxCloseButtonExample';
 
 const nxCloseButtonExampleCode = require('./NxCloseButtonExample?raw');
