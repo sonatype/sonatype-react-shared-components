@@ -21,7 +21,7 @@ const NxList = Object.assign(
     forwardRef<HTMLUListElement, NxListProps>(function NxList(props: NxListProps, externalRef) {
       const {className, children, bulleted, emptyMessage, isLoading = false, error, retryHandler, ...attrs} = props;
       const classNames = classnames(className, 'nx-list', {'nx-list--bulleted': bulleted});
-      const ulRef = useRef<HTMLUListElement | null>(null);
+      const ulRef = useRef<HTMLUListElement>(null);
       const emptyListRef = useRef<HTMLLIElement>(null);
       const ref = useMergedRef(ulRef, externalRef);
       const isEmpty = useEmptyComponent(ulRef, emptyListRef);
@@ -53,10 +53,7 @@ const NxList = Object.assign(
       );
 
       return (
-        <ul ref={ref}
-            className={classNames}
-            {...attrs}
-        >
+        <ul ref={ref} className={classNames} {...attrs}>
           {isLoading && nxListLoading}
           {!!error && !isLoading && nxListError}
           {!isLoading && !error && children}
