@@ -19,7 +19,7 @@ describe('NxListButtonItem', function() {
     const contentEl = getShallow();
 
     expect(contentEl).toExist();
-    expect(contentEl.find('li')).toMatchSelector('.nx-list__item.nx-list__item--clickable');
+    expect(contentEl).toMatchSelector('.nx-list__item.nx-list__item--clickable');
     expect(contentEl.find('button')).toMatchSelector('.nx-list__btn');
     expect(contentEl.find('button').parent().is('li'));
   });
@@ -28,7 +28,7 @@ describe('NxListButtonItem', function() {
     const contentEl = getShallow({className: 'customClassLi', buttonClassName: 'customClassBtn'});
 
     expect(contentEl).toExist();
-    expect(contentEl.find('li')).toMatchSelector('.nx-list__item.nx-list__item--clickable.customClassLi');
+    expect(contentEl).toMatchSelector('.nx-list__item.nx-list__item--clickable.customClassLi');
     expect(contentEl.find('button')).toMatchSelector('.nx-list__btn.customClassBtn');
   });
 

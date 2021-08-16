@@ -19,7 +19,7 @@ describe('NxListLinkItem', function() {
     const contentEl = getShallow();
 
     expect(contentEl).toExist();
-    expect(contentEl.find('li')).toMatchSelector('.nx-list__item.nx-list__item--clickable');
+    expect(contentEl).toMatchSelector('.nx-list__item.nx-list__item--clickable');
     expect(contentEl.find('a')).toMatchSelector('.nx-list__link');
     expect(contentEl.find('a').parent().is('li'));
   });
@@ -28,7 +28,7 @@ describe('NxListLinkItem', function() {
     const contentEl = getShallow({className: 'customClassLi', anchorClassName: 'customClassAnchor'});
 
     expect(contentEl).toExist();
-    expect(contentEl.find('li')).toMatchSelector('.nx-list__item.nx-list__item--clickable.customClassLi');
+    expect(contentEl).toMatchSelector('.nx-list__item.nx-list__item--clickable.customClassLi');
     expect(contentEl.find('a')).toMatchSelector('.nx-list__link.customClassAnchor');
   });
 
