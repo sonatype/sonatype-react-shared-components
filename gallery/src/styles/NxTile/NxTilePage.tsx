@@ -49,19 +49,35 @@ const NxTilePage = () =>
             <NxTable.Cell>Used for tile titles, it has title and optional sub-title elements.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-tile-header__headings</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxTile.Headings</NxCode></NxTable.Cell>
+            <NxTable.Cell>Nested inside <NxCode>.nx-tile-header</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              If there is a sub-title then the <NxCode>h2.nx-tile-header__title</NxCode> &amp;
+              {' '}<NxCode>h3.nx-tile-header__subtitle</NxCode> should both be wrapped in a containing
+              {' '}<NxCode>&lt;hgroup&gt;</NxCode> with this class. If there
+              is only an <NxCode>.nx-tile-header__title</NxCode> then this element and its class are
+              optional.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-tile-header__title</NxCode></NxTable.Cell>
             <NxTable.Cell><NxCode>NxTile.HeaderTitle</NxCode></NxTable.Cell>
             <NxTable.Cell>Nested inside <NxCode>.nx-tile-header</NxCode></NxTable.Cell>
             <NxTable.Cell>
               Used for the main title inside an <NxCode>.nx-tile-header</NxCode>.
+              In the event there's a <NxCode>.nx-tile-header__subtitle</NxCode> this should be
+              used inside a <NxCode>.nx-tile-header__headings</NxCode> (see above).
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-tile-header__subtitle</NxCode></NxTable.Cell>
             <NxTable.Cell><NxCode>NxTile.HeaderSubtitle</NxCode></NxTable.Cell>
-            <NxTable.Cell>Nested inside <NxCode>.nx-tile-header</NxCode></NxTable.Cell>
+            <NxTable.Cell>Nested inside <NxCode>.nx-tile-header__headings</NxCode></NxTable.Cell>
             <NxTable.Cell>
-              Used for the subtitle inside an <NxCode>.nx-tile-header</NxCode>.
+              If there is sub-title text it should be wrapped in a containing
+              {' '}<NxCode>&lt;H3&gt;</NxCode> with this class. It should be used inside of
+              a <NxCode>.nx-tile-header__headings</NxCode> (see above).
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -74,7 +90,7 @@ const NxTilePage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
-            <NxTable.Cell><NxCode>.nx-tile-content--accordion-container</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>.nx-tile-content--<br/>accordion-container</NxCode></NxTable.Cell>
             <NxTable.Cell/>
             <NxTable.Cell>Modifier of <NxCode>.nx-tile-content</NxCode></NxTable.Cell>
             <NxTable.Cell>
