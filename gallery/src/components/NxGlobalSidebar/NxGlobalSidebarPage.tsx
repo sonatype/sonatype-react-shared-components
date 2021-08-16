@@ -47,7 +47,7 @@ export default function NxGlobalSidebarPage() {
         </NxP>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <h3 className="nx-h3"><NxCode>NxGlobalSidebar</NxCode> Props</h3>
+            <NxH3><NxCode>NxGlobalSidebar</NxCode> Props</NxH3>
           </NxTile.SubsectionHeader>
           <NxTable>
             <NxTable.Head>
@@ -110,7 +110,7 @@ export default function NxGlobalSidebarPage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
                 <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                     HTML div Attributes
@@ -118,8 +118,8 @@ export default function NxGlobalSidebarPage() {
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  <code className="nx-code">NxGlobalSidebar</code> supports any HTML attribute that's normally
-                  supported by <code className="nx-code">&lt;div&gt;</code>.
+                  <NxCode>NxGlobalSidebar</NxCode> supports any HTML attribute that's normally
+                  supported by <NxCode>&lt;div&gt;</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
@@ -127,7 +127,7 @@ export default function NxGlobalSidebarPage() {
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <h3 className="nx-h3"><NxCode>NxGlobalSidebarNavigation</NxCode> Props</h3>
+            <NxH3><NxCode>NxGlobalSidebarNavigation</NxCode> Props</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
             <NxCode>NxGlobalSidebarNavigation</NxCode> is a container for navigation links.
@@ -147,7 +147,7 @@ export default function NxGlobalSidebarPage() {
             </NxTable.Head>
             <NxTable.Body>
               <NxTable.Row>
-                <NxTable.Cell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
                 <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                     HTML div Attributes
@@ -155,8 +155,8 @@ export default function NxGlobalSidebarPage() {
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  <code className="nx-code">NxGlobalSidebar</code> supports any HTML attribute that's normally
-                  supported by <code className="nx-code">&lt;div&gt;</code>.
+                  <NxCode>NxGlobalSidebar</NxCode> supports any HTML attribute that's normally
+                  supported by <NxCode>&lt;div&gt;</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
@@ -164,7 +164,7 @@ export default function NxGlobalSidebarPage() {
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <h3 className="nx-h3"><NxCode>NxGlobalSidebarNavigationLink</NxCode> Props</h3>
+            <NxH3><NxCode>NxGlobalSidebarNavigationLink</NxCode> Props</NxH3>
           </NxTile.SubsectionHeader>
           <NxTable>
             <NxTable.Head>
@@ -203,7 +203,7 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>URL</NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>HTML <code className="nx-code">&lt;a&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>HTML <NxCode>&lt;a&gt;</NxCode> Attributes</NxTable.Cell>
                 <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/a">
                     HTML a Attributes
@@ -211,8 +211,8 @@ export default function NxGlobalSidebarPage() {
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  <code className="nx-code">NxGlobalSidebarNavigationLink</code> supports any HTML attribute that's
-                  normally supported by <code className="nx-code">&lt;a&gt;</code>.
+                  <NxCode>NxGlobalSidebarNavigationLink</NxCode> supports any HTML attribute that's
+                  normally supported by <NxCode>&lt;a&gt;</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
@@ -261,9 +261,9 @@ export default function NxGlobalSidebarPage() {
         </NxTile.Header>
         <NxTile.Content>
           <NxP>
-            <a className="nx-text-link" href="#/NxGlobalSidebarExample">
+            <NxTextLink href="#/NxGlobalSidebarExample">
               Click here to navigate to the live example.
-            </a>
+            </NxTextLink>
           </NxP>
           <CodeExample content={NxGlobalSidebarExample} />
         </NxTile.Content>
@@ -280,9 +280,9 @@ export default function NxGlobalSidebarPage() {
             scrolling, and all footer options enabled.
           </NxP>
           <NxP>
-            <a className="nx-text-link" href="#/NxGlobalSidebarScrollingExample">
+            <NxTextLink href="#/NxGlobalSidebarScrollingExample">
               Click here to navigate to the live example.
-            </a>
+            </NxTextLink>
           </NxP>
           <CodeExample content={NxGlobalSidebarScrollingExample} />
         </NxTile.Content>

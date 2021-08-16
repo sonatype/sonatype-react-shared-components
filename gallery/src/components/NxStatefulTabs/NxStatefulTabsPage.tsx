@@ -5,16 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-
-import {
-  NxTable,
-  NxTableBody,
-  NxTableCell,
-  NxTableHead,
-  NxTableRow
-} from '@sonatype/react-shared-components';
 
 import NxStatefulTabsSimpleExample from './NxStatefulTabsSimpleExample';
 
@@ -24,45 +17,45 @@ export default function NxStatefulTabsPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
-          This component simply wraps the <code className="nx-code">NxTabs</code> component
+        <NxP>
+          This component simply wraps the <NxCode>NxTabs</NxCode> component
           to track the currently selected tab.
-        </p>
+        </NxP>
 
-        <NxTable className="nx-table--gallery-props">
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Prop</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Details</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>defaultActiveTab</NxTableCell>
-              <NxTableCell>number</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Prop</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>defaultActiveTab</NxTable.Cell>
+              <NxTable.Cell>number</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
                 The index of the tab that should be active initially. If not set, no tab will be activated.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>onTabSelect</NxTableCell>
-              <NxTableCell>function(number)</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>onTabSelect</NxTable.Cell>
+              <NxTable.Cell>function(number)</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
                 Called with the index of the newly selected tab when the currently selected tab changes.
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
         </NxTable>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple NxTabs Example"
                           liveExample={NxStatefulTabsSimpleExample}
                           codeExamples={NxStatefulTabsSimpleCode}>
-        A basic example of how to use the <code className="nx-code">NxTabs</code> family of components.
+        A basic example of how to use the <NxCode>NxTabs</NxCode> family of components.
       </GalleryExampleTile>
     </>
   );
