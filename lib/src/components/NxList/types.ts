@@ -16,7 +16,6 @@ import PropTypes from 'prop-types';
 
 export interface NxListProps extends HTMLAttributes<HTMLUListElement> {
   bulleted?: boolean | null;
-  children?: ReactNode;
   emptyMessage?: ReactNode;
   error?: string | null;
   isLoading?: boolean | null;
@@ -25,7 +24,6 @@ export interface NxListProps extends HTMLAttributes<HTMLUListElement> {
 
 export const nxListPropTypes: ValidationMap<NxListProps> = {
   bulleted: PropTypes.bool,
-  children: PropTypes.node,
   emptyMessage: PropTypes.node,
   error: PropTypes.string,
   isLoading: PropTypes.bool,
@@ -33,7 +31,6 @@ export const nxListPropTypes: ValidationMap<NxListProps> = {
 };
 
 export interface NxListButtonItemProps extends LiHTMLAttributes<HTMLLIElement> {
-  children?: ReactNode,
   selected?: boolean | null,
   disabled?: boolean | null,
   buttonClassName?: string | null,
@@ -41,14 +38,12 @@ export interface NxListButtonItemProps extends LiHTMLAttributes<HTMLLIElement> {
 }
 
 export const nxListButtonItemPropTypes: ValidationMap<NxListButtonItemProps> = {
-  children: PropTypes.node.isRequired,
   selected: PropTypes.bool,
   disabled: PropTypes.bool,
   buttonClassName: PropTypes.string
 };
 
 export interface NxListLinkItemProps extends LiHTMLAttributes<HTMLLIElement> {
-  children?: ReactNode,
   disabled?: boolean | null,
   selected?: boolean | null,
   href: string,
@@ -57,7 +52,6 @@ export interface NxListLinkItemProps extends LiHTMLAttributes<HTMLLIElement> {
 }
 
 export const nxListLinkItemPropTypes: ValidationMap<NxListLinkItemProps> = {
-  children: PropTypes.node.isRequired,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
   href: PropTypes.string.isRequired

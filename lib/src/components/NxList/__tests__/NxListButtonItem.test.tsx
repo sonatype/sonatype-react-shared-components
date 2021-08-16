@@ -16,10 +16,8 @@ describe('NxListButtonItem', function() {
   const getMounted = getMountedComponent(NxList.ButtonItem, minimalProps);
 
   it('renders a correctly structured element - a button within an li', function() {
-    const children = [
-      <NxList.Text key="1">Test Item 1 Text</NxList.Text>
-    ];
-    const contentEl = getShallow({children});
+    const contentEl = getShallow();
+
     expect(contentEl).toExist();
     expect(contentEl.find('li')).toMatchSelector('.nx-list__item.nx-list__item--clickable');
     expect(contentEl.find('button')).toMatchSelector('.nx-list__btn');
@@ -27,30 +25,24 @@ describe('NxListButtonItem', function() {
   });
 
   it('renders the classNames given to both the li and the button', function() {
-    const children = [
-      <NxList.Text key="1">Test Item 1 Text</NxList.Text>
-    ];
-    const contentEl = getShallow({children, className: 'customClassLi', buttonClassName: 'customClassBtn'});
+    const contentEl = getShallow({className: 'customClassLi', buttonClassName: 'customClassBtn'});
+
     expect(contentEl).toExist();
     expect(contentEl.find('li')).toMatchSelector('.nx-list__item.nx-list__item--clickable.customClassLi');
     expect(contentEl.find('button')).toMatchSelector('.nx-list__btn.customClassBtn');
   });
 
   it('renders a clickable list whose list item element has prop disabled and is disabled', function() {
-    const children = [
-      <NxList.Text key="1">Test Item 1 Text</NxList.Text>
-    ];
-    const contentEl = getMounted({children, disabled: true});
+    const contentEl = getMounted({disabled: true});
+
     expect(contentEl).toExist();
     expect(contentEl).toHaveProp('disabled');
     expect(contentEl).toBeDisabled();
   });
 
   it('renders a clickable list whose list item element has prop selected and is selected', function() {
-    const children = [
-      <NxList.Text key="1">Test Item 1 Text</NxList.Text>
-    ];
-    const contentEl = getMounted({children, selected: true});
+    const contentEl = getMounted({selected: true});
+
     expect(contentEl).toExist();
     expect(contentEl).toHaveProp('selected');
     expect(contentEl.find('button')).toHaveClassName('selected');
@@ -62,6 +54,7 @@ describe('NxListButtonItem', function() {
       <NxList.Subtext key="2">Test Item 1 Subtext</NxList.Subtext>
     ];
     const contentEl = getMounted({children});
+
     expect(contentEl).toExist();
     expect(contentEl.find('span').at(0)).toMatchSelector('span.nx-list__text');
     expect(contentEl.find('span').at(0)).toHaveText('Test Item 1 Text');
