@@ -23,6 +23,7 @@ import NxThreatIndicatorPage from './components/NxThreatIndicator/NxThreatIndica
 import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
+import NxListPageV2 from './components/NxList/NxListPage';
 import NxTableStylePage from './styles/NxTable/NxTableStylePage';
 import NxTableContainerPage from './styles/NxTable/NxTableContainerPage';
 import NxAlertComponentsPage from './components/NxAlert/NxAlertPage';
@@ -143,6 +144,7 @@ const pageConfig: PageConfig = {
     NxGlobalSidebar: NxGlobalSidebarPage,
     NxStatefulGlobalSidebar: NxStatefulGlobalSidebarPage,
     NxGlobalSidebarFooter: NxGlobalSidebarFooterPage,
+    NxList: NxListPageV2,
     NxLoadError: NxLoadErrorPage,
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,

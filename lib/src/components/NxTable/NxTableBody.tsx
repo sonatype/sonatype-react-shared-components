@@ -4,8 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useRef, useState, useEffect, useCallback } from 'react';
-import useMutationObserver from '@rooks/use-mutation-observer';
+import React, { useContext, useRef } from 'react';
 
 import { NxTableBodyProps, nxTableBodyPropTypes } from './types';
 import NxTableRow from './NxTableRow';
@@ -13,29 +12,15 @@ import NxTableCell from './NxTableCell';
 import { ColumnCountContext } from './contexts';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import NxLoadError from '../NxLoadError/NxLoadError';
+import useEmptyComponent from '../../util/useEmptyComponent';
 export { NxTableBodyProps };
-
-const mutationObserverConfig = { subtree: false, childList: true, attributes: false, characterData: false };
 
 const NxTableBody = function NxTableBody(props: NxTableBodyProps) {
   const {isLoading = false, emptyMessage, error, children, retryHandler, ...attrs} = props,
       columns = useContext(ColumnCountContext),
-      [isEmpty, setIsEmpty] = useState(false),
       bodyRef = useRef<HTMLTableSectionElement>(null),
       emptyRowRef = useRef<HTMLTableRowElement>(null),
-
-      // use useCallback to memoize updateIsEmpty so that useMutationObserver isn't detaching
-      // and re-attaching the MutationObserver on every single render
-      updateIsEmpty = useCallback(function updateIsEmpty() {
-        if (bodyRef.current) {
-          const rows = bodyRef.current.children;
-
-          setIsEmpty(!rows.length || (rows.length === 1 && rows.item(0) === emptyRowRef.current));
-        }
-      }, []);
-
-  useEffect(updateIsEmpty, []);
-  useMutationObserver(bodyRef, updateIsEmpty, mutationObserverConfig);
+      isEmpty = useEmptyComponent(bodyRef, emptyRowRef);
 
   if (isLoading && !columns) {
     console.warn('columns is required when isLoading is set, this should have been determined automatically');
