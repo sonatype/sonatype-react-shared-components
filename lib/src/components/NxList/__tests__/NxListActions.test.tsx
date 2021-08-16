@@ -5,12 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import NxList from '../NxList';
-import { NxListActionProps } from '../types';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 
 describe('NxListActions', function() {
 
-  const minimalProps: NxListActionProps = {};
+  const minimalProps = {};
   const getShallow = getShallowComponent(NxList.Actions, minimalProps);
 
   it('renders a div with class nx-list__actions', function() {
