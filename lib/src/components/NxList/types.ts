@@ -40,7 +40,8 @@ export interface NxListButtonItemProps extends LiHTMLAttributes<HTMLLIElement> {
 export const nxListButtonItemPropTypes: ValidationMap<NxListButtonItemProps> = {
   selected: PropTypes.bool,
   disabled: PropTypes.bool,
-  buttonClassName: PropTypes.string
+  buttonClassName: PropTypes.string,
+  buttonAttributes: PropTypes.object
 };
 
 export interface NxListLinkItemProps extends LiHTMLAttributes<HTMLLIElement> {
@@ -54,5 +55,7 @@ export interface NxListLinkItemProps extends LiHTMLAttributes<HTMLLIElement> {
 export const nxListLinkItemPropTypes: ValidationMap<NxListLinkItemProps> = {
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
-  href: PropTypes.string.isRequired
+  href: PropTypes.string.isRequired,
+  anchorClassName: PropTypes.string,
+  anchorAttributes: PropTypes.object
 };
