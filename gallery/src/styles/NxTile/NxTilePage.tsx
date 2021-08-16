@@ -5,117 +5,135 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
+
 import NxTilesExamples from './NxTilesExamples';
 
 const NxTilePage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">The base building block of our pages.</p>
-      <p className="nx-p">
-        There are three default classes that can be used within an <code className="nx-code">.nx-tile</code>.
-        It can also be paired with <code className="nx-code">.nx-alert</code> to create tiles with alert coloring.
-      </p>
-      <p className="nx-p">They're all showcased in the table below:</p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Class</th>
-            <th className="nx-cell nx-cell--header">Convenience Component</th>
-            <th className="nx-cell nx-cell--header">Location</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell"><code className="nx-code">NxTile</code></td>
-            <td className="nx-cell">Top-Level</td>
-            <td className="nx-cell">The parent tile class.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-tile__actions</code></td>
-            <td className="nx-cell"><code className="nx-code">NxTile.HeaderActions</code></td>
-            <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell">Used for actions (buttons or dropdowns) that appear in a tile header.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-tile-header</code></td>
-            <td className="nx-cell"><code className="nx-code">NxTile.Header</code></td>
-            <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell">Used for tile titles, it has title and optional sub-title elements.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-tile-header__title</code></td>
-            <td className="nx-cell"><code className="nx-code">NxTile.HeaderTitle</code></td>
-            <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile-header</code></td>
-            <td className="nx-cell">
-              Used for the main title inside an <code className="nx-code">.nx-tile-header</code>.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-tile-header__subtitle</code></td>
-            <td className="nx-cell"><code className="nx-code">NxTile.HeaderSubtitle</code></td>
-            <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile-header</code></td>
-            <td className="nx-cell">
-              Used for the subtitle inside an <code className="nx-code">.nx-tile-header</code>.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-tile-content</code></td>
-            <td className="nx-cell"><code className="nx-code">NxTile.Content</code></td>
-            <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell">
+      <NxP>The base building block of our pages.</NxP>
+      <NxP>
+        There are three default classes that can be used within an <NxCode>.nx-tile</NxCode>.
+        It can also be paired with <NxCode>.nx-alert</NxCode> to create tiles with alert coloring.
+      </NxP>
+      <NxP>They're all showcased in the table below:</NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Class</NxTable.Cell>
+            <NxTable.Cell>Convenience Component</NxTable.Cell>
+            <NxTable.Cell>Location</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-tile</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxTile</NxCode></NxTable.Cell>
+            <NxTable.Cell>Top-Level</NxTable.Cell>
+            <NxTable.Cell>The parent tile class.</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-tile__actions</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxTile.HeaderActions</NxCode></NxTable.Cell>
+            <NxTable.Cell>Nested inside <NxCode>.nx-tile</NxCode></NxTable.Cell>
+            <NxTable.Cell>Used for actions (buttons or dropdowns) that appear in a tile header.</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-tile-header</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxTile.Header</NxCode></NxTable.Cell>
+            <NxTable.Cell>Nested inside <NxCode>.nx-tile</NxCode></NxTable.Cell>
+            <NxTable.Cell>Used for tile titles, it has title and optional sub-title elements.</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-tile-header__headings</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxTile.Headings</NxCode></NxTable.Cell>
+            <NxTable.Cell>Nested inside <NxCode>.nx-tile-header</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              If there is a sub-title then the <NxCode>h2.nx-tile-header__title</NxCode> &amp;
+              {' '}<NxCode>h3.nx-tile-header__subtitle</NxCode> should both be wrapped in a containing
+              {' '}<NxCode>&lt;hgroup&gt;</NxCode> with this class. If there
+              is only an <NxCode>.nx-tile-header__title</NxCode> then this element and its class are
+              optional.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-tile-header__title</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxTile.HeaderTitle</NxCode></NxTable.Cell>
+            <NxTable.Cell>Nested inside <NxCode>.nx-tile-header</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Used for the main title inside an <NxCode>.nx-tile-header</NxCode>.
+              In the event there's a <NxCode>.nx-tile-header__subtitle</NxCode> this should be
+              used inside a <NxCode>.nx-tile-header__headings</NxCode> (see above).
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-tile-header__subtitle</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxTile.HeaderSubtitle</NxCode></NxTable.Cell>
+            <NxTable.Cell>Nested inside <NxCode>.nx-tile-header__headings</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              If there is sub-title text it should be wrapped in a containing
+              {' '}<NxCode>&lt;H3&gt;</NxCode> with this class. It should be used inside of
+              a <NxCode>.nx-tile-header__headings</NxCode> (see above).
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-tile-content</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxTile.Content</NxCode></NxTable.Cell>
+            <NxTable.Cell>Nested inside <NxCode>.nx-tile</NxCode></NxTable.Cell>
+            <NxTable.Cell>
               Used for the tile content. It is possible to have multiple of these in a row, particularly when one
               is an accordion container (see below).
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-tile-content--accordion-container</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile-content</code></td>
-            <td className="nx-cell">
-              Creates a container for displaying one or more <code className="nx-code">NxAccordion</code>s
-              within an <code className="nx-code">.nx-tile</code>.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-footer</code></td>
-            <td className="nx-cell"><code className="nx-code">NxFooter</code></td>
-            <td className="nx-cell">Nested inside <code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-tile-content--<br/>accordion-container</NxCode></NxTable.Cell>
+            <NxTable.Cell/>
+            <NxTable.Cell>Modifier of <NxCode>.nx-tile-content</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Creates a container for displaying one or more <NxCode>NxAccordion</NxCode>s
+              within an <NxCode>.nx-tile</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-footer</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxFooter</NxCode></NxTable.Cell>
+            <NxTable.Cell>Nested inside <NxCode>.nx-tile</NxCode></NxTable.Cell>
+            <NxTable.Cell>
               Used for footer contents (buttons for example). This class is not
-              called <code className="nx-code">nx-tile-footer</code> because it is used across a number of different
+              called <NxCode>nx-tile-footer</NxCode> because it is used across a number of different
               containers (e.g. forms and modals in addition to tiles) which have identical footer styles.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-alert</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell">
-              Class for providing alert colorings to <code className="nx-code">.nx-tile</code>.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-alert--info</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell">
-              Class for providing alert colorings to <code className="nx-code">.nx-tile</code>.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-alert--error</code></td>
-            <td className="nx-cell"/>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-tile</code></td>
-            <td className="nx-cell">
-              Class for providing alert colorings to <code className="nx-code">.nx-tile</code>.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-alert</NxCode></NxTable.Cell>
+            <NxTable.Cell/>
+            <NxTable.Cell>Modifier of <NxCode>.nx-tile</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Class for providing alert colorings to <NxCode>.nx-tile</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-alert--info</NxCode></NxTable.Cell>
+            <NxTable.Cell/>
+            <NxTable.Cell>Modifier of <NxCode>.nx-tile</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Class for providing alert colorings to <NxCode>.nx-tile</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-alert--error</NxCode></NxTable.Cell>
+            <NxTable.Cell/>
+            <NxTable.Cell>Modifier of <NxCode>.nx-tile</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Class for providing alert colorings to <NxCode>.nx-tile</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <NxTilesExamples />

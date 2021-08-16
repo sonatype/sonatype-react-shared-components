@@ -90,6 +90,7 @@
 .nx-card__call-out {
   @include bold();
 
+  color: var(--nx-color-text-dark);
   font-size: 32px;
 
   .nx-card__call-out-icon {

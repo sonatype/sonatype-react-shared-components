@@ -5,9 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxP, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxCode } from '@sonatype/react-shared-components';
 
 const nxBlockquoteExampleCode = require('./NxBlockquoteExample.html');
 
@@ -15,13 +15,13 @@ const NxBlockquotePage = () => {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
-          The <code className="nx-code">.nx-blockquote</code> CSS class provides standard RSC styling
-          for <code className="nx-code">&lt;blockquote&gt;</code> elements.
-        </p>
-        <p className="nx-p">
+        <NxP>
+          The <NxCode>.nx-blockquote</NxCode> CSS class provides standard RSC styling
+          for <NxCode>&lt;blockquote&gt;</NxCode> elements.
+        </NxP>
+        <NxP>
           These styles are also available via the <NxCode>NxBlockquote</NxCode> convenience React component.
-        </p>
+        </NxP>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="Basic Example"
                           codeExamples={nxBlockquoteExampleCode}

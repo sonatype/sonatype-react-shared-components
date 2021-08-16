@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxTable, NxP, NxCode, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -15,41 +16,41 @@ const sourceCode = require('./NxTextInputStylesExample?raw');
 const NxTextInputStylesPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         Base styles for Sonatype text inputs.  Only the styles intended for "static" usage are shown
         here. For styles that involve business logic, such as validation, see
-        the <a href="#pages/NxTextInput">NxTextInput React Component</a>.
-      </p>
-      <p className="nx-p">Classes:</p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Class</th>
-            <th className="nx-cell nx-cell--header">Location</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-text-input</code></td>
-            <td className="nx-cell">
-              Any text-oriented <code className="nx-code">{'<input>'}</code> type or
-              <code className="nx-code">{'<textarea>'}</code>
-            </td>
-            <td className="nx-cell">
+        the <NxTextLink href="#pages/NxTextInput">NxTextInput React Component</NxTextLink>.
+      </NxP>
+      <NxP>Classes:</NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Class</NxTable.Cell>
+            <NxTable.Cell>Location</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-text-input</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Any text-oriented <NxCode>{'<input>'}</NxCode> type or
+              <NxCode>{'<textarea>'}</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>
               Gives the input typical Sonatype input styling with 1px grey borders on the top, right, and bottom,
               and a 3px grey border on the left
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-text-input--long</code></td>
-            <td className="nx-cell">Any <code className="nx-code">.nx-text-input</code> element</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-text-input--long</NxCode></NxTable.Cell>
+            <NxTable.Cell>Any <NxCode>.nx-text-input</NxCode> element</NxTable.Cell>
+            <NxTable.Cell>
               Use this class to make the text input particularly wide (395px vs the default 219px)
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"

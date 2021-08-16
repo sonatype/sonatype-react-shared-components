@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxTable, NxCode, NxP, NxH3 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -28,112 +29,112 @@ const simplePageHeaderExampleCode = require('./SimplePageHeaderExample?raw'),
 const NxPageHeaderPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
-        <code className="nx-code">NxPageHeader</code> is a React component encapsulating the standard Sonatype
+      <NxP>
+        <NxCode>NxPageHeader</NxCode> is a React component encapsulating the standard Sonatype
         page header structure and logo.
-      </p>
-      <h3 className="nx-h3 nx-tile__subsection-header">Props</h3>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">productInfo</td>
-            <td className="nx-cell">object</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
-              An optional object containing at least one field: <code className="nx-code">name</code>, the product
+      </NxP>
+      <NxH3>Props</NxH3>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>productInfo</NxTable.Cell>
+            <NxTable.Cell>object</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              An optional object containing at least one field: <NxCode>name</NxCode>, the product
               name to display in the header. Additionally, this object may contain
-              a <code className="nx-code">version</code> field holding the product's version number to display.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">homeLink</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+              a <NxCode>version</NxCode> field holding the product's version number to display.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>homeLink</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A URL (typically relative) that navigates to the home page of the application. If this prop is
               present, the <q>Sonatype</q> logo in the header will be a link to this home page.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">links</td>
-            <td className="nx-cell">array</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>links</NxTable.Cell>
+            <NxTable.Cell>array</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               An optional array of objects describing navigation links to display in the middle section of the header.
-              Each link object should contain a <code className="nx-code">name</code> to be displayed and
-              a <code className="nx-code">href</code> for the link. Additionally, at most one link should include
-              an <code className="nx-code">current</code> flag set to true indicating that it should be styled as
+              Each link object should contain a <NxCode>name</NxCode> to be displayed and
+              a <NxCode>href</NxCode> for the link. Additionally, at most one link should include
+              an <NxCode>current</NxCode> flag set to true indicating that it should be styled as
               the currently active link.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">children</td>
-            <td className="nx-cell">ReactNode</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>children</NxTable.Cell>
+            <NxTable.Cell>ReactNode</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Optional additional JSX content that will be displayed at the right end of the header.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p className="nx-p">
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
+      <NxP>
         Note that in each of the following examples, the headers have been tweaked to display in the normal page
         flow for the sake of demonstration. Normally, they would automatically display at the top of the viewport
         using CSS fixed positioning.
-      </p>
-      <p className="nx-p">
+      </NxP>
+      <NxP>
         It is the responsibility of calling code to ensure the that content included in the header fits in a single
         row at all supported resolutions. Behavior of this component when content exceeds the space allowed is
         unspecified.
-      </p>
+      </NxP>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Header"
                         id="nx-page-header-simple-example"
                         codeExamples={simplePageHeaderExampleCode}
                         liveExample={SimplePageHeaderExample}>
-      A minimal instance of <code className="nx-code">NxPageHeader</code> which includes no
+      A minimal instance of <NxCode>NxPageHeader</NxCode> which includes no
       product name, no version, no links, and no additional content.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Product Name"
                         codeExamples={productNamePageHeaderExampleCode}
                         liveExample={ProductNamePageHeaderExample}>
-      An instance of <code className="nx-code">NxPageHeader</code> which includes a product name.
+      An instance of <NxCode>NxPageHeader</NxCode> which includes a product name.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Product Name and Version"
                         codeExamples={productNameAndVersionPageHeaderExampleCode}
                         liveExample={ProductNameAndVersionPageHeaderExample}>
-      An instance of <code className="nx-code">NxPageHeader</code> which includes a product name
+      An instance of <NxCode>NxPageHeader</NxCode> which includes a product name
       and version.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Home Link"
                         codeExamples={homeLinkPageHeaderExampleCode}
                         liveExample={HomeLinkPageHeaderExample}>
-      An instance of <code className="nx-code">NxPageHeader</code> which includes a home link
+      An instance of <NxCode>NxPageHeader</NxCode> which includes a home link
       for the logo.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Links"
                         codeExamples={linksPageHeaderExampleCode}
                         liveExample={LinksPageHeaderExample}>
-      An instance of <code className="nx-code">NxPageHeader</code> which includes links.
+      An instance of <NxCode>NxPageHeader</NxCode> which includes links.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Extra Content"
                         codeExamples={extraContentPageHeaderExampleCode}
                         liveExample={ExtraContentPageHeaderExample}>
-      An instance of <code className="nx-code">NxPageHeader</code> with extra content on the
+      An instance of <NxCode>NxPageHeader</NxCode> with extra content on the
       right-hand side.
     </GalleryExampleTile>
 
@@ -141,7 +142,7 @@ const NxPageHeaderPage = () =>
                         id="nx-page-header-complex-example"
                         codeExamples={complexPageHeaderExampleCode}
                         liveExample={ComplexPageHeaderExample}>
-      An instance of <code className="nx-code">NxPageHeader</code> which includes all features
+      An instance of <NxCode>NxPageHeader</NxCode> which includes all features
       at once.
     </GalleryExampleTile>
   </>;

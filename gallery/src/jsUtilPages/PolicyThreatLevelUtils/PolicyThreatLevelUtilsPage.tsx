@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxP, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -15,11 +16,11 @@ const threatLevelNumberExampleCode = require('./ThreatLevelNumberExample?raw'),
 const PolicyThreatLevelUtilsPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         Sonatype's Insight line of products have concepts of Policy Threat Levels and Policy Threat Level
         Categories, as described below. The React Shared Components library includes a few simple JavaScript
         objects and TypeScript types that provide code definitions and mappings between these two concepts.
-      </p>
+      </NxP>
 
       <ul className="nx-list nx-list--bulleted">
         <li className="nx-list__item">
@@ -45,25 +46,25 @@ const PolicyThreatLevelUtilsPage = () =>
 
     <GalleryExampleTile title="ThreatLevelCategory & allThreatLevelCategories"
                         codeExamples={threatLevelCategoryExampleCode}>
-      <code className="nx-code">ThreatLevelCategory</code> is a TypeScript type consisting of
+      <NxCode>ThreatLevelCategory</NxCode> is a TypeScript type consisting of
       only the valid Threat Level Category strings.
-      {' '}<code className="nx-code">allThreatLevelCategories</code> is a read-only array
+      {' '}<NxCode>allThreatLevelCategories</NxCode> is a read-only array
       containing those same values
     </GalleryExampleTile>
 
     <GalleryExampleTile title="ThreatLevelNumber & allThreatLevelNumbers"
                         codeExamples={threatLevelNumberExampleCode}>
-      <code className="nx-code">ThreatLevelNumber</code> is a TypeScript type consisting of
+      <NxCode>ThreatLevelNumber</NxCode> is a TypeScript type consisting of
       only the valid Threat Level Numbers – i.e. the integers 0 through 10.
-      {' '}<code className="nx-code">allThreatLevelNumbers</code> is a read-only array
+      {' '}<NxCode>allThreatLevelNumbers</NxCode> is a read-only array
       containing those same values
     </GalleryExampleTile>
 
     <GalleryExampleTile title="categoryByPolicyThreatLevel"
                         codeExamples={categoryByPolicyThreatLevelExampleCode}>
-      <code className="nx-code">categoryByPolicyThreatLevel</code> is a read-only array that,
-      when indexed into using a <code className="nx-code">ThreatLevelNumber</code>, gives the
-      {' '}<code className="nx-code">ThreatLevelCategory</code> to which that number belongs
+      <NxCode>categoryByPolicyThreatLevel</NxCode> is a read-only array that,
+      when indexed into using a <NxCode>ThreatLevelNumber</NxCode>, gives the
+      {' '}<NxCode>ThreatLevelCategory</NxCode> to which that number belongs
     </GalleryExampleTile>
   </>;
 

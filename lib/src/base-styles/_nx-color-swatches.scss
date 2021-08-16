@@ -71,13 +71,14 @@
   --nx-swatch-pink-95: hsl(var(--nx-swatch-pink-hs), 95%);
 
   // Green
-  --nx-swatch-green-hs:138, 100%;
+  --nx-swatch-green-hs:102, 86%;
   --nx-swatch-green-10: hsl(var(--nx-swatch-green-hs), 10%);
   --nx-swatch-green-20: hsl(var(--nx-swatch-green-hs), 20%);
   --nx-swatch-green-25: hsl(var(--nx-swatch-green-hs), 25%);
   --nx-swatch-green-30: hsl(var(--nx-swatch-green-hs), 30%);
   --nx-swatch-green-35: hsl(var(--nx-swatch-green-hs), 35%);
   --nx-swatch-green-40: hsl(var(--nx-swatch-green-hs), 40%);
+  --nx-swatch-green-45: hsl(var(--nx-swatch-green-hs), 45%);
   --nx-swatch-green-50: hsl(var(--nx-swatch-green-hs), 50%);
   --nx-swatch-green-60: hsl(var(--nx-swatch-green-hs), 60%);
   --nx-swatch-green-70: hsl(var(--nx-swatch-green-hs), 70%);
@@ -87,23 +88,22 @@
   --nx-swatch-green-90: hsl(var(--nx-swatch-green-hs), 90%);
   --nx-swatch-green-95: hsl(var(--nx-swatch-green-hs), 95%);
 
-  // Lime
-  --nx-swatch-lime-hs:102, 86%;
-  --nx-swatch-lime-10: hsl(var(--nx-swatch-lime-hs), 10%);
-  --nx-swatch-lime-20: hsl(var(--nx-swatch-lime-hs), 20%);
-  --nx-swatch-lime-25: hsl(var(--nx-swatch-lime-hs), 25%);
-  --nx-swatch-lime-30: hsl(var(--nx-swatch-lime-hs), 30%);
-  --nx-swatch-lime-35: hsl(var(--nx-swatch-lime-hs), 35%);
-  --nx-swatch-lime-40: hsl(var(--nx-swatch-lime-hs), 40%);
-  --nx-swatch-lime-45: hsl(var(--nx-swatch-lime-hs), 45%);
-  --nx-swatch-lime-50: hsl(var(--nx-swatch-lime-hs), 50%);
-  --nx-swatch-lime-60: hsl(var(--nx-swatch-lime-hs), 60%);
-  --nx-swatch-lime-70: hsl(var(--nx-swatch-lime-hs), 70%);
-  --nx-swatch-lime-75: hsl(var(--nx-swatch-lime-hs), 75%);
-  --nx-swatch-lime-80: hsl(var(--nx-swatch-lime-hs), 80%);
-  --nx-swatch-lime-85: hsl(var(--nx-swatch-lime-hs), 85%);
-  --nx-swatch-lime-90: hsl(var(--nx-swatch-lime-hs), 90%);
-  --nx-swatch-lime-95: hsl(var(--nx-swatch-lime-hs), 95%);
+  // Lime - deprecated
+  --nx-swatch-lime-10: var(--nx-swatch-green-10);
+  --nx-swatch-lime-20: var(--nx-swatch-green-20);
+  --nx-swatch-lime-25: var(--nx-swatch-green-25);
+  --nx-swatch-lime-30: var(--nx-swatch-green-30);
+  --nx-swatch-lime-35: var(--nx-swatch-green-35);
+  --nx-swatch-lime-40: var(--nx-swatch-green-40);
+  --nx-swatch-lime-45: var(--nx-swatch-green-45);
+  --nx-swatch-lime-50: var(--nx-swatch-green-50);
+  --nx-swatch-lime-60: var(--nx-swatch-green-60);
+  --nx-swatch-lime-70: var(--nx-swatch-green-70);
+  --nx-swatch-lime-75: var(--nx-swatch-green-75);
+  --nx-swatch-lime-80: var(--nx-swatch-green-80);
+  --nx-swatch-lime-85: var(--nx-swatch-green-85);
+  --nx-swatch-lime-90: var(--nx-swatch-green-90);
+  --nx-swatch-lime-95: var(--nx-swatch-green-95);
 
   // Yellow
   --nx-swatch-yellow-hs:42, 100%;

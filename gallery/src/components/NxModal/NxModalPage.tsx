@@ -5,9 +5,18 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert, NxCode, NxP, NxTextLink, NxWarningAlert } from '@sonatype/react-shared-components';
+import {
+  NxTable,
+  NxInfoAlert,
+  NxCode,
+  NxP,
+  NxTextLink,
+  NxWarningAlert,
+  NxH3
+} from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+
 import NxModalSimpleExample from './NxModalSimpleExample';
 import NxModalAlertExample from './NxModalAlertExample';
 import NxModalFormExample from './NxModalFormExample';
@@ -31,38 +40,38 @@ export default function NxModalPage() {
     <>
       <GalleryDescriptionTile>
         <NxP>
-          <code className="nx-code">NxModal</code> is the preferred way to handle modals. It creates a foreground modal
+          <NxCode>NxModal</NxCode> is the preferred way to handle modals. It creates a foreground modal
           window along with a backdrop mask over the rest of the page.
         </NxP>
-        <h3>Props</h3>
-        <table className="nx-table">
-          <thead>
-            <tr className="nx-table-row">
-              <th className="nx-cell nx-cell--header">Prop</th>
-              <th className="nx-cell nx-cell--header">Type</th>
-              <th className="nx-cell nx-cell--header">Required</th>
-              <th className="nx-cell nx-cell--header">Default</th>
-              <th className="nx-cell nx-cell--header">Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="nx-table-row">
-              <td className="nx-cell">className</td>
-              <td className="nx-cell">string</td>
-              <td className="nx-cell">No</td>
-              <td className="nx-cell"></td>
-              <td className="nx-cell">
-                Any <code className="nx-code">className</code> attributes passed in on
-                the <code className="nx-code">NxModal</code> element will be added to
-                the <code className="nx-code">nx-modal</code> class on the modal div.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell">onCancel</td>
-              <td className="nx-cell">Function ((Event) =&gt; void)</td>
-              <td className="nx-cell">Yes</td>
-              <td className="nx-cell"></td>
-              <td className="nx-cell">
+        <NxH3>Props</NxH3>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Prop</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Default</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>className</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                Any <NxCode>className</NxCode> attributes passed in on
+                the <NxCode>NxModal</NxCode> element will be added to
+                the <NxCode>nx-modal</NxCode> class on the modal div.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>onCancel</NxTable.Cell>
+              <NxTable.Cell>Function ((Event) =&gt; void)</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
                 <NxP>
                   A callback to be called when the browser's native <NxCode>cancel</NxCode> event for the
                   modal's <NxCode>HTMLDialogElement</NxCode> is fired. The circumstances which will fire this event
@@ -86,171 +95,171 @@ export default function NxModalPage() {
                   call <NxCode>preventDefault</NxCode> on any ESC keydowns that they handle in order to prevent the
                   modal from also handling them. <NxCode>NxDropdown</NxCode> does this automatically.
                 </NxP>
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell">onClose</td>
-              <td className="nx-cell">Function (() =&gt; void)</td>
-              <td className="nx-cell">No</td>
-              <td className="nx-cell"></td>
-              <td className="nx-cell">
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>onClose</NxTable.Cell>
+              <NxTable.Cell>Function (() =&gt; void)</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
                 <NxWarningAlert>
                   Deprecated. Old alias for <NxCode>onCancel</NxCode>. Using both at the same time is not supported.
                 </NxWarningAlert>
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell">variant</td>
-              <td className="nx-cell">"wide" | "narrow" | "normal"</td>
-              <td className="nx-cell">No</td>
-              <td className="nx-cell">"normal"</td>
-              <td className="nx-cell">
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>variant</NxTable.Cell>
+              <NxTable.Cell>"wide" | "narrow" | "normal"</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>"normal"</NxTable.Cell>
+              <NxTable.Cell>
                 This prop specifies a style variant for the modal. Currently, variants only differ in width.
                 "wide" modals are 1000px wide, "normal" modals are 800px wide, and "narrow" modals are 600px wide.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell">HTML <code className="nx-code">&lt;div&gt;</code> Attributes</td>
-              <td className="nx-cell">
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
+              <NxTable.Cell>
                 <NxTextLink external href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
                   HTML Attributes
                 </NxTextLink>
-              </td>
-              <td className="nx-cell">No</td>
-              <td className="nx-cell"></td>
-              <td className="nx-cell">
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
                 NxModal supports any html attribute that's normally supported by
-                {' '}<code className="nx-code">&lt;div&gt;</code> elements.
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <h3>Modal Style Classes</h3>
-        <table className="nx-table nx-table--gallery-props">
-          <thead>
-            <tr className="nx-table-row nx-table-row--header">
-              <th className="nx-cell nx-cell--header">Class</th>
-              <th className="nx-cell nx-cell--header">Location</th>
-              <th className="nx-cell nx-cell--header">Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-modal-header</code></td>
-              <td className="nx-cell">HTML <code className="nx-code">header</code> element</td>
-              <td className="nx-cell">
-                The <code className="nx-code">NxModal</code> component supports any component that adheres to the
+                {' '}<NxCode>&lt;div&gt;</NxCode> elements.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+        <NxH3>Modal Style Classes</NxH3>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>.nx-modal-header</NxCode></NxTable.Cell>
+              <NxTable.Cell>HTML <NxCode>header</NxCode> element</NxTable.Cell>
+              <NxTable.Cell>
+                The <NxCode>NxModal</NxCode> component supports any component that adheres to the
                 RSC guidelines for margin and padding. Most commonly, components will be included in
-                an <code className="nx-code">H2</code> title tag (with
-                the <code className="nx-code">.nx-h2</code> style associated with it)
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-modal-content</code></td>
-              <td className="nx-cell">Wrapping the modal content</td>
-              <td className="nx-cell">
+                an <NxCode>H2</NxCode> title tag (with
+                the <NxCode>.nx-h2</NxCode> style associated with it)
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>.nx-modal-content</NxCode></NxTable.Cell>
+              <NxTable.Cell>Wrapping the modal content</NxTable.Cell>
+              <NxTable.Cell>
                 All content between the header and footer should be wrapped in a div with
-                the <code className="nx-code">.nx-modal-content</code> className. This element (and thus the modal
+                the <NxCode>.nx-modal-content</NxCode> className. This element (and thus the modal
                 overall) will shrink to fit the content, or expand vertically until the modal reaches its maximum height
                 (determined as a distance from the viewport edges). If the contents of
-                the <code className="nx-code">nx-modal-content</code> continue to grow beyond that height, it
+                the <NxCode>nx-modal-content</NxCode> continue to grow beyond that height, it
                 introduces a scrollbar.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-footer</code></td>
-              <td className="nx-cell">HTML <code className="nx-code">footer</code> element</td>
-              <td className="nx-cell">
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>.nx-footer</NxCode></NxTable.Cell>
+              <NxTable.Cell>HTML <NxCode>footer</NxCode> element</NxTable.Cell>
+              <NxTable.Cell>
                 Each modal should contain a footer containing buttons for various actions. At a minimum, there
                 should be a button that enables the user to close the modal. Further, the footer may contain
-                an <code className="nx-code">NxAlert</code> as would typically be the case after a form submission
+                an <NxCode>NxAlert</NxCode> as would typically be the case after a form submission
                 which resulted in an error.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-modal-content--tabs</code></td>
-              <td className="nx-cell">Modifier of <code className="nx-code">.nx-modal-content</code></td>
-              <td className="nx-cell">
-                A modifier class that must be added to <code className="nx-code">.nx-modal-content</code> when
-                you want to use tabs within an <code className="nx-code">NxModal</code> as the sole contents of
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>.nx-modal-content--tabs</NxCode></NxTable.Cell>
+              <NxTable.Cell>Modifier of <NxCode>.nx-modal-content</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                A modifier class that must be added to <NxCode>.nx-modal-content</NxCode> when
+                you want to use tabs within an <NxCode>NxModal</NxCode> as the sole contents of
                 the modal body. The modifier keeps the tabs "sticky" while allowing the tab content to scroll.
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
         <NxInfoAlert>
           Note: Placing content into the modal which exceeds its horizontal bounds is not supported. The resulting
           layout is unspecified.
         </NxInfoAlert>
-        <h3>Accessibility</h3>
-        <p className="nx-p">
-          <code className="nx-code">NxModal</code> uses the <code className="nx-code">dialog</code> role and needs
-          to have a label specified by the <code className="nx-code">aria-labelledby</code> or
-          {' '}<code className="nx-code">aria-label</code> attribute. Because the value
-          of <code className="nx-code">aria-labelledby</code> or <code className="nx-code">aria-label</code> is
-          typically the same as the modal header text <code className="nx-code">aria-labelledby</code> is the DRYer
+        <NxH3>Accessibility</NxH3>
+        <NxP>
+          <NxCode>NxModal</NxCode> uses the <NxCode>dialog</NxCode> role and needs
+          to have a label specified by the <NxCode>aria-labelledby</NxCode> or
+          {' '}<NxCode>aria-label</NxCode> attribute. Because the value
+          of <NxCode>aria-labelledby</NxCode> or <NxCode>aria-label</NxCode> is
+          typically the same as the modal header text <NxCode>aria-labelledby</NxCode> is the DRYer
           attribute.
-        </p>
+        </NxP>
         <NxWarningAlert>
-          Note: While the use of <code className="nx-code">aria-labelledby</code>
-          {' '}(or <code className="nx-code">aria-label</code>) is not required by the component it should be
+          Note: While the use of <NxCode>aria-labelledby</NxCode>
+          {' '}(or <NxCode>aria-label</NxCode>) is not required by the component it should be
           considered mandatory in order to comply with accessibility guidelines.
         </NxWarningAlert>
-        <table className="nx-table nx-table--gallery-props">
-          <thead>
-            <tr className="nx-table-row nx-table-row--header">
-              <th className="nx-cell nx-cell--header">Attribute</th>
-              <th className="nx-cell nx-cell--header">Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">aria-labelledby</code></td>
-              <td className="nx-cell">
-                When the <code className="nx-code">aria-labelledby</code> attribute is used an ID is applied to the
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Attribute</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>aria-labelledby</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                When the <NxCode>aria-labelledby</NxCode> attribute is used an ID is applied to the
                 HTML element that will be providing the label information (typically the modal title H3), the ID is
-                referenced by <code className="nx-code">aria-labelledby</code>. See examples below.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">aria-label</code></td>
-              <td className="nx-cell">
-                When the <code className="nx-code">aria-label</code> attribute is used the text is added directly to the
+                referenced by <NxCode>aria-labelledby</NxCode>. See examples below.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>aria-label</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                When the <NxCode>aria-label</NxCode> attribute is used the text is added directly to the
                 attribute. See the NxModal Example with NxAlert example below.
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple NxModal Example"
                           id="nx-modal-simple-example"
                           liveExample={NxModalSimpleExample}
                           codeExamples={NxModalSimpleSourceCode}>
-        A basic example of an <code className="nx-code">NxModal</code>. Click the button to open the modal. Note that
+        A basic example of an <NxCode>NxModal</NxCode>. Click the button to open the modal. Note that
         this modal has sufficient content to induce scrolling (on most monitors). You will see in other examples that
         when modals have smaller contents, the scrollbar does not appear and the modal content area shrinks to fit.
-        This example uses <code className="nx-code">aria-labelledby</code>.
+        This example uses <NxCode>aria-labelledby</NxCode>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with NxAlert"
                           liveExample={NxModalAlertExample}
                           codeExamples={NxModalAlertSourceCode}>
-        An example of an <code className="nx-code">NxModal</code> containing
-        an <code className="nx-code">NxAlert</code>. As shown in this example, the most appropriate accessibility role
+        An example of an <NxCode>NxModal</NxCode> containing
+        an <NxCode>NxAlert</NxCode>. As shown in this example, the most appropriate accessibility role
         in this scenario is <NxCode>alertdialog</NxCode>.  Note that this is actually the only role you'd ever want to
         explicitly add to an <NxCode>NxModal</NxCode>. In non-alert cases, <NxCode>NxModal</NxCode> takes on the
         semantics of the <NxCode>dialog</NxCode> role as one would expect.
-        This example uses <code className="nx-code">aria-label</code>.
+        This example uses <NxCode>aria-label</NxCode>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal with stacked modal example"
                           id="nx-modal-stacked-example"
                           liveExample={NxModalStackedExample}
                           codeExamples={NxModalStackedSourceCode}>
-        <code className="nx-code">NxModal</code> also supports stacked or nested modals. A second modal can be
-        generated from inside of an <code className="nx-code">NxModal</code>.
-        This example uses <code className="nx-code">aria-labelledby</code>.
+        <NxCode>NxModal</NxCode> also supports stacked or nested modals. A second modal can be
+        generated from inside of an <NxCode>NxModal</NxCode>.
+        This example uses <NxCode>aria-labelledby</NxCode>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal example with other ESC-controller elements"
@@ -262,43 +271,43 @@ export default function NxModalPage() {
         component all working together such that pressing ESC only closes one of them at a time. Note
         that <NxCode>NxDropdown</NxCode> is designed so that pressing ESC when it is open only closes it if it is
         focused.
-        This example uses <code className="nx-code">aria-labelledby</code>.
+        This example uses <NxCode>aria-labelledby</NxCode>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with form"
                           id="nx-modal-form-example"
                           liveExample={NxModalFormExample}
                           codeExamples={NxModalFormSourceCode}>
-        <code className="nx-code">NxModal</code> also supports inclusion and styling of form elements.
-        This example uses <code className="nx-code">aria-labelledby</code>.
+        <NxCode>NxModal</NxCode> also supports inclusion and styling of form elements.
+        This example uses <NxCode>aria-labelledby</NxCode>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxModal Example with form and error styling"
                           id="nx-modal-form-with-alert-example"
                           liveExample={NxModalFormErrorExample}
                           codeExamples={NxModalFormErrorSourceCode}>
-        This <code className="nx-code">NxModal</code> also contains a form, but additionally demonstrates the typical
+        This <NxCode>NxModal</NxCode> also contains a form, but additionally demonstrates the typical
         way that an error upon the submission of said form would be handled: with
-        an <code className="nx-code">NxErrorAlert</code> in the footer.
-        This example uses <code className="nx-code">aria-labelledby</code>.
+        an <NxCode>NxErrorAlert</NxCode> in the footer.
+        This example uses <NxCode>aria-labelledby</NxCode>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Wide NxModal Example"
                           id="nx-modal-wide-example"
                           liveExample={NxModalExtraWideExample}
                           codeExamples={NxModalExtraWideSourceCode}>
-        A demonstration of the <code className="nx-code">wide</code> styles
-        for <code className="nx-code">NxModal</code>.
-        This example uses <code className="nx-code">aria-labelledby</code>.
+        A demonstration of the <NxCode>wide</NxCode> styles
+        for <NxCode>NxModal</NxCode>.
+        This example uses <NxCode>aria-labelledby</NxCode>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Narrow NxModal Example"
                           id="nx-modal-narrow-example"
                           liveExample={NxModalNarrowExample}
                           codeExamples={NxModalNarrowSourceCode}>
-        A demonstration of the <code className="nx-code">narrow</code> styles
-        for <code className="nx-code">NxModal</code>.
-        This example uses <code className="nx-code">aria-labelledby</code>.
+        A demonstration of the <NxCode>narrow</NxCode> styles
+        for <NxCode>NxModal</NxCode>.
+        This example uses <NxCode>aria-labelledby</NxCode>.
       </GalleryExampleTile>
     </>
   );

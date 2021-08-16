@@ -5,9 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { ReactNode, useEffect, useState } from 'react';
+import { NxTextLink, NxP, NxCode, NxList, NxWarningAlert, NxTable } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
-import { NxTextLink, NxP, NxCode, NxList, NxWarningAlert, NxTable } from '@sonatype/react-shared-components';
 
 import './CssVariablesPage.scss';
 
@@ -219,7 +219,7 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-border-secondary">
               Color for secondary borders
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-border-subsection">
+            <ColorDocRow colorVar="--nx-color-subsection-border">
               <NxWarningAlert>
                 Deprecated. Standard border color for lower-level elements such as tile subsections.
               </NxWarningAlert>

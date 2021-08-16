@@ -111,6 +111,11 @@ import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
 import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterPage';
 import NxFormSelectComponentPage from './components/NxFormSelect/NxFormSelectPage';
 import CssVariablesPage from './styles/CssVariables/CssVariablesPage';
+import NxTransferListPage from './components/NxTransferList/NxTransferListPage';
+import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxStatefulTransferListPage';
+import NxPPage from './styles/NxP/NxPPage';
+import NxHPage from './styles/NxH/NxHPage';
+import AccessibilityPage from './pages/Accessibility';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -166,6 +171,8 @@ const pageConfig: PageConfig = {
     NxStatefulToggle: NxStatefulTogglePage,
     NxTooltip: NxTooltipPage,
     NxOverflowTooltip: NxOverflowTooltipPage,
+    NxTransferList: NxTransferListPage,
+    NxStatefulTransferList: NxStatefulTransferListPage,
     NxTreeView: NxTreeViewPage,
     NxTreeViewMultiSelect: NxTreeViewMultiSelect,
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
@@ -174,6 +181,7 @@ const pageConfig: PageConfig = {
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
   'Guidelines': {
+    'Accessibility': AccessibilityPage,
     'Additional Resources': AdditionalResourcePage,
     'Contributing to the Gallery': ContributingPage,
     'font-size and line-height': FontSizePage,
@@ -190,10 +198,12 @@ const pageConfig: PageConfig = {
     'nx-fieldset': NxFieldsetStylePage,
     'nx-form-group': NxFormGroupStylePage,
     'nx-form-select': NxFormSelectPage,
+    'nx-h*': NxHPage,
     'nx-global-header': NxGlobalHeaderPage,
     'nx-grid': NxGridPage,
     'nx-icon': NxIconPage,
     'nx-list': NxListPage,
+    'nx-p': NxPPage,
     'nx-page-title': NxPageTitlePage,
     'nx-pre': NxPrePage,
     'nx-read-only': NxReadOnlyPage,

@@ -5,9 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import CodeExample from '../../CodeExample';
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxTextLink } from '@sonatype/react-shared-components';
+
+import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
+
+import CodeExample from '../../CodeExample';
 
 const NxGlobalSidebarFooterExample = require('./NxGlobalSidebarFooterExample.tsx?raw'),
     NxGlobalSidebarFooterMinimalExample = require('./NxGlobalSidebarFooterMinimalExample.tsx?raw');
@@ -82,7 +84,7 @@ export default function NxGlobalSidebarFooterPage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>HTML <code className="nx-code">&lt;div&gt;</code> Attributes</NxTable.Cell>
+                <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
                 <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
                     HTML div Attributes
@@ -91,7 +93,7 @@ export default function NxGlobalSidebarFooterPage() {
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
                   NxGlobalSidebarFooter supports any HTML attribute that's normally supported
-                  by <code className="nx-code">&lt;div&gt;</code>.
+                  by <NxCode>&lt;div&gt;</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
