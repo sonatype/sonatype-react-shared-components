@@ -1,0 +1,140 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-text-helpers';
+@import '../../scss-shared/nx-container-helpers';
+@import '../../scss-shared/nx-button-helpers';
+@import '../../scss-shared/nx-dropdown-variables';
+
+.nx-dropdown {
+  display: inline-block;
+  position: relative;
+  width: $nx-dropdown-width;
+}
+
+.nx-dropdown__toggle {
+  color: var(--nx-color-text);
+  display: flex;
+  margin: 0;
+  outline: none;
+  text-align: left;
+  padding-right: var(--nx-spacing-4x);
+  padding-left: var(--nx-spacing-4x);
+  width: $nx-dropdown-width;
+
+  .nx-dropdown__toggle-label {
+    @include container-horizontal;
+    @include nx-truncate-ellipsis();
+
+    flex-grow: 1;
+  }
+
+  .nx-icon {
+    align-self: center;
+    color: var(--nx-swatch-black);
+  }
+
+  &.disabled {
+    .nx-icon {
+      color: var(--nx-color-text-disabled);
+    }
+  }
+
+  &.open {
+    border-color: var(--nx-swatch-blue-40);
+  }
+}
+
+.nx-dropdown-link, .nx-dropdown-button {
+  @include container-horizontal;
+}
+
+.nx-dropdown-link, .nx-dropdown-button {
+  @include nx-truncate-ellipsis();
+  @include regular();
+
+  border: none;
+  cursor: pointer;
+  display: block;
+  font-size: var(--nx-font-size);
+  line-height: var(--nx-line-height);
+  padding: var(--nx-spacing-base) var(--nx-spacing-4x);
+  text-decoration: none;
+}
+
+.nx-dropdown-button {
+  background-color: transparent;
+  border-radius: 0;
+  box-sizing: border-box;
+  color: var(--nx-color-text);
+  outline: none;
+  text-align: left;
+  width: 100%;
+
+  &:hover, &:focus {
+    background-color: var(--nx-color-interactive-background-hover);
+  }
+
+  &:active {
+    background-color: var(--nx-color-interactive-background-active);
+  }
+
+  &.disabled {
+    &, &:hover, &:focus {
+      background-color: transparent;
+      color: var(--nx-color-text-disabled);
+      cursor: default;
+      text-decoration: none;
+    }
+  }
+}
+
+.nx-dropdown-link {
+  color: var(--nx-color-link);
+
+  &:hover, &:focus {
+    color: var(--nx-color-link-hover);
+    text-decoration: underline;
+  }
+
+  &.disabled {
+    &, &:hover, &:focus {
+      color: var(--nx-color-link-disabled);
+      cursor: default;
+      text-decoration: none;
+    }
+  }
+}
+
+.nx-dropdown--divider {
+  background-color: var(--nx-swatch-grey-70);
+  height: 1px;
+  margin: 9px 1px;
+}
+
+
+.nx-dropdown-button-content {
+  @include nx-truncate-ellipsis;
+  display: block;
+  line-height: var(--nx-spacing-8x);
+}
+
+.nx-dropdown-right-button {
+  @include nx-small-icon-btn;
+  float: right;
+  margin-right: var(--nx-spacing-2x);
+  margin-left: var(--nx-spacing-6x);
+
+  // take off a px to make room for the button border
+  margin-top: calc(var(--nx-spacing-base) - 1px);
+  margin-bottom: calc(var(--nx-spacing-base) - 1px);
+
+  + .nx-dropdown-button {
+    display: block;
+    padding-right: 0;
+    overflow: visible;
+  }
+}
