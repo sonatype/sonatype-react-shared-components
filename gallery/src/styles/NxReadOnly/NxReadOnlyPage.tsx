@@ -5,9 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxCode, NxP, NxTextLink, NxTable } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import './NxReadOnlyGridExample.scss';
 
@@ -34,74 +34,74 @@ const NxReadOnlyPage = () => {
           by vertical dividers. For an example of that combination, see the{' '}
           <NxTextLink href="#/pages/Read-Only%20Grid%20Tile%20Layout">Read-Only Grid Tile Layout</NxTextLink> page.
         </NxP>
-        <table className="nx-table">
-          <thead>
-            <tr className="nx-table-row">
-              <th className="nx-cell nx-cell--header">Class</th>
-              <th className="nx-cell nx-cell--header">Convenience Component</th>
-              <th className="nx-cell nx-cell--header">Location</th>
-              <th className="nx-cell nx-cell--header">Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-read-only</code></td>
-              <td className="nx-cell"><code className="nx-code">NxReadOnly</code></td>
-              <td className="nx-cell">Top level</td>
-              <td className="nx-cell">
-                This is the basic wrapper class. It is applied to the <code className="nx-code">&lt;dl&gt;</code>.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-read-only--grid</code></td>
-              <td className="nx-cell"></td>
-              <td className="nx-cell">Modifier of <NxCode>.nx-read-only</NxCode></td>
-              <td className="nx-cell">
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Convenience Component</NxTable.Cell>
+              <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>.nx-read-only</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>NxReadOnly</NxCode></NxTable.Cell>
+              <NxTable.Cell>Top level</NxTable.Cell>
+              <NxTable.Cell>
+                This is the basic wrapper class. It is applied to the <NxCode>&lt;dl&gt;</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>.nx-read-only--grid</NxCode></NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>Modifier of <NxCode>.nx-read-only</NxCode></NxTable.Cell>
+              <NxTable.Cell>
                 This class preps the <NxCode>nx-read-only</NxCode> to display its entries in a grid. While this class
                 adds the basic grid properties (<NxCode>display</NxCode>, <NxCode>gap</NxCode>, etc) it is up to
                 the caller to specify additional CSS to define their desired grid layout in terms of the number
                 and arrangement of the grid cells.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-read-only__label</code></td>
-              <td className="nx-cell"><code className="nx-code">NxReadOnly.Label</code></td>
-              <td className="nx-cell">Element</td>
-              <td className="nx-cell">
-                This class is applied to the <code className="nx-code">&lt;dt&gt;</code>, it represents the label for
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>.nx-read-only__label</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>NxReadOnly.Label</NxCode></NxTable.Cell>
+              <NxTable.Cell>Element</NxTable.Cell>
+              <NxTable.Cell>
+                This class is applied to the <NxCode>&lt;dt&gt;</NxCode>, it represents the label for
                 the data below.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-read-only__data</code></td>
-              <td className="nx-cell"><code className="nx-code">NxReadOnly.Data</code></td>
-              <td className="nx-cell">Element</td>
-              <td className="nx-cell">
-                This class is applied to any <code className="nx-code">&lt;dd&gt;</code>'s that appear. The data
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>.nx-read-only__data</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>NxReadOnly.Data</NxCode></NxTable.Cell>
+              <NxTable.Cell>Element</NxTable.Cell>
+              <NxTable.Cell>
+                This class is applied to any <NxCode>&lt;dd&gt;</NxCode>'s that appear. The data
                 displayed can be any string or HTML markup.
-              </td>
-            </tr>
-            <tr className="nx-table-row">
-              <td className="nx-cell"><code className="nx-code">.nx-read-only__item</code></td>
-              <td className="nx-cell"><code className="nx-code">NxReadOnly.Item</code></td>
-              <td className="nx-cell">
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>.nx-read-only__item</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>NxReadOnly.Item</NxCode></NxTable.Cell>
+              <NxTable.Cell>
                 Child of <NxCode>.nx-read-only--grid</NxCode>, parent of <NxCode>.nx-read-only__label</NxCode> and
                 {' '}<NxCode>.nx-read-only__data</NxCode>.
-              </td>
-              <td className="nx-cell">
+              </NxTable.Cell>
+              <NxTable.Cell>
                 When creating an <NxCode>.nx-read-only</NxCode> with a grid layout,
                 each <NxCode>&lt;dt&gt;</NxCode>/<NxCode>&lt;dd&gt;</NxCode> group must be wrapped
                 in a div with this class. This class/element should not be used in non-grid layouts.
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="Simple Example"
                           id="nx-read-only-simple-example"
                           codeExamples={nxReadOnlyDlExampleCode}
                           htmlExample={nxReadOnlyDlExampleCode}>
-        Standard <code className="nx-code">nx-read-only</code> layouts, by default all text wraps.
+        Standard <NxCode>nx-read-only</NxCode> layouts, by default all text wraps.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Grid Example"

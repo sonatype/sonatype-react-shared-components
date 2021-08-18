@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxTable, NxCode, NxP } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -23,60 +24,60 @@ const disabledSourceCode = require('./NxStatefulTextInputDisabledExample?raw');
 const NxStatefulTextInputPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">Standard text input with pristine state tracking and pluggable validation handling</p>
-      <p className="nx-p">Props:</p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">type</td>
-            <td className="nx-cell">"textarea" | "text" | "password"</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">What type of text input to render.  Defaults to "text"</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">defaultValue</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">The initial value rendered in the text input</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">validator</td>
-            <td className="nx-cell">Function ((string) =&gt; string | string[] | null)</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+      <NxP>Standard text input with pristine state tracking and pluggable validation handling</NxP>
+      <NxP>Props:</NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>type</NxTable.Cell>
+            <NxTable.Cell>"textarea" | "text" | "password"</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>What type of text input to render.  Defaults to "text"</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>defaultValue</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>The initial value rendered in the text input</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>validator</NxTable.Cell>
+            <NxTable.Cell>Function ((string) =&gt; string | string[] | null)</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A function that validates user-inputted changes to the text field value. Accepts the new value
               as a string and returns zero or more validation error messages
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">
-              HTML <code className="nx-code">&lt;input&gt;</code> Attributes |
-              HTML <code className="nx-code">&lt;textarea&gt;</code> Attributes
-            </td>
-            <td className="nx-cell">
-              <code className="nx-code">NxTextInput</code> props
-            </td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
-              Any attribute supported by <code className="nx-code">NxTextInput</code>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              HTML <NxCode>&lt;input&gt;</NxCode> Attributes |
+              HTML <NxCode>&lt;textarea&gt;</NxCode> Attributes
+            </NxTable.Cell>
+            <NxTable.Cell>
+              <NxCode>NxTextInput</NxCode> props
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Any attribute supported by <NxCode>NxTextInput</NxCode>
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
                         liveExample={NxStatefulTextInputSimpleExample}
                         codeExamples={simpleSourceCode}>
-      A simple example of an <code className="nx-code">NxStatefileTextInput</code>. Note that the content of the text
+      A simple example of an <NxCode>NxStatefileTextInput</NxCode>. Note that the content of the text
       input does not need to be tracked separately.
     </GalleryExampleTile>
 

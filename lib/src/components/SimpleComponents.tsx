@@ -54,17 +54,6 @@ export const NxGrid = {
   HeaderHrule: withClass('hr', 'nx-grid-header__hrule')
 };
 
-export const NxList = Object.assign(withClass('ul', 'nx-list'), {
-  Item: withClass('li', 'nx-list__item'),
-  Text: withClass('span', 'nx-list__text'),
-  Subtext: withClass('span', 'nx-list__subtext'),
-  Actions: withClass('div', 'nx-list__actions'),
-  DescriptionTerm: withClass('dt', 'nx-list__term'),
-  Description: withClass('dd', 'nx-list__description'),
-  Link: withClass('a', 'nx-list__link'),
-  Button: withClass('button', 'nx-list__btn')
-});
-
 export const NxPageTitle = Object.assign(withClass('div', 'nx-page-title'), {
   Headings: withClass('div', 'nx-page-title__headings'),
   Subtitle: withClass('h2', 'nx-h2 nx-page-title__sub-title'),
