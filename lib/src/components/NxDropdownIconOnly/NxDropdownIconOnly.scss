@@ -15,8 +15,14 @@
   .nx-dropdown__toggle {
     border-color: var(--nx-swatch-indigo-90);
     width: initial;
+
+    &.disabled {
+      .nx-dropdown__toggle {
+        border-color: var(--nx-color-interactive-border-disabled);
+      }
+    }
   }
-  
+
   .nx-dropdown-menu {
     right: 0;
   }

@@ -11,9 +11,11 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxDropdownIconOnlyNavigationExample from './NxDropdownIconOnlyNavigationExample';
 import NxDropdownIconOnlyLinksExample from './NxDropdownIconOnlyLinksExample';
+import NxDropdownIconOnlyDisabledExample from './NxDropdownIconOnlyDisabledExample';
 
 const nxDropdownIconOnlyNavigationExampleCode = require('./NxDropdownIconOnlyNavigationExample?raw'),
-    nxDropdownIconOnlyLinksExampleCode = require('./NxDropdownIconOnlyLinksExample?raw');
+    nxDropdownIconOnlyLinksExampleCode = require('./NxDropdownIconOnlyLinksExample?raw'),
+    nxDropdownIconOnlyDisabledExampleCode = require('./NxDropdownIconOnlyLinksExample?raw');
 
 const NxDropdownPage = () =>
   <>
@@ -147,10 +149,17 @@ const NxDropdownPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Links Example"
-                        id="nx-dropdown-links-example"
+                        id="nx-dropdownicononly-links-example"
                         liveExample={NxDropdownIconOnlyLinksExample}
                         codeExamples={nxDropdownIconOnlyLinksExampleCode}>
       An example of a dropdown with a menu of links – typically, links to external sites.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Disabled Example"
+                        id="nx-dropdown-disabled-example"
+                        liveExample={NxDropdownIconOnlyDisabledExample}
+                        codeExamples={nxDropdownIconOnlyDisabledExampleCode}>
+      An example of a dropdown that is disabled.
     </GalleryExampleTile>
   </>;
 
