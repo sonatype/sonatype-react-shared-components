@@ -7,23 +7,26 @@
 import React from 'react';
 
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { NxDropdownIconOnly, useToggle } from '@sonatype/react-shared-components';
+import { NxDropdownIconOnly, useToggle, NxTextLink } from '@sonatype/react-shared-components';
 
 function NxDropdownIconOnlyNavigationExample() {
   const [isOpen, onToggleCollapse] = useToggle(false),
       onClick = () => { alert('click'); };
 
   return (
-    <NxDropdownIconOnly label="Navigation" isOpen={isOpen} onToggleCollapse={onToggleCollapse} icon={faEllipsisV}>
-      <a onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
+    <NxDropdownIconOnly isOpen={isOpen}
+                        onToggleCollapse={onToggleCollapse}
+                        icon={faEllipsisV}
+                        toggleTooltip="Options">
+      <NxTextLink onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
         Text link 1
-      </a>
-      <a onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
+      </NxTextLink>
+      <NxTextLink onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
         Text link 2
-      </a>
-      <a onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
+      </NxTextLink>
+      <NxTextLink onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
         Text link 3 - this link should trigger truncation
-      </a>
+      </NxTextLink>
       <button onClick={onClick} className="nx-dropdown-button">
         Button Link 4 - this link should trigger truncation
       </button>

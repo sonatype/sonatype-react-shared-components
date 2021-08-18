@@ -237,3 +237,11 @@ export { default as NxTransferList, Props as NxTransferListProps, DataItem as Nx
 
 export { default as NxStatefulTransferList, Props as NxStatefulTransferListProps }
   from './components/NxTransferList/stateful/NxStatefulTransferList';
+
+export {
+  default as NxDropdownIconOnly,
+  Props as NxDropdownIconOnlyProps
+} from './components/NxDropdownIconOnly/NxDropdownIconOnly';
+
+export { default as NxStatefulDropdownIconOnly }
+  from './components/NxDropdownIconOnly/stateful/NxStatefulDropdownIconOnly';

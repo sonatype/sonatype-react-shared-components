@@ -6,8 +6,8 @@
  */
 import React from 'react';
 
-import { faExternalLinkAlt, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { NxDropdownIconOnly, NxFontAwesomeIcon, useToggle } from '@sonatype/react-shared-components';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { NxDropdownIconOnly, useToggle, NxTextLink } from '@sonatype/react-shared-components';
 
 function NxDropdownIconOnlyActionsExample() {
   const [isOpen, onToggleCollapse] = useToggle(false),
@@ -15,22 +15,13 @@ function NxDropdownIconOnlyActionsExample() {
       onClick = () => { alert('click'); };
 
   return (
-    <NxDropdownIconOnly label="Links!"
-                icon={faEllipsisV}
-                isOpen={isOpen}
-                onToggleCollapse={onToggleCollapse}>
-      <a className="nx-dropdown-link disabled">
-        <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
-        <span>Save</span>
-      </a>
-      <a className="nx-dropdown-link" onClick={deleteFn}>
-        <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
-        <span>Delete</span>
-      </a>
-      <a className="nx-dropdown-link" onClick={onClick}>
-        <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
-        <span>Some Action</span>
-      </a>
+    <NxDropdownIconOnly icon={faCog}
+                        isOpen={isOpen}
+                        onToggleCollapse={onToggleCollapse}
+                        toggleTooltip="Links options">
+      <NxTextLink external className="nx-dropdown-link disabled">Save</NxTextLink>
+      <NxTextLink external className="nx-dropdown-link" onClick={deleteFn}>Delete</NxTextLink>
+      <NxTextLink external className="nx-dropdown-link" onClick={onClick}>Some Action</NxTextLink>
     </NxDropdownIconOnly>
   );
 }

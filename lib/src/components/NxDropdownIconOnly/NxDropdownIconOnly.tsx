@@ -20,7 +20,6 @@ import useDropdownEvents from '../../util/useDropdownEvents';
 const NxDropdownIconOnly: FunctionComponent<Props> = function NxDropdownIconOnly(props) {
   const {
     icon,
-    label,
     className,
     isOpen,
     disabled,
@@ -38,7 +37,7 @@ const NxDropdownIconOnly: FunctionComponent<Props> = function NxDropdownIconOnly
 
   const buttonClasses = classnames('nx-dropdown__toggle', { disabled, open: isOpen });
 
-  const classes = classnames('nx-dropdown', className);
+  const classes = classnames('nx-dropdown nx-dropdown--icon-only', className);
 
   const toggleTooltipProps = toggleTooltip && wrapTooltipProps(toggleTooltip);
 
