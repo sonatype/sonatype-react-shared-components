@@ -37,7 +37,7 @@ export default function NxModalFormExample() {
 
     setTimeout(function() {
       setLoading(false);
-    }, 1000);
+    }, 2000);
   }
 
   function onUsernameChange(val: string) {
