@@ -84,7 +84,7 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
 
   const cellSortingContents = (
     <NxTooltip title={ariaLabel}>
-      <button type="button" className="nx-cell__sort-btn">
+      <button aria-label={ariaLabel} type="button" className="nx-cell__sort-btn">
         {ensureElement(children)}
         <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>
       </button>
