@@ -47,7 +47,7 @@ describe('NxModal', function() {
 
     it('correctly renders its loading spinner', async function() {
       const openModalBtnSelector = `${formExampleSelector} button`,
-          modalSelector = `${formExampleSelector} .nx-modal`;
+          modalSelector = `#nx-modal-form-example`;
 
       const openModalBtn = await browser.$(openModalBtnSelector);
 
