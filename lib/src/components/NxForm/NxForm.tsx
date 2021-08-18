@@ -11,7 +11,6 @@ import classnames from 'classnames';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
 import NxLoadError from '../NxLoadError/NxLoadError';
 import NxButton from '../NxButton/NxButton';
-import NxTooltip from '../NxTooltip/NxTooltip';
 import NxSubmitMask from '../NxSubmitMask/NxSubmitMask';
 
 import { Props, propTypes } from './types';
@@ -53,40 +52,46 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
         }
       }
 
-      const renderForm = () => (
-        <form ref={ref} className={formClasses} onSubmit={onSubmit} { ...formAttrs }>
-          { getChildren() }
-          <footer className="nx-footer">
-            { submitError &&
-              <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
-                           error={submitError}
-                           retryHandler={onSubmitProp} />
-            }
+      const renderForm = () => {
+        const submitValidationError = getFirstValidationError(validationErrors) || '',
+            submitAriaLabel = submitValidationError ? `Submit disabled: ${submitValidationError}` : undefined;
 
-            <div className="nx-btn-bar">
-              { additionalFooterBtns }
-              { onCancel &&
-                <NxButton type="button" onClick={onCancel} className="nx-form__cancel-btn">
-                  Cancel
-                </NxButton>
+        return (
+          <form ref={ref} className={formClasses} onSubmit={onSubmit} { ...formAttrs }>
+            { getChildren() }
+            <footer className="nx-footer">
+              { submitError &&
+                <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
+                             error={submitError}
+                             retryHandler={onSubmitProp} />
               }
-              { !submitError &&
-                <NxTooltip title={getFirstValidationError(validationErrors) || ''}>
-                  <NxButton variant="primary" className={submitBtnClasses || 'nx-form__submit-btn'}>
+
+              <div className="nx-btn-bar">
+                { additionalFooterBtns }
+                { onCancel &&
+                  <NxButton type="button" onClick={onCancel} className="nx-form__cancel-btn">
+                    Cancel
+                  </NxButton>
+                }
+                { !submitError &&
+                  <NxButton variant="primary"
+                            className={submitBtnClasses || 'nx-form__submit-btn'}
+                            title={submitValidationError}
+                            aria-label={submitAriaLabel}>
                     {submitBtnText || 'Submit'}
                   </NxButton>
-                </NxTooltip>
-              }
-            </div>
+                }
+              </div>
 
-          </footer>
-          { submitMaskState != null &&
-            <NxSubmitMask success={submitMaskState}
-                          message={submitMaskMessage}
-                          successMessage={submitMaskSuccessMessage} />
-          }
-        </form>
-      );
+            </footer>
+            { submitMaskState != null &&
+              <NxSubmitMask success={submitMaskState}
+                            message={submitMaskMessage}
+                            successMessage={submitMaskSuccessMessage} />
+            }
+          </form>
+        );
+      };
 
       return doLoad ? (
         <NxLoadWrapper loading={loading} error={loadError} retryHandler={doLoad}>
