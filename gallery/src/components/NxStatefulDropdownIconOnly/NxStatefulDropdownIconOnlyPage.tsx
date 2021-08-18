@@ -41,7 +41,7 @@ const NxStatefulDropdownPage = () =>
           <NxTable.Row>
             <NxTable.Cell>toggleTooltip</NxTable.Cell>
             <NxTable.Cell>string | NxTooltip Props</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
               Describes a tooltip to be placed on the dropdowns' toggle element. For accessibility reasons this prop
               is required on <NxCode>NxDropdownIconOnly</NxCode>. There are two ways to specify the tooltip: the
