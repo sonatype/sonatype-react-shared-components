@@ -23,12 +23,12 @@
 }
 
 .nx-threat-counter__count {
-  @include bold();
+  @include bold;
   margin: 0;
 }
 
 .nx-threat-counter__text {
-  @include semi-bold();
+  @include semi-bold;
   margin-left: var(--nx-spacing-2x);
   text-transform: uppercase;
 }

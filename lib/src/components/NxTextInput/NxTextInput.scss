@@ -22,15 +22,15 @@
   }
 
   &.invalid {
-    @include invalid();
+    @include invalid;
   }
 
   &.pristine, &.pristine.valid {
-    @include pristine();
+    @include pristine;
   }
 
   &.valid {
-    @include valid();
+    @include valid;
   }
 }
 

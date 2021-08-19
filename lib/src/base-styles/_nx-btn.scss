@@ -8,7 +8,7 @@
 @use '../scss-shared/nx-text-helpers';
 
 .nx-btn {
-  @include nx-text-helpers.semi-bold();
+  @include nx-text-helpers.semi-bold;
   @include nx-container-helpers.container-horizontal;
 
   background-color: var(--nx-swatch-white);

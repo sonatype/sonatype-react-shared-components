@@ -91,7 +91,7 @@
 }
 
 .nx-card__call-out {
-  @include nx-text-helpers.bold();
+  @include nx-text-helpers.bold;
 
   color: var(--nx-color-text-dark);
   font-size: 32px;

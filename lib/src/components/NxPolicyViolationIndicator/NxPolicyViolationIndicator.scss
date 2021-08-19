@@ -32,7 +32,7 @@
 }
 
 .nx-policy-violation-indicator__text {
-  @include semi-bold();
+  @include semi-bold;
   @include nx-truncate-ellipsis;
 
   font-size: var(--nx-font-size-s);

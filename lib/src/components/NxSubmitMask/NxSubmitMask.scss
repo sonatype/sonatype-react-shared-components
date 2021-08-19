@@ -19,7 +19,7 @@
 .nx-submit-mask__message {
   @include container-horizontal;
   @include container-vertical;
-  @include semi-bold();
+  @include semi-bold;
 
   background-color: var(--nx-color-component-background);
   border-radius: var(--nx-border-radius);

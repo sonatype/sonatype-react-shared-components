@@ -7,7 +7,7 @@
 @use '../scss-shared/nx-text-helpers';
 
 .nx-counter {
-  @include nx-text-helpers.semi-bold();
+  @include nx-text-helpers.semi-bold;
 
   background-color: var(--nx-swatch-white);
   border: 1px solid var(--nx-swatch-blue-10);

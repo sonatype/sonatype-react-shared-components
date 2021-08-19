@@ -72,7 +72,7 @@
 }
 
 %nx-code {
-  @include monospace();
+  @include monospace;
   background-color: var(--nx-swatch-grey-95);
   border: 1px solid var(--nx-swatch-grey-90);
   border-radius: var(--nx-border-radius);
@@ -82,7 +82,7 @@
 }
 
 %nx-pre {
-  @include monospace();
+  @include monospace;
   background-color: var(--nx-swatch-white);
   border: 1px solid var(--nx-swatch-grey-10);
   border-left-width: 8px;
@@ -95,7 +95,7 @@
 
   // "code" used below to support Markdown text in NxVulnerabilityDetails
   code, .nx-code {
-    @include monospace();
+    @include monospace;
     background-color: inherit;
     border: 0;
     color: inherit;
@@ -105,7 +105,7 @@
 }
 
 %nx-blockquote {
-  @include nx-container-helpers.container-vertical();
+  @include nx-container-helpers.container-vertical;
   background-color: var(--nx-swatch-indigo-95);
   border: var(--nx-border-default);
   border-left-width: 8px;
