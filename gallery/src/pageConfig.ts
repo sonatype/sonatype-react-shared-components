@@ -23,6 +23,7 @@ import NxThreatIndicatorPage from './components/NxThreatIndicator/NxThreatIndica
 import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
+import NxListPageV2 from './components/NxList/NxListPage';
 import NxTableStylePage from './styles/NxTable/NxTableStylePage';
 import NxTableContainerPage from './styles/NxTable/NxTableContainerPage';
 import NxAlertComponentsPage from './components/NxAlert/NxAlertPage';
@@ -114,6 +115,7 @@ import NxTransferListPage from './components/NxTransferList/NxTransferListPage';
 import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxStatefulTransferListPage';
 import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
+import AccessibilityPage from './pages/Accessibility';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -142,6 +144,7 @@ const pageConfig: PageConfig = {
     NxGlobalSidebar: NxGlobalSidebarPage,
     NxStatefulGlobalSidebar: NxStatefulGlobalSidebarPage,
     NxGlobalSidebarFooter: NxGlobalSidebarFooterPage,
+    NxList: NxListPageV2,
     NxLoadError: NxLoadErrorPage,
     NxLoadWrapper: NxLoadWrapperPage,
     NxLoadingSpinner: NxLoadingSpinnerPage,
@@ -178,6 +181,7 @@ const pageConfig: PageConfig = {
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
   'Guidelines': {
+    'Accessibility': AccessibilityPage,
     'Additional Resources': AdditionalResourcePage,
     'Contributing to the Gallery': ContributingPage,
     'font-size and line-height': FontSizePage,

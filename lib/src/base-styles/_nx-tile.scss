@@ -31,6 +31,10 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 
 // Tile headers
 
+.nx-tile-header__headings {
+  display: contents;
+}
+
 .nx-tile-header {
   align-items: center;
   display: grid;
@@ -67,6 +71,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 
   color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-heading-3);
+  margin: 0;
   max-width: var(--nx-width-text-wrapping);
 }
 

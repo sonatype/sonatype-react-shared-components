@@ -5,17 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxTable, NxTextLink, NxP, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-
-import {
-  NxTable,
-  NxTableBody,
-  NxTableCell,
-  NxTableHead,
-  NxTableRow,
-  NxTextLink
-} from '@sonatype/react-shared-components';
 
 import NxTextLinkInternalExample from './NxTextLinkInternalExample';
 import NxTextLinkExternalExample from './NxTextLinkExternalExample';
@@ -27,70 +19,70 @@ export default function NxTabsPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
+        <NxP>
           A text hyperlink with standard styles and behaviors for both internal and external links.
-        </p>
+        </NxP>
 
         <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Prop</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Default</NxTableCell>
-              <NxTableCell>Details</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>external</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Prop</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Default</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>external</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
                 Whether or not this link is to an external page outside of the current web application. If true,
                 the link text will be appended with an "external link" icon. This prop also affects the defaults of the
-                <code className="nx-code">noReferrer</code> and <code className="nx-code">newTab</code> props.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>noReferrer</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>false for internal links, true for external links</NxTableCell>
-              <NxTableCell>
-                When set to true, the <code className="nx-code">noreferrer</code> rel is added to the link which
+                <NxCode>noReferrer</NxCode> and <NxCode>newTab</NxCode> props.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>noReferrer</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>false for internal links, true for external links</NxTable.Cell>
+              <NxTable.Cell>
+                When set to true, the <NxCode>noreferrer</NxCode> rel is added to the link which
                 prevents certain properties from being passed through to the link target that can allow the target
-                to discern what site was linked from, specificall, the <code className="nx-code">Referer</code> HTTP
-                header and the <code className="nx-code">window.opener</code> JavaScript property.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>newTab</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>false</NxTableCell>
-              <NxTableCell>false for internal links, true for external links</NxTableCell>
-              <NxTableCell>
+                to discern what site was linked from, specificall, the <NxCode>Referer</NxCode> HTTP
+                header and the <NxCode>window.opener</NxCode> JavaScript property.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>newTab</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>false for internal links, true for external links</NxTable.Cell>
+              <NxTable.Cell>
                 Whether or not this link should open in a new tab/window. Note that this is accomplished via the
-                link's <code className="nx-code">target</code> attribute, and any explictly
-                set <code className="nx-code">target</code> will override this prop.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>HTML <code className="nx-code">&lt;a&gt;</code> Attributes</NxTableCell>
-              <NxTableCell>
+                link's <NxCode>target</NxCode> attribute, and any explictly
+                set <NxCode>target</NxCode> will override this prop.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>&lt;a&gt;</NxCode> Attributes</NxTable.Cell>
+              <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/a">
                   HTML a Attributes
                 </NxTextLink>
-              </NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell>N/A</NxTableCell>
-              <NxTableCell>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>N/A</NxTable.Cell>
+              <NxTable.Cell>
                 NxTextLink supports any HTML attribute that's normally supported
-                by <code className="nx-code">&lt;a&gt;</code>.
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
+                by <NxCode>&lt;a&gt;</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
         </NxTable>
       </GalleryDescriptionTile>
 
@@ -98,14 +90,14 @@ export default function NxTabsPage() {
                           id="nx-text-link-internal-example"
                           liveExample={NxTextLinkInternalExample}
                           codeExamples={NxTextLinkInternalExampleCode}>
-        A simple <code className="nx-code">NxTextLink</code> to an internal page.
+        A simple <NxCode>NxTextLink</NxCode> to an internal page.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxTextLink External Link Example"
                           id="nx-text-link-external-example"
                           liveExample={NxTextLinkExternalExample}
                           codeExamples={NxTextLinkExternalExampleCode}>
-        A simple <code className="nx-code">NxTextLink</code> to an external page. Note the icon and that it opens
+        A simple <NxCode>NxTextLink</NxCode> to an external page. Note the icon and that it opens
         in a new tab.
       </GalleryExampleTile>
     </>

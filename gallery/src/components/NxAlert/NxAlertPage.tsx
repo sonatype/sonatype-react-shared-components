@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxTable, NxCode, NxP, NxH3, NxTile } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile, GalleryTile} from '../../gallery-components/GalleryTiles';
 
@@ -23,54 +24,54 @@ const nxErrorAlertExampleCode = require('./NxErrorAlertExample?raw'),
 const NxAlertPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">Generic alert.</p>
-      <p className="nx-p">Handy for DIY alert variations</p>
-      <p className="nx-p">Accepts any prop that is valid on a div as well as the following:</p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">icon</td>
-            <td className="nx-cell">FontAwesome's Icons</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">
+      <NxP>Generic alert.</NxP>
+      <NxP>Handy for DIY alert variations</NxP>
+      <NxP>Accepts any prop that is valid on a div as well as the following:</NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>icon</NxTable.Cell>
+            <NxTable.Cell>FontAwesome's Icons</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>
               A FontAwesome icon to use in the alert message
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">iconLabel</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>iconLabel</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Brief descriptive text to apply to the icon using
-              the <code className="nx-code">aria-label</code> attribute. Optional for backwards compatibility, but
+              the <NxCode>aria-label</NxCode> attribute. Optional for backwards compatibility, but
               strongly recommended.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">onClose</td>
-            <td className="nx-cell">Function</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>onClose</NxTable.Cell>
+            <NxTable.Cell>Function</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               A handler that dismisses the alert when called. If this prop is present, a close button will be rendered
               at the right-hand side of the alert. When that button is clicked, this callback will be fired. Note that
               while this callback (and button) are optional, our UX patterns call for almost all alerts to be
-              dismissable in some way. Therefore, an <code className="nx-code">onClose</code> callback should
+              dismissable in some way. Therefore, an <NxCode>onClose</NxCode> callback should
               be provided, unless some other mechanism for closing the alert is provided within the alert children.
               A "Retry" button would be an example of such an alternative mechanism. Conversely, in the
-              case where such an alternative mechanism is present, the <code className="nx-code">onClose</code>
+              case where such an alternative mechanism is present, the <NxCode>onClose</NxCode>
               callback <em>should not</em> be provided.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Alert Example"
@@ -81,29 +82,29 @@ const NxAlertPage = () =>
     </GalleryExampleTile>
 
     <GalleryTile title="NxErrorAlert, etc.">
-      <p className="nx-p">Standard sonatype alerts.</p>
-      <p className="nx-p">They come in four variations: Error, Info, Warning, and Success.</p>
-      <p className="nx-p">
-        Accepts any prop that is valid on a div as well as the <code className="nx-code">onClose</code> prop
+      <NxP>Standard sonatype alerts.</NxP>
+      <NxP>They come in four variations: Error, Info, Warning, and Success.</NxP>
+      <NxP>
+        Accepts any prop that is valid on a div as well as the <NxCode>onClose</NxCode> prop
         described above.
-      </p>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">Accessibility Considerations</h3>
-        </header>
-        <p className="nx-p">
+      </NxP>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Accessibility Considerations</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
           Different types of alerts use
           different <a target="_blank" rel="noreferrer" href="https://www.w3.org/WAI/PF/aria/roles">ARIA roles</a>.{' '}
-          <code className="nx-code">NxErrorAlert</code> uses <code className="nx-code">alert</code>.{' '}
-          <code className="nx-code">NxSuccessAlert</code> uses <code className="nx-code">status</code>.{' '}
-          <code className="nx-code">NxInfoAlert</code> uses no special role by default, though
-          the <code className="nx-code">status</code> role may be appropriate in some use cases.{' '}
-          Finally, <code className="nx-code">NxWarningAlert</code> also has no default role, but
+          <NxCode>NxErrorAlert</NxCode> uses <NxCode>alert</NxCode>.{' '}
+          <NxCode>NxSuccessAlert</NxCode> uses <NxCode>status</NxCode>.{' '}
+          <NxCode>NxInfoAlert</NxCode> uses no special role by default, though
+          the <NxCode>status</NxCode> role may be appropriate in some use cases.{' '}
+          Finally, <NxCode>NxWarningAlert</NxCode> also has no default role, but
           when used in dynamic circumstances, should typically be given either
-          the <code className="nx-code">status</code> or <code className="nx-code">alert</code> role.
+          the <NxCode>status</NxCode> or <NxCode>alert</NxCode> role.
           The roles which are provided by default may be overridden by the caller.
-        </p>
-      </section>
+        </NxP>
+      </NxTile.Subsection>
     </GalleryTile>
 
     <GalleryExampleTile title="Success Alert Example"

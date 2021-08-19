@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxP } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -15,8 +16,8 @@ const sourceCode = require('./NxLoadingSpinnerExample?raw');
 const NxLoadingSpinnerPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">Loading Spinner with caption</p>
-      <p className="nx-p">Props: none</p>
+      <NxP>Loading Spinner with caption</NxP>
+      <NxP>Props: none</NxP>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="General Example"
                         codeExamples={sourceCode}
