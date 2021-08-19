@@ -48,10 +48,8 @@ $-nx-scrollable-default-height: 400px;
   @include nx-container-helpers.vertically-scrollable($-nx-scrollable-default-height);
 }
 
-.truncate-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.nx-truncate-ellipsis {
+  @include nx-text-helpers.truncate-ellipsis;
 }
 
 .nx-code {
