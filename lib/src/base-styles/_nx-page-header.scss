@@ -8,10 +8,10 @@
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-button-helpers';
 
-$main-header-background: var(--nx-swatch-white);
-$main-header-product-height: 52px;
-$main-header-product-title-row-height: 2fr;
-$main-header-product-version-row-height: 1fr;
+$-background: var(--nx-swatch-white);
+$-product-height: 52px;
+$-product-title-row-height: 2fr;
+$-product-version-row-height: 1fr;
 
 /*
   #Main Header
@@ -20,7 +20,7 @@ $main-header-product-version-row-height: 1fr;
 .nx-page-header {
   box-sizing: content-box;
 
-  background-color: $main-header-background;
+  background-color: $-background;
   border-bottom: 1px solid var(--nx-swatch-grey-90);
   grid-area: old-header; // see nx-page's grid template
   height: nx-header-variables.$main-header-height;

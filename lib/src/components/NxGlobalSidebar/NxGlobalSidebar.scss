@@ -8,52 +8,52 @@
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-button-helpers';
 
-$global-sidebar-width-open: 250px;
-$global-sidebar-width-closed: 72px;
-$global-sidebar-logo-height: 34px;
-$global-sidebar-left-right-spacing: var(--nx-spacing-6x);
+$-width-open: 250px;
+$-width-closed: 72px;
+$-logo-height: 34px;
+$-left-right-spacing: var(--nx-spacing-6x);
 
-$global-sidebar-text-color: var(--nx-swatch-white);
-$global-sidebar-background-color: var(--nx-swatch-blue-10);
+$-text-color: var(--nx-swatch-white);
+$-background-color: var(--nx-swatch-blue-10);
 
-$global-sidebar-active-color: var(--nx-swatch-indigo-70);
-$global-sidebar-selected-color: var(--nx-swatch-indigo-30);
-$global-sidebar-hover-color: var(--nx-swatch-indigo-50);
+$-active-color: var(--nx-swatch-indigo-70);
+$-selected-color: var(--nx-swatch-indigo-30);
+$-hover-color: var(--nx-swatch-indigo-50);
 
-$global-sidebar-focus-border: 1px solid var(--nx-color-interactive-border-focus);
+$-focus-border: 1px solid var(--nx-color-interactive-border-focus);
 
-$global-sidebar-separator-color: var(--nx-swatch-indigo-40);
+$-separator-color: var(--nx-swatch-indigo-40);
 
 .nx-global-sidebar {
   @include nx-container-helpers.container-vertical;
 
-  background-color: $global-sidebar-background-color;
+  background-color: $-background-color;
   box-sizing: border-box;
-  color: $global-sidebar-text-color;
+  color: $-text-color;
   display: flex;
   flex-direction: column;
   grid-area: global-sidebar;
   padding: var(--nx-spacing-8x) 0 var(--nx-spacing-12x) 0;
-  width: $global-sidebar-width-open;
+  width: $-width-open;
 
   .nx-text-link, .nx-tree-view__trigger, .nx-tree-view__child {
-    color: $global-sidebar-text-color;
+    color: $-text-color;
   }
 }
 
 .nx-global-sidebar__header {
   align-items: center;
   display: flex;
-  height: $global-sidebar-logo-height;
+  height: $-logo-height;
   margin-bottom: var(--nx-spacing-8x);
-  padding: 0 $global-sidebar-left-right-spacing;
+  padding: 0 $-left-right-spacing;
 }
 
 .nx-global-sidebar__toggle {
   @include nx-button-helpers.small-icon-btn;
   border-color: transparent;
   border-radius: 50%;
-  color: $global-sidebar-text-color;
+  color: $-text-color;
   flex: none;
   margin: 0;
 
@@ -62,11 +62,11 @@ $global-sidebar-separator-color: var(--nx-swatch-indigo-40);
   }
 
   &:active {
-    background-color: $global-sidebar-active-color;
+    background-color: $-active-color;
   }
 
   &:hover {
-    background-color: $global-sidebar-hover-color;
+    background-color: $-hover-color;
   }
 }
 
@@ -76,11 +76,11 @@ $global-sidebar-separator-color: var(--nx-swatch-indigo-40);
 }
 
 .nx-global-sidebar__logo {
-  height: $global-sidebar-logo-height;
+  height: $-logo-height;
 }
 
 .nx-global-sidebar__navigation {
-  border-bottom: 1px solid $global-sidebar-separator-color;
+  border-bottom: 1px solid $-separator-color;
   flex: none;
   margin: 0;
   padding-bottom: var(--nx-spacing-12x);
@@ -93,11 +93,11 @@ $global-sidebar-separator-color: var(--nx-swatch-indigo-40);
   border: 1px solid transparent;
   display: block;
   padding: var(--nx-spacing-base)
-           $global-sidebar-left-right-spacing
+           $-left-right-spacing
            var(--nx-spacing-base)
            // We need to add an extra pixel to the left to properly centre
            // the icons when the sidebar is collapsed
-           calc(#{$global-sidebar-left-right-spacing} + 1px);
+           calc(#{$-left-right-spacing} + 1px);
 
   .nx-icon {
     margin: 0;
@@ -110,16 +110,16 @@ $global-sidebar-separator-color: var(--nx-swatch-indigo-40);
   }
 
   &:hover {
-    background-color: $global-sidebar-hover-color;
+    background-color: $-hover-color;
   }
 
   &:active {
-    background-color: $global-sidebar-active-color;
+    background-color: $-active-color;
   }
 
   &.selected {
     @include nx-text-helpers.semi-bold;
-    background-color: $global-sidebar-selected-color;
+    background-color: $-selected-color;
   }
 }
 
@@ -135,7 +135,7 @@ $global-sidebar-separator-color: var(--nx-swatch-indigo-40);
 
 .nx-global-sidebar.closed {
   margin: 0;
-  width: $global-sidebar-width-closed;
+  width: $-width-closed;
 
   .nx-global-sidebar__expanded-content {
     display: none;
@@ -171,11 +171,11 @@ $global-sidebar-separator-color: var(--nx-swatch-indigo-40);
   @include nx-container-helpers.container-vertical;
 
   flex-grow: 1;
-  padding: var(--nx-spacing-4x) $global-sidebar-left-right-spacing;
+  padding: var(--nx-spacing-4x) $-left-right-spacing;
   max-height: unset;
 
   + .nx-global-sidebar__footer {
-    border-top: 1px solid $global-sidebar-separator-color;
+    border-top: 1px solid $-separator-color;
     margin-top: 0;
   }
 }
@@ -187,7 +187,7 @@ $global-sidebar-separator-color: var(--nx-swatch-indigo-40);
   display: flex;
   flex-direction: column;
   margin-top: auto;
-  padding: var(--nx-spacing-12x) $global-sidebar-left-right-spacing 0 $global-sidebar-left-right-spacing;
+  padding: var(--nx-spacing-12x) $-left-right-spacing 0 $-left-right-spacing;
   text-align: center;
 
   &:empty {

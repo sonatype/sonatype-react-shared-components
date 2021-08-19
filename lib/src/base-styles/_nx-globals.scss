@@ -7,7 +7,7 @@
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
 
-$nx-scrollable-default-height: 400px;
+$-nx-scrollable-default-height: 400px;
 
 /*
   #Basic links
@@ -45,7 +45,7 @@ $nx-scrollable-default-height: 400px;
 
 .nx-scrollable {
   @include nx-container-helpers.container-vertical;
-  @include nx-container-helpers.vertically-scrollable($nx-scrollable-default-height);
+  @include nx-container-helpers.vertically-scrollable($-nx-scrollable-default-height);
 }
 
 .truncate-ellipsis {
