@@ -10,7 +10,6 @@ import { ShallowWrapper, mount, shallow } from 'enzyme';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxForm, { Props } from '../NxForm';
 import NxButton from '../../NxButton/NxButton';
-import NxTooltip from '../../NxTooltip/NxTooltip';
 import NxLoadError from '../../NxLoadError/NxLoadError';
 import NxSubmitMask from '../../NxSubmitMask/NxSubmitMask';
 import NxLoadWrapper from '../../NxLoadWrapper/NxLoadWrapper';
@@ -145,18 +144,27 @@ describe('NxForm', function() {
         expect(submitBtn).toHaveText('Save');
       });
 
-      it('wraps the submit button in an NxTooltip with the first validation message if present', function() {
+      it('sets a title one the submit button with the first validation message if present', function() {
         const validComponent = getShallow(),
             invalidComponent = getShallow({ validationErrors: ['Broken', 'Foobarred'] }),
-            validComponentTooltip = validComponent.find('.nx-footer .nx-btn-bar').find(NxTooltip),
-            invalidComponentTooltip = invalidComponent.find('.nx-footer .nx-btn-bar').find(NxTooltip);
-
-        expect(validComponentTooltip).toContainMatchingElement(NxButton);
-        expect(invalidComponentTooltip).toContainMatchingElement(NxButton);
+            validComponentTooltip = validComponent.find('.nx-form__submit-btn'),
+            invalidComponentTooltip = invalidComponent.find('.nx-form__submit-btn');
 
         expect(validComponentTooltip).toHaveProp('title', '');
         expect(invalidComponentTooltip).toHaveProp('title', 'Broken');
       });
+
+      it('sets an aria-label on the submit button indicating why it is disabled when there are validation errors',
+          function() {
+            const validComponent = getShallow(),
+                invalidComponent = getShallow({ validationErrors: ['Broken', 'Foobarred'] }),
+                validComponentTooltip = validComponent.find('.nx-form__submit-btn'),
+                invalidComponentTooltip = invalidComponent.find('.nx-form__submit-btn');
+
+            expect(validComponentTooltip).toHaveProp('aria-label', undefined);
+            expect(invalidComponentTooltip).toHaveProp('aria-label', 'Submit disabled: Broken');
+          }
+      );
 
       it('does not render the submit button is there is a submitError', function() {
         const submitBtn = getShallow({ submitError: 'bad' })
