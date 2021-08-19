@@ -7,7 +7,6 @@
 import React, { FunctionComponent, useContext } from 'react';
 import classnames from 'classnames';
 import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
-import { textContent } from '../../util/childUtil';
 
 import { NxModalContext } from '../NxModal/NxModal';
 import { Props, propTypes, TooltipPlacement } from './types';
@@ -47,7 +46,6 @@ function fixOptional(props: Omit<Props, 'title'>): Omit<TooltipProps, 'title'> {
 const NxTooltip: FunctionComponent<Props> =
     function NxTooltip({ className, title, ...otherProps }) {
       const tooltipClassName = classnames('nx-tooltip', className);
-      const ariaLabel = textContent(title);
       const parentModal = useContext(NxModalContext);
 
       // For some reason buttons with string tooltips get removed and re-added in the DOM as the tooltip appears
@@ -56,8 +54,7 @@ const NxTooltip: FunctionComponent<Props> =
       // sure that it always is
       const tooltipTitle = (typeof title === 'string' && title.length) ? <>{title}</> : (title || '');
 
-      return <Tooltip aria-label={ariaLabel}
-                      { ...fixOptional(otherProps) }
+      return <Tooltip { ...fixOptional(otherProps) }
                       title={tooltipTitle}
                       classes={{ tooltip: tooltipClassName }}
                       PopperProps={{ container: parentModal }} />;

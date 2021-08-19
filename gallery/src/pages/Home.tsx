@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxH3, NxH4, NxCode } from '@sonatype/react-shared-components';
+import { NxP, NxH3, NxH4, NxCode, NxTile, NxTextLink } from '@sonatype/react-shared-components';
 
 import {GalleryTile} from '../gallery-components/GalleryTiles';
 
@@ -19,10 +19,10 @@ const Home = () =>
       component, live examples are provided along with displays of the code snippets used for generate those live
       examples.
     </NxP>
-    <section className="nx-tile-subsection">
-      <header className="nx-tile-subsection__header">
+    <NxTile.Subsection>
+      <NxTile.SubsectionHeader>
         <NxH3>Navigating the Gallery</NxH3>
-      </header>
+      </NxTile.SubsectionHeader>
       <NxP>
         The sidebar at left can be used to navigate to the various examples, which are organized into groups
         as follows:
@@ -53,24 +53,24 @@ const Home = () =>
       </NxP>
       <NxH4>JavaScript &amp; TypeScript Utilities</NxH4>
       <NxP>Utility function and datatypes available to users of RSC.</NxP>
-    </section>
-    <section className="nx-tile-subsection">
-      <header className="nx-tile-subsection__header">
+    </NxTile.Subsection>
+    <NxTile.Subsection>
+      <NxTile.SubsectionHeader>
         <NxH3>Consuming the React Shared Components</NxH3>
-      </header>
+      </NxTile.SubsectionHeader>
       <NxP>
         The RSC library is available as an open-source npm module on{' '}
-        <a rel="noreferrer" target="_blank" href="https://www.npmjs.com/package/@sonatype/react-shared-components">
+        <NxTextLink external href="https://www.npmjs.com/package/@sonatype/react-shared-components">
           npmjs.com
-        </a>
+        </NxTextLink>
         {' '} under the name <NxCode>@sonatype/react-shared-components</NxCode>. It is packaged as
         ECMAScript modules, and is intended to be consumed by project using webpack or a similar module bundler.
       </NxP>
-    </section>
-    <section className="nx-tile-subsection">
-      <header className="nx-tile-subsection__header">
+    </NxTile.Subsection>
+    <NxTile.Subsection>
+      <NxTile.SubsectionHeader>
         <NxH3>Component Architecture Philosophy</NxH3>
-      </header>
+      </NxTile.SubsectionHeader>
       <NxP>
         Most if not all components in RSC come in stateless forms by default. That is, they rely on the consuming
         code to manage their state. This approach was taken in order to be as flexible as possible in regards to the
@@ -82,7 +82,7 @@ const Home = () =>
         stateless <NxCode>NxTextInput</NxCode> that keeps track of basic state such as text box
         contents. A non-redux application would likely use this wrapper, which a redux application would not.
       </NxP>
-    </section>
+    </NxTile.Subsection>
   </GalleryTile>;
 
 export default Home;

@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+
 import { NxPageMain, NxPageHeader, NxTile, NxH2 } from '@sonatype/react-shared-components';
 
 export default function NxSystemNoticeGlobalSidebarExample() {

@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxTable, NxCode, NxP } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -18,152 +19,152 @@ const nxStatefulTreeViewRadioSelectExampleCode = require('./NxStatefulTreeViewRa
 const NxStatefulTreeViewRadioSelectPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         Stateful Radio select component using tree view with radios. It handles tree view toggling and filter state.
-      </p>
+      </NxP>
 
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">options</td>
-            <td className="nx-cell">Array of {'{id:String, name:String}'}</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">
-              <p className="nx-p">
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>options</NxTable.Cell>
+            <NxTable.Cell>Array of {'{id:String, name:String}'}</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>
+              <NxP>
                 An array of objects that corresponds to the possible options of the component (the radios).
-                These objects need to at least have an <code className="nx-code">id: string | null</code> property{' '}
-                and a <code className="nx-code">name: string</code> property. If an empty array is passed in,{' '}
+                These objects need to at least have an <NxCode>id: string | null</NxCode> property{' '}
+                and a <NxCode>name: string</NxCode> property. If an empty array is passed in,{' '}
                 the component will be disabled.
-              </p>
-              <p className="nx-p">
-                <code className="nx-code">id</code> will be the value provided to the{' '}
-                <code className="nx-code">onChange</code> callback, and{' '}
-                <code className="nx-code">name</code> will be used to render the option.
-              </p>
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">name</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">
+              </NxP>
+              <NxP>
+                <NxCode>id</NxCode> will be the value provided to the{' '}
+                <NxCode>onChange</NxCode> callback, and{' '}
+                <NxCode>name</NxCode> will be used to render the option.
+              </NxP>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>name</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>
               Name used in the default disabled tooltip and in the generated checkbox id.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">children</td>
-            <td className="nx-cell">VDOM</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>children</NxTable.Cell>
+            <NxTable.Cell>VDOM</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>
               The content to be used as the tree view trigger.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>onChange</NxTable.Cell>
+            <NxTable.Cell>Function</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>
               Called whenever selection change occurs; it will receive one argument:
               <ul className="nx-list nx-list--bulleted">
                 <li className="nx-list__item">
-                  <code className="nx-code">id</code> of the toggled option
+                  <NxCode>id</NxCode> of the toggled option
                 </li>
               </ul>
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">selectedId</td>
-            <td className="nx-cell">string | null</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
-              The <code className="nx-code" >id</code> of the option to be selected.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">isOpen</td>
-            <td className="nx-cell">boolean</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>selectedId</NxTable.Cell>
+            <NxTable.Cell>string | null</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              The <NxCode >id</NxCode> of the option to be selected.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>isOpen</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Whether the tree view is open or closed initially. Default is false.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">id</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>id</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Id to assign to the component
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">disabled</td>
-            <td className="nx-cell">boolean</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>disabled</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Controls whether the tree view should be rendered as disabled or not. Default is false.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">disabledTooltip</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>disabledTooltip</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Enables the tooltip that appears when the component is disabled.
-              If no <code className="nx-code">disabledTooltip</code> is passed in and the component is disabled due
-              to lack of <code className="nx-code">options</code>, a default tooltip will be provided. If the
-              component is disabled explicitly and no <code className="nx-code">disabledTooltip</code> is provided,
+              If no <NxCode>disabledTooltip</NxCode> is passed in and the component is disabled due
+              to lack of <NxCode>options</NxCode>, a default tooltip will be provided. If the
+              component is disabled explicitly and no <NxCode>disabledTooltip</NxCode> is provided,
               no tooltip will be shown.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">optionTooltipGenerator</td>
-            <td className="nx-cell">Function</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>optionTooltipGenerator</NxTable.Cell>
+            <NxTable.Cell>Function</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Callback to generate tooltip text for each option. Called with the option object. If not supplied, the
               default overflow tooltip behavior of the checkboxes will be active.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">tooltipModifierClass</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>tooltipModifierClass</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Custom class to be applied to all the tooltips rendered by this component.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">filterPlaceholder</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>filterPlaceholder</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Placeholder to be used in filter text input.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">filterThreshold</td>
-            <td className="nx-cell">Number</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>filterThreshold</NxTable.Cell>
+            <NxTable.Cell>Number</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               If number of options is greater than filter-threshold - allows filtering the options. Default is 10.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
                         codeExamples={nxStatefulTreeViewRadioSelectExampleCode}
                         liveExample={NxStatefulTreeViewRadioSelectExample}>
-      This example demonstrates basic usage of <code className="nx-code">NxStatefulTreeViewRadioSelect</code>. Note that
+      This example demonstrates basic usage of <NxCode>NxStatefulTreeViewRadioSelect</NxCode>. Note that
       the component tracks the collapse/expand state and filter text internally, and the calling
       code only needs to track which items are selected.
     </GalleryExampleTile>
@@ -171,7 +172,7 @@ const NxStatefulTreeViewRadioSelectPage = () =>
     <GalleryExampleTile title="Disabled Example With Tooltip"
                         liveExample={NxStatefulTreeViewRadioSelectDisabledExample}
                         codeExamples={nxStatefulTreeViewRadioSelectDisabledExampleCode}>
-      This example shows a disabled <code className="nx-code">NxStatefulTreeViewRadioSelect</code> with a tooltip.
+      This example shows a disabled <NxCode>NxStatefulTreeViewRadioSelect</NxCode> with a tooltip.
     </GalleryExampleTile>
   </>;
 

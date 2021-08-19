@@ -5,9 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { NxTextLink } from '@sonatype/react-shared-components';
 
 import NxRadioExample from './NxRadioExample';
 import NxRadioNowrapExample from './NxRadioNowrapExample';
@@ -20,100 +20,99 @@ const disabledExampleCode = require('./NxRadioDisabledExample?raw');
 const NxRadioPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">Custom Radio input.</p>
-      <p className="nx-p">Child VDOM will be used as a label following the radio button itself.</p>
-      <p className="nx-p">
+      <NxP>Custom Radio input.</NxP>
+      <NxP>Child VDOM will be used as a label following the radio button itself.</NxP>
+      <NxP>
         NxRadio can receive any attribute that would be valid on an
-        HTML <code className="nx-code">&lt;label&gt;</code> as well as the following props:
-      </p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row">
-            <th className="nx-cell nx-cell--header">Prop</th>
-            <th className="nx-cell nx-cell--header">Type</th>
-            <th className="nx-cell nx-cell--header">Required</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell">name</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">The name of the radio group</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">value</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">The value attribute for radio input</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">isChecked</td>
-            <td className="nx-cell">boolean</td>
-            <td className="nx-cell">Yes</td>
-            <td className="nx-cell">Whether the radio button should be rendered as on or off</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">onChange</td>
-            <td className="nx-cell">Function ((currentValue: string) =&gt; void)</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">A callback for when the radio is selected. The value is passed as an argument.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">disabled</td>
-            <td className="nx-cell">boolean</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+        HTML <NxCode>&lt;label&gt;</NxCode> as well as the following props:
+      </NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Prop</NxTable.Cell>
+            <NxTable.Cell>Type</NxTable.Cell>
+            <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>name</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>The name of the radio group</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>value</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>The value attribute for radio input</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>isChecked</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>Whether the radio button should be rendered as on or off</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>onChange</NxTable.Cell>
+            <NxTable.Cell>Function ((currentValue: string) =&gt; void)</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>A callback for when the radio is selected. The value is passed as an argument.</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>disabled</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Whether the radio should be rendered as disabled or not.  When disabled, the onChange callback will
               not fire.  Defaults to false
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">children</td>
-            <td className="nx-cell">Virtual DOM</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>children</NxTable.Cell>
+            <NxTable.Cell>Virtual DOM</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Additional VDOM that will be rendered as label. Should be
               {' '}
-              <a href="https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content"
-                 className="nx-text-link">
+              <NxTextLink href="https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content">
                 phrasing content
-              </a>
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">radioId</td>
-            <td className="nx-cell">string</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">An id attribute to be added to the radio input</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">overflowTooltip</td>
-            <td className="nx-cell">boolean</td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+              </NxTextLink>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>radioId</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>An id attribute to be added to the radio input</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>overflowTooltip</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               Whether the radio label content should be wrapped in
-              an <code className="nx-code">NxOverflowTooltip</code>. Defaults to true. Set this to false when
-              the <code className="nx-code">NxRadio</code> is being wrapped in a tooltip externally, to prevent
+              an <NxCode>NxOverflowTooltip</NxCode>. Defaults to true. Set this to false when
+              the <NxCode>NxRadio</NxCode> is being wrapped in a tooltip externally, to prevent
               multiple overlapping tooltips from appearing.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">HTML <code className="nx-code">&lt;label&gt;</code> Attributes</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>HTML <NxCode>&lt;label&gt;</NxCode> Attributes</NxTable.Cell>
+            <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/label">
                 HTML Label Attributes
               </NxTextLink>
-            </td>
-            <td className="nx-cell">No</td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
               NxRadio supports any html attribute that's normally supported by
-              {' '}<code className="nx-code">&lt;label&gt;</code> elements.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              {' '}<NxCode>&lt;label&gt;</NxCode> elements.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
