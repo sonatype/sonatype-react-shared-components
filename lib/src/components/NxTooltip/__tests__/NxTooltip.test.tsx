@@ -24,7 +24,6 @@ describe('NxTooltip', function() {
 
     expect(component).toMatchSelector(Tooltip);
     expect(component).toHaveProp('children', minimalProps.children);
-    expect(component).toHaveProp('aria-label', minimalProps.title);
     expect(component).toHaveProp('open', false);
     expect(component).toHaveProp('onOpen', onOpen);
     expect(component).toHaveProp('onClose', onClose);
@@ -44,7 +43,6 @@ describe('NxTooltip', function() {
     expect(component).toHaveProp('onOpen', undefined);
     expect(component).toHaveProp('onClose', undefined);
     expect(component).toHaveProp('title', '');
-    expect(component).toHaveProp('aria-label', '');
   });
 
   it('wraps the title in a JSX fragment if it is a non-empty string', function() {

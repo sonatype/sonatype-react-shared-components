@@ -7,21 +7,9 @@
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
 
-%nx-btn--disabled {
-  &.disabled, &[disabled] {
-    &, &:hover, &:focus {
-      background-color: var(--nx-color-interactive-background-disabled);
-      border-color: var(--nx-color-interactive-border-disabled);
-      color: var(--nx-color-text-disabled);
-      cursor: default;
-    }
-  }
-}
-
 .nx-btn {
   @include nx-text-helpers.semi-bold();
   @include nx-container-helpers.container-horizontal;
-  @extend %nx-btn--disabled;
 
   background-color: var(--nx-swatch-white);
   border: 1px solid var(--nx-swatch-blue-40);
@@ -57,8 +45,6 @@
 }
 
 .nx-btn--primary {
-  @extend %nx-btn--disabled;
-
   background-color: var(--nx-swatch-blue-40);
   border-color: transparent;
   color: var(--nx-swatch-white);
@@ -73,8 +59,6 @@
 }
 
 .nx-btn--tertiary {
-  @extend %nx-btn--disabled;
-
   background-color: transparent;
   border-color: var(--nx-swatch-indigo-90);
   color: var(--nx-color-text-dark);
@@ -95,8 +79,6 @@
 }
 
 .nx-btn--error {
-  @extend %nx-btn--disabled;
-
   background-color: var(--nx-swatch-red-45);
   border-color: var(--nx-swatch-red-45);
   color: var(--nx-swatch-white);
@@ -120,6 +102,17 @@
   .nx-icon {
     color: var(--nx-swatch-white);
     height: 16px;
+  }
+}
+
+.nx-btn {
+  &.disabled, &[disabled] {
+    &, &:hover, &:focus {
+      background-color: var(--nx-color-interactive-background-disabled);
+      border-color: var(--nx-color-interactive-border-disabled);
+      color: var(--nx-color-text-disabled);
+      cursor: default;
+    }
   }
 }
 

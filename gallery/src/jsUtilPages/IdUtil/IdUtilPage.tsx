@@ -5,6 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxP, NxCode } from '@sonatype/react-shared-components';
+
 import { GalleryExampleTile, GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
 import UseUniqueIdUniqueExample from './UseUniqueIdUniqueExample';
@@ -17,12 +19,12 @@ const getUniqueIdExampleCode = require('./GetUniqueIdExample?raw'),
 const IdUtilPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         The ID Utils consist of two utility functions for managing unique, auto-generated strings for use
         as HTML IDs. This functionality is provided as both a simple
-        function: <code className="nx-code">getUniqueId</code>, and as a React
-        hook: <code className="nx-code">useUniqueId</code>.
-      </p>
+        function: <NxCode>getUniqueId</NxCode>, and as a React
+        hook: <NxCode>useUniqueId</NxCode>.
+      </NxP>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="getUniqueId" codeExamples={getUniqueIdExampleCode}>
@@ -40,16 +42,16 @@ const IdUtilPage = () =>
     <GalleryExampleTile title="useUniqueId Non-Unique Override Example"
                         liveExample={UseUniqueIdExplicitExample}
                         codeExamples={useUniqueIdExplicitExampleCode}>
-      This example demonstrates how <code className="nx-code">useUniqueId</code> can be used in situations where an
+      This example demonstrates how <NxCode>useUniqueId</NxCode> can be used in situations where an
       explicit ID <em>may</em> be provided by an external source instead. This example features two components: a
       child which can optionally receive an ID as a prop, but which
-      uses <code className="nx-code">useUniqueId</code> to generate a unique ID in the event that it has not
+      uses <NxCode>useUniqueId</NxCode> to generate a unique ID in the event that it has not
       received an ID, and a parent component which renders two instances of the child, one with an
       explicit id passed and one without. Note that React hooks should never be called within a conditional
-      statement. For this reason, <code className="nx-code">useUniqueId</code> has special support for handling an
+      statement. For this reason, <NxCode>useUniqueId</NxCode> has special support for handling an
       explicit ID as its second parameter, allowing any component
-      which <em>might</em> need <code className="nx-code">useUniqueId</code> to <em>always</em>{' '}
-      call <code className="nx-code">useUniqueId</code>.
+      which <em>might</em> need <NxCode>useUniqueId</NxCode> to <em>always</em>{' '}
+      call <NxCode>useUniqueId</NxCode>.
     </GalleryExampleTile>
   </>;
 

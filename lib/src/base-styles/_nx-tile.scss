@@ -19,28 +19,24 @@ $-tile-header-height-actions: 43px; // Height with sub-title and/or right action
 .nx-tile {
   @include nx-container-helpers.container-vertical;
 
-  // the "padding" around the inside edge of the nx-tile, which must be implemented using padding/margin
-  // on children since nx-tile-content--accordion-container is supposed to go all the way to the edges
-  --nx-tile-padding: var(--nx-spacing-6x);
+  // the "padding" around the inside edge of the nx-tile
+  --nx-tile-spacing: var(--nx-spacing-6x);
 
   background-color: var(--nx-color-component-background);
   border-radius: var(--nx-border-radius);
   margin: var(--nx-spacing-2x) 0 var(--nx-spacing-4x) 0;
-  padding: var(--nx-tile-padding) 0;
+  padding: var(--nx-tile-spacing);
 
   > .nx-footer, > .nx-form > .nx-footer {
-    // use margin for sides so the top border ends in the right places
-    margin: var(--nx-spacing-8x) var(--nx-tile-padding) 0 var(--nx-tile-padding);
-  }
-
-  // When a tile contains an NxForm that is in an error state, an nx-alert gets rendered as the tile's immediate child
-  > .nx-alert {
-    margin-left: var(--nx-tile-padding);
-    margin-right: var(--nx-tile-padding);
+    margin-top: var(--nx-spacing-8x);
   }
 }
 
 // Tile headers
+
+.nx-tile-header__headings {
+  display: contents;
+}
 
 .nx-tile-header {
   align-items: center;
@@ -48,7 +44,6 @@ $-tile-header-height-actions: 43px; // Height with sub-title and/or right action
   row-gap: var(--nx-spacing-2x);
   grid-template-columns: auto 1fr auto;
   min-height: $-tile-header-height;
-  padding: 0 var(--nx-tile-padding) 0 var(--nx-tile-padding);
 
   + .nx-tile-content {
     padding-top: var(--nx-spacing-4x);
@@ -79,6 +74,7 @@ $-tile-header-height-actions: 43px; // Height with sub-title and/or right action
 
   color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-heading-3);
+  margin: 0;
   max-width: var(--nx-width-text-wrapping);
 }
 
@@ -109,18 +105,16 @@ $-tile-header-height-actions: 43px; // Height with sub-title and/or right action
 
 .nx-tile-content {
   @include nx-container-helpers.container-vertical;
-
-  padding: 0 var(--nx-tile-padding) 0 var(--nx-tile-padding);
 }
 
 .nx-tile-content--accordion-container {
   background-color: var(--nx-swatch-indigo-95);
-  margin-top: var(--nx-spacing-4x);
+  margin: var(--nx-spacing-4x) calc(0px - var(--nx-tile-spacing)) 0 calc(0px - var(--nx-tile-spacing));
   padding: var(--nx-spacing-4x);
 
   &:last-child {
     padding-bottom: var(--nx-spacing-4x);
-    margin-bottom: calc(0px - var(--nx-tile-padding));
+    margin-bottom: calc(0px - var(--nx-tile-spacing));
   }
 }
 

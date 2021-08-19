@@ -5,8 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxInfoAlert, NxCode, NxTextLink }
-  from '@sonatype/react-shared-components';
+import { NxTable, NxInfoAlert, NxCode, NxTextLink, NxP, NxH3, NxTile } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -21,142 +20,140 @@ const NxAccordionSimpleCode = require('./NxAccordionExample?raw'),
 const NxAccordionPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         NxAccordion renders a panel with an always-visible header and a collapsible/expandable body section.
-        This is analogous to the HTML 5 <code className="nx-code">&lt;details&gt;</code> element (which is is
-        implemented on top of). There are two related components: <code className="nx-code">NxAccordion</code> itself,
-        and <code className="nx-code">NxAccordion.Header</code> which represents the header content. All other
-        children of <code className="nx-code">NxAccordion</code> aside from
-        the <code className="nx-code">Header</code> are rendered in the collapsible section.
+        This is analogous to the HTML 5 <NxCode>&lt;details&gt;</NxCode> element (which is is
+        implemented on top of). There are two related components: <NxCode>NxAccordion</NxCode> itself,
+        and <NxCode>NxAccordion.Header</NxCode> which represents the header content. All other
+        children of <NxCode>NxAccordion</NxCode> aside from
+        the <NxCode>Header</NxCode> are rendered in the collapsible section.
 
         Note that this component is stateless – its open state must be tracked externally.
-        See <code className="nx-code">NxStatefulAccordion</code> for a version which tracks its own open state.
-      </p>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">NxAccordion</h3>
-        </header>
+        See <NxCode>NxStatefulAccordion</NxCode> for a version which tracks its own open state.
+      </NxP>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxAccordion</NxH3>
+        </NxTile.SubsectionHeader>
         <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Name</NxTableCell>
-              <NxTableCell>Type</NxTableCell>
-              <NxTableCell>Required</NxTableCell>
-              <NxTableCell>Description</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell>onToggle</NxTableCell>
-              <NxTableCell>(() =&gt; void)</NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Name</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Description</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>onToggle</NxTable.Cell>
+              <NxTable.Cell>(() =&gt; void)</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
                 A function which gets called when the accordion collapse/expand state is toggled.
 
                 <NxInfoAlert>
                   Deprecated behavior: the onToggle callback does actually get passed a value; it gets the
                   presumed new value of the open state. However with the introduction of
-                  the <a className="nx-text-link" href="#/pages/useToggle">useToggle</a> hook, that is of minimal
+                  the <NxTextLink href="#/pages/useToggle">useToggle</NxTextLink> hook, that is of minimal
                   value, so for the sake of API consistency the intent going forward is to treat this as a
                   parameterless callback.
                 </NxInfoAlert>
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>open</NxTableCell>
-              <NxTableCell>boolean</NxTableCell>
-              <NxTableCell>Yes</NxTableCell>
-              <NxTableCell>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>open</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>
                 Whether or not the accordion should be rendered "open" with its full content visible, as
                 opposed to collapsed.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell>HTML <NxCode>&lt;details&gt;</NxCode> Attributes</NxTableCell>
-              <NxTableCell>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>&lt;details&gt;</NxCode> Attributes</NxTable.Cell>
+              <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/details">
                   HTML details Attributes
                 </NxTextLink>
-              </NxTableCell>
-              <NxTableCell>No</NxTableCell>
-              <NxTableCell>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
                 NxAccordion supports any html attribute that's normally supported by the
                 {' '}<NxCode>&lt;details&gt;</NxCode> element
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
         </NxTable>
-      </section>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">NxAccordion.Header</h3>
-        </header>
-        <p className="nx-p">
-          <code className="nx-code">NxAccordion.Header</code> can receive standard
-          HTML <code className="nx-code">&lt;summary&gt;</code> attributes.
-        </p>
-      </section>
-      <section className="nx-tile-subsection">
-        <header className="nx-tile-subsection__header">
-          <h3 className="nx-h3">Helper Classes</h3>
-        </header>
-        <p className="nx-p">The following CSS classes are available for use on child elements.</p>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxAccordion.Header</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          <NxCode>NxAccordion.Header</NxCode> can receive standard
+          HTML <NxCode>&lt;summary&gt;</NxCode> attributes.
+        </NxP>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Helper Classes</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>The following CSS classes are available for use on child elements.</NxP>
         <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Name</NxTableCell>
-              <NxTableCell>Location</NxTableCell>
-              <NxTableCell>Description</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody>
-            <NxTableRow>
-              <NxTableCell><code className="nx-code">nx-accordion__header-title</code></NxTableCell>
-              <NxTableCell>First child of <code className="nx-code">NxAccordion.Header</code></NxTableCell>
-              <NxTableCell>
-                It is expected that the first child of <code className="nx-code">NxAccordion.Header</code> will
-                always be an <code className="nx-code">&lt;h2&gt;</code> with
-                the <code className="nx-code">.nx-accordion__header-title</code> class containing
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Name</NxTable.Cell>
+              <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Description</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-accordion__header-title</NxCode></NxTable.Cell>
+              <NxTable.Cell>First child of <NxCode>NxAccordion.Header</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                It is expected that the first child of <NxCode>NxAccordion.Header</NxCode> will
+                always be an <NxCode>&lt;h2&gt;</NxCode> with
+                the <NxCode>.nx-accordion__header-title</NxCode> class containing
                 the text content of the always-visible section of the accordion. Note
-                that <code className="nx-code">NxAccordion</code> is a{' '}
-                <a rel="noreferrer"
-                   className="nx-text-link"
-                   href="https://html.spec.whatwg.org/multipage/sections.html#sectioning-root">
+                that <NxCode>NxAccordion</NxCode> is a{' '}
+                <NxTextLink external href="https://html.spec.whatwg.org/multipage/sections.html#sectioning-root">
                   sectioning root
-                </a>
+                </NxTextLink>
                 , so it does not matter whether this header is a lower-rank heading than that of its surrounding
                 section.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell><code className="nx-code">nx-btn-bar</code></NxTableCell>
-              <NxTableCell>Last child of <code className="nx-code">NxAccordion.Header</code></NxTableCell>
-              <NxTableCell>
-                <code className="nx-code">NxAccordion.Header</code> supports the inclusion of buttons on
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-btn-bar</NxCode></NxTable.Cell>
+              <NxTable.Cell>Last child of <NxCode>NxAccordion.Header</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxAccordion.Header</NxCode> supports the inclusion of buttons on
                 its right-hand side. This is accomplished by adding
-                an <code className="nx-code">.nx-btn-bar</code> after
-                the <code className="nx-code">.nx-accordion__header-title</code>.
-              </NxTableCell>
-            </NxTableRow>
-            <NxTableRow>
-              <NxTableCell><code className="nx-code">nx-h3</code></NxTableCell>
-              <NxTableCell>Subheader within accordion body</NxTableCell>
-              <NxTableCell>
+                an <NxCode>.nx-btn-bar</NxCode> after
+                the <NxCode>.nx-accordion__header-title</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-h3</NxCode></NxTable.Cell>
+              <NxTable.Cell>Subheader within accordion body</NxTable.Cell>
+              <NxTable.Cell>
                 The contents of the accordion body may include subheaders which should
-                be <code className="nx-code">&lt;h3&gt;</code> elements with
-                the <code className="nx-code">.nx-h3</code> class.
-              </NxTableCell>
-            </NxTableRow>
-          </NxTableBody>
+                be <NxCode>&lt;h3&gt;</NxCode> elements with
+                the <NxCode>.nx-h3</NxCode> class.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
         </NxTable>
-      </section>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
                         defaultCheckeredBackground={true}
                         liveExample={NxAccordionSimpleExample}
                         codeExamples={NxAccordionSimpleCode}>
-      A simple example of an <code className="nx-code">NxAccordion</code>.
+      A simple example of an <NxCode>NxAccordion</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with optional elements"
@@ -164,7 +161,7 @@ const NxAccordionPage = () =>
                         defaultCheckeredBackground={true}
                         liveExample={NxAccordionComplexExample}
                         codeExamples={NxAccordionComplexCode}>
-      A more complex <code className="nx-code">NxAccordion</code> including header buttons and a subheader.
+      A more complex <NxCode>NxAccordion</NxCode> including header buttons and a subheader.
       This example also demonstrates that clicks on the header and buttons are handled correctly. Clicking a header
       button does not cause the accordion to toggle, but clicking anywhere else on the header does, even including
       places that have their own click handlers (e.g. the accordion title in this example). This example also
@@ -178,7 +175,7 @@ const NxAccordionPage = () =>
                         defaultCheckeredBackground={true}
                         liveExample={NxAccordionTertiaryButtonExample}
                         codeExamples={NxAccordionTertiaryButtonCode}>
-      An <code className="nx-code">NxAccordion</code> which contains a tertiary button in the header. Note that the
+      An <NxCode>NxAccordion</NxCode> which contains a tertiary button in the header. Note that the
       height of this button causes the height of the entire header to grow slightly.
     </GalleryExampleTile>
   </>;
