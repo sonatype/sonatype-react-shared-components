@@ -23,6 +23,6 @@
   padding: var(--nx-spacing-base) 0;
   position: absolute;
   top: 100%;
-  width: $nx-dropdown-width;
+  width: nx-dropdown-variables.$dropdown-width;
   z-index: 1;
 }

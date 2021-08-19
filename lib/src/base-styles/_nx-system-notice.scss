@@ -12,7 +12,7 @@
 }
 
 .nx-system-notice {
-  @include nx-text-helpers.nx-truncate-ellipsis;
+  @include nx-text-helpers.truncate-ellipsis;
   @include nx-container-helpers.container-horizontal;
 
   background-color: var(--nx-swatch-indigo-90);

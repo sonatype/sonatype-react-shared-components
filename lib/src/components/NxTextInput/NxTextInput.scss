@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@use '../../scss-shared/_nx-form-validation.scss';
+@use '../../scss-shared/nx-form-validation-helpers';
 
 .nx-text-input {
   margin-bottom: var(--nx-spacing-8x);
@@ -22,15 +22,15 @@
   }
 
   &.invalid {
-    @include invalid;
+    @include nx-form-validation-helpers.invalid;
   }
 
   &.pristine, &.pristine.valid {
-    @include pristine;
+    @include nx-form-validation-helpers.pristine;
   }
 
   &.valid {
-    @include valid;
+    @include nx-form-validation-helpers.valid;
   }
 }
 

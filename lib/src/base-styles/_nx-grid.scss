@@ -6,6 +6,7 @@
  */
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-flexbox-helpers';
+@use '../scss-shared/nx-text-helpers';
 
 .nx-grid-row {
   display: flex;
@@ -36,7 +37,7 @@
 
 @each $percent in (25, 50, 75, 33, 67) {
   .nx-grid-col--#{$percent} {
-    @include nx-flexbox-helpers.nx-grid-col-width(#{$percent + '%'});
+    @include nx-flexbox-helpers.grid-col-width(#{$percent + '%'});
   }
 }
 
@@ -54,7 +55,7 @@
 }
 
 .nx-grid-header__title {
-  @extend .nx-truncate-ellipsis;
+  @include nx-text-helpers.truncate-ellipsis;
   @include nx-container-helpers.container-horizontal;
 }
 

@@ -4,8 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-container-helpers';
-@import '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-text-helpers';
 
 // the padding on the sides of each transfer list control box
 $nx-transfer-list-control-box-side-spacing: var(--nx-spacing-6x);
@@ -55,7 +55,7 @@ $nx-transfer-list-visible-item-count: 10;
 }
 
 .nx-transfer-list__move-all {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   align-self: start;
   background: initial;
@@ -82,7 +82,7 @@ $nx-transfer-list-visible-item-count: 10;
 .nx-transfer-list__item-list {
   $item-height: '(1em * var(--nx-line-height) + 2 * #{$nx-transfer-list-item-vertical-padding})';
 
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   background-color: var(--nx-swatch-indigo-97);
   border-top: var(--nx-border-default);
@@ -103,8 +103,8 @@ $nx-transfer-list-visible-item-count: 10;
 }
 
 .nx-transfer-list__item {
-  @include container-horizontal;
-  @include nx-truncate-ellipsis;
+  @include nx-container-helpers.container-horizontal;
+  @include nx-text-helpers.truncate-ellipsis;
 
   background-color: var(--nx-swatch-white);
   border: var(--nx-border-default);

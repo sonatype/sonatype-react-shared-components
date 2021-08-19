@@ -57,7 +57,7 @@ $twisty-proportion-difference: 2.75px;
 }
 
 .nx-tree-view__trigger {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
   align-items: center;
   background: none;
   border: 1px solid transparent;
@@ -95,20 +95,20 @@ $twisty-proportion-difference: 2.75px;
 }
 
 .nx-tree-view__text {
-  @include container-horizontal;
-  @include nx-truncate-ellipsis;
+  @include nx-container-helpers.container-horizontal;
+  @include nx-text-helpers.truncate-ellipsis;
 
   align-items: center;
   display: flex;
   flex-grow: 1;
 
   span {
-    @include nx-truncate-ellipsis;
+    @include nx-text-helpers.truncate-ellipsis;
     flex-grow: 1;
   }
 
   > .nx-counter {
-    @include nx-truncate-ellipsis;
+    @include nx-text-helpers.truncate-ellipsis;
     box-sizing: border-box;
     flex-shrink: 0;
     max-width: 110px;

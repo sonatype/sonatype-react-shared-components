@@ -34,6 +34,6 @@
   padding-left: var(--nx-spacing-8x);
 
   .nx-btn--icon-only {
-    @include nx-button-helpers.nx-small-icon-btn;
+    @include nx-button-helpers.small-icon-btn;
   }
 }

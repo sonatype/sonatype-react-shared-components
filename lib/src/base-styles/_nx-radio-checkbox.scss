@@ -88,7 +88,7 @@ svg.nx-radio-checkbox__control {
 
 .nx-radio-checkbox__content {
   @include nx-container-helpers.container-horizontal;
-  @include nx-text-helpers.nx-truncate-ellipsis;
+  @include nx-text-helpers.truncate-ellipsis;
 }
 
 .nx-radio-checkbox--disabled {

@@ -12,7 +12,7 @@
 .nx-dropdown {
   display: inline-block;
   position: relative;
-  width: $nx-dropdown-width;
+  width: nx-dropdown-variables.$dropdown-width;
 }
 
 .nx-dropdown__toggle {
@@ -23,7 +23,7 @@
   text-align: left;
   padding-right: var(--nx-spacing-4x);
   padding-left: var(--nx-spacing-4x);
-  width: $nx-dropdown-width;
+  width: nx-dropdown-variables.$dropdown-width;
 
   .nx-dropdown__toggle-label {
     @include nx-container-helpers.container-horizontal;
@@ -53,7 +53,7 @@
 }
 
 .nx-dropdown-link, .nx-dropdown-button {
-  @include nx-text-helpers.nx-truncate-ellipsis;
+  @include nx-text-helpers.truncate-ellipsis;
   @include nx-text-helpers.regular;
 
   border: none;

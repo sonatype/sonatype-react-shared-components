@@ -87,7 +87,7 @@ $main-header-product-version-row-height: 1fr;
   margin-left: auto;
 
   .nx-btn--icon-only {
-    @include nx-button-helpers.nx-small-icon-btn;
+    @include nx-button-helpers.small-icon-btn;
   }
 }
 

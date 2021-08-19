@@ -77,7 +77,7 @@
   max-width: var(--nx-width-text-wrapping);
 
 
-  &.nx-truncate-ellipsis {
+  &.truncate-ellipsis {
     // Something about the grid layout gets confused due to overflow: hidden on this element
     // and adds vertical space to the second row of the grid.
     // Experimentally, setting an explicit height here fixes that.
@@ -95,7 +95,7 @@
   margin: var(--nx-spacing-4x) 0 0 0;
   max-width: var(--nx-width-text-wrapping);
 
-  &.nx-truncate-ellipsis {
+  &.truncate-ellipsis {
     max-width: unset;
   }
 }
@@ -257,7 +257,7 @@
 }
 
 .nx-list__actions {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   grid-area: actions;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
@@ -272,7 +272,7 @@
   }
 
   .nx-btn--icon-only {
-    @include nx-button-helpers.nx-small-icon-btn;
+    @include nx-button-helpers.small-icon-btn;
   }
 }
 

@@ -9,7 +9,7 @@
 .nx-tooltip {
   // for specificity
   &.MuiTooltip-tooltip {
-    @include semi-bold;
+    @include nx-text-helpers.semi-bold;
 
     box-sizing: border-box;
     background-color: var(--nx-swatch-grey-05);

@@ -51,14 +51,14 @@ $-tile-header-height-actions: 43px; // Height with sub-title and/or right action
 }
 
 .nx-tile-header__title {
-  @include nx-text-helpers.nx-truncate-ellipsis;
+  @include nx-text-helpers.truncate-ellipsis;
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row-start: 1;
   grid-row-end: 1;
 
   h1, h2 {
-    @include nx-text-helpers.nx-truncate-ellipsis;
+    @include nx-text-helpers.truncate-ellipsis;
     margin: 0;
     max-width: unset;
   }
