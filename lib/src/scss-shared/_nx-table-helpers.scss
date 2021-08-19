@@ -4,8 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@use '../scss-shared/nx-table-variables';
-@use '../scss-shared/nx-pagination-variables';
+@use '../scss-shared/nx-table-variables' as *;
+@use '../scss-shared/nx-pagination-variables' as *;
 
 // creates a calc expression for the content-box height of a nx-table-container with the given numbers of rows and
 // headers along with a pagination footer.
