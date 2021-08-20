@@ -4,32 +4,23 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ReactNode, HTMLAttributes, ReactElement, WeakValidationMap} from 'react';
+import {HTMLAttributes, ReactElement, WeakValidationMap} from 'react';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import * as PropTypes from 'prop-types';
 
-import { TooltipConfigProps, tooltipPropTypesShape } from '../../../util/tooltipUtils';
-
 export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
-  label?: ReactNode | string | null;
   className?: string | null;
   children?: ReactElement | ReactElement[] | null;
   disabled?: boolean | null;
-  toggleTooltip: TooltipConfigProps | string;
-  icon: IconDefinition;
+  icon?: IconDefinition;
 };
 
 export const propTypes: WeakValidationMap<Props> = {
-  label: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.string
-  ]),
   className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
     PropTypes.element.isRequired
   ]),
   disabled: PropTypes.bool,
-  toggleTooltip: PropTypes.oneOfType([tooltipPropTypesShape, PropTypes.string]).isRequired,
   icon: PropTypes.any
 };

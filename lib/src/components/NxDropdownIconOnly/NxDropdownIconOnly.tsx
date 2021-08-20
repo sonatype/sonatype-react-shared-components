@@ -6,12 +6,11 @@
  */
 import React, { FunctionComponent, ReactElement } from 'react';
 import classnames from 'classnames';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 import { Props, propTypes } from './types';
-import NxTooltip from '../NxTooltip/NxTooltip';
 import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { wrapTooltipProps } from '../../util/tooltipUtils';
 import './NxDropdownIconOnly.scss';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
@@ -24,7 +23,7 @@ const NxDropdownIconOnly: FunctionComponent<Props> = function NxDropdownIconOnly
     isOpen,
     disabled,
     children,
-    toggleTooltip,
+    title,
     onToggleCollapse: externalOnToggleCollapse,
     onKeyDown: externalOnKeyDown,
     onCloseClick,
@@ -38,8 +37,6 @@ const NxDropdownIconOnly: FunctionComponent<Props> = function NxDropdownIconOnly
   const buttonClasses = classnames('nx-dropdown__toggle', { disabled, open: isOpen });
 
   const classes = classnames('nx-dropdown nx-dropdown--icon-only', className);
-
-  const toggleTooltipProps = toggleTooltip && wrapTooltipProps(toggleTooltip);
 
   // Wrap .nx-dropdown-button and .nx-dropdown-link children in overflow tooltips
   const wrappedChildren = children && React.Children.map<ReactElement, ReactElement>(children, child => (
@@ -55,14 +52,15 @@ const NxDropdownIconOnly: FunctionComponent<Props> = function NxDropdownIconOnly
               className={buttonClasses}
               onClick={!disabled && onToggleCollapse || undefined}
               aria-haspopup="true"
-              aria-expanded={isOpen}>
-      <NxFontAwesomeIcon icon={icon} />
+              aria-expanded={isOpen}
+              title={title}>
+      <NxFontAwesomeIcon icon={icon || faEllipsisV}/>
     </NxButton>
   );
 
   return (
     <div className={classes} onKeyDown={onKeyDown} {...attrs}>
-      { toggleTooltipProps ? <NxTooltip { ...toggleTooltipProps } >{toggle}</NxTooltip> : toggle }
+      {toggle}
       { isOpen && <NxDropdownMenu ref={menuRef} onClosing={onMenuClosing}>{wrappedChildren}</NxDropdownMenu> }
     </div>
   );
