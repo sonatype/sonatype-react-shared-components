@@ -116,6 +116,7 @@ import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxSt
 import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
+import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdownPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -156,6 +157,7 @@ const pageConfig: PageConfig = {
     NxPolicyThreatSlider: NxPolicyThreatSliderPage,
     NxPolicyViolationIndicator: NxPolicyViolationIndicatorPage,
     NxRadio: NxRadioPage,
+    NxSearchDropdown: NxSearchDropdownPage,
     NxSubmitMask: NxSubmitMaskPage,
     NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
     NxTable: NxTablePage,
