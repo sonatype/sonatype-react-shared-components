@@ -10,10 +10,12 @@ import { NxTable, NxCode, NxP, NxH3, NxTile } from '@sonatype/react-shared-compo
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxSearchDropdownExample from './NxSearchDropdownExample';
-//import NxSearchDropdownDisabledExample from './NxSearchDropdownDisabledExample';
+import NxSearchDropdownWideExample from './NxSearchDropdownWideExample';
+import NxSearchDropdownDisabledExample from './NxSearchDropdownDisabledExample';
 
-const nxSearchDropdownExampleCode = require('./NxSearchDropdownExample?raw');//,
-    //nxSearchDropdownDisabledExampleCode = require('./NxSearchDropdownDisabledExample?raw');
+const nxSearchDropdownExampleCode = require('./NxSearchDropdownExample?raw'),
+    nxSearchDropdownWideExampleCode = require('./NxSearchDropdownWideExample?raw'),
+    nxSearchDropdownDisabledExampleCode = require('./NxSearchDropdownDisabledExample?raw');
 
 const NxSearchDropdownPage = () =>
   <>
@@ -112,6 +114,22 @@ const NxSearchDropdownPage = () =>
                         codeExamples={nxSearchDropdownExampleCode}
                         liveExample={NxSearchDropdownExample}>
       An example of an <NxCode>NxSearchDropdown</NxCode> tied to a fake backend.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Long Example"
+                        id="nx-search-dropdown-long-example"
+                        codeExamples={nxSearchDropdownWideExampleCode}
+                        liveExample={NxSearchDropdownWideExample}>
+      An example of an <NxCode>NxSearchDropdown</NxCode> with the <NxCode>long</NxCode> prop.
+      Note that the dropdown menu itself also expands to be as long as the text input.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Disabled Example"
+                        id="nx-search-dropdown-disabled-example"
+                        codeExamples={nxSearchDropdownDisabledExampleCode}
+                        liveExample={NxSearchDropdownDisabledExample}>
+      An example of an <NxCode>NxSearchDropdown</NxCode> with the <NxCode>disabled</NxCode> prop.
+      Note that even though in this example there is non-empty search text, the dropdown does not open.
     </GalleryExampleTile>
   </>;
 
