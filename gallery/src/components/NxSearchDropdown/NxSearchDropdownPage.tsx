@@ -26,10 +26,6 @@ const NxSearchDropdownPage = () =>
         <NxTile.SubsectionHeader>
           <NxH3>Props</NxH3>
         </NxTile.SubsectionHeader>
-        <NxP>
-          <NxCode>NxSearchDropdown</NxCode> takes all props that are available on <NxCode>NxFilterInput</NxCode> as
-          well as the following:
-        </NxP>
         <NxTable>
           <NxTable.Head>
             <NxTable.Row>
@@ -41,6 +37,22 @@ const NxSearchDropdownPage = () =>
             </NxTable.Row>
           </NxTable.Head>
           <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>searchText</NxCode></NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>true</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>The current value of the search box</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>onSearchTextChange</NxCode></NxTable.Cell>
+              <NxTable.Cell>Function (string =&gt; void)</NxTable.Cell>
+              <NxTable.Cell>true</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                Callback that fires when the user changes the search text, with the new value as its argument
+              </NxTable.Cell>
+            </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>loading</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
@@ -70,6 +82,24 @@ const NxSearchDropdownPage = () =>
               <NxTable.Cell>
                 The callback function to execute when the user selects one of the matches from the dropdown menu.
                 Receives the entire selected item from the <NxCode>matches</NxCode> array as an argument.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>long</NxCode></NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
+                Whether to render a long variant of the search box and correspondingly the dropdown
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>disabled</NxCode></NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
+                When set, this prop disables the filter input and the dropdown.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>

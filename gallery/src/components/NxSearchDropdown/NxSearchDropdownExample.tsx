@@ -52,6 +52,10 @@ export default function NxSearchDropdownExample() {
   }
 
   return (
-    <NxSearchDropdown loading={loading} matches={matches} value={query} onChange={onChange} onSelect={onSelect} />
+    <NxSearchDropdown loading={loading}
+                      matches={matches}
+                      searchText={query}
+                      onSearchTextChange={onChange}
+                      onSelect={onSelect} />
   );
 }
