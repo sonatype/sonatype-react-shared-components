@@ -10,14 +10,14 @@ import { mount, ReactWrapper } from 'enzyme';
 import * as enzymeUtils from '../../../../__testutils__/enzymeUtils';
 
 import NxButton from '../../../NxButton/NxButton';
-import NxDropdown from '../../NxDropdownIconOnly';
-import NxStatefulDropdown, { Props } from '../NxStatefulDropdownIconOnly';
+import NxDropdownIconOnly from '../../NxDropdownIconOnly';
+import NxStatefulDropdownIconOnly, { Props } from '../NxStatefulDropdownIconOnly';
 
-describe('NxStatefulDropdown', () => {
+describe('NxStatefulDropdownIconOnly', () => {
   let container: HTMLDivElement | null;
 
-  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulDropdown, {
-    label: 'dropdown',
+  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulDropdownIconOnly, {
+    title: 'stateful dropdown',
     children: <a>Hello</a>
   });
 
@@ -34,32 +34,28 @@ describe('NxStatefulDropdown', () => {
     }
   });
 
-  it('renders an NxDropdown component', function() {
+  it('renders an NxDropdownIconOnly component', function() {
     const component = getShallowComponent();
-    expect(component).toMatchSelector(NxDropdown);
-    expect(component).toHaveProp('label', 'dropdown');
+    expect(component).toMatchSelector(NxDropdownIconOnly);
+    expect(component).toHaveProp('title', 'stateful dropdown');
   });
 
-  it('renders an NxDropdown component passing on the given props', function() {
+  it('renders an NxDropdownIconOnly component passing on the given props', function() {
     const component = getShallowComponent({
-      variant: 'tertiary',
       className: 'extra-class',
-      disabled: true,
-      toggleTooltip: 'a tooltip'
+      disabled: true
     });
-    const statelessDropdown = component.find(NxDropdown);
+    const statelessDropdown = component.find(NxDropdownIconOnly);
 
-    expect(component).toMatchSelector(NxDropdown);
-    expect(statelessDropdown).toHaveProp('label', 'dropdown');
-    expect(statelessDropdown).toHaveProp('variant', 'tertiary');
+    expect(component).toMatchSelector(NxDropdownIconOnly);
+    expect(statelessDropdown).toHaveProp('title', 'stateful dropdown');
     expect(statelessDropdown).toHaveProp('disabled', true);
-    expect(statelessDropdown).toHaveProp('toggleTooltip', 'a tooltip');
     expect(statelessDropdown).toHaveProp('children', (<a>Hello</a>));
   });
 
   it('opens the dropdown when the toggle is clicked', function() {
     const mounted = mount(
-      <NxStatefulDropdown label="dropdown" />
+      <NxStatefulDropdownIconOnly title="stateful dropdown" />
     );
     expect(mounted.find('.nx-dropdown-menu')).not.toExist();
 
@@ -70,7 +66,7 @@ describe('NxStatefulDropdown', () => {
 
   it('closes the dropdown if the menu is open and the toggle is clicked', function() {
     const mounted = mount(
-      <NxStatefulDropdown label="dropdown" />
+      <NxStatefulDropdownIconOnly title="stateful dropdown" />
     );
     mounted.find(NxButton).simulate('click');
     expect(mounted.find('.nx-dropdown-menu')).toExist();
@@ -83,14 +79,14 @@ describe('NxStatefulDropdown', () => {
   it('closes the dropdown when the Escape key is pressed on this component', function() {
     const page = (
       <div>
-        <NxStatefulDropdown label="label" />
+        <NxStatefulDropdownIconOnly title="stateful dropdown" />
       </div>
     );
     const element = mount(page, { attachTo: container });
     element.find(NxButton).simulate('click');
     expect(element.find('.nx-dropdown-menu')).toExist();
 
-    element.find(NxDropdown).simulate('keyDown', {key: 'Escape'});
+    element.find(NxDropdownIconOnly).simulate('keyDown', {key: 'Escape'});
     expect(element.find('.nx-dropdown-menu')).not.toExist();
 
     element.unmount();
@@ -106,7 +102,7 @@ describe('NxStatefulDropdown', () => {
     act(() => {
       element = mount(
         <div>
-          <NxStatefulDropdown label="label" />
+          <NxStatefulDropdownIconOnly title="stateful dropdown" />
           <button id="test-btn">click</button>
         </div>,
         { attachTo: container }
@@ -116,7 +112,7 @@ describe('NxStatefulDropdown', () => {
     act(() => {
       // Jest/JSDom need actual events to be able to trigger effects properly
       // See https://stackoverflow.com/questions/27557624/simulating-click-on-document-reactjs-jsdom
-      element.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', {
+      element.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
@@ -132,7 +128,7 @@ describe('NxStatefulDropdown', () => {
     expect(element!.find('.nx-dropdown-menu')).not.toExist();
 
     act(() => {
-      element!.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', {
+      element!.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
@@ -148,15 +144,15 @@ describe('NxStatefulDropdown', () => {
     const childClickSpy = jest.fn();
     act(() => {
       element = mount(
-        <NxStatefulDropdown label="label">
+        <NxStatefulDropdownIconOnly title="stateful dropdown">
           <a id="child" onClick={childClickSpy}>Hello</a>
-        </NxStatefulDropdown>,
+        </NxStatefulDropdownIconOnly>,
         { attachTo: container }
       );
     });
 
     act(() => {
-      element.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', {
+      element.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
@@ -174,7 +170,7 @@ describe('NxStatefulDropdown', () => {
     expect(element!.find('.nx-dropdown-menu')).not.toExist();
 
     act(() => {
-      element!.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', {
+      element!.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
