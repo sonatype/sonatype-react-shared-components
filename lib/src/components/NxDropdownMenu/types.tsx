@@ -4,9 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode } from 'react';
+import { HTMLAttributes } from 'react';
+import * as PropTypes from 'prop-types';
 
-export interface Props {
+export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'className'> {
   onClosing: () => void;
-  children?: ReactNode | null;
+  className?: string | null;
 }
+
+export const propTypes: PropTypes.ValidationMap<Props> = {
+  onClosing: PropTypes.func.isRequired,
+  className: PropTypes.string,
+  children: PropTypes.node
+};
