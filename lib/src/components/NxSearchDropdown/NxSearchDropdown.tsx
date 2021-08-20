@@ -6,7 +6,7 @@
  */
 import React, { forwardRef, useRef } from 'react';
 
-//import './NxSearchDropdown.scss';
+import './NxSearchDropdown.scss';
 
 import { Props, propTypes } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
@@ -39,7 +39,7 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
   }
 
   return (
-    <>
+    <div className="nx-search-dropdown">
       <NxFilterInput ref={ref} className="nx-search-dropdown__input" { ...filterInputProps }/>
       { value &&
         <NxDropdownMenu ref={menuRef} className="nx-search-dropdown__menu" onClosing={onMenuClosing}>
@@ -53,7 +53,7 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
           }
         </NxDropdownMenu>
       }
-    </>
+    </div>
   );
 });
 
