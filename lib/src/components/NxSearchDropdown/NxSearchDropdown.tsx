@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { forwardRef, useRef } from 'react';
+import classnames from 'classnames';
 
 import './NxSearchDropdown.scss';
 
@@ -19,10 +20,21 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
   props: Props,
   ref
 ) {
-  const { loading, matches, onSelect, ...filterInputProps } = props,
-      { value } = filterInputProps,
+  const {
+        className: classNameProp,
+        loading,
+        matches,
+        onSelect,
+        searchText,
+        onSearchTextChange,
+        long,
+        disabled,
+        ...attrs
+      } = props,
       menuRef = useRef<HTMLDivElement>(null),
-      filterRef = useRef<HTMLDivElement>(null);
+      filterRef = useRef<HTMLDivElement>(null),
+      className = classnames('nx-search-dropdown', classNameProp),
+      filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long });
 
   // When the dropdown is closed while focus is within it, set focus back to the text input. Otherwise
   // it goes back to the <body> which is less helpful especially when within a modal
@@ -39,9 +51,13 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
   }
 
   return (
-    <div className="nx-search-dropdown">
-      <NxFilterInput ref={ref} className="nx-search-dropdown__input" { ...filterInputProps }/>
-      { value &&
+    <div ref={ref} className={className} { ...attrs }>
+      <NxFilterInput ref={filterRef}
+                     className={filterClassName}
+                     value={searchText}
+                     onChange={onSearchTextChange}
+                     disabled={disabled || undefined} />
+      { searchText && !disabled &&
         <NxDropdownMenu ref={menuRef} className="nx-search-dropdown__menu" onClosing={onMenuClosing}>
           {
             loading ? <NxLoadingSpinner /> :
