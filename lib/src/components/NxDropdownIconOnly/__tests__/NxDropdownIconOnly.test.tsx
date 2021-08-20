@@ -7,24 +7,24 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import { faCaretDown, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
-import NxDropdown, { Props } from '../NxDropdownIconOnly';
+import NxDropdownIconOnly, { Props } from '../NxDropdownIconOnly';
 import NxButton from '../../NxButton/NxButton';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 import NxDropdownMenu from '../../NxDropdownMenu/NxDropdownMenu';
+import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-describe('NxDropdown', () => {
+describe('NxDropdownIconOnly', () => {
   let container: HTMLDivElement | null;
 
   const minimalProps = {
-        label: 'dropdown',
+        title: 'Test tooltip',
         isOpen: false,
         onToggleCollapse: () => {}
       },
-      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxDropdown, minimalProps),
-      getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxDropdown, minimalProps);
+      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxDropdownIconOnly, minimalProps),
+      getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxDropdownIconOnly, minimalProps);
 
   beforeEach(function() {
     // Avoid rendering directly on the body.
@@ -43,26 +43,20 @@ describe('NxDropdown', () => {
     const component = getShallowComponent(),
         button = component.find(NxButton);
 
-    expect(component).toHaveClassName('.nx-dropdown');
+    expect(component).toHaveClassName('.nx-dropdown--icon-only');
     expect(button).toHaveClassName('.nx-dropdown__toggle');
-    expect(button).toHaveProp('variant', 'tertiary');
+    expect(button).toHaveProp('variant', 'icon-only');
     expect(button).toHaveProp('type', 'button');
-    expect(button.childAt(0)).toContainReact(<span className="nx-dropdown__toggle-label">dropdown</span>);
-    expect(button.childAt(1)).toHaveProp('icon', faCaretDown);
   });
 
   it('renders the button according to the supplied variant', function() {
     let component = getShallowComponent();
-    expect(component.find(NxButton)).toHaveProp('variant', 'tertiary');
+    expect(component.find(NxButton)).toHaveProp('variant', 'icon-only');
+  });
 
-    component = getShallowComponent({ variant: 'primary' });
-    expect(component.find(NxButton)).toHaveProp('variant', 'primary');
-
-    component = getShallowComponent({ variant: 'secondary' });
-    expect(component.find(NxButton)).toHaveProp('variant', 'secondary');
-
-    component = getShallowComponent({ variant: 'error' });
-    expect(component.find(NxButton)).toHaveProp('variant', 'error');
+  it('correctly renders a custom icon based on icon prop', function() {
+    let component = getShallowComponent({ icon: faCog });
+    expect(component.find(NxFontAwesomeIcon)).toHaveProp('icon', faCog);
   });
 
   it('correctly renders the menu based on isOpen prop', function() {
@@ -75,7 +69,7 @@ describe('NxDropdown', () => {
 
   it('correctly assigns supplied classes', function() {
     const component = getShallowComponent({ className: 'class1 class2' });
-    expect(component).toHaveClassName('nx-dropdown class1 class2');
+    expect(component).toHaveClassName('nx-dropdown--icon-only class1 class2');
   });
 
   it('disables the button (and the toggle fn) when the disabled prop is supplied', function() {
@@ -88,18 +82,9 @@ describe('NxDropdown', () => {
     expect(toggleFn).not.toHaveBeenCalled();
   });
 
-  it('uses VDOM as label if supplied', function() {
-    const label = <NxFontAwesomeIcon icon={faTrash} />,
-        component = getShallowComponent({ label }),
-        button = component.find(NxButton);
-
-    expect(button.childAt(0)).toContainReact(label);
-  });
-
   it('passes extra props', function() {
-    const component = getShallowComponent({ id: 'some-id', title: 'title-prop' });
+    const component = getShallowComponent({ id: 'some-id' });
     expect(component).toHaveProp('id', 'some-id');
-    expect(component).toHaveProp('title', 'title-prop');
   });
 
   it('renders the children within the NxDropdownMenu, wrapping nx-dropdown-links and nx-dropdown-buttons ' +
@@ -180,7 +165,7 @@ describe('NxDropdown', () => {
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
     act(() => {
-      component!.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', {
+      component!.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
@@ -195,7 +180,7 @@ describe('NxDropdown', () => {
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
     act(() => {
-      component!.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', {
+      component!.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
