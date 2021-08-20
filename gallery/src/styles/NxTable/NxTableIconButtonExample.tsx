@@ -5,89 +5,107 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxFilterInput, NxButton, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
-import { faTasks, faPencilAlt, faCog } from '@fortawesome/free-solid-svg-icons';
+import {
+  NxFilterInput,
+  NxButton,
+  NxFontAwesomeIcon,
+  NxDropdownIconOnly,
+  NxTextLink,
+  useToggle
+} from '@sonatype/react-shared-components';
+import { faTasks, faPencilAlt, faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
-const NxTableIconButtonExample = () =>
-  <table className="nx-table">
-    <thead>
-      <tr className="nx-table-row nx-table-row--header">
-        <th className="nx-cell nx-cell--header">Name</th>
-        <th className="nx-cell nx-cell--header">Country</th>
-        <th className="nx-cell nx-cell--header"/>
-      </tr>
-      <tr className="nx-table-row nx-table-row--header nx-table-row--filter-header">
-        <th className="nx-cell nx-cell--header">
-          <NxFilterInput value="" placeholder="Type a name"/>
-        </th>
-        <th className="nx-cell nx-cell--header">
-          <NxFilterInput value="" placeholder="Select a country" list="countryList"/>
-          <datalist id="countryList">
-            <option value="Colombia"/>
-            <option value="France"/>
-            <option value="Germany"/>
-            <option value="USA"/>
-          </datalist>
-        </th>
-        <th className="nx-cell nx-cell--header">
-          <div className="nx-btn-bar">
-            <NxButton title="Tasks" variant="icon-only"><NxFontAwesomeIcon icon={faTasks} /></NxButton>
-          </div>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="nx-table-row">
-        <td className="nx-cell"><span>Anna</span></td>
-        <td className="nx-cell"><span>USA</span></td>
-        <td className="nx-cell">
-          <div className="nx-btn-bar">
-            <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
-            <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
-          </div>
-        </td>
-      </tr>
-      <tr className="nx-table-row">
-        <td className="nx-cell"><span>Lean</span></td>
-        <td className="nx-cell"><span>France</span></td>
-        <td className="nx-cell">
-          <div className="nx-btn-bar">
-            <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
-            <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
-          </div>
-        </td>
-      </tr>
-      <tr className="nx-table-row">
-        <td className="nx-cell"><span>Louis</span></td>
-        <td className="nx-cell"><span>France</span></td>
-        <td className="nx-cell">
-          <div className="nx-btn-bar">
-            <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
-            <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
-          </div>
-        </td>
-      </tr>
-      <tr className="nx-table-row">
-        <td className="nx-cell"><span>Zach</span></td>
-        <td className="nx-cell"><span>Colombia</span></td>
-        <td className="nx-cell">
-          <div className="nx-btn-bar">
-            <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
-            <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
-          </div>
-        </td>
-      </tr>
-      <tr className="nx-table-row">
-        <td className="nx-cell"><span>Jimmy</span></td>
-        <td className="nx-cell"><span>Germany</span></td>
-        <td className="nx-cell">
-          <div className="nx-btn-bar">
-            <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
-            <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>;
+export default function NxAccordionExample() {
+  const [isOpen, onToggleCollapse] = useToggle(false),
+      deleteFn = () => { alert('delete'); },
+      onClick = () => { alert('click'); };
 
-export default NxTableIconButtonExample;
+  return (
+    <table className="nx-table">
+      <thead>
+        <tr className="nx-table-row nx-table-row--header">
+          <th className="nx-cell nx-cell--header">Name</th>
+          <th className="nx-cell nx-cell--header">Country</th>
+          <th className="nx-cell nx-cell--header"/>
+        </tr>
+        <tr className="nx-table-row nx-table-row--header nx-table-row--filter-header">
+          <th className="nx-cell nx-cell--header">
+            <NxFilterInput value="" placeholder="Type a name"/>
+          </th>
+          <th className="nx-cell nx-cell--header">
+            <NxFilterInput value="" placeholder="Select a country" list="countryList"/>
+            <datalist id="countryList">
+              <option value="Colombia"/>
+              <option value="France"/>
+              <option value="Germany"/>
+              <option value="USA"/>
+            </datalist>
+          </th>
+          <th className="nx-cell nx-cell--header">
+            <div className="nx-btn-bar">
+              <NxButton title="Tasks" variant="icon-only"><NxFontAwesomeIcon icon={faTasks} /></NxButton>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className="nx-table-row">
+          <td className="nx-cell"><span>Anna</span></td>
+          <td className="nx-cell"><span>USA</span></td>
+          <td className="nx-cell">
+            <div className="nx-btn-bar">
+              <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
+              <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+            </div>
+          </td>
+        </tr>
+        <tr className="nx-table-row">
+          <td className="nx-cell"><span>Lean</span></td>
+          <td className="nx-cell"><span>France</span></td>
+          <td className="nx-cell">
+            <div className="nx-btn-bar">
+              <NxDropdownIconOnly icon={faEllipsisV}
+                                  isOpen={isOpen}
+                                  onToggleCollapse={onToggleCollapse}
+                                  toggleTooltip="Links options">
+                <NxTextLink external className="nx-dropdown-link disabled">Save</NxTextLink>
+                <NxTextLink external className="nx-dropdown-link" onClick={deleteFn}>Delete</NxTextLink>
+                <NxTextLink external className="nx-dropdown-link" onClick={onClick}>Some Action</NxTextLink>
+              </NxDropdownIconOnly>
+            </div>
+          </td>
+        </tr>
+        <tr className="nx-table-row">
+          <td className="nx-cell"><span>Louis</span></td>
+          <td className="nx-cell"><span>France</span></td>
+          <td className="nx-cell">
+            <div className="nx-btn-bar">
+              <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
+              <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+            </div>
+          </td>
+        </tr>
+        <tr className="nx-table-row">
+          <td className="nx-cell"><span>Zach</span></td>
+          <td className="nx-cell"><span>Colombia</span></td>
+          <td className="nx-cell">
+            <div className="nx-btn-bar">
+              <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
+              <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+            </div>
+          </td>
+        </tr>
+        <tr className="nx-table-row">
+          <td className="nx-cell"><span>Jimmy</span></td>
+          <td className="nx-cell"><span>Germany</span></td>
+          <td className="nx-cell">
+            <div className="nx-btn-bar">
+              <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
+              <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
