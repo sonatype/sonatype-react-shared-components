@@ -13,7 +13,7 @@ function NxStatefulDropdownIconOnlyExample() {
   const onClick = () => { alert('click'); };
 
   return (
-    <NxStatefulDropdownIconOnly icon={faEllipsisV} toggleTooltip="Stateful toggle FTW">
+    <NxStatefulDropdownIconOnly icon={faEllipsisV} title="Stateful toggle FTW">
       <a onClick={onClick} className="nx-dropdown-button">
         Nav Link1
       </a>

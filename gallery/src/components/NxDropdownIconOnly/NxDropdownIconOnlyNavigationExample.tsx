@@ -17,7 +17,7 @@ function NxDropdownIconOnlyNavigationExample() {
     <NxDropdownIconOnly isOpen={isOpen}
                         onToggleCollapse={onToggleCollapse}
                         icon={faEllipsisV}
-                        toggleTooltip="Options">
+                        title="Options">
       <NxTextLink onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
         Text link 1
       </NxTextLink>

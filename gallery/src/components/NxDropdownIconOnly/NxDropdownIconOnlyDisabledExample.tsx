@@ -12,7 +12,7 @@ import { NxDropdownIconOnly } from '@sonatype/react-shared-components';
 function NxDropdownIconOnlyDisabledExample() {
   return (
     <NxDropdownIconOnly icon={faCog}
-                        toggleTooltip="Non-functional"
+                        title="Non-functional"
                         isOpen={false}
                         disabled={true} />
   );
