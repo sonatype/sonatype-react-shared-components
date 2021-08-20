@@ -29,10 +29,10 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
   function onMenuClosing() {
     /* eslint-disable @typescript-eslint/no-non-null-assertion */
     const focusedEl = document.activeElement,
-        menuEl = menuRef.current,
-        inputEl = filterRef.current!.querySelector(':scope input')! as HTMLElement;
+        menuEl = menuRef.current;
 
     if (menuEl && menuEl.contains(focusedEl)) {
+      const inputEl = filterRef.current!.querySelector(':scope input')! as HTMLElement;
       inputEl!.focus();
     }
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
