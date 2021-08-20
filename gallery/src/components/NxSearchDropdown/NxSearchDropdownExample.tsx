@@ -25,7 +25,7 @@ export default function NxSearchDropdownExample() {
   const [matches, setMatches] = useState<NxSearchDropdownMatch[]>([]),
       [loading, setLoading] = useState(false),
       [query, setQuery] = useState(''),
-      pendingQueryRef = useRef<object>();
+      pendingQueryRef = useRef<Record<string, never>>();
 
   function onSelect({ displayName }: NxSearchDropdownMatch) {
     alert('Selected ' + displayName);
