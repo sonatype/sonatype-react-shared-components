@@ -35,7 +35,7 @@ const NxTableSortableExample = () => {
   const comparators = {
     name: ({ name: nameA }: Datum, { name: nameB }: Datum) => nameA > nameB ? 1 : -1,
     age: ({ age: ageA }: Datum, { age: ageB }: Datum) => ageA > ageB ? 1 : -1
-  }
+  };
 
   const sort = (column: ColumnName) => () => {
     // if not sorting on the clicked column then sort ascending
