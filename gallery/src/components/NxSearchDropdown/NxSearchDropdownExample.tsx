@@ -16,8 +16,8 @@ function search(query: string): Promise<NxSearchDropdownMatch[]> {
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
 
   return new Promise(resolve => {
-    // simulate a backend response that takes 2.5 seconds
-    setTimeout(() => resolve(matchingItems), 2500);
+    // simulate a backend response that takes 2 seconds
+    setTimeout(() => resolve(matchingItems), 2000);
   });
 }
 
@@ -42,11 +42,13 @@ export default function NxSearchDropdownExample() {
     setTimeout(() => {
       if (pendingQueryRef.current === debounceId) {
         search(query).then(matches => {
-          setMatches(matches);
-          setLoading(false);
+          if (pendingQueryRef.current === debounceId) {
+            setMatches(matches);
+            setLoading(false);
+          }
         });
       }
-    }, 1000);
+    }, 500);
   }
 
   return (
