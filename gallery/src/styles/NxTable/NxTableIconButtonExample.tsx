@@ -67,7 +67,7 @@ export default function NxAccordionExample() {
               <NxDropdownIconOnly icon={faEllipsisV}
                                   isOpen={isOpen}
                                   onToggleCollapse={onToggleCollapse}
-                                  toggleTooltip="Links options">
+                                  title="Links options">
                 <NxTextLink external className="nx-dropdown-link disabled">Save</NxTextLink>
                 <NxTextLink external className="nx-dropdown-link" onClick={deleteFn}>Delete</NxTextLink>
                 <NxTextLink external className="nx-dropdown-link" onClick={onClick}>Some Action</NxTextLink>
