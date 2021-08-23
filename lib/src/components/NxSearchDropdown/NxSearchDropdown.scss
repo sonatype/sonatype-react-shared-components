@@ -29,6 +29,10 @@
   }
 }
 
+.nx-search-dropdown__menu--error {
+  padding: 0;
+}
+
 .nx-search-dropdown__empty-message {
   @include container-horizontal;
 

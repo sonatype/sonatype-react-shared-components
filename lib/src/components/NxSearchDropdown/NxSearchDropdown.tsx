@@ -12,8 +12,8 @@ import './NxSearchDropdown.scss';
 import { Props, propTypes } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
-import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import { partial } from 'ramda';
+import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
 export { Props, Match } from './types';
 
 export const SEARCH_DEBOUNCE_TIME = 500;
@@ -25,6 +25,7 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
   const {
         className: classNameProp,
         loading,
+        error,
         matches,
         onSelect,
         searchText,
@@ -37,10 +38,18 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
       menuRef = useRef<HTMLDivElement>(null),
       filterRef = useRef<HTMLDivElement>(null),
       className = classnames('nx-search-dropdown', classNameProp),
-      filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long });
+      filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long }),
+      menuClassName = classnames('nx-search-dropdown__menu', {
+        'nx-search-dropdown__menu--error': !!error
+      });
 
-  // When the dropdown is closed while focus is within it, set focus back to the text input. Otherwise
-  // it goes back to the <body> which is less helpful especially when within a modal
+  /*
+   * When the dropdown is closed while focus is within it, set focus back to the text input. Otherwise
+   * it goes back to the <body> which is less helpful especially when within a modal. Note that we also use
+   * a distinct react `key` on the dropdown when it is in error state to get it to re-render entirely when
+   * switching to and from that state - thereby triggering this logic when the error state is cleared which would
+   * result in the Retry button (which may have focus) being removed from DOM
+   */
   function onMenuClosing() {
     /* eslint-disable @typescript-eslint/no-non-null-assertion */
     const focusedEl = document.activeElement,
@@ -61,16 +70,20 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
                      onChange={onSearchTextChange}
                      disabled={disabled || undefined} />
       { searchText && !disabled &&
-        <NxDropdownMenu ref={menuRef} className="nx-search-dropdown__menu" onClosing={onMenuClosing}>
-          {
-            loading ? <NxLoadingSpinner /> :
-            matches.length ? matches.map(match =>
-              <button className="nx-dropdown-button" key={match.id} onClick={partial(onSelect, [match])}>
-                {match.displayName}
-              </button>
-            ) :
-            <div className="nx-search-dropdown__empty-message">{emptyMessage || 'No Results Found'}</div>
-          }
+        <NxDropdownMenu key={error ? 'error' : 'no-error'}
+                        ref={menuRef}
+                        className={menuClassName}
+                        onClosing={onMenuClosing}>
+          <NxLoadWrapper { ...{ loading, error } } retryHandler={() => onSearchTextChange(searchText)}>
+            {
+              matches.length ? matches.map(match =>
+                <button className="nx-dropdown-button" key={match.id} onClick={partial(onSelect, [match])}>
+                  {match.displayName}
+                </button>
+              ) :
+              <div className="nx-search-dropdown__empty-message">{emptyMessage || 'No Results Found'}</div>
+            }
+          </NxLoadWrapper>
         </NxDropdownMenu>
       }
     </div>

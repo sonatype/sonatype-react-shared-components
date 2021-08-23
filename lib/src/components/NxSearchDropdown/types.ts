@@ -16,6 +16,7 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> 
   searchText: string;
   onSearchTextChange: (s: string) => void;
   loading?: boolean | null;
+  error?: ReactNode;
   matches: Match[];
   onSelect: (m: Match) => void;
   long?: boolean | null;
@@ -25,6 +26,7 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> 
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   loading: PropTypes.bool,
+  error: PropTypes.node,
   matches: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     displayName: PropTypes.string.isRequired
