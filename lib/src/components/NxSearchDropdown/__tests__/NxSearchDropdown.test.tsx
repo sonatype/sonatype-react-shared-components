@@ -12,7 +12,7 @@ import NxFilterInput from '../../NxFilterInput/NxFilterInput';
 
 import NxSearchDropdown, { Props } from '../NxSearchDropdown';
 import NxDropdownMenu from '../../NxDropdownMenu/NxDropdownMenu';
-import NxLoadingSpinner from '../../NxLoadingSpinner/NxLoadingSpinner';
+import NxLoadWrapper from '../../NxLoadWrapper/NxLoadWrapper';
 
 describe('NxSearchDropdown', function() {
   const minimalProps: Props = {
@@ -110,32 +110,52 @@ describe('NxSearchDropdown', function() {
     expect(getShallow({ searchText: 'foo' }).find(NxDropdownMenu)).toHaveClassName('nx-search-dropdown__menu');
   });
 
-  it('sets the dropdown menu contents to an NxLoadingSpinner if loading is true', function() {
-    const loadingWithMatches = getShallow({ searchText: 'foo', matches: [{id: '1', displayName: '1'}], loading: true }),
-        loadingWithNoMatches = getShallow({ searchText: 'foo', loading: true }),
-        notLoading = getShallow({ searchText: 'foo' });
-
-    expect(loadingWithMatches.find(NxDropdownMenu)).toContainMatchingElement(NxLoadingSpinner);
-    expect(loadingWithNoMatches.find(NxDropdownMenu)).toContainMatchingElement(NxLoadingSpinner);
-    expect(notLoading.find(NxDropdownMenu)).not.toContainMatchingElement(NxLoadingSpinner);
+  it('renders an NxLoadWrapper within the dropdown menu', function() {
+    expect(getShallow({ searchText: 'foo' }).find(NxDropdownMenu)).toContainMatchingElement(NxLoadWrapper);
   });
 
-  it('sets the dropdown menu contents to buttons for each match if not loading', function() {
+  it('passes the loading prop to the load wrapper', function() {
+    const loading = getShallow({ searchText: 'foo', loading: true }),
+        notLoading = getShallow({ searchText: 'foo' }),
+        explicitNotLoading = getShallow({ searchText: 'foo', loading: false });
+
+    expect(loading.find(NxLoadWrapper)).toHaveProp('loading', true);
+    expect(notLoading.find(NxLoadWrapper)).toHaveProp('loading', undefined);
+    expect(explicitNotLoading.find(NxLoadWrapper)).toHaveProp('loading', false);
+  });
+
+  it('passes the error prop to the load wrapper', function() {
+    const error = getShallow({ searchText: 'foo', error: 'bar' }),
+        noError = getShallow({ searchText: 'foo' });
+
+    expect(error.find(NxLoadWrapper)).toHaveProp('error', 'bar');
+    expect(noError.find(NxLoadWrapper)).toHaveProp('error', undefined);
+  });
+
+  it('fires onSearchTextChange with the searchText when the load wrappers retryHandler is triggered', function() {
+    const onSearchTextChange = jest.fn(),
+        error = getShallow({ searchText: 'foo', error: 'bar', onSearchTextChange });
+
+    expect(onSearchTextChange).not.toHaveBeenCalled();
+
+    error.find(NxLoadWrapper).prop('retryHandler')();
+
+    expect(onSearchTextChange).toHaveBeenCalledWith('foo');
+  });
+
+  it('sets the load wrapper contents to buttons for each match', function() {
     const matches = [
           { id: '1', displayName: 'One' },
           { id: '2', displayName: 'Two' }
         ],
-        loadingWithMatches = getShallow({ searchText: 'foo', matches, loading: true }),
         notLoading = getShallow({ matches, searchText: 'foo' }),
-        notLoadingDropdownMenu = notLoading.find(NxDropdownMenu);
+        notLoadingLoadWrapper = notLoading.find(NxLoadWrapper);
 
-    expect(loadingWithMatches).not.toContainMatchingElement('button');
-
-    expect(notLoadingDropdownMenu.children().length).toBe(2);
-    expect(notLoadingDropdownMenu.childAt(0)).toMatchSelector('button.nx-dropdown-button');
-    expect(notLoadingDropdownMenu.childAt(0)).toHaveText('One');
-    expect(notLoadingDropdownMenu.childAt(1)).toMatchSelector('button.nx-dropdown-button');
-    expect(notLoadingDropdownMenu.childAt(1)).toHaveText('Two');
+    expect(notLoadingLoadWrapper.children().length).toBe(2);
+    expect(notLoadingLoadWrapper.childAt(0)).toMatchSelector('button.nx-dropdown-button');
+    expect(notLoadingLoadWrapper.childAt(0)).toHaveText('One');
+    expect(notLoadingLoadWrapper.childAt(1)).toMatchSelector('button.nx-dropdown-button');
+    expect(notLoadingLoadWrapper.childAt(1)).toHaveText('Two');
   });
 
   it('sets an onClick handler on the menu button that fires onSelect with the match object', function() {
@@ -144,21 +164,19 @@ describe('NxSearchDropdown', function() {
           { id: '1', displayName: 'One' },
           { id: '2', displayName: 'Two' }
         ],
-        menu = getShallow({ matches, onSelect, searchText: 'foo' }).find(NxDropdownMenu);
+        loadWrapper = getShallow({ matches, onSelect, searchText: 'foo' }).find(NxLoadWrapper);
 
     expect(onSelect).not.toHaveBeenCalled();
 
-    menu.childAt(1).simulate('click');
+    loadWrapper.childAt(1).simulate('click');
 
     expect(onSelect).toHaveBeenCalledWith({ id: '2', displayName: 'Two' });
   });
 
-  it('sets the dropdown menu contents to an empty message if not loading and no results', function() {
-    const loadingWithNoMatches = getShallow({ searchText: 'foo', loading: true }),
-        notLoading = getShallow({ searchText: 'foo' });
+  it('sets the load wrapper contents to an empty message if there are no results', function() {
+    const notLoading = getShallow({ searchText: 'foo' });
 
-    expect(loadingWithNoMatches).not.toContainMatchingElement('.nx-search-dropdown__empty-message');
-    expect(notLoading.find('.nx-search-dropdown__empty-message')).toExist();
+    expect(notLoading.find(NxLoadWrapper).find('.nx-search-dropdown__empty-message')).toExist();
     expect(notLoading.find('.nx-search-dropdown__empty-message')).toHaveText('No Results Found');
   });
 
@@ -181,4 +199,20 @@ describe('NxSearchDropdown', function() {
     expect(component.find('.nx-dropdown-button')).not.toExist();
     expect(document.activeElement === component.find('.nx-search-dropdown__input input').getDOMNode()).toBe(true);
   });
+
+  it('sets focus to the filter input if the load wrapper retry button is focused when the error prop becomes unset',
+      function() {
+        const component = getMounted(
+          { searchText: 'foo', error: 'foo' },
+          { attachTo: mountPoint }
+        );
+
+        (component.find('button.nx-load-error__retry').getDOMNode() as HTMLElement).focus();
+
+        component.setProps({ error: null });
+
+        expect(component.find('.nx-load-error__retry')).not.toExist();
+        expect(document.activeElement === component.find('.nx-search-dropdown__input input').getDOMNode()).toBe(true);
+      }
+  );
 });
