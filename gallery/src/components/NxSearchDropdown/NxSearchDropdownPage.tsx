@@ -11,10 +11,14 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxSearchDropdownExample from './NxSearchDropdownExample';
 import NxSearchDropdownWideExample from './NxSearchDropdownWideExample';
+import NxSearchDropdownErrorExample from './NxSearchDropdownErrorExample';
+import NxSearchDropdownLongErrorExample from './NxSearchDropdownLongErrorExample';
 import NxSearchDropdownDisabledExample from './NxSearchDropdownDisabledExample';
 
 const nxSearchDropdownExampleCode = require('./NxSearchDropdownExample?raw'),
     nxSearchDropdownWideExampleCode = require('./NxSearchDropdownWideExample?raw'),
+    nxSearchDropdownErrorExampleCode = require('./NxSearchDropdownErrorExample?raw'),
+    nxSearchDropdownLongErrorExampleCode = require('./NxSearchDropdownLongErrorExample?raw'),
     nxSearchDropdownDisabledExampleCode = require('./NxSearchDropdownDisabledExample?raw');
 
 const NxSearchDropdownPage = () =>
@@ -61,6 +65,18 @@ const NxSearchDropdownPage = () =>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>Set to true when the search results are currently being loaded</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>error</NxCode></NxTable.Cell>
+              <NxTable.Cell>ReactNode</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                If there is an error loading the search results, set the error message here to render an error
+                alert instead of the results within the dropdown. The error alert's Retry button will fire
+                the <NxCode>onSearchTextChange</NxCode> callback with the current <NxCode>searchText</NxCode> when
+                clicked.
+              </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>matches</NxCode></NxTable.Cell>
@@ -156,6 +172,20 @@ const NxSearchDropdownPage = () =>
       An example of an <NxCode>NxSearchDropdown</NxCode> with the <NxCode>long</NxCode> prop.
       Note that the dropdown menu itself also expands to be as long as the text input. This example also demonstrates
       custom text for the <NxCode>emptyMessage</NxCode>
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Error Example"
+                        id="nx-search-dropdown-error-example"
+                        codeExamples={nxSearchDropdownErrorExampleCode}
+                        liveExample={NxSearchDropdownErrorExample}>
+      An example of an <NxCode>NxSearchDropdown</NxCode> that has an error when attempting to load results.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Long Error Example"
+                        id="nx-search-dropdown-long-error-example"
+                        codeExamples={nxSearchDropdownLongErrorExampleCode}
+                        liveExample={NxSearchDropdownLongErrorExample}>
+      An example of a long <NxCode>NxSearchDropdown</NxCode> that has an error when attempting to load results.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled Example"
