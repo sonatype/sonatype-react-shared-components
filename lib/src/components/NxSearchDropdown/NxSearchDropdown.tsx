@@ -31,6 +31,7 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
         onSearchTextChange,
         long,
         disabled,
+        emptyMessage,
         ...attrs
       } = props,
       menuRef = useRef<HTMLDivElement>(null),
@@ -63,11 +64,12 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
         <NxDropdownMenu ref={menuRef} className="nx-search-dropdown__menu" onClosing={onMenuClosing}>
           {
             loading ? <NxLoadingSpinner /> :
-            matches.map(match =>
+            matches.length ? matches.map(match =>
               <button className="nx-dropdown-button" key={match.id} onClick={partial(onSelect, [match])}>
                 {match.displayName}
               </button>
-            )
+            ) :
+            <div className="nx-search-dropdown__empty-message">{emptyMessage || 'No Results Found'}</div>
           }
         </NxDropdownMenu>
       }

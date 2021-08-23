@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 export interface Match {
   id: string;
@@ -20,6 +20,7 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> 
   onSelect: (m: Match) => void;
   long?: boolean | null;
   disabled?: boolean | null;
+  emptyMessage?: ReactNode;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -30,5 +31,6 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   }).isRequired).isRequired,
   onSelect: PropTypes.func.isRequired,
   long: PropTypes.bool,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  emptyMessage: PropTypes.node
 };

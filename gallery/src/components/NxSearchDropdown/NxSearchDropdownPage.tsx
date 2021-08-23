@@ -104,6 +104,15 @@ const NxSearchDropdownPage = () =>
                 When set, this prop disables the filter input and the dropdown.
               </NxTable.Cell>
             </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>emptyMessage</NxCode></NxTable.Cell>
+              <NxTable.Cell>ReactNode</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>"No Results Found"</NxTable.Cell>
+              <NxTable.Cell>
+                The text to display when the user performs a query for which no results are returned
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
@@ -145,7 +154,8 @@ const NxSearchDropdownPage = () =>
                         codeExamples={nxSearchDropdownWideExampleCode}
                         liveExample={NxSearchDropdownWideExample}>
       An example of an <NxCode>NxSearchDropdown</NxCode> with the <NxCode>long</NxCode> prop.
-      Note that the dropdown menu itself also expands to be as long as the text input.
+      Note that the dropdown menu itself also expands to be as long as the text input. This example also demonstrates
+      custom text for the <NxCode>emptyMessage</NxCode>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled Example"

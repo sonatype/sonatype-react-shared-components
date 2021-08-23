@@ -58,6 +58,7 @@ export default function NxSearchDropdownExample() {
                       matches={matches}
                       searchText={query}
                       onSearchTextChange={onChange}
-                      onSelect={onSelect} />
+                      onSelect={onSelect}
+                      emptyMessage="We've got nothing like that" />
   );
 }
