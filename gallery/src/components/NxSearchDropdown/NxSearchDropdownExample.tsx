@@ -33,6 +33,7 @@ export default function NxSearchDropdownExample() {
 
   function onSelect({ displayName }: NxSearchDropdownMatch) {
     alert('Selected ' + displayName);
+    setQuery('');
   }
 
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
