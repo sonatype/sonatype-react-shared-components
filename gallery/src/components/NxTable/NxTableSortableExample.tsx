@@ -8,38 +8,75 @@ import React, {useState} from 'react';
 
 import { NxTable } from '@sonatype/react-shared-components';
 
-const initialState = ['A', '1', 'B', '2', 'C', '3', 'D', '4'];
+type SortDir = 'desc' | 'asc' | null;
+type ColumnName = 'name' | 'age';
+
+type SortConfig = null | {
+  dir: SortDir,
+  column: ColumnName
+};
+
+interface Datum {
+  name: string;
+  age: number
+}
+
+const data: Datum[] = [
+  { name: 'John', age: 20 },
+  { name: 'Bob', age: 32 },
+  { name: 'Sarah', age: 38 },
+  { name: 'Wye Oak', age: 460 }
+];
 
 const NxTableSortableExample = () => {
-  const [rows, setRows] = useState(initialState);
-  const [sortDir, setSortDir] = useState<'desc' | 'asc' | null>(null);
+  const [rows, setRows] = useState(data);
+  const [sortConfig, setSortConfig] = useState<SortConfig>(null);
 
-  function sort() {
-    if (sortDir === null) {
-      setSortDir('asc');
-      setRows(rows.slice().sort((a, b) => a > b ? 1 : -1));
+  const comparators = {
+    name: ({ name: nameA }: Datum, { name: nameB }: Datum) => nameA > nameB ? 1 : -1,
+    age: ({ age: ageA }: Datum, { age: ageB }: Datum) => ageA > ageB ? 1 : -1
+  };
+
+  const sort = (column: ColumnName) => () => {
+    // if not sorting on the clicked column then sort ascending
+    if (sortConfig?.column !== column) {
+      setSortConfig({ dir: 'asc', column });
+      setRows(rows.slice().sort(comparators[column]));
     }
-    else if (sortDir === 'asc') {
-      setSortDir('desc');
-      setRows(rows.slice().reverse());
+    // if already sorting ascending on the clicked column then switch to descending
+    else if (sortConfig?.dir === 'asc') {
+      setSortConfig({ dir: 'desc', column });
+      setRows(rows.slice().sort((a, b) => -(comparators[column](a, b))));
     }
+    // if already sorting descending on the clicked column then switch to not sorting at all
     else {
-      setSortDir(null);
-      setRows(initialState);
+      setSortConfig(null);
+      setRows(data);
     }
-  }
+  };
 
   return (
     <NxTable>
       <NxTable.Head>
         <NxTable.Row>
-          <NxTable.Cell isSortable sortDir={sortDir} onClick={sort}>Name</NxTable.Cell>
+          <NxTable.Cell isSortable
+                        sortDir={sortConfig?.column === 'name' ? sortConfig.dir : null}
+                        onClick={sort('name')}>
+            Name
+          </NxTable.Cell>
+          <NxTable.Cell isSortable
+                        isNumeric
+                        sortDir={sortConfig?.column === 'age' ? sortConfig.dir : null}
+                        onClick={sort('age')}>
+            Age
+          </NxTable.Cell>
         </NxTable.Row>
       </NxTable.Head>
       <NxTable.Body>
-        {rows.map(row =>
-          <NxTable.Row key={row}>
-            <NxTable.Cell>{row}</NxTable.Cell>
+        {rows.map(({ name, age }) =>
+          <NxTable.Row key={name}>
+            <NxTable.Cell>{name}</NxTable.Cell>
+            <NxTable.Cell isNumeric>{age}</NxTable.Cell>
           </NxTable.Row>
         )}
       </NxTable.Body>
