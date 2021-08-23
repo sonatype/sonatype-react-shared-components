@@ -6,7 +6,9 @@
  */
 import React, { useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { NxSearchDropdown, NxSearchDropdownMatch } from '@sonatype/react-shared-components';
+import { debounce } from 'debounce';
+import { NxSearchDropdown, NxSearchDropdownMatch, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+  from '@sonatype/react-shared-components';
 
 const items = prepend({ id: '0', displayName: 'Loooooooooooooooooooooooooong Name' },
     map(i => ({ id: i.toString(), displayName: `Item ${i}` }), range(1, 101)));
@@ -25,31 +27,30 @@ export default function NxSearchDropdownExample() {
   const [matches, setMatches] = useState<NxSearchDropdownMatch[]>([]),
       [loading, setLoading] = useState(false),
       [query, setQuery] = useState(''),
-      pendingQueryRef = useRef<Record<string, never>>();
+      latestExecutedQueryRef = useRef<string | null>(null);
 
   function onSelect({ displayName }: NxSearchDropdownMatch) {
     alert('Selected ' + displayName);
   }
 
+  // use debounce so that the backend query does not happen until the user has stopped typing for half a second
+  const executeQuery = debounce(function executeQuery(query: string) {
+    latestExecutedQueryRef.current = query;
+
+    search(query).then(matches => {
+      // ensure that results from stale or out-of-order queries do not display
+      if (latestExecutedQueryRef.current === query) {
+        setMatches(matches);
+        setLoading(false);
+      }
+    });
+  }, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+
   function onChange(query: string) {
     setQuery(query);
     setLoading(true);
 
-    // only used for reference equality
-    const debounceId = {};
-
-    pendingQueryRef.current = debounceId;
-    setTimeout(() => {
-      if (pendingQueryRef.current === debounceId) {
-        search(query).then(matches => {
-          // check that a
-          if (pendingQueryRef.current === debounceId) {
-            setMatches(matches);
-            setLoading(false);
-          }
-        });
-      }
-    }, 500);
+    executeQuery(query);
   }
 
   return (
