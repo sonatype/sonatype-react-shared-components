@@ -16,6 +16,8 @@ import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import { partial } from 'ramda';
 export { Props, Match } from './types';
 
+export const SEARCH_DEBOUNCE_TIME = 500;
+
 const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDropdown(
   props: Props,
   ref

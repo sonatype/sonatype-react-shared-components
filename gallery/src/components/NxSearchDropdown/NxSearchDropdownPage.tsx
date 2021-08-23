@@ -107,6 +107,30 @@ const NxSearchDropdownPage = () =>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Helpers</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          The search functionality of <NxCode>NxSearchDropdown</NxCode> should be used with a debounce in order
+          to prevent excessive queries to the backend. The standard timing value to use for that debounce is provided
+          via the <NxCode>NX_SEARCH_DROPDOWN_DEBOUNCE_TIME</NxCode> export. See
+          also <NxCode>NxStatefulSearchDropdown</NxCode>, which manages the debounce internally.
+        </NxP>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Usage Notes</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          Due to its interaction with typically backend logic, <NxCode>NxSearchDropdown</NxCode> has some
+          complexities that cannot be internalized and which much be handled by the calling code. These complications
+          include debouncing the text change <em>after updating the search text and loading props</em> and ensuring
+          that match results are for the most recently entered text. The location and manner in which these concerns
+          are handled will depend on the architecture of your application, but the example below demonstrates how it
+          might be done in a stateful wrapper component that manages the asynchronous call.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Basic Example"

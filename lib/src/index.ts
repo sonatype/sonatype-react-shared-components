@@ -238,5 +238,9 @@ export { default as NxTransferList, Props as NxTransferListProps, DataItem as Nx
 export { default as NxStatefulTransferList, Props as NxStatefulTransferListProps }
   from './components/NxTransferList/stateful/NxStatefulTransferList';
 
-export { default as NxSearchDropdown, Props as NxSearchDropdownProps, Match as NxSearchDropdownMatch }
-  from './components/NxSearchDropdown/NxSearchDropdown';
+export {
+  default as NxSearchDropdown,
+  Props as NxSearchDropdownProps,
+  Match as NxSearchDropdownMatch,
+  SEARCH_DEBOUNCE_TIME as NX_SEARCH_DROPDOWN_DEBOUNCE_TIME
+} from './components/NxSearchDropdown/NxSearchDropdown';
