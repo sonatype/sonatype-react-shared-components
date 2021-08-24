@@ -44,10 +44,10 @@ const NxDropdownPage = () =>
           <NxTable.Body>
             <NxTable.Row>
               <NxTable.Cell>icon</NxTable.Cell>
-              <NxTable.Cell>string | VDOM</NxTable.Cell>
+              <NxTable.Cell>FontAwesome Icon</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
-                The name of the FontAwesome icon to use in the button. The default is <NxCode>faEllipsisV</NxCode>
+                The FontAwesome icon to use in the button. The default is <NxCode>faEllipsisV</NxCode>
                 {' '} <NxFontAwesomeIcon icon={faEllipsisV}></NxFontAwesomeIcon>.
               </NxTable.Cell>
             </NxTable.Row>
@@ -57,10 +57,7 @@ const NxDropdownPage = () =>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
                 Describes the text for a tooltip to be placed on the dropdowns' toggle element. For accessibility
-                reasons this prop is required on <NxCode>NxDropdownIconOnly</NxCode>. There are two ways to specify the
-                tooltip: the simpler way is to simply specify the tooltip text as a string. If control of more complex
-                tooltip options is desired, an object can be passed which will serve as the props for
-                {' '}<NxCode>NxTooltip</NxCode>.
+                reasons this prop is required on <NxCode>NxDropdownIconOnly</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
@@ -69,75 +66,12 @@ const NxDropdownPage = () =>
 
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
-          <NxH3>Auxiliary Components</NxH3>
+          <NxH3>Other parameters</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
-          An auxiliary component called <NxCode>NxDropdownDivider</NxCode> is available
-          to be used as separator between child elements.
+          <NxCode>NxDropdownIconOnly</NxCode> also supports the same classes and auxilary styles as{' '}
+          <NxTextLink href="#/pages/NxDropdown">NxDropdown</NxTextLink>.
         </NxP>
-      </NxTile.Subsection>
-
-      <NxTile.Subsection>
-        <NxTile.SubsectionHeader>
-          <NxH3>Dropdown Menu Content Classes</NxH3>
-        </NxTile.SubsectionHeader>
-        <NxP>
-          The following CSS classes are provided which must be used for the contents of the dropdown menu.
-        </NxP>
-        <NxTable>
-          <NxTable.Head>
-            <NxTable.Row>
-              <NxTable.Cell>Class</NxTable.Cell>
-              <NxTable.Cell>Location</NxTable.Cell>
-              <NxTable.Cell>Details</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Head>
-          <NxTable.Body>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>nx-dropdown-button</NxCode></NxTable.Cell>
-              <NxTable.Cell>
-                <NxCode>&lt;a&gt;</NxCode> and <NxCode>&lt;button&gt;</NxCode> elements
-                within the dropdown menu
-              </NxTable.Cell>
-              <NxTable.Cell>
-                Styles the buttons and links as clickable rows within the menu
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>nx-dropdown-link</NxCode></NxTable.Cell>
-              <NxTable.Cell>
-                <NxCode>&lt;a&gt;</NxCode> elements within the dropdown menu
-              </NxTable.Cell>
-              <NxTable.Cell>
-                Applies typical blue styling to links within the menu
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>nx-dropdown-right-button</NxCode></NxTable.Cell>
-              <NxTable.Cell>
-                An additional icon-only button which can appear on the right side of a menu row
-              </NxTable.Cell>
-              <NxTable.Cell>
-                Sometimes it is desirable to add a icon-only button to a menu row which performs an action distinct
-                from clicking on the row itself - for instance, a trashcan button which deletes the row. For this
-                scenario, the icon button, a preceding sibling of the main row button, must include this class and{' '}
-                <NxCode>nx-dropdown-button-content</NxCode> must be used in conjunction.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>nx-dropdown-button-content</NxCode></NxTable.Cell>
-              <NxTable.Cell>
-                Wrapper around text content of menu rows
-                when <NxCode>nx-dropdown-right-button</NxCode> is in use.
-              </NxTable.Cell>
-              <NxTable.Cell>
-                This wrapper is necessary around the text content of
-                any <NxCode>nx-dropdown-button</NxCode> which is in a menu containing
-                any <NxCode>.nx-dropdown-right-button</NxCode>s.
-              </NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Body>
-        </NxTable>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 

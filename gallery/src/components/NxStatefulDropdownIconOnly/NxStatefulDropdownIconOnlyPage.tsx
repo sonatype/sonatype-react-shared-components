@@ -35,10 +35,10 @@ const NxStatefulDropdownPage = () =>
         <NxTable.Body>
           <NxTable.Row>
             <NxTable.Cell>icon</NxTable.Cell>
-            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>FontAwesome Icon</NxTable.Cell>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
-              The name of the FontAwesome icon to use in the trigger. The default is <NxCode>faEllipsisV</NxCode>
+              The FontAwesome icon to use in the button. The default is <NxCode>faEllipsisV</NxCode>
               {' '} <NxFontAwesomeIcon icon={faEllipsisV}></NxFontAwesomeIcon>.
             </NxTable.Cell>
           </NxTable.Row>
@@ -48,10 +48,7 @@ const NxStatefulDropdownPage = () =>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
               Describes the text for a tooltip to be placed on the dropdowns' toggle element. For accessibility
-              reasons this prop is required on <NxCode>NxDropdownIconOnly</NxCode>. There are two ways to specify the
-              tooltip: the simpler way is to simply specify the tooltip text as a string. If control of more complex
-              tooltip options is desired, an object can be passed which will serve as the props for
-              {' '}<NxCode>NxTooltip</NxCode>.
+              reasons this prop is required on <NxCode>NxDropdownIconOnly</NxCode>.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
