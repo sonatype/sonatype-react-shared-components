@@ -7,18 +7,18 @@
 import React from 'react';
 
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { NxDropdownIconOnly, useToggle, NxTextLink } from '@sonatype/react-shared-components';
+import { NxIconDropdown, useToggle, NxTextLink } from '@sonatype/react-shared-components';
 
-function NxDropdownIconOnlyNavigationExample() {
+function NxIconDropdownNavigationExample() {
   const [isOpen, onToggleCollapse] = useToggle(false),
       deleteFn = () => { alert('delete'); },
       onClick = () => { alert('click'); };
 
   return (
-    <NxDropdownIconOnly isOpen={isOpen}
-                        onToggleCollapse={onToggleCollapse}
-                        icon={faEllipsisV}
-                        title="Options">
+    <NxIconDropdown isOpen={isOpen}
+                    onToggleCollapse={onToggleCollapse}
+                    icon={faEllipsisV}
+                    title="Options">
       <NxTextLink onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-link">
         Text link 1
       </NxTextLink>
@@ -40,8 +40,8 @@ function NxDropdownIconOnlyNavigationExample() {
       </button>
       <button className="nx-dropdown-button" onClick={onClick}>Save</button>
       <button className="nx-dropdown-button" onClick={deleteFn}>Delete</button>
-    </NxDropdownIconOnly>
+    </NxIconDropdown>
   );
 }
 
-export default NxDropdownIconOnlyNavigationExample;
+export default NxIconDropdownNavigationExample;

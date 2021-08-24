@@ -116,8 +116,8 @@ import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxSt
 import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
-import NxDropdownIconOnlyPage from './components/NxDropdownIconOnly/NxDropdownIconOnlyPage';
-import NxStatefulDropdownIconOnlyPage from './components/NxStatefulDropdownIconOnly/NxStatefulDropdownIconOnlyPage';
+import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
+import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -137,8 +137,8 @@ const pageConfig: PageConfig = {
     NxCodeSnippet: NxCodeSnippetPage,
     NxDropdown: NxDropdownPage,
     NxStatefulDropdown: NxStatefulDropdownPage,
-    NxDropdownIconOnly: NxDropdownIconOnlyPage,
-    NxStatefulDropdownIconOnly: NxStatefulDropdownIconOnlyPage,
+    NxIconDropdown: NxIconDropdownPage,
+    NxStatefulIconDropdown: NxStatefulIconDropdownPage,
     NxFieldset: NxFieldsetPage,
     NxFilterInput: NxFilterInputPage,
     NxFontAwesomeIcon: NxFontAwesomeIconPage,

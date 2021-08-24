@@ -7,13 +7,13 @@
 import React from 'react';
 
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { NxStatefulDropdownIconOnly } from '@sonatype/react-shared-components';
+import { NxStatefulIconDropdown } from '@sonatype/react-shared-components';
 
-function NxStatefulDropdownIconOnlyExample() {
+function NxStatefulIconDropdownExample() {
   const onClick = () => { alert('click'); };
 
   return (
-    <NxStatefulDropdownIconOnly icon={faEllipsisV} title="Stateful toggle FTW">
+    <NxStatefulIconDropdown icon={faEllipsisV} title="Stateful toggle FTW">
       <a onClick={onClick} className="nx-dropdown-button">
         Nav Link1
       </a>
@@ -35,8 +35,8 @@ function NxStatefulDropdownIconOnlyExample() {
       <button className="disabled nx-dropdown-button">
         Nav Link7 Disabled
       </button>
-    </NxStatefulDropdownIconOnly>
+    </NxStatefulIconDropdown>
   );
 }
 
-export default NxStatefulDropdownIconOnlyExample;
+export default NxStatefulIconDropdownExample;

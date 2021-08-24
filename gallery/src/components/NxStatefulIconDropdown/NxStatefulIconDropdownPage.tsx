@@ -10,16 +10,16 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
-import NxStatefulDropdownIconOnlyExample from './NxStatefulDropdownIconOnlyExample';
+import NxStatefulIconDropdownExample from './NxStatefulIconDropdownExample';
 
-const nxStatefulDropdownIconOnlyExampleCode = require('./NxStatefulDropdownIconOnlyExample?raw');
+const nxStatefulIconDropdownExampleCode = require('./NxStatefulIconDropdownExample?raw');
 
 const NxStatefulDropdownPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
         A variation of the stateful dropdown menu component which uses a single icon as its toggle.
-        <NxCode>NxStatefulDropdownIconOnly</NxCode> shares all of the same props as{' '}
+        <NxCode>NxStatefulIconDropdown</NxCode> shares all of the same props as{' '}
         <NxTextLink href="#/pages/NxStatefulDropdown">NxStatefulDropdown</NxTextLink>{' '}
         as well as the ones listed below.
       </NxP>
@@ -48,7 +48,7 @@ const NxStatefulDropdownPage = () =>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
               Describes the text for a tooltip to be placed on the dropdowns' toggle element. For accessibility
-              reasons this prop is required on <NxCode>NxDropdownIconOnly</NxCode>.
+              reasons this prop is required on <NxCode>NxIconDropdown</NxCode>.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
@@ -56,8 +56,8 @@ const NxStatefulDropdownPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
-                        codeExamples={nxStatefulDropdownIconOnlyExampleCode}
-                        liveExample={NxStatefulDropdownIconOnlyExample}>
+                        codeExamples={nxStatefulIconDropdownExampleCode}
+                        liveExample={NxStatefulIconDropdownExample}>
       This example demonstrates a simple NxStatefulDropdown, showing that it tracks
       its own open/closed state with no need for support from the surrounding code.
     </GalleryExampleTile>

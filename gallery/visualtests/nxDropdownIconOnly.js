@@ -7,14 +7,14 @@
 const { Region, Target } = require('@applitools/eyes-webdriverio');
 const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 
-describe('NxDropdownIconOnly', function() {
+describe('NxIconDropdown', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxDropdownIconOnly');
+    await browser.url('#/pages/NxIconDropdown');
   });
 
-  const defaultSelector = '#nx-dropdownicononly-links-example .nx-dropdown--icon-only';
+  const defaultSelector = '#nx-IconDropdown-links-example .nx-dropdown--icon-only';
 
-  describe('Default NxDropdownIconOnly when closed', function() {
+  describe('Default NxIconDropdown when closed', function() {
 
     it('has an indigo border by default', simpleTest(defaultSelector));
     it('has a dark grey border when hovered', hoverTest(defaultSelector));
@@ -23,7 +23,7 @@ describe('NxDropdownIconOnly', function() {
     it('has a dark grey border and light grey background when clicked', clickTest(defaultSelector));
   });
 
-  describe('Default NxDropdownIconOnly when open', function() {
+  describe('Default NxIconDropdown when open', function() {
     beforeEach(async function() {
       const button = await browser.$(defaultSelector + ' .nx-dropdown__toggle');
 
@@ -44,8 +44,8 @@ describe('NxDropdownIconOnly', function() {
     });
   });
 
-  describe('Disabled NxDropdownIconOnly', function() {
-    const selector = '#nx-dropdownicononly-disabled-example .nx-dropdown';
+  describe('Disabled NxIconDropdown', function() {
+    const selector = '#nx-IconDropdown-disabled-example .nx-dropdown';
 
     it('looks disabled', simpleTest(selector));
   });

@@ -9,7 +9,7 @@ import {
   NxFilterInput,
   NxButton,
   NxFontAwesomeIcon,
-  NxDropdownIconOnly,
+  NxIconDropdown,
   NxTextLink,
   useToggle
 } from '@sonatype/react-shared-components';
@@ -64,14 +64,14 @@ export default function NxAccordionExample() {
           <td className="nx-cell"><span>France</span></td>
           <td className="nx-cell">
             <div className="nx-btn-bar">
-              <NxDropdownIconOnly icon={faEllipsisV}
-                                  isOpen={isOpen}
-                                  onToggleCollapse={onToggleCollapse}
-                                  title="Links options">
-                <NxTextLink external className="nx-dropdown-link disabled">Save</NxTextLink>
-                <NxTextLink external className="nx-dropdown-link" onClick={deleteFn}>Delete</NxTextLink>
-                <NxTextLink external className="nx-dropdown-link" onClick={onClick}>Some Action</NxTextLink>
-              </NxDropdownIconOnly>
+              <NxIconDropdown icon={faEllipsisV}
+                              isOpen={isOpen}
+                              onToggleCollapse={onToggleCollapse}
+                              title="Links options">
+                <button className="nx-dropdown-button disabled">Save</button>
+                <button className="nx-dropdown-button" onClick={deleteFn}>Delete</button>
+                <NxTextLink external className="nx-dropdown-link" onClick={onClick}>Website Link</NxTextLink>
+              </NxIconDropdown>
             </div>
           </td>
         </tr>

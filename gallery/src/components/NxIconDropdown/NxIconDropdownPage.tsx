@@ -9,18 +9,18 @@ import { NxTable, NxTextLink, NxCode, NxH3, NxP, NxTile, NxFontAwesomeIcon } fro
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
-import NxDropdownIconOnlyExample from './NxDropdownIconOnlyExample';
-import NxDropdownIconOnlyDisabledExample from './NxDropdownIconOnlyDisabledExample';
+import NxIconDropdownExample from './NxIconDropdownExample';
+import NxIconDropdownDisabledExample from './NxIconDropdownDisabledExample';
 
-const nxDropdownIconOnlyExampleCode = require('./NxDropdownIconOnlyExample?raw'),
-    nxDropdownIconOnlyDisabledExampleCode = require('./NxDropdownIconOnlyDisabledExample?raw');
+const nxIconDropdownExampleCode = require('./NxIconDropdownExample?raw'),
+    nxIconDropdownDisabledExampleCode = require('./NxIconDropdownDisabledExample?raw');
 
 const NxDropdownPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
         A variation of the dropdown menu component which uses a single icon as its toggle.
-        <NxCode>NxDropdownIconOnly</NxCode> shares all of the same props as{' '}
+        <NxCode>NxIconDropdown</NxCode> shares all of the same props as{' '}
         <NxTextLink href="#/pages/NxDropdown" className="nx-dropdown-button">
           NxDropdown
         </NxTextLink>{' '}
@@ -57,7 +57,7 @@ const NxDropdownPage = () =>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
                 Describes the text for a tooltip to be placed on the dropdowns' toggle element. For accessibility
-                reasons this prop is required on <NxCode>NxDropdownIconOnly</NxCode>.
+                reasons this prop is required on <NxCode>NxIconDropdown</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
@@ -69,22 +69,22 @@ const NxDropdownPage = () =>
           <NxH3>Other parameters</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
-          <NxCode>NxDropdownIconOnly</NxCode> also supports the same classes and auxilary styles as{' '}
+          <NxCode>NxIconDropdown</NxCode> also supports the same classes and auxilary styles as{' '}
           <NxTextLink href="#/pages/NxDropdown">NxDropdown</NxTextLink>.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Button Example"
-                        liveExample={NxDropdownIconOnlyExample}
-                        codeExamples={nxDropdownIconOnlyExampleCode}>
-      An example of an <NxCode>NxDropdownIconOnly</NxCode> with links and <NxCode>&lt;button&gt;</NxCode>s.
+                        liveExample={NxIconDropdownExample}
+                        codeExamples={nxIconDropdownExampleCode}>
+      An example of an <NxCode>NxIconDropdown</NxCode> with links and <NxCode>&lt;button&gt;</NxCode>s.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled Example"
-                        id="nx-dropdownicononly-disabled-example"
-                        liveExample={NxDropdownIconOnlyDisabledExample}
-                        codeExamples={nxDropdownIconOnlyDisabledExampleCode}>
+                        id="nx-IconDropdown-disabled-example"
+                        liveExample={NxIconDropdownDisabledExample}
+                        codeExamples={nxIconDropdownDisabledExampleCode}>
       An example of a dropdown that is disabled.
     </GalleryExampleTile>
   </>;

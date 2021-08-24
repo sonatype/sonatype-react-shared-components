@@ -6,16 +6,16 @@
  */
 import React, { FunctionComponent } from 'react';
 
-import NxDropdownIconOnly from '../NxDropdownIconOnly';
+import NxIconDropdown from '../NxIconDropdown';
 import { Props, propTypes } from './types';
 import useToggle from '../../../util/useToggle';
 
-const NxStatefulDropdownIconOnly: FunctionComponent<Props> = function NxStatefulDropdownIconOnly(props) {
+const NxStatefulIconDropdown: FunctionComponent<Props> = function NxStatefulIconDropdown(props) {
   const [isOpen, onToggleCollapse] = useToggle(false);
 
-  return <NxDropdownIconOnly { ...{ isOpen, onToggleCollapse } } {...props} />;
+  return <NxIconDropdown { ...{ isOpen, onToggleCollapse } } {...props} />;
 };
-NxStatefulDropdownIconOnly.propTypes = propTypes;
-export default NxStatefulDropdownIconOnly;
+NxStatefulIconDropdown.propTypes = propTypes;
+export default NxStatefulIconDropdown;
 
 export { Props, propTypes } from './types';

@@ -7,15 +7,15 @@
 import React from 'react';
 
 import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { NxDropdownIconOnly } from '@sonatype/react-shared-components';
+import { NxIconDropdown } from '@sonatype/react-shared-components';
 
-function NxDropdownIconOnlyDisabledExample() {
+function NxIconDropdownDisabledExample() {
   return (
-    <NxDropdownIconOnly icon={faCog}
-                        title="Non-functional"
-                        isOpen={false}
-                        disabled={true} />
+    <NxIconDropdown icon={faCog}
+                    title="Non-functional"
+                    isOpen={false}
+                    disabled={true} />
   );
 }
 
-export default NxDropdownIconOnlyDisabledExample;
+export default NxIconDropdownDisabledExample;

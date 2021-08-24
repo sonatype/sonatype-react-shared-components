@@ -9,13 +9,13 @@ import { act } from 'react-dom/test-utils';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 
-import NxDropdownIconOnly, { Props } from '../NxDropdownIconOnly';
+import NxIconDropdown, { Props } from '../NxIconDropdown';
 import NxButton from '../../NxButton/NxButton';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 import NxDropdownMenu from '../../NxDropdownMenu/NxDropdownMenu';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-describe('NxDropdownIconOnly', () => {
+describe('NxIconDropdown', () => {
   let container: HTMLDivElement | null;
 
   const minimalProps = {
@@ -23,8 +23,8 @@ describe('NxDropdownIconOnly', () => {
         isOpen: false,
         onToggleCollapse: () => {}
       },
-      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxDropdownIconOnly, minimalProps),
-      getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxDropdownIconOnly, minimalProps);
+      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxIconDropdown, minimalProps),
+      getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxIconDropdown, minimalProps);
 
   beforeEach(function() {
     // Avoid rendering directly on the body.

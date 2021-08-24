@@ -239,9 +239,9 @@ export { default as NxStatefulTransferList, Props as NxStatefulTransferListProps
   from './components/NxTransferList/stateful/NxStatefulTransferList';
 
 export {
-  default as NxDropdownIconOnly,
-  Props as NxDropdownIconOnlyProps
-} from './components/NxDropdownIconOnly/NxDropdownIconOnly';
+  default as NxIconDropdown,
+  Props as NxIconDropdownProps
+} from './components/NxIconDropdown/NxIconDropdown';
 
-export { default as NxStatefulDropdownIconOnly }
-  from './components/NxDropdownIconOnly/stateful/NxStatefulDropdownIconOnly';
+export { default as NxStatefulIconDropdown }
+  from './components/NxIconDropdown/stateful/NxStatefulIconDropdown';

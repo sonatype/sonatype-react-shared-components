@@ -11,12 +11,12 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { Props, propTypes } from './types';
 import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import './NxDropdownIconOnly.scss';
+import './NxIconDropdown.scss';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import useDropdownEvents from '../../util/useDropdownEvents';
 
-const NxDropdownIconOnly: FunctionComponent<Props> = function NxDropdownIconOnly(props) {
+const NxIconDropdown: FunctionComponent<Props> = function NxIconDropdown(props) {
   const {
     icon,
     className,
@@ -66,8 +66,8 @@ const NxDropdownIconOnly: FunctionComponent<Props> = function NxDropdownIconOnly
   );
 };
 
-NxDropdownIconOnly.propTypes = propTypes;
-export default NxDropdownIconOnly;
+NxIconDropdown.propTypes = propTypes;
+export default NxIconDropdown;
 
 export const NxDropdownDivider = () => (
   <div className="nx-dropdown--divider"/>
