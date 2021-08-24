@@ -188,8 +188,8 @@ describe('NxSearchDropdown', function() {
 
   it('sets focus to the filter input if focus is within the dropdown menu when the menu is closed', function() {
     const component = getMounted(
-      { searchText: 'foo', matches: [{ id: '1', displayName: 'foo' }] },
-      { attachTo: mountPoint }
+        { searchText: 'foo', matches: [{ id: '1', displayName: 'foo' }] },
+        { attachTo: mountPoint }
     );
 
     (component.find('.nx-dropdown-button').getDOMNode() as HTMLElement).focus();
@@ -203,8 +203,8 @@ describe('NxSearchDropdown', function() {
   it('sets focus to the filter input if the load wrapper retry button is focused when the error prop becomes unset',
       function() {
         const component = getMounted(
-          { searchText: 'foo', error: 'foo' },
-          { attachTo: mountPoint }
+            { searchText: 'foo', error: 'foo' },
+            { attachTo: mountPoint }
         );
 
         (component.find('button.nx-load-error__retry').getDOMNode() as HTMLElement).focus();
