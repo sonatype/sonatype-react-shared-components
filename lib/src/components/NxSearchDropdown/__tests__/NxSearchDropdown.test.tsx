@@ -215,4 +215,76 @@ describe('NxSearchDropdown', function() {
         expect(document.activeElement === component.find('.nx-search-dropdown__input input').getDOMNode()).toBe(true);
       }
   );
+
+  it('calls doSeach with the current searchText if focus enters the component from elsewhere on the page while ' +
+      'there is an error', function() {
+    const doSearch = jest.fn(),
+        component = getMounted(
+            { searchText: 'foo', error: 'foo', doSearch },
+            { attachTo: mountPoint }
+        );
+
+    const anotherElement = document.createElement('button');
+    document.body.append(anotherElement);
+    anotherElement.focus();
+
+    expect(doSearch).not.toHaveBeenCalled();
+
+    (component.find('.nx-search-dropdown__input input').getDOMNode() as HTMLElement).focus();
+
+    expect(doSearch).toHaveBeenCalledWith('foo');
+
+    anotherElement.remove();
+  });
+
+  it('does not call doSeach if focus moves within the component while there is an error', function() {
+    const doSearch = jest.fn(),
+        component = getMounted(
+            { searchText: 'foo', doSearch },
+            { attachTo: mountPoint }
+        ),
+        filterInput = component.find('.nx-search-dropdown__input input').getDOMNode() as HTMLElement;
+
+    expect(doSearch).not.toHaveBeenCalled();
+
+    // get focus into the component before we set the error
+    filterInput.focus();
+    expect(doSearch).not.toHaveBeenCalled();
+
+    component.setProps({ error: 'err' });
+    expect(doSearch).not.toHaveBeenCalled();
+
+    const retryButton = component.find('button.nx-load-error__retry').getDOMNode() as HTMLElement;
+    retryButton.focus();
+    expect(doSearch).not.toHaveBeenCalled();
+
+    filterInput.focus();
+    expect(doSearch).not.toHaveBeenCalled();
+  });
+
+  it('does not call doSeach if focus moves into the component from an outside window while there is an error',
+      function() {
+        const doSearch = jest.fn(),
+            component = getMounted(
+                { searchText: 'foo', doSearch },
+                { attachTo: mountPoint }
+            ),
+            filterInput = component.find('.nx-search-dropdown__input input').getDOMNode() as HTMLElement;
+
+        expect(doSearch).not.toHaveBeenCalled();
+
+        // get focus into the component before we set the error
+        filterInput.focus();
+        expect(doSearch).not.toHaveBeenCalled();
+
+        component.setProps({ error: 'err' });
+        expect(doSearch).not.toHaveBeenCalled();
+
+        (document.activeElement! as HTMLElement).blur();
+        expect(doSearch).not.toHaveBeenCalled();
+
+        filterInput.focus();
+        expect(doSearch).not.toHaveBeenCalled();
+      }
+  );
 });
