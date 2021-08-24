@@ -9,13 +9,11 @@ import { NxTable, NxTextLink, NxCode, NxH3, NxP, NxTile, NxFontAwesomeIcon } fro
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
-import NxDropdownIconOnlyNavigationExample from './NxDropdownIconOnlyNavigationExample';
-import NxDropdownIconOnlyLinksExample from './NxDropdownIconOnlyLinksExample';
+import NxDropdownIconOnlyExample from './NxDropdownIconOnlyExample';
 import NxDropdownIconOnlyDisabledExample from './NxDropdownIconOnlyDisabledExample';
 
-const nxDropdownIconOnlyNavigationExampleCode = require('./NxDropdownIconOnlyNavigationExample?raw'),
-    nxDropdownIconOnlyLinksExampleCode = require('./NxDropdownIconOnlyLinksExample?raw'),
-    nxDropdownIconOnlyDisabledExampleCode = require('./NxDropdownIconOnlyLinksExample?raw');
+const nxDropdownIconOnlyExampleCode = require('./NxDropdownIconOnlyExample?raw'),
+    nxDropdownIconOnlyDisabledExampleCode = require('./NxDropdownIconOnlyDisabledExample?raw');
 
 const NxDropdownPage = () =>
   <>
@@ -143,19 +141,10 @@ const NxDropdownPage = () =>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Navigation Example"
-                        liveExample={NxDropdownIconOnlyNavigationExample}
-                        codeExamples={nxDropdownIconOnlyNavigationExampleCode}>
-      An example of an <NxCode>NxDropdownIconOnly</NxCode> as it might be used to implement a navigation list.
-      Note that the menu can contain either <NxCode>&lt;a&gt;</NxCode> or
-      {' '}<NxCode>&lt;button&gt;</NxCode> elements; this example contains both.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Links Example"
-                        id="nx-dropdownicononly-links-example"
-                        liveExample={NxDropdownIconOnlyLinksExample}
-                        codeExamples={nxDropdownIconOnlyLinksExampleCode}>
-      An example of a dropdown with a menu of links – typically, links to external sites.
+    <GalleryExampleTile title="Button Example"
+                        liveExample={NxDropdownIconOnlyExample}
+                        codeExamples={nxDropdownIconOnlyExampleCode}>
+      An example of an <NxCode>NxDropdownIconOnly</NxCode> with links and <NxCode>&lt;button&gt;</NxCode>s.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled Example"

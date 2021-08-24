@@ -11,6 +11,7 @@ import { NxDropdownIconOnly, useToggle, NxTextLink } from '@sonatype/react-share
 
 function NxDropdownIconOnlyNavigationExample() {
   const [isOpen, onToggleCollapse] = useToggle(false),
+      deleteFn = () => { alert('delete'); },
       onClick = () => { alert('click'); };
 
   return (
@@ -18,27 +19,27 @@ function NxDropdownIconOnlyNavigationExample() {
                         onToggleCollapse={onToggleCollapse}
                         icon={faEllipsisV}
                         title="Options">
-      <NxTextLink onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
+      <NxTextLink onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-link">
         Text link 1
       </NxTextLink>
-      <NxTextLink onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
-        Text link 2
+      <NxTextLink onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-link">
+        Text link 2 - this link should trigger truncation
       </NxTextLink>
-      <NxTextLink onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
-        Text link 3 - this link should trigger truncation
-      </NxTextLink>
+      <NxTextLink external className="nx-dropdown-link" onClick={onClick}>Website Link</NxTextLink>
       <button onClick={onClick} className="nx-dropdown-button">
-        Button Link 4 - this link should trigger truncation
+        Button Link 1 - this link should trigger truncation
       </button>
       <button onClick={onClick} className="nx-dropdown-button">
-        Button Link 5
+        Button Link 2
       </button>
       <button onClick={onClick} className="nx-dropdown-button">
-        Button Link 6
+        Button Link 3
       </button>
       <button className="disabled nx-dropdown-button">
-        Button Link 7 Disabled
+        Button Link Disabled
       </button>
+      <button className="nx-dropdown-button" onClick={onClick}>Save</button>
+      <button className="nx-dropdown-button" onClick={deleteFn}>Delete</button>
     </NxDropdownIconOnly>
   );
 }
