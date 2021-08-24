@@ -17,7 +17,7 @@ import NxLoadWrapper from '../../NxLoadWrapper/NxLoadWrapper';
 describe('NxSearchDropdown', function() {
   const minimalProps: Props = {
         searchText: '',
-        onSearchTextChange: () => {},
+        doSearch: () => {},
         matches: [],
         onSelect: () => {}
       },
@@ -69,13 +69,13 @@ describe('NxSearchDropdown', function() {
     expect(input).toHaveClassName('nx-search-dropdown__input');
   });
 
-  it('sets the searchText and onSearchTextChange as the value and onChange of the input', function() {
-    const onSearchTextChange = jest.fn(),
-        component = getShallow({ searchText: 'foo', onSearchTextChange }),
+  it('sets the searchText and doSearch as the value and onChange of the input', function() {
+    const doSearch = jest.fn(),
+        component = getShallow({ searchText: 'foo', doSearch }),
         input = component.find(NxFilterInput);
 
     expect(input).toHaveProp('value', 'foo');
-    expect(input).toHaveProp('onChange', onSearchTextChange);
+    expect(input).toHaveProp('onChange', doSearch);
   });
 
   it('adds the nx-text-input--long class to the input if the `long` prop is set', function() {
@@ -132,15 +132,15 @@ describe('NxSearchDropdown', function() {
     expect(noError.find(NxLoadWrapper)).toHaveProp('error', undefined);
   });
 
-  it('fires onSearchTextChange with the searchText when the load wrappers retryHandler is triggered', function() {
-    const onSearchTextChange = jest.fn(),
-        error = getShallow({ searchText: 'foo', error: 'bar', onSearchTextChange });
+  it('fires doSearch with the searchText when the load wrappers retryHandler is triggered', function() {
+    const doSearch = jest.fn(),
+        error = getShallow({ searchText: 'foo', error: 'bar', doSearch });
 
-    expect(onSearchTextChange).not.toHaveBeenCalled();
+    expect(doSearch).not.toHaveBeenCalled();
 
     error.find(NxLoadWrapper).prop('retryHandler')();
 
-    expect(onSearchTextChange).toHaveBeenCalledWith('foo');
+    expect(doSearch).toHaveBeenCalledWith('foo');
   });
 
   it('sets the load wrapper contents to buttons for each match', function() {
