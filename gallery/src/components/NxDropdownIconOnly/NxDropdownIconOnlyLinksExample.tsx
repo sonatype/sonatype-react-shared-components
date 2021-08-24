@@ -19,9 +19,9 @@ function NxDropdownIconOnlyActionsExample() {
                         isOpen={isOpen}
                         onToggleCollapse={onToggleCollapse}
                         title="Links options">
-      <NxTextLink external className="nx-dropdown-link disabled">Save</NxTextLink>
-      <NxTextLink external className="nx-dropdown-link" onClick={deleteFn}>Delete</NxTextLink>
-      <NxTextLink external className="nx-dropdown-link" onClick={onClick}>Some Action</NxTextLink>
+      <NxTextLink className="nx-dropdown-link disabled">Save</NxTextLink>
+      <NxTextLink className="nx-dropdown-link" onClick={deleteFn}>Delete</NxTextLink>
+      <NxTextLink external className="nx-dropdown-link" onClick={onClick}>Website Link</NxTextLink>
     </NxDropdownIconOnly>
   );
 }
