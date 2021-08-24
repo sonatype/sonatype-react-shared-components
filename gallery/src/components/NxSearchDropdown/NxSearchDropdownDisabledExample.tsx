@@ -58,7 +58,7 @@ export default function NxSearchDropdownExample() {
                       loading={loading}
                       matches={matches}
                       searchText={query}
-                      onSearchTextChange={onChange}
+                      doSearch={onChange}
                       onSelect={onSelect} />
   );
 }

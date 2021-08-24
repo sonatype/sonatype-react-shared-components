@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useRef } from 'react';
+import React, { FocusEvent, forwardRef, useRef } from 'react';
 import classnames from 'classnames';
 
 import './NxSearchDropdown.scss';
@@ -29,7 +29,7 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
         matches,
         onSelect,
         searchText,
-        onSearchTextChange,
+        doSearch,
         long,
         disabled,
         emptyMessage,
@@ -62,19 +62,32 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
   }
 
+  // There is a requirement that when there is an error querying the data, if the user navigates away from
+  // the component and then comes back to it the search should be retried automatically
+  function handleComponentFocus(evt: FocusEvent<HTMLDivElement>) {
+    // check if this is focus coming into the component from somewhere else on the page, not just moving between
+    // children of this component and not from focus coming into the browser from some other window
+    const comingFromOutsidePage = evt.relatedTarget === null,
+        comingFromChildNode = evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget);
+
+    if (!(comingFromOutsidePage || comingFromChildNode) && error) {
+      doSearch(searchText);
+    }
+  }
+
   return (
-    <div ref={ref} className={className} { ...attrs }>
+    <div ref={ref} className={className} onFocus={handleComponentFocus} { ...attrs }>
       <NxFilterInput ref={filterRef}
                      className={filterClassName}
                      value={searchText}
-                     onChange={onSearchTextChange}
+                     onChange={doSearch}
                      disabled={disabled || undefined} />
       { searchText && !disabled &&
         <NxDropdownMenu key={error ? 'error' : 'no-error'}
                         ref={menuRef}
                         className={menuClassName}
                         onClosing={onMenuClosing}>
-          <NxLoadWrapper { ...{ loading, error } } retryHandler={() => onSearchTextChange(searchText)}>
+          <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
             {
               matches.length ? matches.map(match =>
                 <button className="nx-dropdown-button" key={match.id} onClick={partial(onSelect, [match])}>

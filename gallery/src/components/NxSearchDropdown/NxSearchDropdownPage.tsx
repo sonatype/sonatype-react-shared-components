@@ -51,12 +51,17 @@ const NxSearchDropdownPage = () =>
               <NxTable.Cell>The current value of the search box</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>onSearchTextChange</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>doSearch</NxCode></NxTable.Cell>
               <NxTable.Cell>Function (string =&gt; void)</NxTable.Cell>
               <NxTable.Cell>true</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                Callback that fires when the user changes the search text, with the new value as its argument
+                Callback that fires when a new search query should be performed. This occurs whenever the user changes
+                the value of the filter input, whenever the error alert's Retry button is clicked, and whenever the
+                component gains focus while in an error state (which is intended to automatically trigger a retry
+                attempt. The handler passed in for this prop should, in addition to performing the search, update
+                the <NxCode>searchText</NxCode> and <NxCode>loading</NxCode> props. The handler receives the new
+                search text value as its argument.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -73,9 +78,7 @@ const NxSearchDropdownPage = () =>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 If there is an error loading the search results, set the error message here to render an error
-                alert instead of the results within the dropdown. The error alert's Retry button will fire
-                the <NxCode>onSearchTextChange</NxCode> callback with the current <NxCode>searchText</NxCode> when
-                clicked.
+                alert instead of the results within the dropdown.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>

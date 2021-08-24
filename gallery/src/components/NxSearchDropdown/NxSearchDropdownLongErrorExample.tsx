@@ -37,7 +37,7 @@ export default function NxSearchDropdownLongErrorExample() {
                       error={error}
                       matches={[]}
                       searchText={query}
-                      onSearchTextChange={onChange}
+                      doSearch={onChange}
                       onSelect={onSelect} />
   );
 }
