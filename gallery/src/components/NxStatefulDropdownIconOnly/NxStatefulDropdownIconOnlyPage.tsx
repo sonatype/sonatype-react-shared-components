@@ -18,7 +18,7 @@ const NxStatefulDropdownPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        A stateful variation of the dropdown menu component which uses a single icon as its toggle.
+        A variation of the stateful dropdown menu component which uses a single icon as its toggle.
         <NxCode>NxStatefulDropdownIconOnly</NxCode> shares all of the same props as{' '}
         <NxTextLink href="#/pages/NxStatefulDropdown">NxStatefulDropdown</NxTextLink>{' '}
         as well as the ones listed below.
