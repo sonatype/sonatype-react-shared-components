@@ -159,7 +159,7 @@ const NxDropdownPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled Example"
-                        id="nx-dropdown-disabled-example"
+                        id="nx-dropdownicononly-disabled-example"
                         liveExample={NxDropdownIconOnlyDisabledExample}
                         codeExamples={nxDropdownIconOnlyDisabledExampleCode}>
       An example of a dropdown that is disabled.
