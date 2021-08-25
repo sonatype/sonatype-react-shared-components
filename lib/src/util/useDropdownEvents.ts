@@ -84,7 +84,9 @@ export default function useDropdownEvents(
   };
 
   function onToggleCollapse() {
-    if (externalOnToggleCollapse) {
+    // When closing, this is handled by handlDocumentClick. So only do it here when opening
+    // (i.e. when not already open)
+    if (externalOnToggleCollapse && !isOpen) {
       externalOnToggleCollapse();
     }
   }
