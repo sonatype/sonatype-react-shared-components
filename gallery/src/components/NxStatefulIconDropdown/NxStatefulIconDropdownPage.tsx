@@ -18,9 +18,9 @@ const NxStatefulDropdownPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        A variation of the stateful dropdown menu component which uses a single icon as its toggle.
+        A variation of the icon only dropdown menu component which uses a single icon as its toggle.{' '}
         <NxCode>NxStatefulIconDropdown</NxCode> shares all of the same props as{' '}
-        <NxTextLink href="#/pages/NxStatefulDropdown">NxStatefulDropdown</NxTextLink>{' '}
+        <NxTextLink href="#/pages/NxIconDropdown">NxIconDropdown</NxTextLink>{' '}
         as well as the ones listed below.
       </NxP>
       <NxTable>
@@ -48,7 +48,7 @@ const NxStatefulDropdownPage = () =>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
               Describes the text for a tooltip to be placed on the dropdowns' toggle element. For accessibility
-              reasons this prop is required on <NxCode>NxIconDropdown</NxCode>.
+              reasons this prop is required on <NxCode>NxStatefulIconDropdown</NxCode>.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
@@ -58,7 +58,7 @@ const NxStatefulDropdownPage = () =>
     <GalleryExampleTile title="General Example"
                         codeExamples={nxStatefulIconDropdownExampleCode}
                         liveExample={NxStatefulIconDropdownExample}>
-      This example demonstrates a simple NxStatefulDropdown, showing that it tracks
+      This example demonstrates a simple NxStatefulIconDropdown, showing that it tracks
       its own open/closed state with no need for support from the surrounding code.
     </GalleryExampleTile>
   </>;
