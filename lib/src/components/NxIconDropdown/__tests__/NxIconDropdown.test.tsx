@@ -7,7 +7,7 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 import NxIconDropdown, { Props } from '../NxIconDropdown';
 import NxButton from '../../NxButton/NxButton';
@@ -41,17 +41,14 @@ describe('NxIconDropdown', () => {
 
   it('renders a button with the appropriate classes and type=button', function() {
     const component = getShallowComponent(),
-        button = component.find(NxButton);
+        button = component.find(NxButton),
+        defaultIcon = component.find(NxFontAwesomeIcon);
 
     expect(component).toHaveClassName('.nx-dropdown--icon-only');
+    expect(defaultIcon).toHaveProp('icon', faEllipsisV);
     expect(button).toHaveClassName('.nx-dropdown__toggle');
     expect(button).toHaveProp('variant', 'icon-only');
     expect(button).toHaveProp('type', 'button');
-  });
-
-  it('renders the button according to the supplied variant', function() {
-    let component = getShallowComponent();
-    expect(component.find(NxButton)).toHaveProp('variant', 'icon-only');
   });
 
   it('correctly renders a custom icon based on icon prop', function() {
