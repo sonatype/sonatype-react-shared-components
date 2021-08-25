@@ -92,7 +92,8 @@ describe('NxStatefulSegmentedButton', () => {
     const mounted = getMountedComponent(undefined, { attachTo: container });
 
     act(() => {
-      mounted.find('button.nx-segmented-btn__dropdown-btn').getDOMNode().dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      mounted.find('button.nx-segmented-btn__dropdown-btn').getDOMNode()
+          .dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
     mounted.update();
     expect(mounted.find('.nx-dropdown-menu')).toExist();
