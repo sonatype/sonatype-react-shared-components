@@ -35,8 +35,7 @@ export default function useDropdownEvents(
   externalOnCloseKeyDown?: KeyboardEventHandler | null,
   externalOnKeyDown?: KeyboardEventHandler
 ) {
-  const isToggling = useRef(false),
-      menuRef = useRef<HTMLDivElement>(null),
+  const menuRef = useRef<HTMLDivElement>(null),
       toggleRef = useRef<HTMLButtonElement>(null);
 
   const onKeyDown: KeyboardEventHandler = event => {
@@ -60,7 +59,7 @@ export default function useDropdownEvents(
   };
 
   const handleDocumentClick = (event: MouseEvent) => {
-    if (isOpen && !isToggling.current && externalOnToggleCollapse) {
+    if (isOpen && externalOnToggleCollapse) {
       let defaultPrevented = false;
 
       if (externalOnCloseClick) {
@@ -82,15 +81,9 @@ export default function useDropdownEvents(
         externalOnToggleCollapse();
       }
     }
-
-    isToggling.current = false;
   };
 
   function onToggleCollapse() {
-    if (!disabled) {
-      isToggling.current = true;
-    }
-
     if (externalOnToggleCollapse) {
       externalOnToggleCollapse();
     }
