@@ -53,7 +53,7 @@ const NxDropdownPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>title</NxTable.Cell>
-              <NxTable.Cell>string | NxTooltip Props</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
                 Describes the text for a tooltip to be placed on the dropdowns' toggle element. For accessibility
