@@ -14,6 +14,17 @@
     // only show when the component is focused
     display: none;
     width: 100%;
+
+    &--error {
+      padding: 0;
+    }
+  }
+
+  &__empty-message {
+    @include container-horizontal;
+
+    padding: var(--nx-spacing-base) var(--nx-spacing-4x);
+    text-align: center;
   }
 
   &:focus-within {
@@ -27,15 +38,4 @@
     padding-bottom: var(--nx-spacing-6x);
     text-align: center;
   }
-}
-
-.nx-search-dropdown__menu--error {
-  padding: 0;
-}
-
-.nx-search-dropdown__empty-message {
-  @include container-horizontal;
-
-  padding: var(--nx-spacing-base) var(--nx-spacing-4x);
-  text-align: center;
 }
