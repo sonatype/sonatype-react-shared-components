@@ -244,3 +244,6 @@ export {
   Match as NxSearchDropdownMatch,
   SEARCH_DEBOUNCE_TIME as NX_SEARCH_DROPDOWN_DEBOUNCE_TIME
 } from './components/NxSearchDropdown/NxSearchDropdown';
+
+export { default as NxStatefulSearchDropdown, Props as NxStatefulDropdownProps }
+  from './components/NxSearchDropdown/stateful/NxStatefulSearchDropdown';

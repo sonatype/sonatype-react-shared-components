@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
+import { omit } from 'ramda';
 import { HTMLAttributes, ReactNode } from 'react';
 
 export interface Match {
@@ -25,6 +26,10 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> 
   emptyMessage?: ReactNode;
 }
 
+export interface StatefulProps extends Omit<Props, 'searchText' | 'onSearchTextChange'> {
+  defaultSearchText?: string | null;
+}
+
 export const propTypes: PropTypes.ValidationMap<Props> = {
   loading: PropTypes.bool,
   error: PropTypes.node,
@@ -37,4 +42,9 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   long: PropTypes.bool,
   disabled: PropTypes.bool,
   emptyMessage: PropTypes.node
+};
+
+export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps> = {
+  ...omit(['searchText', 'onSearchTextChange'], propTypes),
+  defaultSearchText: PropTypes.string
 };
