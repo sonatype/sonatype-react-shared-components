@@ -10,6 +10,8 @@ import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
 
 export type FilterFn<T extends string | number = string> = (d: DataItem<T>[]) => DataItem<T>[];
 
+type SelectionChangeHandler<T> = (checked: boolean, id: T) => void;
+
 export interface DataItem<T extends string | number = string> {
   id: T;
   displayName: string;
@@ -17,7 +19,19 @@ export interface DataItem<T extends string | number = string> {
 
 export interface TransferListItemProps<T extends string | number = string> extends DataItem<T> {
   checked: boolean;
-  onChange: (checked: boolean, id: T) => void
+  onChange: SelectionChangeHandler<T>;
+}
+
+export interface TransferListHalfProps<T extends string | number = string> {
+  label: Exclude<ReactNode, null | undefined>;
+  filterValue: string;
+  onFilterChange: NxFilterInputProps['onChange'];
+  showMoveAll: boolean;
+  onMoveAll: () => void;
+  items: DataItem<T>[];
+  isSelected: boolean;
+  onItemChange: SelectionChangeHandler<T>;
+  footerContent: ReactNode;
 }
 
 export interface StatefulProps<T extends string | number = string>
