@@ -4,40 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import classnames from 'classnames';
-import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { toLower, filter, includes, groupBy, partial, identity, prop, pipe } from 'ramda';
 
 import DataItem from '../../util/DataItem';
-import { Props, TransferListItemProps, FilterFn } from './types';
-import NxFilterInput from '../NxFilterInput/NxFilterInput';
-import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import NxFieldset from '../NxFieldset/NxFieldset';
-import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+import { Props, FilterFn } from './types';
 
 export { Props } from './types';
 
 import './NxTransferList.scss';
-
-function TransferListItem<T extends string | number>(props: TransferListItemProps<T>) {
-  const { checked, id, displayName, onChange: onChangeProp } = props;
-
-  function onChange(evt: FormEvent<HTMLInputElement>) {
-    // NOTE: the `checked` property on the DOM node will have the new value, not the old
-    onChangeProp(evt.currentTarget.checked, id);
-  }
-
-  return (
-    <NxOverflowTooltip>
-      <label className="nx-transfer-list__item">
-        <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
-        <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
-        <span>{displayName}</span>
-      </label>
-    </NxOverflowTooltip>
-  );
-}
+import TransferListHalf from './TransferListHalf';
 
 const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${n === 1 ? '' : 's'} ${kind}`,
     defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
@@ -124,50 +101,24 @@ export default function NxTransferList<T extends string | number>(props: Props<T
 
   return (
     <div className={classnames('nx-transfer-list', classNameProp)} { ...attrs }>
-      <NxFieldset className="nx-transfer-list__half" label={availableItemsLabel || 'Available Items'}>
-        <div className="nx-transfer-list__control-box">
-          <NxFilterInput className="nx-transfer-list__filter"
-                         placeholder="Filter"
-                         value={availableItemsFilter}
-                         onChange={onAvailableItemsFilterChange} />
-          { showMoveAll &&
-            <button type="button" className="nx-transfer-list__move-all" onClick={onSelectAll}>
-              <NxFontAwesomeIcon icon={faPlusCircle} />
-              <span>Transfer All</span>
-            </button>
-          }
-          <div className="nx-transfer-list__item-list">
-            { visibleAvailableItems.map(
-                i => <TransferListItem key={i.id} checked={false} onChange={onChange} { ...i } />)
-            }
-          </div>
-          <div className="nx-transfer-list__footer">
-            {availableItemsCountFormatter(availableCount)}
-          </div>
-        </div>
-      </NxFieldset>
-      <NxFieldset className="nx-transfer-list__half" label={selectedItemsLabel || 'Transferred Items'}>
-        <div className="nx-transfer-list__control-box">
-          <NxFilterInput className="nx-transfer-list__filter"
-                         placeholder="Filter"
-                         value={selectedItemsFilter}
-                         onChange={onSelectedItemsFilterChange} />
-          { showMoveAll &&
-            <button type="button" className="nx-transfer-list__move-all" onClick={onUnselectAll}>
-              <NxFontAwesomeIcon icon={faTimesCircle} className="nx-transfer-list__selection-icon" />
-              <span>Remove All</span>
-            </button>
-          }
-          <div className="nx-transfer-list__item-list">
-            { visibleSelectedItems.map(
-                i => <TransferListItem key={i.id} checked={true} onChange={onChange} { ...i } />)
-            }
-          </div>
-          <div className="nx-transfer-list__footer">
-            {selectedItemsCountFormatter(selectedCount)}
-          </div>
-        </div>
-      </NxFieldset>
+      <TransferListHalf<T> label={availableItemsLabel || 'Available Items'}
+                           filterValue={availableItemsFilter}
+                           onFilterChange={onAvailableItemsFilterChange}
+                           showMoveAll={showMoveAll || false}
+                           onMoveAll={onSelectAll}
+                           isSelected={false}
+                           items={visibleAvailableItems}
+                           onItemChange={onChange}
+                           footerContent={availableItemsCountFormatter(availableCount)} />
+      <TransferListHalf<T> label={selectedItemsLabel || 'Transferred Items'}
+                           filterValue={selectedItemsFilter}
+                           onFilterChange={onSelectedItemsFilterChange}
+                           showMoveAll={showMoveAll || false}
+                           onMoveAll={onUnselectAll}
+                           isSelected={true}
+                           items={visibleSelectedItems}
+                           onItemChange={onChange}
+                           footerContent={selectedItemsCountFormatter(selectedCount)} />
     </div>
   );
 }
