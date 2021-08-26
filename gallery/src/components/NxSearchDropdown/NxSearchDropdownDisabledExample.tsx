@@ -10,8 +10,8 @@ import { debounce } from 'debounce';
 import { NxSearchDropdown, NxSearchDropdownMatch, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
-const items = prepend({ id: '0', displayName: 'Loooooooooooooooooooooooooong Name' },
-    map(i => ({ id: i.toString(), displayName: `Item ${i}` }), range(1, 101)));
+const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
+    map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101)));
 
 function search(query: string): Promise<NxSearchDropdownMatch[]> {
   const lowercaseQuery = query.toLowerCase(),

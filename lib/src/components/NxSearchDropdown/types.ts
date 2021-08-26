@@ -9,7 +9,7 @@ import { omit } from 'ramda';
 import { HTMLAttributes, ReactNode } from 'react';
 
 export interface Match {
-  id: string;
+  id: string | number;
   displayName: string;
 }
 
@@ -34,7 +34,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   loading: PropTypes.bool,
   error: PropTypes.node,
   matches: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]).isRequired,
     displayName: PropTypes.string.isRequired
   }).isRequired).isRequired,
   onSelect: PropTypes.func.isRequired,
