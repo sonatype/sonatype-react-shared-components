@@ -63,4 +63,4 @@ const NxStatefulIconDropdownPage = () =>
     </GalleryExampleTile>
   </>;
 
-export default NxStatefulDropdownPage;
+export default NxStatefulIconDropdownPage;

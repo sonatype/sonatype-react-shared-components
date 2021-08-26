@@ -89,4 +89,4 @@ const NxIconDropdownPage = () =>
     </GalleryExampleTile>
   </>;
 
-export default NxDropdownPage;
+export default NxIconDropdownPage;
