@@ -69,8 +69,4 @@ const NxIconDropdown: FunctionComponent<Props> = function NxIconDropdown(props) 
 NxIconDropdown.propTypes = propTypes;
 export default NxIconDropdown;
 
-export const NxDropdownDivider = () => (
-  <div className="nx-dropdown--divider"/>
-);
-
 export { Props, propTypes } from './types';
