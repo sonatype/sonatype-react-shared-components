@@ -50,7 +50,7 @@ const NxSearchDropdownPage = () =>
                 The initial value for the search text. Note that if this is provided, the <NxCode>matches</NxCode> and
                 <NxCode>loading</NxCode> props should be set to match. That is, if non-empty search text is set by
                 default, be sure to actually initiate a search on that text at or before the time the component is
-                created. Note that the dropdown with the loading spinner and results will not appear until the user 
+                created. Note that the dropdown with the loading spinner and results will not appear until the user
                 navigates to the component.
               </NxTable.Cell>
             </NxTable.Row>
