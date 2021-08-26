@@ -17,7 +17,8 @@ import NxLoadWrapper from '../../NxLoadWrapper/NxLoadWrapper';
 describe('NxSearchDropdown', function() {
   const minimalProps: Props = {
         searchText: '',
-        doSearch: () => {},
+        onSearchTextChange: () => {},
+        onSearch: () => {},
         matches: [],
         onSelect: () => {}
       },
@@ -69,13 +70,43 @@ describe('NxSearchDropdown', function() {
     expect(input).toHaveClassName('nx-search-dropdown__input');
   });
 
-  it('sets the searchText and doSearch as the value and onChange of the input', function() {
-    const doSearch = jest.fn(),
-        component = getShallow({ searchText: 'foo', doSearch }),
+  it('sets the searchText as the value of the input', function() {
+    const component = getShallow({ searchText: 'foo' }),
         input = component.find(NxFilterInput);
 
     expect(input).toHaveProp('value', 'foo');
-    expect(input).toHaveProp('onChange', doSearch);
+  });
+
+  it('calls onSearchTextChange whenver the input\'s onChange event fires', function() {
+    const onSearchTextChange = jest.fn(),
+        component = getShallow({ searchText: 'foo', onSearchTextChange }),
+        input = component.find(NxFilterInput);
+
+    expect(onSearchTextChange).not.toHaveBeenCalled();
+
+    input.simulate('change', 'asdf');
+
+    expect(onSearchTextChange).toHaveBeenCalledWith('asdf');
+  });
+
+  it('calls onSearch whenver the input\'s onChange event fires with a value that differs after trimming, ' +
+      'passing the trimmed value', function() {
+    const onSearch = jest.fn(),
+        component = getShallow({ searchText: 'foo ', onSearch }),
+        input = component.find(NxFilterInput);
+
+    expect(onSearch).not.toHaveBeenCalled();
+
+    input.simulate('change', 'foo');
+    input.simulate('change', ' foo');
+    input.simulate('change', ' foo ');
+    input.simulate('change', 'foo ');
+
+    expect(onSearch).not.toHaveBeenCalled();
+
+    input.simulate('change', 'fo ');
+
+    expect(onSearch).toHaveBeenCalledWith('fo');
   });
 
   it('adds the nx-text-input--long class to the input if the `long` prop is set', function() {
@@ -132,15 +163,15 @@ describe('NxSearchDropdown', function() {
     expect(noError.find(NxLoadWrapper)).toHaveProp('error', undefined);
   });
 
-  it('fires doSearch with the searchText when the load wrappers retryHandler is triggered', function() {
-    const doSearch = jest.fn(),
-        error = getShallow({ searchText: 'foo', error: 'bar', doSearch });
+  it('fires onSearch with the searchText when the load wrappers retryHandler is triggered', function() {
+    const onSearch = jest.fn(),
+        error = getShallow({ searchText: 'foo', error: 'bar', onSearch });
 
-    expect(doSearch).not.toHaveBeenCalled();
+    expect(onSearch).not.toHaveBeenCalled();
 
     error.find(NxLoadWrapper).prop('retryHandler')();
 
-    expect(doSearch).toHaveBeenCalledWith('foo');
+    expect(onSearch).toHaveBeenCalledWith('foo');
   });
 
   it('sets the load wrapper contents to buttons for each match', function() {
@@ -216,11 +247,11 @@ describe('NxSearchDropdown', function() {
       }
   );
 
-  it('calls doSeach with the current searchText if focus enters the component from elsewhere on the page while ' +
-      'there is an error', function() {
-    const doSearch = jest.fn(),
+  it('calls onSearch with the current trimmed searchText if focus enters the component from elsewhere on the page ' +
+      'while there is an error', function() {
+    const onSearch = jest.fn(),
         component = getMounted(
-            { searchText: 'foo', error: 'foo', doSearch },
+            { searchText: 'foo ', error: 'bar', onSearch },
             { attachTo: mountPoint }
         );
 
@@ -228,63 +259,63 @@ describe('NxSearchDropdown', function() {
     document.body.append(anotherElement);
     anotherElement.focus();
 
-    expect(doSearch).not.toHaveBeenCalled();
+    expect(onSearch).not.toHaveBeenCalled();
 
     (component.find('.nx-search-dropdown__input input').getDOMNode() as HTMLElement).focus();
 
-    expect(doSearch).toHaveBeenCalledWith('foo');
+    expect(onSearch).toHaveBeenCalledWith('foo');
 
     anotherElement.remove();
   });
 
-  it('does not call doSeach if focus moves within the component while there is an error', function() {
-    const doSearch = jest.fn(),
+  it('does not call onSearch if focus moves within the component while there is an error', function() {
+    const onSearch = jest.fn(),
         component = getMounted(
-            { searchText: 'foo', doSearch },
+            { searchText: 'foo', onSearch },
             { attachTo: mountPoint }
         ),
         filterInput = component.find('.nx-search-dropdown__input input').getDOMNode() as HTMLElement;
 
-    expect(doSearch).not.toHaveBeenCalled();
+    expect(onSearch).not.toHaveBeenCalled();
 
     // get focus into the component before we set the error
     filterInput.focus();
-    expect(doSearch).not.toHaveBeenCalled();
+    expect(onSearch).not.toHaveBeenCalled();
 
     component.setProps({ error: 'err' });
-    expect(doSearch).not.toHaveBeenCalled();
+    expect(onSearch).not.toHaveBeenCalled();
 
     const retryButton = component.find('button.nx-load-error__retry').getDOMNode() as HTMLElement;
     retryButton.focus();
-    expect(doSearch).not.toHaveBeenCalled();
+    expect(onSearch).not.toHaveBeenCalled();
 
     filterInput.focus();
-    expect(doSearch).not.toHaveBeenCalled();
+    expect(onSearch).not.toHaveBeenCalled();
   });
 
   it('does not call doSeach if focus moves into the component from an outside window while there is an error',
       function() {
-        const doSearch = jest.fn(),
+        const onSearch = jest.fn(),
             component = getMounted(
-                { searchText: 'foo', doSearch },
+                { searchText: 'foo', onSearch },
                 { attachTo: mountPoint }
             ),
             filterInput = component.find('.nx-search-dropdown__input input').getDOMNode() as HTMLElement;
 
-        expect(doSearch).not.toHaveBeenCalled();
+        expect(onSearch).not.toHaveBeenCalled();
 
         // get focus into the component before we set the error
         filterInput.focus();
-        expect(doSearch).not.toHaveBeenCalled();
+        expect(onSearch).not.toHaveBeenCalled();
 
         component.setProps({ error: 'err' });
-        expect(doSearch).not.toHaveBeenCalled();
+        expect(onSearch).not.toHaveBeenCalled();
 
         (document.activeElement! as HTMLElement).blur();
-        expect(doSearch).not.toHaveBeenCalled();
+        expect(onSearch).not.toHaveBeenCalled();
 
         filterInput.focus();
-        expect(doSearch).not.toHaveBeenCalled();
+        expect(onSearch).not.toHaveBeenCalled();
       }
   );
 });

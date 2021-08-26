@@ -29,7 +29,8 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
         matches,
         onSelect,
         searchText,
-        doSearch,
+        onSearchTextChange,
+        onSearch,
         long,
         disabled,
         emptyMessage,
@@ -75,12 +76,24 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
     }
   }
 
+  function handleFilterChange(value: string) {
+    onSearchTextChange(value);
+
+    if (value.trim() !== searchText.trim()) {
+      doSearch(value);
+    }
+  }
+
+  function doSearch(value: string) {
+    onSearch(value.trim());
+  }
+
   return (
     <div ref={ref} className={className} onFocus={handleComponentFocus} { ...attrs }>
       <NxFilterInput ref={filterRef}
                      className={filterClassName}
                      value={searchText}
-                     onChange={doSearch}
+                     onChange={handleFilterChange}
                      disabled={disabled || undefined} />
       { searchText && !disabled &&
         <NxDropdownMenu key={error ? 'error' : 'no-error'}

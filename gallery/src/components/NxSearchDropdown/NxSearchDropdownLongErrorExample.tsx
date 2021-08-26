@@ -23,11 +23,12 @@ export default function NxSearchDropdownLongErrorExample() {
     setError(`Error executing query ${query}`);
   }, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
 
-  function onChange(query: string) {
+  function onSearchTextChange(query: string) {
     setQuery(query);
-    setLoading(true);
-    setError(null);
+  }
 
+  function onSearch(query: string) {
+    setLoading(true);
     executeQuery(query);
   }
 
@@ -37,7 +38,8 @@ export default function NxSearchDropdownLongErrorExample() {
                       error={error}
                       matches={[]}
                       searchText={query}
-                      doSearch={onChange}
+                      onSearchTextChange={onSearchTextChange}
+                      onSearch={onSearch}
                       onSelect={onSelect} />
   );
 }

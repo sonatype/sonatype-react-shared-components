@@ -14,7 +14,8 @@ export interface Match {
 
 export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   searchText: string;
-  doSearch: (s: string) => void;
+  onSearchTextChange: (s: string) => void;
+  onSearch: (s: string) => void;
   loading?: boolean | null;
   error?: ReactNode;
   matches: Match[];
@@ -32,7 +33,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
     displayName: PropTypes.string.isRequired
   }).isRequired).isRequired,
   onSelect: PropTypes.func.isRequired,
-  doSearch: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
   long: PropTypes.bool,
   disabled: PropTypes.bool,
   emptyMessage: PropTypes.node

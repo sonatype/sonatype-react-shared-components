@@ -49,10 +49,12 @@ export default function NxSearchDropdownExample() {
     });
   }, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
 
-  function onChange(query: string) {
+  function onSearchTextChange(query: string) {
     setQuery(query);
-    setLoading(true);
+  }
 
+  function onSearch(query: string) {
+    setLoading(true);
     executeQuery(query);
   }
 
@@ -60,7 +62,8 @@ export default function NxSearchDropdownExample() {
     <NxSearchDropdown loading={loading}
                       matches={matches}
                       searchText={query}
-                      doSearch={onChange}
+                      onSearchTextChange={onSearchTextChange}
+                      onSearch={onSearch}
                       onSelect={onSelect} />
   );
 }

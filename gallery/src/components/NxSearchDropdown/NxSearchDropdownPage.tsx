@@ -51,17 +51,28 @@ const NxSearchDropdownPage = () =>
               <NxTable.Cell>The current value of the search box</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>doSearch</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>onSearchTextChange</NxCode></NxTable.Cell>
               <NxTable.Cell>Function (string =&gt; void)</NxTable.Cell>
               <NxTable.Cell>true</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                Callback that fires when a new search query should be performed. This occurs whenever the user changes
-                the value of the filter input, whenever the error alert's Retry button is clicked, and whenever the
-                component gains focus while in an error state (which is intended to automatically trigger a retry
+                Callback that fires when the user changes the search text. The handler passed in for this prop should
+                update the <NxCode>searchText</NxCode> prop. The handler receives the new search text value as its
+                argument.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>onSearch</NxCode></NxTable.Cell>
+              <NxTable.Cell>Function (string =&gt; void)</NxTable.Cell>
+              <NxTable.Cell>true</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                Callback that fires when a new search query should be performed. The <em>trimmed</em> value of the
+                filter text is passed as an argument. This callback is executed whenever the user changes
+                the trimmed value of the filter input, whenever the error alert's Retry button is clicked, and whenever
+                the component gains focus while in an error state (which is intended to automatically trigger a retry
                 attempt. The handler passed in for this prop should, in addition to performing the search, update
-                the <NxCode>searchText</NxCode> and <NxCode>loading</NxCode> props. The handler receives the new
-                search text value as its argument.
+                the <NxCode>loading</NxCode> prop. The handler receives the new search text value as its argument.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
