@@ -117,6 +117,7 @@ import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
 import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdownPage';
+import NxStatefulSearchDropdownPage from './components/NxStatefulSearchDropdown/NxStatefulSearchDropdownPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -158,6 +159,7 @@ const pageConfig: PageConfig = {
     NxPolicyViolationIndicator: NxPolicyViolationIndicatorPage,
     NxRadio: NxRadioPage,
     NxSearchDropdown: NxSearchDropdownPage,
+    NxStatefulSearchDropdown: NxStatefulSearchDropdownPage,
     NxSubmitMask: NxSubmitMaskPage,
     NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
     NxTable: NxTablePage,
