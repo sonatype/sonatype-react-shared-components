@@ -47,8 +47,7 @@ const NxIconDropdownPage = () =>
               <NxTable.Cell>FontAwesome Icon</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
-                The FontAwesome icon to use in the button. The default is <NxCode>faEllipsisV</NxCode>
-                {' '} <NxFontAwesomeIcon icon={faEllipsisV}></NxFontAwesomeIcon>.
+                The FontAwesome icon to use in the button. The default is <NxCode>faEllipsisV</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
