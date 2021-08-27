@@ -11,10 +11,7 @@ import DataItem from '../../util/DataItem';
 
 export type FilterFn<T extends string | number = string> = (d: DataItem<T>[]) => DataItem<T>[];
 
-export interface DataItem<T extends string | number = string> {
-  id: T;
-  displayName: string;
-}
+type SelectionChangeHandler<T> = (checked: boolean, id: T) => void;
 
 export interface TransferListItemProps<T extends string | number = string> extends DataItem<T> {
   checked: boolean;

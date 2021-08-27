@@ -9,7 +9,8 @@ import classnames from 'classnames';
 import { toLower, filter, includes, groupBy, partial, identity, prop, pipe } from 'ramda';
 
 import DataItem from '../../util/DataItem';
-import { Props, TransferListItemProps, FilterFn } from './types';
+import { Props, FilterFn } from './types';
+import TransferListHalf from './TransferListHalf';
 
 const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${n === 1 ? '' : 's'} ${kind}`,
     defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
