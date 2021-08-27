@@ -8,10 +8,7 @@ import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
 import { HTMLAttributes, ReactNode } from 'react';
 
-export interface Match<T extends string | number = string> {
-  id: T;
-  displayName: string;
-}
+import DataItem from '../../util/DataItem';
 
 export interface Props<T extends string | number = string> extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   searchText: string;
@@ -19,8 +16,8 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
   onSearch: (s: string) => void;
   loading?: boolean | null;
   error?: ReactNode;
-  matches: Match<T>[];
-  onSelect: (m: Match) => void;
+  matches: DataItem<T>[];
+  onSelect: (m: DataItem<T>) => void;
   long?: boolean | null;
   disabled?: boolean | null;
   emptyMessage?: ReactNode;

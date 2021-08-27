@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 import { debounce } from 'debounce';
-import { NxSearchDropdown, NxSearchDropdownMatch, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+import { NxSearchDropdown, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
 export default function NxSearchDropdownErrorExample() {
@@ -14,7 +14,7 @@ export default function NxSearchDropdownErrorExample() {
       [query, setQuery] = useState(''),
       [error, setError] = useState<string | null>(null);
 
-  function onSelect({ displayName }: NxSearchDropdownMatch) {
+  function onSelect({ displayName }: DataItem) {
     alert('Selected ' + displayName);
   }
 

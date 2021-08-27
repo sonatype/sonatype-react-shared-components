@@ -7,16 +7,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
 import { debounce } from 'debounce';
-import { NxStatefulSearchDropdown, NxSearchDropdownMatch, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+import { NxStatefulSearchDropdown, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
-const items = prepend({ id: '0', displayName: 'Loooooooooooooooooooooooooong Name' },
-    map(i => ({ id: i.toString(), displayName: `Item ${i}` }), range(1, 101)));
+const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
+    map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101)));
 
 // This function simulates a backend query that takes 2.5 seconds to return results. In a real implementation
 // this would typically use window.fetch, axios, or a similar REST library rather than querying in-memory data,
 // and typically this would be in another file outside of the react component
-function search(query: string): Promise<NxSearchDropdownMatch[]> {
+function search(query: string): Promise<DataItem<number>[]> {
   const lowercaseQuery = query.toLowerCase(),
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
 
@@ -26,11 +26,11 @@ function search(query: string): Promise<NxSearchDropdownMatch[]> {
 }
 
 export default function NxSearchDropdownExample() {
-  const [matches, setMatches] = useState<NxSearchDropdownMatch[]>([]),
+  const [matches, setMatches] = useState<DataItem<number>[]>([]),
       [loading, setLoading] = useState(false),
       latestExecutedQueryRef = useRef<string | null>(null);
 
-  function onSelect({ displayName }: NxSearchDropdownMatch) {
+  function onSelect({ displayName }: DataItem<number>) {
     alert('Selected ' + displayName);
   }
 

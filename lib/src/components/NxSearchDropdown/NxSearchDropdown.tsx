@@ -15,7 +15,7 @@ import { Props, propTypes } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
-export { Props, Match } from './types';
+export { Props } from './types';
 
 export const SEARCH_DEBOUNCE_TIME = 500;
 
