@@ -4,23 +4,24 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, forwardRef, useRef } from 'react';
+import React, { FocusEvent, Ref, useRef } from 'react';
 import classnames from 'classnames';
+import { partial } from 'ramda';
 
 import './NxSearchDropdown.scss';
 
+import forwardRef from '../../util/genericForwardRef';
 import { Props, propTypes } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
-import { partial } from 'ramda';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
 export { Props, Match } from './types';
 
 export const SEARCH_DEBOUNCE_TIME = 500;
 
-const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDropdown(
-  props: Props,
-  ref
+function NxSearchDropdownRender<T extends string | number = string>(
+  props: Props<T>,
+  ref: Ref<HTMLDivElement>
 ) {
   const {
         className: classNameProp,
@@ -114,9 +115,9 @@ const NxSearchDropdown = forwardRef<HTMLDivElement, Props>(function NxSearchDrop
       }
     </div>
   );
-});
+}
 
-NxSearchDropdown.propTypes = propTypes;
+const NxSearchDropdown = Object.assign(forwardRef(NxSearchDropdownRender), { propTypes });
 
 export default NxSearchDropdown;
 

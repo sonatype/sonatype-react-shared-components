@@ -16,7 +16,7 @@ const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name'
 // This function simulates a backend query that takes 2.5 seconds to return results. In a real implementation
 // this would typically use window.fetch, axios, or a similar REST library rather than querying in-memory data,
 // and typically this would be in another file outside of the react component
-function search(query: string): Promise<NxSearchDropdownMatch[]> {
+function search(query: string): Promise<NxSearchDropdownMatch<number>[]> {
   const lowercaseQuery = query.toLowerCase(),
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
 
@@ -26,7 +26,7 @@ function search(query: string): Promise<NxSearchDropdownMatch[]> {
 }
 
 export default function NxSearchDropdownExample() {
-  const [matches, setMatches] = useState<NxSearchDropdownMatch[]>([]),
+  const [matches, setMatches] = useState<NxSearchDropdownMatch<number>[]>([]),
       [loading, setLoading] = useState(false),
       [query, setQuery] = useState(''),
       latestExecutedQueryRef = useRef<string | null>(null);

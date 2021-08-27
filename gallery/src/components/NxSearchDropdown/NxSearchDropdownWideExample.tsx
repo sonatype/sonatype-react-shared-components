@@ -13,7 +13,7 @@ import { NxSearchDropdown, NxSearchDropdownMatch, NX_SEARCH_DROPDOWN_DEBOUNCE_TI
 const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
     map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101)));
 
-function search(query: string): Promise<NxSearchDropdownMatch[]> {
+function search(query: string): Promise<NxSearchDropdownMatch<number>[]> {
   const lowercaseQuery = query.toLowerCase(),
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
 
@@ -24,7 +24,7 @@ function search(query: string): Promise<NxSearchDropdownMatch[]> {
 }
 
 export default function NxSearchDropdownExample() {
-  const [matches, setMatches] = useState<NxSearchDropdownMatch[]>([]),
+  const [matches, setMatches] = useState<NxSearchDropdownMatch<number>[]>([]),
       [loading, setLoading] = useState(false),
       [query, setQuery] = useState(''),
       latestExecutedQueryRef = useRef<string | null>(null);

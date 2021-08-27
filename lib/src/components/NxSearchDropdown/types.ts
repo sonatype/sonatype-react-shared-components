@@ -8,29 +8,30 @@ import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
 import { HTMLAttributes, ReactNode } from 'react';
 
-export interface Match {
-  id: string | number;
+export interface Match<T extends string | number = string> {
+  id: T;
   displayName: string;
 }
 
-export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
+export interface Props<T extends string | number = string> extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   searchText: string;
   onSearchTextChange: (s: string) => void;
   onSearch: (s: string) => void;
   loading?: boolean | null;
   error?: ReactNode;
-  matches: Match[];
+  matches: Match<T>[];
   onSelect: (m: Match) => void;
   long?: boolean | null;
   disabled?: boolean | null;
   emptyMessage?: ReactNode;
 }
 
-export interface StatefulProps extends Omit<Props, 'searchText' | 'onSearchTextChange'> {
+export interface StatefulProps<T extends string | number = string>
+  extends Omit<Props<T>, 'searchText' | 'onSearchTextChange'> {
   defaultSearchText?: string | null;
 }
 
-export const propTypes: PropTypes.ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   loading: PropTypes.bool,
   error: PropTypes.node,
   matches: PropTypes.arrayOf(PropTypes.shape({
@@ -44,7 +45,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   emptyMessage: PropTypes.node
 };
 
-export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps> = {
+export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps<string | number>> = {
   ...omit(['searchText', 'onSearchTextChange'], propTypes),
   defaultSearchText: PropTypes.string
 };
