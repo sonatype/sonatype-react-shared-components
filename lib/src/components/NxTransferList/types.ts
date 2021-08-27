@@ -7,10 +7,9 @@
 import { ReactNode, HTMLAttributes } from 'react';
 
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
+import DataItem from '../../util/DataItem';
 
 export type FilterFn<T extends string | number = string> = (d: DataItem<T>[]) => DataItem<T>[];
-
-type SelectionChangeHandler<T> = (checked: boolean, id: T) => void;
 
 export interface DataItem<T extends string | number = string> {
   id: T;

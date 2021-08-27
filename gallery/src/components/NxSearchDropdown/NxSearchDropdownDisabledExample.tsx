@@ -7,13 +7,13 @@
 import React, { useRef, useState } from 'react';
 import { filter, map, prepend, range, tail } from 'ramda';
 import { debounce } from 'debounce';
-import { NxSearchDropdown, NxSearchDropdownMatch, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+import { NxSearchDropdown, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
 const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
     map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101)));
 
-function search(query: string): Promise<NxSearchDropdownMatch[]> {
+function search(query: string): Promise<DataItem<number>[]> {
   const lowercaseQuery = query.toLowerCase(),
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
 
@@ -24,12 +24,12 @@ function search(query: string): Promise<NxSearchDropdownMatch[]> {
 }
 
 export default function NxSearchDropdownExample() {
-  const [matches, setMatches] = useState<NxSearchDropdownMatch[]>(tail(items)),
+  const [matches, setMatches] = useState<DataItem<number>[]>(tail(items)),
       [loading, setLoading] = useState(false),
       [query, setQuery] = useState('Item'),
       latestExecutedQueryRef = useRef<string | null>(null);
 
-  function onSelect({ displayName }: NxSearchDropdownMatch) {
+  function onSelect({ displayName }: DataItem<number>) {
     alert('Selected ' + displayName);
   }
 
