@@ -9,22 +9,18 @@
 @import '../../scss-shared/nx-button-helpers';
 @import '../../scss-shared/nx-dropdown-variables';
 
-.nx-dropdown--icon-only {
+.nx-icon-dropdown {
   width: initial;
-
-  .nx-dropdown__toggle {
-    // we need to revert these values back to match .btn--icon-only
-    display: inline-block;
-    padding: var(--nx-spacing-2x) 0;
-    text-align: center;
-    width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-2x) + 2px);
-
-    .nx-icon {
-      align-self: unset;
-    }
-  }
 
   .nx-dropdown-menu {
     right: 0;
+  }
+}
+
+.nx-icon-dropdown__toggle {
+  margin-right: 0;
+
+  &.open {
+    border-color: var(--nx-swatch-blue-40);
   }
 }

@@ -34,9 +34,9 @@ const NxIconDropdown: FunctionComponent<Props> = function NxIconDropdown(props) 
   const { onKeyDown, onToggleCollapse, menuRef, toggleRef, onMenuClosing } =
       useDropdownEvents(isOpen, disabled, externalOnToggleCollapse, onCloseClick, onCloseKeyDown, externalOnKeyDown);
 
-  const buttonClasses = classnames('nx-dropdown__toggle', { disabled, open: isOpen });
+  const buttonClasses = classnames('nx-icon-dropdown__toggle', { disabled, open: isOpen });
 
-  const classes = classnames('nx-dropdown nx-dropdown--icon-only', className);
+  const classes = classnames('nx-dropdown nx-icon-dropdown', className);
 
   // Wrap .nx-dropdown-button and .nx-dropdown-link children in overflow tooltips
   const wrappedChildren = children && React.Children.map<ReactElement, ReactElement>(children, child => (
