@@ -16,6 +16,8 @@ const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${
     defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
     defaultSelectedItemsCountFormatter = defaultItemsCountFormatter('transferred');
 
+export { Props };
+
 export default function NxTransferList<T extends string | number>(props: Props<T>) {
   const {
     allItems,
