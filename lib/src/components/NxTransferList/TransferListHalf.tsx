@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useMemo } from 'react';
+import { filter, includes, map, partial, pipe, prop, toLower } from 'ramda';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
@@ -40,16 +41,27 @@ function TransferListItem<T extends string | number>(props: TransferListItemProp
  */
 export default function TransferListHalf<T extends string | number = string>(props: Props<T>) {
   const {
-    label,
-    filterValue,
-    onFilterChange,
-    showMoveAll,
-    onMoveAll,
-    isSelected,
-    items,
-    onItemChange,
-    footerContent
-  } = props;
+        label,
+        filterValue,
+        onFilterChange,
+        showMoveAll,
+        onMoveAll,
+        isSelected,
+        items,
+        onItemChange,
+        footerContent,
+        filterFn: filterFnProp
+      } = props,
+      defaultFilterFn = pipe(toLower, includes(toLower(filterValue))),
+      filterFn = filterFnProp ? partial(filterFnProp, [filterValue]) : defaultFilterFn,
+      visibleItems = useMemo(() => filterValue ? filter(pipe(prop('displayName'), filterFn), items) : items,
+            [filterFn, items, filterValue]);
+
+  function onMoveAllClick() {
+    const idsToMove = new Set(map(prop('id'), visibleItems));
+
+    onMoveAll(idsToMove);
+  }
 
   return (
     <NxFieldset className="nx-transfer-list__half" label={label}>
@@ -59,13 +71,13 @@ export default function TransferListHalf<T extends string | number = string>(pro
                        value={filterValue}
                        onChange={onFilterChange} />
         { showMoveAll &&
-          <button type="button" className="nx-transfer-list__move-all" onClick={onMoveAll}>
+          <button type="button" className="nx-transfer-list__move-all" onClick={onMoveAllClick}>
             <NxFontAwesomeIcon icon={isSelected ? faTimesCircle : faPlusCircle} />
             <span>{isSelected ? 'Remove' : 'Transfer'} All</span>
           </button>
         }
         <div className="nx-transfer-list__item-list">
-          { items.map(
+          { visibleItems.map(
               i => <TransferListItem key={i.id} checked={isSelected} onChange={onItemChange} { ...i } />)
           }
         </div>
