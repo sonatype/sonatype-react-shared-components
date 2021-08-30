@@ -55,7 +55,7 @@ export default function TransferListHalf<T extends string | number = string>(pro
       defaultFilterFn = pipe(toLower, includes(toLower(filterValue))),
       filterFn = filterFnProp ? partial(filterFnProp, [filterValue]) : defaultFilterFn,
       visibleItems = useMemo(() => filterValue ? filter(pipe(prop('displayName'), filterFn), items) : items,
-            [filterFn, items, filterValue]);
+          [filterFn, items, filterValue]);
 
   function onMoveAllClick() {
     const idsToMove = new Set(map(prop('id'), visibleItems));
