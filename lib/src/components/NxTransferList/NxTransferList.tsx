@@ -6,10 +6,9 @@
  */
 import React, { useMemo } from 'react';
 import classnames from 'classnames';
-import { toLower, filter, includes, groupBy, partial, identity, prop, pipe } from 'ramda';
+import { groupBy } from 'ramda';
 
-import DataItem from '../../util/DataItem';
-import { Props, FilterFn } from './types';
+import { Props } from './types';
 import TransferListHalf from './TransferListHalf';
 
 const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${n === 1 ? '' : 's'} ${kind}`,
@@ -44,31 +43,8 @@ export default function NxTransferList<T extends string | number>(props: Props<T
 
   const groupedItems = useMemo(() => groupBy(item => selectedItems.has(item.id) ? 'selected' : 'available', allItems),
           [allItems, selectedItems]),
-
-      // given filter text, returns a function which checks whether a displayName matches the filter.
-      // This returned function will either be the provided `filterFn` (partially applied over the current filter text),
-      // or a case-insensitive substring match
-      mkDisplayNameFilter = (filterText: string) =>
-        filterFn ? partial(filterFn, [filterText]) : pipe(toLower, includes(toLower(filterText))),
-
-      // Given filter text, return a function that filters a list of items
-      mkListFilter = (filterText: string) => filter<DataItem<T>>(
-          pipe(prop('displayName'), mkDisplayNameFilter(filterText))
-      ),
-
-      // The functions to filter each group of inputs
-      availableItemsFilterFn: FilterFn<T> = availableItemsFilter ? mkListFilter(availableItemsFilter) : identity,
-      selectedItemsFilterFn: FilterFn<T> = selectedItemsFilter ? mkListFilter(selectedItemsFilter) : identity,
-
-      // Do the actual filtering, but memoize it since it could be expensive
-      visibleAvailableItems = useMemo(
-          () => availableItemsFilterFn(groupedItems.available || []),
-          [allItems, selectedItems, availableItemsFilter, filterFn]
-      ),
-      visibleSelectedItems = useMemo(
-          () => selectedItemsFilterFn(groupedItems.selected || []),
-          [allItems, selectedItems, selectedItemsFilter, filterFn]
-      );
+      available = groupedItems.available || [],
+      selected = groupedItems.selected || [];
 
   const availableCount = allItems.length - selectedItems.size,
       selectedCount = selectedItems.size;
@@ -81,20 +57,18 @@ export default function NxTransferList<T extends string | number>(props: Props<T
     onChangeProp(newSelectedItems);
   }
 
-  function onSelectAll() {
+  function onSelectAll(idsToAdd: Set<T>) {
     const newSelectedItems = new Set<T>(selectedItems);
-    for (const item of visibleAvailableItems) {
-      newSelectedItems.add(item.id);
-    }
+
+    idsToAdd.forEach(id => { newSelectedItems.add(id); });
 
     onChangeProp(newSelectedItems);
   }
 
-  function onUnselectAll() {
+  function onUnselectAll(idsToRemove: Set<T>) {
     const newSelectedItems = new Set<T>(selectedItems);
-    for (const item of visibleSelectedItems) {
-      newSelectedItems.delete(item.id);
-    }
+
+    idsToRemove.forEach(id => { newSelectedItems.delete(id); });
 
     onChangeProp(newSelectedItems);
   }
@@ -107,18 +81,20 @@ export default function NxTransferList<T extends string | number>(props: Props<T
                            showMoveAll={showMoveAll || false}
                            onMoveAll={onSelectAll}
                            isSelected={false}
-                           items={visibleAvailableItems}
+                           items={available}
                            onItemChange={onChange}
-                           footerContent={availableItemsCountFormatter(availableCount)} />
+                           footerContent={availableItemsCountFormatter(availableCount)}
+                           filterFn={filterFn} />
       <TransferListHalf<T> label={selectedItemsLabel || 'Transferred Items'}
                            filterValue={selectedItemsFilter}
                            onFilterChange={onSelectedItemsFilterChange}
                            showMoveAll={showMoveAll || false}
                            onMoveAll={onUnselectAll}
                            isSelected={true}
-                           items={visibleSelectedItems}
+                           items={selected}
                            onItemChange={onChange}
-                           footerContent={selectedItemsCountFormatter(selectedCount)} />
+                           footerContent={selectedItemsCountFormatter(selectedCount)}
+                           filterFn={filterFn} />
     </div>
   );
 }

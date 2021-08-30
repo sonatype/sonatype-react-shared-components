@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import classnames from 'classnames';
-import { equals, filter, includes, partial, pipe, prop, reject, toLower, without } from 'ramda';
+import { equals, filter, pipe, prop, reject } from 'ramda';
 import React from 'react';
 import NxSearchDropdown from '../NxSearchDropdown/NxSearchDropdown';
 import TransferListHalf from '../NxTransferList/TransferListHalf';
@@ -36,13 +36,10 @@ export default function NxSearchTransferList<T extends string | number>(props: P
         ...attrs
       } = props,
       addedCount = addedItems.length,
-      defaultFilterFn = pipe(toLower, includes(toLower(addedItemsFilter))),
-      filterFn = filterFnProp ? partial(filterFnProp, [addedItemsFilter]) : defaultFilterFn,
-      visibleAddedItems = addedItemsFilter ? filter(pipe(prop('displayName'), filterFn), addedItems) : addedItems,
       addedItemsCountFormatter = addedItemsCountFormatterProp || defaultAddedItemsCountFormatter;
 
-  function onRemoveAll() {
-    const newAddedItems = without(visibleAddedItems, addedItems);
+  function onRemoveAll(idsToRemove: Set<T>) {
+    const newAddedItems = filter(({ id }) => idsToRemove.has(id), addedItems);
     onRemove(newAddedItems);
   }
 
@@ -65,7 +62,7 @@ export default function NxSearchTransferList<T extends string | number>(props: P
                            showMoveAll={showRemoveAll || false}
                            onMoveAll={onRemoveAll}
                            isSelected={true}
-                           items={visibleAddedItems}
+                           items={addedItems}
                            onItemChange={onItemRemove}
                            footerContent={addedItemsCountFormatter(addedCount)} />
     </div>

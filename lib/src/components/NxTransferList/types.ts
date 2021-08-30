@@ -23,11 +23,12 @@ export interface TransferListHalfProps<T extends string | number = string> {
   filterValue: string;
   onFilterChange: NxFilterInputProps['onChange'];
   showMoveAll: boolean;
-  onMoveAll: () => void;
+  onMoveAll: (toMove: Set<T>) => void;
   items: DataItem<T>[];
   isSelected: boolean;
   onItemChange: SelectionChangeHandler<T>;
   footerContent: ReactNode;
+  filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
 }
 
 export interface StatefulProps<T extends string | number = string>
