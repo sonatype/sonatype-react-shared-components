@@ -13,7 +13,7 @@ import NxSearchDropdown from '../../NxSearchDropdown';
 import NxStatefulSearchDropdown, { Props } from '../NxStatefulSearchDropdown';
 
 describe('NxStatefulSearchDropdown', function() {
-  const minimalProps: Props = {
+  const minimalProps: Props<string | number> = {
         onSearch: () => {},
         matches: [],
         onSelect: () => {}
