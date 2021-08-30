@@ -11,13 +11,13 @@ import { Props as NxSearchDropdownProps } from '../NxSearchDropdown/types';
 import { TransferListHalfProps } from '../NxTransferList/types';
 
 export interface Props<T extends string | number = string> extends HTMLAttributes<HTMLDivElement> {
-  searchText: NxSearchDropdownProps['searchText'];
-  onSearchTextChange: NxSearchDropdownProps['onSearchTextChange'];
-  onSearch: NxSearchDropdownProps['onSearch'];
-  loading: NxSearchDropdownProps['loading'];
-  loadError: NxSearchDropdownProps['error'];
-  searchMatches: NxSearchDropdownProps['matches'];
-  onSearchMatchSelect: NxSearchDropdownProps['onSelect'];
+  searchText: NxSearchDropdownProps<T>['searchText'];
+  onSearchTextChange: NxSearchDropdownProps<T>['onSearchTextChange'];
+  onSearch: NxSearchDropdownProps<T>['onSearch'];
+  loading: NxSearchDropdownProps<T>['loading'];
+  loadError?: NxSearchDropdownProps<T>['error'];
+  searchMatches: NxSearchDropdownProps<T>['matches'];
+  onSearchMatchSelect: NxSearchDropdownProps<T>['onSelect'];
   addedItemsLabel?: string | null;
   addedItemsFilter: TransferListHalfProps<T>['filterValue'];
   onAddedItemsFilterChange: TransferListHalfProps<T>['onFilterChange'];
