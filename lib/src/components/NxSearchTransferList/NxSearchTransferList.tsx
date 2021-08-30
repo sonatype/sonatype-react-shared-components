@@ -12,7 +12,7 @@ import TransferListHalf from '../NxTransferList/TransferListHalf';
 
 import { Props, propTypes } from './types';
 
-const defaultAddedItemsCountFormatter  = (n: number) => `${n} item${n === 1 ? '' : 's'} Added`;
+const defaultAddedItemsCountFormatter = (n: number) => `${n} item${n === 1 ? '' : 's'} Added`;
 
 export default function NxSearchTransferList<T extends string | number>(props: Props<T>) {
   const {
