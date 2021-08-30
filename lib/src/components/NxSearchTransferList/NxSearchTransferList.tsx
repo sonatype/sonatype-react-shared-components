@@ -32,7 +32,7 @@ export default function NxSearchTransferList<T extends string | number>(props: P
         addedItems,
         onRemove,
         addedItemsCountFormatter: addedItemsCountFormatterProp,
-        filterFn: filterFnProp,
+        filterFn,
         ...attrs
       } = props,
       addedCount = addedItems.length,
@@ -64,7 +64,8 @@ export default function NxSearchTransferList<T extends string | number>(props: P
                            isSelected={true}
                            items={addedItems}
                            onItemChange={onItemRemove}
-                           footerContent={addedItemsCountFormatter(addedCount)} />
+                           footerContent={addedItemsCountFormatter(addedCount)}
+                           filterFn={filterFn} />
     </div>
   );
 }
