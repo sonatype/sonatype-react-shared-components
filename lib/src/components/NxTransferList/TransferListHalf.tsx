@@ -14,6 +14,8 @@ import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import { TransferListHalfProps as Props, TransferListItemProps } from './types';
 import NxFieldset from '../NxFieldset/NxFieldset';
 
+import './TransferListHalf.scss';
+
 function TransferListItem<T extends string | number>(props: TransferListItemProps<T>) {
   const { checked, id, displayName, onChange: onChangeProp } = props;
 
