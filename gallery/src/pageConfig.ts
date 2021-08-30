@@ -118,6 +118,7 @@ import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
 import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdownPage';
 import NxStatefulSearchDropdownPage from './components/NxStatefulSearchDropdown/NxStatefulSearchDropdownPage';
+import NxSearchTransferListPage from './components/NxSearchTransferList/NxSearchTransferListPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -175,6 +176,7 @@ const pageConfig: PageConfig = {
     NxStatefulToggle: NxStatefulTogglePage,
     NxTooltip: NxTooltipPage,
     NxOverflowTooltip: NxOverflowTooltipPage,
+    NxSearchTransferList: NxSearchTransferListPage,
     NxTransferList: NxTransferListPage,
     NxStatefulTransferList: NxStatefulTransferListPage,
     NxTreeView: NxTreeViewPage,
