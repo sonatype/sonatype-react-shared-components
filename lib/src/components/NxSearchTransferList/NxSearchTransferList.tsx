@@ -11,6 +11,7 @@ import NxSearchDropdown from '../NxSearchDropdown/NxSearchDropdown';
 import TransferListHalf from '../NxTransferList/TransferListHalf';
 
 import { Props, propTypes } from './types';
+export { Props };
 
 const defaultAddedItemsCountFormatter = (n: number) => `${n} item${n === 1 ? '' : 's'} Added`;
 
