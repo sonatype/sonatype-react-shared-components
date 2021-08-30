@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { includes } from 'ramda';
 import React from 'react';
 
 import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
@@ -60,7 +61,7 @@ describe('TransferListHalf', function() {
     const onFilterChange = jest.fn(),
         component = getShallow({ onFilterChange }).find(NxFilterInput);
 
-    expect(component).toHaveProp('onFilterChange', onFilterChange);
+    expect(component).toHaveProp('onChange', onFilterChange);
   });
 
   it('renders an .nx-transfer-list__move-all button only if showMoveAll is true', function() {
@@ -79,6 +80,34 @@ describe('TransferListHalf', function() {
     expect(onMoveAll).toHaveBeenCalledTimes(1);
   });
 
+  it('passes onMoveAll a set containing every id if no filterValue is set', function() {
+    const items = [{
+          id: 1,
+          displayName: 'foo'
+        }, {
+          id: 2,
+          displayName: 'Foo'
+        }, {
+          id: 3,
+          displayName: 'bar'
+        }, {
+          id: 4,
+          displayName: 'foo'
+        }, {
+          id: 5,
+          displayName: 'Foo'
+        }, {
+          id: 6,
+          displayName: 'bar'
+        }],
+        onMoveAll = jest.fn(),
+        component = getShallow({ items, onMoveAll, showMoveAll: true });
+
+    component.find('.nx-transfer-list__move-all').simulate('click');
+
+    expect(onMoveAll).toHaveBeenCalledWith(new Set([1, 2, 3, 4, 5, 6]));
+  });
+
   it('sets the .nx-transfer-list__move-all icon to an x in a circle if isSelected, otherwise a plus in a circle',
       function() {
         const withSelected = getShallow({ showMoveAll: true, isSelected: true })
@@ -92,13 +121,13 @@ describe('TransferListHalf', function() {
   );
 
   it('sets the .nx-transfer-list__move-all text to "Remove All" when isSelected, otherwise "Transfer All"', function() {
-        const withSelected = getShallow({ showMoveAll: true, isSelected: true })
-                .find('.nx-transfer-list__move-all').find(NxFontAwesomeIcon),
-            withoutSelected = getShallow({ showMoveAll: true })
-                .find('.nx-transfer-list__move-all').find(NxFontAwesomeIcon);
+    const withSelected = getShallow({ showMoveAll: true, isSelected: true })
+            .find('.nx-transfer-list__move-all'),
+        withoutSelected = getShallow({ showMoveAll: true })
+            .find('.nx-transfer-list__move-all');
 
-        expect(withSelected).toIncludeText('Remove All');
-        expect(withoutSelected).toIncludeText('Transfer All');
+    expect(withSelected).toIncludeText('Remove All');
+    expect(withoutSelected).toIncludeText('Transfer All');
   });
 
   it('contains an .nx-transfer-list__item-list', function() {
@@ -113,8 +142,7 @@ describe('TransferListHalf', function() {
           id: 3,
           displayName: 'baz'
         }],
-        onItemChange = jest.fn(),
-        component = getMounted({ items, onItemChange }),
+        component = getMounted({ items }),
         list = component.find('.nx-transfer-list__item-list');
 
     expect(list.children().length).toBe(2);
@@ -152,5 +180,100 @@ describe('TransferListHalf', function() {
 
     expect(footer).toExist();
     expect(footer.children()).toMatchSelector('div#foo');
+  });
+
+  it('calls onItemChange when an item checkbox is toggled, passing the new boolean state and the item id', function() {
+    const selectedContainer = document.createElement('div'),
+        unselectedContainer = document.createElement('div');
+
+    document.body.appendChild(selectedContainer);
+    document.body.appendChild(unselectedContainer);
+
+    const items = [{
+          id: 1,
+          displayName: 'foo'
+        }, {
+          id: 3,
+          displayName: 'baz'
+        }],
+        onItemChangeSelected = jest.fn(),
+        onItemChangeUnselected = jest.fn(),
+        selectedComponent = getMounted({ items, onItemChange: onItemChangeSelected, isSelected: true },
+            { attachTo: selectedContainer }),
+        unselectedComponent = getMounted({ items, onItemChange: onItemChangeUnselected },
+            { attachTo: unselectedContainer }),
+        selectedList = selectedComponent.find('.nx-transfer-list__item-list'),
+        unselectedList = unselectedComponent.find('.nx-transfer-list__item-list');
+
+    expect(onItemChangeSelected).not.toHaveBeenCalled();
+    expect(onItemChangeUnselected).not.toHaveBeenCalled();
+
+    (selectedList.find('.nx-transfer-list__checkbox').at(0).getDOMNode() as HTMLElement).click();
+
+    expect(onItemChangeSelected).toHaveBeenCalledWith(false, 1);
+
+    (unselectedList.find('.nx-transfer-list__checkbox').at(1).getDOMNode() as HTMLElement).click();
+    expect(onItemChangeUnselected).toHaveBeenCalledWith(true, 3);
+
+    selectedContainer.remove();
+    unselectedContainer.remove();
+  });
+
+  describe('filtering', function() {
+    const items = [{
+      id: 1,
+      displayName: 'foo'
+    }, {
+      id: 2,
+      displayName: 'Foo'
+    }, {
+      id: 3,
+      displayName: 'bar'
+    }, {
+      id: 4,
+      displayName: 'foo'
+    }, {
+      id: 5,
+      displayName: 'Foo'
+    }, {
+      id: 6,
+      displayName: 'bar'
+    }];
+
+    const getComponent = (moreProps: Partial<Props<number>>) => getMounted({ items, ...moreProps });
+
+    it('renders only items which contain the filterValue case-insensitively', function() {
+      const component = getComponent({ filterValue: 'fo' });
+
+      expect(component.find('.nx-transfer-list__item').length).toBe(4);
+
+      expect(component.find('.nx-transfer-list__item').at(0)).toHaveText('foo');
+      expect(component.find('.nx-transfer-list__item').at(1)).toHaveText('Foo');
+      expect(component.find('.nx-transfer-list__item').at(2)).toHaveText('foo');
+      expect(component.find('.nx-transfer-list__item').at(3)).toHaveText('Foo');
+    });
+
+    it('renders only items that match the filterValue according to the filterFn when specified', function() {
+      const component = getComponent({
+        filterValue: 'fo',
+        filterFn: includes // case sensitive inclusion
+      });
+
+      expect(component.find('.nx-transfer-list__item').length).toBe(2);
+
+      expect(component.find('.nx-transfer-list__item').at(0)).toHaveText('foo');
+      expect(component.find('.nx-transfer-list__item').at(1)).toHaveText('foo');
+    });
+
+    it('passes onMoveAll a set containing ids of visible items if filterValue is set', function() {
+      const onMoveAll = jest.fn(),
+          component = getComponent({ filterValue: 'fo', onMoveAll, showMoveAll: true });
+
+      expect(onMoveAll).not.toHaveBeenCalled();
+
+      component.find('.nx-transfer-list__move-all').simulate('click');
+
+      expect(onMoveAll).toHaveBeenCalledWith(new Set([1, 2, 4, 5]));
+    });
   });
 });
