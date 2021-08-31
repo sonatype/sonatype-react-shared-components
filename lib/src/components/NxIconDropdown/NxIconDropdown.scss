@@ -18,9 +18,10 @@
 }
 
 .nx-icon-dropdown__toggle {
-  margin-right: 0;
+  margin-right: var(--nx-spacing-6x);
+  margin-left: var(--nx-spacing-6x);
 
   &.open {
-    border-color: var(--nx-swatch-blue-40);
+    border-color: var(--nx-swatch-grey-5);
   }
 }
