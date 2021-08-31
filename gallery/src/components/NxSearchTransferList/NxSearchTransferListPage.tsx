@@ -10,8 +10,10 @@ import { NxCode, NxH3, NxP, NxTable, NxTextLink, NxTile } from '@sonatype/react-
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import Example from './NxSearchTransferListExample';
+import ComplexExample from './NxSearchTransferListComplexExample';
 
-const exampleCode = require('./NxSearchTransferListExample?raw');
+const exampleCode = require('./NxSearchTransferListExample?raw'),
+    complexExampleCode = require('./NxSearchTransferListComplexExample?raw');
 
 const NxSearchTransferListPage = () =>
   <>
@@ -194,6 +196,14 @@ const NxSearchTransferListPage = () =>
                         liveExample={Example}
                         codeExamples={[exampleCode]}>
       A basic example of an <NxCode>NxSearchTransferList</NxCode> showing usage of the required props.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Complex Example"
+                        id="nx-search-transfer-list-complex-example"
+                        liveExample={ComplexExample}
+                        codeExamples={[complexExampleCode]}>
+      An example of an <NxCode>NxSearchTransferList</NxCode> showing usage of the all props. In this contrived example,
+      the asynchronous data store only queries successfully once, and errors out on successive queries.
     </GalleryExampleTile>
   </>;
 
