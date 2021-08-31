@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxH3, NxTile } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxH3, NxTile, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -141,6 +141,20 @@ const NxSearchDropdownPage = () =>
               <NxTable.Cell>"No Results Found"</NxTable.Cell>
               <NxTable.Cell>
                 The text to display when the user performs a query for which no results are returned
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                  Div Attributes
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxSearchDropdown</NxCode> supports any html attribute that's normally supported by{' '}
+                HTML <NxCode>&lt;div&gt;</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
