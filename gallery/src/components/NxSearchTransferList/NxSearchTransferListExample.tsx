@@ -13,15 +13,12 @@ import { debounce } from 'debounce';
 const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
     map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101)));
 
-// This function simulates a backend query that takes 2.5 seconds to return results. In a real implementation
-// this would typically use window.fetch, axios, or a similar REST library rather than querying in-memory data,
-// and typically this would be in another file outside of the react component
 function search(query: string): Promise<DataItem<number>[]> {
   const lowercaseQuery = query.toLowerCase(),
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
 
   return new Promise(resolve => {
-    setTimeout(() => resolve(matchingItems), 2500);
+    setTimeout(() => resolve(matchingItems), 1000);
   });
 }
 
@@ -53,6 +50,7 @@ export default function NxSearchTransferListExample() {
 
   function selectMatch(match: DataItem<number>) {
     setAddedItems([...addedItems, match]);
+    setSearchText('');
   }
 
   return <NxSearchTransferList { ...{ searchText, loading, searchMatches, addedItemsFilter, addedItems } }
