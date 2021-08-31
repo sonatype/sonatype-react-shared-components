@@ -10,6 +10,8 @@ import React from 'react';
 import NxSearchDropdown from '../NxSearchDropdown/NxSearchDropdown';
 import TransferListHalf from '../NxTransferList/TransferListHalf';
 
+import './NxSearchTransferList.scss';
+
 import { Props, propTypes } from './types';
 export { Props };
 

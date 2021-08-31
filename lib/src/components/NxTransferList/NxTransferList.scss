@@ -6,11 +6,10 @@
  */
 .nx-transfer-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto auto;
   gap: var(--nx-spacing-6x);
   margin-top: var(--nx-spacing-2x);
-  width: 720px;
-  min-width: 720px;
+  width: max-content;
 
   .nx-legend__text::after {
     // remove "Optional"
@@ -20,4 +19,8 @@
 
 .nx-transfer-list--full-width {
   width: auto;
+
+  .nx-transfer-list__half {
+    width: auto;
+  }
 }
