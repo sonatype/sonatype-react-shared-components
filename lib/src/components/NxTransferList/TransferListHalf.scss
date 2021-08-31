@@ -17,6 +17,11 @@ $nx-transfer-list-visible-item-count: 10;
   margin-bottom: 0;
   width: 348px;
   min-width: 348px;
+
+  .nx-legend__text::after {
+    // remove "Optional"
+    display: none;
+  }
 }
 
 .nx-transfer-list__half-header {

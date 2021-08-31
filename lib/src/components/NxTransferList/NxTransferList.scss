@@ -10,11 +10,6 @@
   gap: var(--nx-spacing-6x);
   margin-top: var(--nx-spacing-2x);
   width: max-content;
-
-  .nx-legend__text::after {
-    // remove "Optional"
-    display: none;
-  }
 }
 
 .nx-transfer-list--full-width {
