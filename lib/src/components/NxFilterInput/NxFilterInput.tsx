@@ -7,7 +7,7 @@
 import React, { forwardRef } from 'react';
 import { omit } from 'ramda';
 import classnames from 'classnames';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import './NxFilterInput.scss';
 
@@ -18,18 +18,16 @@ export { Props } from './types';
 
 const NxFilterInput = forwardRef<HTMLDivElement, Props>(
     function NxFilterInput(props, ref) {
-      const classes = classnames('nx-filter-input', props.className),
+      const { className: classNameProp, searchIcon, ...otherProps } = props,
+          className = classnames('nx-filter-input', classNameProp),
 
           // just in case these props get passed in, avoid passing them to NxTextInput as they would cause
           // malfunction
-          otherProps = omit(['validatable', 'validationErrors', 'type'], props),
-          filterIcon = <NxFontAwesomeIcon icon={faFilter} className="nx-icon--filter-icons" />;
+          cleanedProps = omit(['validatable', 'validationErrors', 'type'], otherProps),
+          filterIcon = searchIcon ? faSearch : faFilter,
+          prefixContent = <NxFontAwesomeIcon icon={filterIcon} className="nx-icon--filter-icons" />;
 
-      return <NxTextInput { ...otherProps }
-                          ref={ref}
-                          isPristine={false}
-                          className={classes}
-                          prefixContent={filterIcon} />;
+      return <NxTextInput { ...cleanedProps } { ...{ prefixContent, className } } ref={ref} isPristine={false} />;
     }
 );
 

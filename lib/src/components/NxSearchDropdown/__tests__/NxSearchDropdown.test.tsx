@@ -15,7 +15,7 @@ import NxDropdownMenu from '../../NxDropdownMenu/NxDropdownMenu';
 import NxLoadWrapper from '../../NxLoadWrapper/NxLoadWrapper';
 
 describe('NxSearchDropdown', function() {
-  const minimalProps: Props = {
+  const minimalProps: Props<string | number> = {
         searchText: '',
         onSearchTextChange: () => {},
         onSearch: () => {},
