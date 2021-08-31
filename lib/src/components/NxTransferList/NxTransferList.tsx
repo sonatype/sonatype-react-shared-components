@@ -8,12 +8,7 @@ import React, { useMemo } from 'react';
 import classnames from 'classnames';
 import { groupBy } from 'ramda';
 
-import DataItem from '../../util/DataItem';
-import { Props, FilterFn } from './types';
-
-export { Props } from './types';
-
-import './NxTransferList.scss';
+import { Props } from './types';
 import TransferListHalf from './TransferListHalf';
 
 const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${n === 1 ? '' : 's'} ${kind}`,
