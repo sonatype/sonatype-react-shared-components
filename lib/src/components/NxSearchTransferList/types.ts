@@ -25,7 +25,7 @@ export interface Props<T extends string | number = string> extends HTMLAttribute
   addedItems: TransferListHalfProps<T>['items'];
   onRemove: (newAddedItems: TransferListHalfProps<T>['items']) => void;
   addedItemsCountFormatter?: ((n: number) => string) | null;
-  filterFn?: ((s: string) => boolean) | null;
+  filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
 }
 
 const matchesPropType = PropTypes.arrayOf(PropTypes.shape({
