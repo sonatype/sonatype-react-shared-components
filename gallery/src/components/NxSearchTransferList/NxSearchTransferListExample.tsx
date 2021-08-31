@@ -6,9 +6,8 @@
  */
 import React, { useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { DataItem, NxSearchTransferList, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
-  from '@sonatype/react-shared-components';
-import { debounce } from 'debounce';
+import { DataItem, NxSearchTransferList, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME } from '@sonatype/react-shared-components';
+import { useDebounceCallback } from '@react-hook/debounce';
 
 const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
     map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101)));
@@ -28,20 +27,20 @@ export default function NxSearchTransferListExample() {
       [searchMatches, setSearchMatches] = useState<DataItem<number>[]>([]),
       [addedItemsFilter, setAddedItemsFilter] = useState(''),
       [addedItems, setAddedItems] = useState<DataItem<number>[]>([]),
-      latestExecutedQueryRef = useRef<string | null>(null);
+      latestExecutedQueryRef = useRef<string | null>(null),
 
-  // use debounce so that the backend query does not happen until the user has stopped typing for half a second
-  const executeQuery = debounce(function executeQuery(query: string) {
-    latestExecutedQueryRef.current = query;
+      // use debounce so that the backend query does not happen until the user has stopped typing for half a second
+      executeQuery = useDebounceCallback(function executeQuery(query: string) {
+        latestExecutedQueryRef.current = query;
 
-    search(query).then(matches => {
-      // ensure that results from stale or out-of-order queries do not display
-      if (latestExecutedQueryRef.current === query) {
-        setSearchMatches(matches);
-        setLoading(false);
-      }
-    });
-  }, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+        search(query) .then(matches => {
+          // ensure that results from stale or out-of-order queries do not display
+          if (latestExecutedQueryRef.current === query) {
+            setSearchMatches(matches);
+            setLoading(false);
+          }
+        });
+      }, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
 
   function doSearch(query: string) {
     setLoading(true);
