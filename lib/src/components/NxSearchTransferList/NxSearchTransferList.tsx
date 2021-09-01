@@ -4,9 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import classnames from 'classnames';
-import { equals, filter, pipe, prop, reject } from 'ramda';
 import React from 'react';
+import classnames from 'classnames';
+import { equals, pipe, prop, reject } from 'ramda';
 import NxSearchDropdown from '../NxSearchDropdown/NxSearchDropdown';
 import TransferListHalf from '../NxTransferList/TransferListHalf';
 
@@ -41,7 +41,7 @@ export default function NxSearchTransferList<T extends string | number>(props: P
       addedItemsCountFormatter = addedItemsCountFormatterProp || defaultAddedItemsCountFormatter;
 
   function onRemoveAll(idsToRemove: Set<T>) {
-    const newAddedItems = filter(({ id }) => idsToRemove.has(id), addedItems);
+    const newAddedItems = reject(({ id }) => idsToRemove.has(id), addedItems);
     onRemove(newAddedItems);
   }
 
