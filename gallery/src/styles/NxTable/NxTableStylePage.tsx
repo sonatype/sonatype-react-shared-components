@@ -70,7 +70,6 @@ const NxTableStylePage = () =>
               Used to apply{' '}
               <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout">
                 <NxCode>table-layout: fixed</NxCode>
-                <NxFontAwesomeIcon icon={faExternalLinkAlt} />
               </NxTextLink>
               {' '}to <NxCode>nx-table</NxCode>s. This class should be used in lieu of setting
               <NxCode>table-layout</NxCode> manually, as it also makes some adjustments to the
