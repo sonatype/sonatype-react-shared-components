@@ -5,9 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert, NxFontAwesomeIcon, NxWarningAlert, NxTable, NxP, NxCode, NxTextLink }
+import { NxInfoAlert, NxWarningAlert, NxTable, NxP, NxCode, NxTextLink }
   from '@sonatype/react-shared-components';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxTableExamples from './NxTableExamples';
