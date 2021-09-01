@@ -251,3 +251,6 @@ export { default as DataItem, default as NxTransferListDataItem } from './util/D
 
 export { default as NxSearchTransferList, Props as NxSearchTransferListProps }
   from './components/NxSearchTransferList/NxSearchTransferList';
+
+export { default as NxStatefulSearchTransferList, Props as NxStatefulSearchTransferListProps }
+  from './components/NxSearchTransferList/stateful/NxStatefulSearchTransferList';
