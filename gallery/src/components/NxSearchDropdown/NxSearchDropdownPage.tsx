@@ -71,7 +71,7 @@ const NxSearchDropdownPage = () =>
                 filter text is passed as an argument. This callback is executed whenever the user changes
                 the trimmed value of the filter input, whenever the error alert's Retry button is clicked, and whenever
                 the component gains focus while in an error state (which is intended to automatically trigger a retry
-                attempt. The handler passed in for this prop should, in addition to performing the search, update
+                attempt). The handler passed in for this prop should, in addition to performing the search, update
                 the <NxCode>loading</NxCode> prop. The handler receives the new search text value as its argument.
               </NxTable.Cell>
             </NxTable.Row>
