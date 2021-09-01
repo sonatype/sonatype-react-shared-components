@@ -117,11 +117,25 @@
 
 .nx-text-input--textarea {
   .nx-text-input__box {
-    align-items: flex-end;
+    align-items: unset;
+    display: flex;
+    flex-direction: column;
+
+    &::before {
+      content: unset;
+    }
+
+    svg {
+      align-self: flex-end;
+      margin: var(--nx-spacing-2x) 0 0 0;
+    }
   }
 }
 
 textarea.nx-text-input__input {
+  //To disable horizontal resize of textarea
+  max-width: 100%;
+  min-width: 100%;
   min-height: 220px;
   padding: 0;
 }
