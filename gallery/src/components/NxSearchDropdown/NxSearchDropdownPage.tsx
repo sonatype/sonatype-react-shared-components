@@ -153,7 +153,7 @@ const NxSearchDropdownPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                <NxCode>NxSearchDropdown</NxCode> supports any html attribute that's normally supported by{' '}
+                <NxCode>NxSearchDropdown</NxCode> supports any HTML attribute that's normally supported by{' '}
                 HTML <NxCode>&lt;div&gt;</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
