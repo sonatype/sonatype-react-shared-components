@@ -6,7 +6,7 @@
  */
 import React, { useRef, useState } from 'react';
 import { filter, map, prepend, range, tail } from 'ramda';
-import { debounce } from 'debounce';
+import { useDebounceCallback } from '@react-hook/debounce';
 import { NxSearchDropdown, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
@@ -34,7 +34,7 @@ export default function NxSearchDropdownExample() {
   }
 
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
-  const executeQuery = debounce(function executeQuery(query: string) {
+  const executeQuery = useDebounceCallback(function executeQuery(query: string) {
     latestExecutedQueryRef.current = query;
 
     search(query).then(matches => {

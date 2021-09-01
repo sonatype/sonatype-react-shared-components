@@ -6,14 +6,14 @@
  */
 import React, { useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { debounce } from 'debounce';
+import { useDebounceCallback } from '@react-hook/debounce';
 import { NxSearchDropdown, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
 const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
     map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101)));
 
-// This function simulates a backend query that takes 2.5 seconds to return results. In a real implementation
+// This function simulates a backend query that takes 3 seconds to return results. In a real implementation
 // this would typically use window.fetch, axios, or a similar REST library rather than querying in-memory data,
 // and typically this would be in another file outside of the react component
 function search(query: string): Promise<DataItem<number>[]> {
@@ -21,7 +21,7 @@ function search(query: string): Promise<DataItem<number>[]> {
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
 
   return new Promise(resolve => {
-    setTimeout(() => resolve(matchingItems), 2500);
+    setTimeout(() => resolve(matchingItems), 3000);
   });
 }
 
@@ -37,7 +37,7 @@ export default function NxSearchDropdownExample() {
   }
 
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
-  const executeQuery = debounce(function executeQuery(query: string) {
+  const executeQuery = useDebounceCallback(function executeQuery(query: string) {
     latestExecutedQueryRef.current = query;
 
     search(query).then(matches => {

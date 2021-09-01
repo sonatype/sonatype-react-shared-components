@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxH3, NxTile } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxH3, NxTile, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -71,7 +71,7 @@ const NxSearchDropdownPage = () =>
                 filter text is passed as an argument. This callback is executed whenever the user changes
                 the trimmed value of the filter input, whenever the error alert's Retry button is clicked, and whenever
                 the component gains focus while in an error state (which is intended to automatically trigger a retry
-                attempt. The handler passed in for this prop should, in addition to performing the search, update
+                attempt). The handler passed in for this prop should, in addition to performing the search, update
                 the <NxCode>loading</NxCode> prop. The handler receives the new search text value as its argument.
               </NxTable.Cell>
             </NxTable.Row>
@@ -141,6 +141,20 @@ const NxSearchDropdownPage = () =>
               <NxTable.Cell>"No Results Found"</NxTable.Cell>
               <NxTable.Cell>
                 The text to display when the user performs a query for which no results are returned
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                  Div Attributes
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxSearchDropdown</NxCode> supports any HTML attribute that's normally supported by{' '}
+                HTML <NxCode>&lt;div&gt;</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
