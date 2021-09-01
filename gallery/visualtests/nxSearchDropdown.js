@@ -57,7 +57,7 @@ describe('NxSearchDropdown', function() {
     await browser.eyesRegionSnapshot(null, Target.region(region));
   });
 
-  it('looks right with a truncated results', async function() {
+  it('looks right with truncated results', async function() {
     const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
         dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
         [component, input, dropdownButton] = await Promise.all([

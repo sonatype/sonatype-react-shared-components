@@ -293,7 +293,7 @@ describe('NxSearchDropdown', function() {
     expect(onSearch).not.toHaveBeenCalled();
   });
 
-  it('does not call doSeach if focus moves into the component from an outside window while there is an error',
+  it('does not call onSearch if focus moves into the component from an outside window while there is an error',
       function() {
         const onSearch = jest.fn(),
             component = getMounted(

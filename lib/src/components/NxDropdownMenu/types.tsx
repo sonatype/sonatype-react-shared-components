@@ -7,13 +7,11 @@
 import { HTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
-export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'className'> {
+export interface Props extends HTMLAttributes<HTMLDivElement> {
   onClosing: () => void;
-  className?: string | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   onClosing: PropTypes.func.isRequired,
-  className: PropTypes.string,
   children: PropTypes.node
 };
