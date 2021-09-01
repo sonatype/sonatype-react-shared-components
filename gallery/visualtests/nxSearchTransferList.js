@@ -22,7 +22,7 @@ describe('NxSearchTransferList', function() {
     const inputSelector = `${simpleListSelector} .nx-filter-input input`,
         dropdownButtonSelector = `${simpleListSelector} .nx-dropdown-button`,
         [component, input, dropdownButton] = await Promise.all([
-          browser.$(basicExampleSelector),
+          browser.$(simpleListSelector),
           browser.$(inputSelector),
           browser.$(dropdownButtonSelector)
         ]);
