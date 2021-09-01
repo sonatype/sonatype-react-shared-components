@@ -27,7 +27,7 @@ describe('NxSearchTransferList', function() {
           browser.$(dropdownButtonSelector)
         ]);
 
-    await input.scrollIntoView({ block: 'center' });
+    await component.scrollIntoView({ block: 'end' });
     await input.setValue('1');
     await dropdownButton.waitForDisplayed();
 
