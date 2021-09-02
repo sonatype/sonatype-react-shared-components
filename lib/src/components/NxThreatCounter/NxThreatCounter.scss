@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-text-helpers';
 
 .nx-threat-counter {
   align-items: center;
@@ -23,12 +23,12 @@
 }
 
 .nx-threat-counter__count {
-  @include bold();
+  @include nx-text-helpers.bold;
   margin: 0;
 }
 
 .nx-threat-counter__text {
-  @include semi-bold();
+  @include nx-text-helpers.semi-bold;
   margin-left: var(--nx-spacing-2x);
   text-transform: uppercase;
 }
