@@ -133,11 +133,9 @@
 }
 
 textarea.nx-text-input__input {
-  //To disable horizontal resize of textarea
-  max-width: 100%;
-  min-width: 100%;
   min-height: 220px;
   padding: 0;
+  resize: vertical;
 }
 
 ::-ms-clear {
