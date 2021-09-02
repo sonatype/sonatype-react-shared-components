@@ -4,6 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+
 @font-face {
   font-family: "Open Sans";
   src: url("../assets/fonts/open-sans-v18-latin-regular.woff") format("woff");
@@ -75,7 +78,7 @@
 }
 
 .nx-body {
-  @include regular();
+  @include nx-text-helpers.regular;
 
   color: var(--nx-color-text);
   font-size: var(--nx-font-size);
@@ -88,8 +91,8 @@
 }
 
 .nx-h1 {
-  @include bold();
-  @include container-horizontal;
+  @include nx-text-helpers.bold;
+  @include nx-container-helpers.container-horizontal;
   @extend %nx-heading;
 
   font-size: var(--nx-font-size-heading-1);
@@ -97,8 +100,8 @@
 }
 
 .nx-h2 {
-  @include semi-bold();
-  @include container-horizontal;
+  @include nx-text-helpers.semi-bold;
+  @include nx-container-helpers.container-horizontal;
   @extend %nx-heading;
 
   font-size: var(--nx-font-size-heading-2);
@@ -106,8 +109,8 @@
 }
 
 .nx-h3 {
-  @include bold();
-  @include container-horizontal;
+  @include nx-text-helpers.bold;
+  @include nx-container-helpers.container-horizontal;
   @extend %nx-heading;
 
   font-size: var(--nx-font-size-heading-3);
@@ -115,8 +118,8 @@
 }
 
 .nx-h4 {
-  @include semi-bold();
-  @include container-horizontal;
+  @include nx-text-helpers.semi-bold;
+  @include nx-container-helpers.container-horizontal;
   @extend %nx-heading;
 
   font-size: var(--nx-font-size-heading-4);
@@ -130,5 +133,5 @@
 
 // Form typography
 .nx-text-input__input {
-  @include regular();
+  @include nx-text-helpers.regular;
 }

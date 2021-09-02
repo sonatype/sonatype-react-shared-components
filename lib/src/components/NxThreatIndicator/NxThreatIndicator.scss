@@ -6,12 +6,12 @@
  */
 
 // eyeballed, assumes $nx-font-size surrounding text
-$nx-threat-indicator-vertical-alignment: -0.1em;
+$-vertical-alignment: -0.1em;
 
 .nx-threat-indicator {
   font-size: var(--nx-font-size-s);
   margin: 0 var(--nx-spacing-2x);
-  vertical-align: $nx-threat-indicator-vertical-alignment;
+  vertical-align: $-vertical-alignment;
 }
 
 .nx-list__item {
@@ -21,7 +21,7 @@ $nx-threat-indicator-vertical-alignment: -0.1em;
     grid-area: indicator;
     margin-left: 0;
     position: relative;
-    bottom: $nx-threat-indicator-vertical-alignment;
+    bottom: $-vertical-alignment;
   }
 }
 

@@ -24,7 +24,8 @@ const NxFontSizePage = () =>
       </NxP>
       <NxP>
         The mixin takes a single variable which is the desired font-size with unit. For example:
-        {' '}<NxCode>@include font-size(14px);</NxCode> or <NxCode>@include font-size(1.1em);</NxCode>.
+        {' '}<NxCode>@include nx-text-helpers.font-size(14px);</NxCode> or{' '}
+        <NxCode>@include nx-text-helpers.font-size(1.1em);</NxCode>.
       </NxP>
       <NxP>
         The mixin adjusts the default text size as well as several form elements which have default font size values

@@ -4,21 +4,21 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-focus-border-helpers';
+@use '../../scss-shared/nx-focus-border-helpers';
 
-$nx-checkbox-height: 16px;
-$nx-checkbox-width: 16px;
+$-height: 16px;
+$-width: 16px;
 
 .nx-checkbox__box {
   border-radius: 2px;
   box-sizing: border-box;
-  height: $nx-checkbox-height;
+  height: $-height;
   position: relative;
-  width: $nx-checkbox-width;
+  width: $-width;
 
   // Pseudo-element style is for the focus border
   &::after{
-    @include nx-radio-checkbox-focus-border($nx-checkbox-height, $nx-checkbox-width);
+    @include nx-focus-border-helpers.radio-checkbox-focus-border($-height, $-width);
 
     border-radius: 4px;
     left: -5px;

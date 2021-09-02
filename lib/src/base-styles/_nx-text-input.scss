@@ -4,6 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+
 .nx-text-input {
   display: inline-block;
   position: relative;
@@ -65,7 +67,7 @@
 }
 
 .nx-text-input__box {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   align-items: center;
   background-color: var(--nx-swatch-white);

@@ -4,9 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-container-helpers';
-@import '../../scss-shared/nx-text-helpers';
-@import '../../scss-shared/nx-button-helpers';
+@use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-button-helpers';
 
 .nx-accordion {
   background: var(--nx-color-component-background);
@@ -23,7 +23,7 @@
   }
 
   > .nx-accordion__summary-wrapper {
-    @include container-horizontal;
+    @include nx-container-helpers.container-horizontal;
     align-items: center;
     box-sizing: border-box;
     color: var(--nx-color-text-dark);
@@ -38,7 +38,7 @@
       flex-shrink: 0;
 
       .nx-btn--icon-only {
-        @include nx-small-icon-btn;
+        @include nx-button-helpers.small-icon-btn;
       }
     }
   }
@@ -55,15 +55,15 @@
 }
 
 .nx-accordion__header-title {
-  @include nx-truncate-ellipsis;
+  @include nx-text-helpers.truncate-ellipsis;
 
   font-size: var(--nx-font-size);
   margin: 0 auto 0 0;
 }
 
 .nx-accordion__subheader {
-  @include bold();
-  @include container-horizontal;
+  @include nx-text-helpers.bold;
+  @include nx-container-helpers.container-horizontal;
 
   color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-heading-3);
@@ -76,7 +76,7 @@
 }
 
 .nx-accordion__content {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   border-top: 1px solid #e5e8f4;
   margin: 0 var(--nx-spacing-6x);

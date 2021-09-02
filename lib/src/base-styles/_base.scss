@@ -9,46 +9,33 @@
  * any consumer of the react-shared-components lib
  */
 
-// NOTE normalize was used to prove out adding a third-party stylesheet.  It has since been recognized that we
-// cannot include a reset stylesheet in our base styles without making this library unusable in pre-existing
-// applications.  Therefore the dep on normalize has been removed, but the import is still here, commented out,
-// as an example of the syntax
-//@import '~normalize.css';
+@use 'nx-variables';
+@use 'nx-colors';
+@use 'nx-color-swatches';
+@use 'nx-globals';
+@use 'nx-typography';
 
-// Within the base styles, the scss-shared content should only be imported once - right here
-@import '../scss-shared/nx-table-variables';
-@import '../scss-shared/nx-container-helpers';
-@import '../scss-shared/nx-text-helpers';
-@import '../scss-shared/nx-flexbox-helpers';
-@import '../scss-shared/nx-button-helpers';
-
-@import 'nx-variables';
-@import 'nx-colors';
-@import 'nx-color-swatches';
-@import 'nx-globals';
-@import 'nx-typography';
-
-@import 'nx-page-header';
-@import 'nx-page-layout';
-@import 'nx-global-header';
-@import 'nx-page';
-@import 'nx-footer';
-@import 'nx-tile';
-@import 'nx-alert';
-@import 'nx-btn';
-@import 'nx-btn-bar';
-@import 'nx-lists';
-@import 'nx-text-input';
-@import 'nx-tables';
-@import 'nx-grid';
-@import 'nx-icon';
-@import 'nx-counter';
-@import 'nx-threat-number';
-@import 'nx-forms';
-@import 'nx-radio-checkbox';
-@import 'nx-card';
-@import 'nx-pagination';
-@import 'nx-form-select';
-@import 'nx-viewport-sized';
-@import 'nx-read-only';
-@import 'nx-system-notice';
+@use 'nx-page-header';
+@use 'nx-page-layout';
+@use 'nx-global-header';
+@use 'nx-page';
+@use 'nx-footer';
+@use 'nx-tile';
+@use 'nx-alert';
+@use 'nx-btn';
+@use 'nx-btn-bar';
+@use 'nx-lists';
+@use 'nx-text-input';
+@use 'nx-tables';
+@use 'nx-grid';
+@use 'nx-icon';
+@use 'nx-counter';
+@use 'nx-threat-number';
+@use 'nx-forms';
+@use 'nx-radio-checkbox';
+@use 'nx-card';
+@use 'nx-pagination';
+@use 'nx-form-select';
+@use 'nx-viewport-sized';
+@use 'nx-read-only';
+@use 'nx-system-notice';
