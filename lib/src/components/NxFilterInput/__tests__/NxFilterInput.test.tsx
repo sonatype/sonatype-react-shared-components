@@ -82,4 +82,12 @@ describe('NxFilterInput', function() {
     expect(icon).toHaveProp(icon, faFilter);
     expect(icon).toHaveClassName('nx-icon--filter-icons');
   });
+
+  it('sets the nx-filter-input--empty class of the value is empty or only whitespace', function() {
+    expect(shallowComponent()).toHaveClassName('nx-filter-input--empty');
+    expect(shallowComponent({ value: '\n\t \u00A0' })).toHaveClassName('nx-filter-input--empty');
+    expect(shallowComponent({ value: 'a' })).not.toHaveClassName('nx-filter-input--empty');
+    expect(shallowComponent({ value: ' a ' })).not.toHaveClassName('nx-filter-input--empty');
+    expect(shallowComponent({ value: 'a b' })).not.toHaveClassName('nx-filter-input--empty');
+  });
 });

@@ -44,6 +44,23 @@ describe('NxModal', function() {
 
   describe('Form NxModal', function() {
     it('looks right', simpleModalTest(formWithAlertExampleSelector));
+
+    it('correctly renders its loading spinner', async function() {
+      const openModalBtnSelector = `${formExampleSelector} button`,
+          modalSelector = `#nx-modal-form-example`;
+
+      const openModalBtn = await browser.$(openModalBtnSelector);
+
+      await openModalBtn.scrollIntoView({ block: 'center' });
+      await openModalBtn.click();
+
+      const modal = await browser.$(modalSelector);
+
+      await modal.waitForDisplayed();
+
+      await browser.eyesSnapshot(null);
+    });
+
     it('shows the tooltip in front of the modal', async function() {
       const openModalBtnSelector = `${formExampleSelector} button`,
           submitBtnSelector =

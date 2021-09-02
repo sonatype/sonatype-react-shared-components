@@ -55,7 +55,7 @@
 
 .nx-page, .nx-page-content {
   // page-load errors are often at this level and not encapsulated within a nx-page-sidebar or nx-page-main
-  > .nx-alert, .nx-loading-spinner {
+  > .nx-alert, > .nx-loading-spinner {
     align-self: flex-start;
     grid-area: old-sidebar-start / old-sidebar-start / content-end / content-end;
     margin: var(--nx-spacing-8x) auto 0 auto;

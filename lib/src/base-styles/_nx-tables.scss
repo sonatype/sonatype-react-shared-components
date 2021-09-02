@@ -310,7 +310,7 @@
   @include nx-container-helpers.container-horizontal;
 
   width: calc(100% + 2 * var(--nx-spacing-4x));
-  text-align: left;
+  text-align: inherit;
   text-transform: uppercase;
 
   &, &:hover, &:active, &:focus {
