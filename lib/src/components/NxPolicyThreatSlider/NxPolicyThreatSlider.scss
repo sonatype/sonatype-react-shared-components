@@ -4,13 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use 'sass:math';
 
 .nx-policy-threat-slider {
   $rail-height: 8px;
   $thumb-size: 32px;
 
   // distance from top of thumb to top of rail
-  $thumb-vertical-overflow: ($thumb-size - $rail-height) / 2;
+  $thumb-vertical-overflow: math.div($thumb-size - $rail-height, 2);
 
   // flex so line-height doesn't get involved in the element overall height
   display: inline-flex;
@@ -18,7 +19,7 @@
 
   // the .MuiSlider-thumb elements actually stick out of the sides of the .MuiSlider-root at their min and max
   // positions.  This padding ensures that they don't stick out of the overall box for this component
-  padding: 0 ($thumb-size / 2);
+  padding: 0 math.div($thumb-size, 2);
 
   .MuiSlider-root {
     height: $rail-height;
@@ -48,7 +49,7 @@
       height: $thumb-size;
       width: $thumb-size;
       line-height: 1;
-      margin-left: $thumb-size / -2;
+      margin-left: math.div($thumb-size, -2);
       margin-top: -($thumb-vertical-overflow);
     }
   }
@@ -108,7 +109,7 @@
   }
 
   .MuiSlider-mark {
-    $border-radius: $rail-height / 2;
+    $border-radius: math.div($rail-height, 2);
 
     height: $rail-height;
 

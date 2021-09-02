@@ -8,7 +8,7 @@ const { simpleTest } = require('./testUtils');
 
 describe('nx-truncate-ellipsis', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-truncate-ellipsis');
+    await browser.url('#/pages/Ellipsis Truncation');
   });
 
   const selector = '.nx-truncation-examples';
