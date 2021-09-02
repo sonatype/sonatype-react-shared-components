@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
+@use '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 
 .gallery-container-example {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
   border: 1px solid #ccc;
   padding: 8px;
 }
@@ -19,7 +19,7 @@
 }
 
 .gallery-container-example__child--container-horizontal {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 }
 
 .gallery-container-example__inline-child {

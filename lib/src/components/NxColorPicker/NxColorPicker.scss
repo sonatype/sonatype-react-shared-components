@@ -5,10 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use 'sass:math';
-@import "../../scss-shared/nx-container-helpers";
+@use "../../scss-shared/nx-container-helpers";
 
 .nx-color-picker {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   .nx-legend__text {
     margin-bottom: var(--nx-spacing-base);
