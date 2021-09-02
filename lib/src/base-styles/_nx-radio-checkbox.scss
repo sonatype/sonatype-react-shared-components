@@ -4,11 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+
 .nx-radio-checkbox {
   $max-width: 562px;
 
-  @include container-horizontal;
-  @include regular();
+  @include nx-container-helpers.container-horizontal;
+  @include nx-text-helpers.regular;
 
   align-items: center;
   display: flex;
@@ -84,8 +87,8 @@ svg.nx-radio-checkbox__control {
 }
 
 .nx-radio-checkbox__content {
-  @include container-horizontal;
-  @include nx-truncate-ellipsis;
+  @include nx-container-helpers.container-horizontal;
+  @include nx-text-helpers.truncate-ellipsis;
 }
 
 .nx-radio-checkbox--disabled {

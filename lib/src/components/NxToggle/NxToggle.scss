@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-text-helpers';
-@import '../../scss-shared/nx-focus-border-helpers';
+@use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-focus-border-helpers';
 
-$nx-toggle-height: 24px;
-$nx-toggle-width: 44px;
+$-height: 24px;
+$-width: 44px;
 
 .nx-toggle {
   column-gap: 16px;
@@ -46,11 +46,11 @@ $nx-toggle-width: 44px;
         box-shadow: var(--nx-box-shadow-focus);
         content: '';
         display: block;
-        height: calc(#{$nx-toggle-height} + 6px);
+        height: calc(#{$-height} + 6px);
         position: absolute;
         left: -4px;
         top: -4px;
-        width: calc(#{$nx-toggle-width} + 6px);
+        width: calc(#{$-width} + 6px);
       }
     }
   }
@@ -96,9 +96,9 @@ $nx-toggle-width: 44px;
   box-sizing: border-box;
   display: flex;
   grid-area: toggle;
-  height: $nx-toggle-height;
+  height: $-height;
   padding: calc(var(--nx-spacing-base) - 1px);
-  width: $nx-toggle-width;
+  width: $-width;
 }
 
 .nx-toggle__indicator {

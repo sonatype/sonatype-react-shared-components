@@ -4,8 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-text-helpers';
-@import '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-container-helpers';
 
 // The caret is taller than it is wide. It is rotated using `transform`, which does not change its effect
 // on the layout of surrounding elements.  However, we _want_ its rotation to affect the layout of surrounding
@@ -57,7 +57,7 @@ $twisty-proportion-difference: 2.75px;
 }
 
 .nx-tree-view__trigger {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
   align-items: center;
   background: none;
   border: 1px solid transparent;
@@ -95,20 +95,20 @@ $twisty-proportion-difference: 2.75px;
 }
 
 .nx-tree-view__text {
-  @include container-horizontal;
-  @include nx-truncate-ellipsis;
+  @include nx-container-helpers.container-horizontal;
+  @include nx-text-helpers.truncate-ellipsis;
 
   align-items: center;
   display: flex;
   flex-grow: 1;
 
   span {
-    @include nx-truncate-ellipsis;
+    @include nx-text-helpers.truncate-ellipsis;
     flex-grow: 1;
   }
 
   > .nx-counter {
-    @include nx-truncate-ellipsis;
+    @include nx-text-helpers.truncate-ellipsis;
     box-sizing: border-box;
     flex-shrink: 0;
     max-width: 110px;

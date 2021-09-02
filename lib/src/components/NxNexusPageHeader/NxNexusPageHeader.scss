@@ -4,8 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-container-helpers';
-@import '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-text-helpers';
 
 .nx-page-header--nexus {
   .nx-page-header__inner {
@@ -52,7 +51,7 @@
   }
 
   .nx-product__brand {
-    @include bold();
+    @include nx-text-helpers.bold;
 
     color: var(--nx-color-text-dark);
   }
