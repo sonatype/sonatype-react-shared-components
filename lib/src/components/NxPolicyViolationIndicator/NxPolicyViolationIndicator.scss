@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-text-helpers';
 
 .nx-policy-violation-indicator {
   --policy-indicator-highlight-color: var(--nx-color-threat-unspecified);
@@ -32,8 +32,8 @@
 }
 
 .nx-policy-violation-indicator__text {
-  @include semi-bold();
-  @include nx-truncate-ellipsis;
+  @include nx-text-helpers.semi-bold;
+  @include nx-text-helpers.truncate-ellipsis;
 
   font-size: var(--nx-font-size-s);
   margin: 0 var(--nx-spacing-4x);

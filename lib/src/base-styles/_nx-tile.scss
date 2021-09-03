@@ -4,8 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-$nx-tile-header-height: 24px; // Minimum height
-$nx-tile-header-height-actions: 43px; // Height with sub-title and/or right actions
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+
+$-tile-header-height: 24px; // Minimum height
+$-tile-header-height-actions: 43px; // Height with sub-title and/or right actions
 
 /*
   #Name-spaced Tile System
@@ -14,7 +17,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 // Base Tiles
 
 .nx-tile {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   // the "padding" around the inside edge of the nx-tile
   --nx-tile-spacing: var(--nx-spacing-6x);
@@ -40,7 +43,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
   display: grid;
   row-gap: var(--nx-spacing-2x);
   grid-template-columns: auto 1fr auto;
-  min-height: $nx-tile-header-height;
+  min-height: $-tile-header-height;
 
   + .nx-tile-content {
     padding-top: var(--nx-spacing-4x);
@@ -48,21 +51,21 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 }
 
 .nx-tile-header__title {
-  @include nx-truncate-ellipsis;
+  @include nx-text-helpers.truncate-ellipsis;
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row-start: 1;
   grid-row-end: 1;
 
   h1, h2 {
-    @include nx-truncate-ellipsis;
+    @include nx-text-helpers.truncate-ellipsis;
     margin: 0;
     max-width: unset;
   }
 }
 
 .nx-tile-header__subtitle {
-  @include semi-bold();
+  @include nx-text-helpers.semi-bold;
 
   grid-column-start: 1;
   grid-column-end: 3;
@@ -76,7 +79,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 }
 
 .nx-tile__actions {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   grid-column-start: 3;
   grid-column-end: 3;
@@ -87,7 +90,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 }
 
 .nx-tile__tags {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   grid-column-start: 2;
   grid-column-end: 2;
@@ -101,7 +104,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 }
 
 .nx-tile-content {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-tile-content--accordion-container {
@@ -117,7 +120,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
 
 // On pages with tiles with multiple sections these are lighter weight titles
 .nx-tile-subsection {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
   margin-top: var(--nx-spacing-8x);
 
   &:first-of-type {
@@ -127,7 +130,7 @@ $nx-tile-header-height-actions: 43px; // Height with sub-title and/or right acti
   }
 
   .nx-tile-subsection__header {
-    @include container-vertical;
+    @include nx-container-helpers.container-vertical;
 
     margin-bottom: var(--nx-spacing-4x);
   }

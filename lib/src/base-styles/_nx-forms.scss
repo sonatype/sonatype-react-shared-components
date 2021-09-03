@@ -4,6 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+
 .nx-form {
   position: relative;
 }
@@ -18,7 +21,7 @@
 }
 
 .nx-form-row {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
   align-items: flex-end;
   display: flex;
   margin-bottom: var(--nx-spacing-8x);
@@ -52,8 +55,8 @@
 }
 
 .nx-label__text, .nx-legend__text {
-  @include bold();
-  @include container-horizontal;
+  @include nx-text-helpers.bold;
+  @include nx-container-helpers.container-horizontal;
 
   color: var(--nx-color-text-dark);
   cursor: default;
@@ -63,7 +66,7 @@
 
 .nx-label--optional, .nx-legend--optional {
   .nx-label__text::after, .nx-legend__text::after {
-    @include regular();
+    @include nx-text-helpers.regular;
 
     color: var(--nx-color-text);
     content: "Optional";
@@ -74,7 +77,7 @@
 }
 
 .nx-sub-label {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   display: block;
   font-size: var(--nx-font-size-s);
@@ -88,7 +91,7 @@
 // be used, but you'll still typically want the <legend> styled the way a <label> on a text field would be using
 // .nx-label.
 .nx-fieldset {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   border: 0;
   margin: 0 0 var(--nx-spacing-8x) 0;

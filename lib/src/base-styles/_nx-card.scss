@@ -4,6 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+
 .nx-card-container {
   display: flex;
   flex-wrap: wrap;
@@ -17,7 +20,7 @@
 }
 
 .nx-card {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
   background-color: var(--nx-color-component-background);
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
@@ -33,7 +36,7 @@
 @media not all and (min-resolution:.001dpcm) {
   @supports (-webkit-appearance:none) and (display:flow-root) {
     .nx-card-container {
-      @include container-horizontal;
+      @include nx-container-helpers.container-horizontal;
       margin-bottom: 0;
 
       + .nx-card-container {
@@ -62,12 +65,12 @@
 }
 
 .nx-card__header {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
   margin-bottom: var(--nx-spacing-4x);
 }
 
 .nx-card__content {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -88,7 +91,7 @@
 }
 
 .nx-card__call-out {
-  @include bold();
+  @include nx-text-helpers.bold;
 
   color: var(--nx-color-text-dark);
   font-size: 32px;

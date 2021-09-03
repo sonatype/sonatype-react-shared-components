@@ -4,8 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/nx-table-variables';
-@import '../scss-shared/_nx-pagination-variables';
+@use '../scss-shared/nx-table-variables' as *;
+@use '../scss-shared/nx-pagination-variables' as *;
 
 // creates a calc expression for the content-box height of a nx-table-container with the given numbers of rows and
 // headers along with a pagination footer.
@@ -15,11 +15,11 @@
 // content, will increase the height of the row and prevent this calculation from being accurate.
 @function pagination-table-height($body-row-count, $header-filter-row-count: 0, $header-row-count: 1) {
   $text-input-height: 42px;
-  $body-row-height: $nx-table-cell-min-height;
-  $header-row-height: $nx-table-cell-header-height;
+  $body-row-height: $table-cell-min-height;
+  $header-row-height: $table-cell-header-height;
 
   $header-filter-row-height: calc(#{$text-input-height} + (var(--nx-spacing-4x) * 2) + 1px);
-  $footer-height: calc(#{$nx-pagination-button-height} + (#{$nx-table-footer-vertical-padding} * 2) + 1px);
+  $footer-height: calc(#{$pagination-button-height} + (#{$table-footer-vertical-padding} * 2) + 1px);
 
   @return calc(#{
     ($body-row-count - 1) * ($body-row-height + 1px) + // extra 1px for border
