@@ -116,6 +116,7 @@ import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxSt
 import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
+import NxDividerPage from './components/NxDivider/NxDividerPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -135,6 +136,7 @@ const pageConfig: PageConfig = {
     NxCodeSnippet: NxCodeSnippetPage,
     NxDropdown: NxDropdownPage,
     NxStatefulDropdown: NxStatefulDropdownPage,
+    NxDivider: NxDividerPage,
     NxFieldset: NxFieldsetPage,
     NxFilterInput: NxFilterInputPage,
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
