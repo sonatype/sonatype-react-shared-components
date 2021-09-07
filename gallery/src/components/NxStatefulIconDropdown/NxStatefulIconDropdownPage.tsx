@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
+import { NxCode, NxList, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
@@ -15,6 +15,16 @@ const nxStatefulIconDropdownExampleCode = require('./NxStatefulIconDropdownExamp
 
 const NxStatefulIconDropdownPage = () =>
   <>
+    <NxP>
+      <NxCode>NxStatefulIconDropdown</NxCode> utilizes the same Props as <NxCode>NxIconDropdown</NxCode> with
+      the exceptions of:
+    </NxP>
+    <NxList bulleted>
+      <NxList.Item><NxCode>isOpen</NxCode></NxList.Item>
+      <NxList.Item><NxCode>onToggleCollapse</NxCode></NxList.Item>
+      <NxList.Item><NxCode>onCloseKeyDown</NxCode></NxList.Item>
+      <NxList.Item><NxCode>onCloseClick</NxCode></NxList.Item>
+    </NxList>
     <GalleryDescriptionTile>
       <NxP>
         A dropdown menu component which uses a single icon as its toggle and therefore resembles an icon-only
