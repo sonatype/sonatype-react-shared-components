@@ -13,7 +13,7 @@ import './NxDivider.scss';
 
 const NxDivider = forwardRef<HTMLDivElement, NxDividerProps>(function NxList(props: NxDividerProps, ref) {
   const {className, horizontal, vertical, ...attrs} = props;
-  const classNames = classnames(className,
+  const classNames = classnames(className, 'nx-divider',
       {'nx-divider--horizontal': horizontal || (!horizontal && !vertical)},
       {'nx-divider--vertical': vertical}
   );

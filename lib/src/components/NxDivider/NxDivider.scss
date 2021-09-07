@@ -4,17 +4,18 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+ .nx-divider {
+  background-color: var(--nx-swatch-indigo-90);
+  border-radius: 1px;
+ }
+
  .nx-divider--horizontal {
-   background-color: var(--nx-swatch-indigo-90);
-   border-radius: 1px;
    margin: var(--nx-spacing-2x) 0;
    min-height: 1px;
    min-width: 100%;
  }
 
  .nx-divider--vertical {
-   background-color: var(--nx-swatch-indigo-90);
-   border-radius: 1px;
    margin: 0 var(--nx-spacing-2x);
    min-height: 100%;
    min-width: 2px;
