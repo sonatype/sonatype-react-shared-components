@@ -64,6 +64,7 @@ export default function NxAccordionExample() {
           <td className="nx-cell"><span>France</span></td>
           <td className="nx-cell">
             <div className="nx-btn-bar">
+              <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faPencilAlt} /></NxButton>
               <NxIconDropdown icon={faEllipsisV}
                               isOpen={isOpen}
                               onToggleCollapse={onToggleCollapse}

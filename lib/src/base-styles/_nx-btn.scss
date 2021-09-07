@@ -38,8 +38,8 @@
   }
 }
 
-.nx-btn, .nx-segmented-btn {
-  + .nx-btn {
+.nx-btn, .nx-segmented-btn, .nx-dropdown {
+  + .nx-btn, + .nx-segmented-btn, + .nx-dropdown {
     margin-left: 0;
   }
 }

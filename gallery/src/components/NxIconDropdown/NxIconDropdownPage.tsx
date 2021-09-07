@@ -9,9 +9,11 @@ import { NxTable, NxTextLink, NxCode, NxH3, NxP, NxTile } from '@sonatype/react-
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxIconDropdownExample from './NxIconDropdownExample';
+import NxIconDropdownButtonsExample from './NxIconDropdownButtonsExample';
 import NxIconDropdownDisabledExample from './NxIconDropdownDisabledExample';
 
 const nxIconDropdownExampleCode = require('./NxIconDropdownExample?raw'),
+    nxIconDropdownButtonsExampleCode = require('./NxIconDropdownButtonsExample?raw'),
     nxIconDropdownDisabledExampleCode = require('./NxIconDropdownDisabledExample?raw');
 
 const NxIconDropdownPage = () =>
@@ -73,10 +75,16 @@ const NxIconDropdownPage = () =>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Button Example"
+    <GalleryExampleTile title="Simple Example"
                         liveExample={NxIconDropdownExample}
                         codeExamples={nxIconDropdownExampleCode}>
       An example of an <NxCode>NxIconDropdown</NxCode> with links and <NxCode>&lt;button&gt;</NxCode>s.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Button Bar Example"
+                        liveExample={NxIconDropdownButtonsExample}
+                        codeExamples={nxIconDropdownButtonsExampleCode}>
+      An example of an <NxCode>NxIconDropdown</NxCode> in a button bar with <NxCode>&lt;button&gt;</NxCode>s.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled Example"
