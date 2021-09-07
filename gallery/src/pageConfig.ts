@@ -220,10 +220,10 @@ const pageConfig: PageConfig = {
   'Styles - Mixins & Helpers': {
     'Color Palettes': ColorPalettePage,
     'Custom app font size': NxFontSizePage,
+    'Ellipsis Truncation': NxTruncatePage,
     'nx-clickable': NxClickablePage,
     'nx-container-helpers': NxContainerHelpersPage,
     'nx-scrollable': NxScrollablePage,
-    'nx-truncate-ellipsis': NxTruncatePage,
     'nx-viewport-sized': NxViewportSizedPage,
     'Selectable Colors': SelectableColorsPage,
     'Style Variables': CssVariablesPage

@@ -4,15 +4,15 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-text-helpers';
-@import '../../scss-shared/nx-container-helpers';
-@import '../../scss-shared/nx-button-helpers';
-@import '../../scss-shared/nx-dropdown-variables';
+@use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-button-helpers';
+@use '../../scss-shared/nx-dropdown-variables';
 
 .nx-dropdown {
   display: inline-block;
   position: relative;
-  width: $nx-dropdown-width;
+  width: nx-dropdown-variables.$dropdown-width;
 }
 
 .nx-dropdown__toggle {
@@ -23,11 +23,11 @@
   text-align: left;
   padding-right: var(--nx-spacing-4x);
   padding-left: var(--nx-spacing-4x);
-  width: $nx-dropdown-width;
+  width: nx-dropdown-variables.$dropdown-width;
 
   .nx-dropdown__toggle-label {
-    @include container-horizontal;
-    @include nx-truncate-ellipsis();
+    @include nx-container-helpers.container-horizontal;
+    @include nx-text-helpers.truncate-ellipsis;
 
     flex-grow: 1;
   }
@@ -49,12 +49,12 @@
 }
 
 .nx-dropdown-link, .nx-dropdown-button {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-dropdown-link, .nx-dropdown-button {
-  @include nx-truncate-ellipsis();
-  @include regular();
+  @include nx-text-helpers.truncate-ellipsis;
+  @include nx-text-helpers.regular;
 
   border: none;
   cursor: pointer;
@@ -117,13 +117,13 @@
 
 
 .nx-dropdown-button-content {
-  @include nx-truncate-ellipsis;
+  @include nx-text-helpers.truncate-ellipsis;
   display: block;
   line-height: var(--nx-spacing-8x);
 }
 
 .nx-dropdown-right-button {
-  @include nx-small-icon-btn;
+  @include nx-button-helpers.small-icon-btn;
   float: right;
   margin-right: var(--nx-spacing-2x);
   margin-left: var(--nx-spacing-6x);

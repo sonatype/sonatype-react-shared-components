@@ -127,7 +127,7 @@ describe('NxTextInput', function() {
       await browser.keys(['Backspace', 'Backspace', 'Backspace']);
 
       const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 270);
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 300);
 
       await browser.eyesRegionSnapshot(null, Target.region(region));
     });

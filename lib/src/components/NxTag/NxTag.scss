@@ -4,13 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
- @import '../../scss-shared/nx-text-helpers';
- @import '../../scss-shared/nx-container-helpers';
+ @use '../../scss-shared/nx-text-helpers';
+ @use '../../scss-shared/nx-container-helpers';
 
 .nx-tag {
-  @include semi-bold;
-  @include container-horizontal;
-  @include nx-truncate-ellipsis;
+  @include nx-text-helpers.semi-bold;
+  @include nx-container-helpers.container-horizontal;
+  @include nx-text-helpers.truncate-ellipsis;
 
   align-items: center;
   background-color: var(--nx-selectable-color-dark);
@@ -56,7 +56,7 @@
 }
 
 .nx-tag__text {
-  @include nx-truncate-ellipsis;
+  @include nx-text-helpers.truncate-ellipsis;
 }
 
 .nx-tag__action {

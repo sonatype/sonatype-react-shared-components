@@ -4,8 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+
 .nx-read-only {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
   margin: 0 0 var(--nx-spacing-8x) 0;
 }
 
@@ -21,11 +24,11 @@
 }
 
 .nx-read-only__item {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-read-only__label {
-  @include bold();
+  @include nx-text-helpers.bold;
   margin: var(--nx-spacing-8x) 0 var(--nx-spacing-4x) 0;
   max-width: var(--nx-width-text-wrapping);
 }

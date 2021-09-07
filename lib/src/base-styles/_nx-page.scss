@@ -4,9 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+
 .nx-page-title {
-  @include container-horizontal;
-  @include container-vertical;
+  @include nx-container-helpers.container-horizontal;
+  @include nx-container-helpers.container-vertical;
   align-items: center;
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -35,7 +38,7 @@
 }
 
 .nx-page-title__sub-title {
-  @include nx-truncate-ellipsis;
+  @include nx-text-helpers.truncate-ellipsis;
   border-left: var(--nx-border-default);
   margin: 0 0 0 var(--nx-spacing-4x);
   padding-left: var(--nx-spacing-4x);
@@ -44,7 +47,7 @@
 }
 
 .nx-page-title__description {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
   grid-area: description;
   margin-top: var(--nx-spacing-2x);
   max-width: var(--nx-width-text-wrapping);
@@ -55,7 +58,7 @@
 }
 
 .nx-page-title__tags {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   display: flex;
   flex-wrap: wrap;
