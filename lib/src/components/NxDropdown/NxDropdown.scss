@@ -43,6 +43,10 @@
     }
   }
 
+  &:active {
+    background-color: transparent;
+  }
+
   &.open {
     border-color: var(--nx-swatch-grey-5);
 
