@@ -15,7 +15,7 @@ import {
 } from '@sonatype/react-shared-components';
 import { faTasks, faPencilAlt, faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
-export default function NxAccordionExample() {
+export default function NxTableIconButtonExample() {
   const [isOpen, onToggleCollapse] = useToggle(false),
       deleteFn = () => { alert('delete'); },
       onClick = () => { alert('click'); };
