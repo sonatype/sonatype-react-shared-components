@@ -15,22 +15,18 @@ const nxStatefulIconDropdownExampleCode = require('./NxStatefulIconDropdownExamp
 
 const NxStatefulIconDropdownPage = () =>
   <>
-    <NxP>
-      <NxCode>NxStatefulIconDropdown</NxCode> utilizes the same Props as <NxCode>NxIconDropdown</NxCode> with
-      the exceptions of:
-    </NxP>
-    <NxList bulleted>
-      <NxList.Item><NxCode>isOpen</NxCode></NxList.Item>
-      <NxList.Item><NxCode>onToggleCollapse</NxCode></NxList.Item>
-      <NxList.Item><NxCode>onCloseKeyDown</NxCode></NxList.Item>
-      <NxList.Item><NxCode>onCloseClick</NxCode></NxList.Item>
-    </NxList>
     <GalleryDescriptionTile>
       <NxP>
         A dropdown menu component which uses a single icon as its toggle and therefore resembles an icon-only
         button. <NxCode>NxStatefulIconDropdown</NxCode> shares all of the same props as{' '}
-        <NxTextLink href="#/pages/NxIconDropdown">NxIconDropdown</NxTextLink>.
+        <NxTextLink href="#/pages/NxIconDropdown">NxIconDropdown</NxTextLink> except the ones listed below.
       </NxP>
+      <NxList bulleted>
+        <NxList.Item><NxCode>isOpen</NxCode></NxList.Item>
+        <NxList.Item><NxCode>onToggleCollapse</NxCode></NxList.Item>
+        <NxList.Item><NxCode>onCloseKeyDown</NxCode></NxList.Item>
+        <NxList.Item><NxCode>onCloseClick</NxCode></NxList.Item>
+      </NxList>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
