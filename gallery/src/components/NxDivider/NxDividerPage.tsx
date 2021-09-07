@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxH3, NxTile, NxInfoAlert } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxH3, NxTile, NxInfoAlert, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -19,7 +19,13 @@ const NxDividerPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        NxDivider renders a divider.
+        <NxCode>NxDivider</NxCode> renders either a horizontal or vertical divider.
+        The <NxCode>NxDivider</NxCode> component accepts either a <NxCode>horizontal</NxCode> or
+        a <NxCode>vertical</NxCode> prop to render a horizontal or a vertical divider respectively.
+      </NxP>
+      <NxP>
+        The horizontal divider is inherently composed of an <NxCode>{'<hr>'}</NxCode> whereas the
+        vertical divider is composed of a <NxCode>{'<div>'}</NxCode>.
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
@@ -38,17 +44,30 @@ const NxDividerPage = () =>
             <NxTable.Row>
               <NxTable.Cell>horizontal</NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
               <NxTable.Cell>
-                Creates a horizontal divider.
+                Renders a horizontal divider.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>vertical</NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
               <NxTable.Cell>
-                Creates a vertical divider.
+                Renders a vertical divider.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML attributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes" external>
+                  HTML attributes
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxDivider</NxCode> supports any HTML attribute that's normally supported
+                by an HTML element.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>

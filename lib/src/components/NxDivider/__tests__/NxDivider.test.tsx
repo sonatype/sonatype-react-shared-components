@@ -14,7 +14,8 @@ describe('NxDivider', function() {
 
   it('renders a default horizontal divider', function() {
     const wrapper = getShallow();
-    expect(wrapper).toMatchSelector('.nx-divider');
+    expect(wrapper).toMatchSelector('hr.nx-divider');
+    expect(wrapper).toContainExactlyOneMatchingElement('hr');
   });
 
   it('renders the classNames given to it', function() {
@@ -22,21 +23,24 @@ describe('NxDivider', function() {
       className: 'test-classname ufo'
     };
     const wrapper = getShallow(extendedProps);
-    expect(wrapper).toMatchSelector('.nx-divider.test-classname.ufo');
+    expect(wrapper).toMatchSelector('hr.nx-divider.test-classname.ufo');
   });
 
   it('renders a horizontal divider if no props are provided', function() {
     const wrapper = getShallow();
-    expect(wrapper).toMatchSelector('.nx-divider.nx-divider--horizontal');
+    expect(wrapper).toContainExactlyOneMatchingElement('hr');
+    expect(wrapper).toMatchSelector('hr.nx-divider.nx-divider--horizontal');
   });
 
   it('renders a horizontal divider by specifying the horizontal prop', function() {
     const wrapper = getShallow({horizontal: true});
-    expect(wrapper).toMatchSelector('.nx-divider.nx-divider--horizontal');
+    expect(wrapper).toContainExactlyOneMatchingElement('hr');
+    expect(wrapper).toMatchSelector('hr.nx-divider.nx-divider--horizontal');
   });
 
   it('renders a vertical divider by specifying the vertical prop', function() {
     const wrapper = getShallow({vertical: true});
-    expect(wrapper).toMatchSelector('.nx-divider.nx-divider--vertical');
+    expect(wrapper).toContainExactlyOneMatchingElement('div');
+    expect(wrapper).toMatchSelector('div.nx-divider.nx-divider--vertical');
   });
 });

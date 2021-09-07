@@ -24,7 +24,7 @@ export default function NxDividerVerticalExample() {
       </div>
       <div style={{display: 'flex', flexDirection: 'row'}}>
         <NxP>Brief Description</NxP>
-        <NxDivider vertical/>
+        <NxDivider vertical style={{margin: '0 24px'}}/>
         <NxP>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin condimentum felis risus, sit amet porttitor
           orci dapibus convallis. Cras euismod ligula nec sem hendrerit finibus. Phasellus sit amet lacus enim. Cras
@@ -38,7 +38,6 @@ export default function NxDividerVerticalExample() {
           facilisi. Nam eu purus sagittis, semper ligula at, tempus enim. Vivamus at nibh id orci tempus tincidunt.
           nunc id imperdiet ornare, leo purus facilisis ipsum, a ullamcorper velit tortor ac turpis. Morbi aliquam
         </NxP>
-
       </div>
     </>
   );

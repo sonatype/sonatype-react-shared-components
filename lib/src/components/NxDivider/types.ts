@@ -7,7 +7,7 @@
 import { HTMLAttributes, ValidationMap } from 'react';
 import PropTypes from 'prop-types';
 
-export interface NxDividerProps extends HTMLAttributes<HTMLDivElement> {
+export interface NxDividerProps extends HTMLAttributes<HTMLElement> {
   horizontal?: boolean | null;
   vertical?: boolean | null;
 }
