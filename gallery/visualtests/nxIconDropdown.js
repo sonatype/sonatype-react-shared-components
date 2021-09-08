@@ -12,7 +12,7 @@ describe('NxIconDropdown', function() {
     await browser.url('#/pages/NxIconDropdown');
   });
 
-  const defaultSelector = '#nx-IconDropdown-links-example .nx-icon-dropdown';
+  const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown';
 
   describe('Default NxIconDropdown when closed', function() {
 
@@ -44,8 +44,14 @@ describe('NxIconDropdown', function() {
     });
   });
 
+  describe('NxIconDropdown inside nx-btn-bar', function() {
+    const selector = '#nx-icon-dropdown-btn-bar-example .nx-btn-bar';
+
+    it('looks right', simpleTest(selector));
+  });
+
   describe('Disabled NxIconDropdown', function() {
-    const selector = '#nx-IconDropdown-disabled-example .nx-icon-dropdown';
+    const selector = '#nx-icon-dropdown-disabled-example .nx-icon-dropdown';
 
     it('looks disabled', simpleTest(selector));
   });
