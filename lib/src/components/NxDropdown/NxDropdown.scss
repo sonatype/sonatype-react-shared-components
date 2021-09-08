@@ -61,7 +61,7 @@
   display: block;
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
-  padding: var(--nx-spacing-base) var(--nx-spacing-4x);
+  padding: calc(var(--nx-spacing-base) - 1px) calc(var(--nx-spacing-4x) - 1px);
   text-decoration: none;
 
   &:focus {
