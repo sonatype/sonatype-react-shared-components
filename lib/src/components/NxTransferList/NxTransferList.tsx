@@ -137,7 +137,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
           }
           <div className="nx-transfer-list__item-list">
             { visibleAvailableItems.map(
-                i => <TransferListItem<T> key={i.id} checked={false} onChange={onChange} { ...i } />)
+                i => <TransferListItem key={i.id} checked={false} onChange={onChange} { ...i } />)
             }
           </div>
           <div className="nx-transfer-list__footer">
