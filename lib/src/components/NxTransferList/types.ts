@@ -21,16 +21,6 @@ export interface TransferListItemProps<T extends string | number = string> exten
   onChange: (checked: boolean, id: T) => void;
 }
 
-export const transferListItemPropTypes: ValidationMap<TransferListItemProps<string | number>> = {
-  id: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.number.isRequired
-  ]).isRequired,
-  displayName: PropTypes.string.isRequired,
-  checked: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired
-};
-
 export interface StatefulProps<T extends string | number = string>
   extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onChange'> {
   allItems: DataItem<T>[];
@@ -58,14 +48,14 @@ export const propTypes: ValidationMap<Props<string | number>> = {
       PropTypes.number.isRequired
     ]).isRequired,
     displayName: PropTypes.string.isRequired
-  })).isRequired as Validator<DataItem<string | number>[]>,
+  }).isRequired).isRequired,
   selectedItems: PropTypes.instanceOf(Set).isRequired as Validator<Set<string | number>>,
   availableItemsLabel: PropTypes.node,
   selectedItemsLabel: PropTypes.node,
   availableItemsCountFormatter: PropTypes.func as Validator<(n: number) => string>,
   selectedItemsCountFormatter: PropTypes.func as Validator<(n: number) => string>,
   showMoveAll: PropTypes.bool,
-  onChange: PropTypes.func as Validator<(newSelected: Set<string | number>) => void>,
+  onChange: PropTypes.func.isRequired,
   filterFn: PropTypes.func,
   availableItemsFilter: PropTypes.string.isRequired,
   selectedItemsFilter: PropTypes.string.isRequired,

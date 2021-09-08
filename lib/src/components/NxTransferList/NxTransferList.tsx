@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { toLower, filter, includes, groupBy, partial, identity, prop, pipe } from 'ramda';
 
-import { Props, propTypes, TransferListItemProps, transferListItemPropTypes, DataItem, FilterFn } from './types';
+import { Props, propTypes, TransferListItemProps, DataItem, FilterFn } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxFieldset from '../NxFieldset/NxFieldset';
@@ -38,13 +38,11 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
   );
 }
 
-TransferListItem.propTypes = transferListItemPropTypes;
-
 const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${n === 1 ? '' : 's'} ${kind}`,
     defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
     defaultSelectedItemsCountFormatter = defaultItemsCountFormatter('transferred');
 
-const NxTransferList = <T extends string | number>(props: Props<T>) => {
+function NxTransferList<T extends string | number>(props: Props<T>) {
   const {
     allItems,
     selectedItems,
@@ -139,7 +137,7 @@ const NxTransferList = <T extends string | number>(props: Props<T>) => {
           }
           <div className="nx-transfer-list__item-list">
             { visibleAvailableItems.map(
-                i => <TransferListItem<T> key={i.id} { ...{ checked: false, onChange, ...i } } />)
+                i => <TransferListItem<T> key={i.id} checked={false} onChange={onChange} {...i} />)
             }
           </div>
           <div className="nx-transfer-list__footer">
@@ -161,7 +159,7 @@ const NxTransferList = <T extends string | number>(props: Props<T>) => {
           }
           <div className="nx-transfer-list__item-list">
             { visibleSelectedItems.map(
-                i => <TransferListItem<T> key={i.id} { ...{ checked: true, onChange, ...i } } />)
+                i => <TransferListItem key={i.id} checked={true} onChange={onChange} {...i} />)
             }
           </div>
           <div className="nx-transfer-list__footer">
@@ -171,7 +169,7 @@ const NxTransferList = <T extends string | number>(props: Props<T>) => {
       </NxFieldset>
     </div>
   );
-};
+}
 
 NxTransferList.propTypes = propTypes;
 
