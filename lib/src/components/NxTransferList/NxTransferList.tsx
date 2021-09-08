@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FC, FormEvent, useMemo } from 'react';
+import React, { FormEvent, useMemo } from 'react';
 import classnames from 'classnames';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { toLower, filter, includes, groupBy, partial, identity, prop, pipe } from 'ramda';
@@ -19,7 +19,7 @@ export { Props, propTypes, DataItem } from './types';
 
 import './NxTransferList.scss';
 
-function TransferListItem<T extends string | number>(props: TransferListItemProps<T>) {
+function TransferListItem<T extends string | number = string>(props: TransferListItemProps<T>) {
   const { checked, id, displayName, onChange: onChangeProp } = props;
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
@@ -44,7 +44,7 @@ const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${
     defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
     defaultSelectedItemsCountFormatter = defaultItemsCountFormatter('transferred');
 
-const NxTransferList: FC<Props<string | number>> = <T extends string | number>(props: Props<T>) => {
+const NxTransferList = <T extends string | number>(props: Props<T>) => {
   const {
     allItems,
     selectedItems,
@@ -139,12 +139,7 @@ const NxTransferList: FC<Props<string | number>> = <T extends string | number>(p
           }
           <div className="nx-transfer-list__item-list">
             { visibleAvailableItems.map(
-                i => (
-                  <TransferListItem key={i.id}
-                                    checked={false}
-                                    onChange={onChange as TransferListItemProps<string | number>['onChange']}
-                                    { ...i } />
-                ))
+                i => <TransferListItem<T> key={i.id} { ...{ checked: false, onChange, ...i } } />)
             }
           </div>
           <div className="nx-transfer-list__footer">
@@ -166,12 +161,7 @@ const NxTransferList: FC<Props<string | number>> = <T extends string | number>(p
           }
           <div className="nx-transfer-list__item-list">
             { visibleSelectedItems.map(
-                i => (
-                  <TransferListItem key={i.id}
-                                    checked={true}
-                                    onChange={onChange as TransferListItemProps<string | number>['onChange']}
-                                    { ...i } />
-                ))
+                i => <TransferListItem<T> key={i.id} { ...{ checked: true, onChange, ...i } } />)
             }
           </div>
           <div className="nx-transfer-list__footer">

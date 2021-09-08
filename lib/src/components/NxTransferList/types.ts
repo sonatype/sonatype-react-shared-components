@@ -18,7 +18,7 @@ export interface DataItem<T extends string | number = string> {
 
 export interface TransferListItemProps<T extends string | number = string> extends DataItem<T> {
   checked: boolean;
-  onChange: (checked: boolean, id: string | number) => void
+  onChange: (checked: boolean, id: T) => void;
 }
 
 export const transferListItemPropTypes: ValidationMap<TransferListItemProps<string | number>> = {
@@ -40,7 +40,7 @@ export interface StatefulProps<T extends string | number = string>
   availableItemsCountFormatter?: (n: number) => string,
   selectedItemsCountFormatter?: (n: number) => string,
   showMoveAll?: boolean | null;
-  onChange: (newSelected: Set<string | number>) => void;
+  onChange: (newSelected: Set<T>) => void;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
 }
 
