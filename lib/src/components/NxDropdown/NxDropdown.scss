@@ -56,17 +56,18 @@
   @include nx-text-helpers.truncate-ellipsis;
   @include nx-text-helpers.regular;
 
-  border: 1px solid transparent;
+  border: none;
   cursor: pointer;
   display: block;
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
-  padding: calc(var(--nx-spacing-base) - 1px) calc(var(--nx-spacing-4x) - 1px);
+  padding: var(--nx-spacing-base) var(--nx-spacing-4x);
   text-decoration: none;
 
   &:focus {
-    border: 1px solid var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
+    outline-offset: -1px;
+    outline: 1px solid var(--nx-color-interactive-border-focus);
 
     &, &:hover, &:active {
       background-color: transparent;
