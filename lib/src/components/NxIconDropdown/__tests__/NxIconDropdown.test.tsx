@@ -52,15 +52,15 @@ describe('NxIconDropdown', () => {
   });
 
   it('correctly renders a custom icon based on icon prop', function() {
-    let component = getShallowComponent({ icon: faCog });
+    const component = getShallowComponent({ icon: faCog });
     expect(component.find(NxFontAwesomeIcon)).toHaveProp('icon', faCog);
   });
 
   it('correctly renders the menu based on isOpen prop', function() {
-    let component = getShallowComponent({ isOpen: true });
+    const component = getShallowComponent({ isOpen: true });
     expect(component.find(NxDropdownMenu)).toExist();
 
-    component = getShallowComponent({ isOpen: false });
+    const component = getShallowComponent({ isOpen: false });
     expect(component.find(NxDropdownMenu)).not.toExist();
   });
 
