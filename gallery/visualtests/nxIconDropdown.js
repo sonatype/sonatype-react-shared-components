@@ -44,7 +44,7 @@ describe('NxIconDropdown', function() {
     });
   });
 
-  describe('NxIconDropdown inside nx-btn-bar', function() {
+  describe('NxIconDropdown is spaced correctly inside nx-btn-bar', function() {
     const selector = '#nx-icon-dropdown-btn-bar-example .nx-btn-bar';
 
     it('looks right', simpleTest(selector));
