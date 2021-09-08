@@ -12,7 +12,7 @@ describe('NxIconDropdown', function() {
     await browser.url('#/pages/NxIconDropdown');
   });
 
-  const defaultSelector = '#nx-IconDropdown-links-example .nx-dropdown--icon-only';
+  const defaultSelector = '#nx-IconDropdown-links-example .nx-icon-dropdown';
 
   describe('Default NxIconDropdown when closed', function() {
 
@@ -25,7 +25,7 @@ describe('NxIconDropdown', function() {
 
   describe('Default NxIconDropdown when open', function() {
     beforeEach(async function() {
-      const button = await browser.$(defaultSelector + ' .nx-dropdown__toggle');
+      const button = await browser.$(defaultSelector + ' .nx-icon-dropdown__toggle');
 
       await button.scrollIntoView({ block: 'center' });
       await button.click();
@@ -45,7 +45,7 @@ describe('NxIconDropdown', function() {
   });
 
   describe('Disabled NxIconDropdown', function() {
-    const selector = '#nx-IconDropdown-disabled-example .nx-dropdown';
+    const selector = '#nx-IconDropdown-disabled-example .nx-icon-dropdown';
 
     it('looks disabled', simpleTest(selector));
   });
