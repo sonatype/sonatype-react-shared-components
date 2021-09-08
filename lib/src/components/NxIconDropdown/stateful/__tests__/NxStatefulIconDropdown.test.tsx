@@ -16,10 +16,12 @@ import NxStatefulIconDropdown, { Props } from '../NxStatefulIconDropdown';
 describe('NxStatefulIconDropdown', () => {
   let container: HTMLDivElement | null;
 
-  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulIconDropdown, {
-    title: 'stateful dropdown',
-    children: <a>Hello</a>
-  });
+  const minimalProps = {
+        title: 'stateful dropdown',
+        children: <a>Hello</a>
+      },
+      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulIconDropdown, minimalProps),
+      getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxStatefulIconDropdown, minimalProps);
 
   beforeEach(function() {
     // Avoid rendering directly on the body.
@@ -54,9 +56,8 @@ describe('NxStatefulIconDropdown', () => {
   });
 
   it('opens the dropdown when the toggle is clicked', function() {
-    const mounted = mount(
-      <NxStatefulIconDropdown title="stateful dropdown" />
-    );
+    const mounted = getMountedComponent(undefined, { attachTo: container });
+
     expect(mounted.find('.nx-dropdown-menu')).not.toExist();
 
     mounted.find(NxButton).simulate('click');
@@ -65,13 +66,18 @@ describe('NxStatefulIconDropdown', () => {
   });
 
   it('closes the dropdown if the menu is open and the toggle is clicked', function() {
-    const mounted = mount(
-      <NxStatefulIconDropdown title="stateful dropdown" />
-    );
-    mounted.find(NxButton).simulate('click');
+    const mounted = getMountedComponent(undefined, { attachTo: container });
+
+    act(() => {
+      mounted.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+    mounted.update();
     expect(mounted.find('.nx-dropdown-menu')).toExist();
 
-    mounted.find(NxButton).simulate('click');
+    act(() => {
+      mounted.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+    mounted.update();
     expect(mounted.find('.nx-dropdown-menu')).not.toExist();
     mounted.unmount();
   });
@@ -112,7 +118,7 @@ describe('NxStatefulIconDropdown', () => {
     act(() => {
       // Jest/JSDom need actual events to be able to trigger effects properly
       // See https://stackoverflow.com/questions/27557624/simulating-click-on-document-reactjs-jsdom
-      element.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
+      element.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
@@ -128,7 +134,7 @@ describe('NxStatefulIconDropdown', () => {
     expect(element!.find('.nx-dropdown-menu')).not.toExist();
 
     act(() => {
-      element!.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
+      element!.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
@@ -152,7 +158,7 @@ describe('NxStatefulIconDropdown', () => {
     });
 
     act(() => {
-      element.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
+      element.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
@@ -170,7 +176,7 @@ describe('NxStatefulIconDropdown', () => {
     expect(element!.find('.nx-dropdown-menu')).not.toExist();
 
     act(() => {
-      element!.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
+      element!.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
