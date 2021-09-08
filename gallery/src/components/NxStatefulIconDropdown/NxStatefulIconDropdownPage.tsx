@@ -22,10 +22,10 @@ const NxStatefulIconDropdownPage = () =>
         <NxTextLink href="#/pages/NxIconDropdown">NxIconDropdown</NxTextLink> except the ones listed below.
       </NxP>
       <NxList bulleted>
-        <NxList.Item><NxCode>isOpen</NxCode></NxList.Item>
-        <NxList.Item><NxCode>onToggleCollapse</NxCode></NxList.Item>
-        <NxList.Item><NxCode>onCloseKeyDown</NxCode></NxList.Item>
-        <NxList.Item><NxCode>onCloseClick</NxCode></NxList.Item>
+        <NxList.Item><NxList.Text><NxCode>isOpen</NxCode></NxList.Text></NxList.Item>
+        <NxList.Item><NxList.Text><NxCode>onToggleCollapse</NxCode></NxList.Text></NxList.Item>
+        <NxList.Item><NxList.Text><NxCode>onCloseKeyDown</NxCode></NxList.Text></NxList.Item>
+        <NxList.Item><NxList.Text><NxCode>onCloseClick</NxCode></NxList.Text></NxList.Item>
       </NxList>
     </GalleryDescriptionTile>
 
