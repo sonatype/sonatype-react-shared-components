@@ -10,23 +10,24 @@ import { NxTable, NxCode, NxP, NxH3, NxTile, NxInfoAlert, NxTextLink } from '@so
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxDividerHorizontalExample from './NxDividerHorizontalExample';
+import NxDividerHorizontalFormExample from './NxDividerHorizontalFormExample';
 import NxDividerVerticalExample from './NxDividerVerticalExample';
 
 const NxDividerHorizontalExampleCode = require('./NxDividerHorizontalExample?raw'),
+    NxDividerHorizontalFormExampleCode = require('./NxDividerHorizontalFormExample?raw'),
     NxDividerVerticalExampleCode = require('./NxDividerVerticalExample?raw');
 
 const NxDividerPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        <NxCode>NxDivider</NxCode> renders either a horizontal or vertical divider.
-        The <NxCode>NxDivider</NxCode> component accepts either a <NxCode>horizontal</NxCode> or
-        a <NxCode>vertical</NxCode> prop to render a horizontal or a vertical divider respectively.
+        <NxCode>NxDivider</NxCode> renders a horizontal divider. The divider is inherently composed
+        of an <NxCode>{'<hr>'}</NxCode>.
       </NxP>
-      <NxP>
-        The horizontal divider is inherently composed of an <NxCode>{'<hr>'}</NxCode> whereas the
-        vertical divider is composed of a <NxCode>{'<div>'}</NxCode>.
-      </NxP>
+      <NxInfoAlert>
+        <NxCode>NxDivider</NxCode> only renders a horizontal divider. For vertical dividers, please
+        refer to <NxCode>nx-grid</NxCode> guidelines listed <NxTextLink href="#/pages/nx-grid">here</NxTextLink>.
+      </NxInfoAlert>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
           <NxH3>NxDivider</NxH3>
@@ -42,22 +43,6 @@ const NxDividerPage = () =>
           </NxTable.Head>
           <NxTable.Body>
             <NxTable.Row>
-              <NxTable.Cell>horizontal</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>
-                Renders a horizontal divider.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>vertical</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>no</NxTable.Cell>
-              <NxTable.Cell>
-                Renders a vertical divider.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
               <NxTable.Cell>HTML attributes</NxTable.Cell>
               <NxTable.Cell>
                 <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes" external>
@@ -72,23 +57,29 @@ const NxDividerPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
-        <NxInfoAlert>
-          If the <NxCode>horizontal</NxCode> or <NxCode>vertical</NxCode> prop is not specified,
-          then <NxCode>{'<NxDivider />'}</NxCode> renders a horizontal divider by default.
-        </NxInfoAlert>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Simple Horizontal Example"
+    <GalleryExampleTile title="Simple Example"
                         liveExample={NxDividerHorizontalExample}
                         codeExamples={NxDividerHorizontalExampleCode}>
-      A simple example of a horizontal <NxCode>NxDivider</NxCode>.
+      A simple example of <NxCode>NxDivider</NxCode>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Simple Example Within NxForm"
+                        liveExample={NxDividerHorizontalFormExample}
+                        codeExamples={NxDividerHorizontalFormExampleCode}>
+      An example of <NxCode>NxDivider</NxCode> used within an <NxCode>NxForm</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Simple Vertical Example"
                         liveExample={NxDividerVerticalExample}
                         codeExamples={NxDividerVerticalExampleCode}>
-      A simple example of a vertical <NxCode>NxDivider</NxCode>.
+      <NxCode>NxDivider</NxCode> does not support vertical dividers. It is recommended to use
+      the <NxCode>nx-grid</NxCode> guidelines to render vertical dividers. An example of
+      using <NxCode>nx-grid</NxCode> to render vertical dividers is shown below. For more information
+      about using <NxCode>nx-grid</NxCode>, please refer to the guidelines
+      listed <NxTextLink href="#/pages/nx-grid">here</NxTextLink>.
     </GalleryExampleTile>
   </>;
 
