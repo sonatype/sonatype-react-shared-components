@@ -44,9 +44,9 @@ describe('NxIconDropdown', () => {
         button = component.find(NxButton),
         defaultIcon = component.find(NxFontAwesomeIcon);
 
-    expect(component).toHaveClassName('.nx-dropdown--icon-only');
+    expect(component).toHaveClassName('.nx-icon-dropdown');
     expect(defaultIcon).toHaveProp('icon', faEllipsisV);
-    expect(button).toHaveClassName('.nx-dropdown__toggle');
+    expect(button).toHaveClassName('.nx-icon-dropdown__toggle');
     expect(button).toHaveProp('variant', 'icon-only');
     expect(button).toHaveProp('type', 'button');
   });
@@ -57,16 +57,16 @@ describe('NxIconDropdown', () => {
   });
 
   it('correctly renders the menu based on isOpen prop', function() {
-    const component = getShallowComponent({ isOpen: true });
+    let component = getShallowComponent({ isOpen: true });
     expect(component.find(NxDropdownMenu)).toExist();
 
-    const component = getShallowComponent({ isOpen: false });
+    component = getShallowComponent({ isOpen: false });
     expect(component.find(NxDropdownMenu)).not.toExist();
   });
 
   it('correctly assigns supplied classes', function() {
     const component = getShallowComponent({ className: 'class1 class2' });
-    expect(component).toHaveClassName('nx-dropdown--icon-only class1 class2');
+    expect(component).toHaveClassName('nx-icon-dropdown class1 class2');
   });
 
   it('disables the button (and the toggle fn) when the disabled prop is supplied', function() {
@@ -162,7 +162,7 @@ describe('NxIconDropdown', () => {
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
     act(() => {
-      component!.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
+      component!.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
@@ -177,7 +177,7 @@ describe('NxIconDropdown', () => {
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
     act(() => {
-      component!.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
+      component!.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
@@ -237,7 +237,7 @@ describe('NxIconDropdown', () => {
             }, { attachTo: container });
 
         act(() => {
-          component.find('button.nx-dropdown__toggle').getDOMNode()
+          component.find('button.nx-icon-dropdown__toggle').getDOMNode()
               .dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
         });
         component.update();
@@ -274,7 +274,7 @@ describe('NxIconDropdown', () => {
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
     act(() => {
-      component.find('button.nx-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
+      component.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
         bubbles: true
       }));
     });
@@ -288,7 +288,7 @@ describe('NxIconDropdown', () => {
           isOpen: true
         }, { attachTo: container }),
         menuBtn = component.find('button.nx-dropdown-button').getDOMNode() as HTMLElement,
-        toggleBtn = component.find('button.nx-dropdown__toggle').getDOMNode();
+        toggleBtn = component.find('button.nx-icon-dropdown__toggle').getDOMNode();
 
     menuBtn.focus();
     expect(document.activeElement).toBe(menuBtn);
