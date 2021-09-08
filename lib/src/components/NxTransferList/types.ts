@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode, HTMLAttributes, Validator } from 'react';
+import { ReactNode, HTMLAttributes } from 'react';
 import PropTypes, { ValidationMap } from 'prop-types';
 
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
