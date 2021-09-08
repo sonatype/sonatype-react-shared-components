@@ -27,8 +27,8 @@ export interface StatefulProps<T extends string | number = string>
   selectedItems: Set<T>;
   availableItemsLabel?: ReactNode;
   selectedItemsLabel?: ReactNode;
-  availableItemsCountFormatter?: (n: number) => string,
-  selectedItemsCountFormatter?: (n: number) => string,
+  availableItemsCountFormatter?: ((n: number) => string) | null,
+  selectedItemsCountFormatter?: ((n: number) => string) | null,
   showMoveAll?: boolean | null;
   onChange: (newSelected: Set<T>) => void;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
@@ -49,11 +49,11 @@ export const propTypes: ValidationMap<Props<string | number>> = {
     ]).isRequired,
     displayName: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  selectedItems: PropTypes.instanceOf(Set).isRequired as Validator<Set<string | number>>,
+  selectedItems: PropTypes.instanceOf<Set<string | number>>(Set).isRequired,
   availableItemsLabel: PropTypes.node,
   selectedItemsLabel: PropTypes.node,
-  availableItemsCountFormatter: PropTypes.func as Validator<(n: number) => string>,
-  selectedItemsCountFormatter: PropTypes.func as Validator<(n: number) => string>,
+  availableItemsCountFormatter: PropTypes.func,
+  selectedItemsCountFormatter: PropTypes.func,
   showMoveAll: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   filterFn: PropTypes.func,

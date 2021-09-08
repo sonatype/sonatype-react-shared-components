@@ -15,7 +15,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxFieldset from '../NxFieldset/NxFieldset';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
-export { Props, propTypes, DataItem } from './types';
+export { Props, DataItem } from './types';
 
 import './NxTransferList.scss';
 
@@ -42,7 +42,7 @@ const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${
     defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
     defaultSelectedItemsCountFormatter = defaultItemsCountFormatter('transferred');
 
-function NxTransferList<T extends string | number>(props: Props<T>) {
+export default function NxTransferList<T extends string | number>(props: Props<T>) {
   const {
     allItems,
     selectedItems,
@@ -137,7 +137,7 @@ function NxTransferList<T extends string | number>(props: Props<T>) {
           }
           <div className="nx-transfer-list__item-list">
             { visibleAvailableItems.map(
-                i => <TransferListItem<T> key={i.id} checked={false} onChange={onChange} {...i} />)
+                i => <TransferListItem<T> key={i.id} checked={false} onChange={onChange} { ...i } />)
             }
           </div>
           <div className="nx-transfer-list__footer">
@@ -159,7 +159,7 @@ function NxTransferList<T extends string | number>(props: Props<T>) {
           }
           <div className="nx-transfer-list__item-list">
             { visibleSelectedItems.map(
-                i => <TransferListItem key={i.id} checked={true} onChange={onChange} {...i} />)
+                i => <TransferListItem key={i.id} checked={true} onChange={onChange} { ...i } />)
             }
           </div>
           <div className="nx-transfer-list__footer">
@@ -172,5 +172,3 @@ function NxTransferList<T extends string | number>(props: Props<T>) {
 }
 
 NxTransferList.propTypes = propTypes;
-
-export default NxTransferList;
