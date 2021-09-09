@@ -8,7 +8,14 @@ import React from 'react';
 import { NxThreatIndicatorLegend } from '@sonatype/react-shared-components';
 
 const NxThreatIndicatorLegendVerticalExample = () => (
-  <NxThreatIndicatorLegend vertical critical severe moderate low none unspecified/>
+  <NxThreatIndicatorLegend vertical
+                           critical
+                           severe
+                           moderate
+                           low
+                           none
+                           unspecified
+    />
 );
 
 export default NxThreatIndicatorLegendVerticalExample;

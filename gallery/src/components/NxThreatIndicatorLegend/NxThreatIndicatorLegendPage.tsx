@@ -21,11 +21,11 @@ const NxThreatIndicatorLegendPage = () =>
       <NxP>
         <NxCode>NxThreatIndicatorLegend</NxCode> is an element to display the legend for
         various threat levels. The legend can be in two formats: horizontal and vertical.
-        <NxInfoAlert>
-          By default, <NxCode>NxThreatIndicatorLegend</NxCode> renders a horizontal legend.
-          To render a vertical legend, the prop <NxCode>vertical</NxCode> needs to be provided.
-        </NxInfoAlert>
       </NxP>
+      <NxInfoAlert>
+        By default, <NxCode>NxThreatIndicatorLegend</NxCode> renders a horizontal legend.
+        To render a vertical legend, the prop <NxCode>vertical</NxCode> needs to be provided.
+      </NxInfoAlert>
       <NxP>
         <NxCode>NxThreatIndicatorLegend</NxCode> supports displaying the legend for one of
         'unspecified', 'none', 'low', 'moderate', 'severe', or 'critical' threat levels.
@@ -41,10 +41,18 @@ const NxThreatIndicatorLegendPage = () =>
         </NxTable.Head>
         <NxTable.Body>
           <NxTable.Row>
+            <NxTable.Cell>header</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>no</NxTable.Cell>
+            <NxTable.Cell>
+              Sets the legend header title. If not provided, displays "Legend" as the default header title.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell>vertical</NxTable.Cell>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>no</NxTable.Cell>
-            <NxTable.Cell>Displays a vertical legend</NxTable.Cell>
+            <NxTable.Cell>Displays a vertical legend.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>critical</NxTable.Cell>
