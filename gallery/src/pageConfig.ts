@@ -118,6 +118,7 @@ import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
 import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
+import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallThreatCounterPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -170,6 +171,7 @@ const pageConfig: PageConfig = {
     NxTextLink: NxTextLinkPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatCounter: NxThreatCounterPage,
+    NxSmallThreatCounter: NxSmallThreatCounterPage,
     NxThreatIndicator: NxThreatIndicatorPage,
     NxToggle: NxTogglePage,
     NxStatefulToggle: NxStatefulTogglePage,
