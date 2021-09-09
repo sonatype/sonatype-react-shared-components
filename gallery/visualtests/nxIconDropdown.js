@@ -33,7 +33,7 @@ describe('NxIconDropdown', function() {
       await button.click();
     });
 
-    it('has a dark blue button border with expanded menu', async function() {
+    it('has a dark grey button border with expanded menu', async function() {
       const targetElement = await browser.$(defaultSelector);
 
       await targetElement.scrollIntoView({ block: 'center' });
