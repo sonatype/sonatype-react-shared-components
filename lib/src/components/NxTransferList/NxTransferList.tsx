@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { toLower, filter, includes, groupBy, partial, identity, prop, pipe } from 'ramda';
 
-import { Props, TransferListItemProps, DataItem, FilterFn } from './types';
+import { Props, propTypes, TransferListItemProps, DataItem, FilterFn } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxFieldset from '../NxFieldset/NxFieldset';
@@ -19,7 +19,7 @@ export { Props, DataItem } from './types';
 
 import './NxTransferList.scss';
 
-function TransferListItem<T extends string | number>(props: TransferListItemProps<T>) {
+function TransferListItem<T extends string | number = string>(props: TransferListItemProps<T>) {
   const { checked, id, displayName, onChange: onChangeProp } = props;
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
@@ -170,3 +170,5 @@ export default function NxTransferList<T extends string | number>(props: Props<T
     </div>
   );
 }
+
+NxTransferList.propTypes = propTypes;

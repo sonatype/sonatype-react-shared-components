@@ -25,8 +25,8 @@ describe('NxTransferList', function() {
         onSelectedItemsFilterChange: () => {},
         onChange: () => {}
       },
-      getShallow = getShallowComponent<Props<number>>(NxTransferList, minimalProps),
-      getMounted = getMountedComponent<Props<number>>(NxTransferList, minimalProps);
+      getShallow = getShallowComponent<Props<string | number>>(NxTransferList, minimalProps),
+      getMounted = getMountedComponent<Props<string | number>>(NxTransferList, minimalProps);
 
   it('renders a div with the nx-transfer-list class', function() {
     expect(getShallow()).toMatchSelector('div.nx-transfer-list');
@@ -431,7 +431,8 @@ describe('NxTransferList', function() {
         }],
         selectedItems = new Set([4, 5, 6]);
 
-    const getComponent = (moreProps: Partial<Props<number>>) => getMounted({ allItems, selectedItems, ...moreProps }),
+    const getComponent =
+      (moreProps: Partial<Props<string | number>>) => getMounted({ allItems, selectedItems, ...moreProps }),
         getAvailable = pipe(
             getComponent,
             c => c.find('fieldset.nx-transfer-list__half').at(0).find('label.nx-transfer-list__item')
