@@ -70,31 +70,42 @@ describe('NxStatefulSegmentedButton', () => {
   });
 
   it('closes the dropdown if the menu is open and the toggle is clicked', function() {
-    const mounted = getMountedComponent();
+    const mounted = getMountedComponent(undefined, { attachTo: container });
 
-    mounted.find('button.nx-segmented-btn__dropdown-btn').simulate('click');
+    act(() => {
+      mounted.find('button.nx-segmented-btn__dropdown-btn').getDOMNode()
+          .dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+    mounted.update();
     expect(mounted.find('.nx-dropdown-menu')).toExist();
 
-    mounted.find('button.nx-segmented-btn__dropdown-btn').simulate('click');
+    act(() => {
+      mounted.find('button.nx-segmented-btn__dropdown-btn').getDOMNode()
+          .dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+    mounted.update();
     expect(mounted.find('.nx-dropdown-menu')).not.toExist();
     mounted.unmount();
   });
 
   it('closes the dropdown when the Escape key is pressed on this component', function() {
-    const page = (
-      <div>
-        <NxStatefulSegmentedButton { ... minimalProps }/>
-      </div>
-    );
+    const mounted = getMountedComponent(undefined, { attachTo: container });
 
-    const element = mount(page, { attachTo: container });
-    element.find('button.nx-segmented-btn__dropdown-btn').simulate('click');
-    expect(element.find('.nx-dropdown-menu')).toExist();
+    act(() => {
+      mounted.find('button.nx-segmented-btn__dropdown-btn').getDOMNode()
+          .dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+    mounted.update();
+    expect(mounted.find('.nx-dropdown-menu')).toExist();
 
-    element.find(NxSegmentedButton).simulate('keyDown', {key: 'Escape'});
-    expect(element.find('.nx-dropdown-menu')).not.toExist();
+    act(() => {
+      mounted.find(NxSegmentedButton).getDOMNode()
+          .dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape', bubbles: true }));
+    });
+    mounted.update();
+    expect(mounted.find('.nx-dropdown-menu')).not.toExist();
 
-    element.unmount();
+    mounted.unmount();
   });
 
   it('closes the dropdown when an outside click happens', function() {

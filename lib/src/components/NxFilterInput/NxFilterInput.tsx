@@ -19,7 +19,10 @@ export { Props } from './types';
 const NxFilterInput = forwardRef<HTMLDivElement, Props>(
     function NxFilterInput(props, ref) {
       const { className: classNameProp, searchIcon, ...otherProps } = props,
-          className = classnames('nx-filter-input', classNameProp),
+          isEmpty = props.value.trim() === '',
+          className = classnames('nx-filter-input', classNameProp, {
+            'nx-filter-input--empty': isEmpty
+          }),
 
           // just in case these props get passed in, avoid passing them to NxTextInput as they would cause
           // malfunction

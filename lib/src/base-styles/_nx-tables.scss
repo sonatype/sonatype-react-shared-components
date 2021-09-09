@@ -4,6 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-button-helpers';
+@use '../scss-shared/_nx-table-variables';
+
 .nx-table {
   background-color: var(--nx-color-component-background);
   border-spacing: 0;
@@ -166,7 +171,7 @@
 }
 
 .nx-table-container__footer {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   background-color: var(--nx-color-component-background);
   border-top: var(--nx-border-default);
@@ -176,8 +181,8 @@
   transform: translateY(-1px);
 
   // subtract 1 from bottom padding to counteract the translateY above
-  padding: $nx-table-footer-vertical-padding var(--nx-spacing-6x)
-    calc(#{$nx-table-footer-vertical-padding} - 1px) var(--nx-spacing-6x);
+  padding: nx-table-variables.$table-footer-vertical-padding var(--nx-spacing-6x)
+    calc(#{nx-table-variables.$table-footer-vertical-padding} - 1px) var(--nx-spacing-6x);
   position: sticky;
   bottom: 0;
   z-index: 1;
@@ -187,7 +192,7 @@
 .nx-table {
   .nx-table-row--filter-header {
     > .nx-cell--header {
-      top: $nx-table-cell-header-height;
+      top: nx-table-variables.$table-cell-header-height;
     }
 
     .nx-filter-input {
@@ -201,11 +206,11 @@
 }
 
 .nx-cell {
-  @include container-vertical;
-  @include container-horizontal;
+  @include nx-container-helpers.container-vertical;
+  @include nx-container-helpers.container-horizontal;
 
-  min-height: $nx-table-cell-min-height;
-  padding: $nx-table-cell-vertical-padding var(--nx-spacing-3x);
+  min-height: nx-table-variables.$table-cell-min-height;
+  padding: nx-table-variables.$table-cell-vertical-padding var(--nx-spacing-3x);
   vertical-align: top;
 
   &:first-child {
@@ -224,24 +229,24 @@
 
   &:not(.nx-cell--header) > .nx-btn-bar {
     .nx-btn--icon-only {
-      @include nx-small-icon-btn;
+      @include nx-button-helpers.small-icon-btn;
     }
   }
 }
 
 .nx-cell--label {
-  @include semi-bold();
+  @include nx-text-helpers.semi-bold;
 }
 
 .nx-cell--header {
-  @include bold;
+  @include nx-text-helpers.bold;
   background-color: var(--nx-swatch-indigo-80);
   border-top: none;
   box-sizing: border-box;
 
   color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-s);
-  height: $nx-table-cell-header-height;
+  height: nx-table-variables.$table-cell-header-height;
   text-align: left;
   text-transform: uppercase;
   white-space: nowrap;
@@ -302,7 +307,7 @@
 }
 
 .nx-cell__sort-btn, .nx-cell__chevron-btn {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   width: calc(100% + 2 * var(--nx-spacing-4x));
   text-align: inherit;

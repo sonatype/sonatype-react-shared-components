@@ -4,13 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/_nx-pagination-variables';
+@use '../scss-shared/_nx-pagination-variables';
+@use '../scss-shared/nx-text-helpers';
 
 .nx-btn-bar--pagination {
   justify-content: center;
 
   .nx-btn {
-    min-width: $nx-pagination-button-height;
+    min-width: nx-pagination-variables.$pagination-button-height;
     margin: 0 var(--nx-spacing-2x) 0 0;
     padding-left: var(--nx-spacing-4x);
     padding-right: var(--nx-spacing-4x);
@@ -33,7 +34,7 @@
 }
 
 .nx-btn--pagination {
-  @include regular();
+  @include nx-text-helpers.regular;
   background-color: transparent;
   border-color: transparent;
   color: var(--nx-color-text);
