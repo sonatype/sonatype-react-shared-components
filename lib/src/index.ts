@@ -237,3 +237,6 @@ export { default as NxTransferList, Props as NxTransferListProps, DataItem as Nx
 
 export { default as NxStatefulTransferList, Props as NxStatefulTransferListProps }
   from './components/NxTransferList/stateful/NxStatefulTransferList';
+
+export { default as NxThreatIndicatorLegend, NxThreatIndicatorLegendProps }
+  from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegend';

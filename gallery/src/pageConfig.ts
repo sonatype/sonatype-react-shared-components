@@ -116,6 +116,7 @@ import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxSt
 import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
+import NxThreatIndicatorLegendPage from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegendPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -167,6 +168,7 @@ const pageConfig: PageConfig = {
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatCounter: NxThreatCounterPage,
     NxThreatIndicator: NxThreatIndicatorPage,
+    NxThreatIndicatorLegend: NxThreatIndicatorLegendPage,
     NxToggle: NxTogglePage,
     NxStatefulToggle: NxStatefulTogglePage,
     NxTooltip: NxTooltipPage,
