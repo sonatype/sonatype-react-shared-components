@@ -12,6 +12,10 @@ export default function NxDividerHorizontalExample() {
     <>
       <NxP>This is a simple paragraph</NxP>
       <NxDivider/>
+      <NxDivider/>
+      <NxDivider/>
+      <NxDivider/>
+      <NxDivider/>
       <NxP>
         This example simply demonstrates how to use the <NxCode>NxDivider</NxCode> to render
         simple horizontal dividers.

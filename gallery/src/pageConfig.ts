@@ -116,7 +116,7 @@ import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxSt
 import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
-import NxDividerPage from './components/NxDivider/NxDividerPage';
+import NxDividerPage from './styles/NxDivider/NxDividerPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -134,7 +134,6 @@ const pageConfig: PageConfig = {
     NxStatefulCheckbox: NxStatefulCheckboxPage,
     NxCloseButton: NxCloseButtonPage,
     NxCodeSnippet: NxCodeSnippetPage,
-    NxDivider: NxDividerPage,
     NxDropdown: NxDropdownPage,
     NxStatefulDropdown: NxStatefulDropdownPage,
     NxFieldset: NxFieldsetPage,
@@ -197,6 +196,7 @@ const pageConfig: PageConfig = {
     'nx-card': NxCardPage,
     'nx-code': NxCodePage,
     'nx-counter': NxCounterPage,
+    'nx-divider': NxDividerPage,
     'nx-fieldset': NxFieldsetStylePage,
     'nx-form-group': NxFormGroupStylePage,
     'nx-form-select': NxFormSelectPage,

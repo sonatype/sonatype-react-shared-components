@@ -15,6 +15,7 @@ import {
   NxFooter,
   NxButtonBar,
   NxCounter,
+  NxDivider,
   NxThreatNumber,
   NxPageMain,
   NxPageSidebar,
@@ -341,5 +342,11 @@ describe('NxSystemNotice', function() {
 describe('NxSystemNotice.Container', function() {
   it('makes an <div> with an nx-system-notice-container class', function() {
     expect(shallow(<NxSystemNotice.Container/>)).toMatchSelector('div.nx-system-notice-container');
+  });
+});
+
+describe('NxDivider', function() {
+  it('makes a <hr> tag with an nx-divider class', function() {
+    expect(shallow(<NxDivider/>)).toMatchSelector('hr.nx-divider');
   });
 });

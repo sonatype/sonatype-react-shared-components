@@ -21,12 +21,16 @@ const NxDividerPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        <NxCode>NxDivider</NxCode> renders a horizontal divider. The divider is inherently composed
-        of an <NxCode>{'<hr>'}</NxCode>.
+        <NxCode>.nx-divider</NxCode> is the standard RSC class for rendering a horizontal divider.
+      </NxP>
+      <NxP>
+        <NxCode>NxDivider</NxCode> is provided as a convenience component that encapsulates
+        the <NxCode>.nx-divider</NxCode> class and an <NxCode>{'<hr>'}</NxCode> tag to create a horizontal divider.
       </NxP>
       <NxInfoAlert>
-        <NxCode>NxDivider</NxCode> only renders a horizontal divider. For vertical dividers, please
-        refer to <NxCode>nx-grid</NxCode> guidelines listed <NxTextLink href="#/pages/nx-grid">here</NxTextLink>.
+        The <NxCode>.nx-divider</NxCode> class is only used to create horizontal dividers.
+        For vertical dividers, please refer to <NxCode>.nx-grid</NxCode> guidelines
+        listed <NxTextLink href="#/pages/nx-grid">here</NxTextLink>.
       </NxInfoAlert>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
@@ -35,25 +39,22 @@ const NxDividerPage = () =>
         <NxTable>
           <NxTable.Head>
             <NxTable.Row>
-              <NxTable.Cell>Name</NxTable.Cell>
-              <NxTable.Cell>Type</NxTable.Cell>
-              <NxTable.Cell>Required</NxTable.Cell>
-              <NxTable.Cell>Description</NxTable.Cell>
+              <NxTable.Cell>class</NxTable.Cell>
+              <NxTable.Cell>convenience component</NxTable.Cell>
+              <NxTable.Cell>location</NxTable.Cell>
+              <NxTable.Cell>details</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Head>
           <NxTable.Body>
             <NxTable.Row>
-              <NxTable.Cell>HTML attributes</NxTable.Cell>
               <NxTable.Cell>
-                <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes" external>
-                  HTML attributes
-                </NxTextLink>
+                <NxCode>.nx-divider</NxCode>
               </NxTable.Cell>
-              <NxTable.Cell>no</NxTable.Cell>
               <NxTable.Cell>
-                <NxCode>NxDivider</NxCode> supports any HTML attribute that's normally supported
-                by an HTML element.
+                <NxCode>NxDivider</NxCode>
               </NxTable.Cell>
+              <NxTable.Cell>Element</NxTable.Cell>
+              <NxTable.Cell>Horizontal divider element.</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
@@ -75,10 +76,10 @@ const NxDividerPage = () =>
     <GalleryExampleTile title="Simple Vertical Example"
                         liveExample={NxDividerVerticalExample}
                         codeExamples={NxDividerVerticalExampleCode}>
-      <NxCode>NxDivider</NxCode> does not support vertical dividers. It is recommended to use
-      the <NxCode>nx-grid</NxCode> guidelines to render vertical dividers. An example of
-      using <NxCode>nx-grid</NxCode> to render vertical dividers is shown below. For more information
-      about using <NxCode>nx-grid</NxCode>, please refer to the guidelines
+      The <NxCode>.nx-divider</NxCode> class does not support vertical dividers. It is recommended to use
+      the <NxCode>.nx-grid</NxCode> guidelines to render vertical dividers. An example of
+      using <NxCode>.nx-grid</NxCode> to render vertical dividers is shown below. For more information
+      about using <NxCode>.nx-grid</NxCode>, please refer to the guidelines
       listed <NxTextLink href="#/pages/nx-grid">here</NxTextLink>.
     </GalleryExampleTile>
   </>;
