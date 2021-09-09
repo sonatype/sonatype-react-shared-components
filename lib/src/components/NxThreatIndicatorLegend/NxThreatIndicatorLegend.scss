@@ -4,24 +4,30 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-.nx-threat-indicator-legend-header {
-  padding: 0 0 var(--nx-spacing-2x) 0;
-  margin: 0;
-}
 
 .nx-threat-indicator-legend {
+  $max-grid-columns: 6;
+
   align-items: center;
   display: inline-grid;
   gap: var(--nx-spacing-2x);
-  grid-template-columns: repeat(6, auto);
-  justify-items: center;
+  grid-template-columns: repeat($max-grid-columns, auto);
 
-  .nx-threat-indicator {
+  .nx-threat-indicator-legend-header {
+    grid-column: span $max-grid-columns;
+    margin: 0;
+  }
+
+  svg.nx-threat-indicator {
     margin-left: 0;
   }
 
   &.nx-threat-indicator-legend--vertical {
     grid-template-columns: none;
     justify-items: flex-start;
+
+    .nx-threat-indicator-legend-header {
+      grid-column: auto;
+    }
   }
 }

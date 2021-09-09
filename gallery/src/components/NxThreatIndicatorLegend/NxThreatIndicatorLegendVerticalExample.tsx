@@ -13,8 +13,6 @@ const NxThreatIndicatorLegendVerticalExample = () => (
                            severe
                            moderate
                            low
-                           none
-                           unspecified
     />
 );
 

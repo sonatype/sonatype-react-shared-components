@@ -42,22 +42,22 @@ const NxThreatIndicatorLegend = forwardRef<HTMLDivElement, NxThreatIndicatorLege
         className,
         ...attrs
       } = props;
-      const classNames = classnames(className, 'nx-threat-indicator-legend', {
-        'nx-threat-indicator-legend--vertical': vertical
-      });
+      const classNames = classnames(className, 'nx-threat-indicator-legend',
+          {
+            'nx-threat-indicator-legend--vertical': vertical
+          }
+      );
 
       return (
-        <>
+        <div ref={ref} className={classNames} {...attrs}>
           <NxH3 className="nx-threat-indicator-legend-header">{header || 'Legend'}</NxH3>
-          <div ref={ref} className={classNames} {...attrs}>
-            {critical && <ThreatIndicator threatType="critical"/>}
-            {severe && <ThreatIndicator threatType="severe"/>}
-            {moderate && <ThreatIndicator threatType="moderate"/>}
-            {low && <ThreatIndicator threatType="low"/>}
-            {none && <ThreatIndicator threatType="none"/>}
-            {unspecified && <ThreatIndicator threatType="unspecified"/>}
-          </div>
-        </>
+          {critical && <ThreatIndicator threatType="critical"/>}
+          {severe && <ThreatIndicator threatType="severe"/>}
+          {moderate && <ThreatIndicator threatType="moderate"/>}
+          {low && <ThreatIndicator threatType="low"/>}
+          {none && <ThreatIndicator threatType="none"/>}
+          {unspecified && <ThreatIndicator threatType="unspecified"/>}
+        </div>
       );
     });
 
