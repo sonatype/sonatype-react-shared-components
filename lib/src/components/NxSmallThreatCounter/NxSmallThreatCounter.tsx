@@ -50,7 +50,6 @@ export default function NxSmallThreatCounter(props: Props) {
       className = classnames('nx-threat-counter-container nx-threat-counter-container--row', classNameProp),
       maxDigits = maxDigitsProp || 3;
 
-
   if (maxDigits < 1) {
     throw new Error('maxDigits must be positive');
   }
