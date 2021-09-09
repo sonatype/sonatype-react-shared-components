@@ -6,13 +6,13 @@
  */
 import React from 'react';
 import classnames from 'classnames';
+import { head, repeat, tail, toUpper } from 'ramda';
 
 import { CounterProps, Props, propTypes } from './types';
 export { Props } from './types';
 
 import './NxSmallThreatCounter.scss';
 import NxTooltip from '../NxTooltip/NxTooltip';
-import { head, repeat, tail, toUpper } from 'ramda';
 
 function Counter({ category, count, maxDigits }: CounterProps) {
   const categoryForDisplay = `${toUpper(head(category))}${tail(category)}`,
