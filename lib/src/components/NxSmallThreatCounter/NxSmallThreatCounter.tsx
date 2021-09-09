@@ -46,7 +46,8 @@ export default function NxSmallThreatCounter(props: Props) {
         noneCount,
         maxDigits: maxDigitsProp
       } = props,
-      { className, ...attrs } = props,
+      { className: classNameProp, ...attrs } = props,
+      className = classnames('nx-threat-counter-container nx-threat-counter-container--row', classNameProp),
       maxDigits = maxDigitsProp || 3;
 
 
@@ -64,7 +65,7 @@ export default function NxSmallThreatCounter(props: Props) {
   }
 
   return (
-    <div className="nx-threat-counter-container nx-threat-counter-container--row" {...attrs}>
+    <div className={className} { ...attrs }>
       { typeof criticalCount === 'number' &&
         <Counter category="critical" count={criticalCount} maxDigits={maxDigits} />
       }
