@@ -44,10 +44,11 @@ export default function NxSmallThreatCounter(props: Props) {
         moderateCount,
         lowCount,
         noneCount,
-        maxDigits: maxDigitsProp
+        maxDigits: maxDigitsProp,
+        className: classNameProp,
+        ...attrs
       } = props,
-      { className: classNameProp, ...attrs } = props,
-      className = classnames('nx-threat-counter-container nx-threat-counter-container--row', classNameProp),
+      className = classnames('nx-small-threat-counter-container', classNameProp),
       maxDigits = maxDigitsProp || 3;
 
   if (maxDigits < 1) {
