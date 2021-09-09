@@ -16,11 +16,13 @@ describe('NxIconDropdown', function() {
 
   describe('Default NxIconDropdown when closed', function() {
 
-    it('has an indigo border by default', simpleTest(defaultSelector));
-    it('has a dark grey border when hovered', hoverTest(defaultSelector));
-    it('has a light blue border when focused', focusTest(defaultSelector));
-    it('has a dark grey border when focused and hovered', focusAndHoverTest(defaultSelector));
-    it('has a dark grey border and light grey background when clicked', clickTest(defaultSelector));
+    it('has no border by default', simpleTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
+    it('has a dark grey border when hovered', hoverTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
+    it('has a light blue border when focused', focusTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
+    it('has a dark grey border when focused and hovered',
+        focusAndHoverTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
+    it('has a dark grey border and light grey background when clicked',
+        clickTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
   });
 
   describe('Default NxIconDropdown when open', function() {
