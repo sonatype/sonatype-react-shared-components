@@ -20,7 +20,7 @@ describe('NxTextInput', function() {
   });
 
   describe('Simple NxFilterInput', function() {
-    it('has a dark border when pristine', simpleTest(simpleComponentSelector));
+    it('has a light border when empty', simpleTest(simpleComponentSelector));
 
     it('has a dark border when hovered',
         hoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));

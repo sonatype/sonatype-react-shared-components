@@ -4,6 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+
 .nx-text-input {
   display: inline-block;
   position: relative;
@@ -65,7 +67,7 @@
 }
 
 .nx-text-input__box {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   align-items: center;
   background-color: var(--nx-swatch-white);
@@ -117,13 +119,25 @@
 
 .nx-text-input--textarea {
   .nx-text-input__box {
-    align-items: flex-end;
+    align-items: initial;
+    display: flex;
+    flex-direction: column;
+
+    &::before {
+      content: none;
+    }
+
+    .nx-icon {
+      align-self: flex-end;
+      margin: var(--nx-spacing-2x) 0 0 0;
+    }
   }
 }
 
 textarea.nx-text-input__input {
   min-height: 220px;
   padding: 0;
+  resize: vertical;
 }
 
 ::-ms-clear {

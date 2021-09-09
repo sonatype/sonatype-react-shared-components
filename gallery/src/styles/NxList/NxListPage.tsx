@@ -40,7 +40,6 @@ const NxListPage = () =>
         <NxTable.Head>
           <NxTable.Row>
             <NxTable.Cell>Class</NxTable.Cell>
-            <NxTable.Cell>Convenience Component</NxTable.Cell>
             <NxTable.Cell>Location</NxTable.Cell>
             <NxTable.Cell>Details</NxTable.Cell>
           </NxTable.Row>
@@ -48,13 +47,11 @@ const NxListPage = () =>
         <NxTable.Body>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list</NxCode></NxTable.Cell>
-            <NxTable.Cell><NxCode>NxList</NxCode></NxTable.Cell>
             <NxTable.Cell>Top-Level <NxCode>&lt;ul&gt;</NxCode></NxTable.Cell>
             <NxTable.Cell>The parent list class. It has no bullets.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list--clickable</NxCode></NxTable.Cell>
-            <NxTable.Cell/>
             <NxTable.Cell>Modifier of <NxCode>.nx-list</NxCode></NxTable.Cell>
             <NxTable.Cell>
               This modifier causes list items to respond to hover events. There is normally a chevron icon on the
@@ -63,13 +60,11 @@ const NxListPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list--bulleted</NxCode></NxTable.Cell>
-            <NxTable.Cell/>
             <NxTable.Cell>Modifier of <NxCode>.nx-list</NxCode></NxTable.Cell>
             <NxTable.Cell>If you need a list with bullets.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list__item</NxCode></NxTable.Cell>
-            <NxTable.Cell><NxCode>NxList.Item</NxCode></NxTable.Cell>
             <NxTable.Cell>The <NxCode>&lt;li&gt;</NxCode> elements within the list</NxTable.Cell>
             <NxTable.Cell>
               This class should be present on all list items within an <NxCode>nx-list</NxCode>.
@@ -77,7 +72,6 @@ const NxListPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.selected</NxCode></NxTable.Cell>
-            <NxTable.Cell/>
             <NxTable.Cell>
               Utility class that goes along with <NxCode>.nx-list__item</NxCode>
             </NxTable.Cell>
@@ -88,7 +82,6 @@ const NxListPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list__text</NxCode></NxTable.Cell>
-            <NxTable.Cell><NxCode>NxList.Text</NxCode></NxTable.Cell>
             <NxTable.Cell>Element within <NxCode>&lt;li&gt;</NxCode></NxTable.Cell>
             <NxTable.Cell>
               The primary text content of the list item, displayed in a heavier font weight.
@@ -96,7 +89,6 @@ const NxListPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list__subtext</NxCode></NxTable.Cell>
-            <NxTable.Cell><NxCode>NxList.Subtext</NxCode></NxTable.Cell>
             <NxTable.Cell>Element</NxTable.Cell>
             <NxTable.Cell>
               When you want a separate section of non-bolded text below the main list item text use
@@ -105,19 +97,16 @@ const NxListPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list__actions</NxCode></NxTable.Cell>
-            <NxTable.Cell><NxCode>NxList.Actions</NxCode></NxTable.Cell>
             <NxTable.Cell>A container for buttons inside list items</NxTable.Cell>
             <NxTable.Cell>Use this when you want to have a button on the far right.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list__item--empty</NxCode></NxTable.Cell>
-            <NxTable.Cell/>
             <NxTable.Cell>Modifier of <NxCode>.nx-list__item</NxCode></NxTable.Cell>
             <NxTable.Cell>Used when there are no list items returned.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>nx-list__item--error</NxCode></NxTable.Cell>
-            <NxTable.Cell/>
             <NxTable.Cell>Modifier of <NxCode>.nx-list__item</NxCode></NxTable.Cell>
             <NxTable.Cell>
               This is added to a list item when the list is in an error state. In this case it's expected that there
@@ -126,7 +115,6 @@ const NxListPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list__item--clickable</NxCode></NxTable.Cell>
-            <NxTable.Cell/>
             <NxTable.Cell>Modifier of <NxCode>.nx-list__item</NxCode></NxTable.Cell>
             <NxTable.Cell>
               Applied to <NxCode>.nx-list__item</NxCode> this allows for the correct styling of
@@ -138,7 +126,6 @@ const NxListPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list__btn</NxCode></NxTable.Cell>
-            <NxTable.Cell/>
             <NxTable.Cell>Element</NxTable.Cell>
             <NxTable.Cell>
               Applied to an <NxCode>&lt;button&gt;</NxCode> used in a clickable list.
@@ -146,7 +133,6 @@ const NxListPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list__link</NxCode></NxTable.Cell>
-            <NxTable.Cell/>
             <NxTable.Cell>Element</NxTable.Cell>
             <NxTable.Cell>
               Applied to an <NxCode>&lt;a&gt;</NxCode> used in a clickable link list.
@@ -167,7 +153,6 @@ const NxListPage = () =>
           <NxTable.Head>
             <NxTable.Row>
               <NxTable.Cell>Class</NxTable.Cell>
-              <NxTable.Cell>Convenience Component</NxTable.Cell>
               <NxTable.Cell>Location</NxTable.Cell>
               <NxTable.Cell>Details</NxTable.Cell>
             </NxTable.Row>
@@ -175,7 +160,6 @@ const NxListPage = () =>
           <NxTable.Body>
             <NxTable.Row>
               <NxTable.Cell><NxCode>.nx-list--description-list</NxCode></NxTable.Cell>
-              <NxTable.Cell/>
               <NxTable.Cell>
                 <NxCode>&lt;dl&gt;</NxCode> which also
                 has <NxCode>.nx-list</NxCode>.
@@ -184,7 +168,6 @@ const NxListPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>.nx-list__item</NxCode></NxTable.Cell>
-              <NxTable.Cell><NxCode>NxList.Item</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 <NxCode>&lt;div&gt;</NxCode> wrapping <NxCode>&lt;dt&gt;</NxCode>{' '}
                 and <NxCode>&lt;dd&gt;</NxCode> elements
@@ -196,13 +179,11 @@ const NxListPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>.nx-list__term</NxCode></NxTable.Cell>
-              <NxTable.Cell><NxCode>NxList.Term</NxCode></NxTable.Cell>
               <NxTable.Cell><NxCode>&lt;dt&gt;</NxCode></NxTable.Cell>
               <NxTable.Cell>Styles the description term elements</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>.nx-list__description</NxCode></NxTable.Cell>
-              <NxTable.Cell><NxCode>NxList.Description</NxCode></NxTable.Cell>
               <NxTable.Cell><NxCode>&lt;dd&gt;</NxCode></NxTable.Cell>
               <NxTable.Cell>Styles the description elements</NxTable.Cell>
             </NxTable.Row>

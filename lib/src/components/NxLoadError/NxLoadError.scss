@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-container-helpers';
 
 .nx-alert--load-error {
   .nx-alert__content {
-    @include container-horizontal;
+    @include nx-container-helpers.container-horizontal;
     align-items: first baseline;
     display: flex;
     flex-wrap: wrap;
