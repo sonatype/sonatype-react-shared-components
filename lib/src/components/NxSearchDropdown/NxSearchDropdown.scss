@@ -1,0 +1,41 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@import '../../scss-shared/nx-container-helpers';
+
+.nx-search-dropdown {
+  display: inline-block;
+  position: relative;
+
+  &__menu {
+    // only show when the component is focused
+    display: none;
+    width: 100%;
+
+    &--error {
+      padding: 0;
+    }
+  }
+
+  &__empty-message {
+    @include container-horizontal;
+
+    padding: var(--nx-spacing-base) var(--nx-spacing-4x);
+    text-align: center;
+  }
+
+  &:focus-within {
+    .nx-search-dropdown__menu {
+      display: block;
+    }
+  }
+
+  .nx-loading-spinner {
+    padding-top: var(--nx-spacing-6x);
+    padding-bottom: var(--nx-spacing-6x);
+    text-align: center;
+  }
+}

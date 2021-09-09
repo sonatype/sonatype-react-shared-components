@@ -8,13 +8,9 @@ import { ReactNode, HTMLAttributes } from 'react';
 import PropTypes, { ValidationMap } from 'prop-types';
 
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
+import DataItem from '../../util/DataItem';
 
 export type FilterFn<T extends string | number = string> = (d: DataItem<T>[]) => DataItem<T>[];
-
-export interface DataItem<T extends string | number = string> {
-  id: T;
-  displayName: string;
-}
 
 export interface TransferListItemProps<T extends string | number = string> extends DataItem<T> {
   checked: boolean;

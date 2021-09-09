@@ -9,13 +9,14 @@ import classnames from 'classnames';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { toLower, filter, includes, groupBy, partial, identity, prop, pipe } from 'ramda';
 
-import { Props, propTypes, TransferListItemProps, DataItem, FilterFn } from './types';
+import DataItem from '../../util/DataItem';
+import { Props, propTypes, TransferListItemProps, FilterFn } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxFieldset from '../NxFieldset/NxFieldset';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
-export { Props, DataItem } from './types';
+export { Props } from './types';
 
 import './NxTransferList.scss';
 
