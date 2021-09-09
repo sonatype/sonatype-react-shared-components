@@ -17,7 +17,7 @@ import NxTooltip from '../NxTooltip/NxTooltip';
 function Counter({ category, count, maxDigits }: CounterProps) {
   const categoryForDisplay = `${toUpper(head(category))}${tail(category)}`,
       className = classnames(`nx-small-threat-counter nx-small-threat-counter--${category}`, {
-        'nx-threat-counter--zero': count === 0
+        'nx-small-threat-counter--zero': count === 0
       }),
 
       // If we want maxDigits = 3 that means we want room for three digits in addition to a plus sign so

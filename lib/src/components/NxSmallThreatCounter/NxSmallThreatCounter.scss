@@ -28,14 +28,18 @@
   &--critical {
     color: var(--nx-swatch-white);
   }
-}
 
-// Used to set the width of the counter based on its max text content
-.nx-small-threat-counter__sizer {
-  display: block;
-  height: 0;
-  overflow: hidden;
-  visibility: hidden;
+  // Used to set the width of the counter based on its max text content
+  &__sizer {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
+  &--zero {
+    visibility: hidden;
+  }
 }
 
 .nx-small-threat-counter-container {
