@@ -29,6 +29,14 @@
     color: var(--nx-swatch-white);
   }
 
+  &__category {
+    //invisible but still read by the screenreader
+    display: block;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+  }
+
   // Used to set the width of the counter based on its max text content
   &__sizer {
     display: block;
