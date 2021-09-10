@@ -71,6 +71,13 @@
   line-height: var(--nx-line-height);
   padding: var(--nx-spacing-base) var(--nx-spacing-4x);
   text-decoration: none;
+
+  &:focus {
+    background-color: transparent;
+    box-shadow: var(--nx-box-shadow-focus);
+    outline-offset: -1px;
+    outline: 1px solid var(--nx-color-interactive-border-focus);
+  }
 }
 
 .nx-dropdown-button {
@@ -82,7 +89,7 @@
   text-align: left;
   width: 100%;
 
-  &:hover, &:focus {
+  &:hover {
     background-color: var(--nx-color-interactive-background-hover);
   }
 
@@ -103,7 +110,7 @@
 .nx-dropdown-link {
   color: var(--nx-color-link);
 
-  &:hover, &:focus {
+  &:hover {
     color: var(--nx-color-link-hover);
     text-decoration: underline;
   }
