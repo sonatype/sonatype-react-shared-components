@@ -10,8 +10,10 @@ import { NxTextLink, NxTable, NxP, NxCode } from '@sonatype/react-shared-compone
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxSmallThreatCounterExample from './NxSmallThreatCounterExample';
+import NxSmallThreatCounterCustomExample from './NxSmallThreatCounterCustomExample';
 
 const NxSmallThreatCounterCode = require('./NxSmallThreatCounterExample?raw');
+const NxSmallThreatCounterCustomCode = require('./NxSmallThreatCounterCustomExample?raw');
 
 const NxSmallThreatCounterPage = () =>
   <>
@@ -137,6 +139,15 @@ const NxSmallThreatCounterPage = () =>
                         codeExamples={NxSmallThreatCounterCode}>
       A table containing an NxSmallThreatCounter in each row. Note that tables are the only intended use case
       for this component.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxSmallThreatCounter Custom Example"
+                        id="nx-small-threat-max-digits-example"
+                        liveExample={NxSmallThreatCounterCustomExample}
+                        codeExamples={NxSmallThreatCounterCustomCode}>
+      This table of <NxCode>NxSmallThreatCounter</NxCode>s demonstrates the rendering without some categories and with
+      a custom <NxCode>maxDigits</NxCode>. Adjacent text is also shown to demonstrate
+      how <NxCode>NxSmallThreatCounter</NxCode> spaces out relative to other content.
     </GalleryExampleTile>
   </>;
 
