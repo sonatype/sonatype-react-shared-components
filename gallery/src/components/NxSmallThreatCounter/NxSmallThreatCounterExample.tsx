@@ -20,7 +20,11 @@ export default function NxSmallThreatCounterExample() {
         <NxTable.Row>
           <NxTable.Cell>Foo</NxTable.Cell>
           <NxTable.Cell>
-            <NxSmallThreatCounter criticalCount={27} severeCount={5} moderateCount={1337} lowCount={323} noneCount={12} />
+            <NxSmallThreatCounter criticalCount={27}
+                                  severeCount={5}
+                                  moderateCount={1337}
+                                  lowCount={323}
+                                  noneCount={12} />
           </NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
@@ -84,7 +88,11 @@ export default function NxSmallThreatCounterExample() {
         <NxTable.Row>
           <NxTable.Cell>SpiderBox</NxTable.Cell>
           <NxTable.Cell>
-            <NxSmallThreatCounter criticalCount={0} severeCount={1000} moderateCount={0} lowCount={999} noneCount={888} />
+            <NxSmallThreatCounter criticalCount={0}
+                                  severeCount={1000}
+                                  moderateCount={0}
+                                  lowCount={999}
+                                  noneCount={888} />
           </NxTable.Cell>
         </NxTable.Row>
       </NxTable.Body>
