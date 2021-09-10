@@ -5,8 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useLayoutEffect, forwardRef } from 'react';
+import classnames from 'classnames';
 
-import { Props } from './types';
+import { Props, propTypes } from './types';
 
 import './NxDropdownMenu.scss';
 
@@ -17,11 +18,16 @@ export { Props };
  * so they can reset focus when they close
  */
 /* eslint-disable-next-line react/prop-types */
-const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu({ children, onClosing }, ref) {
+const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu(props, ref) {
+  const { onClosing, className: classNameProp, ...attrs } = props,
+      className = classnames('nx-dropdown-menu', classNameProp);
+
   // onClosing must execute when this element is being removed but BEFORE it actually gets removed from the DOM
   useLayoutEffect(() => onClosing, []);
 
-  return <div ref={ref} className="nx-dropdown-menu">{children}</div>;
+  return <div ref={ref} { ...{ className, ...attrs } } />;
 });
+
+NxDropdownMenu.propTypes = propTypes;
 
 export default NxDropdownMenu;

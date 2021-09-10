@@ -8,17 +8,28 @@ import { ReactNode, HTMLAttributes } from 'react';
 import PropTypes, { ValidationMap } from 'prop-types';
 
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
+import DataItem from '../../util/DataItem';
 
 export type FilterFn<T extends string | number = string> = (d: DataItem<T>[]) => DataItem<T>[];
 
-export interface DataItem<T extends string | number = string> {
-  id: T;
-  displayName: string;
-}
+type SelectionChangeHandler<T> = (checked: boolean, id: T) => void;
 
 export interface TransferListItemProps<T extends string | number = string> extends DataItem<T> {
   checked: boolean;
-  onChange: (checked: boolean, id: T) => void;
+  onChange: SelectionChangeHandler<T>;
+}
+
+export interface TransferListHalfProps<T extends string | number = string> {
+  label: Exclude<ReactNode, null | undefined>;
+  filterValue: string;
+  onFilterChange: NxFilterInputProps['onChange'];
+  showMoveAll: boolean;
+  onMoveAll: (toMove: Set<T>) => void;
+  items: DataItem<T>[];
+  isSelected: boolean;
+  onItemChange: SelectionChangeHandler<T>;
+  footerContent: ReactNode;
+  filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
 }
 
 export interface StatefulProps<T extends string | number = string>
