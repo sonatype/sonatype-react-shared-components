@@ -12,7 +12,7 @@ import {
   nxThreatPropTypes,
   ThreatProps
 } from './types';
-import { NxH3, NxThreatIndicator } from '../..';
+import { NxThreatIndicator } from '../..';
 import './NxThreatIndicatorLegend.scss';
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
@@ -42,15 +42,13 @@ const NxThreatIndicatorLegend = forwardRef<HTMLDivElement, NxThreatIndicatorLege
         className,
         ...attrs
       } = props;
-      const classNames = classnames(className, 'nx-threat-indicator-legend',
-          {
-            'nx-threat-indicator-legend--vertical': vertical
-          }
-      );
+      const classNames = classnames(className, 'nx-threat-indicator-legend', {
+        'nx-threat-indicator-legend--vertical': vertical
+      });
 
       return (
         <div ref={ref} className={classNames} {...attrs}>
-          <NxH3 className="nx-threat-indicator-legend-header">{header || 'Legend'}</NxH3>
+          <label className="nx-threat-indicator-legend-header">{header || 'Legend'}</label>
           {critical && <ThreatIndicator threatType="critical"/>}
           {severe && <ThreatIndicator threatType="severe"/>}
           {moderate && <ThreatIndicator threatType="moderate"/>}

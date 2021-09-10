@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-text-helpers';
 
 .nx-threat-indicator-legend {
   $max-grid-columns: 6;
@@ -16,8 +17,9 @@
   max-width: max-content;
 
   .nx-threat-indicator-legend-header {
+    @include nx-text-helpers.bold;
+    color: var(--nx-color-text-dark);
     grid-column: span $max-grid-columns;
-    margin: 0;
   }
 
   .threat-container {
