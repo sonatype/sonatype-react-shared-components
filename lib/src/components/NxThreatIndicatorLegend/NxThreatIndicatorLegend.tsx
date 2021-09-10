@@ -9,7 +9,6 @@ import classnames from 'classnames';
 import {
   NxThreatIndicatorLegendProps,
   nxThreatIndicatorLegendPropTypes,
-  nxThreatPropTypes,
   ThreatProps
 } from './types';
 import { NxThreatIndicator } from '../..';
@@ -25,8 +24,6 @@ const ThreatIndicator = ({ threatType }: ThreatProps) => {
     </div>
   );
 };
-
-ThreatIndicator.propTypes = nxThreatPropTypes;
 
 const NxThreatIndicatorLegend = forwardRef<HTMLDivElement, NxThreatIndicatorLegendProps>(
     (props: NxThreatIndicatorLegendProps, ref) => {

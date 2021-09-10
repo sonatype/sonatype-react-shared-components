@@ -6,7 +6,7 @@
  */
 import { HTMLAttributes, ValidationMap } from 'react';
 import PropTypes from 'prop-types';
-import { allThreatLevelCategories, ThreatLevelCategory } from '../../util/threatLevels';
+import { ThreatLevelCategory } from '../../util/threatLevels';
 
 export interface NxThreatIndicatorLegendProps extends HTMLAttributes<HTMLDivElement> {
   critical?: boolean | null;
@@ -33,7 +33,3 @@ export const nxThreatIndicatorLegendPropTypes: ValidationMap<NxThreatIndicatorLe
 export interface ThreatProps {
   threatType: ThreatLevelCategory;
 }
-
-export const nxThreatPropTypes: ValidationMap<ThreatProps> = {
-  threatType: PropTypes.oneOf(allThreatLevelCategories).isRequired
-};
