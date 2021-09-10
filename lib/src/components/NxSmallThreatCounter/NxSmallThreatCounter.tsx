@@ -30,7 +30,7 @@ function Counter({ category, count, maxDigits }: CounterProps) {
       <div className={className}>
         {/* Ideally this would be implemented as an aria-label but that doesn't get read by ChromeVox */}
         <span className="nx-small-threat-counter__category">{categoryForDisplay}</span>
-        {count > maxValue ? overflowDisplay : count}
+        <span className="nx-small-threat-counter__count">{count > maxValue ? overflowDisplay : count}</span>
         <div className="nx-small-threat-counter__sizer">
           {overflowDisplay}
         </div>
