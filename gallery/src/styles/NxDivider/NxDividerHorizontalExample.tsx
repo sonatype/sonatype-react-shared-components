@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { NxP, NxDivider, NxCode, NxButton, NxButtonBar } from '@sonatype/react-shared-components';
+import { NxP, NxDivider, NxCode } from '@sonatype/react-shared-components';
 import React from 'react';
 
 export default function NxDividerHorizontalExample() {
@@ -26,10 +26,6 @@ export default function NxDividerHorizontalExample() {
         over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
       </NxP>
       <NxDivider />
-      <NxButtonBar>
-        <NxButton variant="primary">Enter The Matrix</NxButton>
-        <NxButton variant="primary" disabled>But Is It Real?</NxButton>
-      </NxButtonBar>
     </>
   );
 }
