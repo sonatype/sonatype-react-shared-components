@@ -108,9 +108,10 @@ const NxTablesExamples = () =>
                         id="nx-table-icon-buttons-example"
                         liveExample={NxTableIconButtonExample}
                         codeExamples={NxTableIconButtonCode}>
-      A demonstration of an <NxCode>nx-table</NxCode> with icon-only buttons in both the filter row
-      and the content rows. Note that the buttons in the filter row are the standard height while the buttons in the
-      content rows are smaller. The default styles only support these sorts of buttons in the rightmost column.
+      A demonstration of an <NxCode>nx-table</NxCode> with icon-only buttons and an icon-only dropdown in both the
+      filter row and the content rows. Note that the buttons in the filter row are the standard height while the
+      buttons in the content rows are smaller. The default styles only support these sorts of buttons in the rightmost
+      column.
     </GalleryExampleTile>
   </>;
 
