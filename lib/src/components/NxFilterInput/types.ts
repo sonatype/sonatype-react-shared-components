@@ -4,11 +4,15 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ValidationMap } from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
 import { PublicProps as NxTextInputProps, propTypes as nxTextInputPropTypes } from '../NxTextInput/NxTextInput';
 
-export type Props = Omit<NxTextInputProps, 'validatable' | 'isPristine' | 'validationErrors' | 'type'>;
+export interface Props extends Omit<NxTextInputProps, 'validatable' | 'isPristine' | 'validationErrors' | 'type'> {
+  searchIcon?: boolean | null;
+}
 
-export const propTypes: ValidationMap<Props> =
-    omit(['validatable', 'isPristine', 'validationErrors', 'type'], nxTextInputPropTypes);
+export const propTypes: PropTypes.ValidationMap<Props> = {
+  ...omit(['validatable', 'isPristine', 'validationErrors', 'type'], nxTextInputPropTypes),
+  searchIcon: PropTypes.bool
+};
