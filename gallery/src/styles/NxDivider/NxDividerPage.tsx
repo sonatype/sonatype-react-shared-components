@@ -9,13 +9,7 @@ import { NxTable, NxCode, NxP, NxH3, NxTile, NxInfoAlert, NxTextLink } from '@so
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxDividerHorizontalExample from './NxDividerHorizontalExample';
-import NxDividerHorizontalFormExample from './NxDividerHorizontalFormExample';
-import NxDividerVerticalExample from './NxDividerVerticalExample';
-
-const NxDividerHorizontalExampleCode = require('./NxDividerHorizontalExample?raw'),
-    NxDividerHorizontalFormExampleCode = require('./NxDividerHorizontalFormExample?raw'),
-    NxDividerVerticalExampleCode = require('./NxDividerVerticalExample?raw');
+const nxDividerCode = require('./NxDividerExample.html');
 
 const NxDividerPage = () =>
   <>
@@ -62,25 +56,9 @@ const NxDividerPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
-                        liveExample={NxDividerHorizontalExample}
-                        codeExamples={NxDividerHorizontalExampleCode}>
+                        htmlExample={nxDividerCode}
+                        codeExamples={nxDividerCode}>
       A simple example of <NxCode>NxDivider</NxCode>.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Simple Example Within NxForm"
-                        liveExample={NxDividerHorizontalFormExample}
-                        codeExamples={NxDividerHorizontalFormExampleCode}>
-      An example of <NxCode>NxDivider</NxCode> used within an <NxCode>NxForm</NxCode>.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Simple Vertical Example"
-                        liveExample={NxDividerVerticalExample}
-                        codeExamples={NxDividerVerticalExampleCode}>
-      The <NxCode>.nx-divider</NxCode> class does not support vertical dividers. It is recommended to use
-      the <NxCode>.nx-grid</NxCode> guidelines to render vertical dividers. An example of
-      using <NxCode>.nx-grid</NxCode> to render vertical dividers is shown below. For more information
-      about using <NxCode>.nx-grid</NxCode>, please refer to the guidelines
-      listed <NxTextLink href="#/pages/nx-grid">here</NxTextLink>.
     </GalleryExampleTile>
   </>;
 
