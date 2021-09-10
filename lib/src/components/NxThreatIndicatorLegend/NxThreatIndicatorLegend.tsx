@@ -43,6 +43,12 @@ const NxThreatIndicatorLegend = forwardRef<HTMLDivElement, NxThreatIndicatorLege
         'nx-threat-indicator-legend--vertical': vertical
       });
 
+      if (!critical && !severe && !moderate && !low && !none && !unspecified) {
+        console.warn(`No threat level categories for NxThreatIndicatorLegend have been provided
+        as props so nothing will be rendered.`);
+        return null;
+      }
+
       return (
         <div ref={ref} className={classNames} {...attrs}>
           <label className="nx-threat-indicator-legend-header">{header || 'Legend'}</label>
