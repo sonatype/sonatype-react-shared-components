@@ -27,8 +27,8 @@ const NxThreatIndicatorLegendPage = () =>
         To render a vertical legend, the prop <NxCode>vertical</NxCode> needs to be provided.
       </NxInfoAlert>
       <NxP>
-        <NxCode>NxThreatIndicatorLegend</NxCode> supports displaying the legend for one of
-        'unspecified', 'none', 'low', 'moderate', 'severe', or 'critical' threat levels.
+        <NxCode>NxThreatIndicatorLegend</NxCode> supports displaying the legend for
+        'unspecified', 'none', 'low', 'moderate', 'severe', and 'critical' threat levels.
       </NxP>
       <NxTable>
         <NxTable.Head>
@@ -36,6 +36,7 @@ const NxThreatIndicatorLegendPage = () =>
             <NxTable.Cell>Prop</NxTable.Cell>
             <NxTable.Cell>Type</NxTable.Cell>
             <NxTable.Cell>Required</NxTable.Cell>
+            <NxTable.Cell>Default</NxTable.Cell>
             <NxTable.Cell>Details</NxTable.Cell>
           </NxTable.Row>
         </NxTable.Head>
@@ -44,50 +45,56 @@ const NxThreatIndicatorLegendPage = () =>
             <NxTable.Cell>header</NxTable.Cell>
             <NxTable.Cell>string</NxTable.Cell>
             <NxTable.Cell>no</NxTable.Cell>
-            <NxTable.Cell>
-              Sets the legend header title. If not provided, displays "Legend" as the default header title.
-            </NxTable.Cell>
+            <NxTable.Cell>'Legend'</NxTable.Cell>
+            <NxTable.Cell>Sets the legend header title.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>vertical</NxTable.Cell>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>no</NxTable.Cell>
+            <NxTable.Cell>false</NxTable.Cell>
             <NxTable.Cell>Displays a vertical legend.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>critical</NxTable.Cell>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>no</NxTable.Cell>
+            <NxTable.Cell>false</NxTable.Cell>
             <NxTable.Cell>Displays the legend item for critical threat items.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>severe</NxTable.Cell>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>no</NxTable.Cell>
+            <NxTable.Cell>false</NxTable.Cell>
             <NxTable.Cell>Displays the legend item for severe threat items.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>moderate</NxTable.Cell>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>no</NxTable.Cell>
+            <NxTable.Cell>false</NxTable.Cell>
             <NxTable.Cell>Displays the legend item for moderate threat items.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>low</NxTable.Cell>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>no</NxTable.Cell>
+            <NxTable.Cell>false</NxTable.Cell>
             <NxTable.Cell>Displays the legend item for low threat items.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>none</NxTable.Cell>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>no</NxTable.Cell>
+            <NxTable.Cell>false</NxTable.Cell>
             <NxTable.Cell>Displays the legend item for none threat items.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>unspecified</NxTable.Cell>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>no</NxTable.Cell>
+            <NxTable.Cell>false</NxTable.Cell>
             <NxTable.Cell>Displays the legend item for unspecified threat items.</NxTable.Cell>
           </NxTable.Row>
 

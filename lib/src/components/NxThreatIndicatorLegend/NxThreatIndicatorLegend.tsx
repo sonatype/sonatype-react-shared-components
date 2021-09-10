@@ -19,7 +19,7 @@ const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const ThreatIndicator = ({ threatType }: ThreatProps) => {
   return (
-    <div>
+    <div className="threat-container">
       <NxThreatIndicator threatLevelCategory={threatType} />
       <span>{capitalize(threatType)}</span>
     </div>
