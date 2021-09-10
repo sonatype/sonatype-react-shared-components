@@ -4,30 +4,31 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../../scss-shared/nx-container-helpers';
 
 .nx-threat-indicator-legend {
   $max-grid-columns: 6;
 
-  align-items: center;
-  display: inline-grid;
+  display: grid;
   gap: var(--nx-spacing-2x);
   grid-template-columns: repeat($max-grid-columns, auto);
+  margin: var(--nx-spacing-6x) 0;
+  max-width: max-content;
 
   .nx-threat-indicator-legend-header {
     grid-column: span $max-grid-columns;
     margin: 0;
   }
 
-  svg.nx-threat-indicator {
-    margin-left: 0;
+  .threat-container {
+    @include nx-container-helpers.container-horizontal;
   }
+}
 
-  &.nx-threat-indicator-legend--vertical {
-    grid-template-columns: none;
-    justify-items: flex-start;
+.nx-threat-indicator-legend--vertical {
+  grid-template-columns: none;
 
-    .nx-threat-indicator-legend-header {
-      grid-column: auto;
-    }
+  .nx-threat-indicator-legend-header {
+    grid-column: auto;
   }
 }
