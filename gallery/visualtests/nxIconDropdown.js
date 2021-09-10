@@ -12,26 +12,28 @@ describe('NxIconDropdown', function() {
     await browser.url('#/pages/NxIconDropdown');
   });
 
-  const defaultSelector = '#nx-IconDropdown-links-example .nx-dropdown--icon-only';
+  const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown';
 
   describe('Default NxIconDropdown when closed', function() {
 
-    it('has an indigo border by default', simpleTest(defaultSelector));
-    it('has a dark grey border when hovered', hoverTest(defaultSelector));
-    it('has a light blue border when focused', focusTest(defaultSelector));
-    it('has a dark grey border when focused and hovered', focusAndHoverTest(defaultSelector));
-    it('has a dark grey border and light grey background when clicked', clickTest(defaultSelector));
+    it('has no border by default', simpleTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
+    it('has a dark grey border when hovered', hoverTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
+    it('has a light blue border when focused', focusTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
+    it('has a dark grey border when focused and hovered',
+        focusAndHoverTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
+    it('has a dark grey border and light grey background when clicked',
+        clickTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
   });
 
   describe('Default NxIconDropdown when open', function() {
     beforeEach(async function() {
-      const button = await browser.$(defaultSelector + ' .nx-dropdown__toggle');
+      const button = await browser.$(defaultSelector + ' .nx-icon-dropdown__toggle');
 
       await button.scrollIntoView({ block: 'center' });
       await button.click();
     });
 
-    it('has a dark blue button border with expanded menu', async function() {
+    it('has a dark grey button border with expanded menu', async function() {
       const targetElement = await browser.$(defaultSelector);
 
       await targetElement.scrollIntoView({ block: 'center' });
@@ -44,8 +46,14 @@ describe('NxIconDropdown', function() {
     });
   });
 
+  describe('NxIconDropdown is spaced correctly inside nx-btn-bar', function() {
+    const selector = '#nx-icon-dropdown-btn-bar-example .nx-btn-bar';
+
+    it('looks right', simpleTest(selector));
+  });
+
   describe('Disabled NxIconDropdown', function() {
-    const selector = '#nx-IconDropdown-disabled-example .nx-dropdown';
+    const selector = '#nx-icon-dropdown-disabled-example .nx-icon-dropdown';
 
     it('looks disabled', simpleTest(selector));
   });

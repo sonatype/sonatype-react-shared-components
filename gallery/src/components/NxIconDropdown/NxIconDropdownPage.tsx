@@ -76,19 +76,21 @@ const NxIconDropdownPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
+                        id="nx-icon-dropdown-simple-example"
                         liveExample={NxIconDropdownExample}
                         codeExamples={nxIconDropdownExampleCode}>
       An example of an <NxCode>NxIconDropdown</NxCode> with links and <NxCode>&lt;button&gt;</NxCode>s.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Button Bar Example"
+                        id="nx-icon-dropdown-btn-bar-example"
                         liveExample={NxIconDropdownButtonsExample}
                         codeExamples={nxIconDropdownButtonsExampleCode}>
       An example of an <NxCode>NxIconDropdown</NxCode> in a button bar with <NxCode>&lt;button&gt;</NxCode>s.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled Example"
-                        id="nx-IconDropdown-disabled-example"
+                        id="nx-icon-dropdown-disabled-example"
                         liveExample={NxIconDropdownDisabledExample}
                         codeExamples={nxIconDropdownDisabledExampleCode}>
       An example of a dropdown that is disabled.

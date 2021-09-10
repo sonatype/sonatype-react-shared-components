@@ -69,13 +69,15 @@ describe('NxStatefulIconDropdown', () => {
     const mounted = getMountedComponent(undefined, { attachTo: container });
 
     act(() => {
-      mounted.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      mounted.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(
+          new MouseEvent('click', { bubbles: true }));
     });
     mounted.update();
     expect(mounted.find('.nx-dropdown-menu')).toExist();
 
     act(() => {
-      mounted.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      mounted.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(
+          new MouseEvent('click', { bubbles: true }));
     });
     mounted.update();
     expect(mounted.find('.nx-dropdown-menu')).not.toExist();
