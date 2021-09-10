@@ -11,8 +11,8 @@ describe('NxSmallThreatCounter', function() {
     await browser.url('#/pages/NxSmallThreatCounter');
   });
 
-  const basicExampleSelector = 'nx-small-threat-counter-example .gallery-example-live',
-      customExampleSelector = 'nx-small-threat-counter-max-digits-example .gallery-example-live';
+  const basicExampleSelector = '#nx-small-threat-counter-example .gallery-example-live',
+      customExampleSelector = '#nx-small-threat-counter-max-digits-example .gallery-example-live';
 
   it('looks correct with default maxDigits and all categories', simpleTest(basicExampleSelector));
   it('looks correct with custom maxDigits and other nearby content', simpleTest(customExampleSelector));
