@@ -142,7 +142,7 @@ const NxSmallThreatCounterPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxSmallThreatCounter Custom Example"
-                        id="nx-small-threat-max-digits-example"
+                        id="nx-small-threat-counter-max-digits-example"
                         liveExample={NxSmallThreatCounterCustomExample}
                         codeExamples={NxSmallThreatCounterCustomCode}>
       This table of <NxCode>NxSmallThreatCounter</NxCode>s demonstrates the rendering without some categories and with
