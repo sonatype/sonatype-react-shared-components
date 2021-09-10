@@ -80,25 +80,19 @@
 
 .nx-btn--error {
   background-color: var(--nx-swatch-red-40);
-  border-color: var(--nx-swatch-red-40);
+  border-color: transparent;
   color: var(--nx-swatch-white);
-
-  &:hover {
-    background-color: var(--nx-swatch-red-35);
-    border-color: var(--nx-swatch-red-35);
-  }
 
   &:focus {
     background-color: var(--nx-swatch-red-40);
     border-color: var(--nx-color-interactive-border-focus);
   }
 
-  &:hover:focus {
+  &:hover {
     background-color: var(--nx-swatch-red-35);
-    border-color: var(--nx-color-interactive-border-focus);
   }
 
-  &:hover:focus:active {
+  &:active {
     background-color: var(--nx-swatch-red-65);
     border-color: var(--nx-swatch-red-65);
   }
