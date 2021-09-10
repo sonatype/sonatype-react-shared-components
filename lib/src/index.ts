@@ -232,8 +232,27 @@ export { nxFormSelectStateHelpers };
 
 export { default as NxList, NxListProps } from './components/NxList/NxList';
 
-export { default as NxTransferList, Props as NxTransferListProps, DataItem as NxTransferListDataItem }
+export { default as NxTransferList, Props as NxTransferListProps }
   from './components/NxTransferList/NxTransferList';
 
 export { default as NxStatefulTransferList, Props as NxStatefulTransferListProps }
   from './components/NxTransferList/stateful/NxStatefulTransferList';
+
+export {
+  default as NxSearchDropdown,
+  Props as NxSearchDropdownProps,
+  SEARCH_DEBOUNCE_TIME as NX_SEARCH_DROPDOWN_DEBOUNCE_TIME
+} from './components/NxSearchDropdown/NxSearchDropdown';
+
+export { default as NxStatefulSearchDropdown, Props as NxStatefulDropdownProps }
+  from './components/NxSearchDropdown/stateful/NxStatefulSearchDropdown';
+
+export { default as DataItem, default as NxTransferListDataItem } from './util/DataItem';
+
+export {
+  default as NxIconDropdown,
+  Props as NxIconDropdownProps
+} from './components/NxIconDropdown/NxIconDropdown';
+
+export { default as NxStatefulIconDropdown }
+  from './components/NxIconDropdown/stateful/NxStatefulIconDropdown';
