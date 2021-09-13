@@ -18,7 +18,7 @@ const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const ThreatIndicator = ({ threatType }: ThreatProps) => {
   return (
-    <div className="nx-threat-container">
+    <div className="nx-threat-indicator-legend__threat-container">
       <NxThreatIndicator threatLevelCategory={threatType} />
       <span>{capitalize(threatType)}</span>
     </div>
@@ -51,7 +51,7 @@ const NxThreatIndicatorLegend = forwardRef<HTMLDivElement, NxThreatIndicatorLege
 
       return (
         <div ref={ref} className={classNames} {...attrs}>
-          <label className="nx-threat-indicator-legend-header">{header || 'Legend'}</label>
+          <label className="nx-threat-indicator-legend__header">{header || 'Legend'}</label>
           {critical && <ThreatIndicator threatType="critical"/>}
           {severe && <ThreatIndicator threatType="severe"/>}
           {moderate && <ThreatIndicator threatType="moderate"/>}

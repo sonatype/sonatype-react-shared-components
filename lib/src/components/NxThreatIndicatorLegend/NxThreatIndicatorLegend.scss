@@ -16,13 +16,13 @@
   margin: var(--nx-spacing-6x) 0;
   max-width: max-content;
 
-  .nx-threat-indicator-legend-header {
+  .nx-threat-indicator-legend__header {
     @include nx-text-helpers.bold;
     color: var(--nx-color-text-dark);
     grid-column: span $max-grid-columns;
   }
 
-  .nx-threat-container {
+  .nx-threat-indicator-legend__threat-container {
     @include nx-container-helpers.container-horizontal;
   }
 }
@@ -30,7 +30,7 @@
 .nx-threat-indicator-legend--vertical {
   grid-template-columns: none;
 
-  .nx-threat-indicator-legend-header {
+  .nx-threat-indicator-legend__header {
     grid-column: auto;
   }
 }
