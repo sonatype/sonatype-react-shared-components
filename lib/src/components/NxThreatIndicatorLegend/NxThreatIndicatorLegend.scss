@@ -22,7 +22,7 @@
     grid-column: span $max-grid-columns;
   }
 
-  .threat-container {
+  .nx-threat-container {
     @include nx-container-helpers.container-horizontal;
   }
 }
