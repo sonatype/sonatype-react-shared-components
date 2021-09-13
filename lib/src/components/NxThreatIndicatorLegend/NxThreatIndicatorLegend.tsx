@@ -11,7 +11,7 @@ import {
   nxThreatIndicatorLegendPropTypes,
   ThreatProps
 } from './types';
-import { NxThreatIndicator } from '../..';
+import NxThreatIndicator from '../NxThreatIndicator/NxThreatIndicator';
 import './NxThreatIndicatorLegend.scss';
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
