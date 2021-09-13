@@ -44,7 +44,7 @@ describe('NxThreatIndicatorLegend', function() {
 
     expect(component).toExist();
     expect(component).toContainExactlyOneMatchingElement('label');
-    expect(component.find('label')).toMatchSelector('label.nx-threat-indicator-legend-header');
+    expect(component.find('label')).toMatchSelector('label.nx-threat-indicator-legend__header');
   });
 
   it('renders custom legend header correctly', function() {
