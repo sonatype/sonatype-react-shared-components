@@ -10,10 +10,14 @@ import { NxCode, NxInfoAlert, NxP, NxTable } from '@sonatype/react-shared-compon
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxThreatIndicatorLegendHorizontalExample from './NxThreatIndicatorLegendHorizontalExample';
+import NxThreatIndicatorLegendHorizontalExampleHalf from './NxThreatIndicatorLegendHorizontalExampleHalf';
 import NxThreatIndicatorLegendVerticalExample from './NxThreatIndicatorLegendVerticalExample';
+import NxThreatIndicatorLegendVerticalExampleHalf from './NxThreatIndicatorLegendVerticalExampleHalf';
 
 const NxThreatIndicatorLegendHorizontalExampleCode = require('./NxThreatIndicatorLegendHorizontalExample?raw'),
-    NxThreatIndicatorLegendVerticalExampleCode = require('./NxThreatIndicatorLegendVerticalExample?raw');
+    NxThreatIndicatorLegendHorizontalExampleHalfCode = require('./NxThreatIndicatorLegendHorizontalExampleHalf?raw'),
+    NxThreatIndicatorLegendVerticalExampleCode = require('./NxThreatIndicatorLegendVerticalExample?raw'),
+    NxThreatIndicatorLegendVerticalExampleHalfCode = require('./NxThreatIndicatorLegendVerticalExampleHalf?raw');
 
 const NxThreatIndicatorLegendPage = () =>
   <>
@@ -102,18 +106,36 @@ const NxThreatIndicatorLegendPage = () =>
       </NxTable>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Horizontal Example"
+    <GalleryExampleTile title="Horizontal Example 1"
                         id="nx-threat-indicator-legend-example"
                         liveExample={NxThreatIndicatorLegendHorizontalExample}
                         codeExamples={NxThreatIndicatorLegendHorizontalExampleCode}>
-      An example of a horizontal <NxCode>NxThreatIndicatorLegend</NxCode>.
+      An example of a horizontal <NxCode>NxThreatIndicatorLegend</NxCode> displaying all possible
+      category level threats.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Vertical Example"
+    <GalleryExampleTile title="Horizontal Example 2"
+                        id="nx-threat-indicator-legend-example-half"
+                        liveExample={NxThreatIndicatorLegendHorizontalExampleHalf}
+                        codeExamples={NxThreatIndicatorLegendHorizontalExampleHalfCode}>
+      An example of a horizontal <NxCode>NxThreatIndicatorLegend</NxCode> displaying a custom legend header
+      title and some category level threats.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Vertical Example 1"
                         id="nx-threat-indicator-legend-vertical-example"
                         liveExample={NxThreatIndicatorLegendVerticalExample}
                         codeExamples={NxThreatIndicatorLegendVerticalExampleCode}>
-      An example of a vertical <NxCode>NxThreatIndicatorLegend</NxCode>.
+      An example of a vertical <NxCode>NxThreatIndicatorLegend</NxCode> displaying all possible
+      category level threats.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Vertical Example 2"
+                        id="nx-threat-indicator-legend-vertical-example-half"
+                        liveExample={NxThreatIndicatorLegendVerticalExampleHalf}
+                        codeExamples={NxThreatIndicatorLegendVerticalExampleHalfCode}>
+      An example of a vertical <NxCode>NxThreatIndicatorLegend</NxCode> displaying a custom legend header
+      title and some category level threats.
     </GalleryExampleTile>
   </>;
 
