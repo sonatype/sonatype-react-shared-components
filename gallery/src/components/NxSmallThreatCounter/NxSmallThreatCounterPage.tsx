@@ -25,7 +25,7 @@ const NxSmallThreatCounterPage = () =>
         While <NxCode>NxThreatCounter</NxCode> statically displays the name of each threat level category,
         <NxCode>NxSmallThreatCounter</NxCode> initially displays only the count itself within a colored background.
         Tooltips and accessibility labels are provided to give the user more information on the category for
-        each count when they inspect (via hover to screenreader) each count.
+        each count when they inspect (via hover or screenreader) each count.
       </NxP>
       <NxP>
         Each count is optional. If no value is provided for a given count, then the indicator for that severity level
@@ -109,7 +109,7 @@ const NxSmallThreatCounterPage = () =>
               The maximum number of digits to display within the counter. This value is used to make all counters
               across an entire table consistent in width. Each count is given space for this number of digits along
               with a plus sign for rendering values that go over the maximum.  For instance, if this prop is set to
-              2, then the counters will display and one or two digits numbers. If any count in that case is greater
+              2, then the counters will display only one or two digits numbers. If any count in that case is greater
               than two digits, the counter will display "99+". The counters will be exactly wide enough to display
               "99+" regardless of their actual content. Note that since the default for this prop is 3, by default
               counters will be wide enough to display "999+".
