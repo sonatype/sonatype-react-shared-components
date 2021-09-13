@@ -7,7 +7,7 @@
 import React from 'react';
 import { NxSmallThreatCounter, NxTable } from '@sonatype/react-shared-components';
 
-export default function NxSmallThreatCounterExample() {
+export default function NxSmallThreatCounterCustomExample() {
   return (
     <NxTable>
       <NxTable.Head>
