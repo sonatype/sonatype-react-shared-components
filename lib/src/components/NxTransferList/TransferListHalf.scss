@@ -4,14 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-container-helpers';
-@import '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-text-helpers';
 
 // the padding on the sides of each transfer list control box
-$nx-transfer-list-control-box-side-spacing: var(--nx-spacing-6x);
-$nx-transfer-list-item-vertical-padding: var(--nx-spacing-2x);
-$nx-transfer-list-item-vertical-margin: var(--nx-spacing-2x);
-$nx-transfer-list-visible-item-count: 10;
+$-control-box-side-spacing: var(--nx-spacing-6x);
+$-item-vertical-padding: var(--nx-spacing-2x);
+$-item-vertical-margin: var(--nx-spacing-2x);
+$-visible-item-count: 10;
 
 .nx-transfer-list__half {
   margin-bottom: 0;
@@ -39,12 +39,12 @@ $nx-transfer-list-visible-item-count: 10;
 }
 
 .nx-transfer-list__filter {
-  margin: var(--nx-spacing-6x) $nx-transfer-list-control-box-side-spacing 0 $nx-transfer-list-control-box-side-spacing;
+  margin: var(--nx-spacing-6x) $-control-box-side-spacing 0 $-control-box-side-spacing;
   width: auto;
 }
 
 .nx-transfer-list__move-all {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
   align-self: start;
   background: initial;
@@ -52,7 +52,7 @@ $nx-transfer-list-visible-item-count: 10;
   color: var(--nx-color-link);
   cursor: pointer;
   font: inherit;
-  margin: var(--nx-spacing-4x) $nx-transfer-list-control-box-side-spacing 0 $nx-transfer-list-control-box-side-spacing;
+  margin: var(--nx-spacing-4x) $-control-box-side-spacing 0 $-control-box-side-spacing;
   padding: 0;
 
   &:hover {
@@ -69,9 +69,9 @@ $nx-transfer-list-visible-item-count: 10;
 }
 
 .nx-transfer-list__item-list {
-  $item-height: '(1em * var(--nx-line-height) + 2 * #{$nx-transfer-list-item-vertical-padding})';
+  $item-height: '(1em * var(--nx-line-height) + 2 * #{$-item-vertical-padding})';
 
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   background-color: var(--nx-swatch-indigo-97);
   border-top: var(--nx-border-default);
@@ -81,19 +81,19 @@ $nx-transfer-list-visible-item-count: 10;
 
   // Should be exactly tall enough to show 10 items, taking into account the margin between them
   height: calc(
-    #{$nx-transfer-list-visible-item-count} * #{$item-height} +
-    #{$nx-transfer-list-visible-item-count - 1} * #{$nx-transfer-list-item-vertical-margin}
+    #{$-visible-item-count} * #{$item-height} +
+    #{$-visible-item-count - 1} * #{$-item-vertical-margin}
   );
 
 
   overflow-y: auto;
-  padding: var(--nx-spacing-6x) $nx-transfer-list-control-box-side-spacing;
+  padding: var(--nx-spacing-6x) $-control-box-side-spacing;
   margin-top: var(--nx-spacing-6x);
 }
 
 .nx-transfer-list__item {
-  @include container-horizontal;
-  @include nx-truncate-ellipsis;
+  @include nx-container-helpers.container-horizontal;
+  @include nx-text-helpers.truncate-ellipsis;
 
   background-color: var(--nx-swatch-white);
   border: var(--nx-border-default);
@@ -127,5 +127,5 @@ $nx-transfer-list-visible-item-count: 10;
 
 .nx-transfer-list__footer {
   font-size: var(--nx-font-size-s);
-  padding: var(--nx-spacing-base) $nx-transfer-list-control-box-side-spacing;
+  padding: var(--nx-spacing-base) $-control-box-side-spacing;
 }

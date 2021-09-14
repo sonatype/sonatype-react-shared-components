@@ -96,6 +96,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
                      value={searchText}
                      onChange={handleFilterChange}
                      disabled={disabled || undefined}
+                     placeholder="Search"
                      searchIcon />
       { searchText && !disabled &&
         <NxDropdownMenu key={error ? 'error' : 'no-error'}

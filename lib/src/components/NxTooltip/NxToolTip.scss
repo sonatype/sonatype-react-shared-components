@@ -4,12 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-text-helpers';
 
 .nx-tooltip {
   // for specificity
   &.MuiTooltip-tooltip {
-    @include semi-bold;
+    @include nx-text-helpers.semi-bold;
 
     box-sizing: border-box;
     background-color: var(--nx-swatch-grey-05);

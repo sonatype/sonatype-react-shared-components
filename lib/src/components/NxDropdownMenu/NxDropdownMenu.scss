@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-dropdown-variables';
-@import '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-dropdown-variables';
+@use '../../scss-shared/nx-container-helpers';
 
 .nx-dropdown-menu {
-  @include container-vertical();
+  @include nx-container-helpers.container-vertical;
 
   background: var(--nx-swatch-white);
   border-radius: var(--nx-border-radius);
@@ -23,6 +23,6 @@
   padding: var(--nx-spacing-base) 0;
   position: absolute;
   top: 100%;
-  width: $nx-dropdown-width;
+  width: nx-dropdown-variables.$dropdown-width;
   z-index: 1;
 }

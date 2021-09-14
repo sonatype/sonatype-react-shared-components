@@ -16,10 +16,12 @@ import NxStatefulDropdown, { Props } from '../NxStatefulDropdown';
 describe('NxStatefulDropdown', () => {
   let container: HTMLDivElement | null;
 
-  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulDropdown, {
-    label: 'dropdown',
-    children: <a>Hello</a>
-  });
+  const minimalProps = {
+        label: 'dropdown',
+        children: <a>Hello</a>
+      },
+      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulDropdown, minimalProps),
+      getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxStatefulDropdown, minimalProps);
 
   beforeEach(function() {
     // Avoid rendering directly on the body.
@@ -58,9 +60,8 @@ describe('NxStatefulDropdown', () => {
   });
 
   it('opens the dropdown when the toggle is clicked', function() {
-    const mounted = mount(
-      <NxStatefulDropdown label="dropdown" />
-    );
+    const mounted = getMountedComponent(undefined, { attachTo: container });
+
     expect(mounted.find('.nx-dropdown-menu')).not.toExist();
 
     mounted.find(NxButton).simulate('click');
@@ -69,31 +70,39 @@ describe('NxStatefulDropdown', () => {
   });
 
   it('closes the dropdown if the menu is open and the toggle is clicked', function() {
-    const mounted = mount(
-      <NxStatefulDropdown label="dropdown" />
-    );
-    mounted.find(NxButton).simulate('click');
+    const mounted = getMountedComponent(undefined, { attachTo: container });
+
+    act(() => {
+      mounted.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+    mounted.update();
     expect(mounted.find('.nx-dropdown-menu')).toExist();
 
-    mounted.find(NxButton).simulate('click');
+    act(() => {
+      mounted.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+    mounted.update();
     expect(mounted.find('.nx-dropdown-menu')).not.toExist();
     mounted.unmount();
   });
 
   it('closes the dropdown when the Escape key is pressed on this component', function() {
-    const page = (
-      <div>
-        <NxStatefulDropdown label="label" />
-      </div>
-    );
-    const element = mount(page, { attachTo: container });
-    element.find(NxButton).simulate('click');
-    expect(element.find('.nx-dropdown-menu')).toExist();
+    const mounted = getMountedComponent(undefined, { attachTo: container });
 
-    element.find(NxDropdown).simulate('keyDown', {key: 'Escape'});
-    expect(element.find('.nx-dropdown-menu')).not.toExist();
+    act(() => {
+      mounted.find(NxButton).getDOMNode().dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+    mounted.update();
+    expect(mounted.find('.nx-dropdown-menu')).toExist();
 
-    element.unmount();
+    act(() => {
+      mounted.find(NxDropdown).getDOMNode()
+          .dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape', bubbles: true }));
+    });
+    mounted.update();
+    expect(mounted.find('.nx-dropdown-menu')).not.toExist();
+
+    mounted.unmount();
   });
 
   it('closes the dropdown when an outside click happens', function() {

@@ -8,16 +8,16 @@ import React, { useMemo } from 'react';
 import classnames from 'classnames';
 import { groupBy } from 'ramda';
 
-import { Props } from './types';
+import { Props, propTypes } from './types';
 import TransferListHalf from './TransferListHalf';
-
-const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${n === 1 ? '' : 's'} ${kind}`,
-    defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
-    defaultSelectedItemsCountFormatter = defaultItemsCountFormatter('transferred');
 
 import './NxTransferList.scss';
 
 export { Props };
+
+const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${n === 1 ? '' : 's'} ${kind}`,
+    defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
+    defaultSelectedItemsCountFormatter = defaultItemsCountFormatter('transferred');
 
 export default function NxTransferList<T extends string | number>(props: Props<T>) {
   const {
@@ -98,3 +98,5 @@ export default function NxTransferList<T extends string | number>(props: Props<T
     </div>
   );
 }
+
+NxTransferList.propTypes = propTypes;

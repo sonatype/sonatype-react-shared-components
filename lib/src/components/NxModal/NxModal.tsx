@@ -83,7 +83,10 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
 
     return () => {
       if (previouslyFocusedEl && previouslyFocusedEl instanceof HTMLElement) {
-        previouslyFocusedEl.focus();
+        // The useEffect cleanup executes while the modal is still present (in React 16 at least). While the modal
+        // still exists, the document is still "blocked by the modal dialog" so trying to focus elements outside of
+        // it won't work. So we have to wait until the next cycle of the event loop when it's gone
+        Promise.resolve().then(() => previouslyFocusedEl.focus());
       }
     };
   }, []);

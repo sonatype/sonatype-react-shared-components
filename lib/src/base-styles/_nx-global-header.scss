@@ -4,6 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-button-helpers';
+
 .nx-global-header {
   align-items: center;
   border-bottom: var(--nx-border-default);
@@ -23,7 +26,7 @@
 }
 
 .nx-global-header__actions {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
   align-items: center;
   border-left: var(--nx-border-default);
   display: flex;
@@ -31,6 +34,6 @@
   padding-left: var(--nx-spacing-8x);
 
   .nx-btn--icon-only {
-    @include nx-small-icon-btn;
+    @include nx-button-helpers.small-icon-btn;
   }
 }

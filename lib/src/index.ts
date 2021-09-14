@@ -254,3 +254,11 @@ export { default as NxSearchTransferList, Props as NxSearchTransferListProps }
 
 export { default as NxStatefulSearchTransferList, Props as NxStatefulSearchTransferListProps }
   from './components/NxSearchTransferList/stateful/NxStatefulSearchTransferList';
+
+export {
+  default as NxIconDropdown,
+  Props as NxIconDropdownProps
+} from './components/NxIconDropdown/NxIconDropdown';
+
+export { default as NxStatefulIconDropdown }
+  from './components/NxIconDropdown/stateful/NxStatefulIconDropdown';

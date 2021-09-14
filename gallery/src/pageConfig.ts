@@ -121,6 +121,8 @@ import NxStatefulSearchDropdownPage from './components/NxStatefulSearchDropdown/
 import NxSearchTransferListPage from './components/NxSearchTransferList/NxSearchTransferListPage';
 import NxStatefulSearchTransferListPage
   from './components/NxStatefulSearchTransferList/NxStatefulSearchTransferListPage';
+import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
+import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -140,6 +142,8 @@ const pageConfig: PageConfig = {
     NxCodeSnippet: NxCodeSnippetPage,
     NxDropdown: NxDropdownPage,
     NxStatefulDropdown: NxStatefulDropdownPage,
+    NxIconDropdown: NxIconDropdownPage,
+    NxStatefulIconDropdown: NxStatefulIconDropdownPage,
     NxFieldset: NxFieldsetPage,
     NxFilterInput: NxFilterInputPage,
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
@@ -225,10 +229,10 @@ const pageConfig: PageConfig = {
   'Styles - Mixins & Helpers': {
     'Color Palettes': ColorPalettePage,
     'Custom app font size': NxFontSizePage,
+    'Ellipsis Truncation': NxTruncatePage,
     'nx-clickable': NxClickablePage,
     'nx-container-helpers': NxContainerHelpersPage,
     'nx-scrollable': NxScrollablePage,
-    'nx-truncate-ellipsis': NxTruncatePage,
     'nx-viewport-sized': NxViewportSizedPage,
     'Selectable Colors': SelectableColorsPage,
     'Style Variables': CssVariablesPage

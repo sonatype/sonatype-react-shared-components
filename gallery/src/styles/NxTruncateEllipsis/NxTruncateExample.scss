@@ -4,15 +4,15 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
- @import '~@sonatype/react-shared-components/scss-shared/nx-text-helpers';
+@use '~@sonatype/react-shared-components/scss-shared/nx-text-helpers';
 
 .nx-truncate-example1 {
-  @include nx-truncate-ellipsis;
+  @include nx-text-helpers.truncate-ellipsis;
   max-width: 400px;
 }
 
 .nx-truncate-example2 {
-  @include nx-truncate-ellipsis;
+  @include nx-text-helpers.truncate-ellipsis;
   max-width: 600px;
 }
 

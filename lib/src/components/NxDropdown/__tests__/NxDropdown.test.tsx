@@ -263,8 +263,7 @@ describe('NxDropdown', () => {
       }
   );
 
-  it('does not call onToggleCollapse if a click happens anywhere other than the dropdown button when onCloseClick ' +
-      'preventsDefault', function() {
+  it('does not call onToggleCollapse if a click happens when onCloseClick preventsDefault', function() {
     const onToggleCollapse = jest.fn(),
         component = getMountedComponent({
           children: <button className="nx-dropdown-button">Foo</button>,
@@ -297,7 +296,7 @@ describe('NxDropdown', () => {
       }));
     });
     component!.update();
-    expect(onToggleCollapse).toHaveBeenCalledTimes(1);
+    expect(onToggleCollapse).not.toHaveBeenCalled();
   });
 
   it('moves focus to the dropdown toggle button if a menu item is focused when the dropdown is closed', function() {

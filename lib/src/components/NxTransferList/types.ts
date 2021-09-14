@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { ReactNode, HTMLAttributes } from 'react';
+import PropTypes, { ValidationMap } from 'prop-types';
 
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
 import DataItem from '../../util/DataItem';
@@ -37,8 +38,8 @@ export interface StatefulProps<T extends string | number = string>
   selectedItems: Set<T>;
   availableItemsLabel?: ReactNode;
   selectedItemsLabel?: ReactNode;
-  availableItemsCountFormatter?: (n: number) => string,
-  selectedItemsCountFormatter?: (n: number) => string,
+  availableItemsCountFormatter?: ((n: number) => string) | null,
+  selectedItemsCountFormatter?: ((n: number) => string) | null,
   showMoveAll?: boolean | null;
   onChange: (newSelected: Set<T>) => void;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
@@ -50,3 +51,25 @@ export interface Props<T extends string | number = string> extends StatefulProps
   onAvailableItemsFilterChange: NxFilterInputProps['onChange'];
   onSelectedItemsFilterChange: NxFilterInputProps['onChange'];
 }
+
+export const propTypes: ValidationMap<Props<string | number>> = {
+  allItems: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.number.isRequired
+    ]).isRequired,
+    displayName: PropTypes.string.isRequired
+  }).isRequired).isRequired,
+  selectedItems: PropTypes.instanceOf<Set<string | number>>(Set).isRequired,
+  availableItemsLabel: PropTypes.node,
+  selectedItemsLabel: PropTypes.node,
+  availableItemsCountFormatter: PropTypes.func,
+  selectedItemsCountFormatter: PropTypes.func,
+  showMoveAll: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+  filterFn: PropTypes.func,
+  availableItemsFilter: PropTypes.string.isRequired,
+  selectedItemsFilter: PropTypes.string.isRequired,
+  onAvailableItemsFilterChange: PropTypes.func,
+  onSelectedItemsFilterChange: PropTypes.func
+};

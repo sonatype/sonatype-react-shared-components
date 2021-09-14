@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-container-helpers';
 
 .nx-search-dropdown {
   display: inline-block;
@@ -21,7 +21,7 @@
   }
 
   &__empty-message {
-    @include container-horizontal;
+    @include nx-container-helpers.container-horizontal;
 
     padding: var(--nx-spacing-base) var(--nx-spacing-4x);
     text-align: center;
