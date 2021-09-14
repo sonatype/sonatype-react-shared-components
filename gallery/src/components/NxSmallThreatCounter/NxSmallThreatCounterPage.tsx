@@ -20,12 +20,12 @@ const NxSmallThreatCounterPage = () =>
     <GalleryDescriptionTile>
       <NxP>
         Similar to <NxCode>NxThreatCounter</NxCode>, <NxCode>NxSmallThreatCounter</NxCode> displays a series of
-        counts of "threats" in different severity categories. This component is more compact than the regular
-        <NxCode>NxThreatCounter</NxCode> and is specifically intended for use within table rows.
-        While <NxCode>NxThreatCounter</NxCode> statically displays the name of each threat level category,
-        <NxCode>NxSmallThreatCounter</NxCode> initially displays only the count itself within a colored background.
-        Tooltips and accessibility labels are provided to give the user more information on the category for
-        each count when they inspect (via hover or screenreader) each count.
+        counts of "threats" in different severity categories. This component is more compact than the
+        regular <NxCode>NxThreatCounter</NxCode> and is specifically intended for use within table rows.
+        While <NxCode>NxThreatCounter</NxCode> statically displays the name of each threat level
+        category, <NxCode>NxSmallThreatCounter</NxCode> initially displays only the count itself within a colored
+        background. Tooltips and accessibility labels are provided to give the user more information on the category
+        for each count when they inspect (via hover or screenreader) each count.
       </NxP>
       <NxP>
         Each count is optional. If no value is provided for a given count, then the indicator for that severity level
