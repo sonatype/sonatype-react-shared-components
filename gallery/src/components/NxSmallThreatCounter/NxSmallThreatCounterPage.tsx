@@ -137,8 +137,8 @@ const NxSmallThreatCounterPage = () =>
                         id="nx-small-threat-counter-example"
                         liveExample={NxSmallThreatCounterExample}
                         codeExamples={NxSmallThreatCounterCode}>
-      A table containing an <NxCode>NxSmallThreatCounter</NxCode> in each row. Note that tables are the only intended use case
-      for this component.
+      A table containing an <NxCode>NxSmallThreatCounter</NxCode> in each row. Note that tables are the only intended
+      use case for this component.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxSmallThreatCounter Custom Example"
