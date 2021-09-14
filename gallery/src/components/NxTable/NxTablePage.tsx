@@ -11,6 +11,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxTableSimpleExample from './NxTableSimpleExample';
 import NxTableClickableExample from './NxTableClickableExample';
+import NxTableClickableCustomExample from './NxTableClickableCustomExample';
 import NxTableSortableExample from './NxTableSortableExample';
 import NxTableLoadingExample from './NxTableLoadingExample';
 import NxTableErrorExample from './NxTableErrorExample';
@@ -22,6 +23,7 @@ import NxTablePaginationFilterExample from './NxTablePaginationFilterExample';
 
 const tableSimpleExampleCode = require('./NxTableSimpleExample?raw');
 const tableClickableExample = require('./NxTableClickableExample?raw');
+const tableClickableCustomExample = require('./NxTableClickableCustomExample?raw');
 const tableSortableExample = require('./NxTableSortableExample?raw');
 const tableFilterExample = require('./NxTableFilterExample?raw');
 const tablePaginationExample = require('./NxTablePaginationExample?raw');
@@ -327,16 +329,26 @@ export default function NxTablePage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>chevron</NxTable.Cell>
-                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>rowBtnIcon</NxTable.Cell>
+                <NxTable.Cell>FontAwesome Icon Descriptor</NxTable.Cell>
                 <NxTable.Cell>false</NxTable.Cell>
                 <NxTable.Cell>
-                  Desginates a cell that should contain only the right-facing chevron icon used at that end of
-                  clickable table cells. <NxCode>NxTable.Cell</NxCode>s with this prop set will
+                  Desginates a cell that should contain only the the specified icon. This is to be used at that end of
+                  clickable table rows. <NxCode>NxTable.Cell</NxCode>s with this prop set will
                   self-populate with the icon, and do not take <NxCode>children</NxCode>. The icon
                   will be wrapped in a button for accessibility purposes, with the button's accessible name set by
                   the row's <NxCode>clickAccessibleLabel</NxCode> prop or generated from the text contents of the
                   rest of the row.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>chevron</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
+                  An alternative to <NxCode>rowBtnIcon</NxCode> for the most common clickable row icon: the
+                  right-facing chevron. This is provided for convenience and backwards compatibility. If set
+                  simultaneously with <NxCode>rowBtnIcon</NxCode>, that prop takes precedence.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -444,6 +456,14 @@ export default function NxTablePage() {
                           liveExample={NxTableClickableExample}
                           codeExamples={tableClickableExample}>
         An example where the rows are styled to indicate that they are clickable.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Clickable Row Custom Icon Example"
+                          id="nx-table-clickable-custom-example"
+                          liveExample={NxTableClickableCustomExample}
+                          codeExamples={tableClickableCustomExample}>
+        An example where the rows are styled to indicate that they are clickable, using a custom icon rather than the
+        typical right-facing chevron.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Sortable Columns Example"
