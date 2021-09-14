@@ -270,14 +270,9 @@
   text-align: center;
 }
 
+// deprecated, just use .nx-cell--icon
 .nx-cell--chevron {
   @extend .nx-cell--icon;
-
-  box-sizing: content-box;
-
-  // this is the width of the chevron svg
-  width: 10px;
-  height: auto;
 }
 
 .nx-cell--sortable {
@@ -306,10 +301,28 @@
   }
 }
 
+// make button take up entire cell including its padding box
+@mixin btn-cell-sizing($left-padding, $right-padding) {
+  margin-left: calc(0px - #{$left-padding});
+  margin-right: calc(0px - #{$right-padding});
+  padding-left: $left-padding;
+  padding-right: $right-padding;
+  width: calc(100% + #{$left-padding} + #{$right-padding});
+}
+
 .nx-cell__sort-btn, .nx-cell__chevron-btn {
   @include nx-container-helpers.container-horizontal;
 
-  width: calc(100% + 2 * var(--nx-spacing-4x));
+  // first-child and last-child added for specificity
+  &, &:first-child, &:last-child {
+    @include btn-cell-sizing(var(--nx-spacing-3x), var(--nx-spacing-3x));
+
+    margin-top: calc(0px - var(--nx-spacing-3x));
+    margin-bottom: calc(0px - var(--nx-spacing-3x));
+    padding-top: var(--nx-spacing-3x);
+    padding-bottom: var(--nx-spacing-3x);
+  }
+
   text-align: inherit;
   text-transform: uppercase;
 
@@ -319,11 +332,27 @@
     font: inherit;
     outline: none;
   }
+}
 
-  // first and last child selectors necessary for specificity
-  &, &:first-child, &:last-child {
-    // make button take up entire header including its padding box
-    margin: calc(0px - var(--nx-spacing-3x)) calc(0px - var(--nx-spacing-4x));
-    padding: var(--nx-spacing-3x) var(--nx-spacing-4x);
+// adjust button sizing for ends of rows, where padding is different and there are borders
+.nx-cell {
+  $edge-spacing: calc(var(--nx-spacing-4x) - 1px);
+
+  &:first-child {
+    > .nx-cell__chevron-btn, > .nx-cell__sort-btn {
+      @include btn-cell-sizing($edge-spacing, var(--nx-spacing-3x));
+    }
+  }
+
+  &:last-child {
+    > .nx-cell__chevron-btn, > .nx-cell__sort-btn {
+      @include btn-cell-sizing(var(--nx-spacing-3x), $edge-spacing);
+    }
+  }
+
+  &:first-child:last-child {
+    > .nx-cell__sort-btn {
+      @include btn-cell-sizing($edge-spacing, $edge-spacing);
+    }
   }
 }
