@@ -24,6 +24,7 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
         isSortable: isSortableProp = false,
         hasIcon = false,
         chevron = false,
+        rowBtnIcon: rowBtnIconProp,
         sortDir,
         className,
         children,
@@ -31,14 +32,14 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
       } = props,
       isHeader = useContext(HeaderContext),
       rowTextContent = useContext(RowContext),
+      rowBtnIcon = rowBtnIconProp || (chevron ? faChevronRight : null),
       isSortable = isSortableProp && isHeader && !chevron;
 
   const classes = classnames('nx-cell', className, {
     'nx-cell--header': isHeader,
     'nx-cell--meta-info': metaInfo,
     'nx-cell--num': isNumeric,
-    'nx-cell--icon': hasIcon,
-    'nx-cell--chevron': chevron,
+    'nx-cell--icon': hasIcon || rowBtnIcon,
     'nx-cell--sortable': isSortable
   });
 
@@ -76,9 +77,9 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
 
   const Tag = isHeader ? 'th' : 'td';
 
-  const chevronCellContents = isHeader ? null : (
-    <button type="button" className="nx-cell__chevron-btn" aria-label={rowTextContent}>
-      <NxFontAwesomeIcon icon={faChevronRight}/>
+  const rowBtnCellContents = isHeader || !rowBtnIcon ? null : (
+    <button type="button" className="nx-cell__row-btn" aria-label={rowTextContent}>
+      <NxFontAwesomeIcon icon={rowBtnIcon}/>
     </button>
   );
 
@@ -95,7 +96,7 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
     <Tag className={classes} aria-sort={ariaSort} {...attrs}>
       {
         isSortable ? cellSortingContents :
-        chevron ? chevronCellContents :
+        rowBtnIcon ? rowBtnCellContents :
         children
       }
     </Tag>

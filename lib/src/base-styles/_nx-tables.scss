@@ -310,7 +310,7 @@
   width: calc(100% + #{$left-padding} + #{$right-padding});
 }
 
-.nx-cell__sort-btn, .nx-cell__chevron-btn {
+.nx-cell__sort-btn, .nx-cell__row-btn {
   @include nx-container-helpers.container-horizontal;
 
   // first-child and last-child added for specificity
@@ -339,19 +339,19 @@
   $edge-spacing: calc(var(--nx-spacing-4x) - 1px);
 
   &:first-child {
-    > .nx-cell__chevron-btn, > .nx-cell__sort-btn {
+    > .nx-cell__sort-btn, > .nx-cell__row-btn {
       @include btn-cell-sizing($edge-spacing, var(--nx-spacing-3x));
     }
   }
 
   &:last-child {
-    > .nx-cell__chevron-btn, > .nx-cell__sort-btn {
+    > .nx-cell__sort-btn, > .nx-cell__row-btn {
       @include btn-cell-sizing(var(--nx-spacing-3x), $edge-spacing);
     }
   }
 
   &:first-child:last-child {
-    > .nx-cell__sort-btn {
+    > .nx-cell__sort-btn, > .nx-cell__row-btn {
       @include btn-cell-sizing($edge-spacing, $edge-spacing);
     }
   }
