@@ -9,6 +9,7 @@ const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testU
 
 describe('NxTextInput', function() {
   const simpleComponentSelector = '#nx-filter-input-simple-example .nx-filter-input',
+      searchComponentSelector = '#nx-filter-input-search-example .nx-filter-input',
       disabledComponentSelector = '#nx-filter-input-disabled-example .nx-filter-input';
 
   function getInputElementSelector(componentSelector, inputType = 'input') {
@@ -41,6 +42,10 @@ describe('NxTextInput', function() {
 
       await simpleTest(simpleComponentSelector)();
     });
+  });
+
+  describe('Search NxFilterInput', function() {
+    it('has a magnifying glass icon', simpleTest(searchComponentSelector));
   });
 
   describe('Disabled NxFilterInput', function() {
