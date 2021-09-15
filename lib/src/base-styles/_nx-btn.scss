@@ -84,7 +84,6 @@
   color: var(--nx-swatch-white);
 
   &:focus {
-    background-color: var(--nx-swatch-red-40);
     border-color: var(--nx-color-interactive-border-focus);
   }
 
@@ -95,6 +94,7 @@
   &:active {
     background-color: var(--nx-swatch-red-65);
     border-color: var(--nx-swatch-red-65);
+    box-shadow: none;
   }
 
   .nx-icon {
