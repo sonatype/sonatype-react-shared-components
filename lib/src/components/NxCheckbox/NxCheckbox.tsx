@@ -53,7 +53,10 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
                  readOnly={!onChange}
                  onChange={onChange || undefined}/>
           <span className="nx-radio-checkbox__control nx-checkbox__box">
-            <FontAwesomeIcon icon={faCheck} />
+            {/* Put a space in the box if not checked,
+              * in order to provide a consistent vertical-align baseline
+              */}
+            { isChecked ? <FontAwesomeIcon icon={faCheck} /> : '\u00A0' }
           </span>
           { content &&
             (overflowTooltip !== false ? <NxOverflowTooltip>{content}</NxOverflowTooltip> : content)

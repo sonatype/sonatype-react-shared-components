@@ -32,17 +32,6 @@ $-width: 16px;
   }
 }
 
-.fa-check {
-  visibility: hidden;
-}
-
-.nx-checkbox__input:checked,
-.nx-checkbox__input:active:not(:disabled) {
-  + .nx-checkbox__box .fa-check {
-    visibility: visible;
-  }
-}
-
 .nx-checkbox__input:checked:disabled {
   + .nx-checkbox__box {
     background-color:var(--nx-color-interactive-background-disabled);
