@@ -118,6 +118,9 @@ import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
 import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdownPage';
 import NxStatefulSearchDropdownPage from './components/NxStatefulSearchDropdown/NxStatefulSearchDropdownPage';
+import NxSearchTransferListPage from './components/NxSearchTransferList/NxSearchTransferListPage';
+import NxStatefulSearchTransferListPage
+  from './components/NxStatefulSearchTransferList/NxStatefulSearchTransferListPage';
 import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
 
@@ -164,6 +167,8 @@ const pageConfig: PageConfig = {
     NxRadio: NxRadioPage,
     NxSearchDropdown: NxSearchDropdownPage,
     NxStatefulSearchDropdown: NxStatefulSearchDropdownPage,
+    NxSearchTransferList: NxSearchTransferListPage,
+    NxStatefulSearchTransferList: NxStatefulSearchTransferListPage,
     NxSubmitMask: NxSubmitMaskPage,
     NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
     NxTable: NxTablePage,

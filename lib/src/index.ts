@@ -249,6 +249,12 @@ export { default as NxStatefulSearchDropdown, Props as NxStatefulDropdownProps }
 
 export { default as DataItem, default as NxTransferListDataItem } from './util/DataItem';
 
+export { default as NxSearchTransferList, Props as NxSearchTransferListProps }
+  from './components/NxSearchTransferList/NxSearchTransferList';
+
+export { default as NxStatefulSearchTransferList, Props as NxStatefulSearchTransferListProps }
+  from './components/NxSearchTransferList/stateful/NxStatefulSearchTransferList';
+
 export {
   default as NxIconDropdown,
   Props as NxIconDropdownProps
