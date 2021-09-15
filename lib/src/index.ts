@@ -256,3 +256,6 @@ export {
 
 export { default as NxStatefulIconDropdown }
   from './components/NxIconDropdown/stateful/NxStatefulIconDropdown';
+
+export { default as NxNumberInput, PublicProps as NxNumberInputProps, StateProps as NxNumberInputStateProps }
+  from './components/NxNumberInput/NxNumberInput';

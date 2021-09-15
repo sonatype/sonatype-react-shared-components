@@ -120,6 +120,7 @@ import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdown
 import NxStatefulSearchDropdownPage from './components/NxStatefulSearchDropdown/NxStatefulSearchDropdownPage';
 import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
+import NxNumberInputPage from './components/NxNumberInput/NxNumberInputPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -156,6 +157,7 @@ const pageConfig: PageConfig = {
     NxLoadingSpinner: NxLoadingSpinnerPage,
     NxModal: NxModalPage,
     NxNexusPageHeader: NxNexusPageHeaderPage,
+    NxNumberInput: NxNumberInputPage,
     NxPageHeader: NxPageHeaderPage,
     NxPagination: NxPaginationPage,
     NxIndeterminatePagination: NxIndeterminatePaginationPage,
