@@ -11,7 +11,7 @@ import { map, range } from 'ramda';
 const items = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
 
 export default function NxStatefulTransferListExample() {
-  const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set());
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
   return <NxStatefulTransferList allItems={items} selectedItems={selectedItems} onChange={setSelectedItems} />;
 }

@@ -52,7 +52,7 @@ export default function NxFormLayoutExample() {
 
   const [tagColor, setTagColor] = useState<SelectableColor | null>(null);
 
-  const [selectedTransferItems, setSelectedTransferItems] = useState<Set<number>>(new Set()),
+  const [selectedTransferItems, setSelectedTransferItems] = useState<number[]>([]),
       [availableTransferItemsFilter, setAvailableTransferItemsFilter] = useState(''),
       [selectedTransferItemsFilter, setSelectedTransferItemsFilter] = useState('');
 

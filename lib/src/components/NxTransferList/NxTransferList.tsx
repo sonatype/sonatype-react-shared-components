@@ -6,10 +6,11 @@
  */
 import React, { useMemo } from 'react';
 import classnames from 'classnames';
-import { groupBy } from 'ramda';
+// import { groupBy } from 'ramda';
 
 import { Props, propTypes } from './types';
 import TransferListHalf from './TransferListHalf';
+import DataItem from '../../util/DataItem';
 
 import './NxTransferList.scss';
 
@@ -41,34 +42,49 @@ export default function NxTransferList<T extends string | number>(props: Props<T
   const availableItemsCountFormatter = availableItemsCountFormatterProp || defaultAvailableItemsCountFormatter,
       selectedItemsCountFormatter = selectedItemsCountFormatterProp || defaultSelectedItemsCountFormatter;
 
-  const groupedItems = useMemo(() => groupBy(item => selectedItems.has(item.id) ? 'selected' : 'available', allItems),
-          [allItems, selectedItems]),
+  const groupedItems = useMemo(() => {
+        // console.log('memo');
+        // return groupBy(item => selectedItems.includes(item.id) ? 'selected' : 'available', allItems);
+        return {
+          available: allItems.filter(item => !selectedItems.includes(item.id)),
+          selected: selectedItems
+              .map(item => allItems.find(_item => _item.id === item))
+              .filter(item => typeof item !== 'undefined') as DataItem<T>[]
+        };
+      },
+      [allItems, selectedItems]
+      ),
       available = groupedItems.available || [],
       selected = groupedItems.selected || [];
 
-  const availableCount = allItems.length - selectedItems.size,
-      selectedCount = selectedItems.size;
+  const availableCount = allItems.length - selectedItems.length,
+      selectedCount = selectedItems.length;
 
   function onChange(checked: boolean, id: T) {
-    const newSelectedItems = new Set(selectedItems);
-
-    newSelectedItems[checked ? 'add' : 'delete'](id);
-
-    onChangeProp(newSelectedItems);
+    onChangeProp(
+        checked
+          ? [...selectedItems, id]
+          : selectedItems.filter(item => item !== id));
   }
 
-  function onSelectAll(idsToAdd: Set<T>) {
-    const newSelectedItems = new Set<T>(selectedItems);
-
-    idsToAdd.forEach(id => { newSelectedItems.add(id); });
-
-    onChangeProp(newSelectedItems);
+  function onSelectAll(idsToAdd: T[]) {
+    onChangeProp([...selectedItems, ...idsToAdd]);
   }
 
-  function onUnselectAll(idsToRemove: Set<T>) {
-    const newSelectedItems = new Set<T>(selectedItems);
+  function onUnselectAll(idsToRemove: T[]) {
+    onChangeProp(selectedItems.filter(item => !idsToRemove.includes(item)));
+  }
 
-    idsToRemove.forEach(id => { newSelectedItems.delete(id); });
+  function onReorderItem(id: T, direction: 1 | -1) {
+    const itemIndex = selectedItems.findIndex(item => item === id);
+
+    if (typeof selectedItems[itemIndex + direction] === 'undefined') {
+      return;
+    }
+
+    const newSelectedItems = [...selectedItems];
+    newSelectedItems[itemIndex] = selectedItems[itemIndex + direction];
+    newSelectedItems[itemIndex + direction] = selectedItems[itemIndex];
 
     onChangeProp(newSelectedItems);
   }
@@ -83,8 +99,10 @@ export default function NxTransferList<T extends string | number>(props: Props<T
                            isSelected={false}
                            items={available}
                            onItemChange={onChange}
+                           onReorderItem={onReorderItem}
                            footerContent={availableItemsCountFormatter(availableCount)}
-                           filterFn={filterFn} />
+                           filterFn={filterFn}
+                           showReorderingButtons={false} />
       <TransferListHalf<T> label={selectedItemsLabel || 'Transferred Items'}
                            filterValue={selectedItemsFilter}
                            onFilterChange={onSelectedItemsFilterChange}
@@ -93,8 +111,10 @@ export default function NxTransferList<T extends string | number>(props: Props<T
                            isSelected={true}
                            items={selected}
                            onItemChange={onChange}
+                           onReorderItem={onReorderItem}
                            footerContent={selectedItemsCountFormatter(selectedCount)}
-                           filterFn={filterFn} />
+                           filterFn={filterFn}
+                           showReorderingButtons={true} />
     </div>
   );
 }

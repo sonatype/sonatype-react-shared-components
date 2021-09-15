@@ -27,7 +27,7 @@ const availableItemsCountFormatter = (n: number) => `${n} items you don't want`,
     selectedItemsCountFormatter = (n: number) => `${n} items you do want`;
 
 export default function NxTransferListExample() {
-  const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set()),
+  const [selectedItems, setSelectedItems] = useState<number[]>([]),
       [availableItemsFilter, setAvailableItemsFilter] = useState(''),
       [selectedItemsFilter, setSelectedItemsFilter] = useState('');
 

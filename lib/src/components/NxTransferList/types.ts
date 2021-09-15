@@ -14,9 +14,15 @@ export type FilterFn<T extends string | number = string> = (d: DataItem<T>[]) =>
 
 type SelectionChangeHandler<T> = (checked: boolean, id: T) => void;
 
+type ReorderSelectectedItemFunction<T> = (id: T, direction: 1 | -1) => void;
+
 export interface TransferListItemProps<T extends string | number = string> extends DataItem<T> {
   checked: boolean;
   onChange: SelectionChangeHandler<T>;
+  showReorderingButtons?: boolean | null;
+  onReorderItem?: ReorderSelectectedItemFunction<T> | null;
+  isTopItem: boolean;
+  isBottomItem: boolean;
 }
 
 export interface TransferListHalfProps<T extends string | number = string> {
@@ -24,24 +30,26 @@ export interface TransferListHalfProps<T extends string | number = string> {
   filterValue: string;
   onFilterChange: NxFilterInputProps['onChange'];
   showMoveAll: boolean;
-  onMoveAll: (toMove: Set<T>) => void;
+  onMoveAll: (toMove: T[]) => void;
   items: DataItem<T>[];
   isSelected: boolean;
   onItemChange: SelectionChangeHandler<T>;
   footerContent: ReactNode;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
+  showReorderingButtons?: boolean | null;
+  onReorderItem?: ReorderSelectectedItemFunction<T> | null;
 }
 
 export interface StatefulProps<T extends string | number = string>
   extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onChange'> {
   allItems: DataItem<T>[];
-  selectedItems: Set<T>;
+  selectedItems: T[];
   availableItemsLabel?: ReactNode;
   selectedItemsLabel?: ReactNode;
   availableItemsCountFormatter?: ((n: number) => string) | null,
   selectedItemsCountFormatter?: ((n: number) => string) | null,
   showMoveAll?: boolean | null;
-  onChange: (newSelected: Set<T>) => void;
+  onChange: (newSelected: T[]) => void;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
 }
 
@@ -60,7 +68,11 @@ export const propTypes: ValidationMap<Props<string | number>> = {
     ]).isRequired,
     displayName: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  selectedItems: PropTypes.instanceOf<Set<string | number>>(Set).isRequired,
+  selectedItems: PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.string.isRequired,
+        PropTypes.number.isRequired
+      ]).isRequired).isRequired,
   availableItemsLabel: PropTypes.node,
   selectedItemsLabel: PropTypes.node,
   availableItemsCountFormatter: PropTypes.func,
