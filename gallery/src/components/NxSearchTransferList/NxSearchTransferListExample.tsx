@@ -33,7 +33,7 @@ export default function NxSearchTransferListExample() {
       executeQuery = useDebounceCallback(function executeQuery(query: string) {
         latestExecutedQueryRef.current = query;
 
-        search(query) .then(matches => {
+        search(query).then(matches => {
           // ensure that results from stale or out-of-order queries do not display
           if (latestExecutedQueryRef.current === query) {
             setSearchMatches(matches);
