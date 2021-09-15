@@ -10,12 +10,14 @@ import { NxTable, NxCode, NxP, NxTextLink, NxH3 } from '@sonatype/react-shared-c
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxFilterInputFullExample from './NxFilterInputFullExample';
+import NxFilterInputSearchExample from './NxFilterInputSearchExample';
 import NxFilterInputDisabledExample from './NxFilterInputDisabledExample';
 import NxFilterInputDataListExample from './NxFilterInputDataListExample';
 
 import './NxFilterInputPage.scss';
 
 const nxFilterInputFullExampleCode = require('./NxFilterInputFullExample?raw'),
+    nxFilterInputSearchExampleCode = require('./NxFilterInputSearchExample?raw'),
     nxFilterInputDisabledExampleCode = require('./NxFilterInputDisabledExample?raw'),
     nxFilterInputDataListExampleCode = require('./NxFilterInputDataListExample?raw');
 
@@ -53,6 +55,15 @@ const NxFilterInputPage = () =>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
               A callback for when the user changes the value of the text box (e.g. by typing a letter)
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>searchIcon</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Whether to use a "search" (magnifying glass) icon instead of the default "filter" (funnel) icon
+              within the input. These are the only two icons that are supported.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -109,6 +120,14 @@ const NxFilterInputPage = () =>
                         liveExample={NxFilterInputFullExample}
                         codeExamples={nxFilterInputFullExampleCode}>
       A simple <NxCode>NxFilterInput</NxCode>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxFilterInput Search Example"
+                        id="nx-filter-input-search-example"
+                        className="nx-filter-input-examples"
+                        liveExample={NxFilterInputSearchExample}
+                        codeExamples={nxFilterInputSearchExampleCode}>
+      An <NxCode>NxFilterInput</NxCode> configured to use a search icon rather than a magnifying glass icon.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxFilterInput Disabled Example"
