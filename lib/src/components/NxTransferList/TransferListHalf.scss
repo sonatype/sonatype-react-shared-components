@@ -102,12 +102,12 @@ $-visible-item-count: 10;
   }
 
   &:hover {
-    border-color: var(--nx-color-form-element-border);
+    border-color: var(--nx-swatch-grey-05);
   }
 
   &:active {
     background-color: transparent;
-    border-color: var(--nx-color-form-element-border);
+    border-color: var(--nx-swatch-grey-05);
   }
 }
 

@@ -19,7 +19,8 @@ $-width: 16px;
   stroke: var(--nx-swatch-blue-40);
 }
 
-.nx-radio__input:checked {
+.nx-radio__input:checked,
+.nx-radio__input:active:not(:disabled) {
   + .nx-radio__circle .nx-radio__outer-circle {
     fill: none;
   }
