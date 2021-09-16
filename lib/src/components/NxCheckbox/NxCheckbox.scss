@@ -36,6 +36,7 @@ $-width: 16px;
   + .nx-checkbox__box {
     background-color:var(--nx-color-interactive-background-disabled);
     border-color: var(--nx-color-interactive-border-disabled);
+
     .fa-check {
       color: var(--nx-color-text-disabled);
     }
