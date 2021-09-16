@@ -116,8 +116,12 @@ import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxSt
 import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
+import NxThreatIndicatorLegendPage from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegendPage';
 import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdownPage';
 import NxStatefulSearchDropdownPage from './components/NxStatefulSearchDropdown/NxStatefulSearchDropdownPage';
+import NxSearchTransferListPage from './components/NxSearchTransferList/NxSearchTransferListPage';
+import NxStatefulSearchTransferListPage
+  from './components/NxStatefulSearchTransferList/NxStatefulSearchTransferListPage';
 import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
 
@@ -164,6 +168,8 @@ const pageConfig: PageConfig = {
     NxRadio: NxRadioPage,
     NxSearchDropdown: NxSearchDropdownPage,
     NxStatefulSearchDropdown: NxStatefulSearchDropdownPage,
+    NxSearchTransferList: NxSearchTransferListPage,
+    NxStatefulSearchTransferList: NxStatefulSearchTransferListPage,
     NxSubmitMask: NxSubmitMaskPage,
     NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
     NxTable: NxTablePage,
@@ -175,6 +181,7 @@ const pageConfig: PageConfig = {
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatCounter: NxThreatCounterPage,
     NxThreatIndicator: NxThreatIndicatorPage,
+    NxThreatIndicatorLegend: NxThreatIndicatorLegendPage,
     NxToggle: NxTogglePage,
     NxStatefulToggle: NxStatefulTogglePage,
     NxTooltip: NxTooltipPage,

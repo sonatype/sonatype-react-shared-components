@@ -4,18 +4,20 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-.nx-transfer-list {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: var(--nx-spacing-6x);
-  margin-top: var(--nx-spacing-2x);
+@use '../../scss-shared/nx-container-helpers';
+
+.nx-search-transfer-list {
+  @include nx-container-helpers.container-vertical;
+
+  display: flex;
+  flex-direction: column;
   width: max-content;
-}
 
-.nx-transfer-list--full-width {
-  width: auto;
+  .nx-search-dropdown {
+    margin-bottom: var(--nx-spacing-6x);
+  }
 
-  .nx-transfer-list__half {
-    width: auto;
+  .nx-search-dropdown__input {
+    width: 100%;
   }
 }
