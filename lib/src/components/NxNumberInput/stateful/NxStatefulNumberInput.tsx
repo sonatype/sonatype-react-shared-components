@@ -6,7 +6,7 @@
  */
 import React, { forwardRef, useState } from 'react';
 
-import { initialState, userInput } from '../stateHelpers';
+import { initialState, userInput } from '../../NxTextInput/stateHelpers';
 import NxNumberInput from '../NxNumberInput';
 
 import { Props, propTypes } from './types';
@@ -36,7 +36,12 @@ const NxStatefulNumberInput = forwardRef<HTMLDivElement, Props>(
         }
       }
 
-      return <NxNumberInput validatable={!!validator} ref={ref} { ...attrs } { ...state } onChange={changeHandler} />;
+      return <NxNumberInput type='number'
+                            validatable={!!validator}
+                            ref={ref}
+                            { ...attrs }
+                            { ...state }
+                            onChange={changeHandler} />;
     }
 );
 

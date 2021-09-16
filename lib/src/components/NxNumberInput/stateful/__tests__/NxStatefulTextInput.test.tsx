@@ -6,17 +6,17 @@
  */
 import * as enzymeUtils from '../../../../__testutils__/enzymeUtils';
 
-import NxTextInput from '../../NxNumberInput';
-import NxStatefulTextInput, { Props } from '../NxStatefulNumberInput';
+import NxNumberInput from '../../NxNumberInput';
+import NxStatefulNumberInput, { Props } from '../NxStatefulNumberInput';
 
-describe('NxStatefulTextInput', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulTextInput, {});
+describe('NxStatefulNumberInput', function() {
+  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulNumberInput, {});
 
-  it('renders a NxTextInput with the specified type and className', function() {
-    const component = getShallowComponent({ type: 'textarea', className: 'foo' });
+  it('renders a NxNumberInput with the specified type and className', function() {
+    const component = getShallowComponent({ className: 'foo' });
 
-    expect(component).toMatchSelector(NxTextInput);
-    expect(component).toHaveProp('type', 'textarea');
+    expect(component).toMatchSelector(NxNumberInput);
+    expect(component).toHaveProp('type', 'number');
     expect(component).toHaveProp('className', 'foo');
   });
 
@@ -28,16 +28,16 @@ describe('NxStatefulTextInput', function() {
   });
 
   it('starts with the value specified by defaultValue, and pristine set to true', function() {
-    const component = getShallowComponent({ defaultValue: 'foo' });
+    const component = getShallowComponent({ defaultValue: '42' });
 
-    expect(component).toHaveProp('value', 'foo');
+    expect(component).toHaveProp('value', '42');
     expect(component).toHaveProp('isPristine', true);
   });
 
   it('sets isPristine to false when the onChange handler fires', function() {
-    const component = getShallowComponent({ defaultValue: 'foo' });
+    const component = getShallowComponent({ defaultValue: '42' });
 
-    component.prop('onChange')('bar');
+    component.prop('onChange')('99');
 
     component.update();
 
@@ -45,29 +45,29 @@ describe('NxStatefulTextInput', function() {
   });
 
   it('updates the values when the onChange handler fires', function() {
-    const component = getShallowComponent({ defaultValue: 'foo' });
+    const component = getShallowComponent({ defaultValue: '42' });
 
-    component.prop('onChange')('bar');
+    component.prop('onChange')('99');
 
     component.update();
 
-    expect(component).toHaveProp('value', 'bar');
+    expect(component).toHaveProp('value', '99');
   });
 
   it('passes onChange events to its own onChange prop', function() {
     const onChange = jest.fn(),
-        component = getShallowComponent({ defaultValue: 'foo', onChange });
+        component = getShallowComponent({ defaultValue: '42', onChange });
 
     expect(onChange).not.toHaveBeenCalled();
 
-    component.prop('onChange')('bar');
+    component.prop('onChange')('99');
 
-    expect(onChange).toHaveBeenCalledWith('bar');
+    expect(onChange).toHaveBeenCalledWith('99');
   });
 
   it('passes onKeyPress events to its own onKeyPress prop', function() {
     const onKeyPress = jest.fn(),
-        component = getShallowComponent({ defaultValue: 'foo', onKeyPress });
+        component = getShallowComponent({ defaultValue: '42', onKeyPress });
 
     expect(onKeyPress).not.toHaveBeenCalled();
 
@@ -76,7 +76,7 @@ describe('NxStatefulTextInput', function() {
     expect(onKeyPress).toHaveBeenCalledWith('q');
   });
 
-  it('runs user value changes through the validator and passes the resulting validationErrors to NxTextInput',
+  it('runs user value changes through the validator and passes the resulting validationErrors to NxNumberInput',
       function() {
         const initialValidationErrors = 'must not be empty',
             validationErrors = ['foo is bad', 'expected bar'],
@@ -88,10 +88,10 @@ describe('NxStatefulTextInput', function() {
         expect(validator).toHaveBeenCalledWith('');
         expect(component).toHaveProp('validationErrors', initialValidationErrors);
 
-        component.prop('onChange')('bar');
+        component.prop('onChange')('99');
         component.update();
 
-        expect(validator).toHaveBeenCalledWith('bar');
+        expect(validator).toHaveBeenCalledWith('99');
         expect(component).toHaveProp('validationErrors', validationErrors);
       }
   );
@@ -101,7 +101,7 @@ describe('NxStatefulTextInput', function() {
 
     expect(component).toHaveProp('validationErrors', null);
 
-    component.prop('onChange')('bar');
+    component.prop('onChange')('99');
     component.update();
 
     expect(component).toHaveProp('validationErrors', null);
@@ -110,10 +110,9 @@ describe('NxStatefulTextInput', function() {
   it('passes through html props to the element', function() {
     expect(getShallowComponent({ disabled: false })).toHaveProp('disabled', false);
     expect(getShallowComponent({ disabled: true })).toHaveProp('disabled', true);
-    expect(getShallowComponent({ type: 'textarea', disabled: true })).toHaveProp('disabled', true);
     expect(getShallowComponent({ id: 'test-id'})).toHaveProp('id', 'test-id');
     expect(getShallowComponent({ placeholder: 'test placeholder'})).toHaveProp('placeholder', 'test placeholder');
-    expect(getShallowComponent({ minLength: 4 })).toHaveProp('minLength', 4);
+    expect(getShallowComponent({ step: 4 })).toHaveProp('step', 4);
     expect(getShallowComponent({ name: 'a-name' })).toHaveProp('name', 'a-name');
   });
 });

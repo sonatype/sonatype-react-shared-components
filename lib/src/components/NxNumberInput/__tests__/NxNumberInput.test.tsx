@@ -8,17 +8,17 @@ import React from 'react';
 import { faCheck, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
-import NxTextInput, { Props } from '../NxNumberInput';
+import NxNumberInput, { Props } from '../NxNumberInput';
 
-describe('NxTextInput', function() {
+describe('NxNumberInput', function() {
   const minimalProps = {
         value: '',
         isPristine: false
       },
-      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxTextInput, minimalProps);
+      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxNumberInput, minimalProps);
 
-  it('renders an .nx-text-input div', function() {
-    expect(getShallowComponent()).toMatchSelector('div.nx-text-input');
+  it('renders an .nx-number-input div', function() {
+    expect(getShallowComponent()).toMatchSelector('div.nx-number-input');
   });
 
   it('contains an nx-text-input__box containing the input and validation icons', function() {
@@ -62,22 +62,8 @@ describe('NxTextInput', function() {
         .toHaveProp('aria-invalid', true);
   });
 
-  it('renders a text input by default', function() {
-    expect(getShallowComponent().find('input')).toHaveProp('type', 'text');
-  });
-
-  it('renders a password input if type is "password"', function() {
-    expect(getShallowComponent({ type: 'password' }).find('input')).toHaveProp('type', 'password');
-  });
-
-  it('renders a textarea if type is "textarea"', function() {
-    expect(getShallowComponent({ type: 'textarea' })).not.toContainMatchingElement('input');
-    expect(getShallowComponent({ type: 'textarea' })).toContainMatchingElement('textarea');
-    expect(getShallowComponent({ type: 'textarea' }).find('textarea')).toHaveProp('type', undefined);
-  });
-
-  it('adds the nx-text-input--textarea class if type is "textarea"', function() {
-    expect(getShallowComponent({ type: 'textarea' })).toHaveClassName('nx-text-input--textarea');
+  it('renders a text input with type: number by default', function() {
+    expect(getShallowComponent().find('input')).toHaveProp('type', 'number');
   });
 
   it('uses faCheck for the valid icon', function() {
@@ -89,8 +75,7 @@ describe('NxTextInput', function() {
   });
 
   it('sets the value as specified', function() {
-    expect(getShallowComponent({ value: 'foo' }).find('input')).toHaveProp('value', 'foo');
-    expect(getShallowComponent({ type: 'textarea', value: 'foo' }).find('textarea')).toHaveProp('value', 'foo');
+    expect(getShallowComponent({ value: '42' }).find('input')).toHaveProp('value', '42');
   });
 
   it('accepts custom classes', function() {
@@ -162,24 +147,23 @@ describe('NxTextInput', function() {
   it('passes through html props to the input element', function() {
     expect(getShallowComponent({ disabled: false }).find('input')).toHaveProp('disabled', false);
     expect(getShallowComponent({ disabled: true }).find('input')).toHaveProp('disabled', true);
-    expect(getShallowComponent({ type: 'textarea', disabled: true }).find('textarea')).toHaveProp('disabled', true);
     expect(getShallowComponent({ id: 'test-id'}).find('input')).toHaveProp('id', 'test-id');
     expect(getShallowComponent({ placeholder: 'test placeholder'}).find('input'))
         .toHaveProp('placeholder', 'test placeholder');
-    expect(getShallowComponent({ minLength: 4 }).find('input')).toHaveProp('minLength', 4);
+    expect(getShallowComponent({ step: 5 }).find('input')).toHaveProp('step', 5);
     expect(getShallowComponent({ name: 'a-name' }).find('input')).toHaveProp('name', 'a-name');
   });
 
   it('calls onChange with the new value of the input element and event that fired', function() {
     const onChange = jest.fn(),
-        givenChangeEvent = { currentTarget: { value: 'foo' }},
+        givenChangeEvent = { currentTarget: { value: '42' }},
         element = getShallowComponent({ onChange }).find('input');
 
     expect(onChange).not.toHaveBeenCalled();
 
     element.simulate('change', givenChangeEvent);
 
-    expect(onChange).toHaveBeenCalledWith('foo', givenChangeEvent);
+    expect(onChange).toHaveBeenCalledWith('42', givenChangeEvent);
   });
 
   it('calls onKeyPress with the key value', function() {
@@ -188,9 +172,9 @@ describe('NxTextInput', function() {
 
     expect(onKeyPress).not.toHaveBeenCalled();
 
-    element.simulate('keyPress', { key: 'a' });
+    element.simulate('keyPress', { key: '9' });
 
-    expect(onKeyPress).toHaveBeenCalledWith('a');
+    expect(onKeyPress).toHaveBeenCalledWith('9');
   });
 
   it('renders the prefixContent just before the input element', function() {
