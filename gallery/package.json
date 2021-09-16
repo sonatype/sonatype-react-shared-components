@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components-gallery",
-  "version": "8.2.7",
+  "version": "8.4.1",
   "description": "Gallery application to demonstrate usage and look of Sonatype shared UI components",
   "main": "src/main.ts",
   "scripts": {
@@ -25,6 +25,7 @@
     "@babel/runtime": "^7.12.0",
     "@types/classnames": "^2.2.11",
     "@types/debounce": "^1.2.0",
+    "@types/ramda": "^0.27.34",
     "@types/react": "^16.14.14",
     "@types/react-dom": "^16.9.14",
     "@types/react-router": "^5.1.11",
