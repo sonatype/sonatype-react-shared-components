@@ -12,22 +12,14 @@ export default function NxNumberInputDisabledExample() {
   return (
     <>
       <div>
-        <NxNumberInput placeholder="Disabled input" value="" isPristine={true} disabled/>
+        <NxNumberInput placeholder="" value="" isPristine={true} disabled/>
       </div>
       <div>
-        <NxNumberInput placeholder="Disabled valid input"
-                       value=""
+        <NxNumberInput placeholder=""
+                       value="42"
                        isPristine={false}
                        validatable={true}
                        validationErrors={null}
-                       disabled/>
-      </div>
-      <div>
-        <NxNumberInput placeholder="Disabled invalid input"
-                       value=""
-                       isPristine={false}
-                       validatable={true}
-                       validationErrors={'error'}
                        disabled/>
       </div>
     </>
