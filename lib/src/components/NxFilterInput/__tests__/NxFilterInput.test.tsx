@@ -7,7 +7,7 @@
 import React from 'react';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import { mount, shallow } from 'enzyme';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import NxFilterInput, { Props } from '../NxFilterInput';
 import NxTextInput from '../../NxTextInput/NxTextInput';
@@ -72,18 +72,31 @@ describe('NxFilterInput', function() {
     expect(ref.current).toBe(domNode);
   });
 
-  it('passes an icon with nx-icon--filter-icons as the prefixContent', function() {
+  it('passes an faFilter icon with nx-icon--filter-icons as the prefixContent when searchIcon is undefined',
+      function() {
+        const IconFixture = function() {
+              return shallowComponent().prop('prefixContent');
+            },
+            icon = shallow(<IconFixture />);
+
+        expect(icon).toMatchSelector(NxFontAwesomeIcon);
+        expect(icon).toHaveProp(icon, faFilter);
+        expect(icon).toHaveClassName('nx-icon--filter-icons');
+      }
+  );
+
+  it('passes an faSearch icon with nx-icon--filter-icons as the prefixContent when searchIcon is true', function() {
     const IconFixture = function() {
-          return shallowComponent().prop('prefixContent');
+          return shallowComponent({ searchIcon: true }).prop('prefixContent');
         },
         icon = shallow(<IconFixture />);
 
     expect(icon).toMatchSelector(NxFontAwesomeIcon);
-    expect(icon).toHaveProp(icon, faFilter);
+    expect(icon).toHaveProp(icon, faSearch);
     expect(icon).toHaveClassName('nx-icon--filter-icons');
   });
 
-  it('sets the nx-filter-input--empty class of the value is empty or only whitespace', function() {
+  it('sets the nx-filter-input--empty class if the value is empty or only whitespace', function() {
     expect(shallowComponent()).toHaveClassName('nx-filter-input--empty');
     expect(shallowComponent({ value: '\n\t \u00A0' })).toHaveClassName('nx-filter-input--empty');
     expect(shallowComponent({ value: 'a' })).not.toHaveClassName('nx-filter-input--empty');
