@@ -74,7 +74,7 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
  */
 export default function TransferListHalf<T extends string | number = string>(props: Props<T>) {
   const {
-        showReorderingButtons,
+        allowReordering,
         label,
         filterValue,
         onFilterChange,
@@ -113,7 +113,7 @@ export default function TransferListHalf<T extends string | number = string>(pro
         }
         <div className="nx-transfer-list__item-list">
           { visibleItems.map(
-              (i, index) => <TransferListItem<T> showReorderingButtons={showReorderingButtons}
+              (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
                                                  key={i.id}
                                                  checked={isSelected}
                                                  onChange={onItemChange}

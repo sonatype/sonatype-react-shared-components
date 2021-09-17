@@ -6,9 +6,9 @@
  */
 import React, { useMemo } from 'react';
 import classnames from 'classnames';
-// import { groupBy } from 'ramda';
+import { groupBy } from 'ramda';
 
-import { Props, propTypes } from './types';
+import { StatefulProps, Props, propTypes } from './types';
 import TransferListHalf from './TransferListHalf';
 import DataItem from '../../util/DataItem';
 
@@ -22,6 +22,7 @@ const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${
 
 export default function NxTransferList<T extends string | number>(props: Props<T>) {
   const {
+    allowReordering = false,
     allItems,
     selectedItems,
     availableItemsLabel,
@@ -39,54 +40,65 @@ export default function NxTransferList<T extends string | number>(props: Props<T
     ...attrs
   } = props;
 
+  if (allowReordering && !Array.isArray(selectedItems)) {
+    throw new TypeError('selectedItems must be an array if allowReordering is true');
+  }
+
+  const selectedItemsArray: T[] = selectedItems instanceof Set ? Array.from(selectedItems) : selectedItems;
+
   const availableItemsCountFormatter = availableItemsCountFormatterProp || defaultAvailableItemsCountFormatter,
       selectedItemsCountFormatter = selectedItemsCountFormatterProp || defaultSelectedItemsCountFormatter;
 
   const groupedItems = useMemo(() => {
-        // console.log('memo');
-        // return groupBy(item => selectedItems.includes(item.id) ? 'selected' : 'available', allItems);
-        return {
-          available: allItems.filter(item => !selectedItems.includes(item.id)),
-          selected: selectedItems
-              .map(item => allItems.find(_item => _item.id === item))
-              .filter(item => typeof item !== 'undefined') as DataItem<T>[]
-        };
+        return allowReordering
+          ? groupBy(item => selectedItemsArray.includes(item.id) ? 'selected' : 'available', allItems)
+          : {
+            available: allItems.filter(item => !selectedItemsArray.includes(item.id)),
+            selected: selectedItemsArray
+                .map(item => allItems.find(_item => _item.id === item))
+                .filter(item => typeof item !== 'undefined') as DataItem<T>[]
+          };
       },
       [allItems, selectedItems]
       ),
       available = groupedItems.available || [],
       selected = groupedItems.selected || [];
 
-  const availableCount = allItems.length - selectedItems.length,
-      selectedCount = selectedItems.length;
+  const availableCount = allItems.length - selectedItemsArray.length,
+      selectedCount = selectedItemsArray.length;
 
   function onChange(checked: boolean, id: T) {
-    onChangeProp(
-        checked
-          ? [...selectedItems, id]
-          : selectedItems.filter(item => item !== id));
+    const newSelectedItemsArray = checked
+      ? [...selectedItemsArray, id]
+      : selectedItemsArray.filter(item => item !== id);
+
+    const newSelectedItems = allowReordering ? newSelectedItemsArray : new Set(newSelectedItemsArray);
+
+    onChangeProp(newSelectedItems);
   }
 
   function onSelectAll(idsToAdd: T[]) {
-    onChangeProp([...selectedItems, ...idsToAdd]);
+    const newSelectedItems = [...selectedItemsArray, ...idsToAdd];
+    onChangeProp(allowReordering ? newSelectedItems : new Set(newSelectedItems));
   }
 
   function onUnselectAll(idsToRemove: T[]) {
-    onChangeProp(selectedItems.filter(item => !idsToRemove.includes(item)));
+    const newSelectedItems = selectedItemsArray.filter(item => !idsToRemove.includes(item));
+    onChangeProp(allowReordering ? newSelectedItems : new Set(newSelectedItems));
   }
 
   function onReorderItem(id: T, direction: 1 | -1) {
-    const itemIndex = selectedItems.findIndex(item => item === id);
+    const itemIndex = selectedItemsArray.findIndex(item => item === id);
 
-    if (typeof selectedItems[itemIndex + direction] === 'undefined') {
+    if (typeof selectedItemsArray[itemIndex + direction] === 'undefined') {
       return;
     }
 
-    const newSelectedItems = [...selectedItems];
-    newSelectedItems[itemIndex] = selectedItems[itemIndex + direction];
-    newSelectedItems[itemIndex + direction] = selectedItems[itemIndex];
+    const newSelectedItems = [...selectedItemsArray];
+    newSelectedItems[itemIndex] = selectedItemsArray[itemIndex + direction];
+    newSelectedItems[itemIndex + direction] = selectedItemsArray[itemIndex];
 
-    onChangeProp(newSelectedItems);
+    onChangeProp(allowReordering ? newSelectedItems : new Set(newSelectedItems));
   }
 
   return (
@@ -102,7 +114,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
                            onReorderItem={onReorderItem}
                            footerContent={availableItemsCountFormatter(availableCount)}
                            filterFn={filterFn}
-                           showReorderingButtons={false} />
+                           allowReordering={false} />
       <TransferListHalf<T> label={selectedItemsLabel || 'Transferred Items'}
                            filterValue={selectedItemsFilter}
                            onFilterChange={onSelectedItemsFilterChange}
@@ -114,9 +126,30 @@ export default function NxTransferList<T extends string | number>(props: Props<T
                            onReorderItem={onReorderItem}
                            footerContent={selectedItemsCountFormatter(selectedCount)}
                            filterFn={filterFn}
-                           showReorderingButtons={true} />
+                           allowReordering={allowReordering} />
     </div>
   );
 }
 
 NxTransferList.propTypes = propTypes;
+
+type OnChangeFunction = (a: Set<string | number> | (string | number)[]) => void;
+
+export function NxStatefulTransferListA<T extends string | number, P extends Set<T> | T[]>(props: StatefulProps<T, P>) {
+  const [availableItemsFilter, setAvailableItemsFilter] = React.useState(''),
+      [selectedItemsFilter, setSelectedItemsFilter] = React.useState('');
+
+  const { onChange, ...rest } = props;
+
+  return <NxTransferList onAvailableItemsFilterChange={setAvailableItemsFilter}
+                         onSelectedItemsFilterChange={setSelectedItemsFilter}
+                         { ...{ availableItemsFilter, selectedItemsFilter } }
+                         { ...rest }
+                         onChange={onChange as OnChangeFunction} />;
+}
+
+const a: string & number = 24;
+
+//eslint-disable-next-line
+console.log(a);
+

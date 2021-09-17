@@ -11,16 +11,16 @@ import { map, range } from 'ramda';
 const items = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
 
 export default function NxTransferListFullWidthExample() {
-  const [selectedItems, setSelectedItems] = useState<number[]>([]),
+  const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set()),
       [availableItemsFilter, setAvailableItemsFilter] = useState(''),
       [selectedItemsFilter, setSelectedItemsFilter] = useState('');
 
-  return <NxTransferList className="nx-transfer-list--full-width"
-                         allItems={items}
-                         selectedItems={selectedItems}
-                         availableItemsFilter={availableItemsFilter}
-                         selectedItemsFilter={selectedItemsFilter}
-                         onAvailableItemsFilterChange={setAvailableItemsFilter}
-                         onSelectedItemsFilterChange={setSelectedItemsFilter}
-                         onChange={setSelectedItems} />;
+  return <NxTransferList<number, Set<number>> className="nx-transfer-list--full-width"
+                                              allItems={items}
+                                              selectedItems={selectedItems}
+                                              availableItemsFilter={availableItemsFilter}
+                                              selectedItemsFilter={selectedItemsFilter}
+                                              onAvailableItemsFilterChange={setAvailableItemsFilter}
+                                              onSelectedItemsFilterChange={setSelectedItemsFilter}
+                                              onChange={setSelectedItems} />;
 }
