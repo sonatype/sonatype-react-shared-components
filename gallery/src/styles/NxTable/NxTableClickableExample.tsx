@@ -17,7 +17,7 @@ const NxTableClickable = () =>
         <th className="nx-cell nx-cell--header">Header 3</th>
         <th className="nx-cell nx-cell--header">Header 4</th>
         <th className="nx-cell nx-cell--header">Header 5</th>
-        <th className="nx-cell nx-cell--header nx-cell--chevron"></th>
+        <th className="nx-cell nx-cell--header nx-cell--row-btn"></th>
       </tr>
     </thead>
     <tbody>
@@ -27,9 +27,9 @@ const NxTableClickable = () =>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell">Content 3</td>
         <td className="nx-cell">Content 4</td>
-        <td className="nx-cell nx-cell--chevron">
+        <td className="nx-cell nx-cell--row-btn">
           <button type="button"
-                  className="nx-cell__chevron-btn"
+                  className="nx-cell__row-btn"
                   aria-label="Clickable row; Content1; Content 2; Content 3; Content 4">
             <NxFontAwesomeIcon icon={faChevronRight}/>
           </button>
@@ -41,9 +41,9 @@ const NxTableClickable = () =>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell">Content 3</td>
         <td className="nx-cell">Content 4</td>
-        <td className="nx-cell nx-cell--chevron">
+        <td className="nx-cell nx-cell--row-btn">
           <button type="button"
-                  className="nx-cell__chevron-btn"
+                  className="nx-cell__row-btn"
                   aria-label="Row Label; Content1; Content 2; Content 3; Content 4">
             <NxFontAwesomeIcon icon={faChevronRight}/>
           </button>
@@ -55,9 +55,9 @@ const NxTableClickable = () =>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell">Content 3</td>
         <td className="nx-cell">Content 4</td>
-        <td className="nx-cell nx-cell--chevron">
+        <td className="nx-cell nx-cell--row-btn">
           <button type="button"
-                  className="nx-cell__chevron-btn"
+                  className="nx-cell__row-btn"
                   aria-label="Row Label; Content1; Content 2; Content 3; Content 4">
             <NxFontAwesomeIcon icon={faChevronRight}/>
           </button>
@@ -69,9 +69,9 @@ const NxTableClickable = () =>
         <td className="nx-cell">Content 2</td>
         <td className="nx-cell">Content 3</td>
         <td className="nx-cell">Content 4</td>
-        <td className="nx-cell nx-cell--chevron">
+        <td className="nx-cell nx-cell--row-btn">
           <button type="button"
-                  className="nx-cell__chevron-btn"
+                  className="nx-cell__row-btn"
                   aria-label="Row Label; Content1; Content 2; Content 3; Content 4">
             <NxFontAwesomeIcon icon={faChevronRight}/>
           </button>
