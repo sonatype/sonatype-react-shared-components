@@ -14,6 +14,7 @@ describe('NxTable', function() {
 
   const iconColumnTableSelector = '#nx-table-clickable-example .nx-table',
       clickableTableSelector = '#nx-table-clickable-example .nx-table',
+      clickableCustomIconTableSelector = '#nx-table-clickable-custom-example .nx-table',
       sortableTableSelector = '#nx-table-sortable-example .nx-table',
       paginationFilterTableSelector = '#nx-table-pagination-filter-example .nx-table-container',
       loadingTableSelector = '#nx-table-loading-example .nx-table',
@@ -27,6 +28,8 @@ describe('NxTable', function() {
       await row.moveTo();
       await browser.eyesRegionSnapshot(null, Target.region(table));
   });
+
+  it('looks right with a custom clickable row icon', simpleTest(clickableCustomIconTableSelector));
 
   it('looks right with an active sort column', async function() {
     const columnSelector = `${sortableTableSelector} thead th:first-child`,
