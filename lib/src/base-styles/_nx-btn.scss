@@ -38,8 +38,8 @@
   }
 }
 
-.nx-btn, .nx-segmented-btn {
-  + .nx-btn {
+.nx-btn, .nx-segmented-btn, .nx-icon-dropdown {
+  + .nx-btn, + .nx-segmented-btn, + .nx-icon-dropdown {
     margin-left: 0;
   }
 }
@@ -79,24 +79,22 @@
 }
 
 .nx-btn--error {
-  background-color: var(--nx-swatch-red-45);
-  border-color: var(--nx-swatch-red-45);
+  background-color: var(--nx-swatch-red-40);
+  border-color: transparent;
   color: var(--nx-swatch-white);
 
-  &:hover, &:focus, &:active {
-    background-color: var(--nx-swatch-red-30);
-    border-color: var(--nx-swatch-red-30);
-    color: var(--nx-swatch-white);
-  }
-
   &:focus {
-    background-color: var(--nx-swatch-red-45);
     border-color: var(--nx-color-interactive-border-focus);
   }
 
+  &:hover {
+    background-color: var(--nx-swatch-red-35);
+  }
+
   &:active {
-    background-color: var(--nx-swatch-red-60);
-    border-color: var(--nx-swatch-red-60);
+    background-color: var(--nx-swatch-red-65);
+    border-color: transparent;
+    box-shadow: none;
   }
 
   .nx-icon {

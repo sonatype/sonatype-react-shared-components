@@ -117,6 +117,15 @@ import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
 import NxDividerPage from './styles/NxDivider/NxDividerPage';
+import NxThreatIndicatorLegendPage from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegendPage';
+import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdownPage';
+import NxStatefulSearchDropdownPage from './components/NxStatefulSearchDropdown/NxStatefulSearchDropdownPage';
+import NxSearchTransferListPage from './components/NxSearchTransferList/NxSearchTransferListPage';
+import NxStatefulSearchTransferListPage
+  from './components/NxStatefulSearchTransferList/NxStatefulSearchTransferListPage';
+import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
+import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
+import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallThreatCounterPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -136,6 +145,8 @@ const pageConfig: PageConfig = {
     NxCodeSnippet: NxCodeSnippetPage,
     NxDropdown: NxDropdownPage,
     NxStatefulDropdown: NxStatefulDropdownPage,
+    NxIconDropdown: NxIconDropdownPage,
+    NxStatefulIconDropdown: NxStatefulIconDropdownPage,
     NxFieldset: NxFieldsetPage,
     NxFilterInput: NxFilterInputPage,
     NxFontAwesomeIcon: NxFontAwesomeIconPage,
@@ -157,6 +168,10 @@ const pageConfig: PageConfig = {
     NxPolicyThreatSlider: NxPolicyThreatSliderPage,
     NxPolicyViolationIndicator: NxPolicyViolationIndicatorPage,
     NxRadio: NxRadioPage,
+    NxSearchDropdown: NxSearchDropdownPage,
+    NxStatefulSearchDropdown: NxStatefulSearchDropdownPage,
+    NxSearchTransferList: NxSearchTransferListPage,
+    NxStatefulSearchTransferList: NxStatefulSearchTransferListPage,
     NxSubmitMask: NxSubmitMaskPage,
     NxStatefulSubmitMask: NxStatefulSubmitMaskPage,
     NxTable: NxTablePage,
@@ -167,7 +182,9 @@ const pageConfig: PageConfig = {
     NxTextLink: NxTextLinkPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxThreatCounter: NxThreatCounterPage,
+    NxSmallThreatCounter: NxSmallThreatCounterPage,
     NxThreatIndicator: NxThreatIndicatorPage,
+    NxThreatIndicatorLegend: NxThreatIndicatorLegendPage,
     NxToggle: NxTogglePage,
     NxStatefulToggle: NxStatefulTogglePage,
     NxTooltip: NxTooltipPage,
