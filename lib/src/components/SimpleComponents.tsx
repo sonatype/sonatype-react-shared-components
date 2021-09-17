@@ -24,6 +24,8 @@ export const NxH2 = withClass('h2', 'nx-h2');
 export const NxH3 = withClass('h3', 'nx-h3');
 export const NxH4 = withClass('h4', 'nx-h4');
 
+export const NxDivider = withClass('hr', 'nx-divider');
+
 export const NxTile = Object.assign(withClass('section', 'nx-tile'), {
   Header: withClass('header', 'nx-tile-header'),
   Headings: withClass('hgroup', 'nx-tile-header__headings'),
