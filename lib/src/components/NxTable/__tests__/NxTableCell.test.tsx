@@ -43,12 +43,12 @@ describe('NxTableCell', function () {
   describe('when the chevron prop is true', function() {
 
     describe('when not isHeader', function() {
-      it('adds the nx-cell--icon class', function() {
-        expect(getShallowComponent({ chevron: undefined })).not.toHaveClassName('nx-cell--icon');
-        expect(getShallowComponent({ chevron: null })).not.toHaveClassName('nx-cell--icon');
-        expect(getShallowComponent({ chevron: false })).not.toHaveClassName('nx-cell--icon');
+      it('adds the nx-cell--row-btn class', function() {
+        expect(getShallowComponent({ chevron: undefined })).not.toHaveClassName('nx-cell--row-btn');
+        expect(getShallowComponent({ chevron: null })).not.toHaveClassName('nx-cell--row-btn');
+        expect(getShallowComponent({ chevron: false })).not.toHaveClassName('nx-cell--row-btn');
 
-        expect(getShallowComponent({ chevron: true })).toHaveClassName('nx-cell--icon');
+        expect(getShallowComponent({ chevron: true })).toHaveClassName('nx-cell--row-btn');
       });
 
       it('ignores the children and sort settings and adds a Chevron icon child wrapped in a nx-cell__row-btn',
@@ -98,11 +98,11 @@ describe('NxTableCell', function () {
   describe('when the rowBtnIcon prop is set', function() {
 
     describe('when not isHeader', function() {
-      it('adds the nx-cell--icon class', function() {
-        expect(getShallowComponent({ rowBtnIcon: undefined })).not.toHaveClassName('nx-cell--icon');
-        expect(getShallowComponent({ rowBtnIcon: null })).not.toHaveClassName('nx-cell--icon');
+      it('adds the nx-cell--row-btn class', function() {
+        expect(getShallowComponent({ rowBtnIcon: undefined })).not.toHaveClassName('nx-cell--row-btn');
+        expect(getShallowComponent({ rowBtnIcon: null })).not.toHaveClassName('nx-cell--row-btn');
 
-        expect(getShallowComponent({ rowBtnIcon: faEdit })).toHaveClassName('nx-cell--icon');
+        expect(getShallowComponent({ rowBtnIcon: faEdit })).toHaveClassName('nx-cell--row-btn');
       });
 
       it('ignores the children and sort settings and adds the icon child wrapped in a nx-cell__row-btn',
