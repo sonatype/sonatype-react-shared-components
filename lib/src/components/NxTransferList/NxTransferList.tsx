@@ -8,7 +8,7 @@ import React, { useMemo } from 'react';
 import classnames from 'classnames';
 import { groupBy } from 'ramda';
 
-import { StatefulProps, Props, propTypes } from './types';
+import { Props, propTypes } from './types';
 import TransferListHalf from './TransferListHalf';
 import DataItem from '../../util/DataItem';
 
@@ -67,19 +67,18 @@ export default function NxTransferList<T extends string | number>(props: Props<T
   const availableCount = allItems.length - selectedItemsArray.length,
       selectedCount = selectedItemsArray.length;
 
+  const toSetIfAllowOrdering = (array: T[]): Set<T> | T[] => allowReordering ? array : new Set(array);
+
   function onChange(checked: boolean, id: T) {
     const newSelectedItemsArray = checked
       ? [...selectedItemsArray, id]
       : selectedItemsArray.filter(item => item !== id);
 
-    const newSelectedItems = allowReordering ? newSelectedItemsArray : new Set(newSelectedItemsArray);
-
-    onChangeProp(newSelectedItems);
+    onChangeProp(toSetIfAllowOrdering(newSelectedItemsArray));
   }
 
   function onSelectAll(idsToAdd: T[]) {
-    const newSelectedItems = [...selectedItemsArray, ...idsToAdd];
-    onChangeProp(allowReordering ? newSelectedItems : new Set(newSelectedItems));
+    onChangeProp(toSetIfAllowOrdering([...selectedItemsArray, ...idsToAdd]));
   }
 
   function onUnselectAll(idsToRemove: T[]) {
@@ -98,7 +97,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
     newSelectedItems[itemIndex] = selectedItemsArray[itemIndex + direction];
     newSelectedItems[itemIndex + direction] = selectedItemsArray[itemIndex];
 
-    onChangeProp(allowReordering ? newSelectedItems : new Set(newSelectedItems));
+    onChangeProp(toSetIfAllowOrdering(newSelectedItems));
   }
 
   return (
@@ -132,24 +131,3 @@ export default function NxTransferList<T extends string | number>(props: Props<T
 }
 
 NxTransferList.propTypes = propTypes;
-
-type OnChangeFunction = (a: Set<string | number> | (string | number)[]) => void;
-
-export function NxStatefulTransferListA<T extends string | number, P extends Set<T> | T[]>(props: StatefulProps<T, P>) {
-  const [availableItemsFilter, setAvailableItemsFilter] = React.useState(''),
-      [selectedItemsFilter, setSelectedItemsFilter] = React.useState('');
-
-  const { onChange, ...rest } = props;
-
-  return <NxTransferList onAvailableItemsFilterChange={setAvailableItemsFilter}
-                         onSelectedItemsFilterChange={setSelectedItemsFilter}
-                         { ...{ availableItemsFilter, selectedItemsFilter } }
-                         { ...rest }
-                         onChange={onChange as OnChangeFunction} />;
-}
-
-const a: string & number = 24;
-
-//eslint-disable-next-line
-console.log(a);
-

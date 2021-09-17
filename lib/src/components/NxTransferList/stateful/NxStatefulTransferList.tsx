@@ -12,15 +12,12 @@ import NxTransferList from '../NxTransferList';
 export { StatefulProps as Props };
 
 // eslint-disable-next-line
-export default function NxStatefulTransferList<T extends string | number, P extends Set<T> | T[]>(props: StatefulProps<T, P>) {
+export default function NxStatefulTransferList<T extends string | number>(props: StatefulProps<T>) {
   const [availableItemsFilter, setAvailableItemsFilter] = useState(''),
       [selectedItemsFilter, setSelectedItemsFilter] = useState('');
-
-  const { onChange, ...rest } = props;
 
   return <NxTransferList onAvailableItemsFilterChange={setAvailableItemsFilter}
                          onSelectedItemsFilterChange={setSelectedItemsFilter}
                          { ...{ availableItemsFilter, selectedItemsFilter } }
-                         { ...rest }
-                         onChange={onChange} />;
+                         { ...props } />;
 }

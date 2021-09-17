@@ -73,22 +73,21 @@ export interface StatefulPropsBase<T extends string | number = string>
   showMoveAll?: boolean | null;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
   allowReordering?: boolean | null;
+  selectedItems: Set<T> | T[];
+  onChange: (newSelected: Set<T> | T[]) => void;
 }
 
-export interface StatefulPropsWithoutReordering<T extends string | number> extends StatefulPropsBase<T> {
-  selectedItems: Set<T>;
-  onChange: (newSelected: Set<T>) => void;
-  // allowReordering?: false | null;
-}
+// export interface StatefulPropsWithoutReordering<T extends string | number> extends StatefulPropsBase<T> {
+//   selectedItems: Set<T>;
+//   onChange: (newSelected: Set<T>) => void;
+// }
 
-export interface StatefulPropsWithReordering<T extends string | number> extends StatefulPropsBase<T> {
-  selectedItems: T[];
-  onChange: (newSelected: T[]) => void;
-  // allowReordering: true;
-}
+// export interface StatefulPropsWithReordering<T extends string | number> extends StatefulPropsBase<T> {
+//   selectedItems: T[];
+//   onChange: (newSelected: T[]) => void;
+// }
 
-export type StatefulProps<T extends string | number> =
-StatefulPropsWithReordering<T> | StatefulPropsWithoutReordering<T>;
+export type StatefulProps<T extends string | number> = StatefulPropsBase<T>;
 
 export interface PropsBase {
   availableItemsFilter: string;
@@ -97,8 +96,7 @@ export interface PropsBase {
   onSelectedItemsFilterChange: NxFilterInputProps['onChange'];
 }
 
-export type Props<T extends string | number> =
-(StatefulPropsWithoutReordering<T> & PropsBase) | (StatefulPropsWithReordering<T> & PropsBase);
+export type Props<T extends string | number> = StatefulPropsBase<T> & PropsBase;
 
 export const propTypes: ValidationMap<Props<string | number>> = {
   allowReordering: PropTypes.bool,
@@ -111,8 +109,12 @@ export const propTypes: ValidationMap<Props<string | number>> = {
   }).isRequired).isRequired,
   selectedItems: PropTypes.oneOfType([
     PropTypes.instanceOf<Set<string | number>>(Set).isRequired,
-    PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    PropTypes.arrayOf(PropTypes.number.isRequired).isRequired
+    PropTypes.arrayOf(
+        PropTypes.oneOfType([
+          PropTypes.string.isRequired,
+          PropTypes.number.isRequired
+        ]).isRequired
+    ).isRequired
   ]).isRequired,
   availableItemsLabel: PropTypes.node,
   selectedItemsLabel: PropTypes.node,
