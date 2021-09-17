@@ -39,7 +39,8 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
     'nx-cell--header': isHeader,
     'nx-cell--meta-info': metaInfo,
     'nx-cell--num': isNumeric,
-    'nx-cell--icon': hasIcon || rowBtnIcon,
+    'nx-cell--icon': hasIcon,
+    'nx-cell--row-btn': rowBtnIcon,
     'nx-cell--sortable': isSortable
   });
 

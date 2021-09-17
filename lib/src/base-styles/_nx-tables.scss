@@ -203,6 +203,15 @@
 
 .nx-table--fixed-layout {
   table-layout: fixed;
+
+  .nx-cell--row-btn {
+    // unfortunate magic number for the intended width when the icon is a chevron. If it is a different icon, the
+    // width will have to be explicitly overridden. `width: min-content` would have been ideal here in conjunction with
+    // a hidden copy of the button in the header row, but it does
+    // not work consistently across browsers: it works in firefox but in chrome it seems equivalent to `auto`, and
+    // in safari is seems equivalent to `0`.
+    width: 37px;
+  }
 }
 
 .nx-cell {
@@ -270,9 +279,16 @@
   text-align: center;
 }
 
+.nx-cell--row-btn {
+  @extend .nx-cell--icon;
+
+  // get the table to size the column as small as possible around the icon
+  width: 1px;
+}
+
 // deprecated, just use .nx-cell--icon
 .nx-cell--chevron {
-  @extend .nx-cell--icon;
+  @extend .nx-cell--row-btn;
 }
 
 .nx-cell--sortable {
@@ -307,10 +323,11 @@
   margin-right: calc(0px - #{$right-padding});
   padding-left: $left-padding;
   padding-right: $right-padding;
-  width: calc(100% + #{$left-padding} + #{$right-padding});
 }
 
 .nx-cell__sort-btn, .nx-cell__row-btn {
+  width: min-content;
+
   @include nx-container-helpers.container-horizontal;
 
   // first-child and last-child added for specificity
