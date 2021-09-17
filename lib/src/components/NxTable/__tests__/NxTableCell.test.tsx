@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { faSort, faSortDown, faSortUp, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faSort, faSortDown, faSortUp, faChevronRight, faEdit } from '@fortawesome/free-solid-svg-icons';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { mount } from 'enzyme';
 
@@ -43,15 +43,15 @@ describe('NxTableCell', function () {
   describe('when the chevron prop is true', function() {
 
     describe('when not isHeader', function() {
-      it('adds the nx-cell--chevron class', function() {
-        expect(getShallowComponent({ chevron: undefined })).not.toHaveClassName('nx-cell--chevron');
-        expect(getShallowComponent({ chevron: null })).not.toHaveClassName('nx-cell--chevron');
-        expect(getShallowComponent({ chevron: false })).not.toHaveClassName('nx-cell--chevron');
+      it('adds the nx-cell--icon class', function() {
+        expect(getShallowComponent({ chevron: undefined })).not.toHaveClassName('nx-cell--icon');
+        expect(getShallowComponent({ chevron: null })).not.toHaveClassName('nx-cell--icon');
+        expect(getShallowComponent({ chevron: false })).not.toHaveClassName('nx-cell--icon');
 
-        expect(getShallowComponent({ chevron: true })).toHaveClassName('nx-cell--chevron');
+        expect(getShallowComponent({ chevron: true })).toHaveClassName('nx-cell--icon');
       });
 
-      it('ignores the children and sort settings and adds a Chevron icon child wrapped in a nx-cell__chevron-btn',
+      it('ignores the children and sort settings and adds a Chevron icon child wrapped in a nx-cell__row-btn',
           function() {
             const component = getShallowComponent({
               chevron: true,
@@ -61,7 +61,7 @@ describe('NxTableCell', function () {
 
             function Fixture() {
               return (
-                <button className="nx-cell__chevron-btn"><NxFontAwesomeIcon icon={faChevronRight} /></button>
+                <button className="nx-cell__row-btn"><NxFontAwesomeIcon icon={faChevronRight} /></button>
               );
             }
 
@@ -69,7 +69,7 @@ describe('NxTableCell', function () {
           }
       );
 
-      it('sets the nx-cell__chevron-btn aria-label from the RowContext', function() {
+      it('sets the nx-cell__row-btn aria-label from the RowContext', function() {
         const component = mount(
           <RowContext.Provider value="foobar">
             <NxTableCell chevron/>
@@ -77,7 +77,7 @@ describe('NxTableCell', function () {
           { attachTo: document.createElement('tr') }
         );
 
-        expect(component.find('.nx-cell__chevron-btn')).toHaveProp('aria-label', 'foobar');
+        expect(component.find('.nx-cell__row-btn')).toHaveProp('aria-label', 'foobar');
       });
     });
 
@@ -85,6 +85,60 @@ describe('NxTableCell', function () {
       it('renders an empty header cell', function() {
         const component = getMountedHeaderComponent({
           chevron: true,
+          sortDir: 'asc',
+          children: <span>foo</span>
+        });
+
+        expect(component).toMatchSelector('th.nx-cell.nx-cell--header');
+        expect(component.children()).not.toExist();
+      });
+    });
+  });
+
+  describe('when the rowBtnIcon prop is set', function() {
+
+    describe('when not isHeader', function() {
+      it('adds the nx-cell--icon class', function() {
+        expect(getShallowComponent({ rowBtnIcon: undefined })).not.toHaveClassName('nx-cell--icon');
+        expect(getShallowComponent({ rowBtnIcon: null })).not.toHaveClassName('nx-cell--icon');
+
+        expect(getShallowComponent({ rowBtnIcon: faEdit })).toHaveClassName('nx-cell--icon');
+      });
+
+      it('ignores the children and sort settings and adds the icon child wrapped in a nx-cell__row-btn',
+          function() {
+            const component = getShallowComponent({
+              rowBtnIcon: faEdit,
+              sortDir: 'asc',
+              children: <span>foo</span>
+            });
+
+            function Fixture() {
+              return (
+                <button className="nx-cell__row-btn"><NxFontAwesomeIcon icon={faEdit} /></button>
+              );
+            }
+
+            expect(component.children()).toMatchElement(<Fixture />);
+          }
+      );
+
+      it('sets the nx-cell__row-btn aria-label from the RowContext', function() {
+        const component = mount(
+          <RowContext.Provider value="foobar">
+            <NxTableCell rowBtnIcon={faEdit} />
+          </RowContext.Provider>,
+          { attachTo: document.createElement('tr') }
+        );
+
+        expect(component.find('.nx-cell__row-btn')).toHaveProp('aria-label', 'foobar');
+      });
+    });
+
+    describe('when isHeader', function() {
+      it('renders an empty header cell', function() {
+        const component = getMountedHeaderComponent({
+          rowBtnIcon: faEdit,
           sortDir: 'asc',
           children: <span>foo</span>
         });
