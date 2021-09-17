@@ -27,7 +27,7 @@ const NxNumberInputPage = () =>
         {' '}<NxCode>type</NxCode> attribute is always set to <NxCode>number</NxCode>.
       </NxP>
       <NxP>
-        Note: Safari and Firefox do not prevent the user from inputting a non-numerical character into the input.
+        Note: Safari and Firefox do not prevent the user from inputting non-numerical characters.
       </NxP>
       <NxH3>Props</NxH3>
       <NxP>

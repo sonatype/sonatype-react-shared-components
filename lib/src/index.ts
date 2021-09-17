@@ -270,3 +270,8 @@ export { default as NxSmallThreatCounter, Props as NxSmallThreatCounterProps }
 
 export { default as NxNumberInput, PublicProps as NxNumberInputProps, StateProps as NxNumberInputStateProps }
   from './components/NxNumberInput/NxNumberInput';
+
+export {
+  default as NxStatefulNumberInput,
+  Props as NxStatefulNumberInputProps
+} from './components/NxNumberInput/stateful/NxStatefulNumberInput';

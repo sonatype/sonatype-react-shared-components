@@ -126,6 +126,7 @@ import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
 import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallThreatCounterPage';
 import NxNumberInputPage from './components/NxNumberInput/NxNumberInputPage';
+import NxStatefulNumberInputPage from './components/NxStatefulNumberInput/NxStatefulNumberInputPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -163,6 +164,7 @@ const pageConfig: PageConfig = {
     NxModal: NxModalPage,
     NxNexusPageHeader: NxNexusPageHeaderPage,
     NxNumberInput: NxNumberInputPage,
+    NxStatefulNumberInput: NxStatefulNumberInputPage,
     NxPageHeader: NxPageHeaderPage,
     NxPagination: NxPaginationPage,
     NxIndeterminatePagination: NxIndeterminatePaginationPage,
@@ -180,8 +182,8 @@ const pageConfig: PageConfig = {
     NxStatefulTabs: NxStatefulTabsPage,
     NxTag: NxTagPage,
     NxTextInput: NxTextInputPage,
-    NxTextLink: NxTextLinkPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
+    NxTextLink: NxTextLinkPage,
     NxThreatCounter: NxThreatCounterPage,
     NxSmallThreatCounter: NxSmallThreatCounterPage,
     NxThreatIndicator: NxThreatIndicatorPage,

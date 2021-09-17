@@ -4,11 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-.nx-number-input {
-  width: 120px;
-  max-width: 100%;
+import React from 'react';
 
-  .nx-text-input__input {
-    min-width: 0;
-  }
+import { NxStatefulNumberInput } from '@sonatype/react-shared-components';
+
+export default function NxStatefulNumberInputDisabledExample() {
+  return (
+    <NxStatefulNumberInput disabled />
+  );
 }
