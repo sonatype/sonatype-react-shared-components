@@ -238,6 +238,8 @@ export { default as NxTransferList, Props as NxTransferListProps }
 export { default as NxStatefulTransferList, Props as NxStatefulTransferListProps }
   from './components/NxTransferList/stateful/NxStatefulTransferList';
 
+export { default as NxThreatIndicatorLegend, NxThreatIndicatorLegendProps }
+  from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegend';
 export {
   default as NxSearchDropdown,
   Props as NxSearchDropdownProps,
@@ -249,6 +251,12 @@ export { default as NxStatefulSearchDropdown, Props as NxStatefulDropdownProps }
 
 export { default as DataItem, default as NxTransferListDataItem } from './util/DataItem';
 
+export { default as NxSearchTransferList, Props as NxSearchTransferListProps }
+  from './components/NxSearchTransferList/NxSearchTransferList';
+
+export { default as NxStatefulSearchTransferList, Props as NxStatefulSearchTransferListProps }
+  from './components/NxSearchTransferList/stateful/NxStatefulSearchTransferList';
+
 export {
   default as NxIconDropdown,
   Props as NxIconDropdownProps
@@ -256,3 +264,6 @@ export {
 
 export { default as NxStatefulIconDropdown }
   from './components/NxIconDropdown/stateful/NxStatefulIconDropdown';
+
+export { default as NxSmallThreatCounter, Props as NxSmallThreatCounterProps }
+  from './components/NxSmallThreatCounter/NxSmallThreatCounter';
