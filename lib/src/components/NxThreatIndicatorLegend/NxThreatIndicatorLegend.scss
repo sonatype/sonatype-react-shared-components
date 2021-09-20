@@ -24,10 +24,7 @@
 
   .nx-threat-indicator-legend__threat-container {
     @include nx-container-helpers.container-horizontal;
-
-    .nx-threat-indicator-legend__threat-desc {
-      @include nx-text-helpers.semi-bold;
-    }
+    @include nx-text-helpers.semi-bold;
   }
 }
 
