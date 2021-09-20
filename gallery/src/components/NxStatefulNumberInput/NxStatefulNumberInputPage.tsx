@@ -68,7 +68,7 @@ const NxStatefulNumberInputPage = () =>
       </NxTable>
       <NxH3>Special attributes</NxH3>
       <NxP>
-        <NxCode>NxNumberInput</NxCode> has three special HTML attibutes which are described briefly below and {''}
+        A number input has three special HTML attibutes which are described briefly below and{' '}
         <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number">
           in detail on MDN.
         </NxTextLink>
