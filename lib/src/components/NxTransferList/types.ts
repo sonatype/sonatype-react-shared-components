@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { ReactNode, HTMLAttributes } from 'react';
-import PropTypes, { ValidationMap } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
 import DataItem from '../../util/DataItem';
@@ -36,7 +36,6 @@ export interface TransferListHalfProps<T extends string | number = string> {
   onItemChange: SelectionChangeHandler<T>;
   footerContent: ReactNode;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
-  showReorderingButtons?: boolean | null;
   onReorderItem?: ReorderSelectectedItemFunction<T> | null;
   allowReordering?: boolean | null;
 }
@@ -51,33 +50,21 @@ export interface StatefulProps<T extends string | number = string, P extends Set
   showMoveAll?: boolean | null;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
   allowReordering?: boolean | null;
-  selectedItems: P;
+  selectedItems: Set<T> | T[];
   onChange: (newSelected: P) => void;
 }
 
-export interface Props
-<T extends string | number = string, P extends Set<T> | T[] = Set<T>> extends StatefulProps<T, P> {
+export interface Props<T extends string | number = string, P extends Set<T> | T[] = Set<T>>
+  extends StatefulProps<T, P> {
   availableItemsFilter: string;
   selectedItemsFilter: string;
   onAvailableItemsFilterChange: NxFilterInputProps['onChange'];
   onSelectedItemsFilterChange: NxFilterInputProps['onChange'];
 }
 
-export const propTypes: ValidationMap<Props<string | number, Set<string | number> | (string | number)[]>> = {
+// allItems and selectedItems are excluded in the propTypes due to clash with parametric Props;
+export const propTypes = {
   allowReordering: PropTypes.bool,
-  allItems: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.number.isRequired
-    ]).isRequired,
-    displayName: PropTypes.string.isRequired
-  }).isRequired).isRequired,
-  selectedItems: PropTypes.oneOfType([
-    PropTypes.instanceOf<Set<string>>(Set).isRequired,
-    PropTypes.instanceOf<Set<number>>(Set).isRequired,
-    PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    PropTypes.arrayOf(PropTypes.number.isRequired).isRequired
-  ]).isRequired,
   availableItemsLabel: PropTypes.node,
   selectedItemsLabel: PropTypes.node,
   availableItemsCountFormatter: PropTypes.func,

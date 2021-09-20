@@ -12,15 +12,16 @@ const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name'
     map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101)));
 
 export default function NxTransferListExample() {
-  const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set([12, 37, 98])),
+  const [selectedItems, setSelectedItems] = useState<number[]>([12, 37, 98]),
       [availableItemsFilter, setAvailableItemsFilter] = useState(''),
       [selectedItemsFilter, setSelectedItemsFilter] = useState('');
 
-  return <NxTransferList<number> allItems={items}
-                                 selectedItems={selectedItems}
-                                 availableItemsFilter={availableItemsFilter}
-                                 selectedItemsFilter={selectedItemsFilter}
-                                 onAvailableItemsFilterChange={setAvailableItemsFilter}
-                                 onSelectedItemsFilterChange={setSelectedItemsFilter}
-                                 onChange={setSelectedItems} />;
+  return <NxTransferList<number, number[]> allItems={items}
+                                           selectedItems={selectedItems}
+                                           availableItemsFilter={availableItemsFilter}
+                                           selectedItemsFilter={selectedItemsFilter}
+                                           onAvailableItemsFilterChange={setAvailableItemsFilter}
+                                           onSelectedItemsFilterChange={setSelectedItemsFilter}
+                                           allowReordering={true}
+                                           onChange={setSelectedItems} />;
 }

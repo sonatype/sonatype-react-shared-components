@@ -12,10 +12,12 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxTransferListExample from './NxTransferListExample';
 import NxTransferListComplexExample from './NxTransferListComplexExample';
 import NxTransferListFullWidthExample from './NxTransferListFullWidthExample';
+import NxTransferListWithReorderingExample from './NxTransferListWithReorderingExample';
 
 const nxTransferListExample = require('./NxTransferListExample?raw'),
     nxTransferListComplexExample = require('./NxTransferListComplexExample?raw'),
-    nxTransferListFullWidthExample = require('./NxTransferListFullWidthExample?raw');
+    nxTransferListFullWidthExample = require('./NxTransferListFullWidthExample?raw'),
+    nxTransferListWithReorderingExample = require('./NxTransferListWithReorderingExample?raw');
 
 const NxTransferListPage = () =>
   <>
@@ -274,6 +276,13 @@ const NxTransferListPage = () =>
                         codeExamples={nxTransferListFullWidthExample}
                         liveExample={NxTransferListFullWidthExample}>
       Demonstrates an <NxCode>NxTransferList</NxCode> with the "full width" modifier class.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Reordering Example"
+                        id="nx-transfer-list-with-reordering"
+                        codeExamples={nxTransferListWithReorderingExample}
+                        liveExample={NxTransferListWithReorderingExample}>
+      Demonstrates an <NxCode>NxTransferList</NxCode> with reordering enabled.
     </GalleryExampleTile>
   </>;
 

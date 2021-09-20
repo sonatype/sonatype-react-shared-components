@@ -23,7 +23,7 @@ const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${
 export default function NxTransferList
 <T extends string | number = string, P extends Set<T> | T[] = Set<T>>(props: Props<T, P>) {
   const {
-    allowReordering,
+    allowReordering = false,
     allItems,
     selectedItems,
     availableItemsLabel,
@@ -45,13 +45,13 @@ export default function NxTransferList
     throw new TypeError('selectedItems must be an array if allowReordering is true');
   }
 
-  const selectedItemsArray: T[] = selectedItems instanceof Set ? Array.from(selectedItems) : selectedItems;
+  const selectedItemsArray = Array.isArray(selectedItems) ? selectedItems : Array.from(selectedItems);
 
   const availableItemsCountFormatter = availableItemsCountFormatterProp || defaultAvailableItemsCountFormatter,
       selectedItemsCountFormatter = selectedItemsCountFormatterProp || defaultSelectedItemsCountFormatter;
 
   const groupedItems = useMemo(() =>
-        allowReordering
+        !allowReordering
           ? groupBy(item => selectedItemsArray.includes(item.id) ? 'selected' : 'available', allItems)
           : {
             available: allItems.filter(item => !selectedItemsArray.includes(item.id)),
@@ -67,23 +67,23 @@ export default function NxTransferList
   const availableCount = allItems.length - selectedItemsArray.length,
       selectedCount = selectedItemsArray.length;
 
-  const toSetIfAllowOrdering = (array: T[]): P => allowReordering ? array as P : new Set(array) as P;
+  const handleOnChangeProp = (array: T[]) => onChangeProp((allowReordering ? array : new Set(array)) as P);
 
   function onChange(checked: boolean, id: T) {
     const newSelectedItemsArray = checked
       ? [...selectedItemsArray, id]
       : selectedItemsArray.filter(item => item !== id);
 
-    onChangeProp(toSetIfAllowOrdering(newSelectedItemsArray));
+    handleOnChangeProp(newSelectedItemsArray);
   }
 
   function onSelectAll(idsToAdd: T[]) {
-    onChangeProp(toSetIfAllowOrdering([...selectedItemsArray, ...idsToAdd]));
+    handleOnChangeProp([...selectedItemsArray, ...idsToAdd]);
   }
 
   function onUnselectAll(idsToRemove: T[]) {
     const newSelectedItems = selectedItemsArray.filter(item => !idsToRemove.includes(item));
-    onChangeProp(toSetIfAllowOrdering(newSelectedItems));
+    handleOnChangeProp(newSelectedItems);
   }
 
   function onReorderItem(id: T, direction: 1 | -1) {
@@ -97,7 +97,7 @@ export default function NxTransferList
     newSelectedItems[itemIndex] = selectedItemsArray[itemIndex + direction];
     newSelectedItems[itemIndex + direction] = selectedItemsArray[itemIndex];
 
-    onChangeProp(toSetIfAllowOrdering(newSelectedItems));
+    handleOnChangeProp(newSelectedItems);
   }
 
   return (

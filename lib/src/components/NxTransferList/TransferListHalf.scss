@@ -132,8 +132,8 @@ $-visible-item-count: 10;
 .nx-transfer-list__item--with-reordering {
   .nx-transfer-list__select {
     border-radius: var(--nx-border-radius);
-    border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
   }
 }
 
@@ -141,10 +141,10 @@ $-visible-item-count: 10;
   border: var(--nx-border-default);
   border-left: 0;
   border-radius: var(--nx-border-radius);
-  border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  margin: 0;
+  border-top-left-radius: 0;
   gap: var(--nx-spacing-base);
+  margin: 0;
   padding: var(--nx-spacing-base) var(--nx-spacing-2x);
 }
 
@@ -156,11 +156,13 @@ $-button-size: 32px;
   margin: 0;
   width: $-button-size;
 
-  &:disabled,
-  &:hover:disabled,
-  &:active:disabled {
-    border-color: transparent;
-    background-color: transparent;
+  &.disabled {
+    &,
+    &:hover,
+    &:active {
+      border-color: transparent;
+      background-color: transparent;
+    }
   }
 }
 

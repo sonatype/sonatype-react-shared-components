@@ -16,10 +16,8 @@ export default function NxStatefulTransferList
   const [availableItemsFilter, setAvailableItemsFilter] = useState(''),
       [selectedItemsFilter, setSelectedItemsFilter] = useState('');
 
-  const { onChange, ...rest } = props;
   return <NxTransferList<T, P> onAvailableItemsFilterChange={setAvailableItemsFilter}
                                onSelectedItemsFilterChange={setSelectedItemsFilter}
                                { ...{ availableItemsFilter, selectedItemsFilter } }
-                               { ...rest }
-                               onChange={onChange} />;
+                               { ...props } />;
 }

@@ -31,17 +31,17 @@ export default function NxTransferListExample() {
       [availableItemsFilter, setAvailableItemsFilter] = useState(''),
       [selectedItemsFilter, setSelectedItemsFilter] = useState('');
 
-  return <NxTransferList<number, Set<number>> allItems={items}
-                                              selectedItems={selectedItems}
-                                              availableItemsLabel="Unwanted"
-                                              selectedItemsLabel="Wanted"
-                                              availableItemsFilter={availableItemsFilter}
-                                              selectedItemsFilter={selectedItemsFilter}
-                                              availableItemsCountFormatter={availableItemsCountFormatter}
-                                              selectedItemsCountFormatter={selectedItemsCountFormatter}
-                                              onAvailableItemsFilterChange={setAvailableItemsFilter}
-                                              onSelectedItemsFilterChange={setSelectedItemsFilter}
-                                              onChange={setSelectedItems}
-                                              filterFn={regexpFilter}
-                                              showMoveAll />;
+  return <NxTransferList<number> allItems={items}
+                                 selectedItems={selectedItems}
+                                 availableItemsLabel="Unwanted"
+                                 selectedItemsLabel="Wanted"
+                                 availableItemsFilter={availableItemsFilter}
+                                 selectedItemsFilter={selectedItemsFilter}
+                                 availableItemsCountFormatter={availableItemsCountFormatter}
+                                 selectedItemsCountFormatter={selectedItemsCountFormatter}
+                                 onAvailableItemsFilterChange={setAvailableItemsFilter}
+                                 onSelectedItemsFilterChange={setSelectedItemsFilter}
+                                 onChange={setSelectedItems}
+                                 filterFn={regexpFilter}
+                                 showMoveAll />;
 }

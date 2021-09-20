@@ -49,17 +49,19 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
         { showReorderingButtons && (
           <NxButtonBar className="nx-transfer-list__button-bar">
             <NxButton variant="icon-only"
-                      className="nx-transfer-list__button"
+                      className={classnames('nx-transfer-list__button', {
+                        'disabled': isTopItem
+                      })}
                       title="Move Up"
-                      disabled={isTopItem}
-                      onClick={() => onReorderItem && onReorderItem(id, -1)}>
+                      onClick={() => !isTopItem && onReorderItem && onReorderItem(id, -1)}>
               <NxFontAwesomeIcon icon={faArrowUp}/>
             </NxButton>
             <NxButton variant="icon-only"
-                      className="nx-transfer-list__button"
+                      className={classnames('nx-transfer-list__button', {
+                        'disabled': isBottomItem
+                      })}
                       title="Move Down"
-                      disabled={isBottomItem}
-                      onClick={() => onReorderItem && onReorderItem(id, 1)}>
+                      onClick={() => !isBottomItem && onReorderItem && onReorderItem(id, 1)}>
               <NxFontAwesomeIcon icon={faArrowDown}/>
             </NxButton>
           </NxButtonBar>
