@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -20,27 +20,27 @@ const FormValidationPage = () =>
         This page demonstrates the typical overall approach to communicating form validation matters to the user.
         There are several things to note here:
       </NxP>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item">
+      <NxList bulleted>
+        <NxList.Item>
           Fields are not marked invalid while they are pristine. This is handled by
           the <NxCode>NxTextInput</NxCode> state helpers.
-        </li>
-        <li className="nx-list__item">
+        </NxList.Item>
+        <NxList.Item>
           Optional text fields are declared to the user using
           the <NxCode>nx-label--optional</NxCode> class which adds the <q>- optional</q> text.
           All fields not marked optional are required. This does not apply to checkbox groups where selecting
           nothing is generally just as valid as any other selection.
-        </li>
-        <li className="nx-list__item">
+        </NxList.Item>
+        <NxList.Item>
           Until all required fields have values, and all values pass validation, the Submit button is disabled
           and provides a tooltip on hover explaining why.
-        </li>
-        <li className="nx-list__item">
+        </NxList.Item>
+        <NxList.Item>
           Non-pristine fields which are invalid get a red border and a red tooltip displaying the validation error.
           This tooltip is visible until the field becomes valid, as opposed to being hover-triggered. This behavior
           is implemented by <NxCode>NxTextInput</NxCode>
-        </li>
-      </ul>
+        </NxList.Item>
+      </NxList>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"

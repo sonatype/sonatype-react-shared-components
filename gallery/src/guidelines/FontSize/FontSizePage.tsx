@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxCode, NxH3, NxH4, NxTextLink } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxH3, NxH4, NxTextLink, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -47,27 +47,27 @@ const FontSizePage = () =>
 
     <section>
       <NxH3>Vocabulary</NxH3>
-      <ul className="nx-list">
-        <li className="nx-list__item">
-          <span className="nx-list__text">Glyph:</span>
-          <span className="nx-list__subtext">The visible shape of a character.</span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">Baseline:</span>
-          <span className="nx-list__subtext">
+      <NxList>
+        <NxList.Item>
+          <NxList.Text>Glyph:</NxList.Text>
+          <NxList.Subtext>The visible shape of a character.</NxList.Subtext>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Baseline:</NxList.Text>
+          <NxList.Subtext>
             When writing or printing characters, the baseline is the <q>bottom</q> of standard characters. For
             instance, when writing by hand on ruled paper, the rule line on which you are writing is the baseline.
             By default, the characters in a sequence of text all have their baselines aligned.
-          </span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">Descender:</span>
-          <span className="nx-list__subtext">
+          </NxList.Subtext>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Descender:</NxList.Text>
+          <NxList.Subtext>
             Many glyphs, such as <q>q</q>, contain parts that drop below the baseline. Fonts and line layouts must
             take this into account.
-          </span>
-        </li>
-      </ul>
+          </NxList.Subtext>
+        </NxList.Item>
+      </NxList>
     </section>
 
     <section>
@@ -234,40 +234,40 @@ const FontSizePage = () =>
       <NxP>
         Here is an incomplete list of additional nuances to consider when dealing with inline formatting
       </NxP>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item">
+      <NxList bulleted>
+        <NxList.Item>
           Inline elements do not respond to CSS width, height, margin-top, or margin-bottom properties. Their
           size and vertical spacing only follows the <NxCode>font-size</NxCode>,
           {' '}<NxCode>line-height</NxCode>, and font metrics as described above, as well as padding
           and borders.
-        </li>
-        <li className="nx-list__item">
+        </NxList.Item>
+        <NxList.Item>
           inline-block elements <em>are</em> sizable using the CSS width and height properties
-        </li>
-        <li className="nx-list__item">
+        </NxList.Item>
+        <NxList.Item>
           inline-block elements use the baseline of their last line box as their baseline, unless they have no text
           content or have <NxCode>overflow</NxCode> set to something other
           than <NxCode>visible</NxCode>. In these cases the baseline is the bottom margin
           edge. <NxTextLink external href={css2SpecUrl}>[3]</NxTextLink>
-        </li>
-        <li className="nx-list__item">
+        </NxList.Item>
+        <NxList.Item>
           Things get more complicated when a line box includes inline elements of multiple heights. In this
           scenario, the elements are sized individually,
           including <NxCode>line-height</NxCode> spacing, lined up according to
           the <NxCode>vertical-align</NxCode> property (by default: so their baselines
           are aligned), and then the line box goes from the highest top to the lowest bottom.
-        </li>
-        <li className="nx-list__item">
+        </NxList.Item>
+        <NxList.Item>
           Parent elements contribute a zero-width <q>strut</q> character to the line spacing. In other words,
           if an inline element is in a line box along with a parent element that has a larger line height,
           the parent's line height (and baseline) will come into play even if the parent has no text of its own
-        </li>
-        <li className="nx-list__item">
+        </NxList.Item>
+        <NxList.Item>
           Due to the off-center nature of the baseline, vertical-alignment of elements of different font sizes is
           extremely, unavoidably counterintuitive. See the examples in the vertical alignment section
           of <NxTextLink external href={firstReferenceUrl}>[1]</NxTextLink>
-        </li>
-        <li className="nx-list__item">
+        </NxList.Item>
+        <NxList.Item>
           <NxP>
             It is possible to specify a <NxCode>line-height</NxCode> smaller than an element's content
             height, in which case the leading will be negative and text node content areas will have a height exceeding
@@ -283,8 +283,8 @@ const FontSizePage = () =>
           <BadLineHeightExample />
           <CodeExample content={BadLineHeightExampleCode}/>
           <CodeExample language="scss" content={BadLineHeightExampleStyles}/>
-        </li>
-        <li className="nx-list__item">
+        </NxList.Item>
+        <NxList.Item>
           It is possible for a single text node to contain glyphs from multiple font faces, and even for it to contain
           no glyphs from the font face specified in CSS. This can happen when the preferred font face has glyphs for
           some (or none), but not all, of the code points requested, and a different font face is used as the fallback.
@@ -302,8 +302,8 @@ const FontSizePage = () =>
           <FallbackFontExample />
           <CodeExample content={FallbackFontExampleCode}/>
           <CodeExample language="scss" content={FallbackFontExampleStyles}/>
-        </li>
-      </ul>
+        </NxList.Item>
+      </NxList>
     </section>
 
     <section>

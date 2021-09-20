@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
+import { NxTable, NxP, NxCode, NxTile, NxH3, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -122,25 +122,25 @@ const NxTreeViewPage = () =>
           standard global HTML attributes.
         </NxP>
         <NxP>Certain types of tree view children get special styling treatment as described below.</NxP>
-        <ul className="nx-list">
-          <li className="nx-list__item">
-            <span className="nx-list__text">Clickable/selectable children</span>
-            <span className="nx-list__subtext">
+        <NxList>
+          <NxList.Item>
+            <NxList.Text>Clickable/selectable children</NxList.Text>
+            <NxList.Subtext>
               Links (<NxCode>&lt;a&gt;</NxCode> tags)
               and <NxCode>&lt;button&gt;</NxCode>s get hover, focus, and click styles which
               lay them out slightly differently from normal tree view children. When constructing
               a navigation list within an <NxCode>NxTreeView</NxCode>, the link representing the
               current page should be given the <NxCode>.selected</NxCode> class.
-            </span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">Radio/Checkbox children</span>
-            <span className="nx-list__subtext">
+            </NxList.Subtext>
+          </NxList.Item>
+          <NxList.Item>
+            <NxList.Text>Radio/Checkbox children</NxList.Text>
+            <NxList.Subtext>
               Tree view children which are <NxCode>NxRadio</NxCode>s or{' '}
               <NxCode>NxCheckbox</NxCode>s get special indentation.
-            </span>
-          </li>
-        </ul>
+            </NxList.Subtext>
+          </NxList.Item>
+        </NxList>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 

@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxBackButton }
+import { NxTable, NxTableHead, NxTableRow, NxTableCell, NxTableBody, NxBackButton, NxList }
   from '@sonatype/react-shared-components';
 
 import './NxViewportSizedAdjacentExample.scss';
@@ -22,50 +22,50 @@ export default function NxViewportSizedScrollableExample() {
         </div>
       </div>
       <div className="nx-viewport-sized__container nx-viewport-sized__container--adjacent">
-        <ul className="nx-list nx-list--clickable nx-scrollable nx-viewport-sized__scrollable gallery-viewport-list">
-          <li className="nx-list__item selected">
-            <span className="nx-list__text">English</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">Spanish</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">French</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">German</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">Portuguese</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">Italian</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">Czech</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">Greek</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">Polish</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">Ukranian</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">Russian</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">Mandarin</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">Japanese</span>
-          </li>
-          <li className="nx-list__item">
-            <span className="nx-list__text">Vietnamese</span>
-          </li>
-        </ul>
+        <NxList className="nx-scrollable nx-viewport-sized__scrollable gallery-viewport-list">
+          <NxList.ButtonItem className="nx-list__item" selected>
+            <NxList.Text>English</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>Spanish</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>French</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>German</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>Portuguese</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>Italian</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>Czech</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>Greek</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>Polish</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>Ukranian</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>Russian</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>Mandarin</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>Japanese</NxList.Text>
+          </NxList.ButtonItem>
+          <NxList.ButtonItem>
+            <NxList.Text>Vietnamese</NxList.Text>
+          </NxList.ButtonItem>
+        </NxList>
         <section className="nx-tile nx-viewport-sized__container">
           <header className="nx-tile-header">
             <div className="nx-tile-header__title">

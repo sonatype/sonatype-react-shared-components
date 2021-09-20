@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxWarningAlert, NxTable, NxP, NxCode, NxTextLink } from '@sonatype/react-shared-components';
+import { NxWarningAlert, NxTable, NxP, NxCode, NxTextLink, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -25,10 +25,10 @@ const NxTableContainerPage = () =>
         For these situations, a wrapper element using the <NxCode>.nx-table-container</NxCode> class
         can be constructed around the table. This setup is needed for the following functionality:
       </NxP>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item">Scrolling tables</li>
-        <li className="nx-list__item">Tables with pagination</li>
-      </ul>
+      <NxList bulleted>
+        <NxList.Item>Scrolling tables</NxList.Item>
+        <NxList.Item>Tables with pagination</NxList.Item>
+      </NxList>
       <NxTable>
         <NxTable.Head>
           <NxTable.Row>

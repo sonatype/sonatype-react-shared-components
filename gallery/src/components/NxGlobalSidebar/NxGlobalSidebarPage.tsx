@@ -7,7 +7,7 @@
 import React from 'react';
 import CodeExample from '../../CodeExample';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxWarningAlert, NxTextLink }
+import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxWarningAlert, NxTextLink, NxList }
   from '@sonatype/react-shared-components';
 
 const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw'),
@@ -20,18 +20,18 @@ export default function NxGlobalSidebarPage() {
         <NxP>
           <NxCode>NxGlobalSidebar</NxCode> is a collapsible page level sidebar. It has three main sections:
         </NxP>
-        <ul className="nx-list nx-list--bulleted">
-          <li className="nx-list__item">A header which contains branding as well as the open/close toggle</li>
-          <li className="nx-list__item">
+        <NxList bulleted>
+          <NxList.Item>A header which contains branding as well as the open/close toggle</NxList.Item>
+          <NxList.Item>
             A navigation link section which display an icon plus text in the open state and an icon in the closed
             state
-          </li>
-          <li className="nx-list-item">
+          </NxList.Item>
+          <NxList.Item className="nx-list-item">
             A footer which contains meta-information about the application. Refer to the
             {' '}<a className="nx-text-link" href="#/Pages/NxGlobalSidebarFooter">NxGlobalSidebarFooter</a> page for its
             documentation.
-          </li>
-        </ul>
+          </NxList.Item>
+        </NxList>
         <NxP>
           <NxCode>NxGlobalSidebar</NxCode> should only be used with section scrolling (make sure that
           <NxCode>.nx-html--page-scrolling</NxCode> is <strong>not</strong> used) and in full-width mode (
