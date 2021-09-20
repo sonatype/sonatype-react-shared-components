@@ -20,7 +20,7 @@ const ThreatIndicator = ({ threatType }: ThreatProps) => {
   return (
     <div className="nx-threat-indicator-legend__threat-container">
       <NxThreatIndicator threatLevelCategory={threatType} />
-      <span>{capitalize(threatType)}</span>
+      <span className="nx-threat-indicator-legend__threat-desc">{capitalize(threatType)}</span>
     </div>
   );
 };
