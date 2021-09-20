@@ -113,6 +113,8 @@ describe('NxStatefulNumberInput', function() {
     expect(getShallowComponent({ id: 'test-id'})).toHaveProp('id', 'test-id');
     expect(getShallowComponent({ placeholder: 'test placeholder'})).toHaveProp('placeholder', 'test placeholder');
     expect(getShallowComponent({ step: 4 })).toHaveProp('step', 4);
+    expect(getShallowComponent({ min: 10 })).toHaveProp('min', 10);
+    expect(getShallowComponent({ max: 100 })).toHaveProp('max', 100);
     expect(getShallowComponent({ name: 'a-name' })).toHaveProp('name', 'a-name');
   });
 });

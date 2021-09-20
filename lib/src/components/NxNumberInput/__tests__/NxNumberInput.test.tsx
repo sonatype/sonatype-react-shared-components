@@ -151,6 +151,8 @@ describe('NxNumberInput', function() {
     expect(getShallowComponent({ placeholder: 'test placeholder'}).find('input'))
         .toHaveProp('placeholder', 'test placeholder');
     expect(getShallowComponent({ step: 5 }).find('input')).toHaveProp('step', 5);
+    expect(getShallowComponent({ min: 10 }).find('input')).toHaveProp('min', 10);
+    expect(getShallowComponent({ max: 100 }).find('input')).toHaveProp('max', 100);
     expect(getShallowComponent({ name: 'a-name' }).find('input')).toHaveProp('name', 'a-name');
   });
 
