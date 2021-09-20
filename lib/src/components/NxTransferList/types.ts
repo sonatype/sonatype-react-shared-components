@@ -41,29 +41,7 @@ export interface TransferListHalfProps<T extends string | number = string> {
   allowReordering?: boolean | null;
 }
 
-// export interface StatefulProps<T extends string | number = string, P extends Set<T> | T[] = Set<T>>
-//   extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onChange'> {
-//   allItems: DataItem<T>[];
-//   selectedItems: P;
-//   availableItemsLabel?: ReactNode;
-//   selectedItemsLabel?: ReactNode;
-//   availableItemsCountFormatter?: ((n: number) => string) | null;
-//   selectedItemsCountFormatter?: ((n: number) => string) | null;
-//   showMoveAll?: boolean | null;
-//   onChange: (newSelected: P) => void;
-//   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
-//   allowReordering?: boolean | null;
-// }
-
-// export interface Props<T extends string | number = string, P extends Set<T> | T[] = Set<T>>
-//   extends StatefulProps<T, P> {
-//   availableItemsFilter: string;
-//   selectedItemsFilter: string;
-//   onAvailableItemsFilterChange: NxFilterInputProps['onChange'];
-//   onSelectedItemsFilterChange: NxFilterInputProps['onChange'];
-// }
-
-export interface StatefulPropsBase<T extends string | number = string>
+export interface StatefulProps<T extends string | number = string, P extends Set<T> | T[] = Set<T>>
   extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onChange'> {
   allItems: DataItem<T>[];
   availableItemsLabel?: ReactNode;
@@ -73,32 +51,19 @@ export interface StatefulPropsBase<T extends string | number = string>
   showMoveAll?: boolean | null;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
   allowReordering?: boolean | null;
-  selectedItems: Set<T> | T[];
-  onChange: (newSelected: Set<T> | T[]) => void;
+  selectedItems: P;
+  onChange: (newSelected: P) => void;
 }
 
-// export interface StatefulPropsWithoutReordering<T extends string | number> extends StatefulPropsBase<T> {
-//   selectedItems: Set<T>;
-//   onChange: (newSelected: Set<T>) => void;
-// }
-
-// export interface StatefulPropsWithReordering<T extends string | number> extends StatefulPropsBase<T> {
-//   selectedItems: T[];
-//   onChange: (newSelected: T[]) => void;
-// }
-
-export type StatefulProps<T extends string | number> = StatefulPropsBase<T>;
-
-export interface PropsBase {
+export interface Props
+<T extends string | number = string, P extends Set<T> | T[] = Set<T>> extends StatefulProps<T, P> {
   availableItemsFilter: string;
   selectedItemsFilter: string;
   onAvailableItemsFilterChange: NxFilterInputProps['onChange'];
   onSelectedItemsFilterChange: NxFilterInputProps['onChange'];
 }
 
-export type Props<T extends string | number> = StatefulPropsBase<T> & PropsBase;
-
-export const propTypes: ValidationMap<Props<string | number>> = {
+export const propTypes: ValidationMap<Props<string | number, Set<string | number> | (string | number)[]>> = {
   allowReordering: PropTypes.bool,
   allItems: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOfType([
@@ -108,13 +73,10 @@ export const propTypes: ValidationMap<Props<string | number>> = {
     displayName: PropTypes.string.isRequired
   }).isRequired).isRequired,
   selectedItems: PropTypes.oneOfType([
-    PropTypes.instanceOf<Set<string | number>>(Set).isRequired,
-    PropTypes.arrayOf(
-        PropTypes.oneOfType([
-          PropTypes.string.isRequired,
-          PropTypes.number.isRequired
-        ]).isRequired
-    ).isRequired
+    PropTypes.instanceOf<Set<string>>(Set).isRequired,
+    PropTypes.instanceOf<Set<number>>(Set).isRequired,
+    PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    PropTypes.arrayOf(PropTypes.number.isRequired).isRequired
   ]).isRequired,
   availableItemsLabel: PropTypes.node,
   selectedItemsLabel: PropTypes.node,

@@ -52,7 +52,7 @@ export default function NxFormLayoutExample() {
 
   const [tagColor, setTagColor] = useState<SelectableColor | null>(null);
 
-  const [selectedTransferItems, setSelectedTransferItems] = useState<number[]>([]),
+  const [selectedTransferItems, setSelectedTransferItems] = useState<Set<number>>(new Set()),
       [availableTransferItemsFilter, setAvailableTransferItemsFilter] = useState(''),
       [selectedTransferItemsFilter, setSelectedTransferItemsFilter] = useState('');
 
@@ -137,13 +137,13 @@ export default function NxFormLayoutExample() {
       </NxFormGroup>
       <NxColorPicker label="Tag Color" isRequired value={tagColor} onChange={setTagColor} />
       <NxFieldset label="Numbered Items">
-        <NxTransferList allItems={transferListItems}
-                        selectedItems={selectedTransferItems}
-                        availableItemsFilter={availableTransferItemsFilter}
-                        selectedItemsFilter={selectedTransferItemsFilter}
-                        onAvailableItemsFilterChange={setAvailableTransferItemsFilter}
-                        onSelectedItemsFilterChange={setSelectedTransferItemsFilter}
-                        onChange={setSelectedTransferItems} />
+        <NxTransferList<number, Set<number>> allItems={transferListItems}
+                                             selectedItems={selectedTransferItems}
+                                             availableItemsFilter={availableTransferItemsFilter}
+                                             selectedItemsFilter={selectedTransferItemsFilter}
+                                             onAvailableItemsFilterChange={setAvailableTransferItemsFilter}
+                                             onSelectedItemsFilterChange={setSelectedTransferItemsFilter}
+                                             onChange={setSelectedTransferItems} />
       </NxFieldset>
       <footer className="nx-footer">
         <div className="nx-btn-bar">

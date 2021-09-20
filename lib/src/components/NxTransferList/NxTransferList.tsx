@@ -20,9 +20,10 @@ const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${
     defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
     defaultSelectedItemsCountFormatter = defaultItemsCountFormatter('transferred');
 
-export default function NxTransferList<T extends string | number>(props: Props<T>) {
+export default function NxTransferList
+<T extends string | number = string, P extends Set<T> | T[] = Set<T>>(props: Props<T, P>) {
   const {
-    allowReordering = false,
+    allowReordering,
     allItems,
     selectedItems,
     availableItemsLabel,
@@ -49,16 +50,15 @@ export default function NxTransferList<T extends string | number>(props: Props<T
   const availableItemsCountFormatter = availableItemsCountFormatterProp || defaultAvailableItemsCountFormatter,
       selectedItemsCountFormatter = selectedItemsCountFormatterProp || defaultSelectedItemsCountFormatter;
 
-  const groupedItems = useMemo(() => {
-        return allowReordering
+  const groupedItems = useMemo(() =>
+        allowReordering
           ? groupBy(item => selectedItemsArray.includes(item.id) ? 'selected' : 'available', allItems)
           : {
             available: allItems.filter(item => !selectedItemsArray.includes(item.id)),
             selected: selectedItemsArray
                 .map(item => allItems.find(_item => _item.id === item))
                 .filter(item => typeof item !== 'undefined') as DataItem<T>[]
-          };
-      },
+          },
       [allItems, selectedItems]
       ),
       available = groupedItems.available || [],
@@ -67,7 +67,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
   const availableCount = allItems.length - selectedItemsArray.length,
       selectedCount = selectedItemsArray.length;
 
-  const toSetIfAllowOrdering = (array: T[]): Set<T> | T[] => allowReordering ? array : new Set(array);
+  const toSetIfAllowOrdering = (array: T[]): P => allowReordering ? array as P : new Set(array) as P;
 
   function onChange(checked: boolean, id: T) {
     const newSelectedItemsArray = checked
@@ -83,7 +83,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
 
   function onUnselectAll(idsToRemove: T[]) {
     const newSelectedItems = selectedItemsArray.filter(item => !idsToRemove.includes(item));
-    onChangeProp(allowReordering ? newSelectedItems : new Set(newSelectedItems));
+    onChangeProp(toSetIfAllowOrdering(newSelectedItems));
   }
 
   function onReorderItem(id: T, direction: 1 | -1) {
@@ -131,3 +131,7 @@ export default function NxTransferList<T extends string | number>(props: Props<T
 }
 
 NxTransferList.propTypes = propTypes;
+
+NxTransferList.defaultValues = {
+  allowReordering: false
+};
