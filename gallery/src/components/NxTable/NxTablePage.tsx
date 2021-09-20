@@ -236,9 +236,9 @@ export default function NxTablePage() {
                 <NxTable.Cell>string</NxTable.Cell>
                 <NxTable.Cell>false</NxTable.Cell>
                 <NxTable.Cell>
-                  The accessible name to set on the click chevron for this row – i.e. the value to read out in a
-                  screenreader when the row (the chevron button, really) is focused. If not specified, the full text
-                  content of all cells in the row will be used as the label.
+                  The accessible name to set on the click target for this row – i.e. the value to read out in a
+                  screenreader when the row (the icon button at the end, really) is focused. If not specified, the
+                  full text content of all cells in the row will be used as the label.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
