@@ -328,6 +328,7 @@
 
 .nx-cell__sort-btn, .nx-cell__row-btn {
   box-sizing: border-box;
+  cursor: pointer;
 
   @include nx-container-helpers.container-horizontal;
 
