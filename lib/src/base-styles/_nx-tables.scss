@@ -323,10 +323,11 @@
   margin-right: calc(0px - #{$right-padding});
   padding-left: $left-padding;
   padding-right: $right-padding;
+  width: calc(100% + #{$left-padding} + #{$right-padding});
 }
 
 .nx-cell__sort-btn, .nx-cell__row-btn {
-  width: min-content;
+  box-sizing: border-box;
 
   @include nx-container-helpers.container-horizontal;
 
@@ -349,6 +350,10 @@
     font: inherit;
     outline: none;
   }
+}
+
+.nx-cell__sort-btn {
+  height: nx-table-variables.$table-cell-header-height;
 }
 
 // adjust button sizing for ends of rows, where padding is different and there are borders
