@@ -80,7 +80,7 @@ describe('TransferListHalf', function() {
     expect(onMoveAll).toHaveBeenCalledTimes(1);
   });
 
-  it('passes onMoveAll a set containing every id if no filterValue is set', function() {
+  it('passes onMoveAll a set containing every id if no filterValue is an array', function() {
     const items = [{
           id: 1,
           displayName: 'foo'
@@ -105,7 +105,7 @@ describe('TransferListHalf', function() {
 
     component.find('.nx-transfer-list__move-all').simulate('click');
 
-    expect(onMoveAll).toHaveBeenCalledWith(new Set([1, 2, 3, 4, 5, 6]));
+    expect(onMoveAll).toHaveBeenCalledWith([1, 2, 3, 4, 5, 6]);
   });
 
   it('sets the .nx-transfer-list__move-all icon to an x in a circle if isSelected, otherwise a plus in a circle',
@@ -148,12 +148,16 @@ describe('TransferListHalf', function() {
     expect(list.children().length).toBe(2);
 
     const item = list.find('.nx-transfer-list__item').at(0),
-        icon = item.find(NxFontAwesomeIcon),
-        checkbox = item.find('input.nx-transfer-list__checkbox');
+        select = item.find('.nx-transfer-list__select').at(0),
+        icon = select.find(NxFontAwesomeIcon),
+        checkbox = select.find('input.nx-transfer-list__checkbox');
 
     expect(item).toExist();
-    expect(item).toMatchSelector('label');
-    expect(item).toHaveText('foo');
+    expect(item).toMatchSelector('div');
+
+    expect(select).toExist();
+    expect(select).toMatchSelector('label');
+    expect(select).toHaveText('foo');
 
     expect(icon).toExist();
     expect(icon).toHaveProp('icon', faPlusCircle);
@@ -273,7 +277,87 @@ describe('TransferListHalf', function() {
 
       component.find('.nx-transfer-list__move-all').simulate('click');
 
-      expect(onMoveAll).toHaveBeenCalledWith(new Set([1, 2, 4, 5]));
+      expect(onMoveAll).toHaveBeenCalledWith([1, 2, 4, 5]);
     });
+  });
+
+  describe('reordering', function() {
+    it('renders move up and down buttons inside .nx-transfer-list__item in the correct state', function() {
+      const items = [{
+            id: 1,
+            displayName: 'top'
+          }, {
+            id: 3,
+            displayName: 'middle'
+          }, {
+            id: 4,
+            displayName: 'bottom'
+          }],
+          component = getMounted({ allowReordering: true, items }),
+          list = component.find('.nx-transfer-list__item-list');
+
+      const firstItem = list.find('.nx-transfer-list__item').at(0),
+          secondItem = list.find('.nx-transfer-list__item').at(1),
+          thirdItem = list.find('.nx-transfer-list__item').at(2),
+          firstItemMoveUpButton = firstItem.find('.nx-transfer-list__button--move-up').at(0),
+          firstItemMoveDownButton = firstItem.find('.nx-transfer-list__button--move-down').at(0),
+          secondItemMoveUpButton = secondItem.find('.nx-transfer-list__button--move-up').at(0),
+          secondItemMoveDownButton = secondItem.find('.nx-transfer-list__button--move-down').at(0),
+          thirdItemMoveUpButton = thirdItem.find('.nx-transfer-list__button--move-up').at(0),
+          thirdItemMoveDownButton = thirdItem.find('.nx-transfer-list__button--move-down').at(0);
+
+      expect(firstItem).toExist();
+      expect(firstItemMoveUpButton).toExist();
+      expect(firstItemMoveDownButton).toExist();
+      expect(firstItemMoveUpButton.hasClass('disabled')).toBeTruthy();
+      expect(firstItemMoveDownButton.hasClass('disabled')).toBeFalsy();
+
+      expect(secondItem).toExist();
+      expect(secondItemMoveUpButton).toExist();
+      expect(secondItemMoveDownButton).toExist();
+      expect(secondItemMoveUpButton.hasClass('disabled')).toBeFalsy();
+      expect(secondItemMoveDownButton.hasClass('disabled')).toBeFalsy();
+
+      expect(thirdItem).toExist();
+      expect(thirdItemMoveUpButton).toExist();
+      expect(thirdItemMoveDownButton).toExist();
+      expect(thirdItemMoveUpButton.hasClass('disabled')).toBeFalsy();
+      expect(thirdItemMoveDownButton.hasClass('disabled')).toBeTruthy();
+    });
+  });
+
+  it('passes onReorderItem with id and direction when move up or down button is clicked', function() {
+    const items = [{
+      id: 1,
+      displayName: 'a'
+    }, {
+      id: 2,
+      displayName: 'b'
+    }, {
+      id: 3,
+      displayName: 'c'
+    }];
+
+    const onReorderItem = jest.fn(),
+        component = getMounted({ allowReordering: true, items, onReorderItem }),
+        list = component.find('.nx-transfer-list__item-list');
+
+    expect(onReorderItem).not.toHaveBeenCalled();
+
+    const firstItem = list.find('.nx-transfer-list__item').at(0),
+        secondItem = list.find('.nx-transfer-list__item').at(1);
+    const moveDownButton = firstItem.find('.nx-transfer-list__button--move-down').at(0);
+    const moveUpButton = secondItem.find('.nx-transfer-list__button--move-up').at(0);
+
+    expect(moveDownButton).toExist();
+    expect(moveUpButton).toExist();
+
+    moveDownButton.simulate('click');
+
+    expect(onReorderItem).toHaveBeenCalledWith(1, 1);
+
+    moveUpButton.simulate('click');
+
+    expect(onReorderItem).toHaveBeenCalledWith(2, -1);
   });
 });
