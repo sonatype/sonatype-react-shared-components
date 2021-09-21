@@ -10,7 +10,7 @@ import { NxNumberInput, NxNumberInputStateProps, nxTextInputStateHelpers } from 
 
 const { initialState, userInput } = nxTextInputStateHelpers;
 
-export default function NxNumberInputSimpleExample() {
+export default function NxNumberInputComplexExample() {
   // Note that NxNumberInputStateProps is the TypeScript type for the state helper function return types.
   // The explicity type parameter isn't necessary here, it's only present to demonstrate that type.
   const [state, setState] = useState<NxNumberInputStateProps>(initialState(''));
