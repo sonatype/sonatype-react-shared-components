@@ -26,7 +26,7 @@ export default function NxGlobalSidebarPage() {
             A navigation link section which display an icon plus text in the open state and an icon in the closed
             state
           </NxList.Item>
-          <NxList.Item className="nx-list-item">
+          <NxList.Item>
             A footer which contains meta-information about the application. Refer to the
             {' '}<a className="nx-text-link" href="#/Pages/NxGlobalSidebarFooter">NxGlobalSidebarFooter</a> page for its
             documentation.
