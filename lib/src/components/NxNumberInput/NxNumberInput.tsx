@@ -18,16 +18,6 @@ import { hasValidationErrors, getFirstValidationError } from '../../util/validat
 import { getUniqueId } from '../../util/idUtil';
 export { Props, PublicProps, StateProps, propTypes } from './types';
 
-/**
- * Standard number input with validation styling
- * @param value The value rendered in the input
- * @param isPristine Should be set to true when the user has not yet adjusted the value of the input
- * @param validationErrors Zero or more validation error messages.  If empty or not defined, the field is
- *   considered to be valid
- * @param onChange A callback for when the user changes the value of the text box (e.g. by typing a letter)
- * @param onKeyPress A callback for when the user presses a key that doesn't necessarily change the input value
- *    (e.g. by hitting enter)
- */
 const NxNumberInput = forwardRef<HTMLDivElement, Props>(
     function NxNumberInput(props, forwardedRef) {
       const {
