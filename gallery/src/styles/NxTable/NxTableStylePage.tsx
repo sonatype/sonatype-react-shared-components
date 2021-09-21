@@ -126,15 +126,29 @@ const NxTableStylePage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>
-              <NxCode>.nx-cell--chevron</NxCode>
+              <NxCode>.nx-cell--row-btn</NxCode>
             </NxTable.Cell>
             <NxTable.Cell>Modifier of <NxCode>.nx-cell</NxCode></NxTable.Cell>
             <NxTable.Cell>
-              This class is intended for the cells holding the Chevron icons that should be placed on the right
+              This class is intended for the cells holding the icons that should be placed on the right
               side of clickable table rows. It creates a column of the appropriate width for the icon. It
               is <em>not</em> necessary to additional use <NxCode>.nx-cell--icon</NxCode> on these
               cells.
+              <NxWarningAlert>
+                When used within a fixed-layout table (e.g. with <NxCode>.nx-table--fixed-layout</NxCode>), care
+                must be taken to ensure that cells with this class have the appropriate width. By default they are
+                given a width appropriate for the right-chevron icon. If a different icon is used, a different width
+                must be set on the element such that the padding box of the table cell matches the border box of the
+                enclosed button.
+              </NxWarningAlert>
             </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              <NxCode>.nx-cell--chevron</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-cell</NxCode></NxTable.Cell>
+            <NxTable.Cell>Deprecated alias for <NxCode>nx-cell--row-btn</NxCode></NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>
@@ -161,13 +175,13 @@ const NxTableStylePage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>
-              <NxCode>.nx-cell__chevron-btn</NxCode>
+              <NxCode>.nx-cell__row-btn</NxCode>
             </NxTable.Cell>
             <NxTable.Cell>
-              Child of <NxCode>.nx-cell--chevron</NxCode> which then wraps the actual chevron icon
+              Child of <NxCode>.nx-cell--row-btn</NxCode> which then wraps the actual icon
             </NxTable.Cell>
             <NxTable.Cell>
-              In order to make clickable rows accessible, the chevron icon should be contained within a button
+              In order to make clickable rows accessible, the icon should be contained within a button
               bearing this class. The button should additionally have an accessible name which describes the row,
               typically by including its full text content.
             </NxTable.Cell>
