@@ -10,11 +10,12 @@ import { curryN, trim } from 'ramda';
 /**
  * @return an initialized state with the specified value and isPristine set to true.
  */
-export function initialState(value: string, validator?: Validator): StateProps {
-  const trimmedValue = trim(value);
+export function initialState(value: string | number, validator?: Validator): StateProps {
+  const valueSerialized = value.toString();
+  const trimmedValue = trim(valueSerialized);
   return {
     isPristine: true,
-    value,
+    value: valueSerialized,
     trimmedValue: trimmedValue,
     validationErrors: validator ? validator(trimmedValue) : null
   };
@@ -34,12 +35,14 @@ export function initialState(value: string, validator?: Validator): StateProps {
  * @return a state object that is not pristine, with the specified value, and with validationErrorsas computed by the
  * validator function.
  */
-export const userInput = curryN(2, function userInput(validator: Validator | undefined, newValue: string): StateProps {
-  const trimmedValue = trim(newValue);
+export const userInput = curryN(2, function userInput(validator: Validator | undefined, newValue: string | number):
+StateProps {
+  const userInputSerialized = newValue.toString();
+  const trimmedValue = trim(userInputSerialized);
 
   return {
     isPristine: false,
-    value: newValue,
+    value: userInputSerialized,
     trimmedValue,
     validationErrors: validator && validator(trimmedValue)
   };
