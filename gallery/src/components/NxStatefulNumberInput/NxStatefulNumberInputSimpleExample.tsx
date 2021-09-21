@@ -9,7 +9,5 @@ import React from 'react';
 import { NxStatefulNumberInput } from '@sonatype/react-shared-components';
 
 export default function NxStatefulNumberInputSimpleExample() {
-  return (
-    <NxStatefulNumberInput />
-  );
+  return <NxStatefulNumberInput />;
 }
