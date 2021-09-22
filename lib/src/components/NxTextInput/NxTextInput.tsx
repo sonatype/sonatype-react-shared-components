@@ -12,7 +12,7 @@ import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons'
 import './NxTextInput.scss';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { Props, propTypes, TextInputElement } from './types';
+import { Props, propTypes, PublicProps, TextInputElement } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 import { getUniqueId } from '../../util/idUtil';
 export { Props, PublicProps, StateProps, propTypes, inputTypes } from './types';
@@ -114,6 +114,11 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
     }
 );
 
-NxTextInput.propTypes = propTypes;
+const PublicNxTextInput = forwardRef<HTMLDivElement, PublicProps>(function(props, ref) {
+  return <NxTextInput ref={ref} { ...props } />;
+});
+
+PublicNxTextInput.propTypes = propTypes;
 
 export default NxTextInput;
+export { PublicNxTextInput };

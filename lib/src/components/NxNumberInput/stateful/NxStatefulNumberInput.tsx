@@ -34,8 +34,7 @@ const NxStatefulNumberInput = forwardRef<HTMLDivElement, Props>(
         }
       }
 
-      return <NxNumberInput type='number'
-                            validatable={!!validator}
+      return <NxNumberInput validatable={!!validator}
                             ref={ref}
                             { ...attrs }
                             { ...state }

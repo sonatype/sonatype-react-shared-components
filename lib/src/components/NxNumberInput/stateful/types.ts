@@ -5,15 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
+import { Props as NxStatefulTextInputProps } from '../../NxTextInput/stateful/types';
 
-import { HTMLProps, Validator } from '../types';
-
-export type Props = HTMLProps & {
-  defaultValue?: string | null;
-  validator?: Validator;
-  onChange?: ((newVal: string) => void) | null;
-  onKeyPress?: ((newVal: string) => void) | null;
-};
+export type Props = Omit<NxStatefulTextInputProps, 'type'>;
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   defaultValue: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.oneOf([undefined])]),
