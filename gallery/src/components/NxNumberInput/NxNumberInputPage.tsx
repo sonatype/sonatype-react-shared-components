@@ -40,7 +40,10 @@ const NxNumberInputPage = () =>
       </NxP>
       <NxH3>Special attributes</NxH3>
       <NxP>
-        A number input has three special HTML attibutes which are described briefly below and{' '}
+        When the user enters data in the <NxCode>number</NxCode> input two arrows (up and down) appear on the right
+        side of the input. Clicking on the arrows (or using the keyboard up/down keys) increments the input's value up
+        and down. There are three special HTML attributes that control the function of these buttons, they are
+        described briefly below and{' '}
         <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number">
           in detail on MDN.
         </NxTextLink>
