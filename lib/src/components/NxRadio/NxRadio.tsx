@@ -24,6 +24,7 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
             children,
             radioId,
             overflowTooltip,
+            radioAttributes,
             ...otherProps
           } = props,
           labelClasses = classnames('nx-radio-checkbox', 'nx-radio', className, {
@@ -33,16 +34,22 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
           }),
           content = children && <span className="nx-radio-checkbox__content nx-radio__content">{children}</span>;
 
+      const {
+        className: radioClassName,
+        ...otherRadioProps
+      } = radioAttributes;
+
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
-          <input className="nx-radio-checkbox__input nx-radio__input"
+          <input className={classnames('nx-radio-checkbox__input', 'nx-radio__input', radioClassName)}
                  id={radioId || undefined}
                  type="radio"
                  name={name}
                  disabled={!!disabled}
                  checked={isChecked}
                  onChange={() => onChange && onChange(value)}
-                 readOnly={!onChange}/>
+                 readOnly={!onChange}
+                 { ...otherRadioProps } />
           <svg className="nx-radio-checkbox__control nx-radio__circle" viewBox="-8 -8 16 16" focusable={false}>
             { isChecked && <circle r="6" strokeWidth="4" className="nx-radio__inner-circle"/> }
             <circle r="7.5" strokeWidth="1" className="nx-radio__outer-circle"/>
@@ -57,5 +64,9 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
 );
 
 NxRadio.propTypes = propTypes;
+
+NxRadio.defaultProps = {
+  radioAttributes: {}
+};
 
 export default NxRadio;

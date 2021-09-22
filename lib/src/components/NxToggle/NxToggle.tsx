@@ -12,22 +12,39 @@ import { Props, propTypes } from './types';
 export { Props } from './types';
 
 const NxToggle = forwardRef<HTMLLabelElement, Props>(
-    function NxToggle({ className, onChange, isChecked, disabled, inputId, children, ...otherProps }, ref) {
+    function NxToggle(props, ref) {
+      const {
+        className,
+        onChange,
+        isChecked,
+        disabled,
+        inputId,
+        children,
+        checkboxAttributes,
+        ...otherProps
+      } = props;
+
       const labelClasses = classnames('nx-toggle', className, {
         'nx-toggle--disabled': disabled,
         'tm-checked': isChecked,
         'tm-unchecked': !isChecked
       });
 
+      const {
+        className: checkboxClassName,
+        ...otherCheckboxProps
+      } = checkboxAttributes;
+
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
           <input type="checkbox"
                  id={inputId || undefined}
-                 className="nx-toggle__input"
+                 className={classnames('nx-toggle__input', checkboxClassName)}
                  disabled={!!disabled}
                  checked={isChecked}
                  readOnly={!onChange}
-                 onChange={onChange || undefined}/>
+                 onChange={onChange || undefined}
+                 { ...otherCheckboxProps } />
           <div className="nx-toggle__control"><div className="nx-toggle__indicator"/></div>
           { children && <span className="nx-toggle__content">{children}</span> }
         </label>
@@ -36,5 +53,9 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
 );
 
 NxToggle.propTypes = propTypes;
+
+NxToggle.defaultProps = {
+  checkboxAttributes: {}
+};
 
 export default NxToggle;
