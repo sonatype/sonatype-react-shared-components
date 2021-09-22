@@ -23,7 +23,7 @@ const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${
 export default function NxTransferList
 <T extends string | number = string, P extends Set<T> | T[] = Set<T>>(props: Props<T, P>) {
   const {
-    allowReordering = false,
+    allowReordering,
     allItems,
     selectedItems,
     availableItemsLabel,

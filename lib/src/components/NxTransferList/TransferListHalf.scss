@@ -94,7 +94,6 @@ $-visible-item-count: 10;
   @include nx-container-helpers.container-horizontal;
 
   background-color: var(--nx-swatch-white);
-  
   border-radius: var(--nx-border-radius);
   display: flex;
   justify-content: space-between;
@@ -110,7 +109,6 @@ $-visible-item-count: 10;
   border: var(--nx-border-default);
   cursor: pointer;
   display: block;
-  height: 100%;
   padding: var(--nx-spacing-2x);
   width: 100%;
 

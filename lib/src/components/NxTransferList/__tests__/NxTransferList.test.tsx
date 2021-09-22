@@ -357,7 +357,6 @@ describe('NxTransferList', function() {
     it('onChange should not be fired if trying to move top most item up or bottom most item down', function() {
       expect(onChange).not.toHaveBeenCalled();
 
-      // original item order: [2, 4, 3]
       const secondHalf = component.childAt(1);
 
       secondHalf.simulate('reorderItem', 2, -1);
