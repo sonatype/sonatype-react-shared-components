@@ -112,6 +112,10 @@ $-visible-item-count: 10;
     border-color: var(--nx-swatch-grey-05);
   }
 
+  &:focus-within:hover {
+    border-color: var(--nx-color-interactive-border-focus);
+  }
+
   &:active {
     background-color: transparent;
     border-color: var(--nx-swatch-grey-05);

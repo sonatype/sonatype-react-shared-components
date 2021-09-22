@@ -72,6 +72,10 @@
     background-color: transparent;
   }
 
+  &:focus:hover {
+    border-color: var(--nx-color-interactive-border-focus);
+  }
+
   &:active {
     background-color: var(--nx-swatch-grey-95);
     border-color: var(--nx-swatch-grey-05);

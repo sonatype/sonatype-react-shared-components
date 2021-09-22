@@ -45,6 +45,10 @@
   &:hover {
     border-color: var(--nx-swatch-grey-10);
   }
+
+  &:hover:focus {
+    border-color: var(--nx-color-interactive-border-focus);
+  }
 }
 
 .nx-tag--selected {
