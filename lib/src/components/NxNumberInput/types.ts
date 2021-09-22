@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { FormEvent, InputHTMLAttributes, ReactNode } from 'react';
+import { PublicProps as NxTextInputProps } from '../NxTextInput/types';
 
 export type ValidationErrors = string | string[] | null;
 export type Validator = ((val: string) => ValidationErrors) | null;
@@ -21,23 +21,9 @@ export interface StateProps {
   validationErrors?: ValidationErrors;
 }
 
-// Imported props from react to provide support for all the regular html attributes
-type FusedProps = InputHTMLAttributes<HTMLInputElement>;
-// Leave out props to be re-defined
-export type HTMLProps = Omit<FusedProps, 'onChange'|'onKeyPress'|'defaultValue'>;
-
 export type NumberInputElement = HTMLInputElement;
 
-// Final Props are the HTMLProps & our re-definitions
-export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
-  onChange?: ((newVal: string, e: FormEvent<NumberInputElement>) => void) | null;
-  onKeyPress?: ((keyCode: string) => void) | null;
-  validatable?: boolean | null;
-
-  // For internal use only, this prop allows additional content to be inserted just before the
-  // <input>. This is used by NxFilterInput
-  prefixContent?: ReactNode | null;
-};
+export type Props = Omit<NxTextInputProps, 'type'>;
 
 export type PublicProps = Omit<Props, 'prefixContent'>;
 
