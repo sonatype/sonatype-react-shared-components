@@ -66,15 +66,17 @@ const NxNumberInputPage = () =>
           <NxTable.Row>
             <NxTable.Cell>min</NxTable.Cell>
             <NxTable.Cell>
-              The <NxCode>min</NxCode> attribute defines a minimum value for the input. Note that the component does
-              not provide validation of this value, that's up to the consuming project.
+              The <NxCode>min</NxCode> attribute defines a minimum value for the input. The user may still enter a
+              value lower than the minimum specified, this will be considered invalid. When the up/down arrow buttons
+              are used the value will not fall below the minimum specified.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>max</NxTable.Cell>
             <NxTable.Cell>
-              The <NxCode>max</NxCode> attribute defines a maximum value for the input. Note that the component does
-              not provide validation of this value, that's up to the consuming project.
+              The <NxCode>max</NxCode> attribute defines a maximum value for the input. The user may still enter a
+              value higher than the maximum specified, this will be considered invalid. When the up/down arrow buttons
+              are used the value cannot rise above the maximum specified.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
