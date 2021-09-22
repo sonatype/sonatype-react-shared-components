@@ -74,9 +74,9 @@ const NxNumberInputPage = () =>
           <NxTable.Row>
             <NxTable.Cell>max</NxTable.Cell>
             <NxTable.Cell>
-              The <NxCode>max</NxCode> attribute defines a maximum value for the input. The user may still enter a
-              value higher than the maximum specified, this will be considered invalid. When the up/down arrow buttons
-              are used the value cannot rise above the maximum specified.
+              The <NxCode>max</NxCode> attribute defines a maximum value for the input. The user may still manually
+              enter a value higher than the maximum specified, this will be considered invalid. When the up/down arrow
+              buttons are used the value cannot rise above the maximum specified.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
