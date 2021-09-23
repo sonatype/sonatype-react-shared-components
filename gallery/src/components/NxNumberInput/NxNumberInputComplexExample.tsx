@@ -22,6 +22,6 @@ export default function NxNumberInputComplexExample() {
   }
 
   return (
-    <NxNumberInput { ...state } onChange={onChange} onKeyPress={onKeyPress} step="5" min="10" max="100" />
+    <NxNumberInput { ...state } onChange={onChange} onKeyPress={onKeyPress} value="45" step="5" min="10" max="100" />
   );
 }
