@@ -51,14 +51,12 @@ export default function NxTransferList
       selectedItemsCountFormatter = selectedItemsCountFormatterProp || defaultSelectedItemsCountFormatter;
 
   const groupedItems = useMemo(() =>
-        !allowReordering
-          ? groupBy(item => selectedItemsArray.includes(item.id) ? 'selected' : 'available', allItems)
-          : {
+        allowReordering ? {
             available: allItems.filter(item => !selectedItemsArray.includes(item.id)),
             selected: selectedItemsArray
                 .map(item => allItems.find(_item => _item.id === item))
                 .filter(item => typeof item !== 'undefined') as DataItem<T>[]
-          },
+         } : groupBy(item => selectedItemsArray.includes(item.id) ? 'selected' : 'available', allItems),
       [allItems, selectedItems]
       ),
       available = groupedItems.available || [],
