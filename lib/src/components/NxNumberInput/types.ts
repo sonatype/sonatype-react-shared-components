@@ -21,8 +21,6 @@ export interface StateProps {
   validationErrors?: ValidationErrors;
 }
 
-export type NumberInputElement = HTMLInputElement;
-
 export type Props = Omit<NxTextInputProps, 'type'>;
 
 export type PublicProps = Omit<Props, 'prefixContent'>;
