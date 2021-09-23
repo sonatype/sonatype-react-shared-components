@@ -10,15 +10,19 @@ import { NxNumberInput, nxTextInputStateHelpers } from '@sonatype/react-shared-c
 
 const { initialState, userInput } = nxTextInputStateHelpers;
 
-function validator(val: string) {
-  return val.length ? null : 'Must be non-empty';
-}
+const regex = /^\d+$/;
+
+const nonEmptyValidator = (val: string) => val && val.length ? null : 'Must be non-empty',
+    numberValidator = (val: string) => val && val.match(regex) ? null : 'You can only use numbers in this field',
+    combinedValidator = (val: string) => nonEmptyValidator(val) || numberValidator(val);
 
 export default function NxNumberInputValidationExample() {
   const [state, setState] = useState(initialState(''));
 
   function onChange(val: string) {
-    setState(userInput(validator, val));
+    setState(userInput(combinedValidator, val));
+    // eslint-disable-next-line no-console
+    console.log(val);
   }
 
   return (
