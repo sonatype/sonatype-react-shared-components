@@ -40,7 +40,7 @@ export interface TransferListHalfProps<T extends string | number = string> {
   allowReordering?: boolean | null;
 }
 
-export interface StatefulProps<T extends string | number = string, P extends Set<T> | T[] = Set<T>>
+interface BaseStatefulProps<T extends string | number = string>
   extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onChange'> {
   allItems: DataItem<T>[];
   availableItemsLabel?: ReactNode;
@@ -49,18 +49,29 @@ export interface StatefulProps<T extends string | number = string, P extends Set
   selectedItemsCountFormatter?: ((n: number) => string) | null;
   showMoveAll?: boolean | null;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
-  allowReordering?: boolean | null;
-  selectedItems: P;
-  onChange: (newSelected: P) => void;
 }
 
-export interface Props<T extends string | number = string, P extends Set<T> | T[] = Set<T>>
-  extends StatefulProps<T, P> {
+interface UnorderedStatefulProps<T extends string | number = string> extends BaseStatefulProps<T> {
+  allowReordering?: false | null;
+  selectedItems: Set<T>;
+  onChange: (newSelected: Set<T>) => void;
+}
+
+interface OrderedStatefulProps<T extends string | number = string> extends BaseStatefulProps<T> {
+  allowReordering: true;
+  selectedItems: T[];
+  onChange: (newSelected: T[]) => void;
+}
+
+export type StatefulProps<T extends string | number = string> =
+    UnorderedStatefulProps<T> | OrderedStatefulProps<T>;
+
+export type Props<T extends string | number = string> = StatefulProps<T> & {
   availableItemsFilter: string;
   selectedItemsFilter: string;
   onAvailableItemsFilterChange: NxFilterInputProps['onChange'];
   onSelectedItemsFilterChange: NxFilterInputProps['onChange'];
-}
+};
 
 // allItems, selectedItems, onAvailableItemsFilterChange, onSelectedItemsFilterChange
 // are excluded in the propTypes due to clash with parametric Props;

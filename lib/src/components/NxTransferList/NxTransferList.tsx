@@ -20,8 +20,7 @@ const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${
     defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
     defaultSelectedItemsCountFormatter = defaultItemsCountFormatter('transferred');
 
-export default function NxTransferList
-<T extends string | number = string, P extends Set<T> | T[] = Set<T>>(props: Props<T, P>) {
+export default function NxTransferList <T extends string | number = string>(props: Props<T>) {
   const {
     allowReordering,
     allItems,
@@ -65,7 +64,14 @@ export default function NxTransferList
   const availableCount = allItems.length - selectedItemsArray.length,
       selectedCount = selectedItemsArray.length;
 
-  const handleOnChangeProp = (array: T[]) => onChangeProp((allowReordering ? array : new Set(array)) as P);
+  const handleOnChangeProp = (array: T[]) => {
+    if (allowReordering) {
+      (onChangeProp as (newSelected: T[]) => void)(array);
+    }
+    else {
+      (onChangeProp as (newSelected: Set<T>) => void)(new Set(array));
+    }
+  };
 
   function onChange(checked: boolean, id: T) {
     const newSelectedItemsArray = checked
