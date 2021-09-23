@@ -6,14 +6,12 @@
  */
 import React, { useState } from 'react';
 
-import { NxNumberInput, NxNumberInputStateProps, nxTextInputStateHelpers } from '@sonatype/react-shared-components';
+import { NxNumberInput, nxTextInputStateHelpers } from '@sonatype/react-shared-components';
 
 const { initialState, userInput } = nxTextInputStateHelpers;
 
 export default function NxNumberInputSimpleExample() {
-  // Note that NxNumberInputStateProps is the TypeScript type for the state helper function return types.
-  // The explicity type parameter isn't necessary here, it's only present to demonstrate that type.
-  const [state, setState] = useState<NxNumberInputStateProps>(initialState(''));
+  const [state, setState] = useState(initialState(''));
 
   function onChange(val: string) {
     setState(userInput(null, val));
