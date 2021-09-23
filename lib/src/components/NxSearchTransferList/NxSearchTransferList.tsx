@@ -41,7 +41,8 @@ export default function NxSearchTransferList<T extends string | number>(props: P
       addedItemsCountFormatter = addedItemsCountFormatterProp || defaultAddedItemsCountFormatter;
 
   function onRemoveAll(idsToRemove: T[]) {
-    const newAddedItems = reject(({ id }) => idsToRemove.includes(id), addedItems);
+    const idsToRemoveSet = new Set(idsToRemove);
+    const newAddedItems = reject(({ id }) => idsToRemoveSet.has(id), addedItems);
     onRemove(newAddedItems);
   }
 

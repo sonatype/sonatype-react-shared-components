@@ -342,14 +342,14 @@ describe('NxTransferList', function() {
 
       const secondHalf = component.childAt(1);
 
-      secondHalf.simulate('reorderItem', 2, 1);
+      secondHalf.simulate('reorderItem', 0, 1);
 
       expect(onChange).toHaveBeenCalledWith([4, 2, 3]);
 
       // ensure original array was not mutated
       expect(selectedItems).toEqual([2, 4, 3]);
 
-      secondHalf.simulate('reorderItem', 4, -1);
+      secondHalf.simulate('reorderItem', 2, -1);
 
       expect(onChange).toHaveBeenCalledWith([4, 2, 3]);
     });
@@ -359,11 +359,11 @@ describe('NxTransferList', function() {
 
       const secondHalf = component.childAt(1);
 
-      secondHalf.simulate('reorderItem', 2, -1);
+      secondHalf.simulate('reorderItem', 0, -1);
 
       expect(onChange).not.toHaveBeenCalled();
 
-      secondHalf.simulate('reorderItem', 3, 1);
+      secondHalf.simulate('reorderItem', 2, 1);
 
       expect(onChange).not.toHaveBeenCalled();
     });

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faArrowUp, faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { includes } from 'ramda';
 import React from 'react';
 
@@ -80,7 +80,7 @@ describe('TransferListHalf', function() {
     expect(onMoveAll).toHaveBeenCalledTimes(1);
   });
 
-  it('passes onMoveAll a set containing every id if no filterValue is an array', function() {
+  it('passes onMoveAll an array containing every id if no filterValue is set', function() {
     const items = [{
           id: 1,
           displayName: 'foo'
@@ -354,10 +354,35 @@ describe('TransferListHalf', function() {
 
     moveDownButton.simulate('click');
 
-    expect(onReorderItem).toHaveBeenCalledWith(1, 1);
+    expect(onReorderItem).toHaveBeenCalledWith(0, 1);
 
     moveUpButton.simulate('click');
 
-    expect(onReorderItem).toHaveBeenCalledWith(2, -1);
+    expect(onReorderItem).toHaveBeenCalledWith(1, -1);
   });
+
+  it('sets the .nx-transfer-list__move-all icon to an x in a circle if isSelected, otherwise a plus in a circle',
+      function() {
+        const items = [{
+          id: 1,
+          displayName: 'a'
+        }, {
+          id: 2,
+          displayName: 'b'
+        }, {
+          id: 3,
+          displayName: 'c'
+        }];
+
+        const component = getMounted({ allowReordering: true, items }),
+            listItem = component.find('.nx-transfer-list__item').at(0);
+
+        const buttons = listItem.find('.nx-transfer-list__button-bar .nx-btn');
+        const moveUpButton = buttons.at(0).find(NxFontAwesomeIcon);
+        const moveDownButton = buttons.at(1).find(NxFontAwesomeIcon);
+
+        expect(moveUpButton).toHaveProp('icon', faArrowUp);
+        expect(moveDownButton).toHaveProp('icon', faArrowDown);
+      }
+  );
 });

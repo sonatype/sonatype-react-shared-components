@@ -28,8 +28,8 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
     displayName,
     onChange: onChangeProp,
     onReorderItem,
-    isTopItem,
-    isBottomItem
+    index,
+    listLength
   } = props;
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
@@ -37,10 +37,35 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
     onChangeProp(evt.currentTarget.checked, id);
   }
 
+  const isTopItem = index === 0;
+  const isBottomItem = index === (listLength - 1);
+
+  const itemClassNames = [
+    'nx-transfer-list__item',
+    {
+      'nx-transfer-list__item--with-reordering': !!showReorderingButtons
+    }
+  ];
+
+  const moveUpButtonClassNames = [
+    'nx-transfer-list__button',
+    'nx-transfer-list__button--move-up',
+    {
+      'disabled': isTopItem
+    }
+  ];
+
+  const moveDownButtonClassNames = [
+    'nx-transfer-list__button',
+    'nx-transfer-list__button--move-down',
+    {
+      'disabled': isBottomItem
+    }
+  ];
+
   return (
     <NxOverflowTooltip>
-      <div className={classnames('nx-transfer-list__item',
-          { 'nx-transfer-list__item--with-reordering': !!showReorderingButtons })}>
+      <div className={classnames(...itemClassNames)}>
         <label className="nx-transfer-list__select">
           <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
           <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
@@ -49,21 +74,15 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
         { showReorderingButtons && (
           <NxButtonBar className="nx-transfer-list__button-bar">
             <NxButton variant="icon-only"
-                      className={classnames('nx-transfer-list__button',
-                          'nx-transfer-list__button--move-up', {
-                            'disabled': isTopItem
-                          })}
+                      className={classnames(...moveUpButtonClassNames)}
                       title="Move Up"
-                      onClick={() => !isTopItem && onReorderItem && onReorderItem(id, -1)}>
+                      onClick={() => !isTopItem && onReorderItem && onReorderItem(index, -1)}>
               <NxFontAwesomeIcon icon={faArrowUp}/>
             </NxButton>
             <NxButton variant="icon-only"
-                      className={classnames('nx-transfer-list__button',
-                          'nx-transfer-list__button--move-down', {
-                            'disabled': isBottomItem
-                          })}
+                      className={classnames(...moveDownButtonClassNames)}
                       title="Move Down"
-                      onClick={() => !isBottomItem && onReorderItem && onReorderItem(id, 1)}>
+                      onClick={() => !isBottomItem && onReorderItem && onReorderItem(index, 1)}>
               <NxFontAwesomeIcon icon={faArrowDown}/>
             </NxButton>
           </NxButtonBar>
@@ -122,8 +141,8 @@ export default function TransferListHalf<T extends string | number = string>(pro
                                                  checked={isSelected}
                                                  onChange={onItemChange}
                                                  onReorderItem={onReorderItem}
-                                                 isTopItem={index === 0}
-                                                 isBottomItem={index === visibleItems.length - 1}
+                                                 index={index}
+                                                 listLength={visibleItems.length}
                                                  { ...i } />)
           }
         </div>
