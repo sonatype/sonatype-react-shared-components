@@ -14,14 +14,6 @@ export default function NxNumberInputDisabledExample() {
       <div>
         <NxNumberInput placeholder="" value="" isPristine={true} disabled/>
       </div>
-      <div>
-        <NxNumberInput placeholder=""
-                       value="42"
-                       isPristine={false}
-                       validatable={true}
-                       validationErrors={null}
-                       disabled/>
-      </div>
     </>
   );
 }
