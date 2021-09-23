@@ -67,8 +67,8 @@ const NxTransferListPage = () =>
               <NxTable.Cell>
                 A Set, or an Array if <NxCode>allowReordering</NxCode> is set to true, containing the ids of the
                 items which are selected – that is, the ones which should
-                appear on the right side of the component. Be sure to always provide a fresh
-                <NxCode>Set</NxCode> or <NxCode>Array</NxCode> instance
+                appear on the right side of the component. Be sure to always provide a
+                fresh <NxCode>Set</NxCode> or <NxCode>Array</NxCode> instance
                 when updating this prop, rather than mutating the same <NxCode>Set</NxCode> or <NxCode>Array</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
