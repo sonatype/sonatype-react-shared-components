@@ -57,7 +57,7 @@ export default function NxTransferList
                 .map(item => allItems.find(_item => _item.id === item))
                 .filter(item => typeof item !== 'undefined') as DataItem<T>[]
          } : groupBy(item => selectedItemsArray.includes(item.id) ? 'selected' : 'available', allItems),
-      [allItems, selectedItems]
+      [allItems, selectedItems, allowReordering]
       ),
       available = groupedItems.available || [],
       selected = groupedItems.selected || [];
