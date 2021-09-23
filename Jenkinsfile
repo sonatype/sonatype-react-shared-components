@@ -9,7 +9,7 @@
 def seleniumHubDockerImage = 'docker-all.repo.sonatype.com/selenium/hub'
 def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/node-chrome'
 def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
-def numSeleniumContainers = 10;
+def numSeleniumContainers = 5;
 
 dockerizedBuildPipeline(
   // expose gallery port on host so selenium container can hit it
