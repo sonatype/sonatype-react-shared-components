@@ -34,7 +34,7 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
             checkboxId,
             overflowTooltip,
             children,
-            checkboxAttributes,
+            checkboxAttributes = {},
             ...otherProps
           } = props,
           labelClasses = classnames('nx-radio-checkbox', 'nx-checkbox', className, {
@@ -74,9 +74,5 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
 );
 
 NxCheckbox.propTypes = propTypes;
-
-NxCheckbox.defaultProps = {
-  checkboxAttributes: {}
-};
 
 export default NxCheckbox;

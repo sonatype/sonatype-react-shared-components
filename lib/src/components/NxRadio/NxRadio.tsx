@@ -10,6 +10,7 @@ import './NxRadio.scss';
 
 import { Props, propTypes } from './types';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+
 export { Props } from './types';
 
 const NxRadio = forwardRef<HTMLLabelElement, Props>(
@@ -24,7 +25,7 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
             children,
             radioId,
             overflowTooltip,
-            radioAttributes,
+            radioAttributes = {},
             ...otherProps
           } = props,
           labelClasses = classnames('nx-radio-checkbox', 'nx-radio', className, {
@@ -64,9 +65,5 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
 );
 
 NxRadio.propTypes = propTypes;
-
-NxRadio.defaultProps = {
-  radioAttributes: {}
-};
 
 export default NxRadio;

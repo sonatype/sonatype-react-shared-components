@@ -144,4 +144,11 @@ describe('NxCheckbox', function() {
     expect(component).toHaveProp('id', 'foo');
     expect(component).toHaveProp('htmlFor', 'baz');
   });
+
+  it('pass attributes into input element', function() {
+    expect(getShallowComponent({ checkboxAttributes: { name: 'Garfield'} })
+        .find('input')).toHaveProp('name', 'Garfield');
+    expect(getShallowComponent({ checkboxAttributes: { className: 'cat', name: 'Garfield'} })
+        .find('input')).toHaveClassName('cat');
+  });
 });

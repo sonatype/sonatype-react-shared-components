@@ -20,7 +20,7 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
         disabled,
         inputId,
         children,
-        checkboxAttributes,
+        checkboxAttributes = {},
         ...otherProps
       } = props;
 
@@ -53,9 +53,5 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
 );
 
 NxToggle.propTypes = propTypes;
-
-NxToggle.defaultProps = {
-  checkboxAttributes: {}
-};
 
 export default NxToggle;
