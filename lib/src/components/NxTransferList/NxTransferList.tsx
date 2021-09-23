@@ -6,7 +6,7 @@
  */
 import React, { useMemo } from 'react';
 import classnames from 'classnames';
-import { groupBy } from 'ramda';
+import { chain, groupBy } from 'ramda';
 
 import { Props, propTypes } from './types';
 import TransferListHalf from './TransferListHalf';
@@ -52,13 +52,13 @@ export default function NxTransferList<
   const availableItemsCountFormatter = availableItemsCountFormatterProp || defaultAvailableItemsCountFormatter,
       selectedItemsCountFormatter = selectedItemsCountFormatterProp || defaultSelectedItemsCountFormatter;
 
+  const allItemsIdToItemlookUp = groupBy(item => item.id.toString(), allItems);
+
   const groupedItems = useMemo(() =>
         allowReordering ? {
-            available: allItems.filter(item => !selectedItemsArray.includes(item.id)),
-            selected: selectedItemsArray
-                .map(item => allItems.find(_item => _item.id === item))
-                .filter(item => typeof item !== 'undefined') as DataItem<T>[]
-         } : groupBy(item => selectedItemsArray.includes(item.id) ? 'selected' : 'available', allItems),
+          available: allItems.filter(item => !selectedItemsArray.includes(item.id)),
+          selected: chain<T, DataItem<T>>(item => allItemsIdToItemlookUp[item.toString()], selectedItemsArray)
+        } : groupBy(item => selectedItemsArray.includes(item.id) ? 'selected' : 'available', allItems),
       [allItems, selectedItems, allowReordering]
       ),
       available = groupedItems.available || [],

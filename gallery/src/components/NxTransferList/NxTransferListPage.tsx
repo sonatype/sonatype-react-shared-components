@@ -79,7 +79,8 @@ const NxTransferListPage = () =>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
                 Allow reordering of selected items.
-                When this is enabled, the ordering of the selected list is no longer dictated by
+                When this is enabled, buttons appear next to each selected item, allowing the user to reorder them.
+                Additionally, the ordering of the selected list is no longer dictated by
                 the order of <NxCode>allItems</NxCode>. Instead, it is determined by the order in which
                 the user selects the item. The last selected item appears at the bottom of the selected list.
                 Furthermore, if this is set to true, <NxCode>selectedItems</NxCode> must be
