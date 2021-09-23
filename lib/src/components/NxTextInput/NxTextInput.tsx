@@ -32,6 +32,7 @@ export { Props, PublicProps, StateProps, propTypes, inputTypes } from './types';
 const NxTextInput = forwardRef<HTMLDivElement, Props>(
     function NxTextInput(props, forwardedRef) {
       const {
+        /* eslint-disable */
         type,
         isPristine,
         validatable,
@@ -42,6 +43,7 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
         disabled,
         prefixContent,
         ...attrs
+        /* eslint-enable */
       } = props;
 
       /**
