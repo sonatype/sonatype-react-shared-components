@@ -45,7 +45,7 @@ export default function NxTransferList
     throw new TypeError('selectedItems must be an array if allowReordering is true');
   }
 
-  const selectedItemsArray = Array.isArray(selectedItems) ? selectedItems : Array.from(selectedItems);
+  const selectedItemsArray = Array.from(selectedItems);
 
   const availableItemsCountFormatter = availableItemsCountFormatterProp || defaultAvailableItemsCountFormatter,
       selectedItemsCountFormatter = selectedItemsCountFormatterProp || defaultSelectedItemsCountFormatter;

@@ -15,12 +15,12 @@ export default function NxTransferListFullWidthExample() {
       [availableItemsFilter, setAvailableItemsFilter] = useState(''),
       [selectedItemsFilter, setSelectedItemsFilter] = useState('');
 
-  return <NxTransferList<number> className="nx-transfer-list--full-width"
-                                 allItems={items}
-                                 selectedItems={selectedItems}
-                                 availableItemsFilter={availableItemsFilter}
-                                 selectedItemsFilter={selectedItemsFilter}
-                                 onAvailableItemsFilterChange={setAvailableItemsFilter}
-                                 onSelectedItemsFilterChange={setSelectedItemsFilter}
-                                 onChange={setSelectedItems} />;
+  return <NxTransferList className="nx-transfer-list--full-width"
+                         allItems={items}
+                         selectedItems={selectedItems}
+                         availableItemsFilter={availableItemsFilter}
+                         selectedItemsFilter={selectedItemsFilter}
+                         onAvailableItemsFilterChange={setAvailableItemsFilter}
+                         onSelectedItemsFilterChange={setSelectedItemsFilter}
+                         onChange={setSelectedItems} />;
 }

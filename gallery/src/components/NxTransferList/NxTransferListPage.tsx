@@ -83,9 +83,7 @@ const NxTransferListPage = () =>
                 the order of <NxCode>allItems</NxCode>. Instead, it is determined by the order in which
                 the user selects the item. The last selected item appears at the bottom of the selected list.
                 Furthermore, if this is set to true, <NxCode>selectedItems</NxCode> must be
-                an <NxCode>Array</NxCode> instead of a <NxCode>Set</NxCode> and you must pass in
-                both the<NxCode>id</NxCode> and <NxCode>selectedItems</NxCode> type
-                as type parameters to this component.
+                an <NxCode>Array</NxCode> instead of a <NxCode>Set</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>

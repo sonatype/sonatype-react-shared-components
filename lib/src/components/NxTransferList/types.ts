@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode, HTMLAttributes } from 'react';
+import { ReactNode, HTMLAttributes, Validator } from 'react';
 import PropTypes from 'prop-types';
 
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
@@ -50,7 +50,7 @@ export interface StatefulProps<T extends string | number = string, P extends Set
   showMoveAll?: boolean | null;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
   allowReordering?: boolean | null;
-  selectedItems: Set<T> | T[];
+  selectedItems: P;
   onChange: (newSelected: P) => void;
 }
 
@@ -62,7 +62,8 @@ export interface Props<T extends string | number = string, P extends Set<T> | T[
   onSelectedItemsFilterChange: NxFilterInputProps['onChange'];
 }
 
-// allItems and selectedItems are excluded in the propTypes due to clash with parametric Props;
+// allItems, selectedItems, onAvailableItemsFilterChange, onSelectedItemsFilterChange
+// are excluded in the propTypes due to clash with parametric Props;
 export const propTypes = {
   allowReordering: PropTypes.bool,
   availableItemsLabel: PropTypes.node,
@@ -73,7 +74,5 @@ export const propTypes = {
   onChange: PropTypes.func.isRequired,
   filterFn: PropTypes.func,
   availableItemsFilter: PropTypes.string.isRequired,
-  selectedItemsFilter: PropTypes.string.isRequired,
-  onAvailableItemsFilterChange: PropTypes.func,
-  onSelectedItemsFilterChange: PropTypes.func
+  selectedItemsFilter: PropTypes.string.isRequired
 };

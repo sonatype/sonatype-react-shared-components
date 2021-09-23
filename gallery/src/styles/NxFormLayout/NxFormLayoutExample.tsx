@@ -137,13 +137,13 @@ export default function NxFormLayoutExample() {
       </NxFormGroup>
       <NxColorPicker label="Tag Color" isRequired value={tagColor} onChange={setTagColor} />
       <NxFieldset label="Numbered Items">
-        <NxTransferList<number, Set<number>> allItems={transferListItems}
-                                             selectedItems={selectedTransferItems}
-                                             availableItemsFilter={availableTransferItemsFilter}
-                                             selectedItemsFilter={selectedTransferItemsFilter}
-                                             onAvailableItemsFilterChange={setAvailableTransferItemsFilter}
-                                             onSelectedItemsFilterChange={setSelectedTransferItemsFilter}
-                                             onChange={setSelectedTransferItems} />
+        <NxTransferList allItems={transferListItems}
+                        selectedItems={selectedTransferItems}
+                        availableItemsFilter={availableTransferItemsFilter}
+                        selectedItemsFilter={selectedTransferItemsFilter}
+                        onAvailableItemsFilterChange={setAvailableTransferItemsFilter}
+                        onSelectedItemsFilterChange={setSelectedTransferItemsFilter}
+                        onChange={setSelectedTransferItems} />
       </NxFieldset>
       <footer className="nx-footer">
         <div className="nx-btn-bar">

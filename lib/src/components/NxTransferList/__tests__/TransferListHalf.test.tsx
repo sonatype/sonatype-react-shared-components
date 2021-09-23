@@ -309,20 +309,20 @@ describe('TransferListHalf', function() {
       expect(firstItem).toExist();
       expect(firstItemMoveUpButton).toExist();
       expect(firstItemMoveDownButton).toExist();
-      expect(firstItemMoveUpButton.hasClass('disabled')).toBeTruthy();
-      expect(firstItemMoveDownButton.hasClass('disabled')).toBeFalsy();
+      expect(firstItemMoveUpButton).toHaveClassName('disabled');
+      expect(firstItemMoveDownButton).not.toHaveClassName('disabled');
 
       expect(secondItem).toExist();
       expect(secondItemMoveUpButton).toExist();
       expect(secondItemMoveDownButton).toExist();
-      expect(secondItemMoveUpButton.hasClass('disabled')).toBeFalsy();
-      expect(secondItemMoveDownButton.hasClass('disabled')).toBeFalsy();
+      expect(secondItemMoveUpButton).not.toHaveClassName('disabled');
+      expect(secondItemMoveDownButton).not.toHaveClassName('disabled');
 
       expect(thirdItem).toExist();
       expect(thirdItemMoveUpButton).toExist();
       expect(thirdItemMoveDownButton).toExist();
-      expect(thirdItemMoveUpButton.hasClass('disabled')).toBeFalsy();
-      expect(thirdItemMoveDownButton.hasClass('disabled')).toBeTruthy();
+      expect(thirdItemMoveUpButton).not.toHaveClassName('disabled');
+      expect(thirdItemMoveDownButton).toHaveClassName('disabled');
     });
   });
 

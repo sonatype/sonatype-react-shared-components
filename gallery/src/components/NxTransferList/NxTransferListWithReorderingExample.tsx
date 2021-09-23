@@ -16,12 +16,12 @@ export default function NxTransferListExample() {
       [availableItemsFilter, setAvailableItemsFilter] = useState(''),
       [selectedItemsFilter, setSelectedItemsFilter] = useState('');
 
-  return <NxTransferList<number, number[]> allItems={items}
-                                           selectedItems={selectedItems}
-                                           availableItemsFilter={availableItemsFilter}
-                                           selectedItemsFilter={selectedItemsFilter}
-                                           onAvailableItemsFilterChange={setAvailableItemsFilter}
-                                           onSelectedItemsFilterChange={setSelectedItemsFilter}
-                                           allowReordering={true}
-                                           onChange={setSelectedItems} />;
+  return <NxTransferList allItems={items}
+                         selectedItems={selectedItems}
+                         availableItemsFilter={availableItemsFilter}
+                         selectedItemsFilter={selectedItemsFilter}
+                         onAvailableItemsFilterChange={setAvailableItemsFilter}
+                         onSelectedItemsFilterChange={setSelectedItemsFilter}
+                         allowReordering={true}
+                         onChange={setSelectedItems} />;
 }
