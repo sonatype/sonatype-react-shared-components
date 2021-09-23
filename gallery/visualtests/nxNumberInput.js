@@ -31,7 +31,7 @@ describe('NxNumberInput', function() {
     it('has a dark border when hovered and focused',
         focusAndHoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
 
-    it('has a dark border when non-empty', async function() {
+    it('has a dark border when non-pristine', async function() {
       const inputElement = await browser.$(getInputElementSelector(simpleComponentSelector));
 
       await inputElement.setValue('123');
