@@ -6,6 +6,7 @@
  */
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-button-helpers';
 
 // the padding on the sides of each transfer list control box
 $-control-box-side-spacing: var(--nx-spacing-6x);
@@ -91,14 +92,10 @@ $-visible-item-count: 10;
 }
 
 .nx-transfer-list__item {
-  @include nx-container-helpers.container-horizontal;
-
   background-color: var(--nx-swatch-white);
   border-radius: var(--nx-border-radius);
   display: flex;
-  justify-content: space-between;
   margin: var(--nx-spacing-2x) 0;
-  padding: 0;
 }
 
 .nx-transfer-list__select {
@@ -108,9 +105,8 @@ $-visible-item-count: 10;
   border-radius: var(--nx-border-radius);
   border: var(--nx-border-default);
   cursor: pointer;
-  display: block;
+  flex: auto;
   padding: var(--nx-spacing-2x);
-  width: 100%;
 
   &:focus-within {
     border-color: var(--nx-color-interactive-border-focus);
@@ -129,7 +125,6 @@ $-visible-item-count: 10;
 
 .nx-transfer-list__item--with-reordering {
   .nx-transfer-list__select {
-    border-radius: var(--nx-border-radius);
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
   }
@@ -144,22 +139,23 @@ $-visible-item-count: 10;
   gap: var(--nx-spacing-base);
   margin: 0;
   padding: var(--nx-spacing-base) var(--nx-spacing-2x);
-}
 
-$-button-size: 32px;
+  $-button-size: 32px;
 
-.nx-transfer-list__button {
-  height: $-button-size;
-  padding: 0;
-  margin: 0;
-  width: $-button-size;
+  .nx-btn {
+    height: $-button-size;
+    margin: 0;
+    padding: 0;
+    width: $-button-size;
 
-  &.disabled {
-    &,
-    &:hover,
-    &:active {
-      border-color: transparent;
-      background-color: transparent;
+    &[disabled] {
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: transparent;
+        background-color: transparent;
+      }
     }
   }
 }

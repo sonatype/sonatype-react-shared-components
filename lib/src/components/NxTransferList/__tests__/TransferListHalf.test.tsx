@@ -299,30 +299,30 @@ describe('TransferListHalf', function() {
       const firstItem = list.find('.nx-transfer-list__item').at(0),
           secondItem = list.find('.nx-transfer-list__item').at(1),
           thirdItem = list.find('.nx-transfer-list__item').at(2),
-          firstItemMoveUpButton = firstItem.find('.nx-transfer-list__button--move-up').at(0),
-          firstItemMoveDownButton = firstItem.find('.nx-transfer-list__button--move-down').at(0),
-          secondItemMoveUpButton = secondItem.find('.nx-transfer-list__button--move-up').at(0),
-          secondItemMoveDownButton = secondItem.find('.nx-transfer-list__button--move-down').at(0),
-          thirdItemMoveUpButton = thirdItem.find('.nx-transfer-list__button--move-up').at(0),
-          thirdItemMoveDownButton = thirdItem.find('.nx-transfer-list__button--move-down').at(0);
+          firstItemMoveUpButton = firstItem.find('.nx-btn').at(0),
+          firstItemMoveDownButton = firstItem.find('.nx-btn').at(1),
+          secondItemMoveUpButton = secondItem.find('.nx-btn').at(0),
+          secondItemMoveDownButton = secondItem.find('.nx-btn').at(1),
+          thirdItemMoveUpButton = thirdItem.find('.nx-btn').at(0),
+          thirdItemMoveDownButton = thirdItem.find('.nx-btn').at(1);
 
       expect(firstItem).toExist();
       expect(firstItemMoveUpButton).toExist();
       expect(firstItemMoveDownButton).toExist();
-      expect(firstItemMoveUpButton).toHaveClassName('disabled');
-      expect(firstItemMoveDownButton).not.toHaveClassName('disabled');
+      expect(firstItemMoveUpButton.prop('disabled')).toBe(true);
+      expect(firstItemMoveDownButton.prop('disabled')).toBe(false);
 
       expect(secondItem).toExist();
       expect(secondItemMoveUpButton).toExist();
       expect(secondItemMoveDownButton).toExist();
-      expect(secondItemMoveUpButton).not.toHaveClassName('disabled');
-      expect(secondItemMoveDownButton).not.toHaveClassName('disabled');
+      expect(secondItemMoveUpButton.prop('disabled')).toBe(false);
+      expect(secondItemMoveDownButton.prop('disabled')).toBe(false);
 
       expect(thirdItem).toExist();
       expect(thirdItemMoveUpButton).toExist();
       expect(thirdItemMoveDownButton).toExist();
-      expect(thirdItemMoveUpButton).not.toHaveClassName('disabled');
-      expect(thirdItemMoveDownButton).toHaveClassName('disabled');
+      expect(thirdItemMoveUpButton.prop('disabled')).toBe(false);
+      expect(thirdItemMoveDownButton.prop('disabled')).toBe(true);
     });
   });
 
@@ -346,8 +346,8 @@ describe('TransferListHalf', function() {
 
     const firstItem = list.find('.nx-transfer-list__item').at(0),
         secondItem = list.find('.nx-transfer-list__item').at(1);
-    const moveDownButton = firstItem.find('.nx-transfer-list__button--move-down').at(0);
-    const moveUpButton = secondItem.find('.nx-transfer-list__button--move-up').at(0);
+    const moveDownButton = firstItem.find('.nx-btn').at(1);
+    const moveUpButton = secondItem.find('.nx-btn').at(0);
 
     expect(moveDownButton).toExist();
     expect(moveUpButton).toExist();
@@ -361,7 +361,7 @@ describe('TransferListHalf', function() {
     expect(onReorderItem).toHaveBeenCalledWith(1, -1);
   });
 
-  it('sets the .nx-transfer-list__move-all icon to an x in a circle if isSelected, otherwise a plus in a circle',
+  it('set the move up and down icon button with faArrowUp and faArrowDown respectively',
       function() {
         const items = [{
           id: 1,

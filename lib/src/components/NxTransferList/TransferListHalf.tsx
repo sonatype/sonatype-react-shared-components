@@ -47,22 +47,6 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
     }
   ];
 
-  const moveUpButtonClassNames = [
-    'nx-transfer-list__button',
-    'nx-transfer-list__button--move-up',
-    {
-      'disabled': isTopItem
-    }
-  ];
-
-  const moveDownButtonClassNames = [
-    'nx-transfer-list__button',
-    'nx-transfer-list__button--move-down',
-    {
-      'disabled': isBottomItem
-    }
-  ];
-
   return (
     <NxOverflowTooltip>
       <div className={classnames(...itemClassNames)}>
@@ -74,14 +58,14 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
         { showReorderingButtons && (
           <NxButtonBar className="nx-transfer-list__button-bar">
             <NxButton variant="icon-only"
-                      className={classnames(...moveUpButtonClassNames)}
-                      title="Move Up"
+                      title={isTopItem ? null : 'Move Up'}
+                      disabled={isTopItem}
                       onClick={() => !isTopItem && onReorderItem && onReorderItem(index, -1)}>
               <NxFontAwesomeIcon icon={faArrowUp}/>
             </NxButton>
             <NxButton variant="icon-only"
-                      className={classnames(...moveDownButtonClassNames)}
-                      title="Move Down"
+                      title={isBottomItem ? null : 'Move Down'}
+                      disabled={isBottomItem}
                       onClick={() => !isBottomItem && onReorderItem && onReorderItem(index, 1)}>
               <NxFontAwesomeIcon icon={faArrowDown}/>
             </NxButton>
