@@ -70,9 +70,6 @@
 
   &:focus {
     background-color: transparent;
-  }
-
-  &:focus:hover {
     border-color: var(--nx-color-interactive-border-focus);
   }
 

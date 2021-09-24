@@ -103,17 +103,13 @@ $-visible-item-count: 10;
   margin: var(--nx-spacing-2x) 0;
   padding: var(--nx-spacing-2x);
 
-  &:focus-within {
-    border-color: var(--nx-color-interactive-border-focus);
-    box-shadow: var(--nx-box-shadow-focus);
-  }
-
   &:hover {
     border-color: var(--nx-swatch-grey-05);
   }
 
-  &:focus-within:hover {
+  &:focus-within {
     border-color: var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
   }
 
   &:active {
