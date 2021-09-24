@@ -40,16 +40,16 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
   const isTopItem = index === 0;
   const isBottomItem = index === (listLength - 1);
 
-  const itemClassNames = [
-    'nx-transfer-list__item',
-    {
-      'nx-transfer-list__item--with-reordering': !!showReorderingButtons
-    }
-  ];
+  const itemClassNames = classnames(
+      'nx-transfer-list__item',
+      {
+        'nx-transfer-list__item--with-reordering': !!showReorderingButtons
+      }
+  );
 
   return (
     <NxOverflowTooltip>
-      <div className={classnames(...itemClassNames)}>
+      <div className={itemClassNames}>
         <label className="nx-transfer-list__select">
           <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
           <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
