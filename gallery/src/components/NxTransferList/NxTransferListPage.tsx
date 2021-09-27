@@ -179,7 +179,7 @@ const NxTransferListPage = () =>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Callback for when the user selects or unselects one or more items. Receives the
-                new <NxCode>Set</NxCode>, or <NxCode>Array</NxCode> if <NxCode>AllowReordering</NxCode> is true,
+                new <NxCode>Set</NxCode>, or <NxCode>Array</NxCode> if <NxCode>allowReordering</NxCode> is true,
                 of selected ids as a parameter.
               </NxTable.Cell>
             </NxTable.Row>
