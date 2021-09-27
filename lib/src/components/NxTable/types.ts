@@ -6,6 +6,7 @@
  */
 import { TableHTMLAttributes, HTMLAttributes, TdHTMLAttributes, ThHTMLAttributes, ReactNode } from 'react';
 import PropTypes from 'prop-types';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 export type NxTableProps = TableHTMLAttributes<HTMLTableElement>;
 
@@ -36,6 +37,11 @@ export type NxTableCellProps =
       isFilterHeader?: boolean | null;
       hasIcon?: boolean | null;
       chevron?: boolean | null;
+
+      // NOTE: ideally this would be the wider IconProp type but that type is so complex that attempting to do much
+      // of anything with it trips a limit in the TS compiler and fails. In practice we only really use IconDefinitions
+      // anyway.
+      rowBtnIcon?: IconDefinition | null;
       sortDir?: 'asc' | 'desc' | null;
     };
 
