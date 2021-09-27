@@ -6,6 +6,7 @@
  */
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
+import { omit } from 'ramda';
 
 import './NxToggle.scss';
 import { Props, propTypes } from './types';
@@ -32,8 +33,13 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
 
       const {
         className: checkboxClassName,
-        ...otherCheckboxProps
+        ...unfilteredCheckboxAttributes
       } = checkboxAttributes;
+
+      const otherCheckboxAttributes = omit(
+          ['id', 'disabled', 'checked', 'readonly', 'onChange'],
+          unfilteredCheckboxAttributes
+      );
 
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
@@ -44,7 +50,7 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
                  checked={isChecked}
                  readOnly={!onChange}
                  onChange={onChange || undefined}
-                 { ...otherCheckboxProps } />
+                 { ...otherCheckboxAttributes } />
           <div className="nx-toggle__control"><div className="nx-toggle__indicator"/></div>
           { children && <span className="nx-toggle__content">{children}</span> }
         </label>

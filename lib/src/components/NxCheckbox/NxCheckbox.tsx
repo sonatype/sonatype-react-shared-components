@@ -6,6 +6,7 @@
  */
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
+import { omit } from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -46,8 +47,13 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
 
       const {
         className: checkboxClassName,
-        ...otherCheckboxAttrs
+        ...unfilteredChecboxAttributes
       } = checkboxAttributes;
+
+      const otherCheckboxAttributes = omit(
+          ['id', 'disabled', 'checked', 'readOnly', 'onChange'],
+          unfilteredChecboxAttributes
+      );
 
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
@@ -58,7 +64,7 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
                  checked={isChecked}
                  readOnly={!onChange}
                  onChange={onChange || undefined}
-                 { ...otherCheckboxAttrs } />
+                 { ...otherCheckboxAttributes } />
           <span className="nx-radio-checkbox__control nx-checkbox__box">
             {/* Put a space in the box if not checked,
               * in order to provide a consistent vertical-align baseline

@@ -6,6 +6,7 @@
  */
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
+import { omit } from 'ramda';
 import './NxRadio.scss';
 
 import { Props, propTypes } from './types';
@@ -37,8 +38,13 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
 
       const {
         className: radioClassName,
-        ...otherRadioProps
+        ...unfilteredRadioAttributes
       } = radioAttributes;
+
+      const otherRadioAttributes = omit(
+          ['id', 'name', 'disabled', 'checked', 'onChange', 'readonly'],
+          unfilteredRadioAttributes
+      );
 
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
@@ -50,7 +56,7 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
                  checked={isChecked}
                  onChange={() => onChange && onChange(value)}
                  readOnly={!onChange}
-                 { ...otherRadioProps } />
+                 { ...otherRadioAttributes } />
           <svg className="nx-radio-checkbox__control nx-radio__circle" viewBox="-8 -8 16 16" focusable={false}>
             { isChecked && <circle r="6" strokeWidth="4" className="nx-radio__inner-circle"/> }
             <circle r="7.5" strokeWidth="1" className="nx-radio__outer-circle"/>

@@ -158,4 +158,11 @@ describe('NxRadio', function() {
     const component = getShallow({ radioId: 'color-red'});
     expect(component.find('input')).toHaveProp('id', 'color-red');
   });
+
+  it('pass attributes into radio input element', function() {
+    expect(getShallow({ radioAttributes: { title: 'Garfield'} })
+        .find('input')).toHaveProp('title', 'Garfield');
+    expect(getShallow({ radioAttributes: { className: 'cat', title: 'Garfield'} })
+        .find('input')).toHaveClassName('cat');
+  });
 });

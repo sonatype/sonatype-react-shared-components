@@ -83,6 +83,22 @@ const NxTogglePage = () =>
               supported by <NxCode>&lt;label&gt;</NxCode> elements.
             </NxTable.Cell>
           </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>checkboxAttributes</NxTable.Cell>
+            <NxTable.Cell>
+              <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox">
+                HTML Input Checkbox Attributes
+              </NxTextLink>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              <NxCode>NxToggle</NxCode> supports any HTML attribute that's normally
+              supported by <NxCode>&lt;input&gt;</NxCode> elements.
+              except for <NxCode>id</NxCode>, <NxCode>name</NxCode>, <NxCode>disabled</NxCode>,
+              <NxCode>checked</NxCode>, <NxCode>onChange</NxCode>, <NxCode>readonly</NxCode>
+              which are controlled by the component.
+            </NxTable.Cell>
+          </NxTable.Row>
         </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>

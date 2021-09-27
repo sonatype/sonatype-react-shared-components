@@ -145,7 +145,7 @@ describe('NxCheckbox', function() {
     expect(component).toHaveProp('htmlFor', 'baz');
   });
 
-  it('pass attributes into input element', function() {
+  it('pass attributes into checkbox input element', function() {
     expect(getShallowComponent({ checkboxAttributes: { name: 'Garfield'} })
         .find('input')).toHaveProp('name', 'Garfield');
     expect(getShallowComponent({ checkboxAttributes: { className: 'cat', name: 'Garfield'} })

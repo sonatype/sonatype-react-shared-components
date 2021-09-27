@@ -94,6 +94,21 @@ const NxCheckboxPage = () =>
               <NxCode>label</NxCode> element.
             </NxTable.Cell>
           </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>checkboxAttributes</NxTable.Cell>
+            <NxTable.Cell>
+              <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox">
+                HTML Input Checkbox Attributes
+              </NxTextLink>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              NxCheckbox also supports any html attribute that's normally supported by the
+              <NxCode>input</NxCode> element except for <NxCode>id</NxCode>, <NxCode>disabled</NxCode>,
+              <NxCode>checked</NxCode>, <NxCode>readOnly</NxCode>, <NxCode>onChange</NxCode> which
+              are controlled by the component.
+            </NxTable.Cell>
+          </NxTable.Row>
         </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>

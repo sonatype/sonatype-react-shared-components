@@ -94,4 +94,11 @@ describe('NxToggle', function() {
     expect(component).toHaveProp('id', 'foo');
     expect(component).toHaveProp('htmlFor', 'baz');
   });
+
+  it('pass attributes into checkbox input element', function() {
+    expect(getShallow({ checkboxAttributes: { title: 'Garfield'} })
+        .find('input')).toHaveProp('title', 'Garfield');
+    expect(getShallow({ checkboxAttributes: { className: 'cat', title: 'Garfield'} })
+        .find('input')).toHaveClassName('cat');
+  });
 });

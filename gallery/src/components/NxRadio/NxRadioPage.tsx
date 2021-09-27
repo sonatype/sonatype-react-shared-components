@@ -111,6 +111,21 @@ const NxRadioPage = () =>
               {' '}<NxCode>&lt;label&gt;</NxCode> elements.
             </NxTable.Cell>
           </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>radioAttributes</NxTable.Cell>
+            <NxTable.Cell>
+              <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio">
+                HTML Input Radio Attributes
+              </NxTextLink>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              NxRadio also supports any html attribute that's normally supported by the
+              <NxCode>input</NxCode> element except for <NxCode>id</NxCode>, <NxCode>name</NxCode>,
+              <NxCode>disabled</NxCode>, <NxCode>checked</NxCode>, <NxCode>onChange</NxCode>,
+              <NxCode>readonly</NxCode> which are controlled by the component.
+            </NxTable.Cell>
+          </NxTable.Row>
         </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>
