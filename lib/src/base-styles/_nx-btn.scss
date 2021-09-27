@@ -70,6 +70,7 @@
 
   &:focus {
     background-color: transparent;
+    border-color: var(--nx-color-interactive-border-focus);
   }
 
   &:active {
