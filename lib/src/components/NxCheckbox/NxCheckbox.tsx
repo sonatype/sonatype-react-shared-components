@@ -47,7 +47,7 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
 
       const {
         className: checkboxClassName,
-        ...unfilteredChecboxAttributes
+        ...unfilteredCheckboxAttributes
       } = checkboxAttributes;
 
       const otherCheckboxAttributes = omit(
