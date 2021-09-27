@@ -50,7 +50,7 @@ export default function NxTransferList<T extends string | number = string>(props
   const availableItemsCountFormatter = availableItemsCountFormatterProp || defaultAvailableItemsCountFormatter,
       selectedItemsCountFormatter = selectedItemsCountFormatterProp || defaultSelectedItemsCountFormatter;
 
-  const allItemsIdToItemlookUp = groupBy(item => item.id.toString(), allItems);
+  const allItemsIdToItemLookUp = groupBy(item => item.id.toString(), allItems);
 
   const groupedItems = useMemo(() =>
         allowReordering
