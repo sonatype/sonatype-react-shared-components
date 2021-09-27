@@ -14,13 +14,11 @@ export type FilterFn<T extends string | number = string> = (d: DataItem<T>[]) =>
 
 type SelectionChangeHandler<T> = (checked: boolean, id: T) => void;
 
-type ReorderSelectectedItemFunction = (index: number, direction: 1 | -1) => void;
-
 export interface TransferListItemProps<T extends string | number = string> extends DataItem<T> {
   checked: boolean;
   onChange: SelectionChangeHandler<T>;
   showReorderingButtons?: boolean | null;
-  onReorderItem?: ReorderSelectectedItemFunction | null;
+  onReorderItem?: (index: number, direction: 1 | -1) => void | null;
   index: number;
   listLength: number;
 }
@@ -36,7 +34,7 @@ export interface TransferListHalfProps<T extends string | number = string> {
   onItemChange: SelectionChangeHandler<T>;
   footerContent: ReactNode;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
-  onReorderItem?: ReorderSelectectedItemFunction | null;
+  onReorderItem?: (id: string, id2: string) => void | null;
   allowReordering?: boolean | null;
 }
 

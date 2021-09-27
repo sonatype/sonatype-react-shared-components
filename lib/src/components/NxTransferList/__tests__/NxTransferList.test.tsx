@@ -22,9 +22,7 @@ describe('NxTransferList', function() {
         onSelectedItemsFilterChange: () => {},
         onChange: () => {}
       },
-      // eslint-disable-next-line no-spaced-func
-      getShallow = getShallowComponent<Props<string | number, Set<number | string> | (string | number)[]>>
-          (NxTransferList, minimalProps);
+      getShallow = getShallowComponent<Props<string | number>>(NxTransferList, minimalProps);
 
   it('renders a div with the nx-transfer-list class', function() {
     expect(getShallow()).toMatchSelector('div.nx-transfer-list');

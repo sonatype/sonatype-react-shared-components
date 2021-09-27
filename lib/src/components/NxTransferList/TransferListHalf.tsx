@@ -90,7 +90,7 @@ export default function TransferListHalf<T extends string | number = string>(pro
         isSelected,
         items,
         onItemChange,
-        onReorderItem,
+        onReorderItem: onReorderItemProp,
         footerContent,
         filterFn: filterFnProp
       } = props,
@@ -98,6 +98,19 @@ export default function TransferListHalf<T extends string | number = string>(pro
       filterFn = filterFnProp ? partial(filterFnProp, [filterValue]) : defaultFilterFn,
       visibleItems = useMemo(() => filterValue ? filter(pipe(prop('displayName'), filterFn), items) : items,
           [filterFn, items, filterValue]);
+
+  function onReorderItem(index: number, direction: 1 | -1) {
+    if (typeof visibleItems[index + direction] === 'undefined') {
+      return;
+    }
+
+    if (typeof onReorderItemProp === 'function') {
+      onReorderItemProp(
+          visibleItems[index].id.toString(),
+          visibleItems[index + direction].id.toString()
+      );
+    }
+  }
 
   function onMoveAllClick() {
     const idsToMove = map(prop('id'), visibleItems);

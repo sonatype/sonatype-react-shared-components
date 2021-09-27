@@ -10,7 +10,6 @@ import { chain, groupBy, reject, without } from 'ramda';
 
 import { Props, propTypes } from './types';
 import TransferListHalf from './TransferListHalf';
-import DataItem from '../../util/DataItem';
 
 import './NxTransferList.scss';
 
@@ -19,6 +18,10 @@ export { Props };
 const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${n === 1 ? '' : 's'} ${kind}`,
     defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
     defaultSelectedItemsCountFormatter = defaultItemsCountFormatter('transferred');
+
+type SelectedItemsIdToIndexLookUp = {
+  [id: string | number]: number;
+};
 
 export default function NxTransferList<T extends string | number = string>(props: Props<T>) {
   const {
@@ -50,19 +53,26 @@ export default function NxTransferList<T extends string | number = string>(props
   const availableItemsCountFormatter = availableItemsCountFormatterProp || defaultAvailableItemsCountFormatter,
       selectedItemsCountFormatter = selectedItemsCountFormatterProp || defaultSelectedItemsCountFormatter;
 
-  const allItemsIdToItemLookUp = groupBy(item => item.id.toString(), allItems);
-
-  const groupedItems = useMemo(() =>
-        allowReordering
+  const groupedItems = useMemo(() => {
+        const allItemsIdToItemLookUp = groupBy(item => item.id.toString(), allItems);
+        return allowReordering
           ? {
             available: reject(item => selectedItemsSet.has(item.id), allItems),
-            selected: chain<T, DataItem<T>>(item => allItemsIdToItemlookUp[item.toString()], selectedItemsArray)
+            selected: chain(item => allItemsIdToItemLookUp[item.toString()], selectedItemsArray)
           }
-          : groupBy(item => selectedItemsSet.has(item.id) ? 'selected' : 'available', allItems),
+          : groupBy(item => selectedItemsSet.has(item.id) ? 'selected' : 'available', allItems);
+      },
       [allItems, selectedItems, allowReordering]
       ),
       available = groupedItems.available || [],
       selected = groupedItems.selected || [];
+
+  const selectedItemsIdToIndexLookUp = useMemo(() => allowReordering === true
+    ? (selectedItems as T[]).reduce((accumulator, id, index) => {
+      accumulator[id] = index;
+      return accumulator;
+    }, {} as SelectedItemsIdToIndexLookUp) : {},
+  [selectedItems, allowReordering, selectedItemsFilter]);
 
   const availableCount = allItems.length - selectedItemsArray.length,
       selectedCount = selectedItemsArray.length;
@@ -92,14 +102,20 @@ export default function NxTransferList<T extends string | number = string>(props
     handleOnChangeProp(without(idsToRemove, selectedItemsArray));
   }
 
-  function onReorderItem(index: number, direction: 1 | -1) {
-    if (typeof selectedItemsArray[index + direction] === 'undefined') {
+  function onReorderItem(id: string, targetId: string) {
+    const index = selectedItemsIdToIndexLookUp[id];
+    const targetIndex = selectedItemsIdToIndexLookUp[targetId];
+
+    if (
+      typeof selectedItemsArray[index] === 'undefined'
+      || typeof selectedItemsArray[targetIndex] === 'undefined'
+    ) {
       return;
     }
 
     const newSelectedItems = [...selectedItemsArray];
-    newSelectedItems[index] = selectedItemsArray[index + direction];
-    newSelectedItems[index + direction] = selectedItemsArray[index];
+    newSelectedItems[index] = selectedItemsArray[targetIndex];
+    newSelectedItems[targetIndex] = selectedItemsArray[index];
 
     handleOnChangeProp(newSelectedItems);
   }
