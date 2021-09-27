@@ -323,7 +323,7 @@ describe('NxTransferList', function() {
       expect(secondHalf).toHaveProp('items', items);
     });
 
-    it('fires onChange with a new Array with the clicked item added at the end'
+    it('fires onChange with a new Array with the clicked item added at the end '
     + 'when the first half fires onItemChange', function() {
       expect(onChange).not.toHaveBeenCalled();
 
