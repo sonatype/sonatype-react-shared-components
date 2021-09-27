@@ -123,7 +123,7 @@ const NxRadioPage = () =>
               NxRadio also supports any html attribute that's normally supported by the
               <NxCode>input</NxCode> element except for <NxCode>id</NxCode>, <NxCode>name</NxCode>,
               <NxCode>disabled</NxCode>, <NxCode>checked</NxCode>, <NxCode>onChange</NxCode>,
-              <NxCode>readonly</NxCode> which are controlled by the component.
+              and <NxCode>readonly</NxCode> which are controlled by the component.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>

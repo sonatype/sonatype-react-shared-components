@@ -93,9 +93,9 @@ const NxTogglePage = () =>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
               <NxCode>NxToggle</NxCode> supports any HTML attribute that's normally
-              supported by <NxCode>&lt;input&gt;</NxCode> elements.
+              supported by <NxCode>&lt;input&gt;</NxCode> elements
               except for <NxCode>id</NxCode>, <NxCode>name</NxCode>, <NxCode>disabled</NxCode>,
-              <NxCode>checked</NxCode>, <NxCode>onChange</NxCode>, <NxCode>readonly</NxCode>
+              <NxCode>checked</NxCode>, <NxCode>onChange</NxCode>, and <NxCode>readonly</NxCode>
               which are controlled by the component.
             </NxTable.Cell>
           </NxTable.Row>

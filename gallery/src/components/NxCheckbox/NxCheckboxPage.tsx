@@ -105,7 +105,7 @@ const NxCheckboxPage = () =>
             <NxTable.Cell>
               NxCheckbox also supports any html attribute that's normally supported by the
               <NxCode>input</NxCode> element except for <NxCode>id</NxCode>, <NxCode>disabled</NxCode>,
-              <NxCode>checked</NxCode>, <NxCode>readOnly</NxCode>, <NxCode>onChange</NxCode> which
+              <NxCode>checked</NxCode>, <NxCode>readOnly</NxCode>, and <NxCode>onChange</NxCode> which
               are controlled by the component.
             </NxTable.Cell>
           </NxTable.Row>
