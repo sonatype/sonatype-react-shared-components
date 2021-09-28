@@ -15,7 +15,7 @@ $-nx-scrollable-default-height: 400px;
 .nx-text-link {
   @include nx-container-helpers.container-horizontal;
 
-  // border: 1px solid transparent;
+  border: 1px solid transparent;
   color: var(--nx-color-link);
   cursor: pointer;
   margin: 0 calc(0px - #{var(--nx-spacing-base)});
@@ -31,9 +31,7 @@ $-nx-scrollable-default-height: 400px;
   }
 
   &:focus {
-    background-color: var(--nx-swatch-teal-95);
-    // border-color: var(--nx-color-interactive-border-focus);
-    // box-shadow: var(--nx-box-shadow-focus);
+    border-color: var(--nx-color-interactive-border-focus);
     outline: 0;
   }
 }
