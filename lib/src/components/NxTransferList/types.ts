@@ -61,8 +61,7 @@ interface OrderedStatefulProps<T extends string | number = string> extends BaseS
   onChange: (newSelected: T[]) => void;
 }
 
-export type StatefulProps<T extends string | number = string> =
-    UnorderedStatefulProps<T> | OrderedStatefulProps<T>;
+export type StatefulProps<T extends string | number = string> = UnorderedStatefulProps<T> | OrderedStatefulProps<T>;
 
 export type Props<T extends string | number = string> = StatefulProps<T> & {
   availableItemsFilter: string;

@@ -20,7 +20,7 @@ const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${
     defaultSelectedItemsCountFormatter = defaultItemsCountFormatter('transferred');
 
 type SelectedItemsIdToIndexLookUp = {
-  [id: string | number]: number;
+  [id: string]: number
 };
 
 export default function NxTransferList<T extends string | number = string>(props: Props<T>) {
@@ -68,10 +68,10 @@ export default function NxTransferList<T extends string | number = string>(props
       selected = groupedItems.selected || [];
 
   const selectedItemsIdToIndexLookUp = useMemo(() => allowReordering === true
-    ? (selectedItems as T[]).reduce((accumulator, id, index) => {
-      accumulator[id] = index;
+    ? (selectedItems as T[]).reduce<SelectedItemsIdToIndexLookUp>((accumulator, id, index) => {
+      accumulator[id.toString()] = index;
       return accumulator;
-    }, {} as SelectedItemsIdToIndexLookUp) : {},
+    }, {}) : {},
   [selectedItems, allowReordering, selectedItemsFilter]);
 
   const availableCount = allItems.length - selectedItemsArray.length,

@@ -354,11 +354,11 @@ describe('TransferListHalf', function() {
 
     moveDownButton.simulate('click');
 
-    expect(onReorderItem).toHaveBeenCalledWith(0, 1);
+    expect(onReorderItem).toHaveBeenCalledWith('1', '2');
 
     moveUpButton.simulate('click');
 
-    expect(onReorderItem).toHaveBeenCalledWith(1, -1);
+    expect(onReorderItem).toHaveBeenCalledWith('1', '2');
   });
 
   it('set the move up and down icon button with faArrowUp and faArrowDown respectively',
