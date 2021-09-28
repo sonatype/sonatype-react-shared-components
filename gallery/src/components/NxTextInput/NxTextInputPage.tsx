@@ -204,7 +204,7 @@ const NxTextInputPage = () =>
         <NxP>
           In Chrome it works mostly as expected, however Safari and Firefox allow the user to input non-number
           characters but do not recognize those characters as values. If a user inputs "aaaa" or 123a"
-          {' '}<NxCode>onChange</NxCode> receives "" as the value in both of those invalid cases. It should be
+          , <NxCode>onChange</NxCode> receives "" as the value in both of those invalid cases. It should be
           setting that as the value stored in the state, which goes in as the value of the &lt;input&gt; in the next
           render, which should clear the input. Normally you'd expect that as soon as you enter an invalid character
           after the number the input should have cleared. But for some reason that doesn't happen. We have traced
