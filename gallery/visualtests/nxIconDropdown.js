@@ -19,7 +19,7 @@ describe('NxIconDropdown', function() {
     it('has no border by default', simpleTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
     it('has a dark grey border when hovered', hoverTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
     it('has a light blue border when focused', focusTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
-    it('has a dark grey border when focused and hovered',
+    it('has a blue border and blue glow when focused and hovered',
         focusAndHoverTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
     it('has a dark grey border and light grey background when clicked',
         clickTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
