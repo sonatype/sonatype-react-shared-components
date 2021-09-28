@@ -209,8 +209,8 @@ const NxTextInputPage = () =>
           render, which should clear the input. Normally you'd expect that as soon as you enter an invalid character
           after the number, the input should have cleared. But for some reason that doesn't happen. We have traced
           through the code and all of the state handling in our examples and components is correct. But for some
-          reason, when that empty string gets passed back into the &lt;input&gt; in <NxCode>NxTextInput</NxCode>, 
-          it just ignores it. The whole React workflow around <NxCode>type="number"</NxCode> seems to be broken, 
+          reason, when that empty string gets passed back into the &lt;input&gt; in <NxCode>NxTextInput</NxCode>,
+          it just ignores it. The whole React workflow around <NxCode>type="number"</NxCode> seems to be broken,
           not to mention our RSC validation workflow.
         </NxP>
         <NxP>
