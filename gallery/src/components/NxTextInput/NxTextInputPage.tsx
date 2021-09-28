@@ -214,7 +214,7 @@ const NxTextInputPage = () =>
           validation workflow.
         </NxP>
         <NxP>
-          At this point if an input that only accepts numbers is required it is strongly suggested that the developer
+          At this point if an input that only accepts numbers is required, it is strongly suggested that the developer
           create a custom validation rule. Here is a simple Regex that will detect only digits to get you
           started: <NxCode>/^\d+$/</NxCode>.
         </NxP>
