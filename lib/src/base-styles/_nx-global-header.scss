@@ -6,6 +6,7 @@
  */
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-button-helpers';
+@use '../scss-shared/nx-text-helpers';
 
 .nx-global-header {
   align-items: center;
@@ -16,6 +17,7 @@
   padding: 0 var(--nx-spacing-6x);
 
   .nx-back-button {
+    @include nx-text-helpers.truncate-ellipsis;
     margin: 0;
     padding-right: var(--nx-spacing-8x);
   }
