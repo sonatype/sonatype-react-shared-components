@@ -15,11 +15,6 @@
   min-height: 42px;
   padding: 0 var(--nx-spacing-6x);
 
-  &:empty {
-    // if it has no content just don't show it
-    display: none;
-  }
-
   .nx-back-button {
     margin: 0;
     padding-right: var(--nx-spacing-8x);
