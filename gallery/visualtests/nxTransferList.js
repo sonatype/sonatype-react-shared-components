@@ -39,7 +39,7 @@ describe('NxTransferList', function() {
 
   it('puts a dark border on hovered items', hoverTest(simpleListSelector, secondItemSelector));
   it('puts a blue border and glow on focused items', focusTest(simpleListSelector, secondItemSelector));
-  it('puts a dark border and blue glow on focused+hovered items',
+  it('puts a blue border and blue glow on focused+hovered items',
       focusAndHoverTest(simpleListSelector, secondItemSelector));
   it('puts a grey background on clicked items', clickTest(simpleListSelector, secondItemSelector));
 
