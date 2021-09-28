@@ -35,7 +35,7 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
             checkboxId,
             overflowTooltip,
             children,
-            checkboxAttributes = {},
+            inputAttributes = {},
             ...otherProps
           } = props,
           labelClasses = classnames('nx-radio-checkbox', 'nx-checkbox', className, {
@@ -47,24 +47,24 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
 
       const {
         className: checkboxClassName,
-        ...unfilteredChecboxAttributes
-      } = checkboxAttributes;
+        ...unfilteredInputAttributes
+      } = inputAttributes;
 
-      const otherCheckboxAttributes = omit(
-          ['id', 'disabled', 'checked', 'readOnly', 'onChange'],
-          unfilteredChecboxAttributes
+      const otherInputAttributes = omit(
+          ['disabled', 'checked', 'readOnly', 'onChange'],
+          unfilteredInputAttributes
       );
 
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
           <input type="checkbox"
-                 id={checkboxId || undefined}
+                 id={otherInputAttributes.id || checkboxId || undefined}
                  className={classnames('nx-radio-checkbox__input', 'nx-checkbox__input', checkboxClassName)}
                  disabled={!!disabled}
                  checked={isChecked}
                  readOnly={!onChange}
                  onChange={onChange || undefined}
-                 { ...otherCheckboxAttributes } />
+                 { ...otherInputAttributes } />
           <span className="nx-radio-checkbox__control nx-checkbox__box">
             {/* Put a space in the box if not checked,
               * in order to provide a consistent vertical-align baseline

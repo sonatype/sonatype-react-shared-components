@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import NxCheckbox, { Props } from '../NxCheckbox';
+import { PropsWithAnyInputAttributes } from '../types';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 
 describe('NxCheckbox', function() {
@@ -21,7 +22,7 @@ describe('NxCheckbox', function() {
     children: undefined
   };
 
-  function getShallowComponent(additionalProps?: Partial<Props>) {
+  function getShallowComponent(additionalProps?: Partial<PropsWithAnyInputAttributes>) {
     return shallow(<NxCheckbox { ...simpleProps } { ...additionalProps } />);
   }
 
@@ -145,10 +146,25 @@ describe('NxCheckbox', function() {
     expect(component).toHaveProp('htmlFor', 'baz');
   });
 
-  it('pass attributes into checkbox input element', function() {
-    expect(getShallowComponent({ checkboxAttributes: { name: 'Garfield'} })
-        .find('input')).toHaveProp('name', 'Garfield');
-    expect(getShallowComponent({ checkboxAttributes: { className: 'cat', name: 'Garfield'} })
-        .find('input')).toHaveClassName('cat');
+  it('passes input attributes into the input element and does not clash with top-level attributes', function() {
+    const component = getShallowComponent({
+      checkboxId: 'not-garfield',
+      disabled: true,
+      isChecked: true,
+      className: 'label-classname',
+      inputAttributes: {
+        id: 'garfield',
+        name: 'garfield',
+        disabled: false,
+        className: 'checkbox-classname',
+        checked: false
+      }
+    });
+
+    expect(component.find('input')).toHaveProp('id', 'garfield');
+    expect(component.find('input')).toHaveProp('name', 'garfield');
+    expect(component.find('input')).toHaveProp('disabled', true);
+    expect(component.find('input')).toHaveClassName('checkbox-classname');
+    expect(component.find('input')).toHaveProp('checked', true);
   });
 });

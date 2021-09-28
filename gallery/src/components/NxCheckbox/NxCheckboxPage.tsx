@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
+import { NxCode, NxInfoAlert, NxTable, NxTextLink, NxP } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
@@ -34,7 +34,15 @@ const NxCheckboxPage = () =>
             <NxTable.Cell>checkboxId</NxTable.Cell>
             <NxTable.Cell>string</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>An id to identify the checkbox</NxTable.Cell>
+            <NxTable.Cell>
+              An id to identify the checkbox.
+
+              <NxInfoAlert>
+                Deprecated property: With the introduction of the inputAttributes prop,
+                you can now pass in attributes directly into the input element, including id.
+                Id passed through the inputAttributes prop will take precedence over checkboxId.
+              </NxInfoAlert>
+            </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>isChecked</NxTable.Cell>
@@ -95,7 +103,7 @@ const NxCheckboxPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
-            <NxTable.Cell>checkboxAttributes</NxTable.Cell>
+            <NxTable.Cell>inputAttributes</NxTable.Cell>
             <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox">
                 HTML Input Checkbox Attributes
@@ -103,10 +111,12 @@ const NxCheckboxPage = () =>
             </NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              NxCheckbox also supports any html attribute that's normally supported by the
-              <NxCode>input</NxCode> element except for <NxCode>id</NxCode>, <NxCode>disabled</NxCode>,
-              <NxCode>checked</NxCode>, <NxCode>readOnly</NxCode>, and <NxCode>onChange</NxCode> which
-              are controlled by the component.
+              <NxCode>NxCheckbox</NxCode> allows you to pass html attributes directly
+              into the <NxCode>input</NxCode> element as an object with the <NxCode>inputAttributes</NxCode> prop.
+              Some attributes will be omitted before being passed into the <NxCode>input</NxCode> element:
+              <NxCode>disabled</NxCode>, <NxCode>checked</NxCode>, <NxCode>readonly</NxCode>,
+              and <NxCode>onChange</NxCode>. These attributes are controlled by the component
+              or can be set from the top-level props.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>

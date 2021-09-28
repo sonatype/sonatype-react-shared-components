@@ -26,7 +26,7 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
             children,
             radioId,
             overflowTooltip,
-            radioAttributes = {},
+            inputAttributes = {},
             ...otherProps
           } = props,
           labelClasses = classnames('nx-radio-checkbox', 'nx-radio', className, {
@@ -38,25 +38,25 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
 
       const {
         className: radioClassName,
-        ...unfilteredRadioAttributes
-      } = radioAttributes;
+        ...unfilteredInputAttributes
+      } = inputAttributes;
 
-      const otherRadioAttributes = omit(
-          ['id', 'name', 'disabled', 'checked', 'onChange', 'readonly'],
-          unfilteredRadioAttributes
+      const otherInputAttributes = omit(
+          ['name', 'disabled', 'checked', 'onChange', 'readonly'],
+          unfilteredInputAttributes
       );
 
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
           <input className={classnames('nx-radio-checkbox__input', 'nx-radio__input', radioClassName)}
-                 id={radioId || undefined}
+                 id={otherInputAttributes.id || radioId || undefined}
                  type="radio"
                  name={name}
                  disabled={!!disabled}
                  checked={isChecked}
                  onChange={() => onChange && onChange(value)}
                  readOnly={!onChange}
-                 { ...otherRadioAttributes } />
+                 { ...otherInputAttributes } />
           <svg className="nx-radio-checkbox__control nx-radio__circle" viewBox="-8 -8 16 16" focusable={false}>
             { isChecked && <circle r="6" strokeWidth="4" className="nx-radio__inner-circle"/> }
             <circle r="7.5" strokeWidth="1" className="nx-radio__outer-circle"/>

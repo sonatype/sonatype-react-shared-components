@@ -7,9 +7,9 @@
 import { InputHTMLAttributes, LabelHTMLAttributes, Validator } from 'react';
 import * as PropTypes from 'prop-types';
 
-export type CheckboxAttributesProp =
+export type InputAttributesProp =
   Omit<InputHTMLAttributes<HTMLInputElement>,
-  'id' | 'disabled' | 'checked' | 'readOnly' | 'onChange'>;
+  'disabled' | 'checked' | 'readOnly' | 'onChange'>;
 
 export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   checkboxId?: string | null;
@@ -17,7 +17,12 @@ export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   isChecked: boolean;
   disabled?: boolean | null;
   overflowTooltip?: boolean | null;
-  checkboxAttributes?: CheckboxAttributesProp;
+  inputAttributes?: InputAttributesProp;
+};
+
+// For testing
+export type PropsWithAnyInputAttributes = Props & {
+  inputAttributes?: { [key: string]: unknown };
 };
 
 // In a strictly typescript environment, PropTypes are mostly redundant. However, they still provide safety when this
@@ -28,5 +33,5 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   isChecked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
   overflowTooltip: PropTypes.bool,
-  checkboxAttributes: PropTypes.object as Validator<CheckboxAttributesProp>
+  inputAttributes: PropTypes.object as Validator<InputAttributesProp>
 };

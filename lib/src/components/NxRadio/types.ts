@@ -9,9 +9,9 @@ import * as PropTypes from 'prop-types';
 
 import { requiredNullableString } from '../../util/customPropTypes';
 
-type RadioAttributesProp =
+type InputAttributesProp =
   Omit<InputHTMLAttributes<HTMLInputElement>,
-  'id' | 'name' | 'disabled' | 'checked' | 'onChange' | 'readonly'>;
+  'name' | 'disabled' | 'checked' | 'onChange' | 'readonly'>;
 
 export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   name: string;
@@ -21,7 +21,12 @@ export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   disabled?: boolean | null;
   radioId?: string | null;
   overflowTooltip?: boolean | null;
-  radioAttributes?: RadioAttributesProp;
+  inputAttributes?: InputAttributesProp;
+};
+
+// For testing
+export type PropsWithAnyInputAttributes = Props & {
+  inputAttributes?: { [key: string]: unknown };
 };
 
 // In a strictly typescript environment, PropTypes are mostly redundant.  However, they still provide safety when this
@@ -34,5 +39,5 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   disabled: PropTypes.bool,
   radioId: PropTypes.string,
   overflowTooltip: PropTypes.bool,
-  radioAttributes: PropTypes.object as Validator<RadioAttributesProp>
+  inputAttributes: PropTypes.object as Validator<InputAttributesProp>
 };

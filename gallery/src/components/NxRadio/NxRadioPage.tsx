@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
+import { NxCode, NxInfoAlert, NxTable, NxTextLink, NxP } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -85,7 +85,15 @@ const NxRadioPage = () =>
             <NxTable.Cell>radioId</NxTable.Cell>
             <NxTable.Cell>string</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>An id attribute to be added to the radio input</NxTable.Cell>
+            <NxTable.Cell>
+              An id attribute to be added to the radio input.
+
+              <NxInfoAlert>
+                Deprecated property: With the introduction of the inputAttributes prop,
+                you can now pass in attributes directly into the input element, including id.
+                Id passed through the inputAttributes prop will take precedence over radioId.
+              </NxInfoAlert>
+            </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>overflowTooltip</NxTable.Cell>
@@ -112,7 +120,7 @@ const NxRadioPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
-            <NxTable.Cell>radioAttributes</NxTable.Cell>
+            <NxTable.Cell>inputAttributes</NxTable.Cell>
             <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio">
                 HTML Input Radio Attributes
@@ -120,10 +128,12 @@ const NxRadioPage = () =>
             </NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              NxRadio also supports any html attribute that's normally supported by the
-              <NxCode>input</NxCode> element except for <NxCode>id</NxCode>, <NxCode>name</NxCode>,
-              <NxCode>disabled</NxCode>, <NxCode>checked</NxCode>, <NxCode>onChange</NxCode>,
-              and <NxCode>readonly</NxCode> which are controlled by the component.
+              <NxCode>NxRadio</NxCode> allows you to pass html attributes directly
+              into the <NxCode>input</NxCode> element as an object with the <NxCode>inputAttributes</NxCode> prop.
+              Some attributes will be omitted before being passed into the <NxCode>input</NxCode> element:
+              <NxCode>name</NxCode>, <NxCode>disabled</NxCode>, <NxCode>checked</NxCode>, <NxCode>readonly</NxCode>,
+              and <NxCode>onChange</NxCode>. These attributes are controlled by the component
+              or can be set from the top-level props.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>

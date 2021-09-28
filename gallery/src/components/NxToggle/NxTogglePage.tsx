@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTextLink, NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxCode, NxInfoAlert, NxTable, NxTextLink, NxP } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
@@ -34,7 +34,15 @@ const NxTogglePage = () =>
             <NxTable.Cell>inputId</NxTable.Cell>
             <NxTable.Cell>string</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>An id to identify the toggle</NxTable.Cell>
+            <NxTable.Cell>
+              An id to identify the toggle
+
+              <NxInfoAlert>
+                Deprecated property: With the introduction of the inputAttributes prop,
+                you can now pass in attributes directly into the input element, including id.
+                Id passed through the inputAttributes prop will take precedence over inputId.
+              </NxInfoAlert>
+            </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>isChecked</NxTable.Cell>
@@ -92,11 +100,12 @@ const NxTogglePage = () =>
             </NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              <NxCode>NxToggle</NxCode> supports any HTML attribute that's normally
-              supported by <NxCode>&lt;input&gt;</NxCode> elements
-              except for <NxCode>id</NxCode>, <NxCode>name</NxCode>, <NxCode>disabled</NxCode>,
-              <NxCode>checked</NxCode>, <NxCode>onChange</NxCode>, and <NxCode>readonly</NxCode>
-              which are controlled by the component.
+              <NxCode>NxToggle</NxCode> allows you to pass html attributes as an object directly into the
+              <NxCode>input</NxCode> element with the <NxCode>inputAttributes</NxCode> prop.
+              Some attributes will be omitted before being passed into
+              the <NxCode>input</NxCode> element: <NxCode>disabled</NxCode>,
+              <NxCode>checked</NxCode>, <NxCode>readonly</NxCode>, and <NxCode>onChange</NxCode>.
+              These attributes are controlled by the component or can be set from the top-level props.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>

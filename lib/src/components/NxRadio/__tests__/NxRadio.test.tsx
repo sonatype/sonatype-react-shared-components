@@ -9,6 +9,7 @@ import { shallow } from 'enzyme';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 
 import NxRadio, { Props } from '../NxRadio';
+import { PropsWithAnyInputAttributes } from '../types';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 
 describe('NxRadio', function() {
@@ -21,7 +22,7 @@ describe('NxRadio', function() {
     children: undefined
   };
 
-  const getShallow = getShallowComponent<Props>(NxRadio, simpleProps);
+  const getShallow = getShallowComponent<PropsWithAnyInputAttributes>(NxRadio, simpleProps);
 
   it('renders a <label> containing a radio <input> and .nx-radio__circle and .nx-radio__outer-circle  elements',
       function() {
@@ -159,10 +160,26 @@ describe('NxRadio', function() {
     expect(component.find('input')).toHaveProp('id', 'color-red');
   });
 
-  it('pass attributes into radio input element', function() {
-    expect(getShallow({ radioAttributes: { title: 'Garfield'} })
-        .find('input')).toHaveProp('title', 'Garfield');
-    expect(getShallow({ radioAttributes: { className: 'cat', title: 'Garfield'} })
-        .find('input')).toHaveClassName('cat');
+  it('passes input attributes into the input element and does not clash with top-level attributes', function() {
+    const component = getShallow({
+      radioId: 'not-garfield',
+      disabled: true,
+      isChecked: true,
+      name: 'garfield',
+      className: 'label-classname',
+      inputAttributes: {
+        id: 'garfield',
+        name: 'not-garfield',
+        disabled: false,
+        className: 'checkbox-classname',
+        checked: false
+      }
+    });
+
+    expect(component.find('input')).toHaveProp('id', 'garfield');
+    expect(component.find('input')).toHaveProp('name', 'garfield');
+    expect(component.find('input')).toHaveProp('disabled', true);
+    expect(component.find('input')).toHaveClassName('checkbox-classname');
+    expect(component.find('input')).toHaveProp('checked', true);
   });
 });

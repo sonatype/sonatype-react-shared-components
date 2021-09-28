@@ -7,16 +7,21 @@
 import { InputHTMLAttributes, LabelHTMLAttributes, Validator } from 'react';
 import * as PropTypes from 'prop-types';
 
-export type CheckboxAttributesProp =
+export type InputAttributesProp =
   Omit<InputHTMLAttributes<HTMLInputElement>,
-  'id' | 'disabled' | 'checked' | 'readonly' | 'onChange'>;
+  'disabled' | 'checked' | 'readonly' | 'onChange'>;
 
 export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   inputId?: string | null;
   onChange?: (() => void) | null;
   isChecked: boolean;
   disabled?: boolean | null;
-  checkboxAttributes?: CheckboxAttributesProp;
+  inputAttributes?: InputAttributesProp;
+};
+
+// For testing
+export type PropsWithAnyInputAttributes = Props & {
+  inputAttributes?: { [key: string]: unknown };
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -24,5 +29,5 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   onChange: PropTypes.func,
   isChecked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
-  checkboxAttributes: PropTypes.object as Validator<CheckboxAttributesProp>
+  inputAttributes: PropTypes.object as Validator<InputAttributesProp>
 };
