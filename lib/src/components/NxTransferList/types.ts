@@ -70,10 +70,9 @@ export type Props<T extends string | number = string> = StatefulProps<T> & {
   onSelectedItemsFilterChange: NxFilterInputProps['onChange'];
 };
 
-// allItems, selectedItems, onAvailableItemsFilterChange, onSelectedItemsFilterChange
+// allowReordering, allItems, selectedItems
 // are excluded in the propTypes due to clash with parametric Props;
 export const propTypes = {
-  allowReordering: PropTypes.bool,
   availableItemsLabel: PropTypes.node,
   selectedItemsLabel: PropTypes.node,
   availableItemsCountFormatter: PropTypes.func,
@@ -82,5 +81,7 @@ export const propTypes = {
   onChange: PropTypes.func.isRequired,
   filterFn: PropTypes.func,
   availableItemsFilter: PropTypes.string.isRequired,
-  selectedItemsFilter: PropTypes.string.isRequired
+  selectedItemsFilter: PropTypes.string.isRequired,
+  onAvailableItemsFilterChange: PropTypes.func,
+  onSelectedItemsFilterChange: PropTypes.func
 };

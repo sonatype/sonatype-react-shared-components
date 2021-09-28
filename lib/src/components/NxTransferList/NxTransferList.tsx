@@ -67,7 +67,7 @@ export default function NxTransferList<T extends string | number = string>(props
       available = groupedItems.available || [],
       selected = groupedItems.selected || [];
 
-  const selectedItemsIdToIndexLookUp = useMemo(() => allowReordering === true
+  const selectedItemsIdToIndexLookUp = useMemo(() => allowReordering
     ? (selectedItems as T[]).reduce<SelectedItemsIdToIndexLookUp>((accumulator, id, index) => {
       accumulator[id.toString()] = index;
       return accumulator;
