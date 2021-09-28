@@ -14,16 +14,16 @@
   max-width: 100%;
 
   &, &.pristine, &.pristine.valid {
+    &:hover {
+      .nx-text-input__box {
+        border-color: var(--nx-color-form-element-border);
+      }
+    }
+
     &:focus-within {
       .nx-text-input__box {
         border-color: var(--nx-color-interactive-border-focus);
         box-shadow: var(--nx-box-shadow-focus);
-      }
-    }
-
-    &:hover {
-      .nx-text-input__box {
-        border-color: var(--nx-color-form-element-border);
       }
     }
   }

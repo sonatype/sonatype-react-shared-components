@@ -49,7 +49,7 @@
   border-color: transparent;
   color: var(--nx-swatch-white);
 
-  &:hover {
+  &:hover, &:focus {
     background-color: var(--nx-swatch-blue-20);
   }
 
@@ -70,6 +70,7 @@
 
   &:focus {
     background-color: transparent;
+    border-color: var(--nx-color-interactive-border-focus);
   }
 
   &:active {
