@@ -89,9 +89,10 @@ const NxRadioPage = () =>
               An id attribute to be added to the radio input.
 
               <NxInfoAlert>
-                Deprecated property: With the introduction of the inputAttributes prop,
-                you can now pass in attributes directly into the input element, including id.
-                Id passed through the inputAttributes prop will take precedence over radioId.
+                Deprecated property: With the introduction of the <NxCode>inputAttributes</NxCode> prop,
+                you can now pass in attributes directly into the input element, including <NxCode>id</NxCode>.
+                Id passed through the <NxCode>inputAttributes</NxCode> prop will take precedence over
+                <NxCode>radioId</NxCode>.
               </NxInfoAlert>
             </NxTable.Cell>
           </NxTable.Row>

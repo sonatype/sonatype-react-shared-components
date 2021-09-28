@@ -38,9 +38,10 @@ const NxTogglePage = () =>
               An id to identify the toggle
 
               <NxInfoAlert>
-                Deprecated property: With the introduction of the inputAttributes prop,
-                you can now pass in attributes directly into the input element, including id.
-                Id passed through the inputAttributes prop will take precedence over inputId.
+                Deprecated property: With the introduction of the <NxCode>inputAttributes</NxCode> prop,
+                you can now pass in attributes directly into the input element, including <NxCode>id</NxCode>.
+                Id passed through the <NxCode>inputAttributes</NxCode> prop will take precedence over
+                <NxCode>inputId</NxCode>.
               </NxInfoAlert>
             </NxTable.Cell>
           </NxTable.Row>
