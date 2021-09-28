@@ -46,7 +46,7 @@ const NxGlobalHeaderPage = () =>
             <NxTable.Cell>
               The overall block element for the header. Its children should consist of
               an <NxCode>NxBackButton</NxCode> and/or a <NxCode>.nx-global-header__actions</NxCode>, both of which
-              are optional.
+              are optional, in that order.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>

@@ -19,7 +19,6 @@
   .nx-back-button {
     @include nx-text-helpers.truncate-ellipsis;
     margin: 0 var(--nx-spacing-8x) 0 0;
-    order: -1; // ensures back button is always on the left
   }
 }
 
