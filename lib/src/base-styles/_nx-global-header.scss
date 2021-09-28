@@ -10,7 +10,7 @@
 
 .nx-global-header {
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: var(--nx-swatch-white);
   display: flex;
   grid-area: header; // see nx-page's grid-template
   height: 42px;
