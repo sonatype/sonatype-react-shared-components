@@ -46,18 +46,18 @@ const NxGlobalHeaderPage = () =>
             <NxTable.Cell>
               The overall block element for the header. Its children should consist of
               an <NxCode>NxBackButton</NxCode> and/or a <NxCode>.nx-global-header__actions</NxCode>, both of which
-              are optional, in that order.
+              are optional.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>nx-global-header__actions</NxCode></NxTable.Cell>
             <NxTable.Cell><NxCode>NxGlobalHeader.Actions</NxCode></NxTable.Cell>
             <NxTable.Cell>
-              Immediate child of <NxCode>.nx-global-header__actions</NxCode>
+              Immediate child of <NxCode>.nx-global-header</NxCode>
             </NxTable.Cell>
             <NxTable.Cell>
-              Container for buttons, dropdowns, and other action content at the right-hand end of the header.
-              These actions would typically be the same across every page within a given app.
+              Container for <NxCode>icon-only</NxCode> variant of <NxCode>NxButton</NxCode>(s) at the right-hand
+              end of the header. These action buttons would typically be the same across every page within a given app.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
@@ -73,8 +73,9 @@ const NxGlobalHeaderPage = () =>
       <NxTile.Content>
         <NxP>
           In the most common case, demonstrated here, the header contains both a back button on the left
-          side and a collection of action buttons on the right side. The actions area can contain both icon-only
-          buttons, which are styled in their smaller size, and regular buttons. This example includes both.
+          side and a collection of action buttons on the right side. The actions area can only
+          contain the <NxCode>icon-only</NxCode> variant of <NxCode>NxButton</NxCode>(s),
+          which are styled in their smaller size.
         </NxP>
         <NxP>
           Notice that when the <NxCode>nx-page-sidebar</NxCode> and/or <NxCode>nx-page-main</NxCode> have enough
@@ -98,9 +99,7 @@ const NxGlobalHeaderPage = () =>
       </NxTile.Header>
       <NxTile.Content>
         <NxP>
-          The Back Button within the header is optional as seen here. This example also shows that when the
-          actions area contains only icon-only buttons and not a regular button, the entire header height decreases
-          to fit.
+          The Back Button within the header is optional as seen here.
         </NxP>
         <NxP>
           <NxTextLink href="#/NxGlobalHeaderNoBackButtonExample">
@@ -138,9 +137,7 @@ const NxGlobalHeaderPage = () =>
       </NxTile.Header>
       <NxTile.Content>
         <NxP>
-          When the header has no content, it disappears entirely. This is a convenience for applications which
-          do not have actions and which need a back button on some pages but not others, and which want to use
-          a common template that always includes the <NxCode>nx-global-header</NxCode>.
+          When the header has no content, only a white bar is rendered as the header.
         </NxP>
         <NxP>
           <NxTextLink href="#/NxGlobalHeaderEmptyExample">
