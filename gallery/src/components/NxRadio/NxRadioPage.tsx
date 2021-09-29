@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxInfoAlert, NxTable, NxTextLink, NxP } from '@sonatype/react-shared-components';
+import { NxCode, NxTable, NxTextLink, NxP, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -88,12 +88,12 @@ const NxRadioPage = () =>
             <NxTable.Cell>
               An id attribute to be added to the radio input.
 
-              <NxInfoAlert>
+              <NxWarningAlert>
                 Deprecated property: With the introduction of the <NxCode>inputAttributes</NxCode> prop,
                 you can now pass in attributes directly into the input element, including <NxCode>id</NxCode>.
                 Id passed through the <NxCode>inputAttributes</NxCode> prop will take precedence over
                 <NxCode>radioId</NxCode>.
-              </NxInfoAlert>
+              </NxWarningAlert>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>

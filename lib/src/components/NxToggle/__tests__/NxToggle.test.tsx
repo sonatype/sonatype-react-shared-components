@@ -9,7 +9,6 @@ import { shallow } from 'enzyme';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 
 import NxToggle, { Props } from '../NxToggle';
-import { PropsWithAnyInputAttributes } from '../types';
 
 describe('NxToggle', function() {
   const simpleProps: Props = {
@@ -19,7 +18,7 @@ describe('NxToggle', function() {
         disabled: undefined,
         children: 'Enables whales'
       },
-      getShallow = getShallowComponent<PropsWithAnyInputAttributes>(NxToggle, simpleProps);
+      getShallow = getShallowComponent<Props>(NxToggle, simpleProps);
 
   it('renders a <label> containing a toggle <input> and toggle control', function() {
     const shallowRender = getShallow();
@@ -106,15 +105,16 @@ describe('NxToggle', function() {
         id: 'garfield',
         name: 'garfield',
         disabled: false,
-        className: 'checkbox-classname',
+        className: 'input-classname',
         checked: false
-      }
+      } as Props['inputAttributes']
     });
 
     expect(component.find('input')).toHaveProp('id', 'garfield');
     expect(component.find('input')).toHaveProp('name', 'garfield');
     expect(component.find('input')).toHaveProp('disabled', true);
-    expect(component.find('input')).toHaveClassName('checkbox-classname');
+    expect(component.find('input')).toHaveClassName('input-classname');
+    expect(component.find('input')).not.toHaveClassName('label-classname');
     expect(component.find('input')).toHaveProp('checked', true);
   });
 });

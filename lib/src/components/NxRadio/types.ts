@@ -24,11 +24,6 @@ export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   inputAttributes?: InputAttributesProp;
 };
 
-// For testing
-export type PropsWithAnyInputAttributes = Props & {
-  inputAttributes?: { [key: string]: unknown };
-};
-
 // In a strictly typescript environment, PropTypes are mostly redundant.  However, they still provide safety when this
 // project is consumed by javascript projects
 export const propTypes: PropTypes.ValidationMap<Props> = {
