@@ -10,7 +10,7 @@ FROM docker-all.repo.sonatype.com/node:12
 RUN apt-get update && \
     apt-get autoremove -y && apt-get clean -y && \
     apt-get install jq -y && \
-    apt-get install chromium-browser
+    apt-get install chromium -y
 
 RUN useradd -u 1002 -g 100 jenkins
 RUN mkdir -p /home/jenkins/.npm
