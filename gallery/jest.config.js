@@ -16,6 +16,7 @@ module.exports = {
     "^.+\\.tsx?$": "ts-jest"
   },
   "testMatch": ["<rootDir>/visualtests/*.js"],
+  "testPathIgnorePatterns": ['testUtils.js'],
   "moduleFileExtensions": [
     "ts",
     "tsx",

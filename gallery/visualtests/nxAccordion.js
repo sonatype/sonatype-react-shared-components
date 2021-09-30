@@ -5,53 +5,45 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const puppeteer = require('puppeteer');
-//const { focusTest, simpleTest } = require('./testUtils');
+const { setupBrowser, focusTest, simpleTest } = require('./testUtils');
 
 describe('NxAccordion', function() {
-  let browser, page;
-
-  beforeAll(async function() {
-    browser = await puppeteer.launch();
-    page = await browser.newPage();
-  });
-
-  afterAll(async function() {
-    await browser.close();
-  });
-
-  beforeEach(async function() {
-    await page.goto(`file://${__dirname}/../dist/index.html#/pages/NxAccordion`);
-  });
+  const { getPage, simpleTest, focusTest } = setupBrowser('#/pages/NxAccordion');
 
   const exampleSelector = '#nx-accordion-example .gallery-example-live',
       tertiaryBtnExampleSelector = '#nx-accordion-tertiary-button-example .gallery-example-live',
       headerSelector = `${exampleSelector} .nx-accordion__header`;
 
   describe('Closed NxAccordion', function() {
-    it('looks right', async function () {
-      await page.waitForSelector(exampleSelector);
-      const element = await page.$(exampleSelector);
-      const image = await element.screenshot();
+    it('looks right', simpleTest(exampleSelector));
 
-      expect(image).toMatchImageSnapshot();
-    });
-
-    //it('looks right when the header is focused', focusTest(exampleSelector, headerSelector));
+    it('looks right when the header is focused', focusTest(exampleSelector, headerSelector));
   });
 
-  /*
   describe('Open NxAccordion', function() {
     beforeEach(async function() {
-      const header = await browser.$(headerSelector);
-      await header.scrollIntoView({ block: 'center' });
-      await header.click();
+      const page = getPage();
 
-      // this example header has a click handler that opens an alert
-      await browser.acceptAlert();
+      await page.waitForSelector(headerSelector);
 
-      await browser.execute(function(el) {
+      async function dismissDialog(d) {
+        await d.dismiss();
+      }
+
+      try {
+        // this example header has a click handler that opens an alert
+        page.on('dialog', dismissDialog);
+
+        const header = await page.$(headerSelector);
+        await header.click();
+      }
+      finally {
+        page.off('dialog', dismissDialog);
+      }
+
+      await page.$eval(headerSelector, function(el) {
         el.blur();
-      }, header);
+      });
     });
 
     it('looks right', simpleTest(exampleSelector));
@@ -61,5 +53,4 @@ describe('NxAccordion', function() {
   describe('NxAccordion with tertiary header button', function() {
     it('looks right', simpleTest(tertiaryBtnExampleSelector));
   });
-  */
 });
