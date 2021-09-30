@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const puppeteer = require('puppeteer');
-const { setupBrowser, focusTest, simpleTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxAccordion', function() {
   const { getPage, simpleTest, focusTest } = setupBrowser('#/pages/NxAccordion');

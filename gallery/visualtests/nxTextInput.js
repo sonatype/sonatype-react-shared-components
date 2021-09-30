@@ -1,0 +1,148 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+const { Region, Target } = require('@applitools/eyes-webdriverio');
+const { setupBrowser } = require('./testUtils');
+
+describe('NxTextInput', function() {
+  const simpleComponentSelector = '#nx-text-input-simple-example .nx-text-input',
+      validatableComponentSelector = '#nx-text-input-validation-example .nx-text-input',
+      passwordComponentSelector = '#nx-text-input-password-example .nx-text-input',
+      textareaComponentSelector = '#nx-text-input-textarea-validation-example .nx-text-input',
+      validatableTextareaComponentSelector = '#nx-text-input-textarea-validation-example .nx-text-input',
+      longComponentSelector = '#nx-text-input-long-example .nx-text-input:not(.nx-text-input--textarea)',
+      longTextareaComponentSelector = '#nx-text-input-long-example .nx-text-input--textarea',
+      disabledComponentSelector = '#nx-text-input-disabled-example .nx-text-input.pristine',
+      disabledValidComponentSelector = '#nx-text-input-disabled-example .nx-text-input.valid',
+      disabledInvalidComponentSelector = '#nx-text-input-disabled-example .nx-text-input.invalid';
+
+  function getInputElementSelector(componentSelector, inputType = 'input') {
+    return `${componentSelector} ${inputType}`;
+  }
+
+  const { getPage, blurElement, simpleTest, focusTest, hoverTest, focusAndHoverTest } = setupBrowser('#/pages/NxTextInput');
+
+  describe('Simple NxTextInput', function() {
+    it('has a light border when pristine', simpleTest(simpleComponentSelector));
+
+    it('has a dark border when hovered',
+        hoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
+    it('has a blue border when focused',
+        focusTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
+
+    it('has a blue border and blue glow when hovered and focused',
+        focusAndHoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
+
+    it('has a dark border when non-empty', async function() {
+      const page = getPage(),
+          inputSelector = getInputElementSelector(simpleComponentSelector),
+          inputElement = await page.$(inputSelector);
+
+      await inputElement.type('foo');
+
+      await blurElement(inputSelector);
+
+      await simpleTest(simpleComponentSelector)();
+    });
+  });
+
+  describe('Validatable NxTextInput', function() {
+    it('has a light border when pristine', simpleTest(validatableComponentSelector));
+
+    it('has validation styles when valid', async function() {
+      const page = getPage(),
+          inputSelector = getInputElementSelector(validatableComponentSelector),
+          [targetElement, inputElement] = await Promise.all([
+            page.$(validatableComponentSelector),
+            page.$(inputSelector)
+          ]);
+
+      await inputElement.type('foo');
+      await targetElement.screenshot();
+    });
+
+    it('has invalid validation styles when invalid and dirty', async function() {
+      const page = getPage(),
+          inputSelector = getInputElementSelector(validatableComponentSelector),
+          [targetElement, inputElement] = await Promise.all([
+            page.$(validatableComponentSelector),
+            page.$(inputSelector)
+          ]);
+
+      await inputElement.type('foo');
+      await inputElement.press('Backspace');
+      await inputElement.press('Backspace');
+      await inputElement.press('Backspace');
+
+      const { x, y } = await targetElement.boundingBox();
+
+      await page.screenshot({ x, y, height: 74, width: 300 });
+    });
+  });
+
+  describe('Password NxTextInput', function() {
+    it('displays password dots', async function() {
+      const page = getPage(),
+          inputSelector = getInputElementSelector(passwordComponentSelector),
+          [targetElement, inputElement] = await Promise.all([
+            page.$(passwordComponentSelector),
+            page.$(inputSelector)
+          ]);
+
+      await inputElement.type('foo');
+      await targetElement.screenshot();
+    });
+  });
+
+  describe('Textarea NxTextInput', function() {
+    it('looks right', simpleTest(textareaComponentSelector));
+  });
+
+  describe('Validatable Textarea NxTextInput', function() {
+    it('has validation styles when valid', async function() {
+      const page = getPage(),
+          inputSelector = getInputElementSelector(validatableTextareaComponentSelector, 'textarea'),
+          [targetElement, inputElement] = await Promise.all([
+            page.$(validatableTextareaComponentSelector),
+            page.$(inputSelector)
+          ]);
+
+      await inputElement.type('foo');
+      await targetElement.screenshot();
+    });
+
+    it('has invalid validation styles when invalid and dirty', async function() {
+      const page = getPage(),
+          inputSelector = getInputElementSelector(validatableTextareaComponentSelector, 'textarea'),
+          [targetElement, inputElement] = await Promise.all([
+            page.$(validatableTextareaComponentSelector),
+            page.$(inputSelector)
+          ]);
+
+      await inputElement.type('foo');
+      await inputElement.press('Backspace');
+      await inputElement.press('Backspace');
+      await inputElement.press('Backspace');
+
+      const { x, y } = await targetElement.boundingBox();
+      await page.screenshot({ x, y, height: 300, width: 300 });
+    });
+  });
+
+  describe('Long NxTextInput', function() {
+    it('looks right', simpleTest(longComponentSelector));
+  });
+
+  describe('Long textarea NxTextInput', function() {
+    it('looks right', simpleTest(longTextareaComponentSelector));
+  });
+
+  describe('Disabled NxTextInput', function() {
+    it('looks disabled when pristine', simpleTest(disabledComponentSelector));
+    it('looks disabled when valid', simpleTest(disabledValidComponentSelector));
+    it('looks disabled when invalid', simpleTest(disabledInvalidComponentSelector));
+  });
+});

@@ -23,13 +23,21 @@ module.exports = {
       await page.goto(`file://${__dirname}/../dist/index.html${pageFragmentIdentifier}`);
     });
 
+    async function blurElement(selector) {
+      await page.$eval(selector, function(el) {
+        el.blur();
+      });
+    }
+
     return {
       getBrowser: () => browser,
       getPage: () => page,
 
+      blurElement,
+
       simpleTest(selector) {
         return async function() {
-          await page.waitForSelector(selector);
+          await Promise.all([page.waitForSelector(selector), page.mouse.move(0, 0)]);
           const element = await page.$(selector);
           const image = await element.screenshot();
 
@@ -39,8 +47,11 @@ module.exports = {
 
       focusTest(elementSelector, focusSelector = elementSelector) {
         return async function() {
-          await page.waitForSelector(elementSelector);
-          await page.waitForSelector(focusSelector);
+          await Promise.all([
+            page.waitForSelector(elementSelector),
+            page.waitForSelector(focusSelector),
+            page.mouse.move(0, 0)
+          ]);
 
           const [targetElement, focusElement] = await Promise.all([page.$(elementSelector), page.$(focusSelector)]);
 
@@ -51,9 +62,48 @@ module.exports = {
             expect(image).toMatchImageSnapshot();
           }
           finally {
-            await page.$eval(focusSelector, function(el) {
-              el.blur();
-            });
+            await blurElement(focusSelector);
+          }
+        };
+      },
+
+      hoverTest(elementSelector, hoverSelector = elementSelector) {
+        return async function() {
+          await Promise.all([
+            page.waitForSelector(elementSelector),
+            page.waitForSelector(hoverSelector),
+            page.mouse.move(0, 0)
+          ]);
+
+          const [targetElement, focusElement] = await Promise.all([page.$(elementSelector), page.$(hoverSelector)]);
+
+          await focusElement.hover();
+          const image = await targetElement.screenshot();
+
+          expect(image).toMatchImageSnapshot();
+        };
+      },
+
+      focusAndHoverTest(elementSelector, hoverSelector = elementSelector) {
+        return async function() {
+          await Promise.all([
+            page.waitForSelector(elementSelector),
+            page.waitForSelector(hoverSelector),
+            page.mouse.move(0, 0)
+          ]);
+
+          const [targetElement, focusElement] = await Promise.all([page.$(elementSelector), page.$(hoverSelector)]);
+
+
+          try {
+            await focusElement.focus();
+            await focusElement.hover();
+            const image = await targetElement.screenshot();
+
+            expect(image).toMatchImageSnapshot();
+          }
+          finally {
+            await blurElement(hoverSelector);
           }
         };
       }
