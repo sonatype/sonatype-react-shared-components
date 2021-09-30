@@ -16,8 +16,8 @@ describe('NxTreeViewMultiSelect', function() {
 
   it('looks right', simpleTest(selector));
 
-  describe('NxCheckbox', function() {
+  describe('NxTreeViewMultiSelect checkbox', function() {
     const checkboxSelector = selector + ' .nx-tree-view__child:nth-child(2) .nx-radio-checkbox__input';
-    it('has an offsetted blue outer border outline and glow when focused', focusTest(checkboxSelector));
+    it('has an offsetted blue outer border outline and glow when focused', focusTest(selector, checkboxSelector));
   });
 });

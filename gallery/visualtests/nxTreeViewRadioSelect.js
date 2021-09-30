@@ -16,8 +16,8 @@ describe('NxTreeViewRadioSelect', function() {
 
   it('looks right', simpleTest(selector));
 
-  describe('NxRadio', function() {
+  describe('NxTreeViewRadioSelect radio', function() {
     const radioSelector = selector + ' .nx-tree-view__child:nth-child(3) .nx-radio-checkbox__input';
-    it('has an offsetted blue outer border outline and glow when focused', focusTest(radioSelector));
+    it('has an offsetted blue outer border outline and glow when focused', focusTest(selector, radioSelector));
   });
 });
