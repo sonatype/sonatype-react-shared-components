@@ -6,28 +6,51 @@
  */
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
+import { omit } from 'ramda';
 
 import './NxToggle.scss';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
 const NxToggle = forwardRef<HTMLLabelElement, Props>(
-    function NxToggle({ className, onChange, isChecked, disabled, inputId, children, ...otherProps }, ref) {
+    function NxToggle(props, ref) {
+      const {
+        className,
+        onChange,
+        isChecked,
+        disabled,
+        inputId,
+        children,
+        inputAttributes = {},
+        ...otherProps
+      } = props;
+
       const labelClasses = classnames('nx-toggle', className, {
         'nx-toggle--disabled': disabled,
         'tm-checked': isChecked,
         'tm-unchecked': !isChecked
       });
 
+      const {
+        className: checkboxClassName,
+        ...unfilteredInputAttributes
+      } = inputAttributes;
+
+      const otherInputAttributes = omit(
+          ['disabled', 'checked', 'readonly', 'onChange'],
+          unfilteredInputAttributes
+      );
+
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
           <input type="checkbox"
-                 id={inputId || undefined}
-                 className="nx-toggle__input"
+                 id={otherInputAttributes.id || inputId || undefined}
+                 className={classnames('nx-toggle__input', checkboxClassName)}
                  disabled={!!disabled}
                  checked={isChecked}
                  readOnly={!onChange}
-                 onChange={onChange || undefined}/>
+                 onChange={onChange || undefined}
+                 { ...otherInputAttributes } />
           <div className="nx-toggle__control"><div className="nx-toggle__indicator"/></div>
           { children && <span className="nx-toggle__content">{children}</span> }
         </label>

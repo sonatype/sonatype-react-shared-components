@@ -48,19 +48,19 @@
 
         // handled by jsx-indent and jsx-indent-props
         "ignoredNodes": [
-          'JSXElement',
-          'JSXElement > *',
-          'JSXAttribute',
-          'JSXIdentifier',
-          'JSXNamespacedName',
-          'JSXMemberExpression',
-          'JSXSpreadAttribute',
-          'JSXExpressionContainer',
-          'JSXOpeningElement',
-          'JSXClosingElement',
-          'JSXText',
-          'JSXEmptyExpression',
-          'JSXSpreadChild'
+          "JSXElement",
+          "JSXElement > *",
+          "JSXAttribute",
+          "JSXIdentifier",
+          "JSXNamespacedName",
+          "JSXMemberExpression",
+          "JSXSpreadAttribute",
+          "JSXExpressionContainer",
+          "JSXOpeningElement",
+          "JSXClosingElement",
+          "JSXText",
+          "JSXEmptyExpression",
+          "JSXSpreadChild"
         ]
       }
     ],
@@ -136,14 +136,14 @@
       "never"
     ],
     "no-console": ["error", { "allow": ["warn", "error"] }],
-    "no-debugger": 'error',
+    "no-debugger": "error",
     "array-bracket-spacing": ["error", "never"],
     "object-property-newline": ["error", { "allowMultiplePropertiesPerLine": true }],
     "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
     "react/jsx-indent": ["error", 2],
-    "react/jsx-indent-props": ["error", 'first'],
-    "react/jsx-first-prop-new-line": ["error", 'never'],
-    "react/jsx-max-props-per-line": ["error", { maximum: 1, when: 'multiline' }],
+    "react/jsx-indent-props": ["error", "first"],
+    "react/jsx-first-prop-new-line": ["error", "never"],
+    "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "multiline" }],
     "react/jsx-closing-tag-location": ["error"],
     "react/no-unescaped-entities": "off",
     "react/jsx-no-target-blank": "off",
