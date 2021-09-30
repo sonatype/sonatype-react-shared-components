@@ -112,7 +112,7 @@ dockerizedBuildPipeline(
     if (env.BRANCH_NAME == 'master') {
       nexusPolicyEvaluation(
         iqStage: 'release',
-        iqApplication: 'react-shared-components',
+        iqApplication: 'sonatype-react-shared-components',
         iqScanPatterns: [[scanPattern: 'gallery/webpack-modules']],
         failBuildOnNetworkError: true
       )
