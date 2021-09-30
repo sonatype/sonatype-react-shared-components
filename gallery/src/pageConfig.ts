@@ -126,6 +126,9 @@ import NxStatefulSearchTransferListPage
 import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
 import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallThreatCounterPage';
+import ThreatCounterPage from './emails/ThreatCounter/ThreatCounterPage';
+import ButtonPage from './emails/Button/ButtonPage';
+import TilePage from './emails/Tile/TilePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -255,6 +258,11 @@ const pageConfig: PageConfig = {
     'useToggle': UseTogglePage,
     'ID Utils': IdUtilPage,
     'withClass Higher-Order Component': WithClassPage
+  },
+  'Email Friendly Components': {
+    'Button': ButtonPage,
+    'Threat counter': ThreatCounterPage,
+    'Tile': TilePage
   }
 };
 
