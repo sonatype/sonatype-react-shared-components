@@ -158,4 +158,28 @@ describe('NxRadio', function() {
     const component = getShallow({ radioId: 'color-red'});
     expect(component.find('input')).toHaveProp('id', 'color-red');
   });
+
+  it('passes input attributes into the input element and does not clash with top-level attributes', function() {
+    const component = getShallow({
+      radioId: 'not-garfield',
+      disabled: true,
+      isChecked: true,
+      name: 'garfield',
+      className: 'label-classname',
+      inputAttributes: {
+        id: 'garfield',
+        name: 'not-garfield',
+        disabled: false,
+        className: 'input-classname',
+        checked: false
+      } as Props['inputAttributes']
+    });
+
+    expect(component.find('input')).toHaveProp('id', 'garfield');
+    expect(component.find('input')).toHaveProp('name', 'garfield');
+    expect(component.find('input')).toHaveProp('disabled', true);
+    expect(component.find('input')).toHaveClassName('input-classname');
+    expect(component.find('input')).not.toHaveClassName('label-classname');
+    expect(component.find('input')).toHaveProp('checked', true);
+  });
 });
