@@ -30,4 +30,4 @@ module.exports = {
     "default",
     ["jest-junit", { outputDirectory: path.join(__dirname, 'test-results') }]
   ]
-}
+};
