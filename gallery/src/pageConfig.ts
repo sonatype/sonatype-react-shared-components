@@ -127,6 +127,8 @@ import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
 import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallThreatCounterPage';
 
+import NivoPOCPage from './chart-poc/nivo/NivoPOCPage';
+
 const pageConfig: PageConfig = {
   'React Components': {
     NxAccordion: NxAccordionPage,
@@ -255,6 +257,9 @@ const pageConfig: PageConfig = {
     'useToggle': UseTogglePage,
     'ID Utils': IdUtilPage,
     'withClass Higher-Order Component': WithClassPage
+  },
+  'Chart POCs (Temporary)': {
+    'Nivo': NivoPOCPage
   }
 };
 
