@@ -134,7 +134,7 @@ dockerizedBuildPipeline(
     }
   },
   archiveArtifacts: 'lib/dist/*.tgz,gallery/dist/**/*',
-  testResults: ['lib/junit.xml'],
+  testResults: ['lib/junit.xml', 'gallery/test-results/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
     if (env.BRANCH_NAME == 'master') {

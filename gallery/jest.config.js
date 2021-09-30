@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 // copied from the ts-jest tutorial: https://basarat.gitbooks.io/typescript/docs/testing/jest.html
-const nodeCrypto = require('crypto');
+const path = require('path');
 
 module.exports = {
   "roots": [
@@ -25,5 +25,8 @@ module.exports = {
     "node"
   ],
   "setupFilesAfterEnv": ["./setupTests.js"],
-  "reporters": ["default", "jest-junit"]
+  "reporters": [
+    "default",
+    ["jest-junit", { outputDirectory: path.join(__dirname, 'test-results') }]
+  ]
 }

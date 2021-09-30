@@ -4,6 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { toMatchImageSnapshot } = require('jest-image-snapshot');
+const { configureToMatchImageSnapshot } = require('jest-image-snapshot');
+const path = require('path');
+
+const toMatchImageSnapshot = configureToMatchImageSnapshot({
+  customDiffDir: path.join(__dirname, 'test-results')
+});
 
 expect.extend({ toMatchImageSnapshot });

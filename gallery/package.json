@@ -12,7 +12,7 @@
     "webpack-dev-server": "webpack serve",
     "test": "npm-run-all build jest",
     "jest": "jest",
-    "clean": "rimraf dist webpack-modules"
+    "clean": "rimraf dist webpack-modules test-results"
   },
   "repository": {
     "type": "git",
