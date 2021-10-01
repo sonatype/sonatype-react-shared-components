@@ -41,7 +41,7 @@
 
   &:hover {
     background-color: transparent;
-    border-color: var(--nx-swatch-grey-10);
+    border-color: var(--nx-swatch-grey-05);
   }
 
   &:focus {
@@ -49,15 +49,15 @@
   }
 
   &:active {
-    background-color: var(--nx-swatch-grey-95);
-    border-color: var(--nx-swatch-grey-60);
+    background-color: var(--nx-swatch-indigo-97);
+    border-color: var(--nx-swatch-grey-05);
     box-shadow: none;
     color: var(--nx-color-text);
   }
 
   &.selected {
-    background-color: var(--nx-swatch-indigo-10);
-    border-color: var(--nx-swatch-indigo-10);
+    background-color: var(--nx-swatch-indigo-15);
+    border-color: var(--nx-swatch-indigo-15);
     color: var(--nx-color-component-background);
     cursor: default;
   }
