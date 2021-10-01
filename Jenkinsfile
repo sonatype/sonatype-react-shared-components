@@ -6,33 +6,9 @@
  */
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
-def seleniumHubDockerImage = 'docker-all.repo.sonatype.com/selenium/hub'
-def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/node-chrome'
-def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
-def numSeleniumContainers = 10;
-
 dockerizedBuildPipeline(
-  // expose gallery port on host so selenium container can hit it
-  dockerArgs: '-p 4043:4043',
-
   prepare: {
     githubStatusUpdate('pending')
-
-    withSonatypeDockerRegistry() {
-      sh """
-        docker network create grid
-        docker run -d -p 4442-4444:4442-4444 --net grid --name selenium-hub \
-            ${seleniumHubDockerImage}:${seleniumDockerVersion}
-
-        for i in \$(seq 1 ${numSeleniumContainers}); do
-          docker run --name selenium-chrome-\$i -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub \
-              -e SE_EVENT_BUS_PUBLISH_PORT=4442 \
-              -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
-              -v /dev/shm:/dev/shm \
-              ${seleniumDockerImage}:${seleniumDockerVersion}
-        done
-      """
-    }
   },
   setVersion: {
     env['VERSION'] = sh(returnStdout: true, script: 'jq -r -e .version lib/package.json').trim()
@@ -147,17 +123,5 @@ dockerizedBuildPipeline(
     githubStatusUpdate('failure')
     sendEmailNotification(currentBuild, env,
         [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], null)
-  },
-  cleanup: {
-    sh """
-      for i in \$(seq 1 ${numSeleniumContainers}); do
-        docker rm -f selenium-chrome-\$i
-      done
-
-      docker rm -f selenium-hub
-      docker rmi ${seleniumDockerImage}:${seleniumDockerVersion}
-      docker rmi ${seleniumHubDockerImage}:${seleniumDockerVersion}
-      docker network rm grid
-    """
   }
 )
