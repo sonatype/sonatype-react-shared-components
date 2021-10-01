@@ -20,7 +20,7 @@ describe('NxGlobalHeader', function() {
     await browser.eyesSnapshot(null);
   });
 
-  it('is completely hidden when empty', async function() {
+  it('looks right when empty', async function() {
     await browser.url('#/NxGlobalHeaderEmptyExample');
     await browser.eyesSnapshot(null);
   });

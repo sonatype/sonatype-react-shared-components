@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
+import { NxCode, NxTable, NxTextLink, NxP, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
@@ -34,7 +34,16 @@ const NxCheckboxPage = () =>
             <NxTable.Cell>checkboxId</NxTable.Cell>
             <NxTable.Cell>string</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>An id to identify the checkbox</NxTable.Cell>
+            <NxTable.Cell>
+              An id to identify the checkbox.
+
+              <NxWarningAlert>
+                Deprecated property: With the introduction of the <NxCode>inputAttributes</NxCode> prop,
+                you can now pass in attributes directly into the input element, including <NxCode>id</NxCode>.
+                Id passed through the <NxCode>inputAttributes</NxCode> prop will take precedence over
+                <NxCode>checkboxId</NxCode>.
+              </NxWarningAlert>
+            </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>isChecked</NxTable.Cell>
@@ -92,6 +101,23 @@ const NxCheckboxPage = () =>
             <NxTable.Cell>
               NxCheckbox supports any html attribute that's normally supported by the
               <NxCode>label</NxCode> element.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>inputAttributes</NxTable.Cell>
+            <NxTable.Cell>
+              <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox">
+                HTML Input Checkbox Attributes
+              </NxTextLink>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              <NxCode>NxCheckbox</NxCode> allows you to pass html attributes directly
+              into the <NxCode>input</NxCode> element as an object with the <NxCode>inputAttributes</NxCode> prop.
+              Some attributes will be omitted before being passed into the <NxCode>input</NxCode> element:
+              <NxCode>disabled</NxCode>, <NxCode>checked</NxCode>, <NxCode>readonly</NxCode>,
+              and <NxCode>onChange</NxCode>. These attributes are controlled by the component
+              or can be set from the top-level props.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
