@@ -4,52 +4,85 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+
+:root {
+  --nx-selectable-color-light-blue-dark: var(--nx-swatch-blue-80);
+  --nx-selectable-color-light-blue-light: var(--nx-swatch-blue-90);
+
+  --nx-selectable-color-purple-dark: var(--nx-swatch-purple-80);
+  --nx-selectable-color-purple-light: var(--nx-swatch-purple-95);
+
+  --nx-selectable-color-pink-dark: var(--nx-swatch-pink-80);
+  --nx-selectable-color-pink-light: var(--nx-swatch-pink-95);
+
+  --nx-selectable-color-blue-dark: var(--nx-swatch-teal-50);
+  --nx-selectable-color-blue-light: var(--nx-swatch-teal-90);
+
+  --nx-selectable-color-red-dark: var(--nx-swatch-red-75);
+  --nx-selectable-color-red-light: var(--nx-swatch-red-90);
+
+  --nx-selectable-color-green-dark: var(--nx-swatch-green-40);
+  --nx-selectable-color-green-light: var(--nx-swatch-green-80);
+
+  --nx-selectable-color-orange-dark: var(--nx-swatch-orange-55);
+  --nx-selectable-color-orange-light: var(--nx-swatch-orange-90);
+
+  --nx-selectable-color-yellow-dark: var(--nx-swatch-yellow-60);
+  --nx-selectable-color-yellow-light: var(--nx-swatch-yellow-95);
+
+  --nx-selectable-color-lime-dark: var(--nx-swatch-green-60);
+  --nx-selectable-color-lime-light: var(--nx-swatch-green-95);
+
+  --nx-selectable-color-indigo-dark: var(--nx-swatch-indigo-80);
+  --nx-selectable-color-indigo-light: var(--nx-swatch-indigo-95);
+}
+
 .nx-selectable-color--light-blue {
-  --nx-selectable-color-dark: var(--nx-swatch-blue-80);
-  --nx-selectable-color-light: var(--nx-swatch-blue-90);
+  --nx-selectable-color-dark: var(--nx-selectable-color-light-blue-dark);
+  --nx-selectable-color-light: var(--nx-selectable-color-light-blue-light);
 }
 
 .nx-selectable-color--purple {
-  --nx-selectable-color-dark: var(--nx-swatch-purple-80);
-  --nx-selectable-color-light: var(--nx-swatch-purple-95);
+  --nx-selectable-color-dark: var(--nx-selectable-color-purple-dark);
+  --nx-selectable-color-light: var(--nx-selectable-color-purple-light);
 }
 
 .nx-selectable-color--pink {
-  --nx-selectable-color-dark: var(--nx-swatch-pink-80);
-  --nx-selectable-color-light: var(--nx-swatch-pink-95);
+  --nx-selectable-color-dark: var(--nx-selectable-color-pink-dark);
+  --nx-selectable-color-light: var(--nx-selectable-color-pink-light);
 }
 
 .nx-selectable-color--blue {
-  --nx-selectable-color-dark: var(--nx-swatch-teal-50);
-  --nx-selectable-color-light: var(--nx-swatch-teal-90);
+  --nx-selectable-color-dark: var(--nx-selectable-color-blue-dark);
+  --nx-selectable-color-light: var(--nx-selectable-color-blue-light);
 }
 
 .nx-selectable-color--red {
-  --nx-selectable-color-dark: var(--nx-swatch-red-75);
-  --nx-selectable-color-light: var(--nx-swatch-red-90);
+  --nx-selectable-color-dark: var(--nx-selectable-color-red-dark);
+  --nx-selectable-color-light: var(--nx-selectable-color-red-light);
 }
 
 .nx-selectable-color--green {
-  --nx-selectable-color-dark: var(--nx-swatch-green-40);
-  --nx-selectable-color-light: var(--nx-swatch-green-80);
+  --nx-selectable-color-dark: var(--nx-selectable-color-green-dark);
+  --nx-selectable-color-light: var(--nx-selectable-color-green-light);
 }
 
 .nx-selectable-color--orange {
-  --nx-selectable-color-dark: var(--nx-swatch-orange-55);
-  --nx-selectable-color-light: var(--nx-swatch-orange-90);
+  --nx-selectable-color-dark: var(--nx-selectable-color-orange-dark);
+  --nx-selectable-color-light: var(--nx-selectable-color-orange-light);
 }
 
 .nx-selectable-color--yellow {
-  --nx-selectable-color-dark: var(--nx-swatch-yellow-60);
-  --nx-selectable-color-light: var(--nx-swatch-yellow-95);
+  --nx-selectable-color-dark: var(--nx-selectable-color-yellow-dark);
+  --nx-selectable-color-light: var(--nx-selectable-color-yellow-light);
 }
 
 .nx-selectable-color--lime {
-  --nx-selectable-color-dark: var(--nx-swatch-green-60);
-  --nx-selectable-color-light: var(--nx-swatch-green-95);
+  --nx-selectable-color-dark: var(--nx-selectable-color-lime-dark);
+  --nx-selectable-color-light: var(--nx-selectable-color-lime-light);
 }
 
 .nx-selectable-color--indigo {
-  --nx-selectable-color-dark: var(--nx-swatch-indigo-80);
-  --nx-selectable-color-light: var(--nx-swatch-indigo-95);
+  --nx-selectable-color-dark: var(--nx-selectable-color-indigo-dark);
+  --nx-selectable-color-light: var(--nx-selectable-color-indigo-light);
 }

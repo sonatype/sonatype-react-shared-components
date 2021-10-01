@@ -14,4 +14,47 @@ export const selectableColors =
 export const selectableColorClasses: readonly string[] =
     map(color => `nx-selectable-color--${color}`, selectableColors);
 
+interface ColorValues {
+  dark: string[];
+  light: string[];
+}
+
+function retrieveColorValuesFromBody() {
+  const bodyStyles = getComputedStyle(document.body),
+      colorValues: ColorValues = { dark: [], light: [] };
+
+  for (const color of selectableColors) {
+    colorValues.dark.push(bodyStyles.getPropertyValue(`--nx-selectable-color-${color}-dark`));
+    colorValues.light.push(bodyStyles.getPropertyValue(`--nx-selectable-color-${color}-light`));
+  }
+
+  return colorValues;
+}
+
+export const selectableColorValues: Promise<ColorValues> = new Promise(resolve => {
+  function resolveIfReady() {
+    if (document.readyState === 'complete') {
+      resolve(retrieveColorValuesFromBody());
+
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  function onReadyStateChange() {
+    const done = resolveIfReady();
+    if (done) {
+      document.removeEventListener('readystatechange', onReadyStateChange);
+    }
+  }
+
+  const done = resolveIfReady();
+
+  if (!done) {
+    document.addEventListener('readystatechange', onReadyStateChange);
+  }
+});
+
 export type SelectableColor = (typeof selectableColors)[number];
