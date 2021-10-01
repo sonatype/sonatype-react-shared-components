@@ -10,7 +10,6 @@ import { NxTextLink, NxP } from '@sonatype/react-shared-components';
 
 export default () =>
   <NxP>
-    The quick brown fox
-    <NxTextLink external href="https://html.spec.whatwg.org/multipage/">The HTML Standard</NxTextLink>
-    jumped over the lazy dog.
+    The quick brown fox <NxTextLink external href="https://html.spec.whatwg.org/multipage/">MDN</NxTextLink> jumped
+    over the lazy dog.
   </NxP>;
