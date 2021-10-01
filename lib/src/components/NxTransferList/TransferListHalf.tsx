@@ -24,6 +24,7 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
   const {
     showReorderingButtons,
     checked,
+    disableReorderingButtons = false,
     id,
     displayName,
     onChange: onChangeProp,
@@ -59,13 +60,13 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
           <NxButtonBar className="nx-transfer-list__button-bar">
             <NxButton variant="icon-only"
                       title={isTopItem ? null : 'Move Up'}
-                      disabled={isTopItem}
+                      disabled={disableReorderingButtons || isTopItem}
                       onClick={() => !isTopItem && onReorderItem && onReorderItem(index, -1)}>
               <NxFontAwesomeIcon icon={faArrowUp}/>
             </NxButton>
             <NxButton variant="icon-only"
                       title={isBottomItem ? null : 'Move Down'}
-                      disabled={isBottomItem}
+                      disabled={disableReorderingButtons || isBottomItem}
                       onClick={() => !isBottomItem && onReorderItem && onReorderItem(index, 1)}>
               <NxFontAwesomeIcon icon={faArrowDown}/>
             </NxButton>
@@ -90,7 +91,7 @@ export default function TransferListHalf<T extends string | number = string>(pro
         isSelected,
         items,
         onItemChange,
-        onReorderItem: onReorderItemProp,
+        onReorderItem,
         footerContent,
         filterFn: filterFnProp
       } = props,
@@ -98,19 +99,6 @@ export default function TransferListHalf<T extends string | number = string>(pro
       filterFn = filterFnProp ? partial(filterFnProp, [filterValue]) : defaultFilterFn,
       visibleItems = useMemo(() => filterValue ? filter(pipe(prop('displayName'), filterFn), items) : items,
           [filterFn, items, filterValue]);
-
-  function onReorderItem(index: number, direction: 1 | -1) {
-    if (typeof visibleItems[index + direction] === 'undefined') {
-      return;
-    }
-
-    if (typeof onReorderItemProp === 'function') {
-      onReorderItemProp(
-          visibleItems[index].id.toString(),
-          visibleItems[index + direction].id.toString()
-      );
-    }
-  }
 
   function onMoveAllClick() {
     const idsToMove = map(prop('id'), visibleItems);
@@ -134,6 +122,7 @@ export default function TransferListHalf<T extends string | number = string>(pro
         <div className="nx-transfer-list__item-list">
           { visibleItems.map(
               (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
+                                                 disableReorderingButtons={!!filterValue}
                                                  key={i.id}
                                                  checked={isSelected}
                                                  onChange={onItemChange}

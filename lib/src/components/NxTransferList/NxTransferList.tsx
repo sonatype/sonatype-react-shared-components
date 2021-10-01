@@ -19,10 +19,6 @@ const defaultItemsCountFormatter = (kind: string) => (n: number) => `${n} item${
     defaultAvailableItemsCountFormatter = defaultItemsCountFormatter('available'),
     defaultSelectedItemsCountFormatter = defaultItemsCountFormatter('transferred');
 
-type SelectedItemsIdToIndexLookUp = {
-  [id: string]: number
-};
-
 export default function NxTransferList<T extends string | number = string>(props: Props<T>) {
   const {
     allowReordering = false,
@@ -67,13 +63,6 @@ export default function NxTransferList<T extends string | number = string>(props
       available = groupedItems.available || [],
       selected = groupedItems.selected || [];
 
-  const selectedItemsIdToIndexLookUp = useMemo(() => allowReordering
-    ? (selectedItems as T[]).reduce<SelectedItemsIdToIndexLookUp>((accumulator, id, index) => {
-      accumulator[id.toString()] = index;
-      return accumulator;
-    }, {}) : {},
-  [selectedItems, allowReordering, selectedItemsFilter]);
-
   const availableCount = allItems.length - selectedItemsArray.length,
       selectedCount = selectedItemsArray.length;
 
@@ -102,20 +91,14 @@ export default function NxTransferList<T extends string | number = string>(props
     handleOnChangeProp(without(idsToRemove, selectedItemsArray));
   }
 
-  function onReorderItem(id: string, targetId: string) {
-    const index = selectedItemsIdToIndexLookUp[id];
-    const targetIndex = selectedItemsIdToIndexLookUp[targetId];
-
-    if (
-      typeof selectedItemsArray[index] === 'undefined'
-      || typeof selectedItemsArray[targetIndex] === 'undefined'
-    ) {
+  function onReorderItem(index: number, direction: -1 | 1) {
+    if (typeof selectedItemsArray[index + direction] === 'undefined') {
       return;
     }
 
     const newSelectedItems = [...selectedItemsArray];
-    newSelectedItems[index] = selectedItemsArray[targetIndex];
-    newSelectedItems[targetIndex] = selectedItemsArray[index];
+    newSelectedItems[index] = selectedItemsArray[index + direction];
+    newSelectedItems[index + direction] = selectedItemsArray[index];
 
     handleOnChangeProp(newSelectedItems);
   }

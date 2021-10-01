@@ -18,6 +18,7 @@ export interface TransferListItemProps<T extends string | number = string> exten
   checked: boolean;
   onChange: SelectionChangeHandler<T>;
   showReorderingButtons?: boolean | null;
+  disableReorderingButtons?: boolean | null;
   onReorderItem?: (index: number, direction: 1 | -1) => void | null;
   index: number;
   listLength: number;
@@ -34,7 +35,7 @@ export interface TransferListHalfProps<T extends string | number = string> {
   onItemChange: SelectionChangeHandler<T>;
   footerContent: ReactNode;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
-  onReorderItem?: (id: string, id2: string) => void | null;
+  onReorderItem?: (index: number, direction: -1 | 1) => void | null;
   allowReordering?: boolean | null;
 }
 
