@@ -24,7 +24,7 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
   const {
     showReorderingButtons,
     checked,
-    disableReorderingButtons = false,
+    isFilteredItem = false,
     id,
     displayName,
     onChange: onChangeProp,
@@ -48,6 +48,11 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
       }
   );
 
+  const moveUpButtonTitle = isTopItem
+    ? null : isFilteredItem ? 'Reordering is disabled when filtered' : 'Move Up';
+  const moveDownButtonTitle = isBottomItem
+    ? null : isFilteredItem ? 'Reordering is disabled when filtered' : 'Move Down';
+
   return (
     <NxOverflowTooltip>
       <div className={classes}>
@@ -59,14 +64,14 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
         { showReorderingButtons && (
           <NxButtonBar className="nx-transfer-list__button-bar">
             <NxButton variant="icon-only"
-                      title={isTopItem ? null : 'Move Up'}
-                      disabled={disableReorderingButtons || isTopItem}
+                      title={moveUpButtonTitle}
+                      disabled={isFilteredItem || isTopItem}
                       onClick={() => !isTopItem && onReorderItem && onReorderItem(index, -1)}>
               <NxFontAwesomeIcon icon={faArrowUp}/>
             </NxButton>
             <NxButton variant="icon-only"
-                      title={isBottomItem ? null : 'Move Down'}
-                      disabled={disableReorderingButtons || isBottomItem}
+                      title={moveDownButtonTitle}
+                      disabled={isFilteredItem || isBottomItem}
                       onClick={() => !isBottomItem && onReorderItem && onReorderItem(index, 1)}>
               <NxFontAwesomeIcon icon={faArrowDown}/>
             </NxButton>
@@ -122,7 +127,7 @@ export default function TransferListHalf<T extends string | number = string>(pro
         <div className="nx-transfer-list__item-list">
           { visibleItems.map(
               (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
-                                                 disableReorderingButtons={!!filterValue}
+                                                 isFilteredItem={!!filterValue}
                                                  key={i.id}
                                                  checked={isSelected}
                                                  onChange={onItemChange}

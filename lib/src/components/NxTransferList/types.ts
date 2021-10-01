@@ -18,7 +18,7 @@ export interface TransferListItemProps<T extends string | number = string> exten
   checked: boolean;
   onChange: SelectionChangeHandler<T>;
   showReorderingButtons?: boolean | null;
-  disableReorderingButtons?: boolean | null;
+  isFilteredItem?: boolean | null;
   onReorderItem?: (index: number, direction: 1 | -1) => void | null;
   index: number;
   listLength: number;
