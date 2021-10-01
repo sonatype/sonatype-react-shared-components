@@ -15,7 +15,15 @@ import {
   NxStatefulGlobalSidebar,
   NxPageMain
 } from '@sonatype/react-shared-components';
-import { faArrowLeft, faArrowRight, faLink, faEdit } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowLeft,
+  faArrowRight,
+  faLink,
+  faQuestionCircle,
+  faBell,
+  faCog,
+  faUserCircle
+} from '@fortawesome/free-solid-svg-icons';
 
 const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
@@ -25,9 +33,10 @@ export default function NxGlobalHeaderFullExample() {
       <aside className="nx-global-header">
         <NxBackButton href="#/pages/nx-global-header" targetPageTitle="Documentation" />
         <div className="nx-global-header__actions">
-          <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
-          <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
-          <NxButton>Foobar</NxButton>
+          <NxButton title="Help" variant="icon-only"><NxFontAwesomeIcon icon={faQuestionCircle} /></NxButton>
+          <NxButton title="Notifications" variant="icon-only"><NxFontAwesomeIcon icon={faBell} /></NxButton>
+          <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+          <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
         </div>
       </aside>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
