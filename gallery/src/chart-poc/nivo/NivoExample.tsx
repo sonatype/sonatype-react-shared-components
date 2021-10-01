@@ -37,13 +37,20 @@ export default function NivoExample() {
     selectableColorValues.then(({ dark }) => setColors(dark));
   }, []);
 
-  return (
-    <div style={{ height: '500px' }}>
-      <ResponsivePie data={data}
-                     colors={colors}
-                     margin={{ top: 40, right: 200, bottom: 40, left: 80 }}
-                     padAngle={0.7}
-                     cornerRadius={3} />
-    </div>
-  );
+  if (colors) {
+    return (
+      <div style={{ height: '500px' }}>
+        <ResponsivePie data={data}
+                       colors={colors}
+                       margin={{ top: 40, right: 200, bottom: 40, left: 80 }}
+                       padAngle={0.7}
+                       cornerRadius={3}
+                       arcLabelsSkipAngle={10}
+                       arcLinkLabelsThickness={2} />
+      </div>
+    );
+  }
+  else {
+    return null;
+  }
 }
