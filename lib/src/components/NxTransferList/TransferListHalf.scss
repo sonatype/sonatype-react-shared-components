@@ -156,6 +156,10 @@ $-visible-item-count: 10;
         background-color: transparent;
         border-color: transparent;
         box-shadow: none;
+        // pointer-events is set to none to fix tooltip sometimes
+        // staying open when button is disabled. Also suggested here:
+        // https://mui.com/components/tooltips/
+        pointer-events: none;
       }
     }
   }
