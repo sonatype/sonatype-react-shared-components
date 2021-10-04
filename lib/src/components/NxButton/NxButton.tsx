@@ -23,7 +23,7 @@ const NxButton = forwardRef<HTMLButtonElement, Props>(
             </button>
           );
 
-      if (variant === 'icon-only' && !title) {
+      if (variant === 'icon-only' && !title && !attrs.disabled) {
         console.warn('Using icon-only buttons without the title prop is deprecated');
       }
 

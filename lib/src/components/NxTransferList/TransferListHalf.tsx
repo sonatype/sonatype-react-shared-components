@@ -19,6 +19,7 @@ import { TransferListHalfProps as Props, TransferListItemProps } from './types';
 import NxFieldset from '../NxFieldset/NxFieldset';
 
 import './TransferListHalf.scss';
+import NxTooltip from '../NxTooltip/NxTooltip';
 
 function TransferListItem<T extends string | number = string>(props: TransferListItemProps<T>) {
   const {
@@ -48,10 +49,8 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
       }
   );
 
-  const moveUpButtonTitle = isTopItem
-    ? null : isFilteredItem ? 'Reordering is disabled when filtered' : 'Move Up';
-  const moveDownButtonTitle = isBottomItem
-    ? null : isFilteredItem ? 'Reordering is disabled when filtered' : 'Move Down';
+  const moveUpButtonTitle = isTopItem || isFilteredItem ? null : 'Move Up';
+  const moveDownButtonTitle = isBottomItem || isFilteredItem ? null : 'Move Down';
 
   return (
     <NxOverflowTooltip>
@@ -62,20 +61,22 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
           <span>{displayName}</span>
         </label>
         { showReorderingButtons && (
-          <NxButtonBar className="nx-transfer-list__button-bar">
-            <NxButton variant="icon-only"
-                      title={moveUpButtonTitle}
-                      disabled={isFilteredItem || isTopItem}
-                      onClick={() => !isTopItem && onReorderItem && onReorderItem(index, -1)}>
-              <NxFontAwesomeIcon icon={faArrowUp}/>
-            </NxButton>
-            <NxButton variant="icon-only"
-                      title={moveDownButtonTitle}
-                      disabled={isFilteredItem || isBottomItem}
-                      onClick={() => !isBottomItem && onReorderItem && onReorderItem(index, 1)}>
-              <NxFontAwesomeIcon icon={faArrowDown}/>
-            </NxButton>
-          </NxButtonBar>
+          <NxTooltip title={isFilteredItem ? 'Reordering is disabled when filtered' : ''}>
+            <div className="nx-btn-bar nx-transfer-list__button-bar">
+              <NxButton variant="icon-only"
+                        title={moveUpButtonTitle}
+                        disabled={isFilteredItem || isTopItem}
+                        onClick={() => !isTopItem && onReorderItem && onReorderItem(index, -1)}>
+                <NxFontAwesomeIcon icon={faArrowUp}/>
+              </NxButton>
+              <NxButton variant="icon-only"
+                        title={moveDownButtonTitle}
+                        disabled={isFilteredItem || isBottomItem}
+                        onClick={() => !isBottomItem && onReorderItem && onReorderItem(index, 1)}>
+                <NxFontAwesomeIcon icon={faArrowDown}/>
+              </NxButton>
+            </div>
+          </NxTooltip>
         ) }
       </div>
     </NxOverflowTooltip>
