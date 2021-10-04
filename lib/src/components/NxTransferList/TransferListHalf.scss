@@ -148,13 +148,15 @@ $-visible-item-count: 10;
     padding: 0;
     width: $-button-size;
 
-    &[disabled] {
+    &[disabled],
+    &.disabled {
       &,
       &:hover,
       &:focus,
       &:active {
-        border-color: transparent;
         background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
       }
     }
   }

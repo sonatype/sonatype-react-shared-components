@@ -48,10 +48,10 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
       }
   );
 
-  const moveUpButtonTitle = isTopItem
-    ? null : isFilteredItem ? 'Reordering is disabled when filtered' : 'Move Up';
-  const moveDownButtonTitle = isBottomItem
-    ? null : isFilteredItem ? 'Reordering is disabled when filtered' : 'Move Down';
+  const moveUpButtonTitle = isTopItem ? null :
+    isFilteredItem ? 'Reordering is disabled when filtered' : 'Move Up';
+  const moveDownButtonTitle = isBottomItem ? null :
+    isFilteredItem ? 'Reordering is disabled when filtered' : 'Move Down';
 
   return (
     <NxOverflowTooltip>
@@ -63,16 +63,18 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
         </label>
         { showReorderingButtons && (
           <NxButtonBar className="nx-transfer-list__button-bar">
-            <NxButton variant="icon-only"
+            <NxButton className={classnames({ 'disabled': isFilteredItem })}
                       title={moveUpButtonTitle}
-                      disabled={isFilteredItem || isTopItem}
-                      onClick={() => !isTopItem && onReorderItem && onReorderItem(index, -1)}>
+                      variant="icon-only"
+                      disabled={isTopItem}
+                      onClick={() => !isTopItem && !isFilteredItem && onReorderItem && onReorderItem(index, -1)}>
               <NxFontAwesomeIcon icon={faArrowUp}/>
             </NxButton>
-            <NxButton variant="icon-only"
+            <NxButton className={classnames({ 'disabled': isFilteredItem })}
                       title={moveDownButtonTitle}
-                      disabled={isFilteredItem || isBottomItem}
-                      onClick={() => !isBottomItem && onReorderItem && onReorderItem(index, 1)}>
+                      variant="icon-only"
+                      disabled={isBottomItem}
+                      onClick={() => !isBottomItem && !isFilteredItem && onReorderItem && onReorderItem(index, 1)}>
               <NxFontAwesomeIcon icon={faArrowDown}/>
             </NxButton>
           </NxButtonBar>
