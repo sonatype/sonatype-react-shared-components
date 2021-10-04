@@ -12,7 +12,6 @@ import classnames from 'classnames';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
-import { NxButtonBar } from '../SimpleComponents';
 import NxButton from '../NxButton/NxButton';
 
 import { TransferListHalfProps as Props, TransferListItemProps } from './types';

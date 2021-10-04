@@ -148,8 +148,7 @@ $-visible-item-count: 10;
     padding: 0;
     width: $-button-size;
 
-    &[disabled],
-    &.disabled {
+    &[disabled] {
       &,
       &:hover,
       &:focus,
