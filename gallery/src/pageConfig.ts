@@ -128,6 +128,7 @@ import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxSt
 import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallThreatCounterPage';
 
 import NivoPOCPage from './chart-poc/nivo/NivoPOCPage';
+import RechartsPage from './chart-poc/recharts/RechartsPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -259,7 +260,8 @@ const pageConfig: PageConfig = {
     'withClass Higher-Order Component': WithClassPage
   },
   'Chart POCs (Temporary)': {
-    'Nivo': NivoPOCPage
+    'Nivo': NivoPOCPage,
+    'Recharts': RechartsPage
   }
 };
 

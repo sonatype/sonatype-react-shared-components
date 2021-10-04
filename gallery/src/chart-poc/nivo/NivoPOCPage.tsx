@@ -34,6 +34,7 @@ export default function NxTablePage() {
           If we went with this library, we might want to make RSC components that wrap some of its charts and provide
           Sonatype-approved styling parameters similar to what I show in this example.
         </NxP>
+        <NxP>Excellent interactive documentation!</NxP>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Example"
