@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { ReactNode, HTMLAttributes } from 'react';
-import PropTypes, { ValidationMap } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
 import DataItem from '../../util/DataItem';
@@ -17,6 +17,11 @@ type SelectionChangeHandler<T> = (checked: boolean, id: T) => void;
 export interface TransferListItemProps<T extends string | number = string> extends DataItem<T> {
   checked: boolean;
   onChange: SelectionChangeHandler<T>;
+  showReorderingButtons?: boolean | null;
+  isFilteredItem?: boolean | null;
+  onReorderItem?: (index: number, direction: 1 | -1) => void | null;
+  index: number;
+  listLength: number;
 }
 
 export interface TransferListHalfProps<T extends string | number = string> {
@@ -24,43 +29,51 @@ export interface TransferListHalfProps<T extends string | number = string> {
   filterValue: string;
   onFilterChange: NxFilterInputProps['onChange'];
   showMoveAll: boolean;
-  onMoveAll: (toMove: Set<T>) => void;
+  onMoveAll: (toMove: T[]) => void;
   items: DataItem<T>[];
   isSelected: boolean;
   onItemChange: SelectionChangeHandler<T>;
   footerContent: ReactNode;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
+  onReorderItem?: (index: number, direction: -1 | 1) => void | null;
+  allowReordering?: boolean | null;
 }
 
-export interface StatefulProps<T extends string | number = string>
+export interface BaseStatefulProps<T extends string | number = string>
   extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onChange'> {
   allItems: DataItem<T>[];
-  selectedItems: Set<T>;
   availableItemsLabel?: ReactNode;
   selectedItemsLabel?: ReactNode;
-  availableItemsCountFormatter?: ((n: number) => string) | null,
-  selectedItemsCountFormatter?: ((n: number) => string) | null,
+  availableItemsCountFormatter?: ((n: number) => string) | null;
+  selectedItemsCountFormatter?: ((n: number) => string) | null;
   showMoveAll?: boolean | null;
-  onChange: (newSelected: Set<T>) => void;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
 }
 
-export interface Props<T extends string | number = string> extends StatefulProps<T> {
+interface UnorderedStatefulProps<T extends string | number = string> extends BaseStatefulProps<T> {
+  allowReordering?: false | null;
+  selectedItems: Set<T>;
+  onChange: (newSelected: Set<T>) => void;
+}
+
+interface OrderedStatefulProps<T extends string | number = string> extends BaseStatefulProps<T> {
+  allowReordering: true;
+  selectedItems: T[];
+  onChange: (newSelected: T[]) => void;
+}
+
+export type StatefulProps<T extends string | number = string> = UnorderedStatefulProps<T> | OrderedStatefulProps<T>;
+
+export type Props<T extends string | number = string> = StatefulProps<T> & {
   availableItemsFilter: string;
   selectedItemsFilter: string;
   onAvailableItemsFilterChange: NxFilterInputProps['onChange'];
   onSelectedItemsFilterChange: NxFilterInputProps['onChange'];
-}
+};
 
-export const propTypes: ValidationMap<Props<string | number>> = {
-  allItems: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.number.isRequired
-    ]).isRequired,
-    displayName: PropTypes.string.isRequired
-  }).isRequired).isRequired,
-  selectedItems: PropTypes.instanceOf<Set<string | number>>(Set).isRequired,
+// allowReordering, allItems, selectedItems
+// are excluded in the propTypes due to clash with parametric Props;
+export const propTypes = {
   availableItemsLabel: PropTypes.node,
   selectedItemsLabel: PropTypes.node,
   availableItemsCountFormatter: PropTypes.func,

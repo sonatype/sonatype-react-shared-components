@@ -4,11 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faArrowUp, faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { includes } from 'ramda';
 import React from 'react';
 
 import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
+import NxButton from '../../NxButton/NxButton';
+import NxTooltip from '../../NxTooltip/NxTooltip';
 import NxFieldset from '../../NxFieldset/NxFieldset';
 import NxFilterInput from '../../NxFilterInput/NxFilterInput';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -80,7 +82,7 @@ describe('TransferListHalf', function() {
     expect(onMoveAll).toHaveBeenCalledTimes(1);
   });
 
-  it('passes onMoveAll a set containing every id if no filterValue is set', function() {
+  it('passes onMoveAll an array containing every id if no filterValue is set', function() {
     const items = [{
           id: 1,
           displayName: 'foo'
@@ -105,7 +107,7 @@ describe('TransferListHalf', function() {
 
     component.find('.nx-transfer-list__move-all').simulate('click');
 
-    expect(onMoveAll).toHaveBeenCalledWith(new Set([1, 2, 3, 4, 5, 6]));
+    expect(onMoveAll).toHaveBeenCalledWith([1, 2, 3, 4, 5, 6]);
   });
 
   it('sets the .nx-transfer-list__move-all icon to an x in a circle if isSelected, otherwise a plus in a circle',
@@ -148,12 +150,16 @@ describe('TransferListHalf', function() {
     expect(list.children().length).toBe(2);
 
     const item = list.find('.nx-transfer-list__item').at(0),
-        icon = item.find(NxFontAwesomeIcon),
-        checkbox = item.find('input.nx-transfer-list__checkbox');
+        select = item.find('.nx-transfer-list__select').at(0),
+        icon = select.find(NxFontAwesomeIcon),
+        checkbox = select.find('input.nx-transfer-list__checkbox');
 
     expect(item).toExist();
-    expect(item).toMatchSelector('label');
-    expect(item).toHaveText('foo');
+    expect(item).toMatchSelector('div');
+
+    expect(select).toExist();
+    expect(select).toMatchSelector('label');
+    expect(select).toHaveText('foo');
 
     expect(icon).toExist();
     expect(icon).toHaveProp('icon', faPlusCircle);
@@ -273,7 +279,195 @@ describe('TransferListHalf', function() {
 
       component.find('.nx-transfer-list__move-all').simulate('click');
 
-      expect(onMoveAll).toHaveBeenCalledWith(new Set([1, 2, 4, 5]));
+      expect(onMoveAll).toHaveBeenCalledWith([1, 2, 4, 5]);
     });
+  });
+
+  describe('reordering', function() {
+    it('renders move up and down buttons inside .nx-transfer-list__item in the correct state', function() {
+      const items = [{
+            id: 1,
+            displayName: 'top'
+          }, {
+            id: 3,
+            displayName: 'middle'
+          }, {
+            id: 4,
+            displayName: 'bottom'
+          }],
+          component = getMounted({ allowReordering: true, items }),
+          list = component.find('.nx-transfer-list__item-list');
+
+      const firstItem = list.find('.nx-transfer-list__item').at(0),
+          secondItem = list.find('.nx-transfer-list__item').at(1),
+          thirdItem = list.find('.nx-transfer-list__item').at(2),
+          firstItemMoveUpButton = firstItem.find('.nx-btn').at(0),
+          firstItemMoveDownButton = firstItem.find('.nx-btn').at(1),
+          secondItemMoveUpButton = secondItem.find('.nx-btn').at(0),
+          secondItemMoveDownButton = secondItem.find('.nx-btn').at(1),
+          thirdItemMoveUpButton = thirdItem.find('.nx-btn').at(0),
+          thirdItemMoveDownButton = thirdItem.find('.nx-btn').at(1);
+
+      expect(firstItem).toExist();
+      expect(firstItemMoveUpButton).toExist();
+      expect(firstItemMoveDownButton).toExist();
+      expect(firstItemMoveUpButton.prop('disabled')).toBe(true);
+      expect(firstItemMoveDownButton.prop('disabled')).toBe(false);
+
+      expect(secondItem).toExist();
+      expect(secondItemMoveUpButton).toExist();
+      expect(secondItemMoveDownButton).toExist();
+      expect(secondItemMoveUpButton.prop('disabled')).toBe(false);
+      expect(secondItemMoveDownButton.prop('disabled')).toBe(false);
+
+      expect(thirdItem).toExist();
+      expect(thirdItemMoveUpButton).toExist();
+      expect(thirdItemMoveDownButton).toExist();
+      expect(thirdItemMoveUpButton.prop('disabled')).toBe(false);
+      expect(thirdItemMoveDownButton.prop('disabled')).toBe(true);
+    });
+  });
+
+  it('passes onReorderItem with id and direction when move up or down button is clicked', function() {
+    const items = [{
+      id: 1,
+      displayName: 'a'
+    }, {
+      id: 2,
+      displayName: 'b'
+    }, {
+      id: 3,
+      displayName: 'c'
+    }];
+
+    const onReorderItem = jest.fn(),
+        component = getMounted({ allowReordering: true, items, onReorderItem }),
+        list = component.find('.nx-transfer-list__item-list');
+
+    expect(onReorderItem).not.toHaveBeenCalled();
+
+    const firstItem = list.find('.nx-transfer-list__item').at(0),
+        secondItem = list.find('.nx-transfer-list__item').at(1);
+    const moveDownButton = firstItem.find('.nx-btn').at(1);
+    const moveUpButton = secondItem.find('.nx-btn').at(0);
+
+    expect(moveDownButton).toExist();
+    expect(moveUpButton).toExist();
+
+    moveDownButton.simulate('click');
+
+    expect(onReorderItem).toHaveBeenCalledWith(0, 1);
+
+    moveUpButton.simulate('click');
+
+    expect(onReorderItem).toHaveBeenCalledWith(1, -1);
+  });
+
+  it('set the move up and down icon button with faArrowUp and faArrowDown respectively',
+      function() {
+        const items = [{
+          id: 1,
+          displayName: 'a'
+        }, {
+          id: 2,
+          displayName: 'b'
+        }, {
+          id: 3,
+          displayName: 'c'
+        }];
+
+        const component = getMounted({ allowReordering: true, items }),
+            listItem = component.find('.nx-transfer-list__item').at(0);
+
+        const buttons = listItem.find('.nx-transfer-list__button-bar .nx-btn');
+        const moveUpButton = buttons.at(0).find(NxFontAwesomeIcon);
+        const moveDownButton = buttons.at(1).find(NxFontAwesomeIcon);
+
+        expect(moveUpButton).toHaveProp('icon', faArrowUp);
+        expect(moveDownButton).toHaveProp('icon', faArrowDown);
+      }
+  );
+
+  it('sets move up and down buttons to disabled state when items are filtered', function() {
+    const items = [{
+      id: 1,
+      displayName: 'a1'
+    }, {
+      id: 2,
+      displayName: 'b1'
+    }, {
+      id: 3,
+      displayName: 'c1'
+    },
+    {
+      id: 4,
+      displayName: 'd'
+    }];
+
+    const onReorderItem = jest.fn(),
+        component = getMounted({ filterValue: '1', allowReordering: true, items, onReorderItem }),
+        list = component.find('.nx-transfer-list__item-list');
+
+    expect(onReorderItem).not.toHaveBeenCalled();
+
+    const firstItem = list.find('.nx-transfer-list__item').at(0);
+    const secondItem = list.find('.nx-transfer-list__item').at(1);
+    const lastItem = list.find('.nx-transfer-list__item').at(2);
+
+    const firstMoveUpButton = firstItem.find('.nx-btn').at(0);
+    const lastMoveDownButton = lastItem.find('.nx-btn').at(1);
+
+    const middleMoveUpButton = secondItem.find('.nx-btn').at(0);
+    const middleMoveDownButton = secondItem.find('.nx-btn').at(1);
+
+    expect(firstMoveUpButton).toHaveProp('disabled', true);
+    expect(lastMoveDownButton).toHaveProp('disabled', true);
+    expect(middleMoveUpButton).toHaveProp('disabled', true);
+    expect(middleMoveDownButton).toHaveProp('disabled', true);
+
+    firstMoveUpButton.simulate('click');
+    lastMoveDownButton.simulate('click');
+
+    middleMoveUpButton.simulate('click');
+    middleMoveDownButton.simulate('click');
+
+    expect(onReorderItem).not.toHaveBeenCalled();
+  });
+
+  it('sets the correct button title based on location, direction, and when filtered', function() {
+    const items = [{
+      id: 1,
+      displayName: 'a1'
+    }, {
+      id: 2,
+      displayName: 'b1'
+    }, {
+      id: 3,
+      displayName: 'c1'
+    }, {
+      id: 4,
+      displayName: 'c'
+    }];
+
+    const onReorderItem = jest.fn(),
+        filteredComponent = getMounted({ filterValue: '1', allowReordering: true, items, onReorderItem }),
+        component = getMounted({ allowReordering: true, items, onReorderItem }),
+        filteredList = filteredComponent.find('.nx-transfer-list__item-list'),
+        list = component.find('.nx-transfer-list__item-list');
+
+    const secondItem = list.find('.nx-transfer-list__item').at(1);
+    const filteredSecondItem = filteredList.find('.nx-transfer-list__item').at(1);
+
+    const moveUpButton = secondItem.find(NxButton).at(0);
+    const moveDownButton = secondItem.find(NxButton).at(1);
+
+    const itemTooltip = secondItem.find(NxTooltip).at(0);
+    const filteredItemTooltip = filteredSecondItem.find(NxTooltip).at(0);
+
+    expect(moveUpButton).toHaveProp('title', 'Move Up');
+    expect(moveDownButton).toHaveProp('title', 'Move Down');
+
+    expect(filteredItemTooltip).toHaveProp('title', 'Reordering is disabled when filtered');
+    expect(itemTooltip).toHaveProp('title', '');
   });
 });
