@@ -129,6 +129,7 @@ import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallT
 
 import NivoPOCPage from './chart-poc/nivo/NivoPOCPage';
 import RechartsPage from './chart-poc/recharts/RechartsPage';
+import VictoryPage from './chart-poc/victory/VictoryPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -261,7 +262,8 @@ const pageConfig: PageConfig = {
   },
   'Chart POCs (Temporary)': {
     'Nivo': NivoPOCPage,
-    'Recharts': RechartsPage
+    'Recharts': RechartsPage,
+    'Victory': VictoryPage
   }
 };
 
