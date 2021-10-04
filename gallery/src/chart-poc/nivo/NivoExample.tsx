@@ -43,6 +43,7 @@ export default function NivoExample() {
         <ResponsivePie data={data}
                        colors={colors}
                        margin={{ top: 40, right: 200, bottom: 40, left: 80 }}
+                       theme={{ fontSize: 16 }}
                        padAngle={0.7}
                        cornerRadius={3}
                        arcLabelsSkipAngle={10}
