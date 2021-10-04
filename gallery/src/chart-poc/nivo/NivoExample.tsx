@@ -46,6 +46,7 @@ export default function NivoExample() {
                        theme={{ fontSize: 16 }}
                        padAngle={0.7}
                        cornerRadius={3}
+                       innerRadius={0.5}
                        arcLabelsSkipAngle={10}
                        arcLinkLabelsThickness={2} />
       </div>
