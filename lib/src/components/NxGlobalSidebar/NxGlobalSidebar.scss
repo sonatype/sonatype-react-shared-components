@@ -39,6 +39,10 @@ $-separator-color: var(--nx-swatch-indigo-40);
   .nx-text-link, .nx-tree-view__trigger, .nx-tree-view__child {
     color: $-text-color;
   }
+
+  .nx-text-link {
+    margin: 0;
+  }
 }
 
 .nx-global-sidebar__header {
