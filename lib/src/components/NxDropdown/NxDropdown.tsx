@@ -59,7 +59,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
               aria-haspopup="true"
               aria-expanded={isOpen}>
       <span className="nx-dropdown__toggle-label">{ label }</span>
-      <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown}/>
+      <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown} size="lg" />
     </NxButton>
   );
 
