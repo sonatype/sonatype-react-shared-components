@@ -318,4 +318,37 @@ describe('NxSearchDropdown', function() {
         expect(onSearch).not.toHaveBeenCalled();
       }
   );
+
+  it('should clear search when Escape key is pressed on filterInput or dropdownMenu', function() {
+    const matches = [
+      { id: '1', displayName: 'One' },
+      { id: '2', displayName: 'OneTwo' }
+    ];
+
+    const onSearchTextChange = jest.fn(),
+        escPreventDefault = jest.fn(),
+        component = getShallow(
+            { searchText: 'One', matches, onSearchTextChange }
+        ),
+        filterInput = component.find(NxFilterInput),
+        dropdownMenu = component.find(NxDropdownMenu);
+
+    const keyDownEvent = {
+      key: 'Escape',
+      preventDefault: escPreventDefault
+    };
+
+    expect(onSearchTextChange).not.toHaveBeenCalled();
+
+    filterInput.simulate('keyDown', keyDownEvent);
+
+    expect(escPreventDefault).toHaveBeenCalled();
+    expect(onSearchTextChange).toHaveBeenCalledWith('');
+
+    onSearchTextChange.mockClear();
+
+    dropdownMenu.simulate('keyDown', keyDownEvent);
+
+    expect(onSearchTextChange).toHaveBeenCalledWith('');
+  });
 });
