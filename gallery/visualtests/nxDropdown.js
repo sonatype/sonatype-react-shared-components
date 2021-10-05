@@ -134,6 +134,9 @@ describe('NxDropdown', function() {
       const targetElement = await browser.$(selector);
 
       await targetElement.scrollIntoView({ block: 'center' });
+      await targetElement.click();
+      await targetElement.click();
+      await targetElement.click();
       await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
 
       const { x, y } = await targetElement.getLocation();
