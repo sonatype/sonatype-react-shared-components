@@ -126,4 +126,20 @@ describe('NxDropdown', function() {
       await browser.eyesRegionSnapshot(null, Target.region(region));
     });
   });
+
+  describe('Short NxDropdown', function() {
+    const selector = '#nx-dropdown-short-example .nx-dropdown';
+
+    it('looks right', async function() {
+      const targetElement = await browser.$(selector);
+
+      await targetElement.scrollIntoView({ block: 'center' });
+      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+
+      const { x, y } = await targetElement.getLocation();
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 151, 184);
+
+      await browser.eyesRegionSnapshot(null, Target.region(region));
+    });
+  });
 });
