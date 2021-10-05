@@ -110,9 +110,6 @@ const Accessibility = () =>
           Discover an accessibility problem? Have a suggestion for an improvement?
         </NxH3>
       </NxTile.SubsectionHeader>
-      <NxP>
-        Hit us up in #accessibility or #react-components.
-      </NxP>
     </NxTile.Subsection>
 
   </GalleryTile>;

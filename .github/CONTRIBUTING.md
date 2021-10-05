@@ -29,8 +29,6 @@ Looking to dive in? FANTASTIC! Reach out to one of our experts and we can help g
 * Try to fix one thing per pull request! Many people work on this code, so the more focused your changes are, the less
   of a headache other people will have when they merge their work in.
 * Ensure your Pull Request passes tests either locally or via Jenkins (it will run automatically on your PR)
-* If you're stuck, ask our [gitter channel](https://gitter.im/sonatype/nexus-developers) or #react-components in Slack! There are a number of
-  experienced programmers who are happy to help with learning and troubleshooting.
 
 ### PR commenting protocol
 
