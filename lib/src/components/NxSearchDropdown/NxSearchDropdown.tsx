@@ -93,9 +93,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
     if (event.key === 'Escape') {
       onSearchTextChange('');
 
-      if (!event.defaultPrevented) {
-        event.preventDefault();
-      }
+      event.preventDefault();
     }
   };
 
