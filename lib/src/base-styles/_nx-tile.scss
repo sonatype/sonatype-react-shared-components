@@ -41,8 +41,13 @@ $-tile-header-height-actions: 43px; // Height with sub-title and/or right action
 .nx-tile-header {
   align-items: center;
   display: grid;
-  row-gap: var(--nx-spacing-2x);
-  grid-template-columns: auto 1fr auto;
+
+  // NOTE: without the min-content sizing on the rows it adds extra vertical space when only title and actions are
+  // present. I don't have an explanation for this, it doesn't have with _any_ other combination of header children
+  grid-template:
+    "title      tags   actions" min-content
+    "subtitle subtitle actions" min-content /
+     auto       1fr       auto;
   min-height: $-tile-header-height;
 
   + .nx-tile-content {
@@ -52,10 +57,7 @@ $-tile-header-height-actions: 43px; // Height with sub-title and/or right action
 
 .nx-tile-header__title {
   @include nx-text-helpers.truncate-ellipsis;
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 1;
-  grid-row-end: 1;
+  grid-area: title;
 
   h1, h2 {
     @include nx-text-helpers.truncate-ellipsis;
@@ -67,24 +69,19 @@ $-tile-header-height-actions: 43px; // Height with sub-title and/or right action
 .nx-tile-header__subtitle {
   @include nx-text-helpers.semi-bold;
 
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 2;
+  grid-area: subtitle;
 
   color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-heading-3);
-  margin: 0;
+  margin: var(--nx-spacing-2x) 0 0 0;
   max-width: var(--nx-width-text-wrapping);
 }
 
 .nx-tile__actions {
   @include nx-container-helpers.container-horizontal;
 
-  grid-column-start: 3;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 1;
+  align-self: start;
+  grid-area: actions;
   margin-left: var(--nx-spacing-6x);
   text-align: right;
 }
@@ -92,10 +89,7 @@ $-tile-header-height-actions: 43px; // Height with sub-title and/or right action
 .nx-tile__tags {
   @include nx-container-helpers.container-horizontal;
 
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 1;
+  grid-area: tags;
   margin-left: var(--nx-spacing-4x);
 
   .nx-policy-violation-indicator {
