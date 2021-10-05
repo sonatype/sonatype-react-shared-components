@@ -6,6 +6,7 @@
  */
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-button-helpers';
 
 // the padding on the sides of each transfer list control box
 $-control-box-side-spacing: var(--nx-spacing-6x);
@@ -85,22 +86,26 @@ $-visible-item-count: 10;
     #{$-visible-item-count - 1} * #{$-item-vertical-margin}
   );
 
-
   overflow-y: auto;
   padding: var(--nx-spacing-6x) $-control-box-side-spacing;
   margin-top: var(--nx-spacing-6x);
 }
 
 .nx-transfer-list__item {
+  background-color: var(--nx-swatch-white);
+  border-radius: var(--nx-border-radius);
+  display: flex;
+  margin: var(--nx-spacing-2x) 0;
+}
+
+.nx-transfer-list__select {
   @include nx-container-helpers.container-horizontal;
   @include nx-text-helpers.truncate-ellipsis;
 
-  background-color: var(--nx-swatch-white);
-  border: var(--nx-border-default);
   border-radius: var(--nx-border-radius);
+  border: var(--nx-border-default);
   cursor: pointer;
-  display: block;
-  margin: var(--nx-spacing-2x) 0;
+  flex: auto;
   padding: var(--nx-spacing-2x);
 
   &:hover {
@@ -115,6 +120,48 @@ $-visible-item-count: 10;
   &:active {
     background-color: transparent;
     border-color: var(--nx-swatch-grey-05);
+  }
+}
+
+.nx-transfer-list__item--with-reordering {
+  .nx-transfer-list__select {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+.nx-transfer-list__button-bar {
+  border: var(--nx-border-default);
+  border-left: 0;
+  border-radius: var(--nx-border-radius);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  gap: var(--nx-spacing-base);
+  margin: 0;
+  padding: var(--nx-spacing-base) var(--nx-spacing-2x);
+
+  $-button-size: 32px;
+
+  .nx-btn {
+    height: $-button-size;
+    margin: 0;
+    padding: 0;
+    width: $-button-size;
+
+    &[disabled] {
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
+        // pointer-events is set to none to fix tooltip sometimes
+        // staying open when button is disabled. Also suggested here:
+        // https://mui.com/components/tooltips/
+        pointer-events: none;
+      }
+    }
   }
 }
 
