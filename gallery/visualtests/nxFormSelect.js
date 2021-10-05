@@ -16,7 +16,7 @@ describe('nx-form-select', function() {
   });
 
   describe('Simple NxFormSelect', function() {
-    it('has a light border when pristine', simpleTest(selector));
+    it('has a dark border when pristine', simpleTest(selector));
 
     it('has a dark border when not pristine', async function() {
       const targetElement = await browser.$(selector);

@@ -28,7 +28,7 @@ describe('NxTextInput', function() {
   });
 
   describe('Simple NxTextInput', function() {
-    it('has a light border when pristine', simpleTest(simpleComponentSelector));
+    it('has a dark border when pristine', simpleTest(simpleComponentSelector));
 
     it('has a dark border when hovered',
         hoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
@@ -52,7 +52,7 @@ describe('NxTextInput', function() {
   });
 
   describe('Validatable NxTextInput', function() {
-    it('has a light border when pristine', simpleTest(validatableComponentSelector));
+    it('has a dark border when pristine', simpleTest(validatableComponentSelector));
 
     it('has validation styles when valid', async function() {
       const inputSelector = getInputElementSelector(validatableComponentSelector),
