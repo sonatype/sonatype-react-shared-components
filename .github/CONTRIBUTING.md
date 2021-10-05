@@ -15,7 +15,6 @@
 
 Looking to dive in? FANTASTIC! Reach out to one of our experts and we can help get you started in the right direction.
 
-* Hit us up on our Slack channel #react-components.
 * Please fill out an issue (Jira RSC project) for your PR so that we have traceability as to what you are trying to fix,
   versus how you fixed it.
 
