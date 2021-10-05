@@ -43,7 +43,7 @@ $-tile-header-height-actions: 43px; // Height with sub-title and/or right action
   display: grid;
 
   // NOTE: without the min-content sizing on the rows it adds extra vertical space when only title and actions are
-  // present. I don't have an explanation for this, it doesn't have with _any_ other combination of header children
+  // present. I don't have an explanation for this, it doesn't happen with _any_ other combination of header children
   grid-template:
     "title      tags   actions" min-content
     "subtitle subtitle actions" min-content /
