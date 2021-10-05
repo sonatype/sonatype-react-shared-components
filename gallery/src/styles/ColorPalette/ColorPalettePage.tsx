@@ -15,13 +15,14 @@ const ColorPalettePage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        The design group has created a palette of colors for use in RSC. The colors are organized into swatches
-        which each have a consistent hue (red, green, blue, etc) and saturation. Within a swatch the various colors vary
-        by lightness, and are named based on their lightness value in the HSL color scheme. Thus darker colors
-        have lower values, and lighter colors have higher values. For example the darkest red is
+        The design group has created palettes of colors for use in RSC. The colors are organized into palettes
+        which each have a consistent hue (red, green, blue, etc) and saturation. Within a palette the various
+        indivdual swatches vary by lightness, and are named based on their lightness value in the HSL color scheme.
+        Thus darker colors have lower values, and lighter colors have higher values. For example the darkest red is
         {' '}<NxCode>--nx-swatch-red-10</NxCode> and the lightest is <NxCode>--nx-swatch-red-95</NxCode>. All of the
-        color swatch values are available as CSS custom properties declared within the RSC base styles. The swatches
-        below show all of the colors available in RSC along with their hex value and corresponding RSC variable.
+        color swatch values are available as CSS custom properties declared within the RSC base styles. The
+        demonstrations below show all of the colors available in RSC along with their hex value and corresponding RSC
+        variable.
       </NxP>
       <NxWarningAlert>
         The lime palette is deprecated and is currently an alias for the green palette.

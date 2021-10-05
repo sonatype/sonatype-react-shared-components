@@ -319,8 +319,8 @@ const CssVariablesPage = () => {
       <GalleryTile title="Swatch Color Properties">
         <NxP>
           While the color properties described in the previous section are higher-level, with specific semantics
-          around their use, there is another set of lower level color properties defined in terms of color swatches.
-          For information on these properties, see
+          around their use, there is another set of lower level color properties defined in terms of color swatches and
+          palettes. For information on these properties, see
           the <NxTextLink href="#/pages/Color%20Palettes">Color Palettes</NxTextLink> page.
         </NxP>
       </GalleryTile>
