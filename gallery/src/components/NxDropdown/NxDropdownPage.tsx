@@ -10,6 +10,7 @@ import { NxTable, NxTextLink, NxCode, NxWarningAlert, NxH3, NxP, NxTile } from '
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import NxDropdownNavigationExample from './NxDropdownNavigationExample';
+import NxDropdownShortExample from './NxDropdownShortExample';
 import NxDropdownScrollingExample from './NxDropdownScrollingExample';
 import NxDropdownDisabledExample from './NxDropdownDisabledExample';
 import NxDropdownRightButtonsExample from './NxDropdownRightButtonsExample';
@@ -18,6 +19,7 @@ import NxDropdownLinksExample from './NxDropdownLinksExample';
 import NxDropdownCloseHandlerExample from './NxDropdownCloseHandlerExample';
 
 const nxDropdownNavigationExampleCode = require('./NxDropdownNavigationExample?raw'),
+    nxDropdownShortExampleCode = require('./NxDropdownShortExample?raw'),
     nxDropdownScrollingExampleCode = require('./NxDropdownScrollingExample?raw'),
     nxDropdownDisabledExampleCode = require('./NxDropdownDisabledExample?raw'),
     nxDropdownCustomLabelExampleCode = require('./NxDropdownCustomLabelExample?raw'),
@@ -175,6 +177,30 @@ const NxDropdownPage = () =>
 
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
+          <NxH3>Dropdown Helper Classes</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-dropdown--short</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Directly on the <NxCode>NxDropdown</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>Renders the dropdown toggle and menu at a smaller width than the default</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>Dropdown Menu Content Classes</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
@@ -243,6 +269,13 @@ const NxDropdownPage = () =>
       An example of an <NxCode>NxDropdown</NxCode> as it might be used to implement a navigation list.
       Note that the menu can contain either <NxCode>&lt;a&gt;</NxCode> or
       {' '}<NxCode>&lt;button&gt;</NxCode> elements; this example contains both.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Short Example"
+                        id="nx-dropdown-short-example"
+                        liveExample={NxDropdownShortExample}
+                        codeExamples={nxDropdownShortExampleCode}>
+      An example of an <NxCode>NxDropdown</NxCode> with the <NxCode>nx-dropdown--short</NxCode> modifier class.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Scrolling Example"
