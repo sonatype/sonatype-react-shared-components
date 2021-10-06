@@ -461,8 +461,8 @@ describe('TransferListHalf', function() {
     const moveUpButton = secondItem.find(NxButton).at(0);
     const moveDownButton = secondItem.find(NxButton).at(1);
 
-    const itemTooltip = secondItem.find(NxTooltip).at(0);
-    const filteredItemTooltip = filteredSecondItem.find(NxTooltip).at(0);
+    const itemTooltip = secondItem.find(NxTooltip).at(1);
+    const filteredItemTooltip = filteredSecondItem.find(NxTooltip).at(1);
 
     expect(moveUpButton).toHaveProp('title', 'Move Up');
     expect(moveDownButton).toHaveProp('title', 'Move Down');
