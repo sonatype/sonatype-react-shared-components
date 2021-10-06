@@ -23,9 +23,9 @@
 }
 
 .nx-list__item {
-  &, > .nx-list__link, & > .nx-list__btn {
-    @include nx-container-helpers.container-horizontal;
+  @include nx-container-helpers.container-vertical;
 
+  &, > .nx-list__link, & > .nx-list__btn {
     --nx-padding-without-border: calc(var(--nx-spacing-4x) - 1px);
 
     align-items: first baseline;
