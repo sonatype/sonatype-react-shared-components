@@ -66,11 +66,10 @@ const Contributing = () =>
           </NxList>
         </NxList.Item>
         <NxList.Item>
-        <NxList.Text>
-          See also <NxCode>NxCheckboxPage.tsx</NxCode>
-          and <NxCode>NxCheckboxExample.tsx</NxCode> as an example of how to create a
-          component example.
-        </NxList.Text>
+          <NxList.Text>
+            See also <NxCode>NxCheckboxPage.tsx</NxCode> and <NxCode>NxCheckboxExample.tsx</NxCode> as
+            an example of how to create a component example.
+          </NxList.Text>
         </NxList.Item>
       </NxList>
       <NxTile.Subsection>

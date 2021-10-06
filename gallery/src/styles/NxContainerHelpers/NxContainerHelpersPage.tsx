@@ -30,8 +30,9 @@ const NxContainerHelpersPage = () => {
           <NxList.Item>
             <NxList.Text>
               Elements should specify margin as desired in the directions in which they may have siblings, i.e. top
-              and bottom for block elements or left and right for inline elements. They <em>should not</em> specify margin
-              in the cross axis. Note that vertical sibling margins do collapse, but horizontal sibling margins do not.
+              and bottom for block elements or left and right for inline elements. They <em>should not</em> specify
+              margin in the cross axis. Note that vertical sibling margins do collapse, but horizontal sibling margins
+              do not.
             </NxList.Text>
           </NxList.Item>
           <NxList.Item>

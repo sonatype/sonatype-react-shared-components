@@ -97,8 +97,8 @@ const AdditionalResources = () =>
             <NxTextLink external href="https://www.youtube.com/watch?v=nYkdrAPrdcw&time_continue=781">
               Video about Flux
             </NxTextLink>
-            , which is a precursor to redux. Uses some real-world problems to motivate the concept of one-way dataflow for
-            state management, which is what Redux is all about.
+            , which is a precursor to redux. Uses some real-world problems to motivate the concept of one-way dataflow
+            for state management, which is what Redux is all about.
           </NxList.Text>
         </NxList.Item>
       </NxList>
