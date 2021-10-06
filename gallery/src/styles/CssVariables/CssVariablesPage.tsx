@@ -237,7 +237,7 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-form-element-border-pristine">
               <NxWarningAlert>
-                Deprecated: We no longer want to show when input is a pristine state.
+                Deprecated: We no longer want to show when input is in a pristine state.
                 The standard color for the borders of form fields
                 (such as text inputs) in their pristine state.
               </NxWarningAlert>
