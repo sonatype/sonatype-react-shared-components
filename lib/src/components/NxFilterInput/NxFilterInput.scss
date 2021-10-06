@@ -12,12 +12,6 @@
   margin-bottom: 0;
   white-space: nowrap;
 
-  &:focus-within {
-    .nx-text-input__box {
-      border-color: var(--nx-color-interactive-border-focus);
-    }
-  }
-
   &.disabled {
     .nx-icon--filter-icons {
       color: var(--nx-color-text-disabled);

@@ -8,40 +8,11 @@ const { Target } = require('@applitools/eyes-webdriverio');
 const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 
 describe('NxTextInput', function() {
-  const simpleComponentSelector = '#nx-filter-input-simple-example .nx-filter-input',
-      searchComponentSelector = '#nx-filter-input-search-example .nx-filter-input',
+  const searchComponentSelector = '#nx-filter-input-search-example .nx-filter-input',
       disabledComponentSelector = '#nx-filter-input-disabled-example .nx-filter-input';
-
-  function getInputElementSelector(componentSelector, inputType = 'input') {
-    return `${componentSelector} ${inputType}`;
-  }
 
   beforeEach(async function() {
     await browser.url('#/pages/NxFilterInput');
-  });
-
-  describe('Simple NxFilterInput', function() {
-    it('has a light border when empty', simpleTest(simpleComponentSelector));
-
-    it('has a dark border when hovered',
-        hoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
-    it('has a blue border when focused',
-        focusTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
-
-    it('has a blue border when hovered and focused',
-        focusAndHoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
-
-    it('has a dark border when non-empty', async function() {
-      const inputElement = await browser.$(getInputElementSelector(simpleComponentSelector));
-
-      await inputElement.setValue('foo');
-
-      browser.execute(function(el) {
-        el.blur();
-      }, inputElement);
-
-      await simpleTest(simpleComponentSelector)();
-    });
   });
 
   describe('Search NxFilterInput', function() {
