@@ -235,6 +235,12 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-form-element-border">
               The standard color for the borders of form fields (such as text inputs) in their default state.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-form-element-border-pristine">
+              <NxWarningAlert>
+                Deprecated. The standard color for the borders of form fields
+                (such as text inputs) in their pristine state.
+              </NxWarningAlert>
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-interactive-background-selected">
               The standard color for the backgrounds of interactive elements (such as clickable list rows) when they
               are selected.

@@ -23,9 +23,3 @@
     display: inline-block;
   }
 }
-
-@mixin pristine() {
-  .nx-icon--invalid, .nx-icon--valid {
-    display: none;
-  }
-}
