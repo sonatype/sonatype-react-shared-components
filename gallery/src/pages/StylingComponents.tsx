@@ -126,10 +126,6 @@ const StylingRSCPage = () =>
           </NxTextLink>
         </li>
       </ul>
-      <NxP>
-        If you have questions about how to use RSC's styles in your app, or how to create customs style for your app
-        #react-components on Slack is a good place to ask.
-      </NxP>
     </NxTile.Subsection>
   </GalleryTile>;
 
