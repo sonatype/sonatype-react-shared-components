@@ -18,7 +18,7 @@ describe('nx-form-select', function() {
   describe('Simple NxFormSelect', function() {
     it('has a dark border by default', simpleTest(selector));
 
-    it('has a dark border when hovered', hoverTest(selector));
+    it('has a darker border when hovered', hoverTest(selector));
     it('has a blue border when focused', focusTest(selector));
     it('has a blue border when hovered and focused', focusAndHoverTest(selector));
   });
