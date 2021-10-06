@@ -40,6 +40,10 @@
     // 1px of padding subtracted to account for the transparent border
     padding: var(--nx-spacing-4x) var(--nx-padding-without-border)
       var(--nx-padding-without-border) var(--nx-padding-without-border);
+
+    > .nx-chevron {
+      margin-right: 0;
+    }
   }
 
   &:first-child {
@@ -251,12 +255,6 @@
     background: none;
     font: inherit;
     outline: none;
-  }
-}
-
-.nx-list__btn, .nx-list__link {
-  > .nx-chevron {
-    margin-right: 0;
   }
 }
 
