@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert, NxWarningAlert, NxTable, NxP, NxCode, NxTextLink }
+import { NxInfoAlert, NxWarningAlert, NxTable, NxP, NxCode, NxTextLink, NxList }
   from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
@@ -17,12 +17,20 @@ const NxTableStylePage = () =>
       <NxP>
         This is the styling and layout for a basic table. There are few variations demonstrated here:
       </NxP>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item">Basic table layout</li>
-        <li className="nx-list__item">Tables with clickable rows</li>
-        <li className="nx-list__item">Empty tables</li>
-        <li className="nx-list__item">A table with an error.</li>
-      </ul>
+      <NxList className="nx-list--bulleted">
+        <NxList.Item>
+          <NxList.Text>Basic table layout</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Tables with clickable rows</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Empty tables</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>A table with an error.</NxList.Text>
+        </NxList.Item>
+      </NxList>
       <NxTable>
         <NxTable.Head>
           <NxTable.Row>

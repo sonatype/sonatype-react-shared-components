@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxTable, NxP, NxCode, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -75,15 +75,19 @@ const NxTreeViewMultiSelectPage = () =>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
               Called whenever selection change occurs; it will receive two arguments:{' '}
-              <ul className="nx-list nx-list--bulleted">
-                <li className="nx-list__item">
-                  <NxCode >Set</NxCode> of ids of the currently selected options
-                </li>
-                <li className="nx-list__item">
-                  <NxCode>id</NxCode> of the toggled option
-                  or <NxCode>undefined</NxCode> if all/none option was toggled
-                </li>
-              </ul>
+              <NxList className="nx-list--bulleted">
+                <NxList.Item>
+                  <NxList.Text>
+                    <NxCode >Set</NxCode> of ids of the currently selected options
+                  </NxList.Text>
+                </NxList.Item>
+                <NxList.Item>
+                  <NxList.Text>
+                    <NxCode>id</NxCode> of the toggled option
+                    or <NxCode>undefined</NxCode> if all/none option was toggled
+                  </NxList.Text>
+                </NxList.Item>
+              </NxList>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
