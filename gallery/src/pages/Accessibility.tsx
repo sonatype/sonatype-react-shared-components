@@ -125,15 +125,6 @@ const Accessibility = () =>
         </NxList.Item>
       </NxList>
     </NxTile.Subsection>
-
-    <NxTile.Subsection>
-      <NxTile.SubsectionHeader>
-        <NxH3>
-          Discover an accessibility problem? Have a suggestion for an improvement?
-        </NxH3>
-      </NxTile.SubsectionHeader>
-    </NxTile.Subsection>
-
   </GalleryTile>;
 
 export default Accessibility;
