@@ -23,8 +23,6 @@
 }
 
 .nx-list__item {
-  @include nx-container-helpers.container-vertical;
-
   &, > .nx-list__link, & > .nx-list__btn {
     --nx-padding-without-border: calc(var(--nx-spacing-4x) - 1px);
 
@@ -129,6 +127,8 @@
   padding: 0 0 0 26px;
 
   .nx-list__item {
+    @include nx-container-helpers.container-vertical;
+
     border: none;
     display: list-item;
     list-style: disc outside;
@@ -244,8 +244,6 @@
 }
 
 .nx-list__btn {
-  @include nx-container-helpers.container-horizontal;
-
   text-align: left;
   width: 100%;
 
@@ -253,6 +251,12 @@
     background: none;
     font: inherit;
     outline: none;
+  }
+}
+
+.nx-list__btn, .nx-list__link {
+  > .nx-chevron {
+    margin-right: 0;
   }
 }
 
