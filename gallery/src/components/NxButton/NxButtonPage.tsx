@@ -126,7 +126,8 @@ export default function NxButtonPage() {
                           id="nx-button-icon-only-example"
                           liveExample={NxButtonIconOnlyExample}
                           codeExamples={nxButtonIconOnlyCode}>
-        An example of a button containing only an icon. For accessibility purposes it is important to use the
+        An example of buttons containing only an icon and with one that is in a disabled state.
+        For accessibility purposes, it is important to use the
         title prop for a screen reader to interpret the content correctly.
       </GalleryExampleTile>
     </>
