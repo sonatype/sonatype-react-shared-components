@@ -8,11 +8,16 @@ const { Target } = require('@applitools/eyes-webdriverio');
 const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 
 describe('NxTextInput', function() {
-  const searchComponentSelector = '#nx-filter-input-search-example .nx-filter-input',
+  const simpleComponentSelector = '#nx-filter-input-simple-example .nx-filter-input',
+      searchComponentSelector = '#nx-filter-input-search-example .nx-filter-input',
       disabledComponentSelector = '#nx-filter-input-disabled-example .nx-filter-input';
 
   beforeEach(async function() {
     await browser.url('#/pages/NxFilterInput');
+  });
+
+  describe('Simple NxFilterInput', function() {
+    it('looks right', simpleTest(simpleComponentSelector));
   });
 
   describe('Search NxFilterInput', function() {
