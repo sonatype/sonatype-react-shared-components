@@ -27,8 +27,7 @@ $twisty-proportion-difference: 2.75px;
 .nx-tree-view--expanded {
   > .nx-tree-view__trigger, > .nx-tree-view__tooltip-wrapper > .nx-tree-view__trigger {
     > .nx-tree-view__twisty {
-      transform: rotate(90deg);
-      padding: 0 $twisty-proportion-difference;
+      transform: translateX(-1px) rotate(90deg);
     }
   }
 }
@@ -65,12 +64,15 @@ $twisty-proportion-difference: 2.75px;
   box-sizing: border-box;
   color: var(--nx-color-text-dark);
   cursor: pointer;
-  display: flex;
+  display: grid;
   font: inherit;
   font-weight: 600;
+
+  // the box for the twisty is ostensibly 24x24 but the left edge should overlay with the focus border so subtract it
+  grid-template-columns: calc(var(--nx-spacing-6x) - 1px) auto;
   text-align: left;
   // subtract 1 from all sides to make room for focus border
-  padding: calc(var(--nx-spacing-base) - 1px) calc(var(--nx-spacing-2x) - 1px);
+  padding: calc(var(--nx-spacing-base) - 1px) calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-base) - 1px) 0;
   width: 100%;
 
   &:hover, &:focus {
@@ -85,9 +87,15 @@ $twisty-proportion-difference: 2.75px;
 }
 
 .nx-tree-view__twisty {
-  box-sizing: content-box;
-  transition: all 300ms ease;
+  align-self: center;
   font-size: 22px;
+  justify-self: center;
+  margin: 0;
+  transition: all 300ms ease;
+
+  // The grid cell for this element has 1px shaved off on the left for the focus borer. This translation re-centers
+  // the icon as if that wasn't the case
+  transform: translateX(-1px);
 
   &.nx-tree-view--empty {
     visibility: hidden;
@@ -100,7 +108,7 @@ $twisty-proportion-difference: 2.75px;
 
   align-items: center;
   display: flex;
-  flex-grow: 1;
+  margin-left: var(--nx-spacing-base);
 
   span {
     @include nx-text-helpers.truncate-ellipsis;
@@ -132,7 +140,7 @@ $twisty-proportion-difference: 2.75px;
     calc(var(--nx-spacing-base) - 1px)
     calc(var(--nx-spacing-6x) - 1px)
     calc(var(--nx-spacing-base) - 1px)
-    calc(var(--nx-spacing-8x) + 2 * #{$twisty-proportion-difference} - 1px);
+    calc(var(--nx-spacing-8x) - 1px);
 
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -143,7 +151,7 @@ $twisty-proportion-difference: 2.75px;
     display: flex;
     margin: 0;
     padding: var(--nx-spacing-base) 0 var(--nx-spacing-base)
-      calc(var(--nx-spacing-4x) + 2 * #{$twisty-proportion-difference});
+      calc(var(--nx-spacing-4x));
   }
 }
 
