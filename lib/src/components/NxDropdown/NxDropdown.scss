@@ -117,6 +117,11 @@
 
 .nx-dropdown-link {
   color: var(--nx-color-link);
+  margin: 0;
+
+  &:focus {
+    border-radius: 0;
+  }
 
   &:hover {
     color: var(--nx-color-link-hover);
