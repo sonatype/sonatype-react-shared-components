@@ -15,7 +15,6 @@ $-nx-scrollable-default-height: 400px;
 .nx-text-link {
   @include nx-container-helpers.container-horizontal;
 
-  border: 1px solid transparent;
   color: var(--nx-color-link);
   cursor: pointer;
   margin: 0;
@@ -31,7 +30,6 @@ $-nx-scrollable-default-height: 400px;
   }
 
   &:focus {
-    //border-color: var(--nx-color-interactive-border-focus);
     border-radius: var(--nx-border-radius);
     outline: 1px solid var(--nx-color-interactive-border-focus);
   }
