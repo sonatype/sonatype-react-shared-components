@@ -20,6 +20,10 @@ export default function NxTilePolicyViolationIndicatorExample() {
           <div className="nx-tile__tags">
             <NxPolicyViolationIndicator threatLevelCategory="moderate"/>
           </div>
+          <div className="nx-tile__actions">
+            <button className="nx-btn nx-btn--tertiary">Action 1</button>
+            <button className="nx-btn nx-btn--tertiary">Action 2</button>
+          </div>
           <div className="nx-tile-header__subtitle">
             The Subtitle - which wraps - sentient Chiba footage apophenia papier-mache Tokyo pre-skyscraper drone carbon
             bomb range-rover
