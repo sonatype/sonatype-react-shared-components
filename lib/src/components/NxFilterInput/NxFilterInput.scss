@@ -14,7 +14,7 @@
 
   &:focus-within {
     .nx-text-input__box {
-      border-color: #43cbf5;
+      border-color: var(--nx-color-interactive-border-focus);
     }
   }
 

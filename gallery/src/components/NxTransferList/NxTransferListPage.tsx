@@ -12,10 +12,12 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxTransferListExample from './NxTransferListExample';
 import NxTransferListComplexExample from './NxTransferListComplexExample';
 import NxTransferListFullWidthExample from './NxTransferListFullWidthExample';
+import NxTransferListWithReorderingExample from './NxTransferListWithReorderingExample';
 
 const nxTransferListExample = require('./NxTransferListExample?raw'),
     nxTransferListComplexExample = require('./NxTransferListComplexExample?raw'),
-    nxTransferListFullWidthExample = require('./NxTransferListFullWidthExample?raw');
+    nxTransferListFullWidthExample = require('./NxTransferListFullWidthExample?raw'),
+    nxTransferListWithReorderingExample = require('./NxTransferListWithReorderingExample?raw');
 
 const NxTransferListPage = () =>
   <>
@@ -59,13 +61,30 @@ const NxTransferListPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>selectedItems</NxCode></NxTable.Cell>
-              <NxTable.Cell>Set</NxTable.Cell>
+              <NxTable.Cell>Set | Array</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                A Set containing the ids of the items which are selected – that is, the ones which should appear
-                on the right side of the component. Be sure to always provide a fresh <NxCode>Set</NxCode> instance
-                when updating this prop, rather than mutating the same <NxCode>Set</NxCode>.
+                A Set, or an Array if <NxCode>allowReordering</NxCode> is set to true, containing the ids of the
+                items which are selected – that is, the ones which should
+                appear on the right side of the component. Be sure to always provide a
+                fresh <NxCode>Set</NxCode> or <NxCode>Array</NxCode> instance
+                when updating this prop, rather than mutating the same <NxCode>Set</NxCode> or <NxCode>Array</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>allowReordering</NxCode></NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
+                Allow reordering of selected items.
+                When this is enabled, buttons appear next to each selected item, allowing the user to reorder them.
+                Additionally, the ordering of the selected list is no longer dictated by
+                the order of <NxCode>allItems</NxCode>. Instead, it is determined by the order in which
+                the user selects the item. The last selected item appears at the bottom of the selected list.
+                Furthermore, if this is set to true, <NxCode>selectedItems</NxCode> must be
+                an <NxCode>Array</NxCode> instead of a <NxCode>Set</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -160,7 +179,8 @@ const NxTransferListPage = () =>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Callback for when the user selects or unselects one or more items. Receives the
-                new <NxCode>Set</NxCode> of selected ids as a parameter.
+                new <NxCode>Set</NxCode>, or <NxCode>Array</NxCode> if <NxCode>allowReordering</NxCode> is true,
+                of selected ids as a parameter.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -274,6 +294,13 @@ const NxTransferListPage = () =>
                         codeExamples={nxTransferListFullWidthExample}
                         liveExample={NxTransferListFullWidthExample}>
       Demonstrates an <NxCode>NxTransferList</NxCode> with the "full width" modifier class.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Reordering Example"
+                        id="nx-transfer-list-with-reordering"
+                        codeExamples={nxTransferListWithReorderingExample}
+                        liveExample={NxTransferListWithReorderingExample}>
+      Demonstrates an <NxCode>NxTransferList</NxCode> with reordering enabled.
     </GalleryExampleTile>
   </>;
 

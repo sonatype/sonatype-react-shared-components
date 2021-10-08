@@ -16,9 +16,10 @@ describe('NxTransferList', function() {
   const simpleListSelector = '#nx-transfer-list-minimal-example .nx-transfer-list',
       complexListSelector = '#nx-transfer-list-complex-example .nx-transfer-list',
       fullWidthListSelector = '#nx-transfer-list-full-width-example .nx-transfer-list',
-      itemsSelector = `${simpleListSelector} .nx-transfer-list__half:first-child .nx-transfer-list__item`,
-      firstItemSelector = `${itemsSelector}:first-child`,
-      secondItemSelector = `${itemsSelector}:nth-child(2)`,
+      itemsSelector =
+        `${simpleListSelector} .nx-transfer-list__half:first-child .nx-transfer-list__item`,
+      firstItemSelector = `${itemsSelector}:first-child .nx-transfer-list__select`,
+      secondItemSelector = `${itemsSelector}:nth-child(2) .nx-transfer-list__select`,
       transferAllSelector =
         `${complexListSelector} .nx-transfer-list__half:first-child .nx-transfer-list__move-all`;
 
@@ -39,7 +40,7 @@ describe('NxTransferList', function() {
 
   it('puts a dark border on hovered items', hoverTest(simpleListSelector, secondItemSelector));
   it('puts a blue border and glow on focused items', focusTest(simpleListSelector, secondItemSelector));
-  it('puts a dark border and blue glow on focused+hovered items',
+  it('puts a blue border and blue glow on focused+hovered items',
       focusAndHoverTest(simpleListSelector, secondItemSelector));
   it('puts a grey background on clicked items', clickTest(simpleListSelector, secondItemSelector));
 

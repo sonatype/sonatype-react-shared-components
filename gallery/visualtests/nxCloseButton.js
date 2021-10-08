@@ -17,5 +17,5 @@ describe('NxCloseButton', function() {
   it('has a dark grey border when hovered', hoverTest(selector));
   it('has a dark grey border and light grey background when clicked', clickTest(selector));
   it('has a light blue border when focused', focusTest(selector));
-  it('has a dark grey border when focused and hovered', focusAndHoverTest(selector));
+  it('has a blue border and blue glow when focused and hovered', focusAndHoverTest(selector));
 });

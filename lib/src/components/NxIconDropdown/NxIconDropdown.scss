@@ -4,10 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-text-helpers';
-@import '../../scss-shared/nx-container-helpers';
-@import '../../scss-shared/nx-button-helpers';
-@import '../../scss-shared/nx-dropdown-variables';
 
 .nx-icon-dropdown {
   margin-right: var(--nx-spacing-6x);
@@ -26,6 +22,6 @@
 
   &.open {
     background-color: var(--nx-swatch-grey-95);
-    border-color: var(--nx-swatch-grey-5);
+    border-color: var(--nx-swatch-grey-05);
   }
 }

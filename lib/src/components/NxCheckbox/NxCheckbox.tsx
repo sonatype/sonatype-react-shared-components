@@ -6,6 +6,7 @@
  */
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
+import { omit } from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -34,6 +35,7 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
             checkboxId,
             overflowTooltip,
             children,
+            inputAttributes = {},
             ...otherProps
           } = props,
           labelClasses = classnames('nx-radio-checkbox', 'nx-checkbox', className, {
@@ -43,15 +45,26 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
           }),
           content = children && <span className="nx-radio-checkbox__content nx-checkbox__content">{children}</span>;
 
+      const {
+        className: checkboxClassName,
+        ...unfilteredInputAttributes
+      } = inputAttributes;
+
+      const otherInputAttributes = omit(
+          ['disabled', 'checked', 'readOnly', 'onChange'],
+          unfilteredInputAttributes
+      );
+
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
           <input type="checkbox"
-                 id={checkboxId || undefined}
-                 className="nx-radio-checkbox__input nx-checkbox__input"
+                 id={otherInputAttributes.id || checkboxId || undefined}
+                 className={classnames('nx-radio-checkbox__input', 'nx-checkbox__input', checkboxClassName)}
                  disabled={!!disabled}
                  checked={isChecked}
                  readOnly={!onChange}
-                 onChange={onChange || undefined}/>
+                 onChange={onChange || undefined}
+                 { ...otherInputAttributes } />
           <span className="nx-radio-checkbox__control nx-checkbox__box">
             {/* Put a space in the box if not checked,
               * in order to provide a consistent vertical-align baseline

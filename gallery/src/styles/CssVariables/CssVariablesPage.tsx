@@ -317,19 +317,23 @@ const CssVariablesPage = () => {
         </NxTable>
       </GalleryTile>
       <GalleryTile title="Swatch Color Properties">
-        While the color properties described in the previous section are higher-level, with specific semantics
-        around their use, there is another set of lower level color properties defined in terms of color swatches.
-        For information on these properties, see
-        the <NxTextLink href="#/pages/Color%20Palettes">Color Palettes</NxTextLink> page.
+        <NxP>
+          While the color properties described in the previous section are higher-level, with specific semantics
+          around their use, there is another set of lower level color properties defined in terms of color swatches and
+          palettes. For information on these properties, see
+          the <NxTextLink href="#/pages/Color%20Palettes">Color Palettes</NxTextLink> page.
+        </NxP>
       </GalleryTile>
       <GalleryTile title="SCSS Variables and Versioning Guarantees">
-        Previous versions of RSC defined a wide range of SCSS variables that were never properly delineated or
-        documented in terms of which were public to downstream projects and which were internal to the library. In
-        RSC 7.0.0, most of those variables were migrated to the CSS custom properties documented above. Any SCSS
-        variables still present within the RSC codebase are now officially private and subject to change in any way in
-        any future version of the library. The CSS custom properties on the other hand are all public and their names
-        and meanings will not be changed (aside from additions) except in new major versions. Note however that their
-        values are subject to change at any time.
+        <NxP>
+          Previous versions of RSC defined a wide range of SCSS variables that were never properly delineated or
+          documented in terms of which were public to downstream projects and which were internal to the library. In
+          RSC 7.0.0, most of those variables were migrated to the CSS custom properties documented above. Any SCSS
+          variables still present within the RSC codebase are now officially private and subject to change in any way in
+          any future version of the library. The CSS custom properties on the other hand are all public and their names
+          and meanings will not be changed (aside from additions) except in new major versions. Note however that their
+          values are subject to change at any time.
+        </NxP>
       </GalleryTile>
       <GalleryTile title="Nomenclature: Custom Properties or Variables?">
         <NxP>

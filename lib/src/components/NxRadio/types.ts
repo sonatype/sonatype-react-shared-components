@@ -4,10 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { LabelHTMLAttributes } from 'react';
+import { InputHTMLAttributes, LabelHTMLAttributes, Validator } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { requiredNullableString } from '../../util/customPropTypes';
+
+type InputAttributesProp =
+  Omit<InputHTMLAttributes<HTMLInputElement>,
+  'name' | 'disabled' | 'checked' | 'onChange' | 'readonly'>;
 
 export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   name: string;
@@ -17,6 +21,7 @@ export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   disabled?: boolean | null;
   radioId?: string | null;
   overflowTooltip?: boolean | null;
+  inputAttributes?: InputAttributesProp;
 };
 
 // In a strictly typescript environment, PropTypes are mostly redundant.  However, they still provide safety when this
@@ -28,5 +33,6 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   isChecked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
   radioId: PropTypes.string,
-  overflowTooltip: PropTypes.bool
+  overflowTooltip: PropTypes.bool,
+  inputAttributes: PropTypes.object as Validator<InputAttributesProp>
 };

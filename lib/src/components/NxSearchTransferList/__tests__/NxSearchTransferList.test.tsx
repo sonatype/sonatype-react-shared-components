@@ -144,7 +144,7 @@ describe('NxSearchTransferList', function() {
 
     expect(onRemove).not.toHaveBeenCalled();
 
-    component.find(TransferListHalf).simulate('moveAll', new Set(['C']));
+    component.find(TransferListHalf).simulate('moveAll', ['C']);
     expect(onRemove).toHaveBeenCalledWith([{ id: 'c', displayName: 'a' }, { id: 'B', displayName: 'b' }]);
   });
 

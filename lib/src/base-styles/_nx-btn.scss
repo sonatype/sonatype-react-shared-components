@@ -34,7 +34,7 @@
   }
 
   &:active {
-    background-color: var(--nx-swatch-blue-90);
+    background-color: var(--nx-swatch-blue-95);
   }
 }
 
@@ -49,7 +49,7 @@
   border-color: transparent;
   color: var(--nx-swatch-white);
 
-  &:hover {
+  &:hover, &:focus {
     background-color: var(--nx-swatch-blue-20);
   }
 
@@ -70,10 +70,11 @@
 
   &:focus {
     background-color: transparent;
+    border-color: var(--nx-color-interactive-border-focus);
   }
 
   &:active {
-    background-color: var(--nx-swatch-grey-95);
+    background-color: var(--nx-swatch-indigo-97);
     border-color: var(--nx-swatch-grey-05);
   }
 }

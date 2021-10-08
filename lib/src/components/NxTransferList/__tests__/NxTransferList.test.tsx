@@ -104,7 +104,7 @@ describe('NxTransferList', function() {
 
     expect(onChange).not.toHaveBeenCalled();
 
-    component.childAt(0).simulate('moveAll', new Set([3]));
+    component.childAt(0).simulate('moveAll', [3]);
 
     expect(onChange).toHaveBeenCalledWith(new Set([1, 3]));
   });
@@ -118,7 +118,7 @@ describe('NxTransferList', function() {
 
         expect(onChange).not.toHaveBeenCalled();
 
-        component.childAt(1).simulate('moveAll', new Set([1]));
+        component.childAt(1).simulate('moveAll', [1]);
 
         expect(onChange).toHaveBeenCalledWith(new Set([2]));
       }
@@ -267,6 +267,103 @@ describe('NxTransferList', function() {
       expect(oneSelected.childAt(1)).toHaveProp('footerContent', 'To 1 and beyond!');
       expect(zeroSelected.childAt(1)).toHaveProp('footerContent', 'To 0 and beyond!');
       expect(threeSelected.childAt(1)).toHaveProp('footerContent', 'To 3 and beyond!');
+    });
+  });
+
+  it('throw an error when passing a Set to selectedItems when allowReordering is true', function() {
+    expect(() => getShallow({ allowReordering: true }))
+        .toThrow('selectedItems must be an array if allowReordering is true');
+  });
+
+  describe('allowReordering', function() {
+    const allItems = [{
+          id: 1,
+          displayName: 'foo'
+        }, {
+          id: 2,
+          displayName: 'bar'
+        }, {
+          id: 3,
+          displayName: 'baz'
+        }, {
+          id: 4,
+          displayName: 'qwerty'
+        }],
+        selectedItems = [2, 4, 3];
+
+    let onChange: jest.Mock,
+        component: ShallowWrapper;
+
+    beforeEach(function() {
+      onChange = jest.fn();
+      component = getShallow({ allowReordering: true, allItems, selectedItems, onChange });
+    });
+
+    it('renders items present in allItems but missing from selectedItems into the available side', function() {
+      const firstHalf = component.childAt(0);
+
+      const items = [
+        { id: 1, displayName: 'foo' }
+      ];
+
+      expect(firstHalf).toHaveProp('items', items);
+    });
+
+    it('renders items present in allItems and selectedItems into the selected side', function() {
+      const secondHalf = component.childAt(1);
+
+      const items = [
+        { id: 2, displayName: 'bar' },
+        { id: 4, displayName: 'qwerty' },
+        { id: 3, displayName: 'baz' }
+      ];
+
+      expect(secondHalf).toHaveProp('items', items);
+    });
+
+    it('fires onChange with a new Array with the clicked item added at the end '
+    + 'when the first half fires onItemChange', function() {
+      expect(onChange).not.toHaveBeenCalled();
+
+      const firstHalf = component.childAt(0);
+
+      firstHalf.simulate('itemChange', true, 1);
+
+      expect(onChange).toHaveBeenCalledWith([2, 4, 3, 1]);
+
+      // ensure original array was not mutated
+      expect(selectedItems).toEqual([2, 4, 3]);
+    });
+
+    it('fires onChange with a new Array of reordered items', function() {
+      expect(onChange).not.toHaveBeenCalled();
+
+      const secondHalf = component.childAt(1);
+
+      secondHalf.simulate('reorderItem', 0, 1);
+
+      expect(onChange).toHaveBeenCalledWith([4, 2, 3]);
+
+      // ensure original array was not mutated
+      expect(selectedItems).toEqual([2, 4, 3]);
+
+      secondHalf.simulate('reorderItem', 1, -1);
+
+      expect(onChange).toHaveBeenCalledWith([4, 2, 3]);
+    });
+
+    it('onChange should not be fired if trying to move top most item up or bottom most item down', function() {
+      expect(onChange).not.toHaveBeenCalled();
+
+      const secondHalf = component.childAt(1);
+
+      secondHalf.simulate('reorderItem', 0, -1);
+
+      expect(onChange).not.toHaveBeenCalled();
+
+      secondHalf.simulate('reorderItem', 2, 1);
+
+      expect(onChange).not.toHaveBeenCalled();
     });
   });
 });
