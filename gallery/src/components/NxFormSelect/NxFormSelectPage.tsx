@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxTable, NxP, NxTextLink, NxTile, NxH3 } from '@sonatype/react-shared-components';
+import { NxCode, NxTable, NxP, NxTextLink, NxTile, NxH3, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -42,6 +42,11 @@ const NxFormSelectPage = () =>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
                 Should be set to true when the user has not yet adjusted the value of this form field.
+                <NxWarningAlert>
+                  Deprecated: <NxCode>isPristine</NxCode> was previously only used for styling,
+                  but since we no longer want to show if this component is in the pristine state,
+                  this attribute is no longer needed.
+                </NxWarningAlert>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -70,6 +75,11 @@ const NxFormSelectPage = () =>
           functions, which each return an object containining the "stateful" parts of the NxTextInput props{' '}
           (<NxCode>value</NxCode>).
         </NxP>
+        <NxWarningAlert>
+          Deprecated: <NxCode>nxFormSelectStateHelpers</NxCode> used to do more,
+          but those features are now deprecated and are no longer needed.
+          We no longer recommend using this for new use.
+        </NxWarningAlert>
         <NxTable>
           <NxTable.Head>
             <NxTable.Row>
