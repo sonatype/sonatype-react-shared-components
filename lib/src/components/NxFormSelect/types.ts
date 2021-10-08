@@ -9,11 +9,11 @@ import { SelectHTMLAttributes } from 'react';
 
 export interface StateProps {
   value: string | number;
-  isPristine: boolean;
+  isPristine?: boolean | null;
 }
 
 export type Props = SelectHTMLAttributes<HTMLSelectElement> & StateProps;
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  isPristine: PropTypes.bool.isRequired
+  isPristine: PropTypes.bool
 };

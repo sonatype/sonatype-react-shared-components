@@ -12,7 +12,7 @@ import { StateProps } from './types';
  * @return an initialized state with the specified value and isPristine set to true.
  */
 export function initialState<T extends string | number>(value: T): StateProps {
-  return { isPristine: true, value };
+  return { value };
 }
 
 /**
@@ -20,7 +20,7 @@ export function initialState<T extends string | number>(value: T): StateProps {
  * isPristine set to false.
  */
 export function userInput<T extends string | number>(newValue: T): StateProps {
-  return { isPristine: false, value: newValue };
+  return { value: newValue };
 }
 
 /**

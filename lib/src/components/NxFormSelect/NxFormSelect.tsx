@@ -8,13 +8,14 @@ import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 
 import { Props, propTypes } from './types';
+import { omit } from 'ramda';
 export { Props, propTypes };
 
 const NxFormSelect = forwardRef<HTMLSelectElement, Props>(
     function NxFormSelect(props, forwardedRef) {
-      const { isPristine, className: classNameProp, ...attrs } = props,
-          className = classnames('nx-form-select', classNameProp, { pristine: isPristine });
-
+      const { className: classNameProp, ...otherProps } = props,
+          className = classnames('nx-form-select', classNameProp);
+      const attrs = omit(['isPristine'], otherProps);
       return (
         <select ref={forwardedRef} { ...{ className, ...attrs } } />
       );
