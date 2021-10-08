@@ -7,12 +7,6 @@
 @use '../../scss-shared/nx-text-helpers';
 @use '../../scss-shared/nx-container-helpers';
 
-// The caret is taller than it is wide. It is rotated using `transform`, which does not change its effect
-// on the layout of surrounding elements.  However, we _want_ its rotation to affect the layout of surrounding
-// elements such that the title is always 8px from the nearest visible point on the caret. This variable
-// represents the distance necessary to make that happen
-$twisty-proportion-difference: 2.75px;
-
 /*
   #Tree view
 */
