@@ -40,8 +40,11 @@ $-triangle-box-width: var(--nx-spacing-6x);
 }
 
 .nx-tree-view--disabled {
-  .nx-tree-view__trigger, .nx-tree-view__child {
-    color: var(--nx-swatch-grey-70);
+  .nx-tree-view__text, .nx-tree-view__child {
+    color: var(--nx-color-text-disabled);
+  }
+
+  .nx-tree-view__trigger {
     cursor: default;
   }
 }
