@@ -87,11 +87,13 @@ function AbstractTreeViewSelect<T extends Option>(props: Props<T>) {
   ) : wrappedTriggerContent;
 
   const filterContent = onFilterChange && options.length > filterThreshold && (
-    <NxFilterInput disabled={disabled}
-                   placeholder={filterPlaceholder || 'filter'}
-                   id={generateId(name, 'filter-input')}
-                   onChange={onFilterChange}
-                   value={filter || ''}/>
+    <NxTreeViewChild>
+      <NxFilterInput disabled={disabled}
+                     placeholder={filterPlaceholder || 'filter'}
+                     id={generateId(name, 'filter-input')}
+                     onChange={onFilterChange}
+                     value={filter || ''}/>
+    </NxTreeViewChild>
   );
 
   const selectAllOption = renderToggleAllOption && renderToggleAllOption();
