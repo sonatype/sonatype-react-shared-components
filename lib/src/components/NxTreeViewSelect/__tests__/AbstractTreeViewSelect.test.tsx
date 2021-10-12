@@ -11,6 +11,7 @@ import {getShallowComponent} from '../../../__testutils__/enzymeUtils';
 import AbstractTreeViewSelect, {Props} from '../AbstractTreeViewSelect';
 import {Option} from '../commonTypes';
 import { NxTreeViewChild } from '../../NxTreeView/NxTreeView';
+import NxFilterInput from '../../NxFilterInput/NxFilterInput';
 
 describe('AbstractTreeViewSelect', function() {
   const requiredProps: Props = {
@@ -106,8 +107,7 @@ describe('AbstractTreeViewSelect', function() {
         const nxTreeView = shallowRender.find('NxTreeView');
         expect(nxTreeView.children().length).toBe(4);
 
-        const filterInput = nxTreeView.childAt(0);
-        expect(filterInput).toHaveDisplayName('ForwardRef(NxFilterInput)');
+        const filterInput = nxTreeView.childAt(0).find(NxFilterInput);
         expect(filterInput).toHaveProp('id', 'nx-tree-view-select-foobar-filter-input');
       });
 
@@ -134,7 +134,7 @@ describe('AbstractTreeViewSelect', function() {
           const nxTreeView = shallowRender.find('NxTreeView');
           expect(nxTreeView.children().length).toBe(12);
 
-          const filterInput = nxTreeView.childAt(0);
+          const filterInput = nxTreeView.childAt(0).find(NxFilterInput);
           expect(filterInput).toHaveDisplayName('ForwardRef(NxFilterInput)');
           expect(filterInput).toHaveProp('id', 'nx-tree-view-select-foobar-filter-input');
         });
