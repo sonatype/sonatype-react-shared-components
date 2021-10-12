@@ -125,7 +125,7 @@
   padding-right: 0;
 
   // essentially, calculate the width the same way that the height is calculated (line height plus padding and border)
-  width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-2x) + 2px);
+  width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-2x));
 
   .nx-icon {
     height: 1em;

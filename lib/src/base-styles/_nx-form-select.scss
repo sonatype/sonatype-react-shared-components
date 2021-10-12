@@ -31,7 +31,7 @@
   color: var(--nx-color-text);
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
-  padding: var(--nx-spacing-2x) var(--nx-spacing-4x);
+  padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
   width: var(--nx-width-form-element-normal);
 
   &.pristine {
