@@ -12,12 +12,6 @@
   margin-bottom: 0;
   white-space: nowrap;
 
-  &:focus-within {
-    .nx-text-input__box {
-      border-color: var(--nx-color-interactive-border-focus);
-    }
-  }
-
   &.disabled {
     .nx-icon--filter-icons {
       color: var(--nx-color-text-disabled);
@@ -30,9 +24,4 @@
     margin-left: 0;
     margin-right: 8px;
   }
-}
-
-.nx-filter-input--empty .nx-text-input__box {
-  // empty filter inputs should be styled the same as pristine text inputs
-  border-color: var(--nx-color-form-element-border-pristine);
 }
