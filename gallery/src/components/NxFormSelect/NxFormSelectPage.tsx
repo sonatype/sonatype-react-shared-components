@@ -41,7 +41,6 @@ const NxFormSelectPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                Should be set to true when the user has not yet adjusted the value of this form field.
                 <NxWarningAlert>
                   Deprecated: <NxCode>isPristine</NxCode> was previously only used for styling,
                   but since we no longer want to show if this component is in the pristine state,

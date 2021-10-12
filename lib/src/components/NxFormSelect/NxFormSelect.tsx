@@ -12,7 +12,7 @@ import { omit } from 'ramda';
 export { Props };
 
 const NxFormSelect = forwardRef<HTMLSelectElement, Props>(
-    function NxFormSelect(props, forwardedRef) {
+    function NxFormSelect(props: Props, forwardedRef) {
       const { className: classNameProp, ...otherProps } = props,
           className = classnames('nx-form-select', classNameProp);
       const attrs = omit(['isPristine'], otherProps);
