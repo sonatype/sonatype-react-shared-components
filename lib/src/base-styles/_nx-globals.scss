@@ -28,6 +28,7 @@ $-nx-scrollable-default-height: 400px;
 
   &:focus {
     border-radius: var(--nx-border-radius);
+    color: var(--nx-color-link-focus);
     outline: 1px solid var(--nx-color-interactive-border-focus);
     outline-offset: 2px;
   }
