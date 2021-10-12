@@ -12,7 +12,7 @@ import NxFormSelect, { Props } from '../NxFormSelect';
 import { mount } from 'enzyme';
 
 describe('NxFormSelect', function() {
-  const minimalProps = { value: '', isPristine: false, onChange: () => {} },
+  const minimalProps = { value: '', onChange: () => {} },
       getShallow = getShallowComponent<Props>(NxFormSelect, minimalProps);
 
   it('renders a <select> with the nx-form-select class', function() {
@@ -31,11 +31,6 @@ describe('NxFormSelect', function() {
 
     expect(component).toHaveProp('lang', 'en-US');
     expect(component).toHaveProp('id', 'foo');
-  });
-
-  it('adds the `pristine` class iff isPristine is true', function() {
-    expect(getShallow()).not.toHaveClassName('pristine');
-    expect(getShallow({ isPristine: true })).toHaveClassName('pristine');
   });
 
   it('forwards a ref to the select', function() {
