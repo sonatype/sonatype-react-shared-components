@@ -6,7 +6,9 @@
  */
 import { useState } from 'react';
 
-import { StateProps } from './types';
+interface StateProps {
+  value: number | string;
+}
 
 /**
  * @return an initialized state with the specified value and isPristine set to true.

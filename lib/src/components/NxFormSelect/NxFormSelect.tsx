@@ -7,9 +7,9 @@
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 
-import { Props, propTypes } from './types';
+import { Props } from './types';
 import { omit } from 'ramda';
-export { Props, propTypes };
+export { Props };
 
 const NxFormSelect = forwardRef<HTMLSelectElement, Props>(
     function NxFormSelect(props, forwardedRef) {
@@ -21,7 +21,5 @@ const NxFormSelect = forwardRef<HTMLSelectElement, Props>(
       );
     }
 );
-
-NxFormSelect.propTypes = propTypes;
 
 export default NxFormSelect;
