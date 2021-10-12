@@ -118,7 +118,7 @@ $-visible-item-count: 10;
   }
 
   &:active {
-    background-color: transparent;
+    background-color: var(--nx-swatch-indigo-97);
     border-color: var(--nx-color-interactive-border-hover);
   }
 }
