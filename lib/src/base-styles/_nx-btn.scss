@@ -130,4 +130,12 @@
   .nx-icon {
     height: 1em;
   }
+
+  &.disabled, &[disabled] {
+    &, &:hover, &:focus {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
 }
