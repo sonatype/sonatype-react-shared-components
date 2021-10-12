@@ -16,8 +16,6 @@ import { ensureElement } from '../../util/reactUtil';
 
 import { CommonProps } from './commonTypes';
 
-import './NxTreeViewSelect.scss';
-
 export interface Props<T extends Option = Option> extends CommonProps<T> {
   renderOption: ((option: T) => ReactElement);
   renderToggleAllOption?: (() => ReactElement | null) | null;
