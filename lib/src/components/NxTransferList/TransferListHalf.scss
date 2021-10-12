@@ -109,7 +109,7 @@ $-visible-item-count: 10;
   padding: var(--nx-spacing-2x);
 
   &:hover {
-    border-color: var(--nx-swatch-grey-05);
+    border-color: var(--nx-color-interactive-border-hover);
   }
 
   &:focus-within {
@@ -119,7 +119,7 @@ $-visible-item-count: 10;
 
   &:active {
     background-color: transparent;
-    border-color: var(--nx-swatch-grey-05);
+    border-color: var(--nx-color-interactive-border-hover);
   }
 }
 

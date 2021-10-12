@@ -37,7 +37,7 @@ $-width: 44px;
   &:focus-within {
     .nx-toggle__control {
       &:hover {
-        border-color: var(--nx-swatch-grey-05);
+        border-color: var(--nx-color-interactive-border-hover);
       }
 
       &::after{
@@ -59,7 +59,7 @@ $-width: 44px;
     cursor: pointer;
 
     .nx-toggle__control {
-      border-color: var(--nx-swatch-grey-05);
+      border-color: var(--nx-color-interactive-border-hover);
     }
   }
 }
