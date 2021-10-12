@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxTable, NxP, NxTextLink, NxTile, NxH3 } from '@sonatype/react-shared-components';
+import { NxCode, NxTable, NxP, NxTextLink, NxTile, NxH3, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -18,9 +18,7 @@ const NxFormSelectPage = () =>
     <GalleryDescriptionTile>
       <NxP>
         <NxCode>NxFormSelect</NxCode> provides styling and basic behavior for <NxCode>&lt;select&gt;</NxCode>
-        elements. Formerly, this component was a simple "convenience component" that provided no extra capabilities
-        over the basic DOM element. However it has since been upgraded to a full component in order to support
-        pristine state tracking.
+        elements.
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
@@ -43,7 +41,11 @@ const NxFormSelectPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                Should be set to true when the user has not yet adjusted the value of this form field.
+                <NxWarningAlert>
+                  Deprecated: <NxCode>isPristine</NxCode> was previously only used for styling,
+                  but since we no longer want to show if this component is in the pristine state,
+                  this attribute is no longer needed.
+                </NxWarningAlert>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -70,8 +72,13 @@ const NxFormSelectPage = () =>
         <NxP>
           The <NxCode>nxFormSelectStateHelpers</NxCode> object includes the following recommended state helper
           functions, which each return an object containining the "stateful" parts of the NxTextInput props{' '}
-          (<NxCode>value</NxCode> and <NxCode>isPristine</NxCode>).
+          (<NxCode>value</NxCode>).
         </NxP>
+        <NxWarningAlert>
+          Deprecated: <NxCode>nxFormSelectStateHelpers</NxCode> used to do more,
+          but those features are now deprecated and are no longer needed.
+          We no longer recommend using this for new use.
+        </NxWarningAlert>
         <NxTable>
           <NxTable.Head>
             <NxTable.Row>
@@ -85,8 +92,7 @@ const NxFormSelectPage = () =>
               <NxTable.Cell>initialState</NxTable.Cell>
               <NxTable.Cell>(initialValue: string)</NxTable.Cell>
               <NxTable.Cell>
-                Returns an initialized state with the specified value and <NxCode>isPristine</NxCode>
-                set to true.
+                Returns an initialized state with the specified value.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -95,7 +101,7 @@ const NxFormSelectPage = () =>
               <NxTable.Cell>
                 <NxP>
                   Meant to be used to handle user changes to the text input value. Returns a state with the
-                  specified value and <NxCode>isPristine</NxCode> set to false.
+                  specified value.
                 </NxP>
               </NxTable.Cell>
             </NxTable.Row>

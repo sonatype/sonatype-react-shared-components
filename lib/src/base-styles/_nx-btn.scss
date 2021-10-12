@@ -65,7 +65,7 @@
 
   &:hover {
     background-color: transparent;
-    border-color: var(--nx-swatch-grey-05);
+    border-color: var(--nx-color-interactive-border-hover);
   }
 
   &:focus {
@@ -75,7 +75,7 @@
 
   &:active {
     background-color: var(--nx-swatch-indigo-97);
-    border-color: var(--nx-swatch-grey-05);
+    border-color: var(--nx-color-interactive-border-hover);
   }
 }
 
