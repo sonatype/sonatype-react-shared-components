@@ -17,9 +17,6 @@ $-nx-scrollable-default-height: 400px;
 
   color: var(--nx-color-link);
   cursor: pointer;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
 
   &:hover {
     color: var(--nx-color-link-hover);
@@ -32,6 +29,7 @@ $-nx-scrollable-default-height: 400px;
   &:focus {
     border-radius: var(--nx-border-radius);
     outline: 1px solid var(--nx-color-interactive-border-focus);
+    outline-offset: 2px;
   }
 }
 
