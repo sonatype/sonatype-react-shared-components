@@ -57,7 +57,7 @@ $-trigger-text-left-margin: var(--nx-spacing-base);
   }
 
   .nx-tree-view__twisty {
-    display: none;
+    visibility: hidden;
   }
 }
 
