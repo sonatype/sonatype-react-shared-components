@@ -58,7 +58,7 @@
   > .nx-alert, > .nx-loading-spinner {
     align-self: flex-start;
     grid-area: old-sidebar-start / old-sidebar-start / content-end / content-end;
-    margin: var(--nx-spacing-8x) auto 0 auto;
+    margin: var(--nx-spacing-6x) auto 0 auto;
   }
 
   > .nx-loading-spinner {
@@ -90,7 +90,7 @@
   max-width: calc((1 - var(--nx-width-content-proportion)) * var(--nx-width-page-max));
 
   overflow-x: hidden;
-  padding: var(--nx-spacing-8x) var(--nx-spacing-6x) var(--nx-spacing-2x) var(--nx-spacing-6x);
+  padding: var(--nx-spacing-6x) var(--nx-spacing-6x) var(--nx-spacing-2x) var(--nx-spacing-6x);
   position: relative;
   white-space: normal;
 }
@@ -104,7 +104,7 @@
   min-width: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: var(--nx-spacing-8x) var(--nx-spacing-6x);
+  padding: var(--nx-spacing-6x) var(--nx-spacing-6x);
   white-space: normal;
 }
 
