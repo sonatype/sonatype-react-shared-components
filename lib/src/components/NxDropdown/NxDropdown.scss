@@ -82,6 +82,7 @@
 
   &:focus {
     background-color: transparent;
+    border-radius: 0;
     box-shadow: var(--nx-box-shadow-focus);
     outline-offset: -1px;
     outline: 1px solid var(--nx-color-interactive-border-focus);
@@ -117,11 +118,6 @@
 
 .nx-dropdown-link {
   color: var(--nx-color-link);
-  margin: 0;
-
-  &:focus {
-    border-radius: 0;
-  }
 
   &:hover {
     color: var(--nx-color-link-hover);
