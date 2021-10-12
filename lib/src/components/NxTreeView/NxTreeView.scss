@@ -16,8 +16,8 @@ $-triangle-box-width: var(--nx-spacing-6x);
   box-sizing: border-box;
   margin: var(--nx-spacing-6x) 0;
 
-  // Design specifies 360px max-width plus 16px of l/r negative margin
-  max-width: 360px;
+  // Design specifies 400px max-width plus 16px of l/r negative margin
+  max-width: 400px;
 
   + .nx-tree-view {
     // adjacent treeviews should be 16px apart rather than the 24 that they are from everything else
