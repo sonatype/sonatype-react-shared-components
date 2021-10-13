@@ -59,9 +59,15 @@
       box-shadow: none;
     }
 
-    &:focus {
-      outline: 1px solid var(--nx-color-interactive-border-focus);
-      outline-offset: 4px;
+    &:focus::before {
+      border: 1px solid var(--nx-color-interactive-border-focus);
+      border-radius: var(--nx-border-radius);
+      box-shadow: var(--nx-box-shadow-focus);
+      content: '';
+
+      // this is a new shorthand for top, bottom, left, and right
+      inset: calc(0px - var(--nx-spacing-base));
+      position: absolute;
     }
 
     // this class seems to be applied, perhaps incorrectly,
