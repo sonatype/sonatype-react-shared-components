@@ -9,6 +9,7 @@ const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testU
 
 describe('nx-form-select', function() {
   const selector = '#nx-form-select-example .nx-form-select',
+      overflowSelector = '#nx-form-select-overflow-example .nx-form-select',
       disabledSelector = '#nx-form-select-disabled-example .nx-form-select';
 
   beforeEach(async function() {
@@ -21,6 +22,10 @@ describe('nx-form-select', function() {
     it('has a darker border when hovered', hoverTest(selector));
     it('has a blue border when focused', focusTest(selector));
     it('has a blue border when hovered and focused', focusAndHoverTest(selector));
+  });
+
+  describe('NxFormSelect with long overflowing text', function() {
+    it('it looks right and text is truncated', simpleTest(overflowSelector));
   });
 
   describe('Disabled NxFormSelect', function() {
