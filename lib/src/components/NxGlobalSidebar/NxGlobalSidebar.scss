@@ -104,6 +104,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
            calc(#{$-left-right-spacing} + 1px);
 
   .nx-icon {
+    color: var(--nx-swatch-indigo-90);
     margin: 0;
   }
 
@@ -205,6 +206,10 @@ $-separator-color: var(--nx-swatch-indigo-40);
   .nx-text-link {
     align-items: center;
     display: flex;
+  }
+
+  .nx-icon {
+    color: var(--nx-swatch-indigo-90);
   }
 }
 
