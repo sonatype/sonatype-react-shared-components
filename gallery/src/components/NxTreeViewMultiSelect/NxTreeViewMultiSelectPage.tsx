@@ -78,7 +78,7 @@ const NxTreeViewMultiSelectPage = () =>
               <NxList className="nx-list--bulleted">
                 <NxList.Item>
                   <NxList.Text>
-                    <NxCode >Set</NxCode> of ids of the currently selected options
+                    <NxCode>Set</NxCode> of ids of the currently selected options
                   </NxList.Text>
                 </NxList.Item>
                 <NxList.Item>
