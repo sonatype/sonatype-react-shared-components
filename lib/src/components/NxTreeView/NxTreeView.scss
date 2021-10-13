@@ -158,6 +158,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 
 .nx-tree-view__children {
   .nx-text-input {
+    box-sizing: border-box;
     border: none;
     margin: 0;
     padding:
