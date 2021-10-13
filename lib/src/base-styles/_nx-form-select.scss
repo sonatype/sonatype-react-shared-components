@@ -33,8 +33,11 @@
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
   text-overflow: ellipsis;
-  padding: var(--nx-spacing-2x) var(--nx-spacing-4x);
-  padding-right: calc(var(--nx-spacing-4x) + #{$icon-size} + var(--nx-spacing-6x));
+  padding: 
+    var(--nx-spacing-2x) 
+    calc(var(--nx-spacing-4x) + #{$icon-size} + var(--nx-spacing-6x))
+    var(--nx-spacing-2x) 
+    var(--nx-spacing-4x);
   width: var(--nx-width-form-element-normal);
 
   &:hover {
