@@ -80,7 +80,16 @@ describe('NxTreeView', function() {
 
   describe('NxTreeView with checkbox/radio children', function() {
     it('looks right collapsed', simpleTest(checkboxTreeViewSelector));
-    it('looks right expanded', simpleExpandedTest(checkboxTreeViewSelector));
+    it('looks right expanded', async function() {
+      const firstTreeSelector = `${checkboxTreeViewSelector} .nx-tree-view:first-child`,
+          secondTreeSelector = `${checkboxTreeViewSelector} .nx-tree-view:last-child`,
+          [firstTree, secondTree] = Promise.all([browser.$(firstTreeSelector), browser.$(secondTreeSelector)]);
+
+      await firstTree.click();
+      await secondTree.click();
+
+      await simpleTest(checkboxTreeViewSelector)();
+    });
   });
 
   describe('Empty NxTreeView', function() {
