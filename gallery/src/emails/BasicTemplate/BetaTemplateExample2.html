@@ -40,8 +40,17 @@
       margin: 0;
     }
 
-    .email-header {
+    .header-col-left {
+      display: inline-block;
+      max-width: 50%;
+    }
+
+    .header-col-right {
       border-left: 1px solid#6D7AC5;
+      display: inline-block;
+      margin-left: 24px;
+      padding-left: 24px; 
+      max-width: 50%;
     }
 
     .col1 {
@@ -49,8 +58,8 @@
       display: inline-block;
       margin-bottom: 24px;
       padding-right: 48px;
-      width: 145px;
       min-width: 145px;
+      max-width: 275px;
       vertical-align: top;
     }
 
@@ -61,7 +70,21 @@
       max-width: 70%;
     }
 
-    @media screen and (max-width: 530px) {
+    @media screen and (max-width: 450px) {
+      .header-col-left {
+        display: block;
+        text-align: left;
+        max-width: 100%;
+      }
+
+      .header-col-right {
+        border-left: none;
+        display: block;
+        margin-left: 0;
+        padding-left: 0;
+        text-align: left;
+        max-width: 100%;
+      }
       .col1, .col2 {
         border: none;
         display: block !important;
@@ -99,10 +122,30 @@
             <!-- HEADER -->
             <tr>
               <td style="padding:24px;">
-                <img src="http://www.glenhunter.ca/test-email/NexusLifecycle_by_Sonatype.png" alt="Sonatype Lifecycle Logo" style="width: 185px;height:auto;display:inline-block;border:none;text-decoration:none;vertical-align: middle;" class="email-logo">
-                <h1 style="display: inline-block; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: normal; line-height: 2; margin-left: 24px; padding-left: 24px; vertical-align: middle;" class="email-header">
-                  Policy Violation Notification
-                </h1>
+                <!--[if mso]>
+                <table role="presentation">
+                  <tr>
+                    <td align="left">
+                <![endif]-->
+                      <div class="header-col-left">
+                        <img src="http://www.glenhunter.ca/test-email/NexusLifecycle_by_Sonatype.png" alt="Sonatype Lifecycle Logo" style="width: 185px; height: auto; vertical-align: middle;">
+                      </div>
+                  <!--[if mso]>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                  <![endif]-->
+                      <div class="header-col-right">
+                        <h1 style="font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: normal; line-height: 2; vertical-align: middle;">
+                          Policy Violation Notification
+                        </h1>
+                      </div>
+                <!--[if mso]>
+                    </td>
+                  </tr>
+                </table>
+                <![endif]-->
               </td>
             </tr>
             <!-- CONTENT -->
@@ -118,7 +161,7 @@
                       <th style="text-align: left; padding: 24px;">
                         <h2>Violation Overview</h2>
                       </th>
-                      <th style="text-align: right; padding: 24px;">
+                      <th align="right" style="padding: 24px 24px 24px 0;">
                         <a href="#"
                             style="background-color: #0459c8;
                                     border: none;
@@ -129,9 +172,10 @@
                                     font-size: 16px;
                                     line-height: 1.5;
                                     margin: 0;
-                                    padding: 8px 24px;
+                                    padding: 8px 12px;
                                     text-align: center;
-                                    text-decoration: none;">
+                                    text-decoration: none;
+                                    width: 145px;">
                           View Full Results
                         </a>
                       </th>
@@ -140,155 +184,180 @@
                   <tbody>
                     <tr>
                       <td style="padding: 0 24px 24px 24px;" colspan="2">
-                        <!-- LEFT COLUMN TILE ONE -->
-                        <div class="col1">
-                          <!--[if mso]>
-                          <table role="presentation">
-                            <tr>
-                              <td style="padding-bottom: 16px;"">
-                          <![endif]-->
-                                <table style="border: 1px solid #cc0028;
-                                            border-left-width: 8px;
-                                            border-radius: 6px;
-                                            font-size: 14px;
-                                            margin: 0;
-                                            margin-bottom: 16px;
-                                            width: 145px;"
-                                      role="presentation">
+                      <!-- LEFT COLUMN TILE ONE -->
+                        <!--[if mso]>
+                        <table role="presentation">
+                          <tr>
+                            <td style="padding-bottom: 16px;">
+                        <![endif]-->
+                              <div class="col1">
+                                <!--[if mso]>
+                                <table role="presentation">
                                   <tr>
-                                    <td style="font-weight: 600; height: 30px; padding-left: 12px; vertical-align: middle;">##</td>
-                                    <td style="font-weight: 600; height: 30px; padding-right: 16px; padding-left: 8px; text-transform: uppercase; vertical-align: middle;">
-                                      Critical
+                                    <td style="padding-bottom: 16px;">
+                                <![endif]-->
+                                      <table style="border: 1px solid #cc0028;
+                                                  border-left-width: 8px;
+                                                  border-radius: 6px;
+                                                  font-size: 14px;
+                                                  margin: 0;
+                                                  margin-bottom: 16px;
+                                                  width: 145px;"
+                                            role="presentation">
+                                        <tr>
+                                          <td style="font-size: 14px; font-weight: bold; height: 32px; padding-left: 12px; vertical-align: middle;">##</td>
+                                          <td style="font-size: 14px; font-weight: 600; height: 32px; padding-right: 16px; padding-left: 8px; text-transform: uppercase; vertical-align: middle;">
+                                            Critical
+                                          </td>
+                                        </tr>
+                                      </table>
+                                  <!--[if mso]>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="padding-bottom: 16px;">
+                                  <![endif]-->
+                                      <table style="border: 1px solid #ff8600;
+                                                  border-left-width: 8px;
+                                                  border-radius: 6px;
+                                                  font-size: 14px;
+                                                  margin: 0;
+                                                  margin-bottom: 16px;
+                                                  width: 145px;"
+                                              role="presentation">
+                                        <tr>
+                                          <td style="font-size: 14px; font-weight: bold; height: 32px; padding-left: 12px; vertical-align: middle;">##</td>
+                                          <td style="font-size: 14px; font-weight: 600; height: 32px; padding-right: 16px; padding-left: 8px; text-transform: uppercase; vertical-align: middle;">
+                                            Severe
+                                          </td>
+                                        </tr>
+                                      </table>
+                                  <!--[if mso]>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="padding-bottom: 16px;">
+                                  <![endif]-->
+                                      <table style="border: 1px solid #ffc333;
+                                                  border-left-width: 8px;
+                                                  border-radius: 6px;
+                                                  font-size: 14px;
+                                                  margin: 0;
+                                                  margin-bottom: 16px;
+                                                  width: 145px;"
+                                            role="presentation">
+                                        <tr>
+                                          <td style="font-size: 14px; font-weight: bold; height: 32px; padding-left: 12px; vertical-align: middle;">##</td>
+                                          <td style="font-size: 14px; font-weight: 600; height: 32px; padding-right: 16px; padding-left: 8px; text-transform: uppercase; vertical-align: middle;">
+                                            Moderate
+                                          </td>
+                                        </tr>
+                                      </table>
+                                  <!--[if mso]>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="padding-bottom: 16px;">
+                                  <![endif]-->
+                                      <table style="border: 1px solid #00b2ff;
+                                                  border-left-width: 8px;
+                                                  border-radius: 6px;
+                                                  font-size: 14px;
+                                                  margin: 0;
+                                                  margin-bottom: 16px;
+                                                  width: 145px;"
+                                              role="presentation">
+                                        <tr>
+                                          <td style="font-size: 14px; font-weight: bold; height: 32px; padding-left: 12px; vertical-align: middle;">##</td>
+                                          <td style="font-size: 14px; font-weight: 600; height: 32px; padding-right: 16px; padding-left: 8px; text-transform: uppercase; vertical-align: middle;">
+                                            Low
+                                          </td>
+                                        </tr>
+                                      </table>
+                                  <!--[if mso]>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="padding-bottom: 16px;">
+                                  <![endif]-->
+                                      <table style="border: 1px solid #cde2fe;
+                                                  border-left-width: 8px;
+                                                  border-radius: 6px;
+                                                  font-size: 14px;
+                                                  margin: 0;
+                                                  width: 145px;"
+                                              role="presentation">
+                                        <tr>
+                                          <td style="font-size: 14px; font-weight: bold; height: 32px; padding-left: 12px; vertical-align: middle;">##</td>
+                                          <td style="font-size: 14px; font-weight: 600; height: 32px; padding-right: 16px; padding-left: 8px; text-transform: uppercase; vertical-align: middle;">
+                                            None
+                                          </td>
+                                        </tr>
+                                      </table>
+                                  <!--[if mso]>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="padding-bottom: 24px;">
+                                  <![endif]-->
+                                      <p style="margin: 24px 0 0 0; color: #4d4d4d;">0 Grandfathered Violations</p>
+                                <!--[if mso]>
                                     </td>
                                   </tr>
                                 </table>
+                                <![endif]-->
+                              </div>
                             <!--[if mso]>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td style="padding-bottom: 16px;"">
+                            </td>
                             <![endif]-->
-                                <table style="border: 1px solid #ff8600;
-                                            border-left-width: 8px;
-                                            border-radius: 6px;
-                                            font-size: 14px;
-                                            margin: 0;
-                                            margin-bottom: 16px;
-                                            width: 145px;"
-                                        role="presentation">
-                                  <tr>
-                                    <td style="font-weight: 600; height: 30px; padding-left: 12px; vertical-align: middle;">##</td>
-                                    <td style="font-weight: 600; height: 30px; padding-right: 16px; padding-left: 8px; text-transform: uppercase; vertical-align: middle;">
-                                      Severe
-                                    </td>
-                                  </tr>
-                                </table>
-                            <!--[if mso]>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td style="padding-bottom: 16px;"">
-                            <![endif]-->
-                                <table style="border: 1px solid #ffc333;
-                                            border-left-width: 8px;
-                                            border-radius: 6px;
-                                            font-size: 14px;
-                                            margin: 0;
-                                            margin-bottom: 16px;
-                                            width: 145px;"
-                                      role="presentation">
-                                  <tr>
-                                    <td style="font-weight: 600; height: 30px; padding-left: 12px; vertical-align: middle;">##</td>
-                                    <td style="font-weight: 600; height: 30px; padding-right: 16px; padding-left: 8px; text-transform: uppercase; vertical-align: middle;">
-                                      Moderate
-                                    </td>
-                                  </tr>
-                                </table>
-                            <!--[if mso]>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td style="padding-bottom: 16px;"">
-                            <![endif]-->
-                                <table style="border: 1px solid #00b2ff;
-                                            border-left-width: 8px;
-                                            border-radius: 6px;
-                                            font-size: 14px;
-                                            height: 30px;
-                                            margin: 0;
-                                            margin-bottom: 16px;
-                                            width: 145px;"
-                                        role="presentation">
-                                  <tr>
-                                    <td style="font-weight: 600; height: 30px; padding-left: 12px; vertical-align: middle;">##</td>
-                                    <td style="font-weight: 600; height: 30px; padding-right: 16px; padding-left: 8px; text-transform: uppercase; vertical-align: middle;">
-                                      Low
-                                    </td>
-                                  </tr>
-                                </table>
-                            <!--[if mso]>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td style="padding-bottom: 16px;"">
-                            <![endif]-->
-                                <table style="border: 1px solid #cde2fe;
-                                            border-left-width: 8px;
-                                            border-radius: 6px;
-                                            font-size: 14px;
-                                            margin: 0;
-                                            width: 145px;"
-                                        role="presentation">
-                                  <tr>
-                                    <td style="font-weight: 600; height: 30px; padding-left: 12px; vertical-align: middle;">##</td>
-                                    <td style="font-weight: 600; height: 30px; padding-right: 16px; padding-left: 8px; text-transform: uppercase; vertical-align: middle;">
-                                      None
-                                    </td>
-                                  </tr>
-                                </table>
-                          <!--[if mso]>
-                              </td>
-                            </tr>
-                          </table>
-                          <![endif]-->
-                        </div>
+
+                        <!-- / LEFT COLUMN TILE ONE -->
                         <!-- RIGHT COLUMN TILE ONE -->
-                        <div class="col2">
-                          <table cellpadding="0" cellspacing="0" role="presentation">
-                            <tr>
-                              <td style="padding-bottom: 24px; width: 30%; font-weight: 600; text-align: right;">
-                                Date:
-                              </td>
-                              <td style="padding-bottom: 24px; padding-left: 8px; width: 70%;">
-                                January 1, 1896
-                              </td>
-                            </tr>
-                            <tr>
-                              <td style="padding-bottom: 24px; width: 30%; font-weight: 600; text-align: right;">
-                                App ID:
-                              </td>
-                              <td style="padding-bottom: 24px; padding-left: 8px; width: 70%;">
-                                insight-portal
-                              </td>
-                            </tr>
-                            <tr>
-                              <td style="padding-bottom: 24px; width: 30%; font-weight: 600; text-align: right;">
-                                Stage:
-                              </td>
-                              <td style="padding-bottom: 24px; padding-left: 8px; width: 70%;">
-                                Release
-                              </td>
-                            </tr>
-                            <tr>
-                              <td style="width: 30%; font-weight: 600; text-align: right;">
-                                Contact:
-                              </td>
-                              <td style="padding-left: 8px; width: 70%;">
-                                <a href="#">Glen Ian Hunter</a>
-                              </td>
-                            </tr>
-                          </table>
-                        </div>
+
+                            <!--[if mso]>
+                            <td style="padding-bottom: 24px;">
+                            <![endif]-->
+                              <div class="col2">
+                                <table cellpadding="0" cellspacing="0" role="presentation">
+                                  <tr>
+                                    <td style="padding-bottom: 24px; width: 30%; font-weight: 600; text-align: right;">
+                                      Date:
+                                    </td>
+                                    <td style="padding-bottom: 24px; padding-left: 8px; width: 70%;">
+                                      January 1, 1896
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="padding-bottom: 24px; width: 30%; font-weight: 600; text-align: right;">
+                                      App ID:
+                                    </td>
+                                    <td style="padding-bottom: 24px; padding-left: 8px; width: 70%;">
+                                      insight-portal
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="padding-bottom: 24px; width: 30%; font-weight: 600; text-align: right;">
+                                      Stage:
+                                    </td>
+                                    <td style="padding-bottom: 24px; padding-left: 8px; width: 70%;">
+                                      Release
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="width: 30%; font-weight: 600; text-align: right;">
+                                      Contact:
+                                    </td>
+                                    <td style="padding-left: 8px; width: 70%;">
+                                      <a href="#">Glen Ian Hunter</a>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </div>
+                        <!--[if mso]>
+                            </td>
+                          </tr>
+                        </table>
+                        <![endif]-->
                       </td>
                     </tr>
                   </tbody>
@@ -315,61 +384,67 @@
                   <tbody>
                     <tr>
                       <td>
-                        <table cellpadding="0" cellspacing="0" style="border-top: 1px solid #dbdef0;">
+                        <table cellpadding="0" cellspacing="0" style="border-top: 1px solid #dbdef0;" role="presentation">
                           <tr>
-                            <td style="padding: 24px 16px 16px 24px;">
+                            <td style="padding: 24px 8px 16px 24px;">
                               <div style="border-radius: 16px; height: 14px; width: 14px; background-color: #cc0028;"></div>
                             </td>
-                            <td style="padding: 24px 24px 16px 0"><span style="color: #cc0028; font-weight: 600;vertical-align: middle;">Component Unknown</span>
+                            <td style="padding: 24px 8px 16px 0;">
+                              <span style="vertical-align: middle;">#</span>
+                            </td>
+                            <td style="padding: 24px 24px 16px 0"><span style="font-weight: 700;vertical-align: middle;">Component Unknown</span>
                             </td>
                           </tr>
                           <tr>
-                            <td></td>
-                            <td style="font-size: 24px; padding: 0 24px 16px 0;">org.springframework.cloud.stream.app : jdbc-source-kafka-10</td>
+                            <td colspan="2"></td>
+                            <td style="font-size: 16px; font-weight: bold; padding: 0 24px 16px 0;">org.springframework.cloud.stream.app : jdbc-source-kafka-10</td>
                           </tr>
                           <tr>
-                            <td></td>
+                            <td colspan="2"></td>
                             <td style="padding: 4px 24px 4px 0;"><span style="vertical-align: middle;">CVSS &gt;=7 and &lt;10</span></td>
                           </tr>
                           <tr>
-                            <td></td>
+                            <td colspan="2"></td>
                             <td style="padding: 4px 24px 4px 0;">Found security vulnerability CVE-2021-27906 with severity &gt;= 7 (severity = 7.5)</td>
                           </tr>
                           <tr>
-                            <td></td>
+                            <td colspan="2"></td>
                             <td style="padding: 4px 24px 4px 0;">Found security vulnerability CVE-2021-27906 with severity &lt; 10 (severity = 7.5)</td>
                           </tr>
                           <tr>
-                            <td></td>
+                            <td colspan="2"></td>
                             <td style="padding: 4px 24px 24px 0">Found security vulnerability CVE-2021-27906 with status 'Open', not 'Not Applicable'</td>
                           </tr>
                         </table>
-                        <table cellpadding="0" cellspacing="0" style="border-top: 1px solid #dbdef0;">
+                        <table cellpadding="0" cellspacing="0" style="border-top: 1px solid #dbdef0;" role="presentation">
                           <tr>
-                            <td style="padding: 24px 16px 16px 24px;">
+                            <td style="padding: 24px 8px 16px 24px;">
                               <div style="border-radius: 16px; height: 14px; width: 14px; background-color: #ff8600;"></div>
                             </td>
-                            <td style="padding: 24px 24px 16px 0"><span style="color: #ff8600; font-weight: 600;vertical-align: middle;">Security-High</span>
+                            <td style="padding: 24px 8px 16px 0;">
+                              <span style="vertical-align: middle;">#</span>
+                            </td>
+                            <td style="padding: 24px 24px 16px 0"><span style="font-weight: 700;vertical-align: middle;">Security-High</span>
                             </td>
                           </tr>
                           <tr>
-                            <td></td>
-                            <td style="font-size: 24px; padding: 0 24px 16px 0;">com.thoughtworks.xstream : xstream : 1.4.15</td>
+                            <td colspan="2"></td>
+                            <td style="font-size: 16px; font-weight: bold; padding: 0 24px 16px 0;">com.thoughtworks.xstream : xstream : 1.4.15</td>
                           </tr>
                           <tr>
-                            <td></td>
+                            <td colspan="2"></td>
                             <td style="padding: 4px 24px 4px 0;"><span style="vertical-align: middle;">CVSS &gt;=7 and &lt;10</span></td>
                           </tr>
                           <tr>
-                            <td></td>
+                            <td colspan="2"></td>
                             <td style="padding: 4px 24px 4px 0">Found security vulnerability CVE-2021-27906 with severity &gt;= 7 (severity = 7.5)</td>
                           </tr>
                           <tr>
-                            <td></td>
+                            <td colspan="2"></td>
                             <td style="padding: 4px 24px 4px 0">Found security vulnerability CVE-2021-27906 with severity &lt; 10 (severity = 7.5)</td>
                           </tr>
                           <tr>
-                            <td></td>
+                            <td colspan="2"></td>
                             <td style="padding: 4px 24px 24px 0">Found security vulnerability CVE-2021-27906 with status 'Open', not 'Not Applicable'</td>
                           </tr>
                         </table>
@@ -382,7 +457,7 @@
             </tr>
             <!-- FOOTER -->
             <tr>
-              <td style="padding: 0 24px 24px 24px;">
+              <td style="padding: 24px;">
                 <p style="font-size: 14px; color:#4d4d4d; margin: 0; text-align:center;">
                   You are receiving this email because a policy has been configured to notify you.
                 </p>
