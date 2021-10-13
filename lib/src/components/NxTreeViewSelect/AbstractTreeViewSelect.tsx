@@ -13,6 +13,7 @@ import NxTooltip from '../NxTooltip/NxTooltip';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import { TooltipConfigProps } from '../../util/tooltipUtils';
 import { ensureElement } from '../../util/reactUtil';
+import { useUniqueId } from '../../util/idUtil';
 
 import { CommonProps } from './commonTypes';
 
@@ -33,7 +34,7 @@ function AbstractTreeViewSelect<T extends Option>(props: Props<T>) {
         onToggleCollapse,
         filterPlaceholder,
         children,
-        id,
+        id: idProp,
         filter,
         onFilterChange,
         disabledTooltip,
@@ -47,6 +48,7 @@ function AbstractTreeViewSelect<T extends Option>(props: Props<T>) {
       filterThreshold = props.filterThreshold || 10,
       isOpen = !!props.isOpen,
       disabled = !!props.disabled || !options.length,
+      id = useUniqueId('nx-tree-view-select', idProp || undefined),
       filteredOptions = props.filteredOptions || options;
 
   function getTooltipProps(title: string) {
@@ -85,13 +87,12 @@ function AbstractTreeViewSelect<T extends Option>(props: Props<T>) {
   ) : wrappedTriggerContent;
 
   const filterContent = onFilterChange && options.length > filterThreshold && (
-    <NxTreeViewChild>
-      <NxFilterInput disabled={disabled}
-                     placeholder={filterPlaceholder || 'filter'}
-                     id={generateId(name, 'filter-input')}
-                     onChange={onFilterChange}
-                     value={filter || ''}/>
-    </NxTreeViewChild>
+    <NxFilterInput disabled={disabled}
+                   placeholder={filterPlaceholder || 'filter'}
+                   id={generateId(name, 'filter-input')}
+                   aria-controls={id}
+                   onChange={onFilterChange}
+                   value={filter || ''}/>
   );
 
   const selectAllOption = renderToggleAllOption && renderToggleAllOption();
