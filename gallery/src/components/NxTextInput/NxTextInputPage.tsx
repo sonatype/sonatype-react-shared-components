@@ -5,7 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink, NxStatefulAccordion, NxAccordion } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxTextLink, NxStatefulAccordion, NxAccordion, NxList }
+  from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -129,19 +130,23 @@ const NxTextInputPage = () =>
               NxTextInput supports any html attribute that's normally supported by either HTML
               <NxCode>&lt;input&gt;</NxCode> or HTML
               <NxCode>&lt;textarea&gt;</NxCode>. The only notable exceptions are:
-              <ul className="nx-list nx-list--bulleted">
-                <li className="nx-list__item">
-                  <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly
-                  known as{' '}
-                  <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
-                    uncontrolled inputs
-                  </NxTextLink>
-                </li>
-                <li className="nx-list__item">
-                  The attributes specified above, whose types are as defined here and not as specified in the
-                  react propTypes.
-                </li>
-              </ul>
+              <NxList className="nx-list--bulleted">
+                <NxList.Item>
+                  <NxList.Text>
+                    <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly
+                    known as{' '}
+                    <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
+                      uncontrolled inputs
+                    </NxTextLink>
+                  </NxList.Text>
+                </NxList.Item>
+                <NxList.Item>
+                  <NxList.Text>
+                    The attributes specified above, whose types are as defined here and not as specified in the
+                    react propTypes.
+                  </NxList.Text>
+                </NxList.Item>
+              </NxList>
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
