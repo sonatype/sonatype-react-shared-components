@@ -55,13 +55,13 @@
   }
 
   .MuiSlider-thumb {
-    &.MuiSlider-active, &:hover {
+    &.MuiSlider-active, &:hover, &:focus {
       box-shadow: none;
     }
 
     &:focus {
-      border-color: var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
+      outline: 1px solid var(--nx-color-interactive-border-focus);
+      outline-offset: 4px;
     }
 
     // this class seems to be applied, perhaps incorrectly,
@@ -73,31 +73,31 @@
   }
 
   .nx-policy-threat-slider__value-label--none {
-    .MuiSlider-thumb:not(:focus) {
+    .MuiSlider-thumb {
       border-color: var(--nx-color-threat-none);
     }
   }
 
   .nx-policy-threat-slider__value-label--low {
-    .MuiSlider-thumb:not(:focus) {
+    .MuiSlider-thumb {
       border-color: var(--nx-color-threat-low);
     }
   }
 
   .nx-policy-threat-slider__value-label--moderate {
-    .MuiSlider-thumb:not(:focus) {
+    .MuiSlider-thumb {
       border-color: var(--nx-color-threat-moderate);
     }
   }
 
   .nx-policy-threat-slider__value-label--severe {
-    .MuiSlider-thumb:not(:focus) {
+    .MuiSlider-thumb {
       border-color: var(--nx-color-threat-severe);
     }
   }
 
   .nx-policy-threat-slider__value-label--critical {
-    .MuiSlider-thumb:not(:focus) {
+    .MuiSlider-thumb {
       border-color: var(--nx-color-threat-critical);
     }
   }
