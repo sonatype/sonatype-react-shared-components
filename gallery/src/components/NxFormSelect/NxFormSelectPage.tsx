@@ -10,8 +10,10 @@ import { NxCode, NxTable, NxP, NxTextLink, NxTile, NxH3, NxWarningAlert } from '
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxFormSelectExample from './NxFormSelectExample';
+import NxFormSelectOverflowExample from './NxFormSelectOverflowExample';
 
-const sourceCode = require('./NxFormSelectExample?raw');
+const nxFormSelectExampleSourceCode = require('./NxFormSelectExample?raw');
+const nxFormSelectOverflowExampleSourceCode = require('./NxFormSelectOverflowExample?raw');
 
 const NxFormSelectPage = () =>
   <>
@@ -118,10 +120,17 @@ const NxFormSelectPage = () =>
 
     <GalleryExampleTile title="Form Select Example"
                         id="nx-form-select-example"
-                        codeExamples={sourceCode}
+                        codeExamples={nxFormSelectExampleSourceCode}
                         liveExample={NxFormSelectExample}>
       Demonstrates an <NxCode>NxFormSelect</NxCode> using the <NxCode>useNxFormSelectState</NxCode> hook to manage
       its state.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Form Select Overflow Example"
+                        id="nx-form-select-overflow-example"
+                        codeExamples={nxFormSelectOverflowExampleSourceCode}
+                        liveExample={NxFormSelectOverflowExample}>
+      Demonstrates an <NxCode>NxFormSelect</NxCode> with long option text that overflows.
     </GalleryExampleTile>
   </>;
 

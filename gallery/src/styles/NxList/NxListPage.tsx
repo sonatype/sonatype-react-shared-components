@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert, NxTable, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxTable, NxP, NxCode, NxTile, NxH3, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -15,18 +15,32 @@ const NxListPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>Lists take many forms:</NxP>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item">Simple data lists</li>
-        <li className="nx-list__item">Lists with clickable list items</li>
-        <li className="nx-list__item">Lists with bullets</li>
-        <li className="nx-list__item">Lists with actions</li>
-        <li className="nx-list__item">Lists with items that have multiple lines of text</li>
-      </ul>
+      <NxList className="nx-list--bulleted">
+        <NxList.Item>
+          <NxList.Text>Simple data lists</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Lists with clickable list items</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Lists with bullets</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Lists with actions</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Lists with items that have multiple lines of text</NxList.Text>
+        </NxList.Item>
+      </NxList>
       <NxP>Lists can also have modified states depending on their content:</NxP>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item">Lists with no data</li>
-        <li className="nx-list__item">Error states</li>
-      </ul>
+      <NxList className="nx-list--bulleted">
+        <NxList.Item>
+          <NxList.Text>Lists with no data</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Error states</NxList.Text>
+        </NxList.Item>
+      </NxList>
       <NxP>
         The basic layout is a <NxCode>&lt;ul&gt;</NxCode>. If the list has a title a simple heading
         such as <NxCode>&lt;h3 className="nx-h3"&gt;</NxCode> should be used before the &lt;ul&gt;.

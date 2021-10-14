@@ -118,7 +118,7 @@ $-visible-item-count: 10;
   }
 
   &:active {
-    background-color: transparent;
+    background-color: var(--nx-swatch-indigo-97);
     border-color: var(--nx-color-interactive-border-hover);
   }
 }
@@ -140,13 +140,9 @@ $-visible-item-count: 10;
   margin: 0;
   padding: var(--nx-spacing-base) var(--nx-spacing-2x);
 
-  $-button-size: 32px;
-
   .nx-btn {
-    height: $-button-size;
+    @include nx-button-helpers.small-icon-btn;
     margin: 0;
-    padding: 0;
-    width: $-button-size;
 
     &[disabled] {
       &,

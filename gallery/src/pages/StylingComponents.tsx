@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxH3, NxH4, NxCode, NxTile, NxTextLink } from '@sonatype/react-shared-components';
+import { NxP, NxH3, NxH4, NxCode, NxTile, NxTextLink, NxList } from '@sonatype/react-shared-components';
 
 import {GalleryTile} from '../gallery-components/GalleryTiles';
 
@@ -67,23 +67,29 @@ const StylingRSCPage = () =>
         You may notice as you work with the various RSC that some components have CSS classes that don't follow
         normal BEM naming conventions. Classes like:
       </NxP>
-      <div className="nx-list nx-list--bulleted">
-        <ul>
-          <li className="nx-list__item">
+      <NxList className="nx-list--bulleted">
+        <NxList.Item>
+          <NxList.Text>
             <NxCode>open</NxCode> &amp; <NxCode>closed</NxCode>
-          </li>
-          <li className="nx-list__item">
+          </NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>
             <NxCode>disabled</NxCode>
-          </li>
-          <li className="nx-list__item">
+          </NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>
             <NxCode>pristine</NxCode>, <NxCode>valid</NxCode>,
             {' '}<NxCode>invalid</NxCode>
-          </li>
-          <li className="nx-list__item">
+          </NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>
             <NxCode>selected</NxCode> &amp; <NxCode>unselected</NxCode>
-          </li>
-        </ul>
-      </div>
+          </NxList.Text>
+        </NxList.Item>
+      </NxList>
       <NxP>
         These are commonly refered to as "utility classes". Utility classes usually describe a change in a components'
         visual state. These classes are common across all components that might need them, especially in the case of the
@@ -101,31 +107,39 @@ const StylingRSCPage = () =>
         team for reference.
       </NxP>
       <NxH4>Flexbox</NxH4>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item">
-          <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">
-            MDN Layout Guide: Flexbox
-          </NxTextLink>
-        </li>
-        <li className="nx-list__item">
-          <NxTextLink external href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">
-            CSS Tricks Guide to CSS Flexbox
-          </NxTextLink>
-        </li>
-      </ul>
+      <NxList className="nx-list--bulleted">
+        <NxList.Item>
+          <NxList.Text>
+            <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">
+              MDN Layout Guide: Flexbox
+            </NxTextLink>
+          </NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>
+            <NxTextLink external href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">
+              CSS Tricks Guide to CSS Flexbox
+            </NxTextLink>
+          </NxList.Text>
+        </NxList.Item>
+      </NxList>
       <h4 className="nx-h4">CSS Grid</h4>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item">
-          <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids">
-            MDN Layout Guide: CSS Grid
-          </NxTextLink>
-        </li>
-        <li className="nx-list__item">
-          <NxTextLink external href="https://css-tricks.com/snippets/css/complete-guide-grid/">
-            CSS Tricks Guide to CSS Grid
-          </NxTextLink>
-        </li>
-      </ul>
+      <NxList className="nx-list--bulleted">
+        <NxList.Item>
+          <NxList.Text>
+            <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids">
+              MDN Layout Guide: CSS Grid
+            </NxTextLink>
+          </NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>
+            <NxTextLink external href="https://css-tricks.com/snippets/css/complete-guide-grid/">
+              CSS Tricks Guide to CSS Grid
+            </NxTextLink>
+          </NxList.Text>
+        </NxList.Item>
+      </NxList>
     </NxTile.Subsection>
   </GalleryTile>;
 
