@@ -13,16 +13,11 @@
   .nx-btn {
     min-width: nx-pagination-variables.$pagination-button-height;
     margin: 0 var(--nx-spacing-2x) 0 0;
-    padding-left: var(--nx-spacing-4x);
-    padding-right: var(--nx-spacing-4x);
+    padding-left: calc(var(--nx-spacing-4x) - 1px);
+    padding-right: calc(var(--nx-spacing-4x) - 1px);
 
     &:last-child {
       margin-right: 0;
-    }
-
-    .fa-caret-left, .fa-caret-right {
-      font-size: 20px;
-      vertical-align: -0.2em;
     }
   }
 
@@ -30,6 +25,12 @@
     box-shadow: var(--nx-box-shadow-focus);
     outline: 1px solid var(--nx-color-interactive-border-focus);
     outline-offset: -1px;
+  }
+}
+
+.nx-btn-bar--indeterminate-pagination {
+  .nx-btn {
+    margin: 0 var(--nx-spacing-6x) 0 0;
   }
 }
 

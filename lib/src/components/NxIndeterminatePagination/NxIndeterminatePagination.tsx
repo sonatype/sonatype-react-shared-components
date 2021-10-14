@@ -14,7 +14,7 @@ import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 export { Props, propTypes };
 
 export default function NxIndeterminatePagination({ className, onPrevPageSelect, onNextPageSelect, ...attrs }: Props) {
-  const classes = classnames('nx-btn-bar', 'nx-btn-bar--pagination', className);
+  const classes = classnames('nx-btn-bar', 'nx-btn-bar--pagination', 'nx-btn-bar--indeterminate-pagination', className);
 
   return (
     <nav tabIndex={0} aria-label="pagination" className={classes} { ...attrs }>
