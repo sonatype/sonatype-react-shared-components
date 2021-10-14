@@ -58,8 +58,11 @@
 
   &.selected {
     background-color: var(--nx-swatch-indigo-15);
-    border-color: var(--nx-swatch-indigo-15);
     color: var(--nx-color-component-background);
     cursor: default;
+
+    &:focus {
+      border-color: var(--nx-color-interactive-border-focus);
+    }
   }
 }
