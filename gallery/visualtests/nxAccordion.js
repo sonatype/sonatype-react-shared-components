@@ -30,16 +30,10 @@ describe('NxAccordion', function() {
         await d.dismiss();
       }
 
-      try {
-        // this example header has a click handler that opens an alert
-        page.on('dialog', dismissDialog);
-
+      await dismissResultingDialog(async () => {
         const header = await page.$(headerSelector);
         await header.click();
-      }
-      finally {
-        page.off('dialog', dismissDialog);
-      }
+      });
 
       await page.$eval(headerSelector, function(el) {
         el.blur();

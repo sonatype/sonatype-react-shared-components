@@ -4,17 +4,15 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Target } = require('@applitools/eyes-webdriverio');
-const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxTextInput', function() {
+  const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxFilterInput');
+
   const simpleComponentSelector = '#nx-filter-input-simple-example .nx-filter-input',
       searchComponentSelector = '#nx-filter-input-search-example .nx-filter-input',
       disabledComponentSelector = '#nx-filter-input-disabled-example .nx-filter-input';
 
-  beforeEach(async function() {
-    await browser.url('#/pages/NxFilterInput');
-  });
 
   describe('Simple NxFilterInput', function() {
     it('looks right', simpleTest(simpleComponentSelector));

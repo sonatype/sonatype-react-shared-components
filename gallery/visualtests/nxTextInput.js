@@ -22,7 +22,8 @@ describe('NxTextInput', function() {
     return `${componentSelector} ${inputType}`;
   }
 
-  const { getPage, blurElement, simpleTest, focusTest, hoverTest, focusAndHoverTest } = setupBrowser('#/pages/NxTextInput');
+  const { getPage, blurElement, simpleTest, focusTest, hoverTest, focusAndHoverTest } =
+      setupBrowser('#/pages/NxTextInput');
 
   describe('Simple NxTextInput', function() {
     it('has a dark border by default', simpleTest(simpleComponentSelector));

@@ -4,13 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxDropdown', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/NxDropdown');
-  });
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxDropdown');
 
   const defaultSelector = '#nx-dropdown-scrolling-example .nx-dropdown';
 
@@ -25,22 +22,23 @@ describe('NxDropdown', function() {
 
   describe('Default NxDropdown when open', function() {
     beforeEach(async function() {
-      const button = await browser.$(defaultSelector + ' .nx-dropdown__toggle');
+      const [button] = await waitAndGetElements(defaultSelector + ' .nx-dropdown__toggle');
 
-      await button.scrollIntoView({ block: 'center' });
       await button.click();
     });
 
     it('has a dark blue button border with expanded menu', async function() {
-      const targetElement = await browser.$(defaultSelector);
+      const [targetElement] = await waitAndGetElements(defaultSelector);
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+      await page.mouse.move(0, 0);
 
-      const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 376);
+      const { x, y } = await targetElement.boundingBox();
 
-      await browser.eyesRegionSnapshot(null, Target.region(region));
+      const screenshot = await page.screenshot({
+        clip: { x, y, width: 251, height: 376 }
+      });
+
+      expect(screenshot).toMatchImageSnapshot();
     });
   });
 
@@ -54,24 +52,23 @@ describe('NxDropdown', function() {
     const selector = '#nx-dropdown-links-example .nx-dropdown';
 
     beforeEach(async function() {
-      const button = await browser.$(selector + ' .nx-dropdown__toggle');
+      const [button] = await waitAndGetElements(selector + ' .nx-dropdown__toggle');
 
-      await button.scrollIntoView({ block: 'center' });
-      await button.click();
-      await button.click();
       await button.click();
     });
 
     it('has links that look right', async function() {
-      const targetElement = await browser.$(selector);
+      const [targetElement] = await waitAndGetElements(selector);
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
 
-      const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 153);
+      const { x, y } = await targetElement.boundingBox();
+      const screenshot = await page.screenshot({
+        clip: { x, y, width: 251, height: 153 }
+      });
 
-      await browser.eyesRegionSnapshot(null, Target.region(region));
+      expect(screenshot).toMatchImageSnapshot();
     });
   });
 
@@ -79,24 +76,22 @@ describe('NxDropdown', function() {
     const selector = '#nx-dropdown-custom-label-example .nx-dropdown';
 
     beforeEach(async function() {
-      const button = await browser.$(selector + ' .nx-dropdown__toggle');
+      const [button] = await waitAndGetElements(selector + ' .nx-dropdown__toggle');
 
-      await button.scrollIntoView({ block: 'center' });
-      await button.click();
-      await button.click();
       await button.click();
     });
 
     it('looks right', async function() {
-      const targetElement = await browser.$(selector);
+      const [targetElement] = await waitAndGetElements(selector);
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+      await page.mouse.move(0, 0);
 
-      const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 88);
+      const { x, y } = await targetElement.boundingBox();
+      const screenshot = await page.screenshot({
+        clip: { x, y, width: 251, height: 88 }
+      });
 
-      await browser.eyesRegionSnapshot(null, Target.region(region));
+      expect(screenshot).toMatchImageSnapshot();
     });
 
   });
@@ -105,25 +100,22 @@ describe('NxDropdown', function() {
     const selector = '#nx-dropdown-right-buttons-example .nx-dropdown';
 
     beforeEach(async function() {
-      const button = await browser.$(selector + ' .nx-dropdown__toggle');
+      const [button] = await waitAndGetElements(selector + ' .nx-dropdown__toggle');
 
-      // for some weird reason the test infra requires you to click it twice
-      await button.scrollIntoView({ block: 'center' });
-      await button.click();
-      await button.click();
       await button.click();
     });
 
     it('looks right', async function() {
-      const targetElement = await browser.$(selector);
+      const [targetElement] = await waitAndGetElements(selector);
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+      await page.mouse.move(0, 0);
 
-      const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 218);
+      const { x, y } = await targetElement.boundingBox();
+      const screenshot = await page.screenshot({
+        clip: { x, y, width: 251, height: 218 }
+      });
 
-      await browser.eyesRegionSnapshot(null, Target.region(region));
+      expect(screenshot).toMatchImageSnapshot();
     });
   });
 
@@ -131,18 +123,17 @@ describe('NxDropdown', function() {
     const selector = '#nx-dropdown-short-example .nx-dropdown';
 
     it('looks right', async function() {
-      const targetElement = await browser.$(selector);
+      const [targetElement] = await waitAndGetElements(selector);
 
-      await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
-      await targetElement.click();
-      await targetElement.click();
-      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+      await page.mouse.move(0, 0);
 
-      const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 151, 184);
+      const { x, y } = await targetElement.boundingBox();
+      const screenshot = await page.screenshot({
+        clip: { x, y, width: 151, height: 184 }
+      });
 
-      await browser.eyesRegionSnapshot(null, Target.region(region));
+      expect(screenshot).toMatchImageSnapshot();
     });
   });
 });

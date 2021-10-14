@@ -1,0 +1,189 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+const { setupBrowser } = require('./testUtils');
+describe('NxModal', function() {
+  const { waitAndGetElement, checkFullPageScreenshot } = setupBrowser('#/pages/NxModal');
+
+  const simpleExampleSelector = '#nx-modal-simple-example',
+      formWithAlertExampleSelector = '#nx-modal-form-with-alert-example',
+      formExampleSelector = '#nx-modal-form-example',
+      narrowExampleSelector = '#nx-modal-narrow-example',
+      wideExampleSelector = '#nx-modal-wide-example',
+      stackedExampleSelector = '#nx-modal-stacked-example',
+      escClosingExampleSelector = '#nx-modal-esc-example';
+
+  function simpleModalTest(exampleSelector) {
+    return async function() {
+      const openModalBtnSelector = `${exampleSelector} button`,
+          closeModalBtnSelector =
+              `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`;
+
+      const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
+
+      await openModalBtn.click();
+
+      const [closeModalBtn] = await waitAndGetElements(closeModalBtnSelector);
+
+      // take image of entire viewport in order to capture the backdrop color
+      await checkFullPageScreenshot();
+    }
+  }
+
+  describe('Simple NxModal', function() {
+    it('looks right', simpleModalTest(simpleExampleSelector));
+  });
+
+  describe('Form NxModal', function() {
+    it('looks right', simpleModalTest(formWithAlertExampleSelector));
+
+    it('correctly renders its loading spinner', async function() {
+      const openModalBtnSelector = `${formExampleSelector} button`,
+          modalSelector = `#nx-modal-form-example`;
+
+      const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
+
+      await openModalBtn.click();
+
+      const [modal] = await waitAndGetElements(modalSelector);
+
+      await checkFullPageScreenshot();
+    });
+
+    it('shows the tooltip in front of the modal', async function() {
+      const openModalBtnSelector = `${formExampleSelector} button`,
+          submitBtnSelector =
+              `${formExampleSelector} .nx-footer .nx-btn-bar .nx-form__submit-btn`,
+          cancelBtnSelector =
+              `${formExampleSelector} .nx-footer .nx-btn-bar .nx-form__cancel-btn`;
+
+      const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
+
+      await openModalBtn.click();
+
+      // wait for submit button to appear after loading completes
+      const [submitBtn] = await waitAndGetElements(submitBtnSelector);
+
+      await checkFullPageScreenshot();
+    });
+
+    it('does not cut off overflowing focus borders in the content area', async function() {
+      const openModalBtnSelector = `${formExampleSelector} button`,
+          modalSelector = `${formExampleSelector} .nx-modal`,
+          checkboxSelector = `${formExampleSelector} fieldset .nx-checkbox:first-of-type`;
+
+      const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
+
+      await openModalBtn.click();
+
+      const [modal, checkbox] = await waitAndGetElements(modalSelector, checkboxSelector);
+      await checkbox.focus();
+
+      await checkFullPageScreenshot();
+    });
+  });
+
+  describe('Narrow NxModal', function() {
+    it('looks right', simpleModalTest(narrowExampleSelector));
+  });
+
+  describe('Wide NxModal', function() {
+    it('looks right', simpleModalTest(wideExampleSelector));
+  });
+
+  describe('Stacked NxModals', function() {
+    it('looks right', async function() {
+      const exampleSelector = stackedExampleSelector,
+          openFirstModalBtnSelector = `${exampleSelector} button`,
+          openSecondModalBtnSelector = `${exampleSelector} .nx-modal-backdrop .nx-btn--primary`,
+          closeSecondModalBtnSelector =
+              `${exampleSelector} .nx-modal-backdrop + .nx-modal-backdrop .nx-footer .nx-btn-bar .nx-btn`,
+          closeFirstModalBtnSelector =
+              `${exampleSelector} .nx-modal-backdrop .nx-footer .nx-btn-bar .nx-btn`;
+
+      const [openFirstModalBtn] = await waitAndGetElements(openFirstModalBtnSelector);
+
+      await openFirstModalBtn.click();
+
+      const [closeFirstModalBtn, openSecondModalBtn] =
+          await waitAndGetElements(closeFirstModalBtnSelector, openSecondModalBtnSelector);
+
+      await openSecondModalBtn.click();
+
+      const [closeSecondModalBtn] = await waitAndGetElements(closeSecondModalBtnSelector);
+
+      await checkFullPageScreenshot();
+    });
+  });
+
+  describe('NxModal + NxDropdown ESC Closing behavior', function() {
+    it('closes one layer per ESC press', async function() {
+      const [initialBtn] = waitAndGetElements(`${escClosingExampleSelector} #esc-example-initial-btn`);
+      await initialBtn.click();
+
+      const [customPanel, customPanelBtn] = waitAndGetElements(
+        `${escClosingExampleSelector} .gallery-custom-expandable`,
+        `${escClosingExampleSelector} .gallery-custom-expandable button`,
+      );
+      await customPanelBtn.click();
+
+      const [modal1, modal1CloseBtn, dropdownToggle] = waitAndGetElements(
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal`,
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-footer .nx-btn`,
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown__toggle`,
+      );
+      await dropdownToggle.click();
+
+      const [dropdownMenu, dropdownBtn] = waitAndGetElements(
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-menu`,
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-button`,
+      );
+      await dropdownBtn.click();
+
+      const [modal2, modal2CloseBtn] = await waitAndGetElements(
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal2`,
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal2 .nx-footer .nx-btn`
+      );
+
+      async function isFocused(el) {
+        return el.evaluate(e => e === document.activeElement);
+      }
+
+      async function isInDocument(el) {
+        return el.evaluate(e => e.isConnected);
+      }
+
+      async function pressEsc() {
+        await getPage().keyboard.press('Escape');
+      }
+
+      expect(await isFocused(modal2CloseBtn)).toBe(true);
+
+      // close second modal
+      pressEsc();
+
+      expect(await isInDocument(modal2)).toBe(false);
+      expect(await isFocused(dropdownBtn)).toBe(true);
+
+      // close dropdown menu
+      pressEsc();
+
+      expect(await isInDocument(dropdownMenu)).toBe(false);
+      expect(await isFocused(dropdownToggle)).toBe(true);
+
+      // close first modal
+      pressEsc();
+
+      expect(await isInDocument(modal1)).toBe(false);
+      expect(await isFocused(customPanelBtn)).toBe(true);
+
+      // close custom panel
+      pressEsc();
+
+      expect(await isInDocument(customPanel)).toBe(false);
+    });
+  });
+});
