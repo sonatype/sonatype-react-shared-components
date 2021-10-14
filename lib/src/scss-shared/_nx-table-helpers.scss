@@ -14,7 +14,7 @@
 // NOTE: only works if rows display the standard single line of text. Wrapping text within a row, or any other larger
 // content, will increase the height of the row and prevent this calculation from being accurate.
 @function pagination-table-height($body-row-count, $header-filter-row-count: 0, $header-row-count: 1) {
-  $text-input-height: 42px;
+  $text-input-height: 40px;
   $body-row-height: $table-cell-min-height;
   $header-row-height: $table-cell-header-height;
 

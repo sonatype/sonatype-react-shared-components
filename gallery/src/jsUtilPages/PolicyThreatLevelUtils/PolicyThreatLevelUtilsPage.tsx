@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -22,26 +22,41 @@ const PolicyThreatLevelUtilsPage = () =>
         objects and TypeScript types that provide code definitions and mappings between these two concepts.
       </NxP>
 
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item">
-          <strong>Policy Threat Level:</strong> An integer between 0 and 10, inclusive, that describes
-          the severity of a threat.  Zero represents no
-          threat at all and ten represents the most severe of threats
-        </li>
-        <li className="nx-list__item"><strong>Policy Threat Level Category:</strong>
-          {' '}In increasing order of severity: <q>none</q>; <q>low</q>; <q>moderate</q>; <q>severe</q>;
-          and <q>critical</q>, or <q>unspecified</q>. Each Policy Threat Level is a member of a corresponding
-          category:
+      <NxList className="nx-list--bulleted">
+        <NxList.Item>
+          <NxList.Text>
+            <strong>Policy Threat Level:</strong> An integer between 0 and 10, inclusive, that describes
+            the severity of a threat.  Zero represents no
+            threat at all and ten represents the most severe of threats
+          </NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>
+            <strong>Policy Threat Level Category:</strong>
+            {' '}In increasing order of severity: <q>none</q>; <q>low</q>; <q>moderate</q>; <q>severe</q>;
+            and <q>critical</q>, or <q>unspecified</q>. Each Policy Threat Level is a member of a corresponding
+            category:
 
-          <ul className="nx-list nx-list--bulleted">
-            <li className="nx-list__item"><strong>none:</strong> 0</li>
-            <li className="nx-list__item"><strong>low:</strong> 1</li>
-            <li className="nx-list__item"><strong>moderate:</strong> 2 - 3</li>
-            <li className="nx-list__item"><strong>severe:</strong> 4 - 7</li>
-            <li className="nx-list__item"><strong>critical:</strong> 8 - 10</li>
-          </ul>
-        </li>
-      </ul>
+            <NxList className="nx-list--bulleted">
+              <NxList.Item>
+                <NxList.Text><strong>none:</strong> 0</NxList.Text>
+              </NxList.Item>
+              <NxList.Item>
+                <NxList.Text><strong>low:</strong> 1</NxList.Text>
+              </NxList.Item>
+              <NxList.Item>
+                <NxList.Text><strong>moderate:</strong> 2 - 3</NxList.Text>
+              </NxList.Item>
+              <NxList.Item>
+                <NxList.Text><strong>severe:</strong> 4 - 7</NxList.Text>
+              </NxList.Item>
+              <NxList.Item>
+                <NxList.Text><strong>critical:</strong> 8 - 10</NxList.Text>
+              </NxList.Item>
+            </NxList>
+          </NxList.Text>
+        </NxList.Item>
+      </NxList>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="ThreatLevelCategory & allThreatLevelCategories"

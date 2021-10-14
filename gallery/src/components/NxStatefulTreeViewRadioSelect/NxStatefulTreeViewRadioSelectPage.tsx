@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -73,11 +73,13 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
               Called whenever selection change occurs; it will receive one argument:
-              <ul className="nx-list nx-list--bulleted">
-                <li className="nx-list__item">
-                  <NxCode>id</NxCode> of the toggled option
-                </li>
-              </ul>
+              <NxList className="nx-list--bulleted">
+                <NxList.Item>
+                  <NxList.Text>
+                    <NxCode>id</NxCode> of the toggled option
+                  </NxList.Text>
+                </NxList.Item>
+              </NxList>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
