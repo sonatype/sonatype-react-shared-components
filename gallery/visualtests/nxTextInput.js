@@ -25,31 +25,19 @@ describe('NxTextInput', function() {
   const { getPage, blurElement, simpleTest, focusTest, hoverTest, focusAndHoverTest } = setupBrowser('#/pages/NxTextInput');
 
   describe('Simple NxTextInput', function() {
-    it('has a light border when pristine', simpleTest(simpleComponentSelector));
+    it('has a dark border by default', simpleTest(simpleComponentSelector));
 
-    it('has a dark border when hovered',
+    it('has a darker border when hovered',
         hoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
     it('has a blue border when focused',
         focusTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
 
     it('has a blue border and blue glow when hovered and focused',
         focusAndHoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
-
-    it('has a dark border when non-empty', async function() {
-      const page = getPage(),
-          inputSelector = getInputElementSelector(simpleComponentSelector),
-          inputElement = await page.$(inputSelector);
-
-      await inputElement.type('foo');
-
-      await blurElement(inputSelector);
-
-      await simpleTest(simpleComponentSelector)();
-    });
   });
 
   describe('Validatable NxTextInput', function() {
-    it('has a light border when pristine', simpleTest(validatableComponentSelector));
+    it('has a dark border when pristine', simpleTest(validatableComponentSelector));
 
     it('has validation styles when valid', async function() {
       const page = getPage(),

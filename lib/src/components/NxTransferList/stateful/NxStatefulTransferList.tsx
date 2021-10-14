@@ -11,12 +11,13 @@ import NxTransferList from '../NxTransferList';
 
 export { StatefulProps as Props };
 
-export default function NxStatefulTransferList<T extends string | number>(props: StatefulProps<T>) {
+export default function NxStatefulTransferList
+<T extends string | number = string>(props: StatefulProps<T>) {
   const [availableItemsFilter, setAvailableItemsFilter] = useState(''),
       [selectedItemsFilter, setSelectedItemsFilter] = useState('');
 
-  return <NxTransferList onAvailableItemsFilterChange={setAvailableItemsFilter}
-                         onSelectedItemsFilterChange={setSelectedItemsFilter}
-                         { ...{ availableItemsFilter, selectedItemsFilter } }
-                         { ...props } />;
+  return <NxTransferList<T> onAvailableItemsFilterChange={setAvailableItemsFilter}
+                            onSelectedItemsFilterChange={setSelectedItemsFilter}
+                            { ...{ availableItemsFilter, selectedItemsFilter } }
+                            { ...props } />;
 }

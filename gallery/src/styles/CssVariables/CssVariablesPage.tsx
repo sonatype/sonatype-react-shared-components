@@ -236,7 +236,11 @@ const CssVariablesPage = () => {
               The standard color for the borders of form fields (such as text inputs) in their default state.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-form-element-border-pristine">
-              The standard color for the borders of form fields (such as text inputs) in their pristine state.
+              <NxWarningAlert>
+                Deprecated: We no longer want to show when input is in a pristine state.
+                The standard color for the borders of form fields
+                (such as text inputs) in their pristine state.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-interactive-background-selected">
               The standard color for the backgrounds of interactive elements (such as clickable list rows) when they
@@ -319,8 +323,8 @@ const CssVariablesPage = () => {
       <GalleryTile title="Swatch Color Properties">
         <NxP>
           While the color properties described in the previous section are higher-level, with specific semantics
-          around their use, there is another set of lower level color properties defined in terms of color swatches.
-          For information on these properties, see
+          around their use, there is another set of lower level color properties defined in terms of color swatches and
+          palettes. For information on these properties, see
           the <NxTextLink href="#/pages/Color%20Palettes">Color Palettes</NxTextLink> page.
         </NxP>
       </GalleryTile>

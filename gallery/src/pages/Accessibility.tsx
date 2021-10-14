@@ -35,49 +35,64 @@ const Accessibility = () =>
 
       <NxList className="nx-list--bulleted">
         <NxList.Item>
-          Tab order is important. Make sure that the tab order of the page is logical. You can use the{' '}
-          <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex">
-            tabindex
-          </NxTextLink>
-          {' '}HTML attribute to add items to the tab order (or remove them if necessary).
-          At its simplest <NxCode>tabindex="-1"</NxCode> removes an object from the tab order,
-          {' '}<NxCode>tabindex="0"</NxCode> adds something to the tab order.
-          <NxWarningAlert>
-            Positive integers like <NxCode>tabindex="3"</NxCode> which can change the tab order should be avoided.
-          </NxWarningAlert>
-        </NxList.Item>
-        <NxList.Item>Unique title element for each page or view?</NxList.Item>
-        <NxList.Item>
-          Do all images and visual graphs have
-          {' '}<NxTextLink external href="https://html.spec.whatwg.org/multipage/images.html#alt">alt text</NxTextLink>?
+          <NxList.Text>
+            Tab order is important. Make sure that the tab order of the page is logical. You can use the{' '}
+            <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex">
+              tabindex
+            </NxTextLink>
+            {' '}HTML attribute to add items to the tab order (or remove them if necessary).
+            At its simplest <NxCode>tabindex="-1"</NxCode> removes an object from the tab order,
+            {' '}<NxCode>tabindex="0"</NxCode> adds something to the tab order.
+            <NxWarningAlert>
+              Positive integers like <NxCode>tabindex="3"</NxCode> which can change the tab order should be avoided.
+            </NxWarningAlert>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          Make sure that you take advantage of the props and attributes that have been added to the components to
-          improve their accessibility. Many component documentation pages have an Accessibility section with extra
-          information.
+          <NxList.Text>Unique title element for each page or view?</NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics">
-            Semantic HTML
-          </NxTextLink>
-          {' '}is a critical aspect of accessibility. Headings should always use the correct
-          {' '}<NxCode>&lt;h#&gt;</NxCode> tag, paragraphs should be wrapped in <NxCode>&lt;p&gt;</NxCode> tags, before
-          you wrap that block of content in a <NxCode>&lt;div&gt;</NxCode> consider if it would be better to use a {' '}
-          <NxCode>&lt;section&gt;</NxCode>. Tables should be used for data not layout. If in doubt please don't
-          hesitate to ask in #react-components.
+          <NxList.Text>
+            Do all images and visual graphs have{' '}
+            <NxTextLink external href="https://html.spec.whatwg.org/multipage/images.html#alt">alt text</NxTextLink>?
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          Generally speaking all form inputs within a form should have a label. Many RSC components (like
-          <NxCode>NxFormGroup</NxCode>) will automatically create labels for you so make sure you read the
-          documentation.
+          <NxList.Text>
+            Make sure that you take advantage of the props and attributes that have been added to the components to
+            improve their accessibility. Many component documentation pages have an Accessibility section with extra
+            information.
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          Have you checked your page in ChromeVox and/or VoiceOver? Can you navigate and use the page without looking
-          at the browser viewport?
+          <NxList.Text>
+            <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics">
+              Semantic HTML
+            </NxTextLink>
+            {' '}is a critical aspect of accessibility. Headings should always use the correct
+            {' '}<NxCode>&lt;h#&gt;</NxCode> tag, paragraphs should be wrapped in <NxCode>&lt;p&gt;</NxCode> tags,
+            before you wrap that block of content in a <NxCode>&lt;div&gt;</NxCode> consider if it would be better to
+            use a <NxCode>&lt;section&gt;</NxCode>. Tables should be used for data not layout.
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          The Plaid team is currently evaluating automated accessibility testing tools but one free tool which can
-          provide some insight is the Lighthouse tool in Chrome's Developer Tools.
+          <NxList.Text>
+            Generally speaking all form inputs within a form should have a label. Many RSC components (like
+            <NxCode>NxFormGroup</NxCode>) will automatically create labels for you so make sure you read the
+            documentation.
+          </NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>
+            Have you checked your page in ChromeVox and/or VoiceOver? Can you navigate and use the page without looking
+            at the browser viewport?
+          </NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>
+            The Plaid team is currently evaluating automated accessibility testing tools but one free tool which can
+            provide some insight is the Lighthouse tool in Chrome's Developer Tools.
+          </NxList.Text>
         </NxList.Item>
       </NxList>
     </NxTile.Subsection>
@@ -88,34 +103,28 @@ const Accessibility = () =>
       </NxTile.SubsectionHeader>
       <NxList className="nx-list--bulleted">
         <NxList.Item>
-          <NxTextLink external href="https://docs.sonatype.com/display/ENG/Accessibility+Best+Practices">
-            Sonatype's Accessibility Best Practices
-          </NxTextLink>
+          <NxList.Text>
+            <NxTextLink external href="https://docs.sonatype.com/display/ENG/Accessibility+Best+Practices">
+              Sonatype's Accessibility Best Practices
+            </NxTextLink>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">
-            MDN accessibility page
-          </NxTextLink>
+          <NxList.Text>
+            <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">
+              MDN accessibility page
+            </NxTextLink>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink external href="https://www.w3.org/standards/webdesign/accessibility">
-            W3C accessibility page
-          </NxTextLink>
+          <NxList.Text>
+            <NxTextLink external href="https://www.w3.org/standards/webdesign/accessibility">
+              W3C accessibility page
+            </NxTextLink>
+          </NxList.Text>
         </NxList.Item>
       </NxList>
     </NxTile.Subsection>
-
-    <NxTile.Subsection>
-      <NxTile.SubsectionHeader>
-        <NxH3>
-          Discover an accessibility problem? Have a suggestion for an improvement?
-        </NxH3>
-      </NxTile.SubsectionHeader>
-      <NxP>
-        Hit us up in #accessibility or #react-components.
-      </NxP>
-    </NxTile.Subsection>
-
   </GalleryTile>;
 
 export default Accessibility;

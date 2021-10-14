@@ -5,13 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { StateProps, Validator } from './types';
-import { curryN, trim } from 'ramda';
+import { curryN } from 'ramda';
 
 /**
  * @return an initialized state with the specified value and isPristine set to true.
  */
 export function initialState(value: string, validator?: Validator): StateProps {
-  const trimmedValue = trim(value);
+  const trimmedValue = value.trim();
   return {
     isPristine: true,
     value,
@@ -35,7 +35,7 @@ export function initialState(value: string, validator?: Validator): StateProps {
  * validator function.
  */
 export const userInput = curryN(2, function userInput(validator: Validator | undefined, newValue: string): StateProps {
-  const trimmedValue = trim(newValue);
+  const trimmedValue = newValue.trim();
 
   return {
     isPristine: false,
