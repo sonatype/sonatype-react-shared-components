@@ -15,7 +15,6 @@ import NxTreeViewExtras from './NxTreeViewExtrasExample';
 import NxTreeViewClickable from './NxTreeViewClickableExample';
 import NxTreeViewClickableSidebar from './NxTreeViewClickableSidebarExample';
 import NxTreeViewCheckbox from './NxTreeViewCheckboxExample';
-import NxTreeViewNested from './NxTreeViewNestedExample';
 import NxTreeViewEmpty from './NxTreeViewEmptyExample';
 import NxTreeViewDisabled from './NxTreeViewDisabledExample';
 
@@ -25,7 +24,6 @@ const nxTreeViewCode = require('./NxTreeViewExample?raw'),
     nxTreeViewClickableCode = require('./NxTreeViewClickableExample?raw'),
     nxTreeViewClickableSidebarCode = require('./NxTreeViewClickableSidebarExample?raw'),
     nxTreeViewCheckboxCode = require('./NxTreeViewCheckboxExample?raw'),
-    nxTreeViewNestedCode = require('./NxTreeViewNestedExample?raw'),
     nxTreeViewEmptyCode = require('./NxTreeViewEmptyExample?raw'),
     nxTreeViewDisabledCode = require('./NxTreeViewDisabledExample?raw');
 
@@ -191,13 +189,6 @@ const NxTreeViewPage = () =>
                         codeExamples={nxTreeViewCheckboxCode}>
       Example showing how to construct <NxCode>NxTreeView</NxCode>s with checkboxes and radios as
       children. This example omits the input state management and is focused on demonstrating the styling.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="NxTreeView Nested Example"
-                        id="nx-tree-view-nested-example"
-                        liveExample={NxTreeViewNested}
-                        codeExamples={nxTreeViewNestedCode}>
-      An example of an NxTreeView with another NxTreeView nested as a child.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeView Empty Example"
