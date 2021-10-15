@@ -19,9 +19,9 @@ describe('NxTreeView', function() {
       },
       getShallowComponent = enzymeUtils.getShallowComponent(NxTreeView, minimalProps);
 
-  it('renders a div with a tree role and the nx-tree-view class', function() {
+  it('renders a div with a list role and the nx-tree-view class', function() {
     expect(getShallowComponent()).toMatchSelector('div.nx-tree-view');
-    expect(getShallowComponent()).toHaveProp('role', 'tree');
+    expect(getShallowComponent()).toHaveProp('role', 'list');
   });
 
   it('sets the specified id', function() {
@@ -186,12 +186,12 @@ describe('NxTreeView', function() {
       const component = mount(<NxTreeViewChild id="test-id" className="bar" lang="en">foo</NxTreeViewChild>),
           div = component.children().children();
 
-      it('renders a div with the treeitem role and the nx-tree-view__child class', function() {
+      it('renders a div with the listitem role and the nx-tree-view__child class', function() {
         expect(component.hostNodes()).not.toExist();
         expect(component.children().hostNodes()).not.toExist();
 
         expect(div).toMatchSelector('div.nx-tree-view__child');
-        expect(div).toHaveProp('role', 'treeitem');
+        expect(div).toHaveProp('role', 'listitem');
       });
 
       it('adds specified classnames', function() {
@@ -240,8 +240,8 @@ describe('NxTreeView', function() {
         expect(div).toHaveProp('lang', 'en');
       });
 
-      it('adds the treeitem role', function() {
-        expect(div).toHaveProp('role', 'treeitem');
+      it('adds the listitem role', function() {
+        expect(div).toHaveProp('role', 'listitem');
       });
 
       it('forwards a ref to the div', function() {

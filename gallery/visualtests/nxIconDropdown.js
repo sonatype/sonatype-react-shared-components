@@ -40,7 +40,7 @@ describe('NxIconDropdown', function() {
       await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
 
       const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 376);
+      const region = new Region(parseInt(x, 10) - 208, parseInt(y, 10), 251, 346);
 
       await browser.eyesRegionSnapshot(null, Target.region(region));
     });

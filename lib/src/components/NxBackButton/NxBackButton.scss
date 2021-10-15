@@ -13,5 +13,6 @@
 
   .nx-text-link {
     @include nx-container-helpers.container-horizontal;
+    text-decoration: none;
   }
 }

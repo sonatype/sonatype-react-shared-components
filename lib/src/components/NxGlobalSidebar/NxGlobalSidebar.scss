@@ -102,6 +102,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
            // We need to add an extra pixel to the left to properly centre
            // the icons when the sidebar is collapsed
            calc(#{$-left-right-spacing} + 1px);
+  text-decoration: none;
 
   .nx-icon {
     margin: 0;
