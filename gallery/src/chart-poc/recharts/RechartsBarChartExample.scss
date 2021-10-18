@@ -1,0 +1,21 @@
+.recharts-bar {
+  .recharts-rectangle[id=none] {
+    fill: var(--nx-color-threat-none);
+  }
+
+  .recharts-rectangle[id=low] {
+    fill: var(--nx-color-threat-low);
+  }
+
+  .recharts-rectangle[id=moderate] {
+    fill: var(--nx-color-threat-moderate);
+  }
+
+  .recharts-rectangle[id=severe] {
+    fill: var(--nx-color-threat-severe);
+  }
+
+  .recharts-rectangle[id=critical] {
+    fill: var(--nx-color-threat-critical);
+  }
+}

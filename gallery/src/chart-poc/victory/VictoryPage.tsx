@@ -10,8 +10,10 @@ import { NxP, NxTextLink } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import Example from './VictoryExample';
+import VictoryBarChartExample from './VictoryBarChartExample';
 
 const code = require('./VictoryExample?raw');
+const VictoryBarChartExampleCode = require('./VictoryBarChartExample?raw');
 
 export default function NxTablePage() {
   return (
@@ -32,6 +34,18 @@ export default function NxTablePage() {
                           liveExample={Example}
                           codeExamples={code}>
         Example
+      </GalleryExampleTile>
+
+      <GalleryDescriptionTile>
+        <NxP>
+          This one is very limited compared to Nivo. Not a lot of configuration options.
+        </NxP>
+      </GalleryDescriptionTile>
+
+      <GalleryExampleTile title="Bar Chart Example"
+                          liveExample={VictoryBarChartExample}
+                          codeExamples={VictoryBarChartExampleCode}>
+        Bar Chart Example
       </GalleryExampleTile>
     </>
   );

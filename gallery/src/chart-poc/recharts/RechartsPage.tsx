@@ -9,10 +9,14 @@ import { NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
+import RechartsBarChartExample from './RechartsBarChartExample';
 import Example from './RechartsExample';
 
 const code = require('./RechartsExample?raw');
 const scss = require('./RechartsExample.scss?raw');
+
+const RechartsBarChartExampleCode = require('./RechartsBarChartExample?raw');
+const RechartsBarChartExampleSCSSCode = require('./RechartsBarChartExample.scss?raw');
 
 export default function NxTablePage() {
   return (
@@ -41,6 +45,26 @@ export default function NxTablePage() {
                           liveExample={Example}
                           codeExamples={[code, { language: 'scss', content: scss }]}>
         Example
+      </GalleryExampleTile>
+
+      <GalleryDescriptionTile>
+        <NxP>
+          This one felt convoluted. The result feels a little bit janky,
+          especially with the tooltip transitions.
+        </NxP>
+      </GalleryDescriptionTile>
+      <GalleryExampleTile title="Bar Chart Example"
+                          liveExample={RechartsBarChartExample}
+                          codeExamples={
+                            [
+                              RechartsBarChartExampleCode,
+                              {
+                                language: 'scss',
+                                content: RechartsBarChartExampleSCSSCode
+                              }
+                            ]
+                          }>
+        Bar Chart Example
       </GalleryExampleTile>
     </>
   );

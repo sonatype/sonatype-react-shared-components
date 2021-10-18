@@ -9,9 +9,11 @@ import { NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
+import NivoBarChartExample from './NivoBarChartExample';
 import Example from './NivoExample';
 
 const code = require('./NivoExample?raw');
+const NivaBarChartExampleCode = require('./NivoBarChartExample?raw');
 
 export default function NxTablePage() {
   return (
@@ -41,6 +43,19 @@ export default function NxTablePage() {
                           liveExample={Example}
                           codeExamples={code}>
         Example
+      </GalleryExampleTile>
+
+      <GalleryDescriptionTile>
+        <NxP>
+          Definitely my first choice! Best one of the three.
+          Apart from the excellent interactive documentation, it has a lot of options to style and customize it.
+        </NxP>
+      </GalleryDescriptionTile>
+
+      <GalleryExampleTile title="Bar Chart Example"
+                          liveExample={NivoBarChartExample}
+                          codeExamples={NivaBarChartExampleCode}>
+        Bar Chart Example
       </GalleryExampleTile>
     </>
   );
