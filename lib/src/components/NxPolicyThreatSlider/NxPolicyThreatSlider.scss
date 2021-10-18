@@ -9,6 +9,7 @@
 .nx-policy-threat-slider {
   $rail-height: 8px;
   $thumb-size: 32px;
+  $thumb-border-width: 2px;
 
   // distance from top of thumb to top of rail
   $thumb-vertical-overflow: math.div($thumb-size - $rail-height, 2);
@@ -41,7 +42,7 @@
     .MuiSlider-thumb {
       box-sizing: border-box;
       background-color: var(--nx-swatch-white);
-      border: 2px solid;
+      border: $thumb-border-width solid;
       border-radius: var(--nx-border-radius);
       color: var(--nx-color-text-dark);
       font-size: var(--nx-font-size-s);
@@ -55,13 +56,21 @@
   }
 
   .MuiSlider-thumb {
-    &.MuiSlider-active, &:hover {
+    &.MuiSlider-active, &:hover, &:focus {
       box-shadow: none;
     }
 
-    &:focus {
-      border-color: var(--nx-color-interactive-border-focus);
+    &:focus::before {
+      border: 1px solid var(--nx-color-interactive-border-focus);
+      border-radius: var(--nx-border-radius);
       box-shadow: var(--nx-box-shadow-focus);
+      content: '';
+
+      // this is a new shorthand for top, bottom, left, and right.
+      // Note that these properties are measured from the inside of the container's border which is why the border
+      // width is part of the calc
+      inset: calc(0px - (var(--nx-spacing-base) + #{$thumb-border-width}));
+      position: absolute;
     }
 
     // this class seems to be applied, perhaps incorrectly,
@@ -73,31 +82,31 @@
   }
 
   .nx-policy-threat-slider__value-label--none {
-    .MuiSlider-thumb:not(:focus) {
+    .MuiSlider-thumb {
       border-color: var(--nx-color-threat-none);
     }
   }
 
   .nx-policy-threat-slider__value-label--low {
-    .MuiSlider-thumb:not(:focus) {
+    .MuiSlider-thumb {
       border-color: var(--nx-color-threat-low);
     }
   }
 
   .nx-policy-threat-slider__value-label--moderate {
-    .MuiSlider-thumb:not(:focus) {
+    .MuiSlider-thumb {
       border-color: var(--nx-color-threat-moderate);
     }
   }
 
   .nx-policy-threat-slider__value-label--severe {
-    .MuiSlider-thumb:not(:focus) {
+    .MuiSlider-thumb {
       border-color: var(--nx-color-threat-severe);
     }
   }
 
   .nx-policy-threat-slider__value-label--critical {
-    .MuiSlider-thumb:not(:focus) {
+    .MuiSlider-thumb {
       border-color: var(--nx-color-threat-critical);
     }
   }
