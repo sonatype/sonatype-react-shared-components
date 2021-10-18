@@ -15,23 +15,25 @@ import './PageHeader.scss';
 
 const PageHeader = () => (
   <header className="nx-gallery-page-header">
-    <h1 className="nx-gallery-page-header__logo">
-      <a className="nx-gallery-page-header__home-link"
-         href="#"
-         aria-label="home">
-        <img className="nx-gallery-page-header__logo-image"
-             src={plaidVillain}
-             alt="A cute but villainous Tartan logo" />
-        <img className="nx-gallery-page-header__logotype-image"
-             src={tartanLogotype}
-             alt="Sonatype Tartan" />
-        <span className="nx-gallery-page-header__name">
-          <span>React Shared Component Library</span>
-        </span>
-      </a>
-    </h1>
-    <div className="nx-gallery-page-header__version">
-      Version {packageJson.version}
+    <div className="nx-gallery-page-header__inner">
+      <h1 className="nx-gallery-page-header__logo">
+        <a className="nx-gallery-page-header__home-link"
+           href="#"
+           aria-label="home">
+          <img className="nx-gallery-page-header__logo-image"
+               src={plaidVillain}
+               alt="A cute but villainous Tartan logo" />
+          <img className="nx-gallery-page-header__logotype-image"
+               src={tartanLogotype}
+               alt="Sonatype Tartan" />
+          <span className="nx-gallery-page-header__name">
+            <span>React Shared Component Library</span>
+          </span>
+        </a>
+      </h1>
+      <div className="nx-gallery-page-header__version">
+        Version {packageJson.version}
+      </div>
     </div>
   </header>
 );
