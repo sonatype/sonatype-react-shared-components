@@ -126,9 +126,11 @@ import NxStatefulSearchTransferListPage
 import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
 import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallThreatCounterPage';
+import TreeLinesPoc from './TreeLinesPoc';
 
 const pageConfig: PageConfig = {
   'React Components': {
+    TreeLinesPoc,
     NxAccordion: NxAccordionPage,
     NxStatefulAccordion: NxStatefulAccordionPage,
     NxAlert: NxAlertComponentsPage,
