@@ -1,0 +1,58 @@
+
+.nx-gallery-page-header {
+  align-items: center;
+  background-color: white;
+  box-sizing: border-box;
+  display: flex;
+  gap: 20px;
+  padding: 16px 24px;
+  width: 100vw;
+
+  &__logo {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__home-link {
+    display: grid;
+    gap: 0 16px;
+    grid-template:
+      "logo-image logotype-image" 43px
+      "logo-image name"
+      / 72px auto;
+    grid-area: logo;
+    text-decoration: none;
+  }
+
+  &__logo-image {
+    height: 72px;
+    width: 72px;
+    grid-area: logo-image;
+  }
+
+  &__logotype-image {
+    height: 48px;
+    grid-area: logotype-image;
+    align-self: start;
+  }
+
+  &__name {
+    align-self: end;
+    color: #4D4D4D;
+    font-size: 16px;
+    font-weight: 600;
+    grid-area: name;
+    text-decoration: none;
+  }
+
+  &__version {
+    align-items: center;
+    border-left: 1px solid black;
+    display: flex;
+    font-size: 12px;
+    grid-area: name;
+    height: 100%;
+    padding-left: 24px;
+    vertical-align: baseline;
+  }
+}
