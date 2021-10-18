@@ -48,10 +48,12 @@ $-name-height: $-logo-image-size - $-logotype-image-height;
     height: $-name-height;
     text-decoration: none;
 
+    // This pseudo element is necessary to align
+    // the inner span text's baseline to the parent span.
     &::before {
+      content: '';
       display: inline-block;
       height: 100%;
-      content: '';
     }
   }
 
