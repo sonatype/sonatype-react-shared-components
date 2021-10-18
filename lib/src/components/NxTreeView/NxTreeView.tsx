@@ -47,7 +47,7 @@ const NxTreeView: FunctionComponent<Props> =
         triggerTooltipProps = typeof triggerTooltip === 'string' ? { title: triggerTooltip } : triggerTooltip;
 
     return (
-      <div className={treeViewClasses} id={treeViewId} role="tree">
+      <div className={treeViewClasses} id={treeViewId} role="list">
         {
           triggerTooltipProps ? (
             // div necessary to avoid error message when tooltip is on disabled button
@@ -83,7 +83,7 @@ const NxTreeViewChild = forwardRef<Element, NxTreeViewChildProps>(
       else {
         const classes = classnames('nx-tree-view__child', children.props.className, className);
 
-        return React.cloneElement(children, { className: classes, ref, role: 'treeitem', ...otherProps });
+        return React.cloneElement(children, { className: classes, ref, role: 'listitem', ...otherProps });
       }
     }
 );
