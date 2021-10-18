@@ -50,11 +50,12 @@ describe('NxTab', function () {
 
   it('wraps the tab in an NxOverflowTooltip with the children as its title', function() {
     const component = mount(
-          <TabContext.Provider value={testContext({ activeTab: 1, index: 1 })}>
-            <NxTab index={0}>Tab</NxTab>
-          </TabContext.Provider>
-        ),
-        tooltip = component.find(NxOverflowTooltip);
+      <TabContext.Provider value={testContext({ activeTab: 1, index: 1 })}>
+        <NxTab index={0}>Tab</NxTab>
+      </TabContext.Provider>
+    );
+
+    const tooltip = component.find(NxOverflowTooltip);
 
     expect(tooltip).toExist();
     expect(tooltip).toHaveProp('title', 'Tab');
