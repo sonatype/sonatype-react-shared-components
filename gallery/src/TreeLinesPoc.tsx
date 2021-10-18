@@ -5,8 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-
-import { NxH2, NxTile } from '@sonatype/react-shared-components';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { NxFontAwesomeIcon, NxH2, NxTile } from '@sonatype/react-shared-components';
 
 import './TreeLinesPoc.scss';
 
@@ -15,9 +15,10 @@ function Lines() {
   return (
     <>
       <svg className="poc-tree__line-intersection">
-        <line className="poc-tree__top-line" x1="50%" x2="50%" y2="50%" />
-        <line className="poc-tree__right-line" x1="50%" x2="100%" y1="50%" y2="50%" />
-        <line className="poc-tree__bottom-line" x1="50%" x2="50%" y1="50%" y2="100%" />
+        <line className="poc-tree__top-line" x1="50%" x2="50%" y2="20%" />
+        <line className="poc-tree__right-line" x1="80%" x2="100%" y1="50%" y2="50%" />
+        <line className="poc-tree__bottom-line" x1="50%" x2="50%" y1="80%" y2="100%" />
+        <NxFontAwesomeIcon height="50%" width="50%" x="25%" y="25%" icon={faPlusSquare} />
       </svg>
       <svg className="poc-tree__line-drop">
         <line x1="50%" x2="50%" y2="100%" />
