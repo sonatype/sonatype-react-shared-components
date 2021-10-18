@@ -8,7 +8,8 @@ import React, { FormEvent, useState } from 'react';
 import { none } from 'ramda';
 import classnames from 'classnames';
 
-import { NxButton, NxCheckbox, NxTextInput, NxTooltip, hasValidationErrors } from '@sonatype/react-shared-components';
+import { NxButton, NxCheckbox, NxTextInput, NxTooltip, hasValidationErrors, NxFormGroup, NxFieldset, useToggle }
+  from '@sonatype/react-shared-components';
 import { StateProps, Validator } from '@sonatype/react-shared-components/components/NxTextInput/types';
 import { initialState, userInput } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
 
@@ -18,7 +19,7 @@ export default function FormValidationExample() {
   const [textInput1State, setTextInput1State] = useState(initialState('')),
       [textInput2State, setTextInput2State] = useState(initialState('')),
       [textInput3State, setTextInput3State] = useState(initialState('')),
-      [checkboxValue, setCheckboxState] = useState(false);
+      [checkboxValue, toggleCheckbox] = useToggle(false);
 
   const stateHasValidationErrors = (state: StateProps) => hasValidationErrors(state.validationErrors),
       isValid = none(stateHasValidationErrors, [textInput1State, textInput2State, textInput3State]),
@@ -29,7 +30,9 @@ export default function FormValidationExample() {
     setter(userInput(validator, value));
   };
 
-  const nonEmptyValidator = (val: string) => val && val.length ? null : 'Must be non-empty';
+  const nonEmptyValidator = (val: string) => val && val.length ? null : 'Must be non-empty',
+      noDollarSignsValidator = (val: string) => val && val.indexOf('$') >= 0 ? 'Must not contain dollar signs' : null,
+      combinedValidator = (val: string) => nonEmptyValidator(val) || noDollarSignsValidator(val);
 
   function onSubmit(evt: FormEvent) {
     evt.preventDefault();
@@ -44,46 +47,37 @@ export default function FormValidationExample() {
   }
 
   const submitBtnClasses = classnames({ disabled: !isSubmittable }),
-      submitBtn = <NxButton className={submitBtnClasses} variant="primary" type="submit">Submit</NxButton>,
-      submitTooltip = isSubmittable ? null : (
-        <NxTooltip title={hasAllRequiredData ? 'Validation errors are present' : 'Required fields are missing'}>
-          {submitBtn}
-        </NxTooltip>
-      );
+      submitTooltip = isSubmittable ? '' :
+      hasAllRequiredData ? 'Validation errors are present' :
+      'Required fields are missing';
 
   return (
     <form className="nx-form" onSubmit={onSubmit}>
-      <div className="nx-form-group">
-        <label className="nx-label">
-          <span className="nx-label__text">Text input 1</span>
-          <NxTextInput { ...textInput1State }
-                       validatable={true}
-                       onChange={setTextInput(setTextInput1State, nonEmptyValidator)}/>
-        </label>
-      </div>
-      <div className="nx-form-group">
-        <label className="nx-label nx-label--optional">
-          <span className="nx-label__text">Text input 2</span>
-          <NxTextInput { ...textInput2State } onChange={setTextInput(setTextInput2State)}/>
-        </label>
-      </div>
-      <div className="nx-form-group">
-        <label className="nx-label">
-          <span className="nx-label__text">Text input 3</span>
-          <NxTextInput { ...textInput3State }
-                       validatable={true}
-                       onChange={setTextInput(setTextInput3State, nonEmptyValidator)}/>
-        </label>
-      </div>
+      <NxFormGroup label="Text input 1" isRequired>
+        <NxTextInput { ...textInput1State }
+                     validatable={true}
+                     onChange={setTextInput(setTextInput1State, nonEmptyValidator)}/>
+      </NxFormGroup>
+      <NxFormGroup label="Text input 2">
+        <NxTextInput { ...textInput2State } onChange={setTextInput(setTextInput2State)}/>
+      </NxFormGroup>
+      <NxFormGroup label="Text input 3" isRequired>
+        <NxTextInput { ...textInput3State }
+                     validatable={true}
+                     onChange={setTextInput(setTextInput3State, combinedValidator)}/>
+      </NxFormGroup>
 
-      <fieldset className="nx-fieldset">
-        <legend className="nx-label">Check this box?</legend>
-        <NxCheckbox isChecked={checkboxValue} onChange={() => setCheckboxState(!checkboxValue)}>Check It</NxCheckbox>
-      </fieldset>
+      <NxFieldset label="Check this box?">
+        <NxCheckbox isChecked={checkboxValue} onChange={toggleCheckbox}>Check It</NxCheckbox>
+      </NxFieldset>
 
-      <div className="nx-btn-bar">
-        {submitTooltip || submitBtn}
-      </div>
+      <footer className="nx-form-footer">
+        <div className="nx-btn-bar">
+          <NxTooltip title={submitTooltip}>
+            <NxButton className={submitBtnClasses} variant="primary" type="submit">Submit</NxButton>
+          </NxTooltip>
+        </div>
+      </footer>
     </form>
   );
 }

@@ -6,11 +6,14 @@
  */
 import React from 'react';
 
-import { NxLoadError } from '@sonatype/react-shared-components';
+import { NxLoadError, useToggle } from '@sonatype/react-shared-components';
 
-const error = 'Server Error';
+const error = <>Server <em>Error</em></>;
 
-const NxLoadErrorSimpleExample = () =>
-  <NxLoadError error={error} />;
+function NxLoadErrorSimpleExample() {
+  const [isOpen, dismiss] = useToggle(true);
+
+  return isOpen ? <NxLoadError error={error} onClose={dismiss} /> : null;
+}
 
 export default NxLoadErrorSimpleExample;

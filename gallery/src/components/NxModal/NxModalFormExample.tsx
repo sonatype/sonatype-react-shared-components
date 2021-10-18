@@ -6,57 +6,93 @@
  */
 import React, {useState} from 'react';
 
-import {NxModal, NxFontAwesomeIcon} from '@sonatype/react-shared-components';
+import {
+  NxModal,
+  NxFontAwesomeIcon,
+  NxButton,
+  NxTextInput,
+  NxFormGroup,
+  NxForm,
+  nxTextInputStateHelpers,
+  NxFieldset,
+  NxCheckbox,
+  useToggle
+} from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
 export default function NxModalFormExample() {
-  const [showModal, setShowModal] = useState(false);
-  const modalCloseHandler = () => setShowModal(false);
+  const [showModal, setShowModal] = useState(false),
+      [loading, setLoading] = useState(true),
+      [usernameState, setUsernameState] = useState(nxTextInputStateHelpers.initialState('')),
+      [passwordState, setPasswordState] = useState(nxTextInputStateHelpers.initialState('')),
+      [isRed, toggleRed] = useToggle(false),
+      [isBlue, toggleBlue] = useToggle(false),
+      [isGreen, toggleGreen] = useToggle(false),
+      modalCloseHandler = () => setShowModal(false),
+      validationErrors = usernameState.trimmedValue === '' || passwordState.trimmedValue === '' ?
+        'Missing required field' : null;
+
+  function openModal() {
+    setShowModal(true);
+
+    setTimeout(function() {
+      setLoading(false);
+    }, 4000);
+  }
+
+  function onUsernameChange(val: string) {
+    setUsernameState(nxTextInputStateHelpers.userInput(null, val));
+  }
+
+  function onPasswordChange(val: string) {
+    setPasswordState(nxTextInputStateHelpers.userInput(null, val));
+  }
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="nx-btn">Open Modal with Form</button>
+      <NxButton onClick={openModal}>Open Modal with Form</NxButton>
       {showModal &&
-        <NxModal id="nx-modal-form-example" onClose={modalCloseHandler}>
-          <form className="nx-form nx-form--simple">
+        <NxModal id="nx-modal-form-example" onCancel={modalCloseHandler} aria-labelledby="modal-form-header">
+          <NxForm className="nx-form"
+                  onSubmit={modalCloseHandler}
+                  onCancel={modalCloseHandler}
+                  validationErrors={validationErrors}
+                  additionalFooterBtns={
+                    <NxButton type="button" onClick={modalCloseHandler} variant="tertiary">
+                      Tertiary
+                    </NxButton>
+                  }
+                  doLoad={() => {}}
+                  loading={loading}>
             <header className="nx-modal-header">
-              <h2 className="nx-h2">
+              <h2 className="nx-h2" id="modal-form-header">
                 <NxFontAwesomeIcon icon={faAngry} />
                 <span>NxModal header with form content</span>
               </h2>
             </header>
             <div className="nx-modal-content">
-              <div className="nx-form-group">
-                <label className="nx-label">
-                  Username
-                  <input type="text"
-                         className="nx-text-input"
-                         placeholder="Username"/>
-                </label>
-              </div>
-              <div className="nx-form-group">
-                <label className="nx-label">
-                  Password
-                  <input type="password"
-                         className="nx-text-input"
-                         placeholder="Password"/>
-                </label>
-              </div>
+              <NxFormGroup label="Username" isRequired>
+                <NxTextInput aria-required={true}
+                             placeholder="Username"
+                             onChange={onUsernameChange}
+                             { ...usernameState } />
+              </NxFormGroup>
+              <NxFormGroup label="Password" isRequired>
+                <NxTextInput type="password"
+                             aria-required={true}
+                             placeholder="Password"
+                             onChange={onPasswordChange}
+                             { ...passwordState } />
+              </NxFormGroup>
+              <NxFieldset label="Colors" isRequired>
+                <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
+                <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
+                <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
+              </NxFieldset>
             </div>
-            <footer className="nx-modal-footer">
-              <div className="nx-btn-bar">
-                <button type="button" onClick={modalCloseHandler} className="nx-btn nx-btn--primary">
-                  Primary
-                </button>
-                <button type="button" onClick={modalCloseHandler} className="nx-btn">Default</button>
-                <button type="button" onClick={modalCloseHandler} className="nx-btn nx-btn--tertiary">
-                  Tertiary
-                </button>
-              </div>
-            </footer>
-          </form>
+          </NxForm>
         </NxModal>
       }
     </>
   );
-};
+}

@@ -1,13 +1,14 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
 
-$nx-tile-header-height: 24px; // Minimum height
-$nx-tile-header-height-actions: 43px; // Height with sub-title and/or right actions
-$nx-tile-background-color: $nx-white;
+$-tile-header-height: 24px; // Minimum height
+$-tile-header-height-actions: 43px; // Height with sub-title and/or right actions
 
 /*
   #Name-spaced Tile System
@@ -16,155 +17,115 @@ $nx-tile-background-color: $nx-white;
 // Base Tiles
 
 .nx-tile {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
-  background-color: $nx-tile-background-color;
-  border-radius: $nx-border-radius;
-  margin: $nx-spacing-xs 0 $nx-spacing-md 0;
-  padding: $nx-spacing-l;
-}
+  // the "padding" around the inside edge of the nx-tile
+  --nx-tile-spacing: var(--nx-spacing-6x);
 
-// Special tile for containing grids
-.nx-tile--grid-tile {
-  .nx-tile-header {
-    margin-bottom: 0;
-  }
+  background-color: var(--nx-color-component-background);
+  border-radius: var(--nx-border-radius);
+  margin: var(--nx-spacing-2x) 0 var(--nx-spacing-4x) 0;
+  padding: var(--nx-tile-spacing);
 
-  .nx-tile-footer {
-    margin-top: 0;
-  }
-}
-
-// Tile for scrolling content
-.nx-tile-scroll-container {
-  margin: 0 8px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-top: 8px;
-  position: relative; //required for scrollspy
-  width: calc(100% - 16px);
-  z-index: $nx-tile-scroll-container-z-index;
-
-  .nx-tile {
-    margin: 0 0 8px 0;
-  }
-}
-
-// used when a <form> is the first element in an nx-tile
-.nx-tile--form-tile {
-  .nx-tile-header {
-    margin-bottom: 6px;
+  > .nx-footer, > .nx-form > .nx-footer {
+    margin-top: var(--nx-spacing-8x);
   }
 }
 
 // Tile headers
 
+.nx-tile-header__headings {
+  display: contents;
+}
+
 .nx-tile-header {
   align-items: center;
   display: grid;
-  display: -ms-grid;
-  grid-template-columns: 1fr auto;
-  -ms-grid-columns: 1fr auto;
-  min-height: $nx-tile-header-height;
-  margin-bottom: $nx-spacing-md;
-  overflow: hidden;
+
+  // NOTE: without the min-content sizing on the rows it adds extra vertical space when only title and actions are
+  // present. I don't have an explanation for this, it doesn't happen with _any_ other combination of header children
+  grid-template:
+    "title      tags   actions" min-content
+    "subtitle subtitle actions" min-content /
+     auto       1fr       auto;
+  min-height: $-tile-header-height;
+
+  + .nx-tile-content {
+    padding-top: var(--nx-spacing-4x);
+  }
 }
 
 .nx-tile-header__title {
-  @include nx-truncate-ellipsis;
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 1;
-  grid-row-end: 1;
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
+  @include nx-text-helpers.truncate-ellipsis;
+  grid-area: title;
 
   h1, h2 {
-    @include nx-truncate-ellipsis;
+    @include nx-text-helpers.truncate-ellipsis;
+    margin: 0;
+    max-width: unset;
+  }
+}
+
+.nx-tile-header__subtitle {
+  @include nx-text-helpers.semi-bold;
+
+  grid-area: subtitle;
+
+  color: var(--nx-color-text-dark);
+  font-size: var(--nx-font-size-heading-3);
+  margin: var(--nx-spacing-2x) 0 0 0;
+  max-width: var(--nx-width-text-wrapping);
+}
+
+.nx-tile__actions {
+  @include nx-container-helpers.container-horizontal;
+
+  align-self: start;
+  grid-area: actions;
+  margin-left: var(--nx-spacing-6x);
+  text-align: right;
+}
+
+.nx-tile__tags {
+  @include nx-container-helpers.container-horizontal;
+
+  grid-area: tags;
+  margin-left: var(--nx-spacing-4x);
+
+  .nx-policy-violation-indicator {
     margin: 0;
   }
 }
 
-.nx-tile-header__icon {
-  display: block;
-  float: left;
-  font-size: 30px;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-.nx-tile-header__subtitle {
-  @include semi-bold();
-
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 2;
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-
-  color: $nx-heading-color;
-  font-size: $nx-font-size-heading-level-3;
-  max-width: $nx-paragraph-width-maximum;
-}
-
-.nx-tile-header--hrule {
-  border-bottom: solid 1px #b7bfdb;
-  margin-bottom: $nx-spacing-l;
-  padding-bottom: $nx-spacing-md;
-}
-
-.nx-tile__actions {
-  @include container-horizontal;
-
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 1;
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  margin-left: $nx-spacing-l;
-  text-align: right;
-}
-
 .nx-tile-content {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
+}
 
-  clear: both;
+.nx-tile-content--accordion-container {
+  background-color: var(--nx-swatch-indigo-95);
+  margin: var(--nx-spacing-4x) calc(0px - var(--nx-tile-spacing)) 0 calc(0px - var(--nx-tile-spacing));
+  padding: var(--nx-spacing-4x);
+
+  &:last-child {
+    padding-bottom: var(--nx-spacing-4x);
+    margin-bottom: calc(0px - var(--nx-tile-spacing));
+  }
 }
 
 // On pages with tiles with multiple sections these are lighter weight titles
 .nx-tile-subsection {
-  @include container-vertical;
-  margin-top: $nx-spacing-xl;
+  @include nx-container-helpers.container-vertical;
+  margin-top: var(--nx-spacing-8x);
 
   &:first-of-type {
-    border-top: 1px solid #b7bfdb;
-    margin-top: $nx-spacing-l;
-    padding-top: $nx-spacing-l;
+    border-top: var(--nx-border-default);
+    margin-top: var(--nx-spacing-6x);
+    padding-top: var(--nx-spacing-6x);
   }
 
   .nx-tile-subsection__header {
-    @include container-vertical;
+    @include nx-container-helpers.container-vertical;
 
-    margin-bottom: $nx-spacing-md;
+    margin-bottom: var(--nx-spacing-4x);
   }
-}
-
-.nx-tile-footer {
-  @include container-horizontal;
-
-  border-top: 1px solid #e9e9e9;
-  margin-top: $nx-spacing-md;
-  padding: $nx-spacing-xl 0;
-  text-align: right;
-}
-
-// A tile at the top of the page, usually contains a nav bar with scrolling buttons
-.nx-tile--top-tile {
-  box-shadow: 0px 5px 6px 0px $nx-grey-1;
-  margin-bottom: 0;
-  position: relative;
-  z-index: $nx-tile-scroll-container-z-index + 1;
 }

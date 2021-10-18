@@ -15,13 +15,16 @@ export interface Props {
   selectedIds: Set<string | null>;
 }
 
-const MultiSelectCounter: FunctionComponent<Props> = function MultiSelectCounter({options, selectedIds}) {
-  const isAnyOptionSelected = selectedIds.size !== 0;
-  return (
-    <NxTreeViewCounter isActive={isAnyOptionSelected}>
-      {isAnyOptionSelected ? selectedIds.size + ' of ' : ''}{options.length}
-    </NxTreeViewCounter>
-  );
-};
+const MultiSelectCounter: FunctionComponent<Props> =
+  function MultiSelectCounter({ options, selectedIds }) {
+    const isAnyOptionSelected = selectedIds.size !== 0,
+        ariaLabel = `${selectedIds.size} option${selectedIds.size === 1 ? '' : 's'} out of ${options.length} selected`;
+
+    return (
+      <NxTreeViewCounter aria-label={ariaLabel} isActive={isAnyOptionSelected}>
+        {isAnyOptionSelected ? selectedIds.size + ' of ' : ''}{options.length}
+      </NxTreeViewCounter>
+    );
+  };
 
 export default MultiSelectCounter;

@@ -1,117 +1,141 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
 
-%nx-btn--disabled {
+.nx-btn {
+  @include nx-text-helpers.semi-bold;
+  @include nx-container-helpers.container-horizontal;
+
+  background-color: var(--nx-swatch-white);
+  border: 1px solid var(--nx-swatch-blue-40);
+  border-radius: 6px;
+  color: var(--nx-swatch-blue-40);
+  cursor: pointer;
+  display: inline-block;
+  font-size: var(--nx-font-size);
+  line-height: var(--nx-line-height);
+  margin: 0 var(--nx-spacing-6x);
+  padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-6x) - 1px);
+  text-align: center;
+
+  &:hover {
+    background-color: var(--nx-swatch-blue-90);
+  }
+
+  &:focus {
+    border: 1px solid var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
+    outline: 0;
+  }
+
+  &:active {
+    background-color: var(--nx-swatch-blue-95);
+  }
+}
+
+.nx-btn, .nx-segmented-btn, .nx-icon-dropdown {
+  + .nx-btn, + .nx-segmented-btn, + .nx-icon-dropdown {
+    margin-left: 0;
+  }
+}
+
+.nx-btn--primary {
+  background-color: var(--nx-swatch-blue-40);
+  border-color: transparent;
+  color: var(--nx-swatch-white);
+
+  &:hover, &:focus {
+    background-color: var(--nx-swatch-blue-20);
+  }
+
+  &:active {
+    background-color:  var(--nx-swatch-blue-60);
+  }
+}
+
+.nx-btn--tertiary {
+  background-color: transparent;
+  border-color: var(--nx-swatch-indigo-90);
+  color: var(--nx-color-text-dark);
+
+  &:hover {
+    background-color: transparent;
+    border-color: var(--nx-color-interactive-border-hover);
+  }
+
+  &:focus {
+    background-color: transparent;
+    border-color: var(--nx-color-interactive-border-focus);
+  }
+
+  &:active {
+    background-color: var(--nx-swatch-indigo-97);
+    border-color: var(--nx-color-interactive-border-hover);
+  }
+}
+
+.nx-btn--error {
+  background-color: var(--nx-swatch-red-40);
+  border-color: transparent;
+  color: var(--nx-swatch-white);
+
+  &:focus {
+    background-color: var(--nx-swatch-red-35);
+  }
+
+  &:hover {
+    background-color: var(--nx-swatch-red-35);
+  }
+
+  &:active {
+    background-color: var(--nx-swatch-red-65);
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .nx-icon {
+    color: var(--nx-swatch-white);
+    height: 16px;
+  }
+}
+
+.nx-btn {
   &.disabled, &[disabled] {
     &, &:hover, &:focus {
-      background-color: #e9e9e9;
-      border-color: #949494;
-      color: #949494;
+      background-color: var(--nx-color-interactive-background-disabled);
+      border-color: var(--nx-color-interactive-border-disabled);
+      color: var(--nx-color-text-disabled);
       cursor: default;
     }
   }
 }
 
-.nx-btn {
-  @include semi-bold();
-  @include container-horizontal;
-  @extend %nx-btn--disabled;
+.nx-btn--icon-only {
+  @extend .nx-btn--tertiary;
 
-  background-color: $nx-white;
-  border: 1px solid #045dd1;
-  border-radius: 6px;
-  color: #045dd1;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 16px;
-  line-height: $nx-line-height;
-  margin: 0 $nx-spacing-xs;
-  padding: $nx-spacing-xs $nx-spacing-l;
-  text-align: center;
+  border-color: transparent;
 
-  &:hover {
-    background-color: #c5deff;
-  }
+  // icon width can vary, just don't bother with padding in this direction and let the centering work it out
+  padding-left: 0;
+  padding-right: 0;
 
-  &:focus {
-    border: 1px solid #43cbf5;
-    outline: 0;
-  }
-
-  &:active {
-    background-color: #e8f2ff;
-  }
-}
-
-.nx-btn--primary {
-  @extend %nx-btn--disabled;
-
-  background-color: #045dd1;
-  border-color: #045dd1;
-  color: $nx-white;
-
-  &:hover {
-    background-color: #034396;
-  }
-
-  &:active {
-    background-color:  #2783fb;
-  }
-}
-
-.nx-btn--tertiary {
-  @extend %nx-btn--disabled;
-
-  border-color: #d1d6f0;
-  color: #2c2c2c;
-
-  &:hover {
-    background-color: $nx-white;
-    border-color: #2c2c2c;
-  }
-
-  &:active {
-    background-color: #f1f3fa;
-    border-color: #2c2c2c;
-  }
-}
-
-.nx-btn--error {
-  @extend %nx-btn--disabled;
-
-  background-color: #cd0028;
-  border-color: #cd0028;
-  color: $nx-off-white;
-
-  &:hover, &:focus, &:active {
-    background-color: #a80222;
-    border-color: #a80222;
-    color: $nx-off-white;
-  }
-
-  &:focus {
-    background-color: #cd0028;
-    border-color: #43cbf5;
-  }
-
-  &:active {
-    background-color: #fc496c;
-    border-color: #fc496c;
-  }
+  // essentially, calculate the width the same way that the height is calculated (line height plus padding and border)
+  width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-2x));
 
   .nx-icon {
-    color: $nx-white;
-    height: 16px;
+    height: 1em;
   }
-}
 
-.nx-btn--icon-only {
-  height: 32px;
-  padding: 0;
-  width: 32px;
-  min-width: 0;
+  &.disabled, &[disabled] {
+    &, &:hover, &:focus {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
 }

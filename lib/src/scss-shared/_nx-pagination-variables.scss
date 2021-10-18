@@ -1,0 +1,12 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+// the effective height that pagination buttons (and currently, most buttons) have.
+// Use to decide the min width for pagination buttons (they should be no narrower than they are tall)
+// and also for calculating the height of a pagination table in the pagination-table-height mixin.
+// Needed for the pagination-table-height mixin calculations and within the nx-pagination styles
+$pagination-button-height: calc(var(--nx-spacing-4x) * var(--nx-line-height) + 2 * var(--nx-spacing-2x));

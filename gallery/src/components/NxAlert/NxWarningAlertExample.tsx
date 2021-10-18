@@ -6,12 +6,14 @@
  */
 import React from 'react';
 
-import { NxWarningAlert } from '@sonatype/react-shared-components';
+import { NxWarningAlert, useToggle } from '@sonatype/react-shared-components';
 
 function NxWarningExample() {
-  return (
-    <NxWarningAlert>This is a <strong>warning</strong> message.</NxWarningAlert>
-  );
+  const [isOpen, dismiss] = useToggle(true);
+
+  return isOpen ? (
+    <NxWarningAlert onClose={dismiss}>This is a <strong>warning</strong> message.</NxWarningAlert>
+  ) : null;
 }
 
 export default NxWarningExample;

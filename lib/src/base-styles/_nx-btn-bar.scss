@@ -1,12 +1,16 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
 
 .nx-btn-bar {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
-  margin: $nx-spacing-sm 0;
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  margin: var(--nx-spacing-6x) 0;
 }

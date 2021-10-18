@@ -15,8 +15,9 @@ describe('NxBackButton', function() {
     expect(getShallowComponent().find('a')).toExist();
   });
 
-  it('renders the link', function() {
+  it('renders the link with the nx-text-link class', function() {
     expect(getShallowComponent().find('a')).toHaveProp('href', '/foo');
+    expect(getShallowComponent().find('a')).toHaveClassName('nx-text-link');
   });
 
   it('renders the specified text within the link', function() {

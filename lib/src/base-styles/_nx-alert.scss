@@ -1,64 +1,96 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
 
 /*
   #Alerts
 */
 .nx-alert {
-  @include container-horizontal;
-  @include container-vertical;
+  @include nx-container-helpers.container-horizontal;
+  @include nx-container-helpers.container-vertical;
 
-  background-color: $nx-off-white;
-  border: $nx-border-darker;
-  border-radius: 6px; //TODO use variable once it's available
-  color: $nx-text-color;
+  align-items: first baseline;
+  background-color: var(--nx-swatch-white);
+  border: 1px solid var(--nx-swatch-grey-05);
+  border-radius: var(--nx-border-radius);
+  box-sizing: border-box;
   display: flex;
-  margin: 8px 0;
-  padding: $nx-spacing-xs $nx-spacing-md $nx-spacing-xs $nx-spacing-md;
+  margin: 16px 0 24px 0;
+  max-width: 950px;
+  padding: var(--nx-spacing-4x);
+  text-align: initial;
+  max-width: var(--nx-width-text-wrapping);
 
   > .nx-icon {
-    // height needs to match text line-box height to align icon with first line of text
-    height: $nx-font-size * $nx-line-height;
-    margin-right: $nx-spacing-md;
+    // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
+    // no effect here so we use relative positioning instead
+    bottom: -0.125em;
+    flex-shrink: 0;
+    height: 1em;
+    margin-right: var(--nx-spacing-4x);
+    position: relative;
+  }
+
+  > .nx-btn--close {
+    margin-left: 24px;
+
+    &, &:hover, &:active, &:focus {
+      background-color: transparent;
+    }
+
+    flex-shrink: 0;
+    margin-left: auto;
   }
 }
 
+.nx-alert__content {
+  flex-grow: 1;
+  overflow-wrap: anywhere;
+}
+
 .nx-alert--warning {
-  background-color: #fff6ec;
-  border-color: #ff8100;
+  background-color: var(--nx-swatch-orange-90);
+  border-color: var(--nx-swatch-orange-50);
 
   > .nx-icon {
-    color: #ff8100;
+    color: var(--nx-swatch-orange-50);
   }
 }
 
 .nx-alert--error {
-  background-color: #fff6f8;
-  border-color: #cd0028;
+  background-color: var(--nx-swatch-red-95);
+  border-color: var(--nx-swatch-red-40);
 
   > .nx-icon {
-    color: #cd0028;
+    color: var(--nx-swatch-red-40);
   }
 }
 
 .nx-alert--info {
-  background-color: #f1f7ff;
-  border-color: #045dd1;
+  background-color: var(--nx-swatch-blue-95);
+  border-color: var(--nx-swatch-blue-40);
 
   > .nx-icon {
-    color: #045dd1;
+    color: var(--nx-swatch-blue-40);
   }
 }
 
 .nx-alert--success {
-  background-color: #fafffc;
-  border-color: #007623;
+  background-color: var(--nx-swatch-green-95);
+  border-color: var(--nx-swatch-green-25);
 
   > .nx-icon {
-    color: #007623;
+    color: var(--nx-swatch-green-25);
+  }
+}
+
+footer, .nx-footer {
+  .nx-alert {
+    margin-left: auto;
+    margin-right: auto;
   }
 }

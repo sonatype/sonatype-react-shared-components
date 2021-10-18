@@ -1,97 +1,89 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/nx-variables';
-
-// Basic form layout
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
 
 .nx-form {
-  @include container-vertical;
-  border-top: $nx-border-dark;
-  margin: 0;
-  padding-top: 20px;
-  position: relative; // to make a containing block for validation popovers
+  position: relative;
 }
 
-.nx-form--simple {
-  border-top: none;
-  padding: 0;
-}
-
-// for a form that is the entirety of a modal
-.nx-form--modal-form {
-  padding-top: 0;
-}
-
+// Basic form layout
 .nx-form-group {
-  margin-bottom: 20px;
+  margin-bottom: var(--nx-spacing-8x);
+
+  .nx-text-input {
+    margin-bottom: 0;
+  }
 }
 
 .nx-form-row {
-  @include container-horizontal;
-  margin-bottom: 24px;
+  @include nx-container-helpers.container-horizontal;
+  align-items: flex-end;
+  display: flex;
+  margin-bottom: var(--nx-spacing-8x);
 
-  .nx-form-group, .nx-fieldset {
-    display: inline-block;
-    margin-right: 24px;
-    margin-bottom: 0;
-    vertical-align: bottom; // fixes issue where certain form types display lower
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  .nx-label {
+  .nx-form-group {
+    margin-right: var(--nx-spacing-6x);
     margin-bottom: 0;
   }
-}
 
-.nx-btn-bar--forms {
-  border-top: $nx-border-dark;
-  padding-top: 8px;
+  .nx-btn-bar {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 // labels
 
-.nx-label {
-  @include semi-bold();
-
-  color: $nx-text-color;
+.nx-label, .nx-legend {
   display: block;
-  font-size: 16px;
-  margin-bottom: 7px;
-
-  .disabled {
-    color: $nx-grey-4;
-  }
+  padding: 0;
+  max-width: var(--nx-width-text-wrapping);
 
   .nx-text-input, .nx-textarea {
     display: block;
-    margin-top: $nx-spacing-xs;
   }
 }
 
-.nx-label--optional {
-  .nx-label__text::after {
-    @include regular();
+// hack to get Safari to recognize the legend's text margins
+.nx-legend {
+  -webkit-margin-collapse: separate;
+}
 
-    color: $nx-text-color-light;
-    content: " - optional";
+.nx-label__text, .nx-legend__text {
+  @include nx-text-helpers.bold;
+  @include nx-container-helpers.container-horizontal;
+
+  color: var(--nx-color-text-dark);
+  cursor: default;
+  display: block;
+  margin-bottom: var(--nx-spacing-2x);
+}
+
+.nx-label--optional, .nx-legend--optional {
+  .nx-label__text::after, .nx-legend__text::after {
+    @include nx-text-helpers.regular;
+
+    color: var(--nx-color-text);
+    content: "Optional";
+    font-size: var(--nx-font-size-xs);
     font-style: italic;
+    margin-left: var(--nx-spacing-base);
   }
 }
 
 .nx-sub-label {
-  @include container-horizontal;
-  @include regular();
+  @include nx-container-helpers.container-horizontal;
 
-  color: $nx-text-color;
   display: block;
-  font-size: 14px;
+  font-size: var(--nx-font-size-s);
+  font-style: italic;
+  margin-bottom: var(--nx-spacing-4x);
+  max-width: var(--nx-width-text-wrapping);
 }
 
 // Defining labels for groups of radio buttons or checkboxes is tricky - each individual radio has a <label>
@@ -99,19 +91,10 @@
 // be used, but you'll still typically want the <legend> styled the way a <label> on a text field would be using
 // .nx-label.
 .nx-fieldset {
+  @include nx-container-helpers.container-vertical;
+
   border: 0;
-  margin: 0 0 20px 0;
+  margin: 0 0 var(--nx-spacing-8x) 0;
+  min-inline-size: auto;
   padding: 0;
-
-  .nx-label {
-    margin-bottom: 0;
-  }
-
-  .nx-radio, .nx-checkbox {
-    @include container-vertical;
-
-    display: block;
-    margin: 8px 0 0 24px;
-  }
 }
-

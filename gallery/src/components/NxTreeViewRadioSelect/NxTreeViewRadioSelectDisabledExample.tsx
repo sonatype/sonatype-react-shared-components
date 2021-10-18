@@ -28,11 +28,11 @@ const NxTreeViewRadioSelectDisabledExample = () => {
     <NxTreeViewRadioSelect isOpen={true}
                            disabled={true}
                            disabledTooltip="Disabled Tooltip example"
-                           name="travel"
+                           name="travel-disabled"
                            selectedId={selection}
                            onChange={onSelectionChange}
                            options={options}>
-     Transportation
+      Transportation
     </NxTreeViewRadioSelect>
   );
 };

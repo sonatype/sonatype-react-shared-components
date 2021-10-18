@@ -5,21 +5,31 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxCode } from '@sonatype/react-shared-components';
 
 import './CustomWidthExample.scss';
 
-const NxGridCode = require('!!raw-loader!./NxGridExample.html').default,
-    NxGridMixinUsageCode = require('!!raw-loader!./CustomWidthExample.scss').default;
+const NxGridCode = require('./NxGridExample.html'),
+    NxGridScrollingCode = require('./NxGridScrollingExample.html'),
+    NxGridMixinUsageCode = require('./CustomWidthExample.scss?raw');
 
 const NxGridExamples = () =>
   <>
     <GalleryExampleTile title="NX Grid Example"
                         htmlExample={NxGridCode}
                         codeExamples={[NxGridCode, { content: NxGridMixinUsageCode, language: 'scss' }]}>
-      An example of an <code className="nx-code">nx-grid</code> demonstrating a variety of column layouts in different
-      rows. Particularly note the custom <code className="nx-code">nx-grid-col--200px</code> class defined for this
+      An example of an <NxCode>nx-grid</NxCode> demonstrating a variety of column layouts in different
+      rows. Particularly note the custom <NxCode>nx-grid-col--200px</NxCode> class defined for this
       example using a SCSS mixin.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Grid Scrolling Cell Example"
+                        htmlExample={NxGridScrollingCode}
+                        codeExamples={NxGridScrollingCode}>
+      An example of an <NxCode>nx-grid</NxCode> containing two cells each of which scroll. As is typical in this
+      case, a horizontal keyline is added above the row of cells.
     </GalleryExampleTile>
   </>;
 

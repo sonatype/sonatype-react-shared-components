@@ -8,18 +8,24 @@ import { HTMLAttributes } from 'react';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import * as PropTypes from 'prop-types';
 
-export type Props = HTMLAttributes<HTMLDivElement>;
+export type Props = HTMLAttributes<HTMLDivElement> & {
+  onClose?: (() => void) | null;
+};
 
 // Casting to hack around flaws in react's typings: the typings for HTMLAttributes.className don't claim to accept null,
 // but non-required proptypes do, and the actual implementation does
 export const propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  onClose: PropTypes.func
 } as PropTypes.ValidationMap<Props>;
 
-export type NxAlertProps = HTMLAttributes<HTMLDivElement> & {
+export type NxAlertProps = Props & {
   icon: IconDefinition;
+  iconLabel? : string | null;
 };
 
 export const nxAlertPropTypes: PropTypes.ValidationMap<NxAlertProps> = {
-  icon: PropTypes.any
+  icon: PropTypes.any,
+  iconLabel: PropTypes.string,
+  onClose: PropTypes.func
 };

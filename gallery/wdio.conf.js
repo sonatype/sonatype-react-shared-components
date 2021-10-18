@@ -7,11 +7,23 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfigFn = require('./webpack.config.js');
-const { BatchInfo, By, ClassicRunner, Configuration, Eyes, Target } = require('@applitools/eyes-webdriverio');
+const axios = require('axios');
+const { BatchInfo, By, ClassicRunner, Configuration, Eyes, RectangleSize, Target } =
+    require('@applitools/eyes-webdriverio');
 
-const host = process.env.TEST_IP || 'localhost';
+const host = process.env.TEST_IP || 'localhost',
+    origin = `http://${host}:4043`;
 
-let eyes;
+const timestamp = new Date().getTime(),
+    gitCommit = process.env.GIT_COMMIT;
+
+
+let batchId = gitCommit || `local-${timestamp}`,
+    eyes;
+
+// Prevent the applitools batch from being closed when we call getAllTestResults at the end of each test.
+// We close it manually in onComplete.
+process.env.APPLITOOLS_DONT_CLOSE_BATCHES = 'true';
 
 exports.config = {
     //
@@ -55,15 +67,33 @@ exports.config = {
     // files and you set maxInstances to 10, all spec files will get tested at the same time
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
-    //
-    maxInstances: 10,
+    maxInstances: parseInt(process.env.MAX_INSTANCES, 10) || 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
     capabilities: [{
-        browserName: 'chrome',
+      browserName: 'chrome',
+      'goog:chromeOptions': {
+        args: [
+          // headless mode is currently incompatible with unsafely-treat-insecure-origni-as-secure.
+          // See https://bugs.chromium.org/p/chromium/issues/detail?id=1176255
+          //'headless',
+          'font-render-hinting=none',
+
+          // for basic clipboard access, which is normally only allowed for https or 'localhost'
+          `unsafely-treat-insecure-origin-as-secure=${origin}`
+        ],
+        prefs: {
+          // enable clipboard read access for NxCodeSnippet tests
+          'profile.content_settings.exceptions.clipboard': {
+            '[*.],*': {
+              setting: 1
+            }
+          }
+        }
+      }
     }],
     //
     // ===================
@@ -96,7 +126,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: `http://${host}:4043/`,
+    baseUrl: `${origin}/`,
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -138,7 +168,7 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 60000 * 5 // 5 minutes for now
     },
     //
     // =====
@@ -155,26 +185,29 @@ exports.config = {
      */
     onPrepare: function (config) {
       const webpackConfig = webpackConfigFn(),
-          server = new WebpackDevServer(webpack(webpackConfig), webpackConfig.devServer);
+          compiler = webpack(webpackConfig),
+          server = new WebpackDevServer(compiler, webpackConfig.devServer);
 
       // save the server so we can shut it down in onComplete
       config.webpackServer = server;
 
-      console.log('Starting WebpackDevServer');
+      const listenPromise = new Promise(function(resolve, reject) {
+            server.listen(webpackConfig.devServer.port, webpackConfig.devServer.host, function(err) {
+              if (err) {
+                reject(err);
+              }
+              else {
+                resolve();
+              }
+            });
+          }),
+          compilePromise = new Promise(function(resolve, reject) {
+            compiler.hooks.afterDone.tap('wdio onPrepare', function() {
+              resolve();
+            });
+          });
 
-      return new Promise(function(resolve, reject) {
-        server.listen(webpackConfig.devServer.port, webpackConfig.devServer.host, function(err) {
-          if (err) {
-            reject(err);
-          }
-          else {
-            console.log('WebpackDevServer started successfully on ' +
-                `http://${webpackConfig.devServer.host}:${webpackConfig.devServer.port}`);
-
-            resolve();
-          }
-        });
-      });
+      return Promise.all([listenPromise, compilePromise]);
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -185,8 +218,10 @@ exports.config = {
      * @param  {[type]} args     object that will be merged with the main configuration once worker is initialised
      * @param  {[type]} execArgv list of string arguments passed to the worker process
      */
-    // onWorkerStart: function (cid, caps, specs, args, execArgv) {
-    // },
+    onWorkerStart: function (cid, caps, specs, args, execArgv) {
+      // use same batchId across all workers
+      args.batchId = batchId;
+    },
     /**
      * Gets executed just before initialising the webdriver session and test framework. It allows you
      * to manipulate configurations depending on the capability or spec.
@@ -194,8 +229,9 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // beforeSession: function (config, capabilities, specs) {
-    // },
+    beforeSession: function (config, capabilities, specs) {
+      batchId = config.batchId;
+    },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.
@@ -203,43 +239,6 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
     before: function (capabilities, specs) {
-      eyes = new Eyes(new ClassicRunner());
-
-      const batchId = process.env.GIT_COMMIT,
-          eyesConf = new Configuration();
-
-      let branchName = process.env.GIT_BRANCH;
-
-      if (batchId) {
-        const batchInfo = new BatchInfo(branchName);
-        batchInfo.setId(batchId);
-        eyesConf.setBatch(batchInfo);
-      }
-      else {
-        eyesConf.setBatch(new BatchInfo("local"));
-      }
-
-      if (branchName) {
-        const applitoolsBranchname = `sonatype/sonatype-react-shared-components/${branchName}`;
-
-        eyes.setBranchName(applitoolsBranchname);
-      }
-
-      eyes.setParentBranchName('sonatype/sonatype-react-shared-components/master');
-
-      // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
-      eyesConf.setAppName('React Shared Components');
-
-      // The Hide Caret feature works by unfocusing the element. This prevents checking focus styles
-      eyesConf.setHideCaret(false);
-      eyesConf.setIgnoreCaret(false);
-
-      // without this hover testing doesn't seem to work; possibly the scrollbar-hiding styles cause elements on
-      // the page to shift, ruining any manual mouse positioning that had just been done
-      eyesConf.setHideScrollbars(false);
-
-      eyes.setConfiguration(eyesConf);
-
       browser.addCommand('eyesSnapshot', function(title) {
         return eyes.check(title, Target.window());
       });
@@ -267,6 +266,42 @@ exports.config = {
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
     beforeTest: async function (test, context) {
+      eyes = new Eyes(new ClassicRunner());
+
+      const eyesConf = new Configuration();
+
+      const branchName = process.env.GIT_BRANCH;
+
+      const batchInfo = new BatchInfo(branchName || 'local');
+      batchInfo.setId(batchId);
+      eyesConf.setBatch(batchInfo);
+
+      if (branchName) {
+        const applitoolsBranchname = `sonatype/sonatype-react-shared-components/${branchName}`;
+
+        eyesConf.setBranchName(applitoolsBranchname);
+      }
+
+      eyesConf.setParentBranchName('sonatype/sonatype-react-shared-components/master');
+
+      // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
+      eyesConf.setAppName('React Shared Components');
+
+      // The Hide Caret feature works by unfocusing the element. This prevents checking focus styles
+      eyesConf.setHideCaret(false);
+      eyesConf.setIgnoreCaret(false);
+
+      // without this hover testing doesn't seem to work; possibly the scrollbar-hiding styles cause elements on
+      // the page to shift, ruining any manual mouse positioning that had just been done
+      eyesConf.setHideScrollbars(false);
+
+      eyesConf.setViewportSize(new RectangleSize(1366, 1000));
+
+      eyes.setConfiguration(eyesConf);
+
+      // DOM info is sent for Root Cause Analysis, which we don't use and which may be causing intermittent failures
+      eyes.setSendDom(false);
+
       await eyes.open(browser, undefined, `${test.parent} ${test.title}`);
     },
     /**
@@ -285,8 +320,21 @@ exports.config = {
      * Function to be executed after a test (in Mocha/Jasmine).
      */
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
-      await eyes.closeAsync();
-      await eyes.abortIfNotClosed();
+      try {
+        await eyes.closeAsync();
+
+        if (process.env.GIT_BRANCH === 'master') {
+          try {
+            await eyes.getRunner().getAllTestResults(true);
+          }
+          catch (e) {
+            context.test.callback(e);
+          }
+        }
+      }
+      finally {
+        await eyes.abortAsync();
+      }
     },
 
     /**
@@ -329,20 +377,35 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    onComplete: function(exitCode, config) {
-      return new Promise(function(resolve, reject) {
-        console.time('WebpackDevServer Shut Down');
+    onComplete: async function(exitCode, config) {
+      console.time('WebpackDevServer Shut Down');
+      const shutDownWebpackPromise = new Promise(function(resolve, reject) {
         config.webpackServer.close(function(err) {
           if (err) {
             reject(err);
           }
           else {
-            console.timeEnd('WebpackDevServer Shut Down');
-
             resolve();
           }
         });
       });
+
+      const encodedBatchId = encodeURIComponent(batchId),
+          encodedApiKey = encodeURIComponent(process.env.APPLITOOLS_API_KEY),
+          closeBatchUrl = `https://eyesapi.applitools.com/api/sessions/batches/${encodedBatchId}/close/bypointerid/` +
+            `?apiKey=${encodedApiKey}`,
+          deleteBatchPromise = axios.delete(closeBatchUrl);
+
+      await shutDownWebpackPromise;
+      console.timeEnd('WebpackDevServer Shut Down');
+
+      try {
+        await deleteBatchPromise;
+      }
+      catch (e) {
+        console.error('Failure while closing batch', closeBatchUrl);
+        throw e;
+      }
     },
     /**
     * Gets executed when a refresh happens.

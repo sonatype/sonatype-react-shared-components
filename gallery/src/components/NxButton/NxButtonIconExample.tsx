@@ -7,14 +7,14 @@
 import React from 'react';
 import {faSync} from '@fortawesome/free-solid-svg-icons';
 
-import { NxButton, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxButton, NxFontAwesomeIcon, NxButtonBar } from '@sonatype/react-shared-components';
 
 const NxButtonIconExample = () =>
-  <div className="nx-btn-bar">
+  <NxButtonBar>
     <NxButton>
       <NxFontAwesomeIcon icon={faSync}/>
       <span>Icons in buttons</span>
     </NxButton>
-  </div>;
+  </NxButtonBar>;
 
 export default NxButtonIconExample;

@@ -10,6 +10,7 @@ import { ensureArray } from '../util/jsUtil';
 
 import CodeExample, { Props as CodeExampleProps } from '../CodeExample';
 import RawHtmlExample from '../RawHtmlExample';
+import { NxCheckbox, useToggle } from '@sonatype/react-shared-components';
 
 interface PropsWithRequiredChildren {
   children: ReactNode;
@@ -22,20 +23,23 @@ interface GalleryBaseProps {
 }
 
 // Props for GalleryTile
-type GalleryTileProps = PropsWithRequiredChildren & GalleryBaseProps;
+type GalleryTileProps = PropsWithRequiredChildren & GalleryBaseProps & {
+  actionButtons?: ReactNode;
+};
 
 type StringOrCodeExampleProps = string | CodeExampleProps;
 
 interface GalleryExampleTileProps extends GalleryBaseProps {
   children: ReactNode;
-  liveExample?: JSXElementConstructor<{}>;
+  liveExample?: JSXElementConstructor<Record<string, never>>;
   htmlExample?: string;
   codeExamples: StringOrCodeExampleProps | StringOrCodeExampleProps[];
+  defaultCheckeredBackground?: boolean;
 }
 
 // Component for a simple nx-tile with a specified title and contents
 export const GalleryTile: FunctionComponent<GalleryTileProps> =
-  function GalleryTile({ id, title, className, children }) {
+  function GalleryTile({ id, title, className, actionButtons, children }) {
     const galleryTileClasses = classnames('nx-tile-content', className);
 
     return (
@@ -44,6 +48,9 @@ export const GalleryTile: FunctionComponent<GalleryTileProps> =
           <div className="nx-tile-header__title">
             <h2 className="nx-h2">{title}</h2>
           </div>
+          { actionButtons &&
+            <div className="nx-tile__actions gallery-checkered-background-toggle">{actionButtons}</div>
+          }
         </div>
         <div className={galleryTileClasses}>
           {children}
@@ -60,28 +67,47 @@ export const GalleryDescriptionTile: FunctionComponent<PropsWithRequiredChildren
 
 export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
   function GalleryExampleTile(props: GalleryExampleTileProps) {
-    const { id, children, className, title, liveExample: LiveExample, htmlExample, codeExamples } = props,
+    const {
+          id,
+          children,
+          className,
+          title,
+          liveExample: LiveExample,
+          htmlExample,
+          codeExamples,
+          defaultCheckeredBackground
+        } = props,
+
+        [checkeredBackground, toggleCheckeredBackground] = useToggle(defaultCheckeredBackground || false),
 
         liveExampleRender =
           htmlExample ? <RawHtmlExample html={htmlExample} /> :
-          LiveExample ? <LiveExample /> :
+          LiveExample ? <div className="gallery-example-live"><LiveExample /></div> :
           null,
 
-        tileClasses = classnames('gallery-example', className),
+        tileClasses = classnames('gallery-example', className, {
+          'gallery-example--checkered-background': checkeredBackground
+        }),
         codeExampleElements = ensureArray(codeExamples)
             .map((example, idx) => {
               const props = typeof example === 'string' ? { content: example } : example;
               return <CodeExample key={idx} { ...props } />;
-            });
+            }),
+        tileActions = (
+          <NxCheckbox isChecked={checkeredBackground}
+                      onChange={toggleCheckeredBackground}>
+            Show checkered background
+          </NxCheckbox>
+        );
 
     return (
-      <GalleryTile id={id} title={title} className={tileClasses}>
+      <GalleryTile id={id} title={title} className={tileClasses} actionButtons={tileActions}>
         <p className="nx-p">{children}</p>
 
         { liveExampleRender &&
           <>
             <h3 className="nx-h3 nx-tile__section-header">Example:</h3>
-            <div>{liveExampleRender}</div>
+            {liveExampleRender}
           </>
         }
 

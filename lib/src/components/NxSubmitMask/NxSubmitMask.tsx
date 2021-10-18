@@ -6,7 +6,9 @@
  */
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
 export { Props, propTypes } from './types';
 
@@ -17,20 +19,22 @@ import './NxSubmitMask.scss';
 export const SUCCESS_VISIBLE_TIME_MS = 800;
 
 const NxSubmitMask: FunctionComponent<Props> =
-  function NxSubmitMask({ fullscreen, message, successMessage, success }) {
+  function NxSubmitMask({ message, successMessage, success }) {
     const classes = classnames('nx-submit-mask', {
-          'nx-submit-mask--fullscreen': !!fullscreen,
-          'nx-submit-mask--success': !!success
-        }),
-
-        // the default Loading... message is provided by NxLoadingSpinner
-        spinnerMessage = success ? (successMessage || 'Success!') : message;
+      'nx-submit-mask--success': !!success
+    });
 
     return (
-      <div className={classes}>
-        <h3 className="nx-h3 nx-submit-mask__message">
-          <NxLoadingSpinner>{spinnerMessage}</NxLoadingSpinner>
-        </h3>
+      <div role="status" className={classes}>
+        <div className="nx-submit-mask__message">
+          { success ?
+            <>
+              <NxFontAwesomeIcon icon={faCheckCircle} className="nx-loading-spinner__icon" />
+              <span className="nx-submit-mask__message-text">{successMessage || 'Success!'}</span>
+            </> :
+            <NxLoadingSpinner>{message || 'Submitting…'}</NxLoadingSpinner>
+          }
+        </div>
       </div>
     );
   };

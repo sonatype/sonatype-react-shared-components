@@ -20,7 +20,7 @@ function NxStatefulSubmitMaskCustomMessageExample() {
   return (
     <div className="gallery-submit-mask-area">
       <NxButton onClick={startMask}>Click here to create a NxStatefulSubmitMask</NxButton>
-      { maskSuccess != null && <NxStatefulSubmitMask success={maskSuccess} message="Foo Bar⋯" successMessage="Baz!" /> }
+      { maskSuccess != null && <NxStatefulSubmitMask success={maskSuccess} message="Foo Bar" successMessage="Baz!" /> }
     </div>
   );
 }

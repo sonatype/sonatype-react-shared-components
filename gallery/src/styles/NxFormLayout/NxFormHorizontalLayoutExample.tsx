@@ -4,53 +4,94 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { FormEvent, useState } from 'react';
 
-import { NxCheckbox } from '@sonatype/react-shared-components';
+import { NxCheckbox, NxFormGroup, NxFieldset, useToggle, NxFormSelect, nxFormSelectStateHelpers }
+  from '@sonatype/react-shared-components';
 import { NxRadio } from '@sonatype/react-shared-components';
-
-import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
-import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { NxButton } from '@sonatype/react-shared-components';
+import { NxStatefulTextInput } from '@sonatype/react-shared-components';
+import { NxInfoAlert } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
+  function validator(val: string) {
+    return val.length ? null : 'Must be non-empty';
+  }
+
+  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('');
+
+  function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
+    setSelectVal(evt.currentTarget.value);
+  }
+
+  const [isRed, toggleRed] = useToggle(false),
+      [isBlue, toggleBlue] = useToggle(false),
+      [isGreen, toggleGreen] = useToggle(false);
+
+  const [color, setColor] = useState<string | null>(null);
+
+  function onSubmit(evt: FormEvent) {
+    evt.preventDefault();
+    alert('Submitted!');
+  }
+
   return (
-    <form className="nx-form">
+    <form className="nx-form" onSubmit={onSubmit} aria-label="Horizontal Layout Example">
       <div className="nx-form-row">
-        <div className="nx-form-group">
-          <label className="nx-label">
-            <span className="nx-label__text">Horizontal layout</span>
-            <span className="nx-sub-label">
-              <NxFontAwesomeIcon icon={faCalendar}/>
-              <span>Sub-label with icon.</span>
-            </span>
-            <input type="text" className="nx-text-input"/>
-          </label>
-        </div>
-        <div className="nx-form-group">
-          <label className="nx-label">
-            <span className="nx-label__text">Second column</span>
-            <span className="nx-sub-label">This is a sub-label.</span>
-            <input type="text" className="nx-text-input"/>
-          </label>
-        </div>
-        <div className="nx-form-group">
-          <button className="nx-btn" type="button">Button</button>
-        </div>
+        <NxFormGroup label="Username" isRequired>
+          <NxStatefulTextInput aria-required={true} validator={validator}/>
+        </NxFormGroup>
+        <NxFormGroup label="Hostname">
+          <NxStatefulTextInput/>
+        </NxFormGroup>
       </div>
       <div className="nx-form-row">
-        <fieldset className="nx-fieldset">
-          <legend className="nx-label nx-label--optional">Checkboxes</legend>
-          <NxCheckbox isChecked={false}>Checkbox 1</NxCheckbox>
-          <NxCheckbox isChecked={true}>Checkbox 2</NxCheckbox>
-          <NxCheckbox isChecked={false}>Checkbox 3</NxCheckbox>
-        </fieldset>
-        <fieldset className="nx-fieldset">
-          <legend className="nx-label">Radio buttons</legend>
-          <NxRadio name="demo1" value="demo1" isChecked={true}>Radio Button 1</NxRadio>
-          <NxRadio name="demo2" value="demo2" isChecked={false}>Radio Button 2</NxRadio>
-          <NxRadio name="demo3" value="demo3" isChecked={true}>Radio Button 3</NxRadio>
-        </fieldset>
+        <NxFormGroup label="Label">
+          <NxStatefulTextInput/>
+        </NxFormGroup>
+        <NxFormGroup label="Label" isRequired>
+          <NxFormSelect { ...selectState } onChange={onSelectChange}>
+            <option value="">Select an option</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+            <option value="option4">Option 4</option>
+            <option value="option5">Option 5</option>
+          </NxFormSelect>
+        </NxFormGroup>
       </div>
+      <NxFieldset label="Colors" isRequired>
+        <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
+        <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
+        <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
+      </NxFieldset>
+      <NxFieldset label="Primary Color" isRequired>
+        <NxRadio name="color"
+                 value="red"
+                 onChange={setColor}
+                 isChecked={color === 'red'}>
+          Red
+        </NxRadio>
+        <NxRadio name="color"
+                 value="purple"
+                 onChange={setColor}
+                 isChecked={color === 'purple'}>
+          Purple
+        </NxRadio>
+        <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'}>
+          Green
+        </NxRadio>
+        <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'}>
+          Blue
+        </NxRadio>
+      </NxFieldset>
+      <footer className="nx-footer">
+        <NxInfoAlert>This is a sample alert message</NxInfoAlert>
+        <div className="nx-btn-bar">
+          <NxButton type="button">Cancel</NxButton>
+          <NxButton variant="primary" type="submit">Submit</NxButton>
+        </div>
+      </footer>
     </form>
   );
 }

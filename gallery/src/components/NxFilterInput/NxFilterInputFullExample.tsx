@@ -12,10 +12,7 @@ const NxFilterInputFullExample = () => {
   const [value, changeValue] = useState('');
 
   return (
-    <NxFilterInput placeholder="Enter a filter value"
-                   inputId="input-id"
-                   onChange={changeValue}
-                   value={value}/>
+    <NxFilterInput placeholder="Enter a filter value" id="input-id" onChange={changeValue} value={value}/>
   );
 };
 

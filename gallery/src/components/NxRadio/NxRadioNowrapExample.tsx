@@ -17,15 +17,15 @@ export default function NxRadioNowrapExample() {
     <>
       <p style={{color: appliedColor}}>Selected Color: {color}</p>
 
-      <div style={{width: '40px', border: '1px solid red'}}>
+      <div style={{width: '70px', border: '1px solid red'}}>
         Some text
         {' '}
         <NxRadio name="color3" value="red" onChange={setColor} isChecked={color === 'red'}>
-          <span style={{color: 'red'}}>Red color</span>
+          Red color
         </NxRadio>
         {' '}
         <NxRadio name="color3" value="green" onChange={setColor} isChecked={color === 'green'}>
-          <span style={{color: 'green'}}>Green color</span>
+          Green color
         </NxRadio>
         {' '}
         some other text

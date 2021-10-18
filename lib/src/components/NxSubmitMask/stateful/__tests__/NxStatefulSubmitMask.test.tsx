@@ -19,7 +19,7 @@ describe('NxStatefulSubmitMask', function() {
     jest.useFakeTimers();
   });
 
-  it('renders a NxSubmitMask, passing on its fullscreen, message, and successMessage props', function() {
+  it('renders a NxSubmitMask, passing on its message and successMessage props', function() {
     const defaultPropsComponent = getShallowComponent();
 
     expect(defaultPropsComponent).toMatchSelector(NxSubmitMask);
@@ -28,14 +28,12 @@ describe('NxStatefulSubmitMask', function() {
     expect(defaultPropsComponent).not.toHaveProp('successMessage');
 
     const nonDefaultPropsComponent = getShallowComponent({
-      fullscreen: true,
       message: 'foo',
       successMessage: 'bar',
       success: false
     });
 
     expect(nonDefaultPropsComponent).toMatchSelector(NxSubmitMask);
-    expect(nonDefaultPropsComponent).toHaveProp('fullscreen', true);
     expect(nonDefaultPropsComponent).toHaveProp('message', 'foo');
     expect(nonDefaultPropsComponent).toHaveProp('successMessage', 'bar');
     expect(nonDefaultPropsComponent).toHaveProp('success', false);

@@ -4,44 +4,33 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, FormEvent } from 'react';
+import React, { forwardRef } from 'react';
+import { omit } from 'ramda';
 import classnames from 'classnames';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import './NxFilterInput.scss';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
+import NxTextInput from '../NxTextInput/NxTextInput';
 export { Props } from './types';
 
 const NxFilterInput = forwardRef<HTMLDivElement, Props>(
     function NxFilterInput(props, ref) {
-      const { value, placeholder, onChange, className, inputId, disabled, ...otherProps } = props,
-          classes = classnames('nx-filter-input', className, {
-            'nx-filter-input--disabled': disabled
-          });
+      const { className: classNameProp, searchIcon, ...otherProps } = props,
+          isEmpty = props.value.trim() === '',
+          className = classnames('nx-filter-input', classNameProp, {
+            'nx-filter-input--empty': isEmpty
+          }),
 
-      function inputOnChange(e: FormEvent<HTMLInputElement>) {
-        if (onChange) {
-          onChange(e.currentTarget.value);
-        }
-      }
+          // just in case these props get passed in, avoid passing them to NxTextInput as they would cause
+          // malfunction
+          cleanedProps = omit(['validatable', 'validationErrors', 'type'], otherProps),
+          filterIcon = searchIcon ? faSearch : faFilter,
+          prefixContent = <NxFontAwesomeIcon icon={filterIcon} className="nx-icon--filter-icons" />;
 
-      return (
-        <div {...otherProps} className={classes} ref={ref}>
-          <div className="nx-text-input__box">
-            <NxFontAwesomeIcon icon={faFilter} className="nx-icon--filter-icons" />
-            <input type="text"
-                   autoComplete="off"
-                   id={inputId || undefined}
-                   value={value}
-                   onChange={inputOnChange}
-                   placeholder={placeholder || undefined}
-                   className="nx-text-input__input nx-filter-text-input"
-                   disabled={disabled || undefined} />
-          </div>
-        </div>
-      );
+      return <NxTextInput { ...cleanedProps } { ...{ prefixContent, className } } ref={ref} isPristine={false} />;
     }
 );
 

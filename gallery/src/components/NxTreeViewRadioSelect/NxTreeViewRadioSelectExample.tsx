@@ -7,10 +7,10 @@
 import React, { useState } from 'react';
 import {contains, toLower} from 'ramda';
 
-import { NxTreeViewRadioSelect, NxTreeViewRadioSelectOption } from '@sonatype/react-shared-components';
+import { NxTreeViewRadioSelect, NxTreeViewRadioSelectOption, useToggle } from '@sonatype/react-shared-components';
 
 const NxTreeViewRadioSelectExample = () => {
-  const options: NxTreeViewRadioSelectOption[] = [
+  const options = [
     {
       id: 'bike',
       name: 'Bicycle'
@@ -21,16 +21,19 @@ const NxTreeViewRadioSelectExample = () => {
       id: 'skate',
       name: 'Skateboard'
     }, {
+      id: 'longboard',
+      name: 'Loooooooooooooooooooooooooooooooooongboard'
+    }, {
+      id: 'moped',
+      name: 'Moped'
+    }, {
       id: null,
       name: 'No Transport'
     }
   ];
 
-  const [isOpen, toggleOpen] = useState(true),
-      [selection, onSelectionChange] = useState<string | null>(options[0].id),
-      onToggleCollapse = () => {
-        toggleOpen(!isOpen);
-      };
+  const [isOpen, onToggleCollapse] = useToggle(true),
+      [selection, onSelectionChange] = useState<string | null>(options[0].id);
 
   const [filter, setFilter] = useState('');
 
@@ -47,9 +50,8 @@ const NxTreeViewRadioSelectExample = () => {
                            selectedId={selection}
                            onChange={onSelectionChange}
                            options={options}
-                           optionTooltipGenerator={option => option.name}
                            filter={filter}
-                           filterPlaceholder="vehicle name"
+                           filterPlaceholder="filter vehicle name"
                            filterThreshold={2}
                            onFilterChange={setFilter}
                            filteredOptions={options.filter(filterPredicate)}>

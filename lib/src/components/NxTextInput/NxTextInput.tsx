@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, FormEvent, KeyboardEvent } from 'react';
+import React, { forwardRef, FormEvent, KeyboardEvent, useRef, MutableRefObject, useMemo } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -12,9 +12,10 @@ import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons'
 import './NxTextInput.scss';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { Props, propTypes } from './types';
+import { Props, propTypes, TextInputElement } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
-export { Props, propTypes, inputTypes } from './types';
+import { getUniqueId } from '../../util/idUtil';
+export { Props, PublicProps, StateProps, propTypes, inputTypes } from './types';
 
 /**
  * Standard text input with validation styling
@@ -28,8 +29,8 @@ export { Props, propTypes, inputTypes } from './types';
  * @param onKeyPress A callback for when the user presses a key that doesn't necessarily change the input value
  *    (e.g. by hitting enter)
  */
-const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
-    function NxTextInput(props, ref) {
+const NxTextInput = forwardRef<HTMLDivElement, Props>(
+    function NxTextInput(props, forwardedRef) {
       const {
         type,
         isPristine,
@@ -39,6 +40,7 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
         className,
         onKeyPress,
         disabled,
+        prefixContent,
         ...attrs
       } = props;
 
@@ -57,41 +59,55 @@ const NxTextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
           firstValidationError = validatable && getFirstValidationError(validationErrors),
           internalClassName = classnames('nx-text-input', className, {
             pristine: isPristine,
-            invalid: validatable && isInvalid,
-            valid: validatable && !isInvalid,
+            invalid: !isPristine && validatable && isInvalid,
+            valid: !isPristine && validatable && !isInvalid,
             disabled: disabled,
             'nx-text-input--textarea': isTextArea
           });
 
-      function inputOnChange(e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        if (onChange) {
-          onChange(e.currentTarget.value);
+      const inputRef: MutableRefObject<TextInputElement | null> = useRef<TextInputElement>(null),
+          invalidMessageId = useMemo(() => getUniqueId('nx-text-input-invalid-message'), []);
+
+      // when the box padding is clicked, set the focus to the <input> as that's what the user thought
+      // they were clicking
+      function setFocusToInput() {
+        if (inputRef.current) {
+          inputRef.current.focus();
         }
       }
 
-      function inputOnKeyPress(e: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) {
+      function inputOnChange(e: FormEvent<TextInputElement>) {
+        if (onChange) {
+          onChange(e.currentTarget.value, e);
+        }
+      }
+
+      function inputOnKeyPress(e: KeyboardEvent<TextInputElement>) {
         if (onKeyPress) {
           onKeyPress(e.key);
         }
       }
 
       return (
-        <div className={internalClassName}>
-          <div className="nx-text-input__box">
+        <div ref={forwardedRef} className={internalClassName}>
+          <div className="nx-text-input__box" onClick={setFocusToInput}>
+            {prefixContent}
             {React.createElement(element, {
               ...newProps,
               disabled,
-              ref,
+              ref: inputRef,
               type: typeAttr,
               onChange: inputOnChange,
               className: 'nx-text-input__input',
-              onKeyPress: inputOnKeyPress
+              onKeyPress: inputOnKeyPress,
+              'aria-invalid': isInvalid,
+              'aria-errormessage': invalidMessageId
             })}
             <NxFontAwesomeIcon icon={faCheck} className="nx-icon nx-icon--valid"/>
             <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon nx-icon--invalid"/>
           </div>
-          <div className="nx-text-input__invalid-message">
-            {firstValidationError}
+          <div id={invalidMessageId} role="alert" className="nx-text-input__invalid-message">
+            {!isPristine && firstValidationError}
           </div>
         </div>
       );

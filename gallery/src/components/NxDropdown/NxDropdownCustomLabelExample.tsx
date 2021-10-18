@@ -4,14 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
 import { faFrog, faCarCrash } from '@fortawesome/free-solid-svg-icons';
-import { NxDropdown, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxDropdown, NxFontAwesomeIcon, useToggle } from '@sonatype/react-shared-components';
 
 function NxDropdownCustomLabelExample() {
-  const [isOpen, toggleOpen] = useState(false),
-      onToggleCollapse = () => { toggleOpen(!isOpen); },
+  const [isOpen, onToggleCollapse] = useToggle(false),
       onClick = () => { alert('click'); },
       labelElement = <><NxFontAwesomeIcon icon={faCarCrash}/><span>Beep Beep!</span></>;
 

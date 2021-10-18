@@ -6,12 +6,14 @@
  */
 import React from 'react';
 
-import { NxInfoAlert } from '@sonatype/react-shared-components';
+import { NxInfoAlert, useToggle } from '@sonatype/react-shared-components';
 
 function NxInfoAlertExample() {
-  return (
-    <NxInfoAlert>This is an example <strong>information</strong> message.</NxInfoAlert>
-  );
+  const [isOpen, dismiss] = useToggle(true);
+
+  return isOpen ? (
+    <NxInfoAlert onClose={dismiss}>This is an example <strong>information</strong> message.</NxInfoAlert>
+  ) : null;
 }
 
 export default NxInfoAlertExample;

@@ -4,10 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef } from 'react';
 
 import NxCheckbox from '../NxCheckbox';
 import { Props, propTypes } from './types';
+import useToggle from '../../../util/useToggle';
 export { Props } from './types';
 
 /**
@@ -21,11 +22,11 @@ export { Props } from './types';
  */
 const NxStatefulCheckbox = forwardRef<HTMLLabelElement, Props>(
     function NxStatefulCheckbox({ defaultChecked, onChange, ...otherProps }, ref) {
-      const [isChecked, setIsChecked] = useState(defaultChecked);
+      const [isChecked, toggle] = useToggle(defaultChecked);
 
       function changeHandler() {
-        const newCheckedStatus = !isChecked;
-        setIsChecked(newCheckedStatus);
+        const newCheckedStatus = toggle();
+
         if (onChange) {
           onChange(newCheckedStatus);
         }

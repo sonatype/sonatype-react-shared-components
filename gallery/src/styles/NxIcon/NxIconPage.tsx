@@ -6,23 +6,24 @@
  */
 import React from 'react';
 
+import { NxP, NxCode } from '@sonatype/react-shared-components';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxIconExampleCode = require('!!raw-loader!./NxIconExample.html').default;
+const nxIconExampleCode = require('./NxIconExample.html');
 
 const NxIconPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
-        <code className="nx-code">.nx-icon</code> is a class that gives standard layout, namely left and right margin,
-        to icons in a way that is compatible with the <code className="nx-code">nx-container-helpers</code>.
-      </p>
-      <p className="nx-p">
-        When using <code className="nx-code">.nx-icon</code> manually, be careful to set up heights and widths in
+      <NxP>
+        <NxCode>.nx-icon</NxCode> is a class that gives standard layout, namely left and right margin,
+        to icons in a way that is compatible with the <NxCode>nx-container-helpers</NxCode>.
+      </NxP>
+      <NxP>
+        When using <NxCode>.nx-icon</NxCode> manually, be careful to set up heights and widths in
         ways that work in all supported browsers. For instance, note that in the example below, only the height OR the
         width need to be specified for Chrome and Firefox due to the instrinsic aspect ratio from
-        the <code className="nx-code">viewBox</code>, while for IE, both the width and the height are necessary.
-      </p>
+        the <NxCode>viewBox</NxCode>, while for IE, both the width and the height are necessary.
+      </NxP>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"

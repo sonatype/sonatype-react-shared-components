@@ -11,7 +11,7 @@ import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import './NxLoadingSpinner.scss';
 
-const NxLoadingSpinner: FunctionComponent<{}> =
+const NxLoadingSpinner: FunctionComponent =
   function NxLoadingSpinner({ children }) {
     return (
       <div className="nx-loading-spinner">

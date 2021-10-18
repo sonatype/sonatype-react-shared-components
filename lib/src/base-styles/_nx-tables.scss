@@ -1,101 +1,271 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-button-helpers';
+@use '../scss-shared/_nx-table-variables';
 
- /*
-  #Tables
-*/
 .nx-table {
-  border-collapse: collapse;
+  background-color: var(--nx-color-component-background);
+  border-spacing: 0;
+  border: var(--nx-border-default);
+  border-radius: var(--nx-border-radius);
   display: table;
-  height: 1px; // hack to fix threat bars in multi-line cells in FF
-  margin: $nx-spacing-sm 0 $nx-spacing-l 0;
+  margin: var(--nx-spacing-3x) 0 var(--nx-spacing-6x) 0;
+  overflow: hidden;
   width: 100%;
-}
 
-.nx-table-row {
-  &:last-child {
-    .nx-cell:not(.nx-cell--header):not(.nx-error) {
-      border-bottom: $nx-border-row;
+  > tbody > .nx-table-row {
+    > .nx-cell {
+      $border-width: 1px;
+
+      border-width: $border-width;
+      border-color: transparent;
+      border-style: none;
+
+      border-bottom-style: solid;
+      border-bottom-color: var(--nx-color-border-secondary);
+      border-top-style: solid;
+
+      // we want the perceived padding to be the standard spacing size. As the top border is generally invisible,
+      // it should be counted as padding from that perspective
+      padding-top: calc(var(--nx-spacing-3x) - #{$border-width});
+
+      &:first-child {
+        border-left-style: solid;
+        padding-left: calc(var(--nx-spacing-4x) - #{$border-width});
+      }
+
+      &:last-child {
+        border-right-style: solid;
+        padding-right: calc(var(--nx-spacing-4x) - #{$border-width});
+      }
+
+      // Used for table cells container meta-information such as the fact that the table is empty, or
+      // that the data is loading. These cells are expected to take up the entire row using colspan attributes
+      &.nx-cell--meta-info {
+        padding-top: calc(var(--nx-spacing-4x) - 1px);
+        padding-bottom: var(--nx-spacing-4x);
+        text-align: center;
+
+        > * {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
     }
-  }
 
-  &.nx-clickable {
     &:last-child {
-      &:hover .nx-cell {
-        border-bottom: $nx-border-row-hover;
+      > .nx-cell {
+        border-bottom-style: none;
+      }
+
+      > :first-child {
+        border-bottom-left-radius: var(--nx-border-radius);
+      }
+
+      > :last-child {
+        border-bottom-right-radius: var(--nx-border-radius);
       }
     }
 
-    &:hover {
-      .nx-cell {
-        border-top: $nx-border-row-hover;
+    &.nx-clickable {
+      &:hover {
+        > .nx-cell {
+          background-color: var(--nx-color-interactive-background-hover);
+        }
       }
 
-      + .nx-table-row .nx-cell {
-        border-top: $nx-border-row-hover;
+      &.selected {
+        > .nx-cell {
+          background-color: var(--nx-color-interactive-background-selected);
+        }
       }
 
-      .nx-cell--label, .nx-cell--chevron {
-        color: $nx-text-color;
+      &:active {
+        > .nx-cell {
+          background-color: var(--nx-color-interactive-background-active);
+        }
       }
-    }
 
-    .nx-cell--label {
-      @include semi-bold();
+      &:focus-within {
+        box-shadow: var(--nx-box-shadow-focus);
+        outline: none;
 
-      color: $nx-text-color-light;
+        > .nx-cell {
+          border-color: var(--nx-color-interactive-border-focus);
+        }
+      }
     }
   }
 }
 
-.nx-table-row--header {
-  border-bottom: $nx-border-row-dark;
+.nx-table-container {
+  background-color: var(--nx-color-component-background);
+  border: var(--nx-border-default);
+  border-radius: var(--nx-border-radius);
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  // create a stacking context so the sticky content doesn't appear over other content outside the container
+  position: relative;
+  z-index: 0;
+
+  // for specificity
+  &.nx-scrollable {
+    overflow-y: auto;
+  }
+
+  // NOTE: these styles used to be on .nx-table--scrollable
+  > .nx-table {
+    border-style: none;
+    border-radius: 0;
+    margin: 0;
+    overflow: visible;
+
+    // In Chrome (at least), tables are forced to have a whole number of pixels for their width. This means that
+    // if a container has a fractional number of pixels width, the table width will be truncated down and a visible
+    // gap will appear.  This calc ensures that when in a fractional-width container, the table will get an extra
+    // pixel of width
+    width: calc(100% + 0.9999px);
+
+    > thead > :first-child {
+      > .nx-cell {
+        &:first-child, &:last-child {
+          border-radius: 0;
+        }
+      }
+    }
+
+    > tbody > :last-child {
+      > .nx-cell {
+        &:first-child, &:last-child {
+          border-radius: 0;
+        }
+
+        border-bottom-style: solid;
+      }
+    }
+
+    .nx-cell--header {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    &:last-child > tbody > :last-child > .nx-cell {
+      border-bottom-style: none;
+    }
+  }
+}
+
+// deprecated
+.nx-scrollable--table-container {
+  @extend .nx-table-container;
+}
+
+.nx-table-container__footer {
+  @include nx-container-helpers.container-vertical;
+
+  background-color: var(--nx-color-component-background);
+  border-top: var(--nx-border-default);
+  margin-top: auto;
+
+  // when following a table with no space between, merge the table's bottom border and the pagination's top border
+  transform: translateY(-1px);
+
+  // subtract 1 from bottom padding to counteract the translateY above
+  padding: nx-table-variables.$table-footer-vertical-padding var(--nx-spacing-6x)
+    calc(#{nx-table-variables.$table-footer-vertical-padding} - 1px) var(--nx-spacing-6x);
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+}
+
+// nested and located this far down the file for specificity reasons
+.nx-table {
+  .nx-table-row--filter-header {
+    > .nx-cell--header {
+      top: nx-table-variables.$table-cell-header-height;
+    }
+
+    .nx-filter-input {
+      width: 250px;
+    }
+  }
+}
+
+.nx-table--fixed-layout {
+  table-layout: fixed;
+
+  .nx-cell--row-btn {
+    // unfortunate magic number for the intended width when the icon is a chevron. If it is a different icon, the
+    // width will have to be explicitly overridden. `width: min-content` would have been ideal here in conjunction with
+    // a hidden copy of the button in the header row, but it does
+    // not work consistently across browsers: it works in firefox but in chrome it seems equivalent to `auto`, and
+    // in safari is seems equivalent to `0`.
+    width: 37px;
+  }
 }
 
 .nx-cell {
-  @include container-vertical;
-  @include container-horizontal;
+  @include nx-container-helpers.container-vertical;
+  @include nx-container-helpers.container-horizontal;
 
-  background-clip: padding-box;
-  border-top: $nx-border-row;
-  box-sizing: border-box;
-  color: $nx-text-color;
-  display: table-cell;
-  height: 39px; // 38px cell, 1px top border
-  padding: $nx-spacing-xs $nx-spacing-sm;
-  position: relative;
-  text-align: left;
+  min-height: nx-table-variables.$table-cell-min-height;
+  padding: nx-table-variables.$table-cell-vertical-padding var(--nx-spacing-3x);
+  vertical-align: top;
 
-  &.nx-error {
-    border-color: $nx-fail-color-bg;
-    border-bottom-color: $nx-fail-color;
-    color: $nx-text-color-error;
-    text-align: center;
+  &:first-child {
+    padding-left: var(--nx-spacing-4x);
+  }
+
+  &:last-child {
+    padding-right: var(--nx-spacing-4x);
+  }
+
+  > .nx-btn-bar {
+    // buttons should be 8px from row edges even though row padding is 12px
+    margin-top: calc(0px - var(--nx-spacing-base));
+    margin-bottom: calc(0px - var(--nx-spacing-base));
+  }
+
+  &:not(.nx-cell--header) > .nx-btn-bar {
+    .nx-btn--icon-only {
+      @include nx-button-helpers.small-icon-btn;
+    }
   }
 }
 
-.nx-cell--header {
-  @include semi-bold;
-  border-bottom: $nx-border-row-dark;
-  background-color: $nx-off-white;
-  border-top: none;
-
-  color: $nx-text-color-light;
-  font-size: 12px;
-  height: 24px;
-  line-height: 12px;
-  text-align: left;
-  text-transform: uppercase;
+.nx-cell--label {
+  @include nx-text-helpers.semi-bold;
 }
 
-.nx-cell--label {
-  @include semi-bold();
+.nx-cell--header {
+  @include nx-text-helpers.bold;
+  background-color: var(--nx-swatch-indigo-80);
+  border-top: none;
+  box-sizing: border-box;
 
-  color: $nx-text-color;
+  color: var(--nx-color-text-dark);
+  font-size: var(--nx-font-size-s);
+  height: nx-table-variables.$table-cell-header-height;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  &:focus {
+    outline: 1px solid var(--nx-color-interactive-border-focus);
+    outline-offset: -1px;
+    box-shadow: var(--nx-box-shadow-focus);
+  }
 }
 
 // columns whose content is numerical
@@ -103,31 +273,22 @@
   text-align: center;
 }
 
-// Used when table contents are empty
-.nx-cell--empty {
-  @include regular();
 
-  color: $nx-text-color-light;
+.nx-cell--icon {
+  color: var(--nx-color-text-dark);
   text-align: center;
 }
 
-// special cells that usually contain a button or indicator - usually on the right side
-.nx-cell--chevron {
-  color: $nx-text-color-light;
-  padding: 0 $nx-spacing-sm;
-  text-align: right;
-  width: 14px;
-  max-width: 32px;
-  min-width: 14px;
+.nx-cell--row-btn {
+  @extend .nx-cell--icon;
+
+  // get the table to size the column as small as possible around the icon
+  width: 1px;
 }
 
-.nx-cell--icon {
-  color: $nx-text-color-light;
-  padding: 0 $nx-spacing-sm;
-  text-align: right;
-  width: 14px;
-  max-width: 32px;
-  min-width: 14px;
+// deprecated, just use .nx-cell--icon
+.nx-cell--chevron {
+  @extend .nx-cell--row-btn;
 }
 
 .nx-cell--sortable {
@@ -135,12 +296,86 @@
   -ms-user-select: none;
 }
 
+.nx-table-row--filter-header > .nx-cell--header {
+  background-color: var(--nx-color-component-background);
+  border-bottom: var(--nx-border-default);
+  padding-top: var(--nx-spacing-4x);
+  padding-bottom: var(--nx-spacing-4x);
+}
+
 .nx-cell__sort-icons {
-  :first-child path {
-    color: $nx-grey-4;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: var(--nx-spacing-base);
+
+  > :first-child path {
+    color: var(--nx-swatch-white);
   }
 
-  :nth-child(2) path {
-    color: $nx-slate;
+  > :nth-child(2) path {
+    color: var(--nx-swatch-blue-40);
+  }
+}
+
+// make button take up entire cell including its padding box
+@mixin btn-cell-sizing($left-padding, $right-padding) {
+  margin-left: calc(0px - #{$left-padding});
+  margin-right: calc(0px - #{$right-padding});
+  padding-left: $left-padding;
+  padding-right: $right-padding;
+  width: calc(100% + #{$left-padding} + #{$right-padding});
+}
+
+.nx-cell__sort-btn, .nx-cell__row-btn {
+  box-sizing: border-box;
+  cursor: pointer;
+
+  @include nx-container-helpers.container-horizontal;
+
+  // first-child and last-child added for specificity
+  &, &:first-child, &:last-child {
+    @include btn-cell-sizing(var(--nx-spacing-3x), var(--nx-spacing-3x));
+
+    margin-top: calc(0px - var(--nx-spacing-3x));
+    margin-bottom: calc(0px - var(--nx-spacing-3x));
+    padding-top: var(--nx-spacing-3x);
+    padding-bottom: var(--nx-spacing-3x);
+  }
+
+  text-align: inherit;
+  text-transform: uppercase;
+
+  &, &:hover, &:active, &:focus {
+    border: none;
+    background: none;
+    font: inherit;
+    outline: none;
+  }
+}
+
+.nx-cell__sort-btn {
+  height: nx-table-variables.$table-cell-header-height;
+}
+
+// adjust button sizing for ends of rows, where padding is different and there are borders
+.nx-cell {
+  $edge-spacing: calc(var(--nx-spacing-4x) - 1px);
+
+  &:first-child {
+    > .nx-cell__sort-btn, > .nx-cell__row-btn {
+      @include btn-cell-sizing($edge-spacing, var(--nx-spacing-3x));
+    }
+  }
+
+  &:last-child {
+    > .nx-cell__sort-btn, > .nx-cell__row-btn {
+      @include btn-cell-sizing(var(--nx-spacing-3x), $edge-spacing);
+    }
+  }
+
+  &:first-child:last-child {
+    > .nx-cell__sort-btn, > .nx-cell__row-btn {
+      @include btn-cell-sizing($edge-spacing, $edge-spacing);
+    }
   }
 }

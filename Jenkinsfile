@@ -6,8 +6,10 @@
  */
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
-def seleniumDockerImage = 'selenium/standalone-chrome'
-def seleniumDockerVersion = '3.141.59-20200409'
+def seleniumHubDockerImage = 'docker-all.repo.sonatype.com/selenium/hub'
+def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/node-chrome'
+def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
+def numSeleniumContainers = 10;
 
 dockerizedBuildPipeline(
   // expose gallery port on host so selenium container can hit it
@@ -16,7 +18,21 @@ dockerizedBuildPipeline(
   prepare: {
     githubStatusUpdate('pending')
 
-    sh "docker run --name selenium-chrome -d -p 4444:4444 -v /dev/shm:/dev/shm ${seleniumDockerImage}:${seleniumDockerVersion}"
+    withSonatypeDockerRegistry() {
+      sh """
+        docker network create grid
+        docker run -d -p 4442-4444:4442-4444 --net grid --name selenium-hub \
+            ${seleniumHubDockerImage}:${seleniumDockerVersion}
+
+        for i in \$(seq 1 ${numSeleniumContainers}); do
+          docker run --name selenium-chrome-\$i -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub \
+              -e SE_EVENT_BUS_PUBLISH_PORT=4442 \
+              -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
+              -v /dev/shm:/dev/shm \
+              ${seleniumDockerImage}:${seleniumDockerVersion}
+        done
+      """
+    }
   },
   setVersion: {
     env['VERSION'] = sh(returnStdout: true, script: 'jq -r -e .version lib/package.json').trim()
@@ -71,11 +87,11 @@ dockerizedBuildPipeline(
     '''
 
     withCredentials([string(credentialsId: 'REACT_SHARED_COMPONENTS_APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
-      sh '''
+      sh """
         registry=https://repo.sonatype.com/repository/npm-all/
 
         cd lib
-        yarn install --registry "${registry}"
+        yarn install --registry "\${registry}"
         npm run test
         npm run build
         cd dist
@@ -83,20 +99,20 @@ dockerizedBuildPipeline(
         cd ../..
 
         cd gallery
-        yarn install --registry "${registry}"
+        yarn install --registry "\${registry}"
 
         # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
-        TEST_IP=$JENKINS_AGENT_IP npm run test
+        MAX_INSTANCES=${numSeleniumContainers} TEST_IP=\$JENKINS_AGENT_IP npm run test
         npm run build
         cd ..
-      '''
+      """
     }
   },
   vulnerabilityScan: {
     if (env.BRANCH_NAME == 'master') {
       nexusPolicyEvaluation(
         iqStage: 'release',
-        iqApplication: 'react-shared-components',
+        iqApplication: 'sonatype-react-shared-components',
         iqScanPatterns: [[scanPattern: 'gallery/webpack-modules']],
         failBuildOnNetworkError: true
       )
@@ -129,11 +145,19 @@ dockerizedBuildPipeline(
   },
   onFailure: {
     githubStatusUpdate('failure')
+    sendEmailNotification(currentBuild, env,
+        [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], null)
   },
   cleanup: {
     sh """
-      docker rm -f selenium-chrome
+      for i in \$(seq 1 ${numSeleniumContainers}); do
+        docker rm -f selenium-chrome-\$i
+      done
+
+      docker rm -f selenium-hub
       docker rmi ${seleniumDockerImage}:${seleniumDockerVersion}
+      docker rmi ${seleniumHubDockerImage}:${seleniumDockerVersion}
+      docker network rm grid
     """
   }
 )

@@ -1,37 +1,26 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
-@import '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-container-helpers';
 
 .nx-filter-input {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
-  display: inline-block;
+  margin-bottom: 0;
   white-space: nowrap;
 
-  &:focus-within {
-    .nx-text-input__box {
-      border-color: #43cbf5;
-    }
-  }
-
-  &.nx-filter-input--disabled {
-    .nx-text-input__box {
-      background-color: #e9e9e9;
-      border-color: #949494;
-
-      .nx-icon--filter-icons {
-        color: #949494;
-      }
+  &.disabled {
+    .nx-icon--filter-icons {
+      color: var(--nx-color-text-disabled);
+      display: inline-block;
     }
   }
 
   .nx-icon--filter-icons {
-    color: $nx-text-color-light;
+    color: var(--nx-color-text-dark);
     margin-left: 0;
     margin-right: 8px;
   }

@@ -1,95 +1,136 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
 
 @font-face {
   font-family: "Open Sans";
-  src: url("../assets/fonts/open-sans-v17-latin-regular.woff") format("woff");
+  src: url("../assets/fonts/open-sans-v18-latin-regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Open Sans";
-  src: url("../assets/fonts/open-sans-v17-latin-600.woff") format("woff");
+  src: url("../assets/fonts/open-sans-v18-latin-italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/open-sans-v18-latin-600.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Open Sans";
-  src: url("../assets/fonts/open-sans-v17-latin-700.woff") format("woff");
+  src: url("../assets/fonts/open-sans-v18-latin-600italic.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/open-sans-v18-latin-700.woff") format("woff");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Open Sans";
-  src: url("../assets/fonts/open-sans-v17-latin-italic.woff") format("woff");
+  src: url("../assets/fonts/open-sans-v18-latin-700italic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../assets/fonts/courier-prime-v2-latin-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../assets/fonts/courier-prime-v2-latin-italic.woff") format("woff");
   font-weight: normal;
   font-style: italic;
 }
 
-.nx-body {
-  @include regular();
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../assets/fonts/courier-prime-v2-latin-700.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
 
-  color: $nx-text-color;
-  font-size: $nx-font-size;
-  line-height: $nx-line-height;
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../assets/fonts/courier-prime-v2-latin-700italic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+
+.nx-body {
+  @include nx-text-helpers.regular;
+
+  color: var(--nx-color-text);
+  font-size: var(--nx-font-size);
+  line-height: var(--nx-line-height);
+}
+
+%nx-heading {
+  color: var(--nx-color-text-dark);
+  max-width: var(--nx-width-text-wrapping);
 }
 
 .nx-h1 {
-  @include bold();
-  @include container-horizontal;
+  @include nx-text-helpers.bold;
+  @include nx-container-helpers.container-horizontal;
+  @extend %nx-heading;
 
-  color: $nx-heading-color;
-  font-size: $nx-font-size-heading-level-1;
-  margin-bottom: $nx-spacing-l;
+  font-size: var(--nx-font-size-heading-1);
+  margin-bottom: var(--nx-spacing-6x);
 }
 
 .nx-h2 {
-  @include semi-bold();
-  @include container-horizontal;
+  @include nx-text-helpers.semi-bold;
+  @include nx-container-helpers.container-horizontal;
+  @extend %nx-heading;
 
-  color: $nx-heading-color;
-  font-size: $nx-font-size-heading-level-2;
-  margin-bottom: $nx-spacing-md;
+  font-size: var(--nx-font-size-heading-2);
+  margin-bottom: var(--nx-spacing-4x);
 }
 
 .nx-h3 {
-  @include bold();
-  @include container-horizontal;
+  @include nx-text-helpers.bold;
+  @include nx-container-helpers.container-horizontal;
+  @extend %nx-heading;
 
-  color: $nx-heading-color;
-  font-size: $nx-font-size-heading-level-3;
-  margin-bottom: $nx-spacing-xs;
+  font-size: var(--nx-font-size-heading-3);
+  margin-bottom: var(--nx-spacing-4x);
 }
 
 .nx-h4 {
-  @include semi-bold();
-  @include container-horizontal;
+  @include nx-text-helpers.semi-bold;
+  @include nx-container-helpers.container-horizontal;
+  @extend %nx-heading;
 
-  color: $nx-heading-color;
-  font-size: $nx-font-size-heading-level-4;
-  margin-bottom: $nx-spacing-xs;
-  text-transform: uppercase;
+  font-size: var(--nx-font-size-heading-4);
+  margin-bottom: var(--nx-spacing-2x);
 }
 
 .nx-p {
-  margin-bottom: $nx-spacing-md;
-}
-
-.nx-label {
-  @include semi-bold();
-
-  cursor: default;
-  font-size: 16px;
+  @extend %nx-p;
 }
 
 // Form typography
 .nx-text-input__input {
-  @include regular();
+  @include nx-text-helpers.regular;
 }

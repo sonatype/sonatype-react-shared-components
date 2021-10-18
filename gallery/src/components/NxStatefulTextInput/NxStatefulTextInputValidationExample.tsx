@@ -20,4 +20,4 @@ export default function NxStatefulTextInputValidationExample() {
   return (
     <NxStatefulTextInput validator={validator} onKeyPress={onKeyPress} placeholder="placeholder text"/>
   );
-};
+}

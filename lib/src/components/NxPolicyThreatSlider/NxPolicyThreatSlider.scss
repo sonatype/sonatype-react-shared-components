@@ -1,25 +1,33 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../../scss-shared/nx-variables';
+@use 'sass:math';
 
 .nx-policy-threat-slider {
-  display: inline-block;
+  $rail-height: 8px;
+  $thumb-size: 32px;
+  $thumb-border-width: 2px;
 
-  font-size: 13px;
+  // distance from top of thumb to top of rail
+  $thumb-vertical-overflow: math.div($thumb-size - $rail-height, 2);
+
+  // flex so line-height doesn't get involved in the element overall height
+  display: inline-flex;
+  margin: var(--nx-spacing-2x) 0;
 
   // the .MuiSlider-thumb elements actually stick out of the sides of the .MuiSlider-root at their min and max
   // positions.  This padding ensures that they don't stick out of the overall box for this component
-  padding: 0 9px;
+  padding: 0 math.div($thumb-size, 2);
 
   .MuiSlider-root {
-    display: inline-block;
-    height: 6px;
-    padding: 9px 0;
-    width: 180px;
+    height: $rail-height;
+    padding: $thumb-vertical-overflow 0;
+
+    // NOTE: this number needs to be divisible by 10 for the track to render cleanly
+    width: 220px;
   }
 
   .MuiSlider-markActive {
@@ -30,58 +38,93 @@
     display: none;
   }
 
+  &, .Mui-disabled {
+    .MuiSlider-thumb {
+      box-sizing: border-box;
+      background-color: var(--nx-swatch-white);
+      border: $thumb-border-width solid;
+      border-radius: var(--nx-border-radius);
+      color: var(--nx-color-text-dark);
+      font-size: var(--nx-font-size-s);
+      font-weight: bold;
+      height: $thumb-size;
+      width: $thumb-size;
+      line-height: 1;
+      margin-left: math.div($thumb-size, -2);
+      margin-top: -($thumb-vertical-overflow);
+    }
+  }
+
   .MuiSlider-thumb {
-    align-items: stretch;
-    border-radius: 4px;
+    &.MuiSlider-active, &:hover, &:focus {
+      box-shadow: none;
+    }
 
-    color: $nx-off-white;
+    &:focus::before {
+      border: 1px solid var(--nx-color-interactive-border-focus);
+      border-radius: var(--nx-border-radius);
+      box-shadow: var(--nx-box-shadow-focus);
+      content: '';
 
-    height: 17px;
-    width: 18px;
+      // this is a new shorthand for top, bottom, left, and right.
+      // Note that these properties are measured from the inside of the container's border which is why the border
+      // width is part of the calc
+      inset: calc(0px - (var(--nx-spacing-base) + #{$thumb-border-width}));
+      position: absolute;
+    }
 
-    margin-left: -9px;
-
-    &.MuiSlider-active, &:hover {
+    // this class seems to be applied, perhaps incorrectly,
+    // after a thumb loses focus due to arrows keys and thumbs crossing
+    // over one another. It should _not_ have focus styles
+    &.Mui-focusVisible:not(:focus) {
       box-shadow: none;
     }
   }
 
   .nx-policy-threat-slider__value-label--none {
     .MuiSlider-thumb {
-      background-color: $nx-threat-color-none;
+      border-color: var(--nx-color-threat-none);
     }
   }
 
   .nx-policy-threat-slider__value-label--low {
     .MuiSlider-thumb {
-      background-color: $nx-threat-color-low;
+      border-color: var(--nx-color-threat-low);
     }
   }
 
   .nx-policy-threat-slider__value-label--moderate {
     .MuiSlider-thumb {
-      background-color: $nx-threat-color-moderate;
+      border-color: var(--nx-color-threat-moderate);
     }
   }
 
   .nx-policy-threat-slider__value-label--severe {
     .MuiSlider-thumb {
-      background-color: $nx-threat-color-severe;
+      border-color: var(--nx-color-threat-severe);
     }
   }
 
   .nx-policy-threat-slider__value-label--critical {
     .MuiSlider-thumb {
-      background-color: $nx-threat-color-critical;
+      border-color: var(--nx-color-threat-critical);
     }
   }
 
+  .Mui-disabled .nx-policy-threat-slider__value-label .MuiSlider-thumb {
+    border-color: var(--nx-color-interactive-border-disabled);
+    background-color: var(--nx-color-interactive-background-disabled);
+    color: var(--nx-color-text-disabled);
+  }
+
   .MuiSlider-mark {
-    height: 6px;
+    $border-radius: math.div($rail-height, 2);
+
+    height: $rail-height;
 
     // threat level 0
-    border-radius: 4px 0 0 4px;
-    color: $nx-threat-color-none-light;
+    border-radius: $border-radius 0 0 $border-radius;
+    color: var(--nx-color-threat-none);
 
     // the first mark only goes from 0 - 0.5, so is only 5% wide.
     // The rest (except the last) each go from (n - 0.5) to (n + 0.5), so are 10% wide with a -5% left margin.
@@ -98,18 +141,18 @@
       width: 10%;
 
       // threat level 1
-      color: $nx-threat-color-low-light;
+      color: var(--nx-color-threat-low);
 
       ~ .MuiSlider-mark {
         // threat level 2
-        color: $nx-threat-color-moderate-light;
+        color: var(--nx-color-threat-moderate);
 
         ~ .MuiSlider-mark {
           // threat level 3
 
           ~ .MuiSlider-mark {
             // threat level 4
-            color: $nx-threat-color-severe-light;
+            color: var(--nx-color-threat-severe);
 
             ~ .MuiSlider-mark {
               // threat level 5
@@ -122,14 +165,14 @@
 
                   ~ .MuiSlider-mark {
                     // threat level 8
-                    color: $nx-threat-color-critical-light;
+                    color: var(--nx-color-threat-critical);
 
                     ~ .MuiSlider-mark {
                       // threat level 9
 
                       ~ .MuiSlider-mark {
                         // threat level 10
-                        border-radius: 0 4px 4px 0;
+                        border-radius: 0 $border-radius $border-radius 0;
                         width: 5%;
                       }
                     }

@@ -5,15 +5,17 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import {faExclamationTriangle, faEdit, faSave} from '@fortawesome/free-solid-svg-icons';
+import {faExclamationTriangle, faEdit, faSave, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { NxButton, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxButton, NxFontAwesomeIcon, NxButtonBar } from '@sonatype/react-shared-components';
 
 const NxButtonIconOnlyExample = () =>
-  <div className="nx-btn-bar">
-    <NxButton iconOnly><NxFontAwesomeIcon icon={faExclamationTriangle}/></NxButton>
-    <NxButton iconOnly><NxFontAwesomeIcon icon={faEdit}/></NxButton>
-    <NxButton iconOnly><NxFontAwesomeIcon icon={faSave}/></NxButton>
-  </div>;
+  <NxButtonBar>
+    <NxButton variant="icon-only" title="Alert"><NxFontAwesomeIcon icon={faExclamationTriangle}/></NxButton>
+    <NxButton variant="icon-only" title="Edit"><NxFontAwesomeIcon icon={faEdit}/></NxButton>
+    <NxButton variant="icon-only" title="Save"><NxFontAwesomeIcon icon={faSave}/></NxButton>
+    <NxButton variant="icon-only" title="Delete" className="disabled"><NxFontAwesomeIcon icon={faTrashAlt}/></NxButton>
+    <NxButton variant="icon-only" disabled><NxFontAwesomeIcon icon={faTrashAlt}/></NxButton>
+  </NxButtonBar>;
 
 export default NxButtonIconOnlyExample;

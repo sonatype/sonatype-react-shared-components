@@ -1,9 +1,11 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-header-variables';
+@use '../scss-shared/nx-container-helpers';
 
 /*
   #Layout
@@ -11,60 +13,98 @@
 .nx-html, .nx-body {
   box-sizing: border-box;
   height: 100%;
-  overflow: hidden;
 }
 
 .nx-body {
-  background-color: $nx-site-background-color;
-  color: $nx-text-color;
+  background-color: var(--nx-color-site-background);
   height: 100%;
   margin: 0;
-  // prevents scrollbar flicker as tooltips appear in IE11
-  overflow-y: hidden;
   padding: 0;
 }
 
 .nx-page {
-  @include container-vertical;
-
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  min-width: var(--nx-width-page-min);
   height: 100%;
-  min-width: $nx-page-width-min;
+  width: 100%;
+
+  // NOTE: Most of this template is only used when using nx-page-content--full-width (or no nx-page-content at all).
+  // In traditional layouts that use plain nx-page-content, that element manages everything below the second
+  // row of this template.
+  grid-template:
+    'old-header     old-header  old-header' auto
+    'global-sidebar   notices      notices' auto
+    'global-sidebar   header        header' auto
+    'global-sidebar old-sidebar    content' 1fr /
+      auto             auto            1fr;
 }
 
 .nx-page-content {
-  @include container-horizontal;
+  @include nx-container-helpers.container-horizontal;
 
+  justify-self: center;
   box-sizing: border-box;
   display: flex;
-  flex-grow: 1;
-  max-width: $nx-page-width-max;
+
+  // Cover all columns and the third through last rows of the nx-page grid template
+  grid-area: 3 / 1 / -1 / -1;
+  max-width: var(--nx-width-page-max);
   overflow-y: hidden;
   width: 100%;
 }
 
-.nx-page-sidebar {
-  @include container-vertical;
+.nx-page, .nx-page-content {
+  // page-load errors are often at this level and not encapsulated within a nx-page-sidebar or nx-page-main
+  > .nx-alert, > .nx-loading-spinner {
+    align-self: flex-start;
+    grid-area: old-sidebar-start / old-sidebar-start / content-end / content-end;
+    margin: var(--nx-spacing-6x) auto 0 auto;
+  }
 
-  background-color: $nx-sidebar-background-color;
+  > .nx-loading-spinner {
+    margin-left: var(--nx-spacing-6x);
+  }
+}
+
+.nx-page-content--full-width {
+  // This element is deprecated, just add the children directly to .nx-page instead
+  display: contents;
+}
+
+.nx-page-sidebar {
+  @include nx-container-helpers.container-vertical;
+
+  background-color: var(--nx-color-site-background);
   box-sizing: border-box;
-  flex-basis: $nx-sidebar-width;
+
+  // sizing properties for when in .nx-page-sidebar
+  flex: 0 0 var(--nx-width-sidebar);
+
+  // sizing properties for when in .nx-page-side--full-width or directly within .nx-page.
+  // Unfortunately we have to use vw units here because percent is taken relative to the grid cell
+  // not the entire container
+  grid-area: old-sidebar;
+  width: calc((1 - var(--nx-width-content-proportion)) * 100vw);
+
+  // sizing properties used in all layouts
+  max-width: calc((1 - var(--nx-width-content-proportion)) * var(--nx-width-page-max));
+
   overflow-x: hidden;
-  padding: $nx-spacing-xl $nx-spacing-md $nx-spacing-xs $nx-spacing-md;
+  padding: var(--nx-spacing-6x) var(--nx-spacing-6x) var(--nx-spacing-2x) var(--nx-spacing-6x);
   position: relative;
   white-space: normal;
 }
 
 .nx-page-main {
-  @include container-vertical;
+  @include nx-container-helpers.container-vertical;
 
   box-sizing: border-box;
-  flex: 1 0 $nx-content-width;
+  flex: auto;
+  grid-area: content;
+  min-width: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: $nx-spacing-xl $nx-spacing-l $nx-spacing-md $nx-spacing-l;
+  padding: var(--nx-spacing-6x) var(--nx-spacing-6x);
   white-space: normal;
 }
 
@@ -73,17 +113,31 @@
   overflow: auto;
 
   > .nx-body {
-    overflow: auto;
+    overflow: visible;
   }
 
-  .nx-page-header {
-    position: fixed;
-    top: 0;
-    left: 0;
+  .nx-page {
+    min-width: calc(var(--nx-width-page-min) - var(--nx-width-scrollbar));
+  }
+
+  .nx-page-header, .nx-system-notice, .nx-system-notice-container {
+    position: sticky;
     z-index: 1;
   }
 
+  .nx-page-header {
+    top: 0;
+  }
+
+  .nx-system-notice, .nx-system-notice-container {
+    top: nx-header-variables.$main-header-height;
+  }
+
   .nx-page-content {
-    margin: $nx-main-header-height auto 0 auto;
+    margin: 0 auto;
+  }
+
+  .nx-page-main {
+    overflow: visible;
   }
 }

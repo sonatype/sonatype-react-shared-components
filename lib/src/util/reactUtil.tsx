@@ -5,13 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { ReactNode, ReactText } from 'react';
-import { complement, findIndex, findLastIndex, flip, includes } from 'ramda';
+import { findIndex, findLastIndex, includes } from 'ramda';
 
 function isReactText(content: ReactNode): content is ReactText {
   return typeof content === 'string' || typeof content === 'number';
 }
 
-const isPrintable = complement(flip(includes)([true, false, null, undefined]));
+const isPrintable = (node: ReactNode) => !includes(node, [true, false, null, undefined]);
 const getFirstPrintableIndex = findIndex(isPrintable);
 const getLastPrintableIndex = findLastIndex(isPrintable);
 
@@ -43,4 +43,4 @@ export function ensureElement(content: ReactNode): Exclude<ReactNode, ReactText>
   else {
     return content;
   }
-};
+}

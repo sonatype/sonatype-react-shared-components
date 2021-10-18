@@ -5,21 +5,20 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 /* eslint react/prop-types: 0 */
-import React, { FunctionComponent, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 
 import { Option } from './commonTypes';
-import NxTreeView, {NxTreeViewChild} from '../NxTreeView/NxTreeView';
+import NxTreeView, { NxTreeViewChild } from '../NxTreeView/NxTreeView';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import { TooltipConfigProps } from '../../util/tooltipUtils';
 import { ensureElement } from '../../util/reactUtil';
+import { useUniqueId } from '../../util/idUtil';
 
 import { CommonProps } from './commonTypes';
 
-import './NxTreeViewSelect.scss';
-
-export interface Props extends CommonProps {
-  renderOption: ((option: Option) => ReactElement);
+export interface Props<T extends Option = Option> extends CommonProps<T> {
+  renderOption: ((option: T) => ReactElement);
   renderToggleAllOption?: (() => ReactElement | null) | null;
   renderCounter?: (() => ReactElement | null) | null;
 }
@@ -28,14 +27,14 @@ export function generateId(groupName: string, elementId: string | null) {
   return `nx-tree-view-select-${groupName}-${elementId}`.replace(' ', '-').toLowerCase();
 }
 
-const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeViewSelect(props) {
+function AbstractTreeViewSelect<T extends Option>(props: Props<T>) {
 
   const {
         options,
         onToggleCollapse,
         filterPlaceholder,
         children,
-        id,
+        id: idProp,
         filter,
         onFilterChange,
         disabledTooltip,
@@ -49,6 +48,7 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
       filterThreshold = props.filterThreshold || 10,
       isOpen = !!props.isOpen,
       disabled = !!props.disabled || !options.length,
+      id = useUniqueId('nx-tree-view-select', idProp || undefined),
       filteredOptions = props.filteredOptions || options;
 
   function getTooltipProps(title: string) {
@@ -64,37 +64,38 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
     return tooltipProps;
   }
 
-  const renderedOptions = filteredOptions.map((item: Option) => {
-    const option = renderOption(item);
-    return (
-      <NxTreeViewChild key={`key-${item.id}`}>
-        {optionTooltipGenerator ? (
-          <NxTooltip {...getTooltipProps(optionTooltipGenerator(item))}>
-            {option}
-          </NxTooltip>
-        ) : option}
-      </NxTreeViewChild>
-    );
+  const renderedOptions = filteredOptions.map((item: T) => {
+    const option = renderOption(item),
+        key = `key-${item.id}`;
+
+    return optionTooltipGenerator ? (
+      <NxTooltip key={key} {...getTooltipProps(optionTooltipGenerator(item))}>
+        <NxTreeViewChild>{option}</NxTreeViewChild>
+      </NxTooltip>
+    ) : <NxTreeViewChild key={key}>{option}</NxTreeViewChild>;
   });
 
   const wrappedTriggerContent = ensureElement(children);
 
-  const triggerWithCounter = renderCounter ? (
+  const counter = renderCounter && renderCounter();
+
+  const triggerWithCounter = counter ? (
     <>
       {wrappedTriggerContent}
-      {renderCounter()}
+      {counter}
     </>
   ) : wrappedTriggerContent;
 
   const filterContent = onFilterChange && options.length > filterThreshold && (
     <NxFilterInput disabled={disabled}
-                   placeholder={filterPlaceholder || ''}
-                   inputId={generateId(name, 'filter-input')}
+                   placeholder={filterPlaceholder || 'filter'}
+                   id={generateId(name, 'filter-input')}
+                   aria-controls={id}
                    onChange={onFilterChange}
                    value={filter || ''}/>
   );
 
-  const selectAllOption = renderToggleAllOption && <NxTreeViewChild>{renderToggleAllOption()}</NxTreeViewChild>;
+  const selectAllOption = renderToggleAllOption && renderToggleAllOption();
 
   const getTriggerTooltip = () => {
     if (disabled) {
@@ -115,12 +116,13 @@ const AbstractTreeViewSelect: FunctionComponent<Props> = function AbstractTreeVi
                 triggerContent={triggerWithCounter}
                 triggerTooltip={getTriggerTooltip()}
                 disabled={disabled}
-                className="nx-tree-view--select">
+                className="nx-tree-view--select"
+                aria-describedby={counter && counter.props.id}>
       {filterContent}
-      {selectAllOption}
+      { selectAllOption && <NxTreeViewChild>{selectAllOption}</NxTreeViewChild> }
       {renderedOptions}
     </NxTreeView>
   );
-};
+}
 
 export default AbstractTreeViewSelect;

@@ -53,6 +53,14 @@ describe('NxLoadError', function() {
     expect(getShallowComponent({ error: 'Error!', retryHandler: () => {} }).find(NxButton)).toIncludeText('Retry');
   });
 
+  it('adds the appropriate class, variant, and type to the retry button', function() {
+    const button = getShallowComponent({ error: 'Error!', retryHandler: () => {} }).find(NxButton);
+
+    expect(button).toHaveClassName('nx-load-error__retry');
+    expect(button).toHaveProp('variant', 'error');
+    expect(button).toHaveProp('type', 'button');
+  });
+
   it('calls the retryHandler when the retry button is clicked', function() {
     const retryHandler = jest.fn(),
         props = { error: 'Error!', canRetry: true, retryHandler },

@@ -6,12 +6,14 @@
  */
 import React from 'react';
 
-import { NxSuccessAlert } from '@sonatype/react-shared-components';
+import { NxSuccessAlert, useToggle } from '@sonatype/react-shared-components';
 
 function NxSuccessExample() {
-  return (
-    <NxSuccessAlert>This is a success message.</NxSuccessAlert>
-  );
+  const [isOpen, dismiss] = useToggle(true);
+
+  return isOpen ? (
+    <NxSuccessAlert onClose={dismiss}>This is a success message.</NxSuccessAlert>
+  ) : null;
 }
 
 export default NxSuccessExample;

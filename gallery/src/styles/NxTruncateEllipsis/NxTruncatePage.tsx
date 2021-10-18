@@ -5,13 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxP, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTruncateExample from './NxTruncateExample';
 
-const nxTruncateExampleCode = require('!!raw-loader!./NxTruncateExample').default,
-    nxTruncateExampleSCSS = require('!!raw-loader!./NxTruncateExample.scss').default;
+const nxTruncateExampleCode = require('./NxTruncateExample?raw'),
+    nxTruncateExampleSCSS = require('./NxTruncateExample.scss?raw');
 
 const NxTruncatePage = () => {
   const codeExamples = [
@@ -22,12 +23,12 @@ const NxTruncatePage = () => {
   return (
     <>
       <GalleryDescriptionTile>
-        <p className="nx-p">
-          The <code className="nx-code">.nx-truncate-ellipsis</code> mixin is a simple way to add ellipsis truncation to
-          any object. The mixin automatically adds the three required CSS attributes, but the end user must provide the
-          <code className="nx-code">max-width:</code> value to their SCSS for truncation to work properly. Since this
-          value is likley to be custom no default has be set.
-        </p>
+        <NxP>
+          The <NxCode>truncate-ellipsis</NxCode> mixin is a simple way to add ellipsis truncation to
+          any object. The mixin automatically adds the three required CSS attributes, but the end user must provide
+          their own means of limiting the width of the element, such as an explicit <NxCode>max-width</NxCode> or by
+          limiting the element to its container.
+        </NxP>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
                           codeExamples={codeExamples}

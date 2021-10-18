@@ -5,22 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { HTMLAttributes } from 'react';
+import { omit } from 'ramda';
+import { PublicProps as NxTextInputProps, propTypes as nxTextInputPropTypes } from '../NxTextInput/NxTextInput';
 
-export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'|'placeholder'|'className'> & {
-  value: string;
-  onChange?: ((value: string) => void) | null;
-  placeholder?: string | null;
-  className?: string | null;
-  inputId?: string | null;
-  disabled?: boolean | null;
-};
+export interface Props extends Omit<NxTextInputProps, 'validatable' | 'isPristine' | 'validationErrors' | 'type'> {
+  searchIcon?: boolean | null;
+}
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  className: PropTypes.string,
-  inputId: PropTypes.string,
-  disabled: PropTypes.bool
+  ...omit(['validatable', 'isPristine', 'validationErrors', 'type'], nxTextInputPropTypes),
+  searchIcon: PropTypes.bool
 };

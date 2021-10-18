@@ -1,25 +1,36 @@
-/**
+/*
  * Copyright (c) 2019-present Sonatype, Inc.
  * This program and the accompanying materials are made available under
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@import '../scss-shared/nx-container-helpers';
-@import '../scss-shared/nx-variables';
-@import '../scss-shared/nx-text-helpers';
-@import '../scss-shared/nx-flexbox-helpers';
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
 
-$nx-scrollable-default-height: 400px;
+$-nx-scrollable-default-height: 400px;
 
 /*
   #Basic links
 */
 .nx-text-link {
-  color: $nx-link-color;
+  @include nx-container-helpers.container-horizontal;
+
+  color: var(--nx-color-link);
   cursor: pointer;
 
   &:hover {
-    color: $nx-link-color-hover;
+    color: var(--nx-color-link-hover);
+  }
+
+  &:active {
+    color: var(--nx-color-link-active);
+  }
+
+  &:focus {
+    border-radius: var(--nx-border-radius);
+    color: var(--nx-color-link-focus);
+    outline: 1px solid var(--nx-color-interactive-border-focus);
+    outline-offset: 2px;
   }
 }
 
@@ -38,26 +49,23 @@ $nx-scrollable-default-height: 400px;
   float: right;
 }
 
-.nx-error {
-  background-color: $nx-fail-color-bg;
-  border: $nx-border-error;
-  color: $nx-text-color-error;
-
-  .fa, .svg-inline--fa {
-    margin-right: 8px;
-  }
-}
-
 .nx-scrollable {
-  @include vertically-scrollable($nx-scrollable-default-height);
+  @include nx-container-helpers.container-vertical;
+  @include nx-container-helpers.vertically-scrollable($-nx-scrollable-default-height);
 }
 
 .nx-truncate-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  @include nx-text-helpers.truncate-ellipsis;
 }
 
 .nx-code {
   @extend %nx-code;
+}
+
+.nx-pre {
+  @extend %nx-pre;
+}
+
+.nx-blockquote {
+  @extend %nx-blockquote;
 }

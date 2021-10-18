@@ -25,14 +25,14 @@ describe('NxButton', function() {
     expect(button).toHaveText('Primary Button');
   });
 
-  it('does not render a variant class if the variant is "secondary"', function() {
-    const button = shallow(<NxButton variant="secondary">Secondary Button</NxButton>);
+  it('renders a secondary button by default', function() {
+    const button = shallow(<NxButton>Secondary Button</NxButton>);
 
-    expect(button).not.toHaveClassName('.nx-btn--secondary');
+    expect(button).toHaveClassName('.nx-btn--secondary');
   });
 
   it('renders an icon-only button', function() {
-    const button = shallow(<NxButton iconOnly={true}><NxFontAwesomeIcon icon={faCheck}/></NxButton>);
+    const button = shallow(<NxButton variant="icon-only"><NxFontAwesomeIcon icon={faCheck}/></NxButton>);
 
     expect(button).toMatchSelector('button.nx-btn.nx-btn--icon-only');
   });
@@ -44,9 +44,9 @@ describe('NxButton', function() {
     expect(button).toBeDisabled();
   });
 
-  it('renders an inline button', function() {
-    const button = shallow(<NxButton variant="error" inline>Disabled Button</NxButton>);
+  it('disabled by class button has aria-disabled true', function() {
+    const button = shallow(<NxButton className="disabled">Disabled Button</NxButton>);
 
-    expect(button).toMatchSelector('button.nx-btn.nx-btn--error.nx-btn--inline');
+    expect(button).toHaveProp('aria-disabled', true);
   });
 });

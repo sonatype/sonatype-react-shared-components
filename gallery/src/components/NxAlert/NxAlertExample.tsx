@@ -6,16 +6,22 @@
  */
 import React from 'react';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-import { NxAlert } from '@sonatype/react-shared-components';
+import { NxAlert, useToggle } from '@sonatype/react-shared-components';
 
 function NxAlertExample() {
-  return (
-    <NxAlert icon={faEye} id="this-id-ends-up-on-the-div" className="nx-alert--modifier">
+  const [isOpen, dismiss] = useToggle(true);
+
+  return isOpen ? (
+    <NxAlert icon={faEye}
+             iconLabel="Observe"
+             id="this-id-ends-up-on-the-div"
+             className="nx-alert--modifier"
+             onClose={dismiss}>
       This is an example alert message.
       It is expected that users create their own modifier classes to alter the styles of this component.
       This alert has long text content in order to demonstrate text wrapping.
     </NxAlert>
-  );
+  ) : null;
 }
 
 export default NxAlertExample;

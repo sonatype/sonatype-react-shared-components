@@ -5,7 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxWarningAlert, NxTable, NxP, NxCode, NxTextLink, NxList }
+  from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import NxTableExamples from './NxTableExamples';
@@ -13,101 +14,201 @@ import NxTableExamples from './NxTableExamples';
 const NxTableStylePage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
+      <NxP>
         This is the styling and layout for a basic table. There are few variations demonstrated here:
-      </p>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list-item">Basic table layout</li>
-        <li className="nx-list-item">Tables with clickable rows</li>
-        <li className="nx-list-item">Empty tables</li>
-        <li className="nx-list-item">A table with an error.</li>
-      </ul>
-      <p className="nx-p">
-        Components for column sorting, column filtering, and tables with fixed headers and
-        scrolling content sections are pending.
-      </p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row nx-table-row--header">
-            <th className="nx-cell nx-cell--header">Class</th>
-            <th className="nx-cell nx-cell--header">Location</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-table</code></td>
-            <td className="nx-cell">Top-Level</td>
-            <td className="nx-cell">
+      </NxP>
+      <NxList className="nx-list--bulleted">
+        <NxList.Item>
+          <NxList.Text>Basic table layout</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Tables with clickable rows</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Empty tables</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>A table with an error.</NxList.Text>
+        </NxList.Item>
+      </NxList>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Class</NxTable.Cell>
+            <NxTable.Cell>Location</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-table</NxCode></NxTable.Cell>
+            <NxTable.Cell>Top-Level</NxTable.Cell>
+            <NxTable.Cell>
               Default table class. Note that a properly configured table require
-              <code className="nx-code">&lt;thead&gt;</code>, <code className="nx-code">&lt;tbody&gt;</code>
+              <NxCode>&lt;thead&gt;</NxCode>, <NxCode>&lt;tbody&gt;</NxCode>
               and correct classes on rows and cells.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-table--clickable</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-table</code></td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-table--clickable</NxCode></NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-table</NxCode></NxTable.Cell>
+            <NxTable.Cell>
               A "clickable" table is one where the table rows accept a click event and (usually) navigate to another
               view.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-table-row</code></td>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">Basic table row class.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-table-row--header</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-table-row</code></td>
-            <td className="nx-cell">Used for table rows within a <code className="nx-code">&lt;thead&gt;</code>.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-cell</code></td>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">
-              Standard tabel cell class, applied to both <code className="nx-code">&lt;td&gt;</code> and
-              <code className="nx-code">&lt;th&gt;</code>.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-cell--header</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
-            <td className="nx-cell">Used for style table header cells.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-cell--num</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-table--scrollable</NxCode></NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-table</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              <NxWarningAlert>
+                Deprecated. Use an <NxCode>.nx-table-container.nx-scrollable</NxCode> wrapper
+                around a plain <NxCode>.nx-table</NxCode> instead.
+              </NxWarningAlert>
+              When a table which scrolls in of itself is desired, wrap the table in
+              an <NxCode>.nx-scrollable</NxCode> wrapper and give it a class
+              of <NxCode>.nx-table--scrollable</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-table--fixed-layout</NxCode></NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-table</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Used to apply{' '}
+              <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout">
+                <NxCode>table-layout: fixed</NxCode>
+              </NxTextLink>
+              {' '}to <NxCode>nx-table</NxCode>s. This class should be used in lieu of setting
+              <NxCode>table-layout</NxCode> manually, as it also makes some adjustments to the
+              behavior of other table classes in order to make them compatible with a fixed layout.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-table-row</NxCode></NxTable.Cell>
+            <NxTable.Cell>Element</NxTable.Cell>
+            <NxTable.Cell>Basic table row class.</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-table-row--header</NxCode></NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-table-row</NxCode></NxTable.Cell>
+            <NxTable.Cell>Used for table rows within a <NxCode>&lt;thead&gt;</NxCode>.</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-cell</NxCode></NxTable.Cell>
+            <NxTable.Cell>Element</NxTable.Cell>
+            <NxTable.Cell>
+              Standard tabel cell class, applied to both <NxCode>&lt;td&gt;</NxCode> and
+              <NxCode>&lt;th&gt;</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-cell--header</NxCode></NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-cell</NxCode></NxTable.Cell>
+            <NxTable.Cell>Used for style table header cells.</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-cell--num</NxCode></NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-cell</NxCode></NxTable.Cell>
+            <NxTable.Cell>
               Used to style header and body cells whose content is numerical. Centers the header and content.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-cell--empty</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
-            <td className="nx-cell">
-              Applied to a <code className="nx-code">&lt;td&gt;</code>
-              to indicate a table without contents.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell">
-              <code className="nx-code">.nx-cell--chevron</code>
-              &amp; <code className="nx-code">.nx-cell--icon</code>
-            </td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-cell</code></td>
-            <td className="nx-cell">
-              Both of these classes are used when the only contents of a cell are an icon. This class creates a narrow
-              column suitable for holding a single icon. The chevron is used for "clickable" rows and indicates
-              that a navigation event will occur if the table row is clicked. Examples of icons might be edit icons,
-              trash icons, or confirmation icons.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-cell--meta-info</NxCode></NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-cell</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Applied to table cells that provide meta-information about the table data. There are three known use
+              cases for this: loading states, error states, and empty states. In each of these cases, the table body
+              should contain a single row with a single cell. That cell should use the `colspan` attribute to
+              stretch all the way across the table, and should use this class.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              <NxCode>.nx-cell--icon</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-cell</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              This class should be used when the only contents of a cell one or more icons.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              <NxCode>.nx-cell--row-btn</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-cell</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              This class is intended for the cells holding the icons that should be placed on the right
+              side of clickable table rows. It creates a column of the appropriate width for the icon. It
+              is <em>not</em> necessary to additional use <NxCode>.nx-cell--icon</NxCode> on these
+              cells.
+              <NxWarningAlert>
+                When used within a fixed-layout table (e.g. with <NxCode>.nx-table--fixed-layout</NxCode>), care
+                must be taken to ensure that cells with this class have the appropriate width. By default they are
+                given a width appropriate for the right-chevron icon. If a different icon is used, a different width
+                must be set on the element such that the padding box of the table cell matches the border box of the
+                enclosed button.
+              </NxWarningAlert>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              <NxCode>.nx-cell--chevron</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-cell</NxCode></NxTable.Cell>
+            <NxTable.Cell>Deprecated alias for <NxCode>nx-cell--row-btn</NxCode></NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              <NxCode>.nx-cell--filter-header</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-cell</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Used for style table header cells with a filter
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              <NxCode>.nx-cell__sort-btn</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>
+              Child of <NxCode>.nx-cell--header</NxCode> wrapping all other content
+            </NxTable.Cell>
+            <NxTable.Cell>
+              For a header cell that contains sort icons, the cell should contain a button with this class
+              which then contains the actual cell header text and sort icons. This improves accessibility of the
+              sorting feature. The button should have an accessible name which describes the header name and the
+              current sort direction of this column.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              <NxCode>.nx-cell__row-btn</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>
+              Child of <NxCode>.nx-cell--row-btn</NxCode> which then wraps the actual icon
+            </NxTable.Cell>
+            <NxTable.Cell>
+              In order to make clickable rows accessible, the icon should be contained within a button
+              bearing this class. The button should additionally have an accessible name which describes the row,
+              typically by including its full text content.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              <NxCode>.nx-cell--filter-header</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-cell</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Used for style table header cells with a filter
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
+
       <NxInfoAlert>
         Note that some of these examples are shown in react as they includes specific icons. When working in
-        React, <code className="nx-code">NxFontAwesomeIcon</code> should be used as shown to get these icons.
+        React, <NxCode>NxFontAwesomeIcon</NxCode> should be used as shown to get these icons.
         When not working in react, check the FontAwesome 5 documentation for alternative ways to include the icons.
       </NxInfoAlert>
     </GalleryDescriptionTile>

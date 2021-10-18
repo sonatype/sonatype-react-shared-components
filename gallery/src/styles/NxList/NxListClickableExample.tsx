@@ -5,39 +5,47 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
-import {faChevronRight} from '@fortawesome/free-solid-svg-icons';
 
 const NxListClickableExample = () =>
-  <div className="nx-list nx-list--clickable">
-    <h4 className="nx-list__title">
-      Clickable list title
-    </h4>
-    <ul>
-      <li className="nx-list__item">
-        <NxFontAwesomeIcon icon={faChevronRight} className="nx-pull-right" />action 1
-      </li>
-      <li className="nx-list__item">
-        <NxFontAwesomeIcon icon={faChevronRight} className="nx-pull-right" />action 2 - this list item should be
-        truncated at the right end edge. youtube weathered network network systemic systema claymore mine voodoo
-        god garage monofilament realism order-flow corporation car footage vinyl.
-      </li>
-      <li className="nx-list__item selected">
-        <NxFontAwesomeIcon icon={faChevronRight} className="nx-pull-right" />action 3
-        <p className="nx-list__subtext">
-          This is a third line. It is selected
-        </p>
-      </li>
-      <li className="nx-list__item">
-        <NxFontAwesomeIcon icon={faChevronRight} className="nx-pull-right" />action 4
-        <p className="nx-list__subtext">
-          This is a fourth line. It includes text that might relate to the top line or might not.
-        </p>
-      </li>
-      <li className="nx-list__item nx-list__item--disabled nx-disabled">
-        <NxFontAwesomeIcon icon={faChevronRight} className="nx-pull-right" />This list item is disabled
-      </li>
-    </ul>
-  </div>;
+  <ul className="nx-list">
+    <li className="nx-list__item nx-list__item--clickable">
+      <button className="nx-list__btn">
+        <span className="nx-list__text">Action 1</span>
+        <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
+      </button>
+    </li>
+    <li className="nx-list__item nx-list__item--clickable">
+      <button className="nx-list__btn">
+        <span className="nx-list__text nx-truncate-ellipsis">
+          This list item should be truncated at the right end edge. youtube weathered network network systemic
+          systema claymore mine voodoo
+        </span>
+        <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
+      </button>
+    </li>
+    <li className="nx-list__item nx-list__item--clickable">
+      <button className="nx-list__btn">
+        <span className="nx-list__text">Action 3</span>
+        <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
+      </button>
+    </li>
+    <li className="nx-list__item nx-list__item--clickable">
+      <button className="nx-list__btn selected" aria-selected="true">
+        <span className="nx-list__text">Action 4</span>
+        <span className="nx-list__subtext">
+          This list item demonstrates the selected styles
+        </span>
+        <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
+      </button>
+    </li>
+    <li className="nx-list__item nx-list__item--clickable">
+      <button className="nx-list__btn" disabled>
+        <span className="nx-list__text">This list item is disabled</span>
+        <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
+      </button>
+    </li>
+  </ul>;
 
 export default NxListClickableExample;

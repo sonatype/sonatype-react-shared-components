@@ -6,34 +6,65 @@
  */
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
+import { omit } from 'ramda';
 import './NxRadio.scss';
 
 import { Props, propTypes } from './types';
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+
 export { Props } from './types';
 
 const NxRadio = forwardRef<HTMLLabelElement, Props>(
-    function NxRadio({ name, value, onChange, isChecked, disabled, children, radioId, ...otherProps }, ref) {
-      const labelClasses = classnames('nx-radio', {
-        'nx-radio--disabled': disabled,
-        'tm-checked': isChecked,
-        'tm-unchecked': !isChecked
-      });
+    function NxRadio(props, ref) {
+      const {
+            className,
+            name,
+            value,
+            onChange,
+            isChecked,
+            disabled,
+            children,
+            radioId,
+            overflowTooltip,
+            inputAttributes = {},
+            ...otherProps
+          } = props,
+          labelClasses = classnames('nx-radio-checkbox', 'nx-radio', className, {
+            'nx-radio-checkbox--disabled': disabled,
+            'tm-checked': isChecked,
+            'tm-unchecked': !isChecked
+          }),
+          content = children && <span className="nx-radio-checkbox__content nx-radio__content">{children}</span>;
+
+      const {
+        className: radioClassName,
+        ...unfilteredInputAttributes
+      } = inputAttributes;
+
+      const otherInputAttributes = omit(
+          ['name', 'disabled', 'checked', 'onChange', 'readonly'],
+          unfilteredInputAttributes
+      );
 
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
-          <input className="nx-radio__input"
-                 id={radioId || undefined}
+          <input className={classnames('nx-radio-checkbox__input', 'nx-radio__input', radioClassName)}
+                 id={otherInputAttributes.id || radioId || undefined}
                  type="radio"
                  name={name}
                  disabled={!!disabled}
                  checked={isChecked}
                  onChange={() => onChange && onChange(value)}
-                 readOnly={!onChange}/>
-          <svg className="nx-radio__circle" viewBox="-8 -8 16 16" focusable={false}>
-            <circle r="7" strokeWidth="1" fill="none" className="nx-radio__outer-circle"/>
-            { isChecked && <circle r="5" stroke="none" className="nx-radio__inner-circle"/> }
+                 readOnly={!onChange}
+                 { ...otherInputAttributes } />
+          <svg className="nx-radio-checkbox__control nx-radio__circle" viewBox="-8 -8 16 16" focusable={false}>
+            { isChecked && <circle r="6" strokeWidth="4" className="nx-radio__inner-circle"/> }
+            <circle r="7.5" strokeWidth="1" className="nx-radio__outer-circle"/>
           </svg>
-          { children && <span className="nx-radio__content">{children}</span> }
+          <span className="nx-radio__focus"></span>
+          { content &&
+            (overflowTooltip !== false ? <NxOverflowTooltip>{content}</NxOverflowTooltip> : content)
+          }
         </label>
       );
     }

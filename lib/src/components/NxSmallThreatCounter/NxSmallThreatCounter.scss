@@ -1,0 +1,58 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use 'sass:math';
+
+.nx-small-threat-counter {
+  $height: 25px;
+
+  border-radius: math.div($height, 2);
+  color: var(--nx-text-dark);
+  font-size: var(--nx-font-size-s);
+  font-weight: bold;
+  height: $height;
+  line-height: $height;
+  padding-left: var(--nx-spacing-2x);
+  padding-right: var(--nx-spacing-2x);
+  text-align: center;
+
+  @each $category in critical, severe, moderate, low, none {
+    &--#{$category} {
+      background-color: var(--nx-color-threat-#{$category});
+    }
+  }
+
+  &--critical {
+    color: var(--nx-swatch-white);
+  }
+
+  &__category {
+    //invisible but still read by the screenreader
+    display: block;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+  }
+
+  // Used to set the width of the counter based on its max text content
+  &__sizer {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
+  &--zero {
+    visibility: hidden;
+  }
+}
+
+.nx-small-threat-counter-container {
+  display: inline-flex;
+  gap: var(--nx-spacing-2x);
+  margin-left: var(--nx-spacing-2x);
+  margin-right: var(--nx-spacing-2x);
+}

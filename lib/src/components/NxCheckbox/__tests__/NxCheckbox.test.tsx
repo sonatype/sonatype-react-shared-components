@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import NxCheckbox, { Props } from '../NxCheckbox';
+import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 
 describe('NxCheckbox', function() {
   const simpleProps: Props = {
@@ -39,6 +40,13 @@ describe('NxCheckbox', function() {
     expect(shallowRender).toHaveText(' ');
   });
 
+  it('adds classes specified with the className prop', function() {
+    const component = getShallowComponent({ className: 'foo' });
+
+    expect(component).toHaveClassName('foo');
+    expect(component).toHaveClassName('nx-checkbox');
+  });
+
   it('renders a faCheck FontAwesomeIcon inside the box when checked', function() {
     expect(getShallowComponent()).not.toContainReact(<FontAwesomeIcon icon={faCheck} />);
 
@@ -52,9 +60,9 @@ describe('NxCheckbox', function() {
     expect(shallow(<NxCheckbox checkboxId="checkbox-id" isChecked={false} onChange={() => {}} />)).toHaveText(' ');
   });
 
-  it('adds the nx-checkbox--disabled class if disabled is set', function() {
-    expect(getShallowComponent()).not.toHaveClassName('nx-checkbox--disabled');
-    expect(getShallowComponent({ disabled: true })).toHaveClassName('nx-checkbox--disabled');
+  it('adds the nx-radio-checkbox--disabled class if disabled is set', function() {
+    expect(getShallowComponent()).not.toHaveClassName('nx-radio-checkbox--disabled');
+    expect(getShallowComponent({ disabled: true })).toHaveClassName('nx-radio-checkbox--disabled');
   });
 
   it('adds the tm-checked class if isChecked is true, and the tm-unchecked class if it is false', function() {
@@ -78,6 +86,31 @@ describe('NxCheckbox', function() {
   it('does not render the .nx-checkbox__content element if there are no children', function() {
     expect(getShallowComponent()).not.toContainMatchingElement('.nx-checkbox__content');
   });
+
+  it('wraps the .nx-checkbox__content element in an NxOverflowTooltip unless overflowTooltip is set to false',
+      function() {
+        expect(getShallowComponent()).not.toContainMatchingElement(NxOverflowTooltip);
+
+        expect(getShallowComponent({ children: <div/> })).toContainMatchingElement(NxOverflowTooltip);
+        expect(getShallowComponent({ children: <div/> }).find(NxOverflowTooltip))
+            .toContainMatchingElement('.nx-checkbox__content');
+
+        expect(getShallowComponent({ children: <div/>, overflowTooltip: true }))
+            .toContainMatchingElement(NxOverflowTooltip);
+        expect(getShallowComponent({ children: <div/>, overflowTooltip: true }).find(NxOverflowTooltip))
+            .toContainMatchingElement('.nx-checkbox__content');
+
+        expect(getShallowComponent({ children: <div/>, overflowTooltip: null }))
+            .toContainMatchingElement(NxOverflowTooltip);
+        expect(getShallowComponent({ children: <div/>, overflowTooltip: null }).find(NxOverflowTooltip))
+            .toContainMatchingElement('.nx-checkbox__content');
+
+        expect(getShallowComponent({ children: <div/>, overflowTooltip: false }))
+            .not.toContainMatchingElement(NxOverflowTooltip);
+        expect(getShallowComponent({ children: <div/>, overflowTooltip: false }))
+            .toContainMatchingElement('.nx-checkbox__content');
+      }
+  );
 
   it('disables the input iff disabled is set', function() {
     expect(getShallowComponent().find('input')).toHaveProp('disabled', false);
@@ -110,5 +143,28 @@ describe('NxCheckbox', function() {
 
     expect(component).toHaveProp('id', 'foo');
     expect(component).toHaveProp('htmlFor', 'baz');
+  });
+
+  it('passes input attributes into the input element and does not clash with top-level attributes', function() {
+    const component = getShallowComponent({
+      checkboxId: 'not-garfield',
+      disabled: true,
+      isChecked: true,
+      className: 'label-classname',
+      inputAttributes: {
+        id: 'garfield',
+        name: 'garfield',
+        disabled: false,
+        className: 'input-classname',
+        checked: false
+      } as Props['inputAttributes']
+    });
+
+    expect(component.find('input')).toHaveProp('id', 'garfield');
+    expect(component.find('input')).toHaveProp('name', 'garfield');
+    expect(component.find('input')).toHaveProp('disabled', true);
+    expect(component.find('input')).toHaveClassName('input-classname');
+    expect(component.find('input')).not.toHaveClassName('label-classname');
+    expect(component.find('input')).toHaveProp('checked', true);
   });
 });

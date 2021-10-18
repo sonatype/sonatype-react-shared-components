@@ -6,12 +6,14 @@
  */
 import React from 'react';
 
-import { NxErrorAlert } from '@sonatype/react-shared-components';
+import { NxErrorAlert, useToggle } from '@sonatype/react-shared-components';
 
 function NxErrorAlertExample() {
-  return (
-    <NxErrorAlert>This is an example <strong>error</strong> message.</NxErrorAlert>
-  );
+  const [isOpen, dismiss] = useToggle(true);
+
+  return isOpen ? (
+    <NxErrorAlert onClose={dismiss}>This is an example <strong>error</strong> message.</NxErrorAlert>
+  ) : null;
 }
 
 export default NxErrorAlertExample;

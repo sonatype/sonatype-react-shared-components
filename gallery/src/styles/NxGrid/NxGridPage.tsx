@@ -5,105 +5,107 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxP, NxInfoAlert, NxCode, NxTable } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
+
 import NxGridExamples from './NxGridExamples';
 
 const NxGridPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
-        Described below are some basic grid patterns. These patterns rely on Flexbox to form simple grid patterns.
-        CSS Grid was examined but the lack of IE11 support forced us to pass it up.
-      </p>
-      <p className="nx-p">
-        Grids consist of rows and cells. There are optional title containers, as well as a keylines that can be used
-        for styling and spacing.
-      </p>
-      <p className="nx-p">
-        When you are creating a custom column with a specific width you should use the provided
-        <code className="nx-code">.nx-grid-col-width</code> mixin. The only required parameter is the width and unit.
-        For example: <code className="nx-code">@include nx-grid-col-width(200px);</code> will generate
-      </p>
-      <pre className="nx-code">
-        flex: 0 0 200px;<br/>
-        max-width: 200px;
-      </pre>
-      <p className="nx-p">The <code className="nx-code">max-width</code> attribute is required by IE11.</p>
-      <table className="nx-table nx-table--gallery-props">
-        <thead>
-          <tr className="nx-table-row nx-table-row--header">
-            <th className="nx-cell nx-cell--header">Class</th>
-            <th className="nx-cell nx-cell--header">Location</th>
-            <th className="nx-cell nx-cell--header">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-row</code></td>
-            <td className="nx-cell">Top-Level</td>
-            <td className="nx-cell">
+      <NxP>
+        These styles facilitate the creation of adjacent content areas separated by visible borders. Multiple
+        rows are supported and are also typically separated by a visible border. The cells in each row do not
+        necessarily align with other rows, though they can be made to by sizing them in the same way.
+      </NxP>
+      <NxInfoAlert>
+        The <em>only</em> current purpose of <NxCode>nx-grid</NxCode> is to facilitate the specific border and padding
+        styling shown in these examples, and not to create more general adjacent-content layouts. More general needs for
+        content that lays out in an adjacent or grid-like manner should be handled using custom CSS, typically via
+        CSS flexbox and CSS grid layouts. These CSS layouts are more powerful and flexible than what nx-grid provides.
+      </NxInfoAlert>
+      <NxP>
+        For creating a class for a custom-sized grid cell with a static width,
+        the <NxCode>nx-grid-col-width</NxCode> mixin is provided which sets the necessary width and flexbox properties.
+      </NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Class</NxTable.Cell>
+            <NxTable.Cell>Convenience Component</NxTable.Cell>
+            <NxTable.Cell>Location</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-grid-row</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxGrid.Row</NxCode></NxTable.Cell>
+            <NxTable.Cell>Top-Level</NxTable.Cell>
+            <NxTable.Cell>
               Basic row class. These can be nested inside other rows or within grid cells to allow
               further subdivision of elements.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-col</code></td>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">
-              A simple container, always placed inside <code className="nx-code">.nx-grid-row</code>.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-col--##</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-grid-col</code></td>
-            <td className="nx-cell">
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-grid-col</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxGrid.Column</NxCode></NxTable.Cell>
+            <NxTable.Cell>Element (<NxCode>&lt;div&gt;</NxCode> or <NxCode>&lt;section&gt;</NxCode>)</NxTable.Cell>
+            <NxTable.Cell>
+              A simple container, always placed inside <NxCode>.nx-grid-row</NxCode>.
+              If this cell has a single header, it should be a <NxCode>&lt;section&gt;</NxCode>. Otherwise, it may
+              be a <NxCode>&lt;div&gt;</NxCode> or a <NxCode>&lt;section&gt;</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-grid-col--##</NxCode></NxTable.Cell>
+            <NxTable.Cell/>
+            <NxTable.Cell>Modifier of <NxCode>.nx-grid-col</NxCode></NxTable.Cell>
+            <NxTable.Cell>
               Used when you want to give a column cell a specific width. Modifiers are provided for
               25%, 50%, 75%, 33%, and 66% widths.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-header</code></td>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">Container for title text and icons.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-header__title</code></td>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">
-              Applied to any <code className="nx-code">h#</code> element used as a header for a grid cell. Note that
-              it's expected that the corresponding <code className="nx-code">.nx-h#</code> class will also be applied.
-            </td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-header__icon</code></td>
-            <td className="nx-cell">Element</td>
-            <td className="nx-cell">Applied to icons in grid headers.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-header__hrule</code></td>
-            <td className="nx-cell">&lt;hr&gt;</td>
-            <td className="nx-cell">Horizontal keyline used below grid cell headers.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-h-keyline</code></td>
-            <td className="nx-cell">&lt;hr&gt;</td>
-            <td className="nx-cell">Horizontal keyline used between grid cells.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-h-keyline--white</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-grid-h-keyline</code></td>
-            <td className="nx-cell">Used when you don't want a visual keyline but need one for spacing.</td>
-          </tr>
-          <tr className="nx-table-row">
-            <td className="nx-cell"><code className="nx-code">.nx-grid-col--noborder</code></td>
-            <td className="nx-cell">Modifier of <code className="nx-code">.nx-grid-col</code></td>
-            <td className="nx-cell">
-              <code className="nx-code">.nx-grid-col</code> has a left border by default, this removes it.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-grid-header</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxGrid.Header</NxCode></NxTable.Cell>
+            <NxTable.Cell>Element (<NxCode>&lt;header&gt;</NxCode>)</NxTable.Cell>
+            <NxTable.Cell>Container for title text and icons.</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-grid-header__title</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxGrid.Title</NxCode></NxTable.Cell>
+            <NxTable.Cell>Element (<NxCode>&lt;h3&gt;</NxCode>)</NxTable.Cell>
+            <NxTable.Cell>
+              Applied to any <NxCode>h3</NxCode> element used as a header for a grid cell. Note that
+              it's expected that the corresponding <NxCode>.nx-h3</NxCode> class will also be applied.
+              Headers of higher rank are no longer explicitly supported.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-grid-h-keyline</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxGrid.HorizontalKeyline</NxCode></NxTable.Cell>
+            <NxTable.Cell>Element (<NxCode>&lt;hr&gt;</NxCode>)</NxTable.Cell>
+            <NxTable.Cell>
+              Horizontal keyline used between grid rows. Keylines should be placed between each row within the grid,
+              but generally not before the first row or after the last. There may be cases however where it is
+              desirable to place them before the first row or after the last, for instance when the grid cells are
+              scroll containers.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-grid-col__section</NxCode></NxTable.Cell>
+            <NxTable.Cell><NxCode>NxGrid.ColumnSection</NxCode></NxTable.Cell>
+            <NxTable.Cell>Element within <NxCode>.nx-grid-col</NxCode> (<NxCode>&lt;section&gt;</NxCode>)</NxTable.Cell>
+            <NxTable.Cell>
+              When a single cell contains multiple groups of headers and content, each such group should be wrapped
+              in a <NxCode>&lt;section&gt;</NxCode> with this class. The <NxCode>.nx-grid-col</NxCode> itself
+              may be a <NxCode>&lt;div&gt;</NxCode> in this case.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
     <NxGridExamples/>
   </>;

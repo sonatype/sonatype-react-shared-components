@@ -1,0 +1,110 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+
+.nx-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nx-spacing-4x);
+  justify-content: space-between;
+  margin: var(--nx-spacing-4x) 0;
+}
+
+.nx-card-container--no-wrap {
+  flex-wrap: nowrap;
+}
+
+.nx-card {
+  @include nx-container-helpers.container-vertical;
+  background-color: var(--nx-color-component-background);
+  border-radius: var(--nx-border-radius);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: var(--nx-spacing-6x);
+  text-align: center;
+  min-width: 230px;
+  max-width: 330px;
+}
+
+// Safari does not support gap in flex layouts so we need to use this query and margin for Safari.
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) and (display:flow-root) {
+    .nx-card-container {
+      @include nx-container-helpers.container-horizontal;
+      margin-bottom: 0;
+
+      + .nx-card-container {
+        margin-top: 0;
+      }
+    }
+
+    .nx-card {
+      margin-right: var(--nx-spacing-4x);
+      margin-bottom: var(--nx-spacing-4x);
+    }
+
+    .nx-card__content {
+      > :not(:last-child) {
+        margin-bottom: var(--nx-spacing-4x);
+      }
+    }
+
+    .nx-card__content--columns {
+      > :first-child {
+        margin-right: var(--nx-spacing-4x);
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.nx-card__header {
+  @include nx-container-helpers.container-vertical;
+  margin-bottom: var(--nx-spacing-4x);
+}
+
+.nx-card__content {
+  @include nx-container-helpers.container-vertical;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: var(--nx-spacing-4x);
+  margin-bottom: var(--nx-spacing-6x);
+}
+
+.nx-card__footer {
+  border-top: var(--nx-border-default);
+  padding-top: var(--nx-spacing-6x);
+}
+
+// Common card Helpers
+.nx-card--equal {
+  flex: 1;
+  max-width: unset;
+}
+
+.nx-card__call-out {
+  @include nx-text-helpers.bold;
+
+  color: var(--nx-color-text-dark);
+  font-size: 32px;
+
+  .nx-card__call-out-icon {
+    font-size: 48px;
+  }
+
+  .nx-card__call-out-icon--xl {
+    font-size: 64px;
+  }
+}
+
+.nx-card__content--columns {
+  flex-direction: row;
+}

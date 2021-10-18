@@ -4,16 +4,22 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
 
 import { NxLoadWrapper } from '@sonatype/react-shared-components';
 
-const error = 'Server Error',
-    retryHandler = () => {};
+const NxLoadWrapperErrorRetryExample = () => {
+  const [error, setError] = useState<string | null>('Server Error');
 
-const NxLoadWrapperErrorExample = () =>
-  <NxLoadWrapper error={error} retryHandler={retryHandler}>
-    <div>Children will not render</div>
-  </NxLoadWrapper>;
+  function retryHandler() {
+    setError(null);
+  }
 
-export default NxLoadWrapperErrorExample;
+  return (
+    <NxLoadWrapper error={error} retryHandler={retryHandler}>
+      <div>Children will not render until after Retry</div>
+    </NxLoadWrapper>
+  );
+};
+
+export default NxLoadWrapperErrorRetryExample;

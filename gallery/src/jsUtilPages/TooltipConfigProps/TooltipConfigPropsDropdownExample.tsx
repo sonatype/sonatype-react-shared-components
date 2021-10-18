@@ -4,16 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { NxDropdown, TooltipConfigProps } from '@sonatype/react-shared-components';
+import { NxDropdown, TooltipConfigProps, useToggle } from '@sonatype/react-shared-components';
 
 export default function TooltipConfigPropsDropdownExample() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  function onToggleCollapse() {
-    setIsOpen(!isOpen);
-  }
+  const [isOpen, onToggleCollapse] = useToggle(false);
 
   // explicit type here is optional; added for demonstration purposes
   const tooltipProps: TooltipConfigProps = {

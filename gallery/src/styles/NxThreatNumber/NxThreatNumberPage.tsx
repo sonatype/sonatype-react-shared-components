@@ -5,39 +5,55 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { NxP, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxThreatNumberTableExampleCode = require('!!raw-loader!./NxThreatNumberTableExample.html').default,
-    nxThreatNumberListExampleCode = require('!!raw-loader!./NxThreatNumberListExample.html').default;
+import NxThreatNumberBasicExample from './NxThreatNumberBasicExample';
+import NxThreatNumberListExample from './NxThreatNumberListExample';
+import NxThreatNumberTableExample from './NxThreatNumberTableExample';
+
+const nxThreatNumberBasicExampleCode = require('./NxThreatNumberBasicExample?raw'),
+    nxThreatNumberListExampleCode = require('./NxThreatNumberListExample?raw'),
+    nxThreatNumberTableExampleCode = require('./NxThreatNumberTableExample?raw');
 
 const NxThreatNumberPage = () =>
   <>
     <GalleryDescriptionTile>
-      <p className="nx-p">
-        When an IQ Policy Threat Number is displayed adjacent to an <code className="nx-code">NxThreatBar</code>,
-        style the number with <code className="nx-code">nx-threat-number</code>
-      </p>
-      <p className="nx-p">
-        Note that if a threat bar is used inside <code className="nx-code">nx-cell</code> the {''}
-        <code className="nx-code">nx-cell--threat-bar</code> modifier must be applied to the table cell. If that cell
-        might have multi-line content, that content would need to be wrapped in a custom class to restore the padding
-        removed by <code className="nx-code">nx-cell--threat-bar</code>.
-      </p>
+      <NxP>
+        When an IQ Policy Threat Number is displayed adjacent to an <NxCode>NxThreatIndicator</NxCode>,
+        style the number with <NxCode>.nx-threat-number</NxCode>.
+        An <NxCode>NxThreatNumber</NxCode> convenience component is also available.
+      </NxP>
     </GalleryDescriptionTile>
 
+    <GalleryExampleTile title="Basic Example"
+                        id="nx-threat-number-basic-example"
+                        liveExample={NxThreatNumberBasicExample}
+                        codeExamples={nxThreatNumberBasicExampleCode}>
+      An example of <NxCode>.nx-threat-number</NxCode> used
+      adjacent to an <NxCode>NxThreatIndicator</NxCode> in a simple inline layout.
+    </GalleryExampleTile>
+
     <GalleryExampleTile title="List Example"
-                        htmlExample={nxThreatNumberListExampleCode}
+                        id="nx-threat-number-list-example"
+                        liveExample={NxThreatNumberListExample}
                         codeExamples={nxThreatNumberListExampleCode}>
-      An example of <code className="nx-code">nx-threat-number</code> used within
-      an <code className="nx-code">nx-list</code> adjacent to an <code className="nx-code">nx-threat-bar</code>.
+      An example of <NxCode>.nx-threat-number</NxCode> used
+      along with <NxCode>NxThreatIndicator</NxCode> in an <NxCode>.nx-list</NxCode>.
+      The layout expectations of <NxCode>.nx-list</NxCode> require a slight customization
+      to the way the elements are arranged.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Table Example"
-                        htmlExample={nxThreatNumberTableExampleCode}
+                        id="nx-threat-number-table-example"
+                        liveExample={NxThreatNumberTableExample}
                         codeExamples={nxThreatNumberTableExampleCode}>
-      An example of <code className="nx-code">nx-threat-number</code> used within
-      an <code className="nx-code">nx-table</code> adjacent to an <code className="nx-code">nx-threat-bar</code>.
+      Since <NxCode>nx-table</NxCode> is one of the primary places
+      that <NxCode>NxThreatIndicator</NxCode> is intended to be used, this example demonstrates a
+      typical usage of indicators and <NxCode>nx-threat-number</NxCode>s in that context.
+      Note that no special classes or placements are needed here, it is essentially just the
+      usual inline layout of the threat indicator and adjacent content, within a table cell.
     </GalleryExampleTile>
   </>;
 

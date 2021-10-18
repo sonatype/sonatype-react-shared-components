@@ -8,19 +8,19 @@ import { ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface Props {
-  error?: string | null;
+  error?: ReactNode | null;
   loading?: boolean | null;
   children: ReactNode | (() => ReactNode) | null;
-  retryHandler?: (() => void) | null;
+  retryHandler: (() => void);
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  error: PropTypes.string,
+  error: PropTypes.node,
   loading: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
     PropTypes.func
   ]),
-  retryHandler: PropTypes.func
+  retryHandler: PropTypes.func.isRequired
 };

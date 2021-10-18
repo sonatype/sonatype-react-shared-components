@@ -4,8 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Target } = require('@applitools/eyes-webdriverio');
-const { focusTest, hoverTest, simpleTest } = require('./testUtils');
+const { Region, Target } = require('@applitools/eyes-webdriverio');
+const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 
 describe('NxTextInput', function() {
   const simpleComponentSelector = '#nx-text-input-simple-example .nx-text-input',
@@ -13,6 +13,8 @@ describe('NxTextInput', function() {
       passwordComponentSelector = '#nx-text-input-password-example .nx-text-input',
       textareaComponentSelector = '#nx-text-input-textarea-validation-example .nx-text-input',
       validatableTextareaComponentSelector = '#nx-text-input-textarea-validation-example .nx-text-input',
+      longComponentSelector = '#nx-text-input-long-example .nx-text-input:not(.nx-text-input--textarea)',
+      longTextareaComponentSelector = '#nx-text-input-long-example .nx-text-input--textarea',
       disabledComponentSelector = '#nx-text-input-disabled-example .nx-text-input.pristine',
       disabledValidComponentSelector = '#nx-text-input-disabled-example .nx-text-input.valid',
       disabledInvalidComponentSelector = '#nx-text-input-disabled-example .nx-text-input.invalid';
@@ -26,39 +28,19 @@ describe('NxTextInput', function() {
   });
 
   describe('Simple NxTextInput', function() {
-    it('has a light border when pristine', simpleTest(simpleComponentSelector));
+    it('has a dark border by default', simpleTest(simpleComponentSelector));
 
-    it('has a dark border when hovered',
+    it('has a darker border when hovered',
         hoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
-
     it('has a blue border when focused',
         focusTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
 
-    it('has a dark border when hovered and focused', async function() {
-      const focusElement = await browser.$(getInputElementSelector(simpleComponentSelector));
-
-      await browser.execute(function(el) {
-        el.focus();
-      }, focusElement);
-
-      await hoverTest(simpleComponentSelector)();
-    });
-
-    it('has a dark border when non-empty', async function() {
-      const inputElement = await browser.$(getInputElementSelector(simpleComponentSelector));
-
-      await inputElement.setValue('foo');
-
-      browser.execute(function(el) {
-        el.blur();
-      }, inputElement);
-
-      await simpleTest(simpleComponentSelector)();
-    });
+    it('has a blue border and blue glow when hovered and focused',
+        focusAndHoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
   });
 
   describe('Validatable NxTextInput', function() {
-    it('has a light border when pristine', simpleTest(validatableComponentSelector));
+    it('has a dark border when pristine', simpleTest(validatableComponentSelector));
 
     it('has validation styles when valid', async function() {
       const inputSelector = getInputElementSelector(validatableComponentSelector),
@@ -82,7 +64,11 @@ describe('NxTextInput', function() {
       await targetElement.scrollIntoView({ block: 'center' });
       await inputElement.setValue('foo');
       await browser.keys(['Backspace', 'Backspace', 'Backspace']);
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+
+      const { x, y } = await targetElement.getLocation();
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 74);
+
+      await browser.eyesRegionSnapshot(null, Target.region(region));
     });
   });
 
@@ -127,8 +113,20 @@ describe('NxTextInput', function() {
       await targetElement.scrollIntoView({ block: 'center' });
       await inputElement.setValue('foo');
       await browser.keys(['Backspace', 'Backspace', 'Backspace']);
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+
+      const { x, y } = await targetElement.getLocation();
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 300);
+
+      await browser.eyesRegionSnapshot(null, Target.region(region));
     });
+  });
+
+  describe('Long NxTextInput', function() {
+    it('looks right', simpleTest(longComponentSelector));
+  });
+
+  describe('Long textarea NxTextInput', function() {
+    it('looks right', simpleTest(longTextareaComponentSelector));
   });
 
   describe('Disabled NxTextInput', function() {

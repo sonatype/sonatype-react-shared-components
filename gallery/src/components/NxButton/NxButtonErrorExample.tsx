@@ -6,12 +6,12 @@
  */
 import React from 'react';
 
-import { NxButton } from '@sonatype/react-shared-components';
+import { NxButton, NxButtonBar } from '@sonatype/react-shared-components';
 
 const NxButtonErrorExample = () =>
-  <div className="nx-btn-bar">
+  <NxButtonBar>
     <NxButton variant="error">Error button</NxButton>
     <NxButton variant="error" disabled>Error button disabled</NxButton>
-  </div>;
+  </NxButtonBar>;
 
 export default NxButtonErrorExample;

@@ -9,6 +9,7 @@ import { shallow } from 'enzyme';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 
 import NxRadio, { Props } from '../NxRadio';
+import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 
 describe('NxRadio', function() {
   const simpleProps: Props = {
@@ -40,6 +41,13 @@ describe('NxRadio', function() {
       }
   );
 
+  it('adds classes specified with the className prop', function() {
+    const component = getShallow({ className: 'foo' });
+
+    expect(component).toHaveClassName('foo');
+    expect(component).toHaveClassName('nx-radio');
+  });
+
   it('renders .nx-radio__inner-circle iff it is checked', function() {
     expect(getShallow()).not.toContainMatchingElement('.nx-radio__inner-circle');
     expect(getShallow({ isChecked: true })).toContainMatchingElement('.nx-radio__circle .nx-radio__inner-circle');
@@ -63,9 +71,9 @@ describe('NxRadio', function() {
   });
 
   describe('when disabled prop is true', function () {
-    it('adds the nx-checkbox--disabled class', function() {
-      expect(getShallow()).not.toHaveClassName('nx-radio--disabled');
-      expect(getShallow({ disabled: true })).toHaveClassName('nx-radio--disabled');
+    it('adds the nx-radio-checkbox--disabled class', function() {
+      expect(getShallow()).not.toHaveClassName('nx-radio-checkbox--disabled');
+      expect(getShallow({ disabled: true })).toHaveClassName('nx-radio-checkbox--disabled');
     });
 
     it('disables the input', function() {
@@ -104,6 +112,31 @@ describe('NxRadio', function() {
     it('does not render the .nx-radio__content element if there are no children', function() {
       expect(getShallow()).not.toContainMatchingElement('.nx-radio__content');
     });
+
+    it('wraps the .nx-radio__content element in an NxOverflowTooltip unless overflowTooltip is set to false',
+        function() {
+          expect(getShallow()).not.toContainMatchingElement(NxOverflowTooltip);
+
+          expect(getShallow({ children: <div/> })).toContainMatchingElement(NxOverflowTooltip);
+          expect(getShallow({ children: <div/> }).find(NxOverflowTooltip))
+              .toContainMatchingElement('.nx-radio__content');
+
+          expect(getShallow({ children: <div/>, overflowTooltip: true }))
+              .toContainMatchingElement(NxOverflowTooltip);
+          expect(getShallow({ children: <div/>, overflowTooltip: true }).find(NxOverflowTooltip))
+              .toContainMatchingElement('.nx-radio__content');
+
+          expect(getShallow({ children: <div/>, overflowTooltip: null }))
+              .toContainMatchingElement(NxOverflowTooltip);
+          expect(getShallow({ children: <div/>, overflowTooltip: null }).find(NxOverflowTooltip))
+              .toContainMatchingElement('.nx-radio__content');
+
+          expect(getShallow({ children: <div/>, overflowTooltip: false }))
+              .not.toContainMatchingElement(NxOverflowTooltip);
+          expect(getShallow({ children: <div/>, overflowTooltip: false }))
+              .toContainMatchingElement('.nx-radio__content');
+        }
+    );
   });
 
   it('calls its onChange prop with value argument when the input fires a change event', function() {
@@ -124,5 +157,29 @@ describe('NxRadio', function() {
   it('adds id attribute to radio input when radioId prop is provided', function () {
     const component = getShallow({ radioId: 'color-red'});
     expect(component.find('input')).toHaveProp('id', 'color-red');
+  });
+
+  it('passes input attributes into the input element and does not clash with top-level attributes', function() {
+    const component = getShallow({
+      radioId: 'not-garfield',
+      disabled: true,
+      isChecked: true,
+      name: 'garfield',
+      className: 'label-classname',
+      inputAttributes: {
+        id: 'garfield',
+        name: 'not-garfield',
+        disabled: false,
+        className: 'input-classname',
+        checked: false
+      } as Props['inputAttributes']
+    });
+
+    expect(component.find('input')).toHaveProp('id', 'garfield');
+    expect(component.find('input')).toHaveProp('name', 'garfield');
+    expect(component.find('input')).toHaveProp('disabled', true);
+    expect(component.find('input')).toHaveClassName('input-classname');
+    expect(component.find('input')).not.toHaveClassName('label-classname');
+    expect(component.find('input')).toHaveProp('checked', true);
   });
 });

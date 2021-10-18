@@ -6,73 +6,112 @@
  */
 import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { NxCode } from '@sonatype/react-shared-components';
 
 import NxListClickableExample from './NxListClickableExample';
+import NxListClickableLinksExample from './NxListClickableLinksExample';
+import NxListWithActionsExample from './NxListWithActionsExample';
+import NxListErrorExample from './NxListErrorStateExample';
+import NxListLoadingExample from './NxListLoadingExample';
+import NxListDeprecatedClickableExample from './NxListDeprecatedClickableExample';
 
-const NxListSimpleCode = require('!!raw-loader!./NxListDefaultExample.html').default,
-    NxListClickableCode = require('!!raw-loader!./NxListClickableExample').default,
-    NxListMultiLineCode = require('!!raw-loader!./NxListMultiLineExample.html').default,
-    NxListBulletedCode = require('!!raw-loader!./NxListBulletedExample.html').default,
-    NxListWithActionsCode = require('!!raw-loader!./NxListWithActionsExample.html').default,
-    NxListDefinitionListCode = require('!!raw-loader!./NxListDefinitionListExample.html').default,
-    NxListEmptyCode = require('!!raw-loader!./NxListEmptyExample.html').default,
-    NxListErrorStateCode = require('!!raw-loader!./NxListErrorStateExample.html').default;
+const NxListSimpleCode = require('./NxListDefaultExample.html'),
+    NxListClickableCode = require('./NxListClickableExample?raw'),
+    NxListClickableLinksCode = require('./NxListClickableLinksExample?raw'),
+    NxListMultiLineCode = require('./NxListMultiLineExample.html'),
+    NxListBulletedCode = require('./NxListBulletedExample.html'),
+    NxListWithActionsCode = require('./NxListWithActionsExample.tsx?raw'),
+    NxListEmptyCode = require('./NxListEmptyExample.html'),
+    NxListErrorStateCode = require('./NxListErrorStateExample.tsx?raw'),
+    NxListLoadingCode = require('./NxListLoadingExample.tsx?raw'),
+    NxListDescriptionCode = require('./NxListDescriptionExample.html'),
+    NxListDeprecatedClickableCode = require('./NxListDeprecatedClickableExample?raw');
 
 const NxListsExamples = () =>
   <>
-    <GalleryExampleTile title="NX Simple List Example"
+    <GalleryExampleTile title="NX Basic List Example"
+                        id="nx-list-simple-example"
                         htmlExample={NxListSimpleCode}
                         codeExamples={NxListSimpleCode}>
-      Two simple <code className="nx-code">nx-list</code> variations. One is a
-      bare <code className="nx-code">&lt;ul&gt;</code> while the other has
-      a <code className="nx-code">&lt;div&gt;</code> wrapping the <code className="nx-code">&lt;ul&gt;</code> along
-      with a <code className="nx-code">nx-list__title</code>.
+      Basic <NxCode>nx-list</NxCode> with a heading.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Clickable List Example"
+                        id="nx-list-clickable-example"
                         liveExample={NxListClickableExample}
                         codeExamples={NxListClickableCode}>
-      An <code className="nx-code">nx-list</code> demonstrating clickable, selection, and disabled styles.
+      An <NxCode>nx-list</NxCode> demonstrating clickable, selection, and disabled styles.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Clickable List Links Example"
+                        id="nx-list-clickable-links-example"
+                        liveExample={NxListClickableLinksExample}
+                        codeExamples={NxListClickableLinksCode}>
+      An <NxCode>nx-list</NxCode> demonstrating clickable and selection styles where the
+      clickable aspects of the list items are defined using <NxCode>&lt;a&gt;</NxCode> tags.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Bulleted List Example"
+                        id="nx-list-bulleted-example"
                         htmlExample={NxListBulletedCode}
                         codeExamples={NxListBulletedCode}>
-      An <code className="nx-code">nx-list</code> demonstrating bulleted list styles more typical of
-      default <code className="nx-code">&lt;ul&gt;</code> styling. These can be nested.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="NX Definition List Example"
-                        htmlExample={NxListDefinitionListCode}
-                        codeExamples={NxListDefinitionListCode}>
-      An <code className="nx-code">nx-list</code> style for definition lists.
-      {' '}(<code className="nx-code">&lt;dl&gt;</code>s)
+      An <NxCode>nx-list</NxCode> demonstrating bulleted list styles more typical of
+      default <NxCode>&lt;ul&gt;</NxCode> styling. These can be nested.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List with Actions Example"
-                        htmlExample={NxListWithActionsCode}
+                        id="nx-list-actions-example"
+                        liveExample={NxListWithActionsExample}
                         codeExamples={NxListWithActionsCode}>
-      An <code className="nx-code">nx-list</code> with icon buttons for initiation actions.
+      An <NxCode>nx-list</NxCode> with icon buttons for initiation actions.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Multi-line Example"
+                        id="nx-list-multi-line-example"
                         htmlExample={NxListMultiLineCode}
                         codeExamples={NxListMultiLineCode}>
-      An <code className="nx-code">nx-list</code> with subtext in each element. The subtext may optionally be multiple
-      lines in which case it wraps.
+      Examples of list items that wrap and truncate, some examples demonstrating wrapping and truncation
+      on <NxCode>nx-list-item__subtext</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List Empty Example"
+                        id="nx-list-empty-example"
                         htmlExample={NxListEmptyCode}
                         codeExamples={NxListEmptyCode}>
-      A demonstration of the expected styling and content for an empty <code className="nx-code">nx-list</code>.
+      A demonstration of the expected styling and content for an empty <NxCode>nx-list</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List with Error Message Example"
-                        htmlExample={NxListErrorStateCode}
+                        id="nx-list-error-example"
+                        liveExample={NxListErrorExample}
                         codeExamples={NxListErrorStateCode}>
-      A demonstration of the expected styling and content for an <code className="nx-code">nx-list</code> whose content
+      A demonstration of the expected styling and content for an <NxCode>nx-list</NxCode> whose content
       failed to load.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX List demonstrating loading indicator"
+                        id="nx-list-loading-example"
+                        liveExample={NxListLoadingExample}
+                        codeExamples={NxListLoadingCode}>
+      A demonstration of the expected styling and placement for a loading indicator
+      within <NxCode>nx-list</NxCode>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxList description list example"
+                        id="nx-list-description-example"
+                        htmlExample={NxListDescriptionCode}
+                        codeExamples={NxListDescriptionCode}>
+      Basic <NxCode>nx-list--description</NxCode> with a heading. Wrapping is demonstrated in both
+      the terms and the descriptions.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Deprecated NX Clickable List Example"
+                        id="nx-list-deprecated-clickable-example"
+                        liveExample={NxListDeprecatedClickableExample}
+                        codeExamples={NxListDeprecatedClickableCode}>
+      This method of creating clickable lists is deprecated. It is strongly recommended that one of the above clickable
+      lists using <NxCode>&lt;button&gt;</NxCode> or <NxCode>&lt;a&gt;</NxCode> be
+      used for accessibility reasons.
     </GalleryExampleTile>
   </>;
 

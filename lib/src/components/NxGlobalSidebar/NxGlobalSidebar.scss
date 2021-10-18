@@ -1,0 +1,233 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-button-helpers';
+
+$-width-open: 250px;
+$-width-closed: 72px;
+$-logo-height: 34px;
+$-left-right-spacing: var(--nx-spacing-6x);
+
+$-text-color: var(--nx-swatch-white);
+$-background-color: var(--nx-swatch-blue-10);
+
+$-active-color: var(--nx-swatch-indigo-70);
+$-selected-color: var(--nx-swatch-indigo-30);
+$-hover-color: var(--nx-swatch-indigo-50);
+
+$-focus-border: 1px solid var(--nx-color-interactive-border-focus);
+
+$-separator-color: var(--nx-swatch-indigo-40);
+
+.nx-global-sidebar {
+  @include nx-container-helpers.container-vertical;
+
+  background-color: $-background-color;
+  box-sizing: border-box;
+  color: $-text-color;
+  display: flex;
+  flex-direction: column;
+  grid-area: global-sidebar;
+  padding: var(--nx-spacing-8x) 0 var(--nx-spacing-12x) 0;
+  width: $-width-open;
+
+  .nx-text-link, .nx-tree-view__trigger, .nx-tree-view__child {
+    color: $-text-color;
+  }
+
+  .nx-text-link {
+    margin: 0;
+  }
+}
+
+.nx-global-sidebar__header {
+  align-items: center;
+  display: flex;
+  height: $-logo-height;
+  margin-bottom: var(--nx-spacing-8x);
+  padding: 0 $-left-right-spacing;
+}
+
+.nx-global-sidebar__toggle {
+  @include nx-button-helpers.small-icon-btn;
+  border-color: transparent;
+  border-radius: 50%;
+  color: $-text-color;
+  flex: none;
+  margin: 0;
+
+  &:focus {
+    border-color: var(--nx-color-interactive-border-focus);
+  }
+
+  &:active {
+    background-color: $-active-color;
+  }
+
+  &:hover {
+    background-color: $-hover-color;
+  }
+}
+
+.nx-global-sidebar__product-info {
+  flex: 1 1 auto;
+  display: flex;
+}
+
+.nx-global-sidebar__logo {
+  height: $-logo-height;
+}
+
+.nx-global-sidebar__navigation {
+  border-bottom: 1px solid $-separator-color;
+  flex: none;
+  margin: 0;
+  padding-bottom: var(--nx-spacing-12x);
+}
+
+.nx-global-sidebar__navigation-link {
+  @include nx-container-helpers.container-horizontal;
+  @include nx-text-helpers.truncate-ellipsis;
+
+  border: 1px solid transparent;
+  display: block;
+  padding: var(--nx-spacing-base)
+           $-left-right-spacing
+           var(--nx-spacing-base)
+           // We need to add an extra pixel to the left to properly centre
+           // the icons when the sidebar is collapsed
+           calc(#{$-left-right-spacing} + 1px);
+  text-decoration: none;
+
+  .nx-icon {
+    color: var(--nx-swatch-indigo-90);
+    margin: 0;
+  }
+
+  &:focus {
+    border-color: var(--nx-color-interactive-border-focus);
+    box-shadow: var(--nx-box-shadow-focus);
+    outline: none;
+  }
+
+  &:hover {
+    background-color: $-hover-color;
+  }
+
+  &:active {
+    background-color: $-active-color;
+  }
+
+  &.selected {
+    @include nx-text-helpers.semi-bold;
+    background-color: $-selected-color;
+  }
+}
+
+.nx-global-sidebar__navigation-text {
+  margin-left: var(--nx-spacing-2x);
+}
+
+.nx-global-sidebar.open {
+  .nx-global-sidebar__collapsed-content {
+    display: none;
+  }
+}
+
+.nx-global-sidebar.closed {
+  margin: 0;
+  width: $-width-closed;
+
+  .nx-global-sidebar__expanded-content {
+    display: none;
+  }
+
+  // used for the footer - hidden content still takes up space when sidebar is collapsed
+  .nx-global-sidebar__hide-when-collapsed {
+    visibility: hidden;
+    white-space: nowrap;
+  }
+
+  .nx-global-sidebar__header {
+    justify-content: center;
+  }
+
+  .nx-global-sidebar__navigation-link {
+    text-overflow: revert;
+  }
+
+  .nx-global-sidebar__navigation-text {
+    display: inline-block;
+    visibility: hidden;
+  }
+
+  .nx-global-sidebar__support {
+    .nx-icon {
+      margin: 0;
+    }
+  }
+}
+
+.nx-global-sidebar__other-content {
+  @include nx-container-helpers.container-vertical;
+
+  flex-grow: 1;
+  padding: var(--nx-spacing-4x) $-left-right-spacing;
+  max-height: unset;
+
+  + .nx-global-sidebar__footer {
+    border-top: 1px solid $-separator-color;
+    margin-top: 0;
+  }
+}
+
+.nx-global-sidebar__footer {
+  @include nx-container-helpers.container-vertical;
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  padding: var(--nx-spacing-12x) $-left-right-spacing 0 $-left-right-spacing;
+  text-align: center;
+
+  &:empty {
+    padding-top: 0;
+  }
+}
+
+.nx-global-sidebar__support {
+  margin-bottom: var(--nx-spacing-12x);
+
+  .nx-text-link {
+    align-items: center;
+    display: flex;
+  }
+
+  .nx-icon {
+    color: var(--nx-swatch-indigo-90);
+  }
+}
+
+.nx-global-sidebar__support-text {
+  font-size: var(--nx-font-size-s);
+}
+
+.nx-global-sidebar__release {
+  font-size: var(--nx-font-size-xs);
+  margin-bottom: var(--nx-spacing-8x);
+}
+
+.nx-global-sidebar__product-name {
+  font-size: var(--nx-font-size-xs);
+  margin-bottom: var(--nx-spacing-2x);
+}
+
+.nx-global-sidebar__created-by {
+  font-size: var(--nx-font-size-xs);
+}

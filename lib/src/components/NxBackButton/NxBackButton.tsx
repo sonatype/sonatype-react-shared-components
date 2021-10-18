@@ -26,7 +26,7 @@ const NxBackButton: FunctionComponent<Props> =
 
     return (
       <div className="nx-back-button tm-back-button">
-        <a href={href}>
+        <a className="nx-text-link" href={href}>
           <NxFontAwesomeIcon icon={faChevronLeft} />
           <span>{linkText}</span>
         </a>

@@ -4,23 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
 import {faCube} from '@fortawesome/free-solid-svg-icons';
 
-import { NxTreeView, NxTreeViewChild, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxTreeView, NxTreeViewChild, NxFontAwesomeIcon, useToggle } from '@sonatype/react-shared-components';
 
-function NxTreeViewExample() {
-  // this example uses the `useState` hook for succinctness, but you could also manage the state manually
-  // in a class component
-  const [toggleCheck1, setToggleCheck1] = useState(false),
-      onToggleCollapse1 = () => setToggleCheck1(!toggleCheck1);
-
-  const [toggleCheck2, setToggleCheck2] = useState(false),
-      onToggleCollapse2 = () => setToggleCheck2(!toggleCheck2);
-
-  const [toggleCheck3, setToggleCheck3] = useState(false),
-      onToggleCollapse3 = () => setToggleCheck3(!toggleCheck3);
+function NxTreeViewExtrasExample() {
+  const [toggleCheck1, onToggleCollapse1] = useToggle(false),
+      [toggleCheck2, onToggleCollapse2] = useToggle(false),
+      [toggleCheck3, onToggleCollapse3] = useToggle(false),
+      [toggleCheck4, onToggleCollapse4] = useToggle(false);
 
   return (
     <>
@@ -30,12 +24,13 @@ function NxTreeViewExample() {
                     <>
                       <NxFontAwesomeIcon icon={faCube}/>
                       <span>Trigger with icon &amp; counter</span>
-                      <div className="nx-counter">12 of 43</div>
+                      <div aria-label="12 options out of 29 selected" className="nx-counter">
+                        12 of 29
+                      </div>
                     </>
                   }>
         <NxTreeViewChild>Test1</NxTreeViewChild>
         <NxTreeViewChild>Test2</NxTreeViewChild>
-        <NxTreeViewChild><a href="#">Link</a></NxTreeViewChild>
       </NxTreeView>
       <NxTreeView onToggleCollapse={onToggleCollapse2}
                   isOpen={toggleCheck2}
@@ -43,12 +38,13 @@ function NxTreeViewExample() {
                     <>
                       <NxFontAwesomeIcon icon={faCube}/>
                       <span>Foo</span>
-                      <div className="nx-counter">12 of 43</div>
+                      <div aria-label="2 options out of 4 selected" className="nx-counter">
+                        2 of 4
+                      </div>
                     </>
                   }>
         <NxTreeViewChild>Test1</NxTreeViewChild>
         <NxTreeViewChild>Test2</NxTreeViewChild>
-        <NxTreeViewChild><a href="#">Link</a></NxTreeViewChild>
       </NxTreeView>
       <NxTreeView onToggleCollapse={onToggleCollapse3}
                   isOpen={toggleCheck3}
@@ -56,15 +52,30 @@ function NxTreeViewExample() {
                     <>
                       <NxFontAwesomeIcon icon={faCube}/>
                       <span>This title is extra long and triggers ellipsis truncation</span>
-                      <div className="nx-counter">12 of 43</div>
+                      <div aria-label="40000 options out of 80000 selected" className="nx-counter">
+                        40000 of 80000
+                      </div>
                     </>
                   }>
         <NxTreeViewChild>Test1</NxTreeViewChild>
         <NxTreeViewChild>Test2</NxTreeViewChild>
-        <NxTreeViewChild><a href="#">Link</a></NxTreeViewChild>
+      </NxTreeView>
+      <NxTreeView onToggleCollapse={onToggleCollapse4}
+                  isOpen={toggleCheck4}
+                  triggerContent={
+                    <>
+                      <NxFontAwesomeIcon icon={faCube}/>
+                      <span>Organizations</span>
+                      <div aria-label="Filter name goes here" className="nx-counter">
+                        Filter name goes here
+                      </div>
+                    </>
+                  }>
+        <NxTreeViewChild>Test1</NxTreeViewChild>
+        <NxTreeViewChild>Test2</NxTreeViewChild>
       </NxTreeView>
     </>
   );
 }
 
-export default NxTreeViewExample;
+export default NxTreeViewExtrasExample;
