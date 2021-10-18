@@ -1,11 +1,14 @@
+$-logo-image-size: 82px;
+$-logotype-image-height: 58px;
+$-name-height: $-logo-image-size - $-logotype-image-height;
 
 .nx-gallery-page-header {
   align-items: center;
-  background-color: white;
+  background-color: var(--nx-swatch-white);
   box-sizing: border-box;
   display: flex;
-  gap: 20px;
-  padding: 16px 24px;
+  gap: var(--nx-spacing-6x);
+  padding: var(--nx-spacing-6x);
   width: 100vw;
 
   &__logo {
@@ -15,44 +18,51 @@
 
   &__home-link {
     display: grid;
-    gap: 0 16px;
-    grid-template:
-      "logo-image logotype-image" 43px
-      "logo-image name"
-      / 72px auto;
+    gap: 0 var(--nx-spacing-6x);
     grid-area: logo;
+    grid-template:
+      "logo-image logotype-image" #{$-logotype-image-height}
+      "logo-image name" #{$-name-height}
+      / #{$-logo-image-size} auto;
     text-decoration: none;
   }
 
   &__logo-image {
-    height: 72px;
-    width: 72px;
     grid-area: logo-image;
+    height: $-logo-image-size;
+    width: $-logo-image-size;
   }
 
   &__logotype-image {
-    height: 48px;
-    grid-area: logotype-image;
     align-self: start;
+    grid-area: logotype-image;
+    height: $-logotype-image-height;
   }
 
   &__name {
-    align-self: end;
-    color: #4D4D4D;
-    font-size: 16px;
+    color: var(--nx-swatch-grey-30);
+    display: block;
+    font-size: 20px;
     font-weight: 600;
     grid-area: name;
+    height: $-name-height;
     text-decoration: none;
+
+    &::before {
+      display: inline-block;
+      height: 100%;
+      content: '';
+    }
   }
 
   &__version {
     align-items: center;
-    border-left: 1px solid black;
+    border-left: 1px solid var(--nx-swatch-grey-30);
+    color: var(--nx-swatch-grey-30);
     display: flex;
-    font-size: 12px;
-    grid-area: name;
+    font-size: 14px;
+    font-weight: 600;
     height: 100%;
-    padding-left: 24px;
-    vertical-align: baseline;
+    padding-left: var(--nx-spacing-4x);
   }
 }
