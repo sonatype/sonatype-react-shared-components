@@ -26,7 +26,7 @@ const textAreaSourceCode = require('./NxTextInputTextAreaExample?raw');
 const textAreaValidationSourceCode = require('./NxTextInputTextAreaValidationExample?raw');
 const longSourceCode = require('./NxTextInputLongExample?raw');
 const disabledSourceCode = require('./NxTextInputDisabledExample?raw');
-const typesSourceCode = require('!!raw-loader!./NxTextInputTypesExample').default;
+const typesSourceCode = require('./NxTextInputTypesExample?raw');
 
 const NxTextInputPage = () =>
   <>
