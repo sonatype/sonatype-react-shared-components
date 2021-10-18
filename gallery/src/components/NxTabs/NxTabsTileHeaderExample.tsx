@@ -27,7 +27,7 @@ const NxTabsTileHeaderExample = () => {
           <NxTabList aria-label="Tabs in a tile">
             <NxTab>Tab</NxTab>
             <NxTab>Tab with longer name</NxTab>
-            <NxTab>Another Tab 3</NxTab>
+            <NxTab>Another Tab 3 much longer name when will it truncate nobody know</NxTab>
             <NxTab>Fourth Tab</NxTab>
           </NxTabList>
           <NxTabPanel>Tab 1</NxTabPanel>
