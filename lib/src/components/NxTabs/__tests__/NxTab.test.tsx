@@ -6,8 +6,9 @@
  */
 import React from 'react';
 import { mount } from 'enzyme';
-import NxTab from '../NxTab';
+import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 
+import NxTab from '../NxTab';
 import TabContext from '../TabContext';
 
 describe('NxTab', function () {
@@ -45,5 +46,18 @@ describe('NxTab', function () {
     expect(tab).toHaveClassName('active');
     expect(tab).toHaveProp('id', 'nx-tabs-0-tab-1');
     expect(tab).toHaveProp('aria-controls', 'nx-tabs-0-tabpanel-1');
+  });
+
+  it('wraps the tab in an NxOverflowTooltip with the children as its title', function() {
+    const component = mount(
+          <TabContext.Provider value={testContext({ activeTab: 1, index: 1 })}>
+            <NxTab index={0}>Tab</NxTab>
+          </TabContext.Provider>
+        ),
+        tooltip = component.find(NxOverflowTooltip);
+
+    expect(tooltip).toExist();
+    expect(tooltip).toHaveProp('title', 'Tab');
+    expect(tooltip.find('[role="tab"]')).toExist();
   });
 });
