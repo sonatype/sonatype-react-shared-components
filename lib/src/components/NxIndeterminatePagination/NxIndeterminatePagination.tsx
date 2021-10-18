@@ -19,10 +19,10 @@ export default function NxIndeterminatePagination({ className, onPrevPageSelect,
   return (
     <nav tabIndex={0} aria-label="pagination" className={classes} { ...attrs }>
       <NxButton type="button" aria-label="previous page" onClick={onPrevPageSelect} variant="tertiary">
-        <NxFontAwesomeIcon icon={faCaretLeft} />
+        <NxFontAwesomeIcon icon={faCaretLeft} size="lg" />
       </NxButton>
       <NxButton type="button" aria-label="next page" onClick={onNextPageSelect} variant="tertiary">
-        <NxFontAwesomeIcon icon={faCaretRight} />
+        <NxFontAwesomeIcon icon={faCaretRight} size="lg" />
       </NxButton>
     </nav>
   );
