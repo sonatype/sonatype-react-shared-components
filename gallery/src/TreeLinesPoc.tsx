@@ -15,12 +15,12 @@ function Lines() {
   return (
     <>
       <svg className="poc-tree__line-intersection">
-        <line className="poc-tree__top-line" y2="50%" />
-        <line className="poc-tree__right-line" x2="100%" y1="50%" y2="50%" />
-        <line className="poc-tree__bottom-line" y1="50%" y2="100%" />
+        <line className="poc-tree__top-line" x1="50%" x2="50%" y2="50%" />
+        <line className="poc-tree__right-line" x1="50%" x2="100%" y1="50%" y2="50%" />
+        <line className="poc-tree__bottom-line" x1="50%" x2="50%" y1="50%" y2="100%" />
       </svg>
       <svg className="poc-tree__line-drop">
-        <line y2="100%" />
+        <line x1="50%" x2="50%" y2="100%" />
       </svg>
     </>
   );
