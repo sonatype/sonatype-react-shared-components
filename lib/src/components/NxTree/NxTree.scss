@@ -1,0 +1,59 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+.nx-tree__line-intersection {
+  grid-area: line-intersection;
+  height: 100%;
+  width: 100%;
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.nx-tree__line-drop {
+  grid-area: line-drop;
+  height: 100%;
+  width: 100%;
+  stroke: black;
+  stroke-width: 1px;
+  position: absolute;
+}
+
+.nx-tree__item {
+  display: grid;
+  grid-template:
+    "line-intersection    label" 32px
+    "line-drop         children" /
+     24px                  auto;
+
+  position: relative;
+}
+
+.nx-tree__item-label {
+  align-self: center;
+  grid-area: label;
+}
+
+.nx-tree__item:last-child {
+  > .nx-tree__line-intersection > .nx-tree__bottom-line {
+    display: none;
+  }
+
+  > .nx-tree__line-drop {
+    display: none;
+  }
+}
+
+.nx-tree--top > .nx-tree__item:first-child {
+  > .nx-tree__line-intersection > .nx-tree__top-line {
+    display: none;
+  }
+}
+
+.nx-tree__item > .nx-tree {
+  grid-area: children;
+  margin-left: 8px;
+}

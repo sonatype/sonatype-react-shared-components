@@ -267,3 +267,5 @@ export { default as NxStatefulIconDropdown }
 
 export { default as NxSmallThreatCounter, Props as NxSmallThreatCounterProps }
   from './components/NxSmallThreatCounter/NxSmallThreatCounter';
+
+export { default as NxTree, ItemProps as NxTreeItemProps } from './components/NxTree/NxTree';
