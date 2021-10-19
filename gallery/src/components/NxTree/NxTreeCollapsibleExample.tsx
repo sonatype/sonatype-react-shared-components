@@ -11,7 +11,6 @@ import { faFile, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 export default function NxTreeCollapsibleExample() {
   const [rootOpen, toggleRootOpen] = useToggle(true),
       [srvOpen, toggleSrvOpen] = useToggle(true),
-      [ftpOpen, toggleFtpOpen] = useToggle(true),
       [httpOpen, toggleHttpOpen] = useToggle(true),
       [catsOpen, toggleCatsOpen] = useToggle(true),
       [imagesOpen, toggleImagesOpen] = useToggle(true),
@@ -32,7 +31,7 @@ export default function NxTreeCollapsibleExample() {
               srv
             </NxTree.ItemLabel>
             <NxTree>
-              <NxTree.Item collapsible isOpen={ftpOpen} onToggleCollapse={toggleFtpOpen}>
+              <NxTree.Item>
                 <NxTree.ItemLabel>
                   <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
                   ftp
