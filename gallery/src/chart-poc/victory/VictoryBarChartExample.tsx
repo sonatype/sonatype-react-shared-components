@@ -6,7 +6,7 @@
  */
 import React, { useEffect, useState } from 'react';
 import { selectableColorValues } from '@sonatype/react-shared-components';
-import { VictoryBar } from 'victory';
+import { VictoryBar, VictoryChart } from 'victory';
 
 const data = [{
   x: 'Low',
@@ -35,10 +35,12 @@ export default function VictoryExample() {
   if (colors) {
     return (
       <div style={{ height: '500px' }}>
-        <VictoryBar data={data}
-                    colorScale={colors}
-                    labels={({ datum: { x, y } }) => `${x}: ${y}`}
-                    cornerRadius={3} />
+        <VictoryChart minDomain={{ x: 2 }}>
+          <VictoryBar data={data}
+                      colorScale={colors}
+                      labels={({ datum: { x, y } }) => `${x}: ${y}`}
+                      cornerRadius={3} />
+        </VictoryChart>
       </div>
     );
   }

@@ -9,6 +9,8 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  ResponsiveContainer,
+  Label,
   Legend,
   Tooltip,
   XAxis,
@@ -41,13 +43,17 @@ const data = [{
 
 export default function RechartsExample() {
   return (
-    <BarChart width={730} height={250} data={data}>
+    <BarChart data={data}>
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="id" />
-      <YAxis />
+      <XAxis dataKey="id">
+        <Label value="Threat Levels" offset={0} position="bottom" />
+      </XAxis>
+      <YAxis dataKey="value">
+        <Label value="Threat Count" offset={0} angle={-90} position="left" />
+      </YAxis>
       <Tooltip />
       <Legend />
-      <Bar dataKey="value" fill="#8884d8" />
+      <Bar dataKey="value" legendType="none" />
     </BarChart>
   );
 }

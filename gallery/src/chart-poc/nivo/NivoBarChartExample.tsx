@@ -46,12 +46,30 @@ export default function NivoBarChartExample() {
                        valueScale={{ type: 'linear' }}
                        indexScale={{ type: 'band', round: true }}
                        colors={colors}
+                       enableGridY={true}
                        colorBy="indexValue"
+                       margin={{
+                         left: 48,
+                         bottom: 48,
+                         top: 24
+                       }}
                        axisTop={null}
                        axisRight={null}
                        labelSkipWidth={12}
                        labelSkipHeight={12}
                        role="application"
+                       enableLabel={true}
+                       label="label"
+                       axisLeft={{
+                         legend: 'Threat Count',
+                         legendOffset: -40,
+                         legendPosition: 'middle'
+                       }}
+                       axisBottom={{
+                         legend: 'Threat Levels',
+                         legendOffset: 40,
+                         legendPosition: 'middle'
+                       }}
         />
       </div>
     );

@@ -48,7 +48,7 @@ export default function NivoExample() {
                        cornerRadius={3}
                        innerRadius={0.5}
                        arcLabelsSkipAngle={10}
-                       arcLinkLabelsThickness={2} />
+                       arcLinkLabelsThickness={2}/>
       </div>
     );
   }
