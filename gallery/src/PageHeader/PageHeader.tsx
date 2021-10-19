@@ -27,7 +27,7 @@ const PageHeader = () => (
                src={tartanLogotype}
                alt="Sonatype Tartan" />
           <span className="nx-gallery-page-header__name">
-            <span>React Shared Component Library</span>
+            React Shared Component Library
           </span>
         </a>
       </h1>
