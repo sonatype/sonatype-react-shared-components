@@ -29,7 +29,10 @@ function Item(props: ItemProps) {
       isOpen = props.collapsible ? props.isOpen : true,
       onToggleCollapse = props.collapsible ? props.onToggleCollapse : undefined,
       collapseIcon = isOpen ? faMinusSquare : faPlusSquare,
-      classes = classnames('nx-tree__item', className, { open: isOpen }),
+      classes = classnames('nx-tree__item', className, {
+        open: isOpen,
+        'nx-tree__item--collapsible': collapsible
+      }),
       attrs = omit(['isOpen', 'onToggleCollapse'], otherProps);
 
   const intersectionLines = (

@@ -8,7 +8,9 @@
 
 .nx-tree {
   padding: 0;
+
 }
+
 
 .nx-tree__line-intersection {
   grid-area: line-intersection;
@@ -27,6 +29,18 @@
   position: absolute;
 }
 
+.nx-tree__item--collapsible {
+  > .nx-tree, > .nx-tree__line-drop {
+    display: none;
+  }
+
+  &.open {
+    > .nx-tree, > .nx-tree__line-drop {
+      display: block;
+    }
+  }
+}
+
 .nx-tree__item {
   display: grid;
   grid-template:
@@ -35,6 +49,27 @@
      24px               auto;
 
   position: relative;
+
+  &:first-child {
+    > .nx-tree__line-intersection > .nx-tree__top-line {
+      display: none;
+
+      // only display this line for subtrees, not the top-level tree
+      .nx-tree__item > .nx-tree > & {
+        display: block;
+      }
+    }
+  }
+
+  &:last-child {
+    > .nx-tree__line-intersection > .nx-tree__bottom-line {
+      display: none;
+    }
+
+    > .nx-tree__line-drop {
+      display: none;
+    }
+  }
 }
 
 .nx-tree__item-label {
@@ -44,28 +79,20 @@
   grid-area: label;
 }
 
-.nx-tree__item:last-child {
-  > .nx-tree__line-intersection > .nx-tree__bottom-line {
-    display: none;
-  }
-
-  > .nx-tree__line-drop {
-    display: none;
-  }
-}
-
-.nx-tree > .nx-tree__item:first-child {
-  > .nx-tree__line-intersection > .nx-tree__top-line {
-    display: none;
-
-    // only display this line for subtrees, not the top-level tree
-    .nx-tree__item > & {
-      display: block;
-    }
-  }
-}
-
 .nx-tree__item > .nx-tree {
   grid-area: children;
   margin-left: 8px;
+}
+
+.nx-tree__collapse-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  outline: none;
+}
+
+.nx-tree-collapse-label:focus-within .nx-icon {
+  outline: 1px solid var(--nx-color-interactive-border-focus);
+  outline-offset: var(--nx-spacing-base);
 }
