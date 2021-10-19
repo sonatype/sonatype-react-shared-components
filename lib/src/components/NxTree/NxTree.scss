@@ -8,27 +8,9 @@
 
 .nx-tree {
   padding: 0;
-
 }
 
-
-.nx-tree__line-intersection {
-  grid-area: line-intersection;
-  height: 100%;
-  width: 100%;
-  stroke: black;
-  stroke-width: 1px;
-}
-
-.nx-tree__line-drop {
-  grid-area: line-drop;
-  height: 100%;
-  width: 100%;
-  stroke: black;
-  stroke-width: 1px;
-  position: absolute;
-}
-
+// note that this block must be before the .nx-tree__item block
 .nx-tree__item--collapsible {
   > .nx-tree, > .nx-tree__line-drop {
     display: none;
@@ -85,6 +67,28 @@
       }
     }
   }
+
+  > .nx-tree {
+    grid-area: children;
+    margin-left: 8px;
+  }
+}
+
+.nx-tree__line-intersection {
+  grid-area: line-intersection;
+  height: 100%;
+  width: 100%;
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.nx-tree__line-drop {
+  grid-area: line-drop;
+  height: 100%;
+  width: 100%;
+  stroke: black;
+  stroke-width: 1px;
+  position: absolute;
 }
 
 .nx-tree__item-label {
@@ -92,11 +96,6 @@
 
   align-self: center;
   grid-area: label;
-}
-
-.nx-tree__item > .nx-tree {
-  grid-area: children;
-  margin-left: 8px;
 }
 
 .nx-tree__collapse-input {
@@ -107,7 +106,6 @@
   outline: none;
 }
 
-.nx-tree-collapse-label:focus-within .nx-icon {
-  outline: 1px solid var(--nx-color-interactive-border-focus);
-  outline-offset: var(--nx-spacing-base);
+.nx-tree__collapse-label {
+  grid-area: line-intersection;
 }
