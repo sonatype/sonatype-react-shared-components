@@ -30,9 +30,9 @@
 .nx-tree__item {
   display: grid;
   grid-template:
-    "line-intersection    label" 32px
-    "line-drop         children" /
-     24px                  auto;
+    "line-intersection label" 32px
+    "line-drop      children" /
+     24px               auto;
 
   position: relative;
 }
