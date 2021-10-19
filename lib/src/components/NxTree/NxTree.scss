@@ -4,6 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../../scss-shared/nx-container-helpers';
+
+.nx-tree {
+  padding: 0;
+}
 
 .nx-tree__line-intersection {
   grid-area: line-intersection;
@@ -33,6 +38,8 @@
 }
 
 .nx-tree__item-label {
+  @include nx-container-helpers.container-horizontal;
+
   align-self: center;
   grid-area: label;
 }
@@ -47,9 +54,14 @@
   }
 }
 
-.nx-tree--top > .nx-tree__item:first-child {
+.nx-tree > .nx-tree__item:first-child {
   > .nx-tree__line-intersection > .nx-tree__top-line {
     display: none;
+
+    // only display this line for subtrees, not the top-level tree
+    .nx-tree__item > & {
+      display: block;
+    }
   }
 }
 
