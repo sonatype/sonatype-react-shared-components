@@ -17,3 +17,8 @@ interface CollapsibleItemProps {
 }
 
 export type ItemProps = LiHTMLAttributes<HTMLLIElement> & (NonCollapsibleItemProps | CollapsibleItemProps);
+
+export interface StatefulItemProps extends LiHTMLAttributes<HTMLLIElement> {
+  collapsible?: boolean | null;
+  defaultOpen?: boolean | null;
+}
