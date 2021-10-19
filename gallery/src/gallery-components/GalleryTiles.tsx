@@ -10,7 +10,7 @@ import { ensureArray } from '../util/jsUtil';
 
 import CodeExample, { Props as CodeExampleProps } from '../CodeExample';
 import RawHtmlExample from '../RawHtmlExample';
-import { NxCheckbox, useToggle } from '@sonatype/react-shared-components';
+import { NxAccordion, NxCheckbox, NxStatefulAccordion, NxTile, useToggle } from '@sonatype/react-shared-components';
 
 interface PropsWithRequiredChildren {
   children: ReactNode;
@@ -25,6 +25,7 @@ interface GalleryBaseProps {
 // Props for GalleryTile
 type GalleryTileProps = PropsWithRequiredChildren & GalleryBaseProps & {
   actionButtons?: ReactNode;
+  wrapChildrenInTileContents?: boolean;
 };
 
 type StringOrCodeExampleProps = string | CodeExampleProps;
@@ -35,11 +36,12 @@ interface GalleryExampleTileProps extends GalleryBaseProps {
   htmlExample?: string;
   codeExamples: StringOrCodeExampleProps | StringOrCodeExampleProps[];
   defaultCheckeredBackground?: boolean;
+  collapseCodeExample?: boolean;
 }
 
 // Component for a simple nx-tile with a specified title and contents
 export const GalleryTile: FunctionComponent<GalleryTileProps> =
-  function GalleryTile({ id, title, className, actionButtons, children }) {
+  function GalleryTile({ id, title, className, actionButtons, children, wrapChildrenInTileContents }) {
     const galleryTileClasses = classnames('nx-tile-content', className);
 
     return (
@@ -52,9 +54,12 @@ export const GalleryTile: FunctionComponent<GalleryTileProps> =
             <div className="nx-tile__actions gallery-checkered-background-toggle">{actionButtons}</div>
           }
         </div>
-        <div className={galleryTileClasses}>
-          {children}
-        </div>
+        { wrapChildrenInTileContents ?
+          <div className={galleryTileClasses}>
+            {children}
+          </div> :
+          children
+        }
       </div>
     );
   };
@@ -75,7 +80,8 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
           liveExample: LiveExample,
           htmlExample,
           codeExamples,
-          defaultCheckeredBackground
+          defaultCheckeredBackground,
+          collapseCodeExample
         } = props,
 
         [checkeredBackground, toggleCheckeredBackground] = useToggle(defaultCheckeredBackground || false),
@@ -101,17 +107,33 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
         );
 
     return (
-      <GalleryTile id={id} title={title} className={tileClasses} actionButtons={tileActions}>
-        <p className="nx-p">{children}</p>
+      <GalleryTile id={id}
+                   title={title}
+                   className={tileClasses}
+                   actionButtons={tileActions}
+                   wrapChildrenInTileContents={false}>
+        <NxTile.Content>
+          <p className="nx-p">{children}</p>
 
-        { liveExampleRender &&
-          <>
-            <h3 className="nx-h3 nx-tile__section-header">Example:</h3>
-            {liveExampleRender}
-          </>
+          { liveExampleRender &&
+            <>
+              <h3 className="nx-h3 nx-tile__section-header">Example:</h3>
+              {liveExampleRender}
+            </>
+          }
+        </NxTile.Content>
+
+        { collapseCodeExample ?
+          <NxTile.Content className="nx-tile-content--accordion-container">
+            <NxStatefulAccordion>
+              <NxAccordion.Header>
+                <h2 className="nx-accordion__header-title">Example Code</h2>
+              </NxAccordion.Header>
+              {codeExampleElements}
+            </NxStatefulAccordion>
+          </NxTile.Content> :
+          <NxTile.Content>{codeExampleElements}</NxTile.Content>
         }
-
-        {codeExampleElements}
       </GalleryTile>
     );
   };
