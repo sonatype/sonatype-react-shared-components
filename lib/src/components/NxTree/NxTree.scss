@@ -51,23 +51,27 @@
   position: relative;
 
   &:first-child {
-    > .nx-tree__line-intersection > .nx-tree__top-line {
-      display: none;
+    &, > .nx-tree__collapse-label {
+      > .nx-tree__line-intersection > .nx-tree__top-line {
+        display: none;
 
-      // only display this line for subtrees, not the top-level tree
-      .nx-tree__item > .nx-tree > & {
-        display: block;
+        // only display this line for subtrees, not the top-level tree
+        .nx-tree__item > .nx-tree > & {
+          display: block;
+        }
       }
     }
   }
 
   &:last-child {
-    > .nx-tree__line-intersection > .nx-tree__bottom-line {
-      display: none;
-    }
+    &, > .nx-tree__collapse-label {
+      > .nx-tree__line-intersection > .nx-tree__bottom-line {
+        display: none;
+      }
 
-    > .nx-tree__line-drop {
-      display: none;
+      > .nx-tree__line-drop {
+        display: none;
+      }
     }
   }
 }
