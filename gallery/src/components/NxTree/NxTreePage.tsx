@@ -10,9 +10,11 @@ import { NxCode, NxH3, NxP, NxTable, NxTextLink, NxTile } from '@sonatype/react-
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import CollapsibleExample from './NxTreeCollapsibleExample';
+import StatefulExample from './NxTreeStatefulExample';
 import NonCollapsibleExample from './NxTreeNonCollapsibleExample';
 
 const collapsibleCode = require('./NxTreeCollapsibleExample?raw'),
+    statefulCode = require('./NxTreeStatefulExample?raw'),
     nonCollapsibleCode = require('./NxTreeNonCollapsibleExample?raw');
 
 const NxTreePage = () =>
@@ -64,7 +66,7 @@ const NxTreePage = () =>
               <NxTable.Cell>False</NxTable.Cell>
               <NxTable.Cell>
                 Whether a toggle should be displayed which would allow the user to collapse and expand
-                any subtree rooted at this item
+                the subtree rooted at this item. This prop should not be used on items that do not have a subtree.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -84,6 +86,63 @@ const NxTreePage = () =>
               <NxTable.Cell>
                 Function to call when the collapse/expand toggle is activated by the user. This function should
                 toggle the <NxCode>isOpen</NxCode> prop passed to the item.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>&lt;li&gt;</NxCode> Attributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/li">
+                  HTML li Attributes
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                NxTreeItem supports any html attribute that's normally supported by the
+                {' '}<NxCode>&lt;li&gt;</NxCode> element
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxTree.StatefulItem</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          It is very often the case that the collapse/expand state of each tree section has no impact on other aspects
+          of the page. When that is the case, this component may be used instead of <NxCode>NxTree.Item</NxCode>
+          in order to have the collapse/expand state managed automatically.
+        </NxP>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Prop</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Default</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>collapsible</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>False</NxTable.Cell>
+              <NxTable.Cell>False</NxTable.Cell>
+              <NxTable.Cell>
+                Whether a toggle should be displayed which would allow the user to collapse and expand
+                the subtree rooted at this item. This prop should not be used on items that do not have a subtree.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>defaultOpen</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>False</NxTable.Cell>
+              <NxTable.Cell>True</NxTable.Cell>
+              <NxTable.Cell>
+                For collaspible tree items, this prop specifies whether they are initially open
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -134,6 +193,14 @@ const NxTreePage = () =>
                         codeExamples={[collapsibleCode]}>
       An example of a collapsible tree view showing various combinations of subtrees along with their collapse/expand
       logic.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Stateful Example"
+                        id="nx-tree-stateful-example"
+                        liveExample={StatefulExample}
+                        codeExamples={[statefulCode]}>
+      An example of a collapsible tree view showing various combinations of subtrees. No explicit collapse/expand
+      logic is necessary since it is managed by <NxCode>NxTree.StatefulItem</NxCode>.
     </GalleryExampleTile>
   </>;
 
