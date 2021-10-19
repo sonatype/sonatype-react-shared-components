@@ -107,5 +107,10 @@
 }
 
 .nx-tree__collapse-label {
+  cursor: pointer;
   grid-area: line-intersection;
+
+  &:focus-within {
+    outline: 1px solid var(--nx-color-interactive-border-focus);
+  }
 }
