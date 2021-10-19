@@ -10,12 +10,16 @@ import { NxCode, NxH3, NxP, NxTable, NxTextLink, NxTile } from '@sonatype/react-
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import CollapsibleExample from './NxTreeCollapsibleExample';
-import StatefulExample from './NxTreeStatefulExample';
+import CollapsibleMultiTopExample from './NxTreeCollapsibleMultiTopExample';
 import NonCollapsibleExample from './NxTreeNonCollapsibleExample';
+import NonCollapsibleMultiTopExample from './NxTreeNonCollapsibleMultiTopExample';
+import StatefulExample from './NxTreeStatefulExample';
 
 const collapsibleCode = require('./NxTreeCollapsibleExample?raw'),
-    statefulCode = require('./NxTreeStatefulExample?raw'),
-    nonCollapsibleCode = require('./NxTreeNonCollapsibleExample?raw');
+    collapsibleMultiTopCode = require('./NxTreeCollapsibleMultiTopExample?raw'),
+    nonCollapsibleCode = require('./NxTreeNonCollapsibleExample?raw'),
+    nonCollapsibleMultiTopCode = require('./NxTreeNonCollapsibleMultiTopExample?raw'),
+    statefulCode = require('./NxTreeStatefulExample?raw');
 
 const NxTreePage = () =>
   <>
@@ -201,6 +205,20 @@ const NxTreePage = () =>
                         codeExamples={[statefulCode]}>
       An example of a collapsible tree view showing various combinations of subtrees. No explicit collapse/expand
       logic is necessary since it is managed by <NxCode>NxTree.StatefulItem</NxCode>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Non-collapsible Example with Multiple Top-level entries"
+                        id="nx-tree-non-collapsible-multi-top-example"
+                        liveExample={NonCollapsibleMultiTopExample}
+                        codeExamples={[nonCollapsibleMultiTopCode]}>
+      An example of a non-collapsible tree view showing how multiple top-level entries are styled.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Collapsible Example with Multiple Top-level entries"
+                        id="nx-tree-collapsible-multi-top-example"
+                        liveExample={CollapsibleMultiTopExample}
+                        codeExamples={[collapsibleMultiTopCode]}>
+      An example of a collapsible tree view showing how multiple top-level entries are styled.
     </GalleryExampleTile>
   </>;
 
