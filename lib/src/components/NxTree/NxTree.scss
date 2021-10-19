@@ -61,6 +61,17 @@
         }
       }
     }
+
+    &:last-child {
+      > .nx-tree__line-intersection > .nx-tree__right-line {
+        display: none;
+
+        // do not display this line for top level items in non-collapsible trees when they have no siblings
+        .nx-tree__item > .nx-tree > & {
+          display: block;
+        }
+      }
+    }
   }
 
   &:last-child {
