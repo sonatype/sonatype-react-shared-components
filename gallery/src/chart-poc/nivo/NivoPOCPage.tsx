@@ -10,8 +10,10 @@ import { NxP, NxTextLink } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import Example from './NivoExample';
+import LineChartExample from './NivoLineChartExample';
 
 const code = require('./NivoExample?raw');
+const lineChartCode = require('./NivoLineChartExample?raw');
 
 export default function NxTablePage() {
   return (
@@ -40,6 +42,12 @@ export default function NxTablePage() {
       <GalleryExampleTile title="Example"
                           liveExample={Example}
                           codeExamples={code}>
+        Example
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Line Chart Example"
+                          liveExample={LineChartExample}
+                          codeExamples={lineChartCode}>
         Example
       </GalleryExampleTile>
     </>
