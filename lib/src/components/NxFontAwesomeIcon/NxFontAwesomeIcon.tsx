@@ -14,10 +14,8 @@ export { Props } from '@fortawesome/react-fontawesome';
  * A wrapper component around FontAwesomeIcon that adds our nx-icon css class. Takes the same props as FontAwesomeIcon
  */
 const NxFontAwesomeIcon = forwardRef((props: Props, ref) => {
-
   // eslint-disable-next-line react/prop-types
   const className = classnames(props.className, 'nx-icon');
-
   return <FontAwesomeIcon forwardedRef={ref} { ...props } className={className} />;
 });
 
