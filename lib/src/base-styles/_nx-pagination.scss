@@ -13,16 +13,15 @@
   .nx-btn {
     min-width: nx-pagination-variables.$pagination-button-height;
     margin: 0 var(--nx-spacing-2x) 0 0;
-    padding-left: var(--nx-spacing-4x);
-    padding-right: var(--nx-spacing-4x);
+    padding-left: calc(var(--nx-spacing-4x) - 1px);
+    padding-right: calc(var(--nx-spacing-4x) - 1px);
 
     &:last-child {
       margin-right: 0;
     }
 
-    .fa-caret-left, .fa-caret-right {
-      font-size: 20px;
-      vertical-align: -0.2em;
+    &:active {
+      box-shadow: none;
     }
   }
 
@@ -30,6 +29,12 @@
     box-shadow: var(--nx-box-shadow-focus);
     outline: 1px solid var(--nx-color-interactive-border-focus);
     outline-offset: -1px;
+  }
+}
+
+.nx-btn-bar--indeterminate-pagination {
+  .nx-btn {
+    margin: 0 var(--nx-spacing-6x) 0 0;
   }
 }
 
@@ -57,8 +62,11 @@
 
   &.selected {
     background-color: var(--nx-swatch-indigo-15);
-    border-color: var(--nx-swatch-indigo-15);
     color: var(--nx-color-component-background);
     cursor: default;
+
+    &:focus {
+      border-color: var(--nx-color-interactive-border-focus);
+    }
   }
 }
