@@ -91,6 +91,8 @@ module.exports = {
         }]
       }]);
 
+      await targetElement.scrollIntoView({ block: 'center' });
+
       try {
         await browser.eyesRegionSnapshot(null, Target.region(targetElement));
       }
