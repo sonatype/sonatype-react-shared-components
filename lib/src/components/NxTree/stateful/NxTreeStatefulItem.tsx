@@ -13,7 +13,7 @@ import NxTreeItem from '../NxTreeItem';
 export { StatefulItemProps };
 
 export default function NxTreeStatefulItem({ defaultOpen, ...otherProps }: StatefulItemProps) {
-  const [isOpen, onToggleCollapse] = useToggle(defaultOpen || true);
+  const [isOpen, onToggleCollapse] = useToggle(defaultOpen == null ? true : defaultOpen);
 
   return <NxTreeItem { ...otherProps } isOpen={isOpen} onToggleCollapse={onToggleCollapse} />;
 }
