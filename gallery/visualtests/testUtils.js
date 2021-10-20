@@ -71,7 +71,7 @@ module.exports = {
     return async () => {
       const [targetElement, clickElement] = await Promise.all([browser.$(elementSelector), browser.$(clickSelector)]);
 
-      await clickElement.scrollIntoView({ block: 'center' });
+      await targetElement.scrollIntoView({ block: 'center' });
 
       await browser.performActions([{
         id: 'pointer1',
@@ -90,8 +90,6 @@ module.exports = {
           button: 0
         }]
       }]);
-
-      await targetElement.scrollIntoView({ block: 'center' });
 
       try {
         await browser.eyesRegionSnapshot(null, Target.region(targetElement));
