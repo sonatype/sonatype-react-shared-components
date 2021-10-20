@@ -188,7 +188,8 @@ export default function NxTabsPage() {
                           liveExample={NxTabsTileHeaderExample}
                           codeExamples={NxTabsTileHeaderExampleCode}>
         A basic example of how to use the <NxCode>NxTabs</NxCode> family of components in an
-        {' '}<NxCode>NxTile</NxCode>.
+        {' '}<NxCode>NxTile</NxCode>. Note that one of the tabs has a long name that truncates after it reaches
+        a built-in maximum width.
       </GalleryExampleTile>
       <GalleryExampleTile title="NxTabs in NxTile with no header Example"
                           id="nx-tab-tile-no-header-example"
