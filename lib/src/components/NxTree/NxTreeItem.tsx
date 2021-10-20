@@ -12,7 +12,7 @@ import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-import { ItemProps } from './types';
+import { ItemProps, itemPropTypes } from './types';
 
 export default function NxTreeItem(props: ItemProps) {
   const { collapsible, className, children, ...otherProps } = props,
@@ -57,3 +57,5 @@ export default function NxTreeItem(props: ItemProps) {
     </li>
   );
 }
+
+NxTreeItem.propTypes = itemPropTypes;

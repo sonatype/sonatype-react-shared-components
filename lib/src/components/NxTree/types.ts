@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { LiHTMLAttributes } from 'react';
+import * as PropTypes from 'prop-types';
 
 interface NonCollapsibleItemProps {
   collapsible?: false | null;
@@ -21,4 +22,15 @@ export type ItemProps = LiHTMLAttributes<HTMLLIElement> & (NonCollapsibleItemPro
 export interface StatefulItemProps extends LiHTMLAttributes<HTMLLIElement> {
   collapsible?: boolean | null;
   defaultOpen?: boolean | null;
+}
+
+export const itemPropTypes = {
+  collapsible: PropTypes.bool,
+  isOpen: PropTypes.bool,
+  onToggleCollapse: PropTypes.func
+};
+
+export const statefulItemPropTypes: PropTypes.ValidationMap<StatefulItemProps> = {
+  collapsible: PropTypes.bool,
+  defaultOpen: PropTypes.bool
 }

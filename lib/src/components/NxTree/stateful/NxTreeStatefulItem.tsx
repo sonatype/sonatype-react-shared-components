@@ -7,7 +7,7 @@
 import React from 'react';
 
 import useToggle from '../../../util/useToggle';
-import { StatefulItemProps } from '../types';
+import { StatefulItemProps, statefulItemPropTypes } from '../types';
 import NxTreeItem from '../NxTreeItem';
 
 export { StatefulItemProps };
@@ -17,3 +17,5 @@ export default function NxTreeStatefulItem({ defaultOpen, ...otherProps }: State
 
   return <NxTreeItem { ...otherProps } isOpen={isOpen} onToggleCollapse={onToggleCollapse} />;
 }
+
+NxTreeStatefulItem.propTypes = statefulItemPropTypes;
