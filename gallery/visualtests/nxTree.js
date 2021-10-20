@@ -29,10 +29,12 @@ describe('NxTree', function() {
         collapseControlSelector2 = `${collapsibleExampleSelector} .nx-tree__item .nx-tree__item
             .nx-tree__item:last-child .nx-tree__item .nx-tree__item:last-child .nx-tree__item:last-child
             .nx-tree__collapse-label`,
-        [tree, collapseControl1, collapseControl2] = await Promise.all([
+        input2Selector = `${collapseControlSelector2} input`,
+        [tree, collapseControl1, collapseControl2, collapseInput2] = await Promise.all([
           browser.$(collapsibleMultiTopExampleSelector),
           browser.$(collapseControlSelector1),
-          browser.$(collapseControlSelector2)
+          browser.$(collapseControlSelector2),
+          browser.$(input2Selector)
         ]);
 
     await collapseControl1.scrollIntoView({ block: 'center' });
@@ -40,7 +42,7 @@ describe('NxTree', function() {
     await collapseControl2.click();
     await browser.execute(function(el) {
       el.blur();
-    }, collapseControl2);
+    }, collapseInput2);
 
     await simpleTest(collapsibleExampleSelector)();
   });
