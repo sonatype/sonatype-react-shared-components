@@ -13,11 +13,13 @@ import NxThreatIndicatorByCategoryExample from './NxThreatIndicatorByCategoryExa
 import NxThreatIndicatorByPolicyNumberExample from './NxThreatIndicatorByPolicyNumberExample';
 import NxThreatIndicatorListExample from './NxThreatIndicatorListExample';
 import NxThreatIndicatorTableExample from './NxThreatIndicatorTableExample';
+import NxThreatIndicatorWithTitleExample from './NxThreatIndicatorWithTitleExample';
 
 const nxThreatIndicatorByCategoryCode = require('./NxThreatIndicatorByCategoryExample?raw'),
     nxThreatIndicatorByPolicyNumberCode = require('./NxThreatIndicatorByPolicyNumberExample?raw'),
     nxThreatIndicatorListCode = require('./NxThreatIndicatorListExample?raw'),
-    nxThreatIndicatorTableCode = require('./NxThreatIndicatorTableExample?raw');
+    nxThreatIndicatorTableCode = require('./NxThreatIndicatorTableExample?raw'),
+    nxThreatIndicatorWithTitleCode = require('./NxThreatIndicatorWithTitleExample?raw');
 
 const NxThreatIndicatorPage = () =>
   <>
@@ -53,6 +55,12 @@ const NxThreatIndicatorPage = () =>
             <NxTable.Cell>number (0 - 10 inclusive)</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>A Policy Threat Level Number off of which to base the indicator color</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>title</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>Specifies tooltip content, by default, it is set to the Threat Level Category</NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
@@ -125,6 +133,14 @@ const NxThreatIndicatorPage = () =>
       that <NxCode>NxThreatIndicator</NxCode> is intended to be used, this example demonstrates a
       typical usage of it. Note that no special classes or placements are needed here, it is essentially just the
       usual inline layout of the threat indicator and adjacent content, within a table cell.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Threat Indicators with title"
+                        id="nx-threat-indicator-with-title-example"
+                        liveExample={NxThreatIndicatorWithTitleExample}
+                        codeExamples={nxThreatIndicatorWithTitleCode}>
+      You can modify the tooltip content by setting the <NxCode>title</NxCode> prop.
+      By default, the <NxCode>title</NxCode> is set to the Threat Level Category.
     </GalleryExampleTile>
   </>;
 

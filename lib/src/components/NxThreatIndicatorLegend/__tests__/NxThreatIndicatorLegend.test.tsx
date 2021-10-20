@@ -79,11 +79,11 @@ describe('NxThreatIndicatorLegend', function() {
     const component = getMountedComponent({ critical: true, low: true});
     expect(component).toExist();
     expect(component.find(NxFontAwesomeIcon).at(0)).toHaveProp('icon', faCircle);
-    expect(component.find(NxFontAwesomeIcon).at(0)).toMatchSelector('.nx-threat-indicator--critical');
-    expect(component.find('span').at(0)).toHaveText('Critical');
+    expect(component.find('.nx-threat-indicator').at(0)).toMatchSelector('.nx-threat-indicator--critical');
+    expect(component.find('.nx-threat-indicator-legend__threat-type').at(0)).toHaveText('Critical');
     expect(component.find(NxFontAwesomeIcon).at(1)).toHaveProp('icon', faCircle);
-    expect(component.find(NxFontAwesomeIcon).at(1)).toMatchSelector('.nx-threat-indicator--low');
-    expect(component.find('span').at(1)).toHaveText('Low');
+    expect(component.find('.nx-threat-indicator').at(1)).toMatchSelector('.nx-threat-indicator--low');
+    expect(component.find('.nx-threat-indicator-legend__threat-type').at(1)).toHaveText('Low');
   });
 
   it('fowards a ref to the div', function() {
