@@ -13,7 +13,7 @@ const NxThreatIndicatorWithTitleExample = () =>
     <NxThreatIndicator threatLevelCategory="critical" />
     <span>Example without title prop</span>
     <br/>
-    <NxThreatIndicator threatLevelCategory="none"
+    <NxThreatIndicator threatLevelCategory="critical"
                        title="Extinction Level Threat" />
     <span>Example with custom title</span>
   </>;
