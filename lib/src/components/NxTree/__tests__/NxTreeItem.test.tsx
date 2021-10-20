@@ -42,7 +42,6 @@ describe('NxTreeItem', function() {
     expect(component).toContainMatchingElement('div#bar');
   });
 
-
   describe('when not collapsible', function() {
     // note that there isn't much use in testing this in a lot of detail here, a visual test will be better
     it('contains some lines', function() {
