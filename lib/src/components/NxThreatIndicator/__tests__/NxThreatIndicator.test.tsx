@@ -16,26 +16,24 @@ describe('NxThreatIndicator', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxThreatIndicator, {});
 
   it('renders an faCircle NxFontAwesomeIcon with the `nx-threat-indicator` class', function() {
-    const component = getShallowComponent();
-    const span = component.find('.nx-threat-indicator');
-    const icon = component.find(NxFontAwesomeIcon);
+    const icon = getShallowComponent().find(NxFontAwesomeIcon);
 
-    expect(span).toHaveClassName('nx-threat-indicator');
+    expect(icon).toHaveClassName('nx-threat-indicator');
     expect(icon).toExist();
     expect(icon).toHaveProp('icon', faCircle);
   });
 
   it('sets the nx-threat-indicator--unspecified class if no props are passed', function() {
-    const component = getShallowComponent();
-    const span = component.find('.nx-threat-indicator');
-    expect(span).toMatchSelector('.nx-threat-indicator--unspecified');
+    const icon = getShallowComponent().find(NxFontAwesomeIcon);
+
+    expect(icon).toMatchSelector('.nx-threat-indicator--unspecified');
   });
 
   it('sets the modifier class using the threatLevelCategory if it is provided', function() {
-    const component = getShallowComponent({ threatLevelCategory: 'low' });
-    const span = component.find('.nx-threat-indicator');
-    expect(span).toMatchSelector('.nx-threat-indicator--low');
-    expect(span).not.toMatchSelector('.nx-threat-indicator--unspecified');
+    const icon = getShallowComponent({ threatLevelCategory: 'low' }).find(NxFontAwesomeIcon);
+
+    expect(icon).toMatchSelector('.nx-threat-indicator--low');
+    expect(icon).not.toMatchSelector('.nx-threat-indicator--unspecified');
   });
 
   it('sets the modifier class by converting the policyThreatLevel if it is provided', function() {
@@ -55,11 +53,11 @@ describe('NxThreatIndicator', function() {
 
   it('sets the modifier class using the threatLevelCategory if both props are provided', function() {
     const component = getShallowComponent({ policyThreatLevel: 9, threatLevelCategory: 'low' });
-    const span = component.find('.nx-threat-indicator');
+    const icon = component.find(NxFontAwesomeIcon);
 
-    expect(span).toMatchSelector('.nx-threat-indicator--low');
-    expect(span).not.toMatchSelector('.nx-threat-indicator--critical');
-    expect(span).not.toMatchSelector('.nx-threat-indicator--unspecified');
+    expect(icon).toMatchSelector('.nx-threat-indicator--low');
+    expect(icon).not.toMatchSelector('.nx-threat-indicator--critical');
+    expect(icon).not.toMatchSelector('.nx-threat-indicator--unspecified');
   });
 
   it('adds aria attrs to help the icon show up for screen readers', function() {

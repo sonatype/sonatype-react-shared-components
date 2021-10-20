@@ -29,11 +29,10 @@ const NxThreatIndicator: FunctionComponent<Props> =
 
     return (
       <NxTooltip title={title || capitalize(category)}>
-        <span className={className}>
-          <NxFontAwesomeIcon aria-hidden={false}
-                             aria-label={label}
-                             icon={faCircle} />
-        </span>
+        <NxFontAwesomeIcon aria-hidden={false}
+                           aria-label={label}
+                           className={className}
+                           icon={faCircle} />
       </NxTooltip>
     );
   };
