@@ -33,4 +33,4 @@ export const itemPropTypes = {
 export const statefulItemPropTypes: PropTypes.ValidationMap<StatefulItemProps> = {
   collapsible: PropTypes.bool,
   defaultOpen: PropTypes.bool
-}
+};
