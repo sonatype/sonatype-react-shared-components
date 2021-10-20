@@ -10,8 +10,10 @@ import { NxP, NxTextLink } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import Example from './VictoryExample';
+import LineExample from './VictoryLineExample';
 
 const code = require('./VictoryExample?raw');
+const lineCode = require('./VictoryLineExample?raw');
 
 export default function NxTablePage() {
   return (
@@ -31,6 +33,12 @@ export default function NxTablePage() {
       <GalleryExampleTile title="Example"
                           liveExample={Example}
                           codeExamples={code}>
+        Example
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Line Example"
+                          liveExample={LineExample}
+                          codeExamples={lineCode}>
         Example
       </GalleryExampleTile>
     </>
