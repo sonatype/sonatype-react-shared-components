@@ -150,15 +150,16 @@ export default function NivoLineChartExample() {
                         pointBorderWidth={2}
                         pointBorderColor={{ from: 'serieColor' }}
                         pointLabelYOffset={-12}
+                        isInteractive={false}
                         useMesh={true}
                         legends={[
                           {
-                            anchor: 'bottom-right',
-                            direction: 'column',
+                            anchor: 'top',
+                            direction: 'row',
                             justify: false,
-                            translateX: 100,
-                            translateY: 0,
-                            itemsSpacing: 0,
+                            translateX: 50,
+                            translateY: -25,
+                            itemsSpacing: 24,
                             itemDirection: 'left-to-right',
                             itemWidth: 80,
                             itemHeight: 20,
