@@ -10,8 +10,10 @@ import { NxP, NxTextLink } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
 import Example from './RechartsExample';
+import LineExample from './RechartsLineExample';
 
 const code = require('./RechartsExample?raw');
+const lineCode = require('./RechartsLineExample?raw');
 const scss = require('./RechartsExample.scss?raw');
 
 export default function NxTablePage() {
@@ -40,6 +42,12 @@ export default function NxTablePage() {
       <GalleryExampleTile title="Example"
                           liveExample={Example}
                           codeExamples={[code, { language: 'scss', content: scss }]}>
+        Example
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Line Example"
+                          liveExample={LineExample}
+                          codeExamples={[lineCode]}>
         Example
       </GalleryExampleTile>
     </>
