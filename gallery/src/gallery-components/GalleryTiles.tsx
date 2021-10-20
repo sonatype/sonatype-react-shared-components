@@ -25,7 +25,6 @@ interface GalleryBaseProps {
 // Props for GalleryTile
 type GalleryTileProps = PropsWithRequiredChildren & GalleryBaseProps & {
   actionButtons?: ReactNode;
-  wrapChildrenInTileContents?: boolean;
 };
 
 type StringOrCodeExampleProps = string | CodeExampleProps;
@@ -41,9 +40,7 @@ interface GalleryExampleTileProps extends GalleryBaseProps {
 
 // Component for a simple nx-tile with a specified title and contents
 export const GalleryTile: FunctionComponent<GalleryTileProps> =
-  function GalleryTile({ id, title, className, actionButtons, children, wrapChildrenInTileContents }) {
-    const galleryTileClasses = classnames('nx-tile-content', className);
-
+  function GalleryTile({ id, title, actionButtons, children }) {
     return (
       <div id={id} className="nx-tile">
         <div className="nx-tile-header">
@@ -54,20 +51,19 @@ export const GalleryTile: FunctionComponent<GalleryTileProps> =
             <div className="nx-tile__actions gallery-checkered-background-toggle">{actionButtons}</div>
           }
         </div>
-        { wrapChildrenInTileContents ?
-          <div className={galleryTileClasses}>
-            {children}
-          </div> :
-          children
-        }
+        {children}
       </div>
     );
   };
 
 // GalleryDescriptionTile is just a GalleryTile with a specified title
 export const GalleryDescriptionTile: FunctionComponent<PropsWithRequiredChildren> =
-  function GalleryDescriptionTile(props: PropsWithRequiredChildren) {
-    return <GalleryTile { ...props } title="Description" className="gallery-description" />;
+  function GalleryDescriptionTile({ children, ...otherProps }: PropsWithRequiredChildren) {
+    return (
+      <GalleryTile { ...otherProps } title="Description">
+        <NxTile.Content className="gallery-description">{children}</NxTile.Content>
+      </GalleryTile>
+    );
   };
 
 export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
@@ -110,9 +106,8 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
       <GalleryTile id={id}
                    title={title}
                    className={tileClasses}
-                   actionButtons={tileActions}
-                   wrapChildrenInTileContents={false}>
-        <NxTile.Content>
+                   actionButtons={tileActions}>
+        <NxTile.Content className="gallery-example">
           <p className="nx-p">{children}</p>
 
           { liveExampleRender &&
