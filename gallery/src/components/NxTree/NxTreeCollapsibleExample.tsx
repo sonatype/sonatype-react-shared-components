@@ -36,8 +36,6 @@ export default function NxTreeCollapsibleExample() {
                   <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
                   ftp
                 </NxTree.ItemLabel>
-                <NxTree>
-                </NxTree>
               </NxTree.Item>
               <NxTree.Item collapsible isOpen={httpOpen} onToggleCollapse={toggleHttpOpen}>
                 <NxTree.ItemLabel>
