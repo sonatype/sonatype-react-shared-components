@@ -13,10 +13,12 @@ describe('NxTree', function() {
   });
 
   const nonCollapsibleExampleSelector = '#nx-tree-non-collapsible-example .nx-tree',
-      collapsibleExampleSelector = '#nx-tree-collapsible-example .nx-tree',
+      collapsibleExampleSelector = '#nx-tree-collapsible-example .gallery-example-live > .nx-tree',
       nonCollapsibleMultiTopExampleSelector = '#nx-tree-non-collapsible-multi-top-example .nx-tree',
       collapsibleMultiTopExampleSelector = '#nx-tree-collapsible-multi-top-example .nx-tree',
-      firstCollapseControlSelector = `${collapsibleExampleSelector} .nx-tree__collapse-label`;
+      aCollapseControlSelector = `${collapsibleExampleSelector} > .nx-tree__item > .nx-tree > .nx-tree__item >
+          .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item:nth-child(2) >
+          .nx-tree__collapse-label`;
 
   it('looks right with a single top entry and no collapsing', simpleTestLongElement(nonCollapsibleExampleSelector));
   it('looks right with a single top entry and collapsing', simpleTest(collapsibleExampleSelector));
@@ -48,8 +50,8 @@ describe('NxTree', function() {
   });
 
   it('looks right when a collapse control is focused',
-      focusTest(collapsibleExampleSelector, firstCollapseControlSelector));
+      focusTest(collapsibleExampleSelector, aCollapseControlSelector));
 
   it('looks right when a collapse control is clicked',
-      clickTest(collapsibleExampleSelector, firstCollapseControlSelector));
+      clickTest(collapsibleExampleSelector, aCollapseControlSelector));
 });
