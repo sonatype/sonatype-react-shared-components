@@ -71,7 +71,7 @@ module.exports = {
     return async () => {
       const [targetElement, clickElement] = await Promise.all([browser.$(elementSelector), browser.$(clickSelector)]);
 
-      await targetElement.scrollIntoView({ block: 'center' });
+      await clickElement.scrollIntoView({ block: 'center' });
 
       await browser.performActions([{
         id: 'pointer1',
