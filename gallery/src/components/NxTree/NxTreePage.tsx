@@ -115,8 +115,8 @@ const NxTreePage = () =>
           <NxH3>NxTree.StatefulItem</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
-          It is very often the case that the collapse/expand state of each tree section has no impact on other aspects
-          of the page. When that is the case, this component may be used instead of <NxCode>NxTree.Item</NxCode>
+          It is very often the case that the collapse/expand state of each tree section has no impact on other logic
+          in the page. When that is the case, this component may be used instead of <NxCode>NxTree.Item</NxCode>
           in order to have the collapse/expand state managed automatically.
         </NxP>
         <NxTable>
