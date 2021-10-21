@@ -47,24 +47,12 @@
     position: absolute;
     border: 1px solid var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
-    border-radius: 24px;
+    border-radius: 20px;
   }
 }
 
 .nx-tag--selected {
   background-color: var(--nx-selectable-color-dark);
-
-  &:focus {
-    border: 1px solid var(--nx-color-interactive-border-focus);
-
-    &::before {
-      content: '';
-      inset: calc(0px - var(--nx-spacing-base));
-      position: absolute;
-      border: 1px solid var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
-    }
-  }
 }
 
 .nx-tag__text {
