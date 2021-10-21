@@ -25,7 +25,9 @@
   line-height: 30px;
   margin: 0 var(--nx-spacing-2x) var(--nx-spacing-2x) 0;
   padding: 0 var(--nx-spacing-4x) 0 var(--nx-spacing-4x);
+  position: relative;
   user-select: none;
+  overflow: visible;
   // Uppercase Min so SCSS ignores it and uses CSS min, not SCSS min
   max-width: Min(100%, 320px);
 }
@@ -33,17 +35,19 @@
 .nx-tag--selectable {
   cursor: pointer;
   padding-right: var(--nx-spacing-2x);
-
   background-color: var(--nx-selectable-color-light);
 
   &:hover {
     border-color: var(--nx-color-interactive-border-hover);
   }
 
-  &:focus {
+  &:focus::before {
+    content: '';
+    inset: calc(0px - (var(--nx-spacing-base) + 1px));
+    position: absolute;
     border: 1px solid var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
-    outline: none;
+    border-radius: 24px;
   }
 }
 
@@ -52,6 +56,14 @@
 
   &:focus {
     border: 1px solid var(--nx-color-interactive-border-focus);
+
+    &::before {
+      content: '';
+      inset: calc(0px - var(--nx-spacing-base));
+      position: absolute;
+      border: 1px solid var(--nx-color-interactive-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
+    }
   }
 }
 
