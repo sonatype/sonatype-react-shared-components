@@ -25,7 +25,8 @@ const NxNexusPageHeaderPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxWarningAlert>
-        This component is deprecated and superceded by <NxCode>NxGlobalSidebar</NxCode> and <NxCode>nx-global-header</NxCode>.
+        This component is deprecated and superceded by <NxCode>NxGlobalSidebar</NxCode>
+        and <NxCode>nx-global-header</NxCode>.
       </NxWarningAlert>
       <NxP>
         <NxCode>NxNexusPageHeader</NxCode> is a React component encapsulating the Sonatype Nexus
