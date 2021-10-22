@@ -48,6 +48,9 @@ const NxTooltipExample = () => {
         <NxTooltip placement="right" title="Right tooltip example">
           <NxButton>Right Placement</NxButton>
         </NxTooltip>
+        <NxTooltip placement="bottom-middle" title="Bottom middle tooltip example">
+          <NxButton>Bottom Middle Placement</NxButton>
+        </NxTooltip>
       </div>
       <section>
         <header>
