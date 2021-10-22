@@ -11,7 +11,7 @@ $-height: 24px;
 $-width: 44px;
 
 .nx-toggle {
-  column-gap: 8px;
+  column-gap: var(--nx-spacing-2x);
   display: grid;
   grid-template-areas: "toggle content";
   grid-template-columns: auto 1fr;
