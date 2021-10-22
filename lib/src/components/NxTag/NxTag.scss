@@ -53,6 +53,10 @@
 
 .nx-tag--selected {
   background-color: var(--nx-selectable-color-dark);
+
+  &:hover {
+    border-color: transparent;
+  }
 }
 
 .nx-tag__text {
