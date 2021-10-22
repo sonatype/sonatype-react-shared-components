@@ -10,7 +10,6 @@
 .nx-tag {
   @include nx-text-helpers.semi-bold;
   @include nx-container-helpers.container-horizontal;
-  @include nx-text-helpers.truncate-ellipsis;
 
   align-items: center;
   background-color: var(--nx-selectable-color-dark);
@@ -27,7 +26,6 @@
   padding: 0 var(--nx-spacing-4x) 0 var(--nx-spacing-4x);
   position: relative;
   user-select: none;
-  overflow: visible;
   // Uppercase Min so SCSS ignores it and uses CSS min, not SCSS min
   max-width: Min(100%, 320px);
 }
