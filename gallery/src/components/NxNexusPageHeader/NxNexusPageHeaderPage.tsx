@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxH3, NxTextLink } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxH3, NxTextLink, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -24,6 +24,9 @@ const nxNexusPageHeaderMinimalExampleCode = require('./NxNexusPageHeaderMinimalE
 const NxNexusPageHeaderPage = () =>
   <>
     <GalleryDescriptionTile>
+      <NxWarningAlert>
+        This component is deprecated and superceded by <NxCode>NxGlobalSidebar</NxCode>.
+      </NxWarningAlert>
       <NxP>
         <NxCode>NxNexusPageHeader</NxCode> is a React component encapsulating the Sonatype Nexus
         branded page header logo and structure. This header should only be used for products in the Sonatype Nexus
