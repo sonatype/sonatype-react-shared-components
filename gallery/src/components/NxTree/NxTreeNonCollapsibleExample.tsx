@@ -219,6 +219,13 @@ export default function NxTreeNonCollapsibleExample() {
                                       keyboard2.webm
                                     </NxTree.ItemLabel>
                                   </NxTree.Item>
+                                  <NxTree.Item>
+                                    <NxTree.ItemLabel>
+                                      <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
+                                      {/* eslint-disable-next-line max-len */}
+                                      longnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongname.avi
+                                    </NxTree.ItemLabel>
+                                  </NxTree.Item>
                                 </NxTree>
                               </NxTree.Item>
                             </NxTree>
