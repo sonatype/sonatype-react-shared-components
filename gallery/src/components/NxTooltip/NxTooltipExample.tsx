@@ -45,8 +45,10 @@ const NxTooltipExample = () => {
         <NxTooltip title="Tip" open>
           <NxButton>My tooltip is always open</NxButton>
         </NxTooltip>
-        <NxTooltip placement="right" title="Right tooltip example">
-          <NxButton>Right Placement</NxButton>
+      </div>
+      <div className="nx-btn-bar">
+        <NxTooltip placement="left" title="Left tooltip example">
+          <NxButton>Left Placement</NxButton>
         </NxTooltip>
         <NxTooltip placement="bottom-middle" title="Bottom middle tooltip example">
           <NxButton>Bottom Middle Placement</NxButton>

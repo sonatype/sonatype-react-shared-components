@@ -90,8 +90,8 @@ describe('NxTooltip', function() {
   it('passes through all other values of placement', function() {
     expect(getNxTooltip({ placement: 'left' })).toHaveProp('placement', 'left');
     expect(getNxTooltip({ placement: 'right' })).toHaveProp('placement', 'right');
-    expect(getNxTooltip({ placement: 'top-middle' })).toHaveProp('placement', 'top-middle');
-    expect(getNxTooltip({ placement: 'bottom-middle' })).toHaveProp('placement', 'bottom-middle');
+    expect(getNxTooltip({ placement: 'top-middle' })).toHaveProp('placement', 'top');
+    expect(getNxTooltip({ placement: 'bottom-middle' })).toHaveProp('placement', 'bottom');
     expect(getNxTooltip({ placement: 'top-end' })).toHaveProp('placement', 'top-end');
     expect(getNxTooltip({ placement: 'bottom-end' })).toHaveProp('placement', 'bottom-end');
   });
