@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxCode, NxTable, NxTextLink, NxP, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -21,6 +21,12 @@ const nxTreeViewRadioSelectExampleCode = require('./NxTreeViewRadioSelectExample
 const NxTreeViewRadioSelectPage = () =>
   <>
     <GalleryDescriptionTile>
+      <NxWarningAlert>
+        <NxCode>NxTreeViewRadioSelect</NxCode> has been renamed to <NxCode>NxCollapsibleItemsRadioSelect</NxCode>
+        and is now deprecated and will be removed in the next major version.
+        Please use <NxTextLink href="#NxCollapsibleItemsRadioSelect">NxCollapsibleItemsRadioSelect</NxTextLink> instead.
+      </NxWarningAlert>
+
       <NxP>
         A tree view radio group component.
       </NxP>

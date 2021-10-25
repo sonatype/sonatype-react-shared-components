@@ -5,7 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxList } from '@sonatype/react-shared-components';
+import {
+  NxCode,
+  NxList,
+  NxP,
+  NxTable,
+  NxTextLink,
+  NxWarningAlert
+} from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -19,6 +26,13 @@ const nxStatefulTreeViewMultiSelectExampleCode = require('./NxStatefulTreeViewMu
 const NxStatefulTreeViewMultiSelectPage = () =>
   <>
     <GalleryDescriptionTile>
+      <NxWarningAlert>
+        <NxCode>NxStatefulTreeViewMultiSelect</NxCode> has been renamed
+        to <NxCode>NxCollapsibleItemsMultiSelect</NxCode> and is now deprecated
+        and will be removed in the next major version.
+        Please use <NxTextLink href="#NxCollapsibleItemsMultiSelect">NxCollapsibleItemsMultiSelect</NxTextLink> instead.
+      </NxWarningAlert>
+
       <NxP>
         Stateful Multi select component using tree view with checkboxes. It handles tree view toggling and filter state.
       </NxP>

@@ -5,7 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxList } from '@sonatype/react-shared-components';
+import {
+  NxCode,
+  NxList,
+  NxP,
+  NxTable,
+  NxTextLink,
+  NxWarningAlert
+} from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -19,6 +26,15 @@ const nxStatefulTreeViewRadioSelectExampleCode = require('./NxStatefulTreeViewRa
 const NxStatefulTreeViewRadioSelectPage = () =>
   <>
     <GalleryDescriptionTile>
+      <NxWarningAlert>
+        <NxCode>NxStatefulTreeViewRadioSelect</NxCode> has been renamed
+        to <NxCode>NxStatefulCollapsibleItemsRadioSelect</NxCode> and
+        is now deprecated and will be removed in the next major version.
+        Please use&nbsp;
+        <NxTextLink href="#NxStatefulCollapsibleItemsRadioSelect">NxStatefulCollapsibleItemsRadioSelect</NxTextLink>
+        &nbsp;instead.
+      </NxWarningAlert>
+
       <NxP>
         Stateful Radio select component using tree view with radios. It handles tree view toggling and filter state.
       </NxP>

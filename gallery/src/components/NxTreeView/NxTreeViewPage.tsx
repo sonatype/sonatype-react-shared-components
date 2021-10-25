@@ -39,9 +39,9 @@ const NxTreeViewPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxWarningAlert>
-        <NxCode>NxTreeView</NxCode> have been renamed and is now deprecated and will be
-        removed in the next major version.
-        Please use <NxTextLink href="#NxCollapsibleItems">NxCollapsibleItems</NxTextLink>
+        <NxCode>NxTreeView</NxCode> has been renamed to <NxCode>NxCollapsibleItems</NxCode>
+        and is now deprecated and will be removed in the next major version.
+        Please use <NxTextLink href="#NxCollapsibleItems">NxCollapsibleItems</NxTextLink> instead.
       </NxWarningAlert>
 
       <NxP>
