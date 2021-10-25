@@ -7,18 +7,18 @@
 const { Region, Target } = require('@applitools/eyes-webdriverio');
 const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 
-describe('NxTreeView', function() {
+describe('NxCollapsibleItems', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxTreeView');
+    await browser.url('#/pages/NxCollapsibleItems');
     await browser.refresh();
   });
 
-  const selector = '#nx-tree-view-example .nx-tree-view:nth-child(3)',
-      disabledTreeViewSelector = '#nx-tree-view-disabled-example .nx-tree-view',
-      clickableTreeViewSelector = '#nx-tree-view-clickable-example .nx-tree-view',
-      clickableTreeViewSidebarSelector = '#nx-tree-view-clickable-sidebar-example .nx-tree-view',
-      checkboxTreeViewSelector = '#nx-tree-view-checkbox-example .gallery-example-live',
-      emptyTreeViewSelector = '#nx-tree-view-empty-example .nx-tree-view';
+  const selector = '#nx-collapsible-items-example .nx-collapsible-items:nth-child(3)',
+      disabledTreeViewSelector = '#nx-collapsible-items-disabled-example .nx-collapsible-items',
+      clickableTreeViewSelector = '#nx-collapsible-items-clickable-example .nx-collapsible-items',
+      clickableTreeViewSidebarSelector = '#nx-collapsible-items-clickable-sidebar-example .nx-collapsible-items',
+      checkboxTreeViewSelector = '#nx-collapsible-items-checkbox-example .gallery-example-live',
+      emptyTreeViewSelector = '#nx-collapsible-items-empty-example .nx-collapsible-items';
 
   async function expandTreeView(selector) {
     const targetElement = await browser.$(selector);
@@ -33,36 +33,36 @@ describe('NxTreeView', function() {
   }
 
   function hoverExpandedTest(selector) {
-    const hoverSelector = `${selector} .nx-tree-view__child:first-child`;
+    const hoverSelector = `${selector} .nx-collapsible-items__child:first-child`;
 
     return async function() {
       await expandTreeView(selector);
       await hoverTest(selector, hoverSelector)();
-    }
+    };
   }
 
   function focusExpandedTest(selector) {
-    const focusSelector = `${selector} .nx-tree-view__child:first-child`;
+    const focusSelector = `${selector} .nx-collapsible-items__child:first-child`;
 
     return async function() {
       await expandTreeView(selector);
       await focusTest(selector, focusSelector)();
-    }
+    };
   }
 
   function focusAndHoverExpandedTest(selector) {
-    const focusSelector = `${selector} .nx-tree-view__child:first-child`;
+    const focusSelector = `${selector} .nx-collapsible-items__child:first-child`;
 
     return async function() {
       await expandTreeView(selector);
       await focusAndHoverTest(selector, focusSelector)();
-    }
+    };
   }
 
   it('looks right collapsed', simpleTest(selector));
   it('looks right expanded', simpleExpandedTest(selector));
 
-  describe('NxTreeView with clickable children', function() {
+  describe('NxCollapsibleItems with clickable children', function() {
     it('looks right collapsed', simpleTest(clickableTreeViewSelector));
     it('looks right expanded', simpleExpandedTest(clickableTreeViewSelector));
     it('has items that look right on hover', hoverExpandedTest(clickableTreeViewSelector));
@@ -70,7 +70,7 @@ describe('NxTreeView', function() {
     it('has items that look right on focus and hover', focusAndHoverExpandedTest(clickableTreeViewSelector));
   });
 
-  describe('NxTreeView with clickable children in sidebar', function() {
+  describe('NxCollapsibleItems with clickable children in sidebar', function() {
     it('looks right collapsed', simpleTest(clickableTreeViewSidebarSelector));
     it('looks right expanded', simpleExpandedTest(clickableTreeViewSidebarSelector));
     it('has items that look right on hover', hoverExpandedTest(clickableTreeViewSidebarSelector));
@@ -78,11 +78,11 @@ describe('NxTreeView', function() {
     it('has items that look right on focus and hover', focusAndHoverExpandedTest(clickableTreeViewSidebarSelector));
   });
 
-  describe('NxTreeView with checkbox/radio children', function() {
+  describe('NxCollapsibleItems with checkbox/radio children', function() {
     it('looks right collapsed', simpleTest(checkboxTreeViewSelector));
     it('looks right expanded', async function() {
-      const firstTreeSelector = `${checkboxTreeViewSelector} .nx-tree-view:first-child`,
-          secondTreeSelector = `${checkboxTreeViewSelector} .nx-tree-view:last-child`,
+      const firstTreeSelector = `${checkboxTreeViewSelector} .nx-collapsible-items:first-child`,
+          secondTreeSelector = `${checkboxTreeViewSelector} .nx-collapsible-items:last-child`,
           [firstTree, secondTree] = await Promise.all([browser.$(firstTreeSelector), browser.$(secondTreeSelector)]);
 
       await firstTree.click();
@@ -92,11 +92,11 @@ describe('NxTreeView', function() {
     });
   });
 
-  describe('Empty NxTreeView', function() {
+  describe('Empty NxCollapsibleItems', function() {
     it('looks right', simpleTest(emptyTreeViewSelector));
   });
 
-  describe('Disabled NxTreeView', function() {
+  describe('Disabled NxCollapsibleItems', function() {
     it('looks right', simpleTest(disabledTreeViewSelector));
   });
 });
