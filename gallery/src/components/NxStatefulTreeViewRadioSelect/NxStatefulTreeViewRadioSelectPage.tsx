@@ -30,9 +30,8 @@ const NxStatefulTreeViewRadioSelectPage = () =>
         <NxCode>NxStatefulTreeViewRadioSelect</NxCode> has been renamed
         to <NxCode>NxStatefulCollapsibleItemsRadioSelect</NxCode> and
         is now deprecated and will be removed in the next major version.
-        Please use&nbsp;
-        <NxTextLink href="#NxStatefulCollapsibleItemsRadioSelect">NxStatefulCollapsibleItemsRadioSelect</NxTextLink>
-        &nbsp;instead.
+        {/* eslint-disable-next-line max-len */}
+        Please use <NxTextLink href="#/pages/NxStatefulCollapsibleItemsRadioSelect">NxStatefulCollapsibleItemsRadioSelect</NxTextLink> instead.
       </NxWarningAlert>
 
       <NxP>

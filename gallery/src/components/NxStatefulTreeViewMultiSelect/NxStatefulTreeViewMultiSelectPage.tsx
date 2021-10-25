@@ -30,7 +30,8 @@ const NxStatefulTreeViewMultiSelectPage = () =>
         <NxCode>NxStatefulTreeViewMultiSelect</NxCode> has been renamed
         to <NxCode>NxCollapsibleItemsMultiSelect</NxCode> and is now deprecated
         and will be removed in the next major version.
-        Please use <NxTextLink href="#NxCollapsibleItemsMultiSelect">NxCollapsibleItemsMultiSelect</NxTextLink> instead.
+        {/* eslint-disable-next-line max-len */}
+        Please use <NxTextLink href="#/pages/NxCollapsibleItemsMultiSelect">NxCollapsibleItemsMultiSelect</NxTextLink> instead.
       </NxWarningAlert>
 
       <NxP>
