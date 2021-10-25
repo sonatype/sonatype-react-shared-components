@@ -126,6 +126,15 @@ import NxStatefulSearchTransferListPage
 import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
 import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallThreatCounterPage';
+import NxCollapsibleItemsPage from './components/NxCollapsibleItems/NxCollapsibleItemsPage';
+import NxCollapsibleItemsMultiSelectPage
+  from './components/NxCollapsibleItemsMultiSelect/NxCollapsibleItemsMultiSelectPage';
+import NxCollapsibleItemsRadioSelectPage
+  from './components/NxCollapsibleItemsRadioSelect/NxCollapsibleItemsRadioSelectPage';
+import NxStatefulCollapsibleItemsMultiSelectPage
+  from './components/NxStatefulCollapsibleItemsMultiSelect/NxStatefulCollapsibleItemsMultiSelectPage';
+import NxStatefulCollapsibleItemsRadioSelectPage
+  from './components/NxStatefulCollapsibleItemsRadioSelect/NxStatefulCollapsibleItemsRadioSelectPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -196,6 +205,11 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
+    NxCollapsibleItems: NxCollapsibleItemsPage,
+    NxCollapsibleItemsMultiSelect: NxCollapsibleItemsMultiSelectPage,
+    NxStatefulCollapsibleItemsMultiSelect: NxStatefulCollapsibleItemsMultiSelectPage,
+    NxCollapsibleItemsRadioSelect: NxCollapsibleItemsRadioSelectPage,
+    NxStatefulCollapsibleItemsRadioSelect: NxStatefulCollapsibleItemsRadioSelectPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
   'Guidelines': {

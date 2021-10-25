@@ -5,7 +5,15 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
+import {
+  NxTable,
+  NxP,
+  NxCode,
+  NxTextLink,
+  NxTile,
+  NxH3,
+  NxWarningAlert
+} from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -30,6 +38,12 @@ const nxTreeViewCode = require('./NxTreeViewExample?raw'),
 const NxTreeViewPage = () =>
   <>
     <GalleryDescriptionTile>
+      <NxWarningAlert>
+        <NxCode>NxTreeView</NxCode> have been renamed and is now deprecated and will be
+        removed in the next major version.
+        Please use <NxTextLink href="#NxCollapsibleItems">NxCollapsibleItems</NxTextLink>
+      </NxWarningAlert>
+
       <NxP>
         A set of default styles and basic React for an expanding tree view.
       </NxP>

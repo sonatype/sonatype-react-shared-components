@@ -79,6 +79,13 @@ export {
   NxTreeViewChildProps
 } from './components/NxTreeView/NxTreeView';
 
+export {
+  default as NxCollapsibleItems,
+  NxCollapsibleItemsChild,
+  Props as NxCollapsibleItemsProps,
+  NxCollapsibleItemsChildProps
+} from './components/NxCollapsibleItems/NxCollapsibleItems';
+
 export { default as NxTooltip, Props as NxTooltipProps, TooltipPlacement as NxTooltipPlacement }
   from './components/NxTooltip/NxTooltip';
 
@@ -90,6 +97,12 @@ export {
   Props as NxTreeViewRadioSelectProps,
   Option as NxTreeViewRadioSelectOption
 } from './components/NxTreeViewSelect/NxTreeViewRadioSelect/NxTreeViewRadioSelect';
+
+export {
+  default as NxCollapsibleItemsRadioSelect,
+  Props as NxCollapsibleItemsRadioSelectProps,
+  Option as NxCollapsibleItemsRadioSelectOption
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleItemsRadioSelect/NxCollapsibleItemsRadioSelect';
 
 export { default as NxPolicyThreatSlider, Props as NxPolicyThreatSliderProps, PolicyThreatLevelRange }
   from './components/NxPolicyThreatSlider/NxPolicyThreatSlider';
@@ -125,6 +138,24 @@ export {
   default as NxStatefulTreeViewRadioSelect,
   Props as NxStateTreeViewRadioSelectProps
 } from './components/NxTreeViewSelect/NxTreeViewRadioSelect/stateful/NxStatefulTreeViewRadioSelect';
+
+export {
+  default as NxCollapsibleItemsMultiSelect,
+  Props as NxCollapsibleItemsMultiSelectProps,
+  Option as NxCollapsibleItemsMultiSelectOption
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleItemsMultiSelect/NxCollapsibleItemsMultiSelect';
+
+export {
+  default as NxStatefulCollapsibleItemsMultiSelect,
+  Props as NxStateCollapsibleItemsMultiSelectProps
+// eslint-disable-next-line max-len
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleItemsMultiSelect/stateful/NxStatefulCollapsibleItemsMultiSelect';
+
+export {
+  default as NxStatefulCollapsibleItemsRadioSelect,
+  Props as NxStateCollapsibleItemsRadioSelectProps
+// eslint-disable-next-line max-len
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleItemsRadioSelect/stateful/NxStatefulCollapsibleItemsRadioSelect';
 
 export {
   default as NxStatefulCheckbox,
