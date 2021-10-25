@@ -11,7 +11,7 @@ import { NxStatefulAccordion, NxAccordion } from '@sonatype/react-shared-compone
 export default () =>
   <NxStatefulAccordion defaultOpen={true}>
     <NxAccordion.Header>
-      <h2 className="nx-accordion__header-title">Foo</h2>
+      <NxAccordion.Title>Foo</NxAccordion.Title>
     </NxAccordion.Header>
     <p>Foo Bar Baz</p>
   </NxStatefulAccordion>;

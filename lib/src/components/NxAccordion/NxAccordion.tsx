@@ -15,6 +15,7 @@ import { HeaderContextType, HeaderProps, Props, propTypes } from './types';
 import './NxAccordion.scss';
 import { splitOutFirst } from '../../util/childUtil';
 import { getUniqueId } from '../../util/idUtil';
+import withClass from '../../util/withClass';
 
 export { Props, HeaderProps };
 
@@ -93,3 +94,4 @@ export default function NxAccordion(props: Props) {
 
 NxAccordion.propTypes = propTypes;
 NxAccordion.Header = NxAccordionHeader;
+NxAccordion.Title = withClass('h2', 'nx-accordion__title');
