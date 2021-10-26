@@ -39,22 +39,20 @@
     position: relative;
 
     &:first-child {
-      &, > .nx-tree__collapse-label {
-        > .nx-tree__line-intersection > .nx-tree__top-line {
-          display: none;
+      > .nx-tree__line-intersection > .nx-tree__top-line {
+        display: none;
 
-          // only display this line for subtrees, not the top-level tree
-          .nx-tree__item > .nx-tree > & {
-            display: block;
-          }
+        // only display this line for subtrees, not the top-level tree
+        .nx-tree__item > .nx-tree > & {
+          display: block;
         }
       }
 
       &:last-child {
-        > .nx-tree__line-intersection > .nx-tree__right-line {
+        > .nx-tree__line-intersection:not(.nx-tree__line-intersection--collapsible) > .nx-tree__right-line {
+          // do not display this line for top level items in non-collapsible trees when they have no siblings
           display: none;
 
-          // do not display this line for top level items in non-collapsible trees when they have no siblings
           .nx-tree__item > .nx-tree > & {
             display: block;
           }
@@ -63,14 +61,12 @@
     }
 
     &:last-child {
-      &, > .nx-tree__collapse-label {
-        > .nx-tree__line-intersection > .nx-tree__bottom-line {
-          display: none;
-        }
+      > .nx-tree__line-intersection > .nx-tree__bottom-line {
+        display: none;
+      }
 
-        > .nx-tree__line-drop {
-          display: none;
-        }
+      > .nx-tree__line-drop {
+        display: none;
       }
     }
 
@@ -110,13 +106,6 @@
     stroke-width: 1px;
   }
 
-  &__collapse-focus {
-    display: none;
-
-    fill: none;
-    stroke: var(--nx-color-interactive-border-focus);
-  }
-
   &__item-label {
     @include nx-container-helpers.container-horizontal;
     @include nx-text-helpers.truncate-ellipsis;
@@ -134,14 +123,15 @@
   }
 
   &__collapse-label {
+    box-sizing: border-box;
     cursor: pointer;
     grid-area: line-intersection;
-    height: $normal-item-label-row-height;
+    height: 24px;
+    width: 24px;
 
     &:focus-within {
-      .nx-tree__collapse-focus {
-        display: inline;
-      }
+      border: 1px solid var(--nx-color-interactive-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
     }
   }
 

@@ -28,13 +28,15 @@ export default function NxTreeItem(props: ItemProps) {
         open: isOpen,
         'nx-tree__item--collapsible': collapsible
       }),
-      attrs = omit(['isOpen', 'onToggleCollapse'], otherProps);
+      attrs = omit(['isOpen', 'onToggleCollapse'], otherProps),
+      intersectionLineClasses = classnames('nx-tree__line-intersection', {
+        'nx-tree__line-intersection--collapsible': collapsible
+      });
 
   const intersectionLines = (
-    <svg className="nx-tree__line-intersection" viewBox="0 0 36 32">
+    <svg className={intersectionLineClasses} viewBox="0 0 36 32">
       <line className="nx-tree__top-line" x1="12" x2="12" y2={topLineEnd} />
       <line className="nx-tree__right-line" x1={rightLineStart} x2="36" y1="20" y2="20" />
-      <polygon className="nx-tree__collapse-focus" points="0.5,8.5 0.5,31.5 23.5,31.5 23.5,8.5" />
       { collapsible ?
         <NxFontAwesomeIcon height="14" width="14" x="5" y="13" icon={collapseIcon} /> :
         <line className="nx-tree__bottom-line" x1="12" x2="12" y1="20.5" y2="32" />
@@ -42,12 +44,16 @@ export default function NxTreeItem(props: ItemProps) {
     </svg>
   );
 
-  const intersection = collapsible ? (
-    <label className="nx-tree__collapse-label">
-      <input className="nx-tree__collapse-input" type="checkbox" checked={isOpen} onChange={onToggleCollapse} />
+  const intersection = (
+    <>
       {intersectionLines}
-    </label>
-  ) : intersectionLines;
+      { collapsible &&
+        <label className="nx-tree__collapse-label">
+          <input className="nx-tree__collapse-input" type="checkbox" checked={isOpen} onChange={onToggleCollapse} />
+        </label>
+      }
+    </>
+  );
 
   return (
     <li className={classes} { ...attrs }>
