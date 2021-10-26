@@ -12,7 +12,7 @@ import NxTreeStatefulItem from '../NxTreeStatefulItem';
 describe('NxTreeStatefulItem', function() {
   const getShallow = getShallowComponent(NxTreeStatefulItem, {});
 
-  it('renders a NxTreeItem with all applicable props passed through', function() {
+  it('renders an NxTreeItem with all applicable props passed through', function() {
     const component = getShallow({ id: 'foo', className: 'bar', lang: 'en-us', collapsible: true });
 
     expect(component).toMatchSelector(NxTreeItem);
