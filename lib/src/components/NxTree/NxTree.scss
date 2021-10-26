@@ -9,6 +9,7 @@
 
 .nx-tree {
   padding: 0;
+  margin: var(--nx-spacing-6x) 0;
 }
 
 // note that this block must be before the .nx-tree__item block
@@ -74,7 +75,7 @@
 
     // This has as much to do with the width of fixed-width FA icons as anything, so don't expect it to fit our
     // spacing variables cleanly
-    margin-left: 1px;
+    margin: 0 0 0 1px;
   }
 }
 
