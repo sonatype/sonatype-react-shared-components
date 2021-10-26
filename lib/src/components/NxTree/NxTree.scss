@@ -89,6 +89,10 @@
     }
   }
 
+  &__collapse-icon {
+    fill: var(--nx-swatch-grey-05);
+  }
+
   &__line-intersection {
     grid-area: line-intersection;
   }
