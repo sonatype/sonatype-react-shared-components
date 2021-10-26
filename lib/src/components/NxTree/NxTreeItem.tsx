@@ -8,7 +8,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
-import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
