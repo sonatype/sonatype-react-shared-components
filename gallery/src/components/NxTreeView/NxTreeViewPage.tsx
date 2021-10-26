@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
+import { NxTable, NxP, NxCode, NxTile, NxH3, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -31,7 +31,9 @@ const NxTreeViewPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        A set of default styles and basic React for an expanding tree view.
+        A set of default styles for an expandable series of items. Note that the name of this component is
+        a misnomer as it no longer supports tree structures, and it is slated to be renamed in the near future. For
+        an actual tree component, see <NxTextLink href="#/pages/NxTree"><NxCode>NxTree</NxCode></NxTextLink>.
       </NxP>
 
       <NxTable>
