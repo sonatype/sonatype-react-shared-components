@@ -10,6 +10,7 @@
 .nx-tree {
   $normal-item-label-row-height: 32px;
   $first-item-label-row-height: calc(var(--nx-line-height) * 1em);
+  $item-label-left-margin: var(--nx-spacing-base);
   --nx-item-label-row-height: #{$normal-item-label-row-height};
 
   padding: 0;
@@ -111,7 +112,7 @@
     @include nx-text-helpers.truncate-ellipsis;
 
     grid-area: label;
-    margin-left: var(--nx-spacing-base);
+    margin-left: $item-label-left-margin;
   }
 
   &__collapse-input {
@@ -143,6 +144,16 @@
 
     > .nx-tree__collapse-label, > .nx-tree__line-intersection, > .nx-tree__line-drop {
       display: none;
+    }
+
+    // the next two blocks effectively undo the item label left margin
+    > .nx-tree__item-label {
+      margin-left: 0;
+    }
+
+    > .nx-tree {
+      position: relative;
+      right: $item-label-left-margin;
     }
   }
 }
