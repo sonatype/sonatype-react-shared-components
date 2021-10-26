@@ -247,7 +247,7 @@ const NxTreePage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="No Gutter Example"
-                        id="nx-tree-collapsible-no-gutter-example"
+                        id="nx-tree-no-gutter-example"
                         liveExample={NoGutterExample}
                         codeExamples={[noGutterCode]}
                         collapseCodeExample>
