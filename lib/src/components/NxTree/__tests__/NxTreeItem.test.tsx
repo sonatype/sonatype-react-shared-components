@@ -6,7 +6,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -73,7 +73,7 @@ describe('NxTreeItem', function() {
   describe('when collapsible', function() {
     const getShallowCollapsible = (extraProps?: Partial<Props>) => getShallow({ collapsible: true, ...extraProps });
 
-    it('still contains all the lines', function() {
+    it('still contains the top and right lines but not the bottom line', function() {
       const component = getShallowCollapsible(),
           intersectionSvg = component.find('svg.nx-tree__line-intersection'),
           dropLineSvg = component.find('svg.nx-tree__line-drop');
@@ -81,7 +81,7 @@ describe('NxTreeItem', function() {
       expect(intersectionSvg).toExist();
       expect(intersectionSvg).toContainMatchingElement('line.nx-tree__top-line');
       expect(intersectionSvg).toContainMatchingElement('line.nx-tree__right-line');
-      expect(intersectionSvg).toContainMatchingElement('line.nx-tree__bottom-line');
+      expect(intersectionSvg).not.toContainMatchingElement('line.nx-tree__bottom-line');
 
       expect(dropLineSvg).toExist();
       expect(dropLineSvg).toContainMatchingElement('line');
@@ -105,14 +105,12 @@ describe('NxTreeItem', function() {
       });
     });
 
-    it('wraps the intersection lines in a label which also contains a checkbox input', function() {
+    it('adds a label after the intersection lines', function() {
       const component = getShallowCollapsible(),
-          label = component.find('label');
+          label = component.find('svg.nx-tree__line-intersection + label');
 
       expect(label).toExist();
       expect(label).toHaveClassName('nx-tree__collapse-label');
-      expect(label).toContainMatchingElement('svg.nx-tree__line-intersection');
-      expect(label).not.toContainMatchingElement('svg.nx-tree__line-drop');
 
       const checkbox = label.find('input');
       expect(checkbox).toExist();
