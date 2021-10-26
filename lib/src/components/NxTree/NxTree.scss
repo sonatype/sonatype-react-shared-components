@@ -8,7 +8,9 @@
 @use '../../scss-shared/nx-text-helpers';
 
 .nx-tree {
-  $line-intersection-height: 32px;
+  $normal-item-label-row-height: 32px;
+  $first-item-label-row-height: calc(var(--nx-line-height) * 1em);
+  --nx-item-label-row-height: #{$normal-item-label-row-height};
 
   padding: 0;
   margin: var(--nx-spacing-6x) 0;
@@ -27,9 +29,10 @@
   }
 
   &__item {
+    align-items: end;
     display: grid;
     grid-template:
-      "line-intersection label" $line-intersection-height
+      "line-intersection label" var(--nx-item-label-row-height)
       "line-drop      children" auto /
        36px               auto;
 
@@ -80,19 +83,28 @@
     }
   }
 
+  > .nx-tree__item:first-child {
+    // shorten the item label row only on the first item in the top-level tree
+    --nx-item-label-row-height: #{$first-item-label-row-height};
+
+    .nx-tree & {
+      --nx-item-label-row-height: #{$normal-item-label-row-height};
+    }
+  }
+
   &__line-intersection {
     grid-area: line-intersection;
   }
 
   &__line-drop {
     grid-area: line-drop;
+    height: 100%;
 
     // this element by itself should not contribute to the grid size. Rather this element derives its size from the grid
     position: absolute;
   }
 
   &__line-intersection, &__line-drop {
-    height: 100%;
     width: 100%;
     stroke: var(--nx-swatch-grey-50);
     stroke-width: 1px;
@@ -109,7 +121,6 @@
     @include nx-container-helpers.container-horizontal;
     @include nx-text-helpers.truncate-ellipsis;
 
-    align-self: end;
     grid-area: label;
     margin-left: var(--nx-spacing-base);
   }
@@ -125,6 +136,7 @@
   &__collapse-label {
     cursor: pointer;
     grid-area: line-intersection;
+    height: $normal-item-label-row-height;
 
     &:focus-within {
       .nx-tree__collapse-focus {
@@ -135,7 +147,7 @@
 
   &--no-gutter > .nx-tree__item {
     grid-template:
-      "label"    $line-intersection-height
+      "label"    var(--nx-item-label-row-height)
       "children" auto /
        auto;
 
