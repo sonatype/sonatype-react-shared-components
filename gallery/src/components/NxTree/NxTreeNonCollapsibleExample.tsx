@@ -150,85 +150,83 @@ export default function NxTreeNonCollapsibleExample() {
                           <NxFontAwesomeIcon fixedWidth icon={faFile} />
                           <span>index.html</span>
                         </NxTree.ItemLabel>
+                      </NxTree.Item>
+                      <NxTree.Item>
+                        <NxTree.ItemLabel>
+                          <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
+                          <span>images</span>
+                        </NxTree.ItemLabel>
                         <NxTree>
                           <NxTree.Item>
                             <NxTree.ItemLabel>
-                              <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                              <span>images</span>
+                              <NxFontAwesomeIcon fixedWidth icon={faFile} />
+                              <span>cat1.jpg</span>
                             </NxTree.ItemLabel>
-                            <NxTree>
-                              <NxTree.Item>
-                                <NxTree.ItemLabel>
-                                  <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                                  <span>cat1.jpg</span>
-                                </NxTree.ItemLabel>
-                              </NxTree.Item>
-                              <NxTree.Item>
-                                <NxTree.ItemLabel>
-                                  <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                                  <span>cat2.jpg</span>
-                                </NxTree.ItemLabel>
-                              </NxTree.Item>
-                              <NxTree.Item>
-                                <NxTree.ItemLabel>
-                                  <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                                  <span>cat3.jpg</span>
-                                </NxTree.ItemLabel>
-                              </NxTree.Item>
-                              <NxTree.Item>
-                                <NxTree.ItemLabel>
-                                  <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                                  <span>cat5000.jpg</span>
-                                </NxTree.ItemLabel>
-                              </NxTree.Item>
-                            </NxTree>
+                          </NxTree.Item>
+                          <NxTree.Item>
+                            <NxTree.ItemLabel>
+                              <NxFontAwesomeIcon fixedWidth icon={faFile} />
+                              <span>cat2.jpg</span>
+                            </NxTree.ItemLabel>
+                          </NxTree.Item>
+                          <NxTree.Item>
+                            <NxTree.ItemLabel>
+                              <NxFontAwesomeIcon fixedWidth icon={faFile} />
+                              <span>cat3.jpg</span>
+                            </NxTree.ItemLabel>
+                          </NxTree.Item>
+                          <NxTree.Item>
+                            <NxTree.ItemLabel>
+                              <NxFontAwesomeIcon fixedWidth icon={faFile} />
+                              <span>cat5000.jpg</span>
+                            </NxTree.ItemLabel>
+                          </NxTree.Item>
+                        </NxTree>
+                      </NxTree.Item>
+                      <NxTree.Item>
+                        <NxTree.ItemLabel>
+                          <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
+                          <span>videos</span>
+                        </NxTree.ItemLabel>
+                        <NxTree>
+                          <NxTree.Item>
+                            <NxTree.ItemLabel>
+                              <NxFontAwesomeIcon fixedWidth icon={faFile} />
+                              <span>boxes.webm</span>
+                            </NxTree.ItemLabel>
+                          </NxTree.Item>
+                          <NxTree.Item>
+                            <NxTree.ItemLabel>
+                              <NxFontAwesomeIcon fixedWidth icon={faFile} />
+                              <span>cucumber.webm</span>
+                            </NxTree.ItemLabel>
                           </NxTree.Item>
                           <NxTree.Item>
                             <NxTree.ItemLabel>
                               <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                              <span>videos</span>
+                              <span>keyboard</span>
                             </NxTree.ItemLabel>
                             <NxTree>
                               <NxTree.Item>
                                 <NxTree.ItemLabel>
-                                  <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                                  <span>boxes.webm</span>
-                                </NxTree.ItemLabel>
-                              </NxTree.Item>
-                              <NxTree.Item>
-                                <NxTree.ItemLabel>
-                                  <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                                  <span>cucumber.webm</span>
+                                  <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
+                                  <span>keyboard1.webm</span>
                                 </NxTree.ItemLabel>
                               </NxTree.Item>
                               <NxTree.Item>
                                 <NxTree.ItemLabel>
                                   <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                                  <span>keyboard</span>
+                                  <span>keyboard2.webm</span>
                                 </NxTree.ItemLabel>
-                                <NxTree>
-                                  <NxTree.Item>
-                                    <NxTree.ItemLabel>
-                                      <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                                      <span>keyboard1.webm</span>
-                                    </NxTree.ItemLabel>
-                                  </NxTree.Item>
-                                  <NxTree.Item>
-                                    <NxTree.ItemLabel>
-                                      <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                                      <span>keyboard2.webm</span>
-                                    </NxTree.ItemLabel>
-                                  </NxTree.Item>
-                                  <NxTree.Item>
-                                    <NxTree.ItemLabel>
-                                      <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                                      <span>
-                                        {/* eslint-disable-next-line max-len */}
-                                        longnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongname.avi
-                                      </span>
-                                    </NxTree.ItemLabel>
-                                  </NxTree.Item>
-                                </NxTree>
+                              </NxTree.Item>
+                              <NxTree.Item>
+                                <NxTree.ItemLabel>
+                                  <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
+                                  <span>
+                                    {/* eslint-disable-next-line max-len */}
+                                    longnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongname.avi
+                                  </span>
+                                </NxTree.ItemLabel>
                               </NxTree.Item>
                             </NxTree>
                           </NxTree.Item>
