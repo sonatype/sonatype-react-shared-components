@@ -47,7 +47,7 @@ export default function NxButtonPage() {
           <NxTable.Body>
             <NxTable.Row>
               <NxTable.Cell>variant</NxTable.Cell>
-              <NxTable.Cell>'primary' | 'secondary' | 'tertiary' | 'icon-only' | 'error'</NxTable.Cell>
+              <NxTable.Cell>'primary' | 'secondary' | 'tertiary' | 'link' | 'icon-only' | 'error'</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>secondary</NxTable.Cell>
               <NxTable.Cell>The variant of button. See examples of each variant below.</NxTable.Cell>

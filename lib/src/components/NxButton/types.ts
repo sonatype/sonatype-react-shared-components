@@ -7,7 +7,7 @@
 import * as PropTypes from 'prop-types';
 import {ButtonHTMLAttributes, ValidationMap} from 'react';
 
-export const NX_BUTTON_VARIANTS = ['primary', 'secondary', 'tertiary', 'icon-only', 'error'] as const;
+export const NX_BUTTON_VARIANTS = ['primary', 'secondary', 'tertiary', 'link', 'icon-only', 'error'] as const;
 export type NX_BUTTON_VARIANT_TYPE = (typeof NX_BUTTON_VARIANTS)[number]; // See https://stackoverflow.com/a/45486495
 
 interface CommonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'title'> {
