@@ -13,9 +13,11 @@ import { ThreatLevelNumber, ThreatLevelCategory, allThreatLevelCategories, allTh
 export interface Props {
   threatLevelCategory?: ThreatLevelCategory;
   policyThreatLevel?: ThreatLevelNumber;
+  title?: string | null;
 }
 
 export const propTypes: WeakValidationMap<Props> = {
+  title: PropTypes.string,
   threatLevelCategory: PropTypes.oneOf(allThreatLevelCategories),
   policyThreatLevel: PropTypes.oneOf(allThreatLevelNumbers)
 };
