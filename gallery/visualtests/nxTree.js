@@ -16,6 +16,7 @@ describe('NxTree', function() {
       collapsibleExampleSelector = '#nx-tree-collapsible-example .gallery-example-live > .nx-tree',
       nonCollapsibleMultiTopExampleSelector = '#nx-tree-non-collapsible-multi-top-example .nx-tree',
       collapsibleMultiTopExampleSelector = '#nx-tree-collapsible-multi-top-example .nx-tree',
+      noGutterExampleSelector = '#nx-tree-no-gutter-example .gallery-example-live',
       aCollapseControlSelector = `${collapsibleExampleSelector} > .nx-tree__item > .nx-tree > .nx-tree__item >
           .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item:nth-child(2) >
           .nx-tree__collapse-label`;
@@ -24,6 +25,8 @@ describe('NxTree', function() {
   it('looks right with a single top entry and collapsing', simpleTest(collapsibleExampleSelector));
   it('looks right with a multiple top entries and no collapsing', simpleTest(nonCollapsibleMultiTopExampleSelector));
   it('looks right with a multiple top entries and collapsing', simpleTest(collapsibleMultiTopExampleSelector));
+  it('looks right in relation to other content when it has the no-gutter modifier',
+      simpleTest(noGutterExampleSelector));
 
   it('looks right with some collapsible elements collapsed', async function() {
     const collapseControlSelector1 = `${collapsibleExampleSelector} .nx-tree__item .nx-tree__item
