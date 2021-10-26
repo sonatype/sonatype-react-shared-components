@@ -10,135 +10,135 @@
 .nx-tree {
   padding: 0;
   margin: var(--nx-spacing-6x) 0;
-}
 
-// note that this block must be before the .nx-tree__item block
-.nx-tree__item--collapsible {
-  > .nx-tree, > .nx-tree__line-drop {
-    display: none;
-  }
-
-  &.open {
+  // note that this block must be before the .nx-tree__item block
+  &__item--collapsible {
     > .nx-tree, > .nx-tree__line-drop {
-      display: block;
+      display: none;
+    }
+
+    &.open {
+      > .nx-tree, > .nx-tree__line-drop {
+        display: block;
+      }
     }
   }
-}
 
-.nx-tree__item {
-  display: grid;
-  grid-template:
-    "line-intersection label" 32px
-    "line-drop      children" auto /
-     36px               auto;
+  &__item {
+    display: grid;
+    grid-template:
+      "line-intersection label" 32px
+      "line-drop      children" auto /
+       36px               auto;
 
-  position: relative;
+    position: relative;
 
-  &:first-child {
-    &, > .nx-tree__collapse-label {
-      > .nx-tree__line-intersection > .nx-tree__top-line {
-        display: none;
+    &:first-child {
+      &, > .nx-tree__collapse-label {
+        > .nx-tree__line-intersection > .nx-tree__top-line {
+          display: none;
 
-        // only display this line for subtrees, not the top-level tree
-        .nx-tree__item > .nx-tree > & {
-          display: block;
+          // only display this line for subtrees, not the top-level tree
+          .nx-tree__item > .nx-tree > & {
+            display: block;
+          }
+        }
+      }
+
+      &:last-child {
+        > .nx-tree__line-intersection > .nx-tree__right-line {
+          display: none;
+
+          // do not display this line for top level items in non-collapsible trees when they have no siblings
+          .nx-tree__item > .nx-tree > & {
+            display: block;
+          }
         }
       }
     }
 
     &:last-child {
-      > .nx-tree__line-intersection > .nx-tree__right-line {
-        display: none;
+      &, > .nx-tree__collapse-label {
+        > .nx-tree__line-intersection > .nx-tree__bottom-line {
+          display: none;
+        }
 
-        // do not display this line for top level items in non-collapsible trees when they have no siblings
-        .nx-tree__item > .nx-tree > & {
-          display: block;
+        > .nx-tree__line-drop {
+          display: none;
         }
       }
     }
-  }
 
-  &:last-child {
-    &, > .nx-tree__collapse-label {
-      > .nx-tree__line-intersection > .nx-tree__bottom-line {
-        display: none;
-      }
+    > .nx-tree {
+      grid-area: children;
 
-      > .nx-tree__line-drop {
-        display: none;
-      }
+      // This has as much to do with the width of fixed-width FA icons as anything, so don't expect it to fit our
+      // spacing variables cleanly
+      margin: 0 0 0 1px;
     }
   }
 
-  > .nx-tree {
-    grid-area: children;
-
-    // This has as much to do with the width of fixed-width FA icons as anything, so don't expect it to fit our
-    // spacing variables cleanly
-    margin: 0 0 0 1px;
+  &__line-intersection {
+    grid-area: line-intersection;
   }
-}
 
-.nx-tree__line-intersection {
-  grid-area: line-intersection;
-}
+  &__line-drop {
+    grid-area: line-drop;
 
-.nx-tree__line-drop {
-  grid-area: line-drop;
-
-  // this element by itself should not contribute to the grid size. Rather this element derives its size from the grid
-  position: absolute;
-}
-
-.nx-tree__line-intersection, .nx-tree__line-drop {
-  height: 100%;
-  width: 100%;
-  stroke: var(--nx-swatch-grey-50);
-  stroke-width: 1px;
-}
-
-.nx-tree__collapse-focus {
-  display: none;
-
-  fill: none;
-  stroke: var(--nx-color-interactive-border-focus);
-}
-
-.nx-tree__item-label {
-  @include nx-container-helpers.container-horizontal;
-  @include nx-text-helpers.truncate-ellipsis;
-
-  align-self: end;
-  grid-area: label;
-  margin-left: var(--nx-spacing-base);
-}
-
-.nx-tree__collapse-input {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  margin: 0;
-  outline: none;
-}
-
-.nx-tree__collapse-label {
-  cursor: pointer;
-  grid-area: line-intersection;
-
-  &:focus-within {
-    .nx-tree__collapse-focus {
-      display: inline;
-    }
+    // this element by itself should not contribute to the grid size. Rather this element derives its size from the grid
+    position: absolute;
   }
-}
 
-.nx-tree--no-gutter > .nx-tree__item {
-  grid-template:
-    "label"    32px
-    "children" auto /
-     auto;
+  &__line-intersection, &__line-drop {
+    height: 100%;
+    width: 100%;
+    stroke: var(--nx-swatch-grey-50);
+    stroke-width: 1px;
+  }
 
-  > .nx-tree__collapse-label, > .nx-tree__line-intersection, > .nx-tree__line-drop {
+  &__collapse-focus {
     display: none;
+
+    fill: none;
+    stroke: var(--nx-color-interactive-border-focus);
+  }
+
+  &__item-label {
+    @include nx-container-helpers.container-horizontal;
+    @include nx-text-helpers.truncate-ellipsis;
+
+    align-self: end;
+    grid-area: label;
+    margin-left: var(--nx-spacing-base);
+  }
+
+  &__collapse-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    outline: none;
+  }
+
+  &__collapse-label {
+    cursor: pointer;
+    grid-area: line-intersection;
+
+    &:focus-within {
+      .nx-tree__collapse-focus {
+        display: inline;
+      }
+    }
+  }
+
+  &--no-gutter > .nx-tree__item {
+    grid-template:
+      "label"    32px
+      "children" auto /
+       auto;
+
+    > .nx-tree__collapse-label, > .nx-tree__line-intersection, > .nx-tree__line-drop {
+      display: none;
+    }
   }
 }
