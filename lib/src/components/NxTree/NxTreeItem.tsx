@@ -18,7 +18,6 @@ export default function NxTreeItem(props: ItemProps) {
   const { collapsible, className, children, ...otherProps } = props,
       topLineEnd = collapsible ? '8' : '20.5',
       rightLineStart = collapsible ? '24' : '12.5',
-      bottomLineStart = collapsible ? '32' : '20.5',
 
       // in the following two assignments we have to use props.collapsible as opposed to just collapsible
       // so that TS understands the type guard
@@ -32,12 +31,14 @@ export default function NxTreeItem(props: ItemProps) {
       attrs = omit(['isOpen', 'onToggleCollapse'], otherProps);
 
   const intersectionLines = (
-    <svg className="nx-tree__line-intersection" viewBox="0 0 36 40">
+    <svg className="nx-tree__line-intersection" viewBox="0 0 36 32">
       <line className="nx-tree__top-line" x1="12" x2="12" y2={topLineEnd} />
       <line className="nx-tree__right-line" x1={rightLineStart} x2="36" y1="20" y2="20" />
-      <line className="nx-tree__bottom-line" x1="12" x2="12" y1={bottomLineStart} y2="40" />
       <polygon className="nx-tree__collapse-focus" points="0.5,8.5 0.5,31.5 23.5,31.5 23.5,8.5" />
-      { collapsible && <NxFontAwesomeIcon height="14" width="14" x="5" y="13" icon={collapseIcon} /> }
+      { collapsible ?
+        <NxFontAwesomeIcon height="14" width="14" x="5" y="13" icon={collapseIcon} /> :
+        <line className="nx-tree__bottom-line" x1="12" x2="12" y1="20.5" y2="32" />
+      }
     </svg>
   );
 

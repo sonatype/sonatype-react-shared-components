@@ -28,7 +28,7 @@
 .nx-tree__item {
   display: grid;
   grid-template:
-    "line-intersection label" 40px
+    "line-intersection label" 32px
     "line-drop      children" auto /
      36px               auto;
 
@@ -108,7 +108,7 @@
   @include nx-container-helpers.container-horizontal;
   @include nx-text-helpers.truncate-ellipsis;
 
-  align-self: center;
+  align-self: end;
   grid-area: label;
   margin-left: var(--nx-spacing-base);
 }
