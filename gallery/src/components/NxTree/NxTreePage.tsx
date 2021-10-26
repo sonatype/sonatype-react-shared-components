@@ -14,12 +14,14 @@ import CollapsibleMultiTopExample from './NxTreeCollapsibleMultiTopExample';
 import NonCollapsibleExample from './NxTreeNonCollapsibleExample';
 import NonCollapsibleMultiTopExample from './NxTreeNonCollapsibleMultiTopExample';
 import StatefulExample from './NxTreeStatefulExample';
+import NoGutterExample from './NxTreeNoGutterExample';
 
 const collapsibleCode = require('./NxTreeCollapsibleExample?raw'),
     collapsibleMultiTopCode = require('./NxTreeCollapsibleMultiTopExample?raw'),
     nonCollapsibleCode = require('./NxTreeNonCollapsibleExample?raw'),
     nonCollapsibleMultiTopCode = require('./NxTreeNonCollapsibleMultiTopExample?raw'),
-    statefulCode = require('./NxTreeStatefulExample?raw');
+    statefulCode = require('./NxTreeStatefulExample?raw'),
+    noGutterCode = require('./NxTreeNoGutterExample?raw');
 
 const NxTreePage = () =>
   <>
@@ -182,6 +184,24 @@ const NxTreePage = () =>
           icons, using fontawesome's <NxCode>fixedWidth</NxCode> modifier will result in the proper alignment.
         </NxP>
       </NxTile.Subsection>
+
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Utility Classes</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          You will notice that a non-collapsible top-level tree with a single top-level item does not render any
+          top-level connector lines to the left of the top-level item. It does however still alot the space where
+          such lines would be, so that if it is rendered adjacent to other trees that <em>do</em> have either multiple
+          top-level elements or collapse/expand enabled, it will be aligned with them. However, it might often be the
+          case that such a tree is rendered not alongside other trees, but alongside different kinds of content such
+          as paragraphs of text. In this case, the empty space on the left edge of the tree becomes undesirable and
+          gives the tree the appearance of being needlessly indented relative to the adjacent content. To avoid this,
+          a modifier class is provided which removes that left gutter. This class, <NxCode>nx-tree--no-gutter</NxCode>,
+          is only to be used on trees in this circumstance: top level trees without collapse-expand enabled with a
+          single top-level element.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Non-collapsible Example"
@@ -224,6 +244,15 @@ const NxTreePage = () =>
                         codeExamples={[collapsibleMultiTopCode]}
                         collapseCodeExample>
       An example of a collapsible tree view showing how multiple top-level entries are styled.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="No Gutter Example"
+                        id="nx-tree-collapsible-no-gutter-example"
+                        liveExample={NoGutterExample}
+                        codeExamples={[noGutterCode]}
+                        collapseCodeExample>
+      An example of a non-collapsible tree with a single top level element which has its left-most gutter space removed
+      via the <NxCode>nx-tree--no-gutter</NxCode> class so that it aligns well with surrounding non-tree content.
     </GalleryExampleTile>
   </>;
 
