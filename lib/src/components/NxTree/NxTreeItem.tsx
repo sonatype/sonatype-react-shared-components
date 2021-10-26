@@ -16,7 +16,7 @@ import { ItemProps, itemPropTypes } from './types';
 
 export default function NxTreeItem(props: ItemProps) {
   const { collapsible, className, children, ...otherProps } = props,
-      topLineEnd = collapsible ? '8' : '20.5',
+      topLineEnd = collapsible ? '16' : '28.5',
       rightLineStart = collapsible ? '24' : '12.5',
 
       // in the following two assignments we have to use props.collapsible as opposed to just collapsible
@@ -34,12 +34,12 @@ export default function NxTreeItem(props: ItemProps) {
       });
 
   const intersectionLines = (
-    <svg className={intersectionLineClasses} viewBox="0 0 36 32">
+    <svg className={intersectionLineClasses} viewBox="0 0 36 40">
       <line className="nx-tree__top-line" x1="12" x2="12" y2={topLineEnd} />
-      <line className="nx-tree__right-line" x1={rightLineStart} x2="36" y1="20" y2="20" />
+      <line className="nx-tree__right-line" x1={rightLineStart} x2="36" y1="28" y2="28" />
       { collapsible ?
-        <NxFontAwesomeIcon height="14" width="14" x="5" y="13" icon={collapseIcon} /> :
-        <line className="nx-tree__bottom-line" x1="12" x2="12" y1="20.5" y2="32" />
+        <NxFontAwesomeIcon height="14" width="14" x="5" y="21" icon={collapseIcon} /> :
+        <line className="nx-tree__bottom-line" x1="12" x2="12" y1="28.5" y2="40" />
       }
     </svg>
   );

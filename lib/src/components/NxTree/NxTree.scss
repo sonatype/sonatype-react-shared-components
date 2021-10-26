@@ -8,7 +8,7 @@
 @use '../../scss-shared/nx-text-helpers';
 
 .nx-tree {
-  $normal-item-label-row-height: 32px;
+  $normal-item-label-row-height: 40px;
   $first-item-label-row-height: calc(var(--nx-line-height) * 1em);
   $item-label-left-margin: var(--nx-spacing-base);
   --nx-item-label-row-height: #{$normal-item-label-row-height};
