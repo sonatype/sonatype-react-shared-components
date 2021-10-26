@@ -16,9 +16,9 @@ import { ItemProps, itemPropTypes } from './types';
 
 export default function NxTreeItem(props: ItemProps) {
   const { collapsible, className, children, ...otherProps } = props,
-      topLineEnd = collapsible ? '20%' : '50%',
-      rightLineStart = collapsible ? '80%' : '50%',
-      bottomLineStart = collapsible ? '80%' : '50%',
+      topLineEnd = collapsible ? '8' : '20.5',
+      rightLineStart = collapsible ? '24' : '12.5',
+      bottomLineStart = collapsible ? '32' : '20.5',
 
       // in the following two assignments we have to use props.collapsible as opposed to just collapsible
       // so that TS understands the type guard
@@ -32,11 +32,12 @@ export default function NxTreeItem(props: ItemProps) {
       attrs = omit(['isOpen', 'onToggleCollapse'], otherProps);
 
   const intersectionLines = (
-    <svg className="nx-tree__line-intersection">
-      <line className="nx-tree__top-line" x1="50%" x2="50%" y2={topLineEnd} />
-      <line className="nx-tree__right-line" x1={rightLineStart} x2="100%" y1="50%" y2="50%" />
-      <line className="nx-tree__bottom-line" x1="50%" x2="50%" y1={bottomLineStart} y2="100%" />
-      { collapsible && <NxFontAwesomeIcon height="50%" width="50%" x="25%" y="25%" icon={collapseIcon} /> }
+    <svg className="nx-tree__line-intersection" viewBox="0 0 36 40">
+      <line className="nx-tree__top-line" x1="12" x2="12" y2={topLineEnd} />
+      <line className="nx-tree__right-line" x1={rightLineStart} x2="36" y1="20" y2="20" />
+      <line className="nx-tree__bottom-line" x1="12" x2="12" y1={bottomLineStart} y2="40" />
+      <polygon className="nx-tree__collapse-focus" points="0.5,8.5 0.5,31.5 23.5,31.5 23.5,8.5" />
+      { collapsible && <NxFontAwesomeIcon height="14" width="14" x="5" y="13" icon={collapseIcon} /> }
     </svg>
   );
 
@@ -50,8 +51,8 @@ export default function NxTreeItem(props: ItemProps) {
   return (
     <li className={classes} { ...attrs }>
       {intersection}
-      <svg className="nx-tree__line-drop">
-        <line x1="50%" x2="50%" y2="100%" />
+      <svg className="nx-tree__line-drop" viewBox="0 0 36 1" preserveAspectRatio="none">
+        <line x1="12" x2="12" y2="1" />
       </svg>
       {children}
     </li>

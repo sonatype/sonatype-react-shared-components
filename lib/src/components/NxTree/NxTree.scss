@@ -27,9 +27,9 @@
 .nx-tree__item {
   display: grid;
   grid-template:
-    "line-intersection label" 32px
-    "line-drop      children" /
-     24px               auto;
+    "line-intersection label" 40px
+    "line-drop      children" auto /
+     36px               auto;
 
   position: relative;
 
@@ -71,25 +71,36 @@
 
   > .nx-tree {
     grid-area: children;
-    margin-left: 8px;
+
+    // This has as much to do with the width of fixed-width FA icons as anything, so don't expect it to fit our
+    // spacing variables cleanly
+    margin-left: 1px;
   }
 }
 
 .nx-tree__line-intersection {
   grid-area: line-intersection;
-  height: 100%;
-  width: 100%;
-  stroke: black;
-  stroke-width: 1px;
 }
 
 .nx-tree__line-drop {
   grid-area: line-drop;
+
+  // this element by itself should not contribute to the grid size. Rather this element derives its size from the grid
+  position: absolute;
+}
+
+.nx-tree__line-intersection, .nx-tree__line-drop {
   height: 100%;
   width: 100%;
-  stroke: black;
+  stroke: var(--nx-swatch-grey-50);
   stroke-width: 1px;
-  position: absolute;
+}
+
+.nx-tree__collapse-focus {
+  display: none;
+
+  fill: none;
+  stroke: var(--nx-color-interactive-border-focus);
 }
 
 .nx-tree__item-label {
@@ -98,6 +109,7 @@
 
   align-self: center;
   grid-area: label;
+  margin-left: var(--nx-spacing-base);
 }
 
 .nx-tree__collapse-input {
@@ -113,6 +125,8 @@
   grid-area: line-intersection;
 
   &:focus-within {
-    outline: 1px solid var(--nx-color-interactive-border-focus);
+    .nx-tree__collapse-focus {
+      display: inline;
+    }
   }
 }
