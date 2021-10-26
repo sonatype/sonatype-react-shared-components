@@ -117,6 +117,10 @@
 
     grid-area: label;
     margin-left: $item-label-left-margin;
+
+    .nx-icon {
+      color: var(--nx-swatch-grey-05);
+    }
   }
 
   &__collapse-input {
