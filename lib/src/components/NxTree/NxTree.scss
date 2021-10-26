@@ -8,6 +8,8 @@
 @use '../../scss-shared/nx-text-helpers';
 
 .nx-tree {
+  $line-intersection-height: 32px;
+
   padding: 0;
   margin: var(--nx-spacing-6x) 0;
 
@@ -27,7 +29,7 @@
   &__item {
     display: grid;
     grid-template:
-      "line-intersection label" 32px
+      "line-intersection label" $line-intersection-height
       "line-drop      children" auto /
        36px               auto;
 
@@ -133,7 +135,7 @@
 
   &--no-gutter > .nx-tree__item {
     grid-template:
-      "label"    32px
+      "label"    $line-intersection-height
       "children" auto /
        auto;
 
