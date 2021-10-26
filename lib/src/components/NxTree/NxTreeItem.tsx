@@ -17,7 +17,7 @@ import { ItemProps, itemPropTypes } from './types';
 export default function NxTreeItem(props: ItemProps) {
   const { collapsible, className, children, ...otherProps } = props,
       topLineEnd = collapsible ? '16' : '28.5',
-      rightLineStart = collapsible ? '24' : '12.5',
+      rightLineStart = collapsible ? '24' : '11.5',
 
       // in the following two assignments we have to use props.collapsible as opposed to just collapsible
       // so that TS understands the type guard
@@ -39,7 +39,7 @@ export default function NxTreeItem(props: ItemProps) {
       <line className="nx-tree__right-line" x1={rightLineStart} x2="36" y1="28" y2="28" />
       { collapsible ?
         <NxFontAwesomeIcon height="14" width="14" x="5" y="21" icon={collapseIcon} /> :
-        <line className="nx-tree__bottom-line" x1="12" x2="12" y1="28.5" y2="40" />
+        <line className="nx-tree__bottom-line" x1="12" x2="12" y1="27.5" y2="40" />
       }
     </svg>
   );
