@@ -22,67 +22,67 @@ export default function NxTreeCollapsibleExample() {
       <NxTree.Item collapsible isOpen={rootOpen} onToggleCollapse={toggleRootOpen}>
         <NxTree.ItemLabel>
           <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-          /
+          <span>/</span>
         </NxTree.ItemLabel>
         <NxTree>
           <NxTree.Item collapsible isOpen={srvOpen} onToggleCollapse={toggleSrvOpen}>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-              srv
+              <span>srv</span>
             </NxTree.ItemLabel>
             <NxTree>
               <NxTree.Item>
                 <NxTree.ItemLabel>
                   <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                  ftp
+                  <span>ftp</span>
                 </NxTree.ItemLabel>
               </NxTree.Item>
               <NxTree.Item collapsible isOpen={httpOpen} onToggleCollapse={toggleHttpOpen}>
                 <NxTree.ItemLabel>
                   <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                  http
+                  <span>http</span>
                 </NxTree.ItemLabel>
                 <NxTree>
                   <NxTree.Item collapsible isOpen={catsOpen} onToggleCollapse={toggleCatsOpen}>
                     <NxTree.ItemLabel>
                       <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                      cats
+                      <span>cats</span>
                     </NxTree.ItemLabel>
                     <NxTree>
                       <NxTree.Item>
                         <NxTree.ItemLabel>
                           <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                          index.html
+                          <span>index.html</span>
                         </NxTree.ItemLabel>
                       </NxTree.Item>
                       <NxTree.Item collapsible isOpen={imagesOpen} onToggleCollapse={toggleImagesOpen}>
                         <NxTree.ItemLabel>
                           <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                          images
+                          <span>images</span>
                         </NxTree.ItemLabel>
                         <NxTree>
                           <NxTree.Item>
                             <NxTree.ItemLabel>
                               <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                              cat1.jpg
+                              <span>cat1.jpg</span>
                             </NxTree.ItemLabel>
                           </NxTree.Item>
                           <NxTree.Item>
                             <NxTree.ItemLabel>
                               <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                              cat2.jpg
+                              <span>cat2.jpg</span>
                             </NxTree.ItemLabel>
                           </NxTree.Item>
                           <NxTree.Item>
                             <NxTree.ItemLabel>
                               <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                              cat3.jpg
+                              <span>cat3.jpg</span>
                             </NxTree.ItemLabel>
                           </NxTree.Item>
                           <NxTree.Item>
                             <NxTree.ItemLabel>
                               <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                              cat5000.jpg
+                              <span>cat5000.jpg</span>
                             </NxTree.ItemLabel>
                           </NxTree.Item>
                         </NxTree>
@@ -90,37 +90,37 @@ export default function NxTreeCollapsibleExample() {
                       <NxTree.Item collapsible isOpen={videosOpen} onToggleCollapse={toggleVideosOpen}>
                         <NxTree.ItemLabel>
                           <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                          videos
+                          <span>videos</span>
                         </NxTree.ItemLabel>
                         <NxTree>
                           <NxTree.Item>
                             <NxTree.ItemLabel>
                               <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                              boxes.webm
+                              <span>boxes.webm</span>
                             </NxTree.ItemLabel>
                           </NxTree.Item>
                           <NxTree.Item>
                             <NxTree.ItemLabel>
                               <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                              cucumber.webm
+                              <span>cucumber.webm</span>
                             </NxTree.ItemLabel>
                           </NxTree.Item>
                           <NxTree.Item collapsible isOpen={keyboardOpen} onToggleCollapse={toggleKeyboardOpen}>
                             <NxTree.ItemLabel>
                               <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                              keyboard
+                              <span>keyboard</span>
                             </NxTree.ItemLabel>
                             <NxTree>
                               <NxTree.Item>
                                 <NxTree.ItemLabel>
                                   <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                                  keyboard1.webm
+                                  <span>keyboard1.webm</span>
                                 </NxTree.ItemLabel>
                               </NxTree.Item>
                               <NxTree.Item>
                                 <NxTree.ItemLabel>
                                   <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                                  keyboard2.webm
+                                  <span>keyboard2.webm</span>
                                 </NxTree.ItemLabel>
                               </NxTree.Item>
                             </NxTree>

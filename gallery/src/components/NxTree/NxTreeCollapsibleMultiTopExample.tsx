@@ -17,67 +17,67 @@ export default function NxTreeCollapsibleExample() {
       <NxTree.Item collapsible isOpen={provincesOpen} onToggleCollapse={toggleProvincesOpen}>
         <NxTree.ItemLabel>
           <NxFontAwesomeIcon fixedWidth icon={faGlobeAmericas} />
-          Provinces
+          <span>Provinces</span>
         </NxTree.ItemLabel>
         <NxTree>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              Ontario
+              <span>Ontario</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              Quebec
+              <span>Quebec</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              Nova Scotia
+              <span>Nova Scotia</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              New Brunswick
+              <span>New Brunswick</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              Manitoba
+              <span>Manitoba</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              British Columbia
+              <span>British Columbia</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              Prince Edward Island
+              <span>Prince Edward Island</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              Saskatchewan
+              <span>Saskatchewan</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              Alberta
+              <span>Alberta</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              Newfoundland and Labrador
+              <span>Newfoundland and Labrador</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
         </NxTree>
@@ -85,25 +85,25 @@ export default function NxTreeCollapsibleExample() {
       <NxTree.Item collapsible isOpen={territoriesOpen} onToggleCollapse={toggleTerritoriesOpen}>
         <NxTree.ItemLabel>
           <NxFontAwesomeIcon fixedWidth icon={faGlobeAmericas} />
-          Territories
+          <span>Territories</span>
         </NxTree.ItemLabel>
         <NxTree>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              Northwest Territories
+              <span>Northwest Territories</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              Yukon
+              <span>Yukon</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
           <NxTree.Item>
             <NxTree.ItemLabel>
               <NxFontAwesomeIcon fixedWidth icon={faLocationArrow} />
-              Nunavut
+              <span>Nunavut</span>
             </NxTree.ItemLabel>
           </NxTree.Item>
         </NxTree>
