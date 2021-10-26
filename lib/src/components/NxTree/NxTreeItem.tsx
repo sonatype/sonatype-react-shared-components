@@ -38,7 +38,12 @@ export default function NxTreeItem(props: ItemProps) {
       <line className="nx-tree__top-line" x1="12" x2="12" y2={topLineEnd} />
       <line className="nx-tree__right-line" x1={rightLineStart} x2="36" y1="28" y2="28" />
       { collapsible ?
-        <NxFontAwesomeIcon className="nx-tree_collapse-icon" height="14" width="14" x="5" y="21" icon={collapseIcon} /> :
+        <NxFontAwesomeIcon className="nx-tree_collapse-icon"
+                           height="14"
+                           width="14"
+                           x="5"
+                           y="21"
+                           icon={collapseIcon} /> :
         <line className="nx-tree__bottom-line" x1="12" x2="12" y1="27.5" y2="40" />
       }
     </svg>
