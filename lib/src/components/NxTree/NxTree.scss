@@ -131,3 +131,14 @@
     }
   }
 }
+
+.nx-tree--no-gutter > .nx-tree__item {
+  grid-template:
+    "label"    32px
+    "children" auto /
+     auto;
+
+  > .nx-tree__collapse-label, > .nx-tree__line-intersection, > .nx-tree__line-drop {
+    display: none;
+  }
+}
