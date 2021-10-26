@@ -191,7 +191,7 @@ const NxTreePage = () =>
         </NxTile.SubsectionHeader>
         <NxP>
           You will notice that a non-collapsible top-level tree with a single top-level item does not render any
-          top-level connector lines to the left of the top-level item. It does however still alot the space where
+          top-level connector lines to the left of the top-level item. It does however still allot the space where
           such lines would be, so that if it is rendered adjacent to other trees that <em>do</em> have either multiple
           top-level elements or collapse/expand enabled, it will be aligned with them. However, it might often be the
           case that such a tree is rendered not alongside other trees, but alongside different kinds of content such
