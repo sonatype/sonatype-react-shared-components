@@ -67,6 +67,26 @@ describe('NxButton', function() {
     it('has a blue border and blue glow when focused and hovered', focusAndHoverTest(selector));
   });
 
+  describe('Link NxButton', function() {
+    const selector = '#nx-button-link-example .nx-btn:not([disabled]):not(.disabled)';
+
+    it('looks like a text link', simpleTest(selector));
+    it('has a dark blue text with no background and border when hovered', hoverTest(selector));
+    it('has a light blue border and light blue text', clickTest(selector));
+    it('has a light blue border when focused', focusTest(selector));
+    it('has a light blue border when focused and hovered', focusAndHoverTest(selector));
+  });
+
+  describe('Link Disabled NxButton', function() {
+    const selector = '#nx-button-link-example .nx-btn.disabled';
+
+    it('looks like a disabled text link by default', simpleTest(selector));
+    it('looks like a disabled text link when hovered', hoverTest(selector));
+    it('looks like a disabled text link when clicked', clickTest(selector));
+    it('looks like a disabled text link when focused', focusTest(selector));
+    it('looks like a disabled text link when focused and hovered', focusAndHoverTest(selector));
+  });
+
   describe('Error NxButton', function() {
     const selector = '#nx-button-error-example .nx-btn:not([disabled]):not(.disabled)';
 

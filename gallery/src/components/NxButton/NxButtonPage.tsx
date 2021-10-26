@@ -12,6 +12,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxButtonDefaultExample from './NxButtonDefaultExample';
 import NxButtonPrimaryExample from './NxButtonPrimaryExample';
 import NxButtonTertiaryExample from './NxButtonTertiaryExample';
+import NxButtonLinkExample from './NxButtonLinkExample';
 import NxButtonErrorExample from './NxButtonErrorExample';
 import NxButtonIconExample from './NxButtonIconExample';
 import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
@@ -19,6 +20,7 @@ import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
 const NxButtonDefaultCode = require('./NxButtonDefaultExample?raw'),
     nxButtonPrimaryCode = require('./NxButtonPrimaryExample?raw'),
     nxButtonTertiaryCode = require('./NxButtonTertiaryExample?raw'),
+    nxButtonLinkCode = require('./NxButtonLinkExample?raw'),
     nxButtonErrorCode = require('./NxButtonErrorExample?raw'),
     nxButtonIconCode = require('./NxButtonIconExample?raw'),
     nxButtonIconOnlyCode = require('./NxButtonIconOnlyExample?raw');
@@ -106,6 +108,13 @@ export default function NxButtonPage() {
                           liveExample={NxButtonTertiaryExample}
                           codeExamples={nxButtonTertiaryCode}>
         An example using the "tertiary" button styles.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Link"
+                          id="nx-button-link-example"
+                          liveExample={NxButtonLinkExample}
+                          codeExamples={nxButtonLinkCode}>
+        An example using the "link" button styles.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Error"

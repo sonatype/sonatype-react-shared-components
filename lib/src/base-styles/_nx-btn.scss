@@ -79,6 +79,29 @@
   }
 }
 
+.nx-btn--link {
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-weight: normal;
+  text-decoration: underline;
+  color: var(--nx-color-link);
+
+  &:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--nx-color-link-hover);
+  }
+
+  &:active {
+    color: var(--nx-color-link-active);
+  }
+
+  &:focus {
+    border: 1px solid var(--nx-color-interactive-border-focus);
+    color: var(--nx-color-link-focus);
+  }
+}
+
 .nx-btn--error {
   background-color: var(--nx-swatch-red-40);
   border-color: transparent;
@@ -111,6 +134,15 @@
       border-color: var(--nx-color-interactive-border-disabled);
       color: var(--nx-color-text-disabled);
       cursor: default;
+    }
+  }
+}
+
+.nx-btn--link {
+  &.disabled, &[disabled] {
+    &, &:hover, &:focus {
+      background-color: transparent;
+      border-color: transparent;
     }
   }
 }
