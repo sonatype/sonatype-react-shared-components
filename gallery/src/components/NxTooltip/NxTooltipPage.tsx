@@ -48,12 +48,14 @@ export default function NxTooltipPage() {
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>placement</NxTable.Cell>
-              <NxTable.Cell>"top" | "bottom" | "left" | "right" | "top-end" | "bottom-end"</NxTable.Cell>
+              <NxTable.Cell>
+                "top" | "bottom" | "left" | "right" | "top-middle" | "bottom-middle" | "top-end" | "bottom-end"
+              </NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>
                 Which side of the element the tooltip should render on. Defaults to top. "top" and "bottom" position
-                the tooltip flush to the left edge of the element, while "top-end" and "bottom-end" position it flush
-                to the right edge.
+                the tooltip flush to the left edge of the element, "top-middle" and "bottom-middle" center the tooltip,
+                while "top-end" and "bottom-end" position it flush to the right edge.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
