@@ -28,7 +28,7 @@
     text-decoration: none;
   }
 
-  $-logo-image-size: 34px;
+  $-logo-image-size: 38px;
 
   &__logo-image {
     height: $-logo-image-size;
@@ -61,6 +61,9 @@
     font-size: 14px;
     font-style: italic;
     font-weight: 500;
+    line-height: 1;
+    // offset to baseline align it with __name.
+    margin-top: 3px;
     min-width: max-content;
   }
 }
