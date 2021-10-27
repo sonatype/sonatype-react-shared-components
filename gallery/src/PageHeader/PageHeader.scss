@@ -25,7 +25,6 @@
   &__home-link {
     align-items: center;
     display: flex;
-    gap: var(--nx-spacing-6x);
     text-decoration: none;
   }
 
@@ -34,10 +33,12 @@
   &__logo-image {
     height: $-logo-image-size;
     width: $-logo-image-size;
+    margin-right: var(--nx-spacing-4x);
   }
 
   &__logotype-image {
     height: $-logo-image-size;
+    margin-right: var(--nx-spacing-6x);
   }
 
   &__name {
