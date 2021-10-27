@@ -1,0 +1,171 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-text-helpers';
+
+.nx-tree {
+  $normal-item-label-row-height: 40px;
+  $first-item-label-row-height: calc(var(--nx-line-height) * 1em);
+  $item-label-left-margin: var(--nx-spacing-base);
+  --nx-item-label-row-height: #{$normal-item-label-row-height};
+
+  padding: 0;
+  margin: var(--nx-spacing-6x) 0;
+
+  // note that this block must be before the .nx-tree__item block
+  &__item--collapsible {
+    > .nx-tree, > .nx-tree__line-drop {
+      display: none;
+    }
+
+    &.open {
+      > .nx-tree, > .nx-tree__line-drop {
+        display: block;
+      }
+    }
+  }
+
+  &__item {
+    align-items: end;
+    display: grid;
+    grid-template:
+      "line-intersection label" var(--nx-item-label-row-height)
+      "line-drop      children" auto /
+       36px               auto;
+
+    position: relative;
+
+    &:first-child {
+      > .nx-tree__line-intersection > .nx-tree__top-line {
+        display: none;
+
+        // only display this line for subtrees, not the top-level tree
+        .nx-tree__item > .nx-tree > & {
+          display: block;
+        }
+      }
+
+      &:last-child {
+        > .nx-tree__line-intersection:not(.nx-tree__line-intersection--collapsible) > .nx-tree__right-line {
+          // do not display this line for top level items in non-collapsible trees when they have no siblings
+          display: none;
+
+          .nx-tree__item > .nx-tree > & {
+            display: block;
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      > .nx-tree__line-intersection > .nx-tree__bottom-line {
+        display: none;
+      }
+
+      > .nx-tree__line-drop {
+        display: none;
+      }
+    }
+
+    > .nx-tree {
+      grid-area: children;
+
+      // This has as much to do with the width of fixed-width FA icons as anything, so don't expect it to fit our
+      // spacing variables cleanly
+      margin: 0 0 0 1px;
+    }
+  }
+
+  > .nx-tree__item:first-child {
+    // shorten the item label row only on the first item in the top-level tree
+    --nx-item-label-row-height: #{$first-item-label-row-height};
+
+    .nx-tree & {
+      --nx-item-label-row-height: #{$normal-item-label-row-height};
+    }
+  }
+
+  &__collapse-icon {
+    fill: var(--nx-swatch-grey-05);
+  }
+
+  &__line-intersection {
+    grid-area: line-intersection;
+  }
+
+  &__line-drop {
+    grid-area: line-drop;
+    height: 100%;
+
+    // this element by itself should not contribute to the grid size. Rather this element derives its size from the grid
+    position: absolute;
+  }
+
+  &__line-intersection, &__line-drop {
+    width: 100%;
+    stroke: var(--nx-swatch-grey-50);
+    stroke-width: 1px;
+  }
+
+  &__item-label {
+    @include nx-container-helpers.container-horizontal;
+    @include nx-text-helpers.truncate-ellipsis;
+
+    grid-area: label;
+    margin-left: $item-label-left-margin;
+
+    .nx-icon {
+      color: var(--nx-swatch-grey-05);
+    }
+  }
+
+  &__collapse-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    outline: none;
+  }
+
+  &__collapse-label {
+    box-sizing: border-box;
+    cursor: pointer;
+    grid-area: line-intersection;
+    height: 24px;
+    width: 24px;
+
+    // this is needed to make applitools believe that the label is clickable. Otherwise, it complains
+    // that the collapse/expand icon is in the way, even though it isn't
+    position: relative;
+
+    &:focus-within {
+      border: 1px solid var(--nx-color-interactive-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
+    }
+  }
+
+  &--no-gutter > .nx-tree__item {
+    grid-template:
+      "label"    var(--nx-item-label-row-height)
+      "children" auto /
+       auto;
+
+    > .nx-tree__collapse-label, > .nx-tree__line-intersection, > .nx-tree__line-drop {
+      display: none;
+    }
+
+    // the next two blocks effectively undo the item label left margin
+    > .nx-tree__item-label {
+      margin-left: 0;
+    }
+
+    > .nx-tree {
+      position: relative;
+      right: $item-label-left-margin;
+    }
+  }
+}

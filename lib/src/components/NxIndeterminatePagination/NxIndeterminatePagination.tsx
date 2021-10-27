@@ -14,15 +14,15 @@ import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 export { Props, propTypes };
 
 export default function NxIndeterminatePagination({ className, onPrevPageSelect, onNextPageSelect, ...attrs }: Props) {
-  const classes = classnames('nx-btn-bar', 'nx-btn-bar--pagination', className);
+  const classes = classnames('nx-btn-bar', 'nx-btn-bar--pagination', 'nx-btn-bar--indeterminate-pagination', className);
 
   return (
     <nav tabIndex={0} aria-label="pagination" className={classes} { ...attrs }>
       <NxButton type="button" aria-label="previous page" onClick={onPrevPageSelect} variant="tertiary">
-        <NxFontAwesomeIcon icon={faCaretLeft} />
+        <NxFontAwesomeIcon icon={faCaretLeft} size="lg" />
       </NxButton>
       <NxButton type="button" aria-label="next page" onClick={onNextPageSelect} variant="tertiary">
-        <NxFontAwesomeIcon icon={faCaretRight} />
+        <NxFontAwesomeIcon icon={faCaretRight} size="lg" />
       </NxButton>
     </nav>
   );

@@ -113,7 +113,7 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
                     aria-label="goto previous page"
                     onClick={handleBtnClick(currentPage - 1)}
                     variant="tertiary">
-            <NxFontAwesomeIcon icon={faCaretLeft} />
+            <NxFontAwesomeIcon icon={faCaretLeft} size="lg" />
           </NxButton>
         }
 
@@ -167,7 +167,7 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
                     aria-label="goto next page"
                     onClick={handleBtnClick(currentPage + 1)}
                     variant="tertiary">
-            <NxFontAwesomeIcon icon={faCaretRight} />
+            <NxFontAwesomeIcon icon={faCaretRight} size="lg" />
           </NxButton>
         }
       </nav>

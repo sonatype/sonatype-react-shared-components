@@ -17,7 +17,8 @@ const NxColorPickerPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        <NxCode>NxColorPicker</NxCode> allows the user to select from a set of nine colors. A typical
+        <NxCode>NxColorPicker</NxCode> allows the user to select from a set
+        of <NxTextLink href="#/pages/Selectable%20Colors">colors</NxTextLink>. A typical
         use case would be to select the color to be associated with a colored <NxCode>NxTag</NxCode>.
       </NxP>
       <NxP>
@@ -61,7 +62,8 @@ const NxColorPickerPage = () =>
             <NxTable.Cell>value</NxTable.Cell>
             <NxTable.Cell>
               SelectableColor
-              ('light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime')
+              (Refer to the <NxTextLink href="#/pages/Selectable%20Colors">Selectable Colors Page</NxTextLink> for
+              a complete list)
             </NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell></NxTable.Cell>
