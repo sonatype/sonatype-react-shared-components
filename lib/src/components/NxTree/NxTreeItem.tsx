@@ -61,7 +61,7 @@ export default function NxTreeItem(props: ItemProps) {
   );
 
   return (
-    <li className={classes} { ...attrs }>
+    <li role="treeitem" className={classes} { ...attrs }>
       {intersection}
       <svg className="nx-tree__line-drop" viewBox="0 0 36 1" preserveAspectRatio="none">
         <line x1="12" x2="12" y2="1" />
