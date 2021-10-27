@@ -200,7 +200,7 @@ const NxTextInputPage = () =>
       <div className="nx-tile-content--accordion-container">
         <NxStatefulAccordion defaultOpen={false}>
           <NxAccordion.Header>
-            <h2 className="nx-accordion__header-title">Regarding &lt;input type="number"&gt;</h2>
+            <NxAccordion.Title>Regarding &lt;input type="number"&gt;</NxAccordion.Title>
           </NxAccordion.Header>
           <NxP>
             <NxCode>NxTextInput</NxCode> using <NxCode>type="number"</NxCode> has been an oft requested addition to the

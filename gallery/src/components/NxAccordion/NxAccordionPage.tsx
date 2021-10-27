@@ -97,6 +97,25 @@ const NxAccordionPage = () =>
       </NxTile.Subsection>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
+          <NxH3>NxAccordion.Title</NxH3>
+          <NxP>
+            First child of <NxCode>NxAccordion.Header</NxCode>.
+            It is expected that the first child of <NxCode>NxAccordion.Header</NxCode> will
+            always be an <NxCode>NxAccordion.Title</NxCode>.
+            It is a convenience component for <NxCode>&lt;h2&gt;</NxCode> with
+            the <NxCode>.nx-accordion__header-title</NxCode> class containing
+            the text content of the always-visible section of the accordion. Note
+            that <NxCode>NxAccordion</NxCode> is a{' '}
+            <NxTextLink external href="https://html.spec.whatwg.org/multipage/sections.html#sectioning-root">
+              sectioning root
+            </NxTextLink>
+            , so it does not matter whether this header is a lower-rank heading than that of its surrounding
+            section.
+          </NxP>
+        </NxTile.SubsectionHeader>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>Helper Classes</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>The following CSS classes are available for use on child elements.</NxP>
@@ -110,29 +129,13 @@ const NxAccordionPage = () =>
           </NxTable.Head>
           <NxTable.Body>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>nx-accordion__header-title</NxCode></NxTable.Cell>
-              <NxTable.Cell>First child of <NxCode>NxAccordion.Header</NxCode></NxTable.Cell>
-              <NxTable.Cell>
-                It is expected that the first child of <NxCode>NxAccordion.Header</NxCode> will
-                always be an <NxCode>&lt;h2&gt;</NxCode> with
-                the <NxCode>.nx-accordion__header-title</NxCode> class containing
-                the text content of the always-visible section of the accordion. Note
-                that <NxCode>NxAccordion</NxCode> is a{' '}
-                <NxTextLink external href="https://html.spec.whatwg.org/multipage/sections.html#sectioning-root">
-                  sectioning root
-                </NxTextLink>
-                , so it does not matter whether this header is a lower-rank heading than that of its surrounding
-                section.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
               <NxTable.Cell><NxCode>nx-btn-bar</NxCode></NxTable.Cell>
               <NxTable.Cell>Last child of <NxCode>NxAccordion.Header</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 <NxCode>NxAccordion.Header</NxCode> supports the inclusion of buttons on
                 its right-hand side. This is accomplished by adding
                 an <NxCode>.nx-btn-bar</NxCode> after
-                the <NxCode>.nx-accordion__header-title</NxCode>.
+                the <NxCode>NxAccordion.Title</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>

@@ -45,7 +45,9 @@ const NxTreeViewPage = () =>
       </NxWarningAlert>
 
       <NxP>
-        A set of default styles and basic React for an expanding tree view.
+        A set of default styles for an expandable series of items. Note that the name of this component is
+        a misnomer as it no longer supports tree structures, and it is slated to be renamed in the near future. For
+        an actual tree component, see <NxTextLink href="#/pages/NxTree"><NxCode>NxTree</NxCode></NxTextLink>.
       </NxP>
 
       <NxTable>

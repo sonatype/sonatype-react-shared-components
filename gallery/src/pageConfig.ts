@@ -135,6 +135,7 @@ import NxStatefulCollapsibleItemsMultiSelectPage
   from './components/NxStatefulCollapsibleItemsMultiSelect/NxStatefulCollapsibleItemsMultiSelectPage';
 import NxStatefulCollapsibleItemsRadioSelectPage
   from './components/NxStatefulCollapsibleItemsRadioSelect/NxStatefulCollapsibleItemsRadioSelectPage';
+import NxTreePage from './components/NxTree/NxTreePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -200,6 +201,7 @@ const pageConfig: PageConfig = {
     NxOverflowTooltip: NxOverflowTooltipPage,
     NxTransferList: NxTransferListPage,
     NxStatefulTransferList: NxStatefulTransferListPage,
+    NxTree: NxTreePage,
     NxTreeView: NxTreeViewPage,
     NxTreeViewMultiSelect: NxTreeViewMultiSelect,
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,
