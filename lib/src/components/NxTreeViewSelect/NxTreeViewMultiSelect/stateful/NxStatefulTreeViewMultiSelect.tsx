@@ -4,32 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {FunctionComponent, useState} from 'react';
 
-import NxTreeViewMultiSelect from '../NxTreeViewMultiSelect';
-import { Props, propTypes } from './types';
-export { Props, Option } from './types';
-import useFuzzyFilter from '../../../../util/useFuzzyFilter';
+import NxStatefulCollapsibleItemsMultiSelect, {
+  Props, Option
+} from '../../../NxCollapsibleItemsSelect/NxCollapsibleItemsMultiSelect/stateful/NxStatefulCollapsibleItemsMultiSelect';
 
-const NxStatefulTreeViewMultiSelect: FunctionComponent<Props> = function NxStatefulTreeViewMultiSelect(props) {
-  const {options} = props,
-      isOpenInitialState = !!props.isOpen;
+export default NxStatefulCollapsibleItemsMultiSelect;
 
-  const [isOpen, toggleOpen] = useState(isOpenInitialState),
-      onToggleCollapse = () => {
-        toggleOpen(!isOpen);
-      };
-
-  const [filteredOptions, filter, setFilter] = useFuzzyFilter(options, {keys: ['name'], threshold: 0.1});
-
-  return <NxTreeViewMultiSelect {...props}
-                                isOpen={isOpen}
-                                onToggleCollapse={onToggleCollapse}
-                                filteredOptions={filteredOptions}
-                                onFilterChange={setFilter}
-                                filter={filter} />;
-};
-
-NxStatefulTreeViewMultiSelect.propTypes = propTypes;
-
-export default NxStatefulTreeViewMultiSelect;
+export { Props, Option };

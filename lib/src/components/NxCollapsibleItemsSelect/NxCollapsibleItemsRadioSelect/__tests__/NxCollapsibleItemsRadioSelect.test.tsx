@@ -27,7 +27,7 @@ describe('NxCollapsibleItemsRadioSelect', function() {
   it('properly renders component using only required props', function() {
     const shallowRender = getShallow();
 
-    expect(shallowRender).toHaveDisplayName('AbstractTreeViewSelect');
+    expect(shallowRender).toHaveDisplayName('AbstractCollapsibleItemsSelect');
     expect(shallowRender).toHaveProp('name', 'foobar');
     expect(shallowRender).toHaveProp('children', 'Foobar');
     expect(shallowRender).toHaveProp('options', [
@@ -37,7 +37,7 @@ describe('NxCollapsibleItemsRadioSelect', function() {
     ]);
   });
 
-  it('passes props to AbstractTreeViewSelect', function() {
+  it('passes props to AbstractCollapsibleItemsSelect', function() {
     const optionalProps = {
       isOpen: true,
       id: 'someid',
@@ -54,7 +54,7 @@ describe('NxCollapsibleItemsRadioSelect', function() {
     };
 
     const shallowRender = getShallow(optionalProps);
-    expect(shallowRender).toHaveDisplayName('AbstractTreeViewSelect');
+    expect(shallowRender).toHaveDisplayName('AbstractCollapsibleItemsSelect');
     expect(shallowRender).toHaveProp(optionalProps);
   });
 

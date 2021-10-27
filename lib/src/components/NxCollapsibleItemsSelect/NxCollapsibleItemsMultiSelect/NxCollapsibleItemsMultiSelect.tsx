@@ -11,10 +11,10 @@ import { Props, propTypes, Option } from './types';
 export { Props, Option } from './types';
 import NxCheckbox from '../../NxCheckbox/NxCheckbox';
 import MultiSelectCounter from './MultiSelectCounter';
-import AbstractTreeViewSelect, { generateId } from '../AbstractTreeViewSelect';
+import AbstractCollapsibleItemsSelect, { generateId } from '../AbstractCollapsibleItemsSelect';
 
 function NxCollapsibleItemsMultiSelect<T extends Option>(props: Props<T>) {
-  // exclude onChange and selectedIds from the props we pass to AbstractTreeViewSelect
+  // exclude onChange and selectedIds from the props we pass to AbstractCollapsibleItemsSelect
   const {onChange, selectedIds, optionTooltipGenerator, ...otherProps} = props;
 
   const {options, name} = props,
@@ -89,11 +89,11 @@ function NxCollapsibleItemsMultiSelect<T extends Option>(props: Props<T>) {
 
   const renderCounter = () => <MultiSelectCounter options={options} selectedIds={normalizedSelectedIds} />;
 
-  return <AbstractTreeViewSelect {...otherProps}
-                                 optionTooltipGenerator={optionTooltipGenerator}
-                                 renderOption={renderOption}
-                                 renderToggleAllOption={renderToggleAllOption}
-                                 renderCounter={renderCounter}/>;
+  return <AbstractCollapsibleItemsSelect {...otherProps}
+                                         optionTooltipGenerator={optionTooltipGenerator}
+                                         renderOption={renderOption}
+                                         renderToggleAllOption={renderToggleAllOption}
+                                         renderCounter={renderCounter}/>;
 }
 
 NxCollapsibleItemsMultiSelect.propTypes = propTypes;

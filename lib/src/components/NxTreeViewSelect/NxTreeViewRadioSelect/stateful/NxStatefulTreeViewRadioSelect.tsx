@@ -4,32 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {FunctionComponent, useState} from 'react';
 
-import NxTreeViewRadioSelect from '../NxTreeViewRadioSelect';
-import { Props, propTypes } from './types';
-export { Props, Option } from './types';
-import useFuzzyFilter from '../../../../util/useFuzzyFilter';
+import NxStatefulCollapsibleItemsRadioSelect, {
+  Option, Props
+} from '../../../NxCollapsibleItemsSelect/NxCollapsibleItemsRadioSelect/stateful/NxStatefulCollapsibleItemsRadioSelect';
 
-const NxStatefulTreeViewRadioSelect: FunctionComponent<Props> = function NxStatefulTreeViewRadioSelect(props) {
-  const {options} = props,
-      isOpenInitialState = !!props.isOpen;
+export default NxStatefulCollapsibleItemsRadioSelect;
 
-  const [isOpen, toggleOpen] = useState(isOpenInitialState),
-      onToggleCollapse = () => {
-        toggleOpen(!isOpen);
-      };
-
-  const [filteredOptions, filter, setFilter] = useFuzzyFilter(options, {keys: ['name'], threshold: 0.1});
-
-  return <NxTreeViewRadioSelect {...props}
-                                isOpen={isOpen}
-                                onToggleCollapse={onToggleCollapse}
-                                filteredOptions={filteredOptions}
-                                onFilterChange={setFilter}
-                                filter={filter} />;
-};
-
-NxStatefulTreeViewRadioSelect.propTypes = propTypes;
-
-export default NxStatefulTreeViewRadioSelect;
+export { Props, Option };

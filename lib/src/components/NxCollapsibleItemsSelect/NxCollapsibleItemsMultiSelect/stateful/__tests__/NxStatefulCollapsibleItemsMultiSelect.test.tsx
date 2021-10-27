@@ -49,18 +49,18 @@ describe('NxStatefulCollapsibleItemsMultiSelect', function() {
     expect(shallowRender).toHaveProp(optionalProps);
   });
 
-  it('renders collapsed TreeView by default', function() {
+  it('renders collapsed CollapsibleItems by default', function() {
     expect(getShallow()).toHaveProp('isOpen', false);
   });
 
-  it('expands TreeView when toggled', function() {
+  it('expands CollapsibleItems when toggled', function() {
     const shallowRender = getShallow();
     expect(getShallow()).toHaveProp('isOpen', false);
     shallowRender.simulate('toggleCollapse');
     expect(shallowRender).toHaveProp('isOpen', true);
   });
 
-  it('collapses TreeView when toggled', function() {
+  it('collapses CollapsibleItems when toggled', function() {
     const shallowRender = getShallow({
       isOpen: true
     });

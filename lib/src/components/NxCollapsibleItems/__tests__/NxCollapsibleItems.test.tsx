@@ -102,12 +102,12 @@ describe('NxCollapsibleItems', function() {
     });
 
     it('references the treeview using aria-controls', function() {
-      const explicitIdTreeView = getShallowComponent({ id: 'foo' }),
-          autoIdTreeView = getShallowComponent(),
-          autoId = autoIdTreeView.prop('id');
+      const explicitIdCollapsibleItems = getShallowComponent({ id: 'foo' }),
+          autoIdCollapsibleItems = getShallowComponent(),
+          autoId = autoIdCollapsibleItems.prop('id');
 
-      expect(explicitIdTreeView.find('.nx-collapsible-items__trigger')).toHaveProp('aria-controls', 'foo');
-      expect(autoIdTreeView.find('.nx-collapsible-items__trigger')).toHaveProp('aria-controls', autoId);
+      expect(explicitIdCollapsibleItems.find('.nx-collapsible-items__trigger')).toHaveProp('aria-controls', 'foo');
+      expect(autoIdCollapsibleItems.find('.nx-collapsible-items__trigger')).toHaveProp('aria-controls', autoId);
     });
 
     it('sets aria-expanded iff both the isOpen prop is true and there are children', function() {

@@ -11,7 +11,7 @@ import { Props, propTypes, Option } from './types';
 export { Props, Option } from './types';
 import NxCollapsibleItemsCounter from '../NxCollapsibleItemsCounter';
 import NxRadio from '../../NxRadio/NxRadio';
-import AbstractTreeViewSelect, { generateId } from '../AbstractTreeViewSelect';
+import AbstractCollapsibleItemsSelect, { generateId } from '../AbstractCollapsibleItemsSelect';
 
 function NxCollapsibleItemsRadioSelect<T extends Option>(props: Props<T>) {
   const { selectedId, onChange, optionTooltipGenerator, ...otherProps } = props,
@@ -35,10 +35,10 @@ function NxCollapsibleItemsRadioSelect<T extends Option>(props: Props<T>) {
     selectedItem
     && selectedItem.name ? <NxCollapsibleItemsCounter>{selectedItem.name}</NxCollapsibleItemsCounter> : null;
 
-  return <AbstractTreeViewSelect {...props}
-                                 optionTooltipGenerator={optionTooltipGenerator}
-                                 renderOption={renderOption}
-                                 renderCounter={renderCounter}/>;
+  return <AbstractCollapsibleItemsSelect {...props}
+                                         optionTooltipGenerator={optionTooltipGenerator}
+                                         renderOption={renderOption}
+                                         renderCounter={renderCounter}/>;
 }
 
 NxCollapsibleItemsRadioSelect.propTypes = propTypes;
