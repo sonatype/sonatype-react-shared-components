@@ -94,4 +94,4 @@ export default function NxAccordion(props: Props) {
 
 NxAccordion.propTypes = propTypes;
 NxAccordion.Header = NxAccordionHeader;
-NxAccordion.Title = withClass('h2', 'nx-accordion__title');
+NxAccordion.Title = withClass('h2', 'nx-accordion__header-title');
