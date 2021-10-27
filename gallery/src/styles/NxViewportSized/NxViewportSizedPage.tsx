@@ -200,7 +200,7 @@ export default function NxViewportSizedPage() {
         <NxTile.Content className="nx-tile-content--accordion-container">
           <NxStatefulAccordion>
             <NxAccordion.Header>
-              <h2 className="nx-accordion__header-title">Code Examples</h2>
+              <NxAccordion.Title>Code Examples</NxAccordion.Title>
             </NxAccordion.Header>
             <CodeExample content={NxViewportSizedExpandingExample} />
           </NxStatefulAccordion>
@@ -230,7 +230,7 @@ export default function NxViewportSizedPage() {
         <NxTile.Content className="nx-tile-content--accordion-container">
           <NxStatefulAccordion>
             <NxAccordion.Header>
-              <h2 className="nx-accordion__header-title">Code Examples</h2>
+              <NxAccordion.Title>Code Examples</NxAccordion.Title>
             </NxAccordion.Header>
             <CodeExample content={NxViewportSizedExample} />
           </NxStatefulAccordion>
@@ -261,7 +261,7 @@ export default function NxViewportSizedPage() {
         <NxTile.Content className="nx-tile-content--accordion-container">
           <NxStatefulAccordion>
             <NxAccordion.Header>
-              <h2 className="nx-accordion__header-title">Code Examples</h2>
+              <NxAccordion.Title>Code Examples</NxAccordion.Title>
             </NxAccordion.Header>
             <CodeExample content={NxViewportSizedAdjacentStyles} language="scss" />
             <CodeExample content={NxViewportSizedAdjacentExample} />

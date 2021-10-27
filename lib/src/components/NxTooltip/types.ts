@@ -8,7 +8,12 @@ import { ReactElement, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
 
-const tooltipPlacements = ['top', 'bottom', 'left', 'right', 'top-end', 'bottom-end'] as const;
+const tooltipPlacements = [
+  'top', 'bottom',
+  'left', 'right',
+  'top-middle', 'bottom-middle',
+  'top-end', 'bottom-end'
+] as const;
 
 export type TooltipPlacement = (typeof tooltipPlacements)[number];
 

@@ -11,7 +11,7 @@ describe('NxCloseButton', function() {
     await browser.url('#/pages/NxCloseButton');
   });
 
-  const selector = '.gallery-example .nx-btn--close';
+  const selector = '.gallery-example-live .nx-btn--close';
 
   it('has no border or visible background by default', simpleTest(selector));
   it('has a dark grey border when hovered', hoverTest(selector));

@@ -264,12 +264,12 @@ describe('NxAccordion', function() {
             component = mount(
               <NxAccordion onToggle={onToggle}>
                 <NxAccordion.Header>
-                  <div className="nx-accordion__header-title" onClick={titleOnClick}>Foo</div>
+                  <NxAccordion.Title onClick={titleOnClick}>Foo</NxAccordion.Title>
                 </NxAccordion.Header>
               </NxAccordion>,
               { attachTo: mountContainer }
             ),
-            title = component.find('.nx-accordion__header-title');
+            title = component.find(NxAccordion.Title);
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(titleOnClick).not.toHaveBeenCalled();
@@ -290,7 +290,7 @@ describe('NxAccordion', function() {
             component = mount(
               <NxAccordion onToggle={onToggle}>
                 <NxAccordion.Header>
-                  <div className="nx-accordion__header-title">Foo</div>
+                  <NxAccordion.Title>Foo</NxAccordion.Title>
                   <div className="nx-btn-bar">
                     <NxButton id="btn1" />
                     <NxButton id="btn2" onClick={btnOnClick} />
