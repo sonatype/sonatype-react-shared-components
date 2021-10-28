@@ -7,7 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxRadio', function() {
-  const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxRadio');
+  const {
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    moveMouseAway,
+    blurElement,
+    checkScreenshot
+  } = setupBrowser('#/pages/NxRadio');
 
   const selector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
       otherRadioSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(1)',
@@ -35,7 +44,7 @@ describe('NxRadio', function() {
           [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector);
 
       await targetElement.click();
-      await page.mouse.move(0, 0);
+      await moveMouseAway();
       await focusElement.focus();
 
       await checkScreenshot(targetElement);
@@ -44,16 +53,11 @@ describe('NxRadio', function() {
     it(`has a thick blue border and white background with a light blue outer border
       when clicked, focused, and hovered`, async function() {
       const focusSelector = `${selector} input`,
-          [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector),
-          targetElementBox = targetElement.boundingBox(),
-          targetElementCenter = {
-            x: targetElementBox.x + (targetElementBox.width / 2),
-            y: targetElementBox.y + (targetElementBox.height / 2)
-          };
+          [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector);
 
       await targetElement.click();
-      await targetElement.moveTo(targetElementCenter.x, targetElementCenter.y);
       await focusElement.focus();
+      await targetElement.hover();
 
       await checkScreenshot(targetElement);
     });

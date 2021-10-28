@@ -52,7 +52,7 @@ describe('nx-tile', function() {
   describe('nx-tile with accordions', function() {
     it('looks right', async function() {
       const accordionSelector = `${accordionTileSelector} .nx-accordion`,
-          accordionEl = await waitAndGetElements(accordionSelector);
+          [accordionEl] = await waitAndGetElements(accordionSelector);
 
       // open an accordion just to make sure the tile expands accordingly
       await accordionEl.click();

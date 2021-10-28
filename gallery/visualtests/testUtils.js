@@ -53,13 +53,13 @@ module.exports = {
     }
 
     async function checkScreenshotCoordinates(x, y, height, width) {
-      const image = await page.screnshot({ clip: { x, y, height, width } });
+      const image = await page.screenshot({ clip: { x, y, height, width } });
 
       expect(image).toMatchImageSnapshot();
     }
 
     async function checkFullPageScreenshot() {
-      const screenshot = await getPage().screenshot();
+      const screenshot = await page.screenshot();
       expect(screenshot).toMatchImageSnapshot();
     }
 
@@ -86,16 +86,21 @@ module.exports = {
       getPage: () => page,
 
       blurElement,
+      moveMouseAway,
+      dismissResultingDialog,
+
       waitForSelectors,
       getElements,
+      waitAndGetElements,
 
       checkScreenshot,
       checkFullPageScreenshot,
       checkScreenshotCoordinates,
 
+
       simpleTest(selector) {
         return async function() {
-          const element = waitAndGetElements(selector);
+          const [element] = await waitAndGetElements(selector);
           await checkScreenshot(element);
         };
       },
@@ -133,7 +138,7 @@ module.exports = {
             await checkScreenshot(targetElement);
           }
           finally {
-            await blurElement(hoverElement);
+            await blurElement(focusElement);
           }
         };
       },

@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-form', function() {
-  const { simpleTest } = setupBrowser('#/pages/Form%20Layout%20Styles');
+  const { simpleTest } = setupBrowser('#/pages/Form Layout Styles');
 
   const generalFormSelector = '#nx-form-layout-example .nx-form',
       horizontablFormSelector =  '#nx-form-layout-horizontal-example .nx-form';

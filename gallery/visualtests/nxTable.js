@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTable', function() {
-  const { simpleTest, waitAndGetElements, checkScreenshot } = setupBrowser('#/pages/NxTable');
+  const { simpleTest, waitAndGetElements, checkScreenshot, getPage } = setupBrowser('#/pages/NxTable');
 
   const iconColumnTableSelector = '#nx-table-clickable-example .nx-table',
       clickableTableSelector = '#nx-table-clickable-example .nx-table',
@@ -105,7 +105,7 @@ describe('NxTable', function() {
 
       // get handles to the table container and the next page button, and measure the initial table size.
       // At this point, the table is on a full page of data rows and also has the explicit height set
-      const tableContainer = await waitAndGetElements(paginationFilterTableSelector),
+      const [tableContainer] = await waitAndGetElements(paginationFilterTableSelector),
           nextPageBtn = await tableContainer.$('.nx-btn-bar--pagination .nx-btn:last-child'),
           { height: heightWithClassAndFullData } = await tableContainer.boundingBox();
 
@@ -118,7 +118,7 @@ describe('NxTable', function() {
       expect(heightWithClassAndFullData).toBe(heightWithClassAndShortData);
 
       // remove the class that sets the explicit height
-      await page.evaluate(function(tableContainerEl) {
+      await getPage().evaluate(function(tableContainerEl) {
         tableContainerEl.classList.remove('gallery-pagination-filter-table-example');
       }, tableContainer);
 

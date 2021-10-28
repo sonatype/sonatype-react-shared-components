@@ -14,7 +14,8 @@ describe('NxTag', function() {
         hoverTest,
         simpleTest,
         waitAndGetElements,
-        checkScreenshotCoordinates
+        checkScreenshotCoordinates,
+        checkScreenshot
   } = setupBrowser('#/pages/NxTag');
 
   describe('Basic NxTag', function() {

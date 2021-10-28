@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxSearchDropdown', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, getPage } =
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, getPage, blurElement } =
       setupBrowser('#/pages/NxSearchDropdown');
 
   const basicExampleSelector = '#nx-search-dropdown-basic-example .nx-search-dropdown',
@@ -30,7 +30,7 @@ describe('NxSearchDropdown', function() {
     await getPage().keyboard.type('1');
     await getPage().waitForSelector(loadingSpinnerSelector);
 
-    await getPage().screenshot({
+    const screenshot = await getPage().screenshot({
       clip: { x, y, width: 300, height: 125 }
     });
 
@@ -51,7 +51,7 @@ describe('NxSearchDropdown', function() {
 
     const { x, y } = await component.boundingBox();
 
-    await getPage().screenshot({
+    const screenshot = await getPage().screenshot({
       clip: { x, y, width: 300, height: 376 }
     });
 
@@ -62,9 +62,9 @@ describe('NxSearchDropdown', function() {
     const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
         dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
         [component, input] = await waitAndGetElements(
-          browser.$(basicExampleSelector),
-          browser.$(inputSelector),
-          browser.$(dropdownButtonSelector)
+          basicExampleSelector,
+          inputSelector,
+          dropdownButtonSelector
         );
 
     await input.focus();
@@ -130,7 +130,7 @@ describe('NxSearchDropdown', function() {
 
     await input.focus();
     await getPage().keyboard.type('1');
-    await getPage().waitForSelector(errorAlertSelector);
+    await getPage().waitForSelector(errorSelector);
 
     const { x, y } = await component.boundingBox();
     const screenshot = await getPage().screenshot({
@@ -170,7 +170,7 @@ describe('NxSearchDropdown', function() {
 
     await input.focus();
     await getPage().keyboard.type('1');
-    await getPage().waitForSelector(errorAlertSelector);
+    await getPage().waitForSelector(errorSelector);
 
     const { x, y } = await component.boundingBox();
     const screenshot = await getPage().screenshot({

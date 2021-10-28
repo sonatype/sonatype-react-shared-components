@@ -7,7 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxColorPicker', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxColorPicker');
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    moveMouseAway,
+    checkScreenshot
+  } = setupBrowser('#/pages/NxColorPicker');
 
   const selector = '.gallery-example-live .nx-color-picker',
       labelSelector = `${selector} .nx-color-picker__color:first-of-type`;
@@ -22,8 +31,7 @@ describe('NxColorPicker', function() {
 
     await labelElement.click();
 
-    // make sure mouse is not on element
-    await page.mouse.move(0, 0);
+    await moveMouseAway();
 
     await checkScreenshot(targetElement);
   });

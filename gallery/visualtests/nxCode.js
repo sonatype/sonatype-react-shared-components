@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const {} = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('nx-code', function() {
   const { simpleTest } = setupBrowser('#/pages/nx-code');

@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxIconDropdown', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, moveMouseAway } =
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, moveMouseAway, getPage } =
       setupBrowser('#/pages/NxIconDropdown');
 
   const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown';

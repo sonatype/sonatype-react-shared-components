@@ -7,7 +7,8 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxCodeSnippet', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxCodeSnippet');
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, dismissResultingDialog } =
+      setupBrowser('#/pages/NxCodeSnippet');
 
   const multipleSnippetSelector = '#nx-code-snippet-simple-example .gallery-example-live',
       complexSnippetExample = '#complex-nx-code-snippet',

@@ -7,9 +7,9 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-grid', function() {
-  const { simpleTestLongElement } = setupBrowser('#/pages/nx-grid');
+  const { simpleTest } = setupBrowser('#/pages/nx-grid');
 
   const selector = '.gallery-example-live';
 
-  it('looks right', simpleTestLongElement(selector));
+  it('looks right', simpleTest(selector));
 });

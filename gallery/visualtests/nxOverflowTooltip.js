@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxOverflowTooltip', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, getPage } =
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, getPage, waitAndGetElements } =
       setupBrowser('#/pages/NxOverflowTooltip');
 
   const listSelector = '#nx-overflow-tooltip-simple-example .nx-list',
@@ -62,7 +62,7 @@ describe('NxOverflowTooltip', function() {
 
     const [tooltipEl] = await waitAndGetElements(tooltipSelector);
 
-    expect(await isInDocumen(tooltipEl)).toBe(true);
+    expect(await isInDocument(tooltipEl)).toBe(true);
     expect(await tooltipEl.getText()).toBe( 'List item 2 - this text is long and should truncate with a tooltip ' +
         'this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip');
   });
@@ -76,8 +76,10 @@ describe('NxOverflowTooltip', function() {
     const [tooltipEl] = await waitAndGetElements(tooltipSelector);
 
     expect(await isInDocument(tooltipEl)).toBe(true);
-    expect(await tooltipEl.getText()).toBe('Foo Bar 2 - this text is long and should truncate with a tooltip ' +
-        'this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip');
+    expect(await tooltipEl.evaluate(e => e.innerText)).toBe(
+        'Foo Bar 2 - this text is long and should truncate with a tooltip ' +
+        'this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip'
+    );
   });
 
   it('activates tooltip display when an already existing element gains text overflow due to more content',
@@ -128,8 +130,8 @@ describe('NxOverflowTooltip', function() {
   it('activates tooltip display when an already existing element gains text overflow due to width decrease',
       async function() {
         const [inputEl, targetEl] = await waitAndGetElements(
-          browser.$(dynamicExampleTextInputSelector),
-          browser.$(dynamicExampleTooltipTargetSelector)
+          dynamicExampleTextInputSelector,
+          dynamicExampleTooltipTargetSelector
         );
 
         await getPage().setViewport({ width: 1400, height: 1000 });
@@ -151,8 +153,8 @@ describe('NxOverflowTooltip', function() {
   it('deactivates tooltip display when an already overflowing element loses text overflow due to width increase',
       async function() {
         const [inputEl, targetEl] = await waitAndGetElements(
-          browser.$(dynamicExampleTextInputSelector),
-          browser.$(dynamicExampleTooltipTargetSelector)
+          dynamicExampleTextInputSelector,
+          dynamicExampleTooltipTargetSelector
         );
 
         await inputEl.focus();

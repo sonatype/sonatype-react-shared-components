@@ -26,11 +26,12 @@ describe('nx-list', function() {
   });
 
   describe('Clickable nx-list', function() {
-    it('looks right with a row hovered', hoverTest(clickableSelector, `${clickableSelector} li:first-child`));
+    it('looks right with a row hovered', hoverTest(clickableSelector, `${clickableSelector} li:first-child button`));
   });
 
   describe('Clickable links nx-list', function() {
-    it('looks right with a row hovered', hoverTest(clickableLinksSelector, `${clickableLinksSelector} li:first-child`));
+    it('looks right with a row hovered',
+        hoverTest(clickableLinksSelector, `${clickableLinksSelector} li:first-child button`));
   });
 
   describe('Bulleted nx-list', function() {

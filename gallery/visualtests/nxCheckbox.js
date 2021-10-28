@@ -7,8 +7,18 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxCheckbox', function() {
-  const { focusTest, focusAndHoverTest, hoverTest, simpleTest, waitForSelectors, getElements } =
-      setupBrowser('#/pages/NxCheckbox');
+  const {
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitForSelectors,
+    getElements,
+    waitAndGetElements,
+    moveMouseAway,
+    blurElement,
+    checkScreenshot
+  } = setupBrowser('#/pages/NxCheckbox');
 
   const selector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(3)',
       disabledSelector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(4)';
@@ -34,7 +44,7 @@ describe('NxCheckbox', function() {
           [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector);
 
       await targetElement.click();
-      await page.mouse.move(0, 0);
+      await moveMouseAway();
       await focusElement.focus();
 
       await checkScreenshot(targetElement);
@@ -43,16 +53,16 @@ describe('NxCheckbox', function() {
     it(`has a blue background and white checkmark with a light blue outer border
       when clicked, focused, and hovered`, async function() {
       const focusSelector = `${selector} input`,
-          [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector),
-          targetElementBox = targetElement.boundingBox(),
-          targetElementCenter = {
-            x: targetElementBox.x + (targetElementBox.width / 2),
-            y: targetElementBox.y + (targetElementBox.height / 2)
-          };
+          [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector);
+          //targetElementBox = targetElement.boundingBox(),
+          //targetElementCenter = {
+            //x: targetElementBox.x + (targetElementBox.width / 2),
+            //y: targetElementBox.y + (targetElementBox.height / 2)
+          //};
 
       await targetElement.click();
-      await targetElement.moveTo(targetElementCenter.x, targetElementCenter.y);
       await focusElement.focus();
+      await targetElement.hover();
 
       await checkScreenshot(targetElement);
     });

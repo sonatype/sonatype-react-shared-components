@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxSegmentedButton', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, moveMouseAway } =
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, moveMouseAway, getPage } =
       setupBrowser('#/pages/NxSegmentedButton');
 
   function openedTest(selector, dropdownBtnSelector) {

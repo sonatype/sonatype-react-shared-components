@@ -6,7 +6,7 @@
  */
 const { setupBrowser } = require('./testUtils');
 describe('NxModal', function() {
-  const { waitAndGetElement, checkFullPageScreenshot } = setupBrowser('#/pages/NxModal');
+  const { waitAndGetElements, checkFullPageScreenshot } = setupBrowser('#/pages/NxModal');
 
   const simpleExampleSelector = '#nx-modal-simple-example',
       formWithAlertExampleSelector = '#nx-modal-form-with-alert-example',
@@ -121,23 +121,23 @@ describe('NxModal', function() {
 
   describe('NxModal + NxDropdown ESC Closing behavior', function() {
     it('closes one layer per ESC press', async function() {
-      const [initialBtn] = waitAndGetElements(`${escClosingExampleSelector} #esc-example-initial-btn`);
+      const [initialBtn] = await waitAndGetElements(`${escClosingExampleSelector} #esc-example-initial-btn`);
       await initialBtn.click();
 
-      const [customPanel, customPanelBtn] = waitAndGetElements(
+      const [customPanel, customPanelBtn] = await waitAndGetElements(
         `${escClosingExampleSelector} .gallery-custom-expandable`,
         `${escClosingExampleSelector} .gallery-custom-expandable button`,
       );
       await customPanelBtn.click();
 
-      const [modal1, modal1CloseBtn, dropdownToggle] = waitAndGetElements(
+      const [modal1, modal1CloseBtn, dropdownToggle] = await waitAndGetElements(
         `${escClosingExampleSelector} #nx-modal-esc-example-modal`,
         `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-footer .nx-btn`,
         `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown__toggle`,
       );
       await dropdownToggle.click();
 
-      const [dropdownMenu, dropdownBtn] = waitAndGetElements(
+      const [dropdownMenu, dropdownBtn] = await waitAndGetElements(
         `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-menu`,
         `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-button`,
       );

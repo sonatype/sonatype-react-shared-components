@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTabs', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements } =
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, checkScreenshot } =
       setupBrowser('#/pages/NxTabs');
 
   const tabTileExampleSelector = '#nx-tab-tile-example .nx-tile',

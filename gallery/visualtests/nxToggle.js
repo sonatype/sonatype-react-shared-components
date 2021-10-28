@@ -7,7 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxToggle', function() {
-  const { focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements } = setupBrowser('#/pages/NxToggle');
+  const {
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    moveMouseAway,
+    checkScreenshot,
+    blurElement
+  } = setupBrowser('#/pages/NxToggle');
 
   const selector = '#nx-toggle-example .gallery-example-live label:nth-of-type(2)',
       disabledSelector = '#nx-toggle-example .gallery-example-live label:nth-of-type(4)',
@@ -41,7 +50,7 @@ describe('NxToggle', function() {
 
     it(`dark border, blue background and white indicator with light outer blue border
       when clicked, focused, and hovered`, async function() {
-      const focusSelector = `${selector} input`,
+      const inputSelector = `${selector} input`,
           [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);
 
       await targetElement.click();

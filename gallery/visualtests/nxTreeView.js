@@ -7,7 +7,8 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTreeView', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxTreeView');
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements } =
+      setupBrowser('#/pages/NxTreeView');
 
   const selector = '#nx-tree-view-example .nx-tree-view:nth-child(3)',
       disabledTreeViewSelector = '#nx-tree-view-disabled-example .nx-tree-view',

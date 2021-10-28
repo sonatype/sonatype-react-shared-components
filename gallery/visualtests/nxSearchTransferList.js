@@ -7,8 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxSearchTransferList', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, checkScreenshot } =
-      setupBrowser('#/pages/NxSearchTransferList');
+  const {
+        clickTest,
+        focusTest,
+        focusAndHoverTest,
+        hoverTest,
+        simpleTest,
+        waitAndGetElements,
+        checkScreenshot,
+        getPage
+      } = setupBrowser('#/pages/NxSearchTransferList');
 
   const simpleListSelector = '#nx-search-transfer-list-example .nx-search-transfer-list',
       complexListSelector = '#nx-search-transfer-list-complex-example .nx-search-transfer-list';

@@ -4,11 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const puppeteer = require('puppeteer');
 const { setupBrowser } = require('./testUtils');
 
 describe('NxAccordion', function() {
-  const { getPage, simpleTest, focusTest } = setupBrowser('#/pages/NxAccordion');
+  const { getPage, simpleTest, focusTest, dismissResultingDialog } = setupBrowser('#/pages/NxAccordion');
 
   const exampleSelector = '#nx-accordion-example .gallery-example-live',
       tertiaryBtnExampleSelector = '#nx-accordion-tertiary-button-example .gallery-example-live',
