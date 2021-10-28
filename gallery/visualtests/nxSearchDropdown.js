@@ -7,8 +7,17 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxSearchDropdown', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, getPage, blurElement } =
-      setupBrowser('#/pages/NxSearchDropdown');
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    getPage,
+    blurElement,
+    scrollIntoView
+  } = setupBrowser('#/pages/NxSearchDropdown');
 
   const basicExampleSelector = '#nx-search-dropdown-basic-example .nx-search-dropdown',
       longExampleSelector = '#nx-search-dropdown-long-example .nx-search-dropdown',
@@ -26,6 +35,7 @@ describe('NxSearchDropdown', function() {
 
     const { x, y } = await component.boundingBox();
 
+    await scrollIntoView(component);
     await input.focus();
     await getPage().keyboard.type('1');
     await getPage().waitForSelector(loadingSpinnerSelector);
@@ -110,6 +120,7 @@ describe('NxSearchDropdown', function() {
           inputSelector
         );
 
+    await scrollIntoView(component);
     await input.focus();
     await getPage().keyboard.type('asdfasdf');
     await getPage().waitForSelector(emptyMessageSelector);
@@ -128,13 +139,16 @@ describe('NxSearchDropdown', function() {
         [component, input] =
             await waitAndGetElements(errorExampleSelector, inputSelector);
 
+    await scrollIntoView(component);
     await input.focus();
     await getPage().keyboard.type('1');
     await getPage().waitForSelector(errorSelector);
 
     const { x, y } = await component.boundingBox();
-    const screenshot = await getPage().screenshot({
-      clip: { x, y, width: 300, height: 195 }
+    console.log('x', x);
+    console.log('y', y);
+    const screenshot = await component.screenshot({
+      clip: { width: 300, height: 195 }
     });
 
     expect(screenshot).toMatchImageSnapshot();
@@ -148,6 +162,7 @@ describe('NxSearchDropdown', function() {
           inputSelector
         );
 
+    await scrollIntoView(component);
     await input.focus();
     await getPage().keyboard.type('1');
     await getPage().waitForSelector(dropdownButtonSelector);
@@ -168,6 +183,7 @@ describe('NxSearchDropdown', function() {
           inputSelector
         );
 
+    await scrollIntoView(component);
     await input.focus();
     await getPage().keyboard.type('1');
     await getPage().waitForSelector(errorSelector);
