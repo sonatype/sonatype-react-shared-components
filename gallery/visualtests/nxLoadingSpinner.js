@@ -7,9 +7,12 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxLoadingSpinner', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxLoadingSpinner');
+  const { simpleTest, disableLoadingSpinnerAnimation } = setupBrowser('#/pages/NxLoadingSpinner');
 
   const selector = '.gallery-example .nx-loading-spinner';
 
-  it('looks right', simpleTest(selector));
+  it('looks right', async function() {
+    await disableLoadingSpinnerAnimation();
+    await simpleTest(selector)();
+  });
 });

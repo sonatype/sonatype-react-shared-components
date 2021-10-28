@@ -77,6 +77,15 @@ module.exports = {
       }
     }
 
+    async function disableLoadingSpinnerAnimation() {
+      const spinner = await page.$('.nx-loading-spinner__icon');
+      await spinner.evaluate(el => el.style.animation = 'none');
+    }
+
+    async function scrollIntoView(el) {
+      await el.evaluate(e => e.scrollIntoView({ block: 'center' }));
+    }
+
     async function moveMouseAway() {
       await page.mouse.move(0, 0);
     }
@@ -88,6 +97,8 @@ module.exports = {
       blurElement,
       moveMouseAway,
       dismissResultingDialog,
+      disableLoadingSpinnerAnimation,
+      scrollIntoView,
 
       waitForSelectors,
       getElements,

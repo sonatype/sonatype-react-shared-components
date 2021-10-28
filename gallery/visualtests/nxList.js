@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-list', function() {
-  const { hoverTest, simpleTest } = setupBrowser('#/pages/nx-list');
+  const { hoverTest, simpleTest, disableLoadingSpinnerAnimation } = setupBrowser('#/pages/nx-list');
 
   const simpleSelector = '#nx-list-simple-example .gallery-example-live',
       clickableSelector = '#nx-list-clickable-example .nx-list',
@@ -55,7 +55,10 @@ describe('nx-list', function() {
   });
 
   describe('Loading nx-list', function() {
-    it('looks right', simpleTest(loadingSelector));
+    it('looks right', async function() {
+      await disableLoadingSpinnerAnimation();
+      await simpleTest(loadingSelector)();
+    });
   });
 
   describe('Description nx-list', function() {
