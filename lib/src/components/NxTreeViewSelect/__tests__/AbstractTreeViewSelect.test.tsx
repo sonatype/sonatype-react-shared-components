@@ -10,7 +10,7 @@ import {times} from 'ramda';
 import {getShallowComponent} from '../../../__testutils__/enzymeUtils';
 import AbstractTreeViewSelect, {Props} from '../AbstractTreeViewSelect';
 import {Option} from '../commonTypes';
-import { NxTreeViewChild } from '../../NxTreeView/NxTreeView';
+import NxTreeView, { NxTreeViewChild } from '../../NxTreeView/NxTreeView';
 
 describe('AbstractTreeViewSelect', function() {
   const requiredProps: Props = {
@@ -109,6 +109,16 @@ describe('AbstractTreeViewSelect', function() {
         const filterInput = nxTreeView.childAt(0);
         expect(filterInput).toHaveDisplayName('ForwardRef(NxFilterInput)');
         expect(filterInput).toHaveProp('id', 'nx-tree-view-select-foobar-filter-input');
+      });
+
+      it('sets the aria-controls on the filter to the tree view id', function() {
+        const shallowRender = getShallow(),
+            nxTreeView = shallowRender.find(NxTreeView),
+            id = nxTreeView.prop('id'),
+            filterInput = nxTreeView.childAt(0);
+
+        expect(id).toBeTruthy();
+        expect(filterInput).toHaveProp('aria-controls', id);
       });
 
       it('does not render filter input if filterThreshold is not less than amount of options', function () {
@@ -369,9 +379,13 @@ describe('AbstractTreeViewSelect', function() {
       expect(shallowRender.find('NxTreeView')).toHaveProp('id', 'someid');
     });
 
-    it('assigns undefined if the id prop if not supplied', function() {
-      const shallowRender = getShallow();
-      expect(shallowRender.find('NxTreeView')).toHaveProp('id', undefined);
+    it('assigns a random id if not supplied', function() {
+      const id1 = getShallow().find(NxTreeView).prop('id'),
+          id2 = getShallow().find(NxTreeView).prop('id');
+
+      expect(id1).toBeTruthy();
+      expect(id2).toBeTruthy();
+      expect(id1).not.toBe(id2);
     });
   });
 

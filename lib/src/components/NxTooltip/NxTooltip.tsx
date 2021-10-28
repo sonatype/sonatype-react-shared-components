@@ -22,6 +22,10 @@ function convertPlacement(placement: TooltipPlacement | null | undefined): Toolt
       return 'top-start';
     case 'bottom':
       return 'bottom-start';
+    case 'top-middle':
+      return 'top';
+    case 'bottom-middle':
+      return 'bottom';
     default:
       return placement;
   }

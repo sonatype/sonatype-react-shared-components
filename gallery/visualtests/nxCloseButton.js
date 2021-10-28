@@ -9,7 +9,7 @@ const { setupBrowser } = require('./testUtils');
 describe('NxCloseButton', function() {
   const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxCloseButton');
 
-  const selector = '.gallery-example .nx-btn--close';
+  const selector = '.gallery-example-live .nx-btn--close';
 
   it('has no border or visible background by default', simpleTest(selector));
   it('has a dark grey border when hovered', hoverTest(selector));

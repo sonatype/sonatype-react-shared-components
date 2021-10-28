@@ -74,7 +74,7 @@
   border: 1px solid var(--nx-color-form-element-border);
   border-radius: var(--nx-border-radius);
   display: flex;
-  padding: var(--nx-spacing-2x) var(--nx-spacing-4x);
+  padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
 
   .nx-icon {
     margin-right: 0;
@@ -102,6 +102,7 @@
   flex-grow: 1;
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
+  margin: 0;
   padding: 0;
 
   &:focus {

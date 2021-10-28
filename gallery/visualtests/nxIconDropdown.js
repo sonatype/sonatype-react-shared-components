@@ -37,7 +37,7 @@ describe('NxIconDropdown', function() {
 
       const { x, y } = await targetElement.boundingBox();
       const screenshot = await getPage().screenshot({
-        clip: { x, y, width: 251, height: 376 }
+        clip: { x, y, width: 251, height: 346 }
       });
 
       expect(screenshot).toMatchImageSnapshot();
