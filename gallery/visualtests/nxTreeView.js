@@ -79,7 +79,7 @@ describe('NxTreeView', function() {
     it('looks right expanded', async function() {
       const firstTreeSelector = `${checkboxTreeViewSelector} .nx-tree-view:first-child`,
           secondTreeSelector = `${checkboxTreeViewSelector} .nx-tree-view:last-child`,
-          [firstTree, secondTree] = await Promise.all([browser.$(firstTreeSelector), browser.$(secondTreeSelector)]);
+          [firstTree, secondTree] = await waitAndGetElements(firstTreeSelector, secondTreeSelector);
 
       await firstTree.click();
       await secondTree.click();
