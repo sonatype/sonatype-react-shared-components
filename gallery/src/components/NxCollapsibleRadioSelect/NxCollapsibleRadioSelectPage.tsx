@@ -5,38 +5,24 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import {
-  NxCode,
-  NxList,
-  NxP,
-  NxTable,
-  NxTextLink,
-  NxWarningAlert
-} from '@sonatype/react-shared-components';
+import { NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxStatefulTreeViewRadioSelectExample from './NxStatefulTreeViewRadioSelectExample';
-import NxStatefulTreeViewRadioSelectDisabledExample from './NxStatefulTreeViewRadioSelectDisabledExample';
+import NxCollapsibleRadioSelectExample from './NxCollapsibleRadioSelectExample';
+import NxCollapsibleRadioSelectCustomTooltipExample from './NxCollapsibleRadioSelectCustomTooltipExample';
+import NxCollapsibleRadioSelectDisabledExample from './NxCollapsibleRadioSelectDisabledExample';
 
-const nxStatefulTreeViewRadioSelectExampleCode = require('./NxStatefulTreeViewRadioSelectExample?raw'),
-    nxStatefulTreeViewRadioSelectDisabledExampleCode =
-        require('./NxStatefulTreeViewRadioSelectDisabledExample?raw');
+const NxCollapsibleRadioSelectExampleCode = require('./NxCollapsibleRadioSelectExample?raw'),
+    NxCollapsibleRadioSelectDisabledExampleCode = require('./NxCollapsibleRadioSelectDisabledExample?raw'),
+    NxCollapsibleRadioSelectCustomTooltipExampleCode =
+        require('./NxCollapsibleRadioSelectCustomTooltipExample?raw');
 
-const NxStatefulTreeViewRadioSelectPage = () =>
+const NxCollapsibleRadioSelectPage = () =>
   <>
     <GalleryDescriptionTile>
-      <NxWarningAlert>
-        <NxCode>NxStatefulTreeViewRadioSelect</NxCode> has been renamed
-        to <NxCode>NxStatefulCollapsibleRadioSelect</NxCode> and
-        is now deprecated and will be removed in the next major version.
-        Please use
-        {' '}<NxTextLink href="#/pages/NxStatefulCollapsibleRadioSelect">NxStatefulCollapsibleRadioSelect</NxTextLink>
-        {' '}instead.
-      </NxWarningAlert>
-
       <NxP>
-        Stateful Radio select component using tree view with radios. It handles tree view toggling and filter state.
+        A collapsible items view radio group component.
       </NxP>
 
       <NxTable>
@@ -51,14 +37,14 @@ const NxStatefulTreeViewRadioSelectPage = () =>
         <NxTable.Body>
           <NxTable.Row>
             <NxTable.Cell>options</NxTable.Cell>
-            <NxTable.Cell>Array of {'{id:String, name:String}'}</NxTable.Cell>
+            <NxTable.Cell>Array of {'{id:string, name:string}'}</NxTable.Cell>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
               <NxP>
-                An array of objects that corresponds to the possible options of the component (the radios).
-                These objects need to at least have an <NxCode>id: string | null</NxCode> property{' '}
-                and a <NxCode>name: string</NxCode> property. If an empty array is passed in,{' '}
-                the component will be disabled.
+                An array of objects that corresponds to the possible options of the component (the checkboxes).
+                These objects need to at least have an <NxCode>id: string</NxCode> property and a{' '}
+                <NxCode>name: string</NxCode> property. If an empty array is passed in, the component
+                will be disabled.
               </NxP>
               <NxP>
                 <NxCode>id</NxCode> will be the value provided to the{' '}
@@ -72,7 +58,7 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <NxTable.Cell>string</NxTable.Cell>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
-              Name used in the default disabled tooltip and in the generated checkbox id.
+              Name used in the default disabled tooltip and to identify the radio group.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -80,7 +66,7 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <NxTable.Cell>VDOM</NxTable.Cell>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
-              The content to be used as the tree view trigger.
+              The content to be used as the collapsible items view trigger.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -88,22 +74,17 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <NxTable.Cell>Function</NxTable.Cell>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
-              Called whenever selection change occurs; it will receive one argument:
-              <NxList className="nx-list--bulleted">
-                <NxList.Item>
-                  <NxList.Text>
-                    <NxCode>id</NxCode> of the toggled option
-                  </NxList.Text>
-                </NxList.Item>
-              </NxList>
+              A function that will be called whenever a change occurs; it will receive the{' '}
+              <NxCode>id</NxCode> of the selected radio.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>selectedId</NxTable.Cell>
-            <NxTable.Cell>string | null</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              The <NxCode >id</NxCode> of the option to be selected.
+              The <NxCode>id</NxCode> of the <NxCode>option</NxCode> to be selected.
+              If not provided no option will be selected.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -111,7 +92,7 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Whether the tree view is open or closed initially. Default is false.
+              Controls whether the collapsible items view is open or closed. Default is false.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -127,7 +108,15 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Controls whether the tree view should be rendered as disabled or not. Default is false.
+              Controls whether the collapsible items view should be rendered as disabled or not. Default is false.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>onToggleCollapse</NxTable.Cell>
+            <NxTable.Cell>Function</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Called whenever the NxCollapsibleItems is toggled.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -160,11 +149,37 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell>onFilterChange</NxTable.Cell>
+            <NxTable.Cell>Function</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Called whenever filter term is changed. It will receive the current value of the filter term.
+              If not provided the filter text input will not be rendered and filtering will be disabled.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>filter</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Current value of filter term.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>filteredOptions</NxTable.Cell>
+            <NxTable.Cell>Array of {'{id:string, name:string}'}</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Options filtered using current filter term.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell>filterPlaceholder</NxTable.Cell>
             <NxTable.Cell>string</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Placeholder to be used in filter text input.
+              Placeholder to be used in filter text input. Defaults to "filter" but recommended to
+              be something clearer for screenreading purposes.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -179,19 +194,27 @@ const NxStatefulTreeViewRadioSelectPage = () =>
       </NxTable>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="General Example"
-                        codeExamples={nxStatefulTreeViewRadioSelectExampleCode}
-                        liveExample={NxStatefulTreeViewRadioSelectExample}>
-      This example demonstrates basic usage of <NxCode>NxStatefulTreeViewRadioSelect</NxCode>. Note that
-      the component tracks the collapse/expand state and filter text internally, and the calling
-      code only needs to track which items are selected.
+    <GalleryExampleTile title="NxCollapsibleRadioSelect Basic Example"
+                        id="nx-collapsible-radio-select-example"
+                        liveExample={NxCollapsibleRadioSelectExample}
+                        codeExamples={NxCollapsibleRadioSelectExampleCode}>
+      A basic example of <NxCode>NxCollapsibleRadioSelect</NxCode>, with working collapse/expand,
+      filtering, and selection. Note that the overflowing label gets a tooltip.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Disabled Example With Tooltip"
-                        liveExample={NxStatefulTreeViewRadioSelectDisabledExample}
-                        codeExamples={nxStatefulTreeViewRadioSelectDisabledExampleCode}>
-      This example shows a disabled <NxCode>NxStatefulTreeViewRadioSelect</NxCode> with a tooltip.
+    <GalleryExampleTile title="NxCollapsibleRadioSelect Custom Tooltip Example"
+                        id="nx-collapsible-radio-select-example"
+                        liveExample={NxCollapsibleRadioSelectCustomTooltipExample}
+                        codeExamples={NxCollapsibleRadioSelectCustomTooltipExampleCode}>
+      Example of an <NxCode>NxCollapsibleRadioSelect</NxCode> which generates a tooltip for each option
+      based on a custom field.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxCollapsibleRadioSelect Disabled Example"
+                        liveExample={NxCollapsibleRadioSelectDisabledExample}
+                        codeExamples={NxCollapsibleRadioSelectDisabledExampleCode}>
+      A disabled <NxCode>NxCollapsibleRadioSelect</NxCode>
     </GalleryExampleTile>
   </>;
 
-export default NxStatefulTreeViewRadioSelectPage;
+export default NxCollapsibleRadioSelectPage;

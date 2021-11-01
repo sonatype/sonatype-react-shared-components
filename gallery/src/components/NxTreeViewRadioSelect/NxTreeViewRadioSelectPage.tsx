@@ -13,10 +13,9 @@ const NxTreeViewRadioSelectPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxWarningAlert>
-        <NxCode>NxTreeViewRadioSelect</NxCode> has been renamed to <NxCode>NxCollapsibleItemsRadioSelect</NxCode>
+        <NxCode>NxTreeViewRadioSelect</NxCode> has been renamed to <NxCode>NxCollapsibleRadioSelect</NxCode>
         and is now deprecated and will be removed in the future.
-        {/* eslint-disable-next-line max-len */}
-        Please use <NxTextLink href="#/pages/NxCollapsibleItemsRadioSelect">NxCollapsibleItemsRadioSelect</NxTextLink> instead.
+        Please use <NxTextLink href="#/pages/NxCollapsibleRadioSelect">NxCollapsibleRadioSelect</NxTextLink> instead.
       </NxWarningAlert>
 
       <NxP>

@@ -5,11 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-import NxCollapsibleItemsRadioSelect, {
+import NxCollapsibleRadioSelect, {
   Option,
   Props
-} from '../../NxCollapsibleItemsSelect/NxCollapsibleItemsRadioSelect/NxCollapsibleItemsRadioSelect';
+} from '../../NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/NxCollapsibleRadioSelect';
 
-export default NxCollapsibleItemsRadioSelect;
+export default NxCollapsibleRadioSelect;
 
 export { Props, Option };

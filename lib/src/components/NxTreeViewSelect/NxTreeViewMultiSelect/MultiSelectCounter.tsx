@@ -8,7 +8,7 @@
 
 import MultiSelectCounter, {
   Props
-} from '../../NxCollapsibleItemsSelect/NxCollapsibleItemsMultiSelect/MultiSelectCounter';
+} from '../../NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/MultiSelectCounter';
 
 export default MultiSelectCounter;
 

@@ -127,14 +127,14 @@ import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
 import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallThreatCounterPage';
 import NxCollapsibleItemsPage from './components/NxCollapsibleItems/NxCollapsibleItemsPage';
-import NxCollapsibleItemsMultiSelectPage
-  from './components/NxCollapsibleItemsMultiSelect/NxCollapsibleItemsMultiSelectPage';
-import NxCollapsibleItemsRadioSelectPage
-  from './components/NxCollapsibleItemsRadioSelect/NxCollapsibleItemsRadioSelectPage';
-import NxStatefulCollapsibleItemsMultiSelectPage
-  from './components/NxStatefulCollapsibleItemsMultiSelect/NxStatefulCollapsibleItemsMultiSelectPage';
-import NxStatefulCollapsibleItemsRadioSelectPage
-  from './components/NxStatefulCollapsibleItemsRadioSelect/NxStatefulCollapsibleItemsRadioSelectPage';
+import NxCollapsibleMultiSelectPage
+  from './components/NxCollapsibleMultiSelect/NxCollapsibleMultiSelectPage';
+import NxCollapsibleRadioSelectPage
+  from './components/NxCollapsibleRadioSelect/NxCollapsibleRadioSelectPage';
+import NxStatefulCollapsibleMultiSelectPage
+  from './components/NxStatefulCollapsibleMultiSelect/NxStatefulCollapsibleMultiSelectPage';
+import NxStatefulCollapsibleRadioSelectPage
+  from './components/NxStatefulCollapsibleRadioSelect/NxStatefulCollapsibleRadioSelectPage';
 import NxTreePage from './components/NxTree/NxTreePage';
 
 const pageConfig: PageConfig = {
@@ -208,10 +208,10 @@ const pageConfig: PageConfig = {
     NxTreeViewRadioSelect: NxTreeViewRadioSelectPage,
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
     NxCollapsibleItems: NxCollapsibleItemsPage,
-    NxCollapsibleItemsMultiSelect: NxCollapsibleItemsMultiSelectPage,
-    NxStatefulCollapsibleItemsMultiSelect: NxStatefulCollapsibleItemsMultiSelectPage,
-    NxCollapsibleItemsRadioSelect: NxCollapsibleItemsRadioSelectPage,
-    NxStatefulCollapsibleItemsRadioSelect: NxStatefulCollapsibleItemsRadioSelectPage,
+    NxCollapsibleMultiSelect: NxCollapsibleMultiSelectPage,
+    NxStatefulCollapsibleMultiSelect: NxStatefulCollapsibleMultiSelectPage,
+    NxCollapsibleRadioSelect: NxCollapsibleRadioSelectPage,
+    NxStatefulCollapsibleRadioSelect: NxStatefulCollapsibleRadioSelectPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   },
   'Guidelines': {

@@ -5,10 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-import NxCollapsibleItemsMultiSelect, {
+import NxCollapsibleMultiSelect, {
   Props, Option
-} from '../../NxCollapsibleItemsSelect/NxCollapsibleItemsMultiSelect/NxCollapsibleItemsMultiSelect';
+} from '../../NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/NxCollapsibleMultiSelect';
 
-export default NxCollapsibleItemsMultiSelect;
+export default NxCollapsibleMultiSelect;
 
 export { Props, Option };

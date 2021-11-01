@@ -5,38 +5,23 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import {
-  NxCode,
-  NxList,
-  NxP,
-  NxTable,
-  NxTextLink,
-  NxWarningAlert
-} from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxStatefulTreeViewRadioSelectExample from './NxStatefulTreeViewRadioSelectExample';
-import NxStatefulTreeViewRadioSelectDisabledExample from './NxStatefulTreeViewRadioSelectDisabledExample';
+import NxStatefulCollapsibleRadioSelectExample from './NxStatefulCollapsibleRadioSelectExample';
+import NxStatefulCollapsibleRadioSelectDisabledExample
+  from './NxStatefulCollapsibleRadioSelectDisabledExample';
 
-const nxStatefulTreeViewRadioSelectExampleCode = require('./NxStatefulTreeViewRadioSelectExample?raw'),
-    nxStatefulTreeViewRadioSelectDisabledExampleCode =
-        require('./NxStatefulTreeViewRadioSelectDisabledExample?raw');
+const nxStatefulCollapsibleItemsRadioSelectExampleCode = require('./NxStatefulCollapsibleRadioSelectExample?raw'),
+    nxStatefulCollapsibleItemsRadioSelectDisabledExampleCode =
+        require('./NxStatefulCollapsibleRadioSelectDisabledExample?raw');
 
-const NxStatefulTreeViewRadioSelectPage = () =>
+const NxStatefulCollapsibleRadioSelectPage = () =>
   <>
     <GalleryDescriptionTile>
-      <NxWarningAlert>
-        <NxCode>NxStatefulTreeViewRadioSelect</NxCode> has been renamed
-        to <NxCode>NxStatefulCollapsibleRadioSelect</NxCode> and
-        is now deprecated and will be removed in the next major version.
-        Please use
-        {' '}<NxTextLink href="#/pages/NxStatefulCollapsibleRadioSelect">NxStatefulCollapsibleRadioSelect</NxTextLink>
-        {' '}instead.
-      </NxWarningAlert>
-
       <NxP>
-        Stateful Radio select component using tree view with radios. It handles tree view toggling and filter state.
+        Stateful Radio select component using collapsible items with radios. It handles collapsible items toggling and filter state.
       </NxP>
 
       <NxTable>
@@ -80,7 +65,7 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <NxTable.Cell>VDOM</NxTable.Cell>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
-              The content to be used as the tree view trigger.
+              The content to be used as the collapsible items trigger.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -111,7 +96,7 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Whether the tree view is open or closed initially. Default is false.
+              Whether the collapsible items is open or closed initially. Default is false.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -127,7 +112,7 @@ const NxStatefulTreeViewRadioSelectPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Controls whether the tree view should be rendered as disabled or not. Default is false.
+              Controls whether the collapsible items should be rendered as disabled or not. Default is false.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -180,18 +165,18 @@ const NxStatefulTreeViewRadioSelectPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"
-                        codeExamples={nxStatefulTreeViewRadioSelectExampleCode}
-                        liveExample={NxStatefulTreeViewRadioSelectExample}>
-      This example demonstrates basic usage of <NxCode>NxStatefulTreeViewRadioSelect</NxCode>. Note that
+                        codeExamples={nxStatefulCollapsibleItemsRadioSelectExampleCode}
+                        liveExample={NxStatefulCollapsibleRadioSelectExample}>
+      This example demonstrates basic usage of <NxCode>NxStatefulCollapsibleRadioSelect</NxCode>. Note that
       the component tracks the collapse/expand state and filter text internally, and the calling
       code only needs to track which items are selected.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled Example With Tooltip"
-                        liveExample={NxStatefulTreeViewRadioSelectDisabledExample}
-                        codeExamples={nxStatefulTreeViewRadioSelectDisabledExampleCode}>
-      This example shows a disabled <NxCode>NxStatefulTreeViewRadioSelect</NxCode> with a tooltip.
+                        liveExample={NxStatefulCollapsibleRadioSelectDisabledExample}
+                        codeExamples={nxStatefulCollapsibleItemsRadioSelectDisabledExampleCode}>
+      This example shows a disabled <NxCode>NxStatefulCollapsibleRadioSelect</NxCode> with a tooltip.
     </GalleryExampleTile>
   </>;
 
-export default NxStatefulTreeViewRadioSelectPage;
+export default NxStatefulCollapsibleRadioSelectPage;

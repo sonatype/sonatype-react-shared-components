@@ -99,10 +99,10 @@ export {
 } from './components/NxTreeViewSelect/NxTreeViewRadioSelect/NxTreeViewRadioSelect';
 
 export {
-  default as NxCollapsibleItemsRadioSelect,
-  Props as NxCollapsibleItemsRadioSelectProps,
-  Option as NxCollapsibleItemsRadioSelectOption
-} from './components/NxCollapsibleItemsSelect/NxCollapsibleItemsRadioSelect/NxCollapsibleItemsRadioSelect';
+  default as NxCollapsibleRadioSelect,
+  Props as NxCollapsibleRadioSelectProps,
+  Option as NxCollapsibleRadioSelectOption
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/NxCollapsibleRadioSelect';
 
 export { default as NxPolicyThreatSlider, Props as NxPolicyThreatSliderProps, PolicyThreatLevelRange }
   from './components/NxPolicyThreatSlider/NxPolicyThreatSlider';
@@ -140,22 +140,22 @@ export {
 } from './components/NxTreeViewSelect/NxTreeViewRadioSelect/stateful/NxStatefulTreeViewRadioSelect';
 
 export {
-  default as NxCollapsibleItemsMultiSelect,
-  Props as NxCollapsibleItemsMultiSelectProps,
-  Option as NxCollapsibleItemsMultiSelectOption
-} from './components/NxCollapsibleItemsSelect/NxCollapsibleItemsMultiSelect/NxCollapsibleItemsMultiSelect';
+  default as NxCollapsibleMultiSelect,
+  Props as NxCollapsibleMultiSelectProps,
+  Option as NxCollapsibleMultiSelectOption
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/NxCollapsibleMultiSelect';
 
 export {
-  default as NxStatefulCollapsibleItemsMultiSelect,
+  default as NxStatefulCollapsibleMultiSelect,
   Props as NxStateCollapsibleItemsMultiSelectProps
 // eslint-disable-next-line max-len
-} from './components/NxCollapsibleItemsSelect/NxCollapsibleItemsMultiSelect/stateful/NxStatefulCollapsibleItemsMultiSelect';
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/stateful/NxStatefulCollapsibleMultiSelect';
 
 export {
-  default as NxStatefulCollapsibleItemsRadioSelect,
+  default as NxStatefulCollapsibleRadioSelect,
   Props as NxStateCollapsibleItemsRadioSelectProps
 // eslint-disable-next-line max-len
-} from './components/NxCollapsibleItemsSelect/NxCollapsibleItemsRadioSelect/stateful/NxStatefulCollapsibleItemsRadioSelect';
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/stateful/NxStatefulCollapsibleRadioSelect';
 
 export {
   default as NxStatefulCheckbox,

@@ -13,10 +13,9 @@ const NxTreeViewMultiSelectPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxWarningAlert>
-        <NxCode>NxTreeViewMultiSelect</NxCode> has been renamed to <NxCode>NxCollapsibleItemsMultiSelect</NxCode>
+        <NxCode>NxTreeViewMultiSelect</NxCode> has been renamed to <NxCode>NxCollapsibleMultiSelect</NxCode>
         and is now deprecated and will be removed in the future.
-        {/* eslint-disable-next-line max-len */}
-        Please use <NxTextLink href="#/pages/NxCollapsibleItemsMultiSelect">NxCollapsibleItemsMultiSelect</NxTextLink> instead.
+        Please use <NxTextLink href="#/pages/NxCollapsibleMultiSelect">NxCollapsibleMultiSelect</NxTextLink> instead.
       </NxWarningAlert>
 
       <NxP>

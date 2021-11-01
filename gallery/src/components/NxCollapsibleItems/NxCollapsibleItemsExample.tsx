@@ -12,7 +12,7 @@ function NxCollapsibleItemsExample() {
   const [toggleCheck, onToggleCollapse] = useToggle(false);
 
   return (
-    <NxCollapsibleItems id="example-nx-tree-view"
+    <NxCollapsibleItems id="example-nx-collapsible-items"
                         onToggleCollapse={onToggleCollapse}
                         isOpen={toggleCheck}
                         triggerContent="Organization - an extra long example that should cause truncation">

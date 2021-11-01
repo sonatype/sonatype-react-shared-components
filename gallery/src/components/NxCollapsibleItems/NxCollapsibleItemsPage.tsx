@@ -31,7 +31,7 @@ const NxCollapsibleItemsPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        A set of default styles and basic React for an expanding tree view.
+        A set of default styles and basic React for a collapsible items.
       </NxP>
 
       <NxTable>
@@ -49,7 +49,7 @@ const NxCollapsibleItemsPage = () =>
             <NxTable.Cell>string</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Id to assign to the tree view element
+              Id to assign to the collapsible items element
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -57,7 +57,7 @@ const NxCollapsibleItemsPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Controls whether the tree view is open or closed. Default is false.
+              Controls whether the collapsible items is open or closed. Default is false.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -65,8 +65,9 @@ const NxCollapsibleItemsPage = () =>
             <NxTable.Cell>() =&gt; void</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Callback that fires when the tree view collapse/expand toggle is clicked. Typically is a function
-              that toggles the state value which controls the tree view's <NxCode>isOpen</NxCode> prop.
+              Callback that fires when the collapsible items collapse/expand toggle is clicked.
+              Typically is a function that toggles the state value which controls the
+              collapsible items's <NxCode>isOpen</NxCode> prop.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -74,7 +75,7 @@ const NxCollapsibleItemsPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Controls whether the tree view should be rendered as disabled or not. Default is false.
+              Controls whether the collapsible items should be rendered as disabled or not. Default is false.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -82,7 +83,8 @@ const NxCollapsibleItemsPage = () =>
             <NxTable.Cell>VirtualDOM</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              The content of the tree view trigger. While not strictly speaking required if there is no content then
+              The content of the collapsible items trigger.
+              While not strictly speaking required if there is no content then
               nothing but the caret icon will appear.
             </NxTable.Cell>
           </NxTable.Row>
@@ -91,10 +93,11 @@ const NxCollapsibleItemsPage = () =>
             <NxTable.Cell>string | NxTooltip Props</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              If present, describes a tooltip to be places on the tree view's trigger element. There are two ways
-              to specify the tooltip: the simpler way is to simply specify the tooltip text as a string. If control
-              of more complex tooltip options is desired, an object can be passed which will serve as the props for
-              NxTooltip
+              If present, describes a tooltip to be places on the collapsible items's trigger element.
+              There are two ways to specify the tooltip:
+              the simpler way is to simply specify the tooltip text as a string.
+              If control of more complex tooltip options is desired,
+              an object can be passed which will serve as the props for NxTooltip
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -111,7 +114,7 @@ const NxCollapsibleItemsPage = () =>
         </NxTile.SubsectionHeader>
         <NxP>
           The "children" of an <NxCode>NxCollapsibleItems</NxCode> are the elements which appear when the
-          tree view is expanded. All tree view children should be wrapped
+          collapsible items is expanded. All collapsible items children should be wrapped
           in <NxCode>NxCollapsibleItemsChild</NxCode> components.{' '}
           <NxCode>NxCollapsibleItemsChild</NxCode> does not actually create an element of its own – unless
           its children consist only of text – but rather augments the classes and attributes of its child element
@@ -119,14 +122,14 @@ const NxCollapsibleItemsPage = () =>
           expects to have exactly one child, and this restriction is enforced in the typescript types.
           NxCollapsibleItemsChild can receive standard global HTML attributes.
         </NxP>
-        <NxP>Certain types of tree view children get special styling treatment as described below.</NxP>
+        <NxP>Certain types of collapsible items children get special styling treatment as described below.</NxP>
         <ul className="nx-list">
           <li className="nx-list__item">
             <span className="nx-list__text">Clickable/selectable children</span>
             <span className="nx-list__subtext">
               Links (<NxCode>&lt;a&gt;</NxCode> tags)
               and <NxCode>&lt;button&gt;</NxCode>s get hover, focus, and click styles which
-              lay them out slightly differently from normal tree view children. When constructing
+              lay them out slightly differently from normal collapsible items children. When constructing
               a navigation list within an <NxCode>NxCollapsibleItems</NxCode>, the link representing the
               current page should be given the <NxCode>.selected</NxCode> class.
             </span>
@@ -158,7 +161,7 @@ const NxCollapsibleItemsPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxCollapsibleItems Example with Extras"
-                        id="nx-tree-view-example"
+                        id="nx-collapsible-items-example"
                         liveExample={NxCollapsibleItemsExtras}
                         codeExamples={NxCollapsibleItemsExtrasCode}>
       These examples demonstrate <NxCode>NxCollapsibleItems</NxCode>s with extra content such as icons and
@@ -167,24 +170,24 @@ const NxCollapsibleItemsPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxCollapsibleItems Clickable Example"
-                        id="nx-tree-view-clickable-example"
+                        id="nx-collapsible-items-clickable-example"
                         liveExample={NxCollapsibleItemsClickable}
                         codeExamples={NxCollapsibleItemsClickableCode}>
       Example of an <NxCode>NxCollapsibleItems</NxCode> with clickable children one of which is selected
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxCollapsibleItems Clickable Sidebar Example"
-                        id="nx-tree-view-clickable-sidebar-example"
+                        id="nx-collapsible-items-clickable-sidebar-example"
                         liveExample={NxCollapsibleItemsClickableSidebar}
                         codeExamples={NxCollapsibleItemsClickableSidebarCode}>
       Example of an <NxCode>NxCollapsibleItems</NxCode> with clickable children one of which is selected.
-      This example differs from the previous one in that the tree view is contained within
+      This example differs from the previous one in that the collapsible items is contained within
       an <NxCode>.nx-page-sidebar</NxCode>. <NxCode>NxCollapsibleItems</NxCode>s that are
       descendants of sidebars use different colors for their hover and selected states.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxCollapsibleItems Checkbox and radio Example"
-                        id="nx-tree-view-checkbox-example"
+                        id="nx-collapsible-items-checkbox-example"
                         liveExample={NxCollapsibleItemsCheckbox}
                         codeExamples={NxCollapsibleItemsCheckboxCode}>
       Example showing how to construct <NxCode>NxCollapsibleItems</NxCode>s with checkboxes and radios as
@@ -192,14 +195,14 @@ const NxCollapsibleItemsPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxCollapsibleItems Empty Example"
-                        id="nx-tree-view-empty-example"
+                        id="nx-collapsible-items-empty-example"
                         liveExample={NxCollapsibleItemsEmpty}
                         codeExamples={NxCollapsibleItemsEmptyCode}>
       Example of an <NxCode>NxCollapsibleItems</NxCode> that cannot be opened because it has no children.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxCollapsibleItems Disabled Example"
-                        id="nx-tree-view-disabled-example"
+                        id="nx-collapsible-items-disabled-example"
                         liveExample={NxCollapsibleItemsDisabled}
                         codeExamples={NxCollapsibleItemsDisabledCode}>
       Example of a disabled <NxCode>NxCollapsibleItems</NxCode>.
