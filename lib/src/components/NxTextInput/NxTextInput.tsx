@@ -41,6 +41,7 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
         onKeyPress,
         disabled,
         prefixContent,
+        overrideType,
         ...attrs
       } = props;
 
@@ -96,7 +97,7 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
               ...newProps,
               disabled,
               ref: inputRef,
-              type: typeAttr,
+              type: overrideType || typeAttr,
               onChange: inputOnChange,
               className: 'nx-text-input__input',
               onKeyPress: inputOnKeyPress,

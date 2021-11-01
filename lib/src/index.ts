@@ -17,6 +17,9 @@ export { default as NxModal, Props as NxModalProps } from './components/NxModal/
 export { default as NxTextInput, PublicProps as NxTextInputProps, StateProps as NxTextInputStateProps }
   from './components/NxTextInput/NxTextInput';
 
+export { default as NxDateInput, PublicProps as NxDateInputProps, StateProps as NxDateInputStateProps }
+  from './components/NxDateInput/NxDateInput';
+
 import * as nxTextInputStateHelpers from './components/NxTextInput/stateHelpers';
 export { nxTextInputStateHelpers };
 

@@ -9,6 +9,7 @@ import {PageConfig} from './pageConfigTypes';
 import NxAlertPage from './styles/NxAlert/NxAlertPage';
 import NxButtonPage from './components/NxButton/NxButtonPage';
 import NxCheckboxPage from './components/NxCheckbox/NxCheckboxPage';
+import NxDateInputPage from './components/NxDateInput/NxDateInputPage';
 import NxTextInputPage from './components/NxTextInput/NxTextInputPage';
 import NxStatefulTextInputPage from './components/NxStatefulTextInput/NxStatefulTextInputPage';
 import NxBackButtonPage from './components/NxBackButton/NxBackButtonPage';
@@ -179,6 +180,7 @@ const pageConfig: PageConfig = {
     NxTabs: NxTabsPage,
     NxStatefulTabs: NxStatefulTabsPage,
     NxTag: NxTagPage,
+    NxDateInputPage: NxDateInputPage,
     NxTextInput: NxTextInputPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxTextLink: NxTextLinkPage,
