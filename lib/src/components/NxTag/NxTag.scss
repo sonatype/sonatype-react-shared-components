@@ -39,13 +39,19 @@
     border-color: var(--nx-color-interactive-border-hover);
   }
 
-  &:focus::before {
-    content: '';
-    inset: calc(0px - (var(--nx-spacing-base) + 1px));
-    position: absolute;
-    border: 1px solid var(--nx-color-interactive-border-focus);
-    box-shadow: var(--nx-box-shadow-focus);
-    border-radius: 20px;
+  &:focus {
+    &:focus-visible {
+      outline: none;
+    }
+
+    &::before {
+      content: '';
+      inset: calc(0px - (var(--nx-spacing-base) + 1px));
+      position: absolute;
+      border: 1px solid var(--nx-color-interactive-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
+      border-radius: 20px;
+    }
   }
 }
 
