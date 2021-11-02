@@ -53,12 +53,26 @@
   }
 }
 
+.nx-tag--selectable__wrapper {
+  margin: 0;
+  padding: 0;
+}
+
 .nx-tag--selected {
   background-color: var(--nx-selectable-color-dark);
 
   &:hover {
     border-color: transparent;
   }
+}
+
+// In safari, the width: 0 and -moz-appearance settings fail to hide the <input>.
+// So instead we use margin on the checkbox to hide the <input> under the toggle.
+.nx-tag__input {
+  margin: 0 0 0 var(--nx-spacing-3x);
+  width: 0;
+  -moz-appearance: none;
+  outline: none;
 }
 
 .nx-tag__text {
