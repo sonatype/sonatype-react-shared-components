@@ -199,4 +199,12 @@ describe('NxTextInput', function() {
     expect(component.find('.nx-text-input__box > .foo')).toExist();
     expect(component.find('.nx-text-input__box > .foo + .nx-text-input__input')).toExist();
   });
+
+  it('adds the nx-text-input--date class if isDateInput is true', function() {
+    expect(getShallowComponent({ isDateInput: true })).toHaveClassName('nx-text-input--date');
+  });
+
+  it('should have input with type date if isDateInput is true', function() {
+    expect(getShallowComponent({ isDateInput: true }).find('input')).toHaveProp('type', 'date');
+  });
 });

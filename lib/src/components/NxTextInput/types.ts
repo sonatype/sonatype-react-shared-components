@@ -47,7 +47,7 @@ export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   // This prop allows additional content to be inserted just before the
   // <input>. This is used by NxFilterInput
   prefixContent?: ReactNode | null;
-  overrideType?: InputHTMLAttributes<HTMLInputElement>['type'] | null;
+  isDateInput?: boolean;
 };
 
 export type PublicProps = Omit<Props, 'prefixContent' | 'overrideType'>;

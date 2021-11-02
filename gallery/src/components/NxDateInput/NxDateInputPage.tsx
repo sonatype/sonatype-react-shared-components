@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxP }
+import { NxCode, NxP, NxTextLink }
   from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -17,7 +17,11 @@ const NxDateInputSimpleExampleCode = require('./NxDateInputSimpleExample?raw');
 const NxTextInputPage = () =>
   <>
     <GalleryDescriptionTile>
-      <NxP>Standard date input with validation styling</NxP>
+      <NxP>
+        Standard date input with validation styling.
+        It is using <NxTextLink href="#/pages/NxTextInput">NxTextInput</NxTextLink>
+        under the hood and has similar properties except for `type`.
+      </NxP>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
