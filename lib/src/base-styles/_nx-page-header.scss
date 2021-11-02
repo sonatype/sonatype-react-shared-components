@@ -19,7 +19,6 @@ $-product-version-row-height: 1fr;
 
 .nx-page-header {
   box-sizing: content-box;
-
   background-color: $-background;
   border-bottom: 1px solid var(--nx-swatch-grey-90);
   grid-area: old-header; // see nx-page's grid template

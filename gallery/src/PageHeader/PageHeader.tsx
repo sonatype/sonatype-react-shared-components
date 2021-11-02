@@ -14,25 +14,26 @@ const tartanLogotype = require('./tartan-logotype.svg');
 import './PageHeader.scss';
 
 const PageHeader = () => (
-  <header className="nx-gallery-page-header">
-    <div className="nx-gallery-page-header__inner">
-      <h1 className="nx-gallery-page-header__logo">
-        <a className="nx-gallery-page-header__home-link"
-           href="#"
-           aria-label="home">
-          <img className="nx-gallery-page-header__logo-image"
-               src={plaidVillain}
-               alt="A cute but villainous Tartan logo" />
-          <img className="nx-gallery-page-header__logotype-image"
-               src={tartanLogotype}
-               alt="Sonatype Tartan" />
-          <span className="nx-gallery-page-header__name">
-            React Shared Component Library
-          </span>
-        </a>
-      </h1>
-      <div className="nx-gallery-page-header__version">
-        Version {packageJson.version}
+  <header className="nx-page-header">
+    <div className="nx-page-header__inner">
+      <a className="nx-page-header__home-link"
+         href="#">
+        <img className="nx-page-header__logo-image"
+             src={plaidVillain}
+             alt="" />
+        <img className="nx-page-header__logotype-image"
+             src={tartanLogotype}
+             alt="Sonatype Tartan" />
+      </a>
+
+      <div className="nx-page-header__info">
+        <span className="nx-page-header__name">
+          React Shared Component Library
+        </span>
+
+        <span className="nx-page-header__version">
+          Version {packageJson.version}
+        </span>
       </div>
     </div>
   </header>
