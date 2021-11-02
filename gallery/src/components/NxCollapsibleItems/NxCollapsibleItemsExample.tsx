@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { NxCollapsibleItems, NxCollapsibleItemsChild, useToggle } from '@sonatype/react-shared-components';
+import { NxCollapsibleItems, useToggle } from '@sonatype/react-shared-components';
 
 function NxCollapsibleItemsExample() {
   const [toggleCheck, onToggleCollapse] = useToggle(false);
@@ -16,10 +16,10 @@ function NxCollapsibleItemsExample() {
                         onToggleCollapse={onToggleCollapse}
                         isOpen={toggleCheck}
                         triggerContent="Organization - an extra long example that should cause truncation">
-      <NxCollapsibleItemsChild>Test1</NxCollapsibleItemsChild>
-      <NxCollapsibleItemsChild>Test2</NxCollapsibleItemsChild>
-      <NxCollapsibleItemsChild>Test3 - an extra long example that should cause truncation</NxCollapsibleItemsChild>
-      <NxCollapsibleItemsChild>Test4</NxCollapsibleItemsChild>
+      <NxCollapsibleItems.Child>Test1</NxCollapsibleItems.Child>
+      <NxCollapsibleItems.Child>Test2</NxCollapsibleItems.Child>
+      <NxCollapsibleItems.Child>Test3 - an extra long example that should cause truncation</NxCollapsibleItems.Child>
+      <NxCollapsibleItems.Child>Test4</NxCollapsibleItems.Child>
     </NxCollapsibleItems>
   );
 }

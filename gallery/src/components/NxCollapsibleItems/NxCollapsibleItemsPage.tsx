@@ -115,12 +115,12 @@ const NxCollapsibleItemsPage = () =>
         <NxP>
           The "children" of an <NxCode>NxCollapsibleItems</NxCode> are the elements which appear when the
           collapsible items is expanded. All collapsible items children should be wrapped
-          in <NxCode>NxCollapsibleItemsChild</NxCode> components.{' '}
-          <NxCode>NxCollapsibleItemsChild</NxCode> does not actually create an element of its own – unless
+          in <NxCode>NxCollapsibleItems.Child</NxCode> components.{' '}
+          <NxCode>NxCollapsibleItems.Child</NxCode> does not actually create an element of its own – unless
           its children consist only of text – but rather augments the classes and attributes of its child element
-          in order to apply the appropriate styles and accessibility roles. Note that NxCollapsibleItemsChild
+          in order to apply the appropriate styles and accessibility roles. Note that NxCollapsibleItems.Child
           expects to have exactly one child, and this restriction is enforced in the typescript types.
-          NxCollapsibleItemsChild can receive standard global HTML attributes.
+          NxCollapsibleItems.Child can receive standard global HTML attributes.
         </NxP>
         <NxP>Certain types of collapsible items children get special styling treatment as described below.</NxP>
         <ul className="nx-list">

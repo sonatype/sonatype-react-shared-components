@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, useMemo, forwardRef } from 'react';
+import React, { useMemo, forwardRef } from 'react';
 import classnames from 'classnames';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,52 +18,51 @@ export { Props, NxCollapsibleItemsChildProps } from './types';
 import './NxCollapsibleItems.scss';
 import { ensureElement } from '../../util/reactUtil';
 
-const NxCollapsibleItems: FunctionComponent<Props> =
-  function NxCollapsibleItems(props) {
-    const { onToggleCollapse, isOpen, disabled, children, triggerContent, triggerTooltip, className, id } = props;
+const NxCollapsibleItems = function NxCollapsibleItems(props: Props) {
+  const { onToggleCollapse, isOpen, disabled, children, triggerContent, triggerTooltip, className, id } = props;
 
-    const isEmpty = !React.Children.count(children),
-        isExpanded = isOpen && !isEmpty, // conceptually we don't allow empty collapsible items to expand
-        treeViewClasses = classnames('nx-collapsible-items', className, {
-          'nx-collapsible-items--expanded': isExpanded,
-          'nx-collapsible-items--collapsed': !isExpanded,
-          'nx-collapsible-items--disabled': disabled,
-          'nx-collapsible-items--empty': isEmpty
-        }),
-        treeViewId = useMemo(() => id || getUniqueId('nx-collapsible-items'), [id]),
-        trigger = (
-          <button type="button"
-                  className="nx-collapsible-items__trigger"
-                  onClick={onToggleCollapse || undefined}
-                  aria-controls={treeViewId}
-                  aria-expanded={isExpanded}
-                  disabled={disabled || isEmpty || undefined}>
-            <NxFontAwesomeIcon className="nx-collapsible-items__twisty" icon={faCaretRight} />
-            <span className="nx-collapsible-items__text">
-              {ensureElement(triggerContent)}
-            </span>
-          </button>
-        ),
-        triggerTooltipProps = typeof triggerTooltip === 'string' ? { title: triggerTooltip } : triggerTooltip;
+  const isEmpty = !React.Children.count(children),
+      isExpanded = isOpen && !isEmpty, // conceptually we don't allow empty collapsible items to expand
+      treeViewClasses = classnames('nx-collapsible-items', className, {
+        'nx-collapsible-items--expanded': isExpanded,
+        'nx-collapsible-items--collapsed': !isExpanded,
+        'nx-collapsible-items--disabled': disabled,
+        'nx-collapsible-items--empty': isEmpty
+      }),
+      treeViewId = useMemo(() => id || getUniqueId('nx-collapsible-items'), [id]),
+      trigger = (
+        <button type="button"
+                className="nx-collapsible-items__trigger"
+                onClick={onToggleCollapse || undefined}
+                aria-controls={treeViewId}
+                aria-expanded={isExpanded}
+                disabled={disabled || isEmpty || undefined}>
+          <NxFontAwesomeIcon className="nx-collapsible-items__twisty" icon={faCaretRight} />
+          <span className="nx-collapsible-items__text">
+            {ensureElement(triggerContent)}
+          </span>
+        </button>
+      ),
+      triggerTooltipProps = typeof triggerTooltip === 'string' ? { title: triggerTooltip } : triggerTooltip;
 
-    return (
-      <div className={treeViewClasses} id={treeViewId} role="list">
-        {
-          triggerTooltipProps ? (
-            // div necessary to avoid error message when tooltip is on disabled button
-            <NxTooltip { ...triggerTooltipProps } >
-              <div className="nx-collapsible-items__tooltip-wrapper">
-                {trigger}
-              </div>
-            </NxTooltip>
-          ) : trigger
-        }
-        <div className="nx-collapsible-items__children" role="group">
-          {children}
-        </div>
+  return (
+    <div className={treeViewClasses} id={treeViewId} role="list">
+      {
+        triggerTooltipProps ? (
+          // div necessary to avoid error message when tooltip is on disabled button
+          <NxTooltip { ...triggerTooltipProps } >
+            <div className="nx-collapsible-items__tooltip-wrapper">
+              {trigger}
+            </div>
+          </NxTooltip>
+        ) : trigger
+      }
+      <div className="nx-collapsible-items__children" role="group">
+        {children}
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 /**
  * All individual treeview children should be wrapped in this component. When the child is an element,
@@ -89,6 +88,9 @@ const NxCollapsibleItemsChild = forwardRef<Element, NxCollapsibleItemsChildProps
 );
 
 NxCollapsibleItemsChild.propTypes = childPropTypes;
+
+NxCollapsibleItems.Child = NxCollapsibleItemsChild;
+
 NxCollapsibleItems.propTypes = propTypes;
 
 export default NxCollapsibleItems;

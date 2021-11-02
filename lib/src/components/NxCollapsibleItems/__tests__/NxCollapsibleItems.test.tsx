@@ -8,7 +8,7 @@
 import React from 'react';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import NxCollapsibleItems, { Props, NxCollapsibleItemsChild } from '../NxCollapsibleItems';
+import NxCollapsibleItems, { Props } from '../NxCollapsibleItems';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxTooltip from '../../NxTooltip/NxTooltip';
 import { mount } from 'enzyme';
@@ -190,10 +190,10 @@ describe('NxCollapsibleItems', function() {
     expect(childrenEl).toContainReact(<span>foo</span>);
   });
 
-  describe('NxCollapsibleItemsChild', function() {
+  describe('NxCollapsibleItems.Child', function() {
     describe('when children is a string', function() {
       const component = mount(
-        <NxCollapsibleItemsChild id="test-id" className="bar" lang="en">foo</NxCollapsibleItemsChild>),
+        <NxCollapsibleItems.Child id="test-id" className="bar" lang="en">foo</NxCollapsibleItems.Child>),
           div = component.children().children();
 
       it('renders a div with the listitem role and the nx-collapsible-items__child class', function() {
@@ -223,7 +223,7 @@ describe('NxCollapsibleItems', function() {
 
             // note: the fragment is necessary to get around an enzyme issue:
             // https://github.com/enzymejs/enzyme/issues/1852#issuecomment-433145879
-            div = mount(<><NxCollapsibleItemsChild ref={ref}>foo</NxCollapsibleItemsChild></>).children().children();
+            div = mount(<><NxCollapsibleItems.Child ref={ref}>foo</NxCollapsibleItems.Child></>).children().children();
 
         expect(ref.current).toBe(div.getDOMNode());
       });
@@ -231,9 +231,9 @@ describe('NxCollapsibleItems', function() {
 
     describe('when children is an element', function() {
       const jsx =
-        <NxCollapsibleItemsChild>
+        <NxCollapsibleItems.Child>
           <div id="test-id" className="bar" lang="en">foo</div>
-        </NxCollapsibleItemsChild>;
+        </NxCollapsibleItems.Child>;
       const component = mount(jsx),
           div = component.children();
 
@@ -259,7 +259,7 @@ describe('NxCollapsibleItems', function() {
 
       it('forwards a ref to the div', function() {
         const ref = React.createRef<HTMLDivElement>(),
-            div = mount(<><NxCollapsibleItemsChild ref={ref}><div>foo</div></NxCollapsibleItemsChild></>).children();
+            div = mount(<><NxCollapsibleItems.Child ref={ref}><div>foo</div></NxCollapsibleItems.Child></>).children();
 
         expect(ref.current).toBe(div.getDOMNode());
       });

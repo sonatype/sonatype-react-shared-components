@@ -8,7 +8,6 @@ import React from 'react';
 
 import {
   NxCollapsibleItems,
-  NxCollapsibleItemsChild,
   TooltipConfigProps,
   useToggle
 } from '@sonatype/react-shared-components';
@@ -27,19 +26,19 @@ function NxCollapsibleItemsTooltipExample() {
                           isOpen={toggle1Check}
                           triggerTooltip="Tooltip!"
                           triggerContent="Tooltip configured by string">
-        <NxCollapsibleItemsChild>Test1</NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>Test2</NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>Test3</NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>Test4</NxCollapsibleItemsChild>
+        <NxCollapsibleItems.Child>Test1</NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>Test2</NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>Test3</NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>Test4</NxCollapsibleItems.Child>
       </NxCollapsibleItems>
       <NxCollapsibleItems onToggleCollapse={onToggle2Collapse}
                           isOpen={toggle2Check}
                           triggerTooltip={complexTooltipConfig}
                           triggerContent="Complex tooltip configuration">
-        <NxCollapsibleItemsChild>Test1</NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>Test2</NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>Test3</NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>Test4</NxCollapsibleItemsChild>
+        <NxCollapsibleItems.Child>Test1</NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>Test2</NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>Test3</NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>Test4</NxCollapsibleItems.Child>
       </NxCollapsibleItems>
     </>
   );

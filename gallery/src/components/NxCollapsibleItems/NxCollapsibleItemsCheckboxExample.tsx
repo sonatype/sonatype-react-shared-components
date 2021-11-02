@@ -9,7 +9,6 @@ import React from 'react';
 import {
   NxCheckbox,
   NxCollapsibleItems,
-  NxCollapsibleItemsChild,
   NxRadio,
   useToggle
 } from '@sonatype/react-shared-components';
@@ -23,30 +22,30 @@ export default function NxCollapsibleItemsCheckboxExample() {
       <NxCollapsibleItems isOpen={is1Open}
                           onToggleCollapse={onToggle1Collapse}
                           triggerContent="Organization">
-        <NxCollapsibleItemsChild>
+        <NxCollapsibleItems.Child>
           <NxCheckbox isChecked={true}>
             Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo
           </NxCheckbox>
-        </NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>
+        </NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>
           <NxCheckbox isChecked={true}>Bar</NxCheckbox>
-        </NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>
+        </NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>
           <NxCheckbox isChecked={true}>Baz</NxCheckbox>
-        </NxCollapsibleItemsChild>
+        </NxCollapsibleItems.Child>
       </NxCollapsibleItems>
       <NxCollapsibleItems isOpen={is2Open}
                           onToggleCollapse={onToggle2Collapse}
                           triggerContent="Organization">
-        <NxCollapsibleItemsChild>
+        <NxCollapsibleItems.Child>
           <NxRadio name="test-radio" value="foo" isChecked={false}>Foo</NxRadio>
-        </NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>
+        </NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>
           <NxRadio name="test-radio" value="bar" isChecked={false}>Bar</NxRadio>
-        </NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>
+        </NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>
           <NxRadio name="test-radio" value="baz" isChecked={true}>Baz</NxRadio>
-        </NxCollapsibleItemsChild>
+        </NxCollapsibleItems.Child>
       </NxCollapsibleItems>
     </>
   );

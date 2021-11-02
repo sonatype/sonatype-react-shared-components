@@ -10,7 +10,7 @@ import {times} from 'ramda';
 import {getShallowComponent} from '../../../__testutils__/enzymeUtils';
 import AbstractCollapsibleItemsSelect, {Props} from '../AbstractCollapsibleItemsSelect';
 import {Option} from '../commonTypes';
-import NxCollapsibleItems, { NxCollapsibleItemsChild } from '../../NxCollapsibleItems/NxCollapsibleItems';
+import NxCollapsibleItems from '../../NxCollapsibleItems/NxCollapsibleItems';
 
 describe('AbstractCollapsibleItemsSelect', function() {
   const requiredProps: Props = {
@@ -42,15 +42,15 @@ describe('AbstractCollapsibleItemsSelect', function() {
       expect(nxCollapsibleItems.children().length).toBe(3);
 
       const fooOption = nxCollapsibleItems.childAt(0);
-      expect(fooOption).toMatchSelector(NxCollapsibleItemsChild);
+      expect(fooOption).toMatchSelector(NxCollapsibleItems.Child);
       expect(fooOption).toContainReact(<span>Foo</span>);
 
       const barOption = nxCollapsibleItems.childAt(1);
-      expect(barOption).toMatchSelector(NxCollapsibleItemsChild);
+      expect(barOption).toMatchSelector(NxCollapsibleItems.Child);
       expect(barOption).toContainReact(<span>Bar</span>);
 
       const nullOption = nxCollapsibleItems.childAt(2);
-      expect(nullOption).toMatchSelector(NxCollapsibleItemsChild);
+      expect(nullOption).toMatchSelector(NxCollapsibleItems.Child);
       expect(nullOption).toContainReact(<span>Null</span>);
     });
   });
@@ -128,7 +128,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
 
         const nxCollapsibleItems = shallowRender.find('NxCollapsibleItems');
         expect(nxCollapsibleItems.children().length).toBe(3);
-        expect(nxCollapsibleItems.childAt(0)).toMatchSelector(NxCollapsibleItemsChild);
+        expect(nxCollapsibleItems.childAt(0)).toMatchSelector(NxCollapsibleItems.Child);
         expect(nxCollapsibleItems.childAt(0)).toContainReact(<span>Foo</span>);
       });
 
@@ -158,7 +158,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
 
               const nxCollapsibleItems = shallowRender.find('NxCollapsibleItems');
               expect(nxCollapsibleItems.children().length).toBe(10);
-              expect(nxCollapsibleItems.childAt(0)).toMatchSelector(NxCollapsibleItemsChild);
+              expect(nxCollapsibleItems.childAt(0)).toMatchSelector(NxCollapsibleItems.Child);
               expect(nxCollapsibleItems.childAt(0)).toContainReact(<span>0</span>);
             }
         );

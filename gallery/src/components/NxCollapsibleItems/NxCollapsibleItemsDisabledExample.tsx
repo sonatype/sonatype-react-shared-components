@@ -6,16 +6,16 @@
  */
 import React from 'react';
 
-import { NxCollapsibleItems, NxCollapsibleItemsChild } from '@sonatype/react-shared-components';
+import { NxCollapsibleItems } from '@sonatype/react-shared-components';
 
 function NxCollapsibleItemsDisabledExample() {
 
   return (
     <NxCollapsibleItems isOpen={true} disabled={true} triggerContent="All Items">
-      <NxCollapsibleItemsChild>Test1</NxCollapsibleItemsChild>
-      <NxCollapsibleItemsChild>Test2</NxCollapsibleItemsChild>
-      <NxCollapsibleItemsChild>Test3</NxCollapsibleItemsChild>
-      <NxCollapsibleItemsChild>Test4</NxCollapsibleItemsChild>
+      <NxCollapsibleItems.Child>Test1</NxCollapsibleItems.Child>
+      <NxCollapsibleItems.Child>Test2</NxCollapsibleItems.Child>
+      <NxCollapsibleItems.Child>Test3</NxCollapsibleItems.Child>
+      <NxCollapsibleItems.Child>Test4</NxCollapsibleItems.Child>
     </NxCollapsibleItems>
   );
 }

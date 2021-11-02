@@ -8,7 +8,7 @@
 import React, { ReactElement } from 'react';
 
 import { Option } from './commonTypes';
-import NxCollapsibleItems, { NxCollapsibleItemsChild } from '../NxCollapsibleItems/NxCollapsibleItems';
+import NxCollapsibleItems from '../NxCollapsibleItems/NxCollapsibleItems';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import { TooltipConfigProps } from '../../util/tooltipUtils';
@@ -70,9 +70,9 @@ function AbstractCollapsibleItemsSelect<T extends Option>(props: Props<T>) {
 
     return optionTooltipGenerator ? (
       <NxTooltip key={key} {...getTooltipProps(optionTooltipGenerator(item))}>
-        <NxCollapsibleItemsChild>{option}</NxCollapsibleItemsChild>
+        <NxCollapsibleItems.Child>{option}</NxCollapsibleItems.Child>
       </NxTooltip>
-    ) : <NxCollapsibleItemsChild key={key}>{option}</NxCollapsibleItemsChild>;
+    ) : <NxCollapsibleItems.Child key={key}>{option}</NxCollapsibleItems.Child>;
   });
 
   const wrappedTriggerContent = ensureElement(children);
@@ -119,7 +119,7 @@ function AbstractCollapsibleItemsSelect<T extends Option>(props: Props<T>) {
                         className="nx-collapsible-items--select"
                         aria-describedby={counter && counter.props.id}>
       {filterContent}
-      { selectAllOption && <NxCollapsibleItemsChild>{selectAllOption}</NxCollapsibleItemsChild> }
+      { selectAllOption && <NxCollapsibleItems.Child>{selectAllOption}</NxCollapsibleItems.Child> }
       {renderedOptions}
     </NxCollapsibleItems>
   );

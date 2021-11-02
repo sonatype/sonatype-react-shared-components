@@ -10,7 +10,6 @@ import {faCube} from '@fortawesome/free-solid-svg-icons';
 
 import {
   NxCollapsibleItems,
-  NxCollapsibleItemsChild,
   NxFontAwesomeIcon,
   useToggle
 } from '@sonatype/react-shared-components';
@@ -34,8 +33,8 @@ function NxCollapsibleItemsExtrasExample() {
                               </div>
                             </>
                           }>
-        <NxCollapsibleItemsChild>Test1</NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>Test2</NxCollapsibleItemsChild>
+        <NxCollapsibleItems.Child>Test1</NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>Test2</NxCollapsibleItems.Child>
       </NxCollapsibleItems>
       <NxCollapsibleItems onToggleCollapse={onToggleCollapse2}
                           isOpen={toggleCheck2}
@@ -48,8 +47,8 @@ function NxCollapsibleItemsExtrasExample() {
                               </div>
                             </>
                           }>
-        <NxCollapsibleItemsChild>Test1</NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>Test2</NxCollapsibleItemsChild>
+        <NxCollapsibleItems.Child>Test1</NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>Test2</NxCollapsibleItems.Child>
       </NxCollapsibleItems>
       <NxCollapsibleItems onToggleCollapse={onToggleCollapse3}
                           isOpen={toggleCheck3}
@@ -62,8 +61,8 @@ function NxCollapsibleItemsExtrasExample() {
                               </div>
                             </>
                           }>
-        <NxCollapsibleItemsChild>Test1</NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>Test2</NxCollapsibleItemsChild>
+        <NxCollapsibleItems.Child>Test1</NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>Test2</NxCollapsibleItems.Child>
       </NxCollapsibleItems>
       <NxCollapsibleItems onToggleCollapse={onToggleCollapse4}
                           isOpen={toggleCheck4}
@@ -76,8 +75,8 @@ function NxCollapsibleItemsExtrasExample() {
                               </div>
                             </>
                           }>
-        <NxCollapsibleItemsChild>Test1</NxCollapsibleItemsChild>
-        <NxCollapsibleItemsChild>Test2</NxCollapsibleItemsChild>
+        <NxCollapsibleItems.Child>Test1</NxCollapsibleItems.Child>
+        <NxCollapsibleItems.Child>Test2</NxCollapsibleItems.Child>
       </NxCollapsibleItems>
     </>
   );
