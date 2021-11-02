@@ -81,7 +81,6 @@ export {
 
 export {
   default as NxCollapsibleItems,
-  NxCollapsibleItemsChild,
   Props as NxCollapsibleItemsProps,
   NxCollapsibleItemsChildProps
 } from './components/NxCollapsibleItems/NxCollapsibleItems';
