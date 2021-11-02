@@ -1,7 +1,8 @@
 import { omit } from 'ramda';
 
 import {
-  PublicProps as NxTextInputProps,
+  Props as NxTextInputProps,
+  PublicProps as NxTextInputPublicProps,
   propTypes as NxTextInputPropTypes
 } from '../../components/NxTextInput/NxTextInput';
 
@@ -11,6 +12,6 @@ export {
 
 export type Props = Omit<NxTextInputProps, 'type'>;
 
-export type PublicProps = Omit<Props, 'prefixContent'>;
+export type PublicProps = Omit<NxTextInputPublicProps, 'type'>;
 
 export const propTypes = omit(['type'], NxTextInputPropTypes);
