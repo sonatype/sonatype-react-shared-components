@@ -21,7 +21,8 @@ const NxStatefulCollapsibleRadioSelectPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        Stateful Radio select component using collapsible items with radios. It handles collapsible items toggling and filter state.
+        Stateful Radio select component using collapsible items with radios.
+        It handles collapsible items toggling and filter state.
       </NxP>
 
       <NxTable>

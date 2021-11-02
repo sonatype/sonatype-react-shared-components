@@ -21,7 +21,8 @@ const NxStatefulCollapsibleMultiSelectPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        Stateful Multi select component using collapsible items with checkboxes. It handles collapsible items toggling and filter state.
+        Stateful Multi select component using collapsible items with checkboxes.
+        It handles collapsible items toggling and filter state.
       </NxP>
 
       <NxTable>

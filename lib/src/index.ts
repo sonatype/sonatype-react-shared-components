@@ -99,9 +99,9 @@ export {
 } from './components/NxTreeViewSelect/NxTreeViewRadioSelect/NxTreeViewRadioSelect';
 
 export {
-  default as NxCollapsibleRadioSelect,
-  Props as NxCollapsibleRadioSelectProps,
-  Option as NxCollapsibleRadioSelectOption
+  default as NxCollapsibleItemsRadioSelect,
+  Props as NxCollapsibleItemsRadioSelectProps,
+  Option as NxCollapsibleItemsRadioSelectOption
 } from './components/NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/NxCollapsibleRadioSelect';
 
 export { default as NxPolicyThreatSlider, Props as NxPolicyThreatSliderProps, PolicyThreatLevelRange }
@@ -127,34 +127,32 @@ export {
   default as NxTreeViewMultiSelect,
   Props as NxTreeViewMultiSelectProps,
   Option as NxTreeViewMultiSelectOption
-} from './components/NxTreeViewSelect/NxTreeViewMultiSelect/NxTreeViewMultiSelect';
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/NxCollapsibleMultiSelect';
 
 export {
   default as NxStatefulTreeViewMultiSelect,
   Props as NxStateTreeViewMultiSelectProps
-} from './components/NxTreeViewSelect/NxTreeViewMultiSelect/stateful/NxStatefulTreeViewMultiSelect';
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/stateful/NxStatefulCollapsibleMultiSelect';
 
 export {
   default as NxStatefulTreeViewRadioSelect,
   Props as NxStateTreeViewRadioSelectProps
-} from './components/NxTreeViewSelect/NxTreeViewRadioSelect/stateful/NxStatefulTreeViewRadioSelect';
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/stateful/NxStatefulCollapsibleRadioSelect';
 
 export {
-  default as NxCollapsibleMultiSelect,
-  Props as NxCollapsibleMultiSelectProps,
-  Option as NxCollapsibleMultiSelectOption
+  default as NxCollapsibleItemsMultiSelect,
+  Props as NxCollapsibleItemsMultiSelectProps,
+  Option as NxCollapsibleItemsMultiSelectOption
 } from './components/NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/NxCollapsibleMultiSelect';
 
 export {
   default as NxStatefulCollapsibleMultiSelect,
-  Props as NxStateCollapsibleItemsMultiSelectProps
-// eslint-disable-next-line max-len
+  Props as NxStateCollapsibleMultiSelectProps
 } from './components/NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/stateful/NxStatefulCollapsibleMultiSelect';
 
 export {
   default as NxStatefulCollapsibleRadioSelect,
   Props as NxStateCollapsibleItemsRadioSelectProps
-// eslint-disable-next-line max-len
 } from './components/NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/stateful/NxStatefulCollapsibleRadioSelect';
 
 export {
