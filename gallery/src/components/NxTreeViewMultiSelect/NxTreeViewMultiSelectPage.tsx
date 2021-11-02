@@ -19,7 +19,7 @@ const NxTreeViewMultiSelectPage = () =>
       </NxWarningAlert>
 
       <NxP>
-        Multi select component using tree view with checkboxes.
+        Multi select component using collapsible items with checkboxes.
       </NxP>
     </GalleryDescriptionTile>
   </>;

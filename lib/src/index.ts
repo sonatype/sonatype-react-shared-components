@@ -74,10 +74,10 @@ export { default as NxTabPanel, NxTabPanelProps } from './components/NxTabs/NxTa
 
 export {
   default as NxTreeView,
-  NxTreeViewChild,
+  NxCollapsibleItemsChild as NxTreeViewChild,
   Props as NxTreeViewProps,
-  NxTreeViewChildProps
-} from './components/NxTreeView/NxTreeView';
+  NxCollapsibleItemsChildProps as NxTreeViewChildProps
+} from './components/NxCollapsibleItems/NxCollapsibleItems';
 
 export {
   default as NxCollapsibleItems,
@@ -96,12 +96,12 @@ export {
   default as NxTreeViewRadioSelect,
   Props as NxTreeViewRadioSelectProps,
   Option as NxTreeViewRadioSelectOption
-} from './components/NxTreeViewSelect/NxTreeViewRadioSelect/NxTreeViewRadioSelect';
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/NxCollapsibleRadioSelect';
 
 export {
-  default as NxCollapsibleItemsRadioSelect,
-  Props as NxCollapsibleItemsRadioSelectProps,
-  Option as NxCollapsibleItemsRadioSelectOption
+  default as NxCollapsibleRadioSelect,
+  Props as NxCollapsibleRadioSelectProps,
+  Option as NxCollapsibleRadioSelectOption
 } from './components/NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/NxCollapsibleRadioSelect';
 
 export { default as NxPolicyThreatSlider, Props as NxPolicyThreatSliderProps, PolicyThreatLevelRange }
@@ -140,9 +140,9 @@ export {
 } from './components/NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/stateful/NxStatefulCollapsibleRadioSelect';
 
 export {
-  default as NxCollapsibleItemsMultiSelect,
-  Props as NxCollapsibleItemsMultiSelectProps,
-  Option as NxCollapsibleItemsMultiSelectOption
+  default as NxCollapsibleMultiSelect,
+  Props as NxCollapsibleMultiSelectProps,
+  Option as NxCollapsibleMultiSelectOption
 } from './components/NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/NxCollapsibleMultiSelect';
 
 export {

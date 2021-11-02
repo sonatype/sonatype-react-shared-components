@@ -19,7 +19,7 @@ const NxTreeViewRadioSelectPage = () =>
       </NxWarningAlert>
 
       <NxP>
-        A tree view radio group component.
+        A collapsible items radio group component.
       </NxP>
     </GalleryDescriptionTile>
   </>;

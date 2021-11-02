@@ -90,10 +90,10 @@ function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
   const renderCounter = () => <MultiSelectCounter options={options} selectedIds={normalizedSelectedIds} />;
 
   return <AbstractCollapsibleItemsSelect {...otherProps}
-                                    optionTooltipGenerator={optionTooltipGenerator}
-                                    renderOption={renderOption}
-                                    renderToggleAllOption={renderToggleAllOption}
-                                    renderCounter={renderCounter}/>;
+                                         optionTooltipGenerator={optionTooltipGenerator}
+                                         renderOption={renderOption}
+                                         renderToggleAllOption={renderToggleAllOption}
+                                         renderCounter={renderCounter}/>;
 }
 
 NxCollapsibleMultiSelect.propTypes = propTypes;
