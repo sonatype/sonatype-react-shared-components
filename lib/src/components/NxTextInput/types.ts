@@ -50,7 +50,7 @@ export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   isDateInput?: boolean;
 };
 
-export type PublicProps = Omit<Props, 'prefixContent' | 'overrideType'>;
+export type PublicProps = Omit<Props, 'prefixContent' | 'isDateInput'>;
 
 export const propTypes: PropTypes.ValidationMap<PublicProps> = {
   type: PropTypes.oneOf([...inputTypes, undefined]),
