@@ -47,6 +47,7 @@ export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   // This prop allows additional content to be inserted just before the
   // <input>. This is used by NxFilterInput
   prefixContent?: ReactNode | null;
+  // This prop sets the input attribute type to date.
   isDateInput?: boolean;
 };
 
