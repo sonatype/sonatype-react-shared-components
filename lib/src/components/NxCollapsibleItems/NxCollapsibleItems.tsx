@@ -4,7 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useMemo, forwardRef } from 'react';
+import React, {
+  FC,
+  forwardRef,
+  useMemo
+} from 'react';
 import classnames from 'classnames';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,7 +22,13 @@ export { Props, NxCollapsibleItemsChildProps } from './types';
 import './NxCollapsibleItems.scss';
 import { ensureElement } from '../../util/reactUtil';
 
-const NxCollapsibleItems = function NxCollapsibleItems(props: Props) {
+type NxCollapsibleItemsFC =
+  FC<Props> &
+  {
+    Child: React.ForwardRefExoticComponent<NxCollapsibleItemsChildProps & React.RefAttributes<Element>>
+  };
+
+const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(props: Props) {
   const { onToggleCollapse, isOpen, disabled, children, triggerContent, triggerTooltip, className, id } = props;
 
   const isEmpty = !React.Children.count(children),
@@ -64,6 +74,8 @@ const NxCollapsibleItems = function NxCollapsibleItems(props: Props) {
   );
 };
 
+NxCollapsibleItems.propTypes = propTypes;
+
 /**
  * All individual treeview children should be wrapped in this component. When the child is an element,
  * this does not actually add another element to the DOM (as doing so would cause styling and screenreading
@@ -91,7 +103,6 @@ NxCollapsibleItemsChild.propTypes = childPropTypes;
 
 NxCollapsibleItems.Child = NxCollapsibleItemsChild;
 
-NxCollapsibleItems.propTypes = propTypes;
-
 export default NxCollapsibleItems;
+
 export { NxCollapsibleItemsChild };
