@@ -23,7 +23,7 @@ const NxTextInputPage = () =>
         <NxTextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date" external>
           HTML date input
         </NxTextLink> with validation styling.
-        It is using <NxTextLink href="#/pages/NxTextInput">NxTextInput</NxTextLink>
+        It is using <NxTextLink href="#/pages/NxTextInput">NxTextInput</NxTextLink>{' '}
         under the hood and has similar features and properties.
         The only attribute that is ignored and should not be passed into this component is <NxCode>type</NxCode>.
       </NxP>
