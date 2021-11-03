@@ -31,7 +31,8 @@ const NxCollapsibleItemsPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        A set of default styles and basic React for a collapsible items.
+        A set of default styles and React components for a collapsible series of items.
+        These items consist of texts or elements that are augmented depending on the child specified.
       </NxP>
 
       <NxTable>
@@ -137,7 +138,7 @@ const NxCollapsibleItemsPage = () =>
           <li className="nx-list__item">
             <span className="nx-list__text">Radio/Checkbox children</span>
             <span className="nx-list__subtext">
-              Tree view children which are <NxCode>NxRadio</NxCode>s or{' '}
+              Collapsible items children which are <NxCode>NxRadio</NxCode>s or{' '}
               <NxCode>NxCheckbox</NxCode>s get special indentation.
             </span>
           </li>

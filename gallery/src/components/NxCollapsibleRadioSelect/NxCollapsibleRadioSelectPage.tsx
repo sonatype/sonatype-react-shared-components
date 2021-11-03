@@ -22,7 +22,7 @@ const NxCollapsibleRadioSelectPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        A collapsible items view radio group component.
+        A collapsible collection of radio buttons component with support for filtering.
       </NxP>
 
       <NxTable>
@@ -66,7 +66,7 @@ const NxCollapsibleRadioSelectPage = () =>
             <NxTable.Cell>VDOM</NxTable.Cell>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
-              The content to be used as the collapsible items view trigger.
+              The content to be used as the collapsible item trigger.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -92,7 +92,7 @@ const NxCollapsibleRadioSelectPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Controls whether the collapsible items view is open or closed. Default is false.
+              Controls whether the collapsible item is open or closed. Default is false.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -108,7 +108,7 @@ const NxCollapsibleRadioSelectPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Controls whether the collapsible items view should be rendered as disabled or not. Default is false.
+              Controls whether the collapsible item should be rendered as disabled or not. Default is false.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -116,7 +116,7 @@ const NxCollapsibleRadioSelectPage = () =>
             <NxTable.Cell>Function</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Called whenever the NxCollapsibleItems is toggled.
+              Called whenever the NxCollapsibleRadioSelect is toggled.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
