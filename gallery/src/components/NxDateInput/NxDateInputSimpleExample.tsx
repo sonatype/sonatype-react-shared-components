@@ -15,7 +15,7 @@ import {
 const { initialState, userInput } = nxTextInputStateHelpers;
 
 export default function NxDateInputSimpleExample() {
-  // Note that NxTextInputStateProps is the TypeScript type for the state helper function return types.
+  // Note that NxDateInputStateProps is the TypeScript type for the state helper function return types.
   // The explicity type parameter isn't necessary here, it's only present to demonstrate that type.
   const [state, setState] = useState<NxDateInputStateProps>(initialState(''));
 
