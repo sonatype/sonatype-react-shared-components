@@ -1,24 +1,15 @@
-.nx-gallery-page-header {
+.gallery-page-header {
+  box-sizing: border-box;
 
-  &__inner {
-    align-items: center;
-    box-sizing: border-box;
-    display: flex;
-    gap: var(--nx-spacing-6x);
-    margin: 0 auto;
-    max-width: var(--nx-width-page-max);
-    padding: var(--nx-spacing-4x) var(--nx-spacing-6x);
-    width: 100%;
-  }
+  $-logo-image-size: 40px;
 
   &__home-link {
     align-items: center;
     border-right: 1px solid var(--nx-swatch-grey-30);
     display: flex;
     padding-right: var(--nx-spacing-6x);
+    margin-right: var(--nx-spacing-6x);
   }
-
-  $-logo-image-size: 38px;
 
   &__logo-image {
     height: $-logo-image-size;
