@@ -10,10 +10,12 @@ import { FormEvent, InputHTMLAttributes, TextareaHTMLAttributes, ReactNode } fro
 /**
  * The valid values for the `type` Prop
  */
-export const inputTypes = ['textarea', 'text', 'password'] as const;
+export const publicInputTypes = ['textarea', 'text', 'password'] as const;
+export const inputTypes = [...publicInputTypes, 'date'] as const;
 
 // See https://stackoverflow.com/a/45486495
-export type NxTextInputType = (typeof inputTypes)[number];
+type NxTextInputType = (typeof inputTypes)[number];
+export type PublicNxTextInputType = (typeof inputTypes)[number];
 
 export type ValidationErrors = string | string[] | null;
 export type Validator = ((val: string) => ValidationErrors) | null;
@@ -47,11 +49,11 @@ export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   // This prop allows additional content to be inserted just before the
   // <input>. This is used by NxFilterInput
   prefixContent?: ReactNode | null;
-  // This prop sets the input attribute type to date.
-  isDateInput?: boolean;
 };
 
-export type PublicProps = Omit<Props, 'prefixContent' | 'isDateInput'>;
+export interface PublicProps extends Omit<Props, 'prefixContent' | 'isDateInput'> {
+  type?: PublicNxTextInputType | null;
+}
 
 export const propTypes: PropTypes.ValidationMap<PublicProps> = {
   type: PropTypes.oneOf([...inputTypes, undefined]),

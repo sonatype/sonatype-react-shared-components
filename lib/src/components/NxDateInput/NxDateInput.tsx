@@ -13,7 +13,7 @@ export { Props, PublicProps, StateProps, propTypes } from './types';
 const NxDateInput = forwardRef<HTMLDivElement, Props>((props, ref) => {
   const filteredProps = omit(['type'], props);
 
-  return <NxTextInput isDateInput={true}
+  return <NxTextInput type="date"
                       ref={ref}
                       { ...filteredProps } />;
 });

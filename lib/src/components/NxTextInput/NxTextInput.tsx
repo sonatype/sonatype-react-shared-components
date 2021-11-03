@@ -32,7 +32,7 @@ export { Props, PublicProps, StateProps, propTypes, inputTypes } from './types';
 const NxTextInput = forwardRef<HTMLDivElement, Props>(
     function NxTextInput(props, forwardedRef) {
       const {
-        type: typeProp,
+        type,
         isPristine,
         validatable,
         validationErrors,
@@ -41,7 +41,6 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
         onKeyPress,
         disabled,
         prefixContent,
-        isDateInput = false,
         ...attrs
       } = props;
 
@@ -52,7 +51,6 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
        * `title` is removed to prevent errors when `NxTextInput`, which itself uses` NxTooltip`, is wrapped
        * in another `NxTooltip`
        */
-      const type = isDateInput ? 'date' : typeProp;
       const newProps = omit(['trimmedValue', 'title'], attrs);
       const isTextArea = type === 'textarea',
           element = isTextArea ? 'textarea' : 'input',
@@ -64,8 +62,7 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
             invalid: !isPristine && validatable && isInvalid,
             valid: !isPristine && validatable && !isInvalid,
             disabled: disabled,
-            'nx-text-input--textarea': isTextArea,
-            'nx-text-input--date': isDateInput
+            'nx-text-input--textarea': isTextArea
           });
 
       const inputRef: MutableRefObject<TextInputElement | null> = useRef<TextInputElement>(null),
