@@ -74,10 +74,16 @@ export { default as NxTabPanel, NxTabPanelProps } from './components/NxTabs/NxTa
 
 export {
   default as NxTreeView,
-  NxTreeViewChild,
+  NxCollapsibleItemsChild as NxTreeViewChild,
   Props as NxTreeViewProps,
-  NxTreeViewChildProps
-} from './components/NxTreeView/NxTreeView';
+  NxCollapsibleItemsChildProps as NxTreeViewChildProps
+} from './components/NxCollapsibleItems/NxCollapsibleItems';
+
+export {
+  default as NxCollapsibleItems,
+  Props as NxCollapsibleItemsProps,
+  NxCollapsibleItemsChildProps
+} from './components/NxCollapsibleItems/NxCollapsibleItems';
 
 export { default as NxTooltip, Props as NxTooltipProps, TooltipPlacement as NxTooltipPlacement }
   from './components/NxTooltip/NxTooltip';
@@ -89,7 +95,13 @@ export {
   default as NxTreeViewRadioSelect,
   Props as NxTreeViewRadioSelectProps,
   Option as NxTreeViewRadioSelectOption
-} from './components/NxTreeViewSelect/NxTreeViewRadioSelect/NxTreeViewRadioSelect';
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/NxCollapsibleRadioSelect';
+
+export {
+  default as NxCollapsibleRadioSelect,
+  Props as NxCollapsibleRadioSelectProps,
+  Option as NxCollapsibleRadioSelectOption
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/NxCollapsibleRadioSelect';
 
 export { default as NxPolicyThreatSlider, Props as NxPolicyThreatSliderProps, PolicyThreatLevelRange }
   from './components/NxPolicyThreatSlider/NxPolicyThreatSlider';
@@ -114,17 +126,33 @@ export {
   default as NxTreeViewMultiSelect,
   Props as NxTreeViewMultiSelectProps,
   Option as NxTreeViewMultiSelectOption
-} from './components/NxTreeViewSelect/NxTreeViewMultiSelect/NxTreeViewMultiSelect';
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/NxCollapsibleMultiSelect';
 
 export {
   default as NxStatefulTreeViewMultiSelect,
   Props as NxStateTreeViewMultiSelectProps
-} from './components/NxTreeViewSelect/NxTreeViewMultiSelect/stateful/NxStatefulTreeViewMultiSelect';
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/stateful/NxStatefulCollapsibleMultiSelect';
 
 export {
   default as NxStatefulTreeViewRadioSelect,
   Props as NxStateTreeViewRadioSelectProps
-} from './components/NxTreeViewSelect/NxTreeViewRadioSelect/stateful/NxStatefulTreeViewRadioSelect';
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/stateful/NxStatefulCollapsibleRadioSelect';
+
+export {
+  default as NxCollapsibleMultiSelect,
+  Props as NxCollapsibleMultiSelectProps,
+  Option as NxCollapsibleMultiSelectOption
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/NxCollapsibleMultiSelect';
+
+export {
+  default as NxStatefulCollapsibleMultiSelect,
+  Props as NxStateCollapsibleMultiSelectProps
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleMultiSelect/stateful/NxStatefulCollapsibleMultiSelect';
+
+export {
+  default as NxStatefulCollapsibleRadioSelect,
+  Props as NxStateCollapsibleItemsRadioSelectProps
+} from './components/NxCollapsibleItemsSelect/NxCollapsibleRadioSelect/stateful/NxStatefulCollapsibleRadioSelect';
 
 export {
   default as NxStatefulCheckbox,
