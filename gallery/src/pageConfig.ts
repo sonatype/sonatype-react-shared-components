@@ -180,7 +180,7 @@ const pageConfig: PageConfig = {
     NxTabs: NxTabsPage,
     NxStatefulTabs: NxStatefulTabsPage,
     NxTag: NxTagPage,
-    NxDateInputPage: NxDateInputPage,
+    NxDateInput: NxDateInputPage,
     NxTextInput: NxTextInputPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
     NxTextLink: NxTextLinkPage,
