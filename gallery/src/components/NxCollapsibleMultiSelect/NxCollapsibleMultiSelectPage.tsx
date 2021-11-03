@@ -206,7 +206,7 @@ const NxCollapsibleMultiSelectPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="NxCollapsibleMultiSelect Example"
-                        id="nx-collapsible-items-multi-select-example"
+                        id="nx-collapsible-multi-select-example"
                         liveExample={NxCollapsibleMultiSelectExample}
                         codeExamples={NxCollapsibleMultiSelectExampleCode}>
       Basic example of a <NxCode>NxCollapsibleMultiSelect</NxCode>. Note that the overflowing label gets
@@ -214,7 +214,7 @@ const NxCollapsibleMultiSelectPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxCollapsibleMultiSelect Custom Tooltip Example"
-                        id="nx-collapsible-items-multi-select-custom-tooltip-example"
+                        id="nx-collapsible-multi-select-custom-tooltip-example"
                         liveExample={NxCollapsibleMultiSelectCustomTooltipExample}
                         codeExamples={NxCollapsibleMultiSelectCustomTooltipExampleCode}>
       Example of an <NxCode>NxCollapsibleMultiSelect</NxCode> which generates a tooltip for each option

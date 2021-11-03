@@ -41,7 +41,7 @@ const NxCounterPage = () =>
             <NxTable.Cell><NxCode>.nx-counter--active</NxCode></NxTable.Cell>
             <NxTable.Cell>Modifier of <NxCode>.nx-counter</NxCode></NxTable.Cell>
             <NxTable.Cell>
-              An active state, used in lists or tree-views when the parent also has an active state.
+              An active state, used in lists or collapsible items when the parent also has an active state.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
