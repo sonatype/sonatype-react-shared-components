@@ -234,74 +234,90 @@ const FontSizePage = () =>
       <NxP>
         Here is an incomplete list of additional nuances to consider when dealing with inline formatting
       </NxP>
-      <NxList bulleted>
+      <NxList className="nx-list--bulleted">
         <NxList.Item>
-          Inline elements do not respond to CSS width, height, margin-top, or margin-bottom properties. Their
-          size and vertical spacing only follows the <NxCode>font-size</NxCode>,
-          {' '}<NxCode>line-height</NxCode>, and font metrics as described above, as well as padding
-          and borders.
+          <NxList.Text>
+            Inline elements do not respond to CSS width, height, margin-top, or margin-bottom properties. Their
+            size and vertical spacing only follows the <NxCode>font-size</NxCode>,
+            {' '}<NxCode>line-height</NxCode>, and font metrics as described above, as well as padding
+            and borders.
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          inline-block elements <em>are</em> sizable using the CSS width and height properties
+          <NxList.Text>
+            inline-block elements <em>are</em> sizable using the CSS width and height properties
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          inline-block elements use the baseline of their last line box as their baseline, unless they have no text
-          content or have <NxCode>overflow</NxCode> set to something other
-          than <NxCode>visible</NxCode>. In these cases the baseline is the bottom margin
-          edge. <NxTextLink external href={css2SpecUrl}>[3]</NxTextLink>
+          <NxList.Text>
+            inline-block elements use the baseline of their last line box as their baseline, unless they have no text
+            content or have <NxCode>overflow</NxCode> set to something other
+            than <NxCode>visible</NxCode>. In these cases the baseline is the bottom margin
+            edge. <NxTextLink external href={css2SpecUrl}>[3]</NxTextLink>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          Things get more complicated when a line box includes inline elements of multiple heights. In this
-          scenario, the elements are sized individually,
-          including <NxCode>line-height</NxCode> spacing, lined up according to
-          the <NxCode>vertical-align</NxCode> property (by default: so their baselines
-          are aligned), and then the line box goes from the highest top to the lowest bottom.
+          <NxList.Text>
+            Things get more complicated when a line box includes inline elements of multiple heights. In this
+            scenario, the elements are sized individually,
+            including <NxCode>line-height</NxCode> spacing, lined up according to
+            the <NxCode>vertical-align</NxCode> property (by default: so their baselines
+            are aligned), and then the line box goes from the highest top to the lowest bottom.
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          Parent elements contribute a zero-width <q>strut</q> character to the line spacing. In other words,
-          if an inline element is in a line box along with a parent element that has a larger line height,
-          the parent's line height (and baseline) will come into play even if the parent has no text of its own
+          <NxList.Text>
+            Parent elements contribute a zero-width <q>strut</q> character to the line spacing. In other words,
+            if an inline element is in a line box along with a parent element that has a larger line height,
+            the parent's line height (and baseline) will come into play even if the parent has no text of its own
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          Due to the off-center nature of the baseline, vertical-alignment of elements of different font sizes is
-          extremely, unavoidably counterintuitive. See the examples in the vertical alignment section
-          of <NxTextLink external href={firstReferenceUrl}>[1]</NxTextLink>
+          <NxList.Text>
+            Due to the off-center nature of the baseline, vertical-alignment of elements of different font sizes is
+            extremely, unavoidably counterintuitive. See the examples in the vertical alignment section
+            of <NxTextLink external href={firstReferenceUrl}>[1]</NxTextLink>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxP>
-            It is possible to specify a <NxCode>line-height</NxCode> smaller than an element's content
-            height, in which case the leading will be negative and text node content areas will have a height exceeding
-            that of their line box. In this scenario, text nodes in adjacent line boxes will overlap one another.
-          </NxP>
-          <NxP>
-            This is one reason why a global, absolute line-height is a poor choice - this line height will need to be
-            adjusted explicitly for any element which has a larger font size in order to prevent visible crowding and
-            overlap. The example below demonstrates what might happen with a large-font header in an app with a 18px
-            "global" line-height and no element-specific line-height adjustments:
-          </NxP>
+          <NxList.Text>
+            <NxP>
+              It is possible to specify a <NxCode>line-height</NxCode> smaller than an element's content
+              height, in which case the leading will be negative and text node content areas will have a height
+              exceeding that of their line box. In this scenario, text nodes in adjacent line boxes will overlap one
+              another.
+            </NxP>
+            <NxP>
+              This is one reason why a global, absolute line-height is a poor choice - this line height will need to be
+              adjusted explicitly for any element which has a larger font size in order to prevent visible crowding and
+              overlap. The example below demonstrates what might happen with a large-font header in an app with a 18px
+              "global" line-height and no element-specific line-height adjustments:
+            </NxP>
 
-          <BadLineHeightExample />
-          <CodeExample content={BadLineHeightExampleCode}/>
-          <CodeExample language="scss" content={BadLineHeightExampleStyles}/>
+            <BadLineHeightExample />
+            <CodeExample content={BadLineHeightExampleCode}/>
+            <CodeExample language="scss" content={BadLineHeightExampleStyles}/>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          It is possible for a single text node to contain glyphs from multiple font faces, and even for it to contain
-          no glyphs from the font face specified in CSS. This can happen when the preferred font face has glyphs for
-          some (or none), but not all, of the code points requested, and a different font face is used as the fallback.
-          Different fonts, of course, have different metrics, which means different heights. Experimentally, in this
-          case the browser appears to take the metrics of the declared font, even if that font is not
-          contributing <em>any</em> of the glyphs in the text node in question. As an example, observe
-          the <NxCode>span</NxCode>s containing the following emojis. The first inherits the page styles
-          setting OpenSans as the font family.  Despite not actually having any glyphs from OpenSans, it still has a
-          content height derived from OpenSans metrics - that is, a content height that is roughly 1.36 times the font
-          size. The second <NxCode>span</NxCode> however is styled with the
-          generic <NxCode>sans-serif</NxCode> font family. You will likely observe that this
-          second <NxCode>span</NxCode> has a different height
-          - one which will depend on the default sans-serif font installed on your operating system:
+          <NxList.Text>
+            It is possible for a single text node to contain glyphs from multiple font faces, and even for it to contain
+            no glyphs from the font face specified in CSS. This can happen when the preferred font face has glyphs for
+            some (or none), but not all, of the code points requested, and a different font face is used as the
+            fallback. Different fonts, of course, have different metrics, which means different heights.
+            Experimentally, in this case the browser appears to take the metrics of the declared font, even if that font
+            is not contributing <em>any</em> of the glyphs in the text node in question. As an example, observe the
+            <NxCode>span</NxCode>s containing the following emojis. The first inherits the page styles setting OpenSans
+            as the font family.  Despite not actually having any glyphs from OpenSans, it still has a content height
+            derived from OpenSans metrics - that is, a content height that is roughly 1.36 times the font size. The
+            second <NxCode>span</NxCode> however is styled with the generic <NxCode>sans-serif</NxCode> font family. You
+            will likely observe that this second <NxCode>span</NxCode> has a different height - one which will depend on
+            the default sans-serif font installed on your operating system:
 
-          <FallbackFontExample />
-          <CodeExample content={FallbackFontExampleCode}/>
-          <CodeExample language="scss" content={FallbackFontExampleStyles}/>
+            <FallbackFontExample />
+            <CodeExample content={FallbackFontExampleCode}/>
+            <CodeExample language="scss" content={FallbackFontExampleStyles}/>
+          </NxList.Text>
         </NxList.Item>
       </NxList>
     </section>

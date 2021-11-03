@@ -5,7 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink, NxList } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxTextLink, NxStatefulAccordion, NxAccordion, NxList }
+  from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -131,15 +132,19 @@ const NxTextInputPage = () =>
               <NxCode>&lt;textarea&gt;</NxCode>. The only notable exceptions are:
               <NxList bulleted>
                 <NxList.Item>
-                  <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly
-                  known as{' '}
-                  <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
-                    uncontrolled inputs
-                  </NxTextLink>
+                  <NxList.Text>
+                    <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly
+                    known as{' '}
+                    <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
+                      uncontrolled inputs
+                    </NxTextLink>
+                  </NxList.Text>
                 </NxList.Item>
                 <NxList.Item>
-                  The attributes specified above, whose types are as defined here and not as specified in the
-                  react propTypes.
+                  <NxList.Text>
+                    The attributes specified above, whose types are as defined here and not as specified in the
+                    react propTypes.
+                  </NxList.Text>
                 </NxList.Item>
               </NxList>
             </NxTable.Cell>
@@ -192,6 +197,35 @@ const NxTextInputPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
+      <div className="nx-tile-content--accordion-container">
+        <NxStatefulAccordion defaultOpen={false}>
+          <NxAccordion.Header>
+            <NxAccordion.Title>Regarding &lt;input type="number"&gt;</NxAccordion.Title>
+          </NxAccordion.Header>
+          <NxP>
+            <NxCode>NxTextInput</NxCode> using <NxCode>type="number"</NxCode> has been an oft requested addition to the
+            RSC but there are problems with its implementation at the browser level that make its use within RSC
+            too complicated to justify further development at this time.
+          </NxP>
+          <NxP>
+            In Chrome it works mostly as expected, however Safari and Firefox allow the user to input non-number
+            characters but do not recognize those characters as values. If a user inputs "aaaa" or 123a"
+            , <NxCode>onChange</NxCode> receives "" as the value in both of those invalid cases. It should be
+            setting that as the value stored in the state, which goes in as the value of the &lt;input&gt; in the next
+            render, which should clear the input. Normally you'd expect that as soon as you enter an invalid character
+            after the number, the input should have cleared. But for some reason that doesn't happen. We have traced
+            through the code and all of the state handling in our examples and components is correct. But for some
+            reason, when that empty string gets passed back into the &lt;input&gt; in <NxCode>NxTextInput</NxCode>,
+            it just ignores it. The whole React workflow around <NxCode>type="number"</NxCode> seems to be broken,
+            not to mention our RSC validation workflow.
+          </NxP>
+          <NxP>
+            At this point if an input that only accepts numbers is required, it is strongly suggested that the developer
+            create a custom validation rule. Here is a simple Regex that will detect only digits to get you
+            started: <NxCode>/^\d+$/</NxCode>.
+          </NxP>
+        </NxStatefulAccordion>
+      </div>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"

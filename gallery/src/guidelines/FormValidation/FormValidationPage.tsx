@@ -22,23 +22,31 @@ const FormValidationPage = () =>
       </NxP>
       <NxList bulleted>
         <NxList.Item>
-          Fields are not marked invalid while they are pristine. This is handled by
-          the <NxCode>NxTextInput</NxCode> state helpers.
+          <NxList.Text>
+            Fields are not marked invalid while they are pristine. This is handled by
+            the <NxCode>NxTextInput</NxCode> state helpers.
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          Optional text fields are declared to the user using
-          the <NxCode>nx-label--optional</NxCode> class which adds the <q>- optional</q> text.
-          All fields not marked optional are required. This does not apply to checkbox groups where selecting
-          nothing is generally just as valid as any other selection.
+          <NxList.Text>
+            Optional text fields are declared to the user using
+            the <NxCode>nx-label--optional</NxCode> class which adds the <q>- optional</q> text.
+            All fields not marked optional are required. This does not apply to checkbox groups where selecting
+            nothing is generally just as valid as any other selection.
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          Until all required fields have values, and all values pass validation, the Submit button is disabled
-          and provides a tooltip on hover explaining why.
+          <NxList.Text>
+            Until all required fields have values, and all values pass validation, the Submit button is disabled
+            and provides a tooltip on hover explaining why.
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          Non-pristine fields which are invalid get a red border and a red tooltip displaying the validation error.
-          This tooltip is visible until the field becomes valid, as opposed to being hover-triggered. This behavior
-          is implemented by <NxCode>NxTextInput</NxCode>
+          <NxList.Text>
+            Non-pristine fields which are invalid get a red border and a red tooltip displaying the validation error.
+            This tooltip is visible until the field becomes valid, as opposed to being hover-triggered. This behavior
+            is implemented by <NxCode>NxTextInput</NxCode>
+          </NxList.Text>
         </NxList.Item>
       </NxList>
     </GalleryDescriptionTile>

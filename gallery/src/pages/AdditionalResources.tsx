@@ -21,33 +21,43 @@ const AdditionalResources = () =>
       </NxTile.SubsectionHeader>
       <NxList bulleted>
         <NxList.Item>
-          <NxTextLink external href="https://reactjs.org/tutorial/tutorial.html">
-            Official ReactJS Tutorial
-          </NxTextLink>
-          {' '}(Beginner Level)
+          <NxList.Text>
+            <NxTextLink external href="https://reactjs.org/tutorial/tutorial.html">
+              Official ReactJS Tutorial
+            </NxTextLink>
+            {' '}(Beginner Level)
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink external href="https://redux.js.org/basics/basic-tutorial">
-            Official Redux Getting Started
-          </NxTextLink>
-          {' '}(Beginner Level)
+          <NxList.Text>
+            <NxTextLink external href="https://redux.js.org/basics/basic-tutorial">
+              Official Redux Getting Started
+            </NxTextLink>
+            {' '}(Beginner Level)
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink external href="https://egghead.io/courses/getting-started-with-redux">
-            Getting started with Redux
-          </NxTextLink>
-          {' '}(egghead.io beginner course)
+          <NxList.Text>
+            <NxTextLink external href="https://egghead.io/courses/getting-started-with-redux">
+              Getting started with Redux
+            </NxTextLink>
+            {' '}(egghead.io beginner course)
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink external href="https://www.pluralsight.com/paths/react">
-            Pluralsight React Path
-          </NxTextLink>
-          {' '}(beginner to advanced)
+          <NxList.Text>
+            <NxTextLink external href="https://www.pluralsight.com/paths/react">
+              Pluralsight React Path
+            </NxTextLink>
+            {' '}(beginner to advanced)
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink external href="https://reactforbeginners.com/">
-            React for beginners
-          </NxTextLink>
+          <NxList.Text>
+            <NxTextLink external href="https://reactforbeginners.com/">
+              React for beginners
+            </NxTextLink>
+          </NxList.Text>
         </NxList.Item>
       </NxList>
     </NxTile.Subsection>
@@ -58,30 +68,38 @@ const AdditionalResources = () =>
       </NxTile.SubsectionHeader>
       <NxList bulleted>
         <NxList.Item>
-          <NxTextLink external href="https://reactjs.org/docs/hello-world.html">
-            Main Concepts in React
-          </NxTextLink>
+          <NxList.Text>
+            <NxTextLink external href="https://reactjs.org/docs/hello-world.html">
+              Main Concepts in React
+            </NxTextLink>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink external href="https://reactjs.org/docs/thinking-in-react.html">Thinking in React</NxTextLink>
+          <NxList.Text>
+            <NxTextLink external href="https://reactjs.org/docs/thinking-in-react.html">Thinking in React</NxTextLink>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          Many apps utilizing React and Redux together utilize the official{' '}
-          <NxTextLink external href="https://react-redux.js.org/using-react-redux/connect-mapstate">
-            react-redux
-          </NxTextLink>
-          {' '}connectors, as well as the{' '}
-          <NxTextLink external href="https://redux-toolkit.js.org/introduction/quick-start">
-            Redux toolkit
-          </NxTextLink>
-          , which is a set of patterns to reduce boilerplate in “vanilla Redux”.
+          <NxList.Text>
+            Many apps utilizing React and Redux together utilize the official{' '}
+            <NxTextLink external href="https://react-redux.js.org/using-react-redux/connect-mapstate">
+              react-redux
+            </NxTextLink>
+            {' '}connectors, as well as the{' '}
+            <NxTextLink external href="https://redux-toolkit.js.org/introduction/quick-start">
+              Redux toolkit
+            </NxTextLink>
+            , which is a set of patterns to reduce boilerplate in “vanilla Redux”.
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink external href="https://www.youtube.com/watch?v=nYkdrAPrdcw&time_continue=781">
-            Video about Flux
-          </NxTextLink>
-          , which is a precursor to redux. Uses some real-world problems to motivate the concept of one-way dataflow for
-          state management, which is what Redux is all about.
+          <NxList.Text>
+            <NxTextLink external href="https://www.youtube.com/watch?v=nYkdrAPrdcw&time_continue=781">
+              Video about Flux
+            </NxTextLink>
+            , which is a precursor to redux. Uses some real-world problems to motivate the concept of one-way dataflow
+            for state management, which is what Redux is all about.
+          </NxList.Text>
         </NxList.Item>
       </NxList>
     </NxTile.Subsection>
@@ -92,15 +110,17 @@ const AdditionalResources = () =>
       </NxTile.SubsectionHeader>
       <NxList bulleted>
         <NxList.Item>
-          <NxTextLink external href="https://github.com/sonatype/sonatype-application-builder">
-            Internal Sonatype Application Builder (SAB) Template
-          </NxTextLink>
-          {' - '}A great place to start for new projects and a fun place to poke around.
-          It is also setup as a GitHub Template, just click the "use this template" button (or click{' '}
-          <NxTextLink external href="https://github.com/sonatype/sonatype-application-builder/generate">
-            here
-          </NxTextLink>
-          ) in GitHub to get started. Note that, at this time, this is an internal to Sonatype template.
+          <NxList.Text>
+            <NxTextLink external href="https://github.com/sonatype/sonatype-application-builder">
+              Internal Sonatype Application Builder (SAB) Template
+            </NxTextLink>
+            {' - '}A great place to start for new projects and a fun place to poke around.
+            It is also setup as a GitHub Template, just click the "use this template" button (or click{' '}
+            <NxTextLink external href="https://github.com/sonatype/sonatype-application-builder/generate">
+              here
+            </NxTextLink>
+            ) in GitHub to get started. Note that, at this time, this is an internal to Sonatype template.
+          </NxList.Text>
         </NxList.Item>
       </NxList>
     </NxTile.Subsection>

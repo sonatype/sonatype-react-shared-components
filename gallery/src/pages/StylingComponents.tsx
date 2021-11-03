@@ -69,17 +69,25 @@ const StylingRSCPage = () =>
       </NxP>
       <NxList bulleted>
         <NxList.Item>
-          <NxCode>open</NxCode> &amp; <NxCode>closed</NxCode>
+          <NxList.Text>
+            <NxCode>open</NxCode> &amp; <NxCode>closed</NxCode>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxCode>disabled</NxCode>
+          <NxList.Text>
+            <NxCode>disabled</NxCode>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxCode>pristine</NxCode>, <NxCode>valid</NxCode>,
-          {' '}<NxCode>invalid</NxCode>
+          <NxList.Text>
+            <NxCode>pristine</NxCode>, <NxCode>valid</NxCode>,
+            {' '}<NxCode>invalid</NxCode>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxCode>selected</NxCode> &amp; <NxCode>unselected</NxCode>
+          <NxList.Text>
+            <NxCode>selected</NxCode> &amp; <NxCode>unselected</NxCode>
+          </NxList.Text>
         </NxList.Item>
       </NxList>
       <NxP>
@@ -101,33 +109,37 @@ const StylingRSCPage = () =>
       <NxH4>Flexbox</NxH4>
       <NxList bulleted>
         <NxList.Item>
-          <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">
-            MDN Layout Guide: Flexbox
-          </NxTextLink>
+          <NxList.Text>
+            <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">
+              MDN Layout Guide: Flexbox
+            </NxTextLink>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink external href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">
-            CSS Tricks Guide to CSS Flexbox
-          </NxTextLink>
+          <NxList.Text>
+            <NxTextLink external href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">
+              CSS Tricks Guide to CSS Flexbox
+            </NxTextLink>
+          </NxList.Text>
         </NxList.Item>
       </NxList>
       <h4 className="nx-h4">CSS Grid</h4>
       <NxList bulleted>
         <NxList.Item>
-          <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids">
-            MDN Layout Guide: CSS Grid
-          </NxTextLink>
+          <NxList.Text>
+            <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids">
+              MDN Layout Guide: CSS Grid
+            </NxTextLink>
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxTextLink external href="https://css-tricks.com/snippets/css/complete-guide-grid/">
-            CSS Tricks Guide to CSS Grid
-          </NxTextLink>
+          <NxList.Text>
+            <NxTextLink external href="https://css-tricks.com/snippets/css/complete-guide-grid/">
+              CSS Tricks Guide to CSS Grid
+            </NxTextLink>
+          </NxList.Text>
         </NxList.Item>
       </NxList>
-      <NxP>
-        If you have questions about how to use RSC's styles in your app, or how to create customs style for your app
-        #react-components on Slack is a good place to ask.
-      </NxP>
     </NxTile.Subsection>
   </GalleryTile>;
 

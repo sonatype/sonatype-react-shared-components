@@ -20,16 +20,22 @@ export default function NxGlobalSidebarPage() {
         <NxP>
           <NxCode>NxGlobalSidebar</NxCode> is a collapsible page level sidebar. It has three main sections:
         </NxP>
-        <NxList bulleted>
-          <NxList.Item>A header which contains branding as well as the open/close toggle</NxList.Item>
+        <NxList className="nx-list--bulleted">
           <NxList.Item>
-            A navigation link section which display an icon plus text in the open state and an icon in the closed
-            state
+            <NxList.Text>A header which contains branding as well as the open/close toggle</NxList.Text>
           </NxList.Item>
           <NxList.Item>
-            A footer which contains meta-information about the application. Refer to the
-            {' '}<a className="nx-text-link" href="#/Pages/NxGlobalSidebarFooter">NxGlobalSidebarFooter</a> page for its
-            documentation.
+            <NxList.Text>
+              A navigation link section which display an icon plus text in the open state and an icon in the closed
+              state
+            </NxList.Text>
+          </NxList.Item>
+          <NxList.Item>
+            <NxList.Text>
+              A footer which contains meta-information about the application. Refer to the
+              {' '}<a className="nx-text-link" href="#/Pages/NxGlobalSidebarFooter">NxGlobalSidebarFooter</a> page for
+              its documentation.
+            </NxList.Text>
           </NxList.Item>
         </NxList>
         <NxP>

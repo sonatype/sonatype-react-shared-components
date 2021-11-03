@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxP, NxCode, NxTile, NxH3, NxList } from '@sonatype/react-shared-components';
+import { NxTable, NxP, NxCode, NxTile, NxH3, NxTextLink, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -15,7 +15,6 @@ import NxTreeViewExtras from './NxTreeViewExtrasExample';
 import NxTreeViewClickable from './NxTreeViewClickableExample';
 import NxTreeViewClickableSidebar from './NxTreeViewClickableSidebarExample';
 import NxTreeViewCheckbox from './NxTreeViewCheckboxExample';
-import NxTreeViewNested from './NxTreeViewNestedExample';
 import NxTreeViewEmpty from './NxTreeViewEmptyExample';
 import NxTreeViewDisabled from './NxTreeViewDisabledExample';
 
@@ -25,7 +24,6 @@ const nxTreeViewCode = require('./NxTreeViewExample?raw'),
     nxTreeViewClickableCode = require('./NxTreeViewClickableExample?raw'),
     nxTreeViewClickableSidebarCode = require('./NxTreeViewClickableSidebarExample?raw'),
     nxTreeViewCheckboxCode = require('./NxTreeViewCheckboxExample?raw'),
-    nxTreeViewNestedCode = require('./NxTreeViewNestedExample?raw'),
     nxTreeViewEmptyCode = require('./NxTreeViewEmptyExample?raw'),
     nxTreeViewDisabledCode = require('./NxTreeViewDisabledExample?raw');
 
@@ -33,7 +31,9 @@ const NxTreeViewPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        A set of default styles and basic React for an expanding tree view.
+        A set of default styles for an expandable series of items. Note that the name of this component is
+        a misnomer as it no longer supports tree structures, and it is slated to be renamed in the near future. For
+        an actual tree component, see <NxTextLink href="#/pages/NxTree"><NxCode>NxTree</NxCode></NxTextLink>.
       </NxP>
 
       <NxTable>
@@ -191,13 +191,6 @@ const NxTreeViewPage = () =>
                         codeExamples={nxTreeViewCheckboxCode}>
       Example showing how to construct <NxCode>NxTreeView</NxCode>s with checkboxes and radios as
       children. This example omits the input state management and is focused on demonstrating the styling.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="NxTreeView Nested Example"
-                        id="nx-tree-view-nested-example"
-                        liveExample={NxTreeViewNested}
-                        codeExamples={nxTreeViewNestedCode}>
-      An example of an NxTreeView with another NxTreeView nested as a child.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxTreeView Empty Example"

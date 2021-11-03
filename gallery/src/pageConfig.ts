@@ -126,6 +126,7 @@ import NxStatefulSearchTransferListPage
 import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
 import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallThreatCounterPage';
+import NxTreePage from './components/NxTree/NxTreePage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -179,8 +180,8 @@ const pageConfig: PageConfig = {
     NxStatefulTabs: NxStatefulTabsPage,
     NxTag: NxTagPage,
     NxTextInput: NxTextInputPage,
-    NxTextLink: NxTextLinkPage,
     NxStatefulTextInput: NxStatefulTextInputPage,
+    NxTextLink: NxTextLinkPage,
     NxThreatCounter: NxThreatCounterPage,
     NxSmallThreatCounter: NxSmallThreatCounterPage,
     NxThreatIndicator: NxThreatIndicatorPage,
@@ -191,6 +192,7 @@ const pageConfig: PageConfig = {
     NxOverflowTooltip: NxOverflowTooltipPage,
     NxTransferList: NxTransferListPage,
     NxStatefulTransferList: NxStatefulTransferListPage,
+    NxTree: NxTreePage,
     NxTreeView: NxTreeViewPage,
     NxTreeViewMultiSelect: NxTreeViewMultiSelect,
     NxStatefulTreeViewMultiSelect: NxStatefulTreeViewMultiSelect,

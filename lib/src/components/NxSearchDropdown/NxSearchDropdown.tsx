@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, Ref, useRef } from 'react';
+import React, { FocusEvent, KeyboardEventHandler, Ref, useRef } from 'react';
 import classnames from 'classnames';
 import { partial } from 'ramda';
 
@@ -89,6 +89,14 @@ function NxSearchDropdownRender<T extends string | number = string>(
     onSearch(value.trim());
   }
 
+  const handleKeyDown: KeyboardEventHandler = event => {
+    if (event.key === 'Escape') {
+      onSearchTextChange('');
+
+      event.preventDefault();
+    }
+  };
+
   return (
     <div ref={ref} className={className} onFocus={handleComponentFocus} { ...attrs }>
       <NxFilterInput ref={filterRef}
@@ -97,12 +105,14 @@ function NxSearchDropdownRender<T extends string | number = string>(
                      onChange={handleFilterChange}
                      disabled={disabled || undefined}
                      placeholder="Search"
-                     searchIcon />
+                     searchIcon
+                     onKeyDown={handleKeyDown} />
       { searchText && !disabled &&
         <NxDropdownMenu key={error ? 'error' : 'no-error'}
                         ref={menuRef}
                         className={menuClassName}
-                        onClosing={onMenuClosing}>
+                        onClosing={onMenuClosing}
+                        onKeyDown={handleKeyDown}>
           <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
             {
               matches.length ? matches.map(match =>

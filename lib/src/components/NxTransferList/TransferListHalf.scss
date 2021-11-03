@@ -6,6 +6,7 @@
  */
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-button-helpers';
 
 // the padding on the sides of each transfer list control box
 $-control-box-side-spacing: var(--nx-spacing-6x);
@@ -85,36 +86,78 @@ $-visible-item-count: 10;
     #{$-visible-item-count - 1} * #{$-item-vertical-margin}
   );
 
-
   overflow-y: auto;
   padding: var(--nx-spacing-6x) $-control-box-side-spacing;
   margin-top: var(--nx-spacing-6x);
 }
 
 .nx-transfer-list__item {
+  background-color: var(--nx-swatch-white);
+  border-radius: var(--nx-border-radius);
+  display: flex;
+  margin: var(--nx-spacing-2x) 0;
+}
+
+.nx-transfer-list__select {
   @include nx-container-helpers.container-horizontal;
   @include nx-text-helpers.truncate-ellipsis;
 
-  background-color: var(--nx-swatch-white);
-  border: var(--nx-border-default);
   border-radius: var(--nx-border-radius);
+  border: var(--nx-border-default);
   cursor: pointer;
-  display: block;
-  margin: var(--nx-spacing-2x) 0;
+  flex: auto;
   padding: var(--nx-spacing-2x);
+
+  &:hover {
+    border-color: var(--nx-color-interactive-border-hover);
+  }
 
   &:focus-within {
     border-color: var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
   }
 
-  &:hover {
-    border-color: var(--nx-swatch-grey-05);
-  }
-
   &:active {
-    background-color: transparent;
-    border-color: var(--nx-swatch-grey-05);
+    background-color: var(--nx-swatch-indigo-97);
+    border-color: var(--nx-color-interactive-border-hover);
+  }
+}
+
+.nx-transfer-list__item--with-reordering {
+  .nx-transfer-list__select {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+.nx-transfer-list__button-bar {
+  border: var(--nx-border-default);
+  border-left: 0;
+  border-radius: var(--nx-border-radius);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  gap: var(--nx-spacing-base);
+  margin: 0;
+  padding: var(--nx-spacing-base) var(--nx-spacing-2x);
+
+  .nx-btn {
+    @include nx-button-helpers.small-icon-btn;
+    margin: 0;
+
+    &[disabled] {
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
+        // pointer-events is set to none to fix tooltip sometimes
+        // staying open when button is disabled. Also suggested here:
+        // https://mui.com/components/tooltips/
+        pointer-events: none;
+      }
+    }
   }
 }
 
@@ -123,6 +166,7 @@ $-visible-item-count: 10;
   -webkit-appearance: none;
   -moz-appearance: none;
   margin: 0;
+  outline: none;
 }
 
 .nx-transfer-list__footer {

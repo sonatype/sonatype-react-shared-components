@@ -11,7 +11,7 @@ $-height: 24px;
 $-width: 44px;
 
 .nx-toggle {
-  column-gap: 16px;
+  column-gap: var(--nx-spacing-2x);
   display: grid;
   grid-template-areas: "toggle content";
   grid-template-columns: auto 1fr;
@@ -37,7 +37,7 @@ $-width: 44px;
   &:focus-within {
     .nx-toggle__control {
       &:hover {
-        border-color: var(--nx-swatch-grey-05);
+        border-color: var(--nx-color-interactive-border-hover);
       }
 
       &::after{
@@ -59,7 +59,7 @@ $-width: 44px;
     cursor: pointer;
 
     .nx-toggle__control {
-      border-color: var(--nx-swatch-grey-05);
+      border-color: var(--nx-color-interactive-border-hover);
     }
   }
 }

@@ -24,22 +24,37 @@ const PolicyThreatLevelUtilsPage = () =>
 
       <NxList bulleted>
         <NxList.Item>
-          <strong>Policy Threat Level:</strong> An integer between 0 and 10, inclusive, that describes
-          the severity of a threat.  Zero represents no
-          threat at all and ten represents the most severe of threats
+          <NxList.Text>
+            <strong>Policy Threat Level:</strong> An integer between 0 and 10, inclusive, that describes
+            the severity of a threat.  Zero represents no
+            threat at all and ten represents the most severe of threats
+          </NxList.Text>
         </NxList.Item>
-        <NxList.Item><strong>Policy Threat Level Category:</strong>
-          {' '}In increasing order of severity: <q>none</q>; <q>low</q>; <q>moderate</q>; <q>severe</q>;
-          and <q>critical</q>, or <q>unspecified</q>. Each Policy Threat Level is a member of a corresponding
-          category:
+        <NxList.Item>
+          <NxList.Text>
+            <strong>Policy Threat Level Category:</strong>
+            {' '}In increasing order of severity: <q>none</q>; <q>low</q>; <q>moderate</q>; <q>severe</q>;
+            and <q>critical</q>, or <q>unspecified</q>. Each Policy Threat Level is a member of a corresponding
+            category:
 
-          <NxList bulleted>
-            <NxList.Item><strong>none:</strong> 0</NxList.Item>
-            <NxList.Item><strong>low:</strong> 1</NxList.Item>
-            <NxList.Item><strong>moderate:</strong> 2 - 3</NxList.Item>
-            <NxList.Item><strong>severe:</strong> 4 - 7</NxList.Item>
-            <NxList.Item><strong>critical:</strong> 8 - 10</NxList.Item>
-          </NxList>
+            <NxList className="nx-list--bulleted">
+              <NxList.Item>
+                <NxList.Text><strong>none:</strong> 0</NxList.Text>
+              </NxList.Item>
+              <NxList.Item>
+                <NxList.Text><strong>low:</strong> 1</NxList.Text>
+              </NxList.Item>
+              <NxList.Item>
+                <NxList.Text><strong>moderate:</strong> 2 - 3</NxList.Text>
+              </NxList.Item>
+              <NxList.Item>
+                <NxList.Text><strong>severe:</strong> 4 - 7</NxList.Text>
+              </NxList.Item>
+              <NxList.Item>
+                <NxList.Text><strong>critical:</strong> 8 - 10</NxList.Text>
+              </NxList.Item>
+            </NxList>
+          </NxList.Text>
         </NxList.Item>
       </NxList>
     </GalleryDescriptionTile>

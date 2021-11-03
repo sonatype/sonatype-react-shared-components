@@ -39,6 +39,10 @@ $-separator-color: var(--nx-swatch-indigo-40);
   .nx-text-link, .nx-tree-view__trigger, .nx-tree-view__child {
     color: $-text-color;
   }
+
+  .nx-text-link {
+    margin: 0;
+  }
 }
 
 .nx-global-sidebar__header {
@@ -98,8 +102,10 @@ $-separator-color: var(--nx-swatch-indigo-40);
            // We need to add an extra pixel to the left to properly centre
            // the icons when the sidebar is collapsed
            calc(#{$-left-right-spacing} + 1px);
+  text-decoration: none;
 
   .nx-icon {
+    color: var(--nx-swatch-indigo-90);
     margin: 0;
   }
 
@@ -201,6 +207,10 @@ $-separator-color: var(--nx-swatch-indigo-40);
   .nx-text-link {
     align-items: center;
     display: flex;
+  }
+
+  .nx-icon {
+    color: var(--nx-swatch-indigo-90);
   }
 }
 

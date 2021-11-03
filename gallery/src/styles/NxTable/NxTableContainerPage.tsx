@@ -26,8 +26,12 @@ const NxTableContainerPage = () =>
         can be constructed around the table. This setup is needed for the following functionality:
       </NxP>
       <NxList bulleted>
-        <NxList.Item>Scrolling tables</NxList.Item>
-        <NxList.Item>Tables with pagination</NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Scrolling tables</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Tables with pagination</NxList.Text>
+        </NxList.Item>
       </NxList>
       <NxTable>
         <NxTable.Head>

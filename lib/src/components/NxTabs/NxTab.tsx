@@ -10,6 +10,7 @@ import classnames from 'classnames';
 import TabContext from './TabContext';
 
 import { NxTabProps, nxTabPropTypes } from './types';
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 export { NxTabProps };
 
 const SPACE = ' ';
@@ -40,20 +41,22 @@ const NxTab = function NxTabElement(props: NxTabProps) {
   }
 
   return (
-    <li role="tab"
-        id={`${rootId}-tab-${index}`}
-        aria-controls={`${rootId}-tabpanel-${index}`}
-        className={classNames}
-        aria-selected={active}
-        onKeyPress={handleKeyPress}
-        onClick={handleClick}
-        tabIndex={tabIndex}
-        {...attrs}>
-      {children}
-      <div className="nx-tab__hidden-children">
+    <NxOverflowTooltip title={children}>
+      <li role="tab"
+          id={`${rootId}-tab-${index}`}
+          aria-controls={`${rootId}-tabpanel-${index}`}
+          className={classNames}
+          aria-selected={active}
+          onKeyPress={handleKeyPress}
+          onClick={handleClick}
+          tabIndex={tabIndex}
+          {...attrs}>
         {children}
-      </div>
-    </li>
+        <div className="nx-tab__hidden-children">
+          {children}
+        </div>
+      </li>
+    </NxOverflowTooltip>
   );
 };
 

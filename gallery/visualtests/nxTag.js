@@ -42,7 +42,7 @@ describe('NxTag', function() {
     it('has a blue/grey border and lighter blue/grey background by default', simpleTest(selector));
     it('has a dark grey border when hovered', hoverTest(selector));
     it('has a light blue glow and light blue border when focused', focusTest(selector));
-    it('has a light blue glow and dark grey border when focused and hovered', focusAndHoverTest(selector));
+    it('has a light blue glow and blue border when focused and hovered', focusAndHoverTest(selector));
 
     it('has a dark blue/grey background when clicked', async function() {
       const targetElement = await browser.$(selector);

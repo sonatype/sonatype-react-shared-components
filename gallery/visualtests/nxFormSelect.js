@@ -9,6 +9,7 @@ const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testU
 
 describe('nx-form-select', function() {
   const selector = '#nx-form-select-example .nx-form-select',
+      overflowSelector = '#nx-form-select-overflow-example .nx-form-select',
       disabledSelector = '#nx-form-select-disabled-example .nx-form-select';
 
   beforeEach(async function() {
@@ -16,30 +17,15 @@ describe('nx-form-select', function() {
   });
 
   describe('Simple NxFormSelect', function() {
-    it('has a light border when pristine', simpleTest(selector));
+    it('has a dark border by default', simpleTest(selector));
 
-    it('has a dark border when not pristine', async function() {
-      const targetElement = await browser.$(selector);
-
-      await targetElement.scrollIntoView({ block: 'center' });
-
-      // change the value of the dropdown
-      await browser.execute(function(el) {
-        el.focus();
-      }, targetElement);
-      await browser.keys('ArrowDown');
-      await browser.execute(function(el) {
-        el.blur();
-      }, targetElement);
-
-      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
-
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-    });
-
-    it('has a dark border when hovered', hoverTest(selector));
+    it('has a darker border when hovered', hoverTest(selector));
     it('has a blue border when focused', focusTest(selector));
     it('has a blue border when hovered and focused', focusAndHoverTest(selector));
+  });
+
+  describe('NxFormSelect with long overflowing text', function() {
+    it('it looks right and text is truncated', simpleTest(overflowSelector));
   });
 
   describe('Disabled NxFormSelect', function() {

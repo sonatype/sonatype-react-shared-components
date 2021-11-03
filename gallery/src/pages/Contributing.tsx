@@ -33,32 +33,43 @@ const Contributing = () =>
       <NxH3>Create a page describing the component</NxH3>
       <NxList bulleted>
         <NxList.Item>
-          For each component or style that you want to add to the Gallery, create a subdirectory
-          underneath <NxCode>src/components</NxCode> or <NxCode>src/styles</NxCode>
-          with the name of the component or style
+          <NxList.Text>
+            For each component or style that you want to add to the Gallery, create a subdirectory
+            underneath <NxCode>src/components</NxCode> or <NxCode>src/styles</NxCode>
+            with the name of the component or style
+          </NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          Under the subdirectory, create 2 Typescript files to describe the behavior of your component or style. One
-          file will be <NxCode>[ComponentName]Example.tsx</NxCode>, which has a working example of the
-          component with how different parameters are handled. The second file will
-          be <NxCode>[ComponentName]Page.tsx</NxCode>, which should contain 3 things:
-          <NxList bulleted>
+          <NxList.Text>
+            Under the subdirectory, create 2 Typescript files to describe the behavior of your component or style. One
+            file will be <NxCode>[ComponentName]Example.tsx</NxCode>, which has a working example of the
+            component with how different parameters are handled. The second file will
+            be <NxCode>[ComponentName]Page.tsx</NxCode>, which should contain 3 things:
+          </NxList.Text>
+          <NxList className="nx-list--bulleted">
             <NxList.Item>
-              A description of the component and its parameters, as well as an example of how to use the component.
-              See also the <NxCode>GalleryDescriptionTile</NxCode> component
+              <NxList.Text>
+                A description of the component and its parameters, as well as an example of how to use the component.
+                See also the <NxCode>GalleryDescriptionTile</NxCode> component
+              </NxList.Text>
             </NxList.Item>
             <NxList.Item>
-              Code that demonstrates the component (import the example component and invoke it)
+              <NxList.Text>
+                Code that demonstrates the component (import the example component and invoke it)
+              </NxList.Text>
             </NxList.Item>
             <NxList.Item>
-              Code snippet of the example component (use the <NxCode>CodeExample</NxCode> component)
+              <NxList.Text>
+                Code snippet of the example component (use the <NxCode>CodeExample</NxCode> component)
+              </NxList.Text>
             </NxList.Item>
           </NxList>
         </NxList.Item>
         <NxList.Item>
-          See also <NxCode>NxCheckboxPage.tsx</NxCode>
-          and <NxCode>NxCheckboxExample.tsx</NxCode> as an example of how to create a
-          component example.
+          <NxList.Text>
+            See also <NxCode>NxCheckboxPage.tsx</NxCode> and <NxCode>NxCheckboxExample.tsx</NxCode> as
+            an example of how to create a component example.
+          </NxList.Text>
         </NxList.Item>
       </NxList>
       <NxTile.Subsection>
@@ -73,14 +84,20 @@ const Contributing = () =>
         <CodeExample content={pageConfigExample}/>
         <NxList bulleted>
           <NxList.Item>
-            Import the description page you created earlier
+            <NxList.Text>
+              Import the description page you created earlier
+            </NxList.Text>
           </NxList.Item>
           <NxList.Item>
-            Place the entry in the proper category (creating a new category if necessary)
+            <NxList.Text>
+              Place the entry in the proper category (creating a new category if necessary)
+            </NxList.Text>
           </NxList.Item>
           <NxList.Item>
-            It is important to note that the key that you use for your entry will be used by
-            <NxCode>react-router</NxCode> to auto-populate the left-hand navigation, page title and URL
+            <NxList.Text>
+              It is important to note that the key that you use for your entry will be used by
+              <NxCode>react-router</NxCode> to auto-populate the left-hand navigation, page title and URL
+            </NxList.Text>
           </NxList.Item>
         </NxList>
       </NxTile.Subsection>

@@ -28,21 +28,28 @@ const NxContainerHelpersPage = () => {
         </NxP>
         <NxList bulleted>
           <NxList.Item>
-            Elements should specify margin as desired in the directions in which they may have siblings, i.e. top
-            and bottom for block elements or left and right for inline elements. They <em>should not</em> specify margin
-            in the cross axis. Note that vertical sibling margins do collapse, but horizontal sibling margins do not.
+            <NxList.Text>
+              Elements should specify margin as desired in the directions in which they may have siblings, i.e. top
+              and bottom for block elements or left and right for inline elements. They <em>should not</em> specify
+              margin in the cross axis. Note that vertical sibling margins do collapse, but horizontal sibling margins
+              do not.
+            </NxList.Text>
           </NxList.Item>
           <NxList.Item>
-            Container elements should specify padding on all four sides as desired. Containers should also remove the
-            top margin of their first child and the bottom margin of their last child (or left and right margins
-            respectively for containers of inline or horizontal-flex items). This means that it is fully left up to
-            the container how far its children will be from its borders. No more mix of padding and the last child's
-            margin at the bottom.
+            <NxList.Text>
+              Container elements should specify padding on all four sides as desired. Containers should also remove the
+              top margin of their first child and the bottom margin of their last child (or left and right margins
+              respectively for containers of inline or horizontal-flex items). This means that it is fully left up to
+              the container how far its children will be from its borders. No more mix of padding and the last child's
+              margin at the bottom.
+            </NxList.Text>
           </NxList.Item>
           <NxList.Item>
-            Elements with no visible border or padding box (e.g. no background, no border) should generally not use
-            padding, but should instead stick to margin for their spacing from other content. By consistently
-            sticking to margin here, we remain compatible with #2 above and also with margin collapsing rules.
+            <NxList.Text>
+              Elements with no visible border or padding box (e.g. no background, no border) should generally not use
+              padding, but should instead stick to margin for their spacing from other content. By consistently
+              sticking to margin here, we remain compatible with #2 above and also with margin collapsing rules.
+            </NxList.Text>
           </NxList.Item>
         </NxList>
         <NxP>
@@ -56,22 +63,28 @@ const NxContainerHelpersPage = () => {
         </NxP>
         <NxList bulleted>
           <NxList.Item>
-            Bare text nodes don't count in the <NxCode>:first-child</NxCode> and
-            <NxCode>:last-child</NxCode> selectors that are used to implement
-            guideline #2. Therefore they can cause those selectors to select the wrong thing. As a result, bare
-            text nodes as siblings of actual elements should be used with caution. This is particularly awkward with
-            react components that take children but which support those children being a mix of inline and block
-            elements, such as <NxCode>NxAlert</NxCode>.
+            <NxList.Text>
+              Bare text nodes don't count in the <NxCode>:first-child</NxCode> and
+              <NxCode>:last-child</NxCode> selectors that are used to implement
+              guideline #2. Therefore they can cause those selectors to select the wrong thing. As a result, bare
+              text nodes as siblings of actual elements should be used with caution. This is particularly awkward with
+              react components that take children but which support those children being a mix of inline and block
+              elements, such as <NxCode>NxAlert</NxCode>.
+            </NxList.Text>
           </NxList.Item>
           <NxList.Item>
-            Any CSS styles that cause the visual order of elements to not follow the document order of elements
-            can similarly cause <NxCode>:first-child</NxCode> and
-            <NxCode>:last-child</NxCode> problems. Floats are the most obvious offender here.
-            Again, use with caution.
+            <NxList.Text>
+              Any CSS styles that cause the visual order of elements to not follow the document order of elements
+              can similarly cause <NxCode>:first-child</NxCode> and
+              <NxCode>:last-child</NxCode> problems. Floats are the most obvious offender here.
+              Again, use with caution.
+            </NxList.Text>
           </NxList.Item>
           <NxList.Item>
-            The specificity on the <NxCode>{'>'} :first-child</NxCode> selector isn't that high as it
-            turns out, and component style can sometimes inadvertently override it.
+            <NxList.Text>
+              The specificity on the <NxCode>{'>'} :first-child</NxCode> selector isn't that high as it
+              turns out, and component style can sometimes inadvertently override it.
+            </NxList.Text>
           </NxList.Item>
         </NxList>
       </GalleryDescriptionTile>

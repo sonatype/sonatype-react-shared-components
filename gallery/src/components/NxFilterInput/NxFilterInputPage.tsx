@@ -95,17 +95,21 @@ const NxFilterInputPage = () =>
             <NxTable.Cell>
               NxFilterInput supports any html attribute that's normally supported by HTML Inputs. The only notable
               exceptions are:
-              <NxList bulleted>
+              <NxList className="nx-list--bulleted">
                 <NxList.Item>
-                  <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly
-                  known as{' '}
-                  <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
-                    uncontrolled inputs
-                  </NxTextLink>
+                  <NxList.Text>
+                    <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly
+                    known as{' '}
+                    <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
+                      uncontrolled inputs
+                    </NxTextLink>
+                  </NxList.Text>
                 </NxList.Item>
                 <NxList.Item>
-                  The attributes specified above, whose types are as defined here and not as specified in the
-                  react propTypes.
+                  <NxList.Text>
+                    The attributes specified above, whose types are as defined here and not as specified in the
+                    react propTypes.
+                  </NxList.Text>
                 </NxList.Item>
               </NxList>
             </NxTable.Cell>

@@ -77,11 +77,15 @@ const NxTreeViewMultiSelectPage = () =>
               Called whenever selection change occurs; it will receive two arguments:{' '}
               <NxList bulleted>
                 <NxList.Item>
-                  <NxCode >Set</NxCode> of ids of the currently selected options
+                  <NxList.Text>
+                    <NxCode>Set</NxCode> of ids of the currently selected options
+                  </NxList.Text>
                 </NxList.Item>
                 <NxList.Item>
-                  <NxCode>id</NxCode> of the toggled option
-                  or <NxCode>undefined</NxCode> if all/none option was toggled
+                  <NxList.Text>
+                    <NxCode>id</NxCode> of the toggled option
+                    or <NxCode>undefined</NxCode> if all/none option was toggled
+                  </NxList.Text>
                 </NxList.Item>
               </NxList>
             </NxTable.Cell>

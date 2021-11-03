@@ -94,4 +94,27 @@ describe('NxToggle', function() {
     expect(component).toHaveProp('id', 'foo');
     expect(component).toHaveProp('htmlFor', 'baz');
   });
+
+  it('passes input attributes into the input element and does not clash with top-level attributes', function() {
+    const component = getShallow({
+      inputId: 'not-garfield',
+      disabled: true,
+      isChecked: true,
+      className: 'label-classname',
+      inputAttributes: {
+        id: 'garfield',
+        name: 'garfield',
+        disabled: false,
+        className: 'input-classname',
+        checked: false
+      } as Props['inputAttributes']
+    });
+
+    expect(component.find('input')).toHaveProp('id', 'garfield');
+    expect(component.find('input')).toHaveProp('name', 'garfield');
+    expect(component.find('input')).toHaveProp('disabled', true);
+    expect(component.find('input')).toHaveClassName('input-classname');
+    expect(component.find('input')).not.toHaveClassName('label-classname');
+    expect(component.find('input')).toHaveProp('checked', true);
+  });
 });

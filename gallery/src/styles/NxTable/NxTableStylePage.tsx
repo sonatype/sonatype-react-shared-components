@@ -18,10 +18,18 @@ const NxTableStylePage = () =>
         This is the styling and layout for a basic table. There are few variations demonstrated here:
       </NxP>
       <NxList bulleted>
-        <NxList.Item>Basic table layout</NxList.Item>
-        <NxList.Item>Tables with clickable rows</NxList.Item>
-        <NxList.Item>Empty tables</NxList.Item>
-        <NxList.Item>A table with an error.</NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Basic table layout</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Tables with clickable rows</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Empty tables</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>A table with an error.</NxList.Text>
+        </NxList.Item>
       </NxList>
       <NxTable>
         <NxTable.Head>
