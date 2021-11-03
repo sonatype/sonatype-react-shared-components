@@ -1,7 +1,4 @@
-.nx-page-header {
-  background-color: var(--nx-swatch-white);
-  border-bottom: 1px solid var(--nx-swatch-grey-90);
-  grid-area: old-header; // see nx-page's grid template
+.nx-gallery-page-header {
 
   &__inner {
     align-items: center;
