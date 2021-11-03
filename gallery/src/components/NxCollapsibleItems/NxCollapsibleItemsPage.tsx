@@ -119,9 +119,10 @@ const NxCollapsibleItemsPage = () =>
           in <NxCode>NxCollapsibleItems.Child</NxCode> components.{' '}
           <NxCode>NxCollapsibleItems.Child</NxCode> does not actually create an element of its own – unless
           its children consist only of text – but rather augments the classes and attributes of its child element
-          in order to apply the appropriate styles and accessibility roles. Note that NxCollapsibleItems.Child
+          in order to apply the appropriate styles and accessibility roles. Note that
+          {' '}<NxCode>NxCollapsibleItems.Child</NxCode>{' '}
           expects to have exactly one child, and this restriction is enforced in the typescript types.
-          NxCollapsibleItems.Child can receive standard global HTML attributes.
+          {' '}<NxCode>NxCollapsibleItems.Child</NxCode> can receive standard global HTML attributes.
         </NxP>
         <NxP>Certain types of collapsible items children get special styling treatment as described below.</NxP>
         <ul className="nx-list">
