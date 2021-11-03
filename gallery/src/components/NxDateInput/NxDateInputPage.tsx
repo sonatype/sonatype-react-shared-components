@@ -18,9 +18,10 @@ const NxTextInputPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        Standard date input with validation styling.
+        Standard HTML date input with validation styling.
         It is using <NxTextLink href="#/pages/NxTextInput">NxTextInput</NxTextLink>
-        under the hood and has similar properties except for `type`.
+        under the hood and has similar features and properties.
+        The only attribute that is ignored and should not be passed in this component is `type`.
       </NxP>
     </GalleryDescriptionTile>
 

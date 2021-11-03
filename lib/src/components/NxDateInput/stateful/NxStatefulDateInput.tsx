@@ -12,17 +12,6 @@ import NxDateInput from '../NxDateInput';
 import { Props, propTypes } from './types';
 export { Props, propTypes } from './types';
 
-/**
- * Standard text input with pristine state tracking and pluggable validation handling
- * @param type What type of text input to render.  Defaults to "text".
- *   Possible values: "textarea" | "text" | "password"
- * @param defaultValue The initial value rendered in the text input
- * @param validator A function that validates user-inputted changes to the text field value. Accepts the new value
-     as a string and returns zero or more validation error messages
- * @param onChange A callback for when the user changes the value of the text box (e.g. by typing a letter)
- * @param onKeyPress A callback for when the user presses a key that not necessarily changes the value of the text box
- * See the doc page for this component for information about other supported attributes.
- */
 const NxStatefulDateInput = forwardRef<HTMLDivElement, Props>(
     function NxStatefulDateInput(props, ref) {
       const { defaultValue, onChange, validator, ...attrs } = props,
