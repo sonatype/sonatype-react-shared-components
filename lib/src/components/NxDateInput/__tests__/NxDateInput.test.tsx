@@ -12,7 +12,7 @@ import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxDateInput, { Props } from '../NxDateInput';
 import NxTextInput from '../../NxTextInput/NxTextInput';
 
-describe.only('NxDateInput', function() {
+describe('NxDateInput', function() {
   const minimalProps = {
         value: '2021-10-04',
         isPristine: false
