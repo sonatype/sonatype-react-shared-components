@@ -299,6 +299,28 @@ describe('NxDropdown', () => {
     expect(onToggleCollapse).not.toHaveBeenCalled();
   });
 
+  it('provides onCloseClick with an event object where the typical properties work correctly', function() {
+    let evt: MouseEvent | undefined;
+    const onCloseClick = (event: MouseEvent) => { evt = event; },
+        component = getMountedComponent({ isOpen: true, onCloseClick }, { attachTo: container });
+
+    expect(evt).toBeUndefined();
+
+    act(() => {
+      component.getDOMNode().dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+    component!.update();
+
+    expect(evt).toBeDefined();
+    expect(evt).toBeInstanceOf(MouseEvent);
+    expect(evt!.target).toBe(component.getDOMNode());
+    expect(evt!.currentTarget).toBe(document);
+    expect(evt!.clientX).toBeDefined();
+    expect(evt!.button).toBeDefined();
+  });
+
   it('moves focus to the dropdown toggle button if a menu item is focused when the dropdown is closed', function() {
     const component = getMountedComponent({
           children: <button className="nx-dropdown-button">Foo</button>,
