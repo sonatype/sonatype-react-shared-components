@@ -36,7 +36,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
   padding: var(--nx-spacing-8x) 0 var(--nx-spacing-12x) 0;
   width: $-width-open;
 
-  .nx-text-link, .nx-tree-view__trigger, .nx-tree-view__child {
+  .nx-text-link, .nx-collapsible-items__trigger, .nx-collapsible-items__child {
     color: $-text-color;
   }
 
