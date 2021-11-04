@@ -70,6 +70,10 @@ describe('NxTextInput', function() {
     expect(getShallowComponent({ type: 'password' }).find('input')).toHaveProp('type', 'password');
   });
 
+  it('renders a date input if type is "date"', function() {
+    expect(getShallowComponent({ type: 'date' }).find('input')).toHaveProp('type', 'date');
+  });
+
   it('renders a textarea if type is "textarea"', function() {
     expect(getShallowComponent({ type: 'textarea' })).not.toContainMatchingElement('input');
     expect(getShallowComponent({ type: 'textarea' })).toContainMatchingElement('textarea');
@@ -198,13 +202,5 @@ describe('NxTextInput', function() {
 
     expect(component.find('.nx-text-input__box > .foo')).toExist();
     expect(component.find('.nx-text-input__box > .foo + .nx-text-input__input')).toExist();
-  });
-
-  it('adds the nx-text-input--date class modifier if isDateInput is true', function() {
-    expect(getShallowComponent({ isDateInput: true })).toHaveClassName('nx-text-input--date');
-  });
-
-  it('should have an input with attribute type set to date if isDateInput is true', function() {
-    expect(getShallowComponent({ isDateInput: true }).find('input')).toHaveProp('type', 'date');
   });
 });

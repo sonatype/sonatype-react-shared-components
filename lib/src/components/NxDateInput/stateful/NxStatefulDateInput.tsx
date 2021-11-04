@@ -4,28 +4,18 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef } from 'react';
+import { omit } from 'ramda';
 
-import { initialState, userInput } from '../../NxTextInput/stateHelpers';
-import NxDateInput from '../NxDateInput';
+import NxStatefulTextInput from '../../NxTextInput/stateful/NxStatefulTextInput';
 
 import { Props, propTypes } from './types';
 export { Props, propTypes } from './types';
 
 const NxStatefulDateInput = forwardRef<HTMLDivElement, Props>(
-    function NxStatefulDateInput(props, ref) {
-      const { defaultValue, onChange, validator, ...attrs } = props,
-          [state, setState] = useState(initialState(defaultValue || '', validator));
-
-      function changeHandler(newValue: string) {
-        setState(userInput(validator || null, newValue));
-
-        if (onChange) {
-          onChange(newValue);
-        }
-      }
-
-      return <NxDateInput validatable={!!validator} ref={ref} { ...attrs } { ...state } onChange={changeHandler} />;
+    (props, ref) => {
+      const filteredProps = omit(['type'], props);
+      return <NxStatefulTextInput type="date" ref={ref} { ...filteredProps } />;
     }
 );
 

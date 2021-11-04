@@ -23,6 +23,9 @@ export { default as NxDateInput, PublicProps as NxDateInputProps, StateProps as 
 import * as nxTextInputStateHelpers from './components/NxTextInput/stateHelpers';
 export { nxTextInputStateHelpers };
 
+import * as nxDateInputStateHelpers from './components/NxTextInput/stateHelpers';
+export { nxDateInputStateHelpers };
+
 export {
   default as NxAlert,
   NxWarningAlert,
@@ -166,6 +169,11 @@ export {
   default as NxStatefulTextInput,
   Props as NxStatefulTextInputProps
 } from './components/NxTextInput/stateful/NxStatefulTextInput';
+
+export {
+  default as NxStatefulDateInput,
+  Props as NxStatefulDateInputProps
+} from './components/NxDateInput/stateful/NxStatefulDateInput';
 
 export { default as NxCloseButton } from './components/NxCloseButton/NxCloseButton';
 export {

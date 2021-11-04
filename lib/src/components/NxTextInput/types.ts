@@ -51,7 +51,7 @@ export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   prefixContent?: ReactNode | null;
 };
 
-export interface PublicProps extends Omit<Props, 'prefixContent' | 'isDateInput'> {
+export interface PublicProps extends Omit<Props, 'prefixContent'> {
   type?: PublicNxTextInputType | null;
 }
 

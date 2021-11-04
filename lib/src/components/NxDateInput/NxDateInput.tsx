@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { omit } from 'ramda';
 
-import NxTextInput from '../../components/NxTextInput/NxTextInput';
+import NxTextInput, { } from '../../components/NxTextInput/NxTextInput';
 
 import {
   Props,
