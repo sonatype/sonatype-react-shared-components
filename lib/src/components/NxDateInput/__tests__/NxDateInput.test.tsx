@@ -5,16 +5,16 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-
 import { mount } from 'enzyme';
+
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
 import NxDateInput, { Props } from '../NxDateInput';
 import NxTextInput from '../../NxTextInput/NxTextInput';
 
-describe('NxDateInput', function() {
+describe.only('NxDateInput', function() {
   const minimalProps = {
-        value: '',
+        value: '2021-10-04',
         isPristine: false
       },
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxDateInput, minimalProps);
@@ -30,18 +30,27 @@ describe('NxDateInput', function() {
   });
 
   it('should pass props to the NxTextInput component', function() {
+    const onChange = jest.fn();
+    const onKeyPress = jest.fn();
     const component = getShallowComponent({
-      className: 'test'
+      className: 'test',
+      isPristine: true,
+      value: '2021-10-04',
+      onChange,
+      onKeyPress
     });
     const nxTextInput = component.find(NxTextInput);
-    expect(nxTextInput).toHaveClassName('test');
+    expect(nxTextInput).toHaveProp('className', 'test');
+    expect(nxTextInput).toHaveProp('isPristine', true);
+    expect(nxTextInput).toHaveProp('value', '2021-10-04');
+    expect(nxTextInput).toHaveProp('onChange', onChange);
+    expect(nxTextInput).toHaveProp('onKeyPress', onKeyPress);
   });
 
   it('should pass in ref to the input element', function() {
-    const ref = React.createRef<HTMLInputElement>(),
-        component = mount(<><NxDateInput { ...minimalProps } ref={ref} /></>),
-        domNode = component.find('input').getDOMNode();
-
-    expect(ref.current).toBe(domNode);
+    const ref = React.createRef<HTMLDivElement>();
+    const component = mount(<><NxDateInput ref={ref} { ...minimalProps } /></>);
+    expect(ref.current).toBeDefined();
+    expect(component.find(NxTextInput).getDOMNode()).toBe(ref.current);
   });
 });

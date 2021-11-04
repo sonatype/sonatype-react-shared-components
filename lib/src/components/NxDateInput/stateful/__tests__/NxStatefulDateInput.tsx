@@ -10,6 +10,7 @@ import * as enzymeUtils from '../../../../__testutils__/enzymeUtils';
 
 import NxStatefulTextInput from '../../../NxTextInput/stateful/NxStatefulTextInput';
 import NxStatefulDateInput, { Props } from '../NxStatefulDateInput';
+import NxTextInput from '../../../NxTextInput/NxTextInput';
 
 describe('NxStatefulDateInput', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulDateInput, {});
@@ -22,28 +23,18 @@ describe('NxStatefulDateInput', function() {
   it('renders a NxStatefulTextInput with specified attributes', function() {
     const component = getShallowComponent({
       className: 'foo',
-      defaultValue: 'bar'
+      defaultValue: '2021-10-04'
     });
 
     const nxStatefulTextInput = component.find(NxStatefulTextInput);
     expect(nxStatefulTextInput).toHaveProp('className', 'foo');
-    expect(nxStatefulTextInput).toHaveProp('defaultValue', 'bar');
+    expect(nxStatefulTextInput).toHaveProp('defaultValue', '2021-10-04');
   });
 
-  // it('passes through html props to the element', function() {
-  //   expect(getShallowComponent({ disabled: false })).toHaveProp('disabled', false);
-  //   expect(getShallowComponent({ disabled: true })).toHaveProp('disabled', true);
-  //   expect(getShallowComponent({ id: 'test-id'})).toHaveProp('id', 'test-id');
-  //   expect(getShallowComponent({ placeholder: 'test placeholder'})).toHaveProp('placeholder', 'test placeholder');
-  //   expect(getShallowComponent({ minLength: 4 })).toHaveProp('minLength', 4);
-  //   expect(getShallowComponent({ name: 'a-name' })).toHaveProp('name', 'a-name');
-  // });
-
-  it('should pass in ref into the inner input', function() {
-    const ref = React.createRef<HTMLInputElement>(),
-        component = mount(<><NxStatefulDateInput ref={ref} /></>),
-        domNode = component.find('input').getDOMNode();
-
-    expect(ref.current).toBe(domNode);
+  it('should pass in ref to the input element', function() {
+    const ref = React.createRef<HTMLDivElement>();
+    const component = mount(<><NxStatefulDateInput ref={ref} /></>);
+    expect(ref.current).toBeDefined();
+    expect(component.find(NxTextInput).getDOMNode()).toBe(ref.current);
   });
 });

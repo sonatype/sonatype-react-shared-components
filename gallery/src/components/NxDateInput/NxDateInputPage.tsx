@@ -103,8 +103,7 @@ const NxDateInputPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>
-              HTML <NxCode>&lt;input&gt;</NxCode> Attributes |
-              HTML <NxCode>&lt;textarea&gt;</NxCode> Attributes
+              HTML Date <NxCode>&lt;input&gt;</NxCode> Attributes
             </NxTable.Cell>
             <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date">
@@ -158,7 +157,7 @@ const NxDateInputPage = () =>
             <NxTable.Cell>initialState</NxTable.Cell>
             <NxTable.Cell>(initialValue: string)</NxTable.Cell>
             <NxTable.Cell>
-              Returns an initialized state with the specified value and <NxCode>isPristine</NxCode>
+              Returns an initialized state with the specified value and <NxCode>isPristine</NxCode>{' '}
               set to true.
             </NxTable.Cell>
           </NxTable.Row>
@@ -191,7 +190,7 @@ const NxDateInputPage = () =>
       A basic example of an <NxCode>NxDateInput</NxCode>.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Example with non-emptiness validation"
+    <GalleryExampleTile title="Example with year is required to be after 2020 validation"
                         id="nx-date-input-validation-example"
                         liveExample={NxDateInputValidationExample}
                         codeExamples={validationSourceCode}>
