@@ -69,12 +69,12 @@ export default function useDropdownEvents(
          * preventDefault with our own impl that only affects a locally-scoped variable
          */
         const proxiedClickEvent = new Proxy(event, {
-          get(target, prop, receiver) {
+          get(target, prop) {
             if (prop === 'preventDefault') {
               return () => { defaultPrevented = true };
             }
             else {
-              return Reflect.get(target, prop, receiver);
+              return Reflect.get(target, prop);
             }
           }
         });
