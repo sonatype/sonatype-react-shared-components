@@ -300,8 +300,16 @@ describe('NxDropdown', () => {
   });
 
   it('provides onCloseClick with an event object where the typical properties work correctly', function() {
-    let evt: MouseEvent | undefined;
-    const onCloseClick = (event: MouseEvent) => { evt = event; },
+    let evt: MouseEvent | undefined,
+
+        // currentTarget is only set on the event object during the event handler, so to keep it around for assertions
+        // we need to store it in a separate variable
+        currentTarget: EventTarget | undefined;
+
+    const onCloseClick = (event: MouseEvent) => {
+          evt = event;
+          currentTarget = evt.currentTarget || undefined;
+        },
         component = getMountedComponent({ isOpen: true, onCloseClick }, { attachTo: container });
 
     expect(evt).toBeUndefined();
@@ -311,12 +319,11 @@ describe('NxDropdown', () => {
         bubbles: true
       }));
     });
-    component!.update();
 
     expect(evt).toBeDefined();
     expect(evt).toBeInstanceOf(MouseEvent);
     expect(evt!.target).toBe(component.getDOMNode());
-    expect(evt!.currentTarget).toBe(document);
+    expect(currentTarget).toBe(document);
     expect(evt!.clientX).toBeDefined();
     expect(evt!.button).toBeDefined();
   });
