@@ -1,0 +1,47 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+.gallery-page-header {
+  $logo-image-size: 40px;
+
+  box-sizing: border-box;
+
+  &__home-link {
+    align-items: center;
+    border-right: 1px solid var(--nx-swatch-grey-30);
+    display: flex;
+    padding-right: var(--nx-spacing-6x);
+    margin-right: var(--nx-spacing-6x);
+  }
+
+  &__logo-image {
+    height: $logo-image-size;
+    margin-right: var(--nx-spacing-4x);
+    width: $logo-image-size;
+  }
+
+  &__logotype-image {
+    height: $logo-image-size;
+  }
+
+  &__info {
+    color: var(--nx-swatch-grey-30);
+  }
+
+  &__name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: var(--nx-spacing-4x);
+    min-width: max-content;
+  }
+
+  &__version {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 500;
+    min-width: max-content;
+  }
+}
