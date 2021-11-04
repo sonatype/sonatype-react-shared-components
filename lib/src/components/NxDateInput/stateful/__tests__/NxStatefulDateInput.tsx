@@ -16,7 +16,7 @@ describe('NxStatefulDateInput', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulDateInput, {});
 
   it('renders an NxStatefulTextInput under the hood', function() {
-    const component = getShallowComponent({ className: 'foo' });
+    const component = getShallowComponent();
     expect(component.find(NxStatefulTextInput)).toExist();
   });
 
