@@ -1,7 +1,7 @@
 .gallery-page-header {
-  box-sizing: border-box;
+  $logo-image-size: 40px;
 
-  $-logo-image-size: 40px;
+  box-sizing: border-box;
 
   &__home-link {
     align-items: center;
@@ -12,13 +12,13 @@
   }
 
   &__logo-image {
-    height: $-logo-image-size;
+    height: $logo-image-size;
     margin-right: var(--nx-spacing-4x);
-    width: $-logo-image-size;
+    width: $logo-image-size;
   }
 
   &__logotype-image {
-    height: $-logo-image-size;
+    height: $logo-image-size;
   }
 
   &__info {
