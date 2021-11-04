@@ -39,7 +39,7 @@
     border-color: var(--nx-color-interactive-border-hover);
   }
 
-  &:focus {
+  &:focus-within {
     outline: none;
 
     &::before {
