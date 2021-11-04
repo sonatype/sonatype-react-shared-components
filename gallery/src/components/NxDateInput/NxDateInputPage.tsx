@@ -195,7 +195,7 @@ const NxDateInputPage = () =>
                         liveExample={NxDateInputValidationExample}
                         codeExamples={validationSourceCode}>
       An example of an <NxCode>NxDateInput</NxCode> that validates that its date value year is after 2020.
-      Notice that once the user has entered the date. The input displays either the valid or invalid styles,
+      Notice that once the user has entered the date, the input displays either the valid or invalid styles,
       depending on whether it has any content.
     </GalleryExampleTile>
 
