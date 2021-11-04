@@ -10,7 +10,6 @@
 .nx-tag {
   @include nx-text-helpers.semi-bold;
   @include nx-container-helpers.container-horizontal;
-  @include nx-text-helpers.truncate-ellipsis;
 
   align-items: center;
   background-color: var(--nx-selectable-color-dark);
@@ -24,7 +23,8 @@
   height: 32px;
   line-height: 30px;
   margin: 0 var(--nx-spacing-2x) var(--nx-spacing-2x) 0;
-  padding: 0 var(--nx-spacing-4x) 0 var(--nx-spacing-4x);
+  padding: 0 calc(var(--nx-spacing-4x) - 1px) 0 calc(var(--nx-spacing-4x) - 1px);
+  position: relative;
   user-select: none;
   // Uppercase Min so SCSS ignores it and uses CSS min, not SCSS min
   max-width: Min(100%, 320px);
@@ -33,7 +33,6 @@
 .nx-tag--selectable {
   cursor: pointer;
   padding-right: var(--nx-spacing-2x);
-
   background-color: var(--nx-selectable-color-light);
 
   &:hover {
@@ -41,9 +40,16 @@
   }
 
   &:focus {
-    border: 1px solid var(--nx-color-interactive-border-focus);
-    box-shadow: var(--nx-box-shadow-focus);
     outline: none;
+
+    &::before {
+      content: '';
+      inset: calc(0px - (var(--nx-spacing-base) + 1px));
+      position: absolute;
+      border: 1px solid var(--nx-color-interactive-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
+      border-radius: 20px;
+    }
   }
 }
 
@@ -55,8 +61,8 @@
 .nx-tag--selected {
   background-color: var(--nx-selectable-color-dark);
 
-  &:focus {
-    border: 1px solid var(--nx-color-interactive-border-focus);
+  &:hover {
+    border-color: transparent;
   }
 }
 
