@@ -49,11 +49,11 @@ export const NxSelectableTag: FunctionComponent<SelectableProps> =
 
       return (
         <NxTag className={tagClasses} selectedIcons={tagIcons} {...attrs}>
+          {children}
           <input type="checkbox"
                  className="nx-tag__input"
                  checked={isSelected}
                  onChange={onSelect || undefined} />
-          {children}
         </NxTag>
       );
     };
