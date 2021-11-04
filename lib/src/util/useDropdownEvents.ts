@@ -71,7 +71,7 @@ export default function useDropdownEvents(
         const proxiedClickEvent = new Proxy(event, {
           get(target, prop) {
             if (prop === 'preventDefault') {
-              return () => { defaultPrevented = true };
+              return () => { defaultPrevented = true; };
             }
             else {
               return Reflect.get(target, prop);
