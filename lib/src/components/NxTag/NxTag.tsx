@@ -25,10 +25,10 @@ const NxTag: FunctionComponent<Props> =
 
       return (
         <NxOverflowTooltip>
-          <div className={tagClasses} {...attrs}>
+          <label className={tagClasses} {...attrs}>
             <span className="nx-tag__text">{children}</span>
             {selectedIcons}
-          </div>
+          </label>
         </NxOverflowTooltip>
       );
     };
@@ -38,7 +38,7 @@ export default NxTag;
 
 export const NxSelectableTag: FunctionComponent<SelectableProps> =
     function NxSelectableTag(props) {
-      const { children, className, selected, onSelect, ...attrs } = props,
+      const { children, className, selected, onSelect } = props,
           isSelected = selected,
           tagClasses = classnames('nx-tag--selectable', className, {
             'nx-tag--selected': isSelected,
@@ -48,15 +48,13 @@ export const NxSelectableTag: FunctionComponent<SelectableProps> =
             <NxFontAwesomeIcon icon={isSelected ? faTimesCircle : faPlusCircle} className="nx-tag__action" />;
 
       return (
-        <label className="nx-tag--selectable__wrapper">
+        <NxTag className={tagClasses} selectedIcons={tagIcons}>
           <input type="checkbox"
                  className="nx-tag__input"
                  checked={isSelected}
                  onChange={onSelect || undefined} />
-          <NxTag className={tagClasses} selectedIcons={tagIcons} {...attrs}>
-            {children}
-          </NxTag>
-        </label>
+          {children}
+        </NxTag>
       );
     };
 
