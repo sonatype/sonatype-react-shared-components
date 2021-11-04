@@ -15,7 +15,7 @@ import queryString from 'query-string';
 
 import { PageMapping } from './pageConfigTypes';
 import pageConfig from './pageConfig';
-import PageHeader from './PageHeader';
+import PageHeader from './PageHeader/PageHeader';
 import GalleryNav from './GalleryNav';
 import Home from './pages/Home';
 import handleQueryParams from './handleQueryParams';
