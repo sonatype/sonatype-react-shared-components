@@ -69,7 +69,7 @@
 // In safari, the width: 0 and -moz-appearance settings fail to hide the <input>.
 // So instead we use margin on the checkbox to hide the <input> under the toggle.
 .nx-tag__input {
-  margin: 0 0 0 var(--nx-spacing-3x);
+  margin: 0;
   width: 0;
   -moz-appearance: none;
   outline: none;
