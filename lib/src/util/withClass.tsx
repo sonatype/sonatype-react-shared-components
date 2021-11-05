@@ -17,11 +17,15 @@ export default function withClass<E extends keyof JSX.IntrinsicElements>(
   };
 }
 
-export function withClassAndForwardedRef<E extends keyof JSX.IntrinsicElements>(
+export function withClassAndForwardedRef<E extends keyof JSX.IntrinsicElements, R extends HTMLElement = HTMLElement>(
   El: E,
   withClassName: string
 ) {
-  return forwardRef(({ className, ...otherProps }: JSX.IntrinsicElements[E], ref) => {
+  return forwardRef<R, JSX.IntrinsicElements[E]>((props: JSX.IntrinsicElements[E], ref) => {
+    const {
+      className,
+      ...otherProps
+    } = props;
     const classes = classnames(withClassName, className);
     return React.createElement(El, { className: classes, ref, ...otherProps});
   });
