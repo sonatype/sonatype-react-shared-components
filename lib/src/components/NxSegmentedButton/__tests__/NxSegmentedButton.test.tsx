@@ -357,6 +357,35 @@ describe('NxSegmentedButton', function() {
     expect(onToggleOpen).not.toHaveBeenCalled();
   });
 
+  it('provides onCloseClick with an event object where the typical properties work correctly', function() {
+    let evt: MouseEvent | undefined,
+
+        // currentTarget is only set on the event object during the event handler, so to keep it around for assertions
+        // we need to store it in a separate variable
+        currentTarget: EventTarget | undefined;
+
+    const onCloseClick = (event: MouseEvent) => {
+          evt = event;
+          currentTarget = evt.currentTarget || undefined;
+        },
+        component = getMounted({ isOpen: true, onCloseClick }, { attachTo: container });
+
+    expect(evt).toBeUndefined();
+
+    act(() => {
+      component.getDOMNode().dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }));
+    });
+
+    expect(evt).toBeDefined();
+    expect(evt).toBeInstanceOf(MouseEvent);
+    expect(evt!.target).toBe(component.getDOMNode());
+    expect(currentTarget).toBe(document);
+    expect(evt!.clientX).toBeDefined();
+    expect(evt!.button).toBeDefined();
+  });
+
   it('moves focus to the dropdown toggle button if a menu item is focused when the dropdown is closed', function() {
     const component = getMounted({
           children: <button className="nx-dropdown-button">Foo</button>,
