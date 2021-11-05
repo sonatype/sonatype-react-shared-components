@@ -4,14 +4,25 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React, { forwardRef, DetailedHTMLProps, SVGProps } from 'react';
 import classnames from 'classnames';
 
-export default function withClass<E extends keyof JSX.IntrinsicElements, R extends HTMLElement = HTMLElement>(
+type NativeElTypeFromDetailedHTMLProps<E extends keyof JSX.IntrinsicElements> =
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  JSX.IntrinsicElements[E] extends DetailedHTMLProps<any, infer A> ? A : never;
+
+type NativeElTypeFromSVGProps<E extends keyof JSX.IntrinsicElements> =
+  JSX.IntrinsicElements[E] extends SVGProps<infer A> ? A : never;
+
+type NativeElType<E extends keyof JSX.IntrinsicElements> =
+  NativeElTypeFromDetailedHTMLProps<E> extends never
+    ? NativeElTypeFromSVGProps<E> : NativeElTypeFromDetailedHTMLProps<E>;
+
+export default function withClass<E extends keyof JSX.IntrinsicElements>(
   El: E,
   withClassName: string
 ) {
-  return forwardRef<R, JSX.IntrinsicElements[E]>((props: JSX.IntrinsicElements[E], ref) => {
+  return forwardRef<NativeElType<E>, JSX.IntrinsicElements[E]>((props: JSX.IntrinsicElements[E], ref) => {
     const {
       className,
       ...otherProps
