@@ -14,7 +14,7 @@ export const publicInputTypes = ['textarea', 'text', 'password'] as const;
 export const inputTypes = [...publicInputTypes, 'date'] as const;
 
 // See https://stackoverflow.com/a/45486495
-type NxTextInputType = (typeof inputTypes)[number];
+export type NxTextInputType = (typeof inputTypes)[number];
 export type PublicNxTextInputType = (typeof publicInputTypes)[number];
 
 export type ValidationErrors = string | string[] | null;

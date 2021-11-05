@@ -6,10 +6,10 @@
  */
 import * as PropTypes from 'prop-types';
 
-import { PublicNxTextInputType, HTMLProps, propTypes as nxTextInputPropTypes, Validator } from '../types';
+import { NxTextInputType, HTMLProps, propTypes as nxTextInputPropTypes, Validator } from '../types';
 
 export type Props = HTMLProps & {
-  type?: PublicNxTextInputType | null;
+  type?: NxTextInputType | null;
   defaultValue?: string | null;
   validator?: Validator;
   onChange?: ((newVal: string) => void) | null;
