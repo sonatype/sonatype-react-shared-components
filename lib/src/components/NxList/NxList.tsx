@@ -7,7 +7,7 @@
 import React, { forwardRef, useRef } from 'react';
 import classnames from 'classnames';
 import useMergedRef from '@react-hook/merged-ref';
-import withClass, { withClassAndForwardedRef } from '../../util/withClass';
+import withClass from '../../util/withClass';
 
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import NxLoadError from '../NxLoadError/NxLoadError';
@@ -62,14 +62,14 @@ const NxList = Object.assign(
       );
     }),
     {
-      Item: withClassAndForwardedRef('li', 'nx-list__item'),
-      Text: withClassAndForwardedRef('span', 'nx-list__text'),
-      Subtext: withClassAndForwardedRef('span', 'nx-list__subtext'),
-      Actions: withClassAndForwardedRef('div', 'nx-list__actions'),
+      Item: withClass('li', 'nx-list__item'),
+      Text: withClass('span', 'nx-list__text'),
+      Subtext: withClass('span', 'nx-list__subtext'),
+      Actions: withClass('div', 'nx-list__actions'),
       ButtonItem: NxListButtonItem,
       LinkItem: NxListLinkItem,
-      DescriptionTerm: withClassAndForwardedRef('dt', 'nx-list__term'),
-      Description: withClassAndForwardedRef('dd', 'nx-list__description')
+      DescriptionTerm: withClass('dt', 'nx-list__term'),
+      Description: withClass('dd', 'nx-list__description')
     }
 );
 
