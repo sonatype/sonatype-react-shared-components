@@ -45,7 +45,7 @@ describe('NxDateInput', function() {
           ]);
 
       await targetElement.scrollIntoView({ block: 'center' });
-      await inputElement.setValue('foo');
+      await inputElement.setValue('2019-01-01');
       await browser.eyesRegionSnapshot(null, Target.region(targetElement));
     });
 
