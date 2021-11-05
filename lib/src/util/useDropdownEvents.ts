@@ -68,9 +68,14 @@ export default function useDropdownEvents(
          * native event could have a wide variety of other effects, so we proxy the event object overriding
          * preventDefault with our own impl that only affects a locally-scoped variable
          */
-        const proxiedClickEvent = Object.create(event, {
-          preventDefault: {
-            value: () => { defaultPrevented = true; }
+        const proxiedClickEvent = new Proxy(event, {
+          get(target, prop) {
+            if (prop === 'preventDefault') {
+              return () => { defaultPrevented = true; };
+            }
+            else {
+              return Reflect.get(target, prop);
+            }
           }
         });
 
