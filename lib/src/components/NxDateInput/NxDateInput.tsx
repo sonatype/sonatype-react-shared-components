@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { forwardRef } from 'react';
-import { omit } from 'ramda';
 
 import NxTextInput, { } from '../../components/NxTextInput/NxTextInput';
 
