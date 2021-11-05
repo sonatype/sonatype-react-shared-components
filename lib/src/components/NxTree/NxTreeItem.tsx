@@ -15,7 +15,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { ItemProps, itemPropTypes } from './types';
 
 export default function NxTreeItem(props: ItemProps) {
-  const { collapsible, className, children, ...otherProps } = props,
+  const { collapsible, className, children, onActivate, ...otherProps } = props,
       topLineEnd = collapsible ? '16' : '28.5',
       rightLineStart = collapsible ? '24' : '11.5',
 

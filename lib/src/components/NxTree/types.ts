@@ -17,7 +17,10 @@ interface CollapsibleItemProps {
   onToggleCollapse: (() => void);
 }
 
-export type ItemProps = LiHTMLAttributes<HTMLLIElement> & (NonCollapsibleItemProps | CollapsibleItemProps);
+export type ItemProps = LiHTMLAttributes<HTMLLIElement> & (NonCollapsibleItemProps | CollapsibleItemProps) & {
+  onActivate?: () => void;
+}
+
 
 export interface StatefulItemProps extends LiHTMLAttributes<HTMLLIElement> {
   collapsible?: boolean | null;
