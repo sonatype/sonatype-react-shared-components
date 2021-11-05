@@ -4,8 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 
 describe('NxCollapsibleItems', function() {
   beforeEach(async function() {
@@ -20,14 +19,14 @@ describe('NxCollapsibleItems', function() {
       checkboxTreeViewSelector = '#nx-collapsible-items-checkbox-example .gallery-example-live',
       emptyTreeViewSelector = '#nx-collapsible-items-empty-example .nx-collapsible-items';
 
-  async function expandTreeView(selector) {
+  async function expandCollapsibleItems(selector) {
     const targetElement = await browser.$(selector);
     await targetElement.click();
   }
 
   function simpleExpandedTest(selector) {
     return async function() {
-      await expandTreeView(selector);
+      await expandCollapsibleItems(selector);
       await simpleTest(selector)();
     };
   }
@@ -36,7 +35,7 @@ describe('NxCollapsibleItems', function() {
     const hoverSelector = `${selector} .nx-collapsible-items__child:first-child`;
 
     return async function() {
-      await expandTreeView(selector);
+      await expandCollapsibleItems(selector);
       await hoverTest(selector, hoverSelector)();
     };
   }
@@ -45,7 +44,7 @@ describe('NxCollapsibleItems', function() {
     const focusSelector = `${selector} .nx-collapsible-items__child:first-child`;
 
     return async function() {
-      await expandTreeView(selector);
+      await expandCollapsibleItems(selector);
       await focusTest(selector, focusSelector)();
     };
   }
@@ -54,7 +53,7 @@ describe('NxCollapsibleItems', function() {
     const focusSelector = `${selector} .nx-collapsible-items__child:first-child`;
 
     return async function() {
-      await expandTreeView(selector);
+      await expandCollapsibleItems(selector);
       await focusAndHoverTest(selector, focusSelector)();
     };
   }
