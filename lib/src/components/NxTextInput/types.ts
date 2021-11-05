@@ -55,7 +55,7 @@ export interface PublicProps extends Omit<Props, 'prefixContent'> {
 }
 
 export const propTypes: PropTypes.ValidationMap<PublicProps> = {
-  type: PropTypes.oneOf([...inputTypes, undefined]) as PropTypes.Validator<PublicProps['type']>,
+  type: PropTypes.oneOf([...publicInputTypes, undefined]),
   value: PropTypes.string.isRequired,
   isPristine: PropTypes.bool.isRequired,
   validationErrors: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string.isRequired), PropTypes.string]),
