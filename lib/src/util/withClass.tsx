@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, forwardRef } from 'react';
 import classnames from 'classnames';
 
 export default function withClass<E extends keyof JSX.IntrinsicElements>(
@@ -13,7 +13,16 @@ export default function withClass<E extends keyof JSX.IntrinsicElements>(
 ): FunctionComponent<JSX.IntrinsicElements[E]> {
   return function WithClassWrapper({ className, ...otherProps }: JSX.IntrinsicElements[E]) {
     const classes = classnames(withClassName, className);
-
     return React.createElement(El, { className: classes, ...otherProps});
   };
+}
+
+export function withClassAndForwardedRef<E extends keyof JSX.IntrinsicElements>(
+  El: E,
+  withClassName: string
+) {
+  return forwardRef(({ className, ...otherProps }: JSX.IntrinsicElements[E], ref) => {
+    const classes = classnames(withClassName, className);
+    return React.createElement(El, { className: classes, ref, ...otherProps});
+  });
 }
