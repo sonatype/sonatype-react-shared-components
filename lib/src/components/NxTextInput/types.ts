@@ -45,8 +45,7 @@ export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   onKeyPress?: ((keyCode: string) => void) | null;
   validatable?: boolean | null;
 
-  // For internal use only:
-  // This prop allows additional content to be inserted just before the
+  // For internal use only, this prop allows additional content to be inserted just before the
   // <input>. This is used by NxFilterInput
   prefixContent?: ReactNode | null;
 };
@@ -56,7 +55,7 @@ export interface PublicProps extends Omit<Props, 'prefixContent'> {
 }
 
 export const propTypes: PropTypes.ValidationMap<PublicProps> = {
-  type: PropTypes.oneOf([...inputTypes, undefined]),
+  type: PropTypes.oneOf([...inputTypes, undefined]) as PropTypes.Validator<PublicProps['type']>,
   value: PropTypes.string.isRequired,
   isPristine: PropTypes.bool.isRequired,
   validationErrors: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string.isRequired), PropTypes.string]),
