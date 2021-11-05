@@ -9,10 +9,10 @@ import React, { useState } from 'react';
 import {
   NxDateInput,
   NxDateInputStateProps,
-  nxTextInputStateHelpers
+  nxDateInputStateHelpers
 } from '@sonatype/react-shared-components';
 
-const { initialState, userInput } = nxTextInputStateHelpers;
+const { initialState, userInput } = nxDateInputStateHelpers;
 
 export default function NxDateInputSimpleExample() {
   // Note that NxDateInputStateProps is the TypeScript type for the state helper function return types.
