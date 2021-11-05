@@ -27,10 +27,10 @@ describe('NxDateInput', function() {
 
     it('has a darker border when hovered',
         hoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
-    it('has a blue border when focused',
+    it('has a blue border and glow when focused',
         focusTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
 
-    it('has a blue border and blue glow when hovered and focused',
+    it('has a blue border and glow when hovered and focused',
         focusAndHoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
   });
 
