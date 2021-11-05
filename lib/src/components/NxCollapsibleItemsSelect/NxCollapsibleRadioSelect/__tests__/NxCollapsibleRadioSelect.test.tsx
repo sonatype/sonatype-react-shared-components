@@ -8,6 +8,7 @@ import React from 'react';
 
 import {getShallowComponent} from '../../../../__testutils__/enzymeUtils';
 import NxCollapsibleRadioSelect, {Option, Props} from '../NxCollapsibleRadioSelect';
+import { NxTreeViewRadioSelect } from '../../../../index';
 import NxCollapsibleItemsCounter from '../../NxCollapsibleItemsCounter';
 
 describe('NxCollapsibleRadioSelect', function() {
@@ -23,6 +24,10 @@ describe('NxCollapsibleRadioSelect', function() {
   };
 
   const getShallow = getShallowComponent<Props>(NxCollapsibleRadioSelect, requiredProps);
+
+  it('is aliased as NxTreeViewRadioSelect', function() {
+    expect(NxCollapsibleRadioSelect).toEqual(NxTreeViewRadioSelect);
+  });
 
   it('properly renders component using only required props', function() {
     const shallowRender = getShallow();
