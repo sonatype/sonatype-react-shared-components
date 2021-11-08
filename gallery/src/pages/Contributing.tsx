@@ -31,7 +31,7 @@ const Contributing = () =>
   <>
     <GalleryTile title="How to add a new component to the Gallery" >
       <NxH3>Create a page describing the component</NxH3>
-      <NxList className="nx-list--bulleted">
+      <NxList bulleted>
         <NxList.Item>
           <NxList.Text>
             For each component or style that you want to add to the Gallery, create a subdirectory
@@ -82,7 +82,7 @@ const Contributing = () =>
           the <NxCode>pageConfig.ts</NxCode> file
         </NxP>
         <CodeExample content={pageConfigExample}/>
-        <NxList className="nx-list--bulleted">
+        <NxList bulleted>
           <NxList.Item>
             <NxList.Text>
               Import the description page you created earlier

@@ -20,7 +20,7 @@ const FormValidationPage = () =>
         This page demonstrates the typical overall approach to communicating form validation matters to the user.
         There are several things to note here:
       </NxP>
-      <NxList className="nx-list--bulleted">
+      <NxList bulleted>
         <NxList.Item>
           <NxList.Text>
             Fields are not marked invalid while they are pristine. This is handled by

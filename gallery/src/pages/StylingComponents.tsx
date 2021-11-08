@@ -67,7 +67,7 @@ const StylingRSCPage = () =>
         You may notice as you work with the various RSC that some components have CSS classes that don't follow
         normal BEM naming conventions. Classes like:
       </NxP>
-      <NxList className="nx-list--bulleted">
+      <NxList bulleted>
         <NxList.Item>
           <NxList.Text>
             <NxCode>open</NxCode> &amp; <NxCode>closed</NxCode>
@@ -107,7 +107,7 @@ const StylingRSCPage = () =>
         team for reference.
       </NxP>
       <NxH4>Flexbox</NxH4>
-      <NxList className="nx-list--bulleted">
+      <NxList bulleted>
         <NxList.Item>
           <NxList.Text>
             <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">
@@ -124,7 +124,7 @@ const StylingRSCPage = () =>
         </NxList.Item>
       </NxList>
       <h4 className="nx-h4">CSS Grid</h4>
-      <NxList className="nx-list--bulleted">
+      <NxList bulleted>
         <NxList.Item>
           <NxList.Text>
             <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids">

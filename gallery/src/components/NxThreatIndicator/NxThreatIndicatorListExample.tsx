@@ -6,56 +6,58 @@
  */
 import React from 'react';
 
-import { NxThreatIndicator, NxFontAwesomeIcon, NxButton } from '@sonatype/react-shared-components';
-import { faAngleRight, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { NxThreatIndicator, NxFontAwesomeIcon, NxButton, NxList } from '@sonatype/react-shared-components';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const NxThreatIndicatorListExample = () =>
-  <ul className="nx-list nx-list--clickable">
-    <li className="nx-list__item">
+  <NxList>
+    <NxList.Item>
       <NxThreatIndicator />
-      <span className="nx-list__text">Indicator on simple list row</span>
-    </li>
-    <li className="nx-list__item" tabIndex={0}>
+      <NxList.Text>Indicator on simple list row</NxList.Text>
+    </NxList.Item>
+    <NxList.ButtonItem tabIndex={0}>
       <NxThreatIndicator threatLevelCategory="none" />
-      <span className="nx-list__text">Indicator on clickable list row</span>
-      <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
-    </li>
-    <li className="nx-list__item">
+      <NxList.Text>Indicator on clickable list row</NxList.Text>
+    </NxList.ButtonItem>
+    <NxList.Item>
       <NxThreatIndicator threatLevelCategory="low" />
-      <span className="nx-list__text">Indicator on row with actions</span>
-      <div className="nx-list__actions">
+      <NxList.Text>Indicator on row with actions</NxList.Text>
+      <NxList.Actions>
         <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         <NxButton title="Trash" variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
-      </div>
-    </li>
-    <li className="nx-list__item">
+      </NxList.Actions>
+    </NxList.Item>
+    <NxList.Item>
       <NxThreatIndicator threatLevelCategory="moderate" />
-      <span className="nx-list__text">Indicator on row with subtext</span>
-      <span className="nx-list__subtext">
+      <NxList.Text>Indicator on row with subtext</NxList.Text>
+      <NxList.Subtext>
         This is list sub-text.  Lots of subtext. Such an incredible amount of subtext that it will surely wrap and
         show that the layout can handle that sort of thing.
-      </span>
-    </li>
-    <li className="nx-list__item">
+      </NxList.Subtext>
+    </NxList.Item>
+    <NxList.Item>
       <NxThreatIndicator threatLevelCategory="severe" />
-      <span className="nx-list__text">Indicator on row with subtext and actions</span>
-      <div className="nx-list__actions">
+      <NxList.Text>Indicator on row with subtext and actions</NxList.Text>
+      <NxList.Subtext>
+        This is list sub-text.  Lots of subtext. Such an incredible amount of subtext that it will surely wrap and
+        show that the layout can handle that sort of thing.
+      </NxList.Subtext>
+      <NxList.Actions>
         <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         <NxButton title="Trash" variant="icon-only"><NxFontAwesomeIcon icon={faTrash} /></NxButton>
-      </div>
-    </li>
-    <li className="nx-list__item" tabIndex={0}>
+      </NxList.Actions>
+    </NxList.Item>
+    <NxList.ButtonItem tabIndex={0}>
       <NxThreatIndicator threatLevelCategory="critical" />
-      <span className="nx-list__text">
+      <NxList.Text>
         Indicator on clickable row with subtext. This should wrap so here's some more content, and more, and more.
         Annnnndddd more.
-      </span>
-      <span className="nx-list__subtext">
+      </NxList.Text>
+      <NxList.Subtext>
         This is list sub-text.  Lots of subtext. Such an incredible amount of subtext that it will surely wrap and
         show that the layout can handle that sort of thing.
-      </span>
-      <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
-    </li>
-  </ul>;
+      </NxList.Subtext>
+    </NxList.ButtonItem>
+  </NxList>;
 
 export default NxThreatIndicatorListExample;

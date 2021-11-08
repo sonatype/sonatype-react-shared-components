@@ -15,7 +15,8 @@ import {
   NxP,
   NxTextLink,
   NxTile,
-  NxH2
+  NxH2,
+  NxList
 } from '@sonatype/react-shared-components';
 
 import CodeExample from '../../CodeExample';
@@ -56,19 +57,19 @@ export default function NxViewportSizedPage() {
             flex layout removes some of the ancillary behaviors of block layout that we generally rely on. There are at
             least two significant places where this makes a difference:
           </NxP>
-          <ul className="nx-list">
-            <li className="nx-list__item">
-              <span className="nx-list__text">Margin collapsing</span>
-              <span className="nx-list__subtext">
+          <NxList>
+            <NxList.Item>
+              <NxList.Text>Margin collapsing</NxList.Text>
+              <NxList.Subtext>
                 When children are laid out in a block container, the top and bottom margins of adjacent siblings
                 collapse into one another, such that the actual space between them is the larger of the two, not the
                 sum of the two. Flex containers do not do this, and so the margins double up. To mitigate this, the
                 smaller of each pair of adjacent margins must be removed in CSS.
-              </span>
-            </li>
-            <li className="nx-list__item">
-              <span className="nx-list__text">Default child width with automatic margins</span>
-              <span className="nx-list__subtext">
+              </NxList.Subtext>
+            </NxList.Item>
+            <NxList.Item>
+              <NxList.Text>Default child width with automatic margins</NxList.Text>
+              <NxList.Subtext>
                 The behavior of left and right margins set to <NxCode>auto</NxCode> differs between
                 block layouts and flex-column layouts. In block layout, a child with auto side margins will default
                 to the full width of its container unless it has a width or max-width set.  In flex-column layout,
@@ -76,9 +77,9 @@ export default function NxViewportSizedPage() {
                 has a max-width set. To get max-width to behave the way that it does in block
                 layouts, <NxCode>width: 100%</NxCode> must be applied. In RSC, this issue comes up
                 around <NxCode>NxAlert</NxCode>s in particular.
-              </span>
-            </li>
-          </ul>
+              </NxList.Subtext>
+            </NxList.Item>
+          </NxList>
           <NxP>
             The <NxCode>nx-viewport-sized</NxCode> family of CSS classes accomplishes the
             layout goals described above. These classes take care of setting the flexbox styles and mitigating the

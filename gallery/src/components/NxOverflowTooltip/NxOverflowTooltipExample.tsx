@@ -6,7 +6,7 @@
  */
 import React, { ReactNode } from 'react';
 
-import { NxOverflowTooltip } from '@sonatype/react-shared-components';
+import { NxList, NxOverflowTooltip } from '@sonatype/react-shared-components';
 
 function ExampleOtherComponent({ children }: { children: ReactNode }) {
   return <span>Foo {children}</span>;
@@ -14,41 +14,41 @@ function ExampleOtherComponent({ children }: { children: ReactNode }) {
 
 export default function NxOverflowTooltipExample() {
   return (
-    <ul className="nx-list">
-      <li className="nx-list__item">
+    <NxList>
+      <NxList.Item>
         <NxOverflowTooltip>
-          <span className="nx-list__text nx-truncate-ellipsis">List item 1</span>
+          <NxList.Text className="nx-truncate-ellipsis">List item 1</NxList.Text>
         </NxOverflowTooltip>
-      </li>
-      <li className="nx-list__item">
+      </NxList.Item>
+      <NxList.Item>
         <NxOverflowTooltip>
-          <span className="nx-list__text nx-truncate-ellipsis">
+          <NxList.Text className="nx-truncate-ellipsis">
             List item 2 - this text is long and should truncate with a tooltip
             this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip
-          </span>
+          </NxList.Text>
         </NxOverflowTooltip>
-      </li>
-      <li className="nx-list__item">
+      </NxList.Item>
+      <NxList.Item>
         <NxOverflowTooltip title="Foo Bar">
-          <span className="nx-list__text nx-truncate-ellipsis">
+          <NxList.Text className="nx-truncate-ellipsis">
             <ExampleOtherComponent>
               Bar
             </ExampleOtherComponent>
-          </span>
+          </NxList.Text>
         </NxOverflowTooltip>
-      </li>
-      <li className="nx-list__item">
+      </NxList.Item>
+      <NxList.Item>
         <NxOverflowTooltip title="Foo Bar 2 - this text is long and should truncate with a tooltip
                                   this text is long and should truncate with a tooltip
                                   this text is long and should truncate with a tooltip">
-          <span className="nx-list__text nx-truncate-ellipsis">
+          <NxList.Text className="nx-truncate-ellipsis">
             <ExampleOtherComponent>
               Bar 2 - this text is long and should truncate with a tooltip
               this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip
             </ExampleOtherComponent>
-          </span>
+          </NxList.Text>
         </NxOverflowTooltip>
-      </li>
-    </ul>
+      </NxList.Item>
+    </NxList>
   );
 }
