@@ -77,7 +77,7 @@ const NxStatefulTextInputPage = () =>
     <GalleryExampleTile title="Simple Example"
                         liveExample={NxStatefulTextInputSimpleExample}
                         codeExamples={simpleSourceCode}>
-      A simple example of an <NxCode>NxStatefileTextInput</NxCode>. Note that the content of the text
+      A simple example of an <NxCode>NxStatefulTextInput</NxCode>. Note that the content of the text
       input does not need to be tracked separately.
     </GalleryExampleTile>
 

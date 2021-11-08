@@ -5,31 +5,23 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink, NxStatefulAccordion, NxAccordion, NxList }
+import { NxTable, NxCode, NxP, NxTextLink, NxList }
   from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxTextInputSimpleExample from './NxTextInputSimpleExample';
-import NxTextInputValidationExample from './NxTextInputValidationExample';
-import NxTextInputPasswordExample from './NxTextInputPasswordExample';
-import NxTextInputTextAreaExample from './NxTextInputTextAreaExample';
-import NxTextInputTextAreaValidationExample from './NxTextInputTextAreaValidationExample';
-import NxTextInputLongExample from './NxTextInputLongExample';
-import NxTextInputDisabledExample from './NxTextInputDisabledExample';
+import NxDateInputSimpleExample from './NxDateInputSimpleExample';
+import NxDateInputValidationExample from './NxDateInputValidationExample';
+import NxDateInputDisabledExample from './NxDateInputDisabledExample';
 
-const simpleSourceCode = require('./NxTextInputSimpleExample?raw');
-const validationSourceCode = require('./NxTextInputValidationExample?raw');
-const passwordSourceCode = require('./NxTextInputPasswordExample?raw');
-const textAreaSourceCode = require('./NxTextInputTextAreaExample?raw');
-const textAreaValidationSourceCode = require('./NxTextInputTextAreaValidationExample?raw');
-const longSourceCode = require('./NxTextInputLongExample?raw');
-const disabledSourceCode = require('./NxTextInputDisabledExample?raw');
+const simpleSourceCode = require('./NxDateInputSimpleExample?raw');
+const validationSourceCode = require('./NxDateInputValidationExample?raw');
+const disabledSourceCode = require('./NxDateInputDisabledExample?raw');
 
-const NxTextInputPage = () =>
+const NxDateInputPage = () =>
   <>
     <GalleryDescriptionTile>
-      <NxP>Standard text input with validation styling</NxP>
+      <NxP>Standard date input with validation styling</NxP>
       <NxP>Props:</NxP>
       <NxTable>
         <NxTable.Head>
@@ -42,16 +34,13 @@ const NxTextInputPage = () =>
         </NxTable.Head>
         <NxTable.Body>
           <NxTable.Row>
-            <NxTable.Cell>type</NxTable.Cell>
-            <NxTable.Cell>"textarea" | "text" | "password"</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>What type of text input to render.  Defaults to "text"</NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
             <NxTable.Cell>value</NxTable.Cell>
             <NxTable.Cell>string</NxTable.Cell>
             <NxTable.Cell>Yes</NxTable.Cell>
-            <NxTable.Cell>The value rendered in the text input</NxTable.Cell>
+            <NxTable.Cell>
+              The value rendered in the date input.
+              Must be a date string in the <NxCode>YYYY-MM-DD</NxCode> format.
+            </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>isPristine</NxTable.Cell>
@@ -66,9 +55,9 @@ const NxTextInputPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              If true, this NxTextInput is subject to validation, the result of which should be passed in via
+              If true, this NxDateInput is subject to validation, the result of which should be passed in via
               the <NxCode>validationErrors</NxCode> prop, resulting in validation CSS classes being
-              applied (see below). If false, the NxTextInput is not considered to be subject to validation, the
+              applied (see below). If false, the NxDateInput is not considered to be subject to validation, the
               <NxCode>validationErrors</NxCode> prop is ignored, and validation-related CSS classes
               are never applied.
             </NxTable.Cell>
@@ -114,23 +103,18 @@ const NxTextInputPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>
-              HTML <NxCode>&lt;input&gt;</NxCode> Attributes |
-              HTML <NxCode>&lt;textarea&gt;</NxCode> Attributes
+              HTML Date <NxCode>&lt;input&gt;</NxCode> Attributes
             </NxTable.Cell>
             <NxTable.Cell>
-              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/input">
-                Input Attributes
-              </NxTextLink>
-              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/textarea">
-                Textarea Attributes
+              <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date">
+                Date Input Attributes
               </NxTextLink>
             </NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              NxTextInput supports any html attribute that's normally supported by either HTML
-              <NxCode>&lt;input&gt;</NxCode> or HTML
-              <NxCode>&lt;textarea&gt;</NxCode>. The only notable exceptions are:
-              <NxList bulleted>
+              NxDateInput supports any html attribute that's normally supported by HTML
+              date <NxCode>&lt;input&gt;</NxCode>. The only notable exceptions are:
+              <NxList className="nx-list--bulleted">
                 <NxList.Item>
                   <NxList.Text>
                     <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly
@@ -153,9 +137,9 @@ const NxTextInputPage = () =>
       </NxTable>
       <h3>State Helpers</h3>
       <NxP>
-        The <NxCode>nxTextInputStateHelpers</NxCode>{' '}
+        The <NxCode>NxDateInputStateHelpers</NxCode>{' '}
         includes the following recommended state helper functions, which each return an object containining the
-        "stateful" parts of the NxTextInput props{' '}
+        "stateful" parts of the NxDateInput props{' '}
         (<NxCode>value</NxCode>, <NxCode>isPristine</NxCode>, and{' '}
         <NxCode>validationErrors</NxCode>) as well as <NxCode>trimmedValue</NxCode>,
         which holds a whitespace-trimmed copy of the <NxCode>value</NxCode>:
@@ -173,7 +157,7 @@ const NxTextInputPage = () =>
             <NxTable.Cell>initialState</NxTable.Cell>
             <NxTable.Cell>(initialValue: string)</NxTable.Cell>
             <NxTable.Cell>
-              Returns an initialized state with the specified value and <NxCode>isPristine</NxCode>
+              Returns an initialized state with the specified value and <NxCode>isPristine</NxCode>{' '}
               set to true.
             </NxTable.Cell>
           </NxTable.Row>
@@ -197,89 +181,31 @@ const NxTextInputPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
-      <div className="nx-tile-content--accordion-container">
-        <NxStatefulAccordion defaultOpen={false}>
-          <NxAccordion.Header>
-            <NxAccordion.Title>Regarding &lt;input type="number"&gt;</NxAccordion.Title>
-          </NxAccordion.Header>
-          <NxP>
-            <NxCode>NxTextInput</NxCode> using <NxCode>type="number"</NxCode> has been an oft requested addition to the
-            RSC but there are problems with its implementation at the browser level that make its use within RSC
-            too complicated to justify further development at this time.
-          </NxP>
-          <NxP>
-            In Chrome it works mostly as expected, however Safari and Firefox allow the user to input non-number
-            characters but do not recognize those characters as values. If a user inputs "aaaa" or 123a"
-            , <NxCode>onChange</NxCode> receives "" as the value in both of those invalid cases. It should be
-            setting that as the value stored in the state, which goes in as the value of the &lt;input&gt; in the next
-            render, which should clear the input. Normally you'd expect that as soon as you enter an invalid character
-            after the number, the input should have cleared. But for some reason that doesn't happen. We have traced
-            through the code and all of the state handling in our examples and components is correct. But for some
-            reason, when that empty string gets passed back into the &lt;input&gt; in <NxCode>NxTextInput</NxCode>,
-            it just ignores it. The whole React workflow around <NxCode>type="number"</NxCode> seems to be broken,
-            not to mention our RSC validation workflow.
-          </NxP>
-          <NxP>
-            At this point if an input that only accepts numbers is required, it is strongly suggested that the developer
-            create a custom validation rule. Here is a simple Regex that will detect only digits to get you
-            started: <NxCode>/^\d+$/</NxCode>.
-          </NxP>
-        </NxStatefulAccordion>
-      </div>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
-                        id="nx-text-input-simple-example"
-                        liveExample={NxTextInputSimpleExample}
+                        id="nx-date-input-simple-example"
+                        liveExample={NxDateInputSimpleExample}
                         codeExamples={simpleSourceCode}>
-      A basic example of an <NxCode>NxTextInput</NxCode>.
+      A basic example of an <NxCode>NxDateInput</NxCode>.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Example with non-emptiness validation"
-                        id="nx-text-input-validation-example"
-                        liveExample={NxTextInputValidationExample}
+    <GalleryExampleTile title="Example with year is required to be after 2020 validation"
+                        id="nx-date-input-validation-example"
+                        liveExample={NxDateInputValidationExample}
                         codeExamples={validationSourceCode}>
-      An example of an <NxCode>NxTextInput</NxCode> that validates that its contents are non-empty.
-      Notice that once the user has entered some content, the input from then on displays either the valid or invalid
-      styles, depending on whether it has any contents.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Password input example"
-                        id="nx-text-input-password-example"
-                        liveExample={NxTextInputPasswordExample}
-                        codeExamples={passwordSourceCode}>
-      An example of an <NxCode>NxTextInput</NxCode> for password entry.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="TextArea input example"
-                        id="nx-text-input-textarea-example"
-                        liveExample={NxTextInputTextAreaExample}
-                        codeExamples={textAreaSourceCode}>
-      An example of an <NxCode>NxTextInput</NxCode> set up to be a multi-line text area.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="TextArea input example with validation"
-                        id="nx-text-input-textarea-validation-example"
-                        liveExample={NxTextInputTextAreaValidationExample}
-                        codeExamples={textAreaValidationSourceCode}>
-      An example of an <NxCode>NxTextInput</NxCode> set up to be a multi-line text area with validation.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Long example"
-                        id="nx-text-input-long-example"
-                        liveExample={NxTextInputLongExample}
-                        codeExamples={longSourceCode}>
-      Examples of <NxCode>NxTextInput</NxCode>s using
-      the <NxCode>long</NxCode> modifier, which makes them wider.
+      An example of an <NxCode>NxDateInput</NxCode> that validates that its date value year is after 2020.
+      Notice that once the user has entered the date, the input displays either the valid or invalid styles,
+      depending on whether it has any content.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled example"
-                        id="nx-text-input-disabled-example"
-                        liveExample={NxTextInputDisabledExample}
+                        id="nx-date-input-disabled-example"
+                        liveExample={NxDateInputDisabledExample}
                         codeExamples={disabledSourceCode}>
-      Examples of disabled <NxCode>NxTextInput</NxCode>s. Notice that when
-      disabled, <NxCode>NxTextInput</NxCode> never shows style variations for validation, hover, etc.
+      Examples of disabled <NxCode>NxDateInput</NxCode>s. Notice that when
+      disabled, <NxCode>NxDateInput</NxCode> never shows style variations for validation, hover, etc.
     </GalleryExampleTile>
   </>;
 
-export default NxTextInputPage;
+export default NxDateInputPage;
