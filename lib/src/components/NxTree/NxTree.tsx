@@ -4,101 +4,69 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { HTMLAttributes, createContext, useContext, useEffect, useRef, KeyboardEvent } from 'react';
+import React, { HTMLAttributes, useContext, useRef, useEffect, useState } from 'react';
 import withClass from '../../util/withClass';
 import NxTreeItem from './NxTreeItem';
-import { ItemProps } from './types';
+import { ItemProps, NavigationDirection } from './types';
+import TreeKeyNavContext from './TreeKeyNavContext';
 import NxTreeStatefulItem from './stateful/NxTreeStatefulItem';
 
 export { ItemProps };
 
 import './NxTree.scss';
 
-const HasTreeParentContext = createContext(false);
+function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
+  const parentKeyNavContext = useContext(TreeKeyNavContext),
+      [focusedChild, setFocusedChild] = useState<Element | null>(null),
+      [navigationDirection, setNavigationDirection] = useState<NavigationDirection>('down'),
+      childKeyNavContext = {
+        navigationDirection,
+        focusedChild,
+        focusNext() {
+          if (focusedChild) {
+            setNavigationDirection('down');
 
-function getParentItemForItem(el: Element) {
-  // el is expected to be an nx-tree__item.
-  // parent would be an .nx-tree, grandparent would (potentially) be an nx-tree__item containing that tree
-  const grandparent = el.parentElement?.parentElement;
+            if (focusedChild.nextElementSibling) {
+              setFocusedChild(focusedChild.nextElementSibling);
+            }
+            else {
+              parentKeyNavContext.focusNext();
+            }
+          }
+        },
+        focusPrev() {
+          if (focusedChild) {
+            setNavigationDirection('up');
 
-  return grandparent && grandparent.classList.contains('nx-tree__item') ? grandparent : null;
-}
-
-function getNextVisibleTreeItem(el: Element, skipChildren = false): Element | null {
-  const firstChildItem = !skipChildren && el.querySelector('.nx-tree__item');
-
-  if (!skipChildren && firstChildItem && el.classList.contains('open'))  {
-    return firstChildItem;
-  }
-  else if (el.nextElementSibling) {
-    return el.nextElementSibling;
-  }
-  else {
-    const parentItem = getParentItemForItem(el);
-    return parentItem && getNextVisibleTreeItem(parentItem, true);
-  }
-}
-
-function getPrevVisibleTreeItem(el: Element) {
-  const prevSibling = el.previousElementSibling;
-
-  if (prevSibling) {
-    const siblingsLastChildItem = prevSibling.querySelector('.nx-tree__item:last-child');
-
-    if (siblingsLastChildItem && prevSibling.classList.contains('open')) {
-      return siblingsLastChildItem;
-    }
-    else {
-      return prevSibling;
-    }
-  }
-  else {
-    return getParentItemForItem(el);
-  }
-}
-
-function _NxTree({ onKeyPress: onKeyPressProp, ...otherProps }: HTMLAttributes<HTMLUListElement>) {
-  const hasTreeParent = useContext(HasTreeParentContext),
-      [currentItem, setCurrentItem] = useState<HTMLLiElement | null>(null),
+            if (focusedChild.previousElementSibling) {
+              setFocusedChild(focusedChild.previousElementSibling);
+            }
+            else {
+              parentKeyNavContext.focusPrev();
+            }
+          }
+        },
+        focusParent: parentKeyNavContext.focusParent
+      },
       ref = useRef<HTMLUListElement>(null);
 
   useEffect(function() {
-    if (!hasTreeParent) {
-      const tree = ref.current,
-          firstChild = tree?.querySelector('.nx-tree__item');
+    if (parentKeyNavContext.focusedChild && parentKeyNavContext.focusedChild === ref.current) {
+      const childToFocus = parentKeyNavContext.navigationDirection === 'down' ?
+        ref.current.firstElementChild :
+        ref.current.lastElementChild;
 
-      if (!firstChild) {
-        console.error('No items detected in NxTree. This is unsupported');
-      }
-      else {
-        setCurrentItem(firstChild);
-      }
+      setFocusedChild(childToFocus || ref.current);
     }
-  }, []);
-
-  function onKeyPress(evt: KeyboardEvent<HTMLUListElement>) {
-    switch (evt.key) {
-      case 'ArrowUp':
-        setCurrentItem(getPrevVisibleTreeItem(currentItem) || currentItem);
-        break;
-      case 'ArrowDown':
-        setCurrentItem(getNextVisibleTreeItem(currentItem) || currentItem);
-        break;
-    }
-
-    if (onKeyPressProp) {
-      onKeyPressProp(evt);
-    }
-  }
+  }, [parentKeyNavContext.focusedChild]);
 
   return (
-    <HasTreeParentContext.Provider value={true}>
+    <TreeKeyNavContext.Provider value={childKeyNavContext}>
       <ul ref={ref}
           className="nx-tree"
-          role={hasTreeParent ? 'group' : 'tree'}
-          onKeyPress={onKeyPress}
-          { ...otherProps } />
-    </HasTreeParentContext.Provider>
+          role={!!parentKeyNavContext ? 'group' : 'tree'}
+          { ...props } />
+    </TreeKeyNavContext.Provider>
   );
 }
 
