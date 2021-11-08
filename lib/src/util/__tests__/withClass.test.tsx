@@ -13,7 +13,7 @@ describe('withClass', function() {
   const ExampleComponent = withClass('hgroup', 'foo-bar'),
       getShallow = getShallowComponent(ExampleComponent, {});
 
-  it('forwards a ref to the specified label element', function() {
+  it('forwards a ref to the element', function() {
     const ExampleLabelComponent = withClass('label', 'foo-bar');
     const ref = React.createRef<HTMLLabelElement>();
 
