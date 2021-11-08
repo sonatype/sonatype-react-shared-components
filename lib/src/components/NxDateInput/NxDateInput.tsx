@@ -8,10 +8,7 @@ import React, { forwardRef } from 'react';
 
 import NxTextInput, { } from '../../components/NxTextInput/NxTextInput';
 
-import {
-  Props,
-  propTypes
-} from './types';
+import { Props, propTypes } from './types';
 
 export { Props, PublicProps, StateProps, propTypes } from './types';
 
