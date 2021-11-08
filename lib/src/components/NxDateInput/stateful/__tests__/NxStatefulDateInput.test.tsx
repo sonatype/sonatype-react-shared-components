@@ -15,6 +15,11 @@ import NxTextInput from '../../../NxTextInput/NxTextInput';
 describe('NxStatefulDateInput', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulDateInput, {});
 
+  it('should ignore type attribute', function() {
+    const component = getShallowComponent({ type: 'text' } as Partial<Props>);
+    expect(component.find(NxStatefulTextInput)).toHaveProp('type', 'date');
+  });
+
   it('renders an NxStatefulTextInput under the hood', function() {
     const component = getShallowComponent({ className: 'foo' });
     expect(component.find(NxStatefulTextInput)).toExist();
