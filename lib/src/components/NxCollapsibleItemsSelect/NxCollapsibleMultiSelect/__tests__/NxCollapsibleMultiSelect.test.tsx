@@ -8,6 +8,7 @@ import React from 'react';
 
 import {getShallowComponent} from '../../../../__testutils__/enzymeUtils';
 import NxCollapsibleMultiSelect, {Props, Option} from '../NxCollapsibleMultiSelect';
+import { NxTreeViewMultiSelect } from '../../../../index';
 
 import MultiSelectCounter from '../MultiSelectCounter';
 
@@ -24,6 +25,10 @@ describe('NxCollapsibleMultiSelect', function() {
   };
 
   const getShallow = getShallowComponent<Props>(NxCollapsibleMultiSelect, requiredProps);
+
+  it('is aliased as NxTreeViewMultiSelect', function() {
+    expect(NxCollapsibleMultiSelect).toEqual(NxTreeViewMultiSelect);
+  });
 
   it('throws an error if a selectedId is supplied that is not part of the options', function() {
     const expectedErr = 'You are attempting to select "ufo", but it is not part of the available options';
