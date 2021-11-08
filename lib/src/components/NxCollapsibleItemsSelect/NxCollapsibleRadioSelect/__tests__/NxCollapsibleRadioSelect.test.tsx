@@ -27,7 +27,7 @@ describe('NxCollapsibleRadioSelect', function() {
   const getShallow = getShallowComponent<Props>(NxCollapsibleRadioSelect, requiredProps);
 
   it('is aliased as NxTreeViewRadioSelect', function() {
-    expect(NxCollapsibleRadioSelect).toEqual(NxTreeViewRadioSelect);
+    expect(NxCollapsibleRadioSelect).toBe(NxTreeViewRadioSelect);
   });
 
   it('properly renders component using only required props', function() {
