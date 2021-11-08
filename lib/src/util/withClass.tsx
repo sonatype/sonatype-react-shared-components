@@ -9,11 +9,9 @@ import classnames from 'classnames';
 
 type NativeElType<E extends keyof JSX.IntrinsicElements> =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  JSX.IntrinsicElements[E] extends DetailedHTMLProps<any, infer A>
-    ? A
-    : JSX.IntrinsicElements[E] extends SVGProps<infer B>
-      ? B
-      : never;
+  JSX.IntrinsicElements[E] extends DetailedHTMLProps<any, infer A> ? A : 
+  JSX.IntrinsicElements[E] extends SVGProps<infer B> ? B : 
+  never;
 
 export default function withClass<E extends keyof JSX.IntrinsicElements>(
   El: E,
