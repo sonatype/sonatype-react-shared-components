@@ -57,8 +57,8 @@ function NxSearchDropdownRender<T extends string | number = string>(
     const focusedEl = document.activeElement,
         menuEl = menuRef.current;
 
-    if (menuEl && menuEl.contains(focusedEl)) {
-      const inputEl = filterRef.current!.querySelector(':scope input')! as HTMLElement;
+    if (menuEl && menuEl.contains(focusedEl) && filterRef.current) {
+      const inputEl = filterRef.current.querySelector(':scope input')! as HTMLElement;
       inputEl!.focus();
     }
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
