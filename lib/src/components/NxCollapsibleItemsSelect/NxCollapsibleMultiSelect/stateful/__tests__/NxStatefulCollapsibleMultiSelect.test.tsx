@@ -22,7 +22,7 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
   const getShallow = getShallowComponent<Props>(NxStatefulCollapsibleMultiSelect, requiredProps);
 
   it('is aliased as NxStatefulTreeViewMultiSelect', function() {
-    expect(NxStatefulCollapsibleMultiSelect).toEqual(NxStatefulTreeViewMultiSelect);
+    expect(NxStatefulCollapsibleMultiSelect).toBe(NxStatefulTreeViewMultiSelect);
   });
 
   it('properly renders component using only required props', function() {

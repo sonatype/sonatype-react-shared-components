@@ -27,7 +27,7 @@ describe('NxCollapsibleMultiSelect', function() {
   const getShallow = getShallowComponent<Props>(NxCollapsibleMultiSelect, requiredProps);
 
   it('is aliased as NxTreeViewMultiSelect', function() {
-    expect(NxCollapsibleMultiSelect).toEqual(NxTreeViewMultiSelect);
+    expect(NxCollapsibleMultiSelect).toBe(NxTreeViewMultiSelect);
   });
 
   it('throws an error if a selectedId is supplied that is not part of the options', function() {
