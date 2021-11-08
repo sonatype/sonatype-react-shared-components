@@ -23,7 +23,7 @@ describe('NxCollapsibleItems', function() {
       getShallowComponent = enzymeUtils.getShallowComponent(NxCollapsibleItems, minimalProps);
 
   it('is aliased as NxTreeView', function() {
-    expect(NxCollapsibleItems).toEqual(NxTreeView);
+    expect(NxCollapsibleItems).toBe(NxTreeView);
   });
 
   it('renders a div with a list role and the nx-collapsible-items class', function() {
