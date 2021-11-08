@@ -6,6 +6,7 @@
  */
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-focus-border-helpers';
 
 .nx-tree {
   $normal-item-label-row-height: 40px;
@@ -124,11 +125,7 @@
   }
 
   &__collapse-input {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    margin: 0;
-    outline: none;
+    @include nx-focus-border-helpers.hide-checkbox;
   }
 
   &__collapse-label {

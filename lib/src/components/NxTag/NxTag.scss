@@ -6,6 +6,7 @@
  */
  @use '../../scss-shared/nx-text-helpers';
  @use '../../scss-shared/nx-container-helpers';
+ @use '../../scss-shared/nx-focus-border-helpers';
 
 .nx-tag {
   @include nx-text-helpers.semi-bold;
@@ -62,10 +63,7 @@
 }
 
 .nx-tag__input {
-  margin: 0;
-  width: 0;
-  -moz-appearance: none;
-  outline: none;
+  @include nx-focus-border-helpers.hide-checkbox;
 }
 
 .nx-tag__text {
