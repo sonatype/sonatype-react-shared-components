@@ -15,3 +15,10 @@
     height: calc(#{$height} + 6px);
     width: calc(#{$width} + 6px);
 }
+
+@mixin hide-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+}

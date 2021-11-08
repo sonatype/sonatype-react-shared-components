@@ -64,14 +64,9 @@ $-width: 44px;
   }
 }
 
-// In safari, the width: 0 and -moz-appearance settings fail to hide the <input>.
-// So instead we use margin on the checkbox to hide the <input> under the toggle.
 .nx-toggle__input {
+  @include nx-focus-border-helpers.hide-checkbox;
   grid-area: toggle;
-  margin: 0 0 0 var(--nx-spacing-3x);
-  width: 0;
-  -moz-appearance: none;
-  outline: none;
 
   &:checked {
     + .nx-toggle__control {
