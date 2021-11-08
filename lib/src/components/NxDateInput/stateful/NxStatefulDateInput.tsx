@@ -12,7 +12,7 @@ import { Props, propTypes } from './types';
 export { Props, propTypes } from './types';
 
 const NxStatefulDateInput = forwardRef<HTMLDivElement, Props>(
-    (props, ref) => <NxStatefulTextInput type="date" { ...props } ref={ref} />
+    (props, ref) => <NxStatefulTextInput { ...props } type="date" ref={ref} />
 );
 
 NxStatefulDateInput.propTypes = propTypes;
