@@ -9,7 +9,7 @@ import * as PropTypes from 'prop-types';
 
 export type NavigationDirection = 'up' | 'down';
 
-export interface TreeKeyNavContextType {
+export type TreeKeyNavContextType = {
   /*
    * Used by focused NxTreeItems to tell their parent NxTree to move focus to the next item. Note that if the current
    * item is the last one in a subtree, this results in the parent tree passing the call up to its parent NxTreeItem,
@@ -40,7 +40,7 @@ export interface TreeKeyNavContextType {
    * which it decides whether to focus itself or its last visible descendant
    */
   navigationDirection: NavigationDirection;
-}
+} | null;
 
 export type TreeItemFocusState = 'self' | 'children' | null;
 

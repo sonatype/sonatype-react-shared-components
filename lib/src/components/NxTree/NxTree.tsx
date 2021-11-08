@@ -29,7 +29,7 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
             if (focusedChild.nextElementSibling) {
               setFocusedChild(focusedChild.nextElementSibling);
             }
-            else {
+            else if (parentKeyNavContext) {
               parentKeyNavContext.focusNext();
             }
           }
@@ -41,24 +41,31 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
             if (focusedChild.previousElementSibling) {
               setFocusedChild(focusedChild.previousElementSibling);
             }
-            else {
+            else if (parentKeyNavContext) {
               parentKeyNavContext.focusPrev();
             }
           }
         },
-        focusParent: parentKeyNavContext.focusParent
+        focusParent: parentKeyNavContext?.focusParent || (() => {})
       },
       ref = useRef<HTMLUListElement>(null);
 
   useEffect(function() {
-    if (parentKeyNavContext.focusedChild && parentKeyNavContext.focusedChild === ref.current) {
-      const childToFocus = parentKeyNavContext.navigationDirection === 'down' ?
-        ref.current.firstElementChild :
-        ref.current.lastElementChild;
+    // We want to focus either the first or last child of this tree in two scenarios:
+    // 1. this is the top tree
+    // 2. this is a subtree which is currently designated (via `focusedChild) as containing the focus
+    if (!parentKeyNavContext ||
+        (parentKeyNavContext?.focusedChild && parentKeyNavContext?.focusedChild === ref.current)) {
+      const childToFocus = parentKeyNavContext?.navigationDirection === 'up' ?
+        ref.current?.lastElementChild :
+        ref.current?.firstElementChild;
 
       setFocusedChild(childToFocus || ref.current);
     }
-  }, [parentKeyNavContext.focusedChild]);
+    else {
+      setFocusedChild(null);
+    }
+  }, [!!parentKeyNavContext, parentKeyNavContext?.focusedChild]);
 
   return (
     <TreeKeyNavContext.Provider value={childKeyNavContext}>

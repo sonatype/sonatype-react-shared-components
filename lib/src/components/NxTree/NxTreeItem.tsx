@@ -34,40 +34,45 @@ export default function NxTreeItem(props: ItemProps) {
       }),
       [focusState, setFocusState] = useState<TreeItemFocusState>(null),
       ref = useRef<HTMLLIElement>(null),
-      parentKeyNavContext = useContext(TreeKeyNavContext),
-      parentFocusedChild = parentKeyNavContext.focusedChild,
+      parentKeyNavContext = useContext(TreeKeyNavContext);
+
+  if (!parentKeyNavContext) {
+    throw new TypeError('NxTree.Item failed to retrieve context information. Was it used outside of an NxTree?');
+  }
+
+  const parentFocusedChild = parentKeyNavContext.focusedChild,
       childKeyNavContext: TreeKeyNavContextType = {
         navigationDirection: parentKeyNavContext.navigationDirection,
         focusNext: parentKeyNavContext.focusNext,
-        focusPrev() {
-          // The child Tree has said to focus the previous item above it e.g. this item
-          setFocusState('self');
-        },
-        focusParent() {
-          if (focusState === 'children') {
-            setFocusState('self');
-          }
-          else {
-            console.error(
-                'Should be impossible: NxTreeItem received focusParent when it did not think its children had focus');
-          }
-        },
+
+        // The child Tree has said to focus the previous item above it e.g. this item
+        focusPrev: focusSelf,
+        focusParent: focusSelf,
         focusedChild: (focusState === 'children') && ref.current?.querySelector('.nx-tree') || null
       };
+
+  function focusSelf() {
+    setFocusState('self');
+    ref.current?.focus();
+  }
+
+  function hasChildren() {
+    return !!ref.current?.querySelector('.nx-tree__item');
+  }
 
   useEffect(function() {
     if (!!parentFocusedChild && parentFocusedChild === ref.current) {
       if (parentKeyNavContext.navigationDirection === 'down') {
         // focus moved into this item from above; focus this item itself
-        setFocusState('self');
+        focusSelf();
       }
       else {
         // focus moved into this item from below, focus our last visible descendant
-        if (isOpen) {
+        if (isOpen && hasChildren()) {
           setFocusState('children');
         }
         else {
-          setFocusState('self');
+          focusSelf();
         }
       }
     }
@@ -77,19 +82,27 @@ export default function NxTreeItem(props: ItemProps) {
     }
   }, [parentFocusedChild]);
 
-  function onKeyPress(evt: KeyboardEvent<HTMLLIElement>) {
+  function onKeyDown(evt: KeyboardEvent<HTMLLIElement>) {
     switch (evt.key) {
       case 'ArrowUp':
-        parentKeyNavContext.focusPrev();
+        parentKeyNavContext!.focusPrev();
+        evt.stopPropagation();
         break;
       case 'ArrowDown':
-        parentKeyNavContext.focusNext();
+        evt.stopPropagation();
+        if (isOpen && hasChildren()) {
+          setFocusState('children');
+        }
+        else {
+          parentKeyNavContext!.focusNext();
+        }
         break;
       case 'ArrowRight':
+        evt.stopPropagation();
         if (!isOpen && onToggleCollapse) {
           onToggleCollapse();
         }
-        else if (focusState === 'self') {
+        else if (focusState === 'self' && hasChildren()) {
           setFocusState('children');
         }
         else {
@@ -97,11 +110,12 @@ export default function NxTreeItem(props: ItemProps) {
         }
         break;
       case 'ArrowLeft':
+        evt.stopPropagation();
         if (isOpen && onToggleCollapse) {
           onToggleCollapse();
         }
         else {
-          parentKeyNavContext.focusParent();
+          parentKeyNavContext!.focusParent();
         }
         break;
       case 'Home':
@@ -144,7 +158,7 @@ export default function NxTreeItem(props: ItemProps) {
         { ...attrs }
         tabIndex={focusState === 'self' ? 0 : -1}
         ref={ref}
-        onKeyPress={onKeyPress}>
+        onKeyDown={onKeyDown}>
       {intersection}
       <svg className="nx-tree__line-drop" viewBox="0 0 36 1" preserveAspectRatio="none">
         <line x1="12" x2="12" y2="1" />

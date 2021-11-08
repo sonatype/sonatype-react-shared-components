@@ -8,12 +8,6 @@ import { createContext } from 'react';
 
 import { TreeKeyNavContextType } from './types';
 
-const TreeKeyNavContext = createContext<TreeKeyNavContextType>({
-  focusNext: () => {},
-  focusPrev: () => {},
-  focusParent: () => {},
-  focusedChild: null,
-  navigationDirection: 'down'
-});
+const TreeKeyNavContext = createContext<TreeKeyNavContextType>(null);
 
 export default TreeKeyNavContext;
