@@ -9,6 +9,8 @@ import {PageConfig} from './pageConfigTypes';
 import NxAlertPage from './styles/NxAlert/NxAlertPage';
 import NxButtonPage from './components/NxButton/NxButtonPage';
 import NxCheckboxPage from './components/NxCheckbox/NxCheckboxPage';
+import NxDateInputPage from './components/NxDateInput/NxDateInputPage';
+import NxStatefulDateInputPage from './components/NxStatefulDateInput/NxStatefulDateInputPage';
 import NxTextInputPage from './components/NxTextInput/NxTextInputPage';
 import NxStatefulTextInputPage from './components/NxStatefulTextInput/NxStatefulTextInputPage';
 import NxBackButtonPage from './components/NxBackButton/NxBackButtonPage';
@@ -158,6 +160,8 @@ const pageConfig: PageConfig = {
     NxColorPicker: NxColorPickerPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
     NxCodeSnippet: NxCodeSnippetPage,
+    NxDateInput: NxDateInputPage,
+    NxStatefulDateInput: NxStatefulDateInputPage,
     NxDropdown: NxDropdownPage,
     NxStatefulDropdown: NxStatefulDropdownPage,
     NxIconDropdown: NxIconDropdownPage,

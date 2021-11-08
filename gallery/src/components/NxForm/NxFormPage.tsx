@@ -5,7 +5,16 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxWarningAlert, NxTextLink, NxP, NxCode, NxH3, NxTile } from '@sonatype/react-shared-components';
+import {
+  NxTable,
+  NxWarningAlert,
+  NxTextLink,
+  NxP,
+  NxCode,
+  NxH3,
+  NxTile,
+  NxList
+} from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -30,25 +39,25 @@ const NxFormPage = () =>
         <NxCode>NxForm</NxCode> is an encapsulation of styles and typical behavior for
         a form within a Sonatype application. It helps manage the UI around the following behaviors.
       </NxP>
-      <ul className="nx-list nx-list--bulleted">
-        <li className="nx-list__item">
-          <span className="nx-list__text">Standard form footer with submit and cancel buttons</span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">Initial loading including error and retry handling</span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">Form submission including the submit mask</span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">Form cancellation</span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">
+      <NxList bulleted>
+        <NxList.Item>
+          <NxList.Text>Standard form footer with submit and cancel buttons</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Initial loading including error and retry handling</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Form submission including the submit mask</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Form cancellation</NxList.Text>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>
             Form validation including disabling of submit button for invalid forms
-          </span>
-        </li>
-      </ul>
+          </NxList.Text>
+        </NxList.Item>
+      </NxList>
       <NxTable>
         <NxTable.Head>
           <NxTable.Row>

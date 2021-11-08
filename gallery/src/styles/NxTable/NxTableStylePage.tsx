@@ -17,7 +17,7 @@ const NxTableStylePage = () =>
       <NxP>
         This is the styling and layout for a basic table. There are few variations demonstrated here:
       </NxP>
-      <NxList className="nx-list--bulleted">
+      <NxList bulleted>
         <NxList.Item>
           <NxList.Text>Basic table layout</NxList.Text>
         </NxList.Item>
