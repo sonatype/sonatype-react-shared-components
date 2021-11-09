@@ -22,7 +22,7 @@ const NxAccordionPage = () =>
     <GalleryDescriptionTile>
       <NxP>
         NxAccordion renders a panel with an always-visible header and a collapsible/expandable body section.
-        This is analogous to the HTML 5 <NxCode>&lt;details&gt;</NxCode> element (which is
+        This is analogous to the HTML 5 <NxCode>&lt;details&gt;</NxCode> element (which it is
         implemented on top of). There are three related components: <NxCode>NxAccordion</NxCode> itself,
         <NxCode>NxAccordion.Header</NxCode> which represents the header content, and
         {' '}<NxCode>NxAccordion.Title</NxCode> which is a convenience component for header title. All other
