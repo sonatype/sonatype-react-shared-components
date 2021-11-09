@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-text-helpers';
-@use '../../scss-shared/nx-focus-border-helpers';
+@use '../../scss-shared/nx-hide-checkbox-helper';
 
 $-height: 24px;
 $-width: 44px;
@@ -65,7 +65,7 @@ $-width: 44px;
 }
 
 .nx-toggle__input {
-  @include nx-focus-border-helpers.hide-checkbox;
+  @include nx-hide-checkbox-helper.hide-checkbox;
   grid-area: toggle;
 
   &:checked {
