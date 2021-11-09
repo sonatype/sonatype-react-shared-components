@@ -15,22 +15,27 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
 import './NxDropdown.scss';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
-
-import AbstractDropdown, {
-  AbstractDropdownToggleElement
-} from './AbstractDropdown';
+import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
+import useDropdownEvents from '../../util/useDropdownEvents';
 
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   const {
-    disabled,
-    isOpen,
-    className,
-    toggleTooltip,
-    children,
     variant,
     label,
-    ...otherProps
+    className,
+    isOpen,
+    disabled,
+    children,
+    toggleTooltip,
+    onToggleCollapse: externalOnToggleCollapse,
+    onKeyDown: externalOnKeyDown,
+    onCloseClick,
+    onCloseKeyDown,
+    ...attrs
   } = props;
+
+  const { onKeyDown, onToggleCollapse, menuRef, toggleRef, onMenuClosing } =
+      useDropdownEvents(isOpen, disabled, externalOnToggleCollapse, onCloseClick, onCloseKeyDown, externalOnKeyDown);
 
   const buttonClasses = classnames('nx-dropdown__toggle', { disabled, open: isOpen });
 
@@ -45,32 +50,24 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
       child
   ));
 
-  const toggleElement: AbstractDropdownToggleElement = ({ onToggleCollapse, toggleRef }) => {
-    const button = (
-      <NxButton ref={toggleRef}
-                type="button"
-                variant={variant || 'tertiary'}
-                className={buttonClasses}
-                onClick={!disabled && onToggleCollapse || undefined}
-                aria-haspopup="true"
-                aria-expanded={isOpen}>
-        <span className="nx-dropdown__toggle-label">{ label }</span>
-        <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown} size="lg" />
-      </NxButton>
-    );
-
-    return toggleTooltipProps ? <NxTooltip { ...toggleTooltipProps } >{button}</NxTooltip> : button;
-  };
+  const toggle = (
+    <NxButton ref={toggleRef}
+              type="button"
+              variant={variant || 'tertiary'}
+              className={buttonClasses}
+              onClick={!disabled && onToggleCollapse || undefined}
+              aria-haspopup="true"
+              aria-expanded={isOpen}>
+      <span className="nx-dropdown__toggle-label">{ label }</span>
+      <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown} size="lg" />
+    </NxButton>
+  );
 
   return (
-    <AbstractDropdown className={classes}
-                      isOpen={isOpen}
-                      toggleElement={toggleElement}
-                      disabled={disabled}
-                      { ...otherProps }
-    >
-      { wrappedChildren }
-    </AbstractDropdown>
+    <div className={classes} onKeyDown={onKeyDown} {...attrs}>
+      { toggleTooltipProps ? <NxTooltip { ...toggleTooltipProps } >{toggle}</NxTooltip> : toggle }
+      { isOpen && <NxDropdownMenu ref={menuRef} onClosing={onMenuClosing}>{wrappedChildren}</NxDropdownMenu> }
+    </div>
   );
 };
 

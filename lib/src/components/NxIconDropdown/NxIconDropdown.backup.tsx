@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FC, ReactElement } from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
 import classnames from 'classnames';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,10 +13,10 @@ import NxButton from '../NxButton/NxButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import './NxIconDropdown.scss';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
+import useDropdownEvents from '../../util/useDropdownEvents';
 
-import AbstractDropdown, { AbstractDropdownToggleElement } from '../NxDropdown/AbstractDropdown';
-
-const NxIconDropdown: FC<Props> = function NxIconDropdown(props) {
+const NxIconDropdown: FunctionComponent<Props> = function NxIconDropdown(props) {
   const {
     icon,
     className,
@@ -24,8 +24,15 @@ const NxIconDropdown: FC<Props> = function NxIconDropdown(props) {
     disabled,
     children,
     title,
-    ...otherProps
+    onToggleCollapse: externalOnToggleCollapse,
+    onKeyDown: externalOnKeyDown,
+    onCloseClick,
+    onCloseKeyDown,
+    ...attrs
   } = props;
+
+  const { onKeyDown, onToggleCollapse, menuRef, toggleRef, onMenuClosing } =
+      useDropdownEvents(isOpen, disabled, externalOnToggleCollapse, onCloseClick, onCloseKeyDown, externalOnKeyDown);
 
   const buttonClasses = classnames('nx-icon-dropdown__toggle', { disabled, open: isOpen });
 
@@ -38,7 +45,7 @@ const NxIconDropdown: FC<Props> = function NxIconDropdown(props) {
       child
   ));
 
-  const toggleElement: AbstractDropdownToggleElement = ({ toggleRef, onToggleCollapse}) => (
+  const toggle = (
     <NxButton ref={toggleRef}
               type="button"
               variant="icon-only"
@@ -52,14 +59,10 @@ const NxIconDropdown: FC<Props> = function NxIconDropdown(props) {
   );
 
   return (
-    <AbstractDropdown className={classes}
-                      toggleElement={toggleElement}
-                      isOpen={isOpen}
-                      disabled={disabled}
-                      { ...otherProps }
-    >
-      { wrappedChildren }
-    </AbstractDropdown>
+    <div className={classes} onKeyDown={onKeyDown} {...attrs}>
+      {toggle}
+      { isOpen && <NxDropdownMenu ref={menuRef} onClosing={onMenuClosing}>{wrappedChildren}</NxDropdownMenu> }
+    </div>
   );
 };
 

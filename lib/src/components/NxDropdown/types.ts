@@ -4,11 +4,31 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ReactNode, HTMLAttributes, ReactElement, WeakValidationMap, KeyboardEventHandler} from 'react';
+import {
+  RefObject,
+  ReactNode, HTMLAttributes, ReactElement, WeakValidationMap, KeyboardEventHandler} from 'react';
 import * as PropTypes from 'prop-types';
 
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../NxButton/types';
 import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
+
+export interface AbstractDropdownToggleElementProps {
+  onToggleCollapse: (() => void);
+  toggleRef: RefObject<HTMLButtonElement>;
+}
+
+export type AbstractDropdownToggleElement = (props: AbstractDropdownToggleElementProps) => ReactNode;
+
+export type AbstractDropdownProps = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
+  className?: string;
+  isOpen: boolean;
+  disabled?: boolean | null;
+  toggleElement: AbstractDropdownToggleElement;
+  children?: ReactElement | ReactElement[] | null;
+  onToggleCollapse?: (() => void) | null;
+  onCloseKeyDown?: KeyboardEventHandler | null;
+  onCloseClick?: ((e: MouseEvent) => void) | null;
+};
 
 export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
   label: ReactNode | string;
