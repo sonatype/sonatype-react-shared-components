@@ -131,7 +131,7 @@ export default function NxTreeItem(props: ItemProps) {
     }
   }
 
-  const intersectionLines = (
+  const intersection = (
     <svg className={intersectionLineClasses} viewBox="0 0 36 40">
       <line className="nx-tree__top-line" x1="12" x2="12" y2={topLineEnd} />
       <line className="nx-tree__right-line" x1={rightLineStart} x2="36" y1="28" y2="28" />
@@ -145,17 +145,6 @@ export default function NxTreeItem(props: ItemProps) {
         <line className="nx-tree__bottom-line" x1="12" x2="12" y1="27.5" y2="40" />
       }
     </svg>
-  );
-
-  const intersection = (
-    <>
-      {intersectionLines}
-      { collapsible &&
-        <label className="nx-tree__collapse-label">
-          <input className="nx-tree__collapse-input" type="checkbox" checked={isOpen} onChange={onToggleCollapse} />
-        </label>
-      }
-    </>
   );
 
   return (

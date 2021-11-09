@@ -123,31 +123,6 @@
     }
   }
 
-  &__collapse-input {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    margin: 0;
-    outline: none;
-  }
-
-  &__collapse-label {
-    box-sizing: border-box;
-    cursor: pointer;
-    grid-area: line-intersection;
-    height: 24px;
-    width: 24px;
-
-    // this is needed to make applitools believe that the label is clickable. Otherwise, it complains
-    // that the collapse/expand icon is in the way, even though it isn't
-    position: relative;
-
-    &:focus-within {
-      border: 1px solid var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
-    }
-  }
-
   &--no-gutter > .nx-tree__item {
     grid-template:
       "label"    var(--nx-item-label-row-height)
