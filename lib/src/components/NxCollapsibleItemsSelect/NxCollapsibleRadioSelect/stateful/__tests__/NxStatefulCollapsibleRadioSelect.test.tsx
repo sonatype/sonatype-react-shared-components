@@ -6,6 +6,7 @@
  */
 import {getShallowComponent} from '../../../../../__testutils__/enzymeUtils';
 import NxStatefulCollapsibleRadioSelect, {Props, Option} from '../NxStatefulCollapsibleRadioSelect';
+import { NxStatefulTreeViewRadioSelect } from '../../../../../index';
 
 describe('NxStatefulCollapsibleRadioSelect', function() {
   const requiredProps: Props = {
@@ -20,6 +21,10 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
   };
 
   const getShallow = getShallowComponent<Props>(NxStatefulCollapsibleRadioSelect, requiredProps);
+
+  it('is aliased as NxStatefulTreeViewRadioSelect', function() {
+    expect(NxStatefulCollapsibleRadioSelect).toBe(NxStatefulTreeViewRadioSelect);
+  });
 
   it('properly renders component using only required props', function() {
     const shallowRender = getShallow();
