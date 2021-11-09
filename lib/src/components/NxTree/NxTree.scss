@@ -121,6 +121,10 @@
     .nx-icon {
       color: var(--nx-swatch-grey-05);
     }
+
+    .nx-text-link .nx-icon {
+      color: var(--nx-color-link);
+    }
   }
 
   &--no-gutter > .nx-tree__item {
