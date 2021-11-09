@@ -5,8 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxFontAwesomeIcon, NxTree, useToggle } from '@sonatype/react-shared-components';
+import { NxFontAwesomeIcon, NxTextLink, NxTree, useToggle } from '@sonatype/react-shared-components';
 import { faFile, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+
+const catImagePath = require('../../assets/images/cat1.jpg');
 
 export default function NxTreeCollapsibleExample() {
   const [rootOpen, toggleRootOpen] = useToggle(true),
@@ -61,10 +63,12 @@ export default function NxTreeCollapsibleExample() {
                           <span>images</span>
                         </NxTree.ItemLabel>
                         <NxTree>
-                          <NxTree.Item>
+                          <NxTree.Item onActivate={() => document.getElementById('cat-link')?.click()}>
                             <NxTree.ItemLabel>
                               <NxFontAwesomeIcon fixedWidth icon={faFile} />
-                              <span>cat1.jpg</span>
+                              <NxTextLink href={catImagePath} id="cat-link" newTab tabIndex={-1}>
+                                cat1.jpg
+                              </NxTextLink>
                             </NxTree.ItemLabel>
                           </NxTree.Item>
                           <NxTree.Item>

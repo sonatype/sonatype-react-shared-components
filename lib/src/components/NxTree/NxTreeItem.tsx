@@ -15,7 +15,7 @@ import { TreeItemFocusState, TreeKeyNavContextType, ItemProps, itemPropTypes } f
 import TreeKeyNavContext from './TreeKeyNavContext';
 
 export default function NxTreeItem(props: ItemProps) {
-  const { collapsible, className, children, /*onActivate,*/ ...otherProps } = props,
+  const { collapsible, className, children, onActivate, ...otherProps } = props,
       topLineEnd = collapsible ? '16' : '28.5',
       rightLineStart = collapsible ? '24' : '11.5',
 
@@ -120,8 +120,14 @@ export default function NxTreeItem(props: ItemProps) {
         break;
       case 'Home':
         // TODO
+        break;
       case 'End':
         // TODO
+        break;
+      case 'Enter':
+        if (onActivate) {
+          onActivate();
+        }
     }
   }
 

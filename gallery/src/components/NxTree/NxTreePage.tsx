@@ -95,6 +95,17 @@ const NxTreePage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell>onActivate</NxTable.Cell>
+              <NxTable.Cell>Function (() =&gt; void)</NxTable.Cell>
+              <NxTable.Cell>False</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                Function to call when this item is activated via keyboard navigation. <em>Should</em> be present if
+                and only if there is interactive content within the item label, and <em>must</em> perform the
+                same action as clicking that interative content.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>HTML <NxCode>&lt;li&gt;</NxCode> Attributes</NxTable.Cell>
               <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/li">
@@ -182,6 +193,32 @@ const NxTreePage = () =>
           that the spacing of the tree lines is set up such that when the label starts with an icon with a width of
           1.25em (20px at the default font size), the subtree line will be centered under that icon. For fontawesome
           icons, using fontawesome's <NxCode>fixedWidth</NxCode> modifier will result in the proper alignment.
+        </NxP>
+        <NxP>
+          The children of this element should contain either zero or one interactive elements, and should not contain
+          any elements that are part of the tab order. Notably, the interactive element which may be present
+          should include a tabindex of -1 if they would otherwise naturally be tab-navigable. See the Keyboard
+          Navigation section below for more details.
+        </NxP>
+      </NxTile.Subsection>
+
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Keyboard Navigation</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          The ARIA specs define very{' '}
+          <NxTextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#keyboard-interaction-22" external>
+            specific and complex behaviors for tree views
+          </NxTextLink>
+          , which this component strives to implement. These behaviors require that the keyboard focus within the
+          tree be managed in JavaScript, as navigation within the tree is expected to occur via the arrow keys and
+          not the tab key. In order to fully accomplish the intended behavior, it is important that consuming code
+          avoid inserting any tab-navigable content into the tree item labels. At the same time, it is important that
+          consuming code wire up the <NxCode>NxTree.Item</NxCode> <NxCode>onActivate</NxCode> prop to perform whatever
+          operation the interactive content of the item label (if any) would perform. Accordingly, it is also important
+          that no item label contain more than one interactive elements, as with this scheme only one such element in
+          each item can be activated by keyboard.
         </NxP>
       </NxTile.Subsection>
 
