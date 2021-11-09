@@ -7,7 +7,7 @@
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-text-helpers';
 @use '../../scss-shared/nx-button-helpers';
-@use '../../scss-shared/nx-focus-border-helpers';
+@use '../../scss-shared/nx-hide-checkbox-helper';
 
 // the padding on the sides of each transfer list control box
 $-control-box-side-spacing: var(--nx-spacing-6x);
@@ -163,7 +163,7 @@ $-visible-item-count: 10;
 }
 
 .nx-transfer-list__checkbox {
-  @include nx-focus-border-helpers.hide-checkbox;
+  @include nx-hide-checkbox-helper.hide-checkbox;
 }
 
 .nx-transfer-list__footer {

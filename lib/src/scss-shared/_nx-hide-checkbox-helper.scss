@@ -11,7 +11,9 @@
 
 // For correct positioning of focus borders, NxRadio and NxCheckbox additionally require
 // the left and top properties (currently specified in their respective .scss files)
-@mixin radio-checkbox-focus-border($height, $width) {
-    height: calc(#{$height} + 6px);
-    width: calc(#{$width} + 6px);
+@mixin hide-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
 }
