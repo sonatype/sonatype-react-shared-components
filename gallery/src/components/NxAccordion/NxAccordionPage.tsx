@@ -25,7 +25,7 @@ const NxAccordionPage = () =>
         This is analogous to the HTML 5 <NxCode>&lt;details&gt;</NxCode> element (which it is
         implemented on top of). There are three related components: <NxCode>NxAccordion</NxCode> itself,
         <NxCode>NxAccordion.Header</NxCode> which represents the header content, and
-        {' '}<NxCode>NxAccordion.Title</NxCode> which is a convenience component for header title. All other
+        {' '}<NxCode>NxAccordion.Title</NxCode> which is a convenience component for the header title. All other
         children of <NxCode>NxAccordion</NxCode> aside from
         the <NxCode>Header</NxCode> and the <NxCode>Title</NxCode> are rendered in the collapsible section.
 
