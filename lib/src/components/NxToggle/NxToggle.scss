@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-text-helpers';
-@use '../../scss-shared/nx-focus-border-helpers';
+@use '../../scss-shared/nx-hide-checkbox-helper';
 
 $-height: 24px;
 $-width: 44px;
@@ -64,14 +64,9 @@ $-width: 44px;
   }
 }
 
-// In safari, the width: 0 and -moz-appearance settings fail to hide the <input>.
-// So instead we use margin on the checkbox to hide the <input> under the toggle.
 .nx-toggle__input {
+  @include nx-hide-checkbox-helper.hide-checkbox;
   grid-area: toggle;
-  margin: 0 0 0 var(--nx-spacing-3x);
-  width: 0;
-  -moz-appearance: none;
-  outline: none;
 
   &:checked {
     + .nx-toggle__control {
