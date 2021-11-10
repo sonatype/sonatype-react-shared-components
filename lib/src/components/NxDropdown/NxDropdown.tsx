@@ -65,8 +65,8 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   return (
     <AbstractDropdown className={classes}
                       isOpen={isOpen}
-                      toggleElement={toggleElement}
                       disabled={disabled}
+                      toggleElement={toggleElement}
                       { ...otherProps }
     >
       { wrappedChildren }

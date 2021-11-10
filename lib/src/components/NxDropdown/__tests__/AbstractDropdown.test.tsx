@@ -1,0 +1,81 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+import React from 'react';
+import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import NxDropdownMenu from '../../NxDropdownMenu/NxDropdownMenu';
+
+import AbstractDropdown, {
+  AbstractDropdownProps,
+  AbstractDropdownToggleElement
+} from '../AbstractDropdown';
+
+describe('AbstractDropdown', () => {
+  let container: HTMLDivElement | null;
+
+  const minimalProps = {
+    isOpen: false,
+    toggleElement: () => <button>Toggle</button>,
+    onToggleCollapse: () => {}
+  };
+
+  const getShallowComponent = enzymeUtils.getShallowComponent<AbstractDropdownProps>(AbstractDropdown, minimalProps);
+  // const getMountedComponent = enzymeUtils.getMountedComponent<AbstractDropdownProps>(AbstractDropdown, minimalProps);
+
+  beforeEach(function() {
+    // Avoid rendering directly on the body.
+    container = document.createElement('div');
+    document.body.appendChild(container);
+  });
+
+  afterEach(function() {
+    if (container) {
+      document.body.removeChild(container);
+      container = null;
+    }
+  });
+
+  const toggleElement: AbstractDropdownToggleElement = ({ toggleRef, onToggleCollapse }) => (
+    <button type="button"
+            id="toggle-element"
+            ref={toggleRef}
+            onClick={onToggleCollapse}>
+      Toggle
+    </button>
+  );
+
+  it('renders toggleElement and calls onToggleCollapse when toggleElement is clicked', function() {
+    const onToggleCollapse = jest.fn();
+
+    const component = getShallowComponent({ toggleElement, onToggleCollapse });
+    const button = component.find('#toggle-element');
+
+    expect(button).toExist();
+
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+
+    button.simulate('click');
+
+    expect(onToggleCollapse).toHaveBeenCalled();
+  });
+
+  it('renders children inside NxDropdownMenu when isOpen is true', function() {
+    const childrenElement = <div id="dropdown-menu-children">Hello</div>;
+
+    const component = getShallowComponent({
+      toggleElement,
+      children: childrenElement,
+      isOpen: true
+    });
+
+    const dropdownMenu = component.find(NxDropdownMenu);
+
+    const child = dropdownMenu.find('#dropdown-menu-children');
+
+    expect(child).toExist();
+    expect(child).toMatchElement(childrenElement);
+  });
+});
