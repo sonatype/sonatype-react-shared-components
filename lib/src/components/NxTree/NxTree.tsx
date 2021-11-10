@@ -7,7 +7,7 @@
 import React, { HTMLAttributes, useContext, useRef, useEffect, useState, FocusEvent } from 'react';
 import classnames from 'classnames';
 
-import { ItemProps, NavigationDirection } from './types';
+import { ItemProps, NavigationDirection, TreeKeyNavContextType } from './types';
 import NxTreeItem from './NxTreeItem';
 import NxTreeItemLabel from './NxTreeItemLabel';
 import TreeKeyNavContext from './TreeKeyNavContext';
@@ -21,7 +21,8 @@ function _NxTree({ className, onFocus: onFocusProp, ...otherProps }: HTMLAttribu
   const parentKeyNavContext = useContext(TreeKeyNavContext),
       [focusedChild, setFocusedChild] = useState<Element | null>(null),
       [navigationDirection, setNavigationDirection] = useState<NavigationDirection>('down'),
-      childKeyNavContext = {
+      ref = useRef<HTMLUListElement>(null),
+      childKeyNavContext: TreeKeyNavContextType = {
         navigationDirection,
         focusedChild,
         focusNext() {
@@ -48,9 +49,9 @@ function _NxTree({ className, onFocus: onFocusProp, ...otherProps }: HTMLAttribu
             }
           }
         },
-        focusParent: parentKeyNavContext?.focusParent || (() => {})
+        focusParent: parentKeyNavContext?.focusParent || (() => {}),
+        getTreeRoot: parentKeyNavContext ? parentKeyNavContext.getTreeRoot : () => ref.current
       },
-      ref = useRef<HTMLUListElement>(null),
       classes = classnames('nx-tree', className);
 
   useEffect(function() {

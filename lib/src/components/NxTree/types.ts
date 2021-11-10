@@ -40,6 +40,8 @@ export type TreeKeyNavContextType = {
    * which it decides whether to focus itself or its last visible descendant
    */
   navigationDirection: NavigationDirection;
+
+  getTreeRoot: () => (Element | null);
 } | null;
 
 export type TreeItemFocusState = 'self' | 'children' | null;

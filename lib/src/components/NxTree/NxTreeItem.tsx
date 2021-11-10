@@ -42,8 +42,7 @@ export default function NxTreeItem(props: ItemProps) {
 
   const parentFocusedChild = parentKeyNavContext.focusedChild,
       childKeyNavContext: TreeKeyNavContextType = {
-        navigationDirection: parentKeyNavContext.navigationDirection,
-        focusNext: parentKeyNavContext.focusNext,
+        ...parentKeyNavContext,
 
         // The child Tree has said to focus the previous item above it e.g. this item
         focusPrev: focusSelf,
@@ -53,7 +52,11 @@ export default function NxTreeItem(props: ItemProps) {
 
   function focusSelf() {
     setFocusState('self');
-    ref.current?.focus();
+
+    const treeRoot = parentKeyNavContext?.getTreeRoot();
+    if (treeRoot && treeRoot.contains(document.activeElement)) {
+      ref.current?.focus();
+    }
   }
 
   function hasChildren() {
