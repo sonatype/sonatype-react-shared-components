@@ -91,6 +91,8 @@
 
   &__collapse-icon {
     fill: var(--nx-swatch-grey-05);
+    cursor: pointer;
+    pointer-events: bounding-box;
   }
 
   &__line-intersection {
