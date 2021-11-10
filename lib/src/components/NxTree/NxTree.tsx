@@ -6,6 +6,8 @@
  */
 import React, { HTMLAttributes, useContext, useRef, useEffect, useState } from 'react';
 import NxTreeItem from './NxTreeItem';
+import classnames from 'classnames';
+
 import { ItemProps, NavigationDirection } from './types';
 import TreeKeyNavContext from './TreeKeyNavContext';
 import NxTreeStatefulItem from './stateful/NxTreeStatefulItem';
@@ -15,7 +17,7 @@ export { ItemProps };
 
 import './NxTree.scss';
 
-function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
+function _NxTree({ className, ...otherProps }: HTMLAttributes<HTMLUListElement>) {
   const parentKeyNavContext = useContext(TreeKeyNavContext),
       [focusedChild, setFocusedChild] = useState<Element | null>(null),
       [navigationDirection, setNavigationDirection] = useState<NavigationDirection>('down'),
@@ -48,7 +50,8 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
         },
         focusParent: parentKeyNavContext?.focusParent || (() => {})
       },
-      ref = useRef<HTMLUListElement>(null);
+      ref = useRef<HTMLUListElement>(null),
+      classes = classnames('nx-tree', className);
 
   useEffect(function() {
     // We want to focus either the first or last child of this tree in two scenarios:
@@ -70,9 +73,9 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
   return (
     <TreeKeyNavContext.Provider value={childKeyNavContext}>
       <ul ref={ref}
-          className="nx-tree"
+          className={classes}
           role={!!parentKeyNavContext ? 'group' : 'tree'}
-          { ...props } />
+          { ...otherProps } />
     </TreeKeyNavContext.Provider>
   );
 }
