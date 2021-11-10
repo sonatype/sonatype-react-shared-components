@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useEffect, useRef, useState, KeyboardEvent } from 'react';
+import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
@@ -15,7 +15,7 @@ import { TreeItemFocusState, TreeKeyNavContextType, ItemProps, itemPropTypes } f
 import TreeKeyNavContext from './TreeKeyNavContext';
 
 export default function NxTreeItem(props: ItemProps) {
-  const { collapsible, className, children, onActivate, ...otherProps } = props,
+  const { collapsible, className, children, onActivate, onFocus: onFocusProp, ...otherProps } = props,
       topLineEnd = collapsible ? '16' : '28.5',
       rightLineStart = collapsible ? '24' : '11.5',
 
@@ -62,7 +62,10 @@ export default function NxTreeItem(props: ItemProps) {
 
   useEffect(function() {
     if (!!parentFocusedChild && parentFocusedChild === ref.current) {
-      if (parentKeyNavContext.navigationDirection === 'down') {
+      if (focusState) {
+        // already tracking focus within; do nothing
+      }
+      else if (parentKeyNavContext.navigationDirection === 'down') {
         // focus moved into this item from above; focus this item itself
         focusSelf();
       }
@@ -131,6 +134,17 @@ export default function NxTreeItem(props: ItemProps) {
     }
   }
 
+  function onFocus(evt: FocusEvent<HTMLLIElement>) {
+    if (onFocusProp) {
+      onFocusProp(evt);
+    }
+
+    // if a child received focus (for instance due to a click) ensure that the focusedChild is updated
+    if (evt.target !== ref.current) {
+      setFocusState('children');
+    }
+  }
+
   const intersection = (
     <svg className={intersectionLineClasses} viewBox="0 0 36 40">
       <line className="nx-tree__top-line" x1="12" x2="12" y2={topLineEnd} />
@@ -153,7 +167,8 @@ export default function NxTreeItem(props: ItemProps) {
         { ...attrs }
         tabIndex={focusState === 'self' ? 0 : -1}
         ref={ref}
-        onKeyDown={onKeyDown}>
+        onKeyDown={onKeyDown}
+        onFocus={onFocus}>
       {intersection}
       <svg className="nx-tree__line-drop" viewBox="0 0 36 1" preserveAspectRatio="none">
         <line x1="12" x2="12" y2="1" />

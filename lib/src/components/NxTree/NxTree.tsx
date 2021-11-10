@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { HTMLAttributes, useContext, useRef, useEffect, useState } from 'react';
+import React, { HTMLAttributes, useContext, useRef, useEffect, useState, FocusEvent } from 'react';
 import classnames from 'classnames';
 
 import { ItemProps, NavigationDirection } from './types';
@@ -17,7 +17,7 @@ export { ItemProps };
 
 import './NxTree.scss';
 
-function _NxTree({ className, ...otherProps }: HTMLAttributes<HTMLUListElement>) {
+function _NxTree({ className, onFocus: onFocusProp, ...otherProps }: HTMLAttributes<HTMLUListElement>) {
   const parentKeyNavContext = useContext(TreeKeyNavContext),
       [focusedChild, setFocusedChild] = useState<Element | null>(null),
       [navigationDirection, setNavigationDirection] = useState<NavigationDirection>('down'),
@@ -59,22 +59,45 @@ function _NxTree({ className, ...otherProps }: HTMLAttributes<HTMLUListElement>)
     // 2. this is a subtree which is currently designated (via `focusedChild) as containing the focus
     if (!parentKeyNavContext ||
         (parentKeyNavContext?.focusedChild && parentKeyNavContext?.focusedChild === ref.current)) {
-      const childToFocus = parentKeyNavContext?.navigationDirection === 'up' ?
-        ref.current?.lastElementChild :
-        ref.current?.firstElementChild;
+      if (!focusedChild) {
+        const childToFocus = parentKeyNavContext?.navigationDirection === 'up' ?
+          ref.current?.lastElementChild :
+          ref.current?.firstElementChild;
 
-      setFocusedChild(childToFocus || ref.current);
+        setFocusedChild(childToFocus || null);
+      }
     }
     else {
       setFocusedChild(null);
     }
   }, [!!parentKeyNavContext, parentKeyNavContext?.focusedChild]);
 
+  function onFocus(evt: FocusEvent<HTMLUListElement>) {
+    if (onFocusProp) {
+      onFocusProp(evt);
+    }
+
+    // determine which immediate child contained the focused node, and set focusedChild to that node
+    let el: Element = evt.target,
+        elsParent = el.parentElement;
+
+    while (elsParent) {
+      if (elsParent === ref.current) {
+        setFocusedChild(el);
+        break;
+      }
+
+      el = elsParent;
+      elsParent = el.parentElement;
+    }
+  }
+
   return (
     <TreeKeyNavContext.Provider value={childKeyNavContext}>
       <ul ref={ref}
           className={classes}
           role={!!parentKeyNavContext ? 'group' : 'tree'}
+          onFocus={onFocus}
           { ...otherProps } />
     </TreeKeyNavContext.Provider>
   );

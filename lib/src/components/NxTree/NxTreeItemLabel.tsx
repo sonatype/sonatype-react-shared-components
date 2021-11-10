@@ -27,7 +27,7 @@ export default function NxTreeItemLabel({ className, onFocus: onFocusProp, ...ot
       onFocusProp(evt);
     }
 
-    focusParent();
+    Promise.resolve().then(focusParent);
   }
 
   return <span className={classes} onFocus={onFocus} { ...otherProps } />;
