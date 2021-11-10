@@ -88,11 +88,13 @@ export default function NxTreeItem(props: ItemProps) {
   function onKeyDown(evt: KeyboardEvent<HTMLLIElement>) {
     switch (evt.key) {
       case 'ArrowUp':
-        parentKeyNavContext!.focusPrev();
         evt.stopPropagation();
+        evt.preventDefault();
+        parentKeyNavContext!.focusPrev();
         break;
       case 'ArrowDown':
         evt.stopPropagation();
+        evt.preventDefault();
         if (isOpen && hasChildren()) {
           setFocusState('children');
         }
@@ -102,6 +104,7 @@ export default function NxTreeItem(props: ItemProps) {
         break;
       case 'ArrowRight':
         evt.stopPropagation();
+        evt.preventDefault();
         if (!isOpen && onToggleCollapse) {
           onToggleCollapse();
         }
@@ -114,6 +117,7 @@ export default function NxTreeItem(props: ItemProps) {
         break;
       case 'ArrowLeft':
         evt.stopPropagation();
+        evt.preventDefault();
         if (isOpen && onToggleCollapse) {
           onToggleCollapse();
         }
