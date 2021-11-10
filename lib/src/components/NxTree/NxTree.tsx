@@ -5,13 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { HTMLAttributes, useContext, useRef, useEffect, useState } from 'react';
-import NxTreeItem from './NxTreeItem';
 import classnames from 'classnames';
 
 import { ItemProps, NavigationDirection } from './types';
+import NxTreeItem from './NxTreeItem';
+import NxTreeItemLabel from './NxTreeItemLabel';
 import TreeKeyNavContext from './TreeKeyNavContext';
 import NxTreeStatefulItem from './stateful/NxTreeStatefulItem';
-import NxTreeItemLabel from './NxTreeItemLabel';
 
 export { ItemProps };
 
