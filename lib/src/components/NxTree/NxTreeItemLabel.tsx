@@ -27,6 +27,8 @@ export default function NxTreeItemLabel({ className, onFocus: onFocusProp, ...ot
       onFocusProp(evt);
     }
 
+    // wait until after all the onFocus handlers in ancestor tree elements are processed before we actually perform
+    // the focus of the parent item
     Promise.resolve().then(focusParent);
   }
 
