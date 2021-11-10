@@ -166,7 +166,7 @@ describe('NxSegmentedButton', function() {
     expect(onToggleOpen).not.toHaveBeenCalled();
 
     component.find('.nx-segmented-btn__dropdown-btn').at(0).simulate('click');
-    expect(onToggleOpen).not.toHaveBeenCalled();
+    expect(onToggleOpen).toHaveBeenCalled();
   });
 
   it('disables the buttons based on the disabled prop', function() {

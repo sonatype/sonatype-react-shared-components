@@ -66,7 +66,7 @@ describe('NxIconDropdown', () => {
   });
 
   it('correctly assigns supplied classes', function() {
-    const component = getMountedComponent({ className: 'class1 class2' });
+    const component = getMountedComponent({ className: 'class1 class2' }).find(AbstractDropdown);
     expect(component).toHaveClassName('nx-icon-dropdown class1 class2');
   });
 
@@ -94,19 +94,20 @@ describe('NxIconDropdown', () => {
       <button id="link4" className="nx-dropdown-right-button" key="4">Link4</button>
     ];
     const component = getMountedComponent({ children, isOpen: true }),
-        menu = component.find(NxDropdownMenu).find('div');
+        menu = component.find(NxDropdownMenu).find('div').at(0);
 
     expect(menu.childAt(0)).toMatchElement(<a id="link1" key="1">Link1</a>);
 
     expect(menu.childAt(1)).toMatchSelector(NxOverflowTooltip);
-    expect(menu.childAt(1).find('a')).toMatchElement(<a id="link2" key="2" className="nx-dropdown-link">Link2</a>);
+    expect(menu.childAt(1).find('a'))
+        .toMatchElement(<a id="link2" key="2" className="nx-dropdown-link">Link2</a>);
 
     expect(menu.childAt(2)).toMatchSelector(NxOverflowTooltip);
-    expect(menu.childAt(2).find('a')).toMatchElement(
+    expect(menu.childAt(2).find('button')).toMatchElement(
       <button id="link3" key="3" className="nx-dropdown-button">Link3</button>
     );
 
-    expect(menu.childAt(3)).toMatchElement(
+    expect(menu.childAt(3).find('button')).toMatchElement(
       <button id="link4" key="4" className="nx-dropdown-right-button">Link4</button>
     );
   });
