@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { LiHTMLAttributes } from 'react';
+import { HTMLAttributes, LiHTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
 export type NavigationDirection = 'up' | 'down';
@@ -57,6 +57,8 @@ interface CollapsibleItemProps {
 export type ItemProps = LiHTMLAttributes<HTMLLIElement> & (NonCollapsibleItemProps | CollapsibleItemProps) & {
   onActivate?: () => void;
 };
+
+export type ItemLabelProps = HTMLAttributes<HTMLSpanElement>;
 
 export interface StatefulItemProps extends LiHTMLAttributes<HTMLLIElement> {
   collapsible?: boolean | null;

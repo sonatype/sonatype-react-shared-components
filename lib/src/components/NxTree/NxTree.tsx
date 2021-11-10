@@ -5,11 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { HTMLAttributes, useContext, useRef, useEffect, useState } from 'react';
-import withClass from '../../util/withClass';
 import NxTreeItem from './NxTreeItem';
 import { ItemProps, NavigationDirection } from './types';
 import TreeKeyNavContext from './TreeKeyNavContext';
 import NxTreeStatefulItem from './stateful/NxTreeStatefulItem';
+import NxTreeItemLabel from './NxTreeItemLabel';
 
 export { ItemProps };
 
@@ -80,7 +80,7 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
 const NxTree = Object.assign(_NxTree, {
   Item: NxTreeItem,
   StatefulItem: NxTreeStatefulItem,
-  ItemLabel: withClass('span', 'nx-tree__item-label')
+  ItemLabel: NxTreeItemLabel
 });
 
 export default NxTree;
