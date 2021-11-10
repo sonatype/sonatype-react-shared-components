@@ -62,10 +62,7 @@ export default function NxTreeItem(props: ItemProps) {
 
   useEffect(function() {
     if (!!parentFocusedChild && parentFocusedChild === ref.current) {
-      if (focusState) {
-        // already tracking focus within; do nothing
-      }
-      else if (parentKeyNavContext.navigationDirection === 'down') {
+      if (parentKeyNavContext.navigationDirection === 'down') {
         // focus moved into this item from above; focus this item itself
         focusSelf();
       }
