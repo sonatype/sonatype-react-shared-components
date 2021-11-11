@@ -16,7 +16,9 @@ describe('NxSearchDropdown', function() {
     waitAndGetElements,
     getPage,
     blurElement,
-    scrollIntoView
+    scrollIntoView,
+    disableLoadingSpinnerAnimation,
+    checkScreenshot
   } = setupBrowser('#/pages/NxSearchDropdown');
 
   const basicExampleSelector = '#nx-search-dropdown-basic-example .nx-search-dropdown',
@@ -39,12 +41,9 @@ describe('NxSearchDropdown', function() {
     await input.focus();
     await getPage().keyboard.type('1');
     await getPage().waitForSelector(loadingSpinnerSelector);
+    await disableLoadingSpinnerAnimation();
 
-    const screenshot = await getPage().screenshot({
-      clip: { x, y, width: 300, height: 125 }
-    });
-
-    expect(screenshot).toMatchImageSnapshot();
+    await checkScreenshot(component, 300, 125);
   });
 
   it('looks right when displaying results', async function() {
@@ -59,35 +58,19 @@ describe('NxSearchDropdown', function() {
     await getPage().keyboard.type('1');
     await getPage().waitForSelector(dropdownButtonSelector);
 
-    const { x, y } = await component.boundingBox();
-
-    const screenshot = await getPage().screenshot({
-      clip: { x, y, width: 300, height: 376 }
-    });
-
-    expect(screenshot).toMatchImageSnapshot();
+    await checkScreenshot(component, 300, 376);
   });
 
   it('looks right with truncated results', async function() {
     const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
         dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
-        [component, input] = await waitAndGetElements(
-          basicExampleSelector,
-          inputSelector,
-          dropdownButtonSelector
-        );
+        [component, input] = await waitAndGetElements(basicExampleSelector, inputSelector);
 
     await input.focus();
     await getPage().keyboard.type('loo');
     await getPage().waitForSelector(dropdownButtonSelector);
 
-    const { x, y } = await component.boundingBox();
-
-    const screenshot = await getPage().screenshot({
-      clip: { x, y, width: 300, height: 88 }
-    });
-
-    expect(screenshot).toMatchImageSnapshot();
+    await checkScreenshot(component, 300, 88);
   });
 
   it('hides the dropdown when not focused', async function() {
@@ -98,18 +81,14 @@ describe('NxSearchDropdown', function() {
           inputSelector
         );
 
+    await scrollIntoView(component);
     await input.focus();
     await getPage().keyboard.type('1');
     await getPage().waitForSelector(dropdownButtonSelector);
 
     await blurElement(input);
 
-    const { x, y } = await component.boundingBox();
-    const screenshot = await getPage().screenshot({
-      clip: { x, y, width: 300, height: 125 }
-    });
-
-    expect(screenshot).toMatchImageSnapshot();
+    await checkScreenshot(component, 300, 125);
   });
 
   it('looks right when displaying the empty message', async function() {
@@ -125,12 +104,7 @@ describe('NxSearchDropdown', function() {
     await getPage().keyboard.type('asdfasdf');
     await getPage().waitForSelector(emptyMessageSelector);
 
-    const { x, y } = await component.boundingBox();
-    const screenshot = await getPage().screenshot({
-      clip: { x, y, width: 300, height: 88 }
-    });
-
-    expect(screenshot).toMatchImageSnapshot();
+    await checkScreenshot(component, 300, 88);
   });
 
   it('looks right when displaying an error', async function() {
@@ -144,14 +118,7 @@ describe('NxSearchDropdown', function() {
     await getPage().keyboard.type('1');
     await getPage().waitForSelector(errorSelector);
 
-    const { x, y } = await component.boundingBox();
-    console.log('x', x);
-    console.log('y', y);
-    const screenshot = await component.screenshot({
-      clip: { width: 300, height: 195 }
-    });
-
-    expect(screenshot).toMatchImageSnapshot();
+    await checkScreenshot(component, 300, 195);
   });
 
   it('looks right with the long variant', async function() {
@@ -167,12 +134,7 @@ describe('NxSearchDropdown', function() {
     await getPage().keyboard.type('1');
     await getPage().waitForSelector(dropdownButtonSelector);
 
-    const { x, y } = await component.boundingBox();
-    const screenshot = await getPage().screenshot({
-      clip: { x, y, width: 300, height: 376 }
-    });
-
-    expect(screenshot).toMatchImageSnapshot();
+    await checkScreenshot(component, 800, 376);
   });
 
   it('looks right with the long variant in error', async function() {
@@ -188,11 +150,6 @@ describe('NxSearchDropdown', function() {
     await getPage().keyboard.type('1');
     await getPage().waitForSelector(errorSelector);
 
-    const { x, y } = await component.boundingBox();
-    const screenshot = await getPage().screenshot({
-      clip: { x, y, width: 300, height: 376 }
-    });
-
-    expect(screenshot).toMatchImageSnapshot();
+    await checkScreenshot(component, 800, 125);
   });
 });

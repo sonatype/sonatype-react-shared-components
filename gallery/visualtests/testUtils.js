@@ -46,8 +46,25 @@ module.exports = {
       return await getElements(...selectors);
     }
 
-    async function checkScreenshot(element) {
-      const image = await element.screenshot();
+    async function checkScreenshot(element, customWidth, customHeight) {
+      let image;
+      if (customHeight || customWidth) {
+        const { x, y, width, height } = await element.boundingBox(),
+            pageScrollY = await page.evaluate(() => window.scrollY),
+            pageScrollX = await page.evaluate(() => window.scrollX);
+
+        image = await page.screenshot({
+          clip: {
+            x: x + pageScrollX,
+            y: y + pageScrollY,
+            width: customWidth == null ? width : customWidth,
+            height: customHeight == null ? height : customHeight
+          }
+        });
+      }
+      else {
+        image = await element.screenshot();
+      }
 
       expect(image).toMatchImageSnapshot();
     }
