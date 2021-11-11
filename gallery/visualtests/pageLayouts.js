@@ -10,9 +10,10 @@ describe('Page Layout', function() {
 
   function testLoadWrapper(thingsToSee, url) {
     describe('with ' + thingsToSee, function() {
-      const { checkFullPageScreenshot, getPage, waitForSelectors } = setupBrowser(url);
+      const { checkFullPageScreenshot, getPage, waitForSelectors, disableLoadingSpinnerAnimation } = setupBrowser(url);
 
       it('looks right', async function() {
+        await disableLoadingSpinnerAnimation();
         let screenshot = await getPage().screenshot();
         expect(screenshot).toMatchImageSnapshot('loading');
 

@@ -11,7 +11,7 @@
     "webpack": "webpack --env production --mode=production",
     "webpack-dev-server": "webpack serve",
     "test": "npm-run-all build jest",
-    "jest": "jest --runInBand --testTimeout=30000",
+    "jest": "jest --testTimeout=30000",
     "clean": "rimraf dist webpack-modules test-results"
   },
   "repository": {

@@ -15,7 +15,8 @@ describe('NxToggle', function() {
     waitAndGetElements,
     moveMouseAway,
     checkScreenshot,
-    blurElement
+    blurElement,
+    wait
   } = setupBrowser('#/pages/NxToggle');
 
   const selector = '#nx-toggle-example .gallery-example-live label:nth-of-type(2)',
@@ -34,6 +35,9 @@ describe('NxToggle', function() {
       await moveMouseAway();
       await blurElement(inputElement);
 
+      // wait for animation
+      await wait(400);
+
       await checkScreenshot(targetElement);
     });
 
@@ -44,6 +48,9 @@ describe('NxToggle', function() {
 
       await targetElement.click();
       await moveMouseAway();
+
+      // wait for animation
+      await wait(400);
 
       await checkScreenshot(targetElement);
     });
@@ -56,7 +63,10 @@ describe('NxToggle', function() {
       await targetElement.click();
       await targetElement.hover();
 
-        await checkScreenshot(targetElement);
+      // wait for animation
+      await wait(400);
+
+      await checkScreenshot(targetElement);
     });
 
     it('has a light blue outer border and glow when focused', focusTest(selector));

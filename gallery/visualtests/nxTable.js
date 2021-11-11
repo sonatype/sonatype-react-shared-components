@@ -35,7 +35,10 @@ describe('NxTable', function() {
       await checkScreenshot(table);
   });
 
-  it('looks right when loading', simpleTest(loadingTableSelector));
+  it('looks right when loading', async function() {
+    await disableLoadingSpinnerAnimation();
+    await simpleTest(loadingTableSelector)();
+  });
   it('looks right when showing an error', simpleTest(errorTableSelector));
   it('looks right with an icon column', simpleTest(iconColumnTableSelector));
   it('looks right with a pagination bar and a filter row', simpleTest(paginationFilterTableSelector));

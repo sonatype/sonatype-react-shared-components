@@ -7,7 +7,8 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxPolicyThreatSlider', function() {
-  const { focusTest, simpleTest, getPage, waitAndGetElements, scrollIntoView } = setupBrowser('#/pages/NxPolicyThreatSlider');
+  const { focusTest, simpleTest, getPage, waitAndGetElements, scrollIntoView } =
+      setupBrowser('#/pages/NxPolicyThreatSlider');
 
   const exampleSelector = '#nx-policy-threat-slider-example .gallery-example-live',
       disabledExampleSelector = '#nx-policy-threat-slider-disabled-example .nx-policy-threat-slider',

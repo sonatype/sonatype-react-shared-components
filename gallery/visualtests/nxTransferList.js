@@ -7,8 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTransferList', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, checkScreenshot } =
-      setupBrowser('#/pages/NxTransferList');
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    checkScreenshot,
+    wait
+  } = setupBrowser('#/pages/NxTransferList');
 
   const simpleListSelector = '#nx-transfer-list-minimal-example .nx-transfer-list',
       complexListSelector = '#nx-transfer-list-complex-example .nx-transfer-list',
@@ -29,6 +37,7 @@ describe('NxTransferList', function() {
     await firstItem.hover();
 
     const [tooltip] = await waitAndGetElements('.nx-tooltip');
+    await wait(500);
 
     await checkScreenshot(list);
   });

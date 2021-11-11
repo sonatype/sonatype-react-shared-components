@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTreeView', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements } =
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, wait } =
       setupBrowser('#/pages/NxTreeView');
 
   const selector = '#nx-tree-view-example .nx-tree-view:nth-child(3)',
@@ -20,6 +20,7 @@ describe('NxTreeView', function() {
   async function expandTreeView(selector) {
     const [targetElement] = await waitAndGetElements(selector);
     await targetElement.click();
+    await wait(350);
   }
 
   function simpleExpandedTest(selector) {
@@ -84,6 +85,7 @@ describe('NxTreeView', function() {
 
       await firstTree.click();
       await secondTree.click();
+      await wait(350);
 
       await simpleTest(checkboxTreeViewSelector)();
     });

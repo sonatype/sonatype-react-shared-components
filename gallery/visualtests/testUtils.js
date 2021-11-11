@@ -13,7 +13,7 @@ module.exports = {
     let browser, page;
 
     beforeAll(async function() {
-      browser = await puppeteer.launch();
+      browser = await puppeteer.launch({ defaultViewport: { width: 1366, height: 1000 } });
       browser.defaultBrowserContext().overridePermissions(pageUrl, ['clipboard-read']);
       page = await browser.newPage();
     });
@@ -44,6 +44,10 @@ module.exports = {
     async function waitAndGetElements(...selectors) {
       await waitForSelectors(...selectors);
       return await getElements(...selectors);
+    }
+
+    function wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     async function checkScreenshot(element, customWidth, customHeight) {
@@ -120,6 +124,7 @@ module.exports = {
       waitForSelectors,
       getElements,
       waitAndGetElements,
+      wait,
 
       checkScreenshot,
       checkFullPageScreenshot,

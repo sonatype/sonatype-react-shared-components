@@ -7,8 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxCodeSnippet', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, dismissResultingDialog } =
-      setupBrowser('#/pages/NxCodeSnippet');
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    dismissResultingDialog,
+    getPage
+  } = setupBrowser('#/pages/NxCodeSnippet');
 
   const multipleSnippetSelector = '#nx-code-snippet-simple-example .gallery-example-live',
       complexSnippetExample = '#complex-nx-code-snippet',
@@ -28,7 +36,7 @@ describe('NxCodeSnippet', function() {
       await copyBtn.click();
     });
 
-    await page.mouse.move(0, 0);
+    await getPage().mouse.move(0, 0);
 
     await checkScreenshot(codeSnippet);
   });
