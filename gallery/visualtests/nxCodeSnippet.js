@@ -32,7 +32,7 @@ describe('NxCodeSnippet', function() {
   it('selects the text when the button is clicked', async function() {
     const [codeSnippet, copyBtn] = await waitAndGetElements(complexSnippetExample, copyBtnSelector);
 
-    dismissResultingDialog(async () => {
+    await dismissResultingDialog(async () => {
       await copyBtn.click();
     });
 
@@ -44,7 +44,7 @@ describe('NxCodeSnippet', function() {
   it('copies the text to the clipboard when the button is clicked', async function() {
     const [codeSnippet, copyBtn] = await waitAndGetElements(complexSnippetExample, copyBtnSelector);
 
-    dismissResultingDialog(async () => {
+    await dismissResultingDialog(async () => {
       await copyBtn.click();
     });
 
