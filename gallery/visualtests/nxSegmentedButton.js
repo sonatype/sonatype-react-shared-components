@@ -7,8 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxSegmentedButton', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, moveMouseAway, getPage } =
-      setupBrowser('#/pages/NxSegmentedButton');
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    moveMouseAway,
+    checkScreenshot
+  } = setupBrowser('#/pages/NxSegmentedButton');
 
   function openedTest(selector, dropdownBtnSelector) {
     return async function() {
@@ -20,12 +28,11 @@ describe('NxSegmentedButton', function() {
 
       await moveMouseAway();
 
-      const { x, y } = await targetElement.boundingBox();
-      const screenshot = await getPage().screenshot({
-        clip: { x: x - 82, y, width: 250, height: 122 }
-      });
+      const { x, y, width, height } = await element.boundingBox(),
+          pageScrollY = await page.evaluate(() => window.scrollY),
+          pageScrollX = await page.evaluate(() => window.scrollX);
 
-      expect(screenshot).toMatchImageSnapshot();
+      await checkScreenshotCoordinates(x + pageScrollX - 82, y + pageScrollY, 250, 122);
     };
   }
 

@@ -7,8 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxDropdown', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, moveMouseAway, getPage } =
-      setupBrowser('#/pages/NxDropdown');
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    moveMouseAway,
+    checkScreenshot
+  } = setupBrowser('#/pages/NxDropdown');
 
   const defaultSelector = '#nx-dropdown-scrolling-example .nx-dropdown';
 
@@ -33,13 +41,7 @@ describe('NxDropdown', function() {
 
       await moveMouseAway();
 
-      const { x, y } = await targetElement.boundingBox();
-
-      const screenshot = await getPage().screenshot({
-        clip: { x, y, width: 251, height: 376 }
-      });
-
-      expect(screenshot).toMatchImageSnapshot();
+      await checkScreenshot(targetElement, 251, 376);
     });
   });
 
@@ -64,12 +66,7 @@ describe('NxDropdown', function() {
       //await targetElement.scrollIntoView({ block: 'center' });
       await moveMouseAway();
 
-      const { x, y } = await targetElement.boundingBox();
-      const screenshot = await getPage().screenshot({
-        clip: { x, y, width: 251, height: 153 }
-      });
-
-      expect(screenshot).toMatchImageSnapshot();
+      await checkScreenshot(targetElement, 251, 153);
     });
   });
 
@@ -87,12 +84,7 @@ describe('NxDropdown', function() {
 
       await moveMouseAway();
 
-      const { x, y } = await targetElement.boundingBox();
-      const screenshot = await getPage().screenshot({
-        clip: { x, y, width: 251, height: 88 }
-      });
-
-      expect(screenshot).toMatchImageSnapshot();
+      await checkScreenshot(targetElement, 251, 88);
     });
 
   });
@@ -111,12 +103,7 @@ describe('NxDropdown', function() {
 
       await moveMouseAway();
 
-      const { x, y } = await targetElement.boundingBox();
-      const screenshot = await getPage().screenshot({
-        clip: { x, y, width: 251, height: 218 }
-      });
-
-      expect(screenshot).toMatchImageSnapshot();
+      await checkScreenshot(targetElement, 251, 218);
     });
   });
 
@@ -129,12 +116,7 @@ describe('NxDropdown', function() {
       await targetElement.click();
       await moveMouseAway();
 
-      const { x, y } = await targetElement.boundingBox();
-      const screenshot = await getPage().screenshot({
-        clip: { x, y, width: 151, height: 184 }
-      });
-
-      expect(screenshot).toMatchImageSnapshot();
+      await checkScreenshot(targetElement, 151, 184);
     });
   });
 });

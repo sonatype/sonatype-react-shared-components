@@ -7,8 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxIconDropdown', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, moveMouseAway, getPage } =
-      setupBrowser('#/pages/NxIconDropdown');
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    moveMouseAway,
+    checkScreenshot
+  } = setupBrowser('#/pages/NxIconDropdown');
 
   const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown';
 
@@ -35,12 +43,11 @@ describe('NxIconDropdown', function() {
 
       await moveMouseAway();
 
-      const { x, y } = await targetElement.boundingBox();
-      const screenshot = await getPage().screenshot({
-        clip: { x, y, width: 251, height: 346 }
-      });
+      const { x, y, width, height } = await element.boundingBox(),
+          pageScrollY = await page.evaluate(() => window.scrollY),
+          pageScrollX = await page.evaluate(() => window.scrollX);
 
-      expect(screenshot).toMatchImageSnapshot();
+      await checkScreenshotCoordinates(x + pageScrollX - 208, y + pageScrollY, 251, 346);
     });
   });
 

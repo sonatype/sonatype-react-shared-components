@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-tile', function() {
-  const { simpleTest, waitAndGetElements, checkScreenshotCoordinates } = setupBrowser('#/pages/nx-tile');
+  const { simpleTest, waitAndGetElements, checkScreenshot } = setupBrowser('#/pages/nx-tile');
 
   const simpleTileSelector = '#nx-tile-simple-example .nx-tile',
       actionsTileSelector = '#nx-tile-actions-example .nx-tile',
@@ -43,9 +43,7 @@ describe('nx-tile', function() {
 
       await dropdownEl.click();
 
-      const { x, y, width, height } = await tileEl.boundingBox();
-
-      await checkScreenshotCoordinates(x, y, width, screenshotHeight);
+      await checkScreenshot(tileEl, undefined, screenshotHeight);
     });
   });
 
