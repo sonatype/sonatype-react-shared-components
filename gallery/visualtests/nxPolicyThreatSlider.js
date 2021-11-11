@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxPolicyThreatSlider', function() {
-  const { focusTest, simpleTest, getPage, waitAndGetElements } = setupBrowser('#/pages/NxPolicyThreatSlider');
+  const { focusTest, simpleTest, getPage, waitAndGetElements, scrollIntoView } = setupBrowser('#/pages/NxPolicyThreatSlider');
 
   const exampleSelector = '#nx-policy-threat-slider-example .gallery-example-live',
       disabledExampleSelector = '#nx-policy-threat-slider-disabled-example .nx-policy-threat-slider',
@@ -16,7 +16,7 @@ describe('NxPolicyThreatSlider', function() {
 
   async function dragSliderHandle(sliderElement, spaces) {
     const { mouse } = getPage(),
-        sliderElementBox = sliderElement.boundingBox(),
+        sliderElementBox = await sliderElement.boundingBox(),
         sliderElementCenter = {
           x: sliderElementBox.x + (sliderElementBox.width / 2),
           y: sliderElementBox.y + (sliderElementBox.height / 2)
@@ -33,6 +33,7 @@ describe('NxPolicyThreatSlider', function() {
       const [targetElement, lowerSliderElement, upperSliderElement] =
           await waitAndGetElements(exampleSelector, lowerSliderSelector, upperSliderSelector);
 
+      await scrollIntoView(targetElement);
       await dragSliderHandle(lowerSliderElement, spacesFromDefault);
       await dragSliderHandle(upperSliderElement, -(spacesFromDefault));
 
