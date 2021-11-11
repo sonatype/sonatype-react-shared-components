@@ -108,7 +108,7 @@ export default function NxTreeCollapsibleExample() {
                                    onActivate={() => document.getElementById('videos-link')?.click()}>
                         <NxTree.ItemLabel>
                           <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                          <NxTextLink id="videos-link" onClick={() => { alert('videos');  }}>
+                          <NxTextLink id="videos-link" onClick={() => { alert('videos'); }}>
                             videos
                           </NxTextLink>
                         </NxTree.ItemLabel>

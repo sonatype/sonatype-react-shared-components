@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent } from 'react';
+import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent, MouseEvent } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
@@ -15,7 +15,15 @@ import { TreeItemFocusState, TreeKeyNavContextType, ItemProps, itemPropTypes } f
 import TreeKeyNavContext from './TreeKeyNavContext';
 
 export default function NxTreeItem(props: ItemProps) {
-  const { collapsible, className, children, onActivate, onFocus: onFocusProp, ...otherProps } = props,
+  const {
+        collapsible,
+        className,
+        children,
+        onActivate,
+        onFocus: onFocusProp,
+        //onClick: onClickProp,
+        ...otherProps
+      } = props,
       topLineEnd = collapsible ? '16' : '28.5',
       rightLineStart = collapsible ? '24' : '11.5',
 
@@ -53,6 +61,8 @@ export default function NxTreeItem(props: ItemProps) {
   function focusSelf() {
     setFocusState('self');
 
+    // If something within the tree is what's actually focused, we want to move that focus to this item. Otherwise, 
+    // leave it alone and just make this item the part of the tree that is _focusable_
     const treeRoot = parentKeyNavContext?.getTreeRoot();
     if (treeRoot && treeRoot.contains(document.activeElement)) {
       ref.current?.focus();
@@ -90,11 +100,15 @@ export default function NxTreeItem(props: ItemProps) {
       case 'ArrowUp':
         evt.stopPropagation();
         evt.preventDefault();
+        parentKeyNavContext!.setNavigationDirection('up');
         parentKeyNavContext!.focusPrev();
         break;
       case 'ArrowDown':
         evt.stopPropagation();
         evt.preventDefault();
+
+        parentKeyNavContext!.setNavigationDirection('down');
+
         if (isOpen && hasChildren()) {
           setFocusState('children');
         }
@@ -105,6 +119,9 @@ export default function NxTreeItem(props: ItemProps) {
       case 'ArrowRight':
         evt.stopPropagation();
         evt.preventDefault();
+
+        parentKeyNavContext!.setNavigationDirection('down');
+
         if (!isOpen && onToggleCollapse) {
           onToggleCollapse();
         }
@@ -118,6 +135,9 @@ export default function NxTreeItem(props: ItemProps) {
       case 'ArrowLeft':
         evt.stopPropagation();
         evt.preventDefault();
+
+        parentKeyNavContext!.setNavigationDirection('down');
+
         if (isOpen && onToggleCollapse) {
           onToggleCollapse();
         }
@@ -148,6 +168,15 @@ export default function NxTreeItem(props: ItemProps) {
       setFocusState('children');
     }
   }
+
+  //function onClick(evt: MouseEvent<HTMLLIElement>) {
+    //evt.stopPropagation();
+    //ref.current?.focus();
+
+    //if (onClickProp) {
+      //onClickProp(evt);
+    //}
+  //}
 
   const intersection = (
     <svg className={intersectionLineClasses} viewBox="0 0 36 40">

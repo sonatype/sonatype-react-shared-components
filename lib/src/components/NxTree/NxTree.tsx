@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { HTMLAttributes, useContext, useRef, useEffect, useState, FocusEvent } from 'react';
+import React, { HTMLAttributes, useContext, useRef, useEffect, useState, FocusEvent, /*KeyboardEvent*/ } from 'react';
 import classnames from 'classnames';
 
-import { ItemProps, NavigationDirection, TreeKeyNavContextType } from './types';
+import { ItemProps, NavigationDirection } from './types';
 import NxTreeItem from './NxTreeItem';
 import NxTreeItemLabel from './NxTreeItemLabel';
 import TreeKeyNavContext from './TreeKeyNavContext';
@@ -17,18 +17,20 @@ export { ItemProps };
 
 import './NxTree.scss';
 
-function _NxTree({ className, onFocus: onFocusProp, ...otherProps }: HTMLAttributes<HTMLUListElement>) {
-  const parentKeyNavContext = useContext(TreeKeyNavContext),
+function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
+  const { className, onFocus: onFocusProp, ...otherProps } = props,
+      parentKeyNavContext = useContext(TreeKeyNavContext),
       [focusedChild, setFocusedChild] = useState<Element | null>(null),
+
+      // NOTE: only used for the top-level tree, ignored in subtrees
       [navigationDirection, setNavigationDirection] = useState<NavigationDirection>('down'),
       ref = useRef<HTMLUListElement>(null),
-      childKeyNavContext: TreeKeyNavContextType = {
-        navigationDirection,
+      childKeyNavContext = {
+        setNavigationDirection: parentKeyNavContext?.setNavigationDirection || setNavigationDirection,
+        navigationDirection: parentKeyNavContext?.navigationDirection || navigationDirection,
         focusedChild,
         focusNext() {
           if (focusedChild) {
-            setNavigationDirection('down');
-
             if (focusedChild.nextElementSibling) {
               setFocusedChild(focusedChild.nextElementSibling);
             }
@@ -39,8 +41,6 @@ function _NxTree({ className, onFocus: onFocusProp, ...otherProps }: HTMLAttribu
         },
         focusPrev() {
           if (focusedChild) {
-            setNavigationDirection('up');
-
             if (focusedChild.previousElementSibling) {
               setFocusedChild(focusedChild.previousElementSibling);
             }
@@ -99,6 +99,7 @@ function _NxTree({ className, onFocus: onFocusProp, ...otherProps }: HTMLAttribu
           className={classes}
           role={!!parentKeyNavContext ? 'group' : 'tree'}
           onFocus={onFocus}
+          //onKeyDown={parentKeyNavContext ? onKeyDownProp : topLevelOnKeyDown}
           { ...otherProps } />
     </TreeKeyNavContext.Provider>
   );

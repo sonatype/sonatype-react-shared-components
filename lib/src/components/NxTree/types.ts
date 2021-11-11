@@ -41,6 +41,8 @@ export type TreeKeyNavContextType = {
    */
   navigationDirection: NavigationDirection;
 
+  setNavigationDirection: (dir: NavigationDirection) => void;
+
   getTreeRoot: () => (Element | null);
 } | null;
 
