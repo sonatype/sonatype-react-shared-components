@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent/*, MouseEvent*/ } from 'react';
+import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
@@ -170,15 +170,6 @@ export default function NxTreeItem(props: ItemProps) {
       setFocusState('children');
     }
   }
-
-  //function onClick(evt: MouseEvent<HTMLLIElement>) {
-  //evt.stopPropagation();
-  //ref.current?.focus();
-
-  //if (onClickProp) {
-  //onClickProp(evt);
-  //}
-  //}
 
   const intersection = (
     <svg className={intersectionLineClasses} viewBox="0 0 36 40">
