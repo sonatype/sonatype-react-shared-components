@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent, MouseEvent } from 'react';
+import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent/*, MouseEvent*/ } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
@@ -42,13 +42,15 @@ export default function NxTreeItem(props: ItemProps) {
       }),
       [focusState, setFocusState] = useState<TreeItemFocusState>(null),
       ref = useRef<HTMLLIElement>(null),
-      parentKeyNavContext = useContext(TreeKeyNavContext);
+      nullableParentKeyNavContext = useContext(TreeKeyNavContext);
 
-  if (!parentKeyNavContext) {
+  if (!nullableParentKeyNavContext) {
     throw new TypeError('NxTree.Item failed to retrieve context information. Was it used outside of an NxTree?');
   }
 
-  const parentFocusedChild = parentKeyNavContext.focusedChild,
+  // this helps typescript understand that parentKeynavContext will never be null in onKeyDown
+  const parentKeyNavContext = nullableParentKeyNavContext,
+      parentFocusedChild = parentKeyNavContext.focusedChild,
       childKeyNavContext: TreeKeyNavContextType = {
         ...parentKeyNavContext,
 
@@ -61,7 +63,7 @@ export default function NxTreeItem(props: ItemProps) {
   function focusSelf() {
     setFocusState('self');
 
-    // If something within the tree is what's actually focused, we want to move that focus to this item. Otherwise, 
+    // If something within the tree is what's actually focused, we want to move that focus to this item. Otherwise,
     // leave it alone and just make this item the part of the tree that is _focusable_
     const treeRoot = parentKeyNavContext?.getTreeRoot();
     if (treeRoot && treeRoot.contains(document.activeElement)) {
@@ -100,27 +102,27 @@ export default function NxTreeItem(props: ItemProps) {
       case 'ArrowUp':
         evt.stopPropagation();
         evt.preventDefault();
-        parentKeyNavContext!.setNavigationDirection('up');
-        parentKeyNavContext!.focusPrev();
+        parentKeyNavContext.setNavigationDirection('up');
+        parentKeyNavContext.focusPrev();
         break;
       case 'ArrowDown':
         evt.stopPropagation();
         evt.preventDefault();
 
-        parentKeyNavContext!.setNavigationDirection('down');
+        parentKeyNavContext.setNavigationDirection('down');
 
         if (isOpen && hasChildren()) {
           setFocusState('children');
         }
         else {
-          parentKeyNavContext!.focusNext();
+          parentKeyNavContext.focusNext();
         }
         break;
       case 'ArrowRight':
         evt.stopPropagation();
         evt.preventDefault();
 
-        parentKeyNavContext!.setNavigationDirection('down');
+        parentKeyNavContext.setNavigationDirection('down');
 
         if (!isOpen && onToggleCollapse) {
           onToggleCollapse();
@@ -136,13 +138,13 @@ export default function NxTreeItem(props: ItemProps) {
         evt.stopPropagation();
         evt.preventDefault();
 
-        parentKeyNavContext!.setNavigationDirection('down');
+        parentKeyNavContext.setNavigationDirection('down');
 
         if (isOpen && onToggleCollapse) {
           onToggleCollapse();
         }
         else {
-          parentKeyNavContext!.focusParent();
+          parentKeyNavContext.focusParent();
         }
         break;
       case 'Home':
@@ -170,12 +172,12 @@ export default function NxTreeItem(props: ItemProps) {
   }
 
   //function onClick(evt: MouseEvent<HTMLLIElement>) {
-    //evt.stopPropagation();
-    //ref.current?.focus();
+  //evt.stopPropagation();
+  //ref.current?.focus();
 
-    //if (onClickProp) {
-      //onClickProp(evt);
-    //}
+  //if (onClickProp) {
+  //onClickProp(evt);
+  //}
   //}
 
   const intersection = (
