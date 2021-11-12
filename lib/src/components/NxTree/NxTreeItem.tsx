@@ -127,8 +127,11 @@ export default function NxTreeItem(props: ItemProps) {
         if (!isOpen && onToggleCollapse) {
           onToggleCollapse();
         }
-        else if (focusState === 'self' && hasChildren()) {
-          setFocusState('children');
+        else if (focusState === 'self') {
+          if (hasChildren()) {
+            setFocusState('children');
+          }
+          // else user is just pressing arrow right on an already-focused leaf node, do nothing
         }
         else {
           console.error('Should be impossible: NxTreeItem received ArrowRight while not focused');
