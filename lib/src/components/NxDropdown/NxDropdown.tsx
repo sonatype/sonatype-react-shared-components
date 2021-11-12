@@ -22,13 +22,13 @@ import AbstractDropdown, {
 
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   const {
+    children,
+    className,
     disabled,
     isOpen,
-    className,
-    toggleTooltip,
-    children,
-    variant,
     label,
+    toggleTooltip,
+    variant,
     ...otherProps
   } = props;
 

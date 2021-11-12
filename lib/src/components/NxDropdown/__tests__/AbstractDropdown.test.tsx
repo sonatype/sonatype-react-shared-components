@@ -23,7 +23,6 @@ describe('AbstractDropdown', () => {
   };
 
   const getShallowComponent = enzymeUtils.getShallowComponent<AbstractDropdownProps>(AbstractDropdown, minimalProps);
-  // const getMountedComponent = enzymeUtils.getMountedComponent<AbstractDropdownProps>(AbstractDropdown, minimalProps);
 
   beforeEach(function() {
     // Avoid rendering directly on the body.
