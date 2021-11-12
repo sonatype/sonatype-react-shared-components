@@ -48,8 +48,7 @@ describe('NxSegmentedButton', function() {
 
   it('renders a div with the nx-segmented-btn class', function() {
     const component = getMounted();
-    const dropdown = component.find(AbstractDropdown);
-    const button = dropdown.find('div.nx-segmented-btn');
+    const button = component.find('div.nx-segmented-btn');
     expect(button).toExist();
   });
 
