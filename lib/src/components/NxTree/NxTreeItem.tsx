@@ -77,17 +77,19 @@ export default function NxTreeItem(props: ItemProps) {
 
   useEffect(function() {
     if (!!parentFocusedChild && parentFocusedChild === ref.current) {
-      if (parentKeyNavContext.navigationDirection === 'down') {
-        // focus moved into this item from above; focus this item itself
-        focusSelf();
-      }
-      else {
-        // focus moved into this item from below, focus our last visible descendant
-        if (isOpen && hasChildren()) {
-          setFocusState('children');
+      if (!focusState) {
+        if (parentKeyNavContext.navigationDirection === 'down') {
+          // focus moved into this item from above; focus this item itself
+          focusSelf();
         }
         else {
-          focusSelf();
+          // focus moved into this item from below, focus our last visible descendant
+          if (isOpen && hasChildren()) {
+            setFocusState('children');
+          }
+          else {
+            focusSelf();
+          }
         }
       }
     }
@@ -169,9 +171,7 @@ export default function NxTreeItem(props: ItemProps) {
     }
 
     // if a child received focus (for instance due to a click) ensure that the focusedChild is updated
-    if (evt.target !== ref.current) {
-      setFocusState('children');
-    }
+    setFocusState(evt.target === ref.current ? 'self' : 'children');
   }
 
   const intersection = (
