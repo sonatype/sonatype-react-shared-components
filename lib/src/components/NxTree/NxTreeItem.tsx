@@ -58,6 +58,7 @@ export default function NxTreeItem(props: ItemProps) {
         focusPrev: focusSelf,
         focusParent: focusSelf,
         focusFirst,
+        focusLast,
         focusedChild: (focusState === 'children') && ref.current?.querySelector('.nx-tree') || null
       };
 
@@ -76,6 +77,12 @@ export default function NxTreeItem(props: ItemProps) {
     // unfocus children if focused
     focusSelf();
     parentKeyNavContext.focusFirst();
+  }
+
+  function focusLast() {
+    // unfocus children if focused
+    focusSelf();
+    parentKeyNavContext.focusLast();
   }
 
   function hasChildren() {
@@ -165,7 +172,9 @@ export default function NxTreeItem(props: ItemProps) {
         focusFirst();
         break;
       case 'End':
-        // TODO
+        evt.preventDefault();
+        evt.stopPropagation();
+        focusLast();
         break;
       case 'Enter':
         evt.stopPropagation();

@@ -54,7 +54,16 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
           setNavigationDirection('down');
           setFocusedChild(ref.current?.firstElementChild || null);
         },
-        focusLast: () => {}, // TODO
+        focusLast: parentKeyNavContext?.focusLast || function() {
+          setNavigationDirection('up');
+          setFocusedChild(null);
+
+          // focus the last element - but only after first unfocusing everything in order to trigger the
+          // last element to update its child focus based on the navigation direction, in case the last element
+          // was already the focused one
+          Promise.resolve().then(() => { setFocusedChild(ref.current?.lastElementChild || null); });
+        },
+
         getTreeRoot: parentKeyNavContext ? parentKeyNavContext.getTreeRoot : () => ref.current
       },
       classes = classnames('nx-tree', className);
