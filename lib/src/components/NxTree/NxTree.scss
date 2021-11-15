@@ -83,12 +83,14 @@
       outline: none;
 
       &::before {
+        border: 1px solid var(--nx-color-interactive-border-focus);
+        border-radius: var(--nx-border-radius);
+        box-shadow: var(--nx-box-shadow-focus);
+        box-sizing: border-box;
+        content: '';
         grid-row: 1;
         grid-column: line-intersection-start / label-end;
-
-        content: '\200b'; // zero width space, establishes line box for height
-        outline: 1px solid var(--nx-color-interactive-border-focus);
-        outline-offset: -1px;
+        height: calc(var(--nx-line-height) * 1em);
       }
     }
   }
