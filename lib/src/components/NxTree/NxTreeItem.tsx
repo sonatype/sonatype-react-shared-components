@@ -159,6 +159,7 @@ export default function NxTreeItem(props: ItemProps) {
         // TODO
         break;
       case 'Enter':
+        evt.stopPropagation();
         if (onActivate) {
           onActivate();
         }
