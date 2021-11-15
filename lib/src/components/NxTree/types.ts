@@ -29,6 +29,19 @@ export type TreeKeyNavContextType = {
   focusParent: () => void;
 
   /*
+   * Used by focused NxTreeItems to tell their parent NxTree to focus the very first item in the entire tree.
+   * The root NxTree handles this by focusing its first item. Subtrees just pass the message up the chain
+   * remove focus from the children
+   */
+  focusFirst: () => void;
+
+  /*
+   * Used by focused NxTreeItems to tell their parent NxTree to focus the very last visible item in the entire tree.
+   * TODO
+   */
+  focusLast: () => void;
+
+  /*
    * Each NxTree that has focus within itself sets this value to the immediate NxTreeItem child that has or contains
    * focus. Each NxTreeItem sets this to their child NxTree when that tree contains the focus, and otherwise sets it
    * to null

@@ -57,6 +57,7 @@ export default function NxTreeItem(props: ItemProps) {
         // The child Tree has said to focus the previous item above it e.g. this item
         focusPrev: focusSelf,
         focusParent: focusSelf,
+        focusFirst,
         focusedChild: (focusState === 'children') && ref.current?.querySelector('.nx-tree') || null
       };
 
@@ -69,6 +70,12 @@ export default function NxTreeItem(props: ItemProps) {
     if (treeRoot && treeRoot.contains(document.activeElement)) {
       ref.current?.focus();
     }
+  }
+
+  function focusFirst() {
+    // unfocus children if focused
+    focusSelf();
+    parentKeyNavContext.focusFirst();
   }
 
   function hasChildren() {
@@ -153,7 +160,9 @@ export default function NxTreeItem(props: ItemProps) {
         }
         break;
       case 'Home':
-        // TODO
+        evt.preventDefault();
+        evt.stopPropagation();
+        focusFirst();
         break;
       case 'End':
         // TODO

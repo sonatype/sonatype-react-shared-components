@@ -50,6 +50,11 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
           }
         },
         focusParent: parentKeyNavContext?.focusParent || (() => {}),
+        focusFirst: parentKeyNavContext?.focusFirst || function() {
+          setNavigationDirection('down');
+          setFocusedChild(ref.current?.firstElementChild || null);
+        },
+        focusLast: () => {}, // TODO
         getTreeRoot: parentKeyNavContext ? parentKeyNavContext.getTreeRoot : () => ref.current
       },
       classes = classnames('nx-tree', className);
