@@ -201,12 +201,12 @@ From gallery/, run `yarn start`.
 To view the gallery, point your browser to `http://localhost:4043/`.
 
 ## Continuous Integration and Releases
-This library has CI builds set up for both master and its dev branches. Builds of the master branch automatically get
+This library has CI builds set up for both main and its dev branches. Builds of the main branch automatically get
 released as new versions. As part of this, dev branch builds have enforcement that they must increment the version
-number from what is on master - this way, when the branch is merged, a new release can be made _using the
+number from what is on main - this way, when the branch is merged, a new release can be made _using the
 human-specified semantic version from the branch_.
 
 To increment the version on your branch, use the following command in the lib/ directory:
 `yarn version --no-git-tag-version (--patch|--minor|--major)`.
 This will ensure that the version number gets updated in all of the appropriate places (both package.json files and
-both package-lock.json files). Do not create or push git tags for versions, as the master CI build does that.
+both package-lock.json files). Do not create or push git tags for versions, as the main CI build does that.
