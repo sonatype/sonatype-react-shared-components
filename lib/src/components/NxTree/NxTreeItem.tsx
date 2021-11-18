@@ -197,14 +197,17 @@ export default function NxTreeItem(props: ItemProps) {
     <svg className={intersectionLineClasses} viewBox="0 0 36 40">
       <line className="nx-tree__top-line" x1="12" x2="12" y2={topLineEnd} />
       <line className="nx-tree__right-line" x1={rightLineStart} x2="36" y1="28" y2="28" />
-      { collapsible ?
-        <NxFontAwesomeIcon className="nx-tree__collapse-icon"
-                           onClick={onToggleCollapse}
-                           height="14"
-                           width="14"
-                           x="5"
-                           y="21"
-                           icon={collapseIcon} /> :
+      { collapsible ? (
+          <>
+            <NxFontAwesomeIcon className="nx-tree__collapse-icon"
+                               height="14"
+                               width="14"
+                               x="5"
+                               y="21"
+                               icon={collapseIcon} />
+            <rect className="nx-tree__collapse-click" height="24" width="24" y="16" onClick={onToggleCollapse} />
+          </>
+        ) :
         <line className="nx-tree__bottom-line" x1="12" x2="12" y1="27.5" y2="40" />
       }
     </svg>

@@ -105,10 +105,15 @@
     }
   }
 
-  &__collapse-icon {
+  &__collapse-icon path {
     fill: var(--nx-swatch-grey-05);
+  }
+
+  &__collapse-click {
     cursor: pointer;
+    fill: none;
     pointer-events: bounding-box;
+    stroke: none;
   }
 
   &__line-intersection {
