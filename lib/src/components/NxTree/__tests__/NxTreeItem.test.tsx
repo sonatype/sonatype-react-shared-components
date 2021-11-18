@@ -155,4 +155,15 @@ describe('NxTreeItem', function() {
       expect(onToggleCollapse).toHaveBeenCalled();
     });
   });
+
+  it('calls onActivate when Enter is pressed while focused', function() {
+    const onActivate = jest.fn(),
+        component = getMountedComponent({ onActivate });
+
+    expect(onActivate).not.toHaveBeenCalled();
+
+    component.simulate('keydown', { key: 'Enter' });
+
+    expect(onActivate).toHaveBeenCalled();
+  });
 });

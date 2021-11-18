@@ -626,5 +626,21 @@ describe('NxTree', function() {
       await browser.acceptAlert();
       expect(await hasClass(images, 'open')).toBe(true);
     });
+
+    it('does nothing when enter is pressed on an item without interactive content', async function() {
+      const tree = await browser.$(collapsibleExampleSelector),
+          videos = await itemWithText(tree, 'videos'),
+          videosClick = await clickTarget(videos);
+
+      await videosClick.click();
+      expect(await videos.isFocused()).toBe(true);
+      expect(await hasClass(images, 'open')).toBe(true);
+
+      await browser.keys('Enter');
+
+      // no change
+      expect(await videos.isFocused()).toBe(true);
+      expect(await hasClass(images, 'open')).toBe(true);
+    });
   });
 });
