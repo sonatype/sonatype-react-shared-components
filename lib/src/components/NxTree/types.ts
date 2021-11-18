@@ -37,7 +37,6 @@ export type TreeKeyNavContextType = {
 
   /*
    * Used by focused NxTreeItems to tell their parent NxTree to focus the very last visible item in the entire tree.
-   * TODO
    */
   focusLast: () => void;
 
