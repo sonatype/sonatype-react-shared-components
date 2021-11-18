@@ -19,7 +19,8 @@ describe('NxTree', function() {
       collapsibleMultiTopExampleSelector = '#nx-tree-collapsible-multi-top-example .nx-tree',
       noGutterExampleSelector = '#nx-tree-no-gutter-example .gallery-example-live',
       anItemSelector = `${collapsibleExampleSelector} > .nx-tree__item > .nx-tree > .nx-tree__item >
-          .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item:nth-child(2)`;
+          .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item:nth-child(2)`,
+      noGutterFirstItemSelector = `${noGutterExampleSelector} > .nx-tree__item`;
 
   function itemWithText(tree, text) {
     // creates a relative XPath selector for a tree item with the given text
@@ -61,6 +62,8 @@ describe('NxTree', function() {
   });
 
   it('looks right when an item is focused', focusTest(collapsibleExampleSelector, anItemSelector));
+
+  it('looks right when a no-gutter item is focused', focusTest(noGutterExampleSelector, noGutterFirstItemSelector));
 
   it('looks right when a collapse control is clicked', clickTest(collapsibleExampleSelector, anItemSelector));
 
