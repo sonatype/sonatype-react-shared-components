@@ -143,14 +143,13 @@ describe('NxTreeItem', function() {
       expect(getMountedCollapsible()).toHaveClassName('nx-tree__item--collapsible');
     });
 
-    it('attaches onToggleCollapse to the input\'s onChange', function() {
+    it('attaches onToggleCollapse to the .nx-tree__collapse-click\'s onChange', function() {
       const onToggleCollapse = jest.fn(),
           component = getMountedCollapsible({ onToggleCollapse });
 
       expect(onToggleCollapse).not.toHaveBeenCalled();
 
-      // TODO update this test and impl so that the click target is the correct size
-      component.find('.nx-tree__line-intersection svg.nx-icon').simulate('click');
+      component.find('.nx-tree__collapse-click').simulate('click');
 
       expect(onToggleCollapse).toHaveBeenCalled();
     });
