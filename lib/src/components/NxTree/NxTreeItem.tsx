@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent } from 'react';
+import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent, SyntheticEvent } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
@@ -21,11 +21,8 @@ export default function NxTreeItem(props: ItemProps) {
         children,
         onActivate,
         onFocus: onFocusProp,
-        //onClick: onClickProp,
         ...otherProps
       } = props,
-      topLineEnd = collapsible ? '16' : '28.5',
-      rightLineStart = collapsible ? '24' : '11.5',
 
       // in the following two assignments we have to use props.collapsible as opposed to just collapsible
       // so that TS understands the type guard
@@ -40,6 +37,8 @@ export default function NxTreeItem(props: ItemProps) {
       intersectionLineClasses = classnames('nx-tree__line-intersection', {
         'nx-tree__line-intersection--collapsible': collapsible
       }),
+
+      // whether this item is itself focused, has a focused descendant, or neither
       [focusState, setFocusState] = useState<TreeItemFocusState>(null),
       ref = useRef<HTMLLIElement>(null),
       nullableParentKeyNavContext = useContext(TreeKeyNavContext);
@@ -48,13 +47,14 @@ export default function NxTreeItem(props: ItemProps) {
     throw new TypeError('NxTree.Item failed to retrieve context information. Was it used outside of an NxTree?');
   }
 
-  // this helps typescript understand that parentKeynavContext will never be null in onKeyDown
+  // putting this after the above conditional helps typescript understand that
+  // parentKeyNavContext will never be null in onKeyDown
   const parentKeyNavContext = nullableParentKeyNavContext,
-      parentFocusedChild = parentKeyNavContext.focusedChild,
+      parentsFocusedChild = parentKeyNavContext.focusedChild,
       childKeyNavContext: TreeKeyNavContextType = {
         ...parentKeyNavContext,
 
-        // The child Tree has said to focus the previous item above it e.g. this item
+        // When this is called, the child Tree has said to focus the previous item above it e.g. this item
         focusPrev: focusSelf,
         focusParent: focusSelf,
         focusFirst,
@@ -65,22 +65,22 @@ export default function NxTreeItem(props: ItemProps) {
   function focusSelf() {
     setFocusState('self');
 
-    // If something within the tree is what's actually focused, we want to move that focus to this item. Otherwise,
-    // leave it alone and just make this item the part of the tree that is _focusable_
+    // If focus is within the tree, we want to move that focus to this item. Otherwise,
+    // leave actual focus alone and just make this item the part of the tree that is _focusable_
     const treeRoot = parentKeyNavContext?.getTreeRoot();
-    if (treeRoot && treeRoot.contains(document.activeElement)) {
+    if (treeRoot?.contains(document.activeElement)) {
       ref.current?.focus();
     }
   }
 
+  // Signal from child to focus the first element in the tree. Unfocus our children and pass the message up the tree
   function focusFirst() {
-    // unfocus children if focused
     focusSelf();
     parentKeyNavContext.focusFirst();
   }
 
+  // Signal from child to focus the last element in the tree. Unfocus our children and pass the message up the tree
   function focusLast() {
-    // unfocus children if focused
     focusSelf();
     parentKeyNavContext.focusLast();
   }
@@ -89,8 +89,14 @@ export default function NxTreeItem(props: ItemProps) {
     return !!ref.current?.querySelector('.nx-tree__item');
   }
 
+  function stopPropAndPreventDefault(evt: SyntheticEvent) {
+    evt.stopPropagation();
+    evt.preventDefault();
+  }
+
+  // handle parent focusing or unfocusing of the subtree rooted at this item
   useEffect(function() {
-    if (!!parentFocusedChild && parentFocusedChild === ref.current) {
+    if (parentsFocusedChild && parentsFocusedChild === ref.current) {
       if (!focusState) {
         if (parentKeyNavContext.navigationDirection === 'down') {
           // focus moved into this item from above; focus this item itself
@@ -108,22 +114,20 @@ export default function NxTreeItem(props: ItemProps) {
       }
     }
     else {
-      // focus moved to some other child, clear our focus state
+      // focus moved somewhere else, clear our focus state
       setFocusState(null);
     }
-  }, [parentFocusedChild]);
+  }, [parentsFocusedChild]);
 
   function onKeyDown(evt: KeyboardEvent<HTMLLIElement>) {
     switch (evt.key) {
       case 'ArrowUp':
-        evt.stopPropagation();
-        evt.preventDefault();
+        stopPropAndPreventDefault(evt);
         parentKeyNavContext.setNavigationDirection('up');
         parentKeyNavContext.focusPrev();
         break;
       case 'ArrowDown':
-        evt.stopPropagation();
-        evt.preventDefault();
+        stopPropAndPreventDefault(evt);
 
         parentKeyNavContext.setNavigationDirection('down');
 
@@ -135,8 +139,7 @@ export default function NxTreeItem(props: ItemProps) {
         }
         break;
       case 'ArrowRight':
-        evt.stopPropagation();
-        evt.preventDefault();
+        stopPropAndPreventDefault(evt);
 
         parentKeyNavContext.setNavigationDirection('down');
 
@@ -154,8 +157,7 @@ export default function NxTreeItem(props: ItemProps) {
         }
         break;
       case 'ArrowLeft':
-        evt.stopPropagation();
-        evt.preventDefault();
+        stopPropAndPreventDefault(evt);
 
         parentKeyNavContext.setNavigationDirection('down');
 
@@ -167,20 +169,19 @@ export default function NxTreeItem(props: ItemProps) {
         }
         break;
       case 'Home':
-        evt.preventDefault();
-        evt.stopPropagation();
+        stopPropAndPreventDefault(evt);
         focusFirst();
         break;
       case 'End':
-        evt.preventDefault();
-        evt.stopPropagation();
+        stopPropAndPreventDefault(evt);
         focusLast();
         break;
       case 'Enter':
-        evt.stopPropagation();
+        stopPropAndPreventDefault(evt);
         if (onActivate) {
           onActivate();
         }
+        break;
     }
   }
 
@@ -189,29 +190,31 @@ export default function NxTreeItem(props: ItemProps) {
       onFocusProp(evt);
     }
 
-    // if a child received focus (for instance due to a click) ensure that the focusedChild is updated
+    // if a child received focus (for instance due to a click) ensure that the focusedState is updated
     setFocusState(evt.target === ref.current ? 'self' : 'children');
   }
 
-  const intersection = (
-    <svg className={intersectionLineClasses} viewBox="0 0 36 40">
-      <line className="nx-tree__top-line" x1="12" x2="12" y2={topLineEnd} />
-      <line className="nx-tree__right-line" x1={rightLineStart} x2="36" y1="28" y2="28" />
-      { collapsible ? (
-          <>
-            <NxFontAwesomeIcon className="nx-tree__collapse-icon"
-                               height="14"
-                               width="14"
-                               x="5"
-                               y="21"
-                               icon={collapseIcon} />
-            <rect className="nx-tree__collapse-click" height="24" width="24" y="16" onClick={onToggleCollapse} />
-          </>
-        ) :
-        <line className="nx-tree__bottom-line" x1="12" x2="12" y1="27.5" y2="40" />
-      }
-    </svg>
-  );
+  const topLineEnd = collapsible ? '16' : '28.5',
+      rightLineStart = collapsible ? '24' : '11.5',
+      intersection = (
+        <svg className={intersectionLineClasses} viewBox="0 0 36 40">
+          <line className="nx-tree__top-line" x1="12" x2="12" y2={topLineEnd} />
+          <line className="nx-tree__right-line" x1={rightLineStart} x2="36" y1="28" y2="28" />
+          { collapsible ? (
+              <>
+                <NxFontAwesomeIcon className="nx-tree__collapse-icon"
+                                   height="14"
+                                   width="14"
+                                   x="5"
+                                   y="21"
+                                   icon={collapseIcon} />
+                <rect className="nx-tree__collapse-click" height="24" width="24" y="16" onClick={onToggleCollapse} />
+              </>
+            ) :
+            <line className="nx-tree__bottom-line" x1="12" x2="12" y1="27.5" y2="40" />
+          }
+        </svg>
+      );
 
   return (
     <li role="treeitem"

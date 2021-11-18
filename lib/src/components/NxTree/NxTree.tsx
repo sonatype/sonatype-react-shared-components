@@ -20,11 +20,17 @@ import './NxTree.scss';
 function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
   const { className, onFocus: onFocusProp, ...otherProps } = props,
       parentKeyNavContext = useContext(TreeKeyNavContext),
+      ref = useRef<HTMLUListElement>(null),
+
+      // The child tree item which is focusable, if any. Only one item in the tree is focusable at a time
       [focusedChild, setFocusedChild] = useState<Element | null>(null),
 
-      // NOTE: only used for the top-level tree, ignored in subtrees
+      // Whether keynav is currently moving upwards or down. Determines whether entering a subtree
+      // should focus its top element or its last visible descendant
+      // NOTE: only the state stored in the top-level tree is used, subtrees ignore their version of
+      // this state and delegate to the root tree
       [navigationDirection, setNavigationDirection] = useState<NavigationDirection>('down'),
-      ref = useRef<HTMLUListElement>(null),
+
       childKeyNavContext = {
         setNavigationDirection: parentKeyNavContext?.setNavigationDirection || setNavigationDirection,
         navigationDirection: parentKeyNavContext?.navigationDirection || navigationDirection,
@@ -49,7 +55,11 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
             }
           }
         },
+
+        // delegate to parent item if any
         focusParent: parentKeyNavContext?.focusParent || (() => {}),
+
+        // subtrees delegate to root
         focusFirst: parentKeyNavContext?.focusFirst || function() {
           setNavigationDirection('down');
           setFocusedChild(ref.current?.firstElementChild || null);
@@ -71,7 +81,7 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
   useEffect(function() {
     // We want to focus either the first or last child of this tree in two scenarios:
     // 1. this is the top tree
-    // 2. this is a subtree which is currently designated (via `focusedChild) as containing the focus
+    // 2. this is a subtree which is currently designated (via `focusedChild`) as containing the focus
     if (!parentKeyNavContext ||
         (parentKeyNavContext?.focusedChild && parentKeyNavContext?.focusedChild === ref.current)) {
       if (!focusedChild) {
@@ -113,7 +123,6 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
           className={classes}
           role={!!parentKeyNavContext ? 'group' : 'tree'}
           onFocus={onFocus}
-          //onKeyDown={parentKeyNavContext ? onKeyDownProp : topLevelOnKeyDown}
           { ...otherProps } />
     </TreeKeyNavContext.Provider>
   );
