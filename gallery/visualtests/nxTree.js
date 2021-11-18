@@ -634,13 +634,13 @@ describe('NxTree', function() {
 
       await videosClick.click();
       expect(await videos.isFocused()).toBe(true);
-      expect(await hasClass(images, 'open')).toBe(true);
+      expect(await hasClass(videos, 'open')).toBe(true);
 
       await browser.keys('Enter');
 
       // no change
       expect(await videos.isFocused()).toBe(true);
-      expect(await hasClass(images, 'open')).toBe(true);
+      expect(await hasClass(videos, 'open')).toBe(true);
     });
   });
 });
