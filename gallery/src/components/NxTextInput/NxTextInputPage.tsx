@@ -130,7 +130,7 @@ const NxTextInputPage = () =>
               NxTextInput supports any html attribute that's normally supported by either HTML
               <NxCode>&lt;input&gt;</NxCode> or HTML
               <NxCode>&lt;textarea&gt;</NxCode>. The only notable exceptions are:
-              <NxList className="nx-list--bulleted">
+              <NxList bulleted>
                 <NxList.Item>
                   <NxList.Text>
                     <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly

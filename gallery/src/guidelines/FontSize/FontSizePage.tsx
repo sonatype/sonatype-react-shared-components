@@ -47,27 +47,27 @@ const FontSizePage = () =>
 
     <section>
       <NxH3>Vocabulary</NxH3>
-      <ul className="nx-list">
-        <li className="nx-list__item">
-          <span className="nx-list__text">Glyph:</span>
-          <span className="nx-list__subtext">The visible shape of a character.</span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">Baseline:</span>
-          <span className="nx-list__subtext">
+      <NxList>
+        <NxList.Item>
+          <NxList.Text>Glyph:</NxList.Text>
+          <NxList.Subtext>The visible shape of a character.</NxList.Subtext>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Baseline:</NxList.Text>
+          <NxList.Subtext>
             When writing or printing characters, the baseline is the <q>bottom</q> of standard characters. For
             instance, when writing by hand on ruled paper, the rule line on which you are writing is the baseline.
             By default, the characters in a sequence of text all have their baselines aligned.
-          </span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">Descender:</span>
-          <span className="nx-list__subtext">
+          </NxList.Subtext>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Descender:</NxList.Text>
+          <NxList.Subtext>
             Many glyphs, such as <q>q</q>, contain parts that drop below the baseline. Fonts and line layouts must
             take this into account.
-          </span>
-        </li>
-      </ul>
+          </NxList.Subtext>
+        </NxList.Item>
+      </NxList>
     </section>
 
     <section>

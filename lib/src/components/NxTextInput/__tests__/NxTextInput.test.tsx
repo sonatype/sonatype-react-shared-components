@@ -70,6 +70,10 @@ describe('NxTextInput', function() {
     expect(getShallowComponent({ type: 'password' }).find('input')).toHaveProp('type', 'password');
   });
 
+  it('renders a date input if type is "date"', function() {
+    expect(getShallowComponent({ type: 'date' }).find('input')).toHaveProp('type', 'date');
+  });
+
   it('renders a textarea if type is "textarea"', function() {
     expect(getShallowComponent({ type: 'textarea' })).not.toContainMatchingElement('input');
     expect(getShallowComponent({ type: 'textarea' })).toContainMatchingElement('textarea');

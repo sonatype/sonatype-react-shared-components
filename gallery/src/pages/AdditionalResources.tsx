@@ -19,7 +19,7 @@ const AdditionalResources = () =>
       <NxTile.SubsectionHeader>
         <NxH3>Classes / Tutorials</NxH3>
       </NxTile.SubsectionHeader>
-      <NxList className="nx-list--bulleted">
+      <NxList bulleted>
         <NxList.Item>
           <NxList.Text>
             <NxTextLink external href="https://reactjs.org/tutorial/tutorial.html">
@@ -66,7 +66,7 @@ const AdditionalResources = () =>
       <NxTile.SubsectionHeader>
         <NxH3>Good Reads</NxH3>
       </NxTile.SubsectionHeader>
-      <NxList className="nx-list--bulleted">
+      <NxList bulleted>
         <NxList.Item>
           <NxList.Text>
             <NxTextLink external href="https://reactjs.org/docs/hello-world.html">
@@ -108,7 +108,7 @@ const AdditionalResources = () =>
       <NxTile.SubsectionHeader>
         <NxH3>Getting your hands dirty</NxH3>
       </NxTile.SubsectionHeader>
-      <NxList className="nx-list--bulleted">
+      <NxList bulleted>
         <NxList.Item>
           <NxList.Text>
             <NxTextLink external href="https://github.com/sonatype/sonatype-application-builder">

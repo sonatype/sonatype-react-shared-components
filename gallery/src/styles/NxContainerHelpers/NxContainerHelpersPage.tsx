@@ -26,7 +26,7 @@ const NxContainerHelpersPage = () => {
           The <NxCode>container-vertical</NxCode> and
           <NxCode>container-horizontal</NxCode> SCSS mixins are provided to facilitate these patterns.
         </NxP>
-        <NxList className="nx-list--bulleted">
+        <NxList bulleted>
           <NxList.Item>
             <NxList.Text>
               Elements should specify margin as desired in the directions in which they may have siblings, i.e. top
@@ -61,7 +61,7 @@ const NxContainerHelpersPage = () => {
         <NxP>
           These guidelines do have a few caveats that developers must be aware of:
         </NxP>
-        <NxList className="nx-list--bulleted">
+        <NxList bulleted>
           <NxList.Item>
             <NxList.Text>
               Bare text nodes don't count in the <NxCode>:first-child</NxCode> and

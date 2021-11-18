@@ -6,6 +6,7 @@
  */
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-hide-checkbox-helper';
 
 .nx-tree {
   $normal-item-label-row-height: 40px;

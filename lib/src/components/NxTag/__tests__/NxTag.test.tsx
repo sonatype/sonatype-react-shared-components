@@ -33,7 +33,7 @@ describe('NxTag', function() {
     const tagChildren = getShallowComponent({ children: 'tag text' });
     expect(tagChildren.find('.nx-tag__text')).toHaveText('tag text');
 
-    expect(tagChildren.children().first()).toMatchSelector('div');
+    expect(tagChildren.children().first()).toMatchSelector('label');
     // expect(tagChildren.children().at(1)).toMatchSelector('span');
   });
 
@@ -108,7 +108,7 @@ describe('NxSelectableTag', function() {
         trigger = getShallowComponent({ onSelect });
 
     expect(onSelect).not.toHaveBeenCalled();
-    trigger.simulate('click');
+    trigger.find('input').simulate('change');
     expect(onSelect).toHaveBeenCalled();
   });
 });
