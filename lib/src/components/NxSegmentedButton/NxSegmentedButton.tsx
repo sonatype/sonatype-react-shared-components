@@ -39,7 +39,7 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
             <NxOverflowTooltip>{item}</NxOverflowTooltip>
           ));
 
-      const renderToggleElement: AbstractDropdownRenderToggleElement = ({ toggleRef, onToggleCollapse }) => (
+      const renderToggleElement: AbstractDropdownRenderToggleElement = (toggleRef, onToggleCollapse) => (
         <>
           <NxButton type={type || undefined}
                     variant={variant}

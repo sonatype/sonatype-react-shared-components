@@ -38,7 +38,7 @@ const NxIconDropdown: FC<Props> = function NxIconDropdown(props) {
       child
   ));
 
-  const renderToggleElement: AbstractDropdownRenderToggleElement = ({ toggleRef, onToggleCollapse}) => (
+  const renderToggleElement: AbstractDropdownRenderToggleElement = (toggleRef, onToggleCollapse) => (
     <NxButton ref={toggleRef}
               type="button"
               variant="icon-only"

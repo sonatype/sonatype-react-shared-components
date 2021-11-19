@@ -37,7 +37,7 @@ describe('AbstractDropdown', () => {
     }
   });
 
-  const renderToggleElement: AbstractDropdownRenderToggleElement = ({ toggleRef, onToggleCollapse }) => (
+  const renderToggleElement: AbstractDropdownRenderToggleElement = (toggleRef, onToggleCollapse) => (
     <button type="button"
             id="toggle-element"
             ref={toggleRef}

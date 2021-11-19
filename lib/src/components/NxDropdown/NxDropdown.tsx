@@ -43,7 +43,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
       child
   ));
 
-  const renderToggleElement: AbstractDropdownRenderToggleElement = ({ onToggleCollapse, toggleRef }) => {
+  const renderToggleElement: AbstractDropdownRenderToggleElement = (toggleRef, onToggleCollapse) => {
     const button = (
       <NxButton ref={toggleRef}
                 type="button"
