@@ -13,8 +13,7 @@ import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUti
 export type AbstractDropdownRenderToggleElement =
   (toggleRef: RefObject<HTMLButtonElement>, onToggleCollapse: (() => void)) => ReactNode;
 
-export type AbstractDropdownProps = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
-  className?: string;
+export interface AbstractDropdownProps extends HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
   disabled?: boolean | null;
   renderToggleElement: AbstractDropdownRenderToggleElement;
@@ -22,7 +21,7 @@ export type AbstractDropdownProps = Omit<HTMLAttributes<HTMLDivElement>, 'classN
   onToggleCollapse?: (() => void) | null;
   onCloseKeyDown?: KeyboardEventHandler | null;
   onCloseClick?: ((e: MouseEvent) => void) | null;
-};
+}
 
 export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
   label: ReactNode | string;
