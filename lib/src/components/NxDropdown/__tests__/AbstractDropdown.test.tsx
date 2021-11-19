@@ -10,7 +10,7 @@ import NxDropdownMenu from '../../NxDropdownMenu/NxDropdownMenu';
 
 import AbstractDropdown, {
   AbstractDropdownProps,
-  AbstractDropdownToggleElement
+  AbstractDropdownRenderToggleElement
 } from '../AbstractDropdown';
 
 describe('AbstractDropdown', () => {
@@ -18,7 +18,7 @@ describe('AbstractDropdown', () => {
 
   const minimalProps = {
     isOpen: false,
-    toggleElement: () => <button>Toggle</button>,
+    renderToggleElement: () => <button>Toggle</button>,
     onToggleCollapse: () => {}
   };
 
@@ -37,7 +37,7 @@ describe('AbstractDropdown', () => {
     }
   });
 
-  const toggleElement: AbstractDropdownToggleElement = ({ toggleRef, onToggleCollapse }) => (
+  const renderToggleElement: AbstractDropdownRenderToggleElement = ({ toggleRef, onToggleCollapse }) => (
     <button type="button"
             id="toggle-element"
             ref={toggleRef}
@@ -49,7 +49,7 @@ describe('AbstractDropdown', () => {
   it('renders toggleElement and calls onToggleCollapse when toggleElement is clicked', function() {
     const onToggleCollapse = jest.fn();
 
-    const component = getShallowComponent({ toggleElement, onToggleCollapse });
+    const component = getShallowComponent({ renderToggleElement, onToggleCollapse });
     const button = component.find('#toggle-element');
 
     expect(button).toExist();
@@ -65,7 +65,7 @@ describe('AbstractDropdown', () => {
     const childrenElement = <div id="dropdown-menu-children">Hello</div>;
 
     const component = getShallowComponent({
-      toggleElement,
+      renderToggleElement,
       children: childrenElement,
       isOpen: true
     });

@@ -10,18 +10,18 @@ import * as PropTypes from 'prop-types';
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../NxButton/types';
 import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
 
-export interface AbstractDropdownToggleElementProps {
+export interface AbstractDropdownRenderToggleElementProps {
   onToggleCollapse: (() => void);
   toggleRef: RefObject<HTMLButtonElement>;
 }
 
-export type AbstractDropdownToggleElement = (props: AbstractDropdownToggleElementProps) => ReactNode;
+export type AbstractDropdownRenderToggleElement = (props: AbstractDropdownRenderToggleElementProps) => ReactNode;
 
 export type AbstractDropdownProps = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
   className?: string;
   isOpen: boolean;
   disabled?: boolean | null;
-  toggleElement: AbstractDropdownToggleElement;
+  renderToggleElement: AbstractDropdownRenderToggleElement;
   children?: ReactElement | ReactElement[] | null;
   onToggleCollapse?: (() => void) | null;
   onCloseKeyDown?: KeyboardEventHandler | null;

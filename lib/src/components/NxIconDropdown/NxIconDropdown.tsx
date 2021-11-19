@@ -14,7 +14,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import './NxIconDropdown.scss';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
-import AbstractDropdown, { AbstractDropdownToggleElement } from '../NxDropdown/AbstractDropdown';
+import AbstractDropdown, { AbstractDropdownRenderToggleElement } from '../NxDropdown/AbstractDropdown';
 
 const NxIconDropdown: FC<Props> = function NxIconDropdown(props) {
   const {
@@ -38,7 +38,7 @@ const NxIconDropdown: FC<Props> = function NxIconDropdown(props) {
       child
   ));
 
-  const toggleElement: AbstractDropdownToggleElement = ({ toggleRef, onToggleCollapse}) => (
+  const renderToggleElement: AbstractDropdownRenderToggleElement = ({ toggleRef, onToggleCollapse}) => (
     <NxButton ref={toggleRef}
               type="button"
               variant="icon-only"
@@ -53,7 +53,7 @@ const NxIconDropdown: FC<Props> = function NxIconDropdown(props) {
 
   return (
     <AbstractDropdown className={classes}
-                      toggleElement={toggleElement}
+                      renderToggleElement={renderToggleElement}
                       isOpen={isOpen}
                       disabled={disabled}
                       { ...otherProps }

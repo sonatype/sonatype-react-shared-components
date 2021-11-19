@@ -16,7 +16,7 @@ import { wrapTooltipProps } from '../../util/tooltipUtils';
 import './NxDropdown.scss';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
-import AbstractDropdown, { AbstractDropdownToggleElement } from './AbstractDropdown';
+import AbstractDropdown, { AbstractDropdownRenderToggleElement } from './AbstractDropdown';
 
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   const {
@@ -43,7 +43,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
       child
   ));
 
-  const toggleElement: AbstractDropdownToggleElement = ({ onToggleCollapse, toggleRef }) => {
+  const renderToggleElement: AbstractDropdownRenderToggleElement = ({ onToggleCollapse, toggleRef }) => {
     const button = (
       <NxButton ref={toggleRef}
                 type="button"
@@ -64,7 +64,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
     <AbstractDropdown className={classes}
                       isOpen={isOpen}
                       disabled={disabled}
-                      toggleElement={toggleElement}
+                      renderToggleElement={renderToggleElement}
                       { ...otherProps }
     >
       { wrappedChildren }

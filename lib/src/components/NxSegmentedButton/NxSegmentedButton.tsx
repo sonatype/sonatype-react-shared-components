@@ -16,7 +16,7 @@ import {Props, propTypes} from './types';
 
 import './NxSegmentedButton.scss';
 
-import AbstractDropdown, { AbstractDropdownToggleElement } from '../NxDropdown/AbstractDropdown';
+import AbstractDropdown, { AbstractDropdownRenderToggleElement } from '../NxDropdown/AbstractDropdown';
 
 const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
     function NxSegmentedButton(props, ref) {
@@ -39,7 +39,7 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
             <NxOverflowTooltip>{item}</NxOverflowTooltip>
           ));
 
-      const toggleElement: AbstractDropdownToggleElement = ({ toggleRef, onToggleCollapse }) => (
+      const renderToggleElement: AbstractDropdownRenderToggleElement = ({ toggleRef, onToggleCollapse }) => (
         <>
           <NxButton type={type || undefined}
                     variant={variant}
@@ -64,7 +64,7 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
                           isOpen={isOpen}
                           disabled={disabled}
                           className={classes}
-                          toggleElement={toggleElement}
+                          renderToggleElement={renderToggleElement}
                           onToggleCollapse={externalOnToggleCollapse}
                           { ...attrs }>
 

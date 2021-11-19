@@ -12,8 +12,8 @@ import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import { AbstractDropdownProps } from './types';
 export {
   AbstractDropdownProps,
-  AbstractDropdownToggleElementProps,
-  AbstractDropdownToggleElement
+  AbstractDropdownRenderToggleElementProps,
+  AbstractDropdownRenderToggleElement
 } from './types';
 
 /**
@@ -39,7 +39,7 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
     className,
     isOpen,
     disabled,
-    toggleElement,
+    renderToggleElement,
     children,
     onToggleCollapse: onToggleCollapseProp,
     onKeyDown: onKeyDownProp,
@@ -137,7 +137,7 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
 
   return (
     <div ref={ref} className={className} onKeyDown={onKeyDown} {...attrs}>
-      { toggleElement({ toggleRef, onToggleCollapse }) }
+      { renderToggleElement({ toggleRef, onToggleCollapse }) }
       { isOpen &&
         <NxDropdownMenu ref={menuRef} onClosing={onMenuClosing}>
           { children }
