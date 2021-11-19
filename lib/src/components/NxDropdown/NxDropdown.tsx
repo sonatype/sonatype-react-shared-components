@@ -16,9 +16,7 @@ import { wrapTooltipProps } from '../../util/tooltipUtils';
 import './NxDropdown.scss';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
-import AbstractDropdown, {
-  AbstractDropdownToggleElement
-} from './AbstractDropdown';
+import AbstractDropdown, { AbstractDropdownToggleElement } from './AbstractDropdown';
 
 const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
   const {
