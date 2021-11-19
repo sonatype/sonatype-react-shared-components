@@ -130,7 +130,7 @@ describe('NxSegmentedButton', function() {
     expect(onToggleOpen).not.toHaveBeenCalled();
 
     act(() => {
-      component!.find('button.nx-segmented-btn__dropdown-btn').at(0)
+      component!.find('button.nx-segmented-btn__dropdown-btn')
           .getDOMNode().dispatchEvent(new MouseEvent('click', {
             bubbles: true
           }));
@@ -146,7 +146,7 @@ describe('NxSegmentedButton', function() {
     expect(onToggleOpen).not.toHaveBeenCalled();
 
     act(() => {
-      component!.find('button.nx-segmented-btn__dropdown-btn').at(0)
+      component!.find('button.nx-segmented-btn__dropdown-btn')
           .getDOMNode().dispatchEvent(new MouseEvent('click', {
             bubbles: true
           }));
