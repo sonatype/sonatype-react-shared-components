@@ -32,7 +32,7 @@ describe('NxTree', function() {
   }
 
   function collapseTarget(treeitem) {
-    return treeitem.$('.nx-tree__collapse-icon');
+    return treeitem.$('.nx-tree__collapse-click');
   }
 
   function hasClass(element, cls) {
