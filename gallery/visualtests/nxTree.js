@@ -20,7 +20,7 @@ describe('NxTree', function() {
       noGutterExampleSelector = '#nx-tree-no-gutter-example .gallery-example-live',
       anItemSelector = `${collapsibleExampleSelector} > .nx-tree__item > .nx-tree > .nx-tree__item >
           .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item:nth-child(2)`,
-      noGutterFirstItemSelector = `${noGutterExampleSelector} > .nx-tree__item`;
+      noGutterFirstItemSelector = `${noGutterExampleSelector} .nx-tree > .nx-tree__item`;
 
   function itemWithText(tree, text) {
     // creates a relative XPath selector for a tree item with the given text
@@ -447,7 +447,7 @@ describe('NxTree', function() {
       it('does nothing on a top-level collapsed tree item', async function() {
         const tree = await browser.$(collapsibleExampleSelector),
             root = await itemWithText(tree, '/'),
-            rootCollapse = await root.$('.nx-tree__line-intersection .nx-icon');
+            rootCollapse = await collapseTarget(root);
 
         await rootCollapse.click();
         expect(await root.isFocused()).toBe(true);
@@ -632,18 +632,18 @@ describe('NxTree', function() {
 
     it('does nothing when enter is pressed on an item without interactive content', async function() {
       const tree = await browser.$(collapsibleExampleSelector),
-          videos = await itemWithText(tree, 'videos'),
-          videosClick = await clickTarget(videos);
+          keyboard = await itemWithText(tree, 'keyboard'),
+          keyboardClick = await clickTarget(keyboard);
 
-      await videosClick.click();
-      expect(await videos.isFocused()).toBe(true);
-      expect(await hasClass(videos, 'open')).toBe(true);
+      await keyboardClick.click();
+      expect(await keyboard.isFocused()).toBe(true);
+      expect(await hasClass(keyboard, 'open')).toBe(true);
 
       await browser.keys('Enter');
 
       // no change
-      expect(await videos.isFocused()).toBe(true);
-      expect(await hasClass(videos, 'open')).toBe(true);
+      expect(await keyboard.isFocused()).toBe(true);
+      expect(await hasClass(keyboard, 'open')).toBe(true);
     });
   });
 });
