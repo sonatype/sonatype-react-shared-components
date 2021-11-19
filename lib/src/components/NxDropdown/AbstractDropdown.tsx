@@ -104,7 +104,9 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
   function onToggleCollapse() {
     // When closing, this is handled by handlDocumentClick. So only do it here when opening
     // (i.e. when not already open)
-    !isOpen && onToggleCollapseProp && onToggleCollapseProp();
+    if (!isOpen && onToggleCollapseProp) {
+      onToggleCollapseProp();
+    }
   }
 
   useEffect(() => {
