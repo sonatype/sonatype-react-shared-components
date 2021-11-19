@@ -20,7 +20,6 @@ describe('NxTree', function() {
       noGutterExampleSelector = '#nx-tree-no-gutter-example .gallery-example-live',
       anItemSelector = `${collapsibleExampleSelector} > .nx-tree__item > .nx-tree > .nx-tree__item >
           .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item:nth-child(2)`,
-      anItemCollapseSelector = `${anItemSelector} > .nx-tree__line-intersection .nx-tree__collapse-click`,
       noGutterFirstItemSelector = `${noGutterExampleSelector} .nx-tree > .nx-tree__item`;
 
   function itemWithText(tree, text) {
@@ -66,7 +65,14 @@ describe('NxTree', function() {
 
   it('looks right when a no-gutter item is focused', focusTest(noGutterExampleSelector, noGutterFirstItemSelector));
 
-  it('looks right when a collapse control is clicked', clickTest(collapsibleExampleSelector, anItemSelector));
+  it('looks right when a collapse control is clicked', async function() {
+    const tree = await browser.$(collapsibleExampleSelector),
+        images = await itemWithText(tree, 'images'),
+        imagesCollapse = await collapseTarget(images);
+
+    await imagesCollapse.click();
+    await simpleTest(collapsibleExampleSelector)();
+  });
 
   describe('keyboard navigation', function() {
     it('initially focuses the first item in the tree when reached via tab', async function() {
