@@ -65,7 +65,6 @@ describe('NxStatefulDropdown', () => {
     expect(mounted.find('.nx-dropdown-menu')).not.toExist();
 
     mounted.find(NxButton).simulate('click');
-
     expect(mounted.find('.nx-dropdown-menu')).toExist();
     mounted.unmount();
   });

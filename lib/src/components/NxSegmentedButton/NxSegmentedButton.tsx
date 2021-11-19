@@ -46,7 +46,7 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
                     className="nx-segmented-btn__main-btn"
                     onClick={onClick}
                     disabled={disabled || undefined}>
-            { buttonContent }
+            {buttonContent}
           </NxButton>
           <NxButton ref={toggleRef}
                     type="button"

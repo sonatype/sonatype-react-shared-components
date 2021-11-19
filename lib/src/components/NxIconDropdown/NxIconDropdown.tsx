@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FC, ReactElement } from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
 import classnames from 'classnames';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
@@ -16,7 +16,7 @@ import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
 import AbstractDropdown, { AbstractDropdownRenderToggleElement } from '../NxDropdown/AbstractDropdown';
 
-const NxIconDropdown: FC<Props> = function NxIconDropdown(props) {
+const NxIconDropdown: FunctionComponent<Props> = function NxIconDropdown(props) {
   const {
     icon,
     className,
