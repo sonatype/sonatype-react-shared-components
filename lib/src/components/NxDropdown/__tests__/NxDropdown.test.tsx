@@ -94,9 +94,7 @@ describe('NxDropdown', () => {
   it('uses VDOM as label if supplied', function() {
     const label = <NxFontAwesomeIcon icon={faTrash} />,
         component = getMountedComponent({ label });
-
-    const dropdown = component.find(AbstractDropdown);
-    const button = dropdown.find(NxButton);
+    const button = component.find(NxButton);
 
     expect(button.childAt(0)).toContainReact(label);
   });

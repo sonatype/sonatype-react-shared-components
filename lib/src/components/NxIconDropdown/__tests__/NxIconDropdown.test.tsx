@@ -66,8 +66,8 @@ describe('NxIconDropdown', () => {
   });
 
   it('correctly assigns supplied classes', function() {
-    const component = getMountedComponent({ className: 'class1 class2' }).find(AbstractDropdown);
-    expect(component).toHaveClassName('nx-icon-dropdown class1 class2');
+    const div = getMountedComponent({ className: 'class1 class2' }).find('div.nx-icon-dropdown');
+    expect(div).toHaveClassName(' class1 class2');
   });
 
   it('disables the button (and the toggle fn) when the disabled prop is supplied', function() {
@@ -94,7 +94,7 @@ describe('NxIconDropdown', () => {
       <button id="link4" className="nx-dropdown-right-button" key="4">Link4</button>
     ];
     const component = getMountedComponent({ children, isOpen: true }),
-        menu = component.find(NxDropdownMenu).find('div').at(0);
+        menu = component.find('div.nx-dropdown-menu');
 
     expect(menu.childAt(0)).toMatchElement(<a id="link1" key="1">Link1</a>);
 
