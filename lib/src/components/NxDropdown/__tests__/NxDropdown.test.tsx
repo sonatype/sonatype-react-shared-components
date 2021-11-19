@@ -116,7 +116,7 @@ describe('NxDropdown', () => {
       <button id="link4" className="nx-dropdown-right-button" key="4">Link4</button>
     ];
     const component = getMountedComponent({ children, isOpen: true }),
-        menu = component.find(NxDropdownMenu).find('div');
+        menu = component.find('div.nx-dropdown-menu');
 
     expect(menu.childAt(0)).toMatchElement(<a id="link1" key="1">Link1</a>);
 
