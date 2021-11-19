@@ -6,7 +6,6 @@
  */
 import React from 'react';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import NxDropdownMenu from '../../NxDropdownMenu/NxDropdownMenu';
 
 import AbstractDropdown, {
   AbstractDropdownProps,
@@ -70,11 +69,14 @@ describe('AbstractDropdown', () => {
       isOpen: true
     });
 
-    const dropdownMenu = component.find(NxDropdownMenu);
-
-    const child = dropdownMenu.find('#dropdown-menu-children');
+    let child = component.find('#dropdown-menu-children');
 
     expect(child).toExist();
     expect(child).toMatchElement(childrenElement);
+
+    component.setProps({ isOpen: false });
+
+    child = component.find('#dropdown-menu-children');
+    expect(child).not.toExist();
   });
 });
