@@ -24,7 +24,10 @@ describe('NxCollapsibleItems', function() {
 
   it('is aliased as NxTreeView', function() {
     expect(NxCollapsibleItems).toBe(NxTreeView);
-    expect(NxCollapsibleItems.Child).toBe(NxTreeView.Child);
+  });
+
+  it('aliased its Child subcomponent as NxTreeViewChild', function() {
+    expect(NxCollapsibleItems.Child).toBe(NxTreeViewChild);
   });
 
   it('renders a div with a list role and the nx-collapsible-items class', function() {
