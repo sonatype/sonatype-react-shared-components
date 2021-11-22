@@ -24,10 +24,6 @@ describe('NxCollapsibleItems', function() {
 
   it('is aliased as NxTreeView', function() {
     expect(NxCollapsibleItems).toBe(NxTreeView);
-  });
-
-  it('has NxCollapsibleItemsChild that is aliased as NxTreeViewChild', function() {
-    expect(NxCollapsibleItemsChild).toBe(NxTreeViewChild);
     expect(NxCollapsibleItems.Child).toBe(NxTreeView.Child);
   });
 
