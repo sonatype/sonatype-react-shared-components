@@ -8,7 +8,7 @@
 import React from 'react';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import NxCollapsibleItems, { NxCollapsibleItemsChild, Props } from '../NxCollapsibleItems';
+import NxCollapsibleItems, { Props } from '../NxCollapsibleItems';
 import { NxTreeView, NxTreeViewChild } from '../../../index';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
