@@ -155,19 +155,6 @@ describe('NxSegmentedButton', function() {
     expect(onToggleOpen).toHaveBeenCalledTimes(1);
   });
 
-  it('does not call the onToggleOpen prop when the component is disabled', function() {
-    const onToggleOpen = jest.fn(),
-        component = getMounted({ onToggleOpen, disabled: true });
-
-    expect(onToggleOpen).not.toHaveBeenCalled();
-
-    component.find('.nx-segmented-btn__main-btn').at(0).simulate('click');
-    expect(onToggleOpen).not.toHaveBeenCalled();
-
-    component.find('.nx-segmented-btn__dropdown-btn').at(0).simulate('click');
-    expect(onToggleOpen).not.toHaveBeenCalled();
-  });
-
   it('disables the buttons based on the disabled prop', function() {
     expect(getMounted().find('.nx-segmented-btn__main-btn').at(0))
         .not.toHaveProp('disabled', true);
