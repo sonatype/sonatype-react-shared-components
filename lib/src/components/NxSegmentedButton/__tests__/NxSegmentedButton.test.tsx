@@ -82,20 +82,23 @@ describe('NxSegmentedButton', function() {
   it('renders nx-segmented-btn__main-btn and nx-segmented-btn__dropdown-btn NxButtons as children', function() {
     expect(getMounted()).toContainMatchingElement('.nx-segmented-btn__main-btn');
     expect(getMounted()).toContainMatchingElement('.nx-segmented-btn__dropdown-btn');
-    const mainButton = getMounted().find('.nx-segmented-btn__main-btn').at(0);
+    const mainButton = getMounted().find('ForwardRef(NxButton).nx-segmented-btn__main-btn');
     expect(mainButton).toMatchSelector(NxButton);
-    expect(getMounted().find('.nx-segmented-btn__dropdown-btn').at(0)).toMatchSelector(NxButton);
+    expect(getMounted().find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn')).toMatchSelector(NxButton);
   });
 
   it('sets the variant on the child buttons', function() {
     const primaryComponent = getMounted(),
         secondaryComponent = getMounted({ variant: 'secondary' });
 
-    expect(primaryComponent.find('.nx-segmented-btn__main-btn').at(0)).toHaveProp('variant', 'primary');
-    expect(primaryComponent.find('.nx-segmented-btn__dropdown-btn').at(0)).toHaveProp('variant', 'primary');
+    expect(primaryComponent.find('ForwardRef(NxButton).nx-segmented-btn__main-btn')).toHaveProp('variant', 'primary');
+    expect(primaryComponent.find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn'))
+        .toHaveProp('variant', 'primary');
 
-    expect(secondaryComponent.find('.nx-segmented-btn__main-btn').at(0)).toHaveProp('variant', 'secondary');
-    expect(secondaryComponent.find('.nx-segmented-btn__dropdown-btn').at(0)).toHaveProp('variant', 'secondary');
+    expect(secondaryComponent.find('ForwardRef(NxButton).nx-segmented-btn__main-btn'))
+        .toHaveProp('variant', 'secondary');
+    expect(secondaryComponent.find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn'))
+        .toHaveProp('variant', 'secondary');
   });
 
   it('sets the onClick handler on the nx-segmented-btn__main-btn', function() {
@@ -104,23 +107,27 @@ describe('NxSegmentedButton', function() {
 
     expect(onClick).not.toHaveBeenCalled();
 
-    component.find('.nx-segmented-btn__dropdown-btn').at(0).simulate('click');
+    component.find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn').simulate('click');
     expect(onClick).not.toHaveBeenCalled();
 
-    component.find('.nx-segmented-btn__main-btn').at(0).simulate('click');
+    component.find('ForwardRef(NxButton).nx-segmented-btn__main-btn').simulate('click');
     expect(onClick).toHaveBeenCalled();
   });
 
   it('passes the type to the main btn', function() {
-    expect(getMounted().find('.nx-segmented-btn__main-btn').at(0)).toHaveProp('type', undefined);
-    expect(getMounted({ type: 'button' }).find('.nx-segmented-btn__main-btn').at(0)).toHaveProp('type', 'button');
-    expect(getMounted({ type: 'submit' }).find('.nx-segmented-btn__main-btn').at(0)).toHaveProp('type', 'submit');
+    expect(getMounted().find('ForwardRef(NxButton).nx-segmented-btn__main-btn')).toHaveProp('type', undefined);
+    expect(getMounted({ type: 'button' }).find('ForwardRef(NxButton).nx-segmented-btn__main-btn'))
+        .toHaveProp('type', 'button');
+    expect(getMounted({ type: 'submit' }).find('ForwardRef(NxButton).nx-segmented-btn__main-btn'))
+        .toHaveProp('type', 'submit');
   });
 
   it('sets type="button" on the dropdown button', function() {
-    expect(getMounted().find('.nx-segmented-btn__dropdown-btn').at(0)).toHaveProp('type', 'button');
-    expect(getMounted({ type: 'button' }).find('.nx-segmented-btn__dropdown-btn').at(0)).toHaveProp('type', 'button');
-    expect(getMounted({ type: 'submit' }).find('.nx-segmented-btn__dropdown-btn').at(0)).toHaveProp('type', 'button');
+    expect(getMounted().find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn')).toHaveProp('type', 'button');
+    expect(getMounted({ type: 'button' }).find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn'))
+        .toHaveProp('type', 'button');
+    expect(getMounted({ type: 'submit' }).find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn'))
+        .toHaveProp('type', 'button');
   });
 
   it('calls onToggleOpen once when clicking to open the dropdown', function() {
@@ -156,38 +163,40 @@ describe('NxSegmentedButton', function() {
   });
 
   it('disables the buttons based on the disabled prop', function() {
-    expect(getMounted().find('.nx-segmented-btn__main-btn').at(0))
+    expect(getMounted().find('ForwardRef(NxButton).nx-segmented-btn__main-btn'))
         .not.toHaveProp('disabled', true);
-    expect(getMounted().find('.nx-segmented-btn__dropdown-btn').at(0))
-        .not.toHaveProp('disabled', true);
-
-    expect(getMounted({ disabled: null }).find('.nx-segmented-btn__main-btn').at(0))
-        .not.toHaveProp('disabled', true);
-    expect(getMounted({ disabled: null }).find('.nx-segmented-btn__dropdown-btn').at(0))
+    expect(getMounted().find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn'))
         .not.toHaveProp('disabled', true);
 
-    expect(getMounted({ disabled: false }).find('.nx-segmented-btn__main-btn').at(0))
+    expect(getMounted({ disabled: null }).find('ForwardRef(NxButton).nx-segmented-btn__main-btn'))
         .not.toHaveProp('disabled', true);
-    expect(getMounted({ disabled: false }).find('.nx-segmented-btn__dropdown-btn').at(0))
+    expect(getMounted({ disabled: null }).find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn'))
         .not.toHaveProp('disabled', true);
 
-    expect(getMounted({ disabled: true }).find('.nx-segmented-btn__main-btn').at(0))
+    expect(getMounted({ disabled: false }).find('ForwardRef(NxButton).nx-segmented-btn__main-btn'))
+        .not.toHaveProp('disabled', true);
+    expect(getMounted({ disabled: false }).find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn'))
+        .not.toHaveProp('disabled', true);
+
+    expect(getMounted({ disabled: true }).find('ForwardRef(NxButton).nx-segmented-btn__main-btn'))
         .toHaveProp('disabled', true);
-    expect(getMounted({ disabled: true }).find('.nx-segmented-btn__dropdown-btn').at(0))
+    expect(getMounted({ disabled: true }).find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn'))
         .toHaveProp('disabled', true);
   });
 
   it('renders the buttonContent within the nx-segmented-btn__main-btn', function() {
-    expect(getMounted().find('.nx-segmented-btn__main-btn').at(0)).toHaveText('Click Me');
+    expect(getMounted().find('ForwardRef(NxButton).nx-segmented-btn__main-btn')).toHaveText('Click Me');
   });
 
   it('renders a down caret in the dropdown button when not open', function() {
-    const icon = getMounted().find('.nx-segmented-btn__dropdown-btn').at(0).find(NxFontAwesomeIcon);
+    const icon = getMounted().find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn').find(NxFontAwesomeIcon);
     expect(icon).toHaveProp('icon', faCaretDown);
   });
 
   it('renders an up caret in the dropdown button when open', function() {
-    const icon = getMounted({ isOpen: true }).find('.nx-segmented-btn__dropdown-btn').at(0).find(NxFontAwesomeIcon);
+    const icon = getMounted({ isOpen: true })
+        .find('ForwardRef(NxButton).nx-segmented-btn__dropdown-btn')
+        .find(NxFontAwesomeIcon);
     expect(icon).toHaveProp('icon', faCaretUp);
   });
 
