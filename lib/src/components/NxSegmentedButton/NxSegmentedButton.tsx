@@ -11,12 +11,12 @@ import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxButton from '../NxButton/NxButton';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
-import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 
 import {Props, propTypes} from './types';
 
 import './NxSegmentedButton.scss';
-import useDropdownEvents from '../../util/useDropdownEvents';
+
+import AbstractDropdown, { AbstractDropdownRenderToggleElement } from '../NxDropdown/AbstractDropdown';
 
 const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
     function NxSegmentedButton(props, ref) {
@@ -30,9 +30,6 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
             isOpen,
             type,
             onToggleOpen: externalOnToggleCollapse,
-            onKeyDown: externalOnKeyDown,
-            onCloseClick,
-            onCloseKeyDown,
             ...attrs
           } = props,
           classes = classnames('nx-segmented-btn', className, {
@@ -40,13 +37,10 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
           }),
           wrappedMenuItems = React.Children.map<ReactElement, ReactElement>(children, item => (
             <NxOverflowTooltip>{item}</NxOverflowTooltip>
-          )),
-          { onKeyDown, onToggleCollapse, menuRef, toggleRef, onMenuClosing } =
-              useDropdownEvents(isOpen, disabled, externalOnToggleCollapse, onCloseClick, onCloseKeyDown,
-                  externalOnKeyDown);
+          ));
 
-      return (
-        <div ref={ref} className={classes} onKeyDown={onKeyDown} { ...attrs }>
+      const renderToggleElement: AbstractDropdownRenderToggleElement = (toggleRef, onToggleCollapse) => (
+        <>
           <NxButton type={type || undefined}
                     variant={variant}
                     className="nx-segmented-btn__main-btn"
@@ -62,8 +56,20 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
                     disabled={disabled || undefined}>
             <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown} />
           </NxButton>
-          { isOpen && <NxDropdownMenu ref={menuRef} onClosing={onMenuClosing}>{wrappedMenuItems}</NxDropdownMenu> }
-        </div>
+        </>
+      );
+
+      return (
+        <AbstractDropdown ref={ref}
+                          isOpen={isOpen}
+                          disabled={disabled}
+                          className={classes}
+                          renderToggleElement={renderToggleElement}
+                          onToggleCollapse={externalOnToggleCollapse}
+                          { ...attrs }>
+
+          { wrappedMenuItems }
+        </AbstractDropdown>
       );
     }
 );
