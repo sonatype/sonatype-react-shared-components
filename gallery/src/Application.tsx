@@ -47,13 +47,19 @@ import { PageContentDescription } from './pageConfigTypes';
 
 const pageMappings: PageMapping = mergeAll(values(pageConfig));
 
+const isPageContentDescription = (value: unknown): value is PageContentDescription =>
+  typeof value === 'object'
+  && value !== null
+  && value.hasOwnProperty('type');
+
 function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
   const pageName = match ? match.params.pageName : null,
       pageHeader = pageName || 'Home';
 
   const Content: ComponentType = pageName
-    ? React.isValidElement(pageMappings[pageName])
-      ? pageMappings[pageName] as ComponentType : (pageMappings[pageName] as PageContentDescription).content
+    ? isPageContentDescription(pageMappings[pageName])
+      ? (pageMappings[pageName] as PageContentDescription).content
+      : pageMappings[pageName] as ComponentType
     : Home;
 
   useEffect(function() {
