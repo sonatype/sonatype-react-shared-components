@@ -122,7 +122,7 @@ function GalleryNav() {
 
   return (
     <nav>
-      <NxFilterInput placeholder="Search RSC…"
+      <NxFilterInput placeholder="Filter components"
                      value={filter}
                      onChange={setFilter}
                      autoFocus
