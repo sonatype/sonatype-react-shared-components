@@ -38,7 +38,7 @@ import { faAtom, faFile, faCode, faRulerCombined, faPalette, faFileCode } from '
 
 import './GalleryNav.scss';
 
-const PAGE_NAV_TYPE_TO_ICON_MAP: { [page in PageType]: JSX.Element } = {
+const PAGE_TYPE_TO_ICON_MAP: { [page in PageType]: JSX.Element } = {
   'documentation': <NxFontAwesomeIcon icon={faFile} />,
   'react': <NxFontAwesomeIcon icon={faAtom} />,
   'html': <NxFontAwesomeIcon icon={faCode} />,
@@ -63,7 +63,7 @@ const renderLinks = (filter?: string) =>
                    activeClassName="selected">
             {
               isPageContentDescription(entry)
-                ? <span className="gallery-nav-link__icon">{PAGE_NAV_TYPE_TO_ICON_MAP[entry.type]}</span>
+                ? <span className="gallery-nav-link__icon">{PAGE_TYPE_TO_ICON_MAP[entry.type]}</span>
                 : null
             }
             <span className="gallery-nav-link__label">
