@@ -38,7 +38,7 @@ import { faEdit, faCog } from '@fortawesome/free-solid-svg-icons';
 
 import './GalleryNav.scss';
 
-const PAGE_NAV_TYPE_TO_ICON_MAP: { [page in PageType]: JSX.Element } = {
+const PAGE_TYPE_TO_ICON_MAP: { [page in PageType]: JSX.Element } = {
   'documentation': <NxFontAwesomeIcon icon={faEdit} />,
   'react': <NxFontAwesomeIcon icon={faCog} />,
   'html': <NxFontAwesomeIcon icon={faCog} />
@@ -60,7 +60,7 @@ const renderLinks = (filter?: string) =>
                    activeClassName="selected">
             {
               isPageContentDescription(entry)
-                ? <span className="gallery-nav-link__icon">{PAGE_NAV_TYPE_TO_ICON_MAP[entry.type]}</span>
+                ? <span className="gallery-nav-link__icon">{PAGE_TYPE_TO_ICON_MAP[entry.type]}</span>
                 : null
             }
             <span className="gallery-nav-link__label">
