@@ -140,8 +140,8 @@ import NxTreePage from './components/NxTree/NxTreePage';
 
 const pageConfig: PageConfig = {
   'Form Elements': {
-    'Form Layout Examples': NxFormLayoutPage,
-    NxButton: NxButtonPage,
+    'Form Layout Examples': { content: NxFormLayoutPage, type: 'documentation' },
+    NxButton: { content: NxButtonPage, type: 'react' },
     NxSegmentedButton: NxSegmentedButtonPage,
     NxStatefulSegmentedButton: NxStatefulSegmentedButtonPage,
     NxCheckbox: NxCheckboxPage,

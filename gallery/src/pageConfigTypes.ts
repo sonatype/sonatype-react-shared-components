@@ -6,5 +6,18 @@
  */
 import {ComponentType} from 'react';
 
+export const PAGE_TYPES = [
+  'documentation',
+  'html',
+  'react'
+] as const;
+
+export type PageType = typeof PAGE_TYPES[number];
+
+export interface PageContentDescription {
+  content: ComponentType;
+  type: PageType;
+}
+
 export type PageConfig = Record<string, PageMapping>;
-export type PageMapping = Record<string, ComponentType>;
+export type PageMapping = Record<string, ComponentType | PageContentDescription>;
