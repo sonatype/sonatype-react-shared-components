@@ -6,7 +6,17 @@
  */
 import React from 'react';
 
-import { NxTextLink } from '@sonatype/react-shared-components';
+import { NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 export default () =>
-  <NxTextLink href="#/pages/nx-tile">nx-tile docs</NxTextLink>;
+  <>
+    <NxP>
+      <NxTextLink href="#/pages/nx-tile">nx-tile documentation page</NxTextLink>
+    </NxP>
+    <NxP>
+      Learn more about{' '}
+      <NxCode>
+        <NxTextLink href="#/pages/nx-tile">NxTree</NxTextLink>
+      </NxCode>
+    </NxP>
+  </>;

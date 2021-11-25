@@ -80,9 +80,9 @@
   @include monospace;
   background-color: var(--nx-swatch-grey-95);
   border: 1px solid var(--nx-swatch-grey-90);
-  border-radius: var(--nx-border-radius);
+  border-radius: 4px;
   color: var(--nx-swatch-red-40);
-  padding: 1px 4px;
+  padding: 0 2px;
   white-space: nowrap;
 }
 

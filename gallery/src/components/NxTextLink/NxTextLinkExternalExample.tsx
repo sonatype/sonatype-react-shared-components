@@ -6,10 +6,18 @@
  */
 import React from 'react';
 
-import { NxTextLink, NxP } from '@sonatype/react-shared-components';
+import { NxCode, NxTextLink, NxP } from '@sonatype/react-shared-components';
 
 export default () =>
-  <NxP>
-    The quick brown fox <NxTextLink external href="https://html.spec.whatwg.org/multipage/">MDN</NxTextLink> jumped
-    over the lazy dog.
-  </NxP>;
+  <>
+    <NxP>
+      The quick brown fox <NxTextLink external href="https://html.spec.whatwg.org/multipage/">MDN</NxTextLink> jumped
+      over the lazy dog.
+    </NxP>
+    <NxP>
+      Learn more about{' '}
+      <NxCode>
+        <NxTextLink external href="https://www.a11yproject.com/">a11y</NxTextLink>
+      </NxCode>
+    </NxP>
+  </>;
