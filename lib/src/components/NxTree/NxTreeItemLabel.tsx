@@ -7,11 +7,13 @@
 import React, { useContext, FocusEvent } from 'react';
 import classnames from 'classnames';
 
+import { useUniqueId } from '../../util/idUtil';
 import { ItemLabelProps } from './types';
 import TreeKeyNavContext from './TreeKeyNavContext';
 
-export default function NxTreeItemLabel({ className, onFocus: onFocusProp, ...otherProps }: ItemLabelProps) {
+export default function NxTreeItemLabel({ id: idProp, className, onFocus: onFocusProp, ...otherProps }: ItemLabelProps) {
   const classes = classnames('nx-tree__item-label', className),
+      id = useUniqueId('nx-tree-item-label', idProp),
       keyNavContext = useContext(TreeKeyNavContext);
 
   if (!keyNavContext) {
@@ -32,5 +34,5 @@ export default function NxTreeItemLabel({ className, onFocus: onFocusProp, ...ot
     Promise.resolve().then(focusParent);
   }
 
-  return <span className={classes} onFocus={onFocus} { ...otherProps } />;
+  return <span id={id} className={classes} onFocus={onFocus} { ...otherProps } />;
 }

@@ -38,6 +38,10 @@ export default function NxTreeItem(props: ItemProps) {
         'nx-tree__line-intersection--collapsible': collapsible
       }),
 
+      [labelId, setLabelId] = useState<string | null>(null),
+      ariaLabelledByProp = props['aria-labelledby'],
+      labelledBy = classnames(ariaLabelledByProp, labelId),
+
       // whether this item is itself focused, has a focused descendant, or neither
       [focusState, setFocusState] = useState<TreeItemFocusState>(null),
       ref = useRef<HTMLLIElement>(null),
@@ -118,6 +122,11 @@ export default function NxTreeItem(props: ItemProps) {
       setFocusState(null);
     }
   }, [parentsFocusedChild]);
+
+  // Establish a11y label for this item
+  useEffect(function() {
+    setLabelId(ref.current?.querySelector(':scope > .nx-tree__item-label')?.id || null);
+  }, []);
 
   function onKeyDown(evt: KeyboardEvent<HTMLLIElement>) {
     switch (evt.key) {
@@ -222,7 +231,9 @@ export default function NxTreeItem(props: ItemProps) {
         tabIndex={focusState === 'self' ? 0 : -1}
         ref={ref}
         onKeyDown={onKeyDown}
-        onFocus={onFocus}>
+        onFocus={onFocus}
+        aria-labelledby={labelledBy}
+        aria-expanded={isOpen}>
       {intersection}
       <svg className="nx-tree__line-drop" viewBox="0 0 36 1" preserveAspectRatio="none">
         <line x1="12" x2="12" y2="1" />
