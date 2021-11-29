@@ -224,6 +224,18 @@ const NxTreePage = () =>
 
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
+          <NxH3>Screenreader considerations</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          In order to be complaint with ARIA standards, all top-level <NxCode>NxTree</NxCode>s <em>should</em> have an
+          accessible name defined. Typically this is done via an <NxCode>aria-label</NxCode> or{' '}
+          <NxCode>aria-labelledby</NxCode> attribute. If there is any sort of header or label present on the page
+          adjacent to the tree, then the preferred solution is to use <NxCode>aria-labelledby</NxCode> to refer to that
+          element.
+        </NxP>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>Utility Classes</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>

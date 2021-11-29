@@ -20,7 +20,7 @@ export default function NxTreeCollapsibleExample() {
       [keyboardOpen, toggleKeyboardOpen] = useToggle(true);
 
   return (
-    <NxTree>
+    <NxTree aria-label="Non-collapsible tree example">
       <NxTree.Item collapsible isOpen={rootOpen} onToggleCollapse={toggleRootOpen}>
         <NxTree.ItemLabel>
           <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
