@@ -14,6 +14,7 @@ import NxButton from '../../NxButton/NxButton';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 import NxDropdownMenu from '../../NxDropdownMenu/NxDropdownMenu';
+import AbstractDropdown from '../AbstractDropdown';
 
 describe('NxDropdown', () => {
   let container: HTMLDivElement | null;
@@ -40,36 +41,38 @@ describe('NxDropdown', () => {
   });
 
   it('renders a button with the appropriate classes and type=button', function() {
-    const component = getShallowComponent(),
-        button = component.find(NxButton);
+    const component = getMountedComponent();
+    const dropdown = component.find(AbstractDropdown);
+    const button = dropdown.find(NxButton);
+    const icon = button.find(NxFontAwesomeIcon);
 
-    expect(component).toHaveClassName('.nx-dropdown');
+    expect(dropdown).toHaveClassName('.nx-dropdown');
     expect(button).toHaveClassName('.nx-dropdown__toggle');
     expect(button).toHaveProp('variant', 'tertiary');
     expect(button).toHaveProp('type', 'button');
     expect(button.childAt(0)).toContainReact(<span className="nx-dropdown__toggle-label">dropdown</span>);
-    expect(button.childAt(1)).toHaveProp('icon', faCaretDown);
+    expect(icon).toHaveProp('icon', faCaretDown);
   });
 
   it('renders the button according to the supplied variant', function() {
-    let component = getShallowComponent();
+    let component = getMountedComponent();
     expect(component.find(NxButton)).toHaveProp('variant', 'tertiary');
 
-    component = getShallowComponent({ variant: 'primary' });
+    component = getMountedComponent({ variant: 'primary' });
     expect(component.find(NxButton)).toHaveProp('variant', 'primary');
 
-    component = getShallowComponent({ variant: 'secondary' });
+    component = getMountedComponent({ variant: 'secondary' });
     expect(component.find(NxButton)).toHaveProp('variant', 'secondary');
 
-    component = getShallowComponent({ variant: 'error' });
+    component = getMountedComponent({ variant: 'error' });
     expect(component.find(NxButton)).toHaveProp('variant', 'error');
   });
 
   it('correctly renders the menu based on isOpen prop', function() {
-    let component = getShallowComponent({ isOpen: true });
+    let component = getMountedComponent({ isOpen: true });
     expect(component.find(NxDropdownMenu)).toExist();
 
-    component = getShallowComponent({ isOpen: false });
+    component = getMountedComponent({ isOpen: false });
     expect(component.find(NxDropdownMenu)).not.toExist();
   });
 
@@ -80,7 +83,7 @@ describe('NxDropdown', () => {
 
   it('disables the button (and the toggle fn) when the disabled prop is supplied', function() {
     const toggleFn = jest.fn(),
-        component = getShallowComponent({ onToggleCollapse: toggleFn, disabled: true }),
+        component = getMountedComponent({ onToggleCollapse: toggleFn, disabled: true }),
         button = component.find(NxButton);
 
     expect(button).toHaveClassName('disabled');
@@ -90,8 +93,8 @@ describe('NxDropdown', () => {
 
   it('uses VDOM as label if supplied', function() {
     const label = <NxFontAwesomeIcon icon={faTrash} />,
-        component = getShallowComponent({ label }),
-        button = component.find(NxButton);
+        component = getMountedComponent({ label });
+    const button = component.find(NxButton);
 
     expect(button.childAt(0)).toContainReact(label);
   });
@@ -110,16 +113,16 @@ describe('NxDropdown', () => {
       <button id="link3" className="nx-dropdown-button" key="3">Link3</button>,
       <button id="link4" className="nx-dropdown-right-button" key="4">Link4</button>
     ];
-    const component = getShallowComponent({ children, isOpen: true }),
-        menu = component.find(NxDropdownMenu);
+    const component = getMountedComponent({ children, isOpen: true }),
+        menu = component.find('div.nx-dropdown-menu');
 
     expect(menu.childAt(0)).toMatchElement(<a id="link1" key="1">Link1</a>);
 
     expect(menu.childAt(1)).toMatchSelector(NxOverflowTooltip);
-    expect(menu.childAt(1).children()).toMatchElement(<a id="link2" key="2" className="nx-dropdown-link">Link2</a>);
+    expect(menu.childAt(1).find('a')).toMatchElement(<a id="link2" key="2" className="nx-dropdown-link">Link2</a>);
 
     expect(menu.childAt(2)).toMatchSelector(NxOverflowTooltip);
-    expect(menu.childAt(2).children()).toMatchElement(
+    expect(menu.childAt(2).find('button')).toMatchElement(
       <button id="link3" key="3" className="nx-dropdown-button">Link3</button>
     );
 
@@ -205,14 +208,14 @@ describe('NxDropdown', () => {
 
   it('calls onToggleCollapse if ESC is pressed within the component while the dropdown is open', function() {
     const onToggleCollapse = jest.fn(),
-        component = getShallowComponent({ onToggleCollapse, isOpen: true });
+        component = getMountedComponent({ onToggleCollapse, isOpen: true });
 
     component.simulate('keyDown', { key: 'Escape', preventDefault: jest.fn() });
     expect(onToggleCollapse).toHaveBeenCalled();
   });
 
   it('calls preventDefault on Escape keydown', function() {
-    const component = getShallowComponent({ onToggleCollapse: jest.fn(), isOpen: true }),
+    const component = getMountedComponent({ onToggleCollapse: jest.fn(), isOpen: true }),
         escPreventDefault = jest.fn(),
         otherPreventDefault = jest.fn();
 
@@ -225,7 +228,7 @@ describe('NxDropdown', () => {
 
   it('does not call onToggleCollapse if ESC is pressed within the component when the dropdown is closed', function() {
     const onToggleCollapse = jest.fn(),
-        component = getShallowComponent({ onToggleCollapse });
+        component = getMountedComponent({ onToggleCollapse });
 
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
@@ -236,7 +239,7 @@ describe('NxDropdown', () => {
   it('does not call onToggleCollapse if ESC is pressed within the component when the component is disabled',
       function() {
         const onToggleCollapse = jest.fn(),
-            component = getShallowComponent({ onToggleCollapse, isOpen: true, disabled: true });
+            component = getMountedComponent({ onToggleCollapse, isOpen: true, disabled: true });
 
         expect(onToggleCollapse).not.toHaveBeenCalled();
 

@@ -9,7 +9,7 @@ import React from 'react';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxCollapsibleItems, { Props } from '../NxCollapsibleItems';
-import { NxTreeView } from '../../../index';
+import { NxTreeView, NxTreeViewChild } from '../../../index';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxTooltip from '../../NxTooltip/NxTooltip';
@@ -24,6 +24,10 @@ describe('NxCollapsibleItems', function() {
 
   it('is aliased as NxTreeView', function() {
     expect(NxCollapsibleItems).toBe(NxTreeView);
+  });
+
+  it('aliased its Child subcomponent as NxTreeViewChild', function() {
+    expect(NxCollapsibleItems.Child).toBe(NxTreeViewChild);
   });
 
   it('renders a div with a list role and the nx-collapsible-items class', function() {
