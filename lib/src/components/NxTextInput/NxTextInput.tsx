@@ -90,6 +90,10 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
 
       return (
         <div ref={forwardedRef} className={internalClassName}>
+          {/* This click handler doesn't need to be accessible, it is only to mitigate a mouse specific
+            * presentational concern
+            */}
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions*/}
           <div className="nx-text-input__box" onClick={setFocusToInput}>
             {prefixContent}
             {React.createElement(element, {

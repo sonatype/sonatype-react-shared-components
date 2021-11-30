@@ -42,7 +42,7 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
       );
 
       return (
-        <label { ...otherProps } ref={ref} className={labelClasses} role="switch" aria-checked={isChecked}>
+        <label { ...otherProps } ref={ref} className={labelClasses}>
           <input type="checkbox"
                  id={otherInputAttributes.id || inputId || undefined}
                  className={classnames('nx-toggle__input', checkboxClassName)}
@@ -50,6 +50,8 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
                  checked={isChecked}
                  readOnly={!onChange}
                  onChange={onChange || undefined}
+                 role="switch"
+                 aria-checked={isChecked}
                  { ...otherInputAttributes } />
           <div className="nx-toggle__control"><div className="nx-toggle__indicator"/></div>
           { children && <span className="nx-toggle__content">{children}</span> }

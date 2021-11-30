@@ -135,6 +135,8 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
   }
 
   return (
+    // Ignore the a11y linter, this onKeyDown is to catch events bubbling up from interactive children
+    /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
     <div ref={ref} className={className} onKeyDown={onKeyDown} {...attrs}>
       { renderToggleElement(toggleRef, onToggleCollapse) }
       { isOpen &&
