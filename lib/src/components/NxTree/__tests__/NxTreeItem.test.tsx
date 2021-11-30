@@ -12,6 +12,7 @@ import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import NxTreeItem from '../NxTreeItem';
+import NxTreeItemLabel from '../NxTreeItemLabel';
 import { ItemProps as Props, TreeKeyNavContextType } from '../types';
 import TreeKeyNavContext from '../TreeKeyNavContext';
 
@@ -35,6 +36,13 @@ describe('NxTreeItem', function() {
       </TreeKeyNavContext.Provider>
     ).children();
   }
+
+  const getMountedCollapsible = (extraProps?: Partial<Props>) => getMountedComponent({
+    collapsible: true,
+    isOpen: false,
+    onToggleCollapse: () => {},
+    ...extraProps
+  });
 
   it('renders an li with the nx-tree__item class', function() {
     expect(getMountedComponent()).toMatchSelector('li.nx-tree__item');
@@ -94,13 +102,6 @@ describe('NxTreeItem', function() {
   });
 
   describe('when collapsible', function() {
-    const getMountedCollapsible = (extraProps?: Partial<Props>) => getMountedComponent({
-      collapsible: true,
-      isOpen: false,
-      onToggleCollapse: () => {},
-      ...extraProps
-    });
-
     it('still contains the top and right lines but not the bottom line', function() {
       const component = getMountedCollapsible(),
           intersectionSvg = component.find('svg.nx-tree__line-intersection'),
@@ -164,5 +165,48 @@ describe('NxTreeItem', function() {
     component.simulate('keydown', { key: 'Enter' });
 
     expect(onActivate).toHaveBeenCalled();
+  });
+
+  describe('aria-expanded', function() {
+    it('is set to true when the item is not collapsible', function() {
+      expect(getMountedComponent()).toHaveProp('aria-expanded', true);
+    });
+
+    it('is set to true when the item is collapsible and currently open', function() {
+      expect(getMountedCollapsible({ isOpen: true })).toHaveProp('aria-expanded', true);
+    });
+
+    it('is set to false when the item is collapsible and not currently open', function() {
+      expect(getMountedCollapsible()).toHaveProp('aria-expanded', false);
+    });
+  });
+
+  it('adds the id of the child itemlabel to the aria-labelledby prop', function() {
+    const component1 = getMountedComponent({
+          'aria-labelledby': 'foo',
+          children: <NxTreeItemLabel id="bar" />
+        }),
+        component2 = getMountedComponent({
+          'aria-labelledby': 'foo',
+          children: <NxTreeItemLabel />
+        }),
+        component3 = getMountedComponent({
+          children: <NxTreeItemLabel id="bar" />
+        }),
+        component4 = getMountedComponent({
+          children: <NxTreeItemLabel />
+        });
+
+    expect(component1).toHaveProp('aria-labelledby', 'foo bar');
+    expect(component3).toHaveProp('aria-labelledby', 'bar');
+
+    expect(component2).toHaveProp('aria-labelledby');
+    const labelledBy2 = component2.prop('aria-labelledby').split(' ');
+    expect(labelledBy2[0]).toBe('foo');
+    expect(labelledBy2[1]).toBe(component2.find('.nx-tree__item-label').prop('id'));
+
+    expect(component4).toHaveProp('aria-labelledby');
+    const labelledBy4 = component4.prop('aria-labelledby');
+    expect(labelledBy4).toBe(component4.find('.nx-tree__item-label').prop('id'));
   });
 });
