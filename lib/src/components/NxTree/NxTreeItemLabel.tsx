@@ -11,8 +11,9 @@ import { useUniqueId } from '../../util/idUtil';
 import { ItemLabelProps } from './types';
 import TreeKeyNavContext from './TreeKeyNavContext';
 
-export default function NxTreeItemLabel({ id: idProp, className, onFocus: onFocusProp, ...otherProps }: ItemLabelProps) {
-  const classes = classnames('nx-tree__item-label', className),
+export default function NxTreeItemLabel(props: ItemLabelProps) {
+  const { id: idProp, className, onFocus: onFocusProp, ...otherProps } = props,
+      classes = classnames('nx-tree__item-label', className),
       id = useUniqueId('nx-tree-item-label', idProp),
       keyNavContext = useContext(TreeKeyNavContext);
 
