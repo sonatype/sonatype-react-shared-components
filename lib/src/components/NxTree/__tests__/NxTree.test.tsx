@@ -5,21 +5,36 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import NxTree from '../NxTree';
 import NxTreeItem from '../NxTreeItem';
+import NxTreeItemLabel from '../NxTreeItemLabel';
 import NxTreeStatefulItem from '../stateful/NxTreeStatefulItem';
 
 describe('NxTree', function() {
   it('makes a <ul> tag with an nx-tree class', function() {
-    expect(shallow(<NxTree/>)).toMatchSelector('ul.nx-tree');
+    expect(shallow(<NxTree/>).children()).toMatchSelector('ul.nx-tree');
+  });
+
+  it('adds the tree role when it is the top-level tree, and the group role otherwise', function() {
+    const component = mount(
+      <NxTree>
+        <NxTree.Item>
+          <NxTree.ItemLabel>Foo</NxTree.ItemLabel>
+          <NxTree />
+        </NxTree.Item>
+      </NxTree>
+    ).children();
+
+    expect(component).toHaveProp('role', 'tree');
+    expect(component.find('.nx-tree__item .nx-tree')).toHaveProp('role', 'group');
   });
 });
 
 describe('NxTree.ItemLabel', function() {
-  it('makes a <span> tag with an nx-tree__item-label class', function() {
-    expect(shallow(<NxTree.ItemLabel/>)).toMatchSelector('span.nx-tree__item-label');
+  it('is NxTreeItemLabel', function() {
+    expect(NxTree.ItemLabel).toBe(NxTreeItemLabel);
   });
 });
 
@@ -34,3 +49,5 @@ describe('NxTree.StatefulItem', function() {
     expect(NxTree.StatefulItem).toBe(NxTreeStatefulItem);
   });
 });
+
+// NOTE keyboard navigation is tested in functional tests
