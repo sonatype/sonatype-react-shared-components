@@ -125,7 +125,6 @@ function GalleryNav() {
       <NxFilterInput placeholder="Search RSC…"
                      value={filter}
                      onChange={setFilter}
-                     autoFocus
                      onKeyPress={onFilterKeyPress} />
       {filteredCategories}
     </nav>
