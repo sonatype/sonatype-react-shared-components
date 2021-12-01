@@ -23,7 +23,7 @@ export default function TooltipConfigPropsDropdownExample() {
                 isOpen={isOpen}
                 toggleTooltip={tooltipProps}
                 onToggleCollapse={onToggleCollapse}>
-      <a className="nx-dropdown-button">Nav Link1</a>
+      <a href="#/" className="nx-dropdown-button">Nav Link1</a>
     </NxDropdown>
   );
 }

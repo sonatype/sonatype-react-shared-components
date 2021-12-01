@@ -24,15 +24,15 @@ function NxCollapsibleItemsClickableSidebarExample() {
           <NxButton>Test1</NxButton>
         </NxCollapsibleItems.Child>
         <NxCollapsibleItems.Child>
-          <a href="#" className="selected">Test2</a>
+          <a href="#/" className="selected">Test2</a>
         </NxCollapsibleItems.Child>
         <NxCollapsibleItems.Child>
-          <a href="#">
+          <a href="#/">
             Test3 - an extra long example that should cause truncation
           </a>
         </NxCollapsibleItems.Child>
         <NxCollapsibleItems.Child>
-          <a href="#">Test4</a>
+          <a href="#/">Test4</a>
         </NxCollapsibleItems.Child>
       </NxCollapsibleItems>
     </div>
