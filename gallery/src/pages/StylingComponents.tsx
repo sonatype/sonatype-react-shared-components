@@ -98,6 +98,26 @@ const StylingRSCPage = () =>
     </NxTile.Subsection>
     <NxTile.Subsection>
       <NxTile.SubsectionHeader>
+        <NxH3>Telemetry (and other non-styling) Classes</NxH3>
+      </NxTile.SubsectionHeader>
+      <NxP>
+        When adding classes to your project that will be used for telemetry (Gainsight, Pendo, other reporting,
+        etc), it's best to use dedicated class names. We recommend using a custom prefix
+        like <NxCode>telemetry-</NxCode> or <NxCode>t-</NxCode> to differentiate them from those used for
+        styling.
+      </NxP>
+      <NxP>
+        The reason for this is simple, if the same class names are used for styling and telemetry then a styling change
+        which requires a new or different class name can unwittingly break the link to telemetry. There's no indication
+        that the class serves two purposes. If you use dedicated prefixes the purpose of the class is always clear.
+      </NxP>
+      <NxP>
+        The same system should be used if classes are created for any specialized purpose other than styling. For CSS
+        classes used for testing we recommend using the <NxCode>test-</NxCode> prefix.
+      </NxP>
+    </NxTile.Subsection>
+    <NxTile.Subsection>
+      <NxTile.SubsectionHeader>
         <NxH3>CSS Resources</NxH3>
       </NxTile.SubsectionHeader>
       <NxP>
