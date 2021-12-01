@@ -149,7 +149,10 @@
     "react/no-unescaped-entities": "off",
     "react/jsx-no-target-blank": "off",
     "react/jsx-fragments": ["error", "syntax"],
-    "react/display-name": "off"
+    "react/display-name": "off",
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "controlComponents": ["NxTextInput", "NxStatefulTextInput", "NxFilterInput"]
+    }],
   },
   "settings": {
     "react": {
