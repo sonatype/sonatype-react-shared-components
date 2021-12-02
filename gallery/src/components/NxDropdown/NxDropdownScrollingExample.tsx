@@ -33,7 +33,10 @@ function NxDropdownNavigationExample() {
       <a href="#/" className="nx-dropdown-button">
         Text Link 6
       </a>
-      <a href="#/" onClick={evt => { evt.preventDefault(); }} className="disabled nx-dropdown-button">
+      <a href="#/"
+         onClick={evt => { evt.preventDefault(); }}
+         className="disabled nx-dropdown-button"
+         aria-disabled="true">
         Text Link 7 Disabled
       </a>
       <a href="#/" className="nx-dropdown-button">
