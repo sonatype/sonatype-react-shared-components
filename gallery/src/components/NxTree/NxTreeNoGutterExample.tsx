@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxFontAwesomeIcon, NxP, NxTree } from '@sonatype/react-shared-components';
+import { NxFontAwesomeIcon, NxP, NxThreatIndicator, NxTree } from '@sonatype/react-shared-components';
 import { faFile, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxTreeCollapsibleExample() {
@@ -114,6 +114,7 @@ export default function NxTreeCollapsibleExample() {
                                 <NxTree.Item>
                                   <NxTree.ItemLabel>
                                     <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
+                                    <NxThreatIndicator threatLevelCategory="severe" className="nx-tree__colored-icon" />
                                     <span>keyboard1.webm</span>
                                   </NxTree.ItemLabel>
                                 </NxTree.Item>

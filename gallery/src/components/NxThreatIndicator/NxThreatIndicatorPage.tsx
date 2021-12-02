@@ -62,6 +62,12 @@ const NxThreatIndicatorPage = () =>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>Specifies tooltip content, by default, it is set to the Threat Level Category</NxTable.Cell>
           </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>className</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>Additional CSS class names to apply to the rendered element</NxTable.Cell>
+          </NxTable.Row>
         </NxTable.Body>
       </NxTable>
 
