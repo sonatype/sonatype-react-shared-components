@@ -250,6 +250,15 @@ const NxTreePage = () =>
           is only to be used on trees in this circumstance: top level trees without collapse-expand enabled with a
           single top-level element.
         </NxP>
+        <NxP>
+          Another consideration that <NxCode>NxTree</NxCode> manages via utility classes is colored icons. It is very
+          common for the label of a tree item to start with an icon, and if this icon doesn't have some particular
+          color, the design intent is that it be the same color as dark text (<em>not</em> regular text). This intent
+          is implemented within the <NxCode>NxTree</NxCode> styles so that this styling applies automatically when
+          using RSC. However, when an icon is intended to have its own color, this style gets in the way. Therefore
+          a <NxCode>nx-tree__colored-icon</NxCode> class is available for icons which specify their own color which
+          <NxCode>NxTree</NxCode> should not override.
+        </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
@@ -295,13 +304,15 @@ const NxTreePage = () =>
       An example of a collapsible tree view showing how multiple top-level entries are styled.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="No Gutter Example"
+    <GalleryExampleTile title="Utility Class Example"
                         id="nx-tree-no-gutter-example"
                         liveExample={NoGutterExample}
                         codeExamples={[noGutterCode]}
                         collapseCodeExample>
       An example of a non-collapsible tree with a single top level element which has its left-most gutter space removed
-      via the <NxCode>nx-tree--no-gutter</NxCode> class so that it aligns well with surrounding non-tree content.
+      via the <NxCode>nx-tree--no-gutter</NxCode> class so that it aligns well with surrounding non-tree content. This
+      example also includes a colored icon (an <NxCode>NxThreatIndicator</NxCode> to be specific) demonstrating
+      the <NxCode>nx-tree__colored-icon</NxCode> class.
     </GalleryExampleTile>
   </>;
 

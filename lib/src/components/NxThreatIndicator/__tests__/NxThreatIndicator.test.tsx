@@ -86,4 +86,12 @@ describe('NxThreatIndicator', function() {
 
     expect(tooltip).toHaveProp('title', 'Extinction Level Threat');
   });
+
+  it('adds specified class names to the element', function() {
+    const icon = getShallowComponent({ className: 'foo', threatLevelCategory: 'low' }).find(NxFontAwesomeIcon);
+
+    expect(icon).toHaveClassName('foo');
+    expect(icon).toHaveClassName('nx-threat-indicator');
+    expect(icon).toHaveClassName('nx-threat-indicator--low');
+  });
 });
