@@ -129,7 +129,7 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
         toggleEl = toggleRef.current;
 
     if (menuEl && menuEl.contains(focusedEl)) {
-      toggleEl!.focus();
+      toggleEl?.focus();
     }
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
   }
