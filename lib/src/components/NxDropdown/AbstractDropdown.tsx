@@ -123,7 +123,6 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
   // When the dropdown is closed while focus is within it, set focus back to the dropdown toggle. Otherwise
   // it goes back to the <body> which is less helpful especially when within a modal
   function onMenuClosing() {
-    /* eslint-disable @typescript-eslint/no-non-null-assertion */
     const focusedEl = document.activeElement,
         menuEl = menuRef.current,
         toggleEl = toggleRef.current;
@@ -131,7 +130,6 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
     if (menuEl && menuEl.contains(focusedEl)) {
       toggleEl?.focus();
     }
-    /* eslint-enable @typescript-eslint/no-non-null-assertion */
   }
 
   return (
