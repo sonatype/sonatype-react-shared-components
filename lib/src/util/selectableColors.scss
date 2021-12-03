@@ -21,7 +21,7 @@
 }
 
 .nx-selectable-color--blue {
-  --nx-selectable-color-dark: var(--nx-swatch-teal-50);
+  --nx-selectable-color-dark: var(--nx-swatch-teal-45);
   --nx-selectable-color-light: var(--nx-swatch-teal-90);
 }
 
@@ -32,8 +32,8 @@
 
 .nx-selectable-color--green, // deprecated
 .nx-selectable-color--turquoise {
-  --nx-selectable-color-dark: var(--nx-swatch-green-40);
-  --nx-selectable-color-light: var(--nx-swatch-green-80);
+  --nx-selectable-color-dark: var(--nx-swatch-turquoise-40);
+  --nx-selectable-color-light: var(--nx-swatch-turquoise-95);
 }
 
 .nx-selectable-color--orange {
@@ -48,11 +48,11 @@
 
 .nx-selectable-color--lime, // deprecated
 .nx-selectable-color--kiwi {
-  --nx-selectable-color-dark: var(--nx-swatch-green-60);
+  --nx-selectable-color-dark: var(--nx-swatch-green-80);
   --nx-selectable-color-light: var(--nx-swatch-green-95);
 }
 
 .nx-selectable-color--indigo {
-  --nx-selectable-color-dark: var(--nx-swatch-indigo-80);
+  --nx-selectable-color-dark: var(--nx-swatch-indigo-70);
   --nx-selectable-color-light: var(--nx-swatch-indigo-95);
 }
