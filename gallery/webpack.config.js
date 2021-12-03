@@ -82,7 +82,7 @@ module.exports = function(env = { production: false }) {
       }, {
         // Also load svg and png files as resources. Consuming projects may or may not need a declaration
         // similar to this depending on their own image files and how they include them in the build.
-        include: /\.(png|svg)$/,
+        include: /\.(png|svg|jpg)$/,
         exclude: libImgDir,
         type: 'asset/resource',
         generator: {

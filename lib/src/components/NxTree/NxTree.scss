@@ -34,9 +34,9 @@
     align-items: end;
     display: grid;
     grid-template:
-      "line-intersection label" var(--nx-item-label-row-height)
-      "line-drop      children" auto /
-       36px               auto;
+      "line-intersection label          ." var(--nx-item-label-row-height)
+      "line-drop        children children" auto /
+       36px              auto         1fr;
 
     position: relative;
 
@@ -79,6 +79,21 @@
       // spacing variables cleanly
       margin: 0 0 0 1px;
     }
+
+    &:focus {
+      outline: none;
+
+      &::before {
+        border: 1px solid var(--nx-color-interactive-border-focus);
+        border-radius: var(--nx-border-radius);
+        box-shadow: var(--nx-box-shadow-focus);
+        box-sizing: border-box;
+        content: '';
+        grid-row: 1;
+        grid-column: line-intersection-start / label-end;
+        height: calc(var(--nx-line-height) * 1em);
+      }
+    }
   }
 
   > .nx-tree__item:first-child {
@@ -90,8 +105,15 @@
     }
   }
 
-  &__collapse-icon {
+  &__collapse-icon path {
     fill: var(--nx-swatch-grey-05);
+  }
+
+  &__collapse-click {
+    cursor: pointer;
+    fill: none;
+    pointer-events: all;
+    stroke: none;
   }
 
   &__line-intersection {
@@ -118,38 +140,27 @@
 
     grid-area: label;
     margin-left: $item-label-left-margin;
+    margin-right: var(--nx-spacing-base);
 
-    .nx-icon {
+    .nx-icon:not(.nx-tree__colored-icon) {
       color: var(--nx-swatch-grey-05);
     }
-  }
 
-  &__collapse-input {
-    @include nx-hide-checkbox-helper.hide-checkbox;
-  }
-
-  &__collapse-label {
-    box-sizing: border-box;
-    cursor: pointer;
-    grid-area: line-intersection;
-    height: 24px;
-    width: 24px;
-
-    // this is needed to make applitools believe that the label is clickable. Otherwise, it complains
-    // that the collapse/expand icon is in the way, even though it isn't
-    position: relative;
-
-    &:focus-within {
-      border: 1px solid var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
+    .nx-text-link .nx-icon {
+      color: var(--nx-color-link);
     }
   }
 
   &--no-gutter > .nx-tree__item {
     grid-template:
-      "label"    var(--nx-item-label-row-height)
-      "children" auto /
-       auto;
+      "label           ."    var(--nx-item-label-row-height)
+      "children children" auto /
+       auto          1fr;
+
+    &:focus::before {
+      grid-column: label;
+      margin-left: calc(0px - var(--nx-spacing-base));
+    }
 
     > .nx-tree__collapse-label, > .nx-tree__line-intersection, > .nx-tree__line-drop {
       display: none;

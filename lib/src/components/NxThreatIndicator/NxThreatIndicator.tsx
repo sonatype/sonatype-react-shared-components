@@ -14,17 +14,19 @@ export { Props } from './types';
 import './NxThreatIndicator.scss';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import classnames from 'classnames';
 
 const capitalize = (string: string) => string.charAt(0).toUpperCase() + string.slice(1);
 
 const NxThreatIndicator: FunctionComponent<Props> =
-  function NxThreatIndicator({ title, threatLevelCategory, policyThreatLevel }): ReactElement<Props> {
-    const category: ThreatLevelCategory =
+  function NxThreatIndicator(props): ReactElement<Props> {
+    const { title, threatLevelCategory, policyThreatLevel, className: classNameProp } = props,
+        category: ThreatLevelCategory =
           threatLevelCategory ? threatLevelCategory :
           policyThreatLevel != null ? categoryByPolicyThreatLevel[policyThreatLevel] :
           'unspecified',
 
-        className = `nx-threat-indicator nx-threat-indicator--${category}`,
+        className = classnames(classNameProp, `nx-threat-indicator nx-threat-indicator--${category}`),
         label = `threat level ${category}`;
 
     return (

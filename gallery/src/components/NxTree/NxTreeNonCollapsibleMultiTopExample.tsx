@@ -10,7 +10,7 @@ import { faGlobeAmericas, faLocationArrow } from '@fortawesome/free-solid-svg-ic
 
 export default function NxTreeCollapsibleExample() {
   return (
-    <NxTree>
+    <NxTree aria-label="Non-collapsible multi-top tree example">
       <NxTree.Item>
         <NxTree.ItemLabel>
           <NxFontAwesomeIcon fixedWidth icon={faGlobeAmericas} />

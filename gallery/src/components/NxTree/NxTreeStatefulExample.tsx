@@ -10,7 +10,7 @@ import { faFile, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxTreeCollapsibleExample() {
   return (
-    <NxTree>
+    <NxTree aria-label="Stateful tree example">
       <NxTree.StatefulItem collapsible>
         <NxTree.ItemLabel>
           <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
