@@ -139,81 +139,6 @@ import NxStatefulCollapsibleRadioSelectPage
 import NxTreePage from './components/NxTree/NxTreePage';
 
 const pageConfig: PageConfig = {
-  'Form Elements': {
-    'Form Layout Examples': { content: NxFormLayoutPage, type: 'layout' },
-    NxButton: { content: NxButtonPage, type: 'react' },
-    NxSegmentedButton: { content: NxSegmentedButtonPage, type: 'react' },
-    NxStatefulSegmentedButton: { content: NxStatefulSegmentedButtonPage, type: 'react' },
-    NxCheckbox: { content: NxCheckboxPage, type: 'react' },
-    NxCollapsibleMultiSelect: { content: NxCollapsibleMultiSelectPage, type: 'react' },
-    NxStatefulCollapsibleMultiSelect: { content: NxStatefulCollapsibleMultiSelectPage, type: 'react' },
-    NxCollapsibleRadioSelect: { content: NxCollapsibleRadioSelectPage, type: 'react' },
-    NxStatefulCollapsibleRadioSelect: { content: NxStatefulCollapsibleRadioSelectPage, type: 'react' },
-    NxColorPicker: { content: NxColorPickerPage, type: 'react' },
-    NxStatefulCheckbox: { content: NxStatefulCheckboxPage, type: 'react' },
-    NxDateInput: { content: NxDateInputPage, type: 'react' },
-    NxStatefulDateInput: { content: NxStatefulDateInputPage, type: 'react' },
-    NxFieldset: { content: NxFieldsetPage, type: 'react' },
-    'nx-fieldset': { content: NxFieldsetStylePage, type: 'html' },
-    NxFilterInput: { content: NxFilterInputPage, type: 'react' },
-    NxForm: { content: NxFormPage, type: 'react' },
-    NxFormGroup: { content: NxFormGroupPage, type: 'react' },
-    'nx-form-group': { content: NxFormGroupStylePage, type: 'html' },
-    NxFormSelect: { content: NxFormSelectComponentPage, type: 'react' },
-    'nx-form-select': { content: NxFormSelectPage, type: 'html' },
-    NxRadio: { content: NxRadioPage, type: 'react' },
-    NxSearchTransferList: { content: NxSearchTransferListPage, type: 'react' },
-    NxStatefulSearchTransferList: { content: NxStatefulSearchTransferListPage, type: 'react' },
-    NxTextInput: { content: NxTextInputPage, type: 'react' },
-    NxStatefulTextInput: { content: NxStatefulTextInputPage, type: 'react' },
-    NxToggle: { content: NxTogglePage, type: 'react' },
-    NxStatefulToggle: { content: NxStatefulTogglePage, type: 'react' },
-    NxTransferList: { content: NxTransferListPage, type: 'react' },
-    NxStatefulTransferList: { content: NxStatefulTransferListPage, type: 'react' },
-    NxTreeViewMultiSelect: { content: NxTreeViewMultiSelect, type: 'react' },
-    NxStatefulTreeViewMultiSelect: { content: NxStatefulTreeViewMultiSelect, type: 'react' },
-    NxTreeViewRadioSelect: { content: NxTreeViewRadioSelectPage, type: 'react' },
-    NxStatefulTreeViewRadioSelect: { content: NxStatefulTreeViewRadioSelectPage, type: 'react' }
-  },
-  'Page Layout': {
-    'Page Layout Examples': { content: PageLayoutPage, type: 'layout' },
-    'nx-divider': { content: NxDividerPage, type: 'html' },
-    'nx-global-header': { content: NxGlobalHeaderPage, type: 'html' },
-    NxGlobalSidebar: { content: NxGlobalSidebarPage, type: 'react' },
-    NxStatefulGlobalSidebar: { content: NxStatefulGlobalSidebarPage, type: 'react' },
-    NxGlobalSidebarFooter: { content: NxGlobalSidebarFooterPage, type: 'react' },
-    NxNexusPageHeader: { content: NxNexusPageHeaderPage, type: 'react' },
-    NxPageHeader: { content: NxPageHeaderPage, type: 'react' },
-    'nx-page-title': { content: NxPageTitlePage, type: 'html' },
-    NxVulnerabilityDetails: { content: NxVulnerabilityDetailsPage, type: 'react' }
-  },
-  'Containers': {
-    NxAccordion: { content: NxAccordionPage, type: 'react' },
-    NxStatefulAccordion: { content: NxStatefulAccordionPage, type: 'react' },
-    'nx-card': { content: NxCardPage, type: 'html' },
-    'nx-h*': { content: NxHPage, type: 'html' },
-    NxModal: { content: NxModalPage, type: 'react' },
-    'nx-p': { content: NxPPage, type: 'html' },
-    NxSubmitMask: { content: NxSubmitMaskPage, type: 'react' },
-    NxStatefulSubmitMask: { content: NxStatefulSubmitMaskPage, type: 'react' },
-    NxTabs: { content: NxTabsPage, type: 'react' },
-    NxStatefulTabs: { content: NxStatefulTabsPage, type: 'react' },
-    'nx-tile': { content: NxTilePage, type: 'html' }
-  },
-  'Navigation': {
-    NxBackButton: { content: NxBackButtonPage, type: 'react' },
-    NxCloseButton: { content: NxCloseButtonPage, type: 'react' },
-    NxDropdown: { content: NxDropdownPage, type: 'react' },
-    NxStatefulDropdown: { content: NxStatefulDropdownPage, type: 'react' },
-    NxIconDropdown: { content: NxIconDropdownPage, type: 'react' },
-    NxStatefulIconDropdown: { content: NxStatefulIconDropdownPage, type: 'react' },
-    NxGlobalSidebar: { content: NxGlobalSidebarPage, type: 'react' },
-    NxStatefulGlobalSidebar: { content: NxStatefulGlobalSidebarPage, type: 'react' },
-    NxGlobalSidebarFooter: { content: NxGlobalSidebarFooterPage, type: 'react' },
-    NxPagination: { content: NxPaginationPage, type: 'react' },
-    NxIndeterminatePagination: { content: NxIndeterminatePaginationPage, type: 'react' },
-    NxTextLink: { content: NxTextLinkPage, type: 'react' }
-  },
   'Alerts, Indicators, Notifications': {
     NxAlert: { content: NxAlertComponentsPage, type: 'react' },
     'nx-alert': { content: NxAlertPage, type: 'html' },
@@ -237,7 +162,20 @@ const pageConfig: PageConfig = {
     NxTooltip: { content: NxTooltipPage, type: 'react' },
     NxOverflowTooltip: { content: NxOverflowTooltipPage, type: 'react' }
   },
-  'Data Display': {
+  'Containers': {
+    NxAccordion: { content: NxAccordionPage, type: 'react' },
+    NxStatefulAccordion: { content: NxStatefulAccordionPage, type: 'react' },
+    'nx-card': { content: NxCardPage, type: 'html' },
+    'nx-h*': { content: NxHPage, type: 'html' },
+    NxModal: { content: NxModalPage, type: 'react' },
+    'nx-p': { content: NxPPage, type: 'html' },
+    NxSubmitMask: { content: NxSubmitMaskPage, type: 'react' },
+    NxStatefulSubmitMask: { content: NxStatefulSubmitMaskPage, type: 'react' },
+    NxTabs: { content: NxTabsPage, type: 'react' },
+    NxStatefulTabs: { content: NxStatefulTabsPage, type: 'react' },
+    'nx-tile': { content: NxTilePage, type: 'html' }
+  },
+  'Display': {
     NxBinaryDonutChart: { content: NxBinaryDonutChartPage, type: 'react' },
     'nx-blockquote': { content: NxBlockquotePage, type: 'html' },
     'nx-code': { content: NxCodePage, type: 'html' },
@@ -253,6 +191,8 @@ const pageConfig: PageConfig = {
     NxIndeterminatePagination: { content: NxIndeterminatePaginationPage, type: 'react' },
     'nx-pre': { content: NxPrePage, type: 'html' },
     'nx-read-only': { content: NxReadOnlyPage, type: 'html' },
+    NxSearchDropdown: { content: NxSearchDropdownPage, type: 'react' },
+    NxStatefulSearchDropdown: { content: NxStatefulSearchDropdownPage, type: 'react' },
     'nx-system-notice': { content: NxSystemNoticePage, type: 'html' },
     NxTable: { content: NxTablePage, type: 'react' },
     'nx-table': { content: NxTableStylePage, type: 'html' },
@@ -263,13 +203,68 @@ const pageConfig: PageConfig = {
     NxTreeView: { content: NxTreeViewPage, type: 'react' },
     NxVulnerabilityDetails: { content: NxVulnerabilityDetailsPage, type: 'react' }
   },
-  'Guidelines': {
-    'Accessibility': { content: AccessibilityPage, type: 'documentation' },
-    'Additional Resources': { content: AdditionalResourcePage, type: 'documentation' },
-    'Contributing to the Gallery': { content: ContributingPage, type: 'documentation' },
-    'font-size and line-height': { content: FontSizePage, type: 'documentation' },
-    'Form Validation Guidelines': { content: FormValidationPage, type: 'documentation' },
-    'Styling Components': { content: StylingComponentsPage, type: 'documentation' }
+  'Forms': {
+    'Form Layout Examples': { content: NxFormLayoutPage, type: 'layout' },
+    NxButton: { content: NxButtonPage, type: 'react' },
+    NxSegmentedButton: { content: NxSegmentedButtonPage, type: 'react' },
+    NxStatefulSegmentedButton: { content: NxStatefulSegmentedButtonPage, type: 'react' },
+    NxCheckbox: { content: NxCheckboxPage, type: 'react' },
+    NxCollapsibleMultiSelect: { content: NxCollapsibleMultiSelectPage, type: 'react' },
+    NxStatefulCollapsibleMultiSelect: { content: NxStatefulCollapsibleMultiSelectPage, type: 'react' },
+    NxCollapsibleRadioSelect: { content: NxCollapsibleRadioSelectPage, type: 'react' },
+    NxStatefulCollapsibleRadioSelect: { content: NxStatefulCollapsibleRadioSelectPage, type: 'react' },
+    NxColorPicker: { content: NxColorPickerPage, type: 'react' },
+    NxStatefulCheckbox: { content: NxStatefulCheckboxPage, type: 'react' },
+    NxDateInput: { content: NxDateInputPage, type: 'react' },
+    NxStatefulDateInput: { content: NxStatefulDateInputPage, type: 'react' },
+    NxFieldset: { content: NxFieldsetPage, type: 'react' },
+    'nx-fieldset': { content: NxFieldsetStylePage, type: 'html' },
+    NxFilterInput: { content: NxFilterInputPage, type: 'react' },
+    NxForm: { content: NxFormPage, type: 'react' },
+    NxFormGroup: { content: NxFormGroupPage, type: 'react' },
+    'nx-form-group': { content: NxFormGroupStylePage, type: 'html' },
+    NxFormSelect: { content: NxFormSelectComponentPage, type: 'react' },
+    'nx-form-select': { content: NxFormSelectPage, type: 'html' },
+    NxPolicyThreatSlider: { content: NxPolicyThreatSliderPage, type: 'react' },
+    NxRadio: { content: NxRadioPage, type: 'react' },
+    NxSearchTransferList: { content: NxSearchTransferListPage, type: 'react' },
+    NxStatefulSearchTransferList: { content: NxStatefulSearchTransferListPage, type: 'react' },
+    NxTextInput: { content: NxTextInputPage, type: 'react' },
+    NxStatefulTextInput: { content: NxStatefulTextInputPage, type: 'react' },
+    NxToggle: { content: NxTogglePage, type: 'react' },
+    NxStatefulToggle: { content: NxStatefulTogglePage, type: 'react' },
+    NxTransferList: { content: NxTransferListPage, type: 'react' },
+    NxStatefulTransferList: { content: NxStatefulTransferListPage, type: 'react' },
+    NxTreeViewMultiSelect: { content: NxTreeViewMultiSelect, type: 'react' },
+    NxStatefulTreeViewMultiSelect: { content: NxStatefulTreeViewMultiSelect, type: 'react' },
+    NxTreeViewRadioSelect: { content: NxTreeViewRadioSelectPage, type: 'react' },
+    NxStatefulTreeViewRadioSelect: { content: NxStatefulTreeViewRadioSelectPage, type: 'react' }
+  },
+  'Layouts': {
+    'Page Layout Examples': { content: PageLayoutPage, type: 'layout' },
+    'nx-divider': { content: NxDividerPage, type: 'html' },
+    'nx-global-header': { content: NxGlobalHeaderPage, type: 'html' },
+    NxGlobalSidebar: { content: NxGlobalSidebarPage, type: 'react' },
+    NxStatefulGlobalSidebar: { content: NxStatefulGlobalSidebarPage, type: 'react' },
+    NxGlobalSidebarFooter: { content: NxGlobalSidebarFooterPage, type: 'react' },
+    NxNexusPageHeader: { content: NxNexusPageHeaderPage, type: 'react' },
+    NxPageHeader: { content: NxPageHeaderPage, type: 'react' },
+    'nx-page-title': { content: NxPageTitlePage, type: 'html' },
+    NxVulnerabilityDetails: { content: NxVulnerabilityDetailsPage, type: 'react' }
+  },
+  'Navigation': {
+    NxBackButton: { content: NxBackButtonPage, type: 'react' },
+    NxCloseButton: { content: NxCloseButtonPage, type: 'react' },
+    NxDropdown: { content: NxDropdownPage, type: 'react' },
+    NxStatefulDropdown: { content: NxStatefulDropdownPage, type: 'react' },
+    NxIconDropdown: { content: NxIconDropdownPage, type: 'react' },
+    NxStatefulIconDropdown: { content: NxStatefulIconDropdownPage, type: 'react' },
+    NxGlobalSidebar: { content: NxGlobalSidebarPage, type: 'react' },
+    NxStatefulGlobalSidebar: { content: NxStatefulGlobalSidebarPage, type: 'react' },
+    NxGlobalSidebarFooter: { content: NxGlobalSidebarFooterPage, type: 'react' },
+    NxPagination: { content: NxPaginationPage, type: 'react' },
+    NxIndeterminatePagination: { content: NxIndeterminatePaginationPage, type: 'react' },
+    NxTextLink: { content: NxTextLinkPage, type: 'react' }
   },
   'Mixins & Helpers': {
     'Color Palettes': { content: ColorPalettePage, type: 'sass' },
@@ -290,6 +285,15 @@ const pageConfig: PageConfig = {
     'ID Utils': { content: IdUtilPage, type: 'js' },
     'withClass Higher-Order Component': { content: WithClassPage, type: 'js' }
   },
+  'Guidelines': {
+    'Accessibility': { content: AccessibilityPage, type: 'documentation' },
+    'Additional Resources': { content: AdditionalResourcePage, type: 'documentation' },
+    'Contributing to the Gallery': { content: ContributingPage, type: 'documentation' },
+    'font-size and line-height': { content: FontSizePage, type: 'documentation' },
+    'Form Validation Guidelines': { content: FormValidationPage, type: 'documentation' },
+    'Styling Components': { content: StylingComponentsPage, type: 'documentation' }
+  }
+  /*
   'All Components': {
     NxAccordion: NxAccordionPage,
     NxStatefulAccordion: NxStatefulAccordionPage,
@@ -368,6 +372,7 @@ const pageConfig: PageConfig = {
     NxStatefulTreeViewRadioSelect: NxStatefulTreeViewRadioSelectPage,
     NxVulnerabilityDetails: NxVulnerabilityDetailsPage
   }
+  */
 };
 
 export default pageConfig;
