@@ -14,4 +14,8 @@ export const selectableColors =
 export const selectableColorClasses: readonly string[] =
     map(color => `nx-selectable-color--${color}`, selectableColors);
 
-export type SelectableColor = (typeof selectableColors)[number];
+// These color names are deprecated aliases for some of the current ones. They should still be accepted in any APIs
+// where a SelectableColor name is expected
+type DeprecatedSelectableColor = 'light-blue' | 'green' | 'lime';
+
+export type SelectableColor = (typeof selectableColors)[number] | DeprecatedSelectableColor;

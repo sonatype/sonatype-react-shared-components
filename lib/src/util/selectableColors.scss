@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-.nx-selectable-color--light-blue {
+.nx-selectable-color--light-blue, // deprecated
+.nx-selectable-color--sky {
   --nx-selectable-color-dark: var(--nx-swatch-blue-80);
   --nx-selectable-color-light: var(--nx-swatch-blue-90);
 }
@@ -29,7 +30,8 @@
   --nx-selectable-color-light: var(--nx-swatch-red-90);
 }
 
-.nx-selectable-color--green {
+.nx-selectable-color--green, // deprecated
+.nx-selectable-color--turquoise {
   --nx-selectable-color-dark: var(--nx-swatch-green-40);
   --nx-selectable-color-light: var(--nx-swatch-green-80);
 }
@@ -44,7 +46,8 @@
   --nx-selectable-color-light: var(--nx-swatch-yellow-95);
 }
 
-.nx-selectable-color--lime {
+.nx-selectable-color--lime, // deprecated
+.nx-selectable-color--kiwi {
   --nx-selectable-color-dark: var(--nx-swatch-green-60);
   --nx-selectable-color-light: var(--nx-swatch-green-95);
 }
