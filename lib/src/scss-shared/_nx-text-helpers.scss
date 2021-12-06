@@ -78,11 +78,12 @@
 
 %nx-code {
   @include monospace;
+
   background-color: var(--nx-swatch-grey-95);
   border: 1px solid var(--nx-swatch-grey-90);
   border-radius: 4px;
   color: var(--nx-swatch-red-40);
-  padding: 0 2px;
+  padding: 2px;
   white-space: nowrap;
 }
 

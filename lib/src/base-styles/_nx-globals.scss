@@ -27,10 +27,20 @@ $-nx-scrollable-default-height: 400px;
   }
 
   &:focus {
-    border-radius: var(--nx-border-radius);
+    // outline-offset scales the border-radius so this
+    // was changed to 1px to get it visually close to
+    // var(--nx-border-radius) or (6px).
+    border-radius: 1px;
     color: var(--nx-color-link-focus);
     outline: 1px solid var(--nx-color-interactive-border-focus);
-    outline-offset: 2px;
+    outline-offset: 4px;
+  }
+
+  .nx-icon {
+    // Offsets the icon down to make it
+    // more optically aligned vertically
+    // to the middle.
+    margin-bottom: -1px;
   }
 }
 
