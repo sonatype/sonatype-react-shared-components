@@ -90,15 +90,18 @@ export default function NxTabsPage() {
                           id="nx-text-link-internal-example"
                           liveExample={NxTextLinkInternalExample}
                           codeExamples={NxTextLinkInternalExampleCode}>
-        A simple <NxCode>NxTextLink</NxCode>, one inside <NxCode>NxCode</NxCode>, to an internal page.
+        A simple <NxCode>NxTextLink</NxCode> to an internal page.
+        One example is <NxCode>NxTextLink</NxCode> wrapped inside an <NxCode>NxCode</NxCode> and
+        another is <NxCode>NxCode</NxCode> inside an <NxCode>NxTextLink</NxCode>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxTextLink External Link Example"
                           id="nx-text-link-external-example"
                           liveExample={NxTextLinkExternalExample}
                           codeExamples={NxTextLinkExternalExampleCode}>
-        A simple <NxCode>NxTextLink</NxCode>, one inside <NxCode>NxCode</NxCode>,
-        to an external page. Note the icon and that it opens in a new tab.
+        A simple <NxCode>NxTextLink</NxCode> to an external page. Note the icon and that it opens in a new tab.
+        One example is <NxCode>NxTextLink</NxCode> wrapped inside an <NxCode>NxCode</NxCode> and
+        another is <NxCode>NxCode</NxCode> inside an <NxCode>NxTextLink</NxCode>.
       </GalleryExampleTile>
     </>
   );
