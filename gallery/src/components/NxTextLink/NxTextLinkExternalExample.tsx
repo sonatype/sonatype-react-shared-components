@@ -15,9 +15,21 @@ export default () =>
       over the lazy dog.
     </NxP>
     <NxP>
-      Learn more about{' '}
       <NxCode>
-        <NxTextLink external href="https://www.a11yproject.com/">a11y</NxTextLink>
+        This is an example of{' '}
+        <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">
+          NxTextLink
+        </NxTextLink>{' '}
+        inside NxCode
       </NxCode>
+    </NxP>
+    <NxP>
+      <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code">
+        This is an example of{' '}
+        <NxCode>
+          NxCode
+        </NxCode>{' '}
+        inside <NxCode>NxTextLink</NxCode>, yup!
+      </NxTextLink>
     </NxP>
   </>;

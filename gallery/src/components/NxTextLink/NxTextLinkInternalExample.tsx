@@ -14,9 +14,21 @@ export default () =>
       <NxTextLink href="#/pages/nx-tile">nx-tile documentation page</NxTextLink>
     </NxP>
     <NxP>
-      Learn more about{' '}
       <NxCode>
-        <NxTextLink href="#/pages/nx-tile">NxTree</NxTextLink>
+        This is an example of{' '}
+        <NxTextLink href="#/pages/NxTextLink">
+          NxTextLink
+        </NxTextLink>{' '}
+        inside NxCode
       </NxCode>
+    </NxP>
+    <NxP>
+      <NxTextLink href="#/pages/nx-code">
+        This is an example of{' '}
+        <NxCode>
+          NxCode
+        </NxCode>{' '}
+        inside <NxCode>NxTextLink</NxCode>, yup!
+      </NxTextLink>
     </NxP>
   </>;
