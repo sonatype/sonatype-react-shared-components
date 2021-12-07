@@ -31,7 +31,7 @@ const NxButton = forwardRef<HTMLButtonElement, Props>(
         console.warn('Using icon-only buttons without the title prop is deprecated');
       }
 
-      return alreadyHasTooltip ? getBtn({ title }) : <NxTooltip title={title}>{getBtn()}</NxTooltip>;
+      return title && !alreadyHasTooltip ? <NxTooltip title={title}>{getBtn()}</NxTooltip> : getBtn({ title });
     }
 );
 
