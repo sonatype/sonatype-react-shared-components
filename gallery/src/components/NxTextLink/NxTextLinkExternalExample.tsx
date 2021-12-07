@@ -27,7 +27,7 @@ export default () =>
         <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">
           NxTextLink
         </NxTextLink>{' '}
-        inside NxCode
+        with text inside NxCode
       </NxCode>
     </NxP>
     <NxP>
@@ -43,7 +43,7 @@ export default () =>
         <NxCode>
           NxCode
         </NxCode>{' '}
-        inside <NxCode>NxTextLink</NxCode> (Not Recommended)
+        with text inside <NxCode>NxTextLink</NxCode>
       </NxTextLink>
     </NxP>
   </>;
