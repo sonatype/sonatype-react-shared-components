@@ -4,20 +4,24 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useContext, ButtonHTMLAttributes } from 'react';
 import classnames from 'classnames';
 
 import {Props, propTypes} from './types';
-import NxTooltip from '../NxTooltip/NxTooltip';
+import NxTooltip, { TooltipContext } from '../NxTooltip/NxTooltip';
 import { includesDisabledClass } from '../../util/classUtil';
 
 const NxButton = forwardRef<HTMLButtonElement, Props>(
-    function NxButton({ variant, className, children, title, ...attrs }, ref) {
+    function NxButton({ variant, className, children, title: titleProp, ...attrs }, ref) {
       const classNames = classnames(className, 'nx-btn', `nx-btn--${variant || 'secondary'}`),
-          btn = (
-            <button aria-disabled={includesDisabledClass(className)}
+          alreadyHasTooltip = useContext(TooltipContext),
+          title = titleProp || undefined,
+          getBtn = (extraProps?: Partial<ButtonHTMLAttributes<HTMLButtonElement>>) => (
+            <button key="button"
+                    aria-disabled={includesDisabledClass(className)}
                     ref={ref}
                     className={classNames}
+                    {...extraProps}
                     {...attrs}>
               {children}
             </button>
@@ -27,7 +31,7 @@ const NxButton = forwardRef<HTMLButtonElement, Props>(
         console.warn('Using icon-only buttons without the title prop is deprecated');
       }
 
-      return title ? <NxTooltip title={title}>{btn}</NxTooltip> : btn;
+      return alreadyHasTooltip ? getBtn({ title }) : <NxTooltip title={title}>{getBtn()}</NxTooltip>;
     }
 );
 
