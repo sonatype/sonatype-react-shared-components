@@ -15,12 +15,26 @@ export default () =>
     </NxP>
     <NxP>
       <NxCode>
+        <NxTextLink href="#/pages/NxTextLink">
+          NxTextLink inside NxCode
+        </NxTextLink>{' '}
+      </NxCode>
+    </NxP>
+    <NxP>
+      <NxCode>
         This is an example of{' '}
         <NxTextLink href="#/pages/NxTextLink">
           NxTextLink
         </NxTextLink>{' '}
         inside NxCode
       </NxCode>
+    </NxP>
+    <NxP>
+      <NxTextLink href="#/pages/nx-code">
+        <NxCode>
+          NxCode inside NxTextLink
+        </NxCode>
+      </NxTextLink>
     </NxP>
     <NxP>
       <NxTextLink href="#/pages/nx-code">

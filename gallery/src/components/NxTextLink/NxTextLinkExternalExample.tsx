@@ -16,12 +16,26 @@ export default () =>
     </NxP>
     <NxP>
       <NxCode>
+        <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">
+          NxTextLink inside NxCode
+        </NxTextLink>{' '}
+      </NxCode>
+    </NxP>
+    <NxP>
+      <NxCode>
         This is an example of{' '}
         <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">
           NxTextLink
         </NxTextLink>{' '}
         inside NxCode
       </NxCode>
+    </NxP>
+    <NxP>
+      <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code">
+        <NxCode>
+          NxCode inside NxTextLink
+        </NxCode>
+      </NxTextLink>
     </NxP>
     <NxP>
       <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code">
