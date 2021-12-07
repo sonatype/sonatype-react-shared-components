@@ -5,11 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxButton from '../NxButton';
+import { TooltipContext } from '../../NxTooltip/NxTooltip';
+
 
 describe('NxButton', function() {
   it('renders a button', function() {
@@ -32,9 +34,9 @@ describe('NxButton', function() {
   });
 
   it('renders an icon-only button', function() {
-    const button = shallow(<NxButton variant="icon-only"><NxFontAwesomeIcon icon={faCheck}/></NxButton>);
+    const button = shallow(<NxButton title="Check" variant="icon-only"><NxFontAwesomeIcon icon={faCheck}/></NxButton>);
 
-    expect(button).toMatchSelector('button.nx-btn.nx-btn--icon-only');
+    expect(button.find('button')).toMatchSelector('.nx-btn.nx-btn--icon-only');
   });
 
   it('passes the disabled attribute through', function() {
@@ -48,5 +50,32 @@ describe('NxButton', function() {
     const button = shallow(<NxButton className="disabled">Disabled Button</NxButton>);
 
     expect(button).toHaveProp('aria-disabled', true);
+  });
+
+  it('wraps the button in a tooltip if the title is set and the TooltipContext is not set to true', function() {
+    const noTitleNoContext = mount(<NxButton>foo</NxButton>).children(),
+        titleNoContext = mount(<NxButton title="bar">foo</NxButton>).children(),
+        noTitleContext = mount(
+          <TooltipContext.Provider value={true}>
+            <NxButton>foo</NxButton>
+          </TooltipContext.Provider>
+        ).children(),
+        titleContext = mount(
+          <TooltipContext.Provider value={true}>
+            <NxButton title="bar">foo</NxButton>
+          </TooltipContext.Provider>
+        ).children();
+
+    expect(noTitleNoContext).toMatchSelector('button');
+    expect(noTitleNoContext).toHaveProp('title', undefined);
+
+    expect(titleContext).toMatchSelector('button');
+    expect(titleContext).toHaveProp('title', 'bar');
+
+    expect(noTitleContext).toMatchSelector('button');
+    expect(noTitleContext).toHaveProp('title', undefined);
+
+    expect(titleNoContext).toMatchSelector('NxTooltip');
+    expect(titleNoContext).toHaveProp('title', 'bar');
   });
 });
