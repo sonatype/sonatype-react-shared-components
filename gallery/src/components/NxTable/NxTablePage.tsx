@@ -40,7 +40,7 @@ export default function NxTablePage() {
         <NxTabList aria-label="Table Component Examples">
           <NxTab>Usage</NxTab>
           <NxTab>React Examples</NxTab>
-          <NxTab>HTML Examples</NxTab>
+          <NxTab>HTML Only Example</NxTab>
         </NxTabList>
         <NxTabPanel>
           <GalleryDescriptionTile>

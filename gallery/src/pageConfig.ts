@@ -73,7 +73,6 @@ import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonu
 import NxNexusPageHeaderPage from './components/NxNexusPageHeader/NxNexusPageHeaderPage';
 import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
-import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
 import NxViewportSizedPage from './styles/NxViewportSized/NxViewportSizedPage';
 import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
 import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
@@ -216,7 +215,6 @@ const pageConfig: PageConfig = {
   },
   'Other Components': {
     Accordion: { content: NxAccordionPage, type: 'react' },
-    StatefulAccordion: { content: NxStatefulAccordionPage, type: 'react' },
     BinaryDonutChart: { content: NxBinaryDonutChartPage, type: 'react' },
     CloseButton: { content: NxCloseButtonPage, type: 'react' },
     CodeSnippet: { content: NxCodeSnippetPage, type: 'react' },
@@ -241,7 +239,7 @@ const pageConfig: PageConfig = {
     Tree: { content: NxTreePage, type: 'react' },
     TreeView: { content: NxTreeViewPage, type: 'react' }
   },
-  'Typograpgy': {
+  'Typography': {
     'blockquote': { content: NxBlockquotePage, type: 'html' },
     'code': { content: NxCodePage, type: 'html' },
     'h*': { content: NxHPage, type: 'html' },
