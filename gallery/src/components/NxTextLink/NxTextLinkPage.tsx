@@ -91,8 +91,11 @@ export default function NxTabsPage() {
                           liveExample={NxTextLinkInternalExample}
                           codeExamples={NxTextLinkInternalExampleCode}>
         A simple <NxCode>NxTextLink</NxCode> to an internal page.
-        One example is <NxCode>NxTextLink</NxCode> wrapped inside an <NxCode>NxCode</NxCode> and
-        another is <NxCode>NxCode</NxCode> inside an <NxCode>NxTextLink</NxCode>.
+
+        In the case of text link on code, we recommend that <NxCode>NxTextLink</NxCode>{' '}
+        is nested inside <NxCode>NxCode</NxCode> instead of the opposite.
+
+        A few examples of <NxCode>NxTextLink</NxCode> with and without <NxCode>NxCode</NxCode>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxTextLink External Link Example"
@@ -100,8 +103,11 @@ export default function NxTabsPage() {
                           liveExample={NxTextLinkExternalExample}
                           codeExamples={NxTextLinkExternalExampleCode}>
         A simple <NxCode>NxTextLink</NxCode> to an external page. Note the icon and that it opens in a new tab.
-        One example is <NxCode>NxTextLink</NxCode> wrapped inside an <NxCode>NxCode</NxCode> and
-        another is <NxCode>NxCode</NxCode> inside an <NxCode>NxTextLink</NxCode>.
+
+        In the case of external text link on code, we still recommend that <NxCode>NxTextLink</NxCode>{' '}
+        is nested inside <NxCode>NxCode</NxCode> instead of the opposite.
+
+        A few examples of <NxCode>NxTextLink</NxCode> to an external page with and without <NxCode>NxCode</NxCode>.
       </GalleryExampleTile>
     </>
   );

@@ -32,7 +32,7 @@ export default () =>
     <NxP>
       <NxTextLink href="#/pages/nx-code">
         <NxCode>
-          NxCode inside NxTextLink
+          NxCode inside NxTextLink (Not Recommended)
         </NxCode>
       </NxTextLink>
     </NxP>
@@ -42,7 +42,7 @@ export default () =>
         <NxCode>
           NxCode
         </NxCode>{' '}
-        inside <NxCode>NxTextLink</NxCode>, yup!
+        inside <NxCode>NxTextLink</NxCode>, (Not Recommended)
       </NxTextLink>
     </NxP>
   </>;
