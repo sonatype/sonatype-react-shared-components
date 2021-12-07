@@ -52,11 +52,11 @@ $-nx-scrollable-default-height: 400px;
     }
   }
 
-  .nx-icon {
+  .nx-icon.fa-external-link-alt {
     // Offsets the icon down to make it
     // more optically aligned vertically
     // to the middle.
-    margin-bottom: -1px;
+    vertical-align: -0.16em;
   }
 }
 
