@@ -12,7 +12,6 @@ import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxButton from '../NxButton';
 import { TooltipContext } from '../../NxTooltip/NxTooltip';
 
-
 describe('NxButton', function() {
   it('renders a button', function() {
     const button = shallow(<NxButton />);
