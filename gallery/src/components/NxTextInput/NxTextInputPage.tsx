@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink, NxStatefulAccordion, NxAccordion, NxList }
+import { NxTable, NxCode, NxP, NxTextLink, NxStatefulAccordion, NxAccordion, NxList, NxH3 }
   from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -16,6 +16,7 @@ import NxTextInputPasswordExample from './NxTextInputPasswordExample';
 import NxTextInputTextAreaExample from './NxTextInputTextAreaExample';
 import NxTextInputTextAreaValidationExample from './NxTextInputTextAreaValidationExample';
 import NxTextInputLongExample from './NxTextInputLongExample';
+import NxTextInputShortExample from './NxTextInputShortExample';
 import NxTextInputDisabledExample from './NxTextInputDisabledExample';
 
 const simpleSourceCode = require('./NxTextInputSimpleExample?raw');
@@ -24,6 +25,7 @@ const passwordSourceCode = require('./NxTextInputPasswordExample?raw');
 const textAreaSourceCode = require('./NxTextInputTextAreaExample?raw');
 const textAreaValidationSourceCode = require('./NxTextInputTextAreaValidationExample?raw');
 const longSourceCode = require('./NxTextInputLongExample?raw');
+const shortSourceCode = require('./NxTextInputShortExample?raw');
 const disabledSourceCode = require('./NxTextInputDisabledExample?raw');
 
 const NxTextInputPage = () =>
@@ -197,6 +199,32 @@ const NxTextInputPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
+      <NxH3>NxTextInput CSS Classes</NxH3>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Class</NxTable.Cell>
+            <NxTable.Cell>Location</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>nx-text-input--short</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Directly on the <NxCode>NxTextInput</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>Short variant (150px) of the <NxCode>NxTextInput</NxCode>.</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>nx-text-input--long</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Directly on the <NxCode>NxTextInput</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>Long variant (800px) of the <NxCode>NxTextInput</NxCode>.</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
       <div className="nx-tile-content--accordion-container">
         <NxStatefulAccordion defaultOpen={false}>
           <NxAccordion.Header>
@@ -271,6 +299,14 @@ const NxTextInputPage = () =>
                         codeExamples={longSourceCode}>
       Examples of <NxCode>NxTextInput</NxCode>s using
       the <NxCode>long</NxCode> modifier, which makes them wider.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Short example"
+                        id="nx-text-input-short-example"
+                        liveExample={NxTextInputShortExample}
+                        codeExamples={shortSourceCode}>
+      Examples of <NxCode>NxTextInput</NxCode>s using
+      the <NxCode>short</NxCode> modifier, which makes them wider.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled example"
