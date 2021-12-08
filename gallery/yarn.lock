@@ -163,6 +163,14 @@
     postcss-value-parser "4.1.0"
     throat "5.0.0"
 
+"@axe-core/webdriverio@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.npmjs.org/@axe-core/webdriverio/-/webdriverio-4.3.2.tgz#bbf56dbb1f791523ec48e19061da224e6c6e4956"
+  integrity sha512-dLUErX7iDWxyyEmi0xLhPuLiia2ITsJ0RdOJXbOOTumF+sIlJfITWs++CWSuEsxM10jfqnYBYg+d8kNnFWcdiA==
+  dependencies:
+    axe-core "^4.3.3"
+    cssesc "^3.0.0"
+
 "@babel/code-frame@^7.0.0":
   version "7.5.5"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -1557,6 +1565,11 @@ aws4@^1.8.0:
   version "1.9.0"
   resolved "https://registry.npmjs.org/aws4/-/aws4-1.9.0.tgz#24390e6ad61386b0a747265754d2a17219de862c"
   integrity sha512-Uvq6hVe90D0B2WEnUqtdgY1bATGz3mw33nH9Y+dmA+w5DHvUmBgkr5rM/KCHpCsiFNRUfokW/szpPPgMK2hm4A==
+
+axe-core@^4.3.3:
+  version "4.3.5"
+  resolved "https://registry.npmjs.org/axe-core/-/axe-core-4.3.5.tgz#78d6911ba317a8262bfee292aeafcc1e04b49cc5"
+  integrity sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA==
 
 axios@0.21.1, axios@^0.21.1:
   version "0.21.1"

@@ -22,6 +22,7 @@
   "license": "EPL-2.0",
   "devDependencies": {
     "@applitools/eyes-webdriverio": "^5.29.6",
+    "@axe-core/webdriverio": "^4.3.2",
     "@babel/runtime": "^7.12.0",
     "@types/classnames": "^2.2.11",
     "@types/debounce": "^1.2.0",

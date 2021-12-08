@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { focusTest, simpleTest } = require('./testUtils');
+const AxeBuilder = require('@axe-core/webdriverio').default;
 
 describe('NxAccordion', function() {
   beforeEach(async function() {
@@ -41,5 +42,12 @@ describe('NxAccordion', function() {
 
   describe('NxAccordion with tertiary header button', function() {
     it('looks right', simpleTest(tertiaryBtnExampleSelector));
+  });
+
+  it('passes axe a11y checks', async function() {
+    const axeResults = await new AxeBuilder({ client: browser }).analyze();
+
+    expect(axeResults.violations).toEqual([]);
+    expect(axeResults.incomplete).toEqual([]);
   });
 });
