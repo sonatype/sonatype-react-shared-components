@@ -17,6 +17,7 @@ describe('NxTextInput', function() {
       shortComponentSelector = '#nx-text-input-short-example .nx-text-input:not(.nx-text-input--textarea)',
       longTextareaComponentSelector = '#nx-text-input-long-example .nx-text-input--textarea',
       shortTextareaComponentSelector = '#nx-text-input-short-example .nx-text-input--textarea',
+      disabledComponentSelector = '#nx-text-input-disabled-example .nx-text-input.pristine',
       disabledValidComponentSelector = '#nx-text-input-disabled-example .nx-text-input.valid',
       disabledInvalidComponentSelector = '#nx-text-input-disabled-example .nx-text-input.invalid';
 
