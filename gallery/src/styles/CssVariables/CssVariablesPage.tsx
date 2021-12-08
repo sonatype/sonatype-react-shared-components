@@ -133,6 +133,9 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-width-form-element-wide">
             The standard width for the "wide" variant of a form element such as a text input.
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-width-form-element-short">
+            The standard width for the "short" variant of a form element such as a text input.
+          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-font-size">
             The standard RSC font size.
           </PropertyDocItem>
