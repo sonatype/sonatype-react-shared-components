@@ -13,7 +13,7 @@ export default function NxTreeCollapsibleExample() {
       [territoriesOpen, toggleTerritoriesOpen] = useToggle(true);
 
   return (
-    <NxTree>
+    <NxTree aria-label="Collapsible multi-top tree example">
       <NxTree.Item collapsible isOpen={provincesOpen} onToggleCollapse={toggleProvincesOpen}>
         <NxTree.ItemLabel>
           <NxFontAwesomeIcon fixedWidth icon={faGlobeAmericas} />

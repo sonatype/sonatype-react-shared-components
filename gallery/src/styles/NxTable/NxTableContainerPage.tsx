@@ -25,7 +25,7 @@ const NxTableContainerPage = () =>
         For these situations, a wrapper element using the <NxCode>.nx-table-container</NxCode> class
         can be constructed around the table. This setup is needed for the following functionality:
       </NxP>
-      <NxList className="nx-list--bulleted">
+      <NxList bulleted>
         <NxList.Item>
           <NxList.Text>Scrolling tables</NxList.Text>
         </NxList.Item>

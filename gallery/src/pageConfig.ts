@@ -9,6 +9,8 @@ import {PageConfig} from './pageConfigTypes';
 import NxAlertPage from './styles/NxAlert/NxAlertPage';
 import NxButtonPage from './components/NxButton/NxButtonPage';
 import NxCheckboxPage from './components/NxCheckbox/NxCheckboxPage';
+import NxDateInputPage from './components/NxDateInput/NxDateInputPage';
+import NxStatefulDateInputPage from './components/NxStatefulDateInput/NxStatefulDateInputPage';
 import NxTextInputPage from './components/NxTextInput/NxTextInputPage';
 import NxStatefulTextInputPage from './components/NxStatefulTextInput/NxStatefulTextInputPage';
 import NxBackButtonPage from './components/NxBackButton/NxBackButtonPage';
@@ -126,6 +128,15 @@ import NxStatefulSearchTransferListPage
 import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
 import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallThreatCounterPage';
+import NxCollapsibleItemsPage from './components/NxCollapsibleItems/NxCollapsibleItemsPage';
+import NxCollapsibleMultiSelectPage
+  from './components/NxCollapsibleMultiSelect/NxCollapsibleMultiSelectPage';
+import NxCollapsibleRadioSelectPage
+  from './components/NxCollapsibleRadioSelect/NxCollapsibleRadioSelectPage';
+import NxStatefulCollapsibleMultiSelectPage
+  from './components/NxStatefulCollapsibleMultiSelect/NxStatefulCollapsibleMultiSelectPage';
+import NxStatefulCollapsibleRadioSelectPage
+  from './components/NxStatefulCollapsibleRadioSelect/NxStatefulCollapsibleRadioSelectPage';
 import NxTreePage from './components/NxTree/NxTreePage';
 
 const pageConfig: PageConfig = {
@@ -140,10 +151,17 @@ const pageConfig: PageConfig = {
     NxSegmentedButton: NxSegmentedButtonPage,
     NxStatefulSegmentedButton: NxStatefulSegmentedButtonPage,
     NxCheckbox: NxCheckboxPage,
+    NxCloseButton: NxCloseButtonPage,
+    NxCollapsibleItems: NxCollapsibleItemsPage,
+    NxCollapsibleMultiSelect: NxCollapsibleMultiSelectPage,
+    NxStatefulCollapsibleMultiSelect: NxStatefulCollapsibleMultiSelectPage,
+    NxCollapsibleRadioSelect: NxCollapsibleRadioSelectPage,
+    NxStatefulCollapsibleRadioSelect: NxStatefulCollapsibleRadioSelectPage,
     NxColorPicker: NxColorPickerPage,
     NxStatefulCheckbox: NxStatefulCheckboxPage,
-    NxCloseButton: NxCloseButtonPage,
     NxCodeSnippet: NxCodeSnippetPage,
+    NxDateInput: NxDateInputPage,
+    NxStatefulDateInput: NxStatefulDateInputPage,
     NxDropdown: NxDropdownPage,
     NxStatefulDropdown: NxStatefulDropdownPage,
     NxIconDropdown: NxIconDropdownPage,

@@ -7,6 +7,8 @@
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
 dockerizedBuildPipeline(
+  deployBranch: 'main',
+
   prepare: {
     githubStatusUpdate('pending')
   },
@@ -14,7 +16,7 @@ dockerizedBuildPipeline(
     env['VERSION'] = sh(returnStdout: true, script: 'jq -r -e .version lib/package.json').trim()
   },
   buildAndTest: {
-    // In this repo, all PRs must bump the version number so that master builds can be automatically released.
+    // In this repo, all PRs must bump the version number so that main builds can be automatically released.
     // This shell script enforces that
     sh '''
       # function that returns whether its first parameter is a versions string that is less than or equal to
@@ -24,25 +26,25 @@ dockerizedBuildPipeline(
           [  "$1" = "`/bin/echo -e "$1\\n$2" | sort -V | head -n1`" ]
       }
 
-      if [ "$BRANCH_NAME" != "master" ]; then
+      if [ "$BRANCH_NAME" != "main" ]; then
         version=$VERSION
-        masterVersion=$(git cat-file blob origin/master:./lib/package.json | jq -r .version)
+        mainVersion=$(git cat-file blob origin/main:./lib/package.json | jq -r .version)
 
         galleryVersion=$(jq -r .version gallery/package.json)
-        masterGalleryVersion=$(git cat-file blob origin/master:./gallery/package.json | jq -r .version)
+        mainGalleryVersion=$(git cat-file blob origin/main:./gallery/package.json | jq -r .version)
 
-        if [ -z "$version" ] || [ -z "$masterVersion" ] || [ -z "$galleryVersion" ] || [ -z "$masterGalleryVersion" ];
+        if [ -z "$version" ] || [ -z "$mainVersion" ] || [ -z "$galleryVersion" ] || [ -z "$mainGalleryVersion" ];
         then
           echo 'Version lookups failed!'
           exit 2
         elif [ "$version" != "$galleryVersion" ]; then
           echo 'Library and Gallery versions must match'
           exit 1
-        elif [ "$version" = "$masterVersion" ] || [ "$galleryVersion" = "$masterGalleryVersion" ]; then
-          echo 'Package versions must be updated from what is on master'
+        elif [ "$version" = "$mainVersion" ] || [ "$galleryVersion" = "$mainGalleryVersion" ]; then
+          echo 'Package versions must be updated from what is on main'
           exit 1
-        elif verlte "$version" "$masterVersion" || verlte "$galleryVersion" "$masterGalleryVersion"; then
-          echo 'Package versions must be higher than what is on master'
+        elif verlte "$version" "$mainVersion" || verlte "$galleryVersion" "$mainGalleryVersion"; then
+          echo 'Package versions must be higher than what is on main'
           exit 1
         fi
       fi
@@ -82,7 +84,7 @@ dockerizedBuildPipeline(
     """
   },
   vulnerabilityScan: {
-    if (env.BRANCH_NAME == 'master') {
+    if (env.BRANCH_NAME == 'main') {
       nexusPolicyEvaluation(
         iqStage: 'release',
         iqApplication: 'sonatype-react-shared-components',
@@ -110,7 +112,7 @@ dockerizedBuildPipeline(
   testResults: ['lib/junit.xml', 'gallery/test-results/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
-    if (env.BRANCH_NAME == 'master') {
+    if (env.BRANCH_NAME == 'main') {
       build job:'/uxui/publish-gallery-to-s3', propagate: false, wait: false, parameters: [
         run(name: 'Producer', runId: "${currentBuild.fullProjectName}${currentBuild.displayName}")
       ]

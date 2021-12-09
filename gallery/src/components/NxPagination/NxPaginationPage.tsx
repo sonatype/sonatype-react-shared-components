@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxTextLink, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -28,48 +28,48 @@ const NxPaginationPage = () =>
         It is intended to be used within an <NxCode>.nx-footer</NxCode> element.
         There are essentially five different "types" of buttons which can appear within the pagination control:
       </NxP>
-      <ul className="nx-list">
-        <li className="nx-list__item">
-          <span className="nx-list__text">Current page button</span>
-          <span className="nx-list__subtext">
+      <NxList>
+        <NxList.Item>
+          <NxList.Text>Current page button</NxList.Text>
+          <NxList.Subtext>
             A button for the current page will always be visible and is distinguished via a dark blue background.
             Clicking this button has no effect - the component's <NxCode>onChange</NxCode> handler
             does not get triggered.
-          </span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">Next/previous page buttons</span>
-          <span className="nx-list__subtext">
+          </NxList.Subtext>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Next/previous page buttons</NxList.Text>
+          <NxList.Subtext>
             Whenever there are pages either above or below the current page, arrow buttons are rendered as
             applicable to navigate the pages sequentially.
-          </span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">Nearby page buttons</span>
-          <span className="nx-list__subtext">
+          </NxList.Subtext>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Nearby page buttons</NxList.Text>
+          <NxList.Subtext>
             Buttons for up to 4 additional pages that precede or follow the current page will be present as
             applicable. The lowest "nearby page" to get a rendered button always has a page index that is one
             higher than a multiple of 5.
-          </span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">First/last page buttons</span>
-          <span className="nx-list__subtext">
+          </NxList.Subtext>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>First/last page buttons</NxList.Text>
+          <NxList.Subtext>
             If not already covered by one of the "nearby page buttons", buttons will always be visible to jump
             straight to the first and last possible pages. These buttons will be labeled with the applicable page
             number.
-          </span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">Next/previous page group buttons</span>
-          <span className="nx-list__subtext">
+          </NxList.Subtext>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Next/previous page group buttons</NxList.Text>
+          <NxList.Subtext>
             If there are additional pages before or after those directly accessible via the "nearby page buttons",
             aside from the first and last pages, additional buttons marked by ellipses will appear between the
             "first/last page buttons" and the "nearby page buttons". Clicking these ellipsis buttons navigates
             to the pages immediately outside of the "nearby page buttons" range.
-          </span>
-        </li>
-      </ul>
+          </NxList.Subtext>
+        </NxList.Item>
+      </NxList>
       <NxTable>
         <NxTable.Head>
           <NxTable.Row>
