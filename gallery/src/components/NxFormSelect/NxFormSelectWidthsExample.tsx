@@ -9,7 +9,6 @@ import { NxFormSelect, nxFormSelectStateHelpers, NxFormGroup } from '@sonatype/r
 
 const NxFormSelectExample = () => {
   const [selectState, setSelectValue] = nxFormSelectStateHelpers.useNxFormSelectState<number>(1);
-
   const [selectState2, setSelectValue2] = nxFormSelectStateHelpers.useNxFormSelectState<number>(1);
 
   function onChange(evt: FormEvent<HTMLSelectElement>) {
@@ -21,7 +20,7 @@ const NxFormSelectExample = () => {
   }
 
   return (
-    <>
+    <div className="form-select-width-variants">
       <NxFormGroup label={`Selected Option: ${selectState.value}`} isRequired>
         <NxFormSelect onChange={onChange} { ...selectState } className="nx-form-select--short">
           <option value="1">Option 1</option>
@@ -41,7 +40,7 @@ const NxFormSelectExample = () => {
           <option value="5">Option 5</option>
         </NxFormSelect>
       </NxFormGroup>
-    </>
+    </div>
   );
 };
 
