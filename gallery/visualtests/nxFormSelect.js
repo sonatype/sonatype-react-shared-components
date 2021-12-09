@@ -29,19 +29,19 @@ describe('nx-form-select', function() {
     it('it looks right and text is truncated', simpleTest(overflowSelector));
   });
 
-  describe('Disabled NxFormSelect', function() {
+  describe('Short and Long Variants of NxFormSelect', function() {
+    beforeEach(async function() {
+      await browser.url('#/pages/NxFormSelect');
+    });
+
+    it('looks shorter and longer', simpleTest(widthSelector));
+  });
+
+  describe('Disabled nx-form-select', function() {
     beforeEach(async function() {
       await browser.url('#/pages/nx-form-select');
     });
 
     it('looks disabled', simpleTest(disabledSelector));
-  });
-
-  describe('Short and long Variants NxFormSelect', function() {
-    beforeEach(async function() {
-      await browser.url('#/pages/nx-form-select');
-    });
-
-    it('looks shorter and longer', simpleTest(widthSelector));
   });
 });
