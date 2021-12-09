@@ -7,7 +7,15 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTree', function() {
-  const { clickTest, focusTest, simpleTest, blurElement, waitAndGetElements } = setupBrowser('#/pages/NxTree');
+  const {
+    clickTest,
+    focusTest,
+    simpleTest,
+    blurElement,
+    waitAndGetElements,
+    getPage,
+    isFocused
+  } = setupBrowser('#/pages/NxTree');
 
   const nonCollapsibleExampleSelector = '#nx-tree-non-collapsible-example .nx-tree',
       collapsibleExampleSelector = '#nx-tree-collapsible-example .gallery-example-live > .nx-tree',
@@ -19,9 +27,9 @@ describe('NxTree', function() {
           .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item > .nx-tree > .nx-tree__item:nth-child(2)`,
       noGutterFirstItemSelector = `${noGutterExampleSelector} .nx-tree > .nx-tree__item`;
 
-  function itemWithText(tree, text) {
+  async function itemWithText(tree, text) {
     // creates a relative XPath selector for a tree item with the given text
-    return tree.$(`.//li[./span//*[text()="${text}"]]`);
+    return (await tree.$x(`.//li[./span//*[text()="${text}"]]`))[0];
   }
 
   function clickTarget(treeitem) {
@@ -33,10 +41,13 @@ describe('NxTree', function() {
   }
 
   function hasClass(element, cls) {
-    return browser.execute((el, cls) => el.classList.contains(cls), element, cls);
+    return element.evaluate((el, cls) => el.classList.contains(cls), cls);
   }
 
-  it('looks right with a single top entry and no collapsing', simpleTest(nonCollapsibleExampleSelector));
+  it('looks right with a single top entry and no collapsing', async function() {
+    await simpleTest(nonCollapsibleExampleSelector)()
+  });
+
   it('looks right with a single top entry and collapsing', simpleTest(collapsibleExampleSelector));
   it('looks right with a multiple top entries and no collapsing', simpleTest(nonCollapsibleMultiTopExampleSelector));
   it('looks right with a multiple top entries and collapsing', simpleTest(collapsibleMultiTopExampleSelector));
@@ -44,35 +55,13 @@ describe('NxTree', function() {
       simpleTest(noGutterExampleSelector));
 
   it('looks right with some collapsible elements collapsed', async function() {
-<<<<<<< HEAD
-    const collapseControlSelector1 = `${collapsibleExampleSelector} .nx-tree__item .nx-tree__item
-            .nx-tree__item:last-child .nx-tree__item .nx-tree__item:nth-child(2) .nx-tree__collapse-label`,
-        collapseControlSelector2 = `${collapsibleExampleSelector} .nx-tree__item .nx-tree__item
-            .nx-tree__item:last-child .nx-tree__item .nx-tree__item:last-child .nx-tree__item:last-child
-            .nx-tree__collapse-label`,
-        input2Selector = `${collapseControlSelector2} input`,
-      [tree, collapseControl1, collapseControl2, collapseInput2] = await waitAndGetElements(
-          collapsibleMultiTopExampleSelector,
-          collapseControlSelector1,
-          collapseControlSelector2,
-          input2Selector
-      );
-
-    await collapseControl1.click();
-    await collapseControl2.click();
-    await blurElement(collapseInput2);
-=======
-    const tree = await browser.$(collapsibleExampleSelector),
+    const [tree] = await waitAndGetElements(collapsibleExampleSelector),
         [images, keyboard] = await Promise.all([itemWithText(tree, 'images'), itemWithText(tree, 'keyboard')]),
         [imagesCollapse, keyboardCollapse] = await Promise.all([collapseTarget(images), collapseTarget(keyboard)]);
 
-    await imagesCollapse.scrollIntoView({ block: 'center' });
     await imagesCollapse.click();
     await keyboardCollapse.click();
-    await browser.execute(function(el) {
-      el.blur();
-    }, keyboard);
->>>>>>> main
+    await blurElement(keyboard);
 
     await simpleTest(collapsibleExampleSelector)();
   });
@@ -82,7 +71,7 @@ describe('NxTree', function() {
   it('looks right when a no-gutter item is focused', focusTest(noGutterExampleSelector, noGutterFirstItemSelector));
 
   it('looks right when a collapse control is clicked', async function() {
-    const tree = await browser.$(collapsibleExampleSelector),
+    const [tree] = await waitAndGetElements(collapsibleExampleSelector),
         images = await itemWithText(tree, 'images'),
         imagesCollapse = await collapseTarget(images);
 
@@ -92,45 +81,44 @@ describe('NxTree', function() {
 
   describe('keyboard navigation', function() {
     it('initially focuses the first item in the tree when reached via tab', async function() {
-      const [previousFocusableElement, tree] = await Promise.all([
-        browser.$(collapsibleExamplePreviousFocusableElementSelector),
-        browser.$(collapsibleExampleSelector)
-      ]);
+      const [previousFocusableElement, tree] = await waitAndGetElements(
+        collapsibleExamplePreviousFocusableElementSelector,
+        collapsibleExampleSelector
+      );
 
       const firstItem = await tree.$('.nx-tree__item');
 
-      await browser.execute(function(el) {
-        el.focus();
-      }, previousFocusableElement);
+      await previousFocusableElement.focus();
 
-      await browser.keys('Tab');
+      await getPage().keyboard.press('Tab');
 
-      expect(await firstItem.isFocused()).toBe(true);
+      expect(await isFocused(firstItem)).toBe(true);
     });
 
     it('moves beyond the tree when tab is pressed while part of the tree is focused', async function() {
-      const [tree, firstItem] = await Promise.all([
-        browser.$(collapsibleExampleSelector),
-        browser.$(`${collapsibleExampleSelector} .nx-tree__item`)
-      ]);
+      const [tree, firstItem] = await waitAndGetElements(
+            collapsibleExampleSelector,
+            `${collapsibleExampleSelector} .nx-tree__item`
+          ),
+          page = getPage();
 
-      await browser.execute(function(el) {
-        el.focus();
-      }, firstItem);
+      await firstItem.focus();
 
-      await browser.keys('Tab');
-      const treeContainsFocusedEl = await browser.execute(t => t.contains(document.activeElement), tree);
+      await getPage().keyboard.press('Tab');
+      const treeContainsFocusedEl = await page.evaluate(t => t.contains(document.activeElement), tree);
 
       expect(treeContainsFocusedEl).toBe(false);
     });
 
     it('focuses an item when that item is clicked', async function() {
-      const tree = await browser.$(collapsibleExampleSelector),
-          [root, cat1, videos, itemOutsideTree] = await Promise.all([
+      const [tree, itemOutsideTree] = await waitAndGetElements(
+            collapsibleExampleSelector,
+            collapsibleExamplePreviousFocusableElementSelector
+          ),
+          [root, cat1, videos] = await Promise.all([
             itemWithText(tree, '/'),
             itemWithText(tree, 'cat1.jpg'),
             itemWithText(tree, 'videos'),
-            browser.$(collapsibleExamplePreviousFocusableElementSelector)
           ]),
           [rootClickTarget, cat1ClickTarget, videosClickTarget] = await Promise.all([
             clickTarget(root),
@@ -139,20 +127,20 @@ describe('NxTree', function() {
           ]);
 
       await cat1ClickTarget.click();
-      expect(await cat1.isFocused()).toBe(true);
+      expect(await isFocused(cat1)).toBe(true);
 
       await rootClickTarget.click();
-      expect(await root.isFocused()).toBe(true);
+      expect(await isFocused(root)).toBe(true);
 
       await itemOutsideTree.click();
-      expect(await browser.execute(t => t.contains(document.activeElement), tree)).toBe(false);
+      expect(await tree.evaluate(t => t.contains(document.activeElement))).toBe(false);
 
       await videosClickTarget.click();
-      expect(await videos.isFocused()).toBe(true);
+      expect(await isFocused(videos)).toBe(true);
     });
 
     it('moves to the next visible tree item when down is pressed', async function() {
-      const tree = await browser.$(collapsibleExampleSelector),
+      const [tree] = await waitAndGetElements(collapsibleExampleSelector),
           [
             // these variable names reflect the label content of the various tree items
             root,
@@ -186,53 +174,54 @@ describe('NxTree', function() {
           [imagesCollapse, rootClick] = await Promise.all([
             collapseTarget(images),
             clickTarget(root)
-          ]);
+          ]),
+          page = getPage();
 
       // collapse the images subtree, and then reset the focus at the top before testing keynav
       await imagesCollapse.click();
       await rootClick.click();
 
-      await browser.keys('ArrowDown');
-      expect(await srv.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowDown');
+      expect(await isFocused(srv)).toBe(true);
 
-      await browser.keys('ArrowDown');
-      expect(await ftp.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowDown');
+      expect(await isFocused(ftp)).toBe(true);
 
-      await browser.keys('ArrowDown');
-      expect(await http.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowDown');
+      expect(await isFocused(http)).toBe(true);
 
-      await browser.keys('ArrowDown');
-      expect(await cats.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowDown');
+      expect(await isFocused(cats)).toBe(true);
 
-      await browser.keys('ArrowDown');
-      expect(await indexHtml.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowDown');
+      expect(await isFocused(indexHtml)).toBe(true);
 
-      await browser.keys('ArrowDown');
-      expect(await images.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowDown');
+      expect(await isFocused(images)).toBe(true);
 
       // images children do not get focused since they are collapsed
 
-      await browser.keys('ArrowDown');
-      expect(await videos.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowDown');
+      expect(await isFocused(videos)).toBe(true);
 
-      await browser.keys('ArrowDown');
-      expect(await boxesWebm.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowDown');
+      expect(await isFocused(boxesWebm)).toBe(true);
 
-      await browser.keys('ArrowDown');
-      expect(await cucumberWebm.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowDown');
+      expect(await isFocused(cucumberWebm)).toBe(true);
 
-      await browser.keys('ArrowDown');
-      expect(await keyboard.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowDown');
+      expect(await isFocused(keyboard)).toBe(true);
 
-      await browser.keys('ArrowDown');
-      expect(await keyboard1.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowDown');
+      expect(await isFocused(keyboard1)).toBe(true);
 
-      await browser.keys('ArrowDown');
-      expect(await keyboard2.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowDown');
+      expect(await isFocused(keyboard2)).toBe(true);
     });
 
     it('moves to the previous visible tree item when up is pressed', async function() {
-      const tree = await browser.$(collapsibleExampleSelector),
+      const [tree] = await waitAndGetElements(collapsibleExampleSelector),
           [
             root,
             srv,
@@ -274,139 +263,144 @@ describe('NxTree', function() {
             collapseTarget(images),
             clickTarget(keyboard2),
             clickTarget(videos)
-          ]);
+          ]),
+          page = getPage();
 
       await keyboard2Click.click();
-      expect(await keyboard2.isFocused()).toBe(true);
+      expect(await isFocused(keyboard2)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await keyboard1.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(keyboard1)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await keyboard.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(keyboard)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await cucumberWebm.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(cucumberWebm)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await boxesWebm.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(boxesWebm)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await videos.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(videos)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await cat5000.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(cat5000)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await cat3.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(cat3)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await cat2.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(cat2)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await cat1.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(cat1)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await images.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(images)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await indexHtml.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(indexHtml)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await cats.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(cats)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await http.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(http)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await ftp.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(ftp)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await srv.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(srv)).toBe(true);
 
-      await browser.keys('ArrowUp');
-      expect(await root.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(root)).toBe(true);
 
       // trying to go beyond start has no effect
-      await browser.keys('ArrowUp');
-      expect(await root.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(root)).toBe(true);
 
       await imagesCollapse.click();
       await videosClick.click();
 
       // collapsed subtree is skipped
-      await browser.keys('ArrowUp');
-      expect(await images.isFocused()).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      expect(await isFocused(images)).toBe(true);
     });
 
     describe('right arrow', function() {
       it('expands a collapsed, expandable tree item, without expanding previously collapsed subtrees', async function() {
-        const tree = await browser.$(collapsibleExampleSelector),
+        const [tree] = await waitAndGetElements(collapsibleExampleSelector),
             [root, images] = await Promise.all([
               itemWithText(tree, '/'),
               itemWithText(tree, 'images')
             ]),
-            [rootCollapse, imagesCollapse] = await Promise.all([collapseTarget(root), collapseTarget(images)]);
+            [rootCollapse, imagesCollapse] = await Promise.all([collapseTarget(root), collapseTarget(images)]),
+            page = getPage();
 
         await imagesCollapse.click();
         await rootCollapse.click();
-        expect(await root.isFocused()).toBe(true);
+        expect(await isFocused(root)).toBe(true);
         expect(await hasClass(root, 'open')).toBe(false);
 
-        await browser.keys('ArrowRight');
-        expect(await root.isFocused()).toBe(true);
+        await page.keyboard.press('ArrowRight');
+        expect(await isFocused(root)).toBe(true);
         expect(await hasClass(root, 'open')).toBe(true);
         expect(await hasClass(images, 'open')).toBe(false);
       });
 
       it('moves to the first child of an expanded tree item', async function() {
-        const tree = await browser.$(collapsibleExampleSelector),
+        const [tree] = await waitAndGetElements(collapsibleExampleSelector),
             [root, srv] = await Promise.all([
               itemWithText(tree, '/'),
               itemWithText(tree, 'srv')
             ]),
-            rootClick = await clickTarget(root);
+            rootClick = await clickTarget(root),
+            page = getPage();
 
         await rootClick.click();
-        expect(await root.isFocused()).toBe(true);
+        expect(await isFocused(root)).toBe(true);
         expect(await hasClass(root, 'open')).toBe(true);
 
-        await browser.keys('ArrowRight');
-        expect(await srv.isFocused()).toBe(true);
+        await page.keyboard.press('ArrowRight');
+        expect(await isFocused(srv)).toBe(true);
         expect(await hasClass(root, 'open')).toBe(true);
       });
 
       it('moves to the first child of an non-collapsible tree item', async function() {
-        const tree = await browser.$(nonCollapsibleExampleSelector),
+        const [tree] = await waitAndGetElements(nonCollapsibleExampleSelector),
             [root, bin] = await Promise.all([
               itemWithText(tree, '/'),
               itemWithText(tree, 'bin')
             ]),
-            rootClick = await clickTarget(root);
+            rootClick = await clickTarget(root),
+            page = getPage();
 
         await rootClick.click();
-        expect(await root.isFocused()).toBe(true);
+        expect(await isFocused(root)).toBe(true);
 
-        await browser.keys('ArrowRight');
-        expect(await bin.isFocused()).toBe(true);
+        await page.keyboard.press('ArrowRight');
+        expect(await isFocused(bin)).toBe(true);
       });
 
       it('does nothing on a leaf node tree item', async function() {
-        const tree = await browser.$(nonCollapsibleExampleSelector),
+        const [tree] = await waitAndGetElements(nonCollapsibleExampleSelector),
             cat1 = await itemWithText(tree, 'cat1.jpg'),
-            cat1Click = await clickTarget(cat1);
+            cat1Click = await clickTarget(cat1),
+            page = getPage();
 
         await cat1Click.click();
-        expect(await cat1.isFocused()).toBe(true);
+        expect(await isFocused(cat1)).toBe(true);
 
-        await browser.keys('ArrowRight');
-        expect(await cat1.isFocused()).toBe(true);
+        await page.keyboard.press('ArrowRight');
+        expect(await isFocused(cat1)).toBe(true);
       });
     });
 
     describe('left arrow', function() {
       it('collapses an expanded, collapsible tree item, without affecting collapse state of subtrees', async function() {
-        const tree = await browser.$(collapsibleExampleSelector),
+        const [tree] = await waitAndGetElements(collapsibleExampleSelector),
             [root, images, videos] = await Promise.all([
               itemWithText(tree, '/'),
               itemWithText(tree, 'images'),
@@ -415,87 +409,92 @@ describe('NxTree', function() {
             [imagesCollapse, rootClick] = await Promise.all([
               collapseTarget(images),
               clickTarget(root)
-            ]);
+            ]),
+            page = getPage();
 
         await imagesCollapse.click();
         await rootClick.click();
-        expect(await root.isFocused()).toBe(true);
+        expect(await isFocused(root)).toBe(true);
         expect(await hasClass(root, 'open')).toBe(true);
 
-        await browser.keys('ArrowLeft');
-        expect(await root.isFocused()).toBe(true);
+        await page.keyboard.press('ArrowLeft');
+        expect(await isFocused(root)).toBe(true);
         expect(await hasClass(root, 'open')).toBe(false);
 
-        await browser.keys('ArrowRight');
-        expect(await root.isFocused()).toBe(true);
+        await page.keyboard.press('ArrowRight');
+        expect(await isFocused(root)).toBe(true);
         expect(await hasClass(root, 'open')).toBe(true);
         expect(await hasClass(images, 'open')).toBe(false);
         expect(await hasClass(videos, 'open')).toBe(true);
       });
 
       it('moves to the parent of a collapsed tree item', async function() {
-        const tree = await browser.$(collapsibleExampleSelector),
+        const [tree] = await waitAndGetElements(collapsibleExampleSelector),
             [root, srv] = await Promise.all([
               itemWithText(tree, '/'),
               itemWithText(tree, 'srv')
             ]),
-            srvCollapse = await collapseTarget(srv);
+            srvCollapse = await collapseTarget(srv),
+            page = getPage();
 
         await srvCollapse.click();
-        expect(await srv.isFocused()).toBe(true);
+        expect(await isFocused(srv)).toBe(true);
         expect(await hasClass(srv, 'open')).toBe(false);
 
-        await browser.keys('ArrowLeft');
-        expect(await root.isFocused()).toBe(true);
+        await page.keyboard.press('ArrowLeft');
+        expect(await isFocused(root)).toBe(true);
         expect(await hasClass(root, 'open')).toBe(true);
         expect(await hasClass(srv, 'open')).toBe(false);
       });
 
       it('moves to the parent of a non-collapsible tree item', async function() {
-        const tree = await browser.$(collapsibleExampleSelector),
+        const [tree] = await waitAndGetElements(collapsibleExampleSelector),
             [images, cat1] = await Promise.all([
               itemWithText(tree, 'images'),
               itemWithText(tree, 'cat1.jpg')
             ]),
-            cat1Click = await clickTarget(cat1);
+            cat1Click = await clickTarget(cat1),
+            page = getPage();
 
         await cat1Click.click();
-        expect(await cat1.isFocused()).toBe(true);
+        expect(await isFocused(cat1)).toBe(true);
 
-        await browser.keys('ArrowLeft');
-        expect(await images.isFocused()).toBe(true);
+        await page.keyboard.press('ArrowLeft');
+        expect(await isFocused(images)).toBe(true);
         expect(await hasClass(images, 'open')).toBe(true);
       });
 
       it('does nothing on a top-level collapsed tree item', async function() {
-        const tree = await browser.$(collapsibleExampleSelector),
+        const [tree] = await waitAndGetElements(collapsibleExampleSelector),
             root = await itemWithText(tree, '/'),
-            rootCollapse = await collapseTarget(root);
+            rootCollapse = await collapseTarget(root),
+            page = getPage();
 
         await rootCollapse.click();
-        expect(await root.isFocused()).toBe(true);
+        expect(await isFocused(root)).toBe(true);
         expect(await hasClass(root, 'open')).toBe(false);
 
-        await browser.keys('ArrowLeft');
-        expect(await root.isFocused()).toBe(true);
+        await page.keyboard.press('ArrowLeft');
+        expect(await isFocused(root)).toBe(true);
         expect(await hasClass(root, 'open')).toBe(false);
       });
 
       it('does nothing on a top-level non-collapsible tree item', async function() {
-        const tree = await browser.$(collapsibleExampleSelector),
+        const [tree] = await waitAndGetElements(collapsibleExampleSelector),
             root = await itemWithText(tree, '/'),
-            rootClick = await clickTarget(root);
+            rootClick = await clickTarget(root),
+            page = getPage();
 
         await rootClick.click();
-        expect(await root.isFocused()).toBe(true);
+        expect(await isFocused(root)).toBe(true);
 
-        await browser.keys('ArrowLeft');
-        expect(await root.isFocused()).toBe(true);
+        await page.keyboard.press('ArrowLeft');
+        expect(await isFocused(root)).toBe(true);
       });
     });
 
     it('goes to the first element in the tree when Home is pressed', async function() {
-      const tree = await browser.$(collapsibleMultiTopExampleSelector),
+      const [tree] = await waitAndGetElements(collapsibleMultiTopExampleSelector),
           [provinces, territories, manitoba, nunavut] = await Promise.all([
             itemWithText(tree, 'Provinces'),
             itemWithText(tree, 'Territories'),
@@ -507,37 +506,38 @@ describe('NxTree', function() {
             clickTarget(manitoba),
             clickTarget(nunavut),
             clickTarget(territories)
-          ]);
+          ]),
+          page = getPage();
 
       await manitobaClick.click();
-      expect(await manitoba.isFocused()).toBe(true);
+      expect(await isFocused(manitoba)).toBe(true);
 
-      await browser.keys('Home');
-      expect(await provinces.isFocused()).toBe(true);
+      await page.keyboard.press('Home');
+      expect(await isFocused(provinces)).toBe(true);
       expect(await hasClass(provinces, 'open')).toBe(true);
 
       await nunavutClick.click();
 
-      await browser.keys('Home');
-      expect(await provinces.isFocused()).toBe(true);
+      await page.keyboard.press('Home');
+      expect(await isFocused(provinces)).toBe(true);
 
-      await browser.keys('Home');
-      expect(await provinces.isFocused()).toBe(true);
+      await page.keyboard.press('Home');
+      expect(await isFocused(provinces)).toBe(true);
 
       await territoriesClick.click();
 
-      await browser.keys('Home');
-      expect(await provinces.isFocused()).toBe(true);
+      await page.keyboard.press('Home');
+      expect(await isFocused(provinces)).toBe(true);
 
       await provincesCollapse.click();
       await territoriesClick.click();
 
-      await browser.keys('Home');
-      expect(await provinces.isFocused()).toBe(true);
+      await page.keyboard.press('Home');
+      expect(await isFocused(provinces)).toBe(true);
     });
 
     it('goes to the last visible element in the tree when End is pressed', async function() {
-      const tree = await browser.$(collapsibleMultiTopExampleSelector),
+      const [tree] = await waitAndGetElements(collapsibleMultiTopExampleSelector),
           [provinces, territories, manitoba, nunavut, yukon] = await Promise.all([
             itemWithText(tree, 'Provinces'),
             itemWithText(tree, 'Territories'),
@@ -551,121 +551,115 @@ describe('NxTree', function() {
             clickTarget(manitoba),
             clickTarget(territories),
             clickTarget(yukon)
-          ]);
+          ]),
+          page = getPage();
 
       await manitobaClick.click();
-      expect(await manitoba.isFocused()).toBe(true);
+      expect(await isFocused(manitoba)).toBe(true);
 
-      await browser.keys('End');
-      expect(await nunavut.isFocused()).toBe(true);
+      await page.keyboard.press('End');
+      expect(await isFocused(nunavut)).toBe(true);
       expect(await hasClass(provinces, 'open')).toBe(true);
       expect(await hasClass(territories, 'open')).toBe(true);
 
-      await provincesClick.scrollIntoView({ block: 'center' });
       await provincesClick.click();
 
-      await browser.keys('End');
-      expect(await nunavut.isFocused()).toBe(true);
+      await page.keyboard.press('End');
+      expect(await isFocused(nunavut)).toBe(true);
 
-      await browser.keys('End');
-      expect(await nunavut.isFocused()).toBe(true);
+      await page.keyboard.press('End');
+      expect(await isFocused(nunavut)).toBe(true);
 
       await territoriesClick.click();
 
-      await browser.keys('End');
-      expect(await nunavut.isFocused()).toBe(true);
+      await page.keyboard.press('End');
+      expect(await isFocused(nunavut)).toBe(true);
 
       await yukonClick.click();
 
-      await browser.keys('End');
-      expect(await nunavut.isFocused()).toBe(true);
+      await page.keyboard.press('End');
+      expect(await isFocused(nunavut)).toBe(true);
 
       await territoriesCollapse.click();
       expect(await hasClass(territories, 'open')).toBe(false);
 
       await manitobaClick.click();
 
-      await browser.keys('End');
-      expect(await territories.isFocused()).toBe(true);
+      await page.keyboard.press('End');
+      expect(await isFocused(territories)).toBe(true);
       expect(await hasClass(territories, 'open')).toBe(false);
     });
 
     it('remembers which item in the tree was focused when tab takes focus away and back again', async function() {
-      const tree = await browser.$(collapsibleMultiTopExampleSelector),
+      const [tree] = await waitAndGetElements(collapsibleMultiTopExampleSelector),
           manitoba = await itemWithText(tree, 'Manitoba'),
-          manitobaClick = await clickTarget(manitoba);
+          manitobaClick = await clickTarget(manitoba),
+          page = getPage();
 
       await manitobaClick.click();
-      expect(await manitoba.isFocused()).toBe(true);
+      expect(await isFocused(manitoba)).toBe(true);
 
-      await browser.keys('Tab');
+      await page.keyboard.press('Tab');
 
-      expect(await browser.execute(t => t.contains(document.activeElement), tree)).toBe(false);
+      expect(await tree.evaluate(t => t.contains(document.activeElement))).toBe(false);
 
-      await browser.keys(['Shift', 'Tab']);
-      expect(await manitoba.isFocused()).toBe(true);
+      await page.keyboard.down('Shift');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('Shift');
+      expect(await isFocused(manitoba)).toBe(true);
     });
 
     it('activates the item\'s link and does not change collapse state on Enter', async function() {
-      const tree = await browser.$(collapsibleExampleSelector),
+      const [tree] = await waitAndGetElements(collapsibleExampleSelector),
           [images, cat1] = await Promise.all([
             itemWithText(tree, 'images'),
             itemWithText(tree, 'cat1.jpg')
           ]),
-          [cat1Click, imagesClick] = await Promise.all([clickTarget(cat1), clickTarget(images)]);
+          [cat1Click, imagesClick] = await Promise.all([clickTarget(cat1), clickTarget(images)]),
+          page = getPage();
 
       await cat1Click.click();
-      expect(await cat1.isFocused()).toBe(true);
+      expect(await isFocused(cat1)).toBe(true);
+
+      const sawPopup = new Promise(resolve => {
+        page.once('popup', newTab => {
+          newTab.close().then(resolve);
+        });
+      });
 
       // this is expected to open the link in a new tab
-      await browser.keys('Enter');
-
-      try {
-        // this will fail if the new window didn't open
-        await browser.switchWindow('cat1.jpg');
-        await browser.closeWindow();
-      }
-      finally {
-        await browser.switchWindow('Sonatype shared component gallery');
-      }
+      await page.keyboard.press('Enter');
+      await sawPopup;
 
       expect(await hasClass(images, 'open')).toBe(true);
       await imagesClick.click();
 
-      // Using browser.keys() here messes with the alert handling so we have to go lower-level
-      await browser.performActions([{
-        id: 'key1',
-        type: 'key',
-        actions: [{
-          type: 'keyDown',
-          // This private-use-area unicode codepoint is defined as meaning "Enter" in this API. See
-          // https://www.w3.org/TR/webdriver/#keyboard-actions
-          value: '\uE007'
-        }, {
-          type: 'keyUp',
-          value: '\uE007'
-        }]
-      }]);
+      const sawAlert = new Promise(resolve => {
+        page.once('dialog', dialog => {
+          dialog.dismiss().then(resolve);
+        });
+      });
 
-      // this tree item is just wired to an alert() call
-      expect(await browser.isAlertOpen()).toBe(true);
-      await browser.acceptAlert();
+      await page.keyboard.press('Enter');
+      await sawAlert;
+
       expect(await hasClass(images, 'open')).toBe(true);
     });
 
     it('does nothing when enter is pressed on an item without interactive content', async function() {
-      const tree = await browser.$(collapsibleExampleSelector),
+      const [tree] = await waitAndGetElements(collapsibleExampleSelector),
           keyboard = await itemWithText(tree, 'keyboard'),
-          keyboardClick = await clickTarget(keyboard);
+          keyboardClick = await clickTarget(keyboard),
+          page = getPage();
 
       await keyboardClick.click();
-      expect(await keyboard.isFocused()).toBe(true);
+      expect(await isFocused(keyboard)).toBe(true);
       expect(await hasClass(keyboard, 'open')).toBe(true);
 
-      await browser.keys('Enter');
+      await page.keyboard.press('Enter');
 
       // no change
-      expect(await keyboard.isFocused()).toBe(true);
+      expect(await isFocused(keyboard)).toBe(true);
       expect(await hasClass(keyboard, 'open')).toBe(true);
     });
   });

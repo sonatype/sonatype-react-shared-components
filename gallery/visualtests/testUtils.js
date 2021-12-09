@@ -13,7 +13,7 @@ module.exports = {
     let browser, page;
 
     beforeAll(async function() {
-      browser = await puppeteer.launch({ defaultViewport: { width: 1366, height: 1000 } });
+      browser = await puppeteer.launch({ defaultViewport: { width: 1366, height: 2000 } });
       browser.defaultBrowserContext().overridePermissions(pageUrl, ['clipboard-read']);
       page = await browser.newPage();
     });
@@ -31,6 +31,10 @@ module.exports = {
       await page.evaluate(function(el) {
         el.blur();
       }, element);
+    }
+
+    async function isFocused(element) {
+      return await element.evaluate(e => e === document.activeElement);
     }
 
     async function waitForSelectors(...selectors) {
@@ -116,6 +120,7 @@ module.exports = {
       getPage: () => page,
 
       blurElement,
+      isFocused,
       moveMouseAway,
       dismissResultingDialog,
       disableLoadingSpinnerAnimation,
