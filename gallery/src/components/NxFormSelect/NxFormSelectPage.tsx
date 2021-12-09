@@ -11,9 +11,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxFormSelectExample from './NxFormSelectExample';
 import NxFormSelectOverflowExample from './NxFormSelectOverflowExample';
+import NxFormSelectWidthsExample from './NxFormSelectWidthsExample';
 
 const nxFormSelectExampleSourceCode = require('./NxFormSelectExample?raw');
 const nxFormSelectOverflowExampleSourceCode = require('./NxFormSelectOverflowExample?raw');
+const nxFormSelectWidthsExampleSourceCode = require('./NxFormSelectWidthsExample?raw');
 
 const NxFormSelectPage = () =>
   <>
@@ -131,6 +133,13 @@ const NxFormSelectPage = () =>
                         codeExamples={nxFormSelectOverflowExampleSourceCode}
                         liveExample={NxFormSelectOverflowExample}>
       Demonstrates an <NxCode>NxFormSelect</NxCode> with long option text that overflows.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Form Select Widths Examples"
+                        id="nx-form-select-widths-examples"
+                        codeExamples={nxFormSelectWidthsExampleSourceCode}
+                        liveExample={NxFormSelectWidthsExample}>
+      Demonstrates <NxCode>NxFormSelect</NxCode>'s with with the short and long variants applied.
     </GalleryExampleTile>
   </>;
 
