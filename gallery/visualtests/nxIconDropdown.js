@@ -15,7 +15,9 @@ describe('NxIconDropdown', function() {
     simpleTest,
     waitAndGetElements,
     moveMouseAway,
-    checkScreenshot
+    checkScreenshot,
+    checkScreenshotCoordinates,
+    getPage
   } = setupBrowser('#/pages/NxIconDropdown');
 
   const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown';
@@ -39,11 +41,12 @@ describe('NxIconDropdown', function() {
     });
 
     it('has a dark grey button border with expanded menu', async function() {
-      const [targetElement] = await waitAndGetElements(defaultSelector);
+      const [targetElement] = await waitAndGetElements(defaultSelector),
+          page = getPage();
 
       await moveMouseAway();
 
-      const { x, y, width, height } = await element.boundingBox(),
+      const { x, y, width, height } = await targetElement.boundingBox(),
           pageScrollY = await page.evaluate(() => window.scrollY),
           pageScrollX = await page.evaluate(() => window.scrollX);
 

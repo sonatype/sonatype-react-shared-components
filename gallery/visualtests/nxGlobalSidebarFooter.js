@@ -12,6 +12,10 @@ describe('NxGlobalSidebarFooter', function() {
   describe('minimal layout', function() {
     const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalSidebarFooterMinimalExample');
 
+    beforeEach(async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+    });
+
     it('looks right', async function() {
       await checkFullPageScreenshot();
     });
@@ -19,6 +23,10 @@ describe('NxGlobalSidebarFooter', function() {
 
   describe('when empty', function() {
     const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalSidebarFooterEmptyExample');
+
+    beforeEach(async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+    });
 
     it('looks right', async function() {
       await checkFullPageScreenshot();

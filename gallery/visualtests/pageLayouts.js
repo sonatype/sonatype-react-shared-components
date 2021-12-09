@@ -12,6 +12,10 @@ describe('Page Layout', function() {
     describe('with ' + thingsToSee, function() {
       const { checkFullPageScreenshot, getPage, waitForSelectors, disableLoadingSpinnerAnimation } = setupBrowser(url);
 
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
       it('looks right', async function() {
         await disableLoadingSpinnerAnimation();
         let screenshot = await getPage().screenshot();
@@ -26,7 +30,14 @@ describe('Page Layout', function() {
 
   describe('Legacy Page Layout', function() {
     describe('with sidebar, system notice, and page scrolling', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/pageScrolling/LegacySidebarSystemNoticeLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/pageScrolling/LegacySidebarSystemNoticeLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -34,7 +45,14 @@ describe('Page Layout', function() {
     });
 
     describe('with sidebar, and page scrolling', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/pageScrolling/LegacySidebarLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/pageScrolling/LegacySidebarLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -42,7 +60,14 @@ describe('Page Layout', function() {
     });
 
     describe('with system notice, and page scrolling', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/pageScrolling/LegacySystemNoticeLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/pageScrolling/LegacySystemNoticeLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -50,7 +75,14 @@ describe('Page Layout', function() {
     });
 
     describe('with page scrolling', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/pageScrolling/LegacyLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/pageScrolling/LegacyLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -58,7 +90,14 @@ describe('Page Layout', function() {
     });
 
     describe('with sidebar, system notice, and section scrolling', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/LegacySidebarSystemNoticeLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/LegacySidebarSystemNoticeLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -66,7 +105,14 @@ describe('Page Layout', function() {
     });
 
     describe('with sidebar, and section scrolling', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/LegacySidebarLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/LegacySidebarLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -74,7 +120,14 @@ describe('Page Layout', function() {
     });
 
     describe('with system notice, and section scrolling', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/LegacySystemNoticeLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/LegacySystemNoticeLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -92,7 +145,14 @@ describe('Page Layout', function() {
 
   describe('Global sidebar page layout', function() {
     describe('with sidebar, system notice, and header', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSystemNoticeSidebarLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSystemNoticeSidebarLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -100,7 +160,14 @@ describe('Page Layout', function() {
     });
 
     describe('with sidebar, and header', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSidebarLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSidebarLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -108,7 +175,14 @@ describe('Page Layout', function() {
     });
 
     describe('with system notice, and header', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSystemNoticeLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSystemNoticeLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -116,7 +190,14 @@ describe('Page Layout', function() {
     });
 
     describe('with header', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -124,7 +205,14 @@ describe('Page Layout', function() {
     });
 
     describe('with sidebar and system notice', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/GlobalSidebarSystemNoticeSidebarLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarSystemNoticeSidebarLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -132,7 +220,14 @@ describe('Page Layout', function() {
     });
 
     describe('with sidebar', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/GlobalSidebarSidebarLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarSidebarLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -140,7 +235,14 @@ describe('Page Layout', function() {
     });
 
     describe('with system notice', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/GlobalSidebarSystemNoticeLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarSystemNoticeLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
@@ -148,7 +250,14 @@ describe('Page Layout', function() {
     });
 
     describe('with min content', function() {
-      const { checkFullPageScreenshot } = setupBrowser('#/pageLayouts/GlobalSidebarLayout');
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarLayout');
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
 
       it('looks right', async function() {
         await checkFullPageScreenshot();

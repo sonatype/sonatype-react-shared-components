@@ -15,24 +15,22 @@ describe('NxSegmentedButton', function() {
     simpleTest,
     waitAndGetElements,
     moveMouseAway,
-    checkScreenshot
+    checkScreenshot,
+    checkScreenshotCoordinates,
+    getPage
   } = setupBrowser('#/pages/NxSegmentedButton');
 
   function openedTest(selector, dropdownBtnSelector) {
     return async function() {
-      const [button] = await waitAndGetElements(dropdownBtnSelector);
+      const [targetElement, button] = await waitAndGetElements(selector, dropdownBtnSelector),
+          page = getPage();
 
       await button.click();
-
-      const [targetElement] = await waitAndGetElements(selector);
-
       await moveMouseAway();
 
-      const { x, y, width, height } = await element.boundingBox(),
-          pageScrollY = await page.evaluate(() => window.scrollY),
-          pageScrollX = await page.evaluate(() => window.scrollX);
+      const { x, y } = await targetElement.boundingBox();
 
-      await checkScreenshotCoordinates(x + pageScrollX - 82, y + pageScrollY, 250, 122);
+      await checkScreenshotCoordinates(x - 82, y, 250, 122);
     };
   }
 

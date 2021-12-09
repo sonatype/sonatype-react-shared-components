@@ -6,8 +6,8 @@
  */
 const { setupBrowser } = require('./testUtils');
 
-describe('NxCollapsibleItemsRadioSelect', function() {
-  const { focusTest, simpleTest } = setupBrowser('#/pages/NxCollapsibleItemsRadioSelect');
+describe('NxCollapsibleRadioSelect', function() {
+  const { focusTest, simpleTest } = setupBrowser('#/pages/NxCollapsibleRadioSelect');
 
   const selector = '#nx-collapsible-radio-select-example .nx-collapsible-items--select';
 

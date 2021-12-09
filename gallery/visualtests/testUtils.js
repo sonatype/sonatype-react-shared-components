@@ -12,10 +12,24 @@ module.exports = {
   setupBrowser(pageFragmentIdentifier) {
     let browser, page;
 
+    async function enableClipboardAccess(browser) {
+      // This ought to be possible with browser.defaultBrowserContext().overridePermissions but that doesn't
+      // seem to work right for enabling clipboard-write.  See
+      // https://github.com/puppeteer/puppeteer/issues/3241#issuecomment-751489962
+      await browser._connection.send('Browser.grantPermissions', {
+        origin: pageUrl,
+        permissions: ['clipboardReadWrite', 'clipboardSanitizedWrite'],
+      });
+    }
+
     beforeAll(async function() {
-      browser = await puppeteer.launch({ defaultViewport: { width: 1366, height: 2000 } });
-      browser.defaultBrowserContext().overridePermissions(pageUrl, ['clipboard-read']);
+      browser = await puppeteer.launch({ defaultViewport: { width: 1366, height: 3000 } });
+      enableClipboardAccess(browser);
       page = await browser.newPage();
+    });
+
+    afterEach(async function() {
+      await page.removeAllListeners();
     });
 
     afterAll(async function() {
@@ -77,8 +91,17 @@ module.exports = {
       expect(image).toMatchImageSnapshot();
     }
 
-    async function checkScreenshotCoordinates(x, y, height, width) {
-      const image = await page.screenshot({ clip: { x, y, height, width } });
+    async function checkScreenshotCoordinates(x, y, width, height) {
+      const pageScrollY = await page.evaluate(() => window.scrollY),
+          pageScrollX = await page.evaluate(() => window.scrollX),
+          image = await page.screenshot({
+            clip: {
+              x: x + pageScrollX,
+              y: y + pageScrollY,
+              height,
+              width
+            }
+          });
 
       expect(image).toMatchImageSnapshot();
     }
@@ -89,17 +112,8 @@ module.exports = {
     }
 
     async function dismissResultingDialog(action) {
-      async function dismissDialog(d) {
-        await d.dismiss();
-      }
-
-      try {
-        page.on('dialog', dismissDialog);
-        await action();
-      }
-      finally {
-        page.off('dialog', dismissDialog);
-      }
+      await page.once('dialog', d => { d.dismiss(); });
+      await action();
     }
 
     async function disableLoadingSpinnerAnimation() {
@@ -187,11 +201,6 @@ module.exports = {
               clickElementBox = await clickElement.boundingBox();
 
           await page.mouse.move(clickElementBox.x, clickElementBox.y);
-
-          async function dismissDialog(d) {
-            await d.dismiss();
-          }
-
 
           await dismissResultingDialog(async () => {
             try {

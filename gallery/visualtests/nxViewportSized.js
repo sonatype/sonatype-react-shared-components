@@ -8,7 +8,11 @@ const { setupBrowser } = require('./testUtils');
 
 describe('nx-viewport-sized', function() {
   describe('with shrinking content', function() {
-    const { checkFullPageScreenshot } = setupBrowser('#/NxViewportSizedExample');
+    const { checkFullPageScreenshot, getPage } = setupBrowser('#/NxViewportSizedExample');
+
+    beforeEach(async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+    });
 
     it('looks right', async function() {
       await checkFullPageScreenshot();
@@ -16,7 +20,11 @@ describe('nx-viewport-sized', function() {
   });
 
   describe('with expandign content', function() {
-    const { checkFullPageScreenshot } = setupBrowser('#/NxViewportSizedExpandingExample');
+    const { checkFullPageScreenshot, getPage } = setupBrowser('#/NxViewportSizedExpandingExample');
+
+    beforeEach(async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+    });
 
     it('looks right', async function() {
       await checkFullPageScreenshot();
@@ -24,7 +32,11 @@ describe('nx-viewport-sized', function() {
   });
 
   describe('with adjacent scrollable', function() {
-    const { checkFullPageScreenshot } = setupBrowser('#/NxViewportSizedAdjacentExample');
+    const { checkFullPageScreenshot, getPage } = setupBrowser('#/NxViewportSizedAdjacentExample');
+
+    beforeEach(async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+    });
 
     it('looks right', async function() {
       await checkFullPageScreenshot();

@@ -7,11 +7,15 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxSubmitMask', function() {
-  const { waitAndGetElements, checkFullPageScreenshot, disableLoadingSpinnerAnimation } =
+  const { waitAndGetElements, checkFullPageScreenshot, disableLoadingSpinnerAnimation, getPage } =
       setupBrowser('#/pages/NxSubmitMask');
 
   const loadingMaskBtnSelector = '#nx-submit-mask-loading-example button',
       successMaskBtnSelector = '#nx-submit-mask-success-example button';
+
+  beforeEach(async function() {
+    await getPage().setViewport({ width: 1366, height: 1000 });
+  });
 
   it('looks right when loading', async function() {
     const [btn] = await waitAndGetElements(loadingMaskBtnSelector);

@@ -7,7 +7,13 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTable', function() {
-  const { simpleTest, waitAndGetElements, checkScreenshot, getPage } = setupBrowser('#/pages/NxTable');
+  const {
+    simpleTest,
+    waitAndGetElements,
+    checkScreenshot,
+    getPage,
+    disableLoadingSpinnerAnimation
+  } = setupBrowser('#/pages/NxTable');
 
   const iconColumnTableSelector = '#nx-table-clickable-example .nx-table',
       clickableTableSelector = '#nx-table-clickable-example .nx-table',

@@ -15,7 +15,9 @@ describe('NxTag', function() {
         simpleTest,
         waitAndGetElements,
         checkScreenshotCoordinates,
-        checkScreenshot
+        checkScreenshot,
+        scrollIntoView,
+        wait
   } = setupBrowser('#/pages/NxTag');
 
   describe('Basic NxTag', function() {
@@ -30,10 +32,12 @@ describe('NxTag', function() {
     it('has a tooltip', async function() {
       const [tagElement, tooltipTagElement] = await waitAndGetElements(selector, tagSelector);
 
-      const { x, y, height, width } = await tagElement.boundingBox();
 
       // hover the tag to activate its tooltip.
+      await scrollIntoView(tagElement);
       await tooltipTagElement.hover();
+      await wait(1500);
+      const { x, y, height, width } = await tagElement.boundingBox();
 
       await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
     });

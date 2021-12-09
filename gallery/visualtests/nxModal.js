@@ -34,6 +34,10 @@ describe('NxModal', function() {
     }
   }
 
+  beforeEach(async function() {
+    await getPage().setViewport({ width: 1366, height: 1000 });
+  });
+
   describe('Simple NxModal', function() {
     it('looks right', simpleModalTest(simpleExampleSelector));
   });
@@ -128,20 +132,20 @@ describe('NxModal', function() {
 
       const [customPanel, customPanelBtn] = await waitAndGetElements(
         `${escClosingExampleSelector} .gallery-custom-expandable`,
-        `${escClosingExampleSelector} .gallery-custom-expandable button`,
+        `${escClosingExampleSelector} .gallery-custom-expandable button`
       );
       await customPanelBtn.click();
 
       const [modal1, modal1CloseBtn, dropdownToggle] = await waitAndGetElements(
         `${escClosingExampleSelector} #nx-modal-esc-example-modal`,
         `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-footer .nx-btn`,
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown__toggle`,
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown__toggle`
       );
       await dropdownToggle.click();
 
       const [dropdownMenu, dropdownBtn] = await waitAndGetElements(
         `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-menu`,
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-button`,
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-button`
       );
       await dropdownBtn.click();
 

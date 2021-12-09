@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTooltip', function() {
-  const { waitAndGetElements, checkScreenshotCoordinates } = setupBrowser('#/pages/NxTooltip');
+  const { waitAndGetElements, checkScreenshotCoordinates, wait } = setupBrowser('#/pages/NxTooltip');
 
   const selector = '.gallery-example .nx-btn-bar',
       firstBtnSelector = `${selector} button:first-child`,
@@ -24,6 +24,7 @@ describe('NxTooltip', function() {
     // hover the first button to activate its tooltip.
     // There is also another tooltip which is always active on the third button
     await firstBtnElement.hover();
+    await wait(1500);
 
     await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
   });
@@ -35,6 +36,7 @@ describe('NxTooltip', function() {
 
     // hover the second button to activate its tooltip, which uses additional properties and custom HTML
     await secondBtnElement.hover();
+    await wait(1500);
 
     await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
   });

@@ -15,7 +15,8 @@ describe('NxCodeSnippet', function() {
     simpleTest,
     waitAndGetElements,
     dismissResultingDialog,
-    getPage
+    getPage,
+    checkScreenshot
   } = setupBrowser('#/pages/NxCodeSnippet');
 
   const multipleSnippetSelector = '#nx-code-snippet-simple-example .gallery-example-live',
@@ -48,7 +49,7 @@ describe('NxCodeSnippet', function() {
       await copyBtn.click();
     });
 
-    const clipboardText = await page.evaluate(() => window.navigator.clipboard.readText());
+    const clipboardText = await getPage().evaluate(() => window.navigator.clipboard.readText());
 
     expect(clipboardText).toBe(
 String.raw`#define _ -F<00||--F-OO--;

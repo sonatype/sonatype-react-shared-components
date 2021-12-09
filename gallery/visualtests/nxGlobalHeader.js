@@ -11,6 +11,7 @@ describe('NxGlobalHeader', function() {
     const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderFullExample');
 
     it('looks right', async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
       await checkFullPageScreenshot();
     });
   });
@@ -19,6 +20,7 @@ describe('NxGlobalHeader', function() {
     const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderNoActionsExample');
 
     it('looks right', async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
       await checkFullPageScreenshot();
     });
   });
@@ -27,6 +29,7 @@ describe('NxGlobalHeader', function() {
     const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderNoBackButtonExample');
 
     it('looks right', async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
       await checkFullPageScreenshot();
     });
   });
@@ -35,6 +38,7 @@ describe('NxGlobalHeader', function() {
     const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderEmptyExample');
 
     it('looks right when empty', async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
       await checkFullPageScreenshot();
     });
   });
