@@ -10,7 +10,9 @@ const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testU
 describe('nx-form-select', function() {
   const selector = '#nx-form-select-example .nx-form-select',
       overflowSelector = '#nx-form-select-overflow-example .nx-form-select',
-      disabledSelector = '#nx-form-select-disabled-example .nx-form-select';
+      disabledSelector = '#nx-form-select-disabled-example .nx-form-select',
+      shortSelector = '#nx-form-select-widths-examples .nx-form-select--short',
+      longSelector = '#nx-form-select-widths-examples .nx-form-select--long';
 
   beforeEach(async function() {
     await browser.url('#/pages/NxFormSelect');
@@ -34,5 +36,14 @@ describe('nx-form-select', function() {
     });
 
     it('looks disabled', simpleTest(disabledSelector));
+  });
+
+  describe('Short Variant NxFormSelect', function() {
+    beforeEach(async function() {
+      await browser.url('#/pages/nx-form-select');
+    });
+
+    it('looks shorter', simpleTest(shortSelector));
+    it('looks longer', simpleTest(longSelector));
   });
 });
