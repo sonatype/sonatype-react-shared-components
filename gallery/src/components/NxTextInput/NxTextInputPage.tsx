@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink, NxStatefulAccordion, NxAccordion, NxList, NxH3 }
+import { NxTable, NxCode, NxP, NxTextLink, NxStatefulAccordion, NxAccordion, NxList, NxH3, NxTile }
   from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -32,199 +32,211 @@ const NxTextInputPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>Standard text input with validation styling</NxP>
-      <NxP>Props:</NxP>
-      <NxTable>
-        <NxTable.Head>
-          <NxTable.Row>
-            <NxTable.Cell>Prop</NxTable.Cell>
-            <NxTable.Cell>Type</NxTable.Cell>
-            <NxTable.Cell>Required</NxTable.Cell>
-            <NxTable.Cell>Details</NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Head>
-        <NxTable.Body>
-          <NxTable.Row>
-            <NxTable.Cell>type</NxTable.Cell>
-            <NxTable.Cell>"textarea" | "text" | "password"</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>What type of text input to render.  Defaults to "text"</NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>value</NxTable.Cell>
-            <NxTable.Cell>string</NxTable.Cell>
-            <NxTable.Cell>Yes</NxTable.Cell>
-            <NxTable.Cell>The value rendered in the text input</NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>isPristine</NxTable.Cell>
-            <NxTable.Cell>boolean</NxTable.Cell>
-            <NxTable.Cell>Yes</NxTable.Cell>
-            <NxTable.Cell>
-              Should be set to true when the user has not yet adjusted the value of the input
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>validatable</NxTable.Cell>
-            <NxTable.Cell>boolean</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              If true, this NxTextInput is subject to validation, the result of which should be passed in via
-              the <NxCode>validationErrors</NxCode> prop, resulting in validation CSS classes being
-              applied (see below). If false, the NxTextInput is not considered to be subject to validation, the
-              <NxCode>validationErrors</NxCode> prop is ignored, and validation-related CSS classes
-              are never applied.
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>validationErrors</NxTable.Cell>
-            <NxTable.Cell>string | string[]</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              Validation failure messages for components where <NxCode>validatable</NxCode> is
-              true. Any strings contained by this prop's value are taken to be error messages describing a validation
-              failure. These trigger the invalid styling on the component and the first such error message is
-              displayed within the component. If this prop's value does not contain any strings (i.e. if it is null,
-              undefined, or an empty array), the component value is taken to be valid, and corresponding styles
-              are added. For non-validatable components, this prop is ignored.
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>onChange</NxTable.Cell>
-            <NxTable.Cell>Function ((string) =&gt; void)</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              A callback for when the user changes the value of the text box (e.g. by typing a letter)
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>onKeyPress</NxTable.Cell>
-            <NxTable.Cell>Function ((string) =&gt; void)</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              <NxP>
-                A callback for when the user presses a key that doesn't necessarily change the input value
-                (e.g. by hitting enter)
-              </NxP>
-              <NxP>
-                The value given to the callback will be that of the key name, as described in the spec
-                for{' '}
-                <NxTextLink external href="https://www.w3.org/TR/uievents-key/#named-key-attribute-values">
-                  named keys
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Props:</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Prop</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>type</NxTable.Cell>
+              <NxTable.Cell>"textarea" | "text" | "password"</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>What type of text input to render.  Defaults to "text"</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>value</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>The value rendered in the text input</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>isPristine</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>
+                Should be set to true when the user has not yet adjusted the value of the input
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>validatable</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                If true, this NxTextInput is subject to validation, the result of which should be passed in via
+                the <NxCode>validationErrors</NxCode> prop, resulting in validation CSS classes being
+                applied (see below). If false, the NxTextInput is not considered to be subject to validation, the
+                <NxCode>validationErrors</NxCode> prop is ignored, and validation-related CSS classes
+                are never applied.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>validationErrors</NxTable.Cell>
+              <NxTable.Cell>string | string[]</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                Validation failure messages for components where <NxCode>validatable</NxCode> is
+                true. Any strings contained by this prop's value are taken to be error messages describing a validation
+                failure. These trigger the invalid styling on the component and the first such error message is
+                displayed within the component. If this prop's value does not contain any strings (i.e. if it is null,
+                undefined, or an empty array), the component value is taken to be valid, and corresponding styles
+                are added. For non-validatable components, this prop is ignored.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>onChange</NxTable.Cell>
+              <NxTable.Cell>Function ((string) =&gt; void)</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                A callback for when the user changes the value of the text box (e.g. by typing a letter)
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>onKeyPress</NxTable.Cell>
+              <NxTable.Cell>Function ((string) =&gt; void)</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                <NxP>
+                  A callback for when the user presses a key that doesn't necessarily change the input value
+                  (e.g. by hitting enter)
+                </NxP>
+                <NxP>
+                  The value given to the callback will be that of the key name, as described in the spec
+                  for{' '}
+                  <NxTextLink external href="https://www.w3.org/TR/uievents-key/#named-key-attribute-values">
+                    named keys
+                  </NxTextLink>
+                </NxP>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>
+                HTML <NxCode>&lt;input&gt;</NxCode> Attributes |
+                HTML <NxCode>&lt;textarea&gt;</NxCode> Attributes
+              </NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/input">
+                  Input Attributes
                 </NxTextLink>
-              </NxP>
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>
-              HTML <NxCode>&lt;input&gt;</NxCode> Attributes |
-              HTML <NxCode>&lt;textarea&gt;</NxCode> Attributes
-            </NxTable.Cell>
-            <NxTable.Cell>
-              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/input">
-                Input Attributes
-              </NxTextLink>
-              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/textarea">
-                Textarea Attributes
-              </NxTextLink>
-            </NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              NxTextInput supports any html attribute that's normally supported by either HTML
-              <NxCode>&lt;input&gt;</NxCode> or HTML
-              <NxCode>&lt;textarea&gt;</NxCode>. The only notable exceptions are:
-              <NxList bulleted>
-                <NxList.Item>
-                  <NxList.Text>
-                    <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly
-                    known as{' '}
-                    <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
-                      uncontrolled inputs
-                    </NxTextLink>
-                  </NxList.Text>
-                </NxList.Item>
-                <NxList.Item>
-                  <NxList.Text>
-                    The attributes specified above, whose types are as defined here and not as specified in the
-                    react propTypes.
-                  </NxList.Text>
-                </NxList.Item>
-              </NxList>
-            </NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Body>
-      </NxTable>
-      <h3>State Helpers</h3>
-      <NxP>
-        The <NxCode>nxTextInputStateHelpers</NxCode>{' '}
-        includes the following recommended state helper functions, which each return an object containining the
-        "stateful" parts of the NxTextInput props{' '}
-        (<NxCode>value</NxCode>, <NxCode>isPristine</NxCode>, and{' '}
-        <NxCode>validationErrors</NxCode>) as well as <NxCode>trimmedValue</NxCode>,
-        which holds a whitespace-trimmed copy of the <NxCode>value</NxCode>:
-      </NxP>
-      <NxTable>
-        <NxTable.Head>
-          <NxTable.Row>
-            <NxTable.Cell>Function</NxTable.Cell>
-            <NxTable.Cell>Arguments</NxTable.Cell>
-            <NxTable.Cell>Description</NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Head>
-        <NxTable.Body>
-          <NxTable.Row>
-            <NxTable.Cell>initialState</NxTable.Cell>
-            <NxTable.Cell>(initialValue: string)</NxTable.Cell>
-            <NxTable.Cell>
-              Returns an initialized state with the specified value and <NxCode>isPristine</NxCode>
-              set to true.
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>userInput</NxTable.Cell>
-            <NxTable.Cell>(validator, newValue: string)</NxTable.Cell>
-            <NxTable.Cell>
-              <NxP>
-                Meant to be used to handle user changes to the text input value. The first argument is an optional
-                validator function that receives the new input value (trimmed) as a string and returns zero or more
-                validation error messages. The next argument is the new (raw, untrimmed) value of the text box after
-                the user's input.  Returns a state object that is not pristine, with the specified
-                <NxCode>value</NxCode>, and with <NxCode>validationErrors</NxCode> as
-                computed by the validator function.
-              </NxP>
-              <NxP>
-                This function is curried, so that it can be partially applied over the
-                <NxCode>validator</NxCode>.
-              </NxP>
-            </NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Body>
-      </NxTable>
-      <NxH3>NxTextInput CSS Classes</NxH3>
-      <NxTable>
-        <NxTable.Head>
-          <NxTable.Row>
-            <NxTable.Cell>Class</NxTable.Cell>
-            <NxTable.Cell>Location</NxTable.Cell>
-            <NxTable.Cell>Details</NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Head>
-        <NxTable.Body>
-          <NxTable.Row>
-            <NxTable.Cell><NxCode>nx-text-input--short</NxCode></NxTable.Cell>
-            <NxTable.Cell>
-              Directly on the <NxCode>NxTextInput</NxCode>
-            </NxTable.Cell>
-            <NxTable.Cell>Short variant (150px) of the <NxCode>NxTextInput</NxCode>.</NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell><NxCode>nx-text-input--long</NxCode></NxTable.Cell>
-            <NxTable.Cell>
-              Directly on the <NxCode>NxTextInput</NxCode>
-            </NxTable.Cell>
-            <NxTable.Cell>Long variant (800px) of the <NxCode>NxTextInput</NxCode>.</NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Body>
-      </NxTable>
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/textarea">
+                  Textarea Attributes
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                NxTextInput supports any html attribute that's normally supported by either HTML
+                <NxCode>&lt;input&gt;</NxCode> or HTML
+                <NxCode>&lt;textarea&gt;</NxCode>. The only notable exceptions are:
+                <NxList bulleted>
+                  <NxList.Item>
+                    <NxList.Text>
+                      <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly
+                      known as{' '}
+                      <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
+                        uncontrolled inputs
+                      </NxTextLink>
+                    </NxList.Text>
+                  </NxList.Item>
+                  <NxList.Item>
+                    <NxList.Text>
+                      The attributes specified above, whose types are as defined here and not as specified in the
+                      react propTypes.
+                    </NxList.Text>
+                  </NxList.Item>
+                </NxList>
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <h3>State Helpers</h3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          The <NxCode>nxTextInputStateHelpers</NxCode>{' '}
+          includes the following recommended state helper functions, which each return an object containining the
+          "stateful" parts of the NxTextInput props{' '}
+          (<NxCode>value</NxCode>, <NxCode>isPristine</NxCode>, and{' '}
+          <NxCode>validationErrors</NxCode>) as well as <NxCode>trimmedValue</NxCode>,
+          which holds a whitespace-trimmed copy of the <NxCode>value</NxCode>:
+        </NxP>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Function</NxTable.Cell>
+              <NxTable.Cell>Arguments</NxTable.Cell>
+              <NxTable.Cell>Description</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>initialState</NxTable.Cell>
+              <NxTable.Cell>(initialValue: string)</NxTable.Cell>
+              <NxTable.Cell>
+                Returns an initialized state with the specified value and <NxCode>isPristine</NxCode>
+                set to true.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>userInput</NxTable.Cell>
+              <NxTable.Cell>(validator, newValue: string)</NxTable.Cell>
+              <NxTable.Cell>
+                <NxP>
+                  Meant to be used to handle user changes to the text input value. The first argument is an optional
+                  validator function that receives the new input value (trimmed) as a string and returns zero or more
+                  validation error messages. The next argument is the new (raw, untrimmed) value of the text box after
+                  the user's input.  Returns a state object that is not pristine, with the specified
+                  <NxCode>value</NxCode>, and with <NxCode>validationErrors</NxCode> as
+                  computed by the validator function.
+                </NxP>
+                <NxP>
+                  This function is curried, so that it can be partially applied over the
+                  <NxCode>validator</NxCode>.
+                </NxP>
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxTextInput CSS Classes</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-text-input--short</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Directly on the <NxCode>NxTextInput</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>Short variant (150px) of the <NxCode>NxTextInput</NxCode>.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-text-input--long</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Directly on the <NxCode>NxTextInput</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>Long variant (800px) of the <NxCode>NxTextInput</NxCode>.</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
       <div className="nx-tile-content--accordion-container">
         <NxStatefulAccordion defaultOpen={false}>
           <NxAccordion.Header>

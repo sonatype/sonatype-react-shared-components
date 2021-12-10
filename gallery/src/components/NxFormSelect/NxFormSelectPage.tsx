@@ -111,7 +111,11 @@ const NxFormSelectPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
-        <NxH3>NxFormSelect CSS Classes</NxH3>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxFormSelect CSS Classes</NxH3>
+        </NxTile.SubsectionHeader>
         <NxTable>
           <NxTable.Head>
             <NxTable.Row>
@@ -137,6 +141,8 @@ const NxFormSelectPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
         <NxP>
           <NxCode>nxFormSelectStateHelpers</NxCode> also contains a <NxCode>useNxFormSelectState</NxCode> React
           hook which encapsulates the use of the lower-level state helper functions along
