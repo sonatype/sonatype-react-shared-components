@@ -16,21 +16,22 @@ function NxCollapsibleItemsClickableExample() {
   const [toggleCheck, onToggleCollapse] = useToggle(false);
 
   return (
-    <NxCollapsibleItems onToggleCollapse={onToggleCollapse}
+    <NxCollapsibleItems role="menu"
+                        onToggleCollapse={onToggleCollapse}
                         isOpen={toggleCheck}
                         triggerContent="Organization">
-      <NxCollapsibleItems.Child>
+      <NxCollapsibleItems.Child role="menuitem">
         <NxButton>Test1</NxButton>
       </NxCollapsibleItems.Child>
-      <NxCollapsibleItems.Child>
+      <NxCollapsibleItems.Child role="menuitem">
         <a href="#" className="selected">Test2</a>
       </NxCollapsibleItems.Child>
-      <NxCollapsibleItems.Child>
+      <NxCollapsibleItems.Child role="menuitem">
         <a href="#">
           Test3 - an extra long example that should cause truncation
         </a>
       </NxCollapsibleItems.Child>
-      <NxCollapsibleItems.Child>
+      <NxCollapsibleItems.Child role="menuitem">
         <a href="#">Test4</a>
       </NxCollapsibleItems.Child>
     </NxCollapsibleItems>
