@@ -10,7 +10,7 @@ import { mount } from 'enzyme';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
 import NxDateInput, { Props } from '../NxDateInput';
-import NxTextInput from '../../NxTextInput/NxTextInput';
+import { PrivateNxTextInput } from '../../NxTextInput/NxTextInput';
 
 describe('NxDateInput', function() {
   const minimalProps = {
@@ -19,17 +19,17 @@ describe('NxDateInput', function() {
       },
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxDateInput, minimalProps);
 
-  it('should have an NxTextInput under the hood', function() {
+  it('should have an PrivateNxTextInput under the hood', function() {
     const component = getShallowComponent();
-    expect(component.find(NxTextInput)).toExist();
+    expect(component.find(PrivateNxTextInput)).toExist();
   });
 
   it('should ignore type attribute', function() {
     const component = getShallowComponent({ type: 'text' } as Partial<Props>);
-    expect(component.find(NxTextInput)).toHaveProp('type', 'date');
+    expect(component.find(PrivateNxTextInput)).toHaveProp('type', 'date');
   });
 
-  it('should pass props to the NxTextInput component', function() {
+  it('should pass props to the PrivateNxTextInput component', function() {
     const onChange = jest.fn();
     const onKeyPress = jest.fn();
     const component = getShallowComponent({
@@ -39,7 +39,7 @@ describe('NxDateInput', function() {
       onChange,
       onKeyPress
     });
-    const nxTextInput = component.find(NxTextInput);
+    const nxTextInput = component.find(PrivateNxTextInput);
     expect(nxTextInput).toHaveProp('className', 'test');
     expect(nxTextInput).toHaveProp('isPristine', true);
     expect(nxTextInput).toHaveProp('value', '2021-10-04');
@@ -51,6 +51,6 @@ describe('NxDateInput', function() {
     const ref = React.createRef<HTMLDivElement>();
     const component = mount(<><NxDateInput ref={ref} { ...minimalProps } /></>);
     expect(ref.current).toBeDefined();
-    expect(component.find(NxTextInput).getDOMNode()).toBe(ref.current);
+    expect(component.find('.nx-text-input').getDOMNode()).toBe(ref.current);
   });
 });
