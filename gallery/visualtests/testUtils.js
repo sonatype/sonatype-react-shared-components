@@ -25,7 +25,6 @@ module.exports = {
     beforeAll(async function() {
       browser = await puppeteer.launch({ defaultViewport: { width: 1366, height: 3000 } });
       enableClipboardAccess(browser);
-      page = await browser.newPage();
     });
 
     afterEach(async function() {
@@ -37,6 +36,7 @@ module.exports = {
     });
 
     beforeEach(async function() {
+      page = await browser.newPage();
       await page.goto(pageUrl + pageFragmentIdentifier);
       await page.mouse.move(0, 0);
     });
@@ -111,8 +111,15 @@ module.exports = {
       expect(screenshot).toMatchImageSnapshot();
     }
 
-    async function dismissResultingDialog(action) {
-      await page.once('dialog', d => { d.dismiss(); });
+    async function dismissResultingDialog(action, waitTime) {
+      page.once('dialog', async d => {
+        if (waitTime) {
+          await wait(waitTime);
+        }
+
+        await d.dismiss();
+      });
+
       await action();
     }
 
@@ -198,19 +205,14 @@ module.exports = {
       clickTest(elementSelector, clickSelector = elementSelector) {
         return async () => {
           const [targetElement, clickElement] = await waitAndGetElements(elementSelector, clickSelector),
-              clickElementBox = await clickElement.boundingBox();
+              { x, y, width, height }= await clickElement.boundingBox();
 
-          await page.mouse.move(clickElementBox.x, clickElementBox.y);
+          await page.mouse.move(x + width / 2, y + height / 2);
 
           await dismissResultingDialog(async () => {
-            try {
-              await page.mouse.down();
-              await checkScreenshot(targetElement);
-            }
-            finally {
-              page.mouse.up();
-            }
-          });
+            await page.mouse.down();
+            await checkScreenshot(targetElement);
+          }, 300);
         };
       },
 
