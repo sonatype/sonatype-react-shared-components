@@ -130,14 +130,14 @@ const NxFormSelectPage = () =>
               <NxTable.Cell>
                 Directly on the <NxCode>NxFormSelect</NxCode>
               </NxTable.Cell>
-              <NxTable.Cell>Short variant (150px) of <NxCode>NxFormSelect</NxCode>.</NxTable.Cell>
+              <NxTable.Cell>Short variant of <NxCode>NxFormSelect</NxCode>.</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>nx-form-select--long</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 Directly on the <NxCode>NxFormSelect</NxCode>
               </NxTable.Cell>
-              <NxTable.Cell>Long variant (800px) of <NxCode>NxFormSelect</NxCode>.</NxTable.Cell>
+              <NxTable.Cell>Long variant of <NxCode>NxFormSelect</NxCode>.</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
