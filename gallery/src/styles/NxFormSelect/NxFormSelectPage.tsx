@@ -11,11 +11,10 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxFormSelectExample from './NxFormSelectExample';
 import NxFormSelectDisabledExample from './NxFormSelectDisabledExample';
-import NxFormSelectWidthsExample from './NxFormSelectWidthsExample';
 
 const sourceCode = require('./NxFormSelectExample?raw'),
     disabledSourceCode = require('./NxFormSelectDisabledExample?raw'),
-    widthsSourceCode = require('./NxFormSelectWidthsExample?raw');
+    widthsSourceCode = require('./NxFormSelectWidthsExample.html');
 
 const NxFormSelectPage = () =>
   <>
@@ -78,7 +77,7 @@ const NxFormSelectPage = () =>
     <GalleryExampleTile title="Form Select Widths Example"
                         id="nx-form-select-widths-example"
                         codeExamples={widthsSourceCode}
-                        liveExample={NxFormSelectWidthsExample}>
+                        htmlExample={widthsSourceCode}>
       Demonstrates the long and short <NxCode>&lt;select&gt;</NxCode> variants.
     </GalleryExampleTile>
   </>;
