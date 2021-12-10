@@ -4,8 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { focusTest, simpleTest } = require('./testUtils');
-const AxeBuilder = require('@axe-core/webdriverio').default;
+const { focusTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxAccordion', function() {
   beforeEach(async function() {
@@ -44,10 +43,5 @@ describe('NxAccordion', function() {
     it('looks right', simpleTest(tertiaryBtnExampleSelector));
   });
 
-  it('passes axe a11y checks', async function() {
-    const axeResults = await new AxeBuilder({ client: browser }).analyze();
-
-    expect(axeResults.violations).toEqual([]);
-    expect(axeResults.incomplete).toEqual([]);
-  });
+  it('passes a11y checks', a11yTest());
 });
