@@ -59,7 +59,7 @@ const NxBinaryDonutChartPage = () =>
               conveys, then the chart should have an <NxCode>aria-label</NxCode> attribute giving it
               an accessible name which adequately describes its information for non-visual users. If the chart is
               accompanied by a text description however, such a label would be redundant and the chart is considered
-              a presentational element.
+              a presentational element. In that scenario, it should be given <NxCode>role="presentation"</NxCode>.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
