@@ -7,7 +7,7 @@
 import React, { FunctionComponent, ReactElement, useEffect, useRef, useState } from 'react';
 import * as PropTypes from 'prop-types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import useResizeObserver from '@react-hook/resize-observer';
 
 export interface Props {
@@ -55,7 +55,7 @@ const CodeExample: FunctionComponent<Props> =
           {headerLanguagePart}
           :
         </h3>
-        <SyntaxHighlighter language={language || 'tsx'} style={atomDark} tabIndex={scrollable ? 0 : -1}>
+        <SyntaxHighlighter language={language || 'tsx'} style={a11yDark} tabIndex={scrollable ? 0 : -1}>
           {licenseStrippedContent}
         </SyntaxHighlighter>
       </section>
