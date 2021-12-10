@@ -111,6 +111,32 @@ const NxFormSelectPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
+        <NxH3>NxFormSelect CSS Classes</NxH3>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-form-select--short</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Directly on the <NxCode>NxFormSelect</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>Short variant (150px) of <NxCode>NxFormSelect</NxCode>.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-form-select--long</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Directly on the <NxCode>NxFormSelect</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>Long variant (800px) of <NxCode>NxFormSelect</NxCode>.</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
         <NxP>
           <NxCode>nxFormSelectStateHelpers</NxCode> also contains a <NxCode>useNxFormSelectState</NxCode> React
           hook which encapsulates the use of the lower-level state helper functions along
