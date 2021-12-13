@@ -10,6 +10,7 @@ import * as PropTypes from 'prop-types';
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   onClosing: () => void;
   openTop: boolean;
+  openRight: boolean;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {

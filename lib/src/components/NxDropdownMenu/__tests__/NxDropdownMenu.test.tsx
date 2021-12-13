@@ -12,7 +12,7 @@ import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxDropdownMenu, { Props } from '../NxDropdownMenu';
 
 describe('NxDropdownMenu', function() {
-  const minimalProps = { onClosing: () => {} },
+  const minimalProps = { onClosing: () => {}, openTop: false, openRight: false },
       getShallow = getShallowComponent<Props>(NxDropdownMenu, minimalProps);
 
   it('renders a div with the nx-dropdown-menu class name', function() {
@@ -38,7 +38,7 @@ describe('NxDropdownMenu', function() {
         });
 
     function Fixture({ hasMenu }: { hasMenu: boolean }) {
-      return hasMenu ? <NxDropdownMenu onClosing={onClosing} /> : null;
+      return hasMenu ? <NxDropdownMenu onClosing={onClosing} openTop={false} openRight={false}/> : null;
     }
 
     const component = mount(<Fixture hasMenu={true} />, { attachTo: container });

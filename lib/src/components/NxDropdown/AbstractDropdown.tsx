@@ -11,7 +11,7 @@ import { KeyboardEventHandler, useEffect, useRef } from 'react';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 
 import { AbstractDropdownProps } from './types';
-import useDropdownOpenTop from '../../util/useDropdownOpenTop';
+import useDynamicDropdownPlacement from '../../util/useDynamicDropdownPlacement';
 export {
   AbstractDropdownProps,
   AbstractDropdownRenderToggleElement
@@ -137,13 +137,13 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
   const divRef = useRef<HTMLDivElement>(null);
   const newRef = useMergedRef(divRef, ref);
   const childrenCount = Children.count(children);
-  const openTop = useDropdownOpenTop(divRef, childrenCount);
+  const [openTop, openRight] = useDynamicDropdownPlacement(divRef, childrenCount);
 
   return (
     <div ref={newRef} className={className} onKeyDown={onKeyDown} {...attrs}>
       { renderToggleElement(toggleRef, onToggleCollapse) }
       { isOpen &&
-        <NxDropdownMenu ref={menuRef} onClosing={onMenuClosing} openTop={openTop}>
+        <NxDropdownMenu ref={menuRef} onClosing={onMenuClosing} openTop={openTop} openRight={openRight}>
           { children }
         </NxDropdownMenu>
       }

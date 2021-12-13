@@ -17,36 +17,46 @@ import { useState, useEffect, RefObject } from 'react';
  */
 
 const DROPDOWN_ITEM_HEIGHT = 32; //32px is the height of an item in the dropdown
-const useDropdownOpenTop = (
+const ICON_ONLY_DROPDOWN_WIDTH = 250; //32px is the height of an item in the dropdown
+
+const useDynamicDropdownPlacement = (
   dropdownDivRef: RefObject<HTMLDivElement>,
   childrenCount: number,
 ) => {
   const [openTop, setOpenTop] = useState<boolean>(false);
+  const [openRight, setOpenRight] = useState<boolean>(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', determineDropdownUp);
-    window.addEventListener('resize', determineDropdownUp);
+    window.addEventListener('scroll', determinePlacement);
+    window.addEventListener('resize', determinePlacement);
     return () => {
-      window.removeEventListener('scroll', determineDropdownUp);
-      window.removeEventListener('resize', determineDropdownUp);
+      window.removeEventListener('scroll', determinePlacement);
+      window.removeEventListener('resize', determinePlacement);
     };
   }, [childrenCount]);
 
-  const determineDropdownUp = () => {
+  const determinePlacement = () => {
     if (dropdownDivRef && dropdownDivRef.current) {
       const windowHeight = window.innerHeight;
       const menuHeight = Math.min(childrenCount * DROPDOWN_ITEM_HEIGHT, 320);
-      const offset = dropdownDivRef.current.getBoundingClientRect().bottom + menuHeight;
+      const offsetHeight = dropdownDivRef.current.getBoundingClientRect().bottom + menuHeight;
 
-      if (offset >= windowHeight) {
+      if (offsetHeight >= windowHeight) {
         setOpenTop(true);
       }
       else {
         setOpenTop(false);
       }
+
+      if (dropdownDivRef.current.getBoundingClientRect().x - ICON_ONLY_DROPDOWN_WIDTH < 0) {
+        setOpenRight(true);
+      }
+      else {
+        setOpenRight(false);
+      }
     }
   };
-  return openTop;
+  return [openTop, openRight];
 };
 
-export default useDropdownOpenTop;
+export default useDynamicDropdownPlacement;

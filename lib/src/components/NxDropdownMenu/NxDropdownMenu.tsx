@@ -19,8 +19,9 @@ export { Props };
  */
 /* eslint-disable-next-line react/prop-types */
 const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu(props, ref) {
-  const { onClosing, className: classNameProp, openTop, ...attrs } = props,
-      className = classnames('nx-dropdown-menu', classNameProp, {'nx-dropdown-menu__open-top': openTop});
+  const { onClosing, className: classNameProp, openTop, openRight, ...attrs } = props,
+      className = classnames('nx-dropdown-menu', classNameProp, {'nx-dropdown-menu__open-top': openTop},
+          {'nx-dropdown-menu__open-right': openRight});
 
   // onClosing must execute when this element is being removed but BEFORE it actually gets removed from the DOM
   useLayoutEffect(() => onClosing, []);
