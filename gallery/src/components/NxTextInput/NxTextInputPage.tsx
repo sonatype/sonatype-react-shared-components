@@ -225,14 +225,14 @@ const NxTextInputPage = () =>
               <NxTable.Cell>
                 Directly on the <NxCode>NxTextInput</NxCode>
               </NxTable.Cell>
-              <NxTable.Cell>Short variant (150px) of the <NxCode>NxTextInput</NxCode>.</NxTable.Cell>
+              <NxTable.Cell>Short variant of the <NxCode>NxTextInput</NxCode>.</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>nx-text-input--long</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 Directly on the <NxCode>NxTextInput</NxCode>
               </NxTable.Cell>
-              <NxTable.Cell>Long variant (800px) of the <NxCode>NxTextInput</NxCode>.</NxTable.Cell>
+              <NxTable.Cell>Long variant of the <NxCode>NxTextInput</NxCode>.</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
