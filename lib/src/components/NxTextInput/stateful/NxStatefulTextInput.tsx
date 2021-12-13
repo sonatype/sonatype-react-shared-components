@@ -7,24 +7,14 @@
 import React, { forwardRef, useState } from 'react';
 
 import { initialState, userInput } from '../stateHelpers';
-import NxTextInput from '../NxTextInput';
+import { PrivateNxTextInput } from '../NxTextInput';
 
-import { Props, propTypes } from './types';
+import { Props, PublicProps, propTypes } from './types';
 export { Props, propTypes } from './types';
 
-/**
- * Standard text input with pristine state tracking and pluggable validation handling
- * @param type What type of text input to render.  Defaults to "text".
- *   Possible values: "textarea" | "text" | "password"
- * @param defaultValue The initial value rendered in the text input
- * @param validator A function that validates user-inputted changes to the text field value. Accepts the new value
-     as a string and returns zero or more validation error messages
- * @param onChange A callback for when the user changes the value of the text box (e.g. by typing a letter)
- * @param onKeyPress A callback for when the user presses a key that not necessarily changes the value of the text box
- * See the doc page for this component for information about other supported attributes.
- */
-const NxStatefulTextInput = forwardRef<HTMLDivElement, Props>(
-    function NxStatefulTextInput(props, ref) {
+/* eslint-disable react/prop-types */
+export const PrivateNxStatefulTextInput = forwardRef<HTMLDivElement, Props>(
+    function PrivateNxStatefulTextInput(props, ref) {
       const { defaultValue, onChange, validator, ...attrs } = props,
           [state, setState] = useState(initialState(defaultValue || '', validator));
 
@@ -36,7 +26,18 @@ const NxStatefulTextInput = forwardRef<HTMLDivElement, Props>(
         }
       }
 
-      return <NxTextInput validatable={!!validator} ref={ref} { ...attrs } { ...state } onChange={changeHandler} />;
+      return <PrivateNxTextInput validatable={!!validator}
+                                 ref={ref}
+                                 { ...attrs }
+                                 { ...state }
+                                 onChange={changeHandler} />;
+    }
+);
+/* eslint-enable react/prop-types */
+
+const NxStatefulTextInput = forwardRef<HTMLDivElement, PublicProps>(
+    function NxStatefulTextInput(props, ref) {
+      return <PrivateNxStatefulTextInput ref={ref} { ...props } />;
     }
 );
 
