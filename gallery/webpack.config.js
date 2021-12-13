@@ -115,6 +115,7 @@ module.exports = function(env = { production: false }) {
       new MiniCssExtractPlugin({
         filename: 'gallery.css'
       }),
+      new webpack.EnvironmentPlugin(['PX_API_KEY']),
       ...productionPlugins
     ],
     devtool: 'eval-source-map',
