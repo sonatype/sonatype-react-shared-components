@@ -25,4 +25,9 @@
   top: 100%;
   width: nx-dropdown-variables.$dropdown-width;
   z-index: 1;
+
+  &.nx-dropdown-menu__open-top {
+    bottom: 100%;
+    top: unset;
+  }
 }

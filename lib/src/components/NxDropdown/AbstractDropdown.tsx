@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React, { Children, forwardRef, useState } from 'react';
+import useMergedRef from '@react-hook/merged-ref';
 
 import { KeyboardEventHandler, useEffect, useRef } from 'react';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
@@ -132,11 +133,40 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
     }
   }
 
+  useEffect(() => {
+    window.addEventListener('scroll', determineDropdownUp);
+    window.addEventListener('resize', determineDropdownUp);
+    return () => {
+      window.removeEventListener('scroll', determineDropdownUp);
+      window.removeEventListener('resize', determineDropdownUp);
+    };
+  }, []);
+
+  const divRef = useRef<HTMLDivElement>(null);
+  const newRef = useMergedRef(divRef, ref);
+  const [openTop, setOpenTop] = useState<boolean>(false);
+
+  const determineDropdownUp = () => {
+    if (divRef && divRef.current) {
+      const windowHeight = window.innerHeight;
+      const menuHeight = Children.count(children) * 32; //32px is the height of an item in the dropdown
+
+      const offset = divRef.current.getBoundingClientRect().bottom + menuHeight;
+
+      if (offset >= windowHeight) {
+        setOpenTop(true);
+      }
+      else {
+        setOpenTop(false);
+      }
+    }
+  };
+
   return (
-    <div ref={ref} className={className} onKeyDown={onKeyDown} {...attrs}>
+    <div ref={newRef} className={className} onKeyDown={onKeyDown} {...attrs}>
       { renderToggleElement(toggleRef, onToggleCollapse) }
       { isOpen &&
-        <NxDropdownMenu ref={menuRef} onClosing={onMenuClosing}>
+        <NxDropdownMenu ref={menuRef} onClosing={onMenuClosing} openTop={openTop}>
           { children }
         </NxDropdownMenu>
       }
