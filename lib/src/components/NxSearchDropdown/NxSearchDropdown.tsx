@@ -15,6 +15,8 @@ import { Props, propTypes } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
+import useMergedRef from '@react-hook/merged-ref';
+import useDropdownOpenTop from '../../util/useDropdownOpenTop';
 export { Props } from './types';
 
 export const SEARCH_DEBOUNCE_TIME = 500;
@@ -97,8 +99,13 @@ function NxSearchDropdownRender<T extends string | number = string>(
     }
   };
 
+  const divRef = useRef<HTMLDivElement>(null);
+  const newRef = useMergedRef(divRef, ref);
+  const childrenCount = matches.length;
+  const openTop = useDropdownOpenTop(divRef, childrenCount);
+
   return (
-    <div ref={ref} className={className} onFocus={handleComponentFocus} { ...attrs }>
+    <div ref={newRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
       <NxFilterInput ref={filterRef}
                      className={filterClassName}
                      value={searchText}
@@ -112,7 +119,8 @@ function NxSearchDropdownRender<T extends string | number = string>(
                         ref={menuRef}
                         className={menuClassName}
                         onClosing={onMenuClosing}
-                        onKeyDown={handleKeyDown}>
+                        onKeyDown={handleKeyDown}
+                        openTop={openTop}>
           <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
             {
               matches.length ? matches.map(match =>
@@ -132,4 +140,3 @@ function NxSearchDropdownRender<T extends string | number = string>(
 const NxSearchDropdown = Object.assign(forwardRef(NxSearchDropdownRender), { propTypes });
 
 export default NxSearchDropdown;
-
