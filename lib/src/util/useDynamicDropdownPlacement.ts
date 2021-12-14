@@ -7,17 +7,17 @@
 import { useState, useEffect, RefObject } from 'react';
 
 /**
- * Convenience hook that determins whether a dropdown menu should open on the top
- * instead of opening the menu on the bottom.
+ * Convenience hook that determins whether a dropdown menu should open on the top or on the right
+ * instead of opening the menu on the bottom or on the left respectively.
  * This custom hook basically checks the position of the dropdown based on where it is in the current page,
- * and determines if the dropdown menu should be placed on top or the bottom..
+ * and determines if the dropdown menu should be placed on the top or on the right.
  * @param dropdownDivRef the ref to the div that holds the dropdown menu.
  * @param childrenCount the number of items the dropdown menu contains to dynamically allocate spacing.
- * @return a boolean if the dropdown menu should be placed on top.
+ * @return a [boolean, boolean] if the dropdown menu should be placed on top and on the right respectively.
  */
 
 const DROPDOWN_ITEM_HEIGHT = 32; //32px is the height of an item in the dropdown
-const ICON_ONLY_DROPDOWN_WIDTH = 250; //32px is the height of an item in the dropdown
+const ICON_ONLY_DROPDOWN_WIDTH = 250; //250px is the width of the dropdown
 
 const useDynamicDropdownPlacement = (
   dropdownDivRef: RefObject<HTMLDivElement>,
@@ -39,21 +39,11 @@ const useDynamicDropdownPlacement = (
     if (dropdownDivRef && dropdownDivRef.current) {
       const windowHeight = window.innerHeight;
       const menuHeight = Math.min(childrenCount * DROPDOWN_ITEM_HEIGHT, 320);
-      const offsetHeight = dropdownDivRef.current.getBoundingClientRect().bottom + menuHeight;
+      const rect = dropdownDivRef.current.getBoundingClientRect();
+      const offsetHeight = rect.bottom + menuHeight;
 
-      if (offsetHeight >= windowHeight) {
-        setOpenTop(true);
-      }
-      else {
-        setOpenTop(false);
-      }
-
-      if (dropdownDivRef.current.getBoundingClientRect().x - ICON_ONLY_DROPDOWN_WIDTH < 0) {
-        setOpenRight(true);
-      }
-      else {
-        setOpenRight(false);
-      }
+      offsetHeight >= windowHeight ? setOpenTop(true) : setOpenTop(false);
+      rect.x - ICON_ONLY_DROPDOWN_WIDTH < 0 ? setOpenRight(true) : setOpenRight(false);
     }
   };
   return [openTop, openRight];
