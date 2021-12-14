@@ -6,11 +6,15 @@
  */
 import React from 'react';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import NxTag, { NxSelectableTag } from '../NxTag';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
+
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 describe('NxTag', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxTag, { children: 'basic tag' });
@@ -110,5 +114,25 @@ describe('NxSelectableTag', function() {
     expect(onSelect).not.toHaveBeenCalled();
     trigger.find('input').simulate('change');
     expect(onSelect).toHaveBeenCalled();
+  });
+
+  it('should have no axe violations', async () => {
+    const component = mount(
+      <main>
+        <NxTag>Default</NxTag>
+        <NxTag color="indigo">Indigo (same as default)</NxTag>
+        <NxTag color="purple">Purple</NxTag>
+        <NxTag color="light-blue">Light Blue</NxTag>
+        <NxTag color="pink">Pink - demonstrate that the tag overflows at 320px</NxTag>
+        <NxTag color="blue">Blue</NxTag>
+        <NxTag color="red">Red</NxTag>
+        <NxTag color="green">Green</NxTag>
+        <NxTag color="orange">Orange</NxTag>
+        <NxTag color="yellow">Yellow</NxTag>
+        <NxTag color="lime">Lime</NxTag>
+      </main>
+    );
+    const results = await axe(component.getDOMNode());
+    expect(results).toHaveNoViolations();
   });
 });
