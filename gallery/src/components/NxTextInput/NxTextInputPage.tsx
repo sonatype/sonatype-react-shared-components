@@ -159,7 +159,7 @@ const NxTextInputPage = () =>
       </NxTile.Subsection>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
-          <h3>State Helpers</h3>
+          <NxH3>State Helpers</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
           The <NxCode>nxTextInputStateHelpers</NxCode>{' '}
