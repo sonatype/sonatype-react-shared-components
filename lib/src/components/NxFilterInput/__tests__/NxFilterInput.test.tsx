@@ -10,17 +10,17 @@ import { mount, shallow } from 'enzyme';
 import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import NxFilterInput, { Props } from '../NxFilterInput';
-import NxTextInput from '../../NxTextInput/NxTextInput';
+import { PrivateNxTextInput } from '../../NxTextInput/NxTextInput';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 describe('NxFilterInput', function() {
   const minimalProps = { value: '' },
       shallowComponent = enzymeUtils.getShallowComponent<Props>(NxFilterInput, minimalProps);
 
-  it('renders a NxTextInput with the nx-filter-input class', function() {
+  it('renders a PrivateNxTextInput with the nx-filter-input class', function() {
     const component = shallowComponent();
     expect(component).toHaveClassName('nx-filter-input');
-    expect(component).toMatchSelector(NxTextInput);
+    expect(component).toMatchSelector(PrivateNxTextInput);
   });
 
   it('adds custom classnames as specified', function() {
@@ -29,7 +29,7 @@ describe('NxFilterInput', function() {
     expect(component).toHaveClassName('nx-filter-input');
   });
 
-  it('passes misc props to the NxTextInput', function() {
+  it('passes misc props to the PrivateNxTextInput', function() {
     const onChange = jest.fn(),
         onKeyPress = jest.fn(),
         component = shallowComponent({
@@ -45,7 +45,7 @@ describe('NxFilterInput', function() {
     expect(component).toHaveProp('id', 'bar');
   });
 
-  it('does not pass validatable, validationErrors, or type props to the NxTextInput', function() {
+  it('does not pass validatable, validationErrors, or type props to the PrivateNxTextInput', function() {
     const component = shallowComponent({
       validatable: true,
       validationErrors: 'It\'s all wrong',
@@ -57,11 +57,11 @@ describe('NxFilterInput', function() {
     expect(component).not.toHaveProp('type');
   });
 
-  it('passes isPristine = false to the NxTextInput', function() {
+  it('passes isPristine = false to the PrivateNxTextInput', function() {
     expect(shallowComponent()).toHaveProp('isPristine', false);
   });
 
-  it('puts the ref on the NxTextInput', function() {
+  it('puts the ref on the PrivateNxTextInput', function() {
     const ref = React.createRef<HTMLDivElement>(),
 
         // note: the fragment is necessary to get around an enzyme issue:

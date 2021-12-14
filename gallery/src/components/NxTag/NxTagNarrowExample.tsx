@@ -22,11 +22,11 @@ const tags: TagInfo[] = [
   },
   { color: 'blue', value: 'Blue' },
   { color: 'red', value: 'Red' },
-  { color: 'green', value: 'Green' },
+  { color: 'turquoise', value: 'Turquoise' },
   { color: 'orange', value: 'Orange' },
   { color: 'yellow', value: 'Yellow' },
-  { color: 'lime', value: 'Lime' },
-  { color: 'light-blue', value: 'Light Blue' }
+  { color: 'kiwi', value: 'Kiwi' },
+  { color: 'sky', value: 'Sky' }
 ];
 
 function NxTagNarrowExample() {
@@ -48,12 +48,12 @@ function NxTagNarrowExample() {
   return (
     <div style={{width: '250px', border: '1px solid #ddd'}}>
       <NxTag>Default</NxTag>
-      <NxTag color="light-blue">Light Blue</NxTag>
+      <NxTag color="sky">Sky</NxTag>
       <NxTag color="purple">Purple</NxTag>
       <NxTag color="pink">Pink</NxTag>
       <NxTag color="blue">Blue</NxTag>
-      <NxTag color="green">
-        Green - artisinal singularity tiger-team BASE jump meta-soul-delay network footage garage spook towards
+      <NxTag color="turquoise">
+        Turquoise - artisinal singularity tiger-team BASE jump meta-soul-delay network footage garage spook towards
         tiger-team weathered chrome warehouse
       </NxTag>
       <NxTag color="red">Red</NxTag>
@@ -71,7 +71,7 @@ function NxTagNarrowExample() {
 
       <NxTag color="orange">Orange</NxTag>
       <NxTag color="yellow">Yellow</NxTag>
-      <NxTag color="lime">Lime</NxTag>
+      <NxTag color="kiwi">Kiwi</NxTag>
     </div>
   );
 }

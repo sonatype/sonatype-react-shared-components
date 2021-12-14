@@ -6,13 +6,13 @@
  */
 import React, { forwardRef } from 'react';
 
-import NxStatefulTextInput from '../../NxTextInput/stateful/NxStatefulTextInput';
+import { PrivateNxStatefulTextInput } from '../../NxTextInput/stateful/NxStatefulTextInput';
 
 import { Props, propTypes } from './types';
 export { Props, propTypes } from './types';
 
 const NxStatefulDateInput = forwardRef<HTMLDivElement, Props>(
-    (props, ref) => <NxStatefulTextInput { ...props } type="date" ref={ref} />
+    (props, ref) => <PrivateNxStatefulTextInput { ...props } type="date" ref={ref} />
 );
 
 NxStatefulDateInput.propTypes = propTypes;

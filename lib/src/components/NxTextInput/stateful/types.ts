@@ -6,17 +6,22 @@
  */
 import * as PropTypes from 'prop-types';
 
-import { NxTextInputType, HTMLProps, propTypes as nxTextInputPropTypes, Validator } from '../types';
+import { NxTextInputType, PublicNxTextInputType, HTMLProps, propTypes as nxTextInputPropTypes, Validator }
+  from '../types';
 
-export type Props = HTMLProps & {
+export interface Props extends HTMLProps {
   type?: NxTextInputType | null;
   defaultValue?: string | null;
   validator?: Validator;
   onChange?: ((newVal: string) => void) | null;
   onKeyPress?: ((newVal: string) => void) | null;
-};
+}
 
-export const propTypes: PropTypes.ValidationMap<Props> = {
+export interface PublicProps extends Props {
+  type?: PublicNxTextInputType | null;
+}
+
+export const propTypes: PropTypes.ValidationMap<PublicProps> = {
   type: nxTextInputPropTypes.type,
   defaultValue: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.oneOf([undefined])]),
   validator: PropTypes.func,

@@ -118,6 +118,10 @@
   width: var(--nx-width-form-element-wide);
 }
 
+.nx-text-input--short {
+  width: var(--nx-width-form-element-short);
+}
+
 .nx-text-input--textarea {
   .nx-text-input__box {
     align-items: initial;

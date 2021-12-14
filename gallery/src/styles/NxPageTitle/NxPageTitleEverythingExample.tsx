@@ -61,14 +61,14 @@ function NxPageTitleEverythingExample() {
                          noneCount={21}/>
         <NxTag>Default</NxTag>
         <NxTag color="purple">Purple</NxTag>
-        <NxTag color="light-blue">Light Blue</NxTag>
+        <NxTag color="sky">Sky</NxTag>
         <NxTag color="pink">Pink</NxTag>
         <NxTag color="blue">Blue</NxTag>
         <NxTag color="red">Red</NxTag>
-        <NxTag color="green">Green</NxTag>
+        <NxTag color="turquoise">Turquoise</NxTag>
         <NxTag color="orange">Orange</NxTag>
         <NxTag color="yellow">Yellow</NxTag>
-        <NxTag color="lime">Lime</NxTag>
+        <NxTag color="kiwi">Kiwi</NxTag>
       </NxPageTitle.Tags>
     </NxPageTitle>
   );

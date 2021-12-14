@@ -4,18 +4,21 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
+import { mount } from 'enzyme';
+import { createRef } from 'react';
 import * as enzymeUtils from '../../../../__testutils__/enzymeUtils';
 
-import NxTextInput from '../../NxTextInput';
-import NxStatefulTextInput, { Props } from '../NxStatefulTextInput';
+import { PrivateNxTextInput } from '../../NxTextInput';
+import NxStatefulTextInput, { PrivateNxStatefulTextInput, Props } from '../NxStatefulTextInput';
 
-describe('NxStatefulTextInput', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulTextInput, {});
+describe('PrivateNxStatefulTextInput', function() {
+  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(PrivateNxStatefulTextInput, {});
 
-  it('renders a NxTextInput with the specified type and className', function() {
+  it('renders a PrivateNxTextInput with the specified type and className', function() {
     const component = getShallowComponent({ type: 'textarea', className: 'foo' });
 
-    expect(component).toMatchSelector(NxTextInput);
+    expect(component).toMatchSelector(PrivateNxTextInput);
     expect(component).toHaveProp('type', 'textarea');
     expect(component).toHaveProp('className', 'foo');
   });
@@ -115,5 +118,34 @@ describe('NxStatefulTextInput', function() {
     expect(getShallowComponent({ placeholder: 'test placeholder'})).toHaveProp('placeholder', 'test placeholder');
     expect(getShallowComponent({ minLength: 4 })).toHaveProp('minLength', 4);
     expect(getShallowComponent({ name: 'a-name' })).toHaveProp('name', 'a-name');
+  });
+});
+
+describe('NxStatefulTextInput', function() {
+  it('renders a PrivateNxStatefulTextInput with all of the same props and ref', function() {
+    const onKeyPress = jest.fn(),
+        onChange = jest.fn(),
+        validator = jest.fn(),
+        ref = createRef<HTMLDivElement>(),
+        component = mount(
+          <NxStatefulTextInput ref={ref}
+                               type="textarea"
+                               defaultValue="asdf"
+                               id="bar"
+                               className="baz"
+                               validator={validator}
+                               onKeyPress={onKeyPress}
+                               onChange={onChange} />
+        ).children();
+
+    expect(ref.current).toBe(component.getDOMNode());
+    expect(component).toMatchSelector(PrivateNxStatefulTextInput);
+    expect(component).toHaveProp('type', 'textarea');
+    expect(component).toHaveProp('defaultValue', 'asdf');
+    expect(component).toHaveProp('id', 'bar');
+    expect(component).toHaveProp('className', 'baz');
+    expect(component).toHaveProp('validator', validator);
+    expect(component).toHaveProp('onKeyPress', onKeyPress);
+    expect(component).toHaveProp('onChange', onChange);
   });
 });

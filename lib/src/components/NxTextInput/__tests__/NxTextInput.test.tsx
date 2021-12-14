@@ -4,18 +4,19 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { createRef } from 'react';
 import { faCheck, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
-import NxTextInput, { Props } from '../NxTextInput';
+import NxTextInput, { PrivateNxTextInput, Props } from '../NxTextInput';
+import { mount } from 'enzyme';
 
-describe('NxTextInput', function() {
+describe('PrivateNxTextInput', function() {
   const minimalProps = {
         value: '',
         isPristine: false
       },
-      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxTextInput, minimalProps);
+      getShallowComponent = enzymeUtils.getShallowComponent<Props>(PrivateNxTextInput, minimalProps);
 
   it('renders an .nx-text-input div', function() {
     expect(getShallowComponent()).toMatchSelector('div.nx-text-input');
@@ -202,5 +203,37 @@ describe('NxTextInput', function() {
 
     expect(component.find('.nx-text-input__box > .foo')).toExist();
     expect(component.find('.nx-text-input__box > .foo + .nx-text-input__input')).toExist();
+  });
+});
+
+describe('NxTextInput', function() {
+  it('renders a PrivateNxTextInput with all of the same props and ref', function() {
+    const onKeyPress = jest.fn(),
+        onChange = jest.fn(),
+        ref = createRef<HTMLDivElement>(),
+        component = mount(
+          <NxTextInput ref={ref}
+                       type="textarea"
+                       validatable={true}
+                       isPristine={false}
+                       value="asdf"
+                       validationErrors="foo"
+                       id="bar"
+                       className="baz"
+                       onKeyPress={onKeyPress}
+                       onChange={onChange} />
+        ).children();
+
+    expect(ref.current).toBe(component.getDOMNode());
+    expect(component).toMatchSelector(PrivateNxTextInput);
+    expect(component).toHaveProp('type', 'textarea');
+    expect(component).toHaveProp('validatable', true);
+    expect(component).toHaveProp('isPristine', false);
+    expect(component).toHaveProp('value', 'asdf');
+    expect(component).toHaveProp('validationErrors', 'foo');
+    expect(component).toHaveProp('id', 'bar');
+    expect(component).toHaveProp('className', 'baz');
+    expect(component).toHaveProp('onKeyPress', onKeyPress);
+    expect(component).toHaveProp('onChange', onChange);
   });
 });
