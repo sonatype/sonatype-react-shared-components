@@ -5,11 +5,15 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxButton from '../NxButton';
+
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 describe('NxButton', function() {
   it('renders a button', function() {
@@ -48,5 +52,19 @@ describe('NxButton', function() {
     const button = shallow(<NxButton className="disabled">Disabled Button</NxButton>);
 
     expect(button).toHaveProp('aria-disabled', true);
+  });
+
+  it('should have no axe violations', async () => {
+    const component = mount(
+      <nav>
+        <NxButton variant="primary">Primary Button</NxButton>
+        <NxButton className="disabled">Disabled Button</NxButton>
+        <NxButton variant="icon-only" aria-label="check">
+          <NxFontAwesomeIcon icon={faCheck}/>
+        </NxButton>
+      </nav>
+    );
+    const results = await axe(component.getDOMNode());
+    expect(results).toHaveNoViolations();
   });
 });

@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { mount } from 'enzyme';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +13,10 @@ import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import NxPagination, { Props } from '../NxPagination';
 import NxButton from '../../NxButton/NxButton';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
+
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 describe('NxPagination', function() {
   const minimalProps = {
@@ -438,5 +443,18 @@ describe('NxPagination', function() {
     buttons.forEach(btn => {
       expect(btn).toHaveProp('type', 'button');
     });
+  });
+
+  it('should have no axe violations', async () => {
+    const component = mount(
+      <div>
+        <div id="pagination-test-page" aria-live="polite" aria-atomic="true" aria-relevant="all">
+          Page 5
+        </div>
+        <NxPagination aria-controls="pagination-test-page" onChange={()=> {}} pageCount={41} currentPage={5} />
+      </div>
+    );
+    const html = await axe(component.getDOMNode());
+    expect(html).toHaveNoViolations();
   });
 });

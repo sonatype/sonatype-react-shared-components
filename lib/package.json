@@ -77,10 +77,12 @@
     "@rooks/use-mutation-observer": "^4.11.0",
     "@sonatype/react-commonmark": "^3.0.1",
     "@types/classnames": "^2.2.11",
+    "@types/jest-axe": "^3.5.3",
     "@types/prop-types": "^15.7.3",
     "@types/ramda": "^0.27.34",
     "classnames": "^2.2.6",
     "fuse.js": "^6.4.6",
+    "jest-axe": "^5.0.1",
     "prop-types": "^15.7.2",
     "ramda": "^0.27.1"
   },
