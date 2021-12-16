@@ -40,12 +40,12 @@ import { faReact, faSass, faJs } from '@fortawesome/free-brands-svg-icons';
 import './GalleryNav.scss';
 
 const PAGE_TYPE_TO_ICON_MAP: { [page in PageType]: JSX.Element } = {
-  'documentation': <NxFontAwesomeIcon icon={faFile} />,
-  'react': <NxFontAwesomeIcon icon={faReact} />,
-  'html': <NxFontAwesomeIcon icon={faCode} />,
-  'layout': <NxFontAwesomeIcon icon={faRulerCombined} />,
-  'sass': <NxFontAwesomeIcon icon={faSass} />,
-  'js': <NxFontAwesomeIcon icon={faJs} />
+  'documentation': <NxFontAwesomeIcon icon={faFile} fixedWidth />,
+  'react': <NxFontAwesomeIcon icon={faReact} fixedWidth />,
+  'html': <NxFontAwesomeIcon icon={faCode} fixedWidth />,
+  'layout': <NxFontAwesomeIcon icon={faRulerCombined} fixedWidth />,
+  'sass': <NxFontAwesomeIcon icon={faSass} fixedWidth />,
+  'js': <NxFontAwesomeIcon icon={faJs} fixedWidth />
 };
 
 // Messy test
