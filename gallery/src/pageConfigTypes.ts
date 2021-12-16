@@ -9,7 +9,10 @@ import {ComponentType} from 'react';
 export const PAGE_TYPES = [
   'documentation',
   'html',
-  'react'
+  'react',
+  'layout',
+  'sass',
+  'js'
 ] as const;
 
 export type PageType = typeof PAGE_TYPES[number];
