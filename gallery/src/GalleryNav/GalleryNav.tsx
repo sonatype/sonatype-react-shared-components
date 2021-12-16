@@ -34,14 +34,18 @@ import { NavLink } from 'react-router-dom';
 import { PageMapping, PageConfig, PageType, PageContentDescription } from '../pageConfigTypes';
 import { markByFilter, matchesFilter } from '../filterUtil';
 
-import { faEdit, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faFile, faCode, faRulerCombined } from '@fortawesome/free-solid-svg-icons';
+import { faReact, faSass, faJs } from '@fortawesome/free-brands-svg-icons';
 
 import './GalleryNav.scss';
 
 const PAGE_TYPE_TO_ICON_MAP: { [page in PageType]: JSX.Element } = {
-  'documentation': <NxFontAwesomeIcon icon={faEdit} />,
-  'react': <NxFontAwesomeIcon icon={faCog} />,
-  'html': <NxFontAwesomeIcon icon={faCog} />
+  'documentation': <NxFontAwesomeIcon icon={faFile} />,
+  'react': <NxFontAwesomeIcon icon={faReact} />,
+  'html': <NxFontAwesomeIcon icon={faCode} />,
+  'layout': <NxFontAwesomeIcon icon={faRulerCombined} />,
+  'sass': <NxFontAwesomeIcon icon={faSass} />,
+  'js': <NxFontAwesomeIcon icon={faJs} />
 };
 
 // Messy test
