@@ -154,11 +154,20 @@ const pageConfig: PageConfig = {
     Tooltip: { content: NxTooltipPage, type: 'react' },
     OverflowTooltip: { content: NxOverflowTooltipPage, type: 'react' }
   },
-  'Forms': {
-    'Form Layout Examples': { content: NxFormLayoutPage, type: 'layout' },
+  'Buttons and Dropdowns': {
+    NxBackButton: { content: NxBackButtonPage, type: 'react' },
     Button: { content: NxButtonPage, type: 'react' },
     SegmentedButton: { content: NxSegmentedButtonPage, type: 'react' },
     StatefulSegmentedButton: { content: NxStatefulSegmentedButtonPage, type: 'react' },
+    CloseButton: { content: NxCloseButtonPage, type: 'react' },
+    NxDropdown: { content: NxDropdownPage, type: 'react' },
+    NxStatefulDropdown: { content: NxStatefulDropdownPage, type: 'react' },
+    NxIconDropdown: { content: NxIconDropdownPage, type: 'react' },
+    NxStatefulIconDropdown: { content: NxStatefulIconDropdownPage, type: 'react' },
+    NxTextLink: { content: NxTextLinkPage, type: 'react' }
+  },
+  'Forms': {
+    'Form Layout Examples': { content: NxFormLayoutPage, type: 'layout' },
     Checkbox: { content: NxCheckboxPage, type: 'react' },
     CollapsibleMultiSelect: { content: NxCollapsibleMultiSelectPage, type: 'react' },
     StatefulCollapsibleMultiSelect: { content: NxStatefulCollapsibleMultiSelectPage, type: 'react' },
@@ -201,19 +210,10 @@ const pageConfig: PageConfig = {
     'nx-tile': { content: NxTilePage, type: 'html' },
     NxVulnerabilityDetails: { content: NxVulnerabilityDetailsPage, type: 'react' }
   },
-  'Navigation': {
-    NxBackButton: { content: NxBackButtonPage, type: 'react' },
-    NxDropdown: { content: NxDropdownPage, type: 'react' },
-    NxStatefulDropdown: { content: NxStatefulDropdownPage, type: 'react' },
-    NxIconDropdown: { content: NxIconDropdownPage, type: 'react' },
-    NxStatefulIconDropdown: { content: NxStatefulIconDropdownPage, type: 'react' },
-    NxTextLink: { content: NxTextLinkPage, type: 'react' }
-  },
   'Other Components': {
     Accordion: { content: NxAccordionPage, type: 'react' },
     StatefulAccordion: { content: NxStatefulAccordionPage, type: 'react' },
     BinaryDonutChart: { content: NxBinaryDonutChartPage, type: 'react' },
-    CloseButton: { content: NxCloseButtonPage, type: 'react' },
     CodeSnippet: { content: NxCodeSnippetPage, type: 'react' },
     CollapsibleItems: { content: NxCollapsibleItemsPage, type: 'react' },
     List: { content: NxListPageV2, type: 'react' },
@@ -234,7 +234,7 @@ const pageConfig: PageConfig = {
     Tree: { content: NxTreePage, type: 'react' },
     TreeView: { content: NxTreeViewPage, type: 'react' }
   },
-  'Typograpgy': {
+  'Typography': {
     'nx-blockquote': { content: NxBlockquotePage, type: 'html' },
     'nx-code': { content: NxCodePage, type: 'html' },
     'nx-h*': { content: NxHPage, type: 'html' },
