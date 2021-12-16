@@ -4,12 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React, { Children, forwardRef } from 'react';
+import useMergedRef from '@react-hook/merged-ref';
 
 import { KeyboardEventHandler, useEffect, useRef } from 'react';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 
 import { AbstractDropdownProps } from './types';
+import useDynamicDropdownPlacement from '../../util/useDynamicDropdownPlacement';
 export {
   AbstractDropdownProps,
   AbstractDropdownRenderToggleElement
@@ -132,11 +134,16 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
     }
   }
 
+  const divRef = useRef<HTMLDivElement>(null);
+  const newRef = useMergedRef(divRef, ref);
+  const childrenCount = Children.count(children);
+  const [openTop, openRight] = useDynamicDropdownPlacement(divRef, childrenCount);
+
   return (
-    <div ref={ref} className={className} onKeyDown={onKeyDown} {...attrs}>
+    <div ref={newRef} className={className} onKeyDown={onKeyDown} {...attrs}>
       { renderToggleElement(toggleRef, onToggleCollapse) }
       { isOpen &&
-        <NxDropdownMenu ref={menuRef} onClosing={onMenuClosing}>
+        <NxDropdownMenu ref={menuRef} onClosing={onMenuClosing} openTop={openTop} openRight={openRight}>
           { children }
         </NxDropdownMenu>
       }
