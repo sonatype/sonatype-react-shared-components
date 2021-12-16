@@ -69,8 +69,8 @@
       border-bottom-style: none;
       border-left-style: none;
 
-      padding-top: calc(var(--nx-spacing-2x) + 1px);
-      padding-bottom: calc(var(--nx-spacing-2x) + 1px);
+      padding-top: var(--nx-spacing-2x);
+      padding-bottom: var(--nx-spacing-2x);
       padding-left: calc(var(--nx-spacing-6x) + 1px);
     }
   }
@@ -92,9 +92,9 @@
       border-right-style: none;
       border-bottom-style: none;
 
-      padding-top: calc(var(--nx-spacing-2x) + 1px);
+      padding-top: var(--nx-spacing-2x);
       padding-right: calc(var(--nx-spacing-3x) + 1px);
-      padding-bottom: calc(var(--nx-spacing-2x) + 1px);
+      padding-bottom: var(--nx-spacing-2x);
     }
   }
 }
