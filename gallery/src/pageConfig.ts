@@ -134,12 +134,10 @@ import NxTreePage from './components/NxTree/NxTreePage';
 const pageConfig: PageConfig = {
   'Alerts, Indicators, and Notifications': {
     Alert: { content: NxAlertComponentsPage, type: 'react' },
-    'alert': { content: NxAlertPage, type: 'html' },
     StatefulAlert: { content: NxStatefulAlertComponentsPage, type: 'react' },
     BinaryDonutChart: { content: NxBinaryDonutChartPage, type: 'react' },
     'counter': { content: NxCounterPage, type: 'html' },
     FontAwesomeIcon: { content: NxFontAwesomeIconPage, type: 'react' },
-    'icon': { content: NxIconPage, type: 'html' },
     LoadError: { content: NxLoadErrorPage, type: 'react' },
     LoadWrapper: { content: NxLoadWrapperPage, type: 'react' },
     LoadingSpinner: { content: NxLoadingSpinnerPage, type: 'react' },
@@ -170,13 +168,10 @@ const pageConfig: PageConfig = {
     DateInput: { content: NxDateInputPage, type: 'react' },
     StatefulDateInput: { content: NxStatefulDateInputPage, type: 'react' },
     Fieldset: { content: NxFieldsetPage, type: 'react' },
-    'fieldset': { content: NxFieldsetStylePage, type: 'html' },
     FilterInput: { content: NxFilterInputPage, type: 'react' },
     Form: { content: NxFormPage, type: 'react' },
     FormGroup: { content: NxFormGroupPage, type: 'react' },
-    'form-group': { content: NxFormGroupStylePage, type: 'html' },
     FormSelect: { content: NxFormSelectComponentPage, type: 'react' },
-    'form-select': { content: NxFormSelectPage, type: 'html' },
     PolicyThreatSlider: { content: NxPolicyThreatSliderPage, type: 'react' },
     Radio: { content: NxRadioPage, type: 'react' },
     'read-only': { content: NxReadOnlyPage, type: 'html' },
@@ -220,7 +215,6 @@ const pageConfig: PageConfig = {
     CodeSnippet: { content: NxCodeSnippetPage, type: 'react' },
     CollapsibleItems: { content: NxCollapsibleItemsPage, type: 'react' },
     List: { content: NxListPageV2, type: 'react' },
-    'list': { content: NxListPage, type: 'html' },
     Modal: { content: NxModalPage, type: 'react' },
     Pagination: { content: NxPaginationPage, type: 'react' },
     IndeterminatePagination: { content: NxIndeterminatePaginationPage, type: 'react' },
@@ -230,7 +224,6 @@ const pageConfig: PageConfig = {
     StatefulSubmitMask: { content: NxStatefulSubmitMaskPage, type: 'react' },
     'system-notice': { content: NxSystemNoticePage, type: 'html' },
     Table: { content: NxTablePage, type: 'react' },
-    'table': { content: NxTableStylePage, type: 'html' },
     'table-container': { content: NxTableContainerPage, type: 'html' },
     Tabs: { content: NxTabsPage, type: 'react' },
     StatefulTabs: { content: NxStatefulTabsPage, type: 'react' },
@@ -245,6 +238,15 @@ const pageConfig: PageConfig = {
     'h*': { content: NxHPage, type: 'html' },
     'p': { content: NxPPage, type: 'html' },
     'pre': { content: NxPrePage, type: 'html' }
+  },
+  'HTML Variants': {
+    'icon': { content: NxIconPage, type: 'html' },
+    'alert': { content: NxAlertPage, type: 'html' },
+    'fieldset': { content: NxFieldsetStylePage, type: 'html' },
+    'form-group': { content: NxFormGroupStylePage, type: 'html' },
+    'form-select': { content: NxFormSelectPage, type: 'html' },
+    'list': { content: NxListPage, type: 'html' },
+    'table': { content: NxTableStylePage, type: 'html' }
   },
   'Mixins & Helpers': {
     'Color Palettes': { content: ColorPalettePage, type: 'sass' },
