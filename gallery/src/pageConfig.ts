@@ -211,6 +211,7 @@ const pageConfig: PageConfig = {
   },
   'Other Components': {
     Accordion: { content: NxAccordionPage, type: 'react' },
+    StatefulAccordion: { content: NxStatefulAccordionPage, type: 'react' },
     BinaryDonutChart: { content: NxBinaryDonutChartPage, type: 'react' },
     CloseButton: { content: NxCloseButtonPage, type: 'react' },
     CodeSnippet: { content: NxCodeSnippetPage, type: 'react' },
