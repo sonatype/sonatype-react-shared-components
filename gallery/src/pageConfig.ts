@@ -20,6 +20,7 @@ import NxLoadWrapperPage from './components/NxLoadWrapper/NxLoadWrapperPage';
 import NxModalPage from './components/NxModal/NxModalPage';
 import NxPageTitlePage from './styles/NxPageTitle/NxPageTitlePage';
 import NxTilePage from './styles/NxTile/NxTilePage';
+import NxBtnPage from './styles/NxBtn/NxBtnPage';
 import NxThreatIndicatorPage from './components/NxThreatIndicator/NxThreatIndicatorPage';
 import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
@@ -242,8 +243,9 @@ const pageConfig: PageConfig = {
     'nx-pre': { content: NxPrePage, type: 'html' }
   },
   'HTML Variants': {
-    'icon': { content: NxIconPage, type: 'html' },
     'alert': { content: NxAlertPage, type: 'html' },
+    'button': { content: NxBtnPage, type: 'html' },
+    'icon': { content: NxIconPage, type: 'html' },
     'fieldset': { content: NxFieldsetStylePage, type: 'html' },
     'form-group': { content: NxFormGroupStylePage, type: 'html' },
     'form-select': { content: NxFormSelectPage, type: 'html' },
