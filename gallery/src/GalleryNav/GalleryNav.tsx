@@ -34,18 +34,18 @@ import { NavLink } from 'react-router-dom';
 import { PageMapping, PageConfig, PageType } from '../pageConfigTypes';
 import { markByFilter, matchesFilter } from '../filterUtil';
 
-import { faFile, faCode, faRulerCombined } from '@fortawesome/free-solid-svg-icons';
+import { faFile, faCode, faRulerCombined, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { faReact, faSass, faJs } from '@fortawesome/free-brands-svg-icons';
 
 import './GalleryNav.scss';
 
-const PAGE_TYPE_TO_ICON_MAP: { [page in PageType]: JSX.Element } = {
-  'documentation': <NxFontAwesomeIcon icon={faFile} fixedWidth />,
-  'react': <NxFontAwesomeIcon icon={faReact} fixedWidth />,
-  'html': <NxFontAwesomeIcon icon={faCode} fixedWidth />,
-  'layout': <NxFontAwesomeIcon icon={faRulerCombined} fixedWidth />,
-  'sass': <NxFontAwesomeIcon icon={faSass} fixedWidth />,
-  'js': <NxFontAwesomeIcon icon={faJs} fixedWidth />
+const PAGE_TYPE_TO_ICON_MAP: { [page in PageType]: IconDefinition } = {
+  'documentation': faFile,
+  'react': faReact,
+  'html': faCode,
+  'layout': faRulerCombined,
+  'sass': faSass,
+  'js': faJs
 };
 
 const renderLinks = (filter?: string) =>
@@ -58,7 +58,11 @@ const renderLinks = (filter?: string) =>
                    activeClassName="selected">
             {
               entry
-                ? <span className="gallery-nav-link__icon">{PAGE_TYPE_TO_ICON_MAP[entry.type]}</span>
+                ? (
+                  <span className="gallery-nav-link__icon">
+                    <NxFontAwesomeIcon icon={PAGE_TYPE_TO_ICON_MAP[entry.type]} fixedWidth />
+                  </span>
+                )
                 : null
             }
             <span className="gallery-nav-link__label">
