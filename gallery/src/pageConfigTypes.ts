@@ -23,4 +23,4 @@ export interface PageContentDescription {
 }
 
 export type PageConfig = Record<string, PageMapping>;
-export type PageMapping = Record<string, ComponentType | PageContentDescription>;
+export type PageMapping = Record<string, PageContentDescription>;

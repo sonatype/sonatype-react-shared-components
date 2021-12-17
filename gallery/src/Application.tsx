@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ComponentType, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { mergeAll, values } from 'ramda';
@@ -13,7 +13,6 @@ import { mergeAll, values } from 'ramda';
 import 'core-js/features/array/includes';
 import queryString from 'query-string';
 
-import { PageMapping } from './pageConfigTypes';
 import pageConfig from './pageConfig';
 import PageHeader from './PageHeader/PageHeader';
 import GalleryNav from './GalleryNav/GalleryNav';
@@ -43,23 +42,14 @@ import NxGlobalSidebarFooterMinimalExample
 import NxGlobalSidebarFooterEmptyExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterEmptyExample';
 
-import { PageContentDescription } from './pageConfigTypes';
-
-const pageMappings: PageMapping = mergeAll(values(pageConfig));
-
-const isPageContentDescription = (value: unknown): value is PageContentDescription =>
-  typeof value === 'object'
-  && value !== null
-  && value.hasOwnProperty('type');
+const pageMappings = mergeAll(values(pageConfig));
 
 function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
   const pageName = match ? match.params.pageName : null,
       pageHeader = pageName || 'Home';
 
-  const Content: ComponentType = pageName
-    ? isPageContentDescription(pageMappings[pageName])
-      ? (pageMappings[pageName] as PageContentDescription).content
-      : pageMappings[pageName] as ComponentType
+  const Content = pageName && pageMappings[pageName]
+    ? pageMappings[pageName].content
     : Home;
 
   useEffect(function() {

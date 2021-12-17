@@ -31,7 +31,7 @@ import {
 import pageConfig from '../pageConfig';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { PageMapping, PageConfig, PageType, PageContentDescription } from '../pageConfigTypes';
+import { PageMapping, PageConfig, PageType } from '../pageConfigTypes';
 import { markByFilter, matchesFilter } from '../filterUtil';
 
 import { faFile, faCode, faRulerCombined } from '@fortawesome/free-solid-svg-icons';
@@ -48,12 +48,6 @@ const PAGE_TYPE_TO_ICON_MAP: { [page in PageType]: JSX.Element } = {
   'js': <NxFontAwesomeIcon icon={faJs} fixedWidth />
 };
 
-// Messy test
-const isPageContentDescription = (value: unknown): value is PageContentDescription =>
-  typeof value === 'object'
-  && value !== null
-  && value.hasOwnProperty('type');
-
 const renderLinks = (filter?: string) =>
   (entries: PageMapping) => Object
       .entries(entries)
@@ -63,7 +57,7 @@ const renderLinks = (filter?: string) =>
                    to={`/pages/${pageName}`}
                    activeClassName="selected">
             {
-              isPageContentDescription(entry)
+              entry
                 ? <span className="gallery-nav-link__icon">{PAGE_TYPE_TO_ICON_MAP[entry.type]}</span>
                 : null
             }
