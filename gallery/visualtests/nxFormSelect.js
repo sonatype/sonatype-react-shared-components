@@ -10,7 +10,8 @@ const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testU
 describe('nx-form-select', function() {
   const selector = '#nx-form-select-example .nx-form-select',
       overflowSelector = '#nx-form-select-overflow-example .nx-form-select',
-      disabledSelector = '#nx-form-select-disabled-example .nx-form-select';
+      disabledSelector = '#nx-form-select-disabled-example .nx-form-select',
+      widthSelector = '#nx-form-select-widths-examples .form-select-width-variants';
 
   beforeEach(async function() {
     await browser.url('#/pages/NxFormSelect');
@@ -28,7 +29,15 @@ describe('nx-form-select', function() {
     it('it looks right and text is truncated', simpleTest(overflowSelector));
   });
 
-  describe('Disabled NxFormSelect', function() {
+  describe('Short and Long Variants of NxFormSelect', function() {
+    beforeEach(async function() {
+      await browser.url('#/pages/NxFormSelect');
+    });
+
+    it('looks shorter and longer', simpleTest(widthSelector));
+  });
+
+  describe('Disabled nx-form-select', function() {
     beforeEach(async function() {
       await browser.url('#/pages/nx-form-select');
     });
