@@ -43,6 +43,12 @@ import NxTablePage from './components/NxTable/NxTablePage';
 import NxTabsPage from './components/NxTabs/NxTabsPage';
 import NxStatefulTabsPage from './components/NxStatefulTabs/NxStatefulTabsPage';
 import NxTreeViewPage from './components/NxTreeView/NxTreeViewPage';
+import NxTreeViewRadioSelectPage from './components/NxTreeViewRadioSelect/NxTreeViewRadioSelectPage';
+import NxStatefulTreeViewRadioSelectPage
+  from './components/NxStatefulTreeViewRadioSelect/NxStatefulTreeViewRadioSelectPage';
+import NxTreeViewMultiSelect from './components/NxTreeViewMultiSelect/NxTreeViewMultiSelectPage';
+import NxStatefulTreeViewMultiSelect
+  from './components/NxStatefulTreeViewMultiSelect/NxStatefulTreeViewMultiSelectPage';
 import NxTooltipPage from './components/NxTooltip/NxTooltipPage';
 import NxOverflowTooltipPage from './components/NxOverflowTooltip/NxOverflowTooltipPage';
 import NxFilterInputPage from './components/NxFilterInput/NxFilterInputPage';
@@ -233,7 +239,11 @@ const pageConfig: PageConfig = {
     Tooltip: { content: NxTooltipPage, type: 'react' },
     'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' },
     Tree: { content: NxTreePage, type: 'react' },
-    'Tree View': { content: NxTreeViewPage, type: 'react' }
+    'Tree View': { content: NxTreeViewPage, type: 'react' },
+    'Tree View Multi-Select': { content: NxTreeViewMultiSelect, type: 'react' },
+    'Stateful Tree View Multi-Select': { content: NxStatefulTreeViewMultiSelect, type: 'react' },
+    'Tree View Radio Select': { content: NxTreeViewRadioSelectPage, type: 'react' },
+    'Stateful Tree View Radio Select': { content: NxStatefulTreeViewRadioSelectPage, type: 'react' }
   },
   'Typography': {
     'Blockquote': { content: NxBlockquotePage, type: 'html' },
