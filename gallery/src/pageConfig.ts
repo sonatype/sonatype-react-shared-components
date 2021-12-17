@@ -263,15 +263,15 @@ const pageConfig: PageConfig = {
     'Table': { content: NxTableStylePage, type: 'html' }
   },
   'Mixins & Helpers': {
-    'Color Palettes': { content: ColorPalettePage, type: 'sass' },
+    'Color Palettes': { content: ColorPalettePage, type: 'css' },
     'Custom App Font Size': { content: NxFontSizePage, type: 'sass' },
     'Ellipsis Truncation': { content: NxTruncatePage, type: 'sass' },
-    'Clickable': { content: NxClickablePage, type: 'sass' },
+    'nx-clickable': { content: NxClickablePage, type: 'css' },
     'Container Helpers': { content: NxContainerHelpersPage, type: 'sass' },
-    'Scrollable': { content: NxScrollablePage, type: 'sass' },
-    'Viewport Sized': { content: NxViewportSizedPage, type: 'sass' },
+    'nx-scrollable': { content: NxScrollablePage, type: 'css' },
+    'nx-viewport-sized': { content: NxViewportSizedPage, type: 'css' },
     'Selectable Colors': { content: SelectableColorsPage, type: 'sass' },
-    'Style Variables': { content: CssVariablesPage, type: 'sass' }
+    'Style Variables': { content: CssVariablesPage, type: 'css' }
   },
   'JavaScript & TypeScript Utilities': {
     'TooltipConfigProps': { content: TooltipConfigPropsPage, type: 'js' },

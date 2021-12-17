@@ -12,7 +12,8 @@ export const PAGE_TYPES = [
   'react',
   'layout',
   'sass',
-  'js'
+  'js',
+  'css'
 ] as const;
 
 export type PageType = typeof PAGE_TYPES[number];

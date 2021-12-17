@@ -31,11 +31,11 @@ import {
 import pageConfig from '../pageConfig';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { PageMapping, PageConfig, PageType } from '../pageConfigTypes';
+import { PageMapping, PageConfig } from '../pageConfigTypes';
 import { markByFilter, matchesFilter } from '../filterUtil';
 
-import { faFile, faCode, faRulerCombined, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { faReact, faSass, faJs } from '@fortawesome/free-brands-svg-icons';
+import { faFile, faCode, faRulerCombined } from '@fortawesome/free-solid-svg-icons';
+import { faReact, faSass, faJs, faCss3 } from '@fortawesome/free-brands-svg-icons';
 
 import './GalleryNav.scss';
 
@@ -45,7 +45,8 @@ const PAGE_TYPE_TO_ICON_MAP = {
   'html': faCode,
   'layout': faRulerCombined,
   'sass': faSass,
-  'js': faJs
+  'js': faJs,
+  'css': faCss3
 };
 
 const renderLinks = (filter?: string) =>
