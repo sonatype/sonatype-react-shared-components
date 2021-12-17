@@ -167,7 +167,7 @@ const pageConfig: PageConfig = {
     'Segmented Button': { content: NxSegmentedButtonPage, type: 'react' },
     'Stateful Segmented Button': { content: NxStatefulSegmentedButtonPage, type: 'react' },
     'Close Button': { content: NxCloseButtonPage, type: 'react' },
-    'Drop down': { content: NxDropdownPage, type: 'react' },
+    'Dropdown': { content: NxDropdownPage, type: 'react' },
     'Stateful Dropdown': { content: NxStatefulDropdownPage, type: 'react' },
     'Icon Dropdown': { content: NxIconDropdownPage, type: 'react' },
     'Stateful Icon Dropdown': { content: NxStatefulIconDropdownPage, type: 'react' },
