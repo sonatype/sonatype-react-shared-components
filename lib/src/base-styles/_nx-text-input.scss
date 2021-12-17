@@ -122,8 +122,7 @@
   width: var(--nx-width-form-element-short);
 
   .nx-text-input__input {
-    // force the input to be the correct width, short width - l/r padding
-    max-width: calc(var(--nx-width-form-element-short) - 32px);
+    min-width: 0;
   }
 }
 
