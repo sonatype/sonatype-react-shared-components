@@ -120,6 +120,10 @@
 
 .nx-text-input--short {
   width: var(--nx-width-form-element-short);
+
+  .nx-text-input__input {
+    min-width: 0;
+  }
 }
 
 .nx-text-input--textarea {
