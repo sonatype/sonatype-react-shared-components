@@ -13,7 +13,8 @@ import NxFormSelectExample from './NxFormSelectExample';
 import NxFormSelectDisabledExample from './NxFormSelectDisabledExample';
 
 const sourceCode = require('./NxFormSelectExample?raw'),
-    disabledSourceCode = require('./NxFormSelectDisabledExample?raw');
+    disabledSourceCode = require('./NxFormSelectDisabledExample?raw'),
+    widthsSourceCode = require('./NxFormSelectWidthsExample.html');
 
 const NxFormSelectPage = () =>
   <>
@@ -43,6 +44,20 @@ const NxFormSelectPage = () =>
               Base class for a form <NxCode>&lt;select&gt;</NxCode>.
             </NxTable.Cell>
           </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>nx-form-select--short</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Directly on the <NxCode>nx-form-select</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>Short variant of <NxCode>nx-form-select</NxCode>.</NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>nx-form-select--long</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Directly on the <NxCode>nx-form-select</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>Long variant of <NxCode>nx-form-select</NxCode>.</NxTable.Cell>
+          </NxTable.Row>
         </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>
@@ -58,6 +73,12 @@ const NxFormSelectPage = () =>
                         liveExample={NxFormSelectDisabledExample}>
       Demonstrates a form <NxCode>&lt;select&gt;</NxCode> disabled state. Note that disabling
       is only supported via attribute, not class name.
+    </GalleryExampleTile>
+    <GalleryExampleTile title="Form Select Widths Example"
+                        id="nx-form-select-widths-example"
+                        codeExamples={widthsSourceCode}
+                        htmlExample={widthsSourceCode}>
+      Demonstrates the long and short <NxCode>&lt;select&gt;</NxCode> variants.
     </GalleryExampleTile>
   </>;
 
