@@ -39,7 +39,7 @@ import { faReact, faSass, faJs } from '@fortawesome/free-brands-svg-icons';
 
 import './GalleryNav.scss';
 
-const PAGE_TYPE_TO_ICON_MAP: { [page in PageType]: IconDefinition } = {
+const PAGE_TYPE_TO_ICON_MAP = {
   'documentation': faFile,
   'react': faReact,
   'html': faCode,
