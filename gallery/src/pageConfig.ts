@@ -263,23 +263,23 @@ const pageConfig: PageConfig = {
     'Table': { content: NxTableStylePage, type: 'html' }
   },
   'Mixins & Helpers': {
-    'Color Palettes': ColorPalettePage,
-    'Custom App Font Size': NxFontSizePage,
-    'Ellipsis Truncation': NxTruncatePage,
-    'Clickable': NxClickablePage,
-    'Container Helpers': NxContainerHelpersPage,
-    'Scrollable': NxScrollablePage,
-    'Viewport Sized': NxViewportSizedPage,
-    'Selectable Colors': SelectableColorsPage,
-    'Style Variables': CssVariablesPage
+    'Color Palettes': { content: ColorPalettePage, type: 'sass' },
+    'Custom App Font Size': { content: NxFontSizePage, type: 'sass' },
+    'Ellipsis Truncation': { content: NxTruncatePage, type: 'sass' },
+    'Clickable': { content: NxClickablePage, type: 'sass' },
+    'Container Helpers': { content: NxContainerHelpersPage, type: 'sass' },
+    'Scrollable': { content: NxScrollablePage, type: 'sass' },
+    'Viewport Sized': { content: NxViewportSizedPage, type: 'sass' },
+    'Selectable Colors': { content: SelectableColorsPage, type: 'sass' },
+    'Style Variables': { content: CssVariablesPage, type: 'sass' }
   },
   'JavaScript & TypeScript Utilities': {
-    'TooltipConfigProps': TooltipConfigPropsPage,
-    'Policy Threat Level Utils': PolicyThreatLevelUtilsPage,
-    'Validation Utils': ValidationUtilsPage,
-    'useToggle': UseTogglePage,
-    'IDUtils': IdUtilPage,
-    'withClass Higher-Order Component': WithClassPage
+    'TooltipConfigProps': { content: TooltipConfigPropsPage, type: 'js' },
+    'Policy Threat Level Utils': { content: PolicyThreatLevelUtilsPage, type: 'js' },
+    'Validation Utils': { content: ValidationUtilsPage, type: 'js' },
+    'useToggle': { content: UseTogglePage, type: 'js' },
+    'IDUtils': { content: IdUtilPage, type: 'js' },
+    'withClass Higher-Order Component': { content: WithClassPage, type: 'js' }
   },
   'Guidelines': {
     'Accessibility': { content: AccessibilityPage, type: 'documentation' },
