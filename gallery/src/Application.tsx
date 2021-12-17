@@ -48,9 +48,7 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
   const pageName = match ? match.params.pageName : null,
       pageHeader = pageName || 'Home';
 
-  const Content = pageName && pageMappings[pageName]
-    ? pageMappings[pageName].content
-    : Home;
+  const Content = pageName && pageMappings[pageName]?.content || Home;
 
   useEffect(function() {
     handleQueryParams(queryString.parse(location.search));
