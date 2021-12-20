@@ -58,15 +58,9 @@ const renderLinks = (filter?: string) =>
           <NavLink className="gallery-nav-link"
                    to={`/pages/${pageName}`}
                    activeClassName="selected">
-            {
-              entry
-                ? (
-                  <span className="gallery-nav-link__icon">
-                    <NxFontAwesomeIcon icon={PAGE_TYPE_TO_ICON_MAP[entry.type]} fixedWidth />
-                  </span>
-                )
-                : null
-            }
+            <span className="gallery-nav-link__icon">
+              <NxFontAwesomeIcon icon={PAGE_TYPE_TO_ICON_MAP[entry.type]} fixedWidth />
+            </span>
             <span className="gallery-nav-link__label">
               {markByFilter(filter, pageName)}
             </span>
