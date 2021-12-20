@@ -18,12 +18,12 @@ const NivoPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        Nivo
+        Nivo Line Chart
       </NxP>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
-                        defaultCheckeredBackground={true}
+                        defaultCheckeredBackground={false}
                         liveExample={NivoPageExample}
                         codeExamples={NivoPageExampleCode}>
       A simple example of an <NxCode>Nivo</NxCode>.
