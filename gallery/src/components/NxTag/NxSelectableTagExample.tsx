@@ -18,11 +18,11 @@ const tags: TagInfo[] = [
   { color: 'pink', value: 'Pink'},
   { color: 'blue', value: 'Blue' },
   { color: 'red', value: 'Red' },
-  { color: 'green', value: 'Green' },
+  { color: 'turquoise', value: 'Turquoise' },
   { color: 'orange', value: 'Orange' },
   { color: 'yellow', value: 'Yellow' },
-  { color: 'lime', value: 'Lime' },
-  { color: 'light-blue', value: 'Light Blue' }
+  { color: 'kiwi', value: 'Kiwi' },
+  { color: 'sky', value: 'Sky' }
 ];
 
 function NxSelectableTagExample() {
