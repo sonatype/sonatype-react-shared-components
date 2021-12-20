@@ -63,6 +63,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@nivo/core": "^0.75.0",
+    "@nivo/line": "^0.75.0",
     "@react-hook/debounce": "^4.0.0",
     "@sonatype/react-shared-components": "link:../lib/dist",
     "axios": "^0.21.1",

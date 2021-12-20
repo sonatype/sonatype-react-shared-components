@@ -6,6 +6,8 @@
  */
 import {PageConfig} from './pageConfigTypes';
 
+import NivoPage from './components/Nivo/NivoPage';
+
 import NxAlertPage from './styles/NxAlert/NxAlertPage';
 import NxButtonPage from './components/NxButton/NxButtonPage';
 import NxCheckboxPage from './components/NxCheckbox/NxCheckboxPage';
@@ -140,6 +142,9 @@ import NxStatefulCollapsibleRadioSelectPage
 import NxTreePage from './components/NxTree/NxTreePage';
 
 const pageConfig: PageConfig = {
+  'Nivo': {
+    Nivo: NivoPage
+  },
   'React Components': {
     NxAccordion: NxAccordionPage,
     NxStatefulAccordion: NxStatefulAccordionPage,
