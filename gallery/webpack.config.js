@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyModulesPlugin = require('copy-modules-webpack-plugin');
@@ -114,6 +115,9 @@ module.exports = function(env = { production: false }) {
       // than bundling them into the JavaScript
       new MiniCssExtractPlugin({
         filename: 'gallery.css'
+      }),
+      new webpack.EnvironmentPlugin({
+        'PX_API_KEY': ''
       }),
       ...productionPlugins
     ],
