@@ -68,7 +68,13 @@ export default function NxAccordionExample() {
                         precision: 'day',
                         useUTC: false
                       }}
+                      axisLeft={{
+                        legend: 'Number of Downloads',
+                        legendPosition: 'middle',
+                        legendOffset: -40
+                      }}
                       axisBottom={{
+                        legend: 'December 2021',
                         format: '%d',
                         legendOffset: 40,
                         legendPosition: 'middle'
