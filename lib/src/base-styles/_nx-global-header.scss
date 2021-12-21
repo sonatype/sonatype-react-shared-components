@@ -21,7 +21,7 @@
     @include nx-text-helpers.truncate-ellipsis;
     // The negative margins and added paddings are added to
     // fix the blue outline being hidden by overflow: hidden when focused.
-    margin: -4px var(--nx-spacing-8x) -4px -4px;
+    margin: 0 var(--nx-spacing-8x) 0 -4px;
     padding: var(--nx-spacing-base);
   }
 }
