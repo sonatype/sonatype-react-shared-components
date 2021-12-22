@@ -23,9 +23,7 @@ $-nx-scrollable-default-height: 400px;
   }
 
   &:hover {
-    color: var(--nx-color-link-hover);
-
-    .nx-code {
+    &, .nx-code {
       color: var(--nx-color-link-hover);
     }
   }
