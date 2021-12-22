@@ -18,7 +18,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
       const donutClasses = classnames('nx-binary-donut-chart', className);
 
       // _Not counting the borders_, the inner radius is defined as a percentage
-      // of the outer radius of the 30x30 viewbox, 1px on each side is border - the area that
+      // of the outer radius. Of the 30x30 viewbox, 1px on each side is border - the area that
       // the inner radius is relative to is actually 28x28 which is what the 14 and 7 here derive from
       const innerRadius = innerRadiusPercent == null ? 7 :
         (Math.min(100, Math.max(0, innerRadiusPercent)) / 100) * 14;
