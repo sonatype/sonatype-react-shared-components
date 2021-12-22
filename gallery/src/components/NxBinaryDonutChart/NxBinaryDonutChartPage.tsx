@@ -12,10 +12,14 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxBinaryDonutChartMinimalExample from './NxBinaryDonutChartMinimalExample';
 import NxBinaryDonutChartNoHoleExample from './NxBinaryDonutChartNoHoleExample';
 import NxBinaryDonutChartLargeHoleExample from './NxBinaryDonutChartLargeHoleExample';
+import NxBinaryDonutChartBackgroundColorExample from './NxBinaryDonutChartBackgroundColorExample';
+
+import './NxBinaryDonutChartBackgroundColorExample.scss';
 
 const nxBinaryDonutChartMinimalExampleCode = require('./NxBinaryDonutChartMinimalExample?raw');
 const nxBinaryDonutChartNoHoleExample = require('./NxBinaryDonutChartNoHoleExample?raw');
 const nxBinaryDonutChartLargeHoleExample = require('./NxBinaryDonutChartLargeHoleExample?raw');
+const nxBinaryDonutChartBackgroundColorExample = require('./NxBinaryDonutChartBackgroundColorExample?raw');
 
 const NxBinaryDonutChartPage = () =>
   <>
@@ -104,6 +108,15 @@ const NxBinaryDonutChartPage = () =>
                         codeExamples={nxBinaryDonutChartLargeHoleExample}
                         liveExample={NxBinaryDonutChartLargeHoleExample}>
       An example of a <NxCode>NxBinaryDonutChart</NxCode> with a large hole.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example on a different colored background"
+                        id="nx-binary-donut-chart-colored-background"
+                        codeExamples={nxBinaryDonutChartBackgroundColorExample}
+                        liveExample={NxBinaryDonutChartBackgroundColorExample}>
+      Examples of <NxCode>NxBinaryDonutChart</NxCode>s on containers that have background colors which match parts
+      of the chart. This example shows that the chart is still discernable in this case due to the white borders
+      on the inside and outside of the donut.
     </GalleryExampleTile>
   </>;
 
