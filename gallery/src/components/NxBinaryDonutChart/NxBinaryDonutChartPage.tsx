@@ -48,6 +48,10 @@ const NxBinaryDonutChartPage = () =>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
               The size of the hole in the donut, as a percentage of the donut's overall size.  The default value is 50.
+              The computation and use of this prop ignores the 1px white borders on the inside and outside of the donut.
+              That is, when the component is rendered at its default 30px width, a value of 50 on this prop corresponds
+              to 14px (<NxCode>((30px - (1px * 2)) * 50%)</NxCode>). That 14px is the radius of the inside of the actual
+              donut value arc and background, with the inner border being 1px further inside.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -56,10 +60,10 @@ const NxBinaryDonutChartPage = () =>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
               If the chart is not accompanied by visible text content that contains the same information that the chart
-              conveys, then the chart should have an <NxCode>aria-label</NxCode> attribute giving it
-              an accessible name which adequately describes its information for non-visual users. If the chart is
-              accompanied by a text description however, such a label would be redundant and the chart is considered
-              a presentational element.
+              conveys, then the chart should either be wrapped in a tooltip or have
+              an <NxCode>aria-label</NxCode> attribute giving it an accessible name which adequately describes its
+              information for non-visual users. If the chart is accompanied by a text description however, such a
+              label would be redundant and the chart is considered a presentational element.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
