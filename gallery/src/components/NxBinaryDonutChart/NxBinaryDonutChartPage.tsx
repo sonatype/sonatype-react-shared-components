@@ -111,7 +111,7 @@ const NxBinaryDonutChartPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example on a different colored background"
-                        id="nx-binary-donut-chart-colored-background"
+                        id="nx-binary-donut-chart-colored-background-example"
                         codeExamples={nxBinaryDonutChartBackgroundColorExample}
                         liveExample={NxBinaryDonutChartBackgroundColorExample}>
       Examples of <NxCode>NxBinaryDonutChart</NxCode>s on containers that have background colors which match parts
