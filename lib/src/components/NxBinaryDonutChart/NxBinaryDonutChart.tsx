@@ -21,9 +21,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
       // of the outer radius of the 30x30 viewbox, 1px on each side is border - the area that
       // the inner radius is relative to is actually 28x28 which is what the 14 and 7 here derive from
       const innerRadius = innerRadiusPercent == null ? 7 :
-        innerRadiusPercent < 0 ? 0 :
-        innerRadiusPercent > 100 ? 14 :
-        (innerRadiusPercent / 100) * 14;
+        (Math.min(100, Math.max(0, innerRadiusPercent)) / 100) * 14;
 
       const innerBorderRadius = innerRadius - 0.5;
       const donutWidth = 14 - innerRadius;
@@ -42,7 +40,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
           {/*
             * The first `M` and two `a`s below draw the outer border and the later ones draw the inner border.
             * The reason we need two `a`s for each is because svg gets confused trying to draw a full
-            * circle described with this syntax and just draw nothing. Each `a` is half the circle
+            * circle described with this syntax and just draws nothing. Each `a` is half the circle.
             */}
           <path className="nx-binary-donut-chart__background"
                 d={`M 0 -14.5
