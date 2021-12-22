@@ -46,9 +46,10 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
                 d={`M 0 -14.5
                       a 14.5 14.5 0 1 1 0 29
                       a 14.5 14.5 0 1 1 0 -29
-                    M 0 ${-innerBorderRadius}
-                      a ${innerBorderRadius} ${innerBorderRadius} 0 1 1 0 ${innerBorderRadius * 2}
-                      a ${innerBorderRadius} ${innerBorderRadius} 0 1 1 0 ${-innerBorderRadius * 2}`} />
+                    ${innerBorderRadius > 0 &&
+                      `M 0 ${-innerBorderRadius}
+                        a ${innerBorderRadius} ${innerBorderRadius} 0 1 1 0 ${innerBorderRadius * 2}
+                        a ${innerBorderRadius} ${innerBorderRadius} 0 1 1 0 ${-innerBorderRadius * 2}`}`} />
           { percent > 0 && percent < 100 &&
             <path className="nx-binary-donut-chart__arc"
                   d={`M 0 ${-arcR} A ${arcR} ${arcR} 0 ${largeArc} 1 ${arcEndX} ${arcEndY}`}
