@@ -110,7 +110,7 @@ dockerizedBuildPipeline(
       '''
     }
   },
-  archiveArtifacts: 'lib/dist/*.tgz,gallery/dist/**/*,gallery/test-results/**/*',
+  archiveArtifacts: 'lib/dist/*.tgz,gallery/dist/**/*',
   testResults: ['lib/junit.xml', 'gallery/test-results/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
@@ -122,7 +122,7 @@ dockerizedBuildPipeline(
   },
   onFailure: {
     githubStatusUpdate('failure')
-    archiveArtifacts()
+    archiveArtifacts(artifacts: 'gallery/test-results/**/*')
     sendEmailNotification(currentBuild, env,
         [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], null)
   }
