@@ -10,7 +10,8 @@ describe('nx-form-select', function() {
   const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxFormSelect');
   const selector = '#nx-form-select-example .nx-form-select',
       overflowSelector = '#nx-form-select-overflow-example .nx-form-select',
-      disabledSelector = '#nx-form-select-disabled-example .nx-form-select';
+      disabledSelector = '#nx-form-select-disabled-example .nx-form-select',
+      widthSelector = '#nx-form-select-widths-examples .form-select-width-variants';
 
 
   describe('Simple NxFormSelect', function() {
@@ -23,6 +24,12 @@ describe('nx-form-select', function() {
 
   describe('NxFormSelect with long overflowing text', function() {
     it('it looks right and text is truncated', simpleTest(overflowSelector));
+  });
+
+  describe('Short and Long Variants of NxFormSelect', function() {
+    const { simpleTest } = setupBrowser('#/pages/NxFormSelect');
+
+    it('looks shorter and longer', simpleTest(widthSelector));
   });
 
   describe('Disabled NxFormSelect', function() {

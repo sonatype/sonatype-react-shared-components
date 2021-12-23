@@ -43,7 +43,7 @@ const NxTagPage = () =>
             <NxTable.Cell>
               <NxTextLink href="#/pages/Selectable Colors">SelectableColor</NxTextLink>
               <br/>
-              ('light-blue' | 'purple' | 'pink' | 'blue' | 'red' | 'green' | 'orange' | 'yellow' | 'lime' | 'indigo')
+              ('sky' | 'purple' | 'pink' | 'blue' | 'red' | 'turquoise' | 'orange' | 'yellow' | 'kiwi' | 'indigo')
 
             </NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>

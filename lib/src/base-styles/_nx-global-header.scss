@@ -11,6 +11,7 @@
 .nx-global-header {
   align-items: center;
   background-color: var(--nx-swatch-white);
+  border-bottom: var(--nx-border-default);
   display: flex;
   grid-area: header; // see nx-page's grid-template
   height: 42px;
@@ -18,7 +19,10 @@
 
   .nx-back-button {
     @include nx-text-helpers.truncate-ellipsis;
-    margin: 0 var(--nx-spacing-8x) 0 0;
+    // The negative margins and added paddings are added to
+    // fix the blue outline being hidden by overflow: hidden when focused.
+    margin: 0 var(--nx-spacing-8x) 0 -4px;
+    padding: var(--nx-spacing-base);
   }
 }
 
