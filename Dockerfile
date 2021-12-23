@@ -15,4 +15,3 @@ RUN apt-get update && \
 RUN useradd -u 1002 -g 100 jenkins
 RUN mkdir -p /home/jenkins/.npm
 RUN chown -R jenkins /home/jenkins/
-USER jenkins
