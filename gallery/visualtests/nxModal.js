@@ -163,7 +163,11 @@ describe('NxModal', function() {
       }
 
       async function pressEsc() {
-        await getPage().keyboard.press('Escape');
+        const { keyboard } = getPage();
+
+        // NOTE: Using `press` instead of `down` and `up` causes errors here
+        await keyboard.down('Escape');
+        await keyboard.up('Escape');
       }
 
       expect(await isFocused(modal2CloseBtn)).toBe(true);
