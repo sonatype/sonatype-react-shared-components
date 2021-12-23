@@ -79,10 +79,7 @@ dockerizedBuildPipeline(
         cd gallery
         yarn install --registry "\${registry}"
 
-        # Configure chrome setuid sandbox
-        export CHROME_DEVEL_SANDBOX=\$(ls \$PWD/node_modules/puppeteer/.local-chromium/linux-*/chrome-linux/chrome_sandbox)
-        chown root:root \$CHROME_DEVEL_SANDBOX
-        chmod 4755 \$CHROME_DEVEL_SANDBOX
+        export CHROME_DEVEL_SANDBOX=/usr/lib/chromium/chrome-sandbox
 
         npm run test
         npm run build
