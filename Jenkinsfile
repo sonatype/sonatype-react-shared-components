@@ -79,7 +79,7 @@ dockerizedBuildPipeline(
         cd gallery
         yarn install --registry "\${registry}"
 
-        export CHROME_DEVEL_SANDBOX=\$PWD/node_modules/puppeteer/.local-chromium/linux-*/chrome-linux/chrome_sandbox
+        export CHROME_DEVEL_SANDBOX=\$(ls \$PWD/node_modules/puppeteer/.local-chromium/linux-*/chrome-linux/chrome_sandbox)
 
         npm run test
         npm run build
