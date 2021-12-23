@@ -25,7 +25,8 @@
     }
   }
 
-  &--critical {
+  &--critical,
+  &--none {
     color: var(--nx-swatch-white);
   }
 
