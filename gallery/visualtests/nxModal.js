@@ -165,33 +165,31 @@ describe('NxModal', function() {
       async function pressEsc() {
         const { keyboard } = getPage();
 
-        // NOTE: Using `press` instead of `down` and `up` causes errors here
-        await keyboard.down('Escape');
-        await keyboard.up('Escape');
+        await keyboard.press('Escape');
       }
 
       expect(await isFocused(modal2CloseBtn)).toBe(true);
 
       // close second modal
-      pressEsc();
+      await pressEsc();
 
       expect(await isInDocument(modal2)).toBe(false);
       expect(await isFocused(dropdownBtn)).toBe(true);
 
       // close dropdown menu
-      pressEsc();
+      await pressEsc();
 
       expect(await isInDocument(dropdownMenu)).toBe(false);
       expect(await isFocused(dropdownToggle)).toBe(true);
 
       // close first modal
-      pressEsc();
+      await pressEsc();
 
       expect(await isInDocument(modal1)).toBe(false);
       expect(await isFocused(customPanelBtn)).toBe(true);
 
       // close custom panel
-      pressEsc();
+      await pressEsc();
 
       expect(await isInDocument(customPanel)).toBe(false);
     });
