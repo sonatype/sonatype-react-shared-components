@@ -23,7 +23,16 @@ module.exports = {
     }
 
     beforeAll(async function() {
-      browser = await puppeteer.launch({ defaultViewport: { width: 1366, height: 3000 } });
+      browser = await puppeteer.launch({
+        defaultViewport: { width: 1366, height: 3000 },
+
+        // we trust the pages we'll be viewing, and this is needed to run in docker without hampering docker's own
+        // security configuration
+        args: [
+          'no-sandbox',
+          'disable-setuid-sandbox',
+        ]
+      });
       enableClipboardAccess(browser);
     });
 
