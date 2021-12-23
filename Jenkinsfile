@@ -122,6 +122,7 @@ dockerizedBuildPipeline(
   },
   onFailure: {
     githubStatusUpdate('failure')
+    archiveArtifacts()
     sendEmailNotification(currentBuild, env,
         [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], null)
   }
