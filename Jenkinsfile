@@ -110,7 +110,7 @@ dockerizedBuildPipeline(
       '''
     }
   },
-  archiveArtifacts: 'lib/dist/*.tgz,gallery/dist/**/*',
+  archiveArtifacts: 'lib/dist/*.tgz,gallery/dist/**/*,gallery/test-results/**/*',
   testResults: ['lib/junit.xml', 'gallery/test-results/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
