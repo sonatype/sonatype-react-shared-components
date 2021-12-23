@@ -82,8 +82,15 @@
   border: 1px solid var(--nx-swatch-pink-95);
   border-radius: 4px;
   color: var(--nx-swatch-grey-20);
-  padding: 1px;
+  // These paddings are added so the inline text matches the adjacent body text.
+  padding: 4px 1px 0 1px;
   white-space: nowrap;
+
+  // This padding is so the calculated height of the
+  // monospace inline text matches the adjacent body text.
+  .nx-text-link {
+    padding-top: 4px;
+  }
 }
 
 %nx-pre {

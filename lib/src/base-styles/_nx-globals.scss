@@ -43,7 +43,7 @@ $-nx-scrollable-default-height: 400px;
     border-radius: 1px;
     color: var(--nx-color-link-focus);
     outline: 1px solid var(--nx-color-interactive-border-focus);
-    outline-offset: 4px;
+    outline-offset: 1px;
 
     .nx-code {
       color: var(--nx-color-link-focus);
@@ -51,6 +51,7 @@ $-nx-scrollable-default-height: 400px;
   }
 
   .nx-icon.fa-external-link-alt {
+    margin-left: var(--nx-spacing-base);
     // Offsets the icon down to make it
     // more optically aligned vertically
     // to the middle.
