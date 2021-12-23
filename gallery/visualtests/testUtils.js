@@ -29,8 +29,8 @@ module.exports = {
         // we trust the pages we'll be viewing, and this is needed to run in docker without hampering docker's own
         // security configuration
         args: [
-          'no-sandbox',
-          'disable-setuid-sandbox',
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
         ]
       });
       enableClipboardAccess(browser);
