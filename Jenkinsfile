@@ -79,7 +79,7 @@ dockerizedBuildPipeline(
         cd gallery
         yarn install --registry "\${registry}"
 
-        export CHROME_DEVEL_SANDBOX=/usr/lib/chromium/chrome-sandbox
+        #export CHROME_DEVEL_SANDBOX=/usr/lib/chromium/chrome-sandbox
 
         npm run test
         npm run build
