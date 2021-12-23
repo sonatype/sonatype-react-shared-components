@@ -28,14 +28,6 @@ $-nx-scrollable-default-height: 400px;
     }
   }
 
-  &:active {
-    color: var(--nx-color-link-active);
-
-    .nx-code {
-      color: var(--nx-color-link-active);
-    }
-  }
-
   &:focus {
     // outline-offset scales the border-radius so this
     // was changed to 1px to get it visually close to
@@ -47,6 +39,14 @@ $-nx-scrollable-default-height: 400px;
 
     .nx-code {
       color: var(--nx-color-link-focus);
+    }
+  }
+
+  &:active {
+    color: var(--nx-color-link-active);
+
+    .nx-code {
+      color: var(--nx-color-link-active);
     }
   }
 
