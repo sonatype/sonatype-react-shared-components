@@ -8,7 +8,7 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxGlobalHeader', function() {
   describe('with full content', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderFullExample');
+    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderFullExample', false);
 
     it('looks right', async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
@@ -17,7 +17,7 @@ describe('NxGlobalHeader', function() {
   });
 
   describe('without action bar', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderNoActionsExample');
+    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderNoActionsExample', false);
 
     it('looks right', async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
@@ -26,7 +26,7 @@ describe('NxGlobalHeader', function() {
   });
 
   describe('without back button', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderNoBackButtonExample');
+    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderNoBackButtonExample', false);
 
     it('looks right', async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
@@ -35,7 +35,7 @@ describe('NxGlobalHeader', function() {
   });
 
   describe('when empty', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderEmptyExample');
+    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderEmptyExample', false);
 
     it('looks right when empty', async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });

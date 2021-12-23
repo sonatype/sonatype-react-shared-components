@@ -10,7 +10,8 @@ describe('Page Layout', function() {
 
   function testLoadWrapper(thingsToSee, url) {
     describe('with ' + thingsToSee, function() {
-      const { checkFullPageScreenshot, getPage, waitForSelectors, disableLoadingSpinnerAnimation } = setupBrowser(url);
+      const { checkFullPageScreenshot, getPage, waitForSelectors, disableLoadingSpinnerAnimation } =
+          setupBrowser(url, false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -33,7 +34,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/pageScrolling/LegacySidebarSystemNoticeLayout');
+      } = setupBrowser('#/pageLayouts/pageScrolling/LegacySidebarSystemNoticeLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -48,7 +49,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/pageScrolling/LegacySidebarLayout');
+      } = setupBrowser('#/pageLayouts/pageScrolling/LegacySidebarLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -63,7 +64,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/pageScrolling/LegacySystemNoticeLayout');
+      } = setupBrowser('#/pageLayouts/pageScrolling/LegacySystemNoticeLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -78,7 +79,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/pageScrolling/LegacyLayout');
+      } = setupBrowser('#/pageLayouts/pageScrolling/LegacyLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -93,7 +94,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/LegacySidebarSystemNoticeLayout');
+      } = setupBrowser('#/pageLayouts/LegacySidebarSystemNoticeLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -108,7 +109,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/LegacySidebarLayout');
+      } = setupBrowser('#/pageLayouts/LegacySidebarLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -123,7 +124,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/LegacySystemNoticeLayout');
+      } = setupBrowser('#/pageLayouts/LegacySystemNoticeLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -148,7 +149,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSystemNoticeSidebarLayout');
+      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSystemNoticeSidebarLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -163,7 +164,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSidebarLayout');
+      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSidebarLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -178,7 +179,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSystemNoticeLayout');
+      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSystemNoticeLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -193,7 +194,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderLayout');
+      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -208,7 +209,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/GlobalSidebarSystemNoticeSidebarLayout');
+      } = setupBrowser('#/pageLayouts/GlobalSidebarSystemNoticeSidebarLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -223,7 +224,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/GlobalSidebarSidebarLayout');
+      } = setupBrowser('#/pageLayouts/GlobalSidebarSidebarLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -238,7 +239,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/GlobalSidebarSystemNoticeLayout');
+      } = setupBrowser('#/pageLayouts/GlobalSidebarSystemNoticeLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -253,7 +254,7 @@ describe('Page Layout', function() {
       const {
         checkFullPageScreenshot,
         getPage
-      } = setupBrowser('#/pageLayouts/GlobalSidebarLayout');
+      } = setupBrowser('#/pageLayouts/GlobalSidebarLayout', false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });

@@ -10,7 +10,7 @@ describe('NxGlobalSidebarFooter', function() {
   // Full examples of this component are captured by NxGlobalSidebar
 
   describe('minimal layout', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalSidebarFooterMinimalExample');
+    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalSidebarFooterMinimalExample', false);
 
     beforeEach(async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
@@ -22,7 +22,7 @@ describe('NxGlobalSidebarFooter', function() {
   });
 
   describe('when empty', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalSidebarFooterEmptyExample');
+    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalSidebarFooterEmptyExample', false);
 
     beforeEach(async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });

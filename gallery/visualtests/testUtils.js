@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
 const pageUrl = `file://${__dirname}/../dist/index.html`;
 
 module.exports = {
-  setupBrowser(pageFragmentIdentifier) {
+  setupBrowser(pageFragmentIdentifier, ignoreVersionNumber = true) {
     let browser, page;
 
     async function enableClipboardAccess(browser) {
@@ -20,6 +20,11 @@ module.exports = {
         origin: pageUrl,
         permissions: ['clipboardReadWrite', 'clipboardSanitizedWrite'],
       });
+    }
+
+    async function hideVersionNumber() {
+      const [versionEl] = await waitAndGetElements('.gallery-page-header__version');
+      await versionEl.evaluate(el => { el.style.visibility = 'hidden'; });
     }
 
     beforeAll(async function() {
@@ -35,7 +40,7 @@ module.exports = {
           '--font-render-hinting=none'
         ]
       });
-      enableClipboardAccess(browser);
+      await enableClipboardAccess(browser);
     });
 
     afterEach(async function() {
@@ -49,6 +54,11 @@ module.exports = {
     beforeEach(async function() {
       page = await browser.newPage();
       await page.goto(pageUrl + pageFragmentIdentifier);
+
+      if (ignoreVersionNumber) {
+        await hideVersionNumber();
+      }
+
       await page.mouse.move(0, 0);
     });
 

@@ -8,7 +8,7 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxSystemNotice', function() {
   describe('with global sidebar and multiple notices', function() {
-    const { checkFullPageScreenshot, getPage } = setupBrowser('#/NxSystemNoticeMultipleExample');
+    const { checkFullPageScreenshot, getPage } = setupBrowser('#/NxSystemNoticeMultipleExample', false);
 
     beforeEach(async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
@@ -20,7 +20,7 @@ describe('NxSystemNotice', function() {
   });
 
   describe('with traditional page layout', function() {
-    const { checkFullPageScreenshot, getPage } = setupBrowser('#/NxSystemNoticeTraditionalPageExample');
+    const { checkFullPageScreenshot, getPage } = setupBrowser('#/NxSystemNoticeTraditionalPageExample', false);
 
     beforeEach(async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
