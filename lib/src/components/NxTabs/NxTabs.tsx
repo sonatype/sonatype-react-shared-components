@@ -30,7 +30,9 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
     return null;
   }
 
-  const rootId = id || 'nx-tabs-' + useMemo(() => tabId++, []);
+  const memoId = 'nx-tabs-' + useMemo(() => tabId++, []);
+
+  const rootId = id || memoId;
 
   const clonedTabList = cloneElement(tabList, {
     children: Children.toArray(tabList.props.children).map((tab, index) => {
