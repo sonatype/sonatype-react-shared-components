@@ -32,20 +32,17 @@ $-nx-scrollable-default-height: 400px;
     // outline-offset scales the border-radius so this
     // was changed to 1px to get it visually close to
     // var(--nx-border-radius) or (6px).
-    border-radius: 1px;
-    color: var(--nx-color-link-focus);
+    border-radius: 4px;
     outline: 1px solid var(--nx-color-interactive-border-focus);
     outline-offset: 1px;
 
-    .nx-code {
+    &, .nx-code {
       color: var(--nx-color-link-focus);
     }
   }
 
   &:active {
-    color: var(--nx-color-link-active);
-
-    .nx-code {
+    &, .nx-code {
       color: var(--nx-color-link-active);
     }
   }
