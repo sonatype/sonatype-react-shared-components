@@ -26,4 +26,8 @@ describe('NxBinaryDonutChart', function() {
     it('looks right', simpleTest(simpleDonutSelector));
   });
 
+  describe('NxBinaryDonutChart on colored backgrounds', function() {
+    const simpleDonutSelector = '#nx-binary-donut-chart-colored-background-example .gallery-example-live';
+    it('has visible borders', simpleTest(simpleDonutSelector));
+  });
 });
