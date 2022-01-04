@@ -35,7 +35,7 @@ interface GalleryExampleTileProps extends GalleryBaseProps {
   htmlExample?: string;
   codeExamples: StringOrCodeExampleProps | StringOrCodeExampleProps[];
   defaultCheckeredBackground?: boolean;
-  collapseCodeExample?: boolean;
+  uncollapseCodeExample?: boolean;
 }
 
 // Component for a simple nx-tile with a specified title and contents
@@ -79,7 +79,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
           htmlExample,
           codeExamples,
           defaultCheckeredBackground,
-          collapseCodeExample
+          uncollapseCodeExample
         } = props,
 
         [checkeredBackground, toggleCheckeredBackground] = useToggle(defaultCheckeredBackground || false),
@@ -120,7 +120,8 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
           }
         </NxTile.Content>
 
-        { collapseCodeExample ?
+        { uncollapseCodeExample ?
+          <NxTile.Content>{codeExampleElements}</NxTile.Content> :
           <NxTile.Content className="nx-tile-content--accordion-container">
             <NxStatefulAccordion>
               <NxAccordion.Header>
@@ -128,8 +129,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
               </NxAccordion.Header>
               {codeExampleElements}
             </NxStatefulAccordion>
-          </NxTile.Content> :
-          <NxTile.Content>{codeExampleElements}</NxTile.Content>
+          </NxTile.Content>
         }
       </GalleryTile>
     );
