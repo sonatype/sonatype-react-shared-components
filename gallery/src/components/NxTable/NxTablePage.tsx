@@ -50,10 +50,82 @@ const paginationCodeExamples = [
 export default function NxTablePage() {
   return (
     <>
-      <GalleryDescriptionTile>
-        <NxP>
-          A set of React components which encapsulate and assist with the styles for HTML tables.
-        </NxP>
+      <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId}>
+        <NxTabList aria-label="Table Component Examples">
+          <NxTab>Usage</NxTab>
+          <NxTab>React Examples</NxTab>
+          <NxTab>HTML Only Example</NxTab>
+        </NxTabList>
+        <NxTabPanel>
+          <GalleryDescriptionTile>
+            <NxP>
+              A React component and basic HTML styles are availble which encapsulate and assist with the styles for HTML
+              tables.
+            </NxP>
+            <NxP>
+              For guidance on the construction of a scrolling table, see the scrolling example on
+              the <NxCode>nx-table-container</NxCode> HTML element page.
+            </NxP>
+            <h2 className="nx-h2">Guidelines</h2>
+            <h3 className="nx-h3"> When to use:</h3>
+            <ul className="nx-list nx-list--bulleted">
+              <li className="nx-list__item">convenience store shrine beef noodles fluidity boy voodoo god</li>
+              <li className="nx-list__item">human knife skyscraper paranoid nodal point</li>
+              <li className="nx-list__item">Shibuya sentient corporation rifle</li>
+            </ul>
+            <h3 className="nx-h3">When not to use:</h3>
+            <ul className="nx-list nx-list--bulleted">
+              <li className="nx-list__item">
+                urban boat hotdog dead. systema rain shrine tattoo bomb BASE jump human
+              </li>
+              <li className="nx-list__item">
+                stimulate industrial grade woman systemic footage media sensory.
+              </li>
+              <li className="nx-list__item">
+                office computer papier-mache -space range-rover uplink dead.
+              </li>
+              <li className="nx-list__item">
+                city sign plastic gang math- wristwatch industrial grade
+              </li>
+              <li className="nx-list__item">
+                film drone advert tank-traps DIY monofilament industrial grade. office car kanji cartel monofilament
+              </li>
+            </ul>
+            <NxTile.Subsection>
+              <NxTile.SubsectionHeader>
+                <NxH3>NxTable Props and Classes</NxH3>
+              </NxTile.SubsectionHeader>
+              <NxP>
+                The top-level component to use when displaying tables of data.
+                It can have <NxCode>NxTable.Head</NxCode> and
+                {' '}<NxCode>NxTable.Body</NxCode> components as children.
+              </NxP>
+              <NxTable>
+                <NxTable.Head>
+                  <NxTable.Row>
+                    <NxTable.Cell>Prop</NxTable.Cell>
+                    <NxTable.Cell>Type</NxTable.Cell>
+                    <NxTable.Cell>Required</NxTable.Cell>
+                    <NxTable.Cell>Details</NxTable.Cell>
+                  </NxTable.Row>
+                </NxTable.Head>
+                <NxTable.Body>
+                  <NxTable.Row>
+                    <NxTable.Cell>HTML <NxCode>&lt;table&gt;</NxCode> Attributes</NxTable.Cell>
+                    <NxTable.Cell>
+                      <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/table">
+                        HTML table Attributes
+                      </NxTextLink>
+                    </NxTable.Cell>
+                    <NxTable.Cell>No</NxTable.Cell>
+                    <NxTable.Cell>
+                      <NxCode>NxTable</NxCode> supports any HTML attribute that's normally
+                      supported by <NxCode>&lt;table&gt;</NxCode>.
+                    </NxTable.Cell>
+                  </NxTable.Row>
+                </NxTable.Body>
+              </NxTable>
+            </NxTile.Subsection>
 
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
