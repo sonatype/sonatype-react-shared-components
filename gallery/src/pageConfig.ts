@@ -141,7 +141,6 @@ import NxTreePage from './components/NxTree/NxTreePage';
 const pageConfig: PageConfig = {
   'React Components': {
     NxAccordion: NxAccordionPage,
-    NxStatefulAccordion: NxStatefulAccordionPage,
     NxAlert: NxAlertComponentsPage,
     NxStatefulAlert: NxStatefulAlertComponentsPage,
     NxBackButton: NxBackButtonPage,

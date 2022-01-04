@@ -50,7 +50,7 @@ export default function NxAccordionPage() {
               NxAccordion renders a panel with an always-visible header and a collapsible/expandable body section.
               This is analogous to the HTML 5 <NxCode>&lt;details&gt;</NxCode> element (which it is
               implemented on top of). There are three related components: <NxCode>NxAccordion</NxCode> itself,
-              <NxCode>NxAccordion.Header</NxCode> which represents the header content, and
+              {' '}<NxCode>NxAccordion.Header</NxCode> which represents the header content, and
               {' '}<NxCode>NxAccordion.Title</NxCode> which is a convenience component for the header title. All other
               children of <NxCode>NxAccordion</NxCode> aside from
               the <NxCode>Header</NxCode> and the <NxCode>Title</NxCode> are rendered in the collapsible section.
@@ -77,14 +77,14 @@ export default function NxAccordionPage() {
             <NxList bulleted>
               <NxList.Item>
                 Displaying critical system information or a primary action to be taken on the page. (for example,
-                <a href="/components/alert">alerts</a>, confirmation or cancellation buttons).
+                {' '}<a href="/components/alert">alerts</a>, confirmation or cancellation buttons).
               </NxList.Item>
               <NxList.Item>
                 Displaying navigation elements such as <a href="/components/tabs">tabs</a>.
               </NxList.Item>
               <NxList.Item>
                 Displaying links pointing to sections of the same page, instead use a
-                <a href="/components/list">list</a>.
+                {' '}<a href="/components/list">list</a>.
               </NxList.Item>
               <NxList.Item>
                 Creating hierarchy levels by nesting them within each other. If you need to add hierarchy to the
