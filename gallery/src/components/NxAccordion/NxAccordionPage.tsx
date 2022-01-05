@@ -168,6 +168,9 @@ const NxAccordionPage = () =>
                         liveExample={NxAccordionWithNxListExample}
                         codeExamples={NxAccordionWithNxListCode}>
       An example of an <NxCode>NxAccordion</NxCode> with nested <NxCode>NxList</NxCode>.
+      A special styling is applied to <NxCode>NxList</NxCode> when it is the first child nested
+      inside <NxCode>NxAccordion</NxCode>. The border and the top padding are removed
+      so it looks more unified with the Accordion.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with optional elements"
