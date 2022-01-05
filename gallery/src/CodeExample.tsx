@@ -33,7 +33,7 @@ const CodeExample: FunctionComponent<Props> =
       <section className="gallery-example-code">
         { language &&
           <h3 className="nx-h3 nx-tile__section-header">
-            Code Snippet ({language.toUpperCase()}):
+            {language.toUpperCase()}:
           </h3>
         }
         <SyntaxHighlighter language={language || 'tsx'} style={atomDark}>
