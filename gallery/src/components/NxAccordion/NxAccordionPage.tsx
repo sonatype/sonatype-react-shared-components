@@ -12,10 +12,12 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxAccordionSimpleExample from './NxAccordionExample';
 import NxAccordionComplexExample from './NxAccordionComplexExample';
 import NxAccordionTertiaryButtonExample from './NxAccordionTertiaryButtonExample';
+import NxAccordionWithNxListExample from './NxAccordionWithNxListExample';
 
 const NxAccordionSimpleCode = require('./NxAccordionExample?raw'),
     NxAccordionComplexCode = require('./NxAccordionComplexExample?raw'),
-    NxAccordionTertiaryButtonCode = require('./NxAccordionTertiaryButtonExample?raw');
+    NxAccordionTertiaryButtonCode = require('./NxAccordionTertiaryButtonExample?raw'),
+    NxAccordionWithNxListCode = require('./NxAccordionWithNxListExample?raw');
 
 const NxAccordionPage = () =>
   <>
@@ -158,6 +160,14 @@ const NxAccordionPage = () =>
                         liveExample={NxAccordionSimpleExample}
                         codeExamples={NxAccordionSimpleCode}>
       A simple example of an <NxCode>NxAccordion</NxCode>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with nested NxList"
+                        id="nx-accordion-nested-nx-list-example"
+                        defaultCheckeredBackground={true}
+                        liveExample={NxAccordionWithNxListExample}
+                        codeExamples={NxAccordionWithNxListCode}>
+      An example of an <NxCode>NxAccordion</NxCode> with nested <NxCode>NxList</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with optional elements"
