@@ -7,8 +7,12 @@
 const { configureToMatchImageSnapshot } = require('jest-image-snapshot');
 const path = require('path');
 
+// To try to mitigate flaky tests due to blinking text carets and the like
+jest.retryTimes(3);
+
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
-  customDiffDir: path.join(__dirname, 'test-results')
+  customDiffDir: path.join(__dirname, 'test-results'),
+  customSnapshotIdentifier: ({ defaultIdentifier }) => defaultIdentifier
 });
 
 expect.extend({ toMatchImageSnapshot });

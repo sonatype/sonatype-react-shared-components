@@ -15,7 +15,6 @@ describe('Page Layout', function() {
         getPage,
         waitForSelectors,
         disableLoadingSpinnerAnimation,
-        customSnapshotIdentifier
       } = setupBrowser(url, false);
 
       beforeEach(async function() {
@@ -25,11 +24,11 @@ describe('Page Layout', function() {
       it('looks right', async function() {
         await disableLoadingSpinnerAnimation();
         let screenshot = await getPage().screenshot();
-        expect(screenshot).toMatchImageSnapshot({ customSnapshotIdentifier });
+        expect(screenshot).toMatchImageSnapshot();
 
         await waitForSelectors('.nx-alert');
         screenshot = await getPage().screenshot();
-        expect(screenshot).toMatchImageSnapshot({ customSnapshotIdentifier });
+        expect(screenshot).toMatchImageSnapshot();
       });
     });
   }
