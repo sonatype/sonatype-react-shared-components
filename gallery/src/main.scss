@@ -6,6 +6,11 @@
  */
 @use 'sass:math';
 
+@font-face {
+  font-family: "Inconsolata";
+  src: url("assets/fonts/Inconsolata-Regular.ttf") format("truetype");
+}
+
 .gallery-example-section {
   margin: 15px 0;
 }
@@ -13,12 +18,6 @@
 .gallery-counter-example-container {
   margin: 8px 0;
   width: 400px;
-}
-
-.gallery-example {
-  pre {
-    font-size: var(--nx-font-size-s);
-  }
 }
 
 .gallery-example-live {
