@@ -8,6 +8,9 @@ const puppeteer = require('puppeteer');
 
 const pageUrl = `file://${__dirname}/../dist/index.html`;
 
+// To try to mitigate flaky tests due to blinking text carets and the like
+jest.retryTimes(3);
+
 module.exports = {
   setupBrowser(pageFragmentIdentifier, ignoreVersionNumber = true) {
     let browser, page;
@@ -89,6 +92,11 @@ module.exports = {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
+    // This is required for all calls to toMatchImageSnapshot since we are using jest.retryTimes
+    function customSnapshotIdentifier({ defaultIdentifier }) {
+      return defaultIdentifier;
+    }
+
     async function checkScreenshot(element, customWidth, customHeight) {
       let image;
       if (customHeight || customWidth) {
@@ -109,7 +117,7 @@ module.exports = {
         image = await element.screenshot();
       }
 
-      expect(image).toMatchImageSnapshot();
+      expect(image).toMatchImageSnapshot({ customSnapshotIdentifier });
     }
 
     async function checkScreenshotCoordinates(x, y, width, height) {
@@ -124,12 +132,12 @@ module.exports = {
             }
           });
 
-      expect(image).toMatchImageSnapshot();
+      expect(image).toMatchImageSnapshot({ customSnapshotIdentifier });
     }
 
     async function checkFullPageScreenshot() {
       const screenshot = await page.screenshot();
-      expect(screenshot).toMatchImageSnapshot();
+      expect(screenshot).toMatchImageSnapshot({ customSnapshotIdentifier });
     }
 
     async function dismissResultingDialog(action, waitTime) {
@@ -176,7 +184,7 @@ module.exports = {
       checkScreenshot,
       checkFullPageScreenshot,
       checkScreenshotCoordinates,
-
+      customSnapshotIdentifier,
 
       simpleTest(selector) {
         return async function() {

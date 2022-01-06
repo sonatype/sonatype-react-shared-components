@@ -10,8 +10,13 @@ describe('Page Layout', function() {
 
   function testLoadWrapper(thingsToSee, url) {
     describe('with ' + thingsToSee, function() {
-      const { checkFullPageScreenshot, getPage, waitForSelectors, disableLoadingSpinnerAnimation } =
-          setupBrowser(url, false);
+      const {
+        checkFullPageScreenshot,
+        getPage,
+        waitForSelectors,
+        disableLoadingSpinnerAnimation,
+        customSnapshotIdentifier
+      } = setupBrowser(url, false);
 
       beforeEach(async function() {
         await getPage().setViewport({ width: 1366, height: 1000 });
@@ -20,11 +25,11 @@ describe('Page Layout', function() {
       it('looks right', async function() {
         await disableLoadingSpinnerAnimation();
         let screenshot = await getPage().screenshot();
-        expect(screenshot).toMatchImageSnapshot('loading');
+        expect(screenshot).toMatchImageSnapshot({ customSnapshotIdentifier });
 
         await waitForSelectors('.nx-alert');
         screenshot = await getPage().screenshot();
-        expect(screenshot).toMatchImageSnapshot('error');
+        expect(screenshot).toMatchImageSnapshot({ customSnapshotIdentifier });
       });
     });
   }
