@@ -56,14 +56,19 @@ export default function NxAccordionPage() {
               Note that this component is stateless – its open state must be tracked externally.
               See <NxCode>NxStatefulAccordion</NxCode> for a version which tracks its own open state.
             </NxP>
-            <NxH3>Stateful Accordion</NxH3>
-            <NxP>
-              <NxCode>NxStatefulAccordion</NxCode> is a wrapper
-              around <NxCode>NxAccordion</NxCode> which tracks its own toggle state. It accepts
-              the same props as <NxCode>NxAccordion</NxCode>, except that instead
-              of <NxCode>open</NxCode>, it accepts <NxCode>defaultOpen</NxCode> which
-              provides the initial toggle state.
-            </NxP>
+            <NxTile.Subsection>
+              <NxTile.SubsectionHeader>
+                <NxH3>Stateful Accordion</NxH3>
+              </NxTile.SubsectionHeader>
+              <NxP>
+                <NxCode>NxStatefulAccordion</NxCode> is a wrapper
+                around <NxCode>NxAccordion</NxCode> which tracks its own toggle state. It accepts
+                the same props as <NxCode>NxAccordion</NxCode>, except that instead
+                of <NxCode>open</NxCode>, it accepts <NxCode>defaultOpen</NxCode> which
+                provides the initial toggle state.
+              </NxP>
+            </NxTile.Subsection>
+
             <NxTile.Subsection>
               <NxTile.SubsectionHeader>
                 <NxH3>NxAccordion</NxH3>
@@ -84,7 +89,6 @@ export default function NxAccordionPage() {
                     <NxTable.Cell>No</NxTable.Cell>
                     <NxTable.Cell>
                       A function which gets called when the accordion collapse/expand state is toggled.
-
                       <NxInfoAlert>
                         Deprecated behavior: the onToggle callback does actually get passed a value; it gets the
                         presumed new value of the open state. However with the introduction of
@@ -119,6 +123,7 @@ export default function NxAccordionPage() {
                 </NxTable.Body>
               </NxTable>
             </NxTile.Subsection>
+
             <NxTile.Subsection>
               <NxTile.SubsectionHeader>
                 <NxH3>NxAccordion.Header</NxH3>
@@ -128,6 +133,7 @@ export default function NxAccordionPage() {
                 HTML <NxCode>&lt;summary&gt;</NxCode> attributes.
               </NxP>
             </NxTile.Subsection>
+
             <NxTile.Subsection>
               <NxTile.SubsectionHeader>
                 <NxH3>NxAccordion.Title</NxH3>
@@ -147,6 +153,7 @@ export default function NxAccordionPage() {
                 </NxP>
               </NxTile.SubsectionHeader>
             </NxTile.Subsection>
+
             <NxTile.Subsection>
               <NxTile.SubsectionHeader>
                 <NxH3>Helper Classes</NxH3>
@@ -185,6 +192,7 @@ export default function NxAccordionPage() {
             </NxTile.Subsection>
           </GalleryDescriptionTile>
         </NxTabPanel>
+
         <NxTabPanel>
           <GalleryExampleTile title="Simple Example"
                               defaultCheckeredBackground={true}

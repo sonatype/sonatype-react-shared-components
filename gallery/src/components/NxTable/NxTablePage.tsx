@@ -112,31 +112,6 @@ export default function NxTablePage() {
               For guidance on the construction of a scrolling table, see the scrolling example on
               the <NxCode>nx-table-container</NxCode> HTML element page.
             </NxP>
-            <h2 className="nx-h2">Guidelines</h2>
-            <h3 className="nx-h3"> When to use:</h3>
-            <ul className="nx-list nx-list--bulleted">
-              <li className="nx-list__item">convenience store shrine beef noodles fluidity boy voodoo god</li>
-              <li className="nx-list__item">human knife skyscraper paranoid nodal point</li>
-              <li className="nx-list__item">Shibuya sentient corporation rifle</li>
-            </ul>
-            <h3 className="nx-h3">When not to use:</h3>
-            <ul className="nx-list nx-list--bulleted">
-              <li className="nx-list__item">
-                urban boat hotdog dead. systema rain shrine tattoo bomb BASE jump human
-              </li>
-              <li className="nx-list__item">
-                stimulate industrial grade woman systemic footage media sensory.
-              </li>
-              <li className="nx-list__item">
-                office computer papier-mache -space range-rover uplink dead.
-              </li>
-              <li className="nx-list__item">
-                city sign plastic gang math- wristwatch industrial grade
-              </li>
-              <li className="nx-list__item">
-                film drone advert tank-traps DIY monofilament industrial grade. office car kanji cartel monofilament
-              </li>
-            </ul>
             <NxTile.Subsection>
               <NxTile.SubsectionHeader>
                 <NxH3>NxTable Props and Classes</NxH3>
@@ -384,7 +359,6 @@ export default function NxTablePage() {
                 Equivalent to the <NxCode>&lt;th&gt;</NxCode> or
                 {' '}<NxCode>&lt;td&gt;</NxCode> element.
               </NxP>
-
               <NxTable>
                 <NxTable.Head>
                   <NxTable.Row>
@@ -506,8 +480,8 @@ export default function NxTablePage() {
                     <NxTable.Cell><NxCode>.nx-table--clickable</NxCode></NxTable.Cell>
                     <NxTable.Cell>Modifier of <NxCode>.nx-table</NxCode></NxTable.Cell>
                     <NxTable.Cell>
-                      A "clickable" table is one where the table rows accept a click event and (usually) navigate to another
-                      view.
+                      A "clickable" table is one where the table rows accept a click event and (usually) navigate to
+                      another view.
                     </NxTable.Cell>
                   </NxTable.Row>
                   <NxTable.Row>
@@ -570,10 +544,10 @@ export default function NxTablePage() {
                     <NxTable.Cell><NxCode>.nx-cell--meta-info</NxCode></NxTable.Cell>
                     <NxTable.Cell>Modifier of <NxCode>.nx-cell</NxCode></NxTable.Cell>
                     <NxTable.Cell>
-                      Applied to table cells that provide meta-information about the table data. There are three known use
-                      cases for this: loading states, error states, and empty states. In each of these cases, the table body
-                      should contain a single row with a single cell. That cell should use the `colspan` attribute to
-                      stretch all the way across the table, and should use this class.
+                      Applied to table cells that provide meta-information about the table data. There are three known
+                      use cases for this: loading states, error states, and empty states. In each of these cases, the
+                      table body should contain a single row with a single cell. That cell should use the `colspan`
+                      attribute to stretch all the way across the table, and should use this class.
                     </NxTable.Cell>
                   </NxTable.Row>
                   <NxTable.Row>
@@ -597,10 +571,10 @@ export default function NxTablePage() {
                       cells.
                       <NxWarningAlert>
                         When used within a fixed-layout table (e.g. with <NxCode>.nx-table--fixed-layout</NxCode>), care
-                        must be taken to ensure that cells with this class have the appropriate width. By default they are
-                        given a width appropriate for the right-chevron icon. If a different icon is used, a different width
-                        must be set on the element such that the padding box of the table cell matches the border box of the
-                        enclosed button.
+                        must be taken to ensure that cells with this class have the appropriate width. By default they
+                        are given a width appropriate for the right-chevron icon. If a different icon is used, a
+                        different width must be set on the element such that the padding box of the table cell matches
+                        the border box of the enclosed button.
                       </NxWarningAlert>
                     </NxTable.Cell>
                   </NxTable.Row>
@@ -643,8 +617,8 @@ export default function NxTablePage() {
                     </NxTable.Cell>
                     <NxTable.Cell>
                       In order to make clickable rows accessible, the icon should be contained within a button
-                      bearing this class. The button should additionally have an accessible name which describes the row,
-                      typically by including its full text content.
+                      bearing this class. The button should additionally have an accessible name which describes the
+                      row, typically by including its full text content.
                     </NxTable.Cell>
                   </NxTable.Row>
                   <NxTable.Row>
@@ -740,7 +714,6 @@ export default function NxTablePage() {
         </NxTabPanel>
 
         <NxTabPanel>
-
           <GalleryExampleTile title="Simple Example"
                               liveExample={NxTableSimpleExample}
                               codeExamples={tableSimpleExampleCode}
