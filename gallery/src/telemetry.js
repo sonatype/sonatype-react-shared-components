@@ -20,5 +20,7 @@ export function init() {
       var c=t.getElementsByTagName('script')[0];c.parentNode.insertBefore(r,c)
     })(window,document,'https://web-sdk.aptrinsic.com/api/aptrinsic.js', apiKey);
     /* eslint-enable */
+
+    aptrinsic('identify', { id: 'default-gallery-user' });
   }
 }
