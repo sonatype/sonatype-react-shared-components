@@ -7,7 +7,13 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxAccordion', function() {
-  const { getPage, simpleTest, focusTest, dismissResultingDialog } = setupBrowser('#/pages/NxAccordion');
+  const {
+    waitAndGetElements,
+    simpleTest,
+    focusTest,
+    dismissResultingDialog,
+    blurElement
+  } = setupBrowser('#/pages/NxAccordion');
 
   const exampleSelector = '#nx-accordion-example .gallery-example-live',
       tertiaryBtnExampleSelector = '#nx-accordion-tertiary-button-example .gallery-example-live',
@@ -21,22 +27,14 @@ describe('NxAccordion', function() {
 
   describe('Open NxAccordion', function() {
     beforeEach(async function() {
-      const page = getPage();
-
-      await page.waitForSelector(headerSelector);
-
-      async function dismissDialog(d) {
-        await d.dismiss();
-      }
+      let header;
 
       await dismissResultingDialog(async () => {
-        const header = await page.$(headerSelector);
+        header = (await waitAndGetElements(headerSelector))[0];
         await header.click();
       });
 
-      await page.$eval(headerSelector, function(el) {
-        el.blur();
-      });
+      await blurElement(header);
     });
 
     it('looks right', simpleTest(exampleSelector));
