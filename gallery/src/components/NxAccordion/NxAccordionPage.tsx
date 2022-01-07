@@ -42,7 +42,10 @@ const NxAccordionPage = () =>
         Note that this component is stateless – its open state must be tracked externally.
         See <NxCode>NxStatefulAccordion</NxCode> for a version which tracks its own open state.
       </NxP>
-      <NxH2>Guidelines</NxH2>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Guidelines</NxH3>
+        </NxTile.SubsectionHeader>
         <NxH3>When to Use</NxH3>
         <NxList bulleted>
           <NxList.Item>Displaying and grouping additional information.</NxList.Item>
@@ -71,6 +74,7 @@ const NxAccordionPage = () =>
             link to collapsable).
           </NxList.Item>
         </NxList>
+      </NxTile.Subsection>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
           <NxH3>NxAccordion</NxH3>
