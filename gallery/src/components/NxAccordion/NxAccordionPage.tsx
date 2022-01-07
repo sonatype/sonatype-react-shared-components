@@ -39,8 +39,8 @@ export default function NxAccordionPage() {
       <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId}>
         <NxTabList>
           <NxTab>Usage</NxTab>
-          <NxTab>Stateless Examples</NxTab>
-          <NxTab>Stateful Examples</NxTab>
+          <NxTab>React Stateless Examples</NxTab>
+          <NxTab>React Stateful Examples</NxTab>
         </NxTabList>
         <NxTabPanel>
           <GalleryDescriptionTile>
