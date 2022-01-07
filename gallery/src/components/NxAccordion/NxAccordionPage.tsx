@@ -44,7 +44,7 @@ const NxAccordionPage = () =>
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
-          <NxH3>Guidelines</NxH3>
+          <NxH2>Guidelines</NxH2>
         </NxTile.SubsectionHeader>
         <NxH3>When to Use</NxH3>
         <NxList bulleted>
@@ -56,18 +56,18 @@ const NxAccordionPage = () =>
         <NxList bulleted>
           <NxList.Item>
             Displaying critical system information or a primary action to be taken on the page. (for example,
-            {' '}<a href="/components/alert">alerts</a>, confirmation or cancellation buttons).
+            {' '}<NxTextLink href="/components/alert">alerts</NxTextLink>, confirmation or cancellation buttons).
           </NxList.Item>
           <NxList.Item>
             Displaying navigation elements such as <a href="/components/tabs">tabs</a>.
           </NxList.Item>
           <NxList.Item>
             Displaying links pointing to sections of the same page, instead use a
-            {' '}<a href="/components/list">list</a>.
+            {' '}<NxTextLink href="/components/list">list</NxTextLink>.
           </NxList.Item>
           <NxList.Item>
             Creating hierarchy levels by nesting them within each other. If you need to add hierarchy to the
-            content use a <a href="/components/tree">tree</a>.
+            content use a <NxTextLink href="/components/tree">tree</NxTextLink>.
           </NxList.Item>
           <NxList.Item>
             Displaying a set of visual components following the same style, prefer using Collapsable.(TODO: Add
