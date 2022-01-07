@@ -16,9 +16,7 @@ import {
   NxTabs,
   NxTabList,
   NxTab,
-  NxTabPanel,
-  NxH2,
-  NxList
+  NxTabPanel
 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -39,7 +37,7 @@ export default function NxAccordionPage() {
   return (
     <>
       <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId}>
-        <NxTabList aria-label="Table Component Examples">
+        <NxTabList>
           <NxTab>Usage</NxTab>
           <NxTab>Stateless Examples</NxTab>
           <NxTab>Stateful Examples</NxTab>

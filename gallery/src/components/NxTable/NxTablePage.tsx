@@ -96,7 +96,7 @@ export default function NxTablePage() {
   return (
     <>
       <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId}>
-        <NxTabList aria-label="Table Component Examples">
+        <NxTabList>
           <NxTab>Usage</NxTab>
           <NxTab>React Examples</NxTab>
           <NxTab>HTML Examples</NxTab>
