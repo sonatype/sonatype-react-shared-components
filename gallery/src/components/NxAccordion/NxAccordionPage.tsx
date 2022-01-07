@@ -66,35 +66,6 @@ export default function NxAccordionPage() {
               of <NxCode>open</NxCode>, it accepts <NxCode>defaultOpen</NxCode> which
               provides the initial toggle state.
             </NxP>
-            <NxH2>Guidelines</NxH2>
-            <NxH3>When to Use</NxH3>
-            <NxList bulleted>
-              <NxList.Item>Displaying and grouping additional information.</NxList.Item>
-              <NxList.Item>Adding granular control over the information on a given page.</NxList.Item>
-              <NxList.Item>Shortening pages to reduce scrolling.</NxList.Item>
-            </NxList>
-            <NxH3>When Not to Use</NxH3>
-            <NxList bulleted>
-              <NxList.Item>
-                Displaying critical system information or a primary action to be taken on the page. (for example,
-                {' '}<a href="/components/alert">alerts</a>, confirmation or cancellation buttons).
-              </NxList.Item>
-              <NxList.Item>
-                Displaying navigation elements such as <a href="/components/tabs">tabs</a>.
-              </NxList.Item>
-              <NxList.Item>
-                Displaying links pointing to sections of the same page, instead use a
-                {' '}<a href="/components/list">list</a>.
-              </NxList.Item>
-              <NxList.Item>
-                Creating hierarchy levels by nesting them within each other. If you need to add hierarchy to the
-                content use a <a href="/components/tree">tree</a>.
-              </NxList.Item>
-              <NxList.Item>
-                Displaying a set of visual components following the same style, prefer using Collapsable.(TODO: Add
-                link to collapsable).
-              </NxList.Item>
-            </NxList>
             <NxTile.Subsection>
               <NxTile.SubsectionHeader>
                 <NxH3>NxAccordion</NxH3>
