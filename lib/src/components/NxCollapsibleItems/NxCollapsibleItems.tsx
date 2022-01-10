@@ -65,7 +65,10 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
       ),
       triggerTooltipProps = typeof triggerTooltip === 'string' ? { title: triggerTooltip } : triggerTooltip;
 
+  // There is a bug in role-supports-aria-props that it restricts aria-disabled even though it shouldn't.
+  // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/805
   return (
+    /* eslint-disable-next-line jsx-a11y/role-supports-aria-props */
     <div className={treeViewClasses}
          id={treeViewId}
          role="list"
