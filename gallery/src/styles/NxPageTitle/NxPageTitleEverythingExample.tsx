@@ -31,16 +31,16 @@ function NxPageTitleEverythingExample() {
       </NxPageTitle.Headings>
       <NxButtonBar>
         <NxDropdown label="Example Dropdown" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
-          <a href="#" className="nx-dropdown-button">
+          <a href="#/" className="nx-dropdown-button">
             <span className="nx-dropdown-button-content">Text Link 1</span>
           </a>
-          <a href="#" className="nx-dropdown-button">
+          <a href="#/" className="nx-dropdown-button">
             <span className="nx-dropdown-button-content">Text Link 2</span>
           </a>
-          <a href="#" className="nx-dropdown-button">
+          <a href="#/" className="nx-dropdown-button">
             <span className="nx-dropdown-button-content">Text Link 3</span>
           </a>
-          <a href="#" className="nx-dropdown-button">
+          <a href="#/" className="nx-dropdown-button">
             <span className="nx-dropdown-button-content">Text Link 4</span>
           </a>
         </NxDropdown>
