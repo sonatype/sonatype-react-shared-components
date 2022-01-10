@@ -8,7 +8,7 @@ import React from 'react';
 import { Tooltip } from '@material-ui/core';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import NxTooltip, {TooltipContext, Props } from '../NxTooltip';
+import NxTooltip, { TooltipContext, Props } from '../NxTooltip';
 
 describe('NxTooltip', function() {
   const minimalProps = {

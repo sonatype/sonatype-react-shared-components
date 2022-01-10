@@ -11,9 +11,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxFormSelectExample from './NxFormSelectExample';
 import NxFormSelectOverflowExample from './NxFormSelectOverflowExample';
+import NxFormSelectWidthsExample from './NxFormSelectWidthsExample';
 
 const nxFormSelectExampleSourceCode = require('./NxFormSelectExample?raw');
 const nxFormSelectOverflowExampleSourceCode = require('./NxFormSelectOverflowExample?raw');
+const nxFormSelectWidthsExampleSourceCode = require('./NxFormSelectWidthsExample?raw');
 
 const NxFormSelectPage = () =>
   <>
@@ -116,6 +118,36 @@ const NxFormSelectPage = () =>
           a parent component.
         </NxP>
       </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxFormSelect CSS Classes</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-form-select--short</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Directly on the <NxCode>NxFormSelect</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>Short variant of <NxCode>NxFormSelect</NxCode>.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-form-select--long</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Directly on the <NxCode>NxFormSelect</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>Long variant of <NxCode>NxFormSelect</NxCode>.</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Form Select Example"
@@ -131,6 +163,13 @@ const NxFormSelectPage = () =>
                         codeExamples={nxFormSelectOverflowExampleSourceCode}
                         liveExample={NxFormSelectOverflowExample}>
       Demonstrates an <NxCode>NxFormSelect</NxCode> with long option text that overflows.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Form Select Widths Examples"
+                        id="nx-form-select-widths-examples"
+                        codeExamples={nxFormSelectWidthsExampleSourceCode}
+                        liveExample={NxFormSelectWidthsExample}>
+      Demonstrates <NxCode>NxFormSelect</NxCode>'s with with the short and long variants applied.
     </GalleryExampleTile>
   </>;
 

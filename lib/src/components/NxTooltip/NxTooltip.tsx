@@ -61,16 +61,10 @@ const NxTooltip: FunctionComponent<Props> =
       const tooltipClassName = classnames('nx-tooltip', className),
           parentModal = useContext(NxModalContext);
 
-      // For some reason buttons with string tooltips get removed and re-added in the DOM as the tooltip appears
-      // and disappears, causing the tooltip to blip up to the corner of the screen as it disappears (and likely
-      // causing other subtle bugs). This does not seem to happen if the tooltip title is JSX, so here we just make
-      // sure that it always is
-      const tooltipTitle = /*(typeof title === 'string' && title.length) ? <>{title}</> :*/ (title || '');
-
       return (
         <TooltipContext.Provider value={true}>
           <Tooltip { ...fixOptional(otherProps) }
-                   title={tooltipTitle}
+                   title={title || ''}
                    classes={{ tooltip: tooltipClassName }}
                    PopperProps={{ container: parentModal }} />
         </TooltipContext.Provider>

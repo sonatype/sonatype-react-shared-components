@@ -13,7 +13,7 @@ import './NxFilterInput.scss';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
-import NxTextInput from '../NxTextInput/NxTextInput';
+import { PrivateNxTextInput } from '../NxTextInput/NxTextInput';
 export { Props } from './types';
 
 const NxFilterInput = forwardRef<HTMLDivElement, Props>(
@@ -30,7 +30,10 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
           filterIcon = searchIcon ? faSearch : faFilter,
           prefixContent = <NxFontAwesomeIcon icon={filterIcon} className="nx-icon--filter-icons" />;
 
-      return <NxTextInput { ...cleanedProps } { ...{ prefixContent, className } } ref={ref} isPristine={false} />;
+      return <PrivateNxTextInput { ...cleanedProps }
+                                 { ...{ prefixContent, className } }
+                                 ref={ref}
+                                 isPristine={false} />;
     }
 );
 

@@ -30,7 +30,6 @@ const removeLicense = (content: string) =>
 const CodeExample: FunctionComponent<Props> =
   function CodeExample({ content, language }): ReactElement<Props> {
     const licenseStrippedContent = removeLicense(content),
-        headerLanguagePart = language ? ` (${language.toUpperCase()})` : '',
         [scrollable, setScrollable] = useState(false),
         ref = useRef<HTMLElement>(null);
 
@@ -50,11 +49,11 @@ const CodeExample: FunctionComponent<Props> =
 
     return (
       <section ref={ref} className="gallery-example-code">
-        <h3 className="nx-h3 nx-tile__section-header">
-          Code Snippet
-          {headerLanguagePart}
-          :
-        </h3>
+        { language &&
+          <h3 className="nx-h3 nx-tile__section-header">
+            {language.toUpperCase()}:
+          </h3>
+        }
         <SyntaxHighlighter language={language || 'tsx'} style={a11yDark} tabIndex={scrollable ? 0 : -1}>
           {licenseStrippedContent}
         </SyntaxHighlighter>

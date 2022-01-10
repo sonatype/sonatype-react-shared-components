@@ -11,7 +11,10 @@
 }
 
 .nx-binary-donut-chart__background {
-  stroke: var(--nx-swatch-indigo-95);
+  fill: var(--nx-swatch-indigo-95);
+  fill-rule: evenodd;
+  stroke: var(--nx-swatch-white);
+  stroke-width: 1;
 }
 
 .nx-binary-donut-chart__arc {
