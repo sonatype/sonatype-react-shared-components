@@ -23,15 +23,15 @@ export default function NxCollapsibleItemsCheckboxExample() {
                           isOpen={is1Open}
                           onToggleCollapse={onToggle1Collapse}
                           triggerContent="Organization">
-        <NxCollapsibleItems.Child role="">
+        <NxCollapsibleItems.Child role={undefined}>
           <NxCheckbox isChecked={true} inputAttributes={{ role: 'menuitemcheckbox' }}>
             Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo
           </NxCheckbox>
         </NxCollapsibleItems.Child>
-        <NxCollapsibleItems.Child role="">
+        <NxCollapsibleItems.Child role={undefined}>
           <NxCheckbox isChecked={true} inputAttributes={{ role: 'menuitemcheckbox' }}>Bar</NxCheckbox>
         </NxCollapsibleItems.Child>
-        <NxCollapsibleItems.Child role="">
+        <NxCollapsibleItems.Child role={undefined}>
           <NxCheckbox isChecked={true} inputAttributes={{ role: 'menuitemcheckbox' }}>Baz</NxCheckbox>
         </NxCollapsibleItems.Child>
       </NxCollapsibleItems>
@@ -39,17 +39,17 @@ export default function NxCollapsibleItemsCheckboxExample() {
                           isOpen={is2Open}
                           onToggleCollapse={onToggle2Collapse}
                           triggerContent="Organization">
-        <NxCollapsibleItems.Child role="">
+        <NxCollapsibleItems.Child role={undefined}>
           <NxRadio name="test-radio" value="foo" isChecked={false} inputAttributes={{ role: 'menuitemradio' }}>
             Foo
           </NxRadio>
         </NxCollapsibleItems.Child>
-        <NxCollapsibleItems.Child role="">
+        <NxCollapsibleItems.Child role={undefined}>
           <NxRadio name="test-radio" value="bar" isChecked={false} inputAttributes={{ role: 'menuitemradio' }}>
             Bar
           </NxRadio>
         </NxCollapsibleItems.Child>
-        <NxCollapsibleItems.Child role="">
+        <NxCollapsibleItems.Child role={undefined}>
           <NxRadio name="test-radio" value="baz" isChecked={true} inputAttributes={{ role: 'menuitemradio' }}>
             Baz
           </NxRadio>
