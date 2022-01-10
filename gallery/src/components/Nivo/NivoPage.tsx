@@ -6,27 +6,26 @@
  */
 import React from 'react';
 
-import { NxCode, NxP } from '@sonatype/react-shared-components';
-
-import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NivoPageExample from './NivoPageExample';
+import NivoPieChartPageExample from './NivoPieChartExample';
 
 const NivoPageExampleCode = require('./NivoPageExample?raw');
+const NivoPieExampleChartCode = require('./NivoPieChartExample?raw');
 
 const NivoPage = () =>
   <>
-    <GalleryDescriptionTile>
-      <NxP>
-        Nivo Line Chart
-      </NxP>
-    </GalleryDescriptionTile>
+    <GalleryExampleTile title="Nivo Pie Chart"
+                        defaultCheckeredBackground={false}
+                        liveExample={NivoPieChartPageExample}
+                        codeExamples={NivoPieExampleChartCode}>
+    </GalleryExampleTile>
 
-    <GalleryExampleTile title="Simple Example"
+    <GalleryExampleTile title="Nivo Pie Example"
                         defaultCheckeredBackground={false}
                         liveExample={NivoPageExample}
                         codeExamples={NivoPageExampleCode}>
-      A simple example of an <NxCode>Nivo</NxCode>.
     </GalleryExampleTile>
   </>;
 

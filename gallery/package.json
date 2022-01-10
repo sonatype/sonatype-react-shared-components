@@ -65,6 +65,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@nivo/core": "^0.75.0",
     "@nivo/line": "^0.75.0",
+    "@nivo/pie": "^0.78.0",
     "@react-hook/debounce": "^4.0.0",
     "@sonatype/react-shared-components": "link:../lib/dist",
     "axios": "^0.21.1",
