@@ -57,15 +57,15 @@ describe('NxColorPicker', function() {
     const component = getMounted(),
         labels = component.find('label.nx-color-picker__color');
 
-    expect(labels.filter('.nx-selectable-color--light-blue')).toExist();
+    expect(labels.filter('.nx-selectable-color--sky')).toExist();
     expect(labels.filter('.nx-selectable-color--purple')).toExist();
     expect(labels.filter('.nx-selectable-color--pink')).toExist();
     expect(labels.filter('.nx-selectable-color--blue')).toExist();
     expect(labels.filter('.nx-selectable-color--red')).toExist();
-    expect(labels.filter('.nx-selectable-color--green')).toExist();
+    expect(labels.filter('.nx-selectable-color--turquoise')).toExist();
     expect(labels.filter('.nx-selectable-color--orange')).toExist();
     expect(labels.filter('.nx-selectable-color--yellow')).toExist();
-    expect(labels.filter('.nx-selectable-color--lime')).toExist();
+    expect(labels.filter('.nx-selectable-color--kiwi')).toExist();
   });
 
   it('wraps each label in a tooltip with a display friendly color name', function() {
@@ -74,19 +74,19 @@ describe('NxColorPicker', function() {
 
     expect(tooltips).toHaveLength(10);
 
-    expect(tooltips.filterWhere(tooltip => tooltip.prop('title') === 'Light Blue'))
-        .toContainMatchingElement('label.nx-selectable-color--light-blue');
+    expect(tooltips.filterWhere(tooltip => tooltip.prop('title') === 'Sky'))
+        .toContainMatchingElement('label.nx-selectable-color--sky');
 
-    expect(tooltips.filterWhere(tooltip => tooltip.prop('title') === 'Green'))
-        .toContainMatchingElement('label.nx-selectable-color--green');
+    expect(tooltips.filterWhere(tooltip => tooltip.prop('title') === 'Turquoise'))
+        .toContainMatchingElement('label.nx-selectable-color--turquoise');
   });
 
   it('sets an aria-label derived from the color name and overall label on each <label>', function() {
     const component = getMounted(),
         labels = component.find('.nx-color-picker__color');
 
-    expect(labels.filter('.nx-selectable-color--light-blue')).toHaveProp('aria-label', 'My Color Picker Light Blue');
-    expect(labels.filter('.nx-selectable-color--green')).toHaveProp('aria-label', 'My Color Picker Green');
+    expect(labels.filter('.nx-selectable-color--sky')).toHaveProp('aria-label', 'My Color Picker Sky');
+    expect(labels.filter('.nx-selectable-color--turquoise')).toHaveProp('aria-label', 'My Color Picker Turquoise');
   });
 
   it('sets a random common name attr on each radio', function() {
@@ -114,26 +114,26 @@ describe('NxColorPicker', function() {
     const component = getMounted(),
         labels = component.find('.nx-color-picker__color');
 
-    expect(labels.filterWhere(label => label.hasClass('nx-selectable-color--light-blue')).find('input'))
-        .toHaveProp('value', 'light-blue');
+    expect(labels.filterWhere(label => label.hasClass('nx-selectable-color--sky')).find('input'))
+        .toHaveProp('value', 'sky');
 
-    expect(labels.filterWhere(label => label.hasClass('nx-selectable-color--green')).find('input'))
-        .toHaveProp('value', 'green');
+    expect(labels.filterWhere(label => label.hasClass('nx-selectable-color--turquoise')).find('input'))
+        .toHaveProp('value', 'turquoise');
   });
 
   it('sets the checked attr to true only on the input matching the value', function() {
     const noneSelectedComponent = getMounted(),
-        greenSelectedComponent = getMounted({ value: 'green' });
+        turquoiseSelectedComponent = getMounted({ value: 'turquoise' });
 
     expect(noneSelectedComponent.find('input').filterWhere(input => !!input.prop('checked'))).not.toExist();
 
-    expect(greenSelectedComponent.find('input').filterWhere(input => !!input.prop('checked')))
-        .toHaveProp('value', 'green');
+    expect(turquoiseSelectedComponent.find('input').filterWhere(input => !!input.prop('checked')))
+        .toHaveProp('value', 'turquoise');
   });
 
   it('sets the selected class on the label of the selected color', function() {
-    expect(getMounted({ value: 'green' }).find('.nx-color-picker__color.selected'))
-        .toHaveClassName('nx-selectable-color--green');
+    expect(getMounted({ value: 'turquoise' }).find('.nx-color-picker__color.selected'))
+        .toHaveClassName('nx-selectable-color--turquoise');
   });
 
   it('fires its onChange handler with the color of the clicked input', function() {
@@ -142,15 +142,15 @@ describe('NxColorPicker', function() {
 
     expect(onChange).not.toHaveBeenCalled();
 
-    component.find('input').filterWhere(input => input.prop('value') === 'green').simulate('change');
+    component.find('input').filterWhere(input => input.prop('value') === 'turquoise').simulate('change');
 
-    expect(onChange).toHaveBeenCalledWith('green');
+    expect(onChange).toHaveBeenCalledWith('turquoise');
   });
 
   it('does nothing when an input is clicked with no onChange prop', function() {
     const component = getMounted();
 
-    component.find('input').filterWhere(input => input.prop('value') === 'green').simulate('change');
+    component.find('input').filterWhere(input => input.prop('value') === 'turquoise').simulate('change');
 
     // shouldn't throw an exception
   });

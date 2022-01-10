@@ -50,7 +50,8 @@ exports.config = {
     ],
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+        // exclude accordion for now until we can decide what to do about buttons in accordion headers
+        './visualtests/nxAccordion.js',
     ],
     //
     // ============

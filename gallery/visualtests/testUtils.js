@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Region, Target } = require('@applitools/eyes-webdriverio');
+const AxeBuilder = require('@axe-core/webdriverio').default;
 
 module.exports = {
   simpleTest(selector) {
@@ -133,6 +134,17 @@ module.exports = {
         i++;
         currentScreenshotY += screenshotHeight;
       }
+    };
+  },
+
+  a11yTest(builderCustomizer) {
+    return async () => {
+      const builder = new AxeBuilder({ client: browser }),
+          customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
+          axeResults = await customizedBuilder.analyze();
+
+      expect(axeResults.violations).toEqual([]);
+      expect(axeResults.incomplete).toEqual([]);
     };
   }
 };

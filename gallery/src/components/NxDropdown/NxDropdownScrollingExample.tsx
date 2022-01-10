@@ -9,50 +9,52 @@ import React from 'react';
 import { NxDropdown, useToggle } from '@sonatype/react-shared-components';
 
 function NxDropdownNavigationExample() {
-  const [isOpen, onToggleCollapse] = useToggle(false),
-      onClick = () => { alert('click'); };
+  const [isOpen, onToggleCollapse] = useToggle(false);
 
   return (
     <NxDropdown label="Scrolling - this label also triggers truncation"
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
-      <a href="#" onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Text Link 1
       </a>
-      <a href="#" onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Text Link 2
       </a>
-      <a href="#" onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Text Link 3
       </a>
-      <a href="#" onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Text Link 4
       </a>
-      <a href="#" onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Text Link 5
       </a>
-      <a href="#" onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Text Link 6
       </a>
-      <a href="#" className="disabled nx-dropdown-button">
+      <a href="#/"
+         onClick={evt => { evt.preventDefault(); }}
+         className="disabled nx-dropdown-button"
+         aria-disabled="true">
         Text Link 7 Disabled
       </a>
-      <a href="#" onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Text Link 8
       </a>
-      <a href="#" onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Text Link 9
       </a>
-      <a href="#" onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Text Link 10
       </a>
-      <a href="#" onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Text Link 11
       </a>
-      <a href="#" onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Text Link 12
       </a>
-      <a href="#" onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Text Link 13
       </a>
     </NxDropdown>

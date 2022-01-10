@@ -29,7 +29,17 @@ type NxCollapsibleItemsFC =
   };
 
 const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(props: Props) {
-  const { onToggleCollapse, isOpen, disabled, children, triggerContent, triggerTooltip, className, id } = props;
+  const {
+    onToggleCollapse,
+    isOpen,
+    disabled,
+    children,
+    triggerContent,
+    triggerTooltip,
+    className,
+    id,
+    ...otherProps
+  } = props;
 
   const isEmpty = !React.Children.count(children),
       isExpanded = isOpen && !isEmpty, // conceptually we don't allow empty collapsible items to expand
@@ -56,7 +66,11 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
       triggerTooltipProps = typeof triggerTooltip === 'string' ? { title: triggerTooltip } : triggerTooltip;
 
   return (
-    <div className={treeViewClasses} id={treeViewId} role="list">
+    <div className={treeViewClasses}
+         id={treeViewId}
+         role="list"
+         { ...otherProps }
+         aria-disabled={disabled || undefined}>
       {
         triggerTooltipProps ? (
           // div necessary to avoid error message when tooltip is on disabled button

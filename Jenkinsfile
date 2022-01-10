@@ -12,6 +12,7 @@ def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
 def numSeleniumContainers = 10;
 
 dockerizedBuildPipeline(
+  deployBranch: 'main',
   // expose gallery port on host so selenium container can hit it
   dockerArgs: '-p 4043:4043',
 
