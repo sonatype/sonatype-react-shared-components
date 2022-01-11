@@ -29,8 +29,7 @@ import NxAccordionWithNxListExample from './NxAccordionWithNxListExample';
 
 const NxAccordionSimpleCode = require('./NxAccordionExample?raw'),
     NxAccordionComplexCode = require('./NxAccordionComplexExample?raw'),
-    NxAccordionTertiaryButtonCode = require('./NxAccordionTertiaryButtonExample?raw'),
-    NxStatefulAccordionCode = require('../NxStatefulAccordion/NxStatefulAccordionExample?raw');
+    NxStatefulAccordionCode = require('../NxStatefulAccordion/NxStatefulAccordionExample?raw'),
     NxAccordionTertiaryButtonCode = require('./NxAccordionTertiaryButtonExample?raw'),
     NxAccordionWithNxListCode = require('./NxAccordionWithNxListExample?raw');
 
@@ -136,30 +135,6 @@ export default function NxAccordionPage() {
                 HTML <NxCode>&lt;summary&gt;</NxCode> attributes.
               </NxP>
             </NxTile.Subsection>
-    <GalleryExampleTile title="Example with nested NxList"
-                        id="nx-accordion-nested-nx-list-example"
-                        defaultCheckeredBackground={true}
-                        liveExample={NxAccordionWithNxListExample}
-                        codeExamples={NxAccordionWithNxListCode}>
-      An example of an <NxCode>NxAccordion</NxCode> with nested <NxCode>NxList</NxCode>.
-      A special styling is applied to <NxCode>NxList</NxCode> when it is the first child nested
-      inside <NxCode>NxAccordion</NxCode>. The border and the top padding are removed
-      so it looks more unified with the Accordion.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Example with optional elements"
-                        id="nx-accordion-example"
-                        defaultCheckeredBackground={true}
-                        liveExample={NxAccordionComplexExample}
-                        codeExamples={NxAccordionComplexCode}>
-      A more complex <NxCode>NxAccordion</NxCode> including header buttons and a subheader.
-      This example also demonstrates that clicks on the header and buttons are handled correctly. Clicking a header
-      button does not cause the accordion to toggle, but clicking anywhere else on the header does, even including
-      places that have their own click handlers (e.g. the accordion title in this example). This example also
-      demonstrates that the header title uses ellipsis truncation to handle long content, while the subheader wraps.
-      Developers should however avoid creating titles and subheaders that are long enough to trigger these behaviors
-      when possible.
-    </GalleryExampleTile>
 
             <NxTile.Subsection>
               <NxTile.SubsectionHeader>
@@ -224,8 +199,7 @@ export default function NxAccordionPage() {
           <GalleryExampleTile title="Simple Example"
                               defaultCheckeredBackground={true}
                               liveExample={NxAccordionSimpleExample}
-                              codeExamples={NxAccordionSimpleCode}
-                              collapseCodeExample>
+                              codeExamples={NxAccordionSimpleCode}>
             A simple example of an <NxCode>NxAccordion</NxCode>.
           </GalleryExampleTile>
 
@@ -233,26 +207,32 @@ export default function NxAccordionPage() {
                               id="nx-accordion-example"
                               defaultCheckeredBackground={true}
                               liveExample={NxAccordionComplexExample}
-                              codeExamples={NxAccordionComplexCode}
-                              collapseCodeExample>
+                              codeExamples={NxAccordionComplexCode}>
             A more complex <NxCode>NxAccordion</NxCode> including header buttons and a subheader.
             This example also demonstrates that clicks on the header and buttons are handled correctly. Clicking a
-            header
-            button does not cause the accordion to toggle, but clicking anywhere else on the header does, even including
-            places that have their own click handlers (e.g. the accordion title in this example). This example also
-            demonstrates that the header title uses ellipsis truncation to handle long content, while the subheader
-            wraps.
-            Developers should however avoid creating titles and subheaders that are long enough to trigger these
-            behaviors
-            when possible.
+            header button does not cause the accordion to toggle, but clicking anywhere else on the header does, even
+            including places that have their own click handlers (e.g. the accordion title in this example). This
+            example also demonstrates that the header title uses ellipsis truncation to handle long content, while the
+            subheader wraps. Developers should however avoid creating titles and subheaders that are long enough to
+            trigger these behaviors when possible.
+          </GalleryExampleTile>
+
+          <GalleryExampleTile title="Example with nested NxList"
+                        id="nx-accordion-nested-nx-list-example"
+                        defaultCheckeredBackground={true}
+                        liveExample={NxAccordionWithNxListExample}
+                        codeExamples={NxAccordionWithNxListCode}>
+            An example of an <NxCode>NxAccordion</NxCode> with nested <NxCode>NxList</NxCode>.
+            A special styling is applied to <NxCode>NxList</NxCode> when it is the first child nested
+            inside <NxCode>NxAccordion</NxCode>. The border and the top padding are removed
+            so it looks more unified with the Accordion.
           </GalleryExampleTile>
 
           <GalleryExampleTile title="Example with tertiary button in header"
                               id="nx-accordion-tertiary-button-example"
                               defaultCheckeredBackground={true}
                               liveExample={NxAccordionTertiaryButtonExample}
-                              codeExamples={NxAccordionTertiaryButtonCode}
-                              collapseCodeExample>
+                              codeExamples={NxAccordionTertiaryButtonCode}>
             An <NxCode>NxAccordion</NxCode> which contains a tertiary button in the header. Note that the
             height of this button causes the height of the entire header to grow slightly.
           </GalleryExampleTile>
@@ -261,8 +241,7 @@ export default function NxAccordionPage() {
           <GalleryExampleTile title="Example"
                               defaultCheckeredBackground={true}
                               liveExample={NxStatefulAccordionExample}
-                              codeExamples={NxStatefulAccordionCode}
-                              collapseCodeExample>
+                              codeExamples={NxStatefulAccordionCode}>
             A simple example of an <NxCode>NxStatefulAccordion</NxCode> that is initially open.
           </GalleryExampleTile>
         </NxTabPanel>
