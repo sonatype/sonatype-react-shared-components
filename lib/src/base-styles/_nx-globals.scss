@@ -30,7 +30,7 @@ $-nx-scrollable-default-height: 400px;
 
   &:focus {
     // outline-offset scales the border-radius so this
-    // was changed to 1px to get it visually close to
+    // was changed to 4px to get it visually close to
     // var(--nx-border-radius) or (6px).
     border-radius: 4px;
     outline: 1px solid var(--nx-color-interactive-border-focus);
