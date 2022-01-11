@@ -9,20 +9,29 @@ import React from 'react';
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NivoPageExample from './NivoPageExample';
+import NivoLineChart2Example from './NivoLineChart2Example';
 import NivoPieChartPageExample from './NivoPieChartExample';
 
 const NivoPageExampleCode = require('./NivoPageExample?raw');
+const NivoLineChart2ExampleCode = require('./NivoLineChart2Example?raw');
 const NivoPieExampleChartCode = require('./NivoPieChartExample?raw');
 
 const NivoPage = () =>
   <>
+    <GalleryExampleTile title="Nivo Line 2 Example"
+                        defaultCheckeredBackground={false}
+                        liveExample={NivoLineChart2Example}
+                        codeExamples={NivoLineChart2ExampleCode}>
+    </GalleryExampleTile>
+
     <GalleryExampleTile title="Nivo Pie Chart"
                         defaultCheckeredBackground={false}
                         liveExample={NivoPieChartPageExample}
-                        codeExamples={NivoPieExampleChartCode}>
+                        codeExamples={NivoPieExampleChartCode}
+    >
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Nivo Pie Example"
+    <GalleryExampleTile title="Nivo Line Example"
                         defaultCheckeredBackground={false}
                         liveExample={NivoPageExample}
                         codeExamples={NivoPageExampleCode}>
