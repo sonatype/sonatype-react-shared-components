@@ -12,26 +12,27 @@ import NxTooltip, { TooltipContext } from '../NxTooltip/NxTooltip';
 import { includesDisabledClass } from '../../util/classUtil';
 
 const NxButton = forwardRef<HTMLButtonElement, Props>(
-    function NxButton({ variant, className, children, title: titleProp, ...attrs }, ref) {
+    function NxButton({ variant, className, children, title: titleProp, disabled, ...attrs }, ref) {
       const classNames = classnames(className, 'nx-btn', `nx-btn--${variant || 'secondary'}`),
           alreadyHasTooltip = useContext(TooltipContext),
           title = titleProp || undefined,
           getBtn = (extraProps?: Partial<ButtonHTMLAttributes<HTMLButtonElement>>) => (
-            <button key="button"
-                    aria-disabled={includesDisabledClass(className)}
+            <button aria-disabled={includesDisabledClass(className) || disabled}
+                    disabled={disabled}
                     ref={ref}
                     className={classNames}
                     {...extraProps}
                     {...attrs}>
               {children}
             </button>
-          );
+          ),
+          wrapInTooltip = title && !disabled && !alreadyHasTooltip;
 
-      if (variant === 'icon-only' && !title && !attrs.disabled) {
+      if (variant === 'icon-only' && !title && !disabled) {
         console.warn('Using icon-only buttons without the title prop is deprecated');
       }
 
-      return title && !alreadyHasTooltip ? <NxTooltip title={title}>{getBtn()}</NxTooltip> : getBtn({ title });
+      return wrapInTooltip ? <NxTooltip title={title}>{getBtn()}</NxTooltip> : getBtn({ title });
     }
 );
 

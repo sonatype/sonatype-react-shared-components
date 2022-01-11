@@ -28,7 +28,7 @@ function NxCollapsibleItemsExtrasExample() {
                             <>
                               <NxFontAwesomeIcon icon={faCube}/>
                               <span>Trigger with icon &amp; counter</span>
-                              <div aria-label="12 options out of 29 selected" className="nx-counter">
+                              <div className="nx-counter">
                                 12 of 29
                               </div>
                             </>
@@ -42,7 +42,7 @@ function NxCollapsibleItemsExtrasExample() {
                             <>
                               <NxFontAwesomeIcon icon={faCube}/>
                               <span>Foo</span>
-                              <div aria-label="2 options out of 4 selected" className="nx-counter">
+                              <div className="nx-counter">
                                 2 of 4
                               </div>
                             </>
@@ -56,7 +56,7 @@ function NxCollapsibleItemsExtrasExample() {
                             <>
                               <NxFontAwesomeIcon icon={faCube}/>
                               <span>This title is extra long and triggers ellipsis truncation</span>
-                              <div aria-label="40000 options out of 80000 selected" className="nx-counter">
+                              <div className="nx-counter">
                                 40000 of 80000
                               </div>
                             </>
@@ -70,7 +70,7 @@ function NxCollapsibleItemsExtrasExample() {
                             <>
                               <NxFontAwesomeIcon icon={faCube}/>
                               <span>Organizations</span>
-                              <div aria-label="Filter name goes here" className="nx-counter">
+                              <div className="nx-counter">
                                 Filter name goes here
                               </div>
                             </>
