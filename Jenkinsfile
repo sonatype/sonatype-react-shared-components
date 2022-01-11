@@ -88,25 +88,29 @@ dockerizedBuildPipeline(
     '''
 
     withCredentials([string(credentialsId: 'REACT_SHARED_COMPONENTS_APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
+      sh """
+        registry=https://repo.sonatype.com/repository/npm-all/
+
+        cd lib
+        yarn install --registry "\${registry}"
+        yarn test
+        yarn build
+        cd dist
+        npm pack
+        cd ../..
+
+        cd gallery
+        yarn install --registry "\${registry}"
+
+        # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
+        MAX_INSTANCES=${numSeleniumContainers} TEST_IP=\$JENKINS_AGENT_IP yarn test
+      """
+
+      // NOTE: we don't want the applitools test run to have the gainsight key
       withCredentials([string(credentialsId: 'GAINSIGHT_PX_API_KEY', variable: 'PX_API_KEY')]) {
         sh """
-          registry=https://repo.sonatype.com/repository/npm-all/
-
-          cd lib
-          yarn install --registry "\${registry}"
-          npm run test
-          npm run build
-          cd dist
-          npm pack
-          cd ../..
-
           cd gallery
-          yarn install --registry "\${registry}"
-
-          # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
-          MAX_INSTANCES=${numSeleniumContainers} TEST_IP=\$JENKINS_AGENT_IP npm run test
-          npm run build
-          cd ..
+          yarn build
         """
       }
     }
