@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { focusTest, simpleTest } = require('./testUtils');
+const { focusTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxAccordion', function() {
   beforeEach(async function() {
@@ -13,6 +13,7 @@ describe('NxAccordion', function() {
   });
 
   const exampleSelector = '#nx-accordion-example .gallery-example-live',
+      nestedNxListExampleSelector = '#nx-accordion-nested-nx-list-example .gallery-example-live',
       tertiaryBtnExampleSelector = '#nx-accordion-tertiary-button-example .gallery-example-live',
       headerSelector = `${exampleSelector} .nx-accordion__header`;
 
@@ -42,4 +43,10 @@ describe('NxAccordion', function() {
   describe('NxAccordion with tertiary header button', function() {
     it('looks right', simpleTest(tertiaryBtnExampleSelector));
   });
+
+  describe('NxAccordion with nested NxList', function() {
+    it('looks right', simpleTest(nestedNxListExampleSelector));
+  });
+
+  it('passes a11y checks', a11yTest());
 });
