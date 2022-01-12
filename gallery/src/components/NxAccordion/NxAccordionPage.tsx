@@ -159,7 +159,7 @@ const NxAccordionPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>nx-footer</NxCode></NxTable.Cell>
-              <NxTable.Cell>Bottom of accordiong body</NxTable.Cell>
+              <NxTable.Cell>Bottom of accordion body</NxTable.Cell>
               <NxTable.Cell>
                 <NxCode>NxAccordion</NxCode> supports placing a footer at the bottom of its content, typically in order
                 to hold buttons. This is the recommended location to which buttons that were formerly in the accordion's
