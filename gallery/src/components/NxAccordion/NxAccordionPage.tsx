@@ -5,18 +5,20 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxInfoAlert, NxCode, NxTextLink, NxP, NxH3, NxTile } from '@sonatype/react-shared-components';
+import { NxTable, NxInfoAlert, NxCode, NxTextLink, NxP, NxH3, NxTile, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxAccordionSimpleExample from './NxAccordionExample';
 import NxAccordionComplexExample from './NxAccordionComplexExample';
-import NxAccordionTertiaryButtonExample from './NxAccordionTertiaryButtonExample';
+import NxAccordionButtonHeaderExample from './NxAccordionButtonHeaderExample';
+import NxAccordionIconButtonHeaderExample from './NxAccordionIconButtonHeaderExample';
 import NxAccordionWithNxListExample from './NxAccordionWithNxListExample';
 
 const NxAccordionSimpleCode = require('./NxAccordionExample?raw'),
     NxAccordionComplexCode = require('./NxAccordionComplexExample?raw'),
-    NxAccordionTertiaryButtonCode = require('./NxAccordionTertiaryButtonExample?raw'),
+    NxAccordionButtonHeaderCode = require('./NxAccordionButtonHeaderExample?raw'),
+    NxAccordionIconButtonHeaderCode = require('./NxAccordionIconButtonHeaderExample?raw'),
     NxAccordionWithNxListCode = require('./NxAccordionWithNxListExample?raw');
 
 const NxAccordionPage = () =>
@@ -135,6 +137,11 @@ const NxAccordionPage = () =>
               <NxTable.Cell><NxCode>nx-btn-bar</NxCode></NxTable.Cell>
               <NxTable.Cell>Last child of <NxCode>NxAccordion.Header</NxCode></NxTable.Cell>
               <NxTable.Cell>
+                <NxWarningAlert>
+                  Deprecated. The pattern of placing buttons within the accordion header creates accessibility problems.
+                  It results in nested click targets and violations of ARIA rules. That said, for backwards
+                  compatibility RSC continues to support the styling necessary for the layout of such buttons.
+                </NxWarningAlert>
                 <NxCode>NxAccordion.Header</NxCode> supports the inclusion of buttons on
                 its right-hand side. This is accomplished by adding
                 an <NxCode>.nx-btn-bar</NxCode> after
@@ -148,6 +155,16 @@ const NxAccordionPage = () =>
                 The contents of the accordion body may include subheaders which should
                 be <NxCode>&lt;h3&gt;</NxCode> elements with
                 the <NxCode>.nx-h3</NxCode> class.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-footer</NxCode></NxTable.Cell>
+              <NxTable.Cell>Bottom of accordiong body</NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxAccordion</NxCode> supports placing a footer at the bottom of its content, typically in order
+                to hold buttons. This is the recommended location to which buttons that were formerly in the accordion's
+                header (in an <NxCode>nx-btn-bar</NxCode>, as described in the deprecated section above) should be
+                migrated.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
@@ -178,20 +195,27 @@ const NxAccordionPage = () =>
                         defaultCheckeredBackground={true}
                         liveExample={NxAccordionComplexExample}
                         codeExamples={NxAccordionComplexCode}>
-      A more complex <NxCode>NxAccordion</NxCode> including header buttons and a subheader.
-      This example also demonstrates that clicks on the header and buttons are handled correctly. Clicking a header
-      button does not cause the accordion to toggle, but clicking anywhere else on the header does, even including
-      places that have their own click handlers (e.g. the accordion title in this example). This example also
+      A more complex <NxCode>NxAccordion</NxCode> including a subheader and a footer. This example also
       demonstrates that the header title uses ellipsis truncation to handle long content, while the subheader wraps.
       Developers should however avoid creating titles and subheaders that are long enough to trigger these behaviors
       when possible.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Example with tertiary button in header"
-                        id="nx-accordion-tertiary-button-example"
+    <GalleryExampleTile title="Deprecated: Example with icon button in header"
+                        id="nx-accordion-icon-button-header-example"
                         defaultCheckeredBackground={true}
-                        liveExample={NxAccordionTertiaryButtonExample}
-                        codeExamples={NxAccordionTertiaryButtonCode}>
+                        liveExample={NxAccordionIconButtonHeaderExample}
+                        codeExamples={NxAccordionIconButtonHeaderCode}>
+      <NxWarningAlert>Deprecated</NxWarningAlert>
+      An <NxCode>NxAccordion</NxCode> which contains icon buttons in the header.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Deprecated: Example with tertiary button in header"
+                        id="nx-accordion-tertiary-button-header-example"
+                        defaultCheckeredBackground={true}
+                        liveExample={NxAccordionButtonHeaderExample}
+                        codeExamples={NxAccordionButtonHeaderCode}>
+      <NxWarningAlert>Deprecated</NxWarningAlert>
       An <NxCode>NxAccordion</NxCode> which contains a tertiary button in the header. Note that the
       height of this button causes the height of the entire header to grow slightly.
     </GalleryExampleTile>

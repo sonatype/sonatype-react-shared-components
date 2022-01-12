@@ -5,9 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxAccordion, NxButton, useToggle } from '@sonatype/react-shared-components';
+import { faEdit, faCog } from '@fortawesome/free-solid-svg-icons';
 
-export default function NxAccordionExample() {
+import { NxAccordion, NxFontAwesomeIcon, NxButton, useToggle } from '@sonatype/react-shared-components';
+
+export default function NxAccordionIconButtonHeaderExample() {
   const [open, toggleOpen] = useToggle(false);
 
   return (
@@ -17,6 +19,14 @@ export default function NxAccordionExample() {
           Foo lots of content to demonstrate that this element does not wrap but rather overflows with
           ellipsis truncation.
         </NxAccordion.Title>
+        <div className="nx-btn-bar">
+          <NxButton title="Edit" variant="icon-only" onClick={() => { alert('Edit click'); }}>
+            <NxFontAwesomeIcon icon={faEdit} />
+          </NxButton>
+          <NxButton title="Settings" variant="icon-only" onClick={() => { alert('Settings click'); }}>
+            <NxFontAwesomeIcon icon={faCog} />
+          </NxButton>
+        </div>
       </NxAccordion.Header>
       <p className="nx-p">
         Bacon ipsum dolor amet chicken ball tip t-bone, alcatra pastrami cupim kielbasa swine shank bacon shankle
@@ -34,13 +44,6 @@ export default function NxAccordionExample() {
         ribs kielbasa picanha andouille doner beef. Tenderloin drumstick kielbasa leberkas burgdoggen tongue
         chicken sausage chuck alcatra.
       </p>
-      <footer className="nx-footer">
-        <div className="nx-btn-bar">
-          <NxButton onClick={() => { alert('Edit click'); }}>
-            Edit
-          </NxButton>
-        </div>
-      </footer>
     </NxAccordion>
   );
 }
