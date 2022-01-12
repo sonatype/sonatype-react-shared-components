@@ -91,14 +91,24 @@ export default function NxTabsPage() {
                           liveExample={NxTextLinkInternalExample}
                           codeExamples={NxTextLinkInternalExampleCode}>
         A simple <NxCode>NxTextLink</NxCode> to an internal page.
+
+        In the case of link and code that fully overlaps, we recommend that <NxCode>NxTextLink</NxCode>{' '}
+        is nested inside <NxCode>NxCode</NxCode> instead of the the other way around.
+
+        A few examples of <NxCode>NxTextLink</NxCode> with and without <NxCode>NxCode</NxCode>.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxTextLink External Link Example"
                           id="nx-text-link-external-example"
                           liveExample={NxTextLinkExternalExample}
                           codeExamples={NxTextLinkExternalExampleCode}>
-        A simple <NxCode>NxTextLink</NxCode> to an external page. Note the icon and that it opens
-        in a new tab.
+        A simple <NxCode>NxTextLink</NxCode> to an external page. Note the icon and that it opens in a new tab.
+
+        In the case of link and code that fully overlaps, we recommend that <NxCode>NxTextLink</NxCode>{' '}
+        is nested inside <NxCode>NxCode</NxCode> instead of the other way around so that
+        the external icon is included in the <NxCode>NxCode</NxCode> boundary.
+
+        A few examples of <NxCode>NxTextLink</NxCode> to an external page with and without <NxCode>NxCode</NxCode>.
       </GalleryExampleTile>
     </>
   );
