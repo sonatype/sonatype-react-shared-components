@@ -30,6 +30,21 @@ const BadLineHeightExampleStyles = require('./BadLineHeightExample.scss?raw');
 const firstReferenceUrl = 'https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align',
     css2SpecUrl = 'https://www.w3.org/TR/CSS2/visudet.html#inline-box-height';
 
+const firstImageAltText = `
+  In FontForge's "Font Information for OpenSans-Regular" window, the "General" tab is selected.
+  Within that tab, three text boxes and their labels are called out:
+    the "Ascent" box with a value of 1638,
+    the "Descent" box with a value of 410,
+    and the "Em Size" box with a value of 2048.
+`;
+
+const secondImageAltText = `
+  In FontForge's "Font Information for OpenSans-Regular" window, the "OS/2" tab is selected.
+  Within that tab, two groups of two text boxes each and their labels are called out:
+    first, the "Win Ascent" and "Win Descent" boxes, with values of 2189 and 600 respectively;
+    and then the "HHead Ascent" and "HHead Descent" boxes with values of 2189 and -600 respectively.
+`;
+
 const FontSizePage = () =>
   <GalleryDescriptionTile>
     <NxP>
@@ -47,27 +62,27 @@ const FontSizePage = () =>
 
     <section>
       <NxH3>Vocabulary</NxH3>
-      <ul className="nx-list">
-        <li className="nx-list__item">
-          <span className="nx-list__text">Glyph:</span>
-          <span className="nx-list__subtext">The visible shape of a character.</span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">Baseline:</span>
-          <span className="nx-list__subtext">
+      <NxList>
+        <NxList.Item>
+          <NxList.Text>Glyph:</NxList.Text>
+          <NxList.Subtext>The visible shape of a character.</NxList.Subtext>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Baseline:</NxList.Text>
+          <NxList.Subtext>
             When writing or printing characters, the baseline is the <q>bottom</q> of standard characters. For
             instance, when writing by hand on ruled paper, the rule line on which you are writing is the baseline.
             By default, the characters in a sequence of text all have their baselines aligned.
-          </span>
-        </li>
-        <li className="nx-list__item">
-          <span className="nx-list__text">Descender:</span>
-          <span className="nx-list__subtext">
+          </NxList.Subtext>
+        </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>Descender:</NxList.Text>
+          <NxList.Subtext>
             Many glyphs, such as <q>q</q>, contain parts that drop below the baseline. Fonts and line layouts must
             take this into account.
-          </span>
-        </li>
-      </ul>
+          </NxList.Subtext>
+        </NxList.Item>
+      </NxList>
     </section>
 
     <section>
@@ -93,7 +108,7 @@ const FontSizePage = () =>
           OpenSans has an Em-square of 2048, broken down into an ascent of 1638 and a descent of 410, as seen in
           FontForge below
         </NxP>
-        <img src={openSansEmSquareImg}/>
+        <img alt={firstImageAltText} src={openSansEmSquareImg}/>
 
         <NxP>
           Theoretically, the em-square can be thought of as roughly the extent of the visible area of the font's
@@ -127,7 +142,7 @@ const FontSizePage = () =>
           are each used by different operating systems in different circumstances. Luckily for us however, OpenSans
           uses a consistent set of values: 2189 for the ascender and 600 for the descender, as pictured below:
         </NxP>
-        <img src={openSansLineSpacingImg}/>
+        <img alt={secondImageAltText} src={openSansLineSpacingImg}/>
 
         <NxP>
           As you can see these values are larger than those that defined the em-square, and they are once again

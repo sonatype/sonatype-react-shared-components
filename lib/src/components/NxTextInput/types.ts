@@ -10,10 +10,12 @@ import { FormEvent, InputHTMLAttributes, TextareaHTMLAttributes, ReactNode } fro
 /**
  * The valid values for the `type` Prop
  */
-export const inputTypes = ['textarea', 'text', 'password'] as const;
+export const publicInputTypes = ['textarea', 'text', 'password'] as const;
+export const inputTypes = [...publicInputTypes, 'date'] as const;
 
 // See https://stackoverflow.com/a/45486495
 export type NxTextInputType = (typeof inputTypes)[number];
+export type PublicNxTextInputType = (typeof publicInputTypes)[number];
 
 export type ValidationErrors = string | string[] | null;
 export type Validator = ((val: string) => ValidationErrors) | null;
@@ -48,10 +50,12 @@ export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   prefixContent?: ReactNode | null;
 };
 
-export type PublicProps = Omit<Props, 'prefixContent'>;
+export interface PublicProps extends Omit<Props, 'prefixContent'> {
+  type?: PublicNxTextInputType | null;
+}
 
 export const propTypes: PropTypes.ValidationMap<PublicProps> = {
-  type: PropTypes.oneOf([...inputTypes, undefined]),
+  type: PropTypes.oneOf([...publicInputTypes, undefined]),
   value: PropTypes.string.isRequired,
   isPristine: PropTypes.bool.isRequired,
   validationErrors: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string.isRequired), PropTypes.string]),

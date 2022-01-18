@@ -21,13 +21,13 @@ function NxStatefulDropdownExample() {
 
   return (
     <NxStatefulDropdown label={labelElement}>
-      <a onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Nav Link1
       </a>
-      <a onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Nav Link2
       </a>
-      <a onClick={onClick} className="nx-dropdown-button">
+      <a href="#/" className="nx-dropdown-button">
         Nav Link3
       </a>
       <button onClick={onClick} className="nx-dropdown-button">

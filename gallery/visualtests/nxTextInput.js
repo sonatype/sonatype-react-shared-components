@@ -14,7 +14,9 @@ describe('NxTextInput', function() {
       textareaComponentSelector = '#nx-text-input-textarea-validation-example .nx-text-input',
       validatableTextareaComponentSelector = '#nx-text-input-textarea-validation-example .nx-text-input',
       longComponentSelector = '#nx-text-input-long-example .nx-text-input:not(.nx-text-input--textarea)',
+      shortComponentSelector = '#nx-text-input-short-example .nx-text-input:not(.nx-text-input--textarea)',
       longTextareaComponentSelector = '#nx-text-input-long-example .nx-text-input--textarea',
+      shortTextareaComponentSelector = '#nx-text-input-short-example .nx-text-input--textarea',
       disabledComponentSelector = '#nx-text-input-disabled-example .nx-text-input.pristine',
       disabledValidComponentSelector = '#nx-text-input-disabled-example .nx-text-input.valid',
       disabledInvalidComponentSelector = '#nx-text-input-disabled-example .nx-text-input.invalid';
@@ -32,10 +34,10 @@ describe('NxTextInput', function() {
 
     it('has a darker border when hovered',
         hoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
-    it('has a blue border when focused',
+    it('has a blue border and glow when focused',
         focusTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
 
-    it('has a blue border and blue glow when hovered and focused',
+    it('has a blue border and glow when hovered and focused',
         focusAndHoverTest(simpleComponentSelector, getInputElementSelector(simpleComponentSelector)));
   });
 
@@ -125,8 +127,16 @@ describe('NxTextInput', function() {
     it('looks right', simpleTest(longComponentSelector));
   });
 
+  describe('Short NxTextInput', function() {
+    it('looks right', simpleTest(shortComponentSelector));
+  });
+
   describe('Long textarea NxTextInput', function() {
     it('looks right', simpleTest(longTextareaComponentSelector));
+  });
+
+  describe('Short textarea NxTextInput', function() {
+    it('looks right', simpleTest(shortTextareaComponentSelector));
   });
 
   describe('Disabled NxTextInput', function() {

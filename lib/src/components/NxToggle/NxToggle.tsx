@@ -50,6 +50,8 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
                  checked={isChecked}
                  readOnly={!onChange}
                  onChange={onChange || undefined}
+                 role="switch"
+                 aria-checked={isChecked}
                  { ...otherInputAttributes } />
           <div className="nx-toggle__control"><div className="nx-toggle__indicator"/></div>
           { children && <span className="nx-toggle__content">{children}</span> }

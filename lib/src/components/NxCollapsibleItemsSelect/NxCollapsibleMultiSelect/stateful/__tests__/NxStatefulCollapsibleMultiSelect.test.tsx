@@ -6,6 +6,7 @@
  */
 import {getShallowComponent} from '../../../../../__testutils__/enzymeUtils';
 import NxStatefulCollapsibleMultiSelect, {Props, Option} from '../NxStatefulCollapsibleMultiSelect';
+import { NxStatefulTreeViewMultiSelect } from '../../../../../index';
 
 describe('NxStatefulCollapsibleMultiSelect', function() {
   const requiredProps: Props = {
@@ -19,6 +20,10 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
   };
 
   const getShallow = getShallowComponent<Props>(NxStatefulCollapsibleMultiSelect, requiredProps);
+
+  it('is aliased as NxStatefulTreeViewMultiSelect', function() {
+    expect(NxStatefulCollapsibleMultiSelect).toBe(NxStatefulTreeViewMultiSelect);
+  });
 
   it('properly renders component using only required props', function() {
     const shallowRender = getShallow();

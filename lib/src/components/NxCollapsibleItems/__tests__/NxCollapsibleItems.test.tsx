@@ -9,6 +9,8 @@ import React from 'react';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxCollapsibleItems, { Props } from '../NxCollapsibleItems';
+import { NxTreeView, NxTreeViewChild } from '../../../index';
+
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxTooltip from '../../NxTooltip/NxTooltip';
 import { mount } from 'enzyme';
@@ -19,6 +21,14 @@ describe('NxCollapsibleItems', function() {
         triggerContent: <span>Trigger</span>
       },
       getShallowComponent = enzymeUtils.getShallowComponent(NxCollapsibleItems, minimalProps);
+
+  it('is aliased as NxTreeView', function() {
+    expect(NxCollapsibleItems).toBe(NxTreeView);
+  });
+
+  it('aliased its Child subcomponent as NxTreeViewChild', function() {
+    expect(NxCollapsibleItems.Child).toBe(NxTreeViewChild);
+  });
 
   it('renders a div with a list role and the nx-collapsible-items class', function() {
     expect(getShallowComponent()).toMatchSelector('div.nx-collapsible-items');

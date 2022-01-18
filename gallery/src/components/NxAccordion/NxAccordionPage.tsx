@@ -12,21 +12,24 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxAccordionSimpleExample from './NxAccordionExample';
 import NxAccordionComplexExample from './NxAccordionComplexExample';
 import NxAccordionTertiaryButtonExample from './NxAccordionTertiaryButtonExample';
+import NxAccordionWithNxListExample from './NxAccordionWithNxListExample';
 
 const NxAccordionSimpleCode = require('./NxAccordionExample?raw'),
     NxAccordionComplexCode = require('./NxAccordionComplexExample?raw'),
-    NxAccordionTertiaryButtonCode = require('./NxAccordionTertiaryButtonExample?raw');
+    NxAccordionTertiaryButtonCode = require('./NxAccordionTertiaryButtonExample?raw'),
+    NxAccordionWithNxListCode = require('./NxAccordionWithNxListExample?raw');
 
 const NxAccordionPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
         NxAccordion renders a panel with an always-visible header and a collapsible/expandable body section.
-        This is analogous to the HTML 5 <NxCode>&lt;details&gt;</NxCode> element (which is is
-        implemented on top of). There are two related components: <NxCode>NxAccordion</NxCode> itself,
-        and <NxCode>NxAccordion.Header</NxCode> which represents the header content. All other
+        This is analogous to the HTML 5 <NxCode>&lt;details&gt;</NxCode> element (which it is
+        implemented on top of). There are three related components: <NxCode>NxAccordion</NxCode> itself,
+        <NxCode>NxAccordion.Header</NxCode> which represents the header content, and
+        {' '}<NxCode>NxAccordion.Title</NxCode> which is a convenience component for the header title. All other
         children of <NxCode>NxAccordion</NxCode> aside from
-        the <NxCode>Header</NxCode> are rendered in the collapsible section.
+        the <NxCode>Header</NxCode> and the <NxCode>Title</NxCode> are rendered in the collapsible section.
 
         Note that this component is stateless – its open state must be tracked externally.
         See <NxCode>NxStatefulAccordion</NxCode> for a version which tracks its own open state.
@@ -157,6 +160,17 @@ const NxAccordionPage = () =>
                         liveExample={NxAccordionSimpleExample}
                         codeExamples={NxAccordionSimpleCode}>
       A simple example of an <NxCode>NxAccordion</NxCode>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with nested NxList"
+                        id="nx-accordion-nested-nx-list-example"
+                        defaultCheckeredBackground={true}
+                        liveExample={NxAccordionWithNxListExample}
+                        codeExamples={NxAccordionWithNxListCode}>
+      An example of an <NxCode>NxAccordion</NxCode> with nested <NxCode>NxList</NxCode>.
+      A special styling is applied to <NxCode>NxList</NxCode> when it is the first child nested
+      inside <NxCode>NxAccordion</NxCode>. The border and the top padding are removed
+      so it looks more unified with the Accordion.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with optional elements"

@@ -21,9 +21,18 @@ const selectableColorNxTagExampleCode = require('./SelectableColorNxTagExample?r
 const customExampleCode =
     [selectableColorCustomExampleCode, { content: selectableColorCustomExampleStyles, language: 'scss' }];
 
+const deprecatedColorMapping: Record<string, string> = {
+  sky: 'light-blue',
+  turquoise: 'green',
+  kiwi: 'lime'
+};
+
 const ColorDocRow = ({ name, className }: { name: string, className: string }) =>
   <NxTable.Row className={className}>
     <NxTable.Cell><NxCode>{name}</NxCode></NxTable.Cell>
+    <NxTable.Cell>
+      { deprecatedColorMapping[name] && <NxCode>{deprecatedColorMapping[name]}</NxCode> }
+    </NxTable.Cell>
     <NxTable.Cell>
       <div className="gallery-color-sample gallery-color-sample__selectable-light" />
     </NxTable.Cell>
@@ -84,16 +93,30 @@ const SelectableColorsPage = () =>
           fashion. To allow this, RSC also provides a TypeScript array
           named <NxCode>selectableColorClasses</NxCode> containing all of the available selectable
           color CSS classes. A custom component can pull classnames from that array and apply them to elements, never
-          needing to know whether it is using, say, the red selectable color vs the light-blue selectable color.
+          needing to know whether it is using, say, the red selectable color vs the sky selectable color.
         </NxP>
         <NxP>
           RSC additionally provides a TypeScript array containing just the selectable color names,
           named <NxCode>selectableColors</NxCode>. The colors in this array are in the same order as
-          in <NxCode>selectableColorClasses</NxCode>, so indexing into <NxCode>selectableColorClasses</NxCode>
+          in <NxCode>selectableColorClasses</NxCode>, so indexing into <NxCode>selectableColorClasses</NxCode>{' '}
           using a given index will get you the CSS class for the color located at the same index
           in <NxCode>selectableColors</NxCode>. The set of valid selectable color names is also available as
           a TypeScript type union named <NxCode>SelectableColor</NxCode>. You may notices this type is
           used on the <NxCode>color</NxCode> prop of <NxCode>NxTag</NxCode>, for instance.
+        </NxP>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Deprecated Color Names</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          Over time, the names of selectable colors sometimes change. When this happens, in order to preserve backwards
+          compatibility, a mapping is created to designate which one of the current selectable colors the old name
+          should refer to. The deprecated name's CSS class is styled equivalently to the class for the new name.
+          The deprecated names are <strong>not</strong> present in the <NxCode>selectableColors</NxCode> and{' '}
+          <NxCode>selectableColorClasses</NxCode> lists - they only contain current colors. However they are part of
+          the <NxCode>SelectableColor</NxCode> TypeScript type so that components which rely on that type can continue
+          to accept old names. Deprecated selectable color names may be fully removed in major versions of RSC.
         </NxP>
       </NxTile.Subsection>
       <NxTile.Subsection>
@@ -104,6 +127,7 @@ const SelectableColorsPage = () =>
           <NxTable.Head>
             <NxTable.Row>
               <NxTable.Cell>Color Name</NxTable.Cell>
+              <NxTable.Cell>Deprecated Names</NxTable.Cell>
               <NxTable.Cell>Light</NxTable.Cell>
               <NxTable.Cell>Dark</NxTable.Cell>
             </NxTable.Row>

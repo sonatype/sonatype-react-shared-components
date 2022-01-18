@@ -50,7 +50,8 @@ exports.config = {
     ],
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+        // exclude accordion for now until we can decide what to do about buttons in accordion headers
+        './visualtests/nxAccordion.js',
     ],
     //
     // ============
@@ -282,7 +283,7 @@ exports.config = {
         eyesConf.setBranchName(applitoolsBranchname);
       }
 
-      eyesConf.setParentBranchName('sonatype/sonatype-react-shared-components/master');
+      eyesConf.setParentBranchName('sonatype/sonatype-react-shared-components/main');
 
       // NOTE: Applitools API Key gets read from APPLITOOLS_API_KEY env variable automatically
       eyesConf.setAppName('React Shared Components');
@@ -323,7 +324,7 @@ exports.config = {
       try {
         await eyes.closeAsync();
 
-        if (process.env.GIT_BRANCH === 'master') {
+        if (process.env.GIT_BRANCH === 'main') {
           try {
             await eyes.getRunner().getAllTestResults(true);
           }

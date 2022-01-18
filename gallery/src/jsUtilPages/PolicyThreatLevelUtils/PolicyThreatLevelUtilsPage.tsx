@@ -22,7 +22,7 @@ const PolicyThreatLevelUtilsPage = () =>
         objects and TypeScript types that provide code definitions and mappings between these two concepts.
       </NxP>
 
-      <NxList className="nx-list--bulleted">
+      <NxList bulleted>
         <NxList.Item>
           <NxList.Text>
             <strong>Policy Threat Level:</strong> An integer between 0 and 10, inclusive, that describes

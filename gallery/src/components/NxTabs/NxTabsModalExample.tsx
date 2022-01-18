@@ -13,7 +13,8 @@ import {
   NxTabPanel,
   NxModal,
   NxButton,
-  NxFontAwesomeIcon
+  NxFontAwesomeIcon,
+  NxList
 } from '@sonatype/react-shared-components';
 
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
@@ -44,45 +45,45 @@ const NxTabsModalExample = () => {
                 <NxTab>Fourth Tab</NxTab>
               </NxTabList>
               <NxTabPanel>
-                <ul className="nx-list nx-list--bulleted">
-                  <li className="nx-list__item">
-                    <span className="nx-list__text">Item 1</span>
-                  </li>
-                  <li className="nx-list__item">
-                    <span className="nx-list__text">Item 2</span>
-                    <ul className="nx-list nx-list--bulleted">
-                      <li className="nx-list__item">
-                        <span className="nx-list__text">Item 1</span>
-                      </li>
-                      <li className="nx-list__item">
-                        <span className="nx-list__text">Item 2</span>
-                      </li>
-                      <li className="nx-list__item">
-                        <span className="nx-list__text">Item 3</span>
-                        <ul className="nx-list nx-list--bulleted">
-                          <li className="nx-list__item">
-                            <span className="nx-list__text">
+                <NxList bulleted>
+                  <NxList.Item>
+                    <NxList.Text>Item 1</NxList.Text>
+                  </NxList.Item>
+                  <NxList.Item>
+                    <NxList.Text>Item 2</NxList.Text>
+                    <NxList bulleted>
+                      <NxList.Item>
+                        <NxList.Text>Item 1</NxList.Text>
+                      </NxList.Item>
+                      <NxList.Item>
+                        <NxList.Text>Item 2</NxList.Text>
+                      </NxList.Item>
+                      <NxList.Item>
+                        <NxList.Text>Item 3</NxList.Text>
+                        <NxList bulleted>
+                          <NxList.Item>
+                            <NxList.Text>
                               Item 1 this list items is also long enough that it wraps, or at least it should if I have
                               typed enough text, how much wood would a woodchuck chuck
-                            </span>
-                          </li>
-                          <li className="nx-list__item">
-                            <span className="nx-list__text">Item 2</span>
-                          </li>
-                          <li className="nx-list__item">
-                            <span className="nx-list__text">Item 3</span>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className="nx-list__item">
-                        <span className="nx-list__text">Item 4</span>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="nx-list__item">
-                    <span className="nx-list__text">Item 3</span>
-                  </li>
-                </ul>
+                            </NxList.Text>
+                          </NxList.Item>
+                          <NxList.Item>
+                            <NxList.Text>Item 2</NxList.Text>
+                          </NxList.Item>
+                          <NxList.Item>
+                            <NxList.Text>Item 3</NxList.Text>
+                          </NxList.Item>
+                        </NxList>
+                      </NxList.Item>
+                      <NxList.Item>
+                        <NxList.Text>Item 4</NxList.Text>
+                      </NxList.Item>
+                    </NxList>
+                  </NxList.Item>
+                  <NxList.Item>
+                    <NxList.Text>Item 3</NxList.Text>
+                  </NxList.Item>
+                </NxList>
               </NxTabPanel>
               <NxTabPanel>Tab 2</NxTabPanel>
               <NxTabPanel>Tab 3</NxTabPanel>

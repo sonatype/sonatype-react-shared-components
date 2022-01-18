@@ -145,6 +145,23 @@ export default function NxFormLayoutExample() {
                         onSelectedItemsFilterChange={setSelectedTransferItemsFilter}
                         onChange={setSelectedTransferItems} />
       </NxFieldset>
+      <dl className="nx-read-only">
+        <dt className="nx-read-only__label">
+          This is a read only label that that describes the data that will appear below
+        </dt>
+        <dd className="nx-read-only__data">
+          Data - found security vulnerability CVE-2020-6230 with severity &lt; 10 (severity = 7.2)
+        </dd>
+        <dd className="nx-read-only__data">
+          Found security vulnerability CVE-2020-6230 with severity &gt;= 7 (severity = 7.2)
+        </dd>
+        <dd className="nx-read-only__data">
+          Found security vulnerability CVE-2020-6230 with status 'Open', not 'Not Applicable'
+        </dd>
+        <dd className="nx-read-only__data">
+          Component does not contain proprietary packages
+        </dd>
+      </dl>
       <footer className="nx-footer">
         <div className="nx-btn-bar">
           <NxButton type="button">Cancel</NxButton>

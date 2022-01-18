@@ -150,7 +150,7 @@ const NxFormLayoutPage = () =>
                         id="nx-form-layout-example"
                         codeExamples={NxFormLayoutCode}
                         liveExample={NxFormLayoutExample}>
-      This example shows a standard vertical form layout with validation on some fields.
+      This example shows a standard vertical form layout with validation on some fields and read-only data.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Horizontal form layout"

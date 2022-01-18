@@ -12,25 +12,18 @@ import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons'
 import './NxTextInput.scss';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { Props, propTypes, TextInputElement } from './types';
+import { Props, PublicProps, propTypes, TextInputElement } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 import { getUniqueId } from '../../util/idUtil';
 export { Props, PublicProps, StateProps, propTypes, inputTypes } from './types';
 
-/**
- * Standard text input with validation styling
- * @param type What type of text input to render.  Defaults to "text".
- *   Possible values: "textarea" | "text" | "password"
- * @param value The value rendered in the text input
- * @param isPristine Should be set to true when the user has not yet adjusted the value of the input
- * @param validationErrors Zero or more validation error messages.  If empty or not defined, the field is
- *   considered to be valid
- * @param onChange A callback for when the user changes the value of the text box (e.g. by typing a letter)
- * @param onKeyPress A callback for when the user presses a key that doesn't necessarily change the input value
- *    (e.g. by hitting enter)
+/*
+ * The full implementation of NxTextInput including options that are only for use internally within
+ * other RSC compoents
  */
-const NxTextInput = forwardRef<HTMLDivElement, Props>(
-    function NxTextInput(props, forwardedRef) {
+/* eslint-disable react/prop-types */
+export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
+    function PrivateNxTextInput(props, forwardedRef) {
       const {
         type,
         isPristine,
@@ -90,6 +83,10 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
 
       return (
         <div ref={forwardedRef} className={internalClassName}>
+          {/* This click handler doesn't need to be accessible, it is only to mitigate a mouse-specific
+            * presentational concern
+            */}
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions*/}
           <div className="nx-text-input__box" onClick={setFocusToInput}>
             {prefixContent}
             {React.createElement(element, {
@@ -111,6 +108,16 @@ const NxTextInput = forwardRef<HTMLDivElement, Props>(
           </div>
         </div>
       );
+    }
+);
+/* eslint-enable react/prop-types */
+
+/*
+ * The public version of NxTextInput
+ */
+const NxTextInput = forwardRef<HTMLDivElement, PublicProps>(
+    function NxTextInput(props, ref) {
+      return <PrivateNxTextInput ref={ref} { ...props } />;
     }
 );
 
