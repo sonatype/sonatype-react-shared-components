@@ -34,7 +34,6 @@
   "author": "Sonatype, Inc.",
   "license": "EPL-2.0",
   "devDependencies": {
-    "@rollup/plugin-typescript": "^8.3.0",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.20",
@@ -63,7 +62,6 @@
     "replace-in-file": "^6.3.2",
     "resolve-url-loader": "^3.1.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.59.0",
     "sass": "^1.37.5",
     "sass-loader": "^10.1.0",
     "ts-jest": "^26.4.4",
