@@ -9,7 +9,8 @@
     "directory": "lib"
   },
   "scripts": {
-    "build": "npm-run-all -p lint compile-ts compile-scss copy-scss copy-package-json copy-assets output-server",
+    "build": "npm-run-all output-frontend output-server",
+    "output-frontend": "npm-run-all -p lint compile-ts compile-scss copy-scss copy-package-json copy-assets",
     "watch": "npm-run-all -p lint compile-ts-watch compile-scss-watch copy-scss-watch copy-package-json-watch copy-assets-watch",
     "lint": "eslint --ignore-pattern __tests__ --ignore-pattern __mocks__ --ignore-pattern __testutils__ 'src/**/*.{js,ts}{,x}'",
     "lint-tests": "eslint --no-eslintrc -c .eslintrc-tests 'src/**/{__tests__,__mocks__,__testutils__}/**/*.{js,ts}{,x}'",
@@ -23,7 +24,9 @@
     "copy-scss-watch": "cpx -w \"src/**/*.scss\" dist",
     "copy-assets-watch": "cpx -w \"src/assets/**/*\" dist/assets",
     "copy-package-json-watch": "cpx -w package.json dist",
-    "output-server": "tsc --project tsconfig.server.json && replace-in-file --configFile=replace-config.js && cpx \"src/assets/**/*\" dist/server/assets",
+    "output-server": "npm-run-all copy-dist-to-server remove-server-scss-imports",
+    "copy-dist-to-server": "cpx -C \"dist/**/*\" dist/server",
+    "remove-server-scss-imports": "replace-in-file --configFile=replace-config.js",
     "test": "npm-run-all lint-tests jest",
     "jest": "jest",
     "test-watch": "jest --watch",
