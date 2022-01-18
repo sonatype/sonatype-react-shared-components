@@ -1,4 +1,4 @@
-import { NxButton, NxH1, NxH2 } from '@sonatype/react-shared-components/dist/server';
+import { NxButton, NxH1, NxH2 } from '@sonatype/react-shared-components/server';
 import React, { useCallback, useState } from 'react';
 
 const useExampleState = (initialState: boolean = false): [boolean, any] => {

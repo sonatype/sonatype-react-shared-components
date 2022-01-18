@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { NxButton}  from '@sonatype/react-shared-components/dist/server';
+import { NxButton}  from '@sonatype/react-shared-components/server';
 import { useState } from 'react';
 import ExampleComponent from '../components/ExampleComponent';
 import NxStatefulCheckbox from '../components/stateful/NxStatefulCheckbox'
