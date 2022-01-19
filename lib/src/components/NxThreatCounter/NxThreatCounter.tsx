@@ -13,7 +13,7 @@ export { Props } from './types';
 import './NxThreatCounter.scss';
 
 export default function NxThreatCounter({
-  criticalCount, severeCount, moderateCount, lowCount, noneCount, layout, className, ...attrs }: Props) {
+  criticalCount, severeCount, moderateCount, lowCount, noneCount, unspecifiedCount, layout, className, ...attrs }: Props) {
 
   const layoutClasses = classnames('nx-threat-counter-container', className, {
     [`nx-threat-counter-container--${layout}`]: layout
@@ -23,7 +23,8 @@ export default function NxThreatCounter({
       typeof severeCount !== 'number' &&
       typeof moderateCount !== 'number' &&
       typeof lowCount !== 'number' &&
-      typeof noneCount !== 'number') {
+      typeof noneCount !== 'number' &&
+      typeof unspecifiedCount !== 'number') {
     console.warn('No counts have been provided and so nothing will be rendered.');
     return null;
   }
@@ -54,6 +55,11 @@ export default function NxThreatCounter({
       <div className="nx-threat-counter nx-threat-counter--none">
         <dt className="nx-threat-counter__text">None</dt>
         <dd className="nx-threat-counter__count">{noneCount}</dd>
+      </div>}
+      {typeof unspecifiedCount === 'number' &&
+      <div className="nx-threat-counter nx-threat-counter--unspecified">
+        <dt className="nx-threat-counter__text">Unspecified</dt>
+        <dd className="nx-threat-counter__count">{unspecifiedCount}</dd>
       </div>}
     </dl>
   );
