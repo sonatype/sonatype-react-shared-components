@@ -33,12 +33,8 @@ import NxTableFilterExample from './NxTableFilterExample';
 import NxTablePaginationExample from './NxTablePaginationExample';
 import NxTablePaginationFilterExample from './NxTablePaginationFilterExample';
 
-import NxTableClickableExampleHTML from '../../styles/NxTable/NxTableClickableExample';
 import NxTableIconButtonExampleHTML from '../../styles/NxTable/NxTableIconButtonExample';
-import NxTableErrorExampleHTML from '../../styles/NxTable/NxTableErrorStateExample';
 import NxTableFixedLayoutExampleHTML from '../../styles/NxTable/NxTableFixedLayoutExample';
-import NxTableSortableExampleHTML from '../../styles/NxTable/NxTableSortableExample';
-import NxTableFilterExampleHTML from '../../styles/NxTable/NxTableFilterExample';
 
 const tableSimpleExampleCode = require('./NxTableSimpleExample?raw');
 const tableClickableExample = require('./NxTableClickableExample?raw');
@@ -98,8 +94,8 @@ export default function NxTablePage() {
       <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId}>
         <NxTabList>
           <NxTab>Usage</NxTab>
-          <NxTab>React Examples</NxTab>
-          <NxTab>HTML Examples</NxTab>
+          <NxTab>Basic Examples</NxTab>
+          <NxTab>Variations</NxTab>
         </NxTabList>
 
         <NxTabPanel>
@@ -717,9 +713,16 @@ export default function NxTablePage() {
           <GalleryExampleTile title="Simple Example"
                               liveExample={NxTableSimpleExample}
                               codeExamples={tableSimpleExampleCode}>
-            A basic example of <NxCode>NxTable</NxCode>.
+            A basic example of the REACT <NxCode>NxTable</NxCode> component.
           </GalleryExampleTile>
 
+          <GalleryExampleTile title="NX Table Simple Example"
+                              htmlExample={NxTableSimpleCode}
+                              codeExamples={NxTableSimpleCode}>
+            A simple, static demonstration of <NxCode>nx-table</NxCode> HTML/CSS layout and styles.
+          </GalleryExampleTile>
+        </NxTabPanel>
+        <NxTabPanel>
           <GalleryExampleTile title="Clickable Row Example"
                               id="nx-table-clickable-example"
                               liveExample={NxTableClickableExample}
@@ -730,27 +733,29 @@ export default function NxTablePage() {
           <GalleryExampleTile title="Clickable Row Custom Icon Example"
                               id="nx-table-clickable-custom-example"
                               liveExample={NxTableClickableCustomExample}
-                              codeExamples={tableClickableCustomExample}>
+                              codeExamples={[tableClickableCustomExample, NxTableClickableCode]}>
             An example where the rows are styled to indicate that they are clickable, using a custom icon rather than
-            the typical right-facing chevron.
+            the typical right-facing chevron. Both React and HTML code examples are shown below.
           </GalleryExampleTile>
 
           <GalleryExampleTile title="Sortable Columns Example"
                               id="nx-table-sortable-example"
                               liveExample={NxTableSortableExample}
-                              codeExamples={tableSortableExample}>
-            An example with a sortable column.
+                              codeExamples={[tableSortableExample, NxTableSortableCode]}>
+            An example with sortable columns.
+            React and HTML code examples are shown below.
           </GalleryExampleTile>
 
           <GalleryExampleTile title="Filter Columns Example"
                               id="nx-table-filter-example"
                               liveExample={NxTableFilterExample}
-                              codeExamples={tableFilterExample}>
+                              codeExamples={[tableFilterExample, NxTableFilterCode]}>
             An example with filter columns.
             The first column has a basic filter input, the rows will be filtered
             if any name contains the text provided in the input.
             The second column has a filter input which provides a suggestion capability, the rows will be filtered
             when the country contains the text provided in the input.
+            React and HTML code is shown below.
           </GalleryExampleTile>
 
           <GalleryExampleTile title="Pagination Example"
@@ -780,29 +785,22 @@ export default function NxTablePage() {
           <GalleryExampleTile title="Error Example"
                               id="nx-table-error-example"
                               liveExample={NxTableErrorExample}
-                              codeExamples={tableErrorExample}>
+                              codeExamples={[tableErrorExample, NxTableErrorStateCode]}>
             An example of how <NxCode>NxTable</NxCode> should be used to indicate that there was an error
-            loading its data.
+            loading its data. React and HTML examples are shown below.
           </GalleryExampleTile>
 
           <GalleryExampleTile title="Empty Example"
                               liveExample={NxTableEmptyExample}
-                              codeExamples={tableEmptyExample}>
+                              codeExamples={[tableEmptyExample, NxTableEmptyCode]}>
             An example of how <NxCode>NxTable</NxCode> should be used to indicate that there is no data
-            to be seen.
+            to be seen. React and HTML code is shown below.
           </GalleryExampleTile>
 
           <GalleryExampleTile title="Custom Meta-Info Example"
                               liveExample={NxTableMetaInfoExample}
                               codeExamples={tableMetaInfoExample}>
             An example of how <NxCode>NxTable</NxCode> should be used with a custom meta-info situation.
-          </GalleryExampleTile>
-        </NxTabPanel>
-        <NxTabPanel>
-          <GalleryExampleTile title="NX Table Simple Example"
-                              htmlExample={NxTableSimpleCode}
-                              codeExamples={NxTableSimpleCode}>
-            A simple, static demonstration of <NxCode>nx-table</NxCode> styles.
           </GalleryExampleTile>
 
           <GalleryExampleTile title="NX Table Truncation and Wrapping Example"
@@ -814,13 +812,6 @@ export default function NxTablePage() {
             table cell, which must have an explicit width.
           </GalleryExampleTile>
 
-          <GalleryExampleTile title="NX Table with Clickable Rows Example"
-                              liveExample={NxTableClickableExampleHTML}
-                              codeExamples={NxTableClickableCode}>
-            A demonstration of an <NxCode>nx-table</NxCode> with rows that receive clickable styling and
-            a chevron column.
-          </GalleryExampleTile>
-
           <GalleryExampleTile title="NX Table Fixed Layout Example"
                               id="nx-table-fixed-layout-example"
                               liveExample={NxTableFixedLayoutExampleHTML}
@@ -829,36 +820,6 @@ export default function NxTablePage() {
             a custom class to explicitly set the widths of table rows. Notice here that the implementation of a
             truncated column is simpler: the inner <NxCode>div</NxCode> is not necessary and instead
             the <NxCode>.nx-truncate-ellipsis</NxCode> class can be applied directly to the table cell.
-          </GalleryExampleTile>
-
-          <GalleryExampleTile title="NX Table Empty Example"
-                              htmlExample={NxTableEmptyCode}
-                              codeExamples={NxTableEmptyCode}>
-            A demonstration of the expected styling and content of an empty <NxCode>nx-table</NxCode>.
-          </GalleryExampleTile>
-
-          <GalleryExampleTile title="NX Table with Error Message Example"
-                              liveExample={NxTableErrorExampleHTML}
-                              codeExamples={NxTableErrorStateCode}>
-            A demonstration of the expected styling and content and an <NxCode>nx-table</NxCode> whose
-            contents failed to load.
-          </GalleryExampleTile>
-
-          <GalleryExampleTile title="NX Table with Sortable Rows Example"
-                              liveExample={NxTableSortableExampleHTML}
-                              codeExamples={NxTableSortableCode}>
-            A demonstration of a <NxCode>nx-table</NxCode> used for columns that can be sorted.
-            In this example the interactivity to sort columns is not wired up. Note
-            the <NxCode>&lt;button&gt;</NxCode> surrounding the sort header contents.
-          </GalleryExampleTile>
-
-          <GalleryExampleTile title="NX Table with Filter Rows Example"
-                              liveExample={NxTableFilterExampleHTML}
-                              codeExamples={NxTableFilterCode}>
-            A demonstration of a <NxCode>nx-table</NxCode> with a header
-            cell that contains a filter. Rows can be filtered depending on the text provided in the input.
-            In this example the interactivity to filter content is not wired up. Note
-            the <NxCode>&lt;button&gt;</NxCode> surrounding the chevron cell contents.
           </GalleryExampleTile>
 
           <GalleryExampleTile title="NX Table with Icon Buttons Example"
