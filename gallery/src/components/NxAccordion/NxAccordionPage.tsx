@@ -218,10 +218,10 @@ export default function NxAccordionPage() {
           </GalleryExampleTile>
 
           <GalleryExampleTile title="Example with nested NxList"
-                        id="nx-accordion-nested-nx-list-example"
-                        defaultCheckeredBackground={true}
-                        liveExample={NxAccordionWithNxListExample}
-                        codeExamples={NxAccordionWithNxListCode}>
+                              id="nx-accordion-nested-nx-list-example"
+                              defaultCheckeredBackground={true}
+                              liveExample={NxAccordionWithNxListExample}
+                              codeExamples={NxAccordionWithNxListCode}>
             An example of an <NxCode>NxAccordion</NxCode> with nested <NxCode>NxList</NxCode>.
             A special styling is applied to <NxCode>NxList</NxCode> when it is the first child nested
             inside <NxCode>NxAccordion</NxCode>. The border and the top padding are removed
