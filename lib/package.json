@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "npm-run-all output-frontend output-server",
-    "output-frontend": "npm-run-all -p lint compile-ts compile-scss copy-scss copy-package-json copy-assets",
+    "output-frontend": "npm-run-all -p lint compile-ts compile-scss copy-scss copy-package-json copy-assets copy-server-assets",
     "watch": "npm-run-all -p lint compile-ts-watch compile-scss-watch copy-scss-watch copy-package-json-watch copy-assets-watch",
     "lint": "eslint --ignore-pattern __tests__ --ignore-pattern __mocks__ --ignore-pattern __testutils__ 'src/**/*.{js,ts}{,x}'",
     "lint-tests": "eslint --no-eslintrc -c .eslintrc-tests 'src/**/{__tests__,__mocks__,__testutils__}/**/*.{js,ts}{,x}'",
@@ -18,6 +18,7 @@
     "compile-scss": "webpack-cli --config=webpack.config.styles.js",
     "copy-scss": "cpx \"src/**/*.scss\" dist",
     "copy-assets": "cpx \"src/assets/**/*\" dist/assets",
+    "copy-server-assets": "cpx \"src/assets/**/*\" dist/server/assets",
     "copy-package-json": "cpx package.json dist",
     "compile-ts-watch": "tsc -w --project tsconfig.build.json",
     "compile-scss-watch": "webpack-cli --watch --config=webpack.config.styles.js",
