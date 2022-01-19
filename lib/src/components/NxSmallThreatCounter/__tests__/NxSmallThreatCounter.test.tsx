@@ -25,7 +25,7 @@ describe('NxSmallThreatCounter', function() {
       moderateCount: null,
       lowCount: null,
       noneCount: null,
-      unspecifiedCount: null,
+      unspecifiedCount: null
     });
     expect(component).toBeEmptyRender();
   });
