@@ -13,18 +13,19 @@ describe('NxSmallThreatCounter', function() {
   const minimalProps = {},
       getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxSmallThreatCounter, minimalProps);
 
-  it('renders nothing if all five indicators are undefined', function() {
+  it('renders nothing if all six indicators are undefined', function() {
     const component = getMountedComponent();
     expect(component).toBeEmptyRender();
   });
 
-  it('renders nothing if all five indicators are null', function() {
+  it('renders nothing if all six indicators are null', function() {
     const component = getMountedComponent({
       criticalCount: null,
       severeCount: null,
       moderateCount: null,
       lowCount: null,
-      noneCount: null
+      noneCount: null,
+      unspecifiedCount: null,
     });
     expect(component).toBeEmptyRender();
   });
@@ -78,19 +79,30 @@ describe('NxSmallThreatCounter', function() {
     expect(noneCounter.find('.nx-small-threat-counter__category')).toHaveText('None');
   });
 
-  it('renders all five indicators', function() {
+  it('renders an .nx-small-threat-counter--unspecified when unspecifiedCount is specified', function() {
+    const component = getMountedComponent({unspecifiedCount: 0});
+    const container = component.find('.nx-small-threat-counter-container');
+    expect(container).toExist();
+    const unspecifiedCounter = component.find('.nx-small-threat-counter--unspecified');
+    expect(unspecifiedCounter.find('.nx-small-threat-counter__count')).toHaveText('0');
+    expect(unspecifiedCounter.find('.nx-small-threat-counter__category')).toHaveText('Unspecified');
+  });
+
+  it('renders all six indicators', function() {
     const component = getMountedComponent({
       criticalCount: 66,
       severeCount: 55,
       moderateCount: 44,
       lowCount: 33,
-      noneCount: 22
+      noneCount: 22,
+      unspecifiedCount: 42
     });
     const criticalCount = component.find('.nx-small-threat-counter--critical'),
         severeCount = component.find('.nx-small-threat-counter--severe'),
         moderateCount = component.find('.nx-small-threat-counter--moderate'),
         lowCount = component.find('.nx-small-threat-counter--low'),
-        noneCount = component.find('.nx-small-threat-counter--none');
+        noneCount = component.find('.nx-small-threat-counter--none'),
+        unspecifiedCount = component.find('.nx-small-threat-counter--unspecified');
     expect(criticalCount.find('.nx-small-threat-counter__count')).toHaveText('66');
     expect(criticalCount.find('.nx-small-threat-counter__category')).toHaveText('Critical');
     expect(severeCount.find('.nx-small-threat-counter__count')).toHaveText('55');
@@ -101,6 +113,8 @@ describe('NxSmallThreatCounter', function() {
     expect(lowCount.find('.nx-small-threat-counter__category')).toHaveText('Low');
     expect(noneCount.find('.nx-small-threat-counter__count')).toHaveText('22');
     expect(noneCount.find('.nx-small-threat-counter__category')).toHaveText('None');
+    expect(unspecifiedCount.find('.nx-small-threat-counter__count')).toHaveText('42');
+    expect(unspecifiedCount.find('.nx-small-threat-counter__category')).toHaveText('Unspecified');
   });
 
   it('correctly assigns supplied class', function() {
@@ -163,7 +177,8 @@ describe('NxSmallThreatCounter', function() {
       severeCount: 55,
       moderateCount: 44,
       lowCount: 33,
-      noneCount: 22
+      noneCount: 22,
+      unspecifiedCount: 42
     });
 
     const criticalCounter = component.find('.nx-small-threat-counter--critical'),
@@ -171,16 +186,19 @@ describe('NxSmallThreatCounter', function() {
         moderateCounter = component.find('.nx-small-threat-counter--moderate'),
         lowCounter = component.find('.nx-small-threat-counter--low'),
         noneCounter = component.find('.nx-small-threat-counter--none'),
+        unspecifiedCounter = component.find('.nx-small-threat-counter--unspecified'),
         criticalTooltip = criticalCounter.parents(NxTooltip),
         severeTooltip = severeCounter.parents(NxTooltip),
         moderateTooltip = moderateCounter.parents(NxTooltip),
         lowTooltip = lowCounter.parents(NxTooltip),
-        noneTooltip = noneCounter.parents(NxTooltip);
+        noneTooltip = noneCounter.parents(NxTooltip),
+        unspecifiedTooltip = unspecifiedCounter.parents(NxTooltip);
 
     expect(criticalTooltip).toHaveProp('title', 'Critical');
     expect(severeTooltip).toHaveProp('title', 'Severe');
     expect(moderateTooltip).toHaveProp('title', 'Moderate');
     expect(lowTooltip).toHaveProp('title', 'Low');
     expect(noneTooltip).toHaveProp('title', 'None');
+    expect(unspecifiedTooltip).toHaveProp('title', 'Unspecified');
   });
 });
