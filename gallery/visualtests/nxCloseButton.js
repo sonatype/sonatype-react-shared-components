@@ -7,7 +7,8 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxCloseButton', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxCloseButton');
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } =
+      setupBrowser('#/pages/NxCloseButton');
 
   const selector = '.gallery-example-live .nx-btn--close';
 

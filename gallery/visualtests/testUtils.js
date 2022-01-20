@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 
 const pageUrl = `file://${__dirname}/../dist/index.html`;
 
-const AxeBuilder = require('@axe-core/webdriverio').default;
+const { AxePuppeteer } = require('@axe-core/puppeteer');
 
 module.exports = {
   setupBrowser(pageFragmentIdentifier, ignoreVersionNumber = true) {
@@ -238,17 +238,16 @@ module.exports = {
         };
       },
 
-    };
-  },
+      a11yTest(builderCustomizer) {
+        return async () => {
+          const builder = new AxePuppeteer(page),
+              customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
+              axeResults = await customizedBuilder.analyze();
 
-  a11yTest(builderCustomizer) {
-    return async () => {
-      const builder = new AxeBuilder({ client: browser }),
-          customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
-          axeResults = await customizedBuilder.analyze();
-
-      expect(axeResults.violations).toEqual([]);
-      expect(axeResults.incomplete).toEqual([]);
+          expect(axeResults.violations).toEqual([]);
+          expect(axeResults.incomplete).toEqual([]);
+        };
+      }
     };
   }
 };

@@ -13,6 +13,7 @@ describe('NxCodeSnippet', function() {
     focusAndHoverTest,
     hoverTest,
     simpleTest,
+    a11yTest,
     waitAndGetElements,
     dismissResultingDialog,
     getPage,

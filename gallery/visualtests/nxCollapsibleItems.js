@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxCollapsibleItems', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, wait } =
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest, waitAndGetElements, wait } =
       setupBrowser('#/pages/NxCollapsibleItems');
 
   const selector = '#nx-collapsible-items-example .nx-collapsible-items:nth-child(3)',

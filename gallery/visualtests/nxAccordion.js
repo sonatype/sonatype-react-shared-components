@@ -11,6 +11,7 @@ describe('NxAccordion', function() {
     waitAndGetElements,
     simpleTest,
     focusTest,
+    a11yTest,
     dismissResultingDialog,
     blurElement
   } = setupBrowser('#/pages/NxAccordion');
@@ -50,5 +51,6 @@ describe('NxAccordion', function() {
     it('looks right', simpleTest(nestedNxListExampleSelector));
   });
 
-  it('passes a11y checks', a11yTest());
+  // Uncomment in RSC-828
+  //it('passes a11y checks', a11yTest());
 });

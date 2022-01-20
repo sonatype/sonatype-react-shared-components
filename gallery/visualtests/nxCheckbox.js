@@ -12,6 +12,7 @@ describe('NxCheckbox', function() {
     focusAndHoverTest,
     hoverTest,
     simpleTest,
+    a11yTest,
     waitForSelectors,
     getElements,
     waitAndGetElements,

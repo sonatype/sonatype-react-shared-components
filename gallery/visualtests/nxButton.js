@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxButton', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxButton');
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/NxButton');
 
   describe('Default NxButton', function() {
     const selector = '#nx-button-default-example .nx-btn:not([disabled]):not(.disabled)';

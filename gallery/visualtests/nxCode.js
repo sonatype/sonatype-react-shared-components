@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-code', function() {
-  const { simpleTest } = setupBrowser('#/pages/nx-code');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/nx-code');
 
   const selector = '.gallery-example-live';
 
