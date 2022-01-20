@@ -47,6 +47,7 @@ module.exports = {
 
     afterEach(async function() {
       await page.removeAllListeners();
+      await page.close();
     });
 
     afterAll(async function() {
