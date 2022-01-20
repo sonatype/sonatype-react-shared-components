@@ -75,4 +75,6 @@ describe('NxCheckbox', function() {
     it('looks disabled by default', simpleTest(disabledSelector));
     it('looks disabled when hovered', hoverTest(disabledSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

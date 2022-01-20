@@ -28,4 +28,6 @@ describe('NxBinaryDonutChart', function() {
     const simpleDonutSelector = '#nx-binary-donut-chart-colored-background-example .gallery-example-live';
     it('has visible borders', simpleTest(simpleDonutSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

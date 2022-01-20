@@ -8,6 +8,8 @@ const puppeteer = require('puppeteer');
 
 const pageUrl = `file://${__dirname}/../dist/index.html`;
 
+const AxeBuilder = require('@axe-core/webdriverio').default;
+
 module.exports = {
   setupBrowser(pageFragmentIdentifier, ignoreVersionNumber = true) {
     let browser, page;
@@ -236,6 +238,17 @@ module.exports = {
         };
       },
 
+    };
+  },
+
+  a11yTest(builderCustomizer) {
+    return async () => {
+      const builder = new AxeBuilder({ client: browser }),
+          customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
+          axeResults = await customizedBuilder.analyze();
+
+      expect(axeResults.violations).toEqual([]);
+      expect(axeResults.incomplete).toEqual([]);
     };
   }
 };

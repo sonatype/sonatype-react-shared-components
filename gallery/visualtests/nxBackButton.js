@@ -15,4 +15,6 @@ describe('NxBackButton', function() {
     it('looks right', simpleTest(exampleSelector));
     it('looks right when hovered', hoverTest(exampleSelector, hoverElementSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

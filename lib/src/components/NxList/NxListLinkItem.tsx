@@ -12,12 +12,26 @@ import { NxFontAwesomeIcon } from '../..';
 import { NxListLinkItemProps, nxListLinkItemPropTypes } from './types';
 
 const NxListLinkItem = forwardRef<HTMLLIElement, NxListLinkItemProps>(
-    function nxListLinkItem({ children, className, disabled, href, selected, anchorClassName,
-      anchorAttributes, ...attrs}, ref) {
-      const liClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className);
-      const aClassNames = classnames('nx-list__link', anchorClassName, {selected, disabled});
+    function nxListLinkItem(props, ref) {
+      const {
+            children,
+            className,
+            disabled,
+            href,
+            selected: selectedProp,
+            anchorClassName,
+            anchorAttributes,
+            ...attrs
+          } = props,
+          selected = selectedProp ?? undefined,
+          liClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className),
+          aClassNames = classnames('nx-list__link', anchorClassName, {selected, disabled});
+
       return (
-        <li ref={ref} className={liClassNames} {...attrs}>
+        // aria-current is the valid one here by the standards, but aria-selected is the one that actually
+        // tends to work in real-world screenreaders
+        /* eslint-disable-next-line jsx-a11y/role-supports-aria-props */
+        <li ref={ref} className={liClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
           <a aria-disabled={includesDisabledClass(aClassNames)}
              className={aClassNames}
              href={href}

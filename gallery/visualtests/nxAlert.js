@@ -35,4 +35,6 @@ describe('NxAlert', function() {
   describe('NxWarningAlert', function() {
     it('looks right', simpleTest(warningSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

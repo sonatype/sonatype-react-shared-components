@@ -17,7 +17,11 @@ const NxListClickableLinksExample = () =>
       </a>
     </li>
     <li className="nx-list__item nx-list__item--clickable">
-      <a href="#/pages/nx-table" className="nx-list__link selected" aria-selected="true">
+      {/* aria-current is the valid one here by the standards, but aria-selected is the one that actually
+        * tends to work in real-world screenreaders
+        */}
+      {/* eslint-disable-next-line jsx-a11y/role-supports-aria-props */}
+      <a href="#/pages/nx-table" className="nx-list__link selected" aria-selected="true" aria-current="true">
         <span className="nx-list__text nx-truncate-ellipsis">
           nx-table page. This list item should be truncated at the right end edge. youtube weathered network
           network systemic systema claymore mine voodoo god garage monofilament realism order-flow corporation car
@@ -39,8 +43,11 @@ const NxListClickableLinksExample = () =>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </a>
     </li>
-    <li className="nx-list__item nx-list__item--clickable" aria-disabled="true">
-      <a href="#/pages/nx-alert" className="nx-list__link disabled">
+    <li className="nx-list__item nx-list__item--clickable">
+      <a href="#/pages/nx-alert"
+         onClick={evt => { evt.preventDefault(); }}
+         className="nx-list__link disabled"
+         aria-disabled="true">
         <span className="nx-list__text">This list item is disabled</span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </a>

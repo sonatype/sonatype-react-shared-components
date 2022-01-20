@@ -70,8 +70,8 @@ dockerizedBuildPipeline(
 
         cd lib
         yarn install --registry "\${registry}"
-        npm run test
-        npm run build
+        yarn test
+        yarn build
         cd dist
         npm pack
         cd ../..
@@ -79,8 +79,8 @@ dockerizedBuildPipeline(
         cd gallery
         yarn install --registry "\${registry}"
 
-        npm run test
-        npm run build
+        yarn test
+        yarn build
         cd ..
       """
     }

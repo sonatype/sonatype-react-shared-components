@@ -62,4 +62,18 @@ describe('NxListButtonItem', function() {
     expect(contentEl.find('span').at(1)).toHaveText('Test Item 1 Subtext');
 
   });
+
+  it('sets aria-selected and aria-current to true iff selected is true', function() {
+    expect(getShallow()).toHaveProp('aria-selected', undefined);
+    expect(getShallow()).toHaveProp('aria-current', undefined);
+
+    expect(getShallow({ selected: true })).toHaveProp('aria-selected', true);
+    expect(getShallow({ selected: true })).toHaveProp('aria-current', true);
+
+    expect(getShallow({ selected: false })).toHaveProp('aria-selected', false);
+    expect(getShallow({ selected: false })).toHaveProp('aria-current', false);
+
+    expect(getShallow({ selected: null })).toHaveProp('aria-selected', undefined);
+    expect(getShallow({ selected: null })).toHaveProp('aria-current', undefined);
+  });
 });

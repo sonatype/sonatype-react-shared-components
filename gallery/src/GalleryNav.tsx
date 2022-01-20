@@ -32,7 +32,7 @@ import { markByFilter, matchesFilter } from './filterUtil';
 const renderLinks = (filter?: string) => pipe(
     keys,
     map((pageName: string) =>
-      <NxTreeViewChild key={pageName}>
+      <NxTreeViewChild key={pageName} role="menuitem">
         <NavLink to={`/pages/${pageName}`} activeClassName="selected">
           {markByFilter(filter, pageName)}
         </NavLink>
@@ -53,7 +53,8 @@ function GalleryNavTreeView(props: GalleryNavTreeViewProps) {
       renderLinksWithFilter = renderLinks(filter);
 
   return (
-    <NxTreeView onToggleCollapse={onToggleCollapse}
+    <NxTreeView role="menu"
+                onToggleCollapse={onToggleCollapse}
                 isOpen={isOpen}
                 triggerContent={categoryName}>
       {renderLinksWithFilter(categoryEntries)}
@@ -125,7 +126,6 @@ function GalleryNav() {
       <NxFilterInput placeholder="Search RSC…"
                      value={filter}
                      onChange={setFilter}
-                     autoFocus
                      onKeyPress={onFilterKeyPress} />
       {filteredCategories}
     </nav>

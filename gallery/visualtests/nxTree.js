@@ -75,6 +75,7 @@ describe('NxTree', function() {
         images = await itemWithText(tree, 'images'),
         imagesCollapse = await collapseTarget(images);
 
+    await imagesCollapse.scrollIntoView({ block: 'center' });
     await imagesCollapse.click();
     await simpleTest(collapsibleExampleSelector)();
   });
@@ -126,12 +127,14 @@ describe('NxTree', function() {
             clickTarget(videos)
           ]);
 
+      await cat1ClickTarget.scrollIntoView({ block: 'center' });
       await cat1ClickTarget.click();
       expect(await isFocused(cat1)).toBe(true);
 
       await rootClickTarget.click();
       expect(await isFocused(root)).toBe(true);
 
+      await itemOutsideTree.scrollIntoView({ block: 'center' });
       await itemOutsideTree.click();
       expect(await tree.evaluate(t => t.contains(document.activeElement))).toBe(false);
 
@@ -178,6 +181,7 @@ describe('NxTree', function() {
           page = getPage();
 
       // collapse the images subtree, and then reset the focus at the top before testing keynav
+      await imagesCollapse.scrollIntoView({ block: 'center' });
       await imagesCollapse.click();
       await rootClick.click();
 
@@ -339,6 +343,7 @@ describe('NxTree', function() {
             [rootCollapse, imagesCollapse] = await Promise.all([collapseTarget(root), collapseTarget(images)]),
             page = getPage();
 
+        await imagesCollapse.scrollIntoView({ block: 'center' });
         await imagesCollapse.click();
         await rootCollapse.click();
         expect(await isFocused(root)).toBe(true);
@@ -359,6 +364,7 @@ describe('NxTree', function() {
             rootClick = await clickTarget(root),
             page = getPage();
 
+        await rootClick.scrollIntoView({ block: 'center' });
         await rootClick.click();
         expect(await isFocused(root)).toBe(true);
         expect(await hasClass(root, 'open')).toBe(true);
@@ -377,6 +383,7 @@ describe('NxTree', function() {
             rootClick = await clickTarget(root),
             page = getPage();
 
+        await rootClick.scrollIntoView({ block: 'center' });
         await rootClick.click();
         expect(await isFocused(root)).toBe(true);
 
@@ -618,6 +625,7 @@ describe('NxTree', function() {
           [cat1Click, imagesClick] = await Promise.all([clickTarget(cat1), clickTarget(images)]),
           page = getPage();
 
+      await cat1Click.scrollIntoView({ block: 'center' });
       await cat1Click.click();
       expect(await isFocused(cat1)).toBe(true);
 

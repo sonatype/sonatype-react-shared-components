@@ -14,4 +14,6 @@ describe('nx-card', function() {
   describe('nx-card row layout', function() {
     it('looks right', simpleTest(rowLayoutCardSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });
