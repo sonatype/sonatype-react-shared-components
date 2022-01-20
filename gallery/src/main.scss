@@ -24,6 +24,12 @@
   padding: var(--nx-spacing-6x);
 }
 
+.gallery-example-code code {
+  // Our current react-syntax-highlighter theme specifies various OS-specific fonts, which cause visual test
+  // discrepancies, so we override with an open source font that we provide
+  font-family: Inconsolata !important;
+}
+
 .gallery-example--checkered-background {
   .gallery-example-live {
     $checker-size: 12px;
