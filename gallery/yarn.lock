@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@axe-core/puppeteer@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.npmjs.org/@axe-core/puppeteer/-/puppeteer-4.3.2.tgz#196748648ce1c5bcf537395441f4ae3b8d9190e9"
+  integrity sha512-/0Od30pNxUr00cO20pndz2n/b5DyYrkAKBBXlpTAbAMPuLtz6JnavR9A1oQMDyBeoQDNbKr7B97FRYSNPPgI9Q==
+  dependencies:
+    axe-core "^4.3.3"
+
 "@babel/code-frame@^7.0.0":
   version "7.5.5"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -1580,7 +1587,7 @@ atob@^2.1.1:
   resolved "https://registry.npmjs.org/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-axe-core@^4.3.5:
+axe-core@^4.3.3, axe-core@^4.3.5:
   version "4.3.5"
   resolved "https://registry.npmjs.org/axe-core/-/axe-core-4.3.5.tgz#78d6911ba317a8262bfee292aeafcc1e04b49cc5"
   integrity sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA==
