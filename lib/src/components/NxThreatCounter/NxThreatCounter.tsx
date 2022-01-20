@@ -12,8 +12,18 @@ export { Props } from './types';
 
 import './NxThreatCounter.scss';
 
-export default function NxThreatCounter({ criticalCount, severeCount, moderateCount, lowCount,
-  noneCount, unspecifiedCount, layout, className, ...attrs }: Props) {
+export default function NxThreatCounter(props: Props) {
+  const {
+    criticalCount,
+    severeCount,
+    moderateCount,
+    lowCount,
+    noneCount,
+    unspecifiedCount,
+    layout,
+    className,
+    ...attrs
+  } = props;
 
   const layoutClasses = classnames('nx-threat-counter-container', className, {
     [`nx-threat-counter-container--${layout}`]: layout
