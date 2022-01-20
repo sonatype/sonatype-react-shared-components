@@ -1,0 +1,59 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+/**
+ * This is the "entrypoint" for files in this directory.  These files represent styles that should be included by
+ * any consumer of the react-shared-components lib
+ */
+
+//http://localhost:4043/?#/pageLayouts/pageScrolling/LegacyLayoutResponsive
+
+// Mobile devices / small / portrait
+@media (max-width: 575.98px) {
+  :root {
+    --nx-width-page-max: 100%;
+    --nx-width-form-element-normal: 100%;
+    --nx-width-form-element-wide: 100%;
+  }
+
+  .nx-html--page-scrolling .nx-page {
+    min-width: 100%;
+    width: 100%;
+  }
+  
+  .nx-tile {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .nx-page-content {
+    flex-direction: column;
+  }
+
+  .nx-page-sidebar {
+    overflow-x: initial;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 1023px) {
+  .nx-html--page-scrolling .nx-page {
+    min-width: 100%;
+    width: 100%;
+  }
+
+  .nx-page-content {
+    flex-direction: column;
+  }
+
+  .nx-page-sidebar {
+    overflow-x: initial;
+    width: 100%;
+    max-width: 100%;
+  }
+}

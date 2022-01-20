@@ -14,6 +14,7 @@ import LegacySidebarLayout from './LegacySidebarLayout';
 import LegacySystemNoticeLayout from './LegacySystemNoticeLayout';
 import LegacySystemNoticeLoadWrapperLayout from './LegacySystemNoticeLoadWrapperLayout';
 import LegacyLayout from './LegacyLayout';
+import LegacyLayoutResponsive from './LegacyLayout--responsive';
 import GlobalSidebarHeaderSystemNoticeSidebarLayout from './GlobalSidebarHeaderSystemNoticeSidebarLayout';
 import GlobalSidebarHeaderSidebarLayout from './GlobalSidebarHeaderSidebarLayout';
 import GlobalSidebarHeaderSystemNoticeLayout from './GlobalSidebarHeaderSystemNoticeLayout';
@@ -34,7 +35,8 @@ const pageScrollingPages = [
       LegacySystemNoticeLayout,
       LegacyLayout,
       LegacySystemNoticeLoadWrapperLayout,
-      LegacyLoadWrapperLayout
+      LegacyLoadWrapperLayout,
+      LegacyLayoutResponsive
     ],
     sectionScrollingPages = [
       LegacySidebarSystemNoticeLayout,
