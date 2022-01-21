@@ -13,6 +13,7 @@
     "next-transpile-modules": "^9.0.0",
     "react": "16.14",
     "react-dom": "16.14",
+    "sass": "^1.49.0",
     "webpack": "^5.66.0"
   },
   "devDependencies": {
