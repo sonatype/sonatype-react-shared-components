@@ -6,17 +6,16 @@
  */
 import React from 'react';
 
-const defaultLogoImport = require('../../assets/img/logo_nexus_generic.svg'),
-    defaultLogo = typeof defaultLogoImport === 'string' ? defaultLogoImport :
-      defaultLogoImport.src ?? defaultLogoImport.default.src;
-
 import AbstractNxPageHeader from '../AbstractNxPageHeader/AbstractNxPageHeader';
 import { Props, ProductInfo, propTypes } from './types';
+import importImage from '../../util/importImage';
 
 export { Props };
 
 import './NxNexusPageHeader.scss';
 import { join, reject, isNil } from 'ramda';
+
+const defaultLogo = importImage('logo_nexus_generic.svg');
 
 function HeaderProductInfo({ name, meta, version }: ProductInfo) {
   // note that combining these in JSX with a space in between would result in an extra space when one of the

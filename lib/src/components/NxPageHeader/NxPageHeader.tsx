@@ -8,11 +8,11 @@ import React from 'react';
 
 import AbstractNxPageHeader from '../AbstractNxPageHeader/AbstractNxPageHeader';
 import { Props, ProductInfo, propTypes } from './types';
+import importImage from '../../util/importImage';
 
 export { Props };
 
-const logoImport = require('../../assets/img/sonatype-logo-with-hexagon.png'),
-    logoImg = typeof logoImport === 'string' ? logoImport : logoImport.src ?? logoImport.default.src;
+const logoImg = importImage('sonatype-logo-with-hexagon.png');
 
 function HeaderProductInfo({ name, version }: ProductInfo) {
   return (
