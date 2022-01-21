@@ -6,11 +6,6 @@
  */
 @use 'sass:math';
 
-@font-face {
-  font-family: "Inconsolata";
-  src: url("assets/fonts/Inconsolata-Regular.ttf") format("truetype");
-}
-
 .gallery-example-section {
   margin: 15px 0;
 }
@@ -27,7 +22,7 @@
 .gallery-example-code code {
   // Our current react-syntax-highlighter theme specifies various OS-specific fonts, which cause visual test
   // discrepancies, so we override with an open source font that we provide
-  font-family: Inconsolata !important;
+  font-family: Courier Prime, sans-serif !important;
 }
 
 .gallery-example--checkered-background {
