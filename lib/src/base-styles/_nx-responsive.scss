@@ -14,7 +14,6 @@
 // Mobile devices / small / portrait
 @media (max-width: 575.98px) {
   :root {
-    --nx-width-page-max: 100%;
     --nx-width-form-element-normal: 100%;
     --nx-width-form-element-wide: 100%;
   }
@@ -55,5 +54,13 @@
     overflow-x: initial;
     width: 100%;
     max-width: 100%;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: var(--nx-width-page-min)) {
+  .nx-html--page-scrolling .nx-page {
+    min-width: 100%;
+    width: 100%;
   }
 }
