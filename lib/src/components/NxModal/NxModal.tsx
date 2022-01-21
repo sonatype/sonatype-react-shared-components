@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {FunctionComponent, KeyboardEvent, useEffect} from 'react';
+import React, {FunctionComponent, KeyboardEvent, useEffect, useRef, useState} from 'react';
 import classnames from 'classnames';
 import { pick, omit } from 'ramda';
 
@@ -14,43 +14,19 @@ import './NxModal.scss';
 
 export const NxModalContext = React.createContext<HTMLDialogElement | null>(null);
 
-const useDialogRefState = (el: HTMLDialogElement | null) => {
-  // The dialogRef value needs to get passed down in a context. But the context needs to know when the ref
-  // value has updated, and refs aren't tracked like state values. So we have to copy the ref value into a state
-  // value in order for it to be tracked.
-  const [dialogRefState, setDialogRefState] = React.useState<HTMLDialogElement | null>(null);
-
-  React.useEffect(() => {
-    if (!el) {
-      return undefined;
-    }
-
-    setDialogRefState(null);
-
-    setDialogRefState(el);
-
-    return undefined;
-  }, [el]);
-
-  return dialogRefState;
-};
+const hasNativeModalSupport = !!(window.HTMLDialogElement && window.HTMLDialogElement.prototype.showModal);
 
 const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onClose, variant, role, ...attrs }) => {
-  const canUseDOM = !!(
-    (typeof window !== 'undefined' &&
-    window.document && window.document.createElement)
-  );
-
-  const hasNativeModalSupport = canUseDOM
-    && !!(window.HTMLDialogElement && window.HTMLDialogElement.prototype.showModal);
-
   const modalClasses = classnames('nx-modal', className, {
-    'nx-modal--wide': variant === 'wide',
-    'nx-modal--narrow': variant === 'narrow'
-  });
-  const dialogRef = React.createRef<HTMLDialogElement>();
+        'nx-modal--wide': variant === 'wide',
+        'nx-modal--narrow': variant === 'narrow'
+      }),
+      dialogRef = useRef<HTMLDialogElement>(null),
 
-  const dialogLoaded = useDialogRefState(dialogRef.current);
+      // The dialogRef value needs to get passed down in a context. But the context needs to know when the ref
+      // value has updated, and refs aren't tracked like state values. So we have to copy the ref value into a state
+      // value in order for it to be tracked.
+      [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
 
   function dialogKeydownListener(evt: KeyboardEvent<HTMLDialogElement>) {
     if (evt.key === 'Escape' || evt.key === 'Esc') {
@@ -85,6 +61,8 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
         // and restore focus to that element when they are closed. No browsers appear to implement this currently,
         // so we do it ourselves
         previouslyFocusedEl = document.activeElement;
+
+    setDialogRefState(el);
 
     /*
      * This will cause the document to become "blocked by the modal dialog"
@@ -136,7 +114,7 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
   return (
     // Provide the dialog element to descendants so that tooltips can attach to it instead of the body,
     // which is necessary so that they end up in the top layer rather than behind the modal
-    <NxModalContext.Provider value={dialogLoaded}>
+    <NxModalContext.Provider value={dialogRefState}>
       {/* Note: role="dialog" should be redundant but I think some screenreaders (ChromeVox) don't know
         * what a <dialog> is.  It makes a difference there.
         *
