@@ -6,7 +6,9 @@
  */
 import React from 'react';
 
-const defaultLogo = require('../../assets/img/logo_nexus_generic.svg');
+const defaultLogoImport = require('../../assets/img/logo_nexus_generic.svg'),
+    defaultLogo = typeof defaultLogoImport === 'string' ? defaultLogoImport :
+      defaultLogoImport.src ?? defaultLogoImport.default.src;
 
 import AbstractNxPageHeader from '../AbstractNxPageHeader/AbstractNxPageHeader';
 import { Props, ProductInfo, propTypes } from './types';

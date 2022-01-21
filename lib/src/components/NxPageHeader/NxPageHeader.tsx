@@ -11,7 +11,8 @@ import { Props, ProductInfo, propTypes } from './types';
 
 export { Props };
 
-const logoImg = require('../../assets/img/sonatype-logo-with-hexagon.png');
+const logoImport = require('../../assets/img/sonatype-logo-with-hexagon.png'),
+    logoImg = typeof logoImport === 'string' ? logoImport : logoImport.src ?? logoImport.default.src;
 
 function HeaderProductInfo({ name, version }: ProductInfo) {
   return (
