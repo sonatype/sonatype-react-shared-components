@@ -24,7 +24,8 @@ export default function NxSmallThreatCounterExample() {
                                   severeCount={5}
                                   moderateCount={1337}
                                   lowCount={323}
-                                  noneCount={12} />
+                                  noneCount={12}
+                                  unspecifiedCount={45} />
           </NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
@@ -54,7 +55,12 @@ export default function NxSmallThreatCounterExample() {
         <NxTable.Row>
           <NxTable.Cell>Shipper</NxTable.Cell>
           <NxTable.Cell>
-            <NxSmallThreatCounter criticalCount={0} severeCount={0} moderateCount={0} lowCount={0} noneCount={0} />
+            <NxSmallThreatCounter criticalCount={0}
+                                  severeCount={0}
+                                  moderateCount={0}
+                                  lowCount={0}
+                                  noneCount={0}
+                                  unspecifiedCount={16} />
           </NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
@@ -70,19 +76,30 @@ export default function NxSmallThreatCounterExample() {
                                   severeCount={1000}
                                   moderateCount={1000}
                                   lowCount={1000}
-                                  noneCount={1000} />
+                                  noneCount={1000}
+                                  unspecifiedCount={1000} />
           </NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
           <NxTable.Cell>E4</NxTable.Cell>
           <NxTable.Cell>
-            <NxSmallThreatCounter criticalCount={1} severeCount={1} moderateCount={1} lowCount={1} noneCount={1} />
+            <NxSmallThreatCounter criticalCount={1}
+                                  severeCount={1}
+                                  moderateCount={1}
+                                  lowCount={1}
+                                  noneCount={1}
+                                  unspecifiedCount={1} />
           </NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
           <NxTable.Cell>Bromine</NxTable.Cell>
           <NxTable.Cell>
-            <NxSmallThreatCounter criticalCount={0} severeCount={0} moderateCount={0} lowCount={0} noneCount={0} />
+            <NxSmallThreatCounter criticalCount={0}
+                                  severeCount={0}
+                                  moderateCount={0}
+                                  lowCount={0}
+                                  noneCount={0}
+                                  unspecifiedCount={0} />
           </NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
