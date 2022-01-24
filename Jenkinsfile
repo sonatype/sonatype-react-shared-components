@@ -92,7 +92,7 @@ dockerizedBuildPipeline(
         registry=https://repo.sonatype.com/repository/npm-all/
 
         cd lib
-        yarn install --registry "\${registry}"
+        yarn install --registry "\${registry}" --frozen-lockfile
         yarn test
         yarn build
         cd dist
@@ -100,7 +100,7 @@ dockerizedBuildPipeline(
         cd ../..
 
         cd gallery
-        yarn install --registry "\${registry}"
+        yarn install --registry "\${registry}" --frozen-lockfile
 
         # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
         MAX_INSTANCES=${numSeleniumContainers} TEST_IP=\$JENKINS_AGENT_IP yarn test

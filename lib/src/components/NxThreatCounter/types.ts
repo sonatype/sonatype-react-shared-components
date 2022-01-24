@@ -13,6 +13,7 @@ export interface Props extends Omit<HTMLAttributes<HTMLDListElement>, 'className
   moderateCount?: number | null;
   lowCount?: number | null;
   noneCount?: number | null;
+  unspecifiedCount?: number | null;
   layout?: string | null;
   className?: string | null;
 }
@@ -23,6 +24,7 @@ export const propTypes: ValidationMap<Props> = {
   moderateCount: PropTypes.number,
   lowCount: PropTypes.number,
   noneCount: PropTypes.number,
+  unspecifiedCount: PropTypes.number,
   layout: PropTypes.string,
   className: PropTypes.string
 };
