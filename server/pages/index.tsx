@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import { NxButton, NxModal, NxP, NxPageHeader, NxPageMain }  from '@sonatype/react-shared-components/server';
+import { NxButton, NxModal, NxP, NxPageHeader, NxPageMain }  from '@sonatype/react-shared-components';
 import { useState } from 'react';
 
 const Home: NextPage = () => {
