@@ -210,7 +210,7 @@ const NxAccordionPage = () => {
       {
         hideDeprecatedExamples ? null :
         <>
-          <GalleryExampleTile title="Deprecated: Example with icon button in header"
+          <GalleryExampleTile title="Deprecated: Example with icon buttons in header"
                               id="nx-accordion-icon-button-header-example"
                               defaultCheckeredBackground={true}
                               liveExample={NxAccordionIconButtonHeaderExample}
