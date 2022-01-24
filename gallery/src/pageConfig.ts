@@ -139,7 +139,16 @@ import NxStatefulCollapsibleRadioSelectPage
   from './components/NxStatefulCollapsibleRadioSelect/NxStatefulCollapsibleRadioSelectPage';
 import NxTreePage from './components/NxTree/NxTreePage';
 
+import NivoBarChartPage from './nivo/NivoBarChart/NivoBarChartPage';
+import NivoLineChartPage from './nivo/NivoLineChart/NivoLineChartPage';
+import NivoPieChartPage from './nivo/NivoPieChart/NivoPieChartPage';
+
 const pageConfig: PageConfig = {
+  'Nivo': {
+    BarChart: NivoBarChartPage,
+    LineChart: NivoLineChartPage,
+    PieChart: NivoPieChartPage
+  },
   'React Components': {
     NxAccordion: NxAccordionPage,
     NxStatefulAccordion: NxStatefulAccordionPage,
