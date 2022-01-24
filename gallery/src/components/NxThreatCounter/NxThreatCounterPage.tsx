@@ -90,6 +90,15 @@ const NxThreatCounterPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell>unspecifiedCount</NxTable.Cell>
+            <NxTable.Cell>number</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              A numerical value, the number of unspecified threats. If no value is provided, then the count
+              will be hidden.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell>layout</NxTable.Cell>
             <NxTable.Cell>string</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
