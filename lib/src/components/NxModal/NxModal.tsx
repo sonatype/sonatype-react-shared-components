@@ -14,7 +14,8 @@ import './NxModal.scss';
 
 export const NxModalContext = React.createContext<HTMLDialogElement | null>(null);
 
-const hasNativeModalSupport = !!(window.HTMLDialogElement && window.HTMLDialogElement.prototype.showModal);
+const hasNativeModalSupport = !!(typeof window !== 'undefined' && window.HTMLDialogElement &&
+  window.HTMLDialogElement.prototype.showModal);
 
 const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onClose, variant, role, ...attrs }) => {
   const modalClasses = classnames('nx-modal', className, {
