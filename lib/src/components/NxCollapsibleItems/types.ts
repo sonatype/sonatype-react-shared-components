@@ -9,13 +9,15 @@ import * as PropTypes from 'prop-types';
 
 import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface Props {
   onToggleCollapse?: (() => void) | null;
   isOpen: boolean;
   disabled?: boolean | null;
   triggerContent: ReactNode;
   triggerTooltip?: TooltipConfigProps | string | null;
   children?: ReactNode;
+  className?: string | null;
+  id?: string | null;
 }
 
 // NxCollapsibleItemsChild takes exactly one child element
@@ -27,6 +29,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   onToggleCollapse: PropTypes.func,
   isOpen: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
+  className: PropTypes.string,
   triggerContent: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
@@ -35,7 +38,8 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ])
+  ]),
+  id: PropTypes.string
 };
 
 export const childPropTypes: WeakValidationMap<NxCollapsibleItemsChildProps> = {

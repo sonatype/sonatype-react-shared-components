@@ -10,14 +10,15 @@ import { NxDropdown, NxButton, NxFontAwesomeIcon, useToggle } from '@sonatype/re
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function NxDropdownRightButtonsExample() {
-  const [isOpen, onToggleCollapse] = useToggle(false);
+  const [isOpen, onToggleCollapse] = useToggle(false),
+      onClick = () => { alert('click'); };
 
   return (
     <NxDropdown label="Navigation" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
-      <a href="#/" className="nx-dropdown-button">
+      <a href="#" onClick={onClick} className="nx-dropdown-button">
         <span className="nx-dropdown-button-content">Text Link</span>
       </a>
-      <a href="#/" className="nx-dropdown-button">
+      <a href="#" onClick={onClick} className="nx-dropdown-button">
         <span className="nx-dropdown-button-content">
           Text Link - this link should trigger truncation
         </span>
@@ -28,7 +29,7 @@ function NxDropdownRightButtonsExample() {
                 title="Delete Button Link2">
         <NxFontAwesomeIcon icon={faTrash}/>
       </NxButton>
-      <a href="#/" className="nx-dropdown-button">
+      <a href="#" onClick={onClick} className="nx-dropdown-button">
         <span className="nx-dropdown-button-content">Button Link2</span>
       </a>
       <NxButton onClick={() => alert('icon click')}
@@ -37,7 +38,7 @@ function NxDropdownRightButtonsExample() {
                 title="Delete Text Link3">
         <NxFontAwesomeIcon icon={faTrash}/>
       </NxButton>
-      <a href="#/" className="nx-dropdown-button">
+      <a href="#" onClick={onClick} className="nx-dropdown-button">
         <span className="nx-dropdown-button-content">Text Link3 - this link should trigger truncation</span>
       </a>
     </NxDropdown>

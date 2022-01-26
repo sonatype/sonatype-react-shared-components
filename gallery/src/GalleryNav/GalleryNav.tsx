@@ -21,31 +21,64 @@ import {
   complement,
   values
 } from 'ramda';
-import { NxTreeView, NxTreeViewChild, NxFilterInput, NxTreeViewProps } from '@sonatype/react-shared-components';
+import {
+  NxCollapsibleItems,
+  NxFilterInput,
+  NxCollapsibleItemsProps,
+  NxFontAwesomeIcon
+} from '@sonatype/react-shared-components';
 
-import pageConfig from './pageConfig';
+import pageConfig from '../pageConfig';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { PageMapping, PageConfig } from './pageConfigTypes';
-import { markByFilter, matchesFilter } from './filterUtil';
+import { PageMapping, PageConfig } from '../pageConfigTypes';
+import { markByFilter, matchesFilter } from '../filterUtil';
 
-const renderLinks = (filter?: string) => pipe(
-    keys,
-    map((pageName: string) =>
-      <NxTreeViewChild key={pageName} role="menuitem">
-        <NavLink to={`/pages/${pageName}`} activeClassName="selected">
-          {markByFilter(filter, pageName)}
-        </NavLink>
-      </NxTreeViewChild>
-    )
-);
+import { faFile, faCode, faRulerCombined } from '@fortawesome/free-solid-svg-icons';
+import { faReact, faSass, faJs, faCss3 } from '@fortawesome/free-brands-svg-icons';
+
+import './GalleryNav.scss';
+
+const PAGE_TYPE_TO_ICON_MAP = {
+  'documentation': faFile,
+  'react': faReact,
+  'html': faCode,
+  'layout': faRulerCombined,
+  'sass': faSass,
+  'js': faJs,
+  'css': faCss3
+};
+
+const renderLinks = (filter?: string) =>
+  (entries: PageMapping) => Object
+      .entries(entries)
+      .map(([pageName, entry]) =>
+        <NxCollapsibleItems.Child key={pageName}>
+          <NavLink className="gallery-nav-link"
+                   to={`/pages/${pageName}`}
+                   activeClassName="selected">
+            {
+              entry
+                ? (
+                  <span className="gallery-nav-link__icon">
+                    <NxFontAwesomeIcon icon={PAGE_TYPE_TO_ICON_MAP[entry.type]} fixedWidth />
+                  </span>
+                )
+                : null
+            }
+            <span className="gallery-nav-link__label">
+              {markByFilter(filter, pageName)}
+            </span>
+          </NavLink>
+        </NxCollapsibleItems.Child>
+      );
 
 interface GalleryNavTreeViewProps {
   isOpen: boolean;
   categoryName: string;
   filter: string;
   categoryEntries: PageMapping;
-  onToggleCollapse: NxTreeViewProps['onToggleCollapse'];
+  onToggleCollapse: NxCollapsibleItemsProps['onToggleCollapse'];
 }
 
 function GalleryNavTreeView(props: GalleryNavTreeViewProps) {
@@ -53,12 +86,11 @@ function GalleryNavTreeView(props: GalleryNavTreeViewProps) {
       renderLinksWithFilter = renderLinks(filter);
 
   return (
-    <NxTreeView role="menu"
-                onToggleCollapse={onToggleCollapse}
-                isOpen={isOpen}
-                triggerContent={categoryName}>
+    <NxCollapsibleItems onToggleCollapse={onToggleCollapse}
+                        isOpen={isOpen}
+                        triggerContent={categoryName}>
       {renderLinksWithFilter(categoryEntries)}
-    </NxTreeView>
+    </NxCollapsibleItems>
   );
 }
 
@@ -123,9 +155,10 @@ function GalleryNav() {
 
   return (
     <nav>
-      <NxFilterInput placeholder="Search RSC…"
+      <NxFilterInput placeholder="Filter components"
                      value={filter}
                      onChange={setFilter}
+                     autoFocus
                      onKeyPress={onFilterKeyPress} />
       {filteredCategories}
     </nav>

@@ -127,10 +127,13 @@ export default function NxButtonPage() {
                           liveExample={NxButtonIconOnlyExample}
                           codeExamples={nxButtonIconOnlyCode}>
         An example of buttons containing only an icon and two with different ways of disabling.
-        Tooltips do not work on buttons that are disabled using the <NxCode>disabled</NxCode> attribute.
+        The title prop should not be applied when the button has the disabled attribute
+        because browsers disable pointer events causing issues with our tooltip behavior.
+        Additionally, browsers do not show native tooltips when buttons are disabled.
         However, you can enable tooltips by using the "disabled" class instead of attribute.
-        For accessibility purposes, it is important to use the title prop on all icon-only buttons
+        For accessibility purposes, it is important to use the title prop on all enabled buttons
         so a screen reader can interpret the content correctly.
+        For disabled buttons, it may or may not be important depending on the situation.
       </GalleryExampleTile>
     </>
   );
