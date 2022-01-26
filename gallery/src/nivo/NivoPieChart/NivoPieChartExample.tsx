@@ -10,7 +10,7 @@ import { NxStatefulAccordion, NxAccordion } from '@sonatype/react-shared-compone
 
 import { data } from './data';
 
-import { ResponsivePie, LegendProps } from '@nivo/pie';
+import { ResponsivePie } from '@nivo/pie';
 
 const colors = [
   '#008FCC',
@@ -27,17 +27,17 @@ const colors = [
   '#005A80'
 ];
 
-const LEGENDS: LegendProps[] = [
-  {
-    dataFrom: 'indexes',
-    anchor: 'bottom-right',
-    direction: 'column',
-    itemWidth: 100,
-    itemHeight: 20,
-    itemsSpacing: 0,
-    translateX: 140
-  }
-];
+// const LEGENDS: LegendProps[] = [
+//   {
+//     dataFrom: 'indexes',
+//     anchor: 'bottom-right',
+//     direction: 'column',
+//     itemWidth: 100,
+//     itemHeight: 20,
+//     itemsSpacing: 0,
+//     translateX: 140
+//   }
+// ];
 
 export default function NivoPieChartExample() {
   return (
@@ -50,17 +50,17 @@ export default function NivoPieChartExample() {
                        enableArcLabels={false}
                        innerRadius={0.5}
                        margin={{
-                         top: 80,
-                         bottom: 80,
-                         left: 80,
-                         right: 80
+                         top: 20,
+                         bottom: 20,
+                         left: 40,
+                         right: 40
                        }}
                        legends={[
                          {
                            anchor: 'bottom-right',
                            direction: 'column',
                            itemWidth: 100,
-                           itemHeight: 40,
+                           itemHeight: 20,
                            itemsSpacing: 0
                          }
                        ]}
