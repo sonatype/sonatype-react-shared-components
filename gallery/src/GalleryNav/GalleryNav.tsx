@@ -158,7 +158,6 @@ function GalleryNav() {
       <NxFilterInput placeholder="Filter components"
                      value={filter}
                      onChange={setFilter}
-                     autoFocus
                      onKeyPress={onFilterKeyPress} />
       {filteredCategories}
     </nav>
