@@ -223,7 +223,7 @@ const pageConfig: PageConfig = {
   'Layout': {
     'Form Layout Examples': { content: NxFormLayoutPage, type: 'layout' },
     'Page Layout Examples': { content: PageLayoutPage, type: 'layout' },
-    'Read-Only Grid Tile Layout': { content: NxReadOnlyGridTilePage, type: 'html' },
+    'Read-Only Grid Tile Layout': { content: NxReadOnlyGridTilePage, type: 'layout' },
     'Card': { content: NxCardPage, type: 'html' },
     'Divider': { content: NxDividerPage, type: 'html' },
     'Global Header': { content: NxGlobalHeaderPage, type: 'html' },
