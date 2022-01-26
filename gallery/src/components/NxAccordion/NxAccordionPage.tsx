@@ -5,7 +5,17 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxInfoAlert, NxCode, NxTextLink, NxP, NxH3, NxTile } from '@sonatype/react-shared-components';
+import {
+  NxTable,
+  NxInfoAlert,
+  NxCode,
+  NxTextLink,
+  NxP,
+  NxH3,
+  NxTile,
+  NxH2,
+  NxList
+} from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -34,6 +44,39 @@ const NxAccordionPage = () =>
         Note that this component is stateless – its open state must be tracked externally.
         See <NxCode>NxStatefulAccordion</NxCode> for a version which tracks its own open state.
       </NxP>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH2>Guidelines</NxH2>
+        </NxTile.SubsectionHeader>
+        <NxH3>When to Use</NxH3>
+        <NxList bulleted>
+          <NxList.Item>Displaying and grouping additional information.</NxList.Item>
+          <NxList.Item>Adding granular control over the information on a given page.</NxList.Item>
+          <NxList.Item>Shortening pages to reduce scrolling.</NxList.Item>
+        </NxList>
+        <NxH3>When Not to Use</NxH3>
+        <NxList bulleted>
+          <NxList.Item>
+            Displaying critical system information or a primary action to be taken on the page. (for example,
+            {' '}<NxTextLink href="/components/alert">alerts</NxTextLink>, confirmation or cancellation buttons).
+          </NxList.Item>
+          <NxList.Item>
+            Displaying navigation elements such as <a href="/components/tabs">tabs</a>.
+          </NxList.Item>
+          <NxList.Item>
+            Displaying links pointing to sections of the same page, instead use a
+            {' '}<NxTextLink href="/components/list">list</NxTextLink>.
+          </NxList.Item>
+          <NxList.Item>
+            Creating hierarchy levels by nesting them within each other. If you need to add hierarchy to the
+            content use a <NxTextLink href="/components/tree">tree</NxTextLink>.
+          </NxList.Item>
+          <NxList.Item>
+            Displaying a set of visual components following the same style, prefer using Collapsable.(TODO: Add
+            link to collapsable).
+          </NxList.Item>
+        </NxList>
+      </NxTile.Subsection>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
           <NxH3>NxAccordion</NxH3>
