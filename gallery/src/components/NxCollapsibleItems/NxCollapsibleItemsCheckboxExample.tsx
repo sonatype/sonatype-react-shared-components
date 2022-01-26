@@ -19,32 +19,40 @@ export default function NxCollapsibleItemsCheckboxExample() {
 
   return (
     <>
-      <NxCollapsibleItems isOpen={is1Open}
+      <NxCollapsibleItems role="menu"
+                          isOpen={is1Open}
                           onToggleCollapse={onToggle1Collapse}
                           triggerContent="Organization">
-        <NxCollapsibleItems.Child>
-          <NxCheckbox isChecked={true}>
+        <NxCollapsibleItems.Child role={undefined}>
+          <NxCheckbox isChecked={true} inputAttributes={{ role: 'menuitemcheckbox' }}>
             Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo
           </NxCheckbox>
         </NxCollapsibleItems.Child>
-        <NxCollapsibleItems.Child>
-          <NxCheckbox isChecked={true}>Bar</NxCheckbox>
+        <NxCollapsibleItems.Child role={undefined}>
+          <NxCheckbox isChecked={true} inputAttributes={{ role: 'menuitemcheckbox' }}>Bar</NxCheckbox>
         </NxCollapsibleItems.Child>
-        <NxCollapsibleItems.Child>
-          <NxCheckbox isChecked={true}>Baz</NxCheckbox>
+        <NxCollapsibleItems.Child role={undefined}>
+          <NxCheckbox isChecked={true} inputAttributes={{ role: 'menuitemcheckbox' }}>Baz</NxCheckbox>
         </NxCollapsibleItems.Child>
       </NxCollapsibleItems>
-      <NxCollapsibleItems isOpen={is2Open}
+      <NxCollapsibleItems role="menu"
+                          isOpen={is2Open}
                           onToggleCollapse={onToggle2Collapse}
                           triggerContent="Organization">
-        <NxCollapsibleItems.Child>
-          <NxRadio name="test-radio" value="foo" isChecked={false}>Foo</NxRadio>
+        <NxCollapsibleItems.Child role={undefined}>
+          <NxRadio name="test-radio" value="foo" isChecked={false} inputAttributes={{ role: 'menuitemradio' }}>
+            Foo
+          </NxRadio>
         </NxCollapsibleItems.Child>
-        <NxCollapsibleItems.Child>
-          <NxRadio name="test-radio" value="bar" isChecked={false}>Bar</NxRadio>
+        <NxCollapsibleItems.Child role={undefined}>
+          <NxRadio name="test-radio" value="bar" isChecked={false} inputAttributes={{ role: 'menuitemradio' }}>
+            Bar
+          </NxRadio>
         </NxCollapsibleItems.Child>
-        <NxCollapsibleItems.Child>
-          <NxRadio name="test-radio" value="baz" isChecked={true}>Baz</NxRadio>
+        <NxCollapsibleItems.Child role={undefined}>
+          <NxRadio name="test-radio" value="baz" isChecked={true} inputAttributes={{ role: 'menuitemradio' }}>
+            Baz
+          </NxRadio>
         </NxCollapsibleItems.Child>
       </NxCollapsibleItems>
     </>

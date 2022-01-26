@@ -8,5 +8,5 @@ import React from 'react';
 import { NxBinaryDonutChart } from '@sonatype/react-shared-components';
 
 export default function NxBinaryDonutChartNoHoleExample() {
-  return <NxBinaryDonutChart percent={90} innerRadiusPercent={0} />;
+  return <NxBinaryDonutChart percent={90} innerRadiusPercent={0} aria-label="90 out of 100 components identified" />;
 }

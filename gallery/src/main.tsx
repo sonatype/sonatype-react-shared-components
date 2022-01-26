@@ -15,5 +15,7 @@ import ReactDOM from 'react-dom';
 import './main.scss';
 
 import Application from './Application';
+import * as telemetry from './telemetry';
 
+telemetry.init();
 ReactDOM.render(<Application />, document.getElementById('ui'));

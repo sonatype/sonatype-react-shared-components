@@ -12,18 +12,19 @@ describe('NxThreatCounter', function() {
   const minimalProps = {},
       getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxThreatCounter, minimalProps);
 
-  it('renders nothing if all five indicators are undefined', function() {
+  it('renders nothing if all six indicators are undefined', function() {
     const component = getShallowComponent();
     expect(component).toBeEmptyRender();
   });
 
-  it('renders nothing if all five indicators are null', function() {
+  it('renders nothing if all six indicators are null', function() {
     const component = getShallowComponent({
       criticalCount: null,
       severeCount: null,
       moderateCount: null,
       lowCount: null,
-      noneCount: null
+      noneCount: null,
+      unspecifiedCount: null
     });
     expect(component).toBeEmptyRender();
   });
@@ -82,19 +83,31 @@ describe('NxThreatCounter', function() {
     expect(noneCounter.find('.nx-threat-counter__text')).toHaveText('None');
   });
 
-  it('renders all five indicators', function() {
+  it('renders an .nx-threat-counter--unspecified when unspecifiedCount is specified', function() {
+    const component = getShallowComponent({unspecifiedCount: 0});
+    const container = component.find('.nx-threat-counter-container');
+    expect(container).toExist();
+    expect(container.find('div').length).toBe(1);
+    const unspecifiedCounter = component.find('.nx-threat-counter--unspecified');
+    expect(unspecifiedCounter.find('.nx-threat-counter__count')).toHaveText('0');
+    expect(unspecifiedCounter.find('.nx-threat-counter__text')).toHaveText('Unspecified');
+  });
+
+  it('renders all six indicators', function() {
     const component = getShallowComponent({
       criticalCount: 66,
       severeCount: 55,
       moderateCount: 44,
       lowCount: 33,
-      noneCount: 22
+      noneCount: 22,
+      unspecifiedCount: 42
     });
     const criticalCount = component.find('.nx-threat-counter--critical'),
         severeCount = component.find('.nx-threat-counter--severe'),
         moderateCount = component.find('.nx-threat-counter--moderate'),
         lowCount = component.find('.nx-threat-counter--low'),
-        noneCount = component.find('.nx-threat-counter--none');
+        noneCount = component.find('.nx-threat-counter--none'),
+        unspecifiedCount = component.find('.nx-threat-counter--unspecified');
     expect(criticalCount.find('.nx-threat-counter__count')).toHaveText('66');
     expect(criticalCount.find('.nx-threat-counter__text')).toHaveText('Critical');
     expect(severeCount.find('.nx-threat-counter__count')).toHaveText('55');
@@ -105,6 +118,8 @@ describe('NxThreatCounter', function() {
     expect(lowCount.find('.nx-threat-counter__text')).toHaveText('Low');
     expect(noneCount.find('.nx-threat-counter__count')).toHaveText('22');
     expect(noneCount.find('.nx-threat-counter__text')).toHaveText('None');
+    expect(unspecifiedCount.find('.nx-threat-counter__count')).toHaveText('42');
+    expect(unspecifiedCount.find('.nx-threat-counter__text')).toHaveText('Unspecified');
   });
 
   it('correctly assigns supplied class', function() {

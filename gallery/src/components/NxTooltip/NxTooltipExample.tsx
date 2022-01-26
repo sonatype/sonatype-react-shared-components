@@ -123,10 +123,10 @@ const NxTooltipExample = () => {
                     toggleTooltip="NxDropdown tooltip"
                     onToggleCollapse={toggle}>
           <NxTooltip title="item 1" placement="top">
-            <a className="nx-dropdown-link">Item 1</a>
+            <a href="#/" className="nx-dropdown-link">Item 1</a>
           </NxTooltip>
           <NxTooltip title="item 1" placement="top">
-            <a className="nx-dropdown-link">Item 2</a>
+            <a href="#/" className="nx-dropdown-link">Item 2</a>
           </NxTooltip>
         </NxDropdown>
       </section>

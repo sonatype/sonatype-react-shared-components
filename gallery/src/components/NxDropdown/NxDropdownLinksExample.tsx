@@ -10,26 +10,24 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { NxDropdown, NxFontAwesomeIcon, useToggle } from '@sonatype/react-shared-components';
 
 function NxDropdownActionsExample() {
-  const [isOpen, onToggleCollapse] = useToggle(false),
-      deleteFn = () => { alert('delete'); },
-      onClick = () => { alert('click'); };
+  const [isOpen, onToggleCollapse] = useToggle(false);
 
   return (
     <NxDropdown label="Links!"
                 className="extra-class"
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
-      <a className="nx-dropdown-link disabled">
+      <a href="#/" className="nx-dropdown-link disabled">
         <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
-        <span>Save</span>
+        <span>Go somewhere</span>
       </a>
-      <a className="nx-dropdown-link" onClick={deleteFn}>
+      <a href="#/" className="nx-dropdown-link">
         <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
-        <span>Delete</span>
+        <span>Go somewhere else</span>
       </a>
-      <a className="nx-dropdown-link" onClick={onClick}>
+      <a href="#/" className="nx-dropdown-link">
         <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
-        <span>Some Action</span>
+        <span>Go yet another place</span>
       </a>
     </NxDropdown>
   );

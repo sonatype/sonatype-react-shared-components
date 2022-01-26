@@ -12,12 +12,25 @@ import { NxFontAwesomeIcon } from '../..';
 import { NxListButtonItemProps, nxListButtonItemPropTypes } from './types';
 
 const NxListButtonItem = forwardRef<HTMLLIElement, NxListButtonItemProps>(
-    function NxListButtonItem({ children, className, disabled, selected, buttonClassName,
-      buttonAttributes, ...attrs }, ref) {
-      const liClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className);
-      const buttonClassNames = classnames('nx-list__btn', buttonClassName, { selected, disabled });
+    function NxListButtonItem(props, ref) {
+      const {
+            children,
+            className,
+            disabled,
+            selected: selectedProp,
+            buttonClassName,
+            buttonAttributes,
+            ...attrs
+          } = props,
+          selected = selectedProp ?? undefined,
+          liClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className),
+          buttonClassNames = classnames('nx-list__btn', buttonClassName, { selected, disabled });
+
       return (
-        <li ref={ref} className={liClassNames} {...attrs}>
+        // aria-current is the valid one here by the standards, but aria-selected is the one that actually
+        // tends to work in real-world screenreaders
+        /* eslint-disable-next-line jsx-a11y/role-supports-aria-props */
+        <li ref={ref} className={liClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
           <button aria-disabled={includesDisabledClass(buttonClassNames)}
                   className={buttonClassNames}
                   disabled={disabled ? true : false}

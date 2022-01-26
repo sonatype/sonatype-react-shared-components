@@ -32,7 +32,11 @@ const NxListClickableExample = () =>
       </button>
     </li>
     <li className="nx-list__item nx-list__item--clickable">
-      <button className="nx-list__btn selected" aria-selected="true">
+      {/* aria-current is the valid one here by the standards, but aria-selected is the one that actually
+        * tends to work in real-world screenreaders
+        */}
+      {/* eslint-disable-next-line jsx-a11y/role-supports-aria-props */}
+      <button className="nx-list__btn selected" aria-selected="true" aria-current="true">
         <span className="nx-list__text">Action 4</span>
         <span className="nx-list__subtext">
           This list item demonstrates the selected styles

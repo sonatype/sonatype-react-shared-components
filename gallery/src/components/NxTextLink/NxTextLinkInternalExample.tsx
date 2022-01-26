@@ -6,7 +6,43 @@
  */
 import React from 'react';
 
-import { NxTextLink } from '@sonatype/react-shared-components';
+import { NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 export default () =>
-  <NxTextLink href="#/pages/nx-tile">nx-tile docs</NxTextLink>;
+  <>
+    <NxP>
+      <NxTextLink href="#/pages/nx-tile">nx-tile documentation page</NxTextLink>
+    </NxP>
+    <NxP>
+      <NxCode>
+        <NxTextLink href="#/pages/NxTextLink">
+          NxTextLink inside NxCode
+        </NxTextLink>{' '}
+      </NxCode>
+    </NxP>
+    <NxP>
+      <NxCode>
+        This is an example of{' '}
+        <NxTextLink href="#/pages/NxTextLink">
+          NxTextLink
+        </NxTextLink>{' '}
+        with text inside NxCode
+      </NxCode>
+    </NxP>
+    <NxP>
+      <NxTextLink href="#/pages/nx-code">
+        <NxCode>
+          NxCode inside NxTextLink (Not Recommended)
+        </NxCode>
+      </NxTextLink>
+    </NxP>
+    <NxP>
+      <NxTextLink href="#/pages/nx-code">
+        This is an example of{' '}
+        <NxCode>
+          NxCode
+        </NxCode>{' '}
+        with text inside <NxCode>NxTextLink</NxCode>
+      </NxTextLink>
+    </NxP>
+  </>;

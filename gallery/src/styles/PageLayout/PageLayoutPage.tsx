@@ -190,7 +190,7 @@ const PageLayoutPage = () =>
           <NxTable.Body>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/NxPageHeader"><NxCode>NxPageHeader</NxCode></NxTextLink>
+                <NxCode><NxTextLink href="#/pages/NxPageHeader">NxPageHeader</NxTextLink></NxCode>
               </NxTable.Cell>
               <NxTable.Cell>Component</NxTable.Cell>
               <NxTable.Cell>Legacy</NxTable.Cell>

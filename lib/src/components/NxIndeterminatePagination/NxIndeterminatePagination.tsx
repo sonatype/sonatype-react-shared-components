@@ -17,6 +17,8 @@ export default function NxIndeterminatePagination({ className, onPrevPageSelect,
   const classes = classnames('nx-btn-bar', 'nx-btn-bar--pagination', 'nx-btn-bar--indeterminate-pagination', className);
 
   return (
+    // Ignore the linter. Ironically, this element had to be added to the tab order to improve screenreading
+    /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
     <nav tabIndex={0} aria-label="pagination" className={classes} { ...attrs }>
       <NxButton type="button" aria-label="previous page" onClick={onPrevPageSelect} variant="tertiary">
         <NxFontAwesomeIcon icon={faCaretLeft} size="lg" />

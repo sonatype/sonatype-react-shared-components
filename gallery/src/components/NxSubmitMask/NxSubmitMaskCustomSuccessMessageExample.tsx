@@ -17,8 +17,10 @@ export default function NxSubmitMaskSuccessExample() {
   }
 
   return (
-    <div onKeyUp={handleKeyUp} className="gallery-submit-mask-area">
-      <NxButton onClick={setMaskVisible.bind(null, true)}>Click here to create a NxSubmitMask</NxButton>
+    <div className="gallery-submit-mask-area">
+      <NxButton onKeyUp={handleKeyUp} onClick={setMaskVisible.bind(null, true)}>
+        Click here to create a NxSubmitMask
+      </NxButton>
       { maskVisible && <NxSubmitMask success successMessage="Congratulations‽"/> }
     </div>
   );

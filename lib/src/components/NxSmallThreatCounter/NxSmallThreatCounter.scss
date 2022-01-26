@@ -19,13 +19,15 @@
   padding-right: var(--nx-spacing-2x);
   text-align: center;
 
-  @each $category in critical, severe, moderate, low, none {
+  @each $category in critical, severe, moderate, low, none, unspecified {
     &--#{$category} {
       background-color: var(--nx-color-threat-#{$category});
     }
   }
 
-  &--critical {
+  &--critical,
+  &--none,
+  &--unspecified {
     color: var(--nx-swatch-white);
   }
 

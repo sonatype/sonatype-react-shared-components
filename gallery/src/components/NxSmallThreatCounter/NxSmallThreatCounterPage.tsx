@@ -101,6 +101,17 @@ const NxSmallThreatCounterPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell>unspecifiedCount</NxTable.Cell>
+            <NxTable.Cell>number</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell />
+            <NxTable.Cell>
+              A numerical value, the number of unspecfied threats. If no value is provided, then the count
+              will be hidden and no space allotted. If zero is provided, then the count will be hidden but space for
+              it will be allotted.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell>maxDigits</NxTable.Cell>
             <NxTable.Cell>number</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
