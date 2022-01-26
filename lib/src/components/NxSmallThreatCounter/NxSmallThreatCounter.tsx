@@ -46,7 +46,6 @@ export default function NxSmallThreatCounter(props: Props) {
         moderateCount,
         lowCount,
         noneCount,
-        unspecifiedCount,
         maxDigits: maxDigitsProp,
         className: classNameProp,
         ...attrs
@@ -62,8 +61,7 @@ export default function NxSmallThreatCounter(props: Props) {
       typeof severeCount !== 'number' &&
       typeof moderateCount !== 'number' &&
       typeof lowCount !== 'number' &&
-      typeof noneCount !== 'number' &&
-      typeof unspecifiedCount !== 'number') {
+      typeof noneCount !== 'number') {
     console.warn('No counts have been provided and so nothing will be rendered.');
     return null;
   }
@@ -84,9 +82,6 @@ export default function NxSmallThreatCounter(props: Props) {
       }
       { typeof noneCount === 'number' &&
         <Counter category="none" count={noneCount} maxDigits={maxDigits} />
-      }
-      { typeof unspecifiedCount === 'number' &&
-        <Counter category="unspecified" count={unspecifiedCount} maxDigits={maxDigits} />
       }
     </div>
   );

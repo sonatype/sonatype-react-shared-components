@@ -20,7 +20,6 @@ export interface Props extends Omit<HTMLAttributes<HTMLElement>, 'children'> {
   moderateCount?: number | null;
   lowCount?: number | null;
   noneCount?: number | null;
-  unspecifiedCount?: number | null;
   maxDigits?: number | null;
 }
 
@@ -30,6 +29,5 @@ export const propTypes: ValidationMap<Props> = {
   moderateCount: PropTypes.number,
   lowCount: PropTypes.number,
   noneCount: PropTypes.number,
-  unspecifiedCount: PropTypes.number,
   maxDigits: PropTypes.number
 };

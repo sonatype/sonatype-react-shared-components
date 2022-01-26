@@ -6,7 +6,7 @@
  */
 const { Region, Target } = require('@applitools/eyes-webdriverio');
 
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
 
 describe('NxCodeSnippet', function() {
   beforeEach(async function() {
@@ -84,6 +84,4 @@ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 }`
     );
   });
-
-  it('passes a11y checks', a11yTest());
 });

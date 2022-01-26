@@ -18,17 +18,17 @@ export default function NxTileDropdownActionsExample() {
         </div>
         <div className="nx-tile__actions">
           <NxStatefulDropdown label="Actions">
-            <a href="#/" className="nx-dropdown-button">
+            <a onClick={onClick} className="nx-dropdown-button">
               Nav Link1
             </a>
-            <a href="#/" className="nx-dropdown-button">
+            <a onClick={onClick} className="nx-dropdown-button">
               Nav Link2
             </a>
-            <a href="#/" className="nx-dropdown-button">
+            <a onClick={onClick} className="nx-dropdown-button">
               Nav Link3
             </a>
             <button onClick={onClick} className="nx-dropdown-button">
-              Button 4 - this button should trigger truncation
+              Nav Link4 - this link should trigger truncation
             </button>
           </NxStatefulDropdown>
         </div>
