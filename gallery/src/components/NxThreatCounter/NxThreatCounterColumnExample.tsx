@@ -14,6 +14,7 @@ function NxThreatCounterExample() {
                      moderateCount={1222}
                      lowCount={45}
                      noneCount={4}
+                     unspecifiedCount={18}
                      layout="column"/>
   );
 }

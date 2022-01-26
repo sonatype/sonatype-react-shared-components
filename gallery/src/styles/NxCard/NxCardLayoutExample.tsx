@@ -24,7 +24,7 @@ export default function NxCardRowLayoutExample() {
             <div className="nx-card__text">Card text</div>
           </div>
           <footer className="nx-card__footer">
-            <a href="#" className="nx-text-link">Card link</a>
+            <a href="#/" className="nx-text-link">Card link</a>
           </footer>
         </section>
         <section className="nx-card" aria-label="Card with column layout">
@@ -37,7 +37,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Data point details</div>
           </div>
-          <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
+          <footer className="nx-card__footer"><a href="#/" className="nx-text-link">Link</a></footer>
         </section>
         <section className="nx-card" aria-label="Server card">
           <header className="nx-card__header">
@@ -52,7 +52,7 @@ export default function NxCardRowLayoutExample() {
             </div>
           </div>
           <footer className="nx-card__footer">
-            <a href="#" className="nx-text-link">Link</a>
+            <a href="#/" className="nx-text-link">Link</a>
           </footer>
         </section>
         <section className="nx-card" aria-label="Icon in callout">
@@ -66,7 +66,7 @@ export default function NxCardRowLayoutExample() {
             <div className="nx-card__text">Data point details</div>
           </div>
           <footer className="nx-card__footer">
-            <a href="#" className="nx-text-link">Link</a>
+            <a href="#/" className="nx-text-link">Link</a>
           </footer>
         </section>
       </div>
@@ -82,7 +82,7 @@ export default function NxCardRowLayoutExample() {
             <div className="nx-card__text">Data point details</div>
           </div>
           <footer className="nx-card__footer">
-            <a href="#" className="nx-text-link">Link</a>
+            <a href="#/" className="nx-text-link">Link</a>
           </footer>
         </section>
         <section className="nx-card" aria-label="Card with NxReadOnly">
@@ -113,7 +113,7 @@ export default function NxCardRowLayoutExample() {
             </div>
             <div className="nx-card__text">Data point details</div>
           </div>
-          <footer className="nx-card__footer"><a href="#" className="nx-text-link">Link</a></footer>
+          <footer className="nx-card__footer"><a href="#/" className="nx-text-link">Link</a></footer>
         </section>
       </div>
       <div className="nx-card-container">
@@ -128,7 +128,7 @@ export default function NxCardRowLayoutExample() {
             <div className="nx-card__text">Large icon</div>
           </div>
           <footer className="nx-card__footer">
-            <a href="#" className="nx-text-link">Link</a>
+            <a href="#/" className="nx-text-link">Link</a>
           </footer>
         </section>
         <section className="nx-card" aria-label="Percentage stats">
@@ -142,7 +142,7 @@ export default function NxCardRowLayoutExample() {
             <div className="nx-card__text">Descriptive text</div>
           </div>
           <footer className="nx-card__footer">
-            <a href="#" className="nx-text-link">Link</a>
+            <a href="#/" className="nx-text-link">Link</a>
           </footer>
         </section>
         <section className="nx-card" aria-label="Big percentage card">
@@ -159,7 +159,7 @@ export default function NxCardRowLayoutExample() {
             </div>
           </div>
           <footer className="nx-card__footer">
-            <a href="#" className="nx-text-link">Film sprawl wristwatch math-engine</a>
+            <a href="#/" className="nx-text-link">Film sprawl wristwatch math-engine</a>
           </footer>
         </section>
       </div>
@@ -187,7 +187,7 @@ export default function NxCardRowLayoutExample() {
             </div>
           </div>
           <footer className="nx-card__footer">
-            <a href="#" className="nx-text-link">Link</a>
+            <a href="#/" className="nx-text-link">Link</a>
           </footer>
         </section>
       </div>

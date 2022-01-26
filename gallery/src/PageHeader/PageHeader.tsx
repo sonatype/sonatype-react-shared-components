@@ -17,7 +17,7 @@ const PageHeader = () => (
   <header className="nx-page-header gallery-page-header">
     <div className="nx-page-header__inner">
       <a className="gallery-page-header__home-link"
-         href="#">
+         href="#/">
         <img className="gallery-page-header__logo-image"
              src={plaidVillain}
              alt="" />

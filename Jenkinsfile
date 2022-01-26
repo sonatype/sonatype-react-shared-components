@@ -92,21 +92,27 @@ dockerizedBuildPipeline(
         registry=https://repo.sonatype.com/repository/npm-all/
 
         cd lib
-        yarn install --registry "\${registry}"
-        npm run test
-        npm run build
+        yarn install --registry "\${registry}" --frozen-lockfile
+        yarn test
+        yarn build
         cd dist
         npm pack
         cd ../..
 
         cd gallery
-        yarn install --registry "\${registry}"
+        yarn install --registry "\${registry}" --frozen-lockfile
 
         # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
-        MAX_INSTANCES=${numSeleniumContainers} TEST_IP=\$JENKINS_AGENT_IP npm run test
-        npm run build
-        cd ..
+        MAX_INSTANCES=${numSeleniumContainers} TEST_IP=\$JENKINS_AGENT_IP yarn test
       """
+
+      // NOTE: we don't want the applitools test run to have the gainsight key
+      withCredentials([string(credentialsId: 'GAINSIGHT_PX_API_KEY', variable: 'PX_API_KEY')]) {
+        sh """
+          cd gallery
+          yarn build
+        """
+      }
     }
   },
   vulnerabilityScan: {
