@@ -301,3 +301,61 @@
   margin-left: var(--nx-spacing-6x);
   max-width: var(--nx-width-text-wrapping);
 }
+
+.nx-list--numbered {
+  border-top: none;
+  margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
+  padding: 0 0 0 var(--nx-spacing-12x);
+
+  .nx-list__item {
+    @include nx-container-helpers.container-vertical;
+
+    border: none;
+    display: list-item;
+    list-style: decimal outside;
+    padding: var(--nx-spacing-2x) 0 0 var(--nx-spacing-base);
+    
+    &:first-child {
+      padding-top: 0;
+    }
+
+    .nx-list__text {
+      display: inline-block;
+      font-weight: normal;
+
+      // solves problem where bullet is beside 2nd line of wrapped text
+      vertical-align: top;
+    }
+
+    .nx-list {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .nx-list__item {
+      list-style: lower-alpha outside;
+      padding-top: var(--nx-spacing-2x);
+
+      &::marker {
+        font-weight: bold;
+      }
+
+      &:first-child {
+        padding-top: var(--nx-spacing-2x);
+      }
+
+      .nx-list__text {
+        @include nx-text-helpers.regular;
+      }
+
+      .nx-list__item {
+        list-style: lower-roman outside;
+
+        &::marker {
+          font-style: italic;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}
