@@ -14,7 +14,8 @@ describe('NxAccordion', function() {
 
   const exampleSelector = '#nx-accordion-example .gallery-example-live',
       nestedNxListExampleSelector = '#nx-accordion-nested-nx-list-example .gallery-example-live',
-      tertiaryBtnExampleSelector = '#nx-accordion-tertiary-button-example .gallery-example-live',
+      iconButtonHeaderExampleSelector = '#nx-accordion-icon-button-header-example .gallery-example-live',
+      buttonHeaderExampleSelector = '#nx-accordion-tertiary-button-header-example .gallery-example-live',
       headerSelector = `${exampleSelector} .nx-accordion__header`;
 
   describe('Closed NxAccordion', function() {
@@ -41,12 +42,22 @@ describe('NxAccordion', function() {
   });
 
   describe('NxAccordion with tertiary header button', function() {
-    it('looks right', simpleTest(tertiaryBtnExampleSelector));
+    it('looks right', simpleTest(buttonHeaderExampleSelector));
+  });
+
+  describe('NxAccordion with icon header button', function() {
+    it('looks right', simpleTest(iconButtonHeaderExampleSelector));
   });
 
   describe('NxAccordion with nested NxList', function() {
     it('looks right', simpleTest(nestedNxListExampleSelector));
   });
 
-  it('passes a11y checks', a11yTest());
+  describe('non-deprecated NxAccordion', function() {
+    beforeEach(async function() {
+      await browser.url('#/pages/NxAccordion?hideDeprecatedExamples');
+    });
+
+    it('passes a11y checks', a11yTest());
+  });
 });
