@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useRef, useState, useLayoutEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import useResizeObserver from '@react-hook/resize-observer';
 
 import { textContent } from '../../util/childUtil';
@@ -38,7 +38,7 @@ export default function NxOverflowTooltip({ title, children, ...otherProps }: Ov
   }
 
   // check the width on initial layout and any time computedTitle changes
-  useLayoutEffect(updateNeedsTooltip, [computedTitle]);
+  useEffect(updateNeedsTooltip, [computedTitle]);
 
   // check the width any time the element resizes
   useResizeObserver(ref, updateNeedsTooltip);
