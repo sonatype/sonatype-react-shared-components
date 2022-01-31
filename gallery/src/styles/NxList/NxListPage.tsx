@@ -23,7 +23,7 @@ const NxListPage = () =>
           <NxList.Text>Lists with clickable list items</NxList.Text>
         </NxList.Item>
         <NxList.Item>
-          <NxList.Text>Lists with bullets</NxList.Text>
+          <NxList.Text>Ordered and unordered (bulleted) lists</NxList.Text>
         </NxList.Item>
         <NxList.Item>
           <NxList.Text>Lists with actions</NxList.Text>
@@ -75,7 +75,17 @@ const NxListPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list--bulleted</NxCode></NxTable.Cell>
             <NxTable.Cell>Modifier of <NxCode>.nx-list</NxCode></NxTable.Cell>
-            <NxTable.Cell>If you need a list with bullets.</NxTable.Cell>
+            <NxTable.Cell>
+              If you need a list with bullets. Default styles are provided for three layers of bullets.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>.nx-list--numbered</NxCode></NxTable.Cell>
+            <NxTable.Cell>Modifier of <NxCode>.nx-list</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              Used when you need a list that uses numbers/letters for each list item. Default styles are provided for
+              three layers: numbers, letters, and roman numerals.
+            </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-list__item</NxCode></NxTable.Cell>

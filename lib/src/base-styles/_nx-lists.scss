@@ -125,7 +125,7 @@
   }
 }
 
-.nx-list--bulleted {
+.nx-list--bulleted, .nx-list--numbered {
   border-top: none;
   margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
   padding: 0 0 0 26px;
@@ -160,10 +160,10 @@
 
     .nx-list__item {
       list-style-type: circle;
-      padding-top: 8px;
+      padding-top: var(--nx-spacing-2x);
 
       &:first-child {
-        padding-top: 8px;
+        padding-top: var(--nx-spacing-2x);
       }
 
       .nx-list__text {
@@ -300,4 +300,37 @@
 
   margin-left: var(--nx-spacing-6x);
   max-width: var(--nx-width-text-wrapping);
+}
+
+.nx-list--numbered {
+  padding: 0 0 0 var(--nx-spacing-12x);
+
+  .nx-list__item {
+    list-style: decimal outside;
+
+    .nx-list__text {
+      margin-left: 0;
+    }
+
+    .nx-list {
+      padding-left: var(--nx-spacing-12x);
+    }
+
+    .nx-list__item {
+      list-style: lower-alpha outside;
+
+      &::marker {
+        font-weight: 600;
+      }
+
+      .nx-list__item {
+        list-style: lower-roman outside;
+
+        &::marker {
+          font-style: italic;
+          font-weight: normal;
+        }
+      }
+    }
+  }
 }
