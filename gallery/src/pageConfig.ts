@@ -175,8 +175,6 @@ const pageConfig: PageConfig = {
     'Search Dropdown': { content: NxSearchDropdownPage, type: 'react' },
     'Stateful Search Dropdown': { content: NxStatefulSearchDropdownPage, type: 'react' },
     'Text Link': { content: NxTextLinkPage, type: 'react' },
-    'Tooltip': { content: NxTooltipPage, type: 'react' },
-    'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' }
   },
   'Forms': {
     'Checkbox': { content: NxCheckboxPage, type: 'react' },
