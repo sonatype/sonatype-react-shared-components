@@ -20,7 +20,12 @@ import {
 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import NxTableExamples from './NxTableExamples';
+import {
+  NxTableSimpleExamples,
+  NxTableSpecialColumnExamples,
+  NxTableStylingCustomizationExamples,
+  NxTableComplexContentExamples
+} from './NxTableExamples';
 
 export default function NxTablePage() {
   const [activeTabId, setActiveTabId] = useState(0);
@@ -645,7 +650,18 @@ export default function NxTablePage() {
           </NxP>
         </GalleryDescriptionTile>
       </NxTabPanel>
-      <NxTableExamples />
+      <NxTabPanel>
+        <NxTableSimpleExamples />
+      </NxTabPanel>
+      <NxTabPanel>
+        <NxTableSpecialColumnExamples />
+      </NxTabPanel>
+      <NxTabPanel>
+        <NxTableStylingCustomizationExamples />
+      </NxTabPanel>
+      <NxTabPanel>
+        <NxTableComplexContentExamples />
+      </NxTabPanel>
     </NxTabs>
   );
 }

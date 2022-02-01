@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, JSXElementConstructor, ReactNode } from 'react';
+import React, { FunctionComponent, JSXElementConstructor, ReactNode, useState } from 'react';
 import classnames from 'classnames';
 import { ensureArray } from '../util/jsUtil';
 
@@ -15,10 +15,10 @@ import {
   NxCheckbox,
   NxP,
   NxStatefulAccordion,
-  NxStatefulTabs,
   NxTab,
   NxTabList,
   NxTabPanel,
+  NxTabs,
   NxTile,
   useToggle
 } from '@sonatype/react-shared-components';
@@ -170,6 +170,7 @@ export function GalleryMultiExampleTile(props: GalleryMultiExampleTileProps) {
         ...otherProps
       } = props,
       [checkeredBackground, toggleCheckeredBackground] = useToggle(defaultCheckeredBackground || false),
+      [activeTab, setActiveTab] = useState(0),
       tileClasses = classnames('gallery-example', className, {
         'gallery-example--checkered-background': checkeredBackground
       }),
@@ -188,11 +189,21 @@ export function GalleryMultiExampleTile(props: GalleryMultiExampleTileProps) {
       htmlExampleCodeString = typeof htmlLiveExample === 'string' ?
         htmlLiveExample : (props as GalleryMultiExampleTileJsxHtmlProps).htmlCodeExample;
 
+  const codeExampleAccordion = (
+    <NxStatefulAccordion>
+      <NxAccordion.Header>
+        <NxAccordion.Title>Example Code</NxAccordion.Title>
+      </NxAccordion.Header>
+      <CodeExample content={activeTab ? htmlExampleCodeString : reactCodeExample} />
+      {extraCodeExampleRender}
+    </NxStatefulAccordion>
+  );
+
   return (
     <GalleryTile className={tileClasses} actionButtons={tileActions} { ...otherProps }>
       <NxTile.Content>
         <NxP>{children}</NxP>
-        <NxStatefulTabs defaultActiveTab={0}>
+        <NxTabs activeTab={activeTab} onTabSelect={setActiveTab}>
           <NxTabList>
             <NxTab>React</NxTab>
             <NxTab>HTML</NxTab>
@@ -201,26 +212,13 @@ export function GalleryMultiExampleTile(props: GalleryMultiExampleTileProps) {
             <div className="gallery-example-live">
               <ReactLiveExample />
             </div>
-            <NxStatefulAccordion>
-              <NxAccordion.Header>
-                <NxAccordion.Title>Example Code</NxAccordion.Title>
-              </NxAccordion.Header>
-              <CodeExample content={reactCodeExample} />
-              {extraCodeExampleRender}
-            </NxStatefulAccordion>
           </NxTabPanel>
           <NxTabPanel>
             {htmlExampleRender}
-            <NxStatefulAccordion>
-              <NxAccordion.Header>
-                <NxAccordion.Title>Example Code</NxAccordion.Title>
-              </NxAccordion.Header>
-              <CodeExample content={htmlExampleCodeString} />
-              {extraCodeExampleRender}
-            </NxStatefulAccordion>
           </NxTabPanel>
-        </NxStatefulTabs>
+        </NxTabs>
       </NxTile.Content>
+      <NxTile.Content className="nx-tile-content--accordion-container">{codeExampleAccordion}</NxTile.Content>
     </GalleryTile>
   );
 }
