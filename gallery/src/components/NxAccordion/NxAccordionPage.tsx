@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {useState} from 'react';
+import React from 'react';
 import {
   NxTable,
   NxInfoAlert,
@@ -13,10 +13,10 @@ import {
   NxP,
   NxH3,
   NxTile,
-  NxTabs,
   NxTabList,
   NxTab,
-  NxTabPanel
+  NxTabPanel,
+  NxStatefulTabs
 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -34,11 +34,9 @@ const NxAccordionSimpleCode = require('./NxAccordionExample?raw'),
     NxAccordionWithNxListCode = require('./NxAccordionWithNxListExample?raw');
 
 export default function NxAccordionPage() {
-  const [activeTabId, setActiveTabId] = useState(0);
-
   return (
     <>
-      <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId}>
+      <NxStatefulTabs defaultActiveTab={0}>
         <NxTabList>
           <NxTab>Usage</NxTab>
           <NxTab>React Stateless Examples</NxTab>
@@ -245,7 +243,7 @@ export default function NxAccordionPage() {
             A simple example of an <NxCode>NxStatefulAccordion</NxCode> that is initially open.
           </GalleryExampleTile>
         </NxTabPanel>
-      </NxTabs>
+      </NxStatefulTabs>
     </>
   );
 }
