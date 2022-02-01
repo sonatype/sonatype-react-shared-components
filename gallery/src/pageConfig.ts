@@ -26,7 +26,6 @@ import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
 import NxListPageV2 from './components/NxList/NxListPage';
-import NxTableStylePage from './styles/NxTable/NxTableStylePage';
 import NxTableContainerPage from './styles/NxTable/NxTableContainerPage';
 import NxAlertComponentsPage from './components/NxAlert/NxAlertPage';
 import NxStatefulAlertComponentsPage from './components/NxStatefulAlert/NxStatefulAlertPage';
@@ -245,7 +244,6 @@ const pageConfig: PageConfig = {
     'nx-pre': NxPrePage,
     'nx-read-only': NxReadOnlyPage,
     'nx-system-notice': NxSystemNoticePage,
-    'nx-table': NxTableStylePage,
     'nx-table-container': NxTableContainerPage,
     'nx-threat-number': NxThreatNumberPage,
     'nx-tile': NxTilePage
