@@ -40,8 +40,8 @@ import filterRowBtnReactExample from './NxTableFilterRowBtnExample';
 import NxTablePaginationExample from './NxTablePaginationExample';
 import NxTablePaginationFilterExample from './NxTablePaginationFilterExample';
 
-import sortingHtmlExample from '../../styles/NxTable/NxTableSortableExample';
-import filteringHtmlExample from '../../styles/NxTable/NxTableFilterExample';
+import sortingHtmlExample from './NxTableSortableHtmlExample';
+import filteringHtmlExample from './NxTableFilterHtmlExample';
 
 const simpleReactCode = require('./NxTableSimpleExample?raw'),
     numberColumnReactCode = require('./NxTableNumberColumnExample?raw'),
@@ -61,24 +61,24 @@ const simpleReactCode = require('./NxTableSimpleExample?raw'),
     emptyReactCode = require('./NxTableEmptyExample?raw'),
     customMetaInfoReactCode = require('./NxTableMetaInfoExample?raw');
 
-const tableSimpleHtmlExample = require('../../styles/NxTable/NxTableDefaultExample.html'),
+const tableSimpleHtmlExample = require('./NxTableSimpleExample.html'),
     numberColumnHtmlExample = require('./NxTableNumberColumnExample.html'),
     iconColumnHtmlExample = require('./NxTableIconColumnExample.html'),
     clickableRowCustomIconHtmlExample = require('./NxTableClickableCustomExample.html'),
-    emptyHtmlExample = require('../../styles/NxTable/NxTableEmptyExample.html'),
+    emptyHtmlExample = require('./NxTableEmptyExample.html'),
     customMetaInfoHtmlExample = require('./NxTableMetaInfoExample.html'),
-    filteringHtmlCode = require('../../styles/NxTable/NxTableFilterExample?raw'),
-    sortingHtmlCode = require('../../styles/NxTable/NxTableSortableExample?raw');
+    filteringHtmlCode = require('./NxTableFilterHtmlExample?raw'),
+    sortingHtmlCode = require('./NxTableSortableHtmlExample?raw');
 
 import './NxTablePaginationExample.scss';
 import './NxTablePaginationFilterExample.scss';
-import '../../styles/NxTable/NxTableTruncationAndWrappingExample.scss';
-import '../../styles/NxTable/NxTableFixedLayoutExample.scss';
+import './NxTableTruncationAndWrappingExample.scss';
+import './NxTableFixedLayoutExample.scss';
 
 const tablePaginationStyles = require('./NxTablePaginationExample.scss?raw'),
     tablePaginationFilterStyles = require('./NxTablePaginationFilterExample.scss?raw'),
-    truncationStyles = require('../../styles/NxTable/NxTableTruncationAndWrappingExample.scss?raw'),
-    fixedLayoutStyles = require('../../styles/NxTable/NxTableFixedLayoutExample.scss?raw');
+    truncationStyles = require('./NxTableTruncationAndWrappingExample.scss?raw'),
+    fixedLayoutStyles = require('./NxTableFixedLayoutExample.scss?raw');
 
 const truncationAndWrappingCodeExamples = [
       truncationReactCode,

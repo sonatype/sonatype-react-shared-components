@@ -26,7 +26,7 @@ import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
 import NxListPageV2 from './components/NxList/NxListPage';
-import NxTableContainerPage from './styles/NxTable/NxTableContainerPage';
+import NxTableContainerPage from './styles/NxTableContainer/NxTableContainerPage';
 import NxAlertComponentsPage from './components/NxAlert/NxAlertPage';
 import NxStatefulAlertComponentsPage from './components/NxStatefulAlert/NxStatefulAlertPage';
 import NxContainerHelpersPage from './styles/NxContainerHelpers/NxContainerHelpersPage';
