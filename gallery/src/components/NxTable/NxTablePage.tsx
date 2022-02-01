@@ -64,8 +64,7 @@ const simpleReactCode = require('./NxTableSimpleExample?raw'),
 const tableSimpleHtmlExample = require('../../styles/NxTable/NxTableDefaultExample.html'),
     numberColumnHtmlExample = require('./NxTableNumberColumnExample.html'),
     iconColumnHtmlExample = require('./NxTableIconColumnExample.html'),
-    clickableRowHtmlExample = require('../../styles/NxTable/NxTableClickableExample?raw'),
-    clickableRowCustomIconHtmlExample = require('../../styles/NxTable/NxTableClickableExample?raw'),
+    clickableRowCustomIconHtmlExample = require('./NxTableClickableCustomExample.html'),
     emptyHtmlExample = require('../../styles/NxTable/NxTableEmptyExample.html'),
     customMetaInfoHtmlExample = require('./NxTableMetaInfoExample.html'),
     filteringHtmlCode = require('../../styles/NxTable/NxTableFilterExample?raw'),
@@ -771,13 +770,12 @@ export default function NxTablePage() {
           </GalleryExampleTile>
         </NxTabPanel>
         <NxTabPanel>
-          <GalleryMultiExampleTile title="Clickable Row Example"
-                                   id="nx-table-clickable-example"
-                                   reactLiveExample={clickableRowReactExample}
-                                   reactCodeExample={clickableRowReactCode}
-                                   htmlLiveExample={clickableRowHtmlExample}>
+          <GalleryExampleTile title="Clickable Row Example"
+                              id="nx-table-clickable-example"
+                              liveExample={clickableRowReactExample}
+                              codeExamples={clickableRowReactCode}>
             An example where the rows are styled to indicate that they are clickable.
-          </GalleryMultiExampleTile>
+          </GalleryExampleTile>
 
           <GalleryMultiExampleTile title="Clickable Row Custom Icon Example"
                                    id="nx-table-clickable-custom-example"

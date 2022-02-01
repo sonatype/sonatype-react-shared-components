@@ -1,0 +1,72 @@
+<!--
+
+    Copyright (c) 2019-present Sonatype, Inc.
+    This program and the accompanying materials are made available under
+    the terms of the Eclipse Public License 2.0 which accompanies this
+    distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+
+-->
+<table class="nx-table">
+  <thead>
+    <tr class="nx-table-row nx-table-row--header">
+      <td class="nx-cell nx-cell--header">Name</td>
+      <td class="nx-cell nx-cell--header">Header 2</td>
+      <td class="nx-cell nx-cell--header nx-cell--row-btn"></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="nx-table-row nx-clickable" onclick="alert('Clicked Name 1')">
+      <td class="nx-cell">Name 1</td>
+      <td class="nx-cell">Content</td>
+      <td class="nx-cell nx-cell--row-btn">
+        <button type="button" class="nx-cell__row-btn" aria-label="Name 1; Content">
+          <svg class="nx-icon" style="height: 1em; width: 1em;" viewBox="0 0 1 1">
+            <polygon points="0,0 1,0.5 0,1" />
+          </svg>
+        </button>
+      </td>
+    </tr>
+    <tr class="nx-table-row nx-clickable selected" onclick="alert('Clicked Name 2')">
+      <td class="nx-cell">Name 2</td>
+      <td class="nx-cell">Content</td>
+      <td class="nx-cell nx-cell--row-btn">
+        <button type="button" class="nx-cell__row-btn" aria-label="Name 2; Content">
+          <svg class="nx-icon" style="height: 1em; width: 1em;" viewBox="0 0 1 1">
+            <polygon points="0,0 1,0.5 0,1" />
+          </svg>
+        </button>
+      </td>
+    </tr>
+    <tr class="nx-table-row nx-clickable" onclick="alert('Clicked Name 3')">
+      <td class="nx-cell">Name 3</td>
+      <td class="nx-cell">Content</td>
+      <td class="nx-cell nx-cell--row-btn">
+        <button type="button" class="nx-cell__row-btn" aria-label="Name 3; Content">
+          <svg class="nx-icon" style="height: 1em; width: 1em;" viewBox="0 0 1 1">
+            <polygon points="0,0 1,0.5 0,1" />
+          </svg>
+        </button>
+      </td>
+    </tr>
+    <tr class="nx-table-row nx-clickable" onclick="alert('Clicked last row')">
+      <td class="nx-cell">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed lorem vitae dolor mattis imperdiet a ac
+        nisl. Maecenas quis dapibus lacus, non lacinia dolor. In hac habitasse platea dictumst. Sed sit amet
+        nulla facilisis, elementum tellus quis, mattis turpis. Vivamus accumsan, purus vel maximus condimentum,
+        augue quam hendrerit velit, sed finibus nulla justo sit amet est. Nam tincidunt efficitur dapibus.
+        Quisque et pellentesque ante. Sed porttitor sem ipsum, sit amet blandit felis hendrerit nec. Suspendisse
+        congue, tortor tristique sollicitudin consectetur, sapien purus posuere massa, eget finibus nulla ipsum
+        sed sapien.
+      </td>
+      <td class="nx-cell">Content</td>
+      <NxTable.Cell rowBtnIcon={faEdit}/>
+      <td class="nx-cell nx-cell--row-btn">
+        <button type="button" class="nx-cell__row-btn" aria-label="The last row">
+          <svg class="nx-icon" style="height: 1em; width: 1em;" viewBox="0 0 1 1">
+            <polygon points="0,0 1,0.5 0,1" />
+          </svg>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
