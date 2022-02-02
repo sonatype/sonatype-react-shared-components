@@ -1,3 +1,8 @@
 .gallery-nav-link {
   color: var(--nx-color-text-dark);
+
+  &__icon > img {
+    margin: 0 var(--nx-spacing-2x);
+    vertical-align: middle;
+  }
 }
