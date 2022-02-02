@@ -7,6 +7,9 @@
 import React, { ProviderProps } from 'react';
 import { StableUniqueIdContext } from '../../util/idUtil';
 
+/**
+ * Establishes a separate provided value for the StableUniqueIdContext, which is used by the idUtils
+ */
 export default function NxStableUniqueIdContext(props: Omit<ProviderProps<never>, 'value'>) {
   return <StableUniqueIdContext.Provider value={{ value: 0 }} { ...props } />;
 }
