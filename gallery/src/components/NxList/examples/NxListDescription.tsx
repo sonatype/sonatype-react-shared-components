@@ -33,6 +33,17 @@ function NxListDescription() {
           unchanged. It was popularised in the 1960s.
         </NxList.Description>
       </NxList.Item>
+      <NxList.Item>
+        <NxList.DescriptionTerm>Item 4</NxList.DescriptionTerm>
+        <NxList.Description>
+          component.framework.component.java.javascript.test.framework.dispatch.action.store.state.lorem.ipsum.
+          fakeapi.testapi.long.string.test.description.list.term.nxlist.dispatch.action.store.state.lorem.ipsum.
+          component.something.component.java.javascript.test.framework.dispatch.action.store.state.lorem.ipsum.
+          fakeapi.testapi.long.string.test.description.list.term.nxlist.dispatch.action.store.state.lorem.ipsum.
+          component.something.component.java.javascript.test.framework.dispatch.action.store.state.lorem.ipsum.
+          fakeapi.testapi.long.string.test.description.list.term.nxlist.dispatch.action.store.state.lorem.ipsum.
+        </NxList.Description>
+      </NxList.Item>
     </NxList>
   );
 }
