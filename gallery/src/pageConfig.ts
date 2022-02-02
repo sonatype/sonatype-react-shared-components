@@ -174,7 +174,7 @@ const pageConfig: PageConfig = {
     'Indeterminate Pagination': { content: NxIndeterminatePaginationPage, type: 'react' },
     'Search Dropdown': { content: NxSearchDropdownPage, type: 'react' },
     'Stateful Search Dropdown': { content: NxStatefulSearchDropdownPage, type: 'react' },
-    'Text Link': { content: NxTextLinkPage, type: 'react' },
+    'Text Link': { content: NxTextLinkPage, type: 'react' }
   },
   'Forms': {
     'Checkbox': { content: NxCheckboxPage, type: 'react' },

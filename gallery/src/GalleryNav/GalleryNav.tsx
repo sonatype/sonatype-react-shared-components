@@ -35,7 +35,8 @@ import { PageMapping, PageConfig } from '../pageConfigTypes';
 import { markByFilter, matchesFilter } from '../filterUtil';
 
 import { faFile, faCode, faRulerCombined } from '@fortawesome/free-solid-svg-icons';
-import { faReact, faSass, faJs, faCss3 } from '@fortawesome/free-brands-svg-icons';
+import { faReact, faSass, faJs } from '@fortawesome/free-brands-svg-icons';
+const CSSLogo = require('../assets/images/css3-logo.png');
 
 import './GalleryNav.scss';
 
@@ -46,7 +47,7 @@ const PAGE_TYPE_TO_ICON_MAP = {
   'layout': faRulerCombined,
   'sass': faSass,
   'js': faJs,
-  'css': faCss3
+  'css': CSSLogo
 };
 
 const renderLinks = (filter?: string) =>
