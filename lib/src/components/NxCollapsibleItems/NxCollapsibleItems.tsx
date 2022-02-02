@@ -13,7 +13,7 @@ import classnames from 'classnames';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 import NxTooltip from '../NxTooltip/NxTooltip';
-import { getUniqueId } from '../../util/idUtil';
+import { useUniqueId } from '../../util/idUtil';
 import { Props, NxCollapsibleItemsChildProps, propTypes, childPropTypes } from './types';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
@@ -49,7 +49,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
         'nx-collapsible-items--disabled': disabled,
         'nx-collapsible-items--empty': isEmpty
       }),
-      treeViewId = useMemo(() => id || getUniqueId('nx-collapsible-items'), [id]),
+      treeViewId = useUniqueId('nx-collapsible-items', id),
       trigger = (
         <button type="button"
                 className="nx-collapsible-items__trigger"
