@@ -36,18 +36,18 @@ import { markByFilter, matchesFilter } from '../filterUtil';
 
 import { faFile, faCode, faRulerCombined } from '@fortawesome/free-solid-svg-icons';
 import { faReact, faSass, faJs } from '@fortawesome/free-brands-svg-icons';
-const CSSLogo = require('../assets/images/icon-css3.svg');
+import { GalleryNavIconCSS3 } from './GalleryNavIcons';
 
 import './GalleryNav.scss';
 
 const PAGE_TYPE_TO_ICON_MAP = {
-  'documentation': faFile,
-  'react': faReact,
-  'html': faCode,
-  'layout': faRulerCombined,
-  'sass': faSass,
-  'js': faJs,
-  'css': CSSLogo
+  'documentation': <NxFontAwesomeIcon icon={faFile} fixedWidth />,
+  'react': <NxFontAwesomeIcon icon={faReact} fixedWidth />,
+  'html': <NxFontAwesomeIcon icon={faCode} fixedWidth />,
+  'layout': <NxFontAwesomeIcon icon={faRulerCombined} fixedWidth />,
+  'sass': <NxFontAwesomeIcon icon={faSass} fixedWidth />,
+  'js': <NxFontAwesomeIcon icon={faJs} fixedWidth />,
+  'css': <GalleryNavIconCSS3 />
 };
 
 const renderLinks = (filter?: string) =>
@@ -59,11 +59,7 @@ const renderLinks = (filter?: string) =>
                    to={`/pages/${pageName}`}
                    activeClassName="selected">
             <span className="gallery-nav-link__icon">
-              {
-                typeof PAGE_TYPE_TO_ICON_MAP[entry.type] === 'string'
-                  ? <img src={PAGE_TYPE_TO_ICON_MAP[entry.type]} alt="icon" />
-                  : <NxFontAwesomeIcon icon={PAGE_TYPE_TO_ICON_MAP[entry.type]} fixedWidth />
-              }
+              { PAGE_TYPE_TO_ICON_MAP[entry.type] }
             </span>
             <span className="gallery-nav-link__label">
               {markByFilter(filter, pageName)}
