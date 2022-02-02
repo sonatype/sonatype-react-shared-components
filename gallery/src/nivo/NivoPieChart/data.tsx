@@ -6,17 +6,37 @@
  */
 
 const raw = [
-  ['fox', 102],
-  ['wolf', 134],
-  ['dog', 24],
-  ['cat', 502],
-  ['penguin', 53],
-  ['chewbacca', 1],
-  ['weasel', 164],
-  // ['raccon', 11231],
-  ['panda', 124],
-  ['deer', 332],
-  ['bear', 231]
+  ['repo1', 102],
+  ['repo2', 134],
+  ['repo3', 24],
+  ['repo4', 502],
+  ['repo5', 53],
+  ['repo6', 200],
+  ['repo7', 164],
+  ['repo8', 124],
+  ['repo9', 332],
+  ['repo10', 231],
+  ['repo11', 1503]
 ];
 
 export const data = raw.map(([id, value]) => ({ id, label: id, value }));
+
+const raw2 = [
+  ['critical', 102],
+  ['severe', 134],
+  ['moderate', 24],
+  ['low', 302],
+  ['none', 83],
+  ['unspecified', 240]
+];
+
+export const THREAT_COLORS = [
+  '#CC0028',
+  '#FF8600',
+  '#FFC333',
+  '#00B2FF',
+  '#495AB6',
+  '#666666'
+];
+
+export const DATA_CVE_AFFECTED = raw2.map(([id, value]) => ({ id, label: id, value }));

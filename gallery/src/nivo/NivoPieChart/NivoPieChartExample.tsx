@@ -8,7 +8,7 @@ import React from 'react';
 
 import { NxStatefulAccordion, NxAccordion } from '@sonatype/react-shared-components';
 
-import { data } from './data';
+import { data, DATA_CVE_AFFECTED, THREAT_COLORS } from './data';
 
 import { ResponsivePie } from '@nivo/pie';
 
@@ -49,6 +49,8 @@ export default function NivoPieChartExample() {
                        cornerRadius={0}
                        enableArcLabels={false}
                        innerRadius={0.5}
+                       enableArcLinkLabels={true}
+                       arcLinkLabel={d => `${d.id} (${d.value})`}
                        margin={{
                          top: 20,
                          bottom: 20,

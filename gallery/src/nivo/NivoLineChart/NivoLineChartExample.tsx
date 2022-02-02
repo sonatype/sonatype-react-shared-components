@@ -8,7 +8,7 @@ import React from 'react';
 
 import { NxStatefulAccordion, NxAccordion, NxTable, NxH2 } from '@sonatype/react-shared-components';
 
-import { data } from './data';
+import { data, DATA_WITH_DATES } from './data';
 import { ResponsiveLine } from '@nivo/line';
 
 const colors = [
@@ -40,10 +40,16 @@ export default function LineChartExample() {
   return (
     <div>
       <div style={{ height: '400px' }}>
-        <ResponsiveLine data={data}
+        <ResponsiveLine data={DATA_WITH_DATES}
                         { ...style }
-                        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-                        xScale={{ type: 'point' }}
+                        margin={{ top: 40, right: 60, bottom: 80, left: 60 }}
+                        xScale={{
+                          type: 'time',
+                          format: '%Y-%m-%d',
+                          precision: 'day',
+                          useUTC: false
+                        }}
+                        xFormat="time:%Y-%m-%d"
                         yScale={{
                           type: 'linear',
                           stacked: true,
@@ -52,18 +58,19 @@ export default function LineChartExample() {
                         axisTop={null}
                         axisRight={null}
                         axisBottom={{
+                          legend: '',
+                          format: '%b-%d',
+                          legendOffset: 40,
+                          legendPosition: 'middle',
                           tickSize: 5,
                           tickPadding: 5,
-                          tickRotation: 0,
-                          legend: 'transportation',
-                          legendOffset: 36,
-                          legendPosition: 'middle'
+                          tickRotation: 0
                         }}
                         axisLeft={{
                           tickSize: 5,
                           tickPadding: 5,
                           tickRotation: 0,
-                          legend: 'count',
+                          legend: 'Number of Downloads',
                           legendOffset: -40,
                           legendPosition: 'middle'
                         }}
@@ -77,12 +84,12 @@ export default function LineChartExample() {
                         colors={colors}
                         legends={[
                           {
-                            anchor: 'top-right',
-                            direction: 'column',
+                            anchor: 'bottom',
+                            direction: 'row',
                             justify: false,
-                            translateX: 100,
-                            translateY: 0,
-                            itemsSpacing: 0,
+                            translateX: 0,
+                            translateY: 60,
+                            itemsSpacing: 12,
                             itemDirection: 'left-to-right',
                             itemWidth: 80,
                             itemHeight: 20,
@@ -103,7 +110,7 @@ export default function LineChartExample() {
                         ]}
         />
       </div>
-      <NxStatefulAccordion defaultOpen={false}>
+      {/* <NxStatefulAccordion defaultOpen={false}>
         <NxAccordion.Header>
           <NxAccordion.Title>Foo</NxAccordion.Title>
         </NxAccordion.Header>
@@ -132,7 +139,7 @@ export default function LineChartExample() {
             </>
           ))
         }
-      </NxStatefulAccordion>
+      </NxStatefulAccordion> */}
     </div>
   );
 }
