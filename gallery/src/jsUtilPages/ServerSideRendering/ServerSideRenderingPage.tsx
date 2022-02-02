@@ -37,7 +37,11 @@ const ServerSideRenderingPage = () =>
         In order to facilitate these separate per-page counters, RSC provides
         an <NxCode>NxStableUniqueIdContext</NxCode> component. Whenever using RSC within serverside rendering,
         an instance of this component <strong>must</strong> be an ancestor of all RSC components within the JSX
-        render tree.
+        render tree. The <NxCode>NxStableUniqueIdContext</NxCode> component affects the counter used by
+        RSC's <NxCode>useUniqueId</NxCode>. It <strong>does not</strong> however affect the counter used by
+        RSC's <NxCode>getUniqueId</NxCode> utility function, as that function must work outside of React components
+        and therefore does not have access to the context value. Therefore, use of <NxCode>getUniqueId</NxCode> in
+        server-side rendered code is strongly discouraged.
       </NxP>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="NxStableUniqueIdContext Example"
