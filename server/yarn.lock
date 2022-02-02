@@ -344,7 +344,7 @@
     prop-types "^15.5.10"
 
 "@sonatype/react-shared-components@file:../lib/dist":
-  version "9.5.16"
+  version "9.7.0"
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.32"
     "@fortawesome/free-regular-svg-icons" "^5.15.4"
@@ -2738,7 +2738,7 @@ tsconfig-paths@^3.11.0, tsconfig-paths@^3.9.0:
 
 tslib@^1.8.1:
   version "1.14.1"
-  resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
+  resolved "https://repo.sonatype.com/repository/npm-all/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
 tsutils@^3.21.0:
