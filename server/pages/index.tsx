@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import { NxButton, NxModal, NxP, NxPageHeader, NxPageMain, useUniqueId }  from '@sonatype/react-shared-components';
+import { NxStableUniqueIdContext, NxButton, NxModal, NxP, NxPageHeader, NxPageMain, useUniqueId }
+  from '@sonatype/react-shared-components';
 import { useState } from 'react';
 
 const Home: NextPage = () => {
@@ -13,7 +14,7 @@ const Home: NextPage = () => {
       <NxPageHeader />
       <NxPageMain>
         <NxButton onClick={() => setShowModal(true)}>
-          Advanced Search Options
+          Advanced Search' Options
         </NxButton>
 
         {showModal && (
@@ -24,4 +25,10 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default function App() {
+  return (
+    <NxStableUniqueIdContext>
+      <Home />
+    </NxStableUniqueIdContext>
+  );
+}
