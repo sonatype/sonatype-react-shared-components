@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import './crypto-polyfill';
 import { NxButton, NxModal, NxP, NxPageHeader, NxPageMain, useUniqueId }  from '@sonatype/react-shared-components';
 import { useState } from 'react';
 
