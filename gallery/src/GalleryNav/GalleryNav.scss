@@ -1,6 +1,10 @@
 .gallery-nav-link {
   color: var(--nx-color-text-dark);
 
+  .fa-sass {
+    // Optical horizontal alignment adjustment
+    margin-left: calc(var(--nx-spacing-2x) + 0.08em);
+  }
 }
 
 .gallery-nav-icon {
