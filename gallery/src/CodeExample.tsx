@@ -9,6 +9,7 @@ import * as PropTypes from 'prop-types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import useResizeObserver from '@react-hook/resize-observer';
+import { removeLicense } from './util/jsUtil';
 
 export interface Props {
   content: string;
@@ -19,13 +20,6 @@ const propTypes: PropTypes.ValidationMap<Props> = {
   content: PropTypes.string.isRequired,
   language: PropTypes.string
 };
-
-// Quick and dirty removal of any comment appearing at the beginning of the content, as it is assumed to be
-// a license which is not helpful to the example display. Both HTML-syntax and C-syntax comments are removed
-const removeLicense = (content: string) =>
-  content
-      .replace(/^<!--(.|\n)*?-->\s*\n?/, '')
-      .replace(/^\/\*(.|\n)*?\*\/\s*\n?/, '');
 
 const CodeExample: FunctionComponent<Props> =
   function CodeExample({ content, language }): ReactElement<Props> {
