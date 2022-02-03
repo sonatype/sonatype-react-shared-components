@@ -28,7 +28,7 @@
     "test-watch": "jest --watch",
     "test-watch-debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watchAll",
     "clean": "rimraf dist junit.xml",
-    "version": "versync -b sync -a"
+    "version": "versync -b sync -a; node ../update-hosted-versions.js"
   },
   "author": "Sonatype, Inc.",
   "license": "EPL-2.0",

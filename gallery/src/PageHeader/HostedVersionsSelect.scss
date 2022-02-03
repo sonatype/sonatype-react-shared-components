@@ -1,0 +1,9 @@
+.hosted-versions-select {
+  display: flex;
+  align-items: center;
+  gap: var(--nx-spacing-2x);
+
+  &__label {
+    font-size: 14px;
+  }
+}
