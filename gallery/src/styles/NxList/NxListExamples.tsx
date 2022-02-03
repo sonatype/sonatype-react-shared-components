@@ -20,6 +20,7 @@ const NxListSimpleCode = require('./NxListDefaultExample.html'),
     NxListClickableLinksCode = require('./NxListClickableLinksExample?raw'),
     NxListMultiLineCode = require('./NxListMultiLineExample.html'),
     NxListBulletedCode = require('./NxListBulletedExample.html'),
+    NxListNumberedCode = require('./NxListNumberedExample.html'),
     NxListWithActionsCode = require('./NxListWithActionsExample.tsx?raw'),
     NxListEmptyCode = require('./NxListEmptyExample.html'),
     NxListErrorStateCode = require('./NxListErrorStateExample.tsx?raw'),
@@ -57,6 +58,14 @@ const NxListsExamples = () =>
                         codeExamples={NxListBulletedCode}>
       An <NxCode>nx-list</NxCode> demonstrating bulleted list styles more typical of
       default <NxCode>&lt;ul&gt;</NxCode> styling. These can be nested.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Numbered List Example"
+                        id="nx-list-numbered-example"
+                        htmlExample={NxListNumberedCode}
+                        codeExamples={NxListNumberedCode}>
+      An <NxCode>nx-list</NxCode> demonstrating ordered (numbered) list styles more typical of
+      default <NxCode>&lt;ol&gt;</NxCode> styling. These can be nested.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX List with Actions Example"
