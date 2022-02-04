@@ -63,13 +63,15 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
       { showReorderingButtons && (
         <NxTooltip title={isFilteredItem ? 'Reordering is disabled when filtered' : ''}>
           <div className="nx-btn-bar nx-transfer-list__button-bar">
-            <NxButton variant="icon-only"
+            <NxButton type="button"
+                      variant="icon-only"
                       title={moveUpButtonTitle}
                       disabled={isFilteredItem || isTopItem}
                       onClick={() => !isTopItem && onReorderItem && onReorderItem(index, -1)}>
               <NxFontAwesomeIcon icon={faArrowUp}/>
             </NxButton>
-            <NxButton variant="icon-only"
+            <NxButton type="button"
+                      variant="icon-only"
                       title={moveDownButtonTitle}
                       disabled={isFilteredItem || isBottomItem}
                       onClick={() => !isBottomItem && onReorderItem && onReorderItem(index, 1)}>
