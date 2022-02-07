@@ -9,7 +9,7 @@ import * as PropTypes from 'prop-types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import useResizeObserver from '@react-hook/resize-observer';
-import { removeLicense } from './util/jsUtil';
+import { removeLicense } from './util/exampleUtil';
 
 export interface Props {
   content: string;
