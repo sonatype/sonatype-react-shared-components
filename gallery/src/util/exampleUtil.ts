@@ -16,19 +16,21 @@ export const removeLicense = (content: string) =>
 export const copyTextToClipboard = (textToCopy: string) => {
   // navigator clipboard api needs a secure context (https)
   if (navigator.clipboard && window.isSecureContext) {
-    // navigator clipboard api method'
-    navigator.clipboard.writeText(textToCopy);
+    return navigator.clipboard.writeText(textToCopy);
   }
   else {
     // text area method
     const textArea = document.createElement('textarea');
     textArea.value = textToCopy;
-    // make the textarea not visible
+    // make the textarea not "visible"
     textArea.style.position = 'fixed';
     textArea.style.opacity = '0';
     document.body.appendChild(textArea);
     textArea.select();
     document.execCommand('copy');
     document.body.removeChild(textArea);
+    return new Promise((resolve) => {
+      resolve('success');
+    });
   }
 };

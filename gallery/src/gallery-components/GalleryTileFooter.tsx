@@ -29,8 +29,9 @@ export const GalleryTileFooter = (props: GalleryTileFooterProps) => {
       [copyStatus, setCopyStatus] = useState<string>(''),
       copyOnClick = () => {
         try {
-          copyTextToClipboard(removeLicense(clipboardContent));
-          setCopyStatusWithTimeout('success');
+          copyTextToClipboard(removeLicense(clipboardContent))
+              .then(() => setCopyStatusWithTimeout('success'))
+              .catch(() => setCopyStatusWithTimeout('error'));
         }
         catch (error) {
           setCopyStatusWithTimeout('error');
