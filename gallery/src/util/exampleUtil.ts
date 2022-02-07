@@ -35,6 +35,7 @@ export const copyTextToClipboard = (textToCopy: string) => {
       });
     }
     catch (error) {
+      console.error('Error in copying code.');
       return Promise.reject('error');
     }
   }
