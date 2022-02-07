@@ -4,22 +4,20 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, JSXElementConstructor, ReactNode, useState } from 'react';
+import React, { FunctionComponent, JSXElementConstructor, ReactNode } from 'react';
 import classnames from 'classnames';
-import { copyTextToClipboard, ensureArray, removeLicense } from '../util/jsUtil';
+import { ensureArray } from '../util/jsUtil';
 
 import CodeExample, { Props as CodeExampleProps } from '../CodeExample';
 import RawHtmlExample from '../RawHtmlExample';
 import {
   NxAccordion,
-  NxButton,
   NxCheckbox,
-  NxFontAwesomeIcon,
   NxStatefulAccordion,
   NxTile,
   useToggle
 } from '@sonatype/react-shared-components';
-import { faCheckCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { GalleryTileFooter } from './GalleryTileFooter';
 
 interface PropsWithRequiredChildren {
   children: ReactNode;
@@ -109,27 +107,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
                       onChange={toggleCheckeredBackground}>
             Show checkered background
           </NxCheckbox>
-        ),
-        setCopyStatusWithTimeout = (status: string) => {
-          //Set timeout to show copy status message as button text
-          //before reverting to default button text
-          const timeout = 3000;
-          setCopyStatus(status);
-          setTimeout(() => {
-            setCopyStatus('');
-          }, timeout);
-        },
-        [copyStatus, setCopyStatus] = useState<string>(''),
-        copyOnClick = () => {
-          const textToCopy: string = codeExampleElements[0].props.content;
-          try {
-            copyTextToClipboard(removeLicense(textToCopy));
-            setCopyStatusWithTimeout('success');
-          }
-          catch (error) {
-            setCopyStatusWithTimeout('error');
-          }
-        };
+        );
 
     return (
       <GalleryTile id={id}
@@ -153,27 +131,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
               <h2 className="nx-accordion__header-title">Example Code</h2>
             </NxAccordion.Header>
             {codeExampleElements}
-            <footer className="nx-footer">
-              <div className="nx-btn-bar">
-                {copyStatus === 'success' &&
-                  <>
-                    <NxFontAwesomeIcon icon={faCheckCircle}
-                                       title="Copied!"
-                                       color="var(--nx-swatch-green-25)"/>
-                    <span>Copied!</span>
-                  </>
-                }
-                {copyStatus === 'error' &&
-                  <>
-                    <NxFontAwesomeIcon icon={faExclamationCircle}
-                                       title="Copy failed."
-                                       color="var(--nx-swatch-red-40)"/>
-                    <span>Copy failed.</span>
-                  </>
-                }
-                <NxButton onClick={copyOnClick}>Copy to Clipboard</NxButton>
-              </div>
-            </footer>
+            <GalleryTileFooter clipboardContent={codeExampleElements[0].props.content}/>
           </NxStatefulAccordion>
         </NxTile.Content>
       </GalleryTile>
