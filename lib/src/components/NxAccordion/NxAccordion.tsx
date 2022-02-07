@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { MouseEvent, useContext, useRef, useMemo } from 'react';
+import React, { MouseEvent, useContext, useRef } from 'react';
 import classnames from 'classnames';
 import { faChevronCircleDown, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,8 +14,8 @@ import { HeaderContextType, HeaderProps, Props, propTypes } from './types';
 
 import './NxAccordion.scss';
 import { splitOutFirst } from '../../util/childUtil';
-import { getUniqueId } from '../../util/idUtil';
 import withClass from '../../util/withClass';
+import { useUniqueId } from '../../util/idUtil';
 
 export { Props, HeaderProps };
 
@@ -68,7 +68,7 @@ export default function NxAccordion(props: Props) {
   const { className, onToggle, open, children, id, ...otherProps } = props,
       classes = classnames('nx-accordion', className),
       [header, otherChildren] = splitOutFirst(NxAccordionHeader, children),
-      accordionId = useMemo(() => id || getUniqueId('nx-accordion'), [id]);
+      accordionId = useUniqueId('nx-accordion', id);
 
   function onHeaderClick(evt: MouseEvent) {
     evt.preventDefault();

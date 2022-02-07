@@ -309,3 +309,5 @@ export { default as NxSmallThreatCounter, Props as NxSmallThreatCounterProps }
 
 export { default as NxTree, ItemProps as NxTreeItemProps } from './components/NxTree/NxTree';
 export { StatefulItemProps as NxTreeStatefulItemProps } from './components/NxTree/stateful/NxTreeStatefulItem';
+
+export { default as NxStableUniqueIdContext } from './components/NxStableUniqueIdContext/NxStableUniqueIdContext';
