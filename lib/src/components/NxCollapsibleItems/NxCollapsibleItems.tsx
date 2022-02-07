@@ -4,16 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {
-  FC,
-  forwardRef,
-  useMemo
-} from 'react';
+import React, { FC, forwardRef } from 'react';
 import classnames from 'classnames';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 import NxTooltip from '../NxTooltip/NxTooltip';
-import { getUniqueId } from '../../util/idUtil';
+import { useUniqueId } from '../../util/idUtil';
 import { Props, NxCollapsibleItemsChildProps, propTypes, childPropTypes } from './types';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
@@ -49,7 +45,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
         'nx-collapsible-items--disabled': disabled,
         'nx-collapsible-items--empty': isEmpty
       }),
-      treeViewId = useMemo(() => id || getUniqueId('nx-collapsible-items'), [id]),
+      treeViewId = useUniqueId('nx-collapsible-items', id),
       trigger = (
         <button type="button"
                 className="nx-collapsible-items__trigger"
