@@ -19,18 +19,23 @@ export const copyTextToClipboard = (textToCopy: string) => {
     return navigator.clipboard.writeText(textToCopy);
   }
   else {
-    // text area method
-    const textArea = document.createElement('textarea');
-    textArea.value = textToCopy;
-    // make the textarea not "visible"
-    textArea.style.position = 'fixed';
-    textArea.style.opacity = '0';
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-    return new Promise((resolve) => {
-      resolve('success');
-    });
+    try {
+      // text area method
+      const textArea = document.createElement('textarea');
+      textArea.value = textToCopy;
+      // make the textarea not "visible"
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      return new Promise((resolve) => {
+        resolve('success');
+      });
+    }
+    catch (error) {
+      return Promise.reject('error');
+    }
   }
 };
