@@ -138,6 +138,7 @@ import NxStatefulCollapsibleMultiSelectPage
 import NxStatefulCollapsibleRadioSelectPage
   from './components/NxStatefulCollapsibleRadioSelect/NxStatefulCollapsibleRadioSelectPage';
 import NxTreePage from './components/NxTree/NxTreePage';
+import ServerSideRenderingPage from './jsUtilPages/ServerSideRendering/ServerSideRenderingPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -274,7 +275,8 @@ const pageConfig: PageConfig = {
     'Validation Utils': { content: ValidationUtilsPage, type: 'js' },
     'useToggle': { content: UseTogglePage, type: 'js' },
     'IDUtils': { content: IdUtilPage, type: 'js' },
-    'withClass Higher-Order Component': { content: WithClassPage, type: 'js' }
+    'withClass Higher-Order Component': { content: WithClassPage, type: 'js' },
+    'Server Side Rendering Utilities': { content: ServerSideRenderingPage, type: 'js'}
   },
   'Guidelines': {
     'Accessibility': { content: AccessibilityPage, type: 'documentation' },
