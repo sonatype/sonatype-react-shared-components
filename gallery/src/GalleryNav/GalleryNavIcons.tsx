@@ -7,7 +7,7 @@
 import React from 'react';
 
 export const GalleryNavIconCSS3 = () => (
-  <svg className="gallery-nav-icon gallery-nav-icon--css3"
+  <svg className="nx-icon gallery-nav-icon gallery-nav-icon--css3"
        width="20"
        height="20"
        viewBox="0 0 20 20"
