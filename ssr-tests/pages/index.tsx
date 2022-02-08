@@ -192,7 +192,7 @@ const Home: NextPage = () => {
         <NxColorPicker label="foo" />
         <NxStatefulCheckbox defaultChecked={false} />
         <NxCodeSnippet label="foo" content="bar" />
-        <NxDateInput value="1/1/2022" isPristine={false} />
+        <NxDateInput value="2022-01-01" isPristine={false} />
         <NxStatefulDateInput />
         <NxDropdown label="foo" isOpen={false}>
           <button className="nx-dropdown-button">Bar</button>
