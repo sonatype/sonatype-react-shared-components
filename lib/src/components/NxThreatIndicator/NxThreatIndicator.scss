@@ -4,14 +4,20 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../../scss-shared/nx-container-helpers';
 
 // eyeballed, assumes $nx-font-size surrounding text
 $-vertical-alignment: -0.1em;
 
 .nx-threat-indicator {
+  @include nx-container-helpers.container-horizontal;
+
   font-size: var(--nx-font-size-s);
   margin: 0 var(--nx-spacing-2x);
-  vertical-align: $-vertical-alignment;
+
+  .nx-icon {
+    vertical-align: $-vertical-alignment;
+  }
 }
 
 .nx-list__item {
