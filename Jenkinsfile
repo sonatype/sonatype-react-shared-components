@@ -13,8 +13,8 @@ def numSeleniumContainers = 10;
 
 dockerizedBuildPipeline(
   deployBranch: 'main',
-  // expose gallery port on host so selenium container can hit it
-  dockerArgs: '-p 4043:4043',
+  // expose gallery port and nextjs dev port on host so selenium container can hit it
+  dockerArgs: '-p 4043:4043 -p 3000:3000',
 
   prepare: {
     githubStatusUpdate('pending')
