@@ -114,7 +114,7 @@ dockerizedBuildPipeline(
           yarn install --registry "\${registry}" --frozen-lockfile
 
           # Run the server-side rendering tests, through docker similarly to the visual tests
-          yarn test
+          NEXT_TELEMETRY_DISABLED=1 yarn test
         )
       """
 
