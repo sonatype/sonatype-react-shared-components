@@ -99,11 +99,20 @@ dockerizedBuildPipeline(
         npm pack
         cd ../..
 
-        cd gallery
-        yarn install --registry "\${registry}" --frozen-lockfile
+        TEST_IP=\$JENKINS_AGENT_IP (
+          cd gallery
+          yarn install --registry "\${registry}" --frozen-lockfile
 
-        # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
-        MAX_INSTANCES=${numSeleniumContainers} TEST_IP=\$JENKINS_AGENT_IP yarn test
+          # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
+          MAX_INSTANCES=${numSeleniumContainers} yarn test
+          cd ..
+
+          cd ssr-tests
+          yarn install --registry "\${registry}" --frozen-lockfile
+
+          # Run the server-side rendering tests, through docker similarly to the visual tests
+          yarn test
+        )
       """
 
       // NOTE: we don't want the applitools test run to have the gainsight key
