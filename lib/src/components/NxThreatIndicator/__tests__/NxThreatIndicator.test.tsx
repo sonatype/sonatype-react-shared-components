@@ -15,25 +15,30 @@ import NxToolip from '../../NxTooltip/NxTooltip';
 describe('NxThreatIndicator', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxThreatIndicator, {});
 
-  it('renders an faCircle NxFontAwesomeIcon with the `nx-threat-indicator` class', function() {
-    const icon = getShallowComponent().find(NxFontAwesomeIcon);
+  it('renders a span with the `nx-threat-indicator` class', function() {
+    const span = getShallowComponent().find('span');
 
-    expect(icon).toHaveClassName('nx-threat-indicator');
+    expect(span).toHaveClassName('nx-threat-indicator');
+  });
+
+  it('renders an faCircle NxFontAwesomeIcon within the span', function() {
+    const icon = getShallowComponent().find('.nx-threat-indicator').find(NxFontAwesomeIcon);
+
     expect(icon).toExist();
     expect(icon).toHaveProp('icon', faCircle);
   });
 
   it('sets the nx-threat-indicator--unspecified class if no props are passed', function() {
-    const icon = getShallowComponent().find(NxFontAwesomeIcon);
+    const span = getShallowComponent().find('.nx-threat-indicator');
 
-    expect(icon).toMatchSelector('.nx-threat-indicator--unspecified');
+    expect(span).toMatchSelector('.nx-threat-indicator--unspecified');
   });
 
   it('sets the modifier class using the threatLevelCategory if it is provided', function() {
-    const icon = getShallowComponent({ threatLevelCategory: 'low' }).find(NxFontAwesomeIcon);
+    const span = getShallowComponent({ threatLevelCategory: 'low' }).find('.nx-threat-indicator');
 
-    expect(icon).toMatchSelector('.nx-threat-indicator--low');
-    expect(icon).not.toMatchSelector('.nx-threat-indicator--unspecified');
+    expect(span).toMatchSelector('.nx-threat-indicator--low');
+    expect(span).not.toMatchSelector('.nx-threat-indicator--unspecified');
   });
 
   it('sets the modifier class by converting the policyThreatLevel if it is provided', function() {
@@ -53,18 +58,17 @@ describe('NxThreatIndicator', function() {
 
   it('sets the modifier class using the threatLevelCategory if both props are provided', function() {
     const component = getShallowComponent({ policyThreatLevel: 9, threatLevelCategory: 'low' });
-    const icon = component.find(NxFontAwesomeIcon);
+    const span = component.find('.nx-threat-indicator');
 
-    expect(icon).toMatchSelector('.nx-threat-indicator--low');
-    expect(icon).not.toMatchSelector('.nx-threat-indicator--critical');
-    expect(icon).not.toMatchSelector('.nx-threat-indicator--unspecified');
+    expect(span).toMatchSelector('.nx-threat-indicator--low');
+    expect(span).not.toMatchSelector('.nx-threat-indicator--critical');
+    expect(span).not.toMatchSelector('.nx-threat-indicator--unspecified');
   });
 
   it('adds aria attrs to help the icon show up for screen readers', function() {
     const component = getShallowComponent({ policyThreatLevel: 9, threatLevelCategory: 'low' });
 
-    expect(component.find(NxFontAwesomeIcon)).toHaveProp('aria-label', 'threat level low');
-    expect(component.find(NxFontAwesomeIcon)).toHaveProp('aria-hidden', false);
+    expect(component.find('.nx-threat-indicator')).toHaveProp('aria-label', 'threat level low');
   });
 
   it('should have the correct default tooltip title', function() {
@@ -88,10 +92,10 @@ describe('NxThreatIndicator', function() {
   });
 
   it('adds specified class names to the element', function() {
-    const icon = getShallowComponent({ className: 'foo', threatLevelCategory: 'low' }).find(NxFontAwesomeIcon);
+    const span = getShallowComponent({ className: 'foo', threatLevelCategory: 'low' }).find('.nx-threat-indicator');
 
-    expect(icon).toHaveClassName('foo');
-    expect(icon).toHaveClassName('nx-threat-indicator');
-    expect(icon).toHaveClassName('nx-threat-indicator--low');
+    expect(span).toHaveClassName('foo');
+    expect(span).toHaveClassName('nx-threat-indicator');
+    expect(span).toHaveClassName('nx-threat-indicator--low');
   });
 });
