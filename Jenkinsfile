@@ -99,7 +99,10 @@ dockerizedBuildPipeline(
         npm pack
         cd ../..
 
-        TEST_IP=\$JENKINS_AGENT_IP (
+        (
+          # Needed for docker-based webdriverio tests
+          export TEST_IP=\$JENKINS_AGENT_IP
+
           cd gallery
           yarn install --registry "\${registry}" --frozen-lockfile
 
