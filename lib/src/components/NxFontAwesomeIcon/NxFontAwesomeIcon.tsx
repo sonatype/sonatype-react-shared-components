@@ -11,7 +11,7 @@ import { useUniqueId } from '../../util/idUtil';
 
 export { Props } from '@fortawesome/react-fontawesome';
 
-// Hack to get the titleId prop working correct until
+// Hack to get the titleId prop working correctly until
 // https://github.com/FortAwesome/react-fontawesome/pull/411
 // is merged
 (FontAwesomeIcon as any).defaultProps.titleId = null;
