@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import type { NextPage } from 'next'
-import { useState } from 'react';
 import { faEdit, faBicycle } from '@fortawesome/free-solid-svg-icons';
 import {
   NxAccordion,
@@ -99,8 +98,6 @@ const vulnerabilityDetailsJson = require('../vulnerabilityDetailsJson.json');
 const noop = () => {};
 
 const Home: NextPage = () => {
-  const [showModal, setShowModal] = useState(false);
-  const modalCloseHandler = () => setShowModal(false);
   const id = useUniqueId('foo');
 
   return (
