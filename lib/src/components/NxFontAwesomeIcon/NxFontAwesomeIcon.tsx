@@ -14,6 +14,7 @@ export { Props } from '@fortawesome/react-fontawesome';
 // Hack to get the titleId prop working correctly until
 // https://github.com/FortAwesome/react-fontawesome/pull/411
 // is merged
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 (FontAwesomeIcon as any).defaultProps.titleId = null;
 
 /**
