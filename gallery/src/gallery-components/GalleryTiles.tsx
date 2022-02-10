@@ -10,7 +10,14 @@ import { ensureArray } from '../util/jsUtil';
 
 import CodeExample, { Props as CodeExampleProps } from '../CodeExample';
 import RawHtmlExample from '../RawHtmlExample';
-import { NxAccordion, NxCheckbox, NxStatefulAccordion, NxTile, useToggle } from '@sonatype/react-shared-components';
+import {
+  NxAccordion,
+  NxCheckbox,
+  NxStatefulAccordion,
+  NxTile,
+  useToggle
+} from '@sonatype/react-shared-components';
+import { GalleryTileFooter } from './GalleryTileFooter';
 
 interface PropsWithRequiredChildren {
   children: ReactNode;
@@ -124,6 +131,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
               <h2 className="nx-accordion__header-title">Example Code</h2>
             </NxAccordion.Header>
             {codeExampleElements}
+            <GalleryTileFooter clipboardContent={codeExampleElements[0].props.content}/>
           </NxStatefulAccordion>
         </NxTile.Content>
       </GalleryTile>

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, FormEvent, KeyboardEvent, useRef, MutableRefObject, useMemo } from 'react';
+import React, { forwardRef, FormEvent, KeyboardEvent, useRef, MutableRefObject } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +14,7 @@ import './NxTextInput.scss';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, PublicProps, propTypes, TextInputElement } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
-import { getUniqueId } from '../../util/idUtil';
+import { useUniqueId } from '../../util/idUtil';
 export { Props, PublicProps, StateProps, propTypes, inputTypes } from './types';
 
 /*
@@ -59,7 +59,7 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
           });
 
       const inputRef: MutableRefObject<TextInputElement | null> = useRef<TextInputElement>(null),
-          invalidMessageId = useMemo(() => getUniqueId('nx-text-input-invalid-message'), []);
+          invalidMessageId = useUniqueId('nx-text-input-invalid-message');
 
       // when the box padding is clicked, set the focus to the <input> as that's what the user thought
       // they were clicking
