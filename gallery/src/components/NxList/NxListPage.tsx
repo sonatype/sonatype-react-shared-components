@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxCode, NxTextLink, NxTable, NxH3, NxTile } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxTextLink, NxTable, NxH3, NxTile, NxWarningAlert } from '@sonatype/react-shared-components';
 import {GalleryDescriptionTile} from '../../gallery-components/GalleryTiles';
 import NxListsExamples from './NxListExamples';
 
@@ -23,6 +23,14 @@ const NxListPage = () =>
         <NxTile.SubsectionHeader>
           <NxH3>Description Lists</NxH3>
         </NxTile.SubsectionHeader>
+        <NxWarningAlert>
+          Deprecated: Using these child components along with <NxCode>NxList</NxCode> and <NxCode>NxList.Item</NxCode>
+          {' '}results in invalid HTML due to the fact that <NxCode>NxList</NxCode> and{' '}
+          <NxCode>NxList.Item</NxCode> render a <NxCode>ul</NxCode> and an <NxCode>li</NxCode> respectively rather than
+          the necessary <NxCode>dl</NxCode> and <NxCode>div</NxCode> for a description list. Use
+          the <NxCode>NxDescriptionList</NxCode> family of convenience components instead. See
+          the <NxTextLink href="#/pages/nx-list">nx-list</NxTextLink> page for details.
+        </NxWarningAlert>
         <NxP>
           <NxCode>NxList</NxCode> also supports the styling of description lists
           using <NxCode>NxList.DescriptionTerm</NxCode> and <NxCode>NxList.Description</NxCode>. Terms and descriptions
@@ -111,16 +119,28 @@ const NxListPage = () =>
               <NxTable.Cell><NxCode>NxList.DescriptionTerm</NxCode></NxTable.Cell>
               <NxTable.Cell>Within <NxCode>NxList.Item</NxCode></NxTable.Cell>
               <NxTable.Cell>
-                The content for the first column in a description list.
-                Used for displaying the term element in a description list.
+                <NxWarningAlert>
+                  Deprecated. Use <NxCode>NxDescriptionList.Term</NxCode> within <NxCode>NxDescriptionList.Item</NxCode>
+                  {' '}instead.
+                </NxWarningAlert>
+                <NxP>
+                  The content for the first column in a description list.
+                  Used for displaying the term element in a description list.
+                </NxP>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxList.Description</NxCode></NxTable.Cell>
               <NxTable.Cell>Within <NxCode>NxList.Item</NxCode></NxTable.Cell>
               <NxTable.Cell>
-                The content for the second column in a description list.
-                Used for displaying the term's description in a description list.
+                <NxWarningAlert>
+                  Deprecated. Use <NxCode>NxDescriptionList.Description</NxCode> within{' '}
+                  <NxCode>NxDescriptionList.Item</NxCode> instead.
+                </NxWarningAlert>
+                <NxP>
+                  The content for the second column in a description list.
+                  Used for displaying the term's description in a description list.
+                </NxP>
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>

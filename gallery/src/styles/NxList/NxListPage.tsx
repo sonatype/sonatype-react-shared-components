@@ -178,6 +178,7 @@ const NxListPage = () =>
             <NxTable.Row>
               <NxTable.Cell>Class</NxTable.Cell>
               <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Convenience Component</NxTable.Cell>
               <NxTable.Cell>Details</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Head>
@@ -188,6 +189,7 @@ const NxListPage = () =>
                 <NxCode>&lt;dl&gt;</NxCode> which also
                 has <NxCode>.nx-list</NxCode>.
               </NxTable.Cell>
+              <NxTable.Cell><NxCode>NxDescriptionList</NxCode></NxTable.Cell>
               <NxTable.Cell>Root class to apply RSC description list styles</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -196,6 +198,7 @@ const NxListPage = () =>
                 <NxCode>&lt;div&gt;</NxCode> wrapping <NxCode>&lt;dt&gt;</NxCode>{' '}
                 and <NxCode>&lt;dd&gt;</NxCode> elements
               </NxTable.Cell>
+              <NxTable.Cell><NxCode>NxDescriptionList.Item</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 Each <NxCode>&lt;dt&gt;</NxCode>/<NxCode>&lt;dd&gt;</NxCode> pairing
                 should be wrapped in a div which is styled similarly to an item row in a normal nx-list.
@@ -204,11 +207,13 @@ const NxListPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>.nx-list__term</NxCode></NxTable.Cell>
               <NxTable.Cell><NxCode>&lt;dt&gt;</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>NxDescriptionList.Term</NxCode></NxTable.Cell>
               <NxTable.Cell>Styles the description term elements</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>.nx-list__description</NxCode></NxTable.Cell>
               <NxTable.Cell><NxCode>&lt;dd&gt;</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>NxDescriptionList.Description</NxCode></NxTable.Cell>
               <NxTable.Cell>Styles the description elements</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
