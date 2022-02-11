@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { chain, groupBy, reject, without } from 'ramda';
 
 import { Props, propTypes } from './types';
-import TransferListHalf from './TransferListHalf';
+import NxTransferListHalf from '../NxTransferListHalf/NxTransferListHalf';
 
 import './NxTransferList.scss';
 
@@ -105,30 +105,30 @@ export default function NxTransferList<T extends string | number = string>(props
 
   return (
     <div className={classnames('nx-transfer-list', classNameProp)} { ...attrs }>
-      <TransferListHalf<T> label={availableItemsLabel || 'Available Items'}
-                           filterValue={availableItemsFilter}
-                           onFilterChange={onAvailableItemsFilterChange}
-                           showMoveAll={showMoveAll || false}
-                           onMoveAll={onSelectAll}
-                           isSelected={false}
-                           items={available}
-                           onItemChange={onChange}
-                           onReorderItem={onReorderItem}
-                           footerContent={availableItemsCountFormatter(availableCount)}
-                           filterFn={filterFn}
-                           allowReordering={false} />
-      <TransferListHalf<T> label={selectedItemsLabel || 'Transferred Items'}
-                           filterValue={selectedItemsFilter}
-                           onFilterChange={onSelectedItemsFilterChange}
-                           showMoveAll={showMoveAll || false}
-                           onMoveAll={onUnselectAll}
-                           isSelected={true}
-                           items={selected}
-                           onItemChange={onChange}
-                           onReorderItem={onReorderItem}
-                           footerContent={selectedItemsCountFormatter(selectedCount)}
-                           filterFn={filterFn}
-                           allowReordering={allowReordering} />
+      <NxTransferListHalf<T> label={availableItemsLabel || 'Available Items'}
+                             filterValue={availableItemsFilter}
+                             onFilterChange={onAvailableItemsFilterChange}
+                             showMoveAll={showMoveAll || false}
+                             onMoveAll={onSelectAll}
+                             isSelected={false}
+                             items={available}
+                             onItemChange={onChange}
+                             onReorderItem={onReorderItem}
+                             footerContent={availableItemsCountFormatter(availableCount)}
+                             filterFn={filterFn}
+                             allowReordering={false} />
+      <NxTransferListHalf<T> label={selectedItemsLabel || 'Transferred Items'}
+                             filterValue={selectedItemsFilter}
+                             onFilterChange={onSelectedItemsFilterChange}
+                             showMoveAll={showMoveAll || false}
+                             onMoveAll={onUnselectAll}
+                             isSelected={true}
+                             items={selected}
+                             onItemChange={onChange}
+                             onReorderItem={onReorderItem}
+                             footerContent={selectedItemsCountFormatter(selectedCount)}
+                             filterFn={filterFn}
+                             allowReordering={allowReordering} />
     </div>
   );
 }

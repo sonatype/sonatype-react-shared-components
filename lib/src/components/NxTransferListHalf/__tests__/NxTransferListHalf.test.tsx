@@ -15,10 +15,10 @@ import NxFieldset from '../../NxFieldset/NxFieldset';
 import NxFilterInput from '../../NxFilterInput/NxFilterInput';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-import TransferListHalf from '../TransferListHalf';
-import { TransferListHalfProps as Props } from '../types';
+import NxTransferListHalf from '../NxTransferListHalf';
+import { Props } from '../types';
 
-describe('TransferListHalf', function() {
+describe('NxTransferListHalf', function() {
   const minimalProps = {
         label: 'Foo',
         filterValue: '',
@@ -30,8 +30,8 @@ describe('TransferListHalf', function() {
         onItemChange: () => {},
         footerContent: <div/>
       },
-      getShallow = getShallowComponent<Props<number>>(TransferListHalf, minimalProps),
-      getMounted = getMountedComponent<Props<number>>(TransferListHalf, minimalProps);
+      getShallow = getShallowComponent<Props<number>>(NxTransferListHalf, minimalProps),
+      getMounted = getMountedComponent<Props<number>>(NxTransferListHalf, minimalProps);
 
   it('renders an NxFieldset with the nx-transfer-list__half class', function() {
     expect(getShallow()).toMatchSelector(NxFieldset);

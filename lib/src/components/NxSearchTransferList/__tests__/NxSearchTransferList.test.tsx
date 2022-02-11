@@ -8,7 +8,7 @@
 import DataItem from '../../../util/DataItem';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxSearchDropdown from '../../NxSearchDropdown/NxSearchDropdown';
-import TransferListHalf from '../../NxTransferList/TransferListHalf';
+import NxTransferListHalf from '../../NxTransferListHalf/NxTransferListHalf';
 import NxSearchTransferList, { Props } from '../NxSearchTransferList';
 
 describe('NxSearchTransferList', function() {
@@ -44,12 +44,12 @@ describe('NxSearchTransferList', function() {
     expect(component).toHaveClassName('nx-search-transfer-list');
   });
 
-  it('renders an NxSearchDropdown and a TransferListHalf as children', function() {
+  it('renders an NxSearchDropdown and a NxTransferListHalf as children', function() {
     const component = getShallow();
 
     expect(component.children().length).toBe(2);
     expect(component.childAt(0)).toMatchSelector(NxSearchDropdown);
-    expect(component.childAt(1)).toMatchSelector(TransferListHalf);
+    expect(component.childAt(1)).toMatchSelector(NxTransferListHalf);
   });
 
   it('passes the searchText, onSearchTextChange, onSearch, loading, loadError, searchMatches, ' +
@@ -79,7 +79,7 @@ describe('NxSearchTransferList', function() {
   });
 
   it('passes the addedItemsLabel, addedItemsFilter, onAddedItemsFilterChange, showRemoveAll, addedItems, ' +
-      'and filterFn to the TransferListHalf', function() {
+      'and filterFn to the NxTransferListHalf', function() {
     const onAddedItemsFilterChange = jest.fn(),
         filterFn = jest.fn(),
         addedItems = [{ id: 1, displayName: 'bar' }],
@@ -91,7 +91,7 @@ describe('NxSearchTransferList', function() {
           addedItems,
           filterFn
         }),
-        transferListHalf = component.find(TransferListHalf);
+        transferListHalf = component.find(NxTransferListHalf);
 
     expect(transferListHalf).toHaveProp('label', 'foo');
     expect(transferListHalf).toHaveProp('filterValue', 'bar');
@@ -101,26 +101,26 @@ describe('NxSearchTransferList', function() {
     expect(transferListHalf).toHaveProp('filterFn', filterFn);
   });
 
-  it('sets the TransferListHalf showMoveAll to false by default', function() {
-    expect(getShallow().find(TransferListHalf)).toHaveProp('showMoveAll', false);
+  it('sets the NxTransferListHalf showMoveAll to false by default', function() {
+    expect(getShallow().find(NxTransferListHalf)).toHaveProp('showMoveAll', false);
   });
 
-  it('sets the TransferListHalf isSelected prop to true', function() {
-    expect(getShallow().find(TransferListHalf)).toHaveProp('isSelected', true);
+  it('sets the NxTransferListHalf isSelected prop to true', function() {
+    expect(getShallow().find(NxTransferListHalf)).toHaveProp('isSelected', true);
   });
 
-  it('sets the TransferListHalf footerContent based on the addedItemsCountFormatter and the size of addedItems',
+  it('sets the NxTransferListHalf footerContent based on the addedItemsCountFormatter and the size of addedItems',
       function() {
         const component = getShallow({
           addedItemsCountFormatter: n => `!!${n}!!`,
           addedItems: [{ id: 'a', displayName: 'a' }, { id: 'b', displayName: 'b' }]
         });
 
-        expect(component.find(TransferListHalf)).toHaveProp('footerContent', '!!2!!');
+        expect(component.find(NxTransferListHalf)).toHaveProp('footerContent', '!!2!!');
       }
   );
 
-  it('sets the TransferListHalf footerContent to "x items Added" where x is the number of addedItems by default',
+  it('sets the NxTransferListHalf footerContent to "x items Added" where x is the number of addedItems by default',
       function() {
         const noItems: DataItem[] = [],
             oneItem = [{ id: 'a', displayName: 'a' }],
@@ -129,13 +129,13 @@ describe('NxSearchTransferList', function() {
             oneItemComponent = getShallow({ addedItems: oneItem }),
             twoItemComponent = getShallow({ addedItems: twoItems });
 
-        expect(noItemComponent.find(TransferListHalf)).toHaveProp('footerContent', '0 items Added');
-        expect(oneItemComponent.find(TransferListHalf)).toHaveProp('footerContent', '1 item Added');
-        expect(twoItemComponent.find(TransferListHalf)).toHaveProp('footerContent', '2 items Added');
+        expect(noItemComponent.find(NxTransferListHalf)).toHaveProp('footerContent', '0 items Added');
+        expect(oneItemComponent.find(NxTransferListHalf)).toHaveProp('footerContent', '1 item Added');
+        expect(twoItemComponent.find(NxTransferListHalf)).toHaveProp('footerContent', '2 items Added');
       }
   );
 
-  it('calls onRemove without moved items when the TransferListHalf onMoveAll is fired', function() {
+  it('calls onRemove without moved items when the NxTransferListHalf onMoveAll is fired', function() {
     const onRemove = jest.fn(),
         component = getShallow({
           onRemove,
@@ -144,11 +144,11 @@ describe('NxSearchTransferList', function() {
 
     expect(onRemove).not.toHaveBeenCalled();
 
-    component.find(TransferListHalf).simulate('moveAll', ['C']);
+    component.find(NxTransferListHalf).simulate('moveAll', ['C']);
     expect(onRemove).toHaveBeenCalledWith([{ id: 'c', displayName: 'a' }, { id: 'B', displayName: 'b' }]);
   });
 
-  it('calls onRemove without the specified item when TransferListHalf onItemChange is called', function() {
+  it('calls onRemove without the specified item when NxTransferListHalf onItemChange is called', function() {
     const onRemove = jest.fn(),
         component = getShallow({
           onRemove,
@@ -157,7 +157,7 @@ describe('NxSearchTransferList', function() {
 
     expect(onRemove).not.toHaveBeenCalled();
 
-    component.find(TransferListHalf).simulate('itemChange', false, 'c');
+    component.find(NxTransferListHalf).simulate('itemChange', false, 'c');
     expect(onRemove).toHaveBeenCalledWith([{ id: 'B', displayName: 'b' }, { id: 'C', displayName: 'c' }]);
   });
 });
