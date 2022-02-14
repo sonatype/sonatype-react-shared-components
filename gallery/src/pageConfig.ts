@@ -118,6 +118,7 @@ import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxSt
 import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
+import AccessibilityChecklistPage from './pages/AccessibilityChecklist';
 import NxDividerPage from './styles/NxDivider/NxDividerPage';
 import NxThreatIndicatorLegendPage from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegendPage';
 import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdownPage';
@@ -221,6 +222,7 @@ const pageConfig: PageConfig = {
   },
   'Guidelines': {
     'Accessibility': AccessibilityPage,
+    'Accessibility Checklist': AccessibilityChecklistPage,
     'Additional Resources': AdditionalResourcePage,
     'Contributing to the Gallery': ContributingPage,
     'font-size and line-height': FontSizePage,
