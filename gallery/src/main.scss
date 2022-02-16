@@ -110,3 +110,9 @@
     display: none;
   }
 }
+
+.nx-list.nx-list--no-bullets {
+  .nx-list__item {
+    list-style: none;
+  }
+}
