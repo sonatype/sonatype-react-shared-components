@@ -4,17 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { Children, cloneElement, isValidElement, useMemo } from 'react';
+import React, { Children, cloneElement, isValidElement } from 'react';
 import classnames from 'classnames';
 
+import { useUniqueId } from '../../util/idUtil';
 import TabContext from './TabContext';
 import { TabContextType, NxTabProps, NxTabPanelProps, NxTabsProps, nxTabsPropTypes } from './types';
 
 export { NxTabsProps } from './types';
 
 import './NxTabs.scss';
-
-let tabId = 0;
 
 const NxTabs = function NxTabsElement(props: NxTabsProps) {
   const { activeTab, onTabSelect, id, className, children, ...attrs } = props;
@@ -30,7 +29,7 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
     return null;
   }
 
-  const rootId = id || 'nx-tabs-' + useMemo(() => tabId++, []);
+  const rootId = useUniqueId('nx-tabs', id);
 
   const clonedTabList = cloneElement(tabList, {
     children: Children.toArray(tabList.props.children).map((tab, index) => {

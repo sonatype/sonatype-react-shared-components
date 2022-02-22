@@ -1,0 +1,3 @@
+<excludes>
+  <exclude>src/ssr-tests/next-env.d.ts</exclude>
+</excludes>
