@@ -26,7 +26,7 @@ export default function NxSearchTransferListExample() {
       [loading, setLoading] = useState(false),
       [searchMatches, setSearchMatches] = useState<DataItem<number>[]>([]),
       [addedItemsFilter, setAddedItemsFilter] = useState(''),
-      [addedItems, setAddedItems] = useState<DataItem<number>[]>([]),
+      [addedItems, setAddedItems] = useState<readonly DataItem<number>[]>([]),
       latestExecutedQueryRef = useRef<string | null>(null),
 
       // use debounce so that the backend query does not happen until the user has stopped typing for half a second
