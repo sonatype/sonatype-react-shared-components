@@ -10,9 +10,9 @@ import { chain, groupBy, reject, without } from 'ramda';
 
 import { Props, propTypes } from './types';
 import NxTransferListHalf from '../NxTransferListHalf/NxTransferListHalf';
+import DataItem from '../../util/DataItem';
 
 import './NxTransferList.scss';
-import DataItem from '../../util/DataItem';
 
 export { Props };
 

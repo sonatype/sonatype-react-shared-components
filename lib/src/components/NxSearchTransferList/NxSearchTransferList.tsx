@@ -9,11 +9,11 @@ import classnames from 'classnames';
 import { propEq, reject } from 'ramda';
 import NxSearchDropdown from '../NxSearchDropdown/NxSearchDropdown';
 import NxTransferListHalf from '../NxTransferListHalf/NxTransferListHalf';
+import DataItem from '../../util/DataItem';
 
 import './NxSearchTransferList.scss';
 
 import { Props, propTypes } from './types';
-import DataItem from '../../util/DataItem';
 export { Props };
 
 const defaultAddedItemsCountFormatter = (n: number) => `${n} item${n === 1 ? '' : 's'} Added`;
