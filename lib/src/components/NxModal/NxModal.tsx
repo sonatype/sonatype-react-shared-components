@@ -19,6 +19,7 @@ export const NxModalContext = React.createContext<HTMLDialogElement | null>(null
 // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-968299542 . This even though
 // Firefox appears to intend to finally add support in v98. Until TS restores this, we'll have to jump
 // through some hoops...
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const dynamicallyTypedWindow = window as any,
     hasNativeModalSupport = !!(typeof dynamicallyTypedWindow !== 'undefined' &&
       dynamicallyTypedWindow.HTMLDialogElement && dynamicallyTypedWindow.HTMLDialogElement.prototype.showModal);
@@ -82,6 +83,7 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
      */
     if (hasNativeModalSupport) {
       // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-968299542
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (el as any).showModal();
     }
     else {
