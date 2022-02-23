@@ -26,7 +26,7 @@ export interface Props<T extends string | number = string> {
   onFilterChange: NxFilterInputProps['onChange'];
   showMoveAll: boolean;
   onMoveAll: (toMove: T[]) => void;
-  items: readonly DataItem<T>[];
+  items: DataItem<T>[];
   isSelected: boolean;
   onItemChange: SelectionChangeHandler<T>;
   footerContent: ReactNode;

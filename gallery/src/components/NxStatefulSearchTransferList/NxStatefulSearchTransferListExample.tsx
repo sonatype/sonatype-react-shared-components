@@ -25,7 +25,7 @@ function search(query: string): Promise<DataItem<number>[]> {
 export default function NxStatefulSearchTransferListExample() {
   const [loading, setLoading] = useState(false),
       [searchMatches, setSearchMatches] = useState<DataItem<number>[]>([]),
-      [addedItems, setAddedItems] = useState<readonly DataItem<number>[]>([]),
+      [addedItems, setAddedItems] = useState<DataItem<number>[]>([]),
       latestExecutedQueryRef = useRef<string | null>(null),
 
       // use debounce so that the backend query does not happen until the user has stopped typing for half a second
