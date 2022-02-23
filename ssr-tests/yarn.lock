@@ -267,7 +267,7 @@
 
 "@react-hook/resize-observer@^1.2.5":
   version "1.2.5"
-  resolved "https://repo.sonatype.com/repository/npm-all/@react-hook/resize-observer/-/resize-observer-1.2.5.tgz#b59e2300de98bc6ddc6946942f21243cde10f984"
+  resolved "https://registry.npmjs.org/@react-hook/resize-observer/-/resize-observer-1.2.5.tgz#b59e2300de98bc6ddc6946942f21243cde10f984"
   integrity sha512-qa0pPvRxq5VbdI8mMK2apPFsZOckhQ6D3Jc9yLuyHMNhui8yEih4qyFCZBDzzK3ymZS6LAltVSVg3l1Dg9vA0w==
   dependencies:
     "@juggle/resize-observer" "^3.3.1"
@@ -517,7 +517,7 @@
 
 "@types/ramda@^0.27.64":
   version "0.27.64"
-  resolved "https://repo.sonatype.com/repository/npm-all/@types/ramda/-/ramda-0.27.64.tgz#7e23f2bf7b9729bcbd59223f100460ead6829008"
+  resolved "https://registry.npmjs.org/@types/ramda/-/ramda-0.27.64.tgz#7e23f2bf7b9729bcbd59223f100460ead6829008"
   integrity sha512-EDf++ss/JoMiDpvT1MuA8oi88OwpvmqVE+o8Ojm5v/5bdJEPZ6eIQd/XYAeQ0imlwG6Tf0Npfq4Z9w3hAKBk9Q==
   dependencies:
     ts-toolbelt "^6.15.1"
@@ -3090,7 +3090,7 @@ raf-schd@^4.0.2:
 
 ramda@^0.28.0:
   version "0.28.0"
-  resolved "https://repo.sonatype.com/repository/npm-all/ramda/-/ramda-0.28.0.tgz#acd785690100337e8b063cab3470019be427cc97"
+  resolved "https://registry.npmjs.org/ramda/-/ramda-0.28.0.tgz#acd785690100337e8b063cab3470019be427cc97"
   integrity sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==
 
 randombytes@^2.1.0:
