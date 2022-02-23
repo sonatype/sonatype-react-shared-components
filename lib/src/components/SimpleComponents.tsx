@@ -80,3 +80,9 @@ export const NxGlobalHeader = Object.assign(withClass('aside', 'nx-global-header
 export const NxSystemNotice = Object.assign(withClass('div', 'nx-system-notice'), {
   Container: withClass('div', 'nx-system-notice-container')
 });
+
+export const NxDescriptionList = Object.assign(withClass('dl', 'nx-list nx-list--description-list'), {
+  Item: withClass('div', 'nx-list__item'),
+  Term: withClass('dt', 'nx-list__term'),
+  Description: withClass('dd', 'nx-list__description')
+});

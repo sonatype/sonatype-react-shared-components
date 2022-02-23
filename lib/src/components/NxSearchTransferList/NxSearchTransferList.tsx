@@ -8,7 +8,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { equals, pipe, prop, reject } from 'ramda';
 import NxSearchDropdown from '../NxSearchDropdown/NxSearchDropdown';
-import TransferListHalf from '../NxTransferList/TransferListHalf';
+import NxTransferListHalf from '../NxTransferListHalf/NxTransferListHalf';
 
 import './NxSearchTransferList.scss';
 
@@ -59,16 +59,16 @@ export default function NxSearchTransferList<T extends string | number>(props: P
                         error={loadError}
                         matches={searchMatches}
                         onSelect={onSearchMatchSelect} />
-      <TransferListHalf<T> label={addedItemsLabel || 'Items Added'}
-                           filterValue={addedItemsFilter}
-                           onFilterChange={onAddedItemsFilterChange}
-                           showMoveAll={showRemoveAll || false}
-                           onMoveAll={onRemoveAll}
-                           isSelected={true}
-                           items={addedItems}
-                           onItemChange={onItemRemove}
-                           footerContent={addedItemsCountFormatter(addedCount)}
-                           filterFn={filterFn} />
+      <NxTransferListHalf<T> label={addedItemsLabel || 'Items Added'}
+                             filterValue={addedItemsFilter}
+                             onFilterChange={onAddedItemsFilterChange}
+                             showMoveAll={showRemoveAll || false}
+                             onMoveAll={onRemoveAll}
+                             isSelected={true}
+                             items={addedItems}
+                             onItemChange={onItemRemove}
+                             footerContent={addedItemsCountFormatter(addedCount)}
+                             filterFn={filterFn} />
     </div>
   );
 }

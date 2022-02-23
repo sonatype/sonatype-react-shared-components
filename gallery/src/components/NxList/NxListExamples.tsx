@@ -15,7 +15,6 @@ import NxListActionsExample from './examples/NxListActions';
 import NxListEmptyExample from './examples/NxListEmpty';
 import NxListErrorExample from './examples/NxListError';
 import NxListLoadingExample from './examples/NxListLoading';
-import NxListDescriptionExample from './examples/NxListDescription';
 import { NxCode } from '@sonatype/react-shared-components';
 
 const NxListSimpleExampleCode = require('./examples/NxListSimple?raw'),
@@ -25,8 +24,7 @@ const NxListSimpleExampleCode = require('./examples/NxListSimple?raw'),
     NxListActionsExampleCode = require('./examples/NxListActions?raw'),
     NxListEmptyExampleCode = require('./examples/NxListEmpty?raw'),
     NxListErrorExampleCode = require('./examples/NxListError?raw'),
-    NxListLoadingExampleCode = require('./examples/NxListLoading?raw'),
-    NxListDescriptionExampleCode = require('./examples/NxListDescription?raw');
+    NxListLoadingExampleCode = require('./examples/NxListLoading?raw');
 
 const NxListsExamples = () =>
   <>
@@ -87,14 +85,6 @@ const NxListsExamples = () =>
                         liveExample={NxListLoadingExample}
                         codeExamples={NxListLoadingExampleCode}>
       A demonstration of the usage and display of an <NxCode>NxList</NxCode> whose list items are loading.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Description List Example"
-                        id="nx-list-description-example"
-                        liveExample={NxListDescriptionExample}
-                        codeExamples={NxListDescriptionExampleCode}>
-      Basic description list with a heading. Wrapping is demonstrated in both
-      the terms and the descriptions.
     </GalleryExampleTile>
   </>;
 

@@ -296,6 +296,9 @@ export { default as NxSearchTransferList, Props as NxSearchTransferListProps }
 export { default as NxStatefulSearchTransferList, Props as NxStatefulSearchTransferListProps }
   from './components/NxSearchTransferList/stateful/NxStatefulSearchTransferList';
 
+export { default as NxTransferListHalf, Props as NxTransferListHalfProps }
+  from './components/NxTransferListHalf/NxTransferListHalf';
+
 export {
   default as NxIconDropdown,
   Props as NxIconDropdownProps
