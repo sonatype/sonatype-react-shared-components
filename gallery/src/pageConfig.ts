@@ -209,7 +209,6 @@ const pageConfig: PageConfig = {
     'Stateful Tree View Radio Select': { content: NxStatefulTreeViewRadioSelectPage, type: 'react' }
   },
   'Data Presentation': {
-    'Accordion': { content: NxAccordionPage, type: 'react' },
     'Stateful Accordion': { content: NxStatefulAccordionPage, type: 'react' },
     'Binary Donut Chart': { content: NxBinaryDonutChartPage, type: 'react' },
     'Collapsible Items': { content: NxCollapsibleItemsPage, type: 'react' },
@@ -223,6 +222,7 @@ const pageConfig: PageConfig = {
     'Form Layout Examples': { content: NxFormLayoutPage, type: 'layout' },
     'Page Layout Examples': { content: PageLayoutPage, type: 'layout' },
     'Read-Only Grid Tile Layout': { content: NxReadOnlyGridTilePage, type: 'layout' },
+    'Accordion': { content: NxAccordionPage, type: 'react' },
     'Card': { content: NxCardPage, type: 'html' },
     'Divider': { content: NxDividerPage, type: 'html' },
     'Global Header': { content: NxGlobalHeaderPage, type: 'html' },
