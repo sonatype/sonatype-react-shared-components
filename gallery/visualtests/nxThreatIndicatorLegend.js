@@ -4,9 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { simpleTest } = require('./testUtils');
+const { simpleTest, a11yTest } = require('./testUtils');
 
-describe('nxThreatIndicatorLegend', function() {
+describe('NxThreatIndicatorLegend', function() {
   beforeEach(async function() {
     await browser.url('#/pages/NxThreatIndicatorLegend');
   });
@@ -25,4 +25,6 @@ describe('nxThreatIndicatorLegend', function() {
       simpleTest(verticalLegendSelector));
   it('looks correct with vertical orientation and only some category level threats shown',
       simpleTest(verticalLegendHalfSelector));
+
+  it('passes a11y checks', a11yTest());
 });

@@ -23,6 +23,11 @@ describe('Page Layout', function() {
       await browser.eyesSnapshot(null);
     });
 
+    it('passes a11y checks with sidebar, system notice, and page scrolling', async function() {
+      await browser.url('#/pageLayouts/pageScrolling/LegacySidebarSystemNoticeLayout');
+      await a11yTest()();
+    });
+
     it('looks right with sidebar, and page scrolling', async function() {
       await browser.url('#/pageLayouts/pageScrolling/LegacySidebarLayout');
       await browser.eyesSnapshot(null);
@@ -70,6 +75,11 @@ describe('Page Layout', function() {
     it('looks right with sidebar, system notice, and header', async function() {
       await browser.url('#/pageLayouts/GlobalSidebarHeaderSystemNoticeSidebarLayout');
       await browser.eyesSnapshot(null);
+    });
+
+    it('passes a11y checks with sidebar, system notice, and header', async function() {
+      await browser.url('#/pageLayouts/GlobalSidebarHeaderSystemNoticeSidebarLayout');
+      await a11yTest()();
     });
 
     it('looks right with sidebar, and header', async function() {

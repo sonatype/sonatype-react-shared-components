@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Target } = require('@applitools/eyes-webdriverio');
-const { simpleTest } = require('./testUtils');
+const { simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxPolicyViolationIndicator', function() {
   beforeEach(async function() {
@@ -16,4 +16,6 @@ describe('NxPolicyViolationIndicator', function() {
       '#nx-policy-violation-indicator-category-example .gallery-example-live';
 
   it('looks right', simpleTest(policyViolationIndicatorCategoryExampleSelector));
+
+  it('passes a11y checks', a11yTest());
 });

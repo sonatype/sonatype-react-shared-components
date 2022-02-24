@@ -5,13 +5,27 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 describe('NxSystemNotice', function() {
-  it('looks right with global sidebar and multiple notices', async function() {
-    await browser.url('#/NxSystemNoticeMultipleExample');
-    await browser.eyesSnapshot(null);
+  describe('NxSystemNotice with global sidebar and multiple notices', function() {
+    beforeEach(async function() {
+      await browser.url('#/NxSystemNoticeMultipleExample');
+    });
+
+    it('looks right', async function() {
+      await browser.eyesSnapshot(null);
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 
-  it('looks right in traditional page layout', async function() {
-    await browser.url('#/NxSystemNoticeTraditionalPageExample');
-    await browser.eyesSnapshot(null);
+  describe('NxSystemNotice in traditional page layout', function() {
+    beforeEach(async function() {
+      await browser.url('#/NxSystemNoticeTraditionalPageExample');
+    });
+
+    it('looks right', async function() {
+      await browser.eyesSnapshot(null);
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 });

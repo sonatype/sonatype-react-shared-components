@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { simpleTest } = require('./testUtils');
+const { simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxSmallThreatCounter', function() {
   beforeEach(async function() {
@@ -16,4 +16,6 @@ describe('NxSmallThreatCounter', function() {
 
   it('looks correct with default maxDigits and all categories', simpleTest(basicExampleSelector));
   it('looks correct with custom maxDigits and other nearby content', simpleTest(customExampleSelector));
+
+  it('passes a11y checks', a11yTest());
 });

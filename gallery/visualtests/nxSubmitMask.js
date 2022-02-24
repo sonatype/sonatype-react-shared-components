@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxSubmitMask', function() {
   beforeEach(async function() {
@@ -14,21 +14,33 @@ describe('NxSubmitMask', function() {
   const loadingMaskBtnSelector = '#nx-submit-mask-loading-example button',
       successMaskBtnSelector = '#nx-submit-mask-success-example button';
 
-  it('looks right when loading', async function() {
-    const btn = await browser.$(loadingMaskBtnSelector);
+  describe('NxSubmitMask when loading', function() {
+    beforeEach(async function() {
+      const btn = await browser.$(loadingMaskBtnSelector);
 
-    await btn.scrollIntoView({ block: 'center' });
-    await btn.click();
+      await btn.scrollIntoView({ block: 'center' });
+      await btn.click();
+    });
 
-    await browser.eyesSnapshot(null);
+    it('looks right', async function() {
+      await browser.eyesSnapshot(null);
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 
-  it('looks right when successful', async function() {
-    const btn = await browser.$(successMaskBtnSelector);
+  describe('NxSubmitMask when successful', function() {
+    beforeEach(async function() {
+      const btn = await browser.$(successMaskBtnSelector);
 
-    await btn.scrollIntoView({ block: 'center' });
-    await btn.click();
+      await btn.scrollIntoView({ block: 'center' });
+      await btn.click();
+    });
 
-    await browser.eyesSnapshot(null);
+    it('looks right', async function() {
+      await browser.eyesSnapshot(null);
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 });

@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Target } = require('@applitools/eyes-webdriverio');
-const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxTextInput', function() {
   const simpleComponentSelector = '#nx-filter-input-simple-example .nx-filter-input',
@@ -27,4 +27,6 @@ describe('NxTextInput', function() {
   describe('Disabled NxFilterInput', function() {
     it('looks disabled', simpleTest(disabledComponentSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });
