@@ -10,6 +10,7 @@ import { chain, groupBy, reject, without } from 'ramda';
 
 import { Props, propTypes } from './types';
 import NxTransferListHalf from '../NxTransferListHalf/NxTransferListHalf';
+import DataItem from '../../util/DataItem';
 
 import './NxTransferList.scss';
 
@@ -53,7 +54,7 @@ export default function NxTransferList<T extends string | number = string>(props
         const allItemsIdToItemLookUp = groupBy(item => item.id.toString(), allItems);
         return allowReordering
           ? {
-            available: reject(item => selectedItemsSet.has(item.id), allItems),
+            available: reject((item: DataItem<T>) => selectedItemsSet.has(item.id), allItems),
             selected: chain(item => allItemsIdToItemLookUp[item.toString()], selectedItemsArray)
           }
           : groupBy(item => selectedItemsSet.has(item.id) ? 'selected' : 'available', allItems);

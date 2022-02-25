@@ -6,9 +6,10 @@
  */
 import React from 'react';
 import classnames from 'classnames';
-import { equals, pipe, prop, reject } from 'ramda';
+import { propEq, reject } from 'ramda';
 import NxSearchDropdown from '../NxSearchDropdown/NxSearchDropdown';
 import NxTransferListHalf from '../NxTransferListHalf/NxTransferListHalf';
+import DataItem from '../../util/DataItem';
 
 import './NxSearchTransferList.scss';
 
@@ -42,12 +43,12 @@ export default function NxSearchTransferList<T extends string | number>(props: P
 
   function onRemoveAll(idsToRemove: T[]) {
     const idsToRemoveSet = new Set(idsToRemove);
-    const newAddedItems = reject(({ id }) => idsToRemoveSet.has(id), addedItems);
+    const newAddedItems = reject(({ id }: DataItem<T>) => idsToRemoveSet.has(id), addedItems);
     onRemove(newAddedItems);
   }
 
   function onItemRemove(_: boolean, id: T) {
-    onRemove(reject(pipe(prop('id'), equals(id)), addedItems));
+    onRemove(reject(propEq('id', id), addedItems));
   }
 
   return (
