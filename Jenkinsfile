@@ -13,8 +13,8 @@ def numSeleniumContainers = 10;
 
 dockerizedBuildPipeline(
   deployBranch: 'main',
-  // expose gallery port on host so selenium container can hit it
-  dockerArgs: '-p 4043:4043',
+  // expose gallery port and nextjs dev port on host so selenium container can hit it
+  dockerArgs: '-p 4043:4043 -p 3000:3000',
 
   prepare: {
     githubStatusUpdate('pending')
@@ -92,18 +92,30 @@ dockerizedBuildPipeline(
         registry=https://repo.sonatype.com/repository/npm-all/
 
         cd lib
-        yarn install --registry "\${registry}"
+        yarn install --registry "\${registry}" --frozen-lockfile
         yarn test
         yarn build
         cd dist
         npm pack
         cd ../..
 
-        cd gallery
-        yarn install --registry "\${registry}"
+        (
+          # Needed for docker-based webdriverio tests
+          export TEST_IP=\$JENKINS_AGENT_IP
 
-        # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
-        MAX_INSTANCES=${numSeleniumContainers} TEST_IP=\$JENKINS_AGENT_IP yarn test
+          cd gallery
+          yarn install --registry "\${registry}" --frozen-lockfile
+
+          # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
+          MAX_INSTANCES=${numSeleniumContainers} yarn test
+          cd ..
+
+          cd ssr-tests
+          yarn install --registry "\${registry}" --frozen-lockfile
+
+          # Run the server-side rendering tests, through docker similarly to the visual tests
+          NEXT_TELEMETRY_DISABLED=1 yarn test
+        )
       """
 
       // NOTE: we don't want the applitools test run to have the gainsight key

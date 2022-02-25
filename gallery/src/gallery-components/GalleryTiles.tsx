@@ -22,6 +22,7 @@ import {
   NxTile,
   useToggle
 } from '@sonatype/react-shared-components';
+import { GalleryTileFooter } from './GalleryTileFooter';
 
 interface PropsWithRequiredChildren {
   children: ReactNode;
@@ -152,6 +153,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
               <h2 className="nx-accordion__header-title">Example Code</h2>
             </NxAccordion.Header>
             {codeExampleElements}
+            <GalleryTileFooter clipboardContent={codeExampleElements[0].props.content}/>
           </NxStatefulAccordion>
         </NxTile.Content>
       </GalleryTile>

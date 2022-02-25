@@ -16,22 +16,25 @@ import {
   NxTabList,
   NxTab,
   NxTabPanel,
-  NxStatefulTabs
+  NxStatefulTabs,
+  NxWarningAlert
 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxAccordionSimpleExample from './NxAccordionExample';
 import NxAccordionComplexExample from './NxAccordionComplexExample';
-import NxAccordionTertiaryButtonExample from './NxAccordionTertiaryButtonExample';
-import NxStatefulAccordionExample from '../NxStatefulAccordion/NxStatefulAccordionExample';
+import NxAccordionButtonHeaderExample from './NxAccordionButtonHeaderExample';
+import NxAccordionIconButtonHeaderExample from './NxAccordionIconButtonHeaderExample';
 import NxAccordionWithNxListExample from './NxAccordionWithNxListExample';
+import NxStatefulAccordionExample from '../NxStatefulAccordion/NxStatefulAccordionExample';
 
 const NxAccordionSimpleCode = require('./NxAccordionExample?raw'),
     NxAccordionComplexCode = require('./NxAccordionComplexExample?raw'),
     NxStatefulAccordionCode = require('../NxStatefulAccordion/NxStatefulAccordionExample?raw'),
-    NxAccordionTertiaryButtonCode = require('./NxAccordionTertiaryButtonExample?raw'),
-    NxAccordionWithNxListCode = require('./NxAccordionWithNxListExample?raw');
+    NxAccordionWithNxListCode = require('./NxAccordionWithNxListExample?raw'),
+    NxAccordionButtonHeaderCode = require('./NxAccordionButtonHeaderExample?raw'),
+    NxAccordionIconButtonHeaderCode = require('./NxAccordionIconButtonHeaderExample?raw');
 
 export default function NxAccordionPage() {
   return (
@@ -41,6 +44,7 @@ export default function NxAccordionPage() {
           <NxTab>Usage</NxTab>
           <NxTab>React Stateless Examples</NxTab>
           <NxTab>React Stateful Examples</NxTab>
+          <NxTab>Deprecated Examples</NxTab>
         </NxTabList>
         <NxTabPanel>
           <GalleryDescriptionTile>
@@ -225,15 +229,6 @@ export default function NxAccordionPage() {
             inside <NxCode>NxAccordion</NxCode>. The border and the top padding are removed
             so it looks more unified with the Accordion.
           </GalleryExampleTile>
-
-          <GalleryExampleTile title="Example with tertiary button in header"
-                              id="nx-accordion-tertiary-button-example"
-                              defaultCheckeredBackground={true}
-                              liveExample={NxAccordionTertiaryButtonExample}
-                              codeExamples={NxAccordionTertiaryButtonCode}>
-            An <NxCode>NxAccordion</NxCode> which contains a tertiary button in the header. Note that the
-            height of this button causes the height of the entire header to grow slightly.
-          </GalleryExampleTile>
         </NxTabPanel>
         <NxTabPanel>
           <GalleryExampleTile title="Example"
@@ -241,6 +236,26 @@ export default function NxAccordionPage() {
                               liveExample={NxStatefulAccordionExample}
                               codeExamples={NxStatefulAccordionCode}>
             A simple example of an <NxCode>NxStatefulAccordion</NxCode> that is initially open.
+          </GalleryExampleTile>
+        </NxTabPanel>
+        <NxTabPanel>
+          <GalleryExampleTile title="Deprecated: Example with icon buttons in header"
+                              id="nx-accordion-icon-button-header-example"
+                              defaultCheckeredBackground={true}
+                              liveExample={NxAccordionIconButtonHeaderExample}
+                              codeExamples={NxAccordionIconButtonHeaderCode}>
+            <NxWarningAlert>Deprecated</NxWarningAlert>
+            An <NxCode>NxAccordion</NxCode> which contains icon buttons in the header.
+          </GalleryExampleTile>
+
+          <GalleryExampleTile title="Deprecated: Example with tertiary button in header"
+                              id="nx-accordion-tertiary-button-header-example"
+                              defaultCheckeredBackground={true}
+                              liveExample={NxAccordionButtonHeaderExample}
+                              codeExamples={NxAccordionButtonHeaderCode}>
+            <NxWarningAlert>Deprecated</NxWarningAlert>
+            An <NxCode>NxAccordion</NxCode> which contains a tertiary button in the header. Note that the
+            height of this button causes the height of the entire header to grow slightly.
           </GalleryExampleTile>
         </NxTabPanel>
       </NxStatefulTabs>

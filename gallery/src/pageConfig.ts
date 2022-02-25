@@ -136,6 +136,7 @@ import NxStatefulCollapsibleMultiSelectPage
 import NxStatefulCollapsibleRadioSelectPage
   from './components/NxStatefulCollapsibleRadioSelect/NxStatefulCollapsibleRadioSelectPage';
 import NxTreePage from './components/NxTree/NxTreePage';
+import ServerSideRenderingPage from './jsUtilPages/ServerSideRendering/ServerSideRenderingPage';
 
 const pageConfig: PageConfig = {
   'React Components': {
@@ -270,7 +271,8 @@ const pageConfig: PageConfig = {
     'Validation Utils': ValidationUtilsPage,
     'useToggle': UseTogglePage,
     'ID Utils': IdUtilPage,
-    'withClass Higher-Order Component': WithClassPage
+    'withClass Higher-Order Component': WithClassPage,
+    'Server Side Rendering Utilities': ServerSideRenderingPage
   }
 };
 
