@@ -254,7 +254,7 @@ const pageConfig: PageConfig = {
     'Icon': { content: NxIconPage, type: 'html' },
     'Fieldset': { content: NxFieldsetStylePage, type: 'html' },
     'Form Group': { content: NxFormGroupStylePage, type: 'html' },
-    'Form Select': { content: NxFormSelectPage, type: 'html' },
+    'Form Select (HTML)': { content: NxFormSelectPage, type: 'html' },
     'List (HTML)': { content: NxListPage, type: 'html' },
     'Table (HTML)': { content: NxTableStylePage, type: 'html' }
   },

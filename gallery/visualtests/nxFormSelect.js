@@ -39,7 +39,7 @@ describe('nx-form-select', function() {
 
   describe('Disabled nx-form-select', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/Form Select');
+      await browser.url('#/pages/Form Select (HTML)');
     });
 
     it('looks disabled', simpleTest(disabledSelector));
