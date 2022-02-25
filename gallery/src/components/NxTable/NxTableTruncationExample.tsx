@@ -7,14 +7,14 @@
 import { NxTable } from '@sonatype/react-shared-components';
 import React from 'react';
 
-export default function NxTableTruncationAndWrappingExample() {
+export default function NxTableTruncationExample() {
   return (
     <NxTable>
       <NxTable.Head>
         <NxTable.Row>
           <NxTable.Cell>Header 1</NxTable.Cell>
           <NxTable.Cell>Header 2</NxTable.Cell>
-          <NxTable.Cell>Number</NxTable.Cell>
+          <NxTable.Cell isNumeric>Number</NxTable.Cell>
         </NxTable.Row>
       </NxTable.Head>
       <NxTable.Body>
@@ -28,7 +28,7 @@ export default function NxTableTruncationAndWrappingExample() {
             shoulder. Ribeye tri-tip short ribs, corned beef pastrami spare ribs landjaeger strip steak salami ham hock
             chuck filet mignon leberkas.
           </NxTable.Cell>
-          <NxTable.Cell>4</NxTable.Cell>
+          <NxTable.Cell isNumeric>4</NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
           <NxTable.Cell>
@@ -40,21 +40,21 @@ export default function NxTableTruncationAndWrappingExample() {
             </div>
           </NxTable.Cell>
           <NxTable.Cell>Content 2</NxTable.Cell>
-          <NxTable.Cell>4</NxTable.Cell>
+          <NxTable.Cell isNumeric>4</NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
           <NxTable.Cell>
             <div className="nx-truncate-ellipsis gallery-cell-1-content">Content 1</div>
           </NxTable.Cell>
           <NxTable.Cell>Content 2</NxTable.Cell>
-          <NxTable.Cell>4</NxTable.Cell>
+          <NxTable.Cell isNumeric>4</NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
           <NxTable.Cell>
             <div className="nx-truncate-ellipsis gallery-cell-1-content">Content 1</div>
           </NxTable.Cell>
           <NxTable.Cell>Content 2</NxTable.Cell>
-          <NxTable.Cell>4</NxTable.Cell>
+          <NxTable.Cell isNumeric>4</NxTable.Cell>
         </NxTable.Row>
       </NxTable.Body>
     </NxTable>
