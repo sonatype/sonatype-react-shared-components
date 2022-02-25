@@ -8,7 +8,7 @@ const { hoverTest, simpleTest } = require('./testUtils');
 
 describe('nx-list', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/List');
+    await browser.url('#/pages/List (HTML)');
   });
 
   const simpleSelector = '#nx-list-simple-example .gallery-example-live',
