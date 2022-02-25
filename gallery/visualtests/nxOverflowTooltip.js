@@ -9,7 +9,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxOverflowTooltip', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxOverflowTooltip');
+    await browser.url('#/pages/OverflowTooltip');
     await browser.refresh();
   });
 

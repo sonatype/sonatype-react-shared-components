@@ -8,7 +8,7 @@ const { simpleTest } = require('./testUtils');
 
 describe('NxThreatCounter', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxThreatCounter');
+    await browser.url('#/pages/ThreatCounter');
   });
 
   const rowExampleSelector = '#nx-threat-counter-row .gallery-example-live',

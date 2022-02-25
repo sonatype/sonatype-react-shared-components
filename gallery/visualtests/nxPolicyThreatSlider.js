@@ -8,7 +8,7 @@ const { focusTest, simpleTest } = require('./testUtils');
 
 describe('NxPolicyThreatSlider', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxPolicyThreatSlider');
+    await browser.url('#/pages/PolicyThreatSlider');
     await browser.refresh();
   });
 

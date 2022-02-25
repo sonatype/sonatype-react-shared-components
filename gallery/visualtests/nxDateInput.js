@@ -19,7 +19,7 @@ describe('NxDateInput', function() {
   }
 
   beforeEach(async function() {
-    await browser.url('#/pages/NxDateInput');
+    await browser.url('#/pages/DateInput');
   });
 
   describe('Simple NxDateInput', function() {

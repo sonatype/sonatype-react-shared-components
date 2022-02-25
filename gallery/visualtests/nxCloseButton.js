@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest
 
 describe('NxCloseButton', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxCloseButton');
+    await browser.url('#/pages/CloseButton');
   });
 
   const selector = '.gallery-example-live .nx-btn--close';

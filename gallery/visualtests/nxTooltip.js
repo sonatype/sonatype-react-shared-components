@@ -9,7 +9,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxTooltip', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxTooltip');
+    await browser.url('#/pages/Tooltip');
   });
 
   const selector = '.gallery-example .nx-btn-bar',

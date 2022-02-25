@@ -9,7 +9,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxTable', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxTable');
+    await browser.url('#/pages/Table');
   });
 
   const iconColumnTableSelector = '#nx-table-clickable-example .nx-table',
@@ -47,7 +47,7 @@ describe('NxTable', function() {
 
   describe('Scrollable table', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-table-container');
+      await browser.url('#/pages/table-container');
     });
 
     const tableSelector = '#nx-table-scrolling-example .nx-scrollable';
@@ -72,7 +72,7 @@ describe('NxTable', function() {
 
   describe('Unfilled Scrollable table', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-table-container');
+      await browser.url('#/pages/table-container');
     });
 
     const tableSelector = '#nx-table-unfilled-scroll-container-example .nx-scrollable';
@@ -82,7 +82,7 @@ describe('NxTable', function() {
 
   describe('Unfilled table with footer', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-table-container');
+      await browser.url('#/pages/table-container');
     });
 
     const tableSelector = '#nx-table-unfilled-with-footer-example .nx-table-container';
@@ -92,7 +92,7 @@ describe('NxTable', function() {
 
   describe('Truncation and Wrapping table', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-table');
+      await browser.url('#/pages/table');
     });
 
     const tableSelector = '#nx-table-truncation-wrapping-example .nx-table';
@@ -102,7 +102,7 @@ describe('NxTable', function() {
 
   describe('Fixed layout table', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-table');
+      await browser.url('#/pages/table');
     });
 
     const tableSelector = '#nx-table-fixed-layout-example .nx-table';
@@ -112,7 +112,7 @@ describe('NxTable', function() {
 
   describe('Table with icon buttons', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-table');
+      await browser.url('#/pages/table');
     });
 
     const tableSelector = '#nx-table-icon-buttons-example .nx-table';

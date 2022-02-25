@@ -8,7 +8,7 @@ const { simpleTest } = require('./testUtils');
 
 describe('nx-counter', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-counter');
+    await browser.url('#/pages/Counter');
   });
 
   const selector = '.gallery-example-live';

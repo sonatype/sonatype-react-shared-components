@@ -9,7 +9,7 @@ const { Region, Target } = require('@applitools/eyes-webdriverio');
 
 describe('NxColorPicker', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxColorPicker');
+    await browser.url('#/pages/ColorPicker');
   });
 
   const selector = '.gallery-example-live .nx-color-picker',

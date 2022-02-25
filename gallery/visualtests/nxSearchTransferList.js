@@ -9,7 +9,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxSearchTransferList', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxSearchTransferList');
+    await browser.url('#/pages/SearchTransferList');
     await browser.refresh();
   });
 

@@ -10,7 +10,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxSegmentedButton', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxSegmentedButton');
+    await browser.url('#/pages/SegmentedButton');
   });
 
   function openedTest(selector, dropdownBtnSelector) {

@@ -9,7 +9,7 @@ const { simpleTest } = require('./testUtils');
 
 describe('NxPolicyViolationIndicator', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxPolicyViolationIndicator');
+    await browser.url('#/pages/PolicyViolationIndicator');
   });
 
   const policyViolationIndicatorCategoryExampleSelector =

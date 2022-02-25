@@ -9,7 +9,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxIconDropdown', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxIconDropdown');
+    await browser.url('#/pages/IconDropdown');
   });
 
   const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown';

@@ -8,7 +8,7 @@ const { simpleTest } = require('./testUtils');
 
 describe('NxLoadError', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxLoadError');
+    await browser.url('#/pages/LoadError');
   });
 
   const simpleSelector = '#nx-load-error-retry-example .nx-alert--load-error',

@@ -24,7 +24,7 @@ describe('nx-form', function() {
 
   describe('nx-form-group deprecated layout', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-form-group');
+      await browser.url('#/pages/form-group');
     });
 
     const selector = '#nx-form-group-deprecated-example .nx-form-group';
@@ -34,7 +34,7 @@ describe('nx-form', function() {
 
   describe('nx-fieldset deprecated layout', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-fieldset');
+      await browser.url('#/pages/fieldset');
     });
 
     const selector = '#nx-fieldset-deprecated-example .nx-fieldset';

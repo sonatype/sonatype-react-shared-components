@@ -9,7 +9,7 @@ const { simpleTest } = require('./testUtils');
 
 describe('nx-scrollable', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-scrollable');
+    await browser.url('#/pages/Scrollable');
   });
 
   const simpleSelector = '#nx-scrollable-simple-example .nx-scrollable',

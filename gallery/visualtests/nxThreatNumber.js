@@ -8,7 +8,7 @@ const { simpleTest } = require('./testUtils');
 
 describe('nx-threat-number', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-threat-number');
+    await browser.url('#/pages/threat-number');
   });
 
   const listSelector = '#nx-threat-number-list-example .nx-list',

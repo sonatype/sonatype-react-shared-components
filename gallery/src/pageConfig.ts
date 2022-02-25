@@ -234,7 +234,7 @@ const pageConfig: PageConfig = {
     'Nexus Page Header': { content: NxNexusPageHeaderPage, type: 'react' },
     'Page Header': { content: NxPageHeaderPage, type: 'react' },
     'Page Title': { content: NxPageTitlePage, type: 'html' },
-    'read-only': { content: NxReadOnlyPage, type: 'html' },
+    'Read Only': { content: NxReadOnlyPage, type: 'html' },
     'Tabs': { content: NxTabsPage, type: 'react' },
     'Stateful Tabs': { content: NxStatefulTabsPage, type: 'react' },
     'Tile': { content: NxTilePage, type: 'html' },

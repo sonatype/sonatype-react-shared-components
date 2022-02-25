@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxSubmitMask', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxSubmitMask');
+    await browser.url('#/pages/SubmitMask');
   });
 
   const loadingMaskBtnSelector = '#nx-submit-mask-loading-example button',

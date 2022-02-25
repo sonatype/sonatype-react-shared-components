@@ -8,7 +8,7 @@ const { Target } = require('@applitools/eyes-webdriverio');
 
 describe('NxModal', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxModal');
+    await browser.url('#/pages/Modal');
     await browser.refresh();
   });
 

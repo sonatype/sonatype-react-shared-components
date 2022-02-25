@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxLoadingSpinner', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxLoadingSpinner');
+    await browser.url('#/pages/LoadingSpinner');
   });
 
   const selector = '.gallery-example .nx-loading-spinner';
