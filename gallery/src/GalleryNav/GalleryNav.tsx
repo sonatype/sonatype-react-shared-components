@@ -83,7 +83,8 @@ function GalleryNavTreeView(props: GalleryNavTreeViewProps) {
   return (
     <NxCollapsibleItems onToggleCollapse={onToggleCollapse}
                         isOpen={isOpen}
-                        triggerContent={categoryName}>
+                        triggerContent={categoryName}
+                        role="menu">
       {renderLinksWithFilter(categoryEntries)}
     </NxCollapsibleItems>
   );
