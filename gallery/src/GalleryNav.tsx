@@ -82,11 +82,11 @@ function GalleryNav() {
       // views should be open (though some may not be rendered at all in that case)
       [openTreeViews, setOpenTreeViews] = useState(initialOpenTreeViews),
       isFiltering = !!filter,
-      filteredConfig: PageConfig = isFiltering ? pipe<PageConfig, PageConfig, PageConfig>(
+      filteredConfig: PageConfig = isFiltering ? pipe<[PageConfig], PageConfig, PageConfig>(
           map<PageConfig, PageConfig>(pickBy<PageMapping>((_, pageName) => matchesFilter(filter, pageName))),
           pickBy(complement(isEmpty))
       )(pageConfig) : pageConfig,
-      filteredCategories = pipe<PageConfig, [string, PageMapping][], ReactNode[]>(
+      filteredCategories = pipe<[PageConfig], [string, PageMapping][], ReactNode[]>(
           toPairs,
           map(([categoryName, categoryEntries]) =>
             <GalleryNavTreeView key={categoryName}
