@@ -14,7 +14,7 @@ describe('nx-form-select', function() {
       widthSelector = '#nx-form-select-widths-examples .form-select-width-variants';
 
   beforeEach(async function() {
-    await browser.url('#/pages/Form%20Select');
+    await browser.url('#/pages/Form Select');
   });
 
   describe('Simple NxFormSelect', function() {
@@ -31,7 +31,7 @@ describe('nx-form-select', function() {
 
   describe('Short and Long Variants of NxFormSelect', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/FormSelect');
+      await browser.url('#/pages/Form Select');
     });
 
     it('looks shorter and longer', simpleTest(widthSelector));
@@ -39,7 +39,7 @@ describe('nx-form-select', function() {
 
   describe('Disabled nx-form-select', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/form-select');
+      await browser.url('#/pages/Form Select');
     });
 
     it('looks disabled', simpleTest(disabledSelector));
