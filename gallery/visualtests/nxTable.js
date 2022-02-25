@@ -18,7 +18,9 @@ describe('NxTable', function() {
       sortableTableSelector = '#nx-table-sortable-example .nx-table',
       paginationFilterTableSelector = '#nx-table-pagination-filter-example .nx-table-container',
       loadingTableSelector = '#nx-table-loading-example .nx-table',
-      errorTableSelector = '#nx-table-error-example .nx-table';
+      errorTableSelector = '#nx-table-error-example .nx-table',
+      iconButtonTableSelector = '#nx-table-icon-buttons-example .nx-table',
+      iconButtonFilterRowTableSelector = '#nx-table-icon-button-filter-row-example .nx-table';
 
   it('looks right with a hovered row', async function() {
     const middleRowSelector = `${clickableTableSelector} tbody tr:nth-of-type(1)`,
@@ -44,6 +46,8 @@ describe('NxTable', function() {
   it('looks right when showing an error', simpleTest(errorTableSelector));
   it('looks right with an icon column', simpleTest(iconColumnTableSelector));
   it('looks right with a pagination bar and a filter row', simpleTest(paginationFilterTableSelector));
+  it('looks right with icon buttons', simpleTest(iconButtonTableSelector));
+  it('looks right with icon buttons in the filter ro', simpleTest(iconButtonFilterRowTableSelector));
 
   describe('Scrollable table', function() {
     beforeEach(async function() {
@@ -106,12 +110,6 @@ describe('NxTable', function() {
     });
 
     const tableSelector = '#nx-table-fixed-layout-example .nx-table';
-
-    it('looks right', simpleTest(tableSelector));
-  });
-
-  describe('Table with icon buttons', function() {
-    const tableSelector = '#nx-table-icon-buttons-example .nx-table';
 
     it('looks right', simpleTest(tableSelector));
   });
