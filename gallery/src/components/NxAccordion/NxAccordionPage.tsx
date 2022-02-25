@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { useRouteMatch } from 'react-router';
 import {
   NxTable,
   NxInfoAlert,
@@ -14,8 +13,6 @@ import {
   NxP,
   NxH3,
   NxTile,
-  NxTabList,
-  NxTab,
   NxTabPanel,
   NxTabs,
   NxWarningAlert
@@ -29,6 +26,7 @@ import NxAccordionButtonHeaderExample from './NxAccordionButtonHeaderExample';
 import NxAccordionIconButtonHeaderExample from './NxAccordionIconButtonHeaderExample';
 import NxAccordionWithNxListExample from './NxAccordionWithNxListExample';
 import NxStatefulAccordionExample from '../NxStatefulAccordion/NxStatefulAccordionExample';
+import useTabRouting from '../../util/useTabRouting';
 
 const NxAccordionSimpleCode = require('./NxAccordionExample?raw'),
     NxAccordionComplexCode = require('./NxAccordionComplexExample?raw'),
@@ -37,29 +35,17 @@ const NxAccordionSimpleCode = require('./NxAccordionExample?raw'),
     NxAccordionButtonHeaderCode = require('./NxAccordionButtonHeaderExample?raw'),
     NxAccordionIconButtonHeaderCode = require('./NxAccordionIconButtonHeaderExample?raw');
 
-const tabs = [
-  'Usage',
-  'React Stateless Examples',
-  'React Stateful Examples',
-  'Deprecated Examples'
-];
-
 export default function NxAccordionPage() {
-  const match = useRouteMatch<{ tab: string }>('/pages/NxAccordion/:tab'),
-      tab = match?.params.tab,
-      tabIndex = tab && tabs.indexOf(tab) || 0;
-
-  function onTabSelect(tabIndex: number) {
-    const tabName = tabs[tabIndex];
-
-    window.location.href = `#/pages/NxAccordion/${encodeURIComponent(tabName)}`;
-  }
+  const { activeTab, onTabSelect, tabList } = useTabRouting('NxAccordion', [
+    'Usage',
+    'React Stateless Examples',
+    'React Stateful Examples',
+    'Deprecated Examples'
+  ]);
 
   return (
-    <NxTabs activeTab={tabIndex} onTabSelect={onTabSelect}>
-      <NxTabList>
-        { tabs.map(tab => <NxTab key={tab}>{tab}</NxTab>) }
-      </NxTabList>
+    <NxTabs { ...{ activeTab, onTabSelect } }>
+      {tabList}
       <NxTabPanel>
         <GalleryDescriptionTile>
           <NxP>

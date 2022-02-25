@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { useRouteMatch } from 'react-router';
 import {
   NxTable,
   NxTile,
@@ -14,8 +13,6 @@ import {
   NxCode,
   NxTextLink,
   NxTabs,
-  NxTabList,
-  NxTab,
   NxTabPanel,
   NxWarningAlert
 } from '@sonatype/react-shared-components';
@@ -27,32 +24,20 @@ import {
   NxTableStylingCustomizationExamples,
   NxTableComplexContentExamples
 } from './NxTableExamples';
-
-const tabs = [
-  'Usage',
-  'Simple Examples',
-  'Special Column Types',
-  'Styling Customizations',
-  'Complex Content',
-];
+import useTabRouting from '../../util/useTabRouting';
 
 export default function NxTablePage() {
-  const match = useRouteMatch<{ tab: string }>('/pages/NxTable/:tab'),
-      tab = match?.params.tab,
-      tabIndex = tab && tabs.indexOf(tab) || 0;
-
-  function onTabSelect(tabIndex: number) {
-    const tabName = tabs[tabIndex];
-
-    window.location.href = `#/pages/NxTable/${encodeURIComponent(tabName)}`;
-  }
+  const { activeTab, onTabSelect, tabList } = useTabRouting('NxTable', [
+    'Usage',
+    'Simple Examples',
+    'Special Column Types',
+    'Styling Customizations',
+    'Complex Content'
+  ]);
 
   return (
-    <NxTabs activeTab={tabIndex} onTabSelect={onTabSelect}>
-      <NxTabList>
-        { tabs.map(tab => <NxTab key={tab}>{tab}</NxTab>) }
-      </NxTabList>
-
+    <NxTabs { ...{ activeTab, onTabSelect } }>
+      {tabList}
       <NxTabPanel>
         <GalleryDescriptionTile>
           <NxP>
