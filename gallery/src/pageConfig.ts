@@ -144,7 +144,7 @@ const pageConfig: PageConfig = {
   'Alerts and Indicators': {
     'Alert': { content: NxAlertComponentsPage, type: 'react' },
     'Stateful Alert': { content: NxStatefulAlertComponentsPage, type: 'react' },
-    'counter': { content: NxCounterPage, type: 'html' },
+    'Counter': { content: NxCounterPage, type: 'html' },
     'Load Error': { content: NxLoadErrorPage, type: 'react' },
     'Load Wrapper': { content: NxLoadWrapperPage, type: 'react' },
     'Loading Spinner': { content: NxLoadingSpinnerPage, type: 'react' },
@@ -156,7 +156,7 @@ const pageConfig: PageConfig = {
     'Small Threat Counter': { content: NxSmallThreatCounterPage, type: 'react' },
     'Threat Indicator': { content: NxThreatIndicatorPage, type: 'react' },
     'Threat Indicator Legend': { content: NxThreatIndicatorLegendPage, type: 'react' },
-    'threat-number': { content: NxThreatNumberPage, type: 'html' },
+    'Threat Number': { content: NxThreatNumberPage, type: 'html' },
     'Tooltip': { content: NxTooltipPage, type: 'react' },
     'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' },
     'System Notice': { content: NxSystemNoticePage, type: 'html' }
@@ -181,10 +181,10 @@ const pageConfig: PageConfig = {
     'Checkbox': { content: NxCheckboxPage, type: 'react' },
     'Stateful Checkbox': { content: NxStatefulCheckboxPage, type: 'react' },
     'Code Snippet': { content: NxCodeSnippetPage, type: 'react' },
-    'Collapsible MultiSelect': { content: NxCollapsibleMultiSelectPage, type: 'react' },
-    'Stateful Collapsible MultiSelect': { content: NxStatefulCollapsibleMultiSelectPage, type: 'react' },
-    'CollapsibleRadioSelect': { content: NxCollapsibleRadioSelectPage, type: 'react' },
-    'Stateful Collapsible Radio Select': { content: NxStatefulCollapsibleRadioSelectPage, type: 'react' },
+    'Collapsible Multi-Select': { content: NxCollapsibleMultiSelectPage, type: 'react' },
+    'Stateful Collapsible Multi-Select': { content: NxStatefulCollapsibleMultiSelectPage, type: 'react' },
+    'Collapsible Radio-Select': { content: NxCollapsibleRadioSelectPage, type: 'react' },
+    'Stateful Collapsible Radio-Select': { content: NxStatefulCollapsibleRadioSelectPage, type: 'react' },
     'Color Picker': { content: NxColorPickerPage, type: 'react' },
     'Date Input': { content: NxDateInputPage, type: 'react' },
     'Stateful Date Input': { content: NxStatefulDateInputPage, type: 'react' },
@@ -205,8 +205,8 @@ const pageConfig: PageConfig = {
     'Stateful Transfer List': { content: NxStatefulTransferListPage, type: 'react' },
     'Tree View Multi-Select': { content: NxTreeViewMultiSelect, type: 'react' },
     'Stateful Tree View Multi-Select': { content: NxStatefulTreeViewMultiSelect, type: 'react' },
-    'Tree View Radio Select': { content: NxTreeViewRadioSelectPage, type: 'react' },
-    'Stateful Tree View Radio Select': { content: NxStatefulTreeViewRadioSelectPage, type: 'react' }
+    'Tree View Radio-Select': { content: NxTreeViewRadioSelectPage, type: 'react' },
+    'Stateful Tree View Radio-Select': { content: NxStatefulTreeViewRadioSelectPage, type: 'react' }
   },
   'Data Presentation': {
     'Stateful Accordion': { content: NxStatefulAccordionPage, type: 'react' },
