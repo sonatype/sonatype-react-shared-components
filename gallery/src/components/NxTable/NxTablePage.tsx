@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {useState} from 'react';
+import React from 'react';
+import { useRouteMatch } from 'react-router';
 import {
   NxTable,
   NxTile,
@@ -27,17 +28,29 @@ import {
   NxTableComplexContentExamples
 } from './NxTableExamples';
 
+const tabs = [
+  'Usage',
+  'Simple Examples',
+  'Special Column Types',
+  'Styling Customizations',
+  'Complex Content',
+];
+
 export default function NxTablePage() {
-  const [activeTabId, setActiveTabId] = useState(0);
+  const match = useRouteMatch<{ tab: string }>('/pages/NxTable/:tab'),
+      tab = match?.params.tab,
+      tabIndex = tab && tabs.indexOf(tab) || 0;
+
+  function onTabSelect(tabIndex: number) {
+    const tabName = tabs[tabIndex];
+
+    window.location.href = `#/pages/NxTable/${encodeURIComponent(tabName)}`;
+  }
 
   return (
-    <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId}>
+    <NxTabs activeTab={tabIndex} onTabSelect={onTabSelect}>
       <NxTabList>
-        <NxTab>Usage</NxTab>
-        <NxTab>Simple Examples</NxTab>
-        <NxTab>Special Column Types</NxTab>
-        <NxTab>Styling Customizations</NxTab>
-        <NxTab>Complex Content</NxTab>
+        { tabs.map(tab => <NxTab key={tab}>{tab}</NxTab>) }
       </NxTabList>
 
       <NxTabPanel>
