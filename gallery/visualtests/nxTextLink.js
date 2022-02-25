@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxTextLink', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/TextLink');
+    await browser.url('#/pages/Text Link');
   });
 
   describe('Default NxTextLink', function() {

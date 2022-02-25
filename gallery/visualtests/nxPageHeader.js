@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxPageHeader', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/PageHeader');
+    await browser.url('#/pages/Page%20Header');
   });
 
   const simpleHeaderSelector = '#nx-page-header-simple-example .nx-page-header',

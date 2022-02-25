@@ -14,7 +14,7 @@ describe('nx-form-select', function() {
       widthSelector = '#nx-form-select-widths-examples .form-select-width-variants';
 
   beforeEach(async function() {
-    await browser.url('#/pages/FormSelect');
+    await browser.url('#/pages/Form%20Select');
   });
 
   describe('Simple NxFormSelect', function() {

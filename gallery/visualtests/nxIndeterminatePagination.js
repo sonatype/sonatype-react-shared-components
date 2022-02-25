@@ -8,7 +8,7 @@ const { simpleTest } = require('./testUtils');
 
 describe('NxIndeterminatePagination', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/IndeterminatePagination');
+    await browser.url('#/pages/Indeterminate%20Pagination');
   });
 
   const selector = '#nx-indeterminate-pagination-example .gallery-example-live';

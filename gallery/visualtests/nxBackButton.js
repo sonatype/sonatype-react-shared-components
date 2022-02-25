@@ -11,7 +11,7 @@ describe('NxBackButton', function() {
       hoverElementSelector = exampleSelector + ' a';
 
   beforeEach(async function() {
-    await browser.url('#/pages/BackButton');
+    await browser.url('#/pages/Back%20Button');
   });
 
   describe('Simple NxBackButton', function() {

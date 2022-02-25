@@ -8,7 +8,7 @@ const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = requir
 
 describe('NxCollapsibleItems', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/CollapsibleItems');
+    await browser.url('#/pages/Collapsible%20Items');
     await browser.refresh();
   });
 
