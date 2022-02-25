@@ -9,7 +9,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxTable', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxTable');
+    await browser.url('#/pages/NxTable/Complex%20Content');
   });
 
   const iconColumnTableSelector = '#nx-table-clickable-example .nx-table',
@@ -92,7 +92,7 @@ describe('NxTable', function() {
 
   describe('Truncation and Wrapping table', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-table');
+      await browser.url('#/pages/NxTable/Styling%20Customizations');
     });
 
     const tableSelector = '#nx-table-truncation-wrapping-example .nx-table';
@@ -102,7 +102,7 @@ describe('NxTable', function() {
 
   describe('Fixed layout table', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-table');
+      await browser.url('#/pages/NxTable/Styling%20Customizations');
     });
 
     const tableSelector = '#nx-table-fixed-layout-example .nx-table';
@@ -111,10 +111,6 @@ describe('NxTable', function() {
   });
 
   describe('Table with icon buttons', function() {
-    beforeEach(async function() {
-      await browser.url('#/pages/nx-table');
-    });
-
     const tableSelector = '#nx-table-icon-buttons-example .nx-table';
 
     it('looks right', simpleTest(tableSelector));
