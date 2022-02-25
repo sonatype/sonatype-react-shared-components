@@ -249,14 +249,14 @@ const pageConfig: PageConfig = {
     'Pre': { content: NxPrePage, type: 'html' }
   },
   'HTML Variants': {
-    'Alert': { content: NxAlertPage, type: 'html' },
-    'Button': { content: NxBtnPage, type: 'html' },
+    'Alert (HTML)': { content: NxAlertPage, type: 'html' },
+    'Button (HTML)': { content: NxBtnPage, type: 'html' },
     'Icon': { content: NxIconPage, type: 'html' },
     'Fieldset': { content: NxFieldsetStylePage, type: 'html' },
     'Form Group': { content: NxFormGroupStylePage, type: 'html' },
     'Form Select': { content: NxFormSelectPage, type: 'html' },
-    'List': { content: NxListPage, type: 'html' },
-    'Table': { content: NxTableStylePage, type: 'html' }
+    'List (HTML)': { content: NxListPage, type: 'html' },
+    'Table (HTML)': { content: NxTableStylePage, type: 'html' }
   },
   'Mixins & Helpers': {
     'Color Palettes': { content: ColorPalettePage, type: 'css' },
