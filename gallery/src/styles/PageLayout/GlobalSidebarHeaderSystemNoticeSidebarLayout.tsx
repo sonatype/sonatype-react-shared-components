@@ -21,11 +21,14 @@ import {
 } from '@sonatype/react-shared-components';
 
 import CodeExample from '../../CodeExample';
+import useScrollableTabIndex from '../../util/useScrollableTabIndex';
 
 const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 const exampleCode = require('./GlobalSidebarHeaderSystemNoticeSidebarLayout?raw');
 
 export default function GlobalSidebarHeaderSystemNoticeSidebarLayout() {
+  const { ref: sidebarRef, tabIndex: sidebarTabIndex } = useScrollableTabIndex();
+
   return (
     <>
       <NxStatefulGlobalSidebar isDefaultOpen={true}
@@ -44,7 +47,7 @@ export default function GlobalSidebarHeaderSystemNoticeSidebarLayout() {
       <NxGlobalHeader>
         <NxBackButton href="#/pages/Page%20Layout" />
       </NxGlobalHeader>
-      <NxPageSidebar>
+      <NxPageSidebar ref={sidebarRef} tabIndex={sidebarTabIndex} aria-label="inner-sidebar">
         <NxP>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum augue ut mi facilisis commodo. Sed
           quis faucibus metus. Duis volutpat nisl et risus pellentesque euismod. Praesent iaculis ipsum et iaculis
