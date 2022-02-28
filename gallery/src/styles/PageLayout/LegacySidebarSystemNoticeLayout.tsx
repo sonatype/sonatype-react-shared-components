@@ -8,19 +8,16 @@ import React from 'react';
 import { NxPageHeader, NxSystemNotice, NxP, NxPageSidebar, NxPageMain, NxTile, NxPageTitle, NxH1 }
   from '@sonatype/react-shared-components';
 import CodeExample from '../../CodeExample';
-import useScrollableTabIndex from '../../util/useScrollableTabIndex';
 
 const exampleCode = require('./LegacySidebarSystemNoticeLayout?raw');
 
 export default function LegacySidebarSystemNoticeLayout() {
-  const { ref: sidebarRef, tabIndex: sidebarTabIndex } = useScrollableTabIndex();
-
   return (
     <>
       <NxPageHeader />
       <NxSystemNotice>This is a System Notice</NxSystemNotice>
       <div className="nx-page-content">
-        <NxPageSidebar ref={sidebarRef} tabIndex={sidebarTabIndex} aria-label="inner-sidebar">
+        <NxPageSidebar tabIndex={0}>
           <NxP>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum augue ut mi facilisis commodo. Sed
             quis faucibus metus. Duis volutpat nisl et risus pellentesque euismod. Praesent iaculis ipsum et iaculis
