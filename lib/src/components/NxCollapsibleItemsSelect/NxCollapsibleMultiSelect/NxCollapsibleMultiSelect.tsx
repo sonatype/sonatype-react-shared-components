@@ -73,7 +73,8 @@ function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
                 onChange={() => toggle(id)}
                 isChecked={normalizedSelectedIds.has(id)}
                 overflowTooltip={!optionTooltipGenerator}
-                disabled={disabled}>
+                inputAttributes={{ role: 'menuitemcheckbox' }}
+                role="">
       {optionName}
     </NxCheckbox>
   );
@@ -82,7 +83,9 @@ function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
     <NxCheckbox checkboxId={generateId(name, 'all/none')}
                 onChange={toggleSelectAll}
                 isChecked={allFilteredSelected}
-                disabled={disabled}>
+                disabled={disabled}
+                inputAttributes={{ role: 'menuitemcheckbox' }}
+                role="">
       all/none
     </NxCheckbox>
   ) : null;
