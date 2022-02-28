@@ -4,14 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { simpleTest } = require('./testUtils');
+ .gallery-nav-link {
+  color: var(--nx-color-text-dark);
+}
 
-describe('nx-counter', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Counter');
-  });
-
-  const selector = '.gallery-example-live';
-
-  it('looks right', simpleTest(selector));
-});
+.gallery-nav-icon {
+  fill: currentColor;
+  height: 1em;
+  width: 1.25em;
+}

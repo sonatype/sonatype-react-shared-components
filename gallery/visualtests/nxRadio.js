@@ -9,7 +9,7 @@ const { Target } = require('@applitools/eyes-webdriverio');
 
 describe('NxRadio', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxRadio');
+    await browser.url('#/pages/Radio');
   });
 
   const selector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
