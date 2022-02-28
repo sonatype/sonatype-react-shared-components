@@ -10,7 +10,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest
 
 describe('NxCodeSnippet', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxCodeSnippet');
+    await browser.url('#/pages/Code%20Snippet');
   });
 
   const multipleSnippetSelector = '#nx-code-snippet-simple-example .gallery-example-live',

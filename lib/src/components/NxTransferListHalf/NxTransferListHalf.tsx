@@ -14,11 +14,13 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import NxButton from '../NxButton/NxButton';
 
-import { TransferListHalfProps as Props, TransferListItemProps } from './types';
+import { Props, TransferListItemProps } from './types';
 import NxFieldset from '../NxFieldset/NxFieldset';
 
-import './TransferListHalf.scss';
+import './NxTransferListHalf.scss';
 import NxTooltip from '../NxTooltip/NxTooltip';
+
+export { Props };
 
 function TransferListItem<T extends string | number = string>(props: TransferListItemProps<T>) {
   const {
@@ -85,9 +87,9 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
 }
 
 /*
- * RSC-internal component used by NxTransferList and NxSearchTransferList
+ * Used by NxTransferList and NxSearchTransferList, but also available on its own for more flexibility
  */
-export default function TransferListHalf<T extends string | number = string>(props: Props<T>) {
+export default function NxTransferListHalf<T extends string | number = string>(props: Props<T>) {
   const {
         allowReordering,
         label,

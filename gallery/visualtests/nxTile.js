@@ -9,7 +9,7 @@ const { simpleTest, simpleTestLongElement } = require('./testUtils');
 
 describe('nx-tile', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-tile');
+    await browser.url('#/pages/Tile');
   });
 
   const simpleTileSelector = '#nx-tile-simple-example .nx-tile',

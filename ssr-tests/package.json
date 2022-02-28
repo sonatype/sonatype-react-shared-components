@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start",
+    "test": "start-server-and-test dev http://localhost:3000 webdriverio",
+    "webdriverio": "wdio run wdio.conf.js"
+  },
+  "dependencies": {
+    "@sonatype/react-shared-components": "file:../lib/dist",
+    "next": "^12.0.8",
+    "next-transpile-modules": "^9.0.0",
+    "react": "16.14",
+    "react-dom": "16.14",
+    "sass": "^1.49.0",
+    "webpack": "^5.66.0"
+  },
+  "devDependencies": {
+    "@types/node": "16.11.7",
+    "@types/react": "17.0.34",
+    "@wdio/cli": "^7.16.14",
+    "@wdio/local-runner": "^7.16.14",
+    "@wdio/mocha-framework": "^7.16.14",
+    "@wdio/spec-reporter": "^7.16.14",
+    "start-server-and-test": "^1.14.0",
+    "typescript": "4.4.4",
+    "webdriverio": "^7.16.14"
+  }
+}

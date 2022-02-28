@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest
 
 describe('NxButton', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxButton');
+    await browser.url('#/pages/Button');
   });
 
   describe('Default NxButton', function() {

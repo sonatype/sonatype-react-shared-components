@@ -9,7 +9,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxSearchDropdown', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxSearchDropdown');
+    await browser.url('#/pages/Search%20Dropdown');
     await browser.refresh();
   });
 
