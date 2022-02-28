@@ -8,7 +8,7 @@ const { focusTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxAccordion', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxAccordion');
+    await browser.url('#/pages/Accordion');
     await browser.refresh();
   });
 
@@ -55,7 +55,7 @@ describe('NxAccordion', function() {
 
   describe('non-deprecated NxAccordion', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/NxAccordion?hideDeprecatedExamples');
+      await browser.url('#/pages/Accordion?hideDeprecatedExamples');
     });
 
     it('passes a11y checks', a11yTest());

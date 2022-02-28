@@ -8,7 +8,7 @@ const { simpleTest, a11yTest } = require('./testUtils');
 
 describe('nx-code', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-code');
+    await browser.url('#/pages/Code');
   });
 
   const selector = '.gallery-example-live';

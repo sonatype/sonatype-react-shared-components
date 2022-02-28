@@ -13,10 +13,9 @@ import { mergeAll, values } from 'ramda';
 import 'core-js/features/array/includes';
 import queryString from 'query-string';
 
-import { PageMapping } from './pageConfigTypes';
 import pageConfig from './pageConfig';
 import PageHeader from './PageHeader/PageHeader';
-import GalleryNav from './GalleryNav';
+import GalleryNav from './GalleryNav/GalleryNav';
 import Home from './pages/Home';
 import handleQueryParams from './handleQueryParams';
 
@@ -43,12 +42,13 @@ import NxGlobalSidebarFooterMinimalExample
 import NxGlobalSidebarFooterEmptyExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterEmptyExample';
 
-const pageMappings: PageMapping = mergeAll(values(pageConfig));
+const pageMappings = mergeAll(values(pageConfig));
 
 function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
   const pageName = match ? match.params.pageName : null,
-      pageHeader = pageName || 'Home',
-      Content = pageName ? pageMappings[pageName] : Home;
+      pageHeader = pageName || 'Home';
+
+  const Content = pageName && pageMappings[pageName]?.content || Home;
 
   useEffect(function() {
     handleQueryParams(queryString.parse(location.search));

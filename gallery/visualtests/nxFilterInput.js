@@ -13,7 +13,7 @@ describe('NxTextInput', function() {
       disabledComponentSelector = '#nx-filter-input-disabled-example .nx-filter-input';
 
   beforeEach(async function() {
-    await browser.url('#/pages/NxFilterInput');
+    await browser.url('#/pages/Filter%20Input');
   });
 
   describe('Simple NxFilterInput', function() {
