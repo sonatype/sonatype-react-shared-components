@@ -177,7 +177,6 @@ const pageConfig: PageConfig = {
     'Search Dropdown': { content: NxSearchDropdownPage, type: 'react' },
     'Stateful Search Dropdown': { content: NxStatefulSearchDropdownPage, type: 'react' },
     'Text Link': { content: NxTextLinkPage, type: 'react' }
-    'Accessibility Checklist': AccessibilityChecklistPage,
   },
   'Forms': {
     'Checkbox': { content: NxCheckboxPage, type: 'react' },
@@ -282,6 +281,7 @@ const pageConfig: PageConfig = {
   },
   'Guidelines': {
     'Accessibility': { content: AccessibilityPage, type: 'documentation' },
+    'Accessibility Checklist': { content: AccessibilityChecklistPage, type: 'documentation' },
     'Additional Resources': { content: AdditionalResourcePage, type: 'documentation' },
     'Contributing to the Gallery': { content: ContributingPage, type: 'documentation' },
     'Font-size and Line-height': { content: FontSizePage, type: 'documentation' },
