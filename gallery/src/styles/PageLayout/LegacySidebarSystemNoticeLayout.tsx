@@ -48,12 +48,10 @@ export default function LegacySidebarSystemNoticeLayout() {
           </NxP>
         </NxPageSidebar>
         <NxPageMain>
+          <NxPageTitle>
+            <NxH1>This Example's Code</NxH1>
+          </NxPageTitle>
           <NxTile>
-            <NxTile.Header>
-              <NxTile.HeaderTitle>
-                <NxH2>This Example's Code</NxH2>
-              </NxTile.HeaderTitle>
-            </NxTile.Header>
             <NxTile.Content>
               <CodeExample content={exampleCode} />
             </NxTile.Content>
