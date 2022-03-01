@@ -108,7 +108,7 @@ const NxCollapsibleItemsChild = forwardRef<Element, NxCollapsibleItemsChildProps
         const classes = classnames('nx-collapsible-items__child', children.props.className, className),
             role = children.props.role ?? 'listitem';
 
-        return React.cloneElement(children, { className: classes, ref, role, ...otherProps });
+        return React.cloneElement(children, { className: classes, ref, role: role || undefined, ...otherProps });
       }
     }
 );
