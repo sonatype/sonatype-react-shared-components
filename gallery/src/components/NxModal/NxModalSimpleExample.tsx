@@ -24,7 +24,7 @@ export default function NxModalSimpleExample() {
               <span>Example NxModal header</span>
             </h2>
           </header>
-          <div className="nx-modal-content">
+          <div className="nx-modal-content" tabIndex={0}>
             <p className="nx-p">
               Bacon ipsum dolor amet tri-tip pork belly pork chop, prosciutto cupim short ribs strip steak frankfurter
               sausage shank alcatra corned beef. Buffalo prosciutto leberkas swine bacon turducken kevin, biltong pork
