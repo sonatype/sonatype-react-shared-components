@@ -46,9 +46,8 @@ const pageMappings = mergeAll(values(pageConfig));
 
 function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
   const pageName = match ? match.params.pageName : null,
-      pageHeader = pageName || 'Home';
-
-  const Content = pageName && pageMappings[pageName]?.content || Home;
+      pageHeader = pageName || 'Home',
+      Content = pageName ? pageMappings[pageName]?.content : Home;
 
   useEffect(function() {
     handleQueryParams(queryString.parse(location.search));
