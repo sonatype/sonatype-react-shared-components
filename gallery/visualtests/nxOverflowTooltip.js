@@ -193,6 +193,7 @@ describe('NxOverflowTooltip', function() {
 
     await browser.$(tooltipSelector);
 
-    await a11yTest()();
+    //disabling the region rule to get around the "Some page content is not contained by landmarks" for tooltips
+    await a11yTest(builder => builder.disableRules('region'));
   });
 });
