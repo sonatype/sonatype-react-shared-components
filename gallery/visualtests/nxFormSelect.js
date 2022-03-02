@@ -45,5 +45,6 @@ describe('nx-form-select', function() {
     it('looks disabled', simpleTest(disabledSelector));
   });
 
-  it('passes a11y checks', a11yTest());
+  // color-contrast rule breaks in the presence of background-images
+  it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
 });
