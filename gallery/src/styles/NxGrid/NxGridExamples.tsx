@@ -31,11 +31,9 @@ const NxGridExamples = () =>
       An example of an <NxCode>nx-grid</NxCode> containing two cells each of which scroll. As is typical in this
       case, a horizontal keyline is added above the row of cells.
 
-      <p>
-        Since this example renders a scrollable area without any interactive elements, <NxCode>tabindex="0"</NxCode> has
-        been added to make the element part of the normal tab flow. It is not necessary to
-        add <NxCode>tabindex</NxCode> if the scrollable area contains any interactive elements.
-      </p>
+      Since this example renders a scrollable area without any interactive elements, <NxCode>tabindex="0"</NxCode> has
+      been added to make the element part of the normal tab flow. It is not necessary to
+      add <NxCode>tabindex</NxCode> if the scrollable area contains any interactive elements.
     </GalleryExampleTile>
   </>;
 
