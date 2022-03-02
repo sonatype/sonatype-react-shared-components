@@ -52,7 +52,7 @@ export default function NxGlobalHeaderFullExample() {
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
-      <NxPageSidebar>
+      <NxPageSidebar tabIndex={0}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdum
         varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
