@@ -33,7 +33,7 @@ const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png
 export default function NxGlobalHeaderFullExample() {
   return (
     <>
-      <aside className="nx-global-header">
+      <header className="nx-global-header">
         <NxBackButton href="#/pages/nx-global-header" targetPageTitle="Documentation" />
         <div className="nx-global-header__actions">
           <NxButton title="Help" variant="icon-only"><NxFontAwesomeIcon icon={faQuestionCircle} /></NxButton>
@@ -41,7 +41,7 @@ export default function NxGlobalHeaderFullExample() {
           <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
           <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
         </div>
-      </aside>
+      </header>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
                                toggleOpenIcon={faArrowLeft}
                                toggleCloseIcon={faArrowRight}
