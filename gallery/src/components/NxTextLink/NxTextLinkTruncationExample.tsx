@@ -10,20 +10,14 @@ import { NxCode, NxTextLink } from '@sonatype/react-shared-components';
 export default function NxTextLinkTruncationExample() {
   return (
     <div style={{ width: '220px', border: '1px solid red' }}>
-      <div>
-        <NxTextLink href="#/">This link uses the default NxTextLink styling and wraps within its container</NxTextLink>
-      </div>
-      <div>
-        <NxTextLink href="#/" className="nx-text-link--truncate">
-          This link uses the <NxCode>nx-text-link--truncate</NxCode> class and thus truncates with an ellipsis
-        </NxTextLink>
-      <div>
-      </div>
-        <NxTextLink href="https://www.google.com/" external className="nx-text-link--truncate">
-          This external link uses the <NxCode>nx-text-link--truncate</NxCode> class and thus truncates with an ellipsis.
-          Note that the text before the external link icon truncates, so that the icon itself is always visible.
-        </NxTextLink>
-      </div>
+      <NxTextLink href="#/">This link uses the default NxTextLink styling and wraps within its container</NxTextLink>
+      <NxTextLink href="#/" truncate>
+        This link uses the <NxCode>truncate</NxCode> prop and thus truncates with an ellipsis
+      </NxTextLink>
+      <NxTextLink href="https://www.google.com/" external truncate>
+        This external link uses the <NxCode>truncate</NxCode> prop and thus truncates with an ellipsis.
+        Note that the text before the external link icon truncates, so that the icon itself is always visible.
+      </NxTextLink>
     </div>
   );
 }
