@@ -11,9 +11,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxTextLinkInternalExample from './NxTextLinkInternalExample';
 import NxTextLinkExternalExample from './NxTextLinkExternalExample';
+import NxTextLinkTruncationExample from './NxTextLinkTruncationExample';
 
 const NxTextLinkInternalExampleCode = require('./NxTextLinkInternalExample?raw'),
-    NxTextLinkExternalExampleCode = require('./NxTextLinkExternalExample?raw');
+    NxTextLinkExternalExampleCode = require('./NxTextLinkExternalExample?raw'),
+    NxTextLinkTruncationExampleCode = require('./NxTextLinkTruncationExample?raw');
 
 export default function NxTabsPage() {
   return (
@@ -109,6 +111,13 @@ export default function NxTabsPage() {
         the external icon is included in the <NxCode>NxCode</NxCode> boundary.
 
         A few examples of <NxCode>NxTextLink</NxCode> to an external page with and without <NxCode>NxCode</NxCode>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxTextLink Wrapping and Truncation Example"
+                          id="nx-text-link-wrapping-and-truncation-example"
+                          liveExample={NxTextLinkTruncationExample}
+                          codeExamples={NxTextLinkTruncationExampleCode}>
+
       </GalleryExampleTile>
     </>
   );
