@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxIconDropdown', function() {
   beforeEach(async function() {
@@ -57,4 +57,6 @@ describe('NxIconDropdown', function() {
 
     it('looks disabled', simpleTest(selector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

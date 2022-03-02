@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxOverflowTooltip', function() {
   beforeEach(async function() {
@@ -181,5 +181,18 @@ describe('NxOverflowTooltip', function() {
     expect(await tooltipEl.isDisplayed()).toBe(true);
     expect(await tooltipEl.getText()).toBe( 'List item 2 - this text is long and should truncate with a tooltip ' +
         'this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip');
+  });
+
+  it('passes a11y checks when tooltip not active', a11yTest());
+  it('passes a11y checks when tooltip is active', async function() {
+    const item2 = await browser.$(item2Selector);
+
+    await item2.scrollIntoView({ block: 'center' });
+    await item2.moveTo();
+    await browser.pause(1000);
+
+    await browser.$(tooltipSelector);
+
+    await a11yTest()();
   });
 });

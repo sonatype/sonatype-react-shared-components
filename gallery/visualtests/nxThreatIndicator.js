@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Target } = require('@applitools/eyes-webdriverio');
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxThreatIndicator', function() {
   beforeEach(async function() {
@@ -19,4 +19,6 @@ describe('NxThreatIndicator', function() {
   it('looks right', simpleTest(threatIndicatorsSimpleExampleSelector));
   it('looks right in a list', simpleTest(threatIndicatorsListExampleSelector));
   it('looks right in a table', simpleTest(threatIndicatorsTableExampleSelector));
+
+  it('passes a11y checks', a11yTest());
 });

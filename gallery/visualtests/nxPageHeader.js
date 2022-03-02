@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxPageHeader', function() {
   beforeEach(async function() {
@@ -16,4 +16,6 @@ describe('NxPageHeader', function() {
 
   it('looks right with minimal content', simpleTest(simpleHeaderSelector));
   it('looks right with all optional content', simpleTest(complexHeaderSelector));
+
+  it('passes a11y checks', a11yTest());
 });

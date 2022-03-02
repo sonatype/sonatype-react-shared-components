@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Target } = require('@applitools/eyes-webdriverio');
+const { a11yTest } = require('./testUtils');
 
 describe('NxModal', function() {
   beforeEach(async function() {
@@ -20,26 +21,39 @@ describe('NxModal', function() {
       stackedExampleSelector = '#nx-modal-stacked-example',
       escClosingExampleSelector = '#nx-modal-esc-example';
 
+  async function openModal(exampleSelector) {
+    const openModalBtnSelector = `${exampleSelector} button`,
+        closeModalBtnSelector =
+            `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`;
+
+    const openModalBtn = await browser.$(openModalBtnSelector);
+
+    await openModalBtn.scrollIntoView({ block: 'center' });
+    await openModalBtn.click();
+
+    const closeModalBtn = await browser.$(closeModalBtnSelector);
+  }
+
   function simpleModalTest(exampleSelector) {
     return async function() {
-      const openModalBtnSelector = `${exampleSelector} button`,
-          closeModalBtnSelector =
-              `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`;
-
-      const openModalBtn = await browser.$(openModalBtnSelector);
-
-      await openModalBtn.scrollIntoView({ block: 'center' });
-      await openModalBtn.click();
-
-      const closeModalBtn = await browser.$(closeModalBtnSelector);
+      await openModal(exampleSelector);
 
       // take image of entire viewport in order to capture the backdrop color
       await browser.eyesSnapshot(null);
-    }
+    };
+  }
+
+  function modalA11yTest(exampleSelector) {
+    return async function() {
+      await openModal(exampleSelector);
+      await a11yTest()();
+    };
   }
 
   describe('Simple NxModal', function() {
     it('looks right', simpleModalTest(simpleExampleSelector));
+
+    it('passes a11y checks', modalA11yTest());
   });
 
   describe('Form NxModal', function() {
@@ -104,6 +118,8 @@ describe('NxModal', function() {
 
       await browser.eyesSnapshot(null);
     });
+
+    it('passes a11y checks', modalA11yTest());
   });
 
   describe('Narrow NxModal', function() {
