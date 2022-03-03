@@ -16,7 +16,7 @@ describe('NxColorPicker', function() {
     waitAndGetElements,
     moveMouseAway,
     checkScreenshot
-  } = setupBrowser('#/pages/NxColorPicker');
+  } = setupBrowser('#/pages/Color%20Picker');
 
   const selector = '.gallery-example-live .nx-color-picker',
       labelSelector = `${selector} .nx-color-picker__color:first-of-type`;

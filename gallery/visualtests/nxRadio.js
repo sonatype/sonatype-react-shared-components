@@ -16,7 +16,7 @@ describe('NxRadio', function() {
     moveMouseAway,
     blurElement,
     checkScreenshot
-  } = setupBrowser('#/pages/NxRadio');
+  } = setupBrowser('#/pages/Radio');
 
   const selector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
       otherRadioSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(1)',

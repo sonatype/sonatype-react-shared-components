@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxSmallThreatCounter', function() {
-  const { simpleTest } = setupBrowser('#/pages/NxSmallThreatCounter');
+  const { simpleTest } = setupBrowser('#/pages/Small%20Threat%20Counter');
 
   const basicExampleSelector = '#nx-small-threat-counter-example .gallery-example-live',
       customExampleSelector = '#nx-small-threat-counter-max-digits-example .gallery-example-live';

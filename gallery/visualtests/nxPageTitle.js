@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-page-title', function() {
-  const { simpleTest } = setupBrowser('#/pages/nx-page-title');
+  const { simpleTest } = setupBrowser('#/pages/Page%20Title');
 
   const simplePageTitle = '#nx-page-title-example .nx-page-title';
   const actionsPageTitle = '#nx-page-title-actions-example .nx-page-title';

@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxPolicyViolationIndicator', function() {
-  const { simpleTest } = setupBrowser('#/pages/NxPolicyViolationIndicator');
+  const { simpleTest } = setupBrowser('#/pages/Policy%20Violation%20Indicator');
 
   const policyViolationIndicatorCategoryExampleSelector =
       '#nx-policy-violation-indicator-category-example .gallery-example-live';

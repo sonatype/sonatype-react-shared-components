@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-tile', function() {
-  const { simpleTest, waitAndGetElements, checkScreenshot } = setupBrowser('#/pages/nx-tile');
+  const { simpleTest, waitAndGetElements, checkScreenshot } = setupBrowser('#/pages/Tile');
 
   const simpleTileSelector = '#nx-tile-simple-example .nx-tile',
       actionsTileSelector = '#nx-tile-actions-example .nx-tile',

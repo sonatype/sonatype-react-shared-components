@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxBinaryDonutChart', function() {
-  const { simpleTest, a11yTest } = setupBrowser('#/pages/NxBinaryDonutChart');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Binary%20Donut%20Chart');
 
   describe('NxBinaryDonutChart Minimal examples', function() {
     const simpleDonutSelector = '#nx-binary-donut-chart-minimal-examples .gallery-example-live';

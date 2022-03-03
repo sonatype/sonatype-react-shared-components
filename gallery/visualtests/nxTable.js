@@ -13,7 +13,7 @@ describe('NxTable', function() {
     checkScreenshot,
     getPage,
     disableLoadingSpinnerAnimation
-  } = setupBrowser('#/pages/NxTable');
+  } = setupBrowser('#/pages/Table');
 
   const iconColumnTableSelector = '#nx-table-clickable-example .nx-table',
       clickableTableSelector = '#nx-table-clickable-example .nx-table',
@@ -50,7 +50,7 @@ describe('NxTable', function() {
   it('looks right with a pagination bar and a filter row', simpleTest(paginationFilterTableSelector));
 
   describe('Scrollable table', function() {
-    const { simpleTest, waitAndGetElements, checkScreenshot } = setupBrowser('#/pages/nx-table-container');
+    const { simpleTest, waitAndGetElements, checkScreenshot } = setupBrowser('#/pages/Table Container');
 
     const tableSelector = '#nx-table-scrolling-example .nx-scrollable';
 
@@ -68,7 +68,7 @@ describe('NxTable', function() {
   });
 
   describe('Unfilled Scrollable table', function() {
-    const { simpleTest } = setupBrowser('#/pages/nx-table-container');
+    const { simpleTest } = setupBrowser('#/pages/Table Container');
 
     const tableSelector = '#nx-table-unfilled-scroll-container-example .nx-scrollable';
 
@@ -76,7 +76,7 @@ describe('NxTable', function() {
   });
 
   describe('Unfilled table with footer', function() {
-    const { simpleTest } = setupBrowser('#/pages/nx-table-container');
+    const { simpleTest } = setupBrowser('#/pages/Table Container');
 
     const tableSelector = '#nx-table-unfilled-with-footer-example .nx-table-container';
 
@@ -84,7 +84,7 @@ describe('NxTable', function() {
   });
 
   describe('Truncation and Wrapping table', function() {
-    const { simpleTest } = setupBrowser('#/pages/nx-table');
+    const { simpleTest } = setupBrowser('#/pages/Table (HTML)');
 
     const tableSelector = '#nx-table-truncation-wrapping-example .nx-table';
 
@@ -92,7 +92,7 @@ describe('NxTable', function() {
   });
 
   describe('Fixed layout table', function() {
-    const { simpleTest } = setupBrowser('#/pages/nx-table');
+    const { simpleTest } = setupBrowser('#/pages/Table (HTML)');
 
     const tableSelector = '#nx-table-fixed-layout-example .nx-table';
 
@@ -100,7 +100,7 @@ describe('NxTable', function() {
   });
 
   describe('Table with icon buttons', function() {
-    const { simpleTest } = setupBrowser('#/pages/nx-table');
+    const { simpleTest } = setupBrowser('#/pages/Table (HTML)');
 
     const tableSelector = '#nx-table-icon-buttons-example .nx-table';
 

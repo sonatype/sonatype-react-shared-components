@@ -16,7 +16,7 @@ describe('NxDropdown', function() {
     waitAndGetElements,
     moveMouseAway,
     checkScreenshot
-  } = setupBrowser('#/pages/NxDropdown');
+  } = setupBrowser('#/pages/Dropdown');
 
   const defaultSelector = '#nx-dropdown-scrolling-example .nx-dropdown';
 

@@ -18,7 +18,7 @@ describe('NxSegmentedButton', function() {
     checkScreenshot,
     checkScreenshotCoordinates,
     getPage
-  } = setupBrowser('#/pages/NxSegmentedButton');
+  } = setupBrowser('#/pages/Segmented%20Button');
 
   function openedTest(selector, dropdownBtnSelector) {
     return async function() {

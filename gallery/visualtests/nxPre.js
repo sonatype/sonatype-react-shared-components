@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-pre', function() {
-  const { simpleTest } = setupBrowser('#/pages/nx-pre');
+  const { simpleTest } = setupBrowser('#/pages/Pre');
 
   const selector = '.gallery-example-live';
 

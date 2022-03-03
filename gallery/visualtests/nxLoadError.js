@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxLoadError', function() {
-  const { simpleTest } = setupBrowser('#/pages/NxLoadError');
+  const { simpleTest } = setupBrowser('#/pages/Load%20Error');
 
   const simpleSelector = '#nx-load-error-retry-example .nx-alert--load-error',
       longElementSelector = '#nx-load-error-long-retry-example .nx-alert--load-error'

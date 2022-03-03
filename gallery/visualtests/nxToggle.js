@@ -17,7 +17,7 @@ describe('NxToggle', function() {
     checkScreenshot,
     blurElement,
     wait
-  } = setupBrowser('#/pages/NxToggle');
+  } = setupBrowser('#/pages/Toggle');
 
   const selector = '#nx-toggle-example .gallery-example-live label:nth-of-type(2)',
       disabledSelector = '#nx-toggle-example .gallery-example-live label:nth-of-type(4)',

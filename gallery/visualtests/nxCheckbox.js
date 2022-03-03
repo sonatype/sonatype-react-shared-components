@@ -19,7 +19,7 @@ describe('NxCheckbox', function() {
     moveMouseAway,
     blurElement,
     checkScreenshot
-  } = setupBrowser('#/pages/NxCheckbox');
+  } = setupBrowser('#/pages/Checkbox');
 
   const selector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(3)',
       disabledSelector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(4)';

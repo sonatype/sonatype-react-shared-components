@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-threat-number', function() {
-  const { simpleTest } = setupBrowser('#/pages/nx-threat-number');
+  const { simpleTest } = setupBrowser('#/pages/Threat Number');
 
   const listSelector = '#nx-threat-number-list-example .nx-list',
       tableSelector = '#nx-threat-number-table-example .nx-table',

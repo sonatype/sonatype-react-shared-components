@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-blockquote', function() {
-  const { simpleTest, a11yTest } = setupBrowser('#/pages/nx-blockquote');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Blockquote');
 
   const selector = '.gallery-example-live';
 

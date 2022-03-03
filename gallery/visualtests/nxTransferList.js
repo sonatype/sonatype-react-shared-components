@@ -16,7 +16,7 @@ describe('NxTransferList', function() {
     waitAndGetElements,
     checkScreenshot,
     wait
-  } = setupBrowser('#/pages/NxTransferList');
+  } = setupBrowser('#/pages/Transfer List');
 
   const simpleListSelector = '#nx-transfer-list-minimal-example .nx-transfer-list',
       complexListSelector = '#nx-transfer-list-complex-example .nx-transfer-list',

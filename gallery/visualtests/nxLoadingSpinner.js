@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxLoadingSpinner', function() {
-  const { simpleTest, disableLoadingSpinnerAnimation } = setupBrowser('#/pages/NxLoadingSpinner');
+  const { simpleTest, disableLoadingSpinnerAnimation } = setupBrowser('#/pages/Loading%20Spinner');
 
   const selector = '.gallery-example .nx-loading-spinner';
 

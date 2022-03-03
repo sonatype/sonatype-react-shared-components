@@ -19,7 +19,7 @@ describe('NxSearchDropdown', function() {
     scrollIntoView,
     disableLoadingSpinnerAnimation,
     checkScreenshot
-  } = setupBrowser('#/pages/NxSearchDropdown');
+  } = setupBrowser('#/pages/Search%20Dropdown');
 
   const basicExampleSelector = '#nx-search-dropdown-basic-example .nx-search-dropdown',
       longExampleSelector = '#nx-search-dropdown-long-example .nx-search-dropdown',

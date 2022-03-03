@@ -16,7 +16,7 @@ describe('NxSearchTransferList', function() {
         waitAndGetElements,
         checkScreenshot,
         getPage
-      } = setupBrowser('#/pages/NxSearchTransferList');
+      } = setupBrowser('#/pages/Search Transfer List');
 
   const simpleListSelector = '#nx-search-transfer-list-example .nx-search-transfer-list',
       complexListSelector = '#nx-search-transfer-list-complex-example .nx-search-transfer-list';

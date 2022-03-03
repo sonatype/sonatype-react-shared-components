@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-read-only', function() {
-  const { simpleTest } = setupBrowser('#/pages/nx-read-only');
+  const { simpleTest } = setupBrowser('#/pages/Read%20Only');
 
   const simpleSelector = '#nx-read-only-simple-example .gallery-example-live',
       gridSelector = '#nx-read-only-grid-example .gallery-example-live';

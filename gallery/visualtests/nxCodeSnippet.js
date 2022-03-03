@@ -18,7 +18,7 @@ describe('NxCodeSnippet', function() {
     dismissResultingDialog,
     getPage,
     checkScreenshot
-  } = setupBrowser('#/pages/NxCodeSnippet');
+  } = setupBrowser('#/pages/Code%20Snippet');
 
   const multipleSnippetSelector = '#nx-code-snippet-simple-example .gallery-example-live',
       complexSnippetExample = '#complex-nx-code-snippet',

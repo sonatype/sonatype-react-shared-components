@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxIndeterminatePagination', function() {
-  const { simpleTest } = setupBrowser('#/pages/NxIndeterminatePagination');
+  const { simpleTest } = setupBrowser('#/pages/Indeterminate%20Pagination');
 
   const selector = '#nx-indeterminate-pagination-example .gallery-example-live';
 

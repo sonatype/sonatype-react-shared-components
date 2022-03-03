@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-form-select', function() {
-  const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxFormSelect');
+  const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/Form Select');
   const selector = '#nx-form-select-example .nx-form-select',
       overflowSelector = '#nx-form-select-overflow-example .nx-form-select',
       disabledSelector = '#nx-form-select-disabled-example .nx-form-select',
@@ -27,7 +27,7 @@ describe('nx-form-select', function() {
   });
 
   describe('Short and Long Variants of NxFormSelect', function() {
-    const { simpleTest } = setupBrowser('#/pages/NxFormSelect');
+    const { simpleTest } = setupBrowser('#/pages/Form Select (HTML)');
 
     it('looks shorter and longer', simpleTest(widthSelector));
   });

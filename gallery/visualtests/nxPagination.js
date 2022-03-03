@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxPagination', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxPagination');
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/Pagination');
 
   const selector = '#nx-pagination-example .gallery-example-live',
       btnSelector = `${selector} .nx-btn--pagination:nth-child(4)`,

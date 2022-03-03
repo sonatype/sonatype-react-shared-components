@@ -8,9 +8,27 @@
 
 dockerizedBuildPipeline(
   deployBranch: 'main',
+  // expose gallery port and nextjs dev port on host so selenium container can hit it
+  dockerArgs: '-p 4043:4043 -p 3000:3000',
 
   prepare: {
     githubStatusUpdate('pending')
+
+    withSonatypeDockerRegistry() {
+      sh """
+        docker network create grid
+        docker run -d -p 4442-4444:4442-4444 --net grid --name selenium-hub \
+            ${seleniumHubDockerImage}:${seleniumDockerVersion}
+
+        for i in \$(seq 1 ${numSeleniumContainers}); do
+          docker run --name selenium-chrome-\$i -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub \
+              -e SE_EVENT_BUS_PUBLISH_PORT=4442 \
+              -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
+              -v /dev/shm:/dev/shm \
+              ${seleniumDockerImage}:${seleniumDockerVersion}
+        done
+      """
+    }
   },
   setVersion: {
     env['VERSION'] = sh(returnStdout: true, script: 'jq -r -e .version lib/package.json').trim()
@@ -82,6 +100,12 @@ dockerizedBuildPipeline(
         yarn test
         yarn build
         cd ..
+
+        cd ssr-tests
+        yarn install --registry "\${registry}" --frozen-lockfile
+
+        # Run the server-side rendering tests, through docker similarly to the visual tests
+        TEST_IP=\$JENKINS_AGENT_IP NEXT_TELEMETRY_DISABLED=1 yarn test
       """
     }
   },
@@ -125,5 +149,17 @@ dockerizedBuildPipeline(
     archiveArtifacts(artifacts: 'gallery/test-results/**/*')
     sendEmailNotification(currentBuild, env,
         [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], null)
+  },
+  cleanup: {
+    sh """
+      for i in \$(seq 1 ${numSeleniumContainers}); do
+        docker rm -f selenium-chrome-\$i
+      done
+
+      docker rm -f selenium-hub
+      docker rmi ${seleniumDockerImage}:${seleniumDockerVersion}
+      docker rmi ${seleniumHubDockerImage}:${seleniumDockerVersion}
+      docker network rm grid
+    """
   }
 )

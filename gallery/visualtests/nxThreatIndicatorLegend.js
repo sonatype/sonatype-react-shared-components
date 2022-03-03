@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nxThreatIndicatorLegend', function() {
-  const { simpleTest } = setupBrowser('#/pages/NxThreatIndicatorLegend');
+  const { simpleTest } = setupBrowser('#/pages/Threat Indicator Legend');
 
   const horizontalLegendSelector = '#nx-threat-indicator-legend-example .gallery-example-live',
       horizontalLegendHalfSelector = '#nx-threat-indicator-legend-example-half .gallery-example-live',

@@ -15,7 +15,7 @@ describe('NxTree', function() {
     waitAndGetElements,
     getPage,
     isFocused
-  } = setupBrowser('#/pages/NxTree');
+  } = setupBrowser('#/pages/Tree');
 
   const nonCollapsibleExampleSelector = '#nx-tree-non-collapsible-example .nx-tree',
       collapsibleExampleSelector = '#nx-tree-collapsible-example .gallery-example-live > .nx-tree',

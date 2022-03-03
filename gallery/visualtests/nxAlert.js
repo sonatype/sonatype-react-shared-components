@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxAlert', function() {
-  const { simpleTest, hoverTest, a11yTest } = setupBrowser('#/pages/NxAlert');
+  const { simpleTest, hoverTest, a11yTest } = setupBrowser('#/pages/Alert');
 
   const simpleSelector = '#nx-alert-custom-example .nx-alert',
       successSelector = '#nx-alert-success-example .nx-alert',

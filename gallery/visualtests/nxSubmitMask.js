@@ -8,7 +8,7 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxSubmitMask', function() {
   const { waitAndGetElements, checkFullPageScreenshot, disableLoadingSpinnerAnimation, getPage } =
-      setupBrowser('#/pages/NxSubmitMask');
+      setupBrowser('#/pages/Submit%20Mask');
 
   const loadingMaskBtnSelector = '#nx-submit-mask-loading-example button',
       successMaskBtnSelector = '#nx-submit-mask-success-example button';

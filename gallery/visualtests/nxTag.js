@@ -18,7 +18,7 @@ describe('NxTag', function() {
         checkScreenshot,
         scrollIntoView,
         wait
-  } = setupBrowser('#/pages/NxTag');
+  } = setupBrowser('#/pages/Tag');
 
   describe('Basic NxTag', function() {
     const selector = '#nx-tag-example .gallery-example-live',

@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxCollapsibleMultiSelect', function() {
-  const { focusTest, simpleTest } = setupBrowser('#/pages/NxCollapsibleMultiSelect');
+  const { focusTest, simpleTest } = setupBrowser('#/pages/Collapsible Multi-Select');
 
   const selector = '#nx-collapsible-multi-select-example .nx-collapsible-items--select';
 

@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-card', function() {
-  const { simpleTest, a11yTest, simpleTestLongElement } = setupBrowser('#/pages/nx-card');
+  const { simpleTest, a11yTest, simpleTestLongElement } = setupBrowser('#/pages/Card');
 
   const rowLayoutCardSelector = '#nx-card-row-example .gallery-example-live';
 

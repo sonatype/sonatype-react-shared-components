@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-grid', function() {
-  const { simpleTest } = setupBrowser('#/pages/nx-grid');
+  const { simpleTest } = setupBrowser('#/pages/Grid');
 
   const selector = '.gallery-example-live';
 

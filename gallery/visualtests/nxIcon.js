@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-icon', function() {
-  const { simpleTest } = setupBrowser('#/pages/nx-icon');
+  const { simpleTest } = setupBrowser('#/pages/Icon');
 
   const selector = '.gallery-example-live';
 

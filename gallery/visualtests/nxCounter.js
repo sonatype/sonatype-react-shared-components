@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-counter', function() {
-  const { simpleTest } = setupBrowser('#/pages/nx-counter');
+  const { simpleTest } = setupBrowser('#/pages/Counter');
 
   const selector = '.gallery-example-live';
 

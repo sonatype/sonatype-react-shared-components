@@ -18,7 +18,7 @@ describe('NxIconDropdown', function() {
     checkScreenshot,
     checkScreenshotCoordinates,
     getPage
-  } = setupBrowser('#/pages/NxIconDropdown');
+  } = setupBrowser('#/pages/Icon%20Dropdown');
 
   const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown';
 

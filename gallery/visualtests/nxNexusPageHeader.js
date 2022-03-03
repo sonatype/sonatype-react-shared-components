@@ -7,7 +7,8 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxNexusPageHeader', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxNexusPageHeader');
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } =
+      setupBrowser('#/pages/Nexus%20Page%20Header');
 
   const customLogoNexusPageHeaderSelector = '#nx-page-header-custom-logo-example .nx-page-header',
       defaultNexusPageHeaderSelector = '#nx-page-header-default-example .nx-page-header',

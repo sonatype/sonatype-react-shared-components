@@ -38,4 +38,16 @@ describe('NxFontAwesomeIcon', function() {
     expect(component).toHaveClassName('nx-icon');
     expect(component).toHaveClassName('foo');
   });
+
+  it('passes a unique titleId to FontAwesomeIcon iff title is defined', function() {
+    expect(getShallowComponent()).toHaveProp('titleId', null);
+
+    const component1 = getShallowComponent({ title: 'foo' }),
+        component2 = getShallowComponent({ title: 'foo' });
+
+    expect(component1.prop('titleId')).toMatch(/\w/);
+    expect(component2.prop('titleId')).toMatch(/\w/);
+
+    expect(component1.prop('titleId')).not.toEqual(component2.prop('titleId'));
+  });
 });

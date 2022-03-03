@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTooltip', function() {
-  const { waitAndGetElements, checkScreenshotCoordinates, wait } = setupBrowser('#/pages/NxTooltip');
+  const { waitAndGetElements, checkScreenshotCoordinates, wait } = setupBrowser('#/pages/Tooltip');
 
   const selector = '.gallery-example .nx-btn-bar',
       firstBtnSelector = `${selector} button:first-child`,

@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxPageHeader', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/NxPageHeader');
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/Page%20Header');
 
   const simpleHeaderSelector = '#nx-page-header-simple-example .nx-page-header',
       complexHeaderSelector = '#nx-page-header-complex-example .nx-page-header';

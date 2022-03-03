@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 describe('NxModal', function() {
   const { waitAndGetElements, checkFullPageScreenshot, disableLoadingSpinnerAnimation, getPage } =
-      setupBrowser('#/pages/NxModal');
+      setupBrowser('#/pages/Modal');
 
   const simpleExampleSelector = '#nx-modal-simple-example',
       formWithAlertExampleSelector = '#nx-modal-form-with-alert-example',
