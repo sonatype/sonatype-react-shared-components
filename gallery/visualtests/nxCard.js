@@ -6,6 +6,9 @@
  */
 const { setupBrowser } = require('./testUtils');
 
+// the a11y checks here seems to be slow
+jest.setTimeout(60000);
+
 describe('nx-card', function() {
   const { simpleTest, a11yTest, simpleTestLongElement } = setupBrowser('#/pages/Card');
 

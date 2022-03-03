@@ -11,7 +11,7 @@ describe('nx-form-select', function() {
   const selector = '#nx-form-select-example .nx-form-select',
       overflowSelector = '#nx-form-select-overflow-example .nx-form-select',
       disabledSelector = '#nx-form-select-disabled-example .nx-form-select',
-      widthSelector = '#nx-form-select-widths-examples .form-select-width-variants';
+      widthSelector = '#nx-form-select-widths-example .form-select-width-variants';
 
 
   describe('Simple NxFormSelect', function() {
@@ -33,7 +33,7 @@ describe('nx-form-select', function() {
   });
 
   describe('Disabled NxFormSelect', function() {
-    const { simpleTest } = setupBrowser('#/pages/nx-form-select');
+    const { simpleTest } = setupBrowser('#/pages/Form Select (HTML)');
 
     it('looks disabled', simpleTest(disabledSelector));
   });

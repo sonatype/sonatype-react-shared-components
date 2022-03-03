@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { setupBrowser } = require('#/pages/Date%20Input');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxDateInput', function() {
   const {
@@ -14,7 +14,7 @@ describe('NxDateInput', function() {
     simpleTest,
     waitAndGetElements,
     checkScreenshot
-  } = setupBrowser('#/pages/NxDateInput');
+  } = setupBrowser('#/pages/Date%20Input');
 
   const simpleComponentSelector = '#nx-date-input-simple-example .nx-text-input',
       validatableComponentSelector = '#nx-date-input-validation-example .nx-text-input',

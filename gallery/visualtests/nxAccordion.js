@@ -11,7 +11,6 @@ describe('NxAccordion', function() {
     waitAndGetElements,
     simpleTest,
     focusTest,
-    a11yTest,
     dismissResultingDialog,
     blurElement
   } = setupBrowser('#/pages/Accordion');
@@ -56,16 +55,9 @@ describe('NxAccordion', function() {
     it('looks right', simpleTest(nestedNxListExampleSelector));
   });
 
-<<<<<<< HEAD
-  // Uncomment in RSC-828
-  //it('passes a11y checks', a11yTest());
-=======
   describe('non-deprecated NxAccordion', function() {
-    beforeEach(async function() {
-      await browser.url('#/pages/Accordion?hideDeprecatedExamples');
-    });
+    const { a11yTest } = setupBrowser('#/pages/Accordion?hideDeprecatedExamples');
 
     it('passes a11y checks', a11yTest());
   });
->>>>>>> main
 });

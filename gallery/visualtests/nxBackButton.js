@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxBackButton', function() {
-  const { hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/BackButton'),
+  const { hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Back Button'),
       exampleSelector = '#nx-back-button-simple-example .nx-back-button',
       hoverElementSelector = exampleSelector + ' a';
 
