@@ -117,7 +117,7 @@ function Accessibility() {
             Have we provided an audio description of the prerecorded media that also includes implicit context that may
             not be understood through a language translation alone?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -125,7 +125,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we provided a transcript or equivalent version of live video content?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -222,7 +222,8 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Can users tell the difference between the foreground and background of content?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external
+                      href="https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=111%2C128%2C133#distinguishable">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -230,7 +231,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we made sure that color is not the only way that we convey information in our content?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#use-of-color">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -239,112 +240,98 @@ function Accessibility() {
             Can all normal text colors be differentiated from their background color at a
             <strong>4.5:1</strong> ratio ?
           </NxCheckbox>
-          ( Level AA )
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#audio-control">Level A</NxTextLink>
         </NxList.Item>
         <NxList.Item className="level-aa">
           <NxCheckbox isChecked={false}>
             Can all large text colors be differentiated from their background color at a
-            <strong>
-              3:1
-            </strong>
-            ratio?
+            <strong>3:1</strong>ratio?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#contrast-minimum">
             Level AA
           </NxTextLink>
         </NxList.Item>
         <NxList.Item className="level-aa">
           <NxCheckbox isChecked={false}>
             Can all UI/graphic colors be differentiated from their background color at a
-            <strong>
-              3:1
-            </strong>
-            ratio (unless they are disabled or logos)? ( Level AA )
+            <strong>3:1</strong>ratio (unless they are disabled or logos)?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#contrast-minimum">Level AA</NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item className="level-aa">
           <NxCheckbox isChecked={false}>
-            Do all page elements render legibly when zoomed in at
-            <strong>
-              200%
-            </strong>
-            ? ( Level AA )
+            Do all page elements render legibly when zoomed in at <strong>200%</strong>?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#resize-text">Level AA</NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item className="level-aa">
           <NxCheckbox isChecked={false}>
             Have we made sure not to rely on images alone to share information (unless it is essential)?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#images-of-text">
             Level AA
           </NxTextLink>
         </NxList.Item>
         <NxList.Item className="level-aaa">
           <NxCheckbox isChecked={false}>
             Can all normal text colors be differentiated from their background color at a
-            <strong>
-              7:1
-            </strong>
-            ratio?
+            <strong>7:1</strong> ratio?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#contrast-enhanced">
             Level AAA
           </NxTextLink>
         </NxList.Item>
         <NxList.Item className="level-aaa">
           <NxCheckbox isChecked={false}>
             Can all large text colors be differentiated from their background color at a
-            <strong>
-              4.5:1
-            </strong>
-            ratio?
+            <strong>4.5:1</strong> ratio?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#contrast-enhanced">
             Level AAA
           </NxTextLink>
         </NxList.Item>
         <NxList.Item className="level-aa">
           <NxCheckbox isChecked={false}>
             Can all UI/graphic colors be differentiated from their background color at a
-            <strong>
-              3:1
-            </strong>
-            ratio (unless they are disabled or logos)? ( Level AA )
+            <strong>3:1</strong> ratio (unless they are disabled or logos)?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#non-text-contrast">
+              Level AA
+            </NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item className="level-aaa">
           <NxCheckbox isChecked={false}>
             Can voices in audio be heard clearly and easily distinguished from background noise?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#low-or-no-background-audio">
             Level AAA
           </NxTextLink>
         </NxList.Item>
         <NxList.Item className="level-aaa">
           <NxCheckbox isChecked={false}>
             If we have included a block of text, have we given the user the ability to customize how they view it
-            (color, alignment, line spacing, etc)? ( Level AAA )
+            (color, alignment, line spacing, etc)?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#visual-presentation">
+              Level AAA
+            </NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item className="level-aaa">
           <NxCheckbox isChecked={false}>
             Have we only used images of text (without alt text) for decoration, not sharing content?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#images-of-text-no-exception">
             Level AAA
           </NxTextLink>
         </NxList.Item>
         <NxList.Item className="level-aa">
           <NxCheckbox isChecked={false}>
             Have we made sure that a vertical scroll bar is not needed until we exceed
-            <strong>
-              320px
-            </strong>
-            and a horizontal scroll bar is not needed until we exceed
-            <strong>
-              256px
-            </strong>
-            ? ( Level AA )
+            <strong>320px</strong> and a horizontal scroll bar is not needed until we exceed
+            <strong>256px</strong>?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#reflow">
+              Level AA
+            </NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item className="level-aa">
@@ -353,37 +340,46 @@ function Accessibility() {
             <strong>
               1.5
             </strong>
-            bigger than the font size? ( Level AA )
+            bigger than the font size?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#text-spacing">
+              Level AA
+            </NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item className="level-aa">
           <NxCheckbox isChecked={false}>
             Can our content be viewed and understood without issues if the space between each line of text is at least
-            double the font size? ( Level AA )
+            double the font size?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#text-spacing">
+              Level AA
+            </NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item className="level-aa">
           <NxCheckbox isChecked={false}>
             Can our content be viewed and understood without issues if the space between paragraphs is at least double
-            the font size? ( Level AA )
+            the font size?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#text-spacing">
+              Level AA
+            </NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item className="level-aa">
           <NxCheckbox isChecked={false}>
             Can our content be viewed and understood without issues if the space between letters is at least
-            <strong>
-              0.12
-            </strong>
-            times bigger than the font size? ( Level AA )
+            <strong>0.12 </strong> times bigger than the font size?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#text-spacing">
+              Level AA
+            </NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item className="level-aa">
           <NxCheckbox isChecked={false}>
             Can our content be viewed and understood without issues if the space between words is at least
-            <strong>
-              0.16
-            </strong>
-            times bigger than the font size? ( Level AA )
+            <strong>0.16</strong> times bigger than the font size?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#text-spacing">
+              Level AA
+            </NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item>
@@ -393,7 +389,6 @@ function Accessibility() {
         </NxList.Item>
         <NxList.Item>
           <NxCheckbox isChecked={false}>
-
             <strong>
               Default
             </strong>
@@ -401,7 +396,6 @@ function Accessibility() {
         </NxList.Item>
         <NxList.Item>
           <NxCheckbox isChecked={false}>
-
             <strong>
               Inactive
             </strong>
@@ -453,7 +447,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Can users use a keyboard to access all content (as long as the path to get there is not important)?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#keyboard">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -461,7 +455,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Can users navigate away from focused content using only a keyboard without getting stuck?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#no-keyboard-trap">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -469,7 +463,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Can users use a keyboard to access all content no matter what?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#keyboard-no-exception">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -477,7 +471,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we give the user the ability to turn hotkey shortcuts on and off?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#character-key-shortcuts">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -485,7 +479,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do keyboard hotkeys and standard shortcuts work properly within the interface?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#character-key-shortcuts">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -498,7 +492,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Can users adjust timing (re: slideshows, automated-scrolling, etc) if needed?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#timing-adjustable">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -506,7 +500,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Are we giving users the ability to pause and restart automated content?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#pause-stop-hide">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -514,7 +508,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we give the user the ability to turn off motion animations if they start automatically?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#pause-stop-hide">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -526,7 +520,7 @@ function Accessibility() {
             </strong>
             seconds?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#pause-stop-hide">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -534,7 +528,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we give users the ability to stop or pause updates that begin automatically?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#pause-stop-hide">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -542,7 +536,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we give users the ability to signal that they need more time before a timeout?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#timing-adjustable">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -550,7 +544,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we allow users to turn off timeouts unless they are necessary to security?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#timing-adjustable">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -558,7 +552,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Is timing completely irrelevant for the user to fully engage with our content?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#no-timing">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -566,7 +560,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we only interrupt users from what they were doing in an emergency?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#interruptions">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -574,7 +568,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we give the user the ability to start where they left off after reauthenticating?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#re-authenticating">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -582,7 +576,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we preserve data as it was when the user is automatically logged out?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#re-authenticating">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -598,9 +592,12 @@ function Accessibility() {
             <strong>
               3
             </strong>
-            times per second?(Level A /
+            times per second?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#three-flashes-or-below-threshold">
+            Level A
+          </NxTextLink>
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#three-flashes">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -608,7 +605,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we given users the ability to turn off any animations that start as soon as they interact with them?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#animation-from-interactions">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -621,7 +618,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Can we give redundancy cues and/or structural markup that alerts users of duplicated content?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#bypass-blocks">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -629,7 +626,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do all pages have descriptive titles that differentiate them from others within navigation?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#page-titled">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -637,7 +634,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do all headings describe the purpose of the page?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#page-titled">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -645,7 +642,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Does the order of tabs and information presented to those using a keyboard make sense?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#focus-order">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -653,7 +650,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do all links read as clear descriptions of where they will navigate the user?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#link-purpose-in-context">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -661,7 +658,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Are there multiple ways to navigate to a page within the system?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#multiple-ways">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -669,7 +666,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do all labels clearly describe the topic or purpose of the content they are labeling?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#headings-and-labels">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -677,7 +674,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do our labels use the exact same words as the content they are describing?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#headings-and-labels">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -685,7 +682,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Is the focus indicator always available to those using a keyboard?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#focus-visible">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -693,7 +690,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Can the user verify their location within the interface (re: “sitemap” navigation)?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#location">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -706,7 +703,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do all links give additional descriptions about what the link's content entails?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#link-purpose-link-only">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -714,7 +711,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we consistently used the correct order of header hierarchy throughout the interface?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#section-headings">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -728,7 +725,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we allowed the user to move their mouse in whatever pattern allows them to accomplish a task?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#pointer-gestures">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -736,7 +733,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we provided an alternative to swiping and other pointer based gestures?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#pointer-gestures">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -744,7 +741,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we prioritized the “release” click of the mouse for the user to take action?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#pointer-cancellation">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -752,7 +749,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Are all buttons and graphic labels named as what they are?(re: “checkbox”, “notification,” etc)
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#label-in-name">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -760,7 +757,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we given users the ability to adjust/turn off motion input sensing?(re: shake to erase)
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#motion-actuation">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -772,7 +769,7 @@ function Accessibility() {
             </strong>
             in size?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#target-size">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -780,7 +777,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we enabled non-touch inputs even on devices where touch inputs are present?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#concurrent-input-mechanisms">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -802,7 +799,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Has a default human language been programmed into markup?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#language-of-page">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -810,7 +807,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we labeled what language is being used and when it changes to adjust vernacular?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#language-of-parts">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -818,7 +815,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we labeled jargon and idioms within our content?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#unusual-words">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -826,15 +823,15 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we offer a source that explains our abbreviations that's hosted internally or externally?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#abbreviations">
             Level AAA
           </NxTextLink>
         </NxList.Item>
         <NxList.Item className="level-aaa">
           <NxCheckbox isChecked={false}>
-            -[]Have we presented content at a middle school reading level?
+            Have we presented content at a middle school reading level?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#reading-level">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -843,7 +840,7 @@ function Accessibility() {
             If our content is very complex, have we provided additional supporting materials to help users understand it
             at a middle school reading level?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#reading-level">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -851,7 +848,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we provided a mechanism to support correct pronunciation of terms not widely known?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#pronunciation">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -864,7 +861,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Does content in a focus state remain exactly the same as when it's in the default state?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#on-focus">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -873,7 +870,7 @@ function Accessibility() {
             Has the user been made aware that the interface will change when they input information prior to them doing
             so?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#on-input">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -881,7 +878,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Are UI page elements in a standard, consistent place within the page's layout?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#consistent-navigation">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -889,7 +886,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Is the sequence of those UI elements repeated consistently throughout the interface?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#consistent-navigation">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -897,7 +894,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Is the page and site navigation always in the same location on each page?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#consistent-navigation">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -905,7 +902,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Are our icons used consistently in the same context across the interface?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#consistent-identification">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -913,7 +910,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Are the UI elements consistent with the behavior of standard UI elements?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#consistent-identification">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -921,7 +918,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Are we allowing the user to decide when to take action instead of automatically doing it for them?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#change-on-request">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -929,7 +926,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we give the user the ability to turn off all notifications until the end of the session?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#change-on-request">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -950,7 +947,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we provided more than one cue that an error has occurred?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -958,7 +955,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Are all required form fields clearly indicated to the user?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -966,7 +963,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Are input fields always paired with directions that help the user decide what to enter?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -974,7 +971,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do our alerts always include text, even if colors and/or graphics are also used in the notification?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -987,7 +984,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             If an error is detected, have we offered a concise solution to fix the error?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -996,7 +993,7 @@ function Accessibility() {
             Have we allowed users to review and correct their submissions before submitting them?(Especially with legal
             commitments and financial transactions)
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -1004,7 +1001,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we give the user the ability to immediately undo a mistake in any situation?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -1012,7 +1009,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we have a readily available system in place whenever a user needs help?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -1067,7 +1064,7 @@ function Accessibility() {
             Can all of our status messages be automatically received and interpreted by supportive technology (even if
             they are not the user's current focus)?
           </NxCheckbox>
-          <NxTextLink external href="/JenniKobylskiUX/WCAG-Accessibility-UX-Checklist/blob/main">
+          <NxTextLink external href="">
             Level AA
           </NxTextLink>
         </NxList.Item>
