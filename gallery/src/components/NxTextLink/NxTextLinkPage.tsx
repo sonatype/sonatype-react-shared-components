@@ -71,6 +71,18 @@ export default function NxTabsPage() {
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell>truncate</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
+                When set, the link becomes a block element that constrains its text content to one line, and truncates
+                the text with an ellipsis when necessary. If used in conjunction with <NxCode>external</NxCode>, the
+                external link icon will always be visible, with the text ellispsis truncation occurring before the
+                icon.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>HTML <NxCode>&lt;a&gt;</NxCode> Attributes</NxTable.Cell>
               <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/a">
