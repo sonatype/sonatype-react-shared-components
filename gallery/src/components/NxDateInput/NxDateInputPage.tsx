@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink, NxList }
+import { NxTable, NxCode, NxP, NxTextLink, NxList, NxTile, NxH3 }
   from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -135,52 +135,67 @@ const NxDateInputPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
-      <h3>State Helpers</h3>
-      <NxP>
-        The <NxCode>NxDateInputStateHelpers</NxCode>{' '}
-        includes the following recommended state helper functions, which each return an object containining the
-        "stateful" parts of the NxDateInput props{' '}
-        (<NxCode>value</NxCode>, <NxCode>isPristine</NxCode>, and{' '}
-        <NxCode>validationErrors</NxCode>) as well as <NxCode>trimmedValue</NxCode>,
-        which holds a whitespace-trimmed copy of the <NxCode>value</NxCode>:
-      </NxP>
-      <NxTable>
-        <NxTable.Head>
-          <NxTable.Row>
-            <NxTable.Cell>Function</NxTable.Cell>
-            <NxTable.Cell>Arguments</NxTable.Cell>
-            <NxTable.Cell>Description</NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Head>
-        <NxTable.Body>
-          <NxTable.Row>
-            <NxTable.Cell>initialState</NxTable.Cell>
-            <NxTable.Cell>(initialValue: string)</NxTable.Cell>
-            <NxTable.Cell>
-              Returns an initialized state with the specified value and <NxCode>isPristine</NxCode>{' '}
-              set to true.
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>userInput</NxTable.Cell>
-            <NxTable.Cell>(validator, newValue: string)</NxTable.Cell>
-            <NxTable.Cell>
-              <NxP>
-                Meant to be used to handle user changes to the text input value. The first argument is an optional
-                validator function that receives the new input value (trimmed) as a string and returns zero or more
-                validation error messages. The next argument is the new (raw, untrimmed) value of the text box after
-                the user's input.  Returns a state object that is not pristine, with the specified
-                <NxCode>value</NxCode>, and with <NxCode>validationErrors</NxCode> as
-                computed by the validator function.
-              </NxP>
-              <NxP>
-                This function is curried, so that it can be partially applied over the
-                <NxCode>validator</NxCode>.
-              </NxP>
-            </NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Body>
-      </NxTable>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>State Helpers</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          The <NxCode>NxDateInputStateHelpers</NxCode>{' '}
+          includes the following recommended state helper functions, which each return an object containining the
+          "stateful" parts of the NxDateInput props{' '}
+          (<NxCode>value</NxCode>, <NxCode>isPristine</NxCode>, and{' '}
+          <NxCode>validationErrors</NxCode>) as well as <NxCode>trimmedValue</NxCode>,
+          which holds a whitespace-trimmed copy of the <NxCode>value</NxCode>:
+        </NxP>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Function</NxTable.Cell>
+              <NxTable.Cell>Arguments</NxTable.Cell>
+              <NxTable.Cell>Description</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>initialState</NxTable.Cell>
+              <NxTable.Cell>(initialValue: string)</NxTable.Cell>
+              <NxTable.Cell>
+                Returns an initialized state with the specified value and <NxCode>isPristine</NxCode>{' '}
+                set to true.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>userInput</NxTable.Cell>
+              <NxTable.Cell>(validator, newValue: string)</NxTable.Cell>
+              <NxTable.Cell>
+                <NxP>
+                  Meant to be used to handle user changes to the text input value. The first argument is an optional
+                  validator function that receives the new input value (trimmed) as a string and returns zero or more
+                  validation error messages. The next argument is the new (raw, untrimmed) value of the text box after
+                  the user's input.  Returns a state object that is not pristine, with the specified
+                  <NxCode>value</NxCode>, and with <NxCode>validationErrors</NxCode> as
+                  computed by the validator function.
+                </NxP>
+                <NxP>
+                  This function is curried, so that it can be partially applied over the
+                  <NxCode>validator</NxCode>.
+                </NxP>
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Accessibility Considerations</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          Like any other input, date inputs should have a label or some other way to express an accessible name. Unlike
+          regular text inputs however, date inputs cannot derive their accessible name from
+          the <NxCode>placeholder</NxCode> attribute. Therefore a <NxCode>label</NxCode> element is preferred and is
+          demonstrated in the examples below.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"

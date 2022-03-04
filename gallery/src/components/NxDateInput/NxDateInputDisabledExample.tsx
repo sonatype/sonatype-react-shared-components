@@ -6,30 +6,20 @@
  */
 import React from 'react';
 
-import { NxDateInput } from '@sonatype/react-shared-components';
+import { NxDateInput, NxFormGroup } from '@sonatype/react-shared-components';
 
 export default function NxDateInputDisabledExample() {
   return (
     <>
-      <div>
-        <NxDateInput placeholder="Disabled input" value="" isPristine={true} disabled/>
-      </div>
-      <div>
-        <NxDateInput placeholder="Disabled valid input"
-                     value=""
-                     isPristine={false}
-                     validatable={true}
-                     validationErrors={null}
-                     disabled/>
-      </div>
-      <div>
-        <NxDateInput placeholder="Disabled invalid input"
-                     value=""
-                     isPristine={false}
-                     validatable={true}
-                     validationErrors={'error'}
-                     disabled/>
-      </div>
+      <NxFormGroup label="Disabled Input">
+        <NxDateInput value="" isPristine={true} disabled/>
+      </NxFormGroup>
+      <NxFormGroup label="Disabled Valid Input">
+        <NxDateInput value="" isPristine={false} validatable={true} validationErrors={null} disabled/>
+      </NxFormGroup>
+      <NxFormGroup label="Disabled Invalid Input">
+        <NxDateInput value="" isPristine={false} validatable={true} validationErrors={'error'} disabled/>
+      </NxFormGroup>
     </>
   );
 }
