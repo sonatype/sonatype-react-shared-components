@@ -947,7 +947,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Have we provided more than one cue that an error has occurred?
           </NxCheckbox>
-          <NxTextLink external href="">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#error-identification">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -955,7 +955,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Are all required form fields clearly indicated to the user?
           </NxCheckbox>
-          <NxTextLink external href="">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#error-identification">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -963,7 +963,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Are input fields always paired with directions that help the user decide what to enter?
           </NxCheckbox>
-          <NxTextLink external href="">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#labels-or-instructions">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -971,7 +971,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do our alerts always include text, even if colors and/or graphics are also used in the notification?
           </NxCheckbox>
-          <NxTextLink external href="">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#labels-or-instructions">
             Level A
           </NxTextLink>
         </NxList.Item>
@@ -984,7 +984,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             If an error is detected, have we offered a concise solution to fix the error?
           </NxCheckbox>
-          <NxTextLink external href="">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#error-suggestion">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -993,7 +993,7 @@ function Accessibility() {
             Have we allowed users to review and correct their submissions before submitting them?(Especially with legal
             commitments and financial transactions)
           </NxCheckbox>
-          <NxTextLink external href="">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#error-prevention-legal-financial-data">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -1001,7 +1001,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we give the user the ability to immediately undo a mistake in any situation?
           </NxCheckbox>
-          <NxTextLink external href="">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#error-prevention-legal-financial-data">
             Level AA
           </NxTextLink>
         </NxList.Item>
@@ -1009,7 +1009,7 @@ function Accessibility() {
           <NxCheckbox isChecked={false}>
             Do we have a readily available system in place whenever a user needs help?
           </NxCheckbox>
-          <NxTextLink external href="">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#help">
             Level AAA
           </NxTextLink>
         </NxList.Item>
@@ -1041,12 +1041,18 @@ function Accessibility() {
       <NxList bulleted className="nx-list--no-bullets">
         <NxList.Item className="level-a">
           <NxCheckbox isChecked={false}>
-            Does all content that uses a markup language have complete start and end tags? ( Level A )
+            Does all content that uses a markup language have complete start and end tags?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#parsing">
+              Level A
+            </NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item className="level-a">
           <NxCheckbox isChecked={false}>
-            Does all of our markup include only one attribution (no duplicates)? ( Level A )
+            Does all of our markup include only one attribution (no duplicates)?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#parsing">
+              Level A
+            </NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item>
@@ -1056,7 +1062,10 @@ function Accessibility() {
         </NxList.Item>
         <NxList.Item className="level-a">
           <NxCheckbox isChecked={false}>
-            Can the name and role of all UI elements be easily detected by supportive technology? ( Level A )
+            Can the name and role of all UI elements be easily detected by supportive technology?
+            <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#name-role-value">
+              Level A
+            </NxTextLink>
           </NxCheckbox>
         </NxList.Item>
         <NxList.Item className="level-aa">
@@ -1064,7 +1073,7 @@ function Accessibility() {
             Can all of our status messages be automatically received and interpreted by supportive technology (even if
             they are not the user's current focus)?
           </NxCheckbox>
-          <NxTextLink external href="">
+          <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#status-messages">
             Level AA
           </NxTextLink>
         </NxList.Item>
