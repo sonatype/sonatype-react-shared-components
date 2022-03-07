@@ -139,6 +139,11 @@ module.exports = {
 
   a11yTest(builderCustomizer) {
     return async () => {
+      const body = await browser.$('body');
+
+      // scroll to top. Stops issues with element overlapping the page header
+      body.scrollIntoView(true);
+
       const builder = new AxeBuilder({ client: browser }),
           customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
           axeResults = await customizedBuilder.analyze();
