@@ -12,10 +12,12 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxTextLinkInternalExample from './NxTextLinkInternalExample';
 import NxTextLinkExternalExample from './NxTextLinkExternalExample';
 import NxTextLinkTruncationExample from './NxTextLinkTruncationExample';
+import NxTextLinkButtonExample from './NxTextLinkButtonExample';
 
 const NxTextLinkInternalExampleCode = require('./NxTextLinkInternalExample?raw'),
     NxTextLinkExternalExampleCode = require('./NxTextLinkExternalExample?raw'),
-    NxTextLinkTruncationExampleCode = require('./NxTextLinkTruncationExample?raw');
+    NxTextLinkTruncationExampleCode = require('./NxTextLinkTruncationExample?raw'),
+    NxTextLinkButtonExampleCode = require('./NxTextLinkButtonExample?raw');
 
 export default function NxTabsPage() {
   return (
@@ -130,6 +132,17 @@ export default function NxTabsPage() {
                           liveExample={NxTextLinkTruncationExample}
                           codeExamples={NxTextLinkTruncationExampleCode}>
 
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Button-Styled-as-Link Example"
+                          id="nx-text-link-buton-example"
+                          liveExample={NxTextLinkButtonExample}
+                          codeExamples={NxTextLinkButtonExampleCode}>
+        In some cases a visual design may call for a clickable element which appears to be a link, but which
+        triggers some JavaScript code rather than navigating the page URL. This should be used sparingly, as there
+        is a general desire to keep appearances consistent with functionality in order to avoid surprising or confusing
+        the user. Nonetheless, deviations come up often enough that they need to be supported. For this scenario,
+        a button element may be used with the <NxCode>nx-text-link</NxCode> class.
       </GalleryExampleTile>
     </>
   );
