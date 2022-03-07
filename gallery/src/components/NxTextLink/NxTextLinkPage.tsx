@@ -129,7 +129,9 @@ export default function NxTabsPage() {
                           id="nx-text-link-wrapping-and-truncation-example"
                           liveExample={NxTextLinkTruncationExample}
                           codeExamples={NxTextLinkTruncationExampleCode}>
-
+        This example shows how <NxCode>NxTextLink</NxCode> wraps by default and truncates when
+        the <NxCode>truncate</NxCode> prop is used. All links in this example are within a 475px-wide container,
+        as shown via the red border.
       </GalleryExampleTile>
     </>
   );
