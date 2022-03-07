@@ -11,9 +11,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxTextLinkInternalExample from './NxTextLinkInternalExample';
 import NxTextLinkExternalExample from './NxTextLinkExternalExample';
+import NxTextLinkTruncationExample from './NxTextLinkTruncationExample';
 
 const NxTextLinkInternalExampleCode = require('./NxTextLinkInternalExample?raw'),
-    NxTextLinkExternalExampleCode = require('./NxTextLinkExternalExample?raw');
+    NxTextLinkExternalExampleCode = require('./NxTextLinkExternalExample?raw'),
+    NxTextLinkTruncationExampleCode = require('./NxTextLinkTruncationExample?raw');
 
 export default function NxTabsPage() {
   return (
@@ -69,6 +71,18 @@ export default function NxTabsPage() {
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell>truncate</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
+                When set, the link becomes a block element that constrains its text content to one line, and truncates
+                the text with an ellipsis when necessary. If used in conjunction with <NxCode>external</NxCode>, the
+                external link icon will always be visible, with the text ellispsis truncation occurring before the
+                icon.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>HTML <NxCode>&lt;a&gt;</NxCode> Attributes</NxTable.Cell>
               <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/a">
@@ -109,6 +123,13 @@ export default function NxTabsPage() {
         the external icon is included in the <NxCode>NxCode</NxCode> boundary.
 
         A few examples of <NxCode>NxTextLink</NxCode> to an external page with and without <NxCode>NxCode</NxCode>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxTextLink Wrapping and Truncation Example"
+                          id="nx-text-link-wrapping-and-truncation-example"
+                          liveExample={NxTextLinkTruncationExample}
+                          codeExamples={NxTextLinkTruncationExampleCode}>
+
       </GalleryExampleTile>
     </>
   );
