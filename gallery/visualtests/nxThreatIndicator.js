@@ -9,7 +9,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxThreatIndicator', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxThreatIndicator');
+    await browser.url('#/pages/Threat Indicator');
   });
 
   const threatIndicatorsListExampleSelector = '#nx-threat-indicator-list-example .nx-list',

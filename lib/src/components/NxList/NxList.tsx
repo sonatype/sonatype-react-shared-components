@@ -12,6 +12,7 @@ import withClass from '../../util/withClass';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import NxLoadError from '../NxLoadError/NxLoadError';
 
+import { NxDescriptionList } from '../SimpleComponents';
 import NxListButtonItem from './NxListButtonItem';
 import NxListLinkItem from './NxListLinkItem';
 import { NxListProps, nxListPropTypes } from './types';
@@ -68,8 +69,10 @@ const NxList = Object.assign(
       Actions: withClass('div', 'nx-list__actions'),
       ButtonItem: NxListButtonItem,
       LinkItem: NxListLinkItem,
-      DescriptionTerm: withClass('dt', 'nx-list__term'),
-      Description: withClass('dd', 'nx-list__description')
+
+      // deprecated aliases
+      Description: NxDescriptionList.Description,
+      DescriptionTerm: NxDescriptionList.Term
     }
 );
 

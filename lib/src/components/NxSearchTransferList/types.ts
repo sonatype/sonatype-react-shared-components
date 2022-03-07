@@ -8,7 +8,7 @@ import { HTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { Props as NxSearchDropdownProps } from '../NxSearchDropdown/types';
-import { TransferListHalfProps } from '../NxTransferList/types';
+import { Props as NxTransferListHalfProps } from '../NxTransferListHalf/types';
 
 export interface StatefulProps<T extends string | number = string> extends HTMLAttributes<HTMLDivElement> {
   onSearch: NxSearchDropdownProps<T>['onSearch'];
@@ -18,8 +18,8 @@ export interface StatefulProps<T extends string | number = string> extends HTMLA
   onSearchMatchSelect: NxSearchDropdownProps<T>['onSelect'];
   addedItemsLabel?: string | null;
   showRemoveAll?: boolean | null;
-  addedItems: TransferListHalfProps<T>['items'];
-  onRemove: (newAddedItems: TransferListHalfProps<T>['items']) => void;
+  addedItems: NxTransferListHalfProps<T>['items'];
+  onRemove: (newAddedItems: NxTransferListHalfProps<T>['items']) => void;
   addedItemsCountFormatter?: ((n: number) => string) | null;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
 }
@@ -27,8 +27,8 @@ export interface StatefulProps<T extends string | number = string> extends HTMLA
 export interface Props<T extends string | number = string> extends StatefulProps<T> {
   searchText: NxSearchDropdownProps<T>['searchText'];
   onSearchTextChange: NxSearchDropdownProps<T>['onSearchTextChange'];
-  addedItemsFilter: TransferListHalfProps<T>['filterValue'];
-  onAddedItemsFilterChange: TransferListHalfProps<T>['onFilterChange'];
+  addedItemsFilter: NxTransferListHalfProps<T>['filterValue'];
+  onAddedItemsFilterChange: NxTransferListHalfProps<T>['onFilterChange'];
 }
 
 const matchesPropType = PropTypes.arrayOf(PropTypes.shape({

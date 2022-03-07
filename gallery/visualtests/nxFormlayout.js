@@ -8,11 +8,11 @@ const { simpleTest, simpleTestLongElement } = require('./testUtils');
 
 describe('nx-form', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/Form%20Layout%20Styles');
+    await browser.url('#/pages/Form Layout Examples');
   });
 
   const generalFormSelector = '#nx-form-layout-example .nx-form',
-      horizontablFormSelector =  '#nx-form-layout-horizontal-example .nx-form';
+      horizontablFormSelector = '#nx-form-layout-horizontal-example .nx-form';
 
   describe('nx-form layout', function() {
     it('looks right', simpleTestLongElement(generalFormSelector));
@@ -24,7 +24,7 @@ describe('nx-form', function() {
 
   describe('nx-form-group deprecated layout', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-form-group');
+      await browser.url('#/pages/Form Group');
     });
 
     const selector = '#nx-form-group-deprecated-example .nx-form-group';
@@ -34,7 +34,7 @@ describe('nx-form', function() {
 
   describe('nx-fieldset deprecated layout', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/nx-fieldset');
+      await browser.url('#/pages/Fieldset');
     });
 
     const selector = '#nx-fieldset-deprecated-example .nx-fieldset';

@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxPagination', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxPagination');
+    await browser.url('#/pages/Pagination');
     await browser.refresh();
   });
 
