@@ -8,7 +8,7 @@ const { simpleTest } = require('./testUtils');
 
 describe('nx-page-title', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-page-title');
+    await browser.url('#/pages/Page%20Title');
   });
 
   const simplePageTitle = '#nx-page-title-example .nx-page-title';

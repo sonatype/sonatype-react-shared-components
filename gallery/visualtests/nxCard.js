@@ -8,7 +8,7 @@ const { simpleTest, simpleTestLongElement, a11yTest } = require('./testUtils');
 
 describe('nx-card', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-card');
+    await browser.url('#/pages/Card');
   });
 
   const rowLayoutCardSelector = '#nx-card-row-example .gallery-example-live';

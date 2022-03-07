@@ -9,7 +9,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxDropdown', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxDropdown');
+    await browser.url('#/pages/Dropdown');
   });
 
   const defaultSelector = '#nx-dropdown-scrolling-example .nx-dropdown';

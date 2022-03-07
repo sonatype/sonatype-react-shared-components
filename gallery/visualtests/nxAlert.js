@@ -8,7 +8,7 @@ const { hoverTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxAlert', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxAlert');
+    await browser.url('#/pages/Alert');
   });
 
   const simpleSelector = '#nx-alert-custom-example .nx-alert',

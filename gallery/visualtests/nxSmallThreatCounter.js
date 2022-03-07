@@ -8,7 +8,7 @@ const { simpleTest } = require('./testUtils');
 
 describe('NxSmallThreatCounter', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxSmallThreatCounter');
+    await browser.url('#/pages/Small%20Threat%20Counter');
   });
 
   const basicExampleSelector = '#nx-small-threat-counter-example .gallery-example-live',

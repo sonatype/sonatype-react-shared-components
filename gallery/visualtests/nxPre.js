@@ -8,7 +8,7 @@ const { simpleTest } = require('./testUtils');
 
 describe('nx-pre', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-pre');
+    await browser.url('#/pages/Pre');
   });
 
   const selector = '.gallery-example-live';

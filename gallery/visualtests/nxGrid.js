@@ -8,7 +8,7 @@ const { simpleTestLongElement } = require('./testUtils');
 
 describe('nx-grid', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-grid');
+    await browser.url('#/pages/Grid');
   });
 
   const selector = '.gallery-example-live';

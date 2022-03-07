@@ -8,7 +8,7 @@ const { clickTest, focusTest, simpleTest, simpleTestLongElement } = require('./t
 
 describe('NxTree', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxTree');
+    await browser.url('#/pages/Tree');
     await browser.refresh();
   });
 

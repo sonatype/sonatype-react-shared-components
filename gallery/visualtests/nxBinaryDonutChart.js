@@ -8,7 +8,7 @@ const { simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxBinaryDonutChart', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxBinaryDonutChart');
+    await browser.url('#/pages/Binary%20Donut%20Chart');
   });
 
   describe('NxBinaryDonutChart Minimal examples', function() {

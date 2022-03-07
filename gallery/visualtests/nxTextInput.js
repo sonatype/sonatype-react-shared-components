@@ -26,7 +26,7 @@ describe('NxTextInput', function() {
   }
 
   beforeEach(async function() {
-    await browser.url('#/pages/NxTextInput');
+    await browser.url('#/pages/Text Input');
   });
 
   describe('Simple NxTextInput', function() {

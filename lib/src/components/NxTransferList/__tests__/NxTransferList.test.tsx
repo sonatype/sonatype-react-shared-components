@@ -10,7 +10,7 @@ import { always } from 'ramda';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 
 import NxTransferList, { Props } from '../NxTransferList';
-import TransferListHalf from '../TransferListHalf';
+import NxTransferListHalf from '../../NxTransferListHalf/NxTransferListHalf';
 
 describe('NxTransferList', function() {
   const minimalProps = {
@@ -42,11 +42,11 @@ describe('NxTransferList', function() {
     expect(component).toHaveClassName('nx-transfer-list');
   });
 
-  it('renders two TransferListHalfs, one for available items and one for selected', function() {
+  it('renders two NxTransferListHalfs, one for available items and one for selected', function() {
     const component = getShallow();
 
-    expect(component.childAt(0)).toMatchSelector(TransferListHalf);
-    expect(component.childAt(1)).toMatchSelector(TransferListHalf);
+    expect(component.childAt(0)).toMatchSelector(NxTransferListHalf);
+    expect(component.childAt(1)).toMatchSelector(NxTransferListHalf);
 
     expect(component.childAt(0)).toHaveProp('label', 'Available Items');
     expect(component.childAt(1)).toHaveProp('label', 'Transferred Items');
