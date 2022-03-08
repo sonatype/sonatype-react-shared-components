@@ -19,6 +19,8 @@ import {
 } from '@sonatype/react-shared-components';
 import { GalleryTileFooter } from './GalleryTileFooter';
 
+import { useLocation } from 'react-router-dom';
+
 interface PropsWithRequiredChildren {
   children: ReactNode;
 }
@@ -87,7 +89,12 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
           defaultCheckeredBackground
         } = props,
 
-        [checkeredBackground, toggleCheckeredBackground] = useToggle(defaultCheckeredBackground || false),
+        location = useLocation(),
+
+        overrideCheckeredBackground = location.pathname.includes('no-checkered-background'),
+
+        [checkeredBackground, toggleCheckeredBackground] =
+          useToggle((overrideCheckeredBackground ? false : defaultCheckeredBackground) || false),
 
         liveExampleRender =
           htmlExample ? <RawHtmlExample html={htmlExample} /> :
