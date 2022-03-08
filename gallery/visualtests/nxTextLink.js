@@ -26,4 +26,10 @@ describe('NxTextLink', function() {
 
     it('looks right', simpleTest(selector));
   });
+
+  describe('NxTextLink truncation and wrapping', function() {
+    const selector = '#nx-text-link-wrapping-and-truncation-example .gallery-example-live';
+
+    it('looks right', simpleTest(selector));
+  });
 });
