@@ -141,7 +141,8 @@ module.exports = {
     return async () => {
       const builder = new AxeBuilder({ client: browser }),
           customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
-          axeResults = await customizedBuilder.analyze();
+          // Excluding color-contrast rule for now.
+          axeResults = await customizedBuilder.DisableRules('color-contrast').analyze();
 
       expect(axeResults.violations).toEqual([]);
       expect(axeResults.incomplete).toEqual([]);
