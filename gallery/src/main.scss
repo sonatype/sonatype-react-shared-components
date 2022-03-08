@@ -116,3 +116,11 @@
     list-style: none;
   }
 }
+
+.nx-tile--accessibility-list { //specificity
+  .level-a, .level-aa, .level-aaa {
+    &.hidden {
+      display: none;
+    }
+  }
+}
