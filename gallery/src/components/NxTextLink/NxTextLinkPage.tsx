@@ -127,15 +127,8 @@ export default function NxTabsPage() {
         A few examples of <NxCode>NxTextLink</NxCode> to an external page with and without <NxCode>NxCode</NxCode>.
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="NxTextLink Wrapping and Truncation Example"
-                          id="nx-text-link-wrapping-and-truncation-example"
-                          liveExample={NxTextLinkTruncationExample}
-                          codeExamples={NxTextLinkTruncationExampleCode}>
-
-      </GalleryExampleTile>
-
       <GalleryExampleTile title="Button-Styled-as-Link Example"
-                          id="nx-text-link-buton-example"
+                          id="nx-text-link-button-example"
                           liveExample={NxTextLinkButtonExample}
                           codeExamples={NxTextLinkButtonExampleCode}>
         In some cases a visual design may call for a clickable element which appears to be a link, but which
@@ -143,6 +136,13 @@ export default function NxTabsPage() {
         is a general desire to keep appearances consistent with functionality in order to avoid surprising or confusing
         the user. Nonetheless, deviations come up often enough that they need to be supported. For this scenario,
         a button element may be used with the <NxCode>nx-text-link</NxCode> class.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxTextLink Wrapping and Truncation Example"
+                          id="nx-text-link-wrapping-and-truncation-example"
+                          liveExample={NxTextLinkTruncationExample}
+                          codeExamples={NxTextLinkTruncationExampleCode}>
+
       </GalleryExampleTile>
     </>
   );
