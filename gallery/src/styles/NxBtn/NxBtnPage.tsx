@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxTable, NxTile, NxH3, NxP } from '@sonatype/react-shared-components';
+import { NxCode, NxTable, NxTile, NxH3, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
@@ -87,6 +87,18 @@ const NxBtnPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Buttons Styled as Links</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          In some cases a visual design may call for a clickable element which appears to be a link, but which
+          triggers some JavaScript code rather than navigating the page URL. In this case
+          a <NxCode>&lt;button&gt;</NxCode> should be used, but rather than using the <NxCode>nx-btn</NxCode> classes,
+          the <NxCode>nx-text-link</NxCode> class should be used. See
+          the <NxTextLink href="#/pages/Text Link">NxTextLink documentation</NxTextLink> for details.
+        </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
