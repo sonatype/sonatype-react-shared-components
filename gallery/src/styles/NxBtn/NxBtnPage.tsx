@@ -13,7 +13,8 @@ const nxBtnPrimaryCode = require('./NxBtnPrimaryExample.html'),
     nxBtnDefaultCode = require('./NxBtnDefaultExample.html'),
     nxBtnTertiaryCode = require('./NxBtnTertiaryExample.html'),
     nxBtnErrorCode = require('./NxBtnErrorExample.html'),
-    nxBtnIconCode = require('./NxBtnIconExample.html');
+    nxBtnIconCode = require('./NxBtnIconExample.html'),
+    nxBtnLinkCode = require('./NxBtnLinkExample.html');
 
 const NxBtnPage = () =>
   <>
@@ -125,6 +126,14 @@ const NxBtnPage = () =>
                         codeExamples={nxBtnIconCode}>
       A demonstration of <NxCode>nx-btn</NxCode>s containing icons. One contains only an icon while
       the other contains both an icon and text.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Links Styled like Buttons"
+                        id="nx-btn-links-example"
+                        htmlExample={nxBtnLinkCode}
+                        codeExamples={nxBtnLinkCode}>
+      A demonstration of <NxCode>&lt;a&gt;</NxCode> elements styled using the <NxCode>nx-btn</NxCode> classes such
+      that they resemble buttons.
     </GalleryExampleTile>
   </>;
 
