@@ -11,10 +11,12 @@ export interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   external?: boolean | null;
   noReferrer?: boolean | null;
   newTab?: boolean | null;
+  truncate?: boolean | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   external: PropTypes.bool,
   noReferrer: PropTypes.bool,
-  newTab: PropTypes.bool
+  newTab: PropTypes.bool,
+  truncate: PropTypes.bool
 };
