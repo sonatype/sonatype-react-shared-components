@@ -32,6 +32,20 @@ const RAW = [
   { day: '2022-01-30', available: 5000, consumed: 2978, deleted: 44, added:	22, buffer:	0.6 }
 ];
 
+const randomConsumptionValue = () => (200 + Math.floor(Math.random() * 1001) - 1);
+
+const RAW_BAD_CONSUMPTION_DATA = Array.from({ length: 31 }).map((_, i) => ({
+  x: `2022-03-${i + 1 < 10 ? `0${i + 1}` : i + 1}`,
+  y: randomConsumptionValue()
+}));
+
+export const BAD_CONSUMPTION_DATA = [
+  {
+    id: 'Bad Consumption',
+    data: RAW_BAD_CONSUMPTION_DATA
+  }
+];
+
 interface RawDataType {
   day: string;
   available: number;

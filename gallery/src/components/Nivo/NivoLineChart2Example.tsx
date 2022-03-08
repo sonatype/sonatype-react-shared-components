@@ -8,15 +8,15 @@ import React from 'react';
 
 import { ResponsiveLine } from '@nivo/line';
 
-import { STORAGE_CONSUMPTION_DATA } from './data';
+import { BAD_CONSUMPTION_DATA } from './data';
 
 import './NivoPageExample.scss';
 
 export default function NxAccordionExample() {
   return (
     <div className="chart-container">
-      <ResponsiveLine data={STORAGE_CONSUMPTION_DATA}
-                      margin={{ top: 50, right: 110, bottom: 50, left: 80 }}
+      <ResponsiveLine data={BAD_CONSUMPTION_DATA}
+                      margin={{ top: 50, right: 50, bottom: 50, left: 80 }}
                       yScale={{
                         type: 'linear',
                         stacked: false
@@ -28,7 +28,7 @@ export default function NxAccordionExample() {
                         useUTC: false
                       }}
                       axisLeft={{
-                        legend: 'Gigabytes (GBs)',
+                        legend: 'Bad Components Consumed',
                         legendPosition: 'middle',
                         legendOffset: -50
                       }}
@@ -39,7 +39,7 @@ export default function NxAccordionExample() {
                         legendPosition: 'middle'
                       }}
                       colors={[
-                        '#00A1E6',
+                        '#99005A',
                         '#FFC333',
                         '#FF8098',
                         '#03C9B8'
@@ -49,21 +49,21 @@ export default function NxAccordionExample() {
                       useMesh={true}
                       lineWidth={3}
                       crosshairType={'cross'}
-                      legends={[
-                        {
-                          anchor: 'top-right',
-                          direction: 'column',
-                          justify: false,
-                          translateX: 100,
-                          translateY: 0,
-                          itemsSpacing: 0,
-                          itemDirection: 'left-to-right',
-                          itemWidth: 80,
-                          itemHeight: 20,
-                          symbolSize: 14,
-                          symbolShape: 'circle'
-                        }
-                      ]}
+                      // legends={[
+                      //   {
+                      //     anchor: 'top-right',
+                      //     direction: 'column',
+                      //     justify: false,
+                      //     translateX: 100,
+                      //     translateY: 0,
+                      //     itemsSpacing: 0,
+                      //     itemDirection: 'left-to-right',
+                      //     itemWidth: 80,
+                      //     itemHeight: 20,
+                      //     symbolSize: 14,
+                      //     symbolShape: 'circle'
+                      //   }
+                      // ]}
       />
     </div>
   );
