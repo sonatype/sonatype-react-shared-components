@@ -12,8 +12,9 @@ import { ThreatLevelNumber, allThreatLevelNumbers } from '../../util/threatLevel
 export type PolicyThreatLevelRange = [ThreatLevelNumber, ThreatLevelNumber];
 
 export interface LabelDisplayProps extends ValueLabelProps {
-  // MUI does actually pass this, though it is not included in their TS types
+  // MUI does actually pass these, though they are not included in their TS types
   disabled?: boolean | null;
+  index?: number;
 }
 
 export interface Props {
