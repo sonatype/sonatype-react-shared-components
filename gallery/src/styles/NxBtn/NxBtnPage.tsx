@@ -89,6 +89,18 @@ const NxBtnPage = () =>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Links Styled Like Buttons</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          There are sometimes cases where a design calls for a control which visually appears to be a button but which
+          has functionality consisting of page navigation. In this scenario an <NxCode>&lt;a&gt;</NxCode> element
+          should be used with the applicable <NxCode>nx-btn</NxCode> classes. This should be done sparingly, as
+          it is a general design desire to match visual appearance to functionality, that is, to have buttons look
+          like buttons and links look like links.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Default"
