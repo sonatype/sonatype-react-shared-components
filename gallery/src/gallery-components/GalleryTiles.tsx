@@ -91,7 +91,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
 
         location = useLocation(),
 
-        overrideCheckeredBackground = location.pathname.includes('noCheckeredBackground'),
+        overrideCheckeredBackground = location.search.includes('noCheckeredBackground'),
 
         [checkeredBackground, toggleCheckeredBackground] =
           useToggle((overrideCheckeredBackground ? false : defaultCheckeredBackground) || false),
