@@ -51,7 +51,7 @@ function Accessibility() {
         1.1 Text alternatives- Provide text alternatives for any non-text content so that it can be changed into other
         forms people need, such as large print, braille, speech, symbols or simpler language.
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-a ${isA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Have we provided “alt text” alternatives for all images and data visualizations to a degree that information
@@ -73,7 +73,7 @@ function Accessibility() {
       <NxH4>
         1.2 Time-based Media- Provide alternatives for time-based media [such as video, sound, slideshows, etc.]
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-a ${isA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Have we provided a transcript of prerecorded audio and video recordings?
@@ -136,7 +136,7 @@ function Accessibility() {
         1.3 Adaptable- Create content that can be presented in different ways without losing the integrity andcontext of
         the content.
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-a ${isA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Can we provide a simpler layout without losing information or structure?
@@ -219,7 +219,7 @@ function Accessibility() {
         1.4 Distinguishable- Make it easier for users to see and hear content including separating
         foreground from background.
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-a ${isA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Can users tell the difference between the foreground and background of content?
@@ -446,7 +446,7 @@ function Accessibility() {
       <NxH4>
         2.1 Keyboard Only- Make all functionality available from a keyboard.
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-a ${isA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Can users use a keyboard to access all content (as long as the path to get there is not important)?
@@ -491,7 +491,7 @@ function Accessibility() {
       <NxH4>
         2.2 Enough Time- Provide users enough time to read and use content.
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-a ${isA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Can users adjust timing (re: slideshows, automated-scrolling, etc) if needed?
@@ -589,7 +589,7 @@ function Accessibility() {
         2.3 Seizures and Physical Reactions- Do not design content in a way that is known to cause seizures or physical
         reactions.
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-aaa ${isAAA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Have we made sure none of our content blinks or flashes more than
@@ -617,7 +617,7 @@ function Accessibility() {
       <NxH4>
         2.4 Navigable- Provide ways to help users navigate, find content, and determine where they are.
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-a ${isA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Can we give redundancy cues and/or structural markup that alerts users of duplicated content?
@@ -724,7 +724,7 @@ function Accessibility() {
         2.5 Input Modalities- Make it easier for users to operate functionality through various inputs beyond a
         keyboard.
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-a ${isA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Have we allowed the user to move their mouse in whatever pattern allows them to accomplish a task?
@@ -798,7 +798,7 @@ function Accessibility() {
       <NxH4>
         3.1 Readable- Make text content readable and understandable.
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-a ${isA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Has a default human language been programmed into markup?
@@ -860,7 +860,7 @@ function Accessibility() {
       <NxH4>
         3.2 Predictable- Make pages appear and operate in predictable ways.
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-a ${isA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Does content in a focus state remain exactly the same as when it's in the default state?
@@ -938,7 +938,7 @@ function Accessibility() {
       <NxH4>
         3.3 Input Assistance- Help users avoid and correct mistakes.
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-a ${isA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Do we alert users immediately with an error message as soon as an error is detected?
@@ -1042,7 +1042,7 @@ function Accessibility() {
       <NxH4>
         4.1 Compatible- Maximize compatibility with current and future user agents, including assistive technologies.
       </NxH4>
-      <NxList bulleted className="nx-list--no-bullets">
+      <NxList>
         <NxList.Item className={`level-a ${isA && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Does all content that uses a markup language have complete start and end tags?
