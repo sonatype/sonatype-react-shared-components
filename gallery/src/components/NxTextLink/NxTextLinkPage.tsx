@@ -5,17 +5,19 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTextLink, NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxTable, NxTextLink, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTextLinkInternalExample from './NxTextLinkInternalExample';
 import NxTextLinkExternalExample from './NxTextLinkExternalExample';
 import NxTextLinkTruncationExample from './NxTextLinkTruncationExample';
+import NxTextLinkButtonExample from './NxTextLinkButtonExample';
 
 const NxTextLinkInternalExampleCode = require('./NxTextLinkInternalExample?raw'),
     NxTextLinkExternalExampleCode = require('./NxTextLinkExternalExample?raw'),
-    NxTextLinkTruncationExampleCode = require('./NxTextLinkTruncationExample?raw');
+    NxTextLinkTruncationExampleCode = require('./NxTextLinkTruncationExample?raw'),
+    NxTextLinkButtonExampleCode = require('./NxTextLinkButtonExample?raw');
 
 export default function NxTabsPage() {
   return (
@@ -98,6 +100,20 @@ export default function NxTabsPage() {
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
+            <NxH3>Buttons Styled as Links</NxH3>
+          </NxTile.SubsectionHeader>
+          <NxP>
+            In some cases a visual design may call for a clickable element which appears to be a link, but which
+            triggers some JavaScript code rather than navigating the page URL. This should be used sparingly, as there
+            is a general desire to keep appearances consistent with functionality in order to avoid surprising or
+            confusing the user. Nonetheless, deviations come up often enough that they need to be supported. For this
+            scenario, a button element may be used with the <NxCode>nx-text-link</NxCode> class. Note
+            that <NxCode>&lt;button&gt;</NxCode>s can never behave as proper inline elements which wrap amongst
+            surrounding text. Therefore, buttons styled as links are only supported in a block layout context.
+          </NxP>
+        </NxTile.Subsection>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="NxTextLink Internal Link Example"
@@ -123,6 +139,14 @@ export default function NxTabsPage() {
         the external icon is included in the <NxCode>NxCode</NxCode> boundary.
 
         A few examples of <NxCode>NxTextLink</NxCode> to an external page with and without <NxCode>NxCode</NxCode>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Button-Styled-as-Link Example"
+                          id="nx-text-link-button-example"
+                          liveExample={NxTextLinkButtonExample}
+                          codeExamples={NxTextLinkButtonExampleCode}>
+        An example of a <NxCode>&lt;button&gt;</NxCode> styled to look like a link using
+        the <NxCode>nx-text-link</NxCode> class
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxTextLink Wrapping and Truncation Example"
