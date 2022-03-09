@@ -9,7 +9,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest
 
 describe('NxTransferList', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxTransferList');
+    await browser.url('#/pages/Transfer List');
     await browser.refresh();
   });
 

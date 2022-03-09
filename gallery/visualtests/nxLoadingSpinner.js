@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest
 
 describe('NxLoadingSpinner', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxLoadingSpinner');
+    await browser.url('#/pages/Loading%20Spinner');
   });
 
   const selector = '.gallery-example .nx-loading-spinner';

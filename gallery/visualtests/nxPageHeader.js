@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest
 
 describe('NxPageHeader', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxPageHeader');
+    await browser.url('#/pages/Page%20Header');
   });
 
   const simpleHeaderSelector = '#nx-page-header-simple-example .nx-page-header',

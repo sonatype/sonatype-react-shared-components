@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest
 
 describe('NxTextLink', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxTextLink');
+    await browser.url('#/pages/Text Link');
   });
 
   describe('Default NxTextLink', function() {
@@ -28,4 +28,16 @@ describe('NxTextLink', function() {
   });
 
   it('passes a11y checks', a11yTest());
+
+  describe('NxTextLink truncation and wrapping', function() {
+    const selector = '#nx-text-link-wrapping-and-truncation-example .gallery-example-live';
+
+    it('looks right', simpleTest(selector));
+  });
+
+  describe('button nx-text-link', function() {
+    const selector = '#nx-text-link-button-example .nx-text-link';
+
+    it('looks right', simpleTest(selector));
+  });
 });

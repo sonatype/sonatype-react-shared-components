@@ -9,7 +9,7 @@ const { a11yTest } = require('./testUtils');
 
 describe('NxModal', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxModal');
+    await browser.url('#/pages/Modal');
     await browser.refresh();
   });
 

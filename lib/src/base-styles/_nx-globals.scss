@@ -12,46 +12,6 @@ $-nx-scrollable-default-height: 400px;
 /*
   #Basic links
 */
-.nx-text-link {
-  @include nx-container-helpers.container-horizontal;
-
-  color: var(--nx-color-link);
-  cursor: pointer;
-
-  .nx-code {
-    color: var(--nx-color-link);
-  }
-
-  &:hover {
-    &, .nx-code {
-      color: var(--nx-color-link-hover);
-    }
-  }
-
-  &:focus {
-    // outline-offset scales the border-radius so this
-    // was changed to 4px to get it visually close to
-    // var(--nx-border-radius) or (6px).
-    border-radius: 4px;
-    outline: 1px solid var(--nx-color-interactive-border-focus);
-    outline-offset: 1px;
-
-    &, .nx-code {
-      color: var(--nx-color-link-focus);
-    }
-  }
-
-  &:active {
-    &, .nx-code {
-      color: var(--nx-color-link-active);
-    }
-  }
-
-  .nx-icon.fa-external-link-alt {
-    margin-left: var(--nx-spacing-base);
-  }
-}
-
 .nx-clickable {
   cursor: pointer;
 }

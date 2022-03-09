@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest
 
 describe('NxButton', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxButton');
+    await browser.url('#/pages/Button');
   });
 
   describe('Default NxButton', function() {
@@ -85,6 +85,16 @@ describe('NxButton', function() {
 
   describe('NxButton with icon only', function() {
     const selector = '#nx-button-icon-only-example .nx-btn:first-of-type';
+
+    it('looks right', simpleTest(selector));
+  });
+
+  describe('nx-btn class on <a>', function() {
+    const selector = '#nx-btn-links-example .nx-btn-bar';
+
+    beforeEach(async function() {
+      await browser.url('#/pages/Button (HTML)');
+    });
 
     it('looks right', simpleTest(selector));
   });
