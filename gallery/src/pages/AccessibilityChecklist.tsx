@@ -21,15 +21,11 @@ function Accessibility() {
 
   const [isA, toggleA] = useToggle(false),
       [isAA, toggleAA] = useToggle(false),
-      [isAAA, toggleAAA] = useToggle(false);
+      [isAAA, toggleAAA] = useToggle(false),
+      [isReco, toggleReco] = useToggle(false);
 
   return (
     <GalleryTile title="WCAG Accessibility UX Checklist" className="nx-tile--accessibility-list">
-      <NxFieldset label="Filter by level" isRequired className="gallery-accessibility-filter">
-        <NxCheckbox onChange={toggleA} isChecked={!isA}>Level A</NxCheckbox>
-        <NxCheckbox onChange={toggleAA} isChecked={!isAA}>Level AA</NxCheckbox>
-        <NxCheckbox onChange={toggleAAA} isChecked={!isAAA}>Level AAA</NxCheckbox>
-      </NxFieldset>
       <NxP>
         Accessibility UX checklist to serve as a method for designers and developers to assess the WCAG compliance of
         their work.
@@ -37,6 +33,12 @@ function Accessibility() {
       <NxP>
         WCAG 2.1 Verification - 116 Questions | Cumulative list
       </NxP>
+      <NxFieldset label="Filter by level" isRequired className="gallery-accessibility-filter">
+        <NxCheckbox onChange={toggleA} isChecked={!isA}>Level A</NxCheckbox>
+        <NxCheckbox onChange={toggleAA} isChecked={!isAA}>Level AA</NxCheckbox>
+        <NxCheckbox onChange={toggleAAA} isChecked={!isAAA}>Level AAA</NxCheckbox>
+        <NxCheckbox onChange={toggleReco} isChecked={!isReco}>Recommendations</NxCheckbox>
+      </NxFieldset>
       <NxH3>
         1. Perceivable
       </NxH3>
@@ -382,52 +384,54 @@ function Accessibility() {
             </NxTextLink>
           </NxCheckbox>
         </NxList.Item>
-        <NxList.Item>
+        <NxList.Item className={`level-reco ${isReco && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Are our UI components named as follows and are these states obvious to assistive devices?
           </NxCheckbox>
-        </NxList.Item>
-        <NxList.Item>
-          <NxCheckbox isChecked={false}>
-            <strong>
-              Default
-            </strong>
-          </NxCheckbox>
-        </NxList.Item>
-        <NxList.Item>
-          <NxCheckbox isChecked={false}>
-            <strong>
-              Inactive
-            </strong>
-          </NxCheckbox>
-        </NxList.Item>
-        <NxList.Item>
-          <NxCheckbox isChecked={false}>
-            <strong>
-              Focus
-            </strong>
-          </NxCheckbox>
-        </NxList.Item>
-        <NxList.Item>
-          <NxCheckbox isChecked={false}>
-            <strong>
-              Disabled
-            </strong>
-          </NxCheckbox>
-        </NxList.Item>
-        <NxList.Item>
-          <NxCheckbox isChecked={false}>
-            <strong>
-              Loading
-            </strong>
-          </NxCheckbox>
-        </NxList.Item>
-        <NxList.Item>
-          <NxCheckbox isChecked={false}>
-            <strong>
-              Error
-            </strong>
-          </NxCheckbox>
+          <NxList bulleted>
+            <NxList.Item>
+              <NxCheckbox isChecked={false}>
+                <strong>
+                  Default
+                </strong>
+              </NxCheckbox>
+            </NxList.Item>
+            <NxList.Item>
+              <NxCheckbox isChecked={false}>
+                <strong>
+                  Inactive
+                </strong>
+              </NxCheckbox>
+            </NxList.Item>
+            <NxList.Item>
+              <NxCheckbox isChecked={false}>
+                <strong>
+                  Focus
+                </strong>
+              </NxCheckbox>
+            </NxList.Item>
+            <NxList.Item>
+              <NxCheckbox isChecked={false}>
+                <strong>
+                  Disabled
+                </strong>
+              </NxCheckbox>
+            </NxList.Item>
+            <NxList.Item>
+              <NxCheckbox isChecked={false}>
+                <strong>
+                  Loading
+                </strong>
+              </NxCheckbox>
+            </NxList.Item>
+            <NxList.Item>
+              <NxCheckbox isChecked={false}>
+                <strong>
+                  Error
+                </strong>
+              </NxCheckbox>
+            </NxList.Item>
+          </NxList>
         </NxList.Item>
       </NxList>
 
@@ -1013,13 +1017,13 @@ function Accessibility() {
             Level AAA
           </NxTextLink>
         </NxList.Item>
-        <NxList.Item>
+        <NxList.Item className={`level-reco ${isReco && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Have we created specific help text and options that allow the user to complete a task without losing track
             of where they are?
           </NxCheckbox>
         </NxList.Item>
-        <NxList.Item>
+        <NxList.Item className={`level-reco ${isReco && 'hidden'}`}>
           <NxCheckbox isChecked={false}>
             Do we allow users to change between devices when interacting with content on multiple devices during the
             same session?

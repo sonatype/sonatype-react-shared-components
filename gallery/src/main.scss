@@ -117,7 +117,18 @@
   }
 }
 
-.nx-tile--accessibility-list { //specificity
+// Accessibility Checklist Page
+.nx-tile--accessibility-list {
+  .nx-radio-checkbox__content {
+    overflow: unset;
+    text-overflow: unset;
+    white-space: normal;
+  }
+
+  .nx-text-link {
+    margin-left: 24px;
+  }
+
   .level-a, .level-aa, .level-aaa {
     &.hidden {
       display: none;
