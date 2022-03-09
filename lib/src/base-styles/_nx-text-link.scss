@@ -56,3 +56,15 @@
   }
 }
 
+button.nx-text-link {
+  @include nx-text-helpers.truncate-ellipsis;
+  @include nx-text-helpers.regular;
+
+  background: initial;
+  border: initial;
+  display: block;
+  font-size: var(--nx-font-size);
+  max-width: 100%;
+  padding: initial;
+  text-decoration: underline;
+}
