@@ -32,4 +32,10 @@ describe('NxTextLink', function() {
 
     it('looks right', simpleTest(selector));
   });
+
+  describe('button nx-text-link', function() {
+    const selector = '#nx-text-link-button-example .nx-text-link';
+
+    it('looks right', simpleTest(selector));
+  });
 });

@@ -151,6 +151,7 @@ const pageConfig: PageConfig = {
     'Policy Violation Indicator': { content: NxPolicyViolationIndicatorPage, type: 'react' },
     'Submit Mask': { content: NxSubmitMaskPage, type: 'react' },
     'Stateful Submit Mask': { content: NxStatefulSubmitMaskPage, type: 'react' },
+    'System Notice': { content: NxSystemNoticePage, type: 'html' },
     'Tag': { content: NxTagPage, type: 'react' },
     'Threat Counter': { content: NxThreatCounterPage, type: 'react' },
     'Small Threat Counter': { content: NxSmallThreatCounterPage, type: 'react' },
@@ -158,8 +159,7 @@ const pageConfig: PageConfig = {
     'Threat Indicator Legend': { content: NxThreatIndicatorLegendPage, type: 'react' },
     'Threat Number': { content: NxThreatNumberPage, type: 'html' },
     'Tooltip': { content: NxTooltipPage, type: 'react' },
-    'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' },
-    'System Notice': { content: NxSystemNoticePage, type: 'html' }
+    'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' }
   },
   'Buttons and Dropdowns': {
     'Back Button': { content: NxBackButtonPage, type: 'react' },
@@ -209,7 +209,6 @@ const pageConfig: PageConfig = {
     'Stateful Tree View Radio-Select': { content: NxStatefulTreeViewRadioSelectPage, type: 'react' }
   },
   'Data Presentation': {
-    'Stateful Accordion': { content: NxStatefulAccordionPage, type: 'react' },
     'Binary Donut Chart': { content: NxBinaryDonutChartPage, type: 'react' },
     'Collapsible Items': { content: NxCollapsibleItemsPage, type: 'react' },
     'List': { content: NxListPageV2, type: 'react' },
@@ -223,6 +222,7 @@ const pageConfig: PageConfig = {
     'Page Layout Examples': { content: PageLayoutPage, type: 'layout' },
     'Read-Only Grid Tile Layout': { content: NxReadOnlyGridTilePage, type: 'layout' },
     'Accordion': { content: NxAccordionPage, type: 'react' },
+    'Stateful Accordion': { content: NxStatefulAccordionPage, type: 'react' },
     'Card': { content: NxCardPage, type: 'html' },
     'Divider': { content: NxDividerPage, type: 'html' },
     'Global Header': { content: NxGlobalHeaderPage, type: 'html' },
@@ -241,9 +241,9 @@ const pageConfig: PageConfig = {
     'Vulnerability Details': { content: NxVulnerabilityDetailsPage, type: 'react' }
   },
   'Typography and Icons': {
-    'Font Awesome Icon': { content: NxFontAwesomeIconPage, type: 'react' },
     'Blockquote': { content: NxBlockquotePage, type: 'html' },
     'Code': { content: NxCodePage, type: 'html' },
+    'Font Awesome Icon': { content: NxFontAwesomeIconPage, type: 'react' },
     'H*': { content: NxHPage, type: 'html' },
     'P': { content: NxPPage, type: 'html' },
     'Pre': { content: NxPrePage, type: 'html' }
@@ -251,10 +251,10 @@ const pageConfig: PageConfig = {
   'HTML Variants': {
     'Alert (HTML)': { content: NxAlertPage, type: 'html' },
     'Button (HTML)': { content: NxBtnPage, type: 'html' },
-    'Icon': { content: NxIconPage, type: 'html' },
     'Fieldset': { content: NxFieldsetStylePage, type: 'html' },
     'Form Group': { content: NxFormGroupStylePage, type: 'html' },
     'Form Select (HTML)': { content: NxFormSelectPage, type: 'html' },
+    'Icon': { content: NxIconPage, type: 'html' },
     'List (HTML)': { content: NxListPage, type: 'html' },
     'Table (HTML)': { content: NxTableStylePage, type: 'html' }
   },
@@ -270,13 +270,13 @@ const pageConfig: PageConfig = {
     'Style Variables': { content: CssVariablesPage, type: 'css' }
   },
   'JavaScript & TypeScript Utilities': {
-    'TooltipConfigProps': { content: TooltipConfigPropsPage, type: 'js' },
-    'Policy Threat Level Utils': { content: PolicyThreatLevelUtilsPage, type: 'js' },
-    'Validation Utils': { content: ValidationUtilsPage, type: 'js' },
-    'useToggle': { content: UseTogglePage, type: 'js' },
     'IDUtils': { content: IdUtilPage, type: 'js' },
-    'withClass Higher-Order Component': { content: WithClassPage, type: 'js' },
-    'Server Side Rendering Utilities': { content: ServerSideRenderingPage, type: 'js'}
+    'Policy Threat Level Utils': { content: PolicyThreatLevelUtilsPage, type: 'js' },
+    'Server Side Rendering Utilities': { content: ServerSideRenderingPage, type: 'js'},
+    'TooltipConfigProps': { content: TooltipConfigPropsPage, type: 'js' },
+    'useToggle': { content: UseTogglePage, type: 'js' },
+    'Validation Utils': { content: ValidationUtilsPage, type: 'js' },
+    'withClass Higher-Order Component': { content: WithClassPage, type: 'js' }
   },
   'Guidelines': {
     'Accessibility': { content: AccessibilityPage, type: 'documentation' },
