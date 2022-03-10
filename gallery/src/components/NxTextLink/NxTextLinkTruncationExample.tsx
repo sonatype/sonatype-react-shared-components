@@ -23,6 +23,12 @@ export default function NxTextLinkTruncationExample() {
           This external link shows the icon even when the text is truncated.
         </NxTextLink>
       </NxP>
+      <NxP>
+        <button className="nx-text-link">
+          This is a button styled like a link. As a <NxCode>&lt;button&gt;</NxCode>, it cannot wrap inline with
+          other text content. Therefore it behaves in the same way as a truncating <NxCode>NxTextLink</NxCode>.
+        </button>
+      </NxP>
     </div>
   );
 }
