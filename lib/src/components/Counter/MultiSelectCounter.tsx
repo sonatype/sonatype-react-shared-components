@@ -11,7 +11,7 @@ import Counter from './Counter';
 
 export interface Props {
   options: unknown[];
-  selectedIds: Set<string | null>;
+  selectedIds: Set<unknown>;
 }
 
 export default function MultiSelectCounter({ options, selectedIds }: Props) {

@@ -9,7 +9,7 @@ import { propEq, any } from 'ramda';
 
 import { Props, propTypes } from './types';
 import NxCheckbox from '../NxCheckbox/NxCheckbox';
-import MultiSelectCounter from './MultiSelectCounter';
+import MultiSelectCounter from '../Counter/MultiSelectCounter';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import NxDropdown from '../NxDropdown/NxDropdown';
