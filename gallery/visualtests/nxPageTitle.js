@@ -8,7 +8,7 @@ const { simpleTest, a11yTest } = require('./testUtils');
 
 describe('nx-page-title', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/Page%20Title');
+    await browser.url('#/pages/Page%20Title?noCheckeredBackground');
   });
 
   const simplePageTitle = '#nx-page-title-example .nx-page-title';
@@ -24,6 +24,5 @@ describe('nx-page-title', function() {
 
   it('looks right with sub-title, description, and tags', simpleTest(everythingPageTitle));
 
-  //Disabling the color-contrast rule to account for the transparent background on the page
-  it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
+  it('passes a11y checks', a11yTest());
 });
