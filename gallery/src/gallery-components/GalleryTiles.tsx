@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, JSXElementConstructor, ReactNode } from 'react';
+import React, { FunctionComponent, JSXElementConstructor, ReactNode, useState } from 'react';
 import classnames from 'classnames';
 import { ensureArray } from '../util/jsUtil';
 
@@ -13,7 +13,12 @@ import RawHtmlExample from '../RawHtmlExample';
 import {
   NxAccordion,
   NxCheckbox,
+  NxP,
   NxStatefulAccordion,
+  NxTab,
+  NxTabList,
+  NxTabPanel,
+  NxTabs,
   NxTile,
   useToggle
 } from '@sonatype/react-shared-components';
@@ -23,26 +28,43 @@ interface PropsWithRequiredChildren {
   children: ReactNode;
 }
 
-interface GalleryBaseProps {
+interface GalleryBaseProps extends PropsWithRequiredChildren {
   id?: string;
   title: string;
   className?: string;
 }
 
 // Props for GalleryTile
-type GalleryTileProps = PropsWithRequiredChildren & GalleryBaseProps & {
+interface GalleryTileProps extends GalleryBaseProps {
   actionButtons?: ReactNode;
-};
+}
 
 type StringOrCodeExampleProps = string | CodeExampleProps;
 
 interface GalleryExampleTileProps extends GalleryBaseProps {
-  children: ReactNode;
   liveExample?: JSXElementConstructor<Record<string, never>>;
   htmlExample?: string;
   codeExamples: StringOrCodeExampleProps | StringOrCodeExampleProps[];
   defaultCheckeredBackground?: boolean;
 }
+
+interface GalleryMultiExampleTileBaseProps extends GalleryBaseProps {
+  reactLiveExample: JSXElementConstructor<Record<string, never>>;
+  reactCodeExample: string;
+  extraCodeExamples?: StringOrCodeExampleProps | StringOrCodeExampleProps[];
+  defaultCheckeredBackground?: boolean;
+}
+
+interface GalleryMultiExampleTileJsxHtmlProps extends GalleryMultiExampleTileBaseProps {
+  htmlLiveExample: JSXElementConstructor<Record<string, never>>;
+  htmlCodeExample: string;
+}
+
+interface GalleryMultiExampleTileStringHtmlProps extends GalleryMultiExampleTileBaseProps {
+  htmlLiveExample: string;
+}
+
+type GalleryMultiExampleTileProps = GalleryMultiExampleTileStringHtmlProps | GalleryMultiExampleTileJsxHtmlProps;
 
 // Component for a simple nx-tile with a specified title and contents
 export const GalleryTile: FunctionComponent<GalleryTileProps> =
@@ -137,3 +159,68 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
       </GalleryTile>
     );
   };
+
+export function GalleryMultiExampleTile(props: GalleryMultiExampleTileProps) {
+  const {
+        reactLiveExample: ReactLiveExample,
+        reactCodeExample,
+        htmlLiveExample,
+        extraCodeExamples,
+        defaultCheckeredBackground,
+        children,
+        className,
+        ...otherProps
+      } = props,
+      [checkeredBackground, toggleCheckeredBackground] = useToggle(defaultCheckeredBackground || false),
+      [activeTab, setActiveTab] = useState(0),
+      tileClasses = classnames('gallery-example', className, {
+        'gallery-example--checkered-background': checkeredBackground
+      }),
+      normalizedExtraCodeExamples = ensureArray(extraCodeExamples || []).map(ex =>
+        typeof ex === 'string' ? { content: ex } : ex
+      ),
+      extraCodeExampleRender = normalizedExtraCodeExamples.map((props, i) => <CodeExample key={i} { ...props } />),
+      tileActions = (
+        <NxCheckbox isChecked={checkeredBackground}
+                    onChange={toggleCheckeredBackground}>
+          Show checkered background
+        </NxCheckbox>
+      ),
+      htmlExampleRender = typeof htmlLiveExample === 'string' ?
+        <RawHtmlExample html={htmlLiveExample} /> : React.createElement(htmlLiveExample),
+      htmlExampleCodeString = typeof htmlLiveExample === 'string' ?
+        htmlLiveExample : (props as GalleryMultiExampleTileJsxHtmlProps).htmlCodeExample;
+
+  const codeExampleAccordion = (
+    <NxStatefulAccordion>
+      <NxAccordion.Header>
+        <NxAccordion.Title>Example Code</NxAccordion.Title>
+      </NxAccordion.Header>
+      <CodeExample content={activeTab ? htmlExampleCodeString : reactCodeExample} />
+      {extraCodeExampleRender}
+    </NxStatefulAccordion>
+  );
+
+  return (
+    <GalleryTile className={tileClasses} actionButtons={tileActions} { ...otherProps }>
+      <NxTile.Content>
+        <NxP>{children}</NxP>
+        <NxTabs activeTab={activeTab} onTabSelect={setActiveTab}>
+          <NxTabList>
+            <NxTab>React</NxTab>
+            <NxTab>HTML</NxTab>
+          </NxTabList>
+          <NxTabPanel>
+            <div className="gallery-example-live">
+              <ReactLiveExample />
+            </div>
+          </NxTabPanel>
+          <NxTabPanel>
+            {htmlExampleRender}
+          </NxTabPanel>
+        </NxTabs>
+      </NxTile.Content>
+      <NxTile.Content className="nx-tile-content--accordion-container">{codeExampleAccordion}</NxTile.Content>
+    </GalleryTile>
+  );
+}

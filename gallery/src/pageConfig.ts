@@ -26,8 +26,7 @@ import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
 import NxListPageV2 from './components/NxList/NxListPage';
-import NxTableStylePage from './styles/NxTable/NxTableStylePage';
-import NxTableContainerPage from './styles/NxTable/NxTableContainerPage';
+import NxTableContainerPage from './styles/NxTableContainer/NxTableContainerPage';
 import NxAlertComponentsPage from './components/NxAlert/NxAlertPage';
 import NxStatefulAlertComponentsPage from './components/NxStatefulAlert/NxStatefulAlertPage';
 import NxContainerHelpersPage from './styles/NxContainerHelpers/NxContainerHelpersPage';
@@ -80,7 +79,6 @@ import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonu
 import NxNexusPageHeaderPage from './components/NxNexusPageHeader/NxNexusPageHeaderPage';
 import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
-import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
 import NxViewportSizedPage from './styles/NxViewportSized/NxViewportSizedPage';
 import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
 import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
@@ -143,7 +141,6 @@ import ServerSideRenderingPage from './jsUtilPages/ServerSideRendering/ServerSid
 const pageConfig: PageConfig = {
   'React Components': {
     NxAccordion: NxAccordionPage,
-    NxStatefulAccordion: NxStatefulAccordionPage,
     NxAlert: NxAlertComponentsPage,
     NxStatefulAlert: NxStatefulAlertComponentsPage,
     NxBackButton: NxBackButtonPage,
@@ -248,7 +245,6 @@ const pageConfig: PageConfig = {
     'nx-pre': NxPrePage,
     'nx-read-only': NxReadOnlyPage,
     'nx-system-notice': NxSystemNoticePage,
-    'nx-table': NxTableStylePage,
     'nx-table-container': NxTableContainerPage,
     'nx-threat-number': NxThreatNumberPage,
     'nx-tile': NxTilePage

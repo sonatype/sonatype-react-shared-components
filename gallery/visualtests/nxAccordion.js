@@ -8,7 +8,7 @@ const { focusTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxAccordion', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxAccordion');
+    await browser.url('#/pages/NxAccordion/React%20Stateless%20Examples');
     await browser.refresh();
   });
 
@@ -41,23 +41,24 @@ describe('NxAccordion', function() {
     it('looks right when the header is focused', focusTest(exampleSelector, headerSelector));
   });
 
-  describe('NxAccordion with tertiary header button', function() {
-    it('looks right', simpleTest(buttonHeaderExampleSelector));
-  });
-
-  describe('NxAccordion with icon header button', function() {
-    it('looks right', simpleTest(iconButtonHeaderExampleSelector));
-  });
-
   describe('NxAccordion with nested NxList', function() {
     it('looks right', simpleTest(nestedNxListExampleSelector));
   });
 
-  describe('non-deprecated NxAccordion', function() {
+  it('passes a11y checks', a11yTest());
+
+  describe('NxAccordion deprecated layouts', function() {
     beforeEach(async function() {
-      await browser.url('#/pages/NxAccordion?hideDeprecatedExamples');
+      await browser.url('#/pages/NxAccordion/Deprecated%20Examples');
+      await browser.refresh();
     });
 
-    it('passes a11y checks', a11yTest());
+    describe('NxAccordion with tertiary header button', function() {
+      it('looks right', simpleTest(buttonHeaderExampleSelector));
+    });
+
+    describe('NxAccordion with icon header button', function() {
+      it('looks right', simpleTest(iconButtonHeaderExampleSelector));
+    });
   });
 });

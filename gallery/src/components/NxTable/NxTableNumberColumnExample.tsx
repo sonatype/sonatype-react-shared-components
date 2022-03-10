@@ -8,30 +8,30 @@ import React from 'react';
 
 import { NxTable } from '@sonatype/react-shared-components';
 
-const NxTableSimpleExample = () => {
+const NxTableNumberColumnExample = () => {
   return (
     <NxTable>
       <NxTable.Head>
         <NxTable.Row>
           <NxTable.Cell>Header 1</NxTable.Cell>
           <NxTable.Cell>Header 2</NxTable.Cell>
-          <NxTable.Cell>Header 3</NxTable.Cell>
+          <NxTable.Cell isNumeric>Header 3</NxTable.Cell>
         </NxTable.Row>
       </NxTable.Head>
       <NxTable.Body>
         <NxTable.Row>
           <NxTable.Cell>Content 1</NxTable.Cell>
           <NxTable.Cell>Content 2</NxTable.Cell>
-          <NxTable.Cell>Content 3</NxTable.Cell>
+          <NxTable.Cell isNumeric>5</NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
           <NxTable.Cell>Content 1</NxTable.Cell>
           <NxTable.Cell>Content 2</NxTable.Cell>
-          <NxTable.Cell>Content 3</NxTable.Cell>
+          <NxTable.Cell isNumeric>3.14</NxTable.Cell>
         </NxTable.Row>
       </NxTable.Body>
     </NxTable>
   );
 };
 
-export default NxTableSimpleExample;
+export default NxTableNumberColumnExample;
