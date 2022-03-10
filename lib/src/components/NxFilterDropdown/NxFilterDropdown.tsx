@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, Ref, useRef } from 'react';
+import React, { Ref, useRef } from 'react';
 import { propEq, any } from 'ramda';
 
 import { Props, propTypes } from './types';
@@ -14,6 +14,9 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import NxDropdown from '../NxDropdown/NxDropdown';
 import DataItem from '../../util/DataItem';
+import forwardRef from '../../util/genericForwardRef';
+
+export { Props };
 
 function NxFilterDropdownRender<T extends string | number = string>(props: Props<T>, ref: Ref<HTMLDivElement>) {
   const { onChange, selectedIds, isOpen, onToggleCollapse, options, ...attrs } = props,

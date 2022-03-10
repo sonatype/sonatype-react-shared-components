@@ -16,13 +16,15 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
   onChange: ((selectedIds: Set<T>, toggledId?: T) => void);
 }
 
-export const propTypes = {
-  options: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]),
-    displayName: PropTypes.string.isRequired
-  }),
+export const propTypes: PropTypes.ValidationMap<Props<string | number>>  = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]).isRequired,
+      displayName: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired,
   isOpen: PropTypes.bool.isRequired,
   onToggleCollapse: PropTypes.func.isRequired,
-  selectedIds: PropTypes.instanceOf(Set) as PropTypes.Validator<Set<string | number>>,
+  selectedIds: PropTypes.instanceOf(Set).isRequired as PropTypes.Validator<Set<string | number>>,
   onChange: PropTypes.func.isRequired
 };
