@@ -5,9 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
+import { HTMLAttributes } from 'react';
 import DataItem from '../../util/DataItem';
 
-export interface Props<T extends string | number = string> {
+export interface Props<T extends string | number = string> extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   options: DataItem<T>[];
   isOpen: boolean;
   onToggleCollapse: (() => void);
