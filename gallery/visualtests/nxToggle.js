@@ -9,7 +9,7 @@ const { Target } = require('@applitools/eyes-webdriverio');
 
 describe('NxToggle', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxToggle');
+    await browser.url('#/pages/Toggle');
   });
 
   const selector = '#nx-toggle-example .gallery-example-live label:nth-of-type(2)',

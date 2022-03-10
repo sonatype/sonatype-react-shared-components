@@ -9,7 +9,7 @@ const { Region, Target } = require('@applitools/eyes-webdriverio');
 
 describe('NxTag', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxTag');
+    await browser.url('#/pages/Tag');
   });
 
   describe('Basic NxTag', function() {

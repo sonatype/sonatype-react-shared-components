@@ -8,7 +8,7 @@ const { focusTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxCollapsibleMultiSelect', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxCollapsibleMultiSelect');
+    await browser.url('#/pages/Collapsible Multi-Select');
   });
 
   const selector = '#nx-collapsible-multi-select-example .nx-collapsible-items--select';

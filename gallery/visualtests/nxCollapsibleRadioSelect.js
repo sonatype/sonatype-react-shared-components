@@ -8,7 +8,7 @@ const { focusTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxCollapsibleRadioSelect', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxCollapsibleRadioSelect');
+    await browser.url('#/pages/Collapsible Radio-Select');
   });
 
   const selector = '#nx-collapsible-radio-select-example .nx-collapsible-items--select';

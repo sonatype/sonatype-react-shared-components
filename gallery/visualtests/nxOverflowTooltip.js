@@ -9,7 +9,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest
 
 describe('NxOverflowTooltip', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxOverflowTooltip');
+    await browser.url('#/pages/Overflow%20Tooltip');
     await browser.refresh();
   });
 

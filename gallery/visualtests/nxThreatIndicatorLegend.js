@@ -8,7 +8,7 @@ const { simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxThreatIndicatorLegend', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxThreatIndicatorLegend');
+    await browser.url('#/pages/Threat Indicator Legend');
   });
 
   const horizontalLegendSelector = '#nx-threat-indicator-legend-example .gallery-example-live',

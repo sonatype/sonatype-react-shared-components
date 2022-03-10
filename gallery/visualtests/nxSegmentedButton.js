@@ -10,7 +10,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest
 
 describe('NxSegmentedButton', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxSegmentedButton');
+    await browser.url('#/pages/Segmented%20Button');
   });
 
   async function openDropdown(dropdownBtnSelector) {

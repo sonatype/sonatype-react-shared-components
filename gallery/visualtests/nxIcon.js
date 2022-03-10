@@ -8,7 +8,7 @@ const { simpleTest, a11yTest } = require('./testUtils');
 
 describe('nx-icon', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-icon');
+    await browser.url('#/pages/Icon');
   });
 
   const selector = '.gallery-example-live';

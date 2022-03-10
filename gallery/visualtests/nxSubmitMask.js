@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest
 
 describe('NxSubmitMask', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxSubmitMask');
+    await browser.url('#/pages/Submit%20Mask');
   });
 
   const loadingMaskBtnSelector = '#nx-submit-mask-loading-example button',

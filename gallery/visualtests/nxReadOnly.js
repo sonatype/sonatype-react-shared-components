@@ -8,7 +8,7 @@ const { simpleTest, a11yTest } = require('./testUtils');
 
 describe('nx-read-only', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-read-only');
+    await browser.url('#/pages/Read%20Only');
   });
 
   const simpleSelector = '#nx-read-only-simple-example .gallery-example-live',

@@ -9,7 +9,7 @@ const { Target } = require('@applitools/eyes-webdriverio');
 
 describe('NxCheckbox', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxCheckbox');
+    await browser.url('#/pages/Checkbox');
   });
 
   const selector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(3)',
