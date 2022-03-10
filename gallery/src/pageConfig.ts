@@ -139,6 +139,7 @@ import NxStatefulCollapsibleRadioSelectPage
   from './components/NxStatefulCollapsibleRadioSelect/NxStatefulCollapsibleRadioSelectPage';
 import NxTreePage from './components/NxTree/NxTreePage';
 import ServerSideRenderingPage from './jsUtilPages/ServerSideRendering/ServerSideRenderingPage';
+import NxFilterDropdownPage from './components/NxFilterDropdown/NxFilterDropdownPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -169,6 +170,7 @@ const pageConfig: PageConfig = {
     'Close Button': { content: NxCloseButtonPage, type: 'react' },
     'Dropdown': { content: NxDropdownPage, type: 'react' },
     'Stateful Dropdown': { content: NxStatefulDropdownPage, type: 'react' },
+    'Filter Dropdown': { content: NxFilterDropdownPage, type: 'react' },
     'Icon Dropdown': { content: NxIconDropdownPage, type: 'react' },
     'Stateful Icon Dropdown': { content: NxStatefulIconDropdownPage, type: 'react' },
     'Pagination': { content: NxPaginationPage, type: 'react' },
