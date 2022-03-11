@@ -10,8 +10,10 @@ import { NxCode, NxH3, NxP, NxTable, NxTile } from '@sonatype/react-shared-compo
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxFilterDropdownExample from './NxFilterDropdownExample';
+import './NxFilterDropdownExample.scss';
 
-const nxFilterDropdownCode = require('./NxFilterDropdownExample?raw');
+const nxFilterDropdownCode = require('./NxFilterDropdownExample?raw'),
+    nxFilterDropdownStyles = require('./NxFilterDropdownExample.scss?raw');
 
 const NxFilterDropdownPage = () =>
   <>
@@ -89,7 +91,7 @@ const NxFilterDropdownPage = () =>
 
     <GalleryExampleTile title="Filter Dropdown Example"
                         liveExample={NxFilterDropdownExample}
-                        codeExamples={nxFilterDropdownCode}>
+                        codeExamples={[nxFilterDropdownCode, { language: 'scss', content: nxFilterDropdownStyles }]}>
       An example of an <NxCode>NxFilterDropdown</NxCode>
     </GalleryExampleTile>
   </>;
