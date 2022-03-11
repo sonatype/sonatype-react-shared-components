@@ -14,8 +14,10 @@ describe('NxPolicyThreatSlider', function() {
 
   const exampleSelector = '#nx-policy-threat-slider-example .gallery-example-live',
       disabledExampleSelector = '#nx-policy-threat-slider-disabled-example .nx-policy-threat-slider',
-      lowerSliderSelector = `${exampleSelector} .nx-policy-threat-slider__value-label[index="0"] .MuiSlider-thumb`,
-      upperSliderSelector = `${exampleSelector} .nx-policy-threat-slider__value-label[index="1"] .MuiSlider-thumb`;
+      lowerSliderSelector =
+          `${exampleSelector} .nx-policy-threat-slider__value-label .MuiSlider-thumb`,
+      upperSliderSelector =
+          `${exampleSelector} .nx-policy-threat-slider__value-label ~ .nx-policy-threat-slider__value-label .MuiSlider-thumb`;
 
   async function dragSliderHandle(browser, sliderElement, spaces) {
     await browser.performActions([{

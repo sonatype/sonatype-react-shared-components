@@ -72,5 +72,6 @@ describe('nx-list', function() {
     it('looks right', simpleTest(deprecatedSelector));
   });
 
-  it('passes a11y checks', a11yTest());
+  // see comment in the NxListButtonItem source code about aria-selected
+  it('passes a11y checks', a11yTest(builder => builder.disableRules('aria-allowed-attr')));
 });

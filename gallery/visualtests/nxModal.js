@@ -53,7 +53,7 @@ describe('NxModal', function() {
   describe('Simple NxModal', function() {
     it('looks right', simpleModalTest(simpleExampleSelector));
 
-    it('passes a11y checks', modalA11yTest());
+    it('passes a11y checks', modalA11yTest(simpleExampleSelector));
   });
 
   describe('Form NxModal', function() {
@@ -119,7 +119,7 @@ describe('NxModal', function() {
       await browser.eyesSnapshot(null);
     });
 
-    it('passes a11y checks', modalA11yTest());
+    it('passes a11y checks', modalA11yTest(formWithAlertExampleSelector));
   });
 
   describe('Narrow NxModal', function() {

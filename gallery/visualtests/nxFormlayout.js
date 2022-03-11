@@ -42,5 +42,6 @@ describe('nx-form', function() {
     it('looks right', simpleTest(selector));
   });
 
-  it('passes a11y checks', a11yTest());
+  // color-contrast rule doesn't work on elements with a background-image (such as nx-form-select)
+  it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
 });

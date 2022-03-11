@@ -25,10 +25,14 @@ export default function NxTextInputShortExample() {
   return (
     <>
       <div>
-        <NxTextInput className="nx-text-input--short" { ...state1 } onChange={onChange1} />
+        <NxTextInput className="nx-text-input--short" { ...state1 } onChange={onChange1} placeholder="Input"/>
       </div>
       <div>
-        <NxTextInput className="nx-text-input--short" type="textarea" { ...state2 } onChange={onChange2} />
+        <NxTextInput className="nx-text-input--short"
+                     type="textarea"
+                     { ...state2 }
+                     onChange={onChange2}
+                     placeholder="Text Area" />
       </div>
     </>
   );
