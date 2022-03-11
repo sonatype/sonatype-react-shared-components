@@ -48,11 +48,12 @@ export const NxSelectableTag: FunctionComponent<SelectableProps> =
             <NxFontAwesomeIcon icon={isSelected ? faTimesCircle : faPlusCircle} className="nx-tag__action" />;
 
       return (
-        <NxTag className={tagClasses} selectedIcons={tagIcons} {...attrs} role="switch" aria-checked={isSelected}>
+        <NxTag className={tagClasses} selectedIcons={tagIcons} {...attrs} aria-checked={isSelected}>
           {children}
           <input type="checkbox"
                  className="nx-tag__input"
                  checked={isSelected}
+                 role="switch"
                  onChange={onSelect || undefined} />
         </NxTag>
       );
