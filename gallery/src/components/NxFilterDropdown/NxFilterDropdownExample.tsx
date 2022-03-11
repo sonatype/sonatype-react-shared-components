@@ -17,9 +17,9 @@ const options: DataItem<string>[] = [
 ];
 
 const NxFilterDropdownExample = () => {
-  const [isOpen, onToggleCollapse] = useToggle(true);
+  const [isOpen, onToggleCollapse] = useToggle(false);
 
-  const [selection, onSelectionChange] = useState<Set<string>>(new Set(['motorcycle']));
+  const [selection, onSelectionChange] = useState<Set<string>>(new Set());
 
   function onChange(newSet: Set<string>) {
     onSelectionChange(newSet);
