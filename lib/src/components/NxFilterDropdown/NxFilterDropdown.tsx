@@ -18,6 +18,7 @@ import DataItem from '../../util/DataItem';
 import forwardRef from '../../util/genericForwardRef';
 
 import './NxFilterDropdown.scss';
+import Close from '../../icons/Close';
 
 export { Props };
 
@@ -83,7 +84,12 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
         </>
       );
 
-  const resetBtn = <button key="reset-btn" className="nx-text-link nx-filter-dropdown__reset" onClick={onResetClick} />;
+  const resetBtn = (
+    <button key="reset-btn" className="nx-dropdown-link nx-filter-dropdown__reset" onClick={onResetClick}>
+      <Close/>
+      <span>Reset</span>
+    </button>
+  );
 
   const checkboxes = options.map(renderOption),
       children = showReset === false ? checkboxes : [...checkboxes, resetBtn];

@@ -72,13 +72,16 @@
   @include nx-text-helpers.truncate-ellipsis;
   @include nx-text-helpers.regular;
 
+  background: none;
   border: none;
   cursor: pointer;
   display: block;
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
   padding: var(--nx-spacing-base) var(--nx-spacing-4x);
+  text-align: left;
   text-decoration: none;
+  width: 100%;
 
   &:focus {
     background-color: transparent;

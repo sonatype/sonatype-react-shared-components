@@ -13,11 +13,19 @@
   }
 
   .nx-radio-checkbox {
-    padding-left: var(--nx-spacing-3x);
-    padding-right: var(--nx-spacing-3x);
+    padding-left: var(--nx-spacing-4x);
+    padding-right: var(--nx-spacing-4x);
   }
 
   &__filter-icon {
     color: var(--nx-color-text-dark);
+  }
+
+  &__reset {
+    font-size: var(--nx-font-size-s);
+    text-decoration: none;
+  }
+  .nx-icon--close {
+    height: 1em;
   }
 }
