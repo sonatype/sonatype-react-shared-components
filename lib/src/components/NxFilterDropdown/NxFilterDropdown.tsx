@@ -66,7 +66,7 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
       dropdownLabel = (
         <>
           <NxFontAwesomeIcon className="nx-filter-dropdown__filter-icon" icon={faFilter} />
-          { selectedIds.size ? renderCounter() : null }
+          { selectedIds.size ? renderCounter() : <span>Filter</span> }
         </>
       );
 
