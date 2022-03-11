@@ -53,7 +53,7 @@ const NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props, 
                 aria-haspopup="true"
                 aria-expanded={isOpen}>
         <span className="nx-dropdown__toggle-label">{ label }</span>
-        <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown} size="lg" />
+        <NxFontAwesomeIcon className="nx-dropdown__toggle-caret" icon={isOpen ? faCaretUp : faCaretDown} size="lg" />
       </NxButton>
     );
 
