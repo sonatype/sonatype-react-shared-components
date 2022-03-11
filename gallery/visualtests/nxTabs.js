@@ -9,7 +9,7 @@ const { Target } = require('@applitools/eyes-webdriverio');
 
 describe('NxTabs', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/Tabs');
+    await browser.url('#/pages/Tabs?noCheckeredBackground');
   });
 
   const tabTileExampleSelector = '#nx-tab-tile-example .nx-tile',
