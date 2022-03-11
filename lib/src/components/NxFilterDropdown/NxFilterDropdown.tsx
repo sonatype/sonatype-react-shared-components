@@ -22,7 +22,16 @@ import './NxFilterDropdown.scss';
 export { Props };
 
 function NxFilterDropdownRender<T extends string | number = string>(props: Props<T>, ref: Ref<HTMLDivElement>) {
-  const { onChange, selectedIds, isOpen, onToggleCollapse, options, className: classNameProp, ...attrs } = props,
+  const {
+        onChange,
+        selectedIds,
+        isOpen,
+        onToggleCollapse,
+        options,
+        className: classNameProp,
+        showReset,
+        ...attrs
+      } = props,
       menuRef = useRef<HTMLDivElement>(null),
       className = classnames('nx-filter-dropdown', classNameProp);
 
@@ -54,6 +63,10 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
     }
   }
 
+  function onResetClick() {
+    onChange(new Set());
+  }
+
   const renderOption = ({ id, displayName }: DataItem<T>) => (
     <NxCheckbox key={id}
                 onChange={() => toggle(id)}
@@ -70,6 +83,11 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
         </>
       );
 
+  const resetBtn = <button key="reset-btn" className="nx-text-link nx-filter-dropdown__reset" onClick={onResetClick} />;
+
+  const checkboxes = options.map(renderOption),
+      children = showReset === false ? checkboxes : [...checkboxes, resetBtn];
+
   return (
     <NxDropdown className={className}
                 label={dropdownLabel}
@@ -79,7 +97,7 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
                 menuRef={menuRef}
                 ref={ref}
                 { ...attrs }>
-      { options.map(renderOption) }
+      {children}
     </NxDropdown>
   );
 }

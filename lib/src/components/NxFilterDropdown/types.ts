@@ -14,6 +14,7 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
   onToggleCollapse: (() => void);
   selectedIds: Set<T>;
   onChange: ((selectedIds: Set<T>, toggledId?: T) => void);
+  showReset?: boolean | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
@@ -26,5 +27,6 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   isOpen: PropTypes.bool.isRequired,
   onToggleCollapse: PropTypes.func.isRequired,
   selectedIds: PropTypes.instanceOf(Set).isRequired as PropTypes.Validator<Set<string | number>>,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  showReset: PropTypes.bool
 };
