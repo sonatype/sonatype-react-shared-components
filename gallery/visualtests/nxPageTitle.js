@@ -8,7 +8,7 @@ const { simpleTest, a11yTest } = require('./testUtils');
 
 describe('nx-page-title', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/Page%20Title');
+    await browser.url('#/pages/Page%20Title?noCheckeredBackground');
   });
 
   const simplePageTitle = '#nx-page-title-example .nx-page-title';
