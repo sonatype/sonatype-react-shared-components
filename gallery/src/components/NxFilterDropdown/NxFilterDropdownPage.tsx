@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxH3, NxP, NxTable, NxTile } from '@sonatype/react-shared-components';
+import { NxCode, NxH3, NxP, NxTable, NxTextLink, NxTile } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -92,7 +92,9 @@ const NxFilterDropdownPage = () =>
     <GalleryExampleTile title="Filter Dropdown Example"
                         liveExample={NxFilterDropdownExample}
                         codeExamples={[nxFilterDropdownCode, { language: 'scss', content: nxFilterDropdownStyles }]}>
-      An example of an <NxCode>NxFilterDropdown</NxCode>
+      An example of an <NxCode>NxFilterDropdown</NxCode> displaying the glyphs and unicode{' '}
+      <NxTextLink href="https://www.compart.com/en/unicode/category" external>general categories</NxTextLink> of the
+      first 128 unicode codepoints.
     </GalleryExampleTile>
   </>;
 
