@@ -90,6 +90,7 @@ const NxFilterDropdownPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Filter Dropdown Example"
+                        id="nx-filter-dropdown-example"
                         liveExample={NxFilterDropdownExample}
                         codeExamples={[nxFilterDropdownCode, { language: 'scss', content: nxFilterDropdownStyles }]}>
       An example of an <NxCode>NxFilterDropdown</NxCode> displaying the glyphs and unicode{' '}
