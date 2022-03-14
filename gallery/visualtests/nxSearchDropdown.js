@@ -37,7 +37,7 @@ describe('NxSearchDropdown', function() {
     });
 
     it('looks right', async function() {
-      const component = browser.$(basicExampleSelector),
+      const component = await browser.$(basicExampleSelector),
           { x, y } = await component.getLocation(),
           region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 125);
 
@@ -62,7 +62,7 @@ describe('NxSearchDropdown', function() {
     });
 
     it('looks right', async function() {
-      const component = browser.$(basicExampleSelector),
+      const component = await browser.$(basicExampleSelector),
           { x, y } = await component.getLocation(),
           region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 376);
 
@@ -87,7 +87,7 @@ describe('NxSearchDropdown', function() {
     });
 
     it('looks right', async function() {
-      const component = browser.$(basicExampleSelector),
+      const component = await browser.$(basicExampleSelector),
           { x, y } = await component.getLocation(),
           region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 88);
 
@@ -133,7 +133,7 @@ describe('NxSearchDropdown', function() {
     });
 
     it('looks right', async function() {
-      const component = browser.$(basicExampleSelector),
+      const component = await browser.$(basicExampleSelector),
           { x, y } = await component.getLocation(),
           region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 88);
 
@@ -143,7 +143,7 @@ describe('NxSearchDropdown', function() {
     it('passes a11y checks', a11yTest());
   });
 
-  desribe('NxSearchDropdown displaying an error', function() {
+  describe('NxSearchDropdown displaying an error', function() {
     beforeEach(async function() {
       const inputSelector = `${errorExampleSelector} .nx-filter-input input`,
           errorSelector = `${errorExampleSelector} .nx-alert--load-error`,
@@ -155,7 +155,7 @@ describe('NxSearchDropdown', function() {
     });
 
     it('looks right', async function() {
-      const component = browser.$(basicExampleSelector),
+      const component = await browser.$(basicExampleSelector),
           { x, y } = await component.getLocation(),
           region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 195);
 
