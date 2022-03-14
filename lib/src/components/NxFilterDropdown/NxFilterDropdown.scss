@@ -8,6 +8,10 @@
 .nx-filter-dropdown {
   text-transform: none;
 
+  .nx-dropdown__toggle {
+    font-weight: normal;
+  }
+
   .nx-counter {
     margin-left: 0;
   }
