@@ -152,7 +152,7 @@ const data = [
   { codepoint: '007C', glyph: '|', category: 'Sm' },
   { codepoint: '007D', glyph: '}', category: 'Pe' },
   { codepoint: '007E', glyph: '~', category: 'Sm' },
-  { codepoint: '007F', glyph: '', category: 'Cc' },
+  { codepoint: '007F', glyph: '', category: 'Cc' }
 ];
 
 const NxFilterDropdownExample = () => {
@@ -161,7 +161,6 @@ const NxFilterDropdownExample = () => {
 
       // When no filter options are selected, do not filter at all on that column
       filteredData = categoryFilter.size ? data.filter(({ category }) => categoryFilter.has(category)) : data;
-
 
   return (
     <NxTableContainer className="filter-dropdown-example nx-scrollable">
