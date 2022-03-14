@@ -47,7 +47,8 @@ describe('NxFilterDropdown', function() {
     });
 
     it('has focus, hover, and selection styles for checkboxes', async function() {
-      const [cb1, cb2] = await Promise.all([
+      const [dropdownEl, cb1, cb2] = await Promise.all([
+        browser.$(dropdownSelector),
         browser.$(`${dropdownSelector} .nx-checkbox:first-child`),
         browser.$(`${dropdownSelector} .nx-checkbox:nth-child(2)`)
       ]);
@@ -57,7 +58,7 @@ describe('NxFilterDropdown', function() {
       await cb1.click();
       await cb2.moveTo();
 
-      const { x, y } = await targetElement.getLocation();
+      const { x, y } = await dropdownEl.getLocation();
       const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 376);
 
       await browser.eyesRegionSnapshot(null, Target.region(region));
