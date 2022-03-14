@@ -38,6 +38,13 @@
 
   &__reset {
     font-size: var(--nx-font-size-s);
-    text-decoration: none;
+
+    &, &:hover {
+      text-decoration: none;
+    }
+
+    &:active {
+      color: var(--nx-color-link-active);
+    }
   }
 }
