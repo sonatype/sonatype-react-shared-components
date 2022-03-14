@@ -12,13 +12,12 @@ import { Props, propTypes } from './types';
 import NxCheckbox from '../NxCheckbox/NxCheckbox';
 import MultiSelectCounter from '../Counter/MultiSelectCounter';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faTimes } from '@fortawesome/free-solid-svg-icons';
 import NxDropdown from '../NxDropdown/NxDropdown';
 import DataItem from '../../util/DataItem';
 import forwardRef from '../../util/genericForwardRef';
 
 import './NxFilterDropdown.scss';
-import Close from '../../icons/Close';
 
 export { Props };
 
@@ -86,7 +85,7 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
 
   const resetBtn = (
     <button key="reset-btn" className="nx-dropdown-link nx-filter-dropdown__reset" onClick={onResetClick}>
-      <Close/>
+      <NxFontAwesomeIcon icon={faTimes} />
       <span>Reset</span>
     </button>
   );
