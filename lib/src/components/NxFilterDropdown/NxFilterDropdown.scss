@@ -17,8 +17,19 @@
   }
 
   .nx-radio-checkbox {
-    padding-left: var(--nx-spacing-4x);
-    padding-right: var(--nx-spacing-4x);
+    padding: var(--nx-spacing-base) var(--nx-spacing-4x);
+    margin: 0;
+    max-width: unset;
+
+    &:focus-within {
+      box-shadow: var(--nx-box-shadow-focus);
+      outline-offset: -1px;
+      outline: 1px solid var(--nx-color-interactive-border-focus);
+
+      .nx-checkbox__box::after {
+        display: none;
+      }
+    }
   }
 
   &__filter-icon {
