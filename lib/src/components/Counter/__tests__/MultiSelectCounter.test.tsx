@@ -6,9 +6,9 @@
  */
 import React from 'react';
 
-import {getShallowComponent} from '../../../../__testutils__/enzymeUtils';
+import {getShallowComponent} from '../../../__testutils__/enzymeUtils';
 import MultiSelectCounter, {Props} from '../MultiSelectCounter';
-import NxCollapsibleItemsCounter from '../../NxCollapsibleItemsCounter';
+import Counter from '../Counter';
 
 describe('MultiSelectCounter', function() {
   const simpleProps: Props = {
@@ -23,7 +23,7 @@ describe('MultiSelectCounter', function() {
   it('renders inactive NxCollapsibleItemsCounter when no option is selected', function() {
     const shallowRender = getShallow();
 
-    expect(shallowRender).toMatchSelector(NxCollapsibleItemsCounter);
+    expect(shallowRender).toMatchSelector(Counter);
     expect(shallowRender).toHaveProp('isActive', false);
 
     // Shockingly enzyme doesn't have a decent way to handle this. `.text()` (and thus the .toHaveText()` matcher)
@@ -36,7 +36,7 @@ describe('MultiSelectCounter', function() {
       selectedIds: new Set(['foo', 'bar'])
     });
 
-    expect(shallowRender).toMatchSelector(NxCollapsibleItemsCounter);
+    expect(shallowRender).toMatchSelector(Counter);
     expect(shallowRender).toHaveProp('isActive', true);
     expect(React.Children.toArray(shallowRender.prop('children')).join('')).toBe('2 of 2');
   });
@@ -46,7 +46,7 @@ describe('MultiSelectCounter', function() {
       selectedIds: new Set(['bar'])
     });
 
-    expect(shallowRender).toMatchSelector(NxCollapsibleItemsCounter);
+    expect(shallowRender).toMatchSelector(Counter);
     expect(shallowRender).toHaveProp('isActive', true);
     expect(React.Children.toArray(shallowRender.prop('children')).join('')).toBe('1 of 2');
   });
