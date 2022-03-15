@@ -84,6 +84,14 @@ const NxFilterDropdownPage = () =>
                 without a second argument.
               </NxTable.Cell>
             </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>showReset</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>False</NxTable.Cell>
+              <NxTable.Cell>
+                Whether or not to show the Reset button within the dropdown menu. Defaults to true.
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
