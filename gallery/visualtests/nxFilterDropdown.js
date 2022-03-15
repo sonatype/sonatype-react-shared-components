@@ -79,4 +79,37 @@ describe('NxFilterDropdown', function() {
           focusTest(dropdownSelector, resetBtnSelector));
     });
   });
+
+  it('stays open when a checkbox is clicked', async function() {
+    const button = await browser.$(dropdownSelector + ' .nx-dropdown__toggle');
+
+    await button.scrollIntoView({ block: 'center' });
+    await button.click();
+
+    const [dropdownMenu, checkbox] = await Promise.all([
+      browser.$(`${dropdownSelector} .nx-dropdown-menu`),
+      browser.$(`${dropdownSelector} .nx-checkbox:first-child`)
+    ]);
+
+    await checkbox.scrollIntoView({ block: 'center' });
+    await checkbox.click();
+
+    expect(await dropdownMenu.isDisplayed()).toBe(true);
+  });
+
+  it('closes when a click outside of the dropdown occurs', async function() {
+    const [table, button] = await Promise.all([
+      browser.$(defaultSelector),
+      browser.$(dropdownSelector + ' .nx-dropdown__toggle')
+    ]);
+
+    await table.scrollIntoView({ block: 'center' });
+    await button.click();
+
+    // click outside of menu
+    await table.click({ y: 50 });
+
+    const dropdownMenu = await browser.$(`${dropdownSelector} .nx-dropdown-menu`);
+    expect(await dropdownMenu.isDisplayed()).toBe(false);
+  });
 });
