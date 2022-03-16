@@ -140,6 +140,7 @@ import NxStatefulCollapsibleRadioSelectPage
 import NxTreePage from './components/NxTree/NxTreePage';
 import ServerSideRenderingPage from './jsUtilPages/ServerSideRendering/ServerSideRenderingPage';
 import NxFilterDropdownPage from './components/NxFilterDropdown/NxFilterDropdownPage';
+import NxStatefulFilterDropdownPage from './components/NxStatefulFilterDropdown/NxStatefulFilterDropdownPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -171,6 +172,7 @@ const pageConfig: PageConfig = {
     'Dropdown': { content: NxDropdownPage, type: 'react' },
     'Stateful Dropdown': { content: NxStatefulDropdownPage, type: 'react' },
     'Filter Dropdown': { content: NxFilterDropdownPage, type: 'react' },
+    'Stateful Filter Dropdown': { content: NxStatefulFilterDropdownPage, type: 'react' },
     'Icon Dropdown': { content: NxIconDropdownPage, type: 'react' },
     'Stateful Icon Dropdown': { content: NxStatefulIconDropdownPage, type: 'react' },
     'Pagination': { content: NxPaginationPage, type: 'react' },
