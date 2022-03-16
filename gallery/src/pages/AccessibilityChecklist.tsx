@@ -20,10 +20,10 @@ import {
 
 function Accessibility() {
 
-  const [isA, toggleA] = useToggle(false),
-      [isAA, toggleAA] = useToggle(false),
-      [isAAA, toggleAAA] = useToggle(false),
-      [isReco, toggleReco] = useToggle(false);
+  const [showA, toggleA] = useToggle(false),
+      [showAA, toggleAA] = useToggle(false),
+      [showAAA, toggleAAA] = useToggle(false),
+      [showReco, toggleReco] = useToggle(false);
 
   return (
     <GalleryTile title="WCAG Accessibility UX Checklist" className="nx-tile--accessibility-list">
