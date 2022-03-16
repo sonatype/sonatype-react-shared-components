@@ -316,3 +316,6 @@ export { StatefulItemProps as NxTreeStatefulItemProps } from './components/NxTre
 export { default as NxStableUniqueIdContext } from './components/NxStableUniqueIdContext/NxStableUniqueIdContext';
 export { default as NxFilterDropdown, Props as NxFilterDropdownProps }
   from './components/NxFilterDropdown/NxFilterDropdown';
+
+export { default as NxStatefulFilterDropdown, Props as NxStatefulFilterDropdownProps }
+  from './components/NxFilterDropdown/stateful/NxStatefulFilterDropdown';
