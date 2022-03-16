@@ -8,13 +8,15 @@ import * as PropTypes from 'prop-types';
 import { HTMLAttributes } from 'react';
 import DataItem from '../../util/DataItem';
 
-export interface Props<T extends string | number = string> extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface Props<T extends string | number = string>
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'placeholder'> {
   options: DataItem<T>[];
   isOpen: boolean;
   onToggleCollapse: (() => void);
   selectedIds: Set<T>;
   onChange: ((selectedIds: Set<T>, toggledId?: T) => void);
   showReset?: boolean | null;
+  placeholder?: string | null;
 }
 
 export const propTypes = {
@@ -22,5 +24,6 @@ export const propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onToggleCollapse: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  showReset: PropTypes.bool
+  showReset: PropTypes.bool,
+  placeholder: PropTypes.string
 };

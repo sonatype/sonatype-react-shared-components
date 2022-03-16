@@ -65,7 +65,7 @@ describe('NxFilterDropdown', function() {
     expect(caught).toBe(true);
   });
 
-  it('renders a filter icon and the word filter in the toggle, when selectedIds is empty', function() {
+  it('renders a filter icon and the word "Filter" in the toggle, when selectedIds is empty', function() {
     const component = getMounted(),
         toggleLabel = component.find('.nx-dropdown__toggle-label'),
         icon = toggleLabel.find(NxFontAwesomeIcon);
@@ -76,6 +76,12 @@ describe('NxFilterDropdown', function() {
     expect(toggleLabel).toHaveText('Filter');
   });
 
+  it('renders the placeholder instead of the word "Filter" if provided', function() {
+    const component = getMounted({ placeholder: 'foo' }),
+        toggleLabel = component.find('.nx-dropdown__toggle-label');
+
+    expect(toggleLabel).toHaveText('foo');
+  });
 
   it('renders a filter icon and a counter when selectedIds is not empty', function() {
     const props = {
