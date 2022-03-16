@@ -112,16 +112,14 @@
 }
 
 // Accessibility Checklist Page
-.nx-list.nx-list--no-bullets {
+.nx-list.gallery-list--no-bullets {
   .nx-list__item {
     list-style: none;
   }
 }
 
-.nx-tile--accessibility-list {
+.gallery-accessibility-list {
   .nx-radio-checkbox__content {
-    overflow: unset;
-    text-overflow: unset;
     white-space: normal;
   }
 
