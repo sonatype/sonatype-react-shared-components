@@ -10,11 +10,11 @@ import NxStatefulFilterDropdown, { Props } from '../NxStatefulFilterDropdown';
 
 describe('NxStatefulDropdown', function() {
   const minimalProps: Props = {
-      options: [],
-      selectedIds: new Set(),
-      onChange: () => {}
-    },
-    getShallow = getShallowComponent(NxStatefulFilterDropdown, minimalProps);
+        options: [],
+        selectedIds: new Set(),
+        onChange: () => {}
+      },
+      getShallow = getShallowComponent(NxStatefulFilterDropdown, minimalProps);
 
   it('renders an NxFilterDropdown passing down all props', function() {
     const component = getShallow();

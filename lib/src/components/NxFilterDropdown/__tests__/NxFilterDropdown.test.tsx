@@ -17,14 +17,14 @@ import NxCheckbox from '../../NxCheckbox/NxCheckbox';
 
 describe('NxFilterDropdown', function() {
   const minimalProps: Props = {
-      options: [],
-      isOpen: false,
-      onToggleCollapse: () => {},
-      selectedIds: new Set(),
-      onChange: () => {}
-    },
-    getShallow = getShallowComponent(NxFilterDropdown, minimalProps),
-    getMounted = getMountedComponent(NxFilterDropdown, minimalProps);
+        options: [],
+        isOpen: false,
+        onToggleCollapse: () => {},
+        selectedIds: new Set(),
+        onChange: () => {}
+      },
+      getShallow = getShallowComponent(NxFilterDropdown, minimalProps),
+      getMounted = getMountedComponent(NxFilterDropdown, minimalProps);
 
   it('renders an NxDropdown', function() {
     expect(getShallow()).toMatchSelector(NxDropdown);
