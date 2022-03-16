@@ -22,7 +22,13 @@ const tableData: Row[] = [
   {name: 'Karen', country: 'Australia'},
   {name: 'Paul', country: 'UK'},
   {name: 'Raul', country: 'Argentina'},
-  {name: 'Maria', country: 'Spain'}
+  {name: 'Maria', country: 'Spain'},
+  {name: 'Karim', country: 'France'},
+  {name: 'Leonardo', country: 'Italy'},
+  {name: 'Cristiano', country: 'Portugal'},
+  {name: 'Lionel', country: 'Argentina'},
+  {name: 'Antonio', country: 'Italy'},
+  {name: 'Joe', country: 'USA'}
 ];
 
 const NxTablePaginationExample = () => {

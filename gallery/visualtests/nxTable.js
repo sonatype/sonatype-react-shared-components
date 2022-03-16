@@ -162,5 +162,6 @@ describe('NxTable', function() {
     });
   });
 
-  it('passes a11y checks', a11yTest());
+  //For clickable rows, we add an empty <th> so that the chevron/icons are rendered on the last column
+  it('passes a11y checks', a11yTest(builder => builder.disableRules('empty-table-header')));
 });
