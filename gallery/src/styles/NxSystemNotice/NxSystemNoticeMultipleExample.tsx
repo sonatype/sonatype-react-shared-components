@@ -25,7 +25,7 @@ const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png
 export default function NxSystemNoticeGlobalSidebarExample() {
   return (
     <>
-      <div className="nx-system-notice-container" >
+      <div className="nx-system-notice-container">
         <div className="nx-system-notice" role="complementary">
           This is a test; this is only a test; only a test; a test; a test; a test; a test; a test; a test;
           a test; a test; a test; a test; a test; a test; a test; a test; a test; a test;
