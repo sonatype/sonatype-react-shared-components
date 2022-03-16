@@ -15,7 +15,8 @@ describe('NxFilterDropdown', function() {
   const tableSelector = '#nx-filter-dropdown-table-example .nx-table',
       dropdownSelector = `${tableSelector} .nx-filter-dropdown`,
       shortDropdownSelector = '#nx-filter-dropdown-short-example .nx-filter-dropdown',
-      nonDefaultDropdownSelector = '#nx-filter-dropdown-non-default-example .nx-filter-dropdown';
+      nonDefaultDropdownSelector = '#nx-filter-dropdown-non-default-example .nx-filter-dropdown',
+      labelledDropdownSelector = '#nx-filter-dropdown-example .nx-form-group';
 
   describe('NxFilterDropdown when closed', function() {
     it('has a light grey border by default', simpleTest(tableSelector));
@@ -110,6 +111,23 @@ describe('NxFilterDropdown', function() {
       await button.click();
 
       const { x, y } = await dropdown.getLocation();
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 376);
+
+      await browser.eyesRegionSnapshot(null, Target.region(region));
+    });
+  });
+
+  describe('NxFilterDropdown with label', function() {
+    it('looks right when open', async function() {
+      const [formGroup, button] = await Promise.all([
+        browser.$(labelledDropdownSelector),
+        browser.$(labelledDropdownSelector + ' .nx-dropdown__toggle')
+      ]);
+
+      await button.scrollIntoView({ block: 'center' });
+      await button.click();
+
+      const { x, y } = await formGroup.getLocation();
       const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 376);
 
       await browser.eyesRegionSnapshot(null, Target.region(region));
