@@ -12,15 +12,17 @@ describe('NxFilterDropdown', function() {
     await browser.url('#/pages/Filter Dropdown');
   });
 
-  const defaultSelector = '#nx-filter-dropdown-example .nx-table',
-      dropdownSelector = `${defaultSelector} .nx-filter-dropdown`;
+  const tableSelector = '#nx-filter-dropdown-table-example .nx-table',
+      dropdownSelector = `${tableSelector} .nx-filter-dropdown`,
+      shortDropdownSelector = '#nx-filter-dropdown-short-example .nx-filter-dropdown',
+      nonDefaultDropdownSelector = '#nx-filter-dropdown-non-default-example .nx-filter-dropdown';
 
   describe('NxFilterDropdown when closed', function() {
-    it('has a light grey border by default', simpleTest(defaultSelector));
-    it('has a dark grey border when hovered', hoverTest(defaultSelector, dropdownSelector));
-    it('has a light blue border when focused', focusTest(defaultSelector, dropdownSelector));
-    it('has a dark grey border when focused and hovered', focusAndHoverTest(defaultSelector, dropdownSelector));
-    it('has a dark grey border and light grey background when clicked', clickTest(defaultSelector, dropdownSelector));
+    it('has a light grey border by default', simpleTest(tableSelector));
+    it('has a dark grey border when hovered', hoverTest(tableSelector, dropdownSelector));
+    it('has a light blue border when focused', focusTest(tableSelector, dropdownSelector));
+    it('has a dark grey border when focused and hovered', focusAndHoverTest(tableSelector, dropdownSelector));
+    it('has a dark grey border and light grey background when clicked', clickTest(tableSelector, dropdownSelector));
   });
 
   describe('NxFilterDropdown when open', function() {
@@ -80,6 +82,40 @@ describe('NxFilterDropdown', function() {
     });
   });
 
+  describe('Short NxFilterDropdown', function() {
+    it('looks right when open', async function() {
+      const [dropdown, button] = await Promise.all([
+        browser.$(shortDropdownSelector),
+        browser.$(shortDropdownSelector + ' .nx-dropdown__toggle')
+      ]);
+
+      await button.scrollIntoView({ block: 'center' });
+      await button.click();
+
+      const { x, y } = await dropdown.getLocation();
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 376);
+
+      await browser.eyesRegionSnapshot(null, Target.region(region));
+    });
+  });
+
+  describe('NxFilterDropdown with custom placeholder and no Reset', function() {
+    it('looks right when open', async function() {
+      const [dropdown, button] = await Promise.all([
+        browser.$(nonDefaultDropdownSelector),
+        browser.$(nonDefaultDropdownSelector + ' .nx-dropdown__toggle')
+      ]);
+
+      await button.scrollIntoView({ block: 'center' });
+      await button.click();
+
+      const { x, y } = await dropdown.getLocation();
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 376);
+
+      await browser.eyesRegionSnapshot(null, Target.region(region));
+    });
+  });
+
   it('stays open when a checkbox is clicked', async function() {
     const button = await browser.$(dropdownSelector + ' .nx-dropdown__toggle');
 
@@ -99,7 +135,7 @@ describe('NxFilterDropdown', function() {
 
   it('closes when a click outside of the dropdown occurs', async function() {
     const [table, button] = await Promise.all([
-      browser.$(defaultSelector),
+      browser.$(tableSelector),
       browser.$(dropdownSelector + ' .nx-dropdown__toggle')
     ]);
 
