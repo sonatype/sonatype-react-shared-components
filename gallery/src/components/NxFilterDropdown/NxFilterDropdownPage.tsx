@@ -10,10 +10,16 @@ import { NxCode, NxH3, NxP, NxTable, NxTextLink, NxTile } from '@sonatype/react-
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxFilterDropdownExample from './NxFilterDropdownExample';
-import './NxFilterDropdownExample.scss';
+import NxFilterDropdownNonDefaultExample from './NxFilterDropdownNonDefaultExample';
+import NxFilterDropdownTableExample from './NxFilterDropdownTableExample';
+import './NxFilterDropdownTableExample.scss';
 
 const nxFilterDropdownCode = require('./NxFilterDropdownExample?raw'),
-    nxFilterDropdownStyles = require('./NxFilterDropdownExample.scss?raw');
+    nxFilterDropdownNonDefaultCode = require('./NxFilterDropdownNonDefaultExample?raw'),
+    nxFilterDropdownTableCode = require('./NxFilterDropdownTableExample?raw'),
+    nxFilterDropdownTableStyles = require('./NxFilterDropdownTableExample.scss?raw');
+
+const tableExampleCode = [nxFilterDropdownTableCode, { language: 'scss', content: nxFilterDropdownTableStyles }];
 
 const NxFilterDropdownPage = () =>
   <>
@@ -97,13 +103,29 @@ const NxFilterDropdownPage = () =>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Filter Dropdown Example"
+    <GalleryExampleTile title="Filter Dropdown Simple Example"
                         id="nx-filter-dropdown-example"
                         liveExample={NxFilterDropdownExample}
-                        codeExamples={[nxFilterDropdownCode, { language: 'scss', content: nxFilterDropdownStyles }]}>
-      An example of an <NxCode>NxFilterDropdown</NxCode> displaying the glyphs and unicode{' '}
+                        codeExamples={nxFilterDropdownCode}>
+      An <NxCode>NxFilterDropdown</NxCode> paired with a label.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Filter Dropdown Non-default Example"
+                        id="nx-filter-dropdown-example"
+                        liveExample={NxFilterDropdownNonDefaultExample}
+                        codeExamples={nxFilterDropdownNonDefaultCode}>
+      An <NxCode>NxFilterDropdown</NxCode> with non-default values set for
+      the <NxCode>placeholder</NxCode> and <NxCode>showReset</NxCode> props.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Filter Dropdown Table Example"
+                        id="nx-filter-dropdown-table-example"
+                        liveExample={NxFilterDropdownTableExample}
+                        codeExamples={tableExampleCode}>
+      An example of an <NxCode>NxFilterDropdown</NxCode> within a table displaying the glyphs and unicode{' '}
       <NxTextLink href="https://www.compart.com/en/unicode/category" external>general categories</NxTextLink> of the
-      first 128 unicode codepoints.
+      first 128 unicode codepoints. Note that in this example, the dropdown's "label" is effectively the header
+      of its table column.
     </GalleryExampleTile>
   </>;
 

@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { DataItem, NxFilterDropdown, NxFormGroup, useToggle } from '@sonatype/react-shared-components';
+import { DataItem, NxFilterDropdown, useToggle } from '@sonatype/react-shared-components';
 
 const options: DataItem<string>[] = [
   { id: 'bike', displayName: 'Bicycle' },
@@ -21,13 +21,13 @@ const NxFilterDropdownExample = () => {
       [filter, onFilterChange] = useState<Set<string>>(new Set());
 
   return (
-    <NxFormGroup label="Filter Mode of Transportation">
-      <NxFilterDropdown isOpen={isOpen}
-                        onToggleCollapse={onToggleCollapse}
-                        options={options}
-                        selectedIds={filter}
-                        onChange={onFilterChange} />
-    </NxFormGroup>
+    <NxFilterDropdown isOpen={isOpen}
+                      onToggleCollapse={onToggleCollapse}
+                      options={options}
+                      selectedIds={filter}
+                      onChange={onFilterChange}
+                      showReset={false}
+                      placeholder="Filter Transportation"/>
   );
 };
 
