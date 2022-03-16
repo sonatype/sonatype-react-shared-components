@@ -8,7 +8,7 @@ import { omit } from 'ramda';
 
 import { Props as NxFilterDropdownProps, propTypes as nxFilterDropdownPropTypes } from '../types';
 
-const propsToOmit = ['isOpen', 'onToggleCollapse'] as const
+const propsToOmit = ['isOpen', 'onToggleCollapse'] as const;
 
 export type Props<T extends string | number = string> = Omit<NxFilterDropdownProps<T>, (typeof propsToOmit)[number]>;
 

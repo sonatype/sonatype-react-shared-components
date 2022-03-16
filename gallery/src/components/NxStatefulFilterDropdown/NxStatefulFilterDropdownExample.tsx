@@ -12,7 +12,7 @@ const options: DataItem<string>[] = [
   { id: 'bike', displayName: 'Bicycle' },
   { id: 'motorcycle', displayName: 'Motorcycle' },
   { id: 'skate', displayName: 'Skateboard' },
-  { id: 'longboard', displayName: 'Loooooooooooooooooooooooooooooooooongboard' },
+  { id: 'longboard', displayName: 'Loooooooooooooooooooooooooooooooooongboard' }
 ];
 
 const NxFilterDropdownExample = () => {

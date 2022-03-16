@@ -31,6 +31,10 @@ const NxFormGroupPage = () =>
         and checkbox groups, as those are best encapsulated
         in <NxCode>&lt;fieldset&gt;</NxCode> elements.
       </NxP>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Props</NxH3>
+        </NxTile.SubsectionHeader>
       <NxTable>
         <NxTable.Head>
           <NxTable.Row>
