@@ -14,7 +14,7 @@ export default function NxTileFormExample() {
   }
 
   return (
-    <section className="nx-tile" aria-label="Example of nx-tile with a form">
+    <section className="nx-tile" aria-label="Example of nx-tile with a form with error">
       <NxForm onSubmit={onSubmit} doLoad={() => {}} loadError="404 Not Found">
         <header className="nx-tile-header">
           <div className="nx-tile-header__title">
