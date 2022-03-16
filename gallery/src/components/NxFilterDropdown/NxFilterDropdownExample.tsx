@@ -21,7 +21,7 @@ const NxFilterDropdownExample = () => {
       [filter, onFilterChange] = useState<Set<string>>(new Set());
 
   return (
-    <NxFormGroup label="Filter Mode of Transportation">
+    <NxFormGroup label="Filter Mode of Transportation" className="nx-form-group--hide-optional">
       <NxFilterDropdown isOpen={isOpen}
                         onToggleCollapse={onToggleCollapse}
                         options={options}
