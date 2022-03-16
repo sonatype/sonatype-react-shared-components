@@ -52,7 +52,7 @@ function Accessibility() {
           </em>
         </NxP>
         <NxH4>
-          1.1 Text alternatives- Provide text alternatives for any non-text content so that it can be changed into other
+          1.1 Text alternatives – Provide text alternatives for any non-text content so that it can be changed into other
           forms people need, such as large print, braille, speech, symbols or simpler language.
         </NxH4>
         <NxList>
