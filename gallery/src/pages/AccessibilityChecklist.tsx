@@ -306,7 +306,7 @@ function Accessibility() {
             </NxList.Text>
             <NxList.Actions>
               <NxTextLink external
-                          href="https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=111%2C128%2C133#distinguishable">
+                          href="https://www.w3.org/WAI/WCAG21/quickref/#distinguishable">
                 Level A
               </NxTextLink>
             </NxList.Actions>
