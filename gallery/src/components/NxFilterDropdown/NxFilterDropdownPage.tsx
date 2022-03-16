@@ -40,6 +40,7 @@ const NxFilterDropdownPage = () =>
               <NxTable.Cell>Name</NxTable.Cell>
               <NxTable.Cell>Type</NxTable.Cell>
               <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Default</NxTable.Cell>
               <NxTable.Cell>Description</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Head>
@@ -48,6 +49,7 @@ const NxFilterDropdownPage = () =>
               <NxTable.Cell>options</NxTable.Cell>
               <NxTable.Cell>DataItem[]</NxTable.Cell>
               <NxTable.Cell>True</NxTable.Cell>
+              <NxTable.Cell/>
               <NxTable.Cell>
                 List of options to be rendered as checkboxes. Each option is expected to be an object containing
                 an <NxCode>id</NxCode> and a <NxCode>displayName</NxCode>. <NxCode>id</NxCode> may be either a string
@@ -58,12 +60,14 @@ const NxFilterDropdownPage = () =>
               <NxTable.Cell>isOpen</NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>True</NxTable.Cell>
+              <NxTable.Cell/>
               <NxTable.Cell>Whether the dropdown is currently expanded</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>onToggleCollapse</NxTable.Cell>
               <NxTable.Cell>Function</NxTable.Cell>
               <NxTable.Cell>True</NxTable.Cell>
+              <NxTable.Cell/>
               <NxTable.Cell>
                 A function to execute whenever the dropdown is toggled. This toggling occurs when the dropdown button
                 is clicked and also, if the dropdown is currently open, whenever a click occurs anywhere outside of the
@@ -74,6 +78,7 @@ const NxFilterDropdownPage = () =>
               <NxTable.Cell>selectedIds</NxTable.Cell>
               <NxTable.Cell>Set</NxTable.Cell>
               <NxTable.Cell>True</NxTable.Cell>
+              <NxTable.Cell/>
               <NxTable.Cell>
                 A set containing the ids of all items from the <NxCode>options</NxCode> array which are currently
                 selected
@@ -83,6 +88,7 @@ const NxFilterDropdownPage = () =>
               <NxTable.Cell>onChange</NxTable.Cell>
               <NxTable.Cell>Function</NxTable.Cell>
               <NxTable.Cell>True</NxTable.Cell>
+              <NxTable.Cell/>
               <NxTable.Cell>
                 A function which is called whenever the user changes their selection. This function is passed two
                 arguments: the new <NxCode>Set</NxCode> of selected ids, and, if the user toggled a specific item,
@@ -94,9 +100,42 @@ const NxFilterDropdownPage = () =>
               <NxTable.Cell>showReset</NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>False</NxTable.Cell>
+              <NxTable.Cell>True</NxTable.Cell>
               <NxTable.Cell>
                 Whether or not to show the Reset button within the dropdown menu. Defaults to true.
               </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>placeholder</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>False</NxTable.Cell>
+              <NxTable.Cell>"Filter"</NxTable.Cell>
+              <NxTable.Cell>
+                Text to display in the dropdown toggle box when no filters are active.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Style Variations</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          <NxCode>NxFilterDropdown</NxCode> is a variation of <NxCode>NxDropdown</NxCode> and as such supports the
+          following CSS classes for stylistic variation.
+        </NxP>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Description</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-dropdown--short</NxCode></NxTable.Cell>
+              <NxTable.Cell>Gives the component a width of 150px rather than the default 250px</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
