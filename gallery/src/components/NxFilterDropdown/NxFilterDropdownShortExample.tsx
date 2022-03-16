@@ -16,19 +16,18 @@ const options: DataItem<string>[] = [
   { id: 'moped', displayName: 'Moped' }
 ];
 
-const NxFilterDropdownNonDefaultExample = () => {
+const NxFilterDropdownShortExample = () => {
   const [isOpen, onToggleCollapse] = useToggle(false),
       [filter, onFilterChange] = useState<Set<string>>(new Set());
 
   return (
-    <NxFilterDropdown isOpen={isOpen}
+    <NxFilterDropdown className="nx-dropdown--short"
+                      isOpen={isOpen}
                       onToggleCollapse={onToggleCollapse}
                       options={options}
                       selectedIds={filter}
-                      onChange={onFilterChange}
-                      showReset={false}
-                      placeholder="Filter Transportation"/>
+                      onChange={onFilterChange} />
   );
 };
 
-export default NxFilterDropdownNonDefaultExample;
+export default NxFilterDropdownShortExample;

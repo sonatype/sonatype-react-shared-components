@@ -11,11 +11,13 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxFilterDropdownExample from './NxFilterDropdownExample';
 import NxFilterDropdownNonDefaultExample from './NxFilterDropdownNonDefaultExample';
+import NxFilterDropdownShortExample from './NxFilterDropdownShortExample';
 import NxFilterDropdownTableExample from './NxFilterDropdownTableExample';
 import './NxFilterDropdownTableExample.scss';
 
 const nxFilterDropdownCode = require('./NxFilterDropdownExample?raw'),
     nxFilterDropdownNonDefaultCode = require('./NxFilterDropdownNonDefaultExample?raw'),
+    nxFilterDropdownShortCode = require('./NxFilterDropdownShortExample?raw'),
     nxFilterDropdownTableCode = require('./NxFilterDropdownTableExample?raw'),
     nxFilterDropdownTableStyles = require('./NxFilterDropdownTableExample.scss?raw');
 
@@ -150,11 +152,18 @@ const NxFilterDropdownPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Filter Dropdown Non-default Example"
-                        id="nx-filter-dropdown-example"
+                        id="nx-filter-dropdown-non-default-example"
                         liveExample={NxFilterDropdownNonDefaultExample}
                         codeExamples={nxFilterDropdownNonDefaultCode}>
       An <NxCode>NxFilterDropdown</NxCode> with non-default values set for
       the <NxCode>placeholder</NxCode> and <NxCode>showReset</NxCode> props.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Filter Dropdown Short Example"
+                        id="nx-filter-dropdown-short-example"
+                        liveExample={NxFilterDropdownShortExample}
+                        codeExamples={nxFilterDropdownShortCode}>
+      An <NxCode>NxFilterDropdown</NxCode> with the <NxCode>nx-dropdown--short</NxCode> class.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Filter Dropdown Table Example"
