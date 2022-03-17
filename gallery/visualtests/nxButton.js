@@ -90,9 +90,7 @@ describe('NxButton', function() {
   describe('nx-btn class on <a>', function() {
     const selector = '#nx-btn-links-example .nx-btn-bar';
 
-    beforeEach(async function() {
-      await browser.url('#/pages/Button (HTML)');
-    });
+    const { simpleTest } = setupBrowser('#/pages/Button (HTML)');
 
     it('looks right', simpleTest(selector));
   });
