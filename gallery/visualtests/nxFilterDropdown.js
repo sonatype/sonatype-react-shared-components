@@ -12,7 +12,7 @@ describe('NxFilterDropdown', function() {
     await browser.url('#/pages/Filter Dropdown');
   });
 
-  const tableSelector = '#nx-filter-dropdown-table-example .nx-table',
+  const tableExampleSelector = '#nx-filter-dropdown-table-example .gallery-example-live',
       dropdownSelector = `${tableSelector} .nx-filter-dropdown`,
       shortDropdownSelector = '#nx-filter-dropdown-short-example .nx-filter-dropdown',
       nonDefaultDropdownSelector = '#nx-filter-dropdown-non-default-example .nx-filter-dropdown',
