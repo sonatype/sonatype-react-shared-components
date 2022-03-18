@@ -106,7 +106,7 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
       // Ignore the linter. Ironically, this element had to be added to the tab order to improve screenreading
       /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
       <nav tabIndex={0}
-           aria-label={`pagination, page ${currentPage + 1} of ${pageCount}`}
+           aria-label="pagination"
            className={classes}
            { ...attrs }>
         { !onFirstPage &&
