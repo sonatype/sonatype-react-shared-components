@@ -23,7 +23,7 @@ describe('NxFilterDropdown', function() {
     it('has a dark grey border when hovered', hoverTest(tableExampleSelector, dropdownSelector));
     it('has a light blue border when focused', focusTest(tableExampleSelector, dropdownSelector));
     it('has a dark grey border when focused and hovered', focusAndHoverTest(tableExampleSelector, dropdownSelector));
-    it('has a dark grey border and light grey background when clicked', clickTest(tableExampleSelector, dropdownSelector));
+    it('has a dark grey border when clicked', clickTest(tableExampleSelector, dropdownSelector));
   });
 
   describe('NxFilterDropdown when open', function() {
