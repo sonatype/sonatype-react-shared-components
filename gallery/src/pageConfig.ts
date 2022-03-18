@@ -139,6 +139,7 @@ import NxStatefulCollapsibleRadioSelectPage
   from './components/NxStatefulCollapsibleRadioSelect/NxStatefulCollapsibleRadioSelectPage';
 import NxTreePage from './components/NxTree/NxTreePage';
 import ServerSideRenderingPage from './jsUtilPages/ServerSideRendering/ServerSideRenderingPage';
+import NxProgressBarPage from './components/NxProgressBar/NxProgressBar';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -149,6 +150,7 @@ const pageConfig: PageConfig = {
     'Load Wrapper': { content: NxLoadWrapperPage, type: 'react' },
     'Loading Spinner': { content: NxLoadingSpinnerPage, type: 'react' },
     'Policy Violation Indicator': { content: NxPolicyViolationIndicatorPage, type: 'react' },
+    'Progress Bar': { content: NxProgressBarPage, type: 'react' },
     'Submit Mask': { content: NxSubmitMaskPage, type: 'react' },
     'Stateful Submit Mask': { content: NxStatefulSubmitMaskPage, type: 'react' },
     'System Notice': { content: NxSystemNoticePage, type: 'html' },
