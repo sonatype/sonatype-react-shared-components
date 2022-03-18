@@ -13,17 +13,17 @@ describe('NxFilterDropdown', function() {
   });
 
   const tableExampleSelector = '#nx-filter-dropdown-table-example .gallery-example-live',
-      dropdownSelector = `${tableSelector} .nx-filter-dropdown`,
+      dropdownSelector = `${tableExampleSelector} .nx-filter-dropdown`,
       shortDropdownSelector = '#nx-filter-dropdown-short-example .nx-filter-dropdown',
       nonDefaultDropdownSelector = '#nx-filter-dropdown-non-default-example .nx-filter-dropdown',
       labelledDropdownSelector = '#nx-filter-dropdown-example .nx-form-group';
 
   describe('NxFilterDropdown when closed', function() {
-    it('has a light grey border by default', simpleTest(tableSelector));
-    it('has a dark grey border when hovered', hoverTest(tableSelector, dropdownSelector));
-    it('has a light blue border when focused', focusTest(tableSelector, dropdownSelector));
-    it('has a dark grey border when focused and hovered', focusAndHoverTest(tableSelector, dropdownSelector));
-    it('has a dark grey border and light grey background when clicked', clickTest(tableSelector, dropdownSelector));
+    it('has a light grey border by default', simpleTest(tableExampleSelector));
+    it('has a dark grey border when hovered', hoverTest(tableExampleSelector, dropdownSelector));
+    it('has a light blue border when focused', focusTest(tableExampleSelector, dropdownSelector));
+    it('has a dark grey border when focused and hovered', focusAndHoverTest(tableExampleSelector, dropdownSelector));
+    it('has a dark grey border and light grey background when clicked', clickTest(tableExampleSelector, dropdownSelector));
   });
 
   describe('NxFilterDropdown when open', function() {
@@ -153,7 +153,7 @@ describe('NxFilterDropdown', function() {
 
   it('closes when a click outside of the dropdown occurs', async function() {
     const [table, button] = await Promise.all([
-      browser.$(tableSelector),
+      browser.$(tableExampleSelector),
       browser.$(dropdownSelector + ' .nx-dropdown__toggle')
     ]);
 
