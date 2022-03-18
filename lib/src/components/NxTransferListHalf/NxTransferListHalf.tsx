@@ -50,8 +50,8 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
       }
   );
 
-  const moveUpButtonTitle = isTopItem || isFilteredItem ? null : 'Move Up';
-  const moveDownButtonTitle = isBottomItem || isFilteredItem ? null : 'Move Down';
+  const moveUpButtonTitle = isTopItem || isFilteredItem ? 'Move Up (disabled)' : 'Move Up';
+  const moveDownButtonTitle = isBottomItem || isFilteredItem ? 'Move Down (disabled)' : 'Move Down';
 
   return (
     <div className={classes}>
@@ -68,7 +68,6 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
             <NxButton type="button"
                       variant="icon-only"
                       title={moveUpButtonTitle}
-                      aria-label={moveUpButtonTitle || `${moveUpButtonTitle} (disabled)`}
                       disabled={isFilteredItem || isTopItem}
                       onClick={() => !isTopItem && onReorderItem && onReorderItem(index, -1)}>
               <NxFontAwesomeIcon icon={faArrowUp}/>
@@ -76,7 +75,6 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
             <NxButton type="button"
                       variant="icon-only"
                       title={moveDownButtonTitle}
-                      aria-label={moveDownButtonTitle || `${moveDownButtonTitle} (disabled)`}
                       disabled={isFilteredItem || isBottomItem}
                       onClick={() => !isBottomItem && onReorderItem && onReorderItem(index, 1)}>
               <NxFontAwesomeIcon icon={faArrowDown}/>
