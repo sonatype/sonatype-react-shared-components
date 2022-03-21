@@ -19,11 +19,13 @@ describe('NxFilterDropdown', function() {
       labelledDropdownSelector = '#nx-filter-dropdown-example .nx-form-group';
 
   describe('NxFilterDropdown when closed', function() {
+    const toggleSelector = `${dropdownSelector} .nx-dropdown__toggle`;
+
     it('has a light grey border by default', simpleTest(tableExampleSelector));
-    it('has a dark grey border when hovered', hoverTest(tableExampleSelector, dropdownSelector));
-    it('has a light blue border when focused', focusTest(tableExampleSelector, dropdownSelector));
-    it('has a dark grey border when focused and hovered', focusAndHoverTest(tableExampleSelector, dropdownSelector));
-    it('has a dark grey border when clicked', clickTest(tableExampleSelector, dropdownSelector));
+    it('has a dark grey border when hovered', hoverTest(tableExampleSelector, toggleSelector));
+    it('has a light blue border when focused', focusTest(tableExampleSelector, toggleSelector));
+    it('has a dark grey border when focused and hovered', focusAndHoverTest(tableExampleSelector, toggleSelector));
+    it('has a dark grey border when clicked', clickTest(tableExampleSelector, toggleSelector));
   });
 
   describe('NxFilterDropdown when open', function() {
