@@ -14,12 +14,12 @@ describe('NxFilterDropdown', function() {
 
   const tableExampleSelector = '#nx-filter-dropdown-table-example .gallery-example-live',
       dropdownSelector = `${tableExampleSelector} .nx-filter-dropdown`,
+      toggleSelector = `${dropdownSelector} .nx-dropdown__toggle`;
       shortDropdownSelector = '#nx-filter-dropdown-short-example .nx-filter-dropdown',
       nonDefaultDropdownSelector = '#nx-filter-dropdown-non-default-example .nx-filter-dropdown',
       labelledDropdownSelector = '#nx-filter-dropdown-example .nx-form-group';
 
   describe('NxFilterDropdown when closed', function() {
-    const toggleSelector = `${dropdownSelector} .nx-dropdown__toggle`;
 
     it('has a light grey border by default', simpleTest(tableExampleSelector));
     it('has a dark grey border when hovered', hoverTest(tableExampleSelector, toggleSelector));
@@ -30,20 +30,23 @@ describe('NxFilterDropdown', function() {
 
   describe('NxFilterDropdown when open', function() {
     beforeEach(async function() {
-      const button = await browser.$(dropdownSelector + ' .nx-dropdown__toggle');
+      const button = await browser.$(toggleSelector);
 
       await button.scrollIntoView({ block: 'center' });
       await button.click();
     });
 
     it('has a dark button border with expanded menu', async function() {
-      const targetElement = await browser.$(dropdownSelector);
+      const [targetElement, toggleElement] = await Promise.all([
+        browser.$(dropdownSelector),
+        browser.$(toggleSelector)
+      ]);
 
       await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
       await browser.execute(function(el) {
         el.blur();
-      }, targetElement);
+      }, toggleElement);
 
       const { x, y } = await targetElement.getLocation();
       const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 376);
