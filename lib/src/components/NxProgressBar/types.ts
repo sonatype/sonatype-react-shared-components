@@ -7,20 +7,29 @@
 import * as PropTypes from 'prop-types';
 import { HTMLAttributes } from 'react';
 
+export const NX_PROGRESS_BAR_VARIANTS = ['inline', 'small', 'normal', 'full'] as const;
+export type NX_PROGRESS_BAR_VARIANT_TYPE = (typeof NX_PROGRESS_BAR_VARIANTS)[number];
+
 export interface Props extends HTMLAttributes<Omit<HTMLProgressElement, 'value' | 'max'>> {
-  showCounter?: boolean | null;
-  inlineCounter?: boolean | null;
   hasError?: boolean | null;
-  label?: string | number | null;
-  labelSuccess?: string | number | null;
-  labelError?: string | number | null;
-  variant?: 'inline' | 'small' | 'normal' | 'full';
+  inlineCounter?: boolean | null;
+  label?: string | null;
+  labelError?: string | null;
+  labelSuccess?: string | null;
+  max?: number | null;
+  showCounter?: boolean | null;
   value: number;
-  max?: number;
+  variant?: NX_PROGRESS_BAR_VARIANT_TYPE | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  showCounter: PropTypes.bool,
+  hasError: PropTypes.bool,
   inlineCounter: PropTypes.bool,
-  hasError: PropTypes.bool
+  label: PropTypes.string,
+  labelError: PropTypes.string,
+  labelSuccess: PropTypes.string,
+  max: PropTypes.number,
+  showCounter: PropTypes.bool,
+  value: PropTypes.number.isRequired,
+  variant: PropTypes.oneOf(NX_PROGRESS_BAR_VARIANTS)
 };

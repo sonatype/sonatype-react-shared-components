@@ -12,19 +12,16 @@ export default function NxProgressBarExample() {
     <>
       <div>
         <NxProgressBar value={100}
+                       variant="small"
+                       showCounter={true}
+        />
+        <NxProgressBar value={100}
                        label="10 of 10 of files transferred."
                        showCounter={true}
         />
-      </div>
-      <div>
         <NxProgressBar value={100}
+                       label="10 of 10 of files transferred."
                        labelSuccess="With success label!"
-                       showCounter={true}
-        />
-      </div>
-      <div>
-        <NxProgressBar value={100}
-                       variant="small"
                        showCounter={true}
         />
       </div>

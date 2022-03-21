@@ -15,8 +15,6 @@ export default function NxProgressBarExample() {
                        hasError={true}
                        label="This is an example label."
         />
-      </div>
-      <div>
         <NxProgressBar value={75}
                        hasError={true}
                        labelError="With error label!"

@@ -4,13 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, ReactElement } from 'react';
-import { Props, propTypes } from './types';
+import { faExclamationCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
+import React, { forwardRef, ReactElement } from 'react';
 
 import { useUniqueId } from '../../util/idUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { faExclamationCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { Props, propTypes } from './types';
 
 import './NxProgressBar.scss';
 
@@ -22,12 +22,13 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
         label,
         labelError,
         labelSuccess,
-        max = 100,
+        max: maxProp,
         showCounter = true,
         value,
         variant
       } = props;
 
+      const max = maxProp || 100;
       const percentage = Math.round(value / max * 100);
 
       const progressId = useUniqueId('nx-progress-bar__progress');
@@ -45,34 +46,40 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
       };
 
       const renderLabel = () => {
-        if (variant === 'inline') {
+        if (variant === 'small') {
           return null;
         }
 
-        let labelContent: ReactElement | string | number | null = label || null;
-
-        if (percentage === 100 && (labelSuccess || labelContent)) {
-          labelContent = (
+        if (percentage === 100 && (labelSuccess || label)) {
+          return (
             <>
               <NxFontAwesomeIcon icon={faCheckCircle} />
-              <span>{labelSuccess || labelContent}</span>
+              <span>{labelSuccess || label}</span>
             </>
           );
         }
 
-        if (hasError) {
-          labelContent = labelError ? (
+        if (hasError && labelError) {
+          return (
             <>
               <NxFontAwesomeIcon icon={faExclamationCircle} />
               <span>{labelError}</span>
             </>
-          ) : null;
+          );
+        }
+
+        return label;
+      };
+
+      const renderCounterAndLabel = () => {
+        if (variant === 'inline') {
+          return null;
         }
 
         return (
           <label htmlFor={progressId} className="nx-progress-bar__label">
             {renderCounter()}
-            {inlineCounter ? null : labelContent}
+            {inlineCounter ? null : renderLabel()}
           </label>
         );
       };
@@ -94,7 +101,7 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
                     value={hasError ? 0 : value}
                     max={max}>
           </progress>
-          {renderLabel()}
+          {renderCounterAndLabel()}
         </div>
       );
     }

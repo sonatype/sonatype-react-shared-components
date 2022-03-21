@@ -5,10 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-// 25px height
-// success state automatic
-// small -> supports inlineCounter
-
 .nx-progress-bar {
   display: flex;
   flex-direction: column;
@@ -24,8 +20,6 @@
   display: inline-flex;
   margin: 0;
 }
-
-// nx-counter
 
 .nx-progress-bar__counter .nx-counter {
   margin: 0;
@@ -50,16 +44,17 @@
 }
 
 .nx-progress-bar__label {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: var(--nx-spacing-2x);
   grid-area: label;
 
   .nx-icon {
-    margin: 0;
-    margin-left: var(--nx-spacing-2x);
+    margin: 0 0 0 var(--nx-spacing-2x);
   }
 }
+
+$normal-height: 25px;
 
 progress.nx-progress-bar__progress[value] {
   -webkit-appearance: none;
@@ -68,7 +63,7 @@ progress.nx-progress-bar__progress[value] {
 
   border: 0;
 
-  height: 24px;
+  height:$normal-height;
   width: 100%;
 }
 
@@ -76,16 +71,15 @@ progress.nx-progress-bar__progress[value] {
 progress.nx-progress-bar__progress[value],
 progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
   background: var(--nx-swatch-grey-95);
-  border-radius: 24px;
+  border-radius: $normal-height;
+  height: $normal-height;
   overflow: hidden;
-  height: 24px;
   width: 300px;
 }
 
 .nx-progress-bar--small {
   progress.nx-progress-bar__progress[value],
   progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
-    min-width: 100px;
     width: 100px;
   }
 }
@@ -106,7 +100,6 @@ progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
   }
 }
 
-// ::-webkit-progress-value -> the value bar
 progress.nx-progress-bar__progress[value]::-moz-progress-bar {
   background: var(--nx-swatch-teal-50);
 }

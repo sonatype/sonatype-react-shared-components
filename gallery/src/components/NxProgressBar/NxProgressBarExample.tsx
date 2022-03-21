@@ -13,40 +13,40 @@ export default function NxProgressBarExample() {
       <div>
         <NxProgressBar max={50}
                        value={25}
+                       variant="inline"
+                       showCounter={true}
+                       label="This is an example label."
+        />
+        <NxProgressBar max={50}
+                       value={25}
                        variant="small"
                        showCounter={true}
+                       label="This is an example label."
         />
-      </div>
-      <div>
         <NxProgressBar value={60}
                        variant="small"
                        showCounter={true}
                        inlineCounter={true}
+                       label="This is an example label."
         />
-      </div>
-      <div>
         <NxProgressBar max={50}
                        value={25}
-                       label="Hello"
+                       label="This is an example label."
         />
-      </div>
-      <div>
         <NxProgressBar value={75}
                        inlineCounter={true}
+                       label="This is an example label."
         />
-      </div>
-      <div>
         <NxProgressBar value={25}
                        variant="full"
                        showCounter={true}
-                       label="Label"
+                       label="This is an example label."
         />
-      </div>
-      <div>
         <NxProgressBar value={25}
                        variant="full"
                        showCounter={true}
                        inlineCounter={true}
+                       label="This is an example label."
         />
       </div>
     </>
