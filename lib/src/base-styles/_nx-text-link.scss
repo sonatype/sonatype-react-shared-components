@@ -1,0 +1,70 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+
+.nx-text-link {
+  @include nx-container-helpers.container-horizontal;
+
+  color: var(--nx-color-link);
+  cursor: pointer;
+
+  &__truncate-text {
+    @include nx-text-helpers.truncate-ellipsis;
+  }
+
+  &--truncate {
+    align-items: baseline;
+    display: flex;
+  }
+
+  .nx-code {
+    color: var(--nx-color-link);
+  }
+
+  &:hover {
+    &, .nx-code {
+      color: var(--nx-color-link-hover);
+    }
+  }
+
+  &:focus {
+    // outline-offset scales the border-radius so this
+    // was changed to 4px to get it visually close to
+    // var(--nx-border-radius) or (6px).
+    border-radius: 4px;
+    outline: 1px solid var(--nx-color-interactive-border-focus);
+    outline-offset: 1px;
+
+    &, .nx-code {
+      color: var(--nx-color-link-focus);
+    }
+  }
+
+  &:active {
+    &, .nx-code {
+      color: var(--nx-color-link-active);
+    }
+  }
+
+  .nx-icon.fa-external-link-alt {
+    margin-left: var(--nx-spacing-base);
+  }
+}
+
+button.nx-text-link {
+  @include nx-text-helpers.truncate-ellipsis;
+  @include nx-text-helpers.regular;
+
+  background: initial;
+  border: initial;
+  display: block;
+  font-size: var(--nx-font-size);
+  max-width: 100%;
+  padding: initial;
+  text-decoration: underline;
+}
