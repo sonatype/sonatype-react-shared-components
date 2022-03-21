@@ -67,7 +67,7 @@ progress.nx-progress-bar__progress[value] {
   width: 100%;
 }
 
-// ::-webkit-progress-bar -> Container
+// Track
 progress.nx-progress-bar__progress[value],
 progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
   background: var(--nx-swatch-grey-95);
@@ -100,6 +100,7 @@ progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
   }
 }
 
+// Indicator
 progress.nx-progress-bar__progress[value]::-moz-progress-bar {
   background: var(--nx-swatch-teal-50);
 }

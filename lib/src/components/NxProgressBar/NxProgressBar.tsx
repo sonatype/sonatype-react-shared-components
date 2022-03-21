@@ -6,7 +6,7 @@
  */
 import { faExclamationCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
-import React, { forwardRef, ReactElement } from 'react';
+import React, { forwardRef } from 'react';
 
 import { useUniqueId } from '../../util/idUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -50,25 +50,25 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
           return null;
         }
 
+        if (hasError) {
+          return labelError ? (
+            <>
+              <NxFontAwesomeIcon icon={faExclamationCircle} />
+              <span className="nx-progress-bar__label-text">{labelError}</span>
+            </>
+          ) : null;
+        }
+
         if (percentage === 100 && (labelSuccess || label)) {
           return (
             <>
               <NxFontAwesomeIcon icon={faCheckCircle} />
-              <span>{labelSuccess || label}</span>
+              <span className="nx-progress-bar__label-text">{labelSuccess || label}</span>
             </>
           );
         }
 
-        if (hasError && labelError) {
-          return (
-            <>
-              <NxFontAwesomeIcon icon={faExclamationCircle} />
-              <span>{labelError}</span>
-            </>
-          );
-        }
-
-        return label;
+        return <span className="nx-progress-bar__label-text">label</span>;
       };
 
       const renderCounterAndLabel = () => {
