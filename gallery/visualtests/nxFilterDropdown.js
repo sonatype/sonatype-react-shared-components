@@ -24,7 +24,7 @@ describe('NxFilterDropdown', function() {
     it('has a light grey border by default', simpleTest(tableExampleSelector));
     it('has a dark grey border when hovered', hoverTest(tableExampleSelector, toggleSelector));
     it('has a light blue border when focused', focusTest(tableExampleSelector, toggleSelector));
-    it('has a dark grey border when focused and hovered', focusAndHoverTest(tableExampleSelector, toggleSelector));
+    it('has a light blue border when focused and hovered', focusAndHoverTest(tableExampleSelector, toggleSelector));
     it('has a dark grey border when clicked', clickTest(tableExampleSelector, toggleSelector));
   });
 
