@@ -257,6 +257,11 @@ describe('NxPagination', function() {
       expect(wrapper).toHaveProp('aria-label', 'pagination');
     });
 
+    it('overrides the aria-label if a custom one is passed', function() {
+      const wrapper = getShallowComponent({ pageCount: 3, currentPage: 0, 'aria-label': 'custom' });
+      expect(wrapper).toHaveProp('aria-label', 'custom');
+    });
+
     it('shows the correct aria labels for a small pagination range', function () {
       const buttons = getShallowComponent({ pageCount: 3, currentPage: 1 }).find(NxButton);
       expect(buttons.at(0)).toHaveProp('aria-label', 'goto previous page');
