@@ -24,7 +24,6 @@ function regexpFilter(filterStr: string, itemDisplayName: string) {
   return regex.test(itemDisplayName);
 }
 
-
 export default function NxTransferListHalfOrderingExample() {
   const [items, setItems] = useState<DataItem<number>[]>(initialItems),
       [filter, setFilter] = useState('');
