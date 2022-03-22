@@ -20,7 +20,7 @@ export default function NxProgressBarExample() {
                        showCounter={true}
         />
         <NxProgressBar value={100}
-                       label="10 of 10 of files transferred."
+                       label="10 of 10 files transferred."
                        labelSuccess="With success label!"
                        showCounter={true}
         />
