@@ -50,6 +50,48 @@ const NxPaginationPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell><NxCode>label</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              string
+            </NxTable.Cell>
+            <NxTable.Cell>yes</NxTable.Cell>
+            <NxTable.Cell>
+              <NxP>
+                Default label under the progress bar.
+                If <NxCode>labelSuccess</NxCode> is not specified, this label will remain
+                shown but with the success style when progress reaches 100%.
+              </NxP>
+              <NxP>
+                When the <NxCode>variant</NxCode> is "small" or "inline" or{' '}
+                <NxCode>inlineCounter</NxCode> is set to true, the label will not be displayed.
+                Instead, it will be assigned as an aria-label to the progress element.
+              </NxP>
+              <NxP>
+                This is a required property for accessibility.
+              </NxP>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>labelSuccess</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              string
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Shows this label when progress reached 100%.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>labelError</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              string
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              This label is shown when <NxCode>hasError</NxCode> is true.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell><NxCode>variant</NxCode></NxTable.Cell>
             <NxTable.Cell>
               "inline" | "small" | "normal" | "full"
@@ -101,38 +143,6 @@ const NxPaginationPage = () =>
               By default this is set to <NxCode>false</NxCode>.
               Place the percentage counter inline with the progress bar.
               If this is set to true, the label will not be shown.
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell><NxCode>label</NxCode></NxTable.Cell>
-            <NxTable.Cell>
-              string
-            </NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              Default label under the progress bar.
-              If <NxCode>labelSuccess</NxCode> is not specified, this label will remain
-              shown but with the success style when progress reaches 100%.
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell><NxCode>labelSuccess</NxCode></NxTable.Cell>
-            <NxTable.Cell>
-              string
-            </NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              Shows this label when progress reached 100%.
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell><NxCode>labelError</NxCode></NxTable.Cell>
-            <NxTable.Cell>
-              string
-            </NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              This label is shown when <NxCode>hasError</NxCode> is true.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>

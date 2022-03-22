@@ -17,6 +17,7 @@ export default function NxProgressBarExample() {
         />
         <NxProgressBar value={75}
                        hasError={true}
+                       label="10 of 10 files transferred."
                        labelError="With error label!"
         />
       </div>

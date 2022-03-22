@@ -13,6 +13,7 @@ export default function NxProgressBarExample() {
       <div>
         <NxProgressBar value={100}
                        variant="small"
+                       label="10 of 10 files transferred."
                        showCounter={true}
         />
         <NxProgressBar value={100}

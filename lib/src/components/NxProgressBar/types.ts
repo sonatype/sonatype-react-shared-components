@@ -13,7 +13,7 @@ export type NX_PROGRESS_BAR_VARIANT_TYPE = (typeof NX_PROGRESS_BAR_VARIANTS)[num
 export interface Props extends HTMLAttributes<Omit<HTMLProgressElement, 'value' | 'max'>> {
   hasError?: boolean | null;
   inlineCounter?: boolean | null;
-  label?: string | null;
+  label: string;
   labelError?: string | null;
   labelSuccess?: string | null;
   max?: number | null;
@@ -25,7 +25,7 @@ export interface Props extends HTMLAttributes<Omit<HTMLProgressElement, 'value' 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   hasError: PropTypes.bool,
   inlineCounter: PropTypes.bool,
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
   labelError: PropTypes.string,
   labelSuccess: PropTypes.string,
   max: PropTypes.number,
