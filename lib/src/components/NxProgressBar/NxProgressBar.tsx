@@ -39,11 +39,7 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
           return null;
         }
 
-        return (
-          <div className="nx-progress-bar__counter">
-            <span className="nx-counter">{hasError ? 0 : percentage}%</span>
-          </div>
-        );
+        return <span className="nx-counter nx-progress-bar__counter">{hasError ? 0 : percentage}%</span>;
       };
 
       const renderLabel = () => {

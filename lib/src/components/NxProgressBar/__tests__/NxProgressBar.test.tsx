@@ -40,7 +40,7 @@ describe('NxProgressBar', function() {
 
   it('sets the correct counter percentage value',
       function() {
-        const counterSelector = '.nx-counter';
+        const counterSelector = '.nx-progress-bar__counter';
 
         expect(getShallowComponent({ value: 20, max: 40 }).find(counterSelector)).toHaveText('50%');
         expect(getShallowComponent({ value: 0 }).find(counterSelector)).toHaveText('0%');
@@ -102,7 +102,7 @@ describe('NxProgressBar', function() {
         const smallComponent = getShallowComponent({ variant: 'small', showCounter: true, label: 'label' });
         const fullComponent = getShallowComponent({ variant: 'full', showCounter: true, label: 'label' });
 
-        const counterSelector = '.nx-counter';
+        const counterSelector = '.nx-progress-bar__counter';
         const labelTextSelector = '.nx-progress-bar__label-text';
 
         expect(inlineComponent).toHaveClassName('nx-progress-bar--inline');

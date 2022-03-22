@@ -22,14 +22,14 @@
   margin: 0;
 }
 
-.nx-progress-bar__counter .nx-counter {
+.nx-progress-bar__counter {
   margin: 0;
 }
 
 .nx-progress-bar--success {
   color: var(--nx-swatch-green-25);
 
-  .nx-counter {
+  .nx-progress-bar__counter {
     border-color: var(--nx-swatch-green-25);
     background-color: var(--nx-swatch-green-95);
   }
@@ -38,7 +38,7 @@
 .nx-progress-bar--error {
   color: var(--nx-swatch-red-40);
 
-  .nx-counter {
+  .nx-progress-bar__counter {
     border-color: var(--nx-swatch-red-40);
     background-color: var(--nx-swatch-red-95);
   }
