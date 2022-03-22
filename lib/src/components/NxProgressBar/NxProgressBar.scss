@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+ @use "sass:math";
 
 .nx-progress-bar {
   display: flex;
@@ -70,7 +71,7 @@ progress.nx-progress-bar__progress[value] {
 progress.nx-progress-bar__progress[value],
 progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
   background: var(--nx-swatch-indigo-95);
-  border-radius: $normal-height;
+  border-radius: math.div($normal-height, 2);
   height: $normal-height;
   overflow: hidden;
   width: 300px;
@@ -94,7 +95,9 @@ progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
 .nx-progress-bar--inline {
   progress.nx-progress-bar__progress[value],
   progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
-    height: 16px;
+    $inline-height: 16px;
+    height: $inline-height;
+    border-radius: math.div($inline-height, 2);
     width: 150px;
   }
 }
