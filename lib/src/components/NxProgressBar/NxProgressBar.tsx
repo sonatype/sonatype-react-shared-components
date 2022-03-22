@@ -8,7 +8,6 @@ import { faExclamationCircle, faCheckCircle } from '@fortawesome/free-solid-svg-
 import classnames from 'classnames';
 import React, { forwardRef } from 'react';
 
-import { useUniqueId } from '../../util/idUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
 
@@ -29,17 +28,15 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
       } = props;
 
       const showCounter = showCounterProp ?? true;
-      const max = maxProp || 100;
+      const max = maxProp ?? 100;
       const percentage = Math.round(value / max * 100);
-
-      const progressId = useUniqueId('nx-progress-bar__progress');
 
       const renderCounter = () => {
         if (!showCounter || variant === 'inline') {
           return null;
         }
 
-        return <span className="nx-counter nx-progress-bar__counter">{hasError ? 0 : percentage}%</span>;
+        return <span className="nx-counter nx-progress-bar__counter">{`${hasError ? 0 : percentage}%`}</span>;
       };
 
       const renderLabel = () => {
@@ -74,10 +71,10 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
         }
 
         return (
-          <label htmlFor={progressId} className="nx-progress-bar__label">
+          <span className="nx-progress-bar__counter-and-label">
             {renderCounter()}
             {inlineCounter ? null : renderLabel()}
-          </label>
+          </span>
         );
       };
 
@@ -91,15 +88,14 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
       });
 
       return (
-        <div className={classes}>
-          <progress id={progressId}
-                    ref={ref}
+        <label className={classes}>
+          <progress ref={ref}
                     className="nx-progress-bar__progress"
                     value={hasError ? 0 : value}
                     max={max}>
           </progress>
           {renderCounterAndLabel()}
-        </div>
+        </label>
       );
     }
 );

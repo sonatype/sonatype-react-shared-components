@@ -9,8 +9,18 @@
 .nx-progress-bar {
   display: flex;
   flex-direction: column;
-  gap: var(--nx-spacing-2x);
   margin: var(--nx-spacing-6x) 0;
+  gap: var(--nx-spacing-2x);
+}
+
+.nx-progress-bar__counter-and-label {
+  display: flex;
+  align-items: center;
+  gap: var(--nx-spacing-2x);
+
+  .nx-icon {
+    margin: 0 0 0 var(--nx-spacing-2x);
+  }
 }
 
 .nx-progress-bar--inline-counter {
@@ -44,19 +54,9 @@
   }
 }
 
-.nx-progress-bar__label {
-  align-items: center;
-  display: flex;
-  gap: var(--nx-spacing-2x);
-
-  .nx-icon {
-    margin: 0 0 0 var(--nx-spacing-2x);
-  }
-}
-
 $normal-height: 25px;
 
-progress.nx-progress-bar__progress[value] {
+.nx-progress-bar__progress[value] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -68,8 +68,8 @@ progress.nx-progress-bar__progress[value] {
 }
 
 // Track
-progress.nx-progress-bar__progress[value],
-progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
+.nx-progress-bar__progress[value],
+.nx-progress-bar__progress[value]::-webkit-progress-bar {
   background: var(--nx-swatch-indigo-95);
   border-radius: math.div($normal-height, 2);
   height: $normal-height;
@@ -78,23 +78,23 @@ progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
 }
 
 .nx-progress-bar--small {
-  progress.nx-progress-bar__progress[value],
-  progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
+  .nx-progress-bar__progress[value],
+  .nx-progress-bar__progress[value]::-webkit-progress-bar {
     width: 100px;
   }
 }
 
 .nx-progress-bar--full {
-  progress.nx-progress-bar__progress[value],
-  progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
+  .nx-progress-bar__progress[value],
+  .nx-progress-bar__progress[value]::-webkit-progress-bar {
     min-width: 300px;
     width: 100%;
   }
 }
 
 .nx-progress-bar--inline {
-  progress.nx-progress-bar__progress[value],
-  progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
+  .nx-progress-bar__progress[value],
+  .nx-progress-bar__progress[value]::-webkit-progress-bar {
     $inline-height: 16px;
     height: $inline-height;
     border-radius: math.div($inline-height, 2);
@@ -103,10 +103,10 @@ progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
 }
 
 // Indicator
-progress.nx-progress-bar__progress[value]::-moz-progress-bar {
+.nx-progress-bar__progress[value]::-moz-progress-bar {
   background: var(--nx-swatch-teal-60);
 }
 
-progress.nx-progress-bar__progress[value]::-webkit-progress-value {
+.nx-progress-bar__progress[value]::-webkit-progress-value {
   background: var(--nx-swatch-teal-60);
 }
