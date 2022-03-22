@@ -18,16 +18,17 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
     function NxProgressBar(props, ref) {
       const {
         hasError,
-        inlineCounter = false,
+        inlineCounter,
         label,
         labelError,
         labelSuccess,
         max: maxProp,
-        showCounter = true,
+        showCounter: showCounterProp,
         value,
         variant
       } = props;
 
+      const showCounter = showCounterProp ?? true;
       const max = maxProp || 100;
       const percentage = Math.round(value / max * 100);
 
