@@ -69,7 +69,7 @@ progress.nx-progress-bar__progress[value] {
 // Track
 progress.nx-progress-bar__progress[value],
 progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
-  background: var(--nx-swatch-grey-95);
+  background: var(--nx-swatch-indigo-95);
   border-radius: $normal-height;
   height: $normal-height;
   overflow: hidden;
@@ -101,9 +101,9 @@ progress.nx-progress-bar__progress[value]::-webkit-progress-bar {
 
 // Indicator
 progress.nx-progress-bar__progress[value]::-moz-progress-bar {
-  background: var(--nx-swatch-teal-50);
+  background: var(--nx-swatch-teal-60);
 }
 
 progress.nx-progress-bar__progress[value]::-webkit-progress-value {
-  background: var(--nx-swatch-teal-50);
+  background: var(--nx-swatch-teal-60);
 }
