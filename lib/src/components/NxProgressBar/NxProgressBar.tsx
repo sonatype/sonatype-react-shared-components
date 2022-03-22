@@ -16,6 +16,7 @@ import './NxProgressBar.scss';
 const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
     function NxProgressBar(props, ref) {
       const {
+        className,
         hasError,
         inlineCounter,
         label,
@@ -24,7 +25,8 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
         max: maxProp,
         showCounter: showCounterProp,
         value,
-        variant
+        variant,
+        ...otherAttributes
       } = props;
 
       const showCounter = showCounterProp ?? true;
@@ -92,7 +94,7 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
         'nx-progress-bar--inline-counter': inlineCounter,
         'nx-progress-bar--error': hasError,
         'nx-progress-bar--success': percentage === 100
-      });
+      }, className);
 
       const WrapperElement = variant === 'inline' ? 'span' : 'label';
       const ariaLabelText = variant === 'inline' || variant === 'small' || inlineCounter ? labelText : undefined;
@@ -103,7 +105,8 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
                     aria-label={ariaLabelText}
                     className="nx-progress-bar__progress"
                     value={hasError ? 0 : value}
-                    max={max}>
+                    max={max}
+                    {...otherAttributes}>
           </progress>
           {renderCounterAndLabel()}
         </WrapperElement>
