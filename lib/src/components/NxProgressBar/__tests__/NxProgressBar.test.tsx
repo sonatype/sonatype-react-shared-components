@@ -10,7 +10,7 @@ import NxProgressBar from '../NxProgressBar';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-describe.only('NxProgressBar', function() {
+describe('NxProgressBar', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxProgressBar, { value: 50 });
 
   it('sets the correct max and value to the progress element',
