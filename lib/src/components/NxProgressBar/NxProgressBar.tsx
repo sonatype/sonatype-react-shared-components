@@ -68,7 +68,7 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
           );
         }
 
-        return <span className="nx-progress-bar__label-text">label</span>;
+        return <span className="nx-progress-bar__label-text">{label}</span>;
       };
 
       const renderCounterAndLabel = () => {
