@@ -9,13 +9,13 @@
 .nx-progress-bar {
   display: flex;
   flex-direction: column;
-  margin: var(--nx-spacing-6x) 0;
   gap: var(--nx-spacing-2x);
+  margin: var(--nx-spacing-6x) 0;
 }
 
 .nx-progress-bar__counter-and-label {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: var(--nx-spacing-2x);
 
   .nx-icon {
@@ -56,13 +56,12 @@
 
 $normal-height: 25px;
 
-.nx-progress-bar__progress[value] {
+.nx-progress-bar__progress {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 
   border: 0;
-
   height: $normal-height;
   width: 100%;
 }
@@ -102,7 +101,6 @@ $normal-height: 25px;
   }
 }
 
-// Indicator
 .nx-progress-bar__progress[value]::-moz-progress-bar {
   background: var(--nx-swatch-teal-60);
 }

@@ -10,11 +10,9 @@ import { HTMLAttributes } from 'react';
 export const NX_PROGRESS_BAR_VARIANTS = ['inline', 'small', 'normal', 'full'] as const;
 export type NX_PROGRESS_BAR_VARIANT_TYPE = (typeof NX_PROGRESS_BAR_VARIANTS)[number];
 
-export interface Props extends HTMLAttributes<Omit<HTMLProgressElement, 'value' | 'max'>> {
-  hasError?: boolean | null;
+interface BaseProps extends HTMLAttributes<Omit<HTMLProgressElement, 'value' | 'max'>> {
   inlineCounter?: boolean | null;
   label: string;
-  labelError?: string | null;
   labelSuccess?: string | null;
   max?: number | null;
   showCounter?: boolean | null;
@@ -22,11 +20,24 @@ export interface Props extends HTMLAttributes<Omit<HTMLProgressElement, 'value' 
   variant?: NX_PROGRESS_BAR_VARIANT_TYPE | null;
 }
 
+interface PropsWithError extends BaseProps {
+  hasError: true;
+  labelError: string;
+}
+
+interface PropsWithoutError extends BaseProps {
+  hasError?: false | null;
+  labelError?: null;
+}
+
+export type Props = PropsWithError | PropsWithoutError;
+
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  hasError: PropTypes.bool,
   inlineCounter: PropTypes.bool,
   label: PropTypes.string.isRequired,
-  labelError: PropTypes.string,
+  labelError: (props, propName) =>
+    (props.hasError === true && (!props[propName] || typeof props[propName] !== 'string'))
+      ? new Error(`${propName} is required when hasError is true`) : null,
   labelSuccess: PropTypes.string,
   max: PropTypes.number,
   showCounter: PropTypes.bool,

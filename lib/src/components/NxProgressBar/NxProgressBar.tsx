@@ -50,15 +50,16 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
 
         if (hasError) {
           if (labelError) {
-            labelText = labelError;
             return (
               <>
                 <NxFontAwesomeIcon icon={faExclamationCircle} />
-                <span className="nx-progress-bar__label-text">{labelText}</span>
+                <span className="nx-progress-bar__label-text">{labelError}</span>
               </>
             );
           }
-          return null;
+          else {
+            console.warn('labelError is required when hasError is true.');
+          }
         }
 
         if (percentage === 100) {

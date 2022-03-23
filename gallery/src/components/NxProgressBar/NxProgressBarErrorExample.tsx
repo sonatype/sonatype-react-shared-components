@@ -10,17 +10,11 @@ import { NxProgressBar } from '@sonatype/react-shared-components';
 export default function NxProgressBarExample() {
   return (
     <>
-      <div>
-        <NxProgressBar value={75}
-                       hasError={true}
-                       label="This is an example label."
-        />
-        <NxProgressBar value={75}
-                       hasError={true}
-                       label="10 of 10 files transferred."
-                       labelError="With error label!"
-        />
-      </div>
+      <NxProgressBar value={75}
+                      hasError={true}
+                      label="10 of 10 files transferred."
+                      labelError="With error label!"
+      />
     </>
   );
 }
