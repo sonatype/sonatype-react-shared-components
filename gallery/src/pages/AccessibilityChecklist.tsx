@@ -20,10 +20,10 @@ import {
 
 function Accessibility() {
 
-  const [isA, toggleA] = useToggle(false),
-      [isAA, toggleAA] = useToggle(false),
-      [isAAA, toggleAAA] = useToggle(false),
-      [isReco, toggleReco] = useToggle(false);
+  const [showA, toggleA] = useToggle(false),
+      [showAA, toggleAA] = useToggle(false),
+      [showAAA, toggleAAA] = useToggle(false),
+      [showReco, toggleReco] = useToggle(false);
 
   return (
     <GalleryTile title="WCAG Accessibility UX Checklist" className="gallery-accessibility-list">
@@ -52,7 +52,7 @@ function Accessibility() {
           </em>
         </NxP>
         <NxH4>
-          1.1 Text alternatives- Provide text alternatives for any non-text content so that it can be changed into other
+          1.1 Text alternatives – Provide text alternatives for any non-text content so that it can be changed into other
           forms people need, such as large print, braille, speech, symbols or simpler language.
         </NxH4>
         <NxList>
@@ -186,7 +186,7 @@ function Accessibility() {
             </NxList.Text>
             <NxList.Actions>
               <NxTextLink external
-                          href="https://www.w3.org/WAI/WCAG21/quickref/? showtechniques=111%2C128%2C133#adaptable">
+                          href="https://www.w3.org/WAI/WCAG21/quickref/#adaptable">
                 Level A
               </NxTextLink>
             </NxList.Actions>
@@ -306,7 +306,7 @@ function Accessibility() {
             </NxList.Text>
             <NxList.Actions>
               <NxTextLink external
-                          href="https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=111%2C128%2C133#distinguishable">
+                          href="https://www.w3.org/WAI/WCAG21/quickref/#distinguishable">
                 Level A
               </NxTextLink>
             </NxList.Actions>
