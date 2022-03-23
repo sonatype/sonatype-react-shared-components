@@ -26,7 +26,7 @@ function Accessibility() {
       [isReco, toggleReco] = useToggle(false);
 
   return (
-    <GalleryTile title="WCAG Accessibility UX Checklist" className="nx-tile--accessibility-list">
+    <GalleryTile title="WCAG Accessibility UX Checklist" className="gallery-accessibility-list">
       <NxP>
         Accessibility UX checklist to serve as a method for designers and developers to assess the WCAG compliance of
         their work.
@@ -538,7 +538,7 @@ function Accessibility() {
               <NxStatefulCheckbox defaultChecked={false}>
                 Are our UI components named as follows and are these states obvious to assistive devices?
               </NxStatefulCheckbox>
-              <NxList bulleted className="nx-list--no-bullets">
+              <NxList bulleted className="gallery-list--no-bullets">
                 <NxList.Item>
                   <NxList.Text>
                     <NxStatefulCheckbox defaultChecked={false}>
