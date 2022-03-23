@@ -198,14 +198,14 @@ const NxTransferListPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Minimal Example"
-                        id="nx-transfer-list-minimal-example"
+                        id="nx-transfer-list-half-example"
                         codeExamples={nxTransferListHalfExample}
                         liveExample={NxTransferListHalfExample}>
       Demonstrates an <NxCode>NxTransferListHalf</NxCode> without reordering.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Ordering Example"
-                        id="nx-transfer-list-complex-example"
+                        id="nx-transfer-list-half-ordering-example"
                         codeExamples={nxTransferListHalfOrderingExample}
                         liveExample={NxTransferListHalfOrderingExample}>
       Demonstrates an <NxCode>NxTransferListHalf</NxCode> with reordering. Additionally
