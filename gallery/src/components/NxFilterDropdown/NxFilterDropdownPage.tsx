@@ -141,7 +141,7 @@ const NxFilterDropdownPage = () =>
           <NxTable.Body>
             <NxTable.Row>
               <NxTable.Cell><NxCode>nx-dropdown--short</NxCode></NxTable.Cell>
-              <NxTable.Cell>Gives the component a width of 150px rather than the default 250px</NxTable.Cell>
+              <NxTable.Cell>Renders the component with a width of 150px rather than the default 250px</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
