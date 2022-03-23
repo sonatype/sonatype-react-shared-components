@@ -119,6 +119,11 @@
 }
 
 .gallery-accessibility-list {
+  .nx-checkbox__box {
+    align-self: flex-start;
+    margin-top: var(--nx-spacing-base);
+  }
+
   .nx-radio-checkbox__content {
     white-space: normal;
   }
