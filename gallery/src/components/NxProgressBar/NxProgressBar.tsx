@@ -9,13 +9,15 @@ import { NxTable, NxCode, NxP } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxProgressBarExample from './NxProgressBarExample';
-import NxProgressBarSuccessExample from './NxProgressBarSuccessExample';
-import NxProgressBarErrorExample from './NxProgressBarErrorExample';
+import NxProgressBarInlineExample from './NxProgressBarInlineExample';
+import NxProgressBarSmallExample from './NxProgressBarSmallExample';
+import NxProgressBarNormalExample from './NxProgressBarNormalExample';
+import NxProgressBarFullExample from './NxProgressBarFullExample';
 
-const nxProgressBarExampleCode = require('./NxProgressBarExample?raw');
-const nxProgressBarSuccessExampleCode = require('./NxProgressBarSuccessExample?raw');
-const nxProgressBarErrorExampleCode = require('./NxProgressBarErrorExample?raw');
+const nxProgressBarInlineExampleCode = require('./NxProgressBarInlineExample?raw');
+const nxProgressBarSmallExampleCode = require('./NxProgressBarSmallExample?raw');
+const nxProgressBarNormalExampleCode = require('./NxProgressBarNormalExample?raw');
+const nxProgressBarFullExampleCode = require('./NxProgressBarFullExample?raw');
 
 const NxPaginationPage = () =>
   <>
@@ -160,30 +162,36 @@ const NxPaginationPage = () =>
       </NxTable>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="NxProgressBar Example"
-                        id="nx-progress-bar-example"
-                        liveExample={NxProgressBarExample}
-                        codeExamples={nxProgressBarExampleCode}>
-      Examples of all the variations of <NxCode>NxProgressBar</NxCode> with labels set and{' '}
-      <NxCode>showCounter</NxCode> set to true.
+    <GalleryExampleTile title="NxProgressBar Normal Example"
+                        id="nx-progress-bar-normal-example"
+                        liveExample={NxProgressBarNormalExample}
+                        codeExamples={nxProgressBarNormalExampleCode}>
+      Examples of "normal" variant (default) <NxCode>NxProgressBar</NxCode> showing 0% progress,
+      a partial-progress, success (100% progress), and error state progress bar with and without inlineCounter.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NxProgressBar Success Example"
-                        id="nx-progress-bar-success-example"
-                        liveExample={NxProgressBarSuccessExample}
-                        codeExamples={nxProgressBarSuccessExampleCode}>
-      Examples of success state (When progress reached 100%).
-      Notice that <NxCode>label</NxCode> is shown in the success style when progress reaches 100%.
-      If <NxCode>labelSuccess</NxCode> is specified it will be shown instead of <NxCode>label</NxCode>.
+    <GalleryExampleTile title="NxProgressBar Small Example"
+                        id="nx-progress-bar-small-example"
+                        liveExample={NxProgressBarSmallExample}
+                        codeExamples={nxProgressBarSmallExampleCode}>
+      Examples of "small" variant <NxCode>NxProgressBar</NxCode> showing 0% progress,
+      a partial-progress, success (100% progress), and error state progress bar with and without inlineCounter.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NxProgressBar Error Example"
-                        id="nx-progress-bar-error-example"
-                        liveExample={NxProgressBarErrorExample}
-                        codeExamples={nxProgressBarErrorExampleCode}>
-      Examples of error state (when <NxCode>hasError</NxCode> is set to true).
-      Notice that progress is displayed as 0% when it is in the error state.
-      <NxCode>labelError</NxCode> is displayed when specified if <NxCode>hasError</NxCode> is true.
+    <GalleryExampleTile title="NxProgressBar Full Example"
+                        id="nx-progress-bar-full-example"
+                        liveExample={NxProgressBarFullExample}
+                        codeExamples={nxProgressBarFullExampleCode}>
+      Examples of "full" variant (default) <NxCode>NxProgressBar</NxCode> showing 0% progress,
+      a partial-progress, success (100% progress), and error state progress bar with and without inlineCounter.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxProgressBar Inline Variant Example"
+                        id="nx-progress-bar-inline-example"
+                        liveExample={NxProgressBarInlineExample}
+                        codeExamples={nxProgressBarInlineExampleCode}>
+      Examples of "inline" variant <NxCode>NxProgressBar</NxCode> showing 0% progress,
+      a partial-progress, success (100% progress), and error state progress bar.
     </GalleryExampleTile>
   </>;
 
