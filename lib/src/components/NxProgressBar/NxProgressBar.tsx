@@ -50,10 +50,11 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
 
         if (hasError) {
           if (labelError) {
+            labelText = labelError;
             return (
               <>
                 <NxFontAwesomeIcon icon={faExclamationCircle} />
-                <span className="nx-progress-bar__label-text">{labelError}</span>
+                <span className="nx-progress-bar__label-text">{labelText}</span>
               </>
             );
           }
@@ -98,12 +99,14 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
       }, className);
 
       const WrapperElement = variant === 'inline' ? 'span' : 'label';
-      const ariaLabelText = variant === 'inline' || variant === 'small' || inlineCounter ? labelText : undefined;
+      const assignProgressAriaLabel = !!(variant === 'inline' || variant === 'small' || inlineCounter);
+      const progressAriaLabel = assignProgressAriaLabel ? labelText : undefined;
 
       return (
         <WrapperElement className={classes}>
           <progress ref={ref}
-                    aria-label={ariaLabelText}
+                    aria-label={progressAriaLabel}
+                    aria-hidden={!assignProgressAriaLabel}
                     className="nx-progress-bar__progress"
                     value={hasError ? 0 : value}
                     max={max}
