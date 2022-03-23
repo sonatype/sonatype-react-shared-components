@@ -67,7 +67,7 @@ const NxFilterDropdownPage = () =>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>True</NxTable.Cell>
               <NxTable.Cell/>
-              <NxTable.Cell>Whether the dropdown is currently expanded</NxTable.Cell>
+              <NxTable.Cell>Whether the dropdown is currently expanded.</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>onToggleCollapse</NxTable.Cell>
@@ -87,7 +87,7 @@ const NxFilterDropdownPage = () =>
               <NxTable.Cell/>
               <NxTable.Cell>
                 A set containing the ids of all items from the <NxCode>options</NxCode> array which are currently
-                selected
+                selected.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
