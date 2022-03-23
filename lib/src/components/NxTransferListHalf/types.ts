@@ -36,20 +36,16 @@ export interface Props<T extends string | number = string> {
   allowReordering?: boolean | null;
 }
 
+// generic props omitted due to type checking issues
 export const propTypes = {
   label: PropTypes.node.isRequired,
   filterValue: PropTypes.string.isRequired,
   onFilterChange: PropTypes.func.isRequired,
-  items: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]).isRequired,
-    displayName: PropTypes.string.isRequired
-  }).isRequired).isRequired,
   isSelected: PropTypes.bool.isRequired,
   onItemChange: PropTypes.func.isRequired,
   footerContent: PropTypes.node.isRequired,
   filterFn: PropTypes.func,
-  showMoveAll: PropTypes.bool,
-  onMoveAll: PropTypes.func,
+  showMoveAll: PropTypes.bool.isRequired,
   allowReordering: PropTypes.bool,
   onReorderItem: PropTypes.func
 };
