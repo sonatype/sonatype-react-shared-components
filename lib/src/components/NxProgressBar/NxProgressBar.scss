@@ -14,12 +14,8 @@
 }
 
 .nx-progress-bar__counter-and-label {
-  align-items: center;
-  display: flex;
-  gap: var(--nx-spacing-2x);
-
   .nx-icon {
-    margin: 0 0 0 var(--nx-spacing-2x);
+    margin: 0 var(--nx-spacing-2x);
   }
 }
 
@@ -33,7 +29,7 @@
 }
 
 .nx-progress-bar__counter {
-  margin: 0;
+  margin: 0 var(--nx-spacing-2x) 0 0;
 }
 
 .nx-progress-bar--success {
