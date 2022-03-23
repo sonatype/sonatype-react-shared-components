@@ -89,10 +89,7 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
         );
       };
 
-      const classes = classnames('nx-progress-bar', {
-        'nx-progress-bar--inline': variant === 'inline',
-        'nx-progress-bar--small': variant === 'small',
-        'nx-progress-bar--full': variant === 'full',
+      const classes = classnames('nx-progress-bar', `nx-progress-bar--${variant}`, {
         'nx-progress-bar--inline-counter': inlineCounter,
         'nx-progress-bar--error': hasError,
         'nx-progress-bar--success': percentage === 100
