@@ -14,7 +14,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import NxButton from '../NxButton/NxButton';
 
-import { Props, TransferListItemProps } from './types';
+import { Props, TransferListItemProps, propTypes } from './types';
 import NxFieldset from '../NxFieldset/NxFieldset';
 
 import './NxTransferListHalf.scss';
@@ -148,3 +148,5 @@ export default function NxTransferListHalf<T extends string | number = string>(p
     </NxFieldset>
   );
 }
+
+NxTransferListHalf.propTypes = propTypes;
