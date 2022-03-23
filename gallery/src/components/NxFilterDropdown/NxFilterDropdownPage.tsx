@@ -31,11 +31,10 @@ const NxFilterDropdownPage = () =>
         In many ways it is similar to <NxCode>NxCollapsibleMultiSelect</NxCode>, with on major difference being that
         when it is expanded, it opens a floating menu containing the checkboxes rather than expanding the bounding
         box of the overall component in order to make space for them. This makes it a good option for table filter rows,
-        where a sizing change due to filter expansion would be undesirable.
-        This component would be a good option to filter a table by a column that has a relatively small set of discrete
-        values, where the user may want to filter by more than one of those values at a time. For this scenario, a
-        dropdown of checkboxes may be added to the table filter header. <NxCode>NxFilterDropdown</NxCode> implements
-        this type of dropdown.
+        where a sizing change due to filter expansion would be undesirable.  This component would be a good option to
+        filter a table by a column that has a relatively small set of discrete values, where the user may want to
+        filter by more than one of those values at a time. For this scenario, an <NxCode>NxFilterDropdown</NxCode>
+        may be added to the table filter header.
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
