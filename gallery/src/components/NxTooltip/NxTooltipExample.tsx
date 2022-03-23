@@ -94,7 +94,7 @@ const NxTooltipExample = () => {
 
         <div>
           <NxTooltip title="NxTextInput" placement="top">
-            <NxTextInput value="NxTextInput" isPristine />
+            <NxTextInput value="NxTextInput" placeholder="NxTextInput" isPristine />
           </NxTooltip>
         </div>
 
