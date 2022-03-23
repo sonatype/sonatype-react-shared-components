@@ -86,7 +86,7 @@ const NxPaginationPage = () =>
             <NxTable.Cell>
               string
             </NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>Required only when <NxCode>hasError</NxCode> is true</NxTable.Cell>
             <NxTable.Cell>
               This label is shown when <NxCode>hasError</NxCode> is true.
             </NxTable.Cell>
