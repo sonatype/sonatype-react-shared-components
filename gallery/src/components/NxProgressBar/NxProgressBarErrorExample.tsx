@@ -11,9 +11,9 @@ export default function NxProgressBarExample() {
   return (
     <>
       <NxProgressBar value={75}
-                      hasError={true}
-                      label="10 of 10 files transferred."
-                      labelError="With error label!"
+                     hasError={true}
+                     label="10 of 10 files transferred."
+                     labelError="With error label!"
       />
     </>
   );
