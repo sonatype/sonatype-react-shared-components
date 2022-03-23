@@ -251,8 +251,8 @@ const pageConfig: PageConfig = {
   'HTML Variants': {
     'Alert (HTML)': { content: NxAlertPage, type: 'html' },
     'Button (HTML)': { content: NxBtnPage, type: 'html' },
-    'Fieldset': { content: NxFieldsetStylePage, type: 'html' },
-    'Form Group': { content: NxFormGroupStylePage, type: 'html' },
+    'Fieldset (HTML)': { content: NxFieldsetStylePage, type: 'html' },
+    'Form Group (HTML)': { content: NxFormGroupStylePage, type: 'html' },
     'Form Select (HTML)': { content: NxFormSelectPage, type: 'html' },
     'Icon': { content: NxIconPage, type: 'html' },
     'List (HTML)': { content: NxListPage, type: 'html' },
