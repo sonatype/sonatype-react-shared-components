@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink, NxList } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxTextLink, NxList, NxH3, NxTile } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -126,6 +126,21 @@ const NxPaginationPage = () =>
         For an example of an <NxCode>NxPagination</NxCode> component within/connected to a table,
         see the <NxTextLink className="nx-text-link" href="#/pages/NxTable"><NxCode>NxTable</NxCode></NxTextLink> page.
       </NxP>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Accessibility Considerations</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          By default, each <NxCode>NxPagination</NxCode> component renders a <NxCode>{'<nav>'}</NxCode> element
+          with <NxCode>aria-label="pagination"</NxCode>. Since <NxCode>{'<nav>'}</NxCode> elements are considered
+          landmarks, they should be unique. Therefore, in instances where there are multiple occurrences
+          of <NxCode>NxPagination</NxCode> within the same page, it is important to assign a
+          unique <NxCode>aria-label</NxCode> to each <NxCode>NxPagination</NxCode> component.
+          Since <NxCode>NxPagination</NxCode> fully supports all attributes that are normally supported
+          by <NxCode>{'<nav>'}</NxCode>, the <NxCode>aria-label</NxCode> can be simply overridden as
+          follows: <NxCode>{'<NxPagination aria-label="uniqueLabel">'}</NxCode>.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="NxPagination Example"
