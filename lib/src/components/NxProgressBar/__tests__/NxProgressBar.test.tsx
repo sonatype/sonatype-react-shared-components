@@ -25,7 +25,11 @@ describe('NxProgressBar', function() {
   it('displays the correct className and hides label when inlineCounter is set to true',
       function() {
         const component = getShallowComponent({ value: 100, label: 'hello' });
-        const inlineCounterComponent = getShallowComponent({ value: 100, inlineCounter: true, label: 'hello' });
+        const inlineCounterComponent = getShallowComponent({ value: 50, inlineCounter: true, label: 'hello' });
+        const successCounterComponent = getShallowComponent({ value: 100, inlineCounter: true, label: 'hello' });
+        const errorCounterComponent = getShallowComponent({
+          value: 50, inlineCounter: true, labelError: 'error', label: 'hello'
+        });
 
         const labelTextSelector = '.nx-progress-bar__label-text';
 
@@ -35,6 +39,8 @@ describe('NxProgressBar', function() {
 
         expect(inlineCounterComponent).toHaveClassName('nx-progress-bar--inline-counter');
         expect(inlineCounterComponent.find(labelTextSelector)).not.toExist();
+        expect(successCounterComponent.find(labelTextSelector)).not.toExist();
+        expect(errorCounterComponent.find(labelTextSelector)).not.toExist();
       }
   );
 
