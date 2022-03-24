@@ -88,9 +88,10 @@ const NxPaginationPage = () =>
             <NxTable.Cell>
               string
             </NxTable.Cell>
-            <NxTable.Cell>Required only when <NxCode>hasError</NxCode> is true</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              This label is shown when <NxCode>hasError</NxCode> is true.
+              If this label is specified the component progress is set to 0% and
+              error styling is applied.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -145,17 +146,6 @@ const NxPaginationPage = () =>
               By default this is set to <NxCode>false</NxCode>.
               Place the percentage counter inline with the progress bar.
               If this is set to true, the label will not be shown.
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell><NxCode>hasError</NxCode></NxTable.Cell>
-            <NxTable.Cell>
-              boolean
-            </NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              Sets progress to 0. show <NxCode>labelError</NxCode> if it is set.
-              Changes the counter color to red.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>

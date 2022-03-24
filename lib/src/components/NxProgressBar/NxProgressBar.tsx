@@ -17,7 +17,6 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
     function NxProgressBar(props, ref) {
       const {
         className,
-        hasError,
         inlineCounter,
         label,
         labelError,
@@ -40,7 +39,7 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
           return null;
         }
 
-        return <span className="nx-counter nx-progress-bar__counter">{`${hasError ? 0 : percentage}%`}</span>;
+        return <span className="nx-counter nx-progress-bar__counter">{`${labelError ? 0 : percentage}%`}</span>;
       };
 
       const renderLabel = () => {
@@ -48,19 +47,14 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
           return null;
         }
 
-        if (hasError) {
-          if (labelError) {
-            labelText = labelError;
-            return (
-              <>
-                <NxFontAwesomeIcon icon={faExclamationCircle} />
-                <span className="nx-progress-bar__label-text">{labelText}</span>
-              </>
-            );
-          }
-          else {
-            console.warn('labelError is required when hasError is true.');
-          }
+        if (labelError) {
+          labelText = labelError;
+          return (
+            <>
+              <NxFontAwesomeIcon icon={faExclamationCircle} />
+              <span className="nx-progress-bar__label-text">{labelText}</span>
+            </>
+          );
         }
 
         if (percentage === 100) {
@@ -91,7 +85,7 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
 
       const classes = classnames('nx-progress-bar', `nx-progress-bar--${variant}`, {
         'nx-progress-bar--inline-counter': inlineCounter,
-        'nx-progress-bar--error': hasError,
+        'nx-progress-bar--error': labelError,
         'nx-progress-bar--success': percentage === 100
       }, className);
 
@@ -105,7 +99,7 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
                     aria-label={progressAriaLabel}
                     aria-hidden={!assignProgressAriaLabel}
                     className="nx-progress-bar__progress"
-                    value={hasError ? 0 : value}
+                    value={labelError ? 0 : value}
                     max={max}
                     {...otherAttributes}>
           </progress>

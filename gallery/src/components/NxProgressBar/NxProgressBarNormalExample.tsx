@@ -46,12 +46,10 @@ export default function NxProgressBarExample() {
       <div>
         Error{' '}
         <NxProgressBar value={60}
-                       hasError={true}
                        label="6 of 10 cats fed."
                        labelError="Something went wrong!"
         />
         <NxProgressBar value={50}
-                       hasError={true}
                        label="5 of 10 cats fed."
                        labelError="Something went wrong!"
                        inlineCounter={true}
