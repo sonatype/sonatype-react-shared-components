@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { a11yTest, simpleTest } = require('./testUtils');
+const { a11yTest, simpleTest, simpleTestLongElement } = require('./testUtils');
 
 describe('NxProgressBar', function() {
   beforeEach(async function() {
@@ -12,22 +12,22 @@ describe('NxProgressBar', function() {
   });
 
   describe('NxProgressBar Normal', function() {
-    const selector = 'nx-progress-bar-normal-example';
-    it('looks right', simpleTest(selector));
+    const selector = '#nx-progress-bar-normal-example';
+    it('looks right', simpleTestLongElement(selector));
   });
 
   describe('NxProgressBar Small', function() {
     const selector = '#nx-progress-bar-small-example';
-    it('looks right', simpleTest(selector));
+    it('looks right', simpleTestLongElement(selector));
   });
 
   describe('NxProgressBar Full', function() {
     const selector = '#nx-progress-bar-full-example';
-    it('looks right', simpleTest(selector));
+    it('looks right', simpleTestLongElement(selector));
   });
 
   describe('NxProgressBar Inline', function() {
-    const selector = 'nx-progress-bar-inline-example';
+    const selector = '#nx-progress-bar-inline-example';
     it('looks right', simpleTest(selector));
   });
 
