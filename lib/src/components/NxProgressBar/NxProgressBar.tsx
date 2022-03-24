@@ -89,14 +89,12 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
         'nx-progress-bar--success': percentage === 100
       }, className);
 
-      const assignProgressAriaLabel = !!(variant === 'inline' || variant === 'small' || inlineCounter);
-      const progressAriaLabel = assignProgressAriaLabel ? labelText : undefined;
+      const ariaLabelText = variant === 'inline' || variant === 'small' || inlineCounter ? labelText : undefined;
 
       return (
         <label className={classes}>
           <progress ref={ref}
-                    aria-label={progressAriaLabel}
-                    aria-hidden={!assignProgressAriaLabel}
+                    aria-label={ariaLabelText}
                     className="nx-progress-bar__progress"
                     value={labelError ? 0 : value}
                     max={max}
