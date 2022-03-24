@@ -11,7 +11,7 @@ import NxProgressBar from '../NxProgressBar';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 describe('NxProgressBar', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxProgressBar, { value: 50 });
+  const getShallowComponent = enzymeUtils.getShallowComponent(NxProgressBar, { value: 50, label: 'test label' });
 
   it('sets the correct max and value to the progress element',
       function() {
@@ -53,8 +53,10 @@ describe('NxProgressBar', function() {
       function() {
         const component = getShallowComponent({ value: 0 });
         const successComponent = getShallowComponent({ value: 100 });
+        const successComponentWithCustomMax = getShallowComponent({ value: 50, max: 50 });
         expect(component).not.toHaveClassName('nx-progress-bar--success');
         expect(successComponent).toHaveClassName('nx-progress-bar--success');
+        expect(successComponentWithCustomMax).toHaveClassName('nx-progress-bar--success');
       }
   );
 
@@ -73,26 +75,24 @@ describe('NxProgressBar', function() {
       }
   );
 
-  it('sets the correct error className when hasError is true',
+  it('sets the correct error className when labelError is set',
       function() {
         const component = getShallowComponent({ value: 100 });
-        const errorComponent = getShallowComponent({ value: 100, hasError: true });
+        const errorComponent = getShallowComponent({ labelError: 'Something went wrong!' });
         expect(component).not.toHaveClassName('nx-progress-bar--error');
         expect(errorComponent).toHaveClassName('nx-progress-bar--error');
       }
   );
 
-  it('shows the correct label and icon when hasError is true',
+  it('shows the correct label and icon when labelError is set',
       function() {
-        const component = getShallowComponent({ value: 100, hasError: true, label: 'normal label' });
-        const errorLabelComponent = getShallowComponent({ value: 100, hasError: true, labelError: 'error label' });
+        const TEST_ERROR_LABEL = 'error label';
+
+        const component = getShallowComponent({ value: 100, label: 'normal label', labelError: TEST_ERROR_LABEL });
 
         const labelTextSelector = '.nx-progress-bar__label-text';
-
-        expect(component.find(labelTextSelector)).not.toExist();
-
-        expect(errorLabelComponent).toContainMatchingElement(NxFontAwesomeIcon);
-        expect(errorLabelComponent.find(labelTextSelector)).toHaveText('error label');
+        expect(component).toContainMatchingElement(NxFontAwesomeIcon);
+        expect(component.find(labelTextSelector)).toHaveText(TEST_ERROR_LABEL);
       }
   );
 

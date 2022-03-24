@@ -11,18 +11,23 @@ describe('NxProgressBar', function() {
     await browser.url('#/pages/Progress Bar');
   });
 
-  describe('NxProgressBar variants', function() {
-    const selector = 'nx-progress-bar-example';
+  describe('NxProgressBar Normal', function() {
+    const selector = 'nx-progress-bar-normal-example';
     it('looks right', simpleTest(selector));
   });
 
-  describe('Success NxProgressBar', function() {
-    const selector = '#nx-progress-bar-success-example';
+  describe('NxProgressBar Small', function() {
+    const selector = '#nx-progress-bar-small-example';
     it('looks right', simpleTest(selector));
   });
 
-  describe('Error NxProgressBar', function() {
-    const selector = '#nx-progress-bar-error-example';
+  describe('NxProgressBar Full', function() {
+    const selector = '#nx-progress-bar-full-example';
+    it('looks right', simpleTest(selector));
+  });
+
+  describe('NxProgressBar Inline', function() {
+    const selector = 'nx-progress-bar-inline-example';
     it('looks right', simpleTest(selector));
   });
 });
