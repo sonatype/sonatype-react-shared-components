@@ -11,7 +11,7 @@ export default function NxProgressBarExample() {
   return (
     <>
       <div>
-        0% Progress
+        Examples of 0% progress:
         <NxProgressBar value={0}
                        label="0 of 10 cats fed."
         />
@@ -21,7 +21,7 @@ export default function NxProgressBarExample() {
         />
       </div>
       <div>
-        50% Progress
+        Examples of 50% progress:
         <NxProgressBar value={50}
                        label="5 of 10 cats fed."
         />
@@ -32,7 +32,7 @@ export default function NxProgressBarExample() {
         />
       </div>
       <div>
-        100% Progress (Success){' '}
+        Examples of 100% progress (Success):
         <NxProgressBar value={100}
                        label="10 of 10 cats fed."
                        labelSuccess="All cats fed!"
@@ -44,7 +44,7 @@ export default function NxProgressBarExample() {
         />
       </div>
       <div>
-        Error{' '}
+        Examples of error progress:
         <NxProgressBar value={60}
                        label="6 of 10 cats fed."
                        labelError="Something went wrong!"

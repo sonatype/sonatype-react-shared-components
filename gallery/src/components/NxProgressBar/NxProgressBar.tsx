@@ -182,6 +182,7 @@ const NxPaginationPage = () =>
                         codeExamples={nxProgressBarInlineExampleCode}>
       Examples of "inline" variant <NxCode>NxProgressBar</NxCode> showing 0% progress,
       a partial-progress, success (100% progress), and error state progress bar.
+      Notice this variant hides the percentage counter and label.
     </GalleryExampleTile>
   </>;
 

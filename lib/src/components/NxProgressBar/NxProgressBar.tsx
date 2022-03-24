@@ -29,59 +29,24 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
       } = props;
 
       const showCounter = showCounterProp ?? true;
+      const showLabelElement = !(variant === 'inline' || variant === 'small' || inlineCounter);
+
       const max = maxProp ?? 100;
       const percentage = Math.round(value / max * 100);
 
-      let labelText = label;
+      const labelText = labelError || ((percentage === 100 && labelSuccess) ? labelSuccess : label);
 
-      const renderCounter = () => {
-        if (!showCounter || variant === 'inline') {
-          return null;
-        }
+      const counterElement = showCounter
+        ? <span className="nx-counter nx-progress-bar__counter">{`${labelError ? 0 : percentage}%`}</span>
+        : null;
 
-        return <span className="nx-counter nx-progress-bar__counter">{`${labelError ? 0 : percentage}%`}</span>;
-      };
-
-      const renderLabel = () => {
-        if (variant === 'inline' || variant === 'small') {
-          return null;
-        }
-
-        if (labelError) {
-          labelText = labelError;
-          return (
-            <>
-              <NxFontAwesomeIcon icon={faExclamationCircle} />
-              <span className="nx-progress-bar__label-text">{labelText}</span>
-            </>
-          );
-        }
-
-        if (percentage === 100) {
-          labelText = labelSuccess || labelText;
-          return (
-            <>
-              <NxFontAwesomeIcon icon={faCheckCircle} />
-              <span className="nx-progress-bar__label-text">{labelText}</span>
-            </>
-          );
-        }
-
-        return <span className="nx-progress-bar__label-text">{labelText}</span>;
-      };
-
-      const renderCounterAndLabel = () => {
-        if (variant === 'inline') {
-          return null;
-        }
-
-        return (
-          <span className="nx-progress-bar__counter-and-label">
-            {renderCounter()}
-            {inlineCounter ? null : renderLabel()}
-          </span>
-        );
-      };
+      const labelElement = showLabelElement ? (
+        <>
+          {labelError && <NxFontAwesomeIcon icon={faExclamationCircle} />}
+          {percentage === 100 && <NxFontAwesomeIcon icon={faCheckCircle} />}
+          <span className="nx-progress-bar__label-text">{labelText}</span>
+        </>
+      ) : null;
 
       const classes = classnames('nx-progress-bar', `nx-progress-bar--${variant}`, {
         'nx-progress-bar--inline-counter': inlineCounter,
@@ -89,18 +54,23 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
         'nx-progress-bar--success': percentage === 100
       }, className);
 
-      const ariaLabelText = variant === 'inline' || variant === 'small' || inlineCounter ? labelText : undefined;
-
       return (
         <label className={classes}>
           <progress ref={ref}
-                    aria-label={ariaLabelText}
+                    aria-label={!showLabelElement ? labelText : undefined}
                     className="nx-progress-bar__progress"
                     value={labelError ? 0 : value}
                     max={max}
                     {...otherAttributes}>
           </progress>
-          {renderCounterAndLabel()}
+          {
+            variant !== 'inline' && (
+              <span className="nx-progress-bar__counter-and-label">
+                {counterElement}
+                {labelElement}
+              </span>
+            )
+          }
         </label>
       );
     }
