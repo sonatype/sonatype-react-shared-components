@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { simpleTest } = require('./testUtils');
+const { a11yTest, simpleTest } = require('./testUtils');
 
 describe('NxProgressBar', function() {
   beforeEach(async function() {
@@ -30,4 +30,6 @@ describe('NxProgressBar', function() {
     const selector = 'nx-progress-bar-inline-example';
     it('looks right', simpleTest(selector));
   });
+
+  it('passes a11y checks', a11yTest());
 });
