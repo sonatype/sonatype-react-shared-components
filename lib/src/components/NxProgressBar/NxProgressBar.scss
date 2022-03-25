@@ -11,6 +11,34 @@
   flex-direction: column;
   gap: var(--nx-spacing-2x);
   margin: var(--nx-spacing-6x) 0;
+
+  &--inline-counter {
+    flex-direction: row;
+  }
+
+  &--inline {
+    display: inline-flex;
+    margin: 0 var(--nx-spacing-6x);
+    vertical-align: middle;
+  }
+
+  &--success {
+    color: var(--nx-swatch-green-25);
+  
+    .nx-progress-bar__counter {
+      border-color: var(--nx-swatch-green-25);
+      background-color: var(--nx-swatch-green-95);
+    }
+  }
+  
+  &--error {
+    color: var(--nx-swatch-red-40);
+  
+    .nx-progress-bar__counter {
+      border-color: var(--nx-swatch-red-40);
+      background-color: var(--nx-swatch-red-95);
+    }
+  }
 }
 
 .nx-progress-bar__counter-and-label {
@@ -19,36 +47,8 @@
   }
 }
 
-.nx-progress-bar--inline-counter {
-  flex-direction: row;
-}
-
-.nx-progress-bar--inline {
-  display: inline-flex;
-  margin: 0 var(--nx-spacing-6x);
-  vertical-align: middle;
-}
-
 .nx-progress-bar__counter {
   margin: 0 var(--nx-spacing-2x) 0 0;
-}
-
-.nx-progress-bar--success {
-  color: var(--nx-swatch-green-25);
-
-  .nx-progress-bar__counter {
-    border-color: var(--nx-swatch-green-25);
-    background-color: var(--nx-swatch-green-95);
-  }
-}
-
-.nx-progress-bar--error {
-  color: var(--nx-swatch-red-40);
-
-  .nx-progress-bar__counter {
-    border-color: var(--nx-swatch-red-40);
-    background-color: var(--nx-swatch-red-95);
-  }
 }
 
 $normal-height: 25px;
@@ -61,16 +61,23 @@ $normal-height: 25px;
   border: 0;
   height: $normal-height;
   width: 100%;
-}
 
-// Track
-.nx-progress-bar__progress,
-.nx-progress-bar__progress::-webkit-progress-bar {
-  background: var(--nx-swatch-indigo-95);
-  border-radius: math.div($normal-height, 2);
-  height: $normal-height;
-  overflow: hidden;
-  width: 300px;
+  &,
+  &::-webkit-progress-bar {
+    background: var(--nx-swatch-indigo-95);
+    border-radius: math.div($normal-height, 2);
+    height: $normal-height;
+    overflow: hidden;
+    width: 300px;
+  }
+
+  &::-moz-progress-bar {
+    background: var(--nx-swatch-teal-60);
+  }
+  
+  &::-webkit-progress-value {
+    background: var(--nx-swatch-teal-60);
+  }
 }
 
 .nx-progress-bar--small {
@@ -96,12 +103,4 @@ $normal-height: 25px;
     border-radius: math.div($inline-height, 2);
     width: 150px;
   }
-}
-
-.nx-progress-bar__progress::-moz-progress-bar {
-  background: var(--nx-swatch-teal-60);
-}
-
-.nx-progress-bar__progress::-webkit-progress-value {
-  background: var(--nx-swatch-teal-60);
 }
