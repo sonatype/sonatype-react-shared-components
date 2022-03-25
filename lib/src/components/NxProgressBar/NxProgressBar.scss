@@ -14,6 +14,10 @@
 
   &--inline-counter {
     flex-direction: row;
+
+    .nx-progress-bar__counter {
+      margin: 0;
+    }
   }
 
   &--inline {
@@ -41,6 +45,10 @@
   }
 }
 
+.nx-progress-bar__counter {
+  margin: 0 var(--nx-spacing-2x) 0 0;
+}
+
 .nx-progress-bar__counter-and-label {
   .nx-icon {
     margin: 0 0 0 var(--nx-spacing-2x);
@@ -48,13 +56,7 @@
   }
 }
 
-.nx-progress-bar__counter {
-  margin: 0 var(--nx-spacing-2x) 0 0;
 
-  &:last-child {
-    margin: 0;
-  }
-}
 
 .nx-progress-bar__label-text {
   margin-left: var(--nx-spacing-2x);
