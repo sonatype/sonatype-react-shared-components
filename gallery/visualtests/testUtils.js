@@ -81,7 +81,7 @@ module.exports = {
           pointerType: 'mouse'
         },
         actions: [{
-          type: "pointerMove",
+          type: 'pointerMove',
           duration: 0,
           origin: clickElement,
           x: 10,
@@ -122,8 +122,8 @@ module.exports = {
           i = 0;
       while (currentScreenshotY < y + height) {
         const remainingElementHeight = height - screenshotHeight * i,
-          currentScreenshotHeight = Math.min(screenshotHeight, remainingElementHeight),
-          screenshotRegion = new Region(x, currentScreenshotY, width, currentScreenshotHeight);
+            currentScreenshotHeight = Math.min(screenshotHeight, remainingElementHeight),
+            screenshotRegion = new Region(x, currentScreenshotY, width, currentScreenshotHeight);
 
         await browser.execute(function(x, y) {
           return window.scroll(x, y);
@@ -139,12 +139,11 @@ module.exports = {
 
   a11yTest(builderCustomizer) {
     return async () => {
-      const builder = new AxeBuilder({ client: browser }),
+      const builder = new AxeBuilder({ client: browser }).exclude('.hosted-versions-select__select'),
           customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
           axeResults = await customizedBuilder.analyze();
-      // Disabling a11y tests for this POC temporarily
-      // expect(axeResults.violations).toEqual([]);
-      // expect(axeResults.incomplete).toEqual([]);
+      expect(axeResults.violations).toEqual([]);
+      expect(axeResults.incomplete).toEqual([]);
     };
   }
 };
