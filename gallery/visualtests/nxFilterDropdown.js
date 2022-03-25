@@ -10,6 +10,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 describe('NxFilterDropdown', function() {
   beforeEach(async function() {
     await browser.url('#/pages/Filter Dropdown');
+    await browser.refresh();
   });
 
   const tableExampleSelector = '#nx-filter-dropdown-table-example .gallery-example-live',
@@ -73,18 +74,29 @@ describe('NxFilterDropdown', function() {
     });
 
     describe('reset button', function() {
-      const resetBtnSelector = `${dropdownSelector} .nx-filter-dropdown__reset`;
+      const resetBtnSelector = `${dropdownSelector} .nx-filter-dropdown__reset`,
+          checkboxSelector = `${dropdownSelector} .nx-checkbox`;
 
       beforeEach(async function() {
         const resetBtn = await browser.$(resetBtnSelector);
         await resetBtn.scrollIntoView();
       });
 
-      it('looks like a link', simpleTest(dropdownSelector));
-      it('has lighter blue text when clicked', clickTest(dropdownSelector, resetBtnSelector));
-      it('has darker text when hovered', hoverTest(dropdownSelector, resetBtnSelector));
-      it('has a focus border around the Reset icon and text when focused',
-          focusTest(dropdownSelector, resetBtnSelector));
+      it('looks disabled when no items are selected', simpleTest(dropdownSelector));
+
+      describe('when items are selected', function() {
+        beforeEach(async function() {
+          const checkbox = await browser.$(checkboxSelector);
+
+          checkbox.click();
+        });
+
+        it('looks like a link', simpleTest(dropdownSelector));
+        it('has lighter blue text when clicked', clickTest(dropdownSelector, resetBtnSelector));
+        it('has darker text when hovered', hoverTest(dropdownSelector, resetBtnSelector));
+        it('has a focus border around the Reset icon and text when focused',
+            focusTest(dropdownSelector, resetBtnSelector));
+      });
     });
   });
 
