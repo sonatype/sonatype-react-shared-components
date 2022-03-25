@@ -172,7 +172,7 @@ const NxPaginationPage = () =>
                         id="nx-progress-bar-full-example"
                         liveExample={NxProgressBarFullExample}
                         codeExamples={nxProgressBarFullExampleCode}>
-      Examples of "full" variant (default) <NxCode>NxProgressBar</NxCode> showing 0% progress,
+      Examples of "full" variant <NxCode>NxProgressBar</NxCode> showing 0% progress,
       a partial-progress, success (100% progress), and error state progress bar with and without inlineCounter.
     </GalleryExampleTile>
 
