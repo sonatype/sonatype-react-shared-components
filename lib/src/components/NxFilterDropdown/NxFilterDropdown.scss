@@ -45,5 +45,9 @@
     &:active {
       color: var(--nx-color-link-active);
     }
+
+    &[disabled] {
+      color: var(--nx-swatch-grey-60);
+    }
   }
 }

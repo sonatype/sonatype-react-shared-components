@@ -35,7 +35,8 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
         ...attrs
       } = props,
       menuRef = useRef<HTMLDivElement>(null),
-      className = classnames('nx-filter-dropdown', classNameProp);
+      className = classnames('nx-filter-dropdown', classNameProp),
+      hasSelection = !!selectedIds.size;
 
   // Throw an error if one of the selectedIds is not part of the available options
   selectedIds.forEach(itemId => {
@@ -81,12 +82,15 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
       dropdownLabel = (
         <>
           <NxFontAwesomeIcon className="nx-filter-dropdown__filter-icon" icon={faFilter} />
-          { selectedIds.size ? renderCounter() : <span>{placeholder ?? 'Filter'}</span> }
+          { hasSelection ? renderCounter() : <span>{placeholder ?? 'Filter'}</span> }
         </>
       );
 
   const resetBtn = (
-    <button key="reset-btn" className="nx-dropdown-link nx-filter-dropdown__reset" onClick={onResetClick}>
+    <button key="reset-btn"
+            disabled={!hasSelection}
+            className="nx-dropdown-link nx-filter-dropdown__reset"
+            onClick={onResetClick}>
       <Close />
       <span>Reset</span>
     </button>
