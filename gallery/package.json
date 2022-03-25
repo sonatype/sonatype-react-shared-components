@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm-run-all lint webpack-dev-server",
     "build": "npm-run-all lint webpack copy-assets",
-    "copy-assets": "cpx \"{src/index.html,src/assets/images/favicon*,hosted-versions.json}\" dist",
+    "copy-assets": "cpx \"{src/index.html,src/assets/images/favicon*}\" dist; cpx hosted-versions.json dist",
     "lint": "eslint 'src/**/*.{js,ts}{,x}'",
     "webpack": "webpack --env production --mode=production",
     "webpack-dev-server": "webpack serve",
