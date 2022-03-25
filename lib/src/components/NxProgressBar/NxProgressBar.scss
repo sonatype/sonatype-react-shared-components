@@ -64,8 +64,8 @@ $normal-height: 25px;
 }
 
 // Track
-.nx-progress-bar__progress[value],
-.nx-progress-bar__progress[value]::-webkit-progress-bar {
+.nx-progress-bar__progress,
+.nx-progress-bar__progress::-webkit-progress-bar {
   background: var(--nx-swatch-indigo-95);
   border-radius: math.div($normal-height, 2);
   height: $normal-height;
@@ -74,23 +74,23 @@ $normal-height: 25px;
 }
 
 .nx-progress-bar--small {
-  .nx-progress-bar__progress[value],
-  .nx-progress-bar__progress[value]::-webkit-progress-bar {
+  .nx-progress-bar__progress,
+  .nx-progress-bar__progress::-webkit-progress-bar {
     width: 100px;
   }
 }
 
 .nx-progress-bar--full {
-  .nx-progress-bar__progress[value],
-  .nx-progress-bar__progress[value]::-webkit-progress-bar {
+  .nx-progress-bar__progress,
+  .nx-progress-bar__progress::-webkit-progress-bar {
     min-width: 300px;
     width: 100%;
   }
 }
 
 .nx-progress-bar--inline {
-  .nx-progress-bar__progress[value],
-  .nx-progress-bar__progress[value]::-webkit-progress-bar {
+  .nx-progress-bar__progress,
+  .nx-progress-bar__progress::-webkit-progress-bar {
     $inline-height: 16px;
     height: $inline-height;
     border-radius: math.div($inline-height, 2);
@@ -98,10 +98,10 @@ $normal-height: 25px;
   }
 }
 
-.nx-progress-bar__progress[value]::-moz-progress-bar {
+.nx-progress-bar__progress::-moz-progress-bar {
   background: var(--nx-swatch-teal-60);
 }
 
-.nx-progress-bar__progress[value]::-webkit-progress-value {
+.nx-progress-bar__progress::-webkit-progress-value {
   background: var(--nx-swatch-teal-60);
 }
