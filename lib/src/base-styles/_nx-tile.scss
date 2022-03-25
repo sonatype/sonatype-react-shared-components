@@ -7,9 +7,6 @@
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
 
-$-tile-header-height: 40px; // Minimum height
-$-tile-header-height-actions: 43px; // Height with sub-title and/or right actions
-
 /*
   #Name-spaced Tile System
 */
@@ -45,10 +42,9 @@ $-tile-header-height-actions: 43px; // Height with sub-title and/or right action
   // NOTE: without the min-content sizing on the rows it adds extra vertical space when only title and actions are
   // present. I don't have an explanation for this, it doesn't happen with _any_ other combination of header children
   grid-template:
-    "title      tags   actions" min-content
+    "title      tags   actions" 40px
     "subtitle subtitle actions" min-content /
      auto       1fr       auto;
-  min-height: $-tile-header-height;
 
   + .nx-tile-content {
     padding-top: var(--nx-spacing-4x);
