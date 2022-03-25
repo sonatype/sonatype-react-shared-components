@@ -13,6 +13,7 @@
   }
 
   .nx-counter {
+    display: inline; // prevents counter from expanding height of toggle
     margin-left: 0;
   }
 
