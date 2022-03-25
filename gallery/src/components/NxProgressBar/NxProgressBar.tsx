@@ -91,7 +91,7 @@ const NxPaginationPage = () =>
             </NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              When specified, error styling is applied, the component progress is set to 0%, and,
+              When specified, error styling is applied, the component progress is set to 0%, and
               this string will be displayed instead of <NxCode>label</NxCode>.
             </NxTable.Cell>
           </NxTable.Row>
