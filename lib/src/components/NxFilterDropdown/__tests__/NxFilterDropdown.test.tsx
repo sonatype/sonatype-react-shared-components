@@ -132,6 +132,23 @@ describe('NxFilterDropdown', function() {
       resetBtn.simulate('click');
       expect(onChange).toHaveBeenCalledWith(new Set());
     });
+
+    it('disables the Reset button when there is no selection', function() {
+      const component = getShallow({
+            isOpen: true,
+            options: [{ id: '1', displayName: 'one' }, { id: '2', displayName: 'two' }]
+          }),
+          componentWithSelected = getShallow({
+            isOpen: true,
+            selectedIds: new Set(['1']),
+            options: [{ id: '1', displayName: 'one' }, { id: '2', displayName: 'two' }]
+          }),
+          resetBtn = component.find('.nx-filter-dropdown__reset'),
+          selectedComponentResetBtn = componentWithSelected.find('.nx-filter-dropdown__reset');
+
+      expect(resetBtn).toBeDisabled();
+      expect(selectedComponentResetBtn).not.toBeDisabled();
+    });
   });
 
   it('renders an NxCheckbox for each option, checked based on selectedIds', function() {
