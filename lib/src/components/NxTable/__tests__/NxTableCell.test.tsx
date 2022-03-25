@@ -90,7 +90,10 @@ describe('NxTableCell', function () {
         });
 
         expect(component).toMatchSelector('th.nx-cell.nx-cell--header');
-        expect(component.children()).not.toExist();
+        expect(component.children().length).toBe(1);
+        expect(component.find('span')).not.toHaveText('foo');
+        expect(component.find('span')).toHaveClassName('nx-visually-hidden');
+        expect(component.find('span')).toHaveText('Select Row');
       });
     });
   });
@@ -136,7 +139,7 @@ describe('NxTableCell', function () {
     });
 
     describe('when isHeader', function() {
-      it('renders an empty header cell', function() {
+      it('renders a visually empty header cell with nx-visually-hidden class', function() {
         const component = getMountedHeaderComponent({
           rowBtnIcon: faEdit,
           sortDir: 'asc',
@@ -144,7 +147,10 @@ describe('NxTableCell', function () {
         });
 
         expect(component).toMatchSelector('th.nx-cell.nx-cell--header');
-        expect(component.children()).not.toExist();
+        expect(component.children().length).toBe(1);
+        expect(component.find('span')).not.toHaveText('foo');
+        expect(component.find('span')).toHaveClassName('nx-visually-hidden');
+        expect(component.find('span')).toHaveText('Select Row');
       });
     });
   });

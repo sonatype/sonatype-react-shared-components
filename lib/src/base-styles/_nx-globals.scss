@@ -47,3 +47,14 @@ $-nx-scrollable-default-height: 400px;
 .nx-blockquote {
   @extend %nx-blockquote;
 }
+
+//Class that allows making content visible only to screen readers but not visually
+.nx-visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

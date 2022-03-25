@@ -96,10 +96,11 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   return (
     <Tag className={classes} aria-sort={ariaSort} {...attrs}>
       {
-        isSortable ? cellSortingContents :
-        rowBtnIcon ? rowBtnCellContents :
-        children
-      }
+          isSortable ? cellSortingContents :
+          rowBtnIcon ? rowBtnCellContents :
+          children
+        }
+      {isHeader && rowBtnIcon && <span className="nx-visually-hidden">Select Row</span>}
     </Tag>
   );
 };
