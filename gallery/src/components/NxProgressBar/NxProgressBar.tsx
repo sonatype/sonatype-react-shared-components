@@ -80,7 +80,8 @@ const NxPaginationPage = () =>
             </NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Shows this label when progress reached 100%.
+              When specified and progress reaches 100%,
+              this string will be displayed instead of <NxCode>label</NxCode>.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -90,8 +91,8 @@ const NxPaginationPage = () =>
             </NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              If this label is specified the component progress is set to 0% and
-              error styling is applied.
+              When specified, error styling is applied, the component progress is set to 0%, and,
+              this string will be displayed instead of <NxCode>label</NxCode>.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
