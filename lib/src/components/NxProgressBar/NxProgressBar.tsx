@@ -61,8 +61,7 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
                     className="nx-progress-bar__progress"
                     value={labelError ? 0 : value}
                     max={max}
-                    {...otherAttributes}>
-          </progress>
+                    {...otherAttributes} />
           {
             variant !== 'inline' && (
               <span className="nx-progress-bar__counter-and-label">
