@@ -52,15 +52,11 @@
 .nx-progress-bar__counter-and-label {
   .nx-icon {
     margin: 0 0 0 var(--nx-spacing-2x);
-    vertical-align: middle;
   }
 }
 
-
-
 .nx-progress-bar__label-text {
   margin-left: var(--nx-spacing-2x);
-  vertical-align: middle;
 }
 
 $-normal-height: 25px;
