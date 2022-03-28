@@ -111,7 +111,7 @@ describe('NxFilterDropdown', function() {
       await button.click();
 
       const { x, y } = await dropdown.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 376);
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 150, 244);
 
       await browser.eyesRegionSnapshot(null, Target.region(region));
     });
@@ -128,7 +128,7 @@ describe('NxFilterDropdown', function() {
       await button.click();
 
       const { x, y } = await dropdown.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 376);
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 244);
 
       await browser.eyesRegionSnapshot(null, Target.region(region));
     });
@@ -145,7 +145,7 @@ describe('NxFilterDropdown', function() {
       await button.click();
 
       const { x, y } = await formGroup.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 376);
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 244);
 
       await browser.eyesRegionSnapshot(null, Target.region(region));
     });
