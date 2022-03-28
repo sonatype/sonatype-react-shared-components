@@ -13,6 +13,8 @@ describe('nx-tile', function() {
   });
 
   const simpleTileSelector = '#nx-tile-simple-example .nx-tile',
+      headerlessTileSelector = '#nx-tile-headerless-example .nx-tile',
+      multiHeaderTileSelector = '#nx-tile-multi-header-example .nx-tile',
       actionsTileSelector = '#nx-tile-actions-example .nx-tile',
       subtitleTileSelector = '#nx-tile-subtitle-example .nx-tile',
       subsectionsTileSelector = '#nx-tile-subsections-example .nx-tile',
@@ -23,6 +25,14 @@ describe('nx-tile', function() {
 
   describe('Simple nx-tile', function() {
     it('looks right', simpleTest(simpleTileSelector));
+  });
+
+  describe('nx-tile with no header', function() {
+    it('looks right', simpleTest(headerlessTileSelector));
+  });
+
+  describe('nx-tile with multiple headers', function() {
+    it('looks right', simpleTest(multiHeaderTileSelector));
   });
 
   describe('nx-tile with actions buttons', function() {
