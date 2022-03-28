@@ -71,14 +71,14 @@ $-normal-height: 25px;
   appearance: none;
 
   border: 0;
-  height: $normal-height;
+  height: $-normal-height;
   width: 100%;
 
   &,
   &::-webkit-progress-bar {
     background: var(--nx-swatch-indigo-95);
-    border-radius: math.div($normal-height, 2);
-    height: $normal-height;
+    border-radius: math.div($-normal-height, 2);
+    height: $-normal-height;
     overflow: hidden;
     width: 300px;
   }
