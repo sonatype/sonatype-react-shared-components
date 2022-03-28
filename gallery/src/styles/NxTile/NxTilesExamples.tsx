@@ -30,7 +30,7 @@ const NxSimpleTileCode = require('./NxSimpleTileExample.html'),
 
 const NxTilesExamples = () =>
   <>
-    <GalleryExampleTile title="NX Simple Tile Example"
+    <GalleryExampleTile title="Simple Example"
                         id="nx-tile-simple-example"
                         defaultCheckeredBackground={true}
                         htmlExample={NxSimpleTileCode}
@@ -38,7 +38,7 @@ const NxTilesExamples = () =>
       A simple example of an <NxCode>nx-tile</NxCode> including a header and a footer.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Tile Headerless Example"
+    <GalleryExampleTile title="Headerless Example"
                         id="nx-tile-headerless-example"
                         defaultCheckeredBackground={true}
                         htmlExample={NxTileHeaderlessCode}
@@ -46,7 +46,7 @@ const NxTilesExamples = () =>
       A simple example of an <NxCode>nx-tile</NxCode> containing only a content area and no header.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Tile Multiple Header Example"
+    <GalleryExampleTile title="Example with Multiple Top-Level Headers"
                         id="nx-tile-multi-header-example"
                         defaultCheckeredBackground={true}
                         htmlExample={NxTileMultiHeaderCode}
@@ -54,7 +54,7 @@ const NxTilesExamples = () =>
       An <NxCode>nx-tile</NxCode> containing multiple top-level headers.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Tile with Actions Example"
+    <GalleryExampleTile title="Header Actions Example"
                         id="nx-tile-actions-example"
                         defaultCheckeredBackground={true}
                         htmlExample={NxTileWithActionsCode}
@@ -63,7 +63,7 @@ const NxTilesExamples = () =>
       Note that the title text does not wrap but truncates when it reaches the action buttons.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Tile with Subtitle Example"
+    <GalleryExampleTile title="Subtitle Example"
                         id="nx-tile-subtitle-example"
                         defaultCheckeredBackground={true}
                         htmlExample={NxTileWithSubtitleCode}
@@ -71,7 +71,7 @@ const NxTilesExamples = () =>
       An example of an <NxCode>nx-tile</NxCode> with a long subtitle that wraps.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Tile with a Subsection Header Example"
+    <GalleryExampleTile title="Example of Subsections with Preceding Content"
                         id="nx-tile-subsections-example"
                         defaultCheckeredBackground={true}
                         htmlExample={NxTileSubsectionCode}
@@ -80,7 +80,7 @@ const NxTilesExamples = () =>
       rule which appears before the first subsection, but not between subsections.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Tile consisting of a form"
+    <GalleryExampleTile title="Form Tile Example"
                         id="nx-tile-form-example"
                         defaultCheckeredBackground={true}
                         liveExample={NxTileFormExample}
@@ -88,7 +88,7 @@ const NxTilesExamples = () =>
       An example of an <NxCode>nx-tile</NxCode> which solely contains a form.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Tile with form error"
+    <GalleryExampleTile title="Form Tile Example with Error"
                         id="nx-tile-form-error-example"
                         defaultCheckeredBackground={true}
                         liveExample={NxTileFormErrorExample}
@@ -97,7 +97,7 @@ const NxTilesExamples = () =>
       is in an error state.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Tile with an NxDropdown in the actions buttons area"
+    <GalleryExampleTile title="Example of Header Actions Including a Dropdown"
                         id="nx-tile-dropdown-actions-example"
                         defaultCheckeredBackground={true}
                         liveExample={NxTileDropdownActionsExample}
@@ -106,7 +106,7 @@ const NxTilesExamples = () =>
       {' '}<NxCode>NxStatefulDropdown</NxCode>, as the case may be) in the actions area.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Tile with accordions"
+    <GalleryExampleTile title="Accordions within a Tile Example"
                         id="nx-tile-accordion-example"
                         defaultCheckeredBackground={true}
                         liveExample={NxTileAccordionExample}
@@ -115,7 +115,7 @@ const NxTilesExamples = () =>
       (or <NxCode>NxStatefulAccordions</NxCode>) within.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Tile with Policy Violation Indicator"
+    <GalleryExampleTile title="Example of NxPolicyViolationIndicator within a Tile Header"
                         id="nx-tile-policy-violation-indicator-example"
                         defaultCheckeredBackground={true}
                         liveExample={NxTilePolicyViolationIndicatorExample}
@@ -124,7 +124,7 @@ const NxTilesExamples = () =>
       in the header.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NX Tile with grid"
+    <GalleryExampleTile title="Grid Tile Example"
                         id="nx-tile-grid-example"
                         defaultCheckeredBackground={true}
                         htmlExample={NxTileGridCode}
