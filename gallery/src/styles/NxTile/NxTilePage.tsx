@@ -160,9 +160,7 @@ const NxTilePage = () =>
             consisting of <NxCode>&lt;h3&gt;</NxCode> elements with their typical RSC styling. The subtitle
             is included within the <NxCode>.nx-tile-header</NxCode> using the appropriate classes as documented above.
             Subheaders are included within subsections (<NxCode>.nx-tile__subsection</NxCode>) also using
-            classes documented above. Because they are both <NxCode>&lt;h3&gt;</NxCode>s, a subheader should
-            never be used as the first content in a tile which also has a subtitle, as this would result in two
-            <NxCode>h3</NxCode>s in a row.
+            classes documented above.
           </NxP>
         </section>
       </NxTile.Subsection>
