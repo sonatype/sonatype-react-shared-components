@@ -10,7 +10,16 @@ import { ensureArray } from '../util/jsUtil';
 
 import CodeExample, { Props as CodeExampleProps } from '../CodeExample';
 import RawHtmlExample from '../RawHtmlExample';
-import { NxAccordion, NxCheckbox, NxStatefulAccordion, NxTile, useToggle } from '@sonatype/react-shared-components';
+import {
+  NxAccordion,
+  NxCheckbox,
+  NxStatefulAccordion,
+  NxTile,
+  useToggle
+} from '@sonatype/react-shared-components';
+import { GalleryTileFooter } from './GalleryTileFooter';
+
+import { useLocation } from 'react-router-dom';
 
 interface PropsWithRequiredChildren {
   children: ReactNode;
@@ -80,7 +89,12 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
           defaultCheckeredBackground
         } = props,
 
-        [checkeredBackground, toggleCheckeredBackground] = useToggle(defaultCheckeredBackground || false),
+        location = useLocation(),
+
+        overrideCheckeredBackground = location.search.includes('noCheckeredBackground'),
+
+        [checkeredBackground, toggleCheckeredBackground] =
+          useToggle((overrideCheckeredBackground ? false : defaultCheckeredBackground) || false),
 
         liveExampleRender =
           htmlExample ? <RawHtmlExample html={htmlExample} /> :
@@ -124,6 +138,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
               <h2 className="nx-accordion__header-title">Example Code</h2>
             </NxAccordion.Header>
             {codeExampleElements}
+            <GalleryTileFooter clipboardContent={codeExampleElements[0].props.content}/>
           </NxStatefulAccordion>
         </NxTile.Content>
       </GalleryTile>

@@ -14,8 +14,16 @@ import './NxModal.scss';
 
 export const NxModalContext = React.createContext<HTMLDialogElement | null>(null);
 
-const hasNativeModalSupport = !!(typeof window !== 'undefined' && window.HTMLDialogElement &&
-  window.HTMLDialogElement.prototype.showModal);
+// Typescript has rather obnoxiously partially removed support for HTMLDialogElement.
+// See https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-907490128 and
+// https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-968299542 . This even though
+// Firefox appears to intend to finally add support in v98. Until TS restores this, we'll have to jump
+// through some hoops...
+const hasWindow = typeof window !== 'undefined',
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    dynamicallyTypedWindow = hasWindow && window as any,
+    hasNativeModalSupport = !!(hasWindow && dynamicallyTypedWindow.HTMLDialogElement &&
+      dynamicallyTypedWindow.HTMLDialogElement.prototype.showModal);
 
 const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onClose, variant, role, ...attrs }) => {
   const modalClasses = classnames('nx-modal', className, {
@@ -75,7 +83,9 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
      * the browser around modals to simplify the NxModal styling around z-index handling
      */
     if (hasNativeModalSupport) {
-      el.showModal();
+      // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-968299542
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (el as any).showModal();
     }
     else {
       // without native support we don't trap focus in the modal, but we can at least start it off there

@@ -8,7 +8,7 @@ const { simpleTest, a11yTest } = require('./testUtils');
 
 describe('nx-blockquote', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/nx-blockquote');
+    await browser.url('#/pages/Blockquote');
   });
 
   const selector = '.gallery-example-live';

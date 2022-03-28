@@ -1,0 +1,63 @@
+<!--
+
+    Copyright (c) 2019-present Sonatype, Inc.
+    This program and the accompanying materials are made available under
+    the terms of the Eclipse Public License 2.0 which accompanies this
+    distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+
+-->
+<h3 class="nx-h3">
+  Nested ordered lists
+</h3>
+<ol class="nx-list nx-list--numbered">
+  <li class="nx-list__item">
+    <span class="nx-list__text">Item 1</span>
+  </li>
+  <li class="nx-list__item">
+    <span class="nx-list__text">Item 2</span>
+    <ol class="nx-list nx-list--numbered">
+      <li class="nx-list__item">
+        <span class="nx-list__text">Item 1</span>
+      </li>
+      <li class="nx-list__item">
+        <span class="nx-list__text">Item 2</span>
+      </li>
+      <li class="nx-list__item">
+        <span class="nx-list__text">Item 3</span>
+        <ol class="nx-list nx-list--numbered">
+          <li class="nx-list__item">
+            <span class="nx-list__text">
+              Item 1 this list item is also long enough that it wraps, or at least it should if I have typed enough
+              text, how much wood would a woodchuck chuck
+            </span>
+          </li>
+          <li class="nx-list__item">
+            <span class="nx-list__text">Item 2</span>
+          </li>
+          <li class="nx-list__item">
+            <span class="nx-list__text">Item 3</span>
+          </li>
+        </ol>
+      </li>
+      <li class="nx-list__item">
+        <p class="nx-p">
+          Instead of a simple sentence, this list item has several whole blocks worth of content. As such, notice
+          that it does <em>not</em> use <code class="nx-code">nx-list__text</code> and instead uses block-level
+          elements such as <code class="nx-code">&lt;p&gt;</code> to manage the item children.
+        </p>
+        <blockquote class="nx-blockquote">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit this would have been a grampa simpson quote but that
+          probably would have copyright issues so lorem ipsum it is in voluptate velit esse cillum dolore eu fugiat
+          nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+          id
+          est laborum.
+        </blockquote>
+      </li>
+    </ol>
+  </li>
+  <li class="nx-list__item">
+    <span class="nx-list__text">Item 3</span>
+  </li>
+</ol>

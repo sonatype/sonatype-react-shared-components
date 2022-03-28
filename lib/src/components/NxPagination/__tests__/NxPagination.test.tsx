@@ -252,10 +252,14 @@ describe('NxPagination', function() {
   });
 
   describe('accessibility', function() {
-    it('includes the current and max page in the nav label and can be tabbed to for screen readers', function() {
+    it('includes an aria-label in the nav', function() {
       const wrapper = getShallowComponent({ pageCount: 3, currentPage: 0 });
-      expect(wrapper).toHaveProp('aria-label', 'pagination, page 1 of 3');
-      expect(wrapper).toHaveProp('tabIndex', 0);
+      expect(wrapper).toHaveProp('aria-label', 'pagination');
+    });
+
+    it('overrides the aria-label if a custom one is passed', function() {
+      const wrapper = getShallowComponent({ pageCount: 3, currentPage: 0, 'aria-label': 'custom' });
+      expect(wrapper).toHaveProp('aria-label', 'custom');
     });
 
     it('shows the correct aria labels for a small pagination range', function () {

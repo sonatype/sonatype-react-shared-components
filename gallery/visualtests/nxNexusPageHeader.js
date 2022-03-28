@@ -8,7 +8,7 @@ const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = requi
 
 describe('NxNexusPageHeader', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/NxNexusPageHeader');
+    await browser.url('#/pages/Nexus%20Page%20Header');
   });
 
   const customLogoNexusPageHeaderSelector = '#nx-page-header-custom-logo-example .nx-page-header',

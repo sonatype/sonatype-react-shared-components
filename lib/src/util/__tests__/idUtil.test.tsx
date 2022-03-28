@@ -5,10 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
+import ReactDOMServer from 'react-dom/server';
 
 import { getUniqueId, useUniqueId } from '../idUtil';
 import { times } from 'ramda';
 import { shallow } from 'enzyme';
+import NxStableUniqueIdContext from '../../components/NxStableUniqueIdContext/NxStableUniqueIdContext';
 
 describe('idUtil', function() {
   describe('getUniqueId', function() {
@@ -111,6 +113,27 @@ describe('idUtil', function() {
       component.setProps({ val: 'bar' });
 
       expect(component).toHaveProp('id', initialId);
+    });
+
+    it('returns the same id per time that it is called within a separate NxStableUniqueIdContext', function() {
+      function Fixture() {
+        return <>{useUniqueId('foo')}</>;
+      }
+
+      const firstRender = ReactDOMServer.renderToStaticMarkup(
+        <NxStableUniqueIdContext>
+          <Fixture /> <Fixture />
+        </NxStableUniqueIdContext>
+      );
+
+      const secondRender = ReactDOMServer.renderToStaticMarkup(
+        <NxStableUniqueIdContext>
+          <Fixture /> <Fixture />
+        </NxStableUniqueIdContext>
+      );
+
+      expect(firstRender).toEqual(secondRender);
+      expect(new Set(firstRender.split(' ')).size).toBe(2);
     });
   });
 });

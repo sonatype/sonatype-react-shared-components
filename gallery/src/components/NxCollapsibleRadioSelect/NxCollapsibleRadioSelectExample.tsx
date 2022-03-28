@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
-import {contains, toLower} from 'ramda';
+import { includes, toLower } from 'ramda';
 
 import {
   NxCollapsibleRadioSelect,
@@ -42,7 +42,7 @@ const NxCollapsibleRadioSelectExample = () => {
   const [filter, setFilter] = useState('');
 
   function filterPredicate(option: NxCollapsibleRadioSelectOption) {
-    return contains(toLower(filter), toLower(option.name));
+    return includes(toLower(filter), toLower(option.name));
   }
 
   return (
