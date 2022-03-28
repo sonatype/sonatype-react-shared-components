@@ -12,9 +12,13 @@
     font-weight: normal;
   }
 
+  .nx-dropdown__toggle-label {
+    overflow: visible; //prevent the counter from getting cut off at the bottom
+  }
+
   .nx-counter {
-    display: inline; // prevents counter from expanding height of toggle
-    margin-left: 0;
+    // the counter is 1px taller than our typical line height and so makes the toggle box grow without this
+    margin: -0.5px 0;
   }
 
   .nx-radio-checkbox {
