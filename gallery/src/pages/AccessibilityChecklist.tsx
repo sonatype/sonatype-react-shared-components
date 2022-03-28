@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import classnames from 'classnames';
 import {GalleryTile} from '../gallery-components/GalleryTiles';
 import {
   NxP,
@@ -20,13 +21,19 @@ import {
 
 function Accessibility() {
 
-  const [showA, toggleA] = useToggle(false),
-      [showAA, toggleAA] = useToggle(false),
-      [showAAA, toggleAAA] = useToggle(false),
-      [showReco, toggleReco] = useToggle(false);
-
+  const [hideA, toggleA] = useToggle(false),
+      [hideAA, toggleAA] = useToggle(false),
+      [hideAAA, toggleAAA] = useToggle(false),
+      [hideReco, toggleReco] = useToggle(false),
+      hideRules = classnames({
+        'gallery-a-hidden': hideA,
+        'gallery-aa-hidden': hideAA,
+        'gallery-aaa-hidden': hideAAA,
+        'gallery-reco-hidden': hideReco
+      });
   return (
-    <GalleryTile title="WCAG Accessibility UX Checklist" className="gallery-accessibility-list">
+    <GalleryTile title="WCAG Accessibility UX Checklist"
+                 className={`gallery-accessibility-list ${hideRules}`}>
       <NxP>
         Accessibility UX checklist to serve as a method for designers and developers to assess the WCAG compliance of
         their work.
@@ -35,10 +42,10 @@ function Accessibility() {
         WCAG 2.1 Verification - 116 Questions | Cumulative list
       </NxP>
       <NxFieldset label="Filter by level" isRequired className="gallery-accessibility-filter">
-        <NxCheckbox onChange={toggleA} isChecked={!showA}>Level A</NxCheckbox>
-        <NxCheckbox onChange={toggleAA} isChecked={!showAA}>Level AA</NxCheckbox>
-        <NxCheckbox onChange={toggleAAA} isChecked={!showAAA}>Level AAA</NxCheckbox>
-        <NxCheckbox onChange={toggleReco} isChecked={!showReco}>Recommendations</NxCheckbox>
+        <NxCheckbox onChange={toggleA} isChecked={!hideA}>Level A</NxCheckbox>
+        <NxCheckbox onChange={toggleAA} isChecked={!hideAA}>Level AA</NxCheckbox>
+        <NxCheckbox onChange={toggleAAA} isChecked={!hideAAA}>Level AAA</NxCheckbox>
+        <NxCheckbox onChange={toggleReco} isChecked={!hideReco}>Recommendations</NxCheckbox>
       </NxFieldset>
       <section className="nx-tile-subsection">
         <header className="nx-tile-subsection__header">
@@ -56,7 +63,7 @@ function Accessibility() {
           other forms people need, such as large print, braille, speech, symbols or simpler language.
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we provided “alt text” alternatives for all images and data visualizations to a degree that
@@ -69,7 +76,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we provided “alt text” alternatives for all graphics like icons?
@@ -86,7 +93,7 @@ function Accessibility() {
           1.2 Time-based Media - Provide alternatives for time-based media [such as video, sound, slideshows, etc.]
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we provided a transcript of prerecorded audio and video recordings?
@@ -98,7 +105,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we provided captions and descriptions for prerecorded audio and videos?
@@ -110,7 +117,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are live captions available for live audio and video recordings?
@@ -122,7 +129,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we provided audio description which describes in real-time the contents of all video recordings?
@@ -134,7 +141,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we have a video recording of an ASL interpreter translating our pre recorded media?
@@ -146,7 +153,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we provided an audio description of the prerecorded media that also includes implicit context that
@@ -160,7 +167,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we provided a transcript or equivalent version of live video content?
@@ -178,7 +185,7 @@ function Accessibility() {
           of the content.
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can we provide a simpler layout without losing information or structure?
@@ -191,7 +198,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we included a text description of our content that conveys implicit tone and meaning, even if it is
@@ -204,7 +211,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we made the correct order of consuming our content obvious if the order of content is essential to
@@ -217,7 +224,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Does the sequence of information as we reveal it make sense if we went through it in order?
@@ -229,7 +236,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we made sure to not use physical characteristics like color or location to explain how to
@@ -242,7 +249,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we allow users to view our content in both landscape and portrait mode without distortion (unless one
@@ -255,7 +262,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we appropriately labeled our UI components so autofill can be used correctly?
@@ -267,7 +274,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we labeled input fields to communicate what information users can enter and why?
@@ -279,7 +286,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Does our markup match what the UI element is so that support devices can apply the user's customized
@@ -298,7 +305,7 @@ function Accessibility() {
           foreground from background.
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can users tell the difference between the foreground and background of content?
@@ -311,7 +318,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we made sure that color is not the only way that we convey information in our content?
@@ -323,7 +330,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can all normal text colors be differentiated from their background color at
@@ -334,7 +341,7 @@ function Accessibility() {
               <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#audio-control">Level A</NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can all large text colors be differentiated from their background color at a <strong>3:1</strong> ratio?
@@ -346,7 +353,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can all UI/graphic colors be differentiated from their background color at
@@ -357,7 +364,7 @@ function Accessibility() {
               <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#contrast-minimum">Level AA</NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do all page elements render legibly when zoomed in at <strong>200%</strong>?
@@ -367,7 +374,7 @@ function Accessibility() {
               <NxTextLink external href="https://www.w3.org/WAI/WCAG21/quickref/#resize-text">Level AA</NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we made sure not to rely on images alone to share information (unless it is essential)?
@@ -379,7 +386,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can all normal text colors be differentiated from their background color at
@@ -392,7 +399,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can all large text colors be differentiated from their background color
@@ -405,7 +412,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can all UI/graphic colors be differentiated from their background color at a <strong>3:1</strong> ratio
@@ -418,7 +425,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can voices in audio be heard clearly and easily distinguished from background noise?
@@ -430,7 +437,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 If we have included a block of text, have we given the user the ability to customize how they view it
@@ -443,7 +450,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we only used images of text (without alt text) for decoration, not sharing content?
@@ -455,7 +462,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we made sure that a vertical scroll bar is not needed until we exceed <strong>320px</strong> and
@@ -468,7 +475,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can our content be viewed and understood without issues if the line height
@@ -481,7 +488,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can our content be viewed and understood without issues if the space between each line of text is at
@@ -494,7 +501,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can our content be viewed and understood without issues if the space between paragraphs is at least
@@ -507,7 +514,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can our content be viewed and understood without issues if the space between letters is at
@@ -520,7 +527,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can our content be viewed and understood without issues if the space between words is at
@@ -533,7 +540,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-reco ${showReco && 'hidden'}`}>
+          <NxList.Item className="gallery-level-reco">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are our UI components named as follows and are these states obvious to assistive devices?
@@ -563,7 +570,7 @@ function Accessibility() {
                 <NxList.Item>
                   <NxList.Text>
                     <NxStatefulCheckbox defaultChecked={false}>
-                      <strong>DshowAbled</strong>
+                      <strong>Disabled</strong>
                     </NxStatefulCheckbox>
                   </NxList.Text>
                 </NxList.Item>
@@ -601,7 +608,7 @@ function Accessibility() {
           2.1 Keyboard Only - Make all functionality available from a keyboard.
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can users use a keyboard to access all content (as long as the path to get there is not important)?
@@ -613,7 +620,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can users navigate away from focused content using only a keyboard without getting stuck?
@@ -625,7 +632,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can users use a keyboard to access all content no matter what?
@@ -637,7 +644,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we give the user the ability to turn hotkey shortcuts on and off?
@@ -649,7 +656,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do keyboard hotkeys and standard shortcuts work properly within the interface?
@@ -666,7 +673,7 @@ function Accessibility() {
           2.2 Enough Time - Provide users enough time to read and use content.
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can users adjust timing (re: slideshows, automated-scrolling, etc) if needed?
@@ -678,7 +685,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are we giving users the ability to pause and restart automated content?
@@ -690,7 +697,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we give the user the ability to turn off motion animations if they start automatically?
@@ -702,7 +709,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we give users the ability to turn off motion animations if they last for more
@@ -715,7 +722,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we give users the ability to stop or pause updates that begin automatically?
@@ -727,7 +734,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we give users the ability to signal that they need more time before a timeout?
@@ -739,7 +746,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we allow users to turn off timeouts unless they are necessary to security?
@@ -751,7 +758,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Is timing completely irrelevant for the user to fully engage with our content?
@@ -763,7 +770,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we only interrupt users from what they were doing in an emergency?
@@ -775,7 +782,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we give the user the ability to start where they left off after reauthenticating?
@@ -787,7 +794,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we preserve data as it was when the user is automatically logged out?
@@ -805,7 +812,7 @@ function Accessibility() {
           physical reactions.
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we made sure none of our content blinks or flashes more than <strong>3</strong> times per second?
@@ -820,7 +827,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we given users the ability to turn off any animations that start as soon as they interact with
@@ -838,7 +845,7 @@ function Accessibility() {
           2.4 Navigable - Provide ways to help users navigate, find content, and determine where they are.
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can we give redundancy cues and/or structural markup that alerts users of duplicated content?
@@ -850,7 +857,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do all pages have descriptive titles that differentiate them from others within navigation?
@@ -862,7 +869,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do all headings describe the purpose of the page?
@@ -874,7 +881,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Does the order of tabs and information presented to those using a keyboard make sense?
@@ -886,7 +893,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do all links read as clear descriptions of where they will navigate the user?
@@ -898,7 +905,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are there multiple ways to navigate to a page within the system?
@@ -910,7 +917,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do all labels clearly describe the topic or purpose of the content they are labeling?
@@ -922,7 +929,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do our labels use the exact same words as the content they are describing?
@@ -934,7 +941,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Is the focus indicator always available to those using a keyboard?
@@ -946,7 +953,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can the user verify their location within the interface (re: “sitemap” navigation)?
@@ -958,7 +965,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do all links reveal their purpose to the user?
@@ -966,7 +973,7 @@ function Accessibility() {
             </NxList.Text>
             <NxList.Actions>Level AAA</NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do all links give additional descriptions about what the link's content entails?
@@ -978,7 +985,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we consistently used the correct order of header hierarchy throughout the interface?
@@ -996,7 +1003,7 @@ function Accessibility() {
           keyboard.
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we allowed the user to move their mouse in whatever pattern allows them to accomplish a task?
@@ -1008,7 +1015,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we provided an alternative to swiping and other pointer based gestures?
@@ -1020,7 +1027,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we prioritized the “release” click of the mouse for the user to take action?
@@ -1032,7 +1039,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are all buttons and graphic labels named as what they are?(re: “checkbox”, “notification,” etc)
@@ -1044,7 +1051,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we given users the ability to adjust/turn off motion input sensing?(re: shake to erase)
@@ -1056,7 +1063,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are our click targets at least <strong>44px x 44px</strong> in size?
@@ -1068,7 +1075,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we enabled non-touch inputs even on devices where touch inputs are present?
@@ -1097,7 +1104,7 @@ function Accessibility() {
           3.1 Readable - Make text content readable and understandable.
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Has a default human language been programmed into markup?
@@ -1109,7 +1116,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we labeled what language is being used and when it changes to adjust vernacular?
@@ -1121,7 +1128,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we labeled jargon and idioms within our content?
@@ -1133,7 +1140,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we offer a source that explains our abbreviations that's hosted internally or externally?
@@ -1145,7 +1152,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we presented content at a middle school reading level?
@@ -1157,7 +1164,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 If our content is very complex, have we provided additional supporting materials to help users
@@ -1170,7 +1177,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we provided a mechanism to support correct pronunciation of terms not widely known?
@@ -1187,7 +1194,7 @@ function Accessibility() {
           3.2 Predictable - Make pages appear and operate in predictable ways.
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Does content in a focus state remain exactly the same as when it's in the default state?
@@ -1199,7 +1206,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Has the user been made aware that the interface will change when they input information prior to them
@@ -1212,7 +1219,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are UI page elements in a standard, consistent place within the page's layout?
@@ -1224,7 +1231,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Is the sequence of those UI elements repeated consistently throughout the interface?
@@ -1236,7 +1243,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Is the page and site navigation always in the same location on each page?
@@ -1248,7 +1255,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are our icons used consistently in the same context across the interface?
@@ -1260,7 +1267,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are the UI elements consistent with the behavior of standard UI elements?
@@ -1272,7 +1279,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are we allowing the user to decide when to take action instead of automatically doing it for them?
@@ -1284,7 +1291,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we give the user the ability to turn off all notifications until the end of the session?
@@ -1301,7 +1308,7 @@ function Accessibility() {
           3.3 Input Assistance - Help users avoid and correct mistakes.
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we alert users immediately with an error message as soon as an error is detected?
@@ -1313,7 +1320,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we provided more than one cue that an error has occurred?
@@ -1325,7 +1332,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are all required form fields clearly indicated to the user?
@@ -1337,7 +1344,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are input fields always paired with directions that help the user decide what to enter?
@@ -1349,7 +1356,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do our alerts always include text, even if colors and/or graphics are also used in the notification?
@@ -1361,14 +1368,14 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are our error messages as short and specific as possible?
               </NxStatefulCheckbox>
             </NxList.Text>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 If an error is detected, have we offered a concise solution to fix the error?
@@ -1380,7 +1387,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we allowed users to review and correct their submissions before submitting them?(Especially with
@@ -1393,7 +1400,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we give the user the ability to immediately undo a mistake in any situation?
@@ -1405,7 +1412,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aaa ${showAAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aaa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we have a readily available system in place whenever a user needs help?
@@ -1417,7 +1424,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-reco ${showReco && 'hidden'}`}>
+          <NxList.Item className="gallery-level-reco">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Have we created specific help text and options that allow the user to complete a task without losing
@@ -1425,7 +1432,7 @@ function Accessibility() {
               </NxStatefulCheckbox>
             </NxList.Text>
           </NxList.Item>
-          <NxList.Item className={`level-reco ${showReco && 'hidden'}`}>
+          <NxList.Item className="gallery-level-reco">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Do we allow users to change between devices when interacting with content on multiple devices during the
@@ -1451,7 +1458,7 @@ function Accessibility() {
           4.1 Compatible - Maximize compatibility with current and future user agents, including assistive technologies.
         </NxH4>
         <NxList>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Does all content that uses a markup language have complete start and end tags?
@@ -1463,7 +1470,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Does all of our markup include only one attribution (no duplicates)?
@@ -1475,14 +1482,14 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item>
+          <NxList.Item className="gallery-level-reco">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Are all HTML elements correctly nested according to standard use?
               </NxStatefulCheckbox>
             </NxList.Text>
           </NxList.Item>
-          <NxList.Item className={`level-a ${showA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-a">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can the name and role of all UI elements be easily detected by supportive technology?
@@ -1494,7 +1501,7 @@ function Accessibility() {
               </NxTextLink>
             </NxList.Actions>
           </NxList.Item>
-          <NxList.Item className={`level-aa ${showAA && 'hidden'}`}>
+          <NxList.Item className="gallery-level-aa">
             <NxList.Text>
               <NxStatefulCheckbox defaultChecked={false}>
                 Can all of our status messages be automatically received and interpreted by supportive technology (even
