@@ -128,7 +128,7 @@ describe('NxFilterDropdown', function() {
       await button.click();
 
       const { x, y } = await dropdown.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 244);
+      const region = new Region(parseInt(x, 10), parseInt(y, 10), 251, 212);
 
       await browser.eyesRegionSnapshot(null, Target.region(region));
     });
