@@ -188,6 +188,30 @@ tests, in which case you may have to hit 'a' in your console window to run the t
 debug as normal.  Be aware of the test filtering options in the console which can cut down on extraneous breakpoint
 hits.
 
+## Visual Tests
+
+To run visual tests, first a selenium server must be running on port 4444 and able to launch Chrome browser
+instances. This is most easily accomplished via docker.  See the Jenkinsfile for a full-fledged setup, or consider the
+following command which is adequate for creating a local test environment:
+
+```
+docker run --name selenium-chrome -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:3.141.59
+```
+
+In addition, there are also two environment variables that need to be defined:
+* TEST_IP <br>
+A non-localhost IP address, i.e.
+the IP address by which your physical host machine connects to the external network (e.g. 192.168.0.2, *not* 127.0.0.1). This allows the Chrome instance within the docker container to reach out of the container
+to your local host in order to connect to the gallery server.
+* APPLITOOLS_API_KEY <br>
+The API key required to run Applitools (the visual testing platform used by Sonatype).
+
+### Running Visual Tests
+Once the selenium server is running on port 4444, and the environment variables are defined, run the following command in the gallery/ directory:
+```
+yarn run test
+```
+
 ## Component Gallery
 You can view components in your browser by running the gallery.
 
