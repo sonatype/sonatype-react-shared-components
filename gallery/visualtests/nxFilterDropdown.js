@@ -73,7 +73,7 @@ describe('NxFilterDropdown', function() {
       await browser.eyesRegionSnapshot(null, Target.region(region));
     });
 
-    describe('reset button', function() {
+    describe('NxFilterDropdown reset button', function() {
       const resetBtnSelector = `${dropdownSelector} .nx-filter-dropdown__reset`,
           checkboxSelector = `${dropdownSelector} .nx-checkbox`;
 
@@ -84,7 +84,7 @@ describe('NxFilterDropdown', function() {
 
       it('looks disabled when no items are selected', simpleTest(dropdownSelector));
 
-      describe('when items are selected', function() {
+      describe('NxFilterDropdown reset button when items are selected', function() {
         beforeEach(async function() {
           const checkbox = await browser.$(checkboxSelector);
 
