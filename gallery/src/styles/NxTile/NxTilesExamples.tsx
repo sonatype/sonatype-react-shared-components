@@ -16,6 +16,8 @@ import NxTileAccordionExample from './NxTileAccordionExample';
 import NxTilePolicyViolationIndicatorExample from './NxTilePolicyViolationIndicatorExample';
 
 const NxSimpleTileCode = require('./NxSimpleTileExample.html'),
+    NxTileHeaderlessCode = require('./NxTileHeaderlessExample.html'),
+    NxTileMultiHeaderCode = require('./NxTileMultiHeaderExample.html'),
     NxTileWithActionsCode = require('./NxTileWithActionsExample.html'),
     NxTileWithSubtitleCode = require('./NxTileWithSubtitleExample.html'),
     NxTileSubsectionCode = require('./NxTileSubsectionExample.html'),
@@ -34,6 +36,22 @@ const NxTilesExamples = () =>
                         htmlExample={NxSimpleTileCode}
                         codeExamples={NxSimpleTileCode}>
       A simple example of an <NxCode>nx-tile</NxCode> including a header and a footer.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Tile Headerless Example"
+                        id="nx-tile-headerless-example"
+                        defaultCheckeredBackground={true}
+                        htmlExample={NxTileHeaderlessCode}
+                        codeExamples={NxTileHeaderlessCode}>
+      A simple example of an <NxCode>nx-tile</NxCode> containing only a content area and no header.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NX Tile Multiple Header Example"
+                        id="nx-tile-multi-header-example"
+                        defaultCheckeredBackground={true}
+                        htmlExample={NxTileMultiHeaderCode}
+                        codeExamples={NxTileMultiHeaderCode}>
+      An <NxCode>nx-tile</NxCode> containing multiple top-level headers.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NX Tile with Actions Example"
