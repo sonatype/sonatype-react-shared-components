@@ -46,6 +46,7 @@ import {
   NxPagination,
   NxPolicyThreatSlider,
   NxPolicyViolationIndicator,
+  NxProgressBar,
   NxRadio,
   NxSearchDropdown,
   NxSearchTransferList,
@@ -258,6 +259,7 @@ const Home: NextPage = () => {
         <NxIndeterminatePagination onPrevPageSelect={noop} onNextPageSelect={noop} />
         <NxPolicyThreatSlider value={[5, 8]} />
         <NxPolicyViolationIndicator />
+        <NxProgressBar value={50} label="Foo Bar" />
         <NxRadio name="Foo" value="Bar" isChecked={false} />
         <NxSearchDropdown onSelect={noop}
                           searchText=""

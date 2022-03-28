@@ -319,3 +319,5 @@ export { default as NxFilterDropdown, Props as NxFilterDropdownProps }
 
 export { default as NxStatefulFilterDropdown, Props as NxStatefulFilterDropdownProps }
   from './components/NxFilterDropdown/stateful/NxStatefulFilterDropdown';
+
+export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
