@@ -38,9 +38,6 @@ function Accessibility() {
         Accessibility UX checklist to serve as a method for designers and developers to assess the WCAG compliance of
         their work.
       </NxP>
-      <NxP>
-        WCAG 2.1 Verification - 116 Questions | Cumulative list
-      </NxP>
       <NxFieldset label="Filter by level" isRequired className="gallery-accessibility-filter">
         <NxCheckbox onChange={toggleA} isChecked={!hideA}>Level A</NxCheckbox>
         <NxCheckbox onChange={toggleAA} isChecked={!hideAA}>Level AA</NxCheckbox>
