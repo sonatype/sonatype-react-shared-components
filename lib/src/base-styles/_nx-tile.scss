@@ -38,9 +38,6 @@
 .nx-tile-header {
   align-items: center;
   display: grid;
-
-  // NOTE: without the min-content sizing on the rows it adds extra vertical space when only title and actions are
-  // present. I don't have an explanation for this, it doesn't happen with _any_ other combination of header children
   grid-template:
     "title      tags   actions" 40px
     "subtitle subtitle actions" min-content /
