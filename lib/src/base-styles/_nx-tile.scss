@@ -40,7 +40,7 @@
   display: grid;
   grid-template:
     "title      tags   actions" 40px
-    "subtitle subtitle ." min-content /
+    "subtitle subtitle ." auto /
      auto       1fr       auto;
 
   + .nx-tile-content {
