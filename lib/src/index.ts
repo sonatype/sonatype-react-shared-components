@@ -314,3 +314,5 @@ export { default as NxTree, ItemProps as NxTreeItemProps } from './components/Nx
 export { StatefulItemProps as NxTreeStatefulItemProps } from './components/NxTree/stateful/NxTreeStatefulItem';
 
 export { default as NxStableUniqueIdContext } from './components/NxStableUniqueIdContext/NxStableUniqueIdContext';
+
+export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
